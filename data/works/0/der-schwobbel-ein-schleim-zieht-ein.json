@@ -510,6 +510,10 @@
             {
               "asin": "B00V3C2J1M",
               "region": "us"
+            },
+            {
+              "asin": "B0GLPS956F",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/A1Rew9FWrGL.jpg",
@@ -530,6 +534,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B00V3C2J1M",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GLPS956F",
               "type": "libex-import"
             }
           ],
@@ -588,6 +597,46 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B00Q53T5ZW",
+              "type": "libex-import"
+            }
+          ],
+          "work": "der-see-des-grauens"
+        },
+        "alexandra-schalaudek-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0GK9KYS6S",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91nluEmS3+L.jpg",
+          "id": "alexandra-schalaudek-2026",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alexandra-schalaudek",
+            "bert-stevens",
+            "daniela-wutte",
+            "elke-bludau",
+            "hildegard-meier",
+            "jurg-low",
+            "karlheinz-tafel",
+            "michael-che-koch",
+            "oliver-baumann",
+            "richard-hucke",
+            "sascha-schiffbauer",
+            "tom-linden",
+            "walter-gontermann"
+          ],
+          "publisher": "Romantruhe Audio",
+          "release_date": "2026-01-28",
+          "runtime_min": 59,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GK9KYS6S",
               "type": "libex-import"
             }
           ],
@@ -757,6 +806,135 @@
         }
       ],
       "title": "Der Seelenbrunnen"
+    },
+    "der-seelenfresser": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "andreas-masuth"
+      ],
+      "genres": [
+        "fantasy",
+        "horror",
+        "paranormal",
+        "urban-fantasy"
+      ],
+      "id": "der-seelenfresser",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "achim-buch-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0GK8WRGTP",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91mFPTz2O5L.jpg",
+          "id": "achim-buch-2026",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "achim-buch",
+            "bernd-vollbrecht",
+            "harry-kuhn",
+            "heiko-akrap",
+            "jenny-loffler",
+            "jurgen-thormann",
+            "marie-isabel-walke",
+            "marieke-oeffinger",
+            "nicolai-tegeler",
+            "thomas-schmuckert",
+            "tino-kiessling",
+            "uwe-jellinek",
+            "yvonne-greitzke"
+          ],
+          "publisher": "Romantruhe Audio",
+          "release_date": "2026-01-28",
+          "runtime_min": 78,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GK8WRGTP",
+              "type": "libex-import"
+            }
+          ],
+          "work": "der-seelenfresser"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0GK8WRGTP",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Der Seelenfresser"
+    },
+    "der-seelensauger": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "thomas-birker"
+      ],
+      "genres": [
+        "horror"
+      ],
+      "id": "der-seelensauger",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "alexandra-lange-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0C5DWTF97",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91Hwf-bw1LL.jpg",
+          "id": "alexandra-lange-2023",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alexandra-lange",
+            "cornelia-tillmanns",
+            "eckart-dux",
+            "farina-brock",
+            "gerrit-schmidt-foss",
+            "katja-brugger",
+            "marco-steeger",
+            "mathias-renneisen",
+            "ozan-unal",
+            "patrick-bach",
+            "peter-kirchberger",
+            "sabine-birker",
+            "sven-plate",
+            "tobias-brecklinghaus",
+            "tobias-kluckert"
+          ],
+          "publisher": "Highscore Music",
+          "release_date": "2023-06-23",
+          "runtime_min": 79,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0C5DWTF97",
+              "type": "libex-import"
+            }
+          ],
+          "work": "der-seelensauger"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0C5DWTF97",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Der Seelensauger"
     },
     "der-seewolf": {
       "added_at": "2026-08-02",
@@ -1546,6 +1724,69 @@
       ],
       "title": "Der Skarabäus"
     },
+    "der-sklave-des-magiers": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "bob-collins"
+      ],
+      "genres": [
+        "fantasy",
+        "horror",
+        "paranormal",
+        "urban-fantasy"
+      ],
+      "id": "der-sklave-des-magiers",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "alexandra-lange-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0GK9XQY85",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91zUW16NjPL.jpg",
+          "id": "alexandra-lange-2026",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alexandra-lange",
+            "bert-stevens",
+            "helgo-liebig",
+            "jo-jung",
+            "jorg-adae",
+            "julian-lang",
+            "karen-schulz-vobach",
+            "nils-weyland",
+            "tanja-geke",
+            "tim-knauer",
+            "victoria-sturm"
+          ],
+          "publisher": "Romantruhe Audio",
+          "release_date": "2026-01-28",
+          "runtime_min": 73,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GK9XQY85",
+              "type": "libex-import"
+            }
+          ],
+          "work": "der-sklave-des-magiers"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0GK9XQY85",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Der Sklave des Magiers"
+    },
     "der-sohn-des-barenjagers": {
       "added_at": "2026-08-02",
       "authors": [
@@ -2015,6 +2256,70 @@
         }
       ],
       "title": "Der Sohn des Königs"
+    },
+    "der-sohn-des-verderbens": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "marc-freund"
+      ],
+      "genres": [
+        "horror"
+      ],
+      "id": "der-sohn-des-verderbens",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "andreas-frohlich-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0DKP3LYGY",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91l0d0uflGL.jpg",
+          "id": "andreas-frohlich-2024",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andreas-frohlich",
+            "anke-reitzenstein",
+            "detlef-tams",
+            "douglas-welbat",
+            "gabrielle-pietermann",
+            "hans-georg-panczak",
+            "jean-coppong",
+            "marcel-colle",
+            "martin-sabel",
+            "mathias-renneisen",
+            "reent-reins",
+            "sebastian-winkler",
+            "torsten-michaelis",
+            "uwe-buschken",
+            "victoria-sturm"
+          ],
+          "publisher": "Highscore Music",
+          "release_date": "2024-10-25",
+          "runtime_min": 69,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DKP3LYGY",
+              "type": "libex-import"
+            }
+          ],
+          "work": "der-sohn-des-verderbens"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0DKP3LYGY",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Der Sohn des Verderbens"
     },
     "der-sommer-als-ich-schon-wurde": {
       "added_at": "2026-08-02",
@@ -3008,6 +3313,67 @@
         }
       ],
       "title": "Der Spalt zum Abgrund"
+    },
+    "der-speer-des-hasses": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "thomas-birker",
+        "a-f-morland"
+      ],
+      "genres": [
+        "fantasy",
+        "paranormal",
+        "urban-fantasy"
+      ],
+      "id": "der-speer-des-hasses",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "alexandra-lange-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0FFH7GHZD",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91QIxmdfIXL.jpg",
+          "id": "alexandra-lange-2025",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alexandra-lange",
+            "douglas-welbat",
+            "holger-lowenberg",
+            "katharina-von-daake",
+            "katrin-frohlich",
+            "mathias-renneisen",
+            "matthias-hoff",
+            "tobias-brecklinghaus",
+            "urs-remond"
+          ],
+          "publisher": "Dreamland Productions",
+          "release_date": "2025-07-11",
+          "runtime_min": 61,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FFH7GHZD",
+              "type": "libex-import"
+            }
+          ],
+          "work": "der-speer-des-hasses"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0FFH7GHZD",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Der Speer des Hasses"
     },
     "der-spiegelball": {
       "added_at": "2026-08-02",
@@ -4565,6 +4931,72 @@
       ],
       "title": "Der Sternenstaubdieb"
     },
+    "der-sternenteufel": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "thomas-birker",
+        "a-f-morland"
+      ],
+      "genres": [
+        "cyberpunk",
+        "science-fiction"
+      ],
+      "id": "der-sternenteufel",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "christian-stark-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0FTZG2V7V",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91CpVr-kuZL.jpg",
+          "id": "christian-stark-2025",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "christian-stark",
+            "christian-weygand",
+            "dietmar-wunder",
+            "dorette-hugo",
+            "engelbert-von-nordhausen",
+            "full-cast",
+            "gerrit-schmidt-foss",
+            "matti-klemm",
+            "nicolas-rathod",
+            "oliver-stritzel",
+            "peter-flechtner",
+            "peter-kirchberger",
+            "peter-lontzek",
+            "ron-kliehm",
+            "tobias-brecklinghaus"
+          ],
+          "publisher": "Dreamland Productions",
+          "release_date": "2025-11-07",
+          "runtime_min": 79,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FTZG2V7V",
+              "type": "libex-import"
+            }
+          ],
+          "work": "der-sternenteufel"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0FTZG2V7V",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Der Sternenteufel"
+    },
     "der-sternentresor": {
       "added_at": "2026-08-02",
       "authors": [
@@ -5194,6 +5626,62 @@
         }
       ],
       "title": "Der Stromausfall"
+    },
+    "der-strudel-des-grauens": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "kristina-lohfeldt"
+      ],
+      "genres": [
+        "action-adventure",
+        "epic-fantasy",
+        "fantasy"
+      ],
+      "id": "der-strudel-des-grauens",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "claus-peter-damitz-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0DRCVJ7Y1",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91eWFOru1yL.jpg",
+          "id": "claus-peter-damitz-2025",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "claus-peter-damitz",
+            "douglas-welbat",
+            "gabrielle-pietermann",
+            "maja-maneiro",
+            "ulrike-sturzbecher"
+          ],
+          "publisher": "Winterzeit Audiobooks",
+          "release_date": "2025-01-31",
+          "runtime_min": 61,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DRCVJ7Y1",
+              "type": "libex-import"
+            }
+          ],
+          "work": "der-strudel-des-grauens"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0DRCVJ7Y1",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Der Strudel des Grauens"
     },
     "der-student-von-prag": {
       "added_at": "2026-08-02",
@@ -6128,6 +6616,71 @@
         }
       ],
       "title": "Der Tag, an dem Michel besonders nett sein wollte"
+    },
+    "der-tag-der-bestie": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "markus-topf",
+        "h-g-francis"
+      ],
+      "genres": [
+        "horror"
+      ],
+      "id": "der-tag-der-bestie",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "alexandra-lange-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0BX71LSDC",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81U3z1KnjhL.jpg",
+          "id": "alexandra-lange-2023",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alexandra-lange",
+            "bernd-egger",
+            "christian-stark",
+            "christian-weygand",
+            "christin-marquitan",
+            "claudio-maniscalco",
+            "dagmar-bittner",
+            "dietmar-wunder",
+            "dorette-hugo",
+            "joachim-ziebe",
+            "katja-kessler",
+            "kevin-kasper",
+            "markus-ertelt",
+            "stefan-lindner",
+            "thomas-birker"
+          ],
+          "publisher": "Dreamland Productions",
+          "release_date": "2023-06-19",
+          "runtime_min": 44,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0BX71LSDC",
+              "type": "libex-import"
+            }
+          ],
+          "work": "der-tag-der-bestie"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0BX71LSDC",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Der Tag der Bestie"
     },
     "der-tagliche-grind-im-virtuellen-hamsterrad": {
       "added_at": "2026-08-02",
@@ -7419,6 +7972,62 @@
       ],
       "title": "Der Terraner, Teil 4"
     },
+    "der-teufel-fuhrt-regie": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "thomas-birker",
+        "a-f-morland"
+      ],
+      "genres": [
+        "horror"
+      ],
+      "id": "der-teufel-fuhrt-regie",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "gerrit-schmidt-foss-2019": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B07VBLRL7J",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91SYyqt4r2L.jpg",
+          "id": "gerrit-schmidt-foss-2019",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "gerrit-schmidt-foss",
+            "holger-lowenberg",
+            "katja-brugger",
+            "tilo-schmitz",
+            "torsten-sense",
+            "wolfgang-bahro"
+          ],
+          "publisher": "Skyscore Media",
+          "release_date": "2019-07-26",
+          "runtime_min": 62,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07VBLRL7J",
+              "type": "libex-import"
+            }
+          ],
+          "work": "der-teufel-fuhrt-regie"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B07VBLRL7J",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Der Teufel führt Regie"
+    },
     "der-teufel-im-bunde": {
       "added_at": "2026-08-02",
       "authors": [
@@ -7736,6 +8345,65 @@
         }
       ],
       "title": "Der Teufel ist los"
+    },
+    "der-teufel-und-seine-grossmutter-der-standhafte-zinnsoldat": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "hans-christian-andersen",
+        "erika-burk",
+        "gebruder-grimm",
+        "maral"
+      ],
+      "genres": [
+        "childrens",
+        "fairy-tales-folklore"
+      ],
+      "id": "der-teufel-und-seine-grossmutter-der-standhafte-zinnsoldat",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "claus-schmeling-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0D4R2XY37",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81lEvea1FQL.jpg",
+          "id": "claus-schmeling-2024",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "claus-schmeling",
+            "hardy-tasso",
+            "heinz-spitzner",
+            "rainer-schmidt",
+            "ulrich-hoppe",
+            "ulrich-nuckel"
+          ],
+          "publisher": "All Ears GmbH",
+          "release_date": "2024-06-28",
+          "runtime_min": 40,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0D4R2XY37",
+              "type": "libex-import"
+            }
+          ],
+          "work": "der-teufel-und-seine-grossmutter-der-standhafte-zinnsoldat"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0D4R2XY37",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Der Teufel und seine Großmutter / Der standhafte Zinnsoldat"
     },
     "der-teufel-von-cat-rock": {
       "added_at": "2026-07-30T14:42:56+01:00",
@@ -9066,6 +9734,62 @@
       ],
       "title": "Der Thron des Alphas (Rune Moon Wolves 9)"
     },
+    "der-thron-des-drachen": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "hans-joachim-herwald"
+      ],
+      "genres": [
+        "historical-fiction",
+        "young-adult"
+      ],
+      "id": "der-thron-des-drachen",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "achim-schulke-2019": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B07ZH7FMV4",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1NIqWpTa9L.jpg",
+          "id": "achim-schulke-2019",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "achim-schulke",
+            "anika-pages",
+            "christian-stark",
+            "hannes-wockert",
+            "stefanie-kindermann",
+            "ursula-vogel"
+          ],
+          "publisher": "Skyscore Media",
+          "release_date": "2019-10-23",
+          "runtime_min": 36,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07ZH7FMV4",
+              "type": "libex-import"
+            }
+          ],
+          "work": "der-thron-des-drachen"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B07ZH7FMV4",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Der Thron des Drachen"
+    },
     "der-thron-des-usurpators": {
       "added_at": "2026-08-02",
       "authors": [
@@ -9712,6 +10436,67 @@
       ],
       "title": "Der Tod hat 1000 Augen"
     },
+    "der-tod-in-der-manege": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "bob-collins"
+      ],
+      "genres": [
+        "fantasy",
+        "horror",
+        "paranormal",
+        "urban-fantasy"
+      ],
+      "id": "der-tod-in-der-manege",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "andrea-aust-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0H6PYM9T6",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91AOOn9McFL.jpg",
+          "id": "andrea-aust-2026",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andrea-aust",
+            "ann-vielhaben",
+            "arne-stephan",
+            "dagmar-bittner",
+            "engelbert-von-nordhausen",
+            "helmut-gauss",
+            "santiago-ziesmer",
+            "till-hagen",
+            "udo-schenk"
+          ],
+          "publisher": "Romantruhe Audio",
+          "release_date": "2026-07-31",
+          "runtime_min": 76,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0H6PYM9T6",
+              "type": "libex-import"
+            }
+          ],
+          "work": "der-tod-in-der-manege"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0H6PYM9T6",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Der Tod in der Manege"
+    },
     "der-tod-ist-nicht-das-ende": {
       "added_at": "2026-08-02",
       "authors": [
@@ -9812,6 +10597,60 @@
         }
       ],
       "title": "Der Tod ist schwer zu überleben"
+    },
+    "der-tod-schleicht-durch-london": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "thomas-birker",
+        "a-f-morland"
+      ],
+      "genres": [
+        "horror"
+      ],
+      "id": "der-tod-schleicht-durch-london",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "christian-rode-2019": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B07VJXNM9L",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91B2mZG6kmL.jpg",
+          "id": "christian-rode-2019",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "christian-rode",
+            "dorette-hugo",
+            "tilo-schmitz",
+            "torsten-sense"
+          ],
+          "publisher": "Dreamland Productions",
+          "release_date": "2019-07-26",
+          "runtime_min": 79,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07VJXNM9L",
+              "type": "libex-import"
+            }
+          ],
+          "work": "der-tod-schleicht-durch-london"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B07VJXNM9L",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Der Tod schleicht durch London"
     },
     "der-tod-steht-ihnen-gut": {
       "added_at": "2026-08-02",
@@ -10811,6 +11650,59 @@
       ],
       "title": "Der tote Planet"
     },
+    "der-tote-planet-brandon-q-morris": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "brandon-q-morris"
+      ],
+      "genres": [
+        "action-adventure",
+        "hard-science-fiction",
+        "science",
+        "science-fiction"
+      ],
+      "id": "der-tote-planet-brandon-q-morris",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "mark-bremer-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0G43Z7VC5",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81RsprJxU3L.jpg",
+          "id": "mark-bremer-2025",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "mark-bremer"
+          ],
+          "publisher": "Rubiton Audioverlag",
+          "release_date": "2025-12-12",
+          "runtime_min": 388,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0G43Z7VC5",
+              "type": "libex-import"
+            }
+          ],
+          "work": "der-tote-planet-brandon-q-morris"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0G43Z7VC5",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Der tote Planet"
+    },
     "der-totenbeschworer": {
       "added_at": "2026-08-02",
       "authors": [
@@ -11449,6 +12341,116 @@
       ],
       "title": "Der Traumtänzer"
     },
+    "der-traumtanzer-hendrik-buchna": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "hendrik-buchna"
+      ],
+      "genres": [
+        "thriller-suspense"
+      ],
+      "id": "der-traumtanzer-hendrik-buchna",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "eckart-dux-2019": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B081HCPQ37",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81sJDXAOL9L.jpg",
+          "id": "eckart-dux-2019",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "eckart-dux",
+            "helmut-krauss",
+            "katja-brugger",
+            "mark-bremer",
+            "robert-missler",
+            "ulrike-sturzbecher"
+          ],
+          "publisher": "Skyscore Media",
+          "release_date": "2019-11-19",
+          "runtime_min": 59,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B081HCPQ37",
+              "type": "libex-import"
+            }
+          ],
+          "work": "der-traumtanzer-hendrik-buchna"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B081HCPQ37",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Der Traumtänzer"
+    },
+    "der-traumtanzer-special-edition": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "hendrik-buchna"
+      ],
+      "genres": [
+        "thriller-suspense"
+      ],
+      "id": "der-traumtanzer-special-edition",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "eckart-dux-2019": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B081HCRD1R",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81IOuZs4d8L.jpg",
+          "id": "eckart-dux-2019",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "eckart-dux",
+            "helmut-krauss",
+            "katja-brugger",
+            "mark-bremer",
+            "robert-missler",
+            "ulrike-sturzbecher"
+          ],
+          "publisher": "Skyscore Media",
+          "release_date": "2019-11-19",
+          "runtime_min": 77,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B081HCRD1R",
+              "type": "libex-import"
+            }
+          ],
+          "work": "der-traumtanzer-special-edition"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B081HCRD1R",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Der Traumtänzer [Special Edition]"
+    },
     "der-tribut": {
       "added_at": "2026-08-02",
       "authors": [
@@ -11552,6 +12554,61 @@
         }
       ],
       "title": "Der Trick des Schakals"
+    },
+    "der-trip": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "marcus-gorner"
+      ],
+      "genres": [
+        "thriller-suspense"
+      ],
+      "id": "der-trip",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "daniel-welbat-2019": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B081HCPFPH",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81iyYrfwyoL.jpg",
+          "id": "daniel-welbat-2019",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "daniel-welbat",
+            "jannik-endemann",
+            "julia-folster",
+            "linn-mackenzie",
+            "reent-reins",
+            "tammo-kaulbarsch"
+          ],
+          "publisher": "Skyscore Media",
+          "release_date": "2019-11-19",
+          "runtime_min": 58,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B081HCPFPH",
+              "type": "libex-import"
+            }
+          ],
+          "work": "der-trip"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B081HCPFPH",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Der Trip"
     },
     "der-triumph-der-zwerge": {
       "added_at": "2026-08-02",
@@ -11867,6 +12924,58 @@
         }
       ],
       "title": "Der Turm der Bettler"
+    },
+    "der-turm-der-gefangenen": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "thomas-thiemeyer"
+      ],
+      "genres": [
+        "mystery",
+        "thriller-suspense",
+        "young-adult"
+      ],
+      "id": "der-turm-der-gefangenen",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "mark-bremer-2017": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B01N1I4QYG",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91uvxefOenL.jpg",
+          "id": "mark-bremer-2017",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "mark-bremer"
+          ],
+          "publisher": "Rubikon Audioverlag",
+          "release_date": "2017-01-01",
+          "runtime_min": 507,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B01N1I4QYG",
+              "type": "libex-import"
+            }
+          ],
+          "work": "der-turm-der-gefangenen"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B01N1I4QYG",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Der Turm der Gefangenen"
     },
     "der-turm-der-konige": {
       "added_at": "2026-08-02",
@@ -13461,6 +14570,66 @@
       ],
       "title": "Der Turmbau zu Babel"
     },
+    "der-tyrann": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "silke-walter"
+      ],
+      "genres": [
+        "mystery"
+      ],
+      "id": "der-tyrann",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "charles-rettinghaus-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CQKFJ7Y5",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91cXYqoQulL.jpg",
+          "id": "charles-rettinghaus-2024",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "charles-rettinghaus",
+            "florian-halm",
+            "julia-folster",
+            "liane-rudolph",
+            "lutz-mackensy",
+            "magdalena-hofner",
+            "marcel-mann",
+            "mathias-renneisen",
+            "robert-louis-griesbach",
+            "till-hagen",
+            "timo-weisschnur"
+          ],
+          "publisher": "Highscore Music",
+          "release_date": "2024-01-12",
+          "runtime_min": 63,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CQKFJ7Y5",
+              "type": "libex-import"
+            }
+          ],
+          "work": "der-tyrann"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CQKFJ7Y5",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Der Tyrann"
+    },
     "der-tyrann-aus-der-tiefe": {
       "added_at": "2026-08-02",
       "authors": [
@@ -13505,6 +14674,44 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0168PCJF4",
+              "type": "libex-import"
+            }
+          ],
+          "work": "der-tyrann-aus-der-tiefe"
+        },
+        "bernd-vollbrecht-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0GLPJB8CZ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91zc6tGDECL.jpg",
+          "id": "bernd-vollbrecht-2026",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "bernd-vollbrecht",
+            "christian-rode",
+            "harry-walter",
+            "jan-graewe",
+            "karl-maslo",
+            "lena-taege",
+            "lutz-harder",
+            "nicolai-tegeler",
+            "peter-groeger",
+            "thomas-danneberg",
+            "tino-kiessling"
+          ],
+          "publisher": "Romantruhe Audio",
+          "release_date": "2026-02-06",
+          "runtime_min": 56,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GLPJB8CZ",
               "type": "libex-import"
             }
           ],
@@ -13563,6 +14770,62 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B00OPYL5JC",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Der überflüssige Finger"
+    },
+    "der-uberflussige-finger-markus-winter": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "markus-winter"
+      ],
+      "genres": [
+        "mystery"
+      ],
+      "id": "der-uberflussige-finger-markus-winter",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "bert-stevens-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0F9Y7GWBX",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91AS2FhPS3L.jpg",
+          "id": "bert-stevens-2025",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "bert-stevens",
+            "frank-roth",
+            "henry-konig",
+            "marie-bierstedt",
+            "martin-kessler",
+            "norbert-langer",
+            "petra-mott"
+          ],
+          "publisher": "Highscore Music",
+          "release_date": "2025-05-27",
+          "runtime_min": 48,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0F9Y7GWBX",
+              "type": "libex-import"
+            }
+          ],
+          "work": "der-uberflussige-finger-markus-winter"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0F9Y7GWBX",
           "type": "libex-import"
         }
       ],
@@ -14188,6 +15451,68 @@
         }
       ],
       "title": "Der unendliche Raum"
+    },
+    "der-unerbittliche-richter": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "markus-duschek"
+      ],
+      "genres": [
+        "mystery"
+      ],
+      "id": "der-unerbittliche-richter",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "bjorn-schalla-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0F44DQ417",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91kHOvFAd1L.jpg",
+          "id": "bjorn-schalla-2025",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "bjorn-schalla",
+            "brian-sommer",
+            "detlef-tams",
+            "dirk-hardegen",
+            "erich-rauker",
+            "gosta-liptow",
+            "janis-zaurins",
+            "jessica-neumann",
+            "katja-brugger",
+            "lutz-mackensy",
+            "lutz-riedel",
+            "rainer-fritzsche",
+            "reinhard-scheunemann"
+          ],
+          "publisher": "Highscore Music",
+          "release_date": "2025-05-16",
+          "runtime_min": 57,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0F44DQ417",
+              "type": "libex-import"
+            }
+          ],
+          "work": "der-unerbittliche-richter"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0F44DQ417",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Der unerbittliche Richter"
     },
     "der-unfreiwillige-selbstmorder": {
       "added_at": "2026-08-02",
@@ -15411,6 +16736,120 @@
         }
       ],
       "title": "Der Untergang"
+    },
+    "der-untergang-der-ms-estonia": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "jan-gaspard"
+      ],
+      "genres": [
+        "dystopian",
+        "science-fiction",
+        "time-travel"
+      ],
+      "id": "der-untergang-der-ms-estonia",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "benjamin-volz-2018": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B07KB5YZP7",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81V6rIktpsL.jpg",
+          "id": "benjamin-volz-2018",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "benjamin-volz",
+            "david-nathan",
+            "dietmar-wunder",
+            "friedrich-schoenfelder",
+            "jaron-lowenberg",
+            "till-hagen"
+          ],
+          "publisher": "Skyscore Media",
+          "release_date": "2018-11-15",
+          "runtime_min": 66,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07KB5YZP7",
+              "type": "libex-import"
+            }
+          ],
+          "work": "der-untergang-der-ms-estonia"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B07KB5YZP7",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Der Untergang der MS Estonia"
+    },
+    "der-untergang-der-welt": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "marc-freund"
+      ],
+      "genres": [
+        "fantasy",
+        "science-fiction",
+        "young-adult"
+      ],
+      "id": "der-untergang-der-welt",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "annina-braunmiller-jest-2018": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B077RXKQY6",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1e12FTMyKL.jpg",
+          "id": "annina-braunmiller-jest-2018",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "annina-braunmiller-jest",
+            "christian-bruckner",
+            "christian-zeiger",
+            "jochen-schroder",
+            "marius-claren",
+            "sascha-draeger"
+          ],
+          "publisher": "Skyscore Media",
+          "release_date": "2018-01-19",
+          "runtime_min": 61,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B077RXKQY6",
+              "type": "libex-import"
+            }
+          ],
+          "work": "der-untergang-der-welt"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B077RXKQY6",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Der Untergang der Welt"
     },
     "der-untergang-des-elysiums-litrpg-serie": {
       "added_at": "2026-08-02",
