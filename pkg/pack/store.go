@@ -359,13 +359,17 @@ type packGroup struct {
 	packs []planPack
 }
 
-// familyPlan is one family's flush, worked out but not yet written: the packs
-// as the plan found them (before) and the shape they are to be written in
-// (after).
+// familyPlan is one family's flush, worked out and validated but not yet
+// written: the packs as the plan found them (before), the shape they are to be
+// written in (after), and the paths that shape occupies - the refs the family's
+// tree becomes, and the set commit tells a replaced file from a surviving one
+// by. Planning resolves the paths once; nothing recomputes them.
 type familyPlan struct {
 	def    FamilyDef
 	before []planPack
 	after  []planPack
+	refs   []PackRef
+	seen   map[string]bool
 }
 
 // Flush applies the queued writes and leaves every family well-formed: due
@@ -376,12 +380,13 @@ type familyPlan struct {
 // queue cleared and its trees reloaded.
 //
 // EVERY family is planned and validated before the first byte is written. A
-// plan is refused for a tree the writer must not act on - entries outside their
-// pack's range, and the two-packs-on-one-path backstop that follows from them -
-// and refusing it after half the tree had been rewritten left an operator with
-// a partially written catalogue to heal on top of the refusal. Planning is
-// cheap next to writing (the packs are already parsed and rendered), so the
-// whole plan set is checked first and a refused flush writes nothing.
+// plan is refused for a tree the writer must not act on - entries reaching into
+// a later pack's range, and the two-packs-on-one-path backstop that follows
+// from them - and refusing it after half the tree had been rewritten left an
+// operator with a partially written catalogue to heal on top of the refusal.
+// Planning is cheap next to writing (the packs are already parsed and
+// rendered), so the whole plan set is worked out first and a refused flush
+// writes nothing.
 //
 // Packs the queue did not touch are judged by their on-disk size alone, which
 // is exact for a canonically formatted tree. Their entry counts are not
@@ -411,15 +416,9 @@ func (s *Store) Flush() (Written, error) {
 			plans = append(plans, p)
 		}
 	}
-	for _, p := range plans {
-		if _, _, err := plannedPaths(p.def, p.after); err != nil {
-			return Written{}, err
-		}
-	}
-
 	var w Written
 	for _, p := range plans {
-		fw, err := s.commit(p.def, p.before, p.after)
+		fw, err := s.commit(p)
 		if err != nil {
 			return Written{}, err
 		}
@@ -436,8 +435,8 @@ func (s *Store) Flush() (Written, error) {
 	return w, nil
 }
 
-// planFlush works out one family's final shape without writing anything. ok is
-// false for a family with nothing queued and no packs.
+// planFlush works out one family's final shape, and validates it, without
+// writing anything. ok is false for a family with nothing queued and no packs.
 func (s *Store) planFlush(def FamilyDef) (familyPlan, bool, error) {
 	f := def.Family
 	if len(s.ops[f]) == 0 && len(s.pulls[f]) == 0 && len(s.remove[f]) == 0 &&
@@ -464,7 +463,11 @@ func (s *Store) planFlush(def FamilyDef) (familyPlan, bool, error) {
 	if err != nil {
 		return familyPlan{}, false, err
 	}
-	return familyPlan{def: def, before: packs, after: final}, true, nil
+	refs, seen, err := plannedPaths(def, final)
+	if err != nil {
+		return familyPlan{}, false, err
+	}
+	return familyPlan{def: def, before: packs, after: final, refs: refs, seen: seen}, true, nil
 }
 
 // applyTouches loads the packs Touch marked so reshape sees their real entry
@@ -716,54 +719,56 @@ func checkInRange(def FamilyDef, pp planPack, next PackRef) error {
 		return nil
 	}
 	slugs := pp.file.Slugs()
-	if len(slugs) == 0 || slugs[len(slugs)-1] < next.Bound {
-		return nil
+	i := sort.SearchStrings(slugs, next.Bound)
+	if i == len(slugs) {
+		return nil // every entry is below the next pack's bound
 	}
 	here := PackRef{Family: def.Family, Dir: pp.dir, Bound: pp.bound}
-	for _, slug := range slugs {
-		if slug < next.Bound {
-			continue
-		}
-		return fmt.Errorf("%s: %w: entry %q belongs in %s; heal the tree with metafmt --write before writing to it",
-			here.Path(), ErrMisplacedEntries, slug, next.Path())
-	}
-	return nil
+	return fmt.Errorf("%s: %w: entry %q belongs in %s; heal the tree with metafmt --write before writing to it",
+		here.Path(), ErrMisplacedEntries, slugs[i], next.Path())
 }
 
-// plannedPaths returns the plan's pack refs and the set of paths it writes to.
+// plannedPaths resolves the plan's pack refs and the set of paths it writes to.
 //
 // Two planned packs on one path would make the second write silently replace
 // the first, losing every entry the first held. checkInRange refuses the tree
 // shape that is known to produce it; this is the backstop that turns any other
-// route to it into a failed run instead of missing data. Flush runs it over
-// every family's plan before it writes anything, and commit runs it again on
-// the plan it is handed, so neither a whole flush nor a direct commit can put a
-// pack on a path another pack is already going to.
+// route to it into a failed run instead of missing data. It runs while a family
+// is being planned, so every family is resolved before the flush writes its
+// first byte.
 func plannedPaths(def FamilyDef, after []planPack) ([]PackRef, map[string]bool, error) {
 	refs := make([]PackRef, 0, len(after))
 	seen := make(map[string]bool, len(after))
-	from := make(map[string]string, len(after))
+	first := make(map[string]planPack, len(after))
 	for _, pp := range after {
 		ref := PackRef{Family: def.Family, Dir: pp.dir, Bound: pp.bound}
 		p := ref.Path()
 		if seen[p] {
-			return nil, nil, fmt.Errorf("%s: two packs planned onto one path (from %s and %s), refusing to write",
-				p, from[p], pp.from())
+			return nil, nil, fmt.Errorf("%s: two packs planned onto one path (%s), refusing to write",
+				p, collisionSource(first[p], pp))
 		}
 		seen[p] = true
-		from[p] = pp.from()
+		first[p] = pp
 		refs = append(refs, ref)
 	}
 	return refs, seen, nil
 }
 
-// commit writes the final shape and removes the files it replaced.
-func (s *Store) commit(def FamilyDef, before, after []planPack) (Written, error) {
-	var w Written
-	refs, seen, err := plannedPaths(def, after)
-	if err != nil {
-		return Written{}, err
+// collisionSource says where two plans on one path came from. Two parts of one
+// pack's split report the pack once: naming it twice reads like a typo rather
+// than like the split it is.
+func collisionSource(a, b planPack) string {
+	if a.src != "" && a.src == b.src {
+		return fmt.Sprintf("two parts of %s's split", a.src)
 	}
+	return fmt.Sprintf("from %s and %s", a.from(), b.from())
+}
+
+// commit writes a planned family's final shape and removes the files it
+// replaced. The plan is already resolved and validated (see planFlush).
+func (s *Store) commit(plan familyPlan) (Written, error) {
+	def, before, after, seen := plan.def, plan.before, plan.after, plan.seen
+	var w Written
 	for _, pp := range after {
 		p := PackRef{Family: def.Family, Dir: pp.dir, Bound: pp.bound}.Path()
 		if !pp.dirty && p == pp.orig() {
@@ -824,7 +829,7 @@ func (s *Store) commit(def FamilyDef, before, after []planPack) (Written, error)
 		return Written{}, err
 	}
 
-	s.trees[def.Family] = NewTree(def.Family, refs)
+	s.trees[def.Family] = NewTree(def.Family, plan.refs)
 	sort.Strings(w.Wrote)
 	sort.Strings(w.Deleted)
 	return w, nil

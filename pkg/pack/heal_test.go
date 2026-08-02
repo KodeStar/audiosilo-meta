@@ -246,20 +246,44 @@ func TestFlushRefusesAPackHoldingALaterPacksEntries(t *testing.T) {
 }
 
 // The backstop behind checkInRange: whatever route produced them, two packs on
-// one path are refused, and the message names both so the shape is diagnosable.
+// one path are refused, and the message says where they came from - two parts
+// of one split named once, rather than the same path printed twice as though it
+// were a typo.
 func TestPlannedPathsRefusesTwoPacksOnOnePath(t *testing.T) {
 	def, _ := Def(FamilyWorks)
-	_, _, err := plannedPaths(def, []planPack{
-		{src: "works/0/aa.json", dir: "0", bound: "mm"},
-		{src: "works/0/mm.json", dir: "0", bound: "mm"},
-	})
-	if err == nil {
-		t.Fatal("plannedPaths accepted two packs on one path")
-	}
-	for _, want := range []string{"works/0/mm.json", "works/0/aa.json", "one path"} {
-		if !strings.Contains(err.Error(), want) {
-			t.Errorf("error = %v, want it to name %s", err, want)
-		}
+	for _, c := range []struct {
+		name  string
+		plans []planPack
+		want  []string
+	}{
+		{
+			name: "two packs",
+			plans: []planPack{
+				{src: "works/0/aa.json", dir: "0", bound: "mm"},
+				{src: "works/0/mm.json", dir: "0", bound: "mm"},
+			},
+			want: []string{"works/0/mm.json", "from works/0/aa.json and works/0/mm.json", "one path"},
+		},
+		{
+			name: "two parts of one split",
+			plans: []planPack{
+				{src: "works/0/mm.json", dir: "0", bound: "mm"},
+				{src: "works/0/mm.json", dir: "0", bound: "mm"},
+			},
+			want: []string{"two parts of works/0/mm.json's split"},
+		},
+	} {
+		t.Run(c.name, func(t *testing.T) {
+			_, _, err := plannedPaths(def, c.plans)
+			if err == nil {
+				t.Fatal("plannedPaths accepted two packs on one path")
+			}
+			for _, want := range c.want {
+				if !strings.Contains(err.Error(), want) {
+					t.Errorf("error = %v, want it to say %q", err, want)
+				}
+			}
+		})
 	}
 }
 

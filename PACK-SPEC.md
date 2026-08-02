@@ -185,6 +185,12 @@ already carries - so `Store.Flush` names the entry and stops, before it has
 written anything at all. Healing is `metafmt --write`'s job, and its resolution
 rules (the correctly-placed copy wins) are the ones that must decide.
 
+The refusal covers the packs a flush READS, which is every pack it could
+rewrite: an untouched, in-cap pack is never opened, mints no bound and so
+cannot collide with anything. A misplacement sitting in one of those is
+invisible to the writer and stays the healer's business - `metafmt --check`
+reads every file under a family root and reports it, which is why CI runs it.
+
 ## added_at becomes an explicit field
 
 Pack files break the `git log --diff-filter=A` derivation (a pack's add-date is
