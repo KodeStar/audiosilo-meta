@@ -1601,14 +1601,13 @@
             {
               "asin": "B075F3YHFN",
               "region": "us"
-            },
-            {
-              "asin": "B075DYT5SH",
-              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91NOlfXMpiL.jpg",
           "id": "marc-uwe-kling-2017",
+          "isbn": [
+            "9783844917376"
+          ],
           "language": "de",
           "license": "CC0-1.0",
           "narrators": [
@@ -1622,7 +1621,33 @@
               "imported_at": "2026-08-02",
               "ref": "B075F3YHFN",
               "type": "libex-import"
-            },
+            }
+          ],
+          "work": "qualityland"
+        },
+        "marc-uwe-kling-2017-2": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B075DYT5SH",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91wk50jH+jL.jpg",
+          "id": "marc-uwe-kling-2017-2",
+          "isbn": [
+            "9783844916515"
+          ],
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "marc-uwe-kling"
+          ],
+          "publisher": "HörbucHHamburg HHV GmbH",
+          "release_date": "2017-09-22",
+          "runtime_min": 506,
+          "sources": [
             {
               "imported_at": "2026-08-02",
               "ref": "B075DYT5SH",

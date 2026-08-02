@@ -3,7 +3,14 @@
     "the-adventures-of-sherlock-holmes": {
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
-        "arthur-conan-doyle"
+        "arthur-conan-doyle",
+        "chris-sasaki"
+      ],
+      "credits": [
+        {
+          "person": "chris-sasaki",
+          "role": "adaptation"
+        }
       ],
       "genres": [
         "literary-fiction",
@@ -1327,6 +1334,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B09PL4WRG1",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "164555029X",
           "type": "libex-import"
         }
       ],

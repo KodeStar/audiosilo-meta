@@ -10054,26 +10054,6 @@
       "authors": [
         "james-dashner"
       ],
-      "id": "crank-palace",
-      "language": "en",
-      "license": "CC0-1.0",
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "https://www.goodreads.com/book/show/53381768-crank-palace",
-          "type": "community"
-        }
-      ],
-      "title": "Crank Palace",
-      "xref": {
-        "goodreads": "53381768"
-      }
-    },
-    "crank-palace-james-dashner": {
-      "added_at": "2026-07-30T14:42:56+01:00",
-      "authors": [
-        "james-dashner"
-      ],
       "genres": [
         "action-adventure",
         "dystopian",
@@ -10081,7 +10061,7 @@
         "thriller-suspense",
         "young-adult"
       ],
-      "id": "crank-palace-james-dashner",
+      "id": "crank-palace",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -10223,17 +10203,25 @@
               "type": "libex-import"
             }
           ],
-          "work": "crank-palace-james-dashner"
+          "work": "crank-palace"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "https://www.goodreads.com/book/show/53381768-crank-palace",
+          "type": "community"
+        },
         {
           "imported_at": "2026-07-30",
           "ref": "1705238769",
           "type": "libex-import"
         }
       ],
-      "title": "Crank Palace"
+      "title": "Crank Palace",
+      "xref": {
+        "goodreads": "53381768"
+      }
     },
     "crapounette-au-camping-du-lac-bleu": {
       "added_at": "2026-08-02",

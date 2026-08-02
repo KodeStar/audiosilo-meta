@@ -1571,12 +1571,22 @@
     "season-of-storms": {
       "added_at": "2026-07-17T09:08:56+00:00",
       "authors": [
-        "andrzej-sapkowski"
+        "andrzej-sapkowski",
+        "david-french"
+      ],
+      "credits": [
+        {
+          "person": "david-french",
+          "role": "translator"
+        }
       ],
       "genres": [
+        "action-adventure",
         "classics",
         "epic-fantasy",
+        "fairy-tales-folklore",
         "fantasy",
+        "historical-fiction",
         "short-stories"
       ],
       "id": "season-of-storms",
@@ -1589,6 +1599,10 @@
           "asin": [
             {
               "asin": "B074MGV5Q9",
+              "region": "us"
+            },
+            {
+              "asin": "B07CZQPDMM",
               "region": "us"
             }
           ],
@@ -1784,6 +1798,11 @@
               "imported_at": "2026-07-30",
               "ref": "B074MGV5Q9",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07CZQPDMM",
+              "type": "libex-import"
             }
           ],
           "work": "season-of-storms"
@@ -1799,225 +1818,7 @@
           "imported_at": "2026-07-30",
           "ref": "B074MGV5Q9",
           "type": "libex-import"
-        }
-      ],
-      "title": "Season of Storms"
-    },
-    "season-of-storms-andrzej-sapkowski": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "andrzej-sapkowski",
-        "david-french"
-      ],
-      "credits": [
-        {
-          "person": "david-french",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "action-adventure",
-        "epic-fantasy",
-        "fairy-tales-folklore",
-        "fantasy",
-        "historical-fiction"
-      ],
-      "id": "season-of-storms-andrzej-sapkowski",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "peter-kenny-2018": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B07CZQPDMM",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 43328,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 740160,
-              "start_ms": 43328,
-              "title": "Chapter One"
-            },
-            {
-              "length_ms": 803067,
-              "start_ms": 783488,
-              "title": "Interlude"
-            },
-            {
-              "length_ms": 1004390,
-              "start_ms": 1586555,
-              "title": "Chapter Two"
-            },
-            {
-              "length_ms": 465768,
-              "start_ms": 2590945,
-              "title": "Chapter Three"
-            },
-            {
-              "length_ms": 1555564,
-              "start_ms": 3056713,
-              "title": "Chapter Four"
-            },
-            {
-              "length_ms": 1120384,
-              "start_ms": 4612277,
-              "title": "Chapter Five"
-            },
-            {
-              "length_ms": 984083,
-              "start_ms": 5732661,
-              "title": "Chapter Six"
-            },
-            {
-              "length_ms": 1983523,
-              "start_ms": 6716744,
-              "title": "Chapter Seven"
-            },
-            {
-              "length_ms": 3095564,
-              "start_ms": 8700267,
-              "title": "Chapter Eight"
-            },
-            {
-              "length_ms": 658146,
-              "start_ms": 11795831,
-              "title": "Interlude"
-            },
-            {
-              "length_ms": 213159,
-              "start_ms": 12453977,
-              "title": "Interlude"
-            },
-            {
-              "length_ms": 220418,
-              "start_ms": 12667136,
-              "title": "Interlude"
-            },
-            {
-              "length_ms": 2474936,
-              "start_ms": 12887554,
-              "title": "Chapter Nine"
-            },
-            {
-              "length_ms": 1756747,
-              "start_ms": 15362490,
-              "title": "Chapter Ten"
-            },
-            {
-              "length_ms": 2254100,
-              "start_ms": 17119237,
-              "title": "Chapter Eleven"
-            },
-            {
-              "length_ms": 586908,
-              "start_ms": 19373337,
-              "title": "Interlude"
-            },
-            {
-              "length_ms": 1473572,
-              "start_ms": 19960245,
-              "title": "Chapter Twelve"
-            },
-            {
-              "length_ms": 1844789,
-              "start_ms": 21433817,
-              "title": "Chapter Thirteen"
-            },
-            {
-              "length_ms": 1978529,
-              "start_ms": 23278606,
-              "title": "Chapter Fourteen"
-            },
-            {
-              "length_ms": 569260,
-              "start_ms": 25257135,
-              "title": "Interlude"
-            },
-            {
-              "length_ms": 1774051,
-              "start_ms": 25826395,
-              "title": "Chapter Fifteen"
-            },
-            {
-              "length_ms": 867312,
-              "start_ms": 27600446,
-              "title": "Interlude"
-            },
-            {
-              "length_ms": 253023,
-              "start_ms": 28467758,
-              "title": "Interlude"
-            },
-            {
-              "length_ms": 1413891,
-              "start_ms": 28720781,
-              "title": "Chapter Sixteen"
-            },
-            {
-              "length_ms": 325637,
-              "start_ms": 30134672,
-              "title": "Interlude"
-            },
-            {
-              "length_ms": 2790029,
-              "start_ms": 30460309,
-              "title": "Chapter Seventeen"
-            },
-            {
-              "length_ms": 3977241,
-              "start_ms": 33250338,
-              "title": "Chapter Eighteen"
-            },
-            {
-              "length_ms": 1236973,
-              "start_ms": 37227579,
-              "title": "Chapter Nineteen"
-            },
-            {
-              "length_ms": 618022,
-              "start_ms": 38464552,
-              "title": "Interlude"
-            },
-            {
-              "length_ms": 2118403,
-              "start_ms": 39082574,
-              "title": "Chapter Twenty"
-            },
-            {
-              "length_ms": 1129465,
-              "start_ms": 41200977,
-              "title": "Epilogue"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81n+gWV4qiL.jpg",
-          "id": "peter-kenny-2018",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "peter-kenny"
-          ],
-          "publisher": "Orbit",
-          "release_date": "2018-05-22",
-          "runtime_min": 705,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B07CZQPDMM",
-              "type": "libex-import"
-            }
-          ],
-          "work": "season-of-storms-andrzej-sapkowski"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B07CZQPDMM",

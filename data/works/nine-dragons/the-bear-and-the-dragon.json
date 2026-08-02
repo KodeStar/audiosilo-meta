@@ -407,37 +407,7 @@
             }
           ],
           "work": "the-bear-and-the-dragon"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-17",
-          "ref": "B004FJA3TA",
-          "type": "audiosilo-books-import"
         },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B004FJA3TA",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Bear and the Dragon"
-    },
-    "the-bear-and-the-dragon-tom-clancy": {
-      "added_at": "2026-07-30T14:42:56+01:00",
-      "authors": [
-        "tom-clancy"
-      ],
-      "genres": [
-        "action-adventure",
-        "espionage",
-        "politics",
-        "thriller-suspense"
-      ],
-      "id": "the-bear-and-the-dragon-tom-clancy",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "michael-prichard-2014": {
           "abridged": false,
           "added_at": "2026-07-30T14:42:56+01:00",
@@ -776,10 +746,20 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-bear-and-the-dragon-tom-clancy"
+          "work": "the-bear-and-the-dragon"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-17",
+          "ref": "B004FJA3TA",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B004FJA3TA",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-30",
           "ref": "B00IT1831K",

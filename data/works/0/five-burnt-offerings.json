@@ -3297,7 +3297,14 @@
     "five-weeks-in-a-balloon": {
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
-        "jules-verne"
+        "jules-verne",
+        "frederick-paul-walter"
+      ],
+      "credits": [
+        {
+          "person": "frederick-paul-walter",
+          "role": "translator"
+        }
       ],
       "genres": [
         "literary-fiction"
@@ -4467,6 +4474,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B09PL2RJ3Z",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B082DPB2SF",
           "type": "libex-import"
         }
       ],

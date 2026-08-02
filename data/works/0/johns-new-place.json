@@ -2137,6 +2137,68 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "amanda-friday-2021": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B09KDHWRFH",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81usFJyZf6L.jpg",
+          "id": "amanda-friday-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "amanda-friday",
+            "ben-lindsey-clark",
+            "josh-innerst",
+            "lance-rasmussen",
+            "lee-ann-howlett",
+            "sydnee-fullmer",
+            "tim-sailer"
+          ],
+          "publisher": "Spoken Realms",
+          "release_date": "2021-10-28",
+          "runtime_min": 594,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09KDHWRFH",
+              "type": "libex-import"
+            }
+          ],
+          "work": "jos-boys"
+        },
+        "barbara-caruso-2013": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00B76F2M2",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91XvhkJ6vwL.jpg",
+          "id": "barbara-caruso-2013",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "barbara-caruso"
+          ],
+          "publisher": "Recorded Books",
+          "release_date": "2013-01-30",
+          "runtime_min": 616,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00B76F2M2",
+              "type": "libex-import"
+            }
+          ],
+          "work": "jos-boys"
+        },
         "c-m-hebert-2006": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -2204,6 +2266,11 @@
           "imported_at": "2026-07-25",
           "ref": "https://www.goodreads.com/book/show/372319.Jo_s_Boys",
           "type": "community"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B09KDHWRFH",
+          "type": "libex-import"
         }
       ],
       "title": "Jo's Boys",
@@ -2261,90 +2328,6 @@
         }
       ],
       "title": "Jo's Boys, and How They Turned Out"
-    },
-    "jos-boys-louisa-may-alcott": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "louisa-may-alcott"
-      ],
-      "genres": [
-        "classics"
-      ],
-      "id": "jos-boys-louisa-may-alcott",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "amanda-friday-2021": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B09KDHWRFH",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81usFJyZf6L.jpg",
-          "id": "amanda-friday-2021",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "amanda-friday",
-            "ben-lindsey-clark",
-            "josh-innerst",
-            "lance-rasmussen",
-            "lee-ann-howlett",
-            "sydnee-fullmer",
-            "tim-sailer"
-          ],
-          "publisher": "Spoken Realms",
-          "release_date": "2021-10-28",
-          "runtime_min": 594,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B09KDHWRFH",
-              "type": "libex-import"
-            }
-          ],
-          "work": "jos-boys-louisa-may-alcott"
-        },
-        "barbara-caruso-2013": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B00B76F2M2",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91XvhkJ6vwL.jpg",
-          "id": "barbara-caruso-2013",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "barbara-caruso"
-          ],
-          "publisher": "Recorded Books",
-          "release_date": "2013-01-30",
-          "runtime_min": 616,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B00B76F2M2",
-              "type": "libex-import"
-            }
-          ],
-          "work": "jos-boys-louisa-may-alcott"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B09KDHWRFH",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Jo's Boys"
     },
     "jos-journey": {
       "added_at": "2026-08-02",
