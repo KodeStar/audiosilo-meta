@@ -8,6 +8,7 @@ package importer
 
 import (
 	"fmt"
+	"io"
 	"os"
 	"regexp"
 	"slices"
@@ -279,8 +280,16 @@ type planner struct {
 	sourceType string
 	importDate string
 	curSource  OutSource
-	fatal      error
-	summary    Summary
+	// mode is the planning pass this run was asked for. It is kept only so a
+	// conflict worklist row can name the run that wrote it; the pass itself is
+	// selected once, by runBooks' switch.
+	mode Mode
+	// conflicts is the run's optional conflict worklist (Options.Conflicts), the
+	// durable, machine-readable twin of the contradiction WARNINGS. nil for a run
+	// that was not given one, which is every existing caller - see conflicts.go.
+	conflicts io.Writer
+	fatal     error
+	summary   Summary
 }
 
 // setSource points the planner's provenance stamp at the row being planned. Every
@@ -427,6 +436,8 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 		runCredits:     map[string]map[model.Credit]bool{},
 		sourceType:     sourceType,
 		importDate:     opts.ImportDate,
+		mode:           opts.Mode,
+		conflicts:      opts.Conflicts,
 		userTier:       model.TierOfSource(sourceType) == model.TierUserLibrary,
 	}
 	if opts.Mode == ModeEnrich || p.userTier {

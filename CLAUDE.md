@@ -559,6 +559,15 @@ contradiction guards, `added_at` never touched). A contradiction on a user run
 is counted as `Summary.Conflicts` and warned: first writer wins, flagged for
 review, never last-writer-wins churn - and a refused row writes NOTHING, not even
 a stamp, so a mirror seed stays attestable by the next agreeing import.
+`metaimport --conflicts <path>` additionally appends a durable **conflict
+worklist** (`internal/importer/conflicts.go`): one NDJSON `Conflict` row per
+refused contradiction (run/asin/work/recording/field/recorded/stated/
+source_type/detected_at), written where the guard fires rather than re-derived
+from the warning text, in EVERY tier - `Summary.Conflicts` counts only a user
+run's, but a wrong RECORDED value (a recording stored at 81 minutes that the
+dump and its own chapters both put at 492) hides in the mirror's disagreements.
+Purely additive: an absent flag is the long-standing behaviour byte for byte,
+and the file is appended to so a chunked wave accumulates one worklist.
 `applyScope` in `enrich.go` is what keeps the three call paths honest - only
 enrichment fills a record it may not overwrite, an exact-ASIN attestation still
 flags contradictions, and the inferred ASIN-merge match is silent. The merge

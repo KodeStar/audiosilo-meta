@@ -1,6 +1,10 @@
 package importer
 
-import "github.com/kodestar/audiosilo-meta/pkg/model"
+import (
+	"io"
+
+	"github.com/kodestar/audiosilo-meta/pkg/model"
+)
 
 // The out* types are the importer's own view of each entity's on-disk shape.
 // They exist separately from pkg/model so the importer controls exactly
@@ -144,6 +148,23 @@ func (m Mode) boundedByCatalogue() bool {
 	return m == ModeEnrich || m == ModeRecordingsOnly
 }
 
+// runName is the mode's name in a conflict worklist row's "run" field
+// (conflicts.go). It is spelled as the FLAG an operator passed rather than as
+// the Go constant, so a worklist row says how to reproduce the run that wrote
+// it. Deliberately not a String() method: Mode is printed with %v in a couple of
+// test failures today, and a stringer would quietly change output that has
+// nothing to do with the worklist.
+func (m Mode) runName() string {
+	switch m {
+	case ModeEnrich:
+		return "enrich"
+	case ModeRecordingsOnly:
+		return "recordings-only"
+	default:
+		return "create"
+	}
+}
+
 // Options configures a run of the importer.
 type Options struct {
 	// DataDir is the data root (contains works/, people/, series/).
@@ -155,6 +176,15 @@ type Options struct {
 	DryRun bool
 	// Mode selects the planning pass; the zero value is ModeCreate.
 	Mode Mode
+	// Conflicts, when non-nil, receives the run's CONTRADICTION stream as
+	// NDJSON: one Conflict per line, written where the guard refuses the row
+	// (conflicts.go). Purely additive observability - a nil sink is the
+	// long-standing behaviour exactly, warnings and counters included - so the
+	// worklist can be collected on a real wave without changing what it lands.
+	//
+	// Each row is one Write, so the caller decides durability by what it passes:
+	// an *os.File opened for append keeps every conflict a killed run had seen.
+	Conflicts io.Writer
 }
 
 // Summary is the outcome counts of a run.

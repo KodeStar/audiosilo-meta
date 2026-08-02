@@ -205,8 +205,34 @@ because those are enrichment fodder rather than new imports. Backfill them from
 the full export:
 
 ```sh
-go run ./cmd/metaimport libex full.ndjson --data data --enrich
+go run ./cmd/metaimport libex full.ndjson --data data --enrich --conflicts conflicts.ndjson
 ```
+
+`--conflicts` is the **conflict worklist**, and this is the pass that produces
+most of it. A row whose runtime or release date disagrees with the record its
+ASIN matched is refused whole (the disagreement is the run's own evidence that
+the ASIN sits on a different production), and without the flag that refusal is
+one warning line in a run that prints hundreds of thousands. With it, each
+refusal also appends one NDJSON row naming both values and the record they
+disagree about:
+
+```json
+{"run":"enrich","asin":"B0ABCDEFGH","work":"<work-slug>","recording":"<recording-id>","field":"runtime_min","recorded":81,"stated":492,"source_type":"libex-import","detected_at":"2026-08-02"}
+```
+
+The run is unchanged by the flag - same warnings, same counters, same writes -
+so it is safe to add to a real wave, and `--dry-run --conflicts <path>` surveys
+a dump's disagreements without touching data. Read the worklist AFTER the wave:
+most rows are the mirror describing another edition, but a large `recorded` /
+`stated` gap on a runtime is how a genuinely WRONG recorded value surfaces. The
+81-vs-492 figures above are a real case that was found by hand: the recording
+was stored at 81 minutes while the dump and the recording's own chapter table
+both said 492. Sort by the gap, check a handful against the source, and fix the
+records through the ordinary correction path.
+
+The file is APPENDED to, so a dump split into chunks with `split -l`
+accumulates one worklist across every chunk's run, and a run killed part-way
+keeps every conflict it had already found.
 
 ### 7. Pick up the alternate narrations
 
@@ -222,8 +248,17 @@ The recordings-only pass is the step that picks them up:
 
 ```sh
 go run ./cmd/metaimport libex full.ndjson --data data --recordings-only --dry-run
-go run ./cmd/metaimport libex full.ndjson --data data --recordings-only
+go run ./cmd/metaimport libex full.ndjson --data data --recordings-only --conflicts conflicts.ndjson
 ```
+
+`--conflicts` is accepted here too, and pointing it at the SAME file as step 6
+is the intended use: the worklist is appended to and every row names the pass
+that found it (`"run":"recordings-only"`), so one file holds the wave's whole
+disagreement list. Expect it to stay empty in this pass, though: the
+contradiction guard is reached here only through the ASIN-dedup attestation,
+which is a user-library behaviour a libex run never performs. The mode is wired
+for it so a worklist is never silently missing a pass, not because this pass is
+expected to fill one.
 
 It is bounded by **this** catalogue, like the enrichment pass. Each row is
 resolved to a work already here by its cleaned title and its exact author set;

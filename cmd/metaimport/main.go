@@ -19,6 +19,15 @@
 // warnings (a book skipped for a missing narrator, an odd field) are
 // informational and never fail the run.
 //
+// --conflicts <path> additionally APPENDS a machine-readable worklist: one
+// NDJSON row per row the contradiction guards refused (a runtime or release date
+// disagreeing with the record its ASIN matched), naming both values, the record
+// they disagree about and the run that found them. The run itself is unchanged -
+// the same warnings, the same counters, the same writes - so the flag is safe to
+// add to a real wave, and it is what turns "a warning scrolled past six hours
+// ago" into a list a maintainer can sort. It works with --dry-run, which is the
+// cheapest way to survey a dump's disagreements without touching data.
+//
 // A USER-library source (openaudible, libation, audiosilo-books) additionally
 // ATTESTS what it matches: a row whose ASIN is already in the catalogue on a
 // record seeded only from the libex mirror overwrites that record's facts with
@@ -53,6 +62,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"io"
 	"os"
 	"regexp"
 	"strings"
@@ -107,6 +117,7 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 	// clear refusal instead of flag's bare "not defined" line.
 	enrich := fs.Bool("enrich", false, "fill absent facts on ASIN-matched existing records instead of creating any (libex only)")
 	recordingsOnly := fs.Bool("recordings-only", false, "add alternate narrations to works already in the catalogue; never create a work or touch a series (libex only)")
+	conflicts := fs.String("conflicts", "", "append one NDJSON row per refused contradiction to this file (a durable worklist; the run is unchanged)")
 
 	// Accept the positional export path either before or after the flags.
 	exportPath, err := parsePositional(fs, args, "<export.json>")
@@ -129,11 +140,19 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 		return 2
 	}
 
+	conflictLog, closeLog, err := openConflictLog(*conflicts)
+	if err != nil {
+		fmt.Fprintln(os.Stderr, "metaimport:", err)
+		return 2
+	}
+	defer closeLog()
+
 	sum, err := run(exportPath, importer.Options{
 		DataDir:    *data,
 		ImportDate: stamp,
 		DryRun:     *dryRun,
 		Mode:       mode,
+		Conflicts:  conflictLog,
 	})
 
 	// The summary prints only on success. A run can fail BEFORE it plans anything
@@ -146,6 +165,30 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 	}
 	printSummary(sum, *dryRun, mode)
 	return 0
+}
+
+// openConflictLog opens the --conflicts worklist for APPEND, returning the sink
+// to hand the importer and the close to defer. An empty path is the no-flag
+// case: a nil io.Writer, which is what makes the run byte-for-byte what it was.
+//
+// The returned writer is the *os.File itself, deliberately unbuffered: the
+// importer writes one row per conflict, so a wave killed after six hours keeps
+// every conflict it had already found. Append (rather than truncate) is what
+// lets a dump split into chunks with `split -l` accumulate ONE worklist across
+// every chunk's run.
+//
+// The nil is returned as an untyped io.Writer rather than a nil *os.File, which
+// would be a non-nil interface holding a nil pointer - the importer's "was I
+// given a worklist" check reads the interface.
+func openConflictLog(path string) (io.Writer, func(), error) {
+	if path == "" {
+		return nil, func() {}, nil
+	}
+	f, err := os.OpenFile(path, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0o644)
+	if err != nil {
+		return nil, func() {}, fmt.Errorf("--conflicts: %w", err)
+	}
+	return f, func() { _ = f.Close() }, nil
 }
 
 // selectMode maps the two mode flags onto the importer's single Mode, which is
@@ -338,6 +381,7 @@ func usage() {
 	fmt.Fprintln(os.Stderr, "  metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD] [--enrich | --recordings-only]")
 	fmt.Fprintln(os.Stderr, "  metaimport libex-select <export.ndjson> -o <subset.ndjson> [--data data] [--max-per-series N]")
 	fmt.Fprintln(os.Stderr, "")
+	fmt.Fprintln(os.Stderr, "  --conflicts <path> appends one NDJSON row per refused contradiction (a durable worklist).")
 	fmt.Fprintln(os.Stderr, "  --enrich (libex only) fills absent facts on ASIN-matched existing records; it never creates.")
 	fmt.Fprintln(os.Stderr, "  --recordings-only (libex only) adds alternate narrations to works already in the catalogue;")
 	fmt.Fprintln(os.Stderr, "    it never creates a work and never touches a series.")
