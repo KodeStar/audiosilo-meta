@@ -2457,6 +2457,34 @@
           ],
           "work": "the-wizard-of-oz"
         },
+        "curtis-sisco-2011": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B005GQTNKQ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1Ss-q3J1dL.jpg",
+          "id": "curtis-sisco-2011",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "curtis-sisco"
+          ],
+          "publisher": "Trout Lake Media",
+          "release_date": "2011-08-11",
+          "runtime_min": 251,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B005GQTNKQ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-wizard-of-oz"
+        },
         "full-cast-2006": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -2655,6 +2683,11 @@
           "imported_at": "2026-08-02",
           "ref": "B0BZWG81F8",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B005GQTNKQ",
+          "type": "libex-import"
         }
       ],
       "title": "The Wizard of Oz"
@@ -2717,56 +2750,6 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B09YVY72ZR",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Wizard of Oz"
-    },
-    "the-wizard-of-oz-frank-l-baum": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "l-frank-baum"
-      ],
-      "genres": [
-        "classics"
-      ],
-      "id": "the-wizard-of-oz-frank-l-baum",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "curtis-sisco-2011": {
-          "abridged": true,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B005GQTNKQ",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/A1Ss-q3J1dL.jpg",
-          "id": "curtis-sisco-2011",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "curtis-sisco"
-          ],
-          "publisher": "Trout Lake Media",
-          "release_date": "2011-08-11",
-          "runtime_min": 251,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B005GQTNKQ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-wizard-of-oz-frank-l-baum"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B005GQTNKQ",
           "type": "libex-import"
         }
       ],

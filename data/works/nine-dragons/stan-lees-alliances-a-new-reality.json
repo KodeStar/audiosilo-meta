@@ -1317,7 +1317,8 @@
       ],
       "genres": [
         "fantasy",
-        "historical-fiction"
+        "historical-fiction",
+        "military-science-fiction"
       ],
       "id": "stand-the-cost-of-war",
       "language": "en",
@@ -1350,31 +1351,7 @@
             }
           ],
           "work": "stand-the-cost-of-war"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B096DBJPTC",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Stand: The Cost of War"
-    },
-    "stand-the-cost-of-war-mark-moore": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "mark-moore"
-      ],
-      "genres": [
-        "fantasy",
-        "historical-fiction",
-        "military-science-fiction"
-      ],
-      "id": "stand-the-cost-of-war-mark-moore",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "sebastian-brown-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -1401,10 +1378,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "stand-the-cost-of-war-mark-moore"
+          "work": "stand-the-cost-of-war"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B096DBJPTC",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0G2F4G9Z6",

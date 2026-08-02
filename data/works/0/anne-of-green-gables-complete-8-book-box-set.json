@@ -1579,7 +1579,8 @@
       ],
       "genres": [
         "childrens",
-        "classics"
+        "classics",
+        "romance"
       ],
       "id": "anne-of-green-gables-lucy-maud-montgomery",
       "language": "en",
@@ -1608,6 +1609,34 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B06XDX2FST",
+              "type": "libex-import"
+            }
+          ],
+          "work": "anne-of-green-gables-lucy-maud-montgomery"
+        },
+        "andrea-giordani-2015": {
+          "abridged": false,
+          "added_at": "2026-08-01",
+          "asin": [
+            {
+              "asin": "B014V81SLQ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91LsEE1qOJL.jpg",
+          "id": "andrea-giordani-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andrea-giordani"
+          ],
+          "publisher": "A.R.N. Publications",
+          "release_date": "2015-09-04",
+          "runtime_min": 645,
+          "sources": [
+            {
+              "imported_at": "2026-08-01",
+              "ref": "B014V81SLQ",
               "type": "libex-import"
             }
           ],
@@ -2011,52 +2040,7 @@
           "imported_at": "2026-08-01",
           "ref": "B07LC1LF9T",
           "type": "libex-import"
-        }
-      ],
-      "title": "Anne of Green Gables"
-    },
-    "anne-of-green-gables-lucy-maude-montgomery": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "lucy-maud-montgomery"
-      ],
-      "genres": [
-        "romance"
-      ],
-      "id": "anne-of-green-gables-lucy-maude-montgomery",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "andrea-giordani-2015": {
-          "abridged": false,
-          "added_at": "2026-08-01",
-          "asin": [
-            {
-              "asin": "B014V81SLQ",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91LsEE1qOJL.jpg",
-          "id": "andrea-giordani-2015",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "andrea-giordani"
-          ],
-          "publisher": "A.R.N. Publications",
-          "release_date": "2015-09-04",
-          "runtime_min": 645,
-          "sources": [
-            {
-              "imported_at": "2026-08-01",
-              "ref": "B014V81SLQ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "anne-of-green-gables-lucy-maude-montgomery"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-01",
           "ref": "B014V81SLQ",

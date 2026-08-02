@@ -7441,12 +7441,125 @@
         "louisa-may-alcott"
       ],
       "genres": [
-        "classics"
+        "classics",
+        "young-adult"
       ],
       "id": "eight-cousins",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "barbara-caruso-2013": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00B0ZJN2A",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81+Kj8Q9zhL.jpg",
+          "id": "barbara-caruso-2013",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "barbara-caruso"
+          ],
+          "publisher": "Recorded Books",
+          "release_date": "2013-01-15",
+          "runtime_min": 459,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00B0ZJN2A",
+              "type": "libex-import"
+            }
+          ],
+          "work": "eight-cousins"
+        },
+        "erica-collins-2018": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "2291043447",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81s4onrN4HL.jpg",
+          "id": "erica-collins-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "erica-collins"
+          ],
+          "publisher": "Oregan Publishing",
+          "release_date": "2018-09-14",
+          "runtime_min": 425,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "2291043447",
+              "type": "libex-import"
+            }
+          ],
+          "work": "eight-cousins"
+        },
+        "flo-gibson-2008": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002UZNC3U",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81z4F16jqXL.jpg",
+          "id": "flo-gibson-2008",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "flo-gibson"
+          ],
+          "publisher": "Audio Book Contractors, LLC",
+          "release_date": "2008-10-30",
+          "runtime_min": 375,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002UZNC3U",
+              "type": "libex-import"
+            }
+          ],
+          "work": "eight-cousins"
+        },
+        "maria-therese-2017": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B071F7N5PC",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91nQ8c6xnvL.jpg",
+          "id": "maria-therese-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "maria-therese"
+          ],
+          "publisher": "Saga Egmont",
+          "release_date": "2017-05-19",
+          "runtime_min": 429,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B071F7N5PC",
+              "type": "libex-import"
+            }
+          ],
+          "work": "eight-cousins"
+        },
         "ruth-anderson-2020": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -7481,137 +7594,7 @@
           "imported_at": "2026-08-01",
           "ref": "B084G591M5",
           "type": "libex-import"
-        }
-      ],
-      "title": "Eight Cousins"
-    },
-    "eight-cousins-louisa-may-alcott": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "louisa-may-alcott"
-      ],
-      "genres": [
-        "classics",
-        "young-adult"
-      ],
-      "id": "eight-cousins-louisa-may-alcott",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "barbara-caruso-2013": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B00B0ZJN2A",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81+Kj8Q9zhL.jpg",
-          "id": "barbara-caruso-2013",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "barbara-caruso"
-          ],
-          "publisher": "Recorded Books",
-          "release_date": "2013-01-15",
-          "runtime_min": 459,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B00B0ZJN2A",
-              "type": "libex-import"
-            }
-          ],
-          "work": "eight-cousins-louisa-may-alcott"
         },
-        "erica-collins-2018": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "2291043447",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81s4onrN4HL.jpg",
-          "id": "erica-collins-2018",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "erica-collins"
-          ],
-          "publisher": "Oregan Publishing",
-          "release_date": "2018-09-14",
-          "runtime_min": 425,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "2291043447",
-              "type": "libex-import"
-            }
-          ],
-          "work": "eight-cousins-louisa-may-alcott"
-        },
-        "flo-gibson-2008": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B002UZNC3U",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81z4F16jqXL.jpg",
-          "id": "flo-gibson-2008",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "flo-gibson"
-          ],
-          "publisher": "Audio Book Contractors, LLC",
-          "release_date": "2008-10-30",
-          "runtime_min": 375,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B002UZNC3U",
-              "type": "libex-import"
-            }
-          ],
-          "work": "eight-cousins-louisa-may-alcott"
-        },
-        "maria-therese-2017": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B071F7N5PC",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91nQ8c6xnvL.jpg",
-          "id": "maria-therese-2017",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "maria-therese"
-          ],
-          "publisher": "Saga Egmont",
-          "release_date": "2017-05-19",
-          "runtime_min": 429,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B071F7N5PC",
-              "type": "libex-import"
-            }
-          ],
-          "work": "eight-cousins-louisa-may-alcott"
-        }
-      },
-      "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B002UZNC3U",

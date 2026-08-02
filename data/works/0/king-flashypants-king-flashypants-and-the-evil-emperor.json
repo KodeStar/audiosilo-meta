@@ -7513,12 +7513,45 @@
             }
           ],
           "work": "kingdom-come"
+        },
+        "steve-sever-2007": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002V1CJ28",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51Dz4DupK+L.jpg",
+          "id": "steve-sever-2007",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "steve-sever"
+          ],
+          "publisher": "Tyndale House Publishers",
+          "release_date": "2007-05-02",
+          "runtime_min": 189,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002V1CJ28",
+              "type": "libex-import"
+            }
+          ],
+          "work": "kingdom-come"
         }
       },
       "sources": [
         {
           "imported_at": "2026-07-30",
           "ref": "B002V5BGAA",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V1CJ28",
           "type": "libex-import"
         }
       ],
@@ -7888,59 +7921,6 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B0FMS8ZVZH",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Kingdom Come"
-    },
-    "kingdom-come-tim-lahaye": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "tim-lahaye",
-        "jerry-b-jenkins"
-      ],
-      "genres": [
-        "classics",
-        "religious-fiction",
-        "science-fiction"
-      ],
-      "id": "kingdom-come-tim-lahaye",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "steve-sever-2007": {
-          "abridged": true,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B002V1CJ28",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51Dz4DupK+L.jpg",
-          "id": "steve-sever-2007",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "steve-sever"
-          ],
-          "publisher": "Tyndale House Publishers",
-          "release_date": "2007-05-02",
-          "runtime_min": 189,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B002V1CJ28",
-              "type": "libex-import"
-            }
-          ],
-          "work": "kingdom-come-tim-lahaye"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B002V1CJ28",
           "type": "libex-import"
         }
       ],

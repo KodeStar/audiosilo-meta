@@ -5656,13 +5656,43 @@
         "frank-peretti"
       ],
       "genres": [
+        "religion-spirituality",
         "religious-fiction",
+        "science-fiction",
         "thriller-suspense"
       ],
       "id": "this-present-darkness",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "frank-e-peretti-2009": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0036GMM42",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51inNhg5djL.jpg",
+          "id": "frank-e-peretti-2009",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "frank-peretti"
+          ],
+          "publisher": "Crossway Audio",
+          "release_date": "2009-11-10",
+          "runtime_min": 178,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0036GMM42",
+              "type": "libex-import"
+            }
+          ],
+          "work": "this-present-darkness"
+        },
         "jack-sondericker-2007": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -5697,55 +5727,7 @@
           "imported_at": "2026-08-02",
           "ref": "B002V0RNR0",
           "type": "libex-import"
-        }
-      ],
-      "title": "This Present Darkness"
-    },
-    "this-present-darkness-frank-e-peretti": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "frank-peretti"
-      ],
-      "genres": [
-        "religion-spirituality",
-        "religious-fiction",
-        "science-fiction",
-        "thriller-suspense"
-      ],
-      "id": "this-present-darkness-frank-e-peretti",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "frank-e-peretti-2009": {
-          "abridged": true,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0036GMM42",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51inNhg5djL.jpg",
-          "id": "frank-e-peretti-2009",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "frank-peretti"
-          ],
-          "publisher": "Crossway Audio",
-          "release_date": "2009-11-10",
-          "runtime_min": 178,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0036GMM42",
-              "type": "libex-import"
-            }
-          ],
-          "work": "this-present-darkness-frank-e-peretti"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0036GMM42",

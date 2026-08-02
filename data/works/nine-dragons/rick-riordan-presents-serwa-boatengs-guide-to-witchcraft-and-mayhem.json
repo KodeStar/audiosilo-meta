@@ -15088,6 +15088,7 @@
         "mark-moore"
       ],
       "genres": [
+        "action-adventure",
         "fantasy",
         "historical-fiction"
       ],
@@ -15122,31 +15123,7 @@
             }
           ],
           "work": "rise-birth-of-a-revolution"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B08Z26LVQD",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Rise: Birth of a Revolution"
-    },
-    "rise-birth-of-a-revolution-mark-moore": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "mark-moore"
-      ],
-      "genres": [
-        "action-adventure",
-        "fantasy",
-        "historical-fiction"
-      ],
-      "id": "rise-birth-of-a-revolution-mark-moore",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "sebastian-brown-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -15173,10 +15150,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "rise-birth-of-a-revolution-mark-moore"
+          "work": "rise-birth-of-a-revolution"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B08Z26LVQD",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0FLQQ87WZ",
