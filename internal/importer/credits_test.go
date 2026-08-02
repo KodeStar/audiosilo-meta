@@ -150,6 +150,147 @@ func TestDoNotMapJunkIsNeitherStrippedNorARole(t *testing.T) {
 	}
 }
 
+// TestParentheticalRoleQualifier is the second spelling of the qualifier rule:
+// the source brackets the role instead of hanging it behind a dash ("Neil Gaiman
+// (introduction)"). Every case below must resolve exactly as its dash-separated
+// twin does - same cleaned name, same roles - because the brackets are the
+// separator, not the fact.
+//
+// The vocabulary is unchanged: this is measured over the same libex dump, where
+// the trailing parenthetical carries "introduction" (46 books), "translated by"
+// (46), "editor" (11), "foreword by" (11), "translator" (7), "traductor" (6),
+// "afterword by" (4), "translation" (3) and "traduttore" (3) - all of them
+// already listed roles.
+func TestParentheticalRoleQualifier(t *testing.T) {
+	cases := []struct {
+		name      string
+		in        string
+		wantName  string
+		wantRoles []string
+	}{
+		// Wave 3's real shape, and the one the fix exists for.
+		{"introduction", "Neil Gaiman (introduction)", "Neil Gaiman", []string{model.RoleIntroduction}},
+		{"mixed case", "Neil Gaiman (Introduction)", "Neil Gaiman", []string{model.RoleIntroduction}},
+		{"upper case", "Neil Gaiman (INTRODUCTION)", "Neil Gaiman", []string{model.RoleIntroduction}},
+		{"no space before the bracket", "Neil Gaiman(introduction)", "Neil Gaiman", []string{model.RoleIntroduction}},
+		{"trailing whitespace", "Neil Gaiman (introduction) ", "Neil Gaiman", []string{model.RoleIntroduction}},
+
+		// The rest of the measured vocabulary, in brackets.
+		{"translated by", "J. Kharkova (translated by)", "J. Kharkova", []string{model.RoleTranslator}},
+		{"editor", "Ann Editor (Editor)", "Ann Editor", []string{model.RoleEditor}},
+		{"foreword by", "Fay Writer (foreword by)", "Fay Writer", []string{model.RoleForeword}},
+		{"traductor", "Luis Palabra (Traductor)", "Luis Palabra", []string{model.RoleTranslator}},
+		{"traduttore", "Gio Parola (traduttore)", "Gio Parola", []string{model.RoleTranslator}},
+
+		// Everything the dash form does, the bracket form does: the accented and
+		// decomposed spellings, the combined qualifiers, and the credential trim
+		// whose words go back onto the NAME.
+		{"german translator", "Uwe Wort (Übersetzer)", "Uwe Wort", []string{model.RoleTranslator}},
+		{"german translator, decomposed", "Uwe Wort (U\u0308bersetzer)", "Uwe Wort", []string{model.RoleTranslator}},
+		{"combined with and", "Sam Both (editor and translator)", "Sam Both", []string{model.RoleEditor, model.RoleTranslator}},
+		{"combined with slash", "Sam Both (translator/editor)", "Sam Both", []string{model.RoleEditor, model.RoleTranslator}},
+		{"credential suffix", "Ann Fisher (Introduction M.D.)", "Ann Fisher M.D.", []string{model.RoleIntroduction}},
+
+		// A square-bracketed qualifier is the same qualifier.
+		{"square brackets", "J. Kharkova [translator]", "J. Kharkova", []string{model.RoleTranslator}},
+
+		// Listed but not a modeled role: stripped, states nothing - the same
+		// facts-only boundary the dash form draws.
+		{"narrator states nothing", "Bea Reader (Narrator)", "Bea Reader", nil},
+
+		// The two separators stack, and the fixpoint converges through both.
+		{"dash then bracket", "Pat Two - Editor (translator)", "Pat Two", []string{model.RoleEditor, model.RoleTranslator}},
+		{"doubled bracket qualifier", "Dan Veksler (Translator) (translator)", "Dan Veksler", []string{model.RoleTranslator}},
+
+		// Degenerate: stripping would leave nothing, so nothing is stripped.
+		{"qualifier only", "(translator)", "(translator)", nil},
+	}
+	for _, c := range cases {
+		t.Run(c.name, func(t *testing.T) {
+			gotName, gotRoles := CreditWithRoles(c.in)
+			if gotName != c.wantName {
+				t.Errorf("name = %q, want %q", gotName, c.wantName)
+			}
+			if !reflect.DeepEqual(gotRoles, c.wantRoles) {
+				t.Errorf("roles = %#v, want %#v", gotRoles, c.wantRoles)
+			}
+			if plain := CleanCreditName(c.in); plain != gotName {
+				t.Errorf("CleanCreditName = %q but CreditWithRoles said %q", plain, gotName)
+			}
+		})
+	}
+
+	t.Run("idempotent", func(t *testing.T) {
+		for _, c := range cases {
+			once := CleanCreditName(c.in)
+			if twice := CleanCreditName(once); twice != once {
+				t.Errorf("%s: not idempotent: %q -> %q -> %q", c.name, c.in, once, twice)
+			}
+		}
+	})
+}
+
+// TestParentheticalNonRoleIsNeverStripped is the violating half of the bracket
+// rule, and the reason it tests the qualifier's FULL content against the closed
+// vocabulary rather than looking for a role word inside it. Every string below
+// is a trailing parenthetical measured in the libex dump, and none of them is a
+// credit qualifier: eating one would rewrite a person's name (a nickname, a
+// disambiguator, a military-retired marker) or invent a credit out of an edition
+// marker.
+func TestParentheticalNonRoleIsNeverStripped(t *testing.T) {
+	junk := []string{
+		// Wave 2's nickname parentheticals - part of what the person is called.
+		"Dean Martin (Dean)",
+		"Robert Downey (Jr)",
+		// The edition marker. It belongs to TITLE cleaning (recordings.go), where
+		// it seeds recording.abridged; on a credit it is not a role and not a fact.
+		"Some Author (Unabridged)",
+		"Some Author (Abridged)",
+		// A disambiguating pen name / alias, the commonest non-role shape.
+		"John Creasey (JJ Marric)",
+		"Saki (H.H. Munro)",
+		"Some Narrator (a.k.a. Sam)",
+		// A military-retired suffix, 58 dump books across both spellings.
+		"Some Author (Ret.)",
+		"Some Author (Retired)",
+		// A credential with no role in front of it: the trim would leave nothing
+		// to match anyway.
+		"Some Author (M.D.)",
+		"Some Author (Hons)",
+		// Promotional and scraped junk.
+		"Some Author (save up to 30%)",
+		"Some Author (human-assisted)",
+		// A studio in brackets. It is the studio-tail rule's business, and that
+		// rule needs a census before it may cut - which the public door has not
+		// got, so the name arrives whole.
+		"Some Narrator (Skyboat Media)",
+		"Some Narrator (White Sands Narration)",
+		// An AI-voice marker: refused as a ROW by the AI-narration rule, never
+		// quietly cleaned into a person here.
+		"Some Narrator (voz de ia)",
+		"Some Narrator (virtual voice)",
+		// The CJK role spellings the dump carries (翻訳 = translation, 119 books;
+		// 著 = author, 49; 監修 = supervising editor, 15). They are NOT in the
+		// vocabulary, so they strip nothing today - a deliberate gap, recorded
+		// here so widening the vocabulary is a visible decision with its own
+		// evidence rather than an accident.
+		"Some Author (翻訳)",
+		"Some Author (著)",
+		"Some Author (監修)",
+	}
+	for _, in := range junk {
+		t.Run(in, func(t *testing.T) {
+			gotName, gotRoles := CreditWithRoles(in)
+			if gotName != in {
+				t.Errorf("name was altered: %q -> %q", in, gotName)
+			}
+			if gotRoles != nil {
+				t.Errorf("non-role parenthetical stated roles %v", gotRoles)
+			}
+		})
+	}
+}
+
 // TestTrimCredentialTitles covers the helper directly, including the guard that
 // keeps it from ever returning an empty qualifier, and the dropped-word count
 // the caller re-appends to the name with (see TestCredentialSuffixKeptOnName).

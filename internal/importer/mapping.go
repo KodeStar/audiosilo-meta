@@ -362,10 +362,14 @@ const maxCleanPasses = 8
 //
 //  1. A leading credit phrase from prefixCredits is dropped ("Created by Stan
 //     Lee" -> "Stan Lee").
-//  2. A trailing " - <role>" qualifier is dropped when <role> is in
-//     roleQualifiers, matched case-insensitively after Unicode-aware lowercasing.
-//     The separator tolerates a missing space after the hyphen ("X -translated
-//     by") and repeated hyphens; the role never does.
+//  2. A trailing role qualifier is dropped when the role is in roleQualifiers,
+//     matched case-insensitively after Unicode-aware lowercasing. Both spellings
+//     the sources use are read: the dash form "X - translator"
+//     (stripRoleQualifier), whose separator tolerates a missing space after the
+//     hyphen ("X -translated by") and repeated hyphens, and the parenthetical
+//     form "X (introduction)" (stripParenRoleQualifier). The role itself never
+//     tolerates anything: only a listed qualifier, matched in FULL, ever strips,
+//     so "Frank (Dean) Martin" and a title's "(Unabridged)" are untouched.
 //  3. An exactly-doubled name is collapsed to one half ("Full Cast Full Cast" ->
 //     "Full Cast"). Only exact halves of at least two words each, so "Duran
 //     Duran" and "Mitz Mitz Vah" are left alone.
@@ -413,12 +417,14 @@ func creditWithRoles(name string, seen creditSeenFunc) (cleaned string, roles []
 	var stated []string
 	for i := 0; i < maxCleanPasses; i++ {
 		stripped, passRoles := stripRoleQualifier(stripPrefixCredit(cleaned))
+		stripped, parenRoles := stripParenRoleQualifier(stripped)
 		next, tailRoles := stripStudioConcat(collapseDoubledName(stripped), seen)
 		if next == cleaned {
 			break
 		}
 		cleaned = next
 		stated = append(stated, passRoles...)
+		stated = append(stated, parenRoles...)
 		stated = append(stated, tailRoles...)
 	}
 	return cleaned, sortedUniqueRoles(stated)
@@ -474,16 +480,18 @@ func cutPrefixFold(s, prefix string) (rest string, ok bool) {
 	return s[i:], true
 }
 
-// stripRoleQualifier drops ONE trailing role qualifier (see roleSuffixRE and
-// roleQualifiers) and reports the schema roles that qualifier stated. It returns
-// the name unchanged, and no roles, when the suffix is not a listed role or when
-// stripping would leave nothing.
+// stripRoleQualifier drops ONE trailing " - <role>" qualifier (see roleSuffixRE
+// and roleQualifiers) and reports the schema roles that qualifier stated. It
+// returns the name unchanged, and no roles, when the suffix is not a listed role
+// or when stripping would leave nothing. The parenthetical spelling of the same
+// qualifier is stripParenRoleQualifier's job.
 //
 // The captured role is lowercased, collapsed to single spaces AND re-composed to
-// NFC before the lookup: the map keys are NFC, so a decomposed "Übersetzer"
-// ("U" + U+0308) would otherwise never match its own entry. A capture that does
-// not match is retried with its trailing credential titles trimmed, which is the
-// one shape the source stacks onto an otherwise ordinary role.
+// NFC before the lookup (lookupRoleQualifier): the map keys are NFC, so a
+// decomposed "Übersetzer" ("U" + U+0308) would otherwise never match its own
+// entry. A capture that does not match is retried with its trailing credential
+// titles trimmed, which is the one shape the source stacks onto an otherwise
+// ordinary role.
 //
 // A trim that ENABLES the match hands its words back to the name, in their
 // original spelling ("Theodore C. Van Alst - editor Jr." -> "Theodore C. Van
@@ -495,31 +503,87 @@ func stripRoleQualifier(name string) (string, []string) {
 	if m == nil {
 		return name, nil
 	}
+	if cleaned, roles, ok := stripQualifierAt(name, m); ok {
+		return cleaned, roles
+	}
+	return name, nil
+}
+
+// stripParenRoleQualifier drops ONE trailing PARENTHETICAL role qualifier ("Neil
+// Gaiman (introduction)" -> "Neil Gaiman") and reports the schema roles it
+// stated. It is the SAME rule as stripRoleQualifier against the SAME vocabulary,
+// for the other separator the source spells a qualifier with: libex writes both
+// "Valeria Kornosenko - introduction" and "Neil Gaiman (introduction)", and
+// nothing about the qualifier changes with the brackets around it.
+//
+// Only a full-content match ever strips, which is what keeps the rule off the
+// parentheticals that are part of a name rather than a qualifier: a nickname
+// ("Frank (Dean) Martin"), a disambiguator, and the edition marker
+// "(Unabridged)" - which belongs to TITLE cleaning (recordings.go), not to a
+// credit - all leave the credit exactly as the source spelled it, because none
+// of their contents is a listed role. Measured over the full libex dump, the
+// non-role parenthetical is by far the commoner shape, so the narrow test is
+// doing real work.
+//
+// Brackets ride along with parentheses because trailingParenRE reads both and
+// the dump spells the qualifier either way.
+func stripParenRoleQualifier(name string) (string, []string) {
+	// trailingParenRE cannot match without a closing bracket, and almost no
+	// credit name has one, so the prefilter keeps the regex off the common path.
+	if !strings.ContainsAny(name, closeBracketChars) {
+		return name, nil
+	}
+	m := trailingParenRE.FindStringSubmatchIndex(name)
+	if m == nil {
+		return name, nil
+	}
+	if cleaned, roles, ok := stripQualifierAt(name, m); ok {
+		return cleaned, roles
+	}
+	return name, nil
+}
+
+// stripQualifierAt is the half the two qualifier spellings share: given a match
+// whose capture (m[2]:m[3]) is the qualifier and whose start (m[0]) is where the
+// separator begins, it resolves the qualifier against the vocabulary and returns
+// the shortened name. ok is false when the qualifier is not listed or when
+// stripping it would leave nothing - both of which mean "leave the name alone",
+// so the two callers can hand back their input unchanged.
+func stripQualifierAt(name string, m []int) (string, []string, bool) {
 	// The capture's words in their SOURCE form, alongside the normalized string
 	// the vocabulary is keyed by. Neither lowercasing nor NFC changes the word
 	// count, so the two stay index-for-index aligned.
 	words := strings.Fields(name[m[2]:m[3]])
-	role := norm.NFC.String(strings.ToLower(strings.Join(words, " ")))
-	roles, listed := roleQualifiers[role]
-	keep := ""
+	roles, keep, listed := lookupRoleQualifier(words)
 	if !listed {
-		if trimmed, dropped := trimCredentialTitles(role); dropped > 0 {
-			if roles, listed = roleQualifiers[trimmed]; listed {
-				keep = strings.Join(words[len(words)-dropped:], " ")
-			}
-		}
-	}
-	if !listed {
-		return name, nil
+		return "", nil, false
 	}
 	cleaned := strings.TrimSpace(name[:m[0]])
 	if cleaned == "" {
-		return name, nil
+		return "", nil, false
 	}
 	if keep != "" {
 		cleaned += " " + keep
 	}
-	return cleaned, roles
+	return cleaned, roles, true
+}
+
+// lookupRoleQualifier resolves one captured qualifier's words against
+// roleQualifiers. keep is the credential words the trim handed back for the NAME
+// to re-carry (empty unless a trim is what enabled the match); listed reports
+// whether the qualifier is in the vocabulary at all, which is not the same
+// question as whether it states a role - a listed qualifier may map to none.
+func lookupRoleQualifier(words []string) (roles []string, keep string, listed bool) {
+	role := norm.NFC.String(strings.ToLower(strings.Join(words, " ")))
+	if roles, listed = roleQualifiers[role]; listed {
+		return roles, "", true
+	}
+	if trimmed, dropped := trimCredentialTitles(role); dropped > 0 {
+		if roles, listed = roleQualifiers[trimmed]; listed {
+			return roles, strings.Join(words[len(words)-dropped:], " "), true
+		}
+	}
+	return nil, "", false
 }
 
 // maxRoleQualifierWords is the longest roleQualifiers key, in words, derived
@@ -623,11 +687,13 @@ func SplitNames(joined string) []string {
 }
 
 // trailingParenRE captures the content of a trailing parenthetical or bracket.
-// It has two consumers, which is why it lives here beside the shared credit
-// helpers rather than with either: the title parser reads an edition marker with
-// it ("... (Unabridged)", recordings.go) and the credit rules read a trailing
-// marker with it (the AI-narration check in libex.go, the studio-tail separator
-// in studiotail.go).
+// It has consumers on both sides of the package, which is why it lives here
+// beside the shared credit helpers rather than with either: the title parser
+// reads an edition marker with it ("... (Unabridged)", recordings.go) and the
+// credit rules read a trailing marker with it (the role qualifier in
+// stripParenRoleQualifier, the AI-narration check in libex.go, the studio-tail
+// separator in studiotail.go). Each decides for itself what content it accepts;
+// the regex only locates it.
 var trailingParenRE = regexp.MustCompile(`\s*[([]([^()\[\]]*)[)\]]\s*$`)
 
 var yearPrefixRE = regexp.MustCompile(`^\d{4}`)
