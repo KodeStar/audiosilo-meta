@@ -3154,6 +3154,7 @@
         "e-d-baker"
       ],
       "genres": [
+        "action-adventure",
         "childrens",
         "fairy-tales-folklore",
         "fantasy",
@@ -3169,6 +3170,10 @@
           "asin": [
             {
               "asin": "B0741G4QQQ",
+              "region": "us"
+            },
+            {
+              "asin": "B071GZH1P8",
               "region": "us"
             }
           ],
@@ -3187,6 +3192,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0741G4QQQ",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B071GZH1P8",
+              "type": "libex-import"
             }
           ],
           "work": "maggie-and-the-flying-horse"
@@ -3197,56 +3207,7 @@
           "imported_at": "2026-08-02",
           "ref": "B0741G4QQQ",
           "type": "libex-import"
-        }
-      ],
-      "title": "Maggie and the Flying Horse"
-    },
-    "maggie-and-the-flying-horse-e-d-baker": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "e-d-baker"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "fairy-tales-folklore",
-        "fantasy",
-        "nature"
-      ],
-      "id": "maggie-and-the-flying-horse-e-d-baker",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "laura-knight-keating-2017": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B071GZH1P8",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51Iy--n8VHL.jpg",
-          "id": "laura-knight-keating-2017",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "laura-knight-keating"
-          ],
-          "publisher": "Recorded Books",
-          "release_date": "2017-06-19",
-          "runtime_min": 46,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B071GZH1P8",
-              "type": "libex-import"
-            }
-          ],
-          "work": "maggie-and-the-flying-horse-e-d-baker"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B071GZH1P8",

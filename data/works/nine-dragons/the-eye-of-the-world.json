@@ -11469,6 +11469,10 @@
             {
               "asin": "1478995505",
               "region": "us"
+            },
+            {
+              "asin": "147355408X",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91x9m5cCI6L.jpg",
@@ -11486,6 +11490,11 @@
               "imported_at": "2026-08-02",
               "ref": "1478995505",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "147355408X",
+              "type": "libex-import"
             }
           ],
           "work": "the-fall-of-crazy-house"
@@ -11496,55 +11505,7 @@
           "imported_at": "2026-08-02",
           "ref": "1478995505",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Fall of Crazy House"
-    },
-    "the-fall-of-crazy-house-james-patterson": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "james-patterson"
-      ],
-      "genres": [
-        "dystopian",
-        "science-fiction",
-        "thriller-suspense",
-        "young-adult"
-      ],
-      "id": "the-fall-of-crazy-house-james-patterson",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "therese-plummer-2019": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "147355408X",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91QGhJaYUjL.jpg",
-          "id": "therese-plummer-2019",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "therese-plummer"
-          ],
-          "publisher": "Cornerstone Digital",
-          "release_date": "2019-04-18",
-          "runtime_min": 448,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "147355408X",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-fall-of-crazy-house-james-patterson"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "147355408X",

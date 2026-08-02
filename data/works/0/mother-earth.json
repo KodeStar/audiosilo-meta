@@ -13993,9 +13993,12 @@
     "mulan-reflection": {
       "added_at": "2026-08-02",
       "authors": [
-        "walt-disney"
+        "walt-disney",
+        "elizabeth-lim"
       ],
       "genres": [
+        "childrens",
+        "fairy-tales-folklore",
         "fantasy",
         "young-adult"
       ],
@@ -14030,31 +14033,7 @@
             }
           ],
           "work": "mulan-reflection"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "1800780559",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Mulan: Reflection"
-    },
-    "mulan-reflection-elizabeth-lim": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "elizabeth-lim",
-        "walt-disney"
-      ],
-      "genres": [
-        "childrens",
-        "fairy-tales-folklore"
-      ],
-      "id": "mulan-reflection-elizabeth-lim",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "emily-woo-zeller-2026": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -14081,10 +14060,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "mulan-reflection-elizabeth-lim"
+          "work": "mulan-reflection"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1800780559",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0GF9PQNBX",

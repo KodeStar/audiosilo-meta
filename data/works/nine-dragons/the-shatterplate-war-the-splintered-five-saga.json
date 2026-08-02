@@ -824,7 +824,8 @@
     "the-shepherds-crown": {
       "added_at": "2026-07-17T09:27:30+00:00",
       "authors": [
-        "terry-pratchett"
+        "terry-pratchett",
+        "paul-kidby"
       ],
       "id": "the-shepherds-crown",
       "language": "en",
@@ -837,6 +838,10 @@
             {
               "asin": "B0C6R7G3FS",
               "region": "us"
+            },
+            {
+              "asin": "B09M8W4Z73",
+              "region": "uk"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91ILeV-n61L.jpg",
@@ -857,129 +862,14 @@
               "imported_at": "2026-07-30",
               "ref": "B0C6R7G3FS",
               "type": "libex-import"
-            }
-          ],
-          "work": "the-shepherds-crown"
-        },
-        "stephen-briggs-2015": {
-          "abridged": false,
-          "added_at": "2026-07-17T09:27:30+00:00",
-          "asin": [
-            {
-              "asin": "0062430556",
-              "region": "us"
             },
-            {
-              "asin": "B00YD5488I",
-              "region": "us"
-            },
-            {
-              "asin": "B079MCKDMG",
-              "region": "uk"
-            },
-            {
-              "asin": "B00XIO2CZQ",
-              "region": "us"
-            },
-            {
-              "asin": "B00XIO883G",
-              "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51Ljq95dDZL._SL500_.jpg",
-          "id": "stephen-briggs-2015",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "stephen-briggs"
-          ],
-          "publisher": "HarperCollins",
-          "release_date": "2015",
-          "runtime_min": 469,
-          "sources": [
-            {
-              "imported_at": "2026-07-17",
-              "ref": "0062430556",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-17",
-              "ref": "0062430556",
-              "type": "audible-lookup"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B00YD5488I",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B079MCKDMG",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B00XIO2CZQ",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B00XIO883G",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-shepherds-crown"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-17",
-          "ref": "0062430556",
-          "type": "audiosilo-books-import"
-        }
-      ],
-      "title": "The Shepherd's Crown"
-    },
-    "the-shepherds-crown-terry-pratchett": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "terry-pratchett",
-        "paul-kidby"
-      ],
-      "id": "the-shepherds-crown-terry-pratchett",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "bill-nighy-2023": {
-          "abridged": false,
-          "added_at": "2026-07-31T00:43:12+01:00",
-          "asin": [
-            {
-              "asin": "B09M8W4Z73",
-              "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91aU3Yw+RRL.jpg",
-          "id": "bill-nighy-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "bill-nighy",
-            "indira-varma",
-            "peter-serafinowicz",
-            "steven-cree"
-          ],
-          "publisher": "RHCP Digital",
-          "release_date": "2023-06-15",
-          "runtime_min": 562,
-          "sources": [
             {
               "imported_at": "2026-07-30",
               "ref": "B09M8W4Z73",
               "type": "libex-import"
             }
           ],
-          "work": "the-shepherds-crown-terry-pratchett"
+          "work": "the-shepherds-crown"
         },
         "indira-varma-2023": {
           "abridged": false,
@@ -1147,7 +1037,76 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-shepherds-crown-terry-pratchett"
+          "work": "the-shepherds-crown"
+        },
+        "stephen-briggs-2015": {
+          "abridged": false,
+          "added_at": "2026-07-17T09:27:30+00:00",
+          "asin": [
+            {
+              "asin": "0062430556",
+              "region": "us"
+            },
+            {
+              "asin": "B00YD5488I",
+              "region": "us"
+            },
+            {
+              "asin": "B079MCKDMG",
+              "region": "uk"
+            },
+            {
+              "asin": "B00XIO2CZQ",
+              "region": "us"
+            },
+            {
+              "asin": "B00XIO883G",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51Ljq95dDZL._SL500_.jpg",
+          "id": "stephen-briggs-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "stephen-briggs"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2015",
+          "runtime_min": 469,
+          "sources": [
+            {
+              "imported_at": "2026-07-17",
+              "ref": "0062430556",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-17",
+              "ref": "0062430556",
+              "type": "audible-lookup"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B00YD5488I",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B079MCKDMG",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B00XIO2CZQ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B00XIO883G",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-shepherds-crown"
         },
         "tony-robinson-2015": {
           "abridged": true,
@@ -1175,10 +1134,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-shepherds-crown-terry-pratchett"
+          "work": "the-shepherds-crown"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-17",
+          "ref": "0062430556",
+          "type": "audiosilo-books-import"
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "B09M8VS77Q",

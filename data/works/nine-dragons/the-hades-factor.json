@@ -6728,6 +6728,12 @@
       "authors": [
         "margaret-atwood"
       ],
+      "genres": [
+        "dystopian",
+        "literary-fiction",
+        "science-fiction",
+        "womens-fiction"
+      ],
       "id": "the-handmaids-tale",
       "language": "en",
       "license": "CC0-1.0",
@@ -6800,6 +6806,38 @@
           ],
           "work": "the-handmaids-tale"
         },
+        "claire-danes-2017": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B06Y1XL7ZJ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81Zi449VrIL.jpg",
+          "id": "claire-danes-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "claire-danes",
+            "full-cast",
+            "margaret-atwood",
+            "ray-porter",
+            "tim-gerard-reynolds"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2017-04-04",
+          "runtime_min": 726,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B06Y1XL7ZJ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-handmaids-tale"
+        },
         "joanna-david-2011": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -6834,6 +6872,11 @@
           "imported_at": "2026-07-25",
           "ref": "https://www.goodreads.com/book/show/38447.The_Handmaid_s_Tale",
           "type": "community"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B06Y1XL7ZJ",
+          "type": "libex-import"
         }
       ],
       "title": "The Handmaid’s Tale",
@@ -6891,64 +6934,6 @@
         }
       ],
       "title": "The Handmaid's Tale: Exclusive Bonus Content"
-    },
-    "the-handmaids-tale-margaret-atwood": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "margaret-atwood",
-        "valerie-martin-essay"
-      ],
-      "genres": [
-        "dystopian",
-        "literary-fiction",
-        "science-fiction",
-        "womens-fiction"
-      ],
-      "id": "the-handmaids-tale-margaret-atwood",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "claire-danes-2017": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B06Y1XL7ZJ",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81Zi449VrIL.jpg",
-          "id": "claire-danes-2017",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "claire-danes",
-            "full-cast",
-            "margaret-atwood",
-            "ray-porter",
-            "tim-gerard-reynolds"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2017-04-04",
-          "runtime_min": 726,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B06Y1XL7ZJ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-handmaids-tale-margaret-atwood"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B06Y1XL7ZJ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Handmaid's Tale"
     },
     "the-handmaids-tale-special-edition": {
       "added_at": "2026-08-02",

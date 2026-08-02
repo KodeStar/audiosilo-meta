@@ -10852,7 +10852,8 @@
     "among-the-burning-flowers": {
       "added_at": "2026-08-02",
       "authors": [
-        "samantha-shannon"
+        "samantha-shannon",
+        "kate-macdonald"
       ],
       "genres": [
         "coming-of-age",
@@ -10870,6 +10871,10 @@
           "asin": [
             {
               "asin": "B0F4RJZHYF",
+              "region": "us"
+            },
+            {
+              "asin": "B0F4RJS4LT",
               "region": "us"
             }
           ],
@@ -10890,6 +10895,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0F4RJZHYF",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0F4RJS4LT",
+              "type": "libex-import"
             }
           ],
           "work": "among-the-burning-flowers"
@@ -10900,58 +10910,7 @@
           "imported_at": "2026-08-02",
           "ref": "B0F4RJZHYF",
           "type": "libex-import"
-        }
-      ],
-      "title": "Among the Burning Flowers"
-    },
-    "among-the-burning-flowers-samantha-shannon": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "samantha-shannon",
-        "kate-macdonald"
-      ],
-      "genres": [
-        "coming-of-age",
-        "epic-fantasy",
-        "fairy-tales-folklore",
-        "fantasy"
-      ],
-      "id": "among-the-burning-flowers-samantha-shannon",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "arty-froushan-2025": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0F4RJS4LT",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91q1qtFyMzL.jpg",
-          "id": "arty-froushan-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "arty-froushan",
-            "gemma-whelan",
-            "patricia-allison"
-          ],
-          "publisher": "Bloomsbury Publishing",
-          "release_date": "2025-09-16",
-          "runtime_min": 485,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0F4RJS4LT",
-              "type": "libex-import"
-            }
-          ],
-          "work": "among-the-burning-flowers-samantha-shannon"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0F4RJS4LT",

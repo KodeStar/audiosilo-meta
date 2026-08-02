@@ -12946,16 +12946,74 @@
     "die-entfuhrte-erbtante": {
       "added_at": "2026-08-02",
       "authors": [
-        "s-pomej"
+        "s-pomej",
+        "arthur-conan-doyle"
       ],
       "genres": [
         "mystery",
-        "science-fiction"
+        "science-fiction",
+        "space-opera"
       ],
       "id": "die-entfuhrte-erbtante",
       "language": "de",
       "license": "CC0-1.0",
       "recordings": {
+        "andreas-lange-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CYMBCTGY",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81brmcObVTL.jpg",
+          "id": "andreas-lange-2025",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andreas-lange"
+          ],
+          "publisher": "Ignatius Publishers",
+          "release_date": "2025-01-06",
+          "runtime_min": 61,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CYMBCTGY",
+              "type": "libex-import"
+            }
+          ],
+          "work": "die-entfuhrte-erbtante"
+        },
+        "peter-bocek-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0DNJNBYPT",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91fjyzrBWUL.jpg",
+          "id": "peter-bocek-2025",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "peter-bocek"
+          ],
+          "publisher": "Ignatius Publishers",
+          "release_date": "2025-04-08",
+          "runtime_min": 63,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DNJNBYPT",
+              "type": "libex-import"
+            }
+          ],
+          "work": "die-entfuhrte-erbtante"
+        },
         "rupert-pichler-2023": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -12990,83 +13048,7 @@
           "imported_at": "2026-08-02",
           "ref": "B0CJ9PCR9X",
           "type": "libex-import"
-        }
-      ],
-      "title": "Die entführte Erbtante"
-    },
-    "die-entfuhrte-erbtante-arthur-conan-doyle": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "arthur-conan-doyle",
-        "s-pomej"
-      ],
-      "genres": [
-        "mystery",
-        "science-fiction",
-        "space-opera"
-      ],
-      "id": "die-entfuhrte-erbtante-arthur-conan-doyle",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "andreas-lange-2025": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0CYMBCTGY",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81brmcObVTL.jpg",
-          "id": "andreas-lange-2025",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "andreas-lange"
-          ],
-          "publisher": "Ignatius Publishers",
-          "release_date": "2025-01-06",
-          "runtime_min": 61,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0CYMBCTGY",
-              "type": "libex-import"
-            }
-          ],
-          "work": "die-entfuhrte-erbtante-arthur-conan-doyle"
         },
-        "peter-bocek-2025": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0DNJNBYPT",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91fjyzrBWUL.jpg",
-          "id": "peter-bocek-2025",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "peter-bocek"
-          ],
-          "publisher": "Ignatius Publishers",
-          "release_date": "2025-04-08",
-          "runtime_min": 63,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0DNJNBYPT",
-              "type": "libex-import"
-            }
-          ],
-          "work": "die-entfuhrte-erbtante-arthur-conan-doyle"
-        }
-      },
-      "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B0CYMBCTGY",

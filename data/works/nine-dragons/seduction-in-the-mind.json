@@ -9712,9 +9712,11 @@
         "benedikt-waldheuer"
       ],
       "genres": [
+        "action-adventure",
         "espionage",
         "fantasy",
         "paranormal",
+        "science-fiction",
         "thriller-suspense",
         "urban-fantasy"
       ],
@@ -9722,6 +9724,34 @@
       "language": "de",
       "license": "CC0-1.0",
       "recordings": {
+        "gerrit-petersen-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CZXZV8YD",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91WgLqDz4WL.jpg",
+          "id": "gerrit-petersen-2024",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "gerrit-petersen"
+          ],
+          "publisher": "Soundriver",
+          "release_date": "2024-05-17",
+          "runtime_min": 148,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CZXZV8YD",
+              "type": "libex-import"
+            }
+          ],
+          "work": "seher-001"
+        },
         "gerrit-petersen-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -9756,53 +9786,7 @@
           "imported_at": "2026-08-02",
           "ref": "B0G6D3N4KK",
           "type": "libex-import"
-        }
-      ],
-      "title": "Seher 001"
-    },
-    "seher-001-marcel-riepegerste": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "marcel-riepegerste"
-      ],
-      "genres": [
-        "action-adventure",
-        "science-fiction"
-      ],
-      "id": "seher-001-marcel-riepegerste",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "gerrit-petersen-2024": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0CZXZV8YD",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91WgLqDz4WL.jpg",
-          "id": "gerrit-petersen-2024",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "gerrit-petersen"
-          ],
-          "publisher": "Soundriver",
-          "release_date": "2024-05-17",
-          "runtime_min": 148,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0CZXZV8YD",
-              "type": "libex-import"
-            }
-          ],
-          "work": "seher-001-marcel-riepegerste"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0CZXZV8YD",

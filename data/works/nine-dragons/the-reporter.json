@@ -428,13 +428,16 @@
     "the-reptile-room": {
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
-        "lemony-snicket"
+        "lemony-snicket",
+        "brett-helquist"
       ],
       "genres": [
         "action-adventure",
         "childrens",
+        "classics",
         "comedy-humor",
         "coming-of-age",
+        "fantasy",
         "parenting-relationships"
       ],
       "id": "the-reptile-room",
@@ -550,40 +553,7 @@
             }
           ],
           "work": "the-reptile-room"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B00JPK5DO4",
-          "type": "audiosilo-books-import"
         },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B00JPK5DO4",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Reptile Room"
-    },
-    "the-reptile-room-lemony-snicket": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "lemony-snicket",
-        "brett-helquist"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "classics",
-        "coming-of-age",
-        "fantasy",
-        "parenting-relationships"
-      ],
-      "id": "the-reptile-room-lemony-snicket",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "tim-curry-2026": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -610,10 +580,20 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-reptile-room-lemony-snicket"
+          "work": "the-reptile-room"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B00JPK5DO4",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B00JPK5DO4",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0GJWRHL49",

@@ -11388,7 +11388,8 @@
     "der-tote-auf-alpha-centauri-ab": {
       "added_at": "2026-08-02",
       "authors": [
-        "s-pomej"
+        "s-pomej",
+        "arthur-conan-doyle"
       ],
       "genres": [
         "mystery",
@@ -11398,6 +11399,90 @@
       "language": "de",
       "license": "CC0-1.0",
       "recordings": {
+        "andreas-lange-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CNS6R41Y",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81rizmoULJL.jpg",
+          "id": "andreas-lange-2024",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andreas-lange"
+          ],
+          "publisher": "Ignatius Publishers",
+          "release_date": "2024-06-18",
+          "runtime_min": 64,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CNS6R41Y",
+              "type": "libex-import"
+            }
+          ],
+          "work": "der-tote-auf-alpha-centauri-ab"
+        },
+        "gerry-hungbauer-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0FV3BKMKY",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91nTnuVSTpL.jpg",
+          "id": "gerry-hungbauer-2025",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "gerry-hungbauer"
+          ],
+          "publisher": "Stream-Book Silver",
+          "release_date": "2025-10-19",
+          "runtime_min": 71,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FV3BKMKY",
+              "type": "libex-import"
+            }
+          ],
+          "work": "der-tote-auf-alpha-centauri-ab"
+        },
+        "peter-bocek-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0DN6QNMKM",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81tbe+qrLtL.jpg",
+          "id": "peter-bocek-2024",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "peter-bocek"
+          ],
+          "publisher": "Ignatius Publishers",
+          "release_date": "2024-12-01",
+          "runtime_min": 70,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DN6QNMKM",
+              "type": "libex-import"
+            }
+          ],
+          "work": "der-tote-auf-alpha-centauri-ab"
+        },
         "rupert-pichler-2023": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -11432,109 +11517,7 @@
           "imported_at": "2026-08-02",
           "ref": "B0BKSWKMFG",
           "type": "libex-import"
-        }
-      ],
-      "title": "Der Tote auf Alpha-Centauri Ab"
-    },
-    "der-tote-auf-alpha-centauri-ab-s-pomej": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "s-pomej",
-        "arthur-conan-doyle"
-      ],
-      "genres": [
-        "mystery"
-      ],
-      "id": "der-tote-auf-alpha-centauri-ab-s-pomej",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "andreas-lange-2024": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0CNS6R41Y",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81rizmoULJL.jpg",
-          "id": "andreas-lange-2024",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "andreas-lange"
-          ],
-          "publisher": "Ignatius Publishers",
-          "release_date": "2024-06-18",
-          "runtime_min": 64,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0CNS6R41Y",
-              "type": "libex-import"
-            }
-          ],
-          "work": "der-tote-auf-alpha-centauri-ab-s-pomej"
         },
-        "gerry-hungbauer-2025": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0FV3BKMKY",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91nTnuVSTpL.jpg",
-          "id": "gerry-hungbauer-2025",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "gerry-hungbauer"
-          ],
-          "publisher": "Stream-Book Silver",
-          "release_date": "2025-10-19",
-          "runtime_min": 71,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0FV3BKMKY",
-              "type": "libex-import"
-            }
-          ],
-          "work": "der-tote-auf-alpha-centauri-ab-s-pomej"
-        },
-        "peter-bocek-2024": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0DN6QNMKM",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81tbe+qrLtL.jpg",
-          "id": "peter-bocek-2024",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "peter-bocek"
-          ],
-          "publisher": "Ignatius Publishers",
-          "release_date": "2024-12-01",
-          "runtime_min": 70,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0DN6QNMKM",
-              "type": "libex-import"
-            }
-          ],
-          "work": "der-tote-auf-alpha-centauri-ab-s-pomej"
-        }
-      },
-      "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B0CNS6R41Y",

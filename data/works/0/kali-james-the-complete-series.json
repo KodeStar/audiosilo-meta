@@ -4101,7 +4101,9 @@
         "john-baker"
       ],
       "genres": [
-        "horror"
+        "horror",
+        "paranormal",
+        "thriller-suspense"
       ],
       "id": "kampf-der-vampire",
       "language": "de",
@@ -4134,30 +4136,7 @@
             }
           ],
           "work": "kampf-der-vampire"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B07DQXDGLK",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Kampf der Vampire"
-    },
-    "kampf-der-vampire-h-g-francis": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "h-g-francis"
-      ],
-      "genres": [
-        "paranormal",
-        "thriller-suspense"
-      ],
-      "id": "kampf-der-vampire-h-g-francis",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "christian-rode-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -4193,10 +4172,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "kampf-der-vampire-h-g-francis"
+          "work": "kampf-der-vampire"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B07DQXDGLK",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0FC67P6T4",

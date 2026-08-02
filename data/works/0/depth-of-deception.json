@@ -3579,9 +3579,11 @@
     "der-anfang-jason-dark": {
       "added_at": "2026-08-02",
       "authors": [
-        "jason-dark"
+        "jason-dark",
+        "oliver-doring"
       ],
       "genres": [
+        "fantasy",
         "horror"
       ],
       "id": "der-anfang-jason-dark",
@@ -3618,30 +3620,7 @@
             }
           ],
           "work": "der-anfang-jason-dark"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B091CV452M",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Der Anfang"
-    },
-    "der-anfang-jason-dark-2": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "jason-dark",
-        "oliver-doring"
-      ],
-      "genres": [
-        "fantasy"
-      ],
-      "id": "der-anfang-jason-dark-2",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "div-2004": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -3668,10 +3647,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "der-anfang-jason-dark-2"
+          "work": "der-anfang-jason-dark"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B091CV452M",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B00TYLLPS2",

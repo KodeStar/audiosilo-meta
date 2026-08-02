@@ -9245,18 +9245,51 @@
     "sherlock-holmes-his-last-bow": {
       "added_at": "2026-08-02",
       "authors": [
-        "arthur-conan-doyle"
+        "arthur-conan-doyle",
+        "bert-coules"
       ],
       "genres": [
+        "classics",
         "drama-plays",
         "literary-fiction",
         "mystery",
+        "short-stories",
         "thriller-suspense"
       ],
       "id": "sherlock-holmes-his-last-bow",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "clive-merrison-2017": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B01MS7DDC4",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A11mvNvAr6L.jpg",
+          "id": "clive-merrison-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "clive-merrison",
+            "full-cast",
+            "michael-williams"
+          ],
+          "publisher": "BBC Audio",
+          "release_date": "2017-06-01",
+          "runtime_min": 352,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B01MS7DDC4",
+              "type": "libex-import"
+            }
+          ],
+          "work": "sherlock-holmes-his-last-bow"
+        },
         "sir-derek-jacobi-2010": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -9291,57 +9324,7 @@
           "imported_at": "2026-08-02",
           "ref": "B0045VY2DQ",
           "type": "libex-import"
-        }
-      ],
-      "title": "Sherlock Holmes: His Last Bow"
-    },
-    "sherlock-holmes-his-last-bow-arthur-conan-doyle": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "arthur-conan-doyle",
-        "bert-coules"
-      ],
-      "genres": [
-        "classics",
-        "mystery",
-        "short-stories"
-      ],
-      "id": "sherlock-holmes-his-last-bow-arthur-conan-doyle",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "clive-merrison-2017": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B01MS7DDC4",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/A11mvNvAr6L.jpg",
-          "id": "clive-merrison-2017",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "clive-merrison",
-            "full-cast",
-            "michael-williams"
-          ],
-          "publisher": "BBC Audio",
-          "release_date": "2017-06-01",
-          "runtime_min": 352,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B01MS7DDC4",
-              "type": "libex-import"
-            }
-          ],
-          "work": "sherlock-holmes-his-last-bow-arthur-conan-doyle"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B01MS7DDC4",

@@ -4693,6 +4693,7 @@
       ],
       "genres": [
         "action-adventure",
+        "childrens",
         "classics"
       ],
       "id": "las-aventuras-de-huckleberry-finn-the-adventures-of-huckleberry-finn",
@@ -4722,6 +4723,34 @@
             {
               "imported_at": "2026-08-01",
               "ref": "B09KCRJD5S",
+              "type": "libex-import"
+            }
+          ],
+          "work": "las-aventuras-de-huckleberry-finn-the-adventures-of-huckleberry-finn"
+        },
+        "alberto-santillan-2021": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B09M7NVSPW",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71hNFELhmlL.jpg",
+          "id": "alberto-santillan-2021",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alberto-santillan"
+          ],
+          "publisher": "Penguin Random House Grupo Editorial",
+          "release_date": "2021-11-19",
+          "runtime_min": 686,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09M7NVSPW",
               "type": "libex-import"
             }
           ],
@@ -4761,61 +4790,14 @@
           "imported_at": "2026-08-01",
           "ref": "B09KCRJD5S",
           "type": "libex-import"
-        }
-      ],
-      "title": "Las Aventuras de Huckleberry Finn [The Adventures of Huckleberry Finn]"
-    },
-    "las-aventuras-de-huckleberry-finn-the-adventures-of-huckleberry-finn-mark-twain": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "mark-twain",
-        "neus-nueno-cobas"
-      ],
-      "genres": [
-        "childrens",
-        "classics"
-      ],
-      "id": "las-aventuras-de-huckleberry-finn-the-adventures-of-huckleberry-finn-mark-twain",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "alberto-santillan-2021": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B09M7NVSPW",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71hNFELhmlL.jpg",
-          "id": "alberto-santillan-2021",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "alberto-santillan"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial",
-          "release_date": "2021-11-19",
-          "runtime_min": 686,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B09M7NVSPW",
-              "type": "libex-import"
-            }
-          ],
-          "work": "las-aventuras-de-huckleberry-finn-the-adventures-of-huckleberry-finn-mark-twain"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B09M7NVSPW",
           "type": "libex-import"
         }
       ],
-      "title": "Las aventuras de Huckleberry Finn [The Adventures of Huckleberry Finn]"
+      "title": "Las Aventuras de Huckleberry Finn [The Adventures of Huckleberry Finn]"
     },
     "las-aventuras-de-las-jellies": {
       "added_at": "2026-08-02",

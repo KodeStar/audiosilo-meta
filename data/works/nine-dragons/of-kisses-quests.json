@@ -9900,68 +9900,15 @@
         "samantha-van-leer"
       ],
       "genres": [
+        "comedy-humor",
         "coming-of-age",
+        "fantasy",
         "parenting-relationships",
         "romance",
         "womens-fiction",
         "young-adult"
       ],
       "id": "off-the-page",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "penelope-rawlins-2015": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B00WKKJ3JC",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51yo+mBScjL.jpg",
-          "id": "penelope-rawlins-2015",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "penelope-rawlins",
-            "raj-ghatak",
-            "thomas-judd"
-          ],
-          "publisher": "Hodder & Stoughton",
-          "release_date": "2015-06-04",
-          "runtime_min": 590,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B00WKKJ3JC",
-              "type": "libex-import"
-            }
-          ],
-          "work": "off-the-page"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00WKKJ3JC",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Off the Page"
-    },
-    "off-the-page-jodi-picoult": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "jodi-picoult"
-      ],
-      "genres": [
-        "comedy-humor",
-        "fantasy",
-        "romance",
-        "young-adult"
-      ],
-      "id": "off-the-page-jodi-picoult",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -10106,10 +10053,45 @@
               "type": "libex-import"
             }
           ],
-          "work": "off-the-page-jodi-picoult"
+          "work": "off-the-page"
+        },
+        "penelope-rawlins-2015": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00WKKJ3JC",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51yo+mBScjL.jpg",
+          "id": "penelope-rawlins-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "penelope-rawlins",
+            "raj-ghatak",
+            "thomas-judd"
+          ],
+          "publisher": "Hodder & Stoughton",
+          "release_date": "2015-06-04",
+          "runtime_min": 590,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00WKKJ3JC",
+              "type": "libex-import"
+            }
+          ],
+          "work": "off-the-page"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00WKKJ3JC",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B00UXU1Y8O",

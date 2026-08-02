@@ -626,7 +626,8 @@
     "star-wars-outlaws-low-red-moon": {
       "added_at": "2026-08-02",
       "authors": [
-        "mike-chen"
+        "mike-chen",
+        "sw-tbc"
       ],
       "genres": [
         "action-adventure",
@@ -643,6 +644,10 @@
           "asin": [
             {
               "asin": "B0FK6KMP2T",
+              "region": "us"
+            },
+            {
+              "asin": "B0G4RMY5JC",
               "region": "us"
             }
           ],
@@ -662,6 +667,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0FK6KMP2T",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0G4RMY5JC",
+              "type": "libex-import"
             }
           ],
           "work": "star-wars-outlaws-low-red-moon"
@@ -672,56 +682,7 @@
           "imported_at": "2026-08-02",
           "ref": "B0FK6KMP2T",
           "type": "libex-import"
-        }
-      ],
-      "title": "Star Wars Outlaws: Low Red Moon"
-    },
-    "star-wars-outlaws-low-red-moon-mike-chen": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "mike-chen",
-        "sw-tbc"
-      ],
-      "genres": [
-        "action-adventure",
-        "science-fiction",
-        "space-opera"
-      ],
-      "id": "star-wars-outlaws-low-red-moon-mike-chen",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "eric-johnson-2026": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0G4RMY5JC",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91YhmR-+ByL.jpg",
-          "id": "eric-johnson-2026",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "eric-johnson",
-            "jay-rincon"
-          ],
-          "publisher": "Penguin",
-          "release_date": "2026-02-03",
-          "runtime_min": 858,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0G4RMY5JC",
-              "type": "libex-import"
-            }
-          ],
-          "work": "star-wars-outlaws-low-red-moon-mike-chen"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0G4RMY5JC",
@@ -1430,8 +1391,7 @@
     "star-wars-rogue-one": {
       "added_at": "2026-08-02",
       "authors": [
-        "matt-forbeck",
-        "disney-press"
+        "matt-forbeck"
       ],
       "genres": [
         "action-adventure",
@@ -1488,31 +1448,7 @@
             }
           ],
           "work": "star-wars-rogue-one"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B01N7S2Z8B",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Star Wars: Rogue One"
-    },
-    "star-wars-rogue-one-matt-forbeck": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "matt-forbeck"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "science-fiction"
-      ],
-      "id": "star-wars-rogue-one-matt-forbeck",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "january-lavoy-2026": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -1548,10 +1484,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "star-wars-rogue-one-matt-forbeck"
+          "work": "star-wars-rogue-one"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B01N7S2Z8B",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0GNST8J2K",
@@ -5580,8 +5521,7 @@
     "star-wars-the-force-awakens": {
       "added_at": "2026-08-02",
       "authors": [
-        "michael-kogge",
-        "disney-press"
+        "michael-kogge"
       ],
       "genres": [
         "action-adventure",
@@ -5638,12 +5578,45 @@
             }
           ],
           "work": "star-wars-the-force-awakens"
+        },
+        "jonathan-davis-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0FH5JYQMZ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91wLWeE2eWL.jpg",
+          "id": "jonathan-davis-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jonathan-davis"
+          ],
+          "publisher": "Listening Library",
+          "release_date": "2025-07-15",
+          "runtime_min": 322,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FH5JYQMZ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "star-wars-the-force-awakens"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B019ZY2A0E",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0FH5JYQMZ",
           "type": "libex-import"
         }
       ],
@@ -5753,59 +5726,6 @@
         }
       ],
       "title": "Star Wars The Force Awakens: Finn & Rey Escape!"
-    },
-    "star-wars-the-force-awakens-michael-kogge": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "michael-kogge"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "fantasy",
-        "science-fiction"
-      ],
-      "id": "star-wars-the-force-awakens-michael-kogge",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "jonathan-davis-2025": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0FH5JYQMZ",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91wLWeE2eWL.jpg",
-          "id": "jonathan-davis-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "jonathan-davis"
-          ],
-          "publisher": "Listening Library",
-          "release_date": "2025-07-15",
-          "runtime_min": 322,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0FH5JYQMZ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "star-wars-the-force-awakens-michael-kogge"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0FH5JYQMZ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Star Wars: The Force Awakens"
     },
     "star-wars-the-force-unleashed": {
       "added_at": "2026-08-02",

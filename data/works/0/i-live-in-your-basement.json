@@ -3706,6 +3706,10 @@
       "authors": [
         "isaac-asimov"
       ],
+      "genres": [
+        "classics",
+        "short-stories"
+      ],
       "id": "i-robot",
       "language": "en",
       "license": "CC0-1.0",
@@ -3743,31 +3747,7 @@
             }
           ],
           "work": "i-robot"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-17",
-          "ref": "073934627X",
-          "type": "audiosilo-books-import"
-        }
-      ],
-      "title": "I, Robot"
-    },
-    "i-robot-isaac-asimov": {
-      "added_at": "2026-07-30T14:42:56+01:00",
-      "authors": [
-        "isaac-asimov",
-        "tricia-reilly"
-      ],
-      "genres": [
-        "classics",
-        "short-stories"
-      ],
-      "id": "i-robot-isaac-asimov",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "tricia-reilly-2008": {
           "abridged": true,
           "added_at": "2026-07-30T14:42:56+01:00",
@@ -3831,10 +3811,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "i-robot-isaac-asimov"
+          "work": "i-robot"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-17",
+          "ref": "073934627X",
+          "type": "audiosilo-books-import"
+        },
         {
           "imported_at": "2026-07-30",
           "ref": "B0036GPQ3Q",

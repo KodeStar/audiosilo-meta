@@ -3808,7 +3808,8 @@
     "robert-ludlums-the-moscow-vector": {
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
-        "patrick-larkin"
+        "patrick-larkin",
+        "robert-ludlum"
       ],
       "genres": [
         "espionage",
@@ -4107,37 +4108,8 @@
             }
           ],
           "work": "robert-ludlums-the-moscow-vector"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B002V0Q0PG",
-          "type": "audiosilo-books-import"
         },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B002V0Q0PG",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Robert Ludlum's The Moscow Vector"
-    },
-    "robert-ludlums-the-moscow-vector-robert-ludlum": {
-      "added_at": "2026-07-30T14:42:56+01:00",
-      "authors": [
-        "robert-ludlum",
-        "patrick-larkin"
-      ],
-      "genres": [
-        "espionage",
-        "thriller-suspense"
-      ],
-      "id": "robert-ludlums-the-moscow-vector-robert-ludlum",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "erik-bergmann-2005": {
+        "erik-bergmann-2005-abridged": {
           "abridged": true,
           "added_at": "2026-07-30T14:42:56+01:00",
           "asin": [
@@ -4414,7 +4386,7 @@
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81einTW7uLL.jpg",
-          "id": "erik-bergmann-2005",
+          "id": "erik-bergmann-2005-abridged",
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
@@ -4430,10 +4402,20 @@
               "type": "libex-import"
             }
           ],
-          "work": "robert-ludlums-the-moscow-vector-robert-ludlum"
+          "work": "robert-ludlums-the-moscow-vector"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B002V0Q0PG",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B002V0Q0PG",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-30",
           "ref": "B002VA8KU4",

@@ -1638,12 +1638,48 @@
     "wolf-of-the-plains": {
       "added_at": "2026-07-11T17:30:05+01:00",
       "authors": [
-        "conn-iggulden"
+        "conn-iggulden",
+        "john-nicholl"
+      ],
+      "genres": [
+        "epic-fantasy",
+        "fantasy",
+        "historical-fiction",
+        "parenting-relationships",
+        "thriller-suspense"
       ],
       "id": "wolf-of-the-plains",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "jason-isaacs-2011": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B005C4Y70S",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91k4eTfPR4L.jpg",
+          "id": "jason-isaacs-2011",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jason-isaacs"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2011-07-12",
+          "runtime_min": 348,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B005C4Y70S",
+              "type": "libex-import"
+            }
+          ],
+          "work": "wolf-of-the-plains"
+        },
         "stephen-thorne-2016": {
           "abridged": false,
           "added_at": "2026-07-11T17:30:05+01:00",
@@ -1869,57 +1905,7 @@
           "imported_at": "2026-07-11",
           "ref": "B01LT8IOHW",
           "type": "openaudible-import"
-        }
-      ],
-      "title": "Wolf of the Plains"
-    },
-    "wolf-of-the-plains-conn-iggulden": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "conn-iggulden",
-        "john-nicholl"
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fantasy",
-        "historical-fiction",
-        "parenting-relationships",
-        "thriller-suspense"
-      ],
-      "id": "wolf-of-the-plains-conn-iggulden",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "jason-isaacs-2011": {
-          "abridged": true,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B005C4Y70S",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91k4eTfPR4L.jpg",
-          "id": "jason-isaacs-2011",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "jason-isaacs"
-          ],
-          "publisher": "HarperCollins",
-          "release_date": "2011-07-12",
-          "runtime_min": 348,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B005C4Y70S",
-              "type": "libex-import"
-            }
-          ],
-          "work": "wolf-of-the-plains-conn-iggulden"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B005C4Y70S",
@@ -9293,6 +9279,35 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "kevin-t-collins-2021": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "170528728X",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/919gYEU4A-L.jpg",
+          "id": "kevin-t-collins-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kevin-t-collins",
+            "nicole-poole"
+          ],
+          "publisher": "Tantor Audio",
+          "release_date": "2021-03-23",
+          "runtime_min": 787,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "170528728X",
+              "type": "libex-import"
+            }
+          ],
+          "work": "wolfsbane-and-mistletoe"
+        },
         "macleod-andrews-2010": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -9328,65 +9343,7 @@
           "imported_at": "2026-08-02",
           "ref": "B0049UV1LY",
           "type": "libex-import"
-        }
-      ],
-      "title": "Wolfsbane and Mistletoe"
-    },
-    "wolfsbane-and-mistletoe-charlaine-harris": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "charlaine-harris",
-        "toni-l-p-kelner"
-      ],
-      "credits": [
-        {
-          "person": "charlaine-harris",
-          "role": "editor"
         },
-        {
-          "person": "toni-l-p-kelner",
-          "role": "editor"
-        }
-      ],
-      "genres": [
-        "fantasy",
-        "short-stories"
-      ],
-      "id": "wolfsbane-and-mistletoe-charlaine-harris",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "kevin-t-collins-2021": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "170528728X",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/919gYEU4A-L.jpg",
-          "id": "kevin-t-collins-2021",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "kevin-t-collins",
-            "nicole-poole"
-          ],
-          "publisher": "Tantor Audio",
-          "release_date": "2021-03-23",
-          "runtime_min": 787,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "170528728X",
-              "type": "libex-import"
-            }
-          ],
-          "work": "wolfsbane-and-mistletoe-charlaine-harris"
-        }
-      },
-      "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "170528728X",

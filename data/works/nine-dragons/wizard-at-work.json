@@ -3671,13 +3671,14 @@
     "wizards-of-waverly-place-the-movie": {
       "added_at": "2026-08-02",
       "authors": [
-        "disney-press",
         "alice-alfonsi"
       ],
       "genres": [
         "childrens",
         "comedy-humor",
-        "fantasy"
+        "coming-of-age",
+        "fantasy",
+        "parenting-relationships"
       ],
       "id": "wizards-of-waverly-place-the-movie",
       "language": "en",
@@ -3710,33 +3711,7 @@
             }
           ],
           "work": "wizards-of-waverly-place-the-movie"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "1094198366",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Wizards of Waverly Place: The Movie"
-    },
-    "wizards-of-waverly-place-the-movie-alice-alfonsi": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "alice-alfonsi"
-      ],
-      "genres": [
-        "childrens",
-        "comedy-humor",
-        "coming-of-age",
-        "fantasy",
-        "parenting-relationships"
-      ],
-      "id": "wizards-of-waverly-place-the-movie-alice-alfonsi",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "kyla-garcia-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -3763,10 +3738,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "wizards-of-waverly-place-the-movie-alice-alfonsi"
+          "work": "wizards-of-waverly-place-the-movie"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1094198366",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0FHBR1BWV",
@@ -5051,7 +5031,8 @@
       ],
       "genres": [
         "childrens",
-        "fantasy"
+        "fantasy",
+        "nature"
       ],
       "id": "wo-ist-mr-m-die-schule-der-magischen-tiere-7",
       "language": "de",
@@ -5089,31 +5070,7 @@
             }
           ],
           "work": "wo-ist-mr-m-die-schule-der-magischen-tiere-7"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B07YZG1XSN",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Wo ist Mr. M?: Die Schule der magischen Tiere 7"
-    },
-    "wo-ist-mr-m-die-schule-der-magischen-tiere-7-margit-auer": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "margit-auer"
-      ],
-      "genres": [
-        "childrens",
-        "fantasy",
-        "nature"
-      ],
-      "id": "wo-ist-mr-m-die-schule-der-magischen-tiere-7-margit-auer",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "robert-missler-2016": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -5342,10 +5299,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "wo-ist-mr-m-die-schule-der-magischen-tiere-7-margit-auer"
+          "work": "wo-ist-mr-m-die-schule-der-magischen-tiere-7"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B07YZG1XSN",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B01D1JKB9G",

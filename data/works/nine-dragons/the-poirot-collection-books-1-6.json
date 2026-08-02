@@ -11228,7 +11228,10 @@
         "richard-dilallo"
       ],
       "genres": [
+        "dystopian",
         "fantasy",
+        "mystery",
+        "science-fiction",
         "superhero",
         "thriller-suspense"
       ],
@@ -11242,6 +11245,10 @@
           "asin": [
             {
               "asin": "B0DD8VHWVV",
+              "region": "us"
+            },
+            {
+              "asin": "B0DT1LC8YT",
               "region": "us"
             }
           ],
@@ -11888,6 +11895,11 @@
               "imported_at": "2026-07-30",
               "ref": "B0DD8VHWVV",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DT1LC8YT",
+              "type": "libex-import"
             }
           ],
           "work": "the-presidents-shadow"
@@ -11898,63 +11910,14 @@
           "imported_at": "2026-07-30",
           "ref": "B0DD8VHWVV",
           "type": "libex-import"
-        }
-      ],
-      "title": "The President's Shadow"
-    },
-    "the-presidents-shadow-james-patterson": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "james-patterson"
-      ],
-      "genres": [
-        "dystopian",
-        "mystery",
-        "science-fiction",
-        "thriller-suspense"
-      ],
-      "id": "the-presidents-shadow-james-patterson",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "ferdelle-capistrano-2025": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0DT1LC8YT",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81YTn7r2KfL.jpg",
-          "id": "ferdelle-capistrano-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "ferdelle-capistrano",
-            "sean-patrick-hopkins"
-          ],
-          "publisher": "Penguin",
-          "release_date": "2025-08-14",
-          "runtime_min": 508,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0DT1LC8YT",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-presidents-shadow-james-patterson"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0DT1LC8YT",
           "type": "libex-import"
         }
       ],
-      "title": "The President’s Shadow"
+      "title": "The President's Shadow"
     },
     "the-presidents-vampire": {
       "added_at": "2026-08-02",

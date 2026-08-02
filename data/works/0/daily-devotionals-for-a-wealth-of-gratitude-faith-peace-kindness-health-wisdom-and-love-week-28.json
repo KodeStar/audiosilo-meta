@@ -9572,8 +9572,13 @@
     "dance-dance-dance": {
       "added_at": "2026-07-17T09:08:56+00:00",
       "authors": [
-        "haruki-murakami",
-        "alfred-birnbaum"
+        "haruki-murakami"
+      ],
+      "credits": [
+        {
+          "person": "alfred-birnbaum",
+          "role": "translator"
+        }
       ],
       "genres": [
         "classics",
@@ -9845,36 +9850,7 @@
             }
           ],
           "work": "dance-dance-dance"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-17",
-          "ref": "B01N4AZTDJ",
-          "type": "audiosilo-books-import"
         },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B01N4AZTDJ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Dance Dance Dance"
-    },
-    "dance-dance-dance-haruki-murakami": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "haruki-murakami"
-      ],
-      "genres": [
-        "literary-fiction",
-        "magical-realism",
-        "mystery"
-      ],
-      "id": "dance-dance-dance-haruki-murakami",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "rupert-degas-2016": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -9901,10 +9877,20 @@
               "type": "libex-import"
             }
           ],
-          "work": "dance-dance-dance-haruki-murakami"
+          "work": "dance-dance-dance"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-17",
+          "ref": "B01N4AZTDJ",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B01N4AZTDJ",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B01HDZ6SV4",

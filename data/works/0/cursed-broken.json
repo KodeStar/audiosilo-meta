@@ -2465,7 +2465,8 @@
     "cursed-hearts": {
       "added_at": "2026-08-01",
       "authors": [
-        "amy-blankenship"
+        "amy-blankenship",
+        "rk-melton"
       ],
       "genres": [
         "erotica",
@@ -2504,32 +2505,7 @@
             }
           ],
           "work": "cursed-hearts"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B00XA14CWS",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Cursed Hearts"
-    },
-    "cursed-hearts-amy-blankenship": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "amy-blankenship",
-        "rk-melton"
-      ],
-      "genres": [
-        "fantasy",
-        "paranormal",
-        "romance"
-      ],
-      "id": "cursed-hearts-amy-blankenship",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "jeff-bower-2018": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -2556,10 +2532,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "cursed-hearts-amy-blankenship"
+          "work": "cursed-hearts"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B00XA14CWS",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-01",
           "ref": "B07BVSB2TS",

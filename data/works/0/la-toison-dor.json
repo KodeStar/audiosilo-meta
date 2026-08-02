@@ -11708,8 +11708,7 @@
     "lachlan": {
       "added_at": "2026-08-01",
       "authors": [
-        "l-l-muir",
-        "the-ghosts-of-culloden-moor"
+        "l-l-muir"
       ],
       "genres": [
         "historical-fiction",
@@ -11748,12 +11747,46 @@
             }
           ],
           "work": "lachlan"
+        },
+        "andrew-mcdermott-2023": {
+          "abridged": false,
+          "added_at": "2026-08-01",
+          "asin": [
+            {
+              "asin": "B0CLLNDZRX",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71HFKxLhy8L.jpg",
+          "id": "andrew-mcdermott-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andrew-mcdermott",
+            "jenn-mcguirk"
+          ],
+          "publisher": "Dragonfire Press",
+          "release_date": "2023-10-24",
+          "runtime_min": 215,
+          "sources": [
+            {
+              "imported_at": "2026-08-01",
+              "ref": "B0CLLNDZRX",
+              "type": "libex-import"
+            }
+          ],
+          "work": "lachlan"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-01",
           "ref": "B096L7M985",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B0CLLNDZRX",
           "type": "libex-import"
         }
       ],
@@ -11862,59 +11895,6 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B0B986PP88",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Lachlan"
-    },
-    "lachlan-l-l-muir": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "l-l-muir"
-      ],
-      "genres": [
-        "historical-fiction",
-        "historical-romance",
-        "romance"
-      ],
-      "id": "lachlan-l-l-muir",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "andrew-mcdermott-2023": {
-          "abridged": false,
-          "added_at": "2026-08-01",
-          "asin": [
-            {
-              "asin": "B0CLLNDZRX",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71HFKxLhy8L.jpg",
-          "id": "andrew-mcdermott-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "andrew-mcdermott",
-            "jenn-mcguirk"
-          ],
-          "publisher": "Dragonfire Press",
-          "release_date": "2023-10-24",
-          "runtime_min": 215,
-          "sources": [
-            {
-              "imported_at": "2026-08-01",
-              "ref": "B0CLLNDZRX",
-              "type": "libex-import"
-            }
-          ],
-          "work": "lachlan-l-l-muir"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B0CLLNDZRX",
           "type": "libex-import"
         }
       ],

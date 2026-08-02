@@ -1815,64 +1815,11 @@
       "genres": [
         "childrens",
         "classics",
-        "fantasy"
-      ],
-      "id": "james-and-the-giant-peach",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "julian-rhind-tutt-2014": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B00MOQ3P9Q",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/911EEH+0FTL.jpg",
-          "id": "julian-rhind-tutt-2014",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "julian-rhind-tutt"
-          ],
-          "publisher": "Penguin Books Ltd",
-          "release_date": "2014-09-11",
-          "runtime_min": 198,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B00MOQ3P9Q",
-              "type": "libex-import"
-            }
-          ],
-          "work": "james-and-the-giant-peach"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00MOQ3P9Q",
-          "type": "libex-import"
-        }
-      ],
-      "title": "James and the Giant Peach"
-    },
-    "james-and-the-giant-peach-roald-dahl": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "roald-dahl",
-        "quentin-blake"
-      ],
-      "genres": [
-        "childrens",
-        "classics",
         "comedy-humor",
         "fantasy",
         "nature"
       ],
-      "id": "james-and-the-giant-peach-roald-dahl",
+      "id": "james-and-the-giant-peach",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -1902,7 +1849,35 @@
               "type": "libex-import"
             }
           ],
-          "work": "james-and-the-giant-peach-roald-dahl"
+          "work": "james-and-the-giant-peach"
+        },
+        "julian-rhind-tutt-2014": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00MOQ3P9Q",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/911EEH+0FTL.jpg",
+          "id": "julian-rhind-tutt-2014",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "julian-rhind-tutt"
+          ],
+          "publisher": "Penguin Books Ltd",
+          "release_date": "2014-09-11",
+          "runtime_min": 198,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00MOQ3P9Q",
+              "type": "libex-import"
+            }
+          ],
+          "work": "james-and-the-giant-peach"
         },
         "julian-rhind-tutt-2024": {
           "abridged": false,
@@ -2137,10 +2112,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "james-and-the-giant-peach-roald-dahl"
+          "work": "james-and-the-giant-peach"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00MOQ3P9Q",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B09XNBBBPH",
@@ -2602,12 +2582,12 @@
     "jamie": {
       "added_at": "2026-08-01",
       "authors": [
-        "l-l-muir",
-        "the-ghosts-of-culloden-moor"
+        "l-l-muir"
       ],
       "genres": [
         "historical-fiction",
         "historical-romance",
+        "paranormal",
         "romance"
       ],
       "id": "jamie",
@@ -2642,12 +2622,46 @@
             }
           ],
           "work": "jamie"
+        },
+        "andrew-mcdermott-2023": {
+          "abridged": false,
+          "added_at": "2026-08-01",
+          "asin": [
+            {
+              "asin": "B0CLNHD4B7",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81S98wp5ZhL.jpg",
+          "id": "andrew-mcdermott-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andrew-mcdermott",
+            "jenn-mcguirk"
+          ],
+          "publisher": "Dragonfire Press",
+          "release_date": "2023-10-27",
+          "runtime_min": 164,
+          "sources": [
+            {
+              "imported_at": "2026-08-01",
+              "ref": "B0CLNHD4B7",
+              "type": "libex-import"
+            }
+          ],
+          "work": "jamie"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-01",
           "ref": "B097TX5X2D",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B0CLNHD4B7",
           "type": "libex-import"
         }
       ],
@@ -2767,60 +2781,6 @@
         }
       ],
       "title": "Jamie kann fliegen"
-    },
-    "jamie-l-l-muir": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "l-l-muir"
-      ],
-      "genres": [
-        "historical-fiction",
-        "historical-romance",
-        "paranormal",
-        "romance"
-      ],
-      "id": "jamie-l-l-muir",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "andrew-mcdermott-2023": {
-          "abridged": false,
-          "added_at": "2026-08-01",
-          "asin": [
-            {
-              "asin": "B0CLNHD4B7",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81S98wp5ZhL.jpg",
-          "id": "andrew-mcdermott-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "andrew-mcdermott",
-            "jenn-mcguirk"
-          ],
-          "publisher": "Dragonfire Press",
-          "release_date": "2023-10-27",
-          "runtime_min": 164,
-          "sources": [
-            {
-              "imported_at": "2026-08-01",
-              "ref": "B0CLNHD4B7",
-              "type": "libex-import"
-            }
-          ],
-          "work": "jamie-l-l-muir"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B0CLNHD4B7",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Jamie"
     },
     "jamie-lees-birthday-treat": {
       "added_at": "2026-08-02",

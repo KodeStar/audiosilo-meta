@@ -13248,7 +13248,11 @@
       "genres": [
         "action-adventure",
         "epic-fantasy",
+        "fairy-tales-folklore",
         "fantasy",
+        "historical-fiction",
+        "literary-fiction",
+        "nature",
         "young-adult"
       ],
       "id": "shadow-of-the-fox",
@@ -13261,6 +13265,10 @@
           "asin": [
             {
               "asin": "B07FHKRD32",
+              "region": "us"
+            },
+            {
+              "asin": "0263267768",
               "region": "us"
             }
           ],
@@ -13281,6 +13289,11 @@
               "imported_at": "2026-08-02",
               "ref": "B07FHKRD32",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "0263267768",
+              "type": "libex-import"
             }
           ],
           "work": "shadow-of-the-fox"
@@ -13291,61 +13304,7 @@
           "imported_at": "2026-08-02",
           "ref": "B07FHKRD32",
           "type": "libex-import"
-        }
-      ],
-      "title": "Shadow of the Fox"
-    },
-    "shadow-of-the-fox-julie-kagawa": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "julie-kagawa",
-        "emily-woo-zeller"
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fairy-tales-folklore",
-        "fantasy",
-        "historical-fiction",
-        "literary-fiction",
-        "nature",
-        "young-adult"
-      ],
-      "id": "shadow-of-the-fox-julie-kagawa",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "brian-nishii-2018": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "0263267768",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71aC7mRsiJL.jpg",
-          "id": "brian-nishii-2018",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "brian-nishii",
-            "emily-woo-zeller",
-            "joy-osmanski"
-          ],
-          "publisher": "HQ Young Adult",
-          "release_date": "2018-10-11",
-          "runtime_min": 885,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "0263267768",
-              "type": "libex-import"
-            }
-          ],
-          "work": "shadow-of-the-fox-julie-kagawa"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "0263267768",

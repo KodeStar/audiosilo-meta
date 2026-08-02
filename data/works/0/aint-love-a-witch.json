@@ -4825,18 +4825,50 @@
     "al-ice-space-war": {
       "added_at": "2026-08-02",
       "authors": [
-        "charles-lamb"
+        "charles-lamb",
+        "cw-lamb"
       ],
       "genres": [
+        "action-adventure",
         "dystopian",
         "fantasy",
         "military-science-fiction",
-        "science-fiction"
+        "post-apocalyptic",
+        "science-fiction",
+        "space-opera"
       ],
       "id": "al-ice-space-war",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "daniel-thomas-may-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0GV54FRMP",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71jWuUA+soL.jpg",
+          "id": "daniel-thomas-may-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "daniel-thomas-may"
+          ],
+          "publisher": "Tantor Media",
+          "release_date": "2026-10-20",
+          "runtime_min": 510,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GV54FRMP",
+              "type": "libex-import"
+            }
+          ],
+          "work": "al-ice-space-war"
+        },
         "david-drummond-2017": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -4871,63 +4903,14 @@
           "imported_at": "2026-08-02",
           "ref": "B072K3LGJK",
           "type": "libex-import"
-        }
-      ],
-      "title": "AL:ICE Space War"
-    },
-    "al-ice-space-war-cw-lamb": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "cw-lamb",
-        "charles-lamb"
-      ],
-      "genres": [
-        "action-adventure",
-        "post-apocalyptic",
-        "science-fiction",
-        "space-opera"
-      ],
-      "id": "al-ice-space-war-cw-lamb",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "daniel-thomas-may-2026": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0GV54FRMP",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71jWuUA+soL.jpg",
-          "id": "daniel-thomas-may-2026",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "daniel-thomas-may"
-          ],
-          "publisher": "Tantor Media",
-          "release_date": "2026-10-20",
-          "runtime_min": 510,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0GV54FRMP",
-              "type": "libex-import"
-            }
-          ],
-          "work": "al-ice-space-war-cw-lamb"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0GV54FRMP",
           "type": "libex-import"
         }
       ],
-      "title": "AL:ICE: Space War"
+      "title": "AL:ICE Space War"
     },
     "al-otro-lado-de-la-niebla": {
       "added_at": "2026-08-02",

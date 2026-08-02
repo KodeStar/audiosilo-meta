@@ -1818,8 +1818,7 @@
     "the-fantastic-four-doomsday": {
       "added_at": "2026-07-30T14:42:56+01:00",
       "authors": [
-        "marv-wolfman",
-        "marvel"
+        "marv-wolfman"
       ],
       "genres": [
         "fantasy",
@@ -1836,6 +1835,10 @@
             {
               "asin": "1662041845",
               "region": "us"
+            },
+            {
+              "asin": "B09GKYSL4J",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/718SfX-HHVL.jpg",
@@ -1847,10 +1850,16 @@
           ],
           "publisher": "Marvel",
           "release_date": "2022-01-18",
+          "runtime_min": 266,
           "sources": [
             {
               "imported_at": "2026-07-30",
               "ref": "1662041845",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09GKYSL4J",
               "type": "libex-import"
             }
           ],
@@ -1862,53 +1871,7 @@
           "imported_at": "2026-07-30",
           "ref": "1662041845",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Fantastic Four: Doomsday"
-    },
-    "the-fantastic-four-doomsday-marv-wolfman": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "marv-wolfman"
-      ],
-      "genres": [
-        "fantasy",
-        "superhero"
-      ],
-      "id": "the-fantastic-four-doomsday-marv-wolfman",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "natalie-naudus-2022": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B09GKYSL4J",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81f83ekwyUL.jpg",
-          "id": "natalie-naudus-2022",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "natalie-naudus"
-          ],
-          "publisher": "Marvel",
-          "release_date": "2022-04-05",
-          "runtime_min": 266,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B09GKYSL4J",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-fantastic-four-doomsday-marv-wolfman"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B09GKYSL4J",
@@ -3232,7 +3195,8 @@
     "the-far-side-of-the-world": {
       "added_at": "2026-08-02",
       "authors": [
-        "patrick-obrian"
+        "patrick-obrian",
+        "kati-nicholl"
       ],
       "genres": [
         "epic-fantasy",
@@ -3268,6 +3232,34 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B00BZA3JPC",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-far-side-of-the-world"
+        },
+        "robert-hardy-2005": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0036GRQLQ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91etDUk6UAL.jpg",
+          "id": "robert-hardy-2005",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "robert-hardy"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2005-06-10",
+          "runtime_min": 161,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0036GRQLQ",
               "type": "libex-import"
             }
           ],
@@ -3335,6 +3327,11 @@
           "imported_at": "2026-08-02",
           "ref": "B00BZA3JPC",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0036GRQLQ",
+          "type": "libex-import"
         }
       ],
       "title": "The Far Side of the World"
@@ -3390,61 +3387,6 @@
         }
       ],
       "title": "The Far Side of the World: Aubrey/Maturin Series, Book 10"
-    },
-    "the-far-side-of-the-world-kati-nicholl": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "kati-nicholl",
-        "patrick-obrian"
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fantasy",
-        "historical-fiction",
-        "thriller-suspense",
-        "war-military-fiction"
-      ],
-      "id": "the-far-side-of-the-world-kati-nicholl",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "robert-hardy-2005": {
-          "abridged": true,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0036GRQLQ",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91etDUk6UAL.jpg",
-          "id": "robert-hardy-2005",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "robert-hardy"
-          ],
-          "publisher": "HarperCollins",
-          "release_date": "2005-06-10",
-          "runtime_min": 161,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0036GRQLQ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-far-side-of-the-world-kati-nicholl"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0036GRQLQ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Far Side of the World"
     },
     "the-far-west": {
       "added_at": "2026-08-02",
@@ -7420,10 +7362,10 @@
     "the-fates-divide": {
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
-        "veronica-roth",
-        "macleod-andrews"
+        "veronica-roth"
       ],
       "genres": [
+        "action-adventure",
         "epic-fantasy",
         "fantasy",
         "romance",
@@ -7761,40 +7703,8 @@
             }
           ],
           "work": "the-fates-divide"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B07BFXF9WW",
-          "type": "audiosilo-books-import"
         },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B07BFXF9WW",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Fates Divide"
-    },
-    "the-fates-divide-veronica-roth": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "veronica-roth"
-      ],
-      "genres": [
-        "action-adventure",
-        "epic-fantasy",
-        "fantasy",
-        "romance",
-        "science-fiction",
-        "young-adult"
-      ],
-      "id": "the-fates-divide-veronica-roth",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "austin-butler-2018": {
+        "austin-butler-2018-2": {
           "abridged": false,
           "added_at": "2026-08-02",
           "asin": [
@@ -7804,7 +7714,7 @@
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/51eOb3dBP6L.jpg",
-          "id": "austin-butler-2018",
+          "id": "austin-butler-2018-2",
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
@@ -7823,10 +7733,20 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-fates-divide-veronica-roth"
+          "work": "the-fates-divide"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B07BFXF9WW",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B07BFXF9WW",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B078RP45WT",

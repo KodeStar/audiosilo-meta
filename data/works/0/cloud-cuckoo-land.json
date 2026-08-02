@@ -11172,9 +11172,12 @@
         "action-adventure",
         "childrens",
         "coming-of-age",
+        "fantasy",
+        "literary-fiction",
         "nature",
         "science-fiction",
-        "self-help"
+        "self-help",
+        "young-adult"
       ],
       "id": "code-kathy-reichs",
       "language": "en",
@@ -11186,6 +11189,10 @@
           "asin": [
             {
               "asin": "B00BOXI6RG",
+              "region": "us"
+            },
+            {
+              "asin": "B00BD4O83C",
               "region": "us"
             }
           ],
@@ -11204,6 +11211,11 @@
               "imported_at": "2026-08-02",
               "ref": "B00BOXI6RG",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00BD4O83C",
+              "type": "libex-import"
             }
           ],
           "work": "code-kathy-reichs"
@@ -11214,55 +11226,7 @@
           "imported_at": "2026-08-02",
           "ref": "B00BOXI6RG",
           "type": "libex-import"
-        }
-      ],
-      "title": "Code"
-    },
-    "code-kathy-reichs-2": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "kathy-reichs"
-      ],
-      "genres": [
-        "fantasy",
-        "literary-fiction",
-        "science-fiction",
-        "young-adult"
-      ],
-      "id": "code-kathy-reichs-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "cristin-milioti-2013": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B00BD4O83C",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91cxvoFT3vL.jpg",
-          "id": "cristin-milioti-2013",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "cristin-milioti"
-          ],
-          "publisher": "RH AudioGo",
-          "release_date": "2013-02-14",
-          "runtime_min": 628,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B00BD4O83C",
-              "type": "libex-import"
-            }
-          ],
-          "work": "code-kathy-reichs-2"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B00BD4O83C",

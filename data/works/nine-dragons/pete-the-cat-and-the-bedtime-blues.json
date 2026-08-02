@@ -5579,6 +5579,11 @@
       "authors": [
         "j-m-barrie"
       ],
+      "genres": [
+        "childrens",
+        "classics",
+        "fantasy"
+      ],
       "id": "peter-pan",
       "language": "en",
       "license": "CC0-1.0",
@@ -5889,6 +5894,34 @@
             {
               "imported_at": "2026-07-30",
               "ref": "B0036IN8ZW",
+              "type": "libex-import"
+            }
+          ],
+          "work": "peter-pan"
+        },
+        "dawn-french-2020": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "0744024129",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91tB9kO8ihL.jpg",
+          "id": "dawn-french-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "dawn-french"
+          ],
+          "publisher": "DK Children",
+          "release_date": "2020-12-01",
+          "runtime_min": 52,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "0744024129",
               "type": "libex-import"
             }
           ],
@@ -6546,6 +6579,11 @@
           "imported_at": "2026-07-25",
           "ref": "B06WV7M6SX",
           "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "0744024129",
+          "type": "libex-import"
         }
       ],
       "title": "Peter Pan"
@@ -6937,59 +6975,6 @@
         }
       ],
       "title": "Peter Pan in Kensington Gardens &amp; Peter and Wendy"
-    },
-    "peter-pan-j-m-barrie": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "j-m-barrie",
-        "michael-johnstone"
-      ],
-      "genres": [
-        "childrens",
-        "classics",
-        "fantasy"
-      ],
-      "id": "peter-pan-j-m-barrie",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "dawn-french-2020": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "0744024129",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91tB9kO8ihL.jpg",
-          "id": "dawn-french-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "dawn-french"
-          ],
-          "publisher": "DK Children",
-          "release_date": "2020-12-01",
-          "runtime_min": 52,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "0744024129",
-              "type": "libex-import"
-            }
-          ],
-          "work": "peter-pan-j-m-barrie"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "0744024129",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Peter Pan"
     },
     "peter-pan-james-barrie": {
       "added_at": "2026-08-01",

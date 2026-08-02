@@ -14338,7 +14338,8 @@
     "the-psammead-trilogy": {
       "added_at": "2026-08-02",
       "authors": [
-        "edith-nesbit"
+        "edith-nesbit",
+        "e-nesbit"
       ],
       "genres": [
         "action-adventure",
@@ -14350,6 +14351,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "cathy-dobson-2013": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00D7ETJBC",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91mZkwXeBIL.jpg",
+          "id": "cathy-dobson-2013",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "cathy-dobson"
+          ],
+          "publisher": "Red Door Audiobooks",
+          "release_date": "2013-06-06",
+          "runtime_min": 1268,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00D7ETJBC",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-psammead-trilogy"
+        },
         "rosie-akerman-2022": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -14384,53 +14413,7 @@
           "imported_at": "2026-08-02",
           "ref": "B09QH6217Q",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Psammead Trilogy"
-    },
-    "the-psammead-trilogy-edith-nesbit": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "edith-nesbit",
-        "e-nesbit"
-      ],
-      "genres": [
-        "classics"
-      ],
-      "id": "the-psammead-trilogy-edith-nesbit",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "cathy-dobson-2013": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B00D7ETJBC",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91mZkwXeBIL.jpg",
-          "id": "cathy-dobson-2013",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "cathy-dobson"
-          ],
-          "publisher": "Red Door Audiobooks",
-          "release_date": "2013-06-06",
-          "runtime_min": 1268,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B00D7ETJBC",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-psammead-trilogy-edith-nesbit"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B00D7ETJBC",

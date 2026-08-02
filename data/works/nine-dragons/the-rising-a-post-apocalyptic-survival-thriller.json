@@ -3116,9 +3116,13 @@
     "the-rithmatist": {
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
-        "brandon-sanderson"
+        "brandon-sanderson",
+        "ben-mcsweeney"
       ],
       "genres": [
+        "action-adventure",
+        "childrens",
+        "epic-fantasy",
         "fantasy",
         "young-adult"
       ],
@@ -3149,6 +3153,10 @@
             {
               "asin": "B07CRR176F",
               "region": "de"
+            },
+            {
+              "asin": "B00BGTGSB4",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -3328,6 +3336,11 @@
               "imported_at": "2026-07-30",
               "ref": "B07CRR176F",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00BGTGSB4",
+              "type": "libex-import"
             }
           ],
           "work": "the-rithmatist"
@@ -3343,209 +3356,7 @@
           "imported_at": "2026-07-30",
           "ref": "B00CYI0RA4",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Rithmatist"
-    },
-    "the-rithmatist-brandon-sanderson": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "brandon-sanderson",
-        "ben-mcsweeney"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "epic-fantasy",
-        "fantasy",
-        "young-adult"
-      ],
-      "id": "the-rithmatist-brandon-sanderson",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "michael-kramer-2013": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B00BGTGSB4",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 100682,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 211162,
-              "start_ms": 100682,
-              "title": "Prologue"
-            },
-            {
-              "length_ms": 30351,
-              "start_ms": 311844,
-              "title": "Part One"
-            },
-            {
-              "length_ms": 1891193,
-              "start_ms": 342195,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 689029,
-              "start_ms": 2233388,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1073691,
-              "start_ms": 2922417,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1217236,
-              "start_ms": 3996108,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 978953,
-              "start_ms": 5213344,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1467315,
-              "start_ms": 6192297,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 57450,
-              "start_ms": 7659612,
-              "title": "Part Two"
-            },
-            {
-              "length_ms": 1279230,
-              "start_ms": 7717062,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 590065,
-              "start_ms": 8996292,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1750227,
-              "start_ms": 9586357,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1938820,
-              "start_ms": 11336584,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 2191314,
-              "start_ms": 13275404,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1807766,
-              "start_ms": 15466718,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1535582,
-              "start_ms": 17274484,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1296045,
-              "start_ms": 18810066,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 83254,
-              "start_ms": 20106111,
-              "title": "Part Three"
-            },
-            {
-              "length_ms": 1959313,
-              "start_ms": 20189365,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1687394,
-              "start_ms": 22148678,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 1700955,
-              "start_ms": 23836072,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 1351866,
-              "start_ms": 25537027,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 949232,
-              "start_ms": 26888893,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 1728447,
-              "start_ms": 27838125,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 1744608,
-              "start_ms": 29566572,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 1355117,
-              "start_ms": 31311180,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 1605567,
-              "start_ms": 32666297,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 841770,
-              "start_ms": 34271864,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 2282057,
-              "start_ms": 35113634,
-              "title": "Chapter 25"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91U3yiVUctL.jpg",
-          "id": "michael-kramer-2013",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "michael-kramer"
-          ],
-          "publisher": "Macmillan Audio",
-          "release_date": "2013-05-14",
-          "runtime_min": 623,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B00BGTGSB4",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-rithmatist-brandon-sanderson"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B00BGTGSB4",
@@ -7843,6 +7654,12 @@
       "authors": [
         "l-frank-baum"
       ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "classics",
+        "fantasy"
+      ],
       "id": "the-road-to-oz",
       "language": "en",
       "license": "CC0-1.0",
@@ -8017,6 +7834,66 @@
             {
               "imported_at": "2026-07-30",
               "ref": "197493537X",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-road-to-oz"
+        },
+        "jerry-robbins-2011": {
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B005OT3VJE",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1283878,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1291958,
+              "start_ms": 1283878,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1292980,
+              "start_ms": 2575836,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 841956,
+              "start_ms": 3868816,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 882962,
+              "start_ms": 4710772,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1510969,
+              "start_ms": 5593734,
+              "title": "Chapter 6"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/917mfQ4B8bL.jpg",
+          "id": "jerry-robbins-2011",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jerry-robbins",
+            "the-colonial-radio-players"
+          ],
+          "publisher": "The Colonial Radio Theatre on Brilliance Audio",
+          "release_date": "2011-09-23",
+          "runtime_min": 118,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B005OT3VJE",
               "type": "libex-import"
             }
           ],
@@ -8205,98 +8082,17 @@
           "imported_at": "2026-07-25",
           "ref": "https://www.goodreads.com/book/show/179639.The_Road_to_Oz",
           "type": "community"
-        }
-      ],
-      "title": "The Road to Oz",
-      "xref": {
-        "goodreads": "179639"
-      }
-    },
-    "the-road-to-oz-l-frank-baum": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "l-frank-baum",
-        "jerry-robbins"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "classics",
-        "fantasy"
-      ],
-      "id": "the-road-to-oz-l-frank-baum",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "jerry-robbins-2011": {
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B005OT3VJE",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1283878,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1291958,
-              "start_ms": 1283878,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1292980,
-              "start_ms": 2575836,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 841956,
-              "start_ms": 3868816,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 882962,
-              "start_ms": 4710772,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1510969,
-              "start_ms": 5593734,
-              "title": "Chapter 6"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/917mfQ4B8bL.jpg",
-          "id": "jerry-robbins-2011",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "jerry-robbins",
-            "the-colonial-radio-players"
-          ],
-          "publisher": "The Colonial Radio Theatre on Brilliance Audio",
-          "release_date": "2011-09-23",
-          "runtime_min": 118,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B005OT3VJE",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-road-to-oz-l-frank-baum"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B005OT3VJE",
           "type": "libex-import"
         }
       ],
-      "title": "The Road to Oz"
+      "title": "The Road to Oz",
+      "xref": {
+        "goodreads": "179639"
+      }
     },
     "the-road-to-rebirth": {
       "added_at": "2026-08-02",

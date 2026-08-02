@@ -1734,7 +1734,15 @@
     "lords-of-the-bow": {
       "added_at": "2026-07-11T17:30:05+01:00",
       "authors": [
-        "conn-iggulden"
+        "conn-iggulden",
+        "henry-fordham"
+      ],
+      "genres": [
+        "epic-fantasy",
+        "fantasy",
+        "historical-fiction",
+        "thriller-suspense",
+        "war-military-fiction"
       ],
       "id": "lords-of-the-bow",
       "language": "en",
@@ -1943,35 +1951,8 @@
             }
           ],
           "work": "lords-of-the-bow"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-11",
-          "ref": "B004FTU0B6",
-          "type": "openaudible-import"
-        }
-      ],
-      "title": "Lords of the Bow"
-    },
-    "lords-of-the-bow-conn-iggulden": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "conn-iggulden",
-        "henry-fordham"
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fantasy",
-        "historical-fiction",
-        "thriller-suspense",
-        "war-military-fiction"
-      ],
-      "id": "lords-of-the-bow-conn-iggulden",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "russell-boulter-2008": {
+        },
+        "russell-boulter-2008-abridged": {
           "abridged": true,
           "added_at": "2026-08-02",
           "asin": [
@@ -1981,7 +1962,7 @@
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/61Fh9xJ1zEL.jpg",
-          "id": "russell-boulter-2008",
+          "id": "russell-boulter-2008-abridged",
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
@@ -1997,10 +1978,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "lords-of-the-bow-conn-iggulden"
+          "work": "lords-of-the-bow"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-11",
+          "ref": "B004FTU0B6",
+          "type": "openaudible-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0036GTK0G",

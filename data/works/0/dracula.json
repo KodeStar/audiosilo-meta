@@ -8434,8 +8434,13 @@
         "jasmine-walt"
       ],
       "genres": [
+        "action-adventure",
         "epic-fantasy",
         "fantasy",
+        "historical-fiction",
+        "mystery",
+        "paranormal",
+        "thriller-suspense",
         "urban-fantasy"
       ],
       "id": "dragon-bones",
@@ -8469,12 +8474,45 @@
             }
           ],
           "work": "dragon-bones"
+        },
+        "kate-marcin-2020": {
+          "abridged": false,
+          "added_at": "2026-08-01",
+          "asin": [
+            {
+              "asin": "B08NTX36LT",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/9177RDIV8xL.jpg",
+          "id": "kate-marcin-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kate-marcin"
+          ],
+          "publisher": "Those Johnson Girls",
+          "release_date": "2020-11-19",
+          "runtime_min": 374,
+          "sources": [
+            {
+              "imported_at": "2026-08-01",
+              "ref": "B08NTX36LT",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dragon-bones"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-01",
           "ref": "B071K77NMB",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B08NTX36LT",
           "type": "libex-import"
         }
       ],
@@ -8528,61 +8566,6 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B07RB26F8P",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Dragon Bones"
-    },
-    "dragon-bones-ines-johnson": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "ines-johnson"
-      ],
-      "genres": [
-        "action-adventure",
-        "fantasy",
-        "historical-fiction",
-        "mystery",
-        "paranormal",
-        "thriller-suspense"
-      ],
-      "id": "dragon-bones-ines-johnson",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "kate-marcin-2020": {
-          "abridged": false,
-          "added_at": "2026-08-01",
-          "asin": [
-            {
-              "asin": "B08NTX36LT",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/9177RDIV8xL.jpg",
-          "id": "kate-marcin-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "kate-marcin"
-          ],
-          "publisher": "Those Johnson Girls",
-          "release_date": "2020-11-19",
-          "runtime_min": 374,
-          "sources": [
-            {
-              "imported_at": "2026-08-01",
-              "ref": "B08NTX36LT",
-              "type": "libex-import"
-            }
-          ],
-          "work": "dragon-bones-ines-johnson"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B08NTX36LT",
           "type": "libex-import"
         }
       ],

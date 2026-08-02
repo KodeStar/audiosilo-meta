@@ -15043,8 +15043,13 @@
     "the-three-body-problem": {
       "added_at": "2026-07-17T09:08:56+00:00",
       "authors": [
-        "cixin-liu",
-        "ken-liu"
+        "cixin-liu"
+      ],
+      "credits": [
+        {
+          "person": "ken-liu",
+          "role": "translator"
+        }
       ],
       "genres": [
         "hard-science-fiction",
@@ -15055,6 +15060,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "bruno-roubicek-2015": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B01577B2Z2",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91fY2IFBzMS.jpg",
+          "id": "bruno-roubicek-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "bruno-roubicek"
+          ],
+          "publisher": "W. F. Howes Ltd",
+          "release_date": "2015-09-17",
+          "runtime_min": 877,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B01577B2Z2",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-three-body-problem"
+        },
         "daniel-york-loh-2023": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -15362,52 +15395,7 @@
           "imported_at": "2026-07-30",
           "ref": "B0CTRZ4XGN",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Three-Body Problem"
-    },
-    "the-three-body-problem-cixin-liu": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "cixin-liu"
-      ],
-      "genres": [
-        "science-fiction"
-      ],
-      "id": "the-three-body-problem-cixin-liu",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "bruno-roubicek-2015": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B01577B2Z2",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91fY2IFBzMS.jpg",
-          "id": "bruno-roubicek-2015",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "bruno-roubicek"
-          ],
-          "publisher": "W. F. Howes Ltd",
-          "release_date": "2015-09-17",
-          "runtime_min": 877,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B01577B2Z2",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-three-body-problem-cixin-liu"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B01577B2Z2",

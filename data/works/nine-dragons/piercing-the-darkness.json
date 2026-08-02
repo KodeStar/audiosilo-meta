@@ -5376,8 +5376,13 @@
     "pinball-1973": {
       "added_at": "2026-07-17T09:08:56+00:00",
       "authors": [
-        "haruki-murakami",
-        "ted-goossen"
+        "haruki-murakami"
+      ],
+      "credits": [
+        {
+          "person": "ted-goossen",
+          "role": "translator"
+        }
       ],
       "genres": [
         "coming-of-age",
@@ -5571,34 +5576,7 @@
             }
           ],
           "work": "pinball-1973"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-17",
-          "ref": "B010PJHL2A",
-          "type": "audiosilo-books-import"
         },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B010PJHL2A",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Pinball, 1973"
-    },
-    "pinball-1973-haruki-murakami": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "haruki-murakami"
-      ],
-      "genres": [
-        "literary-fiction"
-      ],
-      "id": "pinball-1973-haruki-murakami",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "kirby-heyborne-2016": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -5625,10 +5603,20 @@
               "type": "libex-import"
             }
           ],
-          "work": "pinball-1973-haruki-murakami"
+          "work": "pinball-1973"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-17",
+          "ref": "B010PJHL2A",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B010PJHL2A",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B01C91133U",

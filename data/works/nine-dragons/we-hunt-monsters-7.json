@@ -8517,30 +8517,7 @@
             }
           ],
           "work": "webcam"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B01J2BHZYQ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Webcam"
-    },
-    "webcam-j-a-konrath": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "j-a-konrath"
-      ],
-      "genres": [
-        "horror",
-        "thriller-suspense"
-      ],
-      "id": "webcam-j-a-konrath",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "bob-walkenhorst-2018": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -8567,10 +8544,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "webcam-j-a-konrath"
+          "work": "webcam"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B01J2BHZYQ",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-01",
           "ref": "B07K4FDB7N",

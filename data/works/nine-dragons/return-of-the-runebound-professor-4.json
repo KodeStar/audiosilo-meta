@@ -6617,11 +6617,13 @@
     "return-to-roar": {
       "added_at": "2026-08-02",
       "authors": [
-        "jenny-mclachlan"
+        "jenny-mclachlan",
+        "ben-mantle"
       ],
       "genres": [
         "action-adventure",
         "childrens",
+        "comedy-humor",
         "coming-of-age",
         "fantasy",
         "parenting-relationships"
@@ -6630,6 +6632,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "billy-ashcroft-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CDQDTTXF",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91Tx4l3ywiL.jpg",
+          "id": "billy-ashcroft-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "billy-ashcroft"
+          ],
+          "publisher": "Farshore",
+          "release_date": "2023-11-09",
+          "runtime_min": 428,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CDQDTTXF",
+              "type": "libex-import"
+            }
+          ],
+          "work": "return-to-roar"
+        },
         "neil-gardner-2021": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -6673,55 +6703,7 @@
           "imported_at": "2026-08-02",
           "ref": "0063085372",
           "type": "libex-import"
-        }
-      ],
-      "title": "Return to Roar"
-    },
-    "return-to-roar-jenny-mclachlan": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "jenny-mclachlan",
-        "ben-mantle"
-      ],
-      "genres": [
-        "childrens",
-        "comedy-humor",
-        "fantasy"
-      ],
-      "id": "return-to-roar-jenny-mclachlan",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "billy-ashcroft-2023": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0CDQDTTXF",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91Tx4l3ywiL.jpg",
-          "id": "billy-ashcroft-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "billy-ashcroft"
-          ],
-          "publisher": "Farshore",
-          "release_date": "2023-11-09",
-          "runtime_min": 428,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0CDQDTTXF",
-              "type": "libex-import"
-            }
-          ],
-          "work": "return-to-roar-jenny-mclachlan"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0CDQDTTXF",
@@ -10242,16 +10224,59 @@
     "revealed": {
       "added_at": "2026-07-25T19:18:21+01:00",
       "authors": [
-        "p-c-cast"
+        "p-c-cast",
+        "kristin-cast"
+      ],
+      "genres": [
+        "childrens",
+        "coming-of-age",
+        "fantasy",
+        "self-help",
+        "young-adult"
       ],
       "id": "revealed",
       "language": "en",
       "license": "CC0-1.0",
+      "recordings": {
+        "caitlin-davies-2013": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00ELQ2EQC",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81cSMI1vI4L.jpg",
+          "id": "caitlin-davies-2013",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "caitlin-davies"
+          ],
+          "publisher": "Macmillan Young Listeners",
+          "release_date": "2013-10-15",
+          "runtime_min": 598,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00ELQ2EQC",
+              "type": "libex-import"
+            }
+          ],
+          "work": "revealed"
+        }
+      },
       "sources": [
         {
           "imported_at": "2026-07-25",
           "ref": "https://www.goodreads.com/book/show/16096873-revealed",
           "type": "community"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00ELQ2EQC",
+          "type": "libex-import"
         }
       ],
       "title": "Revealed",
@@ -10785,61 +10810,6 @@
         }
       ],
       "title": "Revealed in Fire (Dramatized Adaptation)"
-    },
-    "revealed-kristin-cast": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "kristin-cast",
-        "p-c-cast"
-      ],
-      "genres": [
-        "childrens",
-        "coming-of-age",
-        "fantasy",
-        "self-help",
-        "young-adult"
-      ],
-      "id": "revealed-kristin-cast",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "caitlin-davies-2013": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B00ELQ2EQC",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81cSMI1vI4L.jpg",
-          "id": "caitlin-davies-2013",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "caitlin-davies"
-          ],
-          "publisher": "Macmillan Young Listeners",
-          "release_date": "2013-10-15",
-          "runtime_min": 598,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B00ELQ2EQC",
-              "type": "libex-import"
-            }
-          ],
-          "work": "revealed-kristin-cast"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00ELQ2EQC",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Revealed"
     },
     "revealed-margaret-peterson-haddix": {
       "added_at": "2026-08-02",

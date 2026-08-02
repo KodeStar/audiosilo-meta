@@ -2800,7 +2800,8 @@
     "the-land-of-roar": {
       "added_at": "2026-08-02",
       "authors": [
-        "jenny-mclachlan"
+        "jenny-mclachlan",
+        "ben-mantle"
       ],
       "genres": [
         "action-adventure",
@@ -2813,6 +2814,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "billy-ashcroft-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CDQC72L5",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91HB1W2FhzL.jpg",
+          "id": "billy-ashcroft-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "billy-ashcroft"
+          ],
+          "publisher": "Farshore",
+          "release_date": "2023-11-09",
+          "runtime_min": 368,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CDQC72L5",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-land-of-roar"
+        },
         "neil-gardner-2020": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -2856,56 +2885,7 @@
           "imported_at": "2026-08-02",
           "ref": "0063009005",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Land of Roar"
-    },
-    "the-land-of-roar-jenny-mclachlan": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "jenny-mclachlan",
-        "ben-mantle"
-      ],
-      "genres": [
-        "childrens",
-        "coming-of-age",
-        "fantasy",
-        "parenting-relationships"
-      ],
-      "id": "the-land-of-roar-jenny-mclachlan",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "billy-ashcroft-2023": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0CDQC72L5",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91HB1W2FhzL.jpg",
-          "id": "billy-ashcroft-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "billy-ashcroft"
-          ],
-          "publisher": "Farshore",
-          "release_date": "2023-11-09",
-          "runtime_min": 368,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0CDQC72L5",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-land-of-roar-jenny-mclachlan"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0CDQC72L5",

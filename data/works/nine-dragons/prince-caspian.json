@@ -8682,6 +8682,8 @@
         "comedy-humor",
         "fantasy",
         "history",
+        "mystery",
+        "police-procedural",
         "short-stories"
       ],
       "id": "princess-mirror-belle",
@@ -8752,12 +8754,45 @@
             }
           ],
           "work": "princess-mirror-belle"
+        },
+        "sophie-thompson-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0DNND1G3N",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91x2NUZkhFL.jpg",
+          "id": "sophie-thompson-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "sophie-thompson"
+          ],
+          "publisher": "Macmillan Digital Audio",
+          "release_date": "2024-11-20",
+          "runtime_min": 47,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DNND1G3N",
+              "type": "libex-import"
+            }
+          ],
+          "work": "princess-mirror-belle"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B00YY8MA8Y",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0DNND1G3N",
           "type": "libex-import"
         }
       ],
@@ -9040,34 +9075,7 @@
             }
           ],
           "work": "princess-mirror-belle-and-the-magic-shoes"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B016DYGNRA",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Princess Mirror-Belle and the Magic Shoes"
-    },
-    "princess-mirror-belle-and-the-magic-shoes-julia-donaldson": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "julia-donaldson"
-      ],
-      "genres": [
-        "arts-entertainment",
-        "childrens",
-        "comedy-humor",
-        "fantasy",
-        "history",
-        "music"
-      ],
-      "id": "princess-mirror-belle-and-the-magic-shoes-julia-donaldson",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "sophie-thompson-2018": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -9103,10 +9111,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "princess-mirror-belle-and-the-magic-shoes-julia-donaldson"
+          "work": "princess-mirror-belle-and-the-magic-shoes"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B016DYGNRA",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B079427829",
@@ -9233,60 +9246,6 @@
         }
       ],
       "title": "Princess Mirror-Belle and the Sea Monster's Cave"
-    },
-    "princess-mirror-belle-julia-donaldson": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "julia-donaldson"
-      ],
-      "genres": [
-        "childrens",
-        "comedy-humor",
-        "fantasy",
-        "mystery",
-        "police-procedural"
-      ],
-      "id": "princess-mirror-belle-julia-donaldson",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "sophie-thompson-2024": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0DNND1G3N",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91x2NUZkhFL.jpg",
-          "id": "sophie-thompson-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "sophie-thompson"
-          ],
-          "publisher": "Macmillan Digital Audio",
-          "release_date": "2024-11-20",
-          "runtime_min": 47,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0DNND1G3N",
-              "type": "libex-import"
-            }
-          ],
-          "work": "princess-mirror-belle-julia-donaldson"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0DNND1G3N",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Princess Mirror-Belle"
     },
     "princess-of-air": {
       "added_at": "2026-08-02",

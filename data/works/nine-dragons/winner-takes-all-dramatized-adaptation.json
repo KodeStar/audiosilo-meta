@@ -98,10 +98,44 @@
       "authors": [
         "a-a-milne"
       ],
+      "genres": [
+        "childrens",
+        "classics",
+        "nature",
+        "poetry"
+      ],
       "id": "winnie-the-pooh",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "alison-larkin-2022": {
+          "abridged": false,
+          "added_at": "2026-08-01",
+          "asin": [
+            {
+              "asin": "B09VLHYD67",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81kD+thMsAL.jpg",
+          "id": "alison-larkin-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alison-larkin"
+          ],
+          "publisher": "Alison Larkin",
+          "release_date": "2022-03-15",
+          "runtime_min": 174,
+          "sources": [
+            {
+              "imported_at": "2026-08-01",
+              "ref": "B09VLHYD67",
+              "type": "libex-import"
+            }
+          ],
+          "work": "winnie-the-pooh"
+        },
         "amanda-friday-2022": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -692,6 +726,34 @@
           ],
           "work": "winnie-the-pooh"
         },
+        "sally-phillips-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0G46K8G7D",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81pk6FOutmL.jpg",
+          "id": "sally-phillips-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "sally-phillips"
+          ],
+          "publisher": "Farshore",
+          "release_date": "2026-06-04",
+          "runtime_min": 164,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0G46K8G7D",
+              "type": "libex-import"
+            }
+          ],
+          "work": "winnie-the-pooh"
+        },
         "stephanie-laws-2025": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -754,118 +816,22 @@
           "imported_at": "2026-07-25",
           "ref": "https://www.goodreads.com/book/show/99107.Winnie_the_Pooh",
           "type": "community"
-        }
-      ],
-      "title": "Winnie-the-Pooh",
-      "xref": {
-        "goodreads": "99107"
-      }
-    },
-    "winnie-the-pooh-a-a-milne": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "a-a-milne",
-        "lisa-cavender"
-      ],
-      "genres": [
-        "childrens",
-        "classics",
-        "poetry"
-      ],
-      "id": "winnie-the-pooh-a-a-milne",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "alison-larkin-2022": {
-          "abridged": false,
-          "added_at": "2026-08-01",
-          "asin": [
-            {
-              "asin": "B09VLHYD67",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81kD+thMsAL.jpg",
-          "id": "alison-larkin-2022",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "alison-larkin"
-          ],
-          "publisher": "Alison Larkin",
-          "release_date": "2022-03-15",
-          "runtime_min": 174,
-          "sources": [
-            {
-              "imported_at": "2026-08-01",
-              "ref": "B09VLHYD67",
-              "type": "libex-import"
-            }
-          ],
-          "work": "winnie-the-pooh-a-a-milne"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-01",
           "ref": "B09VLHYD67",
           "type": "libex-import"
-        }
-      ],
-      "title": "Winnie the Pooh"
-    },
-    "winnie-the-pooh-a-a-milne-2": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "a-a-milne",
-        "e-h-shepard"
-      ],
-      "genres": [
-        "childrens",
-        "classics",
-        "nature"
-      ],
-      "id": "winnie-the-pooh-a-a-milne-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "sally-phillips-2026": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0G46K8G7D",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81pk6FOutmL.jpg",
-          "id": "sally-phillips-2026",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "sally-phillips"
-          ],
-          "publisher": "Farshore",
-          "release_date": "2026-06-04",
-          "runtime_min": 164,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0G46K8G7D",
-              "type": "libex-import"
-            }
-          ],
-          "work": "winnie-the-pooh-a-a-milne-2"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0G46K8G7D",
           "type": "libex-import"
         }
       ],
-      "title": "Winnie-the-Pooh"
+      "title": "Winnie-the-Pooh",
+      "xref": {
+        "goodreads": "99107"
+      }
     },
     "winnie-the-pooh-and-eeyores-lost-tail": {
       "added_at": "2026-08-02",

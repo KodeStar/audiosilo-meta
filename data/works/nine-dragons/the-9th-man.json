@@ -12921,6 +12921,13 @@
       "authors": [
         "mark-twain"
       ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "classics",
+        "coming-of-age",
+        "literary-fiction"
+      ],
       "id": "the-adventures-of-huckleberry-finn",
       "language": "en",
       "license": "CC0-1.0",
@@ -13106,6 +13113,34 @@
             {
               "imported_at": "2026-07-30",
               "ref": "B00EZ6KGSG",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-adventures-of-huckleberry-finn"
+        },
+        "garrison-keillor-2004": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002V8NB96",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/816VUiRRWnL.jpg",
+          "id": "garrison-keillor-2004",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "garrison-keillor"
+          ],
+          "publisher": "Highbridge Audio",
+          "release_date": "2004-10-29",
+          "runtime_min": 191,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002V8NB96",
               "type": "libex-import"
             }
           ],
@@ -14107,6 +14142,11 @@
           "imported_at": "2026-07-25",
           "ref": "https://www.goodreads.com/book/show/2956.The_Adventures_of_Huckleberry_Finn",
           "type": "community"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V8NB96",
+          "type": "libex-import"
         }
       ],
       "title": "The Adventures of Huckleberry Finn",
@@ -14216,61 +14256,6 @@
         }
       ],
       "title": "The Adventures of Huckleberry Finn (Dramatized)"
-    },
-    "the-adventures-of-huckleberry-finn-mark-twain": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "mark-twain",
-        "garrison-keillor"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "classics",
-        "coming-of-age",
-        "literary-fiction"
-      ],
-      "id": "the-adventures-of-huckleberry-finn-mark-twain",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "garrison-keillor-2004": {
-          "abridged": true,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B002V8NB96",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/816VUiRRWnL.jpg",
-          "id": "garrison-keillor-2004",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "garrison-keillor"
-          ],
-          "publisher": "Highbridge Audio",
-          "release_date": "2004-10-29",
-          "runtime_min": 191,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B002V8NB96",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-adventures-of-huckleberry-finn-mark-twain"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B002V8NB96",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Adventures of Huckleberry Finn"
     },
     "the-adventures-of-huckleberry-finn-seasons-edition-summer": {
       "added_at": "2026-08-02",

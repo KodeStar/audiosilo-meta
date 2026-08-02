@@ -1478,63 +1478,12 @@
         "andy-griffiths"
       ],
       "genres": [
+        "action-adventure",
         "childrens",
+        "comedy-humor",
         "fairy-tales-folklore"
       ],
       "id": "the-104-storey-treehouse",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "stig-wemyss-2019": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B07F41C228",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/A1sgOuYzoDL.jpg",
-          "id": "stig-wemyss-2019",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "stig-wemyss"
-          ],
-          "publisher": "Bolinda Publishing Pty Ltd",
-          "release_date": "2019-03-12",
-          "runtime_min": 125,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B07F41C228",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-104-storey-treehouse"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B07F41C228",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The 104-Storey Treehouse"
-    },
-    "the-104-storey-treehouse-andy-griffiths": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "andy-griffiths",
-        "terry-denton"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "comedy-humor"
-      ],
-      "id": "the-104-storey-treehouse-andy-griffiths",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -1573,10 +1522,43 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-104-storey-treehouse-andy-griffiths"
+          "work": "the-104-storey-treehouse"
+        },
+        "stig-wemyss-2019": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B07F41C228",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1sgOuYzoDL.jpg",
+          "id": "stig-wemyss-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "stig-wemyss"
+          ],
+          "publisher": "Bolinda Publishing Pty Ltd",
+          "release_date": "2019-03-12",
+          "runtime_min": 125,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07F41C228",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-104-storey-treehouse"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B07F41C228",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B07BZQGCS1",

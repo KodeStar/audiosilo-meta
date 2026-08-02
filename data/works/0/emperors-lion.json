@@ -6852,15 +6852,16 @@
     "empire-of-the-vampire": {
       "added_at": "2026-08-02",
       "authors": [
-        "jay-kristoff",
-        "bon-orthwick"
+        "jay-kristoff"
       ],
       "genres": [
         "action-adventure",
+        "comedy-humor",
         "dark-fantasy",
         "epic-fantasy",
         "fantasy",
         "paranormal",
+        "romance",
         "urban-fantasy"
       ],
       "id": "empire-of-the-vampire",
@@ -6873,6 +6874,10 @@
           "asin": [
             {
               "asin": "1250772664",
+              "region": "us"
+            },
+            {
+              "asin": "0008350477",
               "region": "us"
             }
           ],
@@ -6891,6 +6896,11 @@
               "imported_at": "2026-08-02",
               "ref": "1250772664",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "0008350477",
+              "type": "libex-import"
             }
           ],
           "work": "empire-of-the-vampire"
@@ -6901,58 +6911,7 @@
           "imported_at": "2026-08-02",
           "ref": "1250772664",
           "type": "libex-import"
-        }
-      ],
-      "title": "Empire of the Vampire"
-    },
-    "empire-of-the-vampire-jay-kristoff": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "jay-kristoff"
-      ],
-      "genres": [
-        "action-adventure",
-        "comedy-humor",
-        "dark-fantasy",
-        "epic-fantasy",
-        "fantasy",
-        "paranormal",
-        "romance"
-      ],
-      "id": "empire-of-the-vampire-jay-kristoff",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "damian-lynch-2021": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "0008350477",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71QrW-rmo9L.jpg",
-          "id": "damian-lynch-2021",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "damian-lynch"
-          ],
-          "publisher": "HarperCollins",
-          "release_date": "2021-09-07",
-          "runtime_min": 1630,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "0008350477",
-              "type": "libex-import"
-            }
-          ],
-          "work": "empire-of-the-vampire-jay-kristoff"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "0008350477",

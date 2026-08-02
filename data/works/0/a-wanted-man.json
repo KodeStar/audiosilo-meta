@@ -5791,8 +5791,7 @@
     "a-whole-new-world": {
       "added_at": "2026-08-02",
       "authors": [
-        "liz-braswell",
-        "disney-press"
+        "liz-braswell"
       ],
       "genres": [
         "action-adventure",
@@ -5850,33 +5849,7 @@
             }
           ],
           "work": "a-whole-new-world"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0147HI4GI",
-          "type": "libex-import"
-        }
-      ],
-      "title": "A Whole New World"
-    },
-    "a-whole-new-world-liz-braswell": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "liz-braswell"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "fairy-tales-folklore",
-        "fantasy",
-        "young-adult"
-      ],
-      "id": "a-whole-new-world-liz-braswell",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "james-patrick-cronin-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -5903,10 +5876,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "a-whole-new-world-liz-braswell"
+          "work": "a-whole-new-world"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0147HI4GI",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0FGL1PPQS",

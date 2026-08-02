@@ -7770,31 +7770,7 @@
             }
           ],
           "work": "le-chant-de-lepee"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B084HCC2GM",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Le Chant de l'épée"
-    },
-    "le-chant-de-lepee-bernard-cornwell": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "bernard-cornwell",
-        "pascal-loubet"
-      ],
-      "genres": [
-        "fantasy",
-        "historical-fiction"
-      ],
-      "id": "le-chant-de-lepee-bernard-cornwell",
-      "language": "fr",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "marc-duquenoy-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -7821,10 +7797,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "le-chant-de-lepee-bernard-cornwell"
+          "work": "le-chant-de-lepee"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B084HCC2GM",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0FL2RTC9L",

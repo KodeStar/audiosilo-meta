@@ -2048,19 +2048,48 @@
       "added_at": "2026-08-01",
       "authors": [
         "alicia-rades",
-        "hidden-legends",
         "megan-linski"
       ],
       "genres": [
         "fantasy",
         "paranormal",
         "romance",
-        "urban-fantasy"
+        "urban-fantasy",
+        "young-adult"
       ],
       "id": "the-earth-legend",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "graham-halstead-2020": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "1541405439",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/912s2L4Yr4L.jpg",
+          "id": "graham-halstead-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "graham-halstead",
+            "jennifer-jill-araya"
+          ],
+          "publisher": "Tantor Audio",
+          "release_date": "2020-01-14",
+          "runtime_min": 1251,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1541405439",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-earth-legend"
+        },
         "graham-halstead-2021": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -2096,56 +2125,7 @@
           "imported_at": "2026-08-01",
           "ref": "B09DN7H4G5",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Earth Legend"
-    },
-    "the-earth-legend-alicia-rades": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "alicia-rades",
-        "megan-linski"
-      ],
-      "genres": [
-        "fantasy",
-        "romance",
-        "young-adult"
-      ],
-      "id": "the-earth-legend-alicia-rades",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "graham-halstead-2020": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "1541405439",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/912s2L4Yr4L.jpg",
-          "id": "graham-halstead-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "graham-halstead",
-            "jennifer-jill-araya"
-          ],
-          "publisher": "Tantor Audio",
-          "release_date": "2020-01-14",
-          "runtime_min": 1251,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "1541405439",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-earth-legend-alicia-rades"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "1541405439",
@@ -2815,11 +2795,13 @@
     "the-ebon-staff": {
       "added_at": "2026-08-01",
       "authors": [
-        "d-p-prior"
+        "d-p-prior",
+        "derek-prior"
       ],
       "genres": [
         "coming-of-age",
         "epic-fantasy",
+        "fairy-tales-folklore",
         "fantasy"
       ],
       "id": "the-ebon-staff",
@@ -2853,32 +2835,7 @@
             }
           ],
           "work": "the-ebon-staff"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B00SNP7RFK",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Ebon Staff"
-    },
-    "the-ebon-staff-derek-prior": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "derek-prior",
-        "d-p-prior"
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fairy-tales-folklore",
-        "fantasy"
-      ],
-      "id": "the-ebon-staff-derek-prior",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "bob-neufeld-2021": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -2905,10 +2862,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-ebon-staff-derek-prior"
+          "work": "the-ebon-staff"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B00SNP7RFK",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-01",
           "ref": "B09DHNN8Z2",

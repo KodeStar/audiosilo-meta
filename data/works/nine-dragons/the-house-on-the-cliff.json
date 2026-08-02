@@ -5511,13 +5511,47 @@
     "the-hundred-and-one-dalmatians": {
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
-        "dodie-smith",
-        "martin-jarvis"
+        "dodie-smith"
+      ],
+      "genres": [
+        "childrens",
+        "classics",
+        "nature"
       ],
       "id": "the-hundred-and-one-dalmatians",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "brenda-blethyn-2006": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002UZX622",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1sv1kGf4iL.jpg",
+          "id": "brenda-blethyn-2006",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "brenda-blethyn",
+            "full-cast",
+            "patricia-hodge"
+          ],
+          "publisher": "BBC Digital Audio",
+          "release_date": "2006-08-16",
+          "runtime_min": 105,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002UZX622",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-hundred-and-one-dalmatians"
+        },
         "martin-jarvis-2010": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -5834,63 +5868,14 @@
           "imported_at": "2026-07-25",
           "ref": "B003XFSEN4",
           "type": "audiosilo-books-import"
-        }
-      ],
-      "title": "The Hundred and One Dalmatians"
-    },
-    "the-hundred-and-one-dalmatians-dodie-smith": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "dodie-smith"
-      ],
-      "genres": [
-        "childrens",
-        "classics",
-        "nature"
-      ],
-      "id": "the-hundred-and-one-dalmatians-dodie-smith",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "brenda-blethyn-2006": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B002UZX622",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/A1sv1kGf4iL.jpg",
-          "id": "brenda-blethyn-2006",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "brenda-blethyn",
-            "full-cast",
-            "patricia-hodge"
-          ],
-          "publisher": "BBC Digital Audio",
-          "release_date": "2006-08-16",
-          "runtime_min": 105,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B002UZX622",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-hundred-and-one-dalmatians-dodie-smith"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B002UZX622",
           "type": "libex-import"
         }
       ],
-      "title": "The Hundred And One Dalmatians"
+      "title": "The Hundred and One Dalmatians"
     },
     "the-hundred-days": {
       "added_at": "2026-08-02",

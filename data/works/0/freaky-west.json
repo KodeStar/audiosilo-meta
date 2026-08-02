@@ -6386,7 +6386,9 @@
         "brian-williams"
       ],
       "genres": [
-        "childrens"
+        "action-adventure",
+        "childrens",
+        "fantasy"
       ],
       "id": "freefall-roderick-gordon",
       "language": "en",
@@ -6419,31 +6421,7 @@
             }
           ],
           "work": "freefall-roderick-gordon"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0036JV9ZC",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Freefall"
-    },
-    "freefall-roderick-gordon-2": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "roderick-gordon"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "fantasy"
-      ],
-      "id": "freefall-roderick-gordon-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "steven-crossley-2010": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -6470,10 +6448,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "freefall-roderick-gordon-2"
+          "work": "freefall-roderick-gordon"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0036JV9ZC",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B003G4HEY2",

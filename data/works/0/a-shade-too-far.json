@@ -5576,14 +5576,15 @@
     "a-sky-beyond-the-storm": {
       "added_at": "2026-08-02",
       "authors": [
-        "sabaa-tahir",
-        "freddie-gaminara"
+        "sabaa-tahir"
       ],
       "genres": [
         "epic-fantasy",
         "fantasy",
         "historical-fiction",
         "history",
+        "paranormal",
+        "romance",
         "young-adult"
       ],
       "id": "a-sky-beyond-the-storm",
@@ -5621,33 +5622,7 @@
             }
           ],
           "work": "a-sky-beyond-the-storm"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "0008411689",
-          "type": "libex-import"
-        }
-      ],
-      "title": "A Sky Beyond the Storm"
-    },
-    "a-sky-beyond-the-storm-sabaa-tahir": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "sabaa-tahir"
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fantasy",
-        "paranormal",
-        "romance",
-        "young-adult"
-      ],
-      "id": "a-sky-beyond-the-storm-sabaa-tahir",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "fiona-hardingham-2020": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -5678,10 +5653,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "a-sky-beyond-the-storm-sabaa-tahir"
+          "work": "a-sky-beyond-the-storm"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "0008411689",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "0593288041",

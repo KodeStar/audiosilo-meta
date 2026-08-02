@@ -6594,7 +6594,9 @@
       ],
       "genres": [
         "classics",
-        "mystery"
+        "literary-fiction",
+        "mystery",
+        "thriller-suspense"
       ],
       "id": "a-study-in-scarlet",
       "language": "en",
@@ -7197,6 +7199,34 @@
           ],
           "work": "a-study-in-scarlet"
         },
+        "rob-penman-2015": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00S8I1JDS",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81QKGDEn58L.jpg",
+          "id": "rob-penman-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "rob-penman"
+          ],
+          "publisher": "Real Reads",
+          "release_date": "2015-01-15",
+          "runtime_min": 35,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00S8I1JDS",
+              "type": "libex-import"
+            }
+          ],
+          "work": "a-study-in-scarlet"
+        },
         "sam-devereaux-2019": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -7404,6 +7434,11 @@
           "imported_at": "2026-08-01",
           "ref": "B0CH41XPT7",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00S8I1JDS",
+          "type": "libex-import"
         }
       ],
       "title": "A Study in Scarlet"
@@ -7607,60 +7642,6 @@
         }
       ],
       "title": "A Study in Scarlet (AmazonClassics Edition)"
-    },
-    "a-study-in-scarlet-arthur-conan-doyle": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "arthur-conan-doyle",
-        "tony-evans"
-      ],
-      "genres": [
-        "classics",
-        "literary-fiction",
-        "mystery",
-        "thriller-suspense"
-      ],
-      "id": "a-study-in-scarlet-arthur-conan-doyle",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "rob-penman-2015": {
-          "abridged": true,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B00S8I1JDS",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81QKGDEn58L.jpg",
-          "id": "rob-penman-2015",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "rob-penman"
-          ],
-          "publisher": "Real Reads",
-          "release_date": "2015-01-15",
-          "runtime_min": 35,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B00S8I1JDS",
-              "type": "libex-import"
-            }
-          ],
-          "work": "a-study-in-scarlet-arthur-conan-doyle"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00S8I1JDS",
-          "type": "libex-import"
-        }
-      ],
-      "title": "A Study in Scarlet"
     },
     "a-study-in-scarlet-classic-tales-edition": {
       "added_at": "2026-08-02",

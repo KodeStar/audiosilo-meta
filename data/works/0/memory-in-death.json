@@ -15559,12 +15559,41 @@
       ],
       "genres": [
         "childrens",
-        "fantasy"
+        "fantasy",
+        "nature"
       ],
       "id": "mermaid-academy-aurora-and-jewel",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "kristin-atherton-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0FDX2W3MB",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91mGpLRo4lL.jpg",
+          "id": "kristin-atherton-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kristin-atherton"
+          ],
+          "publisher": "Nosy Crow",
+          "release_date": "2025-07-03",
+          "runtime_min": 80,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FDX2W3MB",
+              "type": "libex-import"
+            }
+          ],
+          "work": "mermaid-academy-aurora-and-jewel"
+        },
         "kristin-atherton-2026": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -15599,55 +15628,7 @@
           "imported_at": "2026-08-02",
           "ref": "B0H2C8L921",
           "type": "libex-import"
-        }
-      ],
-      "title": "Mermaid Academy: Aurora and Jewel"
-    },
-    "mermaid-academy-aurora-and-jewel-julie-sykes": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "julie-sykes",
-        "linda-chapman"
-      ],
-      "genres": [
-        "childrens",
-        "fantasy",
-        "nature"
-      ],
-      "id": "mermaid-academy-aurora-and-jewel-julie-sykes",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "kristin-atherton-2025": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0FDX2W3MB",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91mGpLRo4lL.jpg",
-          "id": "kristin-atherton-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "kristin-atherton"
-          ],
-          "publisher": "Nosy Crow",
-          "release_date": "2025-07-03",
-          "runtime_min": 80,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0FDX2W3MB",
-              "type": "libex-import"
-            }
-          ],
-          "work": "mermaid-academy-aurora-and-jewel-julie-sykes"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0FDX2W3MB",

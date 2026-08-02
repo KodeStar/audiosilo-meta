@@ -6260,6 +6260,10 @@
             {
               "asin": "B0CRDMG6C9",
               "region": "us"
+            },
+            {
+              "asin": "B0CTCN9BCM",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81kdtdwAfJL.jpg",
@@ -6277,6 +6281,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0CRDMG6C9",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CTCN9BCM",
+              "type": "libex-import"
             }
           ],
           "work": "familie-schnosel-vs-familie-vogel"
@@ -6287,56 +6296,7 @@
           "imported_at": "2026-08-02",
           "ref": "B0CRDMG6C9",
           "type": "libex-import"
-        }
-      ],
-      "title": "Familie Schnösel vs. Familie Vogel"
-    },
-    "familie-schnosel-vs-familie-vogel-familie-vogel": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "familie-vogel",
-        "spiel-mit-mir"
-      ],
-      "genres": [
-        "childrens",
-        "coming-of-age",
-        "parenting-relationships"
-      ],
-      "id": "familie-schnosel-vs-familie-vogel-familie-vogel",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "familie-vogel-2024": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0CTCN9BCM",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81kdtdwAfJL.jpg",
-          "id": "familie-vogel-2024",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "familie-vogel",
-            "spiel-mit-mir"
-          ],
-          "publisher": "Spiel mit mir",
-          "release_date": "2024-02-09",
-          "runtime_min": 55,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0CTCN9BCM",
-              "type": "libex-import"
-            }
-          ],
-          "work": "familie-schnosel-vs-familie-vogel-familie-vogel"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0CTCN9BCM",

@@ -9943,11 +9943,11 @@
     "cloak-of-the-light": {
       "added_at": "2026-08-02",
       "authors": [
-        "chuck-black",
-        "michael-orenstein"
+        "chuck-black"
       ],
       "genres": [
         "action-adventure",
+        "fantasy",
         "young-adult"
       ],
       "id": "cloak-of-the-light",
@@ -9982,31 +9982,7 @@
             }
           ],
           "work": "cloak-of-the-light"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00ZE5VSCK",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Cloak of the Light"
-    },
-    "cloak-of-the-light-chuck-black": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "chuck-black"
-      ],
-      "genres": [
-        "action-adventure",
-        "fantasy",
-        "young-adult"
-      ],
-      "id": "cloak-of-the-light-chuck-black",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "katie-leigh-2016": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -10034,10 +10010,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "cloak-of-the-light-chuck-black"
+          "work": "cloak-of-the-light"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00ZE5VSCK",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B01D57NPFG",

@@ -12840,14 +12840,14 @@
     "frozen-2-forest-of-shadows": {
       "added_at": "2026-08-02",
       "authors": [
-        "disney-press",
         "kamilla-benko"
       ],
       "genres": [
         "action-adventure",
         "childrens",
         "fairy-tales-folklore",
-        "fantasy"
+        "fantasy",
+        "young-adult"
       ],
       "id": "frozen-2-forest-of-shadows",
       "language": "en",
@@ -12898,31 +12898,7 @@
             }
           ],
           "work": "frozen-2-forest-of-shadows"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "1982581220",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Frozen 2: Forest of Shadows"
-    },
-    "frozen-2-forest-of-shadows-kamilla-benko": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "kamilla-benko"
-      ],
-      "genres": [
-        "childrens",
-        "fantasy",
-        "young-adult"
-      ],
-      "id": "frozen-2-forest-of-shadows-kamilla-benko",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "rachel-matthews-2026": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -12958,10 +12934,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "frozen-2-forest-of-shadows-kamilla-benko"
+          "work": "frozen-2-forest-of-shadows"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1982581220",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0H3885NRM",

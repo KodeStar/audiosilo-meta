@@ -10492,6 +10492,10 @@
             {
               "asin": "B0G1BF31F9",
               "region": "us"
+            },
+            {
+              "asin": "B0G4Q28SWK",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91w3F728pOL.jpg",
@@ -10508,6 +10512,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0G1BF31F9",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0G4Q28SWK",
+              "type": "libex-import"
             }
           ],
           "work": "bone-wars"
@@ -10518,53 +10527,7 @@
           "imported_at": "2026-08-02",
           "ref": "B0G1BF31F9",
           "type": "libex-import"
-        }
-      ],
-      "title": "Bone Wars"
-    },
-    "bone-wars-tod-olson": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "tod-olson",
-        "dk"
-      ],
-      "genres": [
-        "childrens",
-        "science"
-      ],
-      "id": "bone-wars-tod-olson",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "jay-reum-2026": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0G4Q28SWK",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91VzLA35-1L.jpg",
-          "id": "jay-reum-2026",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "jay-reum"
-          ],
-          "publisher": "DK Children",
-          "release_date": "2026-09-29",
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0G4Q28SWK",
-              "type": "libex-import"
-            }
-          ],
-          "work": "bone-wars-tod-olson"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0G4Q28SWK",
@@ -11896,7 +11859,16 @@
     "bones-of-the-hills": {
       "added_at": "2026-07-11T17:30:05+01:00",
       "authors": [
-        "conn-iggulden"
+        "conn-iggulden",
+        "kati-nicholl"
+      ],
+      "genres": [
+        "action-adventure",
+        "epic-fantasy",
+        "fantasy",
+        "historical-fiction",
+        "thriller-suspense",
+        "war-military-fiction"
       ],
       "id": "bones-of-the-hills",
       "language": "en",
@@ -12010,35 +11982,7 @@
             }
           ],
           "work": "bones-of-the-hills"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-11",
-          "ref": "B004FTXK5Y",
-          "type": "openaudible-import"
-        }
-      ],
-      "title": "Bones of the Hills"
-    },
-    "bones-of-the-hills-kati-nicholl": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "kati-nicholl",
-        "conn-iggulden"
-      ],
-      "genres": [
-        "action-adventure",
-        "epic-fantasy",
-        "fantasy",
-        "historical-fiction",
-        "thriller-suspense",
-        "war-military-fiction"
-      ],
-      "id": "bones-of-the-hills-kati-nicholl",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "russell-boulter-2008": {
           "abridged": true,
           "added_at": "2026-08-02",
@@ -12065,10 +12009,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "bones-of-the-hills-kati-nicholl"
+          "work": "bones-of-the-hills"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-11",
+          "ref": "B004FTXK5Y",
+          "type": "openaudible-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0036GMLL6",

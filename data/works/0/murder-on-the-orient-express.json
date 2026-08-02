@@ -4031,12 +4031,15 @@
     "murtagh": {
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
-        "christopher-paolini"
+        "christopher-paolini",
+        "john-jude-palencar"
       ],
       "genres": [
         "action-adventure",
+        "dark-fantasy",
         "epic-fantasy",
         "fantasy",
+        "thriller-suspense",
         "young-adult"
       ],
       "id": "murtagh",
@@ -4058,6 +4061,10 @@
             {
               "asin": "B0BXBLHMV6",
               "region": "es"
+            },
+            {
+              "asin": "B0BXXK83P4",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -4418,6 +4425,11 @@
               "imported_at": "2026-07-30",
               "ref": "B0BXBLHMV6",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0BXXK83P4",
+              "type": "libex-import"
             }
           ],
           "work": "murtagh"
@@ -4433,58 +4445,7 @@
           "imported_at": "2026-07-30",
           "ref": "B0BXBJCZXJ",
           "type": "libex-import"
-        }
-      ],
-      "title": "Murtagh"
-    },
-    "murtagh-christopher-paolini": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "christopher-paolini",
-        "john-jude-palencar"
-      ],
-      "genres": [
-        "action-adventure",
-        "dark-fantasy",
-        "epic-fantasy",
-        "fantasy",
-        "thriller-suspense",
-        "young-adult"
-      ],
-      "id": "murtagh-christopher-paolini",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "gerard-doyle-2023": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0BXXK83P4",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91TPlfZVNyL.jpg",
-          "id": "gerard-doyle-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "gerard-doyle"
-          ],
-          "publisher": "Penguin",
-          "release_date": "2023-11-07",
-          "runtime_min": 1472,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0BXXK83P4",
-              "type": "libex-import"
-            }
-          ],
-          "work": "murtagh-christopher-paolini"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0BXXK83P4",

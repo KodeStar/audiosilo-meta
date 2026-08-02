@@ -5442,6 +5442,8 @@
       ],
       "genres": [
         "action-adventure",
+        "fantasy",
+        "religious-fiction",
         "young-adult"
       ],
       "id": "rise-of-the-fallen-chuck-black",
@@ -5475,31 +5477,7 @@
             }
           ],
           "work": "rise-of-the-fallen-chuck-black"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00ZGUE28A",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Rise of the Fallen"
-    },
-    "rise-of-the-fallen-chuck-black-2": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "chuck-black"
-      ],
-      "genres": [
-        "fantasy",
-        "religious-fiction",
-        "young-adult"
-      ],
-      "id": "rise-of-the-fallen-chuck-black-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "leanne-bell-2016": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -5527,10 +5505,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "rise-of-the-fallen-chuck-black-2"
+          "work": "rise-of-the-fallen-chuck-black"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00ZGUE28A",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B01D57KCAC",

@@ -3959,19 +3959,48 @@
       "added_at": "2026-08-01",
       "authors": [
         "alicia-rades",
-        "hidden-legends",
         "megan-linski"
       ],
       "genres": [
         "fantasy",
         "paranormal",
         "romance",
-        "urban-fantasy"
+        "urban-fantasy",
+        "young-adult"
       ],
       "id": "the-fire-prophecy",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "graham-halstead-2019": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "1541405412",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91ti+qgrS1L.jpg",
+          "id": "graham-halstead-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "graham-halstead",
+            "jennifer-jill-araya"
+          ],
+          "publisher": "Tantor Audio",
+          "release_date": "2019-07-24",
+          "runtime_min": 903,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1541405412",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-fire-prophecy"
+        },
         "graham-halstead-2021": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -4007,56 +4036,7 @@
           "imported_at": "2026-08-01",
           "ref": "B09DN1LRXJ",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Fire Prophecy"
-    },
-    "the-fire-prophecy-alicia-rades": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "alicia-rades",
-        "megan-linski"
-      ],
-      "genres": [
-        "fantasy",
-        "romance",
-        "young-adult"
-      ],
-      "id": "the-fire-prophecy-alicia-rades",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "graham-halstead-2019": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "1541405412",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91ti+qgrS1L.jpg",
-          "id": "graham-halstead-2019",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "graham-halstead",
-            "jennifer-jill-araya"
-          ],
-          "publisher": "Tantor Audio",
-          "release_date": "2019-07-24",
-          "runtime_min": 903,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "1541405412",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-fire-prophecy-alicia-rades"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "1541405412",

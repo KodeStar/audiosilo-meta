@@ -1745,13 +1745,16 @@
     "the-bugler": {
       "added_at": "2026-08-01",
       "authors": [
-        "l-l-muir",
-        "the-ghosts-of-culloden-moor"
+        "l-l-muir"
       ],
       "genres": [
+        "fantasy",
         "historical-fiction",
         "historical-romance",
-        "romance"
+        "literary-fiction",
+        "paranormal",
+        "romance",
+        "urban-fantasy"
       ],
       "id": "the-bugler",
       "language": "en",
@@ -1784,35 +1787,7 @@
             }
           ],
           "work": "the-bugler"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B0BJ4ZRXW7",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Bugler"
-    },
-    "the-bugler-l-l-muir": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "l-l-muir"
-      ],
-      "genres": [
-        "fantasy",
-        "historical-fiction",
-        "historical-romance",
-        "literary-fiction",
-        "paranormal",
-        "romance",
-        "urban-fantasy"
-      ],
-      "id": "the-bugler-l-l-muir",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "andrew-mcdermott-2023": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -1840,10 +1815,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-bugler-l-l-muir"
+          "work": "the-bugler"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B0BJ4ZRXW7",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-01",
           "ref": "B0CMRJBJMG",

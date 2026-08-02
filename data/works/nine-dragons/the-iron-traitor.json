@@ -10711,6 +10711,16 @@
       "authors": [
         "flavius-josephus"
       ],
+      "credits": [
+        {
+          "person": "william-whiston",
+          "role": "translator"
+        }
+      ],
+      "genres": [
+        "history",
+        "religion-spirituality"
+      ],
       "id": "the-jewish-war",
       "language": "en",
       "license": "CC0-1.0",
@@ -11332,165 +11342,7 @@
             }
           ],
           "work": "the-jewish-war"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B00A0XZII6",
-          "type": "audiosilo-books-import"
-        }
-      ],
-      "title": "The Jewish War"
-    },
-    "the-jewish-war-captivating-history": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "captivating-history"
-      ],
-      "genres": [
-        "education",
-        "history",
-        "religion-spirituality"
-      ],
-      "id": "the-jewish-war-captivating-history",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "jason-zenobia-2023": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B0C5Z25KVF",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 24427,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 421929,
-              "start_ms": 24427,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1151454,
-              "start_ms": 446356,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1238761,
-              "start_ms": 1597810,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1474072,
-              "start_ms": 2836571,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1437802,
-              "start_ms": 4310643,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1247840,
-              "start_ms": 5748445,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1131415,
-              "start_ms": 6996285,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1471866,
-              "start_ms": 8127700,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 810887,
-              "start_ms": 9599566,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1149828,
-              "start_ms": 10410453,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 814741,
-              "start_ms": 11560281,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 98800,
-              "start_ms": 12375022,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 35177,
-              "start_ms": 12473822,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81VSCOp3l7L.jpg",
-          "id": "jason-zenobia-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "jason-zenobia"
-          ],
-          "publisher": "Captivating History",
-          "release_date": "2023",
-          "runtime_min": 208,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0C5Z25KVF",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0C5Z25KVF",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-jewish-war-captivating-history"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B0C5Z25KVF",
-          "type": "audiosilo-books-import"
         },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B0C5Z25KVF",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Jewish War"
-    },
-    "the-jewish-war-flavius-josephus": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "flavius-josephus",
-        "william-whiston"
-      ],
-      "genres": [
-        "history",
-        "religion-spirituality"
-      ],
-      "id": "the-jewish-war-flavius-josephus",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "jonathan-booth-2023": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -12124,10 +11976,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-jewish-war-flavius-josephus"
+          "work": "the-jewish-war"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B00A0XZII6",
+          "type": "audiosilo-books-import"
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "B0BZZYZG9C",
@@ -12136,6 +11993,140 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B0BZZYZG9C",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Jewish War"
+    },
+    "the-jewish-war-captivating-history": {
+      "added_at": "2026-07-25T17:12:12+01:00",
+      "authors": [
+        "captivating-history"
+      ],
+      "genres": [
+        "education",
+        "history",
+        "religion-spirituality"
+      ],
+      "id": "the-jewish-war-captivating-history",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "jason-zenobia-2023": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B0C5Z25KVF",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 24427,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 421929,
+              "start_ms": 24427,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1151454,
+              "start_ms": 446356,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1238761,
+              "start_ms": 1597810,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1474072,
+              "start_ms": 2836571,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1437802,
+              "start_ms": 4310643,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1247840,
+              "start_ms": 5748445,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1131415,
+              "start_ms": 6996285,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1471866,
+              "start_ms": 8127700,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 810887,
+              "start_ms": 9599566,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1149828,
+              "start_ms": 10410453,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 814741,
+              "start_ms": 11560281,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 98800,
+              "start_ms": 12375022,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 35177,
+              "start_ms": 12473822,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81VSCOp3l7L.jpg",
+          "id": "jason-zenobia-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jason-zenobia"
+          ],
+          "publisher": "Captivating History",
+          "release_date": "2023",
+          "runtime_min": 208,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0C5Z25KVF",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0C5Z25KVF",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-jewish-war-captivating-history"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B0C5Z25KVF",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B0C5Z25KVF",
           "type": "libex-import"
         }
       ],

@@ -2992,8 +2992,11 @@
         "mark-twain"
       ],
       "genres": [
+        "childrens",
         "classics",
-        "literary-fiction"
+        "coming-of-age",
+        "literary-fiction",
+        "writing-publishing"
       ],
       "id": "the-adventures-of-tom-sawyer",
       "language": "en",
@@ -4555,6 +4558,34 @@
           ],
           "work": "the-adventures-of-tom-sawyer"
         },
+        "uncredited-2007": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0035LO00W",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51AxlLRiwzL.jpg",
+          "id": "uncredited-2007",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "uncredited"
+          ],
+          "publisher": "Pan Macmillan Publishers Ltd.",
+          "release_date": "2007-07-10",
+          "runtime_min": 75,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0035LO00W",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-adventures-of-tom-sawyer"
+        },
         "wil-wheaton-2009": {
           "abridged": true,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -4649,6 +4680,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B01HQMQLWK",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0035LO00W",
           "type": "libex-import"
         }
       ],
@@ -4822,61 +4858,6 @@
         }
       ],
       "title": "The Adventures of Tom Sawyer: Classic Starts®"
-    },
-    "the-adventures-of-tom-sawyer-mark-twain": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "mark-twain",
-        "f-h-cornish-retold-by"
-      ],
-      "genres": [
-        "childrens",
-        "classics",
-        "coming-of-age",
-        "literary-fiction",
-        "writing-publishing"
-      ],
-      "id": "the-adventures-of-tom-sawyer-mark-twain",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "uncredited-2007": {
-          "abridged": true,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0035LO00W",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51AxlLRiwzL.jpg",
-          "id": "uncredited-2007",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "uncredited"
-          ],
-          "publisher": "Pan Macmillan Publishers Ltd.",
-          "release_date": "2007-07-10",
-          "runtime_min": 75,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0035LO00W",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-adventures-of-tom-sawyer-mark-twain"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0035LO00W",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Adventures of Tom Sawyer"
     },
     "the-adventures-of-tom-stranger-interdimensional-insurance-agent": {
       "added_at": "2026-07-17T09:08:56+00:00",

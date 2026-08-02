@@ -8526,13 +8526,17 @@
     "the-grim-grotto": {
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
-        "lemony-snicket"
+        "lemony-snicket",
+        "brett-helquist"
       ],
       "genres": [
         "action-adventure",
         "childrens",
+        "classics",
         "comedy-humor",
         "coming-of-age",
+        "fantasy",
+        "mystery",
         "parenting-relationships"
       ],
       "id": "the-grim-grotto",
@@ -8648,40 +8652,7 @@
             }
           ],
           "work": "the-grim-grotto"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B002V0CAK0",
-          "type": "audiosilo-books-import"
         },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B002V0CAK0",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Grim Grotto"
-    },
-    "the-grim-grotto-lemony-snicket": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "lemony-snicket",
-        "brett-helquist"
-      ],
-      "genres": [
-        "childrens",
-        "classics",
-        "coming-of-age",
-        "fantasy",
-        "mystery",
-        "parenting-relationships"
-      ],
-      "id": "the-grim-grotto-lemony-snicket",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "tim-curry-2026": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -8708,10 +8679,20 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-grim-grotto-lemony-snicket"
+          "work": "the-grim-grotto"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B002V0CAK0",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B002V0CAK0",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0GJXT2XP3",
@@ -10388,6 +10369,7 @@
       "genres": [
         "childrens",
         "classics",
+        "fairy-tales-folklore",
         "horror",
         "nature",
         "poetry"
@@ -10423,12 +10405,74 @@
             }
           ],
           "work": "the-gruffalo"
+        },
+        "imelda-staunton-2008": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0036GPRXU",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/916Rfi20cJL.jpg",
+          "id": "imelda-staunton-2008",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "imelda-staunton"
+          ],
+          "publisher": "Macmillan Children's Books",
+          "release_date": "2008-06-24",
+          "runtime_min": 25,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0036GPRXU",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-gruffalo"
+        },
+        "imelda-staunton-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0DNNDHSHB",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91l35FEyeqL.jpg",
+          "id": "imelda-staunton-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "imelda-staunton",
+            "malcolm-donaldson"
+          ],
+          "publisher": "Macmillan Digital Audio",
+          "release_date": "2024-11-20",
+          "runtime_min": 6,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DNNDHSHB",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-gruffalo"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B079V5CK7K",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0036GPRXU",
           "type": "libex-import"
         }
       ],
@@ -10437,8 +10481,7 @@
     "the-gruffalo-and-other-stories": {
       "added_at": "2026-08-02",
       "authors": [
-        "julia-donaldson",
-        "axel-scheffler"
+        "julia-donaldson"
       ],
       "genres": [
         "childrens",
@@ -10479,31 +10522,7 @@
             }
           ],
           "work": "the-gruffalo-and-other-stories"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "1529064309",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Gruffalo and Other Stories"
-    },
-    "the-gruffalo-and-other-stories-julia-donaldson": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "julia-donaldson"
-      ],
-      "genres": [
-        "childrens",
-        "classics",
-        "nature"
-      ],
-      "id": "the-gruffalo-and-other-stories-julia-donaldson",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "imelda-staunton-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -10532,10 +10551,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-gruffalo-and-other-stories-julia-donaldson"
+          "work": "the-gruffalo-and-other-stories"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1529064309",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0F5X9X4Q7",
@@ -10544,96 +10568,10 @@
       ],
       "title": "The Gruffalo and Other Stories"
     },
-    "the-gruffalo-julia-donaldson": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "julia-donaldson",
-        "axel-scheffler"
-      ],
-      "genres": [
-        "childrens",
-        "classics",
-        "fairy-tales-folklore",
-        "horror",
-        "nature",
-        "poetry"
-      ],
-      "id": "the-gruffalo-julia-donaldson",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "imelda-staunton-2008": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0036GPRXU",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/916Rfi20cJL.jpg",
-          "id": "imelda-staunton-2008",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "imelda-staunton"
-          ],
-          "publisher": "Macmillan Children's Books",
-          "release_date": "2008-06-24",
-          "runtime_min": 25,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0036GPRXU",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-gruffalo-julia-donaldson"
-        },
-        "imelda-staunton-2024": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0DNNDHSHB",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91l35FEyeqL.jpg",
-          "id": "imelda-staunton-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "imelda-staunton",
-            "malcolm-donaldson"
-          ],
-          "publisher": "Macmillan Digital Audio",
-          "release_date": "2024-11-20",
-          "runtime_min": 6,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0DNNDHSHB",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-gruffalo-julia-donaldson"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0036GPRXU",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Gruffalo"
-    },
     "the-gruffalo-song-and-other-songs": {
       "added_at": "2026-08-02",
       "authors": [
-        "julia-donaldson",
-        "axel-scheffler"
+        "julia-donaldson"
       ],
       "genres": [
         "childrens",
@@ -10672,31 +10610,7 @@
             }
           ],
           "work": "the-gruffalo-song-and-other-songs"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0036GPVJ0",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Gruffalo Song and Other Songs"
-    },
-    "the-gruffalo-song-and-other-songs-julia-donaldson": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "julia-donaldson"
-      ],
-      "genres": [
-        "childrens",
-        "music",
-        "nature"
-      ],
-      "id": "the-gruffalo-song-and-other-songs-julia-donaldson",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "julia-donaldson-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -10723,10 +10637,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-gruffalo-song-and-other-songs-julia-donaldson"
+          "work": "the-gruffalo-song-and-other-songs"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0036GPVJ0",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0DT7JV3YD",
@@ -10744,7 +10663,8 @@
         "childrens",
         "classics",
         "horror",
-        "nature"
+        "nature",
+        "poetry"
       ],
       "id": "the-gruffalos-child",
       "language": "en",
@@ -10777,12 +10697,45 @@
             }
           ],
           "work": "the-gruffalos-child"
+        },
+        "imelda-staunton-2010": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00403S2OY",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91dQpj98IsL.jpg",
+          "id": "imelda-staunton-2010",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "imelda-staunton"
+          ],
+          "publisher": "Macmillan Children's Books",
+          "release_date": "2010-08-19",
+          "runtime_min": 22,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00403S2OY",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-gruffalos-child"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B07BMKQK5W",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00403S2OY",
           "type": "libex-import"
         }
       ],
@@ -10840,61 +10793,6 @@
         }
       ],
       "title": "The Gruffalo's Child and Other Songs"
-    },
-    "the-gruffalos-child-julia-donaldson": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "julia-donaldson",
-        "axel-scheffler"
-      ],
-      "genres": [
-        "childrens",
-        "classics",
-        "horror",
-        "nature",
-        "poetry"
-      ],
-      "id": "the-gruffalos-child-julia-donaldson",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "imelda-staunton-2010": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B00403S2OY",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91dQpj98IsL.jpg",
-          "id": "imelda-staunton-2010",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "imelda-staunton"
-          ],
-          "publisher": "Macmillan Children's Books",
-          "release_date": "2010-08-19",
-          "runtime_min": 22,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B00403S2OY",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-gruffalos-child-julia-donaldson"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00403S2OY",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Gruffalo's Child"
     },
     "the-gruffalos-child-song-and-other-songs": {
       "added_at": "2026-08-02",

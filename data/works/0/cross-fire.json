@@ -3728,7 +3728,17 @@
     "crossed": {
       "added_at": "2026-07-25T19:18:21+01:00",
       "authors": [
-        "ally-condie"
+        "ally-condie",
+        "jack-riccobono"
+      ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "dystopian",
+        "fantasy",
+        "romance",
+        "science-fiction",
+        "young-adult"
       ],
       "id": "crossed",
       "language": "en",
@@ -3762,39 +3772,7 @@
             }
           ],
           "work": "crossed"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "https://www.goodreads.com/book/show/15812814-crossed",
-          "type": "community"
-        }
-      ],
-      "title": "Crossed",
-      "xref": {
-        "goodreads": "15812814"
-      }
-    },
-    "crossed-ally-condie": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "ally-condie",
-        "jack-riccobono"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "dystopian",
-        "fantasy",
-        "romance",
-        "science-fiction",
-        "young-adult"
-      ],
-      "id": "crossed-ally-condie",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "kate-simses-2011": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -3821,17 +3799,25 @@
               "type": "libex-import"
             }
           ],
-          "work": "crossed-ally-condie"
+          "work": "crossed"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "https://www.goodreads.com/book/show/15812814-crossed",
+          "type": "community"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B005ZVK3FG",
           "type": "libex-import"
         }
       ],
-      "title": "Crossed"
+      "title": "Crossed",
+      "xref": {
+        "goodreads": "15812814"
+      }
     },
     "crossed-blades-dramatized-adaptation": {
       "added_at": "2026-07-25T17:12:12+01:00",

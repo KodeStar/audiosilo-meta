@@ -10408,13 +10408,13 @@
       "added_at": "2026-08-01",
       "authors": [
         "alicia-rades",
-        "hidden-legends",
         "megan-linski"
       ],
       "genres": [
         "fantasy",
         "paranormal",
         "romance",
+        "thriller-suspense",
         "urban-fantasy"
       ],
       "id": "the-assassins-destiny",
@@ -10427,6 +10427,10 @@
           "asin": [
             {
               "asin": "B0C5P3RMBS",
+              "region": "us"
+            },
+            {
+              "asin": "B0C831WWYR",
               "region": "us"
             }
           ],
@@ -10446,6 +10450,11 @@
               "imported_at": "2026-08-01",
               "ref": "B0C5P3RMBS",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0C831WWYR",
+              "type": "libex-import"
             }
           ],
           "work": "the-assassins-destiny"
@@ -10456,58 +10465,7 @@
           "imported_at": "2026-08-01",
           "ref": "B0C5P3RMBS",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Assassin's Destiny"
-    },
-    "the-assassins-destiny-alicia-rades": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "alicia-rades",
-        "megan-linski"
-      ],
-      "genres": [
-        "fantasy",
-        "paranormal",
-        "romance",
-        "thriller-suspense",
-        "urban-fantasy"
-      ],
-      "id": "the-assassins-destiny-alicia-rades",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "a-j-carter-2023": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0C831WWYR",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91e6oABh8+L.jpg",
-          "id": "a-j-carter-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "a-j-carter",
-            "taylor-harvey"
-          ],
-          "publisher": "Crystallite Publishing LLC",
-          "release_date": "2023-09-26",
-          "runtime_min": 1535,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0C831WWYR",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-assassins-destiny-alicia-rades"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0C831WWYR",

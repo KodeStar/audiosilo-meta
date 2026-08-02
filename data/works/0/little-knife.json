@@ -2367,10 +2367,18 @@
       "authors": [
         "louisa-may-alcott"
       ],
+      "credits": [
+        {
+          "person": "jane-smiley",
+          "role": "introduction"
+        }
+      ],
       "genres": [
         "childrens",
         "classics",
         "coming-of-age",
+        "literary-fiction",
+        "parenting-relationships",
         "self-help"
       ],
       "id": "little-women",
@@ -2731,6 +2739,34 @@
             {
               "imported_at": "2026-07-30",
               "ref": "B0FBW9PW25",
+              "type": "libex-import"
+            }
+          ],
+          "work": "little-women"
+        },
+        "christina-ricci-2012": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B009PAN8F0",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51Z1q1h8sLL.jpg",
+          "id": "christina-ricci-2012",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "christina-ricci"
+          ],
+          "publisher": "Penguin Audio",
+          "release_date": "2012-10-23",
+          "runtime_min": 1142,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B009PAN8F0",
               "type": "libex-import"
             }
           ],
@@ -3911,6 +3947,11 @@
           "imported_at": "2026-07-30",
           "ref": "B08QQ3YV3W",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B009PAN8F0",
+          "type": "libex-import"
         }
       ],
       "title": "Little Women"
@@ -4362,70 +4403,6 @@
         }
       ],
       "title": "Little Women &amp; Little Men"
-    },
-    "little-women-louisa-may-alcott": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "louisa-may-alcott",
-        "jane-smiley",
-        "siobhan-kilfeather",
-        "vinca-showalter"
-      ],
-      "credits": [
-        {
-          "person": "jane-smiley",
-          "role": "introduction"
-        }
-      ],
-      "genres": [
-        "childrens",
-        "classics",
-        "coming-of-age",
-        "literary-fiction",
-        "parenting-relationships",
-        "self-help"
-      ],
-      "id": "little-women-louisa-may-alcott",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "christina-ricci-2012": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B009PAN8F0",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51Z1q1h8sLL.jpg",
-          "id": "christina-ricci-2012",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "christina-ricci"
-          ],
-          "publisher": "Penguin Audio",
-          "release_date": "2012-10-23",
-          "runtime_min": 1142,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B009PAN8F0",
-              "type": "libex-import"
-            }
-          ],
-          "work": "little-women-louisa-may-alcott"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B009PAN8F0",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Little Women"
     },
     "little-women-special-edition": {
       "added_at": "2026-08-02",
@@ -10363,7 +10340,11 @@
       ],
       "genres": [
         "childrens",
-        "fantasy"
+        "comedy-humor",
+        "coming-of-age",
+        "fantasy",
+        "nature",
+        "parenting-relationships"
       ],
       "id": "llama-on-holiday",
       "language": "en",
@@ -10375,6 +10356,10 @@
           "asin": [
             {
               "asin": "B0BDGKQY65",
+              "region": "us"
+            },
+            {
+              "asin": "B09NL7311Y",
               "region": "us"
             }
           ],
@@ -10393,6 +10378,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0BDGKQY65",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09NL7311Y",
+              "type": "libex-import"
             }
           ],
           "work": "llama-on-holiday"
@@ -10403,58 +10393,7 @@
           "imported_at": "2026-08-02",
           "ref": "B0BDGKQY65",
           "type": "libex-import"
-        }
-      ],
-      "title": "Llama on Holiday"
-    },
-    "llama-on-holiday-annabelle-sami": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "annabelle-sami",
-        "allen-fatimaharan"
-      ],
-      "genres": [
-        "childrens",
-        "comedy-humor",
-        "coming-of-age",
-        "fantasy",
-        "nature",
-        "parenting-relationships"
-      ],
-      "id": "llama-on-holiday-annabelle-sami",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "ambreen-razia-2022": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B09NL7311Y",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/812sPSxclZL.jpg",
-          "id": "ambreen-razia-2022",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "ambreen-razia"
-          ],
-          "publisher": "Farshore",
-          "release_date": "2022-02-17",
-          "runtime_min": 145,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B09NL7311Y",
-              "type": "libex-import"
-            }
-          ],
-          "work": "llama-on-holiday-annabelle-sami"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B09NL7311Y",

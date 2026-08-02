@@ -5885,12 +5885,12 @@
     "macbeth": {
       "added_at": "2026-08-01",
       "authors": [
-        "l-l-muir",
-        "the-ghosts-of-culloden-moor"
+        "l-l-muir"
       ],
       "genres": [
         "historical-fiction",
         "historical-romance",
+        "paranormal",
         "romance"
       ],
       "id": "macbeth",
@@ -5925,12 +5925,46 @@
             }
           ],
           "work": "macbeth"
+        },
+        "andrew-mcdermott-2023": {
+          "abridged": false,
+          "added_at": "2026-08-01",
+          "asin": [
+            {
+              "asin": "B0CM9R5GJX",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/817DHjqBQrL.jpg",
+          "id": "andrew-mcdermott-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andrew-mcdermott",
+            "jenn-mcguirk"
+          ],
+          "publisher": "Dragonfire Press",
+          "release_date": "2023-11-02",
+          "runtime_min": 184,
+          "sources": [
+            {
+              "imported_at": "2026-08-01",
+              "ref": "B0CM9R5GJX",
+              "type": "libex-import"
+            }
+          ],
+          "work": "macbeth"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-01",
           "ref": "B09FX7S6FW",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B0CM9R5GJX",
           "type": "libex-import"
         }
       ],
@@ -5986,60 +6020,6 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B0CP2P79SN",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Macbeth"
-    },
-    "macbeth-l-l-muir": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "l-l-muir"
-      ],
-      "genres": [
-        "historical-fiction",
-        "historical-romance",
-        "paranormal",
-        "romance"
-      ],
-      "id": "macbeth-l-l-muir",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "andrew-mcdermott-2023": {
-          "abridged": false,
-          "added_at": "2026-08-01",
-          "asin": [
-            {
-              "asin": "B0CM9R5GJX",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/817DHjqBQrL.jpg",
-          "id": "andrew-mcdermott-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "andrew-mcdermott",
-            "jenn-mcguirk"
-          ],
-          "publisher": "Dragonfire Press",
-          "release_date": "2023-11-02",
-          "runtime_min": 184,
-          "sources": [
-            {
-              "imported_at": "2026-08-01",
-              "ref": "B0CM9R5GJX",
-              "type": "libex-import"
-            }
-          ],
-          "work": "macbeth-l-l-muir"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B0CM9R5GJX",
           "type": "libex-import"
         }
       ],

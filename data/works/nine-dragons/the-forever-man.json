@@ -6095,9 +6095,11 @@
     "the-fork-the-witch-and-the-worm": {
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
-        "christopher-paolini"
+        "christopher-paolini",
+        "john-jude-palencar"
       ],
       "genres": [
+        "childrens",
         "epic-fantasy",
         "fantasy",
         "young-adult"
@@ -6220,37 +6222,7 @@
             }
           ],
           "work": "the-fork-the-witch-and-the-worm"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "0593103629",
-          "type": "audiosilo-books-import"
         },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "0593103629",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Fork, the Witch, and the Worm"
-    },
-    "the-fork-the-witch-and-the-worm-christopher-paolini": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "christopher-paolini",
-        "john-jude-palencar"
-      ],
-      "genres": [
-        "childrens",
-        "fantasy",
-        "young-adult"
-      ],
-      "id": "the-fork-the-witch-and-the-worm-christopher-paolini",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "gerard-doyle-2019": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -6277,10 +6249,20 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-fork-the-witch-and-the-worm-christopher-paolini"
+          "work": "the-fork-the-witch-and-the-worm"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "0593103629",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "0593103629",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "024139502X",

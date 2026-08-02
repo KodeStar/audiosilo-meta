@@ -7955,8 +7955,7 @@
     "20-000-leagues-under-the-sea": {
       "added_at": "2026-08-01",
       "authors": [
-        "jules-verne",
-        "frederick-paul-walter"
+        "jules-verne"
       ],
       "credits": [
         {
@@ -7973,6 +7972,74 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "adrian-lester-2020": {
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B08D3WB25T",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 61532,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 2553614,
+              "start_ms": 61532,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2907370,
+              "start_ms": 2615146,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1978061,
+              "start_ms": 5522516,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2214069,
+              "start_ms": 7500577,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2509000,
+              "start_ms": 9714646,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 128252,
+              "start_ms": 12223646,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91QPwFbvH9L.jpg",
+          "id": "adrian-lester-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "adrian-lester",
+            "carla-mendonca",
+            "clive-mantle",
+            "montserrat-roig",
+            "terry-molloy"
+          ],
+          "publisher": "Audible Originals",
+          "release_date": "2020-08-20",
+          "runtime_min": 205,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B08D3WB25T",
+              "type": "libex-import"
+            }
+          ],
+          "work": "20-000-leagues-under-the-sea"
+        },
         "adriel-brandt-2021": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -10346,6 +10413,11 @@
           "imported_at": "2026-08-02",
           "ref": "B0DYK7TGRD",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B08D3WB25T",
+          "type": "libex-import"
         }
       ],
       "title": "20,000 Leagues Under the Sea"
@@ -10654,97 +10726,6 @@
         }
       ],
       "title": "20,000 Leagues Under the Sea [Classic Tales Edition]"
-    },
-    "20-000-leagues-under-the-sea-jules-verne": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "jules-verne",
-        "tony-lee"
-      ],
-      "genres": [
-        "classics"
-      ],
-      "id": "20-000-leagues-under-the-sea-jules-verne",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "adrian-lester-2020": {
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B08D3WB25T",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 61532,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 2553614,
-              "start_ms": 61532,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 2907370,
-              "start_ms": 2615146,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1978061,
-              "start_ms": 5522516,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 2214069,
-              "start_ms": 7500577,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 2509000,
-              "start_ms": 9714646,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 128252,
-              "start_ms": 12223646,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91QPwFbvH9L.jpg",
-          "id": "adrian-lester-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "adrian-lester",
-            "carla-mendonca",
-            "clive-mantle",
-            "montserrat-roig",
-            "terry-molloy"
-          ],
-          "publisher": "Audible Originals",
-          "release_date": "2020-08-20",
-          "runtime_min": 205,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B08D3WB25T",
-              "type": "libex-import"
-            }
-          ],
-          "work": "20-000-leagues-under-the-sea-jules-verne"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B08D3WB25T",
-          "type": "libex-import"
-        }
-      ],
-      "title": "20,000 Leagues Under the Sea"
     },
     "20-000-leagues-under-the-sea-the-mysterious-island": {
       "added_at": "2026-07-25T17:12:12+01:00",

@@ -13227,6 +13227,7 @@
       ],
       "genres": [
         "historical-fiction",
+        "religious-fiction",
         "romance"
       ],
       "id": "the-distant-beacon",
@@ -13256,6 +13257,34 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B002UZI3DE",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-distant-beacon"
+        },
+        "marguerite-gavin-2010": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B003IJX8GI",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81RLDAF8GSL.jpg",
+          "id": "marguerite-gavin-2010",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "marguerite-gavin"
+          ],
+          "publisher": "Bethany House",
+          "release_date": "2010-04-21",
+          "runtime_min": 185,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B003IJX8GI",
               "type": "libex-import"
             }
           ],
@@ -13295,54 +13324,7 @@
           "imported_at": "2026-08-02",
           "ref": "B002UZI3DE",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Distant Beacon"
-    },
-    "the-distant-beacon-janette-oke": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "janette-oke"
-      ],
-      "genres": [
-        "historical-fiction",
-        "religious-fiction",
-        "romance"
-      ],
-      "id": "the-distant-beacon-janette-oke",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "marguerite-gavin-2010": {
-          "abridged": true,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B003IJX8GI",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81RLDAF8GSL.jpg",
-          "id": "marguerite-gavin-2010",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "marguerite-gavin"
-          ],
-          "publisher": "Bethany House",
-          "release_date": "2010-04-21",
-          "runtime_min": 185,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B003IJX8GI",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-distant-beacon-janette-oke"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B003IJX8GI",

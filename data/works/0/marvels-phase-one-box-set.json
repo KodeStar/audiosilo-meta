@@ -425,7 +425,8 @@
     "marvels-phase-three-box-set": {
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
-        "marvel-press"
+        "marvel-press",
+        "alexander-irvine"
       ],
       "genres": [
         "action-adventure",
@@ -437,6 +438,36 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "bradford-hastings-2018": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "1982581581",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/816LkZpiBpL.jpg",
+          "id": "bradford-hastings-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "bradford-hastings",
+            "macleod-andrews",
+            "tom-taylorson"
+          ],
+          "publisher": "Disney",
+          "release_date": "2018-11-09",
+          "runtime_min": 541,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1982581581",
+              "type": "libex-import"
+            }
+          ],
+          "work": "marvels-phase-three-box-set"
+        },
         "tom-taylorson-2018": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -845,12 +876,17 @@
           "imported_at": "2026-07-30",
           "ref": "1982583258",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1982581581",
+          "type": "libex-import"
         }
       ],
       "title": "Marvel's Phase Three Box Set"
     },
-    "marvels-phase-three-box-set-marvel-press": {
-      "added_at": "2026-08-02",
+    "marvels-phase-two-box-set": {
+      "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "marvel-press",
         "alexander-irvine"
@@ -859,60 +895,6 @@
         "action-adventure",
         "childrens",
         "fantasy",
-        "superhero"
-      ],
-      "id": "marvels-phase-three-box-set-marvel-press",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "bradford-hastings-2018": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "1982581581",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/816LkZpiBpL.jpg",
-          "id": "bradford-hastings-2018",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "bradford-hastings",
-            "macleod-andrews",
-            "tom-taylorson"
-          ],
-          "publisher": "Disney",
-          "release_date": "2018-11-09",
-          "runtime_min": 541,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "1982581581",
-              "type": "libex-import"
-            }
-          ],
-          "work": "marvels-phase-three-box-set-marvel-press"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "1982581581",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Marvel’s Phase Three Box Set"
-    },
-    "marvels-phase-two-box-set": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "marvel-press"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
         "superhero"
       ],
       "id": "marvels-phase-two-box-set",
@@ -925,6 +907,14 @@
           "asin": [
             {
               "asin": "1982558539",
+              "region": "us"
+            },
+            {
+              "asin": "1982581573",
+              "region": "us"
+            },
+            {
+              "asin": "198258324X",
               "region": "us"
             }
           ],
@@ -1511,6 +1501,16 @@
               "imported_at": "2026-07-30",
               "ref": "1982558539",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1982581573",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "198258324X",
+              "type": "libex-import"
             }
           ],
           "work": "marvels-phase-two-box-set"
@@ -1526,73 +1526,14 @@
           "imported_at": "2026-07-30",
           "ref": "1982558539",
           "type": "libex-import"
-        }
-      ],
-      "title": "Marvel's Phase Two Box Set"
-    },
-    "marvels-phase-two-box-set-marvel-press": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "marvel-press",
-        "alexander-irvine"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "fantasy",
-        "superhero"
-      ],
-      "id": "marvels-phase-two-box-set-marvel-press",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "macleod-andrews-2018": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "1982581573",
-              "region": "us"
-            },
-            {
-              "asin": "198258324X",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/8121HnEPLEL.jpg",
-          "id": "macleod-andrews-2018",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "macleod-andrews",
-            "tom-taylorson"
-          ],
-          "publisher": "Disney",
-          "release_date": "2018-11-09",
-          "runtime_min": 766,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "1982581573",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-08-02",
-              "ref": "198258324X",
-              "type": "libex-import"
-            }
-          ],
-          "work": "marvels-phase-two-box-set-marvel-press"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "1982581573",
           "type": "libex-import"
         }
       ],
-      "title": "Marvel’s Phase Two Box Set"
+      "title": "Marvel's Phase Two Box Set"
     },
     "marvels-wolverine-the-lost-trail": {
       "added_at": "2026-07-25T17:12:12+01:00",
@@ -10368,7 +10309,8 @@
     "master-and-commander-patrick-obrian": {
       "added_at": "2026-08-02",
       "authors": [
-        "patrick-obrian"
+        "patrick-obrian",
+        "neville-teller"
       ],
       "genres": [
         "action-adventure",
@@ -10438,6 +10380,34 @@
           ],
           "work": "master-and-commander-patrick-obrian"
         },
+        "robert-hardy-2005": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0036GTMLS",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91+9yiu2CfL.jpg",
+          "id": "robert-hardy-2005",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "robert-hardy"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2005-06-06",
+          "runtime_min": 263,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0036GTMLS",
+              "type": "libex-import"
+            }
+          ],
+          "work": "master-and-commander-patrick-obrian"
+        },
         "simon-vance-2004": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -10472,58 +10442,7 @@
           "imported_at": "2026-08-02",
           "ref": "B006QM8PD0",
           "type": "libex-import"
-        }
-      ],
-      "title": "Master and Commander"
-    },
-    "master-and-commander-patrick-obrian-2": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "patrick-obrian",
-        "neville-teller"
-      ],
-      "genres": [
-        "action-adventure",
-        "espionage",
-        "historical-fiction",
-        "medicine",
-        "thriller-suspense",
-        "war-military-fiction"
-      ],
-      "id": "master-and-commander-patrick-obrian-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "robert-hardy-2005": {
-          "abridged": true,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0036GTMLS",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91+9yiu2CfL.jpg",
-          "id": "robert-hardy-2005",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "robert-hardy"
-          ],
-          "publisher": "HarperCollins",
-          "release_date": "2005-06-06",
-          "runtime_min": 263,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0036GTMLS",
-              "type": "libex-import"
-            }
-          ],
-          "work": "master-and-commander-patrick-obrian-2"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0036GTMLS",

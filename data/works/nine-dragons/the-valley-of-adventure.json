@@ -6298,13 +6298,18 @@
     "the-vampires-birthright": {
       "added_at": "2026-08-01",
       "authors": [
-        "aiden-james"
+        "aiden-james",
+        "patrick-burdine"
       ],
       "genres": [
         "fantasy",
         "gothic",
         "horror",
-        "romance"
+        "paranormal",
+        "romance",
+        "romantic-suspense",
+        "thriller-suspense",
+        "urban-fantasy"
       ],
       "id": "the-vampires-birthright",
       "language": "en",
@@ -6337,35 +6342,7 @@
             }
           ],
           "work": "the-vampires-birthright"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B00BSXUNW8",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Vampires' Birthright"
-    },
-    "the-vampires-birthright-aiden-james": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "aiden-james",
-        "patrick-burdine"
-      ],
-      "genres": [
-        "fantasy",
-        "paranormal",
-        "romance",
-        "romantic-suspense",
-        "thriller-suspense",
-        "urban-fantasy"
-      ],
-      "id": "the-vampires-birthright-aiden-james",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "stephanye-dussud-2022": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -6392,10 +6369,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-vampires-birthright-aiden-james"
+          "work": "the-vampires-birthright"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B00BSXUNW8",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B09VWFQTQR",
@@ -7160,13 +7142,16 @@
     "the-vampires-last-lover": {
       "added_at": "2026-08-01",
       "authors": [
-        "aiden-james"
+        "aiden-james",
+        "patrick-burdine"
       ],
       "genres": [
         "fantasy",
         "gothic",
         "horror",
-        "romance"
+        "paranormal",
+        "romance",
+        "romantic-suspense"
       ],
       "id": "the-vampires-last-lover",
       "language": "en",
@@ -7199,32 +7184,7 @@
             }
           ],
           "work": "the-vampires-last-lover"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B00B8430F4",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Vampires' Last Lover"
-    },
-    "the-vampires-last-lover-aiden-james": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "aiden-james",
-        "patrick-burdine"
-      ],
-      "genres": [
-        "paranormal",
-        "romance",
-        "romantic-suspense"
-      ],
-      "id": "the-vampires-last-lover-aiden-james",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "stephanye-dussud-2021": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -7251,17 +7211,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-vampires-last-lover-aiden-james"
+          "work": "the-vampires-last-lover"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B00B8430F4",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B09J1M3QWD",
           "type": "libex-import"
         }
       ],
-      "title": "The Vampires’ Last Lover"
+      "title": "The Vampires' Last Lover"
     },
     "the-vampires-mail-order-bride": {
       "added_at": "2026-08-01",

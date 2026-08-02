@@ -2350,6 +2350,7 @@
       ],
       "genres": [
         "action-adventure",
+        "childrens",
         "classics",
         "fantasy"
       ],
@@ -2384,31 +2385,7 @@
             }
           ],
           "work": "baron-trumps-marvellous-underground-journey"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B079J5V84V",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Baron Trump's Marvellous Underground Journey"
-    },
-    "baron-trumps-marvellous-underground-journey-ingersoll-lockwood": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "ingersoll-lockwood"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "classics"
-      ],
-      "id": "baron-trumps-marvellous-underground-journey-ingersoll-lockwood",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "molly-mae-2020": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -2435,10 +2412,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "baron-trumps-marvellous-underground-journey-ingersoll-lockwood"
+          "work": "baron-trumps-marvellous-underground-journey"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B079J5V84V",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B086R5NNN8",

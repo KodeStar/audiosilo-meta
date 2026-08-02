@@ -2283,15 +2283,46 @@
     "le-dernier-voeu": {
       "added_at": "2026-08-02",
       "authors": [
-        "andrzej-sapkowski"
+        "andrzej-sapkowski",
+        "laurence-dyevre"
       ],
       "genres": [
-        "science-fiction"
+        "fantasy",
+        "science-fiction",
+        "sword-sorcery"
       ],
       "id": "le-dernier-voeu",
       "language": "fr",
       "license": "CC0-1.0",
       "recordings": {
+        "daniel-njo-lobe-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0FT84CPM7",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91Hpa+wDIfL.jpg",
+          "id": "daniel-njo-lobe-2025",
+          "language": "fr",
+          "license": "CC0-1.0",
+          "narrators": [
+            "daniel-njo-lobe"
+          ],
+          "publisher": "Audiolib",
+          "release_date": "2025-12-10",
+          "runtime_min": 768,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FT84CPM7",
+              "type": "libex-import"
+            }
+          ],
+          "work": "le-dernier-voeu"
+        },
         "nicolas-justamon-2019": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -2326,61 +2357,14 @@
           "imported_at": "2026-08-02",
           "ref": "2374342638",
           "type": "libex-import"
-        }
-      ],
-      "title": "Le Dernier vœu"
-    },
-    "le-dernier-voeu-andrzej-sapkowski": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "andrzej-sapkowski",
-        "laurence-dyevre"
-      ],
-      "genres": [
-        "fantasy",
-        "sword-sorcery"
-      ],
-      "id": "le-dernier-voeu-andrzej-sapkowski",
-      "language": "fr",
-      "license": "CC0-1.0",
-      "recordings": {
-        "daniel-njo-lobe-2025": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0FT84CPM7",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91Hpa+wDIfL.jpg",
-          "id": "daniel-njo-lobe-2025",
-          "language": "fr",
-          "license": "CC0-1.0",
-          "narrators": [
-            "daniel-njo-lobe"
-          ],
-          "publisher": "Audiolib",
-          "release_date": "2025-12-10",
-          "runtime_min": 768,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0FT84CPM7",
-              "type": "libex-import"
-            }
-          ],
-          "work": "le-dernier-voeu-andrzej-sapkowski"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0FT84CPM7",
           "type": "libex-import"
         }
       ],
-      "title": "Le Dernier voeu"
+      "title": "Le Dernier vœu"
     },
     "le-desert-dechire": {
       "added_at": "2026-08-02",

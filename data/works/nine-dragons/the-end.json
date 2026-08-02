@@ -3,13 +3,16 @@
     "the-end": {
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
-        "lemony-snicket"
+        "lemony-snicket",
+        "brett-helquist"
       ],
       "genres": [
         "action-adventure",
         "childrens",
+        "classics",
         "comedy-humor",
         "coming-of-age",
+        "fantasy",
         "mystery",
         "parenting-relationships"
       ],
@@ -141,6 +144,34 @@
             }
           ],
           "work": "the-end"
+        },
+        "tim-curry-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0GJW9XRVH",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81q-qaIlTOL.jpg",
+          "id": "tim-curry-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "tim-curry"
+          ],
+          "publisher": "Farshore",
+          "release_date": "2026-02-26",
+          "runtime_min": 352,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GJW9XRVH",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-end"
         }
       },
       "sources": [
@@ -152,6 +183,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B002V5CT3S",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0GJW9XRVH",
           "type": "libex-import"
         }
       ],
@@ -2995,62 +3031,6 @@
         }
       ],
       "title": "The End Is Now"
-    },
-    "the-end-lemony-snicket": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "lemony-snicket",
-        "brett-helquist"
-      ],
-      "genres": [
-        "childrens",
-        "classics",
-        "coming-of-age",
-        "fantasy",
-        "mystery",
-        "parenting-relationships"
-      ],
-      "id": "the-end-lemony-snicket",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "tim-curry-2026": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0GJW9XRVH",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81q-qaIlTOL.jpg",
-          "id": "tim-curry-2026",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "tim-curry"
-          ],
-          "publisher": "Farshore",
-          "release_date": "2026-02-26",
-          "runtime_min": 352,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0GJW9XRVH",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-end-lemony-snicket"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0GJW9XRVH",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The End"
     },
     "the-end-mark-tufo": {
       "added_at": "2026-08-02",
@@ -5987,7 +5967,8 @@
     "the-end-of-the-ocean": {
       "added_at": "2026-08-02",
       "authors": [
-        "maja-lunde"
+        "maja-lunde",
+        "luke-thompson"
       ],
       "genres": [
         "action-adventure",
@@ -6028,30 +6009,7 @@
             }
           ],
           "work": "the-end-of-the-ocean"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "0062951394",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The End of the Ocean"
-    },
-    "the-end-of-the-ocean-maja-lunde": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "maja-lunde",
-        "luke-thompson"
-      ],
-      "genres": [
-        "literary-fiction"
-      ],
-      "id": "the-end-of-the-ocean-maja-lunde",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "sandra-duncan-2019": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -6078,10 +6036,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-end-of-the-ocean-maja-lunde"
+          "work": "the-end-of-the-ocean"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "0062951394",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "1471175553",
@@ -13617,13 +13580,17 @@
     "the-ersatz-elevator": {
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
-        "lemony-snicket"
+        "lemony-snicket",
+        "brett-helquist"
       ],
       "genres": [
+        "action-adventure",
         "childrens",
+        "classics",
         "comedy-humor",
         "coming-of-age",
         "education",
+        "fantasy",
         "parenting-relationships"
       ],
       "id": "the-ersatz-elevator",
@@ -13744,40 +13711,7 @@
             }
           ],
           "work": "the-ersatz-elevator"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B002V0KEJO",
-          "type": "audiosilo-books-import"
         },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B002V0KEJO",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Ersatz Elevator"
-    },
-    "the-ersatz-elevator-lemony-snicket": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "lemony-snicket",
-        "brett-helquist"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "classics",
-        "coming-of-age",
-        "fantasy",
-        "parenting-relationships"
-      ],
-      "id": "the-ersatz-elevator-lemony-snicket",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "tim-curry-2026": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -13804,10 +13738,20 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-ersatz-elevator-lemony-snicket"
+          "work": "the-ersatz-elevator"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B002V0KEJO",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B002V0KEJO",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0GJX5YBY2",

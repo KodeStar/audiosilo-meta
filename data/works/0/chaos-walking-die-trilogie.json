@@ -6698,57 +6698,6 @@
       "authors": [
         "roald-dahl"
       ],
-      "id": "charlie-and-the-chocolate-factory",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "douglas-hodge-2013": {
-          "abridged": false,
-          "added_at": "2026-07-31T00:43:12+01:00",
-          "asin": [
-            {
-              "asin": "B00D8J5IMU",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81FQ9UXmRQL.jpg",
-          "id": "douglas-hodge-2013",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "douglas-hodge"
-          ],
-          "publisher": "Listening Library",
-          "release_date": "2013-06-13",
-          "runtime_min": 198,
-          "sources": [
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B00D8J5IMU",
-              "type": "libex-import"
-            }
-          ],
-          "work": "charlie-and-the-chocolate-factory"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "https://www.goodreads.com/book/show/6310.Charlie_and_the_Chocolate_Factory",
-          "type": "community"
-        }
-      ],
-      "title": "Charlie and the Chocolate Factory",
-      "xref": {
-        "goodreads": "6310"
-      }
-    },
-    "charlie-and-the-chocolate-factory-roald-dahl": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "roald-dahl",
-        "quentin-blake"
-      ],
       "genres": [
         "action-adventure",
         "childrens",
@@ -6756,7 +6705,7 @@
         "comedy-humor",
         "fantasy"
       ],
-      "id": "charlie-and-the-chocolate-factory-roald-dahl",
+      "id": "charlie-and-the-chocolate-factory",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -6948,7 +6897,35 @@
               "type": "libex-import"
             }
           ],
-          "work": "charlie-and-the-chocolate-factory-roald-dahl"
+          "work": "charlie-and-the-chocolate-factory"
+        },
+        "douglas-hodge-2013": {
+          "abridged": false,
+          "added_at": "2026-07-31T00:43:12+01:00",
+          "asin": [
+            {
+              "asin": "B00D8J5IMU",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81FQ9UXmRQL.jpg",
+          "id": "douglas-hodge-2013",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "douglas-hodge"
+          ],
+          "publisher": "Listening Library",
+          "release_date": "2013-06-13",
+          "runtime_min": 198,
+          "sources": [
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B00D8J5IMU",
+              "type": "libex-import"
+            }
+          ],
+          "work": "charlie-and-the-chocolate-factory"
         },
         "douglas-hodge-2014": {
           "abridged": false,
@@ -6976,22 +6953,38 @@
               "type": "libex-import"
             }
           ],
-          "work": "charlie-and-the-chocolate-factory-roald-dahl"
+          "work": "charlie-and-the-chocolate-factory"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "https://www.goodreads.com/book/show/6310.Charlie_and_the_Chocolate_Factory",
+          "type": "community"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B00MQ0COZG",
           "type": "libex-import"
         }
       ],
-      "title": "Charlie and the Chocolate Factory"
+      "title": "Charlie and the Chocolate Factory",
+      "xref": {
+        "goodreads": "6310"
+      }
     },
     "charlie-and-the-great-glass-elevator": {
       "added_at": "2026-07-25T19:18:21+01:00",
       "authors": [
         "roald-dahl"
+      ],
+      "genres": [
+        "childrens",
+        "classics",
+        "comedy-humor",
+        "fantasy",
+        "science",
+        "science-fiction"
       ],
       "id": "charlie-and-the-great-glass-elevator",
       "language": "en",
@@ -7024,38 +7017,7 @@
             }
           ],
           "work": "charlie-and-the-great-glass-elevator"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "https://www.goodreads.com/book/show/6687.Charlie_and_the_Great_Glass_Elevator",
-          "type": "community"
-        }
-      ],
-      "title": "Charlie and the Great Glass Elevator",
-      "xref": {
-        "goodreads": "6687"
-      }
-    },
-    "charlie-and-the-great-glass-elevator-roald-dahl": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "roald-dahl",
-        "quentin-blake"
-      ],
-      "genres": [
-        "childrens",
-        "classics",
-        "comedy-humor",
-        "fantasy",
-        "science",
-        "science-fiction"
-      ],
-      "id": "charlie-and-the-great-glass-elevator-roald-dahl",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "douglas-hodge-2014": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -7184,7 +7146,7 @@
               "type": "libex-import"
             }
           ],
-          "work": "charlie-and-the-great-glass-elevator-roald-dahl"
+          "work": "charlie-and-the-great-glass-elevator"
         },
         "sacha-dhawan-2024": {
           "abridged": false,
@@ -7324,17 +7286,25 @@
               "type": "libex-import"
             }
           ],
-          "work": "charlie-and-the-great-glass-elevator-roald-dahl"
+          "work": "charlie-and-the-great-glass-elevator"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "https://www.goodreads.com/book/show/6687.Charlie_and_the_Great_Glass_Elevator",
+          "type": "community"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B00MOK6ZOO",
           "type": "libex-import"
         }
       ],
-      "title": "Charlie and the Great Glass Elevator"
+      "title": "Charlie and the Great Glass Elevator",
+      "xref": {
+        "goodreads": "6687"
+      }
     },
     "charlie-and-the-panther": {
       "added_at": "2026-08-02",

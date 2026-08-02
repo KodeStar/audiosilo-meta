@@ -4131,11 +4131,15 @@
     "alice-in-wonderland-through-the-looking-glass": {
       "added_at": "2026-08-01",
       "authors": [
-        "lewis-carroll"
+        "lewis-carroll",
+        "eva-mason"
       ],
       "genres": [
         "childrens",
-        "classics"
+        "classics",
+        "coming-of-age",
+        "fantasy",
+        "self-help"
       ],
       "id": "alice-in-wonderland-through-the-looking-glass",
       "language": "en",
@@ -4328,34 +4332,7 @@
             }
           ],
           "work": "alice-in-wonderland-through-the-looking-glass"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B00Z8BXVJ8",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Alice In Wonderland & Through the Looking Glass"
-    },
-    "alice-in-wonderland-through-the-looking-glass-lewis-carroll": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "lewis-carroll",
-        "eva-mason"
-      ],
-      "genres": [
-        "childrens",
-        "classics",
-        "coming-of-age",
-        "fantasy",
-        "self-help"
-      ],
-      "id": "alice-in-wonderland-through-the-looking-glass-lewis-carroll",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "rebecca-k-reynolds-2020": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -4382,17 +4359,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "alice-in-wonderland-through-the-looking-glass-lewis-carroll"
+          "work": "alice-in-wonderland-through-the-looking-glass"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B00Z8BXVJ8",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "1645550354",
           "type": "libex-import"
         }
       ],
-      "title": "Alice in Wonderland & Through the Looking Glass"
+      "title": "Alice In Wonderland & Through the Looking Glass"
     },
     "alice-in-zombieland": {
       "added_at": "2026-08-02",
@@ -5308,11 +5290,16 @@
     "alice-the-torch": {
       "added_at": "2026-08-01",
       "authors": [
-        "ashley-mcleo"
+        "ashley-mcleo",
+        "magic-of-arcana"
       ],
       "genres": [
+        "coming-of-age",
+        "epic-fantasy",
         "fairy-tales-folklore",
-        "fantasy"
+        "fantasy",
+        "romance",
+        "young-adult"
       ],
       "id": "alice-the-torch",
       "language": "en",
@@ -5345,34 +5332,7 @@
             }
           ],
           "work": "alice-the-torch"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B0BNP3HZBK",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Alice the Torch"
-    },
-    "alice-the-torch-ashley-mcleo": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "ashley-mcleo",
-        "magic-of-arcana"
-      ],
-      "genres": [
-        "coming-of-age",
-        "epic-fantasy",
-        "fantasy",
-        "romance",
-        "young-adult"
-      ],
-      "id": "alice-the-torch-ashley-mcleo",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "abby-anderson-2023": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -5399,10 +5359,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "alice-the-torch-ashley-mcleo"
+          "work": "alice-the-torch"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B0BNP3HZBK",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-01",
           "ref": "B0CQTMNXY4",
@@ -5645,8 +5610,12 @@
         "lewis-carroll"
       ],
       "genres": [
+        "action-adventure",
         "childrens",
-        "classics"
+        "classics",
+        "comedy-humor",
+        "fairy-tales-folklore",
+        "fantasy"
       ],
       "id": "alices-adventures-in-wonderland",
       "language": "en",
@@ -5675,6 +5644,91 @@
             {
               "imported_at": "2026-07-30",
               "ref": "B005E0QR9Y",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alices-adventures-in-wonderland"
+        },
+        "anne-marie-piazza-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0DD5M15V5",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 19852,
+              "start_ms": 0,
+              "title": "Opening credits"
+            },
+            {
+              "length_ms": 11911,
+              "start_ms": 19852,
+              "title": "Dedication"
+            },
+            {
+              "length_ms": 549778,
+              "start_ms": 31763,
+              "title": "Introduction"
+            },
+            {
+              "length_ms": 519291,
+              "start_ms": 581541,
+              "title": "Down the Rabbit Hole"
+            },
+            {
+              "length_ms": 346464,
+              "start_ms": 1100832,
+              "title": "A Caucus Race and a Long Tale"
+            },
+            {
+              "length_ms": 484437,
+              "start_ms": 1447296,
+              "title": "Advice from a Caterpillar"
+            },
+            {
+              "length_ms": 657356,
+              "start_ms": 1931733,
+              "title": "A Mad Tea Party"
+            },
+            {
+              "length_ms": 692999,
+              "start_ms": 2589089,
+              "title": "The Queen's Croquet Ground"
+            },
+            {
+              "length_ms": 320597,
+              "start_ms": 3282088,
+              "title": "The Mock Turtle's Story"
+            },
+            {
+              "length_ms": 729036,
+              "start_ms": 3602685,
+              "title": "Who Stole the Tarts?"
+            },
+            {
+              "length_ms": 53823,
+              "start_ms": 4331721,
+              "title": "Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1O4ijQZjZL.jpg",
+          "id": "anne-marie-piazza-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "anne-marie-piazza"
+          ],
+          "publisher": "Applesauce Press",
+          "release_date": "2025-03-11",
+          "runtime_min": 72,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DD5M15V5",
               "type": "libex-import"
             }
           ],
@@ -7468,6 +7522,11 @@
           "imported_at": "2026-07-30",
           "ref": "B015D78L0U",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0DD5M15V5",
+          "type": "libex-import"
         }
       ],
       "title": "Alice's Adventures in Wonderland"
@@ -7722,10 +7781,16 @@
       "added_at": "2026-08-01",
       "authors": [
         "lewis-carroll",
-        "stuart-dodgson-collingwood"
+        "stuart-dodgson-collingwood",
+        "john-tenniel"
       ],
       "genres": [
-        "classics"
+        "action-adventure",
+        "classics",
+        "fantasy",
+        "literary-fiction",
+        "nature",
+        "short-stories"
       ],
       "id": "alices-adventures-in-wonderland-and-through-the-looking-glass",
       "language": "en",
@@ -7895,12 +7960,406 @@
             }
           ],
           "work": "alices-adventures-in-wonderland-and-through-the-looking-glass"
+        },
+        "christoper-plummer-2010": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0035VVFZA",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/61oQo8r3nlL.jpg",
+          "id": "christoper-plummer-2010",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "christoper-plummer"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2010-02-02",
+          "runtime_min": 359,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0035VVFZA",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alices-adventures-in-wonderland-and-through-the-looking-glass"
+        },
+        "erin-bateman-2021": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "1662258631",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71zyUb4Oo8S.jpg",
+          "id": "erin-bateman-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "erin-bateman"
+          ],
+          "publisher": "InAudio",
+          "release_date": "2021-04-27",
+          "runtime_min": 366,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1662258631",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alices-adventures-in-wonderland-and-through-the-looking-glass"
+        },
+        "jennifer-m-dixon-2016": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B01C5YJQHQ",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 861182,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 812188,
+              "start_ms": 861182,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 721630,
+              "start_ms": 1673370,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1118412,
+              "start_ms": 2395000,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 942034,
+              "start_ms": 3513412,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1115765,
+              "start_ms": 4455446,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 934882,
+              "start_ms": 5571211,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1020378,
+              "start_ms": 6506093,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 984712,
+              "start_ms": 7526471,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 930888,
+              "start_ms": 8511183,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 760686,
+              "start_ms": 9442071,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 899495,
+              "start_ms": 10202757,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1262980,
+              "start_ms": 11102252,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1144697,
+              "start_ms": 12365232,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1153939,
+              "start_ms": 13509929,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1195178,
+              "start_ms": 14663868,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1314621,
+              "start_ms": 15859046,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1274822,
+              "start_ms": 17173667,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1059619,
+              "start_ms": 18448489,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1563167,
+              "start_ms": 19508108,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 1839531,
+              "start_ms": 21071275,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 33808,
+              "start_ms": 22910806,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 12771,
+              "start_ms": 22944614,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 330141,
+              "start_ms": 22957385,
+              "title": "Chapter 24"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51JiI4HLHzL.jpg",
+          "id": "jennifer-m-dixon-2016",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jennifer-m-dixon"
+          ],
+          "publisher": "Spoken Realms",
+          "release_date": "2016-02-25",
+          "runtime_min": 388,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B01C5YJQHQ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alices-adventures-in-wonderland-and-through-the-looking-glass"
+        },
+        "katie-leung-2019": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "0241442427",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91uxEs8cgzL.jpg",
+          "id": "katie-leung-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "katie-leung"
+          ],
+          "publisher": "Penguin Classics",
+          "release_date": "2019-09-26",
+          "runtime_min": 527,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "0241442427",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alices-adventures-in-wonderland-and-through-the-looking-glass"
+        },
+        "michael-page-2014": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00QHGUCCW",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 841956,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 714060,
+              "start_ms": 841956,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 623038,
+              "start_ms": 1556016,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 882033,
+              "start_ms": 2179054,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 806058,
+              "start_ms": 3061087,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 922064,
+              "start_ms": 3867145,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 844045,
+              "start_ms": 4789209,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 872049,
+              "start_ms": 5633254,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 900052,
+              "start_ms": 6505303,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 943055,
+              "start_ms": 7405355,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 633069,
+              "start_ms": 8348410,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 767048,
+              "start_ms": 8981479,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1207066,
+              "start_ms": 9748527,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 993071,
+              "start_ms": 10955593,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1085068,
+              "start_ms": 11948664,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1114047,
+              "start_ms": 13033732,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1181060,
+              "start_ms": 14147779,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1224063,
+              "start_ms": 15328839,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1014062,
+              "start_ms": 16552902,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1603059,
+              "start_ms": 17566964,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 1525040,
+              "start_ms": 19170023,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 28050,
+              "start_ms": 20695063,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 10077,
+              "start_ms": 20723113,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 341055,
+              "start_ms": 20733190,
+              "title": "Chapter 24"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/811DP2GulHL.jpg",
+          "id": "michael-page-2014",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "michael-page"
+          ],
+          "publisher": "The Classic Collection",
+          "release_date": "2014-12-03",
+          "runtime_min": 351,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00QHGUCCW",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alices-adventures-in-wonderland-and-through-the-looking-glass"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-01",
           "ref": "B00UTXBHI2",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00QHGUCCW",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "0241442427",
           "type": "libex-import"
         }
       ],
@@ -8194,441 +8653,6 @@
       ],
       "title": "Alice's Adventures in Wonderland and Through the Looking Glass (AudioKidz)"
     },
-    "alices-adventures-in-wonderland-and-through-the-looking-glass-lewis-carroll": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "lewis-carroll"
-      ],
-      "genres": [
-        "action-adventure",
-        "classics",
-        "literary-fiction",
-        "short-stories"
-      ],
-      "id": "alices-adventures-in-wonderland-and-through-the-looking-glass-lewis-carroll",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "christoper-plummer-2010": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0035VVFZA",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/61oQo8r3nlL.jpg",
-          "id": "christoper-plummer-2010",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "christoper-plummer"
-          ],
-          "publisher": "HarperCollins",
-          "release_date": "2010-02-02",
-          "runtime_min": 359,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0035VVFZA",
-              "type": "libex-import"
-            }
-          ],
-          "work": "alices-adventures-in-wonderland-and-through-the-looking-glass-lewis-carroll"
-        },
-        "erin-bateman-2021": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "1662258631",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71zyUb4Oo8S.jpg",
-          "id": "erin-bateman-2021",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "erin-bateman"
-          ],
-          "publisher": "InAudio",
-          "release_date": "2021-04-27",
-          "runtime_min": 366,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "1662258631",
-              "type": "libex-import"
-            }
-          ],
-          "work": "alices-adventures-in-wonderland-and-through-the-looking-glass-lewis-carroll"
-        },
-        "jennifer-m-dixon-2016": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B01C5YJQHQ",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 861182,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 812188,
-              "start_ms": 861182,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 721630,
-              "start_ms": 1673370,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1118412,
-              "start_ms": 2395000,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 942034,
-              "start_ms": 3513412,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1115765,
-              "start_ms": 4455446,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 934882,
-              "start_ms": 5571211,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1020378,
-              "start_ms": 6506093,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 984712,
-              "start_ms": 7526471,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 930888,
-              "start_ms": 8511183,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 760686,
-              "start_ms": 9442071,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 899495,
-              "start_ms": 10202757,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1262980,
-              "start_ms": 11102252,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1144697,
-              "start_ms": 12365232,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 1153939,
-              "start_ms": 13509929,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1195178,
-              "start_ms": 14663868,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 1314621,
-              "start_ms": 15859046,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 1274822,
-              "start_ms": 17173667,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 1059619,
-              "start_ms": 18448489,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 1563167,
-              "start_ms": 19508108,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 1839531,
-              "start_ms": 21071275,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 33808,
-              "start_ms": 22910806,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 12771,
-              "start_ms": 22944614,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 330141,
-              "start_ms": 22957385,
-              "title": "Chapter 24"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51JiI4HLHzL.jpg",
-          "id": "jennifer-m-dixon-2016",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "jennifer-m-dixon"
-          ],
-          "publisher": "Spoken Realms",
-          "release_date": "2016-02-25",
-          "runtime_min": 388,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B01C5YJQHQ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "alices-adventures-in-wonderland-and-through-the-looking-glass-lewis-carroll"
-        },
-        "michael-page-2014": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B00QHGUCCW",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 841956,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 714060,
-              "start_ms": 841956,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 623038,
-              "start_ms": 1556016,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 882033,
-              "start_ms": 2179054,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 806058,
-              "start_ms": 3061087,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 922064,
-              "start_ms": 3867145,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 844045,
-              "start_ms": 4789209,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 872049,
-              "start_ms": 5633254,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 900052,
-              "start_ms": 6505303,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 943055,
-              "start_ms": 7405355,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 633069,
-              "start_ms": 8348410,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 767048,
-              "start_ms": 8981479,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1207066,
-              "start_ms": 9748527,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 993071,
-              "start_ms": 10955593,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 1085068,
-              "start_ms": 11948664,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1114047,
-              "start_ms": 13033732,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 1181060,
-              "start_ms": 14147779,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 1224063,
-              "start_ms": 15328839,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 1014062,
-              "start_ms": 16552902,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 1603059,
-              "start_ms": 17566964,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 1525040,
-              "start_ms": 19170023,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 28050,
-              "start_ms": 20695063,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 10077,
-              "start_ms": 20723113,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 341055,
-              "start_ms": 20733190,
-              "title": "Chapter 24"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/811DP2GulHL.jpg",
-          "id": "michael-page-2014",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "michael-page"
-          ],
-          "publisher": "The Classic Collection",
-          "release_date": "2014-12-03",
-          "runtime_min": 351,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B00QHGUCCW",
-              "type": "libex-import"
-            }
-          ],
-          "work": "alices-adventures-in-wonderland-and-through-the-looking-glass-lewis-carroll"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00QHGUCCW",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Alice's Adventures in Wonderland and Through the Looking Glass"
-    },
-    "alices-adventures-in-wonderland-and-through-the-looking-glass-lewis-carroll-2": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "lewis-carroll",
-        "john-tenniel"
-      ],
-      "genres": [
-        "classics",
-        "fantasy",
-        "literary-fiction",
-        "nature"
-      ],
-      "id": "alices-adventures-in-wonderland-and-through-the-looking-glass-lewis-carroll-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "katie-leung-2019": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "0241442427",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91uxEs8cgzL.jpg",
-          "id": "katie-leung-2019",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "katie-leung"
-          ],
-          "publisher": "Penguin Classics",
-          "release_date": "2019-09-26",
-          "runtime_min": 527,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "0241442427",
-              "type": "libex-import"
-            }
-          ],
-          "work": "alices-adventures-in-wonderland-and-through-the-looking-glass-lewis-carroll-2"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "0241442427",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Alice's Adventures in Wonderland and Through the Looking Glass"
-    },
     "alices-adventures-in-wonderland-annotated": {
       "added_at": "2026-08-01",
       "authors": [
@@ -8853,119 +8877,6 @@
         }
       ],
       "title": "Alice's Adventures in Wonderland by Lewis Carroll"
-    },
-    "alices-adventures-in-wonderland-lewis-carroll": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "lewis-carroll",
-        "charles-santore"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "classics",
-        "comedy-humor",
-        "fairy-tales-folklore",
-        "fantasy"
-      ],
-      "id": "alices-adventures-in-wonderland-lewis-carroll",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "anne-marie-piazza-2025": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0DD5M15V5",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 19852,
-              "start_ms": 0,
-              "title": "Opening credits"
-            },
-            {
-              "length_ms": 11911,
-              "start_ms": 19852,
-              "title": "Dedication"
-            },
-            {
-              "length_ms": 549778,
-              "start_ms": 31763,
-              "title": "Introduction"
-            },
-            {
-              "length_ms": 519291,
-              "start_ms": 581541,
-              "title": "Down the Rabbit Hole"
-            },
-            {
-              "length_ms": 346464,
-              "start_ms": 1100832,
-              "title": "A Caucus Race and a Long Tale"
-            },
-            {
-              "length_ms": 484437,
-              "start_ms": 1447296,
-              "title": "Advice from a Caterpillar"
-            },
-            {
-              "length_ms": 657356,
-              "start_ms": 1931733,
-              "title": "A Mad Tea Party"
-            },
-            {
-              "length_ms": 692999,
-              "start_ms": 2589089,
-              "title": "The Queen's Croquet Ground"
-            },
-            {
-              "length_ms": 320597,
-              "start_ms": 3282088,
-              "title": "The Mock Turtle's Story"
-            },
-            {
-              "length_ms": 729036,
-              "start_ms": 3602685,
-              "title": "Who Stole the Tarts?"
-            },
-            {
-              "length_ms": 53823,
-              "start_ms": 4331721,
-              "title": "Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/A1O4ijQZjZL.jpg",
-          "id": "anne-marie-piazza-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "anne-marie-piazza"
-          ],
-          "publisher": "Applesauce Press",
-          "release_date": "2025-03-11",
-          "runtime_min": 72,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0DD5M15V5",
-              "type": "libex-import"
-            }
-          ],
-          "work": "alices-adventures-in-wonderland-lewis-carroll"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0DD5M15V5",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Alice's Adventures in Wonderland"
     },
     "alices-adventures-in-wonderland-sleepless-edition": {
       "added_at": "2026-08-02",
