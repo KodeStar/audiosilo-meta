@@ -7996,163 +7996,6 @@
     "the-twits": {
       "added_at": "2026-08-02",
       "authors": [
-        "roald-dahl"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "classics",
-        "comedy-humor",
-        "nature"
-      ],
-      "id": "the-twits",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "richard-ayoade-2023": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0BMZN496X",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81zp0thGWtL.jpg",
-          "id": "richard-ayoade-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "richard-ayoade"
-          ],
-          "publisher": "Listening Library",
-          "release_date": "2023-06-13",
-          "runtime_min": 58,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0BMZN496X",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-twits"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0BMZN496X",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Twits"
-    },
-    "the-twits-chronicles-anthology-1": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "tom-alan-robbins"
-      ],
-      "genres": [
-        "science-fiction",
-        "steampunk"
-      ],
-      "id": "the-twits-chronicles-anthology-1",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "tom-alan-robbins-2025": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0G94YNS56",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91fK8xV5MZL.jpg",
-          "id": "tom-alan-robbins-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "tom-alan-robbins"
-          ],
-          "publisher": "Twits Chronicles",
-          "release_date": "2025-12-19",
-          "runtime_min": 425,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0G94YNS56",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-twits-chronicles-anthology-1"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0G94YNS56",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Twits Chronicles, Anthology #1"
-    },
-    "the-twits-chronicles-anthology-no-2-books-4-6": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "tom-alan-robbins"
-      ],
-      "genres": [
-        "science-fiction",
-        "short-stories",
-        "steampunk"
-      ],
-      "id": "the-twits-chronicles-anthology-no-2-books-4-6",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "tom-alan-robbins-2026": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0GGDL8FM9",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91nsJOyIXoL.jpg",
-          "id": "tom-alan-robbins-2026",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "tom-alan-robbins"
-          ],
-          "publisher": "Twits Chronicles",
-          "release_date": "2026-01-12",
-          "runtime_min": 379,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0GGDL8FM9",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-twits-chronicles-anthology-no-2-books-4-6"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0GGDL8FM9",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Twits Chronicles, Anthology No. 2, Books 4-6"
-    },
-    "the-twits-roald-dahl": {
-      "added_at": "2026-08-02",
-      "authors": [
         "roald-dahl",
         "quentin-blake"
       ],
@@ -8163,13 +8006,14 @@
         }
       ],
       "genres": [
+        "action-adventure",
         "childrens",
         "classics",
         "comedy-humor",
         "fantasy",
         "nature"
       ],
-      "id": "the-twits-roald-dahl",
+      "id": "the-twits",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -8346,7 +8190,35 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-twits-roald-dahl"
+          "work": "the-twits"
+        },
+        "richard-ayoade-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0BMZN496X",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81zp0thGWtL.jpg",
+          "id": "richard-ayoade-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "richard-ayoade"
+          ],
+          "publisher": "Listening Library",
+          "release_date": "2023-06-13",
+          "runtime_min": 58,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0BMZN496X",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-twits"
         },
         "sara-pascoe-2024": {
           "abridged": false,
@@ -8531,10 +8403,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-twits-roald-dahl"
+          "work": "the-twits"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0BMZN496X",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B00MOQ2T3O",
@@ -8547,6 +8424,109 @@
         }
       ],
       "title": "The Twits"
+    },
+    "the-twits-chronicles-anthology-1": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "tom-alan-robbins"
+      ],
+      "genres": [
+        "science-fiction",
+        "steampunk"
+      ],
+      "id": "the-twits-chronicles-anthology-1",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "tom-alan-robbins-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0G94YNS56",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91fK8xV5MZL.jpg",
+          "id": "tom-alan-robbins-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "tom-alan-robbins"
+          ],
+          "publisher": "Twits Chronicles",
+          "release_date": "2025-12-19",
+          "runtime_min": 425,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0G94YNS56",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-twits-chronicles-anthology-1"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0G94YNS56",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Twits Chronicles, Anthology #1"
+    },
+    "the-twits-chronicles-anthology-no-2-books-4-6": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "tom-alan-robbins"
+      ],
+      "genres": [
+        "science-fiction",
+        "short-stories",
+        "steampunk"
+      ],
+      "id": "the-twits-chronicles-anthology-no-2-books-4-6",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "tom-alan-robbins-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0GGDL8FM9",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91nsJOyIXoL.jpg",
+          "id": "tom-alan-robbins-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "tom-alan-robbins"
+          ],
+          "publisher": "Twits Chronicles",
+          "release_date": "2026-01-12",
+          "runtime_min": 379,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GGDL8FM9",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-twits-chronicles-anthology-no-2-books-4-6"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0GGDL8FM9",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Twits Chronicles, Anthology No. 2, Books 4-6"
     },
     "the-twits-the-terrible-tale-of-twitlandia": {
       "added_at": "2026-08-02",
