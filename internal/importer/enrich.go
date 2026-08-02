@@ -155,7 +155,7 @@ func (p *planner) applyToRecording(b sourceBook, ref RecRef, warn func(string, .
 	if scope == scopeAttestMerged && !overwrite {
 		return true
 	}
-	if p.recordingContradicts(b, raw, warn, scope) {
+	if p.recordingContradicts(b, ref, raw, warn, scope) {
 		return false
 	}
 	// An exact-ASIN row about a record it may not overwrite has already had its
@@ -242,6 +242,7 @@ func (p *planner) applyToRecording(b sourceBook, ref RecRef, warn func(string, .
 //
 // It warns at most once - the first contradiction found is enough to disqualify
 // the row, and a second line about the same row would only repeat that verdict.
+// The same holds for the worklist row it writes: one refused row, one record.
 //
 // This guard holds in EVERY trust tier, which is what makes it the policy's
 // "first wins, flag for review" rule as well as its safety net: when a second
@@ -259,9 +260,16 @@ func (p *planner) applyToRecording(b sourceBook, ref RecRef, warn func(string, .
 // later run. The runtime half - the fact that actually distinguishes a
 // re-release from a different production - is applied upstream by
 // runtimesCompatible before a merge is considered at all, so nothing is lost.
-func (p *planner) recordingContradicts(b sourceBook, raw map[string]any, warn func(string, ...any), scope applyScope) bool {
-	contradiction := func(format string, args ...any) bool {
+func (p *planner) recordingContradicts(b sourceBook, ref RecRef, raw map[string]any, warn func(string, ...any), scope applyScope) bool {
+	contradiction := func(field string, recorded, stated any, format string, args ...any) bool {
 		warn(format, args...)
+		// The durable twin of that warning, and the run's ONLY machine-readable
+		// account of the disagreement: one worklist row, written here rather than
+		// re-derived from the prose above, so the values it reports are the ones
+		// the comparison just made (conflicts.go). It is written in every tier -
+		// the mirror's disagreements with the catalogue are exactly where a wrong
+		// RECORDED value hides - and is a no-op for a run given no worklist.
+		p.recordConflict(b, ref, field, recorded, stated)
 		// Counted only for a user-library run: a bulk mirror disagreeing with the
 		// catalogue is an expected data-quality artefact of the source, while a
 		// person's own library disagreeing is the case a maintainer should look
@@ -277,7 +285,8 @@ func (p *planner) recordingContradicts(b sourceBook, raw map[string]any, warn fu
 	// sibling whose runtime is already compatible, so this cannot fire there.
 	if b.runtimeMin > 0 {
 		if cur, known := coerceInt(raw["runtime_min"]); known && cur > 0 && !runtimesCompatible(int(cur), b.runtimeMin) {
-			return contradiction("runtime %d min conflicts with the recorded %d min; the row was not used for enrichment", b.runtimeMin, cur)
+			return contradiction("runtime_min", cur, b.runtimeMin,
+				"runtime %d min conflicts with the recorded %d min; the row was not used for enrichment", b.runtimeMin, cur)
 		}
 	}
 	if scope == scopeAttestMerged {
@@ -285,7 +294,8 @@ func (p *planner) recordingContradicts(b sourceBook, raw map[string]any, warn fu
 	}
 	if rd := b.str("release_date"); datePattern.MatchString(rd) {
 		if cur := coerceStr(raw["release_date"]); cur != "" && datesConflict(cur, rd) {
-			return contradiction("release date %s conflicts with the recorded %s; the row was not used for enrichment", rd, cur)
+			return contradiction("release_date", cur, rd,
+				"release date %s conflicts with the recorded %s; the row was not used for enrichment", rd, cur)
 		}
 	}
 	return false
