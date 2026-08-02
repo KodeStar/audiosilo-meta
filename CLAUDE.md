@@ -457,10 +457,15 @@ accent-insensitive, never a pattern. The fold sits inside the shared cleaning
 rather than at `getOrCreatePerson` so authors, narrators AND role credits pass
 through it, every importer inherits it (not just libex), and the batch pre-passes
 see the canonical: a variant never becomes evidence of its own spelling in the
-credit census or the initials decision. The existing minted twins (`n-n` at 180
-works, `autori-vari`, ...) are migrated by a separate DATA change, and that
+credit census or the initials decision. Two ABBREVIATIONS were folded on a later
+maintainer decision and carry their dump verification in the file header, because
+a short opaque string could in principle be a real name: `div.`/`div` (2,101
+credits, the German/Scandinavian "diverse", the table's largest fold) onto
+`various`, and `anonymus` (16) onto `anonymous`. The existing minted twins (`n-n`
+at 162 work-author refs, `div` at 33 authors and 144 narrators,
+`autori-vari`, ...) are migrated by a separate DATA change, and that
 migration is ORDERED BEFORE the next import wave, not merely eventually: until
-it lands the catalogue addresses ~198 work-author refs (and ~72 narrator refs)
+it lands the catalogue addresses 231 work-author refs (and 223 narrator refs)
 under variant slugs, so any pass that CREATES - the plain create path,
 `--recordings-only`, the user-library importers - can fork such a work instead
 of matching it (`--enrich` matches by ASIN and is unaffected). Note also that
