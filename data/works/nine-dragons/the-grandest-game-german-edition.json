@@ -187,6 +187,10 @@
             {
               "asin": "B0FHHZQSN5",
               "region": "us"
+            },
+            {
+              "asin": "B0FHHZ19H9",
+              "region": "ca"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/71pyZaPYQ5L.jpg",
@@ -203,6 +207,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0FHHZQSN5",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FHHZ19H9",
               "type": "libex-import"
             }
           ],
@@ -338,6 +347,10 @@
             {
               "asin": "110153088X",
               "region": "us"
+            },
+            {
+              "asin": "B004VMD7BW",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/41MpdGpGR7L._SL500_.jpg",
@@ -360,6 +373,11 @@
               "imported_at": "2026-07-17",
               "ref": "110153088X",
               "type": "audible-lookup"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B004VMD7BW",
+              "type": "libex-import"
             }
           ],
           "work": "the-grapes-of-wrath"
@@ -3693,6 +3711,10 @@
             {
               "asin": "B09PHQYGWC",
               "region": "us"
+            },
+            {
+              "asin": "B09PHS76WJ",
+              "region": "uk"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81kohBO3qYL.jpg",
@@ -3709,6 +3731,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B09PHQYGWC",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09PHS76WJ",
               "type": "libex-import"
             }
           ],
@@ -8096,6 +8123,36 @@
             {
               "imported_at": "2026-07-30",
               "ref": "B0DJ9FXCFN",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-great-gatsby"
+        },
+        "eleanor-lanahan-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0DWZ9XW2D",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91-1veNSXQL.jpg",
+          "id": "eleanor-lanahan-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "eleanor-lanahan",
+            "james-l-w-west-iii",
+            "seth-numrich"
+          ],
+          "publisher": "Simon & Schuster Audio",
+          "release_date": "2025-03-04",
+          "runtime_min": 359,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DWZ9XW2D",
               "type": "libex-import"
             }
           ],

@@ -180,6 +180,10 @@
             {
               "asin": "B082TQFM88",
               "region": "us"
+            },
+            {
+              "asin": "B082TRM29V",
+              "region": "ca"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81PhMxXTicL.jpg",
@@ -199,6 +203,11 @@
             {
               "imported_at": "2026-08-01",
               "ref": "B082TQFM88",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B082TRM29V",
               "type": "libex-import"
             }
           ],
@@ -590,6 +599,35 @@
             }
           ],
           "work": "bone-lord"
+        },
+        "jack-douglas-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0H8FN9J89",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81hazziMN5L.jpg",
+          "id": "jack-douglas-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jack-douglas",
+            "sierra-taft"
+          ],
+          "publisher": "Royal Guard Publishing LLC",
+          "release_date": "2026-07-10",
+          "runtime_min": 491,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0H8FN9J89",
+              "type": "libex-import"
+            }
+          ],
+          "work": "bone-lord"
         }
       },
       "sources": [
@@ -637,6 +675,35 @@
             {
               "imported_at": "2026-08-01",
               "ref": "B0873Z17K7",
+              "type": "libex-import"
+            }
+          ],
+          "work": "bone-lord-2"
+        },
+        "jack-douglas-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0H8FDN9MB",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91zwEc-2MpL.jpg",
+          "id": "jack-douglas-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jack-douglas",
+            "sierra-taft"
+          ],
+          "publisher": "Royal Guard Publishing LLC",
+          "release_date": "2026-07-10",
+          "runtime_min": 596,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0H8FDN9MB",
               "type": "libex-import"
             }
           ],

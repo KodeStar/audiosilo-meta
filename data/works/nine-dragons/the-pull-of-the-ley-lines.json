@@ -1768,6 +1768,22 @@
             {
               "asin": "B0CQBDSLTC",
               "region": "us"
+            },
+            {
+              "asin": "B0CQ9WR8YS",
+              "region": "ca"
+            },
+            {
+              "asin": "B0CQB6J978",
+              "region": "uk"
+            },
+            {
+              "asin": "B0CQB6TWQF",
+              "region": "au"
+            },
+            {
+              "asin": "B0CQ9XW4TY",
+              "region": "de"
             }
           ],
           "chapters": [
@@ -1911,6 +1927,26 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0CQBDSLTC",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CQ9WR8YS",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CQB6J978",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CQB6TWQF",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CQ9XW4TY",
               "type": "libex-import"
             }
           ],
@@ -2467,6 +2503,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "thomas-corfield-2016": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B01DJGJC78",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81aTS78ZV1L.jpg",
+          "id": "thomas-corfield-2016",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "thomas-corfield"
+          ],
+          "publisher": "Scribl",
+          "release_date": "2016-03-29",
+          "runtime_min": 274,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B01DJGJC78",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-purging-of-ruen"
+        },
         "thomas-corfield-2017": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -6497,6 +6561,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "rupert-degas-2011": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00698P41W",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/61bVzkFu6GL.jpg",
+          "id": "rupert-degas-2011",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "rupert-degas"
+          ],
+          "publisher": "Gollancz",
+          "release_date": "2011-11-29",
+          "runtime_min": 606,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00698P41W",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-quantum-thief"
+        },
         "scott-brick-2011": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -7882,6 +7974,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "robin-nixon-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0C548WB7V",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81bIU7OzPKL.jpg",
+          "id": "robin-nixon-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "robin-nixon"
+          ],
+          "publisher": "Bookstream Audiobooks",
+          "release_date": "2023-05-15",
+          "runtime_min": 5,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0C548WB7V",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-queen-bee"
+        },
         "sam-kusi-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -7941,6 +8061,10 @@
             {
               "asin": "B0BKR4PC9J",
               "region": "us"
+            },
+            {
+              "asin": "B0BKR6Y785",
+              "region": "ca"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91pZ6NbOJdL.jpg",
@@ -7958,6 +8082,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0BKR4PC9J",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0BKR6Y785",
               "type": "libex-import"
             }
           ],

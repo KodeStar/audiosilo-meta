@@ -2210,6 +2210,10 @@
             {
               "asin": "B00G4MAV84",
               "region": "us"
+            },
+            {
+              "asin": "B078RQYBD8",
+              "region": "uk"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81HFuWpKCrL.jpg",
@@ -2226,6 +2230,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B00G4MAV84",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B078RQYBD8",
               "type": "libex-import"
             }
           ],
@@ -3847,6 +3856,10 @@
             {
               "asin": "B00FJR99ZQ",
               "region": "us"
+            },
+            {
+              "asin": "B0793CJ4WB",
+              "region": "de"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91IiTT8irzL.jpg",
@@ -3863,6 +3876,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B00FJR99ZQ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0793CJ4WB",
               "type": "libex-import"
             }
           ],
@@ -7095,6 +7113,10 @@
             {
               "asin": "B0F46LDVHW",
               "region": "us"
+            },
+            {
+              "asin": "B0F464244J",
+              "region": "ca"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81StUz5zyCL.jpg",
@@ -7111,6 +7133,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0F46LDVHW",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0F464244J",
               "type": "libex-import"
             }
           ],
@@ -7421,6 +7448,10 @@
             {
               "asin": "B0CKC69PKP",
               "region": "us"
+            },
+            {
+              "asin": "B0C3NHS8J8",
+              "region": "de"
             }
           ],
           "chapters": [
@@ -7765,6 +7796,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0CKC69PKP",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0C3NHS8J8",
               "type": "libex-import"
             }
           ],
@@ -14277,6 +14313,10 @@
             {
               "asin": "B0DSKXFHH2",
               "region": "us"
+            },
+            {
+              "asin": "B0DSKX6G5W",
+              "region": "de"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91kLmVnMsoL.jpg",
@@ -14293,6 +14333,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0DSKXFHH2",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DSKX6G5W",
               "type": "libex-import"
             }
           ],
@@ -14330,6 +14375,34 @@
       "language": "de",
       "license": "CC0-1.0",
       "recordings": {
+        "rainer-strecker-2010": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00U5K3KMK",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91KHbRNw6UL.jpg",
+          "id": "rainer-strecker-2010",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "rainer-strecker"
+          ],
+          "publisher": "Hoercompany",
+          "release_date": "2010-11-04",
+          "runtime_min": 494,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00U5K3KMK",
+              "type": "libex-import"
+            }
+          ],
+          "work": "sabotage-im-sanktuarium"
+        },
         "rainer-strecker-2025": {
           "abridged": false,
           "added_at": "2026-08-02",

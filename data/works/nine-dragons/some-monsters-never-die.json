@@ -3044,6 +3044,10 @@
             {
               "asin": "B08KSFJC2R",
               "region": "us"
+            },
+            {
+              "asin": "B08KSJBT3W",
+              "region": "ca"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81UjSN6enFL.jpg",
@@ -3060,6 +3064,11 @@
             {
               "imported_at": "2026-08-01",
               "ref": "B08KSFJC2R",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B08KSJBT3W",
               "type": "libex-import"
             }
           ],
@@ -6268,6 +6277,38 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "anastas-varinos-2017": {
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B06XKZJVV6",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71uMa2iTTDL.jpg",
+          "id": "anastas-varinos-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "anastas-varinos",
+            "daniel-r-gelinas",
+            "diane-capen",
+            "j-t-turner",
+            "matthew-scott-robertson",
+            "teresa-goding"
+          ],
+          "publisher": "Blackstone Audio",
+          "release_date": "2017-03-15",
+          "runtime_min": 118,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B06XKZJVV6",
+              "type": "libex-import"
+            }
+          ],
+          "work": "something-wicked-this-way-comes"
+        },
         "christian-rummel-2014": {
           "abridged": false,
           "added_at": "2026-08-02",
