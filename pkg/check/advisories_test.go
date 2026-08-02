@@ -106,6 +106,59 @@ func TestAdvisoryIdentityEqualWorkPair(t *testing.T) {
 	}
 }
 
+// The same fork with the role qualifier MISSING: one edition simply lists a
+// person the other does not, and nothing says what they did. That is 361 of the
+// 381 pairs in the seeded tree, so it is reported, and the extra person is named
+// because they are the finding.
+func TestAdvisoryIdentityEqualReportsAPlainAuthorSubset(t *testing.T) {
+	files := baseValid()
+	files["people/tr/translator-one.json"] = `{"id":"translator-one","license":"CC0-1.0",` +
+		`"name":"Translator One","sources":[{"type":"user"}]}`
+	files["works/bo/book-one-author-one/work.json"] = `{"authors":["author-one","translator-one"],` +
+		`"id":"book-one-author-one","language":"en","license":"CC0-1.0","sources":[{"type":"user"}],"title":"Book One"}`
+	got := advisoryMatching(advisoryWarnings(t, files), "one book under two ids")
+	if len(got) != 1 {
+		t.Fatalf("plain-subset advisories = %v", got)
+	}
+	for _, want := range []string{`"book-one-author-one" lists the same authors plus "translator-one"`, `"book-one"`} {
+		if !strings.Contains(got[0], want) {
+			t.Errorf("advisory %q is missing %q", got[0], want)
+		}
+	}
+}
+
+// Two works whose author lists merely OVERLAP are not this class: neither list
+// contains the other, so the pair is two different books that share a title and
+// a collaborator.
+func TestAdvisoryIdentityEqualSkipsOverlappingAuthors(t *testing.T) {
+	files := baseValid()
+	for id, name := range map[string]string{"author-two": "Author Two", "author-three": "Author Three"} {
+		files["people/au/"+id+".json"] = `{"id":"` + id + `","license":"CC0-1.0",` +
+			`"name":"` + name + `","sources":[{"type":"user"}]}`
+	}
+	files["works/bo/book-one/work.json"] = `{"authors":["author-one","author-two"],` +
+		`"id":"book-one","language":"en","license":"CC0-1.0","sources":[{"type":"user"}],"title":"Book One"}`
+	files["works/bo/book-one-author-one/work.json"] = `{"authors":["author-one","author-three"],` +
+		`"id":"book-one-author-one","language":"en","license":"CC0-1.0","sources":[{"type":"user"}],"title":"Book One"}`
+	if got := advisoryMatching(advisoryWarnings(t, files), "one book under two ids"); len(got) != 0 {
+		t.Errorf("an overlapping-author pair reported %v", got)
+	}
+}
+
+// A subset pair in two languages is still a translation and its original: the
+// language carve-out applies to the widened shape exactly as it does to the
+// identity rule's own.
+func TestAdvisoryIdentityEqualSubsetSkipsATranslation(t *testing.T) {
+	files := baseValid()
+	files["people/tr/translator-one.json"] = `{"id":"translator-one","license":"CC0-1.0",` +
+		`"name":"Translator One","sources":[{"type":"user"}]}`
+	files["works/bo/book-one-author-one/work.json"] = `{"authors":["author-one","translator-one"],` +
+		`"id":"book-one-author-one","language":"de","license":"CC0-1.0","sources":[{"type":"user"}],"title":"Book One"}`
+	if got := advisoryMatching(advisoryWarnings(t, files), "one book under two ids"); len(got) != 0 {
+		t.Errorf("a translated subset pair reported %v", got)
+	}
+}
+
 // A translation and its original share a title and reduce to one author set,
 // and they SHOULD be two works - the language is what says so.
 func TestAdvisoryIdentityEqualSkipsATranslation(t *testing.T) {
@@ -128,6 +181,45 @@ func TestAdvisoryIdentityEqualSkipsADifferentAuthor(t *testing.T) {
 	}
 }
 
+// An orphan record is a person nothing credits. The quiet fixture is the base
+// tree, where the author writes the work and the narrator reads the recording.
+func TestAdvisoryOrphanPerson(t *testing.T) {
+	const marker = "an orphan record"
+
+	if got := advisoryMatching(advisoryWarnings(t, baseValid()), marker); len(got) != 0 {
+		t.Errorf("a fully-credited tree reported %v", got)
+	}
+
+	files := baseValid()
+	files["people/no/nobody-at-all.json"] = `{"id":"nobody-at-all","license":"CC0-1.0",` +
+		`"name":"Nobody At All","sources":[{"type":"user"}]}`
+	got := advisoryMatching(advisoryWarnings(t, files), marker)
+	if len(got) != 1 || !strings.Contains(got[0], "nobody-at-all") {
+		t.Errorf("orphan-person advisories = %v", got)
+	}
+}
+
+// Every place a person can be named silences the advisory, including the one
+// that is not a work or a recording: a series author is a reference like any
+// other, and a maintainer sent to delete the record would break the series.
+func TestAdvisoryOrphanPersonAcceptsEveryCreditSite(t *testing.T) {
+	const marker = "an orphan record"
+	person := func(id, name string) string {
+		return `{"id":"` + id + `","license":"CC0-1.0","name":"` + name + `","sources":[{"type":"user"}]}`
+	}
+	files := baseValid()
+	files["people/ed/editor-one.json"] = person("editor-one", "Editor One")
+	files["people/se/series-author-one.json"] = person("series-author-one", "Series Author One")
+	files["works/bo/book-one/work.json"] = `{"authors":["author-one"],` +
+		`"credits":[{"person":"editor-one","role":"editor"}],` +
+		`"id":"book-one","language":"en","license":"CC0-1.0","sources":[{"type":"user"}],"title":"Book One"}`
+	files["series/se/series-one.json"] = `{"authors":["series-author-one"],"id":"series-one","license":"CC0-1.0",` +
+		`"name":"Series One","sources":[{"type":"user"}],"works":[{"position":"1","work":"book-one"}]}`
+	if got := advisoryMatching(advisoryWarnings(t, files), marker); len(got) != 0 {
+		t.Errorf("a credited-elsewhere person reported %v", got)
+	}
+}
+
 func TestAdvisoryCensusCountsEachClass(t *testing.T) {
 	if got := AdvisoryCensus(nil); got != "" {
 		t.Errorf("AdvisoryCensus(nil) = %q, want empty", got)
@@ -138,9 +230,11 @@ func TestAdvisoryCensusCountsEachClass(t *testing.T) {
 		{Path: "c", Msg: "work z: one book under two ids"},
 		{Path: "d", Msg: "recording w: a translation is a different work"},
 		{Path: "e", Msg: "entry is 300000 bytes, over the pack target"},
+		{Path: "f", Msg: `person "q" is credited by no work, recording or series: an orphan record`},
 	}
 	got := AdvisoryCensus(warns)
-	for _, want := range []string{"2 cross-language recordings", "1 honorific person pairs", "1 identity-equal work pairs"} {
+	for _, want := range []string{"2 cross-language recordings", "1 honorific person pairs",
+		"1 identity-equal work pairs", "1 orphan people"} {
 		if !strings.Contains(got, want) {
 			t.Errorf("census %q is missing %q", got, want)
 		}

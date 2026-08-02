@@ -27,9 +27,9 @@ func main() {
 	for _, w := range res.Warnings {
 		fmt.Fprintf(os.Stderr, "advisory: %s\n", w.String())
 	}
-	// The census under the advisory lines: the three classes an adversarial
-	// review found a bulk import producing at scale are counted so one wave can
-	// be compared with the last without diffing thousands of lines.
+	// The census under the advisory lines: the classes an adversarial review
+	// found a bulk import producing at scale are counted so one wave can be
+	// compared with the last without diffing thousands of lines.
 	if census := check.AdvisoryCensus(res.Warnings); census != "" {
 		fmt.Fprintf(os.Stderr, "%s\n", census)
 	}

@@ -15,10 +15,11 @@ import (
 // schema or integrity rule can call wrong on its own evidence, so failing on it
 // would block a maintainer's own correction as surely as it blocks the defect.
 //
-// All three were added after an adversarial review of seed wave 5 found the
-// importer producing exactly these shapes at scale - a translation merged into
-// its original, two humans behind one courtesy title, one book split across two
-// works. The importer rules that prevent them now
+// The first three were added after an adversarial review of seed wave 5 found
+// the importer producing exactly these shapes at scale - a translation merged
+// into its original, two humans behind one courtesy title, one book split across
+// two works; the fourth (a person record nothing credits) came out of the wave-6
+// review of the finished seed. The importer rules that prevent them now
 // (internal/importer/workidentity.go, honorific.go) can only act on the rows of
 // their own run; these advisories watch the TREE, so a class that regrows -
 // through a new source, a hand-edited PR, or a rule that stops firing - is
@@ -115,18 +116,39 @@ func deHonorifiedSlug(id string) (bare string, ok bool) {
 	return "", false
 }
 
-// checkIdentityEqualWorks reports two works that the importer's identity rule
-// would treat as ONE book.
+// checkIdentityEqualWorks reports two works that are one book under two ids.
 //
 // This is the wrong-SPLIT class: a work forks in two when one edition lists a
-// translator in its author column and another does not, so the tree ends up
+// contributor in its author column and another does not, so the tree ends up
 // holding "le-sang-des-elfes" and "le-sang-des-elfes-andrzej-sapkowski", one
 // book under two ids, each accreting its own recordings from then on.
+//
+// TWO shapes are reported, and the difference is only how much the records say
+// about the extra person:
+//
+//   - the identity rule's own match (IdentityEqualWorks): the author lists
+//     reduce to one set once role-credited contributors are set aside, so the
+//     importer itself would treat the pair as one work;
+//   - a strict author SUBSET: one work's authors are all of the other's and the
+//     other lists more, with nothing stating what the extra people did.
+//
+// The second is the same defect with the evidence missing, and it is the bulk of
+// it - a source that puts a translator, an editor or an illustrator in the
+// author column rarely also says so. Requiring the role qualifier found 20 pairs
+// in the seeded tree where dropping the requirement finds 381, and the 361 it
+// was missing are the same shape with nothing stating the extra person's part.
+// So the advisory does not require it: the pair is a maintainer's reading list,
+// and "these two differ by a person one of them never explains" is exactly the
+// pair worth reading.
 //
 // Works are compared within a TITLE group, which is both cheap and exactly
 // right: a fork's slug is derived from the same title as its base, so a pair
 // that is not in one group is not this class. Pairs in different languages are
 // skipped - those are a translation and its original, which SHOULD be two works.
+// The subset shape is STRICT on purpose: two works with the very same author
+// list are the identity rule's own business, and the one case where that rule
+// says no - a mutual translation, each side crediting the other's author as its
+// translator - is a pair it deliberately keeps apart.
 func checkIdentityEqualWorks(cat *model.Catalog, idx *pathIndex, warn addFunc) {
 	groups := map[string][]*model.Work{}
 	for _, w := range cat.Works {
@@ -148,17 +170,78 @@ func checkIdentityEqualWorks(cat *model.Catalog, idx *pathIndex, warn addFunc) {
 		for i := 0; i < len(g); i++ {
 			for j := i + 1; j < len(g); j++ {
 				a, b := g[i], g[j]
-				if !languagesCompatible(a.Language, b.Language) || !IdentityEqualWorks(a, b) {
+				if !languagesCompatible(a.Language, b.Language) {
 					continue
 				}
-				if differentVolumes(a, b) {
+				reason := oneBookReason(a, b)
+				if reason == "" || differentVolumes(a, b) {
 					continue
 				}
-				warn(idx.work[a], "work %q and %q have the same title and the same identity authors: "+
-					"one book under two ids", a.ID, b.ID)
+				warn(idx.work[a], "work %q and %q have the same title and %s: "+
+					"one book under two ids", a.ID, b.ID, reason)
 			}
 		}
 	}
+}
+
+// oneBookReason reports, in the advisory's own words, WHY two same-title works
+// read as one book - or "" if they do not. The two shapes are the two the
+// advisory reports (see checkIdentityEqualWorks), and they are tried in that
+// order so a pair whose extra person IS role-credited reads as the identity
+// rule's match rather than as an unexplained subset.
+//
+// The wording is load-bearing for triage: both phrasings end in the class's own
+// marker ("one book under two ids", which AdvisoryCensus counts), and the reason
+// in front of it is what a maintainer greps to split the explained forks from
+// the unexplained ones. A subset's reason NAMES the extra people, because they
+// are the whole finding.
+func oneBookReason(a, b *model.Work) string {
+	if IdentityEqualWorks(a, b) {
+		return "the same identity authors"
+	}
+	aAll, bAll := authorSet(a), authorSet(b)
+	switch {
+	case strictSubset(aAll, bAll):
+		return fmt.Sprintf("%q lists the same authors plus %s", b.ID, quotedList(extraOf(bAll, aAll)))
+	case strictSubset(bAll, aAll):
+		return fmt.Sprintf("%q lists the same authors plus %s", a.ID, quotedList(extraOf(aAll, bAll)))
+	}
+	return ""
+}
+
+// authorSet is a work's whole author list as a set. The schema forbids a
+// repeated slug, so its size is the list's.
+func authorSet(w *model.Work) map[string]bool {
+	all := make(map[string]bool, len(w.Authors))
+	for _, a := range w.Authors {
+		all[a] = true
+	}
+	return all
+}
+
+// strictSubset reports whether every member of a is in b and b holds more.
+func strictSubset(a, b map[string]bool) bool { return len(a) < len(b) && subset(a, b) }
+
+// extraOf returns the members of sup that sub does not hold, sorted, so one pair
+// always reports one line.
+func extraOf(sup, sub map[string]bool) []string {
+	var extra []string
+	for k := range sup {
+		if !sub[k] {
+			extra = append(extra, k)
+		}
+	}
+	sort.Strings(extra)
+	return extra
+}
+
+// quotedList renders person slugs as a quoted, comma-separated list.
+func quotedList(ids []string) string {
+	quoted := make([]string, 0, len(ids))
+	for _, id := range ids {
+		quoted = append(quoted, fmt.Sprintf("%q", id))
+	}
+	return strings.Join(quoted, ", ")
 }
 
 // volumeSuffixRE matches the serial-disambiguation tail the importer's
@@ -223,10 +306,7 @@ func IdentityEqualWorks(a, b *model.Work) bool {
 // identitySets returns a work's whole author set and its identity subset (the
 // authors that carry no contributor-role credit).
 func identitySets(w *model.Work) (all, identity map[string]bool) {
-	all = make(map[string]bool, len(w.Authors))
-	for _, a := range w.Authors {
-		all[a] = true
-	}
+	all = authorSet(w)
 	if len(w.Credits) == 0 {
 		return all, all
 	}
@@ -261,11 +341,41 @@ func subset(a, b map[string]bool) bool {
 	return true
 }
 
+// checkOrphanPeople reports a person record that nothing in the tree credits.
+//
+// A person exists to be credited: the record is minted by whatever imported the
+// work that names them, so one that no work's authors, no work's credits and no
+// recording's narrators mention is the residue of something that went wrong -
+// a work dropped or re-slugged after its people were written, a credit corrected
+// to another spelling, a hand-edited PR that moved the last credit away. The
+// record then sits in the people family forever, searchable and empty.
+//
+// It cannot be a failure. The fix is a DELETION, and no rule may demand one on
+// its own reading: the same shape is what a person record added ahead of the
+// work that will credit it looks like, and what a catalogue mid-rework looks
+// like. What it always is, is a question.
+//
+// The credited set is built from forEachPersonRef - the same enumeration
+// checkIntegrity verifies - so this rule can never call a record an orphan
+// while a reference site checkIntegrity still enforces points at it.
+func checkOrphanPeople(cat *model.Catalog, recs []recordWithPath, idx *pathIndex, warn addFunc) {
+	credited := make(map[string]bool, len(cat.People))
+	forEachPersonRef(cat, recs, idx, func(r personRef) {
+		credited[r.id] = true
+	})
+	for _, p := range cat.People {
+		if credited[p.ID] {
+			continue
+		}
+		warn(idx.person[p], "person %q is credited by no work, recording or series: an orphan record", p.ID)
+	}
+}
+
 // AdvisoryCensus renders the one-line count metacheck prints under the
 // advisory lines, so a wave can be compared against the last one without
 // diffing thousands of lines. It returns "" when no advisory class fired.
 func AdvisoryCensus(warns []Problem) string {
-	var lang, honor, ident int
+	var lang, honor, ident, orphan int
 	for _, w := range warns {
 		switch {
 		case strings.Contains(w.Msg, "a translation is a different work"):
@@ -274,11 +384,14 @@ func AdvisoryCensus(warns []Problem) string {
 			honor++
 		case strings.Contains(w.Msg, "one book under two ids"):
 			ident++
+		case strings.Contains(w.Msg, "an orphan record"):
+			orphan++
 		}
 	}
-	if lang+honor+ident == 0 {
+	if lang+honor+ident+orphan == 0 {
 		return ""
 	}
-	return fmt.Sprintf("advisory classes: %d cross-language recordings, %d honorific person pairs, %d identity-equal work pairs",
-		lang, honor, ident)
+	return fmt.Sprintf("advisory classes: %d cross-language recordings, %d honorific person pairs, "+
+		"%d identity-equal work pairs, %d orphan people",
+		lang, honor, ident, orphan)
 }
