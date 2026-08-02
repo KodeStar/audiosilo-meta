@@ -735,15 +735,6 @@
             "role": "antagonist"
           },
           {
-            "description": "A scarred militia guard who secretly tells Holly he is an undercover FBI counter-terrorism agent. He masks their conversation with running water and proposes an escape by jeep.",
-            "id": "scarred-guard",
-            "name": "Scarred Guard",
-            "reveal": {
-              "chapter": 67
-            },
-            "role": "supporting"
-          },
-          {
             "description": "A talkative militia guard assigned to Reacher. He identifies the nearby abandoned town as York and explains that the armed community intends to establish a separatist stronghold under Borken's leadership.",
             "id": "joseph-ray",
             "name": "Joseph Ray",
@@ -758,15 +749,6 @@
             "name": "Kitchen Worker",
             "reveal": {
               "chapter": 88
-            },
-            "role": "supporting"
-          },
-          {
-            "description": "A scarred guard inside Borken's organization who is secretly an FBI counter-terrorism operative. He uses running water to mask a conversation with Holly and offers an escape plan, though taking Reacher as well makes it harder.",
-            "id": "jackson",
-            "name": "Jackson",
-            "reveal": {
-              "chapter": 85
             },
             "role": "supporting"
           },
@@ -820,6 +802,15 @@
               "chapter": 137
             },
             "role": "minor"
+          },
+          {
+            "description": "A scarred militia guard who secretly tells Holly he is an undercover FBI counter-terrorism agent. He masks their conversation with running water and proposes an escape by jeep.",
+            "id": "jackson",
+            "name": "Jackson",
+            "reveal": {
+              "chapter": 67
+            },
+            "role": "supporting"
           }
         ],
         "license": "CC-BY-SA-3.0",
