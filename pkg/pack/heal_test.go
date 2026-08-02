@@ -2,6 +2,7 @@ package pack
 
 import (
 	"encoding/json"
+	"errors"
 	"os"
 	"path/filepath"
 	"sort"
@@ -166,6 +167,180 @@ func TestMisfiledPackNeverClobbersAnother(t *testing.T) {
 			}
 		})
 	}
+}
+
+// THE second data-loss reproduction, from a real enrich run. A pack that holds
+// a LATER pack's first slug splits into a bound that pack already carries, so
+// the flush planned two packs onto one path - and only found out half a
+// catalogue into writing it.
+//
+// The tree got that way the ordinary way: an import created new packs, the
+// operator reverted with `git checkout -- data/` (which restores the tracked
+// files but leaves the untracked new packs behind), and the restored pack held
+// the entries the split had moved out of it. Every one of those entries is
+// invisible to a reader - Locate answers from the pack whose bound covers the
+// slug - so the writer must not act on the tree at all until it is healed.
+func TestFlushRefusesAPackHoldingALaterPacksEntries(t *testing.T) {
+	// One entry per pack, so the pack carrying the leftover owes a split - the
+	// enrich's shape, where growing entries pushed pack after pack over its cap.
+	withCaps(t, FamilyWorks, Caps{TargetSize: 100, HardSize: 150, Entries: 1, DirPacks: DirPackCap})
+	dir := t.TempDir()
+	// nn.json covers [nn, zz), so its "zz" entry is the leftover the split had
+	// already moved into zz.json.
+	writeFile(t, filepath.Join(dir, "works", "0", "0.json"), packOfEntries([2]string{"ab", "A"}))
+	writeFile(t, filepath.Join(dir, "works", "0", "nn.json"),
+		packOfEntries([2]string{"nn", "N"}, [2]string{"zz", "STALE"}))
+	writeFile(t, filepath.Join(dir, "works", "0", "zz.json"), packOfEntries([2]string{"zz", "CURRENT"}))
+	writeFile(t, filepath.Join(dir, "people", "0.json"), packOfEntries([2]string{"aa", "A"}))
+	before := treeBytes(t, dir)
+
+	s, err := Open(dir)
+	if err != nil {
+		t.Fatal(err)
+	}
+	// A write into the offending pack, and one into a family that is planned
+	// BEFORE works - the refusal has to precede every write, not just the ones
+	// after it.
+	if err := s.Upsert(FamilyWorks, "nn", json.RawMessage(entry("nn", "EDITED"))); err != nil {
+		t.Fatal(err)
+	}
+	if err := s.Upsert(FamilyPeople, "cc", json.RawMessage(entry("cc", "NEW"))); err != nil {
+		t.Fatal(err)
+	}
+	_, err = s.Flush()
+	if err == nil {
+		t.Fatal("Flush wrote into a tree whose packs hold each other's entries")
+	}
+	if !errors.Is(err, ErrMisplacedEntries) {
+		t.Errorf("error = %v, want it to be ErrMisplacedEntries", err)
+	}
+	for _, want := range []string{`"zz"`, "works/0/zz.json", "metafmt --write"} {
+		if !strings.Contains(err.Error(), want) {
+			t.Errorf("error = %v, want it to name %s", err, want)
+		}
+	}
+	// The whole plan set is validated before the first byte, so a refused flush
+	// leaves nothing for an operator to heal on top of the refusal.
+	if after := treeBytes(t, dir); !sameTree(before, after) {
+		t.Errorf("a refused flush wrote to the tree:\nbefore %v\nafter  %v", keysOf(before), keysOf(after))
+	}
+
+	// Healing is the documented remedy, and it keeps the copy readers see.
+	healFlush(t, dir, FamilyWorks)
+	if got := entriesOf(t, dir, FamilyWorks); !equalStrings(got, []string{"ab", "nn", "zz"}) {
+		t.Fatalf("entries = %v, want [ab nn zz]", got)
+	}
+	if got := readPack(t, dir, "works/0/zz.json"); !strings.Contains(string(mustEntry(t, got, "zz")), "CURRENT") {
+		t.Error("healing kept the stale copy over the one every reader was seeing")
+	}
+	s2, err := Open(dir)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := s2.Upsert(FamilyWorks, "nn", json.RawMessage(entry("nn", "EDITED"))); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := s2.Flush(); err != nil {
+		t.Fatalf("flush into the healed tree: %v", err)
+	}
+}
+
+// The backstop behind checkInRange: whatever route produced them, two packs on
+// one path are refused, and the message says where they came from - two parts
+// of one split named once, rather than the same path printed twice as though it
+// were a typo.
+func TestPlannedPathsRefusesTwoPacksOnOnePath(t *testing.T) {
+	def, _ := Def(FamilyWorks)
+	for _, c := range []struct {
+		name  string
+		plans []planPack
+		want  []string
+	}{
+		{
+			name: "two packs",
+			plans: []planPack{
+				{src: "works/0/aa.json", dir: "0", bound: "mm"},
+				{src: "works/0/mm.json", dir: "0", bound: "mm"},
+			},
+			want: []string{"works/0/mm.json", "from works/0/aa.json and works/0/mm.json", "one path"},
+		},
+		{
+			name: "two parts of one split",
+			plans: []planPack{
+				{src: "works/0/mm.json", dir: "0", bound: "mm"},
+				{src: "works/0/mm.json", dir: "0", bound: "mm"},
+			},
+			want: []string{"two parts of works/0/mm.json's split"},
+		},
+	} {
+		t.Run(c.name, func(t *testing.T) {
+			_, _, err := plannedPaths(def, c.plans)
+			if err == nil {
+				t.Fatal("plannedPaths accepted two packs on one path")
+			}
+			for _, want := range c.want {
+				if !strings.Contains(err.Error(), want) {
+					t.Errorf("error = %v, want it to say %q", err, want)
+				}
+			}
+		})
+	}
+}
+
+// treeBytes reads every file under the data root, so a test can assert that a
+// refused flush changed nothing at all.
+func treeBytes(t *testing.T, dir string) map[string]string {
+	t.Helper()
+	out := map[string]string{}
+	err := filepath.WalkDir(dir, func(p string, d os.DirEntry, err error) error {
+		if err != nil || d.IsDir() {
+			return err
+		}
+		raw, rerr := os.ReadFile(p)
+		if rerr != nil {
+			return rerr
+		}
+		rel, rerr := filepath.Rel(dir, p)
+		if rerr != nil {
+			return rerr
+		}
+		out[filepath.ToSlash(rel)] = string(raw)
+		return nil
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	return out
+}
+
+func sameTree(a, b map[string]string) bool {
+	if len(a) != len(b) {
+		return false
+	}
+	for k, v := range a {
+		if b[k] != v {
+			return false
+		}
+	}
+	return true
+}
+
+func keysOf(m map[string]string) []string {
+	out := make([]string, 0, len(m))
+	for k := range m {
+		out = append(out, k)
+	}
+	sort.Strings(out)
+	return out
+}
+
+func mustEntry(t *testing.T, f *File, slug string) json.RawMessage {
+	t.Helper()
+	e, ok := f.Get(slug)
+	if !ok {
+		t.Fatalf("pack has no entry %q", slug)
+	}
+	return e
 }
 
 // rebind may only ever widen a range downward. Raising a bound orphans every
