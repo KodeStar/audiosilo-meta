@@ -7169,6 +7169,10 @@
             {
               "asin": "B09D1XMPT3",
               "region": "us"
+            },
+            {
+              "asin": "B09D1N6J85",
+              "region": "ca"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91vH+qR2hbL.jpg",
@@ -7185,6 +7189,11 @@
             {
               "imported_at": "2026-08-01",
               "ref": "B09D1XMPT3",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09D1N6J85",
               "type": "libex-import"
             }
           ],
@@ -13478,6 +13487,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "eric-conger-2005": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002V8OFRS",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51-FscHJmFL.jpg",
+          "id": "eric-conger-2005",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "eric-conger"
+          ],
+          "publisher": "Penguin Audio",
+          "release_date": "2005-05-05",
+          "runtime_min": 365,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002V8OFRS",
+              "type": "libex-import"
+            }
+          ],
+          "work": "broken-prey"
+        },
         "richard-ferrone-2005": {
           "abridged": false,
           "added_at": "2026-08-02",

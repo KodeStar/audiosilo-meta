@@ -2165,6 +2165,10 @@
             {
               "asin": "B0CN1TNWJC",
               "region": "us"
+            },
+            {
+              "asin": "B0CN1N5QZQ",
+              "region": "ca"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91qTV5VAsKL.jpg",
@@ -2182,6 +2186,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0CN1TNWJC",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CN1N5QZQ",
               "type": "libex-import"
             }
           ],
@@ -8187,6 +8196,10 @@
             {
               "asin": "B01K4CKFJY",
               "region": "us"
+            },
+            {
+              "asin": "B01K4CV1U6",
+              "region": "de"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91jGWa5CzNL.jpg",
@@ -8208,6 +8221,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B01K4CKFJY",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B01K4CV1U6",
               "type": "libex-import"
             }
           ],
@@ -10628,6 +10646,807 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "angela-rippon-2020": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "0008447500",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81DlDg+Yf2L.jpg",
+          "id": "angela-rippon-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "angela-rippon"
+          ],
+          "publisher": "William Collins",
+          "release_date": "2020-10-15",
+          "runtime_min": 99,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "0008447500",
+              "type": "libex-import"
+            }
+          ],
+          "work": "black-beauty"
+        },
+        "arielle-lipshaw-2022": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0BDPMZ1LB",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71wMkz9fiJL.jpg",
+          "id": "arielle-lipshaw-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "arielle-lipshaw"
+          ],
+          "publisher": "Hexagon Tech",
+          "release_date": "2022-09-08",
+          "runtime_min": 309,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0BDPMZ1LB",
+              "type": "libex-import"
+            }
+          ],
+          "work": "black-beauty"
+        },
+        "avi-roque-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CP37HJB9",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91qdcMTCTAL.jpg",
+          "id": "avi-roque-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "avi-roque"
+          ],
+          "publisher": "Spotify Audiobooks",
+          "release_date": "2023-12-19",
+          "runtime_min": 405,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CP37HJB9",
+              "type": "libex-import"
+            }
+          ],
+          "work": "black-beauty"
+        },
+        "ben-fogle-2006": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0036GRKKS",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71MzMNuiZ-L.jpg",
+          "id": "ben-fogle-2006",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "ben-fogle"
+          ],
+          "publisher": "CSA Word",
+          "release_date": "2006-06-08",
+          "runtime_min": 144,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0036GRKKS",
+              "type": "libex-import"
+            }
+          ],
+          "work": "black-beauty"
+        },
+        "bill-lewis-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0DSXM35YN",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91WW1IanjJL.jpg",
+          "id": "bill-lewis-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "bill-lewis"
+          ],
+          "publisher": "Anthony Pica Productions, LLC",
+          "release_date": "2025-01-13",
+          "runtime_min": 362,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DSXM35YN",
+              "type": "libex-import"
+            }
+          ],
+          "work": "black-beauty"
+        },
+        "bob-thomley-2011": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B006PGW6U0",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/7168IyC+VOL.jpg",
+          "id": "bob-thomley-2011",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "bob-thomley"
+          ],
+          "publisher": "Trout Lake Media",
+          "release_date": "2011-12-29",
+          "runtime_min": 364,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B006PGW6U0",
+              "type": "libex-import"
+            }
+          ],
+          "work": "black-beauty"
+        },
+        "cathi-colas-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0FTHSXJ9V",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91615oVlzTL.jpg",
+          "id": "cathi-colas-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "cathi-colas"
+          ],
+          "publisher": "High Horse Press",
+          "release_date": "2025-10-02",
+          "runtime_min": 367,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FTHSXJ9V",
+              "type": "libex-import"
+            }
+          ],
+          "work": "black-beauty"
+        },
+        "colin-salmon-2015": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B017WK4ACO",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/716fts4h0wL.jpg",
+          "id": "colin-salmon-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "colin-salmon"
+          ],
+          "publisher": "silksoundbooks Limited",
+          "release_date": "2015-11-13",
+          "runtime_min": 334,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B017WK4ACO",
+              "type": "libex-import"
+            }
+          ],
+          "work": "black-beauty"
+        },
+        "cori-samuel-2018": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B078SJBV7X",
+              "region": "us"
+            },
+            {
+              "asin": "1988565162",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91nSdgC4z3L.jpg",
+          "id": "cori-samuel-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "cori-samuel"
+          ],
+          "publisher": "Paperless",
+          "release_date": "2018-01-05",
+          "runtime_min": 334,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B078SJBV7X",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1988565162",
+              "type": "libex-import"
+            }
+          ],
+          "work": "black-beauty"
+        },
+        "david-mccallion-2016": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B01LYCHZ3I",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51pGiqYmWRL.jpg",
+          "id": "david-mccallion-2016",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "david-mccallion"
+          ],
+          "publisher": "A.R.N. Publications",
+          "release_date": "2016-10-03",
+          "runtime_min": 306,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B01LYCHZ3I",
+              "type": "libex-import"
+            }
+          ],
+          "work": "black-beauty"
+        },
+        "flo-gibson-2011": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00513NN1O",
+              "region": "us"
+            },
+            {
+              "asin": "B002V1O66A",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91I39P1VUZL.jpg",
+          "id": "flo-gibson-2011",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "flo-gibson"
+          ],
+          "publisher": "Audio Book Contractors, LLC",
+          "release_date": "2011-05-17",
+          "runtime_min": 325,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00513NN1O",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002V1O66A",
+              "type": "libex-import"
+            }
+          ],
+          "work": "black-beauty"
+        },
+        "frances-sternhagen-2009": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002UZMZSI",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91MAFbDRyOL.jpg",
+          "id": "frances-sternhagen-2009",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "frances-sternhagen"
+          ],
+          "publisher": "Audio Holdings, LLC",
+          "release_date": "2009-08-14",
+          "runtime_min": 116,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002UZMZSI",
+              "type": "libex-import"
+            }
+          ],
+          "work": "black-beauty"
+        },
+        "iman-2017": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B071ZJH2HQ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91iQqbQnIeL.jpg",
+          "id": "iman-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "iman"
+          ],
+          "publisher": "EDCON Publishing Group, Inc.",
+          "release_date": "2017-05-30",
+          "runtime_min": 37,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B071ZJH2HQ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "black-beauty"
+        },
+        "james-langton-2017": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B01MY87801",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91yUCwkDhaL.jpg",
+          "id": "james-langton-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "james-langton"
+          ],
+          "publisher": "Brilliance Audio",
+          "release_date": "2017-01-24",
+          "runtime_min": 328,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B01MY87801",
+              "type": "libex-import"
+            }
+          ],
+          "work": "black-beauty"
+        },
+        "jean-debarbieris-2012": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0092SF9V6",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51ddsGk3iSL.jpg",
+          "id": "jean-debarbieris-2012",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jean-debarbieris"
+          ],
+          "publisher": "Books In Motion",
+          "release_date": "2012-08-28",
+          "runtime_min": 332,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0092SF9V6",
+              "type": "libex-import"
+            }
+          ],
+          "work": "black-beauty"
+        },
+        "jeff-harding-2016": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B01MTL8832",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51H0EOWhHDL.jpg",
+          "id": "jeff-harding-2016",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jeff-harding"
+          ],
+          "publisher": "Dreamscape Media, LLC",
+          "release_date": "2016-11-10",
+          "runtime_min": 351,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B01MTL8832",
+              "type": "libex-import"
+            }
+          ],
+          "work": "black-beauty"
+        },
+        "jenny-hoops-2017": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B076B3RH9G",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91j6g6-pjYL.jpg",
+          "id": "jenny-hoops-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jenny-hoops"
+          ],
+          "publisher": "Spoken Realms",
+          "release_date": "2017-10-11",
+          "runtime_min": 345,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B076B3RH9G",
+              "type": "libex-import"
+            }
+          ],
+          "work": "black-beauty"
+        },
+        "john-chatty-2011": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B006JA1EF0",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81+tgmh87zL.jpg",
+          "id": "john-chatty-2011",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "john-chatty"
+          ],
+          "publisher": "Jimcin Recordings",
+          "release_date": "2011-12-08",
+          "runtime_min": 322,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B006JA1EF0",
+              "type": "libex-import"
+            }
+          ],
+          "work": "black-beauty"
+        },
+        "john-rayburn-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0BRNRN8S9",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71Xpm6+Fe7L.jpg",
+          "id": "john-rayburn-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "john-rayburn"
+          ],
+          "publisher": "John D. Rayburn",
+          "release_date": "2023-01-10",
+          "runtime_min": 378,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0BRNRN8S9",
+              "type": "libex-import"
+            }
+          ],
+          "work": "black-beauty"
+        },
+        "jonathan-keeble-2003": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002VAEK0I",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91UVdsgEsmL.jpg",
+          "id": "jonathan-keeble-2003",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jonathan-keeble"
+          ],
+          "publisher": "Naxos AudioBooks",
+          "release_date": "2003-07-16",
+          "runtime_min": 132,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002VAEK0I",
+              "type": "libex-import"
+            }
+          ],
+          "work": "black-beauty"
+        },
+        "linda-barrans-2019": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B07PB66ZZ3",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91OEeFAFQ4L.jpg",
+          "id": "linda-barrans-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "linda-barrans"
+          ],
+          "publisher": "Spoken Realms",
+          "release_date": "2019-03-19",
+          "runtime_min": 343,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07PB66ZZ3",
+              "type": "libex-import"
+            }
+          ],
+          "work": "black-beauty"
+        },
+        "martin-jarvis-2008": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0036IN8Y8",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81wz7EKWF4L.jpg",
+          "id": "martin-jarvis-2008",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "martin-jarvis"
+          ],
+          "publisher": "Puffin",
+          "release_date": "2008-03-06",
+          "runtime_min": 149,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0036IN8Y8",
+              "type": "libex-import"
+            }
+          ],
+          "work": "black-beauty"
+        },
+        "matt-montanez-2018": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0798XWMNJ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/911XMpxFokL.jpg",
+          "id": "matt-montanez-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "matt-montanez"
+          ],
+          "publisher": "Authors Republic",
+          "release_date": "2018-01-25",
+          "runtime_min": 78,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0798XWMNJ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "black-beauty"
+        },
+        "nathaniel-parker-2009": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002V1A3F8",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81C+8DMzv7L.jpg",
+          "id": "nathaniel-parker-2009",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "nathaniel-parker"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2009-03-27",
+          "runtime_min": 321,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002V1A3F8",
+              "type": "libex-import"
+            }
+          ],
+          "work": "black-beauty"
+        },
+        "nigel-lambert-1999": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002VAENUA",
+              "region": "us"
+            }
+          ],
+          "id": "nigel-lambert-1999",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "nigel-lambert"
+          ],
+          "publisher": "ISIS Audio Books",
+          "release_date": "1999-12-16",
+          "runtime_min": 379,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002VAENUA",
+              "type": "libex-import"
+            }
+          ],
+          "work": "black-beauty"
+        },
+        "peter-batchelor-2012": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B009NNTEM0",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81g13BpLLdL.jpg",
+          "id": "peter-batchelor-2012",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "peter-batchelor"
+          ],
+          "publisher": "Trout Lake Media",
+          "release_date": "2012-10-16",
+          "runtime_min": 307,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B009NNTEM0",
+              "type": "libex-import"
+            }
+          ],
+          "work": "black-beauty"
+        },
+        "ralph-cosham-2011": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B006OCAOMW",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81UuOzIYQJL.jpg",
+          "id": "ralph-cosham-2011",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "ralph-cosham"
+          ],
+          "publisher": "Blackstone Audio, Inc.",
+          "release_date": "2011-12-22",
+          "runtime_min": 321,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B006OCAOMW",
+              "type": "libex-import"
+            }
+          ],
+          "work": "black-beauty"
+        },
+        "saddleback-educational-publishing-2008": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002V5CMLC",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91WyeOqx3CL.jpg",
+          "id": "saddleback-educational-publishing-2008",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "saddleback-educational-publishing"
+          ],
+          "publisher": "Saddleback Educational Publishing",
+          "release_date": "2008-07-07",
+          "runtime_min": 39,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002V5CMLC",
+              "type": "libex-import"
+            }
+          ],
+          "work": "black-beauty"
+        },
         "samuel-west-2017": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -10907,6 +11726,118 @@
             {
               "imported_at": "2026-07-30",
               "ref": "B06XS4J81F",
+              "type": "libex-import"
+            }
+          ],
+          "work": "black-beauty"
+        },
+        "sharon-hoyland-2019": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B081PS5NJS",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81mIzwKZZ+L.jpg",
+          "id": "sharon-hoyland-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "sharon-hoyland"
+          ],
+          "publisher": "Spoken Realms",
+          "release_date": "2019-11-19",
+          "runtime_min": 395,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B081PS5NJS",
+              "type": "libex-import"
+            }
+          ],
+          "work": "black-beauty"
+        },
+        "simon-vance-2006": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002UZZBE8",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51UPYmEFAOL.jpg",
+          "id": "simon-vance-2006",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "simon-vance"
+          ],
+          "publisher": "Tantor Audio",
+          "release_date": "2006-10-03",
+          "runtime_min": 307,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002UZZBE8",
+              "type": "libex-import"
+            }
+          ],
+          "work": "black-beauty"
+        },
+        "steve-corona-2008": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002UZKVU2",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51331tMrbwL.jpg",
+          "id": "steve-corona-2008",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "steve-corona"
+          ],
+          "publisher": "Listener's Digest Inc.",
+          "release_date": "2008-07-25",
+          "runtime_min": 63,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002UZKVU2",
+              "type": "libex-import"
+            }
+          ],
+          "work": "black-beauty"
+        },
+        "victoria-mcgee-2011": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B004P7Z9KA",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71R1+XCEYmL.jpg",
+          "id": "victoria-mcgee-2011",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "victoria-mcgee"
+          ],
+          "publisher": "Trout Lake Media",
+          "release_date": "2011-02-23",
+          "runtime_min": 341,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B004P7Z9KA",
               "type": "libex-import"
             }
           ],
@@ -11997,6 +12928,10 @@
             {
               "asin": "1510109889",
               "region": "us"
+            },
+            {
+              "asin": "1549102206",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -12190,6 +13125,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "1510109889",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1549102206",
               "type": "libex-import"
             }
           ],
@@ -12646,6 +13586,34 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B002V0RFZU",
+              "type": "libex-import"
+            }
+          ],
+          "work": "black-cherry-blues"
+        },
+        "will-patton-2010": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0036IUTS6",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81UUv4vzFaL.jpg",
+          "id": "will-patton-2010",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "will-patton"
+          ],
+          "publisher": "Simon & Schuster Audio",
+          "release_date": "2010-02-02",
+          "runtime_min": 183,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0036IUTS6",
               "type": "libex-import"
             }
           ],
@@ -17317,6 +18285,34 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0G3YVZXBN",
+              "type": "libex-import"
+            }
+          ],
+          "work": "black-hound-of-death"
+        },
+        "david-plinge-2016": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B01DKWANOC",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1xlA6+rbzL.jpg",
+          "id": "david-plinge-2016",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "david-plinge"
+          ],
+          "publisher": "Spoken Realms",
+          "release_date": "2016-03-30",
+          "runtime_min": 68,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B01DKWANOC",
               "type": "libex-import"
             }
           ],

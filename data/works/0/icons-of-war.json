@@ -12282,6 +12282,10 @@
             {
               "asin": "B0CKM7LFVB",
               "region": "us"
+            },
+            {
+              "asin": "B0CKM58PR6",
+              "region": "ca"
             }
           ],
           "chapters": [
@@ -12570,6 +12574,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0CKM7LFVB",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CKM58PR6",
               "type": "libex-import"
             }
           ],
@@ -15425,6 +15434,64 @@
             {
               "imported_at": "2026-08-02",
               "ref": "8865975946",
+              "type": "libex-import"
+            }
+          ],
+          "work": "il-brutto-anatroccolo"
+        },
+        "daniela-fava-2010": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00TM1ZYI6",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81WM9T47gsL.jpg",
+          "id": "daniela-fava-2010",
+          "language": "it",
+          "license": "CC0-1.0",
+          "narrators": [
+            "daniela-fava",
+            "loretta-di-pisa",
+            "pietro-ubaldi"
+          ],
+          "publisher": "GoodMood",
+          "release_date": "2010-01-21",
+          "runtime_min": 14,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00TM1ZYI6",
+              "type": "libex-import"
+            }
+          ],
+          "work": "il-brutto-anatroccolo"
+        },
+        "luciano-caratto-2021": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B08WHYFVRC",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/910dZaBJBJL.jpg",
+          "id": "luciano-caratto-2021",
+          "language": "it",
+          "license": "CC0-1.0",
+          "narrators": [
+            "luciano-caratto"
+          ],
+          "publisher": "Saga Egmont",
+          "release_date": "2021-02-18",
+          "runtime_min": 27,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B08WHYFVRC",
               "type": "libex-import"
             }
           ],

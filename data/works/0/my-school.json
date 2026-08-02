@@ -1711,6 +1711,42 @@
       "id": "my-sisters-keeper",
       "language": "en",
       "license": "CC0-1.0",
+      "recordings": {
+        "andy-paris-2016": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B01D3F2YQ6",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91LZVE33KAL.jpg",
+          "id": "andy-paris-2016",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andy-paris",
+            "barbara-mcculloh",
+            "carol-monda",
+            "jennifer-ikeda",
+            "julia-gibson",
+            "richard-poe",
+            "tom-stechschulte"
+          ],
+          "publisher": "Simon & Schuster Audio",
+          "release_date": "2016-03-29",
+          "runtime_min": 821,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B01D3F2YQ6",
+              "type": "libex-import"
+            }
+          ],
+          "work": "my-sisters-keeper"
+        }
+      },
       "sources": [
         {
           "imported_at": "2026-07-25",
@@ -3773,6 +3809,60 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "lisa-bonet-2017": {
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B06XKBQHSP",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 894340,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 897080,
+              "start_ms": 894340,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 865036,
+              "start_ms": 1791420,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 882776,
+              "start_ms": 2656456,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 867683,
+              "start_ms": 3539232,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91e6UjtyekL.jpg",
+          "id": "lisa-bonet-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "lisa-bonet"
+          ],
+          "publisher": "L.A. Theatre Works",
+          "release_date": "2017-03-13",
+          "runtime_min": 73,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B06XKBQHSP",
+              "type": "libex-import"
+            }
+          ],
+          "work": "my-teacher-is-an-alien"
+        },
         "nancy-oconnor-2015": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -4563,6 +4653,10 @@
             {
               "asin": "B0C1PDPX5J",
               "region": "us"
+            },
+            {
+              "asin": "B0C1PG675B",
+              "region": "ca"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81HxPYW+UaL.jpg",
@@ -4579,6 +4673,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0C1PDPX5J",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0C1PG675B",
               "type": "libex-import"
             }
           ],

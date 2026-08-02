@@ -1453,6 +1453,10 @@
             {
               "asin": "B08LDV8XZM",
               "region": "us"
+            },
+            {
+              "asin": "B08LDVKL27",
+              "region": "de"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91Ktf0pyaxL.jpg",
@@ -1469,6 +1473,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B08LDV8XZM",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B08LDVKL27",
               "type": "libex-import"
             }
           ],
@@ -1608,6 +1617,10 @@
             {
               "asin": "B0F8RFKPMP",
               "region": "us"
+            },
+            {
+              "asin": "B0H6F45B8C",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/817ND5q7fEL.jpg",
@@ -1624,6 +1637,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0F8RFKPMP",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0H6F45B8C",
               "type": "libex-import"
             }
           ],
@@ -1711,6 +1729,34 @@
       "language": "fr",
       "license": "CC0-1.0",
       "recordings": {
+        "julien-chatelet-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0DZDQBD27",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81Tui4RuB0L.jpg",
+          "id": "julien-chatelet-2025",
+          "language": "fr",
+          "license": "CC0-1.0",
+          "narrators": [
+            "julien-chatelet"
+          ],
+          "publisher": "Storyside",
+          "release_date": "2025-03-05",
+          "runtime_min": 631,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DZDQBD27",
+              "type": "libex-import"
+            }
+          ],
+          "work": "lavant-poste"
+        },
         "xavier-baur-2026": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -1837,6 +1883,34 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B072R3D772",
+              "type": "libex-import"
+            }
+          ],
+          "work": "lavender-and-old-lace"
+        },
+        "martha-h-weller-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0DM9P2TC6",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91+EGeyXZCL.jpg",
+          "id": "martha-h-weller-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "martha-h-weller"
+          ],
+          "publisher": "Voices of Today Pty LTD",
+          "release_date": "2024-12-10",
+          "runtime_min": 299,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DM9P2TC6",
               "type": "libex-import"
             }
           ],
@@ -1997,6 +2071,34 @@
             }
           ],
           "work": "lavender-morning"
+        },
+        "gabra-zackman-2009": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002V5CW0I",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91ORy2dw6LL.jpg",
+          "id": "gabra-zackman-2009",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "gabra-zackman"
+          ],
+          "publisher": "Simon & Schuster Audio",
+          "release_date": "2009-03-31",
+          "runtime_min": 359,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002V5CW0I",
+              "type": "libex-import"
+            }
+          ],
+          "work": "lavender-morning"
         }
       },
       "sources": [
@@ -2131,6 +2233,18 @@
             {
               "asin": "B0CYHK8SJT",
               "region": "us"
+            },
+            {
+              "asin": "B0CYHFJDQ3",
+              "region": "ca"
+            },
+            {
+              "asin": "B0CYHMM9QJ",
+              "region": "uk"
+            },
+            {
+              "asin": "B0CYHKM4Z7",
+              "region": "de"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81Mf6ezvxYL.jpg",
@@ -2155,6 +2269,21 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0CYHK8SJT",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CYHFJDQ3",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CYHMM9QJ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CYHKM4Z7",
               "type": "libex-import"
             }
           ],
@@ -8196,6 +8325,35 @@
       "language": "fr",
       "license": "CC0-1.0",
       "recordings": {
+        "hugues-sauvay-2009": {
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00TKGIV0Q",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/61WTp8dHdFL.jpg",
+          "id": "hugues-sauvay-2009",
+          "language": "fr",
+          "license": "CC0-1.0",
+          "narrators": [
+            "hugues-sauvay",
+            "michel-chaigneau",
+            "victor-vestia"
+          ],
+          "publisher": "SonoBook",
+          "release_date": "2009-10-05",
+          "runtime_min": 161,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00TKGIV0Q",
+              "type": "libex-import"
+            }
+          ],
+          "work": "le-cauchemar-dinnsmouth"
+        },
         "patrick-blandin-2020": {
           "abridged": false,
           "added_at": "2026-08-02",

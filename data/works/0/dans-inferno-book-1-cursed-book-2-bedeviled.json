@@ -1989,6 +1989,10 @@
             {
               "asin": "B00TMSLDMA",
               "region": "us"
+            },
+            {
+              "asin": "B004UW5NSI",
+              "region": "de"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/917vOrA28wL.jpg",
@@ -2005,6 +2009,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B00TMSLDMA",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B004UW5NSI",
               "type": "libex-import"
             }
           ],
@@ -3343,6 +3352,10 @@
             {
               "asin": "B09MG9FJK1",
               "region": "us"
+            },
+            {
+              "asin": "B09MG9MTN4",
+              "region": "ca"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81CfrBBtbNL.jpg",
@@ -3360,6 +3373,11 @@
             {
               "imported_at": "2026-08-01",
               "ref": "B09MG9FJK1",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09MG9MTN4",
               "type": "libex-import"
             }
           ],
@@ -5820,6 +5838,35 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "aiden-snow-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0GDRG2B2D",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81QJ4DxsIjL.jpg",
+          "id": "aiden-snow-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "aiden-snow",
+            "andi-arndt"
+          ],
+          "publisher": "World Literary Press",
+          "release_date": "2026-01-02",
+          "runtime_min": 241,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GDRG2B2D",
+              "type": "libex-import"
+            }
+          ],
+          "work": "daring-her-love"
+        },
         "natalie-ross-2016": {
           "abridged": false,
           "added_at": "2026-08-02",
