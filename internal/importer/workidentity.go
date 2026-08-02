@@ -312,6 +312,56 @@ func seriesScopedSuffix(series, pos string) string {
 	return name + "-" + tail
 }
 
+// ---------------------------------------------------------------------------
+// Finding a suffixed work again
+//
+// The pre-pass only fires on a BATCH that carries two same-titled volumes at
+// once. A later run bringing ONE of those volumes composes the bare base and
+// would mint a duplicate beside the suffixed work already in the tree - the tree
+// holds the first of them since seed wave 6 (id-rather-have-a-cat-...-book-1 and
+// -book-2), so this is a live gap rather than a hypothetical one.
+//
+// A row that states a series position can address the suffixed slugs itself:
+// the tail is a pure function of (series, position), both of which the row
+// carries. So the claim-bearing row PROBES them (posSuffixSlugs, wired into
+// workCandidates), and only a row that states the claim ever looks there - which
+// is what keeps the probe off the 258 works whose slug merely LOOKS suffixed
+// because their title ends "... Book 3".
+
+// positionClaim is a row's serial claim reduced to the two strings the suffix
+// formulas need. The zero value states no claim and probes nothing.
+type positionClaim struct {
+	series string
+	pos    string
+}
+
+// posSuffixSlugs returns the slugs a work carrying this claim's position suffix
+// would sit at: the plain "book-<position>" tail and the series-scoped form, in
+// that order (the scoped one is spent only on a multi-series group, so it is the
+// rarer place to look). Composition is BoundedSlugTail over the same tails
+// getOrCreateWork appends, so a probe lands where the pre-pass would have minted
+// and the two cannot drift.
+//
+// A tail that adds nothing (an unslugifiable position) and a slug equal to the
+// base or to an earlier probe are dropped: the base is already candidate zero.
+func posSuffixSlugs(base string, c positionClaim) []string {
+	if c.pos == "" {
+		return nil
+	}
+	out := make([]string, 0, 2)
+	for _, tail := range []string{serialPositionSuffix(c.pos), seriesScopedSuffix(c.series, c.pos)} {
+		if tail == "" {
+			continue
+		}
+		slug := BoundedSlugTail(base, "-"+tail)
+		if slug == base || slices.Contains(out, slug) {
+			continue
+		}
+		out = append(out, slug)
+	}
+	return out
+}
+
 // serialTitleKey is the grouping key for the pre-pass: the resolved work title's
 // slug plus the row's identity author set, sorted so the key is order-free.
 func serialTitleKey(title string, authors workAuthors) string {

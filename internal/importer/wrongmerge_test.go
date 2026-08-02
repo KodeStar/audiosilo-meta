@@ -1,6 +1,7 @@
 package importer
 
 import (
+	"slices"
 	"strings"
 	"testing"
 
@@ -305,6 +306,216 @@ func TestSerialPositionSuffixSeparatesDecimalFromRange(t *testing.T) {
 			t.Errorf("positions %q and %q share the suffix %q", other, pos, got)
 		}
 		seen[got] = pos
+	}
+}
+
+// ---------------------------------------------------------------------------
+// WRONG SPLIT: a later run meeting a work the serial pre-pass suffixed
+//
+// The pre-pass fires on a BATCH holding two same-titled volumes. Seed wave 6
+// minted the first suffixed works in the tree, so from now on a run can bring
+// ONE volume of a serial whose siblings are already catalogued - and a lone row
+// composes the bare base, which is not where that work sits. Finding it again is
+// the row's own series claim: the tail is a function of (series, position), both
+// of which the row states.
+
+// seedBravelandsVolumes is the two-volume serial as an earlier run left it: the
+// pre-pass suffixed both works and the series records which volume each is.
+// Everything below starts from this tree and brings ONE more row.
+func seedBravelandsVolumes(t *testing.T) string {
+	t.Helper()
+	dataDir := t.TempDir()
+	sum := runLibexInto(t, dataDir, rows(
+		libexRow{asin: "B0SEEDVOL1", title: "Bravelands", authors: `{"name":"Erin Hunter"}`, minutes: 500,
+			series: `{"name":"Bravelands","position":"1"}`},
+		libexRow{asin: "B0SEEDVOL2", title: "Bravelands", authors: `{"name":"Erin Hunter"}`, minutes: 505,
+			series: `{"name":"Bravelands","position":"2"}`},
+	))
+	if sum.NewWorks != 2 {
+		t.Fatalf("seed run: NewWorks = %d, want 2", sum.NewWorks)
+	}
+	for _, slug := range []string{"bravelands-book-1", "bravelands-book-2"} {
+		if !entryExists(t, dataDir, workAddr(slug)) {
+			t.Fatalf("seed run left no work at %q", slug)
+		}
+	}
+	return dataDir
+}
+
+// workHasASIN reports whether any recording of a work carries the ASIN.
+func workHasASIN(t *testing.T, dataDir, slug, asin string) bool {
+	t.Helper()
+	for _, rec := range recSlugsOf(t, dataDir, slug) {
+		var r struct {
+			ASIN []struct{ ASIN string }
+		}
+		readEntity(t, dataDir, recAddr(slug, rec), &r)
+		for _, a := range r.ASIN {
+			if a.ASIN == asin {
+				return true
+			}
+		}
+	}
+	return false
+}
+
+// TestLoneVolumeFindsItsSuffixedWork is the reachability half of the rule, and
+// the defect the real-data slug test caught: a single row for volume 1 of a
+// serial whose work already sits at "bravelands-book-1" must land there, not
+// mint a second work at the bare slug.
+func TestLoneVolumeFindsItsSuffixedWork(t *testing.T) {
+	dataDir := seedBravelandsVolumes(t)
+
+	sum := runLibexInto(t, dataDir, rows(
+		libexRow{asin: "B0LONEVOL1", title: "Bravelands", authors: `{"name":"Erin Hunter"}`, minutes: 500,
+			series: `{"name":"Bravelands","position":"1"}`},
+	))
+
+	if sum.NewWorks != 0 {
+		t.Errorf("NewWorks = %d, want 0: volume 1 is already in the catalogue", sum.NewWorks)
+	}
+	if entryExists(t, dataDir, workAddr("bravelands")) {
+		t.Error("a duplicate work was minted at the bare slug beside bravelands-book-1")
+	}
+	if !workHasASIN(t, dataDir, "bravelands-book-1", "B0LONEVOL1") {
+		t.Error("the row's ASIN did not land on bravelands-book-1")
+	}
+}
+
+// TestLoneVolumeFindsTheSeriesScopedSuffixedWork is the same reachability for
+// the other tail the pre-pass mints: a group spanning two serials namespaces the
+// suffix with the series, so the probe has to address that form too.
+func TestLoneVolumeFindsTheSeriesScopedSuffixedWork(t *testing.T) {
+	const author = `{"name":"Erin Hunter"}`
+	dataDir := t.TempDir()
+	runLibexInto(t, dataDir, rows(
+		libexRow{asin: "B0SCOPEDA1", title: "Bravelands", authors: author, minutes: 500,
+			series: `{"name":"Alpha","position":"1"}`},
+		libexRow{asin: "B0SCOPEDA2", title: "Bravelands", authors: author, minutes: 505,
+			series: `{"name":"Alpha","position":"2"}`},
+		libexRow{asin: "B0SCOPEDB1", title: "Bravelands", authors: author, minutes: 502,
+			series: `{"name":"Beta","position":"1"}`},
+	))
+	if !entryExists(t, dataDir, workAddr("bravelands-alpha-book-1")) {
+		t.Fatal("seed run left no work at bravelands-alpha-book-1")
+	}
+
+	sum := runLibexInto(t, dataDir, rows(
+		libexRow{asin: "B0SCOPELN1", title: "Bravelands", authors: author, minutes: 500,
+			series: `{"name":"Alpha","position":"1"}`},
+	))
+
+	if sum.NewWorks != 0 {
+		t.Errorf("NewWorks = %d, want 0: Alpha volume 1 is already in the catalogue", sum.NewWorks)
+	}
+	if !workHasASIN(t, dataDir, "bravelands-alpha-book-1", "B0SCOPELN1") {
+		t.Error("the row's ASIN did not land on bravelands-alpha-book-1")
+	}
+}
+
+// TestLoneVolumeAtAnotherPositionKeepsItsOwnWork is the refusal the reachability
+// must not cost: a row claiming a position the suffixed work does not hold is a
+// DIFFERENT volume, and the series says so.
+func TestLoneVolumeAtAnotherPositionKeepsItsOwnWork(t *testing.T) {
+	dataDir := seedBravelandsVolumes(t)
+
+	sum := runLibexInto(t, dataDir, rows(
+		libexRow{asin: "B0LONEVOL3", title: "Bravelands", authors: `{"name":"Erin Hunter"}`, minutes: 500,
+			series: `{"name":"Bravelands","position":"3"}`},
+	))
+
+	if sum.NewWorks != 1 {
+		t.Errorf("NewWorks = %d, want 1: volume 3 is a book the catalogue does not hold", sum.NewWorks)
+	}
+	for _, slug := range []string{"bravelands-book-1", "bravelands-book-2"} {
+		if workHasASIN(t, dataDir, slug, "B0LONEVOL3") {
+			t.Errorf("volume 3's ASIN landed on %q", slug)
+		}
+	}
+}
+
+// TestClaimlessRowNeverReachesASuffixedWork is the other refusal, and the one
+// that keeps the 258 title-suffixed works safe: a row that states no position
+// probes no suffixed slug and can be placed by no series, so it keeps its own
+// work exactly as it did before the probe existed.
+func TestClaimlessRowNeverReachesASuffixedWork(t *testing.T) {
+	dataDir := seedBravelandsVolumes(t)
+
+	sum := runLibexInto(t, dataDir, rows(
+		libexRow{asin: "B0NOCLAIM1", title: "Bravelands", authors: `{"name":"Erin Hunter"}`, minutes: 500},
+	))
+
+	if sum.NewWorks != 1 {
+		t.Errorf("NewWorks = %d, want 1: a claim-less row cannot claim a volume's work", sum.NewWorks)
+	}
+	if !entryExists(t, dataDir, workAddr("bravelands")) {
+		t.Error("the claim-less row must mint its own work at the bare slug")
+	}
+	for _, slug := range []string{"bravelands-book-1", "bravelands-book-2"} {
+		if workHasASIN(t, dataDir, slug, "B0NOCLAIM1") {
+			t.Errorf("the claim-less row's ASIN landed on %q", slug)
+		}
+	}
+}
+
+// TestRepeatedSerialBatchDoesNotDuplicate is the same gap on the BATCH path: a
+// second run bringing both volumes again composes the same suffixes, and without
+// the placement test would refuse the works it minted itself last time and mint
+// "bravelands-book-1-2" beside them.
+func TestRepeatedSerialBatchDoesNotDuplicate(t *testing.T) {
+	dataDir := seedBravelandsVolumes(t)
+
+	sum := runLibexInto(t, dataDir, rows(
+		libexRow{asin: "B0REPEATV1", title: "Bravelands", authors: `{"name":"Erin Hunter"}`, minutes: 500,
+			series: `{"name":"Bravelands","position":"1"}`},
+		libexRow{asin: "B0REPEATV2", title: "Bravelands", authors: `{"name":"Erin Hunter"}`, minutes: 505,
+			series: `{"name":"Bravelands","position":"2"}`},
+	))
+
+	if sum.NewWorks != 0 {
+		t.Errorf("NewWorks = %d, want 0: both volumes are already in the catalogue", sum.NewWorks)
+	}
+	if entryExists(t, dataDir, workAddr("bravelands-book-1-2")) {
+		t.Error("the second run minted a numbered duplicate of its own suffixed work")
+	}
+	if !workHasASIN(t, dataDir, "bravelands-book-1", "B0REPEATV1") ||
+		!workHasASIN(t, dataDir, "bravelands-book-2", "B0REPEATV2") {
+		t.Error("a re-imported volume's ASIN did not land on its own work")
+	}
+}
+
+// TestPositionProbesAreLookOnly pins what the probe is allowed to be: a place to
+// LOOK. Nothing may ever be minted at a position-suffixed slug outside the
+// pre-pass, or a claim-bearing row would start creating works at addresses the
+// batch path owns.
+func TestPositionProbesAreLookOnly(t *testing.T) {
+	authors := workAuthors{all: []string{"erin-hunter"}, identity: []string{"erin-hunter"}}
+	cands, primary := workCandidates("bravelands", authors, positionClaim{series: "Alpha", pos: "1"})
+
+	var probes []string
+	for i, c := range cands {
+		if !c.posSuffixed {
+			continue
+		}
+		if !c.probeOnly {
+			t.Errorf("candidate %q carries a position suffix but is mintable", c.slug)
+		}
+		if i >= primary {
+			t.Errorf("candidate %q sits past the primary count, where the walk may stop early", c.slug)
+		}
+		probes = append(probes, c.slug)
+	}
+	want := []string{"bravelands-book-1", "bravelands-alpha-book-1"}
+	if !slices.Equal(probes, want) {
+		t.Errorf("position probes = %v, want %v", probes, want)
+	}
+
+	// And a row that states no claim probes nothing at all.
+	bare, _ := workCandidates("bravelands", authors, positionClaim{})
+	for _, c := range bare {
+		if c.posSuffixed {
+			t.Errorf("a claim-less row probed the suffixed slug %q", c.slug)
+		}
 	}
 }
 

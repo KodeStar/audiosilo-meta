@@ -50,6 +50,120 @@
         "goodreads": "19302"
       }
     },
+    "piracy": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "devon-c-ford"
+      ],
+      "genres": [
+        "action-adventure",
+        "post-apocalyptic",
+        "science-fiction"
+      ],
+      "id": "piracy",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "kate-reading-2019": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "1772309079",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91maghYJEWL.jpg",
+          "id": "kate-reading-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kate-reading"
+          ],
+          "publisher": "Podium Audio",
+          "release_date": "2019-04-30",
+          "runtime_min": 516,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1772309079",
+              "type": "libex-import"
+            }
+          ],
+          "work": "piracy"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1772309079",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Piracy"
+    },
+    "piranha": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "clive-cussler",
+        "boyd-morrison"
+      ],
+      "genres": [
+        "action-adventure",
+        "espionage",
+        "thriller-suspense"
+      ],
+      "id": "piranha",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "scott-brick-2015": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0145OGHJE",
+              "region": "us"
+            },
+            {
+              "asin": "B00UKES12K",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1eLJO2cfzL.jpg",
+          "id": "scott-brick-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "scott-brick"
+          ],
+          "publisher": "Penguin",
+          "release_date": "2015-08-27",
+          "runtime_min": 725,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0145OGHJE",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00UKES12K",
+              "type": "libex-import"
+            }
+          ],
+          "work": "piranha"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0145OGHJE",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Piranha"
+    },
     "pirate": {
       "added_at": "2026-08-01",
       "authors": [
@@ -261,6 +375,111 @@
         }
       ],
       "title": "Pirate Bounty"
+    },
+    "pirate-clive-cussler": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "clive-cussler",
+        "robin-burcell"
+      ],
+      "genres": [
+        "action-adventure",
+        "literary-fiction",
+        "thriller-suspense"
+      ],
+      "id": "pirate-clive-cussler",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "scott-brick-2016": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B01INZO04U",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81UPLMcFHIL.jpg",
+          "id": "scott-brick-2016",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "scott-brick"
+          ],
+          "publisher": "Penguin Audio",
+          "release_date": "2016-09-13",
+          "runtime_min": 577,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B01INZO04U",
+              "type": "libex-import"
+            }
+          ],
+          "work": "pirate-clive-cussler"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B01INZO04U",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Pirate"
+    },
+    "pirate-fargo-adventures-8": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "clive-cussler",
+        "robin-burcell"
+      ],
+      "genres": [
+        "action-adventure",
+        "thriller-suspense"
+      ],
+      "id": "pirate-fargo-adventures-8",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "scott-brick-2016": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B01L7JLVBO",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81b0WKWhOrL.jpg",
+          "id": "scott-brick-2016",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "scott-brick"
+          ],
+          "publisher": "Penguin",
+          "release_date": "2016-09-22",
+          "runtime_min": 577,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B01L7JLVBO",
+              "type": "libex-import"
+            }
+          ],
+          "work": "pirate-fargo-adventures-8"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B01L7JLVBO",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Pirate: Fargo Adventures #8"
     },
     "pirate-gold": {
       "added_at": "2026-08-01",
@@ -981,6 +1200,59 @@
       ],
       "title": "Pirate Wizard 2"
     },
+    "piraten": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "dirk-van-den-boom"
+      ],
+      "genres": [
+        "action-adventure",
+        "military-science-fiction",
+        "science",
+        "science-fiction"
+      ],
+      "id": "piraten",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "matthias-luhn-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0C8Z21RBF",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91TFfoAI6GL.jpg",
+          "id": "matthias-luhn-2023",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "matthias-luhn"
+          ],
+          "publisher": "Lübbe Audio",
+          "release_date": "2023-08-01",
+          "runtime_min": 176,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0C8Z21RBF",
+              "type": "libex-import"
+            }
+          ],
+          "work": "piraten"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0C8Z21RBF",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Piraten!"
+    },
     "piratengeschichten": {
       "added_at": "2026-08-02",
       "authors": [
@@ -1310,6 +1582,58 @@
       ],
       "title": "Pirates Nebula"
     },
+    "pirates-of-saturn": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "c-chase-harwood"
+      ],
+      "genres": [
+        "action-adventure",
+        "science-fiction",
+        "space-opera"
+      ],
+      "id": "pirates-of-saturn",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "paul-michael-garcia-2019": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "1774240300",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81KQNivQlPS.jpg",
+          "id": "paul-michael-garcia-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "paul-michael-garcia"
+          ],
+          "publisher": "Podium Audio",
+          "release_date": "2019-09-10",
+          "runtime_min": 691,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1774240300",
+              "type": "libex-import"
+            }
+          ],
+          "work": "pirates-of-saturn"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1774240300",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Pirates of Saturn"
+    },
     "pirates-of-the-caribbean-at-worlds-end": {
       "added_at": "2026-08-02",
       "authors": [
@@ -1361,6 +1685,58 @@
         }
       ],
       "title": "Pirates of the Caribbean: At World’s End"
+    },
+    "pirates-of-the-caribbean-at-worlds-end-disney-press": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "disney-press",
+        "t-t-sutherland"
+      ],
+      "genres": [
+        "action-adventure",
+        "childrens"
+      ],
+      "id": "pirates-of-the-caribbean-at-worlds-end-disney-press",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "simon-vance-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0FFHM1B5W",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91hJwHER9uL.jpg",
+          "id": "simon-vance-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "simon-vance"
+          ],
+          "publisher": "Listening Library",
+          "release_date": "2025-07-15",
+          "runtime_min": 186,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FFHM1B5W",
+              "type": "libex-import"
+            }
+          ],
+          "work": "pirates-of-the-caribbean-at-worlds-end-disney-press"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0FFHM1B5W",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Pirates of the Caribbean: At World's End"
     },
     "pirates-of-the-caribbean-at-worlds-end-pirates-of-the-caribbean-the-junior-novelization": {
       "added_at": "2026-08-02",
@@ -1593,6 +1969,57 @@
         }
       ],
       "title": "Pirates of the Caribbean: Dead Man’s Chest"
+    },
+    "pirates-of-the-caribbean-dead-mans-chest-irene-trimble": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "irene-trimble"
+      ],
+      "genres": [
+        "action-adventure",
+        "childrens"
+      ],
+      "id": "pirates-of-the-caribbean-dead-mans-chest-irene-trimble",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "simon-vance-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0FH5LHFBN",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91FIgck8WNL.jpg",
+          "id": "simon-vance-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "simon-vance"
+          ],
+          "publisher": "Listening Library",
+          "release_date": "2025-07-15",
+          "runtime_min": 139,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FH5LHFBN",
+              "type": "libex-import"
+            }
+          ],
+          "work": "pirates-of-the-caribbean-dead-mans-chest-irene-trimble"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0FH5LHFBN",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Pirates of the Caribbean: Dead Man's Chest"
     },
     "pirates-of-the-caribbean-dead-men-tell-no-tales": {
       "added_at": "2026-08-02",
@@ -2356,6 +2783,58 @@
       ],
       "title": "Pirates of the Caribbean: On Stranger Tides"
     },
+    "pirates-of-the-caribbean-on-stranger-tides-james-ponti": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "james-ponti"
+      ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "fairy-tales-folklore"
+      ],
+      "id": "pirates-of-the-caribbean-on-stranger-tides-james-ponti",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "simon-vance-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0FH5K96R5",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91TeHb6LiOL.jpg",
+          "id": "simon-vance-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "simon-vance"
+          ],
+          "publisher": "Listening Library",
+          "release_date": "2025-07-15",
+          "runtime_min": 95,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FH5K96R5",
+              "type": "libex-import"
+            }
+          ],
+          "work": "pirates-of-the-caribbean-on-stranger-tides-james-ponti"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0FH5K96R5",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Pirates of the Caribbean: On Stranger Tides"
+    },
     "pirates-of-the-caribbean-the-curse-of-the-black-pearl": {
       "added_at": "2026-08-02",
       "authors": [
@@ -2446,6 +2925,10 @@
             {
               "asin": "B0GY4MQGSS",
               "region": "us"
+            },
+            {
+              "asin": "B0FHBRRFJ9",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/914TqWWtm5L.jpg",
@@ -2462,6 +2945,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0GY4MQGSS",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FHBRRFJ9",
               "type": "libex-import"
             }
           ],
@@ -2788,6 +3276,57 @@
         }
       ],
       "title": "Pirates of the Siren's Sea"
+    },
+    "pirates-of-venus": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "edgar-rice-burroughs"
+      ],
+      "genres": [
+        "science",
+        "science-fiction"
+      ],
+      "id": "pirates-of-venus",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "rob-vlock-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0C2ZXP4XZ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81kEkyTstzL.jpg",
+          "id": "rob-vlock-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "rob-vlock"
+          ],
+          "publisher": "Spoken Realms",
+          "release_date": "2023-04-19",
+          "runtime_min": 397,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0C2ZXP4XZ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "pirates-of-venus"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0C2ZXP4XZ",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Pirates of Venus"
     },
     "pirates-on-the-bay": {
       "added_at": "2026-08-01",
@@ -3263,6 +3802,59 @@
       ],
       "title": "Pirate's Vengeance"
     },
+    "pirating-the-alien": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "ava-ross"
+      ],
+      "genres": [
+        "paranormal",
+        "romance",
+        "science-fiction"
+      ],
+      "id": "pirating-the-alien",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "hollie-jackson-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CN1NPWWZ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/918j031HicL.jpg",
+          "id": "hollie-jackson-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "hollie-jackson",
+            "patrick-zeller"
+          ],
+          "publisher": "Podium Audio",
+          "release_date": "2023-12-12",
+          "runtime_min": 361,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CN1NPWWZ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "pirating-the-alien"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CN1NPWWZ",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Pirating the Alien"
+    },
     "piratskibet": {
       "added_at": "2026-08-02",
       "authors": [
@@ -3729,6 +4321,60 @@
         }
       ],
       "title": "Pit Bull"
+    },
+    "pit-fighter-a-litrpg-progression-fantasy": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "plum-parrot"
+      ],
+      "genres": [
+        "action-adventure",
+        "epic-fantasy",
+        "fantasy",
+        "paranormal",
+        "urban-fantasy"
+      ],
+      "id": "pit-fighter-a-litrpg-progression-fantasy",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "robb-moreira-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0BPJV2YYV",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81PCd324VLL.jpg",
+          "id": "robb-moreira-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "robb-moreira"
+          ],
+          "publisher": "Podium Audio",
+          "release_date": "2023-01-17",
+          "runtime_min": 834,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0BPJV2YYV",
+              "type": "libex-import"
+            }
+          ],
+          "work": "pit-fighter-a-litrpg-progression-fantasy"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0BPJV2YYV",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Pit Fighter: A LitRPG Progression Fantasy"
     },
     "pit-of-wind-and-whispers": {
       "added_at": "2026-08-02",
@@ -4365,6 +5011,61 @@
         }
       ],
       "title": "Pixie Dust & Brain Rust"
+    },
+    "pixie-problems": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "a-h-hadley"
+      ],
+      "genres": [
+        "action-adventure",
+        "fairy-tales-folklore",
+        "fantasy",
+        "lgbtq",
+        "urban-fantasy"
+      ],
+      "id": "pixie-problems",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "curtis-michael-holland-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0GXG6JT9L",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/9139W0w6ojL.jpg",
+          "id": "curtis-michael-holland-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "curtis-michael-holland",
+            "vico-ortiz"
+          ],
+          "publisher": "Podium Audio",
+          "release_date": "2026-05-12",
+          "runtime_min": 1350,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GXG6JT9L",
+              "type": "libex-import"
+            }
+          ],
+          "work": "pixie-problems"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0GXG6JT9L",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Pixie Problems"
     },
     "pizza-for-pirates": {
       "added_at": "2026-08-02",
@@ -6166,6 +6867,142 @@
         }
       ],
       "title": "Plague Ship"
+    },
+    "plague-ship-clive-cussler": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "clive-cussler",
+        "jack-du-brul"
+      ],
+      "genres": [
+        "action-adventure",
+        "science-fiction",
+        "space-opera",
+        "thriller-suspense"
+      ],
+      "id": "plague-ship-clive-cussler",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "jason-culp-2009": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0036IOYJQ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81dZtG30coL.jpg",
+          "id": "jason-culp-2009",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jason-culp"
+          ],
+          "publisher": "Penguin Audio",
+          "release_date": "2009-11-06",
+          "runtime_min": 386,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0036IOYJQ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "plague-ship-clive-cussler"
+        },
+        "scott-brick-2009": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0036LPPUA",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81BXZ4ZN7dL.jpg",
+          "id": "scott-brick-2009",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "scott-brick"
+          ],
+          "publisher": "Penguin Audio",
+          "release_date": "2009-10-28",
+          "runtime_min": 945,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0036LPPUA",
+              "type": "libex-import"
+            }
+          ],
+          "work": "plague-ship-clive-cussler"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0036LPPUA",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Plague Ship"
+    },
+    "plague-ship-oregon-files-5": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "clive-cussler",
+        "jack-du-brul"
+      ],
+      "genres": [
+        "action-adventure",
+        "science-fiction",
+        "space-opera",
+        "thriller-suspense"
+      ],
+      "id": "plague-ship-oregon-files-5",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "scott-brick-2011": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B005LRXPUY",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91RtPHeL7xL.jpg",
+          "id": "scott-brick-2011",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "scott-brick"
+          ],
+          "publisher": "Penguin",
+          "release_date": "2011-09-08",
+          "runtime_min": 946,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B005LRXPUY",
+              "type": "libex-import"
+            }
+          ],
+          "work": "plague-ship-oregon-files-5"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B005LRXPUY",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Plague Ship: Oregon Files #5"
     },
     "plague-tank": {
       "added_at": "2026-08-02",
@@ -8000,6 +8837,60 @@
       ],
       "title": "Planes of Etera"
     },
+    "planesfall": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "patrick-g-laplante"
+      ],
+      "genres": [
+        "action-adventure",
+        "epic-fantasy",
+        "fantasy",
+        "paranormal",
+        "urban-fantasy"
+      ],
+      "id": "planesfall",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "adam-verner-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CN1R8Z48",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81SFSlnrIkL.jpg",
+          "id": "adam-verner-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "adam-verner"
+          ],
+          "publisher": "Podium Audio",
+          "release_date": "2024-01-30",
+          "runtime_min": 1279,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CN1R8Z48",
+              "type": "libex-import"
+            }
+          ],
+          "work": "planesfall"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CN1R8Z48",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Planesfall"
+    },
     "planeshifter-knight": {
       "added_at": "2026-08-01",
       "authors": [
@@ -9106,6 +9997,318 @@
       ],
       "title": "Planet Dragos"
     },
+    "planet-eden-1": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "andreas-masuth"
+      ],
+      "genres": [
+        "science-fiction"
+      ],
+      "id": "planet-eden-1",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "norbert-gastell-2007": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00UC96A3U",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51tL1P6VB0L.jpg",
+          "id": "norbert-gastell-2007",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "norbert-gastell",
+            "philipp-brammer",
+            "torsten-munchow"
+          ],
+          "publisher": "Maritim",
+          "release_date": "2007-09-20",
+          "runtime_min": 77,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00UC96A3U",
+              "type": "libex-import"
+            }
+          ],
+          "work": "planet-eden-1"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00UC96A3U",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Planet Eden 1"
+    },
+    "planet-eden-2": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "andreas-masuth"
+      ],
+      "genres": [
+        "science-fiction"
+      ],
+      "id": "planet-eden-2",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "norbert-gastell-2008": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00UCIIDAY",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51oNnMSLzbL.jpg",
+          "id": "norbert-gastell-2008",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "norbert-gastell",
+            "philipp-brammer",
+            "torsten-munchow"
+          ],
+          "publisher": "Maritim",
+          "release_date": "2008-03-26",
+          "runtime_min": 63,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00UCIIDAY",
+              "type": "libex-import"
+            }
+          ],
+          "work": "planet-eden-2"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00UCIIDAY",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Planet Eden 2"
+    },
+    "planet-eden-3": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "andreas-masuth"
+      ],
+      "genres": [
+        "science-fiction"
+      ],
+      "id": "planet-eden-3",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "christine-pappert-2008": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00UCIJIQM",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/512QHTj5UNL.jpg",
+          "id": "christine-pappert-2008",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "christine-pappert",
+            "klaus-dieter-klebsch",
+            "thomas-karallus"
+          ],
+          "publisher": "Maritim",
+          "release_date": "2008-11-13",
+          "runtime_min": 52,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00UCIJIQM",
+              "type": "libex-import"
+            }
+          ],
+          "work": "planet-eden-3"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00UCIJIQM",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Planet Eden 3"
+    },
+    "planet-eden-4": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "andreas-masuth"
+      ],
+      "genres": [
+        "science-fiction"
+      ],
+      "id": "planet-eden-4",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "norbert-gastell-2009": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00UCQZ19W",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1Q-uZItISL.jpg",
+          "id": "norbert-gastell-2009",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "norbert-gastell",
+            "sandra-schwittau",
+            "torsten-munchow"
+          ],
+          "publisher": "Maritim",
+          "release_date": "2009-11-26",
+          "runtime_min": 55,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00UCQZ19W",
+              "type": "libex-import"
+            }
+          ],
+          "work": "planet-eden-4"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00UCQZ19W",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Planet Eden 4"
+    },
+    "planet-eden-5": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "andreas-masuth"
+      ],
+      "genres": [
+        "science-fiction"
+      ],
+      "id": "planet-eden-5",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "norbert-gastell-2010": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00UDH5SIO",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51CQrZxQTfL.jpg",
+          "id": "norbert-gastell-2010",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "norbert-gastell",
+            "sandra-schwittau",
+            "torsten-munchow"
+          ],
+          "publisher": "Maritim",
+          "release_date": "2010-09-03",
+          "runtime_min": 53,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00UDH5SIO",
+              "type": "libex-import"
+            }
+          ],
+          "work": "planet-eden-5"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00UDH5SIO",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Planet Eden 5"
+    },
+    "planet-eden-6": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "andreas-masuth"
+      ],
+      "genres": [
+        "science-fiction"
+      ],
+      "id": "planet-eden-6",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "norbert-gastell-2010": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00UDH1P6I",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51ZaRKzTH7L.jpg",
+          "id": "norbert-gastell-2010",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "norbert-gastell",
+            "sandra-schwittau",
+            "torsten-munchow"
+          ],
+          "publisher": "Maritim",
+          "release_date": "2010-09-02",
+          "runtime_min": 55,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00UDH1P6I",
+              "type": "libex-import"
+            }
+          ],
+          "work": "planet-eden-6"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00UDH1P6I",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Planet Eden 6"
+    },
     "planet-genocide-i": {
       "added_at": "2026-08-01",
       "authors": [
@@ -9944,6 +11147,34 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B002VAEXUA",
+              "type": "libex-import"
+            }
+          ],
+          "work": "planet-of-exile"
+        },
+        "nathaniel-priestley-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0DN3P46N9",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81+KMh8qogL.jpg",
+          "id": "nathaniel-priestley-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "nathaniel-priestley"
+          ],
+          "publisher": "Gateway",
+          "release_date": "2025-03-27",
+          "runtime_min": 243,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DN3P46N9",
               "type": "libex-import"
             }
           ],
@@ -10850,6 +12081,58 @@
       ],
       "title": "Planetary Assault"
     },
+    "planetary-destruction-is-imminent-and-all-i-got-is-this-stat-menu": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "j-j-ackerknecht"
+      ],
+      "genres": [
+        "action-adventure",
+        "science-fiction",
+        "space-opera"
+      ],
+      "id": "planetary-destruction-is-imminent-and-all-i-got-is-this-stat-menu",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "stephanie-savannah-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CFB83HRW",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91ifoFloyIL.jpg",
+          "id": "stephanie-savannah-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "stephanie-savannah"
+          ],
+          "publisher": "Podium Audio",
+          "release_date": "2023-09-12",
+          "runtime_min": 1093,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CFB83HRW",
+              "type": "libex-import"
+            }
+          ],
+          "work": "planetary-destruction-is-imminent-and-all-i-got-is-this-stat-menu"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CFB83HRW",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Planetary Destruction Is Imminent and All I Got Is This Stat Menu"
+    },
     "planetary-spin-cycle": {
       "added_at": "2026-08-02",
       "authors": [
@@ -11080,6 +12363,10 @@
             {
               "asin": "B014X9O12Q",
               "region": "us"
+            },
+            {
+              "asin": "B0784STHQM",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/71XNggdEd7L.jpg",
@@ -11096,6 +12383,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B014X9O12Q",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0784STHQM",
               "type": "libex-import"
             }
           ],
@@ -11838,6 +13130,58 @@
       ],
       "title": "Platinum Prey"
     },
+    "plattformverfall": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "martha-wells",
+        "urban-hofstetter"
+      ],
+      "genres": [
+        "action-adventure",
+        "science-fiction"
+      ],
+      "id": "plattformverfall",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "charles-rettinghaus-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0GYSQYPMK",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81XQ0-LIEdL.jpg",
+          "id": "charles-rettinghaus-2026",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "charles-rettinghaus"
+          ],
+          "publisher": "Random House Audio",
+          "release_date": "2026-12-08",
+          "runtime_min": 500,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GYSQYPMK",
+              "type": "libex-import"
+            }
+          ],
+          "work": "plattformverfall"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0GYSQYPMK",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Plattformverfall"
+    },
     "platypus-police-squad-last-panda-standing": {
       "added_at": "2026-08-02",
       "authors": [
@@ -12310,6 +13654,172 @@
         }
       ],
       "title": "Play Dead"
+    },
+    "play-it-again": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "georgia-clark"
+      ],
+      "genres": [
+        "comedy-humor",
+        "lgbtq",
+        "romance",
+        "romantic-comedy"
+      ],
+      "id": "play-it-again",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "elena-rey-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0FSTDW5M2",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91escxSch3L.jpg",
+          "id": "elena-rey-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "elena-rey",
+            "georgia-clark",
+            "jen-zhao",
+            "kristen-sieh",
+            "patti-murin"
+          ],
+          "publisher": "Random House Audio",
+          "release_date": "2026-06-16",
+          "runtime_min": 798,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FSTDW5M2",
+              "type": "libex-import"
+            }
+          ],
+          "work": "play-it-again"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0FSTDW5M2",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Play It Again"
+    },
+    "play-of-passion": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "nalini-singh"
+      ],
+      "genres": [
+        "fantasy",
+        "paranormal",
+        "romance",
+        "thriller-suspense",
+        "urban-fantasy",
+        "womens-fiction"
+      ],
+      "id": "play-of-passion",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "angela-dawe-2017": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B01N25E9HL",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81ExLWBl2lL.jpg",
+          "id": "angela-dawe-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "angela-dawe"
+          ],
+          "publisher": "Orion Publishing Group Limited",
+          "release_date": "2017-05-11",
+          "runtime_min": 620,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B01N25E9HL",
+              "type": "libex-import"
+            }
+          ],
+          "work": "play-of-passion"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B01N25E9HL",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Play of Passion"
+    },
+    "play-of-shadows": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "sebastien-de-castell"
+      ],
+      "genres": [
+        "action-adventure",
+        "comedy-humor",
+        "epic-fantasy",
+        "fantasy",
+        "historical-fiction"
+      ],
+      "id": "play-of-shadows",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "joe-jameson-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "1787478866",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91k9y-5gpjL.jpg",
+          "id": "joe-jameson-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "joe-jameson"
+          ],
+          "publisher": "Arcadia",
+          "release_date": "2024-03-28",
+          "runtime_min": 1089,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1787478866",
+              "type": "libex-import"
+            }
+          ],
+          "work": "play-of-shadows"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1787478866",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Play of Shadows"
     },
     "play-the-demon": {
       "added_at": "2026-08-01",
@@ -13345,6 +14855,526 @@
       ],
       "title": "Playboy Princes: A Dark College Romance"
     },
+    "playdates-and-promises": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "line-kyed-knudsen",
+        "hilda-gerd-birgisdottir"
+      ],
+      "credits": [
+        {
+          "person": "hilda-gerd-birgisdottir",
+          "role": "translator"
+        }
+      ],
+      "genres": [
+        "parenting-relationships",
+        "self-help",
+        "young-adult"
+      ],
+      "id": "playdates-and-promises",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "jennifer-wagstaffe-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0DM1S34DX",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/813Rt-EdJoL.jpg",
+          "id": "jennifer-wagstaffe-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jennifer-wagstaffe"
+          ],
+          "publisher": "Saga Egmont",
+          "release_date": "2024-11-05",
+          "runtime_min": 163,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DM1S34DX",
+              "type": "libex-import"
+            }
+          ],
+          "work": "playdates-and-promises"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0DM1S34DX",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Playdates and Promises"
+    },
+    "player-ceo": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "ainsley-st-claire"
+      ],
+      "genres": [
+        "romance"
+      ],
+      "id": "player-ceo",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "greyson-ash-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0FXNDTZN8",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81BfSdZrErL.jpg",
+          "id": "greyson-ash-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "greyson-ash",
+            "nelson-hobbs"
+          ],
+          "publisher": "Podium Audio",
+          "release_date": "2025-11-25",
+          "runtime_min": 732,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FXNDTZN8",
+              "type": "libex-import"
+            }
+          ],
+          "work": "player-ceo"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0FXNDTZN8",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Player CEO"
+    },
+    "player-manager-2-a-sports-progression-fantasy": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "ted-steel"
+      ],
+      "genres": [
+        "action-adventure",
+        "fantasy",
+        "sports",
+        "urban-fantasy"
+      ],
+      "id": "player-manager-2-a-sports-progression-fantasy",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "luke-francis-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CGF88YV8",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/818MWsbbntL.jpg",
+          "id": "luke-francis-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "luke-francis"
+          ],
+          "publisher": "Podium Audio",
+          "release_date": "2023-12-12",
+          "runtime_min": 1140,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CGF88YV8",
+              "type": "libex-import"
+            }
+          ],
+          "work": "player-manager-2-a-sports-progression-fantasy"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CGF88YV8",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Player Manager 2: A Sports Progression Fantasy"
+    },
+    "player-manager-3-a-sports-progression-fantasy": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "ted-steel"
+      ],
+      "genres": [
+        "action-adventure",
+        "fantasy",
+        "sports",
+        "urban-fantasy"
+      ],
+      "id": "player-manager-3-a-sports-progression-fantasy",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "luke-francis-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CQMR4RJF",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91NplzP1aiL.jpg",
+          "id": "luke-francis-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "luke-francis"
+          ],
+          "publisher": "Podium Audio",
+          "release_date": "2024-05-14",
+          "runtime_min": 865,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CQMR4RJF",
+              "type": "libex-import"
+            }
+          ],
+          "work": "player-manager-3-a-sports-progression-fantasy"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CQMR4RJF",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Player Manager 3: A Sports Progression Fantasy"
+    },
+    "player-manager-4-a-sports-progression-fantasy": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "ted-steel"
+      ],
+      "genres": [
+        "action-adventure",
+        "fantasy",
+        "sports",
+        "urban-fantasy"
+      ],
+      "id": "player-manager-4-a-sports-progression-fantasy",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "luke-francis-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0D9KMYRZL",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91HIo-MXnBL.jpg",
+          "id": "luke-francis-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "luke-francis"
+          ],
+          "publisher": "Podium Audio",
+          "release_date": "2024-10-29",
+          "runtime_min": 859,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0D9KMYRZL",
+              "type": "libex-import"
+            }
+          ],
+          "work": "player-manager-4-a-sports-progression-fantasy"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0D9KMYRZL",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Player Manager 4: A Sports Progression Fantasy"
+    },
+    "player-manager-5-a-sports-progression-fantasy": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "ted-steel"
+      ],
+      "genres": [
+        "action-adventure",
+        "fantasy",
+        "sports",
+        "urban-fantasy"
+      ],
+      "id": "player-manager-5-a-sports-progression-fantasy",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "luke-francis-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0DQ6C7VK7",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91PuwrCDCrL.jpg",
+          "id": "luke-francis-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "luke-francis"
+          ],
+          "publisher": "Podium Audio",
+          "release_date": "2025-02-25",
+          "runtime_min": 1323,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DQ6C7VK7",
+              "type": "libex-import"
+            }
+          ],
+          "work": "player-manager-5-a-sports-progression-fantasy"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0DQ6C7VK7",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Player Manager 5: A Sports Progression Fantasy"
+    },
+    "player-manager-6-a-sports-progression-fantasy": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "ted-steel"
+      ],
+      "genres": [
+        "fantasy",
+        "sports",
+        "urban-fantasy"
+      ],
+      "id": "player-manager-6-a-sports-progression-fantasy",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "luke-francis-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0F6VPW3V3",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 16741,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 36269,
+              "start_ms": 16741,
+              "title": "Prologue"
+            },
+            {
+              "length_ms": 3998290,
+              "start_ms": 53010,
+              "title": "1: Home Disadvantage"
+            },
+            {
+              "length_ms": 6723570,
+              "start_ms": 4051300,
+              "title": "2: Home Is Where the Hurt Is"
+            },
+            {
+              "length_ms": 2897316,
+              "start_ms": 10774870,
+              "title": "3: Scurrilous"
+            },
+            {
+              "length_ms": 4554083,
+              "start_ms": 13672186,
+              "title": "4: Goals and Ghosts"
+            },
+            {
+              "length_ms": 5035990,
+              "start_ms": 18226269,
+              "title": "5: Served"
+            },
+            {
+              "length_ms": 5365829,
+              "start_ms": 23262259,
+              "title": "6: Assists"
+            },
+            {
+              "length_ms": 3565540,
+              "start_ms": 28628088,
+              "title": "7: The Twelve Days of Christmax, Part 1"
+            },
+            {
+              "length_ms": 4975084,
+              "start_ms": 32193628,
+              "title": "8: The Twelve Days of Kidsmas, Part 2"
+            },
+            {
+              "length_ms": 5436998,
+              "start_ms": 37168712,
+              "title": "9: The Twelve Days of Silkmas, Part 3"
+            },
+            {
+              "length_ms": 4512983,
+              "start_ms": 42605710,
+              "title": "10: He’s Done What?!"
+            },
+            {
+              "length_ms": 4111185,
+              "start_ms": 47118693,
+              "title": "11: Dixie Dean"
+            },
+            {
+              "length_ms": 4598247,
+              "start_ms": 51229878,
+              "title": "12: The Regulation Will Be Televised"
+            },
+            {
+              "length_ms": 3633551,
+              "start_ms": 55828125,
+              "title": "13: Max Best: A Retrospective"
+            },
+            {
+              "length_ms": 3508953,
+              "start_ms": 59461676,
+              "title": "14: The Supporters Trust"
+            },
+            {
+              "length_ms": 2949723,
+              "start_ms": 62970629,
+              "title": "15: Epilogue"
+            },
+            {
+              "length_ms": 55587,
+              "start_ms": 65920352,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81AQ4itjlpL.jpg",
+          "id": "luke-francis-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "luke-francis"
+          ],
+          "publisher": "Podium Audio",
+          "release_date": "2025-06-24",
+          "runtime_min": 1099,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0F6VPW3V3",
+              "type": "libex-import"
+            }
+          ],
+          "work": "player-manager-6-a-sports-progression-fantasy"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0F6VPW3V3",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Player Manager 6: A Sports Progression Fantasy"
+    },
+    "player-manager-a-sports-progression-fantasy": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "ted-steel"
+      ],
+      "genres": [
+        "action-adventure",
+        "fantasy",
+        "paranormal",
+        "sports",
+        "urban-fantasy"
+      ],
+      "id": "player-manager-a-sports-progression-fantasy",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "luke-francis-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CC33WJ5F",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81EnahqzMfL.jpg",
+          "id": "luke-francis-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "luke-francis"
+          ],
+          "publisher": "Podium Audio",
+          "release_date": "2023-08-22",
+          "runtime_min": 1089,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CC33WJ5F",
+              "type": "libex-import"
+            }
+          ],
+          "work": "player-manager-a-sports-progression-fantasy"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CC33WJ5F",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Player Manager: A Sports Progression Fantasy"
+    },
     "player-v-the-word-of-ishta-russian-edition": {
       "added_at": "2026-08-02",
       "authors": [
@@ -14016,6 +16046,60 @@
         {
           "imported_at": "2026-08-02",
           "ref": "0062741896",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Playing for Keeps"
+    },
+    "playing-for-keeps-daniel-schinhofen": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "daniel-schinhofen"
+      ],
+      "genres": [
+        "action-adventure",
+        "classics",
+        "epic-fantasy",
+        "fantasy",
+        "science-fiction"
+      ],
+      "id": "playing-for-keeps-daniel-schinhofen",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "peter-berkrot-2018": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B07DLCV2DX",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91UIcs2t6uL.jpg",
+          "id": "peter-berkrot-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "peter-berkrot"
+          ],
+          "publisher": "Podium Audio",
+          "release_date": "2018-06-19",
+          "runtime_min": 737,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07DLCV2DX",
+              "type": "libex-import"
+            }
+          ],
+          "work": "playing-for-keeps-daniel-schinhofen"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B07DLCV2DX",
           "type": "libex-import"
         }
       ],

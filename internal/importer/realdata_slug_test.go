@@ -116,6 +116,43 @@ func str(entry map[string]any, field string) string {
 	return s
 }
 
+// dataSeriesClaims maps every committed work to the series claim a row about
+// that book states: the series it belongs to and the position it sits at.
+//
+// The recomputation below needs it because part of the chain is claim-dependent.
+// A work whose title cannot tell it from its siblings sits on a
+// "book-<position>" slug (workidentity.go), and the only rows that reach that
+// slug are the ones stating the position - so recomputing the chain from the
+// work record ALONE would declare a legitimately-reachable work unreachable. The
+// claim is not in the work record; a work does not know its series, the series
+// knows its works. Reading it from the series family is therefore the same fact
+// the importing row carried, recorded durably, and not an assumption the test
+// invented to make itself pass: a row that does not state it genuinely cannot
+// find these works, which is exactly what the importer enforces.
+//
+// First membership wins, matching the importer's own first-claim-wins rule.
+func dataSeriesClaims(t *testing.T) map[string]positionClaim {
+	out := map[string]positionClaim{}
+	walkEntries(t, "series", func(path, key string, e map[string]any) {
+		name := str(e, "name")
+		works, _ := e["works"].([]any)
+		for _, w := range works {
+			m, ok := w.(map[string]any)
+			if !ok {
+				continue
+			}
+			slug, pos := str(m, "work"), str(m, "position")
+			if slug == "" || pos == "" {
+				continue
+			}
+			if _, seen := out[slug]; !seen {
+				out[slug] = positionClaim{series: name, pos: pos}
+			}
+		}
+	})
+	return out
+}
+
 // TestDataPeopleSlugsAreTransliterated is the migration's completeness proof for
 // the people family: every committed person's id is the slug of their name under
 // today's Slugify. A record the migration missed fails here with the name that
@@ -139,12 +176,19 @@ func TestDataPeopleSlugsAreTransliterated(t *testing.T) {
 // those the id must sit on the candidate chain the importer walks TODAY, or the
 // next wave mints a duplicate beside it.
 //
+// Part of that chain is CLAIM-dependent - a serial volume whose title cannot
+// tell it from its siblings sits on a "book-<position>" slug, reachable only by
+// a row stating the position - so the recomputation reads each work's claim out
+// of the series family (dataSeriesClaims) rather than pretending a claim-less
+// row is the only kind there is.
+//
 // It deliberately does not demand that of every record: a work slug is composed,
 // so a record can be legitimately off-chain (the catalogue holds one whose title
 // was later corrected). Scoping the assertion to the characters a rule change
 // moved is what keeps this a proof of the two migrations rather than a standing
 // complaint about composed identity in general.
 func TestDataWorkAndSeriesSlugsAreCurrent(t *testing.T) {
+	claims := dataSeriesClaims(t)
 	walkEntries(t, "works", func(path, key string, e map[string]any) {
 		title := str(e, "title")
 		if !movedByTransliteration(title) && !movedByApostrophe(title) {
@@ -154,7 +198,8 @@ func TestDataWorkAndSeriesSlugsAreCurrent(t *testing.T) {
 		if as, ok := e["authors"].([]any); ok && len(as) > 0 {
 			author, _ = as[0].(string)
 		}
-		cands, _ := workCandidates(Slugify(cleanWorkTitle(title)), workAuthors{all: []string{author}, identity: []string{author}})
+		cands, _ := workCandidates(Slugify(cleanWorkTitle(title)),
+			workAuthors{all: []string{author}, identity: []string{author}}, claims[key])
 		for _, cand := range cands {
 			if cand.slug == key {
 				return
