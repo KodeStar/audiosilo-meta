@@ -13471,33 +13471,18 @@
       "authors": [
         "david-lagercrantz"
       ],
-      "id": "the-girl-who-lived-twice",
-      "language": "en",
-      "license": "CC0-1.0",
-      "sources": [
+      "credits": [
         {
-          "imported_at": "2026-07-25",
-          "ref": "https://www.goodreads.com/book/show/42846882-the-girl-who-lived-twice",
-          "type": "community"
+          "person": "george-goulding",
+          "role": "translator"
         }
-      ],
-      "title": "The Girl Who Lived Twice",
-      "xref": {
-        "goodreads": "42846882"
-      }
-    },
-    "the-girl-who-lived-twice-david-lagercrantz": {
-      "added_at": "2026-07-30T14:42:56+01:00",
-      "authors": [
-        "david-lagercrantz",
-        "george-goulding"
       ],
       "genres": [
         "mystery",
         "parenting-relationships",
         "thriller-suspense"
       ],
-      "id": "the-girl-who-lived-twice-david-lagercrantz",
+      "id": "the-girl-who-lived-twice",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -13728,7 +13713,7 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-girl-who-lived-twice-david-lagercrantz"
+          "work": "the-girl-who-lived-twice"
         },
         "simon-vance-2019": {
           "abridged": false,
@@ -13973,17 +13958,25 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-girl-who-lived-twice-david-lagercrantz"
+          "work": "the-girl-who-lived-twice"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "https://www.goodreads.com/book/show/42846882-the-girl-who-lived-twice",
+          "type": "community"
+        },
         {
           "imported_at": "2026-07-30",
           "ref": "B07KW2ZRCY",
           "type": "libex-import"
         }
       ],
-      "title": "The Girl Who Lived Twice"
+      "title": "The Girl Who Lived Twice",
+      "xref": {
+        "goodreads": "42846882"
+      }
     },
     "the-girl-who-looked-beyond-the-stars": {
       "added_at": "2026-08-01",

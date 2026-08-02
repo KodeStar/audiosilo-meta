@@ -3587,10 +3587,17 @@
     "a-blink-of-the-screen": {
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
-        "terry-pratchett",
-        "a-s-byatt"
+        "terry-pratchett"
+      ],
+      "credits": [
+        {
+          "person": "a-s-byatt",
+          "role": "introduction"
+        }
       ],
       "genres": [
+        "action-adventure",
+        "classics",
         "comedy-humor",
         "essays",
         "fantasy",
@@ -3600,6 +3607,35 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "michael-fenton-stevens-2012": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B009PCEDNE",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91HpZyTCZoL.jpg",
+          "id": "michael-fenton-stevens-2012",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "michael-fenton-stevens",
+            "stephen-briggs"
+          ],
+          "publisher": "Transworld Digital",
+          "release_date": "2012-10-15",
+          "runtime_min": 511,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B009PCEDNE",
+              "type": "libex-import"
+            }
+          ],
+          "work": "a-blink-of-the-screen"
+        },
         "michael-fenton-stevens-2015": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -3851,57 +3887,7 @@
           "imported_at": "2026-07-30",
           "ref": "B00REUDYY8",
           "type": "libex-import"
-        }
-      ],
-      "title": "A Blink of the Screen"
-    },
-    "a-blink-of-the-screen-terry-pratchett": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "terry-pratchett"
-      ],
-      "genres": [
-        "action-adventure",
-        "classics",
-        "comedy-humor",
-        "fantasy",
-        "short-stories"
-      ],
-      "id": "a-blink-of-the-screen-terry-pratchett",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "michael-fenton-stevens-2012": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B009PCEDNE",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91HpZyTCZoL.jpg",
-          "id": "michael-fenton-stevens-2012",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "michael-fenton-stevens",
-            "stephen-briggs"
-          ],
-          "publisher": "Transworld Digital",
-          "release_date": "2012-10-15",
-          "runtime_min": 511,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B009PCEDNE",
-              "type": "libex-import"
-            }
-          ],
-          "work": "a-blink-of-the-screen-terry-pratchett"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B009PCEDNE",

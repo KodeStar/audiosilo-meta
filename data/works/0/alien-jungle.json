@@ -5687,6 +5687,12 @@
         "jonathan-maberry",
         "rachel-caine"
       ],
+      "credits": [
+        {
+          "person": "jonathan-maberry",
+          "role": "editor"
+        }
+      ],
       "genres": [
         "action-adventure",
         "horror",
@@ -5737,37 +5743,7 @@
             }
           ],
           "work": "aliens-bug-hunt"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B07D2H7BN2",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Aliens: Bug Hunt"
-    },
-    "aliens-bug-hunt-jonathan-maberry": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "jonathan-maberry"
-      ],
-      "credits": [
-        {
-          "person": "jonathan-maberry",
-          "role": "editor"
-        }
-      ],
-      "genres": [
-        "action-adventure",
-        "horror",
-        "science-fiction"
-      ],
-      "id": "aliens-bug-hunt-jonathan-maberry",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "andrew-eiden-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -5817,10 +5793,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "aliens-bug-hunt-jonathan-maberry"
+          "work": "aliens-bug-hunt"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B07D2H7BN2",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0DTWBDGM7",

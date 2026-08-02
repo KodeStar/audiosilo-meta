@@ -4750,8 +4750,15 @@
       "authors": [
         "patrick-rothfuss"
       ],
+      "credits": [
+        {
+          "person": "nate-taylor",
+          "role": "illustrator"
+        }
+      ],
       "genres": [
         "action-adventure",
+        "comedy-humor",
         "epic-fantasy",
         "fantasy"
       ],
@@ -4893,36 +4900,7 @@
             }
           ],
           "work": "the-narrow-road-between-desires"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-17",
-          "ref": "B0C9P5DPPK",
-          "type": "audiosilo-books-import"
         },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B0C9P5DPPK",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Narrow Road Between Desires"
-    },
-    "the-narrow-road-between-desires-patrick-rothfuss": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "patrick-rothfuss",
-        "nate-taylor"
-      ],
-      "genres": [
-        "comedy-humor",
-        "fantasy"
-      ],
-      "id": "the-narrow-road-between-desires-patrick-rothfuss",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "rupert-degas-2023": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -5046,10 +5024,20 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-narrow-road-between-desires-patrick-rothfuss"
+          "work": "the-narrow-road-between-desires"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-17",
+          "ref": "B0C9P5DPPK",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B0C9P5DPPK",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "B0C62FQ7PS",

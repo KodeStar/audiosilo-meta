@@ -5312,16 +5312,61 @@
     "file-under-13-suspicious-incidents": {
       "added_at": "2026-07-30T14:42:56+01:00",
       "authors": [
-        "lemony-snicket"
+        "lemony-snicket",
+        "seth"
       ],
       "genres": [
+        "childrens",
+        "comedy-humor",
+        "coming-of-age",
         "mystery",
+        "parenting-relationships",
         "young-adult"
       ],
       "id": "file-under-13-suspicious-incidents",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "chris-kluwe-2014": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00IKSYG4K",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91Yw5YVUnQL.jpg",
+          "id": "chris-kluwe-2014",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "chris-kluwe",
+            "holly-black",
+            "ira-glass",
+            "jon-klassen",
+            "jon-scieszka",
+            "libba-bray",
+            "rachel-maddow",
+            "sarah-vowell",
+            "sook-yin-lee",
+            "sophie-blackall",
+            "stephin-merritt",
+            "terry-gross",
+            "wesley-stace"
+          ],
+          "publisher": "Little, Brown Young Readers",
+          "release_date": "2014-04-01",
+          "runtime_min": 181,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00IKSYG4K",
+              "type": "libex-import"
+            }
+          ],
+          "work": "file-under-13-suspicious-incidents"
+        },
         "holly-black-2014": {
           "abridged": false,
           "added_at": "2026-07-30T14:42:56+01:00",
@@ -5504,69 +5549,7 @@
           "imported_at": "2026-07-30",
           "ref": "B00OZY1NNK",
           "type": "libex-import"
-        }
-      ],
-      "title": "File Under: 13 Suspicious Incidents"
-    },
-    "file-under-13-suspicious-incidents-lemony-snicket": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "lemony-snicket",
-        "seth"
-      ],
-      "genres": [
-        "childrens",
-        "comedy-humor",
-        "coming-of-age",
-        "mystery",
-        "parenting-relationships"
-      ],
-      "id": "file-under-13-suspicious-incidents-lemony-snicket",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "chris-kluwe-2014": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B00IKSYG4K",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91Yw5YVUnQL.jpg",
-          "id": "chris-kluwe-2014",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "chris-kluwe",
-            "holly-black",
-            "ira-glass",
-            "jon-klassen",
-            "jon-scieszka",
-            "libba-bray",
-            "rachel-maddow",
-            "sarah-vowell",
-            "sook-yin-lee",
-            "sophie-blackall",
-            "stephin-merritt",
-            "terry-gross",
-            "wesley-stace"
-          ],
-          "publisher": "Little, Brown Young Readers",
-          "release_date": "2014-04-01",
-          "runtime_min": 181,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B00IKSYG4K",
-              "type": "libex-import"
-            }
-          ],
-          "work": "file-under-13-suspicious-incidents-lemony-snicket"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B00IKSYG4K",

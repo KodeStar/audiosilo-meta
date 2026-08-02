@@ -5411,11 +5411,15 @@
     "the-toy-story-collection": {
       "added_at": "2026-08-02",
       "authors": [
-        "disney-press"
+        "disney-press",
+        "cathy-east-dubowski",
+        "jasmine-jones",
+        "leslie-goldman"
       ],
       "genres": [
         "childrens",
-        "comedy-humor"
+        "comedy-humor",
+        "young-adult"
       ],
       "id": "the-toy-story-collection",
       "language": "en",
@@ -5466,32 +5470,7 @@
             }
           ],
           "work": "the-toy-story-collection"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00P81L8SO",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Toy Story Collection"
-    },
-    "the-toy-story-collection-disney-press": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "disney-press",
-        "cathy-east-dubowski",
-        "jasmine-jones",
-        "leslie-goldman"
-      ],
-      "genres": [
-        "young-adult"
-      ],
-      "id": "the-toy-story-collection-disney-press",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "andrew-eiden-2026": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -5518,10 +5497,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-toy-story-collection-disney-press"
+          "work": "the-toy-story-collection"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00P81L8SO",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0H524QRCT",

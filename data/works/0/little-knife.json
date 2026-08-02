@@ -10363,7 +10363,11 @@
       ],
       "genres": [
         "childrens",
-        "fantasy"
+        "comedy-humor",
+        "coming-of-age",
+        "fantasy",
+        "nature",
+        "parenting-relationships"
       ],
       "id": "llama-on-holiday",
       "language": "en",
@@ -10375,6 +10379,10 @@
           "asin": [
             {
               "asin": "B0BDGKQY65",
+              "region": "us"
+            },
+            {
+              "asin": "B09NL7311Y",
               "region": "us"
             }
           ],
@@ -10393,6 +10401,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0BDGKQY65",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09NL7311Y",
+              "type": "libex-import"
             }
           ],
           "work": "llama-on-holiday"
@@ -10403,58 +10416,7 @@
           "imported_at": "2026-08-02",
           "ref": "B0BDGKQY65",
           "type": "libex-import"
-        }
-      ],
-      "title": "Llama on Holiday"
-    },
-    "llama-on-holiday-annabelle-sami": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "annabelle-sami",
-        "allen-fatimaharan"
-      ],
-      "genres": [
-        "childrens",
-        "comedy-humor",
-        "coming-of-age",
-        "fantasy",
-        "nature",
-        "parenting-relationships"
-      ],
-      "id": "llama-on-holiday-annabelle-sami",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "ambreen-razia-2022": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B09NL7311Y",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/812sPSxclZL.jpg",
-          "id": "ambreen-razia-2022",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "ambreen-razia"
-          ],
-          "publisher": "Farshore",
-          "release_date": "2022-02-17",
-          "runtime_min": 145,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B09NL7311Y",
-              "type": "libex-import"
-            }
-          ],
-          "work": "llama-on-holiday-annabelle-sami"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B09NL7311Y",

@@ -1222,16 +1222,46 @@
     "fostering-faust": {
       "added_at": "2026-08-01",
       "authors": [
-        "randi-darren"
+        "randi-darren",
+        "william-d-arand"
       ],
       "genres": [
         "epic-fantasy",
+        "erotica",
         "fantasy"
       ],
       "id": "fostering-faust",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "andrea-parsneau-2022": {
+          "abridged": false,
+          "added_at": "2026-08-01",
+          "asin": [
+            {
+              "asin": "B09W68B3CR",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81GARD8t3iL.jpg",
+          "id": "andrea-parsneau-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andrea-parsneau"
+          ],
+          "publisher": "Randi Darren",
+          "release_date": "2022-03-23",
+          "runtime_min": 816,
+          "sources": [
+            {
+              "imported_at": "2026-08-01",
+              "ref": "B09W68B3CR",
+              "type": "libex-import"
+            }
+          ],
+          "work": "fostering-faust"
+        },
         "stephanie-savannah-2018": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -1265,6 +1295,11 @@
         {
           "imported_at": "2026-08-01",
           "ref": "B07H5VDCQQ",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B09W68B3CR",
           "type": "libex-import"
         }
       ],
@@ -1477,59 +1512,6 @@
         }
       ],
       "title": "Fostering Faust: Book 3"
-    },
-    "fostering-faust-william-d-arand": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "william-d-arand",
-        "randi-darren"
-      ],
-      "genres": [
-        "epic-fantasy",
-        "erotica",
-        "fantasy"
-      ],
-      "id": "fostering-faust-william-d-arand",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "andrea-parsneau-2022": {
-          "abridged": false,
-          "added_at": "2026-08-01",
-          "asin": [
-            {
-              "asin": "B09W68B3CR",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81GARD8t3iL.jpg",
-          "id": "andrea-parsneau-2022",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "andrea-parsneau"
-          ],
-          "publisher": "Randi Darren",
-          "release_date": "2022-03-23",
-          "runtime_min": 816,
-          "sources": [
-            {
-              "imported_at": "2026-08-01",
-              "ref": "B09W68B3CR",
-              "type": "libex-import"
-            }
-          ],
-          "work": "fostering-faust-william-d-arand"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B09W68B3CR",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Fostering Faust"
     },
     "foudre": {
       "added_at": "2026-08-02",

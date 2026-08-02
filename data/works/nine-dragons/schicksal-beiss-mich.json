@@ -7223,7 +7223,6 @@
       "added_at": "2026-08-02",
       "authors": [
         "alexander-mccall-smith",
-        "various",
         "iain-mcintosh"
       ],
       "credits": [
@@ -7233,8 +7232,10 @@
         }
       ],
       "genres": [
+        "action-adventure",
         "childrens",
-        "mystery"
+        "mystery",
+        "technology"
       ],
       "id": "school-ship-tobermory",
       "language": "en",
@@ -7246,6 +7247,10 @@
           "asin": [
             {
               "asin": "B01FUT0M3K",
+              "region": "us"
+            },
+            {
+              "asin": "B01IA6BYOQ",
               "region": "us"
             }
           ],
@@ -7264,6 +7269,11 @@
               "imported_at": "2026-08-02",
               "ref": "B01FUT0M3K",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B01IA6BYOQ",
+              "type": "libex-import"
             }
           ],
           "work": "school-ship-tobermory"
@@ -7274,55 +7284,7 @@
           "imported_at": "2026-08-02",
           "ref": "B01FUT0M3K",
           "type": "libex-import"
-        }
-      ],
-      "title": "School Ship Tobermory"
-    },
-    "school-ship-tobermory-alexander-mccall-smith": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "alexander-mccall-smith"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "mystery",
-        "technology"
-      ],
-      "id": "school-ship-tobermory-alexander-mccall-smith",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "crawford-logan-2016": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B01IA6BYOQ",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81IHKXjURcL.jpg",
-          "id": "crawford-logan-2016",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "crawford-logan"
-          ],
-          "publisher": "Listening Library",
-          "release_date": "2016-10-11",
-          "runtime_min": 293,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B01IA6BYOQ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "school-ship-tobermory-alexander-mccall-smith"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B01IA6BYOQ",

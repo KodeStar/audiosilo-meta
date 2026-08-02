@@ -1451,6 +1451,7 @@
       ],
       "genres": [
         "action-adventure",
+        "dystopian",
         "science-fiction",
         "space-opera",
         "young-adult"
@@ -1465,6 +1466,10 @@
           "asin": [
             {
               "asin": "1488206104",
+              "region": "us"
+            },
+            {
+              "asin": "0008228353",
               "region": "us"
             }
           ],
@@ -1487,6 +1492,11 @@
               "imported_at": "2026-08-02",
               "ref": "1488206104",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "0008228353",
+              "type": "libex-import"
             }
           ],
           "work": "nexus-lindsay-cummings"
@@ -1497,62 +1507,7 @@
           "imported_at": "2026-08-02",
           "ref": "1488206104",
           "type": "libex-import"
-        }
-      ],
-      "title": "Nexus"
-    },
-    "nexus-lindsay-cummings-2": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "lindsay-cummings",
-        "sasha-alsberg",
-        "nicol-zanzarella"
-      ],
-      "genres": [
-        "action-adventure",
-        "dystopian",
-        "science-fiction",
-        "space-opera",
-        "young-adult"
-      ],
-      "id": "nexus-lindsay-cummings-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "caitlin-davies-2019": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "0008228353",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71HpzLJch0L.jpg",
-          "id": "caitlin-davies-2019",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "caitlin-davies",
-            "jordan-claire-mccraw",
-            "michael-rahhal",
-            "nicol-zanzarella",
-            "stephen-dexter"
-          ],
-          "publisher": "HQ Young Adult",
-          "release_date": "2019-05-07",
-          "runtime_min": 764,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "0008228353",
-              "type": "libex-import"
-            }
-          ],
-          "work": "nexus-lindsay-cummings-2"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "0008228353",
@@ -12135,7 +12090,10 @@
       ],
       "genres": [
         "epic-fantasy",
+        "fairy-tales-folklore",
         "fantasy",
+        "historical-fiction",
+        "literary-fiction",
         "paranormal",
         "young-adult"
       ],
@@ -12149,6 +12107,10 @@
           "asin": [
             {
               "asin": "1488207658",
+              "region": "us"
+            },
+            {
+              "asin": "0263276139",
               "region": "us"
             }
           ],
@@ -12169,6 +12131,11 @@
               "imported_at": "2026-08-02",
               "ref": "1488207658",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "0263276139",
+              "type": "libex-import"
             }
           ],
           "work": "night-of-the-dragon"
@@ -12179,67 +12146,14 @@
           "imported_at": "2026-08-02",
           "ref": "1488207658",
           "type": "libex-import"
-        }
-      ],
-      "title": "Night of the Dragon"
-    },
-    "night-of-the-dragon-julie-kagawa": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "julie-kagawa",
-        "emily-woo-zeller"
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fairy-tales-folklore",
-        "fantasy",
-        "historical-fiction",
-        "literary-fiction",
-        "young-adult"
-      ],
-      "id": "night-of-the-dragon-julie-kagawa",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "brian-nishii-2020": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "0263276139",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91DSdVHY09L.jpg",
-          "id": "brian-nishii-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "brian-nishii",
-            "emily-woo-zeller",
-            "joy-osmanski"
-          ],
-          "publisher": "HQ Young Adult",
-          "release_date": "2020-03-31",
-          "runtime_min": 799,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "0263276139",
-              "type": "libex-import"
-            }
-          ],
-          "work": "night-of-the-dragon-julie-kagawa"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "0263276139",
           "type": "libex-import"
         }
       ],
-      "title": "Night Of The Dragon"
+      "title": "Night of the Dragon"
     },
     "night-of-the-dream-dragon": {
       "added_at": "2026-08-02",

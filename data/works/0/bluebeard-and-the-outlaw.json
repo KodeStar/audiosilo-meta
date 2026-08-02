@@ -5729,32 +5729,7 @@
             }
           ],
           "work": "blutschwur"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00TMAGEG8",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Blutschwur"
-    },
-    "blutschwur-richelle-mead": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "richelle-mead",
-        "michaela-link"
-      ],
-      "genres": [
-        "fantasy",
-        "paranormal",
-        "urban-fantasy"
-      ],
-      "id": "blutschwur-richelle-mead",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "marie-bierstedt-2024": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -5781,10 +5756,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "blutschwur-richelle-mead"
+          "work": "blutschwur"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00TMAGEG8",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0DB1XR4LL",

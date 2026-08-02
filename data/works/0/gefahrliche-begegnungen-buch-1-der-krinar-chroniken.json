@@ -13401,8 +13401,10 @@
         "anne-mccaffrey"
       ],
       "genres": [
+        "action-adventure",
         "science",
-        "science-fiction"
+        "science-fiction",
+        "space-opera"
       ],
       "id": "generation-warriors",
       "language": "en",
@@ -13435,31 +13437,7 @@
             }
           ],
           "work": "generation-warriors"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B002V0PWXW",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Generation Warriors"
-    },
-    "generation-warriors-anne-mccaffrey": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "anne-mccaffrey"
-      ],
-      "genres": [
-        "action-adventure",
-        "science-fiction",
-        "space-opera"
-      ],
-      "id": "generation-warriors-anne-mccaffrey",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "constance-towers-2022": {
           "abridged": true,
           "added_at": "2026-08-02",
@@ -13563,10 +13541,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "generation-warriors-anne-mccaffrey"
+          "work": "generation-warriors"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V0PWXW",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B09ZKQHNM7",

@@ -6200,12 +6200,14 @@
     "the-merry-wives-of-windsor": {
       "added_at": "2026-08-02",
       "authors": [
-        "william-shakespeare",
-        "luke-daniels"
+        "william-shakespeare"
       ],
       "genres": [
         "classics",
-        "drama-plays"
+        "drama-plays",
+        "history",
+        "literary-fiction",
+        "writing-publishing"
       ],
       "id": "the-merry-wives-of-windsor",
       "language": "en",
@@ -6238,33 +6240,7 @@
             }
           ],
           "work": "the-merry-wives-of-windsor"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0GM1PLW4R",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Merry Wives of Windsor"
-    },
-    "the-merry-wives-of-windsor-william-shakespeare": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "william-shakespeare"
-      ],
-      "genres": [
-        "classics",
-        "drama-plays",
-        "history",
-        "literary-fiction",
-        "writing-publishing"
-      ],
-      "id": "the-merry-wives-of-windsor-william-shakespeare",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "not-specified-2011": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -6292,10 +6268,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-merry-wives-of-windsor-william-shakespeare"
+          "work": "the-merry-wives-of-windsor"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0GM1PLW4R",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B004VN1Q50",
@@ -16668,7 +16649,9 @@
       ],
       "genres": [
         "dark-fantasy",
+        "fairy-tales-folklore",
         "fantasy",
+        "romance",
         "young-adult"
       ],
       "id": "the-mirror-of-infinite-endings",
@@ -16703,33 +16686,8 @@
             }
           ],
           "work": "the-mirror-of-infinite-endings"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0GGC6JBC9",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Mirror of Infinite Endings"
-    },
-    "the-mirror-of-infinite-endings-stephanie-garber": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "stephanie-garber"
-      ],
-      "genres": [
-        "fairy-tales-folklore",
-        "fantasy",
-        "romance",
-        "young-adult"
-      ],
-      "id": "the-mirror-of-infinite-endings-stephanie-garber",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "rebecca-soler-2026": {
+        },
+        "rebecca-soler-2026-2": {
           "abridged": false,
           "added_at": "2026-08-02",
           "asin": [
@@ -16739,7 +16697,7 @@
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91nvO3fJoeL.jpg",
-          "id": "rebecca-soler-2026",
+          "id": "rebecca-soler-2026-2",
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
@@ -16756,10 +16714,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-mirror-of-infinite-endings-stephanie-garber"
+          "work": "the-mirror-of-infinite-endings"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0GGC6JBC9",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0GN346B31",

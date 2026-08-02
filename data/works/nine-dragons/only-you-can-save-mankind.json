@@ -720,14 +720,17 @@
     "onyeka-and-the-rise-of-the-rebels": {
       "added_at": "2026-08-02",
       "authors": [
-        "tola-okogwu"
+        "tola-okogwu",
+        "goziam-okogwu"
       ],
       "genres": [
+        "action-adventure",
         "childrens",
         "coming-of-age",
         "fairy-tales-folklore",
         "fantasy",
-        "parenting-relationships"
+        "parenting-relationships",
+        "superhero"
       ],
       "id": "onyeka-and-the-rise-of-the-rebels",
       "language": "en",
@@ -739,6 +742,10 @@
           "asin": [
             {
               "asin": "B0BK72W67L",
+              "region": "us"
+            },
+            {
+              "asin": "B0BGJJZRBV",
               "region": "us"
             }
           ],
@@ -757,6 +764,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0BK72W67L",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0BGJJZRBV",
+              "type": "libex-import"
             }
           ],
           "work": "onyeka-and-the-rise-of-the-rebels"
@@ -767,56 +779,7 @@
           "imported_at": "2026-08-02",
           "ref": "B0BK72W67L",
           "type": "libex-import"
-        }
-      ],
-      "title": "Onyeka and the Rise of the Rebels"
-    },
-    "onyeka-and-the-rise-of-the-rebels-tola-okogwu": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "tola-okogwu",
-        "goziam-okogwu"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "fantasy",
-        "superhero"
-      ],
-      "id": "onyeka-and-the-rise-of-the-rebels-tola-okogwu",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "nneka-okoye-2023": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0BGJJZRBV",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81OOTT0BBRL.jpg",
-          "id": "nneka-okoye-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "nneka-okoye"
-          ],
-          "publisher": "Simon & Schuster Audio UK",
-          "release_date": "2023-03-02",
-          "runtime_min": 431,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0BGJJZRBV",
-              "type": "libex-import"
-            }
-          ],
-          "work": "onyeka-and-the-rise-of-the-rebels-tola-okogwu"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0BGJJZRBV",

@@ -11158,8 +11158,13 @@
     "deaths-end": {
       "added_at": "2026-07-17T09:08:56+00:00",
       "authors": [
-        "cixin-liu",
-        "ken-liu"
+        "cixin-liu"
+      ],
+      "credits": [
+        {
+          "person": "ken-liu",
+          "role": "translator"
+        }
       ],
       "genres": [
         "hard-science-fiction",
@@ -11170,6 +11175,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "bruno-roubicek-2018": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "1528848330",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91QFORjNQkL.jpg",
+          "id": "bruno-roubicek-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "bruno-roubicek"
+          ],
+          "publisher": "W. F. Howes Ltd",
+          "release_date": "2018-12-22",
+          "runtime_min": 1751,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1528848330",
+              "type": "libex-import"
+            }
+          ],
+          "work": "deaths-end"
+        },
         "daniel-york-loh-2025": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -11654,52 +11687,7 @@
           "imported_at": "2026-07-30",
           "ref": "B01LW7OXWP",
           "type": "libex-import"
-        }
-      ],
-      "title": "Death's End"
-    },
-    "deaths-end-cixin-liu": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "cixin-liu"
-      ],
-      "genres": [
-        "science-fiction"
-      ],
-      "id": "deaths-end-cixin-liu",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "bruno-roubicek-2018": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "1528848330",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91QFORjNQkL.jpg",
-          "id": "bruno-roubicek-2018",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "bruno-roubicek"
-          ],
-          "publisher": "W. F. Howes Ltd",
-          "release_date": "2018-12-22",
-          "runtime_min": 1751,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "1528848330",
-              "type": "libex-import"
-            }
-          ],
-          "work": "deaths-end-cixin-liu"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "1528848330",
@@ -11712,17 +11700,62 @@
       "added_at": "2026-08-02",
       "authors": [
         "charlaine-harris",
-        "toni-l-p-kelner"
+        "toni-l-p-kelner",
+        "jeaniene-frost",
+        "lilith-saintcrow",
+        "amanda-ronconi",
+        "katie-macalister",
+        "jeff-abbott"
+      ],
+      "credits": [
+        {
+          "person": "charlaine-harris",
+          "role": "editor"
+        },
+        {
+          "person": "toni-l-p-kelner",
+          "role": "editor"
+        }
       ],
       "genres": [
         "fantasy",
+        "paranormal",
         "science-fiction",
-        "short-stories"
+        "short-stories",
+        "urban-fantasy"
       ],
       "id": "deaths-excellent-vacation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "christopher-lane-2010": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B003VVJEOI",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91wFXzgf0LL.jpg",
+          "id": "christopher-lane-2010",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "christopher-lane"
+          ],
+          "publisher": "Brilliance Audio",
+          "release_date": "2010-08-03",
+          "runtime_min": 773,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B003VVJEOI",
+              "type": "libex-import"
+            }
+          ],
+          "work": "deaths-excellent-vacation"
+        },
         "christopher-lane-2015": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -11757,72 +11790,7 @@
           "imported_at": "2026-08-02",
           "ref": "B00VGUS51E",
           "type": "libex-import"
-        }
-      ],
-      "title": "Death's Excellent Vacation"
-    },
-    "deaths-excellent-vacation-toni-l-p-kelner": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "toni-l-p-kelner",
-        "jeaniene-frost",
-        "lilith-saintcrow",
-        "charlaine-harris",
-        "amanda-ronconi",
-        "katie-macalister",
-        "jeff-abbott"
-      ],
-      "credits": [
-        {
-          "person": "charlaine-harris",
-          "role": "editor"
         },
-        {
-          "person": "toni-l-p-kelner",
-          "role": "editor"
-        }
-      ],
-      "genres": [
-        "fantasy",
-        "paranormal",
-        "science-fiction",
-        "short-stories",
-        "urban-fantasy"
-      ],
-      "id": "deaths-excellent-vacation-toni-l-p-kelner",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "christopher-lane-2010": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B003VVJEOI",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91wFXzgf0LL.jpg",
-          "id": "christopher-lane-2010",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "christopher-lane"
-          ],
-          "publisher": "Brilliance Audio",
-          "release_date": "2010-08-03",
-          "runtime_min": 773,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B003VVJEOI",
-              "type": "libex-import"
-            }
-          ],
-          "work": "deaths-excellent-vacation-toni-l-p-kelner"
-        }
-      },
-      "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B003VVJEOI",

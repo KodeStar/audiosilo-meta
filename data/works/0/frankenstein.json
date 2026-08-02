@@ -3608,8 +3608,7 @@
     "fraser": {
       "added_at": "2026-08-01",
       "authors": [
-        "l-l-muir",
-        "the-ghosts-of-culloden-moor"
+        "l-l-muir"
       ],
       "genres": [
         "historical-fiction",
@@ -3648,31 +3647,7 @@
             }
           ],
           "work": "fraser"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B09FCZNBPP",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Fraser"
-    },
-    "fraser-l-l-muir": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "l-l-muir"
-      ],
-      "genres": [
-        "historical-fiction",
-        "historical-romance",
-        "romance"
-      ],
-      "id": "fraser-l-l-muir",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "andrew-mcdermott-2023": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -3700,10 +3675,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "fraser-l-l-muir"
+          "work": "fraser"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B09FCZNBPP",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-01",
           "ref": "B0CM47J5QM",

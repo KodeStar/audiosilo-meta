@@ -908,8 +908,13 @@
     "the-dark-forest": {
       "added_at": "2026-07-17T09:08:56+00:00",
       "authors": [
-        "cixin-liu",
-        "joel-martinsen"
+        "cixin-liu"
+      ],
+      "credits": [
+        {
+          "person": "joel-martinsen",
+          "role": "translator"
+        }
       ],
       "genres": [
         "hard-science-fiction",
@@ -920,6 +925,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "bruno-roubicek-2016": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B01LWV2PWR",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91HVOtWEypS.jpg",
+          "id": "bruno-roubicek-2016",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "bruno-roubicek"
+          ],
+          "publisher": "W. F. Howes Ltd",
+          "release_date": "2016-09-22",
+          "runtime_min": 1384,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B01LWV2PWR",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-dark-forest"
+        },
         "daniel-york-loh-2023": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -1092,52 +1125,7 @@
           "imported_at": "2026-07-30",
           "ref": "B010PKSKBA",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Dark Forest"
-    },
-    "the-dark-forest-cixin-liu": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "cixin-liu"
-      ],
-      "genres": [
-        "science-fiction"
-      ],
-      "id": "the-dark-forest-cixin-liu",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "bruno-roubicek-2016": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B01LWV2PWR",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91HVOtWEypS.jpg",
-          "id": "bruno-roubicek-2016",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "bruno-roubicek"
-          ],
-          "publisher": "W. F. Howes Ltd",
-          "release_date": "2016-09-22",
-          "runtime_min": 1384,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B01LWV2PWR",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-dark-forest-cixin-liu"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B01LWV2PWR",

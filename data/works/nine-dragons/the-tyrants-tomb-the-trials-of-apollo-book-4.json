@@ -212,7 +212,9 @@
     "the-ugly-duckling-and-other-stories": {
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
-        "hans-christian-andersen"
+        "hans-christian-andersen",
+        "aesop",
+        "charles-perrault"
       ],
       "genres": [
         "childrens",
@@ -246,6 +248,36 @@
             {
               "imported_at": "2026-07-30",
               "ref": "B0C9JS27GQ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-ugly-duckling-and-other-stories"
+        },
+        "alan-smith-2010": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B003D15436",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51Cq0K1lfgL.jpg",
+          "id": "alan-smith-2010",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alan-smith",
+            "annie-mckie",
+            "joanna-pinnock"
+          ],
+          "publisher": "The Story Mouse",
+          "release_date": "2010-03-17",
+          "runtime_min": 54,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B003D15436",
               "type": "libex-import"
             }
           ],
@@ -420,60 +452,7 @@
           "imported_at": "2026-07-30",
           "ref": "B002V8LD2S",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Ugly Duckling and Other Stories"
-    },
-    "the-ugly-duckling-and-other-stories-hans-christian-andersen": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "hans-christian-andersen",
-        "aesop",
-        "charles-perrault",
-        "alan-smith",
-        "joanna-pinnock",
-        "annie-mckie"
-      ],
-      "genres": [
-        "childrens",
-        "fairy-tales-folklore"
-      ],
-      "id": "the-ugly-duckling-and-other-stories-hans-christian-andersen",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "alan-smith-2010": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B003D15436",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51Cq0K1lfgL.jpg",
-          "id": "alan-smith-2010",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "alan-smith",
-            "annie-mckie",
-            "joanna-pinnock"
-          ],
-          "publisher": "The Story Mouse",
-          "release_date": "2010-03-17",
-          "runtime_min": 54,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B003D15436",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-ugly-duckling-and-other-stories-hans-christian-andersen"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B003D15436",

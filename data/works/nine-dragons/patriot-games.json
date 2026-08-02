@@ -6237,12 +6237,12 @@
     "payton": {
       "added_at": "2026-08-01",
       "authors": [
-        "l-l-muir",
-        "the-ghosts-of-culloden-moor"
+        "l-l-muir"
       ],
       "genres": [
         "historical-fiction",
         "historical-romance",
+        "paranormal",
         "romance"
       ],
       "id": "payton",
@@ -6277,32 +6277,7 @@
             }
           ],
           "work": "payton"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B098XVXGW7",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Payton"
-    },
-    "payton-l-l-muir": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "l-l-muir"
-      ],
-      "genres": [
-        "historical-fiction",
-        "historical-romance",
-        "paranormal",
-        "romance"
-      ],
-      "id": "payton-l-l-muir",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "andrew-mcdermott-2023": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -6330,10 +6305,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "payton-l-l-muir"
+          "work": "payton"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B098XVXGW7",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-01",
           "ref": "B0CLVV4CDG",

@@ -10974,9 +10974,10 @@
     "descendants": {
       "added_at": "2026-08-02",
       "authors": [
-        "disney-press"
+        "rico-green"
       ],
       "genres": [
+        "action-adventure",
         "childrens",
         "fairy-tales-folklore",
         "fantasy",
@@ -11031,12 +11032,78 @@
             }
           ],
           "work": "descendants"
+        },
+        "kyla-garcia-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0FGKVQH8Y",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91GkHLzGjaL.jpg",
+          "id": "kyla-garcia-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kyla-garcia"
+          ],
+          "publisher": "Listening Library",
+          "release_date": "2025-07-15",
+          "runtime_min": 183,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FGKVQH8Y",
+              "type": "libex-import"
+            }
+          ],
+          "work": "descendants"
+        },
+        "kyla-garcia-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0GX1Q227P",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/816uBsPI-SL.jpg",
+          "id": "kyla-garcia-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kyla-garcia"
+          ],
+          "publisher": "Studio Press",
+          "release_date": "2026-04-16",
+          "runtime_min": 183,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GX1Q227P",
+              "type": "libex-import"
+            }
+          ],
+          "work": "descendants"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B010N1L5X6",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0GX1Q227P",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0FGKVQH8Y",
           "type": "libex-import"
         }
       ],
@@ -11199,59 +11266,6 @@
         }
       ],
       "title": "Descendants 3"
-    },
-    "descendants-disney-press": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "disney-press",
-        "rico-green"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "fantasy"
-      ],
-      "id": "descendants-disney-press",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "kyla-garcia-2026": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0GX1Q227P",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/816uBsPI-SL.jpg",
-          "id": "kyla-garcia-2026",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "kyla-garcia"
-          ],
-          "publisher": "Studio Press",
-          "release_date": "2026-04-16",
-          "runtime_min": 183,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0GX1Q227P",
-              "type": "libex-import"
-            }
-          ],
-          "work": "descendants-disney-press"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0GX1Q227P",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Descendants"
     },
     "descendants-of-rust": {
       "added_at": "2026-08-02",
@@ -11566,60 +11580,6 @@
         }
       ],
       "title": "Descendants of War: The Complete Series"
-    },
-    "descendants-rico-green": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "rico-green"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "fairy-tales-folklore",
-        "fantasy",
-        "short-stories"
-      ],
-      "id": "descendants-rico-green",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "kyla-garcia-2025": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0FGKVQH8Y",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91GkHLzGjaL.jpg",
-          "id": "kyla-garcia-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "kyla-garcia"
-          ],
-          "publisher": "Listening Library",
-          "release_date": "2025-07-15",
-          "runtime_min": 183,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0FGKVQH8Y",
-              "type": "libex-import"
-            }
-          ],
-          "work": "descendants-rico-green"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0FGKVQH8Y",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Descendants"
     },
     "descendants-were-alive-a-story-of-survival-series-book-7": {
       "added_at": "2026-08-02",

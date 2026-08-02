@@ -4430,11 +4430,21 @@
       "authors": [
         "l-m-montgomery"
       ],
+      "credits": [
+        {
+          "person": "abi-hynes",
+          "role": "adaptation"
+        }
+      ],
       "genres": [
         "childrens",
         "classics",
         "coming-of-age",
-        "parenting-relationships"
+        "drama-plays",
+        "historical-fiction",
+        "literary-fiction",
+        "parenting-relationships",
+        "self-help"
       ],
       "id": "anne-of-green-gables",
       "language": "en",
@@ -4964,6 +4974,34 @@
             {
               "imported_at": "2026-07-30",
               "ref": "B002V0K1C4",
+              "type": "libex-import"
+            }
+          ],
+          "work": "anne-of-green-gables"
+        },
+        "kate-harper-2008": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0036IOXCY",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91R9fl6IugL.jpg",
+          "id": "kate-harper-2008",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kate-harper"
+          ],
+          "publisher": "Penguin",
+          "release_date": "2008-09-02",
+          "runtime_min": 185,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0036IOXCY",
               "type": "libex-import"
             }
           ],
@@ -5578,6 +5616,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B0BZQRMZYJ",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0036IOXCY",
           "type": "libex-import"
         }
       ],

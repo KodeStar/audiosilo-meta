@@ -7939,10 +7939,15 @@
     "zephrum-gates-and-the-strange-magical-treasure": {
       "added_at": "2026-08-01",
       "authors": [
-        "tricia-riel"
+        "tricia-riel",
+        "susan-sernau",
+        "travis-ames"
       ],
       "genres": [
+        "action-adventure",
+        "comedy-humor",
         "fantasy",
+        "science-fiction",
         "young-adult"
       ],
       "id": "zephrum-gates-and-the-strange-magical-treasure",
@@ -7980,33 +7985,7 @@
             }
           ],
           "work": "zephrum-gates-and-the-strange-magical-treasure"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B07XL935BF",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Zephrum Gates and the Strange Magical Treasure"
-    },
-    "zephrum-gates-and-the-strange-magical-treasure-tricia-riel": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "tricia-riel",
-        "susan-sernau",
-        "travis-ames"
-      ],
-      "genres": [
-        "action-adventure",
-        "comedy-humor",
-        "science-fiction"
-      ],
-      "id": "zephrum-gates-and-the-strange-magical-treasure-tricia-riel",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "braden-elliott-2022": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -8037,10 +8016,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "zephrum-gates-and-the-strange-magical-treasure-tricia-riel"
+          "work": "zephrum-gates-and-the-strange-magical-treasure"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B07XL935BF",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0B4VCND5H",
@@ -8052,16 +8036,49 @@
     "zephrum-gates-the-belly-of-the-beast": {
       "added_at": "2026-08-01",
       "authors": [
-        "tricia-riel"
+        "tricia-riel",
+        "susan-sernau"
       ],
       "genres": [
+        "action-adventure",
         "childrens",
-        "fantasy"
+        "fantasy",
+        "paranormal",
+        "urban-fantasy"
       ],
       "id": "zephrum-gates-the-belly-of-the-beast",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "isaac-bluefoot-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0FCP52XQJ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/913v1CUC+EL.jpg",
+          "id": "isaac-bluefoot-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "isaac-bluefoot",
+            "tricia-riel"
+          ],
+          "publisher": "PublishDrive",
+          "release_date": "2025-06-10",
+          "runtime_min": 610,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FCP52XQJ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "zephrum-gates-the-belly-of-the-beast"
+        },
         "tricia-riel-2022": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -8096,57 +8113,7 @@
           "imported_at": "2026-08-01",
           "ref": "B09QBDXQ89",
           "type": "libex-import"
-        }
-      ],
-      "title": "Zephrum Gates & the Belly of the Beast"
-    },
-    "zephrum-gates-the-belly-of-the-beast-tricia-riel": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "tricia-riel",
-        "susan-sernau"
-      ],
-      "genres": [
-        "action-adventure",
-        "fantasy",
-        "paranormal",
-        "urban-fantasy"
-      ],
-      "id": "zephrum-gates-the-belly-of-the-beast-tricia-riel",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "isaac-bluefoot-2025": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0FCP52XQJ",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/913v1CUC+EL.jpg",
-          "id": "isaac-bluefoot-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "isaac-bluefoot",
-            "tricia-riel"
-          ],
-          "publisher": "PublishDrive",
-          "release_date": "2025-06-10",
-          "runtime_min": 610,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0FCP52XQJ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "zephrum-gates-the-belly-of-the-beast-tricia-riel"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0FCP52XQJ",

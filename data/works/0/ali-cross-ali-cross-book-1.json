@@ -5308,11 +5308,16 @@
     "alice-the-torch": {
       "added_at": "2026-08-01",
       "authors": [
-        "ashley-mcleo"
+        "ashley-mcleo",
+        "magic-of-arcana"
       ],
       "genres": [
+        "coming-of-age",
+        "epic-fantasy",
         "fairy-tales-folklore",
-        "fantasy"
+        "fantasy",
+        "romance",
+        "young-adult"
       ],
       "id": "alice-the-torch",
       "language": "en",
@@ -5345,34 +5350,7 @@
             }
           ],
           "work": "alice-the-torch"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B0BNP3HZBK",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Alice the Torch"
-    },
-    "alice-the-torch-ashley-mcleo": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "ashley-mcleo",
-        "magic-of-arcana"
-      ],
-      "genres": [
-        "coming-of-age",
-        "epic-fantasy",
-        "fantasy",
-        "romance",
-        "young-adult"
-      ],
-      "id": "alice-the-torch-ashley-mcleo",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "abby-anderson-2023": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -5399,10 +5377,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "alice-the-torch-ashley-mcleo"
+          "work": "alice-the-torch"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B0BNP3HZBK",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-01",
           "ref": "B0CQTMNXY4",

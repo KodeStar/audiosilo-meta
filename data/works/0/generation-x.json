@@ -6286,7 +6286,9 @@
         "childrens",
         "classics",
         "comedy-humor",
-        "fantasy"
+        "coming-of-age",
+        "fantasy",
+        "parenting-relationships"
       ],
       "id": "georges-marvellous-medicine",
       "language": "en",
@@ -6319,35 +6321,7 @@
             }
           ],
           "work": "georges-marvellous-medicine"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00MOLUY18",
-          "type": "libex-import"
-        }
-      ],
-      "title": "George's Marvellous Medicine"
-    },
-    "georges-marvellous-medicine-roald-dahl": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "roald-dahl",
-        "quentin-blake"
-      ],
-      "genres": [
-        "childrens",
-        "classics",
-        "comedy-humor",
-        "coming-of-age",
-        "fantasy",
-        "parenting-relationships"
-      ],
-      "id": "georges-marvellous-medicine-roald-dahl",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "derek-jacobi-2024": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -6461,7 +6435,7 @@
               "type": "libex-import"
             }
           ],
-          "work": "georges-marvellous-medicine-roald-dahl"
+          "work": "georges-marvellous-medicine"
         },
         "romesh-ranganathan-2022": {
           "abridged": false,
@@ -6489,10 +6463,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "georges-marvellous-medicine-roald-dahl"
+          "work": "georges-marvellous-medicine"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00MOLUY18",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B09XN8D76M",
@@ -7448,8 +7427,7 @@
     "gerard": {
       "added_at": "2026-08-01",
       "authors": [
-        "l-l-muir",
-        "the-ghosts-of-culloden-moor"
+        "l-l-muir"
       ],
       "genres": [
         "fantasy",
@@ -7489,31 +7467,7 @@
             }
           ],
           "work": "gerard"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B09P1W4QHR",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Gerard"
-    },
-    "gerard-l-l-muir": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "l-l-muir"
-      ],
-      "genres": [
-        "historical-fiction",
-        "historical-romance",
-        "romance"
-      ],
-      "id": "gerard-l-l-muir",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "andrew-mcdermott-2023": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -7541,10 +7495,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "gerard-l-l-muir"
+          "work": "gerard"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B09P1W4QHR",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-01",
           "ref": "B0CMF79QXF",

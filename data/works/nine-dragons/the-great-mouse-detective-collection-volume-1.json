@@ -8526,13 +8526,17 @@
     "the-grim-grotto": {
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
-        "lemony-snicket"
+        "lemony-snicket",
+        "brett-helquist"
       ],
       "genres": [
         "action-adventure",
         "childrens",
+        "classics",
         "comedy-humor",
         "coming-of-age",
+        "fantasy",
+        "mystery",
         "parenting-relationships"
       ],
       "id": "the-grim-grotto",
@@ -8648,40 +8652,7 @@
             }
           ],
           "work": "the-grim-grotto"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B002V0CAK0",
-          "type": "audiosilo-books-import"
         },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B002V0CAK0",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Grim Grotto"
-    },
-    "the-grim-grotto-lemony-snicket": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "lemony-snicket",
-        "brett-helquist"
-      ],
-      "genres": [
-        "childrens",
-        "classics",
-        "coming-of-age",
-        "fantasy",
-        "mystery",
-        "parenting-relationships"
-      ],
-      "id": "the-grim-grotto-lemony-snicket",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "tim-curry-2026": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -8708,10 +8679,20 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-grim-grotto-lemony-snicket"
+          "work": "the-grim-grotto"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B002V0CAK0",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B002V0CAK0",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0GJXT2XP3",
@@ -10437,8 +10418,7 @@
     "the-gruffalo-and-other-stories": {
       "added_at": "2026-08-02",
       "authors": [
-        "julia-donaldson",
-        "axel-scheffler"
+        "julia-donaldson"
       ],
       "genres": [
         "childrens",
@@ -10479,31 +10459,7 @@
             }
           ],
           "work": "the-gruffalo-and-other-stories"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "1529064309",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Gruffalo and Other Stories"
-    },
-    "the-gruffalo-and-other-stories-julia-donaldson": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "julia-donaldson"
-      ],
-      "genres": [
-        "childrens",
-        "classics",
-        "nature"
-      ],
-      "id": "the-gruffalo-and-other-stories-julia-donaldson",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "imelda-staunton-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -10532,10 +10488,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-gruffalo-and-other-stories-julia-donaldson"
+          "work": "the-gruffalo-and-other-stories"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1529064309",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0F5X9X4Q7",
@@ -10632,8 +10593,7 @@
     "the-gruffalo-song-and-other-songs": {
       "added_at": "2026-08-02",
       "authors": [
-        "julia-donaldson",
-        "axel-scheffler"
+        "julia-donaldson"
       ],
       "genres": [
         "childrens",
@@ -10672,31 +10632,7 @@
             }
           ],
           "work": "the-gruffalo-song-and-other-songs"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0036GPVJ0",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Gruffalo Song and Other Songs"
-    },
-    "the-gruffalo-song-and-other-songs-julia-donaldson": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "julia-donaldson"
-      ],
-      "genres": [
-        "childrens",
-        "music",
-        "nature"
-      ],
-      "id": "the-gruffalo-song-and-other-songs-julia-donaldson",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "julia-donaldson-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -10723,10 +10659,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-gruffalo-song-and-other-songs-julia-donaldson"
+          "work": "the-gruffalo-song-and-other-songs"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0036GPVJ0",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0DT7JV3YD",

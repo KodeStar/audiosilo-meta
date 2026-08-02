@@ -3191,12 +3191,71 @@
         "paul-kemprecos"
       ],
       "genres": [
+        "action-adventure",
+        "espionage",
+        "mystery",
         "thriller-suspense"
       ],
       "id": "polar-shift",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "ron-mclarty-2019": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "1101154349",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91qixe+2-iL.jpg",
+          "id": "ron-mclarty-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "ron-mclarty"
+          ],
+          "publisher": "Penguin Audio",
+          "release_date": "2019-06-11",
+          "runtime_min": 368,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1101154349",
+              "type": "libex-import"
+            }
+          ],
+          "work": "polar-shift"
+        },
+        "scott-brick-2009": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0036LPPWI",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91kw-zzyVbL.jpg",
+          "id": "scott-brick-2009",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "scott-brick"
+          ],
+          "publisher": "Penguin Audio",
+          "release_date": "2009-10-30",
+          "runtime_min": 779,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0036LPPWI",
+              "type": "libex-import"
+            }
+          ],
+          "work": "polar-shift"
+        },
         "scott-brick-2011": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -3231,83 +3290,7 @@
           "imported_at": "2026-08-02",
           "ref": "B005LQZLUM",
           "type": "libex-import"
-        }
-      ],
-      "title": "Polar Shift"
-    },
-    "polar-shift-clive-cussler": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "clive-cussler"
-      ],
-      "genres": [
-        "action-adventure",
-        "espionage",
-        "mystery",
-        "thriller-suspense"
-      ],
-      "id": "polar-shift-clive-cussler",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "ron-mclarty-2019": {
-          "abridged": true,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "1101154349",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91qixe+2-iL.jpg",
-          "id": "ron-mclarty-2019",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "ron-mclarty"
-          ],
-          "publisher": "Penguin Audio",
-          "release_date": "2019-06-11",
-          "runtime_min": 368,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "1101154349",
-              "type": "libex-import"
-            }
-          ],
-          "work": "polar-shift-clive-cussler"
         },
-        "scott-brick-2009": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0036LPPWI",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91kw-zzyVbL.jpg",
-          "id": "scott-brick-2009",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "scott-brick"
-          ],
-          "publisher": "Penguin Audio",
-          "release_date": "2009-10-30",
-          "runtime_min": 779,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0036LPPWI",
-              "type": "libex-import"
-            }
-          ],
-          "work": "polar-shift-clive-cussler"
-        }
-      },
-      "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B0036LPPWI",

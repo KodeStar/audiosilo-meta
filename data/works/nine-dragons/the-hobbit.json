@@ -11960,13 +11960,17 @@
     "the-hostile-hospital": {
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
-        "lemony-snicket"
+        "lemony-snicket",
+        "brett-helquist"
       ],
       "genres": [
         "childrens",
+        "classics",
         "comedy-humor",
         "coming-of-age",
+        "fantasy",
         "literary-fiction",
+        "mystery",
         "parenting-relationships"
       ],
       "id": "the-hostile-hospital",
@@ -12077,40 +12081,7 @@
             }
           ],
           "work": "the-hostile-hospital"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B002V5B5XI",
-          "type": "audiosilo-books-import"
         },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B002V5B5XI",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Hostile Hospital"
-    },
-    "the-hostile-hospital-lemony-snicket": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "lemony-snicket",
-        "brett-helquist"
-      ],
-      "genres": [
-        "childrens",
-        "classics",
-        "coming-of-age",
-        "fantasy",
-        "mystery",
-        "parenting-relationships"
-      ],
-      "id": "the-hostile-hospital-lemony-snicket",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "tim-curry-2026": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -12137,10 +12108,20 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-hostile-hospital-lemony-snicket"
+          "work": "the-hostile-hospital"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B002V5B5XI",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B002V5B5XI",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0GJWYMG2S",

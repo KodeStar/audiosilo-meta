@@ -3785,18 +3785,48 @@
     "the-christmasaurus": {
       "added_at": "2026-08-02",
       "authors": [
-        "tom-fletcher"
+        "tom-fletcher",
+        "shane-devries"
       ],
       "genres": [
         "action-adventure",
         "childrens",
         "comedy-humor",
+        "fantasy",
         "nature"
       ],
       "id": "the-christmasaurus",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "paul-shelley-2016": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B01IC2YODQ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81b7TVM+AUL.jpg",
+          "id": "paul-shelley-2016",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "paul-shelley"
+          ],
+          "publisher": "Puffin",
+          "release_date": "2016-10-06",
+          "runtime_min": 338,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B01IC2YODQ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-christmasaurus"
+        },
         "paul-shelley-2018": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -3824,12 +3854,73 @@
             }
           ],
           "work": "the-christmasaurus"
+        },
+        "paul-shelley-2018-2": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "024138768X",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81NtujF4jVL.jpg",
+          "id": "paul-shelley-2018-2",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "paul-shelley"
+          ],
+          "publisher": "Puffin",
+          "release_date": "2018-11-01",
+          "runtime_min": 385,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "024138768X",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-christmasaurus"
+        },
+        "tom-fletcher-2021": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "0241552052",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/911IU169q2L.jpg",
+          "id": "tom-fletcher-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "tom-fletcher"
+          ],
+          "publisher": "Puffin",
+          "release_date": "2021-10-28",
+          "runtime_min": 7,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "0241552052",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-christmasaurus"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "0525636064",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B01IC2YODQ",
           "type": "libex-import"
         }
       ],
@@ -3946,117 +4037,6 @@
         }
       ],
       "title": "The Christmasaurus and the Winter Witch"
-    },
-    "the-christmasaurus-tom-fletcher": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "tom-fletcher",
-        "shane-devries"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "comedy-humor",
-        "fantasy",
-        "nature"
-      ],
-      "id": "the-christmasaurus-tom-fletcher",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "paul-shelley-2016": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B01IC2YODQ",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81b7TVM+AUL.jpg",
-          "id": "paul-shelley-2016",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "paul-shelley"
-          ],
-          "publisher": "Puffin",
-          "release_date": "2016-10-06",
-          "runtime_min": 338,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B01IC2YODQ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-christmasaurus-tom-fletcher"
-        },
-        "paul-shelley-2018": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "024138768X",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81NtujF4jVL.jpg",
-          "id": "paul-shelley-2018",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "paul-shelley"
-          ],
-          "publisher": "Puffin",
-          "release_date": "2018-11-01",
-          "runtime_min": 385,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "024138768X",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-christmasaurus-tom-fletcher"
-        },
-        "tom-fletcher-2021": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "0241552052",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/911IU169q2L.jpg",
-          "id": "tom-fletcher-2021",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "tom-fletcher"
-          ],
-          "publisher": "Puffin",
-          "release_date": "2021-10-28",
-          "runtime_min": 7,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "0241552052",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-christmasaurus-tom-fletcher"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B01IC2YODQ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Christmasaurus"
     },
     "the-chromatics-camp-at-the-musical-mountain": {
       "added_at": "2026-08-02",
@@ -10714,11 +10694,15 @@
     "the-city-beyond-the-stars": {
       "added_at": "2026-08-02",
       "authors": [
-        "zohra-nabi"
+        "zohra-nabi",
+        "tom-clohosy-cole",
+        "federica-frenna"
       ],
       "genres": [
+        "action-adventure",
         "childrens",
         "coming-of-age",
+        "fairy-tales-folklore",
         "fantasy",
         "parenting-relationships",
         "self-help"
@@ -10733,6 +10717,10 @@
           "asin": [
             {
               "asin": "B0CMJYQBN7",
+              "region": "us"
+            },
+            {
+              "asin": "B0CQ73D254",
               "region": "us"
             }
           ],
@@ -10751,6 +10739,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0CMJYQBN7",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CQ73D254",
+              "type": "libex-import"
             }
           ],
           "work": "the-city-beyond-the-stars"
@@ -10761,57 +10754,7 @@
           "imported_at": "2026-08-02",
           "ref": "B0CMJYQBN7",
           "type": "libex-import"
-        }
-      ],
-      "title": "The City Beyond the Stars"
-    },
-    "the-city-beyond-the-stars-tom-clohosy-cole": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "tom-clohosy-cole",
-        "zohra-nabi",
-        "federica-frenna"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "fairy-tales-folklore",
-        "fantasy"
-      ],
-      "id": "the-city-beyond-the-stars-tom-clohosy-cole",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "aysha-kala-2024": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0CQ73D254",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91X8SyHqfXL.jpg",
-          "id": "aysha-kala-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "aysha-kala"
-          ],
-          "publisher": "Simon & Schuster Audio UK",
-          "release_date": "2024-04-11",
-          "runtime_min": 484,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0CQ73D254",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-city-beyond-the-stars-tom-clohosy-cole"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0CQ73D254",

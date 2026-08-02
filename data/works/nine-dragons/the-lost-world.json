@@ -13311,12 +13311,43 @@
         "action-adventure",
         "childrens",
         "comedy-humor",
-        "fantasy"
+        "coming-of-age",
+        "fantasy",
+        "parenting-relationships",
+        "self-help"
       ],
       "id": "the-magic-misfits",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "neil-patrick-harris-2017": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B074ZMDT31",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91q3nslwd9L.jpg",
+          "id": "neil-patrick-harris-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "neil-patrick-harris"
+          ],
+          "publisher": "Little, Brown Books for Young Readers",
+          "release_date": "2017-11-21",
+          "runtime_min": 253,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B074ZMDT31",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-magic-misfits"
+        },
         "neil-patrick-harris-2018": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -13360,59 +13391,7 @@
           "imported_at": "2026-08-02",
           "ref": "B07DDMMH62",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Magic Misfits"
-    },
-    "the-magic-misfits-neil-patrick-harris": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "neil-patrick-harris",
-        "lissy-marlin"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "comedy-humor",
-        "coming-of-age",
-        "fantasy",
-        "parenting-relationships",
-        "self-help"
-      ],
-      "id": "the-magic-misfits-neil-patrick-harris",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "neil-patrick-harris-2017": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B074ZMDT31",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91q3nslwd9L.jpg",
-          "id": "neil-patrick-harris-2017",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "neil-patrick-harris"
-          ],
-          "publisher": "Little, Brown Books for Young Readers",
-          "release_date": "2017-11-21",
-          "runtime_min": 253,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B074ZMDT31",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-magic-misfits-neil-patrick-harris"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B074ZMDT31",
@@ -13593,13 +13572,17 @@
     "the-magic-misfits-the-second-story": {
       "added_at": "2026-08-02",
       "authors": [
-        "neil-patrick-harris"
+        "neil-patrick-harris",
+        "kyle-hilton"
       ],
       "genres": [
         "action-adventure",
         "childrens",
         "comedy-humor",
-        "fantasy"
+        "coming-of-age",
+        "fantasy",
+        "parenting-relationships",
+        "self-help"
       ],
       "id": "the-magic-misfits-the-second-story",
       "language": "en",
@@ -13615,6 +13598,10 @@
             },
             {
               "asin": "1489469028",
+              "region": "us"
+            },
+            {
+              "asin": "1549114972",
               "region": "us"
             }
           ],
@@ -13639,6 +13626,11 @@
               "imported_at": "2026-08-02",
               "ref": "1489469028",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1549114972",
+              "type": "libex-import"
             }
           ],
           "work": "the-magic-misfits-the-second-story"
@@ -13649,61 +13641,7 @@
           "imported_at": "2026-08-02",
           "ref": "148946901X",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Magic Misfits: The Second Story"
-    },
-    "the-magic-misfits-the-second-story-neil-patrick-harris": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "neil-patrick-harris",
-        "lissy-marlin",
-        "kyle-hilton"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "comedy-humor",
-        "coming-of-age",
-        "fantasy",
-        "parenting-relationships",
-        "self-help"
-      ],
-      "id": "the-magic-misfits-the-second-story-neil-patrick-harris",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "christina-hendricks-2018": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "1549114972",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81Cr4BGivbL.jpg",
-          "id": "christina-hendricks-2018",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "christina-hendricks",
-            "neil-patrick-harris"
-          ],
-          "publisher": "Little, Brown Young Readers",
-          "release_date": "2018-09-25",
-          "runtime_min": 334,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "1549114972",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-magic-misfits-the-second-story-neil-patrick-harris"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "1549114972",

@@ -1138,7 +1138,11 @@
       "genres": [
         "action-adventure",
         "epic-fantasy",
+        "fairy-tales-folklore",
         "fantasy",
+        "historical-fiction",
+        "literary-fiction",
+        "nature",
         "young-adult"
       ],
       "id": "soul-of-the-sword",
@@ -1151,6 +1155,10 @@
           "asin": [
             {
               "asin": "1488206589",
+              "region": "us"
+            },
+            {
+              "asin": "0263267776",
               "region": "us"
             }
           ],
@@ -1171,6 +1179,11 @@
               "imported_at": "2026-08-02",
               "ref": "1488206589",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "0263267776",
+              "type": "libex-import"
             }
           ],
           "work": "soul-of-the-sword"
@@ -1181,61 +1194,7 @@
           "imported_at": "2026-08-02",
           "ref": "1488206589",
           "type": "libex-import"
-        }
-      ],
-      "title": "Soul of the Sword"
-    },
-    "soul-of-the-sword-julie-kagawa": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "julie-kagawa",
-        "emily-woo-zeller"
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fairy-tales-folklore",
-        "fantasy",
-        "historical-fiction",
-        "literary-fiction",
-        "nature",
-        "young-adult"
-      ],
-      "id": "soul-of-the-sword-julie-kagawa",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "brian-nishii-2019": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "0263267776",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71ENRFighCL.jpg",
-          "id": "brian-nishii-2019",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "brian-nishii",
-            "emily-woo-zeller",
-            "joy-osmanski"
-          ],
-          "publisher": "HQ Young Adult",
-          "release_date": "2019-06-18",
-          "runtime_min": 943,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "0263267776",
-              "type": "libex-import"
-            }
-          ],
-          "work": "soul-of-the-sword-julie-kagawa"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "0263267776",

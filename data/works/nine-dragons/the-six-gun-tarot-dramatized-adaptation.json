@@ -8932,19 +8932,52 @@
     "the-slippery-slope": {
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
-        "lemony-snicket"
+        "lemony-snicket",
+        "brett-helquist"
       ],
       "genres": [
         "childrens",
+        "classics",
         "comedy-humor",
         "coming-of-age",
         "education",
+        "fantasy",
+        "mystery",
         "parenting-relationships"
       ],
       "id": "the-slippery-slope",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "stephin-merritt-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0GJWJ56XG",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81+EEqPzGBL.jpg",
+          "id": "stephin-merritt-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "stephin-merritt",
+            "tim-curry"
+          ],
+          "publisher": "Farshore",
+          "release_date": "2026-02-26",
+          "runtime_min": 369,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GJWJ56XG",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-slippery-slope"
+        },
         "tim-curry-2004": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -9066,59 +9099,7 @@
           "imported_at": "2026-07-30",
           "ref": "B002V8MEQW",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Slippery Slope"
-    },
-    "the-slippery-slope-lemony-snicket": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "lemony-snicket",
-        "brett-helquist"
-      ],
-      "genres": [
-        "childrens",
-        "classics",
-        "coming-of-age",
-        "fantasy",
-        "mystery",
-        "parenting-relationships"
-      ],
-      "id": "the-slippery-slope-lemony-snicket",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "stephin-merritt-2026": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0GJWJ56XG",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81+EEqPzGBL.jpg",
-          "id": "stephin-merritt-2026",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "stephin-merritt",
-            "tim-curry"
-          ],
-          "publisher": "Farshore",
-          "release_date": "2026-02-26",
-          "runtime_min": 369,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0GJWJ56XG",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-slippery-slope-lemony-snicket"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0GJWJ56XG",

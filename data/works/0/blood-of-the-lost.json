@@ -4720,13 +4720,18 @@
     "blood-princesses-of-the-vampires": {
       "added_at": "2026-08-01",
       "authors": [
-        "aiden-james"
+        "aiden-james",
+        "patrick-burdine"
       ],
       "genres": [
         "classics",
         "fantasy",
         "gothic",
-        "horror"
+        "horror",
+        "paranormal",
+        "romance",
+        "romantic-suspense",
+        "urban-fantasy"
       ],
       "id": "blood-princesses-of-the-vampires",
       "language": "en",
@@ -4759,34 +4764,7 @@
             }
           ],
           "work": "blood-princesses-of-the-vampires"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B00C7WRWGE",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Blood Princesses of the Vampires"
-    },
-    "blood-princesses-of-the-vampires-aiden-james": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "aiden-james",
-        "patrick-burdine"
-      ],
-      "genres": [
-        "fantasy",
-        "paranormal",
-        "romance",
-        "romantic-suspense",
-        "urban-fantasy"
-      ],
-      "id": "blood-princesses-of-the-vampires-aiden-james",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "stephanye-dussud-2022": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -4813,10 +4791,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "blood-princesses-of-the-vampires-aiden-james"
+          "work": "blood-princesses-of-the-vampires"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B00C7WRWGE",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B09W4GW2PQ",

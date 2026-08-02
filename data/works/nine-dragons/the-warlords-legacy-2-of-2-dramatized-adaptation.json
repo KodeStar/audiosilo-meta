@@ -7039,19 +7039,48 @@
       "added_at": "2026-08-01",
       "authors": [
         "alicia-rades",
-        "hidden-legends",
         "megan-linski"
       ],
       "genres": [
         "fantasy",
         "paranormal",
         "romance",
-        "urban-fantasy"
+        "urban-fantasy",
+        "young-adult"
       ],
       "id": "the-water-legacy",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "graham-halstead-2019": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "1541405420",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91w4yqCCUiL.jpg",
+          "id": "graham-halstead-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "graham-halstead",
+            "jennifer-jill-araya"
+          ],
+          "publisher": "Tantor Audio",
+          "release_date": "2019-09-10",
+          "runtime_min": 961,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1541405420",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-water-legacy"
+        },
         "graham-halstead-2021": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -7087,57 +7116,7 @@
           "imported_at": "2026-08-01",
           "ref": "B09DMPM8WR",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Water Legacy"
-    },
-    "the-water-legacy-alicia-rades": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "alicia-rades",
-        "megan-linski"
-      ],
-      "genres": [
-        "fantasy",
-        "paranormal",
-        "romance",
-        "young-adult"
-      ],
-      "id": "the-water-legacy-alicia-rades",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "graham-halstead-2019": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "1541405420",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91w4yqCCUiL.jpg",
-          "id": "graham-halstead-2019",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "graham-halstead",
-            "jennifer-jill-araya"
-          ],
-          "publisher": "Tantor Audio",
-          "release_date": "2019-09-10",
-          "runtime_min": 961,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "1541405420",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-water-legacy-alicia-rades"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "1541405420",

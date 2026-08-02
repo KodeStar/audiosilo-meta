@@ -3483,17 +3483,50 @@
     "trapped-in-a-video-game": {
       "added_at": "2026-08-02",
       "authors": [
-        "dustin-brady"
+        "dustin-brady",
+        "brady-jesse"
       ],
       "genres": [
         "action-adventure",
         "childrens",
-        "science-fiction"
+        "coming-of-age",
+        "fantasy",
+        "science-fiction",
+        "self-help",
+        "sports"
       ],
       "id": "trapped-in-a-video-game",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "kirby-heyborne-2018": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B07KQMS833",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/8151RCnQ4SL.jpg",
+          "id": "kirby-heyborne-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kirby-heyborne"
+          ],
+          "publisher": "Andrews McMeel Publishing",
+          "release_date": "2018-11-27",
+          "runtime_min": 122,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07KQMS833",
+              "type": "libex-import"
+            }
+          ],
+          "work": "trapped-in-a-video-game"
+        },
         "kirby-heyborne-2023": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -3528,59 +3561,7 @@
           "imported_at": "2026-08-02",
           "ref": "B0C7RLK8S4",
           "type": "libex-import"
-        }
-      ],
-      "title": "Trapped in a Video Game"
-    },
-    "trapped-in-a-video-game-dustin-brady": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "dustin-brady",
-        "brady-jesse"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "coming-of-age",
-        "fantasy",
-        "science-fiction",
-        "self-help",
-        "sports"
-      ],
-      "id": "trapped-in-a-video-game-dustin-brady",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "kirby-heyborne-2018": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B07KQMS833",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/8151RCnQ4SL.jpg",
-          "id": "kirby-heyborne-2018",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "kirby-heyborne"
-          ],
-          "publisher": "Andrews McMeel Publishing",
-          "release_date": "2018-11-27",
-          "runtime_min": 122,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B07KQMS833",
-              "type": "libex-import"
-            }
-          ],
-          "work": "trapped-in-a-video-game-dustin-brady"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B07KQMS833",
@@ -10792,6 +10773,10 @@
             {
               "asin": "B00M8KM3SM",
               "region": "us"
+            },
+            {
+              "asin": "B00N4DWXFU",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -11341,6 +11326,11 @@
               "imported_at": "2026-07-30",
               "ref": "B00M8KM3SM",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00N4DWXFU",
+              "type": "libex-import"
             }
           ],
           "work": "treasure-hunters-danger-down-the-nile"
@@ -11351,53 +11341,7 @@
           "imported_at": "2026-07-30",
           "ref": "B00M8KM3SM",
           "type": "libex-import"
-        }
-      ],
-      "title": "Treasure Hunters: Danger Down the Nile"
-    },
-    "treasure-hunters-danger-down-the-nile-james-patterson": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "james-patterson"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens"
-      ],
-      "id": "treasure-hunters-danger-down-the-nile-james-patterson",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "bryan-kennedy-2014": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B00N4DWXFU",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91iw8CgjRpL.jpg",
-          "id": "bryan-kennedy-2014",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "bryan-kennedy"
-          ],
-          "publisher": "Cornerstone Digital",
-          "release_date": "2014-09-11",
-          "runtime_min": 342,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B00N4DWXFU",
-              "type": "libex-import"
-            }
-          ],
-          "work": "treasure-hunters-danger-down-the-nile-james-patterson"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B00N4DWXFU",

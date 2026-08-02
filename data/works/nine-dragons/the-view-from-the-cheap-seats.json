@@ -1557,13 +1557,16 @@
     "the-vile-village": {
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
-        "lemony-snicket"
+        "lemony-snicket",
+        "brett-helquist"
       ],
       "genres": [
         "action-adventure",
         "childrens",
+        "classics",
         "comedy-humor",
         "coming-of-age",
+        "fantasy",
         "mystery",
         "parenting-relationships"
       ],
@@ -1685,40 +1688,7 @@
             }
           ],
           "work": "the-vile-village"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B002V9Z40E",
-          "type": "audiosilo-books-import"
         },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B002V9Z40E",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Vile Village"
-    },
-    "the-vile-village-lemony-snicket": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "lemony-snicket",
-        "brett-helquist"
-      ],
-      "genres": [
-        "childrens",
-        "classics",
-        "coming-of-age",
-        "fantasy",
-        "mystery",
-        "parenting-relationships"
-      ],
-      "id": "the-vile-village-lemony-snicket",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "tim-curry-2026": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -1745,10 +1715,20 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-vile-village-lemony-snicket"
+          "work": "the-vile-village"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B002V9Z40E",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B002V9Z40E",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0GJXQFM9D",
@@ -8635,15 +8615,18 @@
     "the-vorrh": {
       "added_at": "2026-08-02",
       "authors": [
-        "brian-catling"
+        "brian-catling",
+        "alan-moore"
       ],
       "genres": [
         "fantasy",
         "historical-fiction",
         "literary-fiction",
         "occult",
+        "paranormal",
         "science-fiction",
-        "steampunk"
+        "steampunk",
+        "urban-fantasy"
       ],
       "id": "the-vorrh",
       "language": "en",
@@ -8655,6 +8638,10 @@
           "asin": [
             {
               "asin": "B00W689AQO",
+              "region": "us"
+            },
+            {
+              "asin": "B00WHF2M70",
               "region": "us"
             }
           ],
@@ -8674,6 +8661,11 @@
               "imported_at": "2026-08-02",
               "ref": "B00W689AQO",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00WHF2M70",
+              "type": "libex-import"
             }
           ],
           "work": "the-vorrh"
@@ -8684,57 +8676,7 @@
           "imported_at": "2026-08-02",
           "ref": "B00W689AQO",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Vorrh"
-    },
-    "the-vorrh-alan-moore": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "alan-moore",
-        "brian-catling"
-      ],
-      "genres": [
-        "fantasy",
-        "historical-fiction",
-        "literary-fiction",
-        "paranormal",
-        "urban-fantasy"
-      ],
-      "id": "the-vorrh-alan-moore",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "allan-corduner-2015": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B00WHF2M70",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81soY6ypT4L.jpg",
-          "id": "allan-corduner-2015",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "allan-corduner"
-          ],
-          "publisher": "Random House Audio",
-          "release_date": "2015-04-28",
-          "runtime_min": 1039,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B00WHF2M70",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-vorrh-alan-moore"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B00WHF2M70",

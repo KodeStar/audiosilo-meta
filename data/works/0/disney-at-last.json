@@ -1265,12 +1265,12 @@
     "disney-descendants-school-of-secrets-cjs-treasure-chase": {
       "added_at": "2026-08-02",
       "authors": [
-        "disney-press",
         "jessica-brody"
       ],
       "genres": [
         "childrens",
-        "fairy-tales-folklore"
+        "fairy-tales-folklore",
+        "fantasy"
       ],
       "id": "disney-descendants-school-of-secrets-cjs-treasure-chase",
       "language": "en",
@@ -1321,31 +1321,7 @@
             }
           ],
           "work": "disney-descendants-school-of-secrets-cjs-treasure-chase"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B01N912318",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Disney Descendants: School of Secrets: CJ’s Treasure Chase"
-    },
-    "disney-descendants-school-of-secrets-cjs-treasure-chase-jessica-brody": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "jessica-brody"
-      ],
-      "genres": [
-        "childrens",
-        "fairy-tales-folklore",
-        "fantasy"
-      ],
-      "id": "disney-descendants-school-of-secrets-cjs-treasure-chase-jessica-brody",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "kyla-garcia-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -1372,17 +1348,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "disney-descendants-school-of-secrets-cjs-treasure-chase-jessica-brody"
+          "work": "disney-descendants-school-of-secrets-cjs-treasure-chase"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B01N912318",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0FH5HCRGP",
           "type": "libex-import"
         }
       ],
-      "title": "Disney Descendants: School of Secrets: CJ's Treasure Chase"
+      "title": "Disney Descendants: School of Secrets: CJ’s Treasure Chase"
     },
     "disney-encanto-the-junior-novelization": {
       "added_at": "2026-08-02",

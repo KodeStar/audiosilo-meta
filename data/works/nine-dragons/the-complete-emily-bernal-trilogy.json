@@ -3522,9 +3522,11 @@
     "the-complete-idiots-guide-to-the-world-of-narnia": {
       "added_at": "2026-08-02",
       "authors": [
-        "james-s-bell"
+        "james-s-bell",
+        "cheryl-dunlop"
       ],
       "genres": [
+        "childrens",
         "classics",
         "epic-fantasy",
         "fantasy",
@@ -3534,6 +3536,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "chris-fabry-2010": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B004289IG8",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51WwpoPC8IL.jpg",
+          "id": "chris-fabry-2010",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "chris-fabry"
+          ],
+          "publisher": "Oasis Audio",
+          "release_date": "2010-09-08",
+          "runtime_min": 312,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B004289IG8",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-complete-idiots-guide-to-the-world-of-narnia"
+        },
         "chris-fabry-2025": {
           "abridged": true,
           "added_at": "2026-08-02",
@@ -3567,56 +3597,7 @@
           "imported_at": "2026-08-02",
           "ref": "B002V5CRQC",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Complete Idiot's Guide to the World of Narnia"
-    },
-    "the-complete-idiots-guide-to-the-world-of-narnia-james-s-bell": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "james-s-bell",
-        "cheryl-dunlop"
-      ],
-      "genres": [
-        "childrens",
-        "classics",
-        "fantasy",
-        "writing-publishing"
-      ],
-      "id": "the-complete-idiots-guide-to-the-world-of-narnia-james-s-bell",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "chris-fabry-2010": {
-          "abridged": true,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B004289IG8",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51WwpoPC8IL.jpg",
-          "id": "chris-fabry-2010",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "chris-fabry"
-          ],
-          "publisher": "Oasis Audio",
-          "release_date": "2010-09-08",
-          "runtime_min": 312,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B004289IG8",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-complete-idiots-guide-to-the-world-of-narnia-james-s-bell"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B004289IG8",

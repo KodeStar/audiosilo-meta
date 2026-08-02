@@ -1519,12 +1519,45 @@
             }
           ],
           "work": "what-the-ladybird-heard"
+        },
+        "alexander-armstrong-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0DNNCSW9M",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81gk3bEtGOL.jpg",
+          "id": "alexander-armstrong-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alexander-armstrong"
+          ],
+          "publisher": "Macmillan Digital Audio",
+          "release_date": "2024-11-20",
+          "runtime_min": 17,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DNNCSW9M",
+              "type": "libex-import"
+            }
+          ],
+          "work": "what-the-ladybird-heard"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B003U4RYU2",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0DNNCSW9M",
           "type": "libex-import"
         }
       ],
@@ -1575,30 +1608,7 @@
             }
           ],
           "work": "what-the-ladybird-heard-adventures"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "1529057876",
-          "type": "libex-import"
-        }
-      ],
-      "title": "What the Ladybird Heard Adventures"
-    },
-    "what-the-ladybird-heard-adventures-julia-donaldson": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "julia-donaldson"
-      ],
-      "genres": [
-        "childrens",
-        "nature"
-      ],
-      "id": "what-the-ladybird-heard-adventures-julia-donaldson",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "alexander-armstrong-2024": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -1625,10 +1635,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "what-the-ladybird-heard-adventures-julia-donaldson"
+          "work": "what-the-ladybird-heard-adventures"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1529057876",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0DNNG3QNT",
@@ -1736,31 +1751,7 @@
             }
           ],
           "work": "what-the-ladybird-heard-at-the-seaside"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "1529037565",
-          "type": "libex-import"
-        }
-      ],
-      "title": "What the Ladybird Heard at the Seaside"
-    },
-    "what-the-ladybird-heard-at-the-seaside-julia-donaldson": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "julia-donaldson"
-      ],
-      "genres": [
-        "childrens",
-        "fantasy",
-        "nature"
-      ],
-      "id": "what-the-ladybird-heard-at-the-seaside-julia-donaldson",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "alexander-armstrong-2024": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -1787,10 +1778,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "what-the-ladybird-heard-at-the-seaside-julia-donaldson"
+          "work": "what-the-ladybird-heard-at-the-seaside"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1529037565",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0DNNFT284",
@@ -1798,57 +1794,6 @@
         }
       ],
       "title": "What the Ladybird Heard at the Seaside"
-    },
-    "what-the-ladybird-heard-julia-donaldson": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "julia-donaldson"
-      ],
-      "genres": [
-        "childrens",
-        "nature"
-      ],
-      "id": "what-the-ladybird-heard-julia-donaldson",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "alexander-armstrong-2024": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0DNNCSW9M",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81gk3bEtGOL.jpg",
-          "id": "alexander-armstrong-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "alexander-armstrong"
-          ],
-          "publisher": "Macmillan Digital Audio",
-          "release_date": "2024-11-20",
-          "runtime_min": 17,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0DNNCSW9M",
-              "type": "libex-import"
-            }
-          ],
-          "work": "what-the-ladybird-heard-julia-donaldson"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0DNNCSW9M",
-          "type": "libex-import"
-        }
-      ],
-      "title": "What the Ladybird Heard"
     },
     "what-the-ladybird-heard-next": {
       "added_at": "2026-08-02",
@@ -1895,32 +1840,7 @@
             }
           ],
           "work": "what-the-ladybird-heard-next"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0191Y37Z0",
-          "type": "libex-import"
-        }
-      ],
-      "title": "What the Ladybird Heard Next"
-    },
-    "what-the-ladybird-heard-next-julia-donaldson": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "julia-donaldson"
-      ],
-      "genres": [
-        "childrens",
-        "law",
-        "mystery",
-        "nature"
-      ],
-      "id": "what-the-ladybird-heard-next-julia-donaldson",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "alexander-armstrong-2024": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -1947,10 +1867,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "what-the-ladybird-heard-next-julia-donaldson"
+          "work": "what-the-ladybird-heard-next"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0191Y37Z0",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0DNNDGDK8",
@@ -2003,31 +1928,7 @@
             }
           ],
           "work": "what-the-ladybird-heard-on-holiday"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "1529036321",
-          "type": "libex-import"
-        }
-      ],
-      "title": "What the Ladybird Heard on Holiday"
-    },
-    "what-the-ladybird-heard-on-holiday-julia-donaldson": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "julia-donaldson"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "nature"
-      ],
-      "id": "what-the-ladybird-heard-on-holiday-julia-donaldson",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "alexander-armstrong-2024": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -2054,10 +1955,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "what-the-ladybird-heard-on-holiday-julia-donaldson"
+          "work": "what-the-ladybird-heard-on-holiday"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1529036321",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0DNNG7ZB4",

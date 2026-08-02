@@ -1543,7 +1543,6 @@
     "duskbound-1": {
       "added_at": "2026-08-02",
       "authors": [
-        "emergencycomplaints",
         "d-e-sherman"
       ],
       "genres": [
@@ -1554,6 +1553,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "gary-bennett-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0FDBLK7V7",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/913R2NmmGsL.jpg",
+          "id": "gary-bennett-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "gary-bennett"
+          ],
+          "publisher": "Royal Guard Publishing LLC and Timeless Wind Publishing LLC",
+          "release_date": "2025-06-30",
+          "runtime_min": 761,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FDBLK7V7",
+              "type": "libex-import"
+            }
+          ],
+          "work": "duskbound-1"
+        },
         "gary-bennett-2026": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -1588,53 +1615,7 @@
           "imported_at": "2026-08-02",
           "ref": "B0H42GYZFW",
           "type": "libex-import"
-        }
-      ],
-      "title": "Duskbound 1"
-    },
-    "duskbound-1-d-e-sherman": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "d-e-sherman"
-      ],
-      "genres": [
-        "action-adventure",
-        "fantasy"
-      ],
-      "id": "duskbound-1-d-e-sherman",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "gary-bennett-2025": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0FDBLK7V7",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/913R2NmmGsL.jpg",
-          "id": "gary-bennett-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "gary-bennett"
-          ],
-          "publisher": "Royal Guard Publishing LLC and Timeless Wind Publishing LLC",
-          "release_date": "2025-06-30",
-          "runtime_min": 761,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0FDBLK7V7",
-              "type": "libex-import"
-            }
-          ],
-          "work": "duskbound-1-d-e-sherman"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0FDBLK7V7",

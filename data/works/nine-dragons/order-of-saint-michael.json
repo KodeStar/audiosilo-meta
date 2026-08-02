@@ -7771,10 +7771,17 @@
     "origins-of-the-wheel-of-time": {
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
-        "michael-livingston",
-        "harriet-mcdougal"
+        "michael-livingston"
+      ],
+      "credits": [
+        {
+          "person": "harriet-mcdougal",
+          "role": "contributor"
+        }
       ],
       "genres": [
+        "arts-entertainment",
+        "biography-memoir",
         "epic-fantasy",
         "fantasy",
         "writing-publishing"
@@ -7875,36 +7882,7 @@
             }
           ],
           "work": "origins-of-the-wheel-of-time"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B09SJ57CFS",
-          "type": "audiosilo-books-import"
         },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B09SJ57CFS",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Origins of The Wheel of Time"
-    },
-    "origins-of-the-wheel-of-time-michael-livingston": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "michael-livingston"
-      ],
-      "genres": [
-        "arts-entertainment",
-        "biography-memoir",
-        "writing-publishing"
-      ],
-      "id": "origins-of-the-wheel-of-time-michael-livingston",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "harriet-mcdougal-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -7935,10 +7913,20 @@
               "type": "libex-import"
             }
           ],
-          "work": "origins-of-the-wheel-of-time-michael-livingston"
+          "work": "origins-of-the-wheel-of-time"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B09SJ57CFS",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B09SJ57CFS",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0DT4GR2Q4",
@@ -11657,19 +11645,52 @@
     "orphans-of-the-tide": {
       "added_at": "2026-08-02",
       "authors": [
-        "struan-murray"
+        "struan-murray",
+        "manuel-sumberac"
       ],
       "genres": [
+        "action-adventure",
         "childrens",
         "coming-of-age",
         "fairy-tales-folklore",
         "fantasy",
+        "horror",
+        "parenting-relationships",
         "self-help"
       ],
       "id": "orphans-of-the-tide",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "georgina-campbell-2020": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "0241391334",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1+6x32r7wL.jpg",
+          "id": "georgina-campbell-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "georgina-campbell",
+            "lucian-msamati"
+          ],
+          "publisher": "Puffin",
+          "release_date": "2020-02-20",
+          "runtime_min": 540,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "0241391334",
+              "type": "libex-import"
+            }
+          ],
+          "work": "orphans-of-the-tide"
+        },
         "georgina-campbell-2021": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -11704,6 +11725,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "0063043149",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "0241391334",
           "type": "libex-import"
         }
       ],
@@ -11945,63 +11971,6 @@
         }
       ],
       "title": "Orphans of the Tide #2: Shipwreck Island"
-    },
-    "orphans-of-the-tide-struan-murray": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "struan-murray",
-        "manuel-sumberac"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "coming-of-age",
-        "fantasy",
-        "horror",
-        "parenting-relationships"
-      ],
-      "id": "orphans-of-the-tide-struan-murray",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "georgina-campbell-2020": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "0241391334",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/A1+6x32r7wL.jpg",
-          "id": "georgina-campbell-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "georgina-campbell",
-            "lucian-msamati"
-          ],
-          "publisher": "Puffin",
-          "release_date": "2020-02-20",
-          "runtime_min": 540,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "0241391334",
-              "type": "libex-import"
-            }
-          ],
-          "work": "orphans-of-the-tide-struan-murray"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "0241391334",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Orphans of the Tide"
     },
     "orphans-quest": {
       "added_at": "2026-08-02",

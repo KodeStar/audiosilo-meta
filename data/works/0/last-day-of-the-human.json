@@ -4125,7 +4125,8 @@
     "last-of-the-exalted": {
       "added_at": "2026-08-01",
       "authors": [
-        "derek-prior"
+        "derek-prior",
+        "d-p-prior"
       ],
       "genres": [
         "epic-fantasy",
@@ -4162,31 +4163,7 @@
             }
           ],
           "work": "last-of-the-exalted"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B08L9SC2QW",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Last of the Exalted"
-    },
-    "last-of-the-exalted-derek-prior": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "derek-prior",
-        "d-p-prior"
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fantasy"
-      ],
-      "id": "last-of-the-exalted-derek-prior",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "larry-oblander-2023": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -4213,10 +4190,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "last-of-the-exalted-derek-prior"
+          "work": "last-of-the-exalted"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B08L9SC2QW",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-01",
           "ref": "B0CLYWJVHP",

@@ -164,6 +164,7 @@
       "genres": [
         "action-adventure",
         "dystopian",
+        "fantasy",
         "parenting-relationships",
         "science-fiction",
         "self-help",
@@ -180,6 +181,10 @@
           "asin": [
             {
               "asin": "B06Y2J3VCH",
+              "region": "us"
+            },
+            {
+              "asin": "B072HGFXH5",
               "region": "us"
             }
           ],
@@ -198,6 +203,11 @@
               "imported_at": "2026-08-02",
               "ref": "B06Y2J3VCH",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B072HGFXH5",
+              "type": "libex-import"
             }
           ],
           "work": "crazy-house"
@@ -208,56 +218,7 @@
           "imported_at": "2026-08-02",
           "ref": "B06Y2J3VCH",
           "type": "libex-import"
-        }
-      ],
-      "title": "Crazy House"
-    },
-    "crazy-house-james-patterson": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "james-patterson"
-      ],
-      "genres": [
-        "dystopian",
-        "fantasy",
-        "science-fiction",
-        "thriller-suspense",
-        "young-adult"
-      ],
-      "id": "crazy-house-james-patterson",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "therese-plummer-2017": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B072HGFXH5",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91RPgbEm0LL.jpg",
-          "id": "therese-plummer-2017",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "therese-plummer"
-          ],
-          "publisher": "Cornerstone Digital",
-          "release_date": "2017-05-18",
-          "runtime_min": 452,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B072HGFXH5",
-              "type": "libex-import"
-            }
-          ],
-          "work": "crazy-house-james-patterson"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B072HGFXH5",

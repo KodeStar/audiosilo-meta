@@ -2969,7 +2969,8 @@
     "viridian-gate-online-embers-of-rebellion": {
       "added_at": "2026-08-01",
       "authors": [
-        "j-d-astra"
+        "j-d-astra",
+        "james-a-hunter"
       ],
       "genres": [
         "fantasy",
@@ -3006,31 +3007,7 @@
             }
           ],
           "work": "viridian-gate-online-embers-of-rebellion"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B07YF4X8VT",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Viridian Gate Online: Embers of Rebellion"
-    },
-    "viridian-gate-online-embers-of-rebellion-j-d-astra": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "j-d-astra",
-        "james-a-hunter"
-      ],
-      "genres": [
-        "fantasy",
-        "science-fiction"
-      ],
-      "id": "viridian-gate-online-embers-of-rebellion-j-d-astra",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "emily-woo-zeller-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -3057,10 +3034,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "viridian-gate-online-embers-of-rebellion-j-d-astra"
+          "work": "viridian-gate-online-embers-of-rebellion"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B07YF4X8VT",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0F8KMYB76",

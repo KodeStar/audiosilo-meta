@@ -5652,12 +5652,14 @@
     "greenwild-the-city-beyond-the-sea": {
       "added_at": "2026-08-02",
       "authors": [
-        "pari-thomson"
+        "pari-thomson",
+        "elisa-paganelli"
       ],
       "genres": [
         "action-adventure",
         "childrens",
-        "fantasy"
+        "fantasy",
+        "nature"
       ],
       "id": "greenwild-the-city-beyond-the-sea",
       "language": "en",
@@ -5669,6 +5671,14 @@
           "asin": [
             {
               "asin": "B0CNF83D2S",
+              "region": "us"
+            },
+            {
+              "asin": "B0CRJFMQZ8",
+              "region": "us"
+            },
+            {
+              "asin": "B0DM28GN6H",
               "region": "us"
             }
           ],
@@ -5687,60 +5697,7 @@
               "imported_at": "2026-08-02",
               "ref": "B0CNF83D2S",
               "type": "libex-import"
-            }
-          ],
-          "work": "greenwild-the-city-beyond-the-sea"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0CNF83D2S",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Greenwild: The City Beyond the Sea"
-    },
-    "greenwild-the-city-beyond-the-sea-pari-thomson": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "pari-thomson",
-        "elisa-paganelli"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "fantasy",
-        "nature"
-      ],
-      "id": "greenwild-the-city-beyond-the-sea-pari-thomson",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "sophia-nomvete-2024": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0CRJFMQZ8",
-              "region": "us"
             },
-            {
-              "asin": "B0DM28GN6H",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91dl5yMaZlL.jpg",
-          "id": "sophia-nomvete-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "sophia-nomvete"
-          ],
-          "publisher": "Macmillan Children's Books",
-          "release_date": "2024-05-23",
-          "runtime_min": 582,
-          "sources": [
             {
               "imported_at": "2026-08-02",
               "ref": "B0CRJFMQZ8",
@@ -5752,10 +5709,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "greenwild-the-city-beyond-the-sea-pari-thomson"
+          "work": "greenwild-the-city-beyond-the-sea"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CNF83D2S",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0CRJFMQZ8",
@@ -5767,7 +5729,8 @@
     "greenwild-the-forest-in-the-sky": {
       "added_at": "2026-08-02",
       "authors": [
-        "pari-thomson"
+        "pari-thomson",
+        "elisa-paganelli"
       ],
       "genres": [
         "action-adventure",
@@ -5787,6 +5750,14 @@
             {
               "asin": "B0D9C874Z4",
               "region": "us"
+            },
+            {
+              "asin": "B0DNNFQXGR",
+              "region": "us"
+            },
+            {
+              "asin": "B0F4BSSR4N",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91VhdeEMMdL.jpg",
@@ -5804,59 +5775,7 @@
               "imported_at": "2026-08-02",
               "ref": "B0D9C874Z4",
               "type": "libex-import"
-            }
-          ],
-          "work": "greenwild-the-forest-in-the-sky"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0D9C874Z4",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Greenwild: The Forest in the Sky"
-    },
-    "greenwild-the-forest-in-the-sky-pari-thomson": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "pari-thomson",
-        "elisa-paganelli"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "fantasy"
-      ],
-      "id": "greenwild-the-forest-in-the-sky-pari-thomson",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "sophia-nomvete-2025": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0DNNFQXGR",
-              "region": "us"
             },
-            {
-              "asin": "B0F4BSSR4N",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91JZp04bHuL.jpg",
-          "id": "sophia-nomvete-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "sophia-nomvete"
-          ],
-          "publisher": "Macmillan Children's Books",
-          "release_date": "2025-06-05",
-          "runtime_min": 618,
-          "sources": [
             {
               "imported_at": "2026-08-02",
               "ref": "B0DNNFQXGR",
@@ -5868,10 +5787,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "greenwild-the-forest-in-the-sky-pari-thomson"
+          "work": "greenwild-the-forest-in-the-sky"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0D9C874Z4",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0DNNFQXGR",

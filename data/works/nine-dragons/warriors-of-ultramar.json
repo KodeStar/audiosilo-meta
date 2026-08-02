@@ -14289,7 +14289,6 @@
     "watson": {
       "added_at": "2026-08-01",
       "authors": [
-        "the-ghosts-of-culloden-moor",
         "l-l-muir"
       ],
       "genres": [
@@ -14298,6 +14297,7 @@
         "historical-fiction",
         "historical-romance",
         "horror",
+        "paranormal",
         "romance"
       ],
       "id": "watson",
@@ -14332,32 +14332,7 @@
             }
           ],
           "work": "watson"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B09Z2WGX68",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Watson"
-    },
-    "watson-l-l-muir": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "l-l-muir"
-      ],
-      "genres": [
-        "historical-fiction",
-        "historical-romance",
-        "paranormal",
-        "romance"
-      ],
-      "id": "watson-l-l-muir",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "andrew-mcdermott-2023": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -14385,10 +14360,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "watson-l-l-muir"
+          "work": "watson"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B09Z2WGX68",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-01",
           "ref": "B0CMK6BXL3",

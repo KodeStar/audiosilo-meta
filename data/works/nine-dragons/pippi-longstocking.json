@@ -1999,7 +1999,8 @@
     "pirates-of-the-caribbean-at-worlds-end": {
       "added_at": "2026-08-02",
       "authors": [
-        "disney-press"
+        "disney-press",
+        "t-t-sutherland"
       ],
       "genres": [
         "action-adventure",
@@ -2037,31 +2038,7 @@
             }
           ],
           "work": "pirates-of-the-caribbean-at-worlds-end"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B01017HCQQ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Pirates of the Caribbean: At World’s End"
-    },
-    "pirates-of-the-caribbean-at-worlds-end-disney-press": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "disney-press",
-        "t-t-sutherland"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens"
-      ],
-      "id": "pirates-of-the-caribbean-at-worlds-end-disney-press",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "simon-vance-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -2088,17 +2065,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "pirates-of-the-caribbean-at-worlds-end-disney-press"
+          "work": "pirates-of-the-caribbean-at-worlds-end"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B01017HCQQ",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0FFHM1B5W",
           "type": "libex-import"
         }
       ],
-      "title": "Pirates of the Caribbean: At World's End"
+      "title": "Pirates of the Caribbean: At World’s End"
     },
     "pirates-of-the-caribbean-at-worlds-end-pirates-of-the-caribbean-the-junior-novelization": {
       "added_at": "2026-08-02",
@@ -2214,7 +2196,7 @@
     "pirates-of-the-caribbean-dead-mans-chest": {
       "added_at": "2026-08-02",
       "authors": [
-        "disney-press"
+        "irene-trimble"
       ],
       "genres": [
         "action-adventure",
@@ -2269,82 +2251,7 @@
             }
           ],
           "work": "pirates-of-the-caribbean-dead-mans-chest"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B01012VQFE",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Pirates of the Caribbean: Dead Man’s Chest"
-    },
-    "pirates-of-the-caribbean-dead-mans-chest-disney-press": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "disney-press",
-        "irene-trimble"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens"
-      ],
-      "id": "pirates-of-the-caribbean-dead-mans-chest-disney-press",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "simon-vance-2026": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0GY91TJCD",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91WZpVaxlTL.jpg",
-          "id": "simon-vance-2026",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "simon-vance"
-          ],
-          "publisher": "Studio Press",
-          "release_date": "2026-04-30",
-          "runtime_min": 139,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0GY91TJCD",
-              "type": "libex-import"
-            }
-          ],
-          "work": "pirates-of-the-caribbean-dead-mans-chest-disney-press"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0GY91TJCD",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Pirates of the Caribbean: Dead Man’s Chest"
-    },
-    "pirates-of-the-caribbean-dead-mans-chest-irene-trimble": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "irene-trimble"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens"
-      ],
-      "id": "pirates-of-the-caribbean-dead-mans-chest-irene-trimble",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "simon-vance-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -2371,17 +2278,55 @@
               "type": "libex-import"
             }
           ],
-          "work": "pirates-of-the-caribbean-dead-mans-chest-irene-trimble"
+          "work": "pirates-of-the-caribbean-dead-mans-chest"
+        },
+        "simon-vance-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0GY91TJCD",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91WZpVaxlTL.jpg",
+          "id": "simon-vance-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "simon-vance"
+          ],
+          "publisher": "Studio Press",
+          "release_date": "2026-04-30",
+          "runtime_min": 139,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GY91TJCD",
+              "type": "libex-import"
+            }
+          ],
+          "work": "pirates-of-the-caribbean-dead-mans-chest"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B01012VQFE",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0GY91TJCD",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0FH5LHFBN",
           "type": "libex-import"
         }
       ],
-      "title": "Pirates of the Caribbean: Dead Man's Chest"
+      "title": "Pirates of the Caribbean: Dead Man’s Chest"
     },
     "pirates-of-the-caribbean-dead-men-tell-no-tales": {
       "added_at": "2026-08-02",
@@ -3024,7 +2969,7 @@
     "pirates-of-the-caribbean-on-stranger-tides": {
       "added_at": "2026-08-02",
       "authors": [
-        "disney-press"
+        "james-ponti"
       ],
       "genres": [
         "action-adventure",
@@ -3081,84 +3026,7 @@
             }
           ],
           "work": "pirates-of-the-caribbean-on-stranger-tides"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0106RQH80",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Pirates of the Caribbean: On Stranger Tides"
-    },
-    "pirates-of-the-caribbean-on-stranger-tides-disney-press": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "disney-press",
-        "james-ponti"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "fantasy"
-      ],
-      "id": "pirates-of-the-caribbean-on-stranger-tides-disney-press",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "simon-vance-2026": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0H1S2YN74",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91EhGovNoXL.jpg",
-          "id": "simon-vance-2026",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "simon-vance"
-          ],
-          "publisher": "Studio Press",
-          "release_date": "2026-05-28",
-          "runtime_min": 95,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0H1S2YN74",
-              "type": "libex-import"
-            }
-          ],
-          "work": "pirates-of-the-caribbean-on-stranger-tides-disney-press"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0H1S2YN74",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Pirates of the Caribbean: On Stranger Tides"
-    },
-    "pirates-of-the-caribbean-on-stranger-tides-james-ponti": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "james-ponti"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "fairy-tales-folklore"
-      ],
-      "id": "pirates-of-the-caribbean-on-stranger-tides-james-ponti",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "simon-vance-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -3185,10 +3053,48 @@
               "type": "libex-import"
             }
           ],
-          "work": "pirates-of-the-caribbean-on-stranger-tides-james-ponti"
+          "work": "pirates-of-the-caribbean-on-stranger-tides"
+        },
+        "simon-vance-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0H1S2YN74",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91EhGovNoXL.jpg",
+          "id": "simon-vance-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "simon-vance"
+          ],
+          "publisher": "Studio Press",
+          "release_date": "2026-05-28",
+          "runtime_min": 95,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0H1S2YN74",
+              "type": "libex-import"
+            }
+          ],
+          "work": "pirates-of-the-caribbean-on-stranger-tides"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0106RQH80",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0H1S2YN74",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0FH5K96R5",
@@ -3200,7 +3106,8 @@
     "pirates-of-the-caribbean-the-curse-of-the-black-pearl": {
       "added_at": "2026-08-02",
       "authors": [
-        "disney-press"
+        "disney-press",
+        "elizabeth-rudnick"
       ],
       "genres": [
         "action-adventure",
@@ -3255,31 +3162,7 @@
             }
           ],
           "work": "pirates-of-the-caribbean-the-curse-of-the-black-pearl"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00XP3BAK8",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Pirates of the Caribbean: The Curse of the Black Pearl"
-    },
-    "pirates-of-the-caribbean-the-curse-of-the-black-pearl-disney-press": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "disney-press",
-        "elizabeth-rudnick"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens"
-      ],
-      "id": "pirates-of-the-caribbean-the-curse-of-the-black-pearl-disney-press",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "simon-vance-2026": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -3315,10 +3198,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "pirates-of-the-caribbean-the-curse-of-the-black-pearl-disney-press"
+          "work": "pirates-of-the-caribbean-the-curse-of-the-black-pearl"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00XP3BAK8",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0GY4MQGSS",

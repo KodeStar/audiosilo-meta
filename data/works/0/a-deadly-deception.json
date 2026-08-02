@@ -6978,14 +6978,15 @@
     "a-dinosaur-ate-my-sister": {
       "added_at": "2026-08-02",
       "authors": [
-        "allen-fatimaharan",
         "pooja-puri"
       ],
       "genres": [
         "childrens",
         "comedy-humor",
+        "coming-of-age",
         "historical-fiction",
         "nature",
+        "parenting-relationships",
         "science-fiction",
         "time-travel"
       ],
@@ -7020,34 +7021,7 @@
             }
           ],
           "work": "a-dinosaur-ate-my-sister"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "1529070686",
-          "type": "libex-import"
-        }
-      ],
-      "title": "A Dinosaur Ate My Sister"
-    },
-    "a-dinosaur-ate-my-sister-pooja-puri": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "pooja-puri"
-      ],
-      "genres": [
-        "childrens",
-        "comedy-humor",
-        "coming-of-age",
-        "historical-fiction",
-        "nature",
-        "parenting-relationships"
-      ],
-      "id": "a-dinosaur-ate-my-sister-pooja-puri",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "rameet-rauli-2024": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -7074,10 +7048,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "a-dinosaur-ate-my-sister-pooja-puri"
+          "work": "a-dinosaur-ate-my-sister"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1529070686",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0DMNX8HVK",

@@ -909,6 +909,7 @@
         "martin-chatterton"
       ],
       "genres": [
+        "action-adventure",
         "childrens",
         "comedy-humor",
         "coming-of-age",
@@ -925,6 +926,10 @@
           "asin": [
             {
               "asin": "B0C5GBS63V",
+              "region": "us"
+            },
+            {
+              "asin": "B0CMJSQSNR",
               "region": "us"
             }
           ],
@@ -1295,6 +1300,11 @@
               "imported_at": "2026-07-30",
               "ref": "B0C5GBS63V",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CMJSQSNR",
+              "type": "libex-import"
             }
           ],
           "work": "middle-school-million-dollar-mess"
@@ -1305,56 +1315,7 @@
           "imported_at": "2026-07-30",
           "ref": "B0C5GBS63V",
           "type": "libex-import"
-        }
-      ],
-      "title": "Middle School: Million Dollar Mess"
-    },
-    "middle-school-million-dollar-mess-james-patterson": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "james-patterson"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "comedy-humor",
-        "coming-of-age",
-        "self-help"
-      ],
-      "id": "middle-school-million-dollar-mess-james-patterson",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "mark-sanderlin-2024": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0CMJSQSNR",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91uLc4nKX5L.jpg",
-          "id": "mark-sanderlin-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "mark-sanderlin"
-          ],
-          "publisher": "Penguin",
-          "release_date": "2024-01-11",
-          "runtime_min": 188,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0CMJSQSNR",
-              "type": "libex-import"
-            }
-          ],
-          "work": "middle-school-million-dollar-mess-james-patterson"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0CMJSQSNR",
@@ -2246,7 +2207,8 @@
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "james-patterson",
-        "chris-tebbetts"
+        "chris-tebbetts",
+        "laura-park"
       ],
       "genres": [
         "arts-entertainment",
@@ -2265,6 +2227,10 @@
           "asin": [
             {
               "asin": "B0052Z9KKE",
+              "region": "us"
+            },
+            {
+              "asin": "B00698OMB0",
               "region": "us"
             }
           ],
@@ -2670,43 +2636,15 @@
               "imported_at": "2026-07-30",
               "ref": "B0052Z9KKE",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00698OMB0",
+              "type": "libex-import"
             }
           ],
           "work": "middle-school-the-worst-years-of-my-life"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B0052Z9KKE",
-          "type": "audiosilo-books-import"
         },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B0052Z9KKE",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Middle School: The Worst Years of My Life"
-    },
-    "middle-school-the-worst-years-of-my-life-james-patterson": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "james-patterson",
-        "laura-park",
-        "chris-tebbetts"
-      ],
-      "genres": [
-        "arts-entertainment",
-        "childrens",
-        "comedy-humor",
-        "coming-of-age",
-        "parenting-relationships"
-      ],
-      "id": "middle-school-the-worst-years-of-my-life-james-patterson",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "bryan-kennedy-2019": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -2733,443 +2671,25 @@
               "type": "libex-import"
             }
           ],
-          "work": "middle-school-the-worst-years-of-my-life-james-patterson"
+          "work": "middle-school-the-worst-years-of-my-life"
         }
       },
       "sources": [
         {
+          "imported_at": "2026-07-25",
+          "ref": "B0052Z9KKE",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B0052Z9KKE",
+          "type": "libex-import"
+        },
+        {
           "imported_at": "2026-08-02",
           "ref": "154915057X",
           "type": "libex-import"
-        }
-      ],
-      "title": "Middle School, The Worst Years of My Life"
-    },
-    "middle-school-the-worst-years-of-my-life-james-patterson-2": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "james-patterson"
-      ],
-      "genres": [
-        "childrens",
-        "comedy-humor"
-      ],
-      "id": "middle-school-the-worst-years-of-my-life-james-patterson-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "bryan-kennedy-2011": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B00698OMB0",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 296705,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 308315,
-              "start_ms": 296705,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 97292,
-              "start_ms": 605020,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 288020,
-              "start_ms": 702312,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 311240,
-              "start_ms": 990332,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 298887,
-              "start_ms": 1301572,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 181952,
-              "start_ms": 1600459,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 208422,
-              "start_ms": 1782411,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 42585,
-              "start_ms": 1990833,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 28328,
-              "start_ms": 2033418,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 121394,
-              "start_ms": 2061746,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 213624,
-              "start_ms": 2183140,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 140899,
-              "start_ms": 2396764,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 228299,
-              "start_ms": 2537663,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 276317,
-              "start_ms": 2765962,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 149444,
-              "start_ms": 3042279,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 179815,
-              "start_ms": 3191723,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 203685,
-              "start_ms": 3371538,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 273485,
-              "start_ms": 3575223,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 196069,
-              "start_ms": 3848708,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 106255,
-              "start_ms": 4044777,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 209630,
-              "start_ms": 4151032,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 213159,
-              "start_ms": 4360662,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 306411,
-              "start_ms": 4573821,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 190079,
-              "start_ms": 4880232,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 286859,
-              "start_ms": 5070311,
-              "title": "Chapter 26"
-            },
-            {
-              "length_ms": 315652,
-              "start_ms": 5357170,
-              "title": "Chapter 27"
-            },
-            {
-              "length_ms": 93437,
-              "start_ms": 5672822,
-              "title": "Chapter 28"
-            },
-            {
-              "length_ms": 151951,
-              "start_ms": 5766259,
-              "title": "Chapter 29"
-            },
-            {
-              "length_ms": 220590,
-              "start_ms": 5918210,
-              "title": "Chapter 30"
-            },
-            {
-              "length_ms": 267308,
-              "start_ms": 6138800,
-              "title": "Chapter 31"
-            },
-            {
-              "length_ms": 167927,
-              "start_ms": 6406108,
-              "title": "Chapter 32"
-            },
-            {
-              "length_ms": 152044,
-              "start_ms": 6574035,
-              "title": "Chapter 33"
-            },
-            {
-              "length_ms": 216085,
-              "start_ms": 6726079,
-              "title": "Chapter 34"
-            },
-            {
-              "length_ms": 280729,
-              "start_ms": 6942164,
-              "title": "Chapter 35"
-            },
-            {
-              "length_ms": 121255,
-              "start_ms": 7222893,
-              "title": "Chapter 36"
-            },
-            {
-              "length_ms": 164722,
-              "start_ms": 7344148,
-              "title": "Chapter 37"
-            },
-            {
-              "length_ms": 201549,
-              "start_ms": 7508870,
-              "title": "Chapter 38"
-            },
-            {
-              "length_ms": 170667,
-              "start_ms": 7710419,
-              "title": "Chapter 39"
-            },
-            {
-              "length_ms": 358377,
-              "start_ms": 7881086,
-              "title": "Chapter 40"
-            },
-            {
-              "length_ms": 355590,
-              "start_ms": 8239463,
-              "title": "Chapter 41"
-            },
-            {
-              "length_ms": 13421,
-              "start_ms": 8595053,
-              "title": "Chapter 42"
-            },
-            {
-              "length_ms": 98313,
-              "start_ms": 8608474,
-              "title": "Chapter 43"
-            },
-            {
-              "length_ms": 255745,
-              "start_ms": 8706787,
-              "title": "Chapter 44"
-            },
-            {
-              "length_ms": 254769,
-              "start_ms": 8962532,
-              "title": "Chapter 45"
-            },
-            {
-              "length_ms": 230621,
-              "start_ms": 9217301,
-              "title": "Chapter 46"
-            },
-            {
-              "length_ms": 193376,
-              "start_ms": 9447922,
-              "title": "Chapter 47"
-            },
-            {
-              "length_ms": 209026,
-              "start_ms": 9641298,
-              "title": "Chapter 48"
-            },
-            {
-              "length_ms": 172106,
-              "start_ms": 9850324,
-              "title": "Chapter 49"
-            },
-            {
-              "length_ms": 191983,
-              "start_ms": 10022430,
-              "title": "Chapter 50"
-            },
-            {
-              "length_ms": 258020,
-              "start_ms": 10214413,
-              "title": "Chapter 51"
-            },
-            {
-              "length_ms": 169691,
-              "start_ms": 10472433,
-              "title": "Chapter 52"
-            },
-            {
-              "length_ms": 178701,
-              "start_ms": 10642124,
-              "title": "Chapter 53"
-            },
-            {
-              "length_ms": 150280,
-              "start_ms": 10820825,
-              "title": "Chapter 54"
-            },
-            {
-              "length_ms": 168809,
-              "start_ms": 10971105,
-              "title": "Chapter 55"
-            },
-            {
-              "length_ms": 198670,
-              "start_ms": 11139914,
-              "title": "Chapter 56"
-            },
-            {
-              "length_ms": 221843,
-              "start_ms": 11338584,
-              "title": "Chapter 57"
-            },
-            {
-              "length_ms": 122137,
-              "start_ms": 11560427,
-              "title": "Chapter 58"
-            },
-            {
-              "length_ms": 8870,
-              "start_ms": 11682564,
-              "title": "Chapter 59"
-            },
-            {
-              "length_ms": 216781,
-              "start_ms": 11691434,
-              "title": "Chapter 60"
-            },
-            {
-              "length_ms": 277804,
-              "start_ms": 11908215,
-              "title": "Chapter 61"
-            },
-            {
-              "length_ms": 77462,
-              "start_ms": 12186019,
-              "title": "Chapter 62"
-            },
-            {
-              "length_ms": 97152,
-              "start_ms": 12263481,
-              "title": "Chapter 63"
-            },
-            {
-              "length_ms": 294058,
-              "start_ms": 12360633,
-              "title": "Chapter 64"
-            },
-            {
-              "length_ms": 13328,
-              "start_ms": 12654691,
-              "title": "Chapter 65"
-            },
-            {
-              "length_ms": 58421,
-              "start_ms": 12668019,
-              "title": "Chapter 66"
-            },
-            {
-              "length_ms": 223701,
-              "start_ms": 12726440,
-              "title": "Chapter 67"
-            },
-            {
-              "length_ms": 130543,
-              "start_ms": 12950141,
-              "title": "Chapter 68"
-            },
-            {
-              "length_ms": 209444,
-              "start_ms": 13080684,
-              "title": "Chapter 69"
-            },
-            {
-              "length_ms": 250079,
-              "start_ms": 13290128,
-              "title": "Chapter 70"
-            },
-            {
-              "length_ms": 187524,
-              "start_ms": 13540207,
-              "title": "Chapter 71"
-            },
-            {
-              "length_ms": 257277,
-              "start_ms": 13727731,
-              "title": "Chapter 72"
-            },
-            {
-              "length_ms": 201921,
-              "start_ms": 13985008,
-              "title": "Chapter 73"
-            },
-            {
-              "length_ms": 134211,
-              "start_ms": 14186929,
-              "title": "Chapter 74"
-            },
-            {
-              "length_ms": 270234,
-              "start_ms": 14321140,
-              "title": "Chapter 75"
-            },
-            {
-              "length_ms": 282586,
-              "start_ms": 14591374,
-              "title": "Chapter 76"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/810D9sj4QTL.jpg",
-          "id": "bryan-kennedy-2011",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "bryan-kennedy"
-          ],
-          "publisher": "Cornerstone Digital",
-          "release_date": "2011-11-18",
-          "runtime_min": 247,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B00698OMB0",
-              "type": "libex-import"
-            }
-          ],
-          "work": "middle-school-the-worst-years-of-my-life-james-patterson-2"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B00698OMB0",
@@ -3549,6 +3069,35 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "bryan-kennedy-2014": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00INYX3J0",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91GReUDe1rL.jpg",
+          "id": "bryan-kennedy-2014",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "bryan-kennedy",
+            "cassandra-morris"
+          ],
+          "publisher": "Cornerstone Digital",
+          "release_date": "2014-05-22",
+          "runtime_min": 124,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00INYX3J0",
+              "type": "libex-import"
+            }
+          ],
+          "work": "middle-school-ultimate-showdown"
+        },
         "uncredited-2014": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -3620,54 +3169,7 @@
           "imported_at": "2026-07-30",
           "ref": "B00IKV6LYA",
           "type": "libex-import"
-        }
-      ],
-      "title": "Middle School: Ultimate Showdown"
-    },
-    "middle-school-ultimate-showdown-james-patterson": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "james-patterson"
-      ],
-      "genres": [
-        "childrens",
-        "home-garden"
-      ],
-      "id": "middle-school-ultimate-showdown-james-patterson",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "bryan-kennedy-2014": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B00INYX3J0",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91GReUDe1rL.jpg",
-          "id": "bryan-kennedy-2014",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "bryan-kennedy",
-            "cassandra-morris"
-          ],
-          "publisher": "Cornerstone Digital",
-          "release_date": "2014-05-22",
-          "runtime_min": 124,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B00INYX3J0",
-              "type": "libex-import"
-            }
-          ],
-          "work": "middle-school-ultimate-showdown-james-patterson"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B00INYX3J0",

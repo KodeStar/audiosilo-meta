@@ -8205,6 +8205,7 @@
         "emily-skye"
       ],
       "genres": [
+        "action-adventure",
         "childrens",
         "fantasy"
       ],
@@ -8239,32 +8240,7 @@
             }
           ],
           "work": "das-erwachen-der-blattfinger"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "3838796160",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Das Erwachen der Blattfinger"
-    },
-    "das-erwachen-der-blattfinger-emily-skye": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "emily-skye",
-        "pascal-noldner"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "fantasy"
-      ],
-      "id": "das-erwachen-der-blattfinger-emily-skye",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "philipp-schepmann-2023": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -8291,10 +8267,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "das-erwachen-der-blattfinger-emily-skye"
+          "work": "das-erwachen-der-blattfinger"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "3838796160",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0CM9919C1",

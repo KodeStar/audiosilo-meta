@@ -4484,8 +4484,7 @@
     "the-jungle-book": {
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
-        "rudyard-kipling",
-        "ralph-mowat"
+        "rudyard-kipling"
       ],
       "credits": [
         {
@@ -4494,6 +4493,8 @@
         }
       ],
       "genres": [
+        "action-adventure",
+        "childrens",
         "classics",
         "nature"
       ],
@@ -5364,6 +5365,34 @@
             }
           ],
           "work": "the-jungle-book"
+        },
+        "tony-robinson-2010": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B003LS9H70",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91Hu7sxy8YL.jpg",
+          "id": "tony-robinson-2010",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "tony-robinson"
+          ],
+          "publisher": "Puffin",
+          "release_date": "2010-05-12",
+          "runtime_min": 160,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B003LS9H70",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-jungle-book"
         }
       },
       "sources": [
@@ -5380,6 +5409,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B004GI55Q6",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B003LS9H70",
           "type": "libex-import"
         }
       ],
@@ -5891,60 +5925,6 @@
         }
       ],
       "title": "The Jungle Book I & II"
-    },
-    "the-jungle-book-rudyard-kipling": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "rudyard-kipling",
-        "tony-robinson"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "classics",
-        "nature"
-      ],
-      "id": "the-jungle-book-rudyard-kipling",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "tony-robinson-2010": {
-          "abridged": true,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B003LS9H70",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91Hu7sxy8YL.jpg",
-          "id": "tony-robinson-2010",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "tony-robinson"
-          ],
-          "publisher": "Puffin",
-          "release_date": "2010-05-12",
-          "runtime_min": 160,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B003LS9H70",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-jungle-book-rudyard-kipling"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B003LS9H70",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Jungle Book"
     },
     "the-jungle-book-rudyard-kipling-2": {
       "added_at": "2026-08-02",
