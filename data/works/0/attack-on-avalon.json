@@ -13237,7 +13237,8 @@
     "aufruhr-am-gefangnisplanet": {
       "added_at": "2026-08-02",
       "authors": [
-        "s-pomej"
+        "s-pomej",
+        "arthur-conan-doyle"
       ],
       "genres": [
         "mystery",
@@ -13247,6 +13248,62 @@
       "language": "de",
       "license": "CC0-1.0",
       "recordings": {
+        "andreas-lange-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CTKM74KS",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91ipJEbFgNL.jpg",
+          "id": "andreas-lange-2024",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andreas-lange"
+          ],
+          "publisher": "Ignatius Publishers",
+          "release_date": "2024-09-03",
+          "runtime_min": 62,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CTKM74KS",
+              "type": "libex-import"
+            }
+          ],
+          "work": "aufruhr-am-gefangnisplanet"
+        },
+        "peter-bocek-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0DN6RMYX6",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91hbqbMuq0L.jpg",
+          "id": "peter-bocek-2024",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "peter-bocek"
+          ],
+          "publisher": "Ignatius Publishers",
+          "release_date": "2024-12-18",
+          "runtime_min": 66,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DN6RMYX6",
+              "type": "libex-import"
+            }
+          ],
+          "work": "aufruhr-am-gefangnisplanet"
+        },
         "rupert-pichler-2023": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -13281,81 +13338,7 @@
           "imported_at": "2026-08-02",
           "ref": "B0C33BKFJQ",
           "type": "libex-import"
-        }
-      ],
-      "title": "Aufruhr am Gefängnisplanet"
-    },
-    "aufruhr-am-gefangnisplanet-arthur-conan-doyle": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "arthur-conan-doyle",
-        "s-pomej"
-      ],
-      "genres": [
-        "mystery"
-      ],
-      "id": "aufruhr-am-gefangnisplanet-arthur-conan-doyle",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "andreas-lange-2024": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0CTKM74KS",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91ipJEbFgNL.jpg",
-          "id": "andreas-lange-2024",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "andreas-lange"
-          ],
-          "publisher": "Ignatius Publishers",
-          "release_date": "2024-09-03",
-          "runtime_min": 62,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0CTKM74KS",
-              "type": "libex-import"
-            }
-          ],
-          "work": "aufruhr-am-gefangnisplanet-arthur-conan-doyle"
         },
-        "peter-bocek-2024": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0DN6RMYX6",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91hbqbMuq0L.jpg",
-          "id": "peter-bocek-2024",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "peter-bocek"
-          ],
-          "publisher": "Ignatius Publishers",
-          "release_date": "2024-12-18",
-          "runtime_min": 66,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0DN6RMYX6",
-              "type": "libex-import"
-            }
-          ],
-          "work": "aufruhr-am-gefangnisplanet-arthur-conan-doyle"
-        }
-      },
-      "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B0CTKM74KS",

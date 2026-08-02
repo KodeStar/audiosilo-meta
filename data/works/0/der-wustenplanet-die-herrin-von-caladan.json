@@ -1930,7 +1930,8 @@
     "der-wutplanet": {
       "added_at": "2026-08-02",
       "authors": [
-        "s-pomej"
+        "s-pomej",
+        "arthur-conan-doyle"
       ],
       "genres": [
         "mystery",
@@ -1940,6 +1941,62 @@
       "language": "de",
       "license": "CC0-1.0",
       "recordings": {
+        "andreas-lange-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CYM9F98Z",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81i6GWYrJYL.jpg",
+          "id": "andreas-lange-2024",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andreas-lange"
+          ],
+          "publisher": "Ignatius Publishers",
+          "release_date": "2024-10-16",
+          "runtime_min": 61,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CYM9F98Z",
+              "type": "libex-import"
+            }
+          ],
+          "work": "der-wutplanet"
+        },
+        "peter-bocek-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0DNJMSRGY",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/819oRHyU-2L.jpg",
+          "id": "peter-bocek-2024",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "peter-bocek"
+          ],
+          "publisher": "Ignatius Publishers",
+          "release_date": "2024-12-23",
+          "runtime_min": 64,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DNJMSRGY",
+              "type": "libex-import"
+            }
+          ],
+          "work": "der-wutplanet"
+        },
         "rupert-pichler-2023": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -1974,82 +2031,7 @@
           "imported_at": "2026-08-02",
           "ref": "B0CJ9PRHX5",
           "type": "libex-import"
-        }
-      ],
-      "title": "Der Wutplanet"
-    },
-    "der-wutplanet-arthur-conan-doyle": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "arthur-conan-doyle",
-        "s-pomej"
-      ],
-      "genres": [
-        "mystery",
-        "science-fiction"
-      ],
-      "id": "der-wutplanet-arthur-conan-doyle",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "andreas-lange-2024": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0CYM9F98Z",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81i6GWYrJYL.jpg",
-          "id": "andreas-lange-2024",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "andreas-lange"
-          ],
-          "publisher": "Ignatius Publishers",
-          "release_date": "2024-10-16",
-          "runtime_min": 61,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0CYM9F98Z",
-              "type": "libex-import"
-            }
-          ],
-          "work": "der-wutplanet-arthur-conan-doyle"
         },
-        "peter-bocek-2024": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0DNJMSRGY",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/819oRHyU-2L.jpg",
-          "id": "peter-bocek-2024",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "peter-bocek"
-          ],
-          "publisher": "Ignatius Publishers",
-          "release_date": "2024-12-23",
-          "runtime_min": 64,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0DNJMSRGY",
-              "type": "libex-import"
-            }
-          ],
-          "work": "der-wutplanet-arthur-conan-doyle"
-        }
-      },
-      "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B0CYM9F98Z",

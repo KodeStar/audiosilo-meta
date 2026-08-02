@@ -6564,7 +6564,8 @@
     "zombie-zeugen-gesucht": {
       "added_at": "2026-08-02",
       "authors": [
-        "s-pomej"
+        "s-pomej",
+        "arthur-conan-doyle"
       ],
       "genres": [
         "mystery",
@@ -6574,6 +6575,62 @@
       "language": "de",
       "license": "CC0-1.0",
       "recordings": {
+        "andreas-lange-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CYMB8KG5",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91Imyc1Q13L.jpg",
+          "id": "andreas-lange-2024",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andreas-lange"
+          ],
+          "publisher": "Ignatius Publishers",
+          "release_date": "2024-10-15",
+          "runtime_min": 59,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CYMB8KG5",
+              "type": "libex-import"
+            }
+          ],
+          "work": "zombie-zeugen-gesucht"
+        },
+        "peter-bocek-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0DNJJ9FPR",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91qLi2iV94L.jpg",
+          "id": "peter-bocek-2024",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "peter-bocek"
+          ],
+          "publisher": "Ignatius Publishers",
+          "release_date": "2024-12-22",
+          "runtime_min": 62,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DNJJ9FPR",
+              "type": "libex-import"
+            }
+          ],
+          "work": "zombie-zeugen-gesucht"
+        },
         "rupert-pichler-2023": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -6608,82 +6665,7 @@
           "imported_at": "2026-08-02",
           "ref": "B0CJ9L8XG8",
           "type": "libex-import"
-        }
-      ],
-      "title": "Zombie-Zeugen gesucht"
-    },
-    "zombie-zeugen-gesucht-arthur-conan-doyle": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "arthur-conan-doyle",
-        "s-pomej"
-      ],
-      "genres": [
-        "mystery",
-        "science-fiction"
-      ],
-      "id": "zombie-zeugen-gesucht-arthur-conan-doyle",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "andreas-lange-2024": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0CYMB8KG5",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91Imyc1Q13L.jpg",
-          "id": "andreas-lange-2024",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "andreas-lange"
-          ],
-          "publisher": "Ignatius Publishers",
-          "release_date": "2024-10-15",
-          "runtime_min": 59,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0CYMB8KG5",
-              "type": "libex-import"
-            }
-          ],
-          "work": "zombie-zeugen-gesucht-arthur-conan-doyle"
         },
-        "peter-bocek-2024": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0DNJJ9FPR",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91qLi2iV94L.jpg",
-          "id": "peter-bocek-2024",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "peter-bocek"
-          ],
-          "publisher": "Ignatius Publishers",
-          "release_date": "2024-12-22",
-          "runtime_min": 62,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0DNJJ9FPR",
-              "type": "libex-import"
-            }
-          ],
-          "work": "zombie-zeugen-gesucht-arthur-conan-doyle"
-        }
-      },
-      "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B0CYMB8KG5",

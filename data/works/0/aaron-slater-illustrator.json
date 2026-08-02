@@ -9617,9 +9617,11 @@
     "abrechnung-auf-aldebaran-c": {
       "added_at": "2026-08-02",
       "authors": [
-        "s-pomej"
+        "s-pomej",
+        "arthur-conan-doyle"
       ],
       "genres": [
+        "action-adventure",
         "mystery",
         "science-fiction"
       ],
@@ -9627,6 +9629,62 @@
       "language": "de",
       "license": "CC0-1.0",
       "recordings": {
+        "andreas-lange-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CTD15299",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91tyL23N1lL.jpg",
+          "id": "andreas-lange-2024",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andreas-lange"
+          ],
+          "publisher": "Ignatius Publishers",
+          "release_date": "2024-08-19",
+          "runtime_min": 65,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CTD15299",
+              "type": "libex-import"
+            }
+          ],
+          "work": "abrechnung-auf-aldebaran-c"
+        },
+        "peter-bocek-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0DN6J6JCH",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/913DkFICtxL.jpg",
+          "id": "peter-bocek-2024",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "peter-bocek"
+          ],
+          "publisher": "Ignatius Publishers",
+          "release_date": "2024-12-12",
+          "runtime_min": 72,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DN6J6JCH",
+              "type": "libex-import"
+            }
+          ],
+          "work": "abrechnung-auf-aldebaran-c"
+        },
         "rupert-pichler-2023": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -9661,83 +9719,7 @@
           "imported_at": "2026-08-02",
           "ref": "B0BXFC6W8D",
           "type": "libex-import"
-        }
-      ],
-      "title": "Abrechnung auf Aldebaran c"
-    },
-    "abrechnung-auf-aldebaran-c-s-pomej": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "s-pomej",
-        "arthur-conan-doyle"
-      ],
-      "genres": [
-        "action-adventure",
-        "mystery",
-        "science-fiction"
-      ],
-      "id": "abrechnung-auf-aldebaran-c-s-pomej",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "andreas-lange-2024": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0CTD15299",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91tyL23N1lL.jpg",
-          "id": "andreas-lange-2024",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "andreas-lange"
-          ],
-          "publisher": "Ignatius Publishers",
-          "release_date": "2024-08-19",
-          "runtime_min": 65,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0CTD15299",
-              "type": "libex-import"
-            }
-          ],
-          "work": "abrechnung-auf-aldebaran-c-s-pomej"
         },
-        "peter-bocek-2024": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0DN6J6JCH",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/913DkFICtxL.jpg",
-          "id": "peter-bocek-2024",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "peter-bocek"
-          ],
-          "publisher": "Ignatius Publishers",
-          "release_date": "2024-12-12",
-          "runtime_min": 72,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0DN6J6JCH",
-              "type": "libex-import"
-            }
-          ],
-          "work": "abrechnung-auf-aldebaran-c-s-pomej"
-        }
-      },
-      "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B0CTD15299",

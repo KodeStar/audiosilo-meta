@@ -6050,7 +6050,8 @@
     "todliches-survival-game": {
       "added_at": "2026-08-02",
       "authors": [
-        "s-pomej"
+        "s-pomej",
+        "arthur-conan-doyle"
       ],
       "genres": [
         "mystery",
@@ -6060,6 +6061,62 @@
       "language": "de",
       "license": "CC0-1.0",
       "recordings": {
+        "andreas-lange-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CYM771ML",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91Yaxouid6L.jpg",
+          "id": "andreas-lange-2024",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andreas-lange"
+          ],
+          "publisher": "Ignatius Publishers",
+          "release_date": "2024-10-14",
+          "runtime_min": 63,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CYM771ML",
+              "type": "libex-import"
+            }
+          ],
+          "work": "todliches-survival-game"
+        },
+        "peter-bocek-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0DNJNZDGD",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81l07LGdC6L.jpg",
+          "id": "peter-bocek-2024",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "peter-bocek"
+          ],
+          "publisher": "Ignatius Publishers",
+          "release_date": "2024-12-21",
+          "runtime_min": 64,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DNJNZDGD",
+              "type": "libex-import"
+            }
+          ],
+          "work": "todliches-survival-game"
+        },
         "rupert-pichler-2023": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -6094,82 +6151,7 @@
           "imported_at": "2026-08-02",
           "ref": "B0CJ9NPZTC",
           "type": "libex-import"
-        }
-      ],
-      "title": "Tödliches Survival-Game"
-    },
-    "todliches-survival-game-arthur-conan-doyle": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "arthur-conan-doyle",
-        "s-pomej"
-      ],
-      "genres": [
-        "mystery",
-        "science-fiction"
-      ],
-      "id": "todliches-survival-game-arthur-conan-doyle",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "andreas-lange-2024": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0CYM771ML",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91Yaxouid6L.jpg",
-          "id": "andreas-lange-2024",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "andreas-lange"
-          ],
-          "publisher": "Ignatius Publishers",
-          "release_date": "2024-10-14",
-          "runtime_min": 63,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0CYM771ML",
-              "type": "libex-import"
-            }
-          ],
-          "work": "todliches-survival-game-arthur-conan-doyle"
         },
-        "peter-bocek-2024": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0DNJNZDGD",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81l07LGdC6L.jpg",
-          "id": "peter-bocek-2024",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "peter-bocek"
-          ],
-          "publisher": "Ignatius Publishers",
-          "release_date": "2024-12-21",
-          "runtime_min": 64,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0DNJNZDGD",
-              "type": "libex-import"
-            }
-          ],
-          "work": "todliches-survival-game-arthur-conan-doyle"
-        }
-      },
-      "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B0CYM771ML",

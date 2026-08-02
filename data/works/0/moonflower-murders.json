@@ -8641,7 +8641,8 @@
     "mord-auf-der-nautilus": {
       "added_at": "2026-08-02",
       "authors": [
-        "s-pomej"
+        "s-pomej",
+        "arthur-conan-doyle"
       ],
       "genres": [
         "mystery",
@@ -8652,6 +8653,90 @@
       "language": "de",
       "license": "CC0-1.0",
       "recordings": {
+        "andreas-lange-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CQ2ZP8D5",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81XRFhbC36L.jpg",
+          "id": "andreas-lange-2024",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andreas-lange"
+          ],
+          "publisher": "Ignatius Publishers",
+          "release_date": "2024-07-22",
+          "runtime_min": 60,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CQ2ZP8D5",
+              "type": "libex-import"
+            }
+          ],
+          "work": "mord-auf-der-nautilus"
+        },
+        "gerry-hungbauer-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0GH77T1R6",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91KtOLmcz7L.jpg",
+          "id": "gerry-hungbauer-2026",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "gerry-hungbauer"
+          ],
+          "publisher": "Stream-Book Silver",
+          "release_date": "2026-01-26",
+          "runtime_min": 67,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GH77T1R6",
+              "type": "libex-import"
+            }
+          ],
+          "work": "mord-auf-der-nautilus"
+        },
+        "peter-bocek-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0DN6S41ZL",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81mopooeHvL.jpg",
+          "id": "peter-bocek-2024",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "peter-bocek"
+          ],
+          "publisher": "Ignatius Publishers",
+          "release_date": "2024-12-06",
+          "runtime_min": 66,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DN6S41ZL",
+              "type": "libex-import"
+            }
+          ],
+          "work": "mord-auf-der-nautilus"
+        },
         "rupert-pichler-2023": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -8686,110 +8771,7 @@
           "imported_at": "2026-08-02",
           "ref": "B0BWNNHLRP",
           "type": "libex-import"
-        }
-      ],
-      "title": "Mord auf der Nautilus"
-    },
-    "mord-auf-der-nautilus-arthur-conan-doyle": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "arthur-conan-doyle",
-        "s-pomej"
-      ],
-      "genres": [
-        "mystery",
-        "science-fiction"
-      ],
-      "id": "mord-auf-der-nautilus-arthur-conan-doyle",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "andreas-lange-2024": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0CQ2ZP8D5",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81XRFhbC36L.jpg",
-          "id": "andreas-lange-2024",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "andreas-lange"
-          ],
-          "publisher": "Ignatius Publishers",
-          "release_date": "2024-07-22",
-          "runtime_min": 60,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0CQ2ZP8D5",
-              "type": "libex-import"
-            }
-          ],
-          "work": "mord-auf-der-nautilus-arthur-conan-doyle"
         },
-        "gerry-hungbauer-2026": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0GH77T1R6",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91KtOLmcz7L.jpg",
-          "id": "gerry-hungbauer-2026",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "gerry-hungbauer"
-          ],
-          "publisher": "Stream-Book Silver",
-          "release_date": "2026-01-26",
-          "runtime_min": 67,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0GH77T1R6",
-              "type": "libex-import"
-            }
-          ],
-          "work": "mord-auf-der-nautilus-arthur-conan-doyle"
-        },
-        "peter-bocek-2024": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0DN6S41ZL",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81mopooeHvL.jpg",
-          "id": "peter-bocek-2024",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "peter-bocek"
-          ],
-          "publisher": "Ignatius Publishers",
-          "release_date": "2024-12-06",
-          "runtime_min": 66,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0DN6S41ZL",
-              "type": "libex-import"
-            }
-          ],
-          "work": "mord-auf-der-nautilus-arthur-conan-doyle"
-        }
-      },
-      "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B0CQ2ZP8D5",
@@ -8801,9 +8783,11 @@
     "mord-im-ewigen-eis": {
       "added_at": "2026-08-02",
       "authors": [
-        "s-pomej"
+        "s-pomej",
+        "arthur-conan-doyle"
       ],
       "genres": [
+        "action-adventure",
         "mystery",
         "science-fiction"
       ],
@@ -8811,6 +8795,62 @@
       "language": "de",
       "license": "CC0-1.0",
       "recordings": {
+        "andreas-lange-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CTCZB42D",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/813KhxB2bXL.jpg",
+          "id": "andreas-lange-2024",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andreas-lange"
+          ],
+          "publisher": "Ignatius Publishers",
+          "release_date": "2024-09-01",
+          "runtime_min": 62,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CTCZB42D",
+              "type": "libex-import"
+            }
+          ],
+          "work": "mord-im-ewigen-eis"
+        },
+        "peter-bocek-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0DN6SKNX1",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/818NPDMOK9L.jpg",
+          "id": "peter-bocek-2024",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "peter-bocek"
+          ],
+          "publisher": "Ignatius Publishers",
+          "release_date": "2024-12-16",
+          "runtime_min": 66,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DN6SKNX1",
+              "type": "libex-import"
+            }
+          ],
+          "work": "mord-im-ewigen-eis"
+        },
         "rupert-pichler-2023": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -8845,83 +8885,7 @@
           "imported_at": "2026-08-02",
           "ref": "B0C33DS491",
           "type": "libex-import"
-        }
-      ],
-      "title": "Mord im ewigen Eis"
-    },
-    "mord-im-ewigen-eis-s-pomej": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "s-pomej",
-        "arthur-conan-doyle"
-      ],
-      "genres": [
-        "action-adventure",
-        "mystery",
-        "science-fiction"
-      ],
-      "id": "mord-im-ewigen-eis-s-pomej",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "andreas-lange-2024": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0CTCZB42D",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/813KhxB2bXL.jpg",
-          "id": "andreas-lange-2024",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "andreas-lange"
-          ],
-          "publisher": "Ignatius Publishers",
-          "release_date": "2024-09-01",
-          "runtime_min": 62,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0CTCZB42D",
-              "type": "libex-import"
-            }
-          ],
-          "work": "mord-im-ewigen-eis-s-pomej"
         },
-        "peter-bocek-2024": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0DN6SKNX1",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/818NPDMOK9L.jpg",
-          "id": "peter-bocek-2024",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "peter-bocek"
-          ],
-          "publisher": "Ignatius Publishers",
-          "release_date": "2024-12-16",
-          "runtime_min": 66,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0DN6SKNX1",
-              "type": "libex-import"
-            }
-          ],
-          "work": "mord-im-ewigen-eis-s-pomej"
-        }
-      },
-      "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B0CTCZB42D",

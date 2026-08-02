@@ -6383,9 +6383,11 @@
     "die-verschwundene-prasidententochter": {
       "added_at": "2026-08-02",
       "authors": [
-        "s-pomej"
+        "s-pomej",
+        "arthur-conan-doyle"
       ],
       "genres": [
+        "mystery",
         "science-fiction"
       ],
       "id": "die-verschwundene-prasidententochter",
@@ -6415,6 +6417,62 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0CTKF8ZLB",
+              "type": "libex-import"
+            }
+          ],
+          "work": "die-verschwundene-prasidententochter"
+        },
+        "gerry-hungbauer-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0GH7HNCYX",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91XjCOBN2vL.jpg",
+          "id": "gerry-hungbauer-2026",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "gerry-hungbauer"
+          ],
+          "publisher": "Stream-Book Silver",
+          "release_date": "2026-03-16",
+          "runtime_min": 66,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GH7HNCYX",
+              "type": "libex-import"
+            }
+          ],
+          "work": "die-verschwundene-prasidententochter"
+        },
+        "peter-bocek-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0DN6MFRV3",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/913cFAf3g2L.jpg",
+          "id": "peter-bocek-2024",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "peter-bocek"
+          ],
+          "publisher": "Ignatius Publishers",
+          "release_date": "2024-12-09",
+          "runtime_min": 66,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DN6MFRV3",
               "type": "libex-import"
             }
           ],
@@ -6454,81 +6512,7 @@
           "imported_at": "2026-08-02",
           "ref": "B0BWNLP52Q",
           "type": "libex-import"
-        }
-      ],
-      "title": "Die verschwundene Präsidententochter"
-    },
-    "die-verschwundene-prasidententochter-arthur-conan-doyle": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "arthur-conan-doyle",
-        "s-pomej"
-      ],
-      "genres": [
-        "mystery"
-      ],
-      "id": "die-verschwundene-prasidententochter-arthur-conan-doyle",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "gerry-hungbauer-2026": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0GH7HNCYX",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91XjCOBN2vL.jpg",
-          "id": "gerry-hungbauer-2026",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "gerry-hungbauer"
-          ],
-          "publisher": "Stream-Book Silver",
-          "release_date": "2026-03-16",
-          "runtime_min": 66,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0GH7HNCYX",
-              "type": "libex-import"
-            }
-          ],
-          "work": "die-verschwundene-prasidententochter-arthur-conan-doyle"
         },
-        "peter-bocek-2024": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0DN6MFRV3",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/913cFAf3g2L.jpg",
-          "id": "peter-bocek-2024",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "peter-bocek"
-          ],
-          "publisher": "Ignatius Publishers",
-          "release_date": "2024-12-09",
-          "runtime_min": 66,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0DN6MFRV3",
-              "type": "libex-import"
-            }
-          ],
-          "work": "die-verschwundene-prasidententochter-arthur-conan-doyle"
-        }
-      },
-      "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B0DN6MFRV3",

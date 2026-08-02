@@ -6093,7 +6093,8 @@
     "jagd-auf-den-einaugigen": {
       "added_at": "2026-08-02",
       "authors": [
-        "s-pomej"
+        "s-pomej",
+        "arthur-conan-doyle"
       ],
       "genres": [
         "mystery",
@@ -6103,6 +6104,62 @@
       "language": "de",
       "license": "CC0-1.0",
       "recordings": {
+        "andreas-lange-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CTKN2CF2",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81PqhGHh0-L.jpg",
+          "id": "andreas-lange-2024",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andreas-lange"
+          ],
+          "publisher": "Ignatius Publishers",
+          "release_date": "2024-09-04",
+          "runtime_min": 65,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CTKN2CF2",
+              "type": "libex-import"
+            }
+          ],
+          "work": "jagd-auf-den-einaugigen"
+        },
+        "peter-bocek-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0DN6RPT73",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81uv1KRfiaL.jpg",
+          "id": "peter-bocek-2024",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "peter-bocek"
+          ],
+          "publisher": "Ignatius Publishers",
+          "release_date": "2024-12-19",
+          "runtime_min": 67,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DN6RPT73",
+              "type": "libex-import"
+            }
+          ],
+          "work": "jagd-auf-den-einaugigen"
+        },
         "rupert-pichler-2023": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -6137,81 +6194,7 @@
           "imported_at": "2026-08-02",
           "ref": "B0C33FC4JQ",
           "type": "libex-import"
-        }
-      ],
-      "title": "Jagd auf den Einäugigen"
-    },
-    "jagd-auf-den-einaugigen-arthur-conan-doyle": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "arthur-conan-doyle",
-        "s-pomej"
-      ],
-      "genres": [
-        "mystery"
-      ],
-      "id": "jagd-auf-den-einaugigen-arthur-conan-doyle",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "andreas-lange-2024": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0CTKN2CF2",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81PqhGHh0-L.jpg",
-          "id": "andreas-lange-2024",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "andreas-lange"
-          ],
-          "publisher": "Ignatius Publishers",
-          "release_date": "2024-09-04",
-          "runtime_min": 65,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0CTKN2CF2",
-              "type": "libex-import"
-            }
-          ],
-          "work": "jagd-auf-den-einaugigen-arthur-conan-doyle"
         },
-        "peter-bocek-2024": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0DN6RPT73",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81uv1KRfiaL.jpg",
-          "id": "peter-bocek-2024",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "peter-bocek"
-          ],
-          "publisher": "Ignatius Publishers",
-          "release_date": "2024-12-19",
-          "runtime_min": 67,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0DN6RPT73",
-              "type": "libex-import"
-            }
-          ],
-          "work": "jagd-auf-den-einaugigen-arthur-conan-doyle"
-        }
-      },
-      "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B0CTKN2CF2",
