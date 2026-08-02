@@ -47,6 +47,10 @@ func collectiveCases() []collectiveCase {
 
 		// Bucket 1 -> Various.
 		{"Various", "Various", "various"},
+		// The abbreviation and its period-less twin. Both are pinned in the
+		// spelling the dump carries them in, capitalized and not.
+		{"Div.", "Various", "various"},
+		{"div", "Various", "various"},
 		{"Various Authors", "Various", "various"},
 		{"Autori Vari", "Various", "various"},
 		{"Diverse", "Various", "various"},
@@ -68,6 +72,7 @@ func collectiveCases() []collectiveCase {
 		{"Anonymous", "Anonymous", "anonymous"},
 		{"Anónimo", "Anonymous", "anonymous"},
 		{"Anonimo", "Anonymous", "anonymous"},
+		{"Anonymus", "Anonymous", "anonymous"},
 		{"Anonyme", "Anonymous", "anonymous"},
 		{"I Anonymous", "Anonymous", "anonymous"},
 
@@ -184,16 +189,21 @@ func TestBrandedEnsemblesAreNotFolded(t *testing.T) {
 		"Anonymous Guest",
 		"Sarah Sprecher",
 		"Various Smith",
+		// Real dump names that merely START with the folded abbreviation. The
+		// match is the whole name, so an abbreviation as short as "div" cannot
+		// reach into one.
+		"Diverne Ingraham",
+		"Diva Dorreen",
+		"Divesh Sareen",
 		// The documented exclusions: forms the dump does not carry (the German
 		// "anonym", 0 credits) or that a maintainer decision left out
-		// ("anonymus", "unbekannt", "desconocido", "Div."). Every entry in the
-		// table is a measured form, so these stay ordinary credits until
-		// somebody measures and decides them.
-		"Div.",
+		// ("unbekannt", "desconocido", "divers"). Every entry in the table is a
+		// measured form, so these stay ordinary credits until somebody measures
+		// and decides them.
 		"Anonym",
-		"Anonymus",
 		"Unbekannt",
 		"Desconocido",
+		"Divers",
 	}
 	for _, name := range intact {
 		t.Run(name, func(t *testing.T) {
