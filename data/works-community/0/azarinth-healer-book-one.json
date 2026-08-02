@@ -1800,6 +1800,289 @@
         ],
         "work": "backup"
       }
+    },
+    "bad-luck-and-trouble": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Franz"
+            ],
+            "description": "A large and powerful man who appears with both legs broken and bound to a stretcher aboard a helicopter. Three men cut him loose and force him through the open door over remote desert country, apparently murdering him.",
+            "id": "calvin-franz",
+            "name": "Calvin Franz",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The pilot who flies the helicopter carrying Calvin Franz and three other men into remote desert country. He holds the aircraft in a high hover while the passengers force Franz through the open door.",
+            "id": "helicopter-pilot",
+            "name": "Helicopter pilot",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Reacher"
+            ],
+            "description": "A former Army military policeman who travels without a fixed address or planned destination. Nearly out of money in Portland, he recognizes an unexpected $1,030 bank deposit as an old urgent-assistance signal and sets out to identify the sender.",
+            "id": "jack-reacher",
+            "name": "Jack Reacher",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Neagley"
+            ],
+            "description": "The sender of the coded $1,030 deposit that summons Jack Reacher. She is a capable former colleague whose difficult and expensive way of reaching him convinces him that her request is urgent, although the nature of the emergency is not yet known.",
+            "id": "frances-neagley",
+            "name": "Frances Neagley",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Angela"
+            ],
+            "description": "Calvin Franz's contact during the opening inquiry into his disappearance. The sheriff's department encourages her to approach Frances Neagley, a step intended to draw Franz's former special-investigations colleagues into examining the case.",
+            "id": "angela-franz",
+            "name": "Angela Franz",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Dixon"
+            ],
+            "description": "A former member of Jack Reacher's special investigations unit with financial expertise. She studies Calvin Franz's seven months of spreadsheets and calculates that their worsening results contain 650 excess failures, matching a separate $65 million clue.",
+            "id": "karla-dixon",
+            "name": "Karla Dixon",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Swan"
+            ],
+            "description": "A former special-investigations member who later worked at New Age Defense Systems. He met Franz, Sanchez, and Orozco shortly before the disappearances, but New Age says it recently dismissed him and destroyed his computer drive under company procedure.",
+            "id": "tony-swan",
+            "name": "Tony Swan",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sanchez"
+            ],
+            "description": "A former special-investigations member and Las Vegas security operator. He joined Franz, Swan, and Orozco at a meeting shortly before the disappearances, and a note from his apartment records 650 units at $100,000 each.",
+            "id": "jorge-sanchez",
+            "name": "Jorge Sanchez",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Orozco"
+            ],
+            "description": "A former special-investigations member and Jorge Sanchez's partner in a Las Vegas security business. He attended the meeting with Sanchez, Franz, and Swan shortly before the disappearances and is consequently part of the inquiry into the unexplained 650-unit transaction.",
+            "id": "manuel-orozco",
+            "name": "Manuel Orozco",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mauney"
+            ],
+            "description": "A Los Angeles County sheriff who supervises Thomas Brant and is conducting an independent investigation into the former unit members' deaths and disappearances. He confirms their recent meeting and supplies Sanchez's note about a $65 million transaction.",
+            "id": "curtis-mauney",
+            "name": "Curtis Mauney",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Brant"
+            ],
+            "description": "A Los Angeles County sheriff's deputy serving under Curtis Mauney. After an earlier fight with Jack Reacher, Brant attempts to retaliate, but Mauney intervenes and stops him while the investigation into the missing former unit members continues.",
+            "id": "thomas-brant",
+            "name": "Thomas Brant",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Berenson"
+            ],
+            "description": "A human-resources representative at New Age Defense Systems. She tells the investigators that Tony Swan was dismissed more than three weeks earlier and that his computer drive was physically destroyed under the company's strict paperless security rules.",
+            "id": "margaret-berenson",
+            "name": "Margaret Berenson",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "O'Donnell"
+            ],
+            "description": "A former special-investigations member working alongside Jack Reacher in the field. When two armed men attack them in Hollywood, O'Donnell helps disarm and incapacitate the assailants, then joins the pursuit of the investigation's Las Vegas connection.",
+            "id": "david-odonnell",
+            "name": "David O'Donnell",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Bond"
+            ],
+            "description": "A staffer for a member of the House Defense Committee who can access restricted information about Little Wing, New Age Defense Systems' classified product. A coded response from Frances Neagley's Pentagon contact identifies her as the investigators' next government contact.",
+            "id": "diana-bond",
+            "name": "Diana Bond",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Adrian Mount",
+              "Alan Mason",
+              "Andrew MacBride",
+              "Anthony Matthews"
+            ],
+            "description": "A traveller using four identities that appear together on an unofficial Homeland Security watch list. Records place one of those identities in New York and another en route to Las Vegas, but his purpose and any connection to the former unit members' deaths remain unknown.",
+            "id": "azhari-mahmoud",
+            "name": "Azhari Mahmoud",
+            "reveal": {
+              "chapter": 5
+            }
+          },
+          {
+            "description": "A former FBI agent who manages security for a Las Vegas casino. He knew Sanchez and Orozco through their work for smaller casinos and directs Jack Reacher's group to Milena, a woman who was close to Sanchez.",
+            "id": "wright",
+            "name": "Wright",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A worker at the Fire Pit bar and Jorge Sanchez's longtime on-and-off partner. She recognizes the former unit members because Sanchez had told her that they would come if he was ever in trouble, making her a direct lead in the search for him.",
+            "id": "milena",
+            "name": "Milena",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Manuel Orozco's wife and the mother of their three children. She explains that Orozco and Sanchez had no active clients, and that their sudden assignment began when a former Army colleague in California appealed to them for help.",
+            "id": "tammy-orozco",
+            "name": "Tammy Orozco",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The name on the wallet carried by a dark-blue-suited gunman who attacks the investigators in Las Vegas. The man uses a shell-company vehicle, and his phone records connect him to an unidentified superior in Los Angeles.",
+            "id": "seropian",
+            "name": "Seropian",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Seropian"
+            ],
+            "description": "A lower-ranking New Age Defense Systems guard named in the company directory. The investigators identify him as the man found dead after the Las Vegas attack, whose wallet carried the name Seropian.",
+            "id": "saropian",
+            "name": "Saropian",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Lamaison"
+            ],
+            "description": "New Age Defense Systems' security chief and a former LAPD robbery-homicide officer. He is the Los Angeles superior linked to the Las Vegas attack and is identified as the organizer who used threats against employees' children to conceal the electronics scheme.",
+            "id": "allen-lamaison",
+            "name": "Allen Lamaison",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Dean"
+            ],
+            "description": "New Age Defense Systems' original development engineer and current quality-control director. Allen Lamaison has apparently forced him, through threats against his daughter, to certify functioning Little Wing electronics packs as rejects.",
+            "id": "edward-dean",
+            "name": "Edward Dean",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former LAPD officer in the upper ranks of New Age security beneath Allen Lamaison. Margaret Berenson identifies him as one of the people aware of the scheme and as a participant in the helicopter operation.",
+            "id": "lennox",
+            "name": "Lennox",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A former LAPD officer in New Age security who serves beneath Allen Lamaison. Margaret Berenson identifies him among the limited group that knows about the scheme and says he took part in the helicopter operation.",
+            "id": "parker",
+            "name": "Parker",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audiosilo-meta:work:bad-luck-and-trouble",
+            "type": "community"
+          }
+        ],
+        "work": "bad-luck-and-trouble"
+      }
     }
   }
 }
