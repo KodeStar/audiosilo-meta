@@ -67,34 +67,124 @@ func RunAudiosiloBooks(exportPath string, opts Options) (Summary, error) {
 	if err != nil {
 		return Summary{}, fmt.Errorf("read %s: %w", exportPath, err)
 	}
-	books, err := parseAudiosiloBooks(raw)
+	books, refused, err := parseAudiosiloBooks(raw)
 	if err != nil {
 		return Summary{}, err
 	}
-	return runBooks(books, sourceAudiosiloBooks, opts)
+	sum, runErr := runBooks(books, sourceAudiosiloBooks, opts)
+	sum.SkippedRows = len(refused)
+	if line, warned := aiRefusalWarning(refused); warned {
+		sum.Warnings = append([]string{line}, sum.Warnings...)
+	}
+	return sum, runErr
 }
 
 // parseAudiosiloBooks decodes the envelope, validating its format/version marker
 // (so a foreign file fails loud instead of misparsing), and converts each curated
-// book projection into a sourceBook.
-func parseAudiosiloBooks(data []byte) ([]sourceBook, error) {
+// book projection into a sourceBook. Entries crediting an AI are refused here
+// and returned separately - see aiRefusal.
+func parseAudiosiloBooks(data []byte) ([]sourceBook, []aiRefusal, error) {
 	dec := json.NewDecoder(bytes.NewReader(data))
 	dec.UseNumber()
 	var env audiosiloBooksEnvelope
 	if err := dec.Decode(&env); err != nil {
-		return nil, fmt.Errorf("parse audiosilo-books export: %w", err)
+		return nil, nil, fmt.Errorf("parse audiosilo-books export: %w", err)
 	}
 	if env.Format != audiosiloBooksFormat {
-		return nil, fmt.Errorf("parse audiosilo-books export: not an %q envelope (format=%q)", audiosiloBooksFormat, env.Format)
+		return nil, nil, fmt.Errorf("parse audiosilo-books export: not an %q envelope (format=%q)", audiosiloBooksFormat, env.Format)
 	}
 	if env.Version != 1 {
-		return nil, fmt.Errorf("parse audiosilo-books export: unsupported version %d (expected 1)", env.Version)
+		return nil, nil, fmt.Errorf("parse audiosilo-books export: unsupported version %d (expected 1)", env.Version)
 	}
 	books := make([]sourceBook, 0, len(env.Books))
+	var refused []aiRefusal
 	for _, e := range env.Books {
-		books = append(books, audiosiloBookToBook(rawBook(e)))
+		entry := rawBook(e)
+		if r, isAI := refuseAICredits(projectionNames(entry["authors"]), projectionNames(entry["narrators"])); isAI {
+			r.book = entry.str("title")
+			refused = append(refused, r)
+			continue
+		}
+		books = append(books, audiosiloBookToBook(entry))
 	}
-	return books, nil
+	return books, refused, nil
+}
+
+// ---------------------------------------------------------------------------
+// AI-credit exclusion, on the audiosilo-books path
+//
+// An AI is not a person wherever the credit comes from, and this envelope is
+// how an Audiobookshelf library reaches the intake bot. It bypassed the
+// vocabulary until now, which is how four virtual-voice works are in the
+// catalogue (a separate data pass removes them).
+//
+// It applies the AI vocabulary ONLY - the four voice shapes and the
+// generative-system tokens (libex.go), through the same firstAICredit both
+// credit lists go into. The other libex-side refusals stay libex-only on
+// purpose: the unidentifiable-name rule is deliberately not applied to a user's
+// own library (see the note above firstUnnamedCredit), and the junk/list/
+// placeholder rules are shapes of a bulk scrape, not of an export the site
+// composed. What an AI credit costs is the same either way: a person record for
+// a text-to-speech engine.
+
+// aiRefusal is one refused entry: the book it came from and why, in the terms
+// the run's warning prints.
+type aiRefusal struct {
+	book string // the entry's title, for the example list
+	role string // "author" or "narrator" - which list the credit came from
+	name string // the credit that earned the refusal
+	why  string // "an AI voice" / "an AI system, not a person"
+}
+
+// refuseAICredits reports whether either credit list names an AI, describing the
+// first one it finds. It is firstAICredit in the shape a per-source parse layer
+// consumes, so a second source closing the same gap has one call to make.
+func refuseAICredits(authors, narrators []string) (aiRefusal, bool) {
+	role, name, why, isAI := firstAICredit(authors, narrators)
+	if !isAI {
+		return aiRefusal{}, false
+	}
+	return aiRefusal{role: role, name: name, why: why}, true
+}
+
+// aiRefusalWarning folds the refusals into ONE aggregated line, in the form
+// every aggregated importer warning takes (withExamples, capped at
+// maxWarnExamples). One line rather than one per book because the vocabulary is
+// settled and the news is "these books credit a synthetic voice", not which
+// spelling each used - and because a library exported from a service that
+// AI-narrates in bulk can carry hundreds.
+func aiRefusalWarning(refused []aiRefusal) (string, bool) {
+	if len(refused) == 0 {
+		return "", false
+	}
+	examples := make([]string, 0, len(refused))
+	for _, r := range refused {
+		examples = append(examples, fmt.Sprintf("%q (%s %q is %s)", r.book, r.role, r.name, r.why))
+	}
+	line := fmt.Sprintf("audiosilo-books: %d books skipped: a credited name is an AI voice or system", len(refused))
+	return withExamples(line, examples), true
+}
+
+// projectionNames is the projection's authors/narrators array as a string slice,
+// in the source's OWN spellings. joinNames is the comma-joined view of the same
+// list, which is the shape addBook's sourceCredits consumes; the credit-side
+// refusal needs the individual names, and reading them from one place is what
+// keeps the two from disagreeing about what the entry credits.
+func projectionNames(v any) []string {
+	arr, ok := v.([]any)
+	if !ok {
+		if s := coerceStr(v); s != "" {
+			return []string{s}
+		}
+		return nil
+	}
+	parts := make([]string, 0, len(arr))
+	for _, el := range arr {
+		if s := coerceStr(el); s != "" {
+			parts = append(parts, s)
+		}
+	}
+	return parts
 }
 
 // audiosiloBookToBook normalizes one curated projection entry into a sourceBook,
@@ -179,15 +269,5 @@ func audiosiloBookToBook(e rawBook) sourceBook {
 // to its string form. The site already split and role-stripped these names, so
 // joining then re-splitting round-trips them.
 func joinNames(v any) string {
-	arr, ok := v.([]any)
-	if !ok {
-		return coerceStr(v)
-	}
-	parts := make([]string, 0, len(arr))
-	for _, el := range arr {
-		if s := coerceStr(el); s != "" {
-			parts = append(parts, s)
-		}
-	}
-	return strings.Join(parts, ", ")
+	return strings.Join(projectionNames(v), ", ")
 }

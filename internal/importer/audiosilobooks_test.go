@@ -1,6 +1,7 @@
 package importer
 
 import (
+	"strings"
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/pkg/check"
@@ -129,11 +130,11 @@ func TestRunAudiosiloBooks(t *testing.T) {
 func TestParseAudiosiloBooksRejectsForeignEnvelope(t *testing.T) {
 	// A bare array (no format marker) is not an audiosilo-books envelope and must
 	// fail loud rather than misparse.
-	if _, err := parseAudiosiloBooks([]byte(`[{"title":"x"}]`)); err == nil {
+	if _, _, err := parseAudiosiloBooks([]byte(`[{"title":"x"}]`)); err == nil {
 		t.Error("expected an error for a non-envelope payload")
 	}
 	// A future version must not be silently accepted.
-	if _, err := parseAudiosiloBooks([]byte(`{"format":"audiosilo-books","version":2,"books":[]}`)); err == nil {
+	if _, _, err := parseAudiosiloBooks([]byte(`{"format":"audiosilo-books","version":2,"books":[]}`)); err == nil {
 		t.Error("expected an error for an unsupported version")
 	}
 }
@@ -147,5 +148,123 @@ func TestMapLanguageAcceptsISOCode(t *testing.T) {
 	}
 	if _, ok := mapLanguage("xx"); ok {
 		t.Error("mapLanguage(xx) must be rejected (not an accepted code)")
+	}
+}
+
+// aiBooksExport is a library whose entries credit an AI in every shape the
+// vocabulary knows, beside one book that must still import.
+const aiBooksExport = `{
+  "format": "audiosilo-books",
+  "version": 1,
+  "books": [
+    {
+      "title": "A Real Book",
+      "authors": ["Solo Author"],
+      "narrators": ["A Narrator"],
+      "asin": "B0ABSAI001",
+      "language": "en"
+    },
+    {
+      "title": "Virtually Narrated",
+      "authors": ["Solo Author"],
+      "narrators": ["Virtual Voice"],
+      "asin": "B0ABSAI002",
+      "language": "en"
+    },
+    {
+      "title": "Persona Narrated",
+      "authors": ["Solo Author"],
+      "narrators": ["AI Voice Nina"],
+      "asin": "B0ABSAI003",
+      "language": "en"
+    },
+    {
+      "title": "Cloned Narration",
+      "authors": ["Solo Author"],
+      "narrators": ["Steve Stewart's Voice Replica"],
+      "asin": "B0ABSAI004",
+      "language": "en"
+    },
+    {
+      "title": "Marked Narration",
+      "authors": ["Solo Author"],
+      "narrators": ["Santiago (Voz de IA)"],
+      "asin": "B0ABSAI005",
+      "language": "en"
+    },
+    {
+      "title": "Written By A Model",
+      "authors": ["ChatGPT ChatGPT"],
+      "narrators": ["A Narrator"],
+      "asin": "B0ABSAI006",
+      "language": "en"
+    }
+  ]
+}`
+
+// TestAudiosiloBooksRefusesAICredits closes the gap that put four virtual-voice
+// works in the catalogue: this envelope is how an Audiobookshelf library
+// reaches the intake bot, and it bypassed the AI vocabulary entirely. All four
+// VOICE shapes and the generative-SYSTEM tokens are refused, on both credit
+// lists, and the one real book still imports.
+func TestAudiosiloBooksRefusesAICredits(t *testing.T) {
+	sum, dataDir := runAudiosiloBooks(t, aiBooksExport, false)
+
+	if sum.NewWorks != 1 || sum.NewRecordings != 1 {
+		t.Errorf("NewWorks/NewRecordings = %d/%d, want 1/1", sum.NewWorks, sum.NewRecordings)
+	}
+	if sum.SkippedRows != 5 {
+		t.Errorf("SkippedRows = %d, want 5", sum.SkippedRows)
+	}
+	// Solo Author + A Narrator, and nobody else: not one AI credit may become a
+	// person record.
+	if sum.NewPeople != 2 {
+		t.Errorf("NewPeople = %d, want 2", sum.NewPeople)
+	}
+	for _, slug := range []string{
+		"virtual-voice", "ai-voice-nina", "steve-stewarts-voice-replica",
+		"santiago", "chatgpt-chatgpt", "chatgpt",
+	} {
+		if entryExists(t, dataDir, personAddr(slug)) {
+			t.Errorf("an AI credit was minted as a person at %q", slug)
+		}
+	}
+	// One aggregated line, in the form every aggregated importer warning takes,
+	// naming the books an operator would go and look at.
+	if len(sum.Warnings) == 0 || !strings.Contains(sum.Warnings[0], "5 books skipped") {
+		t.Fatalf("warnings = %#v, want an aggregated AI-refusal line first", sum.Warnings)
+	}
+	for _, want := range []string{"audiosilo-books:", "an AI voice", "Virtually Narrated"} {
+		if !strings.Contains(sum.Warnings[0], want) {
+			t.Errorf("warning %q does not mention %q", sum.Warnings[0], want)
+		}
+	}
+}
+
+// TestAudiosiloBooksKeepsTheNonAIRefusalsLibexOnly pins the deliberate scope of
+// the change: an audiosilo-books entry is a USER's own library, so a credit that
+// slugs away to nothing keeps today's behaviour (the catch-all conflation, which
+// is visible to the user whose book it is) rather than losing the user their
+// book. Only the AI vocabulary applies here - see the note in audiosilobooks.go.
+func TestAudiosiloBooksKeepsTheNonAIRefusalsLibexOnly(t *testing.T) {
+	const export = `{
+  "format": "audiosilo-books",
+  "version": 1,
+  "books": [
+    {
+      "title": "A Korean Book",
+      "authors": ["\uae40\uc601\ud558"],
+      "narrators": ["A Narrator"],
+      "asin": "B0ABSKO001",
+      "language": "en"
+    }
+  ]
+}`
+	sum, _ := runAudiosiloBooks(t, export, false)
+	if sum.NewWorks != 1 {
+		t.Errorf("NewWorks = %d, want 1: a user's own library is not refused for an unslugabble name", sum.NewWorks)
+	}
+	if sum.SkippedRows != 0 {
+		t.Errorf("SkippedRows = %d, want 0", sum.SkippedRows)
 	}
 }

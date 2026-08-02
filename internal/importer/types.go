@@ -233,7 +233,9 @@ type Summary struct {
 	// rows read are exactly Matched + NotInCatalog + SkippedRows, so a row can
 	// never vanish unexplained - which matters precisely because enrichment
 	// reports its parse warnings in aggregate rather than per row. Set in both
-	// modes; only the libex parser refuses rows of its own today.
+	// modes. Two parse layers refuse rows of their own: libex (every credit-side
+	// rule) and audiosilo-books (the AI vocabulary only - see audiosilobooks.go
+	// for why the scope differs).
 	SkippedRows int
 	// HonorificMerges lists every credit spelling the honorific rule resolved
 	// onto a bare twin this run, as sorted "<credited> -> <bare>" lines
