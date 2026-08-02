@@ -402,8 +402,11 @@ gaps that identity had, both measured over the full 1.13M-book dump
 Credit names are cleaned
 by `CleanCreditName` (a bounded fixpoint over four evidence-driven rules:
 trailing `" - <role>"` qualifiers stripped iteratively against a multilingual
-role list measured from the libex dump, with a separator tolerant of missing
-spaces/repeated hyphens and NFC-normalized case-insensitive role matching;
+role list measured from the libex dump, with a separator whose whitespace is
+OPTIONAL ON BOTH SIDES of the dash - "Gigi Rosa-traduttore" welds the role onto
+the surname, and the closed role vocabulary is what makes that safe where
+`dashSepRE`'s free-text tail is not (28 dump names change, all correct) -
+tolerant of repeated hyphens and NFC-normalized case-insensitive role matching;
 leading `Created by `/`Creato da ` prefix credits dropped; exactly-doubled
 names collapsed to one half, two-plus words per half so "Duran Duran" stays;
 a concatenated studio credit removed, per the tiers above) -
@@ -443,7 +446,13 @@ shortened candidate warns. A work title is **cleaned of a trailing
 (Unabridged)" are the same work - the stripped marker is not lost: it seeds the
 recording's tri-state `abridged` when the source did not state it
 (`abridgedFromMarker`; the title printing the edition is a source statement, so
-this stays facts-only); and a same-work, same-narrator entry whose
+this stays facts-only). `cleanWorkTitle` also sees through a **narrator
+qualifier embedded MID-title** in front of a volume marker ("... - gelesen von
+Andreas Lange, Band 11" -> "..., Band 11", `stripTitleNarratorQualifier`) - the
+same see-through `cleanSeriesName` performs one level up, bounded to the shape
+that forked three works out of one book (13 of the dump's 1,058,981 distinct
+titles, zero false positives) and reading a pinned SUBSET of the series
+narrator vocabulary. And a same-work, same-narrator entry whose
 only new fact is another ASIN **merges that ASIN into the existing recording**,
 with provenance (the merge appends a `sources[]` entry ref'ing the merged ASIN)
 and two guards - runtime (a >10% gap between two known runtimes is a genuinely
@@ -451,11 +460,19 @@ different production and gets its own recording under the same work) and
 abridged (a known-abridged entry never merges into an unabridged/unstated
 recording) - rather than
 minting a sibling work or dropping the ASIN (`Summary.MergedASINs`). Series
-positions accept omnibus ranges (`"1-3.5"`) and `recording.abridged` is optional
+positions accept omnibus ranges (`"1-3.5"`), spelled with or without whitespace
+around the dash (`NormalizeSequence` tolerates it on INPUT and removes it on the
+way to the canonical value, so what is stored still satisfies the schema's
+whitespace-free pattern), and `recording.abridged` is optional
 (emitted only when the source states it) - see the schema notes below. On the
 intake side (`internal/issueform`): the bot **sniffs a self-identifying
 `audiosilo-books` envelope and routes it to that importer regardless of the
-form's export-type dropdown** (the file is trusted over the form), and a
+form's export-type dropdown** (the file is trusted over the form) - and that
+importer's parse layer applies the **AI-credit vocabulary** (the four voice
+shapes + the generative-system tokens, both credit lists, counted as
+`SkippedRows` and reported as one aggregated warning), which it previously
+bypassed; the other libex-side credit refusals stay libex-only, because a
+user's own library is not a bulk scrape. A
 `duplicate` verdict requires `Skipped > 0` - an import that produced nothing AND
 deduped nothing is `needs-human` (the file likely does not match the selected
 export type), surfacing the importer warnings.
