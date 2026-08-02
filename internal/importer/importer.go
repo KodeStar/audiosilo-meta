@@ -401,6 +401,10 @@ func RunLibation(exportPath string, opts Options) (Summary, error) {
 // (see the Mode constants), so there is no combination to police here.
 // Loading, emitting, flushing and post-run validation are shared.
 func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, error) {
+	// Refused before ANYTHING reads the batch - before the censuses, before the
+	// title pre-pass, before planning - so an AI credit cannot reach the person
+	// table, the credit census or a title decision. See refuseAIBooks.
+	books, aiRefused := refuseAIBooks(books)
 	// Opened before anything is planned: a tree still in the file-per-entity
 	// layout is refused here, having written nothing and read nothing it could
 	// misinterpret.
@@ -427,6 +431,12 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 	}
 	if opts.Mode == ModeEnrich || p.userTier {
 		p.asinLoc = map[string]RecRef{}
+	}
+	// Recorded on the summary before planning appends anything, so the AI line
+	// is the run's FIRST warning and every return path below carries it.
+	p.summary.SkippedRows = aiRefused.n
+	if line, warned := aiRefused.warning(); warned {
+		p.summary.Warnings = append(p.summary.Warnings, line)
 	}
 	p.loadExisting()
 	p.authorCensus, p.narratorCensus = p.creditCensusesOf(books)
@@ -466,6 +476,94 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 	return p.summary, nil
 }
 
+// ---------------------------------------------------------------------------
+// The AI-credit gate
+//
+// An AI is not a person: importing one mints a person record for a
+// text-to-speech engine or a language model. libex refuses such a row at its own
+// parse layer (libex.go), where the refusal also has to feed libex-select's
+// exclusion reasons - so for a libex run this gate is a NO-OP, by construction
+// and not by coincidence: firstAICredit has already rejected every row that
+// would trip it.
+//
+// It lives HERE, in the shared core, because the gate is not a property of one
+// source. All three user-library sources are Audible-sourced (pkg/model's trust
+// tiers rank openaudible-import, libation-import and audiosilo-books-import
+// together) and all three can carry a Virtual Voice title; gating only the
+// envelope the site composes let four virtual-voice works into the catalogue.
+//
+// It reads the credit lists through sourceNames - the ONE place the typed-vs-
+// comma-joined choice is made, and the exact list sourceCredits will credit. A
+// per-source gate over the source's own array shape could not see an AI name
+// INSIDE a comma-joined element ("Jane Doe, Virtual Voice" arrives as one
+// element, and a projection may hand narrators over as a plain string), which
+// the pipeline then splits into two people. Gate and credits now read the same
+// names by construction, so they cannot disagree about what a row credits.
+//
+// Only the AI vocabulary crosses over. The unidentifiable-name rule stays
+// libex-only for the reason documented above firstUnnamedCredit (a user's own
+// library keeps the visible catch-all conflation rather than losing them their
+// book), and the junk/list/placeholder rules are shapes of a bulk scrape.
+
+// aiRefusals is what a run refused for crediting an AI: every one is counted,
+// and the first few are formatted for the aggregated warning. Building the
+// example strings is capped at collection time (libex's warningLines does the
+// same), so a library that AI-narrates in bulk costs one int per row.
+type aiRefusals struct {
+	n        int
+	examples []string
+}
+
+// add records one refusal.
+func (r *aiRefusals) add(book, role, name, why string) {
+	r.n++
+	if len(r.examples) >= maxWarnExamples {
+		return
+	}
+	r.examples = append(r.examples, fmt.Sprintf("%q (%s %q is %s)", book, role, name, why))
+}
+
+// warning is the ONE aggregated line the refusals report, in the form every
+// aggregated importer warning takes. One line rather than one per book because
+// the vocabulary is settled: the news is "these books credit a synthetic voice",
+// not which spelling each of them used.
+func (r aiRefusals) warning() (string, bool) {
+	if r.n == 0 {
+		return "", false
+	}
+	return withExamples(
+		fmt.Sprintf("%d books skipped: a credited name is an AI voice or system", r.n),
+		r.examples), true
+}
+
+// refuseAIBooks drops every book whose author or narrator list names an AI and
+// reports what it dropped. The returned slice is the input itself when nothing
+// was refused (the common case, and the only case for libex), so a million-row
+// enrichment pays no copy.
+func refuseAIBooks(books []sourceBook) ([]sourceBook, aiRefusals) {
+	var refused aiRefusals
+	kept := books
+	for i, b := range books {
+		role, name, why, isAI := firstAICredit(
+			sourceNames(b.authors, b.str("author")),
+			sourceNames(b.narrators, b.str("narrated_by")),
+		)
+		if !isAI {
+			if refused.n > 0 {
+				kept = append(kept, b)
+			}
+			continue
+		}
+		if refused.n == 0 {
+			// The first refusal: keep everything before it, with the capacity
+			// capped so the appends above allocate rather than overwrite books[i:].
+			kept = books[:i:i]
+		}
+		refused.add(firstNonEmpty(b.str("title_short"), b.str("title")), role, name, why)
+	}
+	return kept, refused
+}
+
 // planCreate is the default (create) planning pass: every book that the
 // catalogue does not already hold by ASIN becomes work/recording/person/series
 // records, each stamped with the planner's run provenance.
@@ -489,12 +587,20 @@ func (p *planner) planCreate(books []sourceBook) {
 // normalizeEditionMarkers is the batch-boundary title pre-pass every planning
 // mode that reads titles runs first. For every book it: (1) derives the abridged
 // tri-state from the title's edition marker when the source did not state it,
-// then (2) cleans the trailing (Unabridged)/(Abridged) markers off the raw
-// title/title_short. This is the SINGLE marker-derivation mechanism for ALL
-// sources (the ABS path already cleans its titles locally to fix its subtitle
-// split, but never derives abridged), so step 1 must run BEFORE the titles are
-// mutated. Cleaning once here means downstream work-title resolution and
-// full-title re-derivation read undecorated titles without re-cleaning.
+// then (2) runs cleanWorkTitle over the raw title/title_short. This is the
+// SINGLE marker-derivation mechanism for ALL sources (the ABS path already
+// cleans its titles locally to fix its subtitle split, but never derives
+// abridged), so step 1 must run BEFORE the titles are mutated. Cleaning once
+// here means downstream work-title resolution and full-title re-derivation read
+// undecorated titles without re-cleaning.
+//
+// Step 2 is therefore the one place a title CHANGES on its way into identity,
+// and cleanWorkTitle performs both of its rules there: the trailing
+// (Unabridged)/(Abridged) edition marker, and the mid-title narrator qualifier
+// in front of a volume marker ("... - gelesen von Andreas Lange, Band 11" ->
+// "..., Band 11", stripTitleNarratorQualifier). A reader chasing "why did this
+// title change?" lands here, so both rules are named here rather than only at
+// their definitions.
 func normalizeEditionMarkers(books []sourceBook) {
 	for i := range books {
 		if books[i].abridged == nil {

@@ -78,7 +78,11 @@ func RunLibex(exportPath string, opts Options) (Summary, error) {
 		return Summary{}, err
 	}
 	sum, runErr := runBooks(parsed.books, sourceLibex, opts)
-	sum.SkippedRows = parsed.skipped
+	// += rather than =: runBooks has its own parse-layer refusal (the shared
+	// AI-credit gate), which is a no-op for libex because refuseLibexCredits has
+	// already dropped those rows - but the two counts are of the same thing, and
+	// clobbering would be a bug the day that stops being true.
+	sum.SkippedRows += parsed.skipped
 	sum.Warnings = append(parsed.warningLines(opts.Mode.boundedByCatalogue()), sum.Warnings...)
 	return sum, runErr
 }

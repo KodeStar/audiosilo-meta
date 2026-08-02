@@ -150,8 +150,8 @@ func TestDoNotMapJunkIsNeitherStrippedNorARole(t *testing.T) {
 	}
 }
 
-// TestR3VocabularyAdditions pins the qualifier spellings added after the seed's
-// create phase, each measured over the full 1.13M-book libex dump (counts are
+// TestParticipleAndNonRoleQualifierSpellings pins the qualifier spellings added
+// after the seed's create phase, each measured over the full 1.13M-book libex dump (counts are
 // distinct books carrying that exact spelling behind the trailing separator).
 //
 // The two participles state their role - "Ralph Manheim - translated" is a
@@ -159,7 +159,7 @@ func TestDoNotMapJunkIsNeitherStrippedNorARole(t *testing.T) {
 // prologue families strip and state NOTHING: see roleQualifiers for why neither
 // has an honest home in the credit_role enum. Every one of them mints a bogus
 // person record while it is off the strip list, which is the cost this closes.
-func TestR3VocabularyAdditions(t *testing.T) {
+func TestParticipleAndNonRoleQualifierSpellings(t *testing.T) {
 	cases := []struct {
 		name      string
 		in        string
@@ -196,8 +196,8 @@ func TestR3VocabularyAdditions(t *testing.T) {
 			if gotName != c.wantName {
 				t.Errorf("name = %q, want %q", gotName, c.wantName)
 			}
-			if !reflect.DeepEqual(gotRoles, c.wantRoles) {
-				t.Errorf("roles = %#v, want %#v", gotRoles, c.wantRoles)
+			if !slices.Equal(gotRoles, c.wantRoles) {
+				t.Errorf("roles = %v, want %v", gotRoles, c.wantRoles)
 			}
 		})
 	}

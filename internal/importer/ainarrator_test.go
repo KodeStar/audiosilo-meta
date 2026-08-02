@@ -259,3 +259,235 @@ func TestAINarratorVocabularyIsCanonical(t *testing.T) {
 		}
 	}
 }
+
+// ---------------------------------------------------------------------------
+// The shared gate: every source, not just libex
+//
+// libex refuses an AI-credited row at its own parse layer. Every OTHER source
+// goes through runBooks' gate (importer.go refuseAIBooks), which is what the
+// tests below exercise - through the audiosilo-books envelope, the OpenAudible
+// projection and the Libation export, because all three are user-library
+// sources of Audible content and all three can carry a Virtual Voice title.
+
+// aiBooksExport is an audiosilo-books library whose entries credit an AI in
+// every shape the vocabulary knows, beside one book that must still import.
+const aiBooksExport = `{
+  "format": "audiosilo-books",
+  "version": 1,
+  "books": [
+    {
+      "title": "A Real Book",
+      "authors": ["Solo Author"],
+      "narrators": ["A Narrator"],
+      "asin": "B0ABSAI001",
+      "language": "en"
+    },
+    {
+      "title": "Virtually Narrated",
+      "authors": ["Solo Author"],
+      "narrators": ["Virtual Voice"],
+      "asin": "B0ABSAI002",
+      "language": "en"
+    },
+    {
+      "title": "Persona Narrated",
+      "authors": ["Solo Author"],
+      "narrators": ["AI Voice Nina"],
+      "asin": "B0ABSAI003",
+      "language": "en"
+    },
+    {
+      "title": "Cloned Narration",
+      "authors": ["Solo Author"],
+      "narrators": ["Steve Stewart's Voice Replica"],
+      "asin": "B0ABSAI004",
+      "language": "en"
+    },
+    {
+      "title": "Marked Narration",
+      "authors": ["Solo Author"],
+      "narrators": ["Santiago (Voz de IA)"],
+      "asin": "B0ABSAI005",
+      "language": "en"
+    },
+    {
+      "title": "Written By A Model",
+      "authors": ["ChatGPT ChatGPT"],
+      "narrators": ["A Narrator"],
+      "asin": "B0ABSAI006",
+      "language": "en"
+    }
+  ]
+}`
+
+// TestAudiosiloBooksRefusesAICredits closes the gap that put four virtual-voice
+// works in the catalogue: this envelope is how an Audiobookshelf library
+// reaches the intake bot, and it bypassed the AI vocabulary entirely. All four
+// VOICE shapes and the generative-SYSTEM tokens are refused, on both credit
+// lists, and the one real book still imports.
+func TestAudiosiloBooksRefusesAICredits(t *testing.T) {
+	sum, dataDir := runAudiosiloBooks(t, aiBooksExport, false)
+
+	if sum.NewWorks != 1 || sum.NewRecordings != 1 {
+		t.Errorf("NewWorks/NewRecordings = %d/%d, want 1/1", sum.NewWorks, sum.NewRecordings)
+	}
+	if sum.SkippedRows != 5 {
+		t.Errorf("SkippedRows = %d, want 5", sum.SkippedRows)
+	}
+	// Solo Author + A Narrator, and nobody else: not one AI credit may become a
+	// person record.
+	if sum.NewPeople != 2 {
+		t.Errorf("NewPeople = %d, want 2", sum.NewPeople)
+	}
+	for _, slug := range []string{
+		"virtual-voice", "ai-voice-nina", "steve-stewarts-voice-replica",
+		"santiago", "chatgpt-chatgpt", "chatgpt",
+	} {
+		if entryExists(t, dataDir, personAddr(slug)) {
+			t.Errorf("an AI credit was minted as a person at %q", slug)
+		}
+	}
+	// One aggregated line, in the form every aggregated importer warning takes,
+	// naming the books an operator would go and look at.
+	if len(sum.Warnings) == 0 || !strings.Contains(sum.Warnings[0], "5 books skipped") {
+		t.Fatalf("warnings = %#v, want an aggregated AI-refusal line first", sum.Warnings)
+	}
+	for _, want := range []string{"an AI voice", "Virtually Narrated"} {
+		if !strings.Contains(sum.Warnings[0], want) {
+			t.Errorf("warning %q does not mention %q", sum.Warnings[0], want)
+		}
+	}
+}
+
+// TestAICreditHidesInsideACommaJoinedCredit is the bypass a per-source gate over
+// the source's own array shape could not see: the AI name is not an element of
+// the credit array, it is INSIDE one. sourceNames splits that element on commas
+// exactly as the credit pipeline does, so the gate judges the same names the
+// import would credit - without which "Virtual Voice" becomes a person beside
+// the real narrator.
+//
+// Both shapes a projection can hand credits over in are covered: an element
+// holding two names, and the plain comma-joined string a non-array value falls
+// back to.
+func TestAICreditHidesInsideACommaJoinedCredit(t *testing.T) {
+	const export = `{
+  "format": "audiosilo-books",
+  "version": 1,
+  "books": [
+    {
+      "title": "Joined Element",
+      "authors": ["Solo Author"],
+      "narrators": ["Jane Doe, Virtual Voice"],
+      "asin": "B0ABSJN001",
+      "language": "en"
+    },
+    {
+      "title": "Joined String",
+      "authors": ["Solo Author"],
+      "narrators": "Jane Doe, AI Voice Nina",
+      "asin": "B0ABSJN002",
+      "language": "en"
+    }
+  ]
+}`
+	sum, dataDir := runAudiosiloBooks(t, export, false)
+
+	if sum.NewWorks != 0 || sum.SkippedRows != 2 {
+		t.Errorf("NewWorks/SkippedRows = %d/%d, want 0/2", sum.NewWorks, sum.SkippedRows)
+	}
+	for _, slug := range []string{"virtual-voice", "ai-voice-nina", "jane-doe"} {
+		if entryExists(t, dataDir, personAddr(slug)) {
+			t.Errorf("a credit from a refused row was minted as a person at %q", slug)
+		}
+	}
+}
+
+// TestOpenAudibleAndLibationRefuseAICredits is the BREADTH half. All three
+// user-library sources are ranked in one trust tier (pkg/model/trust.go) and all
+// three read Audible content, so gating one of them was arbitrary. Each source's
+// own field shape reaches the same gate, because they all go through
+// sourceNames.
+func TestOpenAudibleAndLibationRefuseAICredits(t *testing.T) {
+	t.Run("openaudible", func(t *testing.T) {
+		books := `[
+			{"asin":"B0OAAI0001","title_short":"Real One","author":"Mara Quill","narrated_by":"Priya Lund","language":"english","region":"US","seconds":1000},
+			{"asin":"B0OAAI0002","title_short":"Synthetic One","author":"Mara Quill","narrated_by":"Virtual Voice","language":"english","region":"US","seconds":1000},
+			{"asin":"B0OAAI0003","title_short":"Joined One","author":"Mara Quill","narrated_by":"Priya Lund, AI Voice Nina","language":"english","region":"US","seconds":1000}
+		]`
+		sum, dataDir := runImport(t, books, false)
+		if sum.NewWorks != 1 || sum.SkippedRows != 2 {
+			t.Errorf("NewWorks/SkippedRows = %d/%d, want 1/2", sum.NewWorks, sum.SkippedRows)
+		}
+		for _, slug := range []string{"virtual-voice", "ai-voice-nina"} {
+			if entryExists(t, dataDir, personAddr(slug)) {
+				t.Errorf("an AI credit was minted as a person at %q", slug)
+			}
+		}
+	})
+
+	t.Run("libation", func(t *testing.T) {
+		export := `[
+			{"AudibleProductId":"B0LBAI0001","Locale":"us","Title":"Real One","AuthorNames":"Mara Quill","NarratorNames":"Priya Lund","LengthInMinutes":100,"Language":"English"},
+			{"AudibleProductId":"B0LBAI0002","Locale":"us","Title":"Synthetic One","AuthorNames":"Mara Quill","NarratorNames":"Virtual Voice","LengthInMinutes":100,"Language":"English"}
+		]`
+		sum, dataDir := runLibation(t, export, false)
+		if sum.NewWorks != 1 || sum.SkippedRows != 1 {
+			t.Errorf("NewWorks/SkippedRows = %d/%d, want 1/1", sum.NewWorks, sum.SkippedRows)
+		}
+		if entryExists(t, dataDir, personAddr("virtual-voice")) {
+			t.Error("an AI credit was minted as a person at \"virtual-voice\"")
+		}
+	})
+}
+
+// TestAudiosiloBooksKeepsTheNonAIRefusalsLibexOnly pins the deliberate scope of
+// the gate: an audiosilo-books entry is a USER's own library, so a credit that
+// slugs away to nothing keeps today's behaviour (the catch-all conflation, which
+// is visible to the user whose book it is) rather than losing them their book.
+// Only the AI vocabulary crosses over - see the note above refuseAIBooks.
+func TestAudiosiloBooksKeepsTheNonAIRefusalsLibexOnly(t *testing.T) {
+	const export = `{
+  "format": "audiosilo-books",
+  "version": 1,
+  "books": [
+    {
+      "title": "A Korean Book",
+      "authors": ["\uae40\uc601\ud558"],
+      "narrators": ["A Narrator"],
+      "asin": "B0ABSKO001",
+      "language": "en"
+    }
+  ]
+}`
+	sum, _ := runAudiosiloBooks(t, export, false)
+	if sum.NewWorks != 1 {
+		t.Errorf("NewWorks = %d, want 1: a user's own library is not refused for an unslugabble name", sum.NewWorks)
+	}
+	if sum.SkippedRows != 0 {
+		t.Errorf("SkippedRows = %d, want 0", sum.SkippedRows)
+	}
+}
+
+// TestAIRefusalExamplesAreCappedAtCollection pins the collection-time cap: a
+// library that AI-narrates in bulk must not build a formatted example string per
+// book. The count is exact; the examples stop at maxWarnExamples.
+func TestAIRefusalExamplesAreCappedAtCollection(t *testing.T) {
+	var refused aiRefusals
+	for i := 0; i < maxWarnExamples*3; i++ {
+		refused.add("Book", "narrator", "Virtual Voice", "an AI voice")
+	}
+	if refused.n != maxWarnExamples*3 {
+		t.Errorf("n = %d, want %d", refused.n, maxWarnExamples*3)
+	}
+	if len(refused.examples) != maxWarnExamples {
+		t.Errorf("examples = %d, want %d (capped at collection)", len(refused.examples), maxWarnExamples)
+	}
+	line, warned := refused.warning()
+	if !warned || !strings.Contains(line, "15 books skipped") {
+		t.Errorf("warning = %q, %v", line, warned)
+	}
+	var none aiRefusals
+	if _, warned := none.warning(); warned {
+		t.Error("an empty refusal set produced a warning")
+	}
+}

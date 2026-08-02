@@ -29,7 +29,7 @@ import { mapGenreClaims } from './audible-genres'
 // formatAsinLine only: github-prefill's own reference back to this module is
 // type-only (erased at build time), so there is no runtime import cycle.
 import { formatAsinLine } from './github-prefill'
-import { mapLanguageLoose, mapRegion } from './import-parse'
+import { mapLanguageLoose, mapRegion, normalizeSequence } from './import-parse'
 import { LIBEX_HOST } from './libex'
 import type { LibexBook } from './libex'
 
@@ -129,10 +129,6 @@ export function releaseDatePart(raw?: string): string | undefined {
   return /^\d{4}-\d{2}-\d{2}$/.test(date) ? date : undefined
 }
 
-/** The intake form's series-position grammar: a number, a half-number, or an
-    omnibus range ("1", "2.5", "1-3.5"). Mirrors the schema's position rule. */
-const SERIES_POSITION_RE = /^\d+(\.\d+)?(-\d+(\.\d+)?)?$/
-
 /**
  * The Sources text for a libex-seeded issue.
  *
@@ -184,10 +180,13 @@ export function libexToPrefill(book: LibexBook, retrieved: string = today()): Li
   // A position outside the intake grammar would be rejected there, so it is
   // omitted from the field and stated in the provenance text instead - the fact
   // reaches a human rather than quietly un-serieing the work.
+  // normalizeSequence is the shared mirror of the Go importer's rule: it accepts
+  // what a source may spell (including an omnibus range written "1 - 3") and
+  // returns the canonical form the intake form requires.
   let seriesPosition: string | undefined
   if (first?.position) {
-    if (SERIES_POSITION_RE.test(first.position)) seriesPosition = first.position
-    else notes.push(`Series position as listed: "${first.position}"`)
+    seriesPosition = normalizeSequence(first.position)
+    if (!seriesPosition) notes.push(`Series position as listed: "${first.position}"`)
   }
 
   const region = mapLibexRegion(book.region)

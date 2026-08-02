@@ -138,10 +138,6 @@ func mapRegion(word string) (region string, ok bool) {
 // the schema pattern names: the tolerance is whitespace, nothing else.
 var sequencePattern = regexp.MustCompile(`^\d+(\.\d+)?(\s*-\s*\d+(\.\d+)?)?$`)
 
-// sequenceSpaceRE is the whitespace a spelled range carries around its dash,
-// removed on the way to the canonical form.
-var sequenceSpaceRE = regexp.MustCompile(`\s*-\s*`)
-
 // NormalizeSequence trims a raw series_sequence, canonicalizes it, and reports
 // whether it is a valid position (a single number or a range like "1-3.5").
 //
@@ -158,7 +154,14 @@ func NormalizeSequence(raw string) (pos string, ok bool) {
 	if pos == "" || !sequencePattern.MatchString(pos) {
 		return "", false
 	}
-	pos = sequenceSpaceRE.ReplaceAllString(pos, "-")
+	// Removing ALL whitespace is equivalent to removing it around the dash: the
+	// value has been trimmed and has matched sequencePattern, whose only
+	// whitespace is the `\s*` on either side of that dash. A regexp replace here
+	// cost ~130ns and an allocation on every position; the guard keeps the
+	// overwhelmingly common tight spelling free.
+	if strings.ContainsAny(pos, " \t\n\v\f\r") {
+		pos = strings.Join(strings.Fields(pos), "")
+	}
 	if !strings.Contains(pos, ".") {
 		return pos, true
 	}
@@ -713,6 +716,15 @@ var prefixCredits = []string{"created by ", "creato da "}
 // dump spells their separator with a NON-BREAKING space ("Daniel Hayes -
 // editor"), which `\s` does not match and `\s*` therefore steps over, leaving
 // strings.TrimSpace (which does know U+00A0) to take it off the name.
+//
+// Like the studio-tail rule, this one reaches populations the dump never
+// measured, through the two PUBLIC doors: SplitNames (pkg/scan, over whatever an
+// ID3 tag holds) and CleanCreditName (internal/issueform, over a name a
+// contributor typed). It is bounded there by its own SHAPE rather than by the
+// measurement - the tail must be a WHOLE listed role, matched in full against a
+// closed vocabulary, and a strip that would leave an empty name is refused - so
+// the worst an unmeasured population can do is fail to strip. Nothing here can
+// invent a name; it can only decline to shorten one.
 var roleSuffixRE = regexp.MustCompile(`\s*(?:-{1,2}|[–—]{1,2})\s*([^-–—]+)$`)
 
 // minDoubledHalfWords is the smallest half a doubled-name collapse will accept.

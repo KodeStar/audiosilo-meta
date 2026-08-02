@@ -467,12 +467,7 @@ whitespace-free pattern), and `recording.abridged` is optional
 (emitted only when the source states it) - see the schema notes below. On the
 intake side (`internal/issueform`): the bot **sniffs a self-identifying
 `audiosilo-books` envelope and routes it to that importer regardless of the
-form's export-type dropdown** (the file is trusted over the form) - and that
-importer's parse layer applies the **AI-credit vocabulary** (the four voice
-shapes + the generative-system tokens, both credit lists, counted as
-`SkippedRows` and reported as one aggregated warning), which it previously
-bypassed; the other libex-side credit refusals stay libex-only, because a
-user's own library is not a bulk scrape. A
+form's export-type dropdown** (the file is trusted over the form). A
 `duplicate` verdict requires `Skipped > 0` - an import that produced nothing AND
 deduped nothing is `needs-human` (the file likely does not match the selected
 export type), surfacing the importer warnings.
@@ -608,7 +603,17 @@ note rather than a closed duplicate.
   libex's own `is_vvab` flag cannot do this job: 145,558 dump books credit an AI
   voice and the flag is `false` on 145,550 of them, so
   `scripts/libex-export-rows.sql` filters on the credit too and the two lists
-  are kept in step by cross-referenced comments); its sibling the
+  are kept in step by cross-referenced comments. The VOCABULARY is applied twice
+  over, at two layers with different jobs: libex's own parse layer, which also
+  has to feed `libex-select`'s exclusion reasons, and `runBooks`' shared gate
+  (`refuseAIBooks`, importer.go) which covers EVERY other source - all three
+  user-library importers read Audible content and all three can carry a Virtual
+  Voice title, so gating only one of them was arbitrary. The shared gate reads
+  its names through `sourceNames`, the one place the typed-vs-comma-joined
+  choice is made, so it judges the exact list `sourceCredits` will credit and an
+  AI name INSIDE a comma-joined element cannot slip past it. Refusals are
+  counted as `Summary.SkippedRows` and reported as one aggregated warning; for a
+  libex run the shared gate is a no-op by construction); its sibling the
   **unidentifiable-credit exclusion** (a row whose author or narrator list holds
   a name that slugs away to nothing - Korean, Cyrillic, CJK, Greek, Arabic - is
   refused whole at the same parse layer, `firstUnnamedCredit` in `libex.go`,
