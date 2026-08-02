@@ -178,6 +178,13 @@ approximately the right file - or the wrong one - and formatting fixes it.
 This is the contributor-ergonomics answer: nobody has to compute placement by
 hand, ever.
 
+A plain writer (an importer, the intake bot) does NOT heal: it refuses. A pack
+holding an entry that belongs in a later pack has a range that no longer
+describes what it holds, and splitting it would mint a bound that later pack
+already carries - so `Store.Flush` names the entry and stops, before it has
+written anything at all. Healing is `metafmt --write`'s job, and its resolution
+rules (the correctly-placed copy wins) are the ones that must decide.
+
 ## added_at becomes an explicit field
 
 Pack files break the `git log --diff-filter=A` derivation (a pack's add-date is
