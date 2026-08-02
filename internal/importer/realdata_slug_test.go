@@ -116,6 +116,53 @@ func str(entry map[string]any, field string) string {
 	return s
 }
 
+// strList reads a string array field off a decoded entry.
+func strList(entry map[string]any, field string) []string {
+	raw, _ := entry[field].([]any)
+	out := make([]string, 0, len(raw))
+	for _, v := range raw {
+		if s, ok := v.(string); ok {
+			out = append(out, s)
+		}
+	}
+	return out
+}
+
+// entryWorkAuthors is the row a work record describes, reconstructed from the
+// record itself: its authors[] in stored order as the full credit list, and the
+// role-credited people of its credits[] excluded from the identity list -
+// diskIdentityAuthors' rule, kept ORDERED because the chain's suffix is built
+// from identity[0] and a set has no first element.
+//
+// Reconstructing the whole list rather than taking authors[0] is what makes the
+// recomputation a model of the importer instead of a weaker caricature of it.
+// The importer walks the chain with the row's WHOLE credit list: the mintable
+// suffix comes from the first IDENTITY author, and every other author of both
+// lists is probed (workCandidates). A one-author model composes neither. It
+// agreed with the real chain only for as long as every in-scope record's suffix
+// happened to be its authors[0], which the credited-contributor exclusion breaks
+// by design: "Kiki's Delivery Service" lists its translator first, so the work
+// sits at kikis-delivery-service-eiko-kadono - candidate 1 of the real chain,
+// and nowhere on a chain rooted at emily-balistrieri.
+//
+// A work with no authors at all keeps the empty-string root the one-author model
+// used, so such a record is judged exactly as before rather than panicking on
+// identity[0].
+func entryWorkAuthors(entry map[string]any) workAuthors {
+	all := strList(entry, "authors")
+	if len(all) == 0 {
+		all = []string{""}
+	}
+	roleCredited := map[string]bool{}
+	credits, _ := entry["credits"].([]any)
+	for _, c := range credits {
+		if m, ok := c.(map[string]any); ok {
+			roleCredited[str(m, "person")] = true
+		}
+	}
+	return workAuthors{all: all, identity: identityAuthors(all, roleCredited)}
+}
+
 // dataSeriesClaims maps every committed work to the series claim a row about
 // that book states: the series it belongs to and the position it sits at.
 //
@@ -176,11 +223,16 @@ func TestDataPeopleSlugsAreTransliterated(t *testing.T) {
 // those the id must sit on the candidate chain the importer walks TODAY, or the
 // next wave mints a duplicate beside it.
 //
-// Part of that chain is CLAIM-dependent - a serial volume whose title cannot
-// tell it from its siblings sits on a "book-<position>" slug, reachable only by
-// a row stating the position - so the recomputation reads each work's claim out
-// of the series family (dataSeriesClaims) rather than pretending a claim-less
-// row is the only kind there is.
+// The recomputation models the importing ROW from the record itself, and both
+// halves of that matter. Part of the chain is CLAIM-dependent - a serial volume
+// whose title cannot tell it from its siblings sits on a "book-<position>" slug,
+// reachable only by a row stating the position - so each work's claim is read
+// out of the series family (dataSeriesClaims) rather than pretending a
+// claim-less row is the only kind there is. The rest is CREDIT-dependent: the
+// suffix is built from the first IDENTITY author and every other credited person
+// is probed, so the row is reconstructed with its whole author list and its role
+// credits (entryWorkAuthors) rather than with authors[0] standing in for all of
+// them.
 //
 // It deliberately does not demand that of every record: a work slug is composed,
 // so a record can be legitimately off-chain (the catalogue holds one whose title
@@ -194,12 +246,8 @@ func TestDataWorkAndSeriesSlugsAreCurrent(t *testing.T) {
 		if !movedByTransliteration(title) && !movedByApostrophe(title) {
 			return
 		}
-		author := ""
-		if as, ok := e["authors"].([]any); ok && len(as) > 0 {
-			author, _ = as[0].(string)
-		}
 		cands, _ := workCandidates(Slugify(cleanWorkTitle(title)),
-			workAuthors{all: []string{author}, identity: []string{author}}, claims[key])
+			entryWorkAuthors(e), claims[key])
 		for _, cand := range cands {
 			if cand.slug == key {
 				return

@@ -2168,6 +2168,10 @@
             {
               "asin": "1250223334",
               "region": "us"
+            },
+            {
+              "asin": "147118059X",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91HOPHk9d7L.jpg",
@@ -2184,6 +2188,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "1250223334",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "147118059X",
               "type": "libex-import"
             }
           ],
@@ -2506,6 +2515,58 @@
         }
       ],
       "title": "A Change of Heart"
+    },
+    "a-change-of-place": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "julie-e-czerneda"
+      ],
+      "genres": [
+        "epic-fantasy",
+        "fairy-tales-folklore",
+        "fantasy"
+      ],
+      "id": "a-change-of-place",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "jen-jayden-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0DY8H7S58",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/817oJgcp+xL.jpg",
+          "id": "jen-jayden-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jen-jayden"
+          ],
+          "publisher": "Tantor Media",
+          "release_date": "2025-03-11",
+          "runtime_min": 1155,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DY8H7S58",
+              "type": "libex-import"
+            }
+          ],
+          "work": "a-change-of-place"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0DY8H7S58",
+          "type": "libex-import"
+        }
+      ],
+      "title": "A Change of Place"
     },
     "a-change-of-plans": {
       "added_at": "2026-08-02",
@@ -4540,6 +4601,65 @@
       ],
       "title": "A chave do tamanho"
     },
+    "a-check-for-a-billion": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "vasily-mahanenko",
+        "boris-smirnov"
+      ],
+      "credits": [
+        {
+          "person": "boris-smirnov",
+          "role": "translator"
+        }
+      ],
+      "genres": [
+        "cyberpunk",
+        "science-fiction",
+        "space-opera"
+      ],
+      "id": "a-check-for-a-billion",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "matt-godfrey-2020": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "1515948404",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/813cfmyVbKL.jpg",
+          "id": "matt-godfrey-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "matt-godfrey"
+          ],
+          "publisher": "Tantor Audio",
+          "release_date": "2020-01-07",
+          "runtime_min": 818,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1515948404",
+              "type": "libex-import"
+            }
+          ],
+          "work": "a-check-for-a-billion"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1515948404",
+          "type": "libex-import"
+        }
+      ],
+      "title": "A Check for a Billion"
+    },
     "a-cheerful-temper": {
       "added_at": "2026-08-02",
       "authors": [
@@ -4644,6 +4764,56 @@
         }
       ],
       "title": "A Child Across the Sky"
+    },
+    "a-childrens-guide-to-folklore-and-wonder-tales": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "the-great-courses",
+        "hannah-b-harvey"
+      ],
+      "genres": [
+        "classics"
+      ],
+      "id": "a-childrens-guide-to-folklore-and-wonder-tales",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "hannah-b-harvey-2017": {
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B073PH2KP4",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81L3iPeEVvL.jpg",
+          "id": "hannah-b-harvey-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "hannah-b-harvey"
+          ],
+          "publisher": "The Great Courses",
+          "release_date": "2017-07-21",
+          "runtime_min": 747,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B073PH2KP4",
+              "type": "libex-import"
+            }
+          ],
+          "work": "a-childrens-guide-to-folklore-and-wonder-tales"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B073PH2KP4",
+          "type": "libex-import"
+        }
+      ],
+      "title": "A Children's Guide to Folklore and Wonder Tales"
     },
     "a-childs-days": {
       "added_at": "2026-08-01",
@@ -5103,6 +5273,34 @@
             {
               "imported_at": "2026-08-02",
               "ref": "125075528X",
+              "type": "libex-import"
+            }
+          ],
+          "work": "a-chorus-of-fire"
+        },
+        "gildart-jackson-2020": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "170524212X",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/919QZpDt7eL.jpg",
+          "id": "gildart-jackson-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "gildart-jackson"
+          ],
+          "publisher": "Tantor Audio",
+          "release_date": "2020-11-24",
+          "runtime_min": 894,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "170524212X",
               "type": "libex-import"
             }
           ],
@@ -7179,6 +7377,59 @@
       ],
       "title": "A Christmas Carol"
     },
+    "a-christmas-carroll": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "leanna-renee-hieber"
+      ],
+      "genres": [
+        "historical-fiction",
+        "historical-romance",
+        "paranormal",
+        "romance"
+      ],
+      "id": "a-christmas-carroll",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "leanna-renee-hieber-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0C7LT86Q4",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81zzQ4+IMzL.jpg",
+          "id": "leanna-renee-hieber-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "leanna-renee-hieber"
+          ],
+          "publisher": "Bryant Street Publishing",
+          "release_date": "2023-06-12",
+          "runtime_min": 184,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0C7LT86Q4",
+              "type": "libex-import"
+            }
+          ],
+          "work": "a-christmas-carroll"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0C7LT86Q4",
+          "type": "libex-import"
+        }
+      ],
+      "title": "A Christmas Carroll"
+    },
     "a-christmas-secret": {
       "added_at": "2026-08-02",
       "authors": [
@@ -7600,6 +7851,59 @@
       ],
       "title": "A City of Blood and Faith"
     },
+    "a-city-of-emeralds-and-envy": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "rebecca-f-kenney"
+      ],
+      "genres": [
+        "fairy-tales-folklore",
+        "fantasy",
+        "romance"
+      ],
+      "id": "a-city-of-emeralds-and-envy",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "alyssa-avery-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0DT27NRKC",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91qMpSXH-lL.jpg",
+          "id": "alyssa-avery-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alyssa-avery",
+            "liam-price"
+          ],
+          "publisher": "Tantor Media",
+          "release_date": "2025-01-28",
+          "runtime_min": 733,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DT27NRKC",
+              "type": "libex-import"
+            }
+          ],
+          "work": "a-city-of-emeralds-and-envy"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0DT27NRKC",
+          "type": "libex-import"
+        }
+      ],
+      "title": "A City of Emeralds and Envy"
+    },
     "a-city-of-flames": {
       "added_at": "2026-08-02",
       "authors": [
@@ -7705,6 +8009,57 @@
         }
       ],
       "title": "A City of Flames - Glühende Rache"
+    },
+    "a-city-of-swords-and-fangs": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "br-kingsolver"
+      ],
+      "genres": [
+        "fantasy",
+        "urban-fantasy"
+      ],
+      "id": "a-city-of-swords-and-fangs",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "arielle-delisle-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0FMYTJ2PY",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91RvYMYdswL.jpg",
+          "id": "arielle-delisle-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "arielle-delisle"
+          ],
+          "publisher": "Tantor Media",
+          "release_date": "2025-09-16",
+          "runtime_min": 418,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FMYTJ2PY",
+              "type": "libex-import"
+            }
+          ],
+          "work": "a-city-of-swords-and-fangs"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0FMYTJ2PY",
+          "type": "libex-import"
+        }
+      ],
+      "title": "A City of Swords and Fangs"
     },
     "a-city-of-whispers": {
       "added_at": "2026-08-01",
@@ -8136,6 +8491,111 @@
         }
       ],
       "title": "A Clap of Thunder"
+    },
+    "a-clash-of-aliens": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "t-r-harris"
+      ],
+      "genres": [
+        "military-science-fiction",
+        "science-fiction",
+        "space-opera"
+      ],
+      "id": "a-clash-of-aliens",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "perry-daniels-2022": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B09VJY6MQ5",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81m3JNVNPgL.jpg",
+          "id": "perry-daniels-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "perry-daniels"
+          ],
+          "publisher": "Tantor Media",
+          "release_date": "2022-03-22",
+          "runtime_min": 459,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09VJY6MQ5",
+              "type": "libex-import"
+            }
+          ],
+          "work": "a-clash-of-aliens"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B09VJY6MQ5",
+          "type": "libex-import"
+        }
+      ],
+      "title": "A Clash of Aliens"
+    },
+    "a-clash-of-carnivores": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "liselle-sambury"
+      ],
+      "genres": [
+        "dark-fantasy",
+        "fantasy",
+        "young-adult"
+      ],
+      "id": "a-clash-of-carnivores",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "angel-pean-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0GYMRMBJR",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81rbFl5wG3L.jpg",
+          "id": "angel-pean-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "angel-pean",
+            "sandra-okuboyejo"
+          ],
+          "publisher": "Simon & Schuster Audio",
+          "release_date": "2026-08-04",
+          "runtime_min": 1050,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GYMRMBJR",
+              "type": "libex-import"
+            }
+          ],
+          "work": "a-clash-of-carnivores"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0GYMRMBJR",
+          "type": "libex-import"
+        }
+      ],
+      "title": "A Clash of Carnivores"
     },
     "a-clash-of-empires": {
       "added_at": "2026-08-01",
@@ -8832,6 +9292,58 @@
       ],
       "title": "A Clash of Steel: A Treasure Island Remix"
     },
+    "a-clash-of-three-courts": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "chloe-c-penaranda"
+      ],
+      "genres": [
+        "epic-fantasy",
+        "fantasy",
+        "romance"
+      ],
+      "id": "a-clash-of-three-courts",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "elisabeth-lagelee-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0BTJXHYFX",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/813OCf23CqL.jpg",
+          "id": "elisabeth-lagelee-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "elisabeth-lagelee"
+          ],
+          "publisher": "Tantor Audio",
+          "release_date": "2023-02-14",
+          "runtime_min": 1198,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0BTJXHYFX",
+              "type": "libex-import"
+            }
+          ],
+          "work": "a-clash-of-three-courts"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0BTJXHYFX",
+          "type": "libex-import"
+        }
+      ],
+      "title": "A Clash of Three Courts"
+    },
     "a-clasp-for-heirs": {
       "added_at": "2026-08-02",
       "authors": [
@@ -8936,6 +9448,61 @@
         }
       ],
       "title": "A Clatter of Jars"
+    },
+    "a-clean-sweep": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "sara-bourgeois"
+      ],
+      "genres": [
+        "cozy-mystery",
+        "fantasy",
+        "horror",
+        "mystery",
+        "paranormal",
+        "urban-fantasy"
+      ],
+      "id": "a-clean-sweep",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "rebecca-mitchell-2019": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "151594185X",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81QgUB77TdL.jpg",
+          "id": "rebecca-mitchell-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "rebecca-mitchell"
+          ],
+          "publisher": "Tantor Media",
+          "release_date": "2019-11-19",
+          "runtime_min": 209,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "151594185X",
+              "type": "libex-import"
+            }
+          ],
+          "work": "a-clean-sweep"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "151594185X",
+          "type": "libex-import"
+        }
+      ],
+      "title": "A Clean Sweep"
     },
     "a-clever-christmas-bride-for-the-burdened-shop-owner": {
       "added_at": "2026-08-01",
@@ -9188,6 +9755,10 @@
             {
               "asin": "0062969560",
               "region": "us"
+            },
+            {
+              "asin": "B01MZ9QRBW",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91Z2x4onbwL.jpg",
@@ -9204,6 +9775,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "0062969560",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B01MZ9QRBW",
               "type": "libex-import"
             }
           ],
@@ -9996,6 +10572,59 @@
       ],
       "title": "A Cold Reckoning"
     },
+    "a-cold-war": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "michael-anderle",
+        "renee-jagger"
+      ],
+      "genres": [
+        "fantasy",
+        "paranormal",
+        "urban-fantasy"
+      ],
+      "id": "a-cold-war",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "emily-beresford-2022": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0B7881ZG4",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91DXTXipleL.jpg",
+          "id": "emily-beresford-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "emily-beresford"
+          ],
+          "publisher": "Tantor Audio",
+          "release_date": "2022-07-26",
+          "runtime_min": 460,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0B7881ZG4",
+              "type": "libex-import"
+            }
+          ],
+          "work": "a-cold-war"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0B7881ZG4",
+          "type": "libex-import"
+        }
+      ],
+      "title": "A Cold War"
+    },
     "a-cold-wind-blows": {
       "added_at": "2026-08-02",
       "authors": [
@@ -10693,6 +11322,59 @@
         }
       ],
       "title": "A colpi di Cannonau"
+    },
+    "a-companion-to-wolves": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "elizabeth-bear",
+        "sarah-monette"
+      ],
+      "genres": [
+        "epic-fantasy",
+        "erotica",
+        "fantasy"
+      ],
+      "id": "a-companion-to-wolves",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "chris-chambers-2017": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0773WLZNM",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51guV87PzNL.jpg",
+          "id": "chris-chambers-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "chris-chambers"
+          ],
+          "publisher": "Tantor Audio",
+          "release_date": "2017-11-14",
+          "runtime_min": 692,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0773WLZNM",
+              "type": "libex-import"
+            }
+          ],
+          "work": "a-companion-to-wolves"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0773WLZNM",
+          "type": "libex-import"
+        }
+      ],
+      "title": "A Companion to Wolves"
     },
     "a-company-of-monsters": {
       "added_at": "2026-08-01",

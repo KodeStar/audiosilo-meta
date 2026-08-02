@@ -76,6 +76,10 @@
             {
               "asin": "B0GVPT18BX",
               "region": "us"
+            },
+            {
+              "asin": "1400122104",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/71GAQnMYRnL.jpg",
@@ -92,6 +96,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0GVPT18BX",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1400122104",
               "type": "libex-import"
             }
           ],
@@ -262,6 +271,60 @@
         }
       ],
       "title": "Newyddian"
+    },
+    "nexie": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "scott-cawthon",
+        "andrea-waggener",
+        "kelly-parra"
+      ],
+      "genres": [
+        "fantasy",
+        "horror",
+        "young-adult"
+      ],
+      "id": "nexie",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "suzanne-elise-freeman-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0BXQT87G8",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81lYDwGd+hL.jpg",
+          "id": "suzanne-elise-freeman-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "suzanne-elise-freeman"
+          ],
+          "publisher": "Scholastic Audio Books",
+          "release_date": "2023-05-02",
+          "runtime_min": 440,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0BXQT87G8",
+              "type": "libex-import"
+            }
+          ],
+          "work": "nexie"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0BXQT87G8",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Nexie"
     },
     "next": {
       "added_at": "2026-07-25T17:12:12+01:00",
@@ -2008,6 +2071,58 @@
       ],
       "title": "Nexus"
     },
+    "nexus-runner": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "frank-morin"
+      ],
+      "genres": [
+        "action-adventure",
+        "epic-fantasy",
+        "fantasy"
+      ],
+      "id": "nexus-runner",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "keith-brown-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0GCNVZ962",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81XBM26qahL.jpg",
+          "id": "keith-brown-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "keith-brown"
+          ],
+          "publisher": "Royal Guard Publishing LLC",
+          "release_date": "2025-12-26",
+          "runtime_min": 1370,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GCNVZ962",
+              "type": "libex-import"
+            }
+          ],
+          "work": "nexus-runner"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0GCNVZ962",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Nexus Runner"
+    },
     "nexus-ryan-w-aslesen": {
       "added_at": "2026-08-02",
       "authors": [
@@ -2059,6 +2174,62 @@
         }
       ],
       "title": "NEXUS"
+    },
+    "nexus-scott-westerfeld": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "scott-westerfeld",
+        "margo-lanagan",
+        "deborah-biancotti"
+      ],
+      "genres": [
+        "action-adventure",
+        "fantasy",
+        "parenting-relationships",
+        "self-help",
+        "young-adult"
+      ],
+      "id": "nexus-scott-westerfeld",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "amber-benson-2018": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0786R4LKX",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A175u5EfkGL.jpg",
+          "id": "amber-benson-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "amber-benson"
+          ],
+          "publisher": "Simon & Schuster Audio",
+          "release_date": "2018-02-13",
+          "runtime_min": 691,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0786R4LKX",
+              "type": "libex-import"
+            }
+          ],
+          "work": "nexus-scott-westerfeld"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0786R4LKX",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Nexus"
     },
     "nexus-shard": {
       "added_at": "2026-08-02",
@@ -3327,6 +3498,60 @@
       ],
       "title": "Nice Werewolves Don’t Bite Vampires"
     },
+    "nicholas-st-north-and-the-battle-of-the-nightmare-king": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "william-joyce",
+        "laura-geringer"
+      ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "fairy-tales-folklore",
+        "fantasy"
+      ],
+      "id": "nicholas-st-north-and-the-battle-of-the-nightmare-king",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "gerard-doyle-2011": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B005S32PCK",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91OS1Luv5uL.jpg",
+          "id": "gerard-doyle-2011",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "gerard-doyle"
+          ],
+          "publisher": "Simon & Schuster Audio",
+          "release_date": "2011-10-04",
+          "runtime_min": 203,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B005S32PCK",
+              "type": "libex-import"
+            }
+          ],
+          "work": "nicholas-st-north-and-the-battle-of-the-nightmare-king"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B005S32PCK",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Nicholas St. North and the Battle of the Nightmare King"
+    },
     "nicht-um-jeden-preis-juwelenkuchen-und-haustiere": {
       "added_at": "2026-08-02",
       "authors": [
@@ -3564,6 +3789,59 @@
         }
       ],
       "title": "Nick"
+    },
+    "nick-and-charlie": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "alice-oseman"
+      ],
+      "genres": [
+        "lgbtq",
+        "romance",
+        "young-adult"
+      ],
+      "id": "nick-and-charlie",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "david-stagg-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0BL8FNNC1",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81ciahZiOxL.jpg",
+          "id": "david-stagg-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "david-stagg",
+            "joe-jameson"
+          ],
+          "publisher": "Scholastic Audio Books",
+          "release_date": "2023-01-03",
+          "runtime_min": 121,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0BL8FNNC1",
+              "type": "libex-import"
+            }
+          ],
+          "work": "nick-and-charlie"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0BL8FNNC1",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Nick and Charlie"
     },
     "nick-and-teslas-high-voltage-danger-lab": {
       "added_at": "2026-08-02",
@@ -4047,6 +4325,60 @@
         }
       ],
       "title": "Nico und Will – Das Gericht der Toten"
+    },
+    "nicodemus": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "d-b-reynolds"
+      ],
+      "genres": [
+        "fantasy",
+        "horror",
+        "occult",
+        "paranormal",
+        "romance"
+      ],
+      "id": "nicodemus",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "tor-thom-2021": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B09MV5K24K",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91GGBHj33-L.jpg",
+          "id": "tor-thom-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "tor-thom"
+          ],
+          "publisher": "Tantor Audio",
+          "release_date": "2021-12-14",
+          "runtime_min": 887,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09MV5K24K",
+              "type": "libex-import"
+            }
+          ],
+          "work": "nicodemus"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B09MV5K24K",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Nicodemus"
     },
     "nicola-berry-and-the-petrifying-problem-with-princess-petronella-1": {
       "added_at": "2026-08-02",
@@ -4878,6 +5210,60 @@
       ],
       "title": "Nicolae"
     },
+    "nicolae-the-rise-of-antichrist": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "tim-lahaye",
+        "jerry-b-jenkins"
+      ],
+      "genres": [
+        "post-apocalyptic",
+        "religious-fiction",
+        "science-fiction",
+        "thriller-suspense"
+      ],
+      "id": "nicolae-the-rise-of-antichrist",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "frank-muller-2015": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00T56H15W",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81hF7YYlXCL.jpg",
+          "id": "frank-muller-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "frank-muller"
+          ],
+          "publisher": "Tyndale House Publishers, Inc.",
+          "release_date": "2015-03-27",
+          "runtime_min": 170,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00T56H15W",
+              "type": "libex-import"
+            }
+          ],
+          "work": "nicolae-the-rise-of-antichrist"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00T56H15W",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Nicolae: The Rise of Antichrist"
+    },
     "nicolae-tim-lahaye": {
       "added_at": "2026-08-02",
       "authors": [
@@ -5185,6 +5571,60 @@
       ],
       "title": "Nicolas"
     },
+    "nicole": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "teresa-gabelman"
+      ],
+      "genres": [
+        "erotica",
+        "fantasy",
+        "paranormal",
+        "romance",
+        "urban-fantasy"
+      ],
+      "id": "nicole",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "jeffrey-kafer-2020": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "1541438833",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91de7irdA7L.jpg",
+          "id": "jeffrey-kafer-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jeffrey-kafer"
+          ],
+          "publisher": "Tantor Media",
+          "release_date": "2020-01-07",
+          "runtime_min": 262,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1541438833",
+              "type": "libex-import"
+            }
+          ],
+          "work": "nicole"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1541438833",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Nicole"
+    },
     "nicu-the-littlest-vampire-in-big-fangs": {
       "added_at": "2026-08-01",
       "authors": [
@@ -5449,6 +5889,270 @@
         }
       ],
       "title": "Niederwald"
+    },
+    "niemals-aufgegeben-das-kurtherianische-gambit-5": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "michael-anderle"
+      ],
+      "genres": [
+        "action-adventure",
+        "fantasy",
+        "military-science-fiction",
+        "science",
+        "science-fiction",
+        "urban-fantasy"
+      ],
+      "id": "niemals-aufgegeben-das-kurtherianische-gambit-5",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "carolina-pfau-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CPZD8FV2",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81IhgALN9uL.jpg",
+          "id": "carolina-pfau-2023",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "carolina-pfau"
+          ],
+          "publisher": "Hörbuch München von RBmedia Verlag",
+          "release_date": "2023-12-28",
+          "runtime_min": 555,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CPZD8FV2",
+              "type": "libex-import"
+            }
+          ],
+          "work": "niemals-aufgegeben-das-kurtherianische-gambit-5"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CPZD8FV2",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Niemals aufgegeben (Das Kurtherianische Gambit 5)"
+    },
+    "niemals-den-roten-knopf-drucken-oder-der-vulkan-bricht-aus": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "kati-naumann"
+      ],
+      "genres": [
+        "childrens",
+        "fairy-tales-folklore"
+      ],
+      "id": "niemals-den-roten-knopf-drucken-oder-der-vulkan-bricht-aus",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "tanja-bunke-2020": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "3803281334",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81dPk4i8opL.jpg",
+          "id": "tanja-bunke-2020",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "tanja-bunke"
+          ],
+          "publisher": "United Soft Media Verlag GmbH",
+          "release_date": "2020-10-28",
+          "runtime_min": 141,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "3803281334",
+              "type": "libex-import"
+            }
+          ],
+          "work": "niemals-den-roten-knopf-drucken-oder-der-vulkan-bricht-aus"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "3803281334",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Niemals den roten Knopf drücken oder der Vulkan bricht aus"
+    },
+    "niemals-den-roten-knopf-drucken-oder-die-dinos-drehen-durch": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "kati-naumann"
+      ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "comedy-humor",
+        "nature"
+      ],
+      "id": "niemals-den-roten-knopf-drucken-oder-die-dinos-drehen-durch",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "tanja-bunke-2021": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B09JPHQYXF",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81PAcoBu6xL.jpg",
+          "id": "tanja-bunke-2021",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "tanja-bunke"
+          ],
+          "publisher": "United Soft Media Verlag GmbH",
+          "release_date": "2021-10-21",
+          "runtime_min": 158,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09JPHQYXF",
+              "type": "libex-import"
+            }
+          ],
+          "work": "niemals-den-roten-knopf-drucken-oder-die-dinos-drehen-durch"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B09JPHQYXF",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Niemals den roten Knopf drücken oder die Dinos drehen durch"
+    },
+    "niemals-den-roten-knopf-drucken-oder-die-rakete-dust-los": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "kati-naumann"
+      ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "comedy-humor",
+        "science",
+        "science-fiction"
+      ],
+      "id": "niemals-den-roten-knopf-drucken-oder-die-rakete-dust-los",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "tanja-bunke-2022": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0B5LDPLM1",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81o8cEf0F2L.jpg",
+          "id": "tanja-bunke-2022",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "tanja-bunke"
+          ],
+          "publisher": "United Soft Media Verlag GmbH",
+          "release_date": "2022-07-07",
+          "runtime_min": 157,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0B5LDPLM1",
+              "type": "libex-import"
+            }
+          ],
+          "work": "niemals-den-roten-knopf-drucken-oder-die-rakete-dust-los"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0B5LDPLM1",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Niemals den roten Knopf drücken oder die Rakete düst los"
+    },
+    "niemals-den-roten-knopf-drucken-oder-die-roboter-greifen-an": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "kati-naumann"
+      ],
+      "genres": [
+        "childrens",
+        "science-fiction"
+      ],
+      "id": "niemals-den-roten-knopf-drucken-oder-die-roboter-greifen-an",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "tanja-bunke-2021": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "3803281342",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81f-4egHj-L.jpg",
+          "id": "tanja-bunke-2021",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "tanja-bunke"
+          ],
+          "publisher": "United Soft Media Verlag GmbH",
+          "release_date": "2021-03-16",
+          "runtime_min": 154,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "3803281342",
+              "type": "libex-import"
+            }
+          ],
+          "work": "niemals-den-roten-knopf-drucken-oder-die-roboter-greifen-an"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "3803281342",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Niemals den roten Knopf drücken oder die Roboter greifen an"
     },
     "niemandsland-ausgeliefert": {
       "added_at": "2026-08-02",
@@ -5819,6 +6523,61 @@
         }
       ],
       "title": "Nigh"
+    },
+    "night": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "zach-bohannon",
+        "j-thorn"
+      ],
+      "genres": [
+        "fantasy",
+        "paranormal",
+        "post-apocalyptic",
+        "science-fiction",
+        "thriller-suspense"
+      ],
+      "id": "night",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "rudy-sanda-2017": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B077TBWRDD",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51ZGXMzc6zL.jpg",
+          "id": "rudy-sanda-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "rudy-sanda"
+          ],
+          "publisher": "Tantor Audio",
+          "release_date": "2017-12-14",
+          "runtime_min": 464,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B077TBWRDD",
+              "type": "libex-import"
+            }
+          ],
+          "work": "night"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B077TBWRDD",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Night"
     },
     "night-after-night": {
       "added_at": "2026-08-01",
@@ -6202,6 +6961,10 @@
             {
               "asin": "B0BHTX4773",
               "region": "us"
+            },
+            {
+              "asin": "B0BL3YZSQY",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/71d7dw4S5kL.jpg",
@@ -6218,6 +6981,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0BHTX4773",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0BL3YZSQY",
               "type": "libex-import"
             }
           ],
@@ -6569,6 +7337,61 @@
       ],
       "title": "Night Broken (Dramatized Adaptation)"
     },
+    "night-call": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "ct-whistle"
+      ],
+      "genres": [
+        "fantasy",
+        "lgbtq",
+        "mystery",
+        "paranormal",
+        "romance",
+        "urban-fantasy"
+      ],
+      "id": "night-call",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "derek-duvall-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0FNS6NJ41",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91h4XZ76fHL.jpg",
+          "id": "derek-duvall-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "derek-duvall"
+          ],
+          "publisher": "Tantor Media",
+          "release_date": "2026-04-07",
+          "runtime_min": 817,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FNS6NJ41",
+              "type": "libex-import"
+            }
+          ],
+          "work": "night-call"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0FNS6NJ41",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Night Call"
+    },
     "night-covenants": {
       "added_at": "2026-08-01",
       "authors": [
@@ -6731,6 +7554,58 @@
         }
       ],
       "title": "Night & Day"
+    },
+    "night-dragon": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "d-k-holmberg"
+      ],
+      "genres": [
+        "epic-fantasy",
+        "fairy-tales-folklore",
+        "fantasy"
+      ],
+      "id": "night-dragon",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "matt-godfrey-2021": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "1705280641",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51W5ZxfsFcL.jpg",
+          "id": "matt-godfrey-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "matt-godfrey"
+          ],
+          "publisher": "Tantor Audio",
+          "release_date": "2021-02-09",
+          "runtime_min": 561,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1705280641",
+              "type": "libex-import"
+            }
+          ],
+          "work": "night-dragon"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1705280641",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Night Dragon"
     },
     "night-embrace": {
       "added_at": "2026-07-25T19:18:21+01:00",
@@ -7110,6 +7985,83 @@
         }
       ],
       "title": "Night Fall"
+    },
+    "night-flights-a-mortal-engines-collection": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "philip-reeve",
+        "ian-mcque"
+      ],
+      "credits": [
+        {
+          "person": "ian-mcque",
+          "role": "illustrator"
+        }
+      ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "fantasy",
+        "science-fiction",
+        "short-stories",
+        "steampunk",
+        "young-adult"
+      ],
+      "id": "night-flights-a-mortal-engines-collection",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "barnaby-edwards-2018": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "1338316168",
+              "region": "us"
+            },
+            {
+              "asin": "B0DTB2HPDV",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81Wrl4AE1ML.jpg",
+          "id": "barnaby-edwards-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "barnaby-edwards"
+          ],
+          "publisher": "Scholastic Audio Books",
+          "release_date": "2018-08-28",
+          "runtime_min": 171,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1338316168",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DTB2HPDV",
+              "type": "libex-import"
+            }
+          ],
+          "work": "night-flights-a-mortal-engines-collection"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1338316168",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0DTB2HPDV",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Night Flights: A Mortal Engines Collection"
     },
     "night-forbidden": {
       "added_at": "2026-08-01",
@@ -7639,6 +8591,60 @@
       ],
       "title": "Night Howls"
     },
+    "night-hunt": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "adam-wright"
+      ],
+      "genres": [
+        "action-adventure",
+        "fantasy",
+        "paranormal",
+        "thriller-suspense",
+        "urban-fantasy"
+      ],
+      "id": "night-hunt",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "greg-d-barnett-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0C5S3XMXL",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91EemsZ2RiL.jpg",
+          "id": "greg-d-barnett-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "greg-d-barnett"
+          ],
+          "publisher": "Tantor Media",
+          "release_date": "2023-06-13",
+          "runtime_min": 295,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0C5S3XMXL",
+              "type": "libex-import"
+            }
+          ],
+          "work": "night-hunt"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0C5S3XMXL",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Night Hunt"
+    },
     "night-hunt-midnight-hunters-book-3": {
       "added_at": "2026-08-02",
       "authors": [
@@ -7743,6 +8749,114 @@
         }
       ],
       "title": "Night Hunters"
+    },
+    "night-huntress-otherworld-book-5": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "yasmine-galenorn"
+      ],
+      "genres": [
+        "fantasy",
+        "paranormal",
+        "romance",
+        "urban-fantasy"
+      ],
+      "id": "night-huntress-otherworld-book-5",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "cassandra-campbell-2010": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0032IRKMI",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51y2QFoIoEL.jpg",
+          "id": "cassandra-campbell-2010",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "cassandra-campbell"
+          ],
+          "publisher": "Tantor Media",
+          "release_date": "2010-01-01",
+          "runtime_min": 656,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0032IRKMI",
+              "type": "libex-import"
+            }
+          ],
+          "work": "night-huntress-otherworld-book-5"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0032IRKMI",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Night Huntress: Otherworld, Book 5"
+    },
+    "night-huntress-the-urban-jungle-shifters-book-1": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "sk-prince"
+      ],
+      "genres": [
+        "action-adventure",
+        "fantasy",
+        "paranormal",
+        "romance",
+        "urban-fantasy"
+      ],
+      "id": "night-huntress-the-urban-jungle-shifters-book-1",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "jonathan-lake-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0FDCL5FQK",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/8180nyL+wKL.jpg",
+          "id": "jonathan-lake-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jonathan-lake",
+            "macie-miller"
+          ],
+          "publisher": "Tantor Media",
+          "release_date": "2025-11-18",
+          "runtime_min": 342,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FDCL5FQK",
+              "type": "libex-import"
+            }
+          ],
+          "work": "night-huntress-the-urban-jungle-shifters-book-1"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0FDCL5FQK",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Night Huntress: The Urban Jungle Shifters, Book 1"
     },
     "night-in-his-eyes": {
       "added_at": "2026-08-01",
@@ -8065,6 +9179,61 @@
       ],
       "title": "Night King 4"
     },
+    "night-kissed-the-complete-series": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "m-r-frost"
+      ],
+      "genres": [
+        "action-adventure",
+        "epic-fantasy",
+        "fantasy"
+      ],
+      "id": "night-kissed-the-complete-series",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "ashley-kelberman-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CQDH1N6Y",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/810CfVLHCKL.jpg",
+          "id": "ashley-kelberman-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "ashley-kelberman",
+            "ellory-lane",
+            "lexie-rennie",
+            "sylvester-frost"
+          ],
+          "publisher": "Royal Guard Publishing LLC",
+          "release_date": "2023-12-16",
+          "runtime_min": 1503,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CQDH1N6Y",
+              "type": "libex-import"
+            }
+          ],
+          "work": "night-kissed-the-complete-series"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CQDH1N6Y",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Night Kissed: The Complete Series"
+    },
     "night-legions": {
       "added_at": "2026-08-01",
       "authors": [
@@ -8286,6 +9455,61 @@
         }
       ],
       "title": "Night Mares"
+    },
+    "night-market": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "br-kingsolver"
+      ],
+      "genres": [
+        "action-adventure",
+        "fantasy",
+        "paranormal",
+        "sword-sorcery",
+        "thriller-suspense",
+        "urban-fantasy"
+      ],
+      "id": "night-market",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "siobhan-waring-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0C9G5CG81",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/914KfULY1VL.jpg",
+          "id": "siobhan-waring-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "siobhan-waring"
+          ],
+          "publisher": "Tantor Media",
+          "release_date": "2023-07-11",
+          "runtime_min": 367,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0C9G5CG81",
+              "type": "libex-import"
+            }
+          ],
+          "work": "night-market"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0C9G5CG81",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Night Market"
     },
     "night-marshal": {
       "added_at": "2026-08-01",
@@ -8514,6 +9738,58 @@
       ],
       "title": "Night Masks"
     },
+    "night-maze": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "helen-harper"
+      ],
+      "genres": [
+        "fantasy",
+        "paranormal",
+        "urban-fantasy"
+      ],
+      "id": "night-maze",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "ruth-urquhart-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0G4SFRD4B",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91EtvSCp+rL.jpg",
+          "id": "ruth-urquhart-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "ruth-urquhart"
+          ],
+          "publisher": "Tantor Media",
+          "release_date": "2026-05-29",
+          "runtime_min": 474,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0G4SFRD4B",
+              "type": "libex-import"
+            }
+          ],
+          "work": "night-maze"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0G4SFRD4B",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Night Maze"
+    },
     "night-moves": {
       "added_at": "2026-08-02",
       "authors": [
@@ -8566,6 +9842,116 @@
         }
       ],
       "title": "Night Moves"
+    },
+    "night-moves-michael-anderle": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "michael-anderle"
+      ],
+      "genres": [
+        "mystery",
+        "thriller-suspense"
+      ],
+      "id": "night-moves-michael-anderle",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "james-r-cheatham-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0BTJ8TGJZ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91EBGeTifCL.jpg",
+          "id": "james-r-cheatham-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "james-r-cheatham"
+          ],
+          "publisher": "Tantor Media",
+          "release_date": "2023-03-07",
+          "runtime_min": 438,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0BTJ8TGJZ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "night-moves-michael-anderle"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0BTJ8TGJZ",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Night Moves"
+    },
+    "night-music": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "john-connolly"
+      ],
+      "genres": [
+        "fairy-tales-folklore",
+        "fantasy",
+        "ghost-stories",
+        "horror",
+        "literary-fiction",
+        "science-fiction",
+        "short-stories"
+      ],
+      "id": "night-music",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "gareth-armstrong-2015": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B016LN6NGE",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/61KHk887B4L.jpg",
+          "id": "gareth-armstrong-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "gareth-armstrong",
+            "jeff-harding",
+            "luke-thompson",
+            "penelope-rawlins"
+          ],
+          "publisher": "Simon & Schuster Audio",
+          "release_date": "2015-10-27",
+          "runtime_min": 836,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B016LN6NGE",
+              "type": "libex-import"
+            }
+          ],
+          "work": "night-music"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B016LN6NGE",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Night Music"
     },
     "night-must-fall": {
       "added_at": "2026-08-02",
@@ -9115,6 +10501,10 @@
             {
               "asin": "0063071568",
               "region": "us"
+            },
+            {
+              "asin": "1473592992",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91yLxAggf6L.jpg",
@@ -9131,6 +10521,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "0063071568",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1473592992",
               "type": "libex-import"
             }
           ],
@@ -9218,6 +10613,10 @@
             {
               "asin": "B01E4G744U",
               "region": "us"
+            },
+            {
+              "asin": "B01CRS0SGS",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81upU1g+hPL.jpg",
@@ -9234,6 +10633,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B01E4G744U",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B01CRS0SGS",
               "type": "libex-import"
             }
           ],
@@ -10244,6 +11648,156 @@
         }
       ],
       "title": "Night Of The Dragon"
+    },
+    "night-of-the-dream-dragon": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "tracey-west",
+        "matt-loveridge"
+      ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "fantasy"
+      ],
+      "id": "night-of-the-dream-dragon",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "emily-ellet-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0D3MYYSQ5",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 42924,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 29000,
+              "start_ms": 42924,
+              "title": "Epigraph"
+            },
+            {
+              "length_ms": 9000,
+              "start_ms": 71924,
+              "title": "Dedication"
+            },
+            {
+              "length_ms": 231662,
+              "start_ms": 80924,
+              "title": "Chapter 1. Drake's Dream"
+            },
+            {
+              "length_ms": 148770,
+              "start_ms": 312586,
+              "title": "Chapter 2. Into the Light"
+            },
+            {
+              "length_ms": 168762,
+              "start_ms": 461356,
+              "title": "Chapter 3. Kishar and Mamu"
+            },
+            {
+              "length_ms": 158545,
+              "start_ms": 630118,
+              "title": "Chapter 4. Stop That Wizard!"
+            },
+            {
+              "length_ms": 198135,
+              "start_ms": 788663,
+              "title": "Chapter 5. Through the Gate"
+            },
+            {
+              "length_ms": 240535,
+              "start_ms": 986798,
+              "title": "Chapter 6. Flying"
+            },
+            {
+              "length_ms": 224885,
+              "start_ms": 1227333,
+              "title": "Chapter 7. A Friend"
+            },
+            {
+              "length_ms": 266495,
+              "start_ms": 1452218,
+              "title": "Chapter 8. The Land of the Lost"
+            },
+            {
+              "length_ms": 153785,
+              "start_ms": 1718713,
+              "title": "Chapter 9. Stuck in the Muck"
+            },
+            {
+              "length_ms": 261224,
+              "start_ms": 1872498,
+              "title": "Chapter 10. Zoltan's Plan"
+            },
+            {
+              "length_ms": 195303,
+              "start_ms": 2133722,
+              "title": "Chapter 11. The Dream Fountain"
+            },
+            {
+              "length_ms": 172965,
+              "start_ms": 2329025,
+              "title": "Chapter 12. A Wizard Dragon?"
+            },
+            {
+              "length_ms": 205589,
+              "start_ms": 2501990,
+              "title": "Chapter 13. Battle at the Gate"
+            },
+            {
+              "length_ms": 160171,
+              "start_ms": 2707579,
+              "title": "Chapter 14. All is Not Lost"
+            },
+            {
+              "length_ms": 145000,
+              "start_ms": 2867750,
+              "title": "Chapter 15. Awake"
+            },
+            {
+              "length_ms": 66625,
+              "start_ms": 3012750,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91C1km56o2L.jpg",
+          "id": "emily-ellet-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "emily-ellet"
+          ],
+          "publisher": "Scholastic Audio Books",
+          "release_date": "2025-04-01",
+          "runtime_min": 51,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0D3MYYSQ5",
+              "type": "libex-import"
+            }
+          ],
+          "work": "night-of-the-dream-dragon"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0D3MYYSQ5",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Night of the Dream Dragon"
     },
     "night-of-the-eye": {
       "added_at": "2026-08-02",
