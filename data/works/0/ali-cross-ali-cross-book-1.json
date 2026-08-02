@@ -1185,6 +1185,10 @@
             {
               "asin": "B0FRDFS2MT",
               "region": "us"
+            },
+            {
+              "asin": "B0FRBYFXGP",
+              "region": "es"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81IgGPZh6kL.jpg",
@@ -1201,6 +1205,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0FRDFS2MT",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FRBYFXGP",
               "type": "libex-import"
             }
           ],
@@ -1954,6 +1963,266 @@
       "language": "fr",
       "license": "CC0-1.0",
       "recordings": {
+        "alain-couchot-2018": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B07C1V9XVH",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 932095,
+              "start_ms": 0,
+              "title": "Chapitre 1"
+            },
+            {
+              "length_ms": 859092,
+              "start_ms": 932095,
+              "title": "Chapitre 2"
+            },
+            {
+              "length_ms": 731289,
+              "start_ms": 1791187,
+              "title": "Chapitre 3"
+            },
+            {
+              "length_ms": 1044852,
+              "start_ms": 2522476,
+              "title": "Chapitre 4"
+            },
+            {
+              "length_ms": 860578,
+              "start_ms": 3567328,
+              "title": "Chapitre 5"
+            },
+            {
+              "length_ms": 1128072,
+              "start_ms": 4427906,
+              "title": "Chapitre 6"
+            },
+            {
+              "length_ms": 991353,
+              "start_ms": 5555978,
+              "title": "Chapitre 7"
+            },
+            {
+              "length_ms": 1065657,
+              "start_ms": 6547331,
+              "title": "Chapitre 8"
+            },
+            {
+              "length_ms": 1058226,
+              "start_ms": 7612988,
+              "title": "Chapitre 9"
+            },
+            {
+              "length_ms": 775872,
+              "start_ms": 8671214,
+              "title": "Chapitre 10"
+            },
+            {
+              "length_ms": 854680,
+              "start_ms": 9447086,
+              "title": "Chapitre 11"
+            },
+            {
+              "length_ms": 984619,
+              "start_ms": 10301766,
+              "title": "Chapitre 12"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1DHnflGseL.jpg",
+          "id": "alain-couchot-2018",
+          "language": "fr",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alain-couchot"
+          ],
+          "publisher": "Audiolude",
+          "release_date": "2018-04-10",
+          "runtime_min": 187,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07C1V9XVH",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alice-au-pays-des-merveilles"
+        },
+        "anny-duperey-2014": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00TTYVC9Q",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1397003,
+              "start_ms": 0,
+              "title": "Chapitre 1"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91ckg-Zq3JL.jpg",
+          "id": "anny-duperey-2014",
+          "language": "fr",
+          "license": "CC0-1.0",
+          "narrators": [
+            "anny-duperey"
+          ],
+          "publisher": "Editions Eponymes",
+          "release_date": "2014-04-15",
+          "runtime_min": 22,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00TTYVC9Q",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alice-au-pays-des-merveilles"
+        },
+        "fabienne-prost-2014": {
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00TTWTIQM",
+              "region": "us"
+            },
+            {
+              "asin": "B09L4XWPV1",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 27725,
+              "start_ms": 0,
+              "title": "Chapitre 1"
+            },
+            {
+              "length_ms": 823844,
+              "start_ms": 27725,
+              "title": "Chapitre 2"
+            },
+            {
+              "length_ms": 778147,
+              "start_ms": 851569,
+              "title": "Chapitre 3"
+            },
+            {
+              "length_ms": 702450,
+              "start_ms": 1629716,
+              "title": "Chapitre 4"
+            },
+            {
+              "length_ms": 960749,
+              "start_ms": 2332166,
+              "title": "Chapitre 5"
+            },
+            {
+              "length_ms": 843488,
+              "start_ms": 3292915,
+              "title": "Chapitre 6"
+            },
+            {
+              "length_ms": 983458,
+              "start_ms": 4136403,
+              "title": "Chapitre 7"
+            },
+            {
+              "length_ms": 883659,
+              "start_ms": 5119861,
+              "title": "Chapitre 8"
+            },
+            {
+              "length_ms": 966089,
+              "start_ms": 6003520,
+              "title": "Chapitre 9"
+            },
+            {
+              "length_ms": 899262,
+              "start_ms": 6969609,
+              "title": "Chapitre 10"
+            },
+            {
+              "length_ms": 899959,
+              "start_ms": 7868871,
+              "title": "Chapitre 11"
+            },
+            {
+              "length_ms": 735887,
+              "start_ms": 8768830,
+              "title": "Chapitre 12"
+            },
+            {
+              "length_ms": 864572,
+              "start_ms": 9504717,
+              "title": "Chapitre 13"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91p+f0KabKL.jpg",
+          "id": "fabienne-prost-2014",
+          "language": "fr",
+          "license": "CC0-1.0",
+          "narrators": [
+            "fabienne-prost",
+            "william-fosse"
+          ],
+          "publisher": "CaracoLivres",
+          "release_date": "2014-04-28",
+          "runtime_min": 172,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00TTWTIQM",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09L4XWPV1",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alice-au-pays-des-merveilles"
+        },
+        "jean-marie-richard-2020": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "2075128251",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/816WmbNsb1L.jpg",
+          "id": "jean-marie-richard-2020",
+          "language": "fr",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jean-marie-richard",
+            "muriel-flory",
+            "philippe-jouaris",
+            "sophie-wright"
+          ],
+          "publisher": "Gallimard",
+          "release_date": "2020-06-23",
+          "runtime_min": 144,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "2075128251",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alice-au-pays-des-merveilles"
+        },
         "marlene-jobert-2018": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -1984,6 +2253,34 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B07B2V7DYK",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alice-au-pays-des-merveilles"
+        },
+        "vanina-michel-2016": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B01HRSN9KK",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81yxl3ZybuL.jpg",
+          "id": "vanina-michel-2016",
+          "language": "fr",
+          "license": "CC0-1.0",
+          "narrators": [
+            "vanina-michel"
+          ],
+          "publisher": "Productions Jacques Canetti",
+          "release_date": "2016-06-30",
+          "runtime_min": 115,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B01HRSN9KK",
               "type": "libex-import"
             }
           ],
@@ -2643,6 +2940,950 @@
       "language": "de",
       "license": "CC0-1.0",
       "recordings": {
+        "bibiana-zeller-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0C3CV91Z1",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81-ju1pbprL.jpg",
+          "id": "bibiana-zeller-2023",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "bibiana-zeller"
+          ],
+          "publisher": "Audio Media Digital",
+          "release_date": "2023-07-01",
+          "runtime_min": 108,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0C3CV91Z1",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alice-im-wunderland"
+        },
+        "caroline-kiesewetter-2010": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00TP1MYS6",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 537148,
+              "start_ms": 0,
+              "title": "Kapitel 1"
+            },
+            {
+              "length_ms": 293779,
+              "start_ms": 537148,
+              "title": "Kapitel 2"
+            },
+            {
+              "length_ms": 397131,
+              "start_ms": 830927,
+              "title": "Kapitel 3"
+            },
+            {
+              "length_ms": 408067,
+              "start_ms": 1228058,
+              "title": "Kapitel 4"
+            },
+            {
+              "length_ms": 445568,
+              "start_ms": 1636125,
+              "title": "Kapitel 5"
+            },
+            {
+              "length_ms": 270327,
+              "start_ms": 2081693,
+              "title": "Kapitel 6"
+            },
+            {
+              "length_ms": 411620,
+              "start_ms": 2352020,
+              "title": "Kapitel 7"
+            },
+            {
+              "length_ms": 659470,
+              "start_ms": 2763640,
+              "title": "Kapitel 8"
+            },
+            {
+              "length_ms": 494330,
+              "start_ms": 3423110,
+              "title": "Kapitel 9"
+            },
+            {
+              "length_ms": 413780,
+              "start_ms": 3917440,
+              "title": "Kapitel 10"
+            },
+            {
+              "length_ms": 533943,
+              "start_ms": 4331220,
+              "title": "Kapitel 11"
+            },
+            {
+              "length_ms": 585050,
+              "start_ms": 4865163,
+              "title": "Kapitel 12"
+            },
+            {
+              "length_ms": 341658,
+              "start_ms": 5450213,
+              "title": "Kapitel 13"
+            },
+            {
+              "length_ms": 655592,
+              "start_ms": 5791871,
+              "title": "Kapitel 14"
+            },
+            {
+              "length_ms": 550847,
+              "start_ms": 6447463,
+              "title": "Kapitel 15"
+            },
+            {
+              "length_ms": 510885,
+              "start_ms": 6998310,
+              "title": "Kapitel 16"
+            },
+            {
+              "length_ms": 542743,
+              "start_ms": 7509195,
+              "title": "Kapitel 17"
+            },
+            {
+              "length_ms": 519268,
+              "start_ms": 8051938,
+              "title": "Kapitel 18"
+            },
+            {
+              "length_ms": 487178,
+              "start_ms": 8571206,
+              "title": "Kapitel 19"
+            },
+            {
+              "length_ms": 444383,
+              "start_ms": 9058384,
+              "title": "Kapitel 20"
+            },
+            {
+              "length_ms": 399453,
+              "start_ms": 9502767,
+              "title": "Kapitel 21"
+            },
+            {
+              "length_ms": 424229,
+              "start_ms": 9902220,
+              "title": "Kapitel 22"
+            },
+            {
+              "length_ms": 439182,
+              "start_ms": 10326449,
+              "title": "Kapitel 23"
+            },
+            {
+              "length_ms": 583170,
+              "start_ms": 10765631,
+              "title": "Kapitel 24"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/61DGEyemH2L.jpg",
+          "id": "caroline-kiesewetter-2010",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "caroline-kiesewetter"
+          ],
+          "publisher": "Phon und Ton",
+          "release_date": "2010-05-11",
+          "runtime_min": 188,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00TP1MYS6",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alice-im-wunderland"
+        },
+        "christiane-paul-2005": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00U7LP0IE",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51kZlsKVinL.jpg",
+          "id": "christiane-paul-2005",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "christiane-paul"
+          ],
+          "publisher": "tacheles! / Roof Music",
+          "release_date": "2005-03-14",
+          "runtime_min": 145,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00U7LP0IE",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alice-im-wunderland"
+        },
+        "christine-urspruch-2023": {
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CPJPH7PR",
+              "region": "us"
+            },
+            {
+              "asin": "B0CPJQM1SQ",
+              "region": "de"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81O7S-iymDL.jpg",
+          "id": "christine-urspruch-2023",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "christine-urspruch"
+          ],
+          "publisher": "BUCHFUNK",
+          "release_date": "2023-12-19",
+          "runtime_min": 81,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CPJPH7PR",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CPJQM1SQ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alice-im-wunderland"
+        },
+        "christoph-schobesberger-2011": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00TPK9PC0",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81AyCHkwk2L.jpg",
+          "id": "christoph-schobesberger-2011",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "christoph-schobesberger",
+            "franziska-mager",
+            "stefan-kaminski"
+          ],
+          "publisher": "Der Hörverlag",
+          "release_date": "2011-08-25",
+          "runtime_min": 96,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00TPK9PC0",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alice-im-wunderland"
+        },
+        "dagmar-berghoff-2007": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00TMFY5TG",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/61UiXQVKIAL.jpg",
+          "id": "dagmar-berghoff-2007",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "dagmar-berghoff",
+            "harald-pages"
+          ],
+          "publisher": "KOLIBRI by RECORD PARTNER",
+          "release_date": "2007-05-22",
+          "runtime_min": 40,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00TMFY5TG",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alice-im-wunderland"
+        },
+        "david-nathan-2012": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00720G6D6",
+              "region": "de"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51deKuas2JL.jpg",
+          "id": "david-nathan-2012",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "david-nathan"
+          ],
+          "publisher": "Oetinger Media",
+          "release_date": "2012-01-27",
+          "runtime_min": 181,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00720G6D6",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alice-im-wunderland"
+        },
+        "denis-ruhle-2019": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "395995266X",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91yEm+mwKaL.jpg",
+          "id": "denis-ruhle-2019",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "denis-ruhle"
+          ],
+          "publisher": "ZYX Music",
+          "release_date": "2019-03-06",
+          "runtime_min": 161,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "395995266X",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alice-im-wunderland"
+        },
+        "denise-desombre-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0BTPP3FP3",
+              "region": "us"
+            },
+            {
+              "asin": "B0BVR8Q7XN",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81W5fSdbAML.jpg",
+          "id": "denise-desombre-2023",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "denise-desombre"
+          ],
+          "publisher": "junge Lauscher",
+          "release_date": "2023-02-03",
+          "runtime_min": 98,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0BTPP3FP3",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0BVR8Q7XN",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alice-im-wunderland"
+        },
+        "hans-sohnker-2014": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00U2KMWJ0",
+              "region": "us"
+            },
+            {
+              "asin": "B00HR4V4W0",
+              "region": "de"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81UwKJmayuL.jpg",
+          "id": "hans-sohnker-2014",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "hans-sohnker",
+            "karen-wellmann"
+          ],
+          "publisher": "Der Audio Verlag",
+          "release_date": "2014-01-08",
+          "runtime_min": 52,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00U2KMWJ0",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00HR4V4W0",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alice-im-wunderland"
+        },
+        "heiner-lamprecht-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CDBW54DT",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 36942,
+              "start_ms": 0,
+              "title": "Kapitel 1"
+            },
+            {
+              "length_ms": 123437,
+              "start_ms": 36942,
+              "title": "Kapitel 2"
+            },
+            {
+              "length_ms": 120209,
+              "start_ms": 160379,
+              "title": "Kapitel 3"
+            },
+            {
+              "length_ms": 120209,
+              "start_ms": 280588,
+              "title": "Kapitel 4"
+            },
+            {
+              "length_ms": 120720,
+              "start_ms": 400797,
+              "title": "Kapitel 5"
+            },
+            {
+              "length_ms": 122903,
+              "start_ms": 521517,
+              "title": "Kapitel 6"
+            },
+            {
+              "length_ms": 121858,
+              "start_ms": 644420,
+              "title": "Kapitel 7"
+            },
+            {
+              "length_ms": 120395,
+              "start_ms": 766278,
+              "title": "Kapitel 8"
+            },
+            {
+              "length_ms": 120813,
+              "start_ms": 886673,
+              "title": "Kapitel 9"
+            },
+            {
+              "length_ms": 120465,
+              "start_ms": 1007486,
+              "title": "Kapitel 10"
+            },
+            {
+              "length_ms": 123321,
+              "start_ms": 1127951,
+              "title": "Kapitel 11"
+            },
+            {
+              "length_ms": 121301,
+              "start_ms": 1251272,
+              "title": "Kapitel 12"
+            },
+            {
+              "length_ms": 120581,
+              "start_ms": 1372573,
+              "title": "Kapitel 13"
+            },
+            {
+              "length_ms": 120372,
+              "start_ms": 1493154,
+              "title": "Kapitel 14"
+            },
+            {
+              "length_ms": 120209,
+              "start_ms": 1613526,
+              "title": "Kapitel 15"
+            },
+            {
+              "length_ms": 120743,
+              "start_ms": 1733735,
+              "title": "Kapitel 16"
+            },
+            {
+              "length_ms": 120488,
+              "start_ms": 1854478,
+              "title": "Kapitel 17"
+            },
+            {
+              "length_ms": 121742,
+              "start_ms": 1974966,
+              "title": "Kapitel 18"
+            },
+            {
+              "length_ms": 120372,
+              "start_ms": 2096708,
+              "title": "Kapitel 19"
+            },
+            {
+              "length_ms": 121045,
+              "start_ms": 2217080,
+              "title": "Kapitel 20"
+            },
+            {
+              "length_ms": 121602,
+              "start_ms": 2338125,
+              "title": "Kapitel 21"
+            },
+            {
+              "length_ms": 120511,
+              "start_ms": 2459727,
+              "title": "Kapitel 22"
+            },
+            {
+              "length_ms": 120790,
+              "start_ms": 2580238,
+              "title": "Kapitel 23"
+            },
+            {
+              "length_ms": 122694,
+              "start_ms": 2701028,
+              "title": "Kapitel 24"
+            },
+            {
+              "length_ms": 120743,
+              "start_ms": 2823722,
+              "title": "Kapitel 25"
+            },
+            {
+              "length_ms": 120999,
+              "start_ms": 2944465,
+              "title": "Kapitel 26"
+            },
+            {
+              "length_ms": 120604,
+              "start_ms": 3065464,
+              "title": "Kapitel 27"
+            },
+            {
+              "length_ms": 121927,
+              "start_ms": 3186068,
+              "title": "Kapitel 28"
+            },
+            {
+              "length_ms": 121974,
+              "start_ms": 3307995,
+              "title": "Kapitel 29"
+            },
+            {
+              "length_ms": 120209,
+              "start_ms": 3429969,
+              "title": "Kapitel 30"
+            },
+            {
+              "length_ms": 121045,
+              "start_ms": 3550178,
+              "title": "Kapitel 31"
+            },
+            {
+              "length_ms": 120534,
+              "start_ms": 3671223,
+              "title": "Kapitel 32"
+            },
+            {
+              "length_ms": 121161,
+              "start_ms": 3791757,
+              "title": "Kapitel 33"
+            },
+            {
+              "length_ms": 124017,
+              "start_ms": 3912918,
+              "title": "Kapitel 34"
+            },
+            {
+              "length_ms": 120279,
+              "start_ms": 4036935,
+              "title": "Kapitel 35"
+            },
+            {
+              "length_ms": 120209,
+              "start_ms": 4157214,
+              "title": "Kapitel 36"
+            },
+            {
+              "length_ms": 122369,
+              "start_ms": 4277423,
+              "title": "Kapitel 37"
+            },
+            {
+              "length_ms": 120372,
+              "start_ms": 4399792,
+              "title": "Kapitel 38"
+            },
+            {
+              "length_ms": 121835,
+              "start_ms": 4520164,
+              "title": "Kapitel 39"
+            },
+            {
+              "length_ms": 120674,
+              "start_ms": 4641999,
+              "title": "Kapitel 40"
+            },
+            {
+              "length_ms": 120674,
+              "start_ms": 4762673,
+              "title": "Kapitel 41"
+            },
+            {
+              "length_ms": 122624,
+              "start_ms": 4883347,
+              "title": "Kapitel 42"
+            },
+            {
+              "length_ms": 121324,
+              "start_ms": 5005971,
+              "title": "Kapitel 43"
+            },
+            {
+              "length_ms": 121324,
+              "start_ms": 5127295,
+              "title": "Kapitel 44"
+            },
+            {
+              "length_ms": 120534,
+              "start_ms": 5248619,
+              "title": "Kapitel 45"
+            },
+            {
+              "length_ms": 122601,
+              "start_ms": 5369153,
+              "title": "Kapitel 46"
+            },
+            {
+              "length_ms": 122578,
+              "start_ms": 5491754,
+              "title": "Kapitel 47"
+            },
+            {
+              "length_ms": 121370,
+              "start_ms": 5614332,
+              "title": "Kapitel 48"
+            },
+            {
+              "length_ms": 120209,
+              "start_ms": 5735702,
+              "title": "Kapitel 49"
+            },
+            {
+              "length_ms": 122647,
+              "start_ms": 5855911,
+              "title": "Kapitel 50"
+            },
+            {
+              "length_ms": 120581,
+              "start_ms": 5978558,
+              "title": "Kapitel 51"
+            },
+            {
+              "length_ms": 120488,
+              "start_ms": 6099139,
+              "title": "Kapitel 52"
+            },
+            {
+              "length_ms": 123251,
+              "start_ms": 6219627,
+              "title": "Kapitel 53"
+            },
+            {
+              "length_ms": 121324,
+              "start_ms": 6342878,
+              "title": "Kapitel 54"
+            },
+            {
+              "length_ms": 120720,
+              "start_ms": 6464202,
+              "title": "Kapitel 55"
+            },
+            {
+              "length_ms": 124458,
+              "start_ms": 6584922,
+              "title": "Kapitel 56"
+            },
+            {
+              "length_ms": 122206,
+              "start_ms": 6709380,
+              "title": "Kapitel 57"
+            },
+            {
+              "length_ms": 120372,
+              "start_ms": 6831586,
+              "title": "Kapitel 58"
+            },
+            {
+              "length_ms": 124458,
+              "start_ms": 6951958,
+              "title": "Kapitel 59"
+            },
+            {
+              "length_ms": 121393,
+              "start_ms": 7076416,
+              "title": "Kapitel 60"
+            },
+            {
+              "length_ms": 122253,
+              "start_ms": 7197809,
+              "title": "Kapitel 61"
+            },
+            {
+              "length_ms": 122206,
+              "start_ms": 7320062,
+              "title": "Kapitel 62"
+            },
+            {
+              "length_ms": 122508,
+              "start_ms": 7442268,
+              "title": "Kapitel 63"
+            },
+            {
+              "length_ms": 121161,
+              "start_ms": 7564776,
+              "title": "Kapitel 64"
+            },
+            {
+              "length_ms": 120325,
+              "start_ms": 7685937,
+              "title": "Kapitel 65"
+            },
+            {
+              "length_ms": 120418,
+              "start_ms": 7806262,
+              "title": "Kapitel 66"
+            },
+            {
+              "length_ms": 121579,
+              "start_ms": 7926680,
+              "title": "Kapitel 67"
+            },
+            {
+              "length_ms": 121370,
+              "start_ms": 8048259,
+              "title": "Kapitel 68"
+            },
+            {
+              "length_ms": 121719,
+              "start_ms": 8169629,
+              "title": "Kapitel 69"
+            },
+            {
+              "length_ms": 120813,
+              "start_ms": 8291348,
+              "title": "Kapitel 70"
+            },
+            {
+              "length_ms": 122345,
+              "start_ms": 8412161,
+              "title": "Kapitel 71"
+            },
+            {
+              "length_ms": 121788,
+              "start_ms": 8534506,
+              "title": "Kapitel 72"
+            },
+            {
+              "length_ms": 120279,
+              "start_ms": 8656294,
+              "title": "Kapitel 73"
+            },
+            {
+              "length_ms": 123181,
+              "start_ms": 8776573,
+              "title": "Kapitel 74"
+            },
+            {
+              "length_ms": 120256,
+              "start_ms": 8899754,
+              "title": "Kapitel 75"
+            },
+            {
+              "length_ms": 120488,
+              "start_ms": 9020010,
+              "title": "Kapitel 76"
+            },
+            {
+              "length_ms": 121045,
+              "start_ms": 9140498,
+              "title": "Kapitel 77"
+            },
+            {
+              "length_ms": 122415,
+              "start_ms": 9261543,
+              "title": "Kapitel 78"
+            },
+            {
+              "length_ms": 120952,
+              "start_ms": 9383958,
+              "title": "Kapitel 79"
+            },
+            {
+              "length_ms": 120395,
+              "start_ms": 9504910,
+              "title": "Kapitel 80"
+            },
+            {
+              "length_ms": 121347,
+              "start_ms": 9625305,
+              "title": "Kapitel 81"
+            },
+            {
+              "length_ms": 121951,
+              "start_ms": 9746652,
+              "title": "Kapitel 82"
+            },
+            {
+              "length_ms": 120511,
+              "start_ms": 9868603,
+              "title": "Kapitel 83"
+            },
+            {
+              "length_ms": 122345,
+              "start_ms": 9989114,
+              "title": "Kapitel 84"
+            },
+            {
+              "length_ms": 122415,
+              "start_ms": 10111459,
+              "title": "Kapitel 85"
+            },
+            {
+              "length_ms": 123762,
+              "start_ms": 10233874,
+              "title": "Kapitel 86"
+            },
+            {
+              "length_ms": 120209,
+              "start_ms": 10357636,
+              "title": "Kapitel 87"
+            },
+            {
+              "length_ms": 121301,
+              "start_ms": 10477845,
+              "title": "Kapitel 88"
+            },
+            {
+              "length_ms": 129241,
+              "start_ms": 10599146,
+              "title": "Kapitel 89"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81RfaMSu5JL.jpg",
+          "id": "heiner-lamprecht-2023",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "heiner-lamprecht"
+          ],
+          "publisher": "Audio Media Digital",
+          "release_date": "2023-09-01",
+          "runtime_min": 178,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CDBW54DT",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alice-im-wunderland"
+        },
+        "josefine-preuss-2018": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B07HHX469K",
+              "region": "us"
+            },
+            {
+              "asin": "B07HHY2PZG",
+              "region": "de"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/61lMlUBCkKL.jpg",
+          "id": "josefine-preuss-2018",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "josefine-preuss"
+          ],
+          "publisher": "Random House Audio, Deutschland",
+          "release_date": "2018-10-15",
+          "runtime_min": 178,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07HHX469K",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07HHY2PZG",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alice-im-wunderland"
+        },
         "luisa-wietzorek-2023": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -2668,6 +3909,292 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0CP6862SQ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alice-im-wunderland"
+        },
+        "marco-neumann-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0DQWQ2LGH",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81u1duDY8IL.jpg",
+          "id": "marco-neumann-2024",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "marco-neumann"
+          ],
+          "publisher": "Strelbytskyy Multimedia Publishing",
+          "release_date": "2024-12-20",
+          "runtime_min": 174,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DQWQ2LGH",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alice-im-wunderland"
+        },
+        "michaela-may-2008": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00TMW3OIM",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51rU3zCduIL.jpg",
+          "id": "michaela-may-2008",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "michaela-may"
+          ],
+          "publisher": "O.SKAR Verlag GmbH",
+          "release_date": "2008-05-14",
+          "runtime_min": 142,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00TMW3OIM",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alice-im-wunderland"
+        },
+        "nana-spier-2009": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00TW3HC1Q",
+              "region": "us"
+            },
+            {
+              "asin": "B004V5HDQO",
+              "region": "de"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 13420,
+              "start_ms": 0,
+              "title": "Vorspann"
+            },
+            {
+              "length_ms": 804457,
+              "start_ms": 13420,
+              "title": "Erstes Kapitel: Hinunter in den Kaninchenbau"
+            },
+            {
+              "length_ms": 831089,
+              "start_ms": 817877,
+              "title": "Zweites Kapitel: Der Tränenteich"
+            },
+            {
+              "length_ms": 735910,
+              "start_ms": 1648966,
+              "title": "Drittes Kapitel: Fraktionsrennen und was daraus wird"
+            },
+            {
+              "length_ms": 1029294,
+              "start_ms": 2384876,
+              "title": "Viertes Kapitel: Die Wohnung des Kaninchens"
+            },
+            {
+              "length_ms": 837939,
+              "start_ms": 3414170,
+              "title": "Fünftes Kapitel: Guter Rat von einer Raupe"
+            },
+            {
+              "length_ms": 961376,
+              "start_ms": 4252109,
+              "title": "Sechstes Kapitel: Ferkel und Pfeffer"
+            },
+            {
+              "length_ms": 879363,
+              "start_ms": 5213485,
+              "title": "Siebentes Kapitel: Die verrückte Teegesellschaft"
+            },
+            {
+              "length_ms": 972591,
+              "start_ms": 6092848,
+              "title": "Achtes Kapitel: Das Croquetfeld der Königin"
+            },
+            {
+              "length_ms": 1029898,
+              "start_ms": 7065439,
+              "title": "Neuntes Kapitel: Die Geschichte der falschen Schildkröte"
+            },
+            {
+              "length_ms": 856491,
+              "start_ms": 8095337,
+              "title": "Zehntes Kapitel: Das Hummerballet"
+            },
+            {
+              "length_ms": 753209,
+              "start_ms": 8951828,
+              "title": "Elftes Kapitel: Wer hat die Kuchen gestohlen?"
+            },
+            {
+              "length_ms": 924990,
+              "start_ms": 9705037,
+              "title": "Zwölftes Kapitel: Alice ist die Klügste"
+            },
+            {
+              "length_ms": 11239,
+              "start_ms": 10630027,
+              "title": "Abspann"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81EMlwPtjOL.jpg",
+          "id": "nana-spier-2009",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "nana-spier"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2009-04-02",
+          "runtime_min": 177,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00TW3HC1Q",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B004V5HDQO",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alice-im-wunderland"
+        },
+        "sabine-schmitt-2024": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CW37X6PW",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81U-2KGWjQL.jpg",
+          "id": "sabine-schmitt-2024",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "sabine-schmitt"
+          ],
+          "publisher": "Pretorian Media",
+          "release_date": "2024-02-21",
+          "runtime_min": 173,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CW37X6PW",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alice-im-wunderland"
+        },
+        "senta-berger-2007": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00TM1VUJ8",
+              "region": "us"
+            },
+            {
+              "asin": "B004V5S1VA",
+              "region": "de"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51ZkVK9WEpL.jpg",
+          "id": "senta-berger-2007",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "senta-berger"
+          ],
+          "publisher": "Kein & Aber Records",
+          "release_date": "2007-07-19",
+          "runtime_min": 179,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00TM1VUJ8",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B004V5S1VA",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alice-im-wunderland"
+        },
+        "uta-kroemer-2020": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "8726627655",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91P6DPpoBDL.jpg",
+          "id": "uta-kroemer-2020",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "uta-kroemer"
+          ],
+          "publisher": "Saga Egmont",
+          "release_date": "2020-07-23",
+          "runtime_min": 145,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "8726627655",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alice-im-wunderland"
+        },
+        "werner-wawruschka-2010": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00TMSQ6LS",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51cijggUv0L.jpg",
+          "id": "werner-wawruschka-2010",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "werner-wawruschka"
+          ],
+          "publisher": "Ueberreuter Verlag GmbH",
+          "release_date": "2010-01-21",
+          "runtime_min": 147,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00TMSQ6LS",
               "type": "libex-import"
             }
           ],
@@ -2852,6 +4379,41 @@
           ],
           "work": "alice-in-wonderland"
         },
+        "arthur-q-ryan-2009": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00333CAL8",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3646044,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/611TsTlT5pL.jpg",
+          "id": "arthur-q-ryan-2009",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "arthur-q-ryan"
+          ],
+          "publisher": "Andrews UK Limited",
+          "release_date": "2009-02-17",
+          "runtime_min": 60,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00333CAL8",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alice-in-wonderland"
+        },
         "arundhati-raja-2017": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -2950,6 +4512,42 @@
           ],
           "work": "alice-in-wonderland"
         },
+        "barbara-rosenblat-2015": {
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00RW4EW56",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3589991,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81AWR4yJo0L.jpg",
+          "id": "barbara-rosenblat-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "barbara-rosenblat",
+            "full-cast",
+            "georgia-lee-schultz"
+          ],
+          "publisher": "Blackstone Audio, Inc.",
+          "release_date": "2015-01-07",
+          "runtime_min": 59,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00RW4EW56",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alice-in-wonderland"
+        },
         "bert-stauff-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -2973,6 +4571,124 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0FQFNT8R5",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alice-in-wonderland"
+        },
+        "catherine-ohara-2020": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "1601360231",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81+FarydtsL.jpg",
+          "id": "catherine-ohara-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "catherine-ohara"
+          ],
+          "publisher": "Audio Holdings LLC",
+          "release_date": "2020-10-08",
+          "runtime_min": 62,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1601360231",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alice-in-wonderland"
+        },
+        "cybill-shepherd-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0FFPK8YHZ",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 742411,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 739578,
+              "start_ms": 742411,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 606621,
+              "start_ms": 1481989,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 888279,
+              "start_ms": 2088610,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 815043,
+              "start_ms": 2976889,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 887118,
+              "start_ms": 3791932,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 846947,
+              "start_ms": 4679050,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 862342,
+              "start_ms": 5525997,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 878689,
+              "start_ms": 6388339,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 832760,
+              "start_ms": 7267028,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 670847,
+              "start_ms": 8099788,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 788177,
+              "start_ms": 8770635,
+              "title": "Chapter 12"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81VO2zgw0UL.jpg",
+          "id": "cybill-shepherd-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "cybill-shepherd"
+          ],
+          "publisher": "Phoenix Books, Inc.",
+          "release_date": "2025-06-26",
+          "runtime_min": 159,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FFPK8YHZ",
               "type": "libex-import"
             }
           ],
@@ -3019,6 +4735,190 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B002V5IWNO",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alice-in-wonderland"
+        },
+        "david-thorn-2008": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002V5CMJY",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1FatIgc+sL.jpg",
+          "id": "david-thorn-2008",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "david-thorn"
+          ],
+          "publisher": "Alcazar AudioWorks",
+          "release_date": "2008-12-16",
+          "runtime_min": 171,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002V5CMJY",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alice-in-wonderland"
+        },
+        "edoardo-ballerini-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0GZ54JM71",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91J9xj2ynjL.jpg",
+          "id": "edoardo-ballerini-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "edoardo-ballerini"
+          ],
+          "publisher": "Reluctant Poet, Inc.",
+          "release_date": "2026-05-05",
+          "runtime_min": 149,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GZ54JM71",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alice-in-wonderland"
+        },
+        "elizabeth-anne-harris-2022": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0B9C8W8R1",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 15254,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 927892,
+              "start_ms": 15254,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 888186,
+              "start_ms": 943146,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 763425,
+              "start_ms": 1831332,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1162274,
+              "start_ms": 2594757,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 962676,
+              "start_ms": 3757031,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1116972,
+              "start_ms": 4719707,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 983643,
+              "start_ms": 5836679,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1097119,
+              "start_ms": 6820322,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1098745,
+              "start_ms": 7917441,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1055532,
+              "start_ms": 9016186,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 850686,
+              "start_ms": 10071718,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 946143,
+              "start_ms": 10922404,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 14837,
+              "start_ms": 11868547,
+              "title": "Chapter 14"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81TDSFAdhNL.jpg",
+          "id": "elizabeth-anne-harris-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "elizabeth-anne-harris"
+          ],
+          "publisher": "Pretorian Media",
+          "release_date": "2022-08-15",
+          "runtime_min": 197,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0B9C8W8R1",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alice-in-wonderland"
+        },
+        "eva-le-gallienne-2011": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B004UN8UWI",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91ksfQrsa7L.jpg",
+          "id": "eva-le-gallienne-2011",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "eva-le-gallienne"
+          ],
+          "publisher": "Saland Publishing",
+          "release_date": "2011-04-01",
+          "runtime_min": 58,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B004UN8UWI",
               "type": "libex-import"
             }
           ],
@@ -3075,6 +4975,43 @@
             {
               "imported_at": "2026-08-01",
               "ref": "B07B44KC21",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alice-in-wonderland"
+        },
+        "jane-asher-2020": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "0008439648",
+              "region": "us"
+            },
+            {
+              "asin": "B0038UZQQM",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/819S-faYVdL.jpg",
+          "id": "jane-asher-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jane-asher"
+          ],
+          "publisher": "William Collins",
+          "release_date": "2020-09-17",
+          "runtime_min": 91,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "0008439648",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0038UZQQM",
               "type": "libex-import"
             }
           ],
@@ -3203,6 +5140,82 @@
             {
               "imported_at": "2026-08-01",
               "ref": "B00Q50CRT6",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alice-in-wonderland"
+        },
+        "joan-greenwood-2009": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0036HXY6Q",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3195669,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/910cqFqkFBL.jpg",
+          "id": "joan-greenwood-2009",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "joan-greenwood",
+            "stanley-holloway"
+          ],
+          "publisher": "Saland Publishing",
+          "release_date": "2009-08-21",
+          "runtime_min": 53,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0036HXY6Q",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alice-in-wonderland"
+        },
+        "joanne-frogatt-2015": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B017KUKN8G",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 239444,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 295683,
+              "start_ms": 239444,
+              "title": "Chapter 2"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91GQEtdrykL.jpg",
+          "id": "joanne-frogatt-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "joanne-frogatt"
+          ],
+          "publisher": "Dreamscape Media, LLC",
+          "release_date": "2015-11-05",
+          "runtime_min": 8,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B017KUKN8G",
               "type": "libex-import"
             }
           ],
@@ -3444,6 +5457,62 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0GQ5FZRLW",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alice-in-wonderland"
+        },
+        "tuppence-middleton-2021": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "1662087004",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/912UDs7kU3L.jpg",
+          "id": "tuppence-middleton-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "tuppence-middleton"
+          ],
+          "publisher": "Dreamscape Media, LLC",
+          "release_date": "2021-05-04",
+          "runtime_min": 9,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1662087004",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alice-in-wonderland"
+        },
+        "william-rushton-2020": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "1601365543",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81Lh4dI72TL.jpg",
+          "id": "william-rushton-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "william-rushton"
+          ],
+          "publisher": "Audio Holdings LLC",
+          "release_date": "2020-11-06",
+          "runtime_min": 106,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1601365543",
               "type": "libex-import"
             }
           ],

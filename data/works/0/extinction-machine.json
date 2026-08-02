@@ -4301,6 +4301,10 @@
             {
               "asin": "1705258905",
               "region": "us"
+            },
+            {
+              "asin": "B08L8D9XQY",
+              "region": "ca"
             }
           ],
           "chapters": [
@@ -4549,6 +4553,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "1705258905",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B08L8D9XQY",
               "type": "libex-import"
             }
           ],
@@ -4851,6 +4860,10 @@
             {
               "asin": "B01DFIVAFC",
               "region": "us"
+            },
+            {
+              "asin": "B071HFWQ98",
+              "region": "ca"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/A1LwX-Pq4yL.jpg",
@@ -4872,6 +4885,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B01DFIVAFC",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B071HFWQ98",
               "type": "libex-import"
             }
           ],
@@ -10364,6 +10382,10 @@
             {
               "asin": "B07V9VSBQQ",
               "region": "us"
+            },
+            {
+              "asin": "B07V7FL77C",
+              "region": "de"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91afHy7EsKL.jpg",
@@ -10380,6 +10402,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B07V9VSBQQ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07V7FL77C",
               "type": "libex-import"
             }
           ],
@@ -10879,6 +10906,62 @@
       "language": "de",
       "license": "CC0-1.0",
       "recordings": {
+        "julian-loidl-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CHBHF7G2",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81UP1Z9ZZTL.jpg",
+          "id": "julian-loidl-2023",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "julian-loidl"
+          ],
+          "publisher": "Audio Media Digital",
+          "release_date": "2023-09-05",
+          "runtime_min": 38,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CHBHF7G2",
+              "type": "libex-import"
+            }
+          ],
+          "work": "fabeln"
+        },
+        "ludwig-thiesen-2019": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B07QKYK4TN",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71GHxdwC3qL.jpg",
+          "id": "ludwig-thiesen-2019",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "ludwig-thiesen"
+          ],
+          "publisher": "SWR Edition",
+          "release_date": "2019-04-11",
+          "runtime_min": 44,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07QKYK4TN",
+              "type": "libex-import"
+            }
+          ],
+          "work": "fabeln"
+        },
         "sigmar-solbach-2021": {
           "abridged": true,
           "added_at": "2026-08-02",

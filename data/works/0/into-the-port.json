@@ -8506,6 +8506,10 @@
             {
               "asin": "B07G96SMB2",
               "region": "us"
+            },
+            {
+              "asin": "B07G93NN4H",
+              "region": "de"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91fAWWa7ytL.jpg",
@@ -8522,6 +8526,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B07G96SMB2",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07G93NN4H",
               "type": "libex-import"
             }
           ],
@@ -9602,6 +9611,10 @@
             {
               "asin": "B0G35RT34K",
               "region": "us"
+            },
+            {
+              "asin": "B0G35R7K1Z",
+              "region": "ca"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91ND2s0nIGL.jpg",
@@ -9618,6 +9631,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0G35RT34K",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0G35R7K1Z",
               "type": "libex-import"
             }
           ],
@@ -10904,6 +10922,22 @@
             {
               "asin": "B0D7FFQ821",
               "region": "us"
+            },
+            {
+              "asin": "B0D7DZ277V",
+              "region": "ca"
+            },
+            {
+              "asin": "B0D7FFT12M",
+              "region": "uk"
+            },
+            {
+              "asin": "B0D7F192RY",
+              "region": "au"
+            },
+            {
+              "asin": "B0D7DJDL39",
+              "region": "de"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/A1rsaOR-JyL.jpg",
@@ -10920,6 +10954,26 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0D7FFQ821",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0D7DZ277V",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0D7FFT12M",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0D7F192RY",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0D7DJDL39",
               "type": "libex-import"
             }
           ],
@@ -11641,6 +11695,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "alan-medcroft-2020": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B08PDMMPYH",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/813m+Exoz-L.jpg",
+          "id": "alan-medcroft-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alan-medcroft"
+          ],
+          "publisher": "Double Tap Press",
+          "release_date": "2020-12-01",
+          "runtime_min": 576,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B08PDMMPYH",
+              "type": "libex-import"
+            }
+          ],
+          "work": "invasion-uprising"
+        },
         "mark-andrews-2026": {
           "abridged": false,
           "added_at": "2026-08-02",

@@ -2141,6 +2141,10 @@
             {
               "asin": "B0F252G8PX",
               "region": "us"
+            },
+            {
+              "asin": "B0F24ZVSC1",
+              "region": "ca"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91VgAEjsDBL.jpg",
@@ -2157,6 +2161,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0F252G8PX",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0F24ZVSC1",
               "type": "libex-import"
             }
           ],
@@ -7822,6 +7831,10 @@
             {
               "asin": "B00XM2NYZ6",
               "region": "us"
+            },
+            {
+              "asin": "B0CQ91QD3Z",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -7995,6 +8008,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B00XM2NYZ6",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CQ91QD3Z",
               "type": "libex-import"
             }
           ],
@@ -13230,6 +13248,34 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0D6TJMTFR",
+              "type": "libex-import"
+            }
+          ],
+          "work": "smugglers-reef"
+        },
+        "tom-weiss-2020": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B08J14D8BG",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81hWrpolUZL.jpg",
+          "id": "tom-weiss-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "tom-weiss"
+          ],
+          "publisher": "Spoken Realms",
+          "release_date": "2020-09-18",
+          "runtime_min": 340,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B08J14D8BG",
               "type": "libex-import"
             }
           ],

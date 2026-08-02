@@ -179,6 +179,10 @@
             {
               "asin": "B0FF4WFS6S",
               "region": "us"
+            },
+            {
+              "asin": "B0FF4T147R",
+              "region": "de"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91AxUcDL9DL.jpg",
@@ -197,6 +201,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0FF4WFS6S",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FF4T147R",
               "type": "libex-import"
             }
           ],
@@ -1874,6 +1883,34 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B003GXDDYS",
+              "type": "libex-import"
+            }
+          ],
+          "work": "fever-dream-douglas-preston"
+        },
+        "rene-auberjonois-2010-2": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B003GXBUC0",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91j293G07QL.jpg",
+          "id": "rene-auberjonois-2010-2",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "rene-auberjonois"
+          ],
+          "publisher": "Grand Central Publishing",
+          "release_date": "2010-05-11",
+          "runtime_min": 427,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B003GXBUC0",
               "type": "libex-import"
             }
           ],

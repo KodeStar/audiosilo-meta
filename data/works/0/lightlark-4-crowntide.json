@@ -2600,6 +2600,10 @@
             {
               "asin": "B0CZBPTG4V",
               "region": "us"
+            },
+            {
+              "asin": "B0CZBKNGBN",
+              "region": "uk"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81Ai23zGmwL.jpg",
@@ -2616,6 +2620,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0CZBPTG4V",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CZBKNGBN",
               "type": "libex-import"
             }
           ],
@@ -7562,6 +7571,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "robin-nixon-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0C1NJD4K6",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81x1TVs92bL.jpg",
+          "id": "robin-nixon-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "robin-nixon"
+          ],
+          "publisher": "Bookstream Audiobooks",
+          "release_date": "2023-04-06",
+          "runtime_min": 13,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0C1NJD4K6",
+              "type": "libex-import"
+            }
+          ],
+          "work": "lily-and-the-lion"
+        },
         "sam-kusi-2025": {
           "abridged": false,
           "added_at": "2026-08-02",

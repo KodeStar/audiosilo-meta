@@ -4052,6 +4052,10 @@
             {
               "asin": "B0FTZQWHDF",
               "region": "us"
+            },
+            {
+              "asin": "B0FTZSBH24",
+              "region": "ca"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81O3slH7uRL.jpg",
@@ -4068,6 +4072,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0FTZQWHDF",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FTZSBH24",
               "type": "libex-import"
             }
           ],
@@ -4204,6 +4213,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "cathleen-fuller-2021": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B08V3FWVJ7",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81bxQYfyoLL.jpg",
+          "id": "cathleen-fuller-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "cathleen-fuller"
+          ],
+          "publisher": "Spoken Realms",
+          "release_date": "2021-01-27",
+          "runtime_min": 155,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B08V3FWVJ7",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-box-car-children"
+        },
         "krystal-hammond-2024": {
           "abridged": false,
           "added_at": "2026-08-02",

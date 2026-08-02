@@ -312,6 +312,22 @@
             {
               "asin": "B08NFGYCG7",
               "region": "us"
+            },
+            {
+              "asin": "B08NFK9R95",
+              "region": "ca"
+            },
+            {
+              "asin": "B08NFHPHYN",
+              "region": "uk"
+            },
+            {
+              "asin": "B08NFKZ9HX",
+              "region": "au"
+            },
+            {
+              "asin": "B08NFHBPXH",
+              "region": "de"
             }
           ],
           "chapters": [
@@ -570,6 +586,26 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B08NFGYCG7",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B08NFK9R95",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B08NFHPHYN",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B08NFKZ9HX",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B08NFHBPXH",
               "type": "libex-import"
             }
           ],
@@ -1486,6 +1522,14 @@
             {
               "asin": "B00IIS32NI",
               "region": "us"
+            },
+            {
+              "asin": "B0716W5GZ9",
+              "region": "ca"
+            },
+            {
+              "asin": "B00IIQT7UW",
+              "region": "uk"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/71T0GkJ+XaL.jpg",
@@ -1502,6 +1546,16 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B00IIS32NI",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0716W5GZ9",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00IIQT7UW",
               "type": "libex-import"
             }
           ],
@@ -6446,6 +6500,10 @@
             {
               "asin": "B0FX6Y7S27",
               "region": "us"
+            },
+            {
+              "asin": "B08LQVM7GC",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91UeRTaNw4L.jpg",
@@ -6462,6 +6520,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0FX6Y7S27",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B08LQVM7GC",
               "type": "libex-import"
             }
           ],
@@ -6549,6 +6612,10 @@
             {
               "asin": "B0CTD13ZDV",
               "region": "us"
+            },
+            {
+              "asin": "B0CTD1KDPH",
+              "region": "ca"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91MmCN4xuGL.jpg",
@@ -6565,6 +6632,11 @@
             {
               "imported_at": "2026-08-01",
               "ref": "B0CTD13ZDV",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CTD1KDPH",
               "type": "libex-import"
             }
           ],
@@ -7313,6 +7385,62 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "howard-king-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0C1NGL848",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91ITgucMqeL.jpg",
+          "id": "howard-king-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "howard-king"
+          ],
+          "publisher": "Digital Literature International",
+          "release_date": "2023-04-06",
+          "runtime_min": 24,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0C1NGL848",
+              "type": "libex-import"
+            }
+          ],
+          "work": "old-bugs"
+        },
+        "peter-coates-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CX927GWT",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81Jr47iydvL.jpg",
+          "id": "peter-coates-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "peter-coates"
+          ],
+          "publisher": "Strelbytskyy Multimedia Publishing",
+          "release_date": "2024-03-07",
+          "runtime_min": 17,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CX927GWT",
+              "type": "libex-import"
+            }
+          ],
+          "work": "old-bugs"
+        },
         "sam-kusi-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -9528,6 +9656,10 @@
             {
               "asin": "B0721QQGYL",
               "region": "us"
+            },
+            {
+              "asin": "B0C244D51C",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/913Flc5CjiL.jpg",
@@ -9544,6 +9676,67 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0721QQGYL",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0C244D51C",
+              "type": "libex-import"
+            }
+          ],
+          "work": "old-mother-west-wind"
+        },
+        "mary-baker-2017": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B073S9CHNK",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1ocENG1V7L.jpg",
+          "id": "mary-baker-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "mary-baker"
+          ],
+          "publisher": "Audioliterature",
+          "release_date": "2017-07-14",
+          "runtime_min": 99,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B073S9CHNK",
+              "type": "libex-import"
+            }
+          ],
+          "work": "old-mother-west-wind"
+        },
+        "wendy-rich-stetson-2018": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B07CSNTFL5",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/916xwxoh2gL.jpg",
+          "id": "wendy-rich-stetson-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "wendy-rich-stetson"
+          ],
+          "publisher": "Spoken Realms",
+          "release_date": "2018-05-01",
+          "runtime_min": 115,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07CSNTFL5",
               "type": "libex-import"
             }
           ],
@@ -9686,6 +9879,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "robin-nixon-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0C1NHTTXY",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81F89OEjg5L.jpg",
+          "id": "robin-nixon-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "robin-nixon"
+          ],
+          "publisher": "Bookstream Audiobooks",
+          "release_date": "2023-04-06",
+          "runtime_min": 4,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0C1NHTTXY",
+              "type": "libex-import"
+            }
+          ],
+          "work": "old-sultan"
+        },
         "sam-kusi-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -9799,6 +10020,10 @@
             {
               "asin": "B0GXLL74QG",
               "region": "us"
+            },
+            {
+              "asin": "B0GXLJC5PH",
+              "region": "ca"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81l5MLcn5jL.jpg",
@@ -9815,6 +10040,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0GXLL74QG",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GXLJC5PH",
               "type": "libex-import"
             }
           ],

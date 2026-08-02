@@ -4515,6 +4515,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "felbrigg-napoleon-herriot-2018": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B07D9QGFL5",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/61I9uQZp7ML.jpg",
+          "id": "felbrigg-napoleon-herriot-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "felbrigg-napoleon-herriot"
+          ],
+          "publisher": "FNH Audio",
+          "release_date": "2018-05-25",
+          "runtime_min": 57,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07D9QGFL5",
+              "type": "libex-import"
+            }
+          ],
+          "work": "with-intent-to-steal"
+        },
         "gene-blake-2015": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -10699,6 +10727,10 @@
             {
               "asin": "B0CCPM6WF4",
               "region": "us"
+            },
+            {
+              "asin": "B0CCPNNYFH",
+              "region": "ca"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/912ctrpgiML.jpg",
@@ -10715,6 +10747,11 @@
             {
               "imported_at": "2026-08-01",
               "ref": "B0CCPM6WF4",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CCPNNYFH",
               "type": "libex-import"
             }
           ],

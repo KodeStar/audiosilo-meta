@@ -1936,6 +1936,10 @@
             {
               "asin": "B005HF86L8",
               "region": "us"
+            },
+            {
+              "asin": "B005HF7JL6",
+              "region": "uk"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/519+3l5cRgL.jpg",
@@ -1952,6 +1956,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B005HF86L8",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B005HF7JL6",
               "type": "libex-import"
             }
           ],
@@ -2302,6 +2311,10 @@
             {
               "asin": "B08GKNGDC8",
               "region": "us"
+            },
+            {
+              "asin": "B08GKCWLVG",
+              "region": "ca"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81mWNRmKKkL.jpg",
@@ -2318,6 +2331,11 @@
             {
               "imported_at": "2026-08-01",
               "ref": "B08GKNGDC8",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B08GKCWLVG",
               "type": "libex-import"
             }
           ],
@@ -9238,6 +9256,34 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B009RPRUQ6",
+              "type": "libex-import"
+            }
+          ],
+          "work": "earth-song-catherine-coulter"
+        },
+        "anne-flosnik-2012-2": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B009Z4MYUQ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81BtAYd9uGL.jpg",
+          "id": "anne-flosnik-2012-2",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "anne-flosnik"
+          ],
+          "publisher": "Brilliance Audio",
+          "release_date": "2012-11-05",
+          "runtime_min": 303,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B009Z4MYUQ",
               "type": "libex-import"
             }
           ],

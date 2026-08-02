@@ -1875,6 +1875,22 @@
             {
               "asin": "B0848Y7Y3N",
               "region": "us"
+            },
+            {
+              "asin": "B0848YNCTX",
+              "region": "ca"
+            },
+            {
+              "asin": "B0848YCKVY",
+              "region": "uk"
+            },
+            {
+              "asin": "B0848Y6QWM",
+              "region": "au"
+            },
+            {
+              "asin": "B0849J38NM",
+              "region": "de"
             }
           ],
           "chapters": [
@@ -2283,6 +2299,26 @@
             {
               "imported_at": "2026-08-01",
               "ref": "B0848Y7Y3N",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0848YNCTX",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0848YCKVY",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0848Y6QWM",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0849J38NM",
               "type": "libex-import"
             }
           ],
@@ -5739,6 +5775,10 @@
             {
               "asin": "B0D47P8J46",
               "region": "us"
+            },
+            {
+              "asin": "B0D47LWMXJ",
+              "region": "ca"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81AkWjsa1VL.jpg",
@@ -5755,6 +5795,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0D47P8J46",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0D47LWMXJ",
               "type": "libex-import"
             }
           ],
@@ -5884,6 +5929,10 @@
             {
               "asin": "B011ITESS6",
               "region": "us"
+            },
+            {
+              "asin": "B011IR8Z6O",
+              "region": "de"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/A1yngceGhhL.jpg",
@@ -5900,6 +5949,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B011ITESS6",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B011IR8Z6O",
               "type": "libex-import"
             }
           ],
@@ -10616,6 +10670,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "edward-asner-2012": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B007APKZ58",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71xkNLNa3tL.jpg",
+          "id": "edward-asner-2012",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "edward-asner"
+          ],
+          "publisher": "Random House Audio",
+          "release_date": "2012-02-20",
+          "runtime_min": 319,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B007APKZ58",
+              "type": "libex-import"
+            }
+          ],
+          "work": "sick-puppy"
+        },
         "george-newbern-2013": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -11213,6 +11295,34 @@
           ],
           "work": "siddhartha"
         },
+        "chris-hendrie-2013": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B006ZO0C8U",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71GZIb8RSkL.jpg",
+          "id": "chris-hendrie-2013",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "chris-hendrie"
+          ],
+          "publisher": "Chris Hendrie AudiobookstoLife",
+          "release_date": "2013-09-03",
+          "runtime_min": 254,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B006ZO0C8U",
+              "type": "libex-import"
+            }
+          ],
+          "work": "siddhartha"
+        },
         "christian-friedel-2016": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -11675,6 +11785,110 @@
           ],
           "work": "siddhartha"
         },
+        "david-cross-2012": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B007XV954Q",
+              "region": "us"
+            },
+            {
+              "asin": "1620790351",
+              "region": "es"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1260008,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1419204,
+              "start_ms": 1260008,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1302500,
+              "start_ms": 2679212,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 619323,
+              "start_ms": 3981712,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1728493,
+              "start_ms": 4601035,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1084279,
+              "start_ms": 6329528,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1238970,
+              "start_ms": 7413807,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1556852,
+              "start_ms": 8652777,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1665985,
+              "start_ms": 10209629,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1308305,
+              "start_ms": 11875614,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 980207,
+              "start_ms": 13183919,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1605892,
+              "start_ms": 14164126,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 242370,
+              "start_ms": 15770018,
+              "title": "Chapter 13"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81lrfqxhsVL.jpg",
+          "id": "david-cross-2012",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "david-cross"
+          ],
+          "publisher": "Cherry Hill Publishing, LLC",
+          "release_date": "2012-04-27",
+          "runtime_min": 266,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B007XV954Q",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1620790351",
+              "type": "libex-import"
+            }
+          ],
+          "work": "siddhartha"
+        },
         "derek-jacobi-1999": {
           "abridged": true,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -11760,6 +11974,116 @@
             {
               "imported_at": "2026-07-30",
               "ref": "B002V5ITLO",
+              "type": "libex-import"
+            }
+          ],
+          "work": "siddhartha"
+        },
+        "firdous-bamji-2006": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002UZYX4C",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 92941,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 10744,
+              "start_ms": 92941,
+              "title": "Part One"
+            },
+            {
+              "length_ms": 1050360,
+              "start_ms": 103685,
+              "title": "The Brahmin's Son"
+            },
+            {
+              "length_ms": 1243507,
+              "start_ms": 1154045,
+              "title": "Among the Samanas"
+            },
+            {
+              "length_ms": 1278943,
+              "start_ms": 2397552,
+              "title": "Gautama"
+            },
+            {
+              "length_ms": 588700,
+              "start_ms": 3676495,
+              "title": "Awakening"
+            },
+            {
+              "length_ms": 3000,
+              "start_ms": 4265195,
+              "title": "Part Two"
+            },
+            {
+              "length_ms": 1762518,
+              "start_ms": 4268195,
+              "title": "Kamala"
+            },
+            {
+              "length_ms": 1089190,
+              "start_ms": 6030713,
+              "title": "Among the Child People"
+            },
+            {
+              "length_ms": 1253170,
+              "start_ms": 7119903,
+              "title": "Samsara"
+            },
+            {
+              "length_ms": 1623898,
+              "start_ms": 8373073,
+              "title": "By the River"
+            },
+            {
+              "length_ms": 1746770,
+              "start_ms": 9996971,
+              "title": "The Ferryman"
+            },
+            {
+              "length_ms": 1274060,
+              "start_ms": 11743741,
+              "title": "The Son"
+            },
+            {
+              "length_ms": 1016020,
+              "start_ms": 13017801,
+              "title": "Om"
+            },
+            {
+              "length_ms": 1639231,
+              "start_ms": 14033821,
+              "title": "Govinda"
+            },
+            {
+              "length_ms": 3181645,
+              "start_ms": 15673052,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81xkc87VKNL.jpg",
+          "id": "firdous-bamji-2006",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "firdous-bamji"
+          ],
+          "publisher": "Recorded Books",
+          "release_date": "2006-05-08",
+          "runtime_min": 314,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002UZYX4C",
               "type": "libex-import"
             }
           ],
@@ -12728,6 +13052,96 @@
           ],
           "work": "siddhartha"
         },
+        "mike-vendetti-2013": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00DCCZSQE",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1149573,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1435968,
+              "start_ms": 1149573,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1236416,
+              "start_ms": 2585541,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 609756,
+              "start_ms": 3821957,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1760491,
+              "start_ms": 4431713,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1033009,
+              "start_ms": 6192204,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1130533,
+              "start_ms": 7225213,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1463832,
+              "start_ms": 8355746,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1475303,
+              "start_ms": 9819578,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1112282,
+              "start_ms": 11294881,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 924619,
+              "start_ms": 12407163,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1431789,
+              "start_ms": 13331782,
+              "title": "Chapter 12"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71MAqVbZHPL.jpg",
+          "id": "mike-vendetti-2013",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "mike-vendetti"
+          ],
+          "publisher": "Spoken Realms",
+          "release_date": "2013-06-12",
+          "runtime_min": 245,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00DCCZSQE",
+              "type": "libex-import"
+            }
+          ],
+          "work": "siddhartha"
+        },
         "paul-ansdell-2018": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -12841,6 +13255,96 @@
             {
               "imported_at": "2026-07-30",
               "ref": "B0FKTQCSYT",
+              "type": "libex-import"
+            }
+          ],
+          "work": "siddhartha"
+        },
+        "sandra-cullum-2016": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B01MQJL5UQ",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1239342,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1434343,
+              "start_ms": 1239342,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1318150,
+              "start_ms": 2673685,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 610685,
+              "start_ms": 3991835,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1895584,
+              "start_ms": 4602520,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1182221,
+              "start_ms": 6498104,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1310766,
+              "start_ms": 7680325,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1659623,
+              "start_ms": 8991091,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1713540,
+              "start_ms": 10650714,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1361943,
+              "start_ms": 12364254,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1048706,
+              "start_ms": 13726197,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1736992,
+              "start_ms": 14774903,
+              "title": "Chapter 12"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71hs3ngq6RL.jpg",
+          "id": "sandra-cullum-2016",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "sandra-cullum"
+          ],
+          "publisher": "Spoken Realms",
+          "release_date": "2016-11-17",
+          "runtime_min": 275,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B01MQJL5UQ",
               "type": "libex-import"
             }
           ],
@@ -13370,6 +13874,96 @@
             {
               "imported_at": "2026-07-30",
               "ref": "B004V2NRK8",
+              "type": "libex-import"
+            }
+          ],
+          "work": "siddhartha"
+        },
+        "victoria-mcgee-2011": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0064RXY42",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1212964,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1417857,
+              "start_ms": 1212964,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1296184,
+              "start_ms": 2630821,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 618765,
+              "start_ms": 3927005,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1876869,
+              "start_ms": 4545770,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1201633,
+              "start_ms": 6422639,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1324606,
+              "start_ms": 7624272,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1654468,
+              "start_ms": 8948878,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1797178,
+              "start_ms": 10603346,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1302779,
+              "start_ms": 12400524,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1013319,
+              "start_ms": 13703303,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1598601,
+              "start_ms": 14716622,
+              "title": "Chapter 12"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91omWGPJv+L.jpg",
+          "id": "victoria-mcgee-2011",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "victoria-mcgee"
+          ],
+          "publisher": "Trout Lake Media",
+          "release_date": "2011-11-09",
+          "runtime_min": 271,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0064RXY42",
               "type": "libex-import"
             }
           ],

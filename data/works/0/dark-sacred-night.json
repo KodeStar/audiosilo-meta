@@ -8096,6 +8096,10 @@
             {
               "asin": "B0C5B7PDVV",
               "region": "us"
+            },
+            {
+              "asin": "B0C59WBGL4",
+              "region": "ca"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81DYsLX-ZCL.jpg",
@@ -8112,6 +8116,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0C5B7PDVV",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0C59WBGL4",
               "type": "libex-import"
             }
           ],
@@ -9878,6 +9887,34 @@
             {
               "imported_at": "2026-08-01",
               "ref": "B081S8L13Z",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dark-vortex"
+        },
+        "simone-gayuma-2019-2": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B07ZFVRRFV",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81sPC-8FocL.jpg",
+          "id": "simone-gayuma-2019-2",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "simone-gayuma"
+          ],
+          "publisher": "Stella Marie Alden",
+          "release_date": "2019-10-22",
+          "runtime_min": 1323,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07ZFVRRFV",
               "type": "libex-import"
             }
           ],
