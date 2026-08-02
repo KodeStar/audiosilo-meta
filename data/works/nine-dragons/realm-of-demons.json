@@ -4389,6 +4389,10 @@
       "authors": [
         "will-wight"
       ],
+      "genres": [
+        "epic-fantasy",
+        "fantasy"
+      ],
       "id": "reaper",
       "language": "en",
       "license": "CC0-1.0",
@@ -4588,6 +4592,11 @@
           "imported_at": "2026-07-11",
           "ref": "B09JPHP5RD",
           "type": "openaudible-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B09JPFLPVX",
+          "type": "libex-import"
         }
       ],
       "title": "Reaper"
@@ -9560,6 +9569,11 @@
       "authors": [
         "actus"
       ],
+      "genres": [
+        "epic-fantasy",
+        "fantasy",
+        "young-adult"
+      ],
       "id": "reaping-fate",
       "language": "en",
       "license": "CC0-1.0",
@@ -9958,6 +9972,11 @@
           "imported_at": "2026-07-11",
           "ref": "B0CZ1FC4X7",
           "type": "openaudible-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CZ1DGS1T",
+          "type": "libex-import"
         }
       ],
       "title": "Reaping Fate"
@@ -11254,6 +11273,11 @@
       "authors": [
         "daphne-du-maurier"
       ],
+      "genres": [
+        "classics",
+        "gothic",
+        "horror"
+      ],
       "id": "rebecca",
       "language": "en",
       "license": "CC0-1.0",
@@ -11265,6 +11289,23 @@
             {
               "asin": "B0032N4TK4",
               "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3553117,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3772360,
+              "start_ms": 3553117,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3354308,
+              "start_ms": 7325477,
+              "title": "Chapter 3"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/41qZUwQpTsL.jpg",
@@ -11295,6 +11336,28 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 2790736,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2792872,
+              "start_ms": 2790736,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2814095,
+              "start_ms": 5583608,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2794405,
+              "start_ms": 8397703,
+              "title": "Chapter 4"
+            }
+          ],
           "cover_url": "https://m.media-amazon.com/images/I/A15SH+0FIiL.jpg",
           "id": "harriet-walters-2020",
           "language": "en",
@@ -11321,6 +11384,158 @@
             {
               "asin": "B0D4FLQKPS",
               "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 16369,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 569074,
+              "start_ms": 16369,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1039581,
+              "start_ms": 585443,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1294093,
+              "start_ms": 1625024,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2078232,
+              "start_ms": 2919117,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1674902,
+              "start_ms": 4997349,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2722655,
+              "start_ms": 6672251,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 2710976,
+              "start_ms": 9394906,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1429235,
+              "start_ms": 12105882,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 2630727,
+              "start_ms": 13535117,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 2058262,
+              "start_ms": 16165844,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 2356338,
+              "start_ms": 18224106,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 2075491,
+              "start_ms": 20580444,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 2332514,
+              "start_ms": 22655935,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1623284,
+              "start_ms": 24988449,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 2395649,
+              "start_ms": 26611733,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 3632762,
+              "start_ms": 29007382,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 2358984,
+              "start_ms": 32640144,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 2645147,
+              "start_ms": 34999128,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 2763336,
+              "start_ms": 37644275,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 2785954,
+              "start_ms": 40407611,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 2283194,
+              "start_ms": 43193565,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 1744376,
+              "start_ms": 45476759,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 2842725,
+              "start_ms": 47221135,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 2416779,
+              "start_ms": 50063860,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 1301130,
+              "start_ms": 52480639,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 1955259,
+              "start_ms": 53781769,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 1906521,
+              "start_ms": 55737028,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 1962619,
+              "start_ms": 57643549,
+              "title": "Afterword"
+            },
+            {
+              "length_ms": 23799,
+              "start_ms": 59606168,
+              "title": "End Credits"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/71zd8CQuzXL.jpg",
@@ -11351,6 +11566,1083 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 331069,
+              "start_ms": 0,
+              "title": "Kapitel 1"
+            },
+            {
+              "length_ms": 314816,
+              "start_ms": 331069,
+              "title": "Kapitel 2"
+            },
+            {
+              "length_ms": 307664,
+              "start_ms": 645885,
+              "title": "Kapitel 3"
+            },
+            {
+              "length_ms": 284467,
+              "start_ms": 953549,
+              "title": "Kapitel 4"
+            },
+            {
+              "length_ms": 263453,
+              "start_ms": 1238016,
+              "title": "Kapitel 5"
+            },
+            {
+              "length_ms": 288182,
+              "start_ms": 1501469,
+              "title": "Kapitel 6"
+            },
+            {
+              "length_ms": 277757,
+              "start_ms": 1789651,
+              "title": "Kapitel 7"
+            },
+            {
+              "length_ms": 312378,
+              "start_ms": 2067408,
+              "title": "Kapitel 8"
+            },
+            {
+              "length_ms": 281309,
+              "start_ms": 2379786,
+              "title": "Kapitel 9"
+            },
+            {
+              "length_ms": 297540,
+              "start_ms": 2661095,
+              "title": "Kapitel 10"
+            },
+            {
+              "length_ms": 288856,
+              "start_ms": 2958635,
+              "title": "Kapitel 11"
+            },
+            {
+              "length_ms": 296333,
+              "start_ms": 3247491,
+              "title": "Kapitel 12"
+            },
+            {
+              "length_ms": 293662,
+              "start_ms": 3543824,
+              "title": "Kapitel 13"
+            },
+            {
+              "length_ms": 343469,
+              "start_ms": 3837486,
+              "title": "Kapitel 14"
+            },
+            {
+              "length_ms": 267377,
+              "start_ms": 4180955,
+              "title": "Kapitel 15"
+            },
+            {
+              "length_ms": 315721,
+              "start_ms": 4448332,
+              "title": "Kapitel 16"
+            },
+            {
+              "length_ms": 286696,
+              "start_ms": 4764053,
+              "title": "Kapitel 17"
+            },
+            {
+              "length_ms": 312424,
+              "start_ms": 5050749,
+              "title": "Kapitel 18"
+            },
+            {
+              "length_ms": 289459,
+              "start_ms": 5363173,
+              "title": "Kapitel 19"
+            },
+            {
+              "length_ms": 291015,
+              "start_ms": 5652632,
+              "title": "Kapitel 20"
+            },
+            {
+              "length_ms": 282168,
+              "start_ms": 5943647,
+              "title": "Kapitel 21"
+            },
+            {
+              "length_ms": 305017,
+              "start_ms": 6225815,
+              "title": "Kapitel 22"
+            },
+            {
+              "length_ms": 310079,
+              "start_ms": 6530832,
+              "title": "Kapitel 23"
+            },
+            {
+              "length_ms": 264870,
+              "start_ms": 6840911,
+              "title": "Kapitel 24"
+            },
+            {
+              "length_ms": 306503,
+              "start_ms": 7105781,
+              "title": "Kapitel 25"
+            },
+            {
+              "length_ms": 283283,
+              "start_ms": 7412284,
+              "title": "Kapitel 26"
+            },
+            {
+              "length_ms": 277408,
+              "start_ms": 7695567,
+              "title": "Kapitel 27"
+            },
+            {
+              "length_ms": 314653,
+              "start_ms": 7972975,
+              "title": "Kapitel 28"
+            },
+            {
+              "length_ms": 295706,
+              "start_ms": 8287628,
+              "title": "Kapitel 29"
+            },
+            {
+              "length_ms": 287068,
+              "start_ms": 8583334,
+              "title": "Kapitel 30"
+            },
+            {
+              "length_ms": 286627,
+              "start_ms": 8870402,
+              "title": "Kapitel 31"
+            },
+            {
+              "length_ms": 329073,
+              "start_ms": 9157029,
+              "title": "Kapitel 32"
+            },
+            {
+              "length_ms": 304320,
+              "start_ms": 9486102,
+              "title": "Kapitel 33"
+            },
+            {
+              "length_ms": 280473,
+              "start_ms": 9790422,
+              "title": "Kapitel 34"
+            },
+            {
+              "length_ms": 313562,
+              "start_ms": 10070895,
+              "title": "Kapitel 35"
+            },
+            {
+              "length_ms": 289367,
+              "start_ms": 10384457,
+              "title": "Kapitel 36"
+            },
+            {
+              "length_ms": 309916,
+              "start_ms": 10673824,
+              "title": "Kapitel 37"
+            },
+            {
+              "length_ms": 290086,
+              "start_ms": 10983740,
+              "title": "Kapitel 38"
+            },
+            {
+              "length_ms": 303159,
+              "start_ms": 11273826,
+              "title": "Kapitel 39"
+            },
+            {
+              "length_ms": 306456,
+              "start_ms": 11576985,
+              "title": "Kapitel 40"
+            },
+            {
+              "length_ms": 290226,
+              "start_ms": 11883441,
+              "title": "Kapitel 41"
+            },
+            {
+              "length_ms": 299096,
+              "start_ms": 12173667,
+              "title": "Kapitel 42"
+            },
+            {
+              "length_ms": 277246,
+              "start_ms": 12472763,
+              "title": "Kapitel 43"
+            },
+            {
+              "length_ms": 305853,
+              "start_ms": 12750009,
+              "title": "Kapitel 44"
+            },
+            {
+              "length_ms": 299792,
+              "start_ms": 13055862,
+              "title": "Kapitel 45"
+            },
+            {
+              "length_ms": 313004,
+              "start_ms": 13355654,
+              "title": "Kapitel 46"
+            },
+            {
+              "length_ms": 306874,
+              "start_ms": 13668658,
+              "title": "Kapitel 47"
+            },
+            {
+              "length_ms": 291549,
+              "start_ms": 13975532,
+              "title": "Kapitel 48"
+            },
+            {
+              "length_ms": 276712,
+              "start_ms": 14267081,
+              "title": "Kapitel 49"
+            },
+            {
+              "length_ms": 358725,
+              "start_ms": 14543793,
+              "title": "Kapitel 50"
+            },
+            {
+              "length_ms": 315652,
+              "start_ms": 14902518,
+              "title": "Kapitel 51"
+            },
+            {
+              "length_ms": 313097,
+              "start_ms": 15218170,
+              "title": "Kapitel 52"
+            },
+            {
+              "length_ms": 338895,
+              "start_ms": 15531267,
+              "title": "Kapitel 53"
+            },
+            {
+              "length_ms": 294823,
+              "start_ms": 15870162,
+              "title": "Kapitel 54"
+            },
+            {
+              "length_ms": 288577,
+              "start_ms": 16164985,
+              "title": "Kapitel 55"
+            },
+            {
+              "length_ms": 348624,
+              "start_ms": 16453562,
+              "title": "Kapitel 56"
+            },
+            {
+              "length_ms": 336759,
+              "start_ms": 16802186,
+              "title": "Kapitel 57"
+            },
+            {
+              "length_ms": 295055,
+              "start_ms": 17138945,
+              "title": "Kapitel 58"
+            },
+            {
+              "length_ms": 292083,
+              "start_ms": 17434000,
+              "title": "Kapitel 59"
+            },
+            {
+              "length_ms": 316929,
+              "start_ms": 17726083,
+              "title": "Kapitel 60"
+            },
+            {
+              "length_ms": 284444,
+              "start_ms": 18043012,
+              "title": "Kapitel 61"
+            },
+            {
+              "length_ms": 314003,
+              "start_ms": 18327456,
+              "title": "Kapitel 62"
+            },
+            {
+              "length_ms": 332022,
+              "start_ms": 18641459,
+              "title": "Kapitel 63"
+            },
+            {
+              "length_ms": 304669,
+              "start_ms": 18973481,
+              "title": "Kapitel 64"
+            },
+            {
+              "length_ms": 291038,
+              "start_ms": 19278150,
+              "title": "Kapitel 65"
+            },
+            {
+              "length_ms": 328933,
+              "start_ms": 19569188,
+              "title": "Kapitel 66"
+            },
+            {
+              "length_ms": 305899,
+              "start_ms": 19898121,
+              "title": "Kapitel 67"
+            },
+            {
+              "length_ms": 268306,
+              "start_ms": 20204020,
+              "title": "Kapitel 68"
+            },
+            {
+              "length_ms": 332602,
+              "start_ms": 20472326,
+              "title": "Kapitel 69"
+            },
+            {
+              "length_ms": 282122,
+              "start_ms": 20804928,
+              "title": "Kapitel 70"
+            },
+            {
+              "length_ms": 326333,
+              "start_ms": 21087050,
+              "title": "Kapitel 71"
+            },
+            {
+              "length_ms": 295729,
+              "start_ms": 21413383,
+              "title": "Kapitel 72"
+            },
+            {
+              "length_ms": 286696,
+              "start_ms": 21709112,
+              "title": "Kapitel 73"
+            },
+            {
+              "length_ms": 310102,
+              "start_ms": 21995808,
+              "title": "Kapitel 74"
+            },
+            {
+              "length_ms": 313794,
+              "start_ms": 22305910,
+              "title": "Kapitel 75"
+            },
+            {
+              "length_ms": 288438,
+              "start_ms": 22619704,
+              "title": "Kapitel 76"
+            },
+            {
+              "length_ms": 295334,
+              "start_ms": 22908142,
+              "title": "Kapitel 77"
+            },
+            {
+              "length_ms": 307316,
+              "start_ms": 23203476,
+              "title": "Kapitel 78"
+            },
+            {
+              "length_ms": 285907,
+              "start_ms": 23510792,
+              "title": "Kapitel 79"
+            },
+            {
+              "length_ms": 287254,
+              "start_ms": 23796699,
+              "title": "Kapitel 80"
+            },
+            {
+              "length_ms": 290202,
+              "start_ms": 24083953,
+              "title": "Kapitel 81"
+            },
+            {
+              "length_ms": 281309,
+              "start_ms": 24374155,
+              "title": "Kapitel 82"
+            },
+            {
+              "length_ms": 296751,
+              "start_ms": 24655464,
+              "title": "Kapitel 83"
+            },
+            {
+              "length_ms": 308546,
+              "start_ms": 24952215,
+              "title": "Kapitel 84"
+            },
+            {
+              "length_ms": 320249,
+              "start_ms": 25260761,
+              "title": "Kapitel 85"
+            },
+            {
+              "length_ms": 322153,
+              "start_ms": 25581010,
+              "title": "Kapitel 86"
+            },
+            {
+              "length_ms": 329885,
+              "start_ms": 25903163,
+              "title": "Kapitel 87"
+            },
+            {
+              "length_ms": 305481,
+              "start_ms": 26233048,
+              "title": "Kapitel 88"
+            },
+            {
+              "length_ms": 306178,
+              "start_ms": 26538529,
+              "title": "Kapitel 89"
+            },
+            {
+              "length_ms": 328423,
+              "start_ms": 26844707,
+              "title": "Kapitel 90"
+            },
+            {
+              "length_ms": 306712,
+              "start_ms": 27173130,
+              "title": "Kapitel 91"
+            },
+            {
+              "length_ms": 301371,
+              "start_ms": 27479842,
+              "title": "Kapitel 92"
+            },
+            {
+              "length_ms": 287788,
+              "start_ms": 27781213,
+              "title": "Kapitel 93"
+            },
+            {
+              "length_ms": 302788,
+              "start_ms": 28069001,
+              "title": "Kapitel 94"
+            },
+            {
+              "length_ms": 307548,
+              "start_ms": 28371789,
+              "title": "Kapitel 95"
+            },
+            {
+              "length_ms": 304854,
+              "start_ms": 28679337,
+              "title": "Kapitel 96"
+            },
+            {
+              "length_ms": 294220,
+              "start_ms": 28984191,
+              "title": "Kapitel 97"
+            },
+            {
+              "length_ms": 308012,
+              "start_ms": 29278411,
+              "title": "Kapitel 98"
+            },
+            {
+              "length_ms": 297749,
+              "start_ms": 29586423,
+              "title": "Kapitel 99"
+            },
+            {
+              "length_ms": 300837,
+              "start_ms": 29884172,
+              "title": "Kapitel 100"
+            },
+            {
+              "length_ms": 312958,
+              "start_ms": 30185009,
+              "title": "Kapitel 101"
+            },
+            {
+              "length_ms": 308453,
+              "start_ms": 30497967,
+              "title": "Kapitel 102"
+            },
+            {
+              "length_ms": 308082,
+              "start_ms": 30806420,
+              "title": "Kapitel 103"
+            },
+            {
+              "length_ms": 340102,
+              "start_ms": 31114502,
+              "title": "Kapitel 104"
+            },
+            {
+              "length_ms": 345745,
+              "start_ms": 31454604,
+              "title": "Kapitel 105"
+            },
+            {
+              "length_ms": 237377,
+              "start_ms": 31800349,
+              "title": "Kapitel 106"
+            },
+            {
+              "length_ms": 270442,
+              "start_ms": 32037726,
+              "title": "Kapitel 107"
+            },
+            {
+              "length_ms": 265868,
+              "start_ms": 32308168,
+              "title": "Kapitel 108"
+            },
+            {
+              "length_ms": 305063,
+              "start_ms": 32574036,
+              "title": "Kapitel 109"
+            },
+            {
+              "length_ms": 281704,
+              "start_ms": 32879099,
+              "title": "Kapitel 110"
+            },
+            {
+              "length_ms": 316348,
+              "start_ms": 33160803,
+              "title": "Kapitel 111"
+            },
+            {
+              "length_ms": 310961,
+              "start_ms": 33477151,
+              "title": "Kapitel 112"
+            },
+            {
+              "length_ms": 301650,
+              "start_ms": 33788112,
+              "title": "Kapitel 113"
+            },
+            {
+              "length_ms": 302648,
+              "start_ms": 34089762,
+              "title": "Kapitel 114"
+            },
+            {
+              "length_ms": 288136,
+              "start_ms": 34392410,
+              "title": "Kapitel 115"
+            },
+            {
+              "length_ms": 318113,
+              "start_ms": 34680546,
+              "title": "Kapitel 116"
+            },
+            {
+              "length_ms": 286673,
+              "start_ms": 34998659,
+              "title": "Kapitel 117"
+            },
+            {
+              "length_ms": 294452,
+              "start_ms": 35285332,
+              "title": "Kapitel 118"
+            },
+            {
+              "length_ms": 268515,
+              "start_ms": 35579784,
+              "title": "Kapitel 119"
+            },
+            {
+              "length_ms": 302997,
+              "start_ms": 35848299,
+              "title": "Kapitel 120"
+            },
+            {
+              "length_ms": 304088,
+              "start_ms": 36151296,
+              "title": "Kapitel 121"
+            },
+            {
+              "length_ms": 310148,
+              "start_ms": 36455384,
+              "title": "Kapitel 122"
+            },
+            {
+              "length_ms": 270442,
+              "start_ms": 36765532,
+              "title": "Kapitel 123"
+            },
+            {
+              "length_ms": 287114,
+              "start_ms": 37035974,
+              "title": "Kapitel 124"
+            },
+            {
+              "length_ms": 301929,
+              "start_ms": 37323088,
+              "title": "Kapitel 125"
+            },
+            {
+              "length_ms": 278709,
+              "start_ms": 37625017,
+              "title": "Kapitel 126"
+            },
+            {
+              "length_ms": 300675,
+              "start_ms": 37903726,
+              "title": "Kapitel 127"
+            },
+            {
+              "length_ms": 296216,
+              "start_ms": 38204401,
+              "title": "Kapitel 128"
+            },
+            {
+              "length_ms": 304088,
+              "start_ms": 38500617,
+              "title": "Kapitel 129"
+            },
+            {
+              "length_ms": 302114,
+              "start_ms": 38804705,
+              "title": "Kapitel 130"
+            },
+            {
+              "length_ms": 289134,
+              "start_ms": 39106819,
+              "title": "Kapitel 131"
+            },
+            {
+              "length_ms": 290319,
+              "start_ms": 39395953,
+              "title": "Kapitel 132"
+            },
+            {
+              "length_ms": 282540,
+              "start_ms": 39686272,
+              "title": "Kapitel 133"
+            },
+            {
+              "length_ms": 280822,
+              "start_ms": 39968812,
+              "title": "Kapitel 134"
+            },
+            {
+              "length_ms": 314119,
+              "start_ms": 40249634,
+              "title": "Kapitel 135"
+            },
+            {
+              "length_ms": 270349,
+              "start_ms": 40563753,
+              "title": "Kapitel 136"
+            },
+            {
+              "length_ms": 285141,
+              "start_ms": 40834102,
+              "title": "Kapitel 137"
+            },
+            {
+              "length_ms": 291619,
+              "start_ms": 41119243,
+              "title": "Kapitel 138"
+            },
+            {
+              "length_ms": 308802,
+              "start_ms": 41410862,
+              "title": "Kapitel 139"
+            },
+            {
+              "length_ms": 288902,
+              "start_ms": 41719664,
+              "title": "Kapitel 140"
+            },
+            {
+              "length_ms": 291340,
+              "start_ms": 42008566,
+              "title": "Kapitel 141"
+            },
+            {
+              "length_ms": 273020,
+              "start_ms": 42299906,
+              "title": "Kapitel 142"
+            },
+            {
+              "length_ms": 288624,
+              "start_ms": 42572926,
+              "title": "Kapitel 143"
+            },
+            {
+              "length_ms": 271882,
+              "start_ms": 42861550,
+              "title": "Kapitel 144"
+            },
+            {
+              "length_ms": 293987,
+              "start_ms": 43133432,
+              "title": "Kapitel 145"
+            },
+            {
+              "length_ms": 288786,
+              "start_ms": 43427419,
+              "title": "Kapitel 146"
+            },
+            {
+              "length_ms": 285303,
+              "start_ms": 43716205,
+              "title": "Kapitel 147"
+            },
+            {
+              "length_ms": 288089,
+              "start_ms": 44001508,
+              "title": "Kapitel 148"
+            },
+            {
+              "length_ms": 298144,
+              "start_ms": 44289597,
+              "title": "Kapitel 149"
+            },
+            {
+              "length_ms": 281681,
+              "start_ms": 44587741,
+              "title": "Kapitel 150"
+            },
+            {
+              "length_ms": 295845,
+              "start_ms": 44869422,
+              "title": "Kapitel 151"
+            },
+            {
+              "length_ms": 304413,
+              "start_ms": 45165267,
+              "title": "Kapitel 152"
+            },
+            {
+              "length_ms": 279939,
+              "start_ms": 45469680,
+              "title": "Kapitel 153"
+            },
+            {
+              "length_ms": 318043,
+              "start_ms": 45749619,
+              "title": "Kapitel 154"
+            },
+            {
+              "length_ms": 278593,
+              "start_ms": 46067662,
+              "title": "Kapitel 155"
+            },
+            {
+              "length_ms": 315884,
+              "start_ms": 46346255,
+              "title": "Kapitel 156"
+            },
+            {
+              "length_ms": 296634,
+              "start_ms": 46662139,
+              "title": "Kapitel 157"
+            },
+            {
+              "length_ms": 295613,
+              "start_ms": 46958773,
+              "title": "Kapitel 158"
+            },
+            {
+              "length_ms": 300930,
+              "start_ms": 47254386,
+              "title": "Kapitel 159"
+            },
+            {
+              "length_ms": 314653,
+              "start_ms": 47555316,
+              "title": "Kapitel 160"
+            },
+            {
+              "length_ms": 287114,
+              "start_ms": 47869969,
+              "title": "Kapitel 161"
+            },
+            {
+              "length_ms": 302625,
+              "start_ms": 48157083,
+              "title": "Kapitel 162"
+            },
+            {
+              "length_ms": 294846,
+              "start_ms": 48459708,
+              "title": "Kapitel 163"
+            },
+            {
+              "length_ms": 286836,
+              "start_ms": 48754554,
+              "title": "Kapitel 164"
+            },
+            {
+              "length_ms": 319251,
+              "start_ms": 49041390,
+              "title": "Kapitel 165"
+            },
+            {
+              "length_ms": 274390,
+              "start_ms": 49360641,
+              "title": "Kapitel 166"
+            },
+            {
+              "length_ms": 291874,
+              "start_ms": 49635031,
+              "title": "Kapitel 167"
+            },
+            {
+              "length_ms": 281890,
+              "start_ms": 49926905,
+              "title": "Kapitel 168"
+            },
+            {
+              "length_ms": 316604,
+              "start_ms": 50208795,
+              "title": "Kapitel 169"
+            },
+            {
+              "length_ms": 283910,
+              "start_ms": 50525399,
+              "title": "Kapitel 170"
+            },
+            {
+              "length_ms": 269351,
+              "start_ms": 50809309,
+              "title": "Kapitel 171"
+            },
+            {
+              "length_ms": 289483,
+              "start_ms": 51078660,
+              "title": "Kapitel 172"
+            },
+            {
+              "length_ms": 272973,
+              "start_ms": 51368143,
+              "title": "Kapitel 173"
+            },
+            {
+              "length_ms": 282842,
+              "start_ms": 51641116,
+              "title": "Kapitel 174"
+            },
+            {
+              "length_ms": 259993,
+              "start_ms": 51923958,
+              "title": "Kapitel 175"
+            },
+            {
+              "length_ms": 307432,
+              "start_ms": 52183951,
+              "title": "Kapitel 176"
+            },
+            {
+              "length_ms": 293453,
+              "start_ms": 52491383,
+              "title": "Kapitel 177"
+            },
+            {
+              "length_ms": 300442,
+              "start_ms": 52784836,
+              "title": "Kapitel 178"
+            },
+            {
+              "length_ms": 309104,
+              "start_ms": 53085278,
+              "title": "Kapitel 179"
+            },
+            {
+              "length_ms": 287857,
+              "start_ms": 53394382,
+              "title": "Kapitel 180"
+            },
+            {
+              "length_ms": 306526,
+              "start_ms": 53682239,
+              "title": "Kapitel 181"
+            },
+            {
+              "length_ms": 292199,
+              "start_ms": 53988765,
+              "title": "Kapitel 182"
+            },
+            {
+              "length_ms": 285257,
+              "start_ms": 54280964,
+              "title": "Kapitel 183"
+            },
+            {
+              "length_ms": 305342,
+              "start_ms": 54566221,
+              "title": "Kapitel 184"
+            },
+            {
+              "length_ms": 277246,
+              "start_ms": 54871563,
+              "title": "Kapitel 185"
+            },
+            {
+              "length_ms": 286557,
+              "start_ms": 55148809,
+              "title": "Kapitel 186"
+            },
+            {
+              "length_ms": 287648,
+              "start_ms": 55435366,
+              "title": "Kapitel 187"
+            },
+            {
+              "length_ms": 295450,
+              "start_ms": 55723014,
+              "title": "Kapitel 188"
+            },
+            {
+              "length_ms": 270744,
+              "start_ms": 56018464,
+              "title": "Kapitel 189"
+            },
+            {
+              "length_ms": 302114,
+              "start_ms": 56289208,
+              "title": "Kapitel 190"
+            },
+            {
+              "length_ms": 274343,
+              "start_ms": 56591322,
+              "title": "Kapitel 191"
+            },
+            {
+              "length_ms": 271348,
+              "start_ms": 56865665,
+              "title": "Kapitel 192"
+            },
+            {
+              "length_ms": 274065,
+              "start_ms": 57137013,
+              "title": "Kapitel 193"
+            },
+            {
+              "length_ms": 279870,
+              "start_ms": 57411078,
+              "title": "Kapitel 194"
+            },
+            {
+              "length_ms": 278801,
+              "start_ms": 57690948,
+              "title": "Kapitel 195"
+            },
+            {
+              "length_ms": 303786,
+              "start_ms": 57969749,
+              "title": "Kapitel 196"
+            },
+            {
+              "length_ms": 279010,
+              "start_ms": 58273535,
+              "title": "Kapitel 197"
+            },
+            {
+              "length_ms": 291131,
+              "start_ms": 58552545,
+              "title": "Kapitel 198"
+            },
+            {
+              "length_ms": 254304,
+              "start_ms": 58843676,
+              "title": "Kapitel 199"
+            },
+            {
+              "length_ms": 237145,
+              "start_ms": 59097980,
+              "title": "Kapitel 200"
+            },
+            {
+              "length_ms": 305435,
+              "start_ms": 59335125,
+              "title": "Kapitel 201"
+            },
+            {
+              "length_ms": 313306,
+              "start_ms": 59640560,
+              "title": "Kapitel 202"
+            },
+            {
+              "length_ms": 282261,
+              "start_ms": 59953866,
+              "title": "Kapitel 203"
+            },
+            {
+              "length_ms": 292571,
+              "start_ms": 60236127,
+              "title": "Kapitel 204"
+            },
+            {
+              "length_ms": 297192,
+              "start_ms": 60528698,
+              "title": "Kapitel 205"
+            },
+            {
+              "length_ms": 292316,
+              "start_ms": 60825890,
+              "title": "Kapitel 206"
+            },
+            {
+              "length_ms": 308500,
+              "start_ms": 61118206,
+              "title": "Kapitel 207"
+            },
+            {
+              "length_ms": 293825,
+              "start_ms": 61426706,
+              "title": "Kapitel 208"
+            },
+            {
+              "length_ms": 281100,
+              "start_ms": 61720531,
+              "title": "Kapitel 209"
+            },
+            {
+              "length_ms": 280915,
+              "start_ms": 62001631,
+              "title": "Kapitel 210"
+            },
+            {
+              "length_ms": 272044,
+              "start_ms": 62282546,
+              "title": "Kapitel 211"
+            },
+            {
+              "length_ms": 278941,
+              "start_ms": 62554590,
+              "title": "Kapitel 212"
+            },
+            {
+              "length_ms": 262060,
+              "start_ms": 62833531,
+              "title": "Kapitel 213"
+            },
+            {
+              "length_ms": 317486,
+              "start_ms": 63095591,
+              "title": "Kapitel 214"
+            },
+            {
+              "length_ms": 272996,
+              "start_ms": 63413077,
+              "title": "Kapitel 215"
+            }
+          ],
           "cover_url": "https://m.media-amazon.com/images/I/91Mb-UAhKbL.jpg",
           "id": "jens-wawrczeck-2019",
           "language": "de",
@@ -11376,6 +12668,11 @@
           "imported_at": "2026-07-25",
           "ref": "https://www.goodreads.com/book/show/17899948-rebecca",
           "type": "community"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V5GVE6",
+          "type": "libex-import"
         }
       ],
       "title": "Rebecca",
@@ -13423,6 +14720,11 @@
       "authors": [
         "libba-bray"
       ],
+      "genres": [
+        "fantasy",
+        "historical-fiction",
+        "young-adult"
+      ],
       "id": "rebel-angels",
       "language": "en",
       "license": "CC0-1.0",
@@ -13461,6 +14763,11 @@
           "imported_at": "2026-07-25",
           "ref": "https://www.goodreads.com/book/show/51428.Rebel_Angels",
           "type": "community"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V8MHHS",
+          "type": "libex-import"
         }
       ],
       "title": "Rebel Angels",

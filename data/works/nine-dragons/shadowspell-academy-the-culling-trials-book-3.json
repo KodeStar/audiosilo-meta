@@ -6064,6 +6064,158 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 120255,
+              "start_ms": 0,
+              "title": "Kapitel 1"
+            },
+            {
+              "length_ms": 116076,
+              "start_ms": 120255,
+              "title": "Kapitel 2"
+            },
+            {
+              "length_ms": 116076,
+              "start_ms": 236331,
+              "title": "Kapitel 3"
+            },
+            {
+              "length_ms": 116448,
+              "start_ms": 352407,
+              "title": "Kapitel 4"
+            },
+            {
+              "length_ms": 115403,
+              "start_ms": 468855,
+              "title": "Kapitel 5"
+            },
+            {
+              "length_ms": 116331,
+              "start_ms": 584258,
+              "title": "Kapitel 6"
+            },
+            {
+              "length_ms": 111386,
+              "start_ms": 700589,
+              "title": "Kapitel 7"
+            },
+            {
+              "length_ms": 120883,
+              "start_ms": 811975,
+              "title": "Kapitel 8"
+            },
+            {
+              "length_ms": 114265,
+              "start_ms": 932858,
+              "title": "Kapitel 9"
+            },
+            {
+              "length_ms": 116401,
+              "start_ms": 1047123,
+              "title": "Kapitel 10"
+            },
+            {
+              "length_ms": 125387,
+              "start_ms": 1163524,
+              "title": "Kapitel 11"
+            },
+            {
+              "length_ms": 106068,
+              "start_ms": 1288911,
+              "title": "Kapitel 12"
+            },
+            {
+              "length_ms": 119071,
+              "start_ms": 1394979,
+              "title": "Kapitel 13"
+            },
+            {
+              "length_ms": 113057,
+              "start_ms": 1514050,
+              "title": "Kapitel 14"
+            },
+            {
+              "length_ms": 117051,
+              "start_ms": 1627107,
+              "title": "Kapitel 15"
+            },
+            {
+              "length_ms": 116076,
+              "start_ms": 1744158,
+              "title": "Kapitel 16"
+            },
+            {
+              "length_ms": 116076,
+              "start_ms": 1860234,
+              "title": "Kapitel 17"
+            },
+            {
+              "length_ms": 111804,
+              "start_ms": 1976310,
+              "title": "Kapitel 18"
+            },
+            {
+              "length_ms": 120929,
+              "start_ms": 2088114,
+              "title": "Kapitel 19"
+            },
+            {
+              "length_ms": 111479,
+              "start_ms": 2209043,
+              "title": "Kapitel 20"
+            },
+            {
+              "length_ms": 120790,
+              "start_ms": 2320522,
+              "title": "Kapitel 21"
+            },
+            {
+              "length_ms": 110294,
+              "start_ms": 2441312,
+              "title": "Kapitel 22"
+            },
+            {
+              "length_ms": 122508,
+              "start_ms": 2551606,
+              "title": "Kapitel 23"
+            },
+            {
+              "length_ms": 117005,
+              "start_ms": 2674114,
+              "title": "Kapitel 24"
+            },
+            {
+              "length_ms": 116749,
+              "start_ms": 2791119,
+              "title": "Kapitel 25"
+            },
+            {
+              "length_ms": 116448,
+              "start_ms": 2907868,
+              "title": "Kapitel 26"
+            },
+            {
+              "length_ms": 111687,
+              "start_ms": 3024316,
+              "title": "Kapitel 27"
+            },
+            {
+              "length_ms": 111270,
+              "start_ms": 3136003,
+              "title": "Kapitel 28"
+            },
+            {
+              "length_ms": 119675,
+              "start_ms": 3247273,
+              "title": "Kapitel 29"
+            },
+            {
+              "length_ms": 111966,
+              "start_ms": 3366948,
+              "title": "Kapitel 30"
+            }
+          ],
           "cover_url": "https://m.media-amazon.com/images/I/91ggN6iejuL.jpg",
           "id": "dietmar-wunder-2020",
           "language": "de",
@@ -10568,6 +10720,11 @@
       "authors": [
         "bernard-cornwell"
       ],
+      "genres": [
+        "action-adventure",
+        "historical-fiction",
+        "war-military-fiction"
+      ],
       "id": "sharpes-battle",
       "language": "en",
       "license": "CC0-1.0",
@@ -10709,6 +10866,11 @@
           "imported_at": "2026-07-11",
           "ref": "B00NB5IB8E",
           "type": "openaudible-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002UUFZT4",
+          "type": "libex-import"
         }
       ],
       "title": "Sharpe’s Battle"
@@ -10719,6 +10881,13 @@
         "bernard-cornwell"
       ],
       "first_published": "2023",
+      "genres": [
+        "action-adventure",
+        "historical-fiction",
+        "literary-fiction",
+        "thriller-suspense",
+        "war-military-fiction"
+      ],
       "id": "sharpes-command",
       "language": "en",
       "license": "CC0-1.0",
@@ -10772,6 +10941,11 @@
         {
           "ref": "Q124661294",
           "type": "wikidata"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B09SZR6LKW",
+          "type": "libex-import"
         }
       ],
       "title": "Sharpe's Command",
@@ -10783,6 +10957,9 @@
       "added_at": "2026-07-11T17:30:05+01:00",
       "authors": [
         "bernard-cornwell"
+      ],
+      "genres": [
+        "historical-fiction"
       ],
       "id": "sharpes-company",
       "language": "en",
@@ -11011,6 +11188,11 @@
           "imported_at": "2026-07-11",
           "ref": "B00NB6HN50",
           "type": "openaudible-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V1OV3I",
+          "type": "libex-import"
         }
       ],
       "title": "Sharpe’s Company"
@@ -11019,6 +11201,11 @@
       "added_at": "2026-07-11T17:30:05+01:00",
       "authors": [
         "bernard-cornwell"
+      ],
+      "genres": [
+        "action-adventure",
+        "historical-fiction",
+        "war-military-fiction"
       ],
       "id": "sharpes-devil",
       "language": "en",
@@ -11199,6 +11386,11 @@
           "imported_at": "2026-07-11",
           "ref": "B00SNS6W80",
           "type": "openaudible-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V5BR5Y",
+          "type": "libex-import"
         }
       ],
       "title": "Sharpe’s Devil"
@@ -11207,6 +11399,12 @@
       "added_at": "2026-07-11T17:30:05+01:00",
       "authors": [
         "bernard-cornwell"
+      ],
+      "genres": [
+        "action-adventure",
+        "historical-fiction",
+        "literary-fiction",
+        "war-military-fiction"
       ],
       "id": "sharpes-eagle",
       "language": "en",
@@ -11415,6 +11613,11 @@
           "imported_at": "2026-07-11",
           "ref": "B00LNI6S2C",
           "type": "openaudible-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V8N5LU",
+          "type": "libex-import"
         }
       ],
       "title": "Sharpe’s Eagle"
@@ -11423,6 +11626,10 @@
       "added_at": "2026-07-11T17:30:05+01:00",
       "authors": [
         "bernard-cornwell"
+      ],
+      "genres": [
+        "historical-fiction",
+        "literary-fiction"
       ],
       "id": "sharpes-enemy",
       "language": "en",
@@ -11661,6 +11868,11 @@
           "imported_at": "2026-07-11",
           "ref": "B00OALVHAM",
           "type": "openaudible-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V5IXY2",
+          "type": "libex-import"
         }
       ],
       "title": "Sharpe’s Enemy"
@@ -11669,6 +11881,12 @@
       "added_at": "2026-07-11T17:30:05+01:00",
       "authors": [
         "bernard-cornwell"
+      ],
+      "genres": [
+        "action-adventure",
+        "historical-fiction",
+        "politics",
+        "war-military-fiction"
       ],
       "id": "sharpes-escape",
       "language": "en",
@@ -11830,6 +12048,11 @@
           "imported_at": "2026-07-11",
           "ref": "B00MGU4Q98",
           "type": "openaudible-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002UZI0A0",
+          "type": "libex-import"
         }
       ],
       "title": "Sharpe’s Escape"
@@ -11893,6 +12116,13 @@
       "added_at": "2026-07-11T17:30:05+01:00",
       "authors": [
         "bernard-cornwell"
+      ],
+      "genres": [
+        "action-adventure",
+        "alternate-history",
+        "historical-fiction",
+        "science-fiction",
+        "war-military-fiction"
       ],
       "id": "sharpes-fortress",
       "language": "en",
@@ -12063,6 +12293,11 @@
           "imported_at": "2026-07-11",
           "ref": "B00KY8UWCO",
           "type": "openaudible-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V1K2E0",
+          "type": "libex-import"
         }
       ],
       "title": "Sharpe’s Fortress"
@@ -12071,6 +12306,12 @@
       "added_at": "2026-07-11T17:30:05+01:00",
       "authors": [
         "bernard-cornwell"
+      ],
+      "genres": [
+        "action-adventure",
+        "historical-fiction",
+        "politics",
+        "war-military-fiction"
       ],
       "id": "sharpes-fury",
       "language": "en",
@@ -12246,6 +12487,11 @@
           "imported_at": "2026-07-11",
           "ref": "B00NB5IIGO",
           "type": "openaudible-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V5D6S0",
+          "type": "libex-import"
         }
       ],
       "title": "Sharpe’s Fury"
@@ -12308,6 +12554,9 @@
       "added_at": "2026-07-11T17:30:05+01:00",
       "authors": [
         "bernard-cornwell"
+      ],
+      "genres": [
+        "historical-fiction"
       ],
       "id": "sharpes-gold",
       "language": "en",
@@ -12567,6 +12816,11 @@
           "imported_at": "2026-07-11",
           "ref": "B00MGU3752",
           "type": "openaudible-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002UUKM0G",
+          "type": "libex-import"
         }
       ],
       "title": "Sharpe’s Gold"
@@ -12575,6 +12829,13 @@
       "added_at": "2026-07-11T17:30:05+01:00",
       "authors": [
         "bernard-cornwell"
+      ],
+      "genres": [
+        "action-adventure",
+        "epic-fantasy",
+        "fantasy",
+        "historical-fiction",
+        "war-military-fiction"
       ],
       "id": "sharpes-havoc",
       "language": "en",
@@ -12717,6 +12978,11 @@
           "imported_at": "2026-07-11",
           "ref": "B00MGU54NK",
           "type": "openaudible-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00MGU4R9M",
+          "type": "libex-import"
         }
       ],
       "title": "Sharpe’s Havoc"
@@ -12830,6 +13096,12 @@
       "added_at": "2026-07-11T17:30:05+01:00",
       "authors": [
         "bernard-cornwell"
+      ],
+      "genres": [
+        "action-adventure",
+        "historical-fiction",
+        "short-stories",
+        "war-military-fiction"
       ],
       "id": "sharpes-honour",
       "language": "en",
@@ -13020,6 +13292,11 @@
           "imported_at": "2026-07-11",
           "ref": "B00OAJI0RW",
           "type": "openaudible-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00OAOK0KC",
+          "type": "libex-import"
         }
       ],
       "title": "Sharpe’s Honour"
@@ -13028,6 +13305,13 @@
       "added_at": "2026-07-11T17:30:05+01:00",
       "authors": [
         "bernard-cornwell"
+      ],
+      "genres": [
+        "action-adventure",
+        "alternate-history",
+        "historical-fiction",
+        "science-fiction",
+        "thriller-suspense"
       ],
       "id": "sharpes-prey",
       "language": "en",
@@ -13170,6 +13454,11 @@
           "imported_at": "2026-07-11",
           "ref": "B00KZ13EWK",
           "type": "openaudible-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0036GRRZQ",
+          "type": "libex-import"
         }
       ],
       "title": "Sharpe’s Prey"
@@ -13230,6 +13519,9 @@
       "added_at": "2026-07-11T17:30:05+01:00",
       "authors": [
         "bernard-cornwell"
+      ],
+      "genres": [
+        "historical-fiction"
       ],
       "id": "sharpes-regiment",
       "language": "en",
@@ -13418,6 +13710,11 @@
           "imported_at": "2026-07-11",
           "ref": "B00PKJFWKY",
           "type": "openaudible-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002UUOTCI",
+          "type": "libex-import"
         }
       ],
       "title": "Sharpe’s Regiment"
@@ -13426,6 +13723,9 @@
       "added_at": "2026-07-11T17:30:05+01:00",
       "authors": [
         "bernard-cornwell"
+      ],
+      "genres": [
+        "historical-fiction"
       ],
       "id": "sharpes-revenge",
       "language": "en",
@@ -13589,6 +13889,11 @@
           "imported_at": "2026-07-11",
           "ref": "B00QUDU8VW",
           "type": "openaudible-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V1OP5W",
+          "type": "libex-import"
         }
       ],
       "title": "Sharpe’s Revenge"
@@ -13597,6 +13902,10 @@
       "added_at": "2026-07-11T17:30:05+01:00",
       "authors": [
         "bernard-cornwell"
+      ],
+      "genres": [
+        "historical-fiction",
+        "literary-fiction"
       ],
       "id": "sharpes-rifles",
       "language": "en",
@@ -13770,6 +14079,11 @@
           "imported_at": "2026-07-11",
           "ref": "B00LNIALP2",
           "type": "openaudible-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V57NL6",
+          "type": "libex-import"
         }
       ],
       "title": "Sharpe’s Rifles"
@@ -13778,6 +14092,11 @@
       "added_at": "2026-07-11T17:30:05+01:00",
       "authors": [
         "bernard-cornwell"
+      ],
+      "genres": [
+        "action-adventure",
+        "historical-fiction",
+        "war-military-fiction"
       ],
       "id": "sharpes-siege",
       "language": "en",
@@ -13951,6 +14270,11 @@
           "imported_at": "2026-07-11",
           "ref": "B00PKJFXWG",
           "type": "openaudible-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002UUL1CE",
+          "type": "libex-import"
         }
       ],
       "title": "Sharpe’s Siege"

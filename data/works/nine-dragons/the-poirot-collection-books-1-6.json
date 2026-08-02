@@ -2507,6 +2507,10 @@
       "authors": [
         "barbara-kingsolver"
       ],
+      "genres": [
+        "historical-fiction",
+        "literary-fiction"
+      ],
       "id": "the-poisonwood-bible",
       "language": "en",
       "license": "CC0-1.0",
@@ -2518,6 +2522,48 @@
             {
               "asin": "B002UZJJHI",
               "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3904,
+              "start_ms": 0,
+              "title": "Book One"
+            },
+            {
+              "length_ms": 8597742,
+              "start_ms": 3904,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 10720049,
+              "start_ms": 8601646,
+              "title": "Book Two"
+            },
+            {
+              "length_ms": 12513930,
+              "start_ms": 19321695,
+              "title": "Book Three"
+            },
+            {
+              "length_ms": 6235023,
+              "start_ms": 31835625,
+              "title": "Book Four"
+            },
+            {
+              "length_ms": 14223569,
+              "start_ms": 38070648,
+              "title": "Book Five"
+            },
+            {
+              "length_ms": 2603003,
+              "start_ms": 52294217,
+              "title": "Book Six"
+            },
+            {
+              "length_ms": 1153010,
+              "start_ms": 54897220,
+              "title": "Book Seven"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91Lel9rdw4L.jpg",
@@ -2545,6 +2591,11 @@
           "imported_at": "2026-07-25",
           "ref": "https://www.goodreads.com/book/show/7244.The_Poisonwood_Bible",
           "type": "community"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002UZJJHI",
+          "type": "libex-import"
         }
       ],
       "title": "The Poisonwood Bible",
@@ -2663,6 +2714,12 @@
       "authors": [
         "chris-van-allsburg"
       ],
+      "genres": [
+        "childrens",
+        "classics",
+        "fairy-tales-folklore",
+        "technology"
+      ],
       "id": "the-polar-express",
       "language": "en",
       "license": "CC0-1.0",
@@ -2726,6 +2783,11 @@
           "imported_at": "2026-07-25",
           "ref": "isbn:9781783449262",
           "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0FXHJNG9S",
+          "type": "libex-import"
         }
       ],
       "title": "The Polar Express"
@@ -6688,6 +6750,12 @@
       "authors": [
         "andrea-camilleri"
       ],
+      "credits": [
+        {
+          "person": "stephen-sartarelli",
+          "role": "translator"
+        }
+      ],
       "genres": [
         "mystery",
         "police-procedural",
@@ -6758,6 +6826,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B005P0ZR7Q",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B072JYTPXW",
           "type": "libex-import"
         }
       ],
@@ -9054,6 +9127,13 @@
       "authors": [
         "pittacus-lore"
       ],
+      "genres": [
+        "action-adventure",
+        "fantasy",
+        "romance",
+        "science-fiction",
+        "young-adult"
+      ],
       "id": "the-power-of-six",
       "language": "en",
       "license": "CC0-1.0",
@@ -9102,6 +9182,11 @@
           "imported_at": "2026-07-25",
           "ref": "https://www.goodreads.com/book/show/8659601-the-power-of-six",
           "type": "community"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B005HJ6DKK",
+          "type": "libex-import"
         }
       ],
       "title": "The Power of Six",
