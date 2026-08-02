@@ -12456,6 +12456,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "cathy-dobson-2011": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00656GCGE",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51bpgF2ssXL.jpg",
+          "id": "cathy-dobson-2011",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "cathy-dobson"
+          ],
+          "publisher": "Red Door Audiobooks",
+          "release_date": "2011-11-11",
+          "runtime_min": 291,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00656GCGE",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-book-of-dragons"
+        },
         "karen-krause-2017": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -12511,57 +12539,6 @@
             }
           ],
           "work": "the-book-of-dragons"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0BRL7746L",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Book of Dragons"
-    },
-    "the-book-of-dragons-edith-nesbit": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "edith-nesbit"
-      ],
-      "genres": [
-        "childrens",
-        "fantasy"
-      ],
-      "id": "the-book-of-dragons-edith-nesbit",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "cathy-dobson-2011": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B00656GCGE",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51bpgF2ssXL.jpg",
-          "id": "cathy-dobson-2011",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "cathy-dobson"
-          ],
-          "publisher": "Red Door Audiobooks",
-          "release_date": "2011-11-11",
-          "runtime_min": 291,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B00656GCGE",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-book-of-dragons-edith-nesbit"
         },
         "laurie-anne-walden-2017": {
           "abridged": false,
@@ -12589,10 +12566,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-book-of-dragons-edith-nesbit"
+          "work": "the-book-of-dragons"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0BRL7746L",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B06W9LZLYF",

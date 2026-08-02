@@ -16197,7 +16197,8 @@
       ],
       "genres": [
         "childrens",
-        "classics"
+        "classics",
+        "fairy-tales-folklore"
       ],
       "id": "the-story-of-the-amulet",
       "language": "en",
@@ -16265,6 +16266,34 @@
           ],
           "work": "the-story-of-the-amulet"
         },
+        "james-oconnell-2019": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "2291059858",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81bqIpciAwL.jpg",
+          "id": "james-oconnell-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "james-oconnell"
+          ],
+          "publisher": "Oregan Publishing",
+          "release_date": "2019-04-03",
+          "runtime_min": 519,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "2291059858",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-story-of-the-amulet"
+        },
         "rosie-akerman-2021": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -16299,53 +16328,7 @@
           "imported_at": "2026-08-02",
           "ref": "1666507431",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Story of the Amulet"
-    },
-    "the-story-of-the-amulet-e-nesbit": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "edith-nesbit"
-      ],
-      "genres": [
-        "childrens",
-        "fairy-tales-folklore"
-      ],
-      "id": "the-story-of-the-amulet-e-nesbit",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "james-oconnell-2019": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "2291059858",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81bqIpciAwL.jpg",
-          "id": "james-oconnell-2019",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "james-oconnell"
-          ],
-          "publisher": "Oregan Publishing",
-          "release_date": "2019-04-03",
-          "runtime_min": 519,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "2291059858",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-story-of-the-amulet-e-nesbit"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "2291059858",
@@ -16588,6 +16571,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "cathy-dobson-2011": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00684BSTY",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51n+cA6cRaL.jpg",
+          "id": "cathy-dobson-2011",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "cathy-dobson"
+          ],
+          "publisher": "Red Door Audiobooks",
+          "release_date": "2011-11-17",
+          "runtime_min": 327,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00684BSTY",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-story-of-the-treasure-seekers"
+        },
         "flo-gibson-2018": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -16650,53 +16661,7 @@
           "imported_at": "2026-08-02",
           "ref": "B076MFN9WJ",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Story of the Treasure Seekers"
-    },
-    "the-story-of-the-treasure-seekers-edith-nesbit": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "edith-nesbit"
-      ],
-      "genres": [
-        "childrens",
-        "classics"
-      ],
-      "id": "the-story-of-the-treasure-seekers-edith-nesbit",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "cathy-dobson-2011": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B00684BSTY",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51n+cA6cRaL.jpg",
-          "id": "cathy-dobson-2011",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "cathy-dobson"
-          ],
-          "publisher": "Red Door Audiobooks",
-          "release_date": "2011-11-17",
-          "runtime_min": 327,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B00684BSTY",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-story-of-the-treasure-seekers-edith-nesbit"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B00684BSTY",

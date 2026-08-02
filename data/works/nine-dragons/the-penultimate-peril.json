@@ -9193,6 +9193,8 @@
         "edith-nesbit"
       ],
       "genres": [
+        "childrens",
+        "classics",
         "politics",
         "social-sciences"
       ],
@@ -9200,6 +9202,40 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "amanda-friday-2017": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B074CP59FJ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1gwlRF8-5L.jpg",
+          "id": "amanda-friday-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "amanda-friday",
+            "becca-maggie",
+            "ben-lindsey-clark",
+            "cate-barratt",
+            "charlotte-duckett",
+            "elizabeth-klett",
+            "libby-stephenson"
+          ],
+          "publisher": "Spoken Realms",
+          "release_date": "2017-07-31",
+          "runtime_min": 403,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B074CP59FJ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-phoenix-and-the-carpet"
+        },
         "anna-bentinck-2004": {
           "abridged": true,
           "added_at": "2026-08-02",
@@ -9223,6 +9259,34 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B002UZMLE6",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-phoenix-and-the-carpet"
+        },
+        "cathy-dobson-2011": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B005HEYT0G",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51qSFGO-qbL.jpg",
+          "id": "cathy-dobson-2011",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "cathy-dobson"
+          ],
+          "publisher": "Red Door Audiobooks",
+          "release_date": "2011-08-16",
+          "runtime_min": 431,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B005HEYT0G",
               "type": "libex-import"
             }
           ],
@@ -9255,12 +9319,45 @@
             }
           ],
           "work": "the-phoenix-and-the-carpet"
+        },
+        "rosie-akerman-2021": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "1666507423",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71PbbxOO81S.jpg",
+          "id": "rosie-akerman-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "rosie-akerman"
+          ],
+          "publisher": "Dreamscape Media, LLC",
+          "release_date": "2021-06-29",
+          "runtime_min": 417,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1666507423",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-phoenix-and-the-carpet"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B009434H4E",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1666507423",
           "type": "libex-import"
         }
       ],
@@ -9320,119 +9417,6 @@
         }
       ],
       "title": "The Phoenix and the Carpet and More"
-    },
-    "the-phoenix-and-the-carpet-edith-nesbit": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "edith-nesbit"
-      ],
-      "genres": [
-        "childrens",
-        "classics"
-      ],
-      "id": "the-phoenix-and-the-carpet-edith-nesbit",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "amanda-friday-2017": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B074CP59FJ",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/A1gwlRF8-5L.jpg",
-          "id": "amanda-friday-2017",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "amanda-friday",
-            "becca-maggie",
-            "ben-lindsey-clark",
-            "cate-barratt",
-            "charlotte-duckett",
-            "elizabeth-klett",
-            "libby-stephenson"
-          ],
-          "publisher": "Spoken Realms",
-          "release_date": "2017-07-31",
-          "runtime_min": 403,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B074CP59FJ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-phoenix-and-the-carpet-edith-nesbit"
-        },
-        "cathy-dobson-2011": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B005HEYT0G",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51qSFGO-qbL.jpg",
-          "id": "cathy-dobson-2011",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "cathy-dobson"
-          ],
-          "publisher": "Red Door Audiobooks",
-          "release_date": "2011-08-16",
-          "runtime_min": 431,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B005HEYT0G",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-phoenix-and-the-carpet-edith-nesbit"
-        },
-        "rosie-akerman-2021": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "1666507423",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71PbbxOO81S.jpg",
-          "id": "rosie-akerman-2021",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "rosie-akerman"
-          ],
-          "publisher": "Dreamscape Media, LLC",
-          "release_date": "2021-06-29",
-          "runtime_min": 417,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "1666507423",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-phoenix-and-the-carpet-edith-nesbit"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "1666507423",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Phoenix and the Carpet"
     },
     "the-phoenix-and-the-carpet-in-an-american-voice": {
       "added_at": "2026-08-02",

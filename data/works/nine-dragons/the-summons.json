@@ -1056,6 +1056,10 @@
             {
               "asin": "B0BK9TKG46",
               "region": "us"
+            },
+            {
+              "asin": "B0FZXD55T2",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/913Z3yMr-fL.jpg",
@@ -1074,6 +1078,11 @@
               "imported_at": "2026-08-01",
               "ref": "B0BK9TKG46",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FZXD55T2",
+              "type": "libex-import"
             }
           ],
           "work": "the-sun-throne"
@@ -1084,54 +1093,7 @@
           "imported_at": "2026-08-01",
           "ref": "B0BK9TKG46",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Sun Throne"
-    },
-    "the-sun-throne-roland-carlson": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "roland-carlsson"
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fantasy"
-      ],
-      "id": "the-sun-throne-roland-carlson",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "marcus-jahn-2025": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0FZXD55T2",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91p8uQu4o9L.jpg",
-          "id": "marcus-jahn-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "marcus-jahn",
-            "sarah-goldstein"
-          ],
-          "publisher": "Royal Guard Publishing LLC",
-          "release_date": "2025-11-05",
-          "runtime_min": 383,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0FZXD55T2",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-sun-throne-roland-carlson"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0FZXD55T2",

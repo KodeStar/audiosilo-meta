@@ -12118,12 +12118,41 @@
       ],
       "genres": [
         "childrens",
-        "classics"
+        "classics",
+        "fantasy"
       ],
       "id": "the-fiery-dragon",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "emma-gregory-2013": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00G4C5DR8",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/915AZGf8dmL.jpg",
+          "id": "emma-gregory-2013",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "emma-gregory"
+          ],
+          "publisher": "Naxos AudioBooks",
+          "release_date": "2013-12-04",
+          "runtime_min": 28,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00G4C5DR8",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-fiery-dragon"
+        },
         "karen-krause-2015": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -12158,53 +12187,7 @@
           "imported_at": "2026-08-02",
           "ref": "B00STQRZTG",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Fiery Dragon"
-    },
-    "the-fiery-dragon-e-nesbit": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "edith-nesbit"
-      ],
-      "genres": [
-        "childrens",
-        "fantasy"
-      ],
-      "id": "the-fiery-dragon-e-nesbit",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "emma-gregory-2013": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B00G4C5DR8",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/915AZGf8dmL.jpg",
-          "id": "emma-gregory-2013",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "emma-gregory"
-          ],
-          "publisher": "Naxos AudioBooks",
-          "release_date": "2013-12-04",
-          "runtime_min": 28,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B00G4C5DR8",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-fiery-dragon-e-nesbit"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B00G4C5DR8",

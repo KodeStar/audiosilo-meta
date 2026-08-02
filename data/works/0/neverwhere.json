@@ -9274,12 +9274,44 @@
       ],
       "genres": [
         "childrens",
-        "fantasy"
+        "classics",
+        "coming-of-age",
+        "fantasy",
+        "historical-fiction",
+        "parenting-relationships"
       ],
       "id": "new-treasure-seekers",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "melissa-thompson-2019": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B07NDKYJN5",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81dxsLWkwoL.jpg",
+          "id": "melissa-thompson-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "melissa-thompson"
+          ],
+          "publisher": "MuseumAudiobooks.com",
+          "release_date": "2019-02-06",
+          "runtime_min": 348,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07NDKYJN5",
+              "type": "libex-import"
+            }
+          ],
+          "work": "new-treasure-seekers"
+        },
         "teresa-gallagher-2009": {
           "abridged": true,
           "added_at": "2026-08-02",
@@ -9314,56 +9346,7 @@
           "imported_at": "2026-08-02",
           "ref": "B002V1AE7U",
           "type": "libex-import"
-        }
-      ],
-      "title": "New Treasure Seekers"
-    },
-    "new-treasure-seekers-edith-nesbit": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "edith-nesbit"
-      ],
-      "genres": [
-        "childrens",
-        "classics",
-        "coming-of-age",
-        "historical-fiction",
-        "parenting-relationships"
-      ],
-      "id": "new-treasure-seekers-edith-nesbit",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "melissa-thompson-2019": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B07NDKYJN5",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81dxsLWkwoL.jpg",
-          "id": "melissa-thompson-2019",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "melissa-thompson"
-          ],
-          "publisher": "MuseumAudiobooks.com",
-          "release_date": "2019-02-06",
-          "runtime_min": 348,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B07NDKYJN5",
-              "type": "libex-import"
-            }
-          ],
-          "work": "new-treasure-seekers-edith-nesbit"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B07NDKYJN5",
