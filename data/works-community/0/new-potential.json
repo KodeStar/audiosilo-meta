@@ -1733,6 +1733,231 @@
       }
     },
     "one-shot": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A former Army military-police major whom accused gunman James Barr demands to see. Military records show that their service overlapped, but the reason for Barr's request is not yet known.",
+            "id": "jack-reacher",
+            "name": "Jack Reacher",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A former Army infantry specialist and Gulf War veteran arrested for the plaza shooting. He denies responsibility, asks for Jack Reacher, and is left comatose with stab wounds and a severe brain injury after an attack by other prisoners.",
+            "id": "james-barr",
+            "name": "James Barr",
+            "reveal": {
+              "chapter": 1
+            }
+          },
+          {
+            "description": "James Barr's sister and next of kin. She had lived in his house before moving out ahead of the shooting. Convinced that he is innocent, she rejects a defense based only on mitigation and seeks a lawyer willing to test the case.",
+            "id": "rosemary-barr",
+            "name": "Rosemary Barr",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A retired police officer and licensed investigator who works for local lawyers. Skilled in tracing people and checking records, he establishes that Barr and Reacher served in the Army during the same period but cannot locate Reacher after his discharge.",
+            "id": "franklin",
+            "name": "Franklin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Barr's first lawyer, who regards the reported physical case as overwhelming. He concentrates on reducing the consequences rather than proving innocence, leading Rosemary Barr to seek representation more receptive to her brother's denial.",
+            "id": "david-chapman",
+            "name": "David Chapman",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A newly established defense lawyer retained to represent Barr through his sister. The district attorney's daughter and a witness to part of the plaza attack, she begins by independently checking the evidence and considering a medical defense.",
+            "id": "helen-rodin",
+            "name": "Helen Rodin",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Alex",
+              "Alexei Alexievich Rodin"
+            ],
+            "description": "The district attorney prosecuting Barr and Helen Rodin's father. He considers the physical evidence decisive, cites a perfect record in capital cases, and intends to prosecute Barr if the prisoner recovers sufficient brain function.",
+            "id": "alex-rodin",
+            "name": "Alex Rodin",
+            "reveal": {
+              "chapter": 2
+            }
+          },
+          {
+            "description": "The homicide detective leading the investigation into the plaza shooting. Regarded by others as reliable, he oversees a case built on physical evidence rather than eyewitness identification and presents the findings against Barr as conclusive.",
+            "id": "emerson",
+            "name": "Emerson",
+            "reveal": {
+              "chapter": 2
+            }
+          },
+          {
+            "description": "A local television anchor reporting on the plaza shooting and James Barr's arrest. Her broadcast supplies Reacher with the first public account of the case, prompting him to leave Miami and travel by bus to Indiana.",
+            "id": "ann-yanni",
+            "name": "Ann Yanni",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A surveillance operative who watches Jack Reacher and Helen Rodin after their lunch. He is already familiar with Helen's routine.",
+            "id": "grigor-linsky",
+            "name": "Grigor Linsky",
+            "reveal": {
+              "chapter": 3
+            }
+          },
+          {
+            "description": "The feared elderly leader to whom Grigor Linsky reports. After learning that Reacher has arrived, he directs continued surveillance and orders an indirect, apparently ordinary act of violence intended to drive Reacher away.",
+            "id": "zek",
+            "name": "Zek",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A police crime-scene specialist who organizes and explains the extensive case against Barr. His presentation covers video, ballistics, prints, the recovered rifle and minivan, and trace evidence from clothing and footwear.",
+            "id": "bill-antonio",
+            "name": "Bill Antonio",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A red-haired auto-parts employee who recognizes that Reacher is using a false name. She approaches him in a bar and helps stage an accusation that provides the pretext for five men to attack him.",
+            "id": "sandy",
+            "name": "Sandy",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A man connected to Sandy whom Jack Reacher seeks while tracing the people involved in the failed bar setup. His part in events is unclear.",
+            "id": "jeb-oliver",
+            "name": "Jeb Oliver",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "One of Zek's associates, present with the organization's senior members when the missing traffic-cone footage threatens the case against Barr. The group considers how to neutralize Reacher without resorting to an obvious direct attack.",
+            "id": "chenko",
+            "name": "Chenko",
+            "reveal": {
+              "chapter": 6
+            }
+          },
+          {
+            "description": "An associate who attends Zek's planning meeting as the group considers how to stop Jack Reacher from pursuing the unexplained traffic-cone evidence without an obvious direct attack.",
+            "id": "vladimir",
+            "name": "Vladimir",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A member of Zek's organization assigned to surveillance work. He rotates monitoring duty with Sokolov while the group follows Reacher's investigation and tries to protect the apparently conclusive case against Barr.",
+            "id": "raskin",
+            "name": "Raskin",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Zek associate assigned to surveillance work. He rotates monitoring duty with Raskin while the organization watches Reacher and responds to the defense team's discovery of a weakness in the evidence against Barr.",
+            "id": "sokolov",
+            "name": "Sokolov",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Pentagon-based JAG brigadier general who was formerly involved with Jack Reacher. The defense subpoenas her, and she is expected to give a deposition.",
+            "id": "eileen-hutton",
+            "name": "Eileen Hutton",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Emerson's police colleague, assisting with the investigation of Sandy's death. She joins him at the airport to intercept Reacher after the circumstances of the killing make him a leading suspect.",
+            "id": "donna-bianca",
+            "name": "Donna Bianca",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The auto-parts-store employer of Sandy and Jeb Oliver. He identifies Sandy for Emerson and reports her recent contacts with Jack Reacher and Reacher's search for Jeb, directing police attention toward Reacher.",
+            "id": "gary",
+            "name": "Gary",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The retired Marine shooting champion who owns James Barr's Kentucky range. He keeps dated customer targets and helps Jack Reacher interpret the records showing that Barr concealed declining accuracy while another shooter disguised expert skill.",
+            "id": "kentucky-range-owner",
+            "name": "Kentucky range owner",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The third person killed in the plaza shooting, identified as a DMV clerical supervisor. Analysis of the firing sequence makes her the probable intended target rather than a random victim.",
+            "id": "oline-archer",
+            "name": "Oline Archer",
+            "reveal": {
+              "chapter": 10
+            }
+          },
+          {
+            "description": "Oline Archer's husband, whom she reported missing two months before the plaza shooting. His disappearance becomes the next lead in Jack Reacher's inquiry.",
+            "id": "ted-archer",
+            "name": "Ted Archer",
+            "reveal": {
+              "chapter": 10
+            }
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B00LI9GZTM",
+            "type": "community"
+          }
+        ],
+        "work": "one-shot"
+      },
       "recaps": {
         "ending": "Reacher's group attacks Zek's isolated house and rescues Rosemary Barr alive. Helen Rodin survives the diversion, while Sokolov, Vladimir, and Grigor Linsky are killed. Chenko is thrown from a third-floor window, but his condition is not confirmed. Zek remains inside, and Reacher goes back to confront him. James Barr appears unable to have fired the plaza shots and therefore appears to have been framed. Reacher links Oline Archer's death and Ted Archer's disappearance to a corrupt city-contract operation, but that theory is not yet independently proved. Barr's legal fate, the official handling of Sandy's murder, the possible leak from Emerson or Alex Rodin, and the ultimate outcomes of Zek and Chenko all remain open at the close.",
         "in_short": "After five people are shot in a public plaza, accused former Army sniper James Barr denies responsibility and asks for Jack Reacher. Reacher arrives expecting to condemn Barr because of concealed killings in Barr's military past, but flaws in the apparently perfect evidence point to coercion and then to a complete frame-up. Reacher identifies Chenko as the concealed marksman and Oline Archer as the likely intended victim. Oline's missing husband, Ted, had challenged a competitor benefiting from corrupt city contracts, connecting the shooting to Zek's organization. The group murders Sandy to implicate Reacher and abducts Rosemary Barr to control the defense. Reacher, Helen Rodin, Ann Yanni, Franklin, and a retired range owner locate Zek's house. Their assault frees Rosemary and kills several operatives. Chenko's condition and Zek's fate remain unresolved, as do Barr's case, the contract conspiracy, and a possible justice-system leak.",
