@@ -3927,6 +3927,11 @@
       "authors": [
         "david-eddings"
       ],
+      "genres": [
+        "action-adventure",
+        "epic-fantasy",
+        "fantasy"
+      ],
       "id": "castle-of-wizardry",
       "language": "en",
       "license": "CC0-1.0",
@@ -3995,6 +4000,11 @@
         {
           "imported_at": "2026-07-17",
           "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0DG6KQBZH",
+          "type": "libex-import"
         }
       ],
       "title": "Castle of Wizardry"
@@ -5584,6 +5594,10 @@
       "authors": [
         "agatha-christie"
       ],
+      "genres": [
+        "mystery",
+        "thriller-suspense"
+      ],
       "id": "cat-among-the-pigeons",
       "language": "en",
       "license": "CC0-1.0",
@@ -5809,6 +5823,11 @@
           "imported_at": "2026-07-25",
           "ref": "https://www.goodreads.com/book/show/16342.Cat_Among_the_Pigeons",
           "type": "community"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V9Z43Q",
+          "type": "libex-import"
         }
       ],
       "title": "Cat Among the Pigeons",
@@ -7021,6 +7040,33 @@
             {
               "asin": "B002V1O7V4",
               "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4029962,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4316450,
+              "start_ms": 4029962,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4387643,
+              "start_ms": 8346412,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4206341,
+              "start_ms": 12734055,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4024390,
+              "start_ms": 16940396,
+              "title": "Chapter 5"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81l2rAp6CWL.jpg",

@@ -1894,6 +1894,9 @@
       "authors": [
         "agatha-christie"
       ],
+      "genres": [
+        "mystery"
+      ],
       "id": "five-little-pigs",
       "language": "en",
       "license": "CC0-1.0",
@@ -2020,6 +2023,11 @@
           "imported_at": "2026-07-25",
           "ref": "https://www.goodreads.com/book/show/121648.Five_Little_Pigs",
           "type": "community"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V5IUZE",
+          "type": "libex-import"
         }
       ],
       "title": "Five Little Pigs",
@@ -10734,6 +10742,53 @@
             {
               "asin": "3838790901",
               "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 246734,
+              "start_ms": 0,
+              "title": "Kapitel 1"
+            },
+            {
+              "length_ms": 406302,
+              "start_ms": 246734,
+              "title": "Kapitel 2"
+            },
+            {
+              "length_ms": 325590,
+              "start_ms": 653036,
+              "title": "Kapitel 3"
+            },
+            {
+              "length_ms": 416821,
+              "start_ms": 978626,
+              "title": "Kapitel 4"
+            },
+            {
+              "length_ms": 380087,
+              "start_ms": 1395447,
+              "title": "Kapitel 5"
+            },
+            {
+              "length_ms": 439484,
+              "start_ms": 1775534,
+              "title": "Kapitel 6"
+            },
+            {
+              "length_ms": 388075,
+              "start_ms": 2215018,
+              "title": "Kapitel 7"
+            },
+            {
+              "length_ms": 281541,
+              "start_ms": 2603093,
+              "title": "Kapitel 8"
+            },
+            {
+              "length_ms": 341216,
+              "start_ms": 2884634,
+              "title": "Kapitel 9"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81Z-R-SLsiL.jpg",

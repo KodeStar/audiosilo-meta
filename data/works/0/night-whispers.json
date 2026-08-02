@@ -342,6 +342,14 @@
       "authors": [
         "alex-aster"
       ],
+      "genres": [
+        "dark-fantasy",
+        "fantasy",
+        "romance",
+        "romantic-suspense",
+        "thriller-suspense",
+        "young-adult"
+      ],
       "id": "nightbane",
       "language": "en",
       "license": "CC0-1.0",
@@ -750,6 +758,11 @@
           "imported_at": "2026-07-17",
           "ref": "B0CLLN68PY",
           "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0C5NLG6XG",
+          "type": "libex-import"
         }
       ],
       "title": "Nightbane"
@@ -6349,6 +6362,12 @@
       "authors": [
         "hideyuki-kikuchi",
         "yoshitaka-amano"
+      ],
+      "credits": [
+        {
+          "person": "yoshitaka-amano",
+          "role": "illustrator"
+        }
       ],
       "genres": [
         "fantasy",
@@ -13013,6 +13032,38 @@
             {
               "asin": "8852151362",
               "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 6183008,
+              "start_ms": 0,
+              "title": "Capitolo 1"
+            },
+            {
+              "length_ms": 6063124,
+              "start_ms": 6183008,
+              "title": "Capitolo 2"
+            },
+            {
+              "length_ms": 6228892,
+              "start_ms": 12246132,
+              "title": "Capitolo 3"
+            },
+            {
+              "length_ms": 6442190,
+              "start_ms": 18475024,
+              "title": "Capitolo 4"
+            },
+            {
+              "length_ms": 5862016,
+              "start_ms": 24917214,
+              "title": "Capitolo 5"
+            },
+            {
+              "length_ms": 4167168,
+              "start_ms": 30779230,
+              "title": "Capitolo 6"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81hMDbz0ucL.jpg",

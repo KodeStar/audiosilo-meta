@@ -3816,6 +3816,12 @@
       "authors": [
         "andrea-camilleri"
       ],
+      "credits": [
+        {
+          "person": "stephen-sartarelli",
+          "role": "translator"
+        }
+      ],
       "genres": [
         "mystery",
         "police-procedural",
@@ -3886,6 +3892,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B00845TA2M",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B071G6C8S7",
           "type": "libex-import"
         }
       ],
@@ -8131,6 +8142,13 @@
       "authors": [
         "paulo-coelho"
       ],
+      "genres": [
+        "classics",
+        "literary-fiction",
+        "occult",
+        "parenting-relationships",
+        "self-help"
+      ],
       "id": "the-alchemist",
       "language": "en",
       "license": "CC0-1.0",
@@ -8142,6 +8160,28 @@
             {
               "asin": "B002V0Q4LG",
               "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 127444,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 4083400,
+              "start_ms": 127444,
+              "title": "Part One"
+            },
+            {
+              "length_ms": 10014488,
+              "start_ms": 4210844,
+              "title": "Part Two"
+            },
+            {
+              "length_ms": 236002,
+              "start_ms": 14225332,
+              "title": "Epilogue"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/510a46Y-G9L.jpg",
@@ -8169,6 +8209,11 @@
           "imported_at": "2026-07-25",
           "ref": "https://www.goodreads.com/book/show/865.The_Alchemist",
           "type": "community"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V0Q4LG",
+          "type": "libex-import"
         }
       ],
       "title": "The Alchemist",

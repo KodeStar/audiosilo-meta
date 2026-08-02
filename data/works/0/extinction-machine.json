@@ -3333,6 +3333,14 @@
       "authors": [
         "scott-westerfeld"
       ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "coming-of-age",
+        "fantasy",
+        "self-help",
+        "young-adult"
+      ],
       "id": "extras",
       "language": "en",
       "license": "CC0-1.0",
@@ -3399,6 +3407,11 @@
           "imported_at": "2026-07-25",
           "ref": "https://www.goodreads.com/book/show/493456.Extras",
           "type": "community"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V1BQ22",
+          "type": "libex-import"
         }
       ],
       "title": "Extras",
@@ -10875,6 +10888,18 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 1721364,
+              "start_ms": 0,
+              "title": "Kapitel 1"
+            },
+            {
+              "length_ms": 1972279,
+              "start_ms": 1721364,
+              "title": "Kapitel 2"
+            }
+          ],
           "cover_url": "https://m.media-amazon.com/images/I/81K0W-Lq-jL.jpg",
           "id": "sigmar-solbach-2021",
           "language": "de",
@@ -11781,6 +11806,11 @@
       "authors": [
         "brandon-mull"
       ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "fantasy"
+      ],
       "id": "fablehaven",
       "language": "en",
       "license": "CC0-1.0",
@@ -11819,6 +11849,11 @@
           "imported_at": "2026-07-25",
           "ref": "https://www.goodreads.com/book/show/44652.Fablehaven",
           "type": "community"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00CXXEX8W",
+          "type": "libex-import"
         }
       ],
       "title": "Fablehaven",

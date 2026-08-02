@@ -5,6 +5,10 @@
       "authors": [
         "jennifer-l-armentrout"
       ],
+      "genres": [
+        "childrens",
+        "fantasy"
+      ],
       "id": "elixir",
       "language": "en",
       "license": "CC0-1.0",
@@ -16,6 +20,58 @@
             {
               "asin": "B00JGAVDF6",
               "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1373367,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 748193,
+              "start_ms": 1373367,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1395473,
+              "start_ms": 2121560,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1139171,
+              "start_ms": 3517033,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 901770,
+              "start_ms": 4656204,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 979696,
+              "start_ms": 5557974,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1145533,
+              "start_ms": 6537670,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1060223,
+              "start_ms": 7683203,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1155286,
+              "start_ms": 8743426,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 482603,
+              "start_ms": 9898712,
+              "title": "Chapter 10"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81Qf7YUQqZL.jpg",
@@ -43,6 +99,11 @@
           "imported_at": "2026-07-25",
           "ref": "https://www.goodreads.com/book/show/13605727-elixir",
           "type": "community"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00JGAVDF6",
+          "type": "libex-import"
         }
       ],
       "title": "Elixir",
@@ -4349,6 +4410,12 @@
       "authors": [
         "gregory-maguire"
       ],
+      "genres": [
+        "epic-fantasy",
+        "fairy-tales-folklore",
+        "fantasy",
+        "urban-fantasy"
+      ],
       "id": "elphie-a-wicked-childhood",
       "language": "en",
       "license": "CC0-1.0",
@@ -4387,6 +4454,11 @@
           "imported_at": "2026-07-25",
           "ref": "https://www.goodreads.com/book/show/199743711-elphie",
           "type": "community"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0FJQQMDLZ",
+          "type": "libex-import"
         }
       ],
       "title": "Elphie: A Wicked Childhood",
@@ -4981,6 +5053,93 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 23679,
+              "start_ms": 0,
+              "title": "Vorspann"
+            },
+            {
+              "length_ms": 47800,
+              "start_ms": 23679,
+              "title": "Die zehn wichtigsten Regeln..."
+            },
+            {
+              "length_ms": 620219,
+              "start_ms": 71479,
+              "title": "Kapitel eins: Die Hexe weht herein"
+            },
+            {
+              "length_ms": 841096,
+              "start_ms": 691698,
+              "title": "Kapitel zwei: Das könnte doch jeder"
+            },
+            {
+              "length_ms": 555862,
+              "start_ms": 1532794,
+              "title": "Kapitel drei: Der Krummfinger-Wald"
+            },
+            {
+              "length_ms": 453764,
+              "start_ms": 2088656,
+              "title": "Kapitel vier: Alles, was du wissen musst"
+            },
+            {
+              "length_ms": 356240,
+              "start_ms": 2542420,
+              "title": "Kapitel fünf: Heuler"
+            },
+            {
+              "length_ms": 355451,
+              "start_ms": 2898660,
+              "title": "Kapitel sechs: Sylphine"
+            },
+            {
+              "length_ms": 504081,
+              "start_ms": 3254111,
+              "title": "Kapitel sieben: Die Erkundung des Turms"
+            },
+            {
+              "length_ms": 864246,
+              "start_ms": 3758192,
+              "title": "Kapitel acht: Noch mehr Besuch"
+            },
+            {
+              "length_ms": 493633,
+              "start_ms": 4622438,
+              "title": "Kapitel neun: Der Liebestrank"
+            },
+            {
+              "length_ms": 1042876,
+              "start_ms": 5116071,
+              "title": "Kapitel zehn: Drei wundervolle Tage"
+            },
+            {
+              "length_ms": 647024,
+              "start_ms": 6158947,
+              "title": "Kapitel elf: Kuchen"
+            },
+            {
+              "length_ms": 783441,
+              "start_ms": 6805971,
+              "title": "Kapitel zwölf: Das Holzfäller-Lager"
+            },
+            {
+              "length_ms": 710251,
+              "start_ms": 7589412,
+              "title": "Kapitel dreizehn: Drei kleine Zauber"
+            },
+            {
+              "length_ms": 374500,
+              "start_ms": 8299663,
+              "title": "Kapitel vierzehn: Zu Hause"
+            },
+            {
+              "length_ms": 21399,
+              "start_ms": 8674163,
+              "title": "Abspann"
+            }
+          ],
           "cover_url": "https://m.media-amazon.com/images/I/814W1s4yVVL.jpg",
           "id": "corinna-dorenkamp-2019",
           "language": "de",
@@ -5039,6 +5198,83 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 115780,
+              "start_ms": 0,
+              "title": "Vorspann"
+            },
+            {
+              "length_ms": 620546,
+              "start_ms": 115780,
+              "title": "Kapitel eins: Maifeiertag"
+            },
+            {
+              "length_ms": 597402,
+              "start_ms": 736326,
+              "title": "Kapitel zwei: Die Hexe ist zurück"
+            },
+            {
+              "length_ms": 849013,
+              "start_ms": 1333728,
+              "title": "Kapitel drei: Zurück im Turm"
+            },
+            {
+              "length_ms": 966112,
+              "start_ms": 2182741,
+              "title": "Kapitel vier: Frank"
+            },
+            {
+              "length_ms": 947442,
+              "start_ms": 3148853,
+              "title": "Kapitel fünf: und wieder kein Schlaf"
+            },
+            {
+              "length_ms": 577294,
+              "start_ms": 4096295,
+              "title": "Kapitel sechs: Das Sternenzimmer"
+            },
+            {
+              "length_ms": 1107196,
+              "start_ms": 4673589,
+              "title": "Kapitel sieben: Der Zauberer-Basar"
+            },
+            {
+              "length_ms": 1132087,
+              "start_ms": 5780785,
+              "title": "Kapitel acht: Währenddessen …"
+            },
+            {
+              "length_ms": 977164,
+              "start_ms": 6912872,
+              "title": "Kapitel neun: … und damit zurück zu Frank"
+            },
+            {
+              "length_ms": 701451,
+              "start_ms": 7890036,
+              "title": "Kapitel zehn: Die Halle der Spiegel"
+            },
+            {
+              "length_ms": 592433,
+              "start_ms": 8591487,
+              "title": "Kapitel elf: Chaos auf dem Markt"
+            },
+            {
+              "length_ms": 653270,
+              "start_ms": 9183920,
+              "title": "Kapitel zwölf: Elsa schafft Ordnung"
+            },
+            {
+              "length_ms": 309986,
+              "start_ms": 9837190,
+              "title": "Kapitel dreizehn: Und was jetzt?"
+            },
+            {
+              "length_ms": 360535,
+              "start_ms": 10147176,
+              "title": "Abspann"
+            }
+          ],
           "cover_url": "https://m.media-amazon.com/images/I/81H86Dj10rL.jpg",
           "id": "corinna-dorenkamp-2020",
           "language": "de",
@@ -5092,6 +5328,11 @@
       "added_at": "2026-07-11T17:30:05+01:00",
       "authors": [
         "ben-hale"
+      ],
+      "genres": [
+        "action-adventure",
+        "epic-fantasy",
+        "fantasy"
       ],
       "id": "elseerian",
       "language": "en",
@@ -5297,6 +5538,11 @@
           "imported_at": "2026-07-11",
           "ref": "B00F0U4MRW",
           "type": "openaudible-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00F0U5O5G",
+          "type": "libex-import"
         }
       ],
       "title": "Elseerian"
@@ -8750,6 +8996,158 @@
             {
               "asin": "8702189038",
               "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1756008,
+              "start_ms": 0,
+              "title": "Kapitel 1"
+            },
+            {
+              "length_ms": 1779159,
+              "start_ms": 1756008,
+              "title": "Kapitel 2"
+            },
+            {
+              "length_ms": 1776651,
+              "start_ms": 3535167,
+              "title": "Kapitel 3"
+            },
+            {
+              "length_ms": 840121,
+              "start_ms": 5311818,
+              "title": "Kapitel 4"
+            },
+            {
+              "length_ms": 1786961,
+              "start_ms": 6151939,
+              "title": "Kapitel 5"
+            },
+            {
+              "length_ms": 1731767,
+              "start_ms": 7938900,
+              "title": "Kapitel 6"
+            },
+            {
+              "length_ms": 1458584,
+              "start_ms": 9670667,
+              "title": "Kapitel 7"
+            },
+            {
+              "length_ms": 1763300,
+              "start_ms": 11129251,
+              "title": "Kapitel 8"
+            },
+            {
+              "length_ms": 1772657,
+              "start_ms": 12892551,
+              "title": "Kapitel 9"
+            },
+            {
+              "length_ms": 1279001,
+              "start_ms": 14665208,
+              "title": "Kapitel 10"
+            },
+            {
+              "length_ms": 1760769,
+              "start_ms": 15944209,
+              "title": "Kapitel 11"
+            },
+            {
+              "length_ms": 1780181,
+              "start_ms": 17704978,
+              "title": "Kapitel 12"
+            },
+            {
+              "length_ms": 1781736,
+              "start_ms": 19485159,
+              "title": "Kapitel 13"
+            },
+            {
+              "length_ms": 1799221,
+              "start_ms": 21266895,
+              "title": "Kapitel 14"
+            },
+            {
+              "length_ms": 689423,
+              "start_ms": 23066116,
+              "title": "Kapitel 15"
+            },
+            {
+              "length_ms": 1086368,
+              "start_ms": 23755539,
+              "title": "Kapitel 16"
+            },
+            {
+              "length_ms": 1769383,
+              "start_ms": 24841907,
+              "title": "Kapitel 17"
+            },
+            {
+              "length_ms": 1776651,
+              "start_ms": 26611290,
+              "title": "Kapitel 18"
+            },
+            {
+              "length_ms": 957799,
+              "start_ms": 28387941,
+              "title": "Kapitel 19"
+            },
+            {
+              "length_ms": 1031848,
+              "start_ms": 29345740,
+              "title": "Kapitel 20"
+            },
+            {
+              "length_ms": 1799685,
+              "start_ms": 30377588,
+              "title": "Kapitel 21"
+            },
+            {
+              "length_ms": 1772680,
+              "start_ms": 32177273,
+              "title": "Kapitel 22"
+            },
+            {
+              "length_ms": 1795668,
+              "start_ms": 33949953,
+              "title": "Kapitel 23"
+            },
+            {
+              "length_ms": 911917,
+              "start_ms": 35745621,
+              "title": "Kapitel 24"
+            },
+            {
+              "length_ms": 952761,
+              "start_ms": 36657538,
+              "title": "Kapitel 25"
+            },
+            {
+              "length_ms": 1788679,
+              "start_ms": 37610299,
+              "title": "Kapitel 26"
+            },
+            {
+              "length_ms": 1773331,
+              "start_ms": 39398978,
+              "title": "Kapitel 27"
+            },
+            {
+              "length_ms": 1781365,
+              "start_ms": 41172309,
+              "title": "Kapitel 28"
+            },
+            {
+              "length_ms": 1795575,
+              "start_ms": 42953674,
+              "title": "Kapitel 29"
+            },
+            {
+              "length_ms": 779609,
+              "start_ms": 44749249,
+              "title": "Kapitel 30"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81IslQQPn9L.jpg",
