@@ -570,11 +570,11 @@
     "lennox-scorpio": {
       "added_at": "2026-08-02",
       "authors": [
-        "tanya-stewner",
-        "alea-aquarius"
+        "tanya-stewner"
       ],
       "genres": [
         "action-adventure",
+        "childrens",
         "fantasy",
         "young-adult"
       ],
@@ -615,32 +615,8 @@
             }
           ],
           "work": "lennox-scorpio"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0FWJYWKTS",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Lennox Scorpio"
-    },
-    "lennox-scorpio-tanya-stewner": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "tanya-stewner"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "fantasy"
-      ],
-      "id": "lennox-scorpio-tanya-stewner",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "carlotta-truman-2025": {
+        },
+        "carlotta-truman-2025-2": {
           "abridged": false,
           "added_at": "2026-08-02",
           "asin": [
@@ -650,7 +626,7 @@
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91hjPFzg2vL.jpg",
-          "id": "carlotta-truman-2025",
+          "id": "carlotta-truman-2025-2",
           "language": "de",
           "license": "CC0-1.0",
           "narrators": [
@@ -672,10 +648,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "lennox-scorpio-tanya-stewner"
+          "work": "lennox-scorpio"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0FWJYWKTS",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0G6M5G1ZV",

@@ -1322,6 +1322,34 @@
           ],
           "work": "frankenstein"
         },
+        "rebecca-k-reynolds-2020": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "1645550397",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91Lc1dCpM+L.jpg",
+          "id": "rebecca-k-reynolds-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "rebecca-k-reynolds"
+          ],
+          "publisher": "Oasis Audio",
+          "release_date": "2020-03-10",
+          "runtime_min": 145,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1645550397",
+              "type": "libex-import"
+            }
+          ],
+          "work": "frankenstein"
+        },
         "regina-munch-2023": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -1612,6 +1640,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B00FQRCM9O",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1645550397",
           "type": "libex-import"
         }
       ],
@@ -2382,58 +2415,6 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B0C8PBGC66",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Frankenstein"
-    },
-    "frankenstein-mary-shelley": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "mary-shelley",
-        "deanna-mcfadden"
-      ],
-      "genres": [
-        "classics",
-        "horror"
-      ],
-      "id": "frankenstein-mary-shelley",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "rebecca-k-reynolds-2020": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "1645550397",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91Lc1dCpM+L.jpg",
-          "id": "rebecca-k-reynolds-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "rebecca-k-reynolds"
-          ],
-          "publisher": "Oasis Audio",
-          "release_date": "2020-03-10",
-          "runtime_min": 145,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "1645550397",
-              "type": "libex-import"
-            }
-          ],
-          "work": "frankenstein-mary-shelley"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "1645550397",
           "type": "libex-import"
         }
       ],

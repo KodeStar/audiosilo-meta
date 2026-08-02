@@ -10051,10 +10051,51 @@
       "authors": [
         "kenneth-grahame"
       ],
+      "genres": [
+        "childrens",
+        "classics",
+        "nature"
+      ],
       "id": "the-wind-in-the-willows",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "aimee-lou-wood-2020": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B08MB1SFZB",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1HrETF1qXL.jpg",
+          "id": "aimee-lou-wood-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "aimee-lou-wood",
+            "clare-corbett",
+            "cush-jumbo",
+            "gerard-mcdermott",
+            "harriet-walter",
+            "jennifer-saunders",
+            "raj-gatak",
+            "stephanie-racine",
+            "susan-wokoma"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2020-12-08",
+          "runtime_min": 424,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B08MB1SFZB",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-wind-in-the-willows"
+        },
         "alan-bennett-2005": {
           "abridged": true,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -10302,6 +10343,34 @@
           ],
           "work": "the-wind-in-the-willows"
         },
+        "benjamin-g-powell-2019": {
+          "abridged": false,
+          "added_at": "2026-08-01",
+          "asin": [
+            {
+              "asin": "B07PPTL5KL",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/915SeMlvBHL.jpg",
+          "id": "benjamin-g-powell-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "benjamin-g-powell"
+          ],
+          "publisher": "AudioKidz",
+          "release_date": "2019-03-18",
+          "runtime_min": 372,
+          "sources": [
+            {
+              "imported_at": "2026-08-01",
+              "ref": "B07PPTL5KL",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-wind-in-the-willows"
+        },
         "bert-stauff-2025": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -10437,6 +10506,34 @@
             {
               "imported_at": "2026-07-30",
               "ref": "B0725BNT26",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-wind-in-the-willows"
+        },
+        "clive-sprite-2014": {
+          "abridged": false,
+          "added_at": "2026-08-01",
+          "asin": [
+            {
+              "asin": "B00K980DTQ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81aVu6J-JVL.jpg",
+          "id": "clive-sprite-2014",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "clive-sprite"
+          ],
+          "publisher": "PDQ AudioBooks",
+          "release_date": "2014-05-12",
+          "runtime_min": 408,
+          "sources": [
+            {
+              "imported_at": "2026-08-01",
+              "ref": "B00K980DTQ",
               "type": "libex-import"
             }
           ],
@@ -11072,6 +11169,34 @@
           ],
           "work": "the-wind-in-the-willows"
         },
+        "rebecca-k-reynolds-2020": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "1645550524",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91b1UiPN+8L.jpg",
+          "id": "rebecca-k-reynolds-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "rebecca-k-reynolds"
+          ],
+          "publisher": "Oasis Audio",
+          "release_date": "2020-09-22",
+          "runtime_min": 135,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1645550524",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-wind-in-the-willows"
+        },
         "richard-briers-2011": {
           "abridged": true,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -11218,6 +11343,26 @@
           "imported_at": "2026-07-11",
           "ref": "B071VDJ5D5",
           "type": "openaudible-import"
+        },
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B00K980DTQ",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B07PPTL5KL",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B08MB1SFZB",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1645550524",
+          "type": "libex-import"
         }
       ],
       "title": "The Wind in the Willows"
@@ -11427,224 +11572,6 @@
         }
       ],
       "title": "The Wind in the Willows HCR104fm Edition"
-    },
-    "the-wind-in-the-willows-kenneth-grahame": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "kenneth-grahame",
-        "pdq-audiobooks"
-      ],
-      "genres": [
-        "childrens",
-        "classics",
-        "nature"
-      ],
-      "id": "the-wind-in-the-willows-kenneth-grahame",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "clive-sprite-2014": {
-          "abridged": false,
-          "added_at": "2026-08-01",
-          "asin": [
-            {
-              "asin": "B00K980DTQ",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81aVu6J-JVL.jpg",
-          "id": "clive-sprite-2014",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "clive-sprite"
-          ],
-          "publisher": "PDQ AudioBooks",
-          "release_date": "2014-05-12",
-          "runtime_min": 408,
-          "sources": [
-            {
-              "imported_at": "2026-08-01",
-              "ref": "B00K980DTQ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-wind-in-the-willows-kenneth-grahame"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B00K980DTQ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Wind in the Willows"
-    },
-    "the-wind-in-the-willows-kenneth-grahame-2": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "kenneth-grahame",
-        "audiokidz-audio-books"
-      ],
-      "genres": [
-        "childrens",
-        "classics",
-        "nature"
-      ],
-      "id": "the-wind-in-the-willows-kenneth-grahame-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "benjamin-g-powell-2019": {
-          "abridged": false,
-          "added_at": "2026-08-01",
-          "asin": [
-            {
-              "asin": "B07PPTL5KL",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/915SeMlvBHL.jpg",
-          "id": "benjamin-g-powell-2019",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "benjamin-g-powell"
-          ],
-          "publisher": "AudioKidz",
-          "release_date": "2019-03-18",
-          "runtime_min": 372,
-          "sources": [
-            {
-              "imported_at": "2026-08-01",
-              "ref": "B07PPTL5KL",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-wind-in-the-willows-kenneth-grahame-2"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B07PPTL5KL",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Wind in the Willows"
-    },
-    "the-wind-in-the-willows-kenneth-grahame-3": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "kenneth-grahame",
-        "dina-gregory"
-      ],
-      "genres": [
-        "classics"
-      ],
-      "id": "the-wind-in-the-willows-kenneth-grahame-3",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "aimee-lou-wood-2020": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B08MB1SFZB",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/A1HrETF1qXL.jpg",
-          "id": "aimee-lou-wood-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "aimee-lou-wood",
-            "clare-corbett",
-            "cush-jumbo",
-            "gerard-mcdermott",
-            "harriet-walter",
-            "jennifer-saunders",
-            "raj-gatak",
-            "stephanie-racine",
-            "susan-wokoma"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2020-12-08",
-          "runtime_min": 424,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B08MB1SFZB",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-wind-in-the-willows-kenneth-grahame-3"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B08MB1SFZB",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Wind in the Willows"
-    },
-    "the-wind-in-the-willows-kenneth-grahame-4": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "kenneth-grahame",
-        "martin-woodside"
-      ],
-      "genres": [
-        "childrens",
-        "classics",
-        "nature"
-      ],
-      "id": "the-wind-in-the-willows-kenneth-grahame-4",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "rebecca-k-reynolds-2020": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "1645550524",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91b1UiPN+8L.jpg",
-          "id": "rebecca-k-reynolds-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "rebecca-k-reynolds"
-          ],
-          "publisher": "Oasis Audio",
-          "release_date": "2020-09-22",
-          "runtime_min": 135,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "1645550524",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-wind-in-the-willows-kenneth-grahame-4"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "1645550524",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Wind in the Willows"
     },
     "the-wind-merchant": {
       "added_at": "2026-08-02",
