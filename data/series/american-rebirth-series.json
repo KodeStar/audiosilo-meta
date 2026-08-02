@@ -3568,24 +3568,6 @@
         }
       ]
     },
-    "anim-tropolis": {
-      "id": "anim-tropolis",
-      "license": "CC0-1.0",
-      "name": "Animætropolis",
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B0868C5LQT",
-          "type": "libex-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "1",
-          "work": "paint-the-toon-red"
-        }
-      ]
-    },
     "anima-light-novel": {
       "id": "anima-light-novel",
       "license": "CC0-1.0",
@@ -3643,6 +3625,24 @@
         {
           "position": "3",
           "work": "anima-band-3-die-letzte-reise"
+        }
+      ]
+    },
+    "animaetropolis": {
+      "id": "animaetropolis",
+      "license": "CC0-1.0",
+      "name": "Animætropolis",
+      "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B0868C5LQT",
+          "type": "libex-import"
+        }
+      ],
+      "works": [
+        {
+          "position": "1",
+          "work": "paint-the-toon-red"
         }
       ]
     },
@@ -7161,7 +7161,7 @@
         },
         {
           "position": "7",
-          "work": "die-welt-dort-drau-en-the-world-outside"
+          "work": "die-welt-dort-draussen-the-world-outside"
         }
       ]
     },
@@ -12898,52 +12898,6 @@
         }
       ]
     },
-    "au-enseiter": {
-      "id": "au-enseiter",
-      "license": "CC0-1.0",
-      "name": "Außenseiter",
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0G4NBZ6LG",
-          "type": "libex-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "8",
-          "work": "der-abtrunnige"
-        },
-        {
-          "position": "1",
-          "work": "die-dungeons-der-krummberge"
-        },
-        {
-          "position": "2",
-          "work": "die-gro-e-ode"
-        },
-        {
-          "position": "3",
-          "work": "der-dunkle-kontinent"
-        },
-        {
-          "position": "4",
-          "work": "die-andere-welt"
-        },
-        {
-          "position": "5",
-          "work": "das-labyrinth-des-schreckens"
-        },
-        {
-          "position": "6",
-          "work": "showdown-au-enseiter-buch-6"
-        },
-        {
-          "position": "7",
-          "work": "der-gebieter-des-schicksals"
-        }
-      ]
-    },
     "aubrey-maturin": {
       "id": "aubrey-maturin",
       "license": "CC0-1.0",
@@ -13252,8 +13206,8 @@
         }
       ]
     },
-    "aufstieg-des-gro-meisters": {
-      "id": "aufstieg-des-gro-meisters",
+    "aufstieg-des-grossmeisters": {
+      "id": "aufstieg-des-grossmeisters",
       "license": "CC0-1.0",
       "name": "Aufstieg des Großmeisters",
       "sources": [
@@ -13877,6 +13831,52 @@
         {
           "position": "1",
           "work": "ein-wikinger-im-jetzt-a-viking-in-the-now"
+        }
+      ]
+    },
+    "aussenseiter": {
+      "id": "aussenseiter",
+      "license": "CC0-1.0",
+      "name": "Außenseiter",
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0G4NBZ6LG",
+          "type": "libex-import"
+        }
+      ],
+      "works": [
+        {
+          "position": "8",
+          "work": "der-abtrunnige"
+        },
+        {
+          "position": "1",
+          "work": "die-dungeons-der-krummberge"
+        },
+        {
+          "position": "2",
+          "work": "die-grosse-ode"
+        },
+        {
+          "position": "3",
+          "work": "der-dunkle-kontinent"
+        },
+        {
+          "position": "4",
+          "work": "die-andere-welt"
+        },
+        {
+          "position": "5",
+          "work": "das-labyrinth-des-schreckens"
+        },
+        {
+          "position": "6",
+          "work": "showdown-aussenseiter-buch-6"
+        },
+        {
+          "position": "7",
+          "work": "der-gebieter-des-schicksals"
         }
       ]
     },

@@ -406,3 +406,109 @@ func TestLibexImportSplitsStudioConcatenation(t *testing.T) {
 		t.Errorf("narrators = %v, want [alex-hyde-white]", rec.Narrators)
 	}
 }
+
+// TestSingleWordStudioBrands is the measured exception to minTailTokens: a
+// coined brand concatenated onto a person's name with no boundary marker and no
+// second tail token. Nuanxed is the whole list today - 33 distinct dump credit
+// names, 94 author-side books and 1 narrator credit, every one of them the
+// brand.
+//
+// The negative controls are the load-bearing half. The floor the exception lifts
+// exists to protect real people whose SURNAME is a studio word, so the tests
+// that matter are the ones proving those people are still protected: the
+// exception must reach exactly the listed brand and nothing that merely looks
+// like one.
+func TestSingleWordStudioBrands(t *testing.T) {
+	// The whole list must be canonical, or an entry can never match.
+	for word := range singleWordStudioBrands {
+		if got := foldCredit(word); got != word {
+			t.Errorf("singleWordStudioBrands key %q is not canonical (foldCredit gives %q)", word, got)
+		}
+		if len(strings.Fields(word)) != 1 {
+			t.Errorf("singleWordStudioBrands key %q is not a single token", word)
+		}
+	}
+	// A brand is not a studio-tail word: the bare tier reaches it through its
+	// own branch, and putting it in studioTail would widen the separator and
+	// connector tiers with no measured target behind it.
+	for word := range singleWordStudioBrands {
+		if studioTail[word] {
+			t.Errorf("singleWordStudioBrands %q is also in studioTail; the exception is meant to be the ONLY way a one-token tail is reached", word)
+		}
+	}
+
+	cases := []struct {
+		name   string
+		credit string
+		seen   creditSeenFunc
+		want   string
+	}{
+		// The measured target. The person half is attested; the tail is not,
+		// and does not need to be - the list is its evidence.
+		{"bare brand tail, person attested", "Adriana Uribe Nuanxed", seenAs("Adriana Uribe"), "Adriana Uribe"},
+		{"the tail needs no attestation of its own", "Peter Breum Nuanxed", seenAs("Peter Breum"), "Peter Breum"},
+		{"a longer person half is kept whole", "Trine V. Ipsen Nuanxed", seenAs("Trine V. Ipsen"), "Trine V. Ipsen"},
+
+		// The person half is still census-gated: the list says what the TAIL is,
+		// not that the head is a person.
+		{"refuses an unattested person half", "Adriana Uribe Nuanxed", nil, "Adriana Uribe Nuanxed"},
+		{"refuses a one-token person half", "Nuanxed Nuanxed", seenAs("Nuanxed"), "Nuanxed Nuanxed"},
+
+		// NEGATIVE CONTROLS. A person legitimately surnamed with a brand-shaped
+		// word must not split, and the two-token floor is what protects them.
+		// "Press", "Audio" and "Records" are all real dump surnames, and all
+		// three stay whole however generous the census is.
+		{"a real surname that is a studio word", "Katherine Anne Press", everyFragmentSeen("Katherine Anne Press"), "Katherine Anne Press"},
+		{"a real surname that is a studio word (audio)", "Marcus Lee Audio", everyFragmentSeen("Marcus Lee Audio"), "Marcus Lee Audio"},
+		{"a real corporate name ending in a studio word", "Walt Disney Records", everyFragmentSeen("Walt Disney Records"), "Walt Disney Records"},
+		// The constructed control the exception is really aimed at: a person
+		// whose surname IS a listed brand word. Nuanxed is on the list precisely
+		// because the dump has no such person - if one ever appears, this is the
+		// case that has to change, deliberately, together with the measurement.
+		{"a brand word is not reached as a person's own surname", "Nuanxed", everyFragmentSeen("Nuanxed"), "Nuanxed"},
+		// An unlisted coined brand gets no exception: it is one token, so the
+		// floor still refuses it.
+		{"an unlisted brand keeps the two-token floor", "Adriana Uribe Voxtura", everyFragmentSeen("Adriana Uribe Voxtura"), "Adriana Uribe Voxtura"},
+		// The exception is BARE-tier only. A boundary marker sends the string to
+		// the separator and connector tiers, whose vocabularies are unchanged.
+		{"the exception does not reach tier 2", "Anders Larsen for Nuanxed", everyFragmentSeen("Anders Larsen for Nuanxed"), "Anders Larsen for Nuanxed"},
+		{"the exception does not reach a separator tier", "Nuanxed - Karine Marques", everyFragmentSeen("Nuanxed - Karine Marques"), "Nuanxed - Karine Marques"},
+	}
+	for _, tc := range cases {
+		t.Run(tc.name, func(t *testing.T) {
+			if got, _ := stripStudioConcat(tc.credit, tc.seen); got != tc.want {
+				t.Errorf("stripStudioConcat(%q) = %q, want %q", tc.credit, got, tc.want)
+			}
+		})
+	}
+}
+
+// TestDirectorQualifierStrips pins the two spellings of the director qualifier
+// as STRIP-ONLY: the name loses the qualifier and no credit is emitted, because
+// direction is a production role the credit vocabulary excludes on purpose.
+func TestDirectorQualifierStrips(t *testing.T) {
+	cases := []struct {
+		credit string
+		want   string
+	}{
+		{"Alison Belle Bews - director", "Alison Belle Bews"},
+		{"Sir Peter Hall - Director", "Sir Peter Hall"},
+		{"Cassandra de Cuir – director", "Cassandra de Cuir"}, // en dash separator
+		{"Gabrielle de Cuir -director", "Gabrielle de Cuir"},  // missing space
+		{"Jean Dupont - directeur", "Jean Dupont"},
+	}
+	for _, tc := range cases {
+		name, roles := CreditWithRoles(tc.credit)
+		if name != tc.want {
+			t.Errorf("CreditWithRoles(%q) name = %q, want %q", tc.credit, name, tc.want)
+		}
+		if len(roles) != 0 {
+			t.Errorf("CreditWithRoles(%q) roles = %v, want none: direction has no home in the credit vocabulary", tc.credit, roles)
+		}
+	}
+	// The word inside a NAME is untouched - only the trailing qualifier form
+	// strips, which is the whole reason roleQualifiers is a closed list.
+	if name, _ := CreditWithRoles("Ann Director"); name != "Ann Director" {
+		t.Errorf("CreditWithRoles(%q) = %q, want it untouched", "Ann Director", name)
+	}
+}
