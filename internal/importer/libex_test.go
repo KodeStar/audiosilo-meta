@@ -692,3 +692,63 @@ func TestLibexISBNAcceptsHyphens(t *testing.T) {
 		t.Errorf("isbn = %v, want the normalized form", rec.ISBN)
 	}
 }
+
+// TestLibexParentheticalRoleQualifier is the end-to-end proof of the bracketed
+// qualifier rule, on wave 3's real shape: libex spells the introduction credit
+// "Neil Gaiman (introduction)", and before the fix that minted a
+// "neil-gaiman-introduction" person - a second identity for a man who already
+// has a record, carrying one book and no way to find him.
+//
+// It pins all three halves of the fix at once: the person is the BARE name, the
+// qualifier-suffixed slug is never created, and the author-side qualifier is not
+// merely discarded but recorded as the work's contributor credit. The narrator's
+// own bracketed qualifier strips from the name and states nothing, which is the
+// narrator-side policy this change deliberately leaves alone.
+func TestLibexParentheticalRoleQualifier(t *testing.T) {
+	export := `[{"asin":"B0LIBEX080","title":"The Bracketed Credit","region":"us","language":"english",` +
+		`"authors":[{"name":"Ada Mapmaker"},{"name":"Neil Gaiman (introduction)"}],` +
+		`"narrators":[{"name":"Bea Reader (Narrator)"}],"lengthMinutes":600}]`
+	sum, dataDir := runLibex(t, export, false)
+
+	if sum.NewPeople != 3 {
+		t.Errorf("NewPeople = %d, want 3 (two authors and one narrator, each once)", sum.NewPeople)
+	}
+	var work struct {
+		Authors []string       `json:"authors"`
+		Credits []model.Credit `json:"credits"`
+	}
+	readEntity(t, dataDir, "works/th/the-bracketed-credit/work.json", &work)
+	if !reflect.DeepEqual(work.Authors, []string{"ada-mapmaker", "neil-gaiman"}) {
+		t.Errorf("authors = %v, want [ada-mapmaker neil-gaiman]", work.Authors)
+	}
+	if entryExists(t, dataDir, "people/ne/neil-gaiman-introduction.json") {
+		t.Fatal("the qualifier-suffixed person record was created")
+	}
+	var person struct {
+		ID   string `json:"id"`
+		Name string `json:"name"`
+	}
+	readEntity(t, dataDir, "people/ne/neil-gaiman.json", &person)
+	if person.ID != "neil-gaiman" || person.Name != "Neil Gaiman" {
+		t.Errorf("person = %+v, want neil-gaiman / %q", person, "Neil Gaiman")
+	}
+	wantCredits := []model.Credit{{Person: "neil-gaiman", Role: model.RoleIntroduction}}
+	if !reflect.DeepEqual(work.Credits, wantCredits) {
+		t.Errorf("credits = %+v, want %+v", work.Credits, wantCredits)
+	}
+	if sum.Credits != 1 {
+		t.Errorf("Summary.Credits = %d, want 1 (the narrator side states nothing)", sum.Credits)
+	}
+	// The narrator's bracketed qualifier is stripped from the NAME - no
+	// "bea-reader-narrator" - and, being narrator-side, states no credit.
+	var rec struct {
+		Narrators []string `json:"narrators"`
+	}
+	readEntity(t, dataDir, "works/th/the-bracketed-credit/recordings/bea-reader.json", &rec)
+	if !reflect.DeepEqual(rec.Narrators, []string{"bea-reader"}) {
+		t.Errorf("narrators = %v, want [bea-reader]", rec.Narrators)
+	}
+	if res := check.Load(dataDir); !res.OK() {
+		t.Fatalf("imported tree failed validation:\n%v", res.Problems)
+	}
+}

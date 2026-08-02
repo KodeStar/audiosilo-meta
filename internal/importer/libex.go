@@ -91,6 +91,7 @@ const (
 	warnNoASIN libexWarnClass = iota
 	warnUnknownRegion
 	warnAINarrator
+	warnJunkCredit
 	warnUnnamedCredit
 	warnCoverNotHTTPS
 	warnMalformedISBN
@@ -107,6 +108,8 @@ func (c libexWarnClass) aggregateForm(n int) string {
 		return fmt.Sprintf("%d rows skipped: region is not a known marketplace", n)
 	case warnAINarrator:
 		return fmt.Sprintf("%d rows skipped: narrated by an AI voice", n)
+	case warnJunkCredit:
+		return fmt.Sprintf("%d rows skipped: a credited name is a platform account", n)
 	case warnUnnamedCredit:
 		return fmt.Sprintf("%d rows skipped: a credited name does not identify a person", n)
 	case warnCoverNotHTTPS:
@@ -529,10 +532,11 @@ func libexISBNs(v any, asin string, warn func(string, ...any)) []string {
 // ---------------------------------------------------------------------------
 // The credit-side row refusals
 //
-// Two rules refuse a libex row outright on the strength of who it credits: the
-// AI-narration exclusion and the unidentifiable-name exclusion below. Both live
+// Three rules refuse a libex row outright on the strength of who it credits: the
+// AI-narration exclusion, the junk-credit exclusion and the unidentifiable-name
+// exclusion below. All live
 // at the PARSE layer so they hold for every libex mode - create, --enrich,
-// --recordings-only - and both are applied through refuseLibexCredits, which the
+// --recordings-only - and all are applied through refuseLibexCredits, which the
 // bounded-subset selector (selectLibexRow) calls too. A row the importer will
 // refuse must never be selected into a tranche as if it were importable: it
 // would inflate the selection report and, worse, claim a series position slot a
@@ -541,7 +545,7 @@ func libexISBNs(v any, asin string, warn func(string, ...any)) []string {
 // creditRefusal is one credit-side refusal, in the two vocabularies its two
 // consumers need: the parse layer's warning class (plus the clause its per-row
 // line prints) and the selector's exclusion reason. They travel on one value so
-// a third credit rule is named for both consumers or for neither.
+// a further credit rule is named for both consumers or for neither.
 type creditRefusal struct {
 	class  libexWarnClass
 	reason string // the selector's exclusion reason (see reasonOrder)
@@ -550,7 +554,8 @@ type creditRefusal struct {
 }
 
 // label is what an aggregated warning names as an example of this refusal. For
-// the AI rule it is the row (its ASIN): the vocabulary is settled, and the row is
+// the AI and junk-credit rules it is the row (its ASIN): the vocabulary is
+// settled, and the row is
 // what an operator goes and looks at. For the unidentifiable-name rule the NAME
 // is the evidence - the fix is upstream in Slugify, not in any one row - so the
 // line carries both, the same reason reportUnnamedCredits names its examples.
@@ -570,6 +575,14 @@ func refuseLibexCredits(authors, narrators []string) (creditRefusal, bool) {
 			reason: reasonAINarrator,
 			name:   name,
 			detail: fmt.Sprintf("narrator %q is an AI voice", name),
+		}, true
+	}
+	if name, junk := firstJunkCredit(authors, narrators); junk {
+		return creditRefusal{
+			class:  warnJunkCredit,
+			reason: reasonJunkCredit,
+			name:   name,
+			detail: fmt.Sprintf("credit %q is a platform account, not a person", name),
 		}, true
 	}
 	if name, unnamed := firstUnnamedCredit(authors, narrators); unnamed {
@@ -677,10 +690,10 @@ func creditIdentifies(name string) bool {
 // contains, and nothing is a guess at what a retailer might emit. That restraint
 // is load-bearing here - a substring search for "tts" or a bare "ai"/"ki" token
 // matches Watts, Pitts, Ricketts, Ki Hong Lee and Ai-jen Poo, all real people.
-// The three shapes below are the only ones that discriminate cleanly.
+// The four shapes below are the only ones that discriminate cleanly.
 //
 // KEEP IN STEP with the SQL-side list in scripts/libex-export-rows.sql, which
-// applies the same three shapes at export time (belt and braces, so a future
+// applies the same four shapes at export time (belt and braces, so a future
 // dump is filtered before it ever reaches this parser).
 
 // aiNarratorNames are credits that are WHOLLY an AI-voice label, in every
@@ -703,6 +716,29 @@ var aiNarratorNames = map[string]bool{
 // A prefix rather than a set because the persona is free text. The boundary
 // check after it is what keeps a hypothetical real name ("Ai Voicu") out.
 const aiNarratorPrefix = "ai voice"
+
+// aiNarratorSuffix is the one suffix family: Audible's authorized voice-replica
+// program, which credits a synthetic clone of a real narrator as "<that
+// narrator>'s voice replica" (2,203 credits, 81 distinct names, 2,202 books in
+// the 1.13M-row dump - is_vvab is FALSE on every single one). The person named
+// is real, but the credit is not them: it is a model of their voice, and minting
+// a person record for it would put "Steve Stewart's Voice Replica" in the
+// catalogue beside Steve Stewart.
+//
+// A suffix rather than a set because the cloned narrator is free text, and 79 of
+// the 81 names in the dump end with the phrase. The other two - "Anne Lance
+// (Authorized Voice Replica)" and "AI Voice Veda Skye (Authorized Voice
+// Replica)" - are already refused by aiNarratorMarkers and aiNarratorPrefix
+// respectively, so the three shapes together cover the program exactly.
+//
+// The boundary check before it is what keeps a hypothetical real surname
+// ("Replica") out: the phrase must start a word. The possessive that precedes it
+// in the data ("...'s voice replica") ends in an apostrophe-s that foldCredit
+// keeps, so the space before "voice" is the boundary that matches. Nothing in
+// the dump ending in this phrase is a person: the near neighbours a looser
+// "'s voice" rule would eat are "The Captain's Voice" (4 credits), "April's
+// Voice" (2) and "Debra Shieber's Voice Talent" (1), all real credits.
+const aiNarratorSuffix = "voice replica"
 
 // aiNarratorMarkers are trailing parenthetical (or bracketed) markers that
 // declare the credit synthetic: "Santiago (Voz de IA)", "Elise (AI)", "Mar Cabra
@@ -758,6 +794,9 @@ func isAINarratorName(name string) bool {
 	if rest, found := strings.CutPrefix(canon, aiNarratorPrefix); found && !continuesWord(rest) {
 		return true
 	}
+	if rest, found := strings.CutSuffix(canon, aiNarratorSuffix); found && !endsWord(rest) {
+		return true
+	}
 	if m := trailingParenRE.FindStringSubmatchIndex(name); m != nil {
 		return aiNarratorMarkers[foldCredit(name[m[2]:m[3]])]
 	}
@@ -775,6 +814,68 @@ func continuesWord(s string) bool {
 	}
 	r, _ := utf8.DecodeRuneInString(s)
 	return unicode.IsLetter(r) || unicode.IsDigit(r)
+}
+
+// endsWord is continuesWord's mirror for the suffix family: whether the text
+// right BEFORE "voice replica" ends mid-word rather than at a boundary. It is
+// what makes the suffix a WORD suffix: "Steve Stewart's voice replica" matches
+// the family, a hypothetical surname "Replica" preceded by nothing but letters
+// ("Ivoice Replica") does not. An empty prefix is the bare "voice replica"
+// credit, which is a boundary.
+func endsWord(s string) bool {
+	if s == "" {
+		return false
+	}
+	r, _ := utf8.DecodeLastRuneInString(s)
+	return unicode.IsLetter(r) || unicode.IsDigit(r)
+}
+
+// ---------------------------------------------------------------------------
+// Junk-credit exclusion
+//
+// A credit can name neither a person nor a synthetic voice but a PLATFORM
+// ACCOUNT - the publishing tool's own test harness, leaking a row into the
+// public catalogue. The dump carries exactly one: "acx-dev+gamma4", the
+// plus-tagged local part of an ACX developer mailbox, credited as the narrator
+// of one book (B0CTW69SVQ, "Psion Gamma (Psion series # 2)", publisher "test
+// company", 43 minutes for a full-length novel). It slugs cleanly, so
+// firstUnnamedCredit does not catch it, and it is not synthetic, so the AI rule
+// does not either - it simply is not a person, and importing it minted
+// "acx-dev-gamma4" as a narrator of record.
+//
+// The vocabulary is EXACT NAMES, held to the same evidence bar as
+// aiNarratorNames (which itself carries four count-1 entries): a name goes in
+// only when it cannot be a person under any reading. A pattern rule was measured
+// and rejected - "acx" matches this one narrator credit and zero author credits
+// in 1.13M rows, so there is no acx-dev FAMILY to generalize over, and the
+// email-plus-tag shape `^[\w.-]+\+[\w.-]+$` also matches "I+Everything", a real
+// publisher name. Deliberately NOT included, though the same suspicion applies:
+// "Test Narrator" (12 credits), "RocQET QA" (7), "Test" (3), "Test Test" (2),
+// "Tom Test" (2), "Test Author" (1), "Scott Russell Test" (1). Those read as
+// placeholders but are not provably accounts, and their neighbours in the same
+// measurement are unmistakably real people - "Tim Sample" (10), "Dev J. Haldar"
+// (19), "Kate Sample" (5), "Dev Joshi" (4) - so a token rule over test/dev/QA/
+// sample would eat narrators who exist. If one of those names is ever confirmed
+// junk it is a one-line addition here.
+//
+// Like the AI rule, the refusal is WHOLE-ROW and covers BOTH credit lists (a
+// test account can be credited as the author just as easily), and it lives at
+// the parse layer so every libex mode inherits it.
+var junkCreditNames = map[string]bool{
+	"acx-dev+gamma4": true, // 1 credit, 1 book - an ACX developer mailbox
+}
+
+// firstJunkCredit reports whether ANY credit in the row's author or narrator
+// list is a known platform account, naming the first one it finds.
+func firstJunkCredit(authors, narrators []string) (name string, junk bool) {
+	for _, list := range [][]string{authors, narrators} {
+		for _, n := range list {
+			if junkCreditNames[foldCredit(n)] {
+				return n, true
+			}
+		}
+	}
+	return "", false
 }
 
 // foldCredit is the canonical comparison form for a credit STRING - a name, a
