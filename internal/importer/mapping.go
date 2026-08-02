@@ -662,12 +662,27 @@ func trimCredentialTitles(qualifier string) (trimmed string, dropped int) {
 	return strings.Join(words[:kept], " "), len(words) - kept
 }
 
-// prefixCredits are the leading credit phrases the dump carries in front of a
-// name ("Created by Stan Lee", the Italian "Creato da Stan Lee"). Evidence-driven
-// like roleQualifiers: these two are the only prefix forms observed, so no other
-// phrase is stripped. Matching is case-insensitive; each entry keeps its trailing
-// space so a name merely starting with the word is untouched.
-var prefixCredits = []string{"created by ", "creato da "}
+// prefixCredits are the leading credit phrases a source carries in front of a
+// name ("Created by Stan Lee", the Italian "Creato da Stan Lee", "Read by Heath
+// Miller"). Evidence-driven like roleQualifiers: only an observed prefix form is
+// stripped, so no other phrase is.
+//
+// The first two were measured in the libex dump. "read by " comes off the OTHER
+// side - a user library, where an embedded tag really does spell the narrator
+// field as a sentence - and it minted "Read by Heath Miller" as a person through
+// the audiosilo-books path. The dump does not attest it: of its 436,105 distinct
+// credit names, ZERO begin with "read by " (one contains the phrase at all,
+// "Intro and Afterword Read by the Author", which is not a person either) and
+// ZERO contain "gelesen von" in any position, which is why the German form is
+// deliberately NOT in this list - a title printing "gelesen von" is a different
+// string in a different place, and stripTitleNarratorQualifier's job.
+//
+// Matching is case-insensitive; each entry keeps its trailing space so a name
+// merely starting with the word is untouched. Requiring the " by " is what keeps
+// the six dump names spelled "Read <something>" (19 credits: "Read Shepherd",
+// "Read Mercer Schuchardt", "Read Dragon Publishing", ...) whole - not one of
+// them continues "by".
+var prefixCredits = []string{"created by ", "creato da ", "read by "}
 
 // roleSuffixRE locates a trailing credit qualifier's separator. The separator is
 // deliberately loose - the dump spells it " - ", " -", " -- ", with repeated

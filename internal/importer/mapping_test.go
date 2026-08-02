@@ -476,10 +476,14 @@ func TestCleanCreditName(t *testing.T) {
 		// double-spaced multi-word role still matches its single-spaced key.
 		{"double-spaced role", "Someone - translated  by", "Someone"},
 
-		// Prefix credits, both observed languages.
+		// Prefix credits, every observed form.
 		{"created by", "Created by Stan Lee", "Stan Lee"},
 		{"creato da", "Creato da Stan Lee", "Stan Lee"},
 		{"created by lowercase", "created by Stan Lee", "Stan Lee"},
+		// The user-library form: a tag spelling the narrator field as a sentence,
+		// which minted "Read by Heath Miller" as a person.
+		{"read by", "Read by Heath Miller", "Heath Miller"},
+		{"read by lowercase", "read by Heath Miller", "Heath Miller"},
 		// A prefix and a suffix on the same name: the fixpoint loop applies both.
 		{"prefix and suffix", "Created by Stan Lee - editor", "Stan Lee"},
 
@@ -508,6 +512,10 @@ func TestCleanCreditName(t *testing.T) {
 		{"repeated single word", "Duran Duran", "Duran Duran"},
 		{"odd word count", "Mitz Mitz Vah", "Mitz Mitz Vah"},
 		{"prefix word is not a prefix credit", "Created Beings", "Created Beings"},
+		// The trailing " by " is what protects the real names the dump spells
+		// "Read <something>" - a surname, and a first name.
+		{"read is not a prefix credit without by", "Read Shepherd", "Read Shepherd"},
+		{"read is not a prefix credit in a longer name", "Read Mercer Schuchardt", "Read Mercer Schuchardt"},
 		// A multibyte LEADING rune must not be sliced mid-rune by the prefix
 		// compare: the first rune simply is not "c", so nothing strips and the
 		// name comes back byte-identical (never mangled into invalid UTF-8).
@@ -522,6 +530,7 @@ func TestCleanCreditName(t *testing.T) {
 		{"strip would empty", "- translator", "- translator"},
 		{"strip would empty with leading space", " - translator", " - translator"},
 		{"prefix strip would empty", "Created by ", "Created by "},
+		{"read by strip would empty", "Read by ", "Read by "},
 		// No qualifier at all.
 		{"plain", "Plain Name", "Plain Name"},
 	}

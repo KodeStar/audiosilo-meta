@@ -78,8 +78,11 @@ func TestCreditWithRoles(t *testing.T) {
 		{"creator qualifier states nothing", "Stan Lee - creator", "Stan Lee", nil},
 		{"producer qualifier states nothing", "Pia Maker - producer", "Pia Maker", nil},
 
-		// The prefix credit is not a role either, and never was.
+		// The prefix credit is not a role either, and never was - including the
+		// user-library "Read by <name>", which states the narration a narrator
+		// credit already is.
 		{"prefix credit", "Created by Stan Lee", "Stan Lee", nil},
+		{"read-by prefix credit", "Read by Heath Miller", "Heath Miller", nil},
 
 		// Degenerate input: stripping would leave nothing, so nothing is stripped
 		// and nothing is stated.

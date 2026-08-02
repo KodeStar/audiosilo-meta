@@ -20,11 +20,29 @@
 #   absent from both sides                 both deleted it: it stays deleted
 #   present on both sides, different       see below
 #
-# An entry both sides changed is a real conflict with ONE exception, applied one
-# level deeper: a works entry whose own fields are identical and whose
-# "recordings" maps differ is merged by the same rules over those maps. Two pull
-# requests adding different narrations of one book collide on exactly that and
-# nothing else, and it is the most common intake collision there is.
+# An entry both sides changed is a real conflict with TWO exceptions, each
+# applied one level deeper and each to one family, because what sits one level
+# down differs per family:
+#
+#   works            an entry whose own fields are identical and whose
+#                    "recordings" maps differ is merged by the same rules over
+#                    those maps. Two pull requests adding different narrations of
+#                    one book collide on exactly that and nothing else.
+#   works-community  the entry IS a map of independent members ("characters",
+#                    "recaps"), each its own licensed document, so the base rules
+#                    apply to that map directly. A characters pull request and a
+#                    recaps pull request for the same book each create or edit
+#                    ONE member of the same entry, which is the same collision
+#                    one family over.
+#
+# Both are the most common intake collisions there are. Everything else - a
+# member or a recording both sides wrote, a work's own fields differing, a person
+# or a series entry both sides changed - stays a refusal.
+#
+# WHICH exception applies is decided by the FAMILY the pack file belongs to (its
+# path), not by sniffing the entry: the family is what fixes the shape of an
+# entry, and a rule that guessed from the keys present would quietly start
+# merging a family it was never reasoned about.
 #
 # Usage, from inside a rebase or merge that stopped on a conflict:
 #
@@ -41,6 +59,12 @@ if [ "$#" -ne 1 ]; then
   exit 2
 fi
 path="$1"
+
+# The family decides which one-level-deeper exception applies. A path git resolves
+# through the index is repository-root relative, so the first directory under
+# data/ IS the family; anything else names no family and gets no exception.
+family="${path#data/}"
+family="${family%%/*}"
 
 tmpdir="$(mktemp -d)"
 trap 'rm -rf "$tmpdir"' EXIT
@@ -63,12 +87,13 @@ if ! git show ":3:$path" > "$tmpdir/theirs" 2>/dev/null; then
 fi
 
 if ! jq -n \
+  --arg family "$family" \
   --slurpfile base "$tmpdir/base" \
   --slurpfile a "$tmpdir/ours" \
   --slurpfile b "$tmpdir/theirs" '
   # merge3 applies the base rules to one map, returning what survives and the
   # keys that need a person. It is used for the entries map and, one level down,
-  # for a works entry recordings map.
+  # for a works entry recordings map and a works-community entry member map.
   def merge3($B; $A; $T):
     ([$A, $T, $B | keys[]] | unique) as $keys
     | reduce $keys[] as $k ({kept: {}, clash: []};
@@ -107,6 +132,29 @@ if ! jq -n \
         end
     end;
 
+  # mergeMembers handles one works-community entry both sides changed. The entry
+  # has no own fields: it IS the map of its members, so the base rules apply to it
+  # one level down unchanged. Disjoint members (one side wrote characters, the
+  # other recaps) merge; the same member written on both sides is two people
+  # disagreeing about one text and clashes.
+  def mergeMembers($B; $A; $T; $k):
+    if (($A | type) != "object") or (($T | type) != "object") then {clash: [$k]}
+    else
+      merge3($B; $A; $T) as $m
+      | if ($m.clash | length) > 0
+        then {clash: ($m.clash | map($k + "." + .))}
+        else {value: $m.kept}
+        end
+    end;
+
+  # mergeChanged dispatches an entry both sides changed to its family exception.
+  # A family with none (people, series) gets the plain refusal.
+  def mergeChanged($B; $A; $T; $k):
+    if $family == "works" then mergeEntry($B; $A; $T; $k)
+    elif $family == "works-community" then mergeMembers($B; $A; $T; $k)
+    else {clash: [$k]}
+    end;
+
   ($base[0].entries // {}) as $B
   | ($a[0].entries // {}) as $A
   | ($b[0].entries // {}) as $T
@@ -115,8 +163,13 @@ if ! jq -n \
       if ($A | has($k)) and ($T | has($k)) then
         (if $A[$k] == $T[$k] then .kept[$k] = $A[$k]
          else
-           (mergeEntry(($B[$k] // {}); $A[$k]; $T[$k]; $k)) as $m
-           | if ($m | has("value")) then .kept[$k] = $m.value else .clash += $m.clash end
+           (mergeChanged(($B[$k] // {}); $A[$k]; $T[$k]; $k)) as $m
+           | if ($m | has("value"))
+             # An entry left holding nothing (both sides deleted a member, and
+             # they were all the entry had) is a deletion, not an empty record.
+             then (if ($m.value | length) > 0 then .kept[$k] = $m.value else . end)
+             else .clash += $m.clash
+             end
          end)
       elif ($A | has($k)) then
         (if ($B | has($k))

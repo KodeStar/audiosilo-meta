@@ -172,13 +172,20 @@ git push --force-with-lease
 
 The script is a **three-way** merge: it reads the merge base, so a record one
 side deliberately deleted stays deleted instead of being handed back by the side
-that still has it. Records added on either side are kept, and two pull requests
-adding different narrations to the same book merge inside that book's
-`recordings` map.
+that still has it. Records added on either side are kept, and a record both sides
+touched merges when the two changes are independent one level down:
+
+- in `data/works/`, two pull requests adding different narrations of one book
+  merge inside that book's `recordings` map (the work's own fields must be
+  identical);
+- in `data/works-community/`, a characters pull request and a recaps pull request
+  for the same book merge, because each wrote a different **member** of that
+  book's entry.
 
 It refuses (exit 5) the cases that are real disagreements: the same record - or
-the same recording - edited on both sides, and one side deleting what the other
-edited. Those need a person to decide which fact is right.
+the same recording, or the same community member - edited on both sides, and one
+side deleting what the other edited. Those need a person to decide which fact is
+right.
 
 The intake bot runs exactly this recipe on its own pull requests after every
 merge to main, so a bot PR is normally already rebased for you; when the script
