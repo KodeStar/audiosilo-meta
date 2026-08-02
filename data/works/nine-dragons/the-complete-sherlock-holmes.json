@@ -14,6 +14,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "authur-holmes-2021": {
+          "abridged": false,
+          "added_at": "2026-08-01",
+          "asin": [
+            {
+              "asin": "B099KW3TTV",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81ldntWIPbS.jpg",
+          "id": "authur-holmes-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "authur-holmes"
+          ],
+          "publisher": "Holmes Audio",
+          "release_date": "2021-07-16",
+          "runtime_min": 1726,
+          "sources": [
+            {
+              "imported_at": "2026-08-01",
+              "ref": "B099KW3TTV",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-complete-sherlock-holmes"
+        },
         "simon-vance-2013": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -720,52 +748,7 @@
           "imported_at": "2026-07-30",
           "ref": "B00FEFE4XK",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Complete Sherlock Holmes"
-    },
-    "the-complete-sherlock-holmes-sir-arthur-conan-doyle": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "sir-arthur-conan-doyle"
-      ],
-      "genres": [
-        "mystery"
-      ],
-      "id": "the-complete-sherlock-holmes-sir-arthur-conan-doyle",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "authur-holmes-2021": {
-          "abridged": false,
-          "added_at": "2026-08-01",
-          "asin": [
-            {
-              "asin": "B099KW3TTV",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81ldntWIPbS.jpg",
-          "id": "authur-holmes-2021",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "authur-holmes"
-          ],
-          "publisher": "Holmes Audio",
-          "release_date": "2021-07-16",
-          "runtime_min": 1726,
-          "sources": [
-            {
-              "imported_at": "2026-08-01",
-              "ref": "B099KW3TTV",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-complete-sherlock-holmes-sir-arthur-conan-doyle"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-01",
           "ref": "B099KW3TTV",
@@ -1745,6 +1728,107 @@
         }
       ],
       "title": "The Concealers"
+    },
+    "the-conceited-apple-branch": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "hans-christian-andersen"
+      ],
+      "genres": [
+        "childrens",
+        "fairy-tales-folklore"
+      ],
+      "id": "the-conceited-apple-branch",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "sam-kusi-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0F1YWYP4D",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91fHEAYsZsL.jpg",
+          "id": "sam-kusi-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "sam-kusi"
+          ],
+          "publisher": "Lauscher Audiobooks",
+          "release_date": "2025-05-06",
+          "runtime_min": 9,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0F1YWYP4D",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-conceited-apple-branch"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0F1YWYP4D",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Conceited Apple-Branch"
+    },
+    "the-conch-bearer": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "chitra-banerjee-divakaruni"
+      ],
+      "genres": [
+        "young-adult"
+      ],
+      "id": "the-conch-bearer",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "alan-cumming-2012": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B008PYXDXE",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51aNtohvmjL.jpg",
+          "id": "alan-cumming-2012",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alan-cumming"
+          ],
+          "publisher": "Listening Library",
+          "release_date": "2012-07-31",
+          "runtime_min": 390,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B008PYXDXE",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-conch-bearer"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B008PYXDXE",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Conch Bearer"
     },
     "the-conciliators": {
       "added_at": "2026-08-02",
@@ -4019,6 +4103,55 @@
       ],
       "title": "The Confliction"
     },
+    "the-conformation": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "paul-solet"
+      ],
+      "genres": [
+        "horror"
+      ],
+      "id": "the-conformation",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "larry-fessenden-2015": {
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B016E9JA4C",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1i5mmeowGL.jpg",
+          "id": "larry-fessenden-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "larry-fessenden"
+          ],
+          "publisher": "Glass Eye Pix, Inc.",
+          "release_date": "2015-10-12",
+          "runtime_min": 32,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B016E9JA4C",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-conformation"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B016E9JA4C",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Conformation"
+    },
     "the-confusion": {
       "added_at": "2026-08-02",
       "authors": [
@@ -5275,6 +5408,60 @@
       ],
       "title": "The Conspiracy: A Thrilling Post-Apocalyptic Survival Story (The A-Virus Series, Episode 6)"
     },
+    "the-conspiracy-of-us": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "maggie-hall"
+      ],
+      "genres": [
+        "childrens",
+        "historical-fiction",
+        "mystery",
+        "romance",
+        "young-adult"
+      ],
+      "id": "the-conspiracy-of-us",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "julia-whelan-2015": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00QW0JPGM",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71MeHiEp+xL.jpg",
+          "id": "julia-whelan-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "julia-whelan"
+          ],
+          "publisher": "Listening Library",
+          "release_date": "2015-01-13",
+          "runtime_min": 574,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00QW0JPGM",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-conspiracy-of-us"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00QW0JPGM",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Conspiracy of Us"
+    },
     "the-conspiracy-seacliff-high-book-4": {
       "added_at": "2026-08-02",
       "authors": [
@@ -5792,6 +5979,59 @@
         }
       ],
       "title": "The Containment Code: A Story of Soul Swaps, Divine Memory, and a System Breach"
+    },
+    "the-continent": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "keira-drake"
+      ],
+      "genres": [
+        "action-adventure",
+        "fantasy",
+        "self-help",
+        "young-adult"
+      ],
+      "id": "the-continent",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "fiona-hardingham-2018": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B078Z3912X",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51BiuKDJ0bL.jpg",
+          "id": "fiona-hardingham-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "fiona-hardingham"
+          ],
+          "publisher": "Harlequin Audio",
+          "release_date": "2018-03-27",
+          "runtime_min": 643,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B078Z3912X",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-continent"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B078Z3912X",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Continent"
     },
     "the-contingency": {
       "added_at": "2026-08-01",
@@ -6419,6 +6659,279 @@
       ],
       "title": "The Cook of the Halcyon"
     },
+    "the-copernicus-archives-1-wade-and-the-scorpions-claw": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "tony-abbott"
+      ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "fantasy",
+        "historical-fiction",
+        "mystery",
+        "science-fiction"
+      ],
+      "id": "the-copernicus-archives-1-wade-and-the-scorpions-claw",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "macleod-andrews-2014": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00NB6ND0O",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1p0jWNDt7L.jpg",
+          "id": "macleod-andrews-2014",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "macleod-andrews"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2014-09-09",
+          "runtime_min": 255,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00NB6ND0O",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-copernicus-archives-1-wade-and-the-scorpions-claw"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00NB6ND0O",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Copernicus Archives #1: Wade and the Scorpion's Claw"
+    },
+    "the-copernicus-archives-2-becca-and-the-prisoners-cross": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "tony-abbott"
+      ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "fantasy",
+        "historical-fiction",
+        "mystery"
+      ],
+      "id": "the-copernicus-archives-2-becca-and-the-prisoners-cross",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "arielle-delisle-2015": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00V3WZNWO",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/61ucakjKQOL.jpg",
+          "id": "arielle-delisle-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "arielle-delisle"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2015-06-16",
+          "runtime_min": 239,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00V3WZNWO",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-copernicus-archives-2-becca-and-the-prisoners-cross"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00V3WZNWO",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Copernicus Archives #2: Becca and the Prisoner's Cross"
+    },
+    "the-copernicus-legacy-the-golden-vendetta": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "tony-abbott"
+      ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "coming-of-age",
+        "fantasy",
+        "historical-fiction",
+        "parenting-relationships"
+      ],
+      "id": "the-copernicus-legacy-the-golden-vendetta",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "macleod-andrews-2015": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00YAZX0C6",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1pCvzZu+nL.jpg",
+          "id": "macleod-andrews-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "macleod-andrews"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2015-08-25",
+          "runtime_min": 614,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00YAZX0C6",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-copernicus-legacy-the-golden-vendetta"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00YAZX0C6",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Copernicus Legacy: The Golden Vendetta"
+    },
+    "the-copernicus-legacy-the-serpents-curse": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "tony-abbott"
+      ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "fantasy",
+        "historical-fiction",
+        "mystery"
+      ],
+      "id": "the-copernicus-legacy-the-serpents-curse",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "macleod-andrews-2014": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00N2W1DW2",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1so27emSmL.jpg",
+          "id": "macleod-andrews-2014",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "macleod-andrews"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2014-10-07",
+          "runtime_min": 597,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00N2W1DW2",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-copernicus-legacy-the-serpents-curse"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00N2W1DW2",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Copernicus Legacy: The Serpent's Curse"
+    },
+    "the-copper-gauntlet": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "holly-black",
+        "cassandra-clare"
+      ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "coming-of-age",
+        "fantasy",
+        "self-help"
+      ],
+      "id": "the-copper-gauntlet",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "paul-boehmer-2015": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B012EHSKX0",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81P8POAJhgL.jpg",
+          "id": "paul-boehmer-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "paul-boehmer"
+          ],
+          "publisher": "Listening Library",
+          "release_date": "2015-09-01",
+          "runtime_min": 501,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B012EHSKX0",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-copper-gauntlet"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B012EHSKX0",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Copper Gauntlet"
+    },
     "the-copper-gauntlet-magisterium-book-2": {
       "added_at": "2026-08-02",
       "authors": [
@@ -6472,6 +6985,60 @@
         }
       ],
       "title": "The Copper Gauntlet: Magisterium, Book 2"
+    },
+    "the-copper-heart": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "sarah-painter"
+      ],
+      "genres": [
+        "fantasy",
+        "mystery",
+        "paranormal",
+        "thriller-suspense",
+        "urban-fantasy"
+      ],
+      "id": "the-copper-heart",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "kate-rawson-2021": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "100404142X",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81juwxMpnYS.jpg",
+          "id": "kate-rawson-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kate-rawson"
+          ],
+          "publisher": "QUEST from W. F. Howes Ltd",
+          "release_date": "2021-05-27",
+          "runtime_min": 438,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "100404142X",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-copper-heart"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "100404142X",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Copper Heart"
     },
     "the-copper-mountain-double-feature": {
       "added_at": "2026-08-01",
@@ -7349,6 +7916,159 @@
       ],
       "title": "The Core (4 of 4) [Dramatized Adaptation]"
     },
+    "the-core-dramatized-adaptation": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "peter-v-brett"
+      ],
+      "genres": [
+        "action-adventure",
+        "epic-fantasy",
+        "fantasy"
+      ],
+      "id": "the-core-dramatized-adaptation",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "full-cast-2021": {
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B09G76F9CW",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4310528,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3987028,
+              "start_ms": 4310528,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3829504,
+              "start_ms": 8297556,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4231558,
+              "start_ms": 12127060,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3941517,
+              "start_ms": 16358618,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 4087594,
+              "start_ms": 20300135,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 4065488,
+              "start_ms": 24387729,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 3908940,
+              "start_ms": 28453217,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 3864798,
+              "start_ms": 32362157,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 4515445,
+              "start_ms": 36226955,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 3707181,
+              "start_ms": 40742400,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 4061936,
+              "start_ms": 44449581,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 4214189,
+              "start_ms": 48511517,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 4156348,
+              "start_ms": 52725706,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 3681732,
+              "start_ms": 56882054,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 3952686,
+              "start_ms": 60563786,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 4156580,
+              "start_ms": 64516472,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 4099041,
+              "start_ms": 68673052,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 3790100,
+              "start_ms": 72772093,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 4429925,
+              "start_ms": 76562193,
+              "title": "Chapter 20"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81uhRtpD5OL.jpg",
+          "id": "full-cast-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2021-10-11",
+          "runtime_min": 1349,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09G76F9CW",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-core-dramatized-adaptation"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B09G76F9CW",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Core [Dramatized Adaptation]"
+    },
     "the-core-gloria-foster": {
       "added_at": "2026-08-01",
       "authors": [
@@ -7451,6 +8171,298 @@
         }
       ],
       "title": "The Core of Change"
+    },
+    "the-core-peter-v-brett": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "peter-v-brett"
+      ],
+      "genres": [
+        "action-adventure",
+        "epic-fantasy",
+        "fantasy",
+        "paranormal",
+        "thriller-suspense",
+        "war-military-fiction"
+      ],
+      "id": "the-core-peter-v-brett",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "colin-mace-2017": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B074PBZZ8T",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 9453,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 920414,
+              "start_ms": 9453,
+              "title": "Prologue: Gaolers"
+            },
+            {
+              "length_ms": 1733695,
+              "start_ms": 929867,
+              "title": "Chapter 1: Both"
+            },
+            {
+              "length_ms": 1241942,
+              "start_ms": 2663562,
+              "title": "Chapter 2: Olive"
+            },
+            {
+              "length_ms": 3307172,
+              "start_ms": 3905504,
+              "title": "Chapter 3: Countess Paper"
+            },
+            {
+              "length_ms": 2575139,
+              "start_ms": 7212676,
+              "title": "Chapter 4: Ragen and Elissa"
+            },
+            {
+              "length_ms": 4632985,
+              "start_ms": 9787815,
+              "title": "Chapter 5: The Pack"
+            },
+            {
+              "length_ms": 2286144,
+              "start_ms": 14420800,
+              "title": "Chapter 6: Everam Is a Lie"
+            },
+            {
+              "length_ms": 2433312,
+              "start_ms": 16706944,
+              "title": "Chapter 7: The Eunuchs"
+            },
+            {
+              "length_ms": 1580907,
+              "start_ms": 19140256,
+              "title": "Chapter 8: Monastery"
+            },
+            {
+              "length_ms": 1967613,
+              "start_ms": 20721163,
+              "title": "Chapter 9: The Majah"
+            },
+            {
+              "length_ms": 1305797,
+              "start_ms": 22688776,
+              "title": "Chapter 10: Family Matters"
+            },
+            {
+              "length_ms": 1693942,
+              "start_ms": 23994573,
+              "title": "Chapter 11: Sorcerers"
+            },
+            {
+              "length_ms": 982204,
+              "start_ms": 25688515,
+              "title": "Chapter 12: Drained"
+            },
+            {
+              "length_ms": 3099260,
+              "start_ms": 26670719,
+              "title": "Chapter 13: The Last Will and Testament of Arlen Bales"
+            },
+            {
+              "length_ms": 2969182,
+              "start_ms": 29769979,
+              "title": "Chapter 14: Spankin’"
+            },
+            {
+              "length_ms": 1619081,
+              "start_ms": 32739161,
+              "title": "Chapter 15: Sisters Return"
+            },
+            {
+              "length_ms": 5873859,
+              "start_ms": 34358242,
+              "title": "Chapter 16: Beloved"
+            },
+            {
+              "length_ms": 1848726,
+              "start_ms": 40232101,
+              "title": "Chapter 17: Forest Fortress"
+            },
+            {
+              "length_ms": 2757555,
+              "start_ms": 42080827,
+              "title": "Chapter 18: Homestead"
+            },
+            {
+              "length_ms": 3166645,
+              "start_ms": 44838382,
+              "title": "Chapter 19: Hunted"
+            },
+            {
+              "length_ms": 2618096,
+              "start_ms": 48005027,
+              "title": "Chapter 20: The Escort"
+            },
+            {
+              "length_ms": 2109394,
+              "start_ms": 50623123,
+              "title": "Chapter 21: Neocounty"
+            },
+            {
+              "length_ms": 3600254,
+              "start_ms": 52732517,
+              "title": "Chapter 22: The Edge of Nie’s Abyss"
+            },
+            {
+              "length_ms": 2023294,
+              "start_ms": 56332771,
+              "title": "Chapter 23: Sharum’s Lament"
+            },
+            {
+              "length_ms": 3018873,
+              "start_ms": 58356065,
+              "title": "Chapter 24: First Steps"
+            },
+            {
+              "length_ms": 3392342,
+              "start_ms": 61374938,
+              "title": "Chapter 25: The Mouth of the Abyss"
+            },
+            {
+              "length_ms": 4903172,
+              "start_ms": 64767280,
+              "title": "Chapter 26: The Dark Below"
+            },
+            {
+              "length_ms": 4120985,
+              "start_ms": 69670452,
+              "title": "Chapter 27: Bedfellows"
+            },
+            {
+              "length_ms": 1154218,
+              "start_ms": 73791437,
+              "title": "Chapter 28: Araine’s Tale"
+            },
+            {
+              "length_ms": 1375875,
+              "start_ms": 74945655,
+              "title": "Chapter 29: Wolves"
+            },
+            {
+              "length_ms": 2485185,
+              "start_ms": 76321530,
+              "title": "Chapter 30: Everam’s Reservoir"
+            },
+            {
+              "length_ms": 2299472,
+              "start_ms": 78806715,
+              "title": "Chapter 31: Harden’s Grove"
+            },
+            {
+              "length_ms": 2820063,
+              "start_ms": 81106187,
+              "title": "Chapter 32: Blizzard and Quake"
+            },
+            {
+              "length_ms": 885656,
+              "start_ms": 83926250,
+              "title": "Chapter 33: Evil Gives Birth"
+            },
+            {
+              "length_ms": 3310655,
+              "start_ms": 84811906,
+              "title": "Chapter 34: Spear of Ala"
+            },
+            {
+              "length_ms": 2594040,
+              "start_ms": 88122561,
+              "title": "Chapter 35: Severed"
+            },
+            {
+              "length_ms": 1010161,
+              "start_ms": 90716601,
+              "title": "Chapter 36: Smoke and Mist"
+            },
+            {
+              "length_ms": 1816543,
+              "start_ms": 91726762,
+              "title": "Chapter 37: Jessa’s Girls"
+            },
+            {
+              "length_ms": 1913556,
+              "start_ms": 93543305,
+              "title": "Chapter 38: Sharak Ka"
+            },
+            {
+              "length_ms": 4753728,
+              "start_ms": 95456861,
+              "title": "Chapter 39: Whistler’s Mind"
+            },
+            {
+              "length_ms": 1922519,
+              "start_ms": 100210589,
+              "title": "Chapter 40: Alamen Fae"
+            },
+            {
+              "length_ms": 2044285,
+              "start_ms": 102133108,
+              "title": "Chapter 41: Light of the Mountains"
+            },
+            {
+              "length_ms": 3035080,
+              "start_ms": 104177393,
+              "title": "Chapter 42: The Hive"
+            },
+            {
+              "length_ms": 881104,
+              "start_ms": 107212473,
+              "title": "Chapter 43: The Core"
+            },
+            {
+              "length_ms": 433006,
+              "start_ms": 108093577,
+              "title": "Chapter 44: Born in Darkness"
+            },
+            {
+              "length_ms": 891692,
+              "start_ms": 108526583,
+              "title": "Chapter 45: The Pact"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81dMvfvYA2L.jpg",
+          "id": "colin-mace-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "colin-mace"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2017-10-12",
+          "runtime_min": 1823,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B074PBZZ8T",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-core-peter-v-brett"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B074PBZZ8T",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Core"
     },
     "the-cormorant": {
       "added_at": "2026-08-02",
@@ -8385,6 +9397,117 @@
       ],
       "title": "The Cornwalls Are Gone"
     },
+    "the-coronation-a-fandorin-mystery": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "andrew-bromfield",
+        "boris-akunin"
+      ],
+      "credits": [
+        {
+          "person": "andrew-bromfield",
+          "role": "translator"
+        }
+      ],
+      "genres": [
+        "historical-fiction",
+        "mystery",
+        "thriller-suspense"
+      ],
+      "id": "the-coronation-a-fandorin-mystery",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "nigel-patterson-2019": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "1681686260",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1bws+ScJ0L.jpg",
+          "id": "nigel-patterson-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "nigel-patterson"
+          ],
+          "publisher": "HighBridge, a division of Recorded Books",
+          "release_date": "2019-02-05",
+          "runtime_min": 816,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1681686260",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-coronation-a-fandorin-mystery"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1681686260",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Coronation: A Fandorin Mystery"
+    },
+    "the-coronation-ball": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "melanie-cellier"
+      ],
+      "genres": [
+        "coming-of-age",
+        "fantasy",
+        "young-adult"
+      ],
+      "id": "the-coronation-ball",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "esther-wane-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0H5LDP48V",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91oEhErdUQL.jpg",
+          "id": "esther-wane-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "esther-wane"
+          ],
+          "publisher": "Luminant Publications",
+          "release_date": "2026-07-10",
+          "runtime_min": 89,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0H5LDP48V",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-coronation-ball"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0H5LDP48V",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Coronation Ball"
+    },
     "the-corporate-crucible": {
       "added_at": "2026-08-02",
       "authors": [
@@ -8436,6 +9559,112 @@
         }
       ],
       "title": "The Corporate Crucible"
+    },
+    "the-corporation-wars-dissidence": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "ken-macleod"
+      ],
+      "genres": [
+        "action-adventure",
+        "military-science-fiction",
+        "science-fiction",
+        "space-opera"
+      ],
+      "id": "the-corporation-wars-dissidence",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "peter-kenny-2016": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B01N40YXG5",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81kcNPbaPIL.jpg",
+          "id": "peter-kenny-2016",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "peter-kenny"
+          ],
+          "publisher": "Orbit",
+          "release_date": "2016-11-29",
+          "runtime_min": 596,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B01N40YXG5",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-corporation-wars-dissidence"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B01N40YXG5",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Corporation Wars: Dissidence"
+    },
+    "the-corporation-wars-insurgence": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "ken-macleod"
+      ],
+      "genres": [
+        "action-adventure",
+        "military-science-fiction",
+        "science-fiction",
+        "space-opera"
+      ],
+      "id": "the-corporation-wars-insurgence",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "peter-kenny-2016": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B01N58Y9PG",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81RXbNwuxIL.jpg",
+          "id": "peter-kenny-2016",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "peter-kenny"
+          ],
+          "publisher": "Orbit",
+          "release_date": "2016-12-20",
+          "runtime_min": 597,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B01N58Y9PG",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-corporation-wars-insurgence"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B01N58Y9PG",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Corporation Wars: Insurgence"
     },
     "the-corps-justice-series-books-1-3": {
       "added_at": "2026-08-01",
@@ -8874,6 +10103,62 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "arthur-vincet-2017": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B071YMM1HB",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/918-2LimZ+L.jpg",
+          "id": "arthur-vincet-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "arthur-vincet"
+          ],
+          "publisher": "Audioliterature",
+          "release_date": "2017-04-25",
+          "runtime_min": 442,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B071YMM1HB",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-cosmic-computer"
+        },
+        "felbrigg-napoleon-herriot-2021": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B093HPQL63",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91guqiDL3PS.jpg",
+          "id": "felbrigg-napoleon-herriot-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "felbrigg-napoleon-herriot"
+          ],
+          "publisher": "FNH Audio",
+          "release_date": "2021-04-27",
+          "runtime_min": 400,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B093HPQL63",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-cosmic-computer"
+        },
         "jeffrey-kafer-2011": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -9483,6 +10768,60 @@
         }
       ],
       "title": "The Cost of Betrayal"
+    },
+    "the-cost-of-knowing": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "brittney-morris"
+      ],
+      "genres": [
+        "parenting-relationships",
+        "self-help",
+        "social-sciences",
+        "thriller-suspense",
+        "young-adult"
+      ],
+      "id": "the-cost-of-knowing",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "kevin-r-free-2021": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "1444962892",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91rfmCR55EL.jpg",
+          "id": "kevin-r-free-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kevin-r-free"
+          ],
+          "publisher": "Hodder Children's Books",
+          "release_date": "2021-03-22",
+          "runtime_min": 586,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1444962892",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-cost-of-knowing"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1444962892",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Cost of Knowing"
     },
     "the-cost-of-survival": {
       "added_at": "2026-08-02",

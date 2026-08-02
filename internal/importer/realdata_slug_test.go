@@ -154,8 +154,9 @@ func TestDataWorkAndSeriesSlugsAreCurrent(t *testing.T) {
 		if as, ok := e["authors"].([]any); ok && len(as) > 0 {
 			author, _ = as[0].(string)
 		}
-		for _, cand := range workCandidates(Slugify(cleanWorkTitle(title)), author) {
-			if cand == key {
+		cands, _ := workCandidates(Slugify(cleanWorkTitle(title)), workAuthors{all: []string{author}, identity: []string{author}})
+		for _, cand := range cands {
+			if cand.slug == key {
 				return
 			}
 		}

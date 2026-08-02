@@ -22,8 +22,9 @@
 -- refuses the same rows at parse time, so a dump exported without this filter is
 -- still safe. Both filters read BOTH credit lists.
 -- KEEP THE TWO LISTS IN STEP - if you add a form here, add it there.
--- The junk-credit filter at the end of the WHERE clause is the SQL twin of
--- junkCreditNames in the same file, and is kept in step the same way.
+-- The junk-credit, list-credit and placeholder-credit filters at the end of the
+-- WHERE clause are the SQL twins of junkCreditNames, firstListCredit and
+-- placeholderCreditNames in the same file, and are kept in step the same way.
 -- Deliberately NOT used: a substring search for "tts", or a bare "ai"/"ki"/"ia"
 -- token. Those match Watts, Pitts, Ricketts, Ki Hong Lee and Ai-jen Poo, who
 -- are real narrators. Nor a bare "claude" or "gpt" token: Claude is an ordinary
@@ -138,5 +139,47 @@ WHERE b.is_vvab IS NOT TRUE
     WHERE ab.book_asin = b.asin
       AND lower(btrim(a.name)) IN (
         'acx-dev+gamma4')
+  )
+  -- A credit that is a semicolon-joined LIST of people rather than one person
+  -- (a Perry Rhodan box set joined fifteen authors into one field and minted a
+  -- single person with a 100-character truncated slug). The SQL twin of
+  -- firstListCredit in internal/importer/libex.go, including its carve-out:
+  -- seven credit names in the dump contain ';' only because the name reached it
+  -- HTML-escaped ("Erika B&aacute;lint", "Leo Kni&#382;ka"), and every one of
+  -- those is a real person, so the entity references are removed before the
+  -- test. 13 names / 16 books dump-wide, 10 of them genuine lists.
+  AND NOT EXISTS (
+    SELECT 1 FROM book_narrator bn
+    WHERE bn.book_asin = b.asin
+      AND regexp_replace(bn.narrator_name,
+            '&(#[0-9]+|#x[0-9a-fA-F]+|[a-zA-Z][a-zA-Z0-9]*);', '', 'g') LIKE '%;%'
+  )
+  AND NOT EXISTS (
+    SELECT 1 FROM author_book ab JOIN authors a ON a.id = ab.author_id
+    WHERE ab.book_asin = b.asin
+      AND regexp_replace(a.name,
+            '&(#[0-9]+|#x[0-9a-fA-F]+|[a-zA-Z][a-zA-Z0-9]*);', '', 'g') LIKE '%;%'
+  )
+  -- A credit that is a cast PLACEHOLDER rather than a person: the retailer's
+  -- "to be announced" standing in for a cast that had not been booked. Exact
+  -- names, both credit lists, the SQL twin of placeholderCreditNames in
+  -- internal/importer/libex.go - see that comment for the line this draws
+  -- against COLLECTIVE credits ("Full Cast", "Anonymous", "Uncredited",
+  -- "Various", "Unknown"), every one of which is deliberately kept.
+  AND NOT EXISTS (
+    SELECT 1 FROM book_narrator bn
+    WHERE bn.book_asin = b.asin
+      AND lower(btrim(bn.narrator_name)) IN (
+        'to be announced', 'to be confirmed', 'tbd', 'tba', 'tbc', 'n/a',
+        'various narrators', 'varios narradores', 'narratori vari',
+        'diverse sprecher', 'elenco')
+  )
+  AND NOT EXISTS (
+    SELECT 1 FROM author_book ab JOIN authors a ON a.id = ab.author_id
+    WHERE ab.book_asin = b.asin
+      AND lower(btrim(a.name)) IN (
+        'to be announced', 'to be confirmed', 'tbd', 'tba', 'tbc', 'n/a',
+        'various narrators', 'varios narradores', 'narratori vari',
+        'diverse sprecher', 'elenco')
   )
 ORDER BY COALESCE(b.sku_group, b.asin), b.region, b.asin;

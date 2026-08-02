@@ -67,6 +67,8 @@ const (
 	reasonRegion        = "unmapped region"
 	reasonAINarrator    = "narrated by an AI voice"
 	reasonJunkCredit    = "a credited name is a platform account"
+	reasonListCredit    = "a credited name is a list of people"
+	reasonPlaceholder   = "a credited name is a cast placeholder"
 	reasonUnnamedCredit = "a credited name does not identify a person"
 	reasonPositionTaken = "series position already claimed"
 	reasonSeriesCap     = "over the per-series cap"
@@ -77,7 +79,7 @@ const (
 var reasonOrder = []string{
 	reasonNoASIN, reasonAlreadyASIN, reasonDuplicateASIN,
 	reasonNoSeries, reasonNoPosition, reasonLanguage, reasonRegion,
-	reasonAINarrator, reasonJunkCredit, reasonUnnamedCredit,
+	reasonAINarrator, reasonJunkCredit, reasonListCredit, reasonPlaceholder, reasonUnnamedCredit,
 	reasonPositionTaken, reasonSeriesCap,
 }
 

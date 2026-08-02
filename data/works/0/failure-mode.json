@@ -320,6 +320,10 @@
             {
               "asin": "B0DD812FD7",
               "region": "us"
+            },
+            {
+              "asin": "B0CZ7VPT8S",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91Fv8-hDGXL.jpg",
@@ -337,6 +341,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0DD812FD7",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CZ7VPT8S",
               "type": "libex-import"
             }
           ],
@@ -1835,6 +1844,58 @@
       ],
       "title": "Fairhaven Rising"
     },
+    "fairies-and-the-quest-for-never-land": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "gail-carson-levine"
+      ],
+      "genres": [
+        "childrens",
+        "fairy-tales-folklore",
+        "fantasy"
+      ],
+      "id": "fairies-and-the-quest-for-never-land",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "rosalyn-landor-2010": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B003L8SX70",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91RnPfZMI6L.jpg",
+          "id": "rosalyn-landor-2010",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "rosalyn-landor"
+          ],
+          "publisher": "Listening Library",
+          "release_date": "2010-06-08",
+          "runtime_min": 248,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B003L8SX70",
+              "type": "libex-import"
+            }
+          ],
+          "work": "fairies-and-the-quest-for-never-land"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B003L8SX70",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Fairies and the Quest for Never Land"
+    },
     "fairies-dont-die": {
       "added_at": "2026-08-01",
       "authors": [
@@ -2652,31 +2713,7 @@
             }
           ],
           "work": "fairy-door-diaries"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0DP5HHBB9",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Fairy Door Diaries"
-    },
-    "fairy-door-diaries-megan-mcdonald": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "megan-mcdonald"
-      ],
-      "genres": [
-        "childrens",
-        "fairy-tales-folklore",
-        "fantasy"
-      ],
-      "id": "fairy-door-diaries-megan-mcdonald",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "stephanie-willing-2026": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -2703,10 +2740,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "fairy-door-diaries-megan-mcdonald"
+          "work": "fairy-door-diaries"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0DP5HHBB9",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0G4NCXJN9",
@@ -2715,10 +2757,62 @@
       ],
       "title": "Fairy Door Diaries"
     },
+    "fairy-dust-and-the-quest-for-the-egg": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "gail-carson-levine"
+      ],
+      "genres": [
+        "childrens",
+        "fairy-tales-folklore",
+        "fantasy"
+      ],
+      "id": "fairy-dust-and-the-quest-for-the-egg",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "hannah-gordon-2005": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002UZL0PM",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81wUNIDUIGL.jpg",
+          "id": "hannah-gordon-2005",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "hannah-gordon"
+          ],
+          "publisher": "Listening Library",
+          "release_date": "2005-09-12",
+          "runtime_min": 219,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002UZL0PM",
+              "type": "libex-import"
+            }
+          ],
+          "work": "fairy-dust-and-the-quest-for-the-egg"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002UZL0PM",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Fairy Dust and the Quest for the Egg"
+    },
     "fairy-dust-never-rusts-2018-edition": {
       "added_at": "2026-08-01",
       "authors": [
-        "mr-john-r-white"
+        "john-r-white"
       ],
       "genres": [
         "science-fiction",
@@ -3011,6 +3105,112 @@
         }
       ],
       "title": "Fairy Grandmother: Millie Goes to China"
+    },
+    "fairy-haven-and-the-quest-for-the-wand": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "gail-carson-levine"
+      ],
+      "genres": [
+        "fantasy",
+        "young-adult"
+      ],
+      "id": "fairy-haven-and-the-quest-for-the-wand",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "rosalyn-landor-2007": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002VAESG4",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81OuoCiFbEL.jpg",
+          "id": "rosalyn-landor-2007",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "rosalyn-landor"
+          ],
+          "publisher": "Listening Library",
+          "release_date": "2007-08-14",
+          "runtime_min": 213,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002VAESG4",
+              "type": "libex-import"
+            }
+          ],
+          "work": "fairy-haven-and-the-quest-for-the-wand"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002VAESG4",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Fairy Haven and the Quest for the Wand"
+    },
+    "fairy-mom-and-me-1": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "sophie-kinsella"
+      ],
+      "genres": [
+        "childrens",
+        "comedy-humor",
+        "coming-of-age",
+        "fairy-tales-folklore",
+        "fantasy",
+        "parenting-relationships"
+      ],
+      "id": "fairy-mom-and-me-1",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "cassandra-morris-2018": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B075DKYRXV",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81ENSMwTHKL.jpg",
+          "id": "cassandra-morris-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "cassandra-morris"
+          ],
+          "publisher": "Listening Library",
+          "release_date": "2018-01-02",
+          "runtime_min": 82,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B075DKYRXV",
+              "type": "libex-import"
+            }
+          ],
+          "work": "fairy-mom-and-me-1"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B075DKYRXV",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Fairy Mom and Me #1"
     },
     "fairy-on-the-rocks": {
       "added_at": "2026-08-01",
@@ -3631,6 +3831,63 @@
       ],
       "title": "Fairy Village"
     },
+    "fairy-wars": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "steve-higgs",
+        "justin-herzog"
+      ],
+      "genres": [
+        "action-adventure",
+        "comedy-humor",
+        "fantasy",
+        "mystery",
+        "paranormal",
+        "thriller-suspense",
+        "urban-fantasy"
+      ],
+      "id": "fairy-wars",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "jaimi-barbakoff-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0GC8LB1QF",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/911Rb7Wn9gL.jpg",
+          "id": "jaimi-barbakoff-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jaimi-barbakoff"
+          ],
+          "publisher": "QUEST from W. F. Howes Ltd",
+          "release_date": "2026-03-12",
+          "runtime_min": 438,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GC8LB1QF",
+              "type": "libex-import"
+            }
+          ],
+          "work": "fairy-wars"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0GC8LB1QF",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Fairy Wars"
+    },
     "fairy-weathered-friend": {
       "added_at": "2026-08-01",
       "authors": [
@@ -4156,6 +4413,69 @@
       ],
       "title": "Fairytale's Truth"
     },
+    "faith-and-vengeance": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "gav-thorpe",
+        "david-annandale",
+        "james-swallow",
+        "guy-hayley",
+        "l-j-goulding",
+        "alec-worley",
+        "c-z-dunn"
+      ],
+      "genres": [
+        "epic-fantasy",
+        "fantasy"
+      ],
+      "id": "faith-and-vengeance",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "beth-chalmers-2021": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B09MDJXN3L",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81CC7+beQoL.jpg",
+          "id": "beth-chalmers-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "beth-chalmers",
+            "catherine-tate",
+            "claire-wyatt",
+            "clive-wood",
+            "gareth-armstrong",
+            "jonathan-keeble",
+            "sean-barrett"
+          ],
+          "publisher": "Black Library",
+          "release_date": "2021-11-26",
+          "runtime_min": 678,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09MDJXN3L",
+              "type": "libex-import"
+            }
+          ],
+          "work": "faith-and-vengeance"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B09MDJXN3L",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Faith and Vengeance"
+    },
     "faith-dreams-and-the-force-of-heaven": {
       "added_at": "2026-08-01",
       "authors": [
@@ -4565,6 +4885,171 @@
       ],
       "title": "Faith: The Lost Warship, Book 6"
     },
+    "faithbreaker": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "hannah-kaner"
+      ],
+      "genres": [
+        "epic-fantasy",
+        "fantasy",
+        "historical-fiction",
+        "lgbtq",
+        "romance"
+      ],
+      "id": "faithbreaker",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "kit-griffiths-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0D6HJNRJ5",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91JO3-1i-JL.jpg",
+          "id": "kit-griffiths-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kit-griffiths"
+          ],
+          "publisher": "HarperVoyager",
+          "release_date": "2025-03-13",
+          "runtime_min": 1034,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0D6HJNRJ5",
+              "type": "libex-import"
+            }
+          ],
+          "work": "faithbreaker"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0D6HJNRJ5",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Faithbreaker"
+    },
+    "faithbreaker-a-novel": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "hannah-kaner"
+      ],
+      "genres": [
+        "action-adventure",
+        "epic-fantasy",
+        "fantasy",
+        "parenting-relationships"
+      ],
+      "id": "faithbreaker-a-novel",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "kit-griffiths-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0D92LDM69",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/910wTF3T2oL.jpg",
+          "id": "kit-griffiths-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kit-griffiths"
+          ],
+          "publisher": "Harper Voyager",
+          "release_date": "2025-04-01",
+          "runtime_min": 1034,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0D92LDM69",
+              "type": "libex-import"
+            }
+          ],
+          "work": "faithbreaker-a-novel"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0D92LDM69",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Faithbreaker: A Novel"
+    },
+    "faithbreaker-godkiller-3": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "hannah-kaner",
+        "wolfgang-thon"
+      ],
+      "credits": [
+        {
+          "person": "wolfgang-thon",
+          "role": "translator"
+        }
+      ],
+      "genres": [
+        "epic-fantasy",
+        "fantasy"
+      ],
+      "id": "faithbreaker-godkiller-3",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "robert-frank-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0DN6DKVP4",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91eLX4Dk3JL.jpg",
+          "id": "robert-frank-2025",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "robert-frank"
+          ],
+          "publisher": "OSTERWOLDaudio",
+          "release_date": "2025-08-29",
+          "runtime_min": 993,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DN6DKVP4",
+              "type": "libex-import"
+            }
+          ],
+          "work": "faithbreaker-godkiller-3"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0DN6DKVP4",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Faithbreaker: Godkiller 3"
+    },
     "faithfire-war-of-the-accord-the-angels-of-fire": {
       "added_at": "2026-08-02",
       "authors": [
@@ -4792,6 +5277,57 @@
         }
       ],
       "title": "Faithful"
+    },
+    "faithful-unto-death": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "sarah-hawkswood"
+      ],
+      "genres": [
+        "historical-fiction",
+        "mystery"
+      ],
+      "id": "faithful-unto-death",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "jonathan-keeble-2021": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "1445095386",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81gzqX2nQZL.jpg",
+          "id": "jonathan-keeble-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jonathan-keeble"
+          ],
+          "publisher": "Isis Publishing Ltd",
+          "release_date": "2021-03-01",
+          "runtime_min": 448,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1445095386",
+              "type": "libex-import"
+            }
+          ],
+          "work": "faithful-unto-death"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1445095386",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Faithful Unto Death"
     },
     "faithheart": {
       "added_at": "2026-08-02",
@@ -5699,6 +6235,59 @@
       ],
       "title": "Fake Physics"
     },
+    "faking-for-now": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "rebecca-jenshak"
+      ],
+      "genres": [
+        "romance",
+        "sports",
+        "young-adult"
+      ],
+      "id": "faking-for-now",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "karissa-vacker-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0H6ND46KN",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81CxAuNFalL.jpg",
+          "id": "karissa-vacker-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "karissa-vacker",
+            "tyler-darby"
+          ],
+          "publisher": "Rebecca Jenshak",
+          "release_date": "2026-07-21",
+          "runtime_min": 515,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0H6ND46KN",
+              "type": "libex-import"
+            }
+          ],
+          "work": "faking-for-now"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0H6ND46KN",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Faking for Now"
+    },
     "faking-it-with-the-firefighter-wolf-daddy": {
       "added_at": "2026-08-01",
       "authors": [
@@ -5752,6 +6341,321 @@
       ],
       "title": "Faking It With The Firefighter Wolf Daddy"
     },
+    "faking-it-with-the-hybrid": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "evangeline-anderson"
+      ],
+      "genres": [
+        "paranormal",
+        "romance",
+        "science-fiction"
+      ],
+      "id": "faking-it-with-the-hybrid",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "aela-aryon-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CLS58LXB",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 20270,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2050809,
+              "start_ms": 20270,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 460428,
+              "start_ms": 2071079,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1379799,
+              "start_ms": 2531507,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 172733,
+              "start_ms": 3911306,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 685638,
+              "start_ms": 4084039,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 449445,
+              "start_ms": 4769677,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 760848,
+              "start_ms": 5219122,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 467417,
+              "start_ms": 5979970,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 220589,
+              "start_ms": 6447387,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 408508,
+              "start_ms": 6667976,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1295394,
+              "start_ms": 7076484,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 928891,
+              "start_ms": 8371878,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 423578,
+              "start_ms": 9300769,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 326936,
+              "start_ms": 9724347,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 616327,
+              "start_ms": 10051283,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 696854,
+              "start_ms": 10667610,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 154157,
+              "start_ms": 11364464,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 505823,
+              "start_ms": 11518621,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1189349,
+              "start_ms": 12024444,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 166858,
+              "start_ms": 13213793,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 98220,
+              "start_ms": 13380651,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 1487330,
+              "start_ms": 13478871,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 648858,
+              "start_ms": 14966201,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 475753,
+              "start_ms": 15615059,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 434886,
+              "start_ms": 16090812,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 1411239,
+              "start_ms": 16525698,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 171084,
+              "start_ms": 17936937,
+              "title": "Chapter 28"
+            },
+            {
+              "length_ms": 724694,
+              "start_ms": 18108021,
+              "title": "Chapter 29"
+            },
+            {
+              "length_ms": 508191,
+              "start_ms": 18832715,
+              "title": "Chapter 30"
+            },
+            {
+              "length_ms": 282308,
+              "start_ms": 19340906,
+              "title": "Chapter 31"
+            },
+            {
+              "length_ms": 202083,
+              "start_ms": 19623214,
+              "title": "Chapter 32"
+            },
+            {
+              "length_ms": 211533,
+              "start_ms": 19825297,
+              "title": "Chapter 33"
+            },
+            {
+              "length_ms": 590599,
+              "start_ms": 20036830,
+              "title": "Chapter 34"
+            },
+            {
+              "length_ms": 140155,
+              "start_ms": 20627429,
+              "title": "Chapter 35"
+            },
+            {
+              "length_ms": 570328,
+              "start_ms": 20767584,
+              "title": "Chapter 36"
+            },
+            {
+              "length_ms": 568796,
+              "start_ms": 21337912,
+              "title": "Chapter 37"
+            },
+            {
+              "length_ms": 348415,
+              "start_ms": 21906708,
+              "title": "Chapter 38"
+            },
+            {
+              "length_ms": 341402,
+              "start_ms": 22255123,
+              "title": "Chapter 39"
+            },
+            {
+              "length_ms": 386426,
+              "start_ms": 22596525,
+              "title": "Chapter 40"
+            },
+            {
+              "length_ms": 407510,
+              "start_ms": 22982951,
+              "title": "Chapter 41"
+            },
+            {
+              "length_ms": 743131,
+              "start_ms": 23390461,
+              "title": "Chapter 42"
+            },
+            {
+              "length_ms": 100403,
+              "start_ms": 24133592,
+              "title": "Chapter 43"
+            },
+            {
+              "length_ms": 234823,
+              "start_ms": 24233995,
+              "title": "Chapter 44"
+            },
+            {
+              "length_ms": 273740,
+              "start_ms": 24468818,
+              "title": "Chapter 45"
+            },
+            {
+              "length_ms": 461984,
+              "start_ms": 24742558,
+              "title": "Chapter 46"
+            },
+            {
+              "length_ms": 402053,
+              "start_ms": 25204542,
+              "title": "Chapter 47"
+            },
+            {
+              "length_ms": 939177,
+              "start_ms": 25606595,
+              "title": "Chapter 48"
+            },
+            {
+              "length_ms": 771993,
+              "start_ms": 26545772,
+              "title": "Chapter 49"
+            },
+            {
+              "length_ms": 991445,
+              "start_ms": 27317765,
+              "title": "Chapter 50"
+            },
+            {
+              "length_ms": 574995,
+              "start_ms": 28309210,
+              "title": "Chapter 51"
+            },
+            {
+              "length_ms": 52894,
+              "start_ms": 28884205,
+              "title": "Chapter 52"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91mNV9vxNLL.jpg",
+          "id": "aela-aryon-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "aela-aryon",
+            "gregory-salinas"
+          ],
+          "publisher": "Insatiable Press",
+          "release_date": "2023-11-15",
+          "runtime_min": 482,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CLS58LXB",
+              "type": "libex-import"
+            }
+          ],
+          "work": "faking-it-with-the-hybrid"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CLS58LXB",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Faking It with the Hybrid"
+    },
     "faking-perfection": {
       "added_at": "2026-08-01",
       "authors": [
@@ -5804,6 +6708,58 @@
         }
       ],
       "title": "Faking Perfection"
+    },
+    "faktor-i": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "michelle-stern",
+        "madeleine-puljic"
+      ],
+      "genres": [
+        "science-fiction",
+        "space-opera"
+      ],
+      "id": "faktor-i",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "hanno-dinger-2017": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B077V1QMPN",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91zI+TEcGCL.jpg",
+          "id": "hanno-dinger-2017",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "hanno-dinger"
+          ],
+          "publisher": "Eins A Medien GmbH",
+          "release_date": "2017-12-01",
+          "runtime_min": 360,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B077V1QMPN",
+              "type": "libex-import"
+            }
+          ],
+          "work": "faktor-i"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B077V1QMPN",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Faktor I"
     },
     "falco-the-complete-bbc-radio-collection": {
       "added_at": "2026-07-25T17:12:12+01:00",
@@ -6242,6 +7198,56 @@
       ],
       "title": "Falcon's Favor"
     },
+    "falkans-verderben": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "timothy-stahl"
+      ],
+      "genres": [
+        "science-fiction"
+      ],
+      "id": "falkans-verderben",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "sebastian-ruger-2009": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00TMV1ZX4",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91Xkbus27iL.jpg",
+          "id": "sebastian-ruger-2009",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "sebastian-ruger"
+          ],
+          "publisher": "Eins A Medien GmbH",
+          "release_date": "2009-06-25",
+          "runtime_min": 198,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00TMV1ZX4",
+              "type": "libex-import"
+            }
+          ],
+          "work": "falkans-verderben"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00TMV1ZX4",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Falkans Verderben"
+    },
     "falkenmadchen": {
       "added_at": "2026-08-02",
       "authors": [
@@ -6295,6 +7301,165 @@
         }
       ],
       "title": "Falkenmädchen"
+    },
+    "falkes-captive": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "anna-leigh-keaton",
+        "madison-layle"
+      ],
+      "genres": [
+        "erotica",
+        "romance"
+      ],
+      "id": "falkes-captive",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "elizabeth-matthews-2011": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B005UFDFXY",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91giASn+YfL.jpg",
+          "id": "elizabeth-matthews-2011",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "elizabeth-matthews"
+          ],
+          "publisher": "Carina Press",
+          "release_date": "2011-10-11",
+          "runtime_min": 445,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B005UFDFXY",
+              "type": "libex-import"
+            }
+          ],
+          "work": "falkes-captive"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B005UFDFXY",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Falke's Captive"
+    },
+    "falkes-peak": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "anna-leigh-keaton"
+      ],
+      "genres": [
+        "erotica",
+        "paranormal",
+        "romance"
+      ],
+      "id": "falkes-peak",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "gina-cedarwood-2010": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B004GB02AC",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91cV11IsNSL.jpg",
+          "id": "gina-cedarwood-2010",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "gina-cedarwood"
+          ],
+          "publisher": "Carina Press",
+          "release_date": "2010-12-20",
+          "runtime_min": 393,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B004GB02AC",
+              "type": "libex-import"
+            }
+          ],
+          "work": "falkes-peak"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B004GB02AC",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Falke's Peak"
+    },
+    "falkes-renegade": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "anna-leigh-keaton",
+        "madison-layle"
+      ],
+      "genres": [
+        "erotica",
+        "fantasy",
+        "paranormal",
+        "romance",
+        "urban-fantasy"
+      ],
+      "id": "falkes-renegade",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "christina-diderickson-2013": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00CC20P7M",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81uyhUWQJBL.jpg",
+          "id": "christina-diderickson-2013",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "christina-diderickson"
+          ],
+          "publisher": "Carina Press",
+          "release_date": "2013-04-22",
+          "runtime_min": 315,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00CC20P7M",
+              "type": "libex-import"
+            }
+          ],
+          "work": "falkes-renegade"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00CC20P7M",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Falke's Renegade"
     },
     "fall-and-rise-of-the-macas": {
       "added_at": "2026-08-01",
@@ -6400,6 +7565,60 @@
         }
       ],
       "title": "Fall der Götter"
+    },
+    "fall-for-fangs-darkthorn-archives-2": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "penny-juniper"
+      ],
+      "genres": [
+        "fantasy",
+        "romance",
+        "urban-fantasy",
+        "young-adult"
+      ],
+      "id": "fall-for-fangs-darkthorn-archives-2",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "dagmar-bittner-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0G1MPCN5S",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/814bcP6BkdL.jpg",
+          "id": "dagmar-bittner-2026",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "dagmar-bittner",
+            "sven-macht"
+          ],
+          "publisher": "Silberfisch",
+          "release_date": "2026-03-26",
+          "runtime_min": 1029,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0G1MPCN5S",
+              "type": "libex-import"
+            }
+          ],
+          "work": "fall-for-fangs-darkthorn-archives-2"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0G1MPCN5S",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Fall for Fangs (Darkthorn Archives 2)"
     },
     "fall-from-grace": {
       "added_at": "2026-08-01",
@@ -6874,6 +8093,66 @@
       ],
       "title": "Fall of Angels (2 of 2) [Dramatized Adaptation]"
     },
+    "fall-of-angels-dramatized-adaptation": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "l-e-modesitt-jr"
+      ],
+      "genres": [
+        "fantasy"
+      ],
+      "id": "fall-of-angels-dramatized-adaptation",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "alejandro-ruiz-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0BZ63CKXC",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81N4wsvNpYL.jpg",
+          "id": "alejandro-ruiz-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alejandro-ruiz",
+            "christopher-walker",
+            "danny-gavigan",
+            "eva-wilhelm",
+            "jessica-lauren-ball",
+            "ken-jackson",
+            "lise-bruneau",
+            "lydia-kraniotis",
+            "marni-penning",
+            "matthew-schleigh",
+            "zeke-alton"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2023-04-01",
+          "runtime_min": 798,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0BZ63CKXC",
+              "type": "libex-import"
+            }
+          ],
+          "work": "fall-of-angels-dramatized-adaptation"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0BZ63CKXC",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Fall of Angels (Dramatized Adaptation)"
+    },
     "fall-of-centuria-volume-1": {
       "added_at": "2026-08-01",
       "authors": [
@@ -6977,6 +8256,58 @@
         }
       ],
       "title": "Fall of Crysin"
+    },
+    "fall-of-damnos": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "nick-kyme"
+      ],
+      "genres": [
+        "action-adventure",
+        "military-science-fiction",
+        "science-fiction"
+      ],
+      "id": "fall-of-damnos",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "richard-reed-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0C5N8JLNB",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91tQz+m7X4L.jpg",
+          "id": "richard-reed-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "richard-reed"
+          ],
+          "publisher": "Black Library",
+          "release_date": "2023-06-10",
+          "runtime_min": 757,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0C5N8JLNB",
+              "type": "libex-import"
+            }
+          ],
+          "work": "fall-of-damnos"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0C5N8JLNB",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Fall of Damnos"
     },
     "fall-of-darkness": {
       "added_at": "2026-08-01",
@@ -10696,6 +12027,57 @@
       ],
       "title": "Falle für den Herrscher"
     },
+    "falle-fur-den-jager": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "leo-lukas"
+      ],
+      "genres": [
+        "science-fiction",
+        "space-opera"
+      ],
+      "id": "falle-fur-den-jager",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "renier-baaken-2013": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00TJJYQ9Y",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91fZCFLa7RL.jpg",
+          "id": "renier-baaken-2013",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "renier-baaken"
+          ],
+          "publisher": "Eins A Medien GmbH",
+          "release_date": "2013-09-13",
+          "runtime_min": 189,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00TJJYQ9Y",
+              "type": "libex-import"
+            }
+          ],
+          "work": "falle-fur-den-jager"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00TJJYQ9Y",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Falle für den Jäger"
+    },
     "fallen": {
       "added_at": "2026-07-25T19:18:21+01:00",
       "authors": [
@@ -11606,6 +12988,56 @@
         }
       ],
       "title": "Fallen Angels: Alchemy or Artifice"
+    },
+    "fallen-angels-mike-lee": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "mike-lee"
+      ],
+      "genres": [
+        "science-fiction"
+      ],
+      "id": "fallen-angels-mike-lee",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "gareth-armstrong-2017": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0765CFCGP",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91SxRqeRc2L.jpg",
+          "id": "gareth-armstrong-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "gareth-armstrong"
+          ],
+          "publisher": "Black Library",
+          "release_date": "2017-10-05",
+          "runtime_min": 599,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0765CFCGP",
+              "type": "libex-import"
+            }
+          ],
+          "work": "fallen-angels-mike-lee"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0765CFCGP",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Fallen Angels"
     },
     "fallen-city": {
       "added_at": "2026-08-02",
@@ -14227,6 +15659,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "imogen-comrie-2019": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "1528873920",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/816wmRzl3qL.jpg",
+          "id": "imogen-comrie-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "imogen-comrie"
+          ],
+          "publisher": "W. F. Howes Ltd",
+          "release_date": "2019-07-18",
+          "runtime_min": 562,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1528873920",
+              "type": "libex-import"
+            }
+          ],
+          "work": "fallible-justice"
+        },
         "tamsin-kennard-2024": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -14805,6 +16265,59 @@
       ],
       "title": "Falling Apart"
     },
+    "falling-apart-jane-lovering": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "jane-lovering"
+      ],
+      "genres": [
+        "fantasy",
+        "paranormal",
+        "romance",
+        "womens-fiction"
+      ],
+      "id": "falling-apart-jane-lovering",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "geraldine-sharrock-2014": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00LNHNGPK",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91Oouw78MFL.jpg",
+          "id": "geraldine-sharrock-2014",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "geraldine-sharrock"
+          ],
+          "publisher": "W. F. Howes Ltd",
+          "release_date": "2014-08-07",
+          "runtime_min": 525,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00LNHNGPK",
+              "type": "libex-import"
+            }
+          ],
+          "work": "falling-apart-jane-lovering"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00LNHNGPK",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Falling Apart"
+    },
     "falling-bodies": {
       "added_at": "2026-08-02",
       "authors": [
@@ -15014,6 +16527,58 @@
       ],
       "title": "Falling: Fade, Book 2"
     },
+    "falling-feels-like-flying-german-edition": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "nena-muck"
+      ],
+      "genres": [
+        "romance",
+        "young-adult"
+      ],
+      "id": "falling-feels-like-flying-german-edition",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "giovanna-meyrat-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0C3M7JLS2",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91FrMXA-tiL.jpg",
+          "id": "giovanna-meyrat-2023",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "giovanna-meyrat",
+            "silvio-wey"
+          ],
+          "publisher": "Audio4You",
+          "release_date": "2023-05-02",
+          "runtime_min": 699,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0C3M7JLS2",
+              "type": "libex-import"
+            }
+          ],
+          "work": "falling-feels-like-flying-german-edition"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0C3M7JLS2",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Falling feels like flying (German edition)"
+    },
     "falling-for-his-mate": {
       "added_at": "2026-08-01",
       "authors": [
@@ -15066,6 +16631,58 @@
         }
       ],
       "title": "Falling for His Mate"
+    },
+    "falling-for-kindred-claus": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "evangeline-anderson"
+      ],
+      "genres": [
+        "paranormal",
+        "romance",
+        "science-fiction"
+      ],
+      "id": "falling-for-kindred-claus",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "mackenzie-cartwright-2020": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "1624617379",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1r6S84vawL.jpg",
+          "id": "mackenzie-cartwright-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "mackenzie-cartwright"
+          ],
+          "publisher": "Insatiable Press",
+          "release_date": "2020-09-15",
+          "runtime_min": 546,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1624617379",
+              "type": "libex-import"
+            }
+          ],
+          "work": "falling-for-kindred-claus"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1624617379",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Falling for Kindred Claus"
     },
     "falling-for-my-best-friend": {
       "added_at": "2026-08-01",
@@ -16030,6 +17647,63 @@
         }
       ],
       "title": "Falling Out"
+    },
+    "falling-out-of-time": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "margaret-peterson-haddix"
+      ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "coming-of-age",
+        "dystopian",
+        "mystery",
+        "science-fiction",
+        "self-help",
+        "thriller-suspense"
+      ],
+      "id": "falling-out-of-time",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "lillie-ricciardi-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0BG3K4WD5",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91IYWBSZUGL.jpg",
+          "id": "lillie-ricciardi-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "lillie-ricciardi"
+          ],
+          "publisher": "Quill Tree Books",
+          "release_date": "2023-05-30",
+          "runtime_min": 467,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0BG3K4WD5",
+              "type": "libex-import"
+            }
+          ],
+          "work": "falling-out-of-time"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0BG3K4WD5",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Falling Out of Time"
     },
     "falling-sky": {
       "added_at": "2026-08-02",

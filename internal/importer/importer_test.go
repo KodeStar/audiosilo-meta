@@ -365,6 +365,25 @@ const spikeTitleSlug = "die-ideale-welt-fur-den-soziopathen-ein-apokalyptisches-
 // number, so a base or author slug ending in digits can make one of them equal a
 // later candidate. That costs the walk one wasted probe of a slug it has already
 // tested and nothing more (see workSlugAt).
+// candidateSlugs is the identity-author chain as a plain slug list: the two
+// author roots are the same in these tests, so the legacy probe collapses onto
+// the identity one and the chain is exactly the 51 the formula defines.
+func candidateSlugs(t *testing.T, base, author string) []string {
+	t.Helper()
+	cands, primary := workCandidates(base, workAuthors{all: []string{author}, identity: []string{author}})
+	if primary != 2 {
+		t.Fatalf("primary candidates = %d, want 2 for a single-author row", primary)
+	}
+	out := make([]string, 0, len(cands))
+	for _, c := range cands {
+		if c.probeOnly {
+			t.Fatalf("candidate %q is a probe, but the row credits one author", c.slug)
+		}
+		out = append(out, c.slug)
+	}
+	return out
+}
+
 func assertCandidateChain(t *testing.T, got []string) {
 	t.Helper()
 	if len(got) != 51 {
@@ -389,7 +408,7 @@ func assertCandidateChain(t *testing.T, got []string) {
 }
 
 func TestWorkCandidatesShortBaseUnchanged(t *testing.T) {
-	got := workCandidates("the-gathering", "bob-south")
+	got := candidateSlugs(t, "the-gathering", "bob-south")
 	assertCandidateChain(t, got)
 	want := []string{"the-gathering", "the-gathering-bob-south", "the-gathering-bob-south-2", "the-gathering-bob-south-3"}
 	if !reflect.DeepEqual(got[:len(want)], want) {
@@ -405,7 +424,7 @@ func TestWorkCandidatesBoundedToMaxSlugLen(t *testing.T) {
 		t.Fatalf("fixture base is %d chars, want %d", len(spikeTitleSlug), model.MaxSlugLen)
 	}
 	const author = "oleg-sapphire"
-	got := workCandidates(spikeTitleSlug, author)
+	got := candidateSlugs(t, spikeTitleSlug, author)
 	assertCandidateChain(t, got)
 	if got[0] != spikeTitleSlug {
 		t.Errorf("first candidate = %q, want the bare base untouched", got[0])
@@ -428,7 +447,7 @@ func TestWorkCandidatesFallbackWithoutWordBoundary(t *testing.T) {
 	}
 	for _, c := range cases {
 		t.Run(c.name, func(t *testing.T) {
-			assertCandidateChain(t, workCandidates(c.base, c.author))
+			assertCandidateChain(t, candidateSlugs(t, c.base, c.author))
 		})
 	}
 }

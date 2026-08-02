@@ -340,14 +340,14 @@ func TestRecordingsOnlyResolvesCollisionSuffixedWorks(t *testing.T) {
 // TestRecordingsOnlyDoesNotWarnAboutRowsItNeverWanted pins the step ORDER. The
 // mode's natural input is an unfiltered export, so the language and narrator
 // checks must run only for rows that already matched a work - otherwise every
-// Finnish edition and every narrator-less row in a million-row dump earns a
+// Luo edition and every narrator-less row in a million-row dump earns a
 // per-row line about a book we were never importing.
 func TestRecordingsOnlyDoesNotWarnAboutRowsItNeverWanted(t *testing.T) {
 	dataDir := seedRecordingsTree(t)
 	rows := strings.Join([]string{
 		// Unmatched AND unusable: an unknown language and no narrator. Neither
 		// may produce a per-row warning.
-		`{"asin":"B0FINNISH1","title":"Jokin Kirja","region":"us","language":"finnish","lengthMinutes":300,"authors":[{"name":"Ada Mapmaker"}],"narrators":[{"name":"Bea Reader"}]}`,
+		`{"asin":"B0LUOROWX1","title":"Buk Moro","region":"us","language":"luo","lengthMinutes":300,"authors":[{"name":"Ada Mapmaker"}],"narrators":[{"name":"Bea Reader"}]}`,
 		`{"asin":"B0NONARRA1","title":"A Book Nobody Catalogued","region":"us","language":"english","lengthMinutes":300,"authors":[{"name":"Ada Mapmaker"}],"narrators":[]}`,
 	}, "\n")
 
@@ -366,12 +366,12 @@ func TestRecordingsOnlyDoesNotWarnAboutRowsItNeverWanted(t *testing.T) {
 	// The same two failures on a row that DOES match a work still warn per row -
 	// there the operator asked for the book, so the reason it was dropped is
 	// exactly what they need.
-	matching := `{"asin":"B0MATCHBD1","title":"Harry Potter and the Chamber of Secrets, Book 2","region":"us","language":"finnish","lengthMinutes":542,"authors":[{"name":"J.K. Rowling"}],"narrators":[{"name":"Jim Dale"}]}`
+	matching := `{"asin":"B0MATCHBD1","title":"Harry Potter and the Chamber of Secrets, Book 2","region":"us","language":"luo","lengthMinutes":542,"authors":[{"name":"J.K. Rowling"}],"narrators":[{"name":"Jim Dale"}]}`
 	sum = runRecordingsOnly(t, dataDir, matching, false)
 	if sum.SkippedNoWork != 0 || sum.NewRecordings != 0 {
 		t.Errorf("summary = %+v", sum)
 	}
-	if len(sum.Warnings) != 1 || !strings.Contains(sum.Warnings[0], `unknown language "finnish"`) {
+	if len(sum.Warnings) != 1 || !strings.Contains(sum.Warnings[0], `unknown language "luo"`) {
 		t.Errorf("a matched row's rejection must be reported per row: %v", sum.Warnings)
 	}
 }

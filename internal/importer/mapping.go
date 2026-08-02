@@ -12,9 +12,30 @@ import (
 	"golang.org/x/text/unicode/norm"
 )
 
-// languageMap turns an OpenAudible language word into an ISO 639-1 code. Only
-// the languages the brief enumerates are accepted; anything else is unknown and
-// the caller skips the book.
+// languageMap turns a source's language word into an ISO 639-1 code. A word
+// that is not here is unknown and the caller skips the book, so a wrong entry
+// is worse than a missing one - every entry is a language whose 639-1 code is
+// unambiguous.
+//
+// The second block was added after seed wave 5 refused 241 rows purely for
+// want of a mapping. Counts are books in the full libex dump. The schema
+// accepts any two-letter code, so nothing else had to change.
+//
+// Deliberately NOT mapped, though measured and available:
+//
+//   - "mandarin_chinese" (440), "simplified_chinese" (4), "traditional_chinese"
+//     (3). All three would land on the "zh" that "chinese" already has, and the
+//     last two are SCRIPT distinctions rather than languages. Collapsing four
+//     source spellings onto one code is a call for a maintainer, not a mapping
+//     table entry.
+//   - "luo" (1). It has no ISO 639-1 code at all, only 639-3.
+//   - "unknown" (643) and the empty value (22,428). Neither is a language.
+//   - "ukranian" (6). A misspelling of "ukrainian", and every one of the six
+//     rows is outside the importable universe, so the alias would be dead code.
+//   - the remaining long tail (marathi, tamil, korean, catalan, ...). Each is
+//     unambiguous and each is a one-line addition when a wave needs it; they
+//     are left out because nothing has asked for them and an unexercised
+//     mapping is an untested one.
 var languageMap = map[string]string{
 	"english":    "en",
 	"turkish":    "tr",
@@ -28,6 +49,17 @@ var languageMap = map[string]string{
 	"polish":     "pl",
 	"russian":    "ru",
 	"chinese":    "zh",
+
+	"danish":    "da", // 7,342
+	"swedish":   "sv", // 4,864
+	"arabic":    "ar", // 4,869
+	"hindi":     "hi", // 2,305
+	"hebrew":    "he", // 968
+	"czech":     "cs", // 495
+	"hungarian": "hu", // 252
+	"finnish":   "fi", // 171
+	"norwegian": "no", // 154
+	"greek":     "el", // 153
 }
 
 // isoCodes is the set of ISO 639-1 codes languageMap produces, so a source that
@@ -142,6 +174,101 @@ func NormalizeISBN(raw string) (isbn string, ok bool) {
 	return isbn, true
 }
 
+// seriesNarratorQualifiers are the lead-in phrases of a trailing parenthetical
+// that qualifies a series name BY ITS NARRATOR rather than naming a different
+// series: "Sherlock Holmes - Die galaktischen Fälle (gelesen von Peter Bocek)".
+// The qualifier is an artifact of one retailer listing each re-narration as its
+// own series - four of them for that one title - so a single book minted FOUR
+// works, each in a series of its own. Narration is modeled by
+// recording.narrators; it is not part of a series' identity.
+//
+// This is the same class of see-through as the "(Full-Cast Edition)" production
+// qualifier on a work title (recordings.go), and it is held to the same
+// evidence bar as roleQualifiers and the AI vocabulary: measured over the full
+// dump, in the trailing-bracket position only, and CLOSED. Counts are distinct
+// series titles and the books behind them.
+//
+// Keys are in foldCredit form (lowercased, diacritics folded), so one entry
+// covers "Hörspiele" and "Horspiele" alike.
+//
+// Deliberately NOT included, though both were candidates: "read by" and "lu
+// par". Neither occurs in the trailing-bracket position anywhere in the dump,
+// and both occur elsewhere as false positives - "A Read by the Sea Wedding
+// Romance" is a title, and «"À la recherche du temps perdu" lu par de grands
+// acteurs» credits "great actors" rather than a person. Adding a phrase the
+// data does not attest would be a guess at what a retailer might emit, which is
+// exactly what this vocabulary style refuses. Each is one line away the day a
+// dump carries one.
+var seriesNarratorQualifiers = []string{
+	"gelesen von",    // 15 series titles, 446 books - German "read by"
+	"narrated by",    // 3 titles, 91 books
+	"gesprochen von", // 1 title, 8 books - German "spoken by"
+	"horspiele von",  // 2 titles, 6 books - German "audio dramas by"
+}
+
+// cleanSeriesName strips a trailing narrator qualifier from a series name so
+// every narration of one serial resolves to ONE series. The marker must be a
+// trailing parenthetical (or bracket) whose content BEGINS with a listed phrase
+// at a word boundary and continues with something: a bare "(gelesen von)" names
+// nobody, and a strip that would leave an empty name is refused (the dump does
+// carry series titles that are nothing but a bracket).
+//
+// Only the trailing bracket is read. The dump also spells the qualifier
+// dash-separated ("Sherlock Holmes gelesen von Rupert Pichler"), which this
+// deliberately does not touch: an unbracketed tail is indistinguishable from a
+// series name that legitimately contains the words, and the bracketed form is
+// what the measurement covers.
+func cleanSeriesName(name string) string {
+	trimmed := strings.TrimSpace(name)
+	if !strings.ContainsAny(trimmed, closeBracketChars) {
+		return trimmed
+	}
+	m := trailingParenRE.FindStringSubmatchIndex(trimmed)
+	if m == nil {
+		return trimmed
+	}
+	marker := foldCredit(trimmed[m[2]:m[3]])
+	for _, phrase := range seriesNarratorQualifiers {
+		rest, found := strings.CutPrefix(marker, phrase)
+		if !found || continuesWord(rest) || strings.TrimSpace(rest) == "" {
+			continue
+		}
+		stripped := strings.TrimSpace(trimmed[:m[0]])
+		if stripped == "" || !bracketsBalanced(stripped) {
+			continue
+		}
+		return stripped
+	}
+	return trimmed
+}
+
+// bracketsBalanced reports whether s leaves no bracket open. It guards the strip
+// above: the regex matches the LAST parenthetical, so a doubled opener ("Foo
+// ((gelesen von Peter)") leaves "Foo (" behind - a series named after a dangling
+// bracket, whose slug is "foo" and which therefore collides with the real "Foo".
+// A name we cannot take the qualifier off cleanly is left exactly as the source
+// spelled it, which is the same posture every other strip rule takes when its
+// remainder is unusable.
+func bracketsBalanced(s string) bool {
+	open, square := 0, 0
+	for _, r := range s {
+		switch r {
+		case '(':
+			open++
+		case ')':
+			open--
+		case '[':
+			square++
+		case ']':
+			square--
+		}
+		if open < 0 || square < 0 {
+			return false
+		}
+	}
+	return open == 0 && square == 0
+}
+
 // isoDatePart reduces an ISO timestamp to its YYYY-MM-DD date part;
 // addRecording validates the result before use. Both separators a source may
 // use are cut: the ISO "T" ("2018-10-18T23:00:00") and the space a SQL
@@ -186,33 +313,34 @@ func isoDatePart(ts string) string {
 // dump carries both.
 var roleQualifiers = map[string][]string{
 	// English.
-	"translator":        {model.RoleTranslator},   // 10,624
-	"translated by":     {model.RoleTranslator},   // 54
-	"translation":       {model.RoleTranslator},   // 53
-	"introduction":      {model.RoleIntroduction}, // 2,490
-	"introduction by":   {model.RoleIntroduction}, // 10
-	"introductions":     {model.RoleIntroduction}, // 5
-	"intro":             {model.RoleIntroduction}, // 2, kept from the pre-measurement list
-	"foreword":          {model.RoleForeword},     // 2,175
-	"foreword by":       {model.RoleForeword},     // 96
-	"foreward":          {model.RoleForeword},     // 21, a misspelling the dump carries
-	"afterword":         {model.RoleAfterword},    // 89
-	"afterword by":      {model.RoleAfterword},    // 5
-	"preface":           {model.RolePreface},      // 72
-	"editor":            {model.RoleEditor},       // 2,454
-	"edited by":         {model.RoleEditor},       // 37
-	"illustrator":       {model.RoleIllustrator},  // 852
-	"illustration":      {model.RoleIllustrator},  // 54
-	"illustrated by":    {model.RoleIllustrator},  // 21
-	"illustrations":     {model.RoleIllustrator},  // 7
-	"cover illustrator": {model.RoleIllustrator},  // 7
-	"ilustrator":        {model.RoleIllustrator},  // 3, a misspelling
-	"adaptation":        {model.RoleAdaptation},   // 248
-	"adaptor":           {model.RoleAdaptation},   // 84
-	"adapter":           {model.RoleAdaptation},   // 18
-	"adaption":          {model.RoleAdaptation},   // 8, a variant spelling
-	"adaptations":       {model.RoleAdaptation},   // 3
-	"contributor":       {model.RoleContributor},  // 435
+	"translator":         {model.RoleTranslator},   // 10,624
+	"translated by":      {model.RoleTranslator},   // 54
+	"translation":        {model.RoleTranslator},   // 53
+	"introduction":       {model.RoleIntroduction}, // 2,490
+	"introduction by":    {model.RoleIntroduction}, // 10
+	"introductions":      {model.RoleIntroduction}, // 5
+	"intro":              {model.RoleIntroduction}, // 2, kept from the pre-measurement list
+	"foreword":           {model.RoleForeword},     // 2,175
+	"foreword by":        {model.RoleForeword},     // 96
+	"foreward":           {model.RoleForeword},     // 21, a misspelling the dump carries
+	"afterword":          {model.RoleAfterword},    // 89
+	"afterword by":       {model.RoleAfterword},    // 5
+	"preface":            {model.RolePreface},      // 72
+	"editor":             {model.RoleEditor},       // 2,454
+	"edited by":          {model.RoleEditor},       // 37
+	"illustrator":        {model.RoleIllustrator},  // 852
+	"illustration":       {model.RoleIllustrator},  // 54
+	"illustrated by":     {model.RoleIllustrator},  // 21
+	"illustrations":      {model.RoleIllustrator},  // 7
+	"cover illustrator":  {model.RoleIllustrator},  // 7
+	"cover illustration": {model.RoleIllustrator},  // 1, riding along with it
+	"ilustrator":         {model.RoleIllustrator},  // 3, a misspelling
+	"adaptation":         {model.RoleAdaptation},   // 248
+	"adaptor":            {model.RoleAdaptation},   // 84
+	"adapter":            {model.RoleAdaptation},   // 18
+	"adaption":           {model.RoleAdaptation},   // 8, a variant spelling
+	"adaptations":        {model.RoleAdaptation},   // 3
+	"contributor":        {model.RoleContributor},  // 435
 
 	// Stripped, but NOT credit roles in the controlled vocabulary. They stay in
 	// the strip list because they are real qualifiers a name should not keep;
@@ -234,6 +362,16 @@ var roleQualifiers = map[string][]string{
 	// identity for a real person.
 	"director":  nil, // 36 books / 12 names
 	"directeur": nil, // 9 books / 1 name - the French spelling, same non-role
+	// The cover-art family. "cover design" (14 books) is what clears the bar and
+	// the rest are its spellings, riding along as the combined qualifiers do.
+	// They map to nothing for the same reason "director" does: the credit
+	// vocabulary models contributions to the TEXT, and a cover is not one.
+	// Leaving them out of the strip list minted henrik-koitzsch-cover-design and
+	// its siblings - second identities for real designers.
+	"cover design":   nil, // 14
+	"cover art":      nil, // 2
+	"cover artwork":  nil, // 1
+	"cover designer": nil, // 1
 
 	// German.
 	"herausgeber":  {model.RoleEditor},       // 44
@@ -252,6 +390,8 @@ var roleQualifiers = map[string][]string{
 	"traducteur":    {model.RoleTranslator},   // 1,191
 	"traductrice":   {model.RoleTranslator},   // 154
 	"traduction":    {model.RoleTranslator},   // 12
+	"éditeur":       {model.RoleEditor},       // 3; the ASCII-folded spelling rides along
+	"editeur":       {model.RoleEditor},       // 1 on its own, below the bar
 	"illustrateur":  {model.RoleIllustrator},  // 136
 	"illustratrice": {model.RoleIllustrator},  // 58
 	"illustateur":   {model.RoleIllustrator},  // 10, a misspelling
@@ -389,7 +529,7 @@ const minDoubledHalfWords = 2
 const maxCleanPasses = 8
 
 // CleanCreditName normalizes one credit name from an external source. It applies
-// four evidence-driven rules, repeatedly until the name stops changing (the dump
+// five evidence-driven rules, repeatedly until the name stops changing (the dump
 // really does carry doubled qualifiers like "Dan Veksler - Translator -
 // translator"):
 //
@@ -406,9 +546,12 @@ const maxCleanPasses = 8
 //  3. An exactly-doubled name is collapsed to one half ("Full Cast Full Cast" ->
 //     "Full Cast"). Only exact halves of at least two words each, so "Duran
 //     Duran" and "Mitz Mitz Vah" are left alone.
-//  4. A concatenated studio/production credit is removed ("Alex Hyde-White Punch
+//  4. A leading courtesy title is dropped when the bare name is already a
+//     credit somewhere ("Sir Arthur Conan Doyle" -> "Arthur Conan Doyle"). Like
+//     rule 5 it needs the CENSUS, so it never fires here - see honorific.go.
+//  5. A concatenated studio/production credit is removed ("Alex Hyde-White Punch
 //     Audio" -> "Alex Hyde-White"). Its evidence bar is the strictest of the
-//     four, and one of its three tiers needs a CENSUS of credit names this entry
+//     five, and one of its three tiers needs a CENSUS of credit names this entry
 //     point has no access to - see studiotail.go and creditWithRoles.
 //
 // The person stays in the credit list under the cleaned name. The stripped role
@@ -437,21 +580,60 @@ func CreditWithRoles(name string) (cleaned string, roles []string) {
 	return creditWithRoles(name, nil)
 }
 
-// creditWithRoles is CreditWithRoles with the studio-concatenation rule's
-// CENSUS supplied: the question "is this half of the string independently a
-// credit somewhere?", which decides tier 3 (studiotail.go). A nil
-// creditSeenFunc has seen nothing, so the two tiers that carry their own
-// evidence still apply and the third never fires - which is exactly what a
-// caller with no catalogue in hand (pkg/scan reading tags, a single typed
-// issue-form name) should get, and it is what CreditWithRoles, the public door,
+// creditCensus is the evidence the two census-consulting cleaning rules read.
+// Its two universes are deliberately different questions, because the two rules
+// need different answers:
+//
+//	anySide   "is this string independently a credit SOMEWHERE?" - the
+//	          studio-concatenation rule's tier 3 (studiotail.go). A studio is
+//	          evidenced by having a record at all, on whichever side it was
+//	          credited, so narrowing this would only lose cleanups.
+//	sameSide  "is this string a credit on THIS side - author or narrator?" - the
+//	          honorific rule (honorific.go). "Steve West" the narrator does not
+//	          attest "Dr. Steve West" the author, and treating it as evidence
+//	          merged 7 measured pairs of different humans into one record.
+//
+// A zero value has seen nothing, so the tiers that carry their own evidence
+// still apply and the two census-consulting rules never fire - which is exactly
+// what a caller with no catalogue in hand (pkg/scan reading tags, a single typed
+// issue-form name) should get, and what CreditWithRoles, the public door,
 // passes.
+type creditCensus struct {
+	anySide  creditSeenFunc
+	sameSide creditSeenFunc
+	// onHonorific, when set, is notified of every honorific merge the cleaning
+	// performs, so a run can report the list it made (Summary.HonorificMerges).
+	onHonorific func(from, to string)
+}
+
+// creditWithRoles is CreditWithRoles with ONE census supplied, answering both
+// census questions from a single universe. It is the shape every caller had
+// before the honorific rule needed a side, and it is still the right shape for
+// a caller that legitimately has one universe and no credit side to speak of -
+// a test, or a probe over a hand-built name list.
+//
+// The IMPORT pipeline must not use it: a row states its credits on two sides
+// and they are different populations of humans (see creditCensus). It goes
+// through sourceCredits, which carries the side's census.
 func creditWithRoles(name string, seen creditSeenFunc) (cleaned string, roles []string) {
+	return creditWithRolesSided(name, creditCensus{anySide: seen, sameSide: seen})
+}
+
+// creditWithRolesSided is creditWithRoles with the two census universes given
+// separately, which is what the import pipeline has.
+func creditWithRolesSided(name string, c creditCensus) (cleaned string, roles []string) {
 	cleaned = name
 	var stated []string
 	for i := 0; i < maxCleanPasses; i++ {
 		stripped, passRoles := stripRoleQualifier(stripPrefixCredit(cleaned))
 		stripped, parenRoles := stripParenRoleQualifier(stripped)
-		next, tailRoles := stripStudioConcat(collapseDoubledName(stripped), seen)
+		if bare := stripHonorific(stripped, c.sameSide); bare != stripped {
+			if c.onHonorific != nil {
+				c.onHonorific(stripped, bare)
+			}
+			stripped = bare
+		}
+		next, tailRoles := stripStudioConcat(collapseDoubledName(stripped), c.anySide)
 		if next == cleaned {
 			break
 		}
@@ -716,7 +898,7 @@ func creditNamesOf(credits []credit) []string {
 // no work record to hang a role on - and, for the same reason, no credit
 // census, so it cleans with the two self-evidencing studio-tail tiers only.
 func SplitNames(joined string) []string {
-	return creditNamesOf(sourceCredits(nil, joined, nil))
+	return creditNamesOf(sourceCredits(nil, joined, creditCensus{}))
 }
 
 // trailingParenRE captures the content of a trailing parenthetical or bracket.

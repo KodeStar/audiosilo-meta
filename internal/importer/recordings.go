@@ -60,7 +60,7 @@ func (p *planner) planRecordings(books []sourceBook) {
 // work resolution comes BEFORE the language and narrator validation, so a row
 // for a book the catalogue does not hold produces no per-row warning and no
 // person record. Its natural input is an unfiltered export in which nearly
-// every row is about a book we do not have; warning about each one's Finnish
+// every row is about a book we do not have; warning about each one's Luo
 // language or missing narrator would bury the run's real output, and would
 // scold the operator for rows they never asked to import.
 func (p *planner) addRecordingToExistingWork(b sourceBook, asin string) {
@@ -74,9 +74,20 @@ func (p *planner) addRecordingToExistingWork(b sourceBook, asin string) {
 		return
 	}
 
-	ws := p.resolveExistingWork(b)
+	ws, titleHit := p.resolveExistingWork(b)
 	if ws == nil {
 		p.summary.SkippedNoWork++
+		// A row whose title IS catalogued but whose credits matched no work
+		// under it goes in its own bucket: that is a title-matching or identity
+		// question a maintainer can act on, while "we do not have this book" is
+		// the mode's expected answer and says nothing.
+		if titleHit {
+			p.summary.SkippedTitleNoMatch++
+			if len(p.titleNoMatchExamples) < maxWarnExamples {
+				p.titleNoMatchExamples = append(p.titleNoMatchExamples, bookLabel(b))
+			}
+			return
+		}
 		if len(p.noWorkExamples) < maxWarnExamples {
 			p.noWorkExamples = append(p.noWorkExamples, bookLabel(b))
 		}
@@ -120,9 +131,21 @@ func (p *planner) addRecordingToExistingWork(b sourceBook, asin string) {
 // It only ever READS p.works. A recordings-only run creates no work, so the map
 // is exactly the catalogue on disk, and a nil result means "not in the
 // catalogue" rather than "not created yet".
-func (p *planner) resolveExistingWork(b sourceBook) *workState {
-	var want map[string]bool
-	var firstAuthor string
+// It reports WHY it failed, so the run's aggregate warnings can tell the two
+// failures apart: a row about a book we simply do not hold (the expected
+// outcome for most of an unfiltered dump) and a row whose TITLE is catalogued
+// but whose credits did not match any work under it. The second is the
+// actionable one - it is where a title-matching or identity bug shows up - and
+// folding it into one silent counter is what let the legacy-suffix chain break
+// drop alternate narrations without a word.
+func (p *planner) resolveExistingWork(b sourceBook) (ws *workState, titleHit bool) {
+	var authors workAuthors
+	resolved := false
+	// The row's language, when it maps. An unmapped one stays empty and blocks
+	// nothing: admitRecordingFacts refuses the row later anyway, and this
+	// resolver must not start reporting language problems for the rows the mode
+	// deliberately says nothing about.
+	rowLang, _ := mapLanguage(b.str("language"))
 	for _, title := range workTitleCandidates(b) {
 		base := Slugify(title)
 		if base == "" {
@@ -131,24 +154,48 @@ func (p *planner) resolveExistingWork(b sourceBook) *workState {
 		if _, taken := p.works[base]; !taken {
 			continue
 		}
-		if want == nil {
-			authorSlugs := p.slugCredits(p.rowAuthorNames(b))
-			if len(authorSlugs) == 0 {
-				return nil // no author: nothing to identify a work by
+		if !resolved {
+			// The identity author set, not the row's whole credit list: a work
+			// the catalogue stores with a translator in authors[] must match a row
+			// that omits one, and the other way round (workidentity.go). This is
+			// the read-only resolver, so no person record is created.
+			authors = p.rowWorkAuthorsRO(p.rowAuthorCredits(b))
+			if len(authors.all) == 0 {
+				return nil, false // no author: nothing to identify a work by
 			}
-			want, firstAuthor = ToSet(authorSlugs), authorSlugs[0]
+			resolved = true
 		}
-		for _, slug := range workCandidates(base, firstAuthor) {
-			ws, exists := p.works[slug]
+		titleHit = true
+		cands, primary := workCandidates(base, authors)
+		var best *workState
+		bestKind := matchNone
+		for i, cand := range cands {
+			w, exists := p.works[cand.slug]
 			if !exists {
+				if i >= primary {
+					break
+				}
+				continue
+			}
+			// The same grading the create path uses, so the mode can only ever
+			// attach a narration to the work getOrCreateWork would have chosen -
+			// language included, since a translation is a different work.
+			kind := matchWork(w, authors)
+			if kind == matchNone || !langCompatible(w.lang, rowLang) {
+				continue
+			}
+			if kind > bestKind {
+				best, bestKind = w, kind
+			}
+			if bestKind == matchExact {
 				break
 			}
-			if SameSet(ws.authors, want) {
-				return ws
-			}
+		}
+		if best != nil {
+			return best, true
 		}
 	}
-	return nil
+	return nil, titleHit
 }
 
 // reportUnmatchedWorks appends one run-level warning naming how many rows
@@ -161,30 +208,17 @@ func (p *planner) reportUnmatchedWorks() {
 	if p.summary.SkippedNoWork == 0 {
 		return
 	}
-	p.summary.Warnings = append(p.summary.Warnings, withExamples(
-		fmt.Sprintf("%d rows matched no catalogued work; no recording added", p.summary.SkippedNoWork),
-		p.noWorkExamples))
-}
-
-// slugCredits maps a credit list to person slugs WITHOUT creating any person
-// record, deduplicating by slug in first-seen order. It is getOrCreatePerson's
-// read-only twin: both derive the identity through personSlug and both resolve
-// an initials merge through personSlugTarget, so a name compares against a
-// catalogued work's author list exactly as it would be written if the work were
-// being created.
-func (p *planner) slugCredits(names []string) []string {
-	out := make([]string, 0, len(names))
-	seen := make(map[string]bool, len(names))
-	for _, name := range names {
-		slug, _ := personSlug(name)
-		slug = p.personSlugTarget(slug)
-		if seen[slug] {
-			continue
-		}
-		seen[slug] = true
-		out = append(out, slug)
+	if n := p.summary.SkippedNoWork - p.summary.SkippedTitleNoMatch; n > 0 {
+		p.summary.Warnings = append(p.summary.Warnings, withExamples(
+			fmt.Sprintf("%d rows matched no catalogued work; no recording added", n),
+			p.noWorkExamples))
 	}
-	return out
+	if p.summary.SkippedTitleNoMatch > 0 {
+		p.summary.Warnings = append(p.summary.Warnings, withExamples(
+			fmt.Sprintf("%d rows matched a catalogued TITLE but no work under it (author sets disagreed); no recording added",
+				p.summary.SkippedTitleNoMatch),
+			p.titleNoMatchExamples))
+	}
 }
 
 // workTitleCandidates returns the ordered work-title candidates for a row: the

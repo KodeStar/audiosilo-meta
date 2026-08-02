@@ -5,6 +5,12 @@
       "authors": [
         "arthur-conan-doyle"
       ],
+      "genres": [
+        "classics",
+        "horror",
+        "literary-fiction",
+        "mystery"
+      ],
       "id": "the-hound-of-the-baskervilles",
       "language": "en",
       "license": "CC0-1.0",
@@ -860,6 +866,34 @@
           ],
           "work": "the-hound-of-the-baskervilles"
         },
+        "marnye-young-2022": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0BBPT1Q25",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81wBCa+Rj+L.jpg",
+          "id": "marnye-young-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "marnye-young"
+          ],
+          "publisher": "Silverton Agency",
+          "release_date": "2022-09-06",
+          "runtime_min": 355,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0BBPT1Q25",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-hound-of-the-baskervilles"
+        },
         "michael-page-2015": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -985,6 +1019,34 @@
             {
               "imported_at": "2026-07-30",
               "ref": "B004RQN82U",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-hound-of-the-baskervilles"
+        },
+        "peter-silverleaf-2022": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B09PL44PJ9",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/61sM+U50AOL.jpg",
+          "id": "peter-silverleaf-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "peter-silverleaf"
+          ],
+          "publisher": "Bookstream Audiobooks",
+          "release_date": "2022-01-19",
+          "runtime_min": 368,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09PL44PJ9",
               "type": "libex-import"
             }
           ],
@@ -1157,6 +1219,34 @@
           ],
           "work": "the-hound-of-the-baskervilles"
         },
+        "tony-britton-2005": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0036GMNKA",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/512+ZUEcZIL.jpg",
+          "id": "tony-britton-2005",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "tony-britton"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2005-07-01",
+          "runtime_min": 179,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0036GMNKA",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-hound-of-the-baskervilles"
+        },
         "trevor-ohare-2024": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -1228,6 +1318,16 @@
           "imported_at": "2026-07-25",
           "ref": "https://www.goodreads.com/book/show/8921.The_Hound_of_the_Baskervilles",
           "type": "community"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0BBPT1Q25",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B09PL44PJ9",
+          "type": "libex-import"
         }
       ],
       "title": "The Hound of the Baskervilles",
@@ -1238,7 +1338,7 @@
     "the-hound-of-the-baskervilles-amazonclassics-edition": {
       "added_at": "2026-08-02",
       "authors": [
-        "sir-arthur-conan-doyle"
+        "arthur-conan-doyle"
       ],
       "genres": [
         "classics",
@@ -1336,109 +1436,6 @@
         }
       ],
       "title": "The Hound of the Baskervilles and A Study in Scarlet"
-    },
-    "the-hound-of-the-baskervilles-arthur-conan-doyle": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "arthur-conan-doyle",
-        "sir-arthur-conan-doyle"
-      ],
-      "genres": [
-        "classics",
-        "horror",
-        "mystery"
-      ],
-      "id": "the-hound-of-the-baskervilles-arthur-conan-doyle",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "marnye-young-2022": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0BBPT1Q25",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81wBCa+Rj+L.jpg",
-          "id": "marnye-young-2022",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "marnye-young"
-          ],
-          "publisher": "Silverton Agency",
-          "release_date": "2022-09-06",
-          "runtime_min": 355,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0BBPT1Q25",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-hound-of-the-baskervilles-arthur-conan-doyle"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0BBPT1Q25",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Hound of the Baskervilles"
-    },
-    "the-hound-of-the-baskervilles-sir-arthur-conan-doyle": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "sir-arthur-conan-doyle"
-      ],
-      "genres": [
-        "literary-fiction"
-      ],
-      "id": "the-hound-of-the-baskervilles-sir-arthur-conan-doyle",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "peter-silverleaf-2022": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B09PL44PJ9",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/61sM+U50AOL.jpg",
-          "id": "peter-silverleaf-2022",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "peter-silverleaf"
-          ],
-          "publisher": "Bookstream Audiobooks",
-          "release_date": "2022-01-19",
-          "runtime_min": 368,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B09PL44PJ9",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-hound-of-the-baskervilles-sir-arthur-conan-doyle"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B09PL44PJ9",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Hound of the Baskervilles"
     },
     "the-hound-of-the-burgervilles": {
       "added_at": "2026-08-01",
@@ -3194,6 +3191,58 @@
       ],
       "title": "The House at Pritchard Place"
     },
+    "the-house-at-the-edge-of-magic": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "amy-sparkes"
+      ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "fantasy"
+      ],
+      "id": "the-house-at-the-edge-of-magic",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "charlie-sanderson-2021": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "100403251X",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91KjN2bz4PL.jpg",
+          "id": "charlie-sanderson-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "charlie-sanderson"
+          ],
+          "publisher": "W. F. Howes Ltd",
+          "release_date": "2021-03-11",
+          "runtime_min": 252,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "100403251X",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-house-at-the-edge-of-magic"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "100403251X",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The House at the Edge of Magic"
+    },
     "the-house-at-the-edge-of-the-world": {
       "added_at": "2026-08-01",
       "authors": [
@@ -3298,6 +3347,62 @@
         }
       ],
       "title": "The House at the End of the Lane"
+    },
+    "the-house-at-watch-hill": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "karen-marie-moning"
+      ],
+      "genres": [
+        "fantasy",
+        "gothic",
+        "horror",
+        "paranormal",
+        "romance",
+        "urban-fantasy"
+      ],
+      "id": "the-house-at-watch-hill",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "amanda-leigh-cobb-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CQ36XC95",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81UhWFRcFBL.jpg",
+          "id": "amanda-leigh-cobb-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "amanda-leigh-cobb",
+            "tim-campbell"
+          ],
+          "publisher": "William Morrow",
+          "release_date": "2024-10-01",
+          "runtime_min": 694,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CQ36XC95",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-house-at-watch-hill"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CQ36XC95",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The House at Watch Hill"
     },
     "the-house-edward-lee": {
       "added_at": "2026-08-02",
@@ -6391,6 +6496,54 @@
       ],
       "title": "The House of Hades"
     },
+    "the-house-of-horrors": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "dan-smith",
+        "luke-brookes"
+      ],
+      "id": "the-house-of-horrors",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "thomas-delacourt-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0G5SHS3ZL",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81tZ6K5t-wL.jpg",
+          "id": "thomas-delacourt-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "thomas-delacourt"
+          ],
+          "publisher": "Barrington Stoke",
+          "release_date": "2026-05-07",
+          "runtime_min": 179,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0G5SHS3ZL",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-house-of-horrors"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0G5SHS3ZL",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The House of Horrors"
+    },
     "the-house-of-long-ago": {
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
@@ -6617,6 +6770,60 @@
       ],
       "title": "The House of Maine"
     },
+    "the-house-of-power": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "patrick-carman"
+      ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "coming-of-age",
+        "parenting-relationships",
+        "science-fiction"
+      ],
+      "id": "the-house-of-power",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "jonathan-davis-2007": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002VA3K4K",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91O87qC6SvL.jpg",
+          "id": "jonathan-davis-2007",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jonathan-davis"
+          ],
+          "publisher": "Grand Central Publishing",
+          "release_date": "2007-04-03",
+          "runtime_min": 463,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002VA3K4K",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-house-of-power"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002VA3K4K",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The House of Power"
+    },
     "the-house-of-prophecy": {
       "added_at": "2026-08-01",
       "authors": [
@@ -6668,6 +6875,69 @@
         }
       ],
       "title": "The House of Prophecy"
+    },
+    "the-house-of-sacrifice": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "anna-smith-spark"
+      ],
+      "genres": [
+        "action-adventure",
+        "epic-fantasy",
+        "fantasy",
+        "historical-fiction"
+      ],
+      "id": "the-house-of-sacrifice",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "colin-mace-2019": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "1549151282",
+              "region": "us"
+            },
+            {
+              "asin": "0008204160",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71ZL2QLCbPL.jpg",
+          "id": "colin-mace-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "colin-mace",
+            "meriel-rosenkranz"
+          ],
+          "publisher": "Orbit",
+          "release_date": "2019-08-13",
+          "runtime_min": 1146,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1549151282",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "0008204160",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-house-of-sacrifice"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1549151282",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The House of Sacrifice"
     },
     "the-house-of-shattered-wings": {
       "added_at": "2026-08-02",
@@ -6938,6 +7208,10 @@
             {
               "asin": "B0BTMTH3XF",
               "region": "us"
+            },
+            {
+              "asin": "B0149LXHO6",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81GCvY8WFBL.jpg",
@@ -6955,6 +7229,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0BTMTH3XF",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0149LXHO6",
+              "type": "libex-import"
             }
           ],
           "work": "the-house-of-susan-lulham"
@@ -6968,6 +7247,59 @@
         }
       ],
       "title": "The House of Susan Lulham"
+    },
+    "the-house-of-the-black-evil": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "eric-purves"
+      ],
+      "genres": [
+        "fantasy",
+        "paranormal",
+        "thriller-suspense",
+        "urban-fantasy"
+      ],
+      "id": "the-house-of-the-black-evil",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "david-thorpe-2022": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B09TLD3MCK",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71OQ+D9z20L.jpg",
+          "id": "david-thorpe-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "david-thorpe"
+          ],
+          "publisher": "Isis Publishing Ltd",
+          "release_date": "2022-03-01",
+          "runtime_min": 42,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09TLD3MCK",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-house-of-the-black-evil"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B09TLD3MCK",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The House of the Black Evil"
     },
     "the-house-of-the-four-winds": {
       "added_at": "2026-08-02",
@@ -7194,6 +7526,59 @@
       ],
       "title": "The House of Tudor: An Alternative History"
     },
+    "the-house-of-velvet-and-glass": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "katherine-howe"
+      ],
+      "genres": [
+        "historical-fiction",
+        "horror",
+        "literary-fiction",
+        "occult"
+      ],
+      "id": "the-house-of-velvet-and-glass",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "heather-corrigan-2012": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B007R6LGWQ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/61XL1CGQMqL.jpg",
+          "id": "heather-corrigan-2012",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "heather-corrigan"
+          ],
+          "publisher": "Grand Central Publishing",
+          "release_date": "2012-04-10",
+          "runtime_min": 986,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B007R6LGWQ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-house-of-velvet-and-glass"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B007R6LGWQ",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The House of Velvet and Glass"
+    },
     "the-house-of-whispers": {
       "added_at": "2026-08-01",
       "authors": [
@@ -7300,6 +7685,62 @@
       ],
       "title": "The House on Hanging Hill Lane: Darkness Creeps Closer"
     },
+    "the-house-on-hoarder-hill": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "kelly-ngai",
+        "mikki-lish"
+      ],
+      "genres": [
+        "childrens",
+        "coming-of-age",
+        "fantasy",
+        "mystery",
+        "occult",
+        "religion-spirituality"
+      ],
+      "id": "the-house-on-hoarder-hill",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "harrie-dobby-2020": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "1528893301",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91o5JxFjDeL.jpg",
+          "id": "harrie-dobby-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "harrie-dobby"
+          ],
+          "publisher": "W. F. Howes Ltd",
+          "release_date": "2020-03-05",
+          "runtime_min": 437,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1528893301",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-house-on-hoarder-hill"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1528893301",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The House on Hoarder Hill"
+    },
     "the-house-on-infinity-loop": {
       "added_at": "2026-08-01",
       "authors": [
@@ -7366,6 +7807,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "felbrigg-napoleon-herriot-2013": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00D2WGZAM",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/819wB5JnhuL.jpg",
+          "id": "felbrigg-napoleon-herriot-2013",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "felbrigg-napoleon-herriot"
+          ],
+          "publisher": "FNH Audio",
+          "release_date": "2013-05-31",
+          "runtime_min": 314,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00D2WGZAM",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-house-on-the-borderland"
+        },
         "geoffrey-giuliano-2023": {
           "abridged": false,
           "added_at": "2026-08-02",

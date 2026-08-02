@@ -219,6 +219,14 @@ type Summary struct {
 	// book we simply do not hold did NOT fall through to work creation. Always 0
 	// outside ModeRecordingsOnly.
 	SkippedNoWork int
+	// SkippedTitleNoMatch is the SUBSET of SkippedNoWork whose title IS
+	// catalogued but whose credits matched no work stored under it. The two
+	// failures look identical in a counter and are not the same news: "we do not
+	// hold this book" is the mode's expected answer on an unfiltered dump, while
+	// "we hold this title and could not agree on who wrote it" is where a
+	// title-matching or work-identity defect surfaces. Reported as its own
+	// aggregate warning with examples. Always 0 outside ModeRecordingsOnly.
+	SkippedTitleNoMatch int
 	// SkippedRows counts rows the source's PARSE layer refused before planning
 	// ever saw them (no well-formed ASIN, or a marketplace that does not map).
 	// It is what makes the run's accounting reconcile: in enrichment mode the
@@ -227,6 +235,14 @@ type Summary struct {
 	// reports its parse warnings in aggregate rather than per row. Set in both
 	// modes; only the libex parser refuses rows of its own today.
 	SkippedRows int
+	// HonorificMerges lists every credit spelling the honorific rule resolved
+	// onto a bare twin this run, as sorted "<credited> -> <bare>" lines
+	// (honorific.go). It is reported for the same reason MergedASINs is
+	// counted: the rule silently decides that two spellings are ONE HUMAN, which
+	// is the least reversible thing an import does, and a wave's list is
+	// something a maintainer can read in a minute and a diff of 40,000 files is
+	// not. Empty when the rule never fired.
+	HonorificMerges []string
 	// Warnings are informational "asin/title: reason" lines for books or fields
 	// that could not be imported cleanly.
 	Warnings []string

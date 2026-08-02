@@ -5,8 +5,10 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"html"
 	"io"
 	"os"
+	"regexp"
 	"slices"
 	"strconv"
 	"strings"
@@ -92,6 +94,8 @@ const (
 	warnUnknownRegion
 	warnAINarrator
 	warnJunkCredit
+	warnListCredit
+	warnPlaceholderCredit
 	warnUnnamedCredit
 	warnCoverNotHTTPS
 	warnMalformedISBN
@@ -110,6 +114,10 @@ func (c libexWarnClass) aggregateForm(n int) string {
 		return fmt.Sprintf("%d rows skipped: a credited name is an AI voice or system", n)
 	case warnJunkCredit:
 		return fmt.Sprintf("%d rows skipped: a credited name is a platform account", n)
+	case warnListCredit:
+		return fmt.Sprintf("%d rows skipped: a credited name is a semicolon-joined list of people", n)
+	case warnPlaceholderCredit:
+		return fmt.Sprintf("%d rows skipped: a credited name is a cast placeholder", n)
 	case warnUnnamedCredit:
 		return fmt.Sprintf("%d rows skipped: a credited name does not identify a person", n)
 	case warnCoverNotHTTPS:
@@ -252,6 +260,10 @@ func parseLibex(data []byte) (libexParse, error) {
 			lp.add(r.class, r.label(asin), "%s: %s; row skipped", asin, r.detail)
 			continue
 		}
+		// Only now are the names unescaped: the list refusal above reads the
+		// SEPARATORS, and an entity reference is a place a ';' hides, so it has
+		// to see the escaped spelling. See unescapeCredits.
+		authors, narrators = unescapeCredits(authors), unescapeCredits(narrators)
 		lp.books = append(lp.books, libexToBook(e, asin, region, authors, narrators, &lp))
 	}
 	return lp, nil
@@ -560,7 +572,8 @@ type creditRefusal struct {
 // is the evidence - the fix is upstream in Slugify, not in any one row - so the
 // line carries both, the same reason reportUnnamedCredits names its examples.
 func (r creditRefusal) label(asin string) string {
-	if r.class == warnUnnamedCredit {
+	switch r.class {
+	case warnUnnamedCredit, warnListCredit, warnPlaceholderCredit:
 		return asin + " " + strconv.Quote(r.name)
 	}
 	return asin
@@ -583,6 +596,22 @@ func refuseLibexCredits(authors, narrators []string) (creditRefusal, bool) {
 			reason: reasonJunkCredit,
 			name:   name,
 			detail: fmt.Sprintf("credit %q is a platform account, not a person", name),
+		}, true
+	}
+	if name, isList := firstListCredit(authors, narrators); isList {
+		return creditRefusal{
+			class:  warnListCredit,
+			reason: reasonListCredit,
+			name:   name,
+			detail: fmt.Sprintf("credit %q is a semicolon-joined list of people, not one person", name),
+		}, true
+	}
+	if name, placeholder := firstPlaceholderCredit(authors, narrators); placeholder {
+		return creditRefusal{
+			class:  warnPlaceholderCredit,
+			reason: reasonPlaceholder,
+			name:   name,
+			detail: fmt.Sprintf("credit %q is a cast placeholder, not a person", name),
 		}, true
 	}
 	if name, unnamed := firstUnnamedCredit(authors, narrators); unnamed {
@@ -661,7 +690,7 @@ func firstUnnamedCredit(authors, narrators []string) (name string, unnamed bool)
 // refused for it (an absent author is addBook's rule to enforce, for every
 // source).
 func creditIdentifies(name string) bool {
-	for _, c := range sourceCredits([]string{name}, "", nil) {
+	for _, c := range sourceCredits([]string{name}, "", creditCensus{}) {
 		if _, fellBack := personSlug(c.name); fellBack {
 			return false
 		}
@@ -930,6 +959,171 @@ func endsWord(s string) bool {
 	}
 	r, _ := utf8.DecodeLastRuneInString(s)
 	return unicode.IsLetter(r) || unicode.IsDigit(r)
+}
+
+// ---------------------------------------------------------------------------
+// List-credit exclusion
+//
+// A credit name containing a SEMICOLON is not a person, it is a LIST of people
+// that the source (or a step before it) joined into one field. Nothing else in
+// the credit pipeline can see that: the name slugs cleanly, it names no AI, and
+// it identifies "somebody", so it was imported as one person - a Perry Rhodan
+// row joined FIFTEEN authors with semicolons and minted a single person record
+// whose 100-character slug was cut mid-word.
+//
+// Splitting the list instead was considered and rejected. The comma-split every
+// source shares is deliberately not applied to a structured credit array
+// (libexNames: "Alexandre Dumas, pere" is one person), and a row that arrives
+// this mangled has already lost the guarantee that its OTHER fields are sound -
+// the same Perry Rhodan block carries garbled titles and series claims. Refusing
+// the row is the honest outcome, on exactly the terms the AI and
+// unidentifiable-name rules use: the book is absent, which is true, rather than
+// present with an invented author, which is not.
+//
+// The separator is a single character rather than a vocabulary, but it is NOT a
+// bare substring test, and the difference is measured. The full dump carries 17
+// distinct credit names containing ';' and they split cleanly in two:
+//
+//	10 are real lists   "Roman; Thomas; Michael G.; Dieter; Ulf; Olaf; Kai;
+//	                     Madeleine Schleifer; Frick; Rosenberg; Bohn; ..."
+//	                    (the 15-author Perry Rhodan credit), "Adrienne Fleming;
+//	                    Tor Thom", "Nick; Colleen Sampson; Delany", ...
+//	 7 are HTML ENTITIES "Erika B&aacute;lint", "Leo Kni&#382;ka", "Maxine
+//	                    Mitchell &amp; Jason Clarke" - real people whose names
+//	                    reached the dump HTML-escaped, where the ';' merely
+//	                    terminates the entity.
+//
+// So the entity references are removed before the test. Escaped names are a
+// separate defect (they import under a mangled slug), and refusing them here
+// would hide it behind a rule about something else.
+//
+// Two of the ten are a person with a STRAY semicolon rather than a list
+// ("Morton Levell;", "Dr. Mohamed E;-Reedy", a typo for El-Reedy). Both are
+// refused too, deliberately: each is corrupt as it stands and would mint a
+// bogus person record, which is the outcome this rule exists to prevent.
+//
+// ';' is deliberately the ONLY separator refused. '&', '/' and ' und ' all
+// occur inside real names and real duo credits.
+var htmlEntityRE = regexp.MustCompile(`&(#[0-9]+|#x[0-9a-fA-F]+|[a-zA-Z][a-zA-Z0-9]*);`)
+
+// unescapeCredits resolves HTML entity references in a row's credit names.
+//
+// Seven of the dump's credit names reach it HTML-escaped - "Erika B&aacute;lint",
+// "Leo Kni&#382;ka", "Maxine Mitchell &amp; Jason Clarke" - and every one is a
+// real person whose record was minted under a slug spelling the ENTITY
+// ("erika-b-aacute-lint"). That is not a merge or a refusal, it is a name
+// written wrong, so the fix is to read the escape rather than to drop the row.
+//
+// It runs AFTER the credit-side refusals, which is load-bearing in one
+// direction only: the list rule reads the ';' an entity reference ends with, so
+// it must see the escaped spelling to tell that ';' from a list separator.
+// Nothing downstream depends on the escaped form.
+//
+// html.UnescapeString leaves an unknown reference exactly as it found it, so a
+// name that merely contains an ampersand ("Marley &Me Productions") is
+// untouched.
+func unescapeCredits(names []string) []string {
+	for i, n := range names {
+		if strings.ContainsRune(n, '&') {
+			names[i] = html.UnescapeString(n)
+		}
+	}
+	return names
+}
+
+// firstListCredit reports whether ANY credit in the row's author or narrator
+// list is a semicolon-joined list of people, naming the first one it finds.
+func firstListCredit(authors, narrators []string) (name string, isList bool) {
+	for _, list := range [][]string{authors, narrators} {
+		for _, n := range list {
+			if !strings.Contains(n, ";") {
+				continue
+			}
+			if strings.Contains(htmlEntityRE.ReplaceAllString(n, ""), ";") {
+				return n, true
+			}
+		}
+	}
+	return "", false
+}
+
+// ---------------------------------------------------------------------------
+// Placeholder-credit exclusion
+//
+// A credit can name neither a person nor a collective but a PLACEHOLDER: the
+// retailer's "to be announced" standing in for a cast that had not been booked
+// when the listing went up. Nothing else refuses them - they slug cleanly, they
+// name no AI, and they are not platform accounts - so they imported as people,
+// and "to be announced" became the credited narrator of 251 books.
+//
+// The line this vocabulary draws is between a placeholder and a COLLECTIVE
+// credit. A collective names a real (if unnamed) group who really did the work,
+// and the project keeps those: "Full Cast" (5,571 books), "Anonymous" (2,193),
+// "Uncredited" (2,183) and the unattributed family ("Unknown" 70, its German
+// "Unbekannt" and Spanish "Desconocido", the bibliographic "N.N." 698) all stay
+// exactly as they are. A placeholder names nobody at all, not even a group.
+//
+// Two families clear the "cannot be a person under any reading" bar, both
+// measured over the full dump (counts are books):
+//
+//   - the TBD forms, which are an administrative state rather than a credit;
+//   - the explicitly PLURAL cast forms, whose own words say they are more than
+//     one person, so no single record could ever be right.
+//
+// Deliberately NOT included, and each is a judgment call worth restating:
+//
+//   - bare "Various" (1,038), bare "Diverse" (191, German) and the German
+//     bibliographic abbreviation "Div." (1,646). These are the anthology
+//     convention, and they are the same SHAPE as the "Anonymous" the project
+//     keeps: one token standing for an unnamed party. Refusing them would drop
+//     nearly three thousand books on a rule about placeholders, which is not
+//     what they are. If they should go, they should go WITH Anonymous, as a
+//     deliberate decision about collective credits.
+//   - bare "Cast" (11). Measured, its books are ensemble theatre recordings
+//     ("La Dama de las Camelias", "The History of Theatre") - the English of
+//     the "Full Cast" the project sanctions, not a TBD placeholder.
+//   - "Test Narrator", "Test", "RocQET QA" and friends, for the reason
+//     junkCreditNames already records: they read as placeholders but are not
+//     provably accounts, and their measured neighbours are real people. (The
+//     "Test" rows are fixture BOOKS, so the book is what is fake, not the
+//     credit - a different rule's job if one is ever wanted.)
+//
+// One entry is a deliberate borderline: "elenco" is the Portuguese/Spanish noun
+// for the cast, which by the paragraph above argues for keeping it beside "Full
+// Cast". It is refused because it is a bare generic noun rather than an
+// established credit, and at 7 books either way is immaterial - but it is the
+// one line here that a maintainer could reasonably flip.
+var placeholderCreditNames = map[string]bool{
+	// The TBD family: an administrative state, not a credit.
+	"to be announced": true, // 251
+	"to be confirmed": true, // 55
+	"tbd":             true, // 20
+	"tba":             true, // 10
+	"tbc":             true, // 4
+	"n/a":             true, // 1
+
+	// The plural-cast family: the credit's own words say it is not one person.
+	"various narrators": true, // 96
+	"varios narradores": true, // 89 - Spanish
+	"narratori vari":    true, // 56 - Italian
+	"diverse sprecher":  true, // 17 - German
+	"elenco":            true, // 7 - see the borderline note above
+}
+
+// firstPlaceholderCredit reports whether ANY credit in the row's author or
+// narrator list is a placeholder rather than a person, naming the first one it
+// finds. Like every other credit-side refusal it is whole-row and reads both
+// lists, and it compares the whole folded name - never a substring, so the real
+// authors surnamed Cast are untouched.
+func firstPlaceholderCredit(authors, narrators []string) (name string, placeholder bool) {
+	for _, list := range [][]string{authors, narrators} {
+		for _, n := range list {
+			if placeholderCreditNames[foldCredit(n)] {
+				return n, true
+			}
+		}
+	}
+	return "", false
 }
 
 // ---------------------------------------------------------------------------

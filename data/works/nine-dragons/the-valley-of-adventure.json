@@ -331,6 +331,9 @@
       "authors": [
         "arthur-conan-doyle"
       ],
+      "genres": [
+        "mystery"
+      ],
       "id": "the-valley-of-fear",
       "language": "en",
       "license": "CC0-1.0",
@@ -367,6 +370,36 @@
             {
               "imported_at": "2026-07-30",
               "ref": "B0CWMJN27V",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-valley-of-fear"
+        },
+        "ben-werling-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0FF7782R3",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71fg7HQmUvL.jpg",
+          "id": "ben-werling-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "ben-werling",
+            "kevin-theis",
+            "sara-nichols"
+          ],
+          "publisher": "SoundCraft Audiobooks",
+          "release_date": "2025-06-24",
+          "runtime_min": 327,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FF7782R3",
               "type": "libex-import"
             }
           ],
@@ -631,6 +664,34 @@
           ],
           "work": "the-valley-of-fear"
         },
+        "matthew-lloyd-davies-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0DJ3PR5PY",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/912BFd5256L.jpg",
+          "id": "matthew-lloyd-davies-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "matthew-lloyd-davies"
+          ],
+          "publisher": "Dreamscape Media",
+          "release_date": "2024-10-01",
+          "runtime_min": 343,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DJ3PR5PY",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-valley-of-fear"
+        },
         "michael-healy-2013": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -869,92 +930,17 @@
           "imported_at": "2026-07-25",
           "ref": "https://www.goodreads.com/book/show/736131.The_Valley_of_Fear",
           "type": "community"
-        }
-      ],
-      "title": "The Valley of Fear",
-      "xref": {
-        "goodreads": "736131"
-      }
-    },
-    "the-valley-of-fear-sir-arthur-conan-doyle": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "sir-arthur-conan-doyle"
-      ],
-      "genres": [
-        "mystery"
-      ],
-      "id": "the-valley-of-fear-sir-arthur-conan-doyle",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "ben-werling-2025": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0FF7782R3",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71fg7HQmUvL.jpg",
-          "id": "ben-werling-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "ben-werling",
-            "kevin-theis",
-            "sara-nichols"
-          ],
-          "publisher": "SoundCraft Audiobooks",
-          "release_date": "2025-06-24",
-          "runtime_min": 327,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0FF7782R3",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-valley-of-fear-sir-arthur-conan-doyle"
         },
-        "matthew-lloyd-davies-2024": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0DJ3PR5PY",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/912BFd5256L.jpg",
-          "id": "matthew-lloyd-davies-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "matthew-lloyd-davies"
-          ],
-          "publisher": "Dreamscape Media",
-          "release_date": "2024-10-01",
-          "runtime_min": 343,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0DJ3PR5PY",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-valley-of-fear-sir-arthur-conan-doyle"
-        }
-      },
-      "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B0FF7782R3",
           "type": "libex-import"
         }
       ],
-      "title": "The Valley of Fear"
+      "title": "The Valley of Fear",
+      "xref": {
+        "goodreads": "736131"
+      }
     },
     "the-valley-of-glass": {
       "added_at": "2026-08-02",
@@ -2499,6 +2485,60 @@
       ],
       "title": "The Vampire and the Vampire Hunter, Book 1, Volume 1"
     },
+    "the-vampire-and-the-virgin": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "kerrelyn-sparks"
+      ],
+      "genres": [
+        "fantasy",
+        "horror",
+        "occult",
+        "paranormal",
+        "romance"
+      ],
+      "id": "the-vampire-and-the-virgin",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "therese-plummer-2011": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B004TH1T14",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51v1dGUlNNL.jpg",
+          "id": "therese-plummer-2011",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "therese-plummer"
+          ],
+          "publisher": "Avon",
+          "release_date": "2011-03-29",
+          "runtime_min": 629,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B004TH1T14",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-vampire-and-the-virgin"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B004TH1T14",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Vampire and the Virgin"
+    },
     "the-vampire-armand": {
       "added_at": "2026-07-25T19:18:21+01:00",
       "authors": [
@@ -2772,6 +2812,713 @@
       ],
       "title": "The Vampire Curse: Royal Covens Books 1-3"
     },
+    "the-vampire-diaries-book-1": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "l-j-smith"
+      ],
+      "genres": [
+        "fantasy",
+        "horror",
+        "paranormal",
+        "romance",
+        "young-adult"
+      ],
+      "id": "the-vampire-diaries-book-1",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "rebecca-mozo-2009": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002V0KK7A",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91z5jrDo94L.jpg",
+          "id": "rebecca-mozo-2009",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "rebecca-mozo"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2009-10-27",
+          "runtime_min": 391,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002V0KK7A",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-vampire-diaries-book-1"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V0KK7A",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Vampire Diaries, Book 1"
+    },
+    "the-vampire-diaries-dark-reunion": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "l-j-smith"
+      ],
+      "genres": [
+        "fantasy",
+        "horror",
+        "paranormal",
+        "romance",
+        "young-adult"
+      ],
+      "id": "the-vampire-diaries-dark-reunion",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "rebecca-mozo-2009": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002V1CNQK",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81WZzs+p5EL.jpg",
+          "id": "rebecca-mozo-2009",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "rebecca-mozo"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2009-10-27",
+          "runtime_min": 418,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002V1CNQK",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-vampire-diaries-dark-reunion"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V1CNQK",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Vampire Diaries: Dark Reunion"
+    },
+    "the-vampire-diaries-stefans-diaries-1-origins": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "l-j-smith",
+        "kevin-williamson",
+        "julie-plec"
+      ],
+      "genres": [
+        "fantasy",
+        "historical-fiction",
+        "horror",
+        "paranormal",
+        "romance",
+        "self-help",
+        "young-adult"
+      ],
+      "id": "the-vampire-diaries-stefans-diaries-1-origins",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "kevin-t-collins-2010": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0048IHAP8",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51EXTxFfmZL.jpg",
+          "id": "kevin-t-collins-2010",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kevin-t-collins"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2010-11-02",
+          "runtime_min": 381,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0048IHAP8",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-vampire-diaries-stefans-diaries-1-origins"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0048IHAP8",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Vampire Diaries: Stefan's Diaries #1: Origins"
+    },
+    "the-vampire-diaries-stefans-diaries-2-bloodlust": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "l-j-smith",
+        "kevin-williamson-julie-plec"
+      ],
+      "genres": [
+        "fantasy",
+        "horror",
+        "paranormal",
+        "romance",
+        "self-help",
+        "young-adult"
+      ],
+      "id": "the-vampire-diaries-stefans-diaries-2-bloodlust",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "kevin-t-collins-2011": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B004H2MTLA",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81axWLLJnpL.jpg",
+          "id": "kevin-t-collins-2011",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kevin-t-collins"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2011-01-04",
+          "runtime_min": 343,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B004H2MTLA",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-vampire-diaries-stefans-diaries-2-bloodlust"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B004H2MTLA",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Vampire Diaries: Stefan's Diaries #2: Bloodlust"
+    },
+    "the-vampire-diaries-stefans-diaries-3-the-craving": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "l-j-smith",
+        "kevin-williamson-julie-plec"
+      ],
+      "genres": [
+        "fantasy",
+        "horror",
+        "paranormal",
+        "romance",
+        "young-adult"
+      ],
+      "id": "the-vampire-diaries-stefans-diaries-3-the-craving",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "kevin-t-collins-2011": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B004XMIMC4",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51m+FDytWFL.jpg",
+          "id": "kevin-t-collins-2011",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kevin-t-collins"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2011-05-03",
+          "runtime_min": 379,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B004XMIMC4",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-vampire-diaries-stefans-diaries-3-the-craving"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B004XMIMC4",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Vampire Diaries: Stefan's Diaries #3: The Craving"
+    },
+    "the-vampire-diaries-stefans-diaries-4-the-ripper": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "l-j-smith",
+        "kevin-williamson-julie-plec"
+      ],
+      "genres": [
+        "fantasy",
+        "horror",
+        "paranormal",
+        "romance",
+        "young-adult"
+      ],
+      "id": "the-vampire-diaries-stefans-diaries-4-the-ripper",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "kevin-t-collins-2012": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00884IK0W",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91lO1G-UAQL.jpg",
+          "id": "kevin-t-collins-2012",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kevin-t-collins"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2012-06-12",
+          "runtime_min": 388,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00884IK0W",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-vampire-diaries-stefans-diaries-4-the-ripper"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00884IK0W",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Vampire Diaries: Stefan's Diaries #4: The Ripper"
+    },
+    "the-vampire-diaries-stefans-diaries-5-the-asylum": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "l-j-smith",
+        "kevin-williamson-julie-plec"
+      ],
+      "genres": [
+        "fantasy",
+        "horror",
+        "paranormal",
+        "romance",
+        "young-adult"
+      ],
+      "id": "the-vampire-diaries-stefans-diaries-5-the-asylum",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "kevin-t-collins-2012": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0089F54I6",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91o4-5j62KL.jpg",
+          "id": "kevin-t-collins-2012",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kevin-t-collins"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2012-06-19",
+          "runtime_min": 342,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0089F54I6",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-vampire-diaries-stefans-diaries-5-the-asylum"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0089F54I6",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Vampire Diaries: Stefan's Diaries #5: The Asylum"
+    },
+    "the-vampire-diaries-stefans-diaries-6-the-compelled": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "l-j-smith",
+        "kevin-williamson-julie-plec"
+      ],
+      "genres": [
+        "fantasy",
+        "horror",
+        "paranormal",
+        "romance",
+        "young-adult"
+      ],
+      "id": "the-vampire-diaries-stefans-diaries-6-the-compelled",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "kevin-t-collins-2012": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B008ESZC58",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91wj5bvOmpL.jpg",
+          "id": "kevin-t-collins-2012",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kevin-t-collins"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2012-07-03",
+          "runtime_min": 358,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B008ESZC58",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-vampire-diaries-stefans-diaries-6-the-compelled"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B008ESZC58",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Vampire Diaries: Stefan's Diaries #6: The Compelled"
+    },
+    "the-vampire-diaries-the-fury": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "l-j-smith"
+      ],
+      "genres": [
+        "fantasy",
+        "horror",
+        "paranormal",
+        "romance",
+        "young-adult"
+      ],
+      "id": "the-vampire-diaries-the-fury",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "rebecca-mozo-2009": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002UZZ0UI",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/517yjahUeEL.jpg",
+          "id": "rebecca-mozo-2009",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "rebecca-mozo"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2009-10-27",
+          "runtime_min": 363,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002UZZ0UI",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-vampire-diaries-the-fury"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002UZZ0UI",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Vampire Diaries: The Fury"
+    },
+    "the-vampire-diaries-the-return-midnight": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "l-j-smith"
+      ],
+      "genres": [
+        "fantasy",
+        "horror",
+        "paranormal",
+        "romance",
+        "young-adult"
+      ],
+      "id": "the-vampire-diaries-the-return-midnight",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "rebecca-mozo-2011": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B004QPJZQK",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51R-j4zgDRL.jpg",
+          "id": "rebecca-mozo-2011",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "rebecca-mozo"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2011-03-15",
+          "runtime_min": 949,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B004QPJZQK",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-vampire-diaries-the-return-midnight"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B004QPJZQK",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Vampire Diaries: The Return: Midnight"
+    },
+    "the-vampire-diaries-the-return-nightfall": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "l-j-smith"
+      ],
+      "genres": [
+        "fantasy",
+        "horror",
+        "paranormal",
+        "parenting-relationships",
+        "romance",
+        "self-help",
+        "young-adult"
+      ],
+      "id": "the-vampire-diaries-the-return-nightfall",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "rebecca-mozo-2009": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0036KV8KW",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81w0bcduE6L.jpg",
+          "id": "rebecca-mozo-2009",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "rebecca-mozo"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2009-11-10",
+          "runtime_min": 841,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0036KV8KW",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-vampire-diaries-the-return-nightfall"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0036KV8KW",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Vampire Diaries: The Return: Nightfall"
+    },
+    "the-vampire-diaries-the-return-shadow-souls": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "l-j-smith"
+      ],
+      "id": "the-vampire-diaries-the-return-shadow-souls",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "rebecca-mozo-2010": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B003F00IM2",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/516s5kgKzqL.jpg",
+          "id": "rebecca-mozo-2010",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "rebecca-mozo"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2010-04-13",
+          "runtime_min": 989,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B003F00IM2",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-vampire-diaries-the-return-shadow-souls"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B003F00IM2",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Vampire Diaries: The Return: Shadow Souls"
+    },
+    "the-vampire-diaries-the-struggle": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "l-j-smith"
+      ],
+      "genres": [
+        "fantasy",
+        "horror",
+        "paranormal",
+        "romance",
+        "young-adult"
+      ],
+      "id": "the-vampire-diaries-the-struggle",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "rebecca-mozo-2009": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002V02MCG",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/518l9cZ0NzL.jpg",
+          "id": "rebecca-mozo-2009",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "rebecca-mozo"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2009-10-27",
+          "runtime_min": 339,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002V02MCG",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-vampire-diaries-the-struggle"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V02MCG",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Vampire Diaries: The Struggle"
+    },
     "the-vampire-fate": {
       "added_at": "2026-08-01",
       "authors": [
@@ -2877,6 +3624,61 @@
         }
       ],
       "title": "The Vampire Fighters"
+    },
+    "the-vampire-genevieve-collection": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "kim-newman"
+      ],
+      "genres": [
+        "epic-fantasy",
+        "fantasy",
+        "ghost-stories",
+        "horror",
+        "paranormal",
+        "urban-fantasy"
+      ],
+      "id": "the-vampire-genevieve-collection",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "antonia-beamish-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0DK26PX69",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81jlalyErEL.jpg",
+          "id": "antonia-beamish-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "antonia-beamish"
+          ],
+          "publisher": "Black Library",
+          "release_date": "2024-11-02",
+          "runtime_min": 2149,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DK26PX69",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-vampire-genevieve-collection"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0DK26PX69",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Vampire Genevieve Collection"
     },
     "the-vampire-gift-1-wards-of-night": {
       "added_at": "2026-08-01",
@@ -4720,6 +5522,60 @@
       ],
       "title": "The Vampire With the Dragon Tattoo"
     },
+    "the-vampire-with-the-dragon-tattoo-kerrelyn-sparks": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "kerrelyn-sparks"
+      ],
+      "genres": [
+        "fantasy",
+        "paranormal",
+        "romance",
+        "science-fiction",
+        "thriller-suspense"
+      ],
+      "id": "the-vampire-with-the-dragon-tattoo-kerrelyn-sparks",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "paula-costello-2013": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00E7TAD20",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91Xe8aVFBZL.jpg",
+          "id": "paula-costello-2013",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "paula-costello"
+          ],
+          "publisher": "Avon",
+          "release_date": "2013-08-27",
+          "runtime_min": 585,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00E7TAD20",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-vampire-with-the-dragon-tattoo-kerrelyn-sparks"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00E7TAD20",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Vampire With the Dragon Tattoo"
+    },
     "the-vampires-accidental-wife": {
       "added_at": "2026-08-01",
       "authors": [
@@ -5048,6 +5904,59 @@
         }
       ],
       "title": "The Vampire's Blight"
+    },
+    "the-vampires-bride": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "gena-showalter"
+      ],
+      "genres": [
+        "fantasy",
+        "paranormal",
+        "romance",
+        "urban-fantasy"
+      ],
+      "id": "the-vampires-bride",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "savannah-richards-2009": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002V0QG64",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81P3qbdwW4L.jpg",
+          "id": "savannah-richards-2009",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "savannah-richards"
+          ],
+          "publisher": "Harlequin Books S.A.",
+          "release_date": "2009-03-01",
+          "runtime_min": 838,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002V0QG64",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-vampires-bride"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V0QG64",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Vampire's Bride"
     },
     "the-vampires-city": {
       "added_at": "2026-08-01",
@@ -7583,6 +8492,59 @@
       ],
       "title": "The Vanishing Sheet Music"
     },
+    "the-vanishing-stair": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "maureen-johnson"
+      ],
+      "genres": [
+        "horror",
+        "mystery",
+        "thriller-suspense",
+        "young-adult"
+      ],
+      "id": "the-vanishing-stair",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "kate-rudd-2019": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B07HP9F56B",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81xxczuNYyL.jpg",
+          "id": "kate-rudd-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kate-rudd"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2019-01-22",
+          "runtime_min": 553,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07HP9F56B",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-vanishing-stair"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B07HP9F56B",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Vanishing Stair"
+    },
     "the-vanishing-statue": {
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
@@ -8861,6 +9823,709 @@
       ],
       "title": "The Veiled Dragon"
     },
+    "the-veiled-kingdom-german-edition": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "holly-renee",
+        "dorothee-witzemann"
+      ],
+      "credits": [
+        {
+          "person": "dorothee-witzemann",
+          "role": "translator"
+        }
+      ],
+      "genres": [
+        "fantasy",
+        "paranormal",
+        "romance",
+        "urban-fantasy"
+      ],
+      "id": "the-veiled-kingdom-german-edition",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "carolin-sophie-gobel-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0DMNZ5PF9",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 21338,
+              "start_ms": 0,
+              "title": "Kapitel 1"
+            },
+            {
+              "length_ms": 44721,
+              "start_ms": 21338,
+              "title": "Kapitel 2"
+            },
+            {
+              "length_ms": 220566,
+              "start_ms": 66059,
+              "title": "Kapitel 3"
+            },
+            {
+              "length_ms": 247106,
+              "start_ms": 286625,
+              "title": "Kapitel 4"
+            },
+            {
+              "length_ms": 247315,
+              "start_ms": 533731,
+              "title": "Kapitel 5"
+            },
+            {
+              "length_ms": 250891,
+              "start_ms": 781046,
+              "title": "Kapitel 6"
+            },
+            {
+              "length_ms": 246294,
+              "start_ms": 1031937,
+              "title": "Kapitel 7"
+            },
+            {
+              "length_ms": 257787,
+              "start_ms": 1278231,
+              "title": "Kapitel 8"
+            },
+            {
+              "length_ms": 292107,
+              "start_ms": 1536018,
+              "title": "Kapitel 9"
+            },
+            {
+              "length_ms": 255930,
+              "start_ms": 1828125,
+              "title": "Kapitel 10"
+            },
+            {
+              "length_ms": 256998,
+              "start_ms": 2084055,
+              "title": "Kapitel 11"
+            },
+            {
+              "length_ms": 251332,
+              "start_ms": 2341053,
+              "title": "Kapitel 12"
+            },
+            {
+              "length_ms": 248801,
+              "start_ms": 2592385,
+              "title": "Kapitel 13"
+            },
+            {
+              "length_ms": 295752,
+              "start_ms": 2841186,
+              "title": "Kapitel 14"
+            },
+            {
+              "length_ms": 294777,
+              "start_ms": 3136938,
+              "title": "Kapitel 15"
+            },
+            {
+              "length_ms": 275713,
+              "start_ms": 3431715,
+              "title": "Kapitel 16"
+            },
+            {
+              "length_ms": 244668,
+              "start_ms": 3707428,
+              "title": "Kapitel 17"
+            },
+            {
+              "length_ms": 249242,
+              "start_ms": 3952096,
+              "title": "Kapitel 18"
+            },
+            {
+              "length_ms": 204010,
+              "start_ms": 4201338,
+              "title": "Kapitel 19"
+            },
+            {
+              "length_ms": 292873,
+              "start_ms": 4405348,
+              "title": "Kapitel 20"
+            },
+            {
+              "length_ms": 248244,
+              "start_ms": 4698221,
+              "title": "Kapitel 21"
+            },
+            {
+              "length_ms": 251332,
+              "start_ms": 4946465,
+              "title": "Kapitel 22"
+            },
+            {
+              "length_ms": 253979,
+              "start_ms": 5197797,
+              "title": "Kapitel 23"
+            },
+            {
+              "length_ms": 255674,
+              "start_ms": 5451776,
+              "title": "Kapitel 24"
+            },
+            {
+              "length_ms": 214041,
+              "start_ms": 5707450,
+              "title": "Kapitel 25"
+            },
+            {
+              "length_ms": 219776,
+              "start_ms": 5921491,
+              "title": "Kapitel 26"
+            },
+            {
+              "length_ms": 227509,
+              "start_ms": 6141267,
+              "title": "Kapitel 27"
+            },
+            {
+              "length_ms": 248314,
+              "start_ms": 6368776,
+              "title": "Kapitel 28"
+            },
+            {
+              "length_ms": 245318,
+              "start_ms": 6617090,
+              "title": "Kapitel 29"
+            },
+            {
+              "length_ms": 225117,
+              "start_ms": 6862408,
+              "title": "Kapitel 30"
+            },
+            {
+              "length_ms": 187849,
+              "start_ms": 7087525,
+              "title": "Kapitel 31"
+            },
+            {
+              "length_ms": 215829,
+              "start_ms": 7275374,
+              "title": "Kapitel 32"
+            },
+            {
+              "length_ms": 205101,
+              "start_ms": 7491203,
+              "title": "Kapitel 33"
+            },
+            {
+              "length_ms": 277594,
+              "start_ms": 7696304,
+              "title": "Kapitel 34"
+            },
+            {
+              "length_ms": 247315,
+              "start_ms": 7973898,
+              "title": "Kapitel 35"
+            },
+            {
+              "length_ms": 247803,
+              "start_ms": 8221213,
+              "title": "Kapitel 36"
+            },
+            {
+              "length_ms": 290133,
+              "start_ms": 8469016,
+              "title": "Kapitel 37"
+            },
+            {
+              "length_ms": 222795,
+              "start_ms": 8759149,
+              "title": "Kapitel 38"
+            },
+            {
+              "length_ms": 280520,
+              "start_ms": 8981944,
+              "title": "Kapitel 39"
+            },
+            {
+              "length_ms": 242602,
+              "start_ms": 9262464,
+              "title": "Kapitel 40"
+            },
+            {
+              "length_ms": 258786,
+              "start_ms": 9505066,
+              "title": "Kapitel 41"
+            },
+            {
+              "length_ms": 197137,
+              "start_ms": 9763852,
+              "title": "Kapitel 42"
+            },
+            {
+              "length_ms": 240442,
+              "start_ms": 9960989,
+              "title": "Kapitel 43"
+            },
+            {
+              "length_ms": 239676,
+              "start_ms": 10201431,
+              "title": "Kapitel 44"
+            },
+            {
+              "length_ms": 261387,
+              "start_ms": 10441107,
+              "title": "Kapitel 45"
+            },
+            {
+              "length_ms": 253956,
+              "start_ms": 10702494,
+              "title": "Kapitel 46"
+            },
+            {
+              "length_ms": 186641,
+              "start_ms": 10956450,
+              "title": "Kapitel 47"
+            },
+            {
+              "length_ms": 207563,
+              "start_ms": 11143091,
+              "title": "Kapitel 48"
+            },
+            {
+              "length_ms": 239165,
+              "start_ms": 11350654,
+              "title": "Kapitel 49"
+            },
+            {
+              "length_ms": 257648,
+              "start_ms": 11589819,
+              "title": "Kapitel 50"
+            },
+            {
+              "length_ms": 248639,
+              "start_ms": 11847467,
+              "title": "Kapitel 51"
+            },
+            {
+              "length_ms": 253817,
+              "start_ms": 12096106,
+              "title": "Kapitel 52"
+            },
+            {
+              "length_ms": 182857,
+              "start_ms": 12349923,
+              "title": "Kapitel 53"
+            },
+            {
+              "length_ms": 208817,
+              "start_ms": 12532780,
+              "title": "Kapitel 54"
+            },
+            {
+              "length_ms": 210303,
+              "start_ms": 12741597,
+              "title": "Kapitel 55"
+            },
+            {
+              "length_ms": 278476,
+              "start_ms": 12951900,
+              "title": "Kapitel 56"
+            },
+            {
+              "length_ms": 244064,
+              "start_ms": 13230376,
+              "title": "Kapitel 57"
+            },
+            {
+              "length_ms": 245086,
+              "start_ms": 13474440,
+              "title": "Kapitel 58"
+            },
+            {
+              "length_ms": 246549,
+              "start_ms": 13719526,
+              "title": "Kapitel 59"
+            },
+            {
+              "length_ms": 184505,
+              "start_ms": 13966075,
+              "title": "Kapitel 60"
+            },
+            {
+              "length_ms": 191123,
+              "start_ms": 14150580,
+              "title": "Kapitel 61"
+            },
+            {
+              "length_ms": 241998,
+              "start_ms": 14341703,
+              "title": "Kapitel 62"
+            },
+            {
+              "length_ms": 249219,
+              "start_ms": 14583701,
+              "title": "Kapitel 63"
+            },
+            {
+              "length_ms": 251959,
+              "start_ms": 14832920,
+              "title": "Kapitel 64"
+            },
+            {
+              "length_ms": 253051,
+              "start_ms": 15084879,
+              "title": "Kapitel 65"
+            },
+            {
+              "length_ms": 295079,
+              "start_ms": 15337930,
+              "title": "Kapitel 66"
+            },
+            {
+              "length_ms": 281820,
+              "start_ms": 15633009,
+              "title": "Kapitel 67"
+            },
+            {
+              "length_ms": 270233,
+              "start_ms": 15914829,
+              "title": "Kapitel 68"
+            },
+            {
+              "length_ms": 293941,
+              "start_ms": 16185062,
+              "title": "Kapitel 69"
+            },
+            {
+              "length_ms": 258205,
+              "start_ms": 16479003,
+              "title": "Kapitel 70"
+            },
+            {
+              "length_ms": 250311,
+              "start_ms": 16737208,
+              "title": "Kapitel 71"
+            },
+            {
+              "length_ms": 268190,
+              "start_ms": 16987519,
+              "title": "Kapitel 72"
+            },
+            {
+              "length_ms": 272973,
+              "start_ms": 17255709,
+              "title": "Kapitel 73"
+            },
+            {
+              "length_ms": 264382,
+              "start_ms": 17528682,
+              "title": "Kapitel 74"
+            },
+            {
+              "length_ms": 261688,
+              "start_ms": 17793064,
+              "title": "Kapitel 75"
+            },
+            {
+              "length_ms": 265566,
+              "start_ms": 18054752,
+              "title": "Kapitel 76"
+            },
+            {
+              "length_ms": 251959,
+              "start_ms": 18320318,
+              "title": "Kapitel 77"
+            },
+            {
+              "length_ms": 260109,
+              "start_ms": 18572277,
+              "title": "Kapitel 78"
+            },
+            {
+              "length_ms": 246038,
+              "start_ms": 18832386,
+              "title": "Kapitel 79"
+            },
+            {
+              "length_ms": 276619,
+              "start_ms": 19078424,
+              "title": "Kapitel 80"
+            },
+            {
+              "length_ms": 253608,
+              "start_ms": 19355043,
+              "title": "Kapitel 81"
+            },
+            {
+              "length_ms": 292316,
+              "start_ms": 19608651,
+              "title": "Kapitel 82"
+            },
+            {
+              "length_ms": 246456,
+              "start_ms": 19900967,
+              "title": "Kapitel 83"
+            },
+            {
+              "length_ms": 260783,
+              "start_ms": 20147423,
+              "title": "Kapitel 84"
+            },
+            {
+              "length_ms": 271952,
+              "start_ms": 20408206,
+              "title": "Kapitel 85"
+            },
+            {
+              "length_ms": 195419,
+              "start_ms": 20680158,
+              "title": "Kapitel 86"
+            },
+            {
+              "length_ms": 200109,
+              "start_ms": 20875577,
+              "title": "Kapitel 87"
+            },
+            {
+              "length_ms": 274366,
+              "start_ms": 21075686,
+              "title": "Kapitel 88"
+            },
+            {
+              "length_ms": 299514,
+              "start_ms": 21350052,
+              "title": "Kapitel 89"
+            },
+            {
+              "length_ms": 289599,
+              "start_ms": 21649566,
+              "title": "Kapitel 90"
+            },
+            {
+              "length_ms": 257764,
+              "start_ms": 21939165,
+              "title": "Kapitel 91"
+            },
+            {
+              "length_ms": 292223,
+              "start_ms": 22196929,
+              "title": "Kapitel 92"
+            },
+            {
+              "length_ms": 299281,
+              "start_ms": 22489152,
+              "title": "Kapitel 93"
+            },
+            {
+              "length_ms": 251843,
+              "start_ms": 22788433,
+              "title": "Kapitel 94"
+            },
+            {
+              "length_ms": 249405,
+              "start_ms": 23040276,
+              "title": "Kapitel 95"
+            },
+            {
+              "length_ms": 252586,
+              "start_ms": 23289681,
+              "title": "Kapitel 96"
+            },
+            {
+              "length_ms": 253956,
+              "start_ms": 23542267,
+              "title": "Kapitel 97"
+            },
+            {
+              "length_ms": 257369,
+              "start_ms": 23796223,
+              "title": "Kapitel 98"
+            },
+            {
+              "length_ms": 242764,
+              "start_ms": 24053592,
+              "title": "Kapitel 99"
+            },
+            {
+              "length_ms": 252749,
+              "start_ms": 24296356,
+              "title": "Kapitel 100"
+            },
+            {
+              "length_ms": 256069,
+              "start_ms": 24549105,
+              "title": "Kapitel 101"
+            },
+            {
+              "length_ms": 267726,
+              "start_ms": 24805174,
+              "title": "Kapitel 102"
+            },
+            {
+              "length_ms": 245527,
+              "start_ms": 25072900,
+              "title": "Kapitel 103"
+            },
+            {
+              "length_ms": 296170,
+              "start_ms": 25318427,
+              "title": "Kapitel 104"
+            },
+            {
+              "length_ms": 297563,
+              "start_ms": 25614597,
+              "title": "Kapitel 105"
+            },
+            {
+              "length_ms": 298631,
+              "start_ms": 25912160,
+              "title": "Kapitel 106"
+            },
+            {
+              "length_ms": 253027,
+              "start_ms": 26210791,
+              "title": "Kapitel 107"
+            },
+            {
+              "length_ms": 254212,
+              "start_ms": 26463818,
+              "title": "Kapitel 108"
+            },
+            {
+              "length_ms": 257137,
+              "start_ms": 26718030,
+              "title": "Kapitel 109"
+            },
+            {
+              "length_ms": 257416,
+              "start_ms": 26975167,
+              "title": "Kapitel 110"
+            },
+            {
+              "length_ms": 251054,
+              "start_ms": 27232583,
+              "title": "Kapitel 111"
+            },
+            {
+              "length_ms": 197090,
+              "start_ms": 27483637,
+              "title": "Kapitel 112"
+            },
+            {
+              "length_ms": 255837,
+              "start_ms": 27680727,
+              "title": "Kapitel 113"
+            },
+            {
+              "length_ms": 225117,
+              "start_ms": 27936564,
+              "title": "Kapitel 114"
+            },
+            {
+              "length_ms": 267749,
+              "start_ms": 28161681,
+              "title": "Kapitel 115"
+            },
+            {
+              "length_ms": 249266,
+              "start_ms": 28429430,
+              "title": "Kapitel 116"
+            },
+            {
+              "length_ms": 248662,
+              "start_ms": 28678696,
+              "title": "Kapitel 117"
+            },
+            {
+              "length_ms": 288833,
+              "start_ms": 28927358,
+              "title": "Kapitel 118"
+            },
+            {
+              "length_ms": 282261,
+              "start_ms": 29216191,
+              "title": "Kapitel 119"
+            },
+            {
+              "length_ms": 274901,
+              "start_ms": 29498452,
+              "title": "Kapitel 120"
+            },
+            {
+              "length_ms": 291433,
+              "start_ms": 29773353,
+              "title": "Kapitel 121"
+            },
+            {
+              "length_ms": 257369,
+              "start_ms": 30064786,
+              "title": "Kapitel 122"
+            },
+            {
+              "length_ms": 225372,
+              "start_ms": 30322155,
+              "title": "Kapitel 123"
+            },
+            {
+              "length_ms": 291062,
+              "start_ms": 30547527,
+              "title": "Kapitel 124"
+            },
+            {
+              "length_ms": 298933,
+              "start_ms": 30838589,
+              "title": "Kapitel 125"
+            },
+            {
+              "length_ms": 266332,
+              "start_ms": 31137522,
+              "title": "Kapitel 126"
+            },
+            {
+              "length_ms": 16741,
+              "start_ms": 31403854,
+              "title": "Kapitel 127"
+            },
+            {
+              "length_ms": 19736,
+              "start_ms": 31420595,
+              "title": "Kapitel 128"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81aE9TRJN3L.jpg",
+          "id": "carolin-sophie-gobel-2025",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "carolin-sophie-gobel",
+            "jesse-grimm"
+          ],
+          "publisher": "Silberfisch",
+          "release_date": "2025-01-31",
+          "runtime_min": 523,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DMNZ5PF9",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-veiled-kingdom-german-edition"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0DMNZ5PF9",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Veiled Kingdom (German Edition)"
+    },
     "the-veiled-lady-a-hercule-poirot-short-story": {
       "added_at": "2026-07-25T19:18:21+01:00",
       "authors": [
@@ -8880,6 +10545,67 @@
       "xref": {
         "goodreads": "20810313"
       }
+    },
+    "the-veiled-masters-dramatized-adaptation": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "tim-pratt"
+      ],
+      "genres": [
+        "science-fiction",
+        "space-opera"
+      ],
+      "id": "the-veiled-masters-dramatized-adaptation",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "alyssa-keegan-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CD879KY6",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81X-vSOLP9L.jpg",
+          "id": "alyssa-keegan-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alyssa-keegan",
+            "andy-brownstein",
+            "david-jourdan",
+            "dylan-lynch",
+            "elias-khalil",
+            "holly-adams",
+            "julie-ann-elliott",
+            "kaylee-eluvian",
+            "ken-jackson",
+            "lise-bruneau",
+            "ryan-haugen"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2023-08-14",
+          "runtime_min": 527,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CD879KY6",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-veiled-masters-dramatized-adaptation"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CD879KY6",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Veiled Masters (Dramatized Adaptation)"
     },
     "the-velvet-city": {
       "added_at": "2026-08-02",
@@ -8942,6 +10668,60 @@
         }
       ],
       "title": "The Velvet City"
+    },
+    "the-velvet-knife": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "maureen-johnson"
+      ],
+      "genres": [
+        "historical-fiction",
+        "mystery",
+        "parenting-relationships",
+        "self-help",
+        "young-adult"
+      ],
+      "id": "the-velvet-knife",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "emily-ellet-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0FKVNLXQS",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91ybcC+8nLL.jpg",
+          "id": "emily-ellet-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "emily-ellet"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2026-09-29",
+          "runtime_min": 600,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FKVNLXQS",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-velvet-knife"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0FKVNLXQS",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Velvet Knife"
     },
     "the-velvet-rabbit": {
       "added_at": "2026-08-01",
@@ -10738,6 +12518,60 @@
       ],
       "title": "The Vengeance of the Witch-Finder"
     },
+    "the-vengeance-trail": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "griff-hosker"
+      ],
+      "genres": [
+        "action-adventure",
+        "fantasy",
+        "historical-fiction",
+        "mystery",
+        "war-military-fiction"
+      ],
+      "id": "the-vengeance-trail",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "marston-york-2021": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "1004040776",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81nn+IoNK2S.jpg",
+          "id": "marston-york-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "marston-york"
+          ],
+          "publisher": "QUEST from W. F. Howes Ltd",
+          "release_date": "2021-04-22",
+          "runtime_min": 550,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1004040776",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-vengeance-trail"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1004040776",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Vengeance Trail"
+    },
     "the-vengeance-war": {
       "added_at": "2026-08-01",
       "authors": [
@@ -11309,6 +13143,66 @@
       ],
       "title": "The Venusian Gambit"
     },
+    "the-verdant-cage-the-verdant-cage-1": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "jess-lourey",
+        "michaela-link"
+      ],
+      "credits": [
+        {
+          "person": "michaela-link",
+          "role": "translator"
+        }
+      ],
+      "genres": [
+        "dystopian",
+        "paranormal",
+        "romance",
+        "science-fiction"
+      ],
+      "id": "the-verdant-cage-the-verdant-cage-1",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "ann-kathrin-hinz-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0H27KFB94",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81G0MBfvrVL.jpg",
+          "id": "ann-kathrin-hinz-2026",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "ann-kathrin-hinz"
+          ],
+          "publisher": "OSTERWOLDaudio",
+          "release_date": "2026-12-04",
+          "runtime_min": 790,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0H27KFB94",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-verdant-cage-the-verdant-cage-1"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0H27KFB94",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Verdant Cage (The Verdant Cage 1)"
+    },
     "the-verdant-passage": {
       "added_at": "2026-08-02",
       "authors": [
@@ -11573,6 +13467,63 @@
       ],
       "title": "The Version Who Stayed"
     },
+    "the-very-fairy-princess": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "julie-andrews",
+        "emma-walton-hamilton",
+        "christine-davenier"
+      ],
+      "genres": [
+        "childrens",
+        "comedy-humor",
+        "coming-of-age",
+        "fantasy",
+        "history",
+        "self-help"
+      ],
+      "id": "the-very-fairy-princess",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "emma-walton-hamilton-2010": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B003M6DYPW",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81srlZ2FDiL.jpg",
+          "id": "emma-walton-hamilton-2010",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "emma-walton-hamilton"
+          ],
+          "publisher": "Little, Brown Young Readers",
+          "release_date": "2010-06-01",
+          "runtime_min": 5,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B003M6DYPW",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-very-fairy-princess"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B003M6DYPW",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Very Fairy Princess"
+    },
     "the-very-first-damned-thing": {
       "added_at": "2026-08-02",
       "authors": [
@@ -11592,6 +13543,10 @@
             {
               "asin": "B015RJKT9A",
               "region": "us"
+            },
+            {
+              "asin": "B0G5YYCDQH",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/818tYv1SBXL.jpg",
@@ -11608,6 +13563,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B015RJKT9A",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0G5YYCDQH",
               "type": "libex-import"
             }
           ],
@@ -11673,6 +13633,109 @@
       "xref": {
         "goodreads": "4948"
       }
+    },
+    "the-very-nearly-honorable-league-of-pirates-the-terror-of-the-southlands-unabr": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "caroline-carlson"
+      ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "comedy-humor",
+        "fantasy"
+      ],
+      "id": "the-very-nearly-honorable-league-of-pirates-the-terror-of-the-southlands-unabr",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "katherine-kellgren-2014": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00NB7ORTY",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51M3NnczLSL.jpg",
+          "id": "katherine-kellgren-2014",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "katherine-kellgren"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2014-09-09",
+          "runtime_min": 464,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00NB7ORTY",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-very-nearly-honorable-league-of-pirates-the-terror-of-the-southlands-unabr"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00NB7ORTY",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Very Nearly Honorable League of Pirates: The Terror of the Southlands Unabr"
+    },
+    "the-very-old-folk": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "h-p-lovecraft"
+      ],
+      "genres": [
+        "horror"
+      ],
+      "id": "the-very-old-folk",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "sam-kusi-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0DWXBQXWD",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/811LITXovBL.jpg",
+          "id": "sam-kusi-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "sam-kusi"
+          ],
+          "publisher": "Lauscher Audiobooks",
+          "release_date": "2025-03-26",
+          "runtime_min": 20,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DWXBQXWD",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-very-old-folk"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0DWXBQXWD",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Very Old Folk"
     },
     "the-vesik-series": {
       "added_at": "2026-08-01",
@@ -12038,6 +14101,61 @@
         }
       ],
       "title": "The Vesta Shadows Trilogy, Books 1-3"
+    },
+    "the-vet": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "ulf-thiem"
+      ],
+      "genres": [
+        "childrens",
+        "coming-of-age",
+        "fantasy",
+        "nature",
+        "self-help"
+      ],
+      "id": "the-vet",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "britt-mckillip-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0C4V613DW",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81gurHgRi7L.jpg",
+          "id": "britt-mckillip-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "britt-mckillip",
+            "chantal-strand"
+          ],
+          "publisher": "KIDDINX Media GmbH",
+          "release_date": "2024-05-16",
+          "runtime_min": 39,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0C4V613DW",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-vet"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0C4V613DW",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Vet"
     },
     "the-vets-christmas-familiar": {
       "added_at": "2026-08-01",
