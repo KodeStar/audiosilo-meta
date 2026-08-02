@@ -108,7 +108,7 @@ func TestLibexAINarratorWarningLines(t *testing.T) {
 	if len(aggregate) != 1 {
 		t.Fatalf("aggregate lines = %v, want exactly one", aggregate)
 	}
-	if got, want := aggregate[0], "libex: 4 rows skipped: narrated by an AI voice"; !strings.HasPrefix(got, want) {
+	if got, want := aggregate[0], "libex: 4 rows skipped: a credited name is an AI voice or system"; !strings.HasPrefix(got, want) {
 		t.Errorf("aggregate line = %q, want it to start with %q", got, want)
 	}
 	// The examples ride along so an operator can go and look at the data.
@@ -199,18 +199,18 @@ func TestIsAINarratorName(t *testing.T) {
 // it visible. No book in the dump credits a human alongside a synthetic voice,
 // so this decides nothing today - it pins which way the code fails when one
 // appears, and refusing is the direction that cannot write bad data.
-func TestFirstAINarratorIsAnyNotAll(t *testing.T) {
-	name, isAI := firstAINarrator([]string{"Stephen Fry", "Virtual Voice"})
+func TestFirstAICreditIsAnyNotAll(t *testing.T) {
+	_, name, _, isAI := firstAICredit(nil, []string{"Stephen Fry", "Virtual Voice"})
 	if !isAI {
 		t.Error("a mixed human/AI credit list was admitted; the rule is ANY, not ALL")
 	}
 	if name != "Virtual Voice" {
 		t.Errorf("named %q, want the offending credit", name)
 	}
-	if _, isAI := firstAINarrator([]string{"Stephen Fry", "Jim Dale"}); isAI {
+	if _, _, _, isAI := firstAICredit(nil, []string{"Stephen Fry", "Jim Dale"}); isAI {
 		t.Error("an all-human credit list was refused")
 	}
-	if _, isAI := firstAINarrator(nil); isAI {
+	if _, _, _, isAI := firstAICredit(nil, nil); isAI {
 		t.Error("an empty credit list was refused")
 	}
 }
@@ -224,8 +224,8 @@ func TestAINarratorRoleQualifiedCredit(t *testing.T) {
 	if isAINarratorName(credit) {
 		t.Fatalf("precondition: %q should not match on its raw form", credit)
 	}
-	if _, isAI := firstAINarrator([]string{credit}); !isAI {
-		t.Errorf("firstAINarrator missed %q; the cleaned form %q is an AI voice", credit, CleanCreditName(credit))
+	if _, _, _, isAI := firstAICredit(nil, []string{credit}); !isAI {
+		t.Errorf("firstAICredit missed %q; the cleaned form %q is an AI voice", credit, CleanCreditName(credit))
 	}
 }
 

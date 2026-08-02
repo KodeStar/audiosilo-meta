@@ -3,6 +3,7 @@ package importer
 import (
 	"fmt"
 	"reflect"
+	"slices"
 	"strings"
 	"testing"
 
@@ -294,6 +295,17 @@ func TestCleanCreditName(t *testing.T) {
 		{"no space after hyphen", "Dan Veksler -translated by", "Dan Veksler"},
 		{"repeated hyphens", "Dan Veksler -- translator", "Dan Veksler"},
 		{"multi-word role", "Someone - edited by", "Someone"},
+
+		// The separator is also spelled with an EN or EM dash. 176 German
+		// translator credits in the dump use the en dash, and reading only the
+		// hyphen minted a bogus person for each one.
+		{"en dash", "Bernhard Kempen – Übersetzer", "Bernhard Kempen"},
+		{"em dash", "Bernhard Kempen — Übersetzer", "Bernhard Kempen"},
+		{"doubled en dash", "Bernhard Kempen –– Übersetzer", "Bernhard Kempen"},
+		{"en dash no trailing space", "Dan Veksler –translated by", "Dan Veksler"},
+		{"mixed dash doubled qualifier", "Dan Veksler – Translator - translator", "Dan Veksler"},
+		{"en dash doubled qualifier", "Dan Veksler – Translator – translator", "Dan Veksler"},
+
 		{"foreword by", "Someone - foreword by", "Someone"},
 		{"translation", "Someone - translation", "Someone"},
 		{"adaptor", "Someone - adaptor", "Someone"},
@@ -349,6 +361,12 @@ func TestCleanCreditName(t *testing.T) {
 		{"pen name with spaced hyphen", "The All - Stars", "The All - Stars"},
 		{"hyphenated given name", "Jean - Luc Picard", "Jean - Luc Picard"},
 		{"non-role suffix", "Anna - Maria Sound", "Anna - Maria Sound"},
+		// The wider dash class must not turn a name that CONTAINS a dash into a
+		// qualifier: a surname really is spelled with an en dash, and a
+		// non-role tail after one is left exactly as the source wrote it.
+		{"en-dashed surname", "Marie Curie–Sklodowska", "Marie Curie–Sklodowska"},
+		{"en dash non-role suffix", "Anna – Maria Sound", "Anna – Maria Sound"},
+		{"en dash pen name", "The All – Stars", "The All – Stars"},
 		{"ampersand sound", "Ampersand - Sound", "Ampersand - Sound"},
 		{"repeated single word", "Duran Duran", "Duran Duran"},
 		{"odd word count", "Mitz Mitz Vah", "Mitz Mitz Vah"},
@@ -390,6 +408,98 @@ func TestCleanCreditName(t *testing.T) {
 			}
 		}
 	})
+}
+
+// TestDashSeparatorSpellingsAreEquivalent is the separator fix's core property:
+// which DASH a source typed is not a fact about the credit, so every spelling of
+// the separator must produce the same name AND the same roles. The rule reads the
+// same dash class studiotail.go's dashSepRE does, which is what makes the two
+// halves of "what is a separator" agree.
+//
+// Written as an equivalence rather than a table of expected outputs so it also
+// covers the tails that must NOT strip: whatever the hyphen spelling does with a
+// studio tail or a non-role suffix, the en-dash spelling must do the same.
+func TestDashSeparatorSpellingsAreEquivalent(t *testing.T) {
+	// Each name is written with the ASCII hyphen; the test re-spells the
+	// separator and demands an identical outcome.
+	names := []string{
+		"Bernhard Kempen - Übersetzer",
+		"J. Kharkova - translator",
+		"Dan Veksler - Translator - translator",
+		"Someone - edited by",
+		"Theodore C. Van Alst - editor Jr.",
+		"Created by Stan Lee - editor",
+		// Tails that are not roles: a studio concatenation, a pen name, an
+		// ambiguous connector.
+		"Alex Hyde-White - Punch Audio",
+		"Eileen Rizzo - Eye Hear Voices",
+		"The All - Stars",
+		"Someone - with",
+		"Anna - Maria Sound",
+	}
+	for _, ascii := range names {
+		wantName, wantRoles := CreditWithRoles(ascii)
+		for _, dash := range []string{"–", "—", "--", "––"} {
+			spelled := strings.Replace(ascii, " - ", " "+dash+" ", 1)
+			if spelled == ascii {
+				t.Fatalf("fixture %q has no separator to re-spell", ascii)
+			}
+			gotName, gotRoles := CreditWithRoles(spelled)
+			if gotName != strings.Replace(wantName, " - ", " "+dash+" ", 1) && gotName != wantName {
+				t.Errorf("CreditWithRoles(%q) name = %q, want the hyphen spelling's %q", spelled, gotName, wantName)
+			}
+			if !slices.Equal(gotRoles, wantRoles) {
+				t.Errorf("CreditWithRoles(%q) roles = %v, want the hyphen spelling's %v", spelled, gotRoles, wantRoles)
+			}
+		}
+	}
+}
+
+// TestDashQualifierDoesNotDoubleFire pins that widening the separator did not
+// make the three cleaning rules overlap. A qualifier is consumed by exactly ONE
+// of them, each states its role once, and a name carrying a parenthetical
+// qualifier AND a dash qualifier loses both without either rule reaching into the
+// other's text.
+func TestDashQualifierDoesNotDoubleFire(t *testing.T) {
+	cases := []struct {
+		name      string
+		in        string
+		wantName  string
+		wantRoles []string
+	}{
+		// One dash qualifier: one role, stated once.
+		{"single", "Bernhard Kempen – Übersetzer", "Bernhard Kempen", []string{model.RoleTranslator}},
+		// The same role twice over two dash spellings: still stated once.
+		{"doubled", "Dan Veksler – Translator - translator", "Dan Veksler", []string{model.RoleTranslator}},
+		// Both spellings of a qualifier on one name: the parenthetical rule takes
+		// the brackets, the dash rule takes the tail, neither takes the other's.
+		{"paren and dash", "Neil Gaiman (introduction) – Übersetzer", "Neil Gaiman",
+			[]string{model.RoleIntroduction, model.RoleTranslator}},
+		// A non-role parenthetical is not a qualifier, and the dash rule stripping
+		// a real one must not tempt it: the nickname survives.
+		{"nickname keeps its brackets", "Frank (Dean) Martin – Übersetzer", "Frank (Dean) Martin",
+			[]string{model.RoleTranslator}},
+		// A STUDIO tail is not a role, so the widened dash rule leaves it exactly
+		// where it was: with no census in hand the studio rule declines to cut a
+		// dash-separated tail (tier 3 is census-backed), and the dash rule states
+		// nothing about it either. The en-dash spelling behaves like the hyphen
+		// spelling, which is the property that matters.
+		{"studio tail is left to the studio rule", "Eileen Rizzo – Eye Hear Voices", "Eileen Rizzo – Eye Hear Voices", nil},
+		// And the studio rule still fires where it always did - a CONCATENATED
+		// role-label tail, which carries no separator for the dash class to reach.
+		{"concatenated studio tail still strips", "Marnye Young Voice Talent", "Marnye Young", nil},
+	}
+	for _, c := range cases {
+		t.Run(c.name, func(t *testing.T) {
+			gotName, gotRoles := CreditWithRoles(c.in)
+			if gotName != c.wantName {
+				t.Errorf("CreditWithRoles(%q) name = %q, want %q", c.in, gotName, c.wantName)
+			}
+			if !slices.Equal(gotRoles, c.wantRoles) {
+				t.Errorf("CreditWithRoles(%q) roles = %v, want %v", c.in, gotRoles, c.wantRoles)
+			}
+		})
+	}
 }
 
 // TestCutPrefixFold pins the two properties that made the prefix compare

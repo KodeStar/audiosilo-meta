@@ -16,16 +16,18 @@
 -- never recorded.)
 --
 -- The credit patterns below are evidence-driven, measured over that dump, and
--- are the SQL half of a pair: internal/importer/libex.go carries the same four
+-- are the SQL half of a pair: internal/importer/libex.go carries the same five
 -- shapes (aiNarratorNames / aiNarratorPrefix / aiNarratorSuffix /
--- aiNarratorMarkers) and refuses
--- the same rows at parse time, so a dump exported without this filter is still
--- safe. KEEP THE TWO LISTS IN STEP - if you add a form here, add it there.
+-- aiNarratorMarkers, plus aiSystemTokens for an AI credited as the AUTHOR) and
+-- refuses the same rows at parse time, so a dump exported without this filter is
+-- still safe. Both filters read BOTH credit lists.
+-- KEEP THE TWO LISTS IN STEP - if you add a form here, add it there.
 -- The junk-credit filter at the end of the WHERE clause is the SQL twin of
 -- junkCreditNames in the same file, and is kept in step the same way.
 -- Deliberately NOT used: a substring search for "tts", or a bare "ai"/"ki"/"ia"
 -- token. Those match Watts, Pitts, Ricketts, Ki Hong Lee and Ai-jen Poo, who
--- are real narrators.
+-- are real narrators. Nor a bare "claude" or "gpt" token: Claude is an ordinary
+-- given name and "Daddy GPT" is a person-shaped pen name.
 -- books.isbn is deliberately NOT exported: it is sometimes the PRINT edition's
 -- ISBN (verified against live records), and recording.isbn is a hard dedup key
 -- upstream - a wrong one would mechanically refuse legitimate future
@@ -63,13 +65,22 @@ FROM books b
 WHERE b.is_vvab IS NOT TRUE
   AND b.content_delivery_type IN ('SinglePartBook', 'MultiPartBook')
   -- ANY AI credit disqualifies the row (the Go side matches: see
-  -- firstAINarrator). No book in the dump credits a human alongside a synthetic
-  -- voice, so this decides nothing differently today - it just fails safe if one
-  -- ever appears.
+  -- firstAICredit). No book in the dump credits a human alongside a synthetic
+  -- voice, so shapes 1-4 decide nothing differently today - they just fail safe
+  -- if one ever appears. Shape 5 does decide one book differently.
+  --
+  -- BOTH CREDIT LISTS are judged, which is why the subquery reads a union rather
+  -- than book_narrator alone: the dump credits AI systems as AUTHORS ("CLAUDE.AI",
+  -- "ChatGPT ChatGPT"), and a narrator-only filter let one through into a seed
+  -- wave as a person of record.
   AND NOT EXISTS (
-    SELECT 1 FROM book_narrator bn
-    WHERE bn.book_asin = b.asin
-      AND (
+    SELECT 1 FROM (
+      SELECT bn.narrator_name AS credit FROM book_narrator bn WHERE bn.book_asin = b.asin
+      UNION ALL
+      SELECT a.name FROM author_book ab JOIN authors a ON a.id = ab.author_id
+      WHERE ab.book_asin = b.asin
+    ) bn(narrator_name)
+    WHERE (
         -- 1. Credits that are WHOLLY an AI-voice label, per localization.
         lower(btrim(bn.narrator_name)) IN (
           'virtual voice',    -- 143,559 credits, English
@@ -102,6 +113,12 @@ WHERE b.is_vvab IS NOT TRUE
           'virtual voice',             -- 2
           'ki sprecher',               -- 1, German
           'kokoro tts')                -- 1, a named TTS engine
+        -- 5. A generative-AI SYSTEM credited as the author of the book it wrote.
+        --    Word tokens, because the product name arrives welded to human text
+        --    ("A. ChatGPT", "Jim Mitchell and Google NotebookLM"); the SQL twin
+        --    of aiSystemTokens in internal/importer/libex.go, where the reasons
+        --    for excluding bare "ai", "claude" and "gpt" are recorded.
+        OR bn.narrator_name ~* '(^|[^[:alnum:]])(chatgpt|chat gpt|gpt-5|gpt-4|copilot|openai|open ai|notebooklm|grok ai|claude\.ai)([^[:alnum:]]|$)'
       ))
   -- A credit that names a PLATFORM ACCOUNT rather than a person or a synthetic
   -- voice: the publishing tool's own test harness leaking a row into the public

@@ -319,6 +319,10 @@
             {
               "asin": "B08PL167XZ",
               "region": "us"
+            },
+            {
+              "asin": "B0D3K23H1N",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81wmKRg30tL.jpg",
@@ -335,6 +339,11 @@
             {
               "imported_at": "2026-08-01",
               "ref": "B08PL167XZ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0D3K23H1N",
               "type": "libex-import"
             }
           ],
@@ -901,6 +910,70 @@
         }
       ],
       "title": "Dominoes"
+    },
+    "doms-special-things": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "sally-rippin"
+      ],
+      "genres": [
+        "childrens",
+        "comedy-humor",
+        "coming-of-age",
+        "fantasy",
+        "horror",
+        "self-help"
+      ],
+      "id": "doms-special-things",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "gareth-prosser-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0D1CYQ4NT",
+              "region": "us"
+            },
+            {
+              "asin": "B0D1D1TDY2",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/810NZyLA1KL.jpg",
+          "id": "gareth-prosser-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "gareth-prosser"
+          ],
+          "publisher": "Bolinda audio",
+          "release_date": "2024-06-05",
+          "runtime_min": 4,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0D1CYQ4NT",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0D1D1TDY2",
+              "type": "libex-import"
+            }
+          ],
+          "work": "doms-special-things"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0D1CYQ4NT",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Dom’s Special Things"
     },
     "don-quixote": {
       "added_at": "2026-07-25T19:18:21+01:00",
@@ -1786,6 +1859,59 @@
         }
       ],
       "title": "Donn, TX 2002"
+    },
+    "donnarumma-super-stoppers": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "matt-oldfield",
+        "tom-oldfield"
+      ],
+      "genres": [
+        "biography-memoir",
+        "childrens",
+        "sports"
+      ],
+      "id": "donnarumma-super-stoppers",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "alex-wingfield-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0GP8K9YJN",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81yxvQ0NceL.jpg",
+          "id": "alex-wingfield-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alex-wingfield"
+          ],
+          "publisher": "Dino Books",
+          "release_date": "2026-04-09",
+          "runtime_min": 178,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GP8K9YJN",
+              "type": "libex-import"
+            }
+          ],
+          "work": "donnarumma-super-stoppers"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0GP8K9YJN",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Donnarumma (Super Stoppers)"
     },
     "donnybrook-good-bye": {
       "added_at": "2026-08-01",
@@ -3070,6 +3196,58 @@
       ],
       "title": "Don't Go to Sleep"
     },
+    "dont-hate-me": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "lena-kiefer"
+      ],
+      "genres": [
+        "romance",
+        "young-adult"
+      ],
+      "id": "dont-hate-me",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "arne-stephan-2021": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "374241884X",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91c6Rs8011L.jpg",
+          "id": "arne-stephan-2021",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "arne-stephan",
+            "nina-reithmeier"
+          ],
+          "publisher": "Der Audio Verlag",
+          "release_date": "2021-02-19",
+          "runtime_min": 739,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "374241884X",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dont-hate-me"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "374241884X",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Don't HATE me"
+    },
     "dont-haunt-ghosts": {
       "added_at": "2026-08-01",
       "authors": [
@@ -3389,6 +3567,157 @@
         }
       ],
       "title": "Don't Judge a Book by Its Magic"
+    },
+    "dont-judge-a-girl-by-her-cover": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "ally-carter"
+      ],
+      "id": "dont-judge-a-girl-by-her-cover",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "renee-raudman-2009": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002V8NBJ6",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81GkRcvwpYL.jpg",
+          "id": "renee-raudman-2009",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "renee-raudman"
+          ],
+          "publisher": "Brilliance Audio",
+          "release_date": "2009-06-09",
+          "runtime_min": 440,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002V8NBJ6",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dont-judge-a-girl-by-her-cover"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V8NBJ6",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Don't Judge a Girl by Her Cover"
+    },
+    "dont-kill-the-demon-das-artefakt": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "kate-l-gorian"
+      ],
+      "genres": [
+        "fantasy",
+        "paranormal",
+        "urban-fantasy"
+      ],
+      "id": "dont-kill-the-demon-das-artefakt",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "irena-neumaier-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0F4872C68",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91mJjICPSPL.jpg",
+          "id": "irena-neumaier-2025",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "irena-neumaier"
+          ],
+          "publisher": "Librimo Hörverlag UG",
+          "release_date": "2025-06-05",
+          "runtime_min": 752,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0F4872C68",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dont-kill-the-demon-das-artefakt"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0F4872C68",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Don't Kill the Demon - Das Artefakt"
+    },
+    "dont-kill-the-queen-das-portal": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "katle-l-gorian"
+      ],
+      "genres": [
+        "fantasy",
+        "paranormal",
+        "young-adult"
+      ],
+      "id": "dont-kill-the-queen-das-portal",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "irena-neumaier-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0FN4RWF8D",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91Tgbmc-TFL.jpg",
+          "id": "irena-neumaier-2025",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "irena-neumaier"
+          ],
+          "publisher": "Librimo Hörverlag UG",
+          "release_date": "2025-08-20",
+          "runtime_min": 629,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FN4RWF8D",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dont-kill-the-queen-das-portal"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0FN4RWF8D",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Don't Kill the Queen - Das Portal"
     },
     "dont-kill-your-evil-boss-strategies-for-surviving-toxic-workplaces": {
       "added_at": "2026-08-01",
@@ -3913,6 +4242,110 @@
       ],
       "title": "Don't Know Jack"
     },
+    "dont-leave-me-german-edition": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "lena-kiefer"
+      ],
+      "genres": [
+        "romance",
+        "young-adult"
+      ],
+      "id": "dont-leave-me-german-edition",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "arne-stephan-2021": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "3742418866",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91LIM+XYMuL.jpg",
+          "id": "arne-stephan-2021",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "arne-stephan",
+            "nina-reithmeier"
+          ],
+          "publisher": "Der Audio Verlag",
+          "release_date": "2021-04-23",
+          "runtime_min": 752,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "3742418866",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dont-leave-me-german-edition"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "3742418866",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Don't LEAVE me (German edition)"
+    },
+    "dont-let-it-snow-in-deadwood": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "ann-charles"
+      ],
+      "genres": [
+        "comedy-humor",
+        "paranormal",
+        "thriller-suspense"
+      ],
+      "id": "dont-let-it-snow-in-deadwood",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "caroline-shaffer-2019": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "1094033464",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91M2NmVoDsL.jpg",
+          "id": "caroline-shaffer-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "caroline-shaffer"
+          ],
+          "publisher": "Susan E. Smith",
+          "release_date": "2019-07-16",
+          "runtime_min": 378,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1094033464",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dont-let-it-snow-in-deadwood"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1094033464",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Don’t Let It Snow in Deadwood"
+    },
     "dont-let-the-wind-catch-you": {
       "added_at": "2026-08-01",
       "authors": [
@@ -4387,6 +4820,109 @@
       ],
       "title": "Don't Look Back"
     },
+    "dont-look-for-me": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "loren-d-estleman"
+      ],
+      "genres": [
+        "hard-boiled",
+        "mystery"
+      ],
+      "id": "dont-look-for-me",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "mel-foster-2014": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00I9IG3VA",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81Ez4r9FPwL.jpg",
+          "id": "mel-foster-2014",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "mel-foster"
+          ],
+          "publisher": "Brilliance Audio",
+          "release_date": "2014-03-18",
+          "runtime_min": 479,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00I9IG3VA",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dont-look-for-me"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00I9IG3VA",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Don't Look For Me"
+    },
+    "dont-love-me-german-edition": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "lena-kiefer"
+      ],
+      "genres": [
+        "romance",
+        "young-adult"
+      ],
+      "id": "dont-love-me-german-edition",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "arne-stephan-2021": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "3742418823",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91+t4mIN8GL.jpg",
+          "id": "arne-stephan-2021",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "arne-stephan",
+            "nina-reithmeier"
+          ],
+          "publisher": "Der Audio Verlag",
+          "release_date": "2021-01-22",
+          "runtime_min": 743,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "3742418823",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dont-love-me-german-edition"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "3742418823",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Don't LOVE me (German edition)"
+    },
     "dont-mess-with-this-witch": {
       "added_at": "2026-08-01",
       "authors": [
@@ -4746,6 +5282,60 @@
       ],
       "title": "Don't Panic"
     },
+    "dont-read-this": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "michael-dahl",
+        "patricio-clarey"
+      ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "education",
+        "superhero"
+      ],
+      "id": "dont-read-this",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "uncredited-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CZFYFYD3",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/915u9VdefHL.jpg",
+          "id": "uncredited-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "uncredited"
+          ],
+          "publisher": "Stone Arch Books",
+          "release_date": "2024-04-01",
+          "runtime_min": 10,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CZFYFYD3",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dont-read-this"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CZFYFYD3",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Don't Read This!"
+    },
     "dont-say-a-word": {
       "added_at": "2026-08-02",
       "authors": [
@@ -4796,6 +5386,60 @@
         }
       ],
       "title": "Don't Say a Word"
+    },
+    "dont-stay-up-late": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "r-l-stine"
+      ],
+      "genres": [
+        "childrens",
+        "fantasy",
+        "horror",
+        "thriller-suspense",
+        "young-adult"
+      ],
+      "id": "dont-stay-up-late",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "brittany-pressley-2015": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00USHRO0Y",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/914eIKbRlYS.jpg",
+          "id": "brittany-pressley-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "brittany-pressley"
+          ],
+          "publisher": "Macmillan Young Listeners",
+          "release_date": "2015-04-07",
+          "runtime_min": 400,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00USHRO0Y",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dont-stay-up-late"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00USHRO0Y",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Don't Stay Up Late"
     },
     "dont-stop-bewitching": {
       "added_at": "2026-08-01",
@@ -5107,6 +5751,112 @@
         }
       ],
       "title": "Don't Trust the Impostor"
+    },
+    "dont-you-forget-about-me-gossip-girl-book-11": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "cecily-von-ziegesar"
+      ],
+      "genres": [
+        "parenting-relationships",
+        "self-help",
+        "young-adult"
+      ],
+      "id": "dont-you-forget-about-me-gossip-girl-book-11",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "edwina-wren-2014": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00KB5W96W",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91BzYcrzarL.jpg",
+          "id": "edwina-wren-2014",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "edwina-wren"
+          ],
+          "publisher": "Bolinda Publishing Pty Ltd",
+          "release_date": "2014-06-01",
+          "runtime_min": 403,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00KB5W96W",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dont-you-forget-about-me-gossip-girl-book-11"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00KB5W96W",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Don't You Forget About Me: Gossip Girl, Book 11"
+    },
+    "donut-danger": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "john-sazaklis"
+      ],
+      "genres": [
+        "childrens",
+        "fantasy",
+        "mystery",
+        "paranormal",
+        "thriller-suspense"
+      ],
+      "id": "donut-danger",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "uncredited-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0D1DH4N3W",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91t3V5WnNGL.jpg",
+          "id": "uncredited-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "uncredited"
+          ],
+          "publisher": "Picture Window Books",
+          "release_date": "2024-04-25",
+          "runtime_min": 5,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0D1DH4N3W",
+              "type": "libex-import"
+            }
+          ],
+          "work": "donut-danger"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0D1DH4N3W",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Donut Danger"
     },
     "donuts-and-disaster": {
       "added_at": "2026-08-01",
@@ -5756,6 +6506,61 @@
       ],
       "title": "Doom Prophecy [Dramatized Adaptation]"
     },
+    "doom-school": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "michael-dahl"
+      ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "education",
+        "fantasy",
+        "paranormal",
+        "superhero"
+      ],
+      "id": "doom-school",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "uncredited-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0D1HLBNKQ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91JbgkhsV+L.jpg",
+          "id": "uncredited-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "uncredited"
+          ],
+          "publisher": "Stone Arch Books",
+          "release_date": "2024-04-11",
+          "runtime_min": 10,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0D1HLBNKQ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "doom-school"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0D1HLBNKQ",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Doom School"
+    },
     "doom-system-survivor": {
       "added_at": "2026-08-02",
       "authors": [
@@ -5858,6 +6663,58 @@
         }
       ],
       "title": "Doom System Survivor 2"
+    },
+    "doomed": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "chuck-palahniuk"
+      ],
+      "genres": [
+        "comedy-humor",
+        "coming-of-age",
+        "literary-fiction"
+      ],
+      "id": "doomed",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "tai-sammons-2013": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00EKQNNMM",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81fwJndQ6kL.jpg",
+          "id": "tai-sammons-2013",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "tai-sammons"
+          ],
+          "publisher": "Blackstone Publishing",
+          "release_date": "2013-10-08",
+          "runtime_min": 573,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00EKQNNMM",
+              "type": "libex-import"
+            }
+          ],
+          "work": "doomed"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00EKQNNMM",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Doomed"
     },
     "doomsday-anarchy-a-post-apocalyptic-survival-thriller": {
       "added_at": "2026-08-01",
@@ -5962,6 +6819,58 @@
         }
       ],
       "title": "Doomsday: Apocalypse: A Post-Apocalyptic Survival Thriller"
+    },
+    "doomsday-can-wait": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "lori-handeland"
+      ],
+      "genres": [
+        "fantasy",
+        "paranormal",
+        "urban-fantasy"
+      ],
+      "id": "doomsday-can-wait",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "elisabeth-rodgers-2020": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "1094174602",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91feGIBAiaL.jpg",
+          "id": "elisabeth-rodgers-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "elisabeth-rodgers"
+          ],
+          "publisher": "Blackstone Publishing",
+          "release_date": "2020-08-04",
+          "runtime_min": 552,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1094174602",
+              "type": "libex-import"
+            }
+          ],
+          "work": "doomsday-can-wait"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1094174602",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Doomsday Can Wait"
     },
     "doomsday-civil-war": {
       "added_at": "2026-08-01",
@@ -6429,6 +7338,58 @@
         }
       ],
       "title": "Doomsday Magic"
+    },
+    "doomsday-match": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "jeff-wheeler"
+      ],
+      "genres": [
+        "action-adventure",
+        "paranormal",
+        "thriller-suspense"
+      ],
+      "id": "doomsday-match",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "kate-rudd-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0BLZQ6HG9",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91pNw2jqxsL.jpg",
+          "id": "kate-rudd-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kate-rudd"
+          ],
+          "publisher": "Brilliance Audio",
+          "release_date": "2023-07-01",
+          "runtime_min": 563,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0BLZQ6HG9",
+              "type": "libex-import"
+            }
+          ],
+          "work": "doomsday-match"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0BLZQ6HG9",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Doomsday Match"
     },
     "doomsday-minutemen-a-post-apocalyptic-survival-thriller": {
       "added_at": "2026-08-01",
@@ -6972,6 +7933,113 @@
         }
       ],
       "title": "Doomstar Relic [Dramatized Adaptation]"
+    },
+    "doon": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "carey-corp",
+        "lorie-langdon"
+      ],
+      "genres": [
+        "fantasy",
+        "romance",
+        "young-adult"
+      ],
+      "id": "doon",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "kate-marcin-2020": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "1690566167",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91EgVPo8NpL.jpg",
+          "id": "kate-marcin-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kate-marcin",
+            "molly-elston"
+          ],
+          "publisher": "Dreamscape Media, LLC",
+          "release_date": "2020-02-18",
+          "runtime_min": 686,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1690566167",
+              "type": "libex-import"
+            }
+          ],
+          "work": "doon"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1690566167",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Doon"
+    },
+    "dooon-mode": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "piers-anthony"
+      ],
+      "genres": [
+        "action-adventure",
+        "fantasy",
+        "literary-fiction",
+        "science-fiction"
+      ],
+      "id": "dooon-mode",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "natalie-ross-2009": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002UZHR36",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/817o5YUqcjL.jpg",
+          "id": "natalie-ross-2009",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "natalie-ross"
+          ],
+          "publisher": "Brilliance Audio",
+          "release_date": "2009-01-16",
+          "runtime_min": 806,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002UZHR36",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dooon-mode"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002UZHR36",
+          "type": "libex-import"
+        }
+      ],
+      "title": "DoOon Mode"
     },
     "door-into-faerie": {
       "added_at": "2026-08-01",
@@ -8033,6 +9101,582 @@
       ],
       "title": "Doormaker: The One Door, Book 4"
     },
+    "doors-blutfeld": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "markus-heitz"
+      ],
+      "genres": [
+        "fantasy",
+        "historical-fiction"
+      ],
+      "id": "doors-blutfeld",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "johannes-steck-2018": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B07GPW4QDX",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/914vhY+k5NL.jpg",
+          "id": "johannes-steck-2018",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "johannes-steck"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2018-09-25",
+          "runtime_min": 459,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07GPW4QDX",
+              "type": "libex-import"
+            }
+          ],
+          "work": "doors-blutfeld"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B07GPW4QDX",
+          "type": "libex-import"
+        }
+      ],
+      "title": "DOORS ! - Blutfeld"
+    },
+    "doors-der-beginn": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "markus-heitz",
+        "norman-coster"
+      ],
+      "genres": [
+        "alternate-history",
+        "fantasy",
+        "historical-fiction",
+        "science-fiction"
+      ],
+      "id": "doors-der-beginn",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "andreas-borcherding-2018": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B07GH33YKZ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1qZ4RIXZ4L.jpg",
+          "id": "andreas-borcherding-2018",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andreas-borcherding",
+            "arlett-drexler",
+            "detlef-tams",
+            "johannes-steck",
+            "thomas-rauscher",
+            "victoria-mayer"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2018-09-01",
+          "runtime_min": 134,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07GH33YKZ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "doors-der-beginn"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B07GH33YKZ",
+          "type": "libex-import"
+        }
+      ],
+      "title": "DOORS - Der Beginn"
+    },
+    "doors-drei-sekunden": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "markus-heitz"
+      ],
+      "genres": [
+        "fantasy"
+      ],
+      "id": "doors-drei-sekunden",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "nils-nelle-en-2019": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B07YSQY4B8",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/816a2pivq1L.jpg",
+          "id": "nils-nelle-en-2019",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "nils-nelle-en"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2019-10-17",
+          "runtime_min": 26,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07YSQY4B8",
+              "type": "libex-import"
+            }
+          ],
+          "work": "doors-drei-sekunden"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B07YSQY4B8",
+          "type": "libex-import"
+        }
+      ],
+      "title": "DOORS - Drei Sekunden"
+    },
+    "doors-drei-sekunden-wachter-energija-vorsehung": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "markus-heitz"
+      ],
+      "genres": [
+        "action-adventure",
+        "alternate-history",
+        "fantasy",
+        "science-fiction"
+      ],
+      "id": "doors-drei-sekunden-wachter-energija-vorsehung",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "nils-nelle-en-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0G2XX1XSX",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91KGXU4MwTL.jpg",
+          "id": "nils-nelle-en-2025",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "nils-nelle-en"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2025-12-01",
+          "runtime_min": 1403,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0G2XX1XSX",
+              "type": "libex-import"
+            }
+          ],
+          "work": "doors-drei-sekunden-wachter-energija-vorsehung"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0G2XX1XSX",
+          "type": "libex-import"
+        }
+      ],
+      "title": "DOORS - Drei Sekunden - Wächter - Energija - Vorsehung"
+    },
+    "doors-energija": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "markus-heitz"
+      ],
+      "genres": [
+        "alternate-history",
+        "science-fiction"
+      ],
+      "id": "doors-energija",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "nils-nelle-en-2019": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B07YSQN6GF",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91KEPefYx8L.jpg",
+          "id": "nils-nelle-en-2019",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "nils-nelle-en"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2019-10-17",
+          "runtime_min": 489,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07YSQN6GF",
+              "type": "libex-import"
+            }
+          ],
+          "work": "doors-energija"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B07YSQN6GF",
+          "type": "libex-import"
+        }
+      ],
+      "title": "DOORS - Energija"
+    },
+    "doors-kolonie": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "markus-heitz"
+      ],
+      "genres": [
+        "alternate-history",
+        "science-fiction",
+        "time-travel"
+      ],
+      "id": "doors-kolonie",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "johannes-steck-2018": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B07GPXTHHH",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/910V3khT+kL.jpg",
+          "id": "johannes-steck-2018",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "johannes-steck"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2018-10-01",
+          "runtime_min": 423,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07GPXTHHH",
+              "type": "libex-import"
+            }
+          ],
+          "work": "doors-kolonie"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B07GPXTHHH",
+          "type": "libex-import"
+        }
+      ],
+      "title": "DOORS ? - Kolonie"
+    },
+    "doors-kurzgeschichten-das-klopfen-an-der-tur": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "markus-heitz"
+      ],
+      "genres": [
+        "fairy-tales-folklore",
+        "fantasy",
+        "horror"
+      ],
+      "id": "doors-kurzgeschichten-das-klopfen-an-der-tur",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "johannes-steck-2018": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B07HJ3Q46J",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91Wbqz5lzCL.jpg",
+          "id": "johannes-steck-2018",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "johannes-steck"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2018-10-01",
+          "runtime_min": 16,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07HJ3Q46J",
+              "type": "libex-import"
+            }
+          ],
+          "work": "doors-kurzgeschichten-das-klopfen-an-der-tur"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B07HJ3Q46J",
+          "type": "libex-import"
+        }
+      ],
+      "title": "DOORS Kurzgeschichten - Das Klopfen an der Tür"
+    },
+    "doors-kurzgeschichten-exponat-ea-22542": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "markus-heitz"
+      ],
+      "genres": [
+        "fairy-tales-folklore",
+        "fantasy",
+        "horror"
+      ],
+      "id": "doors-kurzgeschichten-exponat-ea-22542",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "johannes-steck-2018": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B07HY699LG",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1gfsdK9zaL.jpg",
+          "id": "johannes-steck-2018",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "johannes-steck"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2018-10-02",
+          "runtime_min": 35,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07HY699LG",
+              "type": "libex-import"
+            }
+          ],
+          "work": "doors-kurzgeschichten-exponat-ea-22542"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B07HY699LG",
+          "type": "libex-import"
+        }
+      ],
+      "title": "DOORS Kurzgeschichten - Exponat EA 22542"
+    },
+    "doors-kurzgeschichten-fu-in-der-tur": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "markus-heitz"
+      ],
+      "genres": [
+        "fairy-tales-folklore",
+        "fantasy",
+        "horror"
+      ],
+      "id": "doors-kurzgeschichten-fu-in-der-tur",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "johannes-steck-2018": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B07HJ37C4Z",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91ME2KVZdxL.jpg",
+          "id": "johannes-steck-2018",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "johannes-steck"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2018-10-01",
+          "runtime_min": 17,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07HJ37C4Z",
+              "type": "libex-import"
+            }
+          ],
+          "work": "doors-kurzgeschichten-fu-in-der-tur"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B07HJ37C4Z",
+          "type": "libex-import"
+        }
+      ],
+      "title": "DOORS Kurzgeschichten - Fuß in der Tür"
+    },
+    "doors-kurzgeschichten-glaube-angst": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "markus-heitz"
+      ],
+      "genres": [
+        "fairy-tales-folklore",
+        "fantasy",
+        "horror"
+      ],
+      "id": "doors-kurzgeschichten-glaube-angst",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "johannes-steck-2018": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B07HY7B9X4",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1rnManLRDL.jpg",
+          "id": "johannes-steck-2018",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "johannes-steck"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2018-10-02",
+          "runtime_min": 20,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07HY7B9X4",
+              "type": "libex-import"
+            }
+          ],
+          "work": "doors-kurzgeschichten-glaube-angst"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B07HY7B9X4",
+          "type": "libex-import"
+        }
+      ],
+      "title": "DOORS Kurzgeschichten - Glaube & Angst"
+    },
+    "doors-kurzgeschichten-tod-oder-tur": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "markus-heitz"
+      ],
+      "genres": [
+        "fairy-tales-folklore",
+        "fantasy",
+        "horror"
+      ],
+      "id": "doors-kurzgeschichten-tod-oder-tur",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "johannes-steck-2018": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B07HJ12JY9",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91ulHfXjYOL.jpg",
+          "id": "johannes-steck-2018",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "johannes-steck"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2018-10-01",
+          "runtime_min": 13,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07HJ12JY9",
+              "type": "libex-import"
+            }
+          ],
+          "work": "doors-kurzgeschichten-tod-oder-tur"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B07HJ12JY9",
+          "type": "libex-import"
+        }
+      ],
+      "title": "DOORS Kurzgeschichten - Tod oder Tür"
+    },
     "doors-of-sleep": {
       "added_at": "2026-08-01",
       "authors": [
@@ -8105,6 +9749,158 @@
       "xref": {
         "goodreads": "10394348"
       }
+    },
+    "doors-vorsehung": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "markus-heitz"
+      ],
+      "genres": [
+        "alternate-history",
+        "science-fiction"
+      ],
+      "id": "doors-vorsehung",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "nils-nelle-en-2019": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B07YVB8RGF",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91IMA8b521L.jpg",
+          "id": "nils-nelle-en-2019",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "nils-nelle-en"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2019-10-17",
+          "runtime_min": 433,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07YVB8RGF",
+              "type": "libex-import"
+            }
+          ],
+          "work": "doors-vorsehung"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B07YVB8RGF",
+          "type": "libex-import"
+        }
+      ],
+      "title": "DOORS - Vorsehung"
+    },
+    "doors-wachter": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "markus-heitz"
+      ],
+      "genres": [
+        "alternate-history",
+        "science-fiction"
+      ],
+      "id": "doors-wachter",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "nils-nelle-en-2019": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B07YSQHWK6",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91BlLnhRzSL.jpg",
+          "id": "nils-nelle-en-2019",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "nils-nelle-en"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2019-10-17",
+          "runtime_min": 455,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07YSQHWK6",
+              "type": "libex-import"
+            }
+          ],
+          "work": "doors-wachter"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B07YSQHWK6",
+          "type": "libex-import"
+        }
+      ],
+      "title": "DOORS - Wächter"
+    },
+    "doors-x-dammerung": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "markus-heitz"
+      ],
+      "genres": [
+        "fantasy"
+      ],
+      "id": "doors-x-dammerung",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "johannes-steck-2018": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B07GPRQTQL",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81+2Cx4DYwL.jpg",
+          "id": "johannes-steck-2018",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "johannes-steck"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2018-10-01",
+          "runtime_min": 421,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07GPRQTQL",
+              "type": "libex-import"
+            }
+          ],
+          "work": "doors-x-dammerung"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B07GPRQTQL",
+          "type": "libex-import"
+        }
+      ],
+      "title": "DOORS X - Dämmerung"
     },
     "doorway": {
       "added_at": "2026-08-02",
@@ -8639,6 +10435,72 @@
       ],
       "title": "Doppelter Verrat"
     },
+    "doppeltes-spiel": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "annette-karmann",
+        "roman-klink",
+        "audio-quants",
+        "heiko-streicher",
+        "christoph-lehmann",
+        "christoph-lofi",
+        "michael-bohne"
+      ],
+      "genres": [
+        "dystopian",
+        "science-fiction"
+      ],
+      "id": "doppeltes-spiel",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "anne-due-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0F79FSZV6",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81YrigsAeQL.jpg",
+          "id": "anne-due-2025",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "anne-due",
+            "ann-vielhaben",
+            "felicitas-haas",
+            "full-cast",
+            "matthias-heyl",
+            "moritz-brendel",
+            "robert-moeck",
+            "sabine-konig",
+            "sebastian-fischer",
+            "silke-haas"
+          ],
+          "publisher": "Audio Quants",
+          "release_date": "2025-05-02",
+          "runtime_min": 67,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0F79FSZV6",
+              "type": "libex-import"
+            }
+          ],
+          "work": "doppeltes-spiel"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0F79FSZV6",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Doppeltes Spiel"
+    },
     "dor-vahdor-lost-legends-and-sagas-of-preflood-earth": {
       "added_at": "2026-08-01",
       "authors": [
@@ -8693,6 +10555,57 @@
         }
       ],
       "title": "Dor Vahdor Lost Legends and Sagas of Preflood Earth"
+    },
+    "dorado": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "marissa-meyer"
+      ],
+      "genres": [
+        "fantasy",
+        "young-adult"
+      ],
+      "id": "dorado",
+      "language": "es",
+      "license": "CC0-1.0",
+      "recordings": {
+        "florencia-maza-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CPFSFXWV",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81gd8BJ54-L.jpg",
+          "id": "florencia-maza-2023",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "florencia-maza"
+          ],
+          "publisher": "BookaVivo",
+          "release_date": "2023-12-04",
+          "runtime_min": 1148,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CPFSFXWV",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dorado"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CPFSFXWV",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Dorado"
     },
     "doril-song": {
       "added_at": "2026-08-02",
