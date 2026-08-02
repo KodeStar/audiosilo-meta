@@ -1061,42 +1061,33 @@ func firstListCredit(authors, narrators []string) (name string, isList bool) {
 // and "to be announced" became the credited narrator of 251 books.
 //
 // The line this vocabulary draws is between a placeholder and a COLLECTIVE
-// credit. A collective names a real (if unnamed) group who really did the work,
-// and the project keeps those: "Full Cast" (5,571 books), "Anonymous" (2,193),
-// "Uncredited" (2,183) and the unattributed family ("Unknown" 70, its German
-// "Unbekannt" and Spanish "Desconocido", the bibliographic "N.N." 698) all stay
-// exactly as they are. A placeholder names nobody at all, not even a group.
+// credit. A collective names a real (if unnamed) party who really did the work,
+// and the project keeps those - it now keeps them under ONE record per
+// statement, whatever language the source stated it in (collective.go): "Full
+// Cast", "Various", "Anonymous", "Uncredited" and the unknown-identity family
+// ("Unknown", the bibliographic "N.N.", "auteur inconnu", "narratore
+// sconosciuto") all import, folded onto their canonical record. A placeholder
+// names nobody at all, not even a party, and it is the only one of the four
+// kinds of nameless credit that is still refused.
 //
-// Two families clear the "cannot be a person under any reading" bar, both
-// measured over the full dump (counts are books):
-//
-//   - the TBD forms, which are an administrative state rather than a credit;
-//   - the explicitly PLURAL cast forms, whose own words say they are more than
-//     one person, so no single record could ever be right.
+// So this list is now exactly ONE family, and it is the one that clears the
+// "cannot be a person, a group, or an unnamed party under any reading" bar: the
+// TBD forms, which are an administrative state rather than a credit at all. The
+// plural-cast forms this list used to carry ("various narrators", "narratori
+// vari", "diverse sprecher", "elenco" and friends) were refusing rows for
+// stating something true, and they moved to the normalization table.
 //
 // Deliberately NOT included, and each is a judgment call worth restating:
 //
-//   - bare "Various" (1,038), bare "Diverse" (191, German) and the German
-//     bibliographic abbreviation "Div." (1,646). These are the anthology
-//     convention, and they are the same SHAPE as the "Anonymous" the project
-//     keeps: one token standing for an unnamed party. Refusing them would drop
-//     nearly three thousand books on a rule about placeholders, which is not
-//     what they are. If they should go, they should go WITH Anonymous, as a
-//     deliberate decision about collective credits.
-//   - bare "Cast" (11). Measured, its books are ensemble theatre recordings
-//     ("La Dama de las Camelias", "The History of Theatre") - the English of
-//     the "Full Cast" the project sanctions, not a TBD placeholder.
+//   - every collective and unknown-identity form. See collective.go, which owns
+//     that question now; nothing about a credit's language belongs here.
 //   - "Test Narrator", "Test", "RocQET QA" and friends, for the reason
 //     junkCreditNames already records: they read as placeholders but are not
 //     provably accounts, and their measured neighbours are real people. (The
 //     "Test" rows are fixture BOOKS, so the book is what is fake, not the
 //     credit - a different rule's job if one is ever wanted.)
 //
-// One entry is a deliberate borderline: "elenco" is the Portuguese/Spanish noun
-// for the cast, which by the paragraph above argues for keeping it beside "Full
-// Cast". It is refused because it is a bare generic noun rather than an
-// established credit, and at 7 books either way is immaterial - but it is the
-// one line here that a maintainer could reasonably flip.
+// Counts are books over the full dump.
 var placeholderCreditNames = map[string]bool{
 	// The TBD family: an administrative state, not a credit.
 	"to be announced": true, // 251
@@ -1105,13 +1096,6 @@ var placeholderCreditNames = map[string]bool{
 	"tba":             true, // 10
 	"tbc":             true, // 4
 	"n/a":             true, // 1
-
-	// The plural-cast family: the credit's own words say it is not one person.
-	"various narrators": true, // 96
-	"varios narradores": true, // 89 - Spanish
-	"narratori vari":    true, // 56 - Italian
-	"diverse sprecher":  true, // 17 - German
-	"elenco":            true, // 7 - see the borderline note above
 }
 
 // firstPlaceholderCredit reports whether ANY credit in the row's author or

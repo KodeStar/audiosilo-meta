@@ -741,7 +741,8 @@ const maxCleanPasses = 8
 // CleanCreditName normalizes one credit name from an external source. It applies
 // five evidence-driven rules, repeatedly until the name stops changing (the dump
 // really does carry doubled qualifiers like "Dan Veksler - Translator -
-// translator"):
+// translator"), and then folds the result onto a canonical collective record if
+// that is what it names (rule 6, once, after the loop):
 //
 //  1. A leading credit phrase from prefixCredits is dropped ("Created by Stan
 //     Lee" -> "Stan Lee").
@@ -763,6 +764,11 @@ const maxCleanPasses = 8
 //     Audio" -> "Alex Hyde-White"). Its evidence bar is the strictest of the
 //     five, and one of its three tiers needs a CENSUS of credit names this entry
 //     point has no access to - see studiotail.go and creditWithRoles.
+//  6. A collective or unknown-identity credit is folded onto its canonical
+//     record name ("Narratori Vari" -> "Various", "N.N." -> "Unknown"), so one
+//     statement has one person of record rather than one per language. Whole
+//     names only, so the branded ensembles ("Museum Audiobooks cast") are
+//     untouched - see collective.go.
 //
 // The person stays in the credit list under the cleaned name. The stripped role
 // is no longer discarded - CreditWithRoles returns it, and the importer records
@@ -852,7 +858,11 @@ func creditWithRolesSided(name string, c creditCensus) (cleaned string, roles []
 		stated = append(stated, parenRoles...)
 		stated = append(stated, tailRoles...)
 	}
-	return cleaned, sortedUniqueRoles(stated)
+	// The collective/placeholder fold is the LAST step, outside the loop and
+	// after every cleaning rule has run: it answers "which record does this
+	// credit name?", which is only askable once the name is the one the import
+	// would store. See collective.go for why this is the one place it happens.
+	return canonicalCreditName(cleaned), sortedUniqueRoles(stated)
 }
 
 // sortedUniqueRoles sorts and deduplicates a collected role list, returning nil
