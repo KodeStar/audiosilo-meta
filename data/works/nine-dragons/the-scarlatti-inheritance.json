@@ -10226,6 +10226,10 @@
             {
               "asin": "B00SNP87OU",
               "region": "us"
+            },
+            {
+              "asin": "B09DGQFGHF",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91aivBIC8dL.jpg",
@@ -10243,6 +10247,11 @@
               "imported_at": "2026-08-01",
               "ref": "B00SNP87OU",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-01",
+              "ref": "B09DGQFGHF",
+              "type": "libex-import"
             }
           ],
           "work": "the-scout-and-the-serpent"
@@ -10253,54 +10262,7 @@
           "imported_at": "2026-08-01",
           "ref": "B00SNP87OU",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Scout and the Serpent"
-    },
-    "the-scout-and-the-serpent-derek-prior": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "d-p-prior"
-      ],
-      "genres": [
-        "coming-of-age",
-        "epic-fantasy",
-        "fantasy"
-      ],
-      "id": "the-scout-and-the-serpent-derek-prior",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "bob-neufeld-2021": {
-          "abridged": false,
-          "added_at": "2026-08-01",
-          "asin": [
-            {
-              "asin": "B09DGQFGHF",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81k4xsYaH3L.jpg",
-          "id": "bob-neufeld-2021",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "bob-neufeld"
-          ],
-          "publisher": "Derek Prior",
-          "release_date": "2021-08-24",
-          "runtime_min": 151,
-          "sources": [
-            {
-              "imported_at": "2026-08-01",
-              "ref": "B09DGQFGHF",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-scout-and-the-serpent-derek-prior"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-01",
           "ref": "B09DGQFGHF",
