@@ -4484,7 +4484,14 @@
     "the-jungle-book": {
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
-        "rudyard-kipling"
+        "rudyard-kipling",
+        "ralph-mowat"
+      ],
+      "credits": [
+        {
+          "person": "ralph-mowat",
+          "role": "editor"
+        }
       ],
       "genres": [
         "classics",
@@ -5368,6 +5375,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B00OQQTXE8",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B004GI55Q6",
           "type": "libex-import"
         }
       ],

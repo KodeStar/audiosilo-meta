@@ -1383,7 +1383,14 @@
     "the-sign-of-four": {
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
-        "arthur-conan-doyle"
+        "arthur-conan-doyle",
+        "peter-ackroyd"
+      ],
+      "credits": [
+        {
+          "person": "peter-ackroyd",
+          "role": "introduction"
+        }
       ],
       "genres": [
         "classics",
@@ -1789,6 +1796,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B0030E89BA",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "0241434238",
           "type": "libex-import"
         }
       ],
