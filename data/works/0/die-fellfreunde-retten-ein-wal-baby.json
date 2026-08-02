@@ -10641,6 +10641,62 @@
       "language": "de",
       "license": "CC0-1.0",
       "recordings": {
+        "andreas-lange-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0GMHHCQ2P",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91TJscmerpL.jpg",
+          "id": "andreas-lange-2026",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andreas-lange"
+          ],
+          "publisher": "Ignatius Publishers",
+          "release_date": "2026-08-15",
+          "runtime_min": 504,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GMHHCQ2P",
+              "type": "libex-import"
+            }
+          ],
+          "work": "die-galaktischen-falle-des-sherlock-holmes-die-galaktischen-falle-des-sherlock-holmes-band-11"
+        },
+        "peter-bocek-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0GMHFR9CB",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/918QLpFyNML.jpg",
+          "id": "peter-bocek-2026",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "peter-bocek"
+          ],
+          "publisher": "Ignatius Publishers",
+          "release_date": "2026-09-05",
+          "runtime_min": 539,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GMHFR9CB",
+              "type": "libex-import"
+            }
+          ],
+          "work": "die-galaktischen-falle-des-sherlock-holmes-die-galaktischen-falle-des-sherlock-holmes-band-11"
+        },
         "rupert-pichler-2026": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -10674,6 +10730,16 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B0GMHBMNRL",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0GMHHCQ2P",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0GMHFR9CB",
           "type": "libex-import"
         }
       ],
@@ -11226,112 +11292,6 @@
         }
       ],
       "title": "Die galaktischen Fälle des Sherlock Holmes: Die galaktischen Fälle des Sherlock Holmes, Band 9"
-    },
-    "die-galaktischen-falle-des-sherlock-holmes-die-galaktischen-falle-des-sherlock-holmes-gelesen-von-an": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "arthur-conan-doyle",
-        "s-pomej"
-      ],
-      "genres": [
-        "mystery",
-        "science-fiction",
-        "time-travel"
-      ],
-      "id": "die-galaktischen-falle-des-sherlock-holmes-die-galaktischen-falle-des-sherlock-holmes-gelesen-von-an",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "andreas-lange-2026": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0GMHHCQ2P",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91TJscmerpL.jpg",
-          "id": "andreas-lange-2026",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "andreas-lange"
-          ],
-          "publisher": "Ignatius Publishers",
-          "release_date": "2026-08-15",
-          "runtime_min": 504,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0GMHHCQ2P",
-              "type": "libex-import"
-            }
-          ],
-          "work": "die-galaktischen-falle-des-sherlock-holmes-die-galaktischen-falle-des-sherlock-holmes-gelesen-von-an"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0GMHHCQ2P",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Die galaktischen Fälle des Sherlock Holmes: Die galaktischen Fälle des Sherlock Holmes - gelesen von Andreas Lange, Band 11"
-    },
-    "die-galaktischen-falle-des-sherlock-holmes-die-galaktischen-falle-des-sherlock-holmes-gelesen-von-pe": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "arthur-conan-doyle",
-        "s-pomej"
-      ],
-      "genres": [
-        "mystery",
-        "science-fiction",
-        "time-travel"
-      ],
-      "id": "die-galaktischen-falle-des-sherlock-holmes-die-galaktischen-falle-des-sherlock-holmes-gelesen-von-pe",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "peter-bocek-2026": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0GMHFR9CB",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/918QLpFyNML.jpg",
-          "id": "peter-bocek-2026",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "peter-bocek"
-          ],
-          "publisher": "Ignatius Publishers",
-          "release_date": "2026-09-05",
-          "runtime_min": 539,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0GMHFR9CB",
-              "type": "libex-import"
-            }
-          ],
-          "work": "die-galaktischen-falle-des-sherlock-holmes-die-galaktischen-falle-des-sherlock-holmes-gelesen-von-pe"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0GMHFR9CB",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Die galaktischen Fälle des Sherlock Holmes: Die galaktischen Fälle des Sherlock Holmes - gelesen von Peter Bocek, Band 11"
     },
     "die-galaktischen-falle-des-sherlock-holmes-sherlock-holmes-die-galaktischen-falle-4": {
       "added_at": "2026-08-02",
