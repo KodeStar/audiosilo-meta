@@ -493,6 +493,94 @@ func TestPlaceholderCreditRefusesTheRow(t *testing.T) {
 	}
 }
 
+// TestPlaceholderCreditRefusesASuffixedForm pins the phrase tier: a booking
+// placeholder does not always arrive alone. Every name here is a dump form
+// (10 names / 16 credits / 15 books beyond the whole-name table), and each one
+// evaded the exact compare that came before.
+func TestPlaceholderCreditRefusesASuffixedForm(t *testing.T) {
+	for _, name := range []string{
+		"To Be Confirmed Audio",
+		"To Be Confirmed Atria",
+		"To Be Confirmed Gallery",
+		"To Be Confirmed Avid Reader Press",
+		"To Be Confirmed Simon & Schuster UK",
+		"Author to be Announced",
+		"Holt Author To Be Announced",
+		"BFYR Author to Be Confirmed",
+		"Tor May 2027 Author to Be Announced",
+	} {
+		sum, dataDir := runLibex(t, rows(
+			libexRow{asin: "B0PLACESF1", title: "A Book",
+				authors: `{"name":"Ada One"}`, narrators: `{"name":"` + name + `"}`},
+		), false)
+		if sum.NewWorks != 0 || sum.NewPeople != 0 {
+			t.Errorf("credit %q must mint nothing: %+v", name, sum)
+		}
+		if entryExists(t, dataDir, personAddr("ada-one")) {
+			t.Errorf("credit %q refused only its own name, not the whole row", name)
+		}
+	}
+}
+
+// TestPlaceholderCreditRefusesARoleQualifiedForm is the LAYER half of the fix,
+// and the gap collective.go's header used to record as open: this table compares
+// raw names at the parse layer, the credit-cleaning fixpoint runs later, so a
+// role qualifier hid the placeholder from the compare. The refusal now takes a
+// look at the cleaned name too - the shape firstAICredit already used.
+//
+// The abbreviation is what makes this observable: "To Be Announced - narrator"
+// is caught on the RAW name by the phrase tier, but "TBD" is an exact-only entry,
+// so only the cleaned look can reach it.
+func TestPlaceholderCreditRefusesARoleQualifiedForm(t *testing.T) {
+	for _, name := range []string{"TBD - narrator", "To Be Announced - narrator"} {
+		sum, _ := runLibex(t, rows(
+			libexRow{asin: "B0PLACERQ1", title: "A Book",
+				authors: `{"name":"Ada One"}`, narrators: `{"name":"` + name + `"}`},
+		), false)
+		if sum.NewWorks != 0 || sum.NewPeople != 0 {
+			t.Errorf("credit %q must mint nothing: %+v", name, sum)
+		}
+	}
+}
+
+// TestPlaceholderRuleLeavesTheAbbreviationsAlone pins the restraint the phrase
+// tier is bounded by. The multi-word phrases generalize because no name contains
+// them; the three-letter abbreviations do not, because a short opaque token can
+// be part of one ("TBA Studios" is a real production company). The first three
+// names are the dump forms that leaves importable - measured, small, and a
+// one-line addition to the whole-name table if a maintainer ever wants them.
+func TestPlaceholderRuleLeavesTheAbbreviationsAlone(t *testing.T) {
+	for _, name := range []string{"Reader tbd 1", "Kulturplattformen TBA", "SW TBC", "TBA Studios"} {
+		sum, _ := runLibex(t, rows(
+			libexRow{asin: "B0PLACEAB1", title: "A Book",
+				authors: `{"name":"Ada One"}`, narrators: `{"name":"` + name + `"}`},
+		), false)
+		if sum.NewWorks != 1 {
+			t.Errorf("credit %q was refused by an abbreviation rule that does not exist: %+v", name, sum)
+		}
+	}
+}
+
+// TestPlaceholderPhraseLeavesRealNamesAlone is the phrase tier's negative
+// control. The words the phrases are built from are ordinary ones, and a
+// word-bounded match is what keeps them off names that merely contain them.
+func TestPlaceholderPhraseLeavesRealNamesAlone(t *testing.T) {
+	for _, name := range []string{
+		"Tobe Announcer",   // "tobe" is not the word "to be"
+		"Anne Confirmed",   // the phrase's last word alone is not the phrase
+		"Ann To Bee",       // two of the three words, in order, and not the phrase
+		"Announcer To Bea", // the phrase's words, none of them the phrase
+	} {
+		sum, _ := runLibex(t, rows(
+			libexRow{asin: "B0PLACENC1", title: "A Book",
+				authors: `{"name":"Ada One"}`, narrators: `{"name":"` + name + `"}`},
+		), false)
+		if sum.NewWorks != 1 {
+			t.Errorf("real name %q was refused as a placeholder: %+v", name, sum)
+		}
+	}
+}
+
 // TestCollectiveCreditsSurvive is the boundary this vocabulary must not cross:
 // a collective names a real if unnamed party, and the project keeps those - now
 // including the language variants that used to be refused here. What each one
