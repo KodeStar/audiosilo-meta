@@ -477,8 +477,12 @@ func TestARowThatImportsReportsNoLostPlacement(t *testing.T) {
 // ---------------------------------------------------------------------------
 // Placeholder credits
 
+// TestPlaceholderCreditRefusesTheRow covers what is LEFT of this vocabulary
+// after the collective forms flipped to normalization (collective.go): the
+// booking placeholders, which name nobody at all. The flipped forms are pinned
+// on the other side of the line in collective_test.go.
 func TestPlaceholderCreditRefusesTheRow(t *testing.T) {
-	for _, name := range []string{"To Be Announced", "TBA", "Various Narrators", "Narratori Vari", "Elenco"} {
+	for _, name := range []string{"To Be Announced", "To Be Confirmed", "TBA", "TBD", "TBC", "N/A"} {
 		sum, _ := runLibex(t, rows(
 			libexRow{asin: "B0PLACEHL1", title: "A Book",
 				authors: `{"name":"Ada One"}`, narrators: `{"name":"` + name + `"}`},
@@ -490,9 +494,14 @@ func TestPlaceholderCreditRefusesTheRow(t *testing.T) {
 }
 
 // TestCollectiveCreditsSurvive is the boundary this vocabulary must not cross:
-// a collective names a real if unnamed group, and the project keeps those.
+// a collective names a real if unnamed party, and the project keeps those - now
+// including the language variants that used to be refused here. What each one
+// lands AS is collective_test.go's job; this is only the refusal boundary.
 func TestCollectiveCreditsSurvive(t *testing.T) {
-	for _, name := range []string{"Full Cast", "Uncredited", "Anonymous", "Various", "Cast", "Unknown"} {
+	for _, name := range []string{
+		"Full Cast", "Uncredited", "Anonymous", "Various", "Cast", "Unknown",
+		"Various Narrators", "Narratori Vari", "Elenco", "Diverse Sprecher", "N.N.",
+	} {
 		sum, _ := runLibex(t, rows(
 			libexRow{asin: "B0COLLECT1", title: "A Book",
 				authors: `{"name":"Ada One"}`, narrators: `{"name":"` + name + `"}`},

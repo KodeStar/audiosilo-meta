@@ -49,7 +49,7 @@ The refusals are reported as one aggregated warning line per run.
 
 ### Unidentifiable credits are excluded too
 
-The second credit-side refusal, and the only other one: a row is refused whole
+The second credit-side refusal: a row is refused whole
 when **any** of its author or narrator credits names someone this catalogue
 cannot identify. A person's identity here is their slug, and `Slugify` keeps only
 ASCII letters and digits (accented Latin folds onto its base letter), so a name
@@ -68,6 +68,47 @@ the first. It is also deliberately **libex-only** - the OpenAudible, Libation an
 visible to that user and refusing their book to keep a shared database tidy would
 be the wrong trade. Like the AI refusals, these are reported as one aggregated
 warning line per run (naming both the rows and the offending credits).
+
+### Collective and placeholder credits
+
+A credit that names no individual is classified by **what it states**, never by
+the language it states it in, into exactly four buckets. Only one of them is
+refused:
+
+1. **Collective statements** - "a full cast performed this", "several
+   contributors wrote this". True, and true in every language: *Full Cast*, *a
+   full cast*, *ensemble cast*, *diverse Sprecher*, *elenco*, *distribution
+   complète*; *Various*, *Various Authors*, *Autori Vari*, *divers auteurs*,
+   *varios narradores*, *Diverse*; *Anonymous*, *anónimo*, *anonyme*;
+   *Uncredited*. These **import**, folded onto one canonical record per
+   statement (`full-cast`, `various`, `anonymous`, `uncredited`).
+2. **Unknown-identity statements** - "who this was is not known": *Unknown*,
+   the bibliographic *N.N.* (nomen nescio), *auteur inconnu*, *narratore
+   sconosciuto*, *autor desconocido*. These **import**, folded onto `unknown`.
+   It is deliberately a different record from `anonymous`: anonymity is a
+   choice, an unknown identity is a gap.
+3. **Booking placeholders** - the retailer's scheduling artifact, naming nobody
+   at all: *to be announced*, *to be confirmed*, *tbd*, *tba*, *tbc*, *n/a*.
+   These are **refused**, whole-row, in both the query and the importer.
+4. **Branded ensembles** - a named troupe (*The Colonial Radio Players*,
+   *Museum Audiobooks cast*, *Das Schauspiel-Ensemble vom Landestheater
+   Detmold*, *Linguistics Team*). A real group with a real name, so it keeps
+   its own person record and nothing folds it.
+
+**One list, one rule.** The fold lives in one table,
+`internal/importer/collective.go`, applied at one place - the tail of the shared
+credit cleaning, so authors, narrators and role credits all pass through it and
+every importer inherits it, not just libex. Matching is the **whole cleaned
+name**, exactly, case- and accent-insensitively: never a pattern and never a
+substring, which is what keeps bucket 4 (and the people named Cast, Castle,
+Sorvari) intact. Every entry is measured over the full dump and pinned by a
+test.
+
+The SQL query's placeholder filter is the twin of bucket 3 **only**. It
+deliberately has no twin for buckets 1 and 2: those rows are wanted, and
+dropping them at export time would lose books that import perfectly well. An
+export produced by an older copy of the query refused some of them; that is
+harmless - the bound only loosened, and re-exporting picks them up.
 
 ## The import posture (read this first)
 

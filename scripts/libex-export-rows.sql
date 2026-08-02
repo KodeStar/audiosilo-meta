@@ -25,6 +25,9 @@
 -- The junk-credit, list-credit and placeholder-credit filters at the end of the
 -- WHERE clause are the SQL twins of junkCreditNames, firstListCredit and
 -- placeholderCreditNames in the same file, and are kept in step the same way.
+-- There is deliberately NO twin for the collective/unknown-identity table
+-- (internal/importer/collective.go): those rows are IMPORTED, folded onto a
+-- canonical record, so the export must not drop them.
 -- Deliberately NOT used: a substring search for "tts", or a bare "ai"/"ki"/"ia"
 -- token. Those match Watts, Pitts, Ricketts, Ki Hong Lee and Ai-jen Poo, who
 -- are real narrators. Nor a bare "claude" or "gpt" token: Claude is an ordinary
@@ -160,26 +163,29 @@ WHERE b.is_vvab IS NOT TRUE
       AND regexp_replace(a.name,
             '&(#[0-9]+|#x[0-9a-fA-F]+|[a-zA-Z][a-zA-Z0-9]*);', '', 'g') LIKE '%;%'
   )
-  -- A credit that is a cast PLACEHOLDER rather than a person: the retailer's
+  -- A credit that is a booking PLACEHOLDER rather than a person: the retailer's
   -- "to be announced" standing in for a cast that had not been booked. Exact
   -- names, both credit lists, the SQL twin of placeholderCreditNames in
   -- internal/importer/libex.go - see that comment for the line this draws
-  -- against COLLECTIVE credits ("Full Cast", "Anonymous", "Uncredited",
-  -- "Various", "Unknown"), every one of which is deliberately kept.
+  -- against COLLECTIVE and UNKNOWN-IDENTITY credits ("Full Cast", "Various",
+  -- "Anonymous", "Uncredited", "Unknown", "N.N." and every translation of
+  -- them). Those are NOT refused: they state something true about the
+  -- production, so they import and are folded onto one canonical record per
+  -- statement by the normalization table in internal/importer/collective.go.
+  -- The plural-cast forms this list used to carry ('various narrators',
+  -- 'varios narradores', 'narratori vari', 'diverse sprecher', 'elenco') moved
+  -- there and are deliberately gone from here; a dump exported with the older
+  -- query is still fine, it merely lost rows the import would now accept.
   AND NOT EXISTS (
     SELECT 1 FROM book_narrator bn
     WHERE bn.book_asin = b.asin
       AND lower(btrim(bn.narrator_name)) IN (
-        'to be announced', 'to be confirmed', 'tbd', 'tba', 'tbc', 'n/a',
-        'various narrators', 'varios narradores', 'narratori vari',
-        'diverse sprecher', 'elenco')
+        'to be announced', 'to be confirmed', 'tbd', 'tba', 'tbc', 'n/a')
   )
   AND NOT EXISTS (
     SELECT 1 FROM author_book ab JOIN authors a ON a.id = ab.author_id
     WHERE ab.book_asin = b.asin
       AND lower(btrim(a.name)) IN (
-        'to be announced', 'to be confirmed', 'tbd', 'tba', 'tbc', 'n/a',
-        'various narrators', 'varios narradores', 'narratori vari',
-        'diverse sprecher', 'elenco')
+        'to be announced', 'to be confirmed', 'tbd', 'tba', 'tbc', 'n/a')
   )
 ORDER BY COALESCE(b.sku_group, b.asin), b.region, b.asin;

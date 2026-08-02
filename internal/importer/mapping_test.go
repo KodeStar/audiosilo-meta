@@ -486,7 +486,12 @@ func TestCleanCreditName(t *testing.T) {
 		// Exact-half doubled names collapse.
 		{"doubled multi-word name", "Melissa K. Roehrich Melissa K. Roehrich", "Melissa K. Roehrich"},
 		{"doubled two-word name", "Full Cast Full Cast", "Full Cast"},
-		{"doubled with differing case", "full cast Full Cast", "full cast"},
+		// The collapse keeps the FIRST half's spelling, whichever case it is in.
+		// It is pinned on a name the collective fold does not touch, because
+		// "full cast Full Cast" collapses to "full cast" and is then folded onto
+		// the canonical "Full Cast" (collective.go) - which is the right answer
+		// for that name and no longer a test of this rule.
+		{"doubled with differing case", "melissa roehrich Melissa Roehrich", "melissa roehrich"},
 
 		// Negative cases. Never strip an arbitrary " - X" suffix, never collapse
 		// a repeated single word, never collapse an odd word count.
