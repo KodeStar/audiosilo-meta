@@ -114,10 +114,25 @@ func mapRegion(word string) (region string, ok bool) {
 	return region, true
 }
 
-// sequencePattern matches a series position: a number or an omnibus range. It
-// mirrors the series.schema.json position pattern, so a value that passes here
-// will pass schema validation.
-var sequencePattern = regexp.MustCompile(`^\d+(\.\d+)?(-\d+(\.\d+)?)?$`)
+// sequencePattern matches a series position AS A SOURCE MAY SPELL IT: a number,
+// or an omnibus range whose dash may carry whitespace on either side. The
+// schema's own pattern (series.schema.json) admits no whitespace at all, which
+// is the point of NORMALIZING rather than merely validating - what a source
+// typed and what the record stores are two different strings, and only the
+// canonical one is ever written.
+//
+// The whitespace tolerance was measured over the full 1.13M-book dump: of the
+// 345,140 stated series positions, 4,080 fail the schema pattern and 104 of
+// those (100 distinct books, 53 distinct spellings) are an omnibus range spelled
+// with a space - "1 - 3", "3040 - 3049", and the one-sided "14 -15", "1.5- 3.5".
+// Every one of them was dropped, which cost the book its place in its series.
+// ZERO of the 104 use an en or em dash, so the dash class stays the plain hyphen
+// the schema pattern names: the tolerance is whitespace, nothing else.
+var sequencePattern = regexp.MustCompile(`^\d+(\.\d+)?(\s*-\s*\d+(\.\d+)?)?$`)
+
+// sequenceSpaceRE is the whitespace a spelled range carries around its dash,
+// removed on the way to the canonical form.
+var sequenceSpaceRE = regexp.MustCompile(`\s*-\s*`)
 
 // NormalizeSequence trims a raw series_sequence, canonicalizes it, and reports
 // whether it is a valid position (a single number or a range like "1-3.5").
@@ -125,14 +140,17 @@ var sequencePattern = regexp.MustCompile(`^\d+(\.\d+)?(-\d+(\.\d+)?)?$`)
 // A position is a STRING in the schema, so two spellings of the same number are
 // two different positions to every rule that compares them (series membership,
 // the position-uniqueness check, the importer's same-position merge test).
-// Sources spell them differently - a Postgres numeric renders "1" as "1.0" -
-// so trailing fractional zeros are stripped ("1.0" -> "1", "2.50" -> "2.5",
-// both endpoints of a range) and one book cannot occupy a series twice.
+// Sources spell them differently - a Postgres numeric renders "1" as "1.0", and
+// a range is written both "1-3" and "1 - 3" - so trailing fractional zeros are
+// stripped ("1.0" -> "1", "2.50" -> "2.5", both endpoints of a range) and the
+// whitespace around a range's dash is removed. One book cannot occupy a series
+// twice, and what is stored always satisfies the schema pattern.
 func NormalizeSequence(raw string) (pos string, ok bool) {
 	pos = strings.TrimSpace(raw)
 	if pos == "" || !sequencePattern.MatchString(pos) {
 		return "", false
 	}
+	pos = sequenceSpaceRE.ReplaceAllString(pos, "-")
 	if !strings.Contains(pos, ".") {
 		return pos, true
 	}
