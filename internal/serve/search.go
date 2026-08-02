@@ -55,8 +55,44 @@ func ftsQuery(q string) string {
 // cards are resolved in a single batch.
 type searchHit struct{ kind, id string }
 
+// mergeHits puts the series-position work ids in front of the FTS hits, drops
+// the duplicate an FTS hit would be, and truncates to the page size. The page
+// stays exactly limit long, so a boost costs the last FTS hit rather than
+// widening the response.
+func mergeHits(boosted []string, ftsHits []searchHit, limit int) []searchHit {
+	if len(boosted) == 0 {
+		return ftsHits
+	}
+	out := make([]searchHit, 0, len(boosted)+len(ftsHits))
+	seen := make(map[searchHit]bool, len(boosted))
+	for _, id := range boosted {
+		h := searchHit{kind: "work", id: id}
+		if seen[h] {
+			continue
+		}
+		seen[h] = true
+		out = append(out, h)
+	}
+	for _, h := range ftsHits {
+		if !seen[h] {
+			out = append(out, h)
+		}
+	}
+	if limit > 0 && len(out) > limit {
+		out = out[:limit]
+	}
+	return out
+}
+
 // search runs the FTS query and assembles heterogeneous results (work / person
 // / series) into a single ranked slice.
+//
+// A query that names a series and a number ("jack reacher 2") resolves that
+// volume FIRST, ahead of the FTS hits - see seriespos.go for why that resolution
+// is query-side rather than extra text in the index. The boost is additive: the
+// FTS hits that follow are exactly the ones the query returned before, minus any
+// duplicate of a boosted work, and a query that resolves no series-position hit
+// is byte-for-byte the old behaviour.
 //
 // The hits are materialized FIRST and the work cards resolved for the whole page
 // at once (cardsByID), rather than four queries per work hit inside the scan
@@ -64,18 +100,24 @@ type searchHit struct{ kind, id string }
 // search box - so the per-page query count is fixed instead of proportional to
 // the number of work hits.
 func (s *snapshot) search(q string, limit int) ([]any, error) {
+	boosted, err := s.seriesPositionHits(q)
+	if err != nil {
+		return nil, err
+	}
+
 	match := ftsQuery(q)
 	rows, err := s.db.Query(
 		`SELECT kind, id FROM search_fts WHERE search_fts MATCH ? ORDER BY bm25(search_fts) LIMIT ?`, match, limit)
 	if err != nil {
 		return nil, err
 	}
-	hits, err := scanPairs(rows, func(kind, id string) searchHit {
+	ftsHits, err := scanPairs(rows, func(kind, id string) searchHit {
 		return searchHit{kind: kind, id: id}
 	})
 	if err != nil {
 		return nil, err
 	}
+	hits := mergeHits(boosted, ftsHits, limit)
 
 	workIDs := make([]string, 0, len(hits))
 	for _, h := range hits {

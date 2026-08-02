@@ -85,8 +85,11 @@ func TestServeLookupsAreIndexed(t *testing.T) {
 		{"authors of a work", authorsOfSQL, []any{work}},
 		{"narrators of a work", workNarratorsSQL, []any{wok}},
 		{"character aliases of a work", characterAliasSQL, []any{work}},
-		// Series detail.
+		// Series detail. seriesWorksSQL is also the membership read the
+		// series-position boost issues per probed series.
 		{"works of a series", seriesWorksSQL, []any{series}},
+		// The series-position boost's name probe (search.go -> seriesMatching).
+		{"series name probe", seriesMatchSQL, []any{`"stormlight"*`, seriesProbeLimit}},
 		{"authors of a series", seriesAuthorsSQL, []any{series}},
 		{"work count of a series", seriesWorksCountSQL, []any{series}},
 		// Person detail: the paged lists AND the totals that must agree with them.
