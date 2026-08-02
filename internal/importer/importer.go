@@ -183,6 +183,14 @@ type planner struct {
 	// counted line does.
 	unnamedCredits     int
 	unnamedCreditNames []string
+	// unaddressableSeries counts the series claims getOrCreateSeries refused
+	// because the series NAME has no addressable slug, and
+	// unaddressableSeriesNames keeps a few distinct spellings for the aggregate
+	// warning. Aggregated for the same reason as unnamedCredits: the cause is one
+	// property of Slugify, and one counted line says everything 32 identical
+	// per-row lines would.
+	unaddressableSeries      int
+	unaddressableSeriesNames []string
 	// runCredits is the set of contributor credits THIS RUN has written onto
 	// each work it created or filled, keyed by work slug. Its PRESENCE is the
 	// permission: a work the run itself put credits on (or created) accretes the
@@ -361,6 +369,7 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 	p.finalizeSeries()
 	p.reportUnmappedGenres()
 	p.reportUnnamedCredits()
+	p.reportUnaddressableSeries()
 	if p.fatal != nil {
 		return p.summary, p.fatal
 	}
@@ -1113,11 +1122,13 @@ func (p *planner) getOrCreateWork(title, fullTitle string, authorSlugs []string,
 
 // findSeries returns the already-known series (existing on disk or created this
 // run) that name resolves to, or nil - it never creates. It walks the same
-// candidate chain as getOrCreateSeries so both resolve a name identically.
+// candidate chain as getOrCreateSeries so both resolve a name identically,
+// including the refusal: a name with no addressable slug resolves to nothing,
+// because nothing was ever minted under it.
 func (p *planner) findSeries(name string) *seriesState {
 	base := Slugify(name)
 	if base == "" {
-		base = "series"
+		return nil
 	}
 	for i := 0; ; i++ {
 		ss, exists := p.series[NumberedSlugAt(base, i)]
@@ -1318,6 +1329,32 @@ func (p *planner) reportUnnamedCredits() {
 		fmt.Sprintf("%d role-qualified credits dropped: the credited name does not resolve to an identifiable person",
 			p.unnamedCredits),
 		p.unnamedCreditNames))
+}
+
+// noteUnaddressableSeries records one series claim refused because the name has
+// no addressable slug (see getOrCreateSeries). Distinct spellings only, capped,
+// on the same terms as noteUnnamedCredit.
+func (p *planner) noteUnaddressableSeries(name string) {
+	p.unaddressableSeries++
+	if len(p.unaddressableSeriesNames) >= maxWarnExamples || slices.Contains(p.unaddressableSeriesNames, name) {
+		return
+	}
+	p.unaddressableSeriesNames = append(p.unaddressableSeriesNames, name)
+}
+
+// reportUnaddressableSeries appends one run-level warning for the series claims
+// dropped because their name has no addressable slug. Like reportUnnamedCredits
+// it is a warning and not a silent drop: these are real series the catalogue is
+// failing to represent, and the line is the standing evidence for teaching
+// Slugify to transliterate.
+func (p *planner) reportUnaddressableSeries() {
+	if p.unaddressableSeries == 0 {
+		return
+	}
+	p.summary.Warnings = append(p.summary.Warnings, withExamples(
+		fmt.Sprintf("%d series claims dropped: the series name does not resolve to an addressable slug",
+			p.unaddressableSeries),
+		p.unaddressableSeriesNames))
 }
 
 // recordRunCredits remembers what this run wrote onto a work, and is what a
@@ -1551,6 +1588,11 @@ func (p *planner) addToSeries(name, work, pos string, warn func(string, ...any))
 		return
 	}
 	ss := p.getOrCreateSeries(name, warn)
+	if ss == nil {
+		// The name has no addressable slug (see getOrCreateSeries). The row still
+		// imports; the work is simply not placed in this series.
+		return
+	}
 	if existing, ok := ss.members[work]; ok {
 		if existing != pos {
 			warn("series %q already lists work %q at position %q; not re-adding at %q", name, work, existing, pos)
@@ -1575,11 +1617,26 @@ func (p *planner) addToSeries(name, work, pos string, warn func(string, ...any))
 
 // getOrCreateSeries returns the series for name, creating an in-memory record
 // when new. Numeric suffixes resolve a collision with a differently-named series.
+//
+// It returns nil when the name has NO addressable slug - a name written entirely
+// in a script Slugify keeps nothing of (Cyrillic, Japanese, Arabic; the same
+// property behind the unidentifiable-credit refusal in libex.go). This used to
+// fall back to the base "series", which is the one collision base that is
+// guaranteed to collide: every such name in a run takes the next free
+// series-2/series-3/... slug, so a series is addressed by WHEN it was seen rather
+// than by what it is called. One wave minted 32 of them, and because the order
+// rows arrive in is not stable, a re-run of the same input places different
+// series at the same slugs - a degenerate, non-reproducible identity.
+//
+// Refusing the claim mirrors the unidentifiable-credit posture exactly: an
+// identity this catalogue cannot address is not minted. The cost is bounded and
+// honest - the work still imports, it is simply not placed in the series, which
+// is true - and it is cheap to reverse the day Slugify learns to transliterate.
 func (p *planner) getOrCreateSeries(name string, warn func(string, ...any)) *seriesState {
 	base := Slugify(name)
 	if base == "" {
-		base = "series"
-		warn("series name %q produced an empty slug; using %q", name, base)
+		p.noteUnaddressableSeries(name)
+		return nil
 	}
 	for i := 0; ; i++ {
 		slug := NumberedSlugAt(base, i)

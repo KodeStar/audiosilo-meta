@@ -579,10 +579,14 @@ note rather than a closed duplicate.
   output, a report that partitions every row read; `scripts/
   libex-export-rows.sql` + `scripts/README.md` document the dump-to-rows
   operator flow - the received dump is Postgres 16 custom format); the
-  **AI-narration exclusion** (a synthetic voice is not a person, so a row
-  crediting one is refused at the libex PARSE layer - `aiNarratorNames` /
-  `aiNarratorPrefix` / `aiNarratorMarkers` in `libex.go`, an evidence-driven
-  vocabulary measured over the full dump, ANY AI credit disqualifying the row -
+  **AI-credit exclusion** (an AI is not a person, so a row crediting one is
+  refused at the libex PARSE layer - `aiNarratorNames` / `aiNarratorPrefix` /
+  `aiNarratorMarkers` for a synthetic VOICE and `aiSystemTokens` for a
+  generative SYSTEM credited as the author ("CLAUDE.AI", "ChatGPT ChatGPT"),
+  every entry an evidence-driven form measured over the full dump. Both
+  vocabularies are applied to BOTH credit lists (`firstAICredit`): the dump is
+  not tidy about which column its non-people land in, and gating narrators only
+  put a language model in the people table. ANY AI credit disqualifies the row,
   which applies to every libex mode and reports as one aggregated warning.
   libex's own `is_vvab` flag cannot do this job: 145,558 dump books credit an AI
   voice and the flag is `false` on 145,550 of them, so
@@ -602,7 +606,12 @@ note rather than a closed duplicate.
   those paths. No SQL twin - the rule is Unicode folding, not a name list);
   both refusals are applied through the one `refuseLibexCredits`, which
   `libex-select` calls too, so a row the import will refuse is never selected
-  into a tranche and never claims a series slot ahead of an importable sibling;
+  into a tranche and never claims a series slot ahead of an importable sibling.
+  The same posture governs an unaddressable SERIES name, one step further in
+  (`getOrCreateSeries`): a name that slugs away to nothing has no identity to
+  mint, so the CLAIM is refused and aggregated rather than falling back to a
+  `series`/`series-2`/... chain that addressed a series by the order its rows
+  arrived - the row still imports, the work is simply not placed;
   and the
   intake features (typed `libex: <ASIN>` provenance sniffing, ASIN-backed only,
   and the add-work form's Genres field validated against the embedded schema

@@ -107,7 +107,7 @@ func (c libexWarnClass) aggregateForm(n int) string {
 	case warnUnknownRegion:
 		return fmt.Sprintf("%d rows skipped: region is not a known marketplace", n)
 	case warnAINarrator:
-		return fmt.Sprintf("%d rows skipped: narrated by an AI voice", n)
+		return fmt.Sprintf("%d rows skipped: a credited name is an AI voice or system", n)
 	case warnJunkCredit:
 		return fmt.Sprintf("%d rows skipped: a credited name is a platform account", n)
 	case warnUnnamedCredit:
@@ -569,12 +569,12 @@ func (r creditRefusal) label(asin string) string {
 // refuseLibexCredits applies the credit-side row refusals in order and reports
 // the first one the row earns.
 func refuseLibexCredits(authors, narrators []string) (creditRefusal, bool) {
-	if name, isAI := firstAINarrator(narrators); isAI {
+	if role, name, why, isAI := firstAICredit(authors, narrators); isAI {
 		return creditRefusal{
 			class:  warnAINarrator,
 			reason: reasonAINarrator,
 			name:   name,
-			detail: fmt.Sprintf("narrator %q is an AI voice", name),
+			detail: fmt.Sprintf("%s %q is %s", role, name, why),
 		}, true
 	}
 	if name, junk := firstJunkCredit(authors, narrators); junk {
@@ -755,34 +755,136 @@ var aiNarratorMarkers = map[string]bool{
 	"kokoro tts":                true, // 1 - a named TTS engine
 }
 
-// firstAINarrator reports whether ANY credit in the row's narrator list is an AI
-// voice, naming the first one it finds (for the warning).
+// aiSystemTokens name a generative-AI SYSTEM rather than a person, and appear in
+// the dump as AUTHORS: a book written by a model, credited to the product that
+// wrote it. The voice vocabulary above cannot see them - "CLAUDE.AI" is not a
+// narration credit and matches none of its three shapes - and gating narrators
+// only let one through as an author in a seed wave, minting a person record for
+// a language model.
+//
+// Matched as WORD TOKENS inside the folded credit (see namesAISystem), because
+// the dump's spellings are compounds of a real name and a product name ("A.
+// ChatGPT", "Sparky From ChatGPT", "Jim Mitchell and Google NotebookLM"), and a
+// whole-name set would need one entry per compound.
+//
+// Every token is measured over the full 1.13M-row dump and every token is a
+// PRODUCT name no human carries: across authors AND narrators the list matches 24
+// distinct names, all of them AI systems, and zero people. Counts are books.
+//
+// What is deliberately NOT here matters as much:
+//
+//   - bare "ai" and bare "claude" - "Ai" is a published poet's mononym and Claude
+//     is an ordinary given name (the dump has translators called Claude); only the
+//     dotted product spelling "claude.ai" is unambiguous.
+//   - bare "gpt" - it would take "Daddy GPT", "Mommy GPT" and "Parents GPT" with
+//     it, which are person-shaped pen names rather than a product credited as an
+//     author. The versioned product spellings are unambiguous; the bare token is
+//     not.
+//   - "gemini" and bare "grok" - neither is attested in the dump as a credit at
+//     all ("Grok Ai" is), and both are ordinary words a pen name could use.
+var aiSystemTokens = []string{
+	"chatgpt",    // 1,187 - by far the commonest, incl. "ChatGPT ChatGPT" (1,140)
+	"chat gpt",   // 12 - the spaced spelling
+	"gpt-5",      // 28
+	"gpt-4",      // 5
+	"copilot",    // 3 - "Copilot AI", "Copilot Artifical Intelligence" (sic)
+	"openai",     // 2
+	"open ai",    // 1 - the spaced spelling
+	"notebooklm", // 2
+	"grok ai",    // 2
+	"claude.ai",  // 1
+}
+
+// firstAICredit reports whether ANY credit in the row's author or narrator list
+// is an AI, naming the first one it finds, which list it came from, and why (both
+// for the warning).
 //
 // ANY rather than "all of them", deliberately. The two rules are
-// indistinguishable on the measured data - of the 145,558 AI-narrated books in
-// the dump, ZERO credit a human alongside the synthetic voice, so no row today
-// is decided differently - and they diverge only on a mixed production that does
-// not yet exist. The failure asymmetry picks the rule: refusing a row costs
-// nothing (it is counted, reported, and can be added by hand), while admitting
-// one mints a person record for a TTS engine, which is exactly what this rule
-// exists to prevent.
-func firstAINarrator(names []string) (name string, isAI bool) {
-	for _, n := range names {
-		if isAINarratorName(n) {
-			return n, true
+// indistinguishable on the measured narration data - of the 145,558 AI-narrated
+// books in the dump, ZERO credit a human alongside the synthetic voice - and on
+// the authorship side they diverge on exactly one book, "Jim Mitchell and Google
+// NotebookLM". The failure asymmetry picks the rule: refusing a row costs nothing
+// (it is counted, reported, and can be added by hand), while admitting one mints
+// a person record for a TTS engine or a language model, which is exactly what
+// this rule exists to prevent.
+//
+// BOTH credit lists, and both vocabularies against each. A synthetic voice
+// credited as the author is no more a person than one credited as the narrator,
+// and the dump proves the model is not tidy about which column its non-people
+// land in.
+func firstAICredit(authors, narrators []string) (role, name, why string, isAI bool) {
+	for _, list := range []struct {
+		role  string
+		names []string
+	}{{"narrator", narrators}, {"author", authors}} {
+		for _, n := range list.names {
+			if why, ok := aiCreditReason(n); ok {
+				return list.role, n, why, true
+			}
+			// A credit qualifier can hide the marker from the trailing-paren test
+			// ("Elise (AI) - narrator"), so the cleaned form gets a look too - that is
+			// the name that would become the person record. No such form is in the
+			// dump today; this is the cheap guard against the day one appears.
+			if cleaned := CleanCreditName(n); cleaned != n {
+				if why, ok := aiCreditReason(cleaned); ok {
+					return list.role, n, why, true
+				}
+			}
 		}
-		// A credit qualifier can hide the marker from the trailing-paren test
-		// ("Elise (AI) - narrator"), so the cleaned form gets a look too - that is
-		// the name that would become the person record. No such form is in the
-		// dump today; this is the cheap guard against the day one appears.
-		if cleaned := CleanCreditName(n); cleaned != n && isAINarratorName(cleaned) {
-			return n, true
-		}
+	}
+	return "", "", "", false
+}
+
+// aiCreditReason judges one credit name against both AI vocabularies and reports
+// which one refused it, phrased for the warning line.
+func aiCreditReason(name string) (why string, isAI bool) {
+	switch {
+	case isAINarratorName(name):
+		return "an AI voice", true
+	case namesAISystem(name):
+		return "an AI system, not a person", true
 	}
 	return "", false
 }
 
-// isAINarratorName applies the three measured shapes to one credit name.
+// namesAISystem reports whether the credit contains an aiSystemTokens token as a
+// whole word. Token containment rather than a whole-name match because the
+// product name arrives welded to human text ("Sparky From ChatGPT"); the word
+// boundaries are what keep it off a name that merely spells a token inside a
+// longer word.
+func namesAISystem(name string) bool {
+	canon := foldCredit(name)
+	if canon == "" {
+		return false
+	}
+	for _, token := range aiSystemTokens {
+		if containsToken(canon, token) {
+			return true
+		}
+	}
+	return false
+}
+
+// containsToken reports whether token occurs in s bounded by non-word runes on
+// both sides, where a word rune is a letter or a digit - the same boundary test
+// the AI-voice prefix and suffix families use (continuesWord/endsWord), applied
+// to both ends.
+func containsToken(s, token string) bool {
+	for at := 0; ; {
+		i := strings.Index(s[at:], token)
+		if i < 0 {
+			return false
+		}
+		start := at + i
+		end := start + len(token)
+		if !endsWord(s[:start]) && !continuesWord(s[end:]) {
+			return true
+		}
+		at = start + 1
+	}
+}
+
+// isAINarratorName applies the three measured VOICE shapes to one credit name.
 func isAINarratorName(name string) bool {
 	canon := foldCredit(name)
 	if canon == "" {

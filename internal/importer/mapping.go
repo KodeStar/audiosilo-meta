@@ -339,10 +339,33 @@ func trimCredentialTitles(qualifier string) (trimmed string, dropped int) {
 var prefixCredits = []string{"created by ", "creato da "}
 
 // roleSuffixRE locates a trailing credit qualifier's separator. The separator is
-// deliberately loose - the dump spells it " - ", " -", " -- " and with repeated
-// whitespace - while the ROLE itself is not: the capture stops at a hyphen and is
-// then checked against roleQualifiers, so only a listed role ever strips.
-var roleSuffixRE = regexp.MustCompile(`\s+-+\s*([^-]+)$`)
+// deliberately loose - the dump spells it " - ", " -", " -- ", with repeated
+// whitespace, and with an EN or EM dash in place of the hyphen ("Bernhard Kempen
+// – Übersetzer") - while the ROLE itself is not: the capture stops at a dash and
+// is then checked against roleQualifiers, so only a listed role ever strips.
+//
+// The dash class is studiotail.go's dashSepRE verbatim, which is the point: one
+// source spells its separator one way and the two rules that read a trailing
+// qualifier must agree on what a separator IS. Reading the hyphen only cost 176
+// German translator credits in the dump - which do not merely lose their role,
+// they mint a BOGUS PERSON ("Bernhard Kempen – Übersetzer" slugs to
+// bernhard-kempen-ubersetzer, a second identity for a real translator who is also
+// in the catalogue under his own name).
+//
+// Two deliberate narrowings come with the wider dash class:
+//
+//   - `-{1,2}` rather than `-+`. Measured over the full 1.13M-row dump, ZERO
+//     credit names carry a 3-or-more hyphen separator, so the bound costs nothing
+//     and keeps the two rules character-for-character identical.
+//   - the capture excludes the en and em dash as well as the hyphen. That is what
+//     makes a DOUBLED qualifier still strip one role at a time however the source
+//     spelled its separators: the leftmost match whose capture reaches the end of
+//     the string is the last separator, so "X – Translator – translator" resolves
+//     the same way "X - Translator - translator" always did.
+//
+// The trailing `\s*` (rather than dashSepRE's `\s+`) is the existing tolerance
+// for a missing space after the separator ("X -translated by"), kept as it was.
+var roleSuffixRE = regexp.MustCompile(`\s+(?:-{1,2}|[–—]{1,2})\s*([^-–—]+)$`)
 
 // minDoubledHalfWords is the smallest half a doubled-name collapse will accept.
 // Requiring TWO words per half is what keeps "Duran Duran" intact: a single
