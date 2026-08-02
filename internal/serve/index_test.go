@@ -102,25 +102,29 @@ func TestServeLookupsAreIndexed(t *testing.T) {
 	}
 }
 
-// TestBatchLookupsAreIndexed covers the IN-batch queries cardsByID issues. They
-// carry a rendered placeholder list rather than a fixed argument count, so the
-// guard drives them through the same eachChunk helper the real code uses.
+// TestBatchLookupsAreIndexed covers the IN-batch queries cardsByID issues, plus
+// the series-position boost's batched membership read. They carry a rendered
+// placeholder list rather than a fixed argument count, so the guard drives them
+// through the same eachChunk helper the real code uses.
 func TestBatchLookupsAreIndexed(t *testing.T) {
 	snap := snapshotFor(t, fixtureCatalog())
 	ids := []string{"project-hail-mary", "the-way-of-kings"}
+	seriesIDs := []string{"the-stormlight-archive"}
 
 	cases := []struct {
 		name string
+		ids  []string
 		sql  func(ph string) string
 	}{
-		{"works by id", worksByIDSQL},
-		{"authors by work", authorsByWorkSQL},
-		{"first series by work", firstSeriesByWorkSQL},
-		{"covers by work", coversByWorkSQL},
+		{"works by id", ids, worksByIDSQL},
+		{"authors by work", ids, authorsByWorkSQL},
+		{"first series by work", ids, firstSeriesByWorkSQL},
+		{"covers by work", ids, coversByWorkSQL},
+		{"members of the probed series", seriesIDs, seriesMembersSQL},
 	}
 	for _, tc := range cases {
 		t.Run(tc.name, func(t *testing.T) {
-			err := eachChunk(ids, func(ph string, args []any) error {
+			err := eachChunk(tc.ids, func(ph string, args []any) error {
 				assertNoFullScan(t, queryPlan(t, snap, tc.sql(ph), args...))
 				return nil
 			})
@@ -130,3 +134,14 @@ func TestBatchLookupsAreIndexed(t *testing.T) {
 		})
 	}
 }
+
+// NOT guarded here: seriesMatchSQL, the series-position boost's name probe.
+// This test checks INDEX SELECTION, and an FTS5 MATCH selects no index a plan
+// can name - every FTS query reports as "SCAN <fts> VIRTUAL TABLE INDEX n:M...",
+// which assertNoFullScan deliberately allows, and the bm25 ORDER BY legitimately
+// sorts in a temp b-tree. A case here would pass no matter how expensive the
+// probe became, and a vacuous guard is worse than none: it reads as coverage.
+// What actually bounds the probe's cost is the SIZE of its match set, and that
+// is guarded behaviourally instead - TestSeriesPositionSkipsJunkResiduals pins
+// the residuals that are never probed, and ftsPhrase (no prefix-star) pins the
+// match to whole tokens. Both are measured in the A/B on the real artifact.

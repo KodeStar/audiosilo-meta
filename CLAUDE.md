@@ -340,7 +340,37 @@ fallback for missed notifications. The workflow reads
 either is absent or delivery fails, the data release still succeeds and polling
 catches it later.
 FTS queries are built defensively (`ftsQuery`: every token quoted + escaped,
-final token prefixed with `*`) so no user input can break the MATCH. Business
+final token prefixed with `*`) so no user input can break the MATCH.
+A `search?q=` that names a series and a number ("jack reacher 2", "jack reacher
+02", "jack reacher book 2"/"band 2") additionally resolves that volume and
+returns it FIRST, ahead of the FTS hits (`seriespos.go`): the trailing token is
+read as a position, the rest (the "residual") resolves through the same FTS
+index restricted to series rows, and the stated number is compared against
+`series_works.position` through `parsePositionRange` - the package's one copy of
+the position grammar, so `02` finds `2`, `2.50` finds `2.5`, and `2`, `2.5`,
+`1-3.5` stay three different volumes. A residual that names a series OUTRIGHT
+drops the partial matches (`preferWholeName`), so "jack reacher 2" is volume 2
+of *Jack Reacher* and not also of *The Hunt for Jack Reacher*, and the whole
+residual is tried before a trailing volume word is stripped, so "the jungle
+book 2" is volume 2 of *The Jungle Book*. It is deliberately QUERY-side rather
+than extra text in the artifact's FTS row: bm25 cannot be steered to rank the
+volume first, the FTS tokenizer splits `"2.5"` into `2` and `5` (an indexed
+position would blur the novella into volume 2), and nothing about the artifact
+changes - no new table, no `SchemaVersion` question, nothing to version-gate,
+and the feature works against every already-published release. It fires only
+when the query ends in a number AND a series resolves AND that series holds a
+work at that position, so `1984`, `Fahrenheit 451` and every ordinary title
+search return exactly the page they returned before; the boost is additive and
+`/abs/search` is deliberately untouched. Because the endpoint is
+unauthenticated, CORS-open and hit per keystroke, the probe is bounded on both
+sides: it matches the residual as WRITTEN (`ftsPhrase`, no prefix-star - a
+half-typed name simply gets no boost) and skips a residual made only of
+articles, one-letter tokens or bare volume words (`worthProbing`), stopwords
+being left out of the MATCH entirely. Without those two bounds a "the 1"
+keystroke walked a large fraction of the index (measured 110ms-237ms) and
+prepended three arbitrary volumes; with them every such query is byte-identical
+to the plain search page and within noise of its latency. A probe that errors
+degrades to "no boost" and is logged, never a 500. Business
 logic stays in `internal/serve`; `cmd/metaserve` is flag wiring only.
 
 The importer maps one export entry to a work + recording (+ people + series),
@@ -409,7 +439,35 @@ the surname, and the closed role vocabulary is what makes that safe where
 tolerant of repeated hyphens and NFC-normalized case-insensitive role matching;
 leading `Created by `/`Creato da ` prefix credits dropped; exactly-doubled
 names collapsed to one half, two-plus words per half so "Duran Duran" stays;
-a concatenated studio credit removed, per the tiers above) -
+a concatenated studio credit removed, per the tiers above) - and then, ONCE and
+after the fixpoint, folded onto a canonical **collective** record if that is
+what the credit names (`collective.go`). A nameless credit is classified by what
+it STATES, language-independently, in four buckets: collective statements
+("Narratori Vari", "diverse Sprecher", "elenco", "Anónimo") fold onto
+`full-cast`/`various`/`anonymous`/`uncredited`; unknown-identity statements
+("N.N.", "auteur inconnu", "narratore sconosciuto") fold onto `unknown`
+(anonymity is a choice, an unknown identity is a gap - two records, deliberately);
+booking placeholders ("to be announced", tbd/tba/tbc, "n/a") stay REFUSED
+whole-row (`placeholderCreditNames`, whose SQL twin in
+`scripts/libex-export-rows.sql` now carries that bucket only - the flipped forms
+came off both lists in step); and branded ensembles (The Colonial Radio Players,
+Museum Audiobooks cast, Linguistics Team) are real person-side records the table
+never touches - matching is the WHOLE cleaned name, exact, case- and
+accent-insensitive, never a pattern. The fold sits inside the shared cleaning
+rather than at `getOrCreatePerson` so authors, narrators AND role credits pass
+through it, every importer inherits it (not just libex), and the batch pre-passes
+see the canonical: a variant never becomes evidence of its own spelling in the
+credit census or the initials decision. The existing minted twins (`n-n` at 180
+works, `autori-vari`, ...) are migrated by a separate DATA change, and that
+migration is ORDERED BEFORE the next import wave, not merely eventually: until
+it lands the catalogue addresses ~198 work-author refs (and ~72 narrator refs)
+under variant slugs, so any pass that CREATES - the plain create path,
+`--recordings-only`, the user-library importers - can fork such a work instead
+of matching it (`--enrich` matches by ASIN and is unaffected). Note also that
+the two tables sit at different LAYERS: `placeholderCreditNames` compares RAW
+names at the libex parse layer, this one compares CLEANED names at the fixpoint
+tail, so they are not interchangeable ("To Be Announced - narrator" is not
+refused today - a pre-existing gap). Either way
 the person stays in the credit list; a stripped qualifier is no longer
 DISCARDED: `CreditWithRoles` returns the schema roles it stated (the
 `roleQualifiers` table is both the strip vocabulary and the qualifier -> role
