@@ -641,6 +641,10 @@
             {
               "asin": "B002ZPMVU0",
               "region": "us"
+            },
+            {
+              "asin": "B0B5WPKSFG",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81UsoQx1E9L.jpg",
@@ -657,6 +661,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B002ZPMVU0",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0B5WPKSFG",
               "type": "libex-import"
             }
           ],
@@ -796,6 +805,10 @@
             {
               "asin": "B00UB3E3W2",
               "region": "us"
+            },
+            {
+              "asin": "B004V3W37U",
+              "region": "de"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91IOo-kMvJL.jpg",
@@ -812,6 +825,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B00UB3E3W2",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B004V3W37U",
               "type": "libex-import"
             }
           ],
@@ -2653,6 +2671,10 @@
             {
               "asin": "B0DJTFDJ3X",
               "region": "us"
+            },
+            {
+              "asin": "B0DJTGPCH5",
+              "region": "uk"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91iiIlQZ8jL.jpg",
@@ -2670,6 +2692,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0DJTFDJ3X",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DJTGPCH5",
               "type": "libex-import"
             }
           ],
@@ -7174,6 +7201,10 @@
             {
               "asin": "B0BHTCWBZJ",
               "region": "us"
+            },
+            {
+              "asin": "B0BHTKGP58",
+              "region": "de"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81we3a-fR-L.jpg",
@@ -7190,6 +7221,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0BHTCWBZJ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0BHTKGP58",
               "type": "libex-import"
             }
           ],
@@ -14119,6 +14155,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "will-patton-2006": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002V8HJXK",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/812E9Vn-czL.jpg",
+          "id": "will-patton-2006",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "will-patton"
+          ],
+          "publisher": "Simon & Schuster Audio",
+          "release_date": "2006-07-18",
+          "runtime_min": 334,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002V8HJXK",
+              "type": "libex-import"
+            }
+          ],
+          "work": "pegasus-descending"
+        },
         "will-patton-2009": {
           "abridged": false,
           "added_at": "2026-08-02",

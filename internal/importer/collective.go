@@ -18,17 +18,18 @@ package importer
 //     Linguistics Team). A real group with a real name.
 //
 // Only the third names nobody at all, and it is the only one still REFUSED
-// (placeholderCreditNames, libex.go).
+// (placeholderCreditNames + placeholderCreditPhrases, libex.go).
 //
 // The two tables are NOT interchangeable, and a maintainer adding an entry has
-// to know which layer they are adding it to: placeholderCreditNames compares the
-// RAW credit name at the libex parse layer, before any cleaning, and refuses the
-// whole row; this table compares the CLEANED name at the tail of the cleaning
-// fixpoint, in every importer. So "To Be Announced - narrator" is not refused
-// today - the qualifier hides the placeholder from a raw compare. That is a
-// pre-existing gap rather than something this change introduced, and closing it
-// means giving the refusal a look at the cleaned name too (the shape
-// firstAICredit already uses), not moving entries between the tables.
+// to know which layer they are adding it to: placeholderCreditNames sits at the
+// libex parse layer and refuses the whole ROW; this table sits at the tail of
+// the cleaning fixpoint, in every importer, and rewrites the CREDIT. The layer
+// gap this comment used to record as open - "To Be Announced - narrator" was
+// hidden from a raw compare by its qualifier - is closed: the placeholder
+// refusal now judges the raw name AND the cleaned one (the shape firstAICredit
+// uses), and carries a phrase tier for the forms that arrive with an imprint or
+// a studio welded on ("To Be Confirmed Audio"). That was the fix, not moving
+// entries between the tables.
 //
 // The first two name a real party that
 // simply is not one identifiable human, and a work needs at least one author, so
@@ -107,26 +108,26 @@ package importer
 // letting one of five translations land somewhere else is the very failure this
 // table exists to end.
 //
-// ORDERING CONSTRAINT, until the twin-migration data PR lands. This change folds
-// new credits onto the canonicals; it migrates nothing, so the catalogue still
-// holds the variant records the folding replaced (measured on the live tree:
-// 231 work-author references and 223 narrator references across n-n at 162
-// authors, div at 33 authors and 144 narrators, then diverse, divers-auteurs,
-// autori-vari and friends - div is the largest narrator twin by a wide margin,
-// which is what the two abbreviations above added to the migration's list). A
-// work recorded under a
-// variant AUTHOR is now addressed by a different author set than an incoming row
-// for the same book states, so any pass that CREATES - the plain create path,
-// --recordings-only, and the user-library importers - can FORK it into a second
-// work rather than matching the one on disk. --enrich is unaffected: it matches
-// by ASIN and creates nothing. So the migration must land BEFORE the next import
-// wave, not merely eventually.
+// The fold is LIVE and the catalogue is CLEAN. The twin migration this table
+// once had to be ordered ahead of has landed, so no variant record remains on
+// disk: an incoming credit is folded here, and the canonical it names is the
+// record the tree already addresses. That closes the fork risk the interim state
+// carried - a work recorded under a variant AUTHOR was addressed by a different
+// author set than an incoming row for the same book states, so every pass that
+// CREATES could mint a second work rather than match the one on disk.
+//
+// The tolerance for a variant record that EXISTS is kept anyway, as a safety
+// property rather than a description of the tree: a fold creates the canonical
+// if it is absent and leaves anything else exactly as it found it, so a variant
+// REAPPEARING - a bad merge, a hand edit, a restored old pack - is inert rather
+// than a crash or a re-fed twin. TestCollectiveFoldToleratesAnExistingVariantRecord
+// is what pins that.
 //
 // The canonical NAME each variant maps onto is the spelling a NEW record would
-// be minted under. Three of the five canonicals already exist in the catalogue
-// spelled lowercase ("anonymous", "uncredited", "unknown"); a record that exists
-// keeps its own name, so the canonical spelling here only ever decides how an
-// absent one is created. Every canonical name slugs to its canonical id under
+// be minted under. All five canonicals now exist in the catalogue, three of them
+// spelled lowercase ("anonymous", "uncredited", "unknown") from before this
+// table; a record that exists keeps its own name, so the canonical spelling here
+// only ever decides how an absent one is created. Every canonical name slugs to its canonical id under
 // model.PersonSlug, which is what makes this a fold onto an existing address
 // rather than a rename (pinned by TestCollectiveCanonicalsSlugToTheirIDs).
 

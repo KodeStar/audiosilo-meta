@@ -3739,6 +3739,10 @@
             {
               "asin": "B0876J36RS",
               "region": "us"
+            },
+            {
+              "asin": "B0876H5BTJ",
+              "region": "ca"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81vELfXbYXL.jpg",
@@ -3755,6 +3759,11 @@
             {
               "imported_at": "2026-08-01",
               "ref": "B0876J36RS",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0876H5BTJ",
               "type": "libex-import"
             }
           ],
@@ -6633,6 +6642,10 @@
             {
               "asin": "B01EIBEA1G",
               "region": "us"
+            },
+            {
+              "asin": "B01EIBHKJU",
+              "region": "de"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/915TksSi9tL.jpg",
@@ -6649,6 +6662,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B01EIBEA1G",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B01EIBHKJU",
               "type": "libex-import"
             }
           ],
@@ -9118,6 +9136,34 @@
       "language": "de",
       "license": "CC0-1.0",
       "recordings": {
+        "rainer-strecker-2011": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00U5K5BLI",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91kCjC6d9RL.jpg",
+          "id": "rainer-strecker-2011",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "rainer-strecker"
+          ],
+          "publisher": "Hoercompany",
+          "release_date": "2011-10-13",
+          "runtime_min": 474,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00U5K5BLI",
+              "type": "libex-import"
+            }
+          ],
+          "work": "rebellion-der-restanten"
+        },
         "rainer-strecker-2025": {
           "abridged": false,
           "added_at": "2026-08-02",

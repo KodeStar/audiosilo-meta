@@ -137,6 +137,10 @@
             {
               "asin": "B0CWSD1Y1J",
               "region": "us"
+            },
+            {
+              "asin": "B0CWS9JFH2",
+              "region": "uk"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/712XQFu0w4L.jpg",
@@ -155,6 +159,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0CWSD1Y1J",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CWS9JFH2",
               "type": "libex-import"
             }
           ],
@@ -420,6 +429,10 @@
             {
               "asin": "B09PL4YZXS",
               "region": "us"
+            },
+            {
+              "asin": "B09PL55Z1D",
+              "region": "uk"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/71UDGctTa5L.jpg",
@@ -436,6 +449,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B09PL4YZXS",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09PL55Z1D",
               "type": "libex-import"
             }
           ],
@@ -752,6 +770,10 @@
             {
               "asin": "B014B4HP6W",
               "region": "us"
+            },
+            {
+              "asin": "B014B4KZKA",
+              "region": "uk"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81crNRnIs6L.jpg",
@@ -768,6 +790,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B014B4HP6W",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B014B4KZKA",
               "type": "libex-import"
             }
           ],
@@ -804,6 +831,10 @@
             {
               "asin": "B077Y3B2QP",
               "region": "us"
+            },
+            {
+              "asin": "B077Y7PHP4",
+              "region": "uk"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81dp5QkHnaL.jpg",
@@ -821,6 +852,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B077Y3B2QP",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B077Y7PHP4",
               "type": "libex-import"
             }
           ],
@@ -5477,6 +5513,127 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "alan-weyman-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0D4BNBVJ6",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91Cqndp2QqL.jpg",
+          "id": "alan-weyman-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alan-weyman",
+            "alexandra-lee-smith",
+            "blaise-doran",
+            "catherine-bilson",
+            "denis-daly",
+            "emma-faye",
+            "gary-macfadden",
+            "graham-scott",
+            "josh-innerst",
+            "marty-krz",
+            "roberta-jackson",
+            "simon-paxton"
+          ],
+          "publisher": "Voices of Today Pty LTD",
+          "release_date": "2024-06-25",
+          "runtime_min": 154,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0D4BNBVJ6",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-merchant-of-venice"
+        },
+        "antony-sher-2008": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002UZL6PG",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4472349,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4524919,
+              "start_ms": 4472349,
+              "title": "Chapter 2"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51QXJsr5MzL.jpg",
+          "id": "antony-sher-2008",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "antony-sher"
+          ],
+          "publisher": "Naxos AudioBooks",
+          "release_date": "2008-10-30",
+          "runtime_min": 149,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002UZL6PG",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-merchant-of-venice"
+        },
+        "bill-nighy-2014": {
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00K7EG62K",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4026108,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4179360,
+              "start_ms": 4026108,
+              "title": "Chapter 2"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71bpUxhKOrL.jpg",
+          "id": "bill-nighy-2014",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "bill-nighy",
+            "haydn-gwynne",
+            "julian-rhind-tutt",
+            "trevor-peacock"
+          ],
+          "publisher": "Arkangel",
+          "release_date": "2014-05-09",
+          "runtime_min": 136,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00K7EG62K",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-merchant-of-venice"
+        },
         "david-hopkins-2017": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -5500,6 +5657,253 @@
             {
               "imported_at": "2026-08-01",
               "ref": "B076PLCGSD",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-merchant-of-venice"
+        },
+        "david-morrissey-2005": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002V1O4C6",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3086002,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4189228,
+              "start_ms": 3086002,
+              "title": "Chapter 2"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81V83GtmP1L.jpg",
+          "id": "david-morrissey-2005",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "david-morrissey",
+            "full-cast",
+            "juliet-aubrey",
+            "martin-jarvis",
+            "samuel-west",
+            "warren-mitchell"
+          ],
+          "publisher": "BBC Digital Audio",
+          "release_date": "2005-03-04",
+          "runtime_min": 121,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002V1O4C6",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-merchant-of-venice"
+        },
+        "derek-jacobi-2020": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "0008443114",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91L6Ho8S60L.jpg",
+          "id": "derek-jacobi-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "derek-jacobi",
+            "donald-beves",
+            "full-cast",
+            "george-rylands",
+            "john-barton",
+            "tony-robertson"
+          ],
+          "publisher": "Argo Classics",
+          "release_date": "2020-11-26",
+          "runtime_min": 144,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "0008443114",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-merchant-of-venice"
+        },
+        "hugh-griffin-2011": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B004MSVSDE",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/917Ou2hoyZL.jpg",
+          "id": "hugh-griffin-2011",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "hugh-griffin"
+          ],
+          "publisher": "Saland Publisihng",
+          "release_date": "2011-02-09",
+          "runtime_min": 139,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B004MSVSDE",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-merchant-of-venice"
+        },
+        "hugh-griffith-1999": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002UZMVI2",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71r+ojGsFKL.jpg",
+          "id": "hugh-griffith-1999",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "hugh-griffith"
+          ],
+          "publisher": "Caedmon",
+          "release_date": "1999-12-16",
+          "runtime_min": 144,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002UZMVI2",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-merchant-of-venice"
+        },
+        "michael-redgrave-2009": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0036GMH6K",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/617tA+71wAL.jpg",
+          "id": "michael-redgrave-2009",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "michael-redgrave"
+          ],
+          "publisher": "The Copyright Group",
+          "release_date": "2009-01-22",
+          "runtime_min": 119,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0036GMH6K",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-merchant-of-venice"
+        },
+        "michael-redgrave-2009-2": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0036HXY84",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81don0hnhLL.jpg",
+          "id": "michael-redgrave-2009-2",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "michael-redgrave",
+            "peter-neil"
+          ],
+          "publisher": "Saland Publishing",
+          "release_date": "2009-08-21",
+          "runtime_min": 118,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0036HXY84",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-merchant-of-venice"
+        },
+        "randal-schaffer-2021": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "1094244171",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81aMqYqvKBL.jpg",
+          "id": "randal-schaffer-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "randal-schaffer"
+          ],
+          "publisher": "InAudio",
+          "release_date": "2021-03-30",
+          "runtime_min": 144,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1094244171",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-merchant-of-venice"
+        },
+        "the-marlowe-society-2009": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0036HZSI8",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/519j6rt7ysL.jpg",
+          "id": "the-marlowe-society-2009",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "the-marlowe-society"
+          ],
+          "publisher": "Saland Publishing",
+          "release_date": "2009-07-15",
+          "runtime_min": 140,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0036HZSI8",
               "type": "libex-import"
             }
           ],
@@ -7935,6 +8339,111 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "clive-swift-2014": {
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00K7EFYO6",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4049560,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4040551,
+              "start_ms": 4049560,
+              "title": "Chapter 2"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71W19zIS8RL.jpg",
+          "id": "clive-swift-2014",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "clive-swift",
+            "dinsdale-landen",
+            "nicholas-woodeson",
+            "penny-downie",
+            "phillip-jackson",
+            "sylvestra-le-touzel"
+          ],
+          "publisher": "Arkangel",
+          "release_date": "2014-05-09",
+          "runtime_min": 134,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00K7EFYO6",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-merry-wives-of-windsor"
+        },
+        "full-cast-1999": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002V8MW32",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71ScWVw0YPS.jpg",
+          "id": "full-cast-1999",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Caedmon",
+          "release_date": "1999-12-16",
+          "runtime_min": 134,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002V8MW32",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-merry-wives-of-windsor"
+        },
+        "full-cast-2020": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "0008443122",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91bm8d1yEOL.jpg",
+          "id": "full-cast-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast",
+            "gordon-gardner",
+            "patrick-wymark",
+            "peter-orr",
+            "roy-dotrice",
+            "terrence-hardiman"
+          ],
+          "publisher": "Argo Classics",
+          "release_date": "2020-11-26",
+          "runtime_min": 137,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "0008443122",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-merry-wives-of-windsor"
+        },
         "luke-daniels-2026": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -9007,6 +9516,61 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "emma-fenney-2018": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B07CQ6P7C1",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81-RVDBzCFL.jpg",
+          "id": "emma-fenney-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "emma-fenney"
+          ],
+          "publisher": "Dreamscape Media, LLC",
+          "release_date": "2018-05-01",
+          "runtime_min": 26,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07CQ6P7C1",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-metal-pig"
+        },
+        "howard-wolfin-2013": {
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00GMXDD30",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91tNrO82-uL.jpg",
+          "id": "howard-wolfin-2013",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "howard-wolfin"
+          ],
+          "publisher": "Naxos AudioBooks",
+          "release_date": "2013-11-14",
+          "runtime_min": 27,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00GMXDD30",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-metal-pig"
+        },
         "sam-kusi-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -9299,6 +9863,73 @@
             {
               "imported_at": "2026-07-30",
               "ref": "B006ZBQF2A",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-metamorphosis"
+        },
+        "christa-lewis-2014": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00MV4Q3JA",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 24701,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 678584,
+              "start_ms": 24701,
+              "title": "Introduction: The Beetle and the Fly by David Cronenberg"
+            },
+            {
+              "length_ms": 2434194,
+              "start_ms": 703285,
+              "title": "One"
+            },
+            {
+              "length_ms": 2636393,
+              "start_ms": 3137479,
+              "title": "Two"
+            },
+            {
+              "length_ms": 2625619,
+              "start_ms": 5773872,
+              "title": "Three"
+            },
+            {
+              "length_ms": 747985,
+              "start_ms": 8399491,
+              "title": "Afterword: The Death of a Salesman"
+            },
+            {
+              "length_ms": 50363,
+              "start_ms": 9147476,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91XtgPaQfkL.jpg",
+          "id": "christa-lewis-2014",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "christa-lewis",
+            "edoardo-ballerini",
+            "victor-bevine"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2014-08-20",
+          "runtime_min": 153,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00MV4Q3JA",
               "type": "libex-import"
             }
           ],

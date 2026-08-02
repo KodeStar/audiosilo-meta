@@ -1098,15 +1098,70 @@ var placeholderCreditNames = map[string]bool{
 	"n/a":             true, // 1
 }
 
+// placeholderCreditPhrases are the two MULTI-WORD placeholder statements,
+// matched as a whole word-bounded phrase anywhere in the folded credit rather
+// than as the whole name. A booking placeholder does not always arrive alone:
+// the dump welds an imprint onto it ("To Be Confirmed Atria", "To Be Confirmed
+// Gallery", "To Be Confirmed Avid Reader Press", "To Be Confirmed Simon &
+// Schuster [UK]"), a studio ("To Be Confirmed Audio"), or the ROLE the booking
+// is for, on either side ("Author to be Announced", "Holt Author To Be
+// Announced", "BFYR Author to Be Confirmed", "Tor May 2027 Author to Be
+// Announced"). Measured over the full dump: 10 distinct names, 16 credits, 15
+// books beyond what the whole-name table already refuses - and every one of the
+// ten is a placeholder. Zero real names are caught, which is what a three-word
+// English imperative phrase buys: no person and no house is named "to be
+// announced" with something else attached.
+//
+// The ABBREVIATIONS in the table above are deliberately NOT generalized this
+// way, for the reason collective.go states about "div." - an abbreviation is a
+// weaker statement than the phrase it stands for, and a short opaque token could
+// be part of a real name. "TBA Studios" is a real production company, so a
+// bare-token rule would refuse a house the dump simply has not credited yet. The
+// four names that leaves importable are measured and small: "Reader tbd 1" (6
+// credits), "TBD TBD", "Kulturplattformen TBA" and "SW TBC" (1 each). Each is a
+// one-line addition to the table above if a maintainer wants it; none is worth a
+// rule that can fire on a name.
+var placeholderCreditPhrases = []string{
+	"to be announced",
+	"to be confirmed",
+}
+
+// isPlaceholderCreditName judges ONE credit name: the whole folded name against
+// the table, then the multi-word phrases as word-bounded substrings.
+func isPlaceholderCreditName(name string) bool {
+	canon := foldCredit(name)
+	if canon == "" {
+		return false
+	}
+	if placeholderCreditNames[canon] {
+		return true
+	}
+	for _, phrase := range placeholderCreditPhrases {
+		if containsToken(canon, phrase) {
+			return true
+		}
+	}
+	return false
+}
+
 // firstPlaceholderCredit reports whether ANY credit in the row's author or
 // narrator list is a placeholder rather than a person, naming the first one it
 // finds. Like every other credit-side refusal it is whole-row and reads both
-// lists, and it compares the whole folded name - never a substring, so the real
-// authors surnamed Cast are untouched.
+// lists. The whole-name half of the judgment is exact - never a substring, so
+// the real authors surnamed Cast are untouched.
+//
+// It judges the RAW name and, when cleaning changes it, the CLEANED name too -
+// the shape firstAICredit uses, and the layer gap collective.go's header used to
+// record as open. A credit qualifier hides a placeholder from a whole-name
+// compare ("To Be Announced - narrator"), and the cleaned form is the name that
+// would become the person record, so it is the one that has to be judged.
 func firstPlaceholderCredit(authors, narrators []string) (name string, placeholder bool) {
 	for _, list := range [][]string{authors, narrators} {
 		for _, n := range list {
-			if placeholderCreditNames[foldCredit(n)] {
+			if isPlaceholderCreditName(n) {
+				return n, true
+			}
+			if cleaned := CleanCreditName(n); cleaned != n && isPlaceholderCreditName(cleaned) {
 				return n, true
 			}
 		}
