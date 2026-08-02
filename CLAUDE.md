@@ -100,7 +100,14 @@ contributor's approximately-right edit is corrected mechanically. Two PRs editin
 one pack conflict; the resolution is a THREE-WAY merge of the entries (base
 included, so a deliberate deletion is not handed back) plus a re-render -
 `scripts/pack-union-merge.sh`, driven through real rebases by
-`scripts/packmerge_test.go`, and run by the intake bot on its own PRs. The
+`scripts/packmerge_test.go`, and run by the intake bot on its own PRs. An entry
+both sides changed is a refusal except in the two families that have something
+independent one level down, and the FAMILY (the path) decides which rule applies:
+a **works** entry with identical own fields and differing `recordings` maps
+merges those maps (two narrations of one book), and a **works-community** entry,
+which IS a map of members, merges DISJOINT members (a characters PR and a recaps
+PR for the same book) - the same base rules one level deeper, so a member both
+sides wrote is still a refusal. The
 pre-migration layout was one file per record
 (`data/works/<shard>/<slug>/work.json` and friends); `cmd/metamigrate` converted
 it, `pkg/check` and every writer now refuse it loudly.
@@ -437,7 +444,11 @@ OPTIONAL ON BOTH SIDES of the dash - "Gigi Rosa-traduttore" welds the role onto
 the surname, and the closed role vocabulary is what makes that safe where
 `dashSepRE`'s free-text tail is not (28 dump names change, all correct) -
 tolerant of repeated hyphens and NFC-normalized case-insensitive role matching;
-leading `Created by `/`Creato da ` prefix credits dropped; exactly-doubled
+leading `Created by `/`Creato da `/`Read by ` prefix credits dropped (the first
+two measured in the dump, the third off the user-library side, where a tag spells
+the narrator field as a sentence - the dump attests neither it nor a German
+`gelesen von ` as a credit prefix, and the required `by ` is what keeps the real
+"Read Shepherd"/"Read Mercer Schuchardt" whole); exactly-doubled
 names collapsed to one half, two-plus words per half so "Duran Duran" stays;
 a concatenated studio credit removed, per the tiers above) - and then, ONCE and
 after the fixpoint, folded onto a canonical **collective** record if that is
