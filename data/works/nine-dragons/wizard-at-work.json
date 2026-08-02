@@ -1102,26 +1102,6 @@
       ],
       "title": "Wizard Rising"
     },
-    "wizard-s-first-rule": {
-      "added_at": "2026-07-25T19:18:21+01:00",
-      "authors": [
-        "terry-goodkind"
-      ],
-      "id": "wizard-s-first-rule",
-      "language": "en",
-      "license": "CC0-1.0",
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "https://www.goodreads.com/book/show/43889.Wizard_s_First_Rule",
-          "type": "community"
-        }
-      ],
-      "title": "Wizard's First Rule",
-      "xref": {
-        "goodreads": "43889"
-      }
-    },
     "wizard-scout": {
       "added_at": "2026-08-01",
       "authors": [
@@ -2599,7 +2579,7 @@
       "title": "Wizard's Education"
     },
     "wizards-first-rule": {
-      "added_at": "2026-08-02",
+      "added_at": "2026-07-25T19:18:21+01:00",
       "authors": [
         "terry-goodkind"
       ],
@@ -2646,9 +2626,17 @@
           "imported_at": "2026-08-02",
           "ref": "B002V0QK4C",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "https://www.goodreads.com/book/show/43889.Wizard_s_First_Rule",
+          "type": "community"
         }
       ],
-      "title": "Wizard's First Rule"
+      "title": "Wizard's First Rule",
+      "xref": {
+        "goodreads": "43889"
+      }
     },
     "wizards-gambit": {
       "added_at": "2026-08-02",

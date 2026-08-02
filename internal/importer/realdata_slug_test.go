@@ -1,8 +1,10 @@
 package importer
 
-// realdata_slug_test.go pins the data migration that shipped with the Slugify
-// transliteration change: no committed record may still sit at an address the
-// letter-DROPPING fold produced.
+// realdata_slug_test.go pins the two id migrations that put every record on the
+// address today's Slugify composes: the transliteration change (no record may
+// sit at an address the letter-DROPPING fold produced) and its follow-up, the
+// pre-apostrophe-rule migration (no record may sit at an address that spells an
+// apostrophe as a word boundary - "angela-s-ashes" for "Angela's Ashes").
 //
 // It is not a restatement of metacheck. metacheck owns the person rule
 // (checkPersonSlug) and runs as its own CI step; what is only tested here is the
@@ -33,6 +35,23 @@ const dataDir = "../../data"
 // stripped glyph leaves no trace in the output to derive it from - Slugify turns
 // all of them into nothing, exactly like the glyphs it always stripped.
 var addedApostropheGlyphs = []rune{'‘', '´', 'ʻ'}
+
+// aposAsSeparator spells every apostrophe-position glyph as a space, which is
+// exactly what Slugify did with them before it learned to strip them: they fell
+// through to the separator branch. Comparing the two renderings is how
+// movedByApostrophe decides a title is affected, so the predicate is computed
+// FROM Slugify rather than restating the glyph set a second time.
+var aposAsSeparator = strings.NewReplacer(
+	"'", " ", "’", " ", "‘", " ", "´", " ", "`", " ", "ʼ", " ", "ʻ", " ",
+)
+
+// movedByApostrophe reports whether s is spelled differently by today's
+// apostrophe-stripping rule than by the word-boundary rule that preceded it -
+// "Angela's Ashes" (angelas-ashes today, angela-s-ashes then), but not "Angela
+// Ashes".
+func movedByApostrophe(s string) bool {
+	return model.Slugify(aposAsSeparator.Replace(s)) != model.Slugify(s)
+}
 
 // movedByTransliteration reports whether s carries a character the
 // transliteration change moved.
@@ -114,23 +133,21 @@ func TestDataPeopleSlugsAreTransliterated(t *testing.T) {
 	})
 }
 
-// TestDataWorkAndSeriesSlugsAreTransliterated is the half no rule covers. It
-// asks only about records whose title or name carries a character this change
-// moved - for every one of those, the id must sit on the candidate chain the
-// importer walks TODAY, or the next wave mints a duplicate beside it.
+// TestDataWorkAndSeriesSlugsAreCurrent is the half no rule covers. It asks about
+// every record whose title or name is spelled differently by a slug rule that
+// has CHANGED - a transliterated letter, or an apostrophe - and for each of
+// those the id must sit on the candidate chain the importer walks TODAY, or the
+// next wave mints a duplicate beside it.
 //
-// It deliberately does not demand that of every record. 105 works and 5 series
-// are off-chain for an OLDER reason: their ids were minted before Slugify
-// learned to strip apostrophes ("angela-s-ashes" for "Angela's Ashes",
-// "ranger-s-apprentice" for "Ranger's Apprentice"), the same defect
-// checkPersonSlug's comment records for madeleine-l-engle. That is a real
-// duplicate-mint risk and its own migration; scoping this test to the characters
-// THIS change moved is what keeps it a proof of this migration rather than a
-// failing assertion about a different one.
-func TestDataWorkAndSeriesSlugsAreTransliterated(t *testing.T) {
+// It deliberately does not demand that of every record: a work slug is composed,
+// so a record can be legitimately off-chain (the catalogue holds one whose title
+// was later corrected). Scoping the assertion to the characters a rule change
+// moved is what keeps this a proof of the two migrations rather than a standing
+// complaint about composed identity in general.
+func TestDataWorkAndSeriesSlugsAreCurrent(t *testing.T) {
 	walkEntries(t, "works", func(path, key string, e map[string]any) {
 		title := str(e, "title")
-		if !movedByTransliteration(title) {
+		if !movedByTransliteration(title) && !movedByApostrophe(title) {
 			return
 		}
 		author := ""
@@ -148,7 +165,7 @@ func TestDataWorkAndSeriesSlugsAreTransliterated(t *testing.T) {
 
 	walkEntries(t, "series", func(path, key string, e map[string]any) {
 		name := str(e, "name")
-		if !movedByTransliteration(name) {
+		if !movedByTransliteration(name) && !movedByApostrophe(name) {
 			return
 		}
 		base := Slugify(name)
