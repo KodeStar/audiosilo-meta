@@ -16,10 +16,13 @@
 -- never recorded.)
 --
 -- The credit patterns below are evidence-driven, measured over that dump, and
--- are the SQL half of a pair: internal/importer/libex.go carries the same three
--- shapes (aiNarratorNames / aiNarratorPrefix / aiNarratorMarkers) and refuses
+-- are the SQL half of a pair: internal/importer/libex.go carries the same four
+-- shapes (aiNarratorNames / aiNarratorPrefix / aiNarratorSuffix /
+-- aiNarratorMarkers) and refuses
 -- the same rows at parse time, so a dump exported without this filter is still
 -- safe. KEEP THE TWO LISTS IN STEP - if you add a form here, add it there.
+-- The junk-credit filter at the end of the WHERE clause is the SQL twin of
+-- junkCreditNames in the same file, and is kept in step the same way.
 -- Deliberately NOT used: a substring search for "tts", or a bare "ai"/"ki"/"ia"
 -- token. Those match Watts, Pitts, Ricketts, Ki Hong Lee and Ai-jen Poo, who
 -- are real narrators.
@@ -81,7 +84,14 @@ WHERE b.is_vvab IS NOT TRUE
         -- 2. Audible's "AI Voice <persona>" family (236 names, 1,139 credits),
         --    matched as a WORD prefix so a real "Ai Voicu" would not match.
         OR bn.narrator_name ~* '^ai voice($|[^[:alnum:]])'
-        -- 3. A trailing parenthetical marker declaring the credit synthetic.
+        -- 3. Audible's authorized voice-replica program, which credits a
+        --    synthetic clone of a real narrator as "<narrator>'s voice replica"
+        --    (2,203 credits, 81 names, 2,202 books; is_vvab false on every one).
+        --    Matched as a WORD suffix, so a hypothetical surname "Replica"
+        --    would not match. The two program credits that do NOT end with the
+        --    phrase are caught by shapes 2 and 4 instead.
+        OR bn.narrator_name ~* '(^|[^[:alnum:]])voice replica[[:space:]]*$'
+        -- 4. A trailing parenthetical marker declaring the credit synthetic.
         --    Whole-marker match: the same position also carries human
         --    qualifiers like "(Skyboat Media)" and "(The Captain's Voice)".
         OR lower(substring(bn.narrator_name from '[(\[]([^()\[\]]*)[)\]][[:space:]]*$')) IN (
@@ -93,4 +103,23 @@ WHERE b.is_vvab IS NOT TRUE
           'ki sprecher',               -- 1, German
           'kokoro tts')                -- 1, a named TTS engine
       ))
+  -- A credit that names a PLATFORM ACCOUNT rather than a person or a synthetic
+  -- voice: the publishing tool's own test harness leaking a row into the public
+  -- catalogue. Exact names only, both credit lists, the SQL twin of
+  -- junkCreditNames in internal/importer/libex.go - see that comment for why
+  -- there is no pattern rule ("acx" matches one narrator credit and zero author
+  -- credits in the whole dump, and the email-plus-tag shape also matches the
+  -- real publisher "I+Everything").
+  AND NOT EXISTS (
+    SELECT 1 FROM book_narrator bn
+    WHERE bn.book_asin = b.asin
+      AND lower(btrim(bn.narrator_name)) IN (
+        'acx-dev+gamma4')   -- 1 credit, 1 book - an ACX developer mailbox
+  )
+  AND NOT EXISTS (
+    SELECT 1 FROM author_book ab JOIN authors a ON a.id = ab.author_id
+    WHERE ab.book_asin = b.asin
+      AND lower(btrim(a.name)) IN (
+        'acx-dev+gamma4')
+  )
 ORDER BY COALESCE(b.sku_group, b.asin), b.region, b.asin;

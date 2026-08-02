@@ -8,11 +8,16 @@ import (
 	"golang.org/x/text/unicode/norm"
 )
 
-// aiNarratorFixture is four rows lifted from the real libex dump: three
-// AI-narrated (one per matching shape, in three languages) and one human. Every
-// one of the four carries is_vvab = FALSE upstream, which is the whole point -
+// aiNarratorFixture is six rows lifted from the real libex dump: four
+// AI-narrated (one per matching shape, in three languages) and two human. Every
+// one of the six carries is_vvab = FALSE upstream, which is the whole point -
 // the flag the export SQL filters on says "not a virtual voice" for all of them,
 // so only the narrator credit tells them apart.
+//
+// The last row is the negative control the rule has to survive: a book ABOUT
+// synthetic voices ("Fighting Deepfakes Across Time") read by a real narrator.
+// The subject of a book is not evidence about who read it, and only the credit
+// is ever judged.
 func aiNarratorFixture(t *testing.T) string {
 	t.Helper()
 	raw, err := os.ReadFile("testdata/libex_ai_narrators.ndjson")
@@ -29,20 +34,28 @@ func aiNarratorFixture(t *testing.T) string {
 func TestLibexRefusesAINarratedRows(t *testing.T) {
 	sum, dataDir := runLibex(t, aiNarratorFixture(t), false)
 
-	if sum.SkippedRows != 3 {
-		t.Errorf("SkippedRows = %d, want 3 (the AI-narrated rows)", sum.SkippedRows)
+	if sum.SkippedRows != 4 {
+		t.Errorf("SkippedRows = %d, want 4 (the AI-narrated rows)", sum.SkippedRows)
 	}
-	// Only "Just So" survives: one work, one recording, and exactly the two
-	// credits it states (Alan Watts is both its author and its narrator, and the
-	// slug is the identity, so that is ONE person).
-	if sum.NewWorks != 1 || sum.NewRecordings != 1 || sum.NewPeople != 1 {
-		t.Errorf("summary = %d works / %d recordings / %d people, want 1/1/1", sum.NewWorks, sum.NewRecordings, sum.NewPeople)
+	// Only the two human rows survive. "Just So" states exactly two credits and
+	// Alan Watts is both its author and its narrator - the slug is the identity,
+	// so that is ONE person - and the deepfakes book adds its author and its
+	// narrator, so three people in all.
+	if sum.NewWorks != 2 || sum.NewRecordings != 2 || sum.NewPeople != 3 {
+		t.Errorf("summary = %d works / %d recordings / %d people, want 2/2/3", sum.NewWorks, sum.NewRecordings, sum.NewPeople)
 	}
 	if !entryExists(t, dataDir, "works/ju/just-so/work.json") {
 		t.Error("the human-narrated row was not imported")
 	}
 	if !entryExists(t, dataDir, "people/al/alan-watts.json") {
 		t.Error("the human narrator got no person record")
+	}
+	// The negative control: a book about synthetic voices, read by a person.
+	if !entryExists(t, dataDir, "works/fi/fighting-deepfakes-across-time/work.json") {
+		t.Error("a book ABOUT voice cloning was refused; only the credit is judged")
+	}
+	if !entryExists(t, dataDir, "people/we/wendy-baran.json") {
+		t.Error("the deepfakes book's real narrator got no person record")
 	}
 	// No AI voice became a person, and no AI-narrated book became a work.
 	for _, rel := range []string{
@@ -53,6 +66,11 @@ func TestLibexRefusesAINarratedRows(t *testing.T) {
 		"works/de/democracy-in-the-middle-east/work.json",
 		"works/in/in-the-abyss/work.json",
 		"works/ma/magia-de-los-celtas/work.json",
+		// The voice-replica program: the cloned narrator is a real person, but
+		// this credit is a model of their voice, not them.
+		"people/ad/adrian-bissons-voice-replica.json",
+		"people/ad/adrian-bisson.json",
+		"works/th/the-bridge-child/work.json",
 	} {
 		if entryExists(t, dataDir, rel) {
 			t.Errorf("an AI-narrated row created %s", rel)
@@ -72,13 +90,14 @@ func TestLibexAINarratorWarningLines(t *testing.T) {
 	}
 
 	perRow := parsed.warningLines(false)
-	if len(perRow) != 3 {
+	if len(perRow) != 4 {
 		t.Fatalf("create-mode lines = %v, want one per refused row", perRow)
 	}
 	for _, want := range []string{
 		`B0F5RH86TX: narrator "Virtual Voice" is an AI voice; row skipped`,
 		`B0H6LM9KCD: narrator "AI Voice Arthur Lane" is an AI voice; row skipped`,
 		`B0F1TG8K35: narrator "Santiago (Voz de IA)" is an AI voice; row skipped`,
+		`B0FCZXJRH1: narrator "Adrian Bisson's voice replica" is an AI voice; row skipped`,
 	} {
 		if !strings.Contains(strings.Join(perRow, "\n"), want) {
 			t.Errorf("per-row lines missing %q:\n%s", want, strings.Join(perRow, "\n"))
@@ -89,7 +108,7 @@ func TestLibexAINarratorWarningLines(t *testing.T) {
 	if len(aggregate) != 1 {
 		t.Fatalf("aggregate lines = %v, want exactly one", aggregate)
 	}
-	if got, want := aggregate[0], "libex: 3 rows skipped: narrated by an AI voice"; !strings.HasPrefix(got, want) {
+	if got, want := aggregate[0], "libex: 4 rows skipped: narrated by an AI voice"; !strings.HasPrefix(got, want) {
 		t.Errorf("aggregate line = %q, want it to start with %q", got, want)
 	}
 	// The examples ride along so an operator can go and look at the data.
@@ -123,6 +142,17 @@ func TestIsAINarratorName(t *testing.T) {
 		"AI Voice Arthur Lane",
 		"ai voice nina",
 		"AI Voice AI Narrator - Synthesized Voice (Google WaveNet de-DE)",
+		// The "<narrator>'s voice replica" suffix family, in the spellings the
+		// dump actually carries (including a stray space before the possessive
+		// and a company rather than a person as the cloned party).
+		"Steve Stewart's voice replica",
+		"Adrian Bisson's voice replica",
+		"Alex Gage's Voice Replica",
+		"Linda Kutzer 's voice replica",
+		"Steve Bramham LLC's voice replica",
+		"Aldus H Chapin II's voice replica",
+		"N. Holt's voice replica",
+		"voice replica",
 		// Trailing markers that declare the credit synthetic.
 		"Santiago (Voz de IA)",
 		"Elise (AI)",
@@ -149,6 +179,12 @@ func TestIsAINarratorName(t *testing.T) {
 		// Human qualifiers in the same trailing-marker position.
 		"Stefan Rudnicki (Skyboat Media)", "Someone (TheVoiceOgre)",
 		"Someone (The Captain's Voice)", "Someone (Vitruvian Sound)",
+		// Real credits a looser "'s voice" rule would eat, all from the dump.
+		"The Captain's Voice", "April's Voice", "Debra Shieber's Voice Talent",
+		"Michael LaVoice", "Grace Voice", "Zia Islam - Your Digital Voice",
+		// A name that merely ENDS like the suffix; the word boundary before
+		// "voice replica" is what saves it.
+		"Ivoice Replica", "Replica",
 		// Ordinary credits, including a corporate one.
 		"Stephen Fry", "Full Cast", "Audible Studios", "",
 	}
@@ -214,7 +250,12 @@ func TestAINarratorVocabularyIsCanonical(t *testing.T) {
 			}
 		}
 	}
-	if got := foldCredit(aiNarratorPrefix); got != aiNarratorPrefix {
-		t.Errorf("aiNarratorPrefix %q is not canonical (want %q)", aiNarratorPrefix, got)
+	for name, affix := range map[string]string{
+		"aiNarratorPrefix": aiNarratorPrefix,
+		"aiNarratorSuffix": aiNarratorSuffix,
+	} {
+		if got := foldCredit(affix); got != affix {
+			t.Errorf("%s %q is not canonical (want %q)", name, affix, got)
+		}
 	}
 }

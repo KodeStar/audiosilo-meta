@@ -251,7 +251,7 @@ func TestSelectExcludesCreditRefusals(t *testing.T) {
 // TestSelectReasonsAreAllReportable guards the report's completeness: an
 // exclusion reason that is not in reasonOrder is counted and then never printed.
 func TestSelectReasonsAreAllReportable(t *testing.T) {
-	for _, reason := range []string{reasonAINarrator, reasonUnnamedCredit} {
+	for _, reason := range []string{reasonAINarrator, reasonJunkCredit, reasonUnnamedCredit} {
 		found := false
 		for _, r := range reasonOrder {
 			if r == reason {
