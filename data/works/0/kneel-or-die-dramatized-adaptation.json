@@ -1705,6 +1705,10 @@
             {
               "asin": "B07VFKTGTM",
               "region": "us"
+            },
+            {
+              "asin": "B0GNP21NHP",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81xM5Dm6SDL.jpg",
@@ -1721,6 +1725,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B07VFKTGTM",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GNP21NHP",
               "type": "libex-import"
             }
           ],
@@ -3822,6 +3831,66 @@
       ],
       "title": "Knights of the Ashes"
     },
+    "knights-of-the-borrowed-dark": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "dave-rudden"
+      ],
+      "genres": [
+        "childrens",
+        "fantasy"
+      ],
+      "id": "knights-of-the-borrowed-dark",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "dave-rudden-2016": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B01HDZK1NU",
+              "region": "us"
+            },
+            {
+              "asin": "B01II71UJQ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1Q4D2rPV-L.jpg",
+          "id": "dave-rudden-2016",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "dave-rudden"
+          ],
+          "publisher": "W. F. Howes Ltd",
+          "release_date": "2016-07-14",
+          "runtime_min": 516,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B01HDZK1NU",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B01II71UJQ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "knights-of-the-borrowed-dark"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B01HDZK1NU",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Knights of the Borrowed Dark"
+    },
     "knights-of-the-crown": {
       "added_at": "2026-08-02",
       "authors": [
@@ -4600,6 +4669,173 @@
       ],
       "title": "Knights: The Hand of Tharnin"
     },
+    "knights-vs-dinosaurs": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "matt-phelan"
+      ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "comedy-humor",
+        "fairy-tales-folklore",
+        "fantasy",
+        "mythology",
+        "nature"
+      ],
+      "id": "knights-vs-dinosaurs",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "sam-devereaux-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CZYXK7HR",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81SZbpVqlJL.jpg",
+          "id": "sam-devereaux-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "sam-devereaux"
+          ],
+          "publisher": "Greenwillow Books",
+          "release_date": "2024-07-23",
+          "runtime_min": 98,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CZYXK7HR",
+              "type": "libex-import"
+            }
+          ],
+          "work": "knights-vs-dinosaurs"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CZYXK7HR",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Knights vs. Dinosaurs"
+    },
+    "knights-vs-monsters": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "matt-phelan"
+      ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "comedy-humor",
+        "fairy-tales-folklore",
+        "horror",
+        "mythology",
+        "nature"
+      ],
+      "id": "knights-vs-monsters",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "sam-devereaux-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CZYJMQ9D",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81Cwmbgp28L.jpg",
+          "id": "sam-devereaux-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "sam-devereaux"
+          ],
+          "publisher": "Greenwillow Books",
+          "release_date": "2024-08-20",
+          "runtime_min": 128,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CZYJMQ9D",
+              "type": "libex-import"
+            }
+          ],
+          "work": "knights-vs-monsters"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CZYJMQ9D",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Knights vs. Monsters"
+    },
+    "knights-vs-the-end-of-everything": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "matt-phelan"
+      ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "comedy-humor",
+        "fairy-tales-folklore",
+        "fantasy",
+        "mythology"
+      ],
+      "id": "knights-vs-the-end-of-everything",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "sam-devereaux-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CZYLL9DR",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81TNmSGcbuL.jpg",
+          "id": "sam-devereaux-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "sam-devereaux"
+          ],
+          "publisher": "Greenwillow Books",
+          "release_date": "2024-09-17",
+          "runtime_min": 142,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CZYLL9DR",
+              "type": "libex-import"
+            }
+          ],
+          "work": "knights-vs-the-end-of-everything"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CZYLL9DR",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Knights vs. the End (of Everything)"
+    },
     "knights-war": {
       "added_at": "2026-08-01",
       "authors": [
@@ -4930,6 +5166,179 @@
         }
       ],
       "title": "Knitting Bones"
+    },
+    "kniv-i-hjertet": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "babak-vakili",
+        "mikkel-straarup-moller",
+        "rasmus-funder"
+      ],
+      "credits": [
+        {
+          "person": "mikkel-straarup-moller",
+          "role": "illustrator"
+        },
+        {
+          "person": "rasmus-funder",
+          "role": "illustrator"
+        }
+      ],
+      "genres": [
+        "romance",
+        "romantic-suspense",
+        "thriller-suspense",
+        "young-adult"
+      ],
+      "id": "kniv-i-hjertet",
+      "language": "da",
+      "license": "CC0-1.0",
+      "recordings": {
+        "babak-vakili-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0FVYB74BD",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81HdasTG+sL.jpg",
+          "id": "babak-vakili-2025",
+          "language": "da",
+          "license": "CC0-1.0",
+          "narrators": [
+            "babak-vakili"
+          ],
+          "publisher": "Gyldendal",
+          "release_date": "2025-10-13",
+          "runtime_min": 93,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FVYB74BD",
+              "type": "libex-import"
+            }
+          ],
+          "work": "kniv-i-hjertet"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0FVYB74BD",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Kniv i hjertet"
+    },
+    "knoblauchattacke": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "anna-haas"
+      ],
+      "genres": [
+        "childrens",
+        "fantasy"
+      ],
+      "id": "knoblauchattacke",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "hannes-maurer-2010": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00TMW3KFY",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/512fnuM1OLL.jpg",
+          "id": "hannes-maurer-2010",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "hannes-maurer",
+            "marianne-graffam",
+            "santiago-ziesmer"
+          ],
+          "publisher": "Helle Freude Verlag",
+          "release_date": "2010-03-18",
+          "runtime_min": 19,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00TMW3KFY",
+              "type": "libex-import"
+            }
+          ],
+          "work": "knoblauchattacke"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00TMW3KFY",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Knoblauchattacke"
+    },
+    "knochen-und-staub": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "paul-burghardt"
+      ],
+      "genres": [
+        "fantasy",
+        "urban-fantasy"
+      ],
+      "id": "knochen-und-staub",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "eckart-dux-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CW6L853G",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91N7MFJTpGL.jpg",
+          "id": "eckart-dux-2024",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "eckart-dux",
+            "kim-hasper",
+            "konrad-bosherz",
+            "leyla-trebbien",
+            "werner-wilkening"
+          ],
+          "publisher": "Holysoft GmbH",
+          "release_date": "2024-02-26",
+          "runtime_min": 62,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CW6L853G",
+              "type": "libex-import"
+            }
+          ],
+          "work": "knochen-und-staub"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CW6L853G",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Knochen und Staub"
     },
     "knock-knock": {
       "added_at": "2026-08-02",
@@ -6016,6 +6425,223 @@
         }
       ],
       "title": "Knotting Hill: Get Knotted!"
+    },
+    "know-no-fear": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "dan-abnett"
+      ],
+      "genres": [
+        "science-fiction"
+      ],
+      "id": "know-no-fear",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "gareth-armstrong-2017": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B076B2VQQH",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 700057,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 599307,
+              "start_ms": 700057,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2094997,
+              "start_ms": 1299364,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 836266,
+              "start_ms": 3394361,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1331408,
+              "start_ms": 4230627,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1314644,
+              "start_ms": 5562035,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1627695,
+              "start_ms": 6876679,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1502145,
+              "start_ms": 8504374,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1541317,
+              "start_ms": 10006519,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 2165980,
+              "start_ms": 11547836,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 2332003,
+              "start_ms": 13713816,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 820128,
+              "start_ms": 16045819,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1163133,
+              "start_ms": 16865947,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1935499,
+              "start_ms": 18029080,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1494622,
+              "start_ms": 19964579,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 779493,
+              "start_ms": 21459201,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1324651,
+              "start_ms": 22238694,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 2452212,
+              "start_ms": 23563345,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1197011,
+              "start_ms": 26015557,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 812001,
+              "start_ms": 27212568,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 1538716,
+              "start_ms": 28024569,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 1862565,
+              "start_ms": 29563285,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 1004146,
+              "start_ms": 31425850,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 2514651,
+              "start_ms": 32429996,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 841560,
+              "start_ms": 34944647,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 935137,
+              "start_ms": 35786207,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 641404,
+              "start_ms": 36721344,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 627960,
+              "start_ms": 37362748,
+              "title": "Chapter 28"
+            },
+            {
+              "length_ms": 918070,
+              "start_ms": 37990708,
+              "title": "Chapter 29"
+            },
+            {
+              "length_ms": 1455751,
+              "start_ms": 38908778,
+              "title": "Chapter 30"
+            },
+            {
+              "length_ms": 262826,
+              "start_ms": 40364529,
+              "title": "Chapter 31"
+            },
+            {
+              "length_ms": 390466,
+              "start_ms": 40627355,
+              "title": "Chapter 32"
+            },
+            {
+              "length_ms": 287091,
+              "start_ms": 41017821,
+              "title": "Chapter 33"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91YDUVlavBL.jpg",
+          "id": "gareth-armstrong-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "gareth-armstrong"
+          ],
+          "publisher": "Black Library",
+          "release_date": "2017-10-10",
+          "runtime_min": 688,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B076B2VQQH",
+              "type": "libex-import"
+            }
+          ],
+          "work": "know-no-fear"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B076B2VQQH",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Know No Fear"
     },
     "know-thy-enemy": {
       "added_at": "2026-08-01",
@@ -7235,6 +7861,124 @@
       ],
       "title": "Kobb"
     },
+    "kobolde-und-kuchenmesser": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "travis-baldree"
+      ],
+      "genres": [
+        "fantasy",
+        "sword-sorcery"
+      ],
+      "id": "kobolde-und-kuchenmesser",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "stefan-kaminski-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0G4WM2N5V",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91ZSDxn72vL.jpg",
+          "id": "stefan-kaminski-2026",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "stefan-kaminski"
+          ],
+          "publisher": "Hörbuch Hamburg",
+          "release_date": "2026-07-16",
+          "runtime_min": 673,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0G4WM2N5V",
+              "type": "libex-import"
+            }
+          ],
+          "work": "kobolde-und-kuchenmesser"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0G4WM2N5V",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Kobolde und Kuchenmesser"
+    },
+    "koboldsgesetz": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "angela-strunck",
+        "matthias-pacht",
+        "korbinian-dufter",
+        "moritz-binder",
+        "katharina-koster"
+      ],
+      "genres": [
+        "childrens",
+        "fantasy"
+      ],
+      "id": "koboldsgesetz",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "florian-bruckner-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CQM5GLVQ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81Z4Zmq-mhL.jpg",
+          "id": "florian-bruckner-2023",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "florian-bruckner",
+            "frederic-linkemann",
+            "gundi-ellert",
+            "hans-clarin",
+            "hans-stadlbauer",
+            "ilse-neubauer",
+            "ina-meling",
+            "judith-richter",
+            "martin-weinek",
+            "maximilian-schafroth",
+            "michael-bideller",
+            "mira-mazumdar",
+            "theresa-teubner"
+          ],
+          "publisher": "Karussell",
+          "release_date": "2023-12-21",
+          "runtime_min": 32,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CQM5GLVQ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "koboldsgesetz"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CQM5GLVQ",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Koboldsgesetz"
+    },
     "kobys-destiny": {
       "added_at": "2026-08-01",
       "authors": [
@@ -7287,6 +8031,110 @@
         }
       ],
       "title": "Koby's Destiny"
+    },
+    "kodewort-zbv": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "uwe-anton"
+      ],
+      "genres": [
+        "science-fiction",
+        "space-opera"
+      ],
+      "id": "kodewort-zbv",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "renier-baaken-2014": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00TJJSPKK",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/919gFREI0WL.jpg",
+          "id": "renier-baaken-2014",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "renier-baaken"
+          ],
+          "publisher": "Eins A Medien GmbH",
+          "release_date": "2014-03-31",
+          "runtime_min": 225,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00TJJSPKK",
+              "type": "libex-import"
+            }
+          ],
+          "work": "kodewort-zbv"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00TJJSPKK",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Kodewort ZbV"
+    },
+    "kodexfieber": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "arndt-ellmer",
+        "h-g-ewers",
+        "kurt-mahr"
+      ],
+      "genres": [
+        "science-fiction",
+        "space-opera"
+      ],
+      "id": "kodexfieber",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "martin-bross-2021": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B09BFHTN39",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81oCIWnvUZL.jpg",
+          "id": "martin-bross-2021",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "martin-bross"
+          ],
+          "publisher": "Eins A Medien GmbH",
+          "release_date": "2021-07-29",
+          "runtime_min": 811,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09BFHTN39",
+              "type": "libex-import"
+            }
+          ],
+          "work": "kodexfieber"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B09BFHTN39",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Kodexfieber"
     },
     "kogarashis-run": {
       "added_at": "2026-08-01",
@@ -7341,6 +8189,57 @@
       ],
       "title": "Kogarashi's Run"
     },
+    "koicherts-wissen": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "robert-corvus"
+      ],
+      "genres": [
+        "science-fiction",
+        "space-opera"
+      ],
+      "id": "koicherts-wissen",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "renier-baaken-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CKLGJH3Z",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91GjHyd9HeL.jpg",
+          "id": "renier-baaken-2023",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "renier-baaken"
+          ],
+          "publisher": "Eins A Medien GmbH",
+          "release_date": "2023-10-09",
+          "runtime_min": 247,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CKLGJH3Z",
+              "type": "libex-import"
+            }
+          ],
+          "work": "koicherts-wissen"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CKLGJH3Z",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Koicherts Wissen"
+    },
     "koinobi": {
       "added_at": "2026-08-01",
       "authors": [
@@ -7391,6 +8290,65 @@
         }
       ],
       "title": "Koinobi"
+    },
+    "koldt-pa-toppen": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "babak-vakili",
+        "mikkel-straarup-moller",
+        "rasmus-funder-graphic-design"
+      ],
+      "credits": [
+        {
+          "person": "mikkel-straarup-moller",
+          "role": "illustrator"
+        }
+      ],
+      "genres": [
+        "childrens",
+        "comedy-humor"
+      ],
+      "id": "koldt-pa-toppen",
+      "language": "da",
+      "license": "CC0-1.0",
+      "recordings": {
+        "babak-vakili-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0FFSXMST8",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81Ez0iDu3QL.jpg",
+          "id": "babak-vakili-2025",
+          "language": "da",
+          "license": "CC0-1.0",
+          "narrators": [
+            "babak-vakili"
+          ],
+          "publisher": "Gyldendal",
+          "release_date": "2025-07-09",
+          "runtime_min": 152,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FFSXMST8",
+              "type": "libex-import"
+            }
+          ],
+          "work": "koldt-pa-toppen"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0FFSXMST8",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Koldt på toppen"
     },
     "kollaps": {
       "added_at": "2026-08-02",
@@ -7443,6 +8401,57 @@
         }
       ],
       "title": "Kollaps"
+    },
+    "kollaps-funguszyklus-1": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "hk-kohfink"
+      ],
+      "genres": [
+        "post-apocalyptic",
+        "science-fiction"
+      ],
+      "id": "kollaps-funguszyklus-1",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "alex-teubner-2022": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0B577NHGX",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81jK+cF6jLL.jpg",
+          "id": "alex-teubner-2022",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alex-teubner"
+          ],
+          "publisher": "Audio4You",
+          "release_date": "2022-06-27",
+          "runtime_min": 712,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0B577NHGX",
+              "type": "libex-import"
+            }
+          ],
+          "work": "kollaps-funguszyklus-1"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0B577NHGX",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Kollaps: Funguszyklus 1"
     },
     "kollaps-john-scalzi": {
       "added_at": "2026-08-02",
@@ -8429,6 +9438,57 @@
       ],
       "title": "Kollaps"
     },
+    "kollaps-perry-rhodan-neo-319": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "rainer-schorm"
+      ],
+      "genres": [
+        "science-fiction",
+        "space-opera"
+      ],
+      "id": "kollaps-perry-rhodan-neo-319",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "hanno-dinger-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CQ35CBR4",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91yuZ7Yj4mL.jpg",
+          "id": "hanno-dinger-2023",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "hanno-dinger"
+          ],
+          "publisher": "Eins A Medien GmbH",
+          "release_date": "2023-12-15",
+          "runtime_min": 339,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CQ35CBR4",
+              "type": "libex-import"
+            }
+          ],
+          "work": "kollaps-perry-rhodan-neo-319"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CQ35CBR4",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Kollaps: PERRY RHODAN NEO 319"
+    },
     "kolle-in-not-1": {
       "added_at": "2026-08-02",
       "authors": [
@@ -8891,6 +9951,210 @@
       ],
       "title": "Kolonie Neumond: Überleben (German Edition)"
     },
+    "koltoroc": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "uwe-anton"
+      ],
+      "genres": [
+        "science-fiction",
+        "space-opera"
+      ],
+      "id": "koltoroc",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "simon-roden-2009": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00TMSCGJ4",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1++z+iW1eL.jpg",
+          "id": "simon-roden-2009",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "simon-roden"
+          ],
+          "publisher": "Eins A Medien GmbH",
+          "release_date": "2009-06-18",
+          "runtime_min": 222,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00TMSCGJ4",
+              "type": "libex-import"
+            }
+          ],
+          "work": "koltoroc"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00TMSCGJ4",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Koltoroc"
+    },
+    "koltorocs-atem": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "horst-hoffmann"
+      ],
+      "genres": [
+        "science-fiction",
+        "space-opera"
+      ],
+      "id": "koltorocs-atem",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "renier-baaken-2009": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00TMV4I6A",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91gqz0jeXML.jpg",
+          "id": "renier-baaken-2009",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "renier-baaken"
+          ],
+          "publisher": "Eins A Medien GmbH",
+          "release_date": "2009-04-09",
+          "runtime_min": 196,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00TMV4I6A",
+              "type": "libex-import"
+            }
+          ],
+          "work": "koltorocs-atem"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00TMV4I6A",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Koltorocs Atem"
+    },
+    "koltorocs-feuer": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "horst-hoffmann"
+      ],
+      "genres": [
+        "science-fiction",
+        "space-opera"
+      ],
+      "id": "koltorocs-feuer",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "renier-baaken-2009": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00TMV256U",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1raRnL+tPL.jpg",
+          "id": "renier-baaken-2009",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "renier-baaken"
+          ],
+          "publisher": "Eins A Medien GmbH",
+          "release_date": "2009-07-17",
+          "runtime_min": 209,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00TMV256U",
+              "type": "libex-import"
+            }
+          ],
+          "work": "koltorocs-feuer"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00TMV256U",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Koltorocs Feuer"
+    },
+    "koltorocs-kinder": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "uwe-anton"
+      ],
+      "genres": [
+        "science-fiction",
+        "space-opera"
+      ],
+      "id": "koltorocs-kinder",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "gregor-hoppner-2008": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00TMVZXXW",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1mtCPGu2PL.jpg",
+          "id": "gregor-hoppner-2008",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "gregor-hoppner"
+          ],
+          "publisher": "Eins A Medien GmbH",
+          "release_date": "2008-12-18",
+          "runtime_min": 198,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00TMVZXXW",
+              "type": "libex-import"
+            }
+          ],
+          "work": "koltorocs-kinder"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00TMVZXXW",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Koltorocs Kinder"
+    },
     "komari-the-awakened-path": {
       "added_at": "2026-08-02",
       "authors": [
@@ -9112,6 +10376,124 @@
       ],
       "title": "Komarr"
     },
+    "komet-im-anflug": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "angela-strunck",
+        "joss-king",
+        "henning-stegelmann"
+      ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "science-fiction"
+      ],
+      "id": "komet-im-anflug",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "celine-fontanges-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0GTM5YJWJ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91t2gGu0IuL.jpg",
+          "id": "celine-fontanges-2026",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "celine-fontanges",
+            "kaya-moller",
+            "konstantin-graudus",
+            "leonhard-mahlich",
+            "rene-dawn-claude",
+            "simona-pahl",
+            "sonja-stein",
+            "tim-knauer"
+          ],
+          "publisher": "ZDFS.junior",
+          "release_date": "2026-04-10",
+          "runtime_min": 29,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GTM5YJWJ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "komet-im-anflug"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0GTM5YJWJ",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Komet im Anflug"
+    },
+    "kometengefahr": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "peter-schilling",
+        "bernd-flessner"
+      ],
+      "genres": [
+        "childrens",
+        "science"
+      ],
+      "id": "kometengefahr",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "christin-wehner-2019": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B082FHTHCS",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91mIzo8ekiL.jpg",
+          "id": "christin-wehner-2019",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "christin-wehner",
+            "helwig-arenz",
+            "jurgen-heimuller",
+            "marco-steeger",
+            "peter-schilling",
+            "petra-nacke"
+          ],
+          "publisher": "Tessloff",
+          "release_date": "2019-12-09",
+          "runtime_min": 41,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B082FHTHCS",
+              "type": "libex-import"
+            }
+          ],
+          "work": "kometengefahr"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B082FHTHCS",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Kometengefahr"
+    },
     "komm-schon-baby": {
       "added_at": "2026-08-02",
       "authors": [
@@ -9165,6 +10547,108 @@
       ],
       "title": "Komm schon, Baby!"
     },
+    "kommando-der-friedensfahrer": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "christian-montillon"
+      ],
+      "genres": [
+        "science-fiction",
+        "space-opera"
+      ],
+      "id": "kommando-der-friedensfahrer",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "gregor-hoppner-2009": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00TMV22M2",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91umUhjQIlL.jpg",
+          "id": "gregor-hoppner-2009",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "gregor-hoppner"
+          ],
+          "publisher": "Eins A Medien GmbH",
+          "release_date": "2009-03-26",
+          "runtime_min": 181,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00TMV22M2",
+              "type": "libex-import"
+            }
+          ],
+          "work": "kommando-der-friedensfahrer"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00TMV22M2",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Kommando der Friedensfahrer"
+    },
+    "komplex-astrovent": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "wim-vandemaan"
+      ],
+      "genres": [
+        "science-fiction",
+        "space-opera"
+      ],
+      "id": "komplex-astrovent",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "tom-jacobs-2008": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00TMV4ELE",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1jyxPsHBrL.jpg",
+          "id": "tom-jacobs-2008",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "tom-jacobs"
+          ],
+          "publisher": "Eins A Medien GmbH",
+          "release_date": "2008-10-15",
+          "runtime_min": 192,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00TMV4ELE",
+              "type": "libex-import"
+            }
+          ],
+          "work": "komplex-astrovent"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00TMV4ELE",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Komplex Astrovent"
+    },
     "kon-tiki": {
       "added_at": "2026-08-02",
       "authors": [
@@ -9217,6 +10701,108 @@
       ],
       "title": "Kon-Tiki"
     },
+    "konferenz-der-todfeinde": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "michelle-stern"
+      ],
+      "genres": [
+        "science-fiction",
+        "space-opera"
+      ],
+      "id": "konferenz-der-todfeinde",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "andreas-laurenz-maier-2017": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B06XC4K4KN",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1LR5InmtpL.jpg",
+          "id": "andreas-laurenz-maier-2017",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andreas-laurenz-maier"
+          ],
+          "publisher": "Eins A Medien GmbH",
+          "release_date": "2017-03-02",
+          "runtime_min": 223,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B06XC4K4KN",
+              "type": "libex-import"
+            }
+          ],
+          "work": "konferenz-der-todfeinde"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B06XC4K4KN",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Konferenz der Todfeinde"
+    },
+    "konfirmation-kaerester-og-andre-kriser": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "annegerd-lerche-kristiansen"
+      ],
+      "genres": [
+        "parenting-relationships",
+        "young-adult"
+      ],
+      "id": "konfirmation-kaerester-og-andre-kriser",
+      "language": "da",
+      "license": "CC0-1.0",
+      "recordings": {
+        "olga-randlov-decitre-2020": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "8702291266",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81hFG6c2F1L.jpg",
+          "id": "olga-randlov-decitre-2020",
+          "language": "da",
+          "license": "CC0-1.0",
+          "narrators": [
+            "olga-randlov-decitre"
+          ],
+          "publisher": "Gyldendalske Boghandel, Nordisk Forlag A/S",
+          "release_date": "2020-01-16",
+          "runtime_min": 300,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "8702291266",
+              "type": "libex-import"
+            }
+          ],
+          "work": "konfirmation-kaerester-og-andre-kriser"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "8702291266",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Konfirmation, kærester og andre kriser"
+    },
     "konflikt": {
       "added_at": "2026-08-02",
       "authors": [
@@ -9268,6 +10854,631 @@
         }
       ],
       "title": "Konflikt"
+    },
+    "konflikt-der-androiden": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "hubert-haensel"
+      ],
+      "genres": [
+        "science-fiction",
+        "space-opera"
+      ],
+      "id": "konflikt-der-androiden",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "tom-jacobs-2011": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00TL7UWM4",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1SEFXKHs4L.jpg",
+          "id": "tom-jacobs-2011",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "tom-jacobs"
+          ],
+          "publisher": "Eins A Medien GmbH",
+          "release_date": "2011-08-24",
+          "runtime_min": 178,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00TL7UWM4",
+              "type": "libex-import"
+            }
+          ],
+          "work": "konflikt-der-androiden"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00TL7UWM4",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Konflikt der Androiden"
+    },
+    "konflikt-hk-kohfink": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "hk-kohfink"
+      ],
+      "genres": [
+        "post-apocalyptic",
+        "science-fiction"
+      ],
+      "id": "konflikt-hk-kohfink",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "alex-teubner-2022": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0BM4HC47L",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81lEGYNhSgL.jpg",
+          "id": "alex-teubner-2022",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alex-teubner"
+          ],
+          "publisher": "Audio4You",
+          "release_date": "2022-11-14",
+          "runtime_min": 665,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0BM4HC47L",
+              "type": "libex-import"
+            }
+          ],
+          "work": "konflikt-hk-kohfink"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0BM4HC47L",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Konflikt"
+    },
+    "konfrontation-in-ostland": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "martin-schatke"
+      ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "superhero"
+      ],
+      "id": "konfrontation-in-ostland",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "curd-berger-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0GWMZYNBS",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91V200hXHgL.jpg",
+          "id": "curd-berger-2026",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "curd-berger",
+            "denise-monteiro",
+            "florian-clyde",
+            "helge-sidow",
+            "kaspar-eichel",
+            "mathias-renneisen",
+            "nico-nothnagel",
+            "olivia-buschken",
+            "santiago-ziesmer",
+            "stefan-muller-doriat",
+            "thomas-kastner",
+            "till-hagen",
+            "tobias-brecklinghaus"
+          ],
+          "publisher": "Kiddinx",
+          "release_date": "2026-06-05",
+          "runtime_min": 35,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GWMZYNBS",
+              "type": "libex-import"
+            }
+          ],
+          "work": "konfrontation-in-ostland"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0GWMZYNBS",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Konfrontation in Ostland"
+    },
+    "konfuzius": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "richard-wilhelm"
+      ],
+      "genres": [
+        "fairy-tales-folklore",
+        "fantasy",
+        "literary-fiction"
+      ],
+      "id": "konfuzius",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "karlheinz-gabor-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0FHWQBN12",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81PGL5vHN1L.jpg",
+          "id": "karlheinz-gabor-2025",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "karlheinz-gabor"
+          ],
+          "publisher": "Stream-Book Blue",
+          "release_date": "2025-08-09",
+          "runtime_min": 9,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FHWQBN12",
+              "type": "libex-import"
+            }
+          ],
+          "work": "konfuzius"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0FHWQBN12",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Konfuzius"
+    },
+    "kongress-der-kriminellen-sherlock-holmes-die-galaktischen-falle-68": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "arthur-conan-doyle",
+        "s-pomej"
+      ],
+      "genres": [
+        "mystery"
+      ],
+      "id": "kongress-der-kriminellen-sherlock-holmes-die-galaktischen-falle-68",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "rupert-pichler-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0DNJRPHPM",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91w6vmsVIwL.jpg",
+          "id": "rupert-pichler-2025",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "rupert-pichler"
+          ],
+          "publisher": "Ignatius Publishers",
+          "release_date": "2025-07-31",
+          "runtime_min": 68,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DNJRPHPM",
+              "type": "libex-import"
+            }
+          ],
+          "work": "kongress-der-kriminellen-sherlock-holmes-die-galaktischen-falle-68"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0DNJRPHPM",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Kongress der Kriminellen: Sherlock Holmes - Die galaktischen Fälle 68"
+    },
+    "kongress-der-kriminellen-sherlock-holmes-die-galaktischen-falle-folge-68": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "arthur-conan-doyle",
+        "s-pomej"
+      ],
+      "genres": [
+        "mystery"
+      ],
+      "id": "kongress-der-kriminellen-sherlock-holmes-die-galaktischen-falle-folge-68",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "andreas-lange-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0FFBGT5SM",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91kUM8HPG5L.jpg",
+          "id": "andreas-lange-2026",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andreas-lange"
+          ],
+          "publisher": "Ignatius Publishers",
+          "release_date": "2026-03-10",
+          "runtime_min": 58,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FFBGT5SM",
+              "type": "libex-import"
+            }
+          ],
+          "work": "kongress-der-kriminellen-sherlock-holmes-die-galaktischen-falle-folge-68"
+        },
+        "peter-bocek-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0DZCGTPLB",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91nxiMVSwIL.jpg",
+          "id": "peter-bocek-2025",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "peter-bocek"
+          ],
+          "publisher": "Ignatius Publishers",
+          "release_date": "2025-12-14",
+          "runtime_min": 62,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DZCGTPLB",
+              "type": "libex-import"
+            }
+          ],
+          "work": "kongress-der-kriminellen-sherlock-holmes-die-galaktischen-falle-folge-68"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0DZCGTPLB",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Kongress der Kriminellen: Sherlock Holmes - Die galaktischen Fälle - Folge 68"
+    },
+    "konig-artus": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "dirk-jurgensen"
+      ],
+      "genres": [
+        "historical-fiction"
+      ],
+      "id": "konig-artus",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "kim-hasper-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0C9JKMNLJ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81XNxcXSacL.jpg",
+          "id": "kim-hasper-2023",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kim-hasper",
+            "ozan-unal",
+            "reinhard-scheunemann",
+            "udo-schenk",
+            "uve-teschner"
+          ],
+          "publisher": "Holysoft GmbH",
+          "release_date": "2023-06-28",
+          "runtime_min": 54,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0C9JKMNLJ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "konig-artus"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0C9JKMNLJ",
+          "type": "libex-import"
+        }
+      ],
+      "title": "König Artus"
+    },
+    "konig-bubsler-der-mechano-multi-drache-das-original-horspiel-zur-tv-serie": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "daniela-wakonigg",
+        "stefan-kruger"
+      ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "fantasy"
+      ],
+      "id": "konig-bubsler-der-mechano-multi-drache-das-original-horspiel-zur-tv-serie",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "daniela-wakonigg-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CLL6FR9V",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81RpLtsUMUL.jpg",
+          "id": "daniela-wakonigg-2023",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "daniela-wakonigg",
+            "stefan-kruger"
+          ],
+          "publisher": "Edelkids",
+          "release_date": "2023-11-03",
+          "runtime_min": 48,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CLL6FR9V",
+              "type": "libex-import"
+            }
+          ],
+          "work": "konig-bubsler-der-mechano-multi-drache-das-original-horspiel-zur-tv-serie"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CLL6FR9V",
+          "type": "libex-import"
+        }
+      ],
+      "title": "König Bubsler / Der Mechano-Multi-Drache. Das Original-Hörspiel zur TV-Serie"
+    },
+    "konig-david": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "aikaterini-maria-schlosser"
+      ],
+      "genres": [
+        "religion-spirituality"
+      ],
+      "id": "konig-david",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "alexandra-lange-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0F5BDZJYT",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91FT8T07JYL.jpg",
+          "id": "alexandra-lange-2025",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alexandra-lange",
+            "anna-dramski",
+            "dirc-simpson",
+            "michael-che-koch",
+            "sascha-rotermund"
+          ],
+          "publisher": "Holysoft GmbH",
+          "release_date": "2025-05-04",
+          "runtime_min": 70,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0F5BDZJYT",
+              "type": "libex-import"
+            }
+          ],
+          "work": "konig-david"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0F5BDZJYT",
+          "type": "libex-import"
+        }
+      ],
+      "title": "König David"
+    },
+    "konig-der-dunkelheit": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "mark-lawrence"
+      ],
+      "genres": [
+        "epic-fantasy",
+        "fantasy",
+        "military-science-fiction"
+      ],
+      "id": "konig-der-dunkelheit",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "marco-sven-reinbold-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0H1XKJP2C",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81M3IMZg3YL.jpg",
+          "id": "marco-sven-reinbold-2026",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "marco-sven-reinbold"
+          ],
+          "publisher": "Ronin Hörverlag",
+          "release_date": "2026-05-18",
+          "runtime_min": 1080,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0H1XKJP2C",
+              "type": "libex-import"
+            }
+          ],
+          "work": "konig-der-dunkelheit"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0H1XKJP2C",
+          "type": "libex-import"
+        }
+      ],
+      "title": "König der Dunkelheit"
+    },
+    "konig-der-finsternis": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "janelle-mccurdy",
+        "elisabeth-schmalen"
+      ],
+      "credits": [
+        {
+          "person": "elisabeth-schmalen",
+          "role": "translator"
+        }
+      ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "dystopian",
+        "fantasy",
+        "historical-fiction",
+        "science-fiction",
+        "war-military-fiction"
+      ],
+      "id": "konig-der-finsternis",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "chantal-busse-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CSTB723M",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91hGxRFP6wL.jpg",
+          "id": "chantal-busse-2024",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "chantal-busse"
+          ],
+          "publisher": "Silberfisch",
+          "release_date": "2024-02-27",
+          "runtime_min": 538,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CSTB723M",
+              "type": "libex-import"
+            }
+          ],
+          "work": "konig-der-finsternis"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CSTB723M",
+          "type": "libex-import"
+        }
+      ],
+      "title": "König der Finsternis"
     },
     "konig-der-lufte": {
       "added_at": "2026-08-02",
@@ -9326,6 +11537,61 @@
       ],
       "title": "König der Lüfte"
     },
+    "konig-der-ratten": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "marc-freund"
+      ],
+      "genres": [
+        "arts-entertainment",
+        "science-fiction"
+      ],
+      "id": "konig-der-ratten",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "luisa-wietzorek-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0C9JKBRWX",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91vzkfW1ZTL.jpg",
+          "id": "luisa-wietzorek-2023",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "luisa-wietzorek",
+            "steffen-groth",
+            "tanya-kahana",
+            "timmo-niesner",
+            "wanja-gerick"
+          ],
+          "publisher": "Holysoft GmbH",
+          "release_date": "2023-06-28",
+          "runtime_min": 65,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0C9JKBRWX",
+              "type": "libex-import"
+            }
+          ],
+          "work": "konig-der-ratten"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0C9JKBRWX",
+          "type": "libex-import"
+        }
+      ],
+      "title": "König der Ratten"
+    },
     "konig-ein-epischer-litrpg-progression-fantasy-roman-apokosmos-3-king-an-epic-litrpg-progression-fant": {
       "added_at": "2026-08-01",
       "authors": [
@@ -9378,6 +11644,216 @@
         }
       ],
       "title": "König: Ein epischer Litrpg-Progression-Fantasy-Roman (Apokosmos 3) [King: An Epic Litrpg Progression Fantasy Novel (Apokosmos 3)]"
+    },
+    "konig-rother": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "anton-oskar-klaussmann"
+      ],
+      "genres": [
+        "action-adventure",
+        "historical-fiction",
+        "young-adult"
+      ],
+      "id": "konig-rother",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "simon-pichler-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0BY9HFDV6",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91ZYKJDFKAL.jpg",
+          "id": "simon-pichler-2023",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "simon-pichler"
+          ],
+          "publisher": "hoerbuch.cc",
+          "release_date": "2023-03-15",
+          "runtime_min": 78,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0BY9HFDV6",
+              "type": "libex-import"
+            }
+          ],
+          "work": "konig-rother"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0BY9HFDV6",
+          "type": "libex-import"
+        }
+      ],
+      "title": "König Rother"
+    },
+    "konig-salomons-diamanten": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "aikaterini-maria-schlosser"
+      ],
+      "genres": [
+        "historical-fiction"
+      ],
+      "id": "konig-salomons-diamanten",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "claudia-urbschat-mingues-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0C9JPS8DM",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81lKY79PrML.jpg",
+          "id": "claudia-urbschat-mingues-2023",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "claudia-urbschat-mingues",
+            "katja-brugger",
+            "mark-bremer",
+            "oliver-feld",
+            "stefan-krause"
+          ],
+          "publisher": "Holysoft GmbH",
+          "release_date": "2023-06-29",
+          "runtime_min": 72,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0C9JPS8DM",
+              "type": "libex-import"
+            }
+          ],
+          "work": "konig-salomons-diamanten"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0C9JPS8DM",
+          "type": "libex-import"
+        }
+      ],
+      "title": "König Salomons Diamanten"
+    },
+    "konige-der-finsternis-1": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "nicholas-eames"
+      ],
+      "genres": [
+        "action-adventure",
+        "fantasy"
+      ],
+      "id": "konige-der-finsternis-1",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "josef-vossenkuhl-2019": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "3961541248",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81sfv5IO1lL.jpg",
+          "id": "josef-vossenkuhl-2019",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "josef-vossenkuhl"
+          ],
+          "publisher": "Ronin Hörverlag",
+          "release_date": "2019-07-19",
+          "runtime_min": 1243,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "3961541248",
+              "type": "libex-import"
+            }
+          ],
+          "work": "konige-der-finsternis-1"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "3961541248",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Könige der Finsternis 1"
+    },
+    "konigin-der-finsternis": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "sarah-j-maas"
+      ],
+      "genres": [
+        "fantasy",
+        "paranormal",
+        "romance",
+        "young-adult"
+      ],
+      "id": "konigin-der-finsternis",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "ann-vielhaben-2019": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "3844920099",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71tW7-sXbTL.jpg",
+          "id": "ann-vielhaben-2019",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "ann-vielhaben"
+          ],
+          "publisher": "HörbucHHamburg HHV GmbH",
+          "release_date": "2019-03-29",
+          "runtime_min": 1180,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "3844920099",
+              "type": "libex-import"
+            }
+          ],
+          "work": "konigin-der-finsternis"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "3844920099",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Königin der Finsternis"
     },
     "konigreich-der-toten": {
       "added_at": "2026-08-02",
@@ -9432,6 +11908,159 @@
       ],
       "title": "Königreich der Toten"
     },
+    "konigreich-im-schatten": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "robert-e-howard"
+      ],
+      "genres": [
+        "fantasy"
+      ],
+      "id": "konigreich-im-schatten",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "alexander-wohnhaas-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0DJBYDTLJ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91itgve0oOL.jpg",
+          "id": "alexander-wohnhaas-2024",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alexander-wohnhaas"
+          ],
+          "publisher": "Der Vorleser",
+          "release_date": "2024-10-03",
+          "runtime_min": 96,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DJBYDTLJ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "konigreich-im-schatten"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0DJBYDTLJ",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Königreich im Schatten"
+    },
+    "konigsmord": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "hailey-winter"
+      ],
+      "genres": [
+        "epic-fantasy",
+        "fantasy",
+        "urban-fantasy"
+      ],
+      "id": "konigsmord",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "shanti-lunau-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0G1BM551Z",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91b+Z7wbd7L.jpg",
+          "id": "shanti-lunau-2025",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "shanti-lunau"
+          ],
+          "publisher": "Hörbuchmanufaktur Berlin",
+          "release_date": "2025-12-12",
+          "runtime_min": 746,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0G1BM551Z",
+              "type": "libex-import"
+            }
+          ],
+          "work": "konigsmord"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0G1BM551Z",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Königsmord"
+    },
+    "konigsmorder": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "wim-vandemaan"
+      ],
+      "genres": [
+        "science-fiction",
+        "space-opera"
+      ],
+      "id": "konigsmorder",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "stefan-krombach-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0FG85PW8G",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/912WxfSMhRL.jpg",
+          "id": "stefan-krombach-2025",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "stefan-krombach"
+          ],
+          "publisher": "Eins A Medien GmbH",
+          "release_date": "2025-07-09",
+          "runtime_min": 220,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FG85PW8G",
+              "type": "libex-import"
+            }
+          ],
+          "work": "konigsmorder"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0FG85PW8G",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Königsmörder"
+    },
     "koningskind": {
       "added_at": "2026-08-02",
       "authors": [
@@ -9483,6 +12112,1173 @@
       ],
       "title": "Koningskind"
     },
+    "konosuba-gods-blessing-on-this-wonderful-world-vol-1": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "kevin-steinbach",
+        "natsume-akatsuki",
+        "kurone-mishima"
+      ],
+      "credits": [
+        {
+          "person": "kevin-steinbach",
+          "role": "translator"
+        }
+      ],
+      "genres": [
+        "fantasy",
+        "young-adult"
+      ],
+      "id": "konosuba-gods-blessing-on-this-wonderful-world-vol-1",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "arnie-pantoja-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0BXVCHMZQ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81xhTlMwqZL.jpg",
+          "id": "arnie-pantoja-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "arnie-pantoja",
+            "erica-mendez"
+          ],
+          "publisher": "Yen Audio",
+          "release_date": "2023-06-20",
+          "runtime_min": 267,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0BXVCHMZQ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "konosuba-gods-blessing-on-this-wonderful-world-vol-1"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0BXVCHMZQ",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Konosuba: God's Blessing on This Wonderful World!, Vol. 1"
+    },
+    "konosuba-gods-blessing-on-this-wonderful-world-vol-10": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "kevin-steinbach",
+        "natsume-akatsuki",
+        "kurone-mishima"
+      ],
+      "credits": [
+        {
+          "person": "kevin-steinbach",
+          "role": "translator"
+        }
+      ],
+      "genres": [
+        "comedy-humor",
+        "fantasy",
+        "young-adult"
+      ],
+      "id": "konosuba-gods-blessing-on-this-wonderful-world-vol-10",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "arnie-pantoja-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0F818JDZM",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81i9X0pmFjL.jpg",
+          "id": "arnie-pantoja-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "arnie-pantoja",
+            "cristina-vee"
+          ],
+          "publisher": "Yen Audio",
+          "release_date": "2025-09-09",
+          "runtime_min": 300,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0F818JDZM",
+              "type": "libex-import"
+            }
+          ],
+          "work": "konosuba-gods-blessing-on-this-wonderful-world-vol-10"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0F818JDZM",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Konosuba: God's Blessing on This Wonderful World!, Vol. 10"
+    },
+    "konosuba-gods-blessing-on-this-wonderful-world-vol-11": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "kevin-steinbach",
+        "natsume-akatsuki",
+        "kurone-mishima"
+      ],
+      "credits": [
+        {
+          "person": "kevin-steinbach",
+          "role": "translator"
+        }
+      ],
+      "genres": [
+        "fantasy"
+      ],
+      "id": "konosuba-gods-blessing-on-this-wonderful-world-vol-11",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "arnie-pantoja-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0FVJB7WSG",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81zlclF+TRL.jpg",
+          "id": "arnie-pantoja-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "arnie-pantoja",
+            "cristina-vee"
+          ],
+          "publisher": "Yen Audio",
+          "release_date": "2025-12-09",
+          "runtime_min": 306,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FVJB7WSG",
+              "type": "libex-import"
+            }
+          ],
+          "work": "konosuba-gods-blessing-on-this-wonderful-world-vol-11"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0FVJB7WSG",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Konosuba: God's Blessing on This Wonderful World!, Vol. 11"
+    },
+    "konosuba-gods-blessing-on-this-wonderful-world-vol-12": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "kevin-steinbach",
+        "kurone-mishima",
+        "natsume-akatsuki"
+      ],
+      "credits": [
+        {
+          "person": "kevin-steinbach",
+          "role": "translator"
+        }
+      ],
+      "genres": [
+        "fantasy"
+      ],
+      "id": "konosuba-gods-blessing-on-this-wonderful-world-vol-12",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "arnie-pantoja-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0G1VDVM6X",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/816khGMvtsL.jpg",
+          "id": "arnie-pantoja-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "arnie-pantoja",
+            "faye-mata"
+          ],
+          "publisher": "Yen Audio",
+          "release_date": "2026-03-10",
+          "runtime_min": 266,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0G1VDVM6X",
+              "type": "libex-import"
+            }
+          ],
+          "work": "konosuba-gods-blessing-on-this-wonderful-world-vol-12"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0G1VDVM6X",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Konosuba: God's Blessing on This Wonderful World!, Vol. 12"
+    },
+    "konosuba-gods-blessing-on-this-wonderful-world-vol-13": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "kevin-steinbach",
+        "kurone-mishima",
+        "natsume-akatsuki"
+      ],
+      "credits": [
+        {
+          "person": "kevin-steinbach",
+          "role": "translator"
+        }
+      ],
+      "genres": [
+        "fantasy"
+      ],
+      "id": "konosuba-gods-blessing-on-this-wonderful-world-vol-13",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "arnie-pantoja-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0GQCWKQQ5",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/816sB868DXL.jpg",
+          "id": "arnie-pantoja-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "arnie-pantoja",
+            "faye-mata"
+          ],
+          "publisher": "Yen Audio",
+          "release_date": "2026-06-02",
+          "runtime_min": 272,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GQCWKQQ5",
+              "type": "libex-import"
+            }
+          ],
+          "work": "konosuba-gods-blessing-on-this-wonderful-world-vol-13"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0GQCWKQQ5",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Konosuba: God's Blessing on This Wonderful World!, Vol. 13"
+    },
+    "konosuba-gods-blessing-on-this-wonderful-world-vol-2": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "kevin-steinbach",
+        "natsume-akatsuki",
+        "kurone-mishima"
+      ],
+      "credits": [
+        {
+          "person": "kevin-steinbach",
+          "role": "translator"
+        }
+      ],
+      "genres": [
+        "fantasy",
+        "young-adult"
+      ],
+      "id": "konosuba-gods-blessing-on-this-wonderful-world-vol-2",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "arnie-pantoja-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CCG2XMNQ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81-ZbfFDYrL.jpg",
+          "id": "arnie-pantoja-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "arnie-pantoja",
+            "erica-mendez"
+          ],
+          "publisher": "Yen Audio",
+          "release_date": "2023-09-19",
+          "runtime_min": 258,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CCG2XMNQ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "konosuba-gods-blessing-on-this-wonderful-world-vol-2"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CCG2XMNQ",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Konosuba: God's Blessing on This Wonderful World!, Vol. 2"
+    },
+    "konosuba-gods-blessing-on-this-wonderful-world-vol-3": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "kevin-steinbach",
+        "natsume-akatsuki",
+        "kurone-mishima"
+      ],
+      "credits": [
+        {
+          "person": "kevin-steinbach",
+          "role": "translator"
+        }
+      ],
+      "genres": [
+        "fantasy",
+        "young-adult"
+      ],
+      "id": "konosuba-gods-blessing-on-this-wonderful-world-vol-3",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "arnie-pantoja-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CG7DGW5W",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81xaM5HdtRL.jpg",
+          "id": "arnie-pantoja-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "arnie-pantoja",
+            "erica-mendez"
+          ],
+          "publisher": "Yen Audio",
+          "release_date": "2023-12-12",
+          "runtime_min": 299,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CG7DGW5W",
+              "type": "libex-import"
+            }
+          ],
+          "work": "konosuba-gods-blessing-on-this-wonderful-world-vol-3"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CG7DGW5W",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Konosuba: God's Blessing on This Wonderful World!, Vol. 3"
+    },
+    "konosuba-gods-blessing-on-this-wonderful-world-vol-4": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "kevin-steinbach",
+        "natsume-akatsuki",
+        "kurone-mishima"
+      ],
+      "credits": [
+        {
+          "person": "kevin-steinbach",
+          "role": "translator"
+        }
+      ],
+      "genres": [
+        "fantasy",
+        "young-adult"
+      ],
+      "id": "konosuba-gods-blessing-on-this-wonderful-world-vol-4",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "arnie-pantoja-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CRVWS499",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81MMOKxVQRL.jpg",
+          "id": "arnie-pantoja-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "arnie-pantoja",
+            "erica-mendez"
+          ],
+          "publisher": "Yen Audio",
+          "release_date": "2024-03-12",
+          "runtime_min": 288,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CRVWS499",
+              "type": "libex-import"
+            }
+          ],
+          "work": "konosuba-gods-blessing-on-this-wonderful-world-vol-4"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CRVWS499",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Konosuba: God's Blessing on This Wonderful World!, Vol. 4"
+    },
+    "konosuba-gods-blessing-on-this-wonderful-world-vol-5": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "kevin-steinbach",
+        "natsume-akatsuki",
+        "kurone-mishima"
+      ],
+      "credits": [
+        {
+          "person": "kevin-steinbach",
+          "role": "translator"
+        }
+      ],
+      "genres": [
+        "action-adventure",
+        "fantasy",
+        "young-adult"
+      ],
+      "id": "konosuba-gods-blessing-on-this-wonderful-world-vol-5",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "arnie-pantoja-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CW2TWDQM",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81uunI7n9tL.jpg",
+          "id": "arnie-pantoja-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "arnie-pantoja",
+            "erica-mendez"
+          ],
+          "publisher": "Yen Audio",
+          "release_date": "2024-06-11",
+          "runtime_min": 320,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CW2TWDQM",
+              "type": "libex-import"
+            }
+          ],
+          "work": "konosuba-gods-blessing-on-this-wonderful-world-vol-5"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CW2TWDQM",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Konosuba: God's Blessing on This Wonderful World!, Vol. 5"
+    },
+    "konosuba-gods-blessing-on-this-wonderful-world-vol-6": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "kevin-steinbach",
+        "natsume-akatsuki",
+        "kurone-mishima"
+      ],
+      "credits": [
+        {
+          "person": "kevin-steinbach",
+          "role": "translator"
+        }
+      ],
+      "genres": [
+        "fantasy",
+        "young-adult"
+      ],
+      "id": "konosuba-gods-blessing-on-this-wonderful-world-vol-6",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "arnie-pantoja-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0D6CR9972",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91cdvTwGPPL.jpg",
+          "id": "arnie-pantoja-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "arnie-pantoja",
+            "erica-mendez"
+          ],
+          "publisher": "Yen Audio",
+          "release_date": "2024-09-10",
+          "runtime_min": 336,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0D6CR9972",
+              "type": "libex-import"
+            }
+          ],
+          "work": "konosuba-gods-blessing-on-this-wonderful-world-vol-6"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0D6CR9972",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Konosuba: God's Blessing on This Wonderful World!, Vol. 6"
+    },
+    "konosuba-gods-blessing-on-this-wonderful-world-vol-7": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "kevin-steinbach",
+        "natsume-akatsuki",
+        "kurone-mishima"
+      ],
+      "credits": [
+        {
+          "person": "kevin-steinbach",
+          "role": "translator"
+        }
+      ],
+      "genres": [
+        "fantasy",
+        "young-adult"
+      ],
+      "id": "konosuba-gods-blessing-on-this-wonderful-world-vol-7",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "arnie-pantoja-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0DFZL4YYP",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81Zf2wXuTtL.jpg",
+          "id": "arnie-pantoja-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "arnie-pantoja",
+            "erica-mendez"
+          ],
+          "publisher": "Yen Audio",
+          "release_date": "2024-12-10",
+          "runtime_min": 340,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DFZL4YYP",
+              "type": "libex-import"
+            }
+          ],
+          "work": "konosuba-gods-blessing-on-this-wonderful-world-vol-7"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0DFZL4YYP",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Konosuba: God's Blessing on This Wonderful World!, Vol. 7"
+    },
+    "konosuba-gods-blessing-on-this-wonderful-world-vol-8": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "kevin-steinbach",
+        "natsume-akatsuki",
+        "kurone-mishima"
+      ],
+      "credits": [
+        {
+          "person": "kevin-steinbach",
+          "role": "translator"
+        }
+      ],
+      "genres": [
+        "epic-fantasy",
+        "fantasy",
+        "young-adult"
+      ],
+      "id": "konosuba-gods-blessing-on-this-wonderful-world-vol-8",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "arnie-pantoja-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0DK9T3LP6",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81jmazEmyzL.jpg",
+          "id": "arnie-pantoja-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "arnie-pantoja",
+            "erica-mendez"
+          ],
+          "publisher": "Yen Audio",
+          "release_date": "2025-03-11",
+          "runtime_min": 316,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DK9T3LP6",
+              "type": "libex-import"
+            }
+          ],
+          "work": "konosuba-gods-blessing-on-this-wonderful-world-vol-8"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0DK9T3LP6",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Konosuba: God's Blessing on This Wonderful World!, Vol. 8"
+    },
+    "konosuba-gods-blessing-on-this-wonderful-world-vol-9": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "kevin-steinbach",
+        "natsume-akatsuki",
+        "kurone-mishima"
+      ],
+      "credits": [
+        {
+          "person": "kevin-steinbach",
+          "role": "translator"
+        }
+      ],
+      "genres": [
+        "fantasy",
+        "young-adult"
+      ],
+      "id": "konosuba-gods-blessing-on-this-wonderful-world-vol-9",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "arnie-pantoja-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0F2B42KBG",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81PVJga6NbL.jpg",
+          "id": "arnie-pantoja-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "arnie-pantoja",
+            "erica-mendez"
+          ],
+          "publisher": "Yen Audio",
+          "release_date": "2025-06-10",
+          "runtime_min": 308,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0F2B42KBG",
+              "type": "libex-import"
+            }
+          ],
+          "work": "konosuba-gods-blessing-on-this-wonderful-world-vol-9"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0F2B42KBG",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Konosuba: God's Blessing on This Wonderful World!, Vol. 9"
+    },
+    "konrad-curze-der-jager-der-nacht": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "guy-haley"
+      ],
+      "genres": [
+        "military-science-fiction",
+        "science-fiction"
+      ],
+      "id": "konrad-curze-der-jager-der-nacht",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "florian-walter-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0FQ5CLKGS",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81D4x10vnKL.jpg",
+          "id": "florian-walter-2025",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "florian-walter"
+          ],
+          "publisher": "Eins A Medien GmbH",
+          "release_date": "2025-09-08",
+          "runtime_min": 455,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FQ5CLKGS",
+              "type": "libex-import"
+            }
+          ],
+          "work": "konrad-curze-der-jager-der-nacht"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0FQ5CLKGS",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Konrad Curze - Der Jäger der Nacht"
+    },
+    "konrad-curze-the-night-haunter": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "guy-haley"
+      ],
+      "genres": [
+        "action-adventure",
+        "military-science-fiction",
+        "science-fiction",
+        "space-opera"
+      ],
+      "id": "konrad-curze-the-night-haunter",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "jonathan-keeble-2019": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "1789994462",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 62519,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 1011798,
+              "start_ms": 62519,
+              "title": "Chapter 1: The Dark"
+            },
+            {
+              "length_ms": 1729004,
+              "start_ms": 1074317,
+              "title": "Chapter 2: Paydot"
+            },
+            {
+              "length_ms": 1363568,
+              "start_ms": 2803321,
+              "title": "Chapter 3: A Monster's Submission"
+            },
+            {
+              "length_ms": 2035368,
+              "start_ms": 4166889,
+              "title": "Chapter 4: Future Imperfect"
+            },
+            {
+              "length_ms": 1401440,
+              "start_ms": 6202257,
+              "title": "Chapter 5: The Fifth Passenger"
+            },
+            {
+              "length_ms": 2333535,
+              "start_ms": 7603697,
+              "title": "Chapter 6: Two Lords of the Night"
+            },
+            {
+              "length_ms": 1095888,
+              "start_ms": 9937232,
+              "title": "Chapter 7: The Fourth Passenger"
+            },
+            {
+              "length_ms": 1410472,
+              "start_ms": 11033120,
+              "title": "Chapter 8: Night Haunter"
+            },
+            {
+              "length_ms": 2304417,
+              "start_ms": 12443592,
+              "title": "Chapter 9: Murder Amoc"
+            },
+            {
+              "length_ms": 2047837,
+              "start_ms": 14748009,
+              "title": "Chapter 10: Carrion World"
+            },
+            {
+              "length_ms": 2253148,
+              "start_ms": 16795846,
+              "title": "Chapter 11: The Curze of Foresight"
+            },
+            {
+              "length_ms": 1343227,
+              "start_ms": 19048994,
+              "title": "Chapter 12: Nostramo Burns"
+            },
+            {
+              "length_ms": 1501153,
+              "start_ms": 20392221,
+              "title": "Chapter 13: Vindication"
+            },
+            {
+              "length_ms": 31828,
+              "start_ms": 21893374,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81zqMqR1zML.jpg",
+          "id": "jonathan-keeble-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jonathan-keeble"
+          ],
+          "publisher": "Black Library",
+          "release_date": "2019-08-10",
+          "runtime_min": 365,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1789994462",
+              "type": "libex-import"
+            }
+          ],
+          "work": "konrad-curze-the-night-haunter"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1789994462",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Konrad Curze: The Night Haunter"
+    },
+    "konstrukt-der-ylanten": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "susan-schwartz"
+      ],
+      "genres": [
+        "science-fiction",
+        "space-opera"
+      ],
+      "id": "konstrukt-der-ylanten",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "renier-baaken-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0F2N94ZLK",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91HTvDU9sDL.jpg",
+          "id": "renier-baaken-2025",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "renier-baaken"
+          ],
+          "publisher": "Eins A Medien GmbH",
+          "release_date": "2025-03-31",
+          "runtime_min": 219,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0F2N94ZLK",
+              "type": "libex-import"
+            }
+          ],
+          "work": "konstrukt-der-ylanten"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0F2N94ZLK",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Konstrukt der Ylanten"
+    },
+    "konstrukteure-des-zentrums": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "rainer-schorm"
+      ],
+      "genres": [
+        "science-fiction",
+        "space-opera"
+      ],
+      "id": "konstrukteure-des-zentrums",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "hanno-dinger-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0D35P19GP",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91-eYpHwVsL.jpg",
+          "id": "hanno-dinger-2024",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "hanno-dinger"
+          ],
+          "publisher": "Eins A Medien GmbH",
+          "release_date": "2024-05-02",
+          "runtime_min": 354,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0D35P19GP",
+              "type": "libex-import"
+            }
+          ],
+          "work": "konstrukteure-des-zentrums"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0D35P19GP",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Konstrukteure des Zentrums"
+    },
+    "kontakt": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "heiko-kohfink"
+      ],
+      "genres": [
+        "alternate-history",
+        "dystopian",
+        "post-apocalyptic",
+        "science-fiction"
+      ],
+      "id": "kontakt",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "alex-teubner-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0D5BPQ991",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81HNWrf0x7L.jpg",
+          "id": "alex-teubner-2024",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alex-teubner"
+          ],
+          "publisher": "Audio4You",
+          "release_date": "2024-07-10",
+          "runtime_min": 644,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0D5BPQ991",
+              "type": "libex-import"
+            }
+          ],
+          "work": "kontakt"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0D5BPQ991",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Kontakt"
+    },
+    "konterplan-der-rayonen": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "rainer-castor"
+      ],
+      "genres": [
+        "science-fiction",
+        "space-opera"
+      ],
+      "id": "konterplan-der-rayonen",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "tom-jacobs-2015": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0144GSIXQ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91ATuLE9VrL.jpg",
+          "id": "tom-jacobs-2015",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "tom-jacobs"
+          ],
+          "publisher": "Eins A Medien GmbH",
+          "release_date": "2015-08-20",
+          "runtime_min": 202,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0144GSIXQ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "konterplan-der-rayonen"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0144GSIXQ",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Konterplan der Rayonen"
+    },
     "kontrolle": {
       "added_at": "2026-08-02",
       "authors": [
@@ -9533,6 +13329,114 @@
         }
       ],
       "title": "Kontrolle"
+    },
+    "kontrollstation-modul": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "k-h-scheer",
+        "clark-darlton",
+        "william-voltz"
+      ],
+      "genres": [
+        "fantasy",
+        "science-fiction"
+      ],
+      "id": "kontrollstation-modul",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "josef-tratnik-2010": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00U2TAN42",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91SxS0pEHiL.jpg",
+          "id": "josef-tratnik-2010",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "josef-tratnik"
+          ],
+          "publisher": "Eins A Medien GmbH",
+          "release_date": "2010-11-17",
+          "runtime_min": 963,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00U2TAN42",
+              "type": "libex-import"
+            }
+          ],
+          "work": "kontrollstation-modul"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00U2TAN42",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Kontrollstation Modul"
+    },
+    "konvent-der-reinheit": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "dirk-jurgensen"
+      ],
+      "genres": [
+        "arts-entertainment",
+        "science-fiction"
+      ],
+      "id": "konvent-der-reinheit",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "daniela-bette-koch-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0C9JMDCZ5",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91QOBfL1DCL.jpg",
+          "id": "daniela-bette-koch-2023",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "daniela-bette-koch",
+            "dominik-auer",
+            "marius-claren",
+            "tanya-kahana",
+            "wanja-gerick"
+          ],
+          "publisher": "Holysoft GmbH",
+          "release_date": "2023-06-28",
+          "runtime_min": 78,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0C9JMDCZ5",
+              "type": "libex-import"
+            }
+          ],
+          "work": "konvent-der-reinheit"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0C9JMDCZ5",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Konvent der Reinheit"
     },
     "konvergenz": {
       "added_at": "2026-08-02",
@@ -10103,6 +14007,57 @@
       ],
       "title": "Kopfüber"
     },
+    "korbchen-unterm-mistelzweig": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "petra-schier"
+      ],
+      "genres": [
+        "nature",
+        "romance"
+      ],
+      "id": "korbchen-unterm-mistelzweig",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "fanny-bechert-2021": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B09LMRKXNF",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91cHjcB+-fL.jpg",
+          "id": "fanny-bechert-2021",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "fanny-bechert"
+          ],
+          "publisher": "Harper Audio",
+          "release_date": "2021-11-12",
+          "runtime_min": 738,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09LMRKXNF",
+              "type": "libex-import"
+            }
+          ],
+          "work": "korbchen-unterm-mistelzweig"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B09LMRKXNF",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Körbchen unterm Mistelzweig"
+    },
     "kore": {
       "added_at": "2026-08-01",
       "authors": [
@@ -10362,6 +14317,220 @@
       ],
       "title": "Kosigan - Un Printemps de sang"
     },
+    "kosmische-genesis": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "rudiger-schafer"
+      ],
+      "genres": [
+        "science-fiction",
+        "space-opera"
+      ],
+      "id": "kosmische-genesis",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "axel-gottschick-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0DKJD9V7Y",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91GylnuvH5L.jpg",
+          "id": "axel-gottschick-2024",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "axel-gottschick"
+          ],
+          "publisher": "Eins A Medien GmbH",
+          "release_date": "2024-10-22",
+          "runtime_min": 359,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DKJD9V7Y",
+              "type": "libex-import"
+            }
+          ],
+          "work": "kosmische-genesis"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0DKJD9V7Y",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Kosmische Genesis"
+    },
+    "kosmische-kontore": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "rudiger-schafer"
+      ],
+      "genres": [
+        "science-fiction",
+        "space-opera"
+      ],
+      "id": "kosmische-kontore",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "axel-gottschick-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0DY84V4W6",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91uJtrVAmqL.jpg",
+          "id": "axel-gottschick-2025",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "axel-gottschick"
+          ],
+          "publisher": "Eins A Medien GmbH",
+          "release_date": "2025-02-24",
+          "runtime_min": 356,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DY84V4W6",
+              "type": "libex-import"
+            }
+          ],
+          "work": "kosmische-kontore"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0DY84V4W6",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Kosmische Kontore"
+    },
+    "koste-es-was-es-wolle-klick-das-original-horspiel-zur-tv-serie": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "marcus-giersch"
+      ],
+      "genres": [
+        "childrens",
+        "nature"
+      ],
+      "id": "koste-es-was-es-wolle-klick-das-original-horspiel-zur-tv-serie",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "anna-gamburg-2021": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B09J8R6HM3",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81oaI1uPcHL.jpg",
+          "id": "anna-gamburg-2021",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "anna-gamburg",
+            "christian-zeiger",
+            "lea-kalbhenn",
+            "linus-drews",
+            "magdalena-hofner",
+            "tobias-diakow"
+          ],
+          "publisher": "Edelkids",
+          "release_date": "2021-10-12",
+          "runtime_min": 37,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09J8R6HM3",
+              "type": "libex-import"
+            }
+          ],
+          "work": "koste-es-was-es-wolle-klick-das-original-horspiel-zur-tv-serie"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B09J8R6HM3",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Koste es, was es wolle / Klick. Das Original-Hörspiel zur TV-Serie"
+    },
+    "kotzeritis-bei-familie-vogel": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "familie-vogel"
+      ],
+      "genres": [
+        "childrens",
+        "coming-of-age",
+        "parenting-relationships"
+      ],
+      "id": "kotzeritis-bei-familie-vogel",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "daniel-dan-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0FQVDNTT9",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/811le8T3FiL.jpg",
+          "id": "daniel-dan-2025",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "daniel-dan",
+            "emma-vogel",
+            "familie-vogel",
+            "hannah-vogel",
+            "julian-vogel"
+          ],
+          "publisher": "Spiel mit mir",
+          "release_date": "2025-09-19",
+          "runtime_min": 31,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FQVDNTT9",
+              "type": "libex-import"
+            }
+          ],
+          "work": "kotzeritis-bei-familie-vogel"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0FQVDNTT9",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Kotzeritis bei Familie Vogel"
+    },
     "kozav": {
       "added_at": "2026-08-01",
       "authors": [
@@ -10414,6 +14583,115 @@
         }
       ],
       "title": "Kozav"
+    },
+    "kpop-demon-hunters-das-offizielle-horbuch-zum-film-junior-edition-originalhorbuch-zum-oscarpramierte": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "bettina-kenney",
+        "jessica-yoon",
+        "c-w"
+      ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "fantasy",
+        "young-adult"
+      ],
+      "id": "kpop-demon-hunters-das-offizielle-horbuch-zum-film-junior-edition-originalhorbuch-zum-oscarpramierte",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "esra-vural-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0H4TXHG4H",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/917dypuvziL.jpg",
+          "id": "esra-vural-2026",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "esra-vural"
+          ],
+          "publisher": "der Hörverlag",
+          "release_date": "2026-07-27",
+          "runtime_min": 198,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0H4TXHG4H",
+              "type": "libex-import"
+            }
+          ],
+          "work": "kpop-demon-hunters-das-offizielle-horbuch-zum-film-junior-edition-originalhorbuch-zum-oscarpramierte"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0H4TXHG4H",
+          "type": "libex-import"
+        }
+      ],
+      "title": "KPop Demon Hunters - Das offizielle Hörbuch zum Film - Junior-Edition - Originalhörbuch zum oscarprämierten Netflix-Hit"
+    },
+    "kpop-demon-hunters-fur-die-fans-offizielles-storybook-zum-oscarpramierten-netflix-hit": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "bettina-kenney",
+        "c-w",
+        "angela-song"
+      ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "fantasy"
+      ],
+      "id": "kpop-demon-hunters-fur-die-fans-offizielles-storybook-zum-oscarpramierten-netflix-hit",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "esra-vural-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0H4RDC1RX",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81Fj03-kqdL.jpg",
+          "id": "esra-vural-2026",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "esra-vural"
+          ],
+          "publisher": "der Hörverlag",
+          "release_date": "2026-07-27",
+          "runtime_min": 7,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0H4RDC1RX",
+              "type": "libex-import"
+            }
+          ],
+          "work": "kpop-demon-hunters-fur-die-fans-offizielles-storybook-zum-oscarpramierten-netflix-hit"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0H4RDC1RX",
+          "type": "libex-import"
+        }
+      ],
+      "title": "KPop Demon Hunters – Für die Fans! - Offizielles Storybook zum oscarprämierten Netflix-Hit"
     },
     "kracs-firebrand": {
       "added_at": "2026-08-02",
@@ -10624,6 +14902,114 @@
       ],
       "title": "Krac’s Firebrand"
     },
+    "kraftdyret-kalder": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "kasper-hoff"
+      ],
+      "genres": [
+        "childrens",
+        "fantasy"
+      ],
+      "id": "kraftdyret-kalder",
+      "language": "da",
+      "license": "CC0-1.0",
+      "recordings": {
+        "peter-pilegaard-2020": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "8702301849",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81W4-MuX+BL.jpg",
+          "id": "peter-pilegaard-2020",
+          "language": "da",
+          "license": "CC0-1.0",
+          "narrators": [
+            "peter-pilegaard"
+          ],
+          "publisher": "Gyldendalske Boghandel, Nordisk Forlag A/S",
+          "release_date": "2020-11-04",
+          "runtime_min": 211,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "8702301849",
+              "type": "libex-import"
+            }
+          ],
+          "work": "kraftdyret-kalder"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "8702301849",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Kraftdyret Kalder"
+    },
+    "kraftemessen-das-original-horspiel-zur-tv-serie": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "kai-medinger"
+      ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "superhero"
+      ],
+      "id": "kraftemessen-das-original-horspiel-zur-tv-serie",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "lea-kalbhenn-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0C6DRQR5R",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81xk2TisilL.jpg",
+          "id": "lea-kalbhenn-2023",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "lea-kalbhenn",
+            "maximilian-belle",
+            "mia-durakovic",
+            "tanja-schmitz",
+            "tim-schwarzmeier",
+            "walter-von-hauff"
+          ],
+          "publisher": "LEONINE Audio",
+          "release_date": "2023-06-30",
+          "runtime_min": 16,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0C6DRQR5R",
+              "type": "libex-import"
+            }
+          ],
+          "work": "kraftemessen-das-original-horspiel-zur-tv-serie"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0C6DRQR5R",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Kräftemessen. Das Original-Hörspiel zur TV-Serie"
+    },
     "kraftstein-licht-schatten": {
       "added_at": "2026-08-02",
       "authors": [
@@ -10678,6 +15064,58 @@
       ],
       "title": "Kraftstein - Licht & Schatten"
     },
+    "kragnos-avatar-of-destruction": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "david-guymer"
+      ],
+      "genres": [
+        "action-adventure",
+        "military-science-fiction",
+        "science-fiction"
+      ],
+      "id": "kragnos-avatar-of-destruction",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "andrew-james-spooner-2022": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B09S3ZDB77",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91nlUZ0IqPL.jpg",
+          "id": "andrew-james-spooner-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andrew-james-spooner"
+          ],
+          "publisher": "Black Library",
+          "release_date": "2022-02-26",
+          "runtime_min": 734,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09S3ZDB77",
+              "type": "libex-import"
+            }
+          ],
+          "work": "kragnos-avatar-of-destruction"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B09S3ZDB77",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Kragnos Avatar of Destruction"
+    },
     "kragyn": {
       "added_at": "2026-08-01",
       "authors": [
@@ -10729,6 +15167,59 @@
         }
       ],
       "title": "Kragyn"
+    },
+    "krahenkind-und-mondlicht": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "lilah-fox"
+      ],
+      "genres": [
+        "fantasy",
+        "paranormal",
+        "romance",
+        "young-adult"
+      ],
+      "id": "krahenkind-und-mondlicht",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "nadine-most-2019": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B07Z4TYFPW",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/9152y5m71ZL.jpg",
+          "id": "nadine-most-2019",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "nadine-most"
+          ],
+          "publisher": "Hörbuchmanufaktur Berlin",
+          "release_date": "2019-10-17",
+          "runtime_min": 177,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07Z4TYFPW",
+              "type": "libex-import"
+            }
+          ],
+          "work": "krahenkind-und-mondlicht"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B07Z4TYFPW",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Krähenkind und Mondlicht"
     },
     "krahenschicksal": {
       "added_at": "2026-08-02",
@@ -11446,6 +15937,125 @@
       ],
       "title": "Kraken Rising"
     },
+    "krakenangriff-die-zauberfeder": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "karen-drotar",
+        "johannes-keller"
+      ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "fantasy"
+      ],
+      "id": "krakenangriff-die-zauberfeder",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "achim-schulke-2022": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0B5XPNBMY",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91GZCCxjyHL.jpg",
+          "id": "achim-schulke-2022",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "achim-schulke",
+            "crock-krumbiegel",
+            "josef-vossenkuhl",
+            "kai-taschner",
+            "maresa-sedlmeir",
+            "mio-lechenmayr",
+            "ole-pfennig",
+            "paulina-rummelein",
+            "philipp-niedersen",
+            "pia-claren",
+            "samuel-martin",
+            "shandra-schadt",
+            "tim-schwarzmaier",
+            "ulrich-frank",
+            "valeria-ceraolo"
+          ],
+          "publisher": "Karussell",
+          "release_date": "2022-07-07",
+          "runtime_min": 51,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0B5XPNBMY",
+              "type": "libex-import"
+            }
+          ],
+          "work": "krakenangriff-die-zauberfeder"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0B5XPNBMY",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Krakenangriff / Die Zauberfeder"
+    },
+    "krakenblood": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "marc-collins"
+      ],
+      "genres": [
+        "epic-fantasy",
+        "fantasy",
+        "science-fiction"
+      ],
+      "id": "krakenblood",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "joshua-manning-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0FYQWCXKP",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81Gq6sPrU-L.jpg",
+          "id": "joshua-manning-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "joshua-manning"
+          ],
+          "publisher": "Black Library",
+          "release_date": "2025-10-31",
+          "runtime_min": 908,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FYQWCXKP",
+              "type": "libex-import"
+            }
+          ],
+          "work": "krakenblood"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0FYQWCXKP",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Krakenblood"
+    },
     "krakenstein-conquers-the-world": {
       "added_at": "2026-08-01",
       "authors": [
@@ -11858,6 +16468,458 @@
         }
       ],
       "title": "Krampus: Demonic Love"
+    },
+    "kraniec-nadziei": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "rafal-debski"
+      ],
+      "genres": [
+        "military-science-fiction",
+        "science-fiction"
+      ],
+      "id": "kraniec-nadziei",
+      "language": "pl",
+      "license": "CC0-1.0",
+      "recordings": {
+        "roch-siemianowski-2015": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B016BYZ4YK",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51yvGoQNSWL.jpg",
+          "id": "roch-siemianowski-2015",
+          "language": "pl",
+          "license": "CC0-1.0",
+          "narrators": [
+            "roch-siemianowski"
+          ],
+          "publisher": "Storybox",
+          "release_date": "2015-10-10",
+          "runtime_min": 662,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B016BYZ4YK",
+              "type": "libex-import"
+            }
+          ],
+          "work": "kraniec-nadziei"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B016BYZ4YK",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Kraniec nadziei"
+    },
+    "krank-an-ostern-julians-plan-geht-schief": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "familie-vogel"
+      ],
+      "genres": [
+        "childrens",
+        "coming-of-age",
+        "parenting-relationships"
+      ],
+      "id": "krank-an-ostern-julians-plan-geht-schief",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "emma-vogel-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0F6T17TW9",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91Nxbgx5bzL.jpg",
+          "id": "emma-vogel-2025",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "emma-vogel",
+            "familie-vogel",
+            "hannah-vogel",
+            "julian-vogel"
+          ],
+          "publisher": "Spiel mit mir",
+          "release_date": "2025-04-29",
+          "runtime_min": 25,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0F6T17TW9",
+              "type": "libex-import"
+            }
+          ],
+          "work": "krank-an-ostern-julians-plan-geht-schief"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0F6T17TW9",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Krank an Ostern? Julians Plan geht schief"
+    },
+    "krank-das-riesenei-das-original-horspiel-zur-tv-serie": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "thomas-karallus",
+        "stefan-kruger"
+      ],
+      "genres": [
+        "childrens",
+        "fantasy"
+      ],
+      "id": "krank-das-riesenei-das-original-horspiel-zur-tv-serie",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "stefan-kruger-2022": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B09VP1XGWH",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81+yd4eq-IL.jpg",
+          "id": "stefan-kruger-2022",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "stefan-kruger",
+            "thomas-karallus"
+          ],
+          "publisher": "Edelkids",
+          "release_date": "2022-03-25",
+          "runtime_min": 42,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09VP1XGWH",
+              "type": "libex-import"
+            }
+          ],
+          "work": "krank-das-riesenei-das-original-horspiel-zur-tv-serie"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B09VP1XGWH",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Krank / Das Riesenei. Das Original-Hörspiel zur TV Serie"
+    },
+    "krank-sein": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "familie-vogel",
+        "spiel-mit-mir"
+      ],
+      "genres": [
+        "childrens",
+        "coming-of-age",
+        "parenting-relationships"
+      ],
+      "id": "krank-sein",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "familie-vogel-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CTCLBLCR",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71ejstgsbkL.jpg",
+          "id": "familie-vogel-2024",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "familie-vogel",
+            "spiel-mit-mir"
+          ],
+          "publisher": "Spiel mit mir",
+          "release_date": "2024-02-20",
+          "runtime_min": 41,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CTCLBLCR",
+              "type": "libex-import"
+            }
+          ],
+          "work": "krank-sein"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CTCLBLCR",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Krank sein"
+    },
+    "krankenhausabenteuer": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "familie-vogel",
+        "spiel-mit-mir"
+      ],
+      "genres": [
+        "childrens",
+        "coming-of-age",
+        "parenting-relationships"
+      ],
+      "id": "krankenhausabenteuer",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "emma-vogel-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CT5XG5N8",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81L+nH38GYL.jpg",
+          "id": "emma-vogel-2024",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "emma-vogel",
+            "familie-vogel",
+            "hannah-vogel",
+            "julian-vogel",
+            "spiel-mit-mir",
+            "susanne-schmidt",
+            "tobias-soring"
+          ],
+          "publisher": "Spiel mit mir",
+          "release_date": "2024-02-14",
+          "runtime_min": 37,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CT5XG5N8",
+              "type": "libex-import"
+            }
+          ],
+          "work": "krankenhausabenteuer"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CT5XG5N8",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Krankenhausabenteuer"
+    },
+    "krasses-make-over": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "toca-life-world-story",
+        "spiel-mit-mir"
+      ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "fantasy"
+      ],
+      "id": "krasses-make-over",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "daniel-dan-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0F29ST7C4",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81EvW4oZ5pL.jpg",
+          "id": "daniel-dan-2025",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "daniel-dan",
+            "spiel-mit-mir",
+            "toca-life-world-story"
+          ],
+          "publisher": "Spiel mit mir",
+          "release_date": "2025-03-24",
+          "runtime_min": 41,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0F29ST7C4",
+              "type": "libex-import"
+            }
+          ],
+          "work": "krasses-make-over"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0F29ST7C4",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Krasses Make Over"
+    },
+    "kratzig-bitte-nicht-offnen-8": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "charlotte-habersack"
+      ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "comedy-humor",
+        "fantasy"
+      ],
+      "id": "kratzig-bitte-nicht-offnen-8",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "wanja-mues-2023": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CH177SWS",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91+YSKVHe+L.jpg",
+          "id": "wanja-mues-2023",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "wanja-mues"
+          ],
+          "publisher": "Silberfisch",
+          "release_date": "2023-09-28",
+          "runtime_min": 153,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CH177SWS",
+              "type": "libex-import"
+            }
+          ],
+          "work": "kratzig-bitte-nicht-offnen-8"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CH177SWS",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Kratzig!: Bitte nicht öffnen 8"
+    },
+    "kratzig-bitte-nicht-offnen-horspiele-folge-8": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "jana-ronte",
+        "charlotte-habersack"
+      ],
+      "credits": [
+        {
+          "person": "jana-ronte",
+          "role": "adaptation"
+        }
+      ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "fantasy"
+      ],
+      "id": "kratzig-bitte-nicht-offnen-horspiele-folge-8",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "anton-ackermann-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0DMSGYPN7",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/917L992q7ZL.jpg",
+          "id": "anton-ackermann-2025",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "anton-ackermann",
+            "christoph-banken",
+            "daniel-zillmann",
+            "david-wittmann",
+            "derya-akyol",
+            "gisa-flake",
+            "jan-viethen",
+            "manon-strache",
+            "peter-lontzek",
+            "regine-lange",
+            "roland-griem",
+            "till-hagen",
+            "tom-raczko",
+            "wolfgang-wagner"
+          ],
+          "publisher": "Silberfisch",
+          "release_date": "2025-07-31",
+          "runtime_min": 86,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DMSGYPN7",
+              "type": "libex-import"
+            }
+          ],
+          "work": "kratzig-bitte-nicht-offnen-horspiele-folge-8"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0DMSGYPN7",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Kratzig!: Bitte nicht öffnen. Hörspiele, Folge 8"
     },
     "kraulaak-a-short-story-collection": {
       "added_at": "2026-08-01",

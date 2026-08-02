@@ -884,7 +884,7 @@
     "the-vikings-apprentice-iii": {
       "added_at": "2026-08-01",
       "authors": [
-        "mr-kevin-mcleod"
+        "kevin-mcleod"
       ],
       "genres": [
         "action-adventure",
@@ -1590,6 +1590,62 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B002V9Z40E",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Vile Village"
+    },
+    "the-vile-village-lemony-snicket": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "lemony-snicket",
+        "brett-helquist"
+      ],
+      "genres": [
+        "childrens",
+        "classics",
+        "coming-of-age",
+        "fantasy",
+        "mystery",
+        "parenting-relationships"
+      ],
+      "id": "the-vile-village-lemony-snicket",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "tim-curry-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0GJXQFM9D",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81JsgE7eoRL.jpg",
+          "id": "tim-curry-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "tim-curry"
+          ],
+          "publisher": "Farshore",
+          "release_date": "2026-02-26",
+          "runtime_min": 260,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GJXQFM9D",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-vile-village-lemony-snicket"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0GJXQFM9D",
           "type": "libex-import"
         }
       ],
@@ -2605,6 +2661,170 @@
       ],
       "title": "The Villainous Wonderland Boxset"
     },
+    "the-vincula-insurgency-ghost-dossier-1": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "dan-abnett"
+      ],
+      "genres": [
+        "action-adventure",
+        "military-science-fiction",
+        "science-fiction"
+      ],
+      "id": "the-vincula-insurgency-ghost-dossier-1",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "toby-longworth-2022": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0B13629WK",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 31850,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 46132,
+              "start_ms": 31850,
+              "title": "Epigraph"
+            },
+            {
+              "length_ms": 427794,
+              "start_ms": 77982,
+              "title": "1"
+            },
+            {
+              "length_ms": 905206,
+              "start_ms": 505776,
+              "title": "2"
+            },
+            {
+              "length_ms": 961584,
+              "start_ms": 1410982,
+              "title": "3"
+            },
+            {
+              "length_ms": 1020539,
+              "start_ms": 2372566,
+              "title": "4"
+            },
+            {
+              "length_ms": 707466,
+              "start_ms": 3393105,
+              "title": "5"
+            },
+            {
+              "length_ms": 685893,
+              "start_ms": 4100571,
+              "title": "6"
+            },
+            {
+              "length_ms": 1718718,
+              "start_ms": 4786464,
+              "title": "7"
+            },
+            {
+              "length_ms": 1496874,
+              "start_ms": 6505182,
+              "title": "8"
+            },
+            {
+              "length_ms": 1549629,
+              "start_ms": 8002056,
+              "title": "9"
+            },
+            {
+              "length_ms": 1101114,
+              "start_ms": 9551685,
+              "title": "10"
+            },
+            {
+              "length_ms": 1643717,
+              "start_ms": 10652799,
+              "title": "11"
+            },
+            {
+              "length_ms": 388864,
+              "start_ms": 12296516,
+              "title": "12"
+            },
+            {
+              "length_ms": 1428050,
+              "start_ms": 12685380,
+              "title": "13"
+            },
+            {
+              "length_ms": 2537313,
+              "start_ms": 14113430,
+              "title": "14"
+            },
+            {
+              "length_ms": 1555482,
+              "start_ms": 16650743,
+              "title": "15"
+            },
+            {
+              "length_ms": 1115834,
+              "start_ms": 18206225,
+              "title": "16"
+            },
+            {
+              "length_ms": 866173,
+              "start_ms": 19322059,
+              "title": "17"
+            },
+            {
+              "length_ms": 775639,
+              "start_ms": 20188232,
+              "title": "18"
+            },
+            {
+              "length_ms": 1058083,
+              "start_ms": 20963871,
+              "title": "19"
+            },
+            {
+              "length_ms": 35669,
+              "start_ms": 22021954,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81WOoCwxGaL.jpg",
+          "id": "toby-longworth-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "toby-longworth"
+          ],
+          "publisher": "Black Library",
+          "release_date": "2022-05-21",
+          "runtime_min": 367,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0B13629WK",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-vincula-insurgency-ghost-dossier-1"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0B13629WK",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Vincula Insurgency: Ghost Dossier 1"
+    },
     "the-vindorans": {
       "added_at": "2026-08-01",
       "authors": [
@@ -3347,6 +3567,10 @@
             {
               "asin": "B0CRF5VWM8",
               "region": "us"
+            },
+            {
+              "asin": "B0BVJGX2VG",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81AGWvI4BAL.jpg",
@@ -3363,6 +3587,11 @@
             {
               "imported_at": "2026-08-01",
               "ref": "B0CRF5VWM8",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0BVJGX2VG",
               "type": "libex-import"
             }
           ],
@@ -5151,6 +5380,56 @@
       ],
       "title": "The Voice in the Deep: A Little Mermaid Retelling"
     },
+    "the-voice-james-swallow": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "james-swallow"
+      ],
+      "genres": [
+        "science-fiction"
+      ],
+      "id": "the-voice-james-swallow",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "emma-gregory-2017": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B076ZV86KV",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81cjR8iJMEL.jpg",
+          "id": "emma-gregory-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "emma-gregory"
+          ],
+          "publisher": "Black Library",
+          "release_date": "2017-10-31",
+          "runtime_min": 121,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B076ZV86KV",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-voice-james-swallow"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B076ZV86KV",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Voice"
+    },
     "the-voice-on-the-radio": {
       "added_at": "2026-07-25T19:18:21+01:00",
       "authors": [
@@ -5408,6 +5687,58 @@
         }
       ],
       "title": "The Void Beyond"
+    },
+    "the-void-of-mist-and-thunder": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "james-dashner"
+      ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "fantasy"
+      ],
+      "id": "the-void-of-mist-and-thunder",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "kirby-heyborne-2013": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00CSYU2P4",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91Dea+DNXaL.jpg",
+          "id": "kirby-heyborne-2013",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kirby-heyborne"
+          ],
+          "publisher": "Shadow Mountain",
+          "release_date": "2013-05-16",
+          "runtime_min": 629,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00CSYU2P4",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-void-of-mist-and-thunder"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00CSYU2P4",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Void of Mist and Thunder"
     },
     "the-void-of-muirwood": {
       "added_at": "2026-08-02",
@@ -6025,6 +6356,71 @@
       ],
       "title": "The Vor Game"
     },
+    "the-vorbis-conspiracy": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "guy-haley",
+        "chris-wraight",
+        "graham-mcneill",
+        "alec-worley",
+        "jude-reid",
+        "noah-van-nguyen",
+        "darius-hinks"
+      ],
+      "genres": [
+        "action-adventure",
+        "epic-fantasy",
+        "fantasy",
+        "short-stories"
+      ],
+      "id": "the-vorbis-conspiracy",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "charles-armstrong-2022": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0BDG9MKDS",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81kurNNgUmL.jpg",
+          "id": "charles-armstrong-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "charles-armstrong",
+            "greg-jones",
+            "harry-myers",
+            "helen-keeley",
+            "phillip-sacramento",
+            "richard-reed",
+            "tom-alexander"
+          ],
+          "publisher": "Black Library",
+          "release_date": "2022-09-24",
+          "runtime_min": 655,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0BDG9MKDS",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-vorbis-conspiracy"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0BDG9MKDS",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Vorbis Conspiracy"
+    },
     "the-vorian-incursion": {
       "added_at": "2026-08-01",
       "authors": [
@@ -6075,6 +6471,62 @@
         }
       ],
       "title": "The Vorian Incursion"
+    },
+    "the-vorrh": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "brian-catling"
+      ],
+      "genres": [
+        "fantasy",
+        "historical-fiction",
+        "literary-fiction",
+        "occult",
+        "science-fiction",
+        "steampunk"
+      ],
+      "id": "the-vorrh",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "allan-corduner-2015": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00W689AQO",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81CMFd6kbwL.jpg",
+          "id": "allan-corduner-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "allan-corduner",
+            "alan-moore"
+          ],
+          "publisher": "Coronet",
+          "release_date": "2015-05-21",
+          "runtime_min": 1039,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00W689AQO",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-vorrh"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00W689AQO",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Vorrh"
     },
     "the-vortex-blaster": {
       "added_at": "2026-08-02",
@@ -6689,6 +7141,118 @@
         }
       ],
       "title": "The Voyage of the Dawn Treader"
+    },
+    "the-voyage-of-the-dawn-treader-abridged": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "c-s-lewis"
+      ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "classics",
+        "coming-of-age",
+        "fantasy",
+        "nature",
+        "parenting-relationships"
+      ],
+      "id": "the-voyage-of-the-dawn-treader-abridged",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "michael-hordern-2005": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0036GPOZQ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71SqYwcHVRL.jpg",
+          "id": "michael-hordern-2005",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "michael-hordern"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2005-09-02",
+          "runtime_min": 142,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0036GPOZQ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-voyage-of-the-dawn-treader-abridged"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0036GPOZQ",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Voyage of the Dawn Treader: Abridged"
+    },
+    "the-voyage-of-the-dawn-treader-unabridged": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "c-s-lewis"
+      ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "classics",
+        "coming-of-age",
+        "fantasy",
+        "nature",
+        "parenting-relationships"
+      ],
+      "id": "the-voyage-of-the-dawn-treader-unabridged",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "derek-jacobi-2005": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0036GTIA8",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71SqYwcHVRL.jpg",
+          "id": "derek-jacobi-2005",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "derek-jacobi"
+          ],
+          "publisher": "HarperCollinsChildren’sBooks",
+          "release_date": "2005-08-29",
+          "runtime_min": 351,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0036GTIA8",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-voyage-of-the-dawn-treader-unabridged"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0036GTIA8",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Voyage of the Dawn Treader: Unabridged"
     },
     "the-voyage-of-the-forgotten-part-1-of-2-dramatized-adaptation": {
       "added_at": "2026-07-25T17:12:12+01:00",
@@ -7641,6 +8205,59 @@
         }
       ],
       "title": "The Voyant and the Mark of Malice"
+    },
+    "the-vulture-lord": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "richard-strachan"
+      ],
+      "genres": [
+        "action-adventure",
+        "epic-fantasy",
+        "fantasy",
+        "military-science-fiction"
+      ],
+      "id": "the-vulture-lord",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "richard-reed-2022": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0B61RG4BG",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/812TXuJw7+L.jpg",
+          "id": "richard-reed-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "richard-reed"
+          ],
+          "publisher": "Black Library",
+          "release_date": "2022-07-23",
+          "runtime_min": 586,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0B61RG4BG",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-vulture-lord"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0B61RG4BG",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Vulture Lord"
     },
     "the-wager": {
       "added_at": "2026-07-25T19:18:21+01:00",
@@ -8844,6 +9461,61 @@
       ],
       "title": "The Wall"
     },
+    "the-wall-adrian-goldsworthy": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "adrian-goldsworthy"
+      ],
+      "genres": [
+        "action-adventure",
+        "fantasy",
+        "historical-fiction",
+        "historical-romance",
+        "history",
+        "romance"
+      ],
+      "id": "the-wall-adrian-goldsworthy",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "peter-noble-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0C632QTZC",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91sXFZH3yGL.jpg",
+          "id": "peter-noble-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "peter-noble"
+          ],
+          "publisher": "W. F. Howes Ltd",
+          "release_date": "2023-06-29",
+          "runtime_min": 939,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0C632QTZC",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-wall-adrian-goldsworthy"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0C632QTZC",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Wall"
+    },
     "the-wall-brian-penn": {
       "added_at": "2026-08-01",
       "authors": [
@@ -8911,6 +9583,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "kristin-atherton-2020": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "0008378738",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91-6OabN51L.jpg",
+          "id": "kristin-atherton-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kristin-atherton"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2020-05-14",
+          "runtime_min": 794,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "0008378738",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-walls-of-air"
+        },
         "teri-clark-linden-2013": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -10291,6 +10991,70 @@
       ],
       "title": "The War Between the Packs: A Sweet YA Paranormal Romance"
     },
+    "the-war-beyond": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "andrea-stewart"
+      ],
+      "genres": [
+        "action-adventure",
+        "epic-fantasy",
+        "fantasy",
+        "parenting-relationships"
+      ],
+      "id": "the-war-beyond",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "eunice-wong-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0DZJ5LK19",
+              "region": "us"
+            },
+            {
+              "asin": "B0FXMY9K4D",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91qIWQ7g9ZL.jpg",
+          "id": "eunice-wong-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "eunice-wong",
+            "jonathan-waters",
+            "stephanie-nemeth-parker"
+          ],
+          "publisher": "Orbit",
+          "release_date": "2025-11-04",
+          "runtime_min": 907,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DZJ5LK19",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FXMY9K4D",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-war-beyond"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0DZJ5LK19",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The War Beyond"
+    },
     "the-war-chamber": {
       "added_at": "2026-08-01",
       "authors": [
@@ -10802,6 +11566,60 @@
       ],
       "title": "The War Mage's Diary"
     },
+    "the-war-next-door": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "sara-ogilvie",
+        "phil-earle"
+      ],
+      "genres": [
+        "childrens",
+        "comedy-humor",
+        "coming-of-age",
+        "self-help"
+      ],
+      "id": "the-war-next-door",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "chris-davies-2017": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B01N5O5V6I",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A15y6V6fJWL.jpg",
+          "id": "chris-davies-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "chris-davies"
+          ],
+          "publisher": "Orion Children's Books",
+          "release_date": "2017-03-09",
+          "runtime_min": 314,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B01N5O5V6I",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-war-next-door"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B01N5O5V6I",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The War Next Door"
+    },
     "the-war-no-one-wanted": {
       "added_at": "2026-08-02",
       "authors": [
@@ -11009,6 +11827,58 @@
         }
       ],
       "title": "The War of the Clans"
+    },
+    "the-war-of-the-dwarves": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "markus-heitz"
+      ],
+      "genres": [
+        "action-adventure",
+        "epic-fantasy",
+        "fantasy"
+      ],
+      "id": "the-war-of-the-dwarves",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "neil-dickson-2017": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B06XR2ZWKW",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/815q6NcUhEL.jpg",
+          "id": "neil-dickson-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "neil-dickson"
+          ],
+          "publisher": "Orbit",
+          "release_date": "2017-04-04",
+          "runtime_min": 1358,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B06XR2ZWKW",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-war-of-the-dwarves"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B06XR2ZWKW",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The War of the Dwarves"
     },
     "the-war-of-the-lance": {
       "added_at": "2026-08-02",
@@ -11761,6 +12631,34 @@
           ],
           "work": "the-war-of-the-worlds"
         },
+        "felbrigg-napoleon-herriot-2016": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B01H45S1JK",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71XvurtUERL.jpg",
+          "id": "felbrigg-napoleon-herriot-2016",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "felbrigg-napoleon-herriot"
+          ],
+          "publisher": "FNH Audio",
+          "release_date": "2016-06-16",
+          "runtime_min": 372,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B01H45S1JK",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-war-of-the-worlds"
+        },
         "flo-gibson-2015": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -11784,6 +12682,34 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B00UZR2XEY",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-war-of-the-worlds"
+        },
+        "john-banks-2017": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B01MUHZB9L",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1o1I+DKEOL.jpg",
+          "id": "john-banks-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "john-banks"
+          ],
+          "publisher": "Ladbroke Audio",
+          "release_date": "2017-02-06",
+          "runtime_min": 372,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B01MUHZB9L",
               "type": "libex-import"
             }
           ],
@@ -12220,6 +13146,134 @@
         }
       ],
       "title": "The War of Two Queens"
+    },
+    "the-war-of-two-queens-part-1-of-2-dramatized-adaptation": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "jennifer-l-armentrout"
+      ],
+      "genres": [
+        "arts-entertainment",
+        "fantasy",
+        "paranormal",
+        "romance"
+      ],
+      "id": "the-war-of-two-queens-part-1-of-2-dramatized-adaptation",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "deepa-samuel-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0FF5DNFLD",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91-cIHC5j8L.jpg",
+          "id": "deepa-samuel-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "deepa-samuel",
+            "full-cast",
+            "katie-boothe",
+            "khaya-fraites",
+            "lise-bruneau",
+            "nj-agwuna",
+            "rj-bayley",
+            "stewart-crank",
+            "todd-scofield",
+            "tony-nam",
+            "torian-brackett",
+            "troy-allan"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2025-08-25",
+          "runtime_min": 687,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FF5DNFLD",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-war-of-two-queens-part-1-of-2-dramatized-adaptation"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0FF5DNFLD",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The War of Two Queens (Part 1 of 2) (Dramatized Adaptation)"
+    },
+    "the-war-of-two-queens-part-2-of-2-dramatized-adaptation": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "jennifer-l-armentrout"
+      ],
+      "genres": [
+        "arts-entertainment",
+        "fantasy",
+        "paranormal",
+        "romance"
+      ],
+      "id": "the-war-of-two-queens-part-2-of-2-dramatized-adaptation",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "deepa-samuel-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0FNNJ8HW4",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91b8l-cMKaL.jpg",
+          "id": "deepa-samuel-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "deepa-samuel",
+            "full-cast",
+            "gabriel-michael",
+            "jon-vertullo",
+            "katie-boothe",
+            "khaya-fraites",
+            "lise-bruneau",
+            "rj-bayley",
+            "stewart-crank",
+            "todd-scofield",
+            "tony-nam",
+            "torian-brackett"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2025-10-29",
+          "runtime_min": 661,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FNNJ8HW4",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-war-of-two-queens-part-2-of-2-dramatized-adaptation"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0FNNJ8HW4",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The War of Two Queens (Part 2 of 2) (Dramatized Adaptation)"
     },
     "the-war-of-winds": {
       "added_at": "2026-08-02",
@@ -12881,6 +13935,121 @@
       ],
       "title": "The Warded Man (2 of 2) [Dramatized Adaptation]"
     },
+    "the-warded-man-dramatized-adaptation": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "peter-v-brett"
+      ],
+      "genres": [
+        "action-adventure",
+        "epic-fantasy",
+        "fantasy",
+        "science-fiction"
+      ],
+      "id": "the-warded-man-dramatized-adaptation",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "full-cast-2021": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B09G89LHDL",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4394329,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4456234,
+              "start_ms": 4394329,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4200048,
+              "start_ms": 8850563,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4252920,
+              "start_ms": 13050611,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4450313,
+              "start_ms": 17303531,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 4071433,
+              "start_ms": 21753844,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 3377156,
+              "start_ms": 25825277,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 3894009,
+              "start_ms": 29202433,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 3504564,
+              "start_ms": 33096442,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 3272806,
+              "start_ms": 36601006,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 3195762,
+              "start_ms": 39873812,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 3398332,
+              "start_ms": 43069574,
+              "title": "Chapter 12"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81abntrsp+L.jpg",
+          "id": "full-cast-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2021-10-11",
+          "runtime_min": 774,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09G89LHDL",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-warded-man-dramatized-adaptation"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B09G89LHDL",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Warded Man [Dramatized Adaptation]"
+    },
     "the-warden": {
       "added_at": "2026-08-02",
       "authors": [
@@ -13041,6 +14210,59 @@
         }
       ],
       "title": "The Warden: A Novel"
+    },
+    "the-warden-and-the-wolf-king": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "andrew-peterson"
+      ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "fantasy",
+        "religion-spirituality"
+      ],
+      "id": "the-warden-and-the-wolf-king",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "andrew-peterson-2021": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "1529371384",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81lTCHXPGsL.jpg",
+          "id": "andrew-peterson-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andrew-peterson"
+          ],
+          "publisher": "Hodder & Stoughton",
+          "release_date": "2021-03-04",
+          "runtime_min": 826,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1529371384",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-warden-and-the-wolf-king"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1529371384",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Warden and the Wolf King"
     },
     "the-warden-awakens": {
       "added_at": "2026-08-02",
@@ -14117,6 +15339,69 @@
       ],
       "title": "The Warlock Lord"
     },
+    "the-warlock-of-firetop-mountain-the-heros-quest": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "david-smith"
+      ],
+      "genres": [
+        "epic-fantasy",
+        "fantasy"
+      ],
+      "id": "the-warlock-of-firetop-mountain-the-heros-quest",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "andrew-wincott-2020": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "1004008864",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91amm3AqckL.jpg",
+          "id": "andrew-wincott-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andrew-wincott",
+            "charlie-higson",
+            "david-warner",
+            "lisa-bowerman",
+            "matthew-brenher",
+            "nina-clarke",
+            "peter-noble",
+            "rachel-atkins",
+            "richard-rycroft",
+            "russell-bentley",
+            "sophie-roberts",
+            "tim-treloar",
+            "toby-longworth"
+          ],
+          "publisher": "QUEST from W. F. Howes Ltd",
+          "release_date": "2020-07-16",
+          "runtime_min": 57,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1004008864",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-warlock-of-firetop-mountain-the-heros-quest"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1004008864",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Warlock of Firetop Mountain: The Hero’s Quest"
+    },
     "the-warlocks-curse": {
       "added_at": "2026-08-02",
       "authors": [
@@ -14320,6 +15605,90 @@
             {
               "imported_at": "2026-08-01",
               "ref": "B01DPXZKPI",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-warlord-of-mars"
+        },
+        "arthur-vincet-2017": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B071QX29VJ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/919hMOq-xiL.jpg",
+          "id": "arthur-vincet-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "arthur-vincet"
+          ],
+          "publisher": "Audioliterature",
+          "release_date": "2017-04-13",
+          "runtime_min": 339,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B071QX29VJ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-warlord-of-mars"
+        },
+        "b-j-harrison-2021": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B09HJDB9VC",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81lcpgTIPWL.jpg",
+          "id": "b-j-harrison-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "b-j-harrison"
+          ],
+          "publisher": "B.J. Harrison",
+          "release_date": "2021-10-11",
+          "runtime_min": 369,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09HJDB9VC",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-warlord-of-mars"
+        },
+        "jim-killavey-2014": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00JVYEVJM",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51HykNmC1IL.jpg",
+          "id": "jim-killavey-2014",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jim-killavey"
+          ],
+          "publisher": "Jimcin Recordings",
+          "release_date": "2014-04-25",
+          "runtime_min": 357,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00JVYEVJM",
               "type": "libex-import"
             }
           ],

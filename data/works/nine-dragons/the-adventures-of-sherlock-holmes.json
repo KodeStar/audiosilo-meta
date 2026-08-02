@@ -6,6 +6,7 @@
         "arthur-conan-doyle"
       ],
       "genres": [
+        "literary-fiction",
         "mystery"
       ],
       "id": "the-adventures-of-sherlock-holmes",
@@ -829,6 +830,34 @@
           ],
           "work": "the-adventures-of-sherlock-holmes"
         },
+        "peter-silverleaf-2022": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B09PL4WRG1",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71bS52dpMKL.jpg",
+          "id": "peter-silverleaf-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "peter-silverleaf"
+          ],
+          "publisher": "Bookstream Audiobooks",
+          "release_date": "2022-01-19",
+          "runtime_min": 630,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09PL4WRG1",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-adventures-of-sherlock-holmes"
+        },
         "ralph-cosham-2009": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -1266,6 +1295,11 @@
           "imported_at": "2026-07-30",
           "ref": "B00DGCH8KE",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B09PL4WRG1",
+          "type": "libex-import"
         }
       ],
       "title": "The Adventures of Sherlock Holmes"
@@ -1372,60 +1406,10 @@
       ],
       "title": "The Adventures of Sherlock Holmes Illustrated"
     },
-    "the-adventures-of-sherlock-holmes-sir-arthur-conan-doyle": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "sir-arthur-conan-doyle"
-      ],
-      "genres": [
-        "literary-fiction"
-      ],
-      "id": "the-adventures-of-sherlock-holmes-sir-arthur-conan-doyle",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "peter-silverleaf-2022": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B09PL4WRG1",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71bS52dpMKL.jpg",
-          "id": "peter-silverleaf-2022",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "peter-silverleaf"
-          ],
-          "publisher": "Bookstream Audiobooks",
-          "release_date": "2022-01-19",
-          "runtime_min": 630,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B09PL4WRG1",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-adventures-of-sherlock-holmes-sir-arthur-conan-doyle"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B09PL4WRG1",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Adventures of Sherlock Holmes"
-    },
     "the-adventures-of-sherlock-holmes-unabridged": {
       "added_at": "2026-08-01",
       "authors": [
-        "sir-arthur-conan-doyle"
+        "arthur-conan-doyle"
       ],
       "genres": [
         "mystery"
@@ -1473,6 +1457,231 @@
         }
       ],
       "title": "The Adventures of Sherlock Holmes - Unabridged"
+    },
+    "the-adventures-of-sir-balin-the-ill-fated": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "gerald-morris"
+      ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "comedy-humor",
+        "coming-of-age",
+        "fairy-tales-folklore",
+        "historical-fiction",
+        "mythology",
+        "self-help"
+      ],
+      "id": "the-adventures-of-sir-balin-the-ill-fated",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "steve-west-2013": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00B0ONF6G",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91A8gIZNx0L.jpg",
+          "id": "steve-west-2013",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "steve-west"
+          ],
+          "publisher": "Listening Library",
+          "release_date": "2013-02-12",
+          "runtime_min": 84,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00B0ONF6G",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-adventures-of-sir-balin-the-ill-fated"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00B0ONF6G",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Adventures of Sir Balin the Ill-Fated"
+    },
+    "the-adventures-of-sir-gawain-the-true": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "gerald-morris"
+      ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "comedy-humor",
+        "coming-of-age",
+        "fairy-tales-folklore",
+        "historical-fiction",
+        "mythology",
+        "self-help"
+      ],
+      "id": "the-adventures-of-sir-gawain-the-true",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "steve-west-2013": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00B0O648C",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91GrHcvfVeL.jpg",
+          "id": "steve-west-2013",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "steve-west"
+          ],
+          "publisher": "Listening Library",
+          "release_date": "2013-02-12",
+          "runtime_min": 105,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00B0O648C",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-adventures-of-sir-gawain-the-true"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00B0O648C",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Adventures of Sir Gawain the True"
+    },
+    "the-adventures-of-sir-givret-the-short": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "gerald-morris"
+      ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "comedy-humor",
+        "fairy-tales-folklore",
+        "historical-fiction",
+        "mythology"
+      ],
+      "id": "the-adventures-of-sir-givret-the-short",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "steve-west-2013": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00B0O6AXG",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91yhRC8OqNL.jpg",
+          "id": "steve-west-2013",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "steve-west"
+          ],
+          "publisher": "Listening Library",
+          "release_date": "2013-02-12",
+          "runtime_min": 92,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00B0O6AXG",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-adventures-of-sir-givret-the-short"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00B0O6AXG",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Adventures of Sir Givret the Short"
+    },
+    "the-adventures-of-sir-lancelot-the-great": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "gerald-morris"
+      ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "comedy-humor",
+        "fairy-tales-folklore",
+        "fantasy",
+        "historical-fiction",
+        "mythology"
+      ],
+      "id": "the-adventures-of-sir-lancelot-the-great",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "steve-west-2013": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00B0O6838",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91e8NZSP23L.jpg",
+          "id": "steve-west-2013",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "steve-west"
+          ],
+          "publisher": "Listening Library",
+          "release_date": "2013-02-12",
+          "runtime_min": 85,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00B0O6838",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-adventures-of-sir-lancelot-the-great"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00B0O6838",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Adventures of Sir Lancelot the Great"
     },
     "the-adventures-of-sir-locke-the-gnome-books-1-6": {
       "added_at": "2026-08-01",
@@ -4796,7 +5005,7 @@
     "the-aegis-and-the-oasis": {
       "added_at": "2026-08-02",
       "authors": [
-        "dr-michael-livingston"
+        "michael-livingston"
       ],
       "genres": [
         "historical-fiction",

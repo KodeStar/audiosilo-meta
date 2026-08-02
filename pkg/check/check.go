@@ -227,6 +227,12 @@ func load(lst *pack.Listing, rdr *pack.Reader) Result {
 	checkCharacters(cat, idx, add)
 	checkRecaps(cat, idx, add)
 
+	// Advisories (warn, never fail): the shapes a bulk import can produce that
+	// no rule can call wrong on its own evidence. See advisories.go.
+	checkCrossLanguageRecordings(cat, idx, warn)
+	checkHonorificPersonPairs(cat, idx, warn)
+	checkIdentityEqualWorks(cat, idx, warn)
+
 	sortProblems(probs)
 	sortProblems(warns)
 

@@ -76,6 +76,15 @@ type recInfo struct {
 	narrators  map[string]bool
 	asins      map[string]bool
 	runtimeMin int
+	// seriesPos is every series position the ROW that created this recording
+	// claimed (lowercased series name -> position). It is the per-row half of
+	// the same-title serial guard: two volumes of a serial published under one
+	// title have compatible runtimes and identical narrators, so nothing else in
+	// the merge test can tell them apart, and their ASINs merged onto one
+	// recording. Empty for a recording loaded from disk (the row that made it is
+	// long gone), which is the same "unknown never blocks" posture abridged
+	// takes.
+	seriesPos map[string]string
 	// abridged is the recording's tri-state abridged flag as far as this run
 	// knows it. For a recording created THIS run it carries the entry's tri-state
 	// (nil = the source did not state it); for a recording loaded from disk it is
@@ -87,10 +96,32 @@ type recInfo struct {
 }
 
 // workState tracks a work's identity (slug + author set) and its recordings.
+//
+// authors is the IDENTITY author set, which is not the same list as the
+// record's authors[]: a person whose only appearance carried a contributor-role
+// qualifier is a credit rather than an author for matching purposes (see
+// workidentity.go). For a work loaded from disk it is derived from the record's
+// authors[] and credits[]; for one created this run, from the row's credits.
 type workState struct {
-	slug    string
+	slug string
+	// authors is the IDENTITY set; all is the record's whole credit list, which
+	// the subsumption half of matchWork compares against. Keeping both is what
+	// lets a work minted before the exclusion rule (no credits[], so its
+	// identity IS its whole list) and a role-qualified row recognize each other.
 	authors map[string]bool
-	recs    map[string]*recInfo
+	all     map[string]bool
+	// lang is the work's language. A work is language-scoped: a translated
+	// edition is a different work from its original, and merging them makes the
+	// work's own language a lie for half its recordings. Empty = unknown, which
+	// never blocks a merge (langCompatible).
+	lang string
+	// posSuffixed records that THIS RUN created the work on the
+	// serial-disambiguation path, i.e. that its slug's "book-<position>" tail
+	// means what the tail says. A work that merely HAPPENS to be stored under
+	// such a slug - 258 of them are in the tree, titled "... Book 3" - is never
+	// a merge target for a suffixed row. See getOrCreateWork.
+	posSuffixed bool
+	recs        map[string]*recInfo
 }
 
 // seriesState tracks a series' membership so works dedupe and positions never
@@ -105,6 +136,13 @@ type seriesState struct {
 	raw       map[string]any    // populated lazily for an existing series
 	members   map[string]string // work slug -> position
 	positions map[string]string // position -> work slug
+	// claimed is every position a work has CLAIMED in this series this run,
+	// whether or not the claim became a membership. members only records the
+	// claims that landed, and a dropped claim used to make a work look absent
+	// from the series - which trivially satisfied the same-position merge test
+	// (seriesClaim.compatible), so the next volume of the serial merged into it.
+	// First claim wins, exactly as members does.
+	claimed map[string]string // work slug -> position it claimed
 }
 
 // planner accumulates the writes and warnings for a run.
@@ -140,13 +178,28 @@ type planner struct {
 	// per-record half is whether the record the row matched is still
 	// bulk-mirror-only. See attest.go and LICENSING.md's trust tiers.
 	userTier bool
-	// creditCensus is the studio-concatenation rule's evidence universe for this
-	// run (studiotail.go): the catalogue's person slugs as loaded, plus a census
-	// of every credit name the batch carries. It is a SNAPSHOT taken before any
-	// row is planned - see creditCensusOf - so what a name cleans to cannot
+	// authorCensus / narratorCensus are the evidence universes the two
+	// census-consulting cleaning rules read, one per CREDIT SIDE. Both carry the
+	// same any-side universe for the studio-concatenation rule (studiotail.go) -
+	// the catalogue's person slugs as loaded, plus a census of every credit name
+	// the batch carries - and differ only in the side-scoped universe the
+	// honorific rule reads (honorific.go). They are SNAPSHOTS taken before any
+	// row is planned - see creditCensusesOf - so what a name cleans to cannot
 	// depend on the order the rows arrive in. Unrelated to the trust-tier sense
-	// of "attested" (attest.go), which is why it does not use that word.
-	creditCensus creditSeenFunc
+	// of "attested" (attest.go), which is why they do not use that word.
+	authorCensus   creditCensus
+	narratorCensus creditCensus
+	// authorPeople / narratorPeople are the catalogue's own answer to "which
+	// side is this person credited on": every person some catalogued work names
+	// as an author (or role credit), and every person some catalogued recording
+	// names as a narrator. They seed the side-scoped censuses above.
+	authorPeople   map[string]bool
+	narratorPeople map[string]bool
+	// honorificMerges is every credit name the honorific rule resolved onto a
+	// bare twin this run, mapped to that twin. A merge of two person records is
+	// the least reversible thing an import does, so the wave's list is reported
+	// (Summary.HonorificMerges) rather than left to be discovered in a diff.
+	honorificMerges map[string]string
 	// initialsSurvivors is the initials rule's decision for this run
 	// (initials.go): for every person slug whose initials group is written more
 	// than one way across the catalogue and the batch, the record that group
@@ -174,6 +227,12 @@ type planner struct {
 	// printed - the COUNT comes from Summary.SkippedNoWork. Empty in every other
 	// mode.
 	noWorkExamples []string
+	// titleNoMatchExamples is noWorkExamples' twin for the rows whose TITLE was
+	// catalogued but whose credits matched no work under it
+	// (Summary.SkippedTitleNoMatch), capped the same way. Kept apart because the
+	// two buckets are read for different reasons and mixing the examples would
+	// bury the handful that are worth looking at.
+	titleNoMatchExamples []string
 	// unnamedCredits counts the role-qualified credits workCredits refused
 	// because the person's name does not resolve to an identity of their own,
 	// and unnamedCreditNames keeps a few distinct spellings for the aggregate
@@ -191,6 +250,12 @@ type planner struct {
 	// per-row lines would.
 	unaddressableSeries      int
 	unaddressableSeriesNames []string
+	// lostSeriesClaims counts the valid series placements that died with the ROW
+	// that claimed them (an unknown language, no narrator, no author, no title),
+	// and lostSeriesNames keeps a few series for the aggregate warning. See
+	// noteLostSeriesClaims for why this was worth its own counter.
+	lostSeriesClaims int
+	lostSeriesNames  []string
 	// runCredits is the set of contributor credits THIS RUN has written onto
 	// each work it created or filled, keyed by work slug. Its PRESENCE is the
 	// permission: a work the run itself put credits on (or created) accretes the
@@ -336,6 +401,8 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 	p := &planner{
 		dataDir:        opts.DataDir,
 		people:         map[string]string{},
+		authorPeople:   map[string]bool{},
+		narratorPeople: map[string]bool{},
 		works:          map[string]*workState{},
 		series:         map[string]*seriesState{},
 		asins:          map[string]bool{},
@@ -352,7 +419,7 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 		p.asinLoc = map[string]RecRef{}
 	}
 	p.loadExisting()
-	p.creditCensus = p.creditCensusOf(books)
+	p.authorCensus, p.narratorCensus = p.creditCensusesOf(books)
 	p.initialsSurvivors = p.decideInitialsOf(books)
 
 	switch opts.Mode {
@@ -367,9 +434,11 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 		return p.summary, p.fatal
 	}
 	p.finalizeSeries()
+	p.reportHonorificMerges()
 	p.reportUnmappedGenres()
 	p.reportUnnamedCredits()
 	p.reportUnaddressableSeries()
+	p.reportLostSeriesClaims()
 	if p.fatal != nil {
 		return p.summary, p.fatal
 	}
@@ -393,10 +462,14 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 func (p *planner) planCreate(books []sourceBook) {
 	normalizeEditionMarkers(books)
 	titles := resolveWorkTitles(books)
+	// The second title pre-pass, which resolveWorkTitles cannot do on its own:
+	// separating rows whose titles are identical even after the full-title
+	// fallback and which differ only by series position (workidentity.go).
+	suffixes := p.serialPositionSuffixes(books, titles)
 	for i, b := range books {
 		asin := NormalizeASIN(b.str("asin"))
 		p.setSource(asin)
-		p.addBook(b, asin, titles[i])
+		p.addBook(b, asin, titles[i], suffixes[i])
 		if p.fatal != nil {
 			return
 		}
@@ -449,8 +522,23 @@ func (p *planner) loadExisting() {
 		p.people[person.ID] = person.Name
 	}
 	for _, w := range cat.Works {
-		ws := &workState{slug: w.ID, authors: ToSet(w.Authors), recs: map[string]*recInfo{}}
+		ws := &workState{
+			slug:    w.ID,
+			authors: diskIdentityAuthors(w.Authors, w.Credits),
+			all:     ToSet(w.Authors),
+			lang:    w.Language,
+			recs:    map[string]*recInfo{},
+		}
+		for _, c := range w.Credits {
+			p.authorPeople[c.Person] = true
+		}
+		for _, a := range w.Authors {
+			p.authorPeople[a] = true
+		}
 		for _, r := range w.Recordings {
+			for _, n := range r.Narrators {
+				p.narratorPeople[n] = true
+			}
 			ri := &recInfo{
 				narrators:  ToSet(r.Narrators),
 				asins:      map[string]bool{},
@@ -478,12 +566,56 @@ func (p *planner) loadExisting() {
 			name:      s.Name,
 			members:   map[string]string{},
 			positions: map[string]string{},
+			claimed:   map[string]string{},
 		}
 		for _, sw := range s.Works {
 			ss.members[sw.Work] = sw.Position
 			ss.positions[sw.Position] = sw.Work
 		}
 		p.series[s.ID] = ss
+	}
+	p.seedDiskSeriesPositions(cat.Series)
+}
+
+// seedDiskSeriesPositions gives every recording loaded from disk the series
+// positions its WORK sits at, so the same-title serial guard (seriesPosConflict)
+// works across runs and not only within one.
+//
+// The guard needs to know which volume a recording is, and the row that created
+// it is long gone by the next run. But the fact it needs did not go with the
+// row: the work's membership in the series IS that volume number, recorded
+// durably, and every recording of a work is a recording of that volume. Without
+// this, importing a serial's volumes in two runs reproduced the original
+// Bravelands defect exactly - run 2's volume 2 merged its ASIN onto run 1's
+// volume 1 recording, because the incumbent stated no position at all.
+//
+// The key is the series NAME lowercased, matching rowSeriesPositions: the guard
+// only ever compares a recording's positions against a row's claims, and a row
+// states a name rather than a slug.
+func (p *planner) seedDiskSeriesPositions(series []*model.Series) {
+	byWork := map[string]map[string]string{}
+	for _, s := range series {
+		key := strings.ToLower(s.Name)
+		for _, sw := range s.Works {
+			pos, ok := byWork[sw.Work]
+			if !ok {
+				pos = map[string]string{}
+				byWork[sw.Work] = pos
+			}
+			// First claim wins, as everywhere else a series position is read.
+			if _, taken := pos[key]; !taken {
+				pos[key] = sw.Position
+			}
+		}
+	}
+	for slug, positions := range byWork {
+		ws, known := p.works[slug]
+		if !known {
+			continue
+		}
+		for _, ri := range ws.recs {
+			ri.seriesPos = positions
+		}
 	}
 }
 
@@ -554,10 +686,12 @@ func resolveWorkTitles(books []sourceBook) []string {
 }
 
 // addBook maps one export entry to records. asin is the row's normalized ASIN
-// (computed once by the caller) and workTitle is the pre-pass-resolved title for
-// the book's work. It returns quietly (recording a warning or a skip) whenever
-// the entry cannot be imported cleanly.
-func (p *planner) addBook(b sourceBook, asin, workTitle string) {
+// (computed once by the caller), workTitle is the pre-pass-resolved title for
+// the book's work and posSuffix is the serial-disambiguation tail its work slug
+// must carry (empty for almost every row; see serialPositionSuffixes). It
+// returns quietly (recording a warning or a skip) whenever the entry cannot be
+// imported cleanly.
+func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	warn := p.bookWarn(b)
 
 	// Dedup first: an already-present ASIN is a skip, not a warning. It is also
@@ -571,20 +705,26 @@ func (p *planner) addBook(b sourceBook, asin, workTitle string) {
 
 	lang, narratorNames, ok := p.admitRecordingFacts(b, warn)
 	if !ok {
+		p.noteLostSeriesClaims(b)
 		return
 	}
 	authorCredits := p.rowAuthorCredits(b)
 	if len(authorCredits) == 0 {
 		warn("no author; a work requires an author; skipped")
+		p.noteLostSeriesClaims(b)
 		return
 	}
 
 	if workTitle == "" {
 		warn("no title; skipped")
+		p.noteLostSeriesClaims(b)
 		return
 	}
 
-	authorSlugs := p.creditSlugs(creditNamesOf(authorCredits), warn)
+	// The row's author slugs, split into the list the record stores and the
+	// subset work identity is matched on (workidentity.go). Resolving them here
+	// is what creates their person records, exactly as creditSlugs did.
+	authors := p.rowWorkAuthors(authorCredits, warn)
 	narratorSlugs := p.creditSlugs(narratorNames, warn)
 
 	// The book's series claims (one for OpenAudible, possibly several for
@@ -613,7 +753,7 @@ func (p *planner) addBook(b sourceBook, asin, workTitle string) {
 	// raw for the same reason too - resolving them is wasted work on every row
 	// that merges.
 	facts := workFacts{genres: b.genres, credits: authorCredits}
-	ws := p.getOrCreateWork(workTitle, b.str("title"), authorSlugs, lang, claim, facts, warn)
+	ws := p.getOrCreateWork(workTitle, b.str("title"), authors, lang, claim, facts, posSuffix, warn)
 	recorded := p.addRecording(ws, b, asin, lang, narratorSlugs, warn)
 
 	// Single owner of the global ASIN registry: whether addRecording created a
@@ -689,26 +829,15 @@ func (p *planner) admitRecordingFacts(b sourceBook, warn func(string, ...any)) (
 // vocabulary refuses anyway. Recording-level credits stay unmodeled until
 // there is evidence worth modeling.
 func (p *planner) rowAuthorCredits(b sourceBook) []credit {
-	return sourceCredits(b.authors, b.str("author"), p.creditCensus)
+	return sourceCredits(b.authors, b.str("author"), p.authorCensus)
 }
 
-// rowAuthorNames / rowNarratorNames are a row's cleaned credit lists, read from
-// the source's structured list when it has one and from its comma-joined string
-// otherwise (sourceCredits owns that choice).
-func (p *planner) rowAuthorNames(b sourceBook) []string {
-	return creditNamesOf(p.rowAuthorCredits(b))
-}
-
+// rowNarratorNames is a row's cleaned narrator list, read from the source's
+// structured list when it has one and from its comma-joined string otherwise
+// (sourceCredits owns that choice). There is no author-side twin: every author
+// path needs the ROLES too, so it goes through rowAuthorCredits.
 func (p *planner) rowNarratorNames(b sourceBook) []string {
-	return creditNamesOf(sourceCredits(b.narrators, b.str("narrated_by"), p.creditCensus))
-}
-
-// rowRawCreditNames is every credit name a row states, author and narrator, in
-// the SOURCE's own spelling (sourceNames owns the typed-vs-joined choice, so
-// this reads exactly the names the import itself will read).
-func rowRawCreditNames(b sourceBook) []string {
-	return append(sourceNames(b.authors, b.str("author")),
-		sourceNames(b.narrators, b.str("narrated_by"))...)
+	return creditNamesOf(sourceCredits(b.narrators, b.str("narrated_by"), p.narratorCensus))
 }
 
 // creditCensusOf builds this run's credit census: the set of slugs a name must
@@ -744,7 +873,12 @@ func rowRawCreditNames(b sourceBook) []string {
 // (the name imports as the source spelled it, which is what happens today and is
 // a maintainer PR away from fixed). It cannot cost a wrong one: every tier that
 // consults it requires MORE evidence than the tiers that do not.
-func (p *planner) creditCensusOf(books []sourceBook) creditSeenFunc {
+// The SIDE-scoped universes are built in the same walk and from the same names,
+// and they are the honorific rule's evidence. Their catalogue half cannot come
+// from p.people, which records only that a person exists: it comes from what the
+// catalogue says each person DID (p.authorPeople / p.narratorPeople, collected
+// in loadExisting), because that is the question the rule asks.
+func (p *planner) creditCensusesOf(books []sourceBook) (author, narrator creditCensus) {
 	// Most rows repeat an author and a narrator the catalogue or an earlier row
 	// already carries, so the batch contributes far fewer new keys than it has
 	// credits; a per-row hint over-allocates by ~90MB on a 1M-row dump.
@@ -752,24 +886,71 @@ func (p *planner) creditCensusOf(books []sourceBook) creditSeenFunc {
 	for slug := range p.people {
 		universe[slug] = true
 	}
-	record := func(name string) {
-		if slug := Slugify(name); slug != "" {
-			universe[slug] = true
-		}
+	authorSide := make(map[string]bool, len(p.authorPeople)+len(books)/4)
+	for slug := range p.authorPeople {
+		authorSide[slug] = true
 	}
-	for _, b := range books {
-		for _, name := range rowRawCreditNames(b) {
-			record(name)
-			// The name as the two self-evidencing tiers would clean it. Passing
-			// nil is what keeps this bootstrap honest: the census is built from
-			// rules that never consult the census. The overwhelming majority of
-			// names clean to themselves, and re-slugging those is pure waste.
+	narratorSide := make(map[string]bool, len(p.narratorPeople)+len(books)/4)
+	for slug := range p.narratorPeople {
+		narratorSide[slug] = true
+	}
+	record := func(side map[string]bool, name string) {
+		slug := Slugify(name)
+		if slug == "" {
+			return
+		}
+		universe[slug] = true
+		side[slug] = true
+	}
+	recordSide := func(side map[string]bool, names []string) {
+		for _, name := range names {
+			record(side, name)
+			// The name as the self-evidencing tiers would clean it. Passing a
+			// zero census is what keeps this bootstrap honest: the census is
+			// built from rules that never consult the census. The overwhelming
+			// majority of names clean to themselves, and re-slugging those is
+			// pure waste.
 			if cleaned, _ := creditWithRoles(name, nil); cleaned != name {
-				record(cleaned)
+				record(side, cleaned)
 			}
 		}
 	}
-	return func(name string) bool { return universe[Slugify(name)] }
+	for _, b := range books {
+		recordSide(authorSide, sourceNames(b.authors, b.str("author")))
+		recordSide(narratorSide, sourceNames(b.narrators, b.str("narrated_by")))
+	}
+	seenIn := func(set map[string]bool) creditSeenFunc {
+		return func(name string) bool { return set[Slugify(name)] }
+	}
+	anySide := seenIn(universe)
+	author = creditCensus{anySide: anySide, sameSide: seenIn(authorSide), onHonorific: p.noteHonorific}
+	narrator = creditCensus{anySide: anySide, sameSide: seenIn(narratorSide), onHonorific: p.noteHonorific}
+	return author, narrator
+}
+
+// noteHonorific records one honorific merge for the run's report. It is a SET
+// of (credited spelling -> bare twin) pairs rather than a count: the same
+// spelling is cleaned once per row it appears on, and what a maintainer audits
+// is which merges happened, not how often each fired.
+func (p *planner) noteHonorific(from, to string) {
+	if p.honorificMerges == nil {
+		p.honorificMerges = map[string]string{}
+	}
+	p.honorificMerges[from] = to
+}
+
+// reportHonorificMerges publishes the run's honorific merges, sorted, as
+// "<credited> -> <bare>" lines.
+func (p *planner) reportHonorificMerges() {
+	if len(p.honorificMerges) == 0 {
+		return
+	}
+	out := make([]string, 0, len(p.honorificMerges))
+	for from, to := range p.honorificMerges {
+		out = append(out, from+" -> "+to)
+	}
+	sort.Strings(out)
+	p.summary.HonorificMerges = out
 }
 
 // decideInitialsOf is the initials rule's batch pre-pass (initials.go): which
@@ -788,8 +969,16 @@ func (p *planner) decideInitialsOf(books []sourceBook) initialsSurvivors {
 		c.addCatalogue(slug, name)
 	}
 	for _, b := range books {
-		for _, name := range rowRawCreditNames(b) {
-			cleaned, _ := creditWithRoles(name, p.creditCensus)
+		// Each side is cleaned through ITS OWN census, exactly as the import
+		// itself will clean it: the honorific rule is side-scoped, so a pre-pass
+		// reading both sides through one census would decide an initials group
+		// against a spelling the import never produces.
+		for _, name := range sourceNames(b.authors, b.str("author")) {
+			cleaned, _ := creditWithRolesSided(name, p.authorCensus)
+			c.addBatch(cleaned)
+		}
+		for _, name := range sourceNames(b.narrators, b.str("narrated_by")) {
+			cleaned, _ := creditWithRolesSided(name, p.narratorCensus)
 			c.addBatch(cleaned)
 		}
 	}
@@ -810,10 +999,12 @@ type seriesRef struct {
 // makeSeriesRef builds a book's claim to a position in a named series,
 // validating the raw position token through the shared rules. Every source
 // builds its refs here so one spelling of a position ("1.0") can never become a
-// different position from another ("1").
+// different position from another ("1"), and it normalizes a trailing narrator
+// qualifier out of the NAME (cleanSeriesName) so one serial cannot fork into a
+// series per narrator.
 func makeSeriesRef(name, rawSeq string) seriesRef {
 	pos, ok := NormalizeSequence(rawSeq)
-	return seriesRef{name: name, seq: pos, seqOK: ok, rawSeq: rawSeq}
+	return seriesRef{name: cleanSeriesName(name), seq: pos, seqOK: ok, rawSeq: rawSeq}
 }
 
 // sourceCredits resolves one credit list (authors or narrators). A source that
@@ -824,14 +1015,14 @@ func makeSeriesRef(name, rawSeq string) seriesRef {
 //
 // Either way each entry keeps the roles its qualifier stated, so the two shapes
 // a source can hand credits over in produce the same facts.
-func sourceCredits(typed []string, joined string, seen creditSeenFunc) []credit {
+func sourceCredits(typed []string, joined string, c creditCensus) []credit {
 	names := sourceNames(typed, joined)
 	if len(names) == 0 {
 		return nil
 	}
 	out := make([]credit, 0, len(names))
 	for _, name := range names {
-		cleaned, roles := creditWithRoles(name, seen)
+		cleaned, roles := creditWithRolesSided(name, c)
 		out = append(out, credit{name: cleaned, roles: roles})
 	}
 	return out
@@ -1005,7 +1196,8 @@ func (p *planner) personSlugTarget(slug string) string {
 // personSlug derives a credit name's person identity, substituting the shared
 // catch-all record when the name slugs away to nothing (a name in a script that
 // folds entirely). fellBack reports that substitution so a caller that CREATES
-// the record can warn about it, while a caller that only MATCHES (slugCredits)
+// the record can warn about it, while a caller that only MATCHES
+// (rowWorkAuthorsRO)
 // stays silent. Both go through here so a name resolves to one identity
 // everywhere.
 //
@@ -1021,15 +1213,27 @@ type seriesClaim struct {
 }
 
 // compatible reports whether merging the book into work ws is consistent with
-// its series claim. No claim, a work not yet in the series, or the same
-// position all merge; the same series at a DIFFERENT position means ws is a
-// different volume that merely shares the title.
+// its series claim. No claim, a work that has neither taken nor claimed a
+// position in the series, or the same position all merge; the same series at a
+// DIFFERENT position means ws is a different volume that merely shares the
+// title.
+//
+// It reads claimed as well as members because the two answer different
+// questions. members is where the work ENDED UP, and a placement can be dropped
+// (its position was already taken by a sibling edition) - which left the work
+// looking absent from the series and made every later volume compatible with
+// it. claimed is what the work ASKED for, which is the fact this test needs.
 func (c *seriesClaim) compatible(ws *workState) bool {
 	if c == nil {
 		return true
 	}
-	existing, in := c.ss.members[ws.slug]
-	return !in || existing == c.pos
+	if existing, in := c.ss.members[ws.slug]; in {
+		return existing == c.pos
+	}
+	if wanted, asked := c.ss.claimed[ws.slug]; asked {
+		return wanted == c.pos
+	}
+	return true
 }
 
 // workFacts are the facts a row contributes ONLY to a work it creates: the raw
@@ -1043,81 +1247,153 @@ type workFacts struct {
 	credits []credit
 }
 
-// getOrCreateWork returns the work identified by (title-slug, author set),
-// creating it when new. A same-author work that the book's series claim rules
-// out (same series, different position) is not a merge target: the slug is
+// getOrCreateWork returns the work identified by (title-slug, identity author
+// set), creating it when new. A same-author work that the book's series claim
+// rules out (same series, different position) is not a merge target: the slug is
 // re-derived from the full title, with the candidate chain (author suffix,
 // then numeric) only as the last-resort collision fallback. A collision with a
 // different author set appends the first author's slug, then numeric suffixes,
 // and warns. facts are the creation-only facts (genres, credits); they are
 // stored only on the branch that creates a work, which is the only place they
 // can be stored, and ride through the full-title retry unchanged.
-func (p *planner) getOrCreateWork(title, fullTitle string, authorSlugs []string, lang string, claim *seriesClaim, facts workFacts, warn func(string, ...any)) *workState {
+//
+// Three tests can rule a candidate out even when its authors answer, and each
+// one exists because it was measured firing the wrong way:
+//
+//   - the LANGUAGE test. A work is language-scoped, so a German translation may
+//     not merge into its English original however identical their credits are
+//     (langCompatible; a 20,000-row wave-6 simulation left 82 more
+//     cross-language recordings in the tree without it).
+//   - the SERIES CLAIM test. A same-author work the row's series claim rules out
+//     is a different volume sharing a short title; the slug is re-derived from
+//     the full title once, with the candidate chain only as the last resort.
+//   - the POSITION-SUFFIX test. See posSuffix below.
+//
+// posSuffix is the serial-disambiguation tail (workidentity.go): when the batch
+// pre-pass found that this row shares its title with a sibling volume, the tail
+// is appended to the title base BEFORE the collision chain, so each volume gets
+// its own slug instead of the chain merging them. It is empty for almost every
+// row.
+//
+// A suffixed base may only ever merge into a work THIS RUN created on the
+// suffixed path (workState.posSuffixed). The tree holds 258 works whose slug
+// already looks like "<something>-book-3" because their TITLE ends that way,
+// and they are not volume 3 of the row's serial - they are unrelated books that
+// happen to spell the slug the pre-pass mints. Merging into one silently files a
+// recording under a different book, which is exactly what the pre-pass exists to
+// prevent.
+//
+// The full-title retry does NOT fire under a posSuffix, and that is structural
+// rather than an omission: a row only carries a suffix when resolveWorkTitles
+// left its resolved title equal to its full title (a suffix is minted precisely
+// for the rows the full-title fallback could not separate), so the retry's own
+// precondition - a full title that differs - can never hold. It is skipped
+// explicitly so that reading the code says so.
+func (p *planner) getOrCreateWork(title, fullTitle string, authors workAuthors, lang string, claim *seriesClaim, facts workFacts, posSuffix string, warn func(string, ...any)) *workState {
 	base := Slugify(title)
 	if base == "" {
 		base = "untitled"
 		warn("title %q produced an empty slug; using %q", title, base)
 	}
-	want := ToSet(authorSlugs)
-	for i, slug := range workCandidates(base, authorSlugs[0]) {
-		ws, exists := p.works[slug]
+	if posSuffix != "" {
+		base = BoundedSlugTail(base, "-"+posSuffix)
+	}
+	cands, primary := workCandidates(base, authors)
+
+	// The walk grades every candidate rather than taking the first that answers:
+	// two candidates can both reduce to the row's identity set (the-iliad and
+	// the-iliad-robert-fitzgerald both reduce to Homer) and only the whole
+	// credit list says which of the two the row is.
+	best, bestKind, free, blocked := -1, matchNone, -1, false
+	for i, cand := range cands {
+		ws, exists := p.works[cand.slug]
 		if !exists {
-			if slug != base {
-				warn("work slug %q taken by a different book; using %q for %q", base, slug, title)
+			if free < 0 && !cand.probeOnly {
+				free = i
 			}
-			ws = &workState{slug: slug, authors: want, recs: map[string]*recInfo{}}
-			p.works[slug] = ws
-			// added_at is stamped here and only here for a work: this is the
-			// branch that CREATES one. A merge onto an existing work, and every
-			// enrichment backfill, leave the field as they found it.
-			//
-			// putNewEntry, not putEntry: p.works comes from a best-effort
-			// catalogue load, so a work the loader could not decode looks free
-			// here, and a plain upsert would replace its whole composite entry -
-			// every recording included.
-			credits := p.workCredits(facts.credits)
-			p.putNewEntry(pack.FamilyWorks, slug, outWork{
-				ID: slug, Title: title, Authors: authorSlugs, Language: lang,
-				Credits: credits,
-				Genres:  p.genres.mapGenres(facts.genres, p.unmappedGenres),
-				AddedAt: p.importDate,
-				License: licenseCC0, Sources: []OutSource{p.curSource},
-			})
-			p.summary.NewWorks++
-			p.summary.Credits += len(credits)
-			p.recordRunCredits(slug, credits)
-			return ws
+			if free >= 0 && i >= primary {
+				break
+			}
+			continue
 		}
-		if SameSet(ws.authors, want) {
-			if claim.compatible(ws) {
-				// A later row of this run, merging into a work the run created:
-				// its credits are not a second source's account of an existing
-				// work, they are more of the same import, so the pairs the entry
-				// does not carry yet are merged in (a no-op for a work loaded
-				// from disk, which is never in runCredits).
-				p.mergeCreatedWorkCredits(ws.slug, facts.credits)
-				// A merge onto a SHORTENED candidate is the one case where the slug
-				// no longer carries the whole title: two different long titles by
-				// one author agreeing up to the cut land here as a single work. The
-				// identity model accepts that collision risk, but it must not be
-				// silent - on the unbounded formula it surfaced as an invalid slug.
-				if workSlugTruncated(base, authorSlugs[0], i) {
-					warn("work slug for %q was shortened to fit; merging into existing work %q - verify these are the same book", title, slug)
-				}
-				return ws
-			}
-			// Same authors, but this slug's work sits in the book's series at a
-			// different position: a different volume sharing the short title.
-			// Re-derive from the full title (once); the candidate chain below is
-			// the last resort when that is unusable. Titles are already cleaned of
-			// trailing edition markers at the batch boundary.
-			if full := Slugify(fullTitle); fullTitle != title && full != "" && full != base {
-				return p.getOrCreateWork(fullTitle, "", authorSlugs, lang, claim, facts, warn)
-			}
+		kind := matchWork(ws, authors)
+		if kind == matchNone || !langCompatible(ws.lang, lang) {
+			continue
+		}
+		if posSuffix != "" && !ws.posSuffixed {
+			continue
+		}
+		if !claim.compatible(ws) {
+			blocked = true
+			continue
+		}
+		if kind > bestKind {
+			best, bestKind = i, kind
+		}
+		if bestKind == matchExact {
+			break
 		}
 	}
-	// Unreachable in practice: 50 numeric candidates never all collide.
-	return nil
+
+	if best >= 0 {
+		ws := p.works[cands[best].slug]
+		// A later row of this run, merging into a work the run created: its
+		// credits are not a second source's account of an existing work, they are
+		// more of the same import, so the pairs the entry does not carry yet are
+		// merged in (a no-op for a work loaded from disk, which is never in
+		// runCredits).
+		p.mergeCreatedWorkCredits(ws.slug, facts.credits)
+		// A merge onto a SHORTENED candidate is the one case where the slug no
+		// longer carries the whole title: two different long titles by one author
+		// agreeing up to the cut land here as a single work. The identity model
+		// accepts that collision risk, but it must not be silent - on the
+		// unbounded formula it surfaced as an invalid slug.
+		if !cands[best].probeOnly && workSlugTruncated(base, authors.first(), best) {
+			warn("work slug for %q was shortened to fit; merging into existing work %q - verify these are the same book", title, ws.slug)
+		}
+		return ws
+	}
+
+	// Nothing answered. A candidate the SERIES CLAIM ruled out means the row is
+	// a different volume that merely shares this short title, so re-derive from
+	// the full title once before minting anything.
+	if blocked && posSuffix == "" {
+		if full := Slugify(fullTitle); fullTitle != title && full != "" && full != base {
+			return p.getOrCreateWork(fullTitle, "", authors, lang, claim, facts, posSuffix, warn)
+		}
+	}
+	if free < 0 {
+		// Unreachable in practice: 50 numeric candidates never all collide.
+		return nil
+	}
+	slug := cands[free].slug
+	if slug != base {
+		warn("work slug %q taken by a different book; using %q for %q", base, slug, title)
+	}
+	ws := &workState{
+		slug: slug, authors: authors.set(), all: authors.allSet(), lang: lang,
+		posSuffixed: posSuffix != "", recs: map[string]*recInfo{},
+	}
+	p.works[slug] = ws
+	// added_at is stamped here and only here for a work: this is the branch that
+	// CREATES one. A merge onto an existing work, and every enrichment backfill,
+	// leave the field as they found it.
+	//
+	// putNewEntry, not putEntry: p.works comes from a best-effort catalogue load,
+	// so a work the loader could not decode looks free here, and a plain upsert
+	// would replace its whole composite entry - every recording included.
+	credits := p.workCredits(facts.credits)
+	p.putNewEntry(pack.FamilyWorks, slug, outWork{
+		ID: slug, Title: title, Authors: authors.all, Language: lang,
+		Credits: credits,
+		Genres:  p.genres.mapGenres(facts.genres, p.unmappedGenres),
+		AddedAt: p.importDate,
+		License: licenseCC0, Sources: []OutSource{p.curSource},
+	})
+	p.summary.NewWorks++
+	p.summary.Credits += len(credits)
+	p.recordRunCredits(slug, credits)
+	return ws
 }
 
 // findSeries returns the already-known series (existing on disk or created this
@@ -1188,6 +1464,16 @@ func (p *planner) addRecording(ws *workState, b sourceBook, asin, lang string, n
 		// production (a distinct runtime, or a known-abridged edition), so fall
 		// through to a distinct slug under the same work.
 		for _, m := range matches {
+			// A sibling recording whose row claimed a DIFFERENT position in a
+			// series this row also claims is a different volume, however alike the
+			// two productions look. Checked before the runtime and abridged guards
+			// because it is the only one that can tell two volumes of a serial
+			// apart.
+			if series, incumbent, want, conflict := seriesPosConflict(m.info, b); conflict {
+				warn("recording %q is at position %q of series %q; this row claims %q - not merging its ASIN",
+					m.slug, incumbent, series, want)
+				continue
+			}
 			if runtimesCompatible(m.info.runtimeMin, b.runtimeMin) && !abridgedConflict(m.info.abridged, b.abridged) {
 				region, ok := p.resolveASINRegion(b, warn)
 				if !ok {
@@ -1242,7 +1528,10 @@ func (p *planner) addRecording(ws *workState, b sourceBook, asin, lang string, n
 	// the ASIN merge above returns before reaching it.
 	rec.AddedAt = p.importDate
 
-	ri := &recInfo{narrators: narrSet, asins: map[string]bool{}, runtimeMin: b.runtimeMin, abridged: b.abridged}
+	ri := &recInfo{
+		narrators: narrSet, asins: map[string]bool{}, runtimeMin: b.runtimeMin,
+		abridged: b.abridged, seriesPos: rowSeriesPositions(b),
+	}
 	for _, a := range rec.ASIN {
 		ri.asins[a.ASIN] = true
 	}
@@ -1340,6 +1629,43 @@ func (p *planner) noteUnaddressableSeries(name string) {
 		return
 	}
 	p.unaddressableSeriesNames = append(p.unaddressableSeriesNames, name)
+}
+
+// noteLostSeriesClaims records the series memberships a row takes down with it
+// when the row itself cannot be imported. It is the one series-drop path that
+// used to be entirely invisible: the row's own warning says why the ROW was
+// dropped, and nothing at all said that a series lost a volume.
+//
+// Measured over seed wave 5, 388 refused rows carried 389 valid positioned
+// claims that vanished this way - and 241 of those rows were refused only for a
+// language the map did not carry, which is exactly the kind of fixable cause an
+// aggregate count surfaces and a per-row silence hides.
+//
+// It is deliberately a COUNT with examples rather than a line per claim: the
+// cause is never the series, it is always the row, which has already been
+// reported on its own terms.
+func (p *planner) noteLostSeriesClaims(b sourceBook) {
+	for _, r := range b.series {
+		if !r.seqOK {
+			continue
+		}
+		p.lostSeriesClaims++
+		if len(p.lostSeriesNames) >= maxWarnExamples || slices.Contains(p.lostSeriesNames, r.name) {
+			continue
+		}
+		p.lostSeriesNames = append(p.lostSeriesNames, r.name)
+	}
+}
+
+// reportLostSeriesClaims appends one run-level warning for those claims.
+func (p *planner) reportLostSeriesClaims() {
+	if p.lostSeriesClaims == 0 {
+		return
+	}
+	p.summary.Warnings = append(p.summary.Warnings, withExamples(
+		fmt.Sprintf("%d series placements lost: the row claiming the position could not be imported",
+			p.lostSeriesClaims),
+		p.lostSeriesNames))
 }
 
 // reportUnaddressableSeries appends one run-level warning for the series claims
@@ -1470,6 +1796,50 @@ func abridgedConflict(a, b *bool) bool {
 
 func boolOrFalse(p *bool) bool { return p != nil && *p }
 
+// rowSeriesPositions is a row's valid series claims as a lookup (lowercased
+// series name -> position), for the recording-level serial guard. The name is
+// lowercased rather than slugified because it is only ever compared against
+// another row's claim, and findSeries already treats the name
+// case-insensitively. First claim wins, matching addToSeries.
+func rowSeriesPositions(b sourceBook) map[string]string {
+	var out map[string]string
+	for _, r := range b.series {
+		if !r.seqOK {
+			continue
+		}
+		key := strings.ToLower(r.name)
+		if out == nil {
+			out = map[string]string{}
+		}
+		if _, taken := out[key]; !taken {
+			out[key] = r.seq
+		}
+	}
+	return out
+}
+
+// seriesPosConflict reports whether a row and an existing recording state
+// DIFFERENT positions in the same series, which makes them different volumes
+// however compatible their runtimes are. It names the series and both positions
+// so the refusal to merge can say what it saw.
+//
+// A recording with no recorded claims (every recording loaded from disk) never
+// conflicts: the guard only ever fires on evidence, never on absence.
+func seriesPosConflict(ri *recInfo, b sourceBook) (series, incumbent, want string, conflict bool) {
+	if len(ri.seriesPos) == 0 {
+		return "", "", "", false
+	}
+	for _, r := range b.series {
+		if !r.seqOK {
+			continue
+		}
+		if have, in := ri.seriesPos[strings.ToLower(r.name)]; in && have != r.seq {
+			return r.name, have, r.seq, true
+		}
+	}
+	return "", "", "", false
+}
+
 // mergeRecordingASIN appends {region, asin} (and any ISBN the caller claimed for
 // this entry) to an existing recording and re-queues it, preserving every other
 // field byte-for-byte. The recording is read from inside its work's composite
@@ -1593,6 +1963,13 @@ func (p *planner) addToSeries(name, work, pos string, warn func(string, ...any))
 		// imports; the work is simply not placed in this series.
 		return
 	}
+	// Recorded BEFORE the two drop tests, and for every claim: what a work asked
+	// for is what seriesClaim.compatible needs to know, and a claim that is
+	// dropped here is exactly the case where members cannot say (see
+	// seriesState.claimed).
+	if _, asked := ss.claimed[work]; !asked {
+		ss.claimed[work] = pos
+	}
 	if existing, ok := ss.members[work]; ok {
 		if existing != pos {
 			warn("series %q already lists work %q at position %q; not re-adding at %q", name, work, existing, pos)
@@ -1652,6 +2029,7 @@ func (p *planner) getOrCreateSeries(name string, warn func(string, ...any)) *ser
 				out:       &OutSeries{ID: slug, Name: name, License: licenseCC0, Sources: []OutSource{p.curSource}},
 				members:   map[string]string{},
 				positions: map[string]string{},
+				claimed:   map[string]string{},
 			}
 			p.series[slug] = ss
 			p.summary.NewSeries++
@@ -1775,19 +2153,73 @@ func runtimesCompatible(a, b int) bool {
 	return float64(hi-lo) <= 0.10*float64(hi)
 }
 
-// workCandidates yields the ordered slug candidates for a work: the bare title
-// slug, then the title plus first-author slug, then numeric suffixes on that.
-// Every candidate is a valid slug (workSlugAt bounds it to model.MaxSlugLen);
-// the bare base already is, coming from Slugify. resolveExistingWork walks this
-// same chain to FIND a work, so the bound must live here rather than at either
-// call site or the two would stop agreeing on where a work sits.
-func workCandidates(base, firstAuthor string) []string {
-	out := make([]string, 0, 51)
-	out = append(out, base)
-	for i := 1; i <= 50; i++ {
-		out = append(out, workSlugAt(base, firstAuthor, i))
+// workCandidate is one slug a row's work may sit on. probeOnly marks a slug
+// that is a place to LOOK but never a place to create: see workCandidates.
+type workCandidate struct {
+	slug      string
+	probeOnly bool
+}
+
+// workCandidates yields the ordered slug candidates for a work, and how many of
+// them are PRIMARY (the non-numeric ones). Every candidate is a valid slug
+// (workSlugAt bounds it to model.MaxSlugLen); the bare base already is, coming
+// from Slugify. resolveExistingWork walks this same chain to FIND a work, so
+// the bound must live here rather than at either call site or the two would
+// stop agreeing on where a work sits.
+//
+// The chain is: the bare title slug, the title plus the first IDENTITY author,
+// the title plus EVERY OTHER author the row credits, then numeric suffixes on
+// the identity form. Only the first two are slugs a new work may be minted at;
+// the rest are probes, marked probeOnly.
+//
+// Probing every author is what makes the chain independent of the ORDER a
+// source lists credits in. The suffix is built from the FIRST author, and two
+// editions of one book routinely disagree about who that is: a German Sherlock
+// Holmes audio drama credited "Arthur Conan Doyle, S. Pomej" on one release and
+// "S. Pomej, Arthur Conan Doyle" on the next produced two works with byte-equal
+// author SETS, because each row looked only where its own first author would
+// have put it. Ten such pairs were minted by a single wave.
+//
+// The other probe is the LEGACY one, and it is the same idea a generation
+// earlier: every work created before the credited-contributor exclusion
+// (workidentity.go) took its suffix from the first entry of the whole author
+// list, so a book whose edition listed its translator first sits at
+// "firstborn-julia-schwenk" while today's chain would only look at
+// "firstborn-m-j-hastings". The measured cost of not looking is both halves of
+// one defect: the create path mints a duplicate of a work it cannot see, and
+// --recordings-only silently drops the alternate narration of one.
+//
+// A probe can only ever FIND a work; nothing is minted at one, so the extra
+// locations do not grow, and a probe that hits still has to satisfy every merge
+// test (identity, language, series claim) before it is used.
+//
+// The PRIMARY count is what stops the walk from claiming a free slug too early:
+// a work can sit on a probe candidate while the mintable one is free, so all of
+// the primaries must be probed before a new work is created at the first free
+// one. Past them, the first free slug ends the walk as it always did - the
+// chain beyond it can only be empty, because getOrCreateWork would have claimed
+// exactly that slug.
+func workCandidates(base string, authors workAuthors) (cands []workCandidate, primary int) {
+	cands = make([]workCandidate, 0, 53)
+	cands = append(cands, workCandidate{slug: base})
+	mintable := workSlugAt(base, authors.first(), 1)
+	cands = append(cands, workCandidate{slug: mintable})
+	seen := map[string]bool{base: true, mintable: true}
+	// identity first, then the role-credited people the full list adds: a probe
+	// order that reads from the most likely location to the least.
+	for _, who := range append(append([]string{}, authors.identity...), authors.all...) {
+		slug := workSlugAt(base, who, 1)
+		if seen[slug] {
+			continue
+		}
+		seen[slug] = true
+		cands = append(cands, workCandidate{slug: slug, probeOnly: true})
 	}
-	return out
+	primary = len(cands)
+	for i := 2; i <= 50; i++ {
+		cands = append(cands, workCandidate{slug: workSlugAt(base, authors.first(), i)})
+	}
+	return cands, primary
 }
 
 // workSlugAt builds the i'th disambiguated work-slug candidate (i >= 1):

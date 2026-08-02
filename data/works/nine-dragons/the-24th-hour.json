@@ -1167,6 +1167,10 @@
             {
               "asin": "B0D826GFS7",
               "region": "us"
+            },
+            {
+              "asin": "B0C9RWHMMS",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/812OD7quaFL.jpg",
@@ -1183,6 +1187,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0D826GFS7",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0C9RWHMMS",
               "type": "libex-import"
             }
           ],
@@ -2739,6 +2748,58 @@
         }
       ],
       "title": "The 666 Murders"
+    },
+    "the-6th-extinction": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "james-rollins"
+      ],
+      "genres": [
+        "action-adventure",
+        "thriller-suspense",
+        "war-military-fiction"
+      ],
+      "id": "the-6th-extinction",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "christian-baskous-2014": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00K2A8X0W",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A13SXMMpw1L.jpg",
+          "id": "christian-baskous-2014",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "christian-baskous"
+          ],
+          "publisher": "William Morrow",
+          "release_date": "2014-08-12",
+          "runtime_min": 900,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00K2A8X0W",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-6th-extinction"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00K2A8X0W",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The 6th Extinction"
     },
     "the-6th-target": {
       "added_at": "2026-07-25T17:12:12+01:00",
