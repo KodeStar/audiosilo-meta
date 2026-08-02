@@ -42,12 +42,38 @@ func pack(entries ...string) string {
 	return `{"entries":{` + strings.Join(entries, ",") + `}}` + "\n"
 }
 
+// A works-community entry has no own fields: it is the map of its members, one
+// per sidecar, each a licensed document of its own.
+func community(id string, members ...string) string {
+	return `"` + id + `":{` + strings.Join(members, ",") + `}`
+}
+
+func charsMember(work, name string) string {
+	return `"characters":{"work":"` + work + `","license":"CC-BY-SA-3.0",` +
+		`"characters":[{"id":"c1","name":"` + name + `"}]}`
+}
+
+func recapsMember(work, text string) string {
+	return `"recaps":{"work":"` + work + `","license":"CC-BY-SA-3.0",` +
+		`"recaps":[{"through":{"chapter":1},"text":"` + text + `"}]}`
+}
+
+// The two families that have a one-level-deeper exception, since the script
+// reads the family off the path.
+const (
+	worksPath     = "data/works/0/0.json"
+	communityPath = "data/works-community/0/0.json"
+)
+
 func TestPackUnionMerge(t *testing.T) {
 	requireTools(t, "git", "jq")
 	script := abs(t, "pack-union-merge.sh")
 
 	cases := []struct {
 		name string
+		// path is the pack file, which names the FAMILY and so decides which
+		// one-level-deeper exception the script may apply. Empty means works.
+		path string
 		// base, main and branch are the three versions of the pack file.
 		base, main, branch string
 		// wantRefusal expects exit 5: a conflict only a person can settle.
@@ -135,11 +161,81 @@ func TestPackUnionMerge(t *testing.T) {
 			branch:      pack(workWithRecs("aaa", "A from the branch", rec("r1", "")+","+rec("r3", ""))),
 			wantRefusal: true,
 		},
+		{
+			// The works-community twin of the narrations collision, and the one
+			// the live intake stream hits: a characters pull request and a recaps
+			// pull request for the same book each CREATE the same entry, carrying
+			// one disjoint member apiece.
+			name:   "each side adds its own community member for one work",
+			path:   communityPath,
+			base:   pack(community("aaa", charsMember("aaa", "Ann"))),
+			main:   pack(community("aaa", charsMember("aaa", "Ann")), community("bbb", charsMember("bbb", "Bob"))),
+			branch: pack(community("aaa", charsMember("aaa", "Ann")), community("bbb", recapsMember("bbb", "So far"))),
+			present: []string{
+				"aaa.characters", "bbb.characters", "bbb.recaps",
+			},
+		},
+		{
+			// Two people describing the same characters is a disagreement about
+			// one text, exactly as two people editing one recording is.
+			name:        "both sides wrote the same community member",
+			path:        communityPath,
+			base:        pack(community("aaa", charsMember("aaa", "Ann"))),
+			main:        pack(community("aaa", charsMember("aaa", "Ann from main"))),
+			branch:      pack(community("aaa", charsMember("aaa", "Ann from the branch"))),
+			wantRefusal: true,
+		},
+		{
+			// The base decides per MEMBER: the branch removed the recaps, main
+			// left them exactly as the base had them, so they are deleted rather
+			// than handed back.
+			name:    "a community member the branch deleted stays deleted",
+			path:    communityPath,
+			base:    pack(community("aaa", charsMember("aaa", "Ann")+","+recapsMember("aaa", "So far"))),
+			main:    pack(community("aaa", charsMember("aaa", "Ann")+","+recapsMember("aaa", "So far")), community("mmm", charsMember("mmm", "Em"))),
+			branch:  pack(community("aaa", charsMember("aaa", "Ann"))),
+			present: []string{"aaa.characters", "mmm.characters"},
+			absent:  []string{"aaa.recaps"},
+		},
+		{
+			// Both deletions are honoured, and an entry with no members left is
+			// nothing - it goes rather than staying behind as an empty record.
+			name:    "both sides deleted a different community member",
+			path:    communityPath,
+			base:    pack(community("aaa", charsMember("aaa", "Ann")+","+recapsMember("aaa", "So far"))),
+			main:    pack(community("aaa", charsMember("aaa", "Ann")), community("mmm", charsMember("mmm", "Em"))),
+			branch:  pack(community("aaa", recapsMember("aaa", "So far"))),
+			present: []string{"mmm.characters"},
+			absent:  []string{"aaa"},
+		},
+		{
+			// Delete versus modify at the member level is a person's call, the
+			// same way it is at the entry level.
+			name:        "one side deleted the community member the other rewrote",
+			path:        communityPath,
+			base:        pack(community("aaa", charsMember("aaa", "Ann")+","+recapsMember("aaa", "So far"))),
+			main:        pack(community("aaa", charsMember("aaa", "Ann")+","+recapsMember("aaa", "So far, rewritten"))),
+			branch:      pack(community("aaa", charsMember("aaa", "Ann"))),
+			wantRefusal: true,
+		},
+		{
+			// A family with no exception gets none: a person entry both sides
+			// rewrote is a refusal whatever its shape.
+			name:        "both sides edited one person record",
+			path:        "data/people/0.json",
+			base:        pack(work("aaa", "A")),
+			main:        pack(work("aaa", "A from main")),
+			branch:      pack(work("aaa", "A from the branch")),
+			wantRefusal: true,
+		},
 	}
 
-	const packPath = "data/works/0/0.json"
 	for _, c := range cases {
 		t.Run(c.name, func(t *testing.T) {
+			packPath := c.path
+			if packPath == "" {
+				packPath = worksPath
+			}
 			repo := conflictedRebase(t, packPath, c.base, c.main, c.branch)
 
 			out, err := runIn(repo, script, packPath)
