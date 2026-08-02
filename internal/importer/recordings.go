@@ -166,7 +166,11 @@ func (p *planner) resolveExistingWork(b sourceBook) (ws *workState, titleHit boo
 			resolved = true
 		}
 		titleHit = true
-		cands, primary := workCandidates(base, authors)
+		// No position probe: this resolver enters the chain only once the BARE
+		// title slug is taken (the gate above), so a work that sits solely on a
+		// suffixed slug is out of its reach either way. Giving it the probe without
+		// moving that gate would only look like it covers the case.
+		cands, primary := workCandidates(base, authors, positionClaim{})
 		var best *workState
 		bestKind := matchNone
 		for i, cand := range cands {

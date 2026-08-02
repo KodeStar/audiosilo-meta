@@ -1236,6 +1236,38 @@ func (c *seriesClaim) compatible(ws *workState) bool {
 	return true
 }
 
+// places is compatible's POSITIVE half: it reports whether the series says ws
+// sits at exactly the position this row claims, rather than merely failing to
+// contradict it. It reads the same two maps for the same reasons, and differs
+// only in what it makes of silence: a work the series has never heard of is
+// compatible with every row but placed by none.
+//
+// That distinction is what lets a suffixed slug be a merge target at all. A
+// work stored as "<title>-book-3" is either volume 3 of the row's serial or an
+// unrelated book whose TITLE ends "Book 3" (258 of them are in the tree), and
+// the series record is the only thing that can tell them apart.
+func (c *seriesClaim) places(ws *workState) bool {
+	if c == nil {
+		return false
+	}
+	if existing, in := c.ss.members[ws.slug]; in {
+		return existing == c.pos
+	}
+	wanted, asked := c.ss.claimed[ws.slug]
+	return asked && wanted == c.pos
+}
+
+// position reduces the claim to the (series, position) pair the suffix formulas
+// need. The series NAME is the catalogued one rather than the row's spelling;
+// findSeries matched the two case-insensitively, so they slugify alike and the
+// probe lands where the pre-pass mints.
+func (c *seriesClaim) position() positionClaim {
+	if c == nil {
+		return positionClaim{}
+	}
+	return positionClaim{series: c.ss.name, pos: c.pos}
+}
+
 // workFacts are the facts a row contributes ONLY to a work it creates: the raw
 // genre claims and the row's source credits. Both travel RAW and are resolved at
 // the point of storage (mapGenres, workCredits), so a row that merges into an
@@ -1275,13 +1307,24 @@ type workFacts struct {
 // its own slug instead of the chain merging them. It is empty for almost every
 // row.
 //
-// A suffixed base may only ever merge into a work THIS RUN created on the
-// suffixed path (workState.posSuffixed). The tree holds 258 works whose slug
-// already looks like "<something>-book-3" because their TITLE ends that way,
-// and they are not volume 3 of the row's serial - they are unrelated books that
-// happen to spell the slug the pre-pass mints. Merging into one silently files a
+// A SUFFIXED candidate - the row's own suffixed base, or one of the position
+// probes workCandidates adds for a claim-bearing row - may only be merged into
+// when something says its "book-<position>" tail means what it says: either THIS
+// RUN created the work on the suffixed path (workState.posSuffixed), or the
+// row's series claim PLACES that work at exactly the position it claims
+// (seriesClaim.places). The tree holds 258 works whose slug already looks like
+// "<something>-book-3" because their TITLE ends that way, and they are not
+// volume 3 of the row's serial - they are unrelated books that happen to spell
+// the slug the pre-pass mints. Neither test can reach one: no run created it,
+// and no series records it at that position. Merging into one silently files a
 // recording under a different book, which is exactly what the pre-pass exists to
 // prevent.
+//
+// The placement test is what makes the suffix survive its own run. A batch mints
+// "<title>-book-1" and records it in the series; the NEXT run's row for that
+// volume - alone, so the pre-pass never fires, or batched, so it composes the
+// same suffix - finds it, because the series says that work is volume 1. Without
+// it the second run mints a duplicate whichever path it takes.
 //
 // The full-title retry does NOT fire under a posSuffix, and that is structural
 // rather than an omission: a row only carries a suffix when resolveWorkTitles
@@ -1295,10 +1338,18 @@ func (p *planner) getOrCreateWork(title, fullTitle string, authors workAuthors, 
 		base = "untitled"
 		warn("title %q produced an empty slug; using %q", title, base)
 	}
+	// A row that states a series position may LOOK at the suffixed slugs the
+	// serial pre-pass mints for that position, so a lone volume finds the work an
+	// earlier batch created there. Not when this row is itself suffixed: its base
+	// already carries the tail, and probing a second one would address
+	// "<title>-book-1-book-1".
+	probe := positionClaim{}
 	if posSuffix != "" {
 		base = BoundedSlugTail(base, "-"+posSuffix)
+	} else {
+		probe = claim.position()
 	}
-	cands, primary := workCandidates(base, authors)
+	cands, primary := workCandidates(base, authors, probe)
 
 	// The walk grades every candidate rather than taking the first that answers:
 	// two candidates can both reduce to the row's identity set (the-iliad and
@@ -1320,7 +1371,7 @@ func (p *planner) getOrCreateWork(title, fullTitle string, authors workAuthors, 
 		if kind == matchNone || !langCompatible(ws.lang, lang) {
 			continue
 		}
-		if posSuffix != "" && !ws.posSuffixed {
+		if (posSuffix != "" || cand.posSuffixed) && !ws.posSuffixed && !claim.places(ws) {
 			continue
 		}
 		if !claim.compatible(ws) {
@@ -2155,9 +2206,12 @@ func runtimesCompatible(a, b int) bool {
 
 // workCandidate is one slug a row's work may sit on. probeOnly marks a slug
 // that is a place to LOOK but never a place to create: see workCandidates.
+// posSuffixed marks a slug that carries a serial-position tail, which is what
+// makes it subject to getOrCreateWork's suffixed-merge-target rule.
 type workCandidate struct {
-	slug      string
-	probeOnly bool
+	slug        string
+	probeOnly   bool
+	posSuffixed bool
 }
 
 // workCandidates yields the ordered slug candidates for a work, and how many of
@@ -2180,6 +2234,14 @@ type workCandidate struct {
 // author SETS, because each row looked only where its own first author would
 // have put it. Ten such pairs were minted by a single wave.
 //
+// The POSITION probes are the third kind, and pos is what turns them on: a row
+// that states a series position looks at the slugs the serial pre-pass mints
+// for that position (posSuffixSlugs) as well as at the bare base, so a lone
+// volume of a serial finds the suffixed work an earlier BATCH created instead of
+// minting a duplicate beside it. They sit after the author probes because the
+// bare base is where the overwhelming majority of works are; a row that states
+// no claim passes the zero positionClaim and gets no position probe at all.
+//
 // The other probe is the LEGACY one, and it is the same idea a generation
 // earlier: every work created before the credited-contributor exclusion
 // (workidentity.go) took its suffix from the first entry of the whole author
@@ -2199,8 +2261,8 @@ type workCandidate struct {
 // one. Past them, the first free slug ends the walk as it always did - the
 // chain beyond it can only be empty, because getOrCreateWork would have claimed
 // exactly that slug.
-func workCandidates(base string, authors workAuthors) (cands []workCandidate, primary int) {
-	cands = make([]workCandidate, 0, 53)
+func workCandidates(base string, authors workAuthors, pos positionClaim) (cands []workCandidate, primary int) {
+	cands = make([]workCandidate, 0, 55)
 	cands = append(cands, workCandidate{slug: base})
 	mintable := workSlugAt(base, authors.first(), 1)
 	cands = append(cands, workCandidate{slug: mintable})
@@ -2214,6 +2276,13 @@ func workCandidates(base string, authors workAuthors) (cands []workCandidate, pr
 		}
 		seen[slug] = true
 		cands = append(cands, workCandidate{slug: slug, probeOnly: true})
+	}
+	for _, slug := range posSuffixSlugs(base, pos) {
+		if seen[slug] {
+			continue
+		}
+		seen[slug] = true
+		cands = append(cands, workCandidate{slug: slug, probeOnly: true, posSuffixed: true})
 	}
 	primary = len(cands)
 	for i := 2; i <= 50; i++ {

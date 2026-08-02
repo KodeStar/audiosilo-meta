@@ -370,7 +370,7 @@ const spikeTitleSlug = "die-ideale-welt-fur-den-soziopathen-ein-apokalyptisches-
 // the identity one and the chain is exactly the 51 the formula defines.
 func candidateSlugs(t *testing.T, base, author string) []string {
 	t.Helper()
-	cands, primary := workCandidates(base, workAuthors{all: []string{author}, identity: []string{author}})
+	cands, primary := workCandidates(base, workAuthors{all: []string{author}, identity: []string{author}}, positionClaim{})
 	if primary != 2 {
 		t.Fatalf("primary candidates = %d, want 2 for a single-author row", primary)
 	}
