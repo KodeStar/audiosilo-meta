@@ -6895,6 +6895,14 @@
             {
               "asin": "B0D9YXTHYN",
               "region": "us"
+            },
+            {
+              "asin": "B0GZ7PF62S",
+              "region": "us"
+            },
+            {
+              "asin": "B0FCPKFY57",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81mdOgDQvOL.jpg",
@@ -6912,58 +6920,7 @@
               "imported_at": "2026-08-02",
               "ref": "B0D9YXTHYN",
               "type": "libex-import"
-            }
-          ],
-          "work": "a-sanctum-of-swords-embers-edition"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0D9YXTHYN",
-          "type": "libex-import"
-        }
-      ],
-      "title": "A Sanctum of Swords: Embers Edition"
-    },
-    "a-sanctum-of-swords-embers-edition-john-malone": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "john-malone"
-      ],
-      "genres": [
-        "action-adventure",
-        "epic-fantasy",
-        "fantasy"
-      ],
-      "id": "a-sanctum-of-swords-embers-edition-john-malone",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "marcus-freeman-2026": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0GZ7PF62S",
-              "region": "us"
             },
-            {
-              "asin": "B0FCPKFY57",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91xtCVZwaDL.jpg",
-          "id": "marcus-freeman-2026",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "marcus-freeman"
-          ],
-          "publisher": "Independently Published",
-          "release_date": "2026-05-19",
-          "runtime_min": 674,
-          "sources": [
             {
               "imported_at": "2026-08-02",
               "ref": "B0GZ7PF62S",
@@ -6975,17 +6932,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "a-sanctum-of-swords-embers-edition-john-malone"
+          "work": "a-sanctum-of-swords-embers-edition"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0D9YXTHYN",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0GZ7PF62S",
           "type": "libex-import"
         }
       ],
-      "title": "A Sanctum of Swords Embers Edition"
+      "title": "A Sanctum of Swords: Embers Edition"
     },
     "a-santaclaws-collection": {
       "added_at": "2026-08-02",

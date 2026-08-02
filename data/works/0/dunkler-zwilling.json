@@ -2059,6 +2059,7 @@
       ],
       "genres": [
         "classics",
+        "epic-fantasy",
         "fantasy"
       ],
       "id": "duskfall",
@@ -2071,6 +2072,10 @@
           "asin": [
             {
               "asin": "B01HQF19H4",
+              "region": "us"
+            },
+            {
+              "asin": "B01GEZ4OJ2",
               "region": "us"
             }
           ],
@@ -2089,6 +2094,11 @@
               "imported_at": "2026-08-02",
               "ref": "B01HQF19H4",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B01GEZ4OJ2",
+              "type": "libex-import"
             }
           ],
           "work": "duskfall"
@@ -2099,53 +2109,7 @@
           "imported_at": "2026-08-02",
           "ref": "B01HQF19H4",
           "type": "libex-import"
-        }
-      ],
-      "title": "Duskfall"
-    },
-    "duskfall-christopher-b-husberg": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "christopher-husberg"
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fantasy"
-      ],
-      "id": "duskfall-christopher-b-husberg",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "adam-verner-2016": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B01GEZ4OJ2",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91fbz+UqIsL.jpg",
-          "id": "adam-verner-2016",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "adam-verner"
-          ],
-          "publisher": "Recorded Books",
-          "release_date": "2016-06-21",
-          "runtime_min": 1039,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B01GEZ4OJ2",
-              "type": "libex-import"
-            }
-          ],
-          "work": "duskfall-christopher-b-husberg"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B01GEZ4OJ2",

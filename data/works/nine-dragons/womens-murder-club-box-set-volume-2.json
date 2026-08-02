@@ -3349,7 +3349,10 @@
         "l-frank-baum"
       ],
       "genres": [
+        "childrens",
         "classics",
+        "coming-of-age",
+        "epic-fantasy",
         "fairy-tales-folklore",
         "fantasy"
       ],
@@ -3384,33 +3387,7 @@
             }
           ],
           "work": "wonderful-wizard-of-oz"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0CX9YGDKM",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Wonderful Wizard of Oz"
-    },
-    "wonderful-wizard-of-oz-frank-baum": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "l-frank-baum"
-      ],
-      "genres": [
-        "childrens",
-        "classics",
-        "coming-of-age",
-        "epic-fantasy",
-        "fantasy"
-      ],
-      "id": "wonderful-wizard-of-oz-frank-baum",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "robin-field-2010": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -3559,10 +3536,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "wonderful-wizard-of-oz-frank-baum"
+          "work": "wonderful-wizard-of-oz"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CX9YGDKM",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0043GFLEW",

@@ -1122,7 +1122,9 @@
       "genres": [
         "epic-fantasy",
         "fantasy",
-        "urban-fantasy"
+        "military-science-fiction",
+        "urban-fantasy",
+        "war-military-fiction"
       ],
       "id": "seventh-decimate",
       "language": "en",
@@ -1134,6 +1136,10 @@
           "asin": [
             {
               "asin": "B072YQY2HH",
+              "region": "us"
+            },
+            {
+              "asin": "B0774ZS2QP",
               "region": "us"
             }
           ],
@@ -1152,6 +1158,11 @@
               "imported_at": "2026-08-02",
               "ref": "B072YQY2HH",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0774ZS2QP",
+              "type": "libex-import"
             }
           ],
           "work": "seventh-decimate"
@@ -1162,55 +1173,7 @@
           "imported_at": "2026-08-02",
           "ref": "B072YQY2HH",
           "type": "libex-import"
-        }
-      ],
-      "title": "Seventh Decimate"
-    },
-    "seventh-decimate-stephen-r-donaldson": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "stephen-r-donaldson"
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fantasy",
-        "military-science-fiction",
-        "war-military-fiction"
-      ],
-      "id": "seventh-decimate-stephen-r-donaldson",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "scott-brick-2017": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0774ZS2QP",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91EdJLD2isL.jpg",
-          "id": "scott-brick-2017",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "scott-brick"
-          ],
-          "publisher": "Penguin Audio",
-          "release_date": "2017-11-14",
-          "runtime_min": 596,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0774ZS2QP",
-              "type": "libex-import"
-            }
-          ],
-          "work": "seventh-decimate-stephen-r-donaldson"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0774ZS2QP",

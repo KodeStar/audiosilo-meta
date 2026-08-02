@@ -9957,12 +9957,45 @@
             }
           ],
           "work": "the-rogue"
+        },
+        "therese-plummer-2018": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B077VXV4FL",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81sXt5A9TBL.jpg",
+          "id": "therese-plummer-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "therese-plummer"
+          ],
+          "publisher": "Podium Audio",
+          "release_date": "2018-01-02",
+          "runtime_min": 620,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B077VXV4FL",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-rogue"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B0DZJ5TF5H",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B077VXV4FL",
           "type": "libex-import"
         }
       ],
@@ -10274,58 +10307,6 @@
         }
       ],
       "title": "The Rogue King"
-    },
-    "the-rogue-lee-w-brainard": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "lee-w-brainard"
-      ],
-      "genres": [
-        "post-apocalyptic",
-        "religious-fiction",
-        "science-fiction"
-      ],
-      "id": "the-rogue-lee-w-brainard",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "therese-plummer-2018": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B077VXV4FL",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81sXt5A9TBL.jpg",
-          "id": "therese-plummer-2018",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "therese-plummer"
-          ],
-          "publisher": "Podium Audio",
-          "release_date": "2018-01-02",
-          "runtime_min": 620,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B077VXV4FL",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-rogue-lee-w-brainard"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B077VXV4FL",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Rogue"
     },
     "the-rogue-mage": {
       "added_at": "2026-08-02",

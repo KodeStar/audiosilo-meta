@@ -12678,7 +12678,9 @@
         "catherynne-m-valente"
       ],
       "genres": [
+        "action-adventure",
         "childrens",
+        "fairy-tales-folklore",
         "fantasy"
       ],
       "id": "the-girl-who-fell-beneath-fairyland-and-led-the-revels-there",
@@ -12691,6 +12693,10 @@
           "asin": [
             {
               "asin": "B00CP6XQEO",
+              "region": "us"
+            },
+            {
+              "asin": "B009F0KD76",
               "region": "us"
             }
           ],
@@ -12709,6 +12715,11 @@
               "imported_at": "2026-08-02",
               "ref": "B00CP6XQEO",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B009F0KD76",
+              "type": "libex-import"
             }
           ],
           "work": "the-girl-who-fell-beneath-fairyland-and-led-the-revels-there"
@@ -12719,55 +12730,7 @@
           "imported_at": "2026-08-02",
           "ref": "B00CP6XQEO",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Girl Who Fell Beneath Fairyland and Led the Revels There"
-    },
-    "the-girl-who-fell-beneath-fairyland-and-led-the-revels-there-catherynne-m-valente": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "catherynne-m-valente"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "fairy-tales-folklore",
-        "fantasy"
-      ],
-      "id": "the-girl-who-fell-beneath-fairyland-and-led-the-revels-there-catherynne-m-valente",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "s-j-tucker-2012": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B009F0KD76",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91zjhEcGcEL.jpg",
-          "id": "s-j-tucker-2012",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "s-j-tucker"
-          ],
-          "publisher": "Brilliance Audio",
-          "release_date": "2012-10-02",
-          "runtime_min": 498,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B009F0KD76",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-girl-who-fell-beneath-fairyland-and-led-the-revels-there-catherynne-m-valente"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B009F0KD76",

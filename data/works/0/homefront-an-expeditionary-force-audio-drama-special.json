@@ -5793,11 +5793,14 @@
         "raymond-e-feist"
       ],
       "genres": [
+        "action-adventure",
         "epic-fantasy",
         "fantasy",
         "hard-science-fiction",
         "military-science-fiction",
-        "science-fiction"
+        "paranormal",
+        "science-fiction",
+        "thriller-suspense"
       ],
       "id": "honored-enemy",
       "language": "en",
@@ -5809,6 +5812,10 @@
           "asin": [
             {
               "asin": "006297534X",
+              "region": "us"
+            },
+            {
+              "asin": "000831263X",
               "region": "us"
             }
           ],
@@ -5827,6 +5834,11 @@
               "imported_at": "2026-08-02",
               "ref": "006297534X",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "000831263X",
+              "type": "libex-import"
             }
           ],
           "work": "honored-enemy"
@@ -5837,57 +5849,7 @@
           "imported_at": "2026-08-02",
           "ref": "006297534X",
           "type": "libex-import"
-        }
-      ],
-      "title": "Honored Enemy"
-    },
-    "honored-enemy-raymond-e-feist": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "raymond-e-feist",
-        "william-r-forstchen"
-      ],
-      "genres": [
-        "action-adventure",
-        "epic-fantasy",
-        "fantasy",
-        "paranormal",
-        "thriller-suspense"
-      ],
-      "id": "honored-enemy-raymond-e-feist",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "matt-bates-2020": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "000831263X",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71lL5hzYlnL.jpg",
-          "id": "matt-bates-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "matt-bates"
-          ],
-          "publisher": "HarperCollins",
-          "release_date": "2020-05-11",
-          "runtime_min": 797,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "000831263X",
-              "type": "libex-import"
-            }
-          ],
-          "work": "honored-enemy-raymond-e-feist"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "000831263X",

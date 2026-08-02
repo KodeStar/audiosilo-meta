@@ -7222,6 +7222,7 @@
       ],
       "genres": [
         "epic-fantasy",
+        "fairy-tales-folklore",
         "fantasy"
       ],
       "id": "the-gospel-of-loki",
@@ -7234,6 +7235,10 @@
           "asin": [
             {
               "asin": "B00ICNN8E2",
+              "region": "us"
+            },
+            {
+              "asin": "B00W1YB5BG",
               "region": "us"
             }
           ],
@@ -7252,6 +7257,11 @@
               "imported_at": "2026-08-02",
               "ref": "B00ICNN8E2",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00W1YB5BG",
+              "type": "libex-import"
             }
           ],
           "work": "the-gospel-of-loki"
@@ -7262,54 +7272,7 @@
           "imported_at": "2026-08-02",
           "ref": "B00ICNN8E2",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Gospel of Loki"
-    },
-    "the-gospel-of-loki-joanne-m-harris": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "joanne-harris"
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fairy-tales-folklore",
-        "fantasy"
-      ],
-      "id": "the-gospel-of-loki-joanne-m-harris",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "allan-corduner-2015": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B00W1YB5BG",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91vTUjWMBML.jpg",
-          "id": "allan-corduner-2015",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "allan-corduner"
-          ],
-          "publisher": "Simon & Schuster Audio",
-          "release_date": "2015-05-05",
-          "runtime_min": 606,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B00W1YB5BG",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-gospel-of-loki-joanne-m-harris"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B00W1YB5BG",
