@@ -36,9 +36,15 @@ import (
 //     from the warning strings. The fields are the values the comparison already
 //     had in hand, so the row cannot drift from the decision it describes.
 
-// Conflict is one refused contradiction, as written to the worklist. It is
-// exported so a consumer decodes a worklist with the struct that wrote it,
-// rather than re-spelling the field names.
+// Conflict is one refused contradiction, as written to the worklist.
+//
+// The struct is the wire format's ONE definition: the tags below are the keys a
+// worklist consumer parses, and the tests assert the marshalled line byte for
+// byte rather than field by field, so a renamed key or a stringified number
+// fails there instead of in somebody's jq. It is exported for the in-module
+// callers (and for a later promotion to pkg/ if an outside consumer ever wants
+// to decode a worklist with the struct that wrote it), which is why it is not
+// simply an anonymous map at the marshal call.
 //
 // Recorded/Stated are `any` because the fields the guard compares are not one
 // type: a runtime is a number and a release date is a string. Each is rendered

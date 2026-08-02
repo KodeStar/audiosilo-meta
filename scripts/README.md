@@ -198,6 +198,11 @@ Split a large subset into several files and land them as separate reviewable
 PRs rather than one unreadable diff. After each run: `go run ./cmd/metacheck`
 and `go run ./cmd/metafmt --check`.
 
+`--conflicts` (step 6) is wired here too and can point at the same file, but
+expect this pass to leave it empty: the create path reaches the contradiction
+guard only through the ASIN-dedup attestation, which is a user-library behaviour
+a libex run never performs. Same reason as step 7.
+
 ### 6. Backfill the records we already have
 
 The selection deliberately excludes rows whose ASIN is already in the catalogue,

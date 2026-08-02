@@ -457,6 +457,27 @@ func TestConflictsFlagAbsentLeavesTheSinkNil(t *testing.T) {
 	}
 }
 
+// TestConflictsFlagRejectedByLibexSelect keeps the flag's story consistent with
+// --enrich's: a flag pointed at a subcommand that cannot honour it says why.
+// Selection writes no records, so no row of it can contradict one - and the
+// refusal has to arrive before the export is read, or a mistyped invocation
+// costs a full pass over the dump first.
+func TestConflictsFlagRejectedByLibexSelect(t *testing.T) {
+	var code int
+	stderr := captureStderr(t, func() {
+		code = runLibexSelect([]string{"export.ndjson", "-o", "subset.ndjson", "--conflicts", "conflicts.ndjson"})
+	})
+	if code != 2 {
+		t.Errorf("exit code = %d, want 2", code)
+	}
+	if !strings.Contains(stderr, "--conflicts") || !strings.Contains(stderr, "libex-select") {
+		t.Errorf("stderr does not explain the refusal:\n%s", stderr)
+	}
+	if _, err := os.Stat("subset.ndjson"); err == nil {
+		t.Error("libex-select wrote its output despite the refused flag")
+	}
+}
+
 // TestConflictsFlagRejectsAnUnopenablePath refuses before the import runs: a
 // worklist that cannot be created is a mistyped invocation, and discovering it
 // six hours into a wave (or, worse, not discovering it) is the outcome this

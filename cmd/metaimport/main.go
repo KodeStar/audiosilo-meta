@@ -230,11 +230,21 @@ func runLibexSelect(args []string) int {
 	data := fs.String("data", "data", "path to the data directory")
 	out := fs.String("o", "", "path to write the selected rows to (NDJSON)")
 	maxPerSeries := fs.Int("max-per-series", 0, "cap the new works selected per catalogue series (0 = unlimited)")
+	// Registered here for the same reason --enrich is registered for every
+	// source: a flag pointed at the wrong subcommand should say why, not produce
+	// flag's bare "not defined" line. Selection imports nothing, so there is no
+	// record for a row to contradict and no worklist to write.
+	conflicts := fs.String("conflicts", "", "not supported by libex-select (selection imports nothing, so it refuses no row)")
 
 	exportPath, err := parsePositional(fs, args, "<export.ndjson>")
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "metaimport:", err)
 		usage()
+		return 2
+	}
+	if *conflicts != "" {
+		fmt.Fprintln(os.Stderr, "metaimport: --conflicts is only supported by the import subcommands, not libex-select: "+
+			"selection writes no records, so no row can contradict one")
 		return 2
 	}
 	if *out == "" {

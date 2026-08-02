@@ -220,8 +220,14 @@ type Summary struct {
 	// what a record already states (see recordingContradicts). The recorded value
 	// stands - first writer wins - and this is the "flag for review" half of that
 	// rule: the intake bot surfaces the count so a maintainer adjudicates rather
-	// than the catalogue churning between two users. Always 0 for a libex run,
-	// whose contradictions are ordinary source noise and only warn.
+	// than the catalogue churning between two users. Always 0 for a libex run:
+	// a bulk mirror disagreeing with the catalogue is expected source noise, not
+	// something to put in front of a maintainer per import.
+	//
+	// It is the narrower of the two records a contradiction leaves. Every refused
+	// row, in every tier, also WARNS and - when the run was given a worklist
+	// (Options.Conflicts) - appends a Conflict row naming both values, which is
+	// where a libex run's disagreements are read from (conflicts.go).
 	Conflicts int
 	// Credits counts the (person, role) contributor credits a run wrote onto a
 	// work, whether it created that work or filled the field on an existing one.
