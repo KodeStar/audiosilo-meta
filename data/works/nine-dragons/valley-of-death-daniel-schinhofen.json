@@ -3813,6 +3813,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "daniel-philpott-2009": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002VA3ISI",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81yqPEf30DL.jpg",
+          "id": "daniel-philpott-2009",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "daniel-philpott"
+          ],
+          "publisher": "Recorded Books",
+          "release_date": "2009-08-11",
+          "runtime_min": 719,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002VA3ISI",
+              "type": "libex-import"
+            }
+          ],
+          "work": "vampirates-blood-captain"
+        },
         "daniel-philpott-2021": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -3847,56 +3875,7 @@
           "imported_at": "2026-08-02",
           "ref": "B09GG7CW53",
           "type": "libex-import"
-        }
-      ],
-      "title": "Vampirates: Blood Captain"
-    },
-    "vampirates-blood-captain-justin-somper": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "justin-somper"
-      ],
-      "genres": [
-        "childrens",
-        "coming-of-age",
-        "fantasy",
-        "horror",
-        "parenting-relationships"
-      ],
-      "id": "vampirates-blood-captain-justin-somper",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "daniel-philpott-2009": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B002VA3ISI",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81yqPEf30DL.jpg",
-          "id": "daniel-philpott-2009",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "daniel-philpott"
-          ],
-          "publisher": "Recorded Books",
-          "release_date": "2009-08-11",
-          "runtime_min": 719,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B002VA3ISI",
-              "type": "libex-import"
-            }
-          ],
-          "work": "vampirates-blood-captain-justin-somper"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B002VA3ISI",

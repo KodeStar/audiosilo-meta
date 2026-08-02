@@ -233,7 +233,11 @@ type Summary struct {
 	// rows read are exactly Matched + NotInCatalog + SkippedRows, so a row can
 	// never vanish unexplained - which matters precisely because enrichment
 	// reports its parse warnings in aggregate rather than per row. Set in both
-	// modes; only the libex parser refuses rows of its own today.
+	// modes, and by two layers whose counts ADD: libex's own parse layer (every
+	// credit-side rule, and the only one that can refuse a row for a bad ASIN or
+	// region) and runBooks' shared AI-credit gate, which covers every source
+	// (refuseAIBooks). For a libex run the shared gate refuses nothing, because
+	// the parse layer already has.
 	SkippedRows int
 	// HonorificMerges lists every credit spelling the honorific rule resolved
 	// onto a bare twin this run, as sorted "<credited> -> <bare>" lines

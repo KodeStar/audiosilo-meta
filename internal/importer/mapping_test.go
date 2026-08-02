@@ -1,12 +1,15 @@
 package importer
 
 import (
+	"encoding/json"
 	"fmt"
 	"reflect"
+	"regexp"
 	"slices"
 	"strings"
 	"testing"
 
+	meta "github.com/kodestar/audiosilo-meta"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"golang.org/x/text/unicode/norm"
 )
@@ -30,7 +33,23 @@ func TestMapLanguage(t *testing.T) {
 		{"polish", "pl", true},
 		{"russian", "ru", true},
 		{"chinese", "zh", true},
+		// The third block, added after the seed's create phase for the three
+		// languages the waves refused most rows for.
+		{"marathi", "mr", true},
+		{"Romanian", "ro", true},
+		{" MALAYALAM ", "ml", true},
+		// An already-mapped code comes through verbatim (the audiosilo-books
+		// projection stores the code, not the word), so the new entries widen the
+		// accepted code set too.
+		{"mr", "mr", true},
+		{"ro", "ro", true},
+		{"ml", "ml", true},
 		{"klingon", "", false},
+		// Still deliberately unmapped: a script distinction, a language with no
+		// 639-1 code at all, and a non-language.
+		{"traditional_chinese", "", false},
+		{"luo", "", false},
+		{"unknown", "", false},
 		{"", "", false},
 	}
 	for _, c := range cases {
@@ -39,6 +58,45 @@ func TestMapLanguage(t *testing.T) {
 			t.Errorf("mapLanguage(%q) = (%q,%v), want (%q,%v)", c.in, got, ok, c.want, c.wantOK)
 		}
 	}
+}
+
+// TestLanguageCodesSatisfyTheSchema is the drift guard between the mapping table
+// and the contract: every code the table can produce must match
+// common.schema.json's language pattern, or a mapped row would be written and
+// then rejected by metacheck. Keys must be the lowercase single word mapLanguage
+// looks up, since it lowercases and trims but does nothing else.
+func TestLanguageCodesSatisfyTheSchema(t *testing.T) {
+	pattern := regexp.MustCompile(schemaDefPattern(t, "language"))
+	for word, code := range languageMap {
+		if !pattern.MatchString(code) {
+			t.Errorf("language %q maps to %q, which the schema's language pattern rejects", word, code)
+		}
+		if lower := strings.ToLower(strings.TrimSpace(word)); word != lower {
+			t.Errorf("language key %q is not the lowercase trimmed form mapLanguage looks up (want %q)", word, lower)
+		}
+	}
+}
+
+// schemaDefPattern reads one $defs entry's pattern out of common.schema.json.
+func schemaDefPattern(t *testing.T, def string) string {
+	t.Helper()
+	raw, err := meta.SchemaFS.ReadFile("schema/common.schema.json")
+	if err != nil {
+		t.Fatal(err)
+	}
+	var doc struct {
+		Defs map[string]struct {
+			Pattern string `json:"pattern"`
+		} `json:"$defs"`
+	}
+	if err := json.Unmarshal(raw, &doc); err != nil {
+		t.Fatal(err)
+	}
+	pattern := doc.Defs[def].Pattern
+	if pattern == "" {
+		t.Fatalf("schema $defs/%s states no pattern; the drift guard would pass vacuously", def)
+	}
+	return pattern
 }
 
 func TestMapRegion(t *testing.T) {
@@ -88,16 +146,90 @@ func TestNormalizeSequence(t *testing.T) {
 		{"10", "10", true},
 		{"10.0", "10", true},
 		{"1.0-3.50", "1-3.5", true},
+		// A source spells an omnibus range with spaces around the dash. All four
+		// spellings below are real dump values (104 stated positions over 100
+		// books were dropped for this before the tolerance existed); the schema
+		// admits no whitespace, so what is STORED is always the tight form.
+		{"1 - 3", "1-3", true},
+		{"3040 - 3049", "3040-3049", true},
+		{"14 -15", "14-15", true},
+		{"1.5- 3.5", "1.5-3.5", true},
+		{" 0.1 - 0.5 ", "0.1-0.5", true},
 		{"", "", false},
 		{"one", "", false},
 		{"1.2.3", "", false},
 		{"1-", "", false},
 		{"-2", "", false},
+		// The tolerance is WHITESPACE, not a wider dash class: zero of the 104
+		// dump spellings use an en or em dash, and the schema pattern names the
+		// plain hyphen.
+		{"1 – 3", "", false},
+		{"1 — 3", "", false},
+		// Still not a range: a dash with nothing on one side of it, however it is
+		// spaced, and two numbers with no dash at all.
+		{"1 - ", "", false},
+		{" - 3", "", false},
+		{"1 3", "", false},
 	}
 	for _, c := range cases {
 		got, ok := NormalizeSequence(c.in)
 		if got != c.want || ok != c.wantOK {
 			t.Errorf("NormalizeSequence(%q) = (%q,%v), want (%q,%v)", c.in, got, ok, c.want, c.wantOK)
+		}
+	}
+}
+
+// seriesPositionSchemaPattern reads the position pattern out of
+// series.schema.json, so the guard below compares against the contract itself
+// rather than a re-spelling of it.
+func seriesPositionSchemaPattern(t *testing.T) string {
+	t.Helper()
+	raw, err := meta.SchemaFS.ReadFile("schema/series.schema.json")
+	if err != nil {
+		t.Fatal(err)
+	}
+	var doc struct {
+		Properties struct {
+			Works struct {
+				Items struct {
+					Properties struct {
+						Position struct {
+							Pattern string `json:"pattern"`
+						} `json:"position"`
+					} `json:"properties"`
+				} `json:"items"`
+			} `json:"works"`
+		} `json:"properties"`
+	}
+	if err := json.Unmarshal(raw, &doc); err != nil {
+		t.Fatal(err)
+	}
+	pattern := doc.Properties.Works.Items.Properties.Position.Pattern
+	if pattern == "" {
+		t.Fatal("series.schema.json states no position pattern; the drift guard would pass vacuously")
+	}
+	return pattern
+}
+
+// TestNormalizeSequenceSatisfiesTheSchema is the drift guard between the
+// importer's TOLERANT input grammar and the contract it writes into: whatever
+// NormalizeSequence accepts, what it RETURNS must match series.schema.json's
+// position pattern exactly, or a spelled range would be normalized into a
+// record metacheck then rejects.
+func TestNormalizeSequenceSatisfiesTheSchema(t *testing.T) {
+	schemaPattern := regexp.MustCompile(seriesPositionSchemaPattern(t))
+	inputs := []string{
+		"1", "0.5", "1-3.5", "1 - 3", "3040 - 3049", "14 -15", "1.5- 3.5",
+		" 2 ", "1.0", "2.50", "1.0-3.50", " 0.1 - 0.5 ",
+	}
+	for _, in := range inputs {
+		pos, ok := NormalizeSequence(in)
+		if !ok {
+			t.Errorf("NormalizeSequence(%q) was rejected", in)
+			continue
+		}
+		if !schemaPattern.MatchString(pos) {
+			t.Errorf("NormalizeSequence(%q) = %q, which the schema's position pattern rejects", in, pos)
 		}
 	}
 }
@@ -414,7 +546,8 @@ func TestCleanCreditName(t *testing.T) {
 // which DASH a source typed is not a fact about the credit, so every spelling of
 // the separator must produce the same name AND the same roles. The rule reads the
 // same dash class studiotail.go's dashSepRE does, which is what makes the two
-// halves of "what is a separator" agree.
+// halves of "what is a dash" agree (the two rules differ only on whether the
+// whitespace around it is required - see roleSuffixRE).
 //
 // Written as an equivalence rather than a table of expected outputs so it also
 // covers the tails that must NOT strip: whatever the hyphen spelling does with a
@@ -452,6 +585,61 @@ func TestDashSeparatorSpellingsAreEquivalent(t *testing.T) {
 				t.Errorf("CreditWithRoles(%q) roles = %v, want the hyphen spelling's %v", spelled, gotRoles, wantRoles)
 			}
 		}
+	}
+}
+
+// TestNoSpaceRoleSeparator is the second half of "which separator a source typed
+// is not a fact about the credit": the dump also welds the role onto the surname
+// with a bare hyphen and no spaces at all.
+//
+// Every input below is a REAL credit name from the full libex dump (the complete
+// population is 28 distinct names over 29 books - see roleSuffixRE), and every
+// one of them minted a bogus person record before the leading whitespace became
+// optional: gigi-rosa-traduttore is in the catalogue today, hand-fixed.
+//
+// The refusals are the half that keeps the relaxation honest. A hyphen inside a
+// surname is only ever a separator when what follows it is a LISTED role, so an
+// ordinary hyphenated name is untouched however role-shaped its tail looks.
+func TestNoSpaceRoleSeparator(t *testing.T) {
+	cases := []struct {
+		name      string
+		in        string
+		wantName  string
+		wantRoles []string
+	}{
+		{"italian translator welded on", "Gigi Rosa-traduttore", "Gigi Rosa", []string{model.RoleTranslator}},
+		{"english translator welded on", "Marina Pugliano-translator", "Marina Pugliano", []string{model.RoleTranslator}},
+		{"german translator welded on", "Sandra Schwittau-Übersetzer", "Sandra Schwittau", []string{model.RoleTranslator}},
+		{"french translator welded on", "Virginie Lainé-traducteur", "Virginie Lainé", []string{model.RoleTranslator}},
+		{"spanish translator welded on", "Iria Domingo-traductor", "Iria Domingo", []string{model.RoleTranslator}},
+		{"italian editor welded on", "Mario Barenghi-curatore", "Mario Barenghi", []string{model.RoleEditor}},
+		{"multiword role welded on", "Emily Gravett-Illustrated by", "Emily Gravett", []string{model.RoleIllustrator}},
+		{"preface welded on", "Cardinal Timothy M. Dolan-preface", "Cardinal Timothy M. Dolan", []string{model.RolePreface}},
+		// A surname that itself ends in a hyphen-joined word is untouched by the
+		// same rule, because "Post" is not a role - "Kenneth Post-traductor" is.
+		{"surname before the role", "Kenneth Post-traductor", "Kenneth Post", []string{model.RoleTranslator}},
+		// The dump spells two of the 28 with a NON-BREAKING space, which `\s`
+		// never matched; `\s*` steps over it and TrimSpace takes it off the name.
+		{"non-breaking space separator", "Daniel Hayes - editor", "Daniel Hayes", []string{model.RoleEditor}},
+
+		// Refusals: a hyphenated name whose tail is not a listed role.
+		{"hyphenated surname", "Alex Hyde-White", "Alex Hyde-White", nil},
+		{"hyphenated given name", "Anne-Marie Wachs", "Anne-Marie Wachs", nil},
+		{"role-shaped surname", "Barry Press-Smith", "Barry Press-Smith", nil},
+		// The role is there, but it is not the LAST segment, so the capture is
+		// the surname that follows it and nothing strips.
+		{"role mid-name", "Gigi-traduttore Rosa", "Gigi-traduttore Rosa", nil},
+	}
+	for _, c := range cases {
+		t.Run(c.name, func(t *testing.T) {
+			gotName, gotRoles := CreditWithRoles(c.in)
+			if gotName != c.wantName {
+				t.Errorf("name = %q, want %q", gotName, c.wantName)
+			}
+			if !slices.Equal(gotRoles, c.wantRoles) {
+				t.Errorf("roles = %v, want %v", gotRoles, c.wantRoles)
+			}
+		})
 	}
 }
 

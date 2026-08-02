@@ -32,9 +32,9 @@ import (
 //   - "unknown" (643) and the empty value (22,428). Neither is a language.
 //   - "ukranian" (6). A misspelling of "ukrainian", and every one of the six
 //     rows is outside the importable universe, so the alias would be dead code.
-//   - the remaining long tail (marathi, tamil, korean, catalan, ...). Each is
-//     unambiguous and each is a one-line addition when a wave needs it; they
-//     are left out because nothing has asked for them and an unexercised
+//   - the remaining long tail (tamil, korean, catalan, indonesian, urdu, ...).
+//     Each is unambiguous and each is a one-line addition when a wave needs it;
+//     they are left out because nothing has asked for them and an unexercised
 //     mapping is an untested one.
 var languageMap = map[string]string{
 	"english":    "en",
@@ -60,6 +60,14 @@ var languageMap = map[string]string{
 	"finnish":   "fi", // 171
 	"norwegian": "no", // 154
 	"greek":     "el", // 153
+
+	// The third block, added after the seed's create phase: the three languages
+	// the waves refused most rows for (~239 of them, recoverable by a later
+	// backfill import of exactly those rows). Each 639-1 code is unambiguous,
+	// and the dump spells each language with the one word listed.
+	"marathi":   "mr", // 2,186
+	"romanian":  "ro", // 591
+	"malayalam": "ml", // 456
 }
 
 // isoCodes is the set of ISO 639-1 codes languageMap produces, so a source that
@@ -114,10 +122,21 @@ func mapRegion(word string) (region string, ok bool) {
 	return region, true
 }
 
-// sequencePattern matches a series position: a number or an omnibus range. It
-// mirrors the series.schema.json position pattern, so a value that passes here
-// will pass schema validation.
-var sequencePattern = regexp.MustCompile(`^\d+(\.\d+)?(-\d+(\.\d+)?)?$`)
+// sequencePattern matches a series position AS A SOURCE MAY SPELL IT: a number,
+// or an omnibus range whose dash may carry whitespace on either side. The
+// schema's own pattern (series.schema.json) admits no whitespace at all, which
+// is the point of NORMALIZING rather than merely validating - what a source
+// typed and what the record stores are two different strings, and only the
+// canonical one is ever written.
+//
+// The whitespace tolerance was measured over the full 1.13M-book dump: of the
+// 345,140 stated series positions, 4,080 fail the schema pattern and 104 of
+// those (100 distinct books, 53 distinct spellings) are an omnibus range spelled
+// with a space - "1 - 3", "3040 - 3049", and the one-sided "14 -15", "1.5- 3.5".
+// Every one of them was dropped, which cost the book its place in its series.
+// ZERO of the 104 use an en or em dash, so the dash class stays the plain hyphen
+// the schema pattern names: the tolerance is whitespace, nothing else.
+var sequencePattern = regexp.MustCompile(`^\d+(\.\d+)?(\s*-\s*\d+(\.\d+)?)?$`)
 
 // NormalizeSequence trims a raw series_sequence, canonicalizes it, and reports
 // whether it is a valid position (a single number or a range like "1-3.5").
@@ -125,13 +144,23 @@ var sequencePattern = regexp.MustCompile(`^\d+(\.\d+)?(-\d+(\.\d+)?)?$`)
 // A position is a STRING in the schema, so two spellings of the same number are
 // two different positions to every rule that compares them (series membership,
 // the position-uniqueness check, the importer's same-position merge test).
-// Sources spell them differently - a Postgres numeric renders "1" as "1.0" -
-// so trailing fractional zeros are stripped ("1.0" -> "1", "2.50" -> "2.5",
-// both endpoints of a range) and one book cannot occupy a series twice.
+// Sources spell them differently - a Postgres numeric renders "1" as "1.0", and
+// a range is written both "1-3" and "1 - 3" - so trailing fractional zeros are
+// stripped ("1.0" -> "1", "2.50" -> "2.5", both endpoints of a range) and the
+// whitespace around a range's dash is removed. One book cannot occupy a series
+// twice, and what is stored always satisfies the schema pattern.
 func NormalizeSequence(raw string) (pos string, ok bool) {
 	pos = strings.TrimSpace(raw)
 	if pos == "" || !sequencePattern.MatchString(pos) {
 		return "", false
+	}
+	// Removing ALL whitespace is equivalent to removing it around the dash: the
+	// value has been trimmed and has matched sequencePattern, whose only
+	// whitespace is the `\s*` on either side of that dash. A regexp replace here
+	// cost ~130ns and an allocation on every position; the guard keeps the
+	// overwhelmingly common tight spelling free.
+	if strings.ContainsAny(pos, " \t\n\v\f\r") {
+		pos = strings.Join(strings.Fields(pos), "")
 	}
 	if !strings.Contains(pos, ".") {
 		return pos, true
@@ -242,6 +271,135 @@ func cleanSeriesName(name string) string {
 	return trimmed
 }
 
+// titleNarratorQualifiers are the narrator lead-ins that appear INSIDE a title
+// or subtitle rather than at the end of a series name. They are the subset of
+// seriesNarratorQualifiers the dump spells in that position (pinned by
+// TestTitleNarratorVocabularyIsASeriesSubset, so the two lists can never drift
+// into two different ideas of what a narrator lead-in is).
+//
+// "horspiele von" is deliberately NOT here. In the series position it means
+// "audio dramas read by"; in a title it is an AUTHORSHIP phrase - "Die schönsten
+// Märchen-Hörspiele von Grimm, Hauff und Andersen" credits the Brothers Grimm,
+// not a narrator - and stripping it would delete the authors from a title.
+//
+// Keys are in foldCredit form (lowercased, diacritics folded).
+var titleNarratorQualifiers = []string{
+	"gelesen von",    // 11 of the 13 books in the bounded shape below
+	"narrated by",    // 2
+	"gesprochen von", // 0 in the bounded shape; 16 books spell it elsewhere in the position
+}
+
+// titleVolumeSuffixRE is the BOUND that makes the mid-title strip safe: the
+// qualifier must be followed by a comma and a volume marker that ends the
+// string. That is the shape a retailer emits when it lists each re-narration of
+// one serial as its own product - "Die galaktischen Fälle des Sherlock Holmes -
+// gelesen von Andreas Lange, Band 11" beside "... - gelesen von Peter Bocek,
+// Band 11" beside the undecorated "..., Band 11" - which minted THREE works for
+// one book. Narration is modeled by recording.narrators; it is not part of a
+// work's identity, and it is the same see-through cleanSeriesName performs one
+// level up.
+//
+// Measured over the full 1.13M-book dump, the bounded shape matches 13 books
+// (11 subtitles "gelesen von", 2 "narrated by") and ZERO titles, every one of
+// them a Sherlock Holmes serial and every one a genuine narrator qualifier.
+//
+// The bound is what keeps the rule off the titles that use the words for real:
+// "The Gospel Narrated by Jesus", "Life of Josiah Henson ... as Narrated by
+// Himself", "Narrated by the Author: How to Produce an Audiobook on a Budget"
+// and "the iconic classic narrated by BAFTA and Oscar-nominated actor Saoirse
+// Ronan" are all in the dump and none of them carries a trailing volume marker.
+// The marker words are the three the shape is measured with; a fourth is one
+// line away the day a dump carries one, and inventing them now would widen an
+// unmeasured rule.
+var titleVolumeSuffixRE = regexp.MustCompile(`(?i),\s*(?:band|folge|episode)\s*\d+(?:\.\d+)?\s*$`)
+
+// narratorObjectLeads are the words that begin a narration credit naming NOBODY
+// - a reflexive or a generic object rather than a person. Each is taken from the
+// dump's own false-positive family above ("as Narrated by Himself", "narrated by
+// the monster himself", "Narrated by the Author"). None of them can be the start
+// of a narrator's name, so a qualifier leading with one is left alone even when
+// it does carry a volume marker: the belt to titleVolumeSuffixRE's braces.
+var narratorObjectLeads = map[string]bool{
+	"himself": true, "herself": true, "themselves": true,
+	"the": true, "a": true, "an": true,
+}
+
+// stripTitleNarratorQualifier removes a mid-title narrator qualifier - the
+// qualifier itself and the separator that introduced it - leaving the volume
+// marker in place, so every re-narration of one volume resolves to ONE work
+// title. "X: Y - gelesen von Andreas Lange, Band 11" becomes "X: Y, Band 11",
+// which is byte-for-byte the title the undecorated listing of the same volume
+// already carries.
+//
+// It returns the title unchanged unless every condition holds: the trailing
+// volume marker (titleVolumeSuffixRE), a listed lead-in at a WORD boundary
+// before it, a credit that names somebody (narratorObjectLeads), a non-empty
+// remainder, and brackets that still balance - the same posture cleanSeriesName
+// takes, for the same reason (a title we cannot take the qualifier off cleanly
+// is left exactly as the source spelled it).
+func stripTitleNarratorQualifier(title string) string {
+	m := titleVolumeSuffixRE.FindStringIndex(title)
+	if m == nil {
+		return title
+	}
+	head := title[:m[0]]
+	// One fold for the common case: a title carrying the volume marker but no
+	// lead-in at all never reaches the positional scan.
+	if !containsNarratorLeadIn(foldCredit(head)) {
+		return title
+	}
+	cut, credit := lastNarratorLeadIn(head)
+	if cut < 0 || narratorObjectLeads[firstFoldedWord(credit)] {
+		return title
+	}
+	kept := strings.TrimSpace(strings.TrimRight(strings.TrimSpace(head[:cut]), "-–—"))
+	if kept == "" || !bracketsBalanced(kept) {
+		return title
+	}
+	return kept + title[m[0]:]
+}
+
+// containsNarratorLeadIn reports whether a FOLDED string holds any listed
+// lead-in at all. It is the cheap prefilter for the positional scan.
+func containsNarratorLeadIn(folded string) bool {
+	for _, phrase := range titleNarratorQualifiers {
+		if strings.Contains(folded, phrase) {
+			return true
+		}
+	}
+	return false
+}
+
+// lastNarratorLeadIn locates the LAST listed lead-in that starts a word in head,
+// returning its byte offset and the folded credit that follows it (empty and -1
+// when there is none). The scan folds each candidate suffix rather than folding
+// head once, because foldCredit is not length-preserving - an index into the
+// folded form is not an index into the title, and cutting a title at the wrong
+// byte is how a strip mangles a name.
+func lastNarratorLeadIn(head string) (int, string) {
+	best, credit := -1, ""
+	for i := range head {
+		if i > 0 && endsWord(head[:i]) {
+			continue // mid-word, so not a lead-in
+		}
+		folded := foldCredit(head[i:])
+		for _, phrase := range titleNarratorQualifiers {
+			rest, found := strings.CutPrefix(folded, phrase+" ")
+			if found && strings.TrimSpace(rest) != "" {
+				best, credit = i, strings.TrimSpace(rest)
+			}
+		}
+	}
+	return best, credit
+}
+
+// firstFoldedWord is the first word of an already-folded string, for the
+// object-lead check.
+func firstFoldedWord(folded string) string {
+	name, _, _ := strings.Cut(folded, " ")
+	return name
+}
+
 // bracketsBalanced reports whether s leaves no bracket open. It guards the strip
 // above: the regex matches the LAST parenthetical, so a doubled opener ("Foo
 // ((gelesen von Peter)") leaves "Foo (" behind - a series named after a dangling
@@ -316,6 +474,7 @@ var roleQualifiers = map[string][]string{
 	"translator":         {model.RoleTranslator},   // 10,624
 	"translated by":      {model.RoleTranslator},   // 54
 	"translation":        {model.RoleTranslator},   // 53
+	"translated":         {model.RoleTranslator},   // 7, the bare participle
 	"introduction":       {model.RoleIntroduction}, // 2,490
 	"introduction by":    {model.RoleIntroduction}, // 10
 	"introductions":      {model.RoleIntroduction}, // 5
@@ -328,6 +487,7 @@ var roleQualifiers = map[string][]string{
 	"preface":            {model.RolePreface},      // 72
 	"editor":             {model.RoleEditor},       // 2,454
 	"edited by":          {model.RoleEditor},       // 37
+	"edited":             {model.RoleEditor},       // 3, the bare participle
 	"illustrator":        {model.RoleIllustrator},  // 852
 	"illustration":       {model.RoleIllustrator},  // 54
 	"illustrated by":     {model.RoleIllustrator},  // 21
@@ -362,6 +522,27 @@ var roleQualifiers = map[string][]string{
 	// identity for a real person.
 	"director":  nil, // 36 books / 12 names
 	"directeur": nil, // 9 books / 1 name - the French spelling, same non-role
+	// The dramatization family - the person who turned a book into an audio
+	// drama. Four spellings, all measured over the full dump and all well clear
+	// of the 3-book bar, and they name the SAME people ("Jerry Robbins -
+	// dramatization" and "Jerry Robbins - dramatizer" are one man), which is why
+	// they ride in together rather than one at a time. They map to nothing on
+	// purpose: whether a dramatized PRODUCTION is an "adaptation" of the text in
+	// the credit vocabulary's sense is a maintainer call, and guessing it would
+	// put a role on a person no source stated. Leaving them out of the strip list
+	// is what minted jerry-robbins-dramatization and its siblings.
+	"dramatization": nil, // 9 books / 5 names
+	"dramatizer":    nil, // 7 books / 3 names
+	"dramatist":     nil, // 6 books / 2 names
+	"dramatisation": nil, // 1, the British spelling riding along
+	// The prologue family. A prologue is its own front-matter element - the
+	// enum's foreword, preface and introduction are three different things, and
+	// picking one of them for it would be an invention - so it strips and states
+	// nothing. Spanish "prólogo" is listed with its ASCII-folded spelling, as
+	// every other accented role is.
+	"prologue": nil, // 11 books / 11 names
+	"prólogo":  nil, // 4 books / 3 names
+	"prologo":  nil, // 2 on its own, the unaccented spelling riding along
 	// The cover-art family. "cover design" (14 books) is what clears the bar and
 	// the rest are its spellings, riding along as the combined qualifiers do.
 	// They map to nothing for the same reason "director" does: the credit
@@ -494,9 +675,9 @@ var prefixCredits = []string{"created by ", "creato da "}
 // – Übersetzer") - while the ROLE itself is not: the capture stops at a dash and
 // is then checked against roleQualifiers, so only a listed role ever strips.
 //
-// The dash class is studiotail.go's dashSepRE verbatim, which is the point: one
+// The dash CLASS is studiotail.go's dashSepRE verbatim, which is the point: one
 // source spells its separator one way and the two rules that read a trailing
-// qualifier must agree on what a separator IS. Reading the hyphen only cost 176
+// qualifier must agree on what a dash IS. Reading the hyphen only cost 176
 // German translator credits in the dump - which do not merely lose their role,
 // they mint a BOGUS PERSON ("Bernhard Kempen – Übersetzer" slugs to
 // bernhard-kempen-ubersetzer, a second identity for a real translator who is also
@@ -513,9 +694,38 @@ var prefixCredits = []string{"created by ", "creato da "}
 //     the string is the last separator, so "X – Translator – translator" resolves
 //     the same way "X - Translator - translator" always did.
 //
-// The trailing `\s*` (rather than dashSepRE's `\s+`) is the existing tolerance
-// for a missing space after the separator ("X -translated by"), kept as it was.
-var roleSuffixRE = regexp.MustCompile(`\s+(?:-{1,2}|[–—]{1,2})\s*([^-–—]+)$`)
+// WHITESPACE IS OPTIONAL ON BOTH SIDES OF THE DASH (`\s*`), which is where this
+// rule and dashSepRE deliberately part company. The trailing `\s*` was always
+// there ("X -translated by"); the LEADING one was added after the seed, for the
+// shape that welds the role straight onto the surname with nothing but a hyphen:
+// "Gigi Rosa-traduttore", which minted gigi-rosa-traduttore as a person.
+//
+// The two rules can differ here because their tails are different kinds of
+// string. This rule's tail is a CLOSED vocabulary, so a hyphen that is really
+// part of a surname ("Alex Hyde-White") simply fails the lookup and nothing is
+// stripped. dashSepRE's tail is free text, so it must keep the whitespace as its
+// only evidence that the dash is a separator at all - an en dash inside a surname
+// is not a boundary (studiotail.go).
+//
+// Measured over the full dump, that is exactly what the relaxation costs and
+// buys: of the 436,101 distinct credit names, 28 (29 books) have a trailing
+// dash-welded segment that IS a listed role, and every one of the 28 is a real
+// person carrying a real role qualifier - "Fiamma Izzo-traduttore", "Marina
+// Pugliano-translator", "Sandra Schwittau-Übersetzer", "Mirron Willis-
+// Introduction". ZERO are hyphenated surnames. Two of the 28 are a bonus: the
+// dump spells their separator with a NON-BREAKING space ("Daniel Hayes -
+// editor"), which `\s` does not match and `\s*` therefore steps over, leaving
+// strings.TrimSpace (which does know U+00A0) to take it off the name.
+//
+// Like the studio-tail rule, this one reaches populations the dump never
+// measured, through the two PUBLIC doors: SplitNames (pkg/scan, over whatever an
+// ID3 tag holds) and CleanCreditName (internal/issueform, over a name a
+// contributor typed). It is bounded there by its own SHAPE rather than by the
+// measurement - the tail must be a WHOLE listed role, matched in full against a
+// closed vocabulary, and a strip that would leave an empty name is refused - so
+// the worst an unmeasured population can do is fail to strip. Nothing here can
+// invent a name; it can only decline to shorten one.
+var roleSuffixRE = regexp.MustCompile(`\s*(?:-{1,2}|[–—]{1,2})\s*([^-–—]+)$`)
 
 // minDoubledHalfWords is the smallest half a doubled-name collapse will accept.
 // Requiring TWO words per half is what keeps "Duran Duran" intact: a single

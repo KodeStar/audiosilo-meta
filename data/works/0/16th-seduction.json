@@ -7955,7 +7955,14 @@
     "20-000-leagues-under-the-sea": {
       "added_at": "2026-08-01",
       "authors": [
-        "jules-verne"
+        "jules-verne",
+        "f-p-walter"
+      ],
+      "credits": [
+        {
+          "person": "f-p-walter",
+          "role": "translator"
+        }
       ],
       "genres": [
         "action-adventure",
@@ -10333,6 +10340,11 @@
         {
           "imported_at": "2026-08-01",
           "ref": "B00SYVY8PA",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0DYK7TGRD",
           "type": "libex-import"
         }
       ],

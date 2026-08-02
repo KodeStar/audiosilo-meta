@@ -1383,7 +1383,14 @@
     "the-sign-of-four": {
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
-        "arthur-conan-doyle"
+        "arthur-conan-doyle",
+        "peter-ackroyd"
+      ],
+      "credits": [
+        {
+          "person": "peter-ackroyd",
+          "role": "introduction"
+        }
       ],
       "genres": [
         "classics",
@@ -1789,6 +1796,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B0030E89BA",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "0241434238",
           "type": "libex-import"
         }
       ],
@@ -5875,15 +5887,45 @@
         "j-r-r-tolkien"
       ],
       "genres": [
+        "dark-fantasy",
         "epic-fantasy",
         "fairy-tales-folklore",
         "fantasy",
+        "military-history",
         "military-science-fiction"
       ],
       "id": "the-silmarillion",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "andy-serkis-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0C5MPMQYX",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/919UgrJ424L.jpg",
+          "id": "andy-serkis-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andy-serkis"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2023-06-22",
+          "runtime_min": 1164,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0C5MPMQYX",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-silmarillion"
+        },
         "martin-shaw-2015": {
           "abridged": false,
           "added_at": "2026-07-17T09:27:30+00:00",
@@ -5891,6 +5933,10 @@
             {
               "asin": "B016N9U1XW",
               "region": "us"
+            },
+            {
+              "asin": "B016N9VAG4",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -6075,6 +6121,11 @@
               "imported_at": "2026-07-30",
               "ref": "B016N9U1XW",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B016N9VAG4",
+              "type": "libex-import"
             }
           ],
           "work": "the-silmarillion"
@@ -6090,83 +6141,7 @@
           "imported_at": "2026-07-30",
           "ref": "B016N9U1XW",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Silmarillion"
-    },
-    "the-silmarillion-j-r-r-tolkien": {
-      "added_at": "2026-07-30T14:42:56+01:00",
-      "authors": [
-        "j-r-r-tolkien"
-      ],
-      "genres": [
-        "dark-fantasy",
-        "epic-fantasy",
-        "fantasy",
-        "military-history"
-      ],
-      "id": "the-silmarillion-j-r-r-tolkien",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "andy-serkis-2023": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0C5MPMQYX",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/919UgrJ424L.jpg",
-          "id": "andy-serkis-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "andy-serkis"
-          ],
-          "publisher": "HarperCollins",
-          "release_date": "2023-06-22",
-          "runtime_min": 1164,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0C5MPMQYX",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-silmarillion-j-r-r-tolkien"
         },
-        "martin-shaw-2015": {
-          "abridged": false,
-          "added_at": "2026-07-30T14:42:56+01:00",
-          "asin": [
-            {
-              "asin": "B016N9VAG4",
-              "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81OIMHStUHL.jpg",
-          "id": "martin-shaw-2015",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "martin-shaw"
-          ],
-          "publisher": "HarperCollins Publishers Limited",
-          "release_date": "2015-10-29",
-          "runtime_min": 889,
-          "sources": [
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B016N9VAG4",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-silmarillion-j-r-r-tolkien"
-        }
-      },
-      "sources": [
         {
           "imported_at": "2026-07-30",
           "ref": "B016N9VAG4",

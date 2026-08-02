@@ -2934,7 +2934,14 @@
     "the-pilgrims-progress": {
       "added_at": "2026-08-01",
       "authors": [
-        "john-bunyan"
+        "john-bunyan",
+        "c-j-lovik"
+      ],
+      "credits": [
+        {
+          "person": "c-j-lovik",
+          "role": "editor"
+        }
       ],
       "genres": [
         "poetry"
@@ -3877,6 +3884,11 @@
         {
           "imported_at": "2026-08-01",
           "ref": "B01J1XNAVM",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V1NVKC",
           "type": "libex-import"
         }
       ],
