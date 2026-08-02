@@ -316,6 +316,7 @@ var roleQualifiers = map[string][]string{
 	"translator":         {model.RoleTranslator},   // 10,624
 	"translated by":      {model.RoleTranslator},   // 54
 	"translation":        {model.RoleTranslator},   // 53
+	"translated":         {model.RoleTranslator},   // 7, the bare participle
 	"introduction":       {model.RoleIntroduction}, // 2,490
 	"introduction by":    {model.RoleIntroduction}, // 10
 	"introductions":      {model.RoleIntroduction}, // 5
@@ -328,6 +329,7 @@ var roleQualifiers = map[string][]string{
 	"preface":            {model.RolePreface},      // 72
 	"editor":             {model.RoleEditor},       // 2,454
 	"edited by":          {model.RoleEditor},       // 37
+	"edited":             {model.RoleEditor},       // 3, the bare participle
 	"illustrator":        {model.RoleIllustrator},  // 852
 	"illustration":       {model.RoleIllustrator},  // 54
 	"illustrated by":     {model.RoleIllustrator},  // 21
@@ -362,6 +364,27 @@ var roleQualifiers = map[string][]string{
 	// identity for a real person.
 	"director":  nil, // 36 books / 12 names
 	"directeur": nil, // 9 books / 1 name - the French spelling, same non-role
+	// The dramatization family - the person who turned a book into an audio
+	// drama. Four spellings, all measured over the full dump and all well clear
+	// of the 3-book bar, and they name the SAME people ("Jerry Robbins -
+	// dramatization" and "Jerry Robbins - dramatizer" are one man), which is why
+	// they ride in together rather than one at a time. They map to nothing on
+	// purpose: whether a dramatized PRODUCTION is an "adaptation" of the text in
+	// the credit vocabulary's sense is a maintainer call, and guessing it would
+	// put a role on a person no source stated. Leaving them out of the strip list
+	// is what minted jerry-robbins-dramatization and its siblings.
+	"dramatization": nil, // 9 books / 5 names
+	"dramatizer":    nil, // 7 books / 3 names
+	"dramatist":     nil, // 6 books / 2 names
+	"dramatisation": nil, // 1, the British spelling riding along
+	// The prologue family. A prologue is its own front-matter element - the
+	// enum's foreword, preface and introduction are three different things, and
+	// picking one of them for it would be an invention - so it strips and states
+	// nothing. Spanish "prólogo" is listed with its ASCII-folded spelling, as
+	// every other accented role is.
+	"prologue": nil, // 11 books / 11 names
+	"prólogo":  nil, // 4 books / 3 names
+	"prologo":  nil, // 2 on its own, the unaccented spelling riding along
 	// The cover-art family. "cover design" (14 books) is what clears the bar and
 	// the rest are its spellings, riding along as the combined qualifiers do.
 	// They map to nothing for the same reason "director" does: the credit

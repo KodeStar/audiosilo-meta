@@ -150,6 +150,59 @@ func TestDoNotMapJunkIsNeitherStrippedNorARole(t *testing.T) {
 	}
 }
 
+// TestR3VocabularyAdditions pins the qualifier spellings added after the seed's
+// create phase, each measured over the full 1.13M-book libex dump (counts are
+// distinct books carrying that exact spelling behind the trailing separator).
+//
+// The two participles state their role - "Ralph Manheim - translated" is a
+// translator by the same reading as "translated by". The dramatization and
+// prologue families strip and state NOTHING: see roleQualifiers for why neither
+// has an honest home in the credit_role enum. Every one of them mints a bogus
+// person record while it is off the strip list, which is the cost this closes.
+func TestR3VocabularyAdditions(t *testing.T) {
+	cases := []struct {
+		name      string
+		in        string
+		wantName  string
+		wantRoles []string
+	}{
+		{"bare translated participle", "Ralph Manheim - translated", "Ralph Manheim", []string{model.RoleTranslator}},
+		{"bare edited participle", "Eric Flint - Edited", "Eric Flint", []string{model.RoleEditor}},
+
+		{"dramatization", "Jerry Robbins - dramatization", "Jerry Robbins", nil},
+		{"dramatizer", "Jerry Robbins - dramatizer", "Jerry Robbins", nil},
+		{"dramatist", "Libby Spurrier - dramatist", "Libby Spurrier", nil},
+		{"dramatisation", "Julia Stoneham - dramatisation", "Julia Stoneham", nil},
+
+		{"english prologue", "Wilma Mankiller - prologue", "Wilma Mankiller", nil},
+		{"spanish prologo", "Evanna Lynch - prólogo", "Evanna Lynch", nil},
+		{"spanish prologo, decomposed", "Evanna Lynch - pro\u0301logo", "Evanna Lynch", nil},
+		{"spanish prologo, ascii-folded", "Nicola Berti - prologo", "Nicola Berti", nil},
+
+		// Already in the vocabulary before this batch; pinned here because the
+		// remediation queue named them and a later edit must not drop them.
+		{"french editeur", "Nick Kyme - Editeur", "Nick Kyme", []string{model.RoleEditor}},
+		{"french editeur accented", "Murielle Szac - Éditeur", "Murielle Szac", []string{model.RoleEditor}},
+		{"cover artwork", "Isabelle Follath - cover artwork", "Isabelle Follath", nil},
+
+		// The near neighbours the additions must NOT eat. "Dramatis" is not
+		// "dramatist", and a surname is never a role.
+		{"not dramatist", "Some Author - Dramatis Personae", "Some Author - Dramatis Personae", nil},
+		{"not prologue", "Some Author - Prologue Books", "Some Author - Prologue Books", nil},
+	}
+	for _, c := range cases {
+		t.Run(c.name, func(t *testing.T) {
+			gotName, gotRoles := CreditWithRoles(c.in)
+			if gotName != c.wantName {
+				t.Errorf("name = %q, want %q", gotName, c.wantName)
+			}
+			if !reflect.DeepEqual(gotRoles, c.wantRoles) {
+				t.Errorf("roles = %#v, want %#v", gotRoles, c.wantRoles)
+			}
+		})
+	}
+}
+
 // TestParentheticalRoleQualifier is the second spelling of the qualifier rule:
 // the source brackets the role instead of hanging it behind a dash ("Neil Gaiman
 // (introduction)"). Every case below must resolve exactly as its dash-separated
