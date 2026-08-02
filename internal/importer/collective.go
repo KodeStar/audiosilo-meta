@@ -54,21 +54,46 @@ package importer
 // state "Various" as its author as a dramatization is to state "Full Cast" as
 // its narrator, and the dump does both.
 //
+// Two ABBREVIATIONS were added on a later, separate maintainer decision, and
+// they carry their evidence here rather than only on their table lines: an
+// abbreviation is a weaker statement than the word it stands for, because a
+// short opaque string could in principle be somebody's actual name. Both were
+// checked against the dump before they were folded.
+//
+//   - "div." (2,096 credits), the German and Scandinavian bibliographic
+//     abbreviation of "diverse", and the largest single fold in this table.
+//     Nobody real is credited as it: all four author records and all three
+//     narrator records spelled this way carry no description, no image, no
+//     website and no Wikipedia entry, and the one that carries an Audible
+//     author-page ASIN (B0045B438K) is the only name at that ASIN, so it is not
+//     a real author's page borrowed by an anthology. The books are anthologies,
+//     language courses, devotionals and magazine issues - German (1,642),
+//     Swedish (267), English (94), Italian (40), Danish (17) - and where "div."
+//     is co-credited it sits beside the named contributors of a collection
+//     ("div. | Brüder Grimm | Johann Wolfgang Goethe | Wilhelm Busch"), which is
+//     the "diverse" reading exactly.
+//   - the bare "div" (5 credits) is the SAME statement rather than a second
+//     decision, and it is the abbreviation missing its final period, exactly as
+//     "n.n" is to "n.n." below. All five credits are Spotlight Verlag German
+//     magazine issues; one of them credits "div" as its author and "div." as its
+//     narrator, and another pairs "div" with the already-folded "diverse
+//     diverse". Measuring it separately and finding one statement is why it
+//     folds here instead of staying an exclusion.
+//   - "anonymus" (16 credits), the Latin/German spelling of the anonymity
+//     convention. Every credit is a folk-tale collection, a medieval text or the
+//     German edition of the "Anonymous" White House book - the
+//     anonymous-authorship convention this table already folds in five other
+//     spellings.
+//
 // Deliberately NOT folded, each a judgment call worth restating:
 //
-//   - "div." (2,096 credits), the German bibliographic abbreviation. It is the
-//     largest neighbour of this list and it very probably belongs in it, but it
-//     is an abbreviation of "diverse" rather than the statement itself, and a
-//     2,096-credit fold is a maintainer decision of its own rather than a
-//     rounding of this one. Adding it later is one line here plus one data
-//     migration.
-//   - "anonymus" (16), "n.n. n.n." (7), "unbekannt" (1), "desconocido" (1), and
-//     the QUALIFIED forms ("unknown author" 4, "anonymous guest" 5). The first
-//     four are further spellings of statements this list already holds and were
-//     not in the measured proposal; the qualified forms are a different claim -
-//     "an anonymous guest" is a person the publisher declined to name on one
-//     book, not the anonymous-authorship convention. Both groups are one-line
-//     additions if a maintainer wants them.
+//   - "n.n. n.n." (7), the bare "divers" (6), "unbekannt" (1), "desconocido"
+//     (1), and the QUALIFIED forms ("unknown author" 4, "anonymous guest" 5).
+//     The first four are further spellings of statements this list already
+//     holds and were not in the measured proposal; the qualified forms are a
+//     different claim - "an anonymous guest" is a person the publisher declined
+//     to name on one book, not the anonymous-authorship convention. Both groups
+//     are one-line additions if a maintainer wants them.
 //   - the German "anonym", which the approved proposal listed but the dump does
 //     not carry at all (0 credits). Every entry below is a form the dump really
 //     contains, and a zero-count entry would invert exactly the evidence bar the
@@ -85,8 +110,11 @@ package importer
 // ORDERING CONSTRAINT, until the twin-migration data PR lands. This change folds
 // new credits onto the canonicals; it migrates nothing, so the catalogue still
 // holds the variant records the folding replaced (measured on the live tree:
-// ~198 work-author references and ~72 narrator references across n-n,
-// autori-vari, divers-auteurs, diverse and friends). A work recorded under a
+// 231 work-author references and 223 narrator references across n-n at 162
+// authors, div at 33 authors and 144 narrators, then diverse, divers-auteurs,
+// autori-vari and friends - div is the largest narrator twin by a wide margin,
+// which is what the two abbreviations above added to the migration's list). A
+// work recorded under a
 // variant AUTHOR is now addressed by a different author set than an incoming row
 // for the same book states, so any pass that CREATES - the plain create path,
 // --recordings-only, and the user-library importers - can FORK it into a second
@@ -136,6 +164,8 @@ var collectiveCredits = map[string]string{
 	// Bucket 1: collective statements -> Various.
 	// Several contributors, none of them named. The anthology convention.
 	"various":             "Various", // 2,064 - the canonical
+	"div.":                "Various", // 2,096 - German/Scandinavian "diverse", abbreviated; see the header
+	"div":                 "Various", // 5 - the same abbreviation missing its final period
 	"various authors":     "Various", // 228
 	"autori vari":         "Various", // 196 - Italian
 	"diverse":             "Various", // 191 - German
@@ -157,6 +187,7 @@ var collectiveCredits = map[string]string{
 	// Unknown below, which is a statement about knowledge rather than intent.
 	"anonymous":   "Anonymous", // 2,279 - the canonical
 	"anonimo":     "Anonymous", // 79 - Spanish "anónimo" (53) + Italian "anonimo" (26), one folded key
+	"anonymus":    "Anonymous", // 16 - the Latin/German spelling; see the header
 	"anonyme":     "Anonymous", // 14 - French
 	"i anonymous": "Anonymous", // 2
 
