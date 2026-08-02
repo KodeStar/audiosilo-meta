@@ -33,7 +33,23 @@ func TestMapLanguage(t *testing.T) {
 		{"polish", "pl", true},
 		{"russian", "ru", true},
 		{"chinese", "zh", true},
+		// The third block, added after the seed's create phase for the three
+		// languages the waves refused most rows for.
+		{"marathi", "mr", true},
+		{"Romanian", "ro", true},
+		{" MALAYALAM ", "ml", true},
+		// An already-mapped code comes through verbatim (the audiosilo-books
+		// projection stores the code, not the word), so the new entries widen the
+		// accepted code set too.
+		{"mr", "mr", true},
+		{"ro", "ro", true},
+		{"ml", "ml", true},
 		{"klingon", "", false},
+		// Still deliberately unmapped: a script distinction, a language with no
+		// 639-1 code at all, and a non-language.
+		{"traditional_chinese", "", false},
+		{"luo", "", false},
+		{"unknown", "", false},
 		{"", "", false},
 	}
 	for _, c := range cases {
@@ -42,6 +58,45 @@ func TestMapLanguage(t *testing.T) {
 			t.Errorf("mapLanguage(%q) = (%q,%v), want (%q,%v)", c.in, got, ok, c.want, c.wantOK)
 		}
 	}
+}
+
+// TestLanguageCodesSatisfyTheSchema is the drift guard between the mapping table
+// and the contract: every code the table can produce must match
+// common.schema.json's language pattern, or a mapped row would be written and
+// then rejected by metacheck. Keys must be the lowercase single word mapLanguage
+// looks up, since it lowercases and trims but does nothing else.
+func TestLanguageCodesSatisfyTheSchema(t *testing.T) {
+	pattern := regexp.MustCompile(schemaDefPattern(t, "language"))
+	for word, code := range languageMap {
+		if !pattern.MatchString(code) {
+			t.Errorf("language %q maps to %q, which the schema's language pattern rejects", word, code)
+		}
+		if lower := strings.ToLower(strings.TrimSpace(word)); word != lower {
+			t.Errorf("language key %q is not the lowercase trimmed form mapLanguage looks up (want %q)", word, lower)
+		}
+	}
+}
+
+// schemaDefPattern reads one $defs entry's pattern out of common.schema.json.
+func schemaDefPattern(t *testing.T, def string) string {
+	t.Helper()
+	raw, err := meta.SchemaFS.ReadFile("schema/common.schema.json")
+	if err != nil {
+		t.Fatal(err)
+	}
+	var doc struct {
+		Defs map[string]struct {
+			Pattern string `json:"pattern"`
+		} `json:"$defs"`
+	}
+	if err := json.Unmarshal(raw, &doc); err != nil {
+		t.Fatal(err)
+	}
+	pattern := doc.Defs[def].Pattern
+	if pattern == "" {
+		t.Fatalf("schema $defs/%s states no pattern; the drift guard would pass vacuously", def)
+	}
+	return pattern
 }
 
 func TestMapRegion(t *testing.T) {

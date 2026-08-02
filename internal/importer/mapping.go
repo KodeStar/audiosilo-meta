@@ -32,9 +32,9 @@ import (
 //   - "unknown" (643) and the empty value (22,428). Neither is a language.
 //   - "ukranian" (6). A misspelling of "ukrainian", and every one of the six
 //     rows is outside the importable universe, so the alias would be dead code.
-//   - the remaining long tail (marathi, tamil, korean, catalan, ...). Each is
-//     unambiguous and each is a one-line addition when a wave needs it; they
-//     are left out because nothing has asked for them and an unexercised
+//   - the remaining long tail (tamil, korean, catalan, indonesian, urdu, ...).
+//     Each is unambiguous and each is a one-line addition when a wave needs it;
+//     they are left out because nothing has asked for them and an unexercised
 //     mapping is an untested one.
 var languageMap = map[string]string{
 	"english":    "en",
@@ -60,6 +60,14 @@ var languageMap = map[string]string{
 	"finnish":   "fi", // 171
 	"norwegian": "no", // 154
 	"greek":     "el", // 153
+
+	// The third block, added after the seed's create phase: the three languages
+	// the waves refused most rows for (~239 of them, recoverable by a later
+	// backfill import of exactly those rows). Each 639-1 code is unambiguous,
+	// and the dump spells each language with the one word listed.
+	"marathi":   "mr", // 2,186
+	"romanian":  "ro", // 591
+	"malayalam": "ml", // 456
 }
 
 // isoCodes is the set of ISO 639-1 codes languageMap produces, so a source that
