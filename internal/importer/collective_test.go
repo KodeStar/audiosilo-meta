@@ -34,7 +34,6 @@ func collectiveCases() []collectiveCase {
 		{"A Full Cast", "Full Cast", "full-cast"},
 		{"Ensemble Cast", "Full Cast", "full-cast"},
 		{"An Ensemble Cast", "Full Cast", "full-cast"},
-		{"Diverse Sprecher", "Full Cast", "full-cast"},
 		{"Cast", "Full Cast", "full-cast"},
 		{"Full Cast Dramatization", "Full Cast", "full-cast"},
 		{"Elenco", "Full Cast", "full-cast"},
@@ -56,6 +55,9 @@ func collectiveCases() []collectiveCase {
 		{"Varios Narradores", "Various", "various"},
 		{"Divers Narrateurs", "Various", "various"},
 		{"Narratori Vari", "Various", "various"},
+		// The German twin of the four above. Which canonical a variant lands on
+		// is the statement's business, never the language's.
+		{"Diverse Sprecher", "Various", "various"},
 		{"Various Artists", "Various", "various"},
 		{"Varios Autores", "Various", "various"},
 		{"Diversos Narradores", "Various", "various"},
@@ -67,7 +69,6 @@ func collectiveCases() []collectiveCase {
 		{"Anónimo", "Anonymous", "anonymous"},
 		{"Anonimo", "Anonymous", "anonymous"},
 		{"Anonyme", "Anonymous", "anonymous"},
-		{"Anonym", "Anonymous", "anonymous"},
 		{"I Anonymous", "Anonymous", "anonymous"},
 
 		// Bucket 1 -> Uncredited.
@@ -183,8 +184,16 @@ func TestBrandedEnsemblesAreNotFolded(t *testing.T) {
 		"Anonymous Guest",
 		"Sarah Sprecher",
 		"Various Smith",
-		// The German bibliographic abbreviation, deliberately not folded.
+		// The documented exclusions: forms the dump does not carry (the German
+		// "anonym", 0 credits) or that a maintainer decision left out
+		// ("anonymus", "unbekannt", "desconocido", "Div."). Every entry in the
+		// table is a measured form, so these stay ordinary credits until
+		// somebody measures and decides them.
 		"Div.",
+		"Anonym",
+		"Anonymus",
+		"Unbekannt",
+		"Desconocido",
 	}
 	for _, name := range intact {
 		t.Run(name, func(t *testing.T) {
@@ -312,6 +321,92 @@ func TestLibexImportsCollectiveAuthorsAsCanonicals(t *testing.T) {
 	}
 }
 
+// TestTwoCreditsFoldingOntoOneCanonicalDedupe is the collision the fold makes
+// possible: one row can state the SAME statement twice, in two spellings, on one
+// credit list. The dump really does - 13 books credit both "A Full Cast" and
+// "full cast" as narrators, 5 credit both "Diverse" and "Various authors" as
+// authors - and before the fold those were two records, so nothing deduplicated
+// them.
+//
+// Slug-level deduplication absorbs it (creditSlugs dedupes by slug, and the work
+// author set is a set), which is what keeps the emitted arrays schema-valid:
+// narrators and authors carry uniqueItems, so a doubled canonical would be a
+// rejected record rather than a cosmetic wart.
+func TestTwoCreditsFoldingOntoOneCanonicalDedupe(t *testing.T) {
+	sum, dataDir := runLibex(t, rows(
+		libexRow{asin: "B0DEDUPE01", title: "Dual Cast Book", authors: `{"name":"Ada One"}`,
+			narrators: `{"name":"A Full Cast"},{"name":"full cast"}`},
+		libexRow{asin: "B0DEDUPE02", title: "Dual Author Book",
+			authors:   `{"name":"Diverse"},{"name":"Various authors"}`,
+			narrators: `{"name":"Bea Reader"}`},
+	), false)
+
+	if sum.NewWorks != 2 {
+		t.Fatalf("NewWorks = %d, want 2", sum.NewWorks)
+	}
+	// ada-one + full-cast + various + bea-reader: each collision is ONE record.
+	if sum.NewPeople != 4 {
+		t.Errorf("NewPeople = %d, want 4 (each doubled statement is one record)", sum.NewPeople)
+	}
+
+	var rec struct {
+		Narrators []string `json:"narrators"`
+	}
+	readEntity(t, dataDir, recAddr("dual-cast-book", "full-cast-2020"), &rec)
+	if len(rec.Narrators) != 1 || rec.Narrators[0] != "full-cast" {
+		t.Errorf("recording narrators = %v, want [full-cast] exactly once", rec.Narrators)
+	}
+
+	var work struct {
+		Authors []string `json:"authors"`
+	}
+	readEntity(t, dataDir, workAddr("dual-author-book"), &work)
+	if len(work.Authors) != 1 || work.Authors[0] != "various" {
+		t.Errorf("work authors = %v, want [various] exactly once", work.Authors)
+	}
+
+	if res := check.Load(dataDir); !res.OK() {
+		t.Fatalf("imported tree failed validation:\n%v", res.Problems)
+	}
+}
+
+// TestFoldedCollisionKeepsBothRoles is the same collision carrying ROLES. Two
+// spellings of Various state two different jobs; the fold collapses the person
+// and the credit list keeps both pairs, because a credit is (person, role) and
+// only an exact repeat of the pair is a duplicate. The result is sorted by
+// (person, role), which is what makes one set of credits one byte-form.
+func TestFoldedCollisionKeepsBothRoles(t *testing.T) {
+	_, dataDir := runLibex(t, rows(
+		libexRow{asin: "B0ROLEFLD1", title: "Collected Essays",
+			authors:   `{"name":"Autori Vari - traduttore"},{"name":"Various Authors - editor"}`,
+			narrators: `{"name":"Bea Reader"}`},
+	), false)
+
+	var work struct {
+		Authors []string       `json:"authors"`
+		Credits []model.Credit `json:"credits"`
+	}
+	readEntity(t, dataDir, workAddr("collected-essays"), &work)
+	if len(work.Authors) != 1 || work.Authors[0] != "various" {
+		t.Errorf("work authors = %v, want [various]", work.Authors)
+	}
+	want := []model.Credit{
+		{Person: "various", Role: model.RoleEditor},
+		{Person: "various", Role: model.RoleTranslator},
+	}
+	if len(work.Credits) != len(want) {
+		t.Fatalf("work credits = %+v, want %+v", work.Credits, want)
+	}
+	for i := range want {
+		if work.Credits[i] != want[i] {
+			t.Fatalf("work credits = %+v, want %+v", work.Credits, want)
+		}
+	}
+	if res := check.Load(dataDir); !res.OK() {
+		t.Fatalf("imported tree failed validation:\n%v", res.Problems)
+	}
+}
+
 // TestBrandedEnsembleImportsAsItself is the other side of the same run: a
 // branded troupe keeps its own person record, which is what the exact-name
 // matching exists to protect.
@@ -400,9 +495,9 @@ func TestCollectiveFoldIsNotEvidenceOfItsOwnSpelling(t *testing.T) {
 func TestCollectiveFoldToleratesAnExistingVariantRecord(t *testing.T) {
 	dataDir := t.TempDir()
 	seedTree(t, dataDir, map[string]string{
-		"people/n-/n-n.json":               `{"id":"n-n","license":"CC0-1.0","name":"N. N.","sources":[{"type":"user"}]}`,
-		"works/an/an-old-work/work.json":   `{"authors":["n-n"],"id":"an-old-work","language":"en","license":"CC0-1.0","sources":[{"type":"user"}],"title":"An Old Work"}`,
-		"people/be/bea-reader.json":        `{"id":"bea-reader","license":"CC0-1.0","name":"Bea Reader","sources":[{"type":"user"}]}`,
+		"people/n-/n-n.json":                              `{"id":"n-n","license":"CC0-1.0","name":"N. N.","sources":[{"type":"user"}]}`,
+		"works/an/an-old-work/work.json":                  `{"authors":["n-n"],"id":"an-old-work","language":"en","license":"CC0-1.0","sources":[{"type":"user"}],"title":"An Old Work"}`,
+		"people/be/bea-reader.json":                       `{"id":"bea-reader","license":"CC0-1.0","name":"Bea Reader","sources":[{"type":"user"}]}`,
 		"works/an/an-old-work/recordings/bea-reader.json": `{"asin":[{"asin":"B0OLDREC01","region":"uk"}],"id":"bea-reader","language":"en","license":"CC0-1.0","narrators":["bea-reader"],"sources":[{"type":"user"}],"work":"an-old-work"}`,
 	})
 

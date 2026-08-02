@@ -428,9 +428,16 @@ rather than at `getOrCreatePerson` so authors, narrators AND role credits pass
 through it, every importer inherits it (not just libex), and the batch pre-passes
 see the canonical: a variant never becomes evidence of its own spelling in the
 credit census or the initials decision. The existing minted twins (`n-n` at 180
-works, `autori-vari`, ...) are migrated by a separate DATA change; the code
-tolerates the interim state, folding onto the canonical while leaving the twin
-untouched. Either way
+works, `autori-vari`, ...) are migrated by a separate DATA change, and that
+migration is ORDERED BEFORE the next import wave, not merely eventually: until
+it lands the catalogue addresses ~198 work-author refs (and ~72 narrator refs)
+under variant slugs, so any pass that CREATES - the plain create path,
+`--recordings-only`, the user-library importers - can fork such a work instead
+of matching it (`--enrich` matches by ASIN and is unaffected). Note also that
+the two tables sit at different LAYERS: `placeholderCreditNames` compares RAW
+names at the libex parse layer, this one compares CLEANED names at the fixpoint
+tail, so they are not interchangeable ("To Be Announced - narrator" is not
+refused today - a pre-existing gap). Either way
 the person stays in the credit list; a stripped qualifier is no longer
 DISCARDED: `CreditWithRoles` returns the schema roles it stated (the
 `roleQualifiers` table is both the strip vocabulary and the qualifier -> role

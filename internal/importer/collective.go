@@ -18,7 +18,19 @@ package importer
 //     Linguistics Team). A real group with a real name.
 //
 // Only the third names nobody at all, and it is the only one still REFUSED
-// (placeholderCreditNames, libex.go). The first two name a real party that
+// (placeholderCreditNames, libex.go).
+//
+// The two tables are NOT interchangeable, and a maintainer adding an entry has
+// to know which layer they are adding it to: placeholderCreditNames compares the
+// RAW credit name at the libex parse layer, before any cleaning, and refuses the
+// whole row; this table compares the CLEANED name at the tail of the cleaning
+// fixpoint, in every importer. So "To Be Announced - narrator" is not refused
+// today - the qualifier hides the placeholder from a raw compare. That is a
+// pre-existing gap rather than something this change introduced, and closing it
+// means giving the refusal a look at the cleaned name too (the shape
+// firstAICredit already uses), not moving entries between the tables.
+//
+// The first two name a real party that
 // simply is not one identifiable human, and a work needs at least one author, so
 // the books carrying them need a record to point at. What they must not need is
 // one record per language: the catalogue had minted "autori vari", "divers
@@ -57,6 +69,30 @@ package importer
 //     "an anonymous guest" is a person the publisher declined to name on one
 //     book, not the anonymous-authorship convention. Both groups are one-line
 //     additions if a maintainer wants them.
+//   - the German "anonym", which the approved proposal listed but the dump does
+//     not carry at all (0 credits). Every entry below is a form the dump really
+//     contains, and a zero-count entry would invert exactly the evidence bar the
+//     neighbouring vocabularies state - the rule earns its lines by measurement,
+//     not by completing a paradigm.
+//
+// Which CANONICAL a variant folds onto is decided by the statement, never by the
+// variant's language. That is why the German "diverse Sprecher" sits with
+// Various rather than with Full Cast: it is the word-for-word twin of "various
+// narrators", "varios narradores", "narratori vari" and "divers narrateurs", and
+// letting one of five translations land somewhere else is the very failure this
+// table exists to end.
+//
+// ORDERING CONSTRAINT, until the twin-migration data PR lands. This change folds
+// new credits onto the canonicals; it migrates nothing, so the catalogue still
+// holds the variant records the folding replaced (measured on the live tree:
+// ~198 work-author references and ~72 narrator references across n-n,
+// autori-vari, divers-auteurs, diverse and friends). A work recorded under a
+// variant AUTHOR is now addressed by a different author set than an incoming row
+// for the same book states, so any pass that CREATES - the plain create path,
+// --recordings-only, and the user-library importers - can FORK it into a second
+// work rather than matching the one on disk. --enrich is unaffected: it matches
+// by ASIN and creates nothing. So the migration must land BEFORE the next import
+// wave, not merely eventually.
 //
 // The canonical NAME each variant maps onto is the spelling a NEW record would
 // be minted under. Three of the five canonicals already exist in the catalogue
@@ -84,7 +120,6 @@ var collectiveCredits = map[string]string{
 	"full cast":               "Full Cast", // 5,657 - the canonical
 	"a full cast":             "Full Cast", // 65
 	"ensemble cast":           "Full Cast", // 20
-	"diverse sprecher":        "Full Cast", // 17 - German "various speakers"
 	"cast":                    "Full Cast", // 11 - measured: ensemble theatre recordings
 	"full cast dramatization": "Full Cast", // 7
 	"elenco":                  "Full Cast", // 7 - Italian/Spanish/Portuguese "cast"
@@ -108,6 +143,7 @@ var collectiveCredits = map[string]string{
 	"various narrators":   "Various", // 96
 	"varios narradores":   "Various", // 89 - Spanish
 	"divers narrateurs":   "Various", // 64 - French
+	"diverse sprecher":    "Various", // 17 - German "various speakers", the exact twin of the four above
 	"narratori vari":      "Various", // 56 - Italian
 	"various artists":     "Various", // 48
 	"varios autores":      "Various", // 38 - Spanish
@@ -123,7 +159,6 @@ var collectiveCredits = map[string]string{
 	"anonimo":     "Anonymous", // 79 - Spanish "anónimo" (53) + Italian "anonimo" (26), one folded key
 	"anonyme":     "Anonymous", // 14 - French
 	"i anonymous": "Anonymous", // 2
-	"anonym":      "Anonymous", // 0 in the dump - German; listed so the day it appears is decided
 
 	// ------------------------------------------------------------------
 	// Bucket 1: collective statements -> Uncredited.
