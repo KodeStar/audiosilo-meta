@@ -524,6 +524,304 @@
       }
     },
     "die-trying": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A former Army serviceman facing an armed man beside an unknown woman on a Chicago street. A Beirut wound and extensive weapons knowledge reveal his military experience and help him recognize the immediate danger.",
+            "id": "jack-reacher",
+            "name": "Jack Reacher",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A man attacked by three strangers after confronting them at his car. His death establishes the lethal methods of the attackers before the main abduction begins, although no further connection is yet known.",
+            "id": "nathan-rubin",
+            "name": "Nathan Rubin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The calm leader among the three abductors. He directs a nervous subordinate and a driver as the team seizes an injured woman and Jack Reacher.",
+            "id": "kidnapping-team-leader",
+            "name": "Kidnapping-Team Leader",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The driver in the three-person abduction team, waiting with the sedan as the calm leader and nervous subordinate seize an injured woman and Jack Reacher.",
+            "id": "kidnapping-team-driver",
+            "name": "Kidnapping-Team Driver",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A well-dressed woman using a hospital-style crutch because of an injured leg. Two armed men seize her after Jack Reacher stops to help her, and he concludes that she was their intended target.",
+            "id": "injured-woman",
+            "name": "Injured Woman",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unusually large, quiet employer who directs workers preparing a stripped room in an old building.",
+            "id": "the-employer",
+            "name": "The Employer",
+            "reveal": {
+              "chapter": 4
+            }
+          },
+          {
+            "aliases": [
+              "Holly"
+            ],
+            "description": "The injured, composed woman deliberately abducted with Reacher, now identified as Holly Johnson. The kidnappers selected her as their target and took Reacher only because he happened to be present.",
+            "id": "holly-johnson",
+            "name": "Holly Johnson",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Holly’s FBI section head, who arrives as concern grows over her absence from a scheduled conference.",
+            "id": "brogan",
+            "name": "Brogan",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An FBI agent recently transferred to Chicago who has helped Holly during her recovery from a knee injury. His knowledge of her habits confirms that her lateness is abnormal.",
+            "id": "milosevic",
+            "name": "Milosevic",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mac"
+            ],
+            "description": "The respected agent in charge of the Chicago FBI office. He immediately recognizes Holly’s unexplained absence as serious.",
+            "id": "mcgrath",
+            "name": "McGrath",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A covert observer at a remote operation who secretly radios a warning after watching work on a concealed, reinforced room.",
+            "id": "undercover-informant",
+            "name": "Undercover Informant",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Webster"
+            ],
+            "description": "The FBI director, who responds urgently and personally when Holly disappears.",
+            "id": "harland-webster",
+            "name": "Harland Webster",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The senior military officer leading the Joint Chiefs, whom Harland Webster meets at the Pentagon after escalating Holly's disappearance beyond the Chicago FBI office.",
+            "id": "chairman-of-the-joint-chiefs",
+            "name": "Chairman of the Joint Chiefs",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The remaining carpenter forced by the employer to test whether a specially built room can be escaped, under threat of mutilation if he fails.",
+            "id": "carpenter",
+            "name": "Carpenter",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Little Stevie"
+            ],
+            "description": "The nervous armed member of the team transporting Holly and Reacher. He carries a handgun, follows the leader's orders, and helps guard the captives during the staged journey away from Chicago.",
+            "id": "stevie",
+            "name": "Stevie",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Holly's father"
+            ],
+            "description": "Holly's father, a former commander in chief in Europe and the nation's most senior military figure. His position explains why Reacher believes Holly was chosen as leverage rather than taken merely because she works for the FBI.",
+            "id": "general-johnson",
+            "name": "General Johnson",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The national leader whom General Johnson consults about Holly’s abduction before accepting continued FBI control of the case.",
+            "id": "the-president",
+            "name": "The President",
+            "reveal": {
+              "chapter": 47
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the original truck driver"
+            ],
+            "description": "The driver whose fingerprint is found on the brush used to disguise the stolen transport truck. His criminal record and the fingerprint identify him as the unnamed member of the abduction crew who drove the vehicle.",
+            "id": "wayne-bell",
+            "name": "Wayne Bell",
+            "reveal": {
+              "chapter": 53
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The kidnapping-team leader who delivers Holly and Reacher to an armed mountain enclave.",
+            "id": "tony-loder",
+            "name": "Tony Loder",
+            "reveal": {
+              "chapter": 57
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Borken"
+            ],
+            "description": "The son of the former owner of the kidnappers’ pickup. Forensic vehicle evidence connects him to the truck and gives the FBI a strong lead in Montana.",
+            "id": "bo-borken",
+            "name": "Bo Borken",
+            "reveal": {
+              "chapter": 58
+            }
+          },
+          {
+            "description": "The Montana Militia’s chief of staff, who takes custody of Reacher at the enclave and says Loder’s operation has caused serious problems for the group.",
+            "id": "fowler",
+            "name": "Fowler",
+            "reveal": {
+              "chapter": 63
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A talkative militia guard assigned to Reacher. He identifies the nearby abandoned town as York and explains that the armed community intends to establish a separatist stronghold under Borken's leadership.",
+            "id": "joseph-ray",
+            "name": "Joseph Ray",
+            "reveal": {
+              "chapter": 69
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A woman working in the mess hall who privately asks Jack Reacher to meet her after lights out, saying that the community needs his help.",
+            "id": "kitchen-worker",
+            "name": "Kitchen Worker",
+            "reveal": {
+              "chapter": 88
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A woman who enters Holly's courthouse room carrying food while Holly works to free part of the bed frame.",
+            "id": "lunch-worker",
+            "name": "Lunch Worker",
+            "reveal": {
+              "chapter": 94
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Rosen"
+            ],
+            "description": "The Attorney General and Webster’s superior during the militia crisis.",
+            "id": "ruth-rosen",
+            "name": "Ruth Rosen",
+            "reveal": {
+              "chapter": 95
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The President's senior aide who takes charge of the crisis for the White House.",
+            "id": "dexter",
+            "name": "Dexter",
+            "reveal": {
+              "chapter": 96
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Garber"
+            ],
+            "description": "Reacher’s former commanding officer, who joins the federal response while officials are assessing Reacher’s apparent role.",
+            "id": "general-garber",
+            "name": "General Garber",
+            "reveal": {
+              "chapter": 115
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A militia member who launches a Stinger at an approaching Chinook. Jack Reacher kills him, but not before the missile locks onto the aircraft.",
+            "id": "stinger-operator",
+            "name": "Stinger Operator",
+            "reveal": {
+              "chapter": 137
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A scarred militia guard who secretly tells Holly he is an undercover FBI counter-terrorism agent. He masks their conversation with running water and proposes an escape by jeep.",
+            "id": "jackson",
+            "name": "Jackson",
+            "reveal": {
+              "chapter": 67
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B002UZYVTE",
+            "type": "community"
+          }
+        ],
+        "work": "die-trying"
+      },
       "recaps": {
         "ending": "Reacher kills Bo Borken before Borken can execute Holly, and McGrath frees her. The supposed dynamite barrier around her room is gone because it has been turned into a mobile bomb. Milosevic then takes Holly hostage, admits accepting money from Brogan, and is killed by Holly during her escape. Reacher, Holly, McGrath, General Garber, and General Johnson pursue Stevie by helicopter. They identify a Federal Reserve branch in San Francisco as the intended target, locate the repainted truck, and Reacher detonates it on an empty highway. Stevie dies and the public attack fails. Military forces secure and dismantle the militia enclave, recover its weapons, and remove the missile unit. Holly receives treatment, returns to the FBI, and later lives with McGrath. Reacher says goodbye and resumes travelling alone, reaching Wisconsin.",
         "in_short": "Jack Reacher is accidentally abducted with FBI agent Holly Johnson and chooses to protect her rather than escape alone. Their captors deliver them to Bo Borken's fortified Montana militia, which plans to declare independence while using Holly's ties to General Johnson and the President as leverage. Reacher and Holly resist from inside as federal officials struggle with a leak, political restrictions, and stolen Stinger missiles. Reacher destroys the militia's mobile missile capability, rescues McGrath, exposes Brogan as Borken's mole, and kills Borken before Holly can be executed. Holly kills Milosevic after he takes her hostage and admits paid cooperation. The militia siege proves to be cover for Stevie's dynamite attack on a Federal Reserve branch in San Francisco. Reacher destroys the bomb truck on an empty highway, the enclave is dismantled, Holly later lives with McGrath, and Reacher leaves alone.",
