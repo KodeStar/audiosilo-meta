@@ -448,9 +448,9 @@ it STATES, language-independently, in four buckets: collective statements
 ("N.N.", "auteur inconnu", "narratore sconosciuto") fold onto `unknown`
 (anonymity is a choice, an unknown identity is a gap - two records, deliberately);
 booking placeholders ("to be announced", tbd/tba/tbc, "n/a") stay REFUSED
-whole-row (`placeholderCreditNames`, whose SQL twin in
-`scripts/libex-export-rows.sql` now carries that bucket only - the flipped forms
-came off both lists in step); and branded ensembles (The Colonial Radio Players,
+whole-row (`placeholderCreditNames` plus `placeholderCreditPhrases`, whose SQL
+twin in `scripts/libex-export-rows.sql` now carries that bucket only - the
+flipped forms came off both lists in step); and branded ensembles (The Colonial Radio Players,
 Museum Audiobooks cast, Linguistics Team) are real person-side records the table
 never touches - matching is the WHOLE cleaned name, exact, case- and
 accent-insensitive, never a pattern. The fold sits inside the shared cleaning
@@ -461,18 +461,24 @@ credit census or the initials decision. Two ABBREVIATIONS were folded on a later
 maintainer decision and carry their dump verification in the file header, because
 a short opaque string could in principle be a real name: `div.`/`div` (2,101
 credits, the German/Scandinavian "diverse", the table's largest fold) onto
-`various`, and `anonymus` (16) onto `anonymous`. The existing minted twins (`n-n`
-at 162 work-author refs, `div` at 33 authors and 144 narrators,
-`autori-vari`, ...) are migrated by a separate DATA change, and that
-migration is ORDERED BEFORE the next import wave, not merely eventually: until
-it lands the catalogue addresses 231 work-author refs (and 223 narrator refs)
-under variant slugs, so any pass that CREATES - the plain create path,
-`--recordings-only`, the user-library importers - can fork such a work instead
-of matching it (`--enrich` matches by ASIN and is unaffected). Note also that
-the two tables sit at different LAYERS: `placeholderCreditNames` compares RAW
-names at the libex parse layer, this one compares CLEANED names at the fixpoint
-tail, so they are not interchangeable ("To Be Announced - narrator" is not
-refused today - a pre-existing gap). Either way
+`various`, and `anonymus` (16) onto `anonymous`. The fold is live AND the tree is
+clean: the separate DATA change that migrated the minted twins (`n-n`,
+`div`, `autori-vari`, ...) has landed, so no variant record remains on disk and
+the fork risk the interim state carried - a work recorded under a variant AUTHOR
+being addressed by a different author set than an incoming row states - is gone.
+The importer's tolerance for an existing variant record is kept as a SAFETY
+PROPERTY (a variant reappearing through a bad merge or a hand edit is inert, not
+a crash or a re-fed twin), pinned by
+`TestCollectiveFoldToleratesAnExistingVariantRecord`. Note that
+the two tables still sit at different LAYERS - `placeholderCreditNames` refuses
+the ROW at the libex parse layer, this one rewrites the CREDIT at the fixpoint
+tail - but the layer GAP between them is closed: the placeholder refusal judges
+the raw name and the cleaned one ("To Be Announced - narrator", "TBD - narrator"),
+and carries a phrase tier for the placeholders that arrive with an imprint or a
+studio welded on ("To Be Confirmed Audio", "To Be Confirmed Atria", "Holt Author
+To Be Announced" - 10 names / 16 credits / 15 books dump-wide beyond the exact
+list, zero of them real). The three-letter abbreviations stay exact-only on
+purpose: "TBA Studios" is a real production company. Either way
 the person stays in the credit list; a stripped qualifier is no longer
 DISCARDED: `CreditWithRoles` returns the schema roles it stated (the
 `roleQualifiers` table is both the strip vocabulary and the qualifier -> role

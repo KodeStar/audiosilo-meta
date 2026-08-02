@@ -1808,6 +1808,290 @@
         ],
         "work": "dungeon-crawler-carl"
       }
+    },
+    "echo-burning": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A boy who keeps the written log for a covert three-person team watching a remote red house. He records the female target's daily routine while two adult men conduct the observation with him.",
+            "id": "surveillance-boy",
+            "name": "Surveillance boy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "One of two adult men conducting long-range surveillance of a woman at a remote red house. He works beside another man and a boy who maintains their log.",
+            "id": "first-adult-surveillance-watcher",
+            "name": "First adult surveillance watcher",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The other adult member of the three-person observation team watching a remote red house. The purpose of the methodical surveillance is not yet apparent.",
+            "id": "second-adult-surveillance-watcher",
+            "name": "Second adult surveillance watcher",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An unidentified female at a remote red house whose daily routine is being recorded by a covert three-person observation team.",
+            "id": "red-house-surveillance-target",
+            "name": "Red-house surveillance target",
+            "reveal": {
+              "chapter": 1
+            }
+          },
+          {
+            "description": "The maid in the household at the remote red house where an unidentified female is under covert observation.",
+            "id": "greer-ranch-maid",
+            "name": "Greer ranch maid",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Reacher"
+            ],
+            "description": "A large traveler staying at a Lubbock motel, where four police officers arrive after a bar confrontation. With no identification and little more than cash and a toothbrush, he needs to get beyond their local reach.",
+            "id": "jack-reacher",
+            "name": "Jack Reacher",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The leader of a disciplined three-person killing crew entering Texas for an undisclosed assignment. She coordinates two male partners through intermediaries and uses false identities, separate travel, and careful trace removal.",
+            "id": "female-contract-killer",
+            "name": "Female contract killer",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The tall, fair-haired male member of a professional killing crew arriving in Texas. He follows the female leader's tightly controlled travel and concealment procedures.",
+            "id": "large-male-contract-killer",
+            "name": "Large male contract killer",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A small, dark-haired man who serves as the driver in a three-person professional killing crew. He enters Texas under the female leader's plan and works alongside a taller male partner.",
+            "id": "small-dark-contract-killer",
+            "name": "Small dark contract killer",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A composed woman driving a white Cadillac who chooses to pick up Reacher outside Lubbock and takes him south toward Pecos.",
+            "id": "cadillac-driver",
+            "name": "Cadillac driver",
+            "reveal": {
+              "chapter": 5
+            }
+          },
+          {
+            "aliases": [
+              "Carmen"
+            ],
+            "description": "A married mother who has spent a month deliberately offering rides to rough-looking strangers. She identifies Reacher as the kind of capable, unattached man she has been seeking and says she urgently needs help that lawyers have not supplied.",
+            "id": "carmen-greer",
+            "name": "Carmen Greer",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Al"
+            ],
+            "description": "A businessman driving a white Mercedes to an appointment. He complies when people posing as federal agents stop him and claim that he must attend an urgent meeting.",
+            "id": "al-eugene",
+            "name": "Al Eugene",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Mary Ellen Greer",
+              "Ellie"
+            ],
+            "description": "Carmen and Sloop's six-year-old daughter, named Mary Ellen by the Greer family and usually called Ellie.",
+            "id": "ellie-greer",
+            "name": "Ellie Greer",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sloop"
+            ],
+            "description": "Carmen's husband and Ellie's father, the elder son of an old and wealthy Echo County family. His mother, younger brother, and other relatives remain based near the family property.",
+            "id": "sloop-greer",
+            "name": "Sloop Greer",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A woman whose personal bond with Reacher defines the kind of loyalty that could move him to violent retaliation. His feelings toward her help him distinguish that obligation from what a stranger is asking of him.",
+            "id": "jodie-garber",
+            "name": "Jodie Garber",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Bobby"
+            ],
+            "description": "Sloop's younger brother and a guarded presence at the Red House Ranch. He admits Carmen and Reacher to the house but makes Reacher's access to the family depend on gaining approval for ranch work.",
+            "id": "bobby-greer",
+            "name": "Bobby Greer",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Echo County sheriff who is waiting at the Red House Ranch when Carmen arrives with Reacher. He directs Carmen inside to hear the news and questions Reacher about his identity.",
+            "id": "echo-county-sheriff",
+            "name": "Echo County sheriff",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Rusty"
+            ],
+            "description": "Bobby's mother and the apparent authority at the Red House Ranch. She considers hiring Reacher and announces that Sloop's lawyer, Al Eugene, has vanished, though she expects Sloop's release to proceed.",
+            "id": "rusty-greer",
+            "name": "Rusty Greer",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Josh"
+            ],
+            "description": "A long-serving Greer ranch hand whom Carmen warns Reacher not to trust. He shares the bunkhouse with Billy and immediately assesses whether the new arrival has the horse skills claimed for him.",
+            "id": "joshua",
+            "name": "Joshua",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Greer ranch hand and bunkhouse resident who works closely with Joshua. He scrutinizes Reacher's supposed ranch experience and is presented by Carmen as loyal to the family rather than to her.",
+            "id": "billy",
+            "name": "Billy",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Henry F. W. Walker",
+              "Hack"
+            ],
+            "description": "The Pecos district attorney, Sloop's oldest friend, and a candidate for judge. He arrives at the Red House Ranch while the Greers await Sloop's accelerated release.",
+            "id": "hack-walker",
+            "name": "Hack Walker",
+            "reveal": {
+              "chapter": 61
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Alice Aaron",
+              "Alice"
+            ],
+            "description": "A young Harvard-trained legal-aid lawyer in Pecos who serves clients with little money. Reacher finds her trying to collect an unpaid judgment for a farmworker family, and she agrees in principle to examine Carmen's difficult defense.",
+            "id": "alice-amanda-aaron",
+            "name": "Alice Amanda Aaron",
+            "reveal": {
+              "chapter": 80
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Brewer"
+            ],
+            "description": "A man who has not paid a $20,000 civil judgment owed to an injured farmworker family. Alice believes he is delaying until the family is forced to leave the area.",
+            "id": "lyndon-j-brewer",
+            "name": "Lyndon J. Brewer",
+            "reveal": {
+              "chapter": 80
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A farmworker family represented by Alice after winning a $20,000 judgment that Brewer refused to pay. Receiving the money allows them to restore basic services, address debts, repair equipment, and continue farming.",
+            "id": "garcia-family",
+            "name": "Garcia family",
+            "reveal": {
+              "chapter": 95
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Garcia family's elder son, killed twelve years earlier while the family was migrating. His parents believe Border Patrol officers were responsible, and the investigation brought no prosecution.",
+            "id": "raul-garcia",
+            "name": "Raul Garcia",
+            "reveal": {
+              "chapter": 95
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Cowan"
+            ],
+            "description": "A respected forensic-medicine expert known for defense work. Walker retains him to assess whether Carmen's medical records can support the claim that she suffered abuse.",
+            "id": "cowan-black",
+            "name": "Cowan Black",
+            "reveal": {
+              "chapter": 97
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "echo-burning"
+      }
     }
   }
 }
