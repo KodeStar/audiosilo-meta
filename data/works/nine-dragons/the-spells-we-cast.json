@@ -4104,6 +4104,10 @@
             {
               "asin": "B00AMLFO80",
               "region": "us"
+            },
+            {
+              "asin": "B07VWRZWXR",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81-6+INF+YL.jpg",
@@ -4120,6 +4124,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B00AMLFO80",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07VWRZWXR",
               "type": "libex-import"
             }
           ],
@@ -6335,6 +6344,10 @@
             {
               "asin": "B0D1YRZ7FW",
               "region": "us"
+            },
+            {
+              "asin": "B0D1YTG7SV",
+              "region": "de"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91S6VRMJkhL.jpg",
@@ -6351,6 +6364,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0D1YRZ7FW",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0D1YTG7SV",
               "type": "libex-import"
             }
           ],
@@ -6386,6 +6404,10 @@
             {
               "asin": "B08GRM7HK7",
               "region": "us"
+            },
+            {
+              "asin": "B08GRQM39C",
+              "region": "de"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91m3CLQpJXL.jpg",
@@ -6402,6 +6424,11 @@
             {
               "imported_at": "2026-08-01",
               "ref": "B08GRM7HK7",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B08GRQM39C",
               "type": "libex-import"
             }
           ],
@@ -9135,6 +9162,10 @@
             {
               "asin": "B00G4GPMBG",
               "region": "us"
+            },
+            {
+              "asin": "B00G4HFWDI",
+              "region": "uk"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91uT6RH2V+L.jpg",
@@ -9151,6 +9182,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B00G4GPMBG",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00G4HFWDI",
               "type": "libex-import"
             }
           ],
@@ -9180,6 +9216,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "richard-ferrone-2010": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B003P6JNQI",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/61RNLe-h6ZL.jpg",
+          "id": "richard-ferrone-2010",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "richard-ferrone"
+          ],
+          "publisher": "Penguin Audio",
+          "release_date": "2010-06-03",
+          "runtime_min": 385,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B003P6JNQI",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-spy"
+        },
         "scott-brick-2011": {
           "abridged": false,
           "added_at": "2026-08-02",

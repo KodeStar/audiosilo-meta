@@ -3719,6 +3719,10 @@
             {
               "asin": "B0BTZB2RXY",
               "region": "us"
+            },
+            {
+              "asin": "B0BTZ89MJ8",
+              "region": "ca"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91K7NX02aPL.jpg",
@@ -3735,6 +3739,11 @@
             {
               "imported_at": "2026-08-01",
               "ref": "B0BTZB2RXY",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0BTZ89MJ8",
               "type": "libex-import"
             }
           ],
@@ -3772,6 +3781,10 @@
             {
               "asin": "B0C37WLDGX",
               "region": "us"
+            },
+            {
+              "asin": "B0C37V58YV",
+              "region": "ca"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81c4JFgNXRL.jpg",
@@ -3788,6 +3801,11 @@
             {
               "imported_at": "2026-08-01",
               "ref": "B0C37WLDGX",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0C37V58YV",
               "type": "libex-import"
             }
           ],
@@ -8631,6 +8649,62 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "emma-fenney-2018": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B07CQ6Z9WL",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81OxcICdUyL.jpg",
+          "id": "emma-fenney-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "emma-fenney"
+          ],
+          "publisher": "Dreamscape Media, LLC",
+          "release_date": "2018-05-01",
+          "runtime_min": 9,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07CQ6Z9WL",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-pea-blossom"
+        },
+        "jenny-day-2007": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002V8LLQQ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71dcpNO8vyL.jpg",
+          "id": "jenny-day-2007",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jenny-day"
+          ],
+          "publisher": "PC Treasures, Inc.",
+          "release_date": "2007-12-30",
+          "runtime_min": 9,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002V8LLQQ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-pea-blossom"
+        },
         "sam-kusi-2025": {
           "abridged": false,
           "added_at": "2026-08-02",

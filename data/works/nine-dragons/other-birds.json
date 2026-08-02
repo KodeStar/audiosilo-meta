@@ -1456,6 +1456,10 @@
             {
               "asin": "B0D4W5JJCV",
               "region": "us"
+            },
+            {
+              "asin": "B0D4W17NZL",
+              "region": "ca"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91x9FCxDxFL.jpg",
@@ -1473,6 +1477,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0D4W5JJCV",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0D4W17NZL",
               "type": "libex-import"
             }
           ],
@@ -3509,6 +3518,10 @@
             {
               "asin": "B0DMCXBS24",
               "region": "us"
+            },
+            {
+              "asin": "B0CQ34TB2C",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91Gscz6NIpL.jpg",
@@ -3527,6 +3540,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0DMCXBS24",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CQ34TB2C",
               "type": "libex-import"
             }
           ],
@@ -7672,6 +7690,10 @@
             {
               "asin": "B089ST5YD8",
               "region": "us"
+            },
+            {
+              "asin": "B089SSZGQ8",
+              "region": "uk"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91BP6gxGV9L.jpg",
@@ -7688,6 +7710,11 @@
             {
               "imported_at": "2026-08-01",
               "ref": "B089ST5YD8",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B089SSZGQ8",
               "type": "libex-import"
             }
           ],
@@ -9019,6 +9046,14 @@
             {
               "asin": "B07BYKYVNC",
               "region": "us"
+            },
+            {
+              "asin": "B07BYWK2N4",
+              "region": "ca"
+            },
+            {
+              "asin": "B07BYKYVMY",
+              "region": "uk"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81ZwN7jUU-L.jpg",
@@ -9035,6 +9070,16 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B07BYKYVNC",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07BYWK2N4",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07BYKYVMY",
               "type": "libex-import"
             }
           ],
@@ -12754,6 +12799,34 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B00FGEBVYE",
+              "type": "libex-import"
+            }
+          ],
+          "work": "out-of-times-abyss"
+        },
+        "patrick-walsh-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0GZPX9T2V",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81ydJdcBkaL.jpg",
+          "id": "patrick-walsh-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "patrick-walsh"
+          ],
+          "publisher": "Anthony Pica Productions, LLC",
+          "release_date": "2026-05-21",
+          "runtime_min": 226,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GZPX9T2V",
               "type": "libex-import"
             }
           ],

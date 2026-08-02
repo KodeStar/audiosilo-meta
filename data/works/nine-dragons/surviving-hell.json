@@ -4044,6 +4044,10 @@
             {
               "asin": "B0CKRYRJ4D",
               "region": "us"
+            },
+            {
+              "asin": "B0CKRXVMCL",
+              "region": "ca"
             }
           ],
           "chapters": [
@@ -4217,6 +4221,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0CKRYRJ4D",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CKRXVMCL",
               "type": "libex-import"
             }
           ],
@@ -7637,6 +7646,10 @@
             {
               "asin": "B0191VMHKE",
               "region": "us"
+            },
+            {
+              "asin": "B0191VLTE4",
+              "region": "de"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91DIsy1hPXL.jpg",
@@ -7653,6 +7666,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0191VMHKE",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0191VLTE4",
               "type": "libex-import"
             }
           ],
@@ -8399,6 +8417,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "will-patton-2008": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002V5CKPU",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81522Fz6eAL.jpg",
+          "id": "will-patton-2008",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "will-patton"
+          ],
+          "publisher": "Simon & Schuster Audio",
+          "release_date": "2008-07-08",
+          "runtime_min": 380,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002V5CKPU",
+              "type": "libex-import"
+            }
+          ],
+          "work": "swan-peak"
+        },
         "will-patton-2009": {
           "abridged": false,
           "added_at": "2026-08-02",

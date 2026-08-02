@@ -3362,6 +3362,10 @@
             {
               "asin": "B018IUZPO4",
               "region": "us"
+            },
+            {
+              "asin": "0593152751",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91mb8xWZkQL.jpg",
@@ -3378,6 +3382,11 @@
             {
               "imported_at": "2026-08-01",
               "ref": "B018IUZPO4",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "0593152751",
               "type": "libex-import"
             }
           ],
@@ -4817,6 +4826,10 @@
             {
               "asin": "B00YGRB72S",
               "region": "us"
+            },
+            {
+              "asin": "B0711NS4FX",
+              "region": "ca"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91PfeNDxxXL.jpg",
@@ -4833,6 +4846,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B00YGRB72S",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0711NS4FX",
               "type": "libex-import"
             }
           ],
@@ -7127,6 +7145,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "phil-schoen-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CD2TY324",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91TbKmlDQOL.jpg",
+          "id": "phil-schoen-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "phil-schoen"
+          ],
+          "publisher": "Time to Fly LLC",
+          "release_date": "2023-07-28",
+          "runtime_min": 2,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CD2TY324",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-library-local"
+        },
         "phil-schoen-2026": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -8610,6 +8656,10 @@
             {
               "asin": "B0DNTQB9QX",
               "region": "us"
+            },
+            {
+              "asin": "B0DD7YJSDW",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91YemQ3XFUL.jpg",
@@ -8626,6 +8676,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0DNTQB9QX",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DD7YJSDW",
               "type": "libex-import"
             }
           ],
@@ -9131,6 +9186,35 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0FMS7F23V",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-lies-that-summon-the-night"
+        },
+        "christian-leatherman-2026-2": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0FGDT6D6Z",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91+cUCAN46L.jpg",
+          "id": "christian-leatherman-2026-2",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "christian-leatherman",
+            "samantha-brentmoor"
+          ],
+          "publisher": "Random House Audio",
+          "release_date": "2026-02-03",
+          "runtime_min": 684,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FGDT6D6Z",
               "type": "libex-import"
             }
           ],

@@ -1967,6 +1967,14 @@
             {
               "asin": "B075F3YHFN",
               "region": "us"
+            },
+            {
+              "asin": "B075F1VM93",
+              "region": "de"
+            },
+            {
+              "asin": "B075F2NCQP",
+              "region": "de"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91NOlfXMpiL.jpg",
@@ -1986,6 +1994,16 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B075F3YHFN",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B075F1VM93",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B075F2NCQP",
               "type": "libex-import"
             }
           ],
@@ -2760,6 +2778,10 @@
             {
               "asin": "B09F9BJ3DN",
               "region": "us"
+            },
+            {
+              "asin": "B09F9BYC8Z",
+              "region": "de"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91yF3lBzmjL.jpg",
@@ -2776,6 +2798,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B09F9BJ3DN",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09F9BYC8Z",
               "type": "libex-import"
             }
           ],
@@ -2811,6 +2838,10 @@
             {
               "asin": "B0FGDMFK3H",
               "region": "us"
+            },
+            {
+              "asin": "B0FGDPZ9XL",
+              "region": "de"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91ibddlqAwL.jpg",
@@ -2827,6 +2858,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0FGDMFK3H",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FGDPZ9XL",
               "type": "libex-import"
             }
           ],
@@ -4101,6 +4137,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "melody-mae-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0C3JSQKZX",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81jlvsmeocL.jpg",
+          "id": "melody-mae-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "melody-mae"
+          ],
+          "publisher": "Wycked Press",
+          "release_date": "2023-04-26",
+          "runtime_min": 33,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0C3JSQKZX",
+              "type": "libex-import"
+            }
+          ],
+          "work": "quantum-quickies"
+        },
         "talula-rouge-2023": {
           "abridged": false,
           "added_at": "2026-08-01",

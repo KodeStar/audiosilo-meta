@@ -3761,6 +3761,10 @@
             {
               "asin": "B002VA9T22",
               "region": "us"
+            },
+            {
+              "asin": "B0716W31JJ",
+              "region": "ca"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/819ZbE3kZPL.jpg",
@@ -3777,6 +3781,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B002VA9T22",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0716W31JJ",
               "type": "libex-import"
             }
           ],
@@ -4422,6 +4431,10 @@
             {
               "asin": "B0F3PH3573",
               "region": "us"
+            },
+            {
+              "asin": "B0DWB9JCDW",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81H7M47MMyL.jpg",
@@ -4438,6 +4451,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0F3PH3573",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DWB9JCDW",
               "type": "libex-import"
             }
           ],
@@ -4692,6 +4710,10 @@
             {
               "asin": "0008280797",
               "region": "us"
+            },
+            {
+              "asin": "B07Z5G4524",
+              "region": "ca"
             }
           ],
           "chapters": [
@@ -5091,6 +5113,11 @@
               "imported_at": "2026-08-02",
               "ref": "0008280797",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07Z5G4524",
+              "type": "libex-import"
             }
           ],
           "work": "the-order-daniel-silva"
@@ -5127,6 +5154,10 @@
             {
               "asin": "B09TN4R3QB",
               "region": "us"
+            },
+            {
+              "asin": "B09TMR7Y15",
+              "region": "ca"
             }
           ],
           "chapters": [
@@ -5465,6 +5496,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B09TN4R3QB",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09TMR7Y15",
               "type": "libex-import"
             }
           ],
@@ -9276,6 +9312,14 @@
             {
               "asin": "B0CMK87MH2",
               "region": "us"
+            },
+            {
+              "asin": "B0CS72BYNF",
+              "region": "uk"
+            },
+            {
+              "asin": "B0CMK777M4",
+              "region": "uk"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91Z-DGhS61L.jpg",
@@ -9297,6 +9341,16 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0CMK87MH2",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CS72BYNF",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CMK777M4",
               "type": "libex-import"
             }
           ],
@@ -11065,6 +11119,10 @@
             {
               "asin": "B0855F5W28",
               "region": "us"
+            },
+            {
+              "asin": "B0855K7ZTX",
+              "region": "ca"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/911UX2vivUL.jpg",
@@ -11081,6 +11139,11 @@
             {
               "imported_at": "2026-08-01",
               "ref": "B0855F5W28",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0855K7ZTX",
               "type": "libex-import"
             }
           ],
@@ -11522,6 +11585,62 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "howard-king-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0C1KTQJQ1",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91U55KKJaNL.jpg",
+          "id": "howard-king-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "howard-king"
+          ],
+          "publisher": "Digital Literature International",
+          "release_date": "2023-09-20",
+          "runtime_min": 16,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0C1KTQJQ1",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-other-gods"
+        },
+        "kenneth-elliot-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CWLN26DN",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/910Tfo5J6UL.jpg",
+          "id": "kenneth-elliot-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kenneth-elliot"
+          ],
+          "publisher": "Strelbytskyy Multimedia Publishing",
+          "release_date": "2024-02-28",
+          "runtime_min": 12,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CWLN26DN",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-other-gods"
+        },
         "sam-kusi-2025": {
           "abridged": false,
           "added_at": "2026-08-02",

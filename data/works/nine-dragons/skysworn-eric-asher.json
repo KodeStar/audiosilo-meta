@@ -1195,6 +1195,10 @@
             {
               "asin": "B097RX4375",
               "region": "us"
+            },
+            {
+              "asin": "B097RVK3XN",
+              "region": "de"
             }
           ],
           "chapters": [
@@ -1548,6 +1552,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B097RX4375",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B097RVK3XN",
               "type": "libex-import"
             }
           ],
@@ -9086,6 +9095,10 @@
             {
               "asin": "B0DYB2S4F5",
               "region": "us"
+            },
+            {
+              "asin": "B0DY9S9CLY",
+              "region": "ca"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/918ay32C7mL.jpg",
@@ -9102,6 +9115,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0DYB2S4F5",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DY9S9CLY",
               "type": "libex-import"
             }
           ],
@@ -10494,6 +10512,34 @@
             {
               "imported_at": "2026-08-01",
               "ref": "B01DWPZRKM",
+              "type": "libex-import"
+            }
+          ],
+          "work": "sleeping-beauty"
+        },
+        "karen-dotrice-2022": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B09XQWD8V9",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91XoC1Jdr4L.jpg",
+          "id": "karen-dotrice-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "karen-dotrice"
+          ],
+          "publisher": "Saga Egmont",
+          "release_date": "2022-12-08",
+          "runtime_min": 257,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09XQWD8V9",
               "type": "libex-import"
             }
           ],
@@ -14215,6 +14261,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "andrew-pond-2018": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B07G1WFG5R",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91Xmd+r9+HL.jpg",
+          "id": "andrew-pond-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andrew-pond"
+          ],
+          "publisher": "Ken Lange",
+          "release_date": "2018-08-02",
+          "runtime_min": 30,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07G1WFG5R",
+              "type": "libex-import"
+            }
+          ],
+          "work": "sleipnirs-heart"
+        },
         "marlin-may-2017": {
           "abridged": false,
           "added_at": "2026-08-01",

@@ -4385,6 +4385,10 @@
             {
               "asin": "B0CWM947PW",
               "region": "us"
+            },
+            {
+              "asin": "B0CWMQM4KH",
+              "region": "ca"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/811iOkhxNZL.jpg",
@@ -4401,6 +4405,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0CWM947PW",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CWMQM4KH",
               "type": "libex-import"
             }
           ],
@@ -9031,6 +9040,10 @@
             {
               "asin": "B00IEAOMT8",
               "region": "us"
+            },
+            {
+              "asin": "B00IEAZ9OK",
+              "region": "de"
             }
           ],
           "chapters": [
@@ -9319,6 +9332,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B00IEAOMT8",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00IEAZ9OK",
               "type": "libex-import"
             }
           ],
@@ -12375,6 +12393,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "meegwun-fairbrother-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CJKNXYNV",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91FJZ2VuVEL.jpg",
+          "id": "meegwun-fairbrother-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "meegwun-fairbrother"
+          ],
+          "publisher": "Penguin Teen Canada",
+          "release_date": "2023-11-14",
+          "runtime_min": 427,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CJKNXYNV",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-marrow-thieves"
+        },
         "robert-willson-2021": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -12574,6 +12620,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "bert-nichols-stauff-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0H6RDTRJM",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91qfzgn1deL.jpg",
+          "id": "bert-nichols-stauff-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "bert-nichols-stauff"
+          ],
+          "publisher": "Bertha Stauff",
+          "release_date": "2026-07-21",
+          "runtime_min": 92,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0H6RDTRJM",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-marsh-kings-daughter"
+        },
         "sam-kusi-2025": {
           "abridged": false,
           "added_at": "2026-08-02",

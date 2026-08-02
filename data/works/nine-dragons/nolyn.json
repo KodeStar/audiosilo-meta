@@ -1746,6 +1746,10 @@
             {
               "asin": "B0C3CZ8XZC",
               "region": "us"
+            },
+            {
+              "asin": "B0C3D3LZB3",
+              "region": "de"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91VbmiQUJcL.jpg",
@@ -1762,6 +1766,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0C3CZ8XZC",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0C3D3LZB3",
               "type": "libex-import"
             }
           ],
@@ -8474,6 +8483,10 @@
             {
               "asin": "B002V1NOW2",
               "region": "us"
+            },
+            {
+              "asin": "B004FT9REM",
+              "region": "uk"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/914YDPhEH-L.jpg",
@@ -8491,6 +8504,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B002V1NOW2",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B004FT9REM",
               "type": "libex-import"
             }
           ],
@@ -15265,6 +15283,141 @@
             {
               "imported_at": "2026-07-30",
               "ref": "B003A6C73Y",
+              "type": "libex-import"
+            }
+          ],
+          "work": "notes-from-the-underground"
+        },
+        "norman-dietz-2010": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B003VIDYI8",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 543533,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 517016,
+              "start_ms": 543533,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 672450,
+              "start_ms": 1060549,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 272184,
+              "start_ms": 1732999,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 411179,
+              "start_ms": 2005183,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 205915,
+              "start_ms": 2416362,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 941894,
+              "start_ms": 2622277,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 860857,
+              "start_ms": 3564171,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 506056,
+              "start_ms": 4425028,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 259135,
+              "start_ms": 4931084,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 543161,
+              "start_ms": 5190219,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 2019486,
+              "start_ms": 5733380,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 688750,
+              "start_ms": 7752866,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1472842,
+              "start_ms": 8441616,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1518260,
+              "start_ms": 9914458,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 712295,
+              "start_ms": 11432718,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1579003,
+              "start_ms": 12145013,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1185472,
+              "start_ms": 13724016,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1609886,
+              "start_ms": 14909488,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1089898,
+              "start_ms": 16519374,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 833225,
+              "start_ms": 17609272,
+              "title": "Chapter 21"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51ZCj2Bp1CL.jpg",
+          "id": "norman-dietz-2010",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "norman-dietz"
+          ],
+          "publisher": "Tantor Audio",
+          "release_date": "2010-07-20",
+          "runtime_min": 307,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B003VIDYI8",
               "type": "libex-import"
             }
           ],
