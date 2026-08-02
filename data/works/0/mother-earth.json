@@ -2774,6 +2774,11 @@
       "authors": [
         "jonathan-lethem"
       ],
+      "genres": [
+        "literary-fiction",
+        "mystery",
+        "thriller-suspense"
+      ],
       "id": "motherless-brooklyn",
       "language": "en",
       "license": "CC0-1.0",
@@ -2897,6 +2902,68 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 4057269,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3953894,
+              "start_ms": 4057269,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2742648,
+              "start_ms": 8011163,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4514702,
+              "start_ms": 10753811,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 15929,
+              "start_ms": 15268513,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3843460,
+              "start_ms": 15284442,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 3852562,
+              "start_ms": 19127902,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 3362575,
+              "start_ms": 22980464,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 3792747,
+              "start_ms": 26343039,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 3294308,
+              "start_ms": 30135786,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 2170648,
+              "start_ms": 33430094,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 989077,
+              "start_ms": 35600742,
+              "title": "Chapter 12"
+            }
+          ],
           "cover_url": "https://m.media-amazon.com/images/I/81Ri-ueDBGL.jpg",
           "id": "geoffrey-cantor-2014",
           "language": "en",
@@ -2922,6 +2989,11 @@
           "imported_at": "2026-07-25",
           "ref": "B09DH6N2F1",
           "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00H8Y7VGM",
+          "type": "libex-import"
         }
       ],
       "title": "Motherless Brooklyn"
@@ -7949,6 +8021,11 @@
         "terry-pratchett"
       ],
       "first_published": "1990",
+      "genres": [
+        "comedy-humor",
+        "fantasy",
+        "urban-fantasy"
+      ],
       "id": "moving-pictures",
       "language": "en",
       "license": "CC0-1.0",
@@ -8874,6 +8951,11 @@
         {
           "ref": "Q1996856",
           "type": "wikidata"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0032N2TUQ",
+          "type": "libex-import"
         }
       ],
       "title": "Moving Pictures",

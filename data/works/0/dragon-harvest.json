@@ -2481,6 +2481,13 @@
       "authors": [
         "robin-hobb"
       ],
+      "genres": [
+        "epic-fantasy",
+        "fairy-tales-folklore",
+        "fantasy",
+        "historical-fiction",
+        "romance"
+      ],
       "id": "dragon-haven",
       "language": "en",
       "license": "CC0-1.0",
@@ -2534,6 +2541,128 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 3392760,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3296537,
+              "start_ms": 3392760,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2683112,
+              "start_ms": 6689297,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3126892,
+              "start_ms": 9372409,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3497482,
+              "start_ms": 12499301,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3044833,
+              "start_ms": 15996783,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 2268729,
+              "start_ms": 19041616,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 4630430,
+              "start_ms": 21310345,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 2784908,
+              "start_ms": 25940775,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 2670248,
+              "start_ms": 28725683,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 3760704,
+              "start_ms": 31395931,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 2064068,
+              "start_ms": 35156635,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 2862370,
+              "start_ms": 37220703,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 3551213,
+              "start_ms": 40083073,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 3086582,
+              "start_ms": 43634286,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 2889677,
+              "start_ms": 46720868,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 3490331,
+              "start_ms": 49610545,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 3306986,
+              "start_ms": 53100876,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 3331599,
+              "start_ms": 56407862,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 3427590,
+              "start_ms": 59739461,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 2872633,
+              "start_ms": 63167051,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 2903191,
+              "start_ms": 66039684,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 2675310,
+              "start_ms": 68942875,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 3487358,
+              "start_ms": 71618185,
+              "title": "Chapter 24"
+            }
+          ],
           "cover_url": "https://m.media-amazon.com/images/I/91890zzB0HL.jpg",
           "id": "jacqui-crago-2010",
           "language": "en",
@@ -2558,6 +2687,11 @@
         {
           "imported_at": "2026-07-17",
           "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B003C218O0",
+          "type": "libex-import"
         }
       ],
       "title": "Dragon Haven"
@@ -2623,6 +2757,24 @@
         "j-kharkova",
         "r-mansurova",
         "e-kornilova"
+      ],
+      "credits": [
+        {
+          "person": "e-kornilova",
+          "role": "translator"
+        },
+        {
+          "person": "j-kharkova",
+          "role": "translator"
+        },
+        {
+          "person": "r-mansurova",
+          "role": "translator"
+        },
+        {
+          "person": "valeria-kornosenko",
+          "role": "introduction"
+        }
       ],
       "genres": [
         "action-adventure",
@@ -3063,6 +3215,17 @@
       "authors": [
         "kirill-klevanski",
         "valeria-kornosenko"
+      ],
+      "credits": [
+        {
+          "person": "valeria-kornosenko",
+          "role": "introduction"
+        }
+      ],
+      "genres": [
+        "action-adventure",
+        "epic-fantasy",
+        "fantasy"
       ],
       "id": "dragon-heart-book-10-land-of-war",
       "language": "en",
@@ -3658,6 +3821,11 @@
           "imported_at": "2026-07-11",
           "ref": "B09DZ5SHMG",
           "type": "openaudible-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B09DZ2V12S",
+          "type": "libex-import"
         }
       ],
       "title": "Dragon Heart - Book 10: Land of War"
@@ -3667,6 +3835,17 @@
       "authors": [
         "kirill-klevanski",
         "valeria-kornosenko"
+      ],
+      "credits": [
+        {
+          "person": "valeria-kornosenko",
+          "role": "introduction"
+        }
+      ],
+      "genres": [
+        "action-adventure",
+        "epic-fantasy",
+        "fantasy"
       ],
       "id": "dragon-heart-book-11-path-to-the-unknown",
       "language": "en",
@@ -4207,6 +4386,11 @@
           "imported_at": "2026-07-11",
           "ref": "B09GPYL76Z",
           "type": "openaudible-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B09GPXQQFR",
+          "type": "libex-import"
         }
       ],
       "title": "Dragon Heart - Book 11: Path to the Unknown"
@@ -4215,6 +4399,11 @@
       "added_at": "2026-07-11T17:30:05+01:00",
       "authors": [
         "kirill-klevanski"
+      ],
+      "genres": [
+        "action-adventure",
+        "epic-fantasy",
+        "fantasy"
       ],
       "id": "dragon-heart-book-12-path-to-the-glory",
       "language": "en",
@@ -4740,6 +4929,11 @@
           "imported_at": "2026-07-11",
           "ref": "B09NF772H8",
           "type": "openaudible-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B09NF7HPG7",
+          "type": "libex-import"
         }
       ],
       "title": "Dragon Heart - Book 12: Path to the Glory"
