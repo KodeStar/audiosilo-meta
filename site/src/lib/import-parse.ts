@@ -114,6 +114,9 @@ function positiveOrUndefined(n?: number): number | undefined {
 // --- Field rules (mirror mapping.go) ----------------------------------------
 
 // Word -> ISO 639-1 code; only the languages the importer accepts are mapped.
+// KEEP IN STEP with mapping.go's languageMap - a word missing here is a book the
+// browser-side diff drops that the importer would have taken. The blocks below
+// are that table's, in its order.
 const LANGUAGE_MAP: Record<string, string> = {
   english: 'en',
   turkish: 'tr',
@@ -127,6 +130,21 @@ const LANGUAGE_MAP: Record<string, string> = {
   polish: 'pl',
   russian: 'ru',
   chinese: 'zh',
+
+  danish: 'da',
+  swedish: 'sv',
+  arabic: 'ar',
+  hindi: 'hi',
+  hebrew: 'he',
+  czech: 'cs',
+  hungarian: 'hu',
+  finnish: 'fi',
+  norwegian: 'no',
+  greek: 'el',
+
+  marathi: 'mr',
+  romanian: 'ro',
+  malayalam: 'ml',
 }
 
 // Audible marketplaces the recording schema accepts (recording.schema.json).
@@ -165,8 +183,11 @@ const ROLE_QUALIFIERS = new Set([
   'compilation',
 ])
 
-// A series position: a number or an omnibus range ("1", "2.5", "1-3.5").
-const SEQUENCE_PATTERN = /^\d+(\.\d+)?(-\d+(\.\d+)?)?$/
+// A series position AS A SOURCE MAY SPELL IT: a number, or an omnibus range
+// whose dash may carry whitespace ("1", "2.5", "1-3.5", "1 - 3", "3040 - 3049").
+// Mirrors mapping.go's sequencePattern; the schema's own pattern admits no
+// whitespace, which is why normalizeSequence NORMALIZES rather than only tests.
+const SEQUENCE_PATTERN = /^\d+(\.\d+)?(\s*-\s*\d+(\.\d+)?)?$/
 // A release date: YYYY, YYYY-MM, or YYYY-MM-DD - mirrors the Go importer's
 // datePattern and the recording schema's date_flex, so a bare ID3 TYER year
 // ("2017") is a kept fact, passed through as-is (never fabricated into -01-01).
@@ -218,6 +239,30 @@ function firstNonEmpty(...vals: string[]): string {
 // --- Public normalizers -----------------------------------------------------
 
 /** Uppercase + trim; returns the value iff it is a 10-char ASIN, else "". */
+/**
+ * Canonicalize a raw series position, or undefined when it is not one.
+ *
+ * The one mirror of mapping.go's NormalizeSequence, so the browser diff shows
+ * the position the importer will actually store. A position is a STRING in the
+ * schema, so two spellings of one number are two different positions - trailing
+ * fractional zeros go ("1.0" -> "1", "2.50" -> "2.5", both endpoints of a
+ * range) and the whitespace a source puts around a range's dash goes with them
+ * ("3040 - 3049" -> "3040-3049"). What comes back always satisfies the schema's
+ * whitespace-free pattern.
+ */
+export function normalizeSequence(raw: string): string | undefined {
+  const pos = raw.trim()
+  if (pos === '' || !SEQUENCE_PATTERN.test(pos)) return undefined
+  const tight = pos.replace(/\s+/g, '')
+  if (!tight.includes('.')) return tight
+  return tight
+    .split('-')
+    .map((part) =>
+      part.includes('.') ? part.replace(/0+$/, '').replace(/\.$/, '') : part,
+    )
+    .join('-')
+}
+
 export function normalizeAsin(s: string): string {
   const up = s.trim().toUpperCase()
   return /^[A-Z0-9]{10}$/.test(up) ? up : ''
@@ -250,7 +295,7 @@ function parseBook(raw: Record<string, unknown>): ParsedBook {
   const narrators = splitNames(coerceStr(raw['narrated_by']))
   const seriesName = coerceStr(raw['series_name'])
   const seqRaw = coerceStr(raw['series_sequence'])
-  const seriesPosition = SEQUENCE_PATTERN.test(seqRaw) ? seqRaw : undefined
+  const seriesPosition = normalizeSequence(seqRaw)
   const languageRaw = coerceStr(raw['language'])
   const language = LANGUAGE_MAP[languageRaw.toLowerCase()]
   const runtimeMin = minutesFromSeconds(coerceInt(raw['seconds']))
@@ -377,7 +422,7 @@ function primaryLibationSeries(
       if (ord === LIBATION_UNSORTED) ord = ''
       entries.push({
         name,
-        position: SEQUENCE_PATTERN.test(ord) ? ord : undefined,
+        position: normalizeSequence(ord),
       })
     }
   }

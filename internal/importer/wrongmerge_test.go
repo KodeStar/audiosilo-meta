@@ -1015,6 +1015,142 @@ func TestCleanSeriesNameRefusesAnUnbalancedRemainder(t *testing.T) {
 	}
 }
 
+// TestStripTitleNarratorQualifier is the unit half of the mid-title rule. Every
+// stripped case is a REAL composed title from the full libex dump - the complete
+// population is 13 of 1,058,981 distinct titles, all of them Sherlock serials -
+// and the result is byte-for-byte the title the undecorated listing of the same
+// volume already carries, which is what collapses the fork.
+//
+// The refusals are the rule's whole safety argument. Each is a real dump title
+// (or a hostile variant of one) that uses the words for real, and each must be
+// returned exactly as the source spelled it.
+func TestStripTitleNarratorQualifier(t *testing.T) {
+	cases := []struct{ name, in, want string }{
+		{
+			"german dash-separated, band",
+			"Die galaktischen Fälle des Sherlock Holmes - gelesen von Andreas Lange, Band 11",
+			"Die galaktischen Fälle des Sherlock Holmes, Band 11",
+		},
+		{
+			"german unseparated, folge",
+			"Die Abenteuer des jungen Sherlock Holmes gelesen von Marc Schülert, Folge 4",
+			"Die Abenteuer des jungen Sherlock Holmes, Folge 4",
+		},
+		{
+			"english, episode",
+			"Sherlock Holmes - The New Adventures narrated by David McCran, Episode 9",
+			"Sherlock Holmes - The New Adventures, Episode 9",
+		},
+		{
+			"german gesprochen von",
+			"Die Bibel gesprochen von Rufus Beck, Band 2",
+			"Die Bibel, Band 2",
+		},
+		// The undecorated sibling is already the target form, so the rule is a
+		// no-op on it - which is what makes the two titles meet.
+		{
+			"undecorated sibling is untouched",
+			"Die galaktischen Fälle des Sherlock Holmes, Band 11",
+			"Die galaktischen Fälle des Sherlock Holmes, Band 11",
+		},
+
+		// No volume marker: the bound that keeps the rule off every title below.
+		{"real title, no marker", "The Gospel Narrated by Jesus", "The Gospel Narrated by Jesus"},
+		{
+			"real title, reflexive",
+			"Life of Josiah Henson, Formerly a Slave, as Narrated by Himself",
+			"Life of Josiah Henson, Formerly a Slave, as Narrated by Himself",
+		},
+		{
+			"trailing qualifier is the series rule's job, not this one",
+			"Harry Potter and the Chamber of Secrets (Narrated by Stephen Fry)",
+			"Harry Potter and the Chamber of Secrets (Narrated by Stephen Fry)",
+		},
+		// With a marker, but the credit names nobody: narratorObjectLeads.
+		{"reflexive credit", "Some Memoir narrated by Himself, Band 2", "Some Memoir narrated by Himself, Band 2"},
+		{"generic credit", "Some Memoir narrated by the Author, Folge 2", "Some Memoir narrated by the Author, Folge 2"},
+		// The authorship phrase the vocabulary deliberately excludes.
+		{
+			"horspiele von is authorship",
+			"Die schönsten Märchen-Hörspiele von Grimm und Hauff, Folge 2",
+			"Die schönsten Märchen-Hörspiele von Grimm und Hauff, Folge 2",
+		},
+		// A lead-in that does not start a word.
+		{"mid-word lead-in", "Aufgelesen von Anna, Folge 3", "Aufgelesen von Anna, Folge 3"},
+		// Stripping would leave nothing, or an open bracket.
+		{"qualifier is the whole head", "gelesen von Peter Bocek, Band 1", "gelesen von Peter Bocek, Band 1"},
+		{"unbalanced remainder", "Foo ((gelesen von Peter, Band 1", "Foo ((gelesen von Peter, Band 1"},
+		// A marker word that is not in the measured set.
+		{"unmeasured marker", "Die Reihe gelesen von Marc Schülert, Teil 4", "Die Reihe gelesen von Marc Schülert, Teil 4"},
+	}
+	for _, c := range cases {
+		t.Run(c.name, func(t *testing.T) {
+			if got := stripTitleNarratorQualifier(c.in); got != c.want {
+				t.Errorf("stripTitleNarratorQualifier(%q) = %q, want %q", c.in, got, c.want)
+			}
+			// The rule reaches every source through cleanWorkTitle, and applying it
+			// twice must change nothing more.
+			if twice := cleanWorkTitle(cleanWorkTitle(c.in)); twice != cleanWorkTitle(c.in) {
+				t.Errorf("cleanWorkTitle is not idempotent on %q", c.in)
+			}
+		})
+	}
+}
+
+// TestTitleNarratorVocabularyIsASeriesSubset is the drift guard between the two
+// narrator vocabularies: the title-side list must stay a subset of the series
+// one, so "what a narrator lead-in is" has one definition and the title rule can
+// only ever be the narrower of the two.
+func TestTitleNarratorVocabularyIsASeriesSubset(t *testing.T) {
+	for _, phrase := range titleNarratorQualifiers {
+		if !slices.Contains(seriesNarratorQualifiers, phrase) {
+			t.Errorf("title lead-in %q is not in seriesNarratorQualifiers", phrase)
+		}
+		if folded := foldCredit(phrase); folded != phrase {
+			t.Errorf("title lead-in %q is not in foldCredit form (want %q)", phrase, folded)
+		}
+	}
+}
+
+// TestNarratorQualifiedVolumesCollapseToOneWork is the whole point, proved
+// through a real import in the shape the dump actually carries: a serial whose
+// every volume shares one title_short, so the batch pre-pass derives each work
+// from the FULL "Title: Subtitle" - which is exactly where the narrator
+// qualifier does its damage. Without the strip this run mints THREE works; the
+// three listings of Band 11 (two re-narrations naming their narrator
+// mid-subtitle, and the undecorated one) must land as ONE, beside Band 10.
+func TestNarratorQualifiedVolumesCollapseToOneWork(t *testing.T) {
+	const short = "Die galaktischen Faelle des Sherlock Holmes"
+	volume := func(asin, subtitle, narrator, pos string) libexRow {
+		return libexRow{
+			asin: asin, title: short, subtitle: subtitle,
+			authors: `{"name":"Arthur Conan Doyle"}`, narrators: `{"name":"` + narrator + `"}`,
+			series: `{"name":"Die galaktischen Faelle","position":"` + pos + `"}`,
+		}
+	}
+	sum, dataDir := runLibex(t, rows(
+		// A sibling volume under the same title_short: this is what makes the
+		// pre-pass fall back to the full title for every row in the series.
+		volume("B0GMBAND10", short+", Band 10", "Rupert Pichler", "10"),
+		volume("B0GMBAND11", short+", Band 11", "Rupert Pichler", "11"),
+		volume("B0GMHHCQ2P", short+" - gelesen von Andreas Lange, Band 11", "Andreas Lange", "11"),
+		volume("B0GMHFR9CB", short+" - gelesen von Peter Bocek, Band 11", "Peter Bocek", "11"),
+	), false)
+	if sum.NewWorks != 2 {
+		t.Errorf("NewWorks = %d, want 2 (Band 10 and Band 11; the narrator qualifier forked Band 11)", sum.NewWorks)
+	}
+	if sum.NewRecordings != 4 {
+		t.Errorf("NewRecordings = %d, want 4", sum.NewRecordings)
+	}
+	// The work the fork minted, at the slug this run produced before the strip
+	// existed (both re-narrations landed on it: MaxSlugLen cuts the title at the
+	// qualifier, which is how a fork slug looks in the tree today).
+	const fork = "die-galaktischen-faelle-des-sherlock-holmes-die-galaktischen-faelle-des-sherlock-holmes-gelesen-von"
+	if entryExists(t, dataDir, workAddr(fork)) {
+		t.Errorf("a narrator-qualified fork work was created at %q", fork)
+	}
+}
+
 // ---------------------------------------------------------------------------
 // The advisory's restatement of the identity rule
 

@@ -201,6 +201,50 @@ describe('parseExport - field mapping', () => {
     expect(parseOne(openAudibleEntry({ series_sequence: 'book one' })).seriesPosition).toBeUndefined()
   })
 
+  // The canonical form the Go importer stores, so the browser diff shows the
+  // position the import will actually write (mapping.go NormalizeSequence).
+  it('canonicalizes a spaced omnibus range and trailing fractional zeros', () => {
+    expect(parseOne(openAudibleEntry({ series_sequence: '1 - 3' })).seriesPosition).toBe('1-3')
+    expect(parseOne(openAudibleEntry({ series_sequence: '3040 - 3049' })).seriesPosition).toBe(
+      '3040-3049',
+    )
+    expect(parseOne(openAudibleEntry({ series_sequence: '14 -15' })).seriesPosition).toBe('14-15')
+    expect(parseOne(openAudibleEntry({ series_sequence: '1.5- 3.5' })).seriesPosition).toBe('1.5-3.5')
+    expect(parseOne(openAudibleEntry({ series_sequence: ' 2 ' })).seriesPosition).toBe('2')
+    expect(parseOne(openAudibleEntry({ series_sequence: '1.0' })).seriesPosition).toBe('1')
+    expect(parseOne(openAudibleEntry({ series_sequence: '1.0-3.50' })).seriesPosition).toBe('1-3.5')
+    // The tolerance is whitespace, not a wider dash class, and not a range with
+    // nothing on one side of the dash.
+    expect(parseOne(openAudibleEntry({ series_sequence: '1 \u2013 3' })).seriesPosition).toBeUndefined()
+    expect(parseOne(openAudibleEntry({ series_sequence: '1 - ' })).seriesPosition).toBeUndefined()
+    expect(parseOne(openAudibleEntry({ series_sequence: '1 3' })).seriesPosition).toBeUndefined()
+  })
+
+  // KEEP IN STEP with mapping.go's languageMap: a word the importer accepts but
+  // the browser diff drops is a book the user is told will not import.
+  it('maps every language word the Go importer accepts', () => {
+    const cases: Record<string, string> = {
+      english: 'en',
+      danish: 'da',
+      swedish: 'sv',
+      arabic: 'ar',
+      hindi: 'hi',
+      hebrew: 'he',
+      czech: 'cs',
+      hungarian: 'hu',
+      finnish: 'fi',
+      norwegian: 'no',
+      greek: 'el',
+      marathi: 'mr',
+      romanian: 'ro',
+      malayalam: 'ml',
+    }
+    for (const [word, code] of Object.entries(cases)) {
+      expect(parseOne(openAudibleEntry({ language: word })).language).toBe(code)
+    }
+    expect(parseOne(openAudibleEntry({ language: 'klingon' })).language).toBeUndefined()
+  })
+
   it('computes runtimeMin as round(seconds/60), from a number or a string', () => {
     expect(parseOne(openAudibleEntry({ seconds: 3630 })).runtimeMin).toBe(61) // 60.5 -> 61
     expect(parseOne(openAudibleEntry({ seconds: '3630' })).runtimeMin).toBe(61)

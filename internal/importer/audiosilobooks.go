@@ -61,7 +61,8 @@ func IsAudiosiloBooksEnvelope(raw []byte) bool {
 
 // RunAudiosiloBooks imports an "audiosilo-books" envelope (exportPath) into
 // opts.DataDir, reusing the shared pipeline. Behaviour is otherwise identical to
-// Run / RunLibation.
+// Run / RunLibation - including the AI-credit gate, which lives in runBooks
+// (importer.go) because every user-library source needs it, not just this one.
 func RunAudiosiloBooks(exportPath string, opts Options) (Summary, error) {
 	raw, err := os.ReadFile(exportPath)
 	if err != nil {

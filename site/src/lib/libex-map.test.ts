@@ -188,6 +188,18 @@ describe('libexToPrefill', () => {
     }
   })
 
+  it('canonicalizes a spaced omnibus range rather than noting it away', () => {
+    // libex spells 104 of its stated positions this way. The intake form's
+    // grammar admits no whitespace, so the position is NORMALIZED to the form
+    // the form accepts - the same rule the Go importer applies on import.
+    const p = libexToPrefill(
+      libexBook({ series: [{ name: 'S', position: '3040 - 3049' }] }),
+      RETRIEVED,
+    )
+    expect(p.seriesPosition).toBe('3040-3049')
+    expect(p.sources).not.toContain('Series position as listed')
+  })
+
   it('omits a position outside the grammar but NOTES it in the sources text', () => {
     // Intake would reject "1a", so leaving it in the field just fails there; and
     // dropping it silently would land the work in the series with no position at
