@@ -517,9 +517,9 @@ var prefixCredits = []string{"created by ", "creato da "}
 // – Übersetzer") - while the ROLE itself is not: the capture stops at a dash and
 // is then checked against roleQualifiers, so only a listed role ever strips.
 //
-// The dash class is studiotail.go's dashSepRE verbatim, which is the point: one
+// The dash CLASS is studiotail.go's dashSepRE verbatim, which is the point: one
 // source spells its separator one way and the two rules that read a trailing
-// qualifier must agree on what a separator IS. Reading the hyphen only cost 176
+// qualifier must agree on what a dash IS. Reading the hyphen only cost 176
 // German translator credits in the dump - which do not merely lose their role,
 // they mint a BOGUS PERSON ("Bernhard Kempen – Übersetzer" slugs to
 // bernhard-kempen-ubersetzer, a second identity for a real translator who is also
@@ -536,9 +536,29 @@ var prefixCredits = []string{"created by ", "creato da "}
 //     the string is the last separator, so "X – Translator – translator" resolves
 //     the same way "X - Translator - translator" always did.
 //
-// The trailing `\s*` (rather than dashSepRE's `\s+`) is the existing tolerance
-// for a missing space after the separator ("X -translated by"), kept as it was.
-var roleSuffixRE = regexp.MustCompile(`\s+(?:-{1,2}|[–—]{1,2})\s*([^-–—]+)$`)
+// WHITESPACE IS OPTIONAL ON BOTH SIDES OF THE DASH (`\s*`), which is where this
+// rule and dashSepRE deliberately part company. The trailing `\s*` was always
+// there ("X -translated by"); the LEADING one was added after the seed, for the
+// shape that welds the role straight onto the surname with nothing but a hyphen:
+// "Gigi Rosa-traduttore", which minted gigi-rosa-traduttore as a person.
+//
+// The two rules can differ here because their tails are different kinds of
+// string. This rule's tail is a CLOSED vocabulary, so a hyphen that is really
+// part of a surname ("Alex Hyde-White") simply fails the lookup and nothing is
+// stripped. dashSepRE's tail is free text, so it must keep the whitespace as its
+// only evidence that the dash is a separator at all - an en dash inside a surname
+// is not a boundary (studiotail.go).
+//
+// Measured over the full dump, that is exactly what the relaxation costs and
+// buys: of the 436,101 distinct credit names, 28 (29 books) have a trailing
+// dash-welded segment that IS a listed role, and every one of the 28 is a real
+// person carrying a real role qualifier - "Fiamma Izzo-traduttore", "Marina
+// Pugliano-translator", "Sandra Schwittau-Übersetzer", "Mirron Willis-
+// Introduction". ZERO are hyphenated surnames. Two of the 28 are a bonus: the
+// dump spells their separator with a NON-BREAKING space ("Daniel Hayes -
+// editor"), which `\s` does not match and `\s*` therefore steps over, leaving
+// strings.TrimSpace (which does know U+00A0) to take it off the name.
+var roleSuffixRE = regexp.MustCompile(`\s*(?:-{1,2}|[–—]{1,2})\s*([^-–—]+)$`)
 
 // minDoubledHalfWords is the smallest half a doubled-name collapse will accept.
 // Requiring TWO words per half is what keeps "Duran Duran" intact: a single

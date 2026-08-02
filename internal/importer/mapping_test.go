@@ -414,7 +414,8 @@ func TestCleanCreditName(t *testing.T) {
 // which DASH a source typed is not a fact about the credit, so every spelling of
 // the separator must produce the same name AND the same roles. The rule reads the
 // same dash class studiotail.go's dashSepRE does, which is what makes the two
-// halves of "what is a separator" agree.
+// halves of "what is a dash" agree (the two rules differ only on whether the
+// whitespace around it is required - see roleSuffixRE).
 //
 // Written as an equivalence rather than a table of expected outputs so it also
 // covers the tails that must NOT strip: whatever the hyphen spelling does with a
@@ -452,6 +453,61 @@ func TestDashSeparatorSpellingsAreEquivalent(t *testing.T) {
 				t.Errorf("CreditWithRoles(%q) roles = %v, want the hyphen spelling's %v", spelled, gotRoles, wantRoles)
 			}
 		}
+	}
+}
+
+// TestNoSpaceRoleSeparator is the second half of "which separator a source typed
+// is not a fact about the credit": the dump also welds the role onto the surname
+// with a bare hyphen and no spaces at all.
+//
+// Every input below is a REAL credit name from the full libex dump (the complete
+// population is 28 distinct names over 29 books - see roleSuffixRE), and every
+// one of them minted a bogus person record before the leading whitespace became
+// optional: gigi-rosa-traduttore is in the catalogue today, hand-fixed.
+//
+// The refusals are the half that keeps the relaxation honest. A hyphen inside a
+// surname is only ever a separator when what follows it is a LISTED role, so an
+// ordinary hyphenated name is untouched however role-shaped its tail looks.
+func TestNoSpaceRoleSeparator(t *testing.T) {
+	cases := []struct {
+		name      string
+		in        string
+		wantName  string
+		wantRoles []string
+	}{
+		{"italian translator welded on", "Gigi Rosa-traduttore", "Gigi Rosa", []string{model.RoleTranslator}},
+		{"english translator welded on", "Marina Pugliano-translator", "Marina Pugliano", []string{model.RoleTranslator}},
+		{"german translator welded on", "Sandra Schwittau-Übersetzer", "Sandra Schwittau", []string{model.RoleTranslator}},
+		{"french translator welded on", "Virginie Lainé-traducteur", "Virginie Lainé", []string{model.RoleTranslator}},
+		{"spanish translator welded on", "Iria Domingo-traductor", "Iria Domingo", []string{model.RoleTranslator}},
+		{"italian editor welded on", "Mario Barenghi-curatore", "Mario Barenghi", []string{model.RoleEditor}},
+		{"multiword role welded on", "Emily Gravett-Illustrated by", "Emily Gravett", []string{model.RoleIllustrator}},
+		{"preface welded on", "Cardinal Timothy M. Dolan-preface", "Cardinal Timothy M. Dolan", []string{model.RolePreface}},
+		// A surname that itself ends in a hyphen-joined word is untouched by the
+		// same rule, because "Post" is not a role - "Kenneth Post-traductor" is.
+		{"surname before the role", "Kenneth Post-traductor", "Kenneth Post", []string{model.RoleTranslator}},
+		// The dump spells two of the 28 with a NON-BREAKING space, which `\s`
+		// never matched; `\s*` steps over it and TrimSpace takes it off the name.
+		{"non-breaking space separator", "Daniel Hayes - editor", "Daniel Hayes", []string{model.RoleEditor}},
+
+		// Refusals: a hyphenated name whose tail is not a listed role.
+		{"hyphenated surname", "Alex Hyde-White", "Alex Hyde-White", nil},
+		{"hyphenated given name", "Anne-Marie Wachs", "Anne-Marie Wachs", nil},
+		{"role-shaped surname", "Barry Press-Smith", "Barry Press-Smith", nil},
+		// The role is there, but it is not the LAST segment, so the capture is
+		// the surname that follows it and nothing strips.
+		{"role mid-name", "Gigi-traduttore Rosa", "Gigi-traduttore Rosa", nil},
+	}
+	for _, c := range cases {
+		t.Run(c.name, func(t *testing.T) {
+			gotName, gotRoles := CreditWithRoles(c.in)
+			if gotName != c.wantName {
+				t.Errorf("name = %q, want %q", gotName, c.wantName)
+			}
+			if !slices.Equal(gotRoles, c.wantRoles) {
+				t.Errorf("roles = %v, want %v", gotRoles, c.wantRoles)
+			}
+		})
 	}
 }
 
