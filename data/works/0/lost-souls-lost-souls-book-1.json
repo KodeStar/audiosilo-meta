@@ -3099,6 +3099,10 @@
             {
               "asin": "B00TP5I9FE",
               "region": "us"
+            },
+            {
+              "asin": "B00FBCW65O",
+              "region": "de"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81BACw-IuPL.jpg",
@@ -3115,6 +3119,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B00TP5I9FE",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00FBCW65O",
               "type": "libex-import"
             }
           ],
@@ -3221,6 +3230,110 @@
       "language": "de",
       "license": "CC0-1.0",
       "recordings": {
+        "achim-buch-2022": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0B7K76T2F",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 209605,
+              "start_ms": 0,
+              "title": "Kapitel 1"
+            },
+            {
+              "length_ms": 167601,
+              "start_ms": 209605,
+              "title": "Kapitel 2"
+            },
+            {
+              "length_ms": 320806,
+              "start_ms": 377206,
+              "title": "Kapitel 3"
+            },
+            {
+              "length_ms": 249126,
+              "start_ms": 698012,
+              "title": "Kapitel 4"
+            },
+            {
+              "length_ms": 281472,
+              "start_ms": 947138,
+              "title": "Kapitel 5"
+            },
+            {
+              "length_ms": 209978,
+              "start_ms": 1228610,
+              "title": "Kapitel 6"
+            },
+            {
+              "length_ms": 298469,
+              "start_ms": 1438588,
+              "title": "Kapitel 7"
+            },
+            {
+              "length_ms": 264475,
+              "start_ms": 1737057,
+              "title": "Kapitel 8"
+            },
+            {
+              "length_ms": 311240,
+              "start_ms": 2001532,
+              "title": "Kapitel 9"
+            },
+            {
+              "length_ms": 326704,
+              "start_ms": 2312772,
+              "title": "Kapitel 10"
+            },
+            {
+              "length_ms": 211278,
+              "start_ms": 2639476,
+              "title": "Kapitel 11"
+            },
+            {
+              "length_ms": 173615,
+              "start_ms": 2850754,
+              "title": "Kapitel 12"
+            },
+            {
+              "length_ms": 198785,
+              "start_ms": 3024369,
+              "title": "Kapitel 13"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/813WZLigOXL.jpg",
+          "id": "achim-buch-2022",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "achim-buch",
+            "hans-low",
+            "hedi-kriegeskotte",
+            "henry-liam-hallak",
+            "julia-nachtmann",
+            "manfred-liptow",
+            "michael-prelle",
+            "mille-steffensen",
+            "nelia-olbrich",
+            "samuel-weiss"
+          ],
+          "publisher": "Oetinger Media",
+          "release_date": "2022-08-12",
+          "runtime_min": 53,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0B7K76T2F",
+              "type": "libex-import"
+            }
+          ],
+          "work": "lotta-zieht-um"
+        },
         "ursula-illert-2020": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -3538,6 +3651,10 @@
             {
               "asin": "B0F6TBFGDX",
               "region": "us"
+            },
+            {
+              "asin": "B0F6TY4B41",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/9181ga30GmL.jpg",
@@ -3554,6 +3671,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0F6TBFGDX",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0F6TY4B41",
               "type": "libex-import"
             }
           ],

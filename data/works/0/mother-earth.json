@@ -955,6 +955,10 @@
             {
               "asin": "B0B72G2YRX",
               "region": "us"
+            },
+            {
+              "asin": "B0B72CDYSY",
+              "region": "uk"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81M+xQuvK2L.jpg",
@@ -972,6 +976,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0B72G2YRX",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0B72CDYSY",
               "type": "libex-import"
             }
           ],
@@ -2045,6 +2054,10 @@
             {
               "asin": "B0GJFKPJXY",
               "region": "us"
+            },
+            {
+              "asin": "B0GJFKJMSJ",
+              "region": "ca"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91oQgld02CL.jpg",
@@ -2064,6 +2077,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0GJFKPJXY",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GJFKJMSJ",
               "type": "libex-import"
             }
           ],
@@ -2326,6 +2344,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "john-w-michaels-2014": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00M079KHK",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91COoLbnONL.jpg",
+          "id": "john-w-michaels-2014",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "john-w-michaels"
+          ],
+          "publisher": "Spoken Realms",
+          "release_date": "2014-07-22",
+          "runtime_min": 21,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00M079KHK",
+              "type": "libex-import"
+            }
+          ],
+          "work": "mother-of-toads"
+        },
         "josh-greenwood-2024": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -3212,6 +3258,10 @@
             {
               "asin": "0655641882",
               "region": "us"
+            },
+            {
+              "asin": "0655641890",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -3515,6 +3565,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "0655641882",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "0655641890",
               "type": "libex-import"
             }
           ],
@@ -9132,6 +9187,91 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "cindy-hardin-killavey-2007": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002V8N4MU",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/61fTciUjzfL.jpg",
+          "id": "cindy-hardin-killavey-2007",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "cindy-hardin-killavey",
+            "walter-zimmerman"
+          ],
+          "publisher": "Jimcin Recordings",
+          "release_date": "2007-05-16",
+          "runtime_min": 48,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002V8N4MU",
+              "type": "libex-import"
+            }
+          ],
+          "work": "mowglis-brothers"
+        },
+        "lucy-stone-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0D35M9XPS",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81ePBz84l0L.jpg",
+          "id": "lucy-stone-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "lucy-stone"
+          ],
+          "publisher": "Strelbytskyy Multimedia Publishing",
+          "release_date": "2024-05-02",
+          "runtime_min": 46,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0D35M9XPS",
+              "type": "libex-import"
+            }
+          ],
+          "work": "mowglis-brothers"
+        },
+        "rayner-bourton-2022": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B09PL4B4VW",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81K0lLB2VjL.jpg",
+          "id": "rayner-bourton-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "rayner-bourton"
+          ],
+          "publisher": "Bookstream Audiobooks",
+          "release_date": "2022-01-19",
+          "runtime_min": 57,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09PL4B4VW",
+              "type": "libex-import"
+            }
+          ],
+          "work": "mowglis-brothers"
+        },
         "tony-roberts-2020": {
           "abridged": false,
           "added_at": "2026-08-02",

@@ -24,7 +24,8 @@
 -- KEEP THE TWO LISTS IN STEP - if you add a form here, add it there.
 -- The junk-credit, list-credit and placeholder-credit filters at the end of the
 -- WHERE clause are the SQL twins of junkCreditNames, firstListCredit and
--- placeholderCreditNames in the same file, and are kept in step the same way.
+-- placeholderCreditNames/placeholderCreditPhrases in the same file, and are kept
+-- in step the same way.
 -- There is deliberately NO twin for the collective/unknown-identity table
 -- (internal/importer/collective.go): those rows are IMPORTED, folded onto a
 -- canonical record, so the export must not drop them.
@@ -176,16 +177,35 @@ WHERE b.is_vvab IS NOT TRUE
   -- 'varios narradores', 'narratori vari', 'diverse sprecher', 'elenco') moved
   -- there and are deliberately gone from here; a dump exported with the older
   -- query is still fine, it merely lost rows the import would now accept.
+  --
+  -- TWO SHAPES, the twin of placeholderCreditNames + placeholderCreditPhrases:
+  -- the whole name exactly, and the two MULTI-WORD phrases as a word-bounded
+  -- substring, because a placeholder does not always arrive alone ('To Be
+  -- Confirmed Audio', 'To Be Confirmed Atria', 'Holt Author To Be Announced' -
+  -- 10 names, 16 credits, 15 books dump-wide beyond the exact list, every one a
+  -- placeholder). The ABBREVIATIONS are deliberately exact-only on both sides:
+  -- 'TBA Studios' is a real production company.
+  --
+  -- ONE ASYMMETRY, deliberate: the Go rule additionally judges the CLEANED
+  -- credit name (so 'To Be Announced - narrator' is refused once the role
+  -- qualifier is stripped), and CleanCreditName's fixpoint has no SQL spelling.
+  -- Re-implementing it here would be a second definition that could disagree
+  -- with the first, so the SQL is the belt and the Go rule is the braces - the
+  -- same split foldCredit's comment records.
   AND NOT EXISTS (
     SELECT 1 FROM book_narrator bn
     WHERE bn.book_asin = b.asin
-      AND lower(btrim(bn.narrator_name)) IN (
-        'to be announced', 'to be confirmed', 'tbd', 'tba', 'tbc', 'n/a')
+      AND (lower(btrim(bn.narrator_name)) IN (
+             'to be announced', 'to be confirmed', 'tbd', 'tba', 'tbc', 'n/a')
+        OR lower(btrim(bn.narrator_name)) ~
+             '(^|[^[:alnum:]])to be (announced|confirmed)([^[:alnum:]]|$)')
   )
   AND NOT EXISTS (
     SELECT 1 FROM author_book ab JOIN authors a ON a.id = ab.author_id
     WHERE ab.book_asin = b.asin
-      AND lower(btrim(a.name)) IN (
-        'to be announced', 'to be confirmed', 'tbd', 'tba', 'tbc', 'n/a')
+      AND (lower(btrim(a.name)) IN (
+             'to be announced', 'to be confirmed', 'tbd', 'tba', 'tbc', 'n/a')
+        OR lower(btrim(a.name)) ~
+             '(^|[^[:alnum:]])to be (announced|confirmed)([^[:alnum:]]|$)')
   )
 ORDER BY COALESCE(b.sku_group, b.asin), b.region, b.asin;

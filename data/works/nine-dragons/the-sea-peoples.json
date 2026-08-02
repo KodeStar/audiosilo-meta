@@ -1857,6 +1857,10 @@
             {
               "asin": "1774241064",
               "region": "us"
+            },
+            {
+              "asin": "B081562C97",
+              "region": "ca"
             }
           ],
           "chapters": [
@@ -1995,6 +1999,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "1774241064",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B081562C97",
               "type": "libex-import"
             }
           ],
@@ -8544,6 +8553,10 @@
             {
               "asin": "B07QGX9ZKW",
               "region": "us"
+            },
+            {
+              "asin": "B07QFSQVRH",
+              "region": "ca"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/71dktDjRrZL.jpg",
@@ -8560,6 +8573,11 @@
             {
               "imported_at": "2026-08-01",
               "ref": "B07QGX9ZKW",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07QFSQVRH",
               "type": "libex-import"
             }
           ],
@@ -12015,6 +12033,34 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B00YSPFCU6",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-secret-diary-of-adrian-mole-aged-13-3-4"
+        },
+        "stephen-mangan-2011": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B006QYKYVO",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81jaxdqhz+L.jpg",
+          "id": "stephen-mangan-2011",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "stephen-mangan"
+          ],
+          "publisher": "Penguin",
+          "release_date": "2011-12-29",
+          "runtime_min": 186,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B006QYKYVO",
               "type": "libex-import"
             }
           ],

@@ -1577,6 +1577,10 @@
             {
               "asin": "B0G884VWPT",
               "region": "us"
+            },
+            {
+              "asin": "B0G86YMLY3",
+              "region": "ca"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91uK6EwVJjL.jpg",
@@ -1593,6 +1597,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0G884VWPT",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0G86YMLY3",
               "type": "libex-import"
             }
           ],
@@ -13146,6 +13155,34 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0FTTHQ5XD",
+              "type": "libex-import"
+            }
+          ],
+          "work": "no-name-no-class-no-mercy"
+        },
+        "zachary-wiedenhoeft-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0GVL1GJB2",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81nXhhqGQrL.jpg",
+          "id": "zachary-wiedenhoeft-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "zachary-wiedenhoeft"
+          ],
+          "publisher": "Jon Cabrera",
+          "release_date": "2026-04-01",
+          "runtime_min": 444,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GVL1GJB2",
               "type": "libex-import"
             }
           ],

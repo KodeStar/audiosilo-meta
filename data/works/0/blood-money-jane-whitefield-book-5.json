@@ -2815,6 +2815,10 @@
             {
               "asin": "B0BDNZ2W19",
               "region": "us"
+            },
+            {
+              "asin": "B0BDP8T477",
+              "region": "ca"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/917lgqBOmPL.jpg",
@@ -2831,6 +2835,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0BDNZ2W19",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0BDP8T477",
               "type": "libex-import"
             }
           ],
@@ -3123,6 +3132,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "eric-jason-martin-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0GQK241TP",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71WMNxekMML.jpg",
+          "id": "eric-jason-martin-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "eric-jason-martin"
+          ],
+          "publisher": "Recorded Books",
+          "release_date": "2026-05-12",
+          "runtime_min": 420,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GQK241TP",
+              "type": "libex-import"
+            }
+          ],
+          "work": "blood-of-amber"
+        },
         "wil-wheaton-2012": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -4961,6 +4998,62 @@
             {
               "imported_at": "2026-07-30",
               "ref": "B00XV1ALO0",
+              "type": "libex-import"
+            }
+          ],
+          "work": "blood-of-elves"
+        },
+        "peter-kenny-2014-2": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00IDO9FRE",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81rfXQlvd2L.jpg",
+          "id": "peter-kenny-2014-2",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "peter-kenny"
+          ],
+          "publisher": "Gollancz",
+          "release_date": "2014-02-27",
+          "runtime_min": 671,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00IDO9FRE",
+              "type": "libex-import"
+            }
+          ],
+          "work": "blood-of-elves"
+        },
+        "peter-kenny-2015": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B079CDSG35",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81G8Zxi30VL.jpg",
+          "id": "peter-kenny-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "peter-kenny"
+          ],
+          "publisher": "Orbit",
+          "release_date": "2015-06-02",
+          "runtime_min": 655,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B079CDSG35",
               "type": "libex-import"
             }
           ],

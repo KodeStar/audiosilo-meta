@@ -7708,6 +7708,10 @@
             {
               "asin": "B08519T1V4",
               "region": "us"
+            },
+            {
+              "asin": "B08519Q998",
+              "region": "ca"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81CiJPEHc-L.jpg",
@@ -7724,6 +7728,11 @@
             {
               "imported_at": "2026-08-01",
               "ref": "B08519T1V4",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B08519Q998",
               "type": "libex-import"
             }
           ],
@@ -9195,6 +9204,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "robin-nixon-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0C1NK4T62",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81frCyEldqL.jpg",
+          "id": "robin-nixon-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "robin-nixon"
+          ],
+          "publisher": "Bookstream Audiobooks",
+          "release_date": "2023-04-06",
+          "runtime_min": 2,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0C1NK4T62",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-fox-and-the-cat"
+        },
         "sam-kusi-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -9349,6 +9386,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "robin-nixon-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0C1NGHP6B",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/817miYruRkL.jpg",
+          "id": "robin-nixon-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "robin-nixon"
+          ],
+          "publisher": "Bookstream Audiobooks",
+          "release_date": "2023-04-06",
+          "runtime_min": 3,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0C1NGHP6B",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-fox-and-the-horse"
+        },
         "sam-kusi-2025": {
           "abridged": false,
           "added_at": "2026-08-02",

@@ -1575,12 +1575,44 @@
       "language": "fr",
       "license": "CC0-1.0",
       "recordings": {
+        "jacques-salome-2005": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00TRQRYWK",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81FZ9RhP8NL.jpg",
+          "id": "jacques-salome-2005",
+          "language": "fr",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jacques-salome"
+          ],
+          "publisher": "Coffragants",
+          "release_date": "2005-04-27",
+          "runtime_min": 65,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00TRQRYWK",
+              "type": "libex-import"
+            }
+          ],
+          "work": "de-lamour-de-soi-a-lestime-de-soi"
+        },
         "jacques-salome-2017": {
           "abridged": false,
           "added_at": "2026-08-02",
           "asin": [
             {
               "asin": "B078HDDNB6",
+              "region": "us"
+            },
+            {
+              "asin": "B00TU0LAPU",
               "region": "us"
             }
           ],
@@ -1598,6 +1630,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B078HDDNB6",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00TU0LAPU",
               "type": "libex-import"
             }
           ],

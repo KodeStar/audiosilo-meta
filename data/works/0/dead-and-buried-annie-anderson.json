@@ -5624,6 +5624,10 @@
             {
               "asin": "B08G1XXXHG",
               "region": "us"
+            },
+            {
+              "asin": "B08G1VZ36H",
+              "region": "uk"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81hvSvF5avL.jpg",
@@ -5640,6 +5644,11 @@
             {
               "imported_at": "2026-08-01",
               "ref": "B08G1XXXHG",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B08G1VZ36H",
               "type": "libex-import"
             }
           ],
@@ -10169,6 +10178,10 @@
             {
               "asin": "B077G8JZDF",
               "region": "us"
+            },
+            {
+              "asin": "B077G8KDF5",
+              "region": "uk"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91Iqq6gY0RL.jpg",
@@ -10185,6 +10198,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B077G8JZDF",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B077G8KDF5",
               "type": "libex-import"
             }
           ],
@@ -14128,6 +14146,36 @@
       "id": "dead-mans-chest",
       "language": "en",
       "license": "CC0-1.0",
+      "recordings": {
+        "stephanie-daniel-2010": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B004D4J4NS",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91DiqJRzA4L.jpg",
+          "id": "stephanie-daniel-2010",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "stephanie-daniel"
+          ],
+          "publisher": "Bolinda Publishing Pty Ltd",
+          "release_date": "2010-11-19",
+          "runtime_min": 511,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B004D4J4NS",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dead-mans-chest"
+        }
+      },
       "sources": [
         {
           "imported_at": "2026-07-25",

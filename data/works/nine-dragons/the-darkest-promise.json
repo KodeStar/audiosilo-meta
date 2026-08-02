@@ -2764,6 +2764,10 @@
             {
               "asin": "B0BB5Y5PSQ",
               "region": "us"
+            },
+            {
+              "asin": "B0BB5KQSYP",
+              "region": "ca"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81OJ3FdmGVL.jpg",
@@ -2780,6 +2784,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0BB5Y5PSQ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0BB5KQSYP",
               "type": "libex-import"
             }
           ],
@@ -2862,6 +2871,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "richard-stibbard-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0GWL1PKSB",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/8107w73IJqL.jpg",
+          "id": "richard-stibbard-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "richard-stibbard"
+          ],
+          "publisher": "Anthony Pica Productions, LLC",
+          "release_date": "2026-04-09",
+          "runtime_min": 7,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GWL1PKSB",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-darning-needle"
+        },
         "sam-kusi-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -9385,6 +9422,34 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B002V1CIVK",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-day-of-the-triffids"
+        },
+        "kingsley-ben-adir-2021": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B09MG3YY3Y",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91eUJ0-VsyL.jpg",
+          "id": "kingsley-ben-adir-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kingsley-ben-adir"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2021-11-25",
+          "runtime_min": 493,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09MG3YY3Y",
               "type": "libex-import"
             }
           ],

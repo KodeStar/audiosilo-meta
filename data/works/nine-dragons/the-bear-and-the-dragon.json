@@ -2042,6 +2042,10 @@
             {
               "asin": "B0CFYMMKT5",
               "region": "us"
+            },
+            {
+              "asin": "B0GNCL51JZ",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91CsdPBrSeL.jpg",
@@ -2058,6 +2062,11 @@
             {
               "imported_at": "2026-08-01",
               "ref": "B0CFYMMKT5",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GNCL51JZ",
               "type": "libex-import"
             }
           ],
@@ -6682,6 +6691,10 @@
             {
               "asin": "B0H1JK9S7Y",
               "region": "us"
+            },
+            {
+              "asin": "B0H1J99SD8",
+              "region": "ca"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/71ysQ4BxjVL.jpg",
@@ -6698,6 +6711,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0H1JK9S7Y",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0H1J99SD8",
               "type": "libex-import"
             }
           ],
@@ -11099,6 +11117,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "richard-stibbard-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0GK318J33",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91K8+xcPZyL.jpg",
+          "id": "richard-stibbard-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "richard-stibbard"
+          ],
+          "publisher": "Anthony Pica Productions, LLC",
+          "release_date": "2026-01-27",
+          "runtime_min": 18,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GK318J33",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-beetle-who-went-on-his-travels"
+        },
         "sam-kusi-2025": {
           "abridged": false,
           "added_at": "2026-08-02",

@@ -1071,6 +1071,218 @@
         "work": "the-hanging-tree"
       }
     },
+    "the-hard-way": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A former investigator and major in the U.S. Army's Criminal Investigation Division, seven years removed from military service.",
+            "id": "jack-reacher",
+            "name": "Jack Reacher",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The head of Operational Security Consultants and John Gregory's employer. He urgently wants a direct account from the witness who saw the company Mercedes removed.",
+            "id": "edward-lane",
+            "name": "Edward Lane",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Edward Lane's missing wife, introduced through a photograph after he explains that she disappeared the previous morning.",
+            "id": "kate-lane",
+            "name": "Kate Lane",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Edward Lane's executive vice president and a retired British Army SAS sergeant. He locates Jack Reacher after the Mercedes is removed and escorts him to Lane to give an account of what he saw.",
+            "id": "john-gregory",
+            "name": "John Gregory",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former Navy SEAL serving among Edward Lane's military veterans.",
+            "id": "kowalski",
+            "name": "Kowalski",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A military veteran in Edward Lane's private-security group.",
+            "id": "carter-groom",
+            "name": "Carter Groom",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A military veteran serving in Edward Lane's private-security group.",
+            "id": "burke",
+            "name": "Burke",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "One of the military veterans assembled by Edward Lane during the search for his missing family.",
+            "id": "perez",
+            "name": "Perez",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "One of Edward Lane's private-security veterans, present when Reacher is recruited into the apparent kidnapping case.",
+            "id": "addison",
+            "name": "Addison",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Edward Lane's former wife, whose earlier disappearance may parallel Kate's.",
+            "id": "anne-lane",
+            "name": "Anne Lane",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Kate Lane's eight-year-old daughter from her first marriage. Her failure to return from a shopping trip with Kate turns the case into the apparent abduction of both mother and child.",
+            "id": "jade-lane",
+            "name": "Jade Lane",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The former-SAS driver assigned to Kate Lane and her daughter. He vanishes with them and their vehicle, making his unexplained absence part of the apparent kidnapping.",
+            "id": "lanes-missing-driver",
+            "name": "Lane's missing driver",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An unidentified man who rents and uses the otherwise empty Sixth Avenue observation apartment. He communicates in writing and appears unable to speak, so the investigation concludes that a separate partner handled the telephone calls.",
+            "id": "silent-observer",
+            "name": "Silent observer",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A private investigator and former FBI special agent who led the inquiry into Anne Lane's disappearance. She joins Reacher in comparing that unresolved case with the apparent abduction of Kate and Jade.",
+            "id": "lauren-pauling",
+            "name": "Lauren Pauling",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former Recon Marine whom Lane left behind after an operation in Burkina Faso. Reacher and Pauling find him alive but gravely disabled after years of captivity, and his ability to speak rules him out as the silent observer they seek.",
+            "id": "clay-james-hobart",
+            "name": "Clay James Hobart",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Clay James Hobart's sister and caregiver. She spent years pressing officials for information about him, giving investigators reason to consider her possible involvement while they examine grievances against Lane.",
+            "id": "dee-marie-graziano",
+            "name": "Dee Marie Graziano",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A source from the earlier Anne Lane investigation whose surveillance photographs help Reacher and Pauling trace Dee Marie Graziano's visits to Lane's home and the Hamptons before Kate disappears.",
+            "id": "patricia-joseph",
+            "name": "Patricia Joseph",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A British resident and former member of Lane's team. His empty apartment contains a blacked-out bedroom that appears to have been prepared to confine Kate and Jade, making him the investigation's principal new lead.",
+            "id": "graham-taylor",
+            "name": "Graham Taylor",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Susan Jackson's husband, Graham Taylor's brother-in-law, and a co-owner of Grange Farm in Norfolk. The farm becomes Reacher and Pauling's destination after they trace Taylor's British contact.",
+            "id": "anthony-jackson",
+            "name": "Anthony Jackson",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Graham Taylor's sister, Anthony Jackson's wife, and a co-owner of Grange Farm. Her family connection makes the Norfolk property a likely refuge for Taylor.",
+            "id": "susan-jackson",
+            "name": "Susan Jackson",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The eight-year-old daughter of Susan and Anthony Jackson. She belongs to the family at Grange Farm, where investigators believe Graham Taylor has sought shelter.",
+            "id": "melody-jackson",
+            "name": "Melody Jackson",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The local postmaster near Grange Farm. He confirms that Graham Taylor sent a thin packet secured with rubber bands to a hotel in New York.",
+            "id": "dave-kemp",
+            "name": "Dave Kemp",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B00LI7VIRS",
+            "type": "community"
+          }
+        ],
+        "work": "the-hard-way"
+      }
+    },
     "the-hedge-wizard": {
       "characters": {
         "characters": [

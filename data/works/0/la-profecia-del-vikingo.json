@@ -5452,6 +5452,10 @@
             {
               "asin": "B0CKRYL664",
               "region": "us"
+            },
+            {
+              "asin": "B0CKS1HGDB",
+              "region": "es"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81jxvMuFhfL.jpg",
@@ -5468,6 +5472,11 @@
             {
               "imported_at": "2026-08-01",
               "ref": "B0CKRYL664",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CKS1HGDB",
               "type": "libex-import"
             }
           ],
@@ -7537,6 +7546,10 @@
             {
               "asin": "B0DJRNJ7XD",
               "region": "us"
+            },
+            {
+              "asin": "B0DJRNW1QY",
+              "region": "es"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/918uWoqdE+L.jpg",
@@ -7553,6 +7566,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0DJRNJ7XD",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DJRNW1QY",
               "type": "libex-import"
             }
           ],
@@ -11513,6 +11531,10 @@
             {
               "asin": "B0F3XWPHSS",
               "region": "us"
+            },
+            {
+              "asin": "B0F3XYMG4T",
+              "region": "es"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91ftx78er9L.jpg",
@@ -11530,6 +11552,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0F3XWPHSS",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0F3XYMG4T",
               "type": "libex-import"
             }
           ],
@@ -12211,6 +12238,64 @@
             {
               "imported_at": "2026-08-02",
               "ref": "8858697057",
+              "type": "libex-import"
+            }
+          ],
+          "work": "la-sirenetta"
+        },
+        "daniela-fava-2010": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00UEH6Q52",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81u+k+BbfzL.jpg",
+          "id": "daniela-fava-2010",
+          "language": "it",
+          "license": "CC0-1.0",
+          "narrators": [
+            "daniela-fava",
+            "loretta-di-pisa",
+            "pietro-ubaldi"
+          ],
+          "publisher": "GoodMood",
+          "release_date": "2010-01-21",
+          "runtime_min": 17,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00UEH6Q52",
+              "type": "libex-import"
+            }
+          ],
+          "work": "la-sirenetta"
+        },
+        "luciano-caratto-2021": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B08WRGBNQ3",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91TvHZERJfL.jpg",
+          "id": "luciano-caratto-2021",
+          "language": "it",
+          "license": "CC0-1.0",
+          "narrators": [
+            "luciano-caratto"
+          ],
+          "publisher": "Saga Egmont",
+          "release_date": "2021-02-24",
+          "runtime_min": 66,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B08WRGBNQ3",
               "type": "libex-import"
             }
           ],

@@ -734,6 +734,14 @@
             {
               "asin": "B0DQXGKBPW",
               "region": "us"
+            },
+            {
+              "asin": "B0DQYTN576",
+              "region": "uk"
+            },
+            {
+              "asin": "B0DQXKR628",
+              "region": "de"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81bkgoeNPqL.jpg",
@@ -750,6 +758,16 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0DQXGKBPW",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DQYTN576",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DQXKR628",
               "type": "libex-import"
             }
           ],
@@ -1424,6 +1442,10 @@
             {
               "asin": "B0CXQCN8ZT",
               "region": "us"
+            },
+            {
+              "asin": "B0CXQC4XRX",
+              "region": "uk"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91+RfzJnFoL.jpg",
@@ -1440,6 +1462,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0CXQCN8ZT",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CXQC4XRX",
               "type": "libex-import"
             }
           ],
@@ -3001,6 +3028,10 @@
             {
               "asin": "B0GNSB642C",
               "region": "us"
+            },
+            {
+              "asin": "B0GNS8Q2FS",
+              "region": "de"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91XPErtK4YL.jpg",
@@ -3017,6 +3048,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0GNSB642C",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GNS8Q2FS",
               "type": "libex-import"
             }
           ],
@@ -5401,6 +5437,10 @@
             {
               "asin": "B07KX9PZVG",
               "region": "us"
+            },
+            {
+              "asin": "B07KX91D64",
+              "region": "ca"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91xral5pvkL.jpg",
@@ -5417,6 +5457,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B07KX9PZVG",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07KX91D64",
               "type": "libex-import"
             }
           ],
@@ -9285,6 +9330,56 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B002V57ULO",
+              "type": "libex-import"
+            }
+          ],
+          "work": "through-the-looking-glass-and-what-alice-found-there"
+        },
+        "fiona-shaw-1999": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002V0QLI2",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 2447012,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1702301,
+              "start_ms": 2447012,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2431315,
+              "start_ms": 4149313,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1527083,
+              "start_ms": 6580628,
+              "title": "Chapter 4"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91fce7zB1LL.jpg",
+          "id": "fiona-shaw-1999",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "fiona-shaw"
+          ],
+          "publisher": "Naxos AudioBooks",
+          "release_date": "1999-12-26",
+          "runtime_min": 135,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002V0QLI2",
               "type": "libex-import"
             }
           ],
