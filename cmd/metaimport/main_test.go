@@ -403,6 +403,107 @@ func TestModeFlagsAreMutuallyExclusive(t *testing.T) {
 	}
 }
 
+// TestConflictsFlagReachesTheImporterAndAppends is the --conflicts flag's accept
+// half. Two things have to hold and neither is visible from the importer's own
+// tests: the flag arrives as a WRITABLE sink (so a worklist row written during
+// planning is on disk when the process exits), and the file is opened for
+// APPEND, because a dump imported in chunks has to accumulate one worklist
+// across every chunk's run rather than each run truncating the last.
+func TestConflictsFlagReachesTheImporterAndAppends(t *testing.T) {
+	path := filepath.Join(t.TempDir(), "conflicts.ndjson")
+	if err := os.WriteFile(path, []byte("{\"run\":\"earlier chunk\"}\n"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	run := func(_ string, opts importer.Options) (importer.Summary, error) {
+		if opts.Conflicts == nil {
+			t.Fatal("--conflicts did not reach Options.Conflicts")
+		}
+		if _, err := opts.Conflicts.Write([]byte("{\"run\":\"this chunk\"}\n")); err != nil {
+			t.Errorf("write to the worklist: %v", err)
+		}
+		return importer.Summary{}, nil
+	}
+	captureStdout(t, func() {
+		if code := runSource("openaudible", []string{"books.json", "--conflicts", path}, run); code != 0 {
+			t.Errorf("exit code = %d, want 0", code)
+		}
+	})
+	raw, err := os.ReadFile(path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if want := "{\"run\":\"earlier chunk\"}\n{\"run\":\"this chunk\"}\n"; string(raw) != want {
+		t.Errorf("worklist =\n%q\nwant\n%q", raw, want)
+	}
+}
+
+// TestConflictsFlagAbsentLeavesTheSinkNil is the opt-in half, and it pins the
+// one way this flag could break every run that does not use it: a nil *os.File
+// assigned to the io.Writer field is a NON-nil interface, which the importer
+// would treat as a worklist and write into on the first conflict.
+func TestConflictsFlagAbsentLeavesTheSinkNil(t *testing.T) {
+	var got importer.Options
+	run := func(_ string, opts importer.Options) (importer.Summary, error) {
+		got = opts
+		return importer.Summary{}, nil
+	}
+	captureStdout(t, func() {
+		if code := runSource("openaudible", []string{"books.json"}, run); code != 0 {
+			t.Errorf("exit code = %d, want 0", code)
+		}
+	})
+	if got.Conflicts != nil {
+		t.Errorf("Options.Conflicts = %#v without the flag, want nil", got.Conflicts)
+	}
+}
+
+// TestConflictsFlagRejectedByLibexSelect keeps the flag's story consistent with
+// --enrich's: a flag pointed at a subcommand that cannot honour it says why.
+// Selection writes no records, so no row of it can contradict one - and the
+// refusal has to arrive before the export is read, or a mistyped invocation
+// costs a full pass over the dump first.
+func TestConflictsFlagRejectedByLibexSelect(t *testing.T) {
+	var code int
+	stderr := captureStderr(t, func() {
+		code = runLibexSelect([]string{"export.ndjson", "-o", "subset.ndjson", "--conflicts", "conflicts.ndjson"})
+	})
+	if code != 2 {
+		t.Errorf("exit code = %d, want 2", code)
+	}
+	if !strings.Contains(stderr, "--conflicts") || !strings.Contains(stderr, "libex-select") {
+		t.Errorf("stderr does not explain the refusal:\n%s", stderr)
+	}
+	if _, err := os.Stat("subset.ndjson"); err == nil {
+		t.Error("libex-select wrote its output despite the refused flag")
+	}
+}
+
+// TestConflictsFlagRejectsAnUnopenablePath refuses before the import runs: a
+// worklist that cannot be created is a mistyped invocation, and discovering it
+// six hours into a wave (or, worse, not discovering it) is the outcome this
+// avoids.
+func TestConflictsFlagRejectsAnUnopenablePath(t *testing.T) {
+	called := false
+	run := func(string, importer.Options) (importer.Summary, error) {
+		called = true
+		return importer.Summary{}, nil
+	}
+	path := filepath.Join(t.TempDir(), "no-such-dir", "conflicts.ndjson")
+	var code int
+	stderr := captureStderr(t, func() {
+		code = runSource("openaudible", []string{"books.json", "--conflicts", path}, run)
+	})
+	if code != 2 {
+		t.Errorf("exit code = %d, want 2", code)
+	}
+	if called {
+		t.Error("the importer ran despite an unopenable worklist path")
+	}
+	if !strings.Contains(stderr, "--conflicts") {
+		t.Errorf("stderr does not name the flag:\n%s", stderr)
+	}
+}
+
 // TestFailedRunPrintsNoSummary pins the ordering of the two things a finished
 // run reports. A run can fail BEFORE it plans anything - a data tree still in
 // the file-per-entity layout is refused when the store is opened - and printing

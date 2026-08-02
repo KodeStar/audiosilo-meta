@@ -11825,6 +11825,10 @@
             {
               "asin": "B0FPMSRNDH",
               "region": "us"
+            },
+            {
+              "asin": "B0FPMTKZ2S",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81++BO5vqIL.jpg",
@@ -11836,12 +11840,17 @@
           ],
           "publisher": "Podium Audio",
           "release_date": "2025-12-02",
-          "runtime_min": 1073,
+          "runtime_min": 1074,
           "sources": [
             {
               "imported_at": "2026-08-02",
               "ref": "B0FPMSRNDH",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FPMTKZ2S",
+              "type": "audiosilo-books-import"
             }
           ],
           "work": "a-clockwork-ogre-an-isekai-litrpg"
