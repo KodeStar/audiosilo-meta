@@ -109,6 +109,48 @@ var studioTail = map[string]bool{
 	"narrations":    true, // one-sided vocabulary would be arbitrary
 }
 
+// singleWordStudioBrands is the closed list of COINED brand words the bare tier
+// accepts as a ONE-token tail, and the one exception to minTailTokens.
+//
+// The floor exists because a one-token tail is the shape of a SURNAME that
+// happens to be a studio word: "Katherine Anne Press" would become "Katherine
+// Anne" and "Walt Disney Records" would collapse onto a different entity. That
+// argument turns entirely on the word being a plausible human name. A coined
+// brand is not one, and the list may only hold words measured to have ZERO
+// attestation as a human surname anywhere in the dump - which is what makes
+// dropping the floor for them safe rather than a widening of the same risk the
+// floor was put there to contain.
+//
+// The tail's identity comes from THIS LIST rather than from the census, so a
+// one-token brand tail does not have to be independently seen (a batch holding
+// only "Adriana Uribe Nuanxed" never sees "Nuanxed" on its own). The PERSON half
+// still does: the list says what the tail is, not that the head is a person.
+//
+// Adding a word means measuring it the same way: every dump credit name carrying
+// it is the brand, and none of them is somebody's name.
+var singleWordStudioBrands = map[string]bool{
+	// Nuanxed, a translation house credited as a bare concatenation: 33 distinct
+	// dump credit names, 94 author-side books and 1 narrator credit. Every one
+	// of the 33 is the brand - the bare "Nuanxed", "<person> Nuanxed",
+	// "<person> for Nuanxed", "Nuanxed - <person>" - and the dump has no credit
+	// anywhere carrying "Nuanxed" as a human surname. It is also attested
+	// standing alone as a credit, so the entity is real.
+	//
+	// Only the BARE form is in scope here. The "<person> for Nuanxed" family
+	// (~6 names) belongs to tier 2, whose tail vocabulary is deliberately
+	// narrowed to the one shape that tier measured, and widening it is its own
+	// evidence question.
+	"nuanxed": true,
+}
+
+// isEntityWord reports whether a FOLDED token marks its half as an ENTITY rather
+// than a person: a studio-tail word or a listed brand. It is the single spelling
+// of that question - a person half may not end on one (personHalfOK), and a tail
+// is only a tail because it does.
+func isEntityWord(folded string) bool {
+	return studioTail[folded] || singleWordStudioBrands[folded]
+}
+
 // corporateLegalSuffix is the sub-family excluded from the BARE tier. 12 of the
 // 34 bare-tier hits measured over the dump were pure legal-suffix trims ("Radio
 // Spirits Inc." -> "Radio Spirits", "Elle McNicoll Ltd", "McKinsey & Company
@@ -375,7 +417,23 @@ func tier3SeenSplit(name string, tokens []string, seen creditSeenFunc) (string, 
 	// token, so the vocabulary test is made once; the split point is then the
 	// LONGEST person half whose two sides have both been seen, so a cut keeps as
 	// much of the name as the evidence supports.
-	if !isBareShape(tokens, sawSeparator) || !tailIsStudio(tokens, bareStudioTail()) {
+	if !isBareShape(tokens, sawSeparator) {
+		return "", nil, false
+	}
+
+	// A listed brand is the one tail the bare tier takes at ONE token, and the
+	// list is the tail's whole evidence - so only the person half is put to the
+	// census. See singleWordStudioBrands.
+	if len(tokens) > 0 && singleWordStudioBrands[foldCredit(tokens[len(tokens)-1])] {
+		person := tokens[:len(tokens)-1]
+		personText := strings.Join(person, " ")
+		if personHalfOK(person, minPersonTokens) && seen.seen(personText) {
+			return personText, nil, true
+		}
+		return "", nil, false
+	}
+
+	if !tailIsStudio(tokens, bareStudioTail()) {
 		return "", nil, false
 	}
 	for i := len(tokens) - minTailTokens; i >= minPersonTokens; i-- {
@@ -503,7 +561,7 @@ func personHalfOK(tokens []string, minTokens int) bool {
 		return false
 	}
 	last := foldCredit(tokens[len(tokens)-1])
-	return !studioTail[last] && !isBoundaryToken(last)
+	return !isEntityWord(last) && !isBoundaryToken(last)
 }
 
 // tailIsStudio reports whether the tail's FINAL token is in vocab - the whole

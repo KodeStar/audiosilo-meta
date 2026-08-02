@@ -224,6 +224,16 @@ var roleQualifiers = map[string][]string{
 	"creator":              nil, // ~14 books; under-attested, held for a maintainer call
 	"producer":             nil, // 3 books, all narrator-side
 	"instrumental soloist": nil, // 1 book, narrator-side
+	// A dramatized production's director. 36 books / 12 distinct names pooled
+	// across the author and narrator sides ("Alison Belle Bews - director",
+	// "Sir Peter Hall - director", "Cassandra de Cuir - director"), well clear
+	// of the 3-book bar. It maps to nothing because the credit vocabulary
+	// excludes direction deliberately - it is a production role, not a
+	// contribution to the TEXT, which is what credits models. Leaving it out of
+	// the strip list is what minted alison-belle-bews-director, a second
+	// identity for a real person.
+	"director":  nil, // 36 books / 12 names
+	"directeur": nil, // 9 books / 1 name - the French spelling, same non-role
 
 	// German.
 	"herausgeber":  {model.RoleEditor},       // 44
