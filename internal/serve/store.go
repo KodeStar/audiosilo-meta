@@ -3,6 +3,7 @@ package serve
 import (
 	"database/sql"
 	"fmt"
+	"log"
 	"slices"
 	"strconv"
 	"strings"
@@ -21,11 +22,27 @@ type snapshot struct {
 	stats         Stats  // precomputed once, at load
 	schemaVersion int    // meta(schema_version); characters/recaps arrived in v2, recap_summaries in v3, work_genres in v4
 
+	// log is the Server's injected logger, for the query layer's degradation
+	// notices (a request that serves a lesser answer rather than failing). It is
+	// set when the Server adopts the snapshot; a snapshot built directly - a test,
+	// or any future caller - logs to the standard logger instead, never panics.
+	log *log.Logger
+
 	// The series-gap set is derived from the whole series table, so it is
 	// computed lazily and kept: the artifact behind a snapshot never changes.
 	gapsMu   sync.Mutex
 	gaps     []seriesGap
 	gapsDone bool
+}
+
+// logf writes a degradation notice through the Server's logger when the
+// snapshot has one.
+func (s *snapshot) logf(format string, args ...any) {
+	if s.log != nil {
+		s.log.Printf(format, args...)
+		return
+	}
+	log.Printf(format, args...)
 }
 
 // Stats is the /api/v1/stats payload; it is cached per snapshot.

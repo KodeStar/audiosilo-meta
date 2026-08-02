@@ -344,20 +344,33 @@ final token prefixed with `*`) so no user input can break the MATCH.
 A `search?q=` that names a series and a number ("jack reacher 2", "jack reacher
 02", "jack reacher book 2"/"band 2") additionally resolves that volume and
 returns it FIRST, ahead of the FTS hits (`seriespos.go`): the trailing token is
-read as a position, the rest resolves through the same FTS index restricted to
-series rows (whole residual first, so "the jungle book 2" is volume 2 of *The
-Jungle Book*, not of *The Jungle*), and the stated number is compared against
-`series_works.position` in Go - leading zeros normalized, `"2.5"`/`"1-3.5"`
-compared as the exact strings the schema promises. It is deliberately
-QUERY-side rather than extra text in the artifact's FTS row: bm25 cannot be
-steered to rank the volume first, the FTS tokenizer splits `"2.5"` into `2` and
-`5` (an indexed position would blur the novella into volume 2), and nothing
-about the artifact changes - no new table, no `SchemaVersion` question, nothing
-to version-gate, and the feature works against every already-published release.
-It fires only when the query ends in a number AND a series resolves AND that
-series holds a work at that position, so `1984`, `Fahrenheit 451` and every
-ordinary title search return exactly the page they returned before; the boost is
-additive and `/abs/search` is deliberately untouched. Business
+read as a position, the rest (the "residual") resolves through the same FTS
+index restricted to series rows, and the stated number is compared against
+`series_works.position` through `parsePositionRange` - the package's one copy of
+the position grammar, so `02` finds `2`, `2.50` finds `2.5`, and `2`, `2.5`,
+`1-3.5` stay three different volumes. A residual that names a series OUTRIGHT
+drops the partial matches (`preferWholeName`), so "jack reacher 2" is volume 2
+of *Jack Reacher* and not also of *The Hunt for Jack Reacher*, and the whole
+residual is tried before a trailing volume word is stripped, so "the jungle
+book 2" is volume 2 of *The Jungle Book*. It is deliberately QUERY-side rather
+than extra text in the artifact's FTS row: bm25 cannot be steered to rank the
+volume first, the FTS tokenizer splits `"2.5"` into `2` and `5` (an indexed
+position would blur the novella into volume 2), and nothing about the artifact
+changes - no new table, no `SchemaVersion` question, nothing to version-gate,
+and the feature works against every already-published release. It fires only
+when the query ends in a number AND a series resolves AND that series holds a
+work at that position, so `1984`, `Fahrenheit 451` and every ordinary title
+search return exactly the page they returned before; the boost is additive and
+`/abs/search` is deliberately untouched. Because the endpoint is
+unauthenticated, CORS-open and hit per keystroke, the probe is bounded on both
+sides: it matches the residual as WRITTEN (`ftsPhrase`, no prefix-star - a
+half-typed name simply gets no boost) and skips a residual made only of
+articles, one-letter tokens or bare volume words (`worthProbing`), stopwords
+being left out of the MATCH entirely. Without those two bounds a "the 1"
+keystroke walked a large fraction of the index (measured 110ms-237ms) and
+prepended three arbitrary volumes; with them every such query is byte-identical
+to the plain search page and within noise of its latency. A probe that errors
+degrades to "no boost" and is logged, never a 500. Business
 logic stays in `internal/serve`; `cmd/metaserve` is flag wiring only.
 
 The importer maps one export entry to a work + recording (+ people + series),

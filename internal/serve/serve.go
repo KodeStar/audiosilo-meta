@@ -136,6 +136,7 @@ func New(cfg Config) (*Server, error) {
 		if err != nil {
 			return nil, err
 		}
+		snap.log = s.log
 		s.cur.Store(snap)
 	} else if cfg.Poll {
 		if err := s.refresh(context.Background()); err != nil {

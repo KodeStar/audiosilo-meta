@@ -35,7 +35,19 @@ type seriesResult struct {
 // so no token is ever interpreted as an operator, and the final token gets a
 // trailing '*' for prefix matching. An all-punctuation query yields a harmless
 // empty-phrase match rather than a syntax error.
-func ftsQuery(q string) string {
+func ftsQuery(q string) string { return ftsMatch(q, true) }
+
+// ftsPhrase is ftsQuery without the trailing prefix-star: the same escaping,
+// matching only whole tokens. It is what a NAME lookup wants (see seriespos.go);
+// a prefix-star over a short query walks a large fraction of the index, which is
+// affordable for the one hit the user is typing towards and not for a lookup the
+// server issues on their behalf.
+func ftsPhrase(q string) string { return ftsMatch(q, false) }
+
+// ftsMatch is the single escaping implementation behind both: it is the one
+// place a token becomes an FTS5 phrase, so no caller can ever build a MATCH
+// expression a quote or an operator could break.
+func ftsMatch(q string, prefixLast bool) string {
 	tokens := strings.Fields(q)
 	if len(tokens) == 0 {
 		return `""`
@@ -44,7 +56,7 @@ func ftsQuery(q string) string {
 	for i, tok := range tokens {
 		escaped := strings.ReplaceAll(tok, `"`, `""`)
 		parts[i] = `"` + escaped + `"`
-		if i == len(tokens)-1 {
+		if prefixLast && i == len(tokens)-1 {
 			parts[i] += "*"
 		}
 	}
@@ -59,6 +71,11 @@ type searchHit struct{ kind, id string }
 // the duplicate an FTS hit would be, and truncates to the page size. The page
 // stays exactly limit long, so a boost costs the last FTS hit rather than
 // widening the response.
+//
+// It is the ONE place search results are deduped, so no producer needs its own
+// seen set. Prepending is only sound because /search returns a single ranked
+// page with no offset: there is no later page for a boost to shift a hit onto.
+// If the endpoint ever grows ?offset, the boost has to apply at offset 0 only.
 func mergeHits(boosted []string, ftsHits []searchHit, limit int) []searchHit {
 	if len(boosted) == 0 {
 		return ftsHits
@@ -100,9 +117,14 @@ func mergeHits(boosted []string, ftsHits []searchHit, limit int) []searchHit {
 // search box - so the per-page query count is fixed instead of proportional to
 // the number of work hits.
 func (s *snapshot) search(q string, limit int) ([]any, error) {
+	// A failed probe degrades to "no boost" instead of failing the request: the
+	// boost is an enrichment of a page the FTS query below produces on its own,
+	// and a 500 on a search the user could otherwise have had is the worse
+	// outcome. It is logged, so a broken probe is visible rather than silent.
 	boosted, err := s.seriesPositionHits(q)
 	if err != nil {
-		return nil, err
+		s.logf("serve: series-position probe for %q failed, serving the plain search page: %v", q, err)
+		boosted = nil
 	}
 
 	match := ftsQuery(q)

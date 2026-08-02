@@ -30,6 +30,8 @@ func seriesPositionCatalog() *model.Catalog {
 			person("george-orwell", "George Orwell"),
 			person("rudyard-kipling", "Rudyard Kipling"),
 			person("eric-nylund", "Eric Nylund"),
+			person("l-frank-baum", "L. Frank Baum"),
+			person("diane-capri", "Diane Capri"),
 		},
 		Works: []*model.Work{
 			work("killing-floor", "Killing Floor", "lee-child"),
@@ -48,6 +50,9 @@ func seriesPositionCatalog() *model.Catalog {
 			work("the-jungle-returns", "The Jungle Returns", "rudyard-kipling"),
 			work("halo-combat-evolved", "Halo: Combat Evolved", "eric-nylund"),
 			work("halo-2", "Halo 2", "eric-nylund"),
+			work("the-wonderful-wizard-of-oz", "The Wonderful Wizard of Oz", "l-frank-baum"),
+			work("the-marvelous-land-of-oz", "The Marvelous Land of Oz", "l-frank-baum"),
+			work("jack-in-a-box", "Jack in a Box", "diane-capri"),
 		},
 		Series: []*model.Series{
 			{
@@ -59,6 +64,22 @@ func seriesPositionCatalog() *model.Catalog {
 					{Work: "deep-down", Position: "2.5"},
 					{Work: "tripwire", Position: "3"},
 					{Work: "reacher-omnibus", Position: "1-3.5"},
+				},
+			},
+			// A series the residual matches only PARTIALLY. It must not ride along
+			// on "jack reacher 2", which names its own series outright.
+			{
+				ID: "the-hunt-for-jack-reacher", Name: "The Hunt for Jack Reacher", License: "CC0-1.0",
+				Authors: []string{"diane-capri"},
+				Works:   []model.SeriesWork{{Work: "jack-in-a-box", Position: "2"}},
+			},
+			// A two-letter series name: short is not the same as junk.
+			{
+				ID: "oz", Name: "Oz", License: "CC0-1.0",
+				Authors: []string{"l-frank-baum"},
+				Works: []model.SeriesWork{
+					{Work: "the-wonderful-wizard-of-oz", Position: "1"},
+					{Work: "the-marvelous-land-of-oz", Position: "2"},
 				},
 			},
 			{
@@ -158,9 +179,6 @@ func TestSearchSeriesPosition(t *testing.T) {
 		{"jack reacher band 2", "work:die-trying"},
 		{"jack reacher vol. 2", "work:die-trying"},
 		{"jack reacher #2", "work:die-trying"},
-		// A prefix of the series name still resolves (the probe goes through
-		// ftsQuery, which prefixes the last token).
-		{"jack reach 2", "work:die-trying"},
 		{"jack reacher 3", "work:tripwire"},
 		// Decimal and range positions match on the stated string.
 		{"jack reacher 2.5", "work:deep-down"},
@@ -272,6 +290,96 @@ func TestSearchSeriesPositionPrefersTheWholeName(t *testing.T) {
 	if got := first(searchIDs(t, snap, "the jungle 2")); got != "work:the-jungle-returns" {
 		t.Errorf("search('the jungle 2') first = %q, want work:the-jungle-returns", got)
 	}
+
+	// A residual that names a series OUTRIGHT drops the partial matches: "jack
+	// reacher 2" is volume 2 of Jack Reacher, not also of "The Hunt for Jack
+	// Reacher". Without this the boost prepends a fan-out of near-misses.
+	hits, err := snap.seriesPositionHits("jack reacher 2")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(hits) != 1 || hits[0] != "die-trying" {
+		t.Errorf("seriesPositionHits('jack reacher 2') = %v, want [die-trying] only", hits)
+	}
+	// With no whole-name match the ranked candidates all stand: "expanse 3"
+	// legitimately resolves against a series whose name merely contains it.
+	if hits, err := snap.seriesPositionHits("jungle 2"); err != nil {
+		t.Fatal(err)
+	} else if len(hits) < 2 {
+		t.Errorf("seriesPositionHits('jungle 2') = %v, want both jungle series' volume 2", hits)
+	}
+}
+
+func TestPreferWholeName(t *testing.T) {
+	cands := []seriesCandidate{
+		{id: "the-hunt-for-jack-reacher", name: "The Hunt for Jack Reacher"},
+		{id: "jack-reacher", name: "Jack Reacher"},
+	}
+	got := preferWholeName(cands, "jack reacher")
+	if len(got) != 1 || got[0].id != "jack-reacher" {
+		t.Errorf("preferWholeName(exact) = %v, want the jack-reacher series only", got)
+	}
+	// Punctuation and case are not identity: "halo combat evolved" names it.
+	if got := preferWholeName([]seriesCandidate{{id: "a", name: "Halo: Combat Evolved"}, {id: "b", name: "Halo"}},
+		"Halo, Combat Evolved"); len(got) != 1 || got[0].id != "a" {
+		t.Errorf("preferWholeName(punctuation) = %v, want [a]", got)
+	}
+	// No whole-name match: every ranked candidate stands.
+	if got := preferWholeName(cands, "reacher"); len(got) != 2 {
+		t.Errorf("preferWholeName(partial) = %v, want both candidates", got)
+	}
+}
+
+// TestSeriesPositionSkipsJunkResiduals is the COST guard for the probe, and the
+// reason there is no EXPLAIN-based one (see the note in index_test.go). Each of
+// these residuals matches a large share of the series table, so probing it would
+// pay for a whole-match-set bm25 sort on every keystroke - and would prepend
+// three arbitrary volumes to the page. The fixture holds series named "The
+// Jungle"/"The Jungle Book" with a work at position 1, so a nil result here is
+// the SKIP, not an absence of data.
+func TestSeriesPositionSkipsJunkResiduals(t *testing.T) {
+	snap := snapshotFor(t, seriesPositionCatalog())
+	for _, q := range []string{
+		"the 1",   // article only
+		"the 100", // the same, mid-keystroke on a numeric title
+		"s 1",     // one letter (measured at 237ms with a prefix-star probe)
+		"t 1",
+		"a 1",
+		"book 2", // a bare volume word names no series
+		"part 1",
+		// No prefix-star: a half-typed name is not resolved (the FTS page still
+		// serves that user).
+		"jack reach 2",
+		"jack reacher b 2",
+	} {
+		hits, err := snap.seriesPositionHits(q)
+		if err != nil {
+			t.Fatalf("seriesPositionHits(%q): %v", q, err)
+		}
+		if hits != nil {
+			t.Errorf("seriesPositionHits(%q) = %v, want no boost", q, hits)
+		}
+	}
+	// The gate is about junk, not about short names: a two-letter series name
+	// still resolves.
+	if got := first(searchIDs(t, snap, "oz 2")); got != "work:the-marvelous-land-of-oz" {
+		t.Errorf("search('oz 2') first = %q, want work:the-marvelous-land-of-oz", got)
+	}
+}
+
+func TestWorthProbing(t *testing.T) {
+	worth := []string{"jack reacher", "oz", "it", "the expanse", "the 100 club", "halo"}
+	for _, r := range worth {
+		if !worthProbing(r) {
+			t.Errorf("worthProbing(%q) = false, want true", r)
+		}
+	}
+	junk := []string{"", "  ", "the", "a", "s", "t", "die", "el", "book", "vol.", "part", "the a of", "j r"}
+	for _, r := range junk {
+		if worthProbing(r) {
+			t.Errorf("worthProbing(%q) = true, want false", r)
+		}
+	}
 }
 
 func TestParseSeriesPositionQuery(t *testing.T) {
@@ -289,9 +397,10 @@ func TestParseSeriesPositionQuery(t *testing.T) {
 		{"jack reacher book 2", "2", []string{"jack reacher book", "jack reacher"}},
 		{"Jack Reacher Vol. 2", "2", []string{"Jack Reacher Vol.", "Jack Reacher"}},
 		{"die tribute von panem band 2", "2", []string{"die tribute von panem band", "die tribute von panem"}},
-		// A one-token residual that IS a volume word keeps the word: stripping it
-		// would leave nothing to resolve.
-		{"buch 2", "2", []string{"buch"}},
+		// A one-token residual keeps the word even when it is a volume word:
+		// stripping it would leave nothing to resolve. (worthProbing then declines
+		// to spend a query on it - the grammar and the cost gate are separate.)
+		{"part 2", "2", []string{"part"}},
 	}
 	for _, tc := range cases {
 		got, ok := parseSeriesPositionQuery(tc.query)
@@ -325,22 +434,33 @@ func TestParseSeriesPositionQuery(t *testing.T) {
 	}
 }
 
-func TestPositionKey(t *testing.T) {
-	cases := map[string]string{
-		"2": "2", "02": "2", "002": "2", "0": "0", "00": "0",
-		"2.5": "2.5", "02.5": "2.5", "1-3.5": "1-3.5", "01-03.5": "1-3.5",
-		"10": "10", "": "", " 2 ": "2",
+// TestPositionsEqual pins the comparison the boost matches on. It runs through
+// parsePositionRange - the package's one copy of the position grammar - so a
+// stated number is read exactly as the series listing reads a stored one.
+func TestPositionsEqual(t *testing.T) {
+	equal := [][2]string{
+		{"2", "2"}, {"02", "2"}, {"2", "02"}, {"002", "2"}, {"0", "00"},
+		{"2.5", "2.5"}, {"02.5", "2.5"}, {"1-3.5", "1-3.5"}, {"01-03.5", "1-3.5"},
+		{" 2 ", "2"},
+		// A trailing-zero decimal is the SAME volume, which a string compare got
+		// wrong: nothing in the tree writes "2.50", but a user may type it.
+		{"2.50", "2.5"},
 	}
-	for in, want := range cases {
-		if got := positionKey(in); got != want {
-			t.Errorf("positionKey(%q) = %q, want %q", in, got, want)
+	for _, pair := range equal {
+		if !positionsEqual(pair[0], pair[1]) {
+			t.Errorf("positionsEqual(%q, %q) = false, want true", pair[0], pair[1])
 		}
 	}
 	// Distinct positions stay distinct: the FTS tokenizer would fold these
 	// together, which is exactly why the comparison is done here instead.
-	for _, pair := range [][2]string{{"2", "2.5"}, {"2", "1-3.5"}, {"2.5", "2.50"}} {
-		if positionKey(pair[0]) == positionKey(pair[1]) {
-			t.Errorf("positionKey collapsed %q and %q", pair[0], pair[1])
+	notEqual := [][2]string{
+		{"2", "2.5"}, {"2", "1-3.5"}, {"1-3.5", "1-3"}, {"2", "20"},
+		// Neither side parses as a position, so nothing matches nothing.
+		{"", ""}, {"abc", "abc"}, {"2", "abc"},
+	}
+	for _, pair := range notEqual {
+		if positionsEqual(pair[0], pair[1]) {
+			t.Errorf("positionsEqual(%q, %q) = true, want false", pair[0], pair[1])
 		}
 	}
 }
