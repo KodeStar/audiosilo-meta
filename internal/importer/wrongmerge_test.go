@@ -725,6 +725,122 @@ func TestExactCreditListWinsOverAReducedMatch(t *testing.T) {
 	}
 }
 
+// kikiTree seeds the Kiki's Delivery Service pair from seed wave 7. Both works
+// lead their author list with the TRANSLATOR, so neither one's slug is built
+// from its authors[0]; the bare slug holds the two-credit edition and the
+// suffixed one the edition that also credits the illustrator as an author.
+//
+// The pair is not a defect. The illustrator is a plain author on one side and
+// absent from the other, so the identity sets are {eiko-kadono} against
+// {eiko-kadono, joe-todd-stanton} and matchWork's subsumption refuses them:
+// the larger identity names a person the smaller side does not credit at ALL,
+// which is precisely the clause that keeps two genuinely different credit lists
+// apart. The suffixed work is therefore correctly minted, at the suffix today's
+// chain composes - the first IDENTITY author, not the first listed one.
+func kikiTree(t *testing.T) string {
+	t.Helper()
+	dataDir := t.TempDir()
+	seedTree(t, dataDir, map[string]string{
+		"people/em/emily-balistrieri.json": personRec("emily-balistrieri", "Emily Balistrieri"),
+		"people/ei/eiko-kadono.json":       personRec("eiko-kadono", "Eiko Kadono"),
+		"people/jo/joe-todd-stanton.json":  personRec("joe-todd-stanton", "Joe Todd-Stanton"),
+		"people/ki/kim-mai-guest.json":     personRec("kim-mai-guest", "Kim Mai Guest"),
+		"works/ki/kikis-delivery-service/work.json": workRec("kikis-delivery-service",
+			"Kiki's Delivery Service", "en", `"emily-balistrieri","eiko-kadono"`,
+			`{"person":"emily-balistrieri","role":"translator"}`),
+		"works/ki/kikis-delivery-service/recordings/kim-mai-guest-2020.json": recRec(
+			"kikis-delivery-service", "kim-mai-guest-2020", "en", "kim-mai-guest", "B0KIKI0001", 240),
+		"works/ki/kikis-delivery-service-eiko-kadono/work.json": workRec("kikis-delivery-service-eiko-kadono",
+			"Kiki's Delivery Service", "en", `"emily-balistrieri","eiko-kadono","joe-todd-stanton"`,
+			`{"person":"emily-balistrieri","role":"translator"}`),
+		"works/ki/kikis-delivery-service-eiko-kadono/recordings/kim-mai-guest-2025.json": recRec(
+			"kikis-delivery-service-eiko-kadono", "kim-mai-guest-2025", "en", "kim-mai-guest", "B0KIKI0002", 245),
+	})
+	return dataDir
+}
+
+// kikiRow is the row for the illustrated edition, spelled the way the source
+// spells it: the translator first, then the two people identity is decided on.
+const kikiRow = `{"name":"Emily Balistrieri - Translator"},{"name":"Eiko Kadono"},{"name":"Joe Todd-Stanton"}`
+
+// TestIdentitySuffixedWorkIsFoundWhenTheRowLeadsWithACredit is the Kiki case:
+// the work sits at its first IDENTITY author's suffix while its authors[0] is a
+// role credit, so a chain rooted at the first LISTED author reaches neither the
+// work nor anything near it. Production composes the right root - this pins that
+// it does, because the real-data slug test's recomputation now relies on it.
+func TestIdentitySuffixedWorkIsFoundWhenTheRowLeadsWithACredit(t *testing.T) {
+	dataDir := kikiTree(t)
+	sum := runLibexInto(t, dataDir, rows(libexRow{
+		asin: "B0KIKI0003", title: "Kiki's Delivery Service", minutes: 245,
+		authors: kikiRow, narrators: `{"name":"Bo Lecteur"}`,
+	}))
+	if sum.NewWorks != 0 {
+		t.Errorf("NewWorks = %d, want 0: kikis-delivery-service-eiko-kadono was unreachable", sum.NewWorks)
+	}
+	if !entryExists(t, dataDir, recAddr("kikis-delivery-service-eiko-kadono", "bo-lecteur-2020")) {
+		t.Error("the new narration did not land on the identity-suffixed work")
+	}
+	if entryExists(t, dataDir, recAddr("kikis-delivery-service", "bo-lecteur-2020")) {
+		t.Error("the illustrated edition was absorbed by the bare slug, whose identity omits the illustrator")
+	}
+}
+
+// TestChainIsRootedAtTheIdentityAuthor states the Kiki round-trip's mechanism as
+// a shape: the MINTABLE suffix and the numeric tail both hang off the first
+// IDENTITY author, and the role-credited people the full list adds are reachable
+// as probes. Rooting them at the first LISTED author instead - which is what a
+// reader of authors[0] alone assumes - puts the whole chain on a translator.
+func TestChainIsRootedAtTheIdentityAuthor(t *testing.T) {
+	authors := workAuthors{
+		all:      []string{"emily-balistrieri", "eiko-kadono", "joe-todd-stanton"},
+		identity: []string{"eiko-kadono", "joe-todd-stanton"},
+	}
+	cands, primary := workCandidates("kikis-delivery-service", authors, positionClaim{})
+
+	var mintable, probes []string
+	for _, c := range cands[:primary] {
+		if c.probeOnly {
+			probes = append(probes, c.slug)
+		} else {
+			mintable = append(mintable, c.slug)
+		}
+	}
+	wantMintable := []string{"kikis-delivery-service", "kikis-delivery-service-eiko-kadono"}
+	if !slices.Equal(mintable, wantMintable) {
+		t.Errorf("mintable candidates = %v, want %v", mintable, wantMintable)
+	}
+	// Every other credited person is a place to LOOK, in identity-then-full order.
+	wantProbes := []string{"kikis-delivery-service-joe-todd-stanton", "kikis-delivery-service-emily-balistrieri"}
+	if !slices.Equal(probes, wantProbes) {
+		t.Errorf("author probes = %v, want %v", probes, wantProbes)
+	}
+	if got := cands[primary].slug; got != "kikis-delivery-service-eiko-kadono-2" {
+		t.Errorf("first numeric candidate = %q, want the identity author's", got)
+	}
+}
+
+// TestAnUncreditedCoAuthorKeepsTheWorksApart is the other half of the same pair:
+// the bare work must stay reachable by ITS own row, and the two must not
+// collapse. Without the second assertion the first is satisfiable by merging
+// everything, which is the failure mode subsumption exists to refuse.
+func TestAnUncreditedCoAuthorKeepsTheWorksApart(t *testing.T) {
+	dataDir := kikiTree(t)
+	sum := runLibexInto(t, dataDir, rows(libexRow{
+		asin: "B0KIKI0004", title: "Kiki's Delivery Service", minutes: 240,
+		authors:   `{"name":"Emily Balistrieri - Translator"},{"name":"Eiko Kadono"}`,
+		narrators: `{"name":"Bo Lecteur"}`,
+	}))
+	if sum.NewWorks != 0 {
+		t.Errorf("NewWorks = %d, want 0: the bare work was unreachable by its own row", sum.NewWorks)
+	}
+	if !entryExists(t, dataDir, recAddr("kikis-delivery-service", "bo-lecteur-2020")) {
+		t.Error("the two-credit row did not land on the bare work")
+	}
+	if entryExists(t, dataDir, recAddr("kikis-delivery-service-eiko-kadono", "bo-lecteur-2020")) {
+		t.Error("the two-credit row was absorbed by the work that also credits the illustrator")
+	}
+}
+
 // ---------------------------------------------------------------------------
 // The recordings-only mode's own reporting
 
