@@ -1107,6 +1107,22 @@
             {
               "asin": "B093CRF1HW",
               "region": "us"
+            },
+            {
+              "asin": "B093CSX693",
+              "region": "ca"
+            },
+            {
+              "asin": "B093CPXQ18",
+              "region": "uk"
+            },
+            {
+              "asin": "B093CP9BTP",
+              "region": "au"
+            },
+            {
+              "asin": "B093CT19RW",
+              "region": "de"
             }
           ],
           "chapters": [
@@ -1856,6 +1872,26 @@
             {
               "imported_at": "2026-08-01",
               "ref": "B093CRF1HW",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B093CSX693",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B093CPXQ18",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B093CP9BTP",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B093CT19RW",
               "type": "libex-import"
             }
           ],
@@ -5003,6 +5039,10 @@
             {
               "asin": "B0CM9HRW4C",
               "region": "us"
+            },
+            {
+              "asin": "B0CM9H2X9B",
+              "region": "de"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91ZRKIACvjL.jpg",
@@ -5019,6 +5059,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0CM9HRW4C",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CM9H2X9B",
               "type": "libex-import"
             }
           ],
@@ -5176,6 +5221,34 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0DPGMGWGK",
+              "type": "libex-import"
+            }
+          ],
+          "work": "jungle-fever"
+        },
+        "cindy-palmer-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0GXGRMB7N",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91ahh2X-sUL.jpg",
+          "id": "cindy-palmer-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "cindy-palmer"
+          ],
+          "publisher": "Lexy Timms",
+          "release_date": "2026-04-17",
+          "runtime_min": 549,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GXGRMB7N",
               "type": "libex-import"
             }
           ],

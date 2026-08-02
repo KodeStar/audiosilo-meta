@@ -397,6 +397,10 @@
             {
               "asin": "B0DJH8PM7B",
               "region": "us"
+            },
+            {
+              "asin": "B0DNTN7TZQ",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91TFEcePrFL.jpg",
@@ -414,6 +418,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0DJH8PM7B",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DNTN7TZQ",
               "type": "libex-import"
             }
           ],
@@ -6517,6 +6526,34 @@
             }
           ],
           "work": "a-darker-place"
+        },
+        "michael-page-2010": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0042GZIIC",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81Q0iZjWALL.jpg",
+          "id": "michael-page-2010",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "michael-page"
+          ],
+          "publisher": "Brilliance Audio",
+          "release_date": "2010-09-17",
+          "runtime_min": 271,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0042GZIIC",
+              "type": "libex-import"
+            }
+          ],
+          "work": "a-darker-place"
         }
       },
       "sources": [
@@ -8861,6 +8898,64 @@
       "id": "a-daughters-guide-to-mothers-and-murder",
       "language": "en",
       "license": "CC0-1.0",
+      "recordings": {
+        "karen-cass-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0F25B2S3R",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81vLgVTFZzL.jpg",
+          "id": "karen-cass-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "karen-cass"
+          ],
+          "publisher": "W. F. Howes Ltd",
+          "release_date": "2025-06-24",
+          "runtime_min": 552,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0F25B2S3R",
+              "type": "libex-import"
+            }
+          ],
+          "work": "a-daughters-guide-to-mothers-and-murder"
+        },
+        "sarah-zimmerman-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0DZKDW18W",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91-Q7ma+SGL.jpg",
+          "id": "sarah-zimmerman-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "sarah-zimmerman"
+          ],
+          "publisher": "Recorded Books",
+          "release_date": "2025-06-24",
+          "runtime_min": 513,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DZKDW18W",
+              "type": "libex-import"
+            }
+          ],
+          "work": "a-daughters-guide-to-mothers-and-murder"
+        }
+      },
       "sources": [
         {
           "imported_at": "2026-07-25",

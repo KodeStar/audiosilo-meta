@@ -6155,6 +6155,10 @@
             {
               "asin": "B0087EZFDI",
               "region": "us"
+            },
+            {
+              "asin": "B0087EYSEK",
+              "region": "uk"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91AKyGW1JqL.jpg",
@@ -6171,6 +6175,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0087EZFDI",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0087EYSEK",
               "type": "libex-import"
             }
           ],
@@ -6214,6 +6223,10 @@
             {
               "asin": "B00TJJZ2Q0",
               "region": "us"
+            },
+            {
+              "asin": "B00E9PNST2",
+              "region": "de"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/919us2kL+PL.jpg",
@@ -6230,6 +6243,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B00TJJZ2Q0",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00E9PNST2",
               "type": "libex-import"
             }
           ],
@@ -12755,6 +12773,10 @@
             {
               "asin": "B0DJFZCJBB",
               "region": "us"
+            },
+            {
+              "asin": "B0DJG13H68",
+              "region": "uk"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91Nqrbqx1ZL.jpg",
@@ -12771,6 +12793,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0DJFZCJBB",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DJG13H68",
               "type": "libex-import"
             }
           ],
@@ -15387,6 +15414,118 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "glenn-hascall-2014": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00LMDAKLS",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/919PHCdfVzL.jpg",
+          "id": "glenn-hascall-2014",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "glenn-hascall"
+          ],
+          "publisher": "Spoken Realms",
+          "release_date": "2014-07-09",
+          "runtime_min": 11,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00LMDAKLS",
+              "type": "libex-import"
+            }
+          ],
+          "work": "hans-in-luck"
+        },
+        "katie-haigh-2018": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B07BHP8K7M",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/8157xp4UauL.jpg",
+          "id": "katie-haigh-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "katie-haigh"
+          ],
+          "publisher": "Astorg Audio",
+          "release_date": "2018-03-19",
+          "runtime_min": 11,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07BHP8K7M",
+              "type": "libex-import"
+            }
+          ],
+          "work": "hans-in-luck"
+        },
+        "paul-gibson-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0D35VFWBH",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81x0KubKKvL.jpg",
+          "id": "paul-gibson-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "paul-gibson"
+          ],
+          "publisher": "Strelbytskyy Multimedia Publishing",
+          "release_date": "2024-05-02",
+          "runtime_min": 13,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0D35VFWBH",
+              "type": "libex-import"
+            }
+          ],
+          "work": "hans-in-luck"
+        },
+        "robin-nixon-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0C4ZBXDYG",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81rqN+wHl3L.jpg",
+          "id": "robin-nixon-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "robin-nixon"
+          ],
+          "publisher": "Bookstream Audiobooks",
+          "release_date": "2023-05-12",
+          "runtime_min": 12,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0C4ZBXDYG",
+              "type": "libex-import"
+            }
+          ],
+          "work": "hans-in-luck"
+        },
         "sam-kusi-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -15717,6 +15856,181 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "alix-martin-2022": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B09PL4LFTP",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81cq3wvjUsL.jpg",
+          "id": "alix-martin-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alix-martin"
+          ],
+          "publisher": "Bookstream Audiobooks",
+          "release_date": "2022-01-10",
+          "runtime_min": 21,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09PL4LFTP",
+              "type": "libex-import"
+            }
+          ],
+          "work": "hansel-and-gretel-brothers-grimm"
+        },
+        "katie-haigh-2015": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B019EAAC7C",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1066746,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81lCi8d1euL.jpg",
+          "id": "katie-haigh-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "katie-haigh"
+          ],
+          "publisher": "Saga Egmont",
+          "release_date": "2015-12-17",
+          "runtime_min": 17,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B019EAAC7C",
+              "type": "libex-import"
+            }
+          ],
+          "work": "hansel-and-gretel-brothers-grimm"
+        },
+        "laura-paton-2013": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00GWNYL72",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91+NnfwLhuL.jpg",
+          "id": "laura-paton-2013",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "laura-paton"
+          ],
+          "publisher": "Naxos AudioBooks",
+          "release_date": "2013-11-25",
+          "runtime_min": 13,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00GWNYL72",
+              "type": "libex-import"
+            }
+          ],
+          "work": "hansel-and-gretel-brothers-grimm"
+        },
+        "mike-vendetti-2013": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00EUS6NPE",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1ytsbMTElL.jpg",
+          "id": "mike-vendetti-2013",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "mike-vendetti"
+          ],
+          "publisher": "Spoken Realms",
+          "release_date": "2013-08-30",
+          "runtime_min": 18,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00EUS6NPE",
+              "type": "libex-import"
+            }
+          ],
+          "work": "hansel-and-gretel-brothers-grimm"
+        },
+        "richard-williams-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0D35PYZG5",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81Nr7qoSGIL.jpg",
+          "id": "richard-williams-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "richard-williams"
+          ],
+          "publisher": "Strelbytskyy Multimedia Publishing",
+          "release_date": "2024-05-02",
+          "runtime_min": 17,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0D35PYZG5",
+              "type": "libex-import"
+            }
+          ],
+          "work": "hansel-and-gretel-brothers-grimm"
+        },
+        "robin-nixon-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0C4ZCBRTF",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81yOE3BaRiL.jpg",
+          "id": "robin-nixon-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "robin-nixon"
+          ],
+          "publisher": "Bookstream Audiobooks",
+          "release_date": "2023-05-12",
+          "runtime_min": 16,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0C4ZCBRTF",
+              "type": "libex-import"
+            }
+          ],
+          "work": "hansel-and-gretel-brothers-grimm"
+        },
         "sam-kusi-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -15806,6 +16120,34 @@
             {
               "imported_at": "2026-08-02",
               "ref": "8865976039",
+              "type": "libex-import"
+            }
+          ],
+          "work": "hansel-e-gretel"
+        },
+        "unknown-2007": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00U5K2PNA",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91nb-v5O8LL.jpg",
+          "id": "unknown-2007",
+          "language": "it",
+          "license": "CC0-1.0",
+          "narrators": [
+            "unknown"
+          ],
+          "publisher": "GoodMood",
+          "release_date": "2007-11-22",
+          "runtime_min": 10,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00U5K2PNA",
               "type": "libex-import"
             }
           ],

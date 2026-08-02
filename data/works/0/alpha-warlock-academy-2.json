@@ -2442,6 +2442,10 @@
             {
               "asin": "B078JDTNW9",
               "region": "us"
+            },
+            {
+              "asin": "B0BZ93K6LZ",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/917Jhd5zTJL.jpg",
@@ -2458,6 +2462,11 @@
             {
               "imported_at": "2026-08-01",
               "ref": "B078JDTNW9",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0BZ93K6LZ",
               "type": "libex-import"
             }
           ],
@@ -4932,6 +4941,10 @@
             {
               "asin": "B0BDMF53MD",
               "region": "us"
+            },
+            {
+              "asin": "B0BDMF433V",
+              "region": "de"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91fBppRPWeL.jpg",
@@ -4948,6 +4961,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0BDMF53MD",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0BDMF433V",
               "type": "libex-import"
             }
           ],
@@ -5036,6 +5054,10 @@
             {
               "asin": "B07L9WRNLV",
               "region": "us"
+            },
+            {
+              "asin": "B07L9ZN9N8",
+              "region": "de"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/A1tuKOShYjL.jpg",
@@ -5057,6 +5079,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B07L9WRNLV",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07L9ZN9N8",
               "type": "libex-import"
             }
           ],
@@ -5199,6 +5226,10 @@
             {
               "asin": "B07M6Y4JB5",
               "region": "us"
+            },
+            {
+              "asin": "B07MHXH111",
+              "region": "de"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91Ot8e4EbRL.jpg",
@@ -5215,6 +5246,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B07M6Y4JB5",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07MHXH111",
               "type": "libex-import"
             }
           ],
@@ -5451,6 +5487,104 @@
       "language": "de",
       "license": "CC0-1.0",
       "recordings": {
+        "deborah-mock-2022": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0B1356J6T",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 419166,
+              "start_ms": 0,
+              "title": "Kapitel 1"
+            },
+            {
+              "length_ms": 382293,
+              "start_ms": 419166,
+              "title": "Kapitel 2"
+            },
+            {
+              "length_ms": 258368,
+              "start_ms": 801459,
+              "title": "Kapitel 3"
+            },
+            {
+              "length_ms": 303252,
+              "start_ms": 1059827,
+              "title": "Kapitel 4"
+            },
+            {
+              "length_ms": 69566,
+              "start_ms": 1363079,
+              "title": "Kapitel 5"
+            },
+            {
+              "length_ms": 166765,
+              "start_ms": 1432645,
+              "title": "Kapitel 6"
+            },
+            {
+              "length_ms": 322060,
+              "start_ms": 1599410,
+              "title": "Kapitel 7"
+            },
+            {
+              "length_ms": 159776,
+              "start_ms": 1921470,
+              "title": "Kapitel 8"
+            },
+            {
+              "length_ms": 401333,
+              "start_ms": 2081246,
+              "title": "Kapitel 9"
+            },
+            {
+              "length_ms": 157942,
+              "start_ms": 2482579,
+              "title": "Kapitel 10"
+            },
+            {
+              "length_ms": 384754,
+              "start_ms": 2640521,
+              "title": "Kapitel 11"
+            },
+            {
+              "length_ms": 156757,
+              "start_ms": 3025275,
+              "title": "Kapitel 12"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81h3lkxhogL.jpg",
+          "id": "deborah-mock-2022",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "deborah-mock",
+            "frank-gustavus",
+            "gabriele-libbach",
+            "jonas-kirsch",
+            "julian-greis",
+            "june-riedeberger",
+            "katja-brugger",
+            "katja-danowski",
+            "michael-prelle"
+          ],
+          "publisher": "Oetinger Media",
+          "release_date": "2022-05-11",
+          "runtime_min": 52,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0B1356J6T",
+              "type": "libex-import"
+            }
+          ],
+          "work": "als-michel-den-kopf-in-die-suppenschussel-steckte"
+        },
         "ursula-illert-2021": {
           "abridged": true,
           "added_at": "2026-08-02",
@@ -5713,6 +5847,10 @@
             {
               "asin": "B0BTJ8JJ83",
               "region": "us"
+            },
+            {
+              "asin": "B0BTJ7CT6M",
+              "region": "ca"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91Nj+cZOjpL.jpg",
@@ -5729,6 +5867,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0BTJ8JJ83",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0BTJ7CT6M",
               "type": "libex-import"
             }
           ],
@@ -9524,6 +9667,10 @@
             {
               "asin": "B00TJJXVQI",
               "region": "us"
+            },
+            {
+              "asin": "B00G5HC0NM",
+              "region": "de"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91rFY+ecx-L.jpg",
@@ -9540,6 +9687,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B00TJJXVQI",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00G5HC0NM",
               "type": "libex-import"
             }
           ],

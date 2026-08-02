@@ -1010,6 +1010,10 @@
             {
               "asin": "1705200400",
               "region": "us"
+            },
+            {
+              "asin": "B088TY9GKC",
+              "region": "ca"
             }
           ],
           "chapters": [
@@ -1198,6 +1202,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "1705200400",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B088TY9GKC",
               "type": "libex-import"
             }
           ],
@@ -1540,6 +1549,10 @@
             {
               "asin": "B01HS2LKP6",
               "region": "us"
+            },
+            {
+              "asin": "B01HS2MK1O",
+              "region": "uk"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81FhwBq-pXL.jpg",
@@ -1556,6 +1569,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B01HS2LKP6",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B01HS2MK1O",
               "type": "libex-import"
             }
           ],
@@ -3616,6 +3634,10 @@
             {
               "asin": "B0BHZTD5B3",
               "region": "us"
+            },
+            {
+              "asin": "B0BHZT8W6T",
+              "region": "uk"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81+sFJsJ27L.jpg",
@@ -3637,6 +3659,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0BHZTD5B3",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0BHZT8W6T",
               "type": "libex-import"
             }
           ],
@@ -8936,6 +8963,34 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B086R3J4YC",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-grey-fairy-book"
+        },
+        "sven-gortz-2021": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "3955978168",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81jy1Mzq72S.jpg",
+          "id": "sven-gortz-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "sven-gortz"
+          ],
+          "publisher": "Bäng Management & Verlags GmbH & Co. KG",
+          "release_date": "2021-05-28",
+          "runtime_min": 668,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "3955978168",
               "type": "libex-import"
             }
           ],
