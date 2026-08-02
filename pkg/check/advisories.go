@@ -355,30 +355,14 @@ func subset(a, b map[string]bool) bool {
 // work that will credit it looks like, and what a catalogue mid-rework looks
 // like. What it always is, is a question.
 //
-// A SERIES author counts as a credit. It is not one of the three places a person
-// is normally named, but it is a reference like any other: reporting a record
-// the series family still points at would send a maintainer to delete something
-// checkIntegrity would then fail on.
-func checkOrphanPeople(cat *model.Catalog, idx *pathIndex, warn addFunc) {
+// The credited set is built from forEachPersonRef - the same enumeration
+// checkIntegrity verifies - so this rule can never call a record an orphan
+// while a reference site checkIntegrity still enforces points at it.
+func checkOrphanPeople(cat *model.Catalog, recs []recordWithPath, idx *pathIndex, warn addFunc) {
 	credited := make(map[string]bool, len(cat.People))
-	for _, w := range cat.Works {
-		for _, a := range w.Authors {
-			credited[a] = true
-		}
-		for _, c := range w.Credits {
-			credited[c.Person] = true
-		}
-		for _, r := range w.Recordings {
-			for _, n := range r.Narrators {
-				credited[n] = true
-			}
-		}
-	}
-	for _, s := range cat.Series {
-		for _, a := range s.Authors {
-			credited[a] = true
-		}
-	}
+	forEachPersonRef(cat, recs, idx, func(r personRef) {
+		credited[r.id] = true
+	})
 	for _, p := range cat.People {
 		if credited[p.ID] {
 			continue

@@ -7,6 +7,49 @@ import (
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
+// personRef is one place the tree names a person: the referencing file, the
+// person id, and the site it is named at ("author", "credit", "narrator",
+// "series author"; role is set only for "credit").
+type personRef struct {
+	rel  string
+	id   string
+	site string
+	role string
+}
+
+// forEachPersonRef enumerates every place a person id can be referenced -
+// work authors, work credits, recording narrators, series authors. It is the
+// ONE enumeration of person-reference sites: checkIntegrity verifies each
+// reference resolves and checkOrphanPeople reports the complement, so a new
+// reference site added here reaches both rules by construction - one cannot
+// go quiet while the other still enforces the site.
+func forEachPersonRef(cat *model.Catalog, recs []recordWithPath, idx *pathIndex, fn func(personRef)) {
+	for _, w := range cat.Works {
+		rel := idx.work[w]
+		for _, a := range w.Authors {
+			fn(personRef{rel: rel, id: a, site: "author"})
+		}
+		// A credit names a person exactly as an author or a narrator does, so it
+		// is the same integrity rule - and it is load-bearing for the importer's
+		// enrichment pass, which may only credit people the catalogue already
+		// holds (enrichment never creates a record).
+		for _, c := range w.Credits {
+			fn(personRef{rel: rel, id: c.Person, site: "credit", role: c.Role})
+		}
+	}
+	for _, pr := range recs {
+		for _, n := range pr.rec.Narrators {
+			fn(personRef{rel: pr.path, id: n, site: "narrator"})
+		}
+	}
+	for _, s := range cat.Series {
+		rel := idx.series[s]
+		for _, a := range s.Authors {
+			fn(personRef{rel: rel, id: a, site: "series author"})
+		}
+	}
+}
+
 // checkIntegrity verifies every cross-entity reference resolves.
 func checkIntegrity(cat *model.Catalog, workByID map[string]*model.Work, recs []recordWithPath, idx *pathIndex, add addFunc) {
 	people := map[string]bool{}
@@ -14,43 +57,25 @@ func checkIntegrity(cat *model.Catalog, workByID map[string]*model.Work, recs []
 		people[p.ID] = true
 	}
 
-	for _, w := range cat.Works {
-		rel := idx.work[w]
-		for _, a := range w.Authors {
-			if !people[a] {
-				add(rel, "author %q does not exist as a person", a)
-			}
+	forEachPersonRef(cat, recs, idx, func(r personRef) {
+		if people[r.id] {
+			return
 		}
-		// A credit names a person exactly as an author or a narrator does, so it
-		// is the same integrity rule - and it is load-bearing for the importer's
-		// enrichment pass, which may only credit people the catalogue already
-		// holds (enrichment never creates a record).
-		for _, c := range w.Credits {
-			if !people[c.Person] {
-				add(rel, "credit %q (%s) does not exist as a person", c.Person, c.Role)
-			}
+		if r.site == "credit" {
+			add(r.rel, "credit %q (%s) does not exist as a person", r.id, r.role)
+			return
 		}
-	}
+		add(r.rel, "%s %q does not exist as a person", r.site, r.id)
+	})
 
 	for _, pr := range recs {
-		rel := pr.path
-		for _, n := range pr.rec.Narrators {
-			if !people[n] {
-				add(rel, "narrator %q does not exist as a person", n)
-			}
-		}
 		if workByID[pr.workSlug] == nil {
-			add(rel, "parent work %q does not exist", pr.workSlug)
+			add(pr.path, "parent work %q does not exist", pr.workSlug)
 		}
 	}
 
 	for _, s := range cat.Series {
 		rel := idx.series[s]
-		for _, a := range s.Authors {
-			if !people[a] {
-				add(rel, "series author %q does not exist as a person", a)
-			}
-		}
 		for _, sw := range s.Works {
 			if workByID[sw.Work] == nil {
 				add(rel, "series work %q does not exist", sw.Work)

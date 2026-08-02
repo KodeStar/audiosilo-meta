@@ -232,7 +232,7 @@ func load(lst *pack.Listing, rdr *pack.Reader) Result {
 	checkCrossLanguageRecordings(cat, idx, warn)
 	checkHonorificPersonPairs(cat, idx, warn)
 	checkIdentityEqualWorks(cat, idx, warn)
-	checkOrphanPeople(cat, idx, warn)
+	checkOrphanPeople(cat, recs, idx, warn)
 
 	sortProblems(probs)
 	sortProblems(warns)
