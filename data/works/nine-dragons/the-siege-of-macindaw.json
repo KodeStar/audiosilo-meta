@@ -4464,6 +4464,33 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "andy-serkis-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0C5MPMQYX",
+              "region": "us"
+            }
+          ],
+          "id": "andy-serkis-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andy-serkis"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2023",
+          "runtime_min": 1164,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0C5MPMQYX",
+              "type": "audiosilo-books-import"
+            }
+          ],
+          "work": "the-silmarillion-j-r-r-tolkien"
+        },
         "martin-shaw-2015": {
           "abridged": false,
           "added_at": "2026-07-30T14:42:56+01:00",
@@ -5561,6 +5588,52 @@
         }
       ],
       "title": "The Silver Dream"
+    },
+    "the-silver-dwarf": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "victor-kloss"
+      ],
+      "id": "the-silver-dwarf",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "peter-kenny-2017": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B073PFRCF9",
+              "region": "us"
+            }
+          ],
+          "id": "peter-kenny-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "peter-kenny"
+          ],
+          "publisher": "Podium Audio",
+          "release_date": "2017",
+          "runtime_min": 582,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B073PFRCF9",
+              "type": "audiosilo-books-import"
+            }
+          ],
+          "work": "the-silver-dwarf"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B073PFRCF9",
+          "type": "audiosilo-books-import"
+        }
+      ],
+      "title": "The Silver Dwarf"
     },
     "the-silver-eclipse-akkron": {
       "added_at": "2026-08-01",
