@@ -423,6 +423,323 @@
         "work": "the-end"
       }
     },
+    "the-enemy": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Reacher"
+            ],
+            "description": "An Army major and military-police investigator temporarily assigned to Fort Bird. He takes charge when General Kramer dies naturally at a motel and the general's briefcase cannot be found.",
+            "id": "jack-reacher",
+            "name": "Jack Reacher",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Summer"
+            ],
+            "description": "A Fort Bird military-police lieutenant who partners with Reacher. She pursues the missing woman and briefcase and continues working the connected deaths despite pressure to abandon the inquiry.",
+            "id": "lieutenant-summer",
+            "name": "Lieutenant Summer",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Garber"
+            ],
+            "description": "Reacher's superior and commander of the 110th Special Unit. He assigns Reacher to handle Kramer's death and stresses the need for discretion.",
+            "id": "colonel-leon-garber",
+            "name": "Colonel Leon Garber",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Kramer"
+            ],
+            "description": "A senior 12 Corps armor officer travelling toward a Fort Irwin conference. He dies from natural causes during a concealed motel meeting, while his briefcase and the meeting agenda disappear.",
+            "id": "major-general-kenneth-robert-kramer",
+            "name": "Major General Kenneth Robert Kramer",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A lounge-bar dancer who tries to help Reacher determine whether Kramer's companion came from the bar. She is assaulted after making inquiries and reports that none of her colleagues had trouble on the relevant night.",
+            "id": "sin",
+            "name": "Sin",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Kramer's widow"
+            ],
+            "description": "General Kramer's widow. Reacher and Summer find her murdered at home when they arrive to notify her of her husband's death.",
+            "id": "mrs-kramer",
+            "name": "Mrs. Kramer",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Vassell"
+            ],
+            "description": "One of Kramer's 12 Corps armor colleagues travelling to Fort Irwin. He and Coomer leave their Washington hotel and miss their scheduled flight without explanation.",
+            "id": "brigadier-general-vassell",
+            "name": "Brigadier General Vassell",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Coomer",
+              "the 12 Corps colonel"
+            ],
+            "description": "One of Kramer's 12 Corps armor colleagues travelling to Fort Irwin. He and Vassell leave their Washington hotel and miss their scheduled flight without explanation.",
+            "id": "colonel-coomer",
+            "name": "Colonel Coomer",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Joe"
+            ],
+            "description": "Jack Reacher's older brother and a Treasury Department employee. He summons Reacher to Paris because their mother is dying.",
+            "id": "joe-reacher",
+            "name": "Joe Reacher",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Reacher and Joe's mother, who is gravely ill in Paris when the brothers travel to see her.",
+            "id": "reachers-mother",
+            "name": "Reacher's mother",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Norton"
+            ],
+            "description": "A lieutenant colonel and PsyOps instructor. Summer identifies her as the only person shared across the relevant vehicle, Fort Irwin, and gate-record comparisons, though she has a strong alibi.",
+            "id": "lieutenant-colonel-andrea-norton",
+            "name": "Lieutenant Colonel Andrea Norton",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Carbone"
+            ],
+            "description": "A veteran Delta soldier found murdered at Fort Bird. The scene has been elaborately staged, and his death is officially recorded as a training accident despite evidence of deliberate killing.",
+            "id": "christopher-carbone",
+            "name": "Christopher Carbone",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Willard"
+            ],
+            "description": "Garber's hostile replacement in command over Reacher. He orders Reacher to stop the Kramer inquiry and uses a civilian brutality complaint as leverage.",
+            "id": "colonel-willard",
+            "name": "Colonel Willard",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Franz"
+            ],
+            "description": "A trusted military-police officer transferred from Panama to Fort Irwin during the same unexplained redistribution that moved Reacher. His reassignment helps reveal that the transfers form a coordinated pattern.",
+            "id": "major-calvin-franz",
+            "name": "Major Calvin Franz",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Clark"
+            ],
+            "description": "The civilian detective investigating Mrs. Kramer's murder. He tells Reacher that the local inquiry has produced little forensic evidence.",
+            "id": "detective-clark",
+            "name": "Detective Clark",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Brubaker",
+              "the Delta commander"
+            ],
+            "description": "Fort Bird's Special Forces commander. He is found shot dead in Columbia soon after Carbone's murder, creating the possibility that the two killings are connected.",
+            "id": "colonel-david-c-brubaker",
+            "name": "Colonel David C. Brubaker",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Trifonov"
+            ],
+            "description": "A Bulgarian defector, former colonel, and Delta instructor. Gate, armory, and vehicle records initially make him the leading suspect in two murders, but his account of helping Elena is independently corroborated.",
+            "id": "slavi-trifonov",
+            "name": "Slavi Trifonov",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Bulgarian-American woman suffering abuse from her husband. She confirms that Trifonov came to help her during the murder window, providing the core of his alibi.",
+            "id": "elena",
+            "name": "Elena",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Elena's abusive husband. From hospital he identifies Trifonov as the man who took him away and shot both of his knees, further confirming Trifonov's movements.",
+            "id": "peekles",
+            "name": "Peekles",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Marshall"
+            ],
+            "description": "A 12 Corps staff officer who drove Vassell and Coomer from Kramer's funeral. His abrupt recall to Germany after the murders makes him a suspicious but unproven lead.",
+            "id": "major-marshall",
+            "name": "Major Marshall",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The newly assigned 12 Corps provost marshal and an acquaintance of Reacher. He assists Reacher and Summer in discovering that Marshall has been transferred again, this time to Fort Irwin.",
+            "id": "swan",
+            "name": "Swan",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Simon"
+            ],
+            "description": "An infantry liaison officer who explains the changing military doctrine and the institutional stakes facing the Armored Branch. His account helps frame what the missing conference agenda may concern.",
+            "id": "lieutenant-colonel-simon",
+            "name": "Lieutenant Colonel Simon",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Reacher's mother",
+              "Beatrice"
+            ],
+            "description": "Reacher and Joe's mother, who dies in Paris. Lamonnier identifies her as Beatrice, a wartime Resistance courier whose work with an escape network helped save Allied airmen.",
+            "id": "josephine-reacher",
+            "name": "Josephine Reacher",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Monsieur Lamonnier"
+            ],
+            "description": "The former leader of the Human Railroad Resistance network. After Josephine's death, he meets her sons and gives them the preserved account of her wartime service.",
+            "id": "lamonnier",
+            "name": "Lamonnier",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The senior Army official whom Reacher confronts about the coordinated officer transfers. He confirms that Operation Argon deliberately redistributed investigators to detect unrest and explains that Garber's removal came through separate authority.",
+            "id": "the-army-chief-of-staff",
+            "name": "The Army Chief of Staff",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The senior government official identified as the authority responsible for removing Garber from his command.",
+            "id": "the-secretary-of-defense",
+            "name": "The Secretary of Defense",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A person named on the assassination list recovered from Carbone's room. A check beside his name corresponds to his confirmed death in a Heidelberg hit-and-run.",
+            "id": "abelson",
+            "name": "Abelson",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:0593339126",
+            "type": "community"
+          }
+        ],
+        "work": "the-enemy"
+      }
+    },
     "the-ersatz-elevator": {
       "characters": {
         "characters": [

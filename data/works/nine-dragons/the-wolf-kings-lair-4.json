@@ -2964,6 +2964,10 @@
             {
               "asin": "B0C59JB18Z",
               "region": "us"
+            },
+            {
+              "asin": "B0GND7XWN1",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91qMCzAxrML.jpg",
@@ -2980,6 +2984,11 @@
             {
               "imported_at": "2026-08-01",
               "ref": "B0C59JB18Z",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GND7XWN1",
               "type": "libex-import"
             }
           ],
@@ -6995,6 +7004,34 @@
           ],
           "work": "the-woman-in-white"
         },
+        "tim-mcinnerny-2019": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "0241440882",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/9165owfT46L.jpg",
+          "id": "tim-mcinnerny-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "tim-mcinnerny"
+          ],
+          "publisher": "Penguin Classics",
+          "release_date": "2019-09-26",
+          "runtime_min": 1595,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "0241440882",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-woman-in-white"
+        },
         "toby-stephens-2015": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -9906,6 +9943,162 @@
           ],
           "work": "the-wonderful-wizard-of-oz"
         },
+        "amanda-friday-2022": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B09ZKHHJYH",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 463702,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 792868,
+              "start_ms": 463702,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 701172,
+              "start_ms": 1256570,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 525490,
+              "start_ms": 1957742,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 670963,
+              "start_ms": 2483232,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 550266,
+              "start_ms": 3154195,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 646211,
+              "start_ms": 3704461,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 667086,
+              "start_ms": 4350672,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 517178,
+              "start_ms": 5017758,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 693812,
+              "start_ms": 5534936,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1307631,
+              "start_ms": 6228748,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1346037,
+              "start_ms": 7536379,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 415962,
+              "start_ms": 8882416,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 661304,
+              "start_ms": 9298378,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1057111,
+              "start_ms": 9959682,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 353059,
+              "start_ms": 11016793,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 409205,
+              "start_ms": 11369852,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 426295,
+              "start_ms": 11779057,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 356519,
+              "start_ms": 12205352,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 542812,
+              "start_ms": 12561871,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 359003,
+              "start_ms": 13104683,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 333020,
+              "start_ms": 13463686,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 455087,
+              "start_ms": 13796706,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 137182,
+              "start_ms": 14251793,
+              "title": "Chapter 24"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91zQCLag3oL.jpg",
+          "id": "amanda-friday-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "amanda-friday",
+            "erin-grassie",
+            "josh-innerst",
+            "lance-rasmussen",
+            "marty-krz",
+            "sara-sheckells",
+            "tyler-hyrchuk"
+          ],
+          "publisher": "Spoken Realms",
+          "release_date": "2022-05-05",
+          "runtime_min": 239,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09ZKHHJYH",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-wonderful-wizard-of-oz"
+        },
         "andrea-giordani-2015": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -12023,6 +12216,42 @@
           ],
           "work": "the-wonderful-wizard-of-oz"
         },
+        "michael-ward-2015": {
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B019CY7TBC",
+              "region": "us"
+            },
+            {
+              "asin": "B0HBD2LJ8V",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81BMGQEEIHL.jpg",
+          "id": "michael-ward-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "michael-ward"
+          ],
+          "publisher": "Michael Ward",
+          "release_date": "2015-12-15",
+          "runtime_min": 229,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B019CY7TBC",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0HBD2LJ8V",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-wonderful-wizard-of-oz"
+        },
         "mike-vendetti-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -12240,6 +12469,10 @@
             {
               "asin": "B00MEPCARK",
               "region": "us"
+            },
+            {
+              "asin": "B0BZDRF4GL",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91UnRJRZ7gL.jpg",
@@ -12261,6 +12494,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B00MEPCARK",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0BZDRF4GL",
               "type": "libex-import"
             }
           ],
@@ -12764,6 +13002,76 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0098OOBC2",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-wonderful-wizard-of-oz"
+        },
+        "steve-blane-2013": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00HAON7X6",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 992374,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 936229,
+              "start_ms": 992374,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 798813,
+              "start_ms": 1928603,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1034728,
+              "start_ms": 2727416,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1042297,
+              "start_ms": 3762144,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1012297,
+              "start_ms": 4804441,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 632744,
+              "start_ms": 5816738,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1034774,
+              "start_ms": 6449482,
+              "title": "Chapter 8"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1xodZGY0IL.jpg",
+          "id": "steve-blane-2013",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "steve-blane"
+          ],
+          "publisher": "Dover Publications",
+          "release_date": "2013-12-17",
+          "runtime_min": 124,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00HAON7X6",
               "type": "libex-import"
             }
           ],

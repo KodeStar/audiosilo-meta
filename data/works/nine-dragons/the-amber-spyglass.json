@@ -782,6 +782,10 @@
             {
               "asin": "B002V0PZUW",
               "region": "us"
+            },
+            {
+              "asin": "B004FTBH7W",
+              "region": "uk"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/918HYsRcJXL.jpg",
@@ -799,6 +803,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B002V0PZUW",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B004FTBH7W",
               "type": "libex-import"
             }
           ],
@@ -3089,6 +3098,36 @@
       "id": "the-anatomists-wife",
       "language": "en",
       "license": "CC0-1.0",
+      "recordings": {
+        "heather-wilds-2014": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00N11W9VS",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51W6LrC+EKL.jpg",
+          "id": "heather-wilds-2014",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "heather-wilds"
+          ],
+          "publisher": "Tantor Audio",
+          "release_date": "2014-09-08",
+          "runtime_min": 704,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00N11W9VS",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-anatomists-wife"
+        }
+      },
       "sources": [
         {
           "imported_at": "2026-07-25",

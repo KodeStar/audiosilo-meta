@@ -497,11 +497,12 @@ func TestCollectiveFoldIsNotEvidenceOfItsOwnSpelling(t *testing.T) {
 	}
 }
 
-// TestCollectiveFoldToleratesAnExistingVariantRecord is the INTERIM state this
-// change deliberately leaves behind: the catalogue still holds the twins a
-// separate data PR will migrate (n-n names 180 works today). A new import must
-// neither crash on them nor keep feeding them - it folds onto the canonical,
-// creating it if absent, and leaves the twin exactly as it found it.
+// TestCollectiveFoldToleratesAnExistingVariantRecord is a SAFETY PROPERTY, not
+// a description of the tree. The twin migration has landed and no variant record
+// remains on disk, but one REAPPEARING - a bad merge, a hand edit, a restored
+// old pack - must not break imports: a new import neither crashes on it nor
+// keeps feeding it. It folds onto the canonical, creating it if absent, and
+// leaves the twin exactly as it found it.
 func TestCollectiveFoldToleratesAnExistingVariantRecord(t *testing.T) {
 	dataDir := t.TempDir()
 	seedTree(t, dataDir, map[string]string{

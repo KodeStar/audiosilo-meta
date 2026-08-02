@@ -2066,6 +2066,10 @@
             {
               "asin": "B00TWI03B2",
               "region": "us"
+            },
+            {
+              "asin": "B006517FKQ",
+              "region": "de"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81ZLscCRMdL.jpg",
@@ -2082,6 +2086,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B00TWI03B2",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B006517FKQ",
               "type": "libex-import"
             }
           ],
@@ -3382,6 +3391,10 @@
             {
               "asin": "B0D92QCK71",
               "region": "us"
+            },
+            {
+              "asin": "B0D92NYFYN",
+              "region": "ca"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81l+qYLvCkL.jpg",
@@ -3398,6 +3411,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0D92QCK71",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0D92NYFYN",
               "type": "libex-import"
             }
           ],
@@ -11729,6 +11747,34 @@
             {
               "imported_at": "2026-08-01",
               "ref": "B07K1L857P",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dragonman-the-adventures-of-luke-starr"
+        },
+        "treg-monty-2021": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B09F8C5YD7",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81F6OtFuE+L.jpg",
+          "id": "treg-monty-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "treg-monty"
+          ],
+          "publisher": "Ted Lazaris",
+          "release_date": "2021-09-03",
+          "runtime_min": 193,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09F8C5YD7",
               "type": "libex-import"
             }
           ],

@@ -4753,6 +4753,10 @@
             {
               "asin": "B0DC6HGJHY",
               "region": "us"
+            },
+            {
+              "asin": "B0DC6FPB3N",
+              "region": "de"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/A1xfdOrJi3L.jpg",
@@ -4769,6 +4773,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0DC6HGJHY",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DC6FPB3N",
               "type": "libex-import"
             }
           ],
@@ -6335,6 +6344,10 @@
             {
               "asin": "B09NWBV1S2",
               "region": "us"
+            },
+            {
+              "asin": "B09NWBT9VK",
+              "region": "uk"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81sDt4T4WJL.jpg",
@@ -6351,6 +6364,11 @@
             {
               "imported_at": "2026-08-01",
               "ref": "B09NWBV1S2",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09NWBT9VK",
               "type": "libex-import"
             }
           ],
@@ -10631,6 +10649,10 @@
             {
               "asin": "B002UUOP86",
               "region": "us"
+            },
+            {
+              "asin": "1449803237",
+              "region": "es"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81cvnwwatWL.jpg",
@@ -10647,6 +10669,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B002UUOP86",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1449803237",
               "type": "libex-import"
             }
           ],
@@ -10699,6 +10726,34 @@
             {
               "imported_at": "2026-08-01",
               "ref": "B01GTSSBD4",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dekkers-dozen"
+        },
+        "richard-coombs-2016": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B01IA810AC",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91gftZ9F58L.jpg",
+          "id": "richard-coombs-2016",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "richard-coombs"
+          ],
+          "publisher": "Christopher D Schmitz",
+          "release_date": "2016-07-12",
+          "runtime_min": 547,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B01IA810AC",
               "type": "libex-import"
             }
           ],
@@ -11041,6 +11096,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "kali-newcomb-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0GXCR93C1",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81xp5Cmbl5L.jpg",
+          "id": "kali-newcomb-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kali-newcomb"
+          ],
+          "publisher": "Anthony Pica Productions, LLC",
+          "release_date": "2026-04-16",
+          "runtime_min": 8,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GXCR93C1",
+              "type": "libex-import"
+            }
+          ],
+          "work": "delaying-is-not-forgetting"
+        },
         "sam-kusi-2025": {
           "abridged": false,
           "added_at": "2026-08-02",

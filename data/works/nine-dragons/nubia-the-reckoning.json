@@ -3676,6 +3676,10 @@
             {
               "asin": "B08Z4JGYZS",
               "region": "us"
+            },
+            {
+              "asin": "B08Z4CB5FR",
+              "region": "de"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91mIfEivddL.jpg",
@@ -3692,6 +3696,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B08Z4JGYZS",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B08Z4CB5FR",
               "type": "libex-import"
             }
           ],
@@ -6395,6 +6404,62 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "bryan-godwin-2022": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0B9NZ1NCY",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91fryqxA9iL.jpg",
+          "id": "bryan-godwin-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "bryan-godwin"
+          ],
+          "publisher": "Bookstream Audiobooks",
+          "release_date": "2022-08-16",
+          "runtime_min": 9,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0B9NZ1NCY",
+              "type": "libex-import"
+            }
+          ],
+          "work": "nyarlathotep"
+        },
+        "chris-sorensen-2013": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00G99YPVG",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91r+nhn9aCL.jpg",
+          "id": "chris-sorensen-2013",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "chris-sorensen"
+          ],
+          "publisher": "Ascent Audio",
+          "release_date": "2013-10-29",
+          "runtime_min": 10,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00G99YPVG",
+              "type": "libex-import"
+            }
+          ],
+          "work": "nyarlathotep"
+        },
         "sam-kusi-2025": {
           "abridged": false,
           "added_at": "2026-08-02",

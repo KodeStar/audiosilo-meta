@@ -1969,6 +1969,10 @@
             {
               "asin": "B0FLDWCP6R",
               "region": "us"
+            },
+            {
+              "asin": "B0FH2RQ8N2",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/A1mDfc4ZxmL.jpg",
@@ -1985,6 +1989,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0FLDWCP6R",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FH2RQ8N2",
               "type": "libex-import"
             }
           ],
@@ -6285,6 +6294,62 @@
           ],
           "work": "ivanhoe"
         },
+        "david-mccallion-2016": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B01IDZPDJQ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/915uPMi-weL.jpg",
+          "id": "david-mccallion-2016",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "david-mccallion"
+          ],
+          "publisher": "A.R.N. Publications",
+          "release_date": "2016-07-15",
+          "runtime_min": 1062,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B01IDZPDJQ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "ivanhoe"
+        },
+        "david-rintoul-2019": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "1781982635",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81d76Btmc5L.jpg",
+          "id": "david-rintoul-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "david-rintoul"
+          ],
+          "publisher": "Naxos AudioBooks",
+          "release_date": "2019-09-11",
+          "runtime_min": 1175,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1781982635",
+              "type": "libex-import"
+            }
+          ],
+          "work": "ivanhoe"
+        },
         "david-warner-1999": {
           "abridged": true,
           "added_at": "2026-08-02",
@@ -6623,6 +6688,34 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B003E2NWAG",
+              "type": "libex-import"
+            }
+          ],
+          "work": "ivanhoe"
+        },
+        "tim-pigott-smith-2020": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "0008439796",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91zgeCkAsvL.jpg",
+          "id": "tim-pigott-smith-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "tim-pigott-smith"
+          ],
+          "publisher": "William Collins",
+          "release_date": "2020-10-08",
+          "runtime_min": 159,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "0008439796",
               "type": "libex-import"
             }
           ],

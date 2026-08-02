@@ -7740,6 +7740,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "josh-horowitz-2022": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0BBK7XDXG",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91fvuXVXqyL.jpg",
+          "id": "josh-horowitz-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "josh-horowitz"
+          ],
+          "publisher": "Storm Dragon Holdings Ltd",
+          "release_date": "2022-08-23",
+          "runtime_min": 1346,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0BBK7XDXG",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-dragon-storm"
+        },
         "josh-horowitz-2023": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -11545,6 +11573,10 @@
             {
               "asin": "B07VVT4LGH",
               "region": "us"
+            },
+            {
+              "asin": "B07VZ3HVRX",
+              "region": "ca"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81iKo-0UGpS.jpg",
@@ -11561,6 +11593,11 @@
             {
               "imported_at": "2026-08-01",
               "ref": "B07VVT4LGH",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07VZ3HVRX",
               "type": "libex-import"
             }
           ],

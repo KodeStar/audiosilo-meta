@@ -527,6 +527,360 @@
       }
     },
     "tripwire": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A brutal figure guarding an old secret on which his freedom, standing, and fortune rest. Two distant alarms signal a threat, and he decides to remain and defend what he has concealed for nearly thirty years.",
+            "id": "hook-hobie",
+            "name": "Hook Hobie",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Living anonymously in Key West, he avoids confirming his identity when an unidentified older man finds him and asks whether he is Jack Reacher.",
+            "id": "jack-reacher",
+            "name": "Jack Reacher",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A former police officer working as a private detective. He tracks Reacher to Key West on behalf of a client he calls Mrs. Jacob, but cannot persuade Reacher to acknowledge his identity or explain why she wants him found.",
+            "id": "costello",
+            "name": "Costello",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dancer at Reacher's Key West workplace and an acquaintance familiar with his local routine. She recognizes that a visitor had been asking for him.",
+            "id": "crystal",
+            "name": "Crystal",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The chief executive of a struggling family manufacturing company. With ordinary financing exhausted, he needs a large short-term loan to keep the business operating and accepts a meeting with an apparently respectable lender.",
+            "id": "struggling-manufacturer",
+            "name": "Struggling manufacturer",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Two unnamed men in suits who arrive at Reacher's Key West workplace looking for him. They become violent when he refuses to help them, but he forces both men outside.",
+            "id": "suited-operatives",
+            "name": "Suited operatives",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The third-generation owner of a failing family manufacturing company. He believes a large short-term loan can save the business and prepares to seek emergency financing from Hook Hobie.",
+            "id": "chester-stone",
+            "name": "Chester Stone",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Chester Stone's loyal wife, who recognizes that the family could remain financially secure without the company. Chester has not told her the full extent of the business crisis as he prepares to seek emergency funding.",
+            "id": "marilyn-stone",
+            "name": "Marilyn Stone",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Hook Hobie’s unnamed receptionist is a confidant who knows about his escape plan and questions his decision to delay leaving.",
+            "id": "hook-hobies-receptionist",
+            "name": "Hook Hobie’s receptionist",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Costello's unnamed secretary, whom Hook Hobie's operatives are ordered to locate.",
+            "id": "costellos-secretary",
+            "name": "Costello's secretary",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A name from Reacher's Army past. Reacher finds the Garber name at a Garrison address where a funeral attended by Army officers is taking place.",
+            "id": "leon-garber",
+            "name": "Leon Garber",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mrs. Jacob"
+            ],
+            "description": "Leon Garber's only child, who is divorced and retains her former married surname professionally. At her father's funeral, she greets Reacher and confirms that she is Mrs. Jacob.",
+            "id": "jodie-garber",
+            "name": "Jodie Garber",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Leon Garber’s cardiologist. He tells Jack Reacher and Jodie Garber that Garber had become absorbed in a new task and made a medically risky trip to Hawaii.",
+            "id": "dr-mcbannerman",
+            "name": "Dr. McBannerman",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An older man known to Leon Garber through the cardiology clinic. Garber had assisted him and his wife with documents and photographs.",
+            "id": "mr-hobie",
+            "name": "Mr. Hobie",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An older woman known to Leon Garber through the cardiology clinic. Garber had assisted her and her husband with documents and photographs.",
+            "id": "mrs-hobie",
+            "name": "Mrs. Hobie",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Hook Hobie’s receptionist and operational aide. He confirms the dates of Leon Garber’s trip to Honolulu for Hobie.",
+            "id": "tony",
+            "name": "Tony",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The real-estate agent Marilyn Stone selects when she quietly lists the family home.",
+            "id": "sheryl",
+            "name": "Sheryl",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The remaining member of the suited pair sent after Reacher and Jodie Garber. Acting on Hook Hobie's order, he kills his partner and removes the dead man's right hand as proof.",
+            "id": "surviving-suited-operative",
+            "name": "Surviving suited operative",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tom Hobie's elderly wife. She and Tom expected Reacher because of Leon Garber and ask him to hear the case Garber had pursued for them.",
+            "id": "mary-hobie",
+            "name": "Mary Hobie",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly, frail parent whom Reacher visits with his wife, Mary. The couple expected Reacher because of Leon Garber and invite him to hear their case.",
+            "id": "tom-hobie",
+            "name": "Tom Hobie",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Vic"
+            ],
+            "description": "The sole child of Tom and Mary Hobie. A capable student, he joined the Army, qualified near the head of his helicopter class, and deployed to Vietnam.",
+            "id": "victor-hobie",
+            "name": "Victor Hobie",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An investigator paid by the Hobies to search for evidence of their missing son. He supplies a recent photograph that supposedly shows Victor in a secret prison camp and proposes a costly mission to bring him home.",
+            "id": "rutter",
+            "name": "Rutter",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The owner of Stevens Hardware and a friend of Victor since childhood. His memories give Reacher another view of Victor's temperament and dedication to Army service.",
+            "id": "ed-stevens",
+            "name": "Ed Stevens",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior lawyer at Forster and Abelstein who represents Chester Stone. Sheryl contacts his firm from the hospital after following Marilyn's instructions.",
+            "id": "david-forster",
+            "name": "David Forster",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The National Personnel Records Center supervisor who gives Reacher and Jodie access to military files connected with their investigation.",
+            "id": "major-theodore-conrad",
+            "name": "Major Theodore Conrad",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Victor Hobie's regular co-pilot during much of his second Vietnam tour. His service record and official finding of death after the final helicopter crash become important to Reacher's inquiry.",
+            "id": "fg-kaplan",
+            "name": "F. G. Kaplan",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "A. A. DeWitt"
+            ],
+            "description": "A former helicopter pilot whom Victor Hobie's service file identifies as his former trainer and flying partner. That history makes the general a potentially important witness concerning the anomaly in Victor's official record.",
+            "id": "general-dewitt",
+            "name": "General DeWitt",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An NYPD officer investigating Sheryl's severe facial injuries. Working with Sark, O'Hallinan questions her implausible account and uses hospital evidence to begin tracing the vehicle that delivered her.",
+            "id": "ohallinan",
+            "name": "O'Hallinan",
+            "reveal": {
+              "chapter": 46
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An NYPD officer partnered with O'Hallinan on the investigation into Sheryl's assault. The officers pursue the large black vehicle seen at the hospital despite Sheryl's refusal to identify whoever injured her.",
+            "id": "sark",
+            "name": "Sark",
+            "reveal": {
+              "chapter": 46
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A retired NYPD detective now working as a private investigator. David Forster hires him to attend the planned Stone stock meeting under Forster's identity, with Curry's experience and concealed presence intended to discourage violence.",
+            "id": "william-curry",
+            "name": "William Curry",
+            "reveal": {
+              "chapter": 48
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Army specialist who examines remains at the Central Identification Laboratory, Hawaii. Newman previously taught Reacher and knew Leon Garber.",
+            "id": "nash-newman",
+            "name": "Nash Newman",
+            "reveal": {
+              "chapter": 54
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Army lieutenant who directs the laboratory where Nash Newman conducts forensic identification work.",
+            "id": "lieutenant-simon",
+            "name": "Lieutenant Simon",
+            "reveal": {
+              "chapter": 54
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Military Police officer traveling with Zabrinski on Victor Hobie's final flight. He was part of a special mission involving an arrested serviceman and is identified among the seven recovered crash victims.",
+            "id": "gunston",
+            "name": "Gunston",
+            "reveal": {
+              "chapter": 55
+            },
+            "role": "minor"
+          },
+          {
+            "description": "One of two Military Police officers aboard Victor Hobie's final helicopter flight. Recovery evidence identifies Zabrinski among the seven people who died when the aircraft crashed during a special prisoner-transport mission.",
+            "id": "zabrinski",
+            "name": "Zabrinski",
+            "reveal": {
+              "chapter": 55
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An arrested serviceman transported by Military Police officers Zabrinski and Gunston on Victor Hobie’s final helicopter flight. Recovery records initially identify Allen among the seven people who died in the crash.",
+            "id": "carl-allen",
+            "name": "Carl Allen",
+            "reveal": {
+              "chapter": 55
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The hook-handed man known as Hook Hobie, unmasked as the arrested serviceman Carl Allen. He survived the helicopter crash, exchanged identification tags with the dead Victor Hobie, and lived for decades under Victor’s identity.",
+            "id": "carl-allen-identity-resolution",
+            "name": "Carl Allen",
+            "reveal": {
+              "chapter": 67
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Department of the Army representative who approaches Reacher after the Carl Allen confrontation. He seeks discretion about the classified history and negotiates terms for the Army's public treatment of Victor Hobie's record.",
+            "id": "general-meade",
+            "name": "General Meade",
+            "reveal": {
+              "chapter": 71
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B002V8MTO4",
+            "type": "community"
+          }
+        ],
+        "work": "tripwire"
+      },
       "recaps": {
         "ending": "Reacher enters Cayman Corporate Trust while Allen believes he is still hours away, kills the armed operatives blocking the rescue, and confronts the lender holding Jodie as a shield. He establishes that the man called Hook Hobie is Carl Allen, the prisoner transported on Victor Hobie's final flight. Allen survived the crash, switched dog tags with Victor, and built a new life under the dead pilot's identity. When Allen fires, Jodie moves clear and Reacher kills him, then collapses with a nail lodged in his forehead and a bullet wound to his chest. Reacher wakes after three weeks in St. Vincent's. The bullet failed to penetrate deeply, and the nail caused no apparent lasting impairment. Jodie, Curry, Chester, Marilyn, and Sheryl survive. General Meade secures Reacher's discretion in exchange for restoring Victor's public record and memorial recognition. Tom and Mary Hobie are told that Victor died honorably. Reacher accepts Leon Garber's Garrison house, leaves the hospital with Jodie, and plans to recover there with her. The later ownership of Stone Optical remains unresolved.",
         "in_short": "Living anonymously in Key West, former Army investigator Jack Reacher is drawn into the murder of Costello, a detective hired by Reacher's late mentor Leon Garber. Garber's daughter Jodie joins Reacher in pursuing the fate of missing Vietnam pilot Victor Hobie. The supposed evidence that Victor is a prisoner proves fraudulent, but military records show that someone survived his helicopter crash. Meanwhile, the scarred lender Hook Hobie terrorizes Chester and Marilyn Stone to seize their company, taking Jodie and others hostage at Cayman Corporate Trust. Reacher discovers that Hook Hobie is really Carl Allen, a transported prisoner who survived the crash and stole the dead Victor's identity. Reacher infiltrates the office and exposes Allen. When Allen fires, Jodie moves her head clear, and Reacher kills him. Reacher survives a bullet and a nail wound, the Army agrees to restore Victor's honor, and Victor's parents finally learn that their son died in the crash. Jodie stays through Reacher's recovery and leaves the hospital with him for Garber's house in Garrison.",
