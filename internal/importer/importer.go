@@ -53,18 +53,28 @@ func abridgedFromMarker(title string) *bool {
 	return nil
 }
 
-// cleanWorkTitle strips trailing (Unabridged)/(Abridged)/[Unabridged]/[Abridged]
-// edition markers from a work title (all stacked markers in one pass), so
-// "Mageling" and "Mageling (Unabridged)" resolve to one work. It never returns an
-// empty string: a title that is ONLY a marker (or trims to nothing) is returned
-// unchanged.
+// cleanWorkTitle removes the decorations that are not part of a work's identity,
+// so two listings of one book resolve to one work. Two rules, in this order
+// because the first is a TRAILING marker and the second reads what the title
+// ends with:
+//
+//  1. trailing (Unabridged)/(Abridged)/[Unabridged]/[Abridged] edition markers
+//     (all stacked markers in one pass), so "Mageling" and "Mageling
+//     (Unabridged)" resolve to one work;
+//  2. a mid-title NARRATOR qualifier in front of a volume marker
+//     (stripTitleNarratorQualifier), so "... - gelesen von Andreas Lange, Band
+//     11" and "... - gelesen von Peter Bocek, Band 11" resolve to the one work
+//     the undecorated "..., Band 11" already names.
+//
+// It never returns an empty string: a title that is ONLY a marker (or trims to
+// nothing) is returned unchanged.
 func cleanWorkTitle(title string) string {
 	cleaned := strings.TrimSpace(title)
 	stripped := strings.TrimSpace(editionMarkerRE.ReplaceAllString(cleaned, ""))
 	if stripped == "" {
 		return cleaned
 	}
-	return stripped
+	return stripTitleNarratorQualifier(stripped)
 }
 
 // recInfo remembers enough about a recording under a work to detect a

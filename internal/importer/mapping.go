@@ -242,6 +242,135 @@ func cleanSeriesName(name string) string {
 	return trimmed
 }
 
+// titleNarratorQualifiers are the narrator lead-ins that appear INSIDE a title
+// or subtitle rather than at the end of a series name. They are the subset of
+// seriesNarratorQualifiers the dump spells in that position (pinned by
+// TestTitleNarratorVocabularyIsASeriesSubset, so the two lists can never drift
+// into two different ideas of what a narrator lead-in is).
+//
+// "horspiele von" is deliberately NOT here. In the series position it means
+// "audio dramas read by"; in a title it is an AUTHORSHIP phrase - "Die schönsten
+// Märchen-Hörspiele von Grimm, Hauff und Andersen" credits the Brothers Grimm,
+// not a narrator - and stripping it would delete the authors from a title.
+//
+// Keys are in foldCredit form (lowercased, diacritics folded).
+var titleNarratorQualifiers = []string{
+	"gelesen von",    // 11 of the 13 books in the bounded shape below
+	"narrated by",    // 2
+	"gesprochen von", // 0 in the bounded shape; 16 books spell it elsewhere in the position
+}
+
+// titleVolumeSuffixRE is the BOUND that makes the mid-title strip safe: the
+// qualifier must be followed by a comma and a volume marker that ends the
+// string. That is the shape a retailer emits when it lists each re-narration of
+// one serial as its own product - "Die galaktischen Fälle des Sherlock Holmes -
+// gelesen von Andreas Lange, Band 11" beside "... - gelesen von Peter Bocek,
+// Band 11" beside the undecorated "..., Band 11" - which minted THREE works for
+// one book. Narration is modeled by recording.narrators; it is not part of a
+// work's identity, and it is the same see-through cleanSeriesName performs one
+// level up.
+//
+// Measured over the full 1.13M-book dump, the bounded shape matches 13 books
+// (11 subtitles "gelesen von", 2 "narrated by") and ZERO titles, every one of
+// them a Sherlock Holmes serial and every one a genuine narrator qualifier.
+//
+// The bound is what keeps the rule off the titles that use the words for real:
+// "The Gospel Narrated by Jesus", "Life of Josiah Henson ... as Narrated by
+// Himself", "Narrated by the Author: How to Produce an Audiobook on a Budget"
+// and "the iconic classic narrated by BAFTA and Oscar-nominated actor Saoirse
+// Ronan" are all in the dump and none of them carries a trailing volume marker.
+// The marker words are the three the shape is measured with; a fourth is one
+// line away the day a dump carries one, and inventing them now would widen an
+// unmeasured rule.
+var titleVolumeSuffixRE = regexp.MustCompile(`(?i),\s*(?:band|folge|episode)\s*\d+(?:\.\d+)?\s*$`)
+
+// narratorObjectLeads are the words that begin a narration credit naming NOBODY
+// - a reflexive or a generic object rather than a person. Each is taken from the
+// dump's own false-positive family above ("as Narrated by Himself", "narrated by
+// the monster himself", "Narrated by the Author"). None of them can be the start
+// of a narrator's name, so a qualifier leading with one is left alone even when
+// it does carry a volume marker: the belt to titleVolumeSuffixRE's braces.
+var narratorObjectLeads = map[string]bool{
+	"himself": true, "herself": true, "themselves": true,
+	"the": true, "a": true, "an": true,
+}
+
+// stripTitleNarratorQualifier removes a mid-title narrator qualifier - the
+// qualifier itself and the separator that introduced it - leaving the volume
+// marker in place, so every re-narration of one volume resolves to ONE work
+// title. "X: Y - gelesen von Andreas Lange, Band 11" becomes "X: Y, Band 11",
+// which is byte-for-byte the title the undecorated listing of the same volume
+// already carries.
+//
+// It returns the title unchanged unless every condition holds: the trailing
+// volume marker (titleVolumeSuffixRE), a listed lead-in at a WORD boundary
+// before it, a credit that names somebody (narratorObjectLeads), a non-empty
+// remainder, and brackets that still balance - the same posture cleanSeriesName
+// takes, for the same reason (a title we cannot take the qualifier off cleanly
+// is left exactly as the source spelled it).
+func stripTitleNarratorQualifier(title string) string {
+	m := titleVolumeSuffixRE.FindStringIndex(title)
+	if m == nil {
+		return title
+	}
+	head := title[:m[0]]
+	// One fold for the common case: a title carrying the volume marker but no
+	// lead-in at all never reaches the positional scan.
+	if !containsNarratorLeadIn(foldCredit(head)) {
+		return title
+	}
+	cut, credit := lastNarratorLeadIn(head)
+	if cut < 0 || narratorObjectLeads[firstFoldedWord(credit)] {
+		return title
+	}
+	kept := strings.TrimSpace(strings.TrimRight(strings.TrimSpace(head[:cut]), "-–—"))
+	if kept == "" || !bracketsBalanced(kept) {
+		return title
+	}
+	return kept + title[m[0]:]
+}
+
+// containsNarratorLeadIn reports whether a FOLDED string holds any listed
+// lead-in at all. It is the cheap prefilter for the positional scan.
+func containsNarratorLeadIn(folded string) bool {
+	for _, phrase := range titleNarratorQualifiers {
+		if strings.Contains(folded, phrase) {
+			return true
+		}
+	}
+	return false
+}
+
+// lastNarratorLeadIn locates the LAST listed lead-in that starts a word in head,
+// returning its byte offset and the folded credit that follows it (empty and -1
+// when there is none). The scan folds each candidate suffix rather than folding
+// head once, because foldCredit is not length-preserving - an index into the
+// folded form is not an index into the title, and cutting a title at the wrong
+// byte is how a strip mangles a name.
+func lastNarratorLeadIn(head string) (int, string) {
+	best, credit := -1, ""
+	for i := range head {
+		if i > 0 && endsWord(head[:i]) {
+			continue // mid-word, so not a lead-in
+		}
+		folded := foldCredit(head[i:])
+		for _, phrase := range titleNarratorQualifiers {
+			rest, found := strings.CutPrefix(folded, phrase+" ")
+			if found && strings.TrimSpace(rest) != "" {
+				best, credit = i, strings.TrimSpace(rest)
+			}
+		}
+	}
+	return best, credit
+}
+
+// firstFoldedWord is the first word of an already-folded string, for the
+// object-lead check.
+func firstFoldedWord(folded string) string {
+	name, _, _ := strings.Cut(folded, " ")
+	return name
+}
+
 // bracketsBalanced reports whether s leaves no bracket open. It guards the strip
 // above: the regex matches the LAST parenthetical, so a doubled opener ("Foo
 // ((gelesen von Peter)") leaves "Foo (" behind - a series named after a dangling
