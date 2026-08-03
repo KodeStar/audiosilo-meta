@@ -375,7 +375,7 @@ func checkOrphanPeople(cat *model.Catalog, recs []recordWithPath, idx *pathIndex
 // advisory lines, so a wave can be compared against the last one without
 // diffing thousands of lines. It returns "" when no advisory class fired.
 func AdvisoryCensus(warns []Problem) string {
-	var lang, honor, ident, orphan int
+	var lang, honor, ident, orphan, scale int
 	for _, w := range warns {
 		switch {
 		case strings.Contains(w.Msg, "a translation is a different work"):
@@ -386,12 +386,131 @@ func AdvisoryCensus(warns []Problem) string {
 			ident++
 		case strings.Contains(w.Msg, "an orphan record"):
 			orphan++
+		case strings.Contains(w.Msg, "scaled to something other than the work's chapters"):
+			scale++
 		}
 	}
-	if lang+honor+ident+orphan == 0 {
+	if lang+honor+ident+orphan+scale == 0 {
 		return ""
 	}
 	return fmt.Sprintf("advisory classes: %d cross-language recordings, %d honorific person pairs, "+
-		"%d identity-equal work pairs, %d orphan people",
-		lang, honor, ident, orphan)
+		"%d identity-equal work pairs, %d orphan people, %d mis-scaled sidecars",
+		lang, honor, ident, orphan, scale)
+}
+
+// sidecarScaleFloor is the fraction of a work's chapter count that its sidecar
+// positions must reach before the rule stays quiet.
+//
+// Measured over the sidecars that had the defect and the ones that did not: the
+// broken set gated its last position at 0.10-0.24 of the book's chapters (the
+// affair, 9 of 88; worth dying for, 8 of 62; never go back, 11 of 69), while the
+// sound set reached 0.59-0.77 (one shot, 10 of 17; killing floor, 25 of 34;
+// running blind, 24 of 31). The gap between the two populations is wide enough
+// that the threshold does not have to be argued about; 0.4 sits in the middle of
+// it with room on both sides.
+const sidecarScaleFloor = 0.4
+
+// sidecarScaleMinPositions is the number of DISTINCT positions a sidecar must
+// use before the rule will judge its scale.
+//
+// The defect this rule looks for is a sidecar that stages its entries across a
+// gradient - some early, some late - but built that gradient on the wrong
+// ruler. A sidecar using one position throughout is not that: an all-at-chapter-1
+// cast list, or a recaps member holding only the chapter-0 "previously, in
+// earlier books" entry, has no gradient to be scaled wrongly. Measured over the
+// tree, those two shapes are 77 characters members and 93 recaps members - by
+// far the largest class the rule would otherwise report, and none of them
+// mis-scaled. Whether an unstaged sidecar is worth its own advisory is a
+// separate question from this one.
+const sidecarScaleMinPositions = 3
+
+// sidecarScaleMinChapters is the shortest chapter list the rule will judge.
+//
+// A work with few chapters gives the ratio too little resolution - a sidecar
+// describing three of eight chapters is a normal partial contribution, not a
+// mis-scaled one - and short recording chapter lists are also where credit and
+// part-divider tracks distort the count most.
+const sidecarScaleMinChapters = 20
+
+// checkSidecarPositionScale reports a characters or recaps sidecar whose
+// positions stop far short of the chapters its work's recordings actually have.
+//
+// A sidecar's position is the logical WORK chapter, and a consumer gates on it:
+// a character card appears once the listener passes its reveal, a recap once
+// they pass its through. Author those positions against something other than the
+// work's own chapters - an audiobook's parts, a summary written in quarters, a
+// partial read - and every gate opens early. That is not a cosmetic error. In
+// the affair the murder victim's true identity was gated at chapter 7 of an
+// 88-chapter book and is not disclosed until chapter 47, and each of the four
+// books in that wave carried a final recap, stating the ending, gated at chapter
+// 11.
+//
+// Nothing in the tree states a work's chapter count, so the rule reads the one
+// independent measure the data does carry: the chapter list on the work's own
+// recordings. That is an audiobook's track list rather than the work's chapter
+// numbering, and the two differ - credits tracks, combined chapters, part
+// dividers - so the comparison is deliberately coarse. It fires only on an
+// order-of-magnitude mismatch, and it compares against the SMALLEST chapter list
+// among the recordings, so the recording that splits the book most finely cannot
+// be what condemns the sidecar.
+//
+// WARN-only, like its neighbours here, and for the same reason: a sidecar that
+// genuinely covers only the opening of a long book is a legitimate partial
+// contribution. The rule cannot tell that from a mis-scaled one on the tree's
+// own evidence - only the source text can - so it names the sidecar and leaves
+// the judgement to a human.
+func checkSidecarPositionScale(cat *model.Catalog, idx *pathIndex, warn addFunc) {
+	// Smallest non-empty chapter list per work id.
+	floor := map[string]int{}
+	for _, w := range cat.Works {
+		for _, r := range w.Recordings {
+			n := len(r.Chapters)
+			if n == 0 {
+				continue
+			}
+			if cur, ok := floor[w.ID]; !ok || n < cur {
+				floor[w.ID] = n
+			}
+		}
+	}
+
+	report := func(rel, kind, workID string, top, chapters int) {
+		warn(rel, "%s sidecar for %q stops at chapter %d but the work's recordings carry %d chapters: "+
+			"the positions may be scaled to something other than the work's chapters",
+			kind, workID, top, chapters)
+	}
+
+	for _, c := range cat.Characters {
+		chapters, ok := floor[c.Work]
+		if !ok || chapters < sidecarScaleMinChapters {
+			continue
+		}
+		top, distinct := 0, map[int]bool{}
+		for _, ch := range c.Characters {
+			distinct[ch.Reveal.Chapter] = true
+			if ch.Reveal.Chapter > top {
+				top = ch.Reveal.Chapter
+			}
+		}
+		if len(distinct) >= sidecarScaleMinPositions && float64(top) < float64(chapters)*sidecarScaleFloor {
+			report(idx.characters[c], "characters", c.Work, top, chapters)
+		}
+	}
+
+	for _, rc := range cat.Recaps {
+		chapters, ok := floor[rc.Work]
+		if !ok || chapters < sidecarScaleMinChapters {
+			continue
+		}
+		top, distinct := 0, map[int]bool{}
+		for _, r := range rc.Recaps {
+			distinct[r.Through.Chapter] = true
+			if r.Through.Chapter > top {
+				top = r.Through.Chapter
+			}
+		}
+		if len(distinct) >= sidecarScaleMinPositions && float64(top) < float64(chapters)*sidecarScaleFloor {
+			report(idx.recaps[rc], "recaps", rc.Work, top, chapters)
+		}
+	}
 }

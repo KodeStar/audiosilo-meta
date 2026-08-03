@@ -233,6 +233,7 @@ func load(lst *pack.Listing, rdr *pack.Reader) Result {
 	checkHonorificPersonPairs(cat, idx, warn)
 	checkIdentityEqualWorks(cat, idx, warn)
 	checkOrphanPeople(cat, recs, idx, warn)
+	checkSidecarPositionScale(cat, idx, warn)
 
 	sortProblems(probs)
 	sortProblems(warns)
