@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
 import { getStats, getCoverage, type Stats, type CoverageResponse } from '../../lib/api'
-import { formatStat, statFontSize } from '../../lib/stat-size'
 
 /** Which arrangement of the band to render. Three different answers to "make
     characters and recaps prominent", not three skins:
@@ -45,36 +44,18 @@ function useCountUp(target: number, run: boolean, durationMs = 1100) {
   return value
 }
 
-function Num({
-  value,
-  run,
-  className,
-  style,
-}: {
-  value: number
-  run: boolean
-  className?: string
-  style?: React.CSSProperties
-}) {
+function Num({ value, run, className }: { value: number; run: boolean; className?: string }) {
   const n = useCountUp(value, run)
-  return (
-    <span className={className} style={style}>
-      {formatStat(n)}
-    </span>
-  )
+  return <span className={className}>{n.toLocaleString('en-GB')}</span>
 }
 
-/** `size` is the row's shared fluid font size (see lib/stat-size.ts). The tile
-    is the query container it resolves against, and `tabular-nums` keeps the
-    width steady while the value counts up. */
-function StatTile({ tile, run, size }: { tile: Tile; run: boolean; size: string }) {
+function StatTile({ tile, run }: { tile: Tile; run: boolean }) {
   return (
-    <div className="@container rounded-xl border border-edge bg-surface px-4 py-6 text-center">
+    <div className="rounded-xl border border-edge bg-surface px-4 py-6 text-center">
       <Num
         value={tile.value}
         run={run}
-        className="block font-black tabular-nums tracking-tight text-hi"
-        style={{ fontSize: size }}
+        className="block text-3xl font-black tracking-tight text-hi sm:text-4xl md:text-5xl"
       />
       <div className="mt-1 text-xs uppercase tracking-wider text-dim sm:text-sm">{tile.label}</div>
     </div>
@@ -243,16 +224,13 @@ export default function StatsBand({ layout = 'tiers' }: Props) {
     { label: 'Chapters', value: stats.total_chapters },
   ]
   const feats = cov ? features(cov) : []
-  // One size for the whole row, taken from its longest number, so no tile can
-  // overflow into its neighbour and the row still reads as one set of figures.
-  const size = statFontSize(Math.max(...tiles.map((t) => formatStat(t.value).length)))
 
   // No coverage data - fall back to the plain five-tile band.
   if (feats.length === 0) {
     return (
       <div ref={ref} className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
         {tiles.map((t) => (
-          <StatTile key={t.label} tile={t} run={visible} size={size} />
+          <StatTile key={t.label} tile={t} run={visible} />
         ))}
       </div>
     )
@@ -295,7 +273,7 @@ export default function StatsBand({ layout = 'tiers' }: Props) {
         ))}
         {tiles.map((t, i) => (
           <div key={t.label} className={i < 3 ? 'lg:col-span-2' : 'lg:col-span-3'}>
-            <StatTile tile={t} run={visible} size={size} />
+            <StatTile tile={t} run={visible} />
           </div>
         ))}
       </div>
@@ -312,7 +290,7 @@ export default function StatsBand({ layout = 'tiers' }: Props) {
       </div>
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
         {tiles.map((t) => (
-          <StatTile key={t.label} tile={t} run={visible} size={size} />
+          <StatTile key={t.label} tile={t} run={visible} />
         ))}
       </div>
     </div>
