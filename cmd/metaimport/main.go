@@ -60,6 +60,7 @@
 package main
 
 import (
+	"context"
 	"flag"
 	"fmt"
 	"io"
@@ -89,6 +90,8 @@ func main() {
 		os.Exit(runSource("libex", os.Args[2:], importer.RunLibex))
 	case "libex-select":
 		os.Exit(runLibexSelect(os.Args[2:]))
+	case "libex-fill":
+		os.Exit(runLibexFill(os.Args[2:]))
 	case "-h", "--help", "help":
 		usage()
 		os.Exit(0)
@@ -390,9 +393,111 @@ func usage() {
 	fmt.Fprintln(os.Stderr, "  metaimport audiosilo-books <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD]")
 	fmt.Fprintln(os.Stderr, "  metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD] [--enrich | --recordings-only]")
 	fmt.Fprintln(os.Stderr, "  metaimport libex-select <export.ndjson> -o <subset.ndjson> [--data data] [--max-per-series N]")
+	fmt.Fprintln(os.Stderr, "  metaimport libex-fill  [--data data] [--works a,b] [--limit N] [--all-tiers] [--dry-run]")
 	fmt.Fprintln(os.Stderr, "")
 	fmt.Fprintln(os.Stderr, "  --conflicts <path> appends one NDJSON row per refused contradiction (a durable worklist).")
 	fmt.Fprintln(os.Stderr, "  --enrich (libex only) fills absent facts on ASIN-matched existing records; it never creates.")
 	fmt.Fprintln(os.Stderr, "  --recordings-only (libex only) adds alternate narrations to works already in the catalogue;")
 	fmt.Fprintln(os.Stderr, "    it never creates a work and never touches a series.")
+	fmt.Fprintln(os.Stderr, "  libex-fill looks up the recordings that carry an ASIN but no cover (or no chapters) and")
+	fmt.Fprintln(os.Stderr, "    enriches them from the live libex service. It covers USER-LIBRARY imports only unless")
+	fmt.Fprintln(os.Stderr, "    --all-tiers is given; --works limits it further to those work ids.")
+}
+
+// runLibexFill parses the flags for the libex-fill subcommand and runs it.
+//
+// It is the automatic counterpart to `libex --enrich`: instead of being handed
+// rows, it works out which recordings are missing a cover or a chapter list,
+// fetches just those ASINs from the live libex service, and feeds the rows
+// through the ordinary enrichment pass. Every guard that pass applies still
+// applies - a runtime contradiction refuses its row here exactly as it would
+// from a dump.
+func runLibexFill(args []string) int {
+	fs := flag.NewFlagSet("libex-fill", flag.ContinueOnError)
+	dataDir := fs.String("data", "data", "data root")
+	works := fs.String("works", "", "comma-separated work ids to limit the fill to (default: the whole catalogue)")
+	limit := fs.Int("limit", 0, "stop after this many lookups (0 = no limit)")
+	dryRun := fs.Bool("dry-run", false, "plan without writing files")
+	date := fs.String("date", "", "YYYY-MM-DD stamp for source.imported_at (default: today)")
+	conflicts := fs.String("conflicts", "", "append one NDJSON row per refused contradiction")
+	base := fs.String("libex", importer.LibexBase, "libex base URL")
+	allTiers := fs.Bool("all-tiers", false, "also fill bulk-mirror-seeded records (default: user-library imports only)")
+	if err := fs.Parse(args); err != nil {
+		usage()
+		return 2
+	}
+
+	cat, err := importer.LoadCatalogForFill(*dataDir)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "metaimport: %v\n", err)
+		return 1
+	}
+
+	var targets []importer.FillTarget
+	if strings.TrimSpace(*works) == "" {
+		targets = importer.SelectFillTargets(cat)
+	} else {
+		set := map[string]bool{}
+		for _, w := range strings.Split(*works, ",") {
+			if w = strings.TrimSpace(w); w != "" {
+				set[w] = true
+			}
+		}
+		targets = importer.SelectFillTargetsIn(cat, set)
+	}
+	if !*allTiers {
+		targets = importer.UserLibraryOnly(targets, cat)
+	}
+	if *limit > 0 && len(targets) > *limit {
+		fmt.Fprintf(os.Stderr, "metaimport: %d recordings need filling; --limit stops after %d\n", len(targets), *limit)
+		targets = targets[:*limit]
+	}
+	if len(targets) == 0 {
+		fmt.Println("libex-fill: nothing to fill (every ASIN-bearing recording already has a cover and chapters)")
+		return 0
+	}
+
+	rows, err := os.CreateTemp("", "libex-fill-*.ndjson")
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "metaimport: %v\n", err)
+		return 1
+	}
+	defer func() { _ = os.Remove(rows.Name()) }()
+
+	client := importer.NewLibexClient()
+	client.BaseURL = *base
+	rep, err := client.FetchRows(context.Background(), targets, rows)
+	if cerr := rows.Close(); err == nil && cerr != nil {
+		err = cerr
+	}
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "metaimport: libex fetch: %v\n", err)
+		return 1
+	}
+	fmt.Printf("libex-fill: looked up %d ASIN(s) = %d fetched + %d not in libex + %d failed\n",
+		rep.Requested, rep.Fetched, rep.NotFound, rep.Failed)
+	for _, e := range rep.Errors {
+		fmt.Fprintf(os.Stderr, "  warning: %s\n", e)
+	}
+	if rep.Fetched == 0 {
+		return 0
+	}
+
+	opts := importer.Options{DataDir: *dataDir, ImportDate: *date, DryRun: *dryRun, Mode: importer.ModeEnrich}
+	if *conflicts != "" {
+		f, err := os.OpenFile(*conflicts, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0o644)
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "metaimport: %v\n", err)
+			return 1
+		}
+		defer func() { _ = f.Close() }()
+		opts.Conflicts = f
+	}
+	sum, err := importer.RunLibex(rows.Name(), opts)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "metaimport: %v\n", err)
+		return 1
+	}
+	printSummary(sum, *dryRun, importer.ModeEnrich)
+	return 0
 }

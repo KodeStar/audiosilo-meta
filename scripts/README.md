@@ -306,3 +306,39 @@ dump nor `full.ndjson` belongs in the repo.
 ```sh
 docker rm -f libex-scratch
 ```
+
+## libex-fill - automatic cover/chapter enrichment
+
+`metaimport libex-fill` is the automatic counterpart to `libex --enrich`. Rather
+than being handed rows, it works out which recordings need filling, fetches just
+those ASINs from the live libex service, and feeds them through the ordinary
+enrichment pass.
+
+```sh
+go run ./cmd/metaimport libex-fill --data data [--works a,b] [--limit N] [--dry-run]
+```
+
+It selects recordings that carry an ASIN but have **no cover URL, no chapter
+list, or both**, and by default covers only the **user-library tier**
+(audiosilo-books / Libation / OpenAudible / hand submissions). That bound is
+where the gap is: measured over the tree, audiosilo-books records are 32%
+without a cover and 100% without chapters, because a personal library export
+states neither, while libex-seeded records are 0.1% without a cover. Filling
+covers across the whole catalogue would be ~136,000 lookups against a free
+public service to fix about 130 records. `--all-tiers` lifts the bound.
+
+Records are read from libex's mirrored copy (`/db/book/{asin}`) first and its
+live Audible fetch (`/book/{asin}`) second - the mirror is cheap and covers most
+of the catalogue, and the live path serves the recent releases the mirror has
+not caught up with. Rows are projected down to exactly the shape
+`libex-export-rows.sql` emits, so a fetched row is indistinguishable from a dump
+row and goes through the same parse and enrichment path with no special case:
+same fill-absent rule, same runtime/date contradiction guard, same
+`libex-import` provenance.
+
+A lookup that misses or fails is counted, never fatal - a partial fill is better
+than none, and the gap is simply left for the next run.
+
+`.github/workflows/intake.yml` runs it after an import-form contribution, which
+is what keeps a newly contributed library from landing with placeholder covers.
+
