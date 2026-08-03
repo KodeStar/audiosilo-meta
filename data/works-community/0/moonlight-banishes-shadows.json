@@ -877,6 +877,265 @@
       }
     },
     "never-go-back": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A former Army military policeman newly arrived in Virginia. When two men posing as legal advisers threaten to keep attacking him unless he leaves, he disables them and stays to learn who sent them.",
+            "id": "jack-reacher",
+            "name": "Jack Reacher",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The major commanding the 110th MP Special Unit, a post Reacher once held. Reacher has travelled to Virginia to meet her after speaking with her from South Dakota, but she is missing from her office when he arrives.",
+            "id": "susan-turner",
+            "name": "Susan Turner",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A lieutenant colonel found at Susan Turner's desk when Reacher visits the 110th. His presence makes Turner's unexplained absence immediately more troubling.",
+            "id": "colonel-morgan",
+            "name": "Colonel Morgan",
+            "reveal": {
+              "chapter": 2
+            }
+          },
+          {
+            "description": "A dead man at the center of a revived military case. Morgan says medical findings connect his death to a beating sixteen years earlier and identifies Reacher as the alleged assailant, a charge Reacher denies.",
+            "id": "juan-rodriguez",
+            "name": "Juan Rodriguez",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A living woman whom Morgan links to a separate matter involving Reacher. At this stage, Morgan withholds the substance of that issue and says someone else will address it.",
+            "id": "candace-dayton",
+            "name": "Candace Dayton",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "One of two soldiers who served under Turner in Afghanistan and were reported dead on a remote trail. Turner believes the effort to frame her may be connected to what the pair tried to report.",
+            "id": "natty-weeks",
+            "name": "Natty Weeks",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "One of Turner's soldiers, reported killed alongside Natty Weeks in Afghanistan. Their deaths become the fugitives' best lead to understanding why Turner was removed and targeted.",
+            "id": "duncan-edwards",
+            "name": "Duncan Edwards",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Sam"
+            ],
+            "description": "Candace Dayton's fourteen-year-old daughter and the subject of a claim that Reacher may be her father. Reacher decides he must reach Los Angeles and establish whether the claim is true.",
+            "id": "samantha-dayton",
+            "name": "Samantha Dayton",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sergeant Leach"
+            ],
+            "description": "A sergeant serving under Turner in the 110th. She discreetly searches for the original record sent by Turner's soldiers from Afghanistan, despite the danger of assisting two wanted fugitives.",
+            "id": "leach",
+            "name": "Leach",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Major Sullivan"
+            ],
+            "description": "An Army attorney available to assist Reacher's defense. Reacher is given her private contact details as the search for him and Turner intensifies.",
+            "id": "helen-sullivan",
+            "name": "Helen Sullivan",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Captain Edmonds"
+            ],
+            "description": "An Army attorney asked to obtain the full military-intelligence file on AM3435. Her access may turn the missing fragment of Turner's Afghanistan report into a usable lead.",
+            "id": "tracy-edmonds",
+            "name": "Tracy Edmonds",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Warrant Officer Espin"
+            ],
+            "description": "The warrant officer leading the 75th MP team assigned to find Reacher and Turner. His search adds military investigators to the other forces pursuing the fugitives.",
+            "id": "pete-espin",
+            "name": "Pete Espin",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A civilian who permits Susan Turner to use her driver's license and payment card for travel. Her voluntary help gives Turner a cover identity but may expose Vega to danger.",
+            "id": "margaret-vega",
+            "name": "Margaret Vega",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "One of two men who follow Reacher and Turner onto a flight to Los Angeles. He carries an apparently ordinary civilian identity and no military identification, but behaves like a disciplined operative.",
+            "id": "peter-paul-lozano",
+            "name": "Peter Paul Lozano",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A second apparent civilian who boards the fugitives' Los Angeles flight. Like his companion, he carries a carefully prepared identity and conceals the result when Reacher incapacitates him.",
+            "id": "ronald-david-baldacci",
+            "name": "Ronald David Baldacci",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "AM3435"
+            ],
+            "description": "An Afghan man identified by the code found in the missing communications interval. Seven years earlier he was suspected of buying American grenades and reselling them to the Taliban, though the allegation was never proved.",
+            "id": "emal-golam-zadran",
+            "name": "Emal Golam Zadran",
+            "reveal": {
+              "chapter": 8
+            }
+          },
+          {
+            "description": "A sex worker and aspiring actor whom Reacher hires for a social-engineering task. She persuades a law-office receptionist to disclose Candace Dayton's address without injuring or coercing her.",
+            "id": "emily",
+            "name": "Emily",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A member of the hostile Fort Bragg team who follows Turner on Mulholland Drive. He confronts her with a gun, and she kills him while defending herself.",
+            "id": "jason-kenneth-rickard",
+            "name": "Jason Kenneth Rickard",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Fort Bragg staff sergeant who leads the hostile field team. Recognizable by injuries from Taliban captivity, he remains the principal operative threatening Reacher, Turner, and Samantha.",
+            "id": "ezra-schrago",
+            "name": "Ezra Schrago",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The disbarred former attorney who prepared Juan Rodriguez's old affidavit. The document and its aftermath have caused lasting damage to his life, and he refuses to help when Reacher and Turner approach him.",
+            "id": "martin-mitchell-ballantyne",
+            "name": "Martin Mitchell Ballantyne",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The officer who investigated the historical accusation against Reacher. His inquiry found that other men committed the beating and that the affidavit blaming Reacher had been forced.",
+            "id": "captain-don-granger",
+            "name": "Captain Don Granger",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The senior officer who backed Don Granger's investigation of the old allegation against Reacher.",
+            "id": "general-leon-garber",
+            "name": "General Leon Garber",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An Army attorney whose beating appears to have been arranged by Morgan. The attack becomes another link between Morgan and the effort to control the cases against Reacher and Turner.",
+            "id": "colonel-moorcroft",
+            "name": "Colonel Moorcroft",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A senior Army personnel official whose decisions repeatedly moved Morgan through Afghanistan-related logistics posts and ultimately into the 110th. Those assignments make him a focus of Reacher and Turner's investigation.",
+            "id": "crew-scully",
+            "name": "Crew Scully",
+            "reveal": {
+              "chapter": 10
+            }
+          },
+          {
+            "description": "The Army Deputy Chief of Staff for Intelligence and a close longtime associate of Crew Scully. Reacher suspects that he may be the conspirator using the name Romeo, but the identification is not yet established.",
+            "id": "gabriel-montague",
+            "name": "Gabriel Montague",
+            "reveal": {
+              "chapter": 10
+            }
+          },
+          {
+            "description": "The label used by an unidentified participant who communicates with Romeo. Phone tracing places both devices together at Dove Cottage, but no confirmed personal identity emerges.",
+            "id": "juliet",
+            "name": "Juliet",
+            "reveal": {
+              "chapter": 11
+            }
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B00E7ZBDLY",
+            "type": "community"
+          }
+        ],
+        "work": "never-go-back"
+      },
       "recaps": {
         "ending": "Sullivan's work clears Reacher of the historical assault case and the fabricated paternity claim. Espin takes Schrago into custody after Schrago attacks Reacher and Turner, and Schrago's cooperation leads to Morgan's arrest. Leach traces Romeo and Juliet to Dove Cottage, where the investigation exposes an opium business supplied through the Zadran family and protected by an Army personnel and logistics network. Scully and Montague kill themselves before the authorities arrive, while Morgan and Schrago remain in custody and the club falls under agency control. Turner receives a permanent stay of confinement and resumes command of the 110th. Samantha remains safe and is confirmed not to be Reacher's daughter. Reacher and Turner end their relationship because neither can share the other's way of life, and Reacher leaves. The identity behind Juliet and the reach of any network beyond Dove Cottage remain unresolved.",
         "in_short": "Jack Reacher travels to Virginia to meet Susan Turner, commander of his former unit, but finds her jailed and himself recalled to service under an old homicide allegation. After freeing Turner, he flees with her while they investigate the deaths of two of her soldiers and a claim that Samantha Dayton may be his daughter. The trail runs through a missing Afghanistan report, Emal Golam Zadran, and a Fort Bragg logistics team directed through Colonel Morgan. Both cases against Reacher prove fabricated, and Samantha is not his daughter. Reacher and Turner return to Washington, where Ezra Schrago's capture helps expose an opium operation at Dove Cottage run by Crew Scully and Gabriel Montague. Morgan and Schrago are arrested, while Scully and Montague die by suicide before the raid. Turner is freed and restored to command. She and Reacher part when they accept that their lives cannot be combined.",
