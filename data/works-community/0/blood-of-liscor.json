@@ -1015,6 +1015,236 @@
         "work": "blood-rites"
       }
     },
+    "blue-moon-lee-child": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An itinerant former military police officer who notices a suspected robbery developing near a bus station. He follows the apparent thief and intervenes on behalf of the older victim.",
+            "id": "jack-reacher",
+            "name": "Jack Reacher",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The head of the city's Ukrainian criminal organization. While maintaining an agreement with Dino, he secretly feeds his rival false information to create an opening for expansion.",
+            "id": "gregory",
+            "name": "Gregory",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The head of the city's Albanian criminal organization and Gregory's counterpart in an uneasy territorial arrangement. He accepts Gregory's warning about informants within his ranks.",
+            "id": "dino",
+            "name": "Dino",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An elderly man carrying the proceeds from selling his car when a thief attacks him. Injured and under severe financial pressure, he must deliver $22,500 to a criminal lender and accepts Reacher's help.",
+            "id": "aaron-shevick",
+            "name": "Aaron Shevick",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Aaron Shevick's wife. She shares his acute financial hardship, although the couple have not yet told Reacher what created their urgent need for money.",
+            "id": "maria-shevick",
+            "name": "Maria Shevick",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The unnamed Ukrainian who takes control of the former Albanian lender's accounts. He accepts Reacher's claim to be Aaron Shevick and relies on a ledger while settling the old debt.",
+            "id": "ukrainian-replacement-lender",
+            "name": "Ukrainian replacement lender",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Meg"
+            ],
+            "description": "Aaron and Maria Shevick's daughter. Her advanced cancer requires costly care after her employer allowed its health insurance to lapse, leaving her parents responsible for an immediate medical bill.",
+            "id": "margaret-meg-shevick",
+            "name": "Margaret \"Meg\" Shevick",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Julian"
+            ],
+            "description": "A Public Law Project attorney working with two colleagues on the Shevicks' claim arising from the loss of Meg's employer-provided health coverage.",
+            "id": "julian-harley-wood",
+            "name": "Julian Harley-Wood",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Gino"
+            ],
+            "description": "One of the three Public Law Project attorneys representing the Shevicks in their effort to recover money connected to Meg's lost health coverage.",
+            "id": "gino-vettoretto",
+            "name": "Gino Vettoretto",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Isaac"
+            ],
+            "description": "One of the three Public Law Project attorneys representing the Shevicks in their effort to recover money connected to Meg's lost health coverage.",
+            "id": "isaac-mehay-byford",
+            "name": "Isaac Mehay-Byford",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The missing Ukrainian founder of Meg's former employer. The Public Law Project suspects he diverted company assets before its collapse, and Reacher begins searching for him as a possible source of restitution.",
+            "id": "maxim-trulenko",
+            "name": "Maxim Trulenko",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Abby"
+            ],
+            "description": "A waitress who guides Reacher away from a rapid Ukrainian response and hides him nearby. Familiar with the danger of defying the organization, she nevertheless helps him after his inquiry about Trulenko.",
+            "id": "abigail-gibson",
+            "name": "Abigail Gibson",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Ukrainian boss of a massage parlor targeted during an Albanian raid. The attackers seize him as the conflict between the two organizations widens.",
+            "id": "bohdam",
+            "name": "Bohdam",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Bohdam's deputy at a Ukrainian-controlled massage parlor. Albanian gunmen abduct him alongside his boss during a violent takeover.",
+            "id": "artem",
+            "name": "Artem",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Frank"
+            ],
+            "description": "Abby's musician friend, who gives her and Reacher refuge in his row house on the Albanian side of the city.",
+            "id": "frank-barton",
+            "name": "Frank Barton",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Hogan"
+            ],
+            "description": "Barton's lodger and a drummer in his band. A former Marine, he evaluates the formidable defenses likely protecting Trulenko and the Ukrainian leadership.",
+            "id": "joe-hogan",
+            "name": "Joe Hogan",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Vantresca"
+            ],
+            "description": "Hogan's former Army commander, now a security consultant. He joins Reacher's group because he speaks Albanian and Ukrainian and can interpret information taken from the gangs' phones.",
+            "id": "guy-vantresca",
+            "name": "Guy Vantresca",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Dino's chief lieutenant, born Shcumbin but using the name of his dead younger brother. He directs an unauthorized Albanian search for the outsider believed to be provoking both criminal organizations.",
+            "id": "jetmir",
+            "name": "Jetmir",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An Albanian investigator and former Tirana police detective. His methodical search leads him to Barton's house, where he tries to find Reacher and Abby.",
+            "id": "gezim-hoxha",
+            "name": "Gezim Hoxha",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Gregory's chief of staff. He orders Maria's abduction as the Ukrainian organization tries to use the Shevicks to draw out the man it believes is Aaron.",
+            "id": "danilo",
+            "name": "Danilo",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Buckley"
+            ],
+            "description": "A Washington Post journalist who has previously faced threats from the Albanian organization. Reacher seeks her knowledge while trying to identify the Ukrainians' hidden operation.",
+            "id": "barbara-buckley",
+            "name": "Barbara Buckley",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:1524774367",
+            "type": "community"
+          }
+        ],
+        "work": "blue-moon-lee-child"
+      }
+    },
     "bondsfungi": {
       "characters": {
         "characters": [
