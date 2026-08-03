@@ -596,6 +596,240 @@
       }
     },
     "the-affair": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Reacher"
+            ],
+            "description": "A decorated U.S. Army military police major who enters the Pentagon expecting a possible arrest. His untidy appearance is deliberate, and he carefully keeps civilian witnesses nearby while testing whether an apparent security team is waiting for him.",
+            "id": "jack-reacher",
+            "name": "Jack Reacher",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Frazer"
+            ],
+            "description": "A colonel assigned to Senate liaison at the Pentagon. Reacher is directed to his office for a scheduled meeting while trying to determine whether the security presence in the building concerns him or is part of an ordinary shift change.",
+            "id": "john-james-frazer",
+            "name": "John James Frazer",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Garber"
+            ],
+            "description": "Reacher's commanding officer, who objects to his deliberately unmilitary appearance before explaining that it is needed for an assignment in Mississippi. His instructions begin the inquiry concealed by Reacher's chosen appearance.",
+            "id": "leon-garber",
+            "name": "Leon Garber",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Deveraux"
+            ],
+            "description": "The sheriff in Carter Crossing and a former Marine Corps member. She works cautiously with Reacher while investigating local murders and reports of armed violence outside Fort Kelham, although she remains suspicious of the Army's explanations.",
+            "id": "elizabeth-deveraux",
+            "name": "Elizabeth Deveraux",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Munro"
+            ],
+            "description": "A military police major conducting the internal inquiry at Fort Kelham. He confines the post's personnel and describes strict controls inside the base, while denying that the Army has established an exclusion zone beyond its fence.",
+            "id": "duncan-munro",
+            "name": "Duncan Munro",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Neagley"
+            ],
+            "description": "A trusted former member of Reacher's 110th unit who served as his sergeant at different times. She comes to warn him that the Mississippi assignment may be intended to destroy him, treating the danger as immediate and serious.",
+            "id": "frances-neagley",
+            "name": "Frances Neagley",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Reed"
+            ],
+            "description": "The probable owner of a wrecked car tied to Reacher's classified inquiry. Frazer refuses to confirm the ownership directly, leaving both the reason for the car's importance and Riley's connection to the wider events uncertain.",
+            "id": "reed-riley",
+            "name": "Reed Riley",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A murdered Carter Crossing resident whose recent life appears to have begun only three years earlier. She arrived with money, acquired a house and possessions, and left almost no trace of where she had lived or who she had been before.",
+            "id": "janice-may-chapman",
+            "name": "Janice May Chapman",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Shawna"
+            ],
+            "description": "A murdered young woman from Carter Crossing who had wanted to leave town. She worked part-time near Brannan's Bar and studied how to become a notary. Her brother says her last boyfriend called himself Reed, looked like a soldier, and drove an old blue Chevrolet.",
+            "id": "shawna-lindsay",
+            "name": "Shawna Lindsay",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Bruce"
+            ],
+            "description": "Shawna Lindsay's sixteen-year-old brother, who is considering joining the Army. His recollection of Shawna's soldier-like boyfriend and the man's old blue car gives Reacher and Deveraux an important lead involving someone called Reed.",
+            "id": "bruce-lindsay",
+            "name": "Bruce Lindsay",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Rosemary"
+            ],
+            "description": "One of the women murdered before Janice May Chapman. Reacher and Deveraux consider whether Rosemary, Shawna, and Chapman may all have been pregnant, although that possibility was not tested in the earlier cases.",
+            "id": "rosemary-mcclatchy",
+            "name": "Rosemary McClatchy",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Dixon"
+            ],
+            "description": "A forensic accountant and former colleague from Reacher's 110th unit. Reacher turns to her for an independent check of the proposed financial motive, and she examines whether money connected to Kosovo could explain the Mississippi events.",
+            "id": "karla-dixon",
+            "name": "Karla Dixon",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Janice May Chapman"
+            ],
+            "description": "The earlier identity of Janice May Chapman. Records establish that Audrey disappeared from ordinary life three years earlier after an affair with Senator Carlton Riley, then continued in Carter Crossing under the Chapman name.",
+            "id": "audrey-shaw",
+            "name": "Audrey Shaw",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Senator Riley"
+            ],
+            "description": "A United States senator from Missouri and chairman of the Armed Services Committee. His former affair with Audrey Shaw becomes significant when records show that she disappeared from ordinary life and continued under the name Janice May Chapman.",
+            "id": "carlton-riley",
+            "name": "Carlton Riley",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lowrey"
+            ],
+            "description": "A records researcher assisting Reacher. His work resolves the unexplained fingerprint result by connecting Janice May Chapman to the earlier identity Audrey Shaw, then links Shaw's disappearance from ordinary records to Senator Carlton Riley.",
+            "id": "stan-lowrey",
+            "name": "Stan Lowrey",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "militia"
+            ],
+            "description": "A civilian militia deployed around Fort Kelham as an unauthorized perimeter force. Its sixty members carry illicit Army weapons and have been ordered to turn civilians away, although they do not know who originated their instructions.",
+            "id": "tennessee-free-citizens",
+            "name": "Tennessee Free Citizens",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "McClatchy"
+            ],
+            "description": "Rosemary McClatchy's mother and an important witness. She says Rosemary dated Reed for almost four months, identifies him as the boyfriend who ended the relationship, and reports that her daughter appeared to be pregnant afterward.",
+            "id": "emmeline-mcclatchy",
+            "name": "Emmeline McClatchy",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A purported former Marine Corps military police member whose record is used to implicate Deveraux. The file says Bouton dated Paul Evers and was convicted of stealing money from an evidence locker after an inquiry involving Deveraux.",
+            "id": "alice-bouton",
+            "name": "Alice Bouton",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Evers"
+            ],
+            "description": "A former Marine Corps military police member and Deveraux's former boyfriend. A newly produced service file says he later had a relationship with Alice Bouton, making his reported history part of the allegations now being used against Deveraux.",
+            "id": "paul-evers",
+            "name": "Paul Evers",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audiosilo-meta:work:the-affair",
+            "type": "community"
+          }
+        ],
+        "work": "the-affair"
+      },
       "recaps": {
         "ending": "Frances Neagley's search establishes that Alice Bouton never existed, confirming Reacher's suspicion that the Marine Corps case against Elizabeth Deveraux was fabricated. Duncan Munro helps keep Deveraux away while arranging for Reed Riley to leave Senator Carlton Riley's event last. Reacher intercepts father and son, forces the senator to acknowledge that the Fort Kelham operation served Reed's interests, and concludes that Reed murdered Rosemary McClatchy, Shawna Lindsay, and Janice May Chapman. Reacher kills both Rileys and makes their deaths appear to result from a train collision. The public case closes under a false Army account that assigns the murders to a dead member of a local white-supremacist militia. Deveraux and Munro know that the official resolution is untrue, Frazer is dead, and the Tennessee Free Citizens have been dispersed. Reacher and Deveraux's relationship has no stated final resolution. Reacher remains in the Army for the moment but is exposed to career repercussions for defying the effort to protect Senator Riley.",
         "in_short": "In 1997, Army military police major Jack Reacher investigates murders near Fort Kelham while Sheriff Elizabeth Deveraux pursues the same case from the civilian side. A secret perimeter manned by the Tennessee Free Citizens leads Reacher to Colonel John James Frazer, who monitored Reacher's calls and arranged the militia deployment. Frazer dies after attacking Reacher. Evidence then points toward Captain Reed Riley, son of Senator Carlton Riley, but a Marine Corps file attempts to blame Deveraux. Frances Neagley proves that a central figure in that file never existed. Reacher concludes that Reed killed Rosemary McClatchy, Shawna Lindsay, and Janice May Chapman, and that the senator's influence drove the protection effort. Reacher kills Reed and Carlton Riley, stages their deaths as a train collision, and supports a false official account blaming a dead militia member. Deveraux is privately cleared, while Reacher faces likely consequences within the Army.",
