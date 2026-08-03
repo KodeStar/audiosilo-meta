@@ -1141,6 +1141,241 @@
       }
     },
     "persuader": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Reacher"
+            ],
+            "description": "A former Army military police officer observing an unfolding operation outside a college from an unmarked van. He is armed and prepared to intervene.",
+            "id": "jack-reacher",
+            "name": "Jack Reacher",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Richard"
+            ],
+            "description": "A college student traveling with two bodyguards when armed men force his car from the road and abduct him. He is the immediate object of Reacher's intervention.",
+            "id": "richard-beck",
+            "name": "Richard Beck",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Elizabeth"
+            ],
+            "description": "Richard's mother, who receives him at the family's fortified coastal home and thanks Reacher for bringing him back. She leaves the decision about Reacher's treatment to her husband.",
+            "id": "elizabeth-beck",
+            "name": "Elizabeth Beck",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Beck household's armed security man. He searches Reacher at the entrance, takes possession of his revolvers, and keeps him confined while the family decides what to do.",
+            "id": "duke",
+            "name": "Duke",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Duffy"
+            ],
+            "description": "A DEA agent investigating the Cadillac connected to Reacher's sighting of a man he thought dead. She and Steven Eliot approach Reacher because his independent identification may advance their inquiry.",
+            "id": "susan-duffy",
+            "name": "Susan Duffy",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Eliot"
+            ],
+            "description": "A DEA agent working beside Susan Duffy on an investigation linked to a Maine import company. He helps establish Reacher's background and presses him to explain whom he saw using the company's Cadillac.",
+            "id": "steven-eliot",
+            "name": "Steven Eliot",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Beck"
+            ],
+            "description": "Owner of Bizarre Bazaar, an Oriental-rug importing company whose Cadillac appears in DEA surveillance. The agency suspects that his business provides cover for a major drug-importing operation.",
+            "id": "zachary-beck",
+            "name": "Zachary Beck",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former Army intelligence officer whom Reacher believed dead after an earlier case. His unexpected survival and access to Beck's Cadillac connect Reacher's unfinished personal concern to the DEA investigation.",
+            "id": "quinn",
+            "name": "Quinn",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Duffy's missing undercover DEA agent. She entered Bizarre Bazaar under the cover of a clerk, then vanished from contact, making her recovery one of Reacher's main objectives inside Beck's organization.",
+            "id": "teresa-daniel",
+            "name": "Teresa Daniel",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An exceptionally large, steroid-using employee at the Beck estate. Hostile toward former Army officers, he immediately challenges Reacher to an arm-wrestling contest.",
+            "id": "paulie",
+            "name": "Paulie",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Doll"
+            ],
+            "description": "An operator within Beck's organization who understands its vehicle-surveillance equipment and has access to investigative records. His freedom to speak before Beck and Duke suggests unusual leverage or authority.",
+            "id": "angel-doll",
+            "name": "Angel Doll",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Duke"
+            ],
+            "description": "The full identity of Beck's security chief. A former Minneapolis police officer and Treasury employee, he served prison time for corruption and is suspected of several killings.",
+            "id": "john-chapman-duke",
+            "name": "John Chapman Duke",
+            "reveal": {
+              "chapter": 68
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Kohl"
+            ],
+            "description": "A former Army subordinate remembered by Reacher as a highly capable investigator, marksman, and leader. Her record and conduct during a sensitive espionage inquiry continue to shape his judgment.",
+            "id": "dominique-kohl",
+            "name": "Dominique Kohl",
+            "reveal": {
+              "chapter": 80
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Frasconi"
+            ],
+            "description": "Dominique Kohl's Army investigative partner. Reacher authorizes the pair to trace the network coercing a weapons engineer while protecting the engineer and his family if possible.",
+            "id": "anthony-frasconi",
+            "name": "Anthony Frasconi",
+            "reveal": {
+              "chapter": 88
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An associate trusted with a body-disposal assignment at the Beck estate. He arrives in a black Lincoln carrying the murdered household maid and directs Reacher to help remove her remains.",
+            "id": "harley",
+            "name": "Harley",
+            "reveal": {
+              "chapter": 89
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Villanueva"
+            ],
+            "description": "A DEA agent supporting Duffy's unofficial operation. He meets Reacher while two escaped bodyguards are approaching the Beck estate and helps prepare an interception on a narrow road.",
+            "id": "terry-villanueva",
+            "name": "Terry Villanueva",
+            "reveal": {
+              "chapter": 103
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Quinn"
+            ],
+            "description": "The senior Army intelligence officer uncovered in Kohl's earlier investigation and the man Reacher has known as Quinn. His coercion of an engineer through the engineer's child mirrors the pressure surrounding Beck's operation.",
+            "id": "francis-xavier-quinn",
+            "name": "Francis Xavier Quinn",
+            "reveal": {
+              "chapter": 111
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Emily"
+            ],
+            "description": "The receptionist at Xavier Export Company's downtown office. She is alone at her desk when Reacher enters and reports that Paulie had already told the office Reacher was dead.",
+            "id": "emily-smith",
+            "name": "Emily Smith",
+            "reveal": {
+              "chapter": 139
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A computer worker guarding the basement room where Teresa is being held at Quinn's coastal house. Reacher encounters him while searching the occupied building during the formal dinner.",
+            "id": "troy",
+            "name": "Troy",
+            "reveal": {
+              "chapter": 159
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Teresa Daniel",
+              "Teresa"
+            ],
+            "description": "A federal agent operating under the name Teresa Daniel. Duffy reports that she is actually Teresa Justice.",
+            "id": "teresa-justice",
+            "name": "Teresa Justice",
+            "reveal": {
+              "chapter": 58
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:0593339096",
+            "type": "community"
+          }
+        ],
+        "work": "persuader"
+      },
       "recaps": {
         "ending": "Reacher removes the drugged Teresa from Quinn's coastal house and turns her over to Duffy and Villanueva. He then returns alone, confronts Quinn during the arms dealers' dinner, and tries to separate the criminals from Richard, Elizabeth, and the cook. Quinn uses Zachary Beck as a shield, while Richard's effort to protect his father prevents Reacher from firing. Driven into the sea cleft, Reacher survives the undertow, swims back, enters the house without a weapon, knocks Zachary unconscious, and kills Quinn with a concealed chisel.\n\nATF and Portland police move against the warehouse and coastal operation. Teresa survives but remembers nothing of her rescue. Eliot is dead. Richard and Elizabeth survive, while Zachary's eventual legal and family position is not given. Duffy, shaken by an off-books operation that cost three agents, considers leaving DEA; Villanueva intends to retire. They depart with Teresa and ensure Reacher is not tied to the case. Duffy leaves clothes for him at the motel. Reacher abandons Beck's Cadillac and resumes his solitary travels by hitchhiking south on I-95.",
         "in_short": "Jack Reacher joins Susan Duffy's unauthorized DEA operation after recognizing Quinn, a former Army intelligence officer he believed dead, in a car linked to importer Zachary Beck. A staged rescue puts Reacher inside Beck's fortified Maine estate to find missing agent Teresa Daniel. He discovers that Quinn controls Beck through the earlier kidnapping of Beck's son Richard, and that the supposed drug business is an international arms network. Reacher kills Beck's enforcers Duke, Paulie, Angel Doll, and Harley while following Teresa's trail. At Quinn's coastal house he finds Teresa alive but drugged, delivers her to Duffy and Terry Villanueva, and returns for Quinn. After escaping an undertow and re-entering the estate unarmed, Reacher kills Quinn. Steven Eliot is dead, the arms operation passes to ATF and Portland police, and the surviving Beck family's future remains unstated. Duffy considers leaving DEA, Villanueva plans retirement, and Reacher hitchhikes south alone.",
