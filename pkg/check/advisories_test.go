@@ -1,6 +1,7 @@
 package check
 
 import (
+	"fmt"
 	"strings"
 	"testing"
 )
@@ -272,5 +273,145 @@ func TestAdvisoryIdentityEqualSkipsSerialVolumes(t *testing.T) {
 		`"sources":[{"type":"user"}],"works":[{"position":"1","work":"book-one"},{"position":"2","work":"book-one-two"}]}`
 	if got := advisoryMatching(advisoryWarnings(t, files), "one book under two ids"); len(got) != 1 {
 		t.Errorf("a same-title identity-equal pair at two series positions must still be reported: %v", got)
+	}
+}
+
+// scaleMarker is the fragment the position-scale advisory is recognised by,
+// here and in AdvisoryCensus.
+const scaleMarker = "scaled to something other than the work's chapters"
+
+// chapterList renders n sequential chapters for a recording, so a fixture can
+// state "this work's recording has n chapters" without spelling them out.
+func chapterList(n int) string {
+	var b strings.Builder
+	b.WriteString(`[`)
+	for i := 0; i < n; i++ {
+		if i > 0 {
+			b.WriteString(`,`)
+		}
+		fmt.Fprintf(&b, `{"length_ms":1000,"start_ms":%d,"title":"Chapter %d"}`, i*1000, i+1)
+	}
+	b.WriteString(`]`)
+	return b.String()
+}
+
+// sidecarSpread builds a characters sidecar and a recaps sidecar staged across
+// the given positions - a real gradient, which is what the rule judges.
+func sidecarSpread(at ...int) (string, string) {
+	var cs, rs []string
+	seen := map[int]bool{}
+	for i, p := range at {
+		cs = append(cs, fmt.Sprintf(`{"description":"A person in the book, described in the contributor's own words.",`+
+			`"id":"someone-%d","name":"Someone %d","reveal":{"chapter":%d}}`, i, i, p))
+		// checkRecaps forbids two recaps at one position, so a repeated position
+		// yields a single recap - which is exactly the unstaged shape the
+		// gradient guard exists for.
+		if seen[p] {
+			continue
+		}
+		seen[p] = true
+		rs = append(rs, fmt.Sprintf(`{"scope":"book","text":"The story so far, in the contributor's own words.",`+
+			`"through":{"chapter":%d}}`, p))
+	}
+	chars := `{"characters":[` + strings.Join(cs, ",") + `],"license":"CC-BY-SA-3.0",` +
+		`"sources":[{"type":"community"}],"work":"book-one"}`
+	recaps := `{"license":"CC-BY-SA-3.0","recaps":[` + strings.Join(rs, ",") + `],` +
+		`"sources":[{"type":"community"}],"work":"book-one"}`
+	return chars, recaps
+}
+
+// scaleFixture is baseValid plus a recording carrying chapters and a sidecar
+// pair staged across at.
+func scaleFixture(chapters int, at ...int) map[string]string {
+	files := baseValid()
+	files["works/bo/book-one/recordings/rec-one.json"] = withChapters(chapterList(chapters))
+	chars, recaps := sidecarSpread(at...)
+	files["works/bo/book-one/characters.json"] = chars
+	files["works/bo/book-one/recaps.json"] = recaps
+	return files
+}
+
+func TestAdvisorySidecarPositionScale(t *testing.T) {
+	// A sidecar whose positions track its work's chapters is quiet.
+	if got := advisoryMatching(advisoryWarnings(t, scaleFixture(40, 10, 20, 30)), scaleMarker); len(got) != 0 {
+		t.Errorf("a sidecar reaching chapter 30 of 40 reported %v", got)
+	}
+
+	// A sidecar stopping far short of them is reported - once per member, so a
+	// characters and a recaps sidecar each name themselves.
+	got := advisoryMatching(advisoryWarnings(t, scaleFixture(80, 3, 7, 11)), scaleMarker)
+	if len(got) != 2 {
+		t.Fatalf("a sidecar stopping at chapter 11 of 80 reported %d advisories, want 2 (characters + recaps): %v",
+			len(got), got)
+	}
+	var sawChars, sawRecaps bool
+	for _, g := range got {
+		if strings.Contains(g, "characters sidecar") {
+			sawChars = true
+		}
+		if strings.Contains(g, "recaps sidecar") {
+			sawRecaps = true
+		}
+	}
+	if !sawChars || !sawRecaps {
+		t.Errorf("both members should name themselves, got %v", got)
+	}
+}
+
+// TestAdvisorySidecarPositionScaleGuards pins the two cases the rule declines to
+// judge: a work whose recordings carry no chapter list at all (nothing to
+// compare against), and a chapter list too short for the ratio to mean anything.
+func TestAdvisorySidecarPositionScaleGuards(t *testing.T) {
+	noChapters := baseValid()
+	chars, recaps := sidecarSpread(1, 2, 3)
+	noChapters["works/bo/book-one/characters.json"] = chars
+	noChapters["works/bo/book-one/recaps.json"] = recaps
+	if got := advisoryMatching(advisoryWarnings(t, noChapters), scaleMarker); len(got) != 0 {
+		t.Errorf("a work with no recording chapters reported %v", got)
+	}
+
+	// 3 of 15 is a smaller fraction than the threshold, but 15 chapters is below
+	// the floor the rule will judge.
+	if got := advisoryMatching(advisoryWarnings(t, scaleFixture(15, 1, 2, 3)), scaleMarker); len(got) != 0 {
+		t.Errorf("a 15-chapter work reported %v", got)
+	}
+}
+
+// TestAdvisorySidecarPositionScaleUsesSmallestChapterList pins that a second
+// recording splitting the book more finely cannot be what condemns a sidecar:
+// the comparison is against the SMALLEST chapter list among the work's
+// recordings.
+func TestAdvisorySidecarPositionScaleUsesSmallestChapterList(t *testing.T) {
+	files := scaleFixture(30, 8, 14, 20)
+	files["works/bo/book-one/recordings/rec-two.json"] = `{"abridged":false,"chapters":` + chapterList(90) +
+		`,"id":"rec-two","language":"en","license":"CC0-1.0","narrators":["narrator-one"],` +
+		`"sources":[{"type":"user"}],"work":"book-one"}`
+	if got := advisoryMatching(advisoryWarnings(t, files), scaleMarker); len(got) != 0 {
+		t.Errorf("a finely split second recording should not condemn a sidecar, got %v", got)
+	}
+}
+
+// TestAdvisoryCensusCountsMisScaledSidecars pins the class into the one-line
+// census metacheck prints, so a wave can be compared against the last one.
+func TestAdvisoryCensusCountsMisScaledSidecars(t *testing.T) {
+	dir := t.TempDir()
+	writeEntities(t, dir, scaleFixture(80, 3, 7, 11))
+	line := AdvisoryCensus(Load(dir).Warnings)
+	if !strings.Contains(line, "2 mis-scaled sidecars") {
+		t.Errorf("census = %q, want it to count 2 mis-scaled sidecars", line)
+	}
+}
+
+// TestAdvisorySidecarPositionScaleNeedsAGradient pins that a sidecar using ONE
+// position throughout is never judged: an all-at-chapter-1 cast list and a
+// recaps member holding only the chapter-0 "previously" entry have no gradient
+// to have scaled wrongly, and together they are the largest shape in the tree.
+func TestAdvisorySidecarPositionScaleNeedsAGradient(t *testing.T) {
+	if got := advisoryMatching(advisoryWarnings(t, scaleFixture(80, 1, 1, 1)), scaleMarker); len(got) != 0 {
+		t.Errorf("an unstaged sidecar reported %v", got)
+	}
+	// Two positions is still short of a gradient the rule will judge.
+	if got := advisoryMatching(advisoryWarnings(t, scaleFixture(80, 1, 2)), scaleMarker); len(got) != 0 {
+		t.Errorf("a two-position sidecar reported %v", got)
 	}
 }
