@@ -1160,6 +1160,218 @@
       }
     },
     "a-wanted-man": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Reacher"
+            ],
+            "description": "A former Army military policeman travelling east through Nebraska by hitchhiking. He has a newly broken nose and accepts a ride from three strangers while law enforcement searches the region for two men connected to an apparent killing.",
+            "id": "jack-reacher",
+            "name": "Jack Reacher",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Sheriff Goodman",
+              "Goodman"
+            ],
+            "description": "The county sheriff who receives an eyewitness account of suspicious activity at a rural pumping station. He begins a regional hunt based on the witness's description of a bright vehicle carrying a pair of formally dressed men.",
+            "id": "victor-goodman",
+            "name": "Victor Goodman",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The unnamed observer who reports seeing two men in black suits follow a man in a green coat into a rural pumping station. He sees the suited men leave alone in a bright red car before blood emerges from the building.",
+            "id": "pumping-station-eyewitness",
+            "name": "Pumping-station eyewitness",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "King"
+            ],
+            "description": "The front-seat passenger in the Chevrolet carrying Reacher east. He presents himself as an office worker, takes a directive tone with the other occupants, and gives Reacher his name shortly before the car reaches a police blockage.",
+            "id": "alan-king",
+            "name": "Alan King",
+            "reveal": {
+              "chapter": 3
+            }
+          },
+          {
+            "aliases": [
+              "McQueen"
+            ],
+            "description": "The driver of the Chevrolet in which Reacher has accepted a ride. Dressed like the other occupants in a new denim shirt, he keeps his attention chiefly on the road and identifies himself as traffic slows near several police vehicles.",
+            "id": "don-mcqueen",
+            "name": "Don McQueen",
+            "reveal": {
+              "chapter": 3
+            }
+          },
+          {
+            "aliases": [
+              "Delfuenso"
+            ],
+            "description": "The rear-seat passenger beside Reacher in the Chevrolet. She appears to be travelling with King and McQueen as another office worker and gives Reacher aspirin for his recently broken nose while the group continues east.",
+            "id": "karen-delfuenso",
+            "name": "Karen Delfuenso",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sorenson"
+            ],
+            "description": "An FBI special agent following the emergency call made after Reacher escapes King and McQueen at an Iowa motel. She leaves the Nebraska investigation to meet him alone, aware that the case may soon be taken out of her hands.",
+            "id": "julia-sorenson",
+            "name": "Julia Sorenson",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Alan King's reported brother and a possible route to identifying the fugitives. Reacher recalls that Peter served in the Army, prompting Sorenson to request a service-record trace through Fort Sill while their direct leads remain scarce.",
+            "id": "peter-king",
+            "name": "Peter King",
+            "reveal": {
+              "chapter": 5
+            }
+          },
+          {
+            "aliases": [
+              "Peter King"
+            ],
+            "description": "The former soldier identified by a Fort Sill trace as the likely match for Alan King's reported brother. His record places him in Army fire support in 1991 and later in security work in Denver, although the claimed family connection remains unconfirmed.",
+            "id": "peter-james-king",
+            "name": "Peter James King",
+            "reveal": {
+              "chapter": 6
+            }
+          },
+          {
+            "description": "Karen Delfuenso's daughter. Goodman withholds the report of her mother's apparent death and arranges for a neighbour to keep her home, but several men abduct Lucy after one claims to know where her mother can be found.",
+            "id": "lucy",
+            "name": "Lucy",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Perry"
+            ],
+            "description": "The special agent in charge of the Omaha FBI office and Sorenson's supervisor. After Reacher answers Sorenson's phone and claims to be holding her hostage, Perry directs law enforcement to regard Reacher as highly dangerous and apprehend him.",
+            "id": "anthony-perry",
+            "name": "Anthony Perry",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Dawson"
+            ],
+            "description": "A Kansas City FBI special agent assigned to find Reacher and Sorenson after the Omaha office treats Sorenson as a hostage. He searches with Andrew Mitchell and pursues Goodman's patrol car when Reacher uses it to flee.",
+            "id": "robert-dawson",
+            "name": "Robert Dawson",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mitchell"
+            ],
+            "description": "A Kansas City FBI special agent who joins Robert Dawson in the effort to locate Reacher and Sorenson. Their pursuit brings them to Goodman's patrol car, but Reacher exploits a traffic stop to send them in the wrong direction.",
+            "id": "andrew-mitchell",
+            "name": "Andrew Mitchell",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Goodman's chief deputy and acting successor, with experience centered on traffic duties rather than a complex investigation. A traffic stop he conducts becomes the opportunity Reacher uses to reverse the direction of an FBI pursuit.",
+            "id": "puller",
+            "name": "Puller",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Lucy's ten-year-old neighbour and the only available witness to her abduction. She remembers two men taking Lucy after offering information about her mother and recalls a shiny, low-slung car, but cannot identify the men or its colour.",
+            "id": "paula",
+            "name": "Paula",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A man presented as a State Department official who seeks to take Reacher into custody while Reacher and Sorenson are evading the authorities. At this stage, his institutional claim and his interest in Reacher define his apparent role.",
+            "id": "lester",
+            "name": "Lester",
+            "reveal": {
+              "chapter": 7
+            }
+          },
+          {
+            "description": "A Kansas City FBI agent assigned to a fenced former motel used to isolate people connected with undercover work. Bale helps manage the compound and tells Reacher that he must remain there and keep the operation secret.",
+            "id": "bale",
+            "name": "Bale",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Kansas City FBI agent working with Bale at the secure compound where Reacher finds Delfuenso, Lucy, and the pumping-station eyewitness. Trapatoni helps enforce the instruction that Reacher must stay and never discuss the operation.",
+            "id": "trapatoni",
+            "name": "Trapatoni",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lester"
+            ],
+            "description": "The full identity used by the dead man from the pumping station. Delfuenso establishes that no such official worked for either the State Department or the CIA, and she and McQueen conclude that the man was Wadiah's mole inside the CIA.",
+            "id": "lester-l-lester-jr",
+            "name": "Lester L. Lester, Jr.",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B0090Q9BM8",
+            "type": "community"
+          }
+        ],
+        "work": "a-wanted-man"
+      },
       "recaps": {
         "ending": "A sniper kills Julia Sorenson as she, Reacher, and Karen Delfuenso approach Wadiah's concealed former military installation. Reacher sends Delfuenso to summon support and enters alone. Inside, he finds handwritten financial records and containers of nuclear waste used as the visible reserve behind Wadiah's paper currency. He locates Don McQueen alive but bound and held by Peter King. Reacher kills Peter, frees McQueen, and fights toward an exit. Delfuenso returns in time to kill the guards about to shoot Reacher, then drives them away before the Quantico force arrives. McQueen and Delfuenso survive, while Sorenson and Peter are dead. The installation and its records remain for the incoming FBI operation, and the man who used the Lester identity is identified as Wadiah's mole within the CIA. Peter was only second in command, so Wadiah's ultimate leader and the wider reach of the network remain unresolved. Reacher leaves before the FBI can debrief him.",
         "in_short": "Hitchhiking through Nebraska, Jack Reacher accepts a ride from Alan King, Don McQueen, and Karen Delfuenso as police investigate a killing at a pumping station. Apparent murders and abductions draw Reacher into an unsanctioned investigation with FBI agent Julia Sorenson. The case proves to be a concealed FBI operation against Wadiah: McQueen is undercover, Delfuenso is his secret backstop, and Alan King is dead. Tracking McQueen leads Reacher, Sorenson, and Delfuenso to a hidden former military installation, where a sniper kills Sorenson. Reacher infiltrates the site, discovers an illicit paper bank backed by stored nuclear waste, frees McQueen, and kills Peter King, Wadiah's second in command. Delfuenso saves both men from the remaining guards and drives them away before federal forces arrive. Wadiah's local operation is exposed, but its ultimate leader remains unknown.",
