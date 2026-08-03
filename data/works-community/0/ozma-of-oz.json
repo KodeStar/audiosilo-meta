@@ -164,6 +164,281 @@
         "work": "ozma-of-oz"
       }
     },
+    "past-tense": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Reacher"
+            ],
+            "description": "An itinerant former Army officer travelling from Maine toward San Diego. He changes course for Laconia after recognizing it as the New Hampshire birthplace attributed to his late father, Stan Reacher.",
+            "id": "jack-reacher",
+            "name": "Jack Reacher",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Patty"
+            ],
+            "description": "A Canadian sawmill worker travelling with her boyfriend, Shorty Fleck, to sell valuable property in New York. She reads the map during their back-road detour and reaches an isolated motel after their Honda overheats.",
+            "id": "patty-sundstrom",
+            "name": "Patty Sundstrom",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Shorty",
+              "Fleck"
+            ],
+            "description": "A Canadian potato farmer travelling with his girlfriend, Patty Sundstrom. Their plan to sell valuables in New York is interrupted when their aging Honda overheats and they seek help at a remote motel.",
+            "id": "shorty-fleck",
+            "name": "Shorty Fleck",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The late father Jack Reacher believes was born in Laconia and left the area at seventeen. The chance discovery of that claimed birthplace prompts Reacher to investigate the family's local history.",
+            "id": "stan-reacher",
+            "name": "Stan Reacher",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The polished receptionist who appears to lead the group managing the isolated motel. He and three associates present themselves as investors and question Patty and Shorty about their journey.",
+            "id": "mark",
+            "name": "Mark",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Mark's three associates at the remote property. He is introduced as a fellow investor when the group hosts Patty and Shorty for dinner.",
+            "id": "robert",
+            "name": "Robert",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the men presented as an investor in the isolated motel. He joins Mark, Robert, and Peter at dinner with the stranded Canadian couple.",
+            "id": "stephen",
+            "name": "Stephen",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of Mark's motel group who is presented as one of the property's investors. He is said to handle the quad bikes kept at the site.",
+            "id": "peter",
+            "name": "Peter",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Castle"
+            ],
+            "description": "A Laconia city-records employee who helps Reacher search for evidence of his father's family. Her initial property search finds no Reacher household in the city during the relevant period.",
+            "id": "elizabeth-castle",
+            "name": "Elizabeth Castle",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Carrington"
+            ],
+            "description": "A Laconia town attorney and census enthusiast whom Elizabeth Castle recommends when the expected Reacher household cannot be found in local records.",
+            "id": "carter-carrington",
+            "name": "Carter Carrington",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Chief Shaw",
+              "Shaw"
+            ],
+            "description": "Laconia's chief of detectives. He brings Reacher into the police department's historical-record search for an old report involving the Reacher surname.",
+            "id": "jim-shaw",
+            "name": "Jim Shaw",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Detective Amos",
+              "Amos"
+            ],
+            "description": "A Laconia detective and former Army MP who assists Reacher with the department's historical files. Their shared military background is apparent when he recognizes her professional experience.",
+            "id": "brenda-amos",
+            "name": "Brenda Amos",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mark"
+            ],
+            "description": "The motel leader previously known as Mark. A police record gives his name as Mark Reacher and identifies him as a young motel renovator involved in a dispute over a delayed permit, creating a possible link to Jack Reacher's family search.",
+            "id": "mark-reacher",
+            "name": "Mark Reacher",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Stan Reacher's father, found in county census records at rented housing in Ryantown. He worked first as a tin-mill foreman and later grading roads.",
+            "id": "james-reacher",
+            "name": "James Reacher",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Stan Reacher's mother, recorded with James and Stan in Ryantown rather than Laconia. The censuses list her first as a bedsheet finisher and later without employment.",
+            "id": "elizabeth-reacher",
+            "name": "Elizabeth Reacher",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Macedonian mechanic whom Mark contacts about the stranded Honda. Speaking by phone, he promises Patty and Shorty that he will bring the needed repair part within several hours.",
+            "id": "karel",
+            "name": "Karel",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A local resident who keeps archived material about Ryantown, including a newsletter concerning the former settlement and an unsuccessful campaign over alleged groundwater pollution.",
+            "id": "bruce-jones",
+            "name": "Bruce Jones",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Patrolman Davison"
+            ],
+            "description": "A Laconia patrolman briefed by Brenda Amos about the threat to Reacher. He recognizes Reacher during an early-morning street encounter and takes him voluntarily to the police station for protection.",
+            "id": "davison",
+            "name": "Davison",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Mr. Mortimer"
+            ],
+            "description": "An elderly resident of an assisted-living facility whose memories of Ryantown may help Reacher understand his family's years in the vanished mill settlement.",
+            "id": "mortimer",
+            "name": "Mortimer",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Reverend Burke",
+              "Burke"
+            ],
+            "description": "The gray-ponytailed former clergyman who drives Reacher to meet Mortimer. He has been between parishes for decades and serves as Reacher's local guide during the Ryantown inquiry.",
+            "id": "reverend-patrick-g-burke",
+            "name": "Reverend Patrick G. Burke",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The name Peter uses while posing as the front-desk man at the supposedly closed motel. He tells Reacher and Burke that the property is under repair and drives them back to the blocked county road.",
+            "id": "tony-kelly",
+            "name": "Tony Kelly",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Mark Reacher",
+              "Mark"
+            ],
+            "description": "The motel owner and hunt organizer previously identified as Mark Reacher. After Reacher disarms him on the forest track, he gives his actual surname as Breacher, ending the apparent family connection.",
+            "id": "mark-breacher",
+            "name": "Mark Breacher",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A living Laconia resident whom Brenda Amos locates during the family inquiry. He agrees to meet Jack Reacher immediately, despite Reacher having long believed that the Stan Reacher he sought was his late father.",
+            "id": "living-stan-reacher",
+            "name": "Stan Reacher",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Bill",
+              "Stan Reacher"
+            ],
+            "description": "Jack Reacher's father, first known as Bill. The living Stan Reacher identifies him as a childhood cousin who borrowed Stan's birth certificate after killing a local bully, then enlisted in the Marines under the Reacher identity.",
+            "id": "william-reacher",
+            "name": "William Reacher",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B07DK1BBS6",
+            "type": "community"
+          }
+        ],
+        "work": "past-tense"
+      }
+    },
     "peace-talks": {
       "characters": {
         "characters": [
