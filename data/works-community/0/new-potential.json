@@ -415,6 +415,249 @@
         "work": "new-spring"
       }
     },
+    "night-school": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An Army military police major selected for a concealed interagency assignment after completing a sensitive operation. He quickly recognizes that the supposed training course is a cover for work whose participants must remain unobtrusive.",
+            "id": "jack-reacher",
+            "name": "Jack Reacher",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An experienced FBI agent chosen for the same secret assignment as Jack Reacher and John White. Her recent success on a sensitive case and her deliberately inconspicuous position make her suitable for a tightly restricted investigation.",
+            "id": "casey-waterman",
+            "name": "Casey Waterman",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A CIA officer and analyst selected for the covert interagency unit alongside Jack Reacher and Casey Waterman. Like the others, he has been removed immediately after a successful sensitive assignment and placed under an ordinary-looking cover.",
+            "id": "john-white",
+            "name": "John White",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The senior official who arrives under heavy security to direct the hidden assignment. He confirms that the stated training course is only operational cover and that the three selected investigators face a high-priority national-security problem.",
+            "id": "alfred-ratcliffe",
+            "name": "Alfred Ratcliffe",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ratcliffe's senior deputy and the covert unit's operational authority. She briefs the investigators on an unidentified American offering an unknown item to a jihadist network for $100 million, while protecting a CIA source inside the Hamburg cell.",
+            "id": "marian-sinclair",
+            "name": "Marian Sinclair",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A CIA-controlled source living inside a Hamburg sleeper cell with three Saudis. The source's safety is a central constraint on the investigation, preventing ordinary surveillance or intervention around the cell and its courier.",
+            "id": "iranian-double-agent",
+            "name": "Iranian double agent",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unnamed Saudi courier who carries the unidentified American’s demand from Hamburg through the buyers’ network. His knowledge of the requested price makes him part of the tightly compartmented transaction.",
+            "id": "first-saudi-courier",
+            "name": "First Saudi courier",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Jack Reacher’s former top sergeant in the 110th military police unit and a trusted investigator. He encounters her at a diner in McLean.",
+            "id": "neagley",
+            "name": "Neagley",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unidentified American presented as the seller in the secret transaction. He intends to use the payment to buy an Argentine ranch and is linked to a murder in Hamburg.",
+            "id": "the-american",
+            "name": "The American",
+            "reveal": {
+              "chapter": 4
+            }
+          },
+          {
+            "description": "Casey Waterman's FBI support officer at the expanded joint control center. Landry helps run the domestic side of the data-intensive search while the field investigators pursue the unidentified American in Germany.",
+            "id": "landry",
+            "name": "Landry",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "John White's CIA support officer in the joint control center. Vanderbilt works alongside Landry and Neagley as the inquiry begins narrowing a vast pool of Americans in Germany through travel and military records.",
+            "id": "vanderbilt",
+            "name": "Vanderbilt",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Hamburg's chief of detectives, overseeing the inquiry into a murdered woman. His investigation is compromised from the outset because he had a personal connection to the victim and redirects scrutiny to keep that relationship hidden.",
+            "id": "griezman",
+            "name": "Griezman",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A U.S. Army air-defense soldier who has been absent without leave for four months. His possible access to a Chaparral system draws scrutiny, although that bulky and conspicuous equipment initially appears unable to explain the proposed sale.",
+            "id": "wiley",
+            "name": "Wiley",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Hamburg sewer-department clerical supervisor who witnessed an American meeting a Saudi contact in a bar. His detailed recollection provides the investigators with a physical description and a way to test their programmer theory.",
+            "id": "helmut-klopp",
+            "name": "Helmut Klopp",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A courier sent from Jalalabad to tell the unidentified American that his buyers accept the offer.",
+            "id": "female-courier",
+            "name": "Female courier",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former member of Jack Reacher's 110th unit who can provide discreet Army assistance in Hamburg. He takes custody of two military-connected gun traffickers and agrees to investigate their criminal bar without exposing the larger inquiry.",
+            "id": "manuel-orozco",
+            "name": "Manuel Orozco",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The CIA station chief responsible for monitoring the Hamburg safe house. He reports an irregular change in the cell's window signal, a possible indication that the courier has arrived under altered circumstances.",
+            "id": "bishop",
+            "name": "Bishop",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Wiley"
+            ],
+            "description": "The AWOL air-defense private conclusively identified as the American seen meeting a Saudi contact in Hamburg. His personnel photograph matches the witness sketch, shifting the operation from an identity search to surveillance of his next contact.",
+            "id": "horace-wiley",
+            "name": "Horace Wiley",
+            "reveal": {
+              "chapter": 19
+            }
+          },
+          {
+            "description": "A Hamburg shoe importer involved with the far-right group behind the bar. He considers taking over Wiley's transaction for his own organization and also wants retaliation against Jack Reacher and Neagley.",
+            "id": "dremmler",
+            "name": "Dremmler",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Hamburg police officer secretly assisting Dremmler’s group. He helps investigate the American operation from inside law enforcement and gives Dremmler the investigators’ hotel location.",
+            "id": "muller",
+            "name": "Muller",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Horace Wiley’s former air-defense crewmate. He describes Wiley as secretive and intent on serving in Germany, and recalls his repeated references to Uncle Arnold, ranching, and Davy Crockett.",
+            "id": "coleman",
+            "name": "Coleman",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Uncle Arnold"
+            ],
+            "description": "A retired Army airborne infantry NCO who lived with Wiley's mother during part of Wiley's childhood. Investigators seek him in Germany because he may explain Wiley's repeated references to ranching and Davy Crockett.",
+            "id": "arnold-peter-mason",
+            "name": "Arnold Peter Mason",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An active Army major general and former airborne officer identified as a possible source on Arnold Peter Mason's old unit. The investigators arrange a direct interview with him to determine what Mason's Davy Crockett stories meant.",
+            "id": "wilson-t-helmsworth",
+            "name": "Wilson T. Helmsworth",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A false-document supplier connected to Helmut Klopp's bar. He is found murdered after his identification records are removed, and a fingerprint from his file storage connects him to evidence from the earlier Hamburg homicide.",
+            "id": "wolfgang-schlupp",
+            "name": "Wolfgang Schlupp",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Manuel Orozco's sergeant and driver, brought into the dockside warehouse entry. He joins Jack Reacher, Neagley, and Orozco as they infiltrate Dremmler's shoe-handling operation to search for the stolen van.",
+            "id": "hooper",
+            "name": "Hooper",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B01JKE3C24",
+            "type": "community"
+          }
+        ],
+        "work": "night-school"
+      }
+    },
     "night-watch": {
       "characters": {
         "characters": [
