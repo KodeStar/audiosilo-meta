@@ -929,16 +929,24 @@
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "anna-sewell",
-        "r-d-carstairs"
+        "r-d-carstairs",
+        "lisa-church"
       ],
       "credits": [
+        {
+          "person": "lisa-church",
+          "role": "adaptation"
+        },
         {
           "person": "r-d-carstairs",
           "role": "adaptation"
         }
       ],
       "genres": [
-        "classics"
+        "action-adventure",
+        "childrens",
+        "classics",
+        "nature"
       ],
       "id": "black-beauty",
       "language": "en",
@@ -1717,6 +1725,141 @@
           ],
           "work": "black-beauty"
         },
+        "rebecca-k-reynolds-2019": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "1645550206",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 452533,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 301975,
+              "start_ms": 452533,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 362811,
+              "start_ms": 754508,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 405304,
+              "start_ms": 1117319,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 216061,
+              "start_ms": 1522623,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 370915,
+              "start_ms": 1738684,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 538006,
+              "start_ms": 2109599,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 300512,
+              "start_ms": 2647605,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 504430,
+              "start_ms": 2948117,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 334692,
+              "start_ms": 3452547,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 316813,
+              "start_ms": 3787239,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 440552,
+              "start_ms": 4104052,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 299398,
+              "start_ms": 4544604,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 439576,
+              "start_ms": 4844002,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 437905,
+              "start_ms": 5283578,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 193213,
+              "start_ms": 5721483,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 405606,
+              "start_ms": 5914696,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 537634,
+              "start_ms": 6320302,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 367943,
+              "start_ms": 6857936,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 719748,
+              "start_ms": 7225879,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 451162,
+              "start_ms": 7945627,
+              "title": "Chapter 21"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/916GW9q9-wL.jpg",
+          "id": "rebecca-k-reynolds-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "rebecca-k-reynolds"
+          ],
+          "publisher": "Oasis Audio",
+          "release_date": "2019-08-07",
+          "runtime_min": 139,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1645550206",
+              "type": "libex-import"
+            }
+          ],
+          "work": "black-beauty"
+        },
         "saddleback-educational-publishing-2008": {
           "abridged": true,
           "added_at": "2026-08-02",
@@ -2152,6 +2295,11 @@
           "imported_at": "2026-07-30",
           "ref": "B06XS4J81F",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1645550206",
+          "type": "libex-import"
         }
       ],
       "title": "Black Beauty"
@@ -2205,173 +2353,6 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B0FR4N6DQD",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Black Beauty"
-    },
-    "black-beauty-anna-sewell": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "anna-sewell",
-        "lisa-church"
-      ],
-      "credits": [
-        {
-          "person": "lisa-church",
-          "role": "adaptation"
-        }
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "classics",
-        "nature"
-      ],
-      "id": "black-beauty-anna-sewell",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "rebecca-k-reynolds-2019": {
-          "abridged": true,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "1645550206",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 452533,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 301975,
-              "start_ms": 452533,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 362811,
-              "start_ms": 754508,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 405304,
-              "start_ms": 1117319,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 216061,
-              "start_ms": 1522623,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 370915,
-              "start_ms": 1738684,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 538006,
-              "start_ms": 2109599,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 300512,
-              "start_ms": 2647605,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 504430,
-              "start_ms": 2948117,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 334692,
-              "start_ms": 3452547,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 316813,
-              "start_ms": 3787239,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 440552,
-              "start_ms": 4104052,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 299398,
-              "start_ms": 4544604,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 439576,
-              "start_ms": 4844002,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 437905,
-              "start_ms": 5283578,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 193213,
-              "start_ms": 5721483,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 405606,
-              "start_ms": 5914696,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 537634,
-              "start_ms": 6320302,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 367943,
-              "start_ms": 6857936,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 719748,
-              "start_ms": 7225879,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 451162,
-              "start_ms": 7945627,
-              "title": "Chapter 21"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/916GW9q9-wL.jpg",
-          "id": "rebecca-k-reynolds-2019",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "rebecca-k-reynolds"
-          ],
-          "publisher": "Oasis Audio",
-          "release_date": "2019-08-07",
-          "runtime_min": 139,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "1645550206",
-              "type": "libex-import"
-            }
-          ],
-          "work": "black-beauty-anna-sewell"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "1645550206",
           "type": "libex-import"
         }
       ],
