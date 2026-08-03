@@ -2818,6 +2818,14 @@
       "authors": [
         "j-a-baker"
       ],
+      "genres": [
+        "health-wellness",
+        "nature",
+        "psychology",
+        "science",
+        "sports",
+        "travel"
+      ],
       "id": "the-peregrine",
       "language": "en",
       "license": "CC0-1.0",
@@ -2831,6 +2839,7 @@
               "region": "us"
             }
           ],
+          "cover_url": "https://m.media-amazon.com/images/I/71deseHkknL.jpg",
           "id": "david-attenborough-2019",
           "language": "en",
           "license": "CC0-1.0",
@@ -2845,6 +2854,11 @@
               "imported_at": "2026-08-03",
               "ref": "0008388245",
               "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-08-03",
+              "ref": "0008388245",
+              "type": "libex-import"
             }
           ],
           "work": "the-peregrine"
@@ -2855,6 +2869,11 @@
           "imported_at": "2026-08-03",
           "ref": "0008388245",
           "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-08-03",
+          "ref": "0008388245",
+          "type": "libex-import"
         }
       ],
       "title": "The Peregrine"

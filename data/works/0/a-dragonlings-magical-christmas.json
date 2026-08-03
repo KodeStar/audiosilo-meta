@@ -7675,6 +7675,10 @@
       "authors": [
         "arthur-c-clarke"
       ],
+      "genres": [
+        "fantasy",
+        "science-fiction"
+      ],
       "id": "a-fall-of-moondust",
       "language": "en",
       "license": "CC0-1.0",
@@ -7688,6 +7692,7 @@
               "region": "us"
             }
           ],
+          "cover_url": "https://m.media-amazon.com/images/I/81F+a2eHQBL.jpg",
           "id": "oliver-wyman-2009",
           "language": "en",
           "license": "CC0-1.0",
@@ -7702,6 +7707,11 @@
               "imported_at": "2026-08-03",
               "ref": "B002V1AF6U",
               "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-08-03",
+              "ref": "B002V1AF6U",
+              "type": "libex-import"
             }
           ],
           "work": "a-fall-of-moondust"
@@ -7712,6 +7722,11 @@
           "imported_at": "2026-08-03",
           "ref": "B002V1AF6U",
           "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-08-03",
+          "ref": "B002V1AF6U",
+          "type": "libex-import"
         }
       ],
       "title": "A Fall of Moondust"

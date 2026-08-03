@@ -7986,6 +7986,13 @@
       "authors": [
         "frieda-hughes"
       ],
+      "genres": [
+        "biography-memoir",
+        "home-garden",
+        "nature",
+        "science",
+        "sports"
+      ],
       "id": "george-a-magpie-memoir",
       "language": "en",
       "license": "CC0-1.0",
@@ -7999,6 +8006,7 @@
               "region": "us"
             }
           ],
+          "cover_url": "https://m.media-amazon.com/images/I/81XOBD+d3YL.jpg",
           "id": "frieda-hughes-2023",
           "language": "en",
           "license": "CC0-1.0",
@@ -8013,6 +8021,11 @@
               "imported_at": "2026-08-03",
               "ref": "B0BRLH47DT",
               "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-08-03",
+              "ref": "B0BRLH47DT",
+              "type": "libex-import"
             }
           ],
           "work": "george-a-magpie-memoir"
@@ -8023,6 +8036,11 @@
           "imported_at": "2026-08-03",
           "ref": "B0BRLH47DT",
           "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-08-03",
+          "ref": "B0BRLH47DT",
+          "type": "libex-import"
         }
       ],
       "title": "George - A Magpie Memoir"
@@ -9418,6 +9436,20 @@
         "george-orwell",
         "joe-white"
       ],
+      "credits": [
+        {
+          "person": "joe-white",
+          "role": "adaptation"
+        }
+      ],
+      "genres": [
+        "classics",
+        "dystopian",
+        "espionage",
+        "politics",
+        "science-fiction",
+        "thriller-suspense"
+      ],
       "id": "george-orwells-1984",
       "language": "en",
       "license": "CC0-1.0",
@@ -9431,6 +9463,59 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 318532,
+              "start_ms": 0,
+              "title": "Greetings"
+            },
+            {
+              "length_ms": 44000,
+              "start_ms": 318532,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 1523000,
+              "start_ms": 362532,
+              "title": "Part 1"
+            },
+            {
+              "length_ms": 1107058,
+              "start_ms": 1885532,
+              "title": "Part 2"
+            },
+            {
+              "length_ms": 1494061,
+              "start_ms": 2992590,
+              "title": "Part 3"
+            },
+            {
+              "length_ms": 2068062,
+              "start_ms": 4486651,
+              "title": "Part 4"
+            },
+            {
+              "length_ms": 1735064,
+              "start_ms": 6554713,
+              "title": "Part 5"
+            },
+            {
+              "length_ms": 1546054,
+              "start_ms": 8289777,
+              "title": "Part 6"
+            },
+            {
+              "length_ms": 2280000,
+              "start_ms": 9835831,
+              "title": "Part 7"
+            },
+            {
+              "length_ms": 351261,
+              "start_ms": 12115831,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/911b573N8JL.jpg",
           "id": "andrew-garfield-2024",
           "language": "en",
           "license": "CC0-1.0",
@@ -9454,6 +9539,11 @@
               "imported_at": "2026-08-03",
               "ref": "B0CRRP4WW7",
               "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-08-03",
+              "ref": "B0CRRP4WW7",
+              "type": "libex-import"
             }
           ],
           "work": "george-orwells-1984"
@@ -9464,6 +9554,11 @@
           "imported_at": "2026-08-03",
           "ref": "B0CRRP4WW7",
           "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-08-03",
+          "ref": "B0CRRP4WW7",
+          "type": "libex-import"
         }
       ],
       "title": "George Orwell’s 1984"
