@@ -2400,43 +2400,6 @@
           ],
           "work": "dracula"
         },
-        "markus-pol-2023-2": {
-          "abridged": false,
-          "added_at": "2026-07-31T00:43:12+01:00",
-          "asin": [
-            {
-              "asin": "B0CC2F951S",
-              "region": "us"
-            },
-            {
-              "asin": "B0CC297ZN6",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81DIvtd99uL.jpg",
-          "id": "markus-pol-2023-2",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "markus-pol"
-          ],
-          "publisher": "Audio Media Digital",
-          "release_date": "2023-07-17",
-          "runtime_min": 510,
-          "sources": [
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0CC2F951S",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0CC297ZN6",
-              "type": "libex-import"
-            }
-          ],
-          "work": "dracula"
-        },
         "melodie-richard-2019": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -5022,6 +4985,100 @@
         }
       ],
       "title": "Dracula Doesn't Drink Lemonade"
+    },
+    "dracula-dracula-buch-1": {
+      "added_at": "2026-07-31T00:43:12+01:00",
+      "authors": [
+        "bram-stoker"
+      ],
+      "id": "dracula-dracula-buch-1",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "markus-pol-2023": {
+          "abridged": false,
+          "added_at": "2026-07-31T00:43:12+01:00",
+          "asin": [
+            {
+              "asin": "B0CC2F951S",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81DIvtd99uL.jpg",
+          "id": "markus-pol-2023",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "markus-pol"
+          ],
+          "publisher": "Audio Media Digital",
+          "release_date": "2023-07-17",
+          "runtime_min": 510,
+          "sources": [
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0CC2F951S",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dracula-dracula-buch-1"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B0CC2F951S",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Dracula: Dracula Buch 1"
+    },
+    "dracula-dracula-buch-2": {
+      "added_at": "2026-07-31T00:43:12+01:00",
+      "authors": [
+        "bram-stoker"
+      ],
+      "id": "dracula-dracula-buch-2",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "markus-pol-2023": {
+          "abridged": false,
+          "added_at": "2026-07-31T00:43:12+01:00",
+          "asin": [
+            {
+              "asin": "B0CC297ZN6",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81Y0x-vu9yL.jpg",
+          "id": "markus-pol-2023",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "markus-pol"
+          ],
+          "publisher": "Audio Media Digital",
+          "release_date": "2023-07-17",
+          "runtime_min": 474,
+          "sources": [
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0CC297ZN6",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dracula-dracula-buch-2"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B0CC297ZN6",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Dracula: Dracula Buch 2"
     },
     "dracula-folge-1-von-3": {
       "added_at": "2026-08-02",

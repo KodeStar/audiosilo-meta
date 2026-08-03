@@ -14474,6 +14474,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "hannah-mock-2021-4": {
+          "abridged": false,
+          "added_at": "2026-08-01",
+          "asin": [
+            {
+              "asin": "B09MSR4QV9",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71FIVunecKL.jpg",
+          "id": "hannah-mock-2021-4",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "hannah-mock"
+          ],
+          "publisher": "Sue Huband",
+          "release_date": "2021-12-01",
+          "runtime_min": 48,
+          "sources": [
+            {
+              "imported_at": "2026-08-01",
+              "ref": "B09MSR4QV9",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-celts"
+        },
         "john-delino-ziegler-jr-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -14507,6 +14535,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B0F8RCKLZ8",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B09MSR4QV9",
           "type": "libex-import"
         }
       ],

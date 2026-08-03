@@ -14712,6 +14712,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "ramon-de-ocampo-2009": {
+          "abridged": false,
+          "added_at": "2026-07-11T16:49:50+01:00",
+          "asin": [
+            {
+              "asin": "B0036GRRY2",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51ywI-S63sL.jpg",
+          "id": "ramon-de-ocampo-2009",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "ramon-de-ocampo"
+          ],
+          "publisher": "Whole Story Audiobooks",
+          "release_date": "2009-05-11",
+          "runtime_min": 108,
+          "sources": [
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0036GRRY2",
+              "type": "libex-import"
+            }
+          ],
+          "work": "rodrick-rules"
+        },
         "ramone-de-ocampo-2009": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -15087,6 +15115,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B002V8LFBM",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B0036GRRY2",
           "type": "libex-import"
         }
       ],

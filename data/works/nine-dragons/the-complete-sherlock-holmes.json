@@ -1,56 +1,76 @@
 {
   "entries": {
-    "the-complete-sherlock-holmes": {
-      "added_at": "2026-07-25T17:12:12+01:00",
+    "the-complete-sherlock-holmes-and-alan-grant-collection": {
+      "added_at": "2026-08-02",
       "authors": [
-        "arthur-conan-doyle"
+        "arthur-conan-doyle",
+        "josephine-tey"
       ],
       "genres": [
-        "classics",
         "mystery",
-        "short-stories"
+        "police-procedural"
       ],
-      "id": "the-complete-sherlock-holmes",
+      "id": "the-complete-sherlock-holmes-and-alan-grant-collection",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
-        "authur-holmes-2021": {
+        "jonathan-keeble-2024": {
           "abridged": false,
-          "added_at": "2026-08-01",
+          "added_at": "2026-08-02",
           "asin": [
             {
-              "asin": "B099KW3TTV",
+              "asin": "B0DD7W47J9",
               "region": "us"
             },
             {
-              "asin": "B099LKG4XD",
+              "asin": "B0DD7X4HRN",
               "region": "uk"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/81ldntWIPbS.jpg",
-          "id": "authur-holmes-2021",
+          "cover_url": "https://m.media-amazon.com/images/I/8139EhGhlSL.jpg",
+          "id": "jonathan-keeble-2024",
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
-            "authur-holmes"
+            "jonathan-keeble",
+            "karen-cass"
           ],
-          "publisher": "Holmes Audio",
-          "release_date": "2021-07-16",
-          "runtime_min": 1726,
+          "publisher": "SNR Audio",
+          "release_date": "2024-08-19",
+          "runtime_min": 6379,
           "sources": [
             {
-              "imported_at": "2026-08-01",
-              "ref": "B099KW3TTV",
+              "imported_at": "2026-08-02",
+              "ref": "B0DD7W47J9",
               "type": "libex-import"
             },
             {
               "imported_at": "2026-08-02",
-              "ref": "B099LKG4XD",
+              "ref": "B0DD7X4HRN",
               "type": "libex-import"
             }
           ],
-          "work": "the-complete-sherlock-holmes"
-        },
+          "work": "the-complete-sherlock-holmes-and-alan-grant-collection"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0DD7W47J9",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Complete Sherlock Holmes and Alan Grant Collection"
+    },
+    "the-complete-sherlock-holmes-the-heirloom-collection": {
+      "added_at": "2026-07-25T17:12:12+01:00",
+      "authors": [
+        "arthur-conan-doyle"
+      ],
+      "id": "the-complete-sherlock-holmes-the-heirloom-collection",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
         "simon-vance-2013": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -753,7 +773,7 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-complete-sherlock-holmes"
+          "work": "the-complete-sherlock-holmes-the-heirloom-collection"
         }
       },
       "sources": [
@@ -768,74 +788,73 @@
           "type": "libex-import"
         },
         {
-          "imported_at": "2026-08-01",
-          "ref": "B099KW3TTV",
+          "imported_at": "2026-08-02",
+          "ref": "B00FEFJKJI",
           "type": "libex-import"
         }
       ],
-      "title": "The Complete Sherlock Holmes"
+      "title": "The Complete Sherlock Holmes: The Heirloom Collection"
     },
-    "the-complete-sherlock-holmes-and-alan-grant-collection": {
-      "added_at": "2026-08-02",
+    "the-complete-sherlock-holmes-volumes-1-2": {
+      "added_at": "2026-08-01",
       "authors": [
-        "arthur-conan-doyle",
-        "josephine-tey"
+        "arthur-conan-doyle"
       ],
-      "genres": [
-        "mystery",
-        "police-procedural"
-      ],
-      "id": "the-complete-sherlock-holmes-and-alan-grant-collection",
+      "id": "the-complete-sherlock-holmes-volumes-1-2",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
-        "jonathan-keeble-2024": {
+        "authur-holmes-2021": {
           "abridged": false,
-          "added_at": "2026-08-02",
+          "added_at": "2026-08-01",
           "asin": [
             {
-              "asin": "B0DD7W47J9",
+              "asin": "B099KW3TTV",
               "region": "us"
             },
             {
-              "asin": "B0DD7X4HRN",
+              "asin": "B099LKG4XD",
               "region": "uk"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/8139EhGhlSL.jpg",
-          "id": "jonathan-keeble-2024",
+          "cover_url": "https://m.media-amazon.com/images/I/81ldntWIPbS.jpg",
+          "id": "authur-holmes-2021",
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
-            "jonathan-keeble",
-            "karen-cass"
+            "authur-holmes"
           ],
-          "publisher": "SNR Audio",
-          "release_date": "2024-08-19",
-          "runtime_min": 6379,
+          "publisher": "Holmes Audio",
+          "release_date": "2021-07-16",
+          "runtime_min": 1726,
           "sources": [
             {
-              "imported_at": "2026-08-02",
-              "ref": "B0DD7W47J9",
+              "imported_at": "2026-08-01",
+              "ref": "B099KW3TTV",
               "type": "libex-import"
             },
             {
               "imported_at": "2026-08-02",
-              "ref": "B0DD7X4HRN",
+              "ref": "B099LKG4XD",
               "type": "libex-import"
             }
           ],
-          "work": "the-complete-sherlock-holmes-and-alan-grant-collection"
+          "work": "the-complete-sherlock-holmes-volumes-1-2"
         }
       },
       "sources": [
         {
+          "imported_at": "2026-08-01",
+          "ref": "B099KW3TTV",
+          "type": "libex-import"
+        },
+        {
           "imported_at": "2026-08-02",
-          "ref": "B0DD7W47J9",
+          "ref": "B099LKG4XD",
           "type": "libex-import"
         }
       ],
-      "title": "The Complete Sherlock Holmes and Alan Grant Collection"
+      "title": "The Complete Sherlock Holmes: Volumes 1 & 2"
     },
     "the-complete-stories-and-poems": {
       "added_at": "2026-07-25T19:18:21+01:00",

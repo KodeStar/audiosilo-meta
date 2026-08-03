@@ -2766,52 +2766,10 @@
             {
               "asin": "B09M8VZZXL",
               "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91u+T-DryNL.jpg",
-          "id": "bill-nighy-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "bill-nighy",
-            "peter-serafinowicz",
-            "richard-coyle"
-          ],
-          "publisher": "Transworld Digital",
-          "release_date": "2023-02-23",
-          "runtime_min": 837,
-          "sources": [
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B09M8VZZXL",
-              "type": "libex-import"
-            }
-          ],
-          "work": "raising-steam"
-        },
-        "stephen-briggs-2013": {
-          "abridged": false,
-          "added_at": "2026-07-17T09:27:30+00:00",
-          "asin": [
+            },
             {
               "asin": "B09M8VSK6J",
               "region": "us"
-            },
-            {
-              "asin": "B00IAYHWG8",
-              "region": "us"
-            },
-            {
-              "asin": "B079CG1RTM",
-              "region": "uk"
-            },
-            {
-              "asin": "B00GBI1040",
-              "region": "us"
-            },
-            {
-              "asin": "B00GBI96WS",
-              "region": "uk"
             }
           ],
           "chapters": [
@@ -3676,17 +3634,24 @@
               "title": "End Credits"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/51OUKa8H5IL._SL500_.jpg",
-          "id": "stephen-briggs-2013",
+          "cover_url": "https://m.media-amazon.com/images/I/91u+T-DryNL.jpg",
+          "id": "bill-nighy-2023",
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
-            "stephen-briggs"
+            "bill-nighy",
+            "peter-serafinowicz",
+            "richard-coyle"
           ],
-          "publisher": "ISIS Audio Books",
-          "release_date": "2013",
-          "runtime_min": 740,
+          "publisher": "Transworld Digital",
+          "release_date": "2023-02-23",
+          "runtime_min": 837,
           "sources": [
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B09M8VZZXL",
+              "type": "libex-import"
+            },
             {
               "imported_at": "2026-07-17",
               "ref": "B09M8VSK6J",
@@ -3701,7 +3666,42 @@
               "imported_at": "2026-07-30",
               "ref": "B09M8VSK6J",
               "type": "libex-import"
+            }
+          ],
+          "work": "raising-steam"
+        },
+        "stephen-briggs-2013": {
+          "abridged": false,
+          "added_at": "2026-07-17T09:27:30+00:00",
+          "asin": [
+            {
+              "asin": "B00IAYHWG8",
+              "region": "us"
             },
+            {
+              "asin": "B079CG1RTM",
+              "region": "uk"
+            },
+            {
+              "asin": "B00GBI1040",
+              "region": "us"
+            },
+            {
+              "asin": "B00GBI96WS",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51OUKa8H5IL._SL500_.jpg",
+          "id": "stephen-briggs-2013",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "stephen-briggs"
+          ],
+          "publisher": "ISIS Audio Books",
+          "release_date": "2013",
+          "runtime_min": 740,
+          "sources": [
             {
               "imported_at": "2026-07-30",
               "ref": "B00IAYHWG8",

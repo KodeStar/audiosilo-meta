@@ -1525,86 +1525,6 @@
       ],
       "title": "Magical Yule Tidings"
     },
-    "magicalia": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "jennifer-bell"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "fantasy"
-      ],
-      "id": "magicalia",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "charlie-sanderson-2026": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0G21W5J5F",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/914hgb7TxkL.jpg",
-          "id": "charlie-sanderson-2026",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "charlie-sanderson"
-          ],
-          "publisher": "Dreamscape Media",
-          "release_date": "2026-01-06",
-          "runtime_min": 401,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0G21W5J5F",
-              "type": "libex-import"
-            }
-          ],
-          "work": "magicalia"
-        },
-        "penelope-rawlins-2025": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0DYB3R1PZ",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81roEesrqFL.jpg",
-          "id": "penelope-rawlins-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "penelope-rawlins"
-          ],
-          "publisher": "Dreamscape Media",
-          "release_date": "2025-05-06",
-          "runtime_min": 498,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0DYB3R1PZ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "magicalia"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0DYB3R1PZ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Magicalia"
-    },
     "magicalia-race-of-wonders": {
       "added_at": "2026-08-02",
       "authors": [
@@ -1648,12 +1568,45 @@
             }
           ],
           "work": "magicalia-race-of-wonders"
+        },
+        "penelope-rawlins-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0DYB3R1PZ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81roEesrqFL.jpg",
+          "id": "penelope-rawlins-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "penelope-rawlins"
+          ],
+          "publisher": "Dreamscape Media",
+          "release_date": "2025-05-06",
+          "runtime_min": 498,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DYB3R1PZ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "magicalia-race-of-wonders"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B0D3MSZ24P",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0DYB3R1PZ",
           "type": "libex-import"
         }
       ],
@@ -1710,6 +1663,53 @@
         }
       ],
       "title": "Magicalia: Storm of Chaos"
+    },
+    "magicalia-thief-of-shadows": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "jennifer-bell"
+      ],
+      "id": "magicalia-thief-of-shadows",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "charlie-sanderson-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0G21W5J5F",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/914hgb7TxkL.jpg",
+          "id": "charlie-sanderson-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "charlie-sanderson"
+          ],
+          "publisher": "Dreamscape Media",
+          "release_date": "2026-01-06",
+          "runtime_min": 401,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0G21W5J5F",
+              "type": "libex-import"
+            }
+          ],
+          "work": "magicalia-thief-of-shadows"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0G21W5J5F",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Magicalia: Thief of Shadows"
     },
     "magically-banished": {
       "added_at": "2026-08-02",

@@ -2655,18 +2655,59 @@
       ],
       "title": "Star Power"
     },
-    "star-quest": {
+    "star-quest-all-that-remains": {
       "added_at": "2026-08-01",
       "authors": [
         "patricia-lee-macomber"
       ],
-      "genres": [
-        "action-adventure",
-        "military-science-fiction",
-        "science-fiction",
-        "space-opera"
+      "id": "star-quest-all-that-remains",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "talmadge-ragan-2021": {
+          "abridged": false,
+          "added_at": "2026-08-01",
+          "asin": [
+            {
+              "asin": "B096G4QFX2",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91HRbFnhIIS.jpg",
+          "id": "talmadge-ragan-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "talmadge-ragan"
+          ],
+          "publisher": "Crosssroad Press",
+          "release_date": "2021-06-02",
+          "runtime_min": 343,
+          "sources": [
+            {
+              "imported_at": "2026-08-01",
+              "ref": "B096G4QFX2",
+              "type": "libex-import"
+            }
+          ],
+          "work": "star-quest-all-that-remains"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B096G4QFX2",
+          "type": "libex-import"
+        }
       ],
-      "id": "star-quest",
+      "title": "Star Quest: All That Remains"
+    },
+    "star-quest-now-you-dont": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "patricia-lee-macomber"
+      ],
+      "id": "star-quest-now-you-dont",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -2696,8 +2737,27 @@
               "type": "libex-import"
             }
           ],
-          "work": "star-quest"
-        },
+          "work": "star-quest-now-you-dont"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0H7T1DJG6",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Star Quest: Now You Don't"
+    },
+    "star-quest-the-journey-begins": {
+      "added_at": "2026-08-01",
+      "authors": [
+        "patricia-lee-macomber"
+      ],
+      "id": "star-quest-the-journey-begins",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
         "talmadge-ragan-2019": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -2724,35 +2784,7 @@
               "type": "libex-import"
             }
           ],
-          "work": "star-quest"
-        },
-        "talmadge-ragan-2021": {
-          "abridged": false,
-          "added_at": "2026-08-01",
-          "asin": [
-            {
-              "asin": "B096G4QFX2",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91HRbFnhIIS.jpg",
-          "id": "talmadge-ragan-2021",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "talmadge-ragan"
-          ],
-          "publisher": "Crosssroad Press",
-          "release_date": "2021-06-02",
-          "runtime_min": 343,
-          "sources": [
-            {
-              "imported_at": "2026-08-01",
-              "ref": "B096G4QFX2",
-              "type": "libex-import"
-            }
-          ],
-          "work": "star-quest"
+          "work": "star-quest-the-journey-begins"
         }
       },
       "sources": [
@@ -2762,7 +2794,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Star Quest"
+      "title": "Star Quest: The Journey Begins"
     },
     "star-rage": {
       "added_at": "2026-08-01",
