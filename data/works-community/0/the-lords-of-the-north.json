@@ -1514,6 +1514,224 @@
       }
     },
     "the-midnight-line": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Reacher"
+            ],
+            "description": "A former Army officer and West Point graduate who lives without a permanent home or job. After noticing a small academy ring in a Wisconsin pawnshop, he abandons his bus journey and decides to discover how it came to be sold.",
+            "id": "jack-reacher",
+            "name": "Jack Reacher",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Chang"
+            ],
+            "description": "Reacher's departing companion after their time together in Milwaukee. Their short relationship ends when she returns to Seattle, leaving him to resume his solitary travels and take the first available bus out of the city.",
+            "id": "michelle-chang",
+            "name": "Michelle Chang",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Rat"
+            ],
+            "description": "A biker involved in a questionable charity-resale arrangement. The local pawnbroker identifies him as the intermediary who supplied the West Point ring, making him the first person Reacher must question along its earlier route.",
+            "id": "jimmy-rat",
+            "name": "Jimmy Rat",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Scorpio"
+            ],
+            "description": "A Rapid City laundromat operator whom Jimmy Rat identifies as the previous supplier of the West Point ring. His place in the resale chain sends Reacher west to South Dakota in search of the next answer.",
+            "id": "arthur-scorpio",
+            "name": "Arthur Scorpio",
+            "reveal": {
+              "chapter": 4
+            }
+          },
+          {
+            "aliases": [
+              "Nakamura"
+            ],
+            "description": "A Rapid City Police detective assigned to property crimes. She already has a file on Scorpio and treats a warning voicemail about Reacher's inquiry as evidence of a supply chain worth investigating.",
+            "id": "gloria-nakamura",
+            "name": "Gloria Nakamura",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Terry Bramall",
+              "Bramall"
+            ],
+            "description": "A Chicago private investigator and retired FBI agent who specializes in missing-person cases. Nakamura encounters him independently watching Scorpio's laundromat, though he does not disclose whom he is trying to find.",
+            "id": "terrence-bramall",
+            "name": "Terrence Bramall",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The former West Point cadet identified as the owner of the engraved class ring. Her name gives Reacher a person to search for, but neither her present location nor the circumstances in which she lost the ring are yet known.",
+            "id": "serena-rose-sanderson",
+            "name": "Serena Rose Sanderson",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Cy"
+            ],
+            "description": "A man from Mule Crossing, Wyoming, whom Scorpio names as the person who brought him the West Point ring. Known as Cy, he becomes the next link in Reacher's effort to trace the ring back to its owner.",
+            "id": "seymour-porterfield",
+            "name": "Seymour Porterfield",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Jane Mackenzie",
+              "Mackenzie"
+            ],
+            "description": "Bramall's client, who contacts the private investigator to request an update on his work. At her introduction, the object of the investigation and her personal connection to it remain undisclosed.",
+            "id": "tiffany-jane-mackenzie",
+            "name": "Tiffany Jane Mackenzie",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Scorpio's Wyoming contact, whom he warns that Reacher is approaching and directs to carry out a concealed attack.",
+            "id": "billy",
+            "name": "Billy",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Ryan Headley"
+            ],
+            "description": "A Mule Crossing resident whose son, an Army Ranger, was killed in Afghanistan. He tells Reacher that Porterfield died about eighteen months earlier and points him toward Billy as the most practical nearby lead.",
+            "id": "john-ryan-headley",
+            "name": "John Ryan Headley",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Serena Rose Sanderson"
+            ],
+            "description": "The name Serena Rose Sanderson's family uses for her. Her twin confirms the connection while similarities between her belongings and items at Porterfield's home strengthen the evidence that she stayed there; she is still missing.",
+            "id": "rose",
+            "name": "Rose",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sheriff Connelly"
+            ],
+            "description": "The county sheriff who handled the investigation into Porterfield's death. He explains that animal scavenging left the cause uncertain and reports that the dead man lived alone despite keeping a sizable amount of unexplained cash.",
+            "id": "connelly",
+            "name": "Connelly",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Noble"
+            ],
+            "description": "A DEA special agent examining an unexplained regional drug supply. He regards Billy as a low-level participant in an opaque network and focuses on enforcement rather than joining the search for Sanderson.",
+            "id": "kirk-noble",
+            "name": "Kirk Noble",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Billy's half-brother, who comes to Billy's seized house after being told to collect a snowplow truck and hidden cash. He appears unaware of Billy's criminal activity and cannot say where Billy went.",
+            "id": "mason",
+            "name": "Mason",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "General Simpson",
+              "Simpson"
+            ],
+            "description": "The West Point superintendent and a contact from Reacher's past. Reacher asks him to investigate whether sealed military records can clarify the possible connection between Sanderson and Porterfield.",
+            "id": "sean-simpson",
+            "name": "Sean Simpson",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The distributor who takes over Billy's place in Scorpio's operation. He receives genuine oxycodone and fentanyl patches through a coordinated delivery and restores the local supply while Scorpio monitors his activity.",
+            "id": "stackley",
+            "name": "Stackley",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Bateman"
+            ],
+            "description": "The Marine Corps colonel whom Scorpio identifies under pressure as the officer connected to Porterfield's investigation. He supplied diverted medical stock to Scorpio and participated in suppressing Porterfield's report.",
+            "id": "colonel-bateman",
+            "name": "Colonel Bateman",
+            "reveal": {
+              "chapter": 48
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B071D1Q7ZT",
+            "type": "community"
+          }
+        ],
+        "work": "the-midnight-line"
+      },
       "recaps": {
         "ending": "Reacher, Rose, Bramall, and Mackenzie take control of the covert pharmaceutical delivery at a highway snowplow garage, disarm the buyers, and escape with enough medication to end Rose's immediate supply crisis. Nakamura discovers the site, but the stranded participants flee before she can contain them. Rose explains that Porterfield uncovered the sale of diverted Marine medical supplies and died by intentional overdose after his report was suppressed and a false warrant was created. At Scorpio's laundromat, Reacher and Rose confront Scorpio, who names Colonel Bateman as the connected officer. Bramall alerts DEA to take over the exposed operation. West Point's superintendent reports that Bateman was later brought down through another case. Rose retains her recovered class ring and chooses immediate IV treatment, supported by Mackenzie, instead of continuing with Reacher. Bramall and Mackenzie remain focused on her care. Reacher separates from the group and accepts a southbound ride toward Kansas.",
         "in_short": "Jack Reacher finds a small West Point ring in a Wisconsin pawnshop and traces it through Arthur Scorpio's network to Wyoming, where its owner, Serena Rose Sanderson, has withdrawn from the world after severe wartime facial injuries. Rose is living with chronic infection and opioid dependence, and her partner Seymour Porterfield died after investigating diverted Marine Corps medical supplies. Reacher, Terrence Bramall, and Rose's twin, Tiffany Jane Mackenzie, help Rose seize a hidden pharmaceutical shipment before confronting Scorpio. The operation is exposed to DEA, and Scorpio identifies Colonel Bateman as the officer connected to the diversion and the suppression of Porterfield's report. Bateman has already been brought down on another matter. Rose keeps her ring and chooses immediate medical treatment with her sister's support rather than travelling onward. Reacher leaves alone, heading south toward Kansas.",
