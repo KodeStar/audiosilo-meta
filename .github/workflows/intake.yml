@@ -113,6 +113,34 @@ jobs:
           echo "status=$(jq -r .status result.json)" >> "$GITHUB_OUTPUT"
           echo "template=$(jq -r '.template // ""' result.json)" >> "$GITHUB_OUTPUT"
 
+      # A personal library export states no cover and no chapter list, so an
+      # import lands with placeholder covers unless something fills them. This
+      # is that something: it looks up the USER-LIBRARY records that carry an
+      # ASIN but no cover (or no chapters) and enriches them from the live libex
+      # service, through the ordinary --enrich pass - same fill-absent rule,
+      # same runtime contradiction guard, same libex-import provenance.
+      #
+      # Bounded to the user-library tier (the flag's default), which is where the
+      # gap is: libex-seeded records already carry covers. The set shrinks as it
+      # is filled, and --limit caps a single run either way. Best-effort by
+      # design: a libex outage prints warnings and leaves the gaps for next time,
+      # and `|| true` keeps it from failing an otherwise good import.
+      - name: Fill missing covers and chapters from libex
+        if: steps.run.outputs.status == 'ok' && steps.run.outputs.template == 'import'
+        run: |
+          # The worklist goes to the runner temp, never the repo: this step runs
+          # with the import's records already written and uncommitted, so
+          # anything left in the tree here would be swept into the PR.
+          go run ./cmd/metaimport libex-fill --data data --limit 60 \
+            --conflicts "$RUNNER_TEMP/libex-fill-conflicts.ndjson" 2>&1 | tee "$RUNNER_TEMP/libex-fill.log" || true
+          # metaimport validates the tree it wrote, so these are belt-and-braces.
+          # They FAIL the step rather than reverting: the import's own records are
+          # uncommitted in this same tree, so `git checkout -- data/` here would
+          # throw away the contribution along with the fill. A broken tree should
+          # stop the PR, not silently lose half of it.
+          go run ./cmd/metafmt --write
+          go run ./cmd/metacheck
+
       - name: Build the pull-request body
         id: prbody
         if: steps.run.outputs.status == 'ok'
