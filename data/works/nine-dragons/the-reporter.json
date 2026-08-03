@@ -736,11 +736,47 @@
           "added_at": "2026-07-17T09:27:30+00:00",
           "asin": [
             {
-              "asin": "B00G4K7EUO",
+              "asin": "0593163400",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51dw8z6biyL._SL500_.jpg",
+          "id": "michael-page-2013",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "michael-page"
+          ],
+          "publisher": "Gollancz",
+          "release_date": "2013",
+          "runtime_min": 1598,
+          "sources": [
+            {
+              "imported_at": "2026-07-30",
+              "ref": "0593163400",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-republic-of-thieves"
+        },
+        "michael-page-2013-2": {
+          "abridged": false,
+          "added_at": "2026-07-31T00:43:12+01:00",
+          "asin": [
+            {
+              "asin": "B00G4JQ1KO",
+              "region": "uk"
+            },
+            {
+              "asin": "B00FZ09326",
               "region": "us"
             },
             {
-              "asin": "0593163400",
+              "asin": "B079NQ177F",
+              "region": "uk"
+            },
+            {
+              "asin": "B00G4K7EUO",
               "region": "us"
             }
           ],
@@ -911,57 +947,6 @@
               "title": "Epilogue Wings"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/51dw8z6biyL._SL500_.jpg",
-          "id": "michael-page-2013",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "michael-page"
-          ],
-          "publisher": "Gollancz",
-          "release_date": "2013",
-          "runtime_min": 1598,
-          "sources": [
-            {
-              "imported_at": "2026-07-17",
-              "ref": "B00G4K7EUO",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-17",
-              "ref": "B00G4K7EUO",
-              "type": "audible-lookup"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B00G4K7EUO",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "0593163400",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-republic-of-thieves"
-        },
-        "michael-page-2013-2": {
-          "abridged": false,
-          "added_at": "2026-07-31T00:43:12+01:00",
-          "asin": [
-            {
-              "asin": "B00G4JQ1KO",
-              "region": "uk"
-            },
-            {
-              "asin": "B00FZ09326",
-              "region": "us"
-            },
-            {
-              "asin": "B079NQ177F",
-              "region": "uk"
-            }
-          ],
           "cover_url": "https://m.media-amazon.com/images/I/91RpYp6BIGL.jpg",
           "id": "michael-page-2013-2",
           "language": "en",
@@ -986,6 +971,21 @@
             {
               "imported_at": "2026-07-30",
               "ref": "B079NQ177F",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-17",
+              "ref": "B00G4K7EUO",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-17",
+              "ref": "B00G4K7EUO",
+              "type": "audible-lookup"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B00G4K7EUO",
               "type": "libex-import"
             }
           ],

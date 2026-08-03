@@ -5539,53 +5539,10 @@
             {
               "asin": "B0C6RBKYN5",
               "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81UK6juuXeL.jpg",
-          "id": "bill-nighy-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "bill-nighy",
-            "indira-varma",
-            "peter-serafinowicz",
-            "steven-cree"
-          ],
-          "publisher": "Clarion Books",
-          "release_date": "2023-09-05",
-          "runtime_min": 706,
-          "sources": [
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0C6RBKYN5",
-              "type": "libex-import"
-            }
-          ],
-          "work": "i-shall-wear-midnight"
-        },
-        "stephen-briggs-2010": {
-          "abridged": false,
-          "added_at": "2026-07-17T09:27:30+00:00",
-          "asin": [
+            },
             {
               "asin": "B09M8WLC57",
               "region": "us"
-            },
-            {
-              "asin": "B004EG5T8E",
-              "region": "us"
-            },
-            {
-              "asin": "B079BJ2ZKL",
-              "region": "uk"
-            },
-            {
-              "asin": "B004EF05BQ",
-              "region": "us"
-            },
-            {
-              "asin": "B004EF16LY",
-              "region": "uk"
             }
           ],
           "chapters": [
@@ -5695,17 +5652,25 @@
               "title": "Closing Credits"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/51w+OvreCgL._SL500_.jpg",
-          "id": "stephen-briggs-2010",
+          "cover_url": "https://m.media-amazon.com/images/I/81UK6juuXeL.jpg",
+          "id": "bill-nighy-2023",
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
-            "stephen-briggs"
+            "bill-nighy",
+            "indira-varma",
+            "peter-serafinowicz",
+            "steven-cree"
           ],
-          "publisher": "ISIS Audio Books",
-          "release_date": "2010",
-          "runtime_min": 561,
+          "publisher": "Clarion Books",
+          "release_date": "2023-09-05",
+          "runtime_min": 706,
           "sources": [
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0C6RBKYN5",
+              "type": "libex-import"
+            },
             {
               "imported_at": "2026-07-17",
               "ref": "B09M8WLC57",
@@ -5720,7 +5685,42 @@
               "imported_at": "2026-07-30",
               "ref": "B09M8WLC57",
               "type": "libex-import"
+            }
+          ],
+          "work": "i-shall-wear-midnight"
+        },
+        "stephen-briggs-2010": {
+          "abridged": false,
+          "added_at": "2026-07-17T09:27:30+00:00",
+          "asin": [
+            {
+              "asin": "B004EG5T8E",
+              "region": "us"
             },
+            {
+              "asin": "B079BJ2ZKL",
+              "region": "uk"
+            },
+            {
+              "asin": "B004EF05BQ",
+              "region": "us"
+            },
+            {
+              "asin": "B004EF16LY",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51w+OvreCgL._SL500_.jpg",
+          "id": "stephen-briggs-2010",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "stephen-briggs"
+          ],
+          "publisher": "ISIS Audio Books",
+          "release_date": "2010",
+          "runtime_min": 561,
+          "sources": [
             {
               "imported_at": "2026-07-30",
               "ref": "B004EG5T8E",

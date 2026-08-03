@@ -6671,16 +6671,12 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
-        "steve-berry-2020": {
+        "scott-brick-2020": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
           "asin": [
             {
               "asin": "1250260841",
-              "region": "us"
-            },
-            {
-              "asin": "1529390966",
               "region": "us"
             }
           ],
@@ -7616,6 +7612,39 @@
               "title": "Chapter 186"
             }
           ],
+          "id": "scott-brick-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "scott-brick",
+            "steve-berry"
+          ],
+          "publisher": "Macmillan Audio",
+          "release_date": "2020-02-25",
+          "runtime_min": 1408,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1250260841",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1250260841",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-warsaw-protocol"
+        },
+        "steve-berry-2020": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "1529390966",
+              "region": "us"
+            }
+          ],
           "cover_url": "https://m.media-amazon.com/images/I/81jPLJGiW2L.jpg",
           "id": "steve-berry-2020",
           "language": "en",
@@ -7628,16 +7657,6 @@
           "release_date": "2020",
           "runtime_min": 701,
           "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1250260841",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1250260841",
-              "type": "libex-import"
-            },
             {
               "imported_at": "2026-07-30",
               "ref": "1529390966",

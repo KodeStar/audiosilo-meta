@@ -3548,21 +3548,42 @@
             }
           ],
           "work": "the-odyssey"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-17",
+          "ref": "B0H76SJV2D",
+          "type": "audiosilo-books-import"
         },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1467610453",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1645552691",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Odyssey"
+    },
+    "the-odyssey-book-1-and-2": {
+      "added_at": "2026-07-31T00:43:12+01:00",
+      "authors": [
+        "homer"
+      ],
+      "id": "the-odyssey-book-1-and-2",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
         "william-johnston-2026": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
           "asin": [
             {
               "asin": "B0H2J3YTMN",
-              "region": "us"
-            },
-            {
-              "asin": "B0H86NK312",
-              "region": "us"
-            },
-            {
-              "asin": "B0H86M9JVM",
               "region": "us"
             }
           ],
@@ -3581,20 +3602,29 @@
               "imported_at": "2026-07-30",
               "ref": "B0H2J3YTMN",
               "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0H86NK312",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0H86M9JVM",
-              "type": "libex-import"
             }
           ],
-          "work": "the-odyssey"
-        },
+          "work": "the-odyssey-book-1-and-2"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B0H2J3YTMN",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Odyssey: Book 1 and 2"
+    },
+    "the-odyssey-books-3-4": {
+      "added_at": "2026-07-31T00:43:12+01:00",
+      "authors": [
+        "homer"
+      ],
+      "id": "the-odyssey-books-3-4",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
         "william-johnston-2026-2": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -3621,27 +3651,111 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-odyssey"
+          "work": "the-odyssey-books-3-4"
         }
       },
       "sources": [
         {
-          "imported_at": "2026-07-17",
-          "ref": "B0H76SJV2D",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-08-02",
-          "ref": "1467610453",
-          "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-08-02",
-          "ref": "1645552691",
+          "imported_at": "2026-07-30",
+          "ref": "B0H86YMK7B",
           "type": "libex-import"
         }
       ],
-      "title": "The Odyssey"
+      "title": "The Odyssey: Books 3 & 4"
+    },
+    "the-odyssey-books-5-6": {
+      "added_at": "2026-07-31T00:43:12+01:00",
+      "authors": [
+        "homer"
+      ],
+      "id": "the-odyssey-books-5-6",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "william-johnston-2026": {
+          "abridged": false,
+          "added_at": "2026-07-31T00:43:12+01:00",
+          "asin": [
+            {
+              "asin": "B0H86NK312",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91cEUcD-1KL.jpg",
+          "id": "william-johnston-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "william-johnston"
+          ],
+          "publisher": "Anthony Pica Productions, LLC",
+          "release_date": "2026-07-09",
+          "runtime_min": 46,
+          "sources": [
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0H86NK312",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-odyssey-books-5-6"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B0H86NK312",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Odyssey: Books 5 & 6"
+    },
+    "the-odyssey-books-7-8": {
+      "added_at": "2026-07-31T00:43:12+01:00",
+      "authors": [
+        "homer"
+      ],
+      "id": "the-odyssey-books-7-8",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "william-johnston-2026": {
+          "abridged": false,
+          "added_at": "2026-07-31T00:43:12+01:00",
+          "asin": [
+            {
+              "asin": "B0H86M9JVM",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91zrBV52KQL.jpg",
+          "id": "william-johnston-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "william-johnston"
+          ],
+          "publisher": "Anthony Pica Productions, LLC",
+          "release_date": "2026-07-09",
+          "runtime_min": 52,
+          "sources": [
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0H86M9JVM",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-odyssey-books-7-8"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B0H86M9JVM",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Odyssey: Books 7 & 8"
     },
     "the-odyssey-boys-journal-1-evolution": {
       "added_at": "2026-08-01",
