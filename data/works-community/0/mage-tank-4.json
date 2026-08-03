@@ -729,6 +729,236 @@
       }
     },
     "make-me": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An itinerant former Army military police major who leaves a delayed train at Mother's Rest on impulse. He arrives without a planned destination and meets a woman waiting for a missing investigator.",
+            "id": "jack-reacher",
+            "name": "Jack Reacher",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The motel proprietor who promptly reports Jack Reacher's arrival to an unknown contact and keeps watch on his room. His instructions and quiet monitoring make him an early sign that strangers in Mother's Rest are being tracked.",
+            "id": "motel-operator",
+            "name": "Motel operator",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Chang"
+            ],
+            "description": "A former FBI agent now working as a private investigator. She expects to meet a colleague at Mother's Rest, but he does not arrive on the morning train. Her law-enforcement background gives her common ground with Jack Reacher.",
+            "id": "michelle-chang",
+            "name": "Michelle Chang",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Michelle Chang's Oklahoma City colleague, who was working alone on an off-record private case. He called her to Mother's Rest for backup, then disappeared before he could explain the assignment or place it in the firm's records.",
+            "id": "missing-private-investigator",
+            "name": "Missing private investigator",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A local irrigation-parts merchant whose reaction to Jack Reacher suggests that he reports the arrival of unfamiliar people in Mother's Rest.",
+            "id": "irrigation-parts-merchant",
+            "name": "Irrigation-parts merchant",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Westwood"
+            ],
+            "description": "A Los Angeles Times science editor whose telephone number appears among the missing investigator's clues. He says the investigator never contacted him and reports that his current work concerns the development of wheat.",
+            "id": "ashley-westwood",
+            "name": "Ashley Westwood",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A local Western Union and parcel-service operator who drives the unplated white Cadillac used to collect important visitors and appears connected to the motel operation.",
+            "id": "cadillac-driver",
+            "name": "Cadillac driver",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A local hog farmer who speaks for the crowd assembled to expel Jack Reacher and Michelle Chang from the Mother's Rest motel. His position among the townsmen marks him as more than a bystander in their coordinated resistance.",
+            "id": "hog-farmer",
+            "name": "Hog farmer",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An outside surveillance operative hired by the Mother's Rest organization to watch Ashley Westwood. His assignment shows that the local group can buy professional help and is extending its response beyond the town.",
+            "id": "hackett",
+            "name": "Hackett",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The unidentified figure who directs the Mother's Rest group, commands the townsmen's deference, and authorizes increasingly expensive outside assistance. He responds to Jack Reacher and Michelle Chang's progress by ordering Ashley Westwood watched.",
+            "id": "mothers-rest-operation-leader",
+            "name": "Mother's Rest operation leader",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A possible caller identified only by surname in Ashley Westwood's records. The Chicago number associated with the name reaches a library volunteer room, leaving this person as one of the few viable leads behind the Maloney calls.",
+            "id": "mccann",
+            "name": "McCann",
+            "reveal": {
+              "chapter": 26
+            }
+          },
+          {
+            "aliases": [
+              "Maloney"
+            ],
+            "description": "A quiet older volunteer at a Chicago library and the caller who resumed contacting Ashley Westwood under the name Maloney after being blocked. His recent absence and unanswered telephone make his welfare a central concern.",
+            "id": "peter-mccann",
+            "name": "Peter McCann",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Peter McCann's adult son, described by library staff as troubled. His difficulties and his father's visible unhappiness suggest that Peter's repeated calls and disappearance may be tied to concern about him.",
+            "id": "michael-mccann",
+            "name": "Michael McCann",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The outside operative previously known as Hackett. He identifies himself after confronting Jack Reacher and Michelle Chang with a suppressed pistol at Peter McCann's apartment.",
+            "id": "keith-hackett",
+            "name": "Keith Hackett",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Peter McCann's technically knowledgeable longtime neighbor. She explains that Peter had become consumed by an Internet question, had hired a private detective, and wanted to understand hidden sites that ordinary search engines could not locate.",
+            "id": "eleanor-hopkins",
+            "name": "Eleanor Hopkins",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lydia McCann"
+            ],
+            "description": "Peter McCann's younger sister and Michael McCann's aunt, living in Arizona with her family. Jack Reacher and Michelle Chang seek her out because she may know why Peter hired a private investigator and what happened before he vanished.",
+            "id": "lydia-lair",
+            "name": "Lydia Lair",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Lydia Lair's physician husband, who hosts the large family gathering that Jack Reacher and Michelle Chang enter in Arizona. His household may be exposed to the same organization that has pursued the investigators across several states.",
+            "id": "evan-lair",
+            "name": "Evan Lair",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Lydia and Evan Lair's daughter, present at a family gathering held before her wedding. She is Peter McCann's niece and Michael McCann's cousin, placing her within the family circle that the investigators are trying to protect.",
+            "id": "emily-lair",
+            "name": "Emily Lair",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Ukrainian crime boss in Phoenix who supplies Eastern European enforcers. He is identified as the organizer behind the armed attack on the Lair household and appears to be the outside employer connected to Keith Hackett.",
+            "id": "merchenko",
+            "name": "Merchenko",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An unnamed Palo Alto startup founder and payment-systems entrepreneur who created a private tool capable of finding some deep-web content. Ashley Westwood knows him through an earlier warning about Merchenko.",
+            "id": "palo-alto-developer",
+            "name": "Palo Alto developer",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The online handle used by Michael McCann's suicide partner. Their exchanges show a sustained connection and a plan to meet near Tulsa, but the person's real identity and present condition remain unknown.",
+            "id": "exit",
+            "name": "EXIT",
+            "reveal": {
+              "chapter": 46
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An armed defender called the diner counterman. He fires on Jack Reacher and Michelle Chang at the remote farm, but no reliable personal name or connection to an earlier diner worker is established.",
+            "id": "diner-counterman",
+            "name": "Diner counterman",
+            "reveal": {
+              "chapter": 55
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An armed defender at the remote farm, distinguished as a one-eyed motel clerk. He opens fire on the approaching group alongside the diner counterman, while his exact connection to the motel's earlier personnel remains uncertain.",
+            "id": "one-eyed-motel-clerk",
+            "name": "One-eyed motel clerk",
+            "reveal": {
+              "chapter": 55
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B011PVUGUG",
+            "type": "community"
+          }
+        ],
+        "work": "make-me"
+      },
       "recaps": {
         "ending": "Jack Reacher, Michelle Chang, and Ashley Westwood penetrate Mother's Rest through coordinated diversions, then reach the isolated farm in a backhoe. They discover that the advertised end-of-life service is a front for paid livestreams of torture and murder. Recordings probably include Michael McCann, EXIT, and a recent train passenger, though Michael and EXIT are not identified with certainty. Jack Reacher kills several armed defenders, including the hog farmer, while Michelle Chang kills the fleeing operation leader after he explains that victims were generally fed to the hogs. The missing private investigator was murdered and buried at the hog pen because the animals had already been fed. The local operation is destroyed, Keith Hackett is in police custody after being badly injured, and Merchenko is dead. Ashley Westwood stays to arrange documentation of the aftermath. Jack Reacher asks Michelle Chang to continue traveling with him. She does not give a final spoken answer, but drives west with him, leaving their relationship open while their partnership continues.",
         "in_short": "Jack Reacher stops at Mother's Rest and joins private investigator Michelle Chang in searching for her missing colleague. The town's coordinated hostility sends them to journalist Ashley Westwood, then to Peter McCann, who had hired the investigator to find his missing son, Michael. Their trail reveals murders, deep-web suicide boards, and an isolated farm advertised as a discreet end-of-life service. After defeating outside operative Keith Hackett and crime boss Merchenko's enforcers, Jack Reacher, Michelle Chang, and Ashley Westwood return armed. They infiltrate the operation and expose its real business - paid livestreamed torture and murder. Michael and his online partner EXIT are probable victims. Jack Reacher and Michelle Chang kill the remaining farm defenders, and the leader confirms that the missing investigator was buried by the hog pen while other victims were fed to the animals. Ashley Westwood remains to document the scene, and Jack Reacher leaves west with Michelle Chang.",
