@@ -11931,18 +11931,104 @@
       ],
       "title": "Iron Kissed (Dramatized Adaptation)"
     },
-    "iron-man": {
+    "iron-man-extremis": {
+      "added_at": "2026-07-25T17:12:12+01:00",
+      "authors": [
+        "marie-javins",
+        "marvel"
+      ],
+      "genres": [
+        "fantasy",
+        "superhero",
+        "urban-fantasy"
+      ],
+      "id": "iron-man-extremis",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "richard-rohan-2019": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "1974980898",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3480020,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3295654,
+              "start_ms": 3480020,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3232217,
+              "start_ms": 6775674,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3455802,
+              "start_ms": 10007891,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3120784,
+              "start_ms": 13463693,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81UArmtF7eL.jpg",
+          "id": "richard-rohan-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "richard-rohan",
+            "full-cast"
+          ],
+          "publisher": "Marvel",
+          "release_date": "2019",
+          "runtime_min": 277,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1974980898",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1974980898",
+              "type": "libex-import"
+            }
+          ],
+          "work": "iron-man-extremis"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "1974980898",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "1974980898",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Iron Man: Extremis"
+    },
+    "iron-man-operation-a-i-m": {
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "greg-cox",
         "marvel"
       ],
-      "genres": [
-        "fantasy",
-        "science-fiction",
-        "superhero"
-      ],
-      "id": "iron-man",
+      "id": "iron-man-operation-a-i-m",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -12039,8 +12125,33 @@
               "type": "libex-import"
             }
           ],
-          "work": "iron-man"
+          "work": "iron-man-operation-a-i-m"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "1974980030",
+          "type": "audiosilo-books-import"
         },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "1974980030",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Iron Man: Operation A.I.M."
+    },
+    "iron-man-the-armor-trap": {
+      "added_at": "2026-07-25T17:12:12+01:00",
+      "authors": [
+        "greg-cox",
+        "marvel"
+      ],
+      "id": "iron-man-the-armor-trap",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
         "james-patrick-cronin-2020": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -12154,7 +12265,7 @@
               "type": "libex-import"
             }
           ],
-          "work": "iron-man"
+          "work": "iron-man-the-armor-trap"
         }
       },
       "sources": [
@@ -12165,102 +12276,11 @@
         },
         {
           "imported_at": "2026-07-30",
-          "ref": "1974980030",
+          "ref": "1974983560",
           "type": "libex-import"
         }
       ],
-      "title": "Iron Man"
-    },
-    "iron-man-extremis": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "marie-javins",
-        "marvel"
-      ],
-      "genres": [
-        "fantasy",
-        "superhero",
-        "urban-fantasy"
-      ],
-      "id": "iron-man-extremis",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "richard-rohan-2019": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "1974980898",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3480020,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3295654,
-              "start_ms": 3480020,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3232217,
-              "start_ms": 6775674,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3455802,
-              "start_ms": 10007891,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3120784,
-              "start_ms": 13463693,
-              "title": "Chapter 5"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81UArmtF7eL.jpg",
-          "id": "richard-rohan-2019",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "richard-rohan",
-            "full-cast"
-          ],
-          "publisher": "Marvel",
-          "release_date": "2019",
-          "runtime_min": 277,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1974980898",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1974980898",
-              "type": "libex-import"
-            }
-          ],
-          "work": "iron-man-extremis"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "1974980898",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "1974980898",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Iron Man: Extremis"
+      "title": "Iron Man: The Armor Trap"
     },
     "iron-man-the-gauntlet": {
       "added_at": "2026-07-25T17:12:12+01:00",

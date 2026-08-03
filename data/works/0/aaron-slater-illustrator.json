@@ -5010,18 +5010,64 @@
       ],
       "title": "Abenteuer auf dem Mars"
     },
-    "abenteuer-auf-dem-pferdehof": {
+    "abenteuer-auf-dem-pferdehof-abenteuer-in-unicorn-city": {
       "added_at": "2026-08-02",
       "authors": [
         "familie-vogel",
         "spiel-mit-mir"
       ],
-      "genres": [
-        "childrens",
-        "coming-of-age",
-        "parenting-relationships"
+      "id": "abenteuer-auf-dem-pferdehof-abenteuer-in-unicorn-city",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "familie-vogel-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CTCMZT9D",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81tLBe1s8PL.jpg",
+          "id": "familie-vogel-2024",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "familie-vogel",
+            "hannah-vogel",
+            "spiel-mit-mir",
+            "tobias-soring"
+          ],
+          "publisher": "Spiel mit mir",
+          "release_date": "2024-02-09",
+          "runtime_min": 40,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CTCMZT9D",
+              "type": "libex-import"
+            }
+          ],
+          "work": "abenteuer-auf-dem-pferdehof-abenteuer-in-unicorn-city"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CTCMZT9D",
+          "type": "libex-import"
+        }
       ],
-      "id": "abenteuer-auf-dem-pferdehof",
+      "title": "Abenteuer auf dem Pferdehof: Abenteuer in Unicorn City"
+    },
+    "abenteuer-auf-dem-pferdehof-familie-vogel": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "familie-vogel",
+        "spiel-mit-mir"
+      ],
+      "id": "abenteuer-auf-dem-pferdehof-familie-vogel",
       "language": "de",
       "license": "CC0-1.0",
       "recordings": {
@@ -5054,48 +5100,17 @@
               "type": "libex-import"
             }
           ],
-          "work": "abenteuer-auf-dem-pferdehof"
-        },
-        "familie-vogel-2024": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0CTCMZT9D",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81tLBe1s8PL.jpg",
-          "id": "familie-vogel-2024",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "familie-vogel",
-            "hannah-vogel",
-            "spiel-mit-mir",
-            "tobias-soring"
-          ],
-          "publisher": "Spiel mit mir",
-          "release_date": "2024-02-09",
-          "runtime_min": 40,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0CTCMZT9D",
-              "type": "libex-import"
-            }
-          ],
-          "work": "abenteuer-auf-dem-pferdehof"
+          "work": "abenteuer-auf-dem-pferdehof-familie-vogel"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-02",
-          "ref": "B0CTCMZT9D",
+          "ref": "B0F8QVDLR3",
           "type": "libex-import"
         }
       ],
-      "title": "Abenteuer auf dem Pferdehof"
+      "title": "Abenteuer auf dem Pferdehof: Familie Vogel"
     },
     "abenteuer-auf-der-grimmburg": {
       "added_at": "2026-08-02",
