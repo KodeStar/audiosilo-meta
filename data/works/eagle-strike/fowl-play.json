@@ -172,6 +172,14 @@
       "authors": [
         "george-saunders"
       ],
+      "genres": [
+        "comedy-humor",
+        "fairy-tales-folklore",
+        "fantasy",
+        "literary-fiction",
+        "nature",
+        "short-stories"
+      ],
       "id": "fox-8",
       "language": "en",
       "license": "CC0-1.0",
@@ -185,6 +193,7 @@
               "region": "us"
             }
           ],
+          "cover_url": "https://m.media-amazon.com/images/I/81JSqjaBZlL.jpg",
           "id": "george-saunders-2013",
           "language": "en",
           "license": "CC0-1.0",
@@ -193,12 +202,16 @@
           ],
           "publisher": "Random House Audio",
           "release_date": "2013",
-          "runtime_min": 43,
+          "runtime_min": 37,
           "sources": [
             {
               "imported_at": "2026-08-03",
               "ref": "B00C3LV12A",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B00C3LV12A",
+              "type": "libex-import"
             }
           ],
           "work": "fox-8"
@@ -209,6 +222,10 @@
           "imported_at": "2026-08-03",
           "ref": "B00C3LV12A",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B00C3LV12A",
+          "type": "libex-import"
         }
       ],
       "title": "Fox 8"

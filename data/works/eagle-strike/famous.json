@@ -10741,6 +10741,13 @@
       "authors": [
         "roald-dahl"
       ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "classics",
+        "comedy-humor",
+        "nature"
+      ],
       "id": "fantastic-mr-fox-roald-dahl",
       "language": "en",
       "license": "CC0-1.0",
@@ -10754,6 +10761,7 @@
               "region": "us"
             }
           ],
+          "cover_url": "https://m.media-amazon.com/images/I/91zrkWowBOL.jpg",
           "id": "chris-odowd-2022",
           "language": "en",
           "license": "CC0-1.0",
@@ -10762,12 +10770,16 @@
           ],
           "publisher": "Listening Library",
           "release_date": "2022",
-          "runtime_min": 54,
+          "runtime_min": 76,
           "sources": [
             {
               "imported_at": "2026-08-03",
               "ref": "B0BB3F6HKX",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B0BB3F6HKX",
+              "type": "libex-import"
             }
           ],
           "work": "fantastic-mr-fox-roald-dahl"
@@ -10778,6 +10790,10 @@
           "imported_at": "2026-08-03",
           "ref": "B0BB3F6HKX",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B0BB3F6HKX",
+          "type": "libex-import"
         }
       ],
       "title": "Fantastic Mr. Fox"
