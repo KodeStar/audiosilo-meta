@@ -9,6 +9,7 @@ import (
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/pkg/check"
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 // The enrichment tests all run against one seeded catalogue: two works by one
@@ -374,6 +375,84 @@ func TestEnrichNeverReplacesChapters(t *testing.T) {
 	readEntity(t, dataDir, recRel, &rec)
 	if len(rec.Chapters) != 1 || rec.Chapters[0].Title != "Only Chapter" {
 		t.Errorf("existing chapters must never be merged or replaced: %+v", rec.Chapters)
+	}
+}
+
+// TestRawISBNValueAgreesWithTheModel binds the TWO places that know what an
+// isbn[] entry can look like: model.ISBNRef.UnmarshalJSON, which the readers
+// decode through, and rawISBNValue, which the raw-map writers read through.
+// Nothing else keeps them in step - and a spelling one understands and the
+// other does not is exactly the shape that forked a person record in two (see
+// the person-slug rule). So every spelling is decoded BOTH ways here and the
+// ISBN value must come out the same; a third spelling added to one side fails
+// on the other.
+func TestRawISBNValueAgreesWithTheModel(t *testing.T) {
+	cases := []struct {
+		name string
+		raw  string
+		want string
+	}{
+		{"bare string", `"9781234567897"`, "9781234567897"},
+		{"region-scoped object", `{"isbn":"9781234567897","region":"uk"}`, "9781234567897"},
+		{"ten-digit with an X check digit", `"012345678X"`, "012345678X"},
+	}
+	for _, tc := range cases {
+		t.Run(tc.name, func(t *testing.T) {
+			var ref model.ISBNRef
+			if err := json.Unmarshal([]byte(tc.raw), &ref); err != nil {
+				t.Fatalf("model decode of %s: %v", tc.raw, err)
+			}
+			if ref.ISBN != tc.want {
+				t.Errorf("model decode of %s = %q, want %q", tc.raw, ref.ISBN, tc.want)
+			}
+			var anyVal any
+			if err := json.Unmarshal([]byte(tc.raw), &anyVal); err != nil {
+				t.Fatalf("raw decode of %s: %v", tc.raw, err)
+			}
+			if got := rawISBNValue(anyVal); got != ref.ISBN {
+				t.Errorf("rawISBNValue(%s) = %q, model reads %q: the two spellings have drifted", tc.raw, got, ref.ISBN)
+			}
+		})
+	}
+}
+
+// TestEnrichSeesARegionScopedISBNAsPresent is the dedup rule for the ISBN
+// entry's second spelling. No importer ever WRITES it, and the correction form
+// cannot either (correctableFields is scalars-only; an array is needs-human), so
+// a hand-written PR is its only producer today - but enrichISBNs reads the RAW
+// entry, where such an ISBN is an object rather than a string, and a record a
+// maintainer scoped by hand is enriched by every later run.
+// Without rawISBNValue the object reads as "" and the row's
+// identical ISBN looks absent, so the record's own identifier is offered to
+// claimISBNs and comes back refused as "already recorded on another recording" -
+// a collision reported against the very record being read. (The global claim set
+// is what keeps the duplicate off disk; the false warning is the visible defect,
+// and it is what this test pins.)
+func TestEnrichSeesARegionScopedISBNAsPresent(t *testing.T) {
+	const scopedRec = `{"asin":[{"asin":"B0LIBEX001","region":"uk"}],"id":"bea-reader","isbn":[{"isbn":"9781234567897","region":"uk"}],"language":"en","license":"CC0-1.0","narrators":["bea-reader"],"sources":[{"type":"user"}],"work":"the-lost-cartographer"}`
+	dataDir := seedEnrichTree(t, map[string]string{recRel: scopedRec})
+
+	sum := runEnrich(t, dataDir, fullRow, false)
+	if hasWarning(sum.Warnings, "is already recorded on another recording") {
+		t.Errorf("the record's OWN ISBN must not read as another recording's: %v", sum.Warnings)
+	}
+
+	var rec struct {
+		ISBN []json.RawMessage `json:"isbn"`
+	}
+	readEntity(t, dataDir, recRel, &rec)
+	if len(rec.ISBN) != 1 {
+		t.Fatalf("isbn = %s, want the single region-scoped entry untouched", rec.ISBN)
+	}
+	var compact bytes.Buffer
+	if err := json.Compact(&compact, rec.ISBN[0]); err != nil {
+		t.Fatalf("compact isbn[0]: %v", err)
+	}
+	if got := compact.String(); got != `{"isbn":"9781234567897","region":"uk"}` {
+		t.Errorf("isbn[0] = %s, want the recorded object form unchanged", got)
+	}
+	if res := check.Load(dataDir); !res.OK() {
+		t.Fatalf("enriched tree failed validation:\n%v", res.Problems)
 	}
 }
 

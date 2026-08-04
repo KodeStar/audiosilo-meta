@@ -141,6 +141,36 @@ it, `pkg/check` and every writer now refuse it loudly.
   many recordings (Harry Potter: Stephen Fry AND Jim Dale, each with its own
   ASINs). It keeps its own `id`, `work` backref, `license` and `sources`, so its
   bytes are the same as when it was a file of its own.
+  **A production released in several marketplaces stays ONE recording**: the
+  region rides on the identifiers and the imprint, never on a second record.
+  An `isbn[]` entry is a bare STRING (region unstated) or the object
+  `{"isbn","region"}`, used ONLY when the region is known; both properties are
+  required, so an unstated region has exactly one spelling. The bare string is
+  not merely the shape that predates regions, it is the **scale** form: every
+  writer emits it (no import source states an ISBN's marketplace, and the
+  correction form cannot touch an array at all), and across 142k recordings one
+  canonical line beats the object's four against the 256KB pack caps - which is
+  what enrichment filling ISBNs in bulk will spend. Optional `publishers[]`
+  (`{"region","publisher"}`) holds the OTHER regions' imprints - the top-level
+  `publisher` stays THE publisher of record, so `publishers[]` may never restate
+  it and may never name one region twice (`checkRegionalPublishers`). It has **no
+  writer today**: no importer emits it and the correction form cannot (arrays are
+  needs-human), so a hand-written PR is its only producer and metacheck is its
+  only gate - like classifying the corporate person records, a later human pass.
+  ISBN uniqueness keys on the VALUE, so the two spellings of one identifier
+  collide as they should. `metabuild` flattens both forms into the same
+  `recording_isbns` row - the artifact keeps an ASIN's region but deliberately
+  DROPS a stated ISBN region, so `lookup?isbn=` and `/abs/search` answer "which
+  recording", never "which marketplace"; SchemaVersion is unmoved and a reader
+  that ever needs the region is a later schema_version change. `publishers[]` is
+  deliberately not in the artifact either - the data accrues ahead of its
+  readers, as work credits do. The region vocabulary is one shared def
+  (`common.schema.json#/$defs/region`), reached by `asin[]`, the region-scoped
+  ISBN and `publishers[]` alike, with drift guards on both Go mirrors
+  (`internal/importer` `marketplaces`, `internal/issueform` `regionAliases`).
+  NOTE the WORK's print ISBNs (`xref.isbn`) are deliberately untouched: they stay
+  a flat string list (`$defs/isbn_list`); the recording's `isbn[]` is defined
+  inline in `recording.schema.json`, beside its `asin[]` neighbour.
 - **person** - an entry in the people family, shared by author and narrator roles
   (a person can be both). Optional `kind` (`person`/`group`/`publisher`) marks
   the records that are not an individual - a full cast, a corporate credit of

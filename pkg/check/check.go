@@ -218,6 +218,7 @@ func load(lst *pack.Listing, rdr *pack.Reader) Result {
 
 	checkIntegrity(cat, workByID, recs, idx, add)
 	checkUniqueness(cat, recs, idx, add)
+	checkRegionalPublishers(recs, add)
 	checkChapters(recs, add)
 	checkSeriesPositions(cat, idx, add)
 	checkGenresSorted(cat, idx, add)

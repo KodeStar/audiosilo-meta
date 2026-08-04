@@ -213,6 +213,7 @@
       "pattern": "^(\\d{9}[0-9Xx]|\\d{13})$"
     },
     "isbn_list": {
+      "description": "A flat list of ISBNs whose region is not modeled. This is the WORK's print-ISBN shape (xref.isbn); a recording's isbn[] is its own definition in recording.schema.json, whose entries may state the region a production was released under.",
       "type": "array",
       "minItems": 1,
       "items": {
@@ -222,6 +223,11 @@
     "asin": {
       "type": "string",
       "pattern": "^[A-Z0-9]{10}$"
+    },
+    "region": {
+      "description": "A marketplace region. One vocabulary shared by every region-scoped field (recording ASINs, region-scoped ISBNs, regional publishers) so the lists can never drift apart.",
+      "type": "string",
+      "enum": ["us", "uk", "ca", "au", "de", "fr", "es", "it", "jp", "in", "br"]
     },
     "date_year": {
       "type": "string",

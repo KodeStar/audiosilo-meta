@@ -54,7 +54,7 @@ func fixtureCatalog() *model.Catalog {
 		Recordings: []*model.Recording{{
 			ID: "kramer-reading-2010", Work: "the-way-of-kings", Language: "en",
 			Narrators: []string{"michael-kramer", "kate-reading"}, License: "CC0-1.0",
-			ISBN: []string{"9781427209269"},
+			ISBN: []model.ISBNRef{{ISBN: "9781427209269"}},
 		}},
 	}
 	wor := &model.Work{

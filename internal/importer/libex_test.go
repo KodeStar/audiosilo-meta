@@ -330,6 +330,56 @@ func TestLibexDedupByASIN(t *testing.T) {
 	}
 }
 
+// TestLibexMergeSeesTheTargetsOwnISBNAsPresent is the ASIN-MERGE sibling of
+// TestEnrichSeesARegionScopedISBNAsPresent, and it is the same defect one path
+// over: the merge hands the row's ISBNs to the claim, and p.isbns is seeded from
+// the whole catalogue, so an ISBN the TARGET already carries is in the set
+// before the row is read. Claimed without filtering, the run reports the
+// record's own identifier as "already recorded on another recording" - about the
+// record it is writing to.
+//
+// The row here is a regional re-release: a new ASIN for the same production,
+// restating the ISBN the target already holds. It must merge silently and leave
+// isbn[] exactly as it was.
+func TestLibexMergeSeesTheTargetsOwnISBNAsPresent(t *testing.T) {
+	dataDir := t.TempDir()
+	const recAddress = "works/th/the-lost-cartographer/recordings/existing.json"
+	seedTree(t, dataDir, map[string]string{
+		"people/ad/ada-mapmaker.json":              `{"id":"ada-mapmaker","license":"CC0-1.0","name":"Ada Mapmaker","sources":[{"type":"user"}]}`,
+		"people/be/bea-reader.json":                `{"id":"bea-reader","license":"CC0-1.0","name":"Bea Reader","sources":[{"type":"user"}]}`,
+		"works/th/the-lost-cartographer/work.json": `{"authors":["ada-mapmaker"],"id":"the-lost-cartographer","language":"en","license":"CC0-1.0","sources":[{"type":"user"}],"title":"The Lost Cartographer"}`,
+		recAddress: `{"asin":[{"asin":"B0LIBEX001","region":"us"}],"id":"existing","isbn":["9781234567897"],"language":"en","license":"CC0-1.0","narrators":["bea-reader"],"runtime_min":600,"sources":[{"type":"user"}],"work":"the-lost-cartographer"}`,
+	})
+
+	export := `[{"asin":"B0LIBEX002","title":"The Lost Cartographer","region":"gb","language":"english","isbn":"9781234567897",` +
+		`"authors":[{"name":"Ada Mapmaker"}],"narrators":[{"name":"Bea Reader"}],"lengthMinutes":600}]`
+	sum, err := RunLibex(writeBooks(t, export), Options{DataDir: dataDir, ImportDate: testImportDate})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if sum.MergedASINs != 1 || sum.NewRecordings != 0 {
+		t.Fatalf("summary = %+v, want the regional ASIN merged into the existing recording", sum)
+	}
+	if hasWarning(sum.Warnings, "already recorded on another recording") {
+		t.Errorf("the target's OWN ISBN must not read as another recording's: %v", sum.Warnings)
+	}
+
+	var rec struct {
+		ISBN []string                        `json:"isbn"`
+		ASIN []struct{ Region, ASIN string } `json:"asin"`
+	}
+	readEntity(t, dataDir, recAddress, &rec)
+	if len(rec.ISBN) != 1 || rec.ISBN[0] != "9781234567897" {
+		t.Errorf("isbn = %v, want the single recorded value unchanged", rec.ISBN)
+	}
+	if len(rec.ASIN) != 2 {
+		t.Errorf("asin = %+v, want both the recorded and the merged region", rec.ASIN)
+	}
+	if res := check.Load(dataDir); !res.OK() {
+		t.Fatalf("merged tree failed validation: %v", res.Problems)
+	}
+}
+
 // TestLibexDiskISBNBlocksDuplicate covers the loadExisting ISBN seed: an ISBN
 // already on a recording ON DISK must not be re-emitted (checkUniqueness would
 // fail the whole tree).

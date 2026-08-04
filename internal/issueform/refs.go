@@ -68,7 +68,10 @@ func normalizeLanguage(raw string) (string, bool) {
 func normalizeISBN(raw string) (string, bool) { return importer.NormalizeISBN(raw) }
 
 // regionAliases maps the region words a submitter is likely to type onto the
-// recording schema's marketplace enum (which uses "uk", not "gb").
+// one region vocabulary, common.schema.json #/$defs/region (which uses "uk",
+// not "gb"). The KEYS are deliberately wider than the enum - that is the point
+// of an alias table - but every VALUE must be an enum member, or a submission
+// would compose a region metacheck rejects: TestRegionAliasesTargetTheSchemaEnum.
 var regionAliases = map[string]string{
 	"us": "us", "usa": "us", "gb": "uk", "uk": "uk", "ca": "ca", "can": "ca",
 	"au": "au", "aus": "au", "de": "de", "ger": "de", "fr": "fr", "es": "es",

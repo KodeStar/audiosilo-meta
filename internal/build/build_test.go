@@ -46,7 +46,11 @@ func fixtureCatalog() *model.Catalog {
 			ID: "kramer-reading-2010", Work: "the-way-of-kings", Abridged: false, Language: "en",
 			Narrators: []string{"michael-kramer", "kate-reading"}, License: "CC0-1.0",
 			ASIN: []model.ASIN{{Region: "us", ASIN: "B003ZWFO7E"}},
-			ISBN: []string{"9781427209269"},
+			// Region-scoped on purpose: TestBuildISBNLookup then proves the
+			// object form flattens to the same recording_isbns row a bare
+			// string produces (the artifact carries no region).
+			ISBN:       []model.ISBNRef{{Region: "us", ISBN: "9781427209269"}},
+			Publishers: []model.RegionPublisher{{Region: "uk", Publisher: "Gollancz"}},
 		}},
 	}
 	sanderson := &model.Person{ID: "brandon-sanderson", Name: "Brandon Sanderson", License: "CC0-1.0"}

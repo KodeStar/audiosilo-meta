@@ -2,10 +2,13 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://meta.audiosilo.app/schema/recording.schema.json",
   "title": "recording",
-  "description": "A specific narration/production of a work: narrators, abridged flag, runtime, chapters, publisher, and region-scoped ASINs.",
+  "description": "A specific narration/production of a work: narrators, abridged flag, runtime, chapters, publisher(s), and region-scoped identifiers. One production released in several marketplaces stays ONE recording: the region rides on the identifier (asin[], the object form of isbn[]) and on publishers[], never on a second record.",
   "type": "object",
   "additionalProperties": false,
   "required": ["id", "work", "narrators", "language", "license", "sources"],
+  "dependentRequired": {
+    "publishers": ["publisher"]
+  },
   "properties": {
     "id": {
       "$ref": "common.schema.json#/$defs/slug"
@@ -37,8 +40,28 @@
       "$ref": "common.schema.json#/$defs/date_flex"
     },
     "publisher": {
+      "description": "The publisher of record for this production. One production can be issued by a different imprint in another marketplace; those go in publishers[], and this field stays the one the record leads with.",
       "type": "string",
       "minLength": 1
+    },
+    "publishers": {
+      "description": "OTHER regions' imprints of this same production, one entry per region. It never restates the top-level publisher (that fact already has a home) and never repeats a region. Emitted only when a source STATED a regional publisher - absence means nothing is known about that marketplace, not that the publisher of record covers it. It REQUIRES publisher (see dependentRequired): \"the other regions\" is meaningless without the one it is other than, and a record carrying publishers[] with no publisher is a trap - the next enrichment run fills the absent field from a row, which can be a name already in this list, minting the restatement pkg/check refuses. The dependency turns that into a schema error at compose time rather than a validation failure after the write.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["region", "publisher"],
+        "properties": {
+          "region": {
+            "$ref": "common.schema.json#/$defs/region"
+          },
+          "publisher": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
     },
     "asin": {
       "type": "array",
@@ -49,8 +72,7 @@
         "required": ["region", "asin"],
         "properties": {
           "region": {
-            "type": "string",
-            "enum": ["us", "uk", "ca", "au", "de", "fr", "es", "it", "jp", "in", "br"]
+            "$ref": "common.schema.json#/$defs/region"
           },
           "asin": {
             "$ref": "common.schema.json#/$defs/asin"
@@ -59,7 +81,29 @@
       }
     },
     "isbn": {
-      "$ref": "common.schema.json#/$defs/isbn_list"
+      "description": "This recording's ISBNs. An entry has exactly one of two forms, and they mix freely in one list: a bare STRING is an ISBN whose region is unstated, and the OBJECT {isbn, region} is used ONLY when the region IS known - one production released in several marketplaces carries different identifiers, and this is how the second one is recorded without minting a second recording. Both properties are required in the object form, so an unstated region has exactly one spelling and canonical form stays unambiguous. The bare string is not merely the shape that predates regions: it is the SCALE form. Every writer emits it (no import source states the marketplace an ISBN belongs to, and the correction form cannot touch an array at all), and across 142k recordings one canonical line beats the object's four against the pack size caps - which is what enrichment filling ISBNs in bulk will spend. The region-scoped form earns its four lines by stating a fact nothing else can.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "common.schema.json#/$defs/isbn"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["region", "isbn"],
+            "properties": {
+              "region": {
+                "$ref": "common.schema.json#/$defs/region"
+              },
+              "isbn": {
+                "$ref": "common.schema.json#/$defs/isbn"
+              }
+            }
+          }
+        ]
+      }
     },
     "cover_url": {
       "type": "string",

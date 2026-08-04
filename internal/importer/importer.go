@@ -681,7 +681,9 @@ func (p *planner) loadExisting() {
 				p.locateASIN(a.ASIN, w.ID, r.ID)
 			}
 			for _, isbn := range r.ISBN {
-				p.isbns[strings.ToUpper(isbn)] = true
+				// The VALUE is what has to be globally unique; whether the
+				// record states a region for it is beside the point.
+				p.isbns[strings.ToUpper(isbn.ISBN)] = true
 			}
 			ws.recs[r.ID] = ri
 		}
@@ -1669,7 +1671,9 @@ func (p *planner) addRecording(ws *workState, b sourceBook, asin, lang string, n
 				// The entry's ISBNs ride along with the ASIN: they are the same
 				// edition's identifiers, and dropping them silently (as an
 				// earlier version did) loses a fact no later run would restore.
-				p.mergeRecordingASIN(m.info, ws.slug, m.slug, region, asin, p.claimISBNs(b.isbns, warn))
+				// The claim happens INSIDE the merge, which is where the target
+				// record's own isbn[] can be read - see claimISBNsFor.
+				p.mergeRecordingASIN(m.info, ws.slug, m.slug, region, asin, b.isbns, warn)
 				return true
 			}
 		}
@@ -1750,6 +1754,36 @@ func (p *planner) claimISBNs(isbns []string, warn func(string, ...any)) []string
 		out = append(out, isbn)
 	}
 	return out
+}
+
+// claimISBNsFor is claimISBNs against an EXISTING record: it drops the ISBNs raw
+// already carries before claiming the rest.
+//
+// The filter is what makes the claim mean what its warning says. p.isbns is
+// seeded from the whole catalogue, so a record's own ISBN is already in the set
+// - hand it straight to claimISBNs and the run reports "already recorded on
+// another recording" about the very record it is writing to. Both paths that
+// add an ISBN to a record already on disk (the enrichment fill and the ASIN
+// merge) go through here for that reason. Reading the record's isbn[] goes
+// through rawISBNValue, so a region-scoped entry counts as present too.
+func (p *planner) claimISBNsFor(raw map[string]any, isbns []string, warn func(string, ...any)) []string {
+	if len(isbns) == 0 {
+		return nil
+	}
+	existing, _ := raw["isbn"].([]any)
+	have := make(map[string]bool, len(existing))
+	for _, v := range existing {
+		if s := rawISBNValue(v); s != "" {
+			have[strings.ToUpper(s)] = true
+		}
+	}
+	var candidates []string
+	for _, isbn := range isbns {
+		if !have[strings.ToUpper(isbn)] {
+			candidates = append(candidates, isbn)
+		}
+	}
+	return p.claimISBNs(candidates, warn)
 }
 
 // reportUnmappedGenres appends one run-level warning naming every distinct
@@ -2018,15 +2052,20 @@ func seriesPosConflict(ri *recInfo, b sourceBook) (series, incumbent, want strin
 	return "", "", "", false
 }
 
-// mergeRecordingASIN appends {region, asin} (and any ISBN the caller claimed for
-// this entry) to an existing recording and re-queues it, preserving every other
-// field byte-for-byte. The recording is read from inside its work's composite
-// entry, queued-write-first (so a recording written earlier in the same run is
-// the one edited), and the whole entry goes back. It never stamps added_at: the
-// recording being merged into entered the database earlier. The caller has
-// already checked that asin is not present on ri, and that every isbn is
-// globally unclaimed.
-func (p *planner) mergeRecordingASIN(ri *recInfo, workSlug, recSlug, region, asin string, isbns []string) {
+// mergeRecordingASIN appends {region, asin} (and whichever of the row's ISBNs
+// this entry does not already carry) to an existing recording and re-queues it,
+// preserving every other field byte-for-byte. The recording is read from inside
+// its work's composite entry, queued-write-first (so a recording written earlier
+// in the same run is the one edited), and the whole entry goes back. It never
+// stamps added_at: the recording being merged into entered the database earlier.
+// The caller has already checked that asin is not present on ri.
+//
+// The ISBNs arrive RAW rather than pre-claimed, because the claim has to see the
+// target's own isbn[] to be honest - a row restating an ISBN the target already
+// holds would otherwise be reported as a collision with "another recording"
+// (claimISBNsFor). Nothing is claimed on the bail path below either, which is
+// the right side to err on: an entry that could not be read was not written.
+func (p *planner) mergeRecordingASIN(ri *recInfo, workSlug, recSlug, region, asin string, isbns []string, warn func(string, ...any)) {
 	if p.fatal != nil {
 		return
 	}
@@ -2036,7 +2075,7 @@ func (p *planner) mergeRecordingASIN(ri *recInfo, workSlug, recSlug, region, asi
 	}
 	arr, _ := raw["asin"].([]any)
 	raw["asin"] = append(arr, map[string]any{"region": region, "asin": asin})
-	appendISBNs(raw, isbns)
+	appendISBNs(raw, p.claimISBNsFor(raw, isbns, warn))
 	// Stamp provenance for the merged fact: the source ref is the incoming ASIN,
 	// so the merge stays auditable and retractable per the sources[] contract.
 	p.stampSource(raw)
@@ -2080,6 +2119,17 @@ func appendISBNs(raw map[string]any, isbns []string) {
 		existing = append(existing, isbn)
 	}
 	raw["isbn"] = existing
+}
+
+// rawISBNValue reads the ISBN value out of one raw isbn[] element, in either of
+// the on-disk spellings (a bare string, or a {"region":..,"isbn":..} object).
+// The object form must never read as absent - see
+// TestEnrichSeesARegionScopedISBNAsPresent for what that costs.
+func rawISBNValue(v any) string {
+	if m, ok := v.(map[string]any); ok {
+		return coerceStr(m["isbn"])
+	}
+	return coerceStr(v)
 }
 
 // fillStr records val at key on an existing record when the row states one,

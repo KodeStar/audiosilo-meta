@@ -355,6 +355,34 @@ func TestPersonSlugMatchesName(t *testing.T) {
 	}
 }
 
+// TestRegionalReleaseShapesValid is the passing fixture for the regional-release
+// schema change: one production, released in two marketplaces, stays ONE
+// recording. Its isbn[] mixes a bare string (region unstated) with the
+// region-scoped object form, and publishers[] names the other region's imprint
+// beside the publisher of record. All three shapes must validate and load.
+func TestRegionalReleaseShapesValid(t *testing.T) {
+	dir := t.TempDir()
+	files := baseValid()
+	files["works/bo/book-one/recordings/rec-one.json"] = `{"abridged":false,"id":"rec-one","isbn":["9780000000001",{"isbn":"9780000000002","region":"uk"}],"language":"en","license":"CC0-1.0","narrators":["narrator-one"],"publisher":"Harper Voyager","publishers":[{"publisher":"Hodder & Stoughton","region":"uk"}],"sources":[{"type":"user"}],"work":"book-one"}`
+	writeEntities(t, dir, files)
+	res := Load(dir)
+	if !res.OK() {
+		t.Fatalf("regional release shapes should validate, got: %v", res.Problems)
+	}
+	rec := res.Catalog.Works[0].Recordings[0]
+	if len(rec.ISBN) != 2 || rec.ISBN[0].Region != "" || rec.ISBN[1].Region != "uk" ||
+		rec.ISBN[0].ISBN != "9780000000001" || rec.ISBN[1].ISBN != "9780000000002" {
+		t.Errorf("isbn entries did not load: %+v", rec.ISBN)
+	}
+	if len(rec.Publishers) != 1 || rec.Publishers[0].Region != "uk" ||
+		rec.Publishers[0].Publisher != "Hodder & Stoughton" {
+		t.Errorf("publishers did not load: %+v", rec.Publishers)
+	}
+	if rec.Publisher != "Harper Voyager" {
+		t.Errorf("publisher of record = %q", rec.Publisher)
+	}
+}
+
 func TestLoadRuleViolations(t *testing.T) {
 	cases := []struct {
 		name   string
@@ -423,6 +451,62 @@ func TestLoadRuleViolations(t *testing.T) {
 				f["works/bo/book-one/recordings/rec-two.json"] = `{"abridged":false,"id":"rec-two","isbn":["9780000000001"],"language":"en","license":"CC0-1.0","narrators":["narrator-one"],"sources":[{"type":"user"}],"work":"book-one"}`
 			},
 			want: "duplicate ISBN 9780000000001",
+		},
+		{
+			// The uniqueness rule keys on the VALUE, so the two spellings of one
+			// identifier collide exactly as two bare strings would. Without this
+			// a region-scoped entry would be a way to record an ISBN twice.
+			name: "duplicate ISBN across the two spellings",
+			mutate: func(f map[string]string) {
+				f["works/bo/book-one/recordings/rec-one.json"] = `{"abridged":false,"id":"rec-one","isbn":["9780000000001"],"language":"en","license":"CC0-1.0","narrators":["narrator-one"],"sources":[{"type":"user"}],"work":"book-one"}`
+				f["works/bo/book-one/recordings/rec-two.json"] = `{"abridged":false,"id":"rec-two","isbn":[{"isbn":"9780000000001","region":"uk"}],"language":"en","license":"CC0-1.0","narrators":["narrator-one"],"sources":[{"type":"user"}],"work":"book-one"}`
+			},
+			want: "duplicate ISBN 9780000000001",
+		},
+		{
+			// An ISBN object must state its region: an unstated region already
+			// has a spelling (the bare string), and two spellings for one state
+			// would make canonical form ambiguous.
+			name: "region-scoped ISBN object without a region",
+			mutate: func(f map[string]string) {
+				const rel = "works/bo/book-one/recordings/rec-one.json"
+				f[rel] = strings.Replace(f[rel], `"id":"rec-one"`, `"id":"rec-one","isbn":[{"isbn":"9780000000001"}]`, 1)
+			},
+			want: "missing property 'region'",
+		},
+		{
+			name: "two publishers claim one region",
+			mutate: func(f map[string]string) {
+				f["works/bo/book-one/recordings/rec-one.json"] = withPublishers(`[{"publisher":"Hodder & Stoughton","region":"uk"},{"publisher":"Gollancz","region":"uk"}]`)
+			},
+			want: `duplicate publishers region "uk"`,
+		},
+		{
+			name: "regional publisher restates the publisher of record",
+			mutate: func(f map[string]string) {
+				f["works/bo/book-one/recordings/rec-one.json"] = withPublishers(`[{"publisher":"Harper Voyager","region":"uk"}]`)
+			},
+			want: "restates the publisher of record",
+		},
+		{
+			// publishers[] without a publisher of record is the shape that
+			// walks into checkRegionalPublishers later: the next enrichment run
+			// fills the absent field, possibly with a name already in the list.
+			// dependentRequired catches it before the write instead.
+			name: "publishers without a publisher of record",
+			mutate: func(f map[string]string) {
+				const rel = "works/bo/book-one/recordings/rec-one.json"
+				f[rel] = strings.Replace(f[rel], `"narrators":["narrator-one"]`,
+					`"narrators":["narrator-one"],"publishers":[{"publisher":"Hodder & Stoughton","region":"uk"}]`, 1)
+			},
+			want: "properties 'publisher' required, if 'publishers' exists",
+		},
+		{
+			name: "publishers region outside the shared vocabulary",
+			mutate: func(f map[string]string) {
+				f["works/bo/book-one/recordings/rec-one.json"] = withPublishers(`[{"publisher":"Hodder & Stoughton","region":"nz"}]`)
+			},
+			want: "/publishers/0/region: value must be one of",
 		},
 		{
 			// The Class C defect: a record minted under an older slug rule sits
@@ -696,6 +780,13 @@ func TestLoadRuleViolations(t *testing.T) {
 
 func withChapters(chaptersJSON string) string {
 	return `{"abridged":false,"chapters":` + chaptersJSON + `,"id":"rec-one","language":"en","license":"CC0-1.0","narrators":["narrator-one"],"sources":[{"type":"user"}],"work":"book-one"}`
+}
+
+// withPublishers is withChapters' sibling for the regional-publisher rules: the
+// base recording plus a publisher of record and the publishers[] under test, so
+// a case states only the list it is about.
+func withPublishers(publishersJSON string) string {
+	return `{"abridged":false,"id":"rec-one","language":"en","license":"CC0-1.0","narrators":["narrator-one"],"publisher":"Harper Voyager","publishers":` + publishersJSON + `,"sources":[{"type":"user"}],"work":"book-one"}`
 }
 
 func joinProblems(ps []Problem) string {
