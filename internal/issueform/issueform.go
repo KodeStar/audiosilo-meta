@@ -408,16 +408,20 @@ func (c *composer) recLocation(ref recRef) string {
 // records, so the bot cannot apply it mechanically and a maintainer does. That
 // is the intake-side expression of the same rule the bulk importer applies
 // automatically for a whole library export.
-func (c *composer) dedupIdentifiers(asins []outASIN, isbns []string, asinHint string) bool {
+func (c *composer) dedupIdentifiers(asins []outASIN, isbns []model.ISBNRef, asinHint string) bool {
 	for _, a := range asins {
 		if ref, ok := c.asinRec[a.ASIN]; ok {
 			c.failDuplicate(ref, "ASIN %s already exists (duplicate of %s)%s", a.ASIN, c.recLocation(ref), asinHint)
 			return true
 		}
 	}
+	// Keyed on the ISBN VALUE, so a submission that scopes its ISBN to a region
+	// still collides with a recorded bare one: they are one identifier in two
+	// spellings, and the index (loadExisting) reads the recorded side the same
+	// way.
 	for _, isbn := range isbns {
-		if ref, ok := c.isbnRec[isbnKey(isbn)]; ok {
-			c.failDuplicate(ref, "ISBN %s already exists (duplicate of %s)", isbn, c.recLocation(ref))
+		if ref, ok := c.isbnRec[isbnKey(isbn.ISBN)]; ok {
+			c.failDuplicate(ref, "ISBN %s already exists (duplicate of %s)", isbn.ISBN, c.recLocation(ref))
 			return true
 		}
 	}
@@ -447,6 +451,22 @@ func (c *composer) failDuplicate(ref recRef, format string, args ...any) {
 		return
 	}
 	c.fail(StatusDuplicate, format, args...)
+}
+
+// failNoop is the verdict for a submission that states exactly what the record
+// it addresses ALREADY says. It is a plain duplicate, with no tier lookup, and
+// that is the whole point of its existing separately from failDuplicate.
+//
+// failDuplicate's tier branch answers "you are the first person to attest a
+// record only the mirror has stated, so your data should REPLACE what is there,
+// and the bot only composes new records" - true and useful when the collision is
+// with a DIFFERENT record. Asked of the record the submitter is correcting, it
+// is false twice over: nothing needs replacing (the fact is identical), and the
+// correction path can rewrite a record, which is exactly what it does. Since the
+// bulk-mirror seed is the dominant population, routing every such no-op to a
+// maintainer with an untrue explanation would be the common case, not the edge.
+func (c *composer) failNoop(format string, args ...any) {
+	c.fail(StatusDuplicate, format+" - nothing to change", args...)
 }
 
 // failDuplicateWork is failDuplicate for the WORK-slug collision on the add-work

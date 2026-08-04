@@ -22,11 +22,11 @@ func TestFieldLabelsExistInTemplates(t *testing.T) {
 			fWorkTitle, fWorkSubtitle, fWorkAuthors, fWorkLanguage, fWorkFirstPublished,
 			fWorkGenres, fWorkSeriesName, fWorkSeriesPosition, fWorkISBN, fWorkWikidata, fWorkOpenLibrary,
 			fRecNarrators, fRecAbridged, fRecRuntime, fRecRelease, fRecPublisher,
-			fRecASINs, fRecISBNs, fRecCoverURL, fSources, fCC0,
+			fRecPublishers, fRecASINs, fRecISBNs, fRecCoverURL, fSources, fCC0,
 		}},
 		{"add-recording.yml", []string{
 			fWorkRef, fRecNarrators, fRecAbridged, fRecRuntime, fRecRelease, fRecPublisher,
-			fRecASINs, fRecISBNs, fRecCoverURL, fSources, fCC0,
+			fRecPublishers, fRecASINs, fRecISBNs, fRecCoverURL, fSources, fCC0,
 		}},
 		{"correct-data.yml", []string{
 			fCorrectRecord, fCorrectField, fCorrectCorrected, fCorrectEvidence, fCC0,

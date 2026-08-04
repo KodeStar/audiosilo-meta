@@ -130,6 +130,37 @@ maintainer still reviews before anything merges (see
 "report a problem" links that open a prefilled correction issue - the quickest
 way to fix a single fact without touching JSON.
 
+#### Regional releases
+
+One production released in several marketplaces is still **one** recording, so
+the recording forms let you say which region a fact belongs to:
+
+- **Audiobook ISBN(s)** takes one per line, either a bare ISBN or
+  `region: ISBN` (`GB: 9781473647633`). A bare ISBN is recorded with the region
+  *unstated*, which is a perfectly ordinary state - do not guess a region you do
+  not know. (The ASIN field is different: an ASIN only exists inside a
+  marketplace, so a bare one is assumed to be `us`.)
+- **Regional publisher(s)** takes `region: Publisher Name` lines for the OTHER
+  regions' imprints of the same recording. The **Publisher** field stays the
+  publisher of record; the bot rejects a submission that repeats it in the
+  regional list, names one region twice, or fills the regional list while
+  Publisher is empty (the schema needs a publisher of record first).
+
+The correction form can **add** either fact to a recording that already exists.
+Set Field to `isbn` or `publishers` (the form label, "Regional publisher(s)",
+works too) and put one value in Corrected value:
+
+| Field | Corrected value | What happens |
+|---|---|---|
+| `isbn` | `GB: 9781473647633` | added to the recording's ISBNs |
+| `isbn` | `GB: <an ISBN already recorded with no region>` | that entry is scoped to the region - a bare entry claims no region, so this only adds information |
+| `publishers` | `GB: Hodder & Stoughton` | added to the regional imprints, kept sorted by region |
+
+These two corrections only ever ADD. If the record already states a *different*
+region for that ISBN, or a *different* imprint for that region, the bot will not
+choose between two sources - it hands the issue to a maintainer and changes
+nothing. Stating exactly what is already recorded is reported as a duplicate.
+
 ### (b) Direct pull requests
 
 If you are comfortable with JSON and Git, edit the files directly. Walk-through
