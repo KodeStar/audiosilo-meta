@@ -337,26 +337,7 @@ func datesConflict(recorded, incoming string) bool {
 // collision); one recorded on ANOTHER recording is refused with a warning by
 // claimISBNs, since checkUniqueness requires ISBNs to be globally unique.
 func (p *planner) enrichISBNs(raw map[string]any, isbns []string, warn func(string, ...any)) bool {
-	if len(isbns) == 0 {
-		return false
-	}
-	existing, _ := raw["isbn"].([]any)
-	have := make(map[string]bool, len(existing))
-	for _, v := range existing {
-		// Both spellings count as present: a region-scoped entry states the
-		// same identifier as a bare one, so re-enriching a record that carries
-		// one must not append its ISBN back as a duplicate string.
-		if s := rawISBNValue(v); s != "" {
-			have[strings.ToUpper(s)] = true
-		}
-	}
-	var candidates []string
-	for _, isbn := range isbns {
-		if !have[strings.ToUpper(isbn)] {
-			candidates = append(candidates, isbn)
-		}
-	}
-	fresh := p.claimISBNs(candidates, warn)
+	fresh := p.claimISBNsFor(raw, isbns, warn)
 	if len(fresh) == 0 {
 		return false
 	}

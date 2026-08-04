@@ -6,6 +6,9 @@
   "type": "object",
   "additionalProperties": false,
   "required": ["id", "work", "narrators", "language", "license", "sources"],
+  "dependentRequired": {
+    "publishers": ["publisher"]
+  },
   "properties": {
     "id": {
       "$ref": "common.schema.json#/$defs/slug"
@@ -42,7 +45,7 @@
       "minLength": 1
     },
     "publishers": {
-      "description": "OTHER regions' imprints of this same production, one entry per region. It never restates the top-level publisher (that fact already has a home) and never repeats a region. Emitted only when a source STATED a regional publisher - absence means nothing is known about that marketplace, not that the publisher of record covers it.",
+      "description": "OTHER regions' imprints of this same production, one entry per region. It never restates the top-level publisher (that fact already has a home) and never repeats a region. Emitted only when a source STATED a regional publisher - absence means nothing is known about that marketplace, not that the publisher of record covers it. It REQUIRES publisher (see dependentRequired): \"the other regions\" is meaningless without the one it is other than, and a record carrying publishers[] with no publisher is a trap - the next enrichment run fills the absent field from a row, which can be a name already in this list, minting the restatement pkg/check refuses. The dependency turns that into a schema error at compose time rather than a validation failure after the write.",
       "type": "array",
       "minItems": 1,
       "items": {

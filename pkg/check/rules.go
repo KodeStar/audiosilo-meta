@@ -246,7 +246,16 @@ func checkUniqueness(cat *model.Catalog, recs []recordWithPath, idx *pathIndex, 
 // one marketplace), and a publishers[] entry naming the publisher of record is
 // the same fact written twice - the second copy is what goes stale when the
 // first is corrected. Both are cheap to state and impossible to express in the
-// schema, which sees the entries but not the field beside them.
+// schema, which sees the entries but not the field beside them. (The other half
+// of the pairing IS structural: recording.schema.json's dependentRequired makes
+// publishers[] require publisher, so "the other regions" always has the one it
+// is other than.)
+//
+// The restatement comparison is deliberately an EXACT string match. No publisher
+// string anywhere in this repo is trimmed, case-folded or otherwise normalized -
+// what a source stated is what is stored - so a rule that matched more loosely
+// would be stricter than the field it guards and would refuse two spellings the
+// data model considers different values.
 func checkRegionalPublishers(recs []recordWithPath, add addFunc) {
 	for _, pr := range recs {
 		if len(pr.rec.Publishers) == 0 {

@@ -489,6 +489,19 @@ func TestLoadRuleViolations(t *testing.T) {
 			want: "restates the publisher of record",
 		},
 		{
+			// publishers[] without a publisher of record is the shape that
+			// walks into checkRegionalPublishers later: the next enrichment run
+			// fills the absent field, possibly with a name already in the list.
+			// dependentRequired catches it before the write instead.
+			name: "publishers without a publisher of record",
+			mutate: func(f map[string]string) {
+				const rel = "works/bo/book-one/recordings/rec-one.json"
+				f[rel] = strings.Replace(f[rel], `"narrators":["narrator-one"]`,
+					`"narrators":["narrator-one"],"publishers":[{"publisher":"Hodder & Stoughton","region":"uk"}]`, 1)
+			},
+			want: "properties 'publisher' required, if 'publishers' exists",
+		},
+		{
 			name: "publishers region outside the shared vocabulary",
 			mutate: func(f map[string]string) {
 				f["works/bo/book-one/recordings/rec-one.json"] = withPublishers(`[{"publisher":"Hodder & Stoughton","region":"nz"}]`)

@@ -86,12 +86,33 @@ func TestRecordingISBNListMixesSpellings(t *testing.T) {
 	}
 }
 
-// TestISBNRefRejectsANonISBNShape covers the decode error path. The schema has
-// already rejected anything that reaches here, so this is a belt-and-braces
-// case: a malformed value must be an error, never a silently empty ISBN.
-func TestISBNRefRejectsANonISBNShape(t *testing.T) {
-	var got ISBNRef
-	if err := json.Unmarshal([]byte(`12345`), &got); err == nil {
-		t.Fatalf("a bare number decoded as an ISBN: %+v", got)
+// TestISBNRefRejectsAnEmptyOrMalformedEntry covers the decode error paths. The
+// schema rejects all of these before pkg/check ever decodes them, but pkg/model
+// is a public dependency and a consumer that decodes without validating must
+// not be handed an identifier that silently is not there.
+//
+// The three quiet ones are the point: `null` is a documented no-op for
+// json.Unmarshal (it leaves the target untouched and returns nil), and `{}` and
+// `""` decode just as cleanly, so without the emptiness check every one of them
+// would yield a zero ISBNRef and a nil error.
+func TestISBNRefRejectsAnEmptyOrMalformedEntry(t *testing.T) {
+	for _, in := range []string{`12345`, `null`, `{}`, `""`, `{"region":"uk"}`} {
+		t.Run(in, func(t *testing.T) {
+			var got ISBNRef
+			if err := json.Unmarshal([]byte(in), &got); err == nil {
+				t.Fatalf("%s decoded as an ISBN: %+v", in, got)
+			}
+		})
+	}
+}
+
+// TestRecordingRejectsAnEmptyISBNEntry proves the error propagates out of the
+// enclosing record rather than being swallowed one level up.
+func TestRecordingRejectsAnEmptyISBNEntry(t *testing.T) {
+	const in = `{"id":"rec","work":"w","narrators":["n"],"language":"en",` +
+		`"isbn":["9780062898968",null],"license":"CC0-1.0","sources":[{"type":"user"}]}`
+	var rec Recording
+	if err := json.Unmarshal([]byte(in), &rec); err == nil {
+		t.Fatalf("a null isbn entry decoded silently: %+v", rec.ISBN)
 	}
 }

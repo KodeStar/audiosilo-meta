@@ -292,6 +292,40 @@ func TestAddWorkDuplicateASIN(t *testing.T) {
 	}
 }
 
+// TestAddWorkDuplicateISBNIsCaseInsensitive pins the fold on BOTH sides of the
+// ISBN dedup index. An ISBN-10's check digit is X or x in the schema, and
+// NormalizeISBN - which the recorded value and the typed field both come
+// through - strips separators but leaves case alone. Keyed verbatim, a recorded
+// 012345678X and a submitted 012345678x are two keys for one identifier: the
+// submission walks past the duplicate gate, is written, and metacheck's own
+// case-insensitive rule then rejects the tree, so the submitter gets a raw
+// uniqueness violation instead of the duplicate verdict this gate exists to
+// give them.
+func TestAddWorkDuplicateISBNIsCaseInsensitive(t *testing.T) {
+	files := seedFiles()
+	const recAddress = "works/ex/existing-work/recordings/john-smith-2020.json"
+	files[recAddress] = strings.Replace(files[recAddress],
+		`"id": "john-smith-2020",`, `"id": "john-smith-2020",`+"\n"+`  "isbn": ["012345678X"],`, 1)
+	dir := t.TempDir()
+	testpack.Seed(t, dir, files)
+	if res := check.Load(dir); !res.OK() {
+		t.Fatalf("seed tree does not validate: %v", res.Problems)
+	}
+
+	// The same identifier, spelled with the other check digit.
+	body := strings.Replace(
+		addWorkBody("Whatever Title", "Some Author", "en", "Some Narrator", "", "web", true),
+		field(fRecISBNs, ""), field(fRecISBNs, "012345678x"), 1)
+	res := Process(Options{DataDir: dir, Template: "add-work", Body: body})
+	if res.Status != StatusDuplicate {
+		t.Fatalf("status = %q, want duplicate; messages = %v", res.Status, res.Messages)
+	}
+	want := worksPack + ": entry existing-work: recording john-smith-2020"
+	if !anyContains(res.Messages, want) {
+		t.Errorf("messages must locate the duplicate as %q: %v", want, res.Messages)
+	}
+}
+
 func TestAddWorkDuplicateSlug(t *testing.T) {
 	dir := seedTree(t)
 	body := addWorkBody("Existing Work", "Some Author", "en", "Some Narrator", "", "web", true)

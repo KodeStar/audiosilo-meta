@@ -114,7 +114,10 @@ type composer struct {
 	works   map[string]*model.Work
 	series  map[string]*model.Series
 	asinRec map[string]recRef // ASIN -> the recording carrying it
-	isbnRec map[string]recRef // ISBN -> the recording carrying it
+	// isbnRec maps an ISBN to the recording carrying it, keyed through
+	// isbnKey: an ISBN-10's check digit is X or x in the schema, and the two
+	// are one identifier.
+	isbnRec map[string]recRef
 
 	// submissionASINs is the set of normalized ASINs THIS submission stated in
 	// its own ASIN field, filled by parseASINs. provenance.go checks a libex
@@ -266,7 +269,7 @@ func (c *composer) loadExisting() {
 				// Indexed by the ISBN value: a submitted identifier is a
 				// duplicate of a recorded one whether or not the record
 				// scopes it to a region.
-				c.isbnRec[isbn.ISBN] = ref
+				c.isbnRec[isbnKey(isbn.ISBN)] = ref
 			}
 		}
 	}
@@ -413,13 +416,25 @@ func (c *composer) dedupIdentifiers(asins []outASIN, isbns []string, asinHint st
 		}
 	}
 	for _, isbn := range isbns {
-		if ref, ok := c.isbnRec[isbn]; ok {
+		if ref, ok := c.isbnRec[isbnKey(isbn)]; ok {
 			c.failDuplicate(ref, "ISBN %s already exists (duplicate of %s)", isbn, c.recLocation(ref))
 			return true
 		}
 	}
 	return false
 }
+
+// isbnKey folds an ISBN to the form the dedup index compares on. NormalizeISBN
+// (which both the index's source records and a typed form field have already
+// been through) strips the separators an ISBN is printed with but leaves case
+// alone, and the schema accepts an ISBN-10 check digit as either X or x - so
+// without this a recorded 012345678X and a submitted 012345678x are two keys
+// for one identifier. The submission then walks past every duplicate gate and
+// is written, and metacheck's own case-insensitive rule (pkg/check normISBN)
+// rejects the tree afterwards: the submitter gets a raw uniqueness violation
+// instead of the duplicate-or-takeover verdict the gate exists to give them.
+// Same fold, same reason, as the importer's claimISBNs.
+func isbnKey(isbn string) string { return strings.ToUpper(isbn) }
 
 // failDuplicate records the terminal verdict for a submission that collides with
 // the catalogued recording at ref, choosing the status by that record's trust

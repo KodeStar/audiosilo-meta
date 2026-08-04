@@ -22,7 +22,14 @@ Four kinds of thing live in `data/`:
   `authors` when the source credited them there.
 - **Recording** - a *specific narration* of a work: its narrators, whether it is
   abridged, its runtime, release date, publisher, region-scoped ASINs, ISBNs,
-  cover URL, and chapters. One work can have many recordings.
+  cover URL, and chapters. One work can have many recordings. A production
+  released in several marketplaces is still **one** recording - the region rides
+  on the identifiers, not on a second record. An entry in `isbn[]` is normally a
+  plain string, and becomes `{"isbn": "...", "region": "uk"}` when you know which
+  marketplace it identifies; `publishers[]` holds the *other* regions' imprints
+  as `{"region": ..., "publisher": ...}` pairs, with the top-level `publisher`
+  staying the publisher of record (so it is never repeated in the list, and a
+  record with `publishers[]` must have a `publisher`).
 - **Person** - a human, shared across roles. The same `people/` entity is
   referenced by a work as an **author** and by a recording as a **narrator**. A
   person can be both. An optional `kind` (`person` / `group` / `publisher`)
@@ -138,7 +145,11 @@ for adding a new work with its first recording and a new author:
 3. **Add the recording.** Inside that work's entry, add a `"recordings"` map
    keyed by recording slug, with the narrators (referencing person slugs),
    abridged flag, runtime, release date, publisher, ASINs (`{region, asin}`),
-   ISBNs, cover URL, and chapters.
+   ISBNs, cover URL, and chapters. If you are recording a *regional* release of
+   a production that is already here, do not add a second recording: add its
+   ASIN to `asin[]`, write its ISBN as `{"isbn": "...", "region": "..."}`, and
+   add its imprint to `publishers[]` (`{"region": ..., "publisher": ...}`) -
+   never repeating the top-level `publisher` or naming a region twice.
 4. **Add the series** (if new), or add this work to an existing series entry's
    `works[]` list with a string position.
 5. **Format and validate before pushing:**

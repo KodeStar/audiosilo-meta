@@ -8,7 +8,10 @@
 // exported Catalog), so its exported surface is a contract.
 package model
 
-import "encoding/json"
+import (
+	"encoding/json"
+	"fmt"
+)
 
 // Kind identifies an entity type.
 type Kind string
@@ -153,6 +156,15 @@ type isbnObject ISBNRef
 // UnmarshalJSON accepts either spelling: a JSON string is an ISBN with no
 // region, an object is the region-scoped form. Anything else is an error, which
 // the schema has already rejected before a decode is ever reached.
+//
+// An entry that decodes cleanly to an EMPTY ISBN is an error too, and that one
+// is not merely belt and braces: `null` is a documented no-op for
+// json.Unmarshal (it leaves the value untouched and returns nil), and `{}` and
+// `""` are just as quiet, so all three would otherwise yield a zero ISBNRef
+// with no error at all. Inside this repo the schema rejects them first, but
+// pkg/model is a public dependency (audiosilo-sidecars), and a consumer
+// decoding a record without validating it must not be handed an identifier that
+// silently is not there.
 func (r *ISBNRef) UnmarshalJSON(b []byte) error {
 	if len(b) > 0 && b[0] == '"' {
 		var s string
@@ -160,13 +172,16 @@ func (r *ISBNRef) UnmarshalJSON(b []byte) error {
 			return err
 		}
 		r.Region, r.ISBN = "", s
-		return nil
+	} else {
+		var o isbnObject
+		if err := json.Unmarshal(b, &o); err != nil {
+			return err
+		}
+		*r = ISBNRef(o)
 	}
-	var o isbnObject
-	if err := json.Unmarshal(b, &o); err != nil {
-		return err
+	if r.ISBN == "" {
+		return fmt.Errorf("model: isbn entry %s states no isbn", b)
 	}
-	*r = ISBNRef(o)
 	return nil
 }
 

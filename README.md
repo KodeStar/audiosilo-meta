@@ -59,7 +59,10 @@ project exists.
 - **Work** - the abstract book (title, authors, language, series membership).
 - **Recording** - a specific narration of a work (narrators, abridged flag,
   runtime, release date, publisher, region-scoped ASINs, ISBNs, cover URL,
-  chapters). One work, many recordings.
+  chapters). One work, many recordings. A production released in several
+  marketplaces stays *one* recording: an ISBN may be written as
+  `{"isbn": ..., "region": ...}` when the region is known, and `publishers[]`
+  records the other regions' imprints beside the publisher of record.
 - **Person** - a human shared across roles (author on works, narrator on
   recordings; can be both).
 - **Series** - a named series with an ordered list of member works (string
