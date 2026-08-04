@@ -474,6 +474,12 @@ func insertRecording(st *stmts, workID string, r *model.Recording) error {
 	// The ISBN VALUE is what the artifact indexes and what /lookup?isbn= reads;
 	// a region-scoped entry flattens to the same row as a bare one, so the
 	// artifact's shape is unchanged and SchemaVersion does not move.
+	//
+	// The CONSEQUENCE is deliberate and worth stating: unlike an ASIN, whose
+	// region the artifact carries, a stated ISBN region is DROPPED here. Neither
+	// /lookup?isbn= nor /abs/search can say which marketplace an ISBN belongs
+	// to - they answer "which recording", which the value alone settles. The day
+	// a reader needs the region, adding the column is a schema_version change.
 	for _, isbn := range r.ISBN {
 		if _, err := st.recISBN.Exec(workID, r.ID, isbn.ISBN); err != nil {
 			return err

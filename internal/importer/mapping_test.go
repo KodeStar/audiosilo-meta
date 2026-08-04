@@ -99,6 +99,19 @@ func schemaDefPattern(t *testing.T, def string) string {
 	return pattern
 }
 
+// TestMarketplacesMatchTheSchemaRegionEnum is the drift guard between the
+// marketplace table and the one region vocabulary
+// (common.schema.json #/$defs/region). It compares in BOTH directions: a region
+// added to the enum with no table entry is a marketplace mapRegion silently
+// refuses (the row's ASIN is dropped with a warning), and a table entry with no
+// enum value would write a region the very next metacheck rejects.
+func TestMarketplacesMatchTheSchemaRegionEnum(t *testing.T) {
+	want := schemaDefEnum(t, "region")
+	if !reflect.DeepEqual(marketplaces, want) {
+		t.Errorf("marketplaces = %v, schema $defs/region = %v", marketplaces, want)
+	}
+}
+
 func TestMapRegion(t *testing.T) {
 	cases := []struct {
 		in     string

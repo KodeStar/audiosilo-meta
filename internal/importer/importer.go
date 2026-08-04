@@ -2073,24 +2073,6 @@ func appendSourceUnique(srcArr []any, src OutSource) []any {
 // appendISBNs appends isbns to an existing record's raw isbn[] array. The caller
 // has already checked that every value is globally unclaimed (claimISBNs) and not
 // already on this record, so this is a plain append.
-// rawISBNValue reads the ISBN value out of one raw isbn[] element, in either of
-// the two spellings the schema allows: a bare string (region unstated) or a
-// {"region":..,"isbn":..} object. An importer only ever WRITES the bare form -
-// no export states the marketplace an ISBN belongs to - but it must READ both,
-// because a maintainer or an issue-form correction can have scoped an ISBN to a
-// region on a record a later run then enriches. Without this the object form
-// reads as "", so the record's OWN ISBN looks absent and is offered to
-// claimISBNs - which refuses it against the global set (seeded from the same
-// record) and warns that it is "already recorded on another recording". The
-// duplicate never reaches disk, but the run reports a collision that does not
-// exist, on the one record it was reading.
-func rawISBNValue(v any) string {
-	if m, ok := v.(map[string]any); ok {
-		return coerceStr(m["isbn"])
-	}
-	return coerceStr(v)
-}
-
 func appendISBNs(raw map[string]any, isbns []string) {
 	if len(isbns) == 0 {
 		return
@@ -2100,6 +2082,17 @@ func appendISBNs(raw map[string]any, isbns []string) {
 		existing = append(existing, isbn)
 	}
 	raw["isbn"] = existing
+}
+
+// rawISBNValue reads the ISBN value out of one raw isbn[] element, in either of
+// the on-disk spellings (a bare string, or a {"region":..,"isbn":..} object).
+// The object form must never read as absent - see
+// TestEnrichSeesARegionScopedISBNAsPresent for what that costs.
+func rawISBNValue(v any) string {
+	if m, ok := v.(map[string]any); ok {
+		return coerceStr(m["isbn"])
+	}
+	return coerceStr(v)
 }
 
 // fillStr records val at key on an existing record when the row states one,

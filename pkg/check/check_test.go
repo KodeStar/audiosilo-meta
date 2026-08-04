@@ -469,28 +469,29 @@ func TestLoadRuleViolations(t *testing.T) {
 			// would make canonical form ambiguous.
 			name: "region-scoped ISBN object without a region",
 			mutate: func(f map[string]string) {
-				f["works/bo/book-one/recordings/rec-one.json"] = `{"abridged":false,"id":"rec-one","isbn":[{"isbn":"9780000000001"}],"language":"en","license":"CC0-1.0","narrators":["narrator-one"],"sources":[{"type":"user"}],"work":"book-one"}`
+				const rel = "works/bo/book-one/recordings/rec-one.json"
+				f[rel] = strings.Replace(f[rel], `"id":"rec-one"`, `"id":"rec-one","isbn":[{"isbn":"9780000000001"}]`, 1)
 			},
 			want: "missing property 'region'",
 		},
 		{
 			name: "two publishers claim one region",
 			mutate: func(f map[string]string) {
-				f["works/bo/book-one/recordings/rec-one.json"] = `{"abridged":false,"id":"rec-one","language":"en","license":"CC0-1.0","narrators":["narrator-one"],"publisher":"Harper Voyager","publishers":[{"publisher":"Hodder & Stoughton","region":"uk"},{"publisher":"Gollancz","region":"uk"}],"sources":[{"type":"user"}],"work":"book-one"}`
+				f["works/bo/book-one/recordings/rec-one.json"] = withPublishers(`[{"publisher":"Hodder & Stoughton","region":"uk"},{"publisher":"Gollancz","region":"uk"}]`)
 			},
 			want: `duplicate publishers region "uk"`,
 		},
 		{
 			name: "regional publisher restates the publisher of record",
 			mutate: func(f map[string]string) {
-				f["works/bo/book-one/recordings/rec-one.json"] = `{"abridged":false,"id":"rec-one","language":"en","license":"CC0-1.0","narrators":["narrator-one"],"publisher":"Harper Voyager","publishers":[{"publisher":"Harper Voyager","region":"uk"}],"sources":[{"type":"user"}],"work":"book-one"}`
+				f["works/bo/book-one/recordings/rec-one.json"] = withPublishers(`[{"publisher":"Harper Voyager","region":"uk"}]`)
 			},
 			want: "restates the publisher of record",
 		},
 		{
 			name: "publishers region outside the shared vocabulary",
 			mutate: func(f map[string]string) {
-				f["works/bo/book-one/recordings/rec-one.json"] = `{"abridged":false,"id":"rec-one","language":"en","license":"CC0-1.0","narrators":["narrator-one"],"publisher":"Harper Voyager","publishers":[{"publisher":"Hodder & Stoughton","region":"nz"}],"sources":[{"type":"user"}],"work":"book-one"}`
+				f["works/bo/book-one/recordings/rec-one.json"] = withPublishers(`[{"publisher":"Hodder & Stoughton","region":"nz"}]`)
 			},
 			want: "/publishers/0/region: value must be one of",
 		},
@@ -766,6 +767,13 @@ func TestLoadRuleViolations(t *testing.T) {
 
 func withChapters(chaptersJSON string) string {
 	return `{"abridged":false,"chapters":` + chaptersJSON + `,"id":"rec-one","language":"en","license":"CC0-1.0","narrators":["narrator-one"],"sources":[{"type":"user"}],"work":"book-one"}`
+}
+
+// withPublishers is withChapters' sibling for the regional-publisher rules: the
+// base recording plus a publisher of record and the publishers[] under test, so
+// a case states only the list it is about.
+func withPublishers(publishersJSON string) string {
+	return `{"abridged":false,"id":"rec-one","language":"en","license":"CC0-1.0","narrators":["narrator-one"],"publisher":"Harper Voyager","publishers":` + publishersJSON + `,"sources":[{"type":"user"}],"work":"book-one"}`
 }
 
 func joinProblems(ps []Problem) string {

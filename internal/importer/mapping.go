@@ -96,8 +96,11 @@ func mapLanguage(word string) (code string, ok bool) {
 	return "", false
 }
 
-// marketplaces is the set of Audible marketplace regions the recording schema
-// accepts (mirrors recording.schema.json asin.region enum).
+// marketplaces is the set of Audible marketplace regions the schema accepts: a
+// mirror of common.schema.json #/$defs/region, the ONE vocabulary every
+// region-scoped field reaches (a recording's asin[], a region-scoped isbn[]
+// entry, publishers[]). TestMarketplacesMatchTheSchemaRegionEnum keeps the two
+// in step in both directions.
 var marketplaces = map[string]bool{
 	"us": true, "uk": true, "ca": true, "au": true, "de": true, "fr": true,
 	"es": true, "it": true, "jp": true, "in": true, "br": true,

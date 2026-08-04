@@ -136,22 +136,19 @@ type ASIN struct {
 //
 // It has two on-disk spellings, and only two: a bare string (region unstated)
 // and {"region":..,"isbn":..} (region known). The custom (Un)MarshalJSON below
-// is what keeps them one type - every ISBN already in the tree is a bare string
-// and stays one byte for byte, so the region-scoped form is purely additive and
-// needs no data migration.
+// is what keeps them one type. The bare string is not merely the legacy form,
+// it is the SCALE form - every importer and the issue-form composer write it,
+// and one canonical line beats the object's four against the pack size caps
+// once enrichment starts filling ISBNs in bulk.
 type ISBNRef struct {
 	Region string `json:"region,omitempty"`
 	ISBN   string `json:"isbn"`
 }
 
-// isbnObject is the object spelling of an ISBNRef, as its own type so encoding/
-// json does not recurse back into the methods below. ISBNRef converts to it
-// field for field (Go ignores struct tags in a conversion), so the two can
-// never drift.
-type isbnObject struct {
-	Region string `json:"region"`
-	ISBN   string `json:"isbn"`
-}
+// isbnObject is the object spelling of an ISBNRef: a defined type over the same
+// struct, so it inherits the fields and tags but not the methods below (which is
+// what stops encoding/json recursing into them).
+type isbnObject ISBNRef
 
 // UnmarshalJSON accepts either spelling: a JSON string is an ISBN with no
 // region, an object is the region-scoped form. Anything else is an error, which

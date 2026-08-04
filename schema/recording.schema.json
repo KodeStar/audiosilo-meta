@@ -78,7 +78,29 @@
       }
     },
     "isbn": {
-      "$ref": "common.schema.json#/$defs/recording_isbn_list"
+      "description": "This recording's ISBNs. An entry has exactly one of two forms, and they mix freely in one list: a bare STRING is an ISBN whose region is unstated, and the OBJECT {isbn, region} is used ONLY when the region IS known - one production released in several marketplaces carries different identifiers, and this is how the second one is recorded without minting a second recording. Both properties are required in the object form, so an unstated region has exactly one spelling and canonical form stays unambiguous. The bare string is not merely the shape that predates regions: it is the SCALE form. Every writer emits it (no import source states the marketplace an ISBN belongs to, and the correction form cannot touch an array at all), and across 142k recordings one canonical line beats the object's four against the pack size caps - which is what enrichment filling ISBNs in bulk will spend. The region-scoped form earns its four lines by stating a fact nothing else can.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "common.schema.json#/$defs/isbn"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["region", "isbn"],
+            "properties": {
+              "region": {
+                "$ref": "common.schema.json#/$defs/region"
+              },
+              "isbn": {
+                "$ref": "common.schema.json#/$defs/isbn"
+              }
+            }
+          }
+        ]
+      }
     },
     "cover_url": {
       "type": "string",
