@@ -377,6 +377,44 @@ func TestEnrichNeverReplacesChapters(t *testing.T) {
 	}
 }
 
+// TestEnrichSeesARegionScopedISBNAsPresent is the dedup rule for the ISBN
+// entry's second spelling. An importer only ever WRITES a bare string, but a
+// maintainer or an issue-form correction can have scoped a recorded ISBN to a
+// region - and enrichISBNs reads the RAW entry, where that is an object rather
+// than a string. Without rawISBNValue the object reads as "" and the row's
+// identical ISBN looks absent, so the record's own identifier is offered to
+// claimISBNs and comes back refused as "already recorded on another recording" -
+// a collision reported against the very record being read. (The global claim set
+// is what keeps the duplicate off disk; the false warning is the visible defect,
+// and it is what this test pins.)
+func TestEnrichSeesARegionScopedISBNAsPresent(t *testing.T) {
+	const scopedRec = `{"asin":[{"asin":"B0LIBEX001","region":"uk"}],"id":"bea-reader","isbn":[{"isbn":"9781234567897","region":"uk"}],"language":"en","license":"CC0-1.0","narrators":["bea-reader"],"sources":[{"type":"user"}],"work":"the-lost-cartographer"}`
+	dataDir := seedEnrichTree(t, map[string]string{recRel: scopedRec})
+
+	sum := runEnrich(t, dataDir, fullRow, false)
+	if hasWarning(sum.Warnings, "is already recorded on another recording") {
+		t.Errorf("the record's OWN ISBN must not read as another recording's: %v", sum.Warnings)
+	}
+
+	var rec struct {
+		ISBN []json.RawMessage `json:"isbn"`
+	}
+	readEntity(t, dataDir, recRel, &rec)
+	if len(rec.ISBN) != 1 {
+		t.Fatalf("isbn = %s, want the single region-scoped entry untouched", rec.ISBN)
+	}
+	var compact bytes.Buffer
+	if err := json.Compact(&compact, rec.ISBN[0]); err != nil {
+		t.Fatalf("compact isbn[0]: %v", err)
+	}
+	if got := compact.String(); got != `{"isbn":"9781234567897","region":"uk"}` {
+		t.Errorf("isbn[0] = %s, want the recorded object form unchanged", got)
+	}
+	if res := check.Load(dataDir); !res.OK() {
+		t.Fatalf("enriched tree failed validation:\n%v", res.Problems)
+	}
+}
+
 func TestEnrichISBNGlobalDuplicateGuard(t *testing.T) {
 	// The row's ISBN is already recorded on ANOTHER recording, so adding it here
 	// would break the global ISBN uniqueness rule.

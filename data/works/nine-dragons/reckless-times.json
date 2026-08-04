@@ -7914,7 +7914,10 @@
           "cover_url": "https://m.media-amazon.com/images/I/516csJj-cLL.jpg",
           "id": "rachel-dulude-2018",
           "isbn": [
-            "9781473647633"
+            {
+              "isbn": "9781473647633",
+              "region": "uk"
+            }
           ],
           "language": "en",
           "license": "CC0-1.0",
@@ -7922,6 +7925,12 @@
             "rachel-dulude"
           ],
           "publisher": "Harper Voyager",
+          "publishers": [
+            {
+              "publisher": "Hodder & Stoughton",
+              "region": "uk"
+            }
+          ],
           "release_date": "2018-10-09",
           "runtime_min": 696,
           "sources": [

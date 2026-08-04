@@ -343,7 +343,10 @@ func (p *planner) enrichISBNs(raw map[string]any, isbns []string, warn func(stri
 	existing, _ := raw["isbn"].([]any)
 	have := make(map[string]bool, len(existing))
 	for _, v := range existing {
-		if s := coerceStr(v); s != "" {
+		// Both spellings count as present: a region-scoped entry states the
+		// same identifier as a bare one, so re-enriching a record that carries
+		// one must not append its ISBN back as a duplicate string.
+		if s := rawISBNValue(v); s != "" {
 			have[strings.ToUpper(s)] = true
 		}
 	}

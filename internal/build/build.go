@@ -471,11 +471,17 @@ func insertRecording(st *stmts, workID string, r *model.Recording) error {
 			return err
 		}
 	}
+	// The ISBN VALUE is what the artifact indexes and what /lookup?isbn= reads;
+	// a region-scoped entry flattens to the same row as a bare one, so the
+	// artifact's shape is unchanged and SchemaVersion does not move.
 	for _, isbn := range r.ISBN {
-		if _, err := st.recISBN.Exec(workID, r.ID, isbn); err != nil {
+		if _, err := st.recISBN.Exec(workID, r.ID, isbn.ISBN); err != nil {
 			return err
 		}
 	}
+	// r.Publishers is deliberately NOT built into the artifact yet: the data
+	// accrues ahead of its readers, exactly as work credits do. Adding a table
+	// for it is a later change, with the SchemaVersion bump that implies.
 	for i, ch := range r.Chapters {
 		if _, err := st.chapter.Exec(workID, r.ID, i, ch.Title, ch.StartMS, ch.LengthMS); err != nil {
 			return err

@@ -141,6 +141,25 @@ it, `pkg/check` and every writer now refuse it loudly.
   many recordings (Harry Potter: Stephen Fry AND Jim Dale, each with its own
   ASINs). It keeps its own `id`, `work` backref, `license` and `sources`, so its
   bytes are the same as when it was a file of its own.
+  **A production released in several marketplaces stays ONE recording**: the
+  region rides on the identifiers and the imprint, never on a second record.
+  An `isbn[]` entry is a bare STRING (region unstated - the long-standing shape,
+  and every existing entry in the tree) or the object `{"isbn","region"}`, used
+  ONLY when the region is known; both properties are required, so an unstated
+  region has exactly one spelling. Optional `publishers[]`
+  (`{"region","publisher"}`) holds the OTHER regions' imprints - the top-level
+  `publisher` stays THE publisher of record, so `publishers[]` may never restate
+  it and may never name one region twice (`checkRegionalPublishers`). ISBN
+  uniqueness keys on the VALUE, so the two spellings of one identifier collide
+  as they should. `metabuild` flattens both forms into the same
+  `recording_isbns` row (the artifact carries no region and its SchemaVersion is
+  unmoved); `publishers[]` is deliberately not in the artifact yet - the data
+  accrues ahead of its readers, as work credits do. The region vocabulary is one
+  shared def (`common.schema.json#/$defs/region`), reached by `asin[]`, the
+  region-scoped ISBN and `publishers[]` alike. NOTE the WORK's print ISBNs
+  (`xref.isbn`) are deliberately untouched: they stay a flat string list
+  (`$defs/isbn_list`), and only the recording uses
+  `$defs/recording_isbn_list`.
 - **person** - an entry in the people family, shared by author and narrator roles
   (a person can be both). Optional `kind` (`person`/`group`/`publisher`) marks
   the records that are not an individual - a full cast, a corporate credit of

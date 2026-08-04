@@ -263,7 +263,10 @@ func (c *composer) loadExisting() {
 				c.asinRec[a.ASIN] = ref
 			}
 			for _, isbn := range r.ISBN {
-				c.isbnRec[isbn] = ref
+				// Indexed by the ISBN value: a submitted identifier is a
+				// duplicate of a recorded one whether or not the record
+				// scopes it to a region.
+				c.isbnRec[isbn.ISBN] = ref
 			}
 		}
 	}

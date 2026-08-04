@@ -213,15 +213,50 @@
       "pattern": "^(\\d{9}[0-9Xx]|\\d{13})$"
     },
     "isbn_list": {
+      "description": "A flat list of ISBNs whose region is not modeled. This is the WORK's print-ISBN shape (xref.isbn); a recording uses recording_isbn_list, whose entries may state the region a production was released under.",
       "type": "array",
       "minItems": 1,
       "items": {
         "$ref": "common.schema.json#/$defs/isbn"
       }
     },
+    "isbn_entry": {
+      "description": "One ISBN on a recording, in exactly one of two forms. A bare STRING is an ISBN whose region is unstated - the long-standing shape, and still the right one whenever a source names no marketplace. The OBJECT form is used ONLY when the region IS known: one production is released in several regions under different identifiers, and {isbn, region} is how the second one is recorded without minting a second recording. Both properties are required in the object form, so an unstated region has exactly one spelling (the bare string) and canonical form stays unambiguous.",
+      "oneOf": [
+        {
+          "$ref": "common.schema.json#/$defs/isbn"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["region", "isbn"],
+          "properties": {
+            "region": {
+              "$ref": "common.schema.json#/$defs/region"
+            },
+            "isbn": {
+              "$ref": "common.schema.json#/$defs/isbn"
+            }
+          }
+        }
+      ]
+    },
+    "recording_isbn_list": {
+      "description": "A recording's ISBNs. Entries may be bare strings or region-scoped objects, mixed freely: they identify the SAME production in different marketplaces, so a regional release never forks a recording.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "common.schema.json#/$defs/isbn_entry"
+      }
+    },
     "asin": {
       "type": "string",
       "pattern": "^[A-Z0-9]{10}$"
+    },
+    "region": {
+      "description": "A marketplace region. One vocabulary shared by every region-scoped field (recording ASINs, region-scoped ISBNs, regional publishers) so the lists can never drift apart.",
+      "type": "string",
+      "enum": ["us", "uk", "ca", "au", "de", "fr", "es", "it", "jp", "in", "br"]
     },
     "date_year": {
       "type": "string",

@@ -8,6 +8,8 @@
 // exported Catalog), so its exported surface is a contract.
 package model
 
+import "encoding/json"
+
 // Kind identifies an entity type.
 type Kind string
 
@@ -128,6 +130,66 @@ type ASIN struct {
 	ASIN   string `json:"asin"`
 }
 
+// ISBNRef is one ISBN on a recording, optionally scoped to the marketplace
+// region it identifies the production in. Region is empty when the source did
+// not state one, which is the ordinary case.
+//
+// It has two on-disk spellings, and only two: a bare string (region unstated)
+// and {"region":..,"isbn":..} (region known). The custom (Un)MarshalJSON below
+// is what keeps them one type - every ISBN already in the tree is a bare string
+// and stays one byte for byte, so the region-scoped form is purely additive and
+// needs no data migration.
+type ISBNRef struct {
+	Region string `json:"region,omitempty"`
+	ISBN   string `json:"isbn"`
+}
+
+// isbnObject is the object spelling of an ISBNRef, as its own type so encoding/
+// json does not recurse back into the methods below. ISBNRef converts to it
+// field for field (Go ignores struct tags in a conversion), so the two can
+// never drift.
+type isbnObject struct {
+	Region string `json:"region"`
+	ISBN   string `json:"isbn"`
+}
+
+// UnmarshalJSON accepts either spelling: a JSON string is an ISBN with no
+// region, an object is the region-scoped form. Anything else is an error, which
+// the schema has already rejected before a decode is ever reached.
+func (r *ISBNRef) UnmarshalJSON(b []byte) error {
+	if len(b) > 0 && b[0] == '"' {
+		var s string
+		if err := json.Unmarshal(b, &s); err != nil {
+			return err
+		}
+		r.Region, r.ISBN = "", s
+		return nil
+	}
+	var o isbnObject
+	if err := json.Unmarshal(b, &o); err != nil {
+		return err
+	}
+	*r = ISBNRef(o)
+	return nil
+}
+
+// MarshalJSON emits the bare string whenever the region is unstated, so a value
+// that came off disk as a string goes back as one. One state, one spelling.
+func (r ISBNRef) MarshalJSON() ([]byte, error) {
+	if r.Region == "" {
+		return json.Marshal(r.ISBN)
+	}
+	return json.Marshal(isbnObject(r))
+}
+
+// RegionPublisher is one region's imprint of a production. The recording's own
+// Publisher field stays the publisher of record; this list holds the OTHER
+// regions, and never restates it - see pkg/check.
+type RegionPublisher struct {
+	Region    string `json:"region"`
+	Publisher string `json:"publisher"`
+}
+
 // Chapter is one chapter of a recording, on the recording's own timeline.
 type Chapter struct {
 	Title    string `json:"title"`
@@ -137,18 +199,21 @@ type Chapter struct {
 
 // Recording is a specific narration/production of a work.
 type Recording struct {
-	ID          string    `json:"id"`
-	Work        string    `json:"work"`
-	Narrators   []string  `json:"narrators"`
-	Abridged    bool      `json:"abridged"`
-	Language    string    `json:"language"`
-	RuntimeMin  int       `json:"runtime_min,omitempty"`
-	ReleaseDate string    `json:"release_date,omitempty"`
-	Publisher   string    `json:"publisher,omitempty"`
-	ASIN        []ASIN    `json:"asin,omitempty"`
-	ISBN        []string  `json:"isbn,omitempty"`
-	CoverURL    string    `json:"cover_url,omitempty"`
-	Chapters    []Chapter `json:"chapters,omitempty"`
+	ID          string   `json:"id"`
+	Work        string   `json:"work"`
+	Narrators   []string `json:"narrators"`
+	Abridged    bool     `json:"abridged"`
+	Language    string   `json:"language"`
+	RuntimeMin  int      `json:"runtime_min,omitempty"`
+	ReleaseDate string   `json:"release_date,omitempty"`
+	Publisher   string   `json:"publisher,omitempty"`
+	// Publishers holds the other regions' imprints of this same production;
+	// Publisher above stays the publisher of record.
+	Publishers []RegionPublisher `json:"publishers,omitempty"`
+	ASIN       []ASIN            `json:"asin,omitempty"`
+	ISBN       []ISBNRef         `json:"isbn,omitempty"`
+	CoverURL   string            `json:"cover_url,omitempty"`
+	Chapters   []Chapter         `json:"chapters,omitempty"`
 	// AddedAt is when the recording entered the database, in the same two
 	// accepted shapes as Work.AddedAt.
 	AddedAt string   `json:"added_at,omitempty"`

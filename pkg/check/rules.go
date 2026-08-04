@@ -185,10 +185,13 @@ func checkUniqueness(cat *model.Catalog, recs []recordWithPath, idx *pathIndex, 
 				asinSeen[key] = rel
 			}
 		}
+		// Keyed on the ISBN VALUE alone: a bare string and a region-scoped
+		// object naming the same digits are the same identifier in two
+		// spellings, and one identifier belongs to one production.
 		for _, isbn := range pr.rec.ISBN {
-			norm := normISBN(isbn)
+			norm := normISBN(isbn.ISBN)
 			if prev, ok := isbnSeen[norm]; ok {
-				add(rel, "duplicate ISBN %s also in %s", isbn, prev)
+				add(rel, "duplicate ISBN %s also in %s", isbn.ISBN, prev)
 			} else {
 				isbnSeen[norm] = rel
 			}
@@ -231,6 +234,34 @@ func checkUniqueness(cat *model.Catalog, recs []recordWithPath, idx *pathIndex, 
 			add(rel, "duplicate series xref.wikidata %s also in %s", s.Xref.Wikidata, prev)
 		} else {
 			wikiSeries[s.Xref.Wikidata] = rel
+		}
+	}
+}
+
+// checkRegionalPublishers enforces the two invariants publishers[] carries
+// beyond its schema: one entry per region, and never a restatement of the
+// recording's own publisher.
+//
+// A repeated region is a contradiction with no resolution (two imprints claiming
+// one marketplace), and a publishers[] entry naming the publisher of record is
+// the same fact written twice - the second copy is what goes stale when the
+// first is corrected. Both are cheap to state and impossible to express in the
+// schema, which sees the entries but not the field beside them.
+func checkRegionalPublishers(recs []recordWithPath, add addFunc) {
+	for _, pr := range recs {
+		if len(pr.rec.Publishers) == 0 {
+			continue
+		}
+		rel := pr.path
+		seen := make(map[string]bool, len(pr.rec.Publishers))
+		for _, p := range pr.rec.Publishers {
+			if seen[p.Region] {
+				add(rel, "duplicate publishers region %q; one region names one imprint", p.Region)
+			}
+			seen[p.Region] = true
+			if pr.rec.Publisher != "" && p.Publisher == pr.rec.Publisher {
+				add(rel, "publishers entry for region %q restates the publisher of record %q; publishers holds the OTHER regions", p.Region, p.Publisher)
+			}
 		}
 	}
 }

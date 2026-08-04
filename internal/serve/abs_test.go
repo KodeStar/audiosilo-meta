@@ -69,7 +69,7 @@ func absFixture() *model.Catalog {
 				Narrators: []string{"ray-porter"},
 				// uk listed before us to prove region preference is by value, not order.
 				ASIN: []model.ASIN{{Region: "uk", ASIN: "B08UKPRS1K"}, {Region: "us", ASIN: "B08G9PRS1K"}},
-				ISBN: []string{"9780593135204"},
+				ISBN: []model.ISBNRef{{ISBN: "9780593135204"}},
 			},
 			{
 				ID: "dawson-2021", Work: "project-hail-mary", Language: "en",
@@ -86,7 +86,7 @@ func absFixture() *model.Catalog {
 			ID: "kramer-reading-2010", Work: "the-way-of-kings", Language: "en",
 			Narrators: []string{"michael-kramer", "kate-reading"}, License: "CC0-1.0",
 			RuntimeMin: 2735, Publisher: "Macmillan Audio",
-			ISBN: []string{"9781427209269"},
+			ISBN: []model.ISBNRef{{ISBN: "9781427209269"}},
 		}},
 	}
 	// A second work that shares the token "kings" with wok but a different author,

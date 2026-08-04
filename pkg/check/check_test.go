@@ -355,6 +355,34 @@ func TestPersonSlugMatchesName(t *testing.T) {
 	}
 }
 
+// TestRegionalReleaseShapesValid is the passing fixture for the regional-release
+// schema change: one production, released in two marketplaces, stays ONE
+// recording. Its isbn[] mixes a bare string (region unstated) with the
+// region-scoped object form, and publishers[] names the other region's imprint
+// beside the publisher of record. All three shapes must validate and load.
+func TestRegionalReleaseShapesValid(t *testing.T) {
+	dir := t.TempDir()
+	files := baseValid()
+	files["works/bo/book-one/recordings/rec-one.json"] = `{"abridged":false,"id":"rec-one","isbn":["9780000000001",{"isbn":"9780000000002","region":"uk"}],"language":"en","license":"CC0-1.0","narrators":["narrator-one"],"publisher":"Harper Voyager","publishers":[{"publisher":"Hodder & Stoughton","region":"uk"}],"sources":[{"type":"user"}],"work":"book-one"}`
+	writeEntities(t, dir, files)
+	res := Load(dir)
+	if !res.OK() {
+		t.Fatalf("regional release shapes should validate, got: %v", res.Problems)
+	}
+	rec := res.Catalog.Works[0].Recordings[0]
+	if len(rec.ISBN) != 2 || rec.ISBN[0].Region != "" || rec.ISBN[1].Region != "uk" ||
+		rec.ISBN[0].ISBN != "9780000000001" || rec.ISBN[1].ISBN != "9780000000002" {
+		t.Errorf("isbn entries did not load: %+v", rec.ISBN)
+	}
+	if len(rec.Publishers) != 1 || rec.Publishers[0].Region != "uk" ||
+		rec.Publishers[0].Publisher != "Hodder & Stoughton" {
+		t.Errorf("publishers did not load: %+v", rec.Publishers)
+	}
+	if rec.Publisher != "Harper Voyager" {
+		t.Errorf("publisher of record = %q", rec.Publisher)
+	}
+}
+
 func TestLoadRuleViolations(t *testing.T) {
 	cases := []struct {
 		name   string
@@ -423,6 +451,48 @@ func TestLoadRuleViolations(t *testing.T) {
 				f["works/bo/book-one/recordings/rec-two.json"] = `{"abridged":false,"id":"rec-two","isbn":["9780000000001"],"language":"en","license":"CC0-1.0","narrators":["narrator-one"],"sources":[{"type":"user"}],"work":"book-one"}`
 			},
 			want: "duplicate ISBN 9780000000001",
+		},
+		{
+			// The uniqueness rule keys on the VALUE, so the two spellings of one
+			// identifier collide exactly as two bare strings would. Without this
+			// a region-scoped entry would be a way to record an ISBN twice.
+			name: "duplicate ISBN across the two spellings",
+			mutate: func(f map[string]string) {
+				f["works/bo/book-one/recordings/rec-one.json"] = `{"abridged":false,"id":"rec-one","isbn":["9780000000001"],"language":"en","license":"CC0-1.0","narrators":["narrator-one"],"sources":[{"type":"user"}],"work":"book-one"}`
+				f["works/bo/book-one/recordings/rec-two.json"] = `{"abridged":false,"id":"rec-two","isbn":[{"isbn":"9780000000001","region":"uk"}],"language":"en","license":"CC0-1.0","narrators":["narrator-one"],"sources":[{"type":"user"}],"work":"book-one"}`
+			},
+			want: "duplicate ISBN 9780000000001",
+		},
+		{
+			// An ISBN object must state its region: an unstated region already
+			// has a spelling (the bare string), and two spellings for one state
+			// would make canonical form ambiguous.
+			name: "region-scoped ISBN object without a region",
+			mutate: func(f map[string]string) {
+				f["works/bo/book-one/recordings/rec-one.json"] = `{"abridged":false,"id":"rec-one","isbn":[{"isbn":"9780000000001"}],"language":"en","license":"CC0-1.0","narrators":["narrator-one"],"sources":[{"type":"user"}],"work":"book-one"}`
+			},
+			want: "missing property 'region'",
+		},
+		{
+			name: "two publishers claim one region",
+			mutate: func(f map[string]string) {
+				f["works/bo/book-one/recordings/rec-one.json"] = `{"abridged":false,"id":"rec-one","language":"en","license":"CC0-1.0","narrators":["narrator-one"],"publisher":"Harper Voyager","publishers":[{"publisher":"Hodder & Stoughton","region":"uk"},{"publisher":"Gollancz","region":"uk"}],"sources":[{"type":"user"}],"work":"book-one"}`
+			},
+			want: `duplicate publishers region "uk"`,
+		},
+		{
+			name: "regional publisher restates the publisher of record",
+			mutate: func(f map[string]string) {
+				f["works/bo/book-one/recordings/rec-one.json"] = `{"abridged":false,"id":"rec-one","language":"en","license":"CC0-1.0","narrators":["narrator-one"],"publisher":"Harper Voyager","publishers":[{"publisher":"Harper Voyager","region":"uk"}],"sources":[{"type":"user"}],"work":"book-one"}`
+			},
+			want: "restates the publisher of record",
+		},
+		{
+			name: "publishers region outside the shared vocabulary",
+			mutate: func(f map[string]string) {
+				f["works/bo/book-one/recordings/rec-one.json"] = `{"abridged":false,"id":"rec-one","language":"en","license":"CC0-1.0","narrators":["narrator-one"],"publisher":"Harper Voyager","publishers":[{"publisher":"Hodder & Stoughton","region":"nz"}],"sources":[{"type":"user"}],"work":"book-one"}`
+			},
+			want: "/publishers/0/region: value must be one of",
 		},
 		{
 			// The Class C defect: a record minted under an older slug rule sits
