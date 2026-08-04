@@ -45,6 +45,10 @@ func (c *composer) addRecording(s sections) {
 	if c.dedupIdentifiers(asins, isbns, "") {
 		return
 	}
+	publishers := c.parsePublishers(s.get(fRecPublishers), s.get(fRecPublisher))
+	if c.failed() {
+		return
+	}
 
 	narratorSlugs := c.slugsFor(narratorNames, sourceRef)
 	if c.failed() {
@@ -64,5 +68,5 @@ func (c *composer) addRecording(s sections) {
 		}
 	}
 
-	c.emitRecording(workSlug, work.Language, narratorSlugs, asins, isbns, s, sourceRef)
+	c.emitRecording(workSlug, work.Language, narratorSlugs, asins, isbns, publishers, s, sourceRef)
 }

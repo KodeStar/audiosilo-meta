@@ -1765,7 +1765,8 @@ func (p *planner) claimISBNs(isbns []string, warn func(string, ...any)) []string
 // another recording" about the very record it is writing to. Both paths that
 // add an ISBN to a record already on disk (the enrichment fill and the ASIN
 // merge) go through here for that reason. Reading the record's isbn[] goes
-// through rawISBNValue, so a region-scoped entry counts as present too.
+// through model.ISBNRefOf - the one reader of the on-disk spellings - so a
+// region-scoped entry counts as present too.
 func (p *planner) claimISBNsFor(raw map[string]any, isbns []string, warn func(string, ...any)) []string {
 	if len(isbns) == 0 {
 		return nil
@@ -1773,8 +1774,8 @@ func (p *planner) claimISBNsFor(raw map[string]any, isbns []string, warn func(st
 	existing, _ := raw["isbn"].([]any)
 	have := make(map[string]bool, len(existing))
 	for _, v := range existing {
-		if s := rawISBNValue(v); s != "" {
-			have[strings.ToUpper(s)] = true
+		if entry, ok := model.ISBNRefOf(v); ok {
+			have[strings.ToUpper(entry.ISBN)] = true
 		}
 	}
 	var candidates []string
@@ -2119,17 +2120,6 @@ func appendISBNs(raw map[string]any, isbns []string) {
 		existing = append(existing, isbn)
 	}
 	raw["isbn"] = existing
-}
-
-// rawISBNValue reads the ISBN value out of one raw isbn[] element, in either of
-// the on-disk spellings (a bare string, or a {"region":..,"isbn":..} object).
-// The object form must never read as absent - see
-// TestEnrichSeesARegionScopedISBNAsPresent for what that costs.
-func rawISBNValue(v any) string {
-	if m, ok := v.(map[string]any); ok {
-		return coerceStr(m["isbn"])
-	}
-	return coerceStr(v)
 }
 
 // fillStr records val at key on an existing record when the row states one,

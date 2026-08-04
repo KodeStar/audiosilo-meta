@@ -59,17 +59,25 @@ type outWork struct {
 }
 
 type outRecording struct {
-	ID          string    `json:"id"`
-	Work        string    `json:"work"`
-	Narrators   []string  `json:"narrators"`
-	Abridged    *bool     `json:"abridged,omitempty"`
-	Language    string    `json:"language"`
-	RuntimeMin  int       `json:"runtime_min,omitempty"`
-	ReleaseDate string    `json:"release_date,omitempty"`
-	Publisher   string    `json:"publisher,omitempty"`
-	ASIN        []outASIN `json:"asin,omitempty"`
-	ISBN        []string  `json:"isbn,omitempty"`
-	CoverURL    string    `json:"cover_url,omitempty"`
+	ID          string   `json:"id"`
+	Work        string   `json:"work"`
+	Narrators   []string `json:"narrators"`
+	Abridged    *bool    `json:"abridged,omitempty"`
+	Language    string   `json:"language"`
+	RuntimeMin  int      `json:"runtime_min,omitempty"`
+	ReleaseDate string   `json:"release_date,omitempty"`
+	Publisher   string   `json:"publisher,omitempty"`
+	// Publishers holds the OTHER regions' imprints of this same recording;
+	// Publisher above stays the publisher of record. The schema's
+	// dependentRequired makes the pairing structural, and parsePublishers
+	// refuses a submission that would break it.
+	Publishers []model.RegionPublisher `json:"publishers,omitempty"`
+	ASIN       []outASIN               `json:"asin,omitempty"`
+	// ISBN entries are model's own type, so the string-or-object spelling is
+	// rendered by ISBNRef.MarshalJSON rather than by a second copy of the rule
+	// living here.
+	ISBN     []model.ISBNRef `json:"isbn,omitempty"`
+	CoverURL string          `json:"cover_url,omitempty"`
 	// AddedAt is stamped only on a recording the submission CREATES; see outWork.
 	AddedAt string      `json:"added_at,omitempty"`
 	License string      `json:"license"`

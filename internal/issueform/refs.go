@@ -1,9 +1,11 @@
 package issueform
 
 import (
+	"fmt"
 	"net/url"
 	"path"
 	"regexp"
+	"sort"
 	"strings"
 
 	"github.com/kodestar/audiosilo-meta/internal/importer"
@@ -97,11 +99,7 @@ func normalizeRegion(raw string) (string, bool) {
 // the call sites means a future form that parses ASINs cannot forget to.
 func (c *composer) parseASINs(block string) []outASIN {
 	var out []outASIN
-	for _, line := range strings.Split(block, "\n") {
-		line = strings.TrimSpace(line)
-		if line == "" {
-			continue
-		}
+	for _, line := range splitLines(block) {
 		i := strings.IndexAny(line, ":\t")
 		if i < 0 {
 			if asin := importer.NormalizeASIN(line); asin != "" {
@@ -129,14 +127,186 @@ func (c *composer) parseASINs(block string) []outASIN {
 	return out
 }
 
-// parseISBNs parses and validates an ISBN list field.
-func (c *composer) parseISBNs(block string) []string {
+// parseISBNs parses the ISBN lines of a recording form field. A line is either a
+// bare ISBN or "region: ISBN", and both spellings land in the same list - they
+// identify one production in different marketplaces, which is exactly what
+// recording.schema.json's isbn[] models.
+//
+// A bare ISBN is recorded with the region UNSTATED, and that asymmetry with
+// parseASINs above is deliberate. parseASINs defaults a bare ASIN to "us"
+// because an ASIN only exists inside a marketplace, so a region-less one is a
+// missing prefix rather than a fact about the world - and dropping it would cost
+// the recording its identity/dedup key. An ISBN is not marketplace-scoped:
+// "region unknown" is an ordinary, truthful state the schema spells as the bare
+// string, and inventing "us" for it would be a fabricated fact of exactly the
+// kind the facts-only rule forbids.
+//
+// An unusable line is noted and skipped, matching parseASINs' tone: one bad line
+// never fails a submission that is otherwise fine.
+//
+// The list is deduplicated BY VALUE (isbnKey), because the two spellings make it
+// easy to state one identifier twice - "9781473647633" and "GB: 9781473647633"
+// are the same ISBN - and composing both would write a record that is a
+// duplicate of ITSELF, reported afterwards as a raw metacheck line rather than
+// as anything the submitter could act on. When the two spellings differ, the
+// SCOPED one wins: bare states no region, so keeping the region is the same
+// "adds information, contradicts nothing" rule correctISBN's upgrade applies.
+func (c *composer) parseISBNs(block string) []model.ISBNRef {
+	var out []model.ISBNRef
+	at := map[string]int{} // isbnKey -> index in out
+	for _, line := range splitList(block) {
+		entry, reason, ok := parseISBNLine(line)
+		if !ok {
+			c.note("%s - skipped", reason)
+			continue
+		}
+		key := isbnKey(entry.ISBN)
+		i, dup := at[key]
+		if !dup {
+			at[key] = len(out)
+			out = append(out, entry)
+			continue
+		}
+		if out[i].Region == "" && entry.Region != "" {
+			c.note("ISBN %s is listed twice; keeping the one scoped to region %q", entry.ISBN, entry.Region)
+			out[i] = entry
+			continue
+		}
+		// Two DIFFERENT stated regions for one value is the contradiction
+		// correctISBN escalates to a maintainer. A list field has to resolve it
+		// somehow, so first wins - but the note names what was dropped, because
+		// a region silently discarded is the thing the submitter would never
+		// otherwise learn.
+		if out[i].Region != "" && entry.Region != "" && out[i].Region != entry.Region {
+			c.note("ISBN %s is listed under both %q and %q; keeping %q - one ISBN identifies one edition",
+				entry.ISBN, out[i].Region, entry.Region, out[i].Region)
+			continue
+		}
+		c.note("ISBN %s is listed more than once - the later line was dropped", entry.ISBN)
+	}
+	return out
+}
+
+// parseISBNLine reads one ISBN line in either spelling. reason is a rendered
+// phrase naming what is wrong when ok is false; the caller decides whether that
+// is a note (a list field skips the line) or a terminal verdict (a correction
+// states exactly one value, so an unusable one is the whole submission).
+//
+// A value carrying several lines cannot get through here: NormalizeISBN strips
+// whitespace and then anchors its pattern, so a second line makes the whole
+// value fail to be an ISBN. parsePublisherLine has no such backstop - a
+// publisher name is free text - and rejects the shape explicitly; the asymmetry
+// is worth knowing about before either function is edited.
+func parseISBNLine(line string) (entry model.ISBNRef, reason string, ok bool) {
+	line = strings.TrimSpace(line)
+	i := strings.IndexAny(line, ":\t")
+	if i < 0 {
+		isbn, valid := normalizeISBN(line)
+		if !valid {
+			return model.ISBNRef{}, fmt.Sprintf("value %q is not a valid ISBN", line), false
+		}
+		// Region deliberately left unstated - see parseISBNs.
+		return model.ISBNRef{ISBN: isbn}, "", true
+	}
+	region, regionOK := normalizeRegion(line[:i])
+	if !regionOK {
+		return model.ISBNRef{}, fmt.Sprintf("region %q is not a known marketplace", strings.TrimSpace(line[:i])), false
+	}
+	isbn, valid := normalizeISBN(line[i+1:])
+	if !valid {
+		return model.ISBNRef{}, fmt.Sprintf("value %q is not a valid ISBN", strings.TrimSpace(line[i+1:])), false
+	}
+	return model.ISBNRef{Region: region, ISBN: isbn}, "", true
+}
+
+// parsePublisherLine reads one "region: Publisher Name" line. It is
+// parseISBNLine's twin: one grammar, one place, and a reason string the caller
+// renders as a note (a list field skips the line) or as a terminal verdict (a
+// correction states exactly one value).
+func parsePublisherLine(line string) (entry model.RegionPublisher, reason string, ok bool) {
+	line = strings.TrimSpace(line)
+	// A publisher name is free text, so a value holding several lines would weld
+	// them into one corrupt name ("Hodder\nCA: Doubleday") that every later check
+	// accepts. The list callers have already split on newlines, so anything left
+	// here arrives from a correction - and the issue BODY is untrusted: the form
+	// widget is single-line, but intake also runs on edited bodies and on issues
+	// opened through the API.
+	if strings.ContainsAny(line, "\n\r") {
+		return model.RegionPublisher{}, "a correction states one \"region: Publisher Name\" - list several on the add-recording form", false
+	}
+	i := strings.IndexAny(line, ":\t")
+	if i < 0 {
+		return model.RegionPublisher{}, fmt.Sprintf("%q is not of the form \"region: Publisher Name\"", line), false
+	}
+	region, regionOK := normalizeRegion(line[:i])
+	if !regionOK {
+		return model.RegionPublisher{}, fmt.Sprintf("region %q is not a known marketplace", strings.TrimSpace(line[:i])), false
+	}
+	name := strings.TrimSpace(line[i+1:])
+	if name == "" {
+		return model.RegionPublisher{}, fmt.Sprintf("region %q is named with no publisher", region), false
+	}
+	return model.RegionPublisher{Region: region, Publisher: name}, "", true
+}
+
+// parsePublishers parses the regional-publisher lines of a recording form field
+// into the recording's publishers[]. publisherOfRecord is the form's Publisher
+// field.
+//
+// The three refusals are the schema's and pkg/check's own rules asked at COMPOSE
+// time, so a submitter gets a verdict naming what is wrong instead of a raw
+// metacheck line against a record the bot already wrote. They set a terminal
+// status, which the caller sees through the package's usual c.failed(); a merely
+// unusable line is noted and skipped, as everywhere else.
+//
+// The result is sorted by region - see sortRegionPublishers.
+func (c *composer) parsePublishers(block, publisherOfRecord string) []model.RegionPublisher {
+	var out []model.RegionPublisher
+	seen := map[string]bool{}
+	for _, line := range splitLines(block) {
+		entry, reason, ok := parsePublisherLine(line)
+		if !ok {
+			c.note("regional publisher: %s - skipped", reason)
+			continue
+		}
+		if seen[entry.Region] {
+			c.fail(StatusInvalid, "region %q is listed twice under %s; one region names one imprint", entry.Region, fRecPublishers)
+			return nil
+		}
+		if entry.Publisher == publisherOfRecord {
+			c.fail(StatusInvalid, "%s lists %q, which is already the %s field; that list holds the OTHER regions' imprints of this same recording", fRecPublishers, entry.Publisher, fRecPublisher)
+			return nil
+		}
+		seen[entry.Region] = true
+		out = append(out, entry)
+	}
+	if len(out) > 0 && publisherOfRecord == "" {
+		c.fail(StatusInvalid, "%s needs a %s: the schema requires a publisher of record before the other regions' imprints can be listed (\"the other regions\" has to be other than something)", fRecPublishers, fRecPublisher)
+		return nil
+	}
+	sortRegionPublishers(out)
+	return out
+}
+
+// sortRegionPublishers orders publishers[] by region. Nothing REQUIRES it -
+// publishers[] is a JSON array, canonical formatting preserves array order
+// rather than imposing one, and a hand-authored pull request may write any
+// order - but every writer in this package sorts, so one set of imprints
+// composed here always has one byte-form and a re-submission is a no-op diff.
+// Regions are unique within one recording (pkg/check's
+// checkRegionalPublishers), so the order is total.
+func sortRegionPublishers(ps []model.RegionPublisher) {
+	sort.Slice(ps, func(i, j int) bool { return ps[i].Region < ps[j].Region })
+}
+
+// splitLines splits a one-per-line block, trimming and dropping empties. Unlike
+// splitList it does NOT split on commas: a publisher name legitimately contains
+// one ("Houghton Mifflin Harcourt, Inc.").
+func splitLines(block string) []string {
 	var out []string
-	for _, raw := range splitList(block) {
-		if isbn, ok := normalizeISBN(raw); ok {
-			out = append(out, isbn)
-		} else {
-			c.note("value %q is not a valid ISBN - skipped", raw)
+	for _, line := range strings.Split(block, "\n") {
+		if v := strings.TrimSpace(line); v != "" {
+			out = append(out, v)
 		}
 	}
 	return out

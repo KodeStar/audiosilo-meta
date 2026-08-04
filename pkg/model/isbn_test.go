@@ -86,6 +86,59 @@ func TestRecordingISBNListMixesSpellings(t *testing.T) {
 	}
 }
 
+// TestISBNRefOfAgreesWithUnmarshal binds the package's TWO readers of the
+// on-disk spellings against each other: UnmarshalJSON, which decodes raw JSON
+// BYTES, and ISBNRefOf, which reads an element of an already-decoded raw map.
+// Both exist because both inputs occur (a typed decode of a record; a generic
+// decode a raw-map writer edits in place), and a spelling one understands and
+// the other does not would read as ABSENT on one path - which is how a person
+// record once forked in two.
+func TestISBNRefOfAgreesWithUnmarshal(t *testing.T) {
+	cases := []struct {
+		name       string
+		raw        string
+		wantISBN   string
+		wantRegion string
+	}{
+		{"bare string", `"9781234567897"`, "9781234567897", ""},
+		{"region-scoped object", `{"isbn":"9781234567897","region":"uk"}`, "9781234567897", "uk"},
+		{"ten-digit with an X check digit", `"012345678X"`, "012345678X", ""},
+	}
+	for _, tc := range cases {
+		t.Run(tc.name, func(t *testing.T) {
+			var typed ISBNRef
+			if err := json.Unmarshal([]byte(tc.raw), &typed); err != nil {
+				t.Fatalf("UnmarshalJSON of %s: %v", tc.raw, err)
+			}
+			if typed.ISBN != tc.wantISBN || typed.Region != tc.wantRegion {
+				t.Errorf("UnmarshalJSON of %s = %+v, want isbn %q region %q", tc.raw, typed, tc.wantISBN, tc.wantRegion)
+			}
+
+			var generic any
+			if err := json.Unmarshal([]byte(tc.raw), &generic); err != nil {
+				t.Fatalf("generic decode of %s: %v", tc.raw, err)
+			}
+			got, ok := ISBNRefOf(generic)
+			if !ok {
+				t.Fatalf("ISBNRefOf(%s) reported the entry unusable; UnmarshalJSON read %+v", tc.raw, typed)
+			}
+			if got != typed {
+				t.Errorf("ISBNRefOf(%s) = %+v, UnmarshalJSON = %+v: the two readers have drifted", tc.raw, got, typed)
+			}
+		})
+	}
+}
+
+// TestISBNRefOfRejectsWhatUnmarshalRejects keeps the two readers in step on the
+// REFUSALS too: an element stating no ISBN is unusable either way.
+func TestISBNRefOfRejectsWhatUnmarshalRejects(t *testing.T) {
+	for _, v := range []any{nil, "", map[string]any{}, map[string]any{"region": "uk"}, 12345, []any{"9781234567897"}} {
+		if got, ok := ISBNRefOf(v); ok {
+			t.Errorf("ISBNRefOf(%#v) = %+v, want it refused", v, got)
+		}
+	}
+}
+
 // TestISBNRefRejectsAnEmptyOrMalformedEntry covers the decode error paths. The
 // schema rejects all of these before pkg/check ever decodes them, but pkg/model
 // is a public dependency and a consumer that decodes without validating must

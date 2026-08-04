@@ -24,14 +24,15 @@ const (
 	fWorkWikidata       = "Wikidata ID"
 	fWorkOpenLibrary    = "Open Library ID"
 
-	fRecNarrators = "Narrator(s)"
-	fRecAbridged  = "Abridged?"
-	fRecRuntime   = "Runtime (minutes)"
-	fRecRelease   = "Release date"
-	fRecPublisher = "Publisher"
-	fRecASINs     = "ASIN(s) with region"
-	fRecISBNs     = "Audiobook ISBN(s)"
-	fRecCoverURL  = "Cover image URL"
+	fRecNarrators  = "Narrator(s)"
+	fRecAbridged   = "Abridged?"
+	fRecRuntime    = "Runtime (minutes)"
+	fRecRelease    = "Release date"
+	fRecPublisher  = "Publisher"
+	fRecPublishers = "Regional publisher(s)"
+	fRecASINs      = "ASIN(s) with region"
+	fRecISBNs      = "Audiobook ISBN(s)"
+	fRecCoverURL   = "Cover image URL"
 
 	fSources = "Sources"
 	fCC0     = "Public domain dedication"
@@ -82,6 +83,12 @@ func (c *composer) addWork(s sections) {
 	if c.dedupIdentifiers(asins, recISBNs, "; use the Add a recording form for another narration") {
 		return
 	}
+	// Parsed here rather than inside emitRecording so a refusal lands before any
+	// record is composed - the verdict is about the form, not about half a work.
+	publishers := c.parsePublishers(s.get(fRecPublishers), s.get(fRecPublisher))
+	if c.failed() {
+		return
+	}
 
 	workSlug := slugify(title)
 	if workSlug == "" {
@@ -127,7 +134,7 @@ func (c *composer) addWork(s sections) {
 	}
 
 	// First recording.
-	c.emitRecording(workSlug, lang, narratorSlugs, asins, recISBNs, s, sourceRef)
+	c.emitRecording(workSlug, lang, narratorSlugs, asins, recISBNs, publishers, s, sourceRef)
 
 	// Optional series placement.
 	c.placeInSeries(s, workSlug, sourceRef)
@@ -189,7 +196,7 @@ func (c *composer) buildWorkXref(s sections) *outWorkXref {
 }
 
 // emitRecording composes and queues the recording record for a work.
-func (c *composer) emitRecording(workSlug, lang string, narratorSlugs []string, asins []outASIN, isbns []string, s sections, sourceRef string) {
+func (c *composer) emitRecording(workSlug, lang string, narratorSlugs []string, asins []outASIN, isbns []model.ISBNRef, publishers []model.RegionPublisher, s sections, sourceRef string) {
 	recSlug := c.uniqueRecordingSlug(workSlug, narratorSlugs, s.get(fRecRelease))
 	rec := outRecording{
 		ID: recSlug, Work: workSlug, Narrators: narratorSlugs, Language: lang,
@@ -211,6 +218,9 @@ func (c *composer) emitRecording(workSlug, lang string, narratorSlugs []string, 
 		}
 	}
 	rec.Publisher = s.get(fRecPublisher)
+	if len(publishers) > 0 {
+		rec.Publishers = publishers
+	}
 	if len(asins) > 0 {
 		rec.ASIN = asins
 	}

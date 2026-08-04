@@ -173,6 +173,16 @@ body:
       required: false
 
   - type: textarea
+    id: rec_publishers
+    attributes:
+      label: Regional publisher(s)
+      description: 'Only if the SAME recording is published by a different imprint in another marketplace. One per line as "region: Publisher Name". Leave the Publisher field above as the publisher of record and list only the OTHER regions here - do not repeat it.'
+      placeholder: |
+        GB: Hodder & Stoughton
+    validations:
+      required: false
+
+  - type: textarea
     id: rec_asins
     attributes:
       label: ASIN(s) with region
@@ -183,11 +193,14 @@ body:
     validations:
       required: false
 
-  - type: input
+  - type: textarea
     id: rec_isbns
     attributes:
       label: Audiobook ISBN(s)
-      description: If this recording has its own ISBN(s). Optional.
+      description: 'If this recording has its own ISBN(s). One per line, either a bare ISBN or "region: ISBN" when you know which marketplace it identifies. A bare ISBN is recorded with the region unstated, which is perfectly normal - do not guess one. Optional.'
+      placeholder: |
+        9780062898968
+        GB: 9781473647633
     validations:
       required: false
 

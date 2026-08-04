@@ -194,6 +194,35 @@ func (r ISBNRef) MarshalJSON() ([]byte, error) {
 	return json.Marshal(isbnObject(r))
 }
 
+// ISBNRefOf reads one element of an ALREADY-DECODED raw isbn[] - a `string` or a
+// `map[string]any` out of a generic JSON decode - into an ISBNRef. ok is false
+// for anything else, and for an element that states no ISBN.
+//
+// It lives here, beside UnmarshalJSON, because it is the same contract asked of
+// a different input, and the repo has three consumers of it: the importer's
+// raw-map enrichment writers, the issue-form correction path, and any external
+// reader of a pack entry. Spelled separately in each, a spelling added to one
+// would silently read as absent in the others - the failure mode the person-slug
+// rule exists to prevent, and the reason PersonSlug is a leaf here too.
+// TestISBNRefOfAgreesWithUnmarshal pins the two readers against each other.
+func ISBNRefOf(v any) (ISBNRef, bool) {
+	switch e := v.(type) {
+	case string:
+		if e == "" {
+			return ISBNRef{}, false
+		}
+		return ISBNRef{ISBN: e}, true
+	case map[string]any:
+		isbn, _ := e["isbn"].(string)
+		if isbn == "" {
+			return ISBNRef{}, false
+		}
+		region, _ := e["region"].(string)
+		return ISBNRef{Region: region, ISBN: isbn}, true
+	}
+	return ISBNRef{}, false
+}
+
 // RegionPublisher is one region's imprint of a production. The recording's own
 // Publisher field stays the publisher of record; this list holds the OTHER
 // regions, and never restates it - see pkg/check.
