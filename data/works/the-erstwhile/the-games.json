@@ -3167,15 +3167,17 @@
       "title": "The Gangster"
     },
     "the-gangster-dramatized-adaptation": {
-      "added_at": "2026-08-02",
+      "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "scott-sigler"
       ],
       "genres": [
+        "action-adventure",
         "arts-entertainment",
         "comedy-humor",
         "science-fiction",
-        "space-opera"
+        "space-opera",
+        "sports"
       ],
       "id": "the-gangster-dramatized-adaptation",
       "language": "en",
@@ -3183,10 +3185,18 @@
       "recordings": {
         "alejandro-ruiz-2023": {
           "abridged": false,
-          "added_at": "2026-08-02",
+          "added_at": "2026-07-25T17:12:12+01:00",
           "asin": [
             {
               "asin": "B0BZJSW1MJ",
+              "region": "us"
+            },
+            {
+              "asin": "B0B7CLVR9H",
+              "region": "us"
+            },
+            {
+              "asin": "B0BKPCN15S",
               "region": "us"
             }
           ],
@@ -3262,14 +3272,35 @@
             "michael-john-casey",
             "nick-depinto",
             "rob-mcfadyen",
-            "terence-aselford"
+            "terence-aselford",
+            "full-cast"
           ],
           "publisher": "Graphic Audio LLC",
-          "release_date": "2023-04-01",
+          "release_date": "2022-08-01",
           "runtime_min": 817,
           "sources": [
             {
               "imported_at": "2026-08-02",
+              "ref": "B0BZJSW1MJ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0B7CLVR9H",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0BKPCN15S",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0BKPCN15S",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-06",
               "ref": "B0BZJSW1MJ",
               "type": "libex-import"
             }
@@ -3280,6 +3311,26 @@
       "sources": [
         {
           "imported_at": "2026-08-02",
+          "ref": "B0BZJSW1MJ",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0B7CLVR9H",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B0BKPCN15S",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B0BKPCN15S",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-06",
           "ref": "B0BZJSW1MJ",
           "type": "libex-import"
         }
@@ -3446,189 +3497,6 @@
         }
       ],
       "title": "The Gangster: Magic & Steam, Book 2"
-    },
-    "the-gangster-part-1-of-2-dramatized-adaptation": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "scott-sigler"
-      ],
-      "genres": [
-        "action-adventure",
-        "science-fiction",
-        "space-opera",
-        "sports"
-      ],
-      "id": "the-gangster-part-1-of-2-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "alejandro-ruiz-2022": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0B7CLVR9H",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 5180882,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 5014581,
-              "start_ms": 5180882,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4475042,
-              "start_ms": 10195463,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 4029056,
-              "start_ms": 14670505,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4680422,
-              "start_ms": 18699561,
-              "title": "Chapter 5"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81F2xa+B5SL.jpg",
-          "id": "alejandro-ruiz-2022",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "alejandro-ruiz",
-            "dawn-ursula",
-            "eric-messner",
-            "james-konicek",
-            "kimberly-gilbert",
-            "matthew-bassett",
-            "matthew-schleigh",
-            "michael-john-casey",
-            "nick-depinto",
-            "rob-mcfadyen",
-            "terence-aselford"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2022-08-01",
-          "runtime_min": 389,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0B7CLVR9H",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-gangster-part-1-of-2-dramatized-adaptation"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0B7CLVR9H",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Gangster (Part 1 of 2) (Dramatized Adaptation)"
-    },
-    "the-gangster-part-2-of-2-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "scott-sigler"
-      ],
-      "genres": [
-        "science-fiction",
-        "sports"
-      ],
-      "id": "the-gangster-part-2-of-2-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2022": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B0BKPCN15S",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3969706,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4504880,
-              "start_ms": 3969706,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4620840,
-              "start_ms": 8474586,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 4185698,
-              "start_ms": 13095426,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4270730,
-              "start_ms": 17281124,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 4098135,
-              "start_ms": 21551854,
-              "title": "Chapter 6"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81BKhr1Mv6L.jpg",
-          "id": "full-cast-2022",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2022",
-          "runtime_min": 427,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0BKPCN15S",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0BKPCN15S",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-gangster-part-2-of-2-dramatized-adaptation"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B0BKPCN15S",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B0BKPCN15S",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Gangster (Part 2 of 2) (Dramatized Adaptation)"
     },
     "the-gap-year": {
       "added_at": "2026-08-02",

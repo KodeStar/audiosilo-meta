@@ -13701,7 +13701,7 @@
       ],
       "title": "The Rebellious Sister"
     },
-    "the-rebels-1-of-2-dramatized-adaptation": {
+    "the-rebels-dramatized-adaptation": {
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "elmer-kelton"
@@ -13711,7 +13711,7 @@
         "historical-fiction",
         "westerns"
       ],
-      "id": "the-rebels-1-of-2-dramatized-adaptation",
+      "id": "the-rebels-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -13719,138 +13719,40 @@
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
           "asin": [
+            {
+              "asin": "B09HSV29FN",
+              "region": "us"
+            },
             {
               "asin": "1648804489",
               "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3514502,
-              "start_ms": 0,
-              "title": "Chapter 1"
             },
-            {
-              "length_ms": 3534727,
-              "start_ms": 3514502,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3028834,
-              "start_ms": 7049229,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3225948,
-              "start_ms": 10078063,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 2964026,
-              "start_ms": 13304011,
-              "title": "Chapter 5"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81WwVxGMMRL.jpg",
-          "id": "full-cast-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2020",
-          "runtime_min": 272,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648804489",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648804489",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-rebels-1-of-2-dramatized-adaptation"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "1648804489",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "1648804489",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Rebels (1 of 2) [Dramatized Adaptation]"
-    },
-    "the-rebels-2-of-2-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "elmer-kelton"
-      ],
-      "genres": [
-        "action-adventure",
-        "historical-fiction",
-        "westerns"
-      ],
-      "id": "the-rebels-2-of-2-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2020": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
             {
               "asin": "1648804519",
               "region": "us"
             }
           ],
-          "chapters": [
-            {
-              "length_ms": 3023052,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3649433,
-              "start_ms": 3023052,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3632669,
-              "start_ms": 6672485,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3940054,
-              "start_ms": 10305154,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 2769234,
-              "start_ms": 14245208,
-              "title": "Chapter 5"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81Rq5GEVu9L.jpg",
+          "cover_url": "https://m.media-amazon.com/images/I/818UMBZb3bL.jpg",
           "id": "full-cast-2020",
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
             "full-cast"
           ],
-          "publisher": "GraphicAudio",
+          "publisher": "Graphic Audio LLC",
           "release_date": "2020",
-          "runtime_min": 284,
+          "runtime_min": 554,
           "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648804489",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648804489",
+              "type": "libex-import"
+            },
             {
               "imported_at": "2026-07-25",
               "ref": "1648804519",
@@ -13860,12 +13762,27 @@
               "imported_at": "2026-07-30",
               "ref": "1648804519",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-06",
+              "ref": "B09HSV29FN",
+              "type": "libex-import"
             }
           ],
-          "work": "the-rebels-2-of-2-dramatized-adaptation"
+          "work": "the-rebels-dramatized-adaptation"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "1648804489",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "1648804489",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "1648804519",
@@ -13875,9 +13792,14 @@
           "imported_at": "2026-07-30",
           "ref": "1648804519",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-06",
+          "ref": "B09HSV29FN",
+          "type": "libex-import"
         }
       ],
-      "title": "The Rebels (2 of 2) [Dramatized Adaptation]"
+      "title": "The Rebels [Dramatized Adaptation]"
     },
     "the-rebels-of-caer-city": {
       "added_at": "2026-08-01",

@@ -8063,7 +8063,7 @@
       ],
       "title": "Shadow Princess"
     },
-    "shadow-princess-part-1-of-2-dramatized-adaptation": {
+    "shadow-princess-dramatized-adaptation": {
       "added_at": "2026-08-02",
       "authors": [
         "susanne-valenti",
@@ -8075,7 +8075,7 @@
         "paranormal",
         "romance"
       ],
-      "id": "shadow-princess-part-1-of-2-dramatized-adaptation",
+      "id": "shadow-princess-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -8085,6 +8085,10 @@
           "asin": [
             {
               "asin": "B0F1DLFCGN",
+              "region": "us"
+            },
+            {
+              "asin": "B0F9BTJVY6",
               "region": "us"
             }
           ],
@@ -8104,19 +8108,28 @@
             "khaya-fraites",
             "lydia-kraniotis",
             "rayner-gabriel",
-            "ryan-dalusung"
+            "ryan-dalusung",
+            "jessica-schly",
+            "shravan-amin",
+            "susanne-valenti",
+            "terence-aselford"
           ],
           "publisher": "Graphic Audio LLC",
           "release_date": "2025-06-13",
-          "runtime_min": 598,
+          "runtime_min": 1099,
           "sources": [
             {
               "imported_at": "2026-08-02",
               "ref": "B0F1DLFCGN",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0F9BTJVY6",
+              "type": "libex-import"
             }
           ],
-          "work": "shadow-princess-part-1-of-2-dramatized-adaptation"
+          "work": "shadow-princess-dramatized-adaptation"
         }
       },
       "sources": [
@@ -8124,74 +8137,14 @@
           "imported_at": "2026-08-02",
           "ref": "B0F1DLFCGN",
           "type": "libex-import"
-        }
-      ],
-      "title": "Shadow Princess (Part 1 of 2) (Dramatized Adaptation)"
-    },
-    "shadow-princess-part-2-of-2-dramatized-adaptation": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "susanne-valenti",
-        "caroline-peckham"
-      ],
-      "genres": [
-        "arts-entertainment",
-        "fantasy",
-        "paranormal",
-        "romance"
-      ],
-      "id": "shadow-princess-part-2-of-2-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "daniel-llaca-2025": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0F9BTJVY6",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91iP6RZRP8L.jpg",
-          "id": "daniel-llaca-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "daniel-llaca",
-            "full-cast",
-            "gabriel-michael",
-            "gregory-linington",
-            "jessica-schly",
-            "jon-vertullo",
-            "julian-dailey",
-            "karenna-foley",
-            "khaya-fraites",
-            "shravan-amin",
-            "susanne-valenti",
-            "terence-aselford"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2025-07-21",
-          "runtime_min": 501,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0F9BTJVY6",
-              "type": "libex-import"
-            }
-          ],
-          "work": "shadow-princess-part-2-of-2-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0F9BTJVY6",
           "type": "libex-import"
         }
       ],
-      "title": "Shadow Princess (Part 2 of 2) (Dramatized Adaptation)"
+      "title": "Shadow Princess [Dramatized Adaptation]"
     },
     "shadow-puppets": {
       "added_at": "2026-07-25T17:12:12+01:00",

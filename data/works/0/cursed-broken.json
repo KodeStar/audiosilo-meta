@@ -5484,7 +5484,7 @@
       ],
       "title": "Cursed Fates"
     },
-    "cursed-fates-part-1-of-2-dramatized-adaptation": {
+    "cursed-fates-dramatized-adaptation": {
       "added_at": "2026-08-02",
       "authors": [
         "susanne-valenti",
@@ -5493,9 +5493,10 @@
       "genres": [
         "arts-entertainment",
         "fantasy",
+        "paranormal",
         "romance"
       ],
-      "id": "cursed-fates-part-1-of-2-dramatized-adaptation",
+      "id": "cursed-fates-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -5505,6 +5506,10 @@
           "asin": [
             {
               "asin": "B0FNNJRMKG",
+              "region": "us"
+            },
+            {
+              "asin": "B0G4SKGCLX",
               "region": "us"
             }
           ],
@@ -5524,19 +5529,25 @@
             "khaya-fraites",
             "lydia-kraniotis",
             "rayner-gabriel",
-            "ryan-dalusung"
+            "ryan-dalusung",
+            "michael-glenn"
           ],
           "publisher": "Graphic Audio LLC",
           "release_date": "2025-10-20",
-          "runtime_min": 673,
+          "runtime_min": 1491,
           "sources": [
             {
               "imported_at": "2026-08-02",
               "ref": "B0FNNJRMKG",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0G4SKGCLX",
+              "type": "libex-import"
             }
           ],
-          "work": "cursed-fates-part-1-of-2-dramatized-adaptation"
+          "work": "cursed-fates-dramatized-adaptation"
         }
       },
       "sources": [
@@ -5544,72 +5555,14 @@
           "imported_at": "2026-08-02",
           "ref": "B0FNNJRMKG",
           "type": "libex-import"
-        }
-      ],
-      "title": "Cursed Fates (Part 1 of 2) (Dramatized Adaptation)"
-    },
-    "cursed-fates-part-2-of-2-dramatized-adaptation": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "susanne-valenti",
-        "caroline-peckham"
-      ],
-      "genres": [
-        "paranormal",
-        "romance"
-      ],
-      "id": "cursed-fates-part-2-of-2-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "emlyn-mcfarland-2026": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0G4SKGCLX",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91kr7k0utzL.jpg",
-          "id": "emlyn-mcfarland-2026",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "emlyn-mcfarland",
-            "full-cast",
-            "gabriel-michael",
-            "gregory-linington",
-            "jessica-schly",
-            "jon-vertullo",
-            "jonathan-sleep",
-            "julian-dailey",
-            "khaya-fraites",
-            "lydia-kraniotis",
-            "michael-glenn",
-            "ryan-dalusung"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2026-01-26",
-          "runtime_min": 818,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0G4SKGCLX",
-              "type": "libex-import"
-            }
-          ],
-          "work": "cursed-fates-part-2-of-2-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0G4SKGCLX",
           "type": "libex-import"
         }
       ],
-      "title": "Cursed Fates (Part 2 of 2) (Dramatized Adaptation)"
+      "title": "Cursed Fates [Dramatized Adaptation]"
     },
     "cursed-for-keeps": {
       "added_at": "2026-08-01",

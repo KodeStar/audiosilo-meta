@@ -5782,7 +5782,7 @@
       ],
       "title": "A Meeting at Corvallis"
     },
-    "a-meeting-at-corvallis-1-of-3-dramatized-adaptation": {
+    "a-meeting-at-corvallis-dramatized-adaptation": {
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "s-m-stirling"
@@ -5794,7 +5794,7 @@
         "post-apocalyptic",
         "science-fiction"
       ],
-      "id": "a-meeting-at-corvallis-1-of-3-dramatized-adaptation",
+      "id": "a-meeting-at-corvallis-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -5805,33 +5805,14 @@
             {
               "asin": "1648815529",
               "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4111975,
-              "start_ms": 0,
-              "title": "Chapter 1"
             },
             {
-              "length_ms": 4329383,
-              "start_ms": 4111975,
-              "title": "Chapter 2"
+              "asin": "1648815545",
+              "region": "us"
             },
             {
-              "length_ms": 4011804,
-              "start_ms": 8441358,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3767251,
-              "start_ms": 12453162,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4693773,
-              "start_ms": 16220413,
-              "title": "Chapter 5"
+              "asin": "1648816150",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/9176Q9GlJiL.jpg",
@@ -5843,7 +5824,7 @@
           ],
           "publisher": "GraphicAudio",
           "release_date": "2020",
-          "runtime_min": 348,
+          "runtime_min": 1101,
           "sources": [
             {
               "imported_at": "2026-07-25",
@@ -5854,9 +5835,29 @@
               "imported_at": "2026-07-30",
               "ref": "1648815529",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648815545",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648815545",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648816150",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648816150",
+              "type": "libex-import"
             }
           ],
-          "work": "a-meeting-at-corvallis-1-of-3-dramatized-adaptation"
+          "work": "a-meeting-at-corvallis-dramatized-adaptation"
         }
       },
       "sources": [
@@ -5869,88 +5870,7 @@
           "imported_at": "2026-07-30",
           "ref": "1648815529",
           "type": "libex-import"
-        }
-      ],
-      "title": "A Meeting At Corvallis (1 of 3) [Dramatized Adaptation]"
-    },
-    "a-meeting-at-corvallis-2-of-3-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "s-m-stirling"
-      ],
-      "genres": [
-        "alternate-history",
-        "epic-fantasy",
-        "fantasy",
-        "post-apocalyptic",
-        "science-fiction"
-      ],
-      "id": "a-meeting-at-corvallis-2-of-3-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2020": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "1648815545",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4169885,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3800224,
-              "start_ms": 4169885,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3488055,
-              "start_ms": 7970109,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 4485143,
-              "start_ms": 11458164,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4988179,
-              "start_ms": 15943307,
-              "title": "Chapter 5"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91UPD1QphiL.jpg",
-          "id": "full-cast-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2020",
-          "runtime_min": 349,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648815545",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648815545",
-              "type": "libex-import"
-            }
-          ],
-          "work": "a-meeting-at-corvallis-2-of-3-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "1648815545",
@@ -5960,93 +5880,7 @@
           "imported_at": "2026-07-30",
           "ref": "1648815545",
           "type": "libex-import"
-        }
-      ],
-      "title": "A Meeting At Corvallis (2 of 3) [Dramatized Adaptation]"
-    },
-    "a-meeting-at-corvallis-3-of-3-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "s-m-stirling"
-      ],
-      "genres": [
-        "alternate-history",
-        "epic-fantasy",
-        "fantasy",
-        "post-apocalyptic",
-        "science-fiction"
-      ],
-      "id": "a-meeting-at-corvallis-3-of-3-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2020": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "1648816150",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3952570,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3859667,
-              "start_ms": 3952570,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3887229,
-              "start_ms": 7812237,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 4064583,
-              "start_ms": 11699466,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3832499,
-              "start_ms": 15764049,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 4646079,
-              "start_ms": 19596548,
-              "title": "Chapter 6"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91YFDzPq1QL.jpg",
-          "id": "full-cast-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2020",
-          "runtime_min": 404,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648816150",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648816150",
-              "type": "libex-import"
-            }
-          ],
-          "work": "a-meeting-at-corvallis-3-of-3-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "1648816150",
@@ -6058,7 +5892,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "A Meeting At Corvallis (3 of 3) [Dramatized Adaptation]"
+      "title": "A Meeting At Corvallis [Dramatized Adaptation]"
     },
     "a-meeting-in-corvallis-dramatized-adaptation": {
       "added_at": "2026-08-02",

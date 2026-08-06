@@ -2674,8 +2674,8 @@
       ],
       "title": "Sons of Sorrow"
     },
-    "sons-of-texas-1-of-2-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
+    "sons-of-texas": {
+      "added_at": "2026-08-06",
       "authors": [
         "elmer-kelton"
       ],
@@ -2684,86 +2684,49 @@
         "historical-fiction",
         "westerns"
       ],
-      "id": "sons-of-texas-1-of-2-dramatized-adaptation",
+      "id": "sons-of-texas",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
-        "full-cast-2020": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
+        "jason-culp-2011": {
+          "abridged": true,
+          "added_at": "2026-08-06",
           "asin": [
             {
-              "asin": "1648804403",
+              "asin": "B0052NTRFO",
               "region": "us"
             }
           ],
-          "chapters": [
-            {
-              "length_ms": 3269021,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3255159,
-              "start_ms": 3269021,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3425686,
-              "start_ms": 6524180,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3053981,
-              "start_ms": 9949866,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4048537,
-              "start_ms": 13003847,
-              "title": "Chapter 5"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81xx9ef-50L.jpg",
-          "id": "full-cast-2020",
+          "cover_url": "https://m.media-amazon.com/images/I/910ait8VVjL.jpg",
+          "id": "jason-culp-2011",
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
-            "full-cast"
+            "jason-culp"
           ],
-          "publisher": "GraphicAudio",
-          "release_date": "2020",
-          "runtime_min": 285,
+          "publisher": "Macmillan Audio",
+          "release_date": "2011-05-26",
+          "runtime_min": 233,
           "sources": [
             {
-              "imported_at": "2026-07-25",
-              "ref": "1648804403",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648804403",
+              "imported_at": "2026-08-06",
+              "ref": "B0052NTRFO",
               "type": "libex-import"
             }
           ],
-          "work": "sons-of-texas-1-of-2-dramatized-adaptation"
+          "work": "sons-of-texas"
         }
       },
       "sources": [
         {
-          "imported_at": "2026-07-25",
-          "ref": "1648804403",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "1648804403",
+          "imported_at": "2026-08-06",
+          "ref": "B0052NTRFO",
           "type": "libex-import"
         }
       ],
-      "title": "Sons of Texas (1 of 2) [Dramatized Adaptation]"
+      "title": "Sons of Texas"
     },
-    "sons-of-texas-2-of-2-dramatized-adaptation": {
+    "sons-of-texas-dramatized-adaptation": {
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "elmer-kelton"
@@ -2773,7 +2736,7 @@
         "historical-fiction",
         "westerns"
       ],
-      "id": "sons-of-texas-2-of-2-dramatized-adaptation",
+      "id": "sons-of-texas-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -2781,39 +2744,20 @@
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
           "asin": [
+            {
+              "asin": "B09HSSSV2Y",
+              "region": "us"
+            },
+            {
+              "asin": "1648804403",
+              "region": "us"
+            },
             {
               "asin": "164880442X",
               "region": "us"
             }
           ],
-          "chapters": [
-            {
-              "length_ms": 3119020,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3253022,
-              "start_ms": 3119020,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3539580,
-              "start_ms": 6372042,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3560478,
-              "start_ms": 9911622,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3381521,
-              "start_ms": 13472100,
-              "title": "Chapter 5"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81brurNJpqL.jpg",
+          "cover_url": "https://m.media-amazon.com/images/I/81kcIkXEOpL.jpg",
           "id": "full-cast-2020",
           "language": "en",
           "license": "CC0-1.0",
@@ -2822,8 +2766,18 @@
           ],
           "publisher": "GraphicAudio",
           "release_date": "2020",
-          "runtime_min": 281,
+          "runtime_min": 565,
           "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648804403",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648804403",
+              "type": "libex-import"
+            },
             {
               "imported_at": "2026-07-25",
               "ref": "164880442X",
@@ -2833,12 +2787,27 @@
               "imported_at": "2026-07-30",
               "ref": "164880442X",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-06",
+              "ref": "B09HSSSV2Y",
+              "type": "libex-import"
             }
           ],
-          "work": "sons-of-texas-2-of-2-dramatized-adaptation"
+          "work": "sons-of-texas-dramatized-adaptation"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "1648804403",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "1648804403",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "164880442X",
@@ -2848,9 +2817,14 @@
           "imported_at": "2026-07-30",
           "ref": "164880442X",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-06",
+          "ref": "B09HSSSV2Y",
+          "type": "libex-import"
         }
       ],
-      "title": "Sons of Texas (2 of 2) [Dramatized Adaptation]"
+      "title": "Sons of Texas [Dramatized Adaptation]"
     },
     "sons-of-the-emperor-an-anthology": {
       "added_at": "2026-08-02",

@@ -1527,6 +1527,10 @@
       "authors": [
         "simon-r-green"
       ],
+      "genres": [
+        "science-fiction",
+        "space-opera"
+      ],
       "id": "honor-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
@@ -1537,6 +1541,18 @@
           "asin": [
             {
               "asin": "B09JQPXSVD",
+              "region": "us"
+            },
+            {
+              "asin": "1648800270",
+              "region": "us"
+            },
+            {
+              "asin": "1648800297",
+              "region": "us"
+            },
+            {
+              "asin": "1648800319",
               "region": "us"
             }
           ],
@@ -1672,10 +1688,21 @@
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
-            "full-cast"
+            "full-cast",
+            "christopher-walker",
+            "colleen-delany",
+            "mort-shelby",
+            "nanette-savard",
+            "richard-rohan",
+            "terence-aselford",
+            "nick-sampson",
+            "anne-flosnik",
+            "casey-jones",
+            "cate-torre",
+            "ken-jackson"
           ],
           "publisher": "Graphic Audio LLC",
-          "release_date": "2021",
+          "release_date": "2020-10-29",
           "runtime_min": 1273,
           "sources": [
             {
@@ -1685,6 +1712,26 @@
             },
             {
               "imported_at": "2026-07-30",
+              "ref": "B09JQPXSVD",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1648800270",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1648800297",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1648800319",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-06",
               "ref": "B09JQPXSVD",
               "type": "libex-import"
             }
@@ -1697,6 +1744,26 @@
           "imported_at": "2026-07-25",
           "ref": "B09JQPXSVD",
           "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1648800270",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1648800297",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1648800319",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-06",
+          "ref": "B09JQPXSVD",
+          "type": "libex-import"
         }
       ],
       "title": "Honor [Dramatized Adaptation]"

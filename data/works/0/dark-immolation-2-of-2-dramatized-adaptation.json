@@ -1,95 +1,7 @@
 {
   "entries": {
-    "dark-immolation-2-of-2-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "christopher-husberg"
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fantasy"
-      ],
-      "id": "dark-immolation-2-of-2-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2020": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "1645417735",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3998824,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4661057,
-              "start_ms": 3998824,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4709958,
-              "start_ms": 8659881,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3221629,
-              "start_ms": 13369839,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4275675,
-              "start_ms": 16591468,
-              "title": "Chapter 5"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81H6Gppw0ML.jpg",
-          "id": "full-cast-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2020",
-          "runtime_min": 348,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1645417735",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1645417735",
-              "type": "libex-import"
-            }
-          ],
-          "work": "dark-immolation-2-of-2-dramatized-adaptation"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "1645417735",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "1645417735",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Dark Immolation (2 of 2) [Dramatized Adaptation]"
-    },
     "dark-immolation-dramatized-adaptation": {
-      "added_at": "2026-08-02",
+      "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "christopher-husberg"
       ],
@@ -103,10 +15,18 @@
       "recordings": {
         "full-cast-2021": {
           "abridged": false,
-          "added_at": "2026-08-02",
+          "added_at": "2026-07-25T17:12:12+01:00",
           "asin": [
             {
               "asin": "B09HSSF4J4",
+              "region": "us"
+            },
+            {
+              "asin": "1645417719",
+              "region": "us"
+            },
+            {
+              "asin": "1645417735",
               "region": "us"
             }
           ],
@@ -195,11 +115,36 @@
             "full-cast"
           ],
           "publisher": "GraphicAudio",
-          "release_date": "2021-10-11",
+          "release_date": "2020",
           "runtime_min": 686,
           "sources": [
             {
               "imported_at": "2026-08-02",
+              "ref": "B09HSSF4J4",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1645417719",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1645417719",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1645417735",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1645417735",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-06",
               "ref": "B09HSSF4J4",
               "type": "libex-import"
             }
@@ -210,6 +155,31 @@
       "sources": [
         {
           "imported_at": "2026-08-02",
+          "ref": "B09HSSF4J4",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "1645417719",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "1645417719",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "1645417735",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "1645417735",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-06",
           "ref": "B09HSSF4J4",
           "type": "libex-import"
         }
