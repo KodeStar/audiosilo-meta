@@ -1,7 +1,7 @@
 {
   "entries": {
     "corpies-dramatized-adaptation": {
-      "added_at": "2026-08-02",
+      "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "drew-hayes"
       ],
@@ -17,11 +17,46 @@
       "recordings": {
         "alyssa-keegan-2024": {
           "abridged": false,
-          "added_at": "2026-08-02",
+          "added_at": "2026-07-25T17:12:12+01:00",
           "asin": [
             {
               "asin": "B0CVLHBNV3",
               "region": "us"
+            },
+            {
+              "asin": "B0C4LVB568",
+              "region": "us"
+            },
+            {
+              "asin": "B0C9NPCHQZ",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 43924,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 20089799,
+              "start_ms": 43924,
+              "title": "Part I"
+            },
+            {
+              "length_ms": 20567966,
+              "start_ms": 20133723,
+              "title": "Part II"
+            },
+            {
+              "length_ms": 109000,
+              "start_ms": 40701689,
+              "title": "End Credits"
+            },
+            {
+              "length_ms": 211371,
+              "start_ms": 40810689,
+              "title": "Preview"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/916UpIOEUIL.jpg",
@@ -43,11 +78,36 @@
             "thomas-penny"
           ],
           "publisher": "Graphic Audio LLC",
-          "release_date": "2024-02-26",
+          "release_date": "2023",
           "runtime_min": 683,
           "sources": [
             {
               "imported_at": "2026-08-02",
+              "ref": "B0CVLHBNV3",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0C4LVB568",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0C4LVB568",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0C9NPCHQZ",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0C9NPCHQZ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-06",
               "ref": "B0CVLHBNV3",
               "type": "libex-import"
             }
@@ -60,207 +120,34 @@
           "imported_at": "2026-08-02",
           "ref": "B0CVLHBNV3",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B0C4LVB568",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B0C4LVB568",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B0C9NPCHQZ",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B0C9NPCHQZ",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-06",
+          "ref": "B0CVLHBNV3",
+          "type": "libex-import"
         }
       ],
       "title": "Corpies (Dramatized Adaptation)"
-    },
-    "corpies-part-1-of-2-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "drew-hayes"
-      ],
-      "genres": [
-        "action-adventure",
-        "fantasy",
-        "science-fiction",
-        "superhero"
-      ],
-      "id": "corpies-part-1-of-2-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2023": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B0C4LVB568",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3474819,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3364710,
-              "start_ms": 3474819,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3354076,
-              "start_ms": 6839529,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3258363,
-              "start_ms": 10193605,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3083842,
-              "start_ms": 13451968,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 3560523,
-              "start_ms": 16535810,
-              "title": "Chapter 6"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91+da26CdVL.jpg",
-          "id": "full-cast-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2023",
-          "runtime_min": 335,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0C4LVB568",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0C4LVB568",
-              "type": "libex-import"
-            }
-          ],
-          "work": "corpies-part-1-of-2-dramatized-adaptation"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B0C4LVB568",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B0C4LVB568",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Corpies (Part 1 of 2) (Dramatized Adaptation)"
-    },
-    "corpies-part-2-of-2-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "drew-hayes"
-      ],
-      "genres": [
-        "fantasy",
-        "superhero"
-      ],
-      "id": "corpies-part-2-of-2-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2023": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B0C9NPCHQZ",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 32924,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 3268210,
-              "start_ms": 32924,
-              "title": "Part 1"
-            },
-            {
-              "length_ms": 3938429,
-              "start_ms": 3301134,
-              "title": "Part 2"
-            },
-            {
-              "length_ms": 3254206,
-              "start_ms": 7239563,
-              "title": "Part 3"
-            },
-            {
-              "length_ms": 3056535,
-              "start_ms": 10493769,
-              "title": "Part 4"
-            },
-            {
-              "length_ms": 3324586,
-              "start_ms": 13550304,
-              "title": "Part 5"
-            },
-            {
-              "length_ms": 3950000,
-              "start_ms": 16874890,
-              "title": "Part 6"
-            },
-            {
-              "length_ms": 85371,
-              "start_ms": 20824890,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/912rw69SIgL.jpg",
-          "id": "full-cast-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2023",
-          "runtime_min": 348,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0C9NPCHQZ",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0C9NPCHQZ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "corpies-part-2-of-2-dramatized-adaptation"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B0C9NPCHQZ",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B0C9NPCHQZ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Corpies (Part 2 of 2) (Dramatized Adaptation)"
     },
     "corpo-age": {
       "added_at": "2026-08-02",

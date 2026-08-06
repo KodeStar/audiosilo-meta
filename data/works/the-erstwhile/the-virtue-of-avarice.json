@@ -12890,16 +12890,18 @@
       ],
       "title": "The Voyage of the Forgotten"
     },
-    "the-voyage-of-the-forgotten-part-1-of-2-dramatized-adaptation": {
+    "the-voyage-of-the-forgotten-dramatized-adaptation": {
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "nick-martell"
       ],
       "genres": [
+        "action-adventure",
+        "arts-entertainment",
         "epic-fantasy",
         "fantasy"
       ],
-      "id": "the-voyage-of-the-forgotten-part-1-of-2-dramatized-adaptation",
+      "id": "the-voyage-of-the-forgotten-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -12910,23 +12912,10 @@
             {
               "asin": "B0D1ZTKK6W",
               "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 44924,
-              "start_ms": 0,
-              "title": "Opening Credits"
             },
             {
-              "length_ms": 20247482,
-              "start_ms": 44924,
-              "title": "The Voyage of the Forgotten"
-            },
-            {
-              "length_ms": 73999,
-              "start_ms": 20292406,
-              "title": "End Credits"
+              "asin": "B0D6SN5QHF",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81H5KDZFpAL.jpg",
@@ -12938,7 +12927,7 @@
           ],
           "publisher": "Graphic Audio LLC",
           "release_date": "2024",
-          "runtime_min": 339,
+          "runtime_min": 830,
           "sources": [
             {
               "imported_at": "2026-07-25",
@@ -12949,9 +12938,19 @@
               "imported_at": "2026-07-30",
               "ref": "B0D1ZTKK6W",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0D6SN5QHF",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0D6SN5QHF",
+              "type": "libex-import"
             }
           ],
-          "work": "the-voyage-of-the-forgotten-part-1-of-2-dramatized-adaptation"
+          "work": "the-voyage-of-the-forgotten-dramatized-adaptation"
         }
       },
       "sources": [
@@ -12964,77 +12963,7 @@
           "imported_at": "2026-07-30",
           "ref": "B0D1ZTKK6W",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Voyage of the Forgotten (Part 1 of 2) (Dramatized Adaptation)"
-    },
-    "the-voyage-of-the-forgotten-part-2-of-2-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "nick-martell"
-      ],
-      "genres": [
-        "action-adventure",
-        "arts-entertainment",
-        "epic-fantasy",
-        "fantasy"
-      ],
-      "id": "the-voyage-of-the-forgotten-part-2-of-2-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2024": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B0D6SN5QHF",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 43924,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 29328719,
-              "start_ms": 43924,
-              "title": "The Voyage of the Forgotten"
-            },
-            {
-              "length_ms": 68536,
-              "start_ms": 29372643,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81k9OdsjlQL.jpg",
-          "id": "full-cast-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2024",
-          "runtime_min": 491,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0D6SN5QHF",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0D6SN5QHF",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-voyage-of-the-forgotten-part-2-of-2-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "B0D6SN5QHF",
@@ -13046,7 +12975,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "The Voyage of the Forgotten (Part 2 of 2) (Dramatized Adaptation)"
+      "title": "The Voyage of the Forgotten [Dramatized Adaptation]"
     },
     "the-voyage-of-the-iron-dragon-an-alternate-history-viking-epic": {
       "added_at": "2026-08-01",

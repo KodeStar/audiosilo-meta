@@ -1335,7 +1335,7 @@
       ],
       "title": "Super Powereds: Year 3"
     },
-    "super-powereds-year-3-part-1-of-3-dramatized-adaptation": {
+    "super-powereds-year-3-dramatized-adaptation": {
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "drew-hayes"
@@ -1345,7 +1345,7 @@
         "fantasy",
         "superhero"
       ],
-      "id": "super-powereds-year-3-part-1-of-3-dramatized-adaptation",
+      "id": "super-powereds-year-3-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -1356,43 +1356,14 @@
             {
               "asin": "B0BNJV1DVR",
               "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3865216,
-              "start_ms": 0,
-              "title": "Chapter 1"
             },
             {
-              "length_ms": 4259793,
-              "start_ms": 3865216,
-              "title": "Chapter 2"
+              "asin": "B0BR8GQGR6",
+              "region": "us"
             },
             {
-              "length_ms": 3535957,
-              "start_ms": 8125009,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3661693,
-              "start_ms": 11660966,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3611608,
-              "start_ms": 15322659,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 3414029,
-              "start_ms": 18934267,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 4316356,
-              "start_ms": 22348296,
-              "title": "Chapter 7"
+              "asin": "B0BVGVCS6F",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91FngwU7ELL.jpg",
@@ -1404,7 +1375,7 @@
           ],
           "publisher": "Graphic Audio LLC",
           "release_date": "2022",
-          "runtime_min": 444,
+          "runtime_min": 1341,
           "sources": [
             {
               "imported_at": "2026-07-25",
@@ -1415,9 +1386,29 @@
               "imported_at": "2026-07-30",
               "ref": "B0BNJV1DVR",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0BR8GQGR6",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0BR8GQGR6",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0BVGVCS6F",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0BVGVCS6F",
+              "type": "libex-import"
             }
           ],
-          "work": "super-powereds-year-3-part-1-of-3-dramatized-adaptation"
+          "work": "super-powereds-year-3-dramatized-adaptation"
         }
       },
       "sources": [
@@ -1430,105 +1421,7 @@
           "imported_at": "2026-07-30",
           "ref": "B0BNJV1DVR",
           "type": "libex-import"
-        }
-      ],
-      "title": "Super Powereds: Year 3 (Part 1 of 3) (Dramatized Adaptation)"
-    },
-    "super-powereds-year-3-part-2-of-3-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "drew-hayes"
-      ],
-      "genres": [
-        "fantasy",
-        "superhero"
-      ],
-      "id": "super-powereds-year-3-part-2-of-3-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2023": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B0BR8GQGR6",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 31137,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 3573273,
-              "start_ms": 31137,
-              "title": "Part 1"
-            },
-            {
-              "length_ms": 4017980,
-              "start_ms": 3604410,
-              "title": "Part 2"
-            },
-            {
-              "length_ms": 3875619,
-              "start_ms": 7622390,
-              "title": "Part 3"
-            },
-            {
-              "length_ms": 3572691,
-              "start_ms": 11498009,
-              "title": "Part 4"
-            },
-            {
-              "length_ms": 3414401,
-              "start_ms": 15070700,
-              "title": "Part 5"
-            },
-            {
-              "length_ms": 4179197,
-              "start_ms": 18485101,
-              "title": "Part 6"
-            },
-            {
-              "length_ms": 3884442,
-              "start_ms": 22664298,
-              "title": "Part 7"
-            },
-            {
-              "length_ms": 224421,
-              "start_ms": 26548740,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91FRYx5wvmL.jpg",
-          "id": "full-cast-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2023",
-          "runtime_min": 446,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0BR8GQGR6",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0BR8GQGR6",
-              "type": "libex-import"
-            }
-          ],
-          "work": "super-powereds-year-3-part-2-of-3-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "B0BR8GQGR6",
@@ -1538,106 +1431,7 @@
           "imported_at": "2026-07-30",
           "ref": "B0BR8GQGR6",
           "type": "libex-import"
-        }
-      ],
-      "title": "Super Powereds: Year 3 (Part 2 of 3) (Dramatized Adaptation)"
-    },
-    "super-powereds-year-3-part-3-of-3-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "drew-hayes"
-      ],
-      "genres": [
-        "action-adventure",
-        "fantasy",
-        "superhero"
-      ],
-      "id": "super-powereds-year-3-part-3-of-3-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2023": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B0BVGVCS6F",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 38924,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 3912299,
-              "start_ms": 38924,
-              "title": "1"
-            },
-            {
-              "length_ms": 3421831,
-              "start_ms": 3951223,
-              "title": "2"
-            },
-            {
-              "length_ms": 3630857,
-              "start_ms": 7373054,
-              "title": "3"
-            },
-            {
-              "length_ms": 3936943,
-              "start_ms": 11003911,
-              "title": "4"
-            },
-            {
-              "length_ms": 3963855,
-              "start_ms": 14940854,
-              "title": "5"
-            },
-            {
-              "length_ms": 3614255,
-              "start_ms": 18904709,
-              "title": "6"
-            },
-            {
-              "length_ms": 4478386,
-              "start_ms": 22518964,
-              "title": "7"
-            },
-            {
-              "length_ms": 86215,
-              "start_ms": 26997350,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91PCcCXtp7L.jpg",
-          "id": "full-cast-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2023",
-          "runtime_min": 451,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0BVGVCS6F",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0BVGVCS6F",
-              "type": "libex-import"
-            }
-          ],
-          "work": "super-powereds-year-3-part-3-of-3-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "B0BVGVCS6F",
@@ -1649,7 +1443,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Super Powereds: Year 3 (Part 3 of 3) (Dramatized Adaptation)"
+      "title": "Super Powereds: Year 3 [Dramatized Adaptation]"
     },
     "super-powereds-year-4": {
       "added_at": "2026-08-02",
@@ -3340,7 +3134,7 @@
       ],
       "title": "Super Powereds: Year 4"
     },
-    "super-powereds-year-4-part-1-of-4-dramatized-adaptation": {
+    "super-powereds-year-4-dramatized-adaptation": {
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "drew-hayes"
@@ -3351,7 +3145,7 @@
         "science-fiction",
         "superhero"
       ],
-      "id": "super-powereds-year-4-part-1-of-4-dramatized-adaptation",
+      "id": "super-powereds-year-4-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -3362,58 +3156,18 @@
             {
               "asin": "B0CP4H2NFS",
               "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 37924,
-              "start_ms": 0,
-              "title": "Opening Credits"
             },
             {
-              "length_ms": 3920961,
-              "start_ms": 37924,
-              "title": "Chapter 1"
+              "asin": "B0CW3VJV33",
+              "region": "us"
             },
             {
-              "length_ms": 3786710,
-              "start_ms": 3958885,
-              "title": "Chapter 2"
+              "asin": "B0D15DPG3F",
+              "region": "us"
             },
             {
-              "length_ms": 3138966,
-              "start_ms": 7745595,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3733675,
-              "start_ms": 10884561,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3671167,
-              "start_ms": 14618236,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 3977671,
-              "start_ms": 18289403,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 3985000,
-              "start_ms": 22267074,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 149000,
-              "start_ms": 26252074,
-              "title": "End Credits"
-            },
-            {
-              "length_ms": 553550,
-              "start_ms": 26401074,
-              "title": "Free Preview"
+              "asin": "B0D1ZK4XB3",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91NLyWCSB8L.jpg",
@@ -3425,7 +3179,7 @@
           ],
           "publisher": "Graphic Audio LLC",
           "release_date": "2023",
-          "runtime_min": 449,
+          "runtime_min": 1717,
           "sources": [
             {
               "imported_at": "2026-07-25",
@@ -3436,9 +3190,39 @@
               "imported_at": "2026-07-30",
               "ref": "B0CP4H2NFS",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0CW3VJV33",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0CW3VJV33",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0D15DPG3F",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0D15DPG3F",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0D1ZK4XB3",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0D1ZK4XB3",
+              "type": "libex-import"
             }
           ],
-          "work": "super-powereds-year-4-part-1-of-4-dramatized-adaptation"
+          "work": "super-powereds-year-4-dramatized-adaptation"
         }
       },
       "sources": [
@@ -3451,105 +3235,7 @@
           "imported_at": "2026-07-30",
           "ref": "B0CP4H2NFS",
           "type": "libex-import"
-        }
-      ],
-      "title": "Super Powereds: Year 4 (Part 1 of 4) (Dramatized Adaptation)"
-    },
-    "super-powereds-year-4-part-2-of-4-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "drew-hayes"
-      ],
-      "genres": [
-        "fantasy",
-        "superhero"
-      ],
-      "id": "super-powereds-year-4-part-2-of-4-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2024": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B0CW3VJV33",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 33924,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 3804868,
-              "start_ms": 33924,
-              "title": "Part I"
-            },
-            {
-              "length_ms": 3506282,
-              "start_ms": 3838792,
-              "title": "Part II"
-            },
-            {
-              "length_ms": 3210553,
-              "start_ms": 7345074,
-              "title": "Part III"
-            },
-            {
-              "length_ms": 2763708,
-              "start_ms": 10555627,
-              "title": "Part IV"
-            },
-            {
-              "length_ms": 3213455,
-              "start_ms": 13319335,
-              "title": "Part V"
-            },
-            {
-              "length_ms": 3904899,
-              "start_ms": 16532790,
-              "title": "Part VI"
-            },
-            {
-              "length_ms": 4067000,
-              "start_ms": 20437689,
-              "title": "Part VII"
-            },
-            {
-              "length_ms": 219077,
-              "start_ms": 24504689,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91SakkIyW-L.jpg",
-          "id": "full-cast-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2024",
-          "runtime_min": 412,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0CW3VJV33",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0CW3VJV33",
-              "type": "libex-import"
-            }
-          ],
-          "work": "super-powereds-year-4-part-2-of-4-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "B0CW3VJV33",
@@ -3559,107 +3245,7 @@
           "imported_at": "2026-07-30",
           "ref": "B0CW3VJV33",
           "type": "libex-import"
-        }
-      ],
-      "title": "Super Powereds: Year 4 (Part 2 of 4) (Dramatized Adaptation)"
-    },
-    "super-powereds-year-4-part-3-of-4-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "drew-hayes"
-      ],
-      "genres": [
-        "action-adventure",
-        "fantasy",
-        "science-fiction",
-        "superhero"
-      ],
-      "id": "super-powereds-year-4-part-3-of-4-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2024": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B0D15DPG3F",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 34481,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 3707437,
-              "start_ms": 34481,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3932160,
-              "start_ms": 3741918,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3872345,
-              "start_ms": 7674078,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 2863995,
-              "start_ms": 11546423,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4352975,
-              "start_ms": 14410418,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 3954845,
-              "start_ms": 18763393,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 4161758,
-              "start_ms": 22718238,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 70356,
-              "start_ms": 26879996,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91Vs7EpYJiL.jpg",
-          "id": "full-cast-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2024",
-          "runtime_min": 449,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0D15DPG3F",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0D15DPG3F",
-              "type": "libex-import"
-            }
-          ],
-          "work": "super-powereds-year-4-part-3-of-4-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "B0D15DPG3F",
@@ -3669,112 +3255,7 @@
           "imported_at": "2026-07-30",
           "ref": "B0D15DPG3F",
           "type": "libex-import"
-        }
-      ],
-      "title": "Super Powereds: Year 4 (Part 3 of 4) (Dramatized Adaptation)"
-    },
-    "super-powereds-year-4-part-4-of-4-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "drew-hayes"
-      ],
-      "genres": [
-        "action-adventure",
-        "fantasy",
-        "science-fiction",
-        "superhero"
-      ],
-      "id": "super-powereds-year-4-part-4-of-4-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2024": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B0D1ZK4XB3",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 40924,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 3280574,
-              "start_ms": 40924,
-              "title": "Part 1"
-            },
-            {
-              "length_ms": 3180622,
-              "start_ms": 3321498,
-              "title": "Part 2"
-            },
-            {
-              "length_ms": 3194415,
-              "start_ms": 6502120,
-              "title": "Part 3"
-            },
-            {
-              "length_ms": 3829736,
-              "start_ms": 9696535,
-              "title": "Part 4"
-            },
-            {
-              "length_ms": 3400446,
-              "start_ms": 13526271,
-              "title": "Part 5"
-            },
-            {
-              "length_ms": 3405252,
-              "start_ms": 16926717,
-              "title": "Part 6"
-            },
-            {
-              "length_ms": 3684000,
-              "start_ms": 20331969,
-              "title": "Part 7"
-            },
-            {
-              "length_ms": 145000,
-              "start_ms": 24015969,
-              "title": "End Credits"
-            },
-            {
-              "length_ms": 248794,
-              "start_ms": 24160969,
-              "title": "Bonus Preview"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91EF4HoT3TL.jpg",
-          "id": "full-cast-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2024",
-          "runtime_min": 407,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0D1ZK4XB3",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0D1ZK4XB3",
-              "type": "libex-import"
-            }
-          ],
-          "work": "super-powereds-year-4-part-4-of-4-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "B0D1ZK4XB3",
@@ -3786,298 +3267,10 @@
           "type": "libex-import"
         }
       ],
-      "title": "Super Powereds: Year 4 (Part 4 of 4) (Dramatized Adaptation)"
-    },
-    "super-powereds-year-one-1-of-3-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "drew-hayes"
-      ],
-      "id": "super-powereds-year-one-1-of-3-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2021": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "1648816606",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 30924,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 2938257,
-              "start_ms": 30924,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3958305,
-              "start_ms": 2969181,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3641283,
-              "start_ms": 6927486,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3571252,
-              "start_ms": 10568769,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3108316,
-              "start_ms": 14140021,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 3860000,
-              "start_ms": 17248337,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 138000,
-              "start_ms": 21108337,
-              "title": "End Credits"
-            },
-            {
-              "length_ms": 240825,
-              "start_ms": 21246337,
-              "title": "Trailer for The Boys"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91GHMNIO1zL.jpg",
-          "id": "full-cast-2021",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2021",
-          "runtime_min": 357,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648816606",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648816606",
-              "type": "libex-import"
-            }
-          ],
-          "work": "super-powereds-year-one-1-of-3-dramatized-adaptation"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "1648816606",
-          "type": "audiosilo-books-import"
-        }
-      ],
-      "title": "Super Powereds: Year One (1 of 3) (Dramatized Adaptation)"
-    },
-    "super-powereds-year-one-2-of-3-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "drew-hayes"
-      ],
-      "genres": [
-        "action-adventure",
-        "fantasy",
-        "science-fiction",
-        "superhero"
-      ],
-      "id": "super-powereds-year-one-2-of-3-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2021": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "1648817696",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 35322,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 2847853,
-              "start_ms": 35322,
-              "title": "Part 1"
-            },
-            {
-              "length_ms": 2756278,
-              "start_ms": 2883175,
-              "title": "Part 2"
-            },
-            {
-              "length_ms": 2848415,
-              "start_ms": 5639453,
-              "title": "Part 3"
-            },
-            {
-              "length_ms": 3636453,
-              "start_ms": 8487868,
-              "title": "Part 4"
-            },
-            {
-              "length_ms": 3288293,
-              "start_ms": 12124321,
-              "title": "Part 5"
-            },
-            {
-              "length_ms": 3812081,
-              "start_ms": 15412614,
-              "title": "Part 6"
-            },
-            {
-              "length_ms": 223871,
-              "start_ms": 19224695,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91SioDsNtsL.jpg",
-          "id": "full-cast-2021",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2021",
-          "runtime_min": 324,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648817696",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648817696",
-              "type": "libex-import"
-            }
-          ],
-          "work": "super-powereds-year-one-2-of-3-dramatized-adaptation"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "1648817696",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "1648817696",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Super Powereds: Year One (2 of 3) [Dramatized Adaptation]"
-    },
-    "super-powereds-year-one-3-of-3-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "drew-hayes"
-      ],
-      "id": "super-powereds-year-one-3-of-3-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2021": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "1648818412",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 2927896,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 2938787,
-              "start_ms": 2927896,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3411777,
-              "start_ms": 5866683,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 2511121,
-              "start_ms": 9278460,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3167851,
-              "start_ms": 11789581,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 3330831,
-              "start_ms": 14957432,
-              "title": "Chapter 6"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91RdXti6U5L.jpg",
-          "id": "full-cast-2021",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2021",
-          "runtime_min": 304,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648818412",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648818412",
-              "type": "libex-import"
-            }
-          ],
-          "work": "super-powereds-year-one-3-of-3-dramatized-adaptation"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "1648818412",
-          "type": "audiosilo-books-import"
-        }
-      ],
-      "title": "Super Powereds: Year One (3 of 3) [Dramatized Adaptation]"
+      "title": "Super Powereds: Year 4 [Dramatized Adaptation]"
     },
     "super-powereds-year-one-dramatized-adaptation": {
-      "added_at": "2026-08-02",
+      "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "drew-hayes"
       ],
@@ -4085,6 +3278,7 @@
         "action-adventure",
         "coming-of-age",
         "fantasy",
+        "science-fiction",
         "superhero"
       ],
       "id": "super-powereds-year-one-dramatized-adaptation",
@@ -4093,10 +3287,22 @@
       "recordings": {
         "alejandro-ruiz-2021": {
           "abridged": false,
-          "added_at": "2026-08-02",
+          "added_at": "2026-07-25T17:12:12+01:00",
           "asin": [
             {
               "asin": "B09JQPMHLY",
+              "region": "us"
+            },
+            {
+              "asin": "1648816606",
+              "region": "us"
+            },
+            {
+              "asin": "1648817696",
+              "region": "us"
+            },
+            {
+              "asin": "1648818412",
               "region": "us"
             }
           ],
@@ -4222,7 +3428,8 @@
             "megan-poppy",
             "rana-kay",
             "yasmin-tuazon",
-            "zeke-alton"
+            "zeke-alton",
+            "full-cast"
           ],
           "publisher": "Graphic Audio LLC",
           "release_date": "2021-10-20",
@@ -4230,6 +3437,41 @@
           "sources": [
             {
               "imported_at": "2026-08-02",
+              "ref": "B09JQPMHLY",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648816606",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648816606",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648817696",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648817696",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648818412",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648818412",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-06",
               "ref": "B09JQPMHLY",
               "type": "libex-import"
             }
@@ -4240,6 +3482,31 @@
       "sources": [
         {
           "imported_at": "2026-08-02",
+          "ref": "B09JQPMHLY",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "1648816606",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "1648817696",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "1648817696",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "1648818412",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-08-06",
           "ref": "B09JQPMHLY",
           "type": "libex-import"
         }
@@ -4308,108 +3575,17 @@
       ],
       "title": "Super Powereds: Year Three (Dramatized Adaptation)"
     },
-    "super-powereds-year-two-1-of-3-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "drew-hayes"
-      ],
-      "genres": [
-        "fantasy",
-        "superhero"
-      ],
-      "id": "super-powereds-year-two-1-of-3-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2022": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B09S7Q8287",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3459842,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3197759,
-              "start_ms": 3459842,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3255437,
-              "start_ms": 6657601,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3268649,
-              "start_ms": 9913038,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3064778,
-              "start_ms": 13181687,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 3745865,
-              "start_ms": 16246465,
-              "title": "Chapter 6"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91GEKuOTeSL.jpg",
-          "id": "full-cast-2022",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2022",
-          "runtime_min": 333,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B09S7Q8287",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B09S7Q8287",
-              "type": "libex-import"
-            }
-          ],
-          "work": "super-powereds-year-two-1-of-3-dramatized-adaptation"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B09S7Q8287",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B09S7Q8287",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Super Powereds: Year Two (1 of 3) (Dramatized Adaptation)"
-    },
     "super-powereds-year-two-dramatized-adaptation": {
-      "added_at": "2026-08-02",
+      "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "drew-hayes"
       ],
       "genres": [
         "action-adventure",
         "arts-entertainment",
+        "coming-of-age",
         "fantasy",
+        "science-fiction",
         "superhero"
       ],
       "id": "super-powereds-year-two-dramatized-adaptation",
@@ -4418,10 +3594,22 @@
       "recordings": {
         "alejandro-ruiz-2023": {
           "abridged": false,
-          "added_at": "2026-08-02",
+          "added_at": "2026-07-25T17:12:12+01:00",
           "asin": [
             {
               "asin": "B0BZJR1HV1",
+              "region": "us"
+            },
+            {
+              "asin": "B09S7Q8287",
+              "region": "us"
+            },
+            {
+              "asin": "B09X6MCZXP",
+              "region": "us"
+            },
+            {
+              "asin": "B09ZQ2SCNW",
               "region": "us"
             }
           ],
@@ -4532,14 +3720,50 @@
             "megan-poppy",
             "rana-kay",
             "yasmin-tuazon",
-            "zeke-alton"
+            "zeke-alton",
+            "full-cast"
           ],
           "publisher": "Graphic Audio LLC",
-          "release_date": "2023-04-01",
+          "release_date": "2022",
           "runtime_min": 1191,
           "sources": [
             {
               "imported_at": "2026-08-02",
+              "ref": "B0BZJR1HV1",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B09S7Q8287",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B09S7Q8287",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B09X6MCZXP",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B09X6MCZXP",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B09ZQ2SCNW",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B09ZQ2SCNW",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-06",
               "ref": "B0BZJR1HV1",
               "type": "libex-import"
             }
@@ -4552,226 +3776,44 @@
           "imported_at": "2026-08-02",
           "ref": "B0BZJR1HV1",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B09S7Q8287",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B09S7Q8287",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B09X6MCZXP",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B09X6MCZXP",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B09ZQ2SCNW",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B09ZQ2SCNW",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-06",
+          "ref": "B0BZJR1HV1",
+          "type": "libex-import"
         }
       ],
       "title": "Super Powereds: Year Two (Dramatized Adaptation)"
-    },
-    "super-powereds-year-two-part-2-of-3-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "drew-hayes"
-      ],
-      "genres": [
-        "action-adventure",
-        "coming-of-age",
-        "fantasy",
-        "science-fiction",
-        "superhero"
-      ],
-      "id": "super-powereds-year-two-part-2-of-3-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2022": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B09X6MCZXP",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 36513,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 4122366,
-              "start_ms": 36513,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3623032,
-              "start_ms": 4158879,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4372178,
-              "start_ms": 7781911,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3804775,
-              "start_ms": 12154089,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3976301,
-              "start_ms": 15958864,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 4016361,
-              "start_ms": 19935165,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 387650,
-              "start_ms": 23951526,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91y3O7EskDL.jpg",
-          "id": "full-cast-2022",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2022",
-          "runtime_min": 405,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B09X6MCZXP",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B09X6MCZXP",
-              "type": "libex-import"
-            }
-          ],
-          "work": "super-powereds-year-two-part-2-of-3-dramatized-adaptation"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B09X6MCZXP",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B09X6MCZXP",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Super Powereds: Year Two (Part 2 of 3) (Dramatized Adaptation)"
-    },
-    "super-powereds-year-two-part-3-of-3-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "drew-hayes"
-      ],
-      "genres": [
-        "action-adventure",
-        "coming-of-age",
-        "fantasy",
-        "science-fiction",
-        "superhero"
-      ],
-      "id": "super-powereds-year-two-part-3-of-3-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2022": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B09ZQ2SCNW",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 38753,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 3975605,
-              "start_ms": 38753,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 5141640,
-              "start_ms": 4014358,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4593185,
-              "start_ms": 9155998,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 4441002,
-              "start_ms": 13749183,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3828320,
-              "start_ms": 18190185,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 4465000,
-              "start_ms": 22018505,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 135000,
-              "start_ms": 26483505,
-              "title": "End Credits"
-            },
-            {
-              "length_ms": 551856,
-              "start_ms": 26618505,
-              "title": "Preview of The Rookie: Galactic Football League, Book 1"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91ngg4MrSxL.jpg",
-          "id": "full-cast-2022",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2022",
-          "runtime_min": 453,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B09ZQ2SCNW",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B09ZQ2SCNW",
-              "type": "libex-import"
-            }
-          ],
-          "work": "super-powereds-year-two-part-3-of-3-dramatized-adaptation"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B09ZQ2SCNW",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B09ZQ2SCNW",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Super Powereds: Year Two (Part 3 of 3) (Dramatized Adaptation)"
     },
     "super-ren-german-edition": {
       "added_at": "2026-08-02",

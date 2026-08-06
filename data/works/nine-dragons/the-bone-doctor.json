@@ -12083,17 +12083,18 @@
       ],
       "title": "The Book of Azrael"
     },
-    "the-book-of-azrael-part-1-of-2-dramatized-adaptation": {
+    "the-book-of-azrael-dramatized-adaptation": {
       "added_at": "2026-08-02",
       "authors": [
         "amber-v-nicole"
       ],
       "genres": [
+        "action-adventure",
         "arts-entertainment",
         "fantasy",
         "urban-fantasy"
       ],
-      "id": "the-book-of-azrael-part-1-of-2-dramatized-adaptation",
+      "id": "the-book-of-azrael-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -12103,6 +12104,10 @@
           "asin": [
             {
               "asin": "B0FF5DQKQY",
+              "region": "us"
+            },
+            {
+              "asin": "B0FSB5WW3P",
               "region": "us"
             }
           ],
@@ -12122,19 +12127,31 @@
             "marlon-dance-hooi",
             "rayner-gabriel",
             "richard-rohan",
-            "torian-brackett"
+            "torian-brackett",
+            "bru-aju",
+            "daniel-llaca",
+            "fabiolla-da-silva",
+            "michael-john-casey",
+            "nora-sofyan",
+            "ozzie-jacobs",
+            "robb-moreira"
           ],
           "publisher": "Graphic Audio LLC",
           "release_date": "2025-08-15",
-          "runtime_min": 595,
+          "runtime_min": 1146,
           "sources": [
             {
               "imported_at": "2026-08-02",
               "ref": "B0FF5DQKQY",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FSB5WW3P",
+              "type": "libex-import"
             }
           ],
-          "work": "the-book-of-azrael-part-1-of-2-dramatized-adaptation"
+          "work": "the-book-of-azrael-dramatized-adaptation"
         }
       },
       "sources": [
@@ -12142,71 +12159,14 @@
           "imported_at": "2026-08-02",
           "ref": "B0FF5DQKQY",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Book of Azrael (Part 1 of 2) (Dramatized Adaptation)"
-    },
-    "the-book-of-azrael-part-2-of-2-dramatized-adaptation": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "amber-v-nicole"
-      ],
-      "genres": [
-        "action-adventure",
-        "fantasy"
-      ],
-      "id": "the-book-of-azrael-part-2-of-2-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "bru-aju-2025": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0FSB5WW3P",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81t2CblhZIL.jpg",
-          "id": "bru-aju-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "bru-aju",
-            "daniel-llaca",
-            "fabiolla-da-silva",
-            "full-cast",
-            "gabriel-michael",
-            "marissa-clay",
-            "marlon-dance-hooi",
-            "michael-john-casey",
-            "nora-sofyan",
-            "ozzie-jacobs",
-            "rayner-gabriel",
-            "robb-moreira"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2025-11-06",
-          "runtime_min": 551,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0FSB5WW3P",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-book-of-azrael-part-2-of-2-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0FSB5WW3P",
           "type": "libex-import"
         }
       ],
-      "title": "The Book of Azrael (Part 2 of 2) (Dramatized Adaptation)"
+      "title": "The Book of Azrael [Dramatized Adaptation]"
     },
     "the-book-of-beasts": {
       "added_at": "2026-08-02",

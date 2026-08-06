@@ -7333,7 +7333,7 @@
       ],
       "title": "People of Leaf and Branch"
     },
-    "people-of-the-earth-1-of-3-dramatized-adaptation": {
+    "people-of-the-earth-dramatized-adaptation": {
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "kathleen-gear",
@@ -7344,7 +7344,7 @@
         "history",
         "literary-fiction"
       ],
-      "id": "people-of-the-earth-1-of-3-dramatized-adaptation",
+      "id": "people-of-the-earth-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -7355,38 +7355,14 @@
             {
               "asin": "1648814301",
               "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3909520,
-              "start_ms": 0,
-              "title": "Chapter 1"
             },
             {
-              "length_ms": 3872345,
-              "start_ms": 3909520,
-              "title": "Chapter 2"
+              "asin": "1648814328",
+              "region": "us"
             },
             {
-              "length_ms": 4315475,
-              "start_ms": 7781865,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3808444,
-              "start_ms": 12097340,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3798598,
-              "start_ms": 15905784,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 3764952,
-              "start_ms": 19704382,
-              "title": "Chapter 6"
+              "asin": "1648814344",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91F-CIDi-9L.jpg",
@@ -7398,7 +7374,7 @@
           ],
           "publisher": "GraphicAudio",
           "release_date": "2020",
-          "runtime_min": 383,
+          "runtime_min": 1130,
           "sources": [
             {
               "imported_at": "2026-07-25",
@@ -7409,9 +7385,29 @@
               "imported_at": "2026-07-30",
               "ref": "1648814301",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648814328",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648814328",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648814344",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648814344",
+              "type": "libex-import"
             }
           ],
-          "work": "people-of-the-earth-1-of-3-dramatized-adaptation"
+          "work": "people-of-the-earth-dramatized-adaptation"
         }
       },
       "sources": [
@@ -7424,92 +7420,7 @@
           "imported_at": "2026-07-30",
           "ref": "1648814301",
           "type": "libex-import"
-        }
-      ],
-      "title": "People of the Earth (1 of 3) [Dramatized Adaptation]"
-    },
-    "people-of-the-earth-2-of-3-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "kathleen-gear",
-        "w-michael-gear"
-      ],
-      "genres": [
-        "historical-fiction",
-        "history",
-        "literary-fiction"
-      ],
-      "id": "people-of-the-earth-2-of-3-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2020": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "1648814328",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3451437,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3923266,
-              "start_ms": 3451437,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3859156,
-              "start_ms": 7374703,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3563821,
-              "start_ms": 11233859,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3724945,
-              "start_ms": 14797680,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 4439724,
-              "start_ms": 18522625,
-              "title": "Chapter 6"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91DV-WdyViL.jpg",
-          "id": "full-cast-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2020",
-          "runtime_min": 375,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648814328",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648814328",
-              "type": "libex-import"
-            }
-          ],
-          "work": "people-of-the-earth-2-of-3-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "1648814328",
@@ -7519,92 +7430,7 @@
           "imported_at": "2026-07-30",
           "ref": "1648814328",
           "type": "libex-import"
-        }
-      ],
-      "title": "People of the Earth (2 of 3) [Dramatized Adaptation]"
-    },
-    "people-of-the-earth-3-of-3-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "kathleen-gear",
-        "w-michael-gear"
-      ],
-      "genres": [
-        "historical-fiction",
-        "history",
-        "literary-fiction"
-      ],
-      "id": "people-of-the-earth-3-of-3-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2020": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "1648814344",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4159576,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3641446,
-              "start_ms": 4159576,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3843181,
-              "start_ms": 7801022,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3321405,
-              "start_ms": 11644203,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3643303,
-              "start_ms": 14965608,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 4174203,
-              "start_ms": 18608911,
-              "title": "Chapter 6"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91QlK1E12JL.jpg",
-          "id": "full-cast-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2020",
-          "runtime_min": 372,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648814344",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648814344",
-              "type": "libex-import"
-            }
-          ],
-          "work": "people-of-the-earth-3-of-3-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "1648814344",
@@ -7616,9 +7442,9 @@
           "type": "libex-import"
         }
       ],
-      "title": "People of the Earth (3 of 3) [Dramatized Adaptation]"
+      "title": "People of the Earth [Dramatized Adaptation]"
     },
-    "people-of-the-fire-1-of-2-dramatized-adaptation": {
+    "people-of-the-fire-dramatized-adaptation": {
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "kathleen-gear",
@@ -7629,7 +7455,7 @@
         "history",
         "literary-fiction"
       ],
-      "id": "people-of-the-fire-1-of-2-dramatized-adaptation",
+      "id": "people-of-the-fire-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -7640,38 +7466,10 @@
             {
               "asin": "1648814263",
               "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4205063,
-              "start_ms": 0,
-              "title": "Chapter 1"
             },
             {
-              "length_ms": 4144111,
-              "start_ms": 4205063,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4222525,
-              "start_ms": 8349174,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 4148477,
-              "start_ms": 12571699,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3906339,
-              "start_ms": 16720176,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 4305489,
-              "start_ms": 20626515,
-              "title": "Chapter 6"
+              "asin": "164881428X",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91-zC+UC+pL.jpg",
@@ -7683,7 +7481,7 @@
           ],
           "publisher": "GraphicAudio",
           "release_date": "2020",
-          "runtime_min": 409,
+          "runtime_min": 811,
           "sources": [
             {
               "imported_at": "2026-07-25",
@@ -7694,9 +7492,19 @@
               "imported_at": "2026-07-30",
               "ref": "1648814263",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "164881428X",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "164881428X",
+              "type": "libex-import"
             }
           ],
-          "work": "people-of-the-fire-1-of-2-dramatized-adaptation"
+          "work": "people-of-the-fire-dramatized-adaptation"
         }
       },
       "sources": [
@@ -7709,92 +7517,7 @@
           "imported_at": "2026-07-30",
           "ref": "1648814263",
           "type": "libex-import"
-        }
-      ],
-      "title": "People of the Fire (1 of 2) [Dramatized Adaptation]"
-    },
-    "people-of-the-fire-2-of-2-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "kathleen-gear",
-        "w-michael-gear"
-      ],
-      "genres": [
-        "historical-fiction",
-        "history",
-        "literary-fiction"
-      ],
-      "id": "people-of-the-fire-2-of-2-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2020": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "164881428X",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3800131,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4176712,
-              "start_ms": 3800131,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4017330,
-              "start_ms": 7976843,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3886927,
-              "start_ms": 11994173,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4204390,
-              "start_ms": 15881100,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 4379491,
-              "start_ms": 20085490,
-              "title": "Chapter 6"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91s2LsdkUNL.jpg",
-          "id": "full-cast-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2020",
-          "runtime_min": 402,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "164881428X",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "164881428X",
-              "type": "libex-import"
-            }
-          ],
-          "work": "people-of-the-fire-2-of-2-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "164881428X",
@@ -7806,7 +7529,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "People of the Fire (2 of 2) [Dramatized Adaptation]"
+      "title": "People of the Fire [Dramatized Adaptation]"
     },
     "people-of-the-great-plains": {
       "added_at": "2026-08-01",
@@ -7926,7 +7649,7 @@
       ],
       "title": "People of the Great Plains from Prehistoric Age to the 1800’s"
     },
-    "people-of-the-river-1-of-3-dramatized-adaptation": {
+    "people-of-the-river-dramatized-adaptation": {
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "kathleen-gear",
@@ -7937,7 +7660,7 @@
         "history",
         "literary-fiction"
       ],
-      "id": "people-of-the-river-1-of-3-dramatized-adaptation",
+      "id": "people-of-the-river-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -7948,33 +7671,14 @@
             {
               "asin": "1648814360",
               "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3820820,
-              "start_ms": 0,
-              "title": "Chapter 1"
             },
             {
-              "length_ms": 4030426,
-              "start_ms": 3820820,
-              "title": "Chapter 2"
+              "asin": "1648814387",
+              "region": "us"
             },
             {
-              "length_ms": 4284546,
-              "start_ms": 7851246,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3859620,
-              "start_ms": 12135792,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4355319,
-              "start_ms": 15995412,
-              "title": "Chapter 5"
+              "asin": "1648814409",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91ZJBbWXhkL.jpg",
@@ -7986,7 +7690,7 @@
           ],
           "publisher": "GraphicAudio",
           "release_date": "2020",
-          "runtime_min": 332,
+          "runtime_min": 963,
           "sources": [
             {
               "imported_at": "2026-07-25",
@@ -7997,9 +7701,29 @@
               "imported_at": "2026-07-30",
               "ref": "1648814360",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648814387",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648814387",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648814409",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648814409",
+              "type": "libex-import"
             }
           ],
-          "work": "people-of-the-river-1-of-3-dramatized-adaptation"
+          "work": "people-of-the-river-dramatized-adaptation"
         }
       },
       "sources": [
@@ -8012,87 +7736,7 @@
           "imported_at": "2026-07-30",
           "ref": "1648814360",
           "type": "libex-import"
-        }
-      ],
-      "title": "People of the River (1 of 3) [Dramatized Adaptation]"
-    },
-    "people-of-the-river-2-of-3-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "kathleen-gear",
-        "w-michael-gear"
-      ],
-      "genres": [
-        "historical-fiction",
-        "history",
-        "literary-fiction"
-      ],
-      "id": "people-of-the-river-2-of-3-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2020": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "1648814387",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4028127,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4374453,
-              "start_ms": 4028127,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4111139,
-              "start_ms": 8402580,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 4047052,
-              "start_ms": 12513719,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4317262,
-              "start_ms": 16560771,
-              "title": "Chapter 5"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91mqaerzuWL.jpg",
-          "id": "full-cast-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2020",
-          "runtime_min": 340,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648814387",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648814387",
-              "type": "libex-import"
-            }
-          ],
-          "work": "people-of-the-river-2-of-3-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "1648814387",
@@ -8102,85 +7746,7 @@
           "imported_at": "2026-07-30",
           "ref": "1648814387",
           "type": "libex-import"
-        }
-      ],
-      "title": "People of the River (2 of 3) [Dramatized Adaptation]"
-    },
-    "people-of-the-river-3-of-3-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "kathleen-gear",
-        "w-michael-gear"
-      ],
-      "genres": [
-        "historical-fiction"
-      ],
-      "id": "people-of-the-river-3-of-3-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2020": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "1648814409",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3731655,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3368472,
-              "start_ms": 3731655,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3292984,
-              "start_ms": 7100127,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3353704,
-              "start_ms": 10393111,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4032933,
-              "start_ms": 13746815,
-              "title": "Chapter 5"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81zdhRjElfL.jpg",
-          "id": "full-cast-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2020",
-          "runtime_min": 291,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648814409",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648814409",
-              "type": "libex-import"
-            }
-          ],
-          "work": "people-of-the-river-3-of-3-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "1648814409",
@@ -8192,9 +7758,9 @@
           "type": "libex-import"
         }
       ],
-      "title": "People of the River (3 of 3) [Dramatized Adaptation]"
+      "title": "People of the River [Dramatized Adaptation]"
     },
-    "people-of-the-sea-1-of-2-dramatized-adaptation": {
+    "people-of-the-sea-dramatized-adaptation": {
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "kathleen-gear",
@@ -8205,7 +7771,7 @@
         "history",
         "literary-fiction"
       ],
-      "id": "people-of-the-sea-1-of-2-dramatized-adaptation",
+      "id": "people-of-the-sea-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -8218,38 +7784,6 @@
               "region": "us"
             }
           ],
-          "chapters": [
-            {
-              "length_ms": 4065674,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3980759,
-              "start_ms": 4065674,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3637104,
-              "start_ms": 8046433,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 4192525,
-              "start_ms": 11683537,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3960325,
-              "start_ms": 15876062,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 4416852,
-              "start_ms": 19836387,
-              "title": "Chapter 6"
-            }
-          ],
           "cover_url": "https://m.media-amazon.com/images/I/91gdF0bZ8PL.jpg",
           "id": "full-cast-2020",
           "language": "en",
@@ -8259,7 +7793,6 @@
           ],
           "publisher": "GraphicAudio",
           "release_date": "2020",
-          "runtime_min": 409,
           "sources": [
             {
               "imported_at": "2026-07-25",
@@ -8272,7 +7805,7 @@
               "type": "libex-import"
             }
           ],
-          "work": "people-of-the-sea-1-of-2-dramatized-adaptation"
+          "work": "people-of-the-sea-dramatized-adaptation"
         }
       },
       "sources": [
@@ -8287,7 +7820,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "People of the Sea (1 of 2) [Dramatized Adaptation]"
+      "title": "People of the Sea [Dramatized Adaptation]"
     },
     "people-of-the-storm-2": {
       "added_at": "2026-08-02",
@@ -8394,7 +7927,7 @@
       ],
       "title": "People of the Storm, Book 1"
     },
-    "people-of-the-wolf-1-of-2-dramatized-adaptation": {
+    "people-of-the-wolf-dramatized-adaptation": {
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "kathleen-gear",
@@ -8404,7 +7937,7 @@
         "historical-fiction",
         "literary-fiction"
       ],
-      "id": "people-of-the-wolf-1-of-2-dramatized-adaptation",
+      "id": "people-of-the-wolf-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -8415,43 +7948,10 @@
             {
               "asin": "1648814220",
               "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3946277,
-              "start_ms": 0,
-              "title": "Chapter 1"
             },
             {
-              "length_ms": 3726245,
-              "start_ms": 3946277,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4278648,
-              "start_ms": 7672522,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 4245815,
-              "start_ms": 11951170,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4385970,
-              "start_ms": 16196985,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 3480856,
-              "start_ms": 20582955,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 2186111,
-              "start_ms": 24063811,
-              "title": "Chapter 7"
+              "asin": "1648814247",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91R6DuEIQ4L.jpg",
@@ -8463,7 +7963,7 @@
           ],
           "publisher": "GraphicAudio",
           "release_date": "2020",
-          "runtime_min": 438,
+          "runtime_min": 898,
           "sources": [
             {
               "imported_at": "2026-07-25",
@@ -8474,9 +7974,19 @@
               "imported_at": "2026-07-30",
               "ref": "1648814220",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648814247",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648814247",
+              "type": "libex-import"
             }
           ],
-          "work": "people-of-the-wolf-1-of-2-dramatized-adaptation"
+          "work": "people-of-the-wolf-dramatized-adaptation"
         }
       },
       "sources": [
@@ -8489,96 +7999,7 @@
           "imported_at": "2026-07-30",
           "ref": "1648814220",
           "type": "libex-import"
-        }
-      ],
-      "title": "People of the Wolf (1 of 2) [Dramatized Adaptation]"
-    },
-    "people-of-the-wolf-2-of-2-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "kathleen-gear",
-        "w-michael-gear"
-      ],
-      "genres": [
-        "historical-fiction",
-        "literary-fiction"
-      ],
-      "id": "people-of-the-wolf-2-of-2-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2020": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "1648814247",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4048932,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4221109,
-              "start_ms": 4048932,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4029312,
-              "start_ms": 8270041,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3682406,
-              "start_ms": 12299353,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3720138,
-              "start_ms": 15981759,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 3847639,
-              "start_ms": 19701897,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 4044009,
-              "start_ms": 23549536,
-              "title": "Chapter 7"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91i85ygP86L.jpg",
-          "id": "full-cast-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2020",
-          "runtime_min": 460,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648814247",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648814247",
-              "type": "libex-import"
-            }
-          ],
-          "work": "people-of-the-wolf-2-of-2-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "1648814247",
@@ -8590,7 +8011,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "People of the Wolf (2 of 2) [Dramatized Adaptation]"
+      "title": "People of the Wolf [Dramatized Adaptation]"
     },
     "peoples-republic": {
       "added_at": "2026-08-02",
@@ -14379,12 +13800,12 @@
       ],
       "title": "Per Sempre Medici"
     },
-    "percepliquis-1-of-2": {
+    "percepliquis-dramatized-adaptation": {
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
         "michael-j-sullivan"
       ],
-      "id": "percepliquis-1-of-2",
+      "id": "percepliquis-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -14394,50 +13815,7 @@
           "cover_url": "https://www.graphicaudio.net/media/catalog/product/9/7/9781648817960.jpg",
           "id": "full-cast-2021",
           "isbn": [
-            "9781648817960"
-          ],
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2021-03-23",
-          "runtime_min": 438,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "isbn:9781648817960",
-              "type": "audiosilo-books-import"
-            }
-          ],
-          "work": "percepliquis-1-of-2"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "isbn:9781648817960",
-          "type": "audiosilo-books-import"
-        }
-      ],
-      "title": "Percepliquis (1 of 2)"
-    },
-    "percepliquis-2-of-2": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "michael-j-sullivan"
-      ],
-      "id": "percepliquis-2-of-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2021": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "cover_url": "https://www.graphicaudio.net/media/catalog/product/9/7/9781648818479.jpg",
-          "id": "full-cast-2021",
-          "isbn": [
+            "9781648817960",
             "9781648818479"
           ],
           "language": "en",
@@ -14446,26 +13824,36 @@
             "full-cast"
           ],
           "publisher": "GraphicAudio",
-          "release_date": "2021-05-25",
-          "runtime_min": 469,
+          "release_date": "2021-03-23",
+          "runtime_min": 907,
           "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "isbn:9781648817960",
+              "type": "audiosilo-books-import"
+            },
             {
               "imported_at": "2026-07-25",
               "ref": "isbn:9781648818479",
               "type": "audiosilo-books-import"
             }
           ],
-          "work": "percepliquis-2-of-2"
+          "work": "percepliquis-dramatized-adaptation"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "isbn:9781648817960",
+          "type": "audiosilo-books-import"
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "isbn:9781648818479",
           "type": "audiosilo-books-import"
         }
       ],
-      "title": "Percepliquis (2 of 2)"
+      "title": "Percepliquis [Dramatized Adaptation]"
     },
     "perception": {
       "added_at": "2026-08-01",

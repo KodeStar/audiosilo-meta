@@ -470,7 +470,7 @@
       ],
       "title": "Burning Down Boise"
     },
-    "burning-earth-part-1-of-2-dramatized-adaptation": {
+    "burning-earth-dramatized-adaptation": {
       "added_at": "2026-07-30T14:42:56+01:00",
       "authors": [
         "nicholas-sansbury-smith"
@@ -481,7 +481,7 @@
         "post-apocalyptic",
         "science-fiction"
       ],
-      "id": "burning-earth-part-1-of-2-dramatized-adaptation",
+      "id": "burning-earth-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -492,48 +492,10 @@
             {
               "asin": "B0F1DLBFPC",
               "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 41924,
-              "start_ms": 0,
-              "title": "Opening Credits"
             },
             {
-              "length_ms": 3663214,
-              "start_ms": 41924,
-              "title": "Part 1"
-            },
-            {
-              "length_ms": 3841253,
-              "start_ms": 3705138,
-              "title": "Part 2"
-            },
-            {
-              "length_ms": 3079267,
-              "start_ms": 7546391,
-              "title": "Part 3"
-            },
-            {
-              "length_ms": 3635246,
-              "start_ms": 10625658,
-              "title": "Part 4"
-            },
-            {
-              "length_ms": 3834543,
-              "start_ms": 14260904,
-              "title": "Part 5"
-            },
-            {
-              "length_ms": 3818000,
-              "start_ms": 18095447,
-              "title": "Part 6"
-            },
-            {
-              "length_ms": 64027,
-              "start_ms": 21913447,
-              "title": "End Credits"
+              "asin": "B0F9BDKKKT",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91dEuXB5MTL.jpg",
@@ -552,19 +514,27 @@
             "michael-john-casey",
             "terence-aselford",
             "tony-nam",
-            "wyn-delano"
+            "wyn-delano",
+            "chris-davenport",
+            "dan-delgado",
+            "karenna-foley"
           ],
           "publisher": "Graphic Audio LLC",
           "release_date": "2025-05-21",
-          "runtime_min": 366,
+          "runtime_min": 683,
           "sources": [
             {
               "imported_at": "2026-07-30",
               "ref": "B0F1DLBFPC",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0F9BDKKKT",
+              "type": "libex-import"
             }
           ],
-          "work": "burning-earth-part-1-of-2-dramatized-adaptation"
+          "work": "burning-earth-dramatized-adaptation"
         }
       },
       "sources": [
@@ -572,71 +542,14 @@
           "imported_at": "2026-07-30",
           "ref": "B0F1DLBFPC",
           "type": "libex-import"
-        }
-      ],
-      "title": "Burning Earth (Part 1 of 2) (Dramatized Adaptation)"
-    },
-    "burning-earth-part-2-of-2-dramatized-adaptation": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "nicholas-sansbury-smith"
-      ],
-      "genres": [
-        "post-apocalyptic",
-        "science-fiction"
-      ],
-      "id": "burning-earth-part-2-of-2-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "anthony-palmini-2025": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0F9BDKKKT",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91y6J8l2D2L.jpg",
-          "id": "anthony-palmini-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "anthony-palmini",
-            "bradley-foster-smith",
-            "chris-davenport",
-            "dan-delgado",
-            "full-cast",
-            "karenna-foley",
-            "kelly-baskin",
-            "matthew-bassett",
-            "michael-john-casey",
-            "terence-aselford",
-            "tony-nam",
-            "wyn-delano"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2025-07-07",
-          "runtime_min": 317,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0F9BDKKKT",
-              "type": "libex-import"
-            }
-          ],
-          "work": "burning-earth-part-2-of-2-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0F9BDKKKT",
           "type": "libex-import"
         }
       ],
-      "title": "Burning Earth (Part 2 of 2) (Dramatized Adaptation)"
+      "title": "Burning Earth [Dramatized Adaptation]"
     },
     "burning-for-love": {
       "added_at": "2026-08-02",

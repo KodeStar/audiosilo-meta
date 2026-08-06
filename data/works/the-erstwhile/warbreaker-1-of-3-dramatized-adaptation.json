@@ -404,7 +404,7 @@
       ],
       "title": "Warbreaker (Dramatized Adaptation)"
     },
-    "warbreaker-tenth-anniversary-edition-1-of-2-dramatized-adaptation": {
+    "warbreaker-tenth-anniversary-edition-dramatized-adaptation": {
       "added_at": "2026-08-02",
       "authors": [
         "brandon-sanderson"
@@ -415,7 +415,7 @@
         "epic-fantasy",
         "fantasy"
       ],
-      "id": "warbreaker-tenth-anniversary-edition-1-of-2-dramatized-adaptation",
+      "id": "warbreaker-tenth-anniversary-edition-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -426,6 +426,14 @@
             {
               "asin": "B0FK6XSCNM",
               "region": "us"
+            },
+            {
+              "asin": "B0FSB5BHFV",
+              "region": "us"
+            },
+            {
+              "asin": "B0FSBLN86N",
+              "region": "de"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91FxOZz1oaL.jpg",
@@ -448,75 +456,13 @@
           ],
           "publisher": "GraphicAudio",
           "release_date": "2025-09-26",
-          "runtime_min": 628,
+          "runtime_min": 1225,
           "sources": [
             {
               "imported_at": "2026-08-02",
               "ref": "B0FK6XSCNM",
               "type": "libex-import"
-            }
-          ],
-          "work": "warbreaker-tenth-anniversary-edition-1-of-2-dramatized-adaptation"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0FK6XSCNM",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Warbreaker: Tenth Anniversary Edition (1 of 2) [Dramatized Adaptation]"
-    },
-    "warbreaker-tenth-anniversary-edition-2-of-2-dramatized-adaptation": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "brandon-sanderson"
-      ],
-      "genres": [
-        "action-adventure",
-        "epic-fantasy",
-        "fantasy"
-      ],
-      "id": "warbreaker-tenth-anniversary-edition-2-of-2-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "christopher-tester-2025": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0FSB5BHFV",
-              "region": "us"
             },
-            {
-              "asin": "B0FSBLN86N",
-              "region": "de"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91g+yxtuBqL.jpg",
-          "id": "christopher-tester-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "christopher-tester",
-            "colleen-delany",
-            "danny-gavigan",
-            "danny-montooth",
-            "david-ault",
-            "deepa-samuel",
-            "donald-guzzi",
-            "eric-messner",
-            "full-cast",
-            "kymberley-cochrane",
-            "marlon-dance-hooi",
-            "scott-mccormick"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2025-11-03",
-          "runtime_min": 597,
-          "sources": [
             {
               "imported_at": "2026-08-02",
               "ref": "B0FSB5BHFV",
@@ -528,17 +474,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "warbreaker-tenth-anniversary-edition-2-of-2-dramatized-adaptation"
+          "work": "warbreaker-tenth-anniversary-edition-dramatized-adaptation"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0FK6XSCNM",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0FSB5BHFV",
           "type": "libex-import"
         }
       ],
-      "title": "Warbreaker: Tenth Anniversary Edition (2 of 2) [Dramatized Adaptation]"
+      "title": "Warbreaker: Tenth Anniversary Edition [Dramatized Adaptation]"
     },
     "warbreakers-rage": {
       "added_at": "2026-08-02",

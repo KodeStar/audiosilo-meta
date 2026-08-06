@@ -1880,16 +1880,17 @@
       ],
       "title": "Elantris (Dramatized Adaptation)"
     },
-    "elantris-tenth-anniversary-authors-definitive-edition-1-of-2-dramatized-adaptation": {
+    "elantris-tenth-anniversary-authors-definitive-edition-dramatized-adaptation": {
       "added_at": "2026-08-02",
       "authors": [
         "brandon-sanderson"
       ],
       "genres": [
+        "action-adventure",
         "epic-fantasy",
         "fantasy"
       ],
-      "id": "elantris-tenth-anniversary-authors-definitive-edition-1-of-2-dramatized-adaptation",
+      "id": "elantris-tenth-anniversary-authors-definitive-edition-dramatized-adaptation",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -1900,48 +1901,10 @@
             {
               "asin": "B0F1DLYWH3",
               "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 38924,
-              "start_ms": 0,
-              "title": "Opening Credits"
             },
             {
-              "length_ms": 466000,
-              "start_ms": 38924,
-              "title": "Foreword"
-            },
-            {
-              "length_ms": 3720201,
-              "start_ms": 504924,
-              "title": "Track 1"
-            },
-            {
-              "length_ms": 4365096,
-              "start_ms": 4225125,
-              "title": "Track 2"
-            },
-            {
-              "length_ms": 4327456,
-              "start_ms": 8590221,
-              "title": "Track 3"
-            },
-            {
-              "length_ms": 4231349,
-              "start_ms": 12917677,
-              "title": "Track 4"
-            },
-            {
-              "length_ms": 30853855,
-              "start_ms": 17149026,
-              "title": "Track 5"
-            },
-            {
-              "length_ms": 251291,
-              "start_ms": 48002881,
-              "title": "End Credits"
+              "asin": "B0FF5DH4FH",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91KPqbT56RL.jpg",
@@ -1964,15 +1927,20 @@
           ],
           "publisher": "GraphicAudio",
           "release_date": "2025-05-27",
-          "runtime_min": 805,
+          "runtime_min": 1369,
           "sources": [
             {
               "imported_at": "2026-08-02",
               "ref": "B0F1DLYWH3",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FF5DH4FH",
+              "type": "libex-import"
             }
           ],
-          "work": "elantris-tenth-anniversary-authors-definitive-edition-1-of-2-dramatized-adaptation"
+          "work": "elantris-tenth-anniversary-authors-definitive-edition-dramatized-adaptation"
         }
       },
       "sources": [
@@ -1980,72 +1948,14 @@
           "imported_at": "2026-08-02",
           "ref": "B0F1DLYWH3",
           "type": "libex-import"
-        }
-      ],
-      "title": "Elantris: Tenth Anniversary Author's Definitive Edition (1 of 2) [Dramatized Adaptation]"
-    },
-    "elantris-tenth-anniversary-authors-definitive-edition-2-of-2-dramatized-adaptation": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "brandon-sanderson"
-      ],
-      "genres": [
-        "action-adventure",
-        "epic-fantasy",
-        "fantasy"
-      ],
-      "id": "elantris-tenth-anniversary-authors-definitive-edition-2-of-2-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "anthony-palmini-2025": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0FF5DH4FH",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91IWP5hsIFL.jpg",
-          "id": "anthony-palmini-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "anthony-palmini",
-            "christopher-williams",
-            "danny-gavigan",
-            "full-cast",
-            "james-konicek",
-            "jenna-sharpe",
-            "megan-dominy",
-            "mort-shelby",
-            "richard-rohan",
-            "steven-carpenter",
-            "thomas-penny",
-            "wyn-delano"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2025-08-28",
-          "runtime_min": 564,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0FF5DH4FH",
-              "type": "libex-import"
-            }
-          ],
-          "work": "elantris-tenth-anniversary-authors-definitive-edition-2-of-2-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0FF5DH4FH",
           "type": "libex-import"
         }
       ],
-      "title": "Elantris: Tenth Anniversary Author's Definitive Edition (2 of 2) [Dramatized Adaptation]"
+      "title": "Elantris: Tenth Anniversary Author's Definitive Edition [Dramatized Adaptation]"
     },
     "elatsoe-spanish-edition": {
       "added_at": "2026-08-02",
