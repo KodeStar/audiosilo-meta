@@ -637,6 +637,12 @@ func timeKey(s string) string {
 	return s
 }
 
+// TimeKey exposes timeKey so a writer that has to ORDER two added_at values the
+// way this builder will can pin itself against the same rule rather than
+// restate it (internal/remediate's earlierStamp). It is a comparison key only:
+// nothing stores what it returns.
+func TimeKey(s string) string { return timeKey(s) }
+
 func nullStr(s string) any {
 	if s == "" {
 		return nil

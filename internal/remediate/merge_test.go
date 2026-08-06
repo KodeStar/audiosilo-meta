@@ -186,7 +186,7 @@ func TestMergesIntoAnExistingCompleteSetWork(t *testing.T) {
 func TestAbridgedIsCarriedOnlyWhenEveryPartStatesIt(t *testing.T) {
 	uniform := blackPrismParts()
 	for i := range uniform {
-		uniform[i].Rec.Abridged = boolPtr(false)
+		uniform[i].Rec.Abridged = ptr(false)
 	}
 	dir := t.TempDir()
 	seedWorks(t, dir, uniform...)
@@ -197,7 +197,7 @@ func TestAbridgedIsCarriedOnlyWhenEveryPartStatesIt(t *testing.T) {
 	}
 
 	mixed := blackPrismParts()
-	mixed[0].Rec.Abridged = boolPtr(false)
+	mixed[0].Rec.Abridged = ptr(false)
 	other := t.TempDir()
 	seedWorks(t, other, mixed...)
 	run(t, other, true, "")

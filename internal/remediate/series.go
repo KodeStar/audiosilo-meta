@@ -3,10 +3,11 @@ package remediate
 import (
 	"encoding/json"
 	"fmt"
-	"sort"
+	"slices"
 	"strconv"
 	"strings"
 
+	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
@@ -23,6 +24,12 @@ import (
 // Both are the same operation over one rewrite map, which is why they are one
 // function: rewrite the work reference, collapse what the parts occupied onto
 // one position, and refuse anything that would put two works on one position.
+//
+// The position GRAMMAR is not restated here. Reading and canonicalizing a
+// position is internal/importer.NormalizeSequence's job, and this file builds
+// only the floor-and-order POLICY on top of it. (internal/serve carries its own
+// parser for the search-side volume boost; unifying all three into pkg/model is
+// a separate change and deliberately not attempted here.)
 
 // rewrite is the change one series entry undergoes.
 type rewrite struct {
@@ -47,9 +54,24 @@ type seriesPlan struct {
 // cannot repair is left exactly as it is and the part groups it references are
 // returned, so the caller can refuse them and re-plan - a book whose series
 // cannot be fixed is a book that must not be merged, or its parts would dangle.
+//
+// It visits only the series a rewrite actually reaches (idx.seriesOf), not all
+// 30,799: the retry loop can run several rounds, and every one of them would
+// otherwise re-read the whole family to touch a few dozen entries.
 func planSeries(idx *index, rewrites map[string]rewrite, swaps map[string]string) (plans []seriesPlan, refusals []Refusal, blocked map[*group]bool) {
 	blocked = map[*group]bool{}
-	for _, slug := range sortedKeys(idx.series) {
+	affected := map[string]bool{}
+	for work := range rewrites {
+		for _, s := range idx.seriesOf[work] {
+			affected[s] = true
+		}
+	}
+	for work := range swaps {
+		for _, s := range idx.seriesOf[work] {
+			affected[s] = true
+		}
+	}
+	for _, slug := range sortedKeys(affected) {
 		plan, r, ok := planOneSeries(slug, idx.series[slug], rewrites, swaps)
 		if !ok {
 			refusals = append(refusals, r)
@@ -96,7 +118,6 @@ type entryPlan struct {
 	work     string
 	position string
 	fromPart bool
-	changed  bool
 	original string
 }
 
@@ -115,7 +136,7 @@ func planOneSeries(slug string, s obj, rewrites map[string]rewrite, swaps map[st
 	for _, e := range entries {
 		ep := entryPlan{work: e.Work, position: e.Position, original: e.Work}
 		if rw, ok := rewrites[e.Work]; ok {
-			ep.work, ep.fromPart, ep.changed = rw.To, rw.FromPart, true
+			ep.work, ep.fromPart = rw.To, rw.FromPart
 			touched = true
 		}
 		// A plain series' numeric slot names the plain text edition. The swap
@@ -124,7 +145,6 @@ func planOneSeries(slug string, s obj, rewrites map[string]rewrite, swaps map[st
 		if plain {
 			if twin, ok := swaps[ep.work]; ok && twin != ep.work {
 				ep.work = twin
-				ep.changed = true
 				touched = true
 			}
 		}
@@ -160,10 +180,9 @@ func collapse(seriesSlug string, planned []entryPlan) ([]model.SeriesWork, []str
 	var out []model.SeriesWork
 	var changes []string
 	for _, work := range order {
-		group := byWork[work]
-		var kept []entryPlan
-		var parts []entryPlan
-		for _, ep := range group {
+		entries := byWork[work]
+		var kept, parts []entryPlan
+		for _, ep := range entries {
 			if ep.fromPart {
 				parts = append(parts, ep)
 			} else {
@@ -174,7 +193,7 @@ func collapse(seriesSlug string, planned []entryPlan) ([]model.SeriesWork, []str
 		case len(kept) > 0:
 			// A slot this run did not derive from a part records where the book
 			// actually sits, so it wins; the hijacked slots go away.
-			sort.Slice(kept, func(i, j int) bool { return positionLess(kept[i].position, kept[j].position) })
+			slices.SortFunc(kept, func(a, b entryPlan) int { return comparePositions(a.position, b.position) })
 			out = append(out, model.SeriesWork{Work: work, Position: kept[0].position})
 			for _, ep := range kept[1:] {
 				changes = append(changes, fmt.Sprintf("dropped duplicate %s at position %s", work, ep.position))
@@ -191,7 +210,7 @@ func collapse(seriesSlug string, planned []entryPlan) ([]model.SeriesWork, []str
 					positions = append(positions, ep.position)
 				}
 				return nil, nil, Refusal{Category: catSeriesPosition, Subject: seriesSlug,
-					Reason:  fmt.Sprintf("the positions %s the parts of %s hold are not plain numbers", joinComma(positions), work),
+					Reason:  fmt.Sprintf("the positions %s the parts of %s hold are not plain numbers", strings.Join(positions, ", "), work),
 					Entries: []string{work}}, false
 			}
 			out = append(out, model.SeriesWork{Work: work, Position: pos})
@@ -212,7 +231,7 @@ func collapse(seriesSlug string, planned []entryPlan) ([]model.SeriesWork, []str
 		}
 		seen[sw.Position] = sw.Work
 	}
-	sort.Slice(out, func(i, j int) bool { return positionLess(out[i].Position, out[j].Position) })
+	slices.SortFunc(out, func(a, b model.SeriesWork) int { return comparePositions(a.Position, b.Position) })
 	return out, changes, Refusal{}, true
 }
 
@@ -221,6 +240,9 @@ func collapse(seriesSlug string, planned []entryPlan) ([]model.SeriesWork, []str
 // position with the part number after the point, and a plain series that gave
 // consecutive integers to consecutive parts ("Brush Country" at 1 and 2) still
 // names one book - so the floor of the lowest is the answer in both shapes.
+//
+// The result goes back through the canonicalizer that read the inputs, so what
+// is written is a position by the same definition as what was read.
 func collapsedPosition(parts []entryPlan) (string, bool) {
 	best := -1
 	for _, ep := range parts {
@@ -235,23 +257,19 @@ func collapsedPosition(parts []entryPlan) (string, bool) {
 	if best < 0 {
 		return "", false
 	}
-	return strconv.Itoa(best), true
+	return importer.NormalizeSequence(strconv.Itoa(best))
 }
 
 // floorPosition reads a plain numeric position and returns its integer part.
 // ok is false for the position forms that are not one number - an omnibus range
-// ("1-3.5") names several books at once and has no single floor.
+// ("1-3.5") names several books at once and has no single floor - and for
+// anything NormalizeSequence does not recognize as a position at all.
 func floorPosition(p string) (int, bool) {
-	whole := p
-	if i := strings.IndexByte(p, '.'); i >= 0 {
-		whole = p[:i]
-		if !allDigits(p[i+1:]) || p[i+1:] == "" {
-			return 0, false
-		}
-	}
-	if !allDigits(whole) || whole == "" {
+	pos, ok := importer.NormalizeSequence(p)
+	if !ok || strings.Contains(pos, "-") {
 		return 0, false
 	}
+	whole, _, _ := strings.Cut(pos, ".")
 	n, err := strconv.Atoi(whole)
 	if err != nil {
 		return 0, false
@@ -259,42 +277,48 @@ func floorPosition(p string) (int, bool) {
 	return n, true
 }
 
-func allDigits(s string) bool {
-	for i := 0; i < len(s); i++ {
-		if s[i] < '0' || s[i] > '9' {
-			return false
-		}
-	}
-	return len(s) > 0
-}
-
-// positionLess orders two positions the way a reader expects: numerically when
-// both are numbers, lexicographically otherwise (an omnibus range sorts by its
-// text, which is stable and is all the ordering it needs).
-func positionLess(a, b string) bool {
-	na, oka := parsePositionValue(a)
-	nb, okb := parsePositionValue(b)
+// comparePositions orders two positions the way a reader expects: numerically
+// when both are numbers, lexicographically otherwise (an omnibus range sorts by
+// its text, which is stable and is all the ordering it needs). Ties break on the
+// CANONICAL spelling, so two spellings of one position ("2.5" and "2.50") come
+// out equal rather than in whichever order their raw bytes fall.
+func comparePositions(a, b string) int {
+	na, oka := positionValue(a)
+	nb, okb := positionValue(b)
 	switch {
 	case oka && okb:
 		if na != nb {
-			return na < nb
+			if na < nb {
+				return -1
+			}
+			return 1
 		}
-		return a < b
+		return strings.Compare(canonicalPosition(a), canonicalPosition(b))
 	case oka:
-		return true
+		return -1
 	case okb:
-		return false
+		return 1
 	default:
-		return a < b
+		return strings.Compare(a, b)
 	}
 }
 
-// parsePositionValue reads a plain numeric position as a float for ordering.
-func parsePositionValue(p string) (float64, bool) {
-	if _, ok := floorPosition(p); !ok {
+// canonicalPosition is a position in the one spelling the canonicalizer writes,
+// or the raw value when it is not a position at all.
+func canonicalPosition(p string) string {
+	if pos, ok := importer.NormalizeSequence(p); ok {
+		return pos
+	}
+	return p
+}
+
+// positionValue reads a plain numeric position as a float for ordering.
+func positionValue(p string) (float64, bool) {
+	pos, ok := importer.NormalizeSequence(p)
+	if !ok || strings.Contains(pos, "-") {
 		return 0, false
 	}
-	v, err := strconv.ParseFloat(p, 64)
+	v, err := strconv.ParseFloat(pos, 64)
 	if err != nil {
 		return 0, false
 	}

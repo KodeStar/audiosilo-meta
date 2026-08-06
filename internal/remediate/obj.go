@@ -3,9 +3,12 @@ package remediate
 import (
 	"encoding/json"
 	"fmt"
-	"sort"
+	"maps"
+	"slices"
 	"strings"
+	"time"
 
+	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
@@ -17,6 +20,18 @@ import (
 // whose source never stated one - and stating a fact nobody gave us is the one
 // thing this project does not do. A merge edits the members it decides about
 // and carries every other byte through untouched.
+//
+// THE TRADE, stated explicitly: pkg/pack owns the composite shape and offers
+// DecodeEntry/SetRecording, and every other writer in the module uses them.
+// This package does not, because they hand back and take `map[string]any`: a
+// round trip through it re-renders every number the tooling does not model (a
+// chapter's millisecond offsets, a runtime) and cannot tell an absent member
+// from a zero-valued one. A remediation that rewrites 159 records out of 133k
+// has to leave the bytes it did not decide about exactly as it found them, so
+// it keeps its members raw. The composite invariants pkg/pack states - the entry
+// key equals Work.ID, each map key equals its recording's ID, each recording's
+// work backref equals the entry key - are upheld here by hand (see merge.go),
+// and metacheck is the gate that proves it.
 
 // obj is a JSON object with its members left as raw bytes.
 type obj map[string]json.RawMessage
@@ -35,41 +50,30 @@ func decodeObj(raw json.RawMessage) (obj, error) {
 
 // clone returns an independent copy. The member bytes are shared, which is
 // safe: nothing mutates a raw member in place, it is replaced.
-func (o obj) clone() obj {
-	out := make(obj, len(o))
-	for k, v := range o {
-		out[k] = v
-	}
-	return out
-}
+func (o obj) clone() obj { return maps.Clone(o) }
 
 // raw renders the object back to JSON. Key order is irrelevant - every write
 // goes through pkg/pack, which renders canonically (sorted keys).
-func (o obj) raw() (json.RawMessage, error) {
-	b, err := json.Marshal(map[string]json.RawMessage(o))
-	if err != nil {
-		return nil, err
+func (o obj) raw() (json.RawMessage, error) { return json.Marshal(map[string]json.RawMessage(o)) }
+
+// decodeOr decodes a member into T, yielding T's zero value for an absent
+// member or one this package cannot read. Its callers read a schema-validated
+// tree, where an unreadable member is a defect metacheck reports rather than
+// one a merge has to invent a refusal for.
+func decodeOr[T any](raw json.RawMessage) T {
+	var v T
+	if err := json.Unmarshal(raw, &v); err != nil {
+		var zero T
+		return zero
 	}
-	return b, nil
+	return v
 }
 
 // str returns a string member, empty when absent or not a string.
-func (o obj) str(k string) string {
-	var s string
-	if err := json.Unmarshal(o[k], &s); err != nil {
-		return ""
-	}
-	return s
-}
+func (o obj) str(k string) string { return decodeOr[string](o[k]) }
 
 // strs returns a string-list member, nil when absent or not a list of strings.
-func (o obj) strs(k string) []string {
-	var out []string
-	if err := json.Unmarshal(o[k], &out); err != nil {
-		return nil
-	}
-	return out
-}
+func (o obj) strs(k string) []string { return decodeOr[[]string](o[k]) }
 
 // intAt returns an integer member and whether it was there.
 func (o obj) intAt(k string) (int, bool) {
@@ -84,14 +88,16 @@ func (o obj) intAt(k string) (int, bool) {
 	return n, true
 }
 
-// set stores v under k, marshalled.
-func (o obj) set(k string, v any) error {
+// set stores v under k. A value this package composes that will not marshal is
+// a programmer error, not a data problem, so it panics rather than threading an
+// error every call site would have to invent a refusal for: they pass a string,
+// a number, a list of them, or one of the model structs.
+func (o obj) set(k string, v any) {
 	b, err := json.Marshal(v)
 	if err != nil {
-		return err
+		panic(fmt.Sprintf("remediate: member %q does not marshal: %v", k, err))
 	}
 	o[k] = b
-	return nil
 }
 
 // setRaw stores an already-encoded member.
@@ -104,41 +110,17 @@ func (o obj) drop(k string) { delete(o, k) }
 func (o obj) has(k string) bool { _, ok := o[k]; return ok }
 
 // asins decodes the region-scoped ASIN list.
-func (o obj) asins() []model.ASIN {
-	var out []model.ASIN
-	if err := json.Unmarshal(o["asin"], &out); err != nil {
-		return nil
-	}
-	return out
-}
+func (o obj) asins() []model.ASIN { return decodeOr[[]model.ASIN](o["asin"]) }
 
 // isbns decodes the ISBN list, which has two on-disk spellings (model.ISBNRef
 // keeps them one type).
-func (o obj) isbns() []model.ISBNRef {
-	var out []model.ISBNRef
-	if err := json.Unmarshal(o["isbn"], &out); err != nil {
-		return nil
-	}
-	return out
-}
+func (o obj) isbns() []model.ISBNRef { return decodeOr[[]model.ISBNRef](o["isbn"]) }
 
 // sources decodes the provenance list.
-func (o obj) sources() []model.Source {
-	var out []model.Source
-	if err := json.Unmarshal(o["sources"], &out); err != nil {
-		return nil
-	}
-	return out
-}
+func (o obj) sources() []model.Source { return decodeOr[[]model.Source](o["sources"]) }
 
 // credits decodes the role-qualified contributor list.
-func (o obj) credits() []model.Credit {
-	var out []model.Credit
-	if err := json.Unmarshal(o["credits"], &out); err != nil {
-		return nil
-	}
-	return out
-}
+func (o obj) credits() []model.Credit { return decodeOr[[]model.Credit](o["credits"]) }
 
 // recordings returns the work entry's recordings map, keyed by recording slug.
 func (o obj) recordings() (map[string]obj, error) {
@@ -171,109 +153,94 @@ func (o obj) setRecordings(recs map[string]obj) error {
 		}
 		m[k] = raw
 	}
-	return o.set("recordings", m)
+	o.set("recordings", m)
+	return nil
 }
 
-// sortStrings is sort.Strings, named so the intent reads at the call site.
-func sortStrings(s []string) { sort.Strings(s) }
+// sortedKeys returns a map's keys in sorted order, so every walk over one is
+// deterministic.
+func sortedKeys[V any](m map[string]V) []string { return slices.Sorted(maps.Keys(m)) }
 
-// appendUnique appends the values of src that dst does not already hold,
-// preserving dst's order and then src's. First-seen order everywhere is what
-// keeps a merge from churning a list nobody asked it to reorder.
-func appendUnique(dst, src []string) []string {
+// union appends the members of src that dst does not already hold, comparing by
+// key and preserving dst's order and then src's. First-seen order everywhere is
+// what keeps a merge from churning a list nobody asked it to reorder.
+func union[T any](dst, src []T, key func(T) string) []T {
 	seen := make(map[string]bool, len(dst))
 	for _, v := range dst {
-		seen[v] = true
+		seen[key(v)] = true
 	}
 	for _, v := range src {
-		if !seen[v] {
-			seen[v] = true
+		if k := key(v); !seen[k] {
+			seen[k] = true
 			dst = append(dst, v)
 		}
 	}
 	return dst
 }
 
-// unionASINs appends src's identifiers to dst, deduplicating BY VALUE so the
-// same ASIN recorded under two regions collapses to the first one seen. That is
-// the same key recording-ASIN uniqueness is enforced on.
+// appendUnique unions two string lists.
+func appendUnique(dst, src []string) []string {
+	return union(dst, src, func(s string) string { return s })
+}
+
+// unionASINs unions two identifier lists BY VALUE, so the same ASIN recorded
+// under two regions collapses to the first one seen. That is the same key
+// recording-ASIN uniqueness is enforced on.
 func unionASINs(dst, src []model.ASIN) []model.ASIN {
-	seen := make(map[string]bool, len(dst))
-	for _, a := range dst {
-		seen[a.ASIN] = true
-	}
-	for _, a := range src {
-		if !seen[a.ASIN] {
-			seen[a.ASIN] = true
-			dst = append(dst, a)
-		}
-	}
-	return dst
+	return union(dst, src, func(a model.ASIN) string { return a.ASIN })
 }
 
-// unionISBNs appends src's ISBNs to dst, deduplicating by value for the same
-// reason unionASINs does: the bare-string and region-scoped spellings of one
-// identifier are one identifier.
+// unionISBNs unions two ISBN lists by value, for the same reason unionASINs
+// does: the bare-string and region-scoped spellings of one identifier are one
+// identifier.
 func unionISBNs(dst, src []model.ISBNRef) []model.ISBNRef {
-	seen := make(map[string]bool, len(dst))
-	for _, r := range dst {
-		seen[r.ISBN] = true
-	}
-	for _, r := range src {
-		if !seen[r.ISBN] {
-			seen[r.ISBN] = true
-			dst = append(dst, r)
-		}
-	}
-	return dst
+	return union(dst, src, func(r model.ISBNRef) string { return r.ISBN })
 }
 
-// unionSources appends src's provenance entries to dst, deduplicating on the
-// whole entry: two runs of one importer over one ASIN on two days are two
-// facts, the same run recorded twice is one.
+// unionSources unions two provenance lists on the WHOLE entry: two runs of one
+// importer over one ASIN on two days are two facts, the same run recorded twice
+// is one.
 func unionSources(dst, src []model.Source) []model.Source {
-	key := func(s model.Source) string { return s.Type + "\x00" + s.Ref + "\x00" + s.ImportedAt }
-	seen := make(map[string]bool, len(dst))
-	for _, s := range dst {
-		seen[key(s)] = true
-	}
-	for _, s := range src {
-		if !seen[key(s)] {
-			seen[key(s)] = true
-			dst = append(dst, s)
-		}
-	}
-	return dst
+	return union(dst, src, func(s model.Source) string {
+		return s.Type + "\x00" + s.Ref + "\x00" + s.ImportedAt
+	})
 }
 
-// unionCredits appends src's credits to dst, deduplicating on (person, role).
+// unionCredits unions two credit lists on (person, role) and restores the
+// canonical order through the importer's own comparator, so one set of credits
+// has one byte-form however it was assembled.
 func unionCredits(dst, src []model.Credit) []model.Credit {
-	key := func(c model.Credit) string { return c.Person + "\x00" + c.Role }
-	seen := make(map[string]bool, len(dst))
-	for _, c := range dst {
-		seen[key(c)] = true
-	}
-	for _, c := range src {
-		if !seen[key(c)] {
-			seen[key(c)] = true
-			dst = append(dst, c)
-		}
-	}
-	sort.Slice(dst, func(i, j int) bool {
-		if dst[i].Person != dst[j].Person {
-			return dst[i].Person < dst[j].Person
-		}
-		return dst[i].Role < dst[j].Role
-	})
-	return dst
+	out := union(dst, src, func(c model.Credit) string { return c.Person + "\x00" + c.Role })
+	importer.SortCredits(out)
+	return out
 }
 
 // unionGenres unions two genre lists and sorts them ascending, which is the
 // form pkg/check's checkGenresSorted requires.
 func unionGenres(dst, src []string) []string {
-	out := appendUnique(append([]string(nil), dst...), src)
-	sortStrings(out)
+	out := appendUnique(slices.Clone(dst), src)
+	slices.Sort(out)
 	return out
+}
+
+// setListOrDrop stores a list member, or removes it when the list is empty: an
+// absent member is how this schema spells "unstated", and an empty array would
+// say something else.
+func setListOrDrop[T any](o obj, key string, values []T) {
+	if len(values) == 0 {
+		o.drop(key)
+		return
+	}
+	o.set(key, values)
+}
+
+// setStringOrDrop stores a string member, or removes it when it is empty.
+func setStringOrDrop(o obj, key, value string) {
+	if value == "" {
+		o.drop(key)
+		return
+	}
+	o.set(key, value)
 }
 
 // earlierDate returns the earlier of two partial dates ("2020", "2020-05",
@@ -298,11 +265,19 @@ func earlierDate(a, b string) string {
 	}
 }
 
-// earlierStamp returns the earlier of two added_at values. They come in two
-// shapes - a plain YYYY-MM-DD and the migration's full RFC 3339 timestamp - so
-// the DAY decides and the full spelling only breaks a tie, which keeps the
-// comparison from reading "2026-07-25T17:12:12+01:00" as later than
-// "2026-07-25" when they are the same day.
+// earlierStamp returns the earlier of two added_at values.
+//
+// They come in two shapes - a plain YYYY-MM-DD and the migration's full RFC 3339
+// timestamp with an offset - and this comparison has to agree with the one
+// internal/build's timeKey makes when it derives the artifact's added_at from
+// the same values, or the two could order one pair of records differently. So
+// the method is timeKey's: a parseable RFC 3339 value is normalized to UTC
+// before it is compared, anything else is compared as written. The two forms
+// still sort correctly against each other, because a UTC RFC 3339 rendering
+// begins with the very date a plain date states.
+//
+// Relocating this beside timeKey is out of scope; the two are pinned against
+// each other by TestEarlierStampAgreesWithTheArtifactOrdering.
 func earlierStamp(a, b string) string {
 	switch {
 	case a == "":
@@ -310,23 +285,19 @@ func earlierStamp(a, b string) string {
 	case b == "":
 		return a
 	}
-	da, db := a, b
-	if len(da) > 10 {
-		da = da[:10]
-	}
-	if len(db) > 10 {
-		db = db[:10]
-	}
-	if da != db {
-		if da < db {
-			return a
-		}
-		return b
-	}
-	if a < b {
+	if stampKey(a) <= stampKey(b) {
 		return a
 	}
 	return b
+}
+
+// stampKey is internal/build timeKey's normalization: RFC 3339 in UTC, anything
+// else as written.
+func stampKey(s string) string {
+	if t, err := time.Parse(time.RFC3339, s); err == nil {
+		return t.UTC().Format(time.RFC3339)
+	}
+	return s
 }
 
 // modal returns the value seen most often, ties broken by the value itself so
@@ -339,9 +310,9 @@ func modal(values []string) string {
 		}
 	}
 	best, bestN := "", 0
-	for v, n := range counts {
-		if n > bestN || (n == bestN && v < best) {
-			best, bestN = v, n
+	for _, v := range sortedKeys(counts) {
+		if counts[v] > bestN {
+			best, bestN = v, counts[v]
 		}
 	}
 	return best

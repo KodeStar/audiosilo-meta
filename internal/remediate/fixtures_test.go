@@ -1,10 +1,12 @@
 package remediate
 
 import (
+	"cmp"
 	"encoding/json"
 	"os"
 	"path/filepath"
-	"sort"
+	"slices"
+	"strings"
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/internal/testpack"
@@ -101,7 +103,7 @@ func recJSON(t testing.TB, w workSpec, r recSpec) string {
 		"language":  "en",
 		"license":   "CC0-1.0",
 		"sources":   []any{source(w.Slug)},
-		"publisher": defaultStr(r.Publisher, "GraphicAudio"),
+		"publisher": cmp.Or(r.Publisher, "GraphicAudio"),
 	}
 	if len(r.ASINs) > 0 {
 		var asins []any
@@ -248,7 +250,7 @@ func readSeries(t testing.TB, dataDir, slug string) []string {
 	for _, w := range works {
 		out = append(out, w.Work+"@"+w.Position)
 	}
-	sort.Strings(out)
+	slices.Sort(out)
 	return out
 }
 
@@ -314,20 +316,20 @@ func defaultTo(v, fallback []string) []string {
 	return v
 }
 
-func defaultStr(v, fallback string) string {
-	if v == "" {
-		return fallback
-	}
-	return v
-}
-
+// splitPair reads a "region:value" fixture pair, defaulting the region.
 func splitPair(s string) (string, string) {
-	for i := 0; i < len(s); i++ {
-		if s[i] == ':' {
-			return s[:i], s[i+1:]
-		}
+	if region, value, ok := strings.Cut(s, ":"); ok {
+		return region, value
 	}
 	return "us", s
 }
 
-func boolPtr(v bool) *bool { return &v }
+func ptr[T any](v T) *T { return &v }
+
+// mustUnmarshal decodes a raw member into v, failing the test if it will not.
+func mustUnmarshal(t testing.TB, raw []byte, v any) {
+	t.Helper()
+	if err := json.Unmarshal(raw, v); err != nil {
+		t.Fatalf("decode %s: %v", raw, err)
+	}
+}

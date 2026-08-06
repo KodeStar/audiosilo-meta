@@ -5,103 +5,125 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"slices"
 	"strings"
-	"sync"
 
-	meta "github.com/kodestar/audiosilo-meta"
+	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 // completeset.go reads the OPTIONAL dump rows for the complete-set products
-// Audible sells alongside the parts ("The Blood Mirror [Dramatized
-// Adaptation]", ASIN B09G7MDXSQ). They are what lets a minted work carry a real
-// product title and a real identifier instead of a derived one.
+// Audible sells alongside the parts ("Black Prism [Dramatized Adaptation]",
+// ASIN B09FRBS927). They are what lets a minted work carry a real product
+// title, identifier, length and chapter list instead of a derived one.
 //
 // The accepted shape is the row `metaimport libex` already parses (see
 // scripts/libex-export-rows.sql), so the operator exports them with the
-// validated query rather than a second one invented here. Only the factual
-// fields this merge decides about are read.
+// validated query rather than a second one invented here - and every field is
+// normalized through internal/importer's own rules rather than through a second
+// copy of them. That matters more than it looks: the dump spells the UK
+// marketplace "gb", so a private region check refuses every UK row; a release
+// date arrives as a full timestamp only the importer's parser reduces
+// correctly; and a chapter list has to pass the same monotonic-from-zero rule
+// metacheck enforces before it can be written into a recording.
 
-// completeSet is one dump row for a whole-book product.
+// completeSet is one dump row for a whole-book product, already normalized.
+// Parsing is where a row is judged, so by the time the planner sees one its
+// region is a marketplace the schema accepts and its ASIN is well-formed.
 type completeSet struct {
-	ASIN          string          `json:"asin"`
-	Title         string          `json:"title"`
-	Region        string          `json:"region"`
-	Publisher     string          `json:"publisher"`
-	ReleaseDate   string          `json:"releaseDate"`
-	ImageURL      string          `json:"imageUrl"`
-	LengthMinutes int             `json:"lengthMinutes"`
-	Authors       []nameRef       `json:"authors"`
-	Chapters      json.RawMessage `json:"chapters"`
+	ASIN          string
+	Title         string
+	Region        string
+	Publisher     string
+	ReleaseDate   string
+	CoverURL      string
+	LengthMinutes int
+	Authors       []string
+	Chapters      []model.Chapter
+}
+
+// completeSetRow is the row as the export writes it.
+type completeSetRow struct {
+	ASIN          string    `json:"asin"`
+	Title         string    `json:"title"`
+	Region        string    `json:"region"`
+	Publisher     string    `json:"publisher"`
+	ReleaseDate   string    `json:"releaseDate"`
+	ImageURL      string    `json:"imageUrl"`
+	LengthMinutes int       `json:"lengthMinutes"`
+	Authors       []nameRef `json:"authors"`
+	Chapters      any       `json:"chapters"`
 }
 
 type nameRef struct {
 	Name string `json:"name"`
 }
 
-// releaseDay is the row's release date as a plain YYYY-MM-DD, empty when the
-// row states none. The dump stores an ISO timestamp; the day is the fact.
-func (c *completeSet) releaseDay() string {
-	if len(c.ReleaseDate) < 10 {
-		return ""
-	}
-	return c.ReleaseDate[:10]
+// rowProblem is something the parser declined or dropped, named so the report
+// can say which row and why rather than silently reading fewer rows than the
+// operator exported.
+type rowProblem struct {
+	Line   int
+	ASIN   string
+	Reason string
 }
 
-// coverURL returns the row's cover, but only over https - the same bar the
-// importer holds a cover to.
-func (c *completeSet) coverURL() string {
-	if strings.HasPrefix(c.ImageURL, "https://") {
-		return c.ImageURL
+// normalize turns a raw row into a usable one. ok is false for a row this merge
+// must not draw on: an identifier that is not an ASIN, or a marketplace the
+// schema has no name for - either would otherwise be written verbatim into a
+// record and fail validation.
+func (r completeSetRow) normalize(warn func(string, ...any)) (*completeSet, string, bool) {
+	asin := importer.NormalizeASIN(r.ASIN)
+	if asin == "" {
+		return nil, fmt.Sprintf("%q is not a well-formed ASIN", r.ASIN), false
 	}
-	return ""
-}
-
-// authorSlugs renders the row's author names as the person ids the catalogue
-// addresses them by, through the same call the importer mints them with.
-func (c *completeSet) authorSlugs() []string {
-	out := make([]string, 0, len(c.Authors))
-	for _, a := range c.Authors {
+	region, ok := importer.MapRegion(r.Region)
+	if !ok {
+		return nil, fmt.Sprintf("region %q is not a marketplace this schema knows", r.Region), false
+	}
+	cs := &completeSet{
+		ASIN:          asin,
+		Title:         strings.TrimSpace(r.Title),
+		Region:        region,
+		Publisher:     strings.TrimSpace(r.Publisher),
+		ReleaseDate:   importer.ISODatePart(r.ReleaseDate),
+		LengthMinutes: r.LengthMinutes,
+		Chapters:      importer.Chapters(r.Chapters, warn),
+	}
+	// The schema requires an https cover, the same bar internal/importer holds
+	// one to: an http URL cannot be recorded, so it is dropped and said so.
+	if img := strings.TrimSpace(r.ImageURL); img != "" {
+		if strings.HasPrefix(img, "https://") {
+			cs.CoverURL = img
+		} else {
+			warn("cover URL %q is not https; dropped", img)
+		}
+	}
+	for _, a := range r.Authors {
 		slug, _ := model.PersonSlug(a.Name)
-		out = append(out, slug)
+		cs.Authors = append(cs.Authors, slug)
 	}
-	return out
+	return cs, "", true
 }
 
-// chapterList returns the row's chapters translated onto the recording's own
-// chapter shape, nil when the row carries none.
-func (c *completeSet) chapterList() []model.Chapter {
-	var raw []struct {
-		Title         string `json:"title"`
-		StartOffsetMS int64  `json:"startOffsetMs"`
-		LengthMS      int64  `json:"lengthMs"`
-	}
-	if err := json.Unmarshal(c.Chapters, &raw); err != nil || len(raw) == 0 {
-		return nil
-	}
-	out := make([]model.Chapter, 0, len(raw))
-	for _, r := range raw {
-		out = append(out, model.Chapter{Title: r.Title, StartMS: r.StartOffsetMS, LengthMS: r.LengthMS})
-	}
-	return out
-}
-
-// loadCompleteSets reads an NDJSON (or JSON-array) file of dump rows. An empty
-// path is not an error: the whole enrichment is optional and the merge composes
-// a derived title without it.
-func loadCompleteSets(path string) ([]*completeSet, error) {
+// loadCompleteSets reads an NDJSON file of dump rows, normalizing each. An
+// empty path is not an error: the whole enrichment is optional and the merge
+// composes a derived title without it. A row the parser declines, and a field
+// it drops, are reported - never silently skipped.
+func loadCompleteSets(path string) ([]*completeSet, []rowProblem, error) {
 	if path == "" {
-		return nil, nil
+		return nil, nil, nil
 	}
 	f, err := os.Open(path) //nolint:gosec // an operator-supplied export path
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 	defer f.Close() //nolint:errcheck // read-only
 
 	sc := bufio.NewScanner(f)
 	sc.Buffer(make([]byte, 0, 64<<10), 32<<20)
 	var out []*completeSet
+	var problems []rowProblem
 	line := 0
 	for sc.Scan() {
 		line++
@@ -110,18 +132,27 @@ func loadCompleteSets(path string) ([]*completeSet, error) {
 			continue
 		}
 		if strings.HasPrefix(text, "[") {
-			return nil, fmt.Errorf("%s: expected NDJSON (one row per line), got a JSON array", path)
+			return nil, nil, fmt.Errorf("%s: expected NDJSON (one row per line), got a JSON array", path)
 		}
-		var row completeSet
+		var row completeSetRow
 		if err := json.Unmarshal([]byte(text), &row); err != nil {
-			return nil, fmt.Errorf("%s:%d: %w", path, line, err)
+			return nil, nil, fmt.Errorf("%s:%d: %w", path, line, err)
 		}
-		out = append(out, &row)
+		at := line
+		note := func(format string, a ...any) {
+			problems = append(problems, rowProblem{Line: at, ASIN: row.ASIN, Reason: fmt.Sprintf(format, a...)})
+		}
+		cs, reason, ok := row.normalize(note)
+		if !ok {
+			note("%s", reason)
+			continue
+		}
+		out = append(out, cs)
 	}
 	if err := sc.Err(); err != nil {
-		return nil, fmt.Errorf("%s: %w", path, err)
+		return nil, nil, fmt.Errorf("%s: %w", path, err)
 	}
-	return out, nil
+	return out, problems, nil
 }
 
 // matchCompleteSets attaches at most one dump row to each group: a row whose
@@ -135,7 +166,7 @@ func matchCompleteSets(groups []*group, rows []*completeSet) []Refusal {
 		if _, isPart := partOf(r.Title); isPart {
 			continue
 		}
-		key := groupKey(baseTitle(r.Title), r.authorSlugs())
+		key := groupKey(baseTitle(r.Title), r.Authors)
 		byKey[key] = append(byKey[key], r)
 	}
 	var refusals []Refusal
@@ -147,22 +178,13 @@ func matchCompleteSets(groups []*group, rows []*completeSet) []Refusal {
 		switch len(found) {
 		case 0:
 		case 1:
-			if regionAllowed(found[0].Region) {
-				g.Set = found[0]
-				continue
-			}
-			refusals = append(refusals, Refusal{
-				Category: catAmbiguousSet,
-				Subject:  g.Base,
-				Reason:   fmt.Sprintf("the complete-set row states region %q, which is not a marketplace this schema knows", found[0].Region),
-				Entries:  []string{found[0].ASIN},
-			})
+			g.Set = found[0]
 		default:
 			asins := make([]string, 0, len(found))
 			for _, r := range found {
 				asins = append(asins, r.ASIN)
 			}
-			sortStrings(asins)
+			slices.Sort(asins)
 			refusals = append(refusals, Refusal{
 				Category: catAmbiguousSet,
 				Subject:  g.Base,
@@ -173,34 +195,3 @@ func matchCompleteSets(groups []*group, rows []*completeSet) []Refusal {
 	}
 	return refusals
 }
-
-// regions is the marketplace vocabulary, read from the embedded schema rather
-// than restated here. One vocabulary, one definition - the drift guard the
-// project holds every other mirror of this list to.
-var regions = sync.OnceValue(func() map[string]bool {
-	raw, err := meta.SchemaFS.ReadFile("schema/common.schema.json")
-	if err != nil {
-		panic("remediate: reading the embedded common schema: " + err.Error())
-	}
-	var doc struct {
-		Defs struct {
-			Region struct {
-				Enum []string `json:"enum"`
-			} `json:"region"`
-		} `json:"$defs"`
-	}
-	if err := json.Unmarshal(raw, &doc); err != nil {
-		panic("remediate: parsing the embedded common schema: " + err.Error())
-	}
-	out := make(map[string]bool, len(doc.Defs.Region.Enum))
-	for _, r := range doc.Defs.Region.Enum {
-		out[r] = true
-	}
-	if len(out) == 0 {
-		panic("remediate: the embedded common schema states no region vocabulary")
-	}
-	return out
-})
-
-// regionAllowed reports whether a dump row's region is one the schema knows.
-func regionAllowed(region string) bool { return regions()[strings.ToLower(region)] }

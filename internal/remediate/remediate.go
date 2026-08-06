@@ -14,16 +14,18 @@
 // loudly rather than guessing. A book it cannot resolve is left exactly as it
 // was and named in the report, because a half-merged book is worse than an
 // unmerged one. Every write goes through pkg/pack, so the tree it leaves is one
-// metacheck and metafmt agree with.
+// metacheck and metafmt agree with. Every normalization it needs - a region
+// spelling, a date, an ASIN, a chapter list, a series position, a bounded slug -
+// comes from internal/importer rather than from a second copy of the rule.
 package remediate
 
 import (
 	"errors"
 	"fmt"
-	"sort"
+	"slices"
+	"strings"
 	"time"
 
-	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
 
@@ -50,7 +52,8 @@ type Options struct {
 // MissingPlain is a book whose dramatization this run merged but whose plain
 // text edition the catalogue does not hold, so a plain series slot is still
 // occupied by the dramatization. It is the worklist for the targeted import
-// that follows.
+// that follows, which is why it carries the identifiers: they are what an
+// operator matches a dump row by.
 type MissingPlain struct {
 	Work    string
 	Title   string
@@ -60,31 +63,14 @@ type MissingPlain struct {
 	Series  []string
 }
 
-// MergedWork is one book's merge, for the report.
-type MergedWork struct {
-	Slug   string
-	Title  string
-	Minted bool
-	Parts  []string
-	// Runtime is the merged recording's runtime in minutes, 0 when the merge
-	// deliberately states none.
-	Runtime int
-}
-
-// SeriesRepair is one series' repair, for the report.
-type SeriesRepair struct {
-	Slug    string
-	Changes []string
-}
-
 // Report is everything a run did or declined to do.
 type Report struct {
 	PartWorks      int
 	Groups         int
-	Merged         []MergedWork
+	Merged         []merged
 	Deleted        []string
 	Twins          []twinMerge
-	Series         []SeriesRepair
+	Series         []seriesPlan
 	MissingPlain   []MissingPlain
 	Refusals       []Refusal
 	Wrote          []string
@@ -92,6 +78,7 @@ type Report struct {
 	Applied        bool
 	CompleteSets   int
 	MatchedSets    int
+	SetProblems    []rowProblem
 	SwappedToPlain int
 }
 
@@ -109,7 +96,7 @@ func Run(opts Options) (*Report, error) {
 	if err != nil {
 		return nil, err
 	}
-	rows, err := loadCompleteSets(opts.CompleteSets)
+	rows, rowProblems, err := loadCompleteSets(opts.CompleteSets)
 	if err != nil {
 		return nil, err
 	}
@@ -118,7 +105,7 @@ func Run(opts Options) (*Report, error) {
 	refusals = append(refusals, matchTargets(idx, groups)...)
 	refusals = append(refusals, matchCompleteSets(groups, rows)...)
 
-	rep := &Report{Groups: len(groups), CompleteSets: len(rows)}
+	rep := &Report{Groups: len(groups), CompleteSets: len(rows), SetProblems: rowProblems}
 	for _, g := range groups {
 		rep.PartWorks += len(g.Parts)
 		if g.Set != nil {
@@ -152,16 +139,13 @@ func Run(opts Options) (*Report, error) {
 		return nil, fmt.Errorf("remediate: the plan did not settle; refuse the affected books by hand")
 	}
 
-	rep.Refusals = dedupeRefusals(append(refusals, res.refusals...))
-	sortRefusals(rep.Refusals)
-	rep.Merged = res.report
+	rep.Refusals = sortRefusals(dedupeRefusals(append(refusals, res.refusals...)))
+	rep.Merged = res.merged
 	rep.Deleted = res.deletes
 	rep.Twins = res.twins
+	rep.Series = res.series
 	rep.MissingPlain = res.missing
 	rep.SwappedToPlain = res.swapped
-	for _, sp := range res.series {
-		rep.Series = append(rep.Series, SeriesRepair{Slug: sp.Slug, Changes: sp.Changes})
-	}
 
 	if !opts.Write {
 		return rep, nil
@@ -188,18 +172,27 @@ type planned struct {
 	twins    []twinMerge
 	refusals []Refusal
 	missing  []MissingPlain
-	report   []MergedWork
+	merged   []merged
 	swapped  int
 }
 
 // buildPlan works the whole change out without writing anything. blocked names
 // the groups a series refusal makes unmergeable; a non-empty blocked set means
-// the plan has to be rebuilt without them.
+// the plan has to be rebuilt without them, and the refusals that explain why
+// travel out with it (the next round sees an untouched series and would report
+// nothing at all).
+//
+// The order is deliberate: compose, then collapse twins, THEN build the rewrite
+// and swap maps once, with every survivor already resolved. Building them first
+// meant three retroactive patch-up passes over maps that had just been written.
 func buildPlan(idx *index, groups []*group, today string) (*planned, map[*group]bool, []Refusal) {
 	p := &planned{works: map[string]obj{}}
 
 	var active []*group
 	composed := map[string]merged{}
+	slugOf := map[*group]string{}  // the group -> the slug it composed onto
+	groupOf := map[string]*group{} // merged slug -> the group that composed it
+	partOfGroup := map[string]*group{}
 	for _, g := range groups {
 		if g.refused {
 			continue
@@ -223,48 +216,28 @@ func buildPlan(idx *index, groups []*group, today string) (*planned, map[*group]
 		}
 		active = append(active, g)
 		composed[m.Slug] = m
-	}
-
-	rewrites := map[string]rewrite{}
-	deletes := map[string]bool{}
-	for _, g := range active {
-		for _, s := range g.partSlugs() {
-			rewrites[s] = rewrite{To: g.Slug, FromPart: true, Group: g}
-			deletes[s] = true
-		}
-	}
-
-	// The plain text edition each merged book's series slot belongs to.
-	swaps := map[string]string{}
-	for _, g := range active {
-		twin, n := idx.plainTwin(g.Base, g.Authors)
-		switch {
-		case n == 1:
-			swaps[g.Slug] = twin
-		case n > 1:
-			p.refusals = append(p.refusals, Refusal{Category: catAmbiguousTwin, Subject: g.Base,
-				Reason:  "more than one plain work matches this book, so no series slot was swapped",
-				Entries: idx.plain[plainKey(g.Base, g.Authors)]})
-		default:
-			p.missing = append(p.missing, missingPlainFor(idx, g))
+		slugOf[g] = m.Slug
+		groupOf[m.Slug] = g
+		for _, s := range m.Parts {
+			partOfGroup[s] = g
 		}
 	}
 
 	// The twin pass reads the post-merge catalogue: the works this run composed
-	// plus the dramatized cohort works it left alone.
-	view := map[string]cohortWork{}
+	// plus the dramatized cohort works it left alone (never a part, which is
+	// about to be deleted).
+	view := map[string]obj{}
 	for slug, m := range composed {
-		view[slug] = cohortWork{work: m.Work}
+		view[slug] = m.Work
 	}
 	for _, slug := range sortedKeys(idx.candidates) {
-		if _, ok := view[slug]; ok || deletes[slug] {
-			continue
-		}
 		c := idx.candidates[slug]
-		if !isGraphicAudio(c.obj) || !isDramatized(c.title()) {
+		if _, ok := view[slug]; ok || partOfGroup[slug] != nil {
 			continue
 		}
-		view[slug] = cohortWork{work: c.obj}
+		if c.graphicAudio && isDramatized(c.title()) {
+			view[slug] = c.obj
+		}
 	}
 	twinChanged, twinMerges, twinRefusals := planTwins(view)
 	p.refusals = append(p.refusals, twinRefusals...)
@@ -276,24 +249,41 @@ func buildPlan(idx *index, groups []*group, today string) (*planned, map[*group]
 			survivorOf[a] = tm.Survivor
 		}
 	}
-	for old, rw := range rewrites {
-		if s, ok := survivorOf[rw.To]; ok {
-			rw.To = s
-			rewrites[old] = rw
+	// finalWork resolves a slug to what will exist after the twin collapse.
+	finalWork := func(slug string) string {
+		if s, ok := survivorOf[slug]; ok {
+			return s
+		}
+		return slug
+	}
+
+	rewrites := map[string]rewrite{}
+	deletes := map[string]bool{}
+	swaps := map[string]string{}
+	for _, g := range active {
+		final := finalWork(slugOf[g])
+		for _, s := range g.partSlugs() {
+			rewrites[s] = rewrite{To: final, FromPart: true, Group: g}
+			deletes[s] = true
+		}
+		// The plain text edition this book's series slot belongs to.
+		switch twins := idx.plainTwins(g.Base, g.Authors); len(twins) {
+		case 0:
+			p.missing = append(p.missing, missingPlainFor(idx, g, slugOf[g], composed[slugOf[g]].Title))
+		case 1:
+			swaps[final] = twins[0]
+		default:
+			p.refusals = append(p.refusals, Refusal{Category: catAmbiguousTwin, Subject: g.Base,
+				Reason:  "more than one plain work matches this book, so no series slot was swapped",
+				Entries: twins})
 		}
 	}
 	for loser, survivor := range survivorOf {
 		if _, ok := rewrites[loser]; !ok {
-			rewrites[loser] = rewrite{To: survivor}
+			rewrites[loser] = rewrite{To: survivor, Group: groupOf[loser]}
 		}
 		if idx.works[loser] {
 			deletes[loser] = true
-		}
-	}
-	for slug, twin := range swaps {
-		if s, ok := survivorOf[slug]; ok {
-			swaps[s] = twin
-			delete(swaps, slug)
 		}
 	}
 
@@ -302,35 +292,21 @@ func buildPlan(idx *index, groups []*group, today string) (*planned, map[*group]
 			continue
 		}
 		p.works[slug] = m.Work
+		p.merged = append(p.merged, m)
 	}
 	for slug, w := range twinChanged {
 		p.works[slug] = w
 	}
+	slices.SortFunc(p.merged, func(a, b merged) int { return strings.Compare(a.Slug, b.Slug) })
 
 	series, seriesRefusals, blocked := planSeries(idx, rewrites, swaps)
 	if len(blocked) > 0 {
-		// The refusals of a round that could not settle are the ones that say
-		// WHY, so they travel out with the blocked groups; the next round sees
-		// an untouched series and would report nothing at all.
 		return nil, blocked, seriesRefusals
 	}
 	p.refusals = append(p.refusals, seriesRefusals...)
 	p.series = series
 	p.swapped = countSwaps(idx, series, swaps)
-
 	p.deletes = sortedKeys(deletes)
-	for _, slug := range sortedKeys(composed) {
-		if _, gone := survivorOf[slug]; gone {
-			continue
-		}
-		m := composed[slug]
-		runtime := 0
-		if _, rec, ok := soleRecording(p.works[slug]); ok {
-			runtime, _ = rec.intAt("runtime_min")
-		}
-		p.report = append(p.report, MergedWork{Slug: slug, Title: m.Title, Minted: m.Minted, Parts: m.Parts, Runtime: runtime})
-	}
-	sort.Slice(p.report, func(i, j int) bool { return p.report[i].Slug < p.report[j].Slug })
 	return p, nil, nil
 }
 
@@ -355,8 +331,8 @@ func countSwaps(idx *index, plans []seriesPlan, swaps map[string]string) int {
 }
 
 // missingPlainFor describes a book whose plain edition the catalogue lacks.
-func missingPlainFor(idx *index, g *group) MissingPlain {
-	m := MissingPlain{Work: g.Slug, Title: g.Title, Base: g.Base, Authors: append([]string(nil), g.Authors...)}
+func missingPlainFor(idx *index, g *group, slug, title string) MissingPlain {
+	m := MissingPlain{Work: slug, Title: title, Base: g.Base, Authors: slices.Clone(g.Authors)}
 	if g.Set != nil {
 		m.ASINs = append(m.ASINs, g.Set.ASIN)
 	}
@@ -366,7 +342,7 @@ func missingPlainFor(idx *index, g *group) MissingPlain {
 		}
 	}
 	seen := map[string]bool{}
-	for _, w := range append(g.partSlugs(), g.Slug) {
+	for _, w := range append(g.partSlugs(), slug) {
 		for _, s := range idx.seriesOf[w] {
 			if seen[s] || dramatizedSeries(idx.series[s].str("name")) {
 				continue
@@ -375,7 +351,7 @@ func missingPlainFor(idx *index, g *group) MissingPlain {
 			m.Series = append(m.Series, s)
 		}
 	}
-	sortStrings(m.Series)
+	slices.Sort(m.Series)
 	return m
 }
 
@@ -422,11 +398,7 @@ func seriesEntry(store *pack.Store, sp seriesPlan) ([]byte, error) {
 	if err != nil {
 		return nil, fmt.Errorf("series %s: %w", sp.Slug, err)
 	}
-	works := make([]model.SeriesWork, len(sp.Works))
-	copy(works, sp.Works)
-	if err := o.set("works", works); err != nil {
-		return nil, err
-	}
+	o.set("works", sp.Works)
 	return o.raw()
 }
 
@@ -436,7 +408,7 @@ func dedupeRefusals(rs []Refusal) []Refusal {
 	seen := map[string]bool{}
 	out := rs[:0]
 	for _, r := range rs {
-		key := r.Category + "\x00" + r.Subject + "\x00" + r.Reason + "\x00" + joinComma(r.Entries)
+		key := r.Category + "\x00" + r.Subject + "\x00" + r.Reason + "\x00" + strings.Join(r.Entries, ",")
 		if seen[key] {
 			continue
 		}
@@ -448,14 +420,15 @@ func dedupeRefusals(rs []Refusal) []Refusal {
 
 // sortRefusals orders refusals by category then subject, so two runs report the
 // same list in the same order.
-func sortRefusals(rs []Refusal) {
-	sort.Slice(rs, func(i, j int) bool {
-		if rs[i].Category != rs[j].Category {
-			return rs[i].Category < rs[j].Category
+func sortRefusals(rs []Refusal) []Refusal {
+	slices.SortFunc(rs, func(a, b Refusal) int {
+		if c := strings.Compare(a.Category, b.Category); c != 0 {
+			return c
 		}
-		if rs[i].Subject != rs[j].Subject {
-			return rs[i].Subject < rs[j].Subject
+		if c := strings.Compare(a.Subject, b.Subject); c != 0 {
+			return c
 		}
-		return rs[i].Reason < rs[j].Reason
+		return strings.Compare(a.Reason, b.Reason)
 	})
+	return rs
 }

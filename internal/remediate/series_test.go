@@ -172,6 +172,8 @@ func TestFloorPosition(t *testing.T) {
 		{"1", 1, true}, {"1.1", 1, true}, {"1.5", 1, true}, {"12.10", 12, true},
 		{"0", 0, true}, {"1-3", 0, false}, {"1-3.5", 0, false}, {"", 0, false},
 		{"1.", 0, false}, {".5", 0, false}, {"a", 0, false},
+		// Spellings the shared canonicalizer accepts and tidies.
+		{" 4 ", 4, true}, {"7.0", 7, true}, {"1 - 3", 0, false},
 	}
 	for _, c := range cases {
 		got, ok := floorPosition(c.in)
@@ -181,14 +183,19 @@ func TestFloorPosition(t *testing.T) {
 	}
 }
 
-func TestPositionLess(t *testing.T) {
-	if !positionLess("2", "10") {
+func TestComparePositions(t *testing.T) {
+	if comparePositions("2", "10") >= 0 {
 		t.Error("positions must order numerically, not lexicographically")
 	}
-	if !positionLess("1.5", "2") {
+	if comparePositions("1.5", "2") >= 0 {
 		t.Error("1.5 sorts before 2")
 	}
-	if !positionLess("3", "1-3") {
+	if comparePositions("3", "1-3") >= 0 {
 		t.Error("a plain number sorts before a range")
+	}
+	// The canonicalizer reads "2.50" and "2.5" as one position, so the ordering
+	// built on it does too.
+	if comparePositions("2.50", "2.5") != 0 {
+		t.Error("two spellings of one position must compare equal")
 	}
 }

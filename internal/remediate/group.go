@@ -2,7 +2,12 @@ package remediate
 
 import (
 	"fmt"
-	"sort"
+	"slices"
+	"strings"
+	"sync"
+
+	"github.com/kodestar/audiosilo-meta/internal/importer"
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 // group.go turns the part works into part GROUPS - one per book - and refuses
@@ -22,23 +27,12 @@ type group struct {
 	Base    string   // the base title, the parts' shared title minus the markers
 	Authors []string // the author set, in the first part's order
 	Parts   []part   // sorted by (part number, work slug)
-	Total   int      // the part count the titles state
 
 	// Target is the complete-set work the catalogue already holds for this
 	// book, empty when there is none and one has to be minted.
 	Target string
 	// Set is the complete-set dump row, nil when none was supplied or matched.
 	Set *completeSet
-
-	// Slug is the merged work's slug: Target when merging into one, else the
-	// minted slug.
-	Slug string
-	// Title is the merged work's title.
-	Title string
-
-	// Complete reports whether the parts cover 1..Total exactly once, which is
-	// what licenses summing their runtimes.
-	Complete bool
 
 	refused bool
 }
@@ -55,6 +49,10 @@ func groupKey(base string, authors []string) string {
 	return titleKey(base) + "\x01" + authorsKey(authors)
 }
 
+// total is the part count the titles state. Every part agrees on it - a group
+// whose parts do not is refused before anything reads this.
+func (g *group) total() int { return g.Parts[0].Ref.Total }
+
 // partSlugs returns the parts' work slugs in part order.
 func (g *group) partSlugs() []string {
 	out := make([]string, 0, len(g.Parts))
@@ -62,6 +60,27 @@ func (g *group) partSlugs() []string {
 		out = append(out, p.Slug)
 	}
 	return out
+}
+
+// Complete reports whether the parts cover 1..total exactly once, which is what
+// licenses summing their runtimes into a whole-book one.
+func (g *group) Complete() bool {
+	seen := map[int]bool{}
+	for _, p := range g.Parts {
+		if seen[p.Ref.Num] {
+			return false
+		}
+		seen[p.Ref.Num] = true
+	}
+	if len(seen) != g.total() {
+		return false
+	}
+	for n := 1; n <= g.total(); n++ {
+		if !seen[n] {
+			return false
+		}
+	}
+	return true
 }
 
 // Refusal is one thing the run declined to do, and why. Every refusal names the
@@ -77,13 +96,13 @@ type Refusal struct {
 func (r Refusal) String() string {
 	s := fmt.Sprintf("%s: %s: %s", r.Category, r.Subject, r.Reason)
 	if len(r.Entries) > 0 {
-		s += " [" + joinComma(r.Entries) + "]"
+		s += " [" + strings.Join(r.Entries, ", ") + "]"
 	}
 	return s
 }
 
-// The refusal categories. Declared together so the report can list them in a
-// fixed order and so adding one is a visible decision.
+// The refusal categories: the vocabulary the report groups by. Declared
+// together so adding one is a visible decision.
 const (
 	catAuthorSplit      = "author-split"
 	catMultiRecording   = "multi-recording"
@@ -97,6 +116,10 @@ const (
 	catAmbiguousTwin    = "ambiguous-plain-twin"
 	catTotalMismatch    = "part-count-disagreement"
 	catTwinDisagreement = "twin-disagreement"
+	// catInternal is a record this package could not compose: a bug here rather
+	// than a judgement about the data, which is why it does not share a
+	// category with one.
+	catInternal = "internal-error"
 )
 
 // buildGroups partitions the GraphicAudio part works into groups and records
@@ -108,7 +131,7 @@ func buildGroups(idx *index) (groups []*group, refusals []Refusal) {
 	for _, slug := range sortedKeys(idx.candidates) {
 		c := idx.candidates[slug]
 		ref, ok := partOf(c.title())
-		if !ok || !isGraphicAudio(c.obj) {
+		if !ok || !c.graphicAudio {
 			continue
 		}
 		base := baseTitle(c.title())
@@ -116,7 +139,7 @@ func buildGroups(idx *index) (groups []*group, refusals []Refusal) {
 		key := groupKey(base, authors)
 		g := byKey[key]
 		if g == nil {
-			g = &group{Base: base, Authors: authors, Total: ref.Total}
+			g = &group{Base: base, Authors: authors}
 			byKey[key] = g
 		}
 		g.Parts = append(g.Parts, part{Slug: slug, Ref: ref, Work: c.obj})
@@ -128,15 +151,15 @@ func buildGroups(idx *index) (groups []*group, refusals []Refusal) {
 
 	for _, key := range sortedKeys(byKey) {
 		g := byKey[key]
-		sort.Slice(g.Parts, func(i, j int) bool {
-			if g.Parts[i].Ref.Num != g.Parts[j].Ref.Num {
-				return g.Parts[i].Ref.Num < g.Parts[j].Ref.Num
+		slices.SortFunc(g.Parts, func(a, b part) int {
+			if a.Ref.Num != b.Ref.Num {
+				return a.Ref.Num - b.Ref.Num
 			}
-			return g.Parts[i].Slug < g.Parts[j].Slug
+			return strings.Compare(a.Slug, b.Slug)
 		})
 		groups = append(groups, g)
 	}
-	sort.Slice(groups, func(i, j int) bool { return groups[i].key() < groups[j].key() })
+	slices.SortFunc(groups, func(a, b *group) int { return strings.Compare(a.key(), b.key()) })
 
 	for _, g := range groups {
 		if len(byBase[titleKey(g.Base)]) > 1 {
@@ -153,22 +176,20 @@ func buildGroups(idx *index) (groups []*group, refusals []Refusal) {
 			})
 			continue
 		}
-		if r, ok := checkParts(g); !ok {
+		if r, ok := checkParts(idx, g); !ok {
 			g.refused = true
 			refusals = append(refusals, r)
-			continue
 		}
-		g.Complete = partsComplete(g)
 	}
 	return groups, refusals
 }
 
 // checkParts applies the per-group refusals that need only the parts.
-func checkParts(g *group) (Refusal, bool) {
+func checkParts(idx *index, g *group) (Refusal, bool) {
 	totals := map[int]bool{}
 	for i := range g.Parts {
 		p := &g.Parts[i]
-		key, rec, ok := soleRecording(p.Work)
+		key, rec, ok := idx.candidates[p.Slug].soleRecording()
 		if !ok {
 			return Refusal{
 				Category: catMultiRecording,
@@ -207,27 +228,6 @@ func checkParts(g *group) (Refusal, bool) {
 	return Refusal{}, true
 }
 
-// partsComplete reports whether the parts cover 1..Total exactly once. Only a
-// complete set licenses summing the parts' runtimes into a whole-book one.
-func partsComplete(g *group) bool {
-	seen := map[int]bool{}
-	for _, p := range g.Parts {
-		if seen[p.Ref.Num] {
-			return false
-		}
-		seen[p.Ref.Num] = true
-	}
-	if len(seen) != g.Total {
-		return false
-	}
-	for n := 1; n <= g.Total; n++ {
-		if !seen[n] {
-			return false
-		}
-	}
-	return true
-}
-
 // agreedLanguage returns the language every part states. ok is false when they
 // disagree; the returned string then names the values seen, for the report.
 func agreedLanguage(g *group) (string, bool) {
@@ -245,30 +245,31 @@ func agreedLanguage(g *group) (string, bool) {
 			return l, true
 		}
 	}
-	return joinComma(sortedKeys(seen)), false
+	return strings.Join(sortedKeys(seen), ", "), false
 }
 
-// collectiveNarrators are the canonical records that stand for a cast rather
-// than for a named performer (internal/importer/collective.go folds every
-// spelling onto these). A part credited only to one of them states no
-// identifying narrator at all, so it can neither agree nor disagree with a
-// sibling part - which matters, because GraphicAudio's parts really do credit
-// different subsets of one cast, and several parts carry the bare "full-cast"
-// credit alone.
-var collectiveNarrators = map[string]bool{
-	"full-cast":  true,
-	"various":    true,
-	"anonymous":  true,
-	"uncredited": true,
-	"unknown":    true,
-	"person":     true,
-}
+// namelessCredits are the person ids that stand for something other than a
+// named performer: the collective records the credit fold produces (full-cast,
+// various, anonymous, uncredited, unknown) plus the shared catch-all a name
+// that slugs away to nothing lands on.
+//
+// It is DERIVED from internal/importer rather than restated, so a sixth
+// collective bucket added there is a sixth id here. Restating it was the defect:
+// a bucket added later would silently have turned narrator-disagreement
+// refusals into merges, because a credit naming nobody would have started
+// reading as a credit naming somebody.
+var namelessCredits = sync.OnceValue(func() map[string]bool {
+	ids := importer.CollectiveIDs()
+	ids[model.UnslugPersonID] = true
+	return ids
+})
 
 // disjointNarrators looks for two parts whose IDENTIFYING narrator sets share
 // nobody. A dramatization's parts legitimately credit different slices of one
 // cast (36 of the live groups do), so overlap - not equality - is the test, and
 // two parts that share not one performer are two productions.
 func disjointNarrators(g *group) (string, string, bool) {
+	nameless := namelessCredits()
 	type named struct {
 		slug string
 		set  map[string]bool
@@ -277,7 +278,7 @@ func disjointNarrators(g *group) (string, string, bool) {
 	for _, p := range g.Parts {
 		s := map[string]bool{}
 		for _, n := range p.Rec.strs("narrators") {
-			if !collectiveNarrators[n] {
+			if !nameless[n] {
 				s[n] = true
 			}
 		}
@@ -310,10 +311,7 @@ func matchTargets(idx *index, groups []*group) []Refusal {
 	byKey := map[string][]string{}
 	for _, slug := range sortedKeys(idx.candidates) {
 		c := idx.candidates[slug]
-		if _, isPart := partOf(c.title()); isPart {
-			continue
-		}
-		if !isGraphicAudio(c.obj) {
+		if _, isPart := partOf(c.title()); isPart || !c.graphicAudio {
 			continue
 		}
 		key := groupKey(baseTitle(c.title()), c.authors())
@@ -329,7 +327,7 @@ func matchTargets(idx *index, groups []*group) []Refusal {
 		case 0:
 		case 1:
 			target := found[0]
-			if _, _, ok := soleRecording(idx.candidates[target].obj); !ok {
+			if _, _, ok := idx.candidates[target].soleRecording(); !ok {
 				g.refused = true
 				refusals = append(refusals, Refusal{
 					Category: catMultiRecording,
@@ -351,16 +349,4 @@ func matchTargets(idx *index, groups []*group) []Refusal {
 		}
 	}
 	return refusals
-}
-
-// joinComma renders a list for a one-line report.
-func joinComma(items []string) string {
-	out := ""
-	for i, s := range items {
-		if i > 0 {
-			out += ", "
-		}
-		out += s
-	}
-	return out
 }

@@ -3,7 +3,6 @@ package remediate
 import (
 	"fmt"
 	"io"
-	"sort"
 	"strings"
 )
 
@@ -25,7 +24,8 @@ func (r *Report) Write(w io.Writer, verbose bool) error {
 	}
 	p("metaremediate %s\n", mode)
 	p("  part works found        %d in %d part groups\n", r.PartWorks, r.Groups)
-	p("  complete-set rows read  %d (%d matched a group)\n", r.CompleteSets, r.MatchedSets)
+	p("  complete-set rows read  %d (%d matched a group, %d row problems)\n",
+		r.CompleteSets, r.MatchedSets, len(r.SetProblems))
 
 	minted, enriched := 0, 0
 	for _, m := range r.Merged {
@@ -55,13 +55,13 @@ func (r *Report) Write(w io.Writer, verbose bool) error {
 				if m.Runtime > 0 {
 					runtime = fmt.Sprintf("%d min", m.Runtime)
 				}
-				p("  %s %s  %q  <- %s  (%s)\n", kind, m.Slug, m.Title, joinComma(m.Parts), runtime)
+				p("  %s %s  %q  <- %s  (%s)\n", kind, m.Slug, m.Title, strings.Join(m.Parts, ", "), runtime)
 			}
 		}
 		if len(r.Twins) > 0 {
 			p("\nsame-ASIN twins:\n")
 			for _, t := range r.Twins {
-				p("  %s <- %s (shared ASIN %s)\n", t.Survivor, joinComma(t.Absorbed), t.ASIN)
+				p("  %s <- %s (shared ASIN %s)\n", t.Survivor, strings.Join(t.Absorbed, ", "), t.ASIN)
 			}
 		}
 		if len(r.Series) > 0 {
@@ -73,35 +73,46 @@ func (r *Report) Write(w io.Writer, verbose bool) error {
 				}
 			}
 		}
+		if len(r.SetProblems) > 0 {
+			p("\ncomplete-set rows declined or trimmed:\n")
+			for _, rp := range r.SetProblems {
+				p("  line %d (%s): %s\n", rp.Line, rp.ASIN, rp.Reason)
+			}
+		}
 	}
 
 	if len(r.MissingPlain) > 0 {
+		// The identifiers are the point of this list: they are what an operator
+		// matches a dump row by when importing the plain editions.
 		p("\nbooks with no plain edition in the catalogue (import these, then re-run):\n")
 		for _, m := range r.MissingPlain {
-			p("  %-60q authors=%s series=%s\n", m.Base, joinComma(m.Authors), joinComma(m.Series))
+			p("  %q\n", m.Base)
+			p("      authors=%s  series=%s\n", strings.Join(m.Authors, ", "), strings.Join(m.Series, ", "))
+			p("      merged into %s (%q); asins=%s\n", m.Work, m.Title, strings.Join(m.ASINs, ", "))
 		}
 	}
 
 	if len(r.Refusals) > 0 {
-		p("\nrefusals (left for a human):\n")
-		byCat := map[string][]Refusal{}
+		// Refusals arrive sorted by category, so one pass emits a header
+		// whenever the category changes. The counts are worth the one cheap
+		// pre-pass: how MANY books a category covers is the first thing a
+		// maintainer reads off this list.
+		counts := map[string]int{}
 		for _, ref := range r.Refusals {
-			byCat[ref.Category] = append(byCat[ref.Category], ref)
+			counts[ref.Category]++
 		}
-		cats := make([]string, 0, len(byCat))
-		for c := range byCat {
-			cats = append(cats, c)
-		}
-		sort.Strings(cats)
-		for _, c := range cats {
-			p("  %s (%d):\n", c, len(byCat[c]))
-			for _, ref := range byCat[c] {
-				p("      %s: %s", ref.Subject, ref.Reason)
-				if len(ref.Entries) > 0 {
-					p(" [%s]", joinComma(ref.Entries))
-				}
-				p("\n")
+		p("\nrefusals (left for a human):\n")
+		category := ""
+		for _, ref := range r.Refusals {
+			if ref.Category != category {
+				category = ref.Category
+				p("  %s (%d):\n", category, counts[category])
 			}
+			p("      %s: %s", ref.Subject, ref.Reason)
+			if len(ref.Entries) > 0 {
+				p(" [%s]", strings.Join(ref.Entries, ", "))
+			}
+			p("\n")
 		}
 	}
 

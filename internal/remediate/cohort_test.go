@@ -1,10 +1,9 @@
 package remediate
 
 import (
-	"encoding/json"
 	"testing"
 
-	meta "github.com/kodestar/audiosilo-meta"
+	"github.com/kodestar/audiosilo-meta/internal/build"
 )
 
 // TestPartMarkerForms pins the four spellings measured in the live tree, and
@@ -62,39 +61,6 @@ func TestTitleKeyIsArticleTolerant(t *testing.T) {
 	}
 }
 
-// TestRegionVocabularyIsTheSchemas is the drift guard: the marketplace list is
-// read from the embedded schema, so a region added there needs no second edit.
-func TestRegionVocabularyIsTheSchemas(t *testing.T) {
-	raw, err := meta.SchemaFS.ReadFile("schema/common.schema.json")
-	if err != nil {
-		t.Fatal(err)
-	}
-	var doc struct {
-		Defs struct {
-			Region struct {
-				Enum []string `json:"enum"`
-			} `json:"region"`
-		} `json:"$defs"`
-	}
-	if err := json.Unmarshal(raw, &doc); err != nil {
-		t.Fatal(err)
-	}
-	if len(doc.Defs.Region.Enum) == 0 {
-		t.Fatal("the schema states no region vocabulary")
-	}
-	for _, r := range doc.Defs.Region.Enum {
-		if !regionAllowed(r) {
-			t.Errorf("region %q is in the schema but not accepted", r)
-		}
-	}
-	if regionAllowed("zz") {
-		t.Error("an unknown region must not be accepted")
-	}
-	if got, want := len(regions()), len(doc.Defs.Region.Enum); got != want {
-		t.Errorf("accepted %d regions, the schema states %d", got, want)
-	}
-}
-
 func TestEarlierDatePrefersTheMoreSpecificSpelling(t *testing.T) {
 	cases := []struct{ a, b, want string }{
 		{"", "2020", "2020"},
@@ -111,16 +77,33 @@ func TestEarlierDatePrefersTheMoreSpecificSpelling(t *testing.T) {
 	}
 }
 
-func TestEarlierStampComparesTheDayFirst(t *testing.T) {
-	cases := []struct{ a, b, want string }{
-		{"2026-07-25", "2026-07-25T17:12:12+01:00", "2026-07-25"},
-		{"2026-07-26T00:00:00Z", "2026-07-25", "2026-07-25"},
-		{"", "2026-07-25", "2026-07-25"},
+// TestEarlierStampAgreesWithTheArtifactOrdering pins this package's added_at
+// comparison against internal/build's, which derives the artifact's added_at
+// from the same values. Two orderings of one pair would mean the merged record
+// and the artifact disagreed about which date is earlier.
+func TestEarlierStampAgreesWithTheArtifactOrdering(t *testing.T) {
+	values := []string{
+		"2026-07-25",
+		"2026-07-25T17:12:12+01:00", // the same DAY, an hour ahead of UTC
+		"2026-07-25T23:30:00-05:00", // the NEXT day in UTC
+		"2026-07-26T00:00:00Z",
+		"2026-07-26",
+		"2020-01-01T00:00:00Z",
 	}
-	for _, c := range cases {
-		if got := earlierStamp(c.a, c.b); got != c.want {
-			t.Errorf("earlierStamp(%q,%q) = %q, want %q", c.a, c.b, got, c.want)
+	for _, a := range values {
+		for _, b := range values {
+			got := earlierStamp(a, b)
+			want := a
+			if build.TimeKey(b) < build.TimeKey(a) {
+				want = b
+			}
+			if got != want {
+				t.Errorf("earlierStamp(%q,%q) = %q; the artifact orders them %q first", a, b, got, want)
+			}
 		}
+	}
+	if got := earlierStamp("", "2026-07-25"); got != "2026-07-25" {
+		t.Errorf("earlierStamp(\"\", x) = %q, want x", got)
 	}
 }
 

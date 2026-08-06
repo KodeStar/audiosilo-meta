@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 
+	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
@@ -32,90 +33,119 @@ type merged struct {
 	Title string
 	// Parts names the part works it absorbs, in part order.
 	Parts []string
+	// Runtime is the merged recording's runtime in minutes, 0 when the merge
+	// deliberately states none.
+	Runtime int
+}
+
+// libexSource is the provenance a complete-set dump row contributes. One
+// spelling, used by both the work and its recording.
+func libexSource(asin, today string) []model.Source {
+	return []model.Source{{Type: model.SourceLibexImport, Ref: asin, ImportedAt: today}}
 }
 
 // compose builds the merged work for a group. A refusal returns ok false and
-// leaves the group's parts exactly as they are.
+// leaves the group's parts exactly as they are. It reads the group and writes
+// nothing back to it: the merged identity travels out in the result.
 func compose(idx *index, g *group, today string) (merged, Refusal, bool) {
-	base, title, minted, r, ok := mergeBase(idx, g)
+	base, r, ok := mergeBase(idx, g)
 	if !ok {
 		return merged{}, r, false
 	}
-	g.Slug, g.Title = base.slug, title
 
 	work := base.work.clone()
-	if err := work.set("id", base.slug); err != nil {
-		return merged{}, internalRefusal(g, err), false
-	}
-	if err := work.set("title", title); err != nil {
-		return merged{}, internalRefusal(g, err), false
-	}
+	work.set("id", base.slug)
+	work.set("title", base.title)
 	mergeWorkFields(work, g)
 
-	recKey, rec, err := mergeRecording(base, g, today)
+	rec, err := mergeRecording(base, g, today)
 	if err != nil {
 		return merged{}, internalRefusal(g, err), false
 	}
-	if err := work.setRecordings(map[string]obj{recKey: rec}); err != nil {
+	if err := work.setRecordings(map[string]obj{base.recKey: rec}); err != nil {
 		return merged{}, internalRefusal(g, err), false
 	}
 	if g.Set != nil {
-		work.set("sources", unionSources(work.sources(), //nolint:errcheck // marshalling a []model.Source cannot fail
-			[]model.Source{{Type: model.SourceLibexImport, Ref: g.Set.ASIN, ImportedAt: today}}))
+		work.set("sources", unionSources(work.sources(), libexSource(g.Set.ASIN, today)))
 	}
-	return merged{Slug: base.slug, Work: work, Minted: minted, Title: title, Parts: g.partSlugs()}, Refusal{}, true
+	runtime, _ := rec.intAt("runtime_min")
+	return merged{
+		Slug: base.slug, Work: work, Minted: base.minted, Title: base.title,
+		Parts: g.partSlugs(), Runtime: runtime,
+	}, Refusal{}, true
 }
 
-// baseRecord is the record a merge starts from: the complete-set work already
-// in the catalogue, or the group's first part.
+// baseRecord is the record a merge starts from - the complete-set work already
+// in the catalogue, or the group's first part - plus the identity the merged
+// work takes.
 type baseRecord struct {
 	slug   string
+	title  string
 	work   obj
 	recKey string
 	rec    obj
-	// existing reports whether the base is a complete-set work rather than a
-	// part. Its facts are the recorded ones, so they win.
-	existing bool
+	// minted reports that the merged work is new. Its complement, "the base is
+	// an existing complete-set work whose recorded facts win", is the same bit:
+	// a merge either has a target or it mints one.
+	minted bool
 }
 
 // mergeBase decides the merged work's slug and title, and which record the
 // merge composes on top of.
-func mergeBase(idx *index, g *group) (baseRecord, string, bool, Refusal, bool) {
+func mergeBase(idx *index, g *group) (baseRecord, Refusal, bool) {
 	if g.Target != "" {
 		t := idx.candidates[g.Target]
-		key, rec, ok := soleRecording(t.obj)
+		key, rec, ok := t.soleRecording()
 		if !ok { // already refused in matchTargets; unreachable, and loud if it ever is not
-			return baseRecord{}, "", false, Refusal{
+			return baseRecord{}, Refusal{
 				Category: catMultiRecording, Subject: g.Base,
 				Reason: "the complete-set work does not carry exactly one recording", Entries: []string{g.Target},
 			}, false
 		}
 		// The existing work's title is a recorded product title; a dump row
 		// cannot improve on it, and rewriting it would be churn.
-		return baseRecord{slug: g.Target, work: t.obj, recKey: key, rec: rec, existing: true}, t.title(), false, Refusal{}, true
+		return baseRecord{slug: g.Target, title: t.title(), work: t.obj, recKey: key, rec: rec}, Refusal{}, true
 	}
 
 	title := g.Base + dramatizedSuffix
 	if g.Set != nil {
 		title = g.Set.Title
 	}
-	slug := model.Slugify(title)
+	slug := mintedSlug(title)
 	if !model.ValidSlug(slug) {
-		return baseRecord{}, "", false, Refusal{
+		return baseRecord{}, Refusal{
 			Category: catSlugCollision, Subject: g.Base,
 			Reason:  fmt.Sprintf("the merged title %q does not slug to a valid id", title),
 			Entries: g.partSlugs(),
 		}, false
 	}
 	if idx.works[slug] {
-		return baseRecord{}, "", false, Refusal{
+		return baseRecord{}, Refusal{
 			Category: catSlugCollision, Subject: g.Base,
 			Reason:  fmt.Sprintf("the merged work would claim slug %q, which another work already holds", slug),
 			Entries: append([]string{slug}, g.partSlugs()...),
 		}, false
 	}
 	first := g.Parts[0]
-	return baseRecord{slug: slug, work: first.Work, recKey: first.RecKey, rec: first.Rec}, title, true, Refusal{}, true
+	return baseRecord{slug: slug, title: title, work: first.Work, recKey: first.RecKey, rec: first.Rec, minted: true}, Refusal{}, true
+}
+
+// mintedSlug is the merged work's id: the title's slug, with the EDITION MARKER
+// held back as a disambiguating tail so it always survives.
+//
+// A plain Slugify would hard-cut a long title at MaxSlugLen, and what it cuts
+// off is the "-dramatized-adaptation" end - the very thing that keeps the
+// dramatization off the plain edition's slug ("Elantris: Tenth Anniversary
+// Author's Definitive Edition" is 51 bytes short of the cap before the marker
+// is appended). BoundedSlugTail is the project's answer to exactly that shape:
+// shorten the BASE at a word boundary, keep the tail whole.
+func mintedSlug(title string) string {
+	marker := dramatizedMarker.FindString(title)
+	base := model.Slugify(dramatizedMarker.ReplaceAllString(title, ""))
+	if base == "" || marker == "" {
+		return base
+	}
+	return importer.BoundedSlugTail(base, "-"+model.Slugify(marker))
 }
 
 // mergeWorkFields folds the parts' work-level facts into the merged work.
@@ -137,9 +167,9 @@ func mergeWorkFields(work obj, g *group) {
 		fillXref(work, p.Work)
 	}
 
-	setOrDrop(work, "genres", genres)
-	setOrDropCredits(work, credits)
-	work.set("sources", sources) //nolint:errcheck // marshalling a []model.Source cannot fail
+	setListOrDrop(work, "genres", genres)
+	setListOrDrop(work, "credits", credits)
+	work.set("sources", sources)
 	setStringOrDrop(work, "added_at", added)
 	setStringOrDrop(work, "language", language)
 }
@@ -165,7 +195,7 @@ func fillXref(work, part obj) {
 	}
 	for _, k := range sortedKeys(from) {
 		if k == "isbn" {
-			into.set("isbn", appendUnique(into.strs("isbn"), from.strs("isbn"))) //nolint:errcheck // a []string marshals
+			into.set("isbn", appendUnique(into.strs("isbn"), from.strs("isbn")))
 			continue
 		}
 		if !into.has(k) {
@@ -176,24 +206,19 @@ func fillXref(work, part obj) {
 		work.drop("xref")
 		return
 	}
-	work.set("xref", map[string]json.RawMessage(into)) //nolint:errcheck // raw members re-marshal
+	work.set("xref", map[string]json.RawMessage(into))
 }
 
 // mergeRecording composes the one recording that represents the production.
-func mergeRecording(base baseRecord, g *group, today string) (string, obj, error) {
+func mergeRecording(base baseRecord, g *group, today string) (obj, error) {
 	rec := base.rec.clone()
-	if err := rec.set("id", base.recKey); err != nil {
-		return "", nil, err
-	}
-	if err := rec.set("work", g.Slug); err != nil {
-		return "", nil, err
-	}
-	if !base.existing {
+	rec.set("id", base.recKey)
+	rec.set("work", base.slug)
+	if base.minted {
 		// The base is PART ONE, so the facts that are about a part rather than
 		// about the book have to be re-derived from the whole set: one part's
-		// length is not the book's, and one part's abridged flag speaks only for
-		// itself. Everything else a part states (its cover, its publisher, its
-		// release date) is equally true of the book.
+		// length is not the book's, one part's abridged flag speaks only for
+		// itself, and one part's cover pictures the part.
 		rec.drop("runtime_min")
 		rec.drop("abridged")
 		rec.drop("cover_url")
@@ -219,7 +244,7 @@ func mergeRecording(base baseRecord, g *group, today string) (string, obj, error
 
 	sumRuntime, everyPartTimed := 0, true
 	for _, p := range g.Parts {
-		if base.existing || p.Slug != g.Parts[0].Slug {
+		if !base.minted || p.Slug != g.Parts[0].Slug {
 			narrators = appendUnique(narrators, p.Rec.strs("narrators"))
 			asins = unionASINs(asins, p.Rec.asins())
 			isbns = unionISBNs(isbns, p.Rec.isbns())
@@ -243,28 +268,26 @@ func mergeRecording(base baseRecord, g *group, today string) (string, obj, error
 	case g.Set != nil && g.Set.LengthMinutes > 0:
 		runtime, hasRuntime = g.Set.LengthMinutes, true
 	case hasRuntime:
-	case g.Complete && everyPartTimed && sumRuntime > 0:
+	case g.Complete() && everyPartTimed && sumRuntime > 0:
 		runtime, hasRuntime = sumRuntime, true
 	}
 	if hasRuntime {
-		if err := rec.set("runtime_min", runtime); err != nil {
-			return "", nil, err
-		}
+		rec.set("runtime_min", runtime)
 	} else {
 		rec.drop("runtime_min")
 	}
 
 	if g.Set != nil {
-		release = earlierDate(release, g.Set.releaseDay())
+		release = earlierDate(release, g.Set.ReleaseDate)
 		// The whole-book product's own cover pictures the whole book; a part's
 		// pictures the part. Only a RECORDED cover outranks it.
 		if cover == "" {
-			cover = g.Set.coverURL()
+			cover = g.Set.CoverURL
 		}
 		if publisher == "" {
 			publisher = g.Set.Publisher
 		}
-		sources = unionSources(sources, []model.Source{{Type: model.SourceLibexImport, Ref: g.Set.ASIN, ImportedAt: today}})
+		sources = unionSources(sources, libexSource(g.Set.ASIN, today))
 	}
 	if cover == "" {
 		cover = partCover(g)
@@ -278,37 +301,30 @@ func mergeRecording(base baseRecord, g *group, today string) (string, obj, error
 	// Chapters are a TIMELINE. Two parts' timelines cannot be concatenated into
 	// the whole book's without inventing offsets, so the merged recording keeps
 	// the whole-book chapters when a whole-book source states them and carries
-	// none at all otherwise.
-	if !base.existing || !rec.has("chapters") {
+	// none at all otherwise. The dump row's list has already been through the
+	// importer's structural rules, so an unusable one arrives here as nil.
+	if base.minted || !rec.has("chapters") {
 		rec.drop("chapters")
 		if g.Set != nil {
-			if chs := g.Set.chapterList(); len(chs) > 0 {
-				if err := rec.set("chapters", chs); err != nil {
-					return "", nil, err
-				}
-			}
+			setListOrDrop(rec, "chapters", g.Set.Chapters)
 		}
 	}
 
 	if !rec.has("abridged") {
 		if v, ok := agreedAbridged(g); ok {
-			if err := rec.set("abridged", v); err != nil {
-				return "", nil, err
-			}
+			rec.set("abridged", v)
 		}
 	}
 
-	setStringsOrDrop(rec, "narrators", narrators)
-	setASINsOrDrop(rec, asins)
-	setISBNsOrDrop(rec, isbns)
-	if err := rec.set("sources", sources); err != nil {
-		return "", nil, err
-	}
+	setListOrDrop(rec, "narrators", narrators)
+	setListOrDrop(rec, "asin", asins)
+	setListOrDrop(rec, "isbn", isbns)
+	rec.set("sources", sources)
 	setStringOrDrop(rec, "release_date", release)
 	setStringOrDrop(rec, "added_at", added)
 	setStringOrDrop(rec, "cover_url", cover)
 	setStringOrDrop(rec, "publisher", publisher)
-	return base.recKey, rec, nil
+	return rec, nil
 }
 
 // partCover is the first cover any part states, in part order.
@@ -346,53 +362,12 @@ func agreedAbridged(g *group) (bool, bool) {
 	return value, len(g.Parts) > 0
 }
 
-func setStringOrDrop(o obj, key, value string) {
-	if value == "" {
-		o.drop(key)
-		return
-	}
-	o.set(key, value) //nolint:errcheck // a string marshals
-}
-
-func setStringsOrDrop(o obj, key string, values []string) {
-	if len(values) == 0 {
-		o.drop(key)
-		return
-	}
-	o.set(key, values) //nolint:errcheck // a []string marshals
-}
-
-func setOrDrop(o obj, key string, values []string) { setStringsOrDrop(o, key, values) }
-
-func setOrDropCredits(o obj, credits []model.Credit) {
-	if len(credits) == 0 {
-		o.drop("credits")
-		return
-	}
-	o.set("credits", credits) //nolint:errcheck // a []model.Credit marshals
-}
-
-func setASINsOrDrop(o obj, asins []model.ASIN) {
-	if len(asins) == 0 {
-		o.drop("asin")
-		return
-	}
-	o.set("asin", asins) //nolint:errcheck // a []model.ASIN marshals
-}
-
-func setISBNsOrDrop(o obj, isbns []model.ISBNRef) {
-	if len(isbns) == 0 {
-		o.drop("isbn")
-		return
-	}
-	o.set("isbn", isbns) //nolint:errcheck // a []model.ISBNRef marshals
-}
-
-// internalRefusal wraps an encoding failure as a refusal, so one unencodable
-// record stops that book rather than the run.
+// internalRefusal reports a record this package could not compose. It is a bug
+// in this package rather than a problem with the data, and it has its own
+// category so it can never be read as one of the data judgements beside it.
 func internalRefusal(g *group, err error) Refusal {
 	return Refusal{
-		Category: catTwinDisagreement, Subject: g.Base,
+		Category: catInternal, Subject: g.Base,
 		Reason: "the merged record could not be composed: " + err.Error(), Entries: g.partSlugs(),
 	}
 }

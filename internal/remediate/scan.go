@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
-	"sort"
 
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
@@ -22,10 +21,20 @@ import (
 
 // candidate is a work the remediation might touch: its title carries a part
 // marker or a dramatized edition marker. Its entry is kept whole, because a
-// merge composes from the record's real bytes.
+// merge composes from the record's real bytes, and the two questions every
+// caller asks of its recordings - is this GraphicAudio, and is there exactly one
+// production - are answered once at scan time. Decoding the recordings map on
+// demand cost four to six full decodes of every candidate on every planning
+// round.
 type candidate struct {
-	Slug string
 	obj
+	// graphicAudio reports that some recording names GraphicAudio as its
+	// publisher, which is the cohort gate.
+	graphicAudio bool
+	// recKey and rec are the work's ONE recording, empty when it carries none
+	// or several.
+	recKey string
+	rec    obj
 }
 
 // title returns the work's title.
@@ -33,6 +42,15 @@ func (c candidate) title() string { return c.str("title") }
 
 // authors returns the work's author ids, in the order the record lists them.
 func (c candidate) authors() []string { return c.strs("authors") }
+
+// soleRecording returns the work's one recording. ok is false for a work with
+// none or with several - which the merge refuses rather than guessing which
+// production a part belongs to (the live tree has 14 such works, all of them
+// carrying a duplicate recording credited only to the collective "full-cast"
+// record; collapsing those is a different, unrequested change).
+func (c candidate) soleRecording() (key string, rec obj, ok bool) {
+	return c.recKey, c.rec, c.rec != nil
+}
 
 // index is the catalogue as the planner needs to see it.
 type index struct {
@@ -50,9 +68,8 @@ type index struct {
 	// small (30,799 entries in 57 packs) and every one of them has to be
 	// checked for a reference to a part work, so it is read whole.
 	series map[string]obj
-	// seriesOf maps a work slug to the series that name it, so the report can
-	// say which series a book still occupies without re-walking the family per
-	// book.
+	// seriesOf maps a work slug to the series that name it, so a repair pass
+	// visits the series a rewrite reaches instead of all 30,799.
 	seriesOf map[string][]string
 }
 
@@ -132,54 +149,39 @@ func (idx *index) addWork(slug string, raw json.RawMessage) error {
 	if err != nil {
 		return err
 	}
-	idx.candidates[slug] = candidate{Slug: slug, obj: o}
+	c := candidate{obj: o}
+	recs, err := o.recordings()
+	if err != nil {
+		return err
+	}
+	for _, key := range sortedKeys(recs) {
+		if graphicAudioPublishers[recs[key].str("publisher")] {
+			c.graphicAudio = true
+		}
+	}
+	if len(recs) == 1 {
+		for key, rec := range recs {
+			c.recKey, c.rec = key, rec
+		}
+	}
+	idx.candidates[slug] = c
 	return nil
 }
 
-// plainTwin returns the plain text work for a base title and author set. It
-// answers only when there is exactly ONE: two candidates are an ambiguity a
-// human resolves, never a coin toss (the live tree has three - "Cherish",
-// "Stone of Farewell", "The Kingdom of Liars").
-func (idx *index) plainTwin(base string, authors []string) (string, int) {
-	c := idx.plain[plainKey(base, authors)]
-	if len(c) != 1 {
-		return "", len(c)
-	}
-	return c[0], 1
-}
-
-// isGraphicAudio reports whether any of a work's recordings names GraphicAudio
-// as its publisher.
-func isGraphicAudio(w obj) bool {
-	recs, err := w.recordings()
-	if err != nil {
-		return false
-	}
-	for _, rec := range recs {
-		if graphicAudioPublishers[rec.str("publisher")] {
-			return true
-		}
-	}
-	return false
-}
-
-// soleRecording returns a work's one recording. ok is false for a work with
-// none or with several - which the merge refuses rather than guessing which
-// production a part belongs to (the live tree has 14 such works, all of them
-// carrying a duplicate recording credited only to the collective "full-cast"
-// record; collapsing those is a different, unrequested change).
-func soleRecording(w obj) (key string, rec obj, ok bool) {
-	recs, err := w.recordings()
-	if err != nil || len(recs) != 1 {
-		return "", nil, false
-	}
-	for k, v := range recs {
-		return k, v, true
-	}
-	return "", nil, false
+// plainTwins returns the plain text works recorded for a base title and author
+// set. The caller decides what to do with a count other than one: two
+// candidates are an ambiguity a human resolves, never a coin toss (the live
+// tree has three - "Cherish", "Stone of Farewell", "The Kingdom of Liars").
+func (idx *index) plainTwins(base string, authors []string) []string {
+	return idx.plain[plainKey(base, authors)]
 }
 
 // readPack parses one pack file off disk, outside the store's cache.
+//
+// It is a third copy of the read-and-parse convention (pkg/pack's Reader and
+// check's readPack are the others) and stays local on purpose: the reason it
+// exists is precisely that it must NOT go through a cache, so a shared helper
+// would have to carry that as an option.
 func readPack(dataDir string, ref pack.PackRef) (*pack.File, error) {
 	abs := filepath.Join(dataDir, filepath.FromSlash(ref.Path()))
 	raw, err := os.ReadFile(abs)
@@ -191,15 +193,4 @@ func readPack(dataDir string, ref pack.PackRef) (*pack.File, error) {
 		return nil, fmt.Errorf("%s: %w", ref.Path(), err)
 	}
 	return file, nil
-}
-
-// sortedKeys returns a map's keys in sorted order, so every walk over one is
-// deterministic.
-func sortedKeys[V any](m map[string]V) []string {
-	out := make([]string, 0, len(m))
-	for k := range m {
-		out = append(out, k)
-	}
-	sort.Strings(out)
-	return out
 }

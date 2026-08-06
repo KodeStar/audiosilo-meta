@@ -2,6 +2,7 @@ package remediate
 
 import (
 	"regexp"
+	"slices"
 	"strconv"
 	"strings"
 
@@ -130,8 +131,8 @@ func titleKey(title string) string {
 // authorsKey renders an author set as one comparable string. The set, not the
 // order: two records of one book may list its authors either way round.
 func authorsKey(authors []string) string {
-	sorted := append([]string(nil), authors...)
-	sortStrings(sorted)
+	sorted := slices.Clone(authors)
+	slices.Sort(sorted)
 	return strings.Join(sorted, "\x00")
 }
 
