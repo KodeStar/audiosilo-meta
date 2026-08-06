@@ -342,3 +342,94 @@ than none, and the gap is simply left for the next run.
 `.github/workflows/intake.yml` runs it after an import-form contribution, which
 is what keeps a newly contributed library from landing with placeholder covers.
 
+
+## metaremediate - the GraphicAudio part-product repair
+
+`cmd/metaremediate` is a **one-off** repair, `metamigrate`'s sibling: a
+user-library import seeded the catalogue with GraphicAudio's multi-part
+dramatized adaptations as separate works ("The Blood Mirror (2 of 2)
+[Dramatized Adaptation]", "Oathbringer (3 of 6)"). Those are Audible PRODUCTS,
+not books: one book is one work, and the parts had also taken the book's numeric
+slot in its series, which is where the plain text edition belongs.
+
+The default is a dry run that writes nothing and prints the whole plan, which is
+what a maintainer reviews:
+
+```sh
+go run ./cmd/metaremediate --data data -v
+```
+
+### The complete-set rows (optional, but do it)
+
+Audible sells a whole-book product alongside the parts ("Black Prism [Dramatized
+Adaptation]", ASIN B09FRBS927). Feeding those rows in is what lets a newly
+minted work carry a real product title, identifier, length and chapter list
+instead of a title derived from the parts. Without them the merge still
+completes; it just states less.
+
+The rows are exported with the **committed** query, so every exclusion in it
+still applies (AI credits, junk credits, placeholders). The only change is an
+allowlist join, made mechanically:
+
+```sh
+# 1. The allowlist: every GraphicAudio row that is NOT itself a part product.
+psql -h localhost -p 55432 -U postgres -d libex <<'SQL'
+DROP TABLE IF EXISTS remediate_asins;
+CREATE TABLE remediate_asins(asin varchar(12) PRIMARY KEY);
+INSERT INTO remediate_asins(asin)
+SELECT b.asin FROM books b
+WHERE b.publisher ILIKE '%graphic%audio%'
+  AND b.title !~ '[(,][[:space:]]*(Part[[:space:]]+|Vol\.[[:space:]]*)?[0-9]+[[:space:]]+of[[:space:]]+[0-9]+'
+  AND b.content_delivery_type IN ('SinglePartBook','MultiPartBook');
+SQL
+
+# 2. The export, through the committed query plus one join.
+sed 's/^FROM books b$/FROM books b JOIN remediate_asins f ON f.asin = b.asin/' \
+  scripts/libex-export-rows.sql > /tmp/rows-allowlisted.sql
+psql -h localhost -p 55432 -U postgres -d libex -tA -f /tmp/rows-allowlisted.sql > complete-sets.ndjson
+```
+
+The same two steps produce the PLAIN-edition rows in step 3 below: only the
+allowlist's contents change.
+
+### The order the steps go in
+
+The tool never invents a work. Where the catalogue holds no plain text edition
+for a book, its plain series slot keeps the merged dramatization - so the plain
+works have to be IMPORTED BEFORE the repair is applied, or those slots stay
+wrong until somebody runs it again. The dry run is what tells you which books
+those are.
+
+```sh
+# 1. What is missing? The dry run lists every book with no plain edition.
+go run ./cmd/metaremediate --data data --complete-sets complete-sets.ndjson -v
+
+# 2. Import those plain editions, author-matched (see the caution below), with
+#    the ordinary create path - never hand-composed.
+go run ./cmd/metaimport libex plain-editions.ndjson --data data
+
+# 3. Apply the repair. One pass now does the merge AND the series swap.
+go run ./cmd/metaremediate --data data --complete-sets complete-sets.ndjson --write
+
+# 4. The gate.
+go run ./cmd/metafmt --write && go run ./cmd/metacheck
+go run ./cmd/metabuild -o /tmp/meta.sqlite   # outside the repo; never committed
+```
+
+A second `--write` is a no-op: the tool is idempotent, and running it twice is a
+cheap way to prove the tree settled.
+
+**Author-match the plain rows.** A title alone is not a book - the dump holds an
+S. J. Lewis "Hunting Party" as well as Elizabeth Moon's. Build the plain-edition
+allowlist by matching the dump's authors against the catalogue's author set for
+that book, take precision over recall, and report what you skipped.
+
+### What it refuses
+
+Everything the tool cannot resolve is left exactly as it was and printed under
+`refusals`, by category. On the live tree they are: a book whose parts are
+recorded under two author sets (one of them is a narrator credited as an
+author); a part carrying more than one recording (so which production it belongs
+to is not stated); a merged slug another work already holds; a book with more
+than one candidate plain edition; and any series whose repair would put two
+works on one position. Each is a maintainer's call, not a rule to relax.
