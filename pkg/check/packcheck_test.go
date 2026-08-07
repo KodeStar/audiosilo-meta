@@ -13,14 +13,57 @@ import (
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
 
+// Every record a pack test uses is built by one of the functions below, so each
+// record SHAPE is written once in the package: a field the schema gains is added
+// in one place, and no fixture can quietly drift into a different spelling of
+// "a valid person".
+
+// pkPerson returns a valid person record. The id has to BE the slug of the name
+// (checkPersonSlug), so both are given rather than derived.
+func pkPerson(id, name string) string {
+	return `{"id":` + strconv.Quote(id) + `,"license":"CC0-1.0","name":` + strconv.Quote(name) +
+		`,"sources":[{"type":"user"}]}`
+}
+
+// pkRec returns a valid recording record under work, narrated by narrator-one.
+func pkRec(id, work, lang string) string {
+	return `{"abridged":false,"id":` + strconv.Quote(id) + `,"language":` + strconv.Quote(lang) +
+		`,"license":"CC0-1.0","narrators":["narrator-one"],"sources":[{"type":"user"}],"work":` +
+		strconv.Quote(work) + `}`
+}
+
+// pkWorkTitled returns a valid work record by author-one. The title is a
+// parameter because it is not inert: two works with one title and one author
+// are what checkIdentityEqualWorks reports, so a fixture that wants many works
+// and no advisories has to give them distinct titles (see pkTitled).
+func pkWorkTitled(slug, title string) string {
+	return `{"authors":["author-one"],"id":` + strconv.Quote(slug) +
+		`,"language":"en","license":"CC0-1.0","sources":[{"type":"user"}],"title":` +
+		strconv.Quote(title) + `}`
+}
+
+// pkWork returns a minimal valid work record for slug. They are all titled the
+// same, so any two of them in one tree are one book under two ids as far as
+// checkIdentityEqualWorks is concerned - which costs the cap and bound tests
+// nothing (they assert on problems and ignore advisories) and would drown a
+// fixture that is ABOUT advisories, so that one uses pkTitled.
+func pkWork(slug string) string { return pkWorkTitled(slug, "T") }
+
+// pkTitled returns a valid work whose title is its own slug, so a fixture can
+// hold many works without tripping the identity-equal-works advisory on every
+// pair of them - which would bury the advisories it is actually about.
+func pkTitled(slug string) string { return pkWorkTitled(slug, slug) }
+
 // The records below are the fixture catalogue every pack test builds on: one
 // work with one recording, its two credits, one series, and the work's two
-// community sidecars.
-const (
-	pkAuthorOne   = `{"id":"author-one","license":"CC0-1.0","name":"Author One","sources":[{"type":"user"}]}`
-	pkNarratorOne = `{"id":"narrator-one","license":"CC0-1.0","name":"Narrator One","sources":[{"type":"user"}]}`
-	pkWorkOne     = `{"authors":["author-one"],"id":"book-one","language":"en","license":"CC0-1.0","sources":[{"type":"user"}],"title":"Book One"}`
-	pkRecOne      = `{"abridged":false,"id":"rec-one","language":"en","license":"CC0-1.0","narrators":["narrator-one"],"sources":[{"type":"user"}],"work":"book-one"}`
+// community sidecars. They are the named instances of the builders above; the
+// tests that mutate them do it with strings.Replace, so their exact bytes are
+// part of the fixture.
+var (
+	pkAuthorOne   = pkPerson("author-one", "Author One")
+	pkNarratorOne = pkPerson("narrator-one", "Narrator One")
+	pkWorkOne     = pkWorkTitled("book-one", "Book One")
+	pkRecOne      = pkRec("rec-one", "book-one", "en")
 	pkSeriesOne   = `{"id":"series-one","license":"CC0-1.0","name":"Series One","sources":[{"type":"user"}],"works":[{"position":"1","work":"book-one"}]}`
 )
 
@@ -53,12 +96,6 @@ func composite(work string, recs map[string]string) string {
 		return work
 	}
 	return strings.TrimSuffix(work, "}") + `,"recordings":` + jsonObject(recs) + `}`
-}
-
-// pkWork returns a minimal valid work record for slug.
-func pkWork(slug string) string {
-	return `{"authors":["author-one"],"id":` + strconv.Quote(slug) +
-		`,"language":"en","license":"CC0-1.0","sources":[{"type":"user"}],"title":"T"}`
 }
 
 // packValid returns a minimal, fully valid PACK-layout data tree

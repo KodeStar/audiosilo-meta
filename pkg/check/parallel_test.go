@@ -3,8 +3,8 @@ package check
 import (
 	"fmt"
 	"runtime"
-	"strconv"
 	"strings"
+	"sync/atomic"
 	"testing"
 )
 
@@ -17,34 +17,32 @@ import (
 // The real-data tree is the other half of this coverage and is deliberately not
 // it: it proves the parallel loader against 133k works, but only in the non-race
 // build (see race_off_test.go). These fixtures are what run under -race.
+//
+// The record builders the fixture is made of (pkPerson, pkRec, pkTitled) live in
+// packcheck_test.go, beside the named records every other pack test uses.
 
-// pkPerson returns a valid person record. The id has to BE the slug of the name
-// (checkPersonSlug), so both are given.
-func pkPerson(id, name string) string {
-	return `{"id":` + strconv.Quote(id) + `,"license":"CC0-1.0","name":` + strconv.Quote(name) +
-		`,"sources":[{"type":"user"}]}`
-}
-
-// pkRec returns a valid recording record under work.
-func pkRec(id, work, lang string) string {
-	return `{"abridged":false,"id":` + strconv.Quote(id) + `,"language":` + strconv.Quote(lang) +
-		`,"license":"CC0-1.0","narrators":["narrator-one"],"sources":[{"type":"user"}],"work":` +
-		strconv.Quote(work) + `}`
-}
-
-// pkTitled returns a valid work whose title is its own slug, so the fixture does
-// not also trip the identity-equal-works advisory on every pair of its works -
-// which would bury the advisories it is actually about.
-func pkTitled(slug string) string {
-	return `{"authors":["author-one"],"id":` + strconv.Quote(slug) +
-		`,"language":"en","license":"CC0-1.0","sources":[{"type":"user"}],"title":` +
-		strconv.Quote(slug) + `}`
+// pinWorkers fixes GOMAXPROCS for the duration of a test whose point is that the
+// pool actually RAN, and restores it afterwards.
+//
+// It is not a nicety: at GOMAXPROCS=1 parallelDo takes the goroutine-free path,
+// so on a one-CPU runner a concurrency test gets ZERO race-detector coverage
+// while still passing. Measured - a deliberately injected cache-fill in
+// readPack goes uncaught at GOMAXPROCS=1 and is caught at 8.
+func pinWorkers(t *testing.T, n int) {
+	t.Helper()
+	restore := runtime.GOMAXPROCS(n)
+	t.Cleanup(func() { runtime.GOMAXPROCS(restore) })
 }
 
 // parallelTree is a multi-pack, multi-family fixture carrying a violation or an
-// advisory in most of its packs: four works packs, three people packs, two
+// advisory in most of its packs: five works packs, three people packs, two
 // series packs and two works-community packs, with the problems deliberately
 // NOT in listing order of severity so that any ordering bug shows up as a diff.
+//
+// It is also the fixture every OTHER test about the pool uses (the LoadStore
+// comparison's "many packs" case, the borrowed-cache case), which is why the
+// wide pack below is here rather than in one of them: a fixture that gives the
+// pool fewer work items than it has workers is not exercising a pool.
 func parallelTree() map[string]string {
 	files := map[string]string{}
 
@@ -60,13 +58,20 @@ func parallelTree() map[string]string {
 		"person-c": pkPerson("person-see", "Person C"),
 	})
 
-	// works: four packs under the family's one directory.
+	// works: five packs under the family's one directory.
 	//   0.json        clean
 	//   book-b.json   one entry over the pack target -> advisory
-	//   book-c.json   a cross-language recording -> advisory, plus an id/key
-	//                 disagreement -> problem
-	//   book-d.json   an entry the schema rejects, and an entry that belongs in
-	//                 an earlier pack -> two problems
+	//   book-c.json   a cross-language recording -> advisory, an id/key
+	//                 disagreement -> problem, and an entry missing a required
+	//                 field -> a schema problem
+	//   book-d.json   an entry the schema rejects (the license lock), and an
+	//                 entry that belongs in an earlier pack -> two problems
+	//   book-w.json   64 clean entries, so the pool has more work items than
+	//                 workers however many cores the test machine has
+	//
+	// The two SCHEMA violations sit in different packs on purpose: they are the
+	// only path that reaches the jsonschema validator's detailed-output walk, and
+	// one of them alone would only ever run it on one worker at a time.
 	files["works/0/0.json"] = packOf(map[string]string{
 		"book-a":  composite(pkTitled("book-a"), map[string]string{"rec-a": pkRec("rec-a", "book-a", "en")}),
 		"book-a2": pkTitled("book-a2"),
@@ -79,12 +84,21 @@ func parallelTree() map[string]string {
 			"rec-c": pkRec("rec-c", "book-c", "fr"),
 		}),
 		"book-c2": pkTitled("book-see-two"),
+		// No title: the work schema requires one.
+		"book-c3": `{"authors":["author-one"],"id":"book-c3","language":"en",` +
+			`"license":"CC0-1.0","sources":[{"type":"user"}]}`,
 	})
 	files["works/0/book-d.json"] = packOf(map[string]string{
 		"book-a3": pkTitled("book-a3"),
 		"book-d": `{"authors":["author-one"],"id":"book-d","language":"en","license":"CC-BY-SA-3.0",` +
 			`"sources":[{"type":"user"}],"title":"book-d"}`,
 	})
+	wide := map[string]string{}
+	for i := range 64 {
+		slug := fmt.Sprintf("book-w%03d", i)
+		wide[slug] = pkTitled(slug)
+	}
+	files["works/0/book-w.json"] = packOf(wide)
 
 	// works-community: two packs, the second holding a sidecar whose work
 	// backref disagrees with its entry key.
@@ -160,6 +174,14 @@ func distinctPaths(ps []Problem) int {
 // TestParallelLoadIsDeterministic is the ordering pin. The per-pack work runs on
 // a pool, so the same tree loaded twice - and loaded at a different worker count
 // - has to produce byte-identical problems, advisories and catalogue order.
+//
+// The test's real teeth are renderResult's CATALOGUE section, and it must not be
+// "simplified" away: load sorts the problems and the advisories before returning
+// them (sortProblems), so those two sections would compare equal even if the
+// merge took completion order instead of listing order. Verified by injecting
+// exactly that - a merge on completion fails this test ONLY through catalogue
+// order. The problems and advisories are still compared because they are what a
+// caller reads, but they cannot catch a merge-order regression on their own.
 func TestParallelLoadIsDeterministic(t *testing.T) {
 	dir := t.TempDir()
 	writeTree(t, dir, parallelTree())
@@ -197,37 +219,58 @@ func TestParallelLoadIsDeterministic(t *testing.T) {
 	}
 }
 
-// TestParallelLoadExercisesEveryFamily is the coverage the real-data tree used
-// to be the only source of: a load that runs the pool over more than one pack in
-// every family, small enough to run under -race. Without it, -race would only
-// ever see single-pack fixtures, where the pool degenerates to a sequential
-// loop.
-func TestParallelLoadExercisesEveryFamily(t *testing.T) {
-	dir := t.TempDir()
-	files := parallelTree()
-	// A wide works pack on top of the fixture, so the pool has more work items
-	// than it has workers however many cores the test machine has.
-	wide := map[string]string{}
-	for i := range 64 {
-		slug := fmt.Sprintf("book-w%03d", i)
-		wide[slug] = pkWork(slug)
-	}
-	files["works/0/book-w.json"] = packOf(wide)
-	writeTree(t, dir, files)
+// TestParallelDoRaisesAWorkerPanic pins the one thing parallelDo does NOT omit.
+// A panic on a worker goroutine cannot be recovered by the caller and would kill
+// the process; the sequential walk this pool replaced propagated it up Load's
+// own stack, and pkg/check is public API, so a consumer that recovers around a
+// load has to keep being able to. Both paths are covered, because the
+// single-worker one is a plain loop with no recover in it at all.
+func TestParallelDoRaisesAWorkerPanic(t *testing.T) {
+	for _, procs := range []int{1, 8} {
+		t.Run(fmt.Sprintf("GOMAXPROCS=%d", procs), func(t *testing.T) {
+			pinWorkers(t, procs)
 
-	res := Load(dir)
-	if len(res.Catalog.Works) != 71 {
-		t.Fatalf("expected 71 works across five packs, got %d", len(res.Catalog.Works))
-	}
-	if len(res.Catalog.People) != 4 || len(res.Catalog.Series) != 2 ||
-		len(res.Catalog.Characters) != 2 || len(res.Catalog.Recaps) != 1 {
-		t.Fatalf("unexpected catalog counts: %d people, %d series, %d characters, %d recaps",
-			len(res.Catalog.People), len(res.Catalog.Series),
-			len(res.Catalog.Characters), len(res.Catalog.Recaps))
-	}
-	// Every family's packs have to be represented in the index too, or a merge
-	// dropped one worker's contribution.
-	if len(res.Catalog.Works) == 0 || res.Catalog.Works[0].ID != "book-a" {
-		t.Fatalf("catalogue does not start at the first pack's first entry: %+v", res.Catalog.Works[0])
+			var ran atomic.Int64
+			got := func() (v any) {
+				defer func() { v = recover() }()
+				parallelDo(64, func(i int) {
+					ran.Add(1)
+					if i == 7 {
+						panic("boom")
+					}
+				})
+				return nil
+			}()
+			if got == nil {
+				t.Fatal("a panicking worker did not reach the caller")
+			}
+			if procs == 1 {
+				// The sequential path panics straight out, unwrapped.
+				if got != "boom" {
+					t.Fatalf("recovered %#v, want the original panic value", got)
+				}
+				return
+			}
+			wp, ok := got.(*workerPanic)
+			if !ok {
+				t.Fatalf("recovered %#v, want a *workerPanic", got)
+			}
+			if wp.Value != "boom" {
+				t.Errorf("Value = %#v, want the original panic value", wp.Value)
+			}
+			// The worker's own stack is the whole reason for the wrapper: a bare
+			// re-panic would report the coordinator and lose it.
+			if !strings.Contains(string(wp.Stack), "TestParallelDoRaisesAWorkerPanic") {
+				t.Errorf("the captured stack is not the worker's:\n%s", wp.Stack)
+			}
+			if !strings.Contains(wp.String(), "boom") {
+				t.Errorf("String() does not print the value: %s", wp.String())
+			}
+			// The pool drains rather than abandoning the indexes in flight, so a
+			// caller that recovers is not looking at half-written results.
+			if n := ran.Load(); n < 8 {
+				t.Errorf("only %d of 64 indexes ran: the pool abandoned its work", n)
+			}
+		})
 	}
 }

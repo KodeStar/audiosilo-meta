@@ -258,7 +258,13 @@ func TestLoadStoreUsesThePacksTheStoreRead(t *testing.T) {
 //
 // Every pack is primed into the reader first, so every worker takes the cached
 // path rather than reading the file, and the answer still has to be Load's.
+//
+// GOMAXPROCS is pinned because ambient is not good enough here: at 1 the pool
+// takes the goroutine-free path and this test proves nothing about concurrency
+// at all, silently, on any one-CPU runner (see pinWorkers).
 func TestLoadStoreSharesTheCacheAcrossWorkers(t *testing.T) {
+	pinWorkers(t, 4)
+
 	files := parallelTree()
 	byPath := t.TempDir()
 	writeTree(t, byPath, files)

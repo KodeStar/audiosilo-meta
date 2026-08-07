@@ -78,9 +78,8 @@ func (l *loader) loadPackFamily(def pack.FamilyDef, tree *pack.Tree, rels []stri
 
 	l.checkPackBounds(def, tree)
 
-	packs := tree.Packs()
-	results := make([]packResult, len(packs))
-	parallelDo(len(packs), func(i int) {
+	results := make([]packResult, tree.Len())
+	parallelDo(len(results), func(i int) {
 		results[i] = l.loadPack(def, tree, i)
 	})
 
@@ -95,39 +94,41 @@ func (l *loader) loadPackFamily(def pack.FamilyDef, tree *pack.Tree, rels []stri
 	return recs
 }
 
-// packResult is everything validating ONE pack file produced. A worker fills its
-// own and touches nothing else, so the pool needs no locks; the coordinating
-// goroutine merges these in listing order, which is where the load's determinism
-// comes from.
+// packResult is everything validating ONE pack file produced: the loader the
+// worker accumulated it on (its problems, its advisories, its slice of the
+// catalogue, its path index) and the recordings its entries composed.
+//
+// A worker fills its own and touches nothing else, so the pool needs no locks;
+// the coordinating goroutine merges these in listing order, which is where the
+// load's determinism comes from. It holds the loader itself rather than copies
+// of its fields so that there is nothing to keep in step: whatever a worker
+// accumulated IS what merge reads.
 type packResult struct {
-	probs []Problem
-	warns []Problem
-	cat   model.Catalog
-	idx   *pathIndex
-	recs  []recordWithPath
+	w    *loader
+	recs []recordWithPath
 }
 
 // loadPack validates the pack at position i in tree: placement, caps, and every
 // entry it holds. It runs on a worker goroutine, so it writes only into the
-// result it returns - the loader it is called on is read for dir, schemas and
-// the shared parse cache and never written to.
+// loader it forked - the one it is called on is read for the shared fields
+// fork() names and never written to.
 func (l *loader) loadPack(def pack.FamilyDef, tree *pack.Tree, i int) packResult {
-	res := packResult{idx: newPathIndex()}
-	w := &loader{dir: l.dir, rdr: l.rdr, cat: &res.cat, idx: res.idx, schemas: l.schemas}
+	w := l.fork()
+	res := packResult{w: w}
 
 	p := tree.Packs()[i].Path()
 	file, ok := w.readPack(p)
 	if !ok {
-		return w.finish(res)
+		return res
 	}
 	if file.Len() == 0 {
 		w.add(p, "pack holds no entries (an empty pack is a file with no range to cover)")
-		return w.finish(res)
+		return res
 	}
 	total, per, err := file.Sizes()
 	if err != nil {
 		w.add(p, "canonical form: %s", collapse(err.Error()))
-		return w.finish(res)
+		return res
 	}
 	w.checkPackCaps(def, p, file.Len(), total)
 	// Sizes memoizes a canonical render of the whole pack, and validation
@@ -153,12 +154,6 @@ func (l *loader) loadPack(def pack.FamilyDef, tree *pack.Tree, i int) packResult
 		entry, _ := file.Get(slug)
 		res.recs = append(res.recs, w.readPackEntry(def, p, slug, entry)...)
 	}
-	return w.finish(res)
-}
-
-// finish hands the worker loader's accumulated problems to the result it fills.
-func (w *loader) finish(res packResult) packResult {
-	res.probs, res.warns = w.probs, w.warns
 	return res
 }
 
@@ -166,35 +161,17 @@ func (w *loader) finish(res packResult) packResult {
 // only place a worker's output crosses back into shared state, and it runs on
 // the coordinating goroutine alone.
 func (l *loader) merge(r *packResult) {
-	l.probs = append(l.probs, r.probs...)
-	l.warns = append(l.warns, r.warns...)
+	w := r.w
+	l.probs = append(l.probs, w.probs...)
+	l.warns = append(l.warns, w.warns...)
 
-	l.cat.Works = append(l.cat.Works, r.cat.Works...)
-	l.cat.People = append(l.cat.People, r.cat.People...)
-	l.cat.Series = append(l.cat.Series, r.cat.Series...)
-	l.cat.Characters = append(l.cat.Characters, r.cat.Characters...)
-	l.cat.Recaps = append(l.cat.Recaps, r.cat.Recaps...)
+	l.cat.Works = append(l.cat.Works, w.cat.Works...)
+	l.cat.People = append(l.cat.People, w.cat.People...)
+	l.cat.Series = append(l.cat.Series, w.cat.Series...)
+	l.cat.Characters = append(l.cat.Characters, w.cat.Characters...)
+	l.cat.Recaps = append(l.cat.Recaps, w.cat.Recaps...)
 
-	// The index is keyed by the record POINTER, so a pack's entries can never
-	// collide with another's: merging is a copy, never a resolution.
-	for k, v := range r.idx.work {
-		l.idx.work[k] = v
-	}
-	for k, v := range r.idx.rec {
-		l.idx.rec[k] = v
-	}
-	for k, v := range r.idx.person {
-		l.idx.person[k] = v
-	}
-	for k, v := range r.idx.series {
-		l.idx.series[k] = v
-	}
-	for k, v := range r.idx.characters {
-		l.idx.characters[k] = v
-	}
-	for k, v := range r.idx.recaps {
-		l.idx.recaps[k] = v
-	}
+	l.idx.merge(w.idx)
 }
 
 // readPack returns the parsed pack at the data-relative path p, reporting a

@@ -851,8 +851,9 @@ func joinProblems(ps []Problem) string {
 // It does not run under -race. What the detector has to see is the parallel pack
 // loader, and the fixture suites exercise every one of its paths - several packs
 // in every family, more work items than workers, problems and advisories from
-// different packs merged together (TestParallelLoadIsDeterministic,
-// TestParallelLoadExercisesEveryFamily). The real tree adds DATA coverage, not
+// different packs merged together (parallelTree, run by
+// TestParallelLoadIsDeterministic, by TestLoadStoreMatchesLoad's "many packs"
+// case and by TestLoadStoreSharesTheCacheAcrossWorkers). The real tree adds DATA coverage, not
 // concurrency coverage: 133k works of the same code path, at a cost that took
 // the package past Go's 10-minute default test timeout and made `go test -race
 // ./...` a 13-minute gate. The tree is still validated on every push - by this

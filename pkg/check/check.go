@@ -31,6 +31,7 @@ package check
 
 import (
 	"fmt"
+	"maps"
 	"sort"
 	"strings"
 
@@ -109,6 +110,22 @@ func newPathIndex() *pathIndex {
 	}
 }
 
+// merge copies every entry of o into i.
+//
+// The index is keyed by the record POINTER, and a record is decoded exactly
+// once, by exactly one pack's loader - so two indexes can never hold the same
+// key and merging is a copy, never a resolution. It lives here rather than at
+// the merge site so pathIndex's field list is written in ONE file: a seventh map
+// added above and forgotten below would silently lose every path of that kind.
+func (i *pathIndex) merge(o *pathIndex) {
+	maps.Copy(i.work, o.work)
+	maps.Copy(i.rec, o.rec)
+	maps.Copy(i.person, o.person)
+	maps.Copy(i.series, o.series)
+	maps.Copy(i.characters, o.characters)
+	maps.Copy(i.recaps, o.recaps)
+}
+
 // loader is one walk's accumulating state, shared by both layout walkers.
 //
 // A loader is single-goroutine state. The pack walk runs one loader PER PACK
@@ -132,6 +149,30 @@ type loader struct {
 	warns   []Problem
 }
 
+// fork returns the loader one pack file is validated on: this one's shared state
+// carried over, everything that ACCUMULATES fresh and its own.
+//
+// It is the pack walk's single statement of that split, deliberately next to the
+// type rather than at the call site, so a field added to loader is decided here
+// once instead of being silently left out of every worker. The set of shared
+// fields is CLOSED by construction, and the test is the field itself: dir, rdr
+// and schemas are read-only for the whole load (a path; a parse cache that is
+// only ever asked, never filled - see readPack; the compiled schemas), so
+// sharing them is a read from many goroutines of something nothing writes. cat,
+// idx, probs and warns are the load's output being built, so each worker needs
+// its own and the coordinating goroutine merges them in listing order (see
+// merge) - which is where the load's determinism comes from. A new field is one
+// or the other; there is no third kind that could be shared safely.
+func (l *loader) fork() *loader {
+	return &loader{
+		dir:     l.dir,
+		rdr:     l.rdr,
+		schemas: l.schemas,
+		cat:     &model.Catalog{},
+		idx:     newPathIndex(),
+	}
+}
+
 // add records a rule violation against path.
 func (l *loader) add(path, format string, args ...any) {
 	l.probs = append(l.probs, Problem{Path: path, Msg: fmt.Sprintf(format, args...)})
@@ -144,11 +185,19 @@ func (l *loader) warn(path, format string, args ...any) {
 
 // Load walks dir, validates it, and returns the result. dir is the data root.
 //
-// Nothing is kept: a pack is parsed, validated and released as the walk moves
-// past it, so the load's peak memory is the packs currently in flight (at most
-// one per worker) plus the Catalog it is building. A caller that is also WRITING
-// calls LoadStore, which shares the writer's walk - and the same
-// release-as-you-go applies there.
+// No PACK is kept: one is parsed, validated and released as the walk moves past
+// it, so at most one pack file is resident per worker however big the tree is.
+// What the walk does hold on top of the Catalog it is building is one family's
+// per-pack RESULTS - each finished pack's problems, advisories, path index and
+// composed recordings - because they are merged in the listing's order once the
+// family's pool has drained, so a pack that finished first waits for the packs
+// before it. That is a real cost (measured at +8.4% live set over the sequential
+// walk this replaced), bounded by the largest family rather than by the pool,
+// and it is the price of the determinism: merging on completion would need no
+// buffer and would make the output depend on the scheduler.
+//
+// A caller that is also WRITING calls LoadStore, which shares the writer's
+// walk - and the same release-as-you-go applies there.
 func Load(dir string) Result {
 	lst, err := pack.List(dir)
 	if err != nil {
