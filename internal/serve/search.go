@@ -65,7 +65,10 @@ func ftsMatch(q string, prefixLast bool) string {
 
 // searchHit is one row of the FTS result, kept in rank order while the work
 // cards are resolved in a single batch.
-type searchHit struct{ kind, id string }
+type searchHit struct {
+	kind searchKind
+	id   string
+}
 
 // mergeHits puts the series-position work ids in front of the FTS hits, drops
 // the duplicate an FTS hit would be, and truncates to the page size. The page
@@ -83,7 +86,7 @@ func mergeHits(boosted []string, ftsHits []searchHit, limit int) []searchHit {
 	out := make([]searchHit, 0, len(boosted)+len(ftsHits))
 	seen := make(map[searchHit]bool, len(boosted))
 	for _, id := range boosted {
-		h := searchHit{kind: "work", id: id}
+		h := searchHit{kind: kindWork, id: id}
 		if seen[h] {
 			continue
 		}
@@ -101,8 +104,29 @@ func mergeHits(boosted []string, ftsHits []searchHit, limit int) []searchHit {
 	return out
 }
 
-// search runs the FTS query and assembles heterogeneous results (work / person
-// / series) into a single ranked slice.
+// searchKind is a value of search_fts's kind column: the three families the
+// index holds. The column is stored but UNINDEXED, so a type-scoped search can
+// filter on it in the WHERE - no new index and no artifact change, which is what
+// makes the scoped endpoints work against every already-published release.
+type searchKind string
+
+const (
+	kindWork   searchKind = "work"
+	kindPerson searchKind = "person"
+	kindSeries searchKind = "series"
+)
+
+// The two FTS queries behind every search endpoint. They differ only in the kind
+// predicate, so a scoped page is filtered at the source rather than after the
+// fact: ?limit=20 on works/search returns 20 works, not the works among 20 mixed
+// hits.
+const (
+	searchSQL     = `SELECT kind, id FROM search_fts WHERE search_fts MATCH ? ORDER BY bm25(search_fts) LIMIT ?`
+	searchKindSQL = `SELECT kind, id FROM search_fts WHERE search_fts MATCH ? AND kind = ? ORDER BY bm25(search_fts) LIMIT ?`
+)
+
+// search runs the FTS query across every kind and assembles heterogeneous
+// results (work / person / series) into a single ranked slice.
 //
 // A query that names a series and a number ("jack reacher 2") resolves that
 // volume FIRST, ahead of the FTS hits - see seriespos.go for why that resolution
@@ -110,40 +134,74 @@ func mergeHits(boosted []string, ftsHits []searchHit, limit int) []searchHit {
 // FTS hits that follow are exactly the ones the query returned before, minus any
 // duplicate of a boosted work, and a query that resolves no series-position hit
 // is byte-for-byte the old behaviour.
-//
-// The hits are materialized FIRST and the work cards resolved for the whole page
-// at once (cardsByID), rather than four queries per work hit inside the scan
-// loop. This is the busiest endpoint in the API - every keystroke of the site's
-// search box - so the per-page query count is fixed instead of proportional to
-// the number of work hits.
 func (s *snapshot) search(q string, limit int) ([]any, error) {
-	// A failed probe degrades to "no boost" instead of failing the request: the
-	// boost is an enrichment of a page the FTS query below produces on its own,
-	// and a 500 on a search the user could otherwise have had is the worse
-	// outcome. It is logged, so a broken probe is visible rather than silent.
+	hits, err := s.ftsHits(searchSQL, ftsQuery(q), limit)
+	if err != nil {
+		return nil, err
+	}
+	return s.results(mergeHits(s.boostedWorks(q), hits, limit))
+}
+
+// searchScoped is search restricted to one kind: the query behind
+// /works/search, /people/search and /series/search. Both search paths compose
+// their page through results, so a hit carries the same shape and the same kind
+// discriminator whichever endpoint produced it.
+//
+// The series-position boost applies to the WORK scope only. The ids it resolves
+// are always works, so prepending them anywhere else would put a work on a page
+// that promises people or series.
+func (s *snapshot) searchScoped(kind searchKind, q string, limit int) ([]any, error) {
+	hits, err := s.ftsHits(searchKindSQL, ftsQuery(q), string(kind), limit)
+	if err != nil {
+		return nil, err
+	}
+	var boosted []string
+	if kind == kindWork {
+		boosted = s.boostedWorks(q)
+	}
+	return s.results(mergeHits(boosted, hits, limit))
+}
+
+// ftsHits runs one of the search queries and materializes its rows in rank
+// order. The hits are collected FIRST so the whole page's work cards can be
+// resolved in one batch (see results) rather than inside the scan loop.
+func (s *snapshot) ftsHits(query string, args ...any) ([]searchHit, error) {
+	rows, err := s.db.Query(query, args...)
+	if err != nil {
+		return nil, err
+	}
+	return scanPairs(rows, func(kind, id string) searchHit {
+		return searchHit{kind: searchKind(kind), id: id}
+	})
+}
+
+// boostedWorks resolves a query's series-position work ids.
+//
+// A failed probe degrades to "no boost" instead of failing the request: the
+// boost is an enrichment of a page the FTS query produces on its own, and a 500
+// on a search the user could otherwise have had is the worse outcome. It is
+// logged, so a broken probe is visible rather than silent.
+func (s *snapshot) boostedWorks(q string) []string {
 	boosted, err := s.seriesPositionHits(q)
 	if err != nil {
 		s.logf("serve: series-position probe for %q failed, serving the plain search page: %v", q, err)
-		boosted = nil
+		return nil
 	}
+	return boosted
+}
 
-	match := ftsQuery(q)
-	rows, err := s.db.Query(
-		`SELECT kind, id FROM search_fts WHERE search_fts MATCH ? ORDER BY bm25(search_fts) LIMIT ?`, match, limit)
-	if err != nil {
-		return nil, err
-	}
-	ftsHits, err := scanPairs(rows, func(kind, id string) searchHit {
-		return searchHit{kind: kind, id: id}
-	})
-	if err != nil {
-		return nil, err
-	}
-	hits := mergeHits(boosted, ftsHits, limit)
-
+// results composes one ranked page of hits into their per-kind result shapes.
+// It is the single assembly the combined and type-scoped searches share, so the
+// composition rules of a result cannot be spelled twice and drift apart.
+//
+// The work cards for the whole page are resolved at once (cardsByID) rather than
+// four queries per work hit inside the loop. These are the busiest endpoints in
+// the API - every keystroke of the site's search box - so the per-page query
+// count is fixed instead of proportional to the number of work hits.
+func (s *snapshot) results(hits []searchHit) ([]any, error) {
 	workIDs := make([]string, 0, len(hits))
 	for _, h := range hits {
-		if h.kind == "work" {
+		if h.kind == kindWork {
 			workIDs = append(workIDs, h.id)
 		}
 	}
@@ -155,7 +213,7 @@ func (s *snapshot) search(q string, limit int) ([]any, error) {
 	out := []any{}
 	for _, h := range hits {
 		switch h.kind {
-		case "work":
+		case kindWork:
 			card := cards[h.id]
 			if card == nil {
 				continue
@@ -165,22 +223,22 @@ func (s *snapshot) search(q string, limit int) ([]any, error) {
 				return nil, err
 			}
 			out = append(out, workResult{
-				Kind: "work", ID: card.ID, Title: card.Title, Authors: card.Authors,
+				Kind: string(kindWork), ID: card.ID, Title: card.Title, Authors: card.Authors,
 				Series: card.Series, CoverURL: card.CoverURL, AddedAt: card.AddedAt,
 				Narrators: narrators,
 			})
-		case "person":
+		case kindPerson:
 			name, err := s.personName(h.id)
 			if err != nil {
 				return nil, err
 			}
-			out = append(out, personResult{Kind: "person", ID: h.id, Name: name})
-		case "series":
+			out = append(out, personResult{Kind: string(kindPerson), ID: h.id, Name: name})
+		case kindSeries:
 			name, n, err := s.seriesSummary(h.id)
 			if err != nil {
 				return nil, err
 			}
-			out = append(out, seriesResult{Kind: "series", ID: h.id, Name: name, Works: n})
+			out = append(out, seriesResult{Kind: string(kindSeries), ID: h.id, Name: name, Works: n})
 		}
 	}
 	return out, nil

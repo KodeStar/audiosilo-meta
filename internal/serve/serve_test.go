@@ -859,6 +859,145 @@ func TestSearchQuoteEscaping(t *testing.T) {
 	}
 }
 
+// searchResultKinds fetches a search page and counts its results by kind. A
+// type-scoped page must carry exactly one key.
+func searchResultKinds(t *testing.T, base, path string) map[string]int {
+	t.Helper()
+	code, body := getJSON(t, base, path)
+	if code != 200 {
+		t.Fatalf("GET %s: status %d", path, code)
+	}
+	out := map[string]int{}
+	for _, r := range body["results"].([]any) {
+		out[r.(map[string]any)["kind"].(string)]++
+	}
+	return out
+}
+
+// TestTypedSearchScopesToOneKind is the point of the type-scoped endpoints: a
+// query the combined search answers with several kinds answers with exactly one
+// on each scoped route.
+//
+// It takes two queries because no single fixture term reaches all three kinds:
+// "sanderson" is a person's name and rides along in every one of his works' FTS
+// names column, while "stormlight" is a series name and rides along in the same
+// works. Between them the combined page covers work, person and series.
+func TestTypedSearchScopesToOneKind(t *testing.T) {
+	_, ts := newTestServer(t)
+
+	byPerson := searchResultKinds(t, ts.URL, "/api/v1/search?q=sanderson")
+	if byPerson["work"] == 0 || byPerson["person"] == 0 {
+		t.Fatalf("combined search for 'sanderson' = %v, want works and a person", byPerson)
+	}
+	bySeries := searchResultKinds(t, ts.URL, "/api/v1/search?q=stormlight")
+	if bySeries["work"] == 0 || bySeries["series"] == 0 {
+		t.Fatalf("combined search for 'stormlight' = %v, want works and a series", bySeries)
+	}
+
+	cases := []struct{ path, kind string }{
+		{"/api/v1/works/search?q=sanderson", "work"},
+		{"/api/v1/people/search?q=sanderson", "person"},
+		{"/api/v1/works/search?q=stormlight", "work"},
+		{"/api/v1/series/search?q=stormlight", "series"},
+	}
+	for _, tc := range cases {
+		t.Run(tc.path, func(t *testing.T) {
+			kinds := searchResultKinds(t, ts.URL, tc.path)
+			if kinds[tc.kind] == 0 {
+				t.Errorf("no %s results: %v", tc.kind, kinds)
+			}
+			if len(kinds) != 1 {
+				t.Errorf("page carries %v, want %s only", kinds, tc.kind)
+			}
+		})
+	}
+}
+
+// TestTypedSearchResultShapesMatchTheCombinedSearch: both search paths compose
+// their page through one assembly, so a work hit carries its narrators and a
+// series hit its member count on the scoped routes too.
+func TestTypedSearchResultShapesMatchTheCombinedSearch(t *testing.T) {
+	_, ts := newTestServer(t)
+
+	code, body := getJSON(t, ts.URL, "/api/v1/works/search?q=hail")
+	if code != 200 {
+		t.Fatalf("status %d", code)
+	}
+	results := body["results"].([]any)
+	if len(results) == 0 {
+		t.Fatal("works/search 'hail' found nothing")
+	}
+	work := results[0].(map[string]any)
+	if work["id"] != "project-hail-mary" {
+		t.Errorf("first result = %v", work["id"])
+	}
+	narrators, ok := work["narrators"].([]any)
+	if !ok || len(narrators) == 0 {
+		t.Fatalf("work result has no narrators: %v", work)
+	}
+	if narrators[0].(map[string]any)["id"] != "ray-porter" {
+		t.Errorf("narrator = %v", narrators[0])
+	}
+	// The nullable card fields are always PRESENT on a work result, so a client
+	// reads them without a key check.
+	for _, key := range []string{"authors", "series", "cover_url", "added_at"} {
+		if _, present := work[key]; !present {
+			t.Errorf("work result is missing the %q key", key)
+		}
+	}
+
+	code, body = getJSON(t, ts.URL, "/api/v1/series/search?q=stormlight")
+	if code != 200 {
+		t.Fatalf("status %d", code)
+	}
+	series := body["results"].([]any)[0].(map[string]any)
+	if series["id"] != "the-stormlight-archive" || series["works"].(float64) != 3 {
+		t.Errorf("series result = %v", series)
+	}
+}
+
+// TestSearchRequiresAQuery: an absent, empty or whitespace-only q is a 400 with
+// the same message on every search endpoint - they share one handler.
+func TestSearchRequiresAQuery(t *testing.T) {
+	_, ts := newTestServer(t)
+	paths := []string{
+		"/api/v1/search",
+		"/api/v1/works/search",
+		"/api/v1/people/search",
+		"/api/v1/series/search",
+	}
+	for _, p := range paths {
+		for _, query := range []string{"", "?q=", "?q=%20%20"} {
+			code, body := getJSON(t, ts.URL, p+query)
+			if code != 400 {
+				t.Errorf("GET %s%s = %d, want 400", p, query, code)
+			}
+			if body["error"] != "q is required" {
+				t.Errorf("GET %s%s error = %v", p, query, body["error"])
+			}
+		}
+	}
+}
+
+// TestTypedSearchLimitClamp: the scoped endpoints inherit clampLimit, so a page
+// size is honoured and an unparseable one falls back to the default rather than
+// erroring.
+func TestTypedSearchLimitClamp(t *testing.T) {
+	_, ts := newTestServer(t)
+	const path = "/api/v1/works/search?q=sanderson"
+
+	if kinds := searchResultKinds(t, ts.URL, path+"&limit=1"); kinds["work"] != 1 {
+		t.Errorf("limit=1 returned %d works, want 1", kinds["work"])
+	}
+	// The fixture holds three Sanderson works, under both the default and the cap.
+	if kinds := searchResultKinds(t, ts.URL, path+"&limit=abc"); kinds["work"] != 3 {
+		t.Errorf("limit=abc returned %d works, want the default page of 3", kinds["work"])
+	}
+	if kinds := searchResultKinds(t, ts.URL, path+"&limit=9999"); kinds["work"] != 3 {
+		t.Errorf("limit=9999 returned %d works, want 3 (clamped, not widened)", kinds["work"])
+	}
+}
+
 func TestFTSQueryBuilder(t *testing.T) {
 	cases := map[string]string{
 		"hail mary": `"hail" "mary"*`,

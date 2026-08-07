@@ -1,0 +1,23 @@
+---
+// Renders one line of an OpenAPI description, turning its CommonMark `code`
+// spans into elements. The segments are interpolated, never injected as HTML, so
+// the spec cannot introduce markup into the page.
+import { inlineSegments } from '../../lib/openapi'
+
+interface Props {
+  text: string
+}
+const { text } = Astro.props
+---
+
+{
+  inlineSegments(text).map((segment) =>
+    segment.code ? (
+      <code class="rounded bg-raised px-1 py-0.5 font-mono text-[0.9em] text-hi">
+        {segment.text}
+      </code>
+    ) : (
+      <Fragment>{segment.text}</Fragment>
+    )
+  )
+}

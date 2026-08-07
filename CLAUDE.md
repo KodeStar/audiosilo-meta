@@ -284,7 +284,25 @@ scripts/            operator scripts: the libex dump-to-rows SQL flow (+ README)
 **The API server (`internal/serve`)** opens the SQLite artifact read-only and
 serves JSON under `/api/v1` (stats, `search?q=`, `works/latest`, `works/{id}`,
 recording `chapters`, `people/{id}`, `series/{id}`, `lookup?asin=|isbn=`) plus
-`/healthz`; it can also serve a static site at `/`. Membership lists are resolved
+`/healthz`; it can also serve a static site at `/`. Search comes in four
+flavours: the combined `search?q=` plus the **type-scoped** `works/search`,
+`people/search` and `series/search`, which are the same FTS query with an added
+`kind = ?` predicate (a stored UNINDEXED column - no new index, no artifact
+change, so they answer against every already-published release) returning the
+same per-kind result shapes, composed by the one assembly both paths call
+(`snapshot.results`). The series-position boost applies to `works/search` too and
+to that scope ONLY, since the ids it resolves are always works; a literal path
+segment beats `{id}` in ServeMux's precedence, which is what lets the three sit
+beside their families' detail routes as `works/latest` already does. The whole
+public surface is described by an **embedded OpenAPI 3.1 document**
+(`internal/serve/openapi.json`, served at `GET /api/v1/openapi.json` OUTSIDE the
+loaded-artifact gate - it is static, and a client discovering the API on a cold
+boot must still get the contract); `TestOpenAPICoversEveryRoute` pins its path
+set to buildMux's registrations, so a route added on one side only fails the
+build, and the site's `/docs/api` page imports that very file at build time and
+renders it in the site's own design system (`site/src/lib/openapi.ts` +
+`site/src/pages/docs/api.astro`) - no vendored spec viewer, and no second copy of
+the API's shape to keep in step. Membership lists are resolved
 in a fixed number of queries (`cardsByID` batches works + authors + series +
 covers over an id set) rather than four per work, and the two unbounded lists are
 windowed: `people/{id}` pages by default (100, max 500 - a corporate credit like

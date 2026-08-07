@@ -2,6 +2,7 @@ package serve
 
 import (
 	"reflect"
+	"strings"
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/pkg/model"
@@ -257,6 +258,58 @@ func TestSearchNumericTitlesNotRegressed(t *testing.T) {
 	// Without the number, the title search is exactly what it was.
 	if ids := searchIDs(t, snap, "slow horses"); !contains(ids, "work:slow-horses") || !contains(ids, "series:slow-horses") {
 		t.Errorf("search('slow horses') = %v, want the work and the series", ids)
+	}
+}
+
+// scopedIDs renders a type-scoped search page the way searchIDs renders the
+// combined one.
+func scopedIDs(t *testing.T, snap *snapshot, kind searchKind, q string) []string {
+	t.Helper()
+	res, err := snap.searchScoped(kind, q, 20)
+	if err != nil {
+		t.Fatalf("searchScoped(%s, %q): %v", kind, q, err)
+	}
+	return resultIDs(t, res)
+}
+
+// TestWorkSearchKeepsTheSeriesPositionBoost: /works/search is what a consumer
+// that only wants books calls, so the volume lookup has to resolve there too -
+// narrowing a search must not silently cost the feature.
+func TestWorkSearchKeepsTheSeriesPositionBoost(t *testing.T) {
+	snap := snapshotFor(t, seriesPositionCatalog())
+	cases := map[string]string{
+		"jack reacher 2":      "work:die-trying",
+		"jack reacher book 2": "work:die-trying",
+		"jack reacher 2.5":    "work:deep-down",
+		"jack reacher 1-3.5":  "work:reacher-omnibus",
+	}
+	for query, want := range cases {
+		t.Run(query, func(t *testing.T) {
+			ids := scopedIDs(t, snap, kindWork, query)
+			if first(ids) != want {
+				t.Errorf("works/search(%q) first = %q, want %q (page: %v)", query, first(ids), want, ids)
+			}
+		})
+	}
+}
+
+// TestScopedSearchesBoostOnlyWorks: the ids the boost resolves are always works,
+// so prepending them to a people or series page would put a work on a page that
+// promises neither. The scoped pages still answer their own query.
+func TestScopedSearchesBoostOnlyWorks(t *testing.T) {
+	snap := snapshotFor(t, seriesPositionCatalog())
+	for _, kind := range []searchKind{kindPerson, kindSeries} {
+		for _, id := range scopedIDs(t, snap, kind, "jack reacher 2") {
+			if strings.HasPrefix(id, "work:") {
+				t.Errorf("%s search for 'jack reacher 2' returned %s", kind, id)
+			}
+		}
+	}
+	if ids := scopedIDs(t, snap, kindSeries, "jack reacher"); !contains(ids, "series:jack-reacher") {
+		t.Errorf("series/search('jack reacher') = %v, want the series itself", ids)
+	}
+	if ids := scopedIDs(t, snap, kindPerson, "lee child"); !contains(ids, "person:lee-child") {
+		t.Errorf("people/search('lee child') = %v, want the author", ids)
 	}
 }
 

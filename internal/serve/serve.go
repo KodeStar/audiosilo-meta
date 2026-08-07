@@ -235,8 +235,18 @@ func (s *Server) buildMux() http.Handler {
 	if s.cfg.WebhookSecret != "" {
 		mux.HandleFunc("POST "+githubReleaseWebhookPath, s.handleGitHubReleaseWebhook)
 	}
+	// The machine-readable description of everything below. It is STATIC, so it
+	// deliberately skips s.api's loaded-artifact gate: a client discovering the
+	// API must get the spec even on a boot that has no data yet.
+	mux.Handle("GET /api/v1/openapi.json", gzipMW(corsMW(http.HandlerFunc(handleOpenAPI))))
 	mux.Handle("GET /api/v1/stats", s.api(s.handleStats))
-	mux.Handle("GET /api/v1/search", s.api(s.handleSearch))
+	mux.Handle("GET /api/v1/search", s.api(s.searchHandler((*snapshot).search)))
+	// Type-scoped searches. A literal segment beats "{id}" in ServeMux's
+	// precedence rules, so each coexists with its family's detail route exactly
+	// as works/latest already does.
+	mux.Handle("GET /api/v1/works/search", s.api(s.searchHandler(scopedSearch(kindWork))))
+	mux.Handle("GET /api/v1/people/search", s.api(s.searchHandler(scopedSearch(kindPerson))))
+	mux.Handle("GET /api/v1/series/search", s.api(s.searchHandler(scopedSearch(kindSeries))))
 	mux.Handle("GET /api/v1/works/latest", s.api(s.handleLatest))
 	mux.Handle("GET /api/v1/works/{id}", s.api(s.handleWork))
 	mux.Handle("GET /api/v1/works/{id}/recordings/{rid}/chapters", s.api(s.handleChapters))
@@ -450,19 +460,41 @@ func (s *Server) handleSeries(w http.ResponseWriter, r *http.Request) {
 	writeJSON(w, http.StatusOK, ser)
 }
 
-func (s *Server) handleSearch(w http.ResponseWriter, r *http.Request) {
-	q := strings.TrimSpace(r.URL.Query().Get("q"))
-	if q == "" {
-		writeErr(w, http.StatusBadRequest, "q is required")
-		return
+// searchPageDefault / searchPageMax bound one page of search results. Every
+// search endpoint shares them: a client that learns the window on /search knows
+// it on the type-scoped ones too.
+const (
+	searchPageDefault = 20
+	searchPageMax     = 50
+)
+
+// searchHandler builds a search endpoint over run. The combined search and the
+// three type-scoped ones differ only in the query they issue, so the q/limit
+// parsing, the empty-q 400 and the {"results": [...]} envelope live here once
+// rather than in four near-identical handlers.
+func (s *Server) searchHandler(run func(*snapshot, string, int) ([]any, error)) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		q := strings.TrimSpace(r.URL.Query().Get("q"))
+		if q == "" {
+			writeErr(w, http.StatusBadRequest, "q is required")
+			return
+		}
+		limit := clampLimit(r.URL.Query().Get("limit"), searchPageDefault, searchPageMax)
+		results, err := run(s.current(), q, limit)
+		if err != nil {
+			writeErr(w, http.StatusInternalServerError, err.Error())
+			return
+		}
+		writeJSON(w, http.StatusOK, map[string]any{"results": results})
 	}
-	limit := clampLimit(r.URL.Query().Get("limit"), 20, 50)
-	results, err := s.current().search(q, limit)
-	if err != nil {
-		writeErr(w, http.StatusInternalServerError, err.Error())
-		return
+}
+
+// scopedSearch adapts a type-scoped search to searchHandler's run signature (the
+// combined search matches it as the method expression (*snapshot).search).
+func scopedSearch(kind searchKind) func(*snapshot, string, int) ([]any, error) {
+	return func(snap *snapshot, q string, limit int) ([]any, error) {
+		return snap.searchScoped(kind, q, limit)
 	}
-	writeJSON(w, http.StatusOK, map[string]any{"results": results})
 }
 
 // handleCoverage reports the top-line expressive-layer totals
