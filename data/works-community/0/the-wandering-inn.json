@@ -438,6 +438,215 @@
         "work": "the-wandering-inn"
       }
     },
+    "the-warlord-of-mars": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The Virginia-born prince of Helium who remains outside the Temple of the Sun after Dejah Thoris, Thuvia, and Phaidor are sealed inside. Carter devotes the Barsoomian year before their chamber reopens to watching the temple and searching for any hidden means of entry.",
+            "id": "john-carter",
+            "name": "John Carter",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Princess of Helium"
+            ],
+            "description": "John Carter's wife, carried into the Temple of the Sun at the end of the preceding book. She is trapped for a Barsoomian year with Thuvia and with Phaidor, whom Carter last saw raising a knife toward her as the chamber closed.",
+            "id": "dejah-thoris",
+            "name": "Dejah Thoris",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Princess of Ptarth"
+            ],
+            "description": "The princess of Ptarth and ally of Carter and Dejah. Thuvia is confined in the same rotating temple chamber as Dejah and Phaidor when the book opens.",
+            "id": "thuvia",
+            "name": "Thuvia",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The thern princess imprisoned with Dejah and Thuvia. At the close of the preceding book, her jealousy of Dejah had culminated in an apparent attempt to stab her just before the Temple of the Sun carried their chamber out of reach.",
+            "id": "phaidor",
+            "name": "Phaidor",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Hekkador of the Holy Therns"
+            ],
+            "description": "The leader of the therns and Phaidor's father. Matai Shang survived the destruction of the old religious order and now seeks to recover his daughter, retain Dejah as leverage, and escape Carter's pursuit.",
+            "id": "matai-shang",
+            "name": "Matai Shang",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A First Born officer who remains hostile to Carter after Issus's fall. Thurid secretly cooperates with Matai Shang and knows of concealed passages that may bypass the ordinary rotation of the Temple of the Sun.",
+            "id": "thurid",
+            "name": "Thurid",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An old keeper connected with the hidden mechanisms and passages beneath the Temple of the Sun. Solan's knowledge makes him useful to Matai Shang and Thurid as they attempt to reach the prisoners without waiting for the public doorway to return.",
+            "id": "solan",
+            "name": "Solan",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The many-legged calot whose loyalty to Carter began during his first captivity among the Tharks. Woola rejoins him during the pursuit and uses his speed and tracking instincts to help follow the fugitives.",
+            "id": "woola",
+            "name": "Woola",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jeddak of the Tharks and Carter's longstanding friend. Tars Tarkas brings green Martian strength to the expanding pursuit of Matai Shang and the captives.",
+            "id": "tars-tarkas",
+            "name": "Tars Tarkas",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The son of John Carter and Dejah Thoris and a prince of Helium. Carthoris joins the allied effort to recover his mother and the other prisoners as the chase broadens beyond the former domains of the therns.",
+            "id": "carthoris",
+            "name": "Carthoris",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jeddak of Ptarth and Thuvia's father. Thuvan Dihn commits his forces to Carter's pursuit, linking Ptarth with Helium and the Tharks in the effort to rescue the abducted women.",
+            "id": "thuvan-dihn",
+            "name": "Thuvan Dihn",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The jeddak of Kaol, a city whose people have retained respect for the thern religion. Kulan Tith grants Matai Shang protection before hearing Carter's account of the deception in the Valley Dor.",
+            "id": "kulan-tith",
+            "name": "Kulan Tith",
+            "reveal": {
+              "chapter": 7
+            }
+          },
+          {
+            "description": "A prince among the yellow Martians of the northern realm of Okar and the leader of resistance to Salensus Oll. Talu understands the tyrant's court and offers Carter disguises, local allies, and a route toward the captives.",
+            "id": "talu",
+            "name": "Talu",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Jeddak of Jeddaks"
+            ],
+            "description": "The ruler of the northern yellow Martian realm of Okar. Salensus Oll governs through fear, suppresses Talu's faction, and regards Dejah Thoris as both a desired wife and a political prize.",
+            "id": "salensus-oll",
+            "name": "Salensus Oll",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-warlord-of-mars"
+      },
+      "recaps": {
+        "ending": "Carter escapes captivity in Okar, reunites with Talu's rebels, and helps the allied fleets enter the northern realm by disabling its defensive magnetic mechanism. In the fighting that follows, Salensus Oll, Matai Shang, and Thurid are killed, ending the alliance that carried Dejah away from the Temple of the Sun. Phaidor rejects her former jealousy and dies protecting Dejah, having asked forgiveness for the harm she caused. Dejah and Thuvia are freed, and the forces of Helium, Ptarth, and the Tharks are reunited with them. Talu replaces Salensus Oll as ruler of Okar and establishes peace with the southern nations. With rulers and armies from across Barsoom acknowledging the coalition he has led, John Carter is formally acclaimed Warlord of Barsoom and returns to Helium with Dejah.",
+        "in_short": "John Carter watches the Temple of the Sun until he discovers Matai Shang and the First Born officer Thurid using a secret route to reach Dejah Thoris, Thuvia, and Phaidor. They carry the women away through underground passages, and Carter pursues them across Barsoom. The chase passes through Kaol and ultimately reaches Okar, the isolated northern realm of the yellow Martians, where the tyrant Salensus Oll plans to marry Dejah. Carter allies with the rebel prince Talu, survives imprisonment, and opens the way for a combined force from Helium, Ptarth, and the Tharks. The allies overthrow Salensus Oll; Matai Shang and Thurid also die. Phaidor abandons her jealousy and dies protecting Dejah. Thuvia and Dejah are rescued, Talu becomes ruler of Okar, and peace is established between north and south. The assembled rulers acclaim Carter as Warlord of Barsoom, and he returns to Helium with Dejah.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: John Carter returned to Barsoom after ten years on Earth and landed in the Valley Dor. With Tars Tarkas and Thuvia of Ptarth, he exposed the pilgrimage as a system that delivered victims to the white therns and then to the First Born beneath them. In the hidden realm of Omean he found his wife Dejah Thoris, met the First Born warrior Xodar, and proved that the supposed goddess Issus was mortal. Carter escaped to Helium, met his grown son Carthoris, and assembled an alliance that overthrew Issus's regime. Matai Shang nevertheless sealed Dejah, Thuvia, and his own daughter Phaidor inside the rotating Temple of the Sun, whose chambers open only once in a Barsoomian year. As their doorway closed, Carter saw Phaidor raise a knife toward Dejah, but he could not enter or learn what happened.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Carter remains near the Temple of the Sun throughout the long rotation of its chambers, searching for a way to reach Dejah before the public doorway returns. His watch reveals a secret meeting between Matai Shang and Thurid, a First Born officer still hostile to him. With the help of the old keeper Solan, they use concealed passages beneath the temple. Carter follows and learns that Phaidor's attack did not kill Dejah, but the discovery does not bring a rescue: Matai Shang and Thurid remove Dejah, Thuvia, and Phaidor through the hidden route. Carter is left pursuing them through the tunnels as they try to escape the ruined religious strongholds altogether.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The fugitives cross the surface of Barsoom while Carter follows with Woola. Matai Shang seeks protection in Kaol, whose ruler Kulan Tith still honors the thern faith and initially treats its highest priest as a legitimate guest. Carter reaches the city and presents what he learned in the Valley Dor, challenging the religious basis for that protection. The pursuit draws in a wider alliance: Carthoris fights to recover his mother, Tars Tarkas brings the Tharks, and Thuvan Dihn of Ptarth seeks his daughter Thuvia. Although Matai Shang again escapes with the women, Carter gains allies and continues north along a route leading toward regions little known to the southern nations.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Carter crosses dangerous underground passages and reaches Okar, the isolated northern land of the yellow Martians. There he allies with Talu, a prince leading resistance to the jeddak Salensus Oll. Talu's people provide Carter with a disguise and knowledge of the court. Matai Shang has placed the captives under Salensus Oll's control, and the ruler intends to marry Dejah. Carter enters the enemy capital to locate her while learning that Okar's military defenses, harsh climate, and internal divisions make a direct southern attack difficult. His immediate task is to survive within the court long enough to help Talu's rebels and open a path for the allied forces following him.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Carter is discovered and imprisoned, but he escapes and reconnects with Talu's resistance. The allies work to overcome the mechanism that protects Okar from approaching fliers, allowing the combined forces of Helium, Ptarth, and the Tharks to enter the northern realm. Rebellion breaks out inside the capital as the southern fleet attacks from outside. Carter reaches the conflict around Salensus Oll's court, where Dejah remains the ruler's intended bride and Matai Shang and Thurid struggle to preserve their control over the captives. The pursuit that began beneath the Temple of the Sun has become a battle over Okar's government and its future relationship with the rest of Barsoom.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Talu's rebels and Carter's allied armies defeat Salensus Oll's forces after Okar's defenses are opened. Salensus Oll, Matai Shang, and Thurid are killed during the final struggle, ending the chain of abductions that began at the Temple of the Sun. Phaidor repudiates her jealousy and dies protecting Dejah, asking forgiveness for her earlier actions. Carter frees Dejah and Thuvia and reunites them with Carthoris, Thuvan Dihn, Tars Tarkas, and the other allies. Talu becomes ruler of Okar and makes peace with the southern nations. The assembled rulers and warriors recognize Carter's role in uniting peoples that had long been separated by war, distance, and religious deception. He is acclaimed Warlord of Barsoom and returns to Helium with Dejah.",
+            "through": {
+              "chapter": 17
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-warlord-of-mars"
+      }
+    },
     "the-way-of-kings": {
       "characters": {
         "characters": [

@@ -128,6 +128,213 @@
         "work": "siege-and-storm"
       }
     },
+    "siege-of-darkness": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A dark elf ranger who has returned from Menzoberranzan with warning that its ruling houses intend to invade Mithral Hall. He knows the enemy's methods better than any of the hall's defenders and is determined that his birthplace will not take another member of his adopted family.",
+            "id": "drizzt-do-urden",
+            "name": "Drizzt Do'Urden",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Bruenor's adopted daughter and a master archer who followed Drizzt into Menzoberranzan and returned with him. She still mourns Wulfgar, but she will not let that grief deny either her growing love for Drizzt or her place in the defense of her home.",
+            "id": "catti-brie",
+            "name": "Catti-brie",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The king who reclaimed Mithral Hall for Clan Battlehammer. He responds to the promised invasion with a ruler's practical work: strengthening tunnels, calling on old allies and making clear that the drow will find dwarves defending their own ground.",
+            "id": "bruenor-battlehammer",
+            "name": "Bruenor Battlehammer",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A halfling companion of Bruenor and Drizzt who has settled comfortably into Mithral Hall. His enchanted ruby pendant and talent for reading self-interest give him ways to influence a war that do not depend on matching a drow warrior with a blade.",
+            "id": "regis",
+            "name": "Regis",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Drizzt's great black panther companion, summoned through an onyx figurine. Guenhwyvar can scout dark tunnels, carry messages and wounded allies, and strike enemies who assume the ranger is fighting alone.",
+            "id": "guenhwyvar",
+            "name": "Guenhwyvar",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The ancient ruler of House Baenre and the dominant matron of Menzoberranzan. She has secured religious support for an invasion of Mithral Hall and must keep the city's ambitious houses aligned long enough to carry it out.",
+            "id": "matron-baenre",
+            "name": "Matron Baenre",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The eldest daughter of Matron Baenre and a powerful priestess. She helps administer her mother's campaign while remaining alert to the succession struggle that any sign of weakness could trigger within the house.",
+            "id": "triel-baenre",
+            "name": "Triel Baenre",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The archmage of Menzoberranzan and Matron Baenre's son. His position stands partly outside the priestess hierarchy, making his response to the disruption of divine and arcane magic important to the balance among the city's houses.",
+            "id": "gromph-baenre",
+            "name": "Gromph Baenre",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The matron of House Oblodra and Matron Baenre's most dangerous internal rival. Her family's psionic powers do not depend on the forms of magic failing across the realms, giving her leverage while other drow houses are suddenly weakened.",
+            "id": "k-yorl-odran",
+            "name": "K'yorl Odran",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The calculating leader of Bregan D'aerthe. He provides scouts and fighters to the Baenre campaign while continuing to treat information and an intact mercenary company as more valuable than any single victory.",
+            "id": "jarlaxle",
+            "name": "Jarlaxle",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A dwarf battlerager whose fierce loyalty to Bruenor is expressed through spiked armor and direct charges. Pwent gathers similarly reckless warriors into a unit well suited to breaking crowded formations in the hall's narrow approaches.",
+            "id": "thibbledorf-pwent",
+            "name": "Thibbledorf Pwent",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young barbarian leader among the people settled near Mithral Hall. He admires Wulfgar's strength and legacy, and the absent hero's warhammer has become a symbol of the authority and identity Berkthgar wants for his tribe.",
+            "id": "berkthgar",
+            "name": "Berkthgar",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The ruler of Silverymoon, a powerful wizard and an old friend of Drizzt and Bruenor. She understands that the fall of Mithral Hall would threaten every northern realm and helps turn personal friendship into a broader alliance.",
+            "id": "alustriel-silverhand",
+            "name": "Alustriel Silverhand",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior dwarf commander from Citadel Adbar who brings trained soldiers and long military experience to the defense of Mithral Hall. He respects Bruenor's claim and treats the invasion as a threat to the northern dwarven kingdoms together.",
+            "id": "dagna",
+            "name": "Dagna",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An inventive and unpredictable wizard of the Harpell family, long friendly with the companions. His magic can be extremely useful when it works as intended, though a widespread magical crisis makes experimentation even less reliable than usual.",
+            "id": "harkle-harpell",
+            "name": "Harkle Harpell",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "siege-of-darkness"
+      },
+      "recaps": {
+        "ending": "The allied defenders hold Mithral Hall through the main drow assault, using the dwarves' command of the tunnels and support from the northern settlements to prevent Matron Baenre from turning superior numbers into a decisive breakthrough. The instability in magic passes, but it has already transformed the balance within Menzoberranzan: House Oblodra has been destroyed, and Baenre has led the city into a costly surface war. In the final fighting Matron Baenre is killed. Her death breaks the authority holding the invasion together, and the surviving drow withdraw into the Underdark rather than continue a campaign whose religious and political center has collapsed. Triel is positioned to inherit leadership of House Baenre, while Jarlaxle preserves enough of Bregan D'aerthe to survive the defeat. Bruenor remains king of an independent Mithral Hall, and the alliances forged for its defense leave the northern realms stronger. Drizzt has faced an army from his birthplace without losing the home he chose. He and Catti-brie remain together, still carrying Wulfgar's memory but no longer allowing grief alone to determine their future.",
+        "in_short": "Drizzt and Catti-brie return from Menzoberranzan with warning that Matron Baenre is preparing to invade Mithral Hall. As Bruenor calls on Silverymoon, Citadel Adbar, the Harpells and nearby settlers, a crisis among the gods disrupts magic across the realms. In Menzoberranzan, House Oblodra's psionic abilities continue to function, allowing K'yorl Odran to challenge Baenre until the ruling house destroys her family and restores control. The drow army and its allied forces then march on Mithral Hall. Drizzt, Catti-brie, Bruenor, Regis, Guenhwyvar, Pwent and their allies fight through scouting actions and a full siege, exploiting the defenders' knowledge of the tunnels. The invasion fails, and Matron Baenre is killed in the final battle; without her authority the surviving drow retreat. Triel stands to lead House Baenre, while Bruenor keeps his kingdom. Drizzt and Catti-brie emerge together, their home preserved and the immediate threat from Menzoberranzan broken.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Drizzt Do'Urden escaped Menzoberranzan and built a life with Bruenor Battlehammer, Catti-brie, Wulfgar and Regis. The companions reclaimed Mithral Hall, but a drow raid led by Drizzt's sister Vierna ended with Wulfgar buried during a fight with a yochlol; only Aegis-fang was recovered, and his friends believe him dead. Drizzt then returned alone to Menzoberranzan, hoping to stop his past from threatening the hall again. Catti-brie followed and helped free him after Matron Baenre captured him for sacrifice. They escaped together, but learned that the city was preparing a much larger invasion. Their journey also freed Artemis Entreri from drow control and left Matron Baenre alive, still supported by the Spider Queen. Drizzt and Catti-brie are now racing home with the warning, while Bruenor's kingdom has only limited time to prepare.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Drizzt and Catti-brie bring confirmation that Menzoberranzan intends to attack Mithral Hall. Bruenor immediately begins fortifying the kingdom and assessing every tunnel by which an Underdark army might approach. The defenders include Clan Battlehammer, Pwent's battleragers and the barbarian community near the hall, where Berkthgar's desire to inherit Wulfgar's symbolic place creates tension over Aegis-fang. Drizzt and Catti-brie are also trying to understand a relationship formed in the shadow of Wulfgar's apparent death without treating his memory as either a command or an obstacle. Far below, Matron Baenre works to keep Menzoberranzan's houses committed to her war. Across both cities, divine and arcane powers begin behaving unpredictably as a wider crisis among the gods reaches the mortal world.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The failure of ordinary magic unsettles Menzoberranzan's hierarchy. Priestesses who derive authority from divine favor cannot rely on their spells, and wizards face disruptions of their own. House Oblodra's psionic powers remain effective, giving K'yorl Odran an opening to defy Matron Baenre and threaten the political order behind the invasion. Jarlaxle watches the changing balance while preserving Bregan D'aerthe's options. On the surface, Bruenor's appeals produce a coalition: aid comes from Silverymoon, Citadel Adbar, Longsaddle and nearby peoples who understand that a drow victory would not stop at one dwarven hall. Dwarves, barbarians, human soldiers and wizards begin coordinating defenses despite different customs and old suspicions, while Drizzt scouts the approaches the invaders are most likely to use.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Matron Baenre survives the magical crisis and turns against the rival who used it most openly. House Oblodra is destroyed, removing K'yorl Odran and warning the other houses that internal rebellion is more dangerous than obedience. With the city's forces again under a single command, the invasion moves through the Underdark toward Mithral Hall, supported by troops gathered or coerced along the way. The defenders conduct scouting actions and prepare layered positions instead of waiting behind one gate. Drizzt's knowledge of drow tactics helps identify feints and concealed routes; Catti-brie's bow covers passages that would otherwise be impossible to hold, and Regis looks for weaknesses in the loyalty of Baenre's lesser allies. The first major clashes show that the hall can resist, but also that the attacking army is large enough to absorb serious losses.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The campaign becomes a full siege. Drow units press through the lower approaches while their allies test the outer defenses, forcing Bruenor to move soldiers between several threatened fronts. Pwent's battleragers are most effective where the tunnels compress the enemy, and the reinforcements from the northern realms prevent the attackers from isolating Clan Battlehammer. Drizzt and Guenhwyvar strike at command links and scouts, Catti-brie uses Taulmaril to control long lines of approach, and Regis helps turn fear and divided loyalties against forces that do not share the drow's purpose. Matron Baenre continues forward because retreat would expose weakness to every surviving house in Menzoberranzan. The defenders are exhausted and take severe losses, but the hall has not fallen, and the drow coalition is becoming harder to hold together as its promised quick victory disappears.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The defenders hold the crucial passages and turn the final assault into a costly failure. Dwarven knowledge of Mithral Hall, combined with the allied forces outside and within it, prevents the drow from converting numbers and surprise into control of the kingdom. Matron Baenre dies in the last stage of the battle. Her death removes the commander and political authority binding the invasion together, and the surviving drow retreat toward Menzoberranzan. Jarlaxle preserves what he can of Bregan D'aerthe, while Triel is left positioned to inherit House Baenre in a city weakened by both the war and the destruction of House Oblodra. Bruenor remains king, and the alliances formed around his hall have survived their first great test. Drizzt and Catti-brie keep the home the drow meant to take, accepting a future together without forgetting Wulfgar, whom they still believe died beneath Mithral Hall.",
+            "through": {
+              "chapter": 25
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "siege-of-darkness"
+      }
+    },
     "silence": {
       "characters": {
         "characters": [

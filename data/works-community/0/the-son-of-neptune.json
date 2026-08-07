@@ -278,6 +278,223 @@
         "work": "the-song-of-achilles"
       }
     },
+    "the-sorcerer-in-the-north": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A newly qualified Ranger receiving his first independent posting after years as Halt's apprentice. Will is observant, resourceful and eager to prove that he can manage a fief without his mentor beside him, although his youth makes some people underestimate him.",
+            "id": "will",
+            "name": "Will",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Will's former mentor, a legendary Ranger whose dry manner conceals deep concern for his old apprentice. He attends Will's graduation and remains a trusted source of advice even though Will must now work on his own.",
+            "id": "halt",
+            "name": "Halt",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Commandant of the Ranger Corps and one of Halt's oldest friends. He gives Will his silver oakleaf and assigns him to Seacliff Fief, where a quiet posting should let the new Ranger settle into his responsibilities.",
+            "id": "crowley",
+            "name": "Crowley",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young Courier and Will's childhood friend from Redmont. Intelligent, poised and skilled at reading people, Alyss serves in the diplomatic corps trained by Lady Pauline while Will begins his Ranger career.",
+            "id": "alyss",
+            "name": "Alyss Mainwaring",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Will's small, shaggy Ranger horse and experienced partner. Tug responds to an extensive set of commands and often seems to anticipate Will's intentions before they are spoken.",
+            "id": "tug",
+            "name": "Tug",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The lord of Seacliff Fief, Will's first posting as a full Ranger. He receives the young Ranger courteously and gives him room to inspect the neglected local defences.",
+            "id": "baron-ergell",
+            "name": "Baron Ergell",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A scarred stray dog whose former owner treated her brutally. She attaches herself to Will after he intervenes, proving both fiercely loyal and unusually responsive to training.",
+            "id": "shadow",
+            "name": "Shadow",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A violent fugitive encountered near Seacliff. He is dangerous to animals and people alike, and his movements give Will an early test of the tracking and weapons skills he must now use without supervision.",
+            "id": "john-buttle",
+            "name": "John Buttle",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Skandian skirl leading a wolfship crew on a coastal raid. Gundar is a formidable seaman and fighter, but he respects nerve and cleverness even in an opponent.",
+            "id": "gundar-hardstriker",
+            "name": "Gundar Hardstriker",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The ailing lord of Castle Macindaw. Once a steady ruler of the northern fief of Norgate, Syron has been struck by a mysterious sickness while rumours of sorcery spread through his lands.",
+            "id": "lord-syron",
+            "name": "Lord Syron",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Lord Syron's son and acting master of Macindaw. Orman is abrupt, suspicious and widely disliked, which makes the stories accusing him of dark practices easy for the castle household to believe.",
+            "id": "orman",
+            "name": "Orman",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Orman's cousin and a popular senior figure at Macindaw. Friendly, open and skilled with soldiers, Keren presents a sharp contrast to Orman's secretive manner and readily offers help to the visiting jongleur.",
+            "id": "keren",
+            "name": "Keren",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Orman's slight, anxious secretary. Xander is devoted to his master and handles much of the work created by Syron's illness, despite having little influence among the castle's warriors.",
+            "id": "xander",
+            "name": "Xander",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Malkallam"
+            ],
+            "description": "A healer living in the feared Grimsdell Wood. Local stories call him Malkallam and credit him with supernatural powers, but Will approaches the rumours as a Ranger looking for practical explanations.",
+            "id": "malcolm",
+            "name": "Malcolm",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A huge, badly disfigured man living among Malcolm's protected community in Grimsdell Wood. His size frightens strangers, while his careful treatment of the vulnerable people around him suggests a gentler nature.",
+            "id": "trobar",
+            "name": "Trobar",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-sorcerer-in-the-north"
+      },
+      "recaps": {
+        "ending": "Will discovers that there is no sorcerous attack on Macindaw. Malcolm is a healer sheltering people whom superstition has driven out, and Orman has secretly been seeking his help for Syron. The real conspiracy belongs to Keren, who has encouraged fear of Orman while poisoning both Syron and his son. Will gets the stricken Orman and Xander out through a hidden route and takes them to Malcolm, but Alyss remains inside the castle so their investigation will not appear to have collapsed. Keren moves before she can escape: he seizes Macindaw with loyal men, takes Alyss prisoner and prepares to surrender the stronghold to a Scotti force. He also possesses a blue gemstone that can weaken Alyss's resistance and force information from her. Will is outside with only a small group of allies, while the castle commanding the northern route is in enemy hands. The book closes on that unresolved siege state, leading directly into The Siege of Macindaw.",
+        "in_short": "Newly qualified as a Ranger, Will is posted to Seacliff, where he exposes poor defences and turns back a Skandian raid through preparation and bluff. Crowley then gives him a covert assignment in Norgate: posing as a jongleur, he must investigate rumours that sorcery has struck Castle Macindaw. Lord Syron lies mysteriously ill, his unpopular son Orman is blamed, and Orman's charming cousin Keren appears to be the household's natural leader. Alyss arrives as a Courier to support Will's inquiry. Will eventually learns that the supposed sorcerer Malkallam is Malcolm, a healer sheltering outcasts, and that Orman has been consulting him in hope of saving Syron. Keren is the true conspirator. He poisons Orman, captures the castle and holds Alyss, intending to admit Scotti invaders. Will escapes with Orman and Xander to Malcolm's refuge, but Macindaw and Alyss remain in Keren's hands when the story ends.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Will, an orphan raised at Castle Redmont, became apprentice to the Ranger Halt and helped stop the rebel lord Morgarath. During the war that followed, Will and a girl he knew as Evanlyn burned a bridge intended for Morgarath's army but were captured by the Skandian jarl Erak. Evanlyn was really Princess Cassandra, King Duncan's daughter. Halt and Horace followed the captives north. After Erak helped Will and Cassandra escape slavery, the four Araluens discovered that the Temujai were preparing to invade Skandia. They warned the Skandians and formed an alliance with them. Halt and Will trained freed Araluen slaves as archers, and their combined force defeated the invasion. The new peace ended generations of raiding and brought the Araluens home. Will has since completed his apprenticeship and is ready to receive the silver oakleaf of a full Ranger.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Will receives his silver oakleaf and leaves the familiar support of Redmont for his first posting at Seacliff Fief. The quiet coastal assignment seems almost disappointingly routine, but inspection reveals that the garrison has grown careless. Will has to establish his authority despite being younger than many of the soldiers he is advising. He also intervenes when he finds a dog being mistreated and gains a wary new companion. These early days force him to act as the fief's Ranger rather than as Halt's apprentice, making his own judgements about people, discipline and danger.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Will's concern about Seacliff's readiness proves justified when Gundar Hardstriker's Skandians approach the coast. With too few dependable troops for a conventional defence, Will uses preparation, concealment and deception to make the raiders believe they face a stronger force. The confrontation ends without Seacliff being overrun, and Gundar comes to respect the young Ranger who outthought him. Will has demonstrated that he can protect a fief independently. The apparent success of his first assignment is followed by a more secretive summons from the Ranger Corps, one requiring skills beyond open scouting and defence.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Will travels north into Norgate disguised as a wandering jongleur. Castle Macindaw controls an important route near the Scotti border, and its lord, Syron, has fallen into an unexplained illness while the district fills with tales about a sorcerer called Malkallam. Syron's son Orman now governs the castle. His cold, suspicious behaviour has made him the obvious target of the rumours, while his cousin Keren appears friendly and capable. Will enters the household as an entertainer so he can observe both men without announcing that the Ranger Corps is investigating. Alyss is also sent north in her Courier role, giving the mission a second trained observer.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Will and Alyss compare what they have learned at Macindaw. The evidence around Syron's sickness and the supposed supernatural events does not fit the popular story neatly, and Orman's hostility may conceal fear rather than guilt. Will examines the countryside and the stories surrounding Grimsdell Wood, while Alyss uses her formal standing as a Courier to watch the relationships inside the castle. Keren continues to seem more approachable than his cousin, but Will's training has taught him not to mistake popularity for proof. The inquiry increasingly points away from magic and toward a planned human deception.",
+            "through": {
+              "chapter": 27
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In Grimsdell Wood, Will finds that Malkallam is Malcolm, a skilled healer rather than a sorcerer. Malcolm shelters people rejected because illness or injury makes them objects of fear, including the imposing but gentle Trobar. Orman has been visiting secretly because he hopes Malcolm can identify and cure Syron's illness. The secrecy that made Orman look guilty was an attempt to protect that effort from local superstition. With the central accusation overturned, Will knows someone has deliberately used the rumours to isolate Orman and make a transfer of power at Macindaw seem welcome.",
+            "through": {
+              "chapter": 33
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Keren is exposed as the conspirator. He has used poison and fear to incapacitate Syron, discredit Orman and prepare Macindaw for seizure, with Scotti forces ready to benefit once the castle is his. When Orman is poisoned as well, Will and Xander move him out by a concealed route and reach Malcolm's refuge, where the healer can keep him alive. Alyss stays behind to preserve their cover but is captured when Keren takes control of the stronghold. His blue gemstone helps him place her in a suggestible trance, threatening both her safety and everything she knows about Will's plans. The supposed sorcery has been explained, but that leaves a military crisis: Keren holds Macindaw and Alyss, Orman is gravely ill, and Will is outside the walls without enough men to retake the castle. The story ends at this cliffhanger.",
+            "through": {
+              "chapter": 38
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-sorcerer-in-the-north"
+      }
+    },
     "the-sparrow": {
       "characters": {
         "characters": [

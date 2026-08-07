@@ -3577,6 +3577,147 @@
         "work": "from-russia-with-love"
       }
     },
+    "from-the-earth-to-the-moon": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The respected president of Baltimore's Gun Club, an association of engineers and artillery specialists left without a common project after the American Civil War. Methodical, persuasive, and ambitious, he proposes applying the club's knowledge to sending a projectile to the Moon.",
+            "id": "impey-barbicane",
+            "name": "Impey Barbicane",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "J. T. Maston"
+            ],
+            "description": "The Gun Club's energetic secretary, a mathematician and artillery enthusiast who lost a hand in war and uses a metal hook. Fiercely loyal to Barbicane and the lunar project, he approaches every technical challenge with absolute confidence.",
+            "id": "jt-maston",
+            "name": "J. T. Maston",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior member of the Gun Club and veteran artillery officer. He contributes practical experience to the debates over the enormous cannon, its projectile, and the powder required for the proposed lunar shot.",
+            "id": "colonel-blomsberry",
+            "name": "Colonel Blomsberry",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A major and Gun Club member with expertise in explosives. He helps Barbicane's committees calculate how much propellant the lunar projectile will require and how its force can be controlled.",
+            "id": "major-elphinstone",
+            "name": "Major Elphinstone",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Philadelphia engineer known for developing armor plate and for a long professional rivalry with Barbicane's artillery. He subjects the lunar cannon to skeptical calculations and public wagers, becoming the project's most prominent opponent.",
+            "id": "captain-nicholl",
+            "name": "Captain Nicholl",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The engineer placed in charge of excavating the immense shaft at Stones Hill. He organizes the workforce and machinery needed to turn Barbicane's plans for the Columbiad into a physical structure.",
+            "id": "murchison",
+            "name": "Murchison",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Michel Ardan"
+            ],
+            "description": "A celebrated French adventurer who sends the Gun Club a startling request: replace the solid lunar shell with a hollow projectile and let him travel inside it. Charismatic, imaginative, and impatient with objections, he transforms a remote experiment into a proposed human voyage.",
+            "id": "michel-ardan",
+            "name": "Michel Ardan",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "protagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "from-the-earth-to-the-moon"
+      },
+      "recaps": {
+        "ending": "Barbicane, Nicholl, and Michel Ardan enter the adapted aluminum projectile with provisions, instruments, and two dogs. The Columbiad is fired from Stones Hill on the appointed December night before an immense crowd. The launch succeeds despite its tremendous force, but cloud cover prevents immediate observation. For several days no one knows whether the projectile has reached the Moon, fallen back, or been lost. When the sky clears, the Rocky Mountains telescope detects it near the Moon. The observers conclude that an unforeseen deviation has prevented impact and placed the projectile in an orbit around the Moon as a small satellite. The three travelers are alive or dead beyond any present means of rescue or communication; their condition is not established. The Gun Club's engineering feat has therefore sent people beyond Earth, but the expedition's human outcome remains unresolved at this book's close.",
+        "in_short": "After the American Civil War, Gun Club president Impey Barbicane proposes firing a projectile from Earth to the Moon. Astronomers provide the required conditions, international subscriptions finance the work, Florida is selected as the launch site, and a gigantic cannon called the Columbiad is cast into the ground. Armor engineer Captain Nicholl publicly disputes Barbicane's calculations. French adventurer Michel Ardan then asks to ride inside a hollow projectile. He reconciles the rivals and persuades both to join him. The capsule is fitted for three people, while a great telescope is built to observe it. Barbicane, Nicholl, and Ardan are launched on schedule. Clouds conceal the result until astronomers finally detect the projectile near the Moon. It has missed its intended impact and entered lunar orbit, leaving the travelers' survival and any means of return unknown.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "With the American Civil War over, the Baltimore Gun Club's artillery specialists find themselves without a shared purpose. Their president, Impey Barbicane, calls a meeting and proposes a project larger than any weapon: construct a cannon capable of sending a projectile to the Moon. J. T. Maston and the other members embrace the plan, and the announcement captures public attention. Barbicane asks the Cambridge Observatory for the astronomical and physical conditions required. Its reply states that the Moon can be reached only with a very high initial velocity, that the shot must be made when the Moon is at a suitable point in its orbit, and that the cannon must stand within a limited band of latitude. A precise launch date is fixed, turning the broad idea into an engineering deadline.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Gun Club's committees debate the projectile, the cannon, and the explosive charge. They choose a light metal for the shell, an enormous smooth-bore cannon to be sunk vertically into the earth, and a powerful propellant calculated to provide the required speed. The estimated cost exceeds the club's resources, so Barbicane appeals for subscriptions. Contributions arrive from many countries, making the enterprise international even though it is led from Baltimore. Technical confidence grows alongside public enthusiasm. The planned structure, soon known as the Columbiad, will be unlike any previous piece of artillery: its purpose is not combat but overcoming Earth's gravity and crossing the space to the Moon.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Captain Nicholl, an armor engineer and Barbicane's professional rival, publishes objections and wagers that the project will fail at successive stages. The choice of a launch site produces an intense competition between Texas and Florida because both contain eligible latitudes. Florida is selected, and surveyors choose Stones Hill. Under Murchison's direction, workers excavate a vast shaft, line it, and cast the Columbiad in place. The dangerous operation succeeds, followed by celebrations and preparations to bore and finish the weapon. As the practical obstacles fall, Nicholl loses several of his bets, but his opposition remains personal as well as technical. The Gun Club now possesses the cannon it promised; the remaining challenge is completing the projectile, loading the charge, and carrying out the shot on the fixed date.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A telegram arrives from the French adventurer Michel Ardan asking the Gun Club to replace the solid shell with a hollow projectile so that he can travel inside it. He crosses the Atlantic and reaches Florida to enormous public interest. At a mass meeting, Ardan defends the possibility of life beyond Earth and accepts the danger without claiming that every problem has been solved. Nicholl challenges Barbicane, and their rivalry moves toward a duel. Ardan intervenes, finds the men before either fires, and reconciles them by proposing that both accompany him. Nicholl accepts only after checking the project's calculations and recognizing that his remaining technical objections can be addressed. The original experiment has become a three-person expedition: Ardan, Barbicane, and Nicholl will all enter the projectile.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The projectile is redesigned as a furnished capsule with air, water, food, instruments, shock protection, and space for the three travelers and two dogs. The Gun Club also builds a powerful telescope in the Rocky Mountains so observers can follow the shot near the Moon. Preparations at Stones Hill become a public spectacle as the launch date approaches. Barbicane, Nicholl, and Ardan settle final calculations and arrangements, then enter the capsule. The Columbiad is loaded with its immense charge. At the appointed moment on December 1, the firing circuit is completed and the projectile is launched skyward with a force felt across the surrounding region. The engineering operation has succeeded in sending the capsule away from Earth, but its course and the travelers' condition cannot yet be observed.",
+            "through": {
+              "chapter": 26
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Clouds cover the sky after the launch, preventing the Rocky Mountains telescope from finding the projectile. Days of uncertainty follow while the Gun Club and the public consider possibilities ranging from success to a fall back to Earth. When the weather clears, observers finally detect a small object near the Moon. Their calculations indicate that the projectile was diverted from the intended path and did not strike the lunar surface. Instead, it has entered an orbit around the Moon and become a small artificial satellite. No observation can determine whether Barbicane, Nicholl, and Ardan are alive, and no rescue is possible with the means currently available. The shot has crossed the distance from Earth, but the travelers' fate and any continuation of their voyage remain unresolved.",
+            "through": {
+              "chapter": 28
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "from-the-earth-to-the-moon"
+      }
+    },
     "frostbite": {
       "characters": {
         "characters": [

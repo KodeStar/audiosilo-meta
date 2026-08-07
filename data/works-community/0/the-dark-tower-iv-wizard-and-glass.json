@@ -1735,6 +1735,235 @@
         "work": "the-dungeon-anarchists-cookbook"
       }
     },
+    "the-dying-of-the-light": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The skeleton detective leading the effort to recover Valkyrie and stop Darquesse. He is an Elemental, a former Dead Man and the former Lord Vile, prepared to use every part of that history against a threat stronger than he is.",
+            "id": "skulduggery-pleasant",
+            "name": "Skulduggery Pleasant",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The immensely powerful consciousness born from Valkyrie's true name. Valkyrie surrendered control to her to stop Charivari's warlocks, and Darquesse kept the body. She is now the catastrophe foreseen by the Sensitives and regards the world's attempts to oppose her as a challenge.",
+            "id": "darquesse",
+            "name": "Darquesse",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Skulduggery's partner, trapped within Darquesse after deliberately yielding control of her body. Her allies refuse to treat her as lost, even though reaching her means confronting a separate will with command of all her unrealised magical power.",
+            "id": "valkyrie-cain",
+            "name": "Valkyrie Cain",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Valkyrie's Reflection"
+            ],
+            "description": "An independent person created from Valkyrie's old reflection. Stephanie has lived with the Edgleys, formed a relationship with Fletcher and tried to build a moral life after secretly killing Carol. She now has to decide what she owes the original person whose place she took.",
+            "id": "stephanie-edgley",
+            "name": "Stephanie Edgley",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Teleporter helping Skulduggery's team move faster than Darquesse can anticipate. He cares for Stephanie as her own person while remaining determined to bring Valkyrie back.",
+            "id": "fletcher-renn",
+            "name": "Fletcher Renn",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A surviving Dead Man and an experienced fighter, grieving Ghastly and Anton while continuing the mission they died trying to protect. His loyalty to Skulduggery is strained by the scale of the risks now required.",
+            "id": "dexter-vex",
+            "name": "Dexter Vex",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A surviving Dead Man whose discipline gives him unexplained knowledge. He joins Skulduggery and Dexter in the pursuit of Darquesse, carrying the losses and betrayal that ended the old team.",
+            "id": "saracen-rue",
+            "name": "Saracen Rue",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Symbol mage and information broker helping hold Roarhaven together after Ravel's coup and the warlock attack. The collapse of the former leadership gives her influence over whatever system replaces it.",
+            "id": "china-sorrows",
+            "name": "China Sorrows",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The exposed architect of the Sanctuary war and murderer of Ghastly Bespoke and Anton Shudder. Darquesse has left him alive under a magical punishment, and his failed revolution offers information that his former allies may still need.",
+            "id": "erskine-ravel",
+            "name": "Erskine Ravel",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Valkyrie's friend, still controlled by the Remnant that has occupied her since the outbreak. She remains a superb swordswoman, and her bond with Billy-Ray Sanguine has outlasted the alliances around them.",
+            "id": "tanith-low",
+            "name": "Tanith Low",
+            "reveal": {
+              "chapter": 10
+            }
+          },
+          {
+            "description": "A killer able to pass through solid matter and the person most devoted to Tanith in her possessed state. His usual instinct for survival is increasingly at odds with his willingness to protect her.",
+            "id": "billy-ray-sanguine",
+            "name": "Billy-Ray Sanguine",
+            "reveal": {
+              "chapter": 10
+            }
+          },
+          {
+            "description": "A brilliant but amoral scientist whose knowledge of souls, bodies and magical anatomy may offer a way to separate what has become entangled inside Darquesse. Cooperation never makes Doctor Nye safe or trustworthy.",
+            "id": "doctor-nye",
+            "name": "Doctor Nye",
+            "reveal": {
+              "chapter": 28
+            }
+          },
+          {
+            "description": "The Nefarian Serpine of Mevolent's dimension. Still manipulative and lethal, he opposes Mevolent for reasons that can temporarily align with Skulduggery's search for a weapon capable of threatening Darquesse.",
+            "id": "nefarian-serpine",
+            "name": "Nefarian Serpine",
+            "reveal": {
+              "chapter": 42
+            }
+          },
+          {
+            "description": "Ruler of the parallel world in which he won the war. His forces possess weapons and knowledge unavailable in Valkyrie's reality, making entry into his domain both necessary and exceptionally dangerous.",
+            "id": "mevolent",
+            "name": "Mevolent",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The alternate Skulduggery who remained Lord Vile and serves Mevolent. His Necromancy makes him one of the few beings able to meet the Lord Vile hidden within Skulduggery on equal terms.",
+            "id": "lord-vile",
+            "name": "Lord Vile",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Valkyrie's young sister and the most vulnerable member of the Edgley family. She knows nothing of the magical identities and rivalries that make her a potential target.",
+            "id": "alice-edgley",
+            "name": "Alice Edgley",
+            "reveal": {
+              "chapter": 68
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-dying-of-the-light"
+      },
+      "recaps": {
+        "ending": "Skulduggery's allies recover Valkyrie and ultimately separate her from Darquesse, but Stephanie is killed in the struggle and Darquesse continues in a body of her own. Billy-Ray Sanguine dies protecting Tanith, and the Remnant is removed from her, restoring Tanith to herself. Erskine Ravel dies under the accelerated punishment Darquesse placed on him. Darquesse attacks Valkyrie's family and kills Alice, but Valkyrie recovers her sister's damaged soul and revives her; Alice will need years to become whole. The final plan exploits Darquesse's desire for a worthy challenge. A portal is opened to the Faceless Ones' dimension, Darquesse enters to fight them, and the portal is closed behind her. The world survives and China becomes Supreme Mage of the rebuilt Sanctuary order. Nefarian Serpine from the parallel world remains stranded in this reality. Grieving Stephanie, Sanguine and the wider destruction, Valkyrie leaves Ireland to recover, ending her partnership with Skulduggery for the time being while Alice lives and Darquesse remains beyond the closed portal.",
+        "in_short": "With Darquesse controlling Valkyrie's body, Skulduggery gathers the surviving Dead Men and their allies to recover Valkyrie and prevent the foretold destruction. Their search takes them back to Mevolent's dimension for a God-Killer weapon and brings that world's Nefarian Serpine into their reality. Stephanie confronts Darquesse and is killed, but the struggle helps Valkyrie return and Darquesse becomes physically separate. Darquesse grows stronger, kills Ravel and attacks the Edgley family, killing Alice; Valkyrie retrieves Alice's damaged soul and revives her. Elsewhere Billy-Ray Sanguine dies saving Tanith, whose Remnant possession is finally ended. Unable to defeat Darquesse directly, Skulduggery's side lures her through a portal to the Faceless Ones' dimension by offering opponents powerful enough to interest her, then closes the way. China becomes Supreme Mage as the magical world rebuilds. Valkyrie, burdened by the deaths and by Alice's incomplete recovery, leaves Ireland and Skulduggery behind.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Valkyrie's sealed true name is Darquesse, the being Sensitives have seen destroying the world. Skulduggery once served Mevolent as Lord Vile and can still use the armour. Erskine Ravel engineered the war of the Sanctuaries as part of a plan for sorcerers to rule mortals, murdering Ghastly Bespoke and Anton Shudder when they uncovered him. When Charivari's warlocks attacked Roarhaven, Valkyrie deliberately surrendered her body to Darquesse so Darquesse could stop them. Darquesse won and refused to return control. Tanith remains possessed by a Remnant, Valkyrie's former reflection lives independently as Stephanie, and Valkyrie is now trapped inside the enemy her friends must stop.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Darquesse is free in Valkyrie's body and testing the extent of her power while Skulduggery organises the pursuit. He refuses to accept that Valkyrie is gone, even though any rescue must separate her consciousness from an entity who can overwhelm Sanctuary forces. Roarhaven is still recovering from Ravel's coup and Charivari's attack. China helps stabilise its leadership, and the exposed Ravel remains alive under Darquesse's magical punishment. Stephanie, Fletcher, Dexter Vex and Saracen Rue join a network of allies searching for a weapon or procedure that can recover Valkyrie without giving Darquesse time to fulfil the visions.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The pursuit confirms that Darquesse is growing into her abilities faster than her enemies can devise counters. Valkyrie's continued existence within her offers hope but no simple route for reaching her. Skulduggery explores both magical science and the few weapons said to be capable of killing beings at Darquesse's level. Doctor Nye's knowledge may help with the entanglement of body and soul, but relying on Nye brings its own danger. Stephanie accepts that recovering Valkyrie may threaten the independent life she has built, including her relationship with Fletcher and her place in the Edgley family.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A usable God-Killer must be taken from Mevolent's parallel world. Skulduggery's team crosses into the dictatorship, where Nefarian Serpine again becomes an expedient ally and Mevolent's forces close around them. The world's Lord Vile is the version of Skulduggery who never abandoned the armour, forcing Skulduggery to confront his old identity as more than memory. The raid secures a weapon that can matter against Darquesse, but the escape is costly and unstable, and the parallel Serpine is carried into Valkyrie's reality with the survivors.",
+            "through": {
+              "chapter": 42
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The recovered God-Killer gives Skulduggery's side a weapon Darquesse must respect, but using it without killing Valkyrie remains the central problem. Stephanie takes an increasingly direct role in the attempt to reach the original consciousness inside Darquesse, accepting that the solution may cost the independent life she built. Darquesse continues gaining power and freedom from ordinary physical limits. The pursuit has shifted from finding her to creating the precise circumstances in which Valkyrie can resist from within while her allies act from outside.",
+            "through": {
+              "chapter": 56
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The effort to recover Valkyrie becomes a direct struggle with Darquesse, whose increasing strength makes every delay more dangerous. Stephanie places herself at the centre of the rescue despite the risk to her own existence, and Valkyrie begins to gain the opening her allies have been trying to create. Ravel's magically accelerated punishment is nearing its end, while Tanith and Billy-Ray Sanguine are drawn into the final confrontations. Darquesse also turns her attention toward the Edgleys, making the ordinary family Valkyrie spent years shielding from magic part of the crisis.",
+            "through": {
+              "chapter": 68
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Stephanie is killed in the struggle with Darquesse, but her reflected nature helps create the opening through which Valkyrie returns. Darquesse continues as a physically separate being, so the rescue succeeds without removing the threat. Ravel dies as Darquesse's accelerated punishment runs its course. Billy-Ray Sanguine dies protecting Tanith, and the Remnant is removed from her, restoring Tanith to herself. Direct force still cannot reliably stop Darquesse. Skulduggery and the survivors therefore prepare a dimensional trap aimed at opponents powerful enough to hold her attention: the Faceless Ones in their dead world.",
+            "through": {
+              "chapter": 80
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The final plan succeeds by giving Darquesse a challenge she values more than destroying the people before her. A portal is opened to the Faceless Ones' dimension, and Darquesse crosses to confront the dark gods. The way is closed behind her, removing her from the world without requiring anyone to overpower her. Alice is alive but her restored soul needs years to heal. Stephanie and Billy-Ray Sanguine are dead, Tanith is herself again, and Ravel has died under Darquesse's punishment. China Sorrows becomes Supreme Mage as the Sanctuaries rebuild, while the parallel Nefarian Serpine is left in this reality. Valkyrie cannot resume her former life after the destruction and losses. She leaves Ireland and steps away from Skulduggery, who lets his partner go despite not knowing when she will return.",
+            "through": {
+              "chapter": 89
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-dying-of-the-light"
+      }
+    },
     "the-eighth-harmony": {
       "characters": {
         "characters": [
