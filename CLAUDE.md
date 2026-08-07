@@ -40,7 +40,9 @@ handling.
 
 ```sh
 cd ~/dev/audiosilo/audiosilo-meta
-go build ./... && go vet ./... && go test -race ./... && golangci-lint run
+go build ./... && go vet ./... && go test -race -timeout 45m ./... && golangci-lint run
+# -timeout 45m: pkg/check's real-data test takes ~13min under -race at the
+# current catalogue size, past Go's 10min default (CI runs the suite without -race)
 go run ./cmd/metacheck            # validate the data tree
 go run ./cmd/metafmt --check      # canonical formatting (--write to fix)
 go run ./cmd/metabuild -o meta.sqlite   # build the release artifact
