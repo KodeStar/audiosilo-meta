@@ -1833,6 +1833,197 @@
         "work": "the-subtle-knife"
       }
     },
+    "the-surgeons-mate": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A Royal Navy post-captain recovering from the wound he received during Java's defeat. Newly freed from American captivity, he remains an energetic fighting officer whose instinct for seamanship is stronger than his patience with politics or secrecy.",
+            "id": "jack-aubrey",
+            "name": "Jack Aubrey",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Jack's close friend and surgeon, also a naturalist and a British intelligence agent. He has escaped Johnson's pursuit in Boston and is reunited with Diana Villiers, but his secret work continues to place both of them in danger.",
+            "id": "stephen-maturin",
+            "name": "Stephen Maturin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Sophia Aubrey's cousin, recently brought out of Boston after leaving the American intelligence chief Johnson. Independent and socially assured, she and Stephen have renewed their long, difficult attachment without yet deciding what form their future will take.",
+            "id": "diana-villiers",
+            "name": "Diana Villiers",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Commander of HMS Shannon, whose disciplined crew captured Chesapeake and carried Jack, Stephen, and Diana to Halifax. He is recovering from the severe head wound he received in that action.",
+            "id": "philip-broke",
+            "name": "Captain Philip Broke",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The young American who followed Louisa Wogan aboard Leopard and later helped Stephen in Boston. His gratitude and local connections contributed to the fugitives' escape, and he remains friendly to them in Halifax despite the war.",
+            "id": "michael-herapath",
+            "name": "Michael Herapath",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A younger naval officer long known to Jack, lively, capable, and personally loyal. He helps Jack and his companions during the passage back into British service.",
+            "id": "william-babbington",
+            "name": "William Babbington",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jack's wife and Diana's cousin, waiting in England with the Aubrey children. Her affection and practical domestic loyalty give Jack a secure home even when naval employment repeatedly takes him away.",
+            "id": "sophia-aubrey",
+            "name": "Sophia Aubrey",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior figure in British naval intelligence and Stephen's principal official contact. He values Stephen's judgment and assigns him work whose political object cannot safely appear in ordinary naval orders.",
+            "id": "sir-joseph-blaine",
+            "name": "Sir Joseph Blaine",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Jagiello"
+            ],
+            "description": "A handsome young Lithuanian cavalry officer attached to Stephen's Baltic mission. Cheerful, brave, and linguistically useful, he adapts readily to naval life and accompanies Stephen ashore where a conventional British officer would attract attention.",
+            "id": "poniatowski-jagiello",
+            "name": "Poniatowski Jagiello",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Catalan commander of an isolated garrison in the Baltic. His men have broken with French authority, leaving him to balance their safety, his political convictions, and the uncertain value of British promises.",
+            "id": "ramon-dullastret",
+            "name": "Ramon d'Ullastret",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A French intelligence officer involved in the treatment of important British prisoners. He understands that Stephen may be more than a naval surgeon and approaches the captives as sources of political information rather than ordinary prisoners of war.",
+            "id": "duhamel",
+            "name": "Duhamel",
+            "reveal": {
+              "chapter": 9
+            }
+          },
+          {
+            "description": "Jack's trusted coxswain, a former prizefighter and exceptionally able seaman whose loyalty has survived changes of ship and fortune.",
+            "id": "barret-bonden",
+            "name": "Barret Bonden",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jack's sharp-tongued steward, protective of his captain's possessions and routines and accustomed to serving through disorder at sea.",
+            "id": "preserved-killick",
+            "name": "Preserved Killick",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-surgeons-mate"
+      },
+      "recaps": {
+        "ending": "After Ariel is driven ashore and lost, Jack, Stephen, and Jagiello are taken to Paris. Their captors know that Stephen is not merely a naval surgeon and try to extract intelligence from him, making captivity more dangerous than an ordinary exchange of prisoners. Duhamel, alienated from the methods and politics of his own service, helps arrange their escape. The three prisoners are moved out through a covert route and eventually cross back into British protection. Jack has lost another ship but survived an operation whose Baltic object was achieved before the wreck. Stephen returns alive despite the exposure of his intelligence identity to the French, a danger that will follow him into later work. Diana remains his wife in England, so the book closes with their marriage intact, Jack free to face the official consequences of Ariel's loss, and both friends home but no longer able to assume that Stephen's work is secret from enemy intelligence.",
+        "in_short": "Following their escape from Boston, Jack Aubrey, Stephen Maturin, and Diana Villiers return to Britain. Stephen and Diana marry, while Jack receives command of Ariel for a concealed Baltic operation. Stephen and the Lithuanian officer Jagiello make contact with an isolated Catalan garrison that has turned against French authority, and British naval support allows the men to be removed from danger. On the return voyage Ariel is pursued, forced ashore, and lost; Jack, Stephen, and Jagiello become prisoners and are sent to Paris. French intelligence recognizes Stephen as an agent and subjects him to a more dangerous examination than his naval status would warrant. With help from the disillusioned French officer Duhamel, the prisoners escape and regain British protection. Jack has accomplished the mission but lost his ship, while Stephen returns to Diana with his intelligence identity exposed to the enemy.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Jack Aubrey and Stephen Maturin survived the loss of Java to USS Constitution and captivity in Boston. Stephen saved Jack's shattered arm, found Diana Villiers living under the influence of the American intelligence chief Johnson, and learned that Johnson's service was closing around him. With help from local allies, Stephen escaped with Jack and Diana to HMS Shannon. Shannon then captured Chesapeake and carried them toward Halifax. Jack is recovering, while Stephen and Diana have renewed their attachment after years apart.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In Halifax, Jack, Stephen, and Diana are safe under British authority after their flight from Boston and Shannon's victory over Chesapeake. Jack's wounded arm is improving, though the recent action and imprisonment have interrupted his career. Stephen and Diana must now decide whether their reconciliation can become a settled life rather than another temporary escape. Their return passage is still exposed to the Anglo-American war, and Jack again helps meet a maritime threat with the professional confidence that injury and captivity have not diminished. The party reaches Britain, bringing Jack back within Admiralty reach and giving Stephen and Diana the first genuine opportunity to resolve their future together.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jack, Stephen, and Diana have returned from North America. Stephen and Diana marry, ending the immediate uncertainty created by her flight from Johnson, although their long history makes marriage a beginning rather than a simple resolution. Jack is reunited with Sophia and his family but soon receives another command. He takes the sloop Ariel on a mission whose naval orders conceal Stephen's political purpose in the Baltic. Poniatowski Jagiello joins Stephen as a useful companion and interpreter. Their objective concerns Catalan troops isolated far from home after turning against French authority; Stephen must make contact and find a workable settlement while Jack provides transport, protection, and the appearance of a conventional naval operation.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ariel has carried Stephen and Jagiello into the Baltic under cover of Jack's naval mission. They reach the isolated Catalan garrison commanded by Ramon d'Ullastret. The soldiers' break with the French leaves them vulnerable to enemies around them and dependent on promises from distant powers. Stephen's political sympathies and knowledge of Catalonia help him establish trust, while Jack must solve the practical problem of approaching, supporting, and removing men from a defended position in restricted waters. The operation succeeds in bringing the garrison out of immediate danger. With the political object substantially achieved, Ariel begins the hazardous return passage, where enemy pursuit and difficult coastal navigation replace negotiation as the main threats.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Stephen and Jagiello have completed their work with the Catalan garrison, and Ariel is returning from the Baltic. French pursuit and worsening conditions press Jack toward a dangerous coast. His effort to preserve the ship and company ends when Ariel is driven ashore and cannot be saved. Jack, Stephen, Jagiello, and other survivors fall into French hands. Because the ship was engaged in a concealed political operation, Stephen cannot rely on being treated simply as a surgeon captured during ordinary naval service. The prisoners are sent toward Paris, while French officials begin separating Jack's professional value from Stephen's potential value as an intelligence source.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Baltic operation succeeded, but Ariel was wrecked during the return and Jack, Stephen, and Jagiello were imprisoned in Paris. French intelligence identifies Stephen as a British agent and attempts to force information from him. The danger confirms that Johnson's pursuit in Boston was not an isolated episode: Stephen's concealed role is now known to another enemy service. Duhamel, a French officer increasingly unwilling to support the treatment of the prisoners, becomes the means of escape. Jack, Stephen, and Jagiello leave confinement through a covert route and make their way out of France. They regain British protection alive. Jack must account for Ariel's loss, but his secret mission had already achieved its object; Stephen returns to his new wife Diana with his identity compromised and future intelligence work made more perilous.",
+            "through": {
+              "chapter": 11
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-surgeons-mate"
+      }
+    },
     "the-tenth-muse": {
       "characters": {
         "characters": [
@@ -2260,6 +2451,195 @@
           }
         ],
         "work": "the-tenth-muse"
+      }
+    },
+    "the-thousand-orcs": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A dark elf ranger traveling north with the Companions of the Hall. Drizzt reads the growing pattern of attacks as something more dangerous than ordinary raiding and repeatedly ranges ahead to learn what is moving through the wild country.",
+            "id": "drizzt-do-urden",
+            "name": "Drizzt Do'Urden",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "King of Mithral Hall and the stubborn center of the companions. Bruenor's road north becomes a defense of threatened settlements and a test of whether the divided powers of the region will answer an organized invasion together.",
+            "id": "bruenor-battlehammer",
+            "name": "Bruenor Battlehammer",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Bruenor's adopted daughter and Drizzt's partner, carrying the enchanted bow Taulmaril. Catti-brie is an experienced scout and archer who can hold difficult ground while Drizzt works beyond the main company.",
+            "id": "catti-brie",
+            "name": "Catti-brie",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Bruenor's foster son, newly reunited with the companions after years of trauma and isolation. Wulfgar carries Aegis-fang again, but his responsibilities to Delly and Colson now matter as much as reclaiming his old place among the heroes of Icewind Dale.",
+            "id": "wulfgar",
+            "name": "Wulfgar",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The halfling member of the Companions of the Hall. Regis brings a negotiator's instincts and an enchanted ruby pendant to a group otherwise inclined to meet danger with weapons, though the widening war gives him fewer safe routes around a fight.",
+            "id": "regis",
+            "name": "Regis",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Wulfgar's partner and Colson's practical caregiver. Delly is building a family with a man still recovering from captivity and violence, and the journey north brings that fragile household into the orbit of his formidable old companions.",
+            "id": "delly-curtie",
+            "name": "Delly Curtie",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The orc king of Many-Arrows, ambitious enough to turn scattered tribes into an army. Obould seeks lasting power in the North and treats alliances with giants and hidden advisers as tools for a campaign far larger than a season of raids.",
+            "id": "obould-many-arrows",
+            "name": "Obould Many-Arrows",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A frost giant leader whose warriors give Obould's host the strength to break defenses ordinary orcs could not. Gerti enters the alliance for her own advantage and never mistakes cooperation with the orc king for submission to him.",
+            "id": "gerti-orelsdottr",
+            "name": "Gerti Orelsdottr",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A drow warrior traveling with the concealed dark-elf faction behind Obould's campaign. Tos'un is skilled with paired blades and willing to encourage surface powers to destroy one another while keeping his own allegiance out of sight.",
+            "id": "tos-un-armgo",
+            "name": "Tos'un Armgo",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A drow priestess working among the secret advisers attached to the orc host. Kaer'lic uses religious authority, magic and careful provocation to strengthen the invasion without allowing Obould to understand how much of his opportunity has been arranged for him.",
+            "id": "kaer-lic-suun-wett",
+            "name": "Kaer'lic Suun Wett",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Mirabar's sceptrana, a spellcaster and civic leader trying to protect a wealthy city whose human rulers and dwarf soldiers do not always value the same loyalties. Shoudra recognizes both the military danger and the political cost of ignoring it.",
+            "id": "shoudra-stargleam",
+            "name": "Shoudra Stargleam",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior shield dwarf of Mirabar who finds Bruenor's direct sense of duty more persuasive than the caution of distant officials. Torgar commands experienced fighters and must decide whether service to a city requires obedience to leaders who underestimate the war.",
+            "id": "torgar-hammerstriker",
+            "name": "Torgar Hammerstriker",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A gnome inventor attached to Mirabar's forces. Nanfoodle approaches fortifications and overwhelming enemies as practical problems, applying alchemy and engineering where conventional weapons cannot provide enough force.",
+            "id": "nanfoodle-buswilligan",
+            "name": "Nanfoodle Buswilligan",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-thousand-orcs"
+      },
+      "recaps": {
+        "ending": "Obould's combined orc and giant army overwhelms the defenses around Shallows and destroys the tower in which Bruenor, Catti-brie and Regis have been fighting. Drizzt, cut off outside, sees the ruin and concludes that his closest friends died beneath it. He leaves without learning that they escaped the apparent destruction and remain alive. The mistaken loss drives him away from cooperation and toward a solitary campaign of vengeance. Wulfgar, Delly and Colson are also alive, but the companions are scattered as the invasion rolls onward. Obould has proved that his host is not merely a large raiding band: it can defeat fortified positions, exploit divisions among the northern settlements and threaten Mithral Hall itself. Gerti's giants and the hidden drow advisers remain dangerous partners rather than loyal subjects, while Mirabar's dwarf soldiers and Shoudra have committed themselves more directly to the regional fight. The book closes with the war widening, the surviving companions unable to reach Drizzt, and Drizzt entering the next stage of the conflict under the false belief that he has nothing left to protect.",
+        "in_short": "The reunited Companions of the Hall travel north and discover that increasingly bold orc attacks form part of a planned invasion. King Obould Many-Arrows has united tribes, gained frost giant support under Gerti Orelsdottr and benefited from drow agents who want the surface powers at war. Drizzt scouts beyond the company while Bruenor, Catti-brie, Regis and Wulfgar help threatened communities resist. Mirabar's divided leadership delays a common response, but Shoudra Stargleam, Torgar Hammerstriker and Nanfoodle join the widening defense. Obould's numbers and giant strength isolate the companions around Shallows. When the defenders' tower is destroyed, Drizzt sees the collapse from outside and believes Bruenor, Catti-brie and Regis have been killed. They have actually survived the fall, as have Wulfgar, Delly and Colson elsewhere, but cannot tell him. Obould advances toward Mithral Hall while the grief-stricken ranger turns to a solitary war of revenge.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Drizzt, Catti-brie, Bruenor, Regis and Wulfgar are together again after Wulfgar's long separation, though reunion has not restored the old relationships unchanged. Wulfgar now travels with Delly Curtie and the child Colson, accepting a partner's and father's responsibilities alongside Aegis-fang. On the road north, the company finds signs of unusually coordinated orc activity: attacks are larger, scouts are disciplined and routes normally safe for caravans have become dangerous. Drizzt ranges ahead to read the enemy's movement while Bruenor treats every endangered traveler and settlement as part of the same problem. The evidence begins to suggest that the raiders are testing defenses rather than simply stealing what they can carry. Beyond the companions' view, King Obould Many-Arrows is gathering tribes beneath one command and offering them a campaign capable of changing who controls the northern frontier.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The companions' northward journey becomes a moving defense of roads and settlements as they encounter the edges of Obould's mobilization. The orc king has secured support from Gerti Orelsdottr's frost giants, giving his army siege power and mobility that the region's usual patrols are not prepared to meet. Drow agents, including Kaer'lic and Tos'un, remain concealed within the coalition and encourage its aggression for purposes Obould does not fully control. Mirabar has soldiers and wealth enough to matter, but its human authorities and shield dwarves disagree over how far their obligations extend beyond the city's immediate interests. Sceptrana Shoudra Stargleam sees a regional danger, while Torgar Hammerstriker and other dwarves respond strongly to Bruenor's insistence that delay will leave every community isolated in turn. Nanfoodle Buswilligan begins considering what alchemy and engineering can contribute against enemies too numerous for ordinary tactics.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Obould's host spreads across the frontier in separate forces that can destroy small defenses before neighboring powers agree to help. Drizzt and Catti-brie repeatedly strike at scouts and raiders, but each local success reveals more enemies behind the first line. Bruenor tries to turn shared danger into cooperation among settlements, Mirabarran soldiers and his own companions. Torgar's respect for Bruenor deepens as official caution becomes harder to defend, and Shoudra works to keep military necessity from becoming a complete political break within Mirabar. Wulfgar fights beside the family he once left while Delly and Colson remind him that survival, not glory, is the measure that matters now. Obould presents each victory as proof that the many tribes can win lasting land under his rule. Gerti's giants remain decisive, and the hidden drow continue to profit from an alliance whose members believe they are using one another.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The war reaches communities that cannot simply move out of Obould's path. Bruenor and his allies organize resistance while Drizzt scouts and attacks beyond the fixed defenses, forcing the companions to operate at increasing distance from one another. The enemy's size makes even a successful stand temporary: orcs can replace losses, giants can batter fortifications, and hidden advisers help direct pressure toward weak points. Mirabar's internal dispute produces real consequences as dwarf warriors choose active defense of the region over narrow obedience to officials who still hope the danger can be contained elsewhere. Shoudra and Nanfoodle attach their abilities to the field effort, adding magic and invention to Bruenor's fighters. Obould, meanwhile, is no longer merely assembling followers. He is learning to act as the ruler of a conquering people and to turn victories into loyalty, even as Gerti and the drow retain plans that do not depend on his long-term success.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Around Shallows, the companions and their allies are forced into a concentrated defense against an army that can surround the position and bring giants against its strongest structures. Drizzt works outside the central fortifications, cutting at the host and searching for a way to relieve pressure. Inside, Bruenor, Catti-brie and Regis help hold frightened defenders together while every retreat narrows the space left to them. Wulfgar's obligations divide his attention between the battle and keeping Delly and Colson from being swallowed by it. Obould's commanders accept heavy losses because the destruction of a visible stronghold will demonstrate that resistance is futile. The drow agents continue shaping events without exposing themselves as the campaign's authors, and Gerti's giants prepare to supply the force that orc numbers alone cannot. By the time Drizzt recognizes the final danger to the tower, enemy lines and the collapsing defense have cut him off from the friends within.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Obould's army breaks the defense of Shallows. Giant strength brings down the tower where Bruenor, Catti-brie and Regis made their stand, and Drizzt witnesses the destruction from outside the enemy lines. Unable to reach the ruin or find evidence of escape, he believes all three have died. In fact, they survive the apparent collapse and escape by a route hidden from him. Wulfgar, Delly and Colson also remain alive, but the scattered companions cannot reach Drizzt before grief turns him away. He abandons the restraint and shared purpose that normally define his fighting and begins treating every orc in Obould's host as an object of vengeance. The invasion has achieved more than a battlefield victory: northern forces are divided, Mithral Hall lies in its path and its most dangerous ranger now acts without reliable knowledge or allies. Obould advances with his orcs, Gerti's giants and the secret drow faction still joined in an unstable coalition, while Drizzt enters the wilderness convinced that the family he fought for is gone.",
+            "through": {
+              "chapter": 29
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-thousand-orcs"
       }
     },
     "the-three-musketeers": {

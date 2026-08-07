@@ -1321,6 +1321,162 @@
         "work": "the-outsiders"
       }
     },
+    "the-overlook": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An LAPD detective whose return to the department has put him back inside the institution he often distrusts. Now working homicide with a new partner, he treats the execution-style death of a medical specialist as a murder case even when federal agents recast it as an urgent terrorism investigation.",
+            "id": "harry-bosch",
+            "name": "Harry Bosch",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Bosch's younger partner in the LAPD homicide detail. He is conscientious and eager to establish himself, but the speed of the case and Bosch's habit of acting before explaining leave him struggling to remain an equal participant.",
+            "id": "ignacio-ferras",
+            "name": "Ignacio Ferras",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A medical physicist found shot to death at a Mulholland Drive overlook. His work gives him authorized access to radioactive cesium, making both his profession and his movements before the murder central to the investigation.",
+            "id": "stanley-kent",
+            "name": "Stanley Kent",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Stanley Kent's wife, found bound at the couple's home. She reports that masked intruders used her to force her husband to remove radioactive material from secure storage, an account that turns a homicide inquiry into a race to locate the cesium.",
+            "id": "alicia-kent",
+            "name": "Alicia Kent",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An FBI agent and former intimate of Bosch who previously worked with him on the pursuit of the Poet. She joins the federal response to the missing cesium and must balance their shared history against an investigation in which their agencies are competing for control.",
+            "id": "rachel-walling",
+            "name": "Rachel Walling",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The senior FBI agent directing the federal side of the case. He treats the stolen radioactive source as a national-security threat and restricts the LAPD's access when he believes ordinary homicide procedure could slow the search.",
+            "id": "jack-brenner",
+            "name": "Jack Brenner",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Maddie"
+            ],
+            "description": "Bosch's teenage daughter, who lives with her mother in Las Vegas. She is not involved in the investigation, but Bosch's growing place in her life gives him a personal future beyond the cases that have long consumed him.",
+            "id": "madeline-bosch",
+            "name": "Madeline Bosch",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Bosch's former wife and Maddie's mother, now living in Las Vegas. Her earlier career with the FBI and her difficult history with Bosch shape the family relationship he is trying to maintain after learning that he had a daughter.",
+            "id": "eleanor-wish",
+            "name": "Eleanor Wish",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A command officer overseeing Bosch's work. He expects the homicide team to protect the LAPD's interests without losing sight of the immediate danger created by the missing radioactive material.",
+            "id": "larry-gandle",
+            "name": "Larry Gandle",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-overlook"
+      },
+      "recaps": {
+        "ending": "Bosch's reconstruction shows that the apparent hostage operation was staged from inside the Kent household. Alicia Kent was not simply a captive: she cooperated with the scheme and helped create the account that sent law enforcement looking for outside terrorists. Stanley's murder and the removal of the cesium were parts of that deception, with the radioactive threat serving both as leverage and as a powerful diversion from the personal conspiracy around his death. Bosch follows the inconsistencies in Alicia's account and the physical evidence while the FBI concentrates on preventing a mass-casualty attack. The competing inquiries finally converge, the accomplice behind the shooting is stopped, and the cesium is recovered before it can be used against the public. The resolution vindicates Bosch's insistence that the dead man and the staged crime scene still mattered even under a terrorism alert. His conflict with the FBI, including Rachel Walling, leaves their personal connection strained, while Ferras has seen both the effectiveness and the cost of Bosch's unilateral way of working.",
+        "in_short": "Medical physicist Stanley Kent is found executed at a Mulholland Drive overlook, and radioactive cesium under his control has disappeared. His wife, Alicia, says intruders held her hostage and forced Stanley to obtain it. Bosch and his new partner, Ignacio Ferras, pursue the homicide while FBI agents Rachel Walling and Jack Brenner take command of what may be a radiological-terror plot. Bosch resists letting the emergency erase contradictions in the murder scene and Alicia's story. His investigation establishes that the hostage account was staged and that Alicia participated in the conspiracy surrounding her husband's death. The supposed outside attack was designed to direct investigators away from the people closest to Stanley. The killer is stopped and the cesium recovered before it can harm the city. Bosch solves the murder, but his refusal to defer to federal control damages his renewed relationship with Rachel and tests his partnership with Ferras.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Bosch returned to the LAPD after several years in retirement and joined Kiz Rider in the Open-Unsolved Unit. Their work closed the Rebecca Verloren and Marie Gesto cases, but the latter investigation left Rider injured and ready to end their partnership. Bosch remains a police detective, now with a growing relationship with his daughter Maddie and renewed contact with his former wife, Eleanor Wish. FBI agent Rachel Walling has worked closely with Bosch before, most recently during the pursuit of the serial killer known as the Poet; professional trust and personal intimacy have made their relationship complicated.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bosch and his new partner, Ignacio Ferras, are called to a Mulholland Drive overlook where medical physicist Stanley Kent has been shot twice in the head. The position of the body and the careful execution suggest a planned killing rather than a robbery. Bosch learns that Kent worked with radioactive materials used in medicine, raising questions about what he may have been carrying or doing before he was driven to the overlook. Federal interest arrives almost immediately, but Bosch begins with the victim, the crime scene, and the route that brought Kent there.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At the Kent home, Stanley's wife Alicia is found bound and reports that masked men held her hostage. According to her account, they forced Stanley to retrieve a radioactive cesium source by threatening to kill her. The material is now missing, creating the possibility that someone intends to build a device capable of contaminating a crowded part of Los Angeles. The FBI takes control of the threat response under Jack Brenner, with Rachel Walling among the agents. Bosch and Ferras are pushed toward the edge of their own homicide inquiry, but Bosch keeps testing the hostage narrative against the physical evidence.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Local and federal teams race to trace Kent's final movements and recover the cesium. Bosch's insistence on pursuing the murder produces friction with Brenner, who regards locating the radioactive source as the overriding objective. Rachel is caught between FBI command and a detective whose instincts she knows well. As Bosch studies timing, access, and the way Alicia was restrained, he begins to doubt that the crime occurred exactly as she described it. The supposed terrorists may have benefited from investigators accepting the most alarming explanation too quickly.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bosch finds that the hostage account contains deliberate misdirection. The murder at the overlook, the removal of the cesium, and the scene at the Kent house were coordinated rather than independent events. Evidence points toward someone with close knowledge of Stanley's routines rather than an ideologically motivated cell chosen at random. Bosch continues moving without fully sharing his reasoning, frustrating Ferras and widening his conflict with the FBI, but the shift in focus gives investigators a way to anticipate where the participants and the dangerous material may be found.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The final pursuit confirms that Alicia Kent cooperated in staging her captivity and in the scheme that led Stanley to remove the cesium. The radioactive emergency was used to disguise the personal plot behind his execution and to send law enforcement after a false external threat. Bosch's homicide evidence identifies the deception while the federal search closes on the missing source. The armed accomplice responsible for Stanley's death is stopped, Alicia's participation is exposed, and the cesium is secured before it can be dispersed. Bosch's refusal to abandon the murder proves decisive, though the methods he uses leave Ferras unsettled and his relationship with Rachel damaged by another collision between personal trust and institutional duty.",
+            "through": {
+              "chapter": 22
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-overlook"
+      }
+    },
     "the-pagan-lord": {
       "characters": {
         "characters": [

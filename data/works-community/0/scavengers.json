@@ -4154,6 +4154,179 @@
         "work": "shadows-seventh-step"
       }
     },
+    "sharpes-battle": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Captain of the South Essex light company, raised from the ranks and valued by Wellington for difficult assignments. Sharpe is ordered to train a neglected Irish company in Spanish service, a task whose political importance is greater than the unit's battlefield value appears to justify.",
+            "id": "richard-sharpe",
+            "name": "Richard Sharpe",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Sharpe's Irish sergeant and closest friend. Harper's nationality and authority among ordinary soldiers make him especially useful with the Real Compañía Irlandesa, whose men have been failed by officers and treated as a political symbol.",
+            "id": "patrick-harper",
+            "name": "Sergeant Patrick Harper",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A well-fed staff officer appointed to supervise the Real Compañía Irlandesa and report on its readiness. Runciman initially appears better suited to administration and comfort than battle, but his official position gives him responsibility for what becomes of the company.",
+            "id": "major-runciman",
+            "name": "Major Runciman",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The aristocratic Irish commander of the Real Compañía Irlandesa. Kiely carries resentment toward Britain and takes refuge in drink and pride while his undertrained soldiers wait for a purpose worthy of the claims made for them.",
+            "id": "lord-kiely",
+            "name": "Lord Kiely",
+            "reveal": {
+              "chapter": 1
+            }
+          },
+          {
+            "description": "Kiely's wife, living with the Irish company near the frontier. Lady Kiely sees more clearly than her husband how drink, disappointed politics, and divided loyalties are consuming him, though her position gives her little power over his command.",
+            "id": "lady-kiely",
+            "name": "Lady Kiely",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An officer of the Real Compañía Irlandesa who attends to the practical condition of its soldiers. Donaju wants the company to recover discipline and honor, making him a natural ally for Sharpe's training even when Kiely resists outside interference.",
+            "id": "captain-donaju",
+            "name": "Captain Donaju",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A charismatic Spanish partisan leader who moves easily between guerrillas, officers, and high society. Juanita has influence over Kiely and presents herself as a fierce enemy of France, giving Sharpe no immediate reason to treat her as anything but an ally.",
+            "id": "juanita-de-elia",
+            "name": "Doña Juanita de Elía",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Commander of a feared French brigade whose grey-coated troops raid around the frontier. Loup answers resistance with exemplary violence against civilians and regards terror as a deliberate military instrument.",
+            "id": "guy-loup",
+            "name": "Brigadier Guy Loup",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A French intelligence officer who prefers political fractures to costly frontal attacks. Ducos sees the Irish company as a way to embarrass Britain, divide the allies, and weaken Wellington's standing without changing the balance of an entire army.",
+            "id": "pierre-ducos",
+            "name": "Major Pierre Ducos",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A priest attached to the Irish soldiers in Spanish service. Father Sarsfield represents the religious and political hopes once attached to the company and tries to preserve the men's loyalty when competing causes claim them.",
+            "id": "father-sarsfield",
+            "name": "Father Sarsfield",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lord Wellington"
+            ],
+            "description": "Commander of the allied army in Portugal. Wellington assigns Sharpe to the Irish company because its conduct affects relations with Spain and Ireland, then prepares to meet Masséna's army near Fuentes de Oñoro.",
+            "id": "arthur-wellesley",
+            "name": "Arthur Wellesley",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "sharpes-battle"
+      },
+      "recaps": {
+        "ending": "Ducos's scheme is exposed when Juanita's service to the French and her influence over Kiely can no longer be concealed. Kiely tries to recover his honor in battle and is killed, leaving Lady Kiely widowed. The Real Compañía Irlandesa does not carry out the defection intended to disgrace Britain; under Sharpe, Harper, Donaju, Father Sarsfield, and the unexpectedly resolute Runciman, its men fight instead of becoming a propaganda victory for France. During the confused struggle around Fuentes de Oñoro, Wellington escapes Masséna's attempt to turn the allied right and preserves the army, though the battle is costly and inconclusive in the larger campaign. Sharpe pursues Guy Loup and defeats him, ending the brigadier's campaign of terror. Runciman emerges with genuine courage rather than the empty reputation expected of him. Ducos survives the failure of his design, establishing a personal enemy who has learned how effectively Sharpe can disrupt French intelligence plans.",
+        "in_short": "Wellington orders Sharpe to retrain the Real Compañía Irlandesa, an undisciplined group of Irish soldiers in Spanish service commanded by the embittered Lord Kiely. Major Runciman oversees the assignment, while Harper, Captain Donaju, and Father Sarsfield help restore the men's confidence. French intelligence officer Pierre Ducos plans to make the company defect publicly, discrediting Britain and splitting the alliance. He works through Brigadier Guy Loup, whose troops terrorize the frontier, and through the celebrated partisan Juanita de Elía, Kiely's lover and a hidden French agent. Sharpe uncovers the plot as Masséna attacks Wellington around Fuentes de Oñoro. Kiely learns of Juanita's betrayal and dies trying to redeem himself. The Irish company fights for the allies instead of defecting, Runciman proves brave, and Sharpe defeats Loup. Wellington's army survives the French attempt to turn its flank. Ducos escapes the ruined scheme and recognizes Sharpe as a dangerous personal opponent.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Captain Richard Sharpe commands the South Essex light company, with Sergeant Patrick Harper as his closest friend. After Wellington's defenses stopped Masséna's invasion of Portugal, Sharpe and Harper were drawn into a failed river operation and then sent to Cádiz. Britain's minister Henry Wellesley was being blackmailed with letters stolen during an affair. Sharpe recovered the correspondence and ended Father Salvador Montseny's leverage, while misconduct within Lord Pumphrey's secret work was exposed. Sharpe then fought with General Thomas Graham at Barrosa, where the British defeated Marshal Victor's attack despite poor support from Spanish commander Manuel la Peña. The victory did not lift the siege of Cádiz. Sharpe returns to the main war with his rank intact and with Teresa Moreno still the central personal attachment created by his earlier mission for Spanish gold.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Near the Spanish frontier, Sharpe is assigned to inspect and train the Real Compañía Irlandesa, Irish soldiers in Spanish service whose political symbolism exceeds their military usefulness. Lord Kiely commands the company but has allowed resentment and drink to replace discipline. Captain Donaju and Father Sarsfield want the men restored, while Major Runciman has been sent to supervise and report. Harper helps Sharpe approach soldiers who distrust both British authority and their own officers. Lady Kiely watches her husband's decline, and the partisan leader Juanita de Elía exerts a powerful influence over him.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Brigadier Guy Loup's grey-coated French troops raid the frontier and use murder against civilians as a warning to anyone helping the allies. Sharpe's clash with Loup turns the training assignment into a personal contest. Behind the raids, French intelligence officer Pierre Ducos has identified the Irish company as a political weapon: a public defection would suggest that Irishmen prefer Napoleon to British rule and would embarrass Wellington before his Spanish allies. Juanita appears to support the allied cause and encourages Kiely's hostility toward Sharpe, while the company begins responding to practical drill under Harper and Donaju.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sharpe improves the Irish company's battlefield readiness despite Kiely's resistance. Runciman, initially treated as a comic staff burden, begins to accept real responsibility for the soldiers named in his reports. Evidence accumulates that Loup's violence and the pressure on Kiely serve a coordinated plan rather than simple raiding. Juanita's access to the company and her hold over Kiely become increasingly dangerous, though her reputation as a guerrilla leader protects her from immediate suspicion. Wellington meanwhile concentrates the allied army near Fuentes de Oñoro as Masséna attempts to relieve the isolated French fortress of Almeida.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The battle around Fuentes de Oñoro opens as French columns attack the village and seek a route around Wellington's exposed right. Ducos's scheme advances inside the wider fighting: Juanita is revealed as a French agent, and Kiely's compromised command is meant to carry the Irish soldiers across at the moment that will cause maximum political damage. Kiely confronts the truth about his lover and the use made of his grievances. Sharpe, Harper, Donaju, Sarsfield, and Runciman work to keep the company together while Loup's brigade adds direct military force to the planned betrayal.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Wellington withdraws his threatened right in difficult fighting and prevents Masséna from turning the allied position. Fuentes de Oñoro remains in allied hands, though neither army gains a decisive strategic victory. Ducos's political operation fails: Juanita's allegiance is exposed, Kiely dies trying to recover his honor, and the Real Compañía Irlandesa fights for the allies rather than defecting. Runciman shows genuine courage while helping Sharpe, Harper, Donaju, and Father Sarsfield hold the men together. Sharpe then hunts down and defeats Guy Loup, ending the grey brigade's local campaign of terror. Lady Kiely survives her husband, and Ducos survives the destruction of his plan, leaving the French intelligence officer with a personal reason to regard Sharpe as an enemy.",
+            "through": {
+              "chapter": 11
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "sharpes-battle"
+      }
+    },
     "sharpes-eagle": {
       "characters": {
         "characters": [
@@ -4351,6 +4524,187 @@
         "work": "sharpes-eagle"
       }
     },
+    "sharpes-escape": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Captain of the South Essex light company, promoted from the ranks and now an experienced commander in Wellington's army. Sharpe is responsible for enforcing the destruction of supplies during the retreat through Portugal, an unpopular duty whose strategic importance is easy for corrupt officers to conceal.",
+            "id": "richard-sharpe",
+            "name": "Richard Sharpe",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Sharpe's Irish sergeant, closest friend, and dependable second in danger. Harper combines strength with common sense and follows Sharpe even when the captain's formal authority over the light company is threatened.",
+            "id": "patrick-harper",
+            "name": "Sergeant Patrick Harper",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A veteran marksman among Sharpe's riflemen. Hagman has survived successive campaigns by patience and fieldcraft, and he helps hold together the experienced core of the light company during the retreat.",
+            "id": "daniel-hagman",
+            "name": "Rifleman Daniel Hagman",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An educated rifleman whose observation and languages make him useful beyond shooting. Harris serves in the veteran group around Sharpe and Harper as the army abandons central Portugal to the French advance.",
+            "id": "ben-harris",
+            "name": "Rifleman Ben Harris",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Colonel of the South Essex and Sharpe's commanding officer. Lawford knows Sharpe's value in battle, but family obligation and the expectations of the officer class complicate his judgment when another captain seeks command of the light company.",
+            "id": "william-lawford",
+            "name": "Lieutenant Colonel William Lawford",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An officer connected to Lawford by marriage who is placed with the South Essex light company. Slingsby presents himself as the gentlemanly alternative to Sharpe, and his claim to command rests more securely on patronage than on the confidence of the soldiers.",
+            "id": "cornelius-slingsby",
+            "name": "Captain Cornelius Slingsby",
+            "reveal": {
+              "chapter": 2
+            }
+          },
+          {
+            "aliases": [
+              "Lord Wellington"
+            ],
+            "description": "Commander of the allied army. Wellington plans to draw the French deep into a country stripped of food and then stop them at the concealed Lines of Torres Vedras, making destruction of civilian stores a military necessity.",
+            "id": "arthur-wellesley",
+            "name": "Arthur Wellesley",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Portuguese officer who fought beside Sharpe during Soult's retreat from Oporto. Vicente is now an experienced ally and understands both Wellington's strategy and the cost imposed on Portuguese families ordered to abandon their homes and food.",
+            "id": "jorge-vicente",
+            "name": "Captain Jorge Vicente",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Portuguese army officer whose local status gives him influence over stores and transport. Ferreira outwardly serves the allied retreat, but his commercial interests and family connections make his conduct difficult for Sharpe to trust.",
+            "id": "major-ferreira",
+            "name": "Major Ferreira",
+            "reveal": {
+              "chapter": 4
+            }
+          },
+          {
+            "description": "Ferreira's physically imposing brother and partner in the family's trading interests. Ferragus uses intimidation and private armed power to protect warehouses and transactions from soldiers carrying out Wellington's scorched-earth orders.",
+            "id": "ferragus",
+            "name": "Ferragus",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An Englishwoman living in Coimbra who becomes caught in the Ferreira brothers' arrangements as the population evacuates before the French. Sarah's knowledge of the household and city gives her a chance to help prisoners whom official channels have abandoned.",
+            "id": "sarah-fry",
+            "name": "Sarah Fry",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Marshal of the French army invading Portugal. Masséna commands a force confident that Wellington is retreating toward the sea, but its advance depends on finding food in a country the allies have been ordered to empty.",
+            "id": "andre-massena",
+            "name": "Marshal André Masséna",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "sharpes-escape"
+      },
+      "recaps": {
+        "ending": "Sharpe and Harper escape captivity in French-held Coimbra with Sarah Fry's help and turn the Ferreira family's hoarded supplies against the invaders. The stores that Major Ferreira and Ferragus preserved for profit are destroyed rather than sold to Masséna's hungry army. Ferragus is killed, and the brothers' collaboration can no longer be hidden behind Ferreira's uniform and connections. Sharpe rejoins the allied forces after the retreat reaches the Lines of Torres Vedras. Wellington's secret fortifications are complete and far stronger than the French expected; with the countryside emptied behind them, Masséna's troops can neither break the lines nor feed themselves indefinitely. Slingsby's attempt to replace Sharpe ends after his failures under command, leaving Sharpe restored to the light company and Lawford forced to recognize that patronage did not make his relative fit to lead it. Teresa remains part of Sharpe's life, though the campaign continues to keep them apart.",
+        "in_short": "During Masséna's invasion of Portugal, Wellington retreats toward the secret Lines of Torres Vedras and orders the population to remove or destroy everything that could feed the French. Sharpe discovers that Portuguese Major Ferreira and his powerful brother Ferragus are protecting valuable stores for a private sale to the enemy. At the same time, Colonel Lawford allows his relative Captain Slingsby to challenge Sharpe's command of the South Essex light company. Slingsby's battlefield failures expose the difference between patronage and competence, but Sharpe and Harper are drawn away and imprisoned in French-occupied Coimbra by the Ferreira network. With help from Sarah Fry, they escape and destroy the hoarded supplies before Masséna can use them. Ferragus is killed and Ferreira's treachery is exposed. Sharpe returns to his company at the Lines, where Wellington's fortifications and the stripped countryside stop the French advance and leave the invading army facing starvation.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Captain Richard Sharpe, promoted from the ranks, secured command of the South Essex light company by helping it survive Talavera and capturing a French Eagle. Wellington then sent him to recover Spanish gold held by guerrillas. Sharpe learned that the treasure was needed to pay for the secret Lines of Torres Vedras, seized it despite Major Kearsey's objections, and escaped French pressure by causing the destruction of Almeida's magazine. Kearsey and the guerrilla leader El Católico died during the struggle. The gold reached Wellington and the defenses were funded. Teresa Moreno, a Spanish partisan who helped Sharpe, became his lover. Sharpe returns to the army with Harper and his veteran riflemen, carrying a captain's responsibilities but still vulnerable to officers whose family connections outweigh his own.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In 1810 Masséna's army invades Portugal. Wellington fights a delaying action while withdrawing toward fortifications whose existence and scale remain secret. Civilians are ordered to evacuate and destroy food, carts, and stores so the French cannot live off the country. Sharpe and the South Essex light company help enforce the policy. He encounters Major Ferreira and Ferreira's brother Ferragus, whose warehouses have not been emptied. Their influence allows them to present delay and obstruction as lawful business, but Sharpe suspects that valuable supplies are being preserved for profit.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The allied army confronts the French at Bussaco before continuing its planned retreat. Sharpe's attention is divided between the enemy and a threat inside the South Essex. Captain Cornelius Slingsby, a relative of Colonel Lawford, is given authority in the light company and treats his social position as evidence that he should replace Sharpe. Under pressure, Slingsby's drinking and poor judgment endanger the soldiers. Sharpe intervenes to keep the company effective, but Lawford's family obligation prevents a simple resolution. Meanwhile the Ferreira stores remain available to the advancing French, making the private scheme part of the wider invasion.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "As Coimbra is abandoned and then occupied, Sharpe and Harper pursue the evidence behind the protected warehouses. Ferreira's military office has helped conceal a plan to sell supplies to the French, while Ferragus provides the force needed to silence interference. The brothers capture Sharpe and Harper, removing them from the army at the moment the French enter the city. Sarah Fry, an Englishwoman entangled with the Ferreira household, realizes that the prisoners will not survive without help. Outside Coimbra, Masséna's large army advances into a region that appears open but has been systematically deprived of food.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sarah helps Sharpe and Harper break out of captivity in French-held Coimbra. Escape alone is not enough: the Ferreira hoard could sustain enemy troops and reward the collaboration that preserved it. Sharpe turns back toward the stores while French soldiers, the brothers' men, and the confusion of occupation close around the fugitives. Jorge Vicente and the allies still outside the city work within Wellington's retreat, but cannot openly rescue men who have disappeared behind French lines. Sharpe's aim becomes the destruction of the supply scheme and a return to the army before it seals itself behind the Lines of Torres Vedras.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sharpe, Harper, and Sarah escape Coimbra after destroying the stores the Ferreira brothers meant to sell to Masséna's army. Ferragus is killed and Major Ferreira's use of his commission to protect the scheme is exposed. Sharpe rejoins the South Essex as the allied retreat reaches the Lines of Torres Vedras. Slingsby's failures have ended his claim to the light company, and Sharpe resumes command despite Lawford's earlier preference for his relative. The French discover that Wellington is not retreating to evacuation but to a vast fortified barrier. With the Portuguese countryside stripped and the sea supplying the defenders, Masséna cannot force the Lines or feed his army, and the invasion that appeared successful has entered a strategic trap.",
+            "through": {
+              "chapter": 18
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "sharpes-escape"
+      }
+    },
     "sharpes-fortress": {
       "characters": {
         "characters": [
@@ -4521,6 +4875,340 @@
           }
         ],
         "work": "sharpes-fortress"
+      }
+    },
+    "sharpes-fury": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Captain of the South Essex light company and a veteran raised from the ranks. Sharpe is temporarily serving away from his battalion when a river operation collapses, carrying him from the Portuguese campaign into British political work at Cádiz.",
+            "id": "richard-sharpe",
+            "name": "Richard Sharpe",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Sharpe's Irish sergeant and closest friend. Harper follows him through the failed river crossing and into Cádiz, where strength and soldiering remain useful even when the immediate enemy is blackmail rather than a French battalion.",
+            "id": "patrick-harper",
+            "name": "Sergeant Patrick Harper",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior British officer directing the dangerous attempt to secure a river crossing against the French. Moon is a forceful battlefield commander whose orders place Sharpe and Harper at the center of the opening action.",
+            "id": "brigadier-moon",
+            "name": "Brigadier Moon",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A French colonel opposing the British river operation. Vandal is an aggressive professional officer who recognizes Sharpe as a persistent threat during the struggle for the crossing.",
+            "id": "colonel-vandal",
+            "name": "Colonel Vandal",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Wellington's trusted intelligence officer and engineer. Hogan redirects Sharpe from the field toward Cádiz because the threatened reputation of Britain's ambassador could damage the alliance sustaining the war in Spain.",
+            "id": "michael-hogan",
+            "name": "Major Michael Hogan",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Britain's minister in Cádiz and the younger brother of Wellington. Henry Wellesley's affair with a woman in the city has produced private letters whose theft exposes him to blackmail and gives Britain's political enemies leverage over the Spanish alliance.",
+            "id": "henry-wellesley",
+            "name": "Henry Wellesley",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A beautiful woman in Cádiz whose relationship with Henry Wellesley has become a political vulnerability. Caterina moves in a society where affection, patronage, and survival overlap, and the stolen letters place her under pressure as well as the ambassador.",
+            "id": "caterina-blazquez",
+            "name": "Caterina Blazquez",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A polished aristocrat involved in British secret work whom Sharpe encountered years earlier in Copenhagen. Pumphrey operates through influence, money, and deniable agents, making him useful to Hogan but difficult for Sharpe to trust.",
+            "id": "lord-pumphrey",
+            "name": "Lord Pumphrey",
+            "reveal": {
+              "chapter": 28
+            }
+          },
+          {
+            "description": "A Spanish priest and influential political operator in Cádiz. Montseny opposes British influence and uses the ambassador's stolen correspondence as a weapon that can be applied without meeting Wellington's army in battle.",
+            "id": "salvador-montseny",
+            "name": "Father Salvador Montseny",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Commander of the British contingent sent from Cádiz against Victor's besieging army. Graham is an experienced and determined general, prepared to attack when an opportunity appears even though allied command is divided.",
+            "id": "thomas-graham",
+            "name": "Lieutenant General Thomas Graham",
+            "reveal": {
+              "chapter": 51
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Spanish commander of the allied expedition from Cádiz. La Peña's rank places British troops under a cautious commander whose choices repeatedly frustrate Graham and make coordination against the French uncertain.",
+            "id": "manuel-la-pena",
+            "name": "General Manuel la Peña",
+            "reveal": {
+              "chapter": 52
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "sharpes-fury"
+      },
+      "recaps": {
+        "ending": "At Barrosa, General Graham's British division turns back to confront Marshal Victor's larger French force after General la Peña refuses effective support. Sharpe and Harper fight through the confused battle and help break the French attacks; Colonel Vandal is defeated in the combat. The British take an Eagle and guns, but la Peña's caution prevents the tactical victory from becoming the destruction of Victor's army, so the siege of Cádiz continues. In the city, Sharpe recovers the letters used to blackmail Henry Wellesley and destroys Father Montseny's leverage over the ambassador. Dealings with Lord Pumphrey deepen Sharpe's distrust of the methods used by Britain's own secret agents, while Hogan contains the political damage. Henry Wellesley remains at his post and the alliance survives the scandal. Sharpe and Harper finish the campaign alive and free to return to the army, while Cádiz remains unconquered but still ringed by French forces.",
+        "in_short": "A failed river operation leaves Sharpe and Harper separated from their usual command and eventually sent to Cádiz, the Spanish city protected by sea but besieged from the mainland. Major Hogan asks Sharpe to recover intimate letters stolen from Henry Wellesley, Britain's minister and Wellington's brother. Father Salvador Montseny uses the correspondence to threaten Wellesley and weaken British influence, while Lord Pumphrey's secret dealings make the loyalties inside the British effort uncertain. The political search merges with an allied expedition against Marshal Victor. Spanish commander Manuel la Peña mishandles the movement, forcing Thomas Graham's British division to turn and fight at Barrosa with little support. Graham's troops defeat the French attack, and Sharpe helps overcome Colonel Vandal, but the allies fail to exploit the victory and Cádiz remains besieged. Sharpe recovers the letters and ends the blackmail, preserving Wellesley's position while exposing dangerous misconduct among the intelligence men who were supposed to protect him.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Richard Sharpe, a former private, commands the South Essex light company with Sergeant Patrick Harper as his closest friend. After recovering the Spanish gold that financed the Lines of Torres Vedras, Sharpe and Teresa Moreno became lovers. During Masséna's invasion of Portugal, Wellington ordered the population to abandon or destroy supplies before retreating to those Lines. Sharpe exposed Major Ferreira and his brother Ferragus, who meant to sell hoarded food to the French. Captured in occupied Coimbra with Harper, he escaped with Sarah Fry's help, destroyed the stores, and returned to the army. Ferragus was killed, Ferreira's treachery was uncovered, and Captain Slingsby's failed attempt to take the light company ended. The French reached the Lines but found an impregnable defense and a countryside unable to feed them.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sharpe and Harper take part in a hazardous operation at a river crossing while French forces contest the opposite bank. The attempt deteriorates amid high water, damaged boats, and fighting directed by Brigadier Moon. Sharpe is cut off from the regular movement of the army and clashes with Colonel Henri Vandal, a determined French officer. The episode leaves Sharpe and Harper alive but displaced from their South Essex command, available for the confidential assignment that follows rather than the routine duty they expected.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Major Hogan sends Sharpe to Cádiz, the seat of Spain's anti-French government and a city protected by the British navy while Marshal Victor's army besieges it from across the marshes. Britain's minister Henry Wellesley is being blackmailed with private letters written during his affair with Caterina Blazquez. Their publication could end his career and weaken British influence over Spain. Sharpe encounters Lord Pumphrey, the smooth intelligence operator he distrusts from Copenhagen, and identifies Father Salvador Montseny as a central force behind the pressure. Recovering the correspondence requires Sharpe to navigate priests, politicians, and agents rather than a clearly marked enemy line.",
+            "through": {
+              "chapter": 36
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sharpe's search shows that the stolen letters are part of a wider effort to damage the British alliance, not merely a demand for money. Montseny can exploit factions inside Cádiz that resent British power, while Wellesley's own choices make a discreet defense difficult. Pumphrey's access to secret funds and information raises further doubts about whether every British agent is trying to solve the same problem. At the same time an allied expedition is organized against Victor's siege lines. General Manuel la Peña holds overall command, with Thomas Graham leading the British division. Sharpe and Harper join the movement, knowing that the political plot in Cádiz and the coming battle are connected by the future of the alliance.",
+            "through": {
+              "chapter": 54
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The allied expedition maneuvers along the coast toward Barrosa. La Peña's hesitant orders and concern for his own authority leave the columns badly coordinated. Victor sees a chance to strike Graham's British troops while they are separated from effective Spanish support. Graham turns his division back instead of accepting defeat, and the battle begins across the ridge and woods. Sharpe and Harper fight among troops forced to form under sudden pressure, while Colonel Vandal reappears with the French. The immediate contest is whether Graham can defeat a stronger attack before la Peña's inaction makes retreat toward Cádiz the only remaining choice.",
+            "through": {
+              "chapter": 72
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Graham's division defeats Victor's attack at Barrosa despite receiving little useful support from la Peña. British infantry retake the ridge, capture guns and an Eagle, and drive the French back; Sharpe and Harper survive the close fighting and Colonel Vandal is overcome. La Peña fails to exploit the victory, allowing Victor's army to preserve the siege of Cádiz. Back in the city, Sharpe recovers the stolen letters and ends Father Montseny's power to blackmail Henry Wellesley. His dealings with Lord Pumphrey deepen his distrust of the methods used by British secret agents, and Hogan works to suppress further political damage. Wellesley remains minister, the alliance holds, and Sharpe is released from the confidential assignment to return to soldiering.",
+            "through": {
+              "chapter": 96
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "sharpes-fury"
+      }
+    },
+    "sharpes-gold": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A former private now commanding the South Essex light company after capturing a French Eagle at Talavera. Sharpe's promotion is secure enough to give him responsibility, but his lack of money and influence still leaves him dependent on Wellington's approval and on success in assignments other officers would refuse.",
+            "id": "richard-sharpe",
+            "name": "Richard Sharpe",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Sharpe's closest friend and the strongest of his riflemen. Harper is an Irish soldier whose loyalty is to Sharpe rather than to rank alone, and he supplies practical judgment when a secret mission begins to conflict with its stated purpose.",
+            "id": "patrick-harper",
+            "name": "Patrick Harper",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lord Wellington"
+            ],
+            "description": "Commander of the allied army in Portugal. Wellington is preparing a defensive system whose success depends on secrecy, labor, and money, and he gives Sharpe an urgent mission without explaining every reason behind it.",
+            "id": "arthur-wellesley",
+            "name": "Arthur Wellesley",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Wellington's engineer and intelligence officer. Hogan understands the hidden strategic purpose of Sharpe's orders and serves as the link between a battlefield captain and the commander's larger plans for Portugal.",
+            "id": "michael-hogan",
+            "name": "Major Michael Hogan",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An officer of the South Essex who respects Sharpe's battlefield ability. Knowles helps lead the soldiers assigned to the mission and must maintain discipline while the company operates away from the main army.",
+            "id": "robert-knowles",
+            "name": "Captain Robert Knowles",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An older rifleman and expert marksman who has served with Sharpe through the army's return to Portugal and Spain. Hagman brings patience and fieldcraft to a mission in which a small party must move among guerrillas and French troops.",
+            "id": "daniel-hagman",
+            "name": "Rifleman Daniel Hagman",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A literate, observant rifleman in Sharpe's veteran group. Harris is useful as a translator and as a soldier able to understand the political arguments surrounding the Spanish gold as well as the immediate danger.",
+            "id": "ben-harris",
+            "name": "Rifleman Ben Harris",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A British officer attached to Spanish forces and the custodian of a large reserve of Spanish gold. Kearsey regards the treasure as property held for Spain's cause and is suspicious of any order that treats an ally's wealth as a British resource.",
+            "id": "major-kearsey",
+            "name": "Major Kearsey",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The formidable leader of the Spanish guerrillas guarding Kearsey and the gold. El Católico claims authority from service to Spain and does not intend to surrender either the treasure or his independence merely because Sharpe carries British orders.",
+            "id": "el-catolico",
+            "name": "El Católico",
+            "reveal": {
+              "chapter": 36
+            }
+          },
+          {
+            "description": "A young Spanish woman living with the guerrilla band that protects the gold. Teresa is proud, politically committed, and accustomed to danger; she judges Sharpe by what he does rather than by the social rank that preoccupies the British army.",
+            "id": "teresa-moreno",
+            "name": "Teresa Moreno",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "sharpes-gold"
+      },
+      "recaps": {
+        "ending": "Sharpe brings the Spanish gold into the besieged frontier fortress of Almeida while French forces close around it. Trapped between the enemy and the fortress authorities, he uses the destruction of Almeida's magazine to break the situation open and escape with the surviving members of his party and the treasure. The explosion devastates the fortress and denies the French an intact stronghold, though it kills soldiers and civilians and leaves Sharpe responsible for an act far beyond his formal orders. El Católico is defeated after trying to keep the gold for himself. Kearsey does not survive the struggle over the treasure. Sharpe delivers the gold for Wellington's secret purpose: paying for the Lines of Torres Vedras, the fortified barrier on which the defense of Portugal depends. Teresa leaves the guerrilla conflict with Sharpe, beginning a relationship that changes his personal stake in the Peninsular War.",
+        "in_short": "After Talavera, Captain Richard Sharpe is ordered to recover Major Kearsey and a hoard of Spanish gold held by guerrillas beyond the army's reach. Wellington does not publicly admit that the treasure is the mission's real object, because he needs it to finance the secret Lines of Torres Vedras. Sharpe, Harper, and a small detachment find Kearsey with the guerrilla leader El Católico and Teresa Moreno. Kearsey objects to British seizure of Spanish property, while El Católico intends to control the gold himself. The dispute turns into a pursuit involving guerrillas and French troops. Sharpe takes the treasure toward Almeida and, when trapped in the besieged fortress, triggers the destruction of its magazine to escape. Kearsey and El Católico are lost during the conflict, but the gold reaches Wellington and helps complete Portugal's defenses. Teresa goes with Sharpe, and their relationship begins amid the mission's violent conclusion.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Richard Sharpe rose from the ranks during the wars in India and won a battlefield commission. In Portugal he took command of stranded riflemen and earned the friendship of Sergeant Patrick Harper. After helping resist the French invasion of northern Portugal, Sharpe was attached to the inexperienced South Essex. Its colonel, Sir Henry Simmerson, lost a King's Colour through incompetence, but Sharpe trained the light company and helped steady the battalion at Talavera. He then captured a French Imperial Eagle, fulfilling a promise to the dying Major Lennox and restoring the regiment's honor. Wellington confirmed him as a captain. Sharpe begins this book with command and fame, but without the wealth or social protection that normally sustain an officer's rank.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Wellington's army is falling back through Portugal before a renewed French invasion. Behind the retreat, engineers are building a secret defensive system, and the work requires money that cannot be obtained openly in time. Wellington sends Sharpe to locate Major Kearsey, a British officer serving with Spanish guerrillas. The rescue order conceals the mission's decisive object: a large quantity of Spanish gold under Kearsey's protection. Sharpe takes Harper, Knowles, and selected men from the light company, knowing that secrecy and speed matter more than a conventional military success.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sharpe's detachment reaches the country controlled by the guerrilla leader El Católico. Kearsey is alive, but he considers himself guardian of Spanish property and refuses to accept that British need gives Wellington a right to the treasure. El Católico is equally unwilling to yield control, though his motives are tied to personal power as well as resistance to France. Teresa Moreno, a determined young woman with the guerrillas, is drawn into the argument and begins to trust Sharpe's directness. The mission is no longer a simple recovery: Sharpe must take the gold from armed allies without allowing the French to capture it or destroying the alliance he is supposed to defend.",
+            "through": {
+              "chapter": 68
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The uneasy bargaining fails. Sharpe moves to seize the gold, while El Católico tries to retain it and Kearsey continues to condemn its appropriation. Fighting and pursuit scatter the arrangement around the guerrilla camp. Teresa sides with Sharpe and helps him navigate a conflict in which uniforms no longer distinguish friend from enemy. French troops add a second threat, forcing the British detachment to move the heavy treasure toward the frontier rather than back by a safe route. The personal bond between Sharpe and Teresa grows as the mission strips away the formal explanations offered by commanders and guerrilla leaders.",
+            "through": {
+              "chapter": 105
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sharpe's surviving party reaches Almeida with the gold while the French close on the fortress. The treasure has been taken from El Católico's control, but Kearsey's objections and the losses suffered on the journey leave no clean claim to victory. Almeida becomes a trap: its garrison and defenses restrict Sharpe's freedom, the besieging French block the obvious road, and the gold cannot simply be abandoned. Sharpe turns to the fortress magazine as the means of creating an escape, accepting that destroying a strategic position will cause consequences no captain has authority to order.",
+            "through": {
+              "chapter": 143
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sharpe causes the destruction of Almeida's magazine and uses the catastrophe to escape the besieged fortress with Teresa, Harper, the surviving soldiers, and the gold. The explosion devastates Almeida and prevents the French from taking it intact, but it also makes Sharpe responsible for immense destruction undertaken without public authorization. El Católico is defeated after pursuing his claim to the treasure, and Kearsey does not survive the struggle over the gold. Sharpe delivers the hoard to Wellington's agents. It pays for the Lines of Torres Vedras, the concealed defensive works intended to stop the invasion of Portugal. Teresa remains with Sharpe, turning an assignment defined by secret finance into the beginning of an enduring personal relationship.",
+            "through": {
+              "chapter": 179
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "sharpes-gold"
       }
     },
     "sharpes-havoc": {
