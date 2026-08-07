@@ -1285,6 +1285,177 @@
         "work": "road-of-the-patriarch"
       }
     },
+    "robinson-crusoe-the-ultimate-castaway-adventure": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An Englishman from York who rejects the secure life his parents planned and repeatedly goes to sea. Restless, practical, and intensely self-reliant, he narrates how disaster forces him to build a life with almost no human assistance.",
+            "id": "robinson-crusoe",
+            "name": "Robinson Crusoe",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Crusoe's elderly father, a prosperous immigrant who urges his youngest son to remain in England and enjoy a moderate, stable life. He warns that misery often follows those who abandon that middle condition.",
+            "id": "crusoes-father",
+            "name": "Crusoe's father",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A boy enslaved alongside Crusoe in North Africa. He helps Crusoe escape by boat and proves brave and capable during their voyage down the African coast.",
+            "id": "xury",
+            "name": "Xury",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The captain of a Portuguese ship that rescues Crusoe and Xury off the African coast. Generous and commercially shrewd, he helps Crusoe reach Brazil and begin life there as a planter.",
+            "id": "the-portuguese-captain",
+            "name": "The Portuguese captain",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A man Crusoe rescues from captors on the island. Crusoe names him for the day of the rescue. Intelligent, energetic, and eager to learn, he becomes Crusoe's companion after decades of solitude.",
+            "id": "friday",
+            "name": "Friday",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Friday's father, brought to the island as a captive. His reunion with Friday gives Crusoe new information about nearby peoples and the fate of other Europeans.",
+            "id": "fridays-father",
+            "name": "Friday's father",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A European survivor living among people on the mainland before Crusoe and Friday help rescue him. He becomes part of their plan to contact possible allies and enlarge the island settlement.",
+            "id": "the-spaniard",
+            "name": "The Spaniard",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The lawful commander of an English vessel seized by mutineers. Put ashore with loyal companions, he allies with Crusoe in an attempt to recover his ship.",
+            "id": "the-english-captain",
+            "name": "The English captain",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the most dangerous members of the mutinous English crew. Defiant and difficult to subdue, he is left on the island when the lawful captain regains control.",
+            "id": "will-atkins",
+            "name": "Will Atkins",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A trusted friend in England who manages Crusoe's money after his early voyages. Her honesty helps preserve what remains of his affairs during his long disappearance.",
+            "id": "the-widow",
+            "name": "The widow",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Crusoe's business associate in Brazil, entrusted with part of the plantation when Crusoe leaves on a trading voyage. His management becomes important when Crusoe returns after many missing years.",
+            "id": "the-brazilian-partner",
+            "name": "Crusoe's Brazilian partner",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "robinson-crusoe-the-ultimate-castaway-adventure"
+      },
+      "recaps": {
+        "ending": "Crusoe and Friday help an English captain defeat mutineers and recover his ship, giving Crusoe a route home after twenty-eight years on the island. Back in Europe, Crusoe learns that his Brazilian plantation has prospered and made him wealthy. He rewards those who acted honestly for him and provides for old friends. Avoiding another sea journey, he travels overland from Spain and survives attacks by wolves and a bear. He settles in England, marries, and has children. After his wife's death, his restlessness returns. He revisits the island, finds a troubled colony made up of the men left there and later arrivals, supplies it, and continues traveling before closing with the prospect of further adventures.",
+        "in_short": "Robinson Crusoe defies his father's advice and goes to sea, enduring storms, enslavement, escape, and a new career as a Brazilian planter. A slave-trading voyage ends in shipwreck, leaving him alone on an island. He salvages tools and supplies, builds fortified homes, grows crops, raises goats, and slowly transforms terror and despair into a disciplined religious and practical life. After many years he finds evidence that groups visit the island to kill captives. He eventually rescues one captive, names him Friday, and teaches him English and Christianity. Together they save Friday's father and a Spaniard. When English mutineers land, Crusoe helps their captain recover his ship. After twenty-eight years he returns to Europe, discovers his plantation has made him rich, and later revisits the island settlement before resuming his travels.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Robinson Crusoe ignores his father's warning against a wandering life and secretly goes to sea. Early storms frighten him but do not cure his restlessness. On a later voyage he is captured by North African pirates and enslaved. After two years he escapes in a small boat with the boy Xury. A Portuguese captain rescues them and takes Crusoe to Brazil, where Crusoe establishes a plantation. Wanting labor and greater profit, he joins a voyage to the African coast. The ship is wrecked in a storm, and Crusoe alone reaches an uninhabited island.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Crusoe repeatedly swims to the wreck and salvages guns, powder, food, tools, timber, sails, and other supplies before the sea destroys it. He builds a fortified shelter backed by a cave, keeps a calendar, and begins a journal. Isolation first produces fear and despair, then a severe illness leads him to pray and reconsider his life. He learns to make furniture and containers, explores the island, and discovers that grain spilled from his supplies will grow. Through experimentation he plants crops and begins turning survival into a sustainable routine.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Crusoe surveys the island, builds a second country shelter, and tries unsuccessfully to make a boat he can move to the water. He domesticates goats, improves his harvests, makes rough pottery and clothing, and gains control over the seasonal rhythms of his new home. Years pass with no human company. Then he discovers a single footprint in the sand. The sign overturns his sense of safety. He strengthens his defenses and later finds evidence that visitors come to the island for ritual killings and feasts, though he hesitates to attack people whose customs he condemns but does not fully understand.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After further years of watchfulness, Crusoe sees captives brought ashore. He intervenes when one prisoner escapes, killing pursuers and saving the fugitive. Crusoe names the man Friday and begins teaching him English, European habits, and Christianity. Friday proves loyal and capable, while his knowledge explains the mainland and the visiting groups. He tells Crusoe that Europeans live among his people. When another party arrives with captives, Crusoe and Friday attack and rescue two men: Friday's father and a Spaniard. They plan to bring the other Europeans to the island and build a community strong enough to leave safely.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Before the planned rescue can proceed, an English ship anchors offshore and mutineers land with their lawful captain and two loyal men as prisoners. Crusoe reveals himself to the captain and offers help in exchange for passage to England. Using the island's terrain, hidden weapons, and divisions among the mutineers, the allies capture the shore party and retake the ship. Some rebels are pardoned into service; the most dangerous are left on the island with supplies and instructions. Crusoe departs after twenty-eight years, taking Friday with him.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Crusoe returns to England and finds his parents dead. Accounts from Brazil show that his plantation has prospered, making him wealthy. He repays the Portuguese captain's kindness, rewards his honest partner and the widow who guarded his affairs, and arranges his property. Traveling overland from Spain to avoid the sea, Crusoe and Friday survive wolves and a bear in the mountains. Crusoe later marries and has children. After his wife dies he again travels abroad and revisits the island, where the men left behind and later newcomers have formed an uneasy colony. He supplies and organizes the settlement, then resumes his travels and leaves the continuation of his adventures for another account.",
+            "through": {
+              "chapter": 20
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "robinson-crusoe-the-ultimate-castaway-adventure"
+      }
+    },
     "rogue-protocol": {
       "characters": {
         "characters": [

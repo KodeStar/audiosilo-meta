@@ -167,6 +167,192 @@
         "work": "and-then-there-were-none"
       }
     },
+    "angels-amp-demons": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A Harvard professor of religious iconology and symbology, awakened by an urgent call concerning a disturbing symbol. A strong swimmer with a habit of careful visual analysis, he is an authority on the legendary Illuminati but doubts that the historical brotherhood could still exist.",
+            "id": "robert-langdon",
+            "name": "Robert Langdon",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Kohler"
+            ],
+            "description": "The director of CERN, a formidable physicist who uses a wheelchair. Severe, private, and openly hostile to organised religion, he urgently summons Langdon to the research centre after one of its scientists is murdered.",
+            "id": "maximilian-kohler",
+            "name": "Maximilian Kohler",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Italian scientist at CERN whose work joins advanced physics with a personal religious faith. She is also a trained athlete and Leonardo Vetra's adopted daughter and research partner. The theft of their antimatter experiment and her father's murder draw her into Langdon's search.",
+            "id": "vittoria-vetra",
+            "name": "Vittoria Vetra",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A CERN physicist and Catholic priest found murdered and branded in his laboratory. His combination of scientific work and religious faith makes the apparently anti-Church symbol on his body especially significant.",
+            "id": "leonardo-vetra",
+            "name": "Leonardo Vetra",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the camerlengo"
+            ],
+            "description": "A young priest who served as the late pope's closest aide and now administers the Vatican during the vacancy before a new pope is elected. Calm in public and deeply devout, he must respond to the antimatter threat while the cardinals are sealed inside the conclave.",
+            "id": "carlo-ventresca",
+            "name": "Carlo Ventresca",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Commander of the Swiss Guard, responsible for protecting Vatican City during the conclave. Disciplined and suspicious of outsiders, he initially regards Langdon and Vittoria's arrival as an intrusion into a tightly controlled security operation.",
+            "id": "commander-olivetti",
+            "name": "Commander Olivetti",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior Swiss Guard officer who works under Olivetti. Forceful and security-minded, he helps manage the Vatican's response to the stolen antimatter and the threat against the conclave.",
+            "id": "captain-rocher",
+            "name": "Captain Rocher",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young Swiss Guard lieutenant assigned to the unfolding emergency. Earnest and less rigid than some of his superiors, he carries out security duties while trying to understand the unfamiliar scientific and religious dimensions of the threat.",
+            "id": "lieutenant-chartrand",
+            "name": "Lieutenant Chartrand",
+            "reveal": {
+              "chapter": 48
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly Spanish cardinal serving as the Great Elector in the papal conclave. He presides over the voting after the four leading candidates disappear and tries to preserve the conclave's rules amid signs of a wider attack.",
+            "id": "cardinal-mortati",
+            "name": "Cardinal Mortati",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A professional killer hired to carry out a sequence of ritual murders in Rome. He believes he is serving the Illuminati and treats the assignment as both paid work and a campaign against the Church.",
+            "id": "the-hassassin",
+            "name": "The Hassassin",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A BBC reporter in Rome who receives an anonymous tip about the Vatican emergency. Ambitious and alert to the value of an exclusive, he pursues the story with his camerawoman, Chinita Macri.",
+            "id": "gunther-glick",
+            "name": "Gunther Glick",
+            "reveal": {
+              "chapter": 51
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A BBC camera operator working with Gunther Glick. Practical and composed, she records the rapidly escalating events in Rome and helps turn a secret Vatican emergency into a global broadcast.",
+            "id": "chinita-macri",
+            "name": "Chinita Macri",
+            "reveal": {
+              "chapter": 51
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "angels-amp-demons"
+      },
+      "recaps": {
+        "ending": "Langdon and Vittoria discover that the supposed Illuminati plot was orchestrated by Camerlengo Carlo Ventresca. He murdered the pope after learning that the pontiff had fathered a child through artificial insemination, then arranged Leonardo Vetra's death, the antimatter theft, and the cardinals' murders to manufacture a crisis in which he could appear divinely chosen. Kohler had recorded Ventresca's confession, and the surviving evidence reaches the conclave. Ventresca learns that he himself was the pope's child, conceived without breaking the pope's vow of celibacy, and publicly burns himself to death. Cardinal Mortati is elected pope. The antimatter has exploded harmlessly high above Rome after Langdon survives the fall from the helicopter with a parachute-like cover. Vittoria and Langdon leave the Vatican together, and Mortati gives Langdon the final Illuminati diamond brand on indefinite loan.",
+        "in_short": "CERN scientist Leonardo Vetra is murdered and a canister of antimatter is stolen, leading symbologist Robert Langdon and Vetra's daughter Vittoria to Vatican City during a papal conclave. A caller claiming to represent the Illuminati threatens to kill four leading cardinals along an ancient Path of Illumination, then destroy the Vatican at midnight. Langdon and Vittoria follow clues through Roman churches but cannot prevent the ritual deaths. Camerlengo Carlo Ventresca appears to locate the antimatter through divine inspiration and carries it aloft in a helicopter before it explodes, saving the city. Langdon survives the blast, and evidence left by CERN director Maximilian Kohler reveals that Ventresca engineered the entire conspiracy. He had killed the pope and used the Illuminati legend to create a miracle that would renew the Church. After learning he was secretly the pope's son, Ventresca kills himself. Cardinal Mortati becomes pope, and Langdon and Vittoria leave Rome together.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Harvard symbologist Robert Langdon is summoned to CERN in Switzerland by its director, Maximilian Kohler. Physicist and priest Leonardo Vetra has been murdered, his eye removed and his chest branded with a symmetrical word marking associated with the Illuminati, a historical enemy of the Catholic Church that Langdon believed extinct. Vetra's adopted daughter and research partner, Vittoria, returns to explain their secret experiment: they created antimatter in an attempt to study creation itself. A portable canister containing the substance has been stolen. Its magnetic trap will fail when its battery expires, allowing the antimatter to meet ordinary matter in a catastrophic explosion. Security video shows the canister somewhere inside Vatican City, where the College of Cardinals is gathering to elect a pope after the previous pontiff's death. Langdon and Vittoria leave for Rome to warn the Vatican.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At Vatican City, the Swiss Guard initially resists the outsiders' claims, but the missing antimatter canister and a threatening telephone call establish the danger. Four preferiti, the cardinals considered the leading papal candidates, have vanished before the conclave. The caller claims the Illuminati will murder one cardinal at each hour on a sequence of altars representing earth, air, fire, and water, then allow the antimatter to destroy the Vatican at midnight. Camerlengo Carlo Ventresca, the late pope's aide and the temporary administrator of the Holy See, chooses to keep the conclave in place while the Guard searches. Langdon concludes that a seventeenth-century trail known as the Path of Illumination may identify the four sites. A clue in Galileo's writings directs him and Vittoria toward Rome's churches and monuments.",
+            "through": {
+              "chapter": 40
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Langdon and Vittoria trace the first marker to the Chigi Chapel in Santa Maria del Popolo, whose sculpture and design point onward along the supposed path. They arrive too late to save the first missing cardinal, who has been branded with the symbol for earth and killed in a manner matching it. The killing confirms that the threat is being staged as an Illuminati ritual. BBC reporter Gunther Glick and camera operator Chinita Macri, acting on an anonymous tip, begin reporting the crisis and bring crowds and worldwide attention to Rome. Langdon uses the direction indicated by Bernini's sculpture to identify the next location, while Vittoria and the Swiss Guard struggle to work within a timetable set by the killer.",
+            "through": {
+              "chapter": 60
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The next clue leads to St Peter's Square, where the second cardinal has been fatally wounded and marked for air. Langdon attempts to revive him but cannot. The search continues through Bernini's works toward Santa Maria della Vittoria. There the assassin has suspended the third cardinal above a fire and branded him with the corresponding element. Commander Olivetti is killed in the confrontation, and Langdon is trapped beneath a heavy sarcophagus lid before Vittoria helps free him. The assassin escapes with Vittoria as his captive. With two senior security figures gone and time running out, Langdon must pursue both the Path of Illumination and the abducted Vittoria while the Vatican still has no location for the antimatter.",
+            "through": {
+              "chapter": 90
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Langdon reaches the fourth altar at the Fountain of the Four Rivers in Piazza Navona, where the last preferito has been weighted down and thrown into the water. He dives in but cannot save the cardinal. The monument's design points him toward Castel Sant'Angelo, the suspected Illuminati lair. Inside, Langdon finds and frees Vittoria, and together they defeat the assassin, who falls to his death. They discover a concealed route linking the fortress to the Vatican and hurry back. Meanwhile Maximilian Kohler has arrived with information about the conspiracy and enters the camerlengo's office. The encounter ends with Kohler shot by the Swiss Guard, but before dying he gives Langdon a small video camera and urges him to reveal what it contains.",
+            "through": {
+              "chapter": 115
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After the camerlengo emerges wounded, he claims to receive guidance showing him where the antimatter has been hidden. He finds the canister in the tomb beneath St Peter's, takes it into a helicopter, and flies high over the city. Langdon boards at the last moment. The camerlengo parachutes away, leaving Langdon to improvise an escape with a protective cover as the antimatter explodes harmlessly overhead. Both men survive, and the camerlengo is acclaimed as a miraculous saviour. Langdon then watches Kohler's recording and learns that Ventresca himself planned the murders and the theft, using the supposed Illuminati attack to revive faith and position himself as the Church's hero. Ventresca had also killed the late pope after discovering he had fathered a child. Cardinal Mortati reveals that the child was conceived by artificial insemination and was Ventresca himself. Confronted with the truth, Ventresca burns himself to death. Mortati is elected pope, Vittoria and Langdon leave together, and the surviving Illuminati brand is entrusted to Langdon.",
+            "through": {
+              "chapter": 137
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "angels-amp-demons"
+      }
+    },
     "angels-demons": {
       "characters": {
         "characters": [
@@ -757,6 +943,236 @@
           }
         ],
         "work": "anna-karenina"
+      }
+    },
+    "anna-karenina-amazonclassics-edition": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Stiva"
+            ],
+            "description": "A sociable Moscow civil servant whose affair with his children's former governess has thrown his household into crisis. Charming, careless with money, and readily forgiven by society, he hopes his sister Anna can persuade his wife Dolly not to leave him.",
+            "id": "stepan-arkadyevich-oblonsky",
+            "name": "Stepan Arkadyevich Oblonsky",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Dolly"
+            ],
+            "description": "Stiva's exhausted wife and the mother of their children. She is devastated by proof of his infidelity and must weigh her anger against affection, family pressures, and the practical limits facing a woman with a large household.",
+            "id": "darya-alexandrovna-oblonskaya",
+            "name": "Darya Alexandrovna Oblonskaya",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Konstantin Levin"
+            ],
+            "description": "Stiva's old friend, a wealthy but socially awkward country landowner who has come to Moscow intending to propose to Kitty Shcherbatskaya. Earnest and self-critical, he feels most grounded on his estate and is troubled by questions of work, family, faith, and how to live honestly.",
+            "id": "konstantin-dmitrievich-levin",
+            "name": "Konstantin Dmitrievich Levin",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Kitty"
+            ],
+            "description": "The youngest Shcherbatsky daughter, entering Moscow society and considering her prospects for marriage. She cares for Levin but is captivated by the polished officer Vronsky and expects him to make a declaration.",
+            "id": "ekaterina-alexandrovna-shcherbatskaya",
+            "name": "Ekaterina Alexandrovna Shcherbatskaya",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A wealthy, handsome cavalry officer admired in fashionable society. Attentive to Kitty without having promised marriage, he is confident that his conduct is harmless until a meeting at the railway station redirects his interest.",
+            "id": "alexei-kirillovich-vronsky",
+            "name": "Alexei Kirillovich Vronsky",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Stiva's sister, a married woman from St Petersburg who comes to Moscow to help reconcile Stiva and Dolly. Intelligent, poised, and warmly responsive to others, she makes an immediate impression on Vronsky while remaining conscious of her husband and young son at home.",
+            "id": "anna-arkadyevna-karenina",
+            "name": "Anna Arkadyevna Karenina",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Levin's troubled older brother, living in poverty with Masha, a woman he has taken out of a brothel. Proud, ill, and politically combative, Nikolai resents pity but remains an urgent object of concern for Levin.",
+            "id": "nikolai-dmitrievich-levin",
+            "name": "Nikolai Dmitrievich Levin",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Anna's husband, a senior government official in St Petersburg. Formal, disciplined, and strongly invested in duty and reputation, he receives Anna home after her visit to Moscow and views emotional display with suspicion.",
+            "id": "alexei-alexandrovich-karenin",
+            "name": "Alexei Alexandrovich Karenin",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Seryozha"
+            ],
+            "description": "Anna and Karenin's beloved young son. His everyday dependence on his mother gives Anna's domestic life a tenderness that contrasts with the rigid public world surrounding the family.",
+            "id": "sergei-alexeyich-karenin",
+            "name": "Sergei Alexeyich Karenin",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Betsy"
+            ],
+            "description": "Vronsky's fashionable cousin and a leading St Petersburg hostess. Her drawing room gives Anna and Vronsky opportunities to meet under the permissive conventions of their social circle.",
+            "id": "princess-elizaveta-fyodorovna-tverskaya",
+            "name": "Princess Elizaveta Fyodorovna Tverskaya",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A pious woman whom Kitty meets at a German spa. Quietly devoted to caring for invalids, she appears to Kitty to embody a purposeful life beyond romance and fashionable approval.",
+            "id": "varenka",
+            "name": "Varenka",
+            "reveal": {
+              "chapter": 72
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Levin's older half-brother, a respected intellectual and writer who spends time on Levin's estate. Courteous and rational, he discusses agricultural and political questions from a theoretical distance that often frustrates Levin.",
+            "id": "sergei-ivanovich-koznyshev",
+            "name": "Sergei Ivanovich Koznyshev",
+            "reveal": {
+              "chapter": 74
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The unmarried cousin who has long managed Levin's household. Practical and familiar, she represents the settled domestic order of his bachelor life even as he continues to long for a family of his own.",
+            "id": "agafya-mikhailovna",
+            "name": "Agafya Mikhailovna",
+            "reveal": {
+              "chapter": 76
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A society woman devoted to religious and charitable causes who takes a strong interest in Karenin during his personal crisis. She offers him spiritual reassurance while increasingly involving herself in his household.",
+            "id": "countess-lidia-ivanovna",
+            "name": "Countess Lidia Ivanovna",
+            "reveal": {
+              "chapter": 128
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "anna-karenina-amazonclassics-edition"
+      },
+      "recaps": {
+        "ending": "After Anna's death, Vronsky gives their daughter into Karenin's care and leaves as a volunteer for the war in Serbia, indifferent to whether he survives. Stiva continues seeking advancement, while Koznyshev and others are swept up in public enthusiasm for the Slavic cause. On his estate, Levin remains disturbed by his inability to reason his way into religious certainty. A conversation with a peasant helps him recognize that a meaningful life can be directed toward goodness rather than self-interest. This insight does not make him flawless or remove every doubt, but it gives him a basis for living. During a storm he fears that Kitty and their infant son have been killed by a falling tree; finding them safe sharpens his sense of gratitude. He decides that his new understanding may remain private even from Kitty, and that ordinary family life will continue with quarrels and mistakes, yet can now possess a moral meaning he had been unable to see.",
+        "in_short": "Anna Karenina, the wife of a prominent official, begins an affair with the cavalry officer Vronsky and eventually leaves her husband and son to live with him. Their exclusion from respectable society, Vronsky's continuing freedom, and Anna's mounting jealousy make their shared life increasingly desperate. Unable to secure a divorce or trust his love, Anna dies by suicide beneath a train, leaving Vronsky broken. In a parallel story, the landowner Levin is rejected by Kitty, then later marries her. They endure family illness, jealousy, and the difficult birth of their son, while Levin searches for a way to reconcile honest thought with faith. After Anna's death, Vronsky goes to war. Levin finally understands that life need not be justified by abstract proof: it gains meaning through an imperfect but deliberate commitment to goodness, family, and responsibilities beyond the self.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Stiva Oblonsky's Moscow household is in turmoil after his wife Dolly discovers his affair with their former governess. His sister Anna arrives from St Petersburg and persuades Dolly to remain with him. Meanwhile, the country landowner Konstantin Levin comes to propose to Dolly's younger sister Kitty, but she refuses him because she expects a proposal from the charming officer Alexei Vronsky. At the railway station Vronsky and Anna meet and are both shaken by the attraction, as a worker's accidental death casts a dark note over the encounter. At a ball, Kitty realizes that Vronsky's attention has shifted entirely to Anna. Anna abruptly returns to her husband Karenin and her young son in St Petersburg, but Vronsky follows. Levin retreats to his estate after the rejection, trying to immerse himself in work, while Kitty is left humiliated and ill when Vronsky makes no offer of marriage.",
+            "through": {
+              "chapter": 34
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Anna resumes her outwardly respectable life in St Petersburg, but Vronsky pursues her through the fashionable circle of his cousin Betsy Tverskaya. Their attraction becomes an affair. Karenin notices society's gossip before he fully confronts its emotional reality; he warns Anna chiefly about appearances and duty. Vronsky continues his military and social life, including a dangerous officers' steeplechase in which his mistake causes his mare's death. Anna's visible distress at his fall exposes her feelings, and afterward she tells Karenin that she loves Vronsky. Karenin refuses a public rupture and insists that the marriage's external form be preserved. In the countryside Levin experiments with farm management and works beside the peasants, seeking a more truthful life through labor, yet remains divided from them by class and by his own restless theories. Kitty, recovering at a foreign spa, first idealizes charitable self-denial but gradually learns to distinguish genuine care from performance.",
+            "through": {
+              "chapter": 69
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Anna is pregnant by Vronsky while Karenin maintains the household's formal arrangements and considers how to contain the scandal. Vronsky wants Anna to leave her husband, but she cannot bear to lose access to her son and fears the legal and social consequences. Levin continues debating agricultural reform with his intellectual half-brother Koznyshev and his landowning neighbors. A visit to his sick brother Nikolai confronts him with mortality and the limits of his orderly plans. Dolly visits Levin's estate and tells him that Kitty's feelings may have changed, reviving his hope. Anna and Vronsky's situation grows less sustainable: Karenin discovers that the affair continues in his own house and begins divorce proceedings, planning to use Anna's compromising letters. Dolly attempts to appeal to him for mercy, drawing on her own experience of marital betrayal, but he remains determined to protect his position and punish the breach.",
+            "through": {
+              "chapter": 101
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Oblonskys and Shcherbatskys gather in Moscow, where Levin and Kitty meet again. Their awkwardness gives way to mutual understanding; through a private exchange they acknowledge both his earlier proposal and her regret, and they become engaged. As they prepare to marry, Levin feels compelled to show Kitty his diaries, including confessions that distress her but do not end the engagement. In St Petersburg, Anna nearly dies after giving birth to Vronsky's daughter. Believing herself at the point of death, she begs Karenin's forgiveness. Karenin is moved into genuine compassion and forgives both Anna and Vronsky, abandoning the divorce. Humiliated by Karenin's moral generosity and convinced he has lost Anna, Vronsky attempts suicide but survives. Anna also recovers, and the intense reconciliation at her sickbed proves temporary. She and Vronsky leave Russia together, while Karenin retains the household and Anna's son.",
+            "through": {
+              "chapter": 124
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Levin and Kitty marry after a tense church ceremony and begin domestic life on his estate. Their early happiness includes misunderstandings and jealousy, but Kitty proves more adaptable to country life than Levin expected. When Nikolai's illness becomes terminal, Kitty accompanies Levin to the provincial hotel where his brother is dying. Her practical tenderness helps care for Nikolai and steadies Levin through the death; at the same time Kitty learns she is pregnant. Anna and Vronsky travel in Europe but find that freedom from old constraints does not give either of them a durable purpose. They return to Russia and live on Vronsky's estate. Anna secretly visits Seryozha on his birthday, only to be driven away from the son who had been told she was dead. She later attends the theater despite her social exclusion and is publicly snubbed. Vronsky is angered by the predictable humiliation, while Anna becomes increasingly conscious that his position and choices remain broader than hers.",
+            "through": {
+              "chapter": 157
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Dolly visits Anna and Vronsky's impressive country estate. She finds them surrounded by comfort and projects, yet sees the inequality beneath their independence: Vronsky can participate in public life, while Anna's uncertain marital status isolates her and complicates the future of their daughter. Anna says she has taken steps to avoid another pregnancy. Her divorce remains unresolved because Karenin, influenced by Countess Lidia Ivanovna, will not consent. Levin becomes active in local elections and encounters Vronsky without open conflict. Back home, Levin's jealousy is stirred when the sociable visitor Veslovsky flirts with Kitty; Levin abruptly sends him away. The episode embarrasses the household but ends without lasting damage. Levin and Kitty draw closer as her pregnancy advances, although he remains anxious about the coming birth and dissatisfied with his own attempts to find certainty in work, politics, or intellectual argument.",
+            "through": {
+              "chapter": 189
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Levin and Kitty go to Moscow for the birth of their child. After a long and frightening labor, Kitty safely delivers a son, Dmitri. Levin feels relief and wonder but does not experience the immediate spiritual transformation he had imagined. Anna and Vronsky also return to Moscow while waiting for movement on the divorce. Their relationship deteriorates as Anna interprets his engagements, family obligations, and brief absences as evidence that his love is failing. She relies increasingly on morphine and moves between demands for reassurance and resentment of her dependence. After a bitter quarrel, Vronsky leaves to visit his mother. Anna sends messages, then becomes convinced that he has abandoned her and that reconciliation can no longer save them. In a state of despair and confused anger, she goes to the railway and throws herself beneath a train, recognizing too late the finality of the act.",
+            "through": {
+              "chapter": 220
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After Anna's suicide, Vronsky is devastated. He gives the care of their daughter to Karenin and leaves with other Russian volunteers to fight in Serbia, seeing little value in his own survival. Public attention has shifted toward the Slavic war effort, and Koznyshev is among those energized by the cause. Levin, however, remains on his estate with Kitty and their infant son, still troubled by religious doubt and the fear that rational inquiry offers no reason to live morally. A peasant's remark about living for the soul helps him grasp that goodness is not something he has invented or proved but a standard already shaping his deepest choices. During a violent storm he panics for Kitty and the baby, then finds them unharmed. Levin understands that insight will not end his temper, doubts, or ordinary disagreements, and he does not expect a perfect life. He nevertheless accepts that his days can have meaning when he consciously directs them toward goodness and responsibility to others.",
+            "through": {
+              "chapter": 239
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "anna-karenina-amazonclassics-edition"
       }
     },
     "anne-of-avonlea": {
