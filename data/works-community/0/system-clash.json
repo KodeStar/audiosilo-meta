@@ -1326,6 +1326,202 @@
         "work": "system-interference"
       }
     },
+    "tale-of-two-cities": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A trusted employee of Tellson's Bank who travels from London to France on a confidential mission. Methodical and habitually describing himself as a man of business, he nevertheless feels a strong personal responsibility toward the people placed in his care.",
+            "id": "jarvis-lorry",
+            "name": "Jarvis Lorry",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young Englishwoman summoned to meet Jarvis Lorry at Dover. She has grown up believing both parents dead and learns that her French father has instead been found alive after a long, unexplained imprisonment.",
+            "id": "lucie-manette",
+            "name": "Lucie Manette",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Doctor Manette"
+            ],
+            "description": "Lucie's father, a French physician recently released after eighteen years in the Bastille. When first seen he is physically diminished, uncertain of his identity, and absorbed in making shoes, a prison habit that shields him from painful awareness of his past.",
+            "id": "alexandre-manette",
+            "name": "Alexandre Manette",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wine-shop keeper in the Paris district of Saint Antoine and a former servant of Doctor Manette. He shelters the newly released prisoner while also maintaining ties with men who quietly observe the injustices around them.",
+            "id": "ernest-defarge",
+            "name": "Ernest Defarge",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Defarge's composed and watchful wife, who sits in the wine shop knitting while attending closely to visitors and neighborhood events. Her reserve and discipline make her seem more formidable than her outwardly ordinary occupation suggests.",
+            "id": "madame-defarge",
+            "name": "Madame Defarge",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A French émigré tried in London for treason after repeated journeys between France and England. He behaves with dignity during the proceedings and bears a striking physical resemblance to Sydney Carton.",
+            "id": "charles-darnay",
+            "name": "Charles Darnay",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A brilliant but dissolute English barrister who assists in Charles Darnay's defense. His close resemblance to the prisoner helps create reasonable doubt, though Carton treats his own ability as wasted and regards himself with bitter contempt.",
+            "id": "sydney-carton",
+            "name": "Sydney Carton",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Miss Pross"
+            ],
+            "description": "Lucie Manette's fiercely loyal English companion and housekeeper. Blunt, protective, and devoted, she regards Lucie's welfare as her highest concern and distrusts the many admirers drawn to the household.",
+            "id": "miss-pross",
+            "name": "Miss Pross",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful French aristocrat whose carriage kills a child in a crowded Paris street. He treats the death as an inconvenience and represents a ruling class insulated from the suffering and anger of the people around it.",
+            "id": "marquis-st-evremonde",
+            "name": "The Marquis St. Evrémonde",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Jerry Cruncher"
+            ],
+            "description": "A messenger and porter employed by Tellson's Bank. Gruff, suspicious, and prone to complaining about his wife's prayers, he supplements his daytime work with a secretive nighttime occupation.",
+            "id": "jeremiah-cruncher",
+            "name": "Jeremiah Cruncher",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A polished government informant who testifies against Charles Darnay at his London trial. His claims rest on his own questionable conduct and connections, making him a useful but untrustworthy instrument of authority.",
+            "id": "john-barsad",
+            "name": "John Barsad",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A rough-edged road mender from the country near the Evrémonde estate. He becomes involved with the revolutionary network after witnessing events that deepen local hatred of the aristocracy.",
+            "id": "the-mender-of-roads",
+            "name": "The Mender of Roads",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "tale-of-two-cities"
+      },
+      "recaps": {
+        "ending": "Sydney Carton uses his resemblance to Charles Darnay to enter the prison, drug Darnay, exchange clothes with him, and have him carried out under Carton's identity. Darnay escapes Paris in a carriage with Lucie, their child, Doctor Manette, and Jarvis Lorry. Madame Defarge goes to their lodging intending to denounce or kill the remaining family, but Miss Pross delays her; during their struggle Madame Defarge's pistol fires and kills her, while Miss Pross is permanently deafened. Carton remains in Darnay's place and comforts a frightened young seamstress as they approach the guillotine. He dies knowing that Lucie's family will survive, remember him lovingly, and give his name to a child. His voluntary sacrifice fulfills his promise to Lucie and transforms a life he considered wasted into the means of the family's rescue.",
+        "in_short": "After eighteen years in the Bastille, Doctor Manette is restored to life with the help of his daughter Lucie and banker Jarvis Lorry. In London, Lucie marries French émigré Charles Darnay, while the gifted but self-destructive Sydney Carton privately promises he would sacrifice anything for her. Darnay is secretly an Evrémonde, heir to an aristocratic family whose cruelty has helped fuel revolution. When he returns to revolutionary France to aid a former servant, he is imprisoned. Doctor Manette's former-prisoner status first saves him, but a letter he wrote in the Bastille condemns the Evrémondes and sends Darnay back to death. Madame Defarge, whose family suffered through Evrémonde violence, seeks the destruction of Darnay's entire household. Carton exploits his resemblance to Darnay, takes his place in prison, and sends Darnay out to escape with Lucie, their child, Doctor Manette, and Lorry. Miss Pross kills Madame Defarge accidentally while defending the family's flight. Carton goes calmly to the guillotine, giving his life so the family can live.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In 1775, Tellson's Bank employee Jarvis Lorry travels to Dover to meet seventeen-year-old Lucie Manette. She has always believed her parents dead, but Lorry reveals that her father, a French physician, has been released after eighteen years in the Bastille. They go to Paris, where wine-shop keeper Ernest Defarge is sheltering Doctor Manette in an attic. The doctor is traumatized, barely recognizes himself, and compulsively makes shoes as he did in prison. Lucie's voice and appearance begin to reach him through his confusion. Lorry and Lucie take him away from France, hoping that safety and his daughter's care can restore his health and identity.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Five years later, French émigré Charles Darnay is tried in London for treason. Jarvis Lorry, Lucie, and Doctor Manette testify about encounters with him during travel between England and France. The prosecution depends on informers John Barsad and Roger Cly, whose credibility is weak. Lawyer Stryver and his gifted assistant Sydney Carton secure an acquittal by drawing attention to Carton's remarkable resemblance to Darnay, undermining the identification evidence. Darnay is welcomed into the Manettes' circle, while Carton privately confronts how little he has made of abilities comparable to Darnay's. At the Manettes' Soho home, Lucie has become the center of a close household that includes her protective companion Miss Pross. Darnay, Carton, and Stryver are all drawn toward her in different ways.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In France, the Marquis St. Evrémonde's carriage kills a child, and he responds with contemptuous indifference. At his country estate he meets his nephew, Charles Darnay, who has rejected the family's cruelty and intends to renounce its privileges. The Marquis is murdered during the night, and revolutionary anger continues to spread. In London, Darnay declares his love for Lucie to Doctor Manette but withholds his real family name until the morning of their marriage. Sydney Carton also speaks privately to Lucie. He admits that he expects little from his own life, yet promises that he would give his life to preserve someone dear to her. Lucie marries Darnay. When Darnay finally tells Doctor Manette his identity, the revelation causes the doctor to relapse temporarily into shoemaking, though Lorry and Miss Pross help him recover before the couple returns.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Years pass in London. Lucie and Darnay build a family, endure the death of a young son, and raise their daughter in the affectionate circle around Doctor Manette. Carton remains a familiar visitor and wins the child's trust. In France, accumulated hunger and oppression erupt into revolution. Defarge and Madame Defarge help lead the people of Saint Antoine in storming the Bastille. Defarge searches Doctor Manette's former cell and finds a hidden paper. The old aristocratic order collapses, the Evrémonde estate is destroyed, and émigrés flee. Tellson's sends Lorry to Paris to protect its records. Darnay receives an appeal from Gabelle, a former Evrémonde servant imprisoned because his master abandoned France. Believing his own renunciation of privilege will protect him, Darnay secretly leaves England to intercede. Revolutionary authorities arrest him soon after he crosses into France, identifying him as an emigrant aristocrat.",
+            "through": {
+              "chapter": 33
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Lucie, her child, and Doctor Manette follow Darnay to Paris and join Lorry. Doctor Manette discovers that his Bastille imprisonment gives him influence with the revolutionaries and uses it to protect Darnay during a long detention. Lucie waits daily where Darnay may glimpse her from prison. After fifteen months, Darnay is tried and acquitted through Doctor Manette's testimony and Gabelle's evidence that he returned voluntarily to help. The family celebrates, but Darnay is arrested again the same night, denounced by Ernest and Madame Defarge and by an unnamed third accuser. Sydney Carton has meanwhile arrived in Paris and notices that the revolutionary spy Solomon Pross is also John Barsad, Miss Pross's missing brother. Carton uses Barsad's compromised position to force his cooperation and gains a possible route into Darnay's prison.",
+            "through": {
+              "chapter": 39
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At Darnay's second trial, Defarge produces the paper found in Doctor Manette's Bastille cell. It records how the Evrémonde brothers abused a peasant family and imprisoned the doctor to suppress his knowledge; before hiding the account, Manette condemned the brothers and their descendants. Darnay is sentenced to the guillotine despite his personal innocence and his father-in-law's efforts. Madame Defarge is revealed as the surviving sister of the injured family and intends to pursue Lucie and her child as well. Doctor Manette's confidence collapses when he cannot reverse the sentence. Carton arranges the family's departure papers with Lorry, instructs him to keep a carriage ready, and prepares to use the access he forced Barsad to provide. He also overhears Madame Defarge's plan to accuse the remaining Manettes, making immediate escape essential.",
+            "through": {
+              "chapter": 43
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Carton enters Darnay's cell, drugs him, changes clothes with him, and has Barsad carry the unconscious prisoner out as though he were Carton. Lorry's carriage leaves Paris with Darnay, Lucie, their daughter, Doctor Manette, and their companions before the substitution is discovered. Madame Defarge goes to the family's lodging intending to ensure their destruction, but Miss Pross stays behind to delay her. They struggle, Madame Defarge's pistol discharges and kills her, and Miss Pross escapes with permanent hearing loss. Carton goes to the guillotine in Darnay's place. He comforts a young seamstress condemned beside him and faces death peacefully, confident that his sacrifice will allow Lucie's family to live and that they will preserve his memory. Darnay and Lucie escape, later naming a son for Carton, whose final act gives meaning to the life he had judged wasted.",
+            "through": {
+              "chapter": 45
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "tale-of-two-cities"
+      }
+    },
     "tarots-ninth-harbinger": {
       "characters": {
         "characters": [

@@ -3429,6 +3429,248 @@
         "work": "the-three-musketeers"
       }
     },
+    "the-three-musketeers-amazonclassics-edition": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An ambitious young Gascon who rides toward Paris with little money, a quick temper, and a letter of introduction to the captain of the King's Musketeers. His skill and nerve are matched by a readiness to take offense, and an insult at Meung immediately diverts him from his careful plans.",
+            "id": "dartagnan",
+            "name": "d'Artagnan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The oldest and most reserved of the three musketeers d'Artagnan meets in Paris. He has aristocratic manners, formidable courage, and a private sorrow he does not discuss. Though often melancholy, he is a dependable swordsman and the natural leader of his friends.",
+            "id": "athos",
+            "name": "Athos",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A large, boastful musketeer who cultivates an appearance of wealth and grandeur even when short of cash. He is vain about his clothes and romantic prospects, but his courage in a fight and loyalty to his companions are genuine.",
+            "id": "porthos",
+            "name": "Porthos",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A graceful, educated musketeer who insists that military life is only temporary and speaks often of entering the Church. His learning and discreet social connections complement his friends' more direct talents.",
+            "id": "aramis",
+            "name": "Aramis",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Captain of the King's Musketeers and the intended recipient of d'Artagnan's stolen letter of introduction. Proud of his corps and protective of its members, he recognizes courage quickly while demanding discipline and loyalty.",
+            "id": "monsieur-de-treville",
+            "name": "Monsieur de Tréville",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A scarred gentleman encountered at Meung who mocks d'Artagnan, has him beaten, and takes his letter to Tréville. He appears to be engaged in confidential business connected to the cardinal and becomes the young Gascon's first enemy in France.",
+            "id": "man-from-meung",
+            "name": "The Man from Meung",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An elegant Englishwoman glimpsed in a carriage at Meung while receiving instructions from d'Artagnan's new enemy. Her beauty, wealth, and involvement in secret political business immediately mark her as someone of consequence.",
+            "id": "milady",
+            "name": "Milady",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Paris mercer who becomes d'Artagnan's landlord. Anxious and easily influenced, he asks for help after his young wife is abducted because of her service in the queen's household.",
+            "id": "monsieur-bonacieux",
+            "name": "Monsieur Bonacieux",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Madame Bonacieux"
+            ],
+            "description": "The mercer's young wife and a trusted attendant in the queen's household. Resourceful under pressure, she draws d'Artagnan into a dangerous court secret after he helps her escape captivity.",
+            "id": "constance-bonacieux",
+            "name": "Constance Bonacieux",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Anne of Austria"
+            ],
+            "description": "The queen of France, caught between her marriage to Louis XIII, the cardinal's surveillance, and her own sympathy for Spain and England. Her isolated position at court makes even a private token or meeting politically dangerous.",
+            "id": "queen-anne",
+            "name": "Queen Anne",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Duke of Buckingham"
+            ],
+            "description": "The powerful English favorite of King Charles I and a devoted admirer of Queen Anne. He enters Paris in disguise for a secret meeting, risking a diplomatic crisis for the chance to see her.",
+            "id": "george-villiers",
+            "name": "George Villiers",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Cardinal Richelieu"
+            ],
+            "description": "France's chief minister and the dominant political force at court. He maintains his own guards and network of agents, rivals the queen's circle, and watches both king and musketeers with strategic patience.",
+            "id": "cardinal-de-richelieu",
+            "name": "Cardinal de Richelieu",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The king of France, jealous of Buckingham and suspicious of his queen. He values Tréville's musketeers but is readily steered by court rivalries and the cardinal's carefully presented information.",
+            "id": "louis-xiii",
+            "name": "Louis XIII",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Milady's English brother-in-law, first met by d'Artagnan during the journey to London. Courteous and courageous, he is grateful when d'Artagnan helps him survive an attack and welcomes him in England.",
+            "id": "lord-de-winter",
+            "name": "Lord de Winter",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Milady's maid, who is more candid and vulnerable than her mistress. She shows an immediate interest in d'Artagnan when he begins visiting the household.",
+            "id": "kitty",
+            "name": "Kitty",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Puritan naval officer assigned to guard Milady during her confinement in England. Severe in principle and distrustful of his prisoner, he follows Lord de Winter's precautions closely.",
+            "id": "john-felton",
+            "name": "John Felton",
+            "reveal": {
+              "chapter": 51
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-three-musketeers-amazonclassics-edition"
+      },
+      "recaps": {
+        "ending": "Milady reaches the convent at Béthune before the musketeers and poisons Constance just as d'Artagnan arrives to rescue her. Athos and the others pursue Milady, assemble the people harmed by her crimes, and conduct a private trial. The executioner of Lille reveals her earlier history and carries out the sentence after the group finds her guilty. Richelieu then has d'Artagnan arrested, but the cardinal recognizes both the danger and usefulness of a man who has survived his agents. A written authorization formerly given to Milady protects d'Artagnan, and Richelieu converts the confrontation into a promotion, offering him a lieutenant's commission. Athos persuades him to accept it. The four friends then move toward separate lives: Porthos makes a wealthy marriage, Aramis returns to his religious ambitions, and Athos withdraws from service, while d'Artagnan remains a musketeer and advances. His long feud with the Man from Meung, now known as Rochefort, eventually settles into mutual respect after repeated duels.",
+        "in_short": "Young d'Artagnan comes to Paris seeking a place among the King's Musketeers and befriends Athos, Porthos, and Aramis after fighting beside them. The four become entangled in the struggle between Queen Anne and Cardinal Richelieu. They save the queen from exposure by recovering diamond ornaments she gave to the Duke of Buckingham, but d'Artagnan also attracts the hatred of the cardinal's formidable agent Milady. He discovers that she is the branded former wife Athos believed dead. During the siege of La Rochelle, the friends learn that Milady has authority to arrange Buckingham's death and take revenge on d'Artagnan. She escapes English custody by manipulating Felton, who assassinates Buckingham, then reaches France and poisons d'Artagnan's beloved Constance. The musketeers capture and judge Milady, and an executioner kills her. Richelieu chooses to recruit rather than destroy d'Artagnan, granting him a lieutenant's commission. The friends' paths divide, but their loyalty has carried them through court intrigue, war, and private revenge.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Eighteen-year-old d'Artagnan leaves Gascony for Paris, hoping to join the King's Musketeers. At Meung, a scarred gentleman humiliates him, steals his letter of introduction to Captain Tréville, and departs after sending an elegant Englishwoman on a secret mission. In Paris, d'Artagnan reaches Tréville but then quarrels separately with Athos, Porthos, and Aramis, arranging three duels for the same afternoon. Cardinal Richelieu's guards interrupt the first duel and try to arrest the musketeers. D'Artagnan chooses to fight beside his would-be opponents, helping defeat the larger force. The king approves the bold victory despite the ban on dueling. D'Artagnan earns the friendship of all three musketeers and begins service in a related guard company while waiting for a chance to enter their corps.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "D'Artagnan and the three musketeers settle into a close alliance in Paris. Their rivalry with the cardinal's guards mirrors a larger struggle at court. D'Artagnan's landlord, the mercer Bonacieux, reports that his wife Constance, an attendant to Queen Anne, has been abducted. D'Artagnan rescues her and falls in love with her. Constance is carrying messages for the queen, whose position is endangered by Cardinal Richelieu's surveillance and by the secret arrival of the English Duke of Buckingham. Disguised and guided through Paris, Buckingham meets Anne privately. Their attachment gives Richelieu an opportunity to turn the king's jealousy into a political weapon, while d'Artagnan becomes committed to protecting Constance and the queen's secret.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Queen Anne has given Buckingham a set of diamond ornaments belonging to the king. After Milady steals two of them in England on Richelieu's instructions, the cardinal persuades Louis XIII to require the queen to wear the set at an approaching ball. Constance asks d'Artagnan to recover it. He rides for London with Athos, Porthos, and Aramis, but attacks and mishaps leave each companion behind so that d'Artagnan completes the crossing alone. Buckingham discovers the loss, closes England's ports, and has matching replacements made. D'Artagnan races back to Paris with the restored set. At the ball, the queen appears wearing the full number, defeating Richelieu's trap. She rewards d'Artagnan indirectly, and he believes his service will finally secure a meeting with Constance, who has risked herself throughout the mission.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The diamond mission saves the queen, but Constance vanishes before her planned meeting with d'Artagnan, and her frightened husband has become useful to the cardinal. D'Artagnan searches while the musketeers try to obtain equipment for an expected campaign. Porthos relies on the wealthy married woman he courts; Aramis briefly returns to thoughts of the priesthood before a secret message restores his spirits. Athos, drinking heavily, tells d'Artagnan of a nobleman who married a beautiful young woman and later discovered a criminal brand on her shoulder, evidence that led him to attempt to hang her. The story explains Athos's bitterness, though he presents it at a distance. Meanwhile d'Artagnan encounters Milady again through her English connection, Lord de Winter, and becomes fascinated by her even as signs of her hostility and political loyalties accumulate.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Milady wants revenge on a man she believes rejected her, and d'Artagnan uses her maid Kitty to intercept letters and enter Milady's confidence under false pretenses. When he finally reveals the deception, Milady attacks him. During the struggle he sees a fleur-de-lis brand on her shoulder. D'Artagnan now understands that Milady is the woman from Athos's story and that Athos's wife survived. He escapes with Kitty's help and warns Athos. Milady has become his personal enemy as well as the cardinal's agent, while Constance remains missing. The friends complete their preparations for war by a mixture of ingenuity, social connections, and sacrifice, then leave Paris as the king's forces gather against the Protestant stronghold of La Rochelle.",
+            "through": {
+              "chapter": 38
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At La Rochelle, d'Artagnan survives several covert attempts on his life, including poisoned wine that kills another soldier. The four friends demonstrate their nerve by breakfasting in the exposed bastion of Saint-Gervais under enemy fire, using the dangerous post as cover for a private council. They have overheard Richelieu instructing Milady to travel to England and help remove Buckingham, whose support for the besieged Protestants threatens France. The cardinal also gives her latitude to settle her grievance against d'Artagnan. Athos quietly confronts Milady and takes the written authority she received. The musketeers decide that Lord de Winter must be warned about his sister-in-law and that the queen should be alerted to the danger facing Buckingham. Their military service and private struggle have now become inseparable.",
+            "through": {
+              "chapter": 47
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Lord de Winter acts on the warning and confines Milady in England under the guard of the stern Puritan officer John Felton. Milady studies Felton's beliefs, presents herself as a persecuted innocent, and gradually turns his suspicion into devotion. He helps her escape, then assassinates Buckingham before the duke can lead aid to La Rochelle. Milady sails for France while Felton is arrested. The musketeers learn that Buckingham is dead and that Milady remains ahead of them. Their immediate concern becomes Constance, who has been hidden in a convent at Béthune for protection. Milady is also directed there and arrives under a false appearance, placing the unsuspecting Constance within reach before d'Artagnan and his friends can complete their pursuit.",
+            "through": {
+              "chapter": 59
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At Béthune, Milady gains Constance's trust and poisons her as the musketeers approach. D'Artagnan reaches Constance only in time to see her die. Athos leads the pursuit of Milady and gathers d'Artagnan, Porthos, Aramis, Lord de Winter, and the executioner of Lille, whose testimony connects her to an earlier crime and to the brand on her shoulder. They capture her, conduct a private judgment, and have the executioner carry out the sentence. When Richelieu arrests d'Artagnan, the authorization Athos took from Milady gives the young man protection. Rather than create another enemy, the cardinal offers him a lieutenant's commission in the musketeers. Athos urges him to accept. Porthos leaves to marry wealth, Aramis turns again toward the Church, and Athos retires, while d'Artagnan continues his military career. The former Man from Meung is revealed as Rochefort; after further duels, he and d'Artagnan end their feud with respect.",
+            "through": {
+              "chapter": 67
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-three-musketeers-amazonclassics-edition"
+      }
+    },
     "the-throne-of-fire": {
       "characters": {
         "characters": [

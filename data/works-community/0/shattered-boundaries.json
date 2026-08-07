@@ -1307,6 +1307,128 @@
         "work": "shattered-the-iron-druid-chronicles-book-7"
       }
     },
+    "sherlock-holmes-the-final-problem-and-the-empty-house": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A consulting detective whose powers of observation and deduction have defeated many criminals. He comes to Watson in an unusually strained state after confronting Professor Moriarty and asks his friend to help him leave England while the police close in on Moriarty's organization.",
+            "id": "sherlock-holmes",
+            "name": "Sherlock Holmes",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Dr Watson"
+            ],
+            "description": "A physician, the narrator, and Holmes's trusted friend. Though he has returned to ordinary medical practice, he agrees to accompany Holmes to continental Europe when the detective explains the danger posed by Moriarty.",
+            "id": "john-watson",
+            "name": "Dr John Watson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A mathematics professor whom Holmes identifies as the calculating organizer behind a vast criminal network. Respectable in public and extremely dangerous in private, he is the one opponent Holmes considers his intellectual equal.",
+            "id": "professor-moriarty",
+            "name": "Professor Moriarty",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Holmes's older brother, whose unobtrusive help is trusted during the attempt to escape Moriarty's agents. His ability to pass unnoticed makes him useful when conventional travel arrangements are unsafe.",
+            "id": "mycroft-holmes",
+            "name": "Mycroft Holmes",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "The Honourable Ronald Adair"
+            ],
+            "description": "A well-connected young Londoner and keen card player whose unexplained death becomes the mystery occupying Watson after Holmes's disappearance. He is found shot in a locked room with money and a record of card winnings arranged nearby.",
+            "id": "ronald-adair",
+            "name": "Ronald Adair",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A former army officer, celebrated big-game hunter, and formidable marksman. His connection to Moriarty's circle and his specialized air gun make him the immediate danger behind the trap at the empty house.",
+            "id": "colonel-sebastian-moran",
+            "name": "Colonel Sebastian Moran",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Holmes's loyal landlady at Baker Street. She helps prepare the decoy in his old rooms and moves it at intervals so that an observer across the street will mistake it for a living occupant.",
+            "id": "mrs-hudson",
+            "name": "Mrs Hudson",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Scotland Yard inspector who has worked with Holmes and Watson before. He and his officers wait near Baker Street to arrest the gunman once Holmes's carefully arranged trap has been sprung.",
+            "id": "inspector-lestrade",
+            "name": "Inspector Lestrade",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "sherlock-holmes-the-final-problem-and-the-empty-house"
+      },
+      "recaps": {
+        "ending": "Holmes explains that he escaped Moriarty at Reichenbach Falls by using his climbing skill, then hid while the professor's surviving associate tried to kill him from above. He spent the next three years abroad dismantling threats and keeping even Watson ignorant so that London would believe him dead. Back at Baker Street, Holmes uses a wax likeness as bait while he and Watson watch from the empty house opposite. Colonel Sebastian Moran fires a silent air-gun round through the window and is seized by Holmes, Watson, Lestrade, and the police. Holmes identifies Moran as Moriarty's chief surviving agent and explains that Ronald Adair had discovered Moran cheating at cards; Moran killed Adair to prevent exposure. With Moran arrested, Holmes is publicly alive again and resumes his partnership with Watson.",
+        "in_short": "Sherlock Holmes tells Dr Watson that Professor Moriarty, the organizer of a criminal empire, has resolved to kill him. The friends evade pursuit across Europe, but at Switzerland's Reichenbach Falls Watson is diverted by a false medical message. He returns to find evidence that Holmes and Moriarty have gone over the precipice together. Three years later, Watson is studying the locked-room shooting of Ronald Adair when Holmes returns in disguise. Holmes reveals that he survived the falls and stayed hidden because one of Moriarty's men had seen him escape. He sets a wax figure in his Baker Street window and waits with Watson in the empty house opposite. Colonel Sebastian Moran shoots at the decoy with a concealed air gun and is arrested. Holmes identifies Moran as both the marksman stalking him and Adair's killer, clearing the mystery and restoring the Holmes-Watson partnership.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Sherlock Holmes arrives at Dr Watson's home with injured knuckles and an urgent request for help. He has spent months exposing the organization run by Professor Moriarty, a respected mathematician who secretly coordinates much of London's serious crime. With arrests imminent, Moriarty has personally threatened Holmes, and several apparent accidents show that his agents are already attacking. Holmes and Watson leave England by an indirect route and travel through Europe, pursued despite their precautions. At Meiringen in Switzerland they walk toward Reichenbach Falls. A message summons Watson back to the hotel to treat an Englishwoman, but it is a ruse. When Watson returns, Holmes is gone. His farewell note explains that Moriarty has caught up with him and that their confrontation will end the case. Marks on the path indicate that two men reached the edge and neither returned. Watson concludes that both fell to their deaths, and Moriarty's organization is broken up at the cost of Holmes's life.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Three years after Reichenbach, Watson remains deeply affected by Holmes's presumed death. His attention turns to Ronald Adair, a young card player found shot in a locked room, with no weapon and no obvious route for the murderer. Near the crime scene Watson meets an elderly bookseller, who later visits him and reveals himself as Holmes in disguise. Holmes explains that he defeated Moriarty at the falls and climbed to safety, but hid after a second assailant tried to kill him from above. He has spent the intervening years abroad while Moriarty's remaining followers believed him dead. Holmes takes Watson to an empty house facing Baker Street, where a wax likeness appears in the window of his old rooms. Colonel Sebastian Moran enters their hiding place and fires a specially made air gun at the decoy. Holmes and the police seize him. Moran was Moriarty's leading surviving agent and has been hunting Holmes; Holmes also identifies him as Adair's killer. Adair had learned that Moran cheated at cards and intended to expose him, giving Moran a motive for the locked-room shooting. The arrest removes the immediate threat, and Holmes returns openly to Baker Street and detective work with Watson.",
+            "through": {
+              "chapter": 2
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "sherlock-holmes-the-final-problem-and-the-empty-house"
+      }
+    },
     "shift-omnibus-edition": {
       "characters": {
         "characters": [

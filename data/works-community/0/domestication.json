@@ -873,6 +873,388 @@
         "work": "dracula"
       }
     },
+    "dracula-the-original-manuscript": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A young English solicitor sent to Transylvania to help a foreign nobleman complete the purchase of an estate near London. Conscientious and practical, he records the journey in his journal and continues toward his assignment despite the local people's fearful warnings.",
+            "id": "jonathan-harker",
+            "name": "Jonathan Harker",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Count Dracula"
+            ],
+            "description": "A Transylvanian count who receives Jonathan at his remote castle. Courteous, learned, and intensely interested in England, he has purchased an estate near London and requires Jonathan's help with the legal arrangements.",
+            "id": "count-dracula",
+            "name": "Dracula",
+            "reveal": {
+              "chapter": 1
+            }
+          },
+          {
+            "aliases": [
+              "Mina Murray"
+            ],
+            "description": "Jonathan Harker's fiancée, a schoolmistress studying shorthand and typing so she can assist him. Practical, loyal, and highly organized, she exchanges letters with her closest friend, Lucy Westenra, while waiting for Jonathan's return.",
+            "id": "mina-murray",
+            "name": "Wilhelmina Murray",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Lucy"
+            ],
+            "description": "Mina's warm and affectionate closest friend. Living with her mother, she receives three marriage proposals in one day and accepts Arthur Holmwood, while remaining fond of the two men she turns down.",
+            "id": "lucy-westenra",
+            "name": "Lucy Westenra",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A physician who runs a private asylum and keeps a phonographic diary. After Lucy declines his proposal, he immerses himself in work, paying particular attention to the disturbing behavior of his patient Renfield.",
+            "id": "john-seward",
+            "name": "Dr. John Seward",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Art"
+            ],
+            "description": "The English gentleman whose proposal Lucy accepts. A close friend of John Seward and Quincey Morris, he is devoted to Lucy and looks to his friends for help when her health becomes alarming.",
+            "id": "arthur-holmwood",
+            "name": "Arthur Holmwood",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An American adventurer and friend of Arthur Holmwood and John Seward. Direct, generous, and accustomed to danger, he proposes to Lucy but accepts her refusal without resentment and remains loyal to the group.",
+            "id": "quincey-morris",
+            "name": "Quincey Morris",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A patient in Seward's asylum whose compulsions center on consuming living creatures in the belief that their lives can be accumulated. His moods and strange obedience to an unseen master make him an important object of Seward's study.",
+            "id": "r-m-renfield",
+            "name": "R. M. Renfield",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Lucy's widowed mother, who stays with her daughter at Whitby. Affectionate and protective, she is part of the quiet household in which Lucy's health begins to cause concern.",
+            "id": "mrs-westenra",
+            "name": "Mrs. Westenra",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An elderly Whitby resident whom Mina and Lucy meet in the churchyard. Skeptical of local legends and blunt about death, he supplies local knowledge while they watch the harbor and sea.",
+            "id": "mr-swales",
+            "name": "Mr. Swales",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Dutch physician and scholar whom Seward asks to examine Lucy. Energetic, compassionate, and willing to consider explanations beyond ordinary medicine, he directs an increasingly urgent effort to protect her.",
+            "id": "abraham-van-helsing",
+            "name": "Professor Abraham Van Helsing",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Three beautiful and predatory women who inhabit Dracula's castle. They approach the imprisoned Jonathan with a mixture of allure and menace until the Count intervenes and claims authority over him.",
+            "id": "brides-of-dracula",
+            "name": "The Three Vampire Women",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "dracula-the-original-manuscript"
+      },
+      "recaps": {
+        "ending": "Mina's psychic connection to Dracula lets Van Helsing's party track him as he flees toward his Transylvanian castle in a box of native earth. The hunters divide to intercept the routes taken by ship and overland. Near sunset outside the castle, Jonathan and Quincey reach the wagon carrying Dracula's box and fight its guards. Jonathan cuts Dracula's throat while Quincey drives a knife into his heart; Dracula's body crumbles, and the mark on Mina's forehead disappears, showing that his hold over her has ended. Quincey has been mortally wounded in the struggle and dies after seeing Mina freed. Seven years later, Jonathan and Mina have a son named Quincey, and the surviving friends reunite in Transylvania. Jonathan notes that their assembled records are the chief evidence of what happened, while Van Helsing says that the character of the friends and the life of the child honor the man who died helping them.",
+        "in_short": "Solicitor Jonathan Harker visits Count Dracula in Transylvania and discovers that his host is a vampire preparing to move to England. Dracula reaches Whitby, preys on Lucy Westenra, and defeats the efforts of Van Helsing and Lucy's friends to save her. After Lucy becomes a vampire, they release her from that state and unite with Jonathan and Mina to hunt Dracula. They destroy his London refuges, but Dracula attacks Mina and forces her to drink his blood, creating a psychic bond and threatening to transform her. The bond also allows Mina to help track him as he retreats to Transylvania. Jonathan, Van Helsing, Seward, Arthur, and Quincey pursue him. Van Helsing destroys the three vampire women at the castle; Jonathan and Quincey intercept Dracula's box and kill him moments before sunset. Mina is freed, but Quincey dies from his wounds. Seven years later Jonathan and Mina return with their son, named for their fallen friend.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "English solicitor Jonathan Harker travels through Transylvania to complete Count Dracula's purchase of Carfax, an estate near London. Local people fear the destination and give Jonathan a crucifix, but Dracula welcomes him with elaborate courtesy. Jonathan soon notices that the Count has no reflection, moves with inhuman strength, and never appears by day. Doors are locked, there are no servants, and Jonathan realizes he is a captive. He sees Dracula crawl down the castle wall and discovers him lying unnaturally renewed in a box of earth. Three predatory women approach Jonathan, but Dracula drives them away and promises them another victim. Forced to prepare misleading letters about his departure, Jonathan understands that Dracula plans to assume his identity long enough to conceal his death. As boxes of earth leave the castle, Jonathan makes desperate attempts to escape before the Count departs for England.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In England, Mina Murray waits for Jonathan and visits her friend Lucy Westenra at Whitby. Lucy accepts Arthur Holmwood's proposal after also receiving proposals from Dr. John Seward and the American Quincey Morris. Seward studies Renfield, an asylum patient obsessed with consuming living creatures and serving a mysterious master. A violent storm drives the ship Demeter into Whitby harbor with its captain dead and its crew missing; a large dog leaps ashore. The captain's log records an unseen presence killing the sailors during the voyage. Lucy begins sleepwalking and losing blood. Mina finds her in the churchyard with a dark figure bent over her and later sees punctures on her throat. News arrives that Jonathan has been found ill in Budapest. Mina goes to him, marries him there, and seals his journal at his request, while Lucy's unexplained decline continues after Mina leaves.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Seward calls in Professor Van Helsing to diagnose Lucy. Her blood loss becomes critical despite no ordinary wound, and Arthur, Seward, Quincey, and Van Helsing each provide transfusions. Van Helsing uses garlic to protect her room, but Lucy's mother removes it without understanding its purpose. A wolf crashes through the window; Mrs. Westenra dies from shock, and Lucy is left exposed to the creature preying on her. Renfield's agitation rises and falls with the same unseen influence. Lucy dies after moments in which her familiar gentleness gives way to a disturbing, predatory manner. Meanwhile Jonathan and Mina return to England, and Jonathan sees Dracula in London looking younger than before. Mina reads Jonathan's journal and decides that his experiences must be treated as real. Reports then appear of children going missing near Hampstead and returning with small wounds at their throats.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Van Helsing connects the attacks on children with Lucy and shows Seward that her coffin is empty at night and occupied by her unnaturally preserved body by day. Arthur and Quincey join them, and all four witness the transformed Lucy returning to the tomb with a child. They recognize that she has become a vampire. Arthur drives a stake through her heart while the others assist, freeing her from the predatory state; they then seal the tomb. Van Helsing explains that the same enemy must now be hunted in London. Mina gathers journals, letters, telegrams, and newspaper reports into a single chronological record, allowing the group to connect Jonathan's experiences, Lucy's death, Renfield's behavior, and the arrival of Dracula's boxes. The friends pledge themselves to destroy the Count and begin tracing the boxes of Transylvanian earth that provide his places of refuge.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The hunters search Dracula's Carfax property and other London houses, using sacred wafers to make his boxes of earth unusable. They initially exclude Mina from their meetings to spare her, leaving her without protection. Renfield, aware that Dracula threatens her, tries to rebel against his master and is fatally injured. Before dying he gives Seward and Van Helsing enough warning to rush upstairs, where they find Dracula forcing Mina to drink blood from his chest after feeding on her. Dracula escapes, but Mina is left with a psychic connection to him and the threat that she will become a vampire if he survives. She insists on helping while asking the men to kill her if transformation overtakes her. The group confronts Dracula at another house and destroys more refuges, but he escapes with his final box. Mina's hypnotic impressions reveal sounds of water, showing that he is fleeing England by ship.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Mina's connection to Dracula helps the group determine that his ship has reached Galatz. They travel east and split up to follow the box of earth toward the Count's castle. Van Helsing takes Mina to the castle itself, where he protects their camp with a sacred circle. While Mina rests, he enters the tombs and destroys the three vampire women, then seals Dracula's castle refuge. Jonathan and Arthur travel by river, while Seward and Quincey pursue on horseback. Near sunset the parties converge on a wagon carrying Dracula's box. In the fight with its guards, Quincey is badly wounded. Jonathan cuts Dracula's throat and Quincey pierces his heart just before the sun sets; the Count's body disintegrates. Mina's forehead scar vanishes, proving she is free, and Quincey dies after seeing that they succeeded. Seven years later Jonathan and Mina have a son named Quincey, and the surviving friends revisit Transylvania with the record of their shared ordeal.",
+            "through": {
+              "chapter": 27
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "dracula-the-original-manuscript"
+      }
+    },
+    "dracula-with-vampires-dialogues-translated-in-romanian": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A young English solicitor sent to Transylvania to help a foreign nobleman complete the purchase of an estate near London. Conscientious and practical, he records the journey in his journal and continues toward his assignment despite the local people's fearful warnings.",
+            "id": "jonathan-harker",
+            "name": "Jonathan Harker",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Count Dracula"
+            ],
+            "description": "A Transylvanian count who receives Jonathan at his remote castle. Courteous, learned, and intensely interested in England, he has purchased an estate near London and requires Jonathan's help with the legal arrangements.",
+            "id": "count-dracula",
+            "name": "Dracula",
+            "reveal": {
+              "chapter": 1
+            }
+          },
+          {
+            "aliases": [
+              "Mina Murray"
+            ],
+            "description": "Jonathan Harker's fiancée, a schoolmistress studying shorthand and typing so she can assist him. Practical, loyal, and highly organized, she exchanges letters with her closest friend, Lucy Westenra, while waiting for Jonathan's return.",
+            "id": "mina-murray",
+            "name": "Wilhelmina Murray",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Lucy"
+            ],
+            "description": "Mina's warm and affectionate closest friend. Living with her mother, she receives three marriage proposals in one day and accepts Arthur Holmwood, while remaining fond of the two men she turns down.",
+            "id": "lucy-westenra",
+            "name": "Lucy Westenra",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A physician who runs a private asylum and keeps a phonographic diary. After Lucy declines his proposal, he immerses himself in work, paying particular attention to the disturbing behavior of his patient Renfield.",
+            "id": "john-seward",
+            "name": "Dr. John Seward",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Art"
+            ],
+            "description": "The English gentleman whose proposal Lucy accepts. A close friend of John Seward and Quincey Morris, he is devoted to Lucy and looks to his friends for help when her health becomes alarming.",
+            "id": "arthur-holmwood",
+            "name": "Arthur Holmwood",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An American adventurer and friend of Arthur Holmwood and John Seward. Direct, generous, and accustomed to danger, he proposes to Lucy but accepts her refusal without resentment and remains loyal to the group.",
+            "id": "quincey-morris",
+            "name": "Quincey Morris",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A patient in Seward's asylum whose compulsions center on consuming living creatures in the belief that their lives can be accumulated. His moods and strange obedience to an unseen master make him an important object of Seward's study.",
+            "id": "r-m-renfield",
+            "name": "R. M. Renfield",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Lucy's widowed mother, who stays with her daughter at Whitby. Affectionate and protective, she is part of the quiet household in which Lucy's health begins to cause concern.",
+            "id": "mrs-westenra",
+            "name": "Mrs. Westenra",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An elderly Whitby resident whom Mina and Lucy meet in the churchyard. Skeptical of local legends and blunt about death, he supplies local knowledge while they watch the harbor and sea.",
+            "id": "mr-swales",
+            "name": "Mr. Swales",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Dutch physician and scholar whom Seward asks to examine Lucy. Energetic, compassionate, and willing to consider explanations beyond ordinary medicine, he directs an increasingly urgent effort to protect her.",
+            "id": "abraham-van-helsing",
+            "name": "Professor Abraham Van Helsing",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Three beautiful and predatory women who inhabit Dracula's castle. They approach the imprisoned Jonathan with a mixture of allure and menace until the Count intervenes and claims authority over him.",
+            "id": "brides-of-dracula",
+            "name": "The Three Vampire Women",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "dracula-with-vampires-dialogues-translated-in-romanian"
+      },
+      "recaps": {
+        "ending": "Mina's psychic connection to Dracula lets Van Helsing's party track him as he flees toward his Transylvanian castle in a box of native earth. The hunters divide to intercept the routes taken by ship and overland. Near sunset outside the castle, Jonathan and Quincey reach the wagon carrying Dracula's box and fight its guards. Jonathan cuts Dracula's throat while Quincey drives a knife into his heart; Dracula's body crumbles, and the mark on Mina's forehead disappears, showing that his hold over her has ended. Quincey has been mortally wounded in the struggle and dies after seeing Mina freed. Seven years later, Jonathan and Mina have a son named Quincey, and the surviving friends reunite in Transylvania. Jonathan notes that their assembled records are the chief evidence of what happened, while Van Helsing says that the character of the friends and the life of the child honor the man who died helping them.",
+        "in_short": "Solicitor Jonathan Harker visits Count Dracula in Transylvania and discovers that his host is a vampire preparing to move to England. Dracula reaches Whitby, preys on Lucy Westenra, and defeats the efforts of Van Helsing and Lucy's friends to save her. After Lucy becomes a vampire, they release her from that state and unite with Jonathan and Mina to hunt Dracula. They destroy his London refuges, but Dracula attacks Mina and forces her to drink his blood, creating a psychic bond and threatening to transform her. The bond also allows Mina to help track him as he retreats to Transylvania. Jonathan, Van Helsing, Seward, Arthur, and Quincey pursue him. Van Helsing destroys the three vampire women at the castle; Jonathan and Quincey intercept Dracula's box and kill him moments before sunset. Mina is freed, but Quincey dies from his wounds. Seven years later Jonathan and Mina return with their son, named for their fallen friend.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "English solicitor Jonathan Harker travels through Transylvania to complete Count Dracula's purchase of Carfax, an estate near London. Local people fear the destination and give Jonathan a crucifix, but Dracula welcomes him with elaborate courtesy. Jonathan soon notices that the Count has no reflection, moves with inhuman strength, and never appears by day. Doors are locked, there are no servants, and Jonathan realizes he is a captive. He sees Dracula crawl down the castle wall and discovers him lying unnaturally renewed in a box of earth. Three predatory women approach Jonathan, but Dracula drives them away and promises them another victim. Forced to prepare misleading letters about his departure, Jonathan understands that Dracula plans to assume his identity long enough to conceal his death. As boxes of earth leave the castle, Jonathan makes desperate attempts to escape before the Count departs for England.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In England, Mina Murray waits for Jonathan and visits her friend Lucy Westenra at Whitby. Lucy accepts Arthur Holmwood's proposal after also receiving proposals from Dr. John Seward and the American Quincey Morris. Seward studies Renfield, an asylum patient obsessed with consuming living creatures and serving a mysterious master. A violent storm drives the ship Demeter into Whitby harbor with its captain dead and its crew missing; a large dog leaps ashore. The captain's log records an unseen presence killing the sailors during the voyage. Lucy begins sleepwalking and losing blood. Mina finds her in the churchyard with a dark figure bent over her and later sees punctures on her throat. News arrives that Jonathan has been found ill in Budapest. Mina goes to him, marries him there, and seals his journal at his request, while Lucy's unexplained decline continues after Mina leaves.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Seward calls in Professor Van Helsing to diagnose Lucy. Her blood loss becomes critical despite no ordinary wound, and Arthur, Seward, Quincey, and Van Helsing each provide transfusions. Van Helsing uses garlic to protect her room, but Lucy's mother removes it without understanding its purpose. A wolf crashes through the window; Mrs. Westenra dies from shock, and Lucy is left exposed to the creature preying on her. Renfield's agitation rises and falls with the same unseen influence. Lucy dies after moments in which her familiar gentleness gives way to a disturbing, predatory manner. Meanwhile Jonathan and Mina return to England, and Jonathan sees Dracula in London looking younger than before. Mina reads Jonathan's journal and decides that his experiences must be treated as real. Reports then appear of children going missing near Hampstead and returning with small wounds at their throats.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Van Helsing connects the attacks on children with Lucy and shows Seward that her coffin is empty at night and occupied by her unnaturally preserved body by day. Arthur and Quincey join them, and all four witness the transformed Lucy returning to the tomb with a child. They recognize that she has become a vampire. Arthur drives a stake through her heart while the others assist, freeing her from the predatory state; they then seal the tomb. Van Helsing explains that the same enemy must now be hunted in London. Mina gathers journals, letters, telegrams, and newspaper reports into a single chronological record, allowing the group to connect Jonathan's experiences, Lucy's death, Renfield's behavior, and the arrival of Dracula's boxes. The friends pledge themselves to destroy the Count and begin tracing the boxes of Transylvanian earth that provide his places of refuge.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The hunters search Dracula's Carfax property and other London houses, using sacred wafers to make his boxes of earth unusable. They initially exclude Mina from their meetings to spare her, leaving her without protection. Renfield, aware that Dracula threatens her, tries to rebel against his master and is fatally injured. Before dying he gives Seward and Van Helsing enough warning to rush upstairs, where they find Dracula forcing Mina to drink blood from his chest after feeding on her. Dracula escapes, but Mina is left with a psychic connection to him and the threat that she will become a vampire if he survives. She insists on helping while asking the men to kill her if transformation overtakes her. The group confronts Dracula at another house and destroys more refuges, but he escapes with his final box. Mina's hypnotic impressions reveal sounds of water, showing that he is fleeing England by ship.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Mina's connection to Dracula helps the group determine that his ship has reached Galatz. They travel east and split up to follow the box of earth toward the Count's castle. Van Helsing takes Mina to the castle itself, where he protects their camp with a sacred circle. While Mina rests, he enters the tombs and destroys the three vampire women, then seals Dracula's castle refuge. Jonathan and Arthur travel by river, while Seward and Quincey pursue on horseback. Near sunset the parties converge on a wagon carrying Dracula's box. In the fight with its guards, Quincey is badly wounded. Jonathan cuts Dracula's throat and Quincey pierces his heart just before the sun sets; the Count's body disintegrates. Mina's forehead scar vanishes, proving she is free, and Quincey dies after seeing that they succeeded. Seven years later Jonathan and Mina have a son named Quincey, and the surviving friends revisit Transylvania with the record of their shared ordeal.",
+            "through": {
+              "chapter": 27
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "dracula-with-vampires-dialogues-translated-in-romanian"
+      }
+    },
     "dragon-haven": {
       "characters": {
         "characters": [
