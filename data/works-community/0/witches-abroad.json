@@ -490,6 +490,232 @@
         "work": "without-fail"
       }
     },
+    "wolfsong": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Oxnard Matheson"
+            ],
+            "description": "A boy from the small logging town of Green Creek, Oregon, who is twelve when his father walks out on him and his mother, leaving him with the conviction that he is slow and that people will give him a hard time for the rest of his life. Large for his age, quiet and watchful, he leaves school early to work at the local garage and to keep his mother afloat. He is far kinder and far more perceptive than almost anyone around him assumes, and he is used to being underestimated.",
+            "id": "ox-matheson",
+            "name": "Ox Matheson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Ox's mother, left to raise him alone in a house at the end of a dirt road after his father leaves. She works long shifts for little money, holds the household together, and is unwavering in her belief that her son is worth more than the town gives him credit for.",
+            "id": "maggie-matheson",
+            "name": "Maggie Matheson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The owner of the garage in Green Creek, who gives Ox a job when he is sixteen. Gruff, sharp-tongued and tattooed from wrist to shoulder in ink that never seems to hold still, he looks out for Ox in his own abrasive way. He carries an old and unexplained hostility toward the family that moves into the house at the end of Ox's road, and refuses to say where it comes from.",
+            "id": "gordo-livingstone",
+            "name": "Gordo Livingstone",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the mechanics at Gordo's garage and part of the crew that folds Ox into their working days, their arguments and their jokes.",
+            "id": "tanner",
+            "name": "Tanner",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A mechanic at Gordo's garage, talkative and warm, who takes to Ox immediately and never lets him sit alone at lunch.",
+            "id": "rico",
+            "name": "Rico",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A mechanic at Gordo's garage and one of Ox's steadiest friends, level-headed where Rico and Tanner are loud.",
+            "id": "chris",
+            "name": "Chris",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The youngest son of the family that moves into the house at the end of Ox's road. He is about ten when he comes out of the trees to meet Ox, tells him he smells extraordinary, and attaches himself to him completely. His family says he has not spoken in years, but he talks to Ox from the first moment. Bright, relentless and openly adoring, he gives Ox a small carved stone wolf as a gift and treats it as a promise.",
+            "id": "joe-bennett",
+            "name": "Joe Bennett",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The head of the Bennett family, a calm and deliberate man who carries authority without ever raising his voice. He takes an immediate interest in Ox and, almost alone among the adults in Ox's life, treats him as someone of real worth rather than as his father's son.",
+            "id": "thomas-bennett",
+            "name": "Thomas Bennett",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Thomas's wife and the mother of Carter, Kelly and Joe. She paints, keeps a warm and crowded house, and draws Ox and his mother into the family's orbit without ever making it feel like charity.",
+            "id": "elizabeth-bennett",
+            "name": "Elizabeth Bennett",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The eldest Bennett son, loud, restless and quick with a joke, who adopts Ox as a brother almost as fast as his youngest brother does.",
+            "id": "carter-bennett",
+            "name": "Carter Bennett",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The middle Bennett son, quieter and more even-tempered than Carter, and rarely more than a step away from him.",
+            "id": "kelly-bennett",
+            "name": "Kelly Bennett",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Thomas's younger brother, who lives with the family at the end of the road. He is watchful and gentle, and there is plainly a long, unhappy history between him and Gordo that neither man is willing to explain.",
+            "id": "mark-bennett",
+            "name": "Mark Bennett",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An alpha without a pack, fixated on the Bennett bloodline and the power it carries. He is the reason for the violence in Joe's childhood, and he has never been caught.",
+            "id": "richard-collins",
+            "name": "Richard Collins",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Chris's sister, blunt and practical, who becomes a friend of Ox's and for a time something more. She refuses to be handled or protected, and stays close to the group at the garage.",
+            "id": "jessie",
+            "name": "Jessie",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An envoy from the wider wolf leadership who arrives to help the Bennetts manage their affairs. He presents himself as a long-standing friend of the family and as the authority's reasonable, helpful face in Green Creek.",
+            "id": "osmond",
+            "name": "Osmond",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young wolf sent to Green Creek by the wolf leadership: cheerful, bespectacled and eager to be useful. Having never really had a pack of his own, he attaches himself to the people holding the town together.",
+            "id": "robbie-fontaine",
+            "name": "Robbie Fontaine",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "wolfsong"
+      },
+      "recaps": {
+        "ending": "Richard Collins returns to Green Creek and is killed in the fighting, and Osmond is exposed as having worked with him from inside the wolf leadership all along. The cost is heavy: Ox's mother is among the dead, and the town and the pack are left to bury their own. Ox and Joe come through it together and are openly mates, and rather than one of them stepping aside, both stand as alphas of the Bennett pack: Joe by inheritance from his father, Ox by what the pack chose in him during the years he held it alone. Elizabeth, Mark, Carter, Kelly, Gordo, Robbie, Jessie, Chris, Tanner and Rico are all bound into that pack, wolves and humans together. Gordo and Mark have stopped pretending the past can be undone and have begun to rebuild. Green Creek is quiet again and the pack is whole, but the wolf leadership has been shown to be corrupt from the inside, Gordo's own history with his father is still unexplained, and the losses of the last decade are not undone by winning.",
+        "in_short": "Ox Matheson is twelve when his father abandons him in Green Creek, Oregon, convinced he will never amount to much. At sixteen, working at Gordo Livingstone's garage, he is found in the woods by a small boy named Joe Bennett, who has not spoken in years and who talks to him at once. The Bennetts take Ox and his mother in, and Ox learns they are werewolves and that Thomas Bennett is their alpha. Ox is given a place in the pack and, as the years pass, grows into the person Joe has claimed from the beginning. When the rogue alpha Richard Collins comes for the Bennetts, Thomas is killed; Joe inherits his father's power and leaves with Carter, Kelly and Gordo to hunt Richard down, leaving Ox behind. Over three years Ox holds together everyone who stayed and becomes an alpha in his own right. When the hunters return empty-handed and Richard finally comes to Green Creek, the reunited pack fights and kills him, exposing a traitor inside the wolf leadership, and Ox and Joe stand together as alphas of what remains.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Ox Matheson is twelve years old when his father walks out of the house at the end of a dirt road in Green Creek, Oregon, telling him that people are going to give him a hard time for the rest of his life. Ox believes it. He is big, quiet and slow to speak, and he grows up half convinced he is stupid. His mother works whatever shifts she can get and keeps the two of them going. At sixteen Ox leaves school and takes a job at Gordo Livingstone's garage, where Gordo is brusque and tattooed and unexpectedly protective, and the mechanics Tanner, Chris and Rico take him in as one of their own. Then a small boy comes tearing out of the trees behind the house, talking without stopping, and tells Ox he smells like something wonderful. The boy is Joe Bennett, whose family has just moved into the big house further up the road, and whose family is astonished that he is speaking at all: something happened to Joe years ago and he has been silent ever since. Joe attaches himself to Ox on the spot.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Bennetts fold Ox and his mother into their household: Thomas and Elizabeth, their sons Carter, Kelly and Joe, and Thomas's brother Mark. Thomas talks to Ox as though his opinions matter, which no one has ever done. Ox learns what the family is: they are werewolves, and Thomas is their alpha. Rather than running, Ox accepts the place he is offered and is bound into the pack, feeling the bond as a constant warm pressure of belonging he has never had before. His mother is drawn in as well. Gordo, meanwhile, is furious about all of it. He tells Ox to stay away from the Bennetts and will not say why, though it becomes clear that he knows exactly what they are and that there is a history between them, and between him and Mark in particular, that everyone has agreed not to speak about. Joe, still a child, has decided that Ox is his and gives him a small carved stone wolf.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Years pass in Green Creek. Ox grows into a man the pack leans on, and Joe grows up alongside him; the bond between them is obvious to everyone, and Ox holds it at arm's length while Joe is still too young for it to mean what Joe wants it to mean. Ox spends time with Jessie, Chris's sister, without letting it go anywhere. He learns why Joe was silent for so long: as a small child Joe was taken and badly hurt by Richard Collins, an alpha without a pack who is obsessed with the Bennett bloodline and the power that runs in it, and Joe was not the only member of the family that violence touched. Ox's father comes back to Green Creek after years away and finds that he no longer has any hold on his son. Thomas, meanwhile, begins quietly preparing his family for something, and the pack's easy years start to feel like borrowed time.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The threat the Bennetts have been bracing for becomes concrete: Richard Collins is loose and moving toward Green Creek, and the wider wolf leadership takes an interest in what is happening in the town. Thomas prepares the pack and sends for help. Joe reaches the age at which he can say plainly what he has meant since he was ten, and does, and Ox can no longer pretend not to understand it. Gordo, who has spent years insisting he wants nothing to do with the Bennetts, is drawn back into the pack's business as its witch; his magic is the pack's defence, and everyone but Ox seems to already know it. The pack gathers at the house at the end of the road and waits.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Richard Collins attacks Green Creek. Thomas Bennett is killed defending his family and his territory, and his death breaks the pack apart in a single night. His alpha power passes to Joe, who is far too young for it and consumed by what Richard did to him as a child. Rather than stay and hold what is left, Joe chooses the hunt: he leaves Green Creek with Carter, Kelly and Gordo to track Richard Collins down and finish it. Ox is left behind, along with Elizabeth, Mark and the humans, without any promise of when the others will return. What follows is a long silence. Ox, who has spent his whole life being told he is not much, is suddenly the only person the remaining pack has to hold on to.",
+            "through": {
+              "chapter": 23
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Three years pass. Ox keeps Green Creek together: Elizabeth and Mark, Jessie, Chris, Tanner and Rico, and Robbie Fontaine, a young wolf the leadership has sent to keep an eye on the town and who quickly becomes one of them. The bonds settle into something real, and Ox becomes an alpha in his own right, the pack he holds having chosen him rather than inherited him. Osmond, the leadership's envoy, comes and goes, always helpful and always well informed. Then Joe, Carter, Kelly and Gordo come back, having failed to kill Richard Collins, and find a Green Creek that has learned to run without them. Joe carries his father's power and Ox carries the pack's loyalty, and the two halves of a family that split under grief have to work out how to be one pack again before Richard reaches them.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Richard Collins comes to Green Creek, and the fight is far worse than the pack prepared for, because he has had help from inside the wolf leadership all along: Osmond has been feeding him information for years, and his betrayal is exposed. Ox's mother is killed in the violence, a loss that guts Ox and hardens him. In the final confrontation the reunited pack fights Richard together and he is killed, ending the threat that has hung over the Bennetts since Joe was a small boy. The survivors bury their dead and take stock. Ox and Joe come out of it as mates and, unusually, as two alphas of one pack, Joe holding what his father passed to him and Ox holding what the pack gave him in the years he stood alone. Gordo and Mark stop refusing each other, Robbie has a pack for the first time in his life, and the humans of the garage are as much a part of it as the wolves. Green Creek is quiet again, but the wolf leadership has been shown to be rotten at its centre, and Gordo's own family history is still an unopened door.",
+            "through": {
+              "chapter": 35
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "wolfsong"
+      }
+    },
     "wool-omnibus-edition-wool-1-5": {
       "characters": {
         "characters": [

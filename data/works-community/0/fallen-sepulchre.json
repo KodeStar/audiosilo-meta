@@ -1237,6 +1237,235 @@
         "work": "finale-a-caraval-novel"
       }
     },
+    "fire": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Seventeen years old and the last human monster in the Dells: a young woman whose hair runs through every shade of red, gold and orange, whose beauty pulls at everyone who sees her, and who can enter minds, read them and steer them. She lives quietly in the far north of the kingdom, keeping her hair covered, hunted by monster predators drawn to her blood and by people who loved or hated her father. She is a serious musician, teaches the local children, and refuses to use her power on anyone if she can avoid it, because she saw exactly what such a power does in the hands of someone who enjoys it.",
+            "id": "fire",
+            "name": "Fire",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Lord Brocker's son, Fire's oldest friend and her sometime lover, an archer of such accuracy that his name has become a joke about him. He is generous and quick, and also jealous, possessive of Fire and unable to stop himself pursuing other women, which is the running argument of their lives.",
+            "id": "archer",
+            "name": "Archer",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Archer's father, lord of a northern holding and once the commander of the King's Army, considered the finest military mind the Dells has produced. King Nax had his legs broken years ago and he has used a wheeled chair ever since. He raised Fire alongside his own son, and he still advises the crown's soldiers when they come north.",
+            "id": "brocker",
+            "name": "Lord Brocker",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Fire's father, dead before the book begins. He was a human monster of extraordinary power who took hold of King Nax's mind and, through him, of the kingdom, ruling by whim and cruelty for decades and leaving the Dells lawless and near bankrupt when he died. He adored his daughter, which is the part Fire finds hardest, and everything she fears about herself she learned by watching him.",
+            "id": "cansrel",
+            "name": "Cansrel",
+            "reveal": {
+              "chapter": 1
+            }
+          },
+          {
+            "description": "Commander of the King's Army and brother to the king, a hard, plain-spoken man who has spent his adult life holding the kingdom together with soldiers because its government cannot. He hates monsters and distrusts Fire on sight, for reasons that go back to what Cansrel did to his father and to the Dells.",
+            "id": "brigan",
+            "name": "Prince Brigan",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "King Nax's widow, who keeps her own fortified holding in the north and a great deal of the kingdom's remaining common sense. She is a shrewd political operator, one of the few people who treats Fire as an asset rather than a temptation or a threat, and she knows more about the last reign than she says.",
+            "id": "roen",
+            "name": "Queen Roen",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "King of the Dells, Nax's eldest son, a decent man trying to rule a kingdom his father ruined and largely failing. He is honest about his own weakness in front of Fire, whose power over minds he can barely withstand.",
+            "id": "nash",
+            "name": "King Nash",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Nax's daughter, half-sister to Nash and Brigan, who runs the crown's intelligence work with her brother Garan. Sharp, unsentimental and openly curious about what Fire's power could do for them.",
+            "id": "clara",
+            "name": "Princess Clara",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Nax's son, half-brother to Nash and Brigan, who manages the crown's spies and its accounts alongside Clara. He is chronically ill and works through it, and he is slower than his sister to trust a monster in the palace.",
+            "id": "garan",
+            "name": "Prince Garan",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Brigan's small daughter, about five years old, raised in the palace by her aunts and uncles. She is fearless, horse-mad, and entirely unbothered by monsters, and she attaches herself to Fire immediately.",
+            "id": "hanna",
+            "name": "Hanna",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The soldier who commands Fire's personal guard, chosen because her mind holds firm against a monster's pull. Steady, direct, and unwilling to let her charge out of sight.",
+            "id": "musa",
+            "name": "Musa",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "description": "One of the young soldiers assigned to Fire's guard, quiet and competent, who has her own reasons for being uncomfortable around Archer.",
+            "id": "mila",
+            "name": "Mila",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A great lord of the north with lands on the Pikkian border, who has spent years building a private army larger than the crown can comfortably ignore. He is courteous to the king and openly contemptuous of the king's authority.",
+            "id": "mydogg",
+            "name": "Lord Mydogg",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A great lord of the south, the crown's other looming problem, wealthy, vain, and gathering his own force for a move on the throne. He is less capable than his northern rival and more easily flattered.",
+            "id": "gentian",
+            "name": "Lord Gentian",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Mydogg's sister, married into the Pikkian nobility and at least as dangerous as her brother. She is the one holding his alliances together and she does not underestimate Fire.",
+            "id": "murgda",
+            "name": "Murgda",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A boy with strangely mismatched eyes, found in the far north, whose father came into the Dells from the unknown country beyond the western mountains. Whatever he says, people do: his power is in his words, it leaves minds foggy and obedient afterwards, and it is the explanation for the blank-minded men who have been turning up all through the kingdom. He is curious, patient and entirely without pity.",
+            "id": "the-boy",
+            "name": "The boy",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "fire"
+      },
+      "recaps": {
+        "ending": "The rebellion is fought out in two campaigns and broken. Fire, who has spent the book refusing to be what her father was, ends up using her power at the scale he used his - reaching across a battlefield into thousands of minds - and chooses to use it to stop killing rather than to command. She survives; so do Nash and Brigan; the great lords' rising fails. Archer is dead, and the woman carrying his child, one of Fire's own guards, has the support of Fire and of Brocker's household. Brigan is revealed to be Brocker's son rather than King Nax's, which is why Nax crippled Brocker years ago, and which makes Brigan and Archer half-brothers - a truth that arrives too late for either of them to do anything with. Fire takes a place at the centre of the kingdom rather than hiding at its edge, working for the crown and for Brigan, whom she loves and will not marry into a throne for. She also settles the question of her bloodline deliberately: there will be no more human monsters after her. The boy with the fogging voice is not caught. He goes west, back through the mountains his father came out of, into the country nobody in the Dells knows anything about, which is where the story of the seven kingdoms begins.",
+        "in_short": "In the Dells, a land of brilliantly coloured 'monster' creatures that captivate the minds of anyone who looks at them, seventeen-year-old Fire is the last human monster: irresistible to look at and able to enter and control minds. Her father Cansrel used the same gift to own King Nax and wreck the kingdom, and Fire has spent her life refusing to become him. With the Dells sliding toward civil war between two rebel lords, the crown asks her to use her power on prisoners and spies. She agrees, moves to King's City, and works with King Nash, his army commander Brigan, and their half-siblings Clara and Garan, gradually falling in love with Brigan. A second mind-worker is at large: a boy from beyond the western mountains whose words compel obedience. He kills Fire's oldest friend Archer and takes her prisoner in the north during the war. Fire escapes, the rebellion is defeated, and she uses her power across a battlefield to stop the fighting rather than direct it. She stays in the Dells as the crown's ally, and decides the monster line ends with her; the boy escapes westward.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "This book stands on its own. It is set in the Dells, a country entirely separate from the seven kingdoms of Graceling, on the other side of an impassable mountain range, and none of its people have ever heard of Graces or of the kingdoms to the west. Readers coming from Graceling should know only that the two books share one thread: the origin of a person from that western country whose power works on the mind through his words, and how he came to cross the mountains. Everything else here - the monsters, the Dellian royal family, the war for the throne - is new, and the Dells' own history is all the background required.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the Dells, monsters are ordinary creatures born in impossible colours - raptors, insects, big cats, and very rarely people - whose beauty seizes the minds of anyone who looks at them and whose flesh draws other monsters to feed. Fire, seventeen, is the last human monster: hair in every shade of red and gold, a face nobody can look away from, and the ability to read and move through minds. She lives in the far north near Lord Brocker and his son Archer, her lifelong friend and lover. Her father Cansrel was a monster too, and used his power to own King Nax's mind and run the kingdom into ruin through decades of cruelty and waste; Fire is terrified of the same appetite in herself, and holds back from using her power at all. Near her home a poacher shoots her, and when he is killed and Fire examines what is left of him, she finds his mind was strangely fogged and blank - not confusion, but something done to him. Nobody can say who he was or what emptied him out.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The kingdom Cansrel left behind is close to collapse. King Nash rules a country with no working government, kept upright only by his brother Prince Brigan and the King's Army, which spends its time putting down banditry and warlords. Two great lords, Mydogg in the north and Gentian in the south, are quietly assembling armies for a move on the throne. Brigan comes north and makes no secret of despising monsters and distrusting Cansrel's daughter. Queen Roen, Nax's widow, and Brocker both see Fire differently: her power to read minds is the one advantage the crown has, and the crown is asking for it. Fire is invited to King's City to question prisoners and captured spies. She refuses, because using her power on an unwilling mind is precisely what her father did, then changes her mind, and travels south under guard with the army.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At the palace Fire meets the rest of the royal family: Nash, who is honest about barely being able to withstand her; Clara and Garan, Nax's other children, who run the crown's intelligence; and Brigan's small daughter Hanna, who takes to her at once. Fire agrees to sit in on interrogations, and hates the work even as it proves decisive - she can tell who is lying, and she can take what a prisoner will not give. Some of the captured minds are fogged in exactly the way the poacher's was, which means a second person with power over minds is operating somewhere in the Dells, and using it on the rebels' behalf or on their enemies. Fire's memories of her father fill in around this: how Cansrel took hold of King Nax, what he did to people for amusement, how he loved his daughter and expected her to become what he was, and how she spent her childhood learning to hold her own power back from the uses he had in mind for it.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Fire becomes part of the crown's inner circle, and her judgement about who is loyal starts shaping how the coming war will be fought. She and Brigan move from hostility to a careful working trust and then to something more, complicated by his rank and by her certainty that she is a liability to anyone who loves her. Her long entanglement with Archer breaks down: he cannot stop being jealous, and one of Fire's own guards is carrying his child. The hardest thing she carries is what happened to Cansrel. He did not die by accident: Fire turned her father's own mind against him because she could see no other way to stop what he was doing to the kingdom, and living with that is what makes her so unwilling to use her power on anyone now. Meanwhile attempts are made on her life and on the royal family's, several by men whose minds have been tampered with, and the shape of the rebellion sharpens: Mydogg in the north, with Pikkian allies through his sister Murgda, and Gentian in the south, each preparing to move.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Fire is sent south into Lord Gentian's household as a spy, hiding what she is among his guests and using her power to map exactly who is committed to him and what he has promised them. The intelligence is what the crown needed: Gentian's part in the rising is dismantled and the southern half of the war collapses before it can properly begin. That leaves Mydogg in the north, better prepared, better allied and far more dangerous, and it leaves the unexplained mind-worker still unaccounted for. Archer, unable to sit still and increasingly obsessed with the fogged minds, goes north on his own to find whoever is responsible.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The second mind-worker turns out to be a boy with mismatched eyes and a compelling voice, the son of a man who came into the Dells from the unknown country beyond the western mountains. Whatever the boy says is believed and obeyed, and the people he has used are left blank afterwards. He kills Archer. Fire, in the north as the war closes in, is taken prisoner and held by Mydogg's people, and finds the boy there among her captors, fascinated by her and intent on keeping her. Her own power is what saves her: she can feel his working on her where nobody else can, and she can push back against it. Grieving, injured and alone, she gets herself free, while the two armies move toward the battle that will settle who rules the Dells.",
+            "through": {
+              "chapter": 31
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The war ends in the north. Fire, who has spent the whole book refusing to use her power the way her father used his, finally uses it at his scale - across a battlefield, into thousands of minds at once - and uses it to stop men killing each other rather than to command them. The rising is broken and the crown holds. In the aftermath Fire learns that Brigan is not King Nax's son at all but Brocker's, which is why Nax had Brocker crippled, and which makes Brigan and the dead Archer half-brothers. Archer's child will be born into Brocker's household with Fire's support. Fire chooses to stay at the centre of the kingdom rather than hidden at its edge: she works for the crown, she is with Brigan without marrying into his family's throne, and she decides deliberately that there will be no more human monsters after her. The boy is never caught. He goes west through the mountains, into the country his father came from, carrying his voice with him.",
+            "through": {
+              "chapter": 32
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "fire"
+      }
+    },
     "fire-and-song": {
       "characters": {
         "characters": [
