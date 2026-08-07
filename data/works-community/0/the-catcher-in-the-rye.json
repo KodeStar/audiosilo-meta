@@ -634,6 +634,248 @@
         "work": "the-churn-an-expanse-novella"
       }
     },
+    "the-city-of-brass": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A young woman scraping a living in Ottoman Cairo as a thief, a fake exorcist and a healer for hire. She has no memory of her parents, speaks an unusual number of languages including one she has never been able to place, and hides a talent she cannot explain: she senses sickness in others by touch, and her own injuries close almost as fast as she takes them. Sharp-tongued, mercenary and relentlessly practical, she treats every relationship as a transaction, until a ceremony she is performing purely for money summons something she cannot talk her way out of.",
+            "id": "nahri",
+            "name": "Nahri",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Darayavahoush e-Afshin",
+              "the Afshin"
+            ],
+            "description": "A daeva warrior who appears out of the desert air when Nahri sings in a language she does not know she speaks. Tall and green-eyed, marked with a faded tattoo of ladder-like rungs and wearing a battered emerald ring, he commands fire and wind and can fly. He served the Nahids, the family of magical healers who ruled the djinn city of Daevabad before it was taken from them, and fourteen centuries of that history sit heavily on him. Arrogant, blunt and quick to violence, he is bound by duty to protect Nahri, whom he believes to be the last of his masters' line. Long stretches of his own past are missing from his memory.",
+            "id": "dara",
+            "name": "Dara",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly apothecary in Cairo who lets Nahri work beside him, buys the odd item she has stolen, and worries constantly about the risks she takes. He is one of the few people in her life she is genuinely fond of.",
+            "id": "yaqub",
+            "name": "Yaqub",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young girl in Cairo whose family pays Nahri to perform a zar, a ceremony meant to appease the spirit they believe is troubling her. Nahri expects to sing, take the money and leave. The ceremony does not go as she intends.",
+            "id": "baseema",
+            "name": "Baseema",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Alizayd al Qahtani",
+              "Ali"
+            ],
+            "description": "The younger son of the king of Daevabad, raised from childhood at the Citadel to become Qaid, commander of the army, and to serve his elder brother when that brother takes the throne. Devout, disciplined and awkward anywhere outside a training yard, he is troubled by the way the city treats its shafit, the people of mixed human and djinn blood, and has begun quietly diverting money to an organization that helps them, a betrayal of his father he tells himself is only charity.",
+            "id": "alizayd",
+            "name": "Alizayd",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sheikh Anas Bhatt"
+            ],
+            "description": "The leader of the Tanzeem, a shafit welfare organization in Daevabad that runs an orphanage, a school and a clinic, and that Ali has been secretly funding. A preacher of mixed human and djinn blood, he argues that the city's laws leave the shafit no lawful way to protect themselves.",
+            "id": "anas",
+            "name": "Anas",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ghassan al Qahtani"
+            ],
+            "description": "King of Daevabad and head of the Qahtani family, which took the city from the Nahids fourteen centuries ago. He rules its six djinn tribes from the palace of the brass city and holds Suleiman's seal, the relic whose bearer commands magic within Daevabad's walls. Politically shrewd and entirely unsentimental, he keeps peace between tribes that despise one another by making public examples of anyone who disturbs it.",
+            "id": "ghassan",
+            "name": "Ghassan",
+            "reveal": {
+              "chapter": 6
+            }
+          },
+          {
+            "description": "Ghassan's elder son and the emir, heir to Daevabad. Charming, worldly and fond of wine, poetry and company, he moves easily among the city's nobles in a way his younger brother never has. He is inseparable from Jamshid e-Pramukh, son of the Daeva grand wazir, and he treats the responsibilities waiting for him with a lightness his family reads as carelessness.",
+            "id": "muntadhir",
+            "name": "Muntadhir",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ghassan's daughter and Ali's older sister, a princess raised at court rather than at the Citadel. Poised and very well informed, she reads the palace's politics better than either of her brothers and is often the only easy point of contact between them.",
+            "id": "zaynab",
+            "name": "Zaynab",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A peri, one of the beings of the air, who finds Nahri and Dara close to death on their journey east and tends to them. The peri are forbidden to involve themselves in the affairs of daevas and humans, and the help he gives is offered at real risk to himself.",
+            "id": "khayzur",
+            "name": "Khayzur",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An officer of Daevabad's Royal Guard who is connected to the Tanzeem and who presses Ali to carry his sympathy for the shafit further than quiet donations. Devout and uncompromising, he has little patience for a prince's scruples.",
+            "id": "rashid",
+            "name": "Rashid",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Daeva woman who served the last Nahid healers before they died and who now assists Nahri in the palace infirmary, teaching her a craft she was never trained in. Devoted to Daeva tradition and to the restoration of her tribe's standing, she is impatient with Nahri's ignorance and with her friendliness toward the Qahtanis.",
+            "id": "nisreen",
+            "name": "Nisreen",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Kaveh e-Pramukh"
+            ],
+            "description": "Grand wazir of Daevabad and the highest-ranking Daeva in the king's government, brought to the capital from the tribe's provincial seat. Fiercely protective of Daeva interests and openly hostile to any concession to the shafit, he is in near-constant conflict with Ali.",
+            "id": "kaveh",
+            "name": "Kaveh",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Banu Manizheh"
+            ],
+            "description": "The Banu Nahida of the previous generation, remembered as the most gifted healer her family produced and as a woman the king could never quite control. She and her brother Rustam were reported killed by ifrit some twenty years before Nahri arrives, and their deaths left Daevabad with no Nahid healer at all. Everything Nahri hears about her comes secondhand, from people with reasons of their own for how they tell it.",
+            "id": "manizheh",
+            "name": "Manizheh",
+            "reveal": {
+              "chapter": 18
+            }
+          },
+          {
+            "aliases": [
+              "Jamshid e-Pramukh"
+            ],
+            "description": "Kaveh's son, a Daeva archer who serves as Muntadhir's captain and closest companion. Even-tempered and steady, he is one of the very few people at court whom both the Daeva tribe and the Qahtanis are willing to trust.",
+            "id": "jamshid",
+            "name": "Jamshid",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-city-of-brass"
+      },
+      "recaps": {
+        "ending": "Nahri agrees to leave Daevabad with Dara, and the escape becomes a massacre: Dara cuts through the soldiers sent to stop them, and Jamshid e-Pramukh is left crippled by his arrows. The chase ends on the cursed lake, where Alizayd is dragged into the water. The marid, the water spirits who cursed the lake long ago, take hold of him and use his body, and the possessed Ali kills Dara. Nahri is brought back to the palace with nothing left to bargain with. She heals Ali of what the marid did to him, and Ghassan buries the truth about the possession, then marries her to his heir Muntadhir immediately, binding the Nahid line to the Qahtanis. Ali is sent away to the Geziri provinces in disgrace, an assignment his family does not expect him to survive. Nahri ends the book a queen in name, isolated, grieving, and with no illusions left about the man who brought her east. The epilogue overturns all of it. Far from the city, Dara wakes: pulled out of a quiet afterlife into a body that is whole, freed of the ifrit's slave curse, and restored to the unbound magic his people held before Suleiman's punishment. Two people are standing over him. One is Kaveh e-Pramukh, Daevabad's grand wazir. The other is Banu Manizheh, the Nahid healer everyone believes the ifrit murdered two decades ago. She is alive, she has been preparing for a generation, and she tells Dara that Nahri is her daughter.",
+        "in_short": "Nahri is a young con artist and thief in Ottoman Cairo with a healing gift she cannot explain. Performing a ceremony for money, she accidentally summons Darayavahoush, a daeva warrior who tells her she carries the blood of the Nahids, a family of magical healers, and that her only safe place is Daevabad, a hidden djinn city. Hunted by ifrit, the two cross half the world to reach it. There Nahri is received by the Daeva tribe as their Banu Nahida and installed in the palace of King Ghassan al Qahtani, whose ancestors took the city from hers. She befriends the king's younger son, Ali, a devout prince secretly funding the city's despised part-human shafit, and learns that Dara is remembered by the other tribes as the Scourge of Qui-zi, the author of a massacre. To buy protection, Nahri bargains a betrothal to Ghassan's heir, Muntadhir. When Dara tries to take her out of the city, the escape ends in bloodshed on the cursed lake: the marid seize Ali and use him to kill Dara. Nahri is married to Muntadhir and Ali is exiled. In the epilogue Dara wakes restored to life by Banu Manizheh, the Nahid healer believed dead for twenty years, who reveals that Nahri is her daughter.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Nahri makes a living in Ottoman Cairo as a thief and an unlicensed healer, telling fortunes and staging ceremonies she is certain are pure theatre. She hides a genuine gift: she senses illness by touch, and her own wounds close in moments. During a zar she is paid to hold for a girl named Baseema, she sings in a language she cannot identify, and two things answer. One is an ifrit, an ancient and malevolent being that takes hold of the girl. The other is Darayavahoush, a daeva warrior who arrives in a sandstorm, destroys the creatures hunting her and tells her that her blood is not human. He names her a descendant of the Nahids, a family of magical healers, and says the only place she will be safe is Daevabad, a hidden city far to the east. With ifrit behind them and the dead rising from the ground to follow, the two flee Egypt together.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Traveling east by conjured carpet, by boat and on foot, Dara teaches Nahri what she is. Long ago the prophet Suleiman punished the daevas for meddling with humanity, stripped their magic and returned it altered, splitting them into six tribes: the Daevas, who kept the old name, and the Geziri, Ayaanle, Sahrayn, Agnivanshi and Tukharistani. Those who refused to submit became the ifrit, unchanged and cursed, and they take their revenge by enslaving djinn into rings and by hunting the Nahids, the healer family entrusted with Suleiman's seal. Daevabad itself was taken from the Nahids fourteen centuries ago by Zaydi al Qahtani, and his descendants rule it still. Children of mixed human and djinn blood, the shafit, are confined and despised there. Dara served the Nahids as their Afshin, their warrior, and he speaks of the Qahtanis with open hatred. In Daevabad, meanwhile, Prince Alizayd, the king's younger son, trains to command his brother's army while secretly funding a shafit organization his father would call treason.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The journey grows steadily more dangerous. Ifrit ambush them, ghouls follow their trail, and after one attack a peri named Khayzur finds the pair near death and heals them, breaking his own people's rule against interfering. Nahri presses Dara about the gaps in his history and learns that he spent centuries as an ifrit's slave, passed from one human master to the next, with almost no memory of any of it, before he was freed into a world that had moved on without him. In Daevabad, Ali's payments to the Tanzeem are traced. Its leader, Sheikh Anas, is arrested and publicly executed, taking the blame alone and leaving Ali alive, shaken, and further into the shafit cause than before. Nahri and Dara reach the Gozan river, pass through the veil that hides the road, and come within sight of a city of brass on an island in a cursed lake.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Nahri enters Daevabad as the first Nahid healer in twenty years and is received by her own tribe as their Banu Nahida. King Ghassan installs her in the palace, sets her to work in the infirmary under Nisreen, a Daeva woman who served the previous Nahids, and assigns Ali to tutor her. The two become unlikely friends. Dara's return is far less welcome: to the Geziri he is a war criminal, and he is kept under guard and watched. Nahri finds the city's politics as ruthless as any Cairo street. The Daeva tribe, led by grand wazir Kaveh, wants her as their symbol; the Qahtanis want her contained; the shafit, whose conditions appall her, want a healer willing to treat them; and Nahri's rounded ears mark her as carrying human blood, which almost everyone has an opinion about.",
+            "through": {
+              "chapter": 19
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Nahri learns what Dara kept from her. During the war that ended Nahid rule he carried out a massacre at Qui-zi, killing and enslaving its shafit population, and the other tribes remember him as the Scourge. He does not deny it, and his presence makes both of them targets. To buy protection for herself, for the Daeva tribe and for Dara, Nahri negotiates a betrothal to the emir Muntadhir, treating her own marriage as a contract to be haggled over. Ali, drawn back into shafit politics by a Royal Guard officer named Rashid, discovers that the money he handed over bought weapons as well as bread. The fallout costs lives, destroys what remains of his father's trust in him, and leaves him with no clean way out of anything.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The city's tensions come apart. Violence between Daeva and shafit escalates, and Ali, stripped of his standing, is caught between the brother he loves and the cause he cannot abandon. Dara, unwilling to leave Nahri in Qahtani hands and unwilling to accept her marriage, presses her to run with him and raise the Daeva against the king. Nahri, who has spent the whole book refusing to be anyone's property or anyone's banner, has to choose between a bargain she made with her eyes open and the man who brought her here, knowing that whichever she picks, people she has treated will pay for it.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Nahri agrees to go with Dara, and the escape turns into a slaughter. Dara cuts through the guards sent to stop them, and Jamshid is gravely wounded by his arrows. The chase ends on the cursed lake, where Ali is pulled into the water. The marid, the water spirits who cursed the lake long ago, take hold of him and use his body: Ali rises marid-possessed and kills Dara. Nahri is returned to the palace, and Dara's ring is taken from the water. Ali is left dying of what the marid did to him, and Nahri heals him, though Ghassan buries the truth about what took him. The king then makes his terms plain, and Nahri is married to Muntadhir at once. Ali is sent away to the Geziri provinces in disgrace, an assignment few expect him to survive.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the epilogue, Dara wakes. He is pulled out of a quiet afterlife and back into a whole body, freed of the ifrit's slave curse and restored to the full, unbound magic his people held before Suleiman's punishment. He is not alone. Standing over him are Kaveh e-Pramukh, Daevabad's grand wazir, who has spent the entire book at the king's side, and Banu Manizheh, the Nahid healer the world believes the ifrit murdered twenty years ago. She is alive. She has been preparing for a very long time. And she tells Dara that Nahri is her daughter.",
+            "through": {
+              "chapter": 31
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-city-of-brass"
+      }
+    },
     "the-colour-of-magic": {
       "characters": {
         "characters": [

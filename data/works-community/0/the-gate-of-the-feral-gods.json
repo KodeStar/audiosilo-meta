@@ -760,6 +760,224 @@
         "work": "the-general-of-izril"
       }
     },
+    "the-girl-in-the-tower": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Vasya"
+            ],
+            "description": "Pyotr Vladimirovich's youngest daughter, on the road since the winter that killed her father. She rides a stallion who chose her and wears a blue jewel the winter-king made for her, and she can see the chyerti, the spirits of house, water and forest that most of Rus' has stopped believing in. She refused both the marriage and the convent that were the only futures her world allowed a woman, and left to see the world instead. What she has not yet worked out is how a girl travels alone through Rus' in winter without being robbed, married off or killed.",
+            "id": "vasilisa-petrovna",
+            "name": "Vasilisa Petrovna",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The bay stallion out of the winter-king's herd who carries Vasya. He talks, in his fashion, and understands her; he will take no saddle, no bridle and no other rider. His name means nightingale, and he is the fastest horse anyone in Rus' has ever seen.",
+            "id": "solovey",
+            "name": "Solovey",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Frost",
+              "the winter-king",
+              "Karachun"
+            ],
+            "description": "The winter-king of the old tales: frost, and also death, the one who comes for people who die in the cold. He keeps finding Vasya on the road and insists this is coincidence. His existence runs on being remembered, and Rus' is forgetting him; he is bound to Vasya by the jewel he made her, which cost him a great deal of his own strength. He would prefer she were somewhere safe and dull, and has no useful suggestions about where that might be.",
+            "id": "morozko",
+            "name": "Morozko",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sasha",
+              "Brother Aleksandr"
+            ],
+            "description": "Vasya's brother: a monk of the Trinity monastery under the holy man Sergei, and a considerable figure in his own right, a fighting monk who rides with his cousin the Grand Prince and is trusted by church and court alike. He has had no reliable word from home in years. When news reaches the monastery that villages in the north are being burned and their girls carried off, he rides to Moscow to make somebody act.",
+            "id": "aleksandr-petrovich",
+            "name": "Aleksandr Petrovich",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Grand Prince of Moscow: young, energetic, impulsive and genuinely fond of his cousin Sasha. He is trying to hold together a Rus' that pays tribute to the Horde and quarrels constantly with itself. He is quick to like anyone brave, and quicker to feel betrayed.",
+            "id": "dmitrii-ivanovich",
+            "name": "Dmitrii Ivanovich",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Prince of Serpukhov, Olga's husband and Dmitrii's cousin: a steady, decent man, often away on the Grand Prince's business and not much involved in what happens inside his own women's quarters.",
+            "id": "vladimir-andreevich",
+            "name": "Vladimir Andreevich",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The priest who went north to Lesnaya Zemlya and left it in ruins, now back in Moscow and much in demand: a preacher crowds gather for, and a painter of icons that people say work miracles. He has not recovered from what he learned in the forest, he has told nobody the truth of it, and he has never stopped thinking about Pyotr Vladimirovich's youngest daughter.",
+            "id": "konstantin-nikonovich",
+            "name": "Konstantin Nikonovich",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A rich lord out of the north, master of a fortress called the Tower of Bones, who arrives at Dmitrii's court with splendid horses and better manners than most and is made welcome. He is handsome, amused, generous and oddly hard to place, and he takes an immediate and close interest in the Grand Prince's affairs, and in one young rider in particular.",
+            "id": "kasyan-lutovich",
+            "name": "Kasyan Lutovich",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Vasya's elder sister, now Princess of Serpukhov, with a household and children of her own in Moscow and another child on the way. She has built exactly the life she always wanted, inside the walls of a terem where highborn women live apart from men, and she has a great deal to lose. She loves her sister and is not at all sure she can afford her.",
+            "id": "olga-petrovna",
+            "name": "Olga Petrovna",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Masha"
+            ],
+            "description": "Olga's small daughter: sharp, stubborn, endlessly curious, and prone to talking to things in the corners of her mother's house that nobody else will admit are there. Her mother is trying very hard to raise her into a well-behaved girl of the terem, and it is not going smoothly.",
+            "id": "marya-vladimirovna",
+            "name": "Marya Vladimirovna",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Olga's servant: blunt to the point of rudeness, completely trusted, and in the household longer than anyone else in it. She takes very little at face value and volunteers nothing about herself.",
+            "id": "varvara",
+            "name": "Varvara",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A lord out of Sarai who comes to Moscow as an envoy of the Horde: a superb horseman, courteous, watchful and plainly a good deal more than a messenger. Moscow's tribute and Moscow's obedience are both on his agenda.",
+            "id": "chelubey",
+            "name": "Chelubey",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The ghost in the upper rooms of Olga's house, visible only to those who can see: a woman in a shift, mute with grief and rage, who cannot leave. She was a girl with the sight in her own generation and a relation of Vasya's own blood, taken and kept by a sorcerer who never let her go, and she has been in that tower a very long time.",
+            "id": "tamara",
+            "name": "Tamara",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-girl-in-the-tower"
+      },
+      "recaps": {
+        "ending": "Moscow burns. In the chaos Vasya gets free, the ghost bound in Olga's tower is released from whatever was holding her there, and Kasyan Lutovich is killed; his golden mare bolts out of the city and nobody catches her. A large part of Moscow is gone by the time the fire is stopped. Vasya survives it, and so do Olga, Marya, Sasha and Dmitrii, but nothing can be put back the way it was. The whole city now knows that the Grand Prince's brave young champion was a girl in men's clothes, that she rode a horse nobody else could ride, and that Moscow burned around her; whatever her brother the monk and her sister the princess say in her defence, the word people have settled on is witch. Sasha has lied for her in front of his cousin and his order. Olga has sheltered her at the cost of her own standing. Dmitrii has been made a fool of publicly and does not forgive that quickly. Morozko has spent very nearly everything he had left keeping Vasya alive, and winter, which is the only season he is strong in, is ending. Vasya has her family back and her name destroyed, no place in Moscow and nowhere obvious to go, and the events of the winter have stirred up more than one thing that would have been better left asleep.",
+        "in_short": "Vasya, on the road after leaving home, finds villages in the north burned and their girls taken. She cuts her hair, travels as a boy, destroys the raiders' camp and frees the captives, and is picked up by a party of the Grand Prince's riders that includes her brother Sasha, now a warrior monk. Rather than disgrace his family, Sasha lets her pass as his young brother Vasilii, and Dmitrii Ivanovich takes the brave boy into his household. In Moscow she is lodged with her sister Olga, a princess whose daughter Marya has the same sight Vasya does, while a ghost haunts the upper rooms of the house. After Vasya wins a horse race at Maslenitsa, the northern lord Kasyan Lutovich exposes her publicly as a girl. Kasyan proves to be an ancient sorcerer who has put his own death out of reach and has been engineering the raids to bring Dmitrii down. He is killed, but Moscow burns in the process, and Vasya emerges with her family shamed, her disguise destroyed and the whole city calling her a witch.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Vasilisa Petrovna grew up in her father's household in the forests north of Moscow, able to see the chyerti, the house and forest spirits of Rus', which ordinary people had begun to forget. A priest sent north from Moscow, Konstantin Nikonovich, preached the old observances away; as the offerings stopped the spirits weakened, and so did the binding on a one-eyed devil called the Bear, who feeds on fear and raises the dead. Refusing both the marriage and the convent her family pressed on her, Vasya was driven out into the winter forest and taken in by Morozko, the frost-demon of the winter tales, who is also death. He had been quietly arming her for years by way of a blue jewel that cost him much of his own strength. She rode home on Solovey, a stallion who chose her, to face the Bear. Her father, Pyotr Vladimirovich, died there, giving up his life freely so that the Bear could be chained again; her stepmother died too. Her village named her a witch. Her brother Alyosha stayed to hold their father's lands, and Konstantin went back to Moscow. With no place left in the only world she knew, Vasya rode away to see the rest of it. Her sister Olga is a princess in Moscow and her brother Sasha a monk there, and neither of them knows yet what happened in the north.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "It is winter and Vasya is on the road, sleeping rough and discovering how little of the world was built with a girl travelling alone in mind. The cold nearly kills her, and Morozko appears, as he keeps doing, to argue with her about going somewhere safe. Meanwhile at the Trinity monastery her brother Sasha hears that villages in the north are being burned and their girls carried off, and rides to Moscow to press his cousin, the Grand Prince Dmitrii Ivanovich, into doing something about it. Konstantin Nikonovich is in Moscow too, celebrated now as a preacher and an icon-painter. A rich and charming northern lord, Kasyan Lutovich, attaches himself to Dmitrii's court and makes himself useful. Riding on alone, Vasya comes to a village burned to the ground with its dead lying in the snow, finds one small survivor hidden nearby, and learns that the raiders take the girls alive.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Vasya cuts off her hair and takes to travelling as a boy, because the road treats a boy very differently, and Morozko gives her what she needs to live through the winter. She follows the raiders back to their camp, gets in among them, sets the place alight and brings out the girls they had taken. Riders come out of the trees to finish the bandits off, and what the men find in the wreckage is a brave young stranger on an extraordinary horse.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The riders are the Grand Prince's, and Sasha is among them. He recognises his sister at once and says nothing: admitting that the boy is a girl in men's clothes would disgrace his family and his order in front of Dmitrii. So Vasya becomes Vasilii Petrovich, Sasha's young brother, and Dmitrii, delighted with the boy's nerve and his horse, takes to her immediately. Kasyan Lutovich rides with the company. They run the raiders to ground and finish the business, but the pieces do not fit together: the burnings were too well organised for common bandits, and somebody was paying for them. Vasya, exhilarated at being treated as a person rather than as somebody's daughter, keeps up the disguise, while Kasyan watches her rather more closely than she likes.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The company rides to Moscow, a walled city of wooden towers between two rivers, and Vasya is lodged with her sister Olga, who is horrified. Olga is a princess with a household, a reputation and an unborn child, and all of it is at risk if her sister is exposed; Vasya has to be Vasilii in the street and Vasya behind the terem door. Olga's small daughter Marya turns out to see the household spirits as clearly as Vasya ever did, and there is something in the upper rooms of the house that neither of them can account for. Konstantin, preaching in the city, knows Vasya the moment he sees her. Envoys arrive from Sarai, among them a lord of the Horde who is plainly more than a messenger, and Dmitrii's court fills up with grievances and obligations as the last feast before the fast approaches.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At Maslenitsa, Vasya races Solovey against Kasyan's golden mare in front of the whole city, and wins. It is the high point of the deception and the end of it: Kasyan, who has known for some time, announces publicly that the Grand Prince's brave young Vasilii is a girl. The scandal is ruinous. Dmitrii has been made a fool of, Sasha has lied for her, Olga is implicated, and the obvious verdict for a girl who rides, fights and travels in men's clothes is witchcraft. Kasyan then offers to settle the matter by marrying her, and Vasya begins to understand what he actually is: not a young lord at all, but something much older, a sorcerer who long ago put his own death out of anyone's reach and has been steering both the raids and the court for purposes of his own. The ghost in Olga's tower belongs to the same story, a woman of Vasya's own blood whom Kasyan took and never released.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Everything Vasya has is stripped away: her freedom, her family's protection and the court's goodwill. Kasyan presses his advantage and moves against Dmitrii's Moscow, with Vasya disgraced, confined and exactly where he wants her. Morozko can do far less than either of them would wish; his strength has been going into keeping Vasya alive for years, and inside a Christian city at the end of winter he is very nearly nothing at all. Sasha and Olga stand by their sister at real cost to themselves, and Marya, who sees what the adults refuse to, is drawn into the danger with them.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Moscow burns. In the confusion Vasya gets free, the ghost in Olga's tower is released at last, and Kasyan Lutovich is killed; his golden mare bolts out of the city and is not caught. The fire takes a great part of Moscow before it is stopped. Vasya survives, and so do Olga's household, Sasha and Dmitrii, but nothing goes back to what it was. The city knows that the Grand Prince's young champion was a girl, that she rode a horse nobody could ride, and that Moscow burned around her, and it calls her a witch whatever her brother the monk and her sister the princess say. Sasha has lied in front of his cousin and his order, Olga has sheltered her at the cost of her standing, and Dmitrii does not forgive humiliation quickly. Morozko has spent nearly all he had on keeping her alive, and the winter that is the only season he is strong in is ending. Vasya has her family back and her name destroyed, and the winter's events have disturbed more than one thing that would have been better left alone.",
+            "through": {
+              "chapter": 27
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-girl-in-the-tower"
+      }
+    },
     "the-girl-on-the-train": {
       "characters": {
         "characters": [

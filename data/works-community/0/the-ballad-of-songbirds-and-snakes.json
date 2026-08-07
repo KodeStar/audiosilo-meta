@@ -564,6 +564,261 @@
         "work": "the-battle-of-the-labyrinth"
       }
     },
+    "the-bear-and-the-nightingale": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Lord of Lesnaya Zemlya, a boyar whose lands lie far north of Moscow at the edge of deep forest. A careful, hard-working man who married into the Grand Prince's family and has kept his people fed through bad winters by paying close attention to his fields, his horses and his household. He is fond of his children in an undemonstrative way and expects them to take the places the world has laid out for them.",
+            "id": "pyotr-vladimirovich",
+            "name": "Pyotr Vladimirovich",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Pyotr's wife and the mother of his children, a daughter of the Grand Prince's house in Moscow. Her own mother was a woman who walked out of the forest, married a prince, bore one daughter and was never satisfactorily explained; Moscow decided she had been a witch. Marina is quiet and watchful and knows she inherited a little of whatever that was. As the book opens she is pregnant again, certain that this child will be a daughter who inherits far more than she did, and equally certain that bearing her will be her own death.",
+            "id": "marina-ivanovna",
+            "name": "Marina Ivanovna",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Avdotya"
+            ],
+            "description": "The old nurse of Pyotr's household, who came north with Marina and has raised all of her children. She tells them the winter tales by the oven, among them the story of Frost, the cold-demon of the forest, and the girl whose stepmother sent her out into the snow. Practical, devout and superstitious in equal measure, she still leaves bread out for the spirits of house and byre while crossing herself, and she knows more about where Marina's family came from than she cares to say.",
+            "id": "dunya",
+            "name": "Dunya",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Kolya"
+            ],
+            "description": "Pyotr's eldest son and his heir, blunt, hot-tempered and thoroughly practical, more interested in his father's land, horses and quarrels than in anything his youngest sister has to say.",
+            "id": "nikolai-petrovich",
+            "name": "Nikolai Petrovich",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Sasha"
+            ],
+            "description": "Pyotr's second son, good with horses and weapons and closer to his sisters than his elder brother is. He is also drawn towards God in a way his father finds inconvenient in a boy who is supposed to inherit land and marry well.",
+            "id": "aleksandr-petrovich",
+            "name": "Aleksandr Petrovich",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Pyotr's elder daughter: gentle, sensible and entirely conventional, the one of Marina's children who wants exactly the life she was born to have, with a good marriage, a warm house and children of her own. She is fond of her youngest sister and is often the only person in the household who can manage her.",
+            "id": "olga-petrovna",
+            "name": "Olga Petrovna",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Vasya"
+            ],
+            "description": "The youngest child of Pyotr Vladimirovich, born in his household in the northern forests of Rus' at the cost of her mother's life. Marina carried her deliberately, wanting a daughter who might inherit the sight her own mother had. Vasya grows up plain, restless and half-wild, happier in the woods and the stable than in the women's rooms, and unwilling to be shaped into anybody's wife. She sees what nobody else on her father's lands can see: the spirit that lives in the oven, the one in the stable, others in the water and the trees. She talks to them and feeds them and takes them entirely for granted, long before she understands what it will cost to be the only person who does.",
+            "id": "vasilisa-petrovna",
+            "name": "Vasilisa Petrovna",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Alyosha"
+            ],
+            "description": "Pyotr's youngest son and the sibling nearest Vasya in age, and so her companion in most of what she gets up to as a child. Steady, unimaginative and stubbornly loyal, he is the one member of the family who tends to take her word for things he cannot see himself.",
+            "id": "aleksei-petrovich",
+            "name": "Aleksei Petrovich",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A daughter of the Grand Prince of Moscow, given in marriage to Pyotr Vladimirovich. Since childhood she has seen creatures nobody else will admit to seeing, and has concluded that she is surrounded by demons and probably damned; she wanted nothing in the world but permission to take vows and hide in a convent. Devout, frightened and brittle, she is sent instead to a household at the edge of the forest where the things she dreads live in every oven, stable and bathhouse.",
+            "id": "anna-ivanovna",
+            "name": "Anna Ivanovna",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The spirit of Pyotr's house, who lives in the oven and keeps the family safe from what is outside. He grows strong on the bread and porridge left out for him and thin and grey when the offerings stop. Vasya has fed him since she was small and can see and speak with him. He is her first proof that the winter tales are describing something real, and his health is a fair measure of the household's.",
+            "id": "domovoi",
+            "name": "The Domovoi",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young priest sent north from Moscow: famous for the icons he paints and for a voice that can hold a congregation completely still. He is genuinely gifted and genuinely devout, and also proud, ambitious and badly stung at being posted to a village at the edge of the world rather than a great church. He finds a people who keep the fasts and also leave bread out for the spirits of house and yard, and he sets about burning the second habit out of them. Pyotr's strange younger daughter, who neither fears him nor believes him, unsettles him from the start.",
+            "id": "konstantin-nikonovich",
+            "name": "Konstantin Nikonovich",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Anna's daughter by Pyotr, and Vasya's half-sister: a sweet, timid, obedient little girl who is everything her mother hoped for and nothing like the stepdaughter her mother is afraid of. Vasya is fond of her.",
+            "id": "irina-petrovna",
+            "name": "Irina Petrovna",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A water-spirit of the forest near Lesnaya Zemlya, a drowned-looking woman who lives by a lake and an old oak. She takes an interest in Vasya, combs her hair, and begins teaching her what a girl who can see is able to do. She is also candid about how badly things are going for her own kind now that the village has stopped putting out offerings.",
+            "id": "rusalka",
+            "name": "The Rusalka",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Frost",
+              "the winter-king",
+              "Karachun"
+            ],
+            "description": "The frost-demon of Dunya's winter tales, who in the stories rewards a patient girl and freezes a greedy one. He turns out to be entirely real: a pale-eyed man who appears in the winter woods, and who is death as much as cold, the one who comes for people who die in the snow. He has been paying attention to Vasya's family for longer than she has been alive, and to her in particular. He does not explain himself, his gifts have costs, and he is a great deal less free than he looks.",
+            "id": "morozko",
+            "name": "Morozko",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A bay stallion out of the winter-king's own herd, and not an ordinary horse: he understands what is said to him and answers, he chooses his rider rather than the other way round, and he will wear neither saddle nor bridle. His name means nightingale. He attaches himself to Vasya.",
+            "id": "solovey",
+            "name": "Solovey",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the Bear",
+              "the one-eyed man",
+              "the Eater"
+            ],
+            "description": "The winter-king's twin and opposite: a one-eyed spirit who feeds on fear and madness and grows strongest where people are most frightened. He was bound long ago, and what has kept him bound is not only his brother's work but the small, steady habit of ordinary people leaving bread for the powers of house and forest. As that habit is preached out of them his chains slacken. He raises the dead, whispers to the devout in language they will mistake for holiness, and wants only to be loose.",
+            "id": "medved",
+            "name": "Medved",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-bear-and-the-nightingale"
+      },
+      "recaps": {
+        "ending": "The Bear is loose, the dead are walking, and Vasya rides home from the winter-king's house to find that Lesnaya Zemlya has decided she is the cause of all of it. Anna Ivanovna dies in the chaos. Konstantin learns that the voice he has obeyed and preached for was the Bear's and not God's, and has nothing left to say. In the forest clearing where the thing was first bound, Vasya faces it, and her father follows her there; because the Bear can only be chained again by a life freely surrendered, Pyotr Vladimirovich gives up his own and dies in the snow. Morozko binds his brother, and the winter finally breaks. The household survives, but Pyotr is dead, Dunya is dead, and the village wants the witch's daughter gone. Vasya refuses both of the futures her world allows her, a husband or a convent, and there is no third one. Alyosha stays to hold their father's lands. Olga is a princess in Moscow, and Sasha is a monk who does not yet know what has happened at home. Konstantin leaves for Moscow with his reputation intact and his faith in ruins. Vasya rides north and away on Solovey, wearing Morozko's blue jewel, intending to travel as far as the road goes, and carrying his warning that the world outside is no kinder than the one she is leaving.",
+        "in_short": "In a lord's household in the forests north of medieval Moscow, Marina Ivanovna dies bearing a daughter she wanted deliberately, believing the child would inherit the strange sight of her own mother. Vasilisa grows up seeing the household spirits of Rus' and feeding them as her people always have. Her father remarries a devout, terrified girl from Moscow who sees the same creatures and calls them demons, and a proud young priest, Konstantin Nikonovich, is sent north and preaches the old observances away. As the offerings stop the spirits weaken, and so does the binding on a one-eyed devil called the Bear, who feeds on fear and raises the dead. Refusing marriage and the convent both, Vasya is driven out into the snow and taken in by Morozko, the frost-demon and death-god of the winter tales, who has been quietly arming her for years without saying so. She rides home on a stallion called Solovey to face the Bear, and her father dies giving up his life freely so that the Bear can be bound again. Named a witch by her own village, Vasya leaves home to see the world.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In a lord's household called Lesnaya Zemlya, deep in the forests north of Moscow, the old nurse Dunya tells the children winter tales by the oven, among them the story of Frost, the cold-demon who rewards a patient girl and kills a greedy one. Their mother, Marina Ivanovna, is pregnant again. Marina is a daughter of the Grand Prince's house, but her own mother was a strange woman who came out of the forest and married into Moscow, and Marina has always known she inherited a little of that strangeness. She is certain the child will be a girl who inherits far more, and just as certain that bearing her will be her own death. She insists on it anyway, over her husband Pyotr Vladimirovich's objections. She gives birth to a daughter, Vasilisa, and dies. Pyotr is left with five children, the eldest three nearly grown, the baby handed to Dunya to raise. In time he begins to think about the marriages his older children will need, and about the journey south to Moscow that arranging them will require.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Vasya grows up in the forest, plain and restless and impossible to keep indoors, and she can see things nobody else does: the small spirit in the oven, the one in the stable, others in the water and the trees. Dunya, who half believes and wholly worries, tells her to keep quiet about it. Pyotr rides south to Moscow with his elder children to settle their futures. Olga is betrothed to Vladimir Andreevich, prince of Serpukhov, a better match than her father hoped for. Sasha refuses the life planned for him and goes instead to the monastery on Makovets Hill, to take vows under the holy man Sergei. The Grand Prince offers Pyotr his own daughter, Anna Ivanovna, in marriage, an honour Pyotr is in no position to decline, although Anna herself wants nothing but a convent. In a Moscow marketplace a stranger with pale eyes presses a blue jewel on a silver chain into Pyotr's hand and says it is for his youngest daughter. Pyotr carries it north uneasily. Dunya takes one look at it, decides she knows what it is, and hides it away rather than hang it round a child's neck.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Pyotr brings Anna Ivanovna home as his wife. Anna has seen demons all her life, or believes she has, and Lesnaya Zemlya is full of them: every stable, bathhouse and oven has its occupant, and she is the only adult in the house who can see them. Discovering that her small stepdaughter sees them too, and is not remotely afraid, turns Anna's fear into hatred. Anna bears Pyotr a daughter, Irina, a quiet conventional child of the sort she understands. Olga marries and goes south, becoming a princess of Serpukhov and a fixture of Moscow's court. Sasha is lost to the monastery. Vasya, left with her father, Alyosha, Dunya and a stepmother who prays against her, goes on feeding the house-spirit in the oven and wandering further into the forest than anyone thinks safe. Dunya keeps the blue jewel hidden, and sleeps badly, because night after night the pale-eyed man who gave it appears in her dreams and tells her to hand it over.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Years pass. Vasya is nearly grown and refuses every mention of a husband. A priest arrives from Moscow: Konstantin Nikonovich, a young man with a famous voice and a rare gift for painting icons, sent north by men at court who found his ambition inconvenient. He is appalled by what he finds, a village that keeps the fasts and also leaves bread out for the spirits of house and byre, and he sets about ending the second practice. His preaching works. The offerings stop, and the effect is immediate to the one person who can see it: the house-spirit in the oven goes thin and grey, the guardians of stable and yard fade, and the old protections around Lesnaya Zemlya begin to fail. Vasya cannot make anyone believe her. Out in the forest she keeps company with a water-spirit who lives by a lake, a drowned-looking woman who combs her hair, takes an interest in her, and begins teaching her what a girl who can see is able to do.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Konstantin's hold on the village tightens, and Anna Ivanovna makes him her confessor and her ally against Vasya. A voice begins speaking to Konstantin at night, praising him, telling him what to preach and what he might yet become; he takes it for God. Winter comes early and refuses to break. The harvest was poor, the cold kills livestock and then people, and wolves come to the fences. Then the dead stop staying buried: a man laid in his grave walks back into the village at night, and the fading house-spirits can no longer keep such things out. Vasya sees exactly what is happening and fights it more or less alone; Alyosha believes her, and almost nobody else will. To Anna and Konstantin the obvious explanation for a hard winter and walking corpses is that Pyotr's strange daughter is a witch, and they press him to marry her off at once or shut her in a convent.",
+            "through": {
+              "chapter": 19
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Worn down by the pale-eyed man in her dreams, Dunya finally gives Vasya the blue jewel she has hidden for years, and dies. Pyotr, pushed by his wife and his priest and unnerved by his own daughter, arranges a marriage for her; Vasya refuses it, and refuses the convent as well. The village is in a bad way by now, the cold unbroken, the dead abroad at night, the small powers that once guarded the household nearly gone, and the blame has settled firmly on Vasya. Driven out into the winter forest with nowhere to go, exhausted and freezing, she is found in the snow by the frost-demon of Dunya's tales.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Vasya wakes in a house among the firs that has no business existing, kept by servants who do not speak, where she is warm and fed and healing and time does not seem to move. Her host is Morozko, the winter-king of the old stories, who is frost and also death, and who has been watching her family for generations. The blue jewel is his work, made to steady and strengthen her, and he has been paying for it out of his own power. In his stable she meets a bay stallion called Solovey, who talks, chooses his own rider, and will wear neither saddle nor bridle; she learns to ride him. Morozko finally tells her what has been happening at home. Something old was bound in the forest near Lesnaya Zemlya, and the binding always depended on ordinary people going on believing in the powers of house and wood. Konstantin has preached that belief away, and the thing in the forest is very nearly loose. Vasya will not stay where it is safe. She takes Solovey and rides home.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Vasya comes home to a village convinced she is a witch and a household under siege by the dead. The thing in the forest is free: Medved, the Bear, the winter-king's one-eyed twin, who feeds on terror, has been raising the dead all winter, and whose voice Konstantin mistook for God's. Anna Ivanovna dies. Konstantin, confronted with what he has actually been serving, is left with nothing. Vasya rides to the clearing to face the Bear, and her father follows her there. The Bear can only be bound again by a life given up freely, and Pyotr Vladimirovich gives his, dying so that his daughter and his people live. Morozko chains his brother once more and the winter breaks at last. The village buries its dead and holds Vasya responsible for all of them. She will not marry and she will not take vows, and her world offers a woman no third option, so she says goodbye to Alyosha, who will hold their father's lands now, and rides away north on Solovey to see the world. Konstantin returns to Moscow. Morozko tells her the road will not be kind, and lets her go.",
+            "through": {
+              "chapter": 28
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-bear-and-the-nightingale"
+      }
+    },
     "the-bell-jar": {
       "characters": {
         "characters": [
@@ -1240,6 +1495,240 @@
         "work": "the-brothers-karamazov"
       }
     },
+    "the-burning-god": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Fang Runin"
+            ],
+            "description": "One-handed, permanently anchored to Kitay, and back in the province she was born in, Rin intends to raise Nikan's poorest people into an army and take the country from both the Empire and the Dragon Republic that discarded her. Her fire is under control for the first time in her life; very little else about her is. The southerners who follow her treat her less as a general than as a figure out of their own religion, and she does not discourage it.",
+            "id": "rin",
+            "name": "Rin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Rin's anchor and chief strategist, bound to her permanently: he feels what she feels, steadies her mind when the Phoenix has hold of it, and will die if she does. He runs the army's supply and planning and is the only person willing to argue with her about what she does with it.",
+            "id": "kitay",
+            "name": "Chen Kitay",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Sinegard classmate and survivor of Golyn Niis, now one of Rin's officers and her best marksman. Blunt, impatient and without illusions about anyone she serves with.",
+            "id": "venka",
+            "name": "Sring Venka",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Cike veteran who fights with a nine-pointed rake and channels a boar god, and one of the last of the unit still standing.",
+            "id": "baji",
+            "name": "Baji",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An enormous Cike soldier who channels a monkey god, still fighting to keep it from taking him over for good.",
+            "id": "suni",
+            "name": "Suni",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Cike's explosives-maker, the youngest of them, who has kept the unit supplied with fire powder through two wars.",
+            "id": "ramsa",
+            "name": "Ramsa",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "The Vipress"
+            ],
+            "description": "The deposed empress of Nikan, travelling with Rin as something between prisoner, advisor and hostage. She is a shaman whose god works on perception, she is a great deal older than she appears, and she is the only living person who can explain how the Nikara Empire was actually made and by whom.",
+            "id": "daji",
+            "name": "Su Daji",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the warlords directing the Southern Coalition, the alliance of southern militias that has been fighting the stranded Mugenese occupation without help from the Empire or the Republic. He is willing to use Rin's reputation and unwilling to hand her his army.",
+            "id": "gurubai",
+            "name": "Gurubai",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A southern militia commander who has fought the Mugenese occupation with ambushes and local knowledge, and who speaks for the peasant recruits who make up most of the Coalition's strength. Charismatic, plain-spoken and enormously popular with the rank and file, he becomes Rin's closest ally among the southern leadership.",
+            "id": "souji",
+            "name": "Yang Souji",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Rin's younger foster brother from Tikany, a small child when she left for Sinegard and nearly grown by the time she comes back to a town the war has emptied.",
+            "id": "kesegi",
+            "name": "Kesegi",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Rin's rival since Sinegard, now the Dragon Republic's commander in the field and the Hesperians' working partner in Nikan. He is a shaman himself, bound since childhood to a river dragon, and the only person in the country able to meet Rin's fire with anything comparable.",
+            "id": "nezha",
+            "name": "Yin Nezha",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Warlord of the Dragon Province, Nezha's father and head of the Dragon Republic, governing the greater part of Nikan in partnership with the Hesperians who recognised his state and armed it.",
+            "id": "vaisra",
+            "name": "Yin Vaisra",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The Hesperian missionary and natural scientist who studied Rin at Arlong and regards shamans as diseased rather than divine. Her order's assessment of Nikan determines how much of the country the Hesperians intend to govern themselves.",
+            "id": "petra",
+            "name": "Sister Petra Ignatius",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Master Jiang",
+              "The Gatekeeper"
+            ],
+            "description": "Rin's vanished master from Sinegard, found sealed inside the stone of the Chuluu Korikh: far older than any ordinary man, badly damaged, and lucid only in stretches. The gardener who taught her meditation and refused to fight in her war was one of the three shamans who founded the Nikara Empire.",
+            "id": "jiang",
+            "name": "Jiang Ziya",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Dragon Emperor"
+            ],
+            "description": "The Dragon Emperor: the third of the shamans who drove the Federation out two generations ago and built the Nikara Empire, sealed inside the Chuluu Korikh for decades. Commanding, magnetic and entirely without restraint, he intends to have his country back on his own terms.",
+            "id": "riga",
+            "name": "Yin Riga",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-burning-god"
+      },
+      "recaps": {
+        "ending": "Rin ends the war on the winning side of it. Riga is dead, the Trifecta is finished, the Dragon Republic's armies are broken, and the southern army she raised has effectively taken Nikan. What she does not have is any reason to stop. Her plans run past the Hesperian foothold to the provinces that opposed her, and she is entirely capable of carrying them out. Kitay, bound to her as her anchor and so unable to be absent from any decision she makes, concludes that she will never stop and that nothing outside her can stop her; Nezha, who has fought her since they were schoolchildren, reaches the same conclusion from the other side. The two act together against her. When Rin understands what they have done, she agrees with the reasoning: she chooses her own death rather than be stopped by anyone else, and dies by the fire she spent the whole war learning to command. Nezha is left to govern what remains - a country invaded twice and burned repeatedly, its population devastated, its independence conditional on foreigners it can no longer expel. The uprising Rin led destroyed the old order and cost her her life, and the book closes on that cost stated plainly rather than settled.",
+        "in_short": "Maimed and cast out, Rin returns to Nikan's south and turns its militias into an army, clearing the stranded Mugenese occupation and then marching north against the Dragon Republic, which now governs the country in partnership with the Hesperians and which Nezha commands in the field. Betrayed by the southern commander whose peasant regiments carried her, Rin is driven back and gambles on the Chuluu Korikh, where she finds her old master Jiang and the truth about him: Jiang, the deposed empress Daji and the Dragon Emperor Yin Riga are the Trifecta, the three shamans who made the Empire. Rin frees Riga as a weapon and he proves ungovernable; he is killed, and the Trifecta ends with him. Rin then breaks the Republic in the field, but by then she cannot stop, and means to burn everything that will not submit. Kitay, bound to her, and Nezha, who has fought her the whole war, conclude that she has to be stopped; Rin reaches the same conclusion herself and chooses to die, leaving Nezha the ruined country.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Rin, a war orphan from Nikan's south, won a place at the Sinegard military academy, was apprenticed to the master of Lore, and learned that the old gods are real and can be reached by shamans at the cost of their sanity. Commissioned into the Cike during the Federation's invasion, she served under Altan Trengsin, the last Speerly, through the fall of Khurdalain and the massacre of Golyn Niis. After Altan died freeing her from a Federation research station on Speer, and after she learned that Empress Su Daji had sold Speer to the Federation to end the previous war, Rin called the Phoenix and destroyed the Federation's home islands and their entire population. A year later her attempt to kill Daji failed and cost her access to her god. Recruited by Warlord Yin Vaisra, she fought for his Hesperian-backed Dragon Republic; the campaign was broken at the Red Cliffs by the loosed wind shaman Feylen. Bound at last to an anchor - Kitay, whose life is now tied to hers - she recovered her fire and won the battle of Arlong, and was betrayed immediately: the Hesperians' price for recognising the Republic was Rin herself. She escaped maimed, losing her left hand, taking Kitay, Venka, the last of the Cike and the captive Daji with her, and went south to raise an army from the people both sides had always spent.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rin reaches the south with Kitay, Venka, the last of the Cike and the deposed empress Daji, and finds the region occupied. Federation soldiers stranded in Nikan when their homeland was destroyed have entrenched themselves across the southern countryside, and the Southern Coalition - an alliance of local militias under warlords the Empire never armed - has been fighting them alone and without supply. Rin offers the Coalition the one thing it lacks: a shaman. In Tikany, the town she grew up in, she finds the household that raised her and a place hollowed out by occupation and by the war she helped end. The southerners, told for generations that they are worth nothing, take to her as something out of their own stories, which is more useful to her than the warlords' cooperation and considerably harder to control.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rin turns the Coalition's militias into an army and takes over its direction, with Kitay running supply and Souji delivering the peasant recruits who make up its strength. The Mugenese occupation of the south is broken; Rin's methods are total and she does not take prisoners. With the south cleared she turns north against the Dragon Republic, which now governs most of Nikan from Arlong in partnership with the Hesperians, whose ships, guns and airships sit in Nikara harbours. Nezha commands the Republic's armies in the field. The war between them is fought over the same river provinces already ruined twice, and Rin's advantage - a shaman who can burn an army in an afternoon - is answered by a Republic with a shaman of its own and a foreign ally with better machines.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The northern campaign becomes a contest Rin can win in the field and cannot finish. The Republic gives ground, the Hesperians commit more openly, and their airships make her fire less decisive than it was. Daji, travelling with the army, begins trading what she knows for her usefulness: the Empire was not inherited but made, by three shamans who drove the Federation out two generations ago and then divided the country between them, and the empress Rin has spent years hating is only one of the three. What became of the other two, and what Rin's own master had to do with them, is the price Daji sets on her cooperation. Meanwhile the army grows past Rin's ability to feed it, the countryside she is liberating is starving, and Kitay's figures say she is losing the war she appears to be winning.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rin's position collapses from the inside. Souji, whose peasant regiments are the bulk of her strength, has been dealing with the Republic behind her, and the betrayal costs her a battle, most of an army, and several of the people who have followed her since the Cike. Nezha's forces and the Hesperians take the initiative, and Rin is driven back with a fraction of what she commanded. What is left of her campaign depends on finding power the Republic cannot match, and the only candidates are the shamans still sealed alive inside the Chuluu Korikh - the mountain that produced Feylen the last time anyone opened it. Daji, it becomes clear, has been steering her toward exactly that from the day they left Arlong.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rin, Kitay and Daji reach the Chuluu Korikh and open it. Inside is Jiang, Rin's master from Sinegard, sealed in the stone for years and barely coherent, and with him the truth about who he is. Jiang, Daji and a third shaman, Yin Riga, are the Trifecta: the three who drove the Federation out two generations ago and built the Nikara Empire on the strength of it. Riga ruled it as the Dragon Emperor, Daji held the throne after him, and Jiang sealed himself away, so that the eccentric gardener Rin knew at Sinegard was a man who had deliberately unmade his own memory. Riga is inside the mountain too, sealed there by Jiang, and both of the others want him back. Rin, needing a weapon the Republic cannot answer, agrees to release him.",
+            "through": {
+              "chapter": 26
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Freeing Riga is a catastrophe. The Dragon Emperor is exactly what the histories describe - overwhelming, magnetic and without any limit at all - and he intends to take the country back and use everyone in it, Rin included, as material. Daji cannot refuse him and Jiang can barely resist him. Riga's return threatens the Republic as much as it threatens Rin, and Rin and Nezha end up briefly on the same side against him. Riga is killed and the Trifecta ends with him, at a cost that leaves the survivors of the three broken. Rin comes out of it with her god, her army and no living authority over her whatsoever. The war with the Republic resumes at once, and the Hesperians, having watched what Nikara shamans do to one another, have concluded that the country must be administered rather than allied with.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rin wins her war and cannot stop fighting it. With Riga gone she breaks the Republic's armies in the field and comes within reach of ruling what is left of Nikan - and by then her intentions have run past the war itself, to the Hesperian foothold, to the provinces that resisted her, and to anything else that will not submit. Kitay, who as her anchor feels every decision she makes, concludes that she will not stop and that nobody outside her can make her; Nezha reaches the same conclusion from the other side, and the two of them act together. Confronted with what they have done and with what remains of the country she fought for, Rin agrees with them. She chooses her own death, and dies by the fire she spent the whole war learning to command. Nezha is left to hold together a country stripped by two invasions and a civil war, under the shadow of a foreign power it cannot expel, and the south's revolution ends with the woman who led it dead by her own decision.",
+            "through": {
+              "chapter": 34
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-burning-god"
+      }
+    },
     "the-burning-land": {
       "characters": {
         "characters": [
@@ -1663,6 +2152,206 @@
           }
         ],
         "work": "the-butchers-masquerade"
+      }
+    },
+    "the-calculating-stars": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Elma Wexler",
+              "the Lady Astronaut"
+            ],
+            "description": "A mathematician and physicist who flew for the Women Airforce Service Pilots during the Second World War and now works as one of the human computers at the national aeronautics agency. A prodigy who went to university years ahead of her age, she is fast and exact with orbital arithmetic and deeply uncomfortable with being looked at; public attention brings on nausea and panic she works hard to hide. She is Jewish, married to the engineer Nathaniel York, and the book opens with the two of them on holiday at a mountain cabin.",
+            "id": "elma-york",
+            "name": "Elma York",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Elma's husband, a lead engineer for the national aeronautics agency, calm and quick and entirely unthreatened by his wife being the better mathematician. He treats her calculations as work to be checked rather than opinions to be humored, and his standing inside the program repeatedly gets her arguments a hearing they would not otherwise receive.",
+            "id": "nathaniel-york",
+            "name": "Nathaniel York",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Elma's brother, who lives in Charleston, South Carolina with his wife and children. He had polio as a child and gets about with braces and crutches. He and Elma are close, and after the disaster he is the family she has left.",
+            "id": "hershel-wexler",
+            "name": "Hershel Wexler",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A decorated military pilot, polished in front of a camera and dismissive of women in cockpits. He and Elma know each other from the war, and whatever passed between them then has left him hostile to her and left her certain he should not be trusted with authority over other people. He is exactly the sort of flier the new space effort will want at the front of it.",
+            "id": "stetson-parker",
+            "name": "Stetson Parker",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The Secretary of Agriculture, and the most senior member of the federal government to survive the destruction of the capital. Sworn in as president in the middle of an unprecedented emergency, he has to decide how much of a wrecked country's remaining capacity to spend on getting off the planet.",
+            "id": "president-brannan",
+            "name": "President Charles Brannan",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The director of the space coalition's Kansas headquarters, a blunt, cigar-smoking administrator who decides which missions are attempted and which arguments are worth his time. He is not personally opposed to Elma, but he answers to politicians and to public opinion, and he will not spend either on a fight he does not expect to win.",
+            "id": "director-clemons",
+            "name": "Director Clemons",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Taiwanese computer and pilot in Elma's department and one of her closest friends. Unflappable at a calculating machine and blunt in private about what the program expects of the women who work for it.",
+            "id": "helen-carmouche",
+            "name": "Helen Carmouche",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A computer in Elma's department, part of the group of women whose hand arithmetic stands behind every launch the program attempts.",
+            "id": "basira-dutta",
+            "name": "Basira Dutta",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A pilot and the wife of the governor of Kansas, as comfortable in a ballroom full of politicians as in an aircraft. She reads a room the way Elma reads a slide rule, and her social access to the people who fund the space program turns out to be a form of leverage the program's engineers do not have.",
+            "id": "nicole-wargin",
+            "name": "Nicole Wargin",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former Women Airforce Service Pilot who flew with Elma during the war and now works as a journalist covering the space program. She is warm, sociable and well connected, and she has a professional eye for the story inside a friend's private life.",
+            "id": "betty-ralls",
+            "name": "Betty Ralls",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A computer who comes to work at the program's Kansas headquarters, married to the pilot Eugene Lindholm. She is friendly with Elma and entirely willing to point out that a campaign for women astronauts run by white women is not the same thing as a campaign for all of them.",
+            "id": "myrtle-lindholm",
+            "name": "Myrtle Lindholm",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Black pilot who flew with the Tuskegee airmen during the war and now works for the space program. Skilled, patient and well aware of the ceiling the corps has set over him, he is one of the fliers pressing for astronaut selection to be opened past the narrow group it currently serves.",
+            "id": "eugene-lindholm",
+            "name": "Eugene Lindholm",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Black computer and pilot who joins the group of women building flight hours to prove they meet the astronaut corps' stated requirements, and one of the people who pushes Elma to see whose exclusion her campaign has been quietly overlooking.",
+            "id": "ida-peeks",
+            "name": "Ida Peeks",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-calculating-stars"
+      },
+      "recaps": {
+        "ending": "Elma refuses to be shamed off the flight roster. Rather than let her medication and her treatment be used to disqualify her quietly, she stops hiding them, and the disclosure proves survivable: the program needs the Lady Astronaut more than it needs the pretense that its astronauts are unbreakable. Her standoff with Parker settles into a wary working truce rather than anything like friendship, each of them carrying knowledge about the other from the war. The larger argument is won. The astronaut corps now includes women, the international coalition is committed to a lunar base and an eventual Mars expedition, and the finding that the planet is warming toward uninhabitability is settled policy, even as public patience with the cost of spaceflight begins to fray. The exclusion of Black pilots and computers has been named and pushed at but is nowhere near resolved. Nathaniel remains at the engineering console, their marriage steady and their decision not to have children settled. The book closes with Elma strapped into a capsule on top of a rocket, counting down to her own first flight into space.",
+        "in_short": "In an alternate 1952 a meteorite strikes the eastern United States, destroying the capital and killing most of the federal government. Elma York, a mathematician and former wartime pilot, calculates that the water vapor thrown into the atmosphere will drive the climate toward temperatures the planet cannot support, and the surviving government responds by pouring everything into an international space coalition tasked with settling people somewhere other than Earth. Elma and her engineer husband Nathaniel move to its Kansas headquarters, where she works as a computer and watches an astronaut corps be built with no room in it for women. A television appearance makes her famous as the Lady Astronaut, and she spends that fame campaigning for women's selection, widening the argument under pressure from Black colleagues to the people her first version of it left out. Women are admitted and Elma is chosen, over the resistance of the corps' chief, Colonel Stetson Parker. Her severe anxiety and the medication she takes for it are exposed publicly; she survives the disclosure by owning it, and the book ends with her first launch into space.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In an alternate 1952, a meteorite strikes off the eastern coast of the United States, obliterating Washington and killing almost the entire federal government. Elma York, a mathematician and former wartime pilot, is at a mountain cabin with her husband Nathaniel, an engineer for the national aeronautics agency, when the blast wave arrives. They fly out in their small plane through ash and violent turbulence, put down among the injured, and help where they can before a military air base takes them in. News is fragmentary and nobody yet grasps the scale of what has happened. Elma's parents were in the capital and are dead; her brother Hershel, in Charleston, is safe. Working from the little data available, Elma begins calculating how large the impactor was and what it threw into the atmosphere, and the numbers she gets are worse than the ruin already visible.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Elma's arithmetic points past the immediate destruction to something far worse. The impact vaporized an immense quantity of seawater; after a brief cooling period under the dust, that water vapor will trap heat and push the climate toward temperatures the planet cannot support. Getting anyone to act on a woman's calculations takes persistence, Nathaniel's backing and eventually a hearing in front of the new administration. The former Secretary of Agriculture, Charles Brannan, is the senior surviving official and has been sworn in as president, and the government reassembles in Kansas City. The conclusion reshapes national policy: if Earth is going to become uninhabitable, humanity needs somewhere else to live and needs to get there within a lifetime. The space effort is accelerated and made international, the aeronautics agency folded into a coalition whose mandate runs from orbit to the Moon to Mars. Elma and Nathaniel move to Kansas with it, he as a lead engineer and she as one of its computers.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At the coalition's Kansas headquarters Elma works in the computing department alongside Helen Carmouche, Basira Dutta and the other women whose hand calculations underpin every launch, while Nathaniel runs engineering problems upstairs. The program moves fast: test flights, orbital shots, the first men into space. Colonel Stetson Parker, a wartime pilot with a long and bitter history with Elma, is made chief of the astronaut corps and takes the first flight himself. The corps is closed to women by rule and by assumption; Elma, with thousands of flying hours and better mathematics than any of the candidates, is told the qualification is jet test-pilot experience that women are not permitted to obtain. The frustration is sharpened by the program's own logic, since a colony cannot be founded by men alone. Her private difficulty is that any campaign would require her to stand in front of crowds and cameras, which reliably makes her physically ill.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "An appearance on a children's television science program turns Elma into a celebrity. Asked what the future holds, she talks about people living on Mars, and the press christens her the Lady Astronaut. She decides to spend the fame: she argues publicly that a colony needs women, organizes the program's women pilots to build and document the flight hours that would make them undeniable, and lobbies anyone who will listen, with Nicole Wargin opening political doors that engineering arguments cannot. Her colleagues Myrtle and Eugene Lindholm and Ida Peeks make it clear that the campaign has been shaped around white women, and Elma, uncomfortable and slow about it, begins widening what she is asking for. Every public appearance costs her: she is sick before broadcasts and shakes through interviews. A doctor prescribes a tranquilizer, and she hides both the prescription and the panic, since anything resembling a psychiatric problem would disqualify her from a flight status she does not yet have.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The campaign works. Under public and political pressure the coalition agrees to select women, and Elma is admitted to astronaut training along with Nicole Wargin, Helen Carmouche, Betty Ralls, Ida Peeks and others, though the class is smaller and more grudging than the argument deserved. Training is physically punishing and socially hostile, with Parker running the corps and making his opinion of the whole exercise plain. Elma stops trying to white-knuckle her anxiety and begins seeing a psychiatrist, which is a greater professional risk than any of the flying, and she keeps it secret from everyone but Nathaniel. Nicole's political instincts and access repeatedly prove more effective than argument. Meanwhile the climate models keep confirming themselves, the coalition commits to a lunar base as the first step toward a Mars colony, and a growing public movement insists the money would be better spent on Earth.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Elma's private life stops being private. Betty, now a working journalist, turns what she knows about her friend into copy, and Elma's anxiety and her medication reach print. The exposure threatens her standing in the corps, hands Parker exactly the lever he has wanted, and forces Elma to choose between denying it, resigning and owning it. Nathaniel's support does not waver, and the two of them are settled in their decision not to have children. Elma also keeps pressing on what her own campaign left out, pushing for the corps and the program to make room for the Black pilots and computers who have been excluded at every stage. The lunar program proceeds, crew assignments begin to matter to people who a year earlier were not permitted to apply, and the opposition to the whole enterprise grows louder as its cost becomes clearer.",
+            "through": {
+              "chapter": 34
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Elma refuses to be pushed off the flight roster. Rather than let her treatment be used to disqualify her quietly, she brings it into the open, and the disclosure proves survivable: the program needs the Lady Astronaut more than it needs the pretense that its astronauts are unbreakable. Her long standoff with Parker resolves into a wary truce rather than a friendship, with each of them holding knowledge about the other from the war and neither willing to spend it. The corps now includes women, though the fight to include Black women and men is far from finished, and the coalition is fully committed to a lunar base and an eventual Mars expedition against an accelerating climate deadline. The book ends with Elma in a capsule on top of a rocket, Nathaniel at his console, counting down to her first flight into space.",
+            "through": {
+              "chapter": 39
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-calculating-stars"
       }
     },
     "the-carnivorous-carnival": {
