@@ -2119,6 +2119,335 @@
         "work": "jane-eyre-amazonclassics-edition"
       }
     },
+    "jane-eyre-and-wuthering-heights": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A ten-year-old orphan living unhappily with her aunt's family at Gateshead. Intelligent, observant, and intensely conscious of injustice, Jane endures isolation but resists when her cousin abuses her.",
+            "id": "jane-eyre",
+            "name": "Jane Eyre",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Jane's widowed aunt and reluctant guardian. She favors her own children, treats Jane as an unwelcome dependent, and interprets the girl's anger at mistreatment as proof of bad character.",
+            "id": "mrs-reed",
+            "name": "Mrs Reed",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The clergyman who directs Lowood Institution, the charity school chosen for Jane. He advocates severe deprivation for the pupils and accepts Mrs Reed's accusation that Jane is deceitful.",
+            "id": "mr-brocklehurst",
+            "name": "Mr Brocklehurst",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Lowood's compassionate superintendent. Dignified and fair-minded, she offers the pupils humane care within a school marked by cold, hunger, and rigid discipline.",
+            "id": "miss-temple",
+            "name": "Miss Temple",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An older Lowood pupil who becomes Jane's first close friend. Thoughtful, learned, and deeply religious, Helen meets punishment and illness with a patience very different from Jane's rebellious anger.",
+            "id": "helen-burns",
+            "name": "Helen Burns",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The elderly housekeeper at Thornfield Hall, who welcomes Jane when she arrives as governess. Her practical kindness helps Jane settle into the quiet and initially puzzling household.",
+            "id": "mrs-fairfax",
+            "name": "Mrs Fairfax",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A lively French child living at Thornfield as Mr Rochester's ward. Fond of songs, clothes, and attention, she is the pupil Jane has been hired to teach.",
+            "id": "adele-varens",
+            "name": "Adèle Varens",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The master of Thornfield, first met when Jane helps him after his horse slips on an icy road. Abrupt, searching, and accustomed to command, he is intrigued by Jane's direct answers and independent judgment.",
+            "id": "edward-rochester",
+            "name": "Edward Rochester",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A beautiful and socially prominent guest at Thornfield who appears to be Rochester's intended bride. Confident in company and contemptuous of governesses, she makes Jane acutely aware of differences in rank and wealth.",
+            "id": "blanche-ingram",
+            "name": "Blanche Ingram",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Rochester's wife, Bertha Antoinetta Mason, whose existence is disclosed when his wedding to Jane is halted. Seriously ill and violent, she has been confined in Thornfield's upper rooms under supervision.",
+            "id": "bertha-mason",
+            "name": "Bertha Mason",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A reserved clergyman who helps shelter Jane after she collapses near Moor House. Disciplined, intelligent, and emotionally controlled, he is preparing to devote himself to missionary work.",
+            "id": "st-john-rivers",
+            "name": "St John Rivers",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "St John's warm and educated sister. She welcomes the destitute Jane without demanding her history and offers the companionship and sense of home Jane has long lacked.",
+            "id": "diana-rivers",
+            "name": "Diana Rivers",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The tenant of Thrushcross Grange, who visits his landlord at Wuthering Heights and becomes curious about its hostile inhabitants. His questions prompt Nelly Dean to relate the families' history.",
+            "id": "mr-lockwood",
+            "name": "Mr Lockwood",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Lockwood's landlord and master of Wuthering Heights. Guarded, unsociable, and commanding, Heathcliff presides over a household whose strained connections are initially obscure.",
+            "id": "heathcliff",
+            "name": "Heathcliff",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A rough-spoken young resident of Wuthering Heights. Lockwood is uncertain whether Hareton belongs to the family or serves it, though the young man's pride conflicts with his neglected education.",
+            "id": "hareton-earnshaw",
+            "name": "Hareton Earnshaw",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A beautiful, sharp-tongued young widow living unhappily at Wuthering Heights. She responds to Lockwood's attempts at conversation with open disdain.",
+            "id": "catherine-linton",
+            "name": "Catherine Linton",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A servant with long experience of the Earnshaw and Linton families. Now keeping house for Lockwood at the Grange, she becomes the main narrator of the history behind Wuthering Heights.",
+            "id": "nelly-dean",
+            "name": "Nelly Dean",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Cathy Earnshaw"
+            ],
+            "description": "The spirited daughter of the old master of Wuthering Heights. Wild, affectionate, and strong-willed, she forms an intense childhood attachment to the orphan Heathcliff.",
+            "id": "catherine-earnshaw",
+            "name": "Catherine Earnshaw",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Catherine's older brother, who has resented Heathcliff since their father brought the orphan home. Once master of Wuthering Heights, he uses his authority to degrade his rival.",
+            "id": "hindley-earnshaw",
+            "name": "Hindley Earnshaw",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A refined young neighbor at Thrushcross Grange. His gentle manners and protected upbringing introduce Catherine to a social world far removed from Wuthering Heights.",
+            "id": "edgar-linton",
+            "name": "Edgar Linton",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Edgar's younger sister, brought up with him at Thrushcross Grange. Sheltered and romantic, she later becomes fascinated by Heathcliff despite warnings about him.",
+            "id": "isabella-linton",
+            "name": "Isabella Linton",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The frail son of Heathcliff and Isabella, brought north after his mother's death. Timid and demanding, he becomes dependent on a father who views him chiefly as a means to acquire property.",
+            "id": "linton-heathcliff",
+            "name": "Linton Heathcliff",
+            "reveal": {
+              "chapter": 57
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "jane-eyre-and-wuthering-heights"
+      },
+      "recaps": {
+        "ending": "Jane Eyre closes with Jane independently choosing Rochester after Bertha has burned Thornfield and died. Rochester, injured and blinded while saving others, lives at Ferndean; Jane marries him, and he later regains partial sight. Wuthering Heights closes after Heathcliff has gained both estates through coercion but loses interest in revenge. Absorbed by the memory of Catherine Earnshaw, he stops eating and dies in her old room. The younger Catherine and Hareton overcome the hostility and deprivation imposed on them, learn together, and plan to marry and move to Thrushcross Grange. Their union returns the Earnshaw and Linton property to a cooperative household. Lockwood visits the graves of Catherine, Edgar, and Heathcliff while local stories claim that Catherine and Heathcliff still wander the moors.",
+        "in_short": "In Jane Eyre, an orphan survives Gateshead and Lowood, becomes governess at Thornfield, and falls in love with Edward Rochester. Their wedding exposes his living wife, Bertha, so Jane leaves, gains family and an inheritance, and rejects a loveless missionary marriage. After Bertha burns Thornfield and dies, Jane returns to the injured Rochester and marries him as an independent equal. In Wuthering Heights, Nelly Dean recounts how Catherine Earnshaw chose Edgar Linton over her beloved childhood companion Heathcliff. Heathcliff returns wealthy and takes revenge across two generations, gaining both family estates and forcing Catherine's daughter to marry his sickly son. The elder Catherine's death leaves him obsessed rather than satisfied. The younger Catherine eventually befriends and loves Hareton Earnshaw, whom Heathcliff kept uneducated. Heathcliff abandons revenge and dies; Catherine and Hareton plan to marry, healing the families' division.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Orphaned Jane Eyre lives at Gateshead with her aunt, Mrs Reed, and is treated as an inferior to the Reed children. Her cousin John attacks her, but Jane is punished for defending herself and locked in the room where her uncle died. The experience leaves her ill and desperate to escape. Mrs Reed arranges to send her to Lowood Institution and tells its director, Mr Brocklehurst, that Jane is a liar. At Lowood, Jane encounters hunger, cold, and severe discipline, though superintendent Miss Temple treats the girls with dignity. Jane befriends Helen Burns, whose patient religious outlook contrasts with Jane's anger at injustice.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Brocklehurst visits Lowood and publicly brands Jane a liar, ordering the school to avoid her. Miss Temple hears Jane's account, verifies it, and restores her standing. A typhus epidemic then spreads through the badly managed institution, revealing the consequences of poor food and unhealthy conditions. Helen Burns is not among the fever cases but is dying of consumption. Jane goes to her room at night, and Helen dies while they are together. Public scrutiny brings changes to Lowood. Jane remains there for eight years, first learning and then teaching. When Miss Temple marries and leaves, Jane recognizes that she wants a wider life. She advertises her services and accepts a governess position at Thornfield Hall.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Brocklehurst publicly humiliates Jane, but Miss Temple investigates her story and clears her name. A typhus epidemic exposes Lowood's neglect. Helen, ill with consumption, dies beside Jane; later reforms improve the school. Jane remains eight years as pupil and teacher before advertising for a governess position. She moves to Thornfield Hall to teach Adèle Varens, ward of the absent owner, Edward Rochester. Jane meets Rochester after his horse slips on the road, and their searching conversations draw them together. Strange laughter is attributed to servant Grace Poole. One night Jane finds Rochester's bed curtains burning, wakes him, and helps extinguish the fire, but he conceals the cause.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jane's attachment to Rochester grows, but he leaves and returns with a house party that includes the beautiful Blanche Ingram. Jane believes Blanche is his intended bride and tries to master her own feelings while observing their apparent courtship. Rochester disguises himself as a fortune-teller to question the guests and draw out Jane's emotions. Richard Mason arrives from the West Indies, visibly disturbing Rochester. During the night a cry comes from the upper floor, and Jane is taken to a wounded Mason. She tends him in silence while Rochester arranges his removal. The continued presence of Grace Poole, supposedly responsible for the violence, convinces Jane that Thornfield's danger is not being fully explained.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rochester hosts a party that includes Blanche Ingram, whom Jane believes he will marry. Jane tries to suppress her love while Blanche treats governesses contemptuously. The arrival of Richard Mason from the West Indies alarms Rochester; during the night Mason is secretly attacked in the upper part of the house. Jane helps tend him without receiving an explanation. After a visit to the dying Mrs Reed, Jane returns to Thornfield. Rochester pretends he will send her away, then declares his love and proposes. Jane accepts. Their wedding is stopped by proof that Rochester already has a living wife, Bertha Mason, who is confined at Thornfield and caused its frightening incidents. Rochester asks Jane to live with him outside marriage. She refuses and leaves alone.",
+            "through": {
+              "chapter": 27
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After leaving Thornfield, Jane loses her money and wanders hungry until St John Rivers and his sisters Diana and Mary admit her to Moor House. Concealing her identity, she becomes teacher at a small village school and values the independence despite the modest position. St John discovers that Jane's uncle has died and left her twenty thousand pounds. He also establishes that Jane is the Rivers siblings' cousin. Delighted to gain family, Jane divides the inheritance equally among them. St John prepares for missionary service in India and trains Jane to assist his plans. He asks her to marry him because he considers her suited to the work, not because he loves her. Jane offers a familial partnership but rejects a loveless marriage. Under sustained pressure she nearly yields, then believes she hears Rochester calling her and resolves to find him.",
+            "through": {
+              "chapter": 35
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jane loses her money during her flight and nearly dies on the moors before St John Rivers and his sisters Diana and Mary shelter her. St John finds her work teaching a village school. He later discovers that Jane's uncle has died and left her a large fortune, and that Jane and the Rivers siblings are cousins. Jane divides the inheritance with them, gaining both independence and family. St John prepares for missionary work in India and asks Jane to marry him as a useful partner rather than from love. She refuses a marriage without affection. After seeming to hear Rochester calling her from a distance, she returns to Thornfield and finds it burned. Bertha died in the fire; Rochester was blinded and lost a hand while rescuing the household. Jane reunites with him at Ferndean, marries him freely, and later reports that he recovered sight in one eye.",
+            "through": {
+              "chapter": 38
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The collection turns to Wuthering Heights. Mr Lockwood, tenant of Thrushcross Grange, makes two difficult visits to his landlord Heathcliff. He encounters Hareton Earnshaw, the widowed Catherine Linton, the servant Joseph, and a household in which nobody explains the relationships. A snowstorm forces him to spend the night. In a disused chamber he finds childhood writing linked to Catherine Earnshaw and dreams that a ghostly child begs to enter through the window. Heathcliff's desperate response to Catherine's name reveals that the past still dominates him. Back at the Grange, Lockwood asks his housekeeper Nelly Dean to explain what he has seen, and she begins the history of the Earnshaw family and the orphan brought home by its former master.",
+            "through": {
+              "chapter": 42
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The collection turns to Wuthering Heights. Tenant Lockwood visits his landlord Heathcliff and meets the hostile household of Hareton Earnshaw and Catherine Linton. Forced to stay in a storm, Lockwood sleeps in an old room connected to Catherine Earnshaw and has a terrifying encounter at the window that he interprets as her ghost. His housekeeper Nelly Dean begins the family's history. The old Mr Earnshaw brought the orphan Heathcliff home; Catherine befriended him, but her brother Hindley hated him. After gaining control, Hindley reduced Heathcliff to a laborer. Catherine also became close to the refined Edgar Linton. She accepted Edgar's proposal while telling Nelly that her bond with Heathcliff was deeper, but Heathcliff overheard only her claim that marrying him would lower her and disappeared.",
+            "through": {
+              "chapter": 47
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Catherine marries Edgar Linton and settles at Thrushcross Grange. Heathcliff returns after three years, unexpectedly prosperous and controlled in manner, but determined to repay old injuries. He visits Wuthering Heights, where Hindley accepts him as a gambling companion and risks the estate against him. Isabella Linton develops a romantic interest in Heathcliff. Catherine warns that he is not the figure Isabella imagines, while Heathcliff sees the attraction as another way to strike at Edgar. Quarrels divide the household. Catherine shuts herself away, refuses food, and becomes seriously ill. Heathcliff elopes with Isabella and brings her to Wuthering Heights, where she discovers that marriage has placed her within a violent and vindictive household.",
+            "through": {
+              "chapter": 54
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Catherine marries Edgar. Heathcliff returns three years later with wealth and polished manners, intending revenge. He encourages Hindley's gambling until Wuthering Heights is mortgaged to him and uses Isabella Linton's infatuation to wound Edgar. Heathcliff elopes with Isabella and treats her cruelly. Conflict with the men contributes to Catherine's severe illness. Nelly allows Heathcliff to visit her in secret; their painful reunion affirms their attachment but resolves nothing. Catherine dies after giving birth to a daughter. Isabella escapes, Hindley dies in Heathcliff's debt, and Heathcliff takes the estate while keeping Hareton dependent and uneducated. Years later Isabella dies, and Heathcliff takes custody of their frail son Linton. He begins arranging contact between Linton and Edgar's sheltered daughter Catherine in order to gain Thrushcross Grange through their marriage.",
+            "through": {
+              "chapter": 59
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Young Catherine grows up at Thrushcross Grange under Edgar's protection, largely unaware of Wuthering Heights. After Isabella dies, Edgar brings her sickly son Linton north, but Heathcliff claims him. Catherine encounters Hareton and later begins corresponding with Linton. Heathcliff encourages the connection because marriage would give his son a path to the Grange. Nelly stops the correspondence, yet Catherine secretly visits Linton. He alternates between affection, selfish complaints, and fear of displeasing his father. Edgar's health declines. Although he eventually permits meetings between the cousins, Linton is visibly failing and acts under Heathcliff's pressure. Heathcliff then traps Catherine and Nelly at Wuthering Heights, refusing to release Catherine to her dying father until she marries Linton.",
+            "through": {
+              "chapter": 65
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Catherine escapes Wuthering Heights in time to be with Edgar before he dies, but the forced marriage has already placed her inheritance within Heathcliff's reach. Heathcliff brings her back to his house. The ailing Linton soon dies after making his father his heir, so Heathcliff now controls both estates and Catherine has no independent home. Lockwood visits before leaving the district and sees Catherine ridicule Hareton's effort to educate himself. Months later, he returns and learns that Nelly has moved to Wuthering Heights. Catherine has recognized the cruelty of her contempt, apologized to Hareton, and offered to teach him to read. Hareton responds with loyalty, and the two become close despite Heathcliff's efforts to make them enemies.",
+            "through": {
+              "chapter": 70
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Young Catherine pities Linton and visits him despite Nelly's objections. Edgar is dying, while Heathcliff pressures his fearful son to secure the marriage. Heathcliff finally imprisons Catherine and Nelly at Wuthering Heights and withholds Catherine from her father until she marries Linton. She escapes in time to see Edgar before his death, but her property passes through her husband. Linton soon dies after naming Heathcliff his heir, leaving Catherine trapped and dispossessed. Lockwood leaves the district after seeing her contempt for the uneducated Hareton. When he returns months later, Nelly explains that Catherine apologized, began teaching Hareton to read, and fell in love with him. Their closeness makes revenge seem empty to Heathcliff. Haunted by Catherine Earnshaw's memory, he stops eating and dies. Catherine and Hareton plan to marry and move to the Grange, uniting the families and estates.",
+            "through": {
+              "chapter": 72
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "jane-eyre-and-wuthering-heights"
+      }
+    },
     "jane-eyre-naxos-edition": {
       "characters": {
         "characters": [

@@ -1446,6 +1446,211 @@
         "work": "nona-the-ninth"
       }
     },
+    "north-and-south": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A thoughtful young woman raised mainly in London by her aunt, though her parents live in the rural Hampshire parish of Helstone. After helping with her cousin Edith's wedding, she returns to Helstone with a sharpened awareness of the contrast between fashionable society and country life. She is self-possessed, loyal to her family, and ready to form strong judgments.",
+            "id": "margaret-hale",
+            "name": "Margaret Hale",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Margaret's pretty, affectionate cousin, whose marriage to Captain Lennox opens the novel. She has grown up beside Margaret in her mother's London home and takes the comforts and conventions of their social world largely for granted.",
+            "id": "edith-lennox",
+            "name": "Edith Lennox",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Edith's brother-in-law, a polished young barrister and an old acquaintance of Margaret's. During a visit to Helstone, he proposes to Margaret with confidence that his affection will be returned, only to discover that she does not share it.",
+            "id": "henry-lennox",
+            "name": "Henry Lennox",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Margaret's gentle, scholarly father and the clergyman of Helstone. Troubled by doubts he cannot set aside, he decides that conscience will no longer allow him to remain in the Church of England, a choice that costs the family its home and livelihood.",
+            "id": "richard-hale",
+            "name": "Mr Hale",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Margaret's mother, a woman accustomed to more comfort than the Hale household can provide. She loves her family but is unhappy with life at Helstone and receives the move to an industrial northern town with distress.",
+            "id": "maria-hale",
+            "name": "Mrs Hale",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Mrs Hale's devoted personal servant. Blunt, protective, and frequently critical, she has served her mistress since before the Hales' marriage and considers herself responsible for guarding Mrs Hale from every avoidable discomfort.",
+            "id": "dixon",
+            "name": "Dixon",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A prosperous Milton cotton manufacturer who becomes Mr Hale's pupil and friend. He has built his position through discipline and commercial ability after his family lost its security. Direct, proud, and intensely practical, he initially seems harsh to Margaret, while her confidence and independence immediately command his attention.",
+            "id": "john-thornton",
+            "name": "John Thornton",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "John Thornton's formidable mother, who shares his pride in the business he rebuilt and distrusts anyone she believes looks down on him. Her manner is severe and unsentimental, but her loyalty to her son is absolute.",
+            "id": "hannah-thornton",
+            "name": "Mrs Thornton",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "John Thornton's younger sister. Fond of fashion and social display, she lacks her mother and brother's toughness and is easily unsettled by discomfort or conflict.",
+            "id": "fanny-thornton",
+            "name": "Fanny Thornton",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Milton mill worker whom Margaret meets through his daughter Bessy. Intelligent, forceful, and proud of working people, he becomes a leading voice among the men preparing to strike. His arguments give Margaret direct access to the workers' view of the struggle between labour and the mill owners.",
+            "id": "nicholas-higgins",
+            "name": "Nicholas Higgins",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Nicholas Higgins's eldest daughter, a former mill worker whose lungs have been permanently damaged by cotton dust. Often confined by illness, she speaks openly about death and takes comfort in religious hope. Her friendship draws Margaret into the life of Milton's working families.",
+            "id": "bessy-higgins",
+            "name": "Bessy Higgins",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Margaret's older brother, living abroad under an assumed name after taking part in a naval mutiny against a brutal captain. Returning to England could expose him to arrest, but his mother's grave illness makes the risk difficult to avoid.",
+            "id": "frederick-hale",
+            "name": "Frederick Hale",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former shipmate of Frederick's who recognizes him at the railway station. Drunk and hostile, he threatens to report Frederick and tries to stop him from leaving, turning the secret visit into a danger for the whole Hale family.",
+            "id": "leonards",
+            "name": "Leonards",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Mr Hale's wealthy Oxford friend and Margaret's godfather. He owns the Milton property rented by John Thornton and visits the Hales with the freedom of a long family connection. Genial and observant, he takes a particular interest in Margaret's future.",
+            "id": "mr-bell",
+            "name": "Mr Bell",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "north-and-south"
+      },
+      "recaps": {
+        "ending": "After Mr Bell's death, Margaret inherits a substantial fortune and becomes John Thornton's landlord. Thornton's mill meanwhile fails during a commercial downturn, although his closer cooperation with Nicholas Higgins has begun to replace mutual suspicion with practical respect. At a London dinner, Thornton finally learns that the man he saw Margaret with at the station was her fugitive brother Frederick, so the lie that damaged his trust no longer suggests a secret lover. Margaret later meets Thornton with Henry Lennox to discuss the Milton property. She offers to invest enough of her money to let Thornton reopen the mill and continue his new approach to relations with his workers. Their business conversation gives way to a personal reconciliation: each now understands that the other's pride concealed enduring love. Margaret accepts Thornton, joining her inherited resources to his work in Milton and choosing a future with him rather than remaining in the protected London life to which she had returned.",
+        "in_short": "When the Reverend Mr Hale leaves the Church of England, his family moves from rural Helstone to the industrial town of Milton. His daughter Margaret is repelled by the smoke, poverty, and severity she sees there, and she repeatedly clashes with mill owner John Thornton over class and labour. Friendship with worker Nicholas Higgins and his dying daughter Bessy complicates her judgments, while Thornton falls in love with her. During a strike riot Margaret protects him from the crowd but rejects his proposal. Her mother's death brings her fugitive brother Frederick home; when Thornton sees the siblings together and Margaret later lies to protect Frederick, he assumes the unknown man is her lover. Further deaths leave Margaret wealthy, while a downturn ruins Thornton's business. He learns the truth about Frederick, and Margaret offers to finance the reopening of his mill. Their new understanding ends their estrangement, and they acknowledge their love and plan a shared future in Milton.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Margaret Hale has spent much of her youth with her aunt Shaw and cousin Edith in London. After Edith marries Captain Lennox, Margaret returns to her parents at the Hampshire village of Helstone. Henry Lennox visits and proposes to her, but she refuses him. Soon afterward, her father reveals that religious doubts have made it impossible for him to continue as the parish clergyman. He will leave the Church and move the family north to Milton, where he can earn money as a private tutor. Margaret must help manage the decision and break the news to her ailing, unhappy mother. The Hales leave the country life Margaret loves and settle in a smoky manufacturing town whose pace, manners, and visible divisions between rich and poor are unfamiliar to them. One of Mr Hale's first pupils is John Thornton, a successful cotton manufacturer whose forceful manner immediately clashes with Margaret's southern assumptions.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Hales establish an uneasy life in Milton. Mr Hale admires Thornton's intellect and achievement, while Margaret is offended by the manufacturer's pride and by his hard view of business. Thornton, in turn, is struck by Margaret's dignity and beauty even when she judges him. Through chance meetings, Margaret befriends Bessy Higgins, a young former mill worker dying from lung damage caused by cotton dust, and Bessy's father Nicholas, an outspoken union man. Their household gives Margaret a view of hardship that the masters' drawing rooms do not. Visits between the Hales and Thorntons expose mutual class prejudice: Mrs Thornton resents Margaret's coolness toward her son, and Margaret sees little refinement in Milton society. As workers prepare to strike over wages, she hears sharply different accounts from Higgins and Thornton and begins to understand that neither side's position is as simple as she first believed. At home, Mrs Hale's health is failing more seriously than Margaret has been told.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Mrs Hale is gravely ill, and the family tries to shield her while adjusting the household around her needs. The Milton strike begins. Nicholas Higgins defends the union's demand for solidarity, while Thornton refuses to let collective pressure determine how he runs his mill. He brings workers from Ireland to keep production moving, intensifying the anger outside his house. A crowd gathers and becomes violent. Margaret urges Thornton to face the workers as people rather than summon soldiers; when he steps outside, she places herself between him and the mob and is struck by a stone. Troops disperse the crowd. Thornton interprets Margaret's instinctive protection as evidence that she loves him and proposes marriage. She rejects him, insisting that her action created no personal claim and condemning the assumptions behind his offer. Both are wounded by the encounter, and their earlier disagreements have become entangled with feelings neither can comfortably acknowledge.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Margaret and Thornton remain painfully conscious of one another after the rejected proposal. Mrs Hale, knowing that she is dying, longs to see her son Frederick. He lives abroad because returning to England could lead to a court-martial for his role in a naval mutiny against a cruel commanding officer. Margaret secretly summons him, and he reaches Milton in time to comfort their mother before her death. The family has only a brief reunion and must keep Frederick's presence hidden. As he leaves by train, a former shipmate named Leonards recognizes and threatens him. Frederick pushes the drunken man away; Leonards falls and later dies. Margaret was seen at the station with Frederick, but because his identity cannot safely be disclosed, the encounter places her reputation and her brother's freedom at risk. Thornton also sees Margaret there with the unknown young man, giving him reason to believe that she concealed a private attachment when she rejected him.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Police inquiries into Leonards's death reach Margaret. To protect Frederick, she denies having been at the station, then suffers deeply over the lie. Thornton, acting as a magistrate, brings the inquiry to an end for lack of evidence, sparing her public exposure even though he believes the man with her was a secret lover. Margaret realizes that she owes him protection she cannot explain or repay. Loss continues around the Hales: Bessy dies after her long illness, and Nicholas Higgins is left to care for his family amid the consequences of the failed strike. Margaret presses Thornton to consider Higgins as an individual rather than merely a union opponent. Their first meeting is hostile, but the possibility of work opens a new relationship across the division between master and man. Mr Hale, weakened by grief and strain, accepts an invitation to visit his old friend Mr Bell at Oxford, leaving Margaret briefly on her own in Milton.",
+            "through": {
+              "chapter": 38
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Mr Hale dies suddenly while visiting Oxford. Margaret, now without either parent, leaves Milton and returns to the London home of her aunt Shaw and the Lennox family. The comfort and leisure she once knew no longer satisfy her in the same way; Milton's conflicts and responsibilities have changed her. Mr Bell takes charge of her affairs and tries to understand what remains unresolved between her and Thornton. In Milton, Thornton employs Nicholas Higgins and begins listening more closely to the realities of his workers' lives. Their cooperation develops into mutual respect, and Thornton experiments with more direct contact between employer and employees. He still loves Margaret but believes she belongs to another man. Margaret, equally unable to explain Frederick's presence, thinks Thornton's respect for her has been permanently lost. Mr Bell's concern for her provides security, but his own health makes that arrangement uncertain.",
+            "through": {
+              "chapter": 45
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Mr Bell dies and leaves Margaret his property, making her independently wealthy and, through her inheritance, Thornton's landlord. A severe commercial downturn ruins Thornton's business, though he preserves his integrity and the respect created by his new dealings with Nicholas Higgins. Visiting the south, Thornton sees Helstone and better understands the home that shaped Margaret. At a London dinner he learns that the man at the station was Frederick Hale, not a lover, and the central misunderstanding between them is cleared away. Margaret and Thornton later meet to discuss the Milton property. She proposes investing her money in his mill so that he can resume business and continue the more cooperative practices he has begun. The practical offer reveals her continuing faith in him. Their restraint finally gives way: Thornton understands that she loves him, and Margaret accepts his love in return. They reconcile as equals, joining her capital and his industrial purpose and choosing a shared life linked to Milton.",
+            "through": {
+              "chapter": 52
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "north-and-south"
+      }
+    },
     "not-till-we-are-lost": {
       "characters": {
         "characters": [
