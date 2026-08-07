@@ -55,6 +55,12 @@ func rangeStr(lo, hi string) string {
 // walk found them; rels is used only to spot files the pack listing does not
 // account for.
 //
+// The per-pack work runs on a bounded pool - one pack file is independent of
+// every other - and the results are merged back in the listing's order, so the
+// catalogue, the problems and the advisories come out exactly as the sequential
+// walk this replaced produced them. The family-wide checks above stay here,
+// before the pool, because they are about the listing rather than any one file.
+//
 // The recordings it returns are already attached to their works (a works entry
 // is a composite), so Load only needs their reporting paths.
 func (l *loader) loadPackFamily(def pack.FamilyDef, tree *pack.Tree, rels []string) []recordWithPath {
@@ -72,48 +78,100 @@ func (l *loader) loadPackFamily(def pack.FamilyDef, tree *pack.Tree, rels []stri
 
 	l.checkPackBounds(def, tree)
 
-	var recs []recordWithPath
-	for i, ref := range tree.Packs() {
-		p := ref.Path()
-		file, ok := l.readPack(p)
-		if !ok {
-			continue
-		}
-		if file.Len() == 0 {
-			l.add(p, "pack holds no entries (an empty pack is a file with no range to cover)")
-			continue
-		}
-		total, per, err := file.Sizes()
-		if err != nil {
-			l.add(p, "canonical form: %s", collapse(err.Error()))
-			continue
-		}
-		l.checkPackCaps(def, p, file.Len(), total)
-		// Sizes memoizes a canonical render of the whole pack, and validation
-		// never renders it again. Release it before anything else can outlive
-		// this iteration holding it: for a pack a writer's store is keeping
-		// resident that memo is a second, larger copy of the tree, and even here
-		// it is dead weight for the rest of the entry loop. per stays readable -
-		// it is this scope's own reference to the map.
-		file.ReleaseMemo()
+	results := make([]packResult, tree.Len())
+	parallelDo(len(results), func(i int) {
+		results[i] = l.loadPack(def, tree, i)
+	})
 
-		lo, hi, _ := tree.Range(i)
-		for _, slug := range file.Slugs() {
-			if !pack.Covers(lo, hi, slug) {
-				l.add(entryPath(p, slug), "entry is outside the pack's range %s", rangeStr(lo, hi))
-			}
-			// An entry over the target size cannot be split out of its pack
-			// (splitting divides entries, never one entry), so this is an
-			// advisory to look at an outlier, not a violation.
-			if per[slug] > pack.TargetSize {
-				l.warn(entryPath(p, slug), "entry is %d bytes, over the %d-byte pack target: an oversized entry cannot be split and keeps its pack over target",
-					per[slug], pack.TargetSize)
-			}
-			entry, _ := file.Get(slug)
-			recs = append(recs, l.readPackEntry(def, p, slug, entry)...)
-		}
+	var recs []recordWithPath
+	for i := range results {
+		l.merge(&results[i])
+		recs = append(recs, results[i].recs...)
+		// The merged result is now the loader's; drop the worker's copy so a
+		// family's per-pack slices do not stay alive for the rest of the walk.
+		results[i] = packResult{}
 	}
 	return recs
+}
+
+// packResult is everything validating ONE pack file produced: the loader the
+// worker accumulated it on (its problems, its advisories, its slice of the
+// catalogue, its path index) and the recordings its entries composed.
+//
+// A worker fills its own and touches nothing else, so the pool needs no locks;
+// the coordinating goroutine merges these in listing order, which is where the
+// load's determinism comes from. It holds the loader itself rather than copies
+// of its fields so that there is nothing to keep in step: whatever a worker
+// accumulated IS what merge reads.
+type packResult struct {
+	w    *loader
+	recs []recordWithPath
+}
+
+// loadPack validates the pack at position i in tree: placement, caps, and every
+// entry it holds. It runs on a worker goroutine, so it writes only into the
+// loader it forked - the one it is called on is read for the shared fields
+// fork() names and never written to.
+func (l *loader) loadPack(def pack.FamilyDef, tree *pack.Tree, i int) packResult {
+	w := l.fork()
+	res := packResult{w: w}
+
+	p := tree.Packs()[i].Path()
+	file, ok := w.readPack(p)
+	if !ok {
+		return res
+	}
+	if file.Len() == 0 {
+		w.add(p, "pack holds no entries (an empty pack is a file with no range to cover)")
+		return res
+	}
+	total, per, err := file.Sizes()
+	if err != nil {
+		w.add(p, "canonical form: %s", collapse(err.Error()))
+		return res
+	}
+	w.checkPackCaps(def, p, file.Len(), total)
+	// Sizes memoizes a canonical render of the whole pack, and validation
+	// never renders it again. Release it before anything else can outlive
+	// this call holding it: for a pack a writer's store is keeping resident
+	// that memo is a second, larger copy of the tree, and even here it is dead
+	// weight for the rest of the entry loop. per stays readable - it is this
+	// scope's own reference to the map.
+	file.ReleaseMemo()
+
+	lo, hi, _ := tree.Range(i)
+	for _, slug := range file.Slugs() {
+		if !pack.Covers(lo, hi, slug) {
+			w.add(entryPath(p, slug), "entry is outside the pack's range %s", rangeStr(lo, hi))
+		}
+		// An entry over the target size cannot be split out of its pack
+		// (splitting divides entries, never one entry), so this is an
+		// advisory to look at an outlier, not a violation.
+		if per[slug] > pack.TargetSize {
+			w.warn(entryPath(p, slug), "entry is %d bytes, over the %d-byte pack target: an oversized entry cannot be split and keeps its pack over target",
+				per[slug], pack.TargetSize)
+		}
+		entry, _ := file.Get(slug)
+		res.recs = append(res.recs, w.readPackEntry(def, p, slug, entry)...)
+	}
+	return res
+}
+
+// merge folds one pack's result into the load, in the caller's order. It is the
+// only place a worker's output crosses back into shared state, and it runs on
+// the coordinating goroutine alone.
+func (l *loader) merge(r *packResult) {
+	w := r.w
+	l.probs = append(l.probs, w.probs...)
+	l.warns = append(l.warns, w.warns...)
+
+	l.cat.Works = append(l.cat.Works, w.cat.Works...)
+	l.cat.People = append(l.cat.People, w.cat.People...)
+	l.cat.Series = append(l.cat.Series, w.cat.Series...)
+	l.cat.Characters = append(l.cat.Characters, w.cat.Characters...)
+	l.cat.Recaps = append(l.cat.Recaps, w.cat.Recaps...)
+
+	l.idx.merge(w.idx)
 }
 
 // readPack returns the parsed pack at the data-relative path p, reporting a
@@ -134,6 +192,13 @@ func (l *loader) loadPackFamily(def pack.FamilyDef, tree *pack.Tree, rels []stri
 // store reads it as an empty pack to write into - which is also why Cached
 // refuses to answer with one of those stand-ins - and because the two failures
 // are reported differently.
+//
+// This runs on a worker goroutine, and asking-but-never-filling is what makes
+// that safe: Cached only READS the reader's two maps, nothing here writes to
+// them, and the store that owns the reader is blocked in LoadStore for the whole
+// pool's lifetime, so no Read or Drop can be racing the lookup. Filling the
+// cache from here would be a data race as well as the residency mistake it
+// already is - see the note on pack.Reader.
 func (l *loader) readPack(p string) (*pack.File, bool) {
 	if l.rdr != nil {
 		if file, ok := l.rdr.Cached(p); ok {
