@@ -279,6 +279,204 @@
         "work": "angels-demons"
       }
     },
+    "angels-flight": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An LAPD homicide detective placed in charge of a politically explosive investigation after civil-rights attorney Howard Elias is murdered. Bosch must examine fellow officers, including an old friend, while trying to keep evidence ahead of departmental pressure and public anger.",
+            "id": "harry-bosch",
+            "name": "Harry Bosch",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A civil-rights lawyer known for suing the LAPD over brutality and misconduct. He is killed aboard the Angels Flight railway on the eve of a trial expected to expose the treatment of Michael Harris in police custody.",
+            "id": "howard-elias",
+            "name": "Howard Elias",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A woman killed in the same Angels Flight car as Howard Elias. She has no clear connection to his legal work, making her presence central to reconstructing whether the attack was planned on the railway or brought aboard afterward.",
+            "id": "catalina-perez",
+            "name": "Catalina Perez",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A detective on Bosch's task force. Rider combines close attention to evidence with an understanding of how the case is being read in Black Los Angeles, where Elias represented clients who believed the department would not police itself.",
+            "id": "kizmin-rider",
+            "name": "Kizmin Rider",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Bosch's homicide partner and a member of the Elias task force. Edgar works witness and background leads while navigating the personal and racial tensions created by an investigation of police violence and a prominent Black attorney's death.",
+            "id": "jerry-edgar",
+            "name": "Jerry Edgar",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Bosch's former partner and friend, one of the officers accused of torturing Michael Harris during the investigation of a murdered girl. Elias's approaching civil trial puts Sheehan's conduct and career at the center of the murder inquiry.",
+            "id": "frankie-sheehan",
+            "name": "Frankie Sheehan",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Internal Affairs investigator connected to the department's handling of the Harris brutality allegations. His knowledge of both the accused detectives and the internal evidence makes him an important institutional witness.",
+            "id": "john-chastain",
+            "name": "John Chastain",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Black man arrested for the murder of twelve-year-old Stacey Kincaid and subjected to abusive interrogation before the case against him failed. Howard Elias represents him in a civil action against the officers and the city.",
+            "id": "michael-harris",
+            "name": "Michael Harris",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The twelve-year-old girl whose murder produced the failed case against Michael Harris. Elias's preparation for the civil trial has led him back into the evidence surrounding her death.",
+            "id": "stacey-kincaid",
+            "name": "Stacey Kincaid",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Stacey Kincaid's father. The original investigation treated his family as victims while concentrating on Michael Harris, but Elias's files cause Bosch to review what was accepted about the Kincaid household.",
+            "id": "sam-kincaid",
+            "name": "Sam Kincaid",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Howard Elias's wife, forced to confront both his public enemies and the private life exposed by the murder investigation. She gives Bosch access to a marriage strained by Elias's consuming work and secrecy.",
+            "id": "millie-elias",
+            "name": "Millie Elias",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Bosch's wife, a former FBI agent now trying to build a life with him in Los Angeles. Their marriage is already under strain, and the Elias case draws Bosch further into work at the moment Eleanor most needs him to be present.",
+            "id": "eleanor-wish",
+            "name": "Eleanor Wish",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior LAPD commander directing the institutional response to Elias's murder. Irving selects Bosch because the case cannot credibly be handled as a routine internal inquiry, but he also tries to contain unrest and damage to the department.",
+            "id": "irvin-irving",
+            "name": "Irvin Irving",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The lieutenant responsible for Bosch's homicide squad. Billets supports the investigative team while the command staff, the press, and the threat of civil disorder place unusual pressure on every decision.",
+            "id": "grace-billets",
+            "name": "Grace Billets",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "angels-flight"
+      },
+      "recaps": {
+        "ending": "Bosch's inquiry joins Howard Elias's murder to the truth Elias was preparing to reveal in the Michael Harris civil case. Harris did not murder Stacey Kincaid; the original investigation concentrated on him while evidence inside the Kincaid family was ignored, and Stacey's father was responsible for her death. Internal Affairs investigator John Chastain killed Elias to prevent the full chain of misconduct and concealment from emerging, with Catalina Perez becoming an additional victim of the attack. Frankie Sheehan, though implicated in the abusive interrogation of Harris, is not the simple answer to Elias's murder. Chastain dies amid the violence surrounding the case before Bosch can deliver an ordinary arrest and trial. The facts therefore emerge into a city already primed to distrust the LAPD, leaving both the department and Bosch unable to claim a clean resolution. At home, the damage is also final: Eleanor Wish leaves Bosch and Los Angeles after their marriage collapses under secrecy, distance, and his absorption in the case.",
+        "in_short": "Civil-rights lawyer Howard Elias and bystander Catalina Perez are shot aboard the Angels Flight railway just before Elias is to try a police-brutality suit for Michael Harris. With Los Angeles close to unrest and LAPD officers the obvious suspects, Harry Bosch leads Kiz Rider and Jerry Edgar through Elias's files, the conduct of Bosch's former partner Frankie Sheehan, and the old murder of twelve-year-old Stacey Kincaid. The inquiry shows that Harris was tortured during a failed case and that Elias had uncovered both the real source of Stacey's death and misconduct that kept attention away from her family. Internal Affairs investigator John Chastain killed Elias to stop those discoveries from coming out, while Perez died because she was present. Chastain dies during the resulting disorder before he can be prosecuted. Bosch solves the linked crimes but cannot contain their civic consequences. His marriage also breaks: Eleanor Wish leaves Los Angeles after Bosch is unable to bridge the distance the case and their private losses have created.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Reinstated with the LAPD, Harry Bosch solved producer Tony Aliso's murder after a mob-style scene proved to be a disguise for a plot rooted in Aliso's marriage and hidden money. The Las Vegas inquiry also reunited Bosch with former FBI agent Eleanor Wish after her release from prison. They chose to rebuild their relationship and married, leaving Bosch back on a homicide team with Jerry Edgar, Kiz Rider, and Lieutenant Grace Billets.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Civil-rights attorney Howard Elias and a woman named Catalina Perez are found shot to death in a car of the Angels Flight funicular. Elias built his career suing the LAPD, and he was days from trial in Michael Harris's brutality case, so suspicion immediately falls on police officers with professional and personal reasons to stop him. Irvin Irving puts Harry Bosch in charge of a small task force with Kiz Rider and Jerry Edgar because a visibly compromised inquiry could push Los Angeles toward unrest. The physical evidence suggests planning and access, while Perez appears to have been an uninvolved passenger. Bosch begins with Elias's pending cases and the officers most exposed by them, aware that the department wants both a rapid answer and protection from what that answer may be.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The task force concentrates on the Black Warrior case, in which Michael Harris was arrested for the murder of twelve-year-old Stacey Kincaid and subjected to a brutal interrogation. Howard Elias was preparing to show that detectives coerced Harris and built a case unsupported by reliable evidence. One of those detectives is Frankie Sheehan, Bosch's former partner and friend, making the inquiry personally difficult as well as politically dangerous. Elias's private files and movements complicate the image of a lawyer targeted only for his public work, but they also show that he had begun reinvestigating Stacey's death rather than limiting the civil suit to what happened in the interrogation room. Bosch sees that the motive may lie in whatever Elias had newly learned.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bosch, Rider, and Edgar compare Elias's civil-case preparation with the old homicide file. The original detectives focused so intensely on Michael Harris that inconsistencies around the Kincaid household received little scrutiny. Elias had identified those gaps and was positioned to expose not only abusive tactics but a failure that left Stacey's real killer outside the case. Internal Affairs investigator John Chastain possesses unusually detailed knowledge of the brutality allegations and the department's response. At the same time, leaks and public demonstrations increase the pressure, and evidence appears to point toward Frankie Sheehan. Bosch refuses to treat his friendship with Sheehan as proof of innocence, but he also resists an answer that makes one compromised detective carry every part of a wider concealment.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Elias murder and the Stacey Kincaid case begin to converge. Harris was not Stacey's killer, and the coercive interrogation helped the department avoid returning to evidence within her own family. Bosch learns that Stacey's father was responsible for her death and that Elias was preparing to bring that conclusion, along with the police failures surrounding it, into court. Sheehan's role in Harris's abuse remains serious, but the accumulating evidence does not support the simple public story that he alone murdered Elias to save himself. Chastain's access to internal information and his actions around the task force instead make him central to the effort to prevent Elias's findings from becoming public.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bosch identifies John Chastain as the person who killed Howard Elias to suppress the lawyer's discoveries about Stacey Kincaid's murder and the misconduct that protected the failed case against Michael Harris. Catalina Perez was killed because she was present, turning a targeted attack into a double murder. The truth arrives too late for a controlled arrest: Chastain dies amid the spreading violence and confrontation surrounding the investigation. Bosch can establish that Harris was innocent of Stacey's death, that Stacey's father killed her, and that Sheehan's abusive conduct did not make him Elias's murderer, but none of those distinctions restores public trust. The case closes in institutional and civic damage rather than vindication. Eleanor, already isolated by Bosch's secrecy and total commitment to the inquiry, leaves him and Los Angeles, ending their brief marriage as Bosch remains with the consequences of the case.",
+            "through": {
+              "chapter": 40
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "angels-flight"
+      }
+    },
     "animal-farm": {
       "characters": {
         "characters": [

@@ -895,6 +895,171 @@
         "work": "night-watch"
       }
     },
+    "no-time-like-the-past": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Max"
+            ],
+            "description": "A senior St Mary's historian who has secured a place beside Leon after being displaced from her original course through time. Back at the institute, she is eager to resume fieldwork but remains personally exposed to enemies who can attack through history.",
+            "id": "madeleine-maxwell",
+            "name": "Madeleine Maxwell",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Head of Technical and Max's partner. Having chosen a future with the Max who arrived from another course of events, he now has to support ordinary St Mary's operations while recognising that their enemies may use that relationship against them.",
+            "id": "leon-farrell",
+            "name": "Leon Farrell",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Director of St Mary's and the person ultimately responsible for approving its expeditions. He tries to restore disciplined research after repeated attacks without isolating Max from the work that defines her.",
+            "id": "edward-bairstow",
+            "name": "Edward Bairstow",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior historian and Max's dependable field colleague. Peterson provides experience and steadiness when apparently separate assignments begin to look like parts of a larger threat.",
+            "id": "tim-peterson",
+            "name": "Tim Peterson",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The senior security officer at St Mary's. Guthrie must protect both travelling teams and the institute from an enemy who knows its methods and need not approach from the present.",
+            "id": "ian-guthrie",
+            "name": "Ian Guthrie",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A resourceful Security operative whose courage and unconventional methods make him a regular part of St Mary's emergency response.",
+            "id": "markham",
+            "name": "Markham",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "St Mary's administrator, coordinating personnel and information while Bairstow and the field teams deal with disruptions spread across different periods.",
+            "id": "mrs-partridge",
+            "name": "Mrs Partridge",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior scientist whose department examines evidence brought back by historians and helps distinguish an ordinary failed assignment from deliberate temporal interference.",
+            "id": "professor-rapson",
+            "name": "Professor Rapson",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The institute's doctor, accustomed to treating injuries from periods and circumstances that cannot appear in an outside medical record.",
+            "id": "doctor-foster",
+            "name": "Doctor Foster",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The renegade traveller responsible for earlier lethal attacks on St Mary's. He is still free when the book begins, and nothing in Max's recent escape has removed his ability to make a future operation personal.",
+            "id": "clive-ronan",
+            "name": "Clive Ronan",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "no-time-like-the-past"
+      },
+      "recaps": {
+        "ending": "The apparent run of accidents is exposed as a deliberate attack directed at St Mary's and, in particular, at Max. Once Ronan's involvement becomes clear, Max and her colleagues abandon the assumption that they are dealing with unrelated field failures and coordinate the historical and present-day parts of their response. The immediate operation against the institute is stopped, and Max and Leon survive together. St Mary's retains its pods, staff, and independence, but it does not secure Ronan in a way that ends his campaign. The late confrontation leaves Max with a more personal understanding of his interest in her while preserving unresolved questions about what he intends to do with that connection. Bairstow's organisation returns to work after another costly defence, and Max finishes the book more firmly embedded in her life with Leon and St Mary's, but with Ronan still capable of turning future assignments into attacks on her.",
+        "in_short": "With the pursuit over, Max and Leon resume life at St Mary's and the institute returns to historical research. A succession of assignments initially appears to consist of the usual combination of difficult subjects, damaged plans, and narrow recoveries. As the incidents accumulate, however, Max and Bairstow recognise signs of coordination. Someone understands St Mary's schedules, the limitations of its pods, and the periods in which a stranded team would be hardest to recover. Security prepares the institute while Max's field group follows the disturbance through the past. The threat proves to be connected to Clive Ronan, the renegade traveller who has repeatedly attacked St Mary's, and his interest in this operation is directed personally at Max. The staff defeat the immediate attempt and keep the institute operating. Max and Leon remain together, but Ronan escapes a final reckoning and the personal dimension of his campaign remains an open danger.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Max arrived in a version of St Mary's where Leon was alive but where her presence did not fit the recent history remembered by its staff. Temporal authorities pursued the pair when Leon refused to give her up. After moving through the past to stay ahead of their pursuers, Max and Leon returned to St Mary's and confronted the attempt to remove her. The institute supported them, and Max was able to remain with Leon and resume a life among the colleagues she recognised. The settlement ended the chase but did not make temporal travel safe or close the older conflict with Clive Ronan. Ronan, whose attacks had already killed St Mary's personnel, remained free at the start of this book.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "St Mary's attempts to restore its normal programme after the disruption surrounding Max's arrival and pursuit. Max and Leon are able to live and work together, although both understand that their settled life depends on an institution with a long record of emergencies. Bairstow authorises new observations while Technical and Security strengthen procedures intended to prevent another force from using the timeline to reach the site. The first assignments look familiar: detailed plans encounter unpredictable people and physical conditions, forcing the historians to choose between completing their research and protecting the team. They return with the immediate objectives substantially intact and no proof that the difficulties are anything more than the usual risks of fieldwork.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Further work carries Max and her colleagues between widely separated periods. Each visit presents its own practical hazards, but repeated problems with timing, access, and recovery begin to form a pattern. Peterson and Max compare what went wrong rather than treating each debrief as a closed incident. Leon's examination of the pods cannot explain every failure as mechanical damage, and Guthrie is concerned that the assignments may be exposing predictable weaknesses in St Mary's response. Bairstow does not stop the programme without evidence, but he quietly increases security and limits information about future jumps. Ronan remains absent, leaving the team uncertain whether they are seeing deliberate interference or becoming suspicious because of earlier attacks.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "An assignment deteriorates beyond the range of an ordinary historical complication. The team is placed at risk in a way that depends on knowledge of St Mary's procedures and on the expectation that Max will take responsibility for recovering anyone left behind. Max, Peterson, and the supporting departments bring the operation home, but the narrow escape changes Bairstow's assessment. Security treats the institute and its schedule as compromised. Max also recognises that the pattern may be intended to direct her choices rather than simply damage equipment or steal research. Leon wants her removed from the exposed position, while Max argues that withdrawing without understanding the attack would leave every other historian available as leverage.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The evidence connects the separate disruptions to an organised temporal intervention. St Mary's coordinates Technical, Security, and the historians instead of sending another isolated team into the pattern. Max follows the historical side of the threat while Guthrie and Bairstow prepare for consequences at the institute. Ronan's involvement becomes apparent only after the operation has already narrowed around Max. His campaign is not limited to acquiring pods or destroying St Mary's as an institution; he is prepared to use Max's attachments to control where she goes and how she responds. The discovery makes the conflict personal without giving Max a safe opportunity to resolve it, and the team must first prevent the current attack from succeeding.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Max and her colleagues combine information from the failed assignments to counter the operation directed against them. Leon and Technical keep a recovery route available while Guthrie's security measures prevent the historical attack from becoming an uncontested assault on St Mary's. The immediate plan is defeated, and Max returns alive to Leon and the institute. Ronan is identified as the continuing force behind the threat, but he is not captured in a way that removes him from the timeline. The confrontation also leaves Max with evidence that his interest in her is more personal than his general hostility toward St Mary's, a thread that remains unresolved at the close. Bairstow's staff survive and resume their work, while Max and Leon retain the shared life they fought to establish in the previous book.",
+            "through": {
+              "chapter": 14
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "no-time-like-the-past"
+      }
+    },
     "nona-the-ninth": {
       "characters": {
         "characters": [
@@ -2283,6 +2448,187 @@
           }
         ],
         "work": "of-mice-and-men"
+      }
+    },
+    "on-her-majestys-secret-service": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A British Secret Service officer increasingly frustrated by the fruitless search for the escaped head of SPECTRE. Restless enough to consider leaving the service, he is diverted by a troubled young woman whose reckless behavior draws him into her life.",
+            "id": "james-bond",
+            "name": "James Bond",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Tracy"
+            ],
+            "description": "The estranged daughter of a powerful Corsican businessman, living under her married surname after a broken marriage and the death of her child. Beautiful, impulsive, and in profound distress, she first draws Bond's attention through dangerous driving, high gambling, and an apparent wish to die.",
+            "id": "teresa-di-vicenzo",
+            "name": "Teresa di Vicenzo",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The founder of SPECTRE and architect of the nuclear extortion plot defeated in Thunderball. He escaped that operation and has disappeared, leaving Bond with the long-running assignment of finding him.",
+            "id": "ernst-stavro-blofeld",
+            "name": "Ernst Stavro Blofeld",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "The Capu"
+            ],
+            "description": "Tracy's father and the head of the Union Corse, a formidable European criminal network. He is devoted to his daughter, frank about both his power and his limitations, and convinced that Bond can give her a reason to live.",
+            "id": "marc-ange-draco",
+            "name": "Marc-Ange Draco",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The head of the British Secret Service and Bond's superior. He tolerates Bond's impatience less readily than Bond expects, but he recognizes the importance of any credible lead to Blofeld.",
+            "id": "m",
+            "name": "M",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "M's trusted secretary and the familiar guardian of access to his office. She sees Bond during his frustrated return to headquarters and handles his unusual memorandum for the chief.",
+            "id": "miss-moneypenny",
+            "name": "Miss Moneypenny",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A leading officer at the College of Arms and an expert in genealogy. His work on a claimant seeking recognition of a noble title gives the Secret Service a possible route to the missing Blofeld.",
+            "id": "sir-hilary-bray",
+            "name": "Sir Hilary Bray",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The stern German administrator at Piz Gloria, the isolated Alpine clinic Bond enters under cover. She controls the patients and household with brisk efficiency and watches the visiting heraldic expert closely.",
+            "id": "irma-bunt",
+            "name": "Irma Bunt",
+            "reveal": {
+              "chapter": 12
+            }
+          },
+          {
+            "description": "A young English patient at Piz Gloria being treated for an allergy to chickens. Friendly and eager for attention, she gives Bond an intimate view of the clinic's unusual methods.",
+            "id": "ruby-windsor",
+            "name": "Ruby Windsor",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A British agent placed near Piz Gloria to provide discreet local support. His attempt to learn more about the clinic becomes a warning of how thoroughly its security protects Blofeld's operation.",
+            "id": "shaun-campbell",
+            "name": "Shaun Campbell",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "on-her-majestys-secret-service"
+      },
+      "recaps": {
+        "ending": "Bond returns to Piz Gloria with Draco and Union Corse men in a helicopter assault disguised as a rescue operation. They destroy Blofeld's biological-warfare base and free the women being used as unwitting carriers, but Blofeld escapes. Bond pursues him down the mountain in a bobsleigh run; the chase ends without Bond capturing or killing him. Bond and Tracy nevertheless proceed with their marriage, surrounded by friends before leaving for their honeymoon. On the road, a car driven by Blofeld draws alongside. Irma Bunt fires into Bond's car and the attackers speed away. Bond survives, but Tracy is shot dead only minutes after the wedding. When a policeman arrives, Bond remains beside her and speaks as though she is merely resting, unable to accept what has happened. The book closes at this moment, with the promise of their future destroyed and Blofeld still free. Tracy's murder becomes the premise of Bond's condition in the next novel.",
+        "in_short": "While hunting the vanished SPECTRE chief Ernst Stavro Blofeld, James Bond meets Teresa di Vicenzo, known as Tracy, and prevents her suicide. Her father, crime leader Marc-Ange Draco, offers Bond money to marry her; Bond refuses the bargain but accepts Draco's intelligence on Blofeld, while his feelings for Tracy deepen independently. A heraldic inquiry lets Bond enter Blofeld's Alpine clinic at Piz Gloria disguised as Sir Hilary Bray. He learns that Blofeld is hypnotizing young British women and sending them home to spread agents that will destroy crops and livestock. Bond escapes the mountain, is rescued by Tracy, and proposes to her. He returns with Draco's men, wrecks the laboratory, and foils the plot, though Blofeld escapes. Bond and Tracy marry. Minutes later Blofeld and Irma Bunt attack their car, killing Tracy and leaving Bond alive beside his new wife's body.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "SPECTRE attempted to extort the Western powers with stolen nuclear weapons in Thunderball. Bond and allied forces recovered the bombs and defeated Emilio Largo's field team, but SPECTRE founder Ernst Stavro Blofeld remained beyond the final battle and escaped. Bond has since been assigned to find him, an investigation that has produced little progress and has become a source of deep frustration.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On the French coast, Bond notices Teresa di Vicenzo, called Tracy, driving recklessly and later moving toward the sea in an apparent suicide attempt. He intervenes before the police arrive. At a casino he covers a gambling debt she cannot pay, and the two spend the night together, but her despair remains evident. Men then seize Bond and take him to Marc-Ange Draco, Tracy's father and the head of the Union Corse. Draco explains that his daughter has been shattered by a failed marriage and the death of her child. He believes Bond could restore her desire to live.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Draco offers Bond a large dowry to marry Tracy. Bond refuses to treat marriage as a purchase, although he agrees to see her again and is already moved by her. In exchange for useful information, he asks Draco for help locating Blofeld. Draco's contacts point toward Switzerland. Bond returns to London still angry at the stale official search and prepares to resign, but M redirects his energy when the College of Arms reports that a man in Switzerland is seeking recognition as the Comte de Bleuville. A physical detail in the correspondence suggests that the claimant may be Blofeld.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Secret Service arranges for Bond to impersonate heraldic expert Sir Hilary Bray. He travels to Piz Gloria, an isolated clinic and research station high in the Swiss Alps, where the supposed count is pursuing both a noble title and medical work. Irma Bunt manages the establishment and supervises a group of young British women being treated for food allergies. Bond meets the claimant under his adopted identity and maintains the genealogical cover while studying the clinic. Its isolation, communications, guards, and strict routines make clear that leaving with evidence will be harder than entering.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bond becomes close to Ruby Windsor and learns that the patients receive nightly instructions while in a suggestible state. Their supposedly curative treatment is actually preparing them to carry biological agents back to farms across Britain, where they can devastate agriculture. Bond confirms that the clinic's director is Blofeld and tries to pass information to outside support. Local agent Shaun Campbell is caught, and the clinic's security links him to Bond's cover. With his identity collapsing and the germ-warfare plan near completion, Bond must escape Piz Gloria without waiting for an official extraction.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bond escapes on skis and is hunted down the mountain through darkness, snow, and a holiday crowd. Exhausted and nearly trapped, he encounters Tracy, who has come looking for him. Her driving carries them through further pursuit and out of immediate danger. During the escape Bond recognizes that his attachment to her is not gratitude or an extension of Draco's proposal. He asks Tracy to marry him, and she accepts. After reaching safety, Bond reports Blofeld's biological plan and begins arranging both a strike on Piz Gloria and a life with Tracy beyond the operation.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bond enlists Draco and Union Corse fighters for a helicopter assault on Piz Gloria before the treated patients can disperse as carriers. Using deception to approach the mountain, the force attacks the clinic, frees the women, and destroys the facilities supporting Blofeld's agricultural warfare scheme. Blofeld escapes during the raid. Bond pursues him into a bobsleigh run, but the dangerous descent ends with Blofeld getting away. The immediate plot is broken and Bond survives, yet his principal enemy remains at large as preparations for Bond and Tracy's wedding continue.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bond and Tracy marry and leave together by car, looking toward a shared future after the violence surrounding Piz Gloria. On the road a second car approaches, driven by Blofeld with Irma Bunt as passenger. Bunt fires into the newlyweds' vehicle and they escape before Bond can respond. Bond is unharmed, but Tracy has been shot dead only minutes after the ceremony. A policeman finds Bond holding her and speaking as if she were only resting. Blofeld is still free, the victory over his project has become personally meaningless, and the book ends at the point of Bond's shock and denial beside his wife's body.",
+            "through": {
+              "chapter": 28
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "on-her-majestys-secret-service"
       }
     },
     "once-upon-a-broken-heart": {
