@@ -178,6 +178,226 @@
         "work": "insurgent"
       }
     },
+    "interesting-times": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The Discworld's least competent wizard, currently marooned on a warm desert island where nothing has tried to kill him for some time, an arrangement he regards as the high point of his life. He can cast no magic, speaks a great many languages, and has survived a career of catastrophes by running away from them with real skill. His hat is embroidered with the word wizzard, and that spelling is about to matter a great deal.",
+            "id": "rincewind",
+            "name": "Rincewind",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The Archchancellor of Unseen University, loud, energetic and impatient with subtlety. When a diplomatic demand arrives from the far side of the world he takes charge of answering it, on the reasonable grounds that the alternative involves committees.",
+            "id": "ridcully",
+            "name": "Mustrum Ridcully",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The University's youngest and most practical wizard, who does the calculations everyone else finds distasteful. He works out how to move a person across the world, and also works out the part of the arrangement that his colleagues would rather not think about.",
+            "id": "ponder-stibbons",
+            "name": "Ponder Stibbons",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The orangutan keeper of Unseen University's library, who knows where every book is and takes a personal interest in a wizard he has known for years.",
+            "id": "the-librarian",
+            "name": "The Librarian",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Rincewind's walking chest of sapient pearwood, which crosses oceans and continents on hundreds of small legs in order to be wherever its owner is. It is loyal, indestructible and extremely dangerous, and nothing that has tried to stop it has had cause to be pleased about the outcome.",
+            "id": "the-luggage",
+            "name": "The Luggage",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ghenghiz Cohen"
+            ],
+            "description": "The greatest hero the Disc has produced, now extremely old, extremely thin, and still in possession of a full set of diamond teeth and all of his nerve. He has spent a long life stealing from temples and killing monsters, has held a throne or two, and has grown bored with all of it. He is now leading a small band of veterans on the largest theft any of them has attempted.",
+            "id": "cohen",
+            "name": "Cohen the Barbarian",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Teach"
+            ],
+            "description": "A retired schoolteacher who has joined the Silver Horde as its instructor in civilisation, on the theory that men who intend to take over an empire will need table manners, etiquette and an understanding of administration. Patient, mild and quietly brave, he teaches barbarians the same way he taught children, and is the only member of the group with a plan for the day after the fighting.",
+            "id": "ronald-saveloy",
+            "name": "Ronald Saveloy",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of the Silver Horde, elderly, profane and permanently annoyed, who resists Saveloy's lessons in politeness more strenuously than any of the others and is the least reconciled to the idea that civilisation might be useful.",
+            "id": "truckle",
+            "name": "Truckle the Uncivil",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The oldest member of the Silver Horde, so old that he travels by wheelchair and hears roughly one word in ten, which he answers loudly and at length. He keeps an axe within reach and remains entirely capable of using it.",
+            "id": "mad-hamish",
+            "name": "Mad Hamish",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Grand Vizier of the Agatean Empire and head of the most powerful of its noble houses. Cultured, precise and formidably intelligent, he collects the arts and manners of distant Ankh-Morpork and despises the people who produced them. He regards the Empire's ancient rigidity as an obstacle to be cleared rather than a tradition to be honoured, and he treats everyone around him, allies included, as pieces already accounted for.",
+            "id": "lord-hong",
+            "name": "Lord Hong",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A leader of the Red Army, a small band of young revolutionaries in the Agatean Empire who have taken their politics from a smuggled book about a distant city where people are said to be free. Educated, sharp and impatient with sentiment, she does most of the group's actual thinking and is unimpressed by the wizard they have gone to such lengths to summon.",
+            "id": "pretty-butterfly",
+            "name": "Pretty Butterfly",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young member of the Red Army, sincere, idealistic and entirely convinced that a Great Wizard from across the world will set the Empire free. She believes in the cause with a directness the others have learned to be careful about.",
+            "id": "lotus-blossom",
+            "name": "Lotus Blossom",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A tax gatherer of the Agatean Empire, conscientious, courteous and entirely loyal to a system he has never once thought to question. He falls in with Rincewind on the road and explains the Empire's arrangements at length, with the calm of a man who has never imagined an alternative.",
+            "id": "six-beneficent-winds",
+            "name": "Six Beneficent Winds",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Agatean Empire's most persistent street trader, whose stock, patter and commercial ethics are recognisable to anyone who has bought a sausage in Ankh-Morpork, and whose prices adjust instantly to whatever the customer appears able to pay.",
+            "id": "dibhala",
+            "name": "Disembowel-Meself-Honourably Dibhala",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A small, cheerful clerk of the Agatean Empire who once travelled to Ankh-Morpork as the Discworld's first tourist and wrote a book about it when he got home. He has since lost his wife, raised two daughters, and discovered that a private account of a foreign holiday can be a more dangerous object than a sword.",
+            "id": "twoflower",
+            "name": "Twoflower",
+            "reveal": {
+              "chapter": 58
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "interesting-times"
+      },
+      "recaps": {
+        "ending": "Lord Hong's army meets the Silver Horde, the Red Army and the barbarian invasion he himself invited, and his plan collapses; he is killed in the fighting. Rincewind's part in it is the buried terracotta army, which turns out to obey simple, direct commands, and which ends the battle without much bloodshed. Ronald Saveloy is killed, and Cohen and the Horde give him the hero's send-off he had never expected and had spent his career telling boys not to want. Cohen the Barbarian is left sitting on the throne of the Agatean Empire as its new Emperor, with a band of elderly barbarians as his court, no interest whatever in ceremony, and every intention of running the place along simpler lines: the treasury opened, the walls lowered, and the Empire pointed outward instead of inward. Twoflower is freed and reunited with his daughters, and the book he wrote about his holiday, which caused all of this, is not disowned. Rincewind, promised a reward and wanting only to go back to his island, is caught by a spell from Unseen University that goes wrong in transit, and is dropped instead on the last continent, a hot, dry, red place at the far edge of the Disc that nobody has properly mapped.",
+        "in_short": "A message crosses the ocean from the Agatean Empire demanding that Ankh-Morpork send the Great Wizzard, and the wizards of Unseen University realise, from the spelling, exactly who is meant. Rincewind is snatched off the desert island where he had been perfectly happy and dropped into an empire on the edge of revolt. The Emperor is dying, the great families are manoeuvring, and a band of polite young revolutionaries called the Red Army has taken its inspiration from a book about Ankh-Morpork written by Twoflower, the Disc's first tourist. Behind all of it is Lord Hong, the Grand Vizier, who arranged the summons and intends to take the throne and then invade the Disc's other continent. Meanwhile Cohen the Barbarian and his Silver Horde, six extremely old heroes and a retired schoolteacher, walk into the Forbidden City to steal the largest thing on offer, and Cohen sits on the throne. In the final battle Rincewind wakes the buried terracotta army of the first Emperor, Hong is killed and Saveloy dies a hero. Cohen becomes Emperor, and Rincewind, aiming for his island, is misdirected to the last continent.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Rincewind is a wizard of Unseen University who cannot perform magic, is a coward by settled conviction, and has survived an extraordinary number of disasters by leaving them at speed. Long ago he was ordered to act as guide to Twoflower, a small, relentlessly optimistic insurance clerk from the Agatean Empire on the far side of the Disc and the first tourist the world had seen. Their travels wrecked a good deal of Ankh-Morpork and took them to the very edge of the world before Twoflower went home, leaving Rincewind his Luggage, a walking chest of sapient pearwood that follows its owner anywhere and destroys whatever gets in the way. Since then Rincewind has been dragged through a sourcery crisis, lost in the Dungeon Dimensions, and summoned into Hell, and he has finally achieved the thing he wanted most: a warm, empty desert island where nothing at all happens.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A message arrives in Ankh-Morpork from the Agatean Empire, the immensely rich and almost entirely closed civilisation on the Counterweight Continent, carried across the ocean by albatross. It asks for the Great Wizzard, and the wizards of Unseen University work out from the spelling that only one man on the Disc can be meant. The Patrician makes it clear that the request will be met. Ponder Stibbons devises a way of exchanging Rincewind for an object of equivalent mass, and Rincewind is plucked off his island, extremely against his will, and sent to the far side of the world. On the Counterweight Continent, meanwhile, a small band of very old men is on the move: Cohen the Barbarian and his Silver Horde, accompanied by Ronald Saveloy, a retired schoolteacher engaged to teach them the manners, etiquette and civilised habits they will need for the theft they have in mind.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rincewind lands in the Empire and is immediately taken up by the Red Army, a cadre of young revolutionaries who have been waiting for the Great Wizard to arrive and lead them. Their politics come from a smuggled book, What I Did On My Holidays, in which a travelling clerk described Ankh-Morpork as a place where people say what they like and nobody is executed for it. Their banners are extremely polite. The Empire itself is a country where obedience is total, the peasantry are told nothing, and the punishments are inventive; the Emperor is dying, and the great noble houses are already positioning themselves. The most capable of them belongs to Lord Hong, the Grand Vizier, a cultivated man who collects Ankh-Morpork's art and manners and regards its people with contempt, and who is clearly positioning himself for the throne.",
+            "through": {
+              "chapter": 32
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rincewind, having no interest in leading a revolution, spends most of his time trying to leave, and is repeatedly prevented. He travels the Empire in various disguises, at one point in the company of Six Beneficent Winds, a scrupulously polite tax gatherer who explains the imperial system with the calm of a man who has never conceived of any other. He comes to understand what the Red Army does not: that the peasants have no idea any of this is happening, and that a revolution in the Empire will simply install a new set of masters. The cadre's leaders, Pretty Butterfly and the more idealistic Lotus Blossom, have their own disagreements about that. Meanwhile the Silver Horde makes its way toward the capital, Hunghung, with Saveloy drilling them in the correct use of cutlery and the theory of government.",
+            "through": {
+              "chapter": 50
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rincewind reaches Hunghung and finds Twoflower, now a widower with two grown daughters, imprisoned for having written the book that started all of it. Their reunion is warmer on one side than the other. The old Emperor dies, and Lord Hong moves to take the throne, having arranged the whole crisis to give himself the pretext: a revolt to crush, a foreign wizard to blame, and afterwards an invasion of Ankh-Morpork. What he has not arranged for is the Silver Horde, who walk into the Forbidden City past every guard, ritual and precaution, because nobody has ever imagined an attack consisting of six very old men and a schoolteacher. Cohen sits down on the imperial throne and declares himself Emperor, which is technically correct and administratively inconvenient for everybody.",
+            "through": {
+              "chapter": 68
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Lord Hong withdraws and raises the imperial armies, tens of thousands of soldiers against seven old men holding a palace, and prepares to retake the city and then launch his invasion. The Red Army's name turns out to have a much older meaning than its members knew: buried outside the capital, in the tomb of One Sun Mirror, the first Emperor, lies an army of terracotta warriors made to defend the Empire, and it can still be woken. Rincewind, who is not a leader, a hero or a soldier, is the one who ends up standing in front of it. The warriors obey plain, direct instructions, which is fortunate, because plain and direct is all he has. The two armies form up outside Hunghung with the Horde, the revolutionaries and the clay soldiers on one side and Lord Hong's forces on the other.",
+            "through": {
+              "chapter": 85
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The battle goes against Lord Hong. The terracotta army takes the field, his troops break, his plan for the throne and for the invasion of Ankh-Morpork collapses, and he is killed in the fighting. The victory is not free: Ronald Saveloy is killed, and the Horde gives the schoolteacher the send-off of a hero. Cohen the Barbarian ends the book as Emperor of the Agatean Empire, with his elderly companions as a court, no patience for ritual, and plans to open the treasury, lower the walls and turn the Empire outward. Twoflower is released and restored to his daughters, and the book that caused the whole affair is left standing. Rincewind is offered a reward and asks only to be returned to his island. Unseen University obliges with a spell that misfires, and he is deposited instead on the last continent at the Rim of the Disc, a hot, red, largely unmapped place where it has not rained in a very long time.",
+            "through": {
+              "chapter": 109
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "interesting-times"
+      }
+    },
     "interview-with-the-vampire": {
       "characters": {
         "characters": [

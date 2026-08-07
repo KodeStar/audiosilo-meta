@@ -1789,6 +1789,291 @@
         "work": "american-gods"
       }
     },
+    "an-echo-in-the-bone": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Claire Beauchamp Randall"
+            ],
+            "description": "A twentieth-century surgeon living in the eighteenth by choice, wife to James Fraser. With their North Carolina house burned and the colonies in open revolt, she is on the move: practising medicine out of a saddlebag, arguing with army doctors about cleanliness, and carrying knowledge of how this war ends that she can share with almost nobody. Blunt, competent and increasingly aware that being useful to an army means being where the fighting is.",
+            "id": "claire-fraser",
+            "name": "Claire Fraser",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Jamie",
+              "Colonel Fraser"
+            ],
+            "description": "A Highland Scot in his fifties who has already lost one rebellion and has now committed himself to another. Formerly laird of Fraser's Ridge, he has left the burned settlement behind and means to reach Scotland on family business before the war closes the sea lanes. He is a soldier by long habit, a Catholic among Presbyterians and a rebel among former friends, and he has a son in the British army who does not know whose son he is.",
+            "id": "jamie-fraser",
+            "name": "James Fraser",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Jamie's Scottish nephew, who lived for years as a Mohawk and now travels with his uncle and aunt as scout, hunter and interpreter, with his wolf-dog Rollo at his heel. He is caught between three peoples and belongs cleanly to none of them, and he believes, on the evidence of his marriage among the Mohawk, that he cannot father a living child.",
+            "id": "young-ian-murray",
+            "name": "Young Ian Murray",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jamie and Claire's daughter, an engineer, living in the twentieth century at Lallybroch, the Fraser family's old Highland farmhouse, with her husband Roger and their two children. She brought her daughter back through the stones for heart surgery and has no intention of risking the crossing again. She reads the letters her parents left for her across two hundred years and works at a hydroelectric station in the glen.",
+            "id": "brianna-mackenzie",
+            "name": "Brianna MacKenzie",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Historian, former minister-in-training, husband to Brianna, living at Lallybroch in the twentieth century. His singing voice was ruined by a hanging in the past and he is still finding out what he is for without it. He is teaching his son to be careful about what he says at school, digging through parish records for traces of the people he left behind, and trying to work out how far ahead the family's history is already written.",
+            "id": "roger-mackenzie",
+            "name": "Roger MacKenzie",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "William Ransom",
+              "Ellesmere"
+            ],
+            "description": "A young English nobleman, ninth Earl of Ellesmere, raised by Lord John Grey and now a lieutenant in the British army in America. Tall, capable and eager to prove himself, he is assigned to carry dispatches and gather intelligence rather than to the line duty he wants. He believes his father died before he was born and has never questioned it.",
+            "id": "william-ransom",
+            "name": "William",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "John Grey"
+            ],
+            "description": "An English aristocrat and former army officer, William's stepfather and guardian, and Jamie Fraser's oldest friend on the other side of this war. He moves easily among soldiers, diplomats and intelligence men, has interests in both Britain and America, and is trying to keep his family out of a conflict that has already taken a piece of it.",
+            "id": "lord-john-grey",
+            "name": "Lord John Grey",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jamie's foster son, now running a printing press with his wife Marsali in Philadelphia, where a printer with rebel sympathies and a French accent must be careful about what he sets in type and for whom.",
+            "id": "fergus-fraser",
+            "name": "Fergus Fraser",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Fergus's wife and Jamie's stepdaughter, keeping a household of small children and a print shop going in a city that changes hands as the armies move. Practical, sharp and unimpressed by danger she cannot do anything about.",
+            "id": "marsali-fraser",
+            "name": "Marsali Fraser",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A man Roger and Brianna meet in the glen, a local with an interest in Gaelic and in old stories, who works around the hydroelectric scheme and takes an unusual interest in the family at Lallybroch.",
+            "id": "rob-cameron",
+            "name": "Rob Cameron",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young Quaker woman travelling with her brother, plain-spoken in the Friends' manner and entirely unimpressed by rank or uniform. Her convictions and her circumstances are pulling in opposite directions: her brother has decided that the testimony of peace does not forbid him to heal soldiers, and she has to decide what she will do about it.",
+            "id": "rachel-hunter",
+            "name": "Rachel Hunter",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Denny"
+            ],
+            "description": "A Quaker physician, trained in Scotland, who believes he is called to serve as a surgeon with the Continental army even though his Meeting will disown him for it. Mild, precise and unshakeable once he has decided a thing is right.",
+            "id": "denzell-hunter",
+            "name": "Denzell Hunter",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Lord John's nephew, a young British officer taken prisoner and left in Philadelphia gravely wounded, with musket balls still in his body and no surgeon willing to attempt them. His family has been searching for him.",
+            "id": "henry-grey",
+            "name": "Henry Grey",
+            "reveal": {
+              "chapter": 48
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Dottie"
+            ],
+            "description": "Lord John's niece, Henry's sister, a duke's daughter who has crossed the Atlantic on her family's business and has plans of her own that would horrify most of her relations.",
+            "id": "dorothea-grey",
+            "name": "Lady Dorothea Grey",
+            "reveal": {
+              "chapter": 48
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Scottish general commanding under Burgoyne in the northern campaign, and a distant kinsman of Jamie's. A professional soldier respected on both sides of the line.",
+            "id": "general-simon-fraser",
+            "name": "General Simon Fraser",
+            "reveal": {
+              "chapter": 66
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Jamie's sister, mistress of Lallybroch, who has held the estate together through rebellion, occupation and famine while her husband's health failed. She has not seen her son Ian since he was taken from Scotland as a boy, and she has never met Claire's like.",
+            "id": "jenny-murray",
+            "name": "Jenny Murray",
+            "reveal": {
+              "chapter": 73
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jenny's husband, Jamie's boyhood friend and brother-in-law, who lost a leg soldiering and has run Lallybroch ever since. He is dying of a consumption that has been years about it, and he means to do it at home and on his own terms.",
+            "id": "ian-murray-elder",
+            "name": "Ian Murray",
+            "reveal": {
+              "chapter": 73
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Buck"
+            ],
+            "description": "A Highlander with a family connection to Roger that neither of them enjoys, who has come through the stones himself and turns up in the twentieth century with nowhere to go and no way back.",
+            "id": "william-buccleigh-mackenzie",
+            "name": "William Buccleigh MacKenzie",
+            "reveal": {
+              "chapter": 97
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "an-echo-in-the-bone"
+      },
+      "recaps": {
+        "ending": "The ship carrying Jamie back from Scotland is lost, and he is reported drowned. Claire reaches Philadelphia with Jenny Murray as a widow, and the city is under British occupation with her name on more than one list. Lord John Grey marries her, chiefly to put an English officer's name between her and arrest, and the arrangement is barely a day old when the truth of William's parentage breaks open: William learns that James Fraser is his natural father, that Lord John has known it all his life, and that everything about his own name is a fiction. He turns on his stepfather and rides out. Into the middle of this walks Jamie, alive, wet and unannounced, to find his wife married to his oldest friend. Elsewhere, Young Ian has declared himself to Rachel Hunter, Denzell Hunter is committed to the Continental army, and William is at large and furious. In the twentieth century the family's half of the story ends worse: Jem is taken by Rob Cameron and disappears near the tunnel at the hydroelectric dam. Roger, with William Buccleigh MacKenzie for company, goes through the stones after him, and comes out in the wrong century entirely, leaving Brianna alone in 1980 with Amanda and with a man who knows what her family is.",
+        "in_short": "The American war closes over the Frasers. Jamie, Claire and Young Ian leave the burned Ridge behind, travel north through a country in revolt, and end up with the Continental garrison at Fort Ticonderoga, where Jamie raises a militia company and Claire runs a surgery. The fort is abandoned before Burgoyne's advance, and the retreat carries them into the Saratoga campaign, where the British army is beaten and surrenders. Charged with taking a dead British general home for burial, Jamie sails for Scotland with Claire and Ian, buries his brother-in-law at Lallybroch, and starts back with his widowed sister Jenny. The ship is lost and Jamie is reported drowned. Claire, arriving in occupied Philadelphia as a widow, is married by Lord John Grey to protect her, and within a day William discovers that Jamie Fraser is his real father and storms out of his own life. Jamie then walks in alive. In 1980 Scotland, Roger and Brianna's son Jem is abducted, and Roger goes through the stones after him and lands in the wrong century.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Claire Randall, an English nurse, walked through a Highland stone circle in 1945 and came out two hundred years earlier. She married James Fraser to survive there, failed with him to prevent the Jacobite rising, and was sent back through the stones pregnant on the eve of Culloden. Twenty years later she returned to the past for good, and after smuggling, shipwreck and the Caribbean the two of them settled in the North Carolina backcountry and founded Fraser's Ridge. Their daughter Brianna followed them through the stones, as did Roger MacKenzie, who married her; a pirate named Stephen Bonnet, and later a hostile faction of the Frasers' own neighbours, shadowed the family for years. In the last book the Ridge came apart. Claire was carried off by backcountry raiders and brought back by Jamie's men; the Frasers' quarrel with the Browns of Brownsville turned lethal; a girl was murdered in Claire's garden and Claire was tried for it before another confession freed her; Stephen Bonnet was finally executed. Jamie declared for the rebels, ending his long friendship with the English officer Lord John Grey on paper. When Claire found a fatal heart defect in Brianna's newborn daughter, Roger and Brianna took both children back through the stones to the twentieth century. Days later the Frasers' house burned to the ground, and Jamie, Claire and Young Ian set out for Scotland, alive despite a printed newspaper notice reporting their deaths in exactly that fire.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The colonies are in open revolt and the Frasers have no house to go back to. Jamie, Claire and Young Ian are on the road with what they saved from the fire, meaning to reach Scotland on family business before the war makes the crossing impossible. Jamie has committed himself to the rebel side and knows exactly what that costs a man who has already been on the losing end of one rising. Claire, patching up whoever is in front of her, has to keep deciding how much of the future it is safe to spend. Two hundred years later, Roger and Brianna are living at Lallybroch, the old Fraser farmhouse in the Highlands, with Jeremiah and with Amanda, whose heart has been repaired. They have Jamie and Claire's letters, written to be read across two centuries, and are only beginning to work out what the box contains and what it will cost them to read it.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The war widens. In the summer of 1776 William Ransom, Lord John Grey's stepson and a young lieutenant in the British army, is with Howe's forces on Long Island and escapes capture in the confusion of the American retreat, which does nothing to advance the career he wants. Lord John, moving between London, the army and the intelligence men who deal in intercepted letters, keeps a careful eye on him. Jamie and Claire work their way north through an unsettled country, stopping where Fergus and Marsali now run a printing press in Philadelphia and where a printer's politics can be read off his type. Claire does what medicine she can along the way, including a delivery that would have killed mother and child without her. In the twentieth century, Roger and Brianna settle into Lallybroch and into the reading of the letters, and Brianna takes work at the hydroelectric station in the glen.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Frasers' journey turns to sea and to the trade in privateers, prizes and prisoners that the war has made of the Atlantic coast, and Young Ian's usefulness away from a settlement becomes plain. Lord John's family affairs pull him deeper into the American side of the war than he intends. In 1980 Scotland, Roger's search for his own history takes him into old parish records and into the tunnels of the Loch Errochty dam, and the family becomes acquainted with Rob Cameron, a local man with an interest in Gaelic and in them. Brianna, running the hydro scheme, has to keep her children from saying anything at school about where they were born, and Roger has begun to suspect that the family's twentieth-century life is not as safely sealed off from the eighteenth as they assumed.",
+            "through": {
+              "chapter": 31
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jamie and Claire reach Fort Ticonderoga, where Jamie takes a militia company under a Continental commission and Claire sets herself up as the garrison's surgeon, to the irritation of the men who thought they held that office. Young Ian carries dispatches and scouts the ground north, where Burgoyne's British army is coming down from Canada. Far to the south, William, sent through the Great Dismal Swamp on intelligence work, nearly dies of fever and is nursed back by two Quakers travelling the same road: Denzell Hunter, a physician who has decided he can serve as an army surgeon without breaking the testimony of peace, and his sister Rachel, who will be disowned along with him. Denny turns north to join the Continental army and Rachel goes with him, which brings her into Young Ian's path. Lord John, meanwhile, learns where his badly wounded nephew has been held all this time.",
+            "through": {
+              "chapter": 41
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ticonderoga is untenable. Burgoyne's guns are placed above it and the garrison abandons the fort in the night, and the retreat becomes a running fight through the woods and hills, with Jamie's company in the rearguard and Claire moving with the wounded. Jamie and Claire are separated from each other and from Ian more than once and gather themselves again on the road south. In Philadelphia, Claire has earlier operated on Lord John's nephew Henry Grey, taking out the musket balls no other surgeon would touch, and his sister Dorothea has crossed the Atlantic on family business with private intentions of her own concerning Denzell Hunter. Through the summer the American militias harry Burgoyne's supply columns, and at Bennington a British detachment is destroyed outright, leaving the invading army short of everything it needs while the Continental force in front of it grows.",
+            "through": {
+              "chapter": 60
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The northern campaign is decided at Saratoga. Jamie fights through both actions on the Hudson heights with the riflemen, and Claire works in a surgical tent within earshot of the guns. Among the British dead is General Simon Fraser, a professional soldier and a distant kinsman of Jamie's, mortally shot at the second battle. Burgoyne's army, surrounded and starving, surrenders in October 1777, the largest British capitulation of the war so far and the one that will bring France in. Jamie undertakes to carry General Fraser's body home to Scotland for burial, which gives him lawful reason to make the crossing he has wanted since the Ridge burned. Young Ian's attachment to Rachel Hunter has become obvious to everyone but the two of them, and Denzell Hunter is now a Continental army surgeon in fact as well as intention.",
+            "through": {
+              "chapter": 70
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jamie, Claire and Young Ian cross to Scotland with the general's coffin and go on to Lallybroch. Jamie has not been there in years and Ian has not been there since he was a boy; both are met by a household that has gone on without them. Jamie's brother-in-law Ian Murray is dying of consumption, and he has arranged the manner of it himself: he says his goodbyes, takes leave of his wife and children, and dies at home. His son has to face what he became among the Mohawk in front of the family that lost him. Jenny Murray, widowed and with the estate in her sons' hands, decides she is not staying behind, and prepares to sail for America with her brother and sister-in-law. Jamie collects what he came for, and the party turns back toward a war that has not paused for any of it.",
+            "through": {
+              "chapter": 84
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Winter and spring, 1778. The Continental army sits at Valley Forge, cold, hungry and drilling; Denzell Hunter doctors it, Rachel keeps his household, and Young Ian is in and out with dispatches, unable to say plainly to a Quaker woman what he is or what he wants. William, who has seen enough of how his side conducts the war and of the intelligence men who have been using him, is serving in occupied Philadelphia with steadily less conviction and no idea what to do instead. Lord John moves between the British command, his own family and the Frasers' interests, keeping several sets of confidences at once. Claire and Jenny make the Atlantic crossing back to America. In Scotland in 1980, Roger and Brianna's reading of the letters has begun to raise questions with no comfortable answers, and Rob Cameron's interest in the family has stopped looking like friendliness.",
+            "through": {
+              "chapter": 94
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The ship carrying Jamie home is lost and he is reported drowned. Claire arrives in British-occupied Philadelphia a widow, with a rebel's name and no protection, and Lord John Grey marries her to put an English officer's name between her and arrest. Within a day of it, William learns what his stepfather has known all his life: that James Fraser is his natural father, that his title and his name rest on a lie, and that everyone who mattered to him has kept it from him. He strikes out at Lord John and rides away from the whole of it. Into the middle of the wreckage walks Jamie, alive, to find his wife married to his oldest friend. Young Ian has spoken to Rachel Hunter at last, and Jenny Murray has landed in America. In 1980, Jem is taken by Rob Cameron and vanishes near the dam tunnel; Roger goes through the stones after him with William Buccleigh MacKenzie and comes out in the wrong century, leaving Brianna alone with Amanda, a missing son, and a husband two hundred years out of reach.",
+            "through": {
+              "chapter": 103
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "an-echo-in-the-bone"
+      }
+    },
     "an-ember-in-the-ashes": {
       "characters": {
         "characters": [

@@ -1423,6 +1423,322 @@
         "work": "a-bond-broken"
       }
     },
+    "a-breath-of-snow-and-ashes": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Claire Beauchamp Randall",
+              "Mistress Fraser"
+            ],
+            "description": "A twentieth-century surgeon who first came through a Highland stone circle in 1945 and later returned deliberately to live in the eighteenth century with James Fraser. She is the healer of Fraser's Ridge, the North Carolina backcountry settlement Jamie founded, treating everything from broken bones to childbed fever with what she can grow, distil or improvise. Practical, blunt and often impatient with the period's medicine, she is working toward safer surgery and has begun distilling ether. She knows how the coming war between the colonies and the Crown ends, which shapes every decision she and Jamie make, and which she can share with almost no one.",
+            "id": "claire-fraser",
+            "name": "Claire Fraser",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Jamie",
+              "Colonel Fraser"
+            ],
+            "description": "A Highland Scot in his fifties, laird of Fraser's Ridge, holder of a Crown land grant and, by appointment, an Indian agent charged with keeping the peace with the Cherokee on the government's behalf. He survived Culloden, prison at Ardsmuir and transportation, and he has no wish to fight another losing war, but he knows from Claire which side wins this one. Shrewd, tightly self-controlled and fiercely loyal to the people under his protection, he leads the Ridge's militia and holds together a settlement of Scots, Presbyterians, Catholics, fishermen and former soldiers who agree on very little.",
+            "id": "jamie-fraser",
+            "name": "James Fraser",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Bree",
+              "Brianna Randall"
+            ],
+            "description": "Jamie and Claire's daughter, raised in the twentieth century by Claire and Frank Randall and trained as an engineer before she followed her mother through the stones. She lives on the Ridge with her husband Roger and their small son Jeremiah, and turns her education to whatever the settlement needs: water systems, matches, plumbing, drawings. Tall, red-haired and stubborn in the same way her father is, she carries her own history with the pirate Stephen Bonnet quietly.",
+            "id": "brianna-mackenzie",
+            "name": "Brianna MacKenzie",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Roger Mac"
+            ],
+            "description": "A Scottish historian and folk singer who came back through the stones after Brianna and stayed. A near-hanging in the past damaged his throat and took most of his singing voice, a loss he is still measuring. Adopted son of a Presbyterian minister, he finds himself pulled toward a ministry of his own on a mountain that has no settled preacher, while trying to be useful to a community that mostly values skills he does not have.",
+            "id": "roger-mackenzie",
+            "name": "Roger MacKenzie",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ian Murray"
+            ],
+            "description": "Jamie's Scottish nephew, who spent years living as a Mohawk after choosing to stay with them, and has come back to the Ridge with his enormous dog Rollo. He hunts, scouts and interprets, moves between the settlement and the Cherokee towns with equal ease, and says almost nothing about the wife and the life he left behind in the north. He is closer to Jamie than to anyone else.",
+            "id": "young-ian-murray",
+            "name": "Young Ian Murray",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jamie's foster son, a French orphan he took on as a pickpocket in Paris decades earlier and who lost a hand in Scotland. He lives on the Ridge with his wife Marsali and their children and runs the settlement's whisky trade, and he is quick, charming and better at handling people than most of the mountain.",
+            "id": "fergus-fraser",
+            "name": "Fergus Fraser",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Fergus's wife and Jamie's stepdaughter, one of the two girls Laoghaire MacKenzie bore before Jamie's brief second marriage. Sharp-tongued, practical and unsentimental, she works the malting shed and the still alongside Fergus and keeps their growing family fed.",
+            "id": "marsali-fraser",
+            "name": "Marsali Fraser",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young bondservant Jamie brought from Scotland, now grown and settled on the Ridge with her father, Joseph Wemyss. Small, fair and devoted to Claire and Brianna, she is of an age to be married and there is more than one opinion on the mountain about who should have her.",
+            "id": "lizzie-wemyss",
+            "name": "Lizzie Wemyss",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Murdina Bug"
+            ],
+            "description": "The Frasers' housekeeper, a small, tireless, endlessly talkative Highland woman who runs the Big House with her husband Arch. She is devoted to Jamie and Claire, formidably competent, and entirely certain of her own judgement about what is owed to the family she serves.",
+            "id": "mrs-bug",
+            "name": "Mrs. Bug",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Mrs. Bug's husband, an elderly Highlander who lost the fingers of one hand long ago and now keeps the Ridge's accounts and stock. He speaks little, was once a factor to a Highland house, and carries the reserve of a man who has lost far more than he says.",
+            "id": "arch-bug",
+            "name": "Arch Bug",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A dour Presbyterian schoolmaster who shared Jamie's imprisonment at Ardsmuir and now farms on the Ridge with his son and daughter. Rigid, learned and openly disapproving of Catholics, of Claire, and of most of what Jamie does, he leads the fishermen's faction of the settlement and is Jamie's most persistent domestic opponent.",
+            "id": "tom-christie",
+            "name": "Tom Christie",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tom Christie's teenage daughter, raised under a hard father and a harder faith. Quick, curious and quietly determined, she attaches herself to Claire's surgery, learning to grind herbs, hold instruments and read a case, and shows a real aptitude for it. She is admired by several of the young men on the Ridge.",
+            "id": "malva-christie",
+            "name": "Malva Christie",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tom Christie's grown son, devout, humourless and protective of his family's standing on the Ridge. He works his father's land and shares his father's opinions about the Frasers.",
+            "id": "allan-christie",
+            "name": "Allan Christie",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young former soldier sent up to the Ridge from Virginia by Jamie's old friend Lord John Grey. He carries a letter M branded on his cheek, the mark of his conviction after the killings in Boston, and arrives half-crippled by an ailment Claire is able to treat. Gentle and eager to be useful, he becomes part of the household and catches the eye of more than one girl on the mountain.",
+            "id": "bobby-higgins",
+            "name": "Bobby Higgins",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The head man of Brownsville, the settlement below the Ridge, and organiser of a local committee of safety that answers to nobody. He is a hard trader with a long memory and a family loyalty that outweighs any law, and he wants Jamie either inside his committee or out of his way.",
+            "id": "richard-brown",
+            "name": "Richard Brown",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Richard Brown's brother, coarser and less careful than Richard, and a man with a reputation for taking what he wants from people who cannot stop him. He rides with the committee of safety and resents Jamie's authority on the mountain.",
+            "id": "lionel-brown",
+            "name": "Lionel Brown",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A man Claire encounters among a band of backcountry raiders, and no ordinary bandit: he tells her he came through a stone circle from the twentieth century, one of a group who travelled back with a political purpose and then lost both the purpose and the way home. He is unreliable, frightened and the only other traveller Claire has met in years.",
+            "id": "wendigo-donner",
+            "name": "Wendigo Donner",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "the Irishman"
+            ],
+            "description": "An Irish smuggler and pirate whose path has crossed the Frasers' repeatedly, and who assaulted Brianna years before Jeremiah was born. Charming, superstitious and entirely without conscience, he works the Carolina coast trade and has business of his own with people the Frasers know.",
+            "id": "stephen-bonnet",
+            "name": "Stephen Bonnet",
+            "reveal": {
+              "chapter": 60
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Jamie's blind aunt, mistress of River Run, a wealthy plantation on the Cape Fear River, and widow of a Jacobite who came out of Scotland with more than he admitted to. Shrewd, imperious and used to managing people, she is married to Duncan Innes, another of Jamie's Ardsmuir companions.",
+            "id": "jocasta-cameron",
+            "name": "Jocasta Cameron",
+            "reveal": {
+              "chapter": 60
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "a-breath-of-snow-and-ashes"
+      },
+      "recaps": {
+        "ending": "The last movement of the book scatters the family. Young Ian catches Arch Bug carrying away gold hidden on the Ridge, and in the confrontation his shot kills Murdina Bug instead; Arch Bug disappears into the mountains swearing to take from Ian something as dear as what Ian took from him. Claire hears a murmur in baby Amanda's heart and knows it will kill her in childhood unless she is operated on in a century that can do it, so Roger and Brianna take Jeremiah and Amanda through the stone circle and back to the twentieth century, a parting both sides expect to be permanent. Not long after, thieves break into the Big House hunting the gemstones rumoured to be there; the ether stored in Claire's surgery catches, and the house burns to the ground. Jamie, Claire and the household escape; Donner, the other traveller, does not. The newspaper notice that had reported James Fraser and his wife dead in a fire on Fraser's Ridge is left standing as a printed falsehood, its date already past. With the house gone, the Ridge divided, and the war beginning in earnest, Jamie, Claire and Young Ian set out for Scotland, meaning to bring back Jamie's printing press and to take Ian home to his mother.",
+        "in_short": "Fraser's Ridge, 1773 to 1776. Jamie and Claire Fraser hold a North Carolina mountain settlement together while the colonies slide into revolution, knowing from Claire and from their daughter's family what is coming. Backcountry raiders burn homesteads and carry Claire off; Jamie's men destroy the gang and bring her home, and the killing of one captive turns the neighbouring Browns into permanent enemies. Tom Christie's daughter Malva, Claire's apprentice, announces that she is pregnant by Jamie, and is then found murdered in Claire's garden; Claire is accused, arrested and dragged to Wilmington, and is freed only when Tom Christie confesses to the killing to save her. The truth is worse: Malva's own brother fathered the child and killed her. Stephen Bonnet is finally run to ground and executed, Brianna firing the shot that ends it. When Claire discovers a fatal heart defect in Brianna's newborn daughter, Roger and Brianna take both children back through the stones. Days later the Big House burns down with a hunted time-traveller inside it, and Jamie and Claire, alive despite a printed notice of their deaths, leave for Scotland.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Claire Randall, an English combat nurse, walked through a standing stone circle in the Scottish Highlands in 1945 and came out in 1743. To protect her from an English officer named Black Jack Randall, the ancestor of her twentieth-century husband Frank, she married a young Highlander, James Fraser, and the marriage became a real one. They tried and failed to prevent the Jacobite rising, and on the eve of Culloden Jamie sent her back through the stones, pregnant, to Frank. She raised their daughter Brianna in Boston. Twenty years later, learning that Jamie had survived the battle, Claire returned to the past and found him in Edinburgh. Their reunion carried them through smuggling, a shipwreck and the Caribbean to the North Carolina backcountry, where the Crown granted Jamie land and he founded a settlement, Fraser's Ridge. Brianna followed them through the stones, pursued by a pirate named Stephen Bonnet who assaulted her; her son Jeremiah was born on the Ridge, and Roger MacKenzie, the historian who came after her, survived a near-hanging and a spell among the Mohawk before marrying her. By 1773 the Ridge also holds Jamie's foster son Fergus and his wife Marsali, and Jamie's nephew Young Ian, back from years living as a Mohawk. Claire, Brianna and Roger all know what is coming: the colonies will rebel, the rebels will win, and Jamie, who has already lost one war, will have to choose a side.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Fraser's Ridge, North Carolina, 1773. Riding out on the mountain, Jamie falls in with a band of armed strangers and takes their measure without giving away his own. Not long after, he and Claire come on the burned-out cabin of a family of Dutch settlers; Claire's examination of the bodies tells her they were dead before the fire was set, and nobody can say who did it or why. At home the household goes on with the ordinary work of the settlement: Jamie and Claire, Young Ian, the housekeepers Arch and Murdina Bug, the bondservant Lizzie Wemyss and her father, and Brianna and Roger with their small son Jeremiah. Jamie holds a Crown land grant and the office of Indian agent, which obliges him to keep the peace with the Cherokee on behalf of a government the colonies are beginning to turn against. Claire, Brianna and Roger, the only people on the mountain who know how the coming war ends, watch the political temperature rise and try to prepare without saying too much to anyone who does not know what they are.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jamie and Claire ride out into the winter mountains on Ridge business and come to the isolated farm of Aaron Beardsley, an unpleasant trader with a bad name in the district. They find him hidden in the attic, paralysed by a stroke and rotting where he lies, barely tended by his very young wife, Fanny. Claire can do nothing for him, and Jamie ends his suffering himself. Fanny, heavily pregnant, is delivered of a healthy girl who is plainly not Beardsley's child, and then walks away from the baby and her old life, leaving the Frasers to find the child a home. Beardsley's indentured twins, Josiah and Keziah, one of them deaf, come back to the Ridge with them. The household also takes in Bobby Higgins, a young ex-soldier sent up from Virginia by Jamie's old friend Lord John Grey, branded on the cheek for his part in the killings in Boston and ill with something Claire is able to cure. Meanwhile the militia lists are drawn and redrawn, and every household on the mountain is quietly being counted.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Life on the Ridge in the mid-1770s. Tom Christie, the dour Presbyterian schoolmaster who shared Jamie's imprisonment at Ardsmuir, farms nearby with his son Allan and his daughter Malva, and is a standing thorn in Jamie's side; his fishermen's faction is uneasy at Roger's growing sense of a call to the ministry. Malva Christie attaches herself to Claire, learning to handle herbs and instruments, and proves quick and observant. Claire, working toward surgery a patient can survive, distils ether and warns the household to keep flame away from it. Brianna turns her engineering training to whatever the settlement needs. Young Ian keeps his own counsel about the Mohawk marriage he left behind. Beyond the Ridge the quarrel between Crown and colonies hardens: committees of safety are forming, and Richard Brown of Brownsville, with his brother Lionel, sets one up and presses Jamie to join. Jamie, still nominally the Crown's Indian agent and privately certain which way the war will go, refuses to be drawn.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Trouble reaches the Frasers' own family. Marsali is attacked and badly beaten in the malting shed by a man she cannot identify, and the shock brings on her child early. The baby, a boy they name Henri-Christian, is born a dwarf; he is healthy, but Fergus takes it hard and withdraws from his wife and children, and the household closes around them. The attack sharpens the quarrel with the Browns, whose committee of safety is behaving less like a militia and more like a gang, and whose men resent Jamie's authority on the mountain. Bobby Higgins settles into the Ridge and courts where he can. Claire goes on with her practice with Malva Christie at her elbow, and Roger, still weighing ordination, tries to be a minister to people who have not asked for one.",
+            "through": {
+              "chapter": 34
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A gang of deserters and thieves under a man named Hodgepile has been working through the backcountry, robbing and burning isolated farms and leaving no witnesses. They come to Fraser's Ridge while Jamie is away from the house, wreck what they can, set fire to the whisky store, and carry Claire off into the hills as a hostage. Jamie, Young Ian, Roger and the Ridge's men gather and go after them, tracking the gang across the mountains, while Claire, moving from camp to camp with her captors, works out who among them can be turned and how long she has.",
+            "through": {
+              "chapter": 39
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jamie's party runs the gang down and destroys it, killing most of the men and bringing Claire home. She has been raped, and the weeks afterwards are as much about Jamie's rage and guilt as about her recovery. One captive is kept alive: Lionel Brown, injured and brought back to the Ridge, who is smothered in his bed by Murdina Bug, who considers the matter closed. Jamie carries the body down to Brownsville and tells Richard Brown the truth of it; Brown takes the blood money and from then on counts the Frasers as enemies. Among the gang Claire found something stranger than a bandit: a man calling himself Donner, who told her he had come back through a stone circle from the twentieth century with a group who meant to change history and then lost both the plan and the way home. He gets away, and Claire keeps most of what he said to herself.",
+            "through": {
+              "chapter": 52
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Ridge settles into an uneasy peace. Claire returns to her surgery; Jamie rebuilds what was burned and repairs what was broken between them. Roger travels to be examined and ordained by a Presbyterian presbytery, an awkward business for a man married to a Catholic and living in a Catholic household, and comes back with a formal charge over a congregation that includes people who despise him for it. Brianna is pregnant again. Young Ian finally tells the story of the wife he left among the Mohawk and why he came back alone. Tom Christie's people and Jamie's people go on disliking one another, and the Browns wait. The war has not yet reached the mountain, but the committees are arming, and Jamie's position as an officer of a royal governor is becoming impossible to hold.",
+            "through": {
+              "chapter": 57
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jamie finally puts it in writing: he sends Lord John Grey a letter declaring that when the fighting comes he will be on the rebel side, ending on paper a friendship neither man wants to end. He also sets Fergus and Marsali up away from the Ridge, buying a printing press and settling them in New Bern, where Fergus can print and Jamie can hear what the coastal towns are saying. Down on the Cape Fear, Jamie's aunt Jocasta Cameron and her husband Duncan Innes are troubled by intruders at River Run: there is a cache of French gold in the family's past, sent for the Jacobite cause and never accounted for, and more than one person wants to know where the rest of it went. Stephen Bonnet's name begins to surface again in connection with the coast trade, which nobody in the family hears calmly.",
+            "through": {
+              "chapter": 67
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The mountain grows harder to hold. The Crown's authority in the backcountry is collapsing, the committees of safety are arming, and Jamie's declared allegiance costs him neighbours as well as friends. Malva Christie is still at Claire's elbow in the surgery and is being talked about elsewhere on the Ridge, and Tom Christie's people and Jamie's are barely civil. Claire, worn down by a year of work and travel, falls dangerously ill with a fever that nearly kills her and takes weeks to shake off, and the household runs without her. Brianna's pregnancy advances. Roger, now formally a minister, buries and marries a congregation that does not entirely want him, and Young Ian is increasingly the man Jamie sends when something needs doing quietly.",
+            "through": {
+              "chapter": 75
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Malva Christie announces that she is pregnant and names Jamie as the father. Jamie denies it flatly and Claire believes him, but the accusation is unanswerable: the girl is Claire's apprentice and in the house daily, and much of the mountain is willing to think the worst. Tom Christie will not withdraw his daughter's word, the congregation divides, and the Frasers are shunned in ways large and small. Then Malva is found in Claire's garden with her throat cut. Claire, first to reach her, opens the body in a desperate attempt to save the near-term child and fails, and is discovered over the girl with blood to the elbows. Given the accusation Malva made, the Ridge concludes it knows what happened, and Richard Brown's committee of safety takes Claire away to be tried, with Jamie following and bargaining for her life the whole way. The journey ends on the coast, where the Frasers spend weeks in custody and in the hands of officials who care more about the political moment than about a dead girl in the mountains. Brianna is delivered of a daughter, Amanda. The case against Claire collapses when Tom Christie walks in and confesses to killing his own daughter, and she is released into a world that has already made up its mind about her.",
+            "through": {
+              "chapter": 97
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The truth about Malva comes out at last, and it is worse than the lie: her brother Allan fathered the child and killed her to keep it from being known. Confronted with it, he takes his own life. Tom Christie, who confessed falsely to buy Claire's freedom, does not withdraw the confession. Meanwhile Stephen Bonnet is finally run to ground on the coast, tried, and condemned to be staked out in the tidal flats and drowned by the incoming sea; Brianna goes to watch and ends it with a shot, which is as close to mercy as anyone offers him. Back on the Ridge, Claire hears a murmur in baby Amanda's heart and recognises a defect that will kill the child before she grows up, and that no surgeon in this century can repair. Roger and Brianna, who have long carried a printed notice from a Wilmington paper reporting that James Fraser and his wife died in a fire on Fraser's Ridge in January 1776, now have a reason of their own to go back.",
+            "through": {
+              "chapter": 113
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Young Ian catches Arch Bug carrying away gold that has been hidden on the Ridge for years, and in the confrontation his shot kills Murdina Bug instead. Arch Bug vanishes into the mountains swearing to take from Ian something as dear as what Ian has taken from him. Roger and Brianna say their goodbyes and take Jeremiah and Amanda through the stone circle to the twentieth century, where Amanda's heart can be repaired, a parting all of them expect to be permanent. Not long afterwards, thieves break into the Big House hunting the gemstones rumoured to be kept there; the ether in Claire's surgery catches, and the house burns to the ground. Jamie, Claire and the household get out; Donner, the other time-traveller, does not. The printed notice of the Frasers' deaths in a fire is left standing as a falsehood with a date already past. With the house gone and the war beginning in earnest, Jamie, Claire and Young Ian set out for Scotland to fetch Jamie's printing press and to take Ian home to his mother.",
+            "through": {
+              "chapter": 124
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "a-breath-of-snow-and-ashes"
+      }
+    },
     "a-builder-of-dreams": {
       "characters": {
         "characters": [

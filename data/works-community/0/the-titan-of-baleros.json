@@ -1578,6 +1578,284 @@
         "work": "the-vampire-lestat"
       }
     },
+    "the-vanishing-stair": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A sixteen-year-old from Pittsburgh, obsessed with unsolved crime, who was removed from Ellingham Academy by her parents after a student died there. She is back at her old public school, cut off from her friends and from the 1936 Ellingham case she went to Vermont to solve, and she carries a good deal of guilt about how the autumn ended. She lives with an anxiety disorder and panic attacks she manages with medication.",
+            "id": "stevie-bell",
+            "name": "Stevie Bell",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Stevie's closest friend at Ellingham, an engineering student who builds machines and keeps her life and her work in careful order. Steady and warm, she is the person who tells Stevie the truth when Stevie will not tell it to herself.",
+            "id": "janelle-franklin",
+            "name": "Janelle Franklin",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A teenage novelist at Ellingham who published one long fantasy book and cannot write the sequel he owes. Dry, reluctant and allergic to enthusiasm, he is nonetheless reliably on Stevie's side.",
+            "id": "nate-fisher",
+            "name": "Nate Fisher",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Ellingham student Stevie was drawn to and fought with in equal measure, revealed at the end of the autumn to be the son of Senator Edward King. Wealthy, evasive and deliberately difficult, he is estranged from his father and refuses to discuss him.",
+            "id": "david-eastman",
+            "name": "David Eastman",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A United States senator running for president, a hard, effective political operator whose staff includes Stevie's parents. He is also David's father, a fact David has spent years hiding, and he is used to getting what he wants from people who have very little leverage against him.",
+            "id": "edward-king",
+            "name": "Edward King",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Pix"
+            ],
+            "description": "The archaeologist who runs Minerva House at Ellingham, practical and unflappable, holding the house together after a death and a disappearance in the autumn term.",
+            "id": "dr-nell-pixwell",
+            "name": "Dr. Nell Pixwell",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The head of Ellingham Academy, informal and eager to be liked, who is now trying to keep the school open, the parents calm and the press away after the events of the autumn.",
+            "id": "charles-scott",
+            "name": "Charles Scott",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Larry"
+            ],
+            "description": "The former head of security at Ellingham, a retired police detective who lost his job over what happened in the autumn. Blunt and methodical, he keeps a wary, protective interest in Stevie.",
+            "id": "larry-crump",
+            "name": "Larry Crump",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Ellingham student who runs the campus news feed, filming and publishing everything she can get. She is well informed, well connected and unsentimental about how she gets her material.",
+            "id": "germaine-batt",
+            "name": "Germaine Batt",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Ellie"
+            ],
+            "description": "The Minerva House artist who wrote the online serial Hayes Major took credit for, and who ran into the passages beneath the campus when Stevie named her. She has not been seen since; the search for her has gone cold and the school has settled into treating her as a fugitive.",
+            "id": "element-walker",
+            "name": "Element Walker",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A writer living in Burlington who published a book about the Ellingham case years ago and has never let go of it. Sharp, chaotic and drinking heavily, she takes Stevie on as a research assistant and is convinced she is close to finding out what became of Alice Ellingham.",
+            "id": "irene-fenton",
+            "name": "Dr. Irene Fenton",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Dr. Fenton's nephew, a college student living in her house in Burlington and doing much of the practical work of keeping it running. Patient and easy company, he helps Stevie work through his aunt's disordered research.",
+            "id": "hunter-bishop",
+            "name": "Hunter Bishop",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The tycoon who built Ellingham Academy in the 1930s and filled it with riddles, hidden mechanisms and games. After his wife and daughter were taken in April 1936 he spent the rest of his life searching, and his will left his fortune to whoever found Alice.",
+            "id": "albert-ellingham",
+            "name": "Albert Ellingham",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Ellinghams' small daughter, taken in April 1936 and never found. Eighty years of hoaxers, claimants and searchers have followed the fortune promised to whoever produces her.",
+            "id": "alice-ellingham",
+            "name": "Alice Ellingham",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The lawman closest to the Ellingham family, who had once saved Albert Ellingham's life and was trusted with the family's safety and with the ransom negotiation after the kidnapping.",
+            "id": "george-marsh",
+            "name": "George Marsh",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Iris Ellingham's closest friend and a long-staying guest at the estate, whose life was bound up with the family's and who was in the house when Iris and Alice were taken.",
+            "id": "flora-robinson",
+            "name": "Flora Robinson",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Leo"
+            ],
+            "description": "The painter and long-standing friend of the Ellinghams, a detached observer of the household who saw more of its private life than anyone outside it.",
+            "id": "leonard-holmes-nair",
+            "name": "Leonard Holmes Nair",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Albert Ellingham's private secretary, precise and endlessly capable, who managed the estate's affairs through the kidnapping and the years of searching that followed.",
+            "id": "robert-mackenzie",
+            "name": "Robert Mackenzie",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Ellingham student in 1936, the daughter of a wealthy manufacturing family, clever and restless and unimpressed by the future arranged for her. She was at the school when Iris and Alice Ellingham were taken.",
+            "id": "francis-crane",
+            "name": "Francis Crane",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Ellingham student in 1936, Francis Crane's closest companion at the school, sharing her fascination with the celebrity criminals then filling the newspapers.",
+            "id": "edward-davenport",
+            "name": "Edward Davenport",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-vanishing-stair"
+      },
+      "recaps": {
+        "ending": "Ellie's death is treated as the end of the affair, and the school prepares to move on. David, having learned that Stevie was reporting on him to his father, retaliates against the senator by arranging to have himself beaten on camera and releasing the footage, a public act calculated to wreck his father's presidential campaign, and then leaves. Stevie is allowed to stay at Ellingham, but the historical case is now open rather than closed: the \"Truly, Devious\" letter was a private game between two 1936 students, so whoever took Iris and Alice Ellingham did it for reasons the famous riddle never touched, and the 1936 chapters have shown how much George Marsh and Flora Robinson were not saying. Then Dr. Fenton dies in a fire at her house in Burlington, recorded as an accident caused by a gas leak. Stevie, who had been with her only hours before, does not accept it. Counting Hayes Major, Ellie and Fenton, she ends the book certain that the deaths gathering around the Ellingham case are not accidents at all, and that whoever is causing them is still nearby.",
+        "in_short": "Pulled out of Ellingham Academy after Hayes Major's death, Stevie Bell is stranded at home until Senator Edward King, her parents' employer and David's father, offers to send her back in exchange for keeping him informed about his son. She takes the deal. Back in Vermont she is put to work with Dr. Irene Fenton, a Burlington writer obsessed with the Ellingham case and with finding out what became of Alice Ellingham. Researching two 1936 students, Francis Crane and Edward Davenport, Stevie establishes that they wrote the notorious \"Truly, Devious\" letter themselves as a game, meaning the riddle that has defined the case for eighty years had nothing to do with the kidnapping. She then finds the moving staircase Albert Ellingham built into the Great House and, in the hidden room it opens onto, the body of Ellie, who had gone underground and could not get out. David discovers Stevie has been reporting to his father and breaks with her, destroying his father's campaign on his way out. Finally Dr. Fenton dies in a house fire ruled accidental, and Stevie concludes it was murder.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Stevie Bell, a true-crime obsessive from Pittsburgh, won a place at Ellingham Academy, the free Vermont school built in the 1930s by the tycoon Albert Ellingham, by proposing to solve the crime that made it famous. In April 1936 Ellingham's wife Iris and their toddler daughter Alice were kidnapped from the road below the school and a student, Dottie Epstein, was killed, shortly after a taunting riddle signed \"Truly, Devious\" arrived in the post. Iris was found dead, Alice never was, an anarchist named Anton Vorachek was convicted and then shot on the courthouse steps, and in 1938 Albert Ellingham died when his boat exploded, leaving his fortune to whoever found his daughter. In the present, Stevie's housemate Hayes Major died in the tunnel under the campus, suffocated by carbon dioxide from dry ice. Stevie proved it was no accident and named another housemate, Element \"Ellie\" Walker, who had ghostwritten the online serial Hayes took credit for; Ellie fled into the passages beneath the school and vanished. Stevie also discovered that her friend David Eastman is the son of Senator Edward King, the politician her parents work for. Her parents then withdrew her from Ellingham and took her home.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Stevie is stuck at home in Pittsburgh, back at her old school, cut off from Ellingham and from her friends, and blaming herself for how the autumn ended. Ellie has still not been found, and the official version of events, in which Ellie killed Hayes and ran, has hardened into settled fact. Then Senator Edward King, David's father and the employer of Stevie's parents, comes to see her with a proposition: he will persuade her parents to let her return to Ellingham, and in exchange she will keep an eye on his son and report to him on how David is doing. Stevie despises everything King represents, and she takes the deal anyway.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Stevie returns to Ellingham to find it diminished: students have left, the atmosphere is wary, and Larry, the head of security, was dismissed over the autumn, replaced by a security operation with no reason to indulge her. Charles is working hard to hold the school together and to keep its troubles quiet. David is back too, unpredictable and unwilling to discuss his father. To justify her return with a proper project, Stevie is steered toward Dr. Irene Fenton, a writer in Burlington who published a book on the Ellingham case years ago and has never stopped working on it. Fenton is clever, disordered and drinking heavily; she takes Stevie on as a research assistant, and Stevie meets Fenton's nephew Hunter Bishop, who lives in the house. The 1936 chapters follow the Ellingham household through the days after Iris and Alice were taken.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Working for Fenton shows Stevie how completely the case has consumed people. Albert Ellingham's will left his fortune to whoever found Alice, and for eighty years that promise has drawn hoaxers, claimants and obsessives; Fenton means to be the one who settles it, and her research is both formidable and a mess. Reading around the edges of the official record, Stevie comes across two Ellingham students of 1936, Francis Crane, the daughter of a wealthy manufacturing family, and Edward Davenport, who were at the school when the kidnapping happened. On campus, Janelle and Nate try to keep Stevie steady while her arrangement with Edward King eats at her, and Germaine Batt keeps digging into everything. The 1936 chapters follow Flora Robinson, George Marsh and Leonard Holmes Nair through the ransom attempt and the search that came after it.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Stevie works both ends of the case at once. Fenton grows more convinced that she is close to something about Alice and more erratic with it, while Hunter helps Stevie make sense of the material. At Ellingham, Stevie finds physical traces of Francis Crane and Edward Davenport, who were absorbed in each other and in the celebrity outlaws filling the newspapers of the 1930s, and who had plans of their own for the spring of 1936. Meanwhile David's behaviour becomes harder to read, and Stevie cannot tell how much he suspects about her arrangement with his father. The 1936 chapters make plain how badly the ransom exchange went and how little the investigation ever actually established.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Stevie establishes something that changes the shape of the entire case: the \"Truly, Devious\" letter was not sent by the kidnappers. Francis Crane and Edward Davenport composed it themselves, a private game between two students who admired the era's outlaws and were planning to run off together, and its arrival days before the crime was a coincidence that misdirected the investigation from the first hour. Stevie finds the hidden place on campus where the pair used to meet, with their own writing still on the wall. The consequence is severe: the famous riddle explains nothing, the profile built around it was built on a student's joke, and whoever took Iris and Alice Ellingham did so for reasons nobody has ever looked for.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Stevie works out that Albert Ellingham had a moving staircase built into the Great House, one more of the mechanisms he filled the estate with, and that it opens onto a space that appears on no plan. Following it down, she finds Ellie: after running the previous term Ellie had gone into that hidden room and had not been able to get out again, and she died there. The discovery ends the search and settles nothing, leaving Stevie with the knowledge that Ellie ran because Stevie named her. Around the same time David learns that Stevie has been reporting on him to his father, and their friendship collapses.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ellie's death is written off as the end of the affair and the school begins to move on. David answers his father's manipulation by having himself beaten on camera and releasing the video to wreck the senator's presidential campaign, and then he leaves. Stevie is permitted to stay at Ellingham, but she is left with a historical case that has been opened rather than closed: the \"Truly, Devious\" letter was a student prank, so the kidnapping had an author nobody has ever identified, and the 1936 chapters have shown how much Flora Robinson and George Marsh were keeping back. Then Dr. Fenton dies in a fire at her house in Burlington, recorded as an accidental gas leak. Stevie had been with her hours earlier and does not believe it. With Hayes, Ellie and now Fenton dead, she ends the book convinced that the deaths around the Ellingham case are murders and that whoever is responsible is still close at hand.",
+            "through": {
+              "chapter": 33
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-vanishing-stair"
+      }
+    },
     "the-velveteen-rabbit": {
       "characters": {
         "characters": [

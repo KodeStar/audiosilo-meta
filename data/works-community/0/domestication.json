@@ -980,6 +980,276 @@
         "work": "dragon-keeper"
       }
     },
+    "dragonfly-in-amber": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Claire Fraser",
+              "Claire Beauchamp"
+            ],
+            "description": "A former combat nurse, now a physician in her late forties, who returns to Inverness in 1968 with her grown daughter, two years after her husband Frank's death. Twenty years earlier she vanished for three years and came back with a story nobody would believe. Blunt, capable, and long practised at keeping her own counsel, she has come north to learn the fate of the Highland men she left behind in 1746, and to finally tell her daughter the truth about where she was.",
+            "id": "claire",
+            "name": "Claire Randall",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Bree"
+            ],
+            "description": "Claire's twenty-year-old daughter, raised in Boston and now a student, tall and strikingly red-haired. Practical and stubborn like her mother, she is grieving the father who brought her up and is bewildered by her mother's sudden determination to dig through Scottish records for a group of men dead two centuries.",
+            "id": "brianna",
+            "name": "Brianna Randall",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young Oxford historian, adopted son of the late Reverend Reginald Wakefield of Inverness, who is clearing out the manse after his guardian's funeral when Claire and her daughter arrive. Dark-haired, even-tempered, and a fine singer, he has a scholar's appetite for old papers and agrees to trace what became of a company of Highlanders after the rising of 1745.",
+            "id": "roger",
+            "name": "Roger Wakefield",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Claire's husband, a Cambridge historian who died two years before her 1968 return to Scotland. His lifelong research into his own eighteenth-century ancestry shadowed their marriage, and he and Claire built a careful life in Boston around a subject they did not discuss.",
+            "id": "frank-randall",
+            "name": "Frank Randall",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "James Fraser"
+            ],
+            "description": "A young Highland laird living in exile in France in 1744, tall and red-haired, still carrying the scars of what was done to him in Scotland. Married to Claire and outlawed at home, he works in his cousin's wine business in Paris while the two of them try to head off the Jacobite rising they know will end in disaster. Shrewd, stubborn, and better educated than his rough life suggests, he is uneasy at scheming against a cause many of his own kin hold sacred.",
+            "id": "jamie",
+            "name": "Jamie Fraser",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jamie's godfather, a small, weathered, and famously taciturn Highlander who has followed him into exile. Loyal past all argument and dangerous when roused, he serves as bodyguard, messenger, and blunt conscience to the household in France.",
+            "id": "murtagh",
+            "name": "Murtagh Fraser",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Jamie's older cousin, a Scottish wine merchant long established in Paris, prosperous, shrewd, and quietly sympathetic to the exiled Stuarts. He hands his house and much of his business over to Jamie while he travels, which gives the couple both money and a foothold in the city's political circles.",
+            "id": "jared-fraser",
+            "name": "Jared Fraser",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A wealthy French nobleman and wine importer whose ship Claire condemns as carrying smallpox, costing him an entire cargo. Elegant, vain, and vengeful, he is rumoured to keep company with people who dabble in the occult, and he treats the loss as a personal insult to be repaid.",
+            "id": "comte-st-germain",
+            "name": "The Comte St. Germain",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Bonnie Prince Charlie",
+              "Prince Charles Edward Stuart"
+            ],
+            "description": "The exiled Stuart heir, a personable, devout, and impulsive young man convinced that God and his own birthright will restore his father to the British throne. He is chronically short of money and long on confidence, and he seeks out Jamie as a Highlander who might help him raise both funds and men.",
+            "id": "charles-stuart",
+            "name": "Charles Stuart",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A small French street orphan and gifted pickpocket, taken out of a brothel by Jamie and set to lifting and copying private correspondence. Cheerful, quick, and fiercely attached to the man who took him in, he becomes a fixture of the household.",
+            "id": "fergus",
+            "name": "Fergus",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A squat, odd-looking Paris apothecary whose crowded shop sells herbs, charms, and curiosities to duchesses and cutpurses alike. He knows a great deal more about medicine, poisons, and Claire herself than he readily explains, and he becomes her supplier, her teacher, and something close to a friend.",
+            "id": "master-raymond",
+            "name": "Master Raymond",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The formidable nun who runs L'Hopital des Anges, a Paris charity hospital, with absolute authority and no patience for squeamishness. A trained musician of some reputation before she took orders, she is accompanied everywhere by a large dog and quickly recognises that the English lady volunteering on her wards has real skill.",
+            "id": "mother-hildegarde",
+            "name": "Mother Hildegarde",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A timid, sheltered English girl of fifteen brought to Paris by her uncle and betrothed against her wishes to a much older French nobleman. Claire recognises her name from a family tree she once studied and takes an interest in her that she cannot explain to anyone.",
+            "id": "mary-hawkins",
+            "name": "Mary Hawkins",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A gentle, scholarly young Englishman in poor health, employed as secretary to an English duke visiting France. He is the younger brother of Jonathan Randall, and as unlike him as a man can be; his presence is the first proof Claire and Jamie have that the captain they believed dead is alive.",
+            "id": "alex-randall",
+            "name": "Alexander Randall",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Black Jack Randall"
+            ],
+            "description": "The English dragoon captain who tortured Jamie at Wentworth Prison and hunted Claire in the Highlands, alive after all and serving in France on his patron's business. Cold, controlled, and predatory, he is the one man Jamie has sworn to kill, and the one man Claire has reason to need kept alive.",
+            "id": "black-jack-randall",
+            "name": "Jonathan Randall",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A rich, genial English nobleman with estates on both sides of the border, a taste for young men, and a habit of promising support to whichever cause looks likeliest to win. Jamie has dealt with him before and trusts nothing he says.",
+            "id": "duke-of-sandringham",
+            "name": "The Duke of Sandringham",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "War chief of clan MacKenzie and one of the most committed Jacobites in the Highlands, forceful, charming, and openly hungry for the fight he has spent years preparing. He greets the rising as the moment he has waited his whole life for, and he does not care to hear that it might fail.",
+            "id": "dougal-mackenzie",
+            "name": "Dougal MacKenzie",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "dragonfly-in-amber"
+      },
+      "recaps": {
+        "ending": "On the eve of Culloden, Jamie and Claire make a last attempt to stop the battle by poisoning Charles Stuart. Dougal MacKenzie overhears them, accuses Claire of witchcraft and treason, and attacks her; Jamie kills him and leaves the body hidden. With the army about to be destroyed, Jamie writes a deed transferring Lallybroch to his nephew and sends Murtagh to see the paper safe. He then takes Claire to Craigh na Dun. She is pregnant again, and he refuses to let the child be born on a battlefield. He tells her he intends to see the Lallybroch men off the field and then die in the fighting, and he asks her to name the child for his father. Claire goes through the stones and returns to 1948 and to Frank, who agrees to raise the child as his own. In 1968 the story catches up with itself: Roger's research turns up a record showing that James Fraser was not killed at Culloden after all. Claire, Brianna and Roger are left with the knowledge that Jamie survived the battle, and that the twenty years since could be crossed again.",
+        "in_short": "In 1968 Claire Randall returns to Inverness with her daughter Brianna and, helped by the young historian Roger Wakefield, finally tells the story of the two years she has never explained. In 1744 she and Jamie Fraser were living in Paris, working to bankrupt and discredit Charles Stuart before he could launch the Jacobite rising they knew would end in slaughter. Their schemes cost them their first child, a daughter born dead after Claire ran to stop a duel, and cost Jamie months in the Bastille. The rising came anyway, and they returned to Scotland and rode out with it, winning at Prestonpans and then watching the army starve and retreat through an English winter. On the eve of Culloden, with the cause lost, Jamie killed Dougal MacKenzie to protect Claire, then sent her back through the standing stones carrying their second child while he went to die with his men. Claire returned to 1948 and to Frank, who raised Brianna as his own. Twenty years on, Roger finds proof that Jamie did not die at Culloden.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, in Outlander: in 1945 Claire Randall, a former army nurse on a second honeymoon in the Scottish Highlands with her historian husband Frank, walked into the ring of standing stones at Craigh na Dun and woke in 1743. Taken up by clansmen of the MacKenzies and suspected of being an English spy, she survived on her medical skill and was compelled to marry a young outlawed Highlander, James Fraser, to put her beyond the reach of the officer hunting her, Captain Jonathan Randall, who was both a sadist and Frank's own direct ancestor. The forced marriage became a real one. Offered the chance to go back through the stones, Claire chose to stay. Jamie was later condemned to hang and brutally abused by Randall at Wentworth Prison; Claire and Jamie's kinsmen broke him out, and Randall was believed to have been killed under a stampede of cattle during the escape. She nursed Jamie back from despair at a French abbey. Knowing from Frank's history that the Jacobite rising of 1745 would end in the destruction of the Highlands at Culloden, the two resolved to stay in France and stop the rising before it could begin. Claire was carrying Jamie's child.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In 1968 Claire Randall comes back to Inverness with her twenty-year-old daughter, Brianna, two years after the death of her husband Frank. They arrive as the household of the late Reverend Reginald Wakefield is being dismantled, and Claire asks the Reverend's adopted son, Roger Wakefield, a young Oxford historian, to find out what became of a company of Highland men who followed one James Fraser in the rising of 1745. Sorting his guardian's papers, Roger comes across the old newspaper reports of Claire's disappearance in 1945 and her reappearance three years later, and cannot make the pieces fit. Claire goes alone to Culloden Moor and stands at the clan stones. Afterwards she tells Roger the truth: she travelled two hundred years through the standing stones at Craigh na Dun, spent those missing years in the eighteenth century, and Brianna is Jamie Fraser's daughter. With Brianna listening, Claire begins the account of what happened after she and Jamie fled Scotland for France, and of how she came to be sent back alone.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The story returns to 1744. Jamie and Claire land in France, where his cousin Jared, a wealthy Paris wine merchant, leaves them his house and his business. Their plan is to stop the Jacobite rising at its source by ruining Charles Stuart's credit and drying up the money and promises that would let him sail for Scotland. Claire is pregnant and increasingly conspicuous in Paris society, which is exactly the position they need. At the docks she recognises smallpox aboard a ship belonging to a French nobleman, the Comte St. Germain, and the vessel and its cargo are destroyed, making them a powerful and unforgiving enemy. Jamie takes a small pickpocket, Fergus, out of a brothel and sets him to stealing the prince's correspondence, while Murtagh watches over the household. Charles himself proves charming, devout, chronically short of funds, and entirely deaf to caution, and Jamie finds that undermining him means lying steadily to men whose cause he was raised to honour.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Claire takes up unpaid work at L'Hopital des Anges, a charity hospital run by the redoubtable Mother Hildegarde, where her skill is welcome and her sex is not remarked on; she also becomes a regular at the crowded shop of an odd apothecary, Master Raymond, who knows more about her than she can account for. At Versailles the couple move among courtiers, mistresses and financiers, and Claire meets Mary Hawkins, a frightened English girl of fifteen being married off to an elderly French nobleman, whose surname Claire recognises from Frank's family tree. Then she meets Alexander Randall, a consumptive young secretary in an English duke's service, and learns from him that his brother Jonathan did not die at Wentworth after all. Jamie's reaction is immediate and murderous. Claire, who knows that the man must live long enough for a particular marriage to take place or Frank will never be born, extracts from Jamie a promise to delay any challenge for a year.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Claire and Mary Hawkins are attacked in the street by masked men; Mary is raped, and the assault is never satisfactorily explained, though the Comte St. Germain's circle is suspected. The promise Claire extracted from Jamie collapses when Jonathan Randall assaults Fergus, and Jamie challenges him to a duel in the Bois de Boulogne. Claire, heavily pregnant, races to stop it, arriving in time to see Jamie wound but not kill his enemy. The strain brings on a haemorrhage. She is carried to L'Hopital des Anges, where her daughter is born dead and Claire herself nearly dies of childbed fever. Jamie, who fought a duel in defiance of a royal edict, is arrested and imprisoned in the Bastille.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Claire names the dead child Faith and is brought back from the edge by Master Raymond, who reaches her in the hospital and does something for her that medicine cannot explain. Grief and blame stand between her and Jamie once he can be reached. To free him, Claire goes to the King, who first requires her presence at a private ordeal in which Master Raymond and the Comte St. Germain are tried for sorcery; the Comte drinks from a poisoned cup and dies. The King then names his own price for Jamie's pardon, and Claire pays it. Jamie is released and banished from France. The two of them, still raw with each other, begin the slow work of repairing what the year has cost, and take ship for Scotland with Fergus and Murtagh.",
+            "through": {
+              "chapter": 29
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jamie's pardon lets him return to Lallybroch, the estate he has not seen in years, where his sister Jenny, her husband Ian and their children have kept the place going. For a time there is something like peace: Jamie farms, Fergus is absorbed into the household, and he and Claire slowly find each other again. It does not last. Charles Stuart, unable to get Jamie's support honestly, publishes a bond of association with Jamie's name forged among the signatures, which makes him a traitor to the Crown whether he joins the rising or not. With no way to stand clear, Jamie decides that the only remaining course is to go out with the Jacobites and try to steer the rising away from the catastrophe Claire knows is coming. Charles lands in Scotland, the clans begin to gather, and Jamie raises men from Lallybroch on the condition that Ian stays behind to hold it.",
+            "through": {
+              "chapter": 35
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The rising begins in earnest. Dougal MacKenzie rides in with his men, exultant at the war he has waited his life for, and Jamie takes a place among the prince's officers. At Prestonpans the Highland charge shatters a government army in minutes, and Claire, running a rough field hospital, learns what a victory costs in practice. Edinburgh falls to the Jacobites and Charles holds court there, surrounded by advisers who tell him what he wishes to hear and increasingly deaf to Jamie's warnings about supply, money and the government troops massing in England. Colum MacKenzie, laird of the MacKenzies and dying of his long illness, makes the journey to the prince's camp, settles the succession of his clan, and dies. The army marches south into England, expecting an English rising that never comes.",
+            "through": {
+              "chapter": 41
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At Derby the Jacobite commanders turn back, and the long retreat north begins in winter, through snow and hunger, with the government army closing behind. Claire treats frostbite, fever and wounds with almost nothing to work with, and Jamie watches the men of Lallybroch waste away for a prince who will not listen. Sheltering with Mary Hawkins at the house of the Duke of Sandringham, Claire discovers that their genial host has been playing both sides and means to sell them; Murtagh arrives and kills him. In Edinburgh, Alexander Randall is dying of consumption, and Mary is carrying his child. At his brother's request, Jonathan Randall marries Mary so that the child will have a name and a legitimate place, which is the marriage Claire has known all along must happen if Frank is ever to be born. Alex dies, and the ragged army stumbles on toward the moor at Culloden.",
+            "through": {
+              "chapter": 46
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On the eve of the battle, with the army starving and the cause plainly lost, Jamie and Claire agree that the only way left to stop the slaughter is to poison Charles Stuart. Dougal MacKenzie overhears them, turns on Claire as a witch and a traitor, and in the struggle Jamie kills him. There is no longer any time. Jamie signs a deed making Lallybroch over to his nephew so the estate cannot be forfeited, sends Murtagh to secure it, and rides with Claire to Craigh na Dun. She is pregnant again. He tells her he means to get the Lallybroch men off the field and then die in the fighting, and asks her to name the child for his father. Claire passes through the stones, returns to 1948, and goes back to Frank, who agrees to raise the child as his own on the condition that she never look for Jamie again. In 1968 the frame closes: Roger's search of the records turns up evidence that James Fraser was not killed at Culloden. Claire, Brianna and Roger are left holding the fact that he lived.",
+            "through": {
+              "chapter": 49
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "dragonfly-in-amber"
+      }
+    },
     "dragons-and-demons": {
       "characters": {
         "characters": [
@@ -1318,6 +1588,260 @@
           }
         ],
         "work": "drive"
+      }
+    },
+    "drums-of-autumn": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Claire Fraser"
+            ],
+            "description": "An eighteenth-century surgeon by necessity and a twentieth-century one by training, newly landed in the American colonies with nothing but her instruments and her husband. She is in her early fifties, blunt, and practised at making do, and she knows more than anyone alive about what is coming to this country in the next ten years.",
+            "id": "claire",
+            "name": "Claire Fraser",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "James Fraser"
+            ],
+            "description": "A Highland laird with no land, shipwrecked into the colonies and unwilling to go back to Scotland, where he is still a pardoned traitor with nothing to return to. Tall, red-haired, and used to holding other people's lives together, he is looking for somewhere his family can settle without swearing to anything he cannot keep.",
+            "id": "jamie",
+            "name": "Jamie Fraser",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Ian Murray the younger"
+            ],
+            "description": "Jamie's teenaged nephew, long and loose-limbed, who has already survived kidnap and shipwreck and has no intention of being sent home to his mother in Scotland. Cheerful, curious, and reckless, he goes everywhere with his enormous half-wolf dog.",
+            "id": "young-ian",
+            "name": "Young Ian",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The French orphan Jamie raised, now a married man with one hand and a great deal of nerve, making a life for himself and his wife in the colonies. Quick-witted and worldly, he handles negotiations that need charm more than force.",
+            "id": "fergus",
+            "name": "Fergus Fraser",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A one-armed Highlander who served years alongside Jamie at Ardsmuir prison and was transported to the colonies afterward. Quiet, self-effacing, and steady, he attaches himself to the Frasers as a friend with nowhere else to be.",
+            "id": "duncan-innes",
+            "name": "Duncan Innes",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Young Ian's dog, a huge animal that is largely wolf, devoted to Ian and alarming to everyone else. He hunts, guards, and repeatedly proves the most useful member of any party he travels with.",
+            "id": "rollo",
+            "name": "Rollo",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An Irish adventurer awaiting execution in Charleston who talks his way into the Frasers' help and escapes the gallows. Handsome, well-spoken, and entirely without conscience, he treats other people as things that can be spent, and he does not forget where his luck came from.",
+            "id": "stephen-bonnet",
+            "name": "Stephen Bonnet",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Jamie's aunt, sister of the MacKenzie lairds he grew up under, a widow who has made herself one of the richest planters on the Cape Fear river. She is blind, formidable, and used to arranging other people's lives, and she has decided what part her Scottish nephew is going to play in hers.",
+            "id": "jocasta-cameron",
+            "name": "Jocasta Cameron",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The butler of River Run, an educated and highly capable enslaved man who runs the household and serves as his mistress's eyes, secretary, and memory. Impeccably composed in public, he holds a position of great responsibility and no freedom.",
+            "id": "ulysses",
+            "name": "Ulysses",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A vast, hairy, good-natured mountain man who lives easily among both settlers and the Cherokee and guides the Frasers into the back country. Frank about his own anatomy and everyone else's, he is a walking introduction to the people of the mountains.",
+            "id": "john-quincy-myers",
+            "name": "John Quincy Myers",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An elderly Tuscarora healer and dreamer who recognises Claire as a fellow practitioner and something more, and who trades knowledge of the mountain plants with her. She speaks of Claire in terms Claire does not understand, and gives her a token to keep.",
+            "id": "nayawenne",
+            "name": "Nayawenne",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Bree"
+            ],
+            "description": "Claire's daughter, an engineering student in Boston in 1969, tall and red-haired and as stubborn as both her parents. She has let her mother go and is trying to build an ordinary life, complicated by her attachment to a Scottish historian who keeps disappearing back into the archives.",
+            "id": "brianna",
+            "name": "Brianna Randall",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The Oxford historian who helped Claire find Jamie, now teaching in Scotland and, in his own time, still combing colonial records for traces of the Frasers. Careful and protective by instinct, he is in love with Brianna and unsure what to do about what he keeps finding.",
+            "id": "roger",
+            "name": "Roger Wakefield",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A tiny, frightened Scottish bondservant girl of about fourteen, taken on as Brianna's maid for the crossing. Fiercely loyal to her mistress and prone to seasickness, fever and misreading situations, she takes it on herself to protect Brianna from what she believes she has understood.",
+            "id": "lizzie-wemyss",
+            "name": "Lizzie Wemyss",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An English nobleman and old friend of Jamie's from his prison years, now a Virginia planter and a widower raising his stepson. Courteous, worldly, and discreet about the obligations that bind him to the Fraser family, he turns up when the family is in difficulty and is willing to spend his own name to help.",
+            "id": "lord-john-grey",
+            "name": "Lord John Grey",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "drums-of-autumn"
+      },
+      "recaps": {
+        "ending": "Jamie, Claire and Young Ian follow Roger north into Iroquois country and find him held in a Mohawk village. Jamie's attempts to buy him back fail, and in the end Young Ian offers himself in Roger's place, is adopted into the village, and stays behind; the parting is permanent as far as any of them know. Roger, who has had months to decide whether he wants a wife carrying a child that may be another man's, chooses to come back. He returns to Fraser's Ridge, where Brianna has borne a son she names Jeremiah, called Jemmy, and accepts the boy as his own without needing to know whose he is. Brianna and Roger are married. Nobody can say whether the child's father is Roger or Stephen Bonnet, and Bonnet himself is still alive and free somewhere in the colonies, with Claire's stolen ring and a grudge. Claire and Jamie remain on the Ridge, holding a newspaper notice from a future decade that reports their own deaths in a house fire, and beginning to build something that they know history says will burn.",
+        "in_short": "Shipwrecked into the American colonies, Jamie and Claire refuse a rich inheritance from Jamie's aunt at her slave-worked plantation and take a land grant in the North Carolina mountains instead, founding Fraser's Ridge. In 1969, Roger finds a newspaper notice recording that James and Claire Fraser died in a fire on that Ridge in 1776, and hides it from Brianna. She finds it herself, follows her mother through the standing stones to warn them, and Roger goes after her. In Wilmington the two quarrel and part after handfasting; that same night Brianna is raped by Stephen Bonnet, a pirate the Frasers once helped escape hanging. Arriving pregnant at the Ridge, she cannot say whose the child is. Her young maid misidentifies Roger as the man who attacked her, and Jamie beats him and lets Young Ian sell him to the Mohawk. When the mistake comes to light, Jamie and Claire go north to buy him back, and Ian trades himself for Roger's freedom. Roger returns, claims Brianna's newborn son as his own, and the two are married.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, in the Outlander books: Claire Randall travelled from 1945 to 1743 through the standing stones at Craigh na Dun, married the Highlander Jamie Fraser, and failed with him to prevent the Jacobite rising. On the eve of Culloden he sent her back to her own century pregnant, expecting to die in the battle; Claire returned to her first husband, Frank Randall, who raised their daughter Brianna as his own, and became a surgeon in Boston. Twenty years later, after Frank's death, Claire told Brianna the truth, and the historian Roger Wakefield found proof that Jamie had survived Culloden. Jamie in fact lived through the battle, hid for years as an outlaw, spent more years in Ardsmuir prison, and fathered a son he cannot acknowledge while paroled to an English estate. Claire went back through the stones and found him in Edinburgh, a printer and smuggler, and had to work through a marriage he had made in her absence. Chasing his kidnapped nephew Young Ian to the West Indies, the family confronted Geillis Duncan, another traveller, whom Claire killed; a hurricane then wrecked their ship and cast them ashore on the coast of Georgia, in the American colonies.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In 1767 the Frasers are in Charleston, without money or land, watching an old friend from Jamie's prison years hang for theft. At the gaol they meet another condemned man, an Irishman named Stephen Bonnet, and help him get free of his irons and out of the city, largely because Jamie will not leave a man to hang if he can prevent it. The party, Jamie, Claire, Young Ian, Fergus, Duncan Innes and the dog Rollo, travels inland by river toward Cross Creek and Jamie's aunt. On the water they are boarded at night by river pirates led by Bonnet, who robs them of the gemstones that are all their capital and takes Claire's wedding ring from her first husband. Claire manages to keep Jamie's ring hidden. They arrive at River Run with nothing.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "River Run is a large, prosperous plantation on the Cape Fear, run by Jamie's blind aunt Jocasta Cameron with the help of her butler Ulysses and worked by a great many enslaved people. Jocasta is delighted by her nephew and quickly makes plain what she intends: to name Jamie her heir and settle the estate on him. Jamie refuses. He will not own people, and North Carolina law makes freeing them nearly impossible, so accepting the inheritance would trap him. A violent incident on the estate shows exactly how the colony's law treats an enslaved man accused of harming a white overseer, and hardens the decision. Duncan Innes takes a place in Jocasta's household. Looking for another way to settle, Jamie is offered a large land grant in the western mountains by the royal governor, on terms that require him to bring in settlers and, eventually, to answer if the Crown calls.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Guided by the mountain man John Quincy Myers, the Frasers ride west into the back country, well beyond the settled lands and into territory claimed by the Cherokee. Jamie chooses a site on a wooded ridge with good water and a view over the valley, and names it Fraser's Ridge. He negotiates carefully with the Cherokee to make it clear that they are neighbours rather than invaders. Claire begins gathering the mountain plants she will need and finds a practice waiting for her among the scattered settlers and the native villages. It is a beautiful, empty, dangerous place, and everything they will have has to be built from nothing before winter.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The first year on the Ridge is spent felling timber, raising a cabin, laying in food, and learning what the mountain can and cannot provide. Jamie kills a bear at close quarters and earns a name and a reputation among the Cherokee for it. Young Ian takes to the country completely, spending as much time with the native hunters as with his uncle. Claire meets an elderly Tuscarora healer, Nayawenne, who trades plant knowledge with her, treats her as something more than a fellow physician, and gives her a stone to keep. Settlers begin to trickle in. The Frasers are poor, isolated and entirely occupied with surviving, and for the first time in years they have somewhere that is theirs.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In 1969 and 1970, Brianna is studying in Boston and Roger is teaching in Scotland, seeing each other when they can and quarrelling about how much Roger wants to settle things. Roger has never stopped searching colonial records for the Frasers, and he finds a newspaper notice reporting that James Fraser and his wife died in a fire that destroyed their house on Fraser's Ridge. He hides it, unwilling to hand Brianna her mother's death. Brianna finds it anyway. Furious with him for concealing it, and certain that she can reach her parents in time to warn them, she resolves to follow her mother back.",
+            "through": {
+              "chapter": 29
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Brianna goes to Scotland, prepares as her mother did, and passes through the standing stones at Craigh na Dun. Roger learns what she has done and follows, working his passage to the colonies as a crewman aboard a ship whose captain turns out to be Stephen Bonnet; he sees Bonnet drown surplus passengers for profit and understands exactly what kind of man is loose in the country. Brianna lands and makes her way toward Wilmington, accompanied by Lizzie, a small Scottish bondservant girl whose indenture she has taken over. Roger tracks her down there. Their reunion turns into a quarrel when she learns he had hidden the death notice from her, but they make it up, agree to a handfast marriage, and spend the night together. Roger then leaves to settle his affairs and secure a way home for them both, intending to return within weeks; Brianna, who does not know when to expect him, is left in Wilmington alone.",
+            "through": {
+              "chapter": 39
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Stephen Bonnet is in Wilmington, and he still has the ring he took from Claire on the river. Brianna, trying to get her mother's ring back from him, is caught alone by Bonnet and raped. She tells no one what has happened, gathers Lizzie, and continues upriver to River Run and then into the mountains to find her parents, carrying the warning she crossed two centuries to deliver.",
+            "through": {
+              "chapter": 41
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Brianna reaches Fraser's Ridge and meets her father for the first time. The reunion is overwhelming for all three of them, and it is quickly overtaken by two facts: the newspaper notice that says her parents will die in a fire, and Brianna's pregnancy. She tells Claire she was raped and cannot know whether the child is Roger's or Bonnet's. Lizzie, who saw only that her mistress was ruined by a man and then saw Roger arrive asking for Brianna, tells Jamie that this is the man. Jamie and Young Ian beat Roger nearly to death without letting him speak, and Ian, thinking he is sparing his uncle a hanging, sells him to a band of Mohawk traders passing through, who take him north.",
+            "through": {
+              "chapter": 50
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The mistake comes out when Brianna hears Roger's name and description, and the family has to face what they have done. Jamie sets off north with Claire and Young Ian to find the Mohawk village and buy Roger back, carrying what little the family can raise in trade goods. Brianna, too far along to travel, waits at River Run under Jocasta's roof, where Lord John Grey, an old friend of her father's, comes to keep an eye on her and eventually offers to marry her so that the child will have a name and protection. She bears a son. Stephen Bonnet is still at large, and the question of the baby's father is one nobody can answer.",
+            "through": {
+              "chapter": 62
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The search ends at a Mohawk village far to the north, where Roger has been kept as a captive and has survived a brutal ordeal at the hands of the village. Jamie's offers are refused, and the standoff is broken only when Young Ian offers himself in Roger's place. The Mohawk accept, adopt Ian into the village, and let Roger go; his family leaves him there, with no expectation of seeing him again. Roger, who has spent months deciding whether he can accept a wife and a child who may be Bonnet's, chooses to come back. He arrives at Fraser's Ridge, meets Brianna's newborn son, and claims the boy as his own without asking whose he is. Brianna names the child Jeremiah, called Jemmy, and she and Roger are married. Bonnet remains alive and free, and Claire and Jamie go on building a settlement they have been told in print will one day burn with them in it.",
+            "through": {
+              "chapter": 71
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "drums-of-autumn"
       }
     },
     "dune": {

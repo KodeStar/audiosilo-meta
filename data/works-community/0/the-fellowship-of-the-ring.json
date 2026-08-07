@@ -196,6 +196,270 @@
         "work": "the-fellowship-of-the-ring"
       }
     },
+    "the-fiery-cross": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Claire Fraser"
+            ],
+            "description": "The physician of Fraser's Ridge, running a surgery out of a mountain cabin with home-made instruments, home-grown drugs and two centuries of knowledge she cannot explain to anyone. In her mid-fifties, practical and increasingly indispensable to the settlement, she is living toward a dated newspaper notice that says she and her husband will die in a fire on this land.",
+            "id": "claire",
+            "name": "Claire Fraser",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "James Fraser"
+            ],
+            "description": "Laird of Fraser's Ridge, landlord to a scatter of Highland tenants and holder of a royal land grant that carries obligations to the Crown. He is a former Jacobite who has already fought one losing war for a king, he knows from his wife how this colony's quarrel with Britain ends, and he is trying to keep his people out of it for as long as he can.",
+            "id": "jamie",
+            "name": "Jamie Fraser",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Bree",
+              "Brianna MacKenzie"
+            ],
+            "description": "Claire and Jamie's daughter, an engineer by training stranded in a century with no engineering, raising a small son and steadily inventing what she can from memory. Tall, red-haired and blunt, she has chosen this life and this husband, and she carries a fear of the man who assaulted her that she has not put down.",
+            "id": "brianna",
+            "name": "Brianna Fraser",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Roger MacKenzie"
+            ],
+            "description": "A twentieth-century historian and folk singer trying to make himself useful on an eighteenth-century mountain, where his scholarship is worth nothing and he cannot yet shoot, plough or fight. Married to Brianna and raising a child he has claimed without knowing whose he is, he is looking for a place of his own in his father-in-law's settlement.",
+            "id": "roger",
+            "name": "Roger MacKenzie",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Jeremiah MacKenzie",
+              "Jemmy"
+            ],
+            "description": "Brianna's small son, a red-haired toddler, claimed and loved by Roger. Which of two men fathered him is a question nobody in the family can answer and nobody raises aloud.",
+            "id": "jemmy",
+            "name": "Jemmy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Jamie's blind aunt, mistress of the rich River Run plantation, still managing the people around her by charm, money and information. She has arranged her own remarriage to suit herself and keeps her late husband's affairs, and their sources, firmly to herself.",
+            "id": "jocasta-cameron",
+            "name": "Jocasta Cameron",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The one-armed former prisoner who has become Jocasta Cameron's steward and is now to become her husband. Modest, kindly, and quietly overwhelmed by his change in fortune, he is loyal to Jamie above everyone.",
+            "id": "duncan-innes",
+            "name": "Duncan Innes",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Marsali MacKenzie"
+            ],
+            "description": "Laoghaire's elder daughter, now Fergus's wife and a mother, settled near the Ridge. Sharp-tongued, hard-working and thoroughly acclimatised to frontier life, she has made her peace with Claire.",
+            "id": "marsali",
+            "name": "Marsali Fraser",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jamie's adopted son, a one-handed Frenchman raising a family on the edge of the settlement and making a living by his wits. Charming and adaptable, he chafes at how little the mountains reward charm.",
+            "id": "fergus",
+            "name": "Fergus Fraser",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The small Scottish bondservant who came over with Brianna, now part of the Fraser household and devoted to her father, who is also on the Ridge. Nervous, dutiful and prone to fever, she has never entirely lived down the mistake she made about Roger.",
+            "id": "lizzie-wemyss",
+            "name": "Lizzie Wemyss",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The royal governor of North Carolina, a capable administrator with a rebellion in his backcountry and a career to protect. He granted Jamie his land, commissioned him a colonel of militia, and expects the debt to be paid in men and obedience.",
+            "id": "governor-tryon",
+            "name": "William Tryon",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Frasers' new housekeeper, a tiny, round, tireless woman who arrives with her husband and takes over the running of the house entirely. Endlessly talkative and formidably competent, she treats everyone on the Ridge as hers to feed and organise.",
+            "id": "mrs-bug",
+            "name": "Mrs. Bug",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Irish pirate who robbed the Frasers on the river and assaulted Brianna, alive and at large in the colony. Charming in company and entirely indifferent to other people, he has money, a ship, and no reason to think anyone can touch him.",
+            "id": "stephen-bonnet",
+            "name": "Stephen Bonnet",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A young indentured hunter, barely into his teens, whom Claire first treated for a badly infected throat. Silent about his own history and an extraordinarily good shot, he is the sort of asset a mountain settlement badly needs, and he wants a place on the Ridge.",
+            "id": "josiah-beardsley",
+            "name": "Josiah Beardsley",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The woman of an isolated trading farm the militia calls at, heavily pregnant, evasive, and living in a house where something is badly wrong. What she has been doing there is discovered by Claire and Jamie rather than told.",
+            "id": "fanny-beardsley",
+            "name": "Fanny Beardsley",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Jamie's oldest English friend, a soldier turned Virginia planter, connected at court and a reliable correspondent about what London is thinking. His long-standing obligations to the Fraser family are known to Jamie and Claire and to almost nobody else.",
+            "id": "lord-john-grey",
+            "name": "Lord John Grey",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-fiery-cross"
+      },
+      "recaps": {
+        "ending": "After Alamance the family goes home to the Ridge, and Roger spends months relearning how to speak. His voice comes back as a ruined whisper, enough to preach and teach with but not to sing, and he builds a place for himself on the mountain out of what is left. He and Brianna decide to stay in the past rather than risk the stones. Jamie is bitten by a venomous snake and comes very near death; Claire keeps him alive through days of gangrene and fever. The last of the book turns on Jocasta Cameron's hidden Jacobite gold and on Stephen Bonnet, who is hunting it. The pursuit ends in a fight on the coast at Wylie's Landing, where Brianna shoots Bonnet in the head at close range; he falls into the water and no body is found. The question of Jemmy's father is left where it stands, and Roger has stopped needing an answer. Claire and Jamie return to Fraser's Ridge with the newspaper notice of their own deaths still years ahead of them and a war with Britain coming closer. The book closes with Jamie telling Claire that when the day comes that he must leave her, if his last words are not that he loves her, it will only be because he had no breath left to say them.",
+        "in_short": "At a Highland gathering in North Carolina in 1770, Brianna and Roger are properly married, Jocasta Cameron is betrothed to Duncan Innes, and Governor Tryon commissions Jamie a colonel of militia and orders him to raise men against the Regulators, backcountry farmers in armed revolt. Jamie calls out his tenants under a burning cross in the old Highland fashion, and the militia marches twice, the first time ending without a battle and turning up the horrors of an isolated trading farm. The second march ends at Alamance in May 1771, where the Regulators are scattered and Roger, mistaken for one of them, is hanged; Jamie and Claire cut him down and Claire opens his throat to keep him alive. He survives without a voice. The rest of the book follows his slow recovery, the family's life on Fraser's Ridge, and a hunt for Stephen Bonnet, who is after Jocasta's hidden Jacobite gold. It ends with Brianna shooting Bonnet at Wylie's Landing and the family going home, with the fire that history promises them still in the future.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, in the Outlander books: Claire Randall travelled from the twentieth century to 1743 through the standing stones, married the Highlander Jamie Fraser, survived the Jacobite rising, and was sent back pregnant on the eve of Culloden. Twenty years later she returned to a Jamie who had survived the battle, years as an outlaw and years in prison, and the two were shipwrecked into the American colonies, where they took a mountain land grant and founded Fraser's Ridge in North Carolina. Their daughter Brianna followed them through the stones to warn them of a newspaper notice reporting their deaths in a fire on the Ridge in 1776, and Roger Wakefield followed her. In Wilmington Brianna was raped by Stephen Bonnet, a pirate the Frasers had once helped escape hanging, and arrived pregnant, unable to say whether the child was Roger's or Bonnet's. Roger was mistaken for her attacker, beaten by Jamie and sold to the Mohawk; Jamie and Claire bought him back at the price of Young Ian, who stayed behind with the tribe. Roger came home, claimed Brianna's son Jemmy as his own, and the two were married. Bonnet is still alive.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the autumn of 1770 the Frasers come down from the mountain to the annual Highland gathering at Mount Helicon, the one occasion in the year when a priest, a magistrate and every Scot in the colony can be found in the same place. Brianna and Roger, married by handfast, are wed properly, and Jemmy is baptised. Jamie's aunt Jocasta announces her betrothal to Duncan Innes. Claire works through a long queue of patients, among them a silent young hunter whose throat is rotting. The gathering also brings politics: the backcountry is in armed revolt, farmers calling themselves Regulators are seizing courts and beating sheriffs over corrupt fees and taxes, and Governor Tryon's man delivers Jamie's commission as a colonel of militia with orders to raise men against them. Jamie, who owes his land to the governor, cannot refuse.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Back on Fraser's Ridge the household expands: a new housekeeper and her husband take the place in hand, tenants arrive, and Claire's surgery and Brianna's workshop both grow. Roger, whose scholarship is worthless here, sets about learning to shoot, to work and to lead men, and begins to take services and sing for the settlement. When the governor's summons has to be answered, Jamie assembles the tenants, sets a wooden cross alight in the old Highland way, and takes their oaths to follow him as militia. Roger, who knows how the coming quarrel between the colonies and Britain ends, gives an oath to the Crown he does not believe in. Word also reaches the family that Stephen Bonnet is alive and doing business in the colony, which Brianna receives badly. She, meanwhile, produces matches, plans a water wheel, and adapts what she remembers of engineering to what the mountain can supply.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The militia rides out to gather men from the scattered backcountry settlements, and the campaign is more diplomacy than war: suspicious villages, drink, feuds, and Roger's first attempt at command, which goes badly. At Brownsville the company recruits reluctantly. Riding on, Jamie and Claire call at an isolated trading farm and find a household in which a man has been kept crippled and mute in a loft for months by his wife; he is beyond saving, and Jamie ends it. The wife gives birth and walks away, leaving the baby to be fostered out. Two indentured brothers from the same farm, Josiah and Keziah Beardsley, are freed and taken back toward the Ridge. Word comes that the Regulator emergency has passed for the season, and Jamie is able to send his men home without a battle.",
+            "through": {
+              "chapter": 32
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Winter closes the mountain in. The Frasers keep Christmas and Hogmanay, the households on the Ridge settle into a routine of stock, food and sickness, and Claire's practice grows. Roger and Brianna's marriage steadies, and Jemmy thrives. Letters come up from the lowlands and from England, including from Jamie's old friend Lord John Grey, carrying news of what London is thinking about its colonies. Under all of it sit two things nobody says aloud: that Stephen Bonnet is somewhere in the colony, and that neither Roger nor Brianna knows whose son Jemmy is.",
+            "through": {
+              "chapter": 38
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the spring of 1771 the family travels down to River Run for Jocasta's wedding to Duncan Innes. The plantation is unsettled: a fortune in Jacobite gold that Jocasta's late husband carried out of Scotland is hidden somewhere, and other people know it, one of whom is found dead in the house. Duncan, on the eve of his marriage, confides a private difficulty about it to Claire and Jamie. The wedding goes ahead. Claire treats the household and the slaves, Brianna's dread of Bonnet resurfaces, and Roger continues to look for a use for himself. Then the political news turns: the Regulators have risen again in force, the governor has raised troops in earnest, and this time the militia will be marching to fight.",
+            "through": {
+              "chapter": 55
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The militia marches with the governor's army to the Alamance river, where several thousand Regulators are camped. Jamie, who has no wish to fight farmers, sends Roger into the Regulator camp to look for a man and to carry word. On 16 May 1771 the two forces meet and the battle is short and one-sided: the Regulators are dispersed by artillery and disciplined fire within a couple of hours. In the aftermath the militia hangs several men taken for Regulators, and Roger, caught on the wrong side and unable to prove who he is, is among them. Jamie and Claire find him hours later, still just alive in the tree, and cut him down; Claire opens his windpipe with a knife to get air into him. He lives, but he cannot speak. Tryon has a prisoner executed as an example, and Jamie, having paid the governor everything he owed him and more, is finished with his service.",
+            "through": {
+              "chapter": 72
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The family brings Roger home, and the long aftermath begins. He cannot talk, is in constant pain, and has lost the singing voice that was the one thing he could do better than anyone on the mountain; his rage and despair are hard on Brianna and on everyone else. Claire nurses him through the damage. Life on the Ridge resumes: harvest, patients, births, a new sword for Roger and lessons in using it, and letters from Lord John. A homestead not far off burns to the ground with a body inside, and the fire and the bones sit uncomfortably close to the printed notice that says Jamie and Claire will die that way. By slow degrees Roger begins to force out a whisper.",
+            "through": {
+              "chapter": 88
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Roger's whisper becomes usable speech, ruined but serviceable, and he takes on the work of preaching, teaching and burying on the Ridge, deciding that a man can be of use without a voice worth hearing. He and Brianna face the question of the stones and choose to stay in the past, where their family is. The settlement grows: more tenants, more stock, Fergus and Marsali nearby, Claire's practice busier every season. Jemmy is a healthy toddler, and the matter of his father remains unsettled and largely unspoken. Beyond the mountain, the colony continues to drift toward open quarrel with Britain, and Stephen Bonnet is still alive.",
+            "through": {
+              "chapter": 95
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The last movement of the book turns on gold and on Bonnet. Jocasta Cameron's hidden Jacobite fortune draws men to River Run, and Stephen Bonnet is one of them. Before the family can deal with it, Jamie is bitten by a venomous snake and comes as close to dying as he has ever come; Claire fights gangrene and fever for days and pulls him through. The pursuit of Bonnet ends on the coast at Wylie's Landing, in a running fight in which Brianna shoots him in the head at close range. He goes into the water and no body is recovered. The family returns to Fraser's Ridge: Roger with a whisper and a congregation, Brianna with a son whose parentage nobody will ever settle, Jamie alive and lame, and Claire holding a dated notice of their deaths that is still several years away. The book ends with Jamie telling Claire that if the day comes when he must leave her and his last words are not that he loves her, it will only be for want of breath to say them.",
+            "through": {
+              "chapter": 111
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-fiery-cross"
+      }
+    },
     "the-fifth-elephant": {
       "characters": {
         "characters": [
@@ -843,6 +1107,216 @@
           }
         ],
         "work": "the-final-empire"
+      }
+    },
+    "the-final-gambit-jennifer-lynn-barnes": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Weeks away from her eighteenth birthday and from full, unconditional control of a fortune she is still not certain she should have. A year of Hawthorne games has made her a match for the brothers, and she has begun thinking seriously about what the money is actually for rather than how to keep it.",
+            "id": "avery-kylie-grambs",
+            "name": "Avery Kylie Grambs",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The third Hawthorne brother and Avery's partner in every sense, drawn to risk and to being tested, and inclined to treat a threat as an invitation to play.",
+            "id": "jameson-hawthorne",
+            "name": "Jameson Winchester Hawthorne",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The second Hawthorne brother, disciplined to the point of coldness, carrying in private what happened to his biological father and what the family did to keep it quiet. He has made himself the person everyone else can rely on and asks for nothing back.",
+            "id": "grayson-hawthorne",
+            "name": "Grayson Hawthorne",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Xander"
+            ],
+            "description": "The youngest Hawthorne brother, inventive and irrepressible, who builds contraptions for the fun of it and reads the family's moods better than any of them realize.",
+            "id": "xander-hawthorne",
+            "name": "Alexander Hawthorne",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The oldest Hawthorne brother, protective by instinct and steady in a crisis, now openly attached to Libby and still refusing to have anything to do with the money.",
+            "id": "nash-hawthorne",
+            "name": "Nash Hawthorne",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Avery's older half-sister and guardian, settled into life at Hawthorne House and finally being treated well by the person she is with.",
+            "id": "libby-grambs",
+            "name": "Libby Grambs",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Max"
+            ],
+            "description": "Avery's best friend, living at Hawthorne House and the one person who tells her the unvarnished version of anything.",
+            "id": "maxine-liu",
+            "name": "Maxine Liu",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "John Oren"
+            ],
+            "description": "Avery's head of security, whose job has grown with her profile and who has learned that the serious threats to this family come from people with money and patience.",
+            "id": "oren",
+            "name": "Oren",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Avery's lawyer, preparing her for the moment the trust arrangements end and every decision becomes hers, and drilling her for the public scrutiny that will come with it.",
+            "id": "alisa-ortega",
+            "name": "Alisa Ortega",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tobias Hawthorne's son, alive after twenty years of being presumed dead and unwilling to slot back into the family that raised him. He keeps his distance from Hawthorne House and from the fortune alike.",
+            "id": "toby-hawthorne",
+            "name": "Toby Hawthorne",
+            "reveal": {
+              "chapter": 1
+            }
+          },
+          {
+            "description": "A self-made Texas billionaire, dead before the trilogy began, who raised his grandsons on puzzles and left his fortune to a stranger. Everything that happens to the family still runs through arrangements he made in advance, including at least one game he never got to see played.",
+            "id": "tobias-hawthorne",
+            "name": "Tobias Hawthorne",
+            "reveal": {
+              "chapter": 1
+            }
+          },
+          {
+            "description": "A young woman who is very nearly the image of Emily Laughlin, which unsettles Grayson and Jameson from the moment she appears. She presents herself as Toby Hawthorne's daughter and says that Toby is in danger and needs the family's help.",
+            "id": "eve",
+            "name": "Eve",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The patriarch of a large and feared family whose history runs alongside the Hawthornes' from the very beginning. Courteous, patient, and entirely ruthless, he holds that the foundation of the Hawthorne fortune was taken from him, and he intends to collect on the debt with interest.",
+            "id": "vincent-blake",
+            "name": "Vincent Blake",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-final-gambit-jennifer-lynn-barnes"
+      },
+      "recaps": {
+        "ending": "Eve's loyalties turn out to lie with Vincent Blake, and the pressure that has been closing on Hawthorne House was engineered rather than accidental. Avery stops trying to outlast Blake and goes to meet him on his own ground, playing the kind of game she has spent a year learning from his oldest rival, and she comes away with Toby's freedom and with the threat to the Hawthornes lifted, including the hold Blake had over the family through what happened to Sheffield Grayson. Avery turns eighteen; the last of her benefactor's conditions falls away and the fortune becomes hers outright, with no trustees and no permission required. Toby is alive and free and stays on his own terms. The brothers are left with the question of what to do with lives that were never going to be spent running the family empire, and Grayson in particular begins to look outward. Avery has decided that the point of having the money is giving it away. The closing section, set a year later, finds her doing exactly that alongside the Hawthornes and announcing a competition in which ordinary people can play, on Hawthorne terms, for a fortune of their own, with Jameson beside her.",
+        "in_short": "Weeks from her eighteenth birthday and full control of the Hawthorne fortune, Avery is confronted by Eve, a young woman who is the image of the dead Emily Laughlin and who says she is Toby Hawthorne's daughter and that Toby has been taken. The man holding him is Vincent Blake, the head of a rival family who believes the money Tobias Hawthorne built his empire on was stolen from him, and who also knows what really happened to Grayson's father, a secret the Hawthornes cannot afford to have made public. Avery and the brothers work the last of their grandfather's puzzles while Blake tightens his grip and Eve's presence pulls the family apart from the inside. Eve proves to be working with Blake. Rather than wait him out, Avery meets him on his own ground and beats him at his own kind of game, winning Toby's freedom and ending the threat. She turns eighteen and takes the fortune outright, and a year later she is systematically giving it away and has announced a contest in which ordinary people can compete for a fortune of their own.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Avery Kylie Grambs, a Connecticut teenager with nothing but her half-sister Libby and a talent for numbers, inherited nearly the whole fortune of Tobias Hawthorne, a Texas billionaire she had never met, on the condition that she live in his mansion for a year. His daughters and his four grandsons, Nash, Grayson, Jameson, and Xander, were cut out. In the first book Avery survived two attempts on her life arranged by the brothers' mother, Skye, and solved enough of the old man's puzzles to learn that his son Toby, believed dead for twenty years after a fire on the family's private island, was alive, and that she had unknowingly been playing chess with him for months. In the second she and the brothers traced Toby's history: taken in as an infant rather than born a Hawthorne, he discovered it as a young man, vanished after the fire, and spent twenty years on the streets, where he came to know Avery's mother, which is how Tobias Hawthorne came to choose Avery at all. Toby was found held captive by Grayson's biological father, Sheffield Grayson, who had been behind the renewed attacks on Avery; he died in the confrontation and the family concealed it. Avery and Jameson are together, Nash and Libby are together, and a young woman who looks exactly like the dead Emily Laughlin has just arrived at Hawthorne House calling herself Eve.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Eve's resemblance to Emily Laughlin unsettles the whole house, Grayson and Jameson above all. She presents herself as Toby's daughter and says that Toby is in danger and needs the Hawthornes. Avery, meanwhile, is weeks from her eighteenth birthday, when the trust arrangements end and the fortune becomes hers outright, and Alisa is drilling her for the scrutiny that will follow. Hawthorne House is crowded: Libby and Nash, Max, Xander, the brothers, and an expanded security operation under Oren. Avery has been quietly working out what a person is supposed to do with more money than she can imagine spending, and getting no useful answers from anyone whose job depends on her keeping it.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Toby has been taken by Vincent Blake, the head of a large and dangerous family whose history runs alongside the Hawthornes' from the beginning. Blake's grievance is old and specific: he considers the stake Tobias Hawthorne built his empire on to have been taken from him, and he means to get it back, along with the man he regards as belonging to his family rather than to the Hawthornes. Blake also holds something the Hawthornes cannot afford to have made public, the truth about how Sheffield Grayson died, which weighs on Grayson more than on anyone. Eve's presence keeps reopening old wounds, and Avery cannot tell whether the girl is an ally, a rival, or a plant.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The family goes at the problem the way they were raised to: as a puzzle. Tobias Hawthorne left one last game behind him, and the brothers and Avery work it while Blake applies pressure from outside, using the disappearance of Sheffield Grayson as leverage and letting the Hawthornes understand exactly how much he knows. Eve is drawn into the household and into the brothers' divisions, and Grayson and Jameson both find her impossible to be around and impossible to avoid. Avery's public profile becomes a weapon in its own right, and Alisa fights to keep the estate and its reputation intact while her client keeps choosing to engage rather than retreat.",
+            "through": {
+              "chapter": 32
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Blake's terms are made explicit: he wants what he believes the Hawthornes owe him, and he is prepared to take the family apart to get it. Security at Hawthorne House is tested, the household is forced to weigh who inside it can be trusted, and Toby's captivity turns into a bargaining position. The clues Tobias Hawthorne left take on a new meaning, since the old man knew who Blake was and what he would eventually do, and appears to have prepared for it. Avery refuses to hand over anything simply because it is demanded, which raises the stakes for everyone still living in the house.",
+            "through": {
+              "chapter": 46
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Blake presses his advantage. Grayson's guilt over how his father died becomes a lever, the family's public position is squeezed from several directions at once, and every plan that amounts to waiting for Avery's birthday looks worse than the last. Eve is still in the house, and the brothers are divided over her in ways that have more to do with Emily than with Eve herself. The last of Tobias Hawthorne's game is worked out, and what it leaves Avery with is less a prize than a lesson in how the old man believed a Hawthorne should fight someone who cannot be beaten head-on.",
+            "through": {
+              "chapter": 60
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Eve's real allegiance comes to light: she has been working with Vincent Blake, and much of what the household has spent the book reacting to was arranged between them. The betrayal lands hardest on Grayson and Jameson, who each let her close for reasons that had more to do with Emily than with Eve. Rather than wait behind Oren's security perimeter until her birthday, Avery decides to face Blake herself, on his ground and his terms, and she and the brothers prepare for it as a game with rules, stakes, and a way to win that does not depend on outspending or outfighting an old man with a private empire. What she means to play for is Toby's freedom, an end to Blake's claim on the Hawthorne fortune, and the removal of the hold he has over the family through Sheffield Grayson's death.",
+            "through": {
+              "chapter": 74
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Avery meets Vincent Blake and beats him at his own kind of game, winning Toby's freedom and ending both his claim on the fortune and his hold over the family. Eve's part in his campaign is exposed. Avery turns eighteen, the last of Tobias Hawthorne's conditions lapses, and the money becomes hers with nobody's permission attached. Toby is alive and free and keeps his distance on his own terms, and the brothers are left to decide what to do with lives never meant for anything but the family empire. Avery's answer for herself is to give the fortune away deliberately rather than sit on it. A closing section set a year later shows her doing that work with the Hawthornes, together with Jameson, and announcing a competition in which ordinary people can play, by Hawthorne rules, for a fortune of their own.",
+            "through": {
+              "chapter": 86
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-final-gambit-jennifer-lynn-barnes"
       }
     },
     "the-fires-of-heaven": {
