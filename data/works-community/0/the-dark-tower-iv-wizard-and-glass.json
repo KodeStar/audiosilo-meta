@@ -1135,6 +1135,257 @@
         "work": "the-death-cure"
       }
     },
+    "the-divine-comedy-purgatorio": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The living pilgrim who emerges from Hell at the foot of Mount Purgatory. Humbled by the journey below, he must cleanse away its signs and learn how freely chosen repentance, prayer, and disciplined love prepare souls for Heaven.",
+            "id": "dante",
+            "name": "Dante",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Dante's guide, the ancient Roman poet who led him safely through Hell. His reason, experience, and authority continue to direct the pilgrim, though Purgatory presents spiritual laws and a final destination beyond his personal reach.",
+            "id": "virgil",
+            "name": "Virgil",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Cato of Utica"
+            ],
+            "description": "The stern guardian of Mount Purgatory, encountered on its shore. Though a pagan who died by suicide, he represents liberty here. He accepts Virgil's explanation of their divinely authorized journey and orders Dante to wash his face and gird himself with a humble reed.",
+            "id": "cato",
+            "name": "Cato",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A musician and friend of Dante who arrives among the newly dead in an angel-piloted boat. Their attempted embrace passes through his insubstantial body. At Dante's request he sings, briefly holding the whole company still until Cato urges them toward the mountain.",
+            "id": "casella",
+            "name": "Casella",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The late king of Sicily, recognizable despite wounds to his face and chest. Excommunicated in life, he nevertheless repented at death and reached Purgatory. He asks Dante to tell his daughter the truth and seek her prayers, which can shorten his delay.",
+            "id": "manfred",
+            "name": "Manfred",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Florentine acquaintance of Dante resting in the shade in Ante-Purgatory. His familiar slowness and dry manner survive death; because he postponed repentance, he must wait before beginning the mountain's active purification.",
+            "id": "belacqua",
+            "name": "Belacqua",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Buonconte da Montefeltro"
+            ],
+            "description": "A soldier who died at the battle of Campaldino and whose body was never found. He tells Dante that a final appeal to Mary saved his soul, after which an angry demon used a storm and flooded river to carry away his corpse.",
+            "id": "buonconte-da-montefeltro",
+            "name": "Buonconte da Montefeltro",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Pia de' Tolomei"
+            ],
+            "description": "A Sienese woman among those who repented only when dying violently. She courteously asks Dante to remember her after he has rested, identifies Siena as her birthplace and the Maremma as the place of her death, and alludes briefly to the husband responsible.",
+            "id": "pia-de-tolomei",
+            "name": "Pia de' Tolomei",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Sordello of Mantua"
+            ],
+            "description": "A dignified poet found sitting apart in Ante-Purgatory. He embraces Virgil as soon as he learns that they share Mantua as a homeland, an encounter that prompts Dante's condemnation of political division in Italy.",
+            "id": "sordello",
+            "name": "Sordello",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A celebrated manuscript illuminator carrying a heavy stone among the proud. He acknowledges that Franco of Bologna has surpassed his art and explains that worldly fame quickly changes hands, using his own humility to reinforce the terrace's lesson.",
+            "id": "oderisi-da-gubbio",
+            "name": "Oderisi da Gubbio",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Marco the Lombard"
+            ],
+            "description": "A courtly soul met in the blinding smoke of the wrathful. He answers Dante's question about the world's corruption by defending human free will and arguing that confused spiritual and political authority has deprived society of sound guidance.",
+            "id": "marco-lombardo",
+            "name": "Marco Lombardo",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Pope Adrian V"
+            ],
+            "description": "A former pope lying face down among the avaricious, bound to the earth he valued too highly. He explains how attaining the papacy exposed the emptiness of worldly ambition and asks Dante to send a message to his niece Alagia, whose prayers may help him.",
+            "id": "adrian-v",
+            "name": "Adrian V",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Roman poet whose completed purification causes the mountain to shake and the souls to sing. He joins Dante and Virgil on the ascent, explains that the tremor marks a soul's readiness to rise, and is overwhelmed to discover that the guide before him is Virgil, the poet he most admires.",
+            "id": "statius",
+            "name": "Statius",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Forese Donati"
+            ],
+            "description": "Dante's old friend, now gaunt with hunger on the sixth terrace. He explains that the souls willingly suffer thirst and starvation while learning temperance, and credits the prayers of his widow Nella with speeding his progress up the mountain.",
+            "id": "forese-donati",
+            "name": "Forese Donati",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unnamed solitary woman gathering flowers beside the stream in the earthly paradise. Cheerful and graceful, she explains the perpetual breeze, vegetation, and two rivers of Eden, helping Dante understand the place he has reached.",
+            "id": "woman-in-eden",
+            "name": "The Woman in Eden",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The blessed woman who commissioned Virgil to rescue Dante and now appears in the earthly paradise amid a sacred procession. With Virgil suddenly gone, she becomes an exacting guide, confronting Dante with the ways he abandoned the good direction her earthly example had offered him.",
+            "id": "beatrice",
+            "name": "Beatrice",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-divine-comedy-purgatorio"
+      },
+      "recaps": {
+        "ending": "In the earthly paradise, Dante confesses his failure to remain faithful to the good represented by Beatrice and is washed in Lethe, removing the memory of sin. He can then perceive Beatrice's unveiled beauty. The symbolic procession gathers around the tree of knowledge, where a sequence of attacks and transformations shows the Church endangered by persecution, corruption, and political entanglement. Beatrice promises that divine justice will correct this disorder and instructs Dante to report what he has seen. She questions him about the loss of Eden's original order and explains the special properties of its waters. The woman who met Dante by the stream, now called Matelda, leads him to drink from Eunoë, restoring his memory of good deeds. Purified and renewed, Dante is ready to rise from the earthly paradise into Heaven with Beatrice, while Virgil's role in the journey has ended.",
+        "in_short": "After escaping Hell, Dante and Virgil reach Mount Purgatory, where repentant souls willingly undergo purification. Cato admits them, and in Ante-Purgatory Dante meets souls whose repentance was delayed, including Manfred, Belacqua, and those killed violently. An angel marks Dante with seven letters representing the capital sins. As he climbs the seven terraces, examples, prayers, punishments, and angelic blessings correct pride, envy, wrath, sloth, avarice, gluttony, and lust; one mark disappears after each terrace. The Roman poet Statius completes his own purification and joins the travelers. Beyond the purging fire, Virgil declares Dante's will free and sound, then yields his authority. In Eden an unnamed woman explains the garden, and a symbolic procession brings Beatrice. Virgil vanishes. Beatrice requires Dante to confess how he strayed after her death; washed first in Lethe and finally in Eunoë, he loses the memory of sin and regains the memory of good. Fully cleansed, he is ready to ascend to Heaven.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, Dante became lost in a dark wood and was unable to climb directly toward safety. The shade of the Roman poet Virgil came at Beatrice's request to guide him by a longer path. Together they passed through Hell, whose descending circles punish increasingly deliberate forms of sin, from uncontrolled appetite to violence, fraud, and treachery. Dante spoke with many of the dead and saw how their ruling choices continued to shape their identities and punishments. In the frozen final circle, Lucifer chewed Judas, Brutus, and Cassius. Virgil led Dante down Lucifer's body, past the center of the earth, and into a hidden passage. They climbed until they emerged beneath the stars on the opposite hemisphere, where the next stage of Dante's journey begins.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Dante and Virgil emerge from Hell before dawn on the shore of Mount Purgatory. The guardian Cato accepts that their journey is divinely authorized and orders Virgil to wash Dante's tear-stained face and gird him with a reed. An angel pilots a boat of newly arrived souls across the sea. Among them Dante recognizes his musician friend Casella, whose song briefly distracts everyone until Cato sends them toward the mountain. The travelers learn that Dante's solid body and shadow astonish the dead. Manfred, the excommunicated king of Sicily, explains that sincere repentance saved him and asks for his daughter's prayers. The steep ascent brings Dante to Belacqua, who waited until late in life to turn toward God and must now wait in Ante-Purgatory before beginning active purification.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At the mountain's foot Dante and Virgil have met souls delayed by late repentance. Those who died violently crowd around Dante to request prayers from the living. Buonconte da Montefeltro describes his last appeal to Mary and the storm that swept away his body; Pia de' Tolomei quietly asks to be remembered. Dante questions whether prayer can alter a divine sentence, and Virgil distinguishes fulfilled justice from the loving aid granted through prayer. They meet the Mantuan poet Sordello, who guides them to a green valley where rulers delayed spiritual duties for affairs of state. At night two angels repel a serpent, and Dante speaks with Nino Visconti and Conrad Malaspina. Dante then dreams that an eagle carries him upward. He wakes near Purgatory's gate, where Virgil explains that Lucy bore him there. After three symbolic steps, an angel marks seven letters on Dante's forehead and unlocks the gate with two keys.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Dante has entered Purgatory proper bearing seven marks, one for each capital sin to be cleansed. The first terrace corrects pride. Carved scenes present examples of humility, while the proud bend under heavy stones and recite a prayer that chiefly benefits those still living. Dante speaks with Omberto Aldobrandeschi and the artist Oderisi da Gubbio, who recognizes the brevity of earthly fame. Further images show pride brought low. An angel removes the first mark from Dante's forehead, making the climb easier. On the terrace of envy, souls wear rough garments and have their eyes sewn shut; unseen voices proclaim generosity while visions and remembered examples condemn envy. Sapia of Siena tells how she once rejoiced at her own city's defeat. Guido del Duca laments corruption in the Arno valley and Romagna. A second angel removes another mark and directs the travelers upward.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After completing the terraces of pride and envy, Dante and Virgil enter blinding smoke where wrath is purified. Visions teach gentleness, and Marco Lombardo explains that human beings possess free will; he blames social disorder on poor guidance and the confusion of spiritual with political power. Virgil then develops the poem's moral structure: natural love is never wrong, but chosen love can fail through a bad object, too little zeal, or excessive attachment. The slothful run without rest, calling out examples of energetic devotion. Dante dreams of a distorted woman who appears attractive until her disguise is exposed, warning against deceptive worldly desire. At dawn an angel directs the travelers to the terrace of avarice. There souls lie bound face down to the ground. Pope Adrian V tells how achieving high office finally revealed the emptiness of ambition and asks for the prayers of his niece.",
+            "through": {
+              "chapter": 19
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On the terrace of avarice, Dante hears Hugh Capet condemn greed among his royal descendants. The mountain suddenly shakes and all its souls sing in praise. A newly freed spirit catches up with the travelers and explains that the tremor announces a soul's completed purification. He is the Roman poet Statius, who credits Virgil's poetry with first turning him from wastefulness and then guiding him toward Christianity. Statius is overcome when he discovers that his beloved Virgil is standing before him, and he joins the ascent. On the sixth terrace, the gluttonous pass beneath fruit trees whose scent and water intensify their hunger while voices teach temperance. Dante barely recognizes his emaciated friend Forese Donati. Forese explains that the souls willingly desire this healing pain and that his wife Nella's prayers hastened his progress. Dante also discusses poetry with Bonagiunta of Lucca before another angel sends the three poets upward.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Dante, Virgil, and Statius finish the terrace of gluttony and reach the final terrace, where lust is purified within fire. Statius explains how body and soul develop and how a separated soul can appear, speak, and suffer. In the flames Dante meets poets including Guido Guinizelli and Arnaut Daniel, while two groups exchange brief greetings and examples of sexual disorder. An angel requires Dante himself to enter the fire. Fearful but encouraged by Virgil's reminder of Beatrice, he crosses unharmed and hears the angelic blessing for the pure of heart. After a final night on the mountain, Dante dreams of Leah gathering flowers. Virgil announces that Dante's will is now free, upright, and capable of governing itself; his guidance has reached its limit. Dante enters the earthly paradise and meets a solitary woman gathering flowers beside a clear stream. She explains Eden's constant breeze and the powers of its two rivers as a sacred procession approaches.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the earthly paradise, Dante watches a symbolic procession of lights, elders, living creatures, a griffin, and a chariot. Beatrice appears within it, and Virgil silently disappears. Beatrice rebukes Dante for abandoning the good direction her example gave him after her death. He confesses and collapses under remorse. The woman of the garden immerses him in Lethe, which removes the memory of sin, and brings him to Beatrice; he can then endure the sight of her unveiled face. Around the tree associated with human obedience, the pageant becomes a vision of the Church's history and corruption, ending with a harlot and giant carrying the chariot away. Beatrice promises correction, orders Dante to report the vision, and explains the condition of Eden and its waters. The woman, now identified as Matelda, leads Dante to drink from Eunoë, restoring his memory of good deeds. Cleansed and renewed, Dante is ready to ascend with Beatrice to the stars.",
+            "through": {
+              "chapter": 33
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-divine-comedy-purgatorio"
+      }
+    },
     "the-diviners": {
       "characters": {
         "characters": [

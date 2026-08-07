@@ -1125,6 +1125,199 @@
         "work": "mockingjay"
       }
     },
+    "moll-flanders": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The first-person narrator, born in Newgate Prison and left without family support. Intelligent, adaptable, and determined to live as a gentlewoman, she repeatedly remakes herself through marriage, work, concealment, and eventually crime. Moll Flanders is the name by which she becomes known rather than her birth name.",
+            "id": "moll-flanders",
+            "name": "Moll Flanders",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A transported convict who gives birth to Moll in Newgate. Her sentence is reduced, allowing her to be sent to Virginia while Moll remains in England.",
+            "id": "molls-mother",
+            "name": "Moll's mother",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A poor but respectable woman who takes in young children and raises Moll with unusual kindness. Under her care Moll learns needlework and develops her ambition to support herself without entering domestic service.",
+            "id": "the-nurse",
+            "name": "The nurse",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The older son of the prosperous household that takes Moll in after her nurse dies. He privately courts and seduces Moll while avoiding a public commitment to her.",
+            "id": "the-elder-brother",
+            "name": "The elder brother",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Robin"
+            ],
+            "description": "The younger son of Moll's foster household. Openly in love with Moll, he proposes marriage without knowing the full nature of her relationship with his older brother.",
+            "id": "robert",
+            "name": "Robert",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A tradesman whose confident appearance and expensive habits attract the widowed Moll. His finances prove far less secure than his manner suggests.",
+            "id": "the-draper",
+            "name": "The draper",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Virginia husband"
+            ],
+            "description": "A plantation owner whom Moll marries and accompanies to Virginia. He is affectionate and prosperous, and his family history becomes important after Moll meets his mother.",
+            "id": "the-plantation-owner",
+            "name": "The plantation owner",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A married gentleman Moll meets in Bath. He supports her and maintains a long relationship with her while insisting at first that their arrangement remain companionable.",
+            "id": "the-bath-gentleman",
+            "name": "The Bath gentleman",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "James",
+              "The Lancashire husband"
+            ],
+            "description": "An Irish adventurer whom Moll meets through a match arranged in Lancashire. Each initially believes the other wealthy, but genuine affection grows after their mutual deception is exposed.",
+            "id": "jemmy",
+            "name": "Jemmy",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A respectable married man who entrusts Moll with money during a chance meeting. After pursuing a legal separation from his unfaithful wife, he offers Moll the stability she has long sought.",
+            "id": "the-banker",
+            "name": "The banker",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The governess"
+            ],
+            "description": "A woman who first helps Moll manage a pregnancy and later becomes her landlady, adviser, and receiver of stolen goods. She provides the practical network that enables Moll's criminal career.",
+            "id": "the-midwife",
+            "name": "The midwife",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Moll's son in Virginia, born during her marriage to the plantation owner. As an adult he receives her warmly and helps settle the inheritance left by her mother.",
+            "id": "humphrey",
+            "name": "Humphrey",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "moll-flanders"
+      },
+      "recaps": {
+        "ending": "Convicted of theft and sentenced to death, Moll repents in Newgate and has her sentence reduced to transportation. She finds Jemmy there under a similar sentence and persuades him to accept transportation rather than risk execution. In America they use Moll's remaining money to establish themselves. Moll learns that her mother has died and left her property, and she cautiously returns to Virginia, where her son Humphrey welcomes her and arranges the inheritance without exposing her history to her former husband and half-brother. Moll and Jemmy build a profitable plantation in Maryland. After years of prosperity and reflection, they return to England, where Moll says they intend to spend the rest of their lives in repentance for their earlier conduct.",
+        "in_short": "Born in Newgate and raised without family, Moll longs for independence and gentility. Her beauty and resourcefulness carry her through a succession of relationships: seduction by one brother, marriage to another, a ruinous match with a tradesman, an unknowingly incestuous marriage in Virginia, a long liaison in Bath, and marriages to the impoverished Jemmy and a banker. Widowhood and dwindling money eventually drive her into theft, where she becomes highly successful under the protection of a midwife who receives stolen goods. Moll is finally caught, condemned, and brought to repentance in Newgate. Reunited there with Jemmy, she gains transportation for them both. In America she recovers an inheritance through her son Humphrey, prospers with Jemmy as a plantation owner, and eventually returns to England claiming a reformed old age.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Moll is born in Newgate to a convicted thief who is transported to Virginia. Left in England, she passes through public care before a kindly nurse raises her and teaches her needlework. Moll insists that she wants to become a gentlewoman, by which she means earning her own living rather than serving a household. After the nurse dies, a prosperous family takes Moll in. She grows up educated alongside their daughters and attracts the attention of both sons. The elder brother privately gives her money, declares love, and seduces her, although he has no intention of openly marrying her.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "When the younger brother Robert proposes, the elder brother pressures Moll to accept and conceal their affair. She marries Robert and has children with him, but he dies after several years. Moll then marries a fashionable tradesman whose spending exceeds his means. He eventually flees his creditors and leaves her to fend for herself. Reinventing herself as a wealthy widow, Moll meets a Virginia plantation owner and marries him. She travels to America, has children, and lives comfortably until conversations with her mother-in-law reveal that this woman is Moll's own transported mother. Moll has unknowingly married her half-brother.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Moll's mother urges secrecy, but Moll can no longer accept the marriage. After prolonged conflict she tells her husband they are related and returns to England. In Bath she becomes the companion of a married gentleman. Their initially restrained friendship becomes a long affair, and he supports Moll and their child. After a severe illness he resolves to return to his wife and ends the relationship. Moll then entrusts herself to a midwife who discreetly manages another pregnancy and the child's placement. With her resources shrinking, Moll becomes increasingly dependent on presenting herself as a woman of fortune.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A matchmaker brings Moll together with Jemmy in Lancashire. Each has been falsely represented as rich, and after marriage they discover that neither has the expected fortune. Despite the deception, they care for one another. Jemmy leaves to seek his fortune, promising that they may reunite if circumstances improve. Moll later marries a banker who has obtained freedom from an unfaithful wife. Their marriage is secure until his death leaves Moll once more with limited means. Past middle age, unable to find another advantageous marriage and unwilling to accept poverty, she turns to theft.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Moll's first theft begins almost by impulse, but repeated successes make crime her profession. The midwife, now acting as her governess and receiver, helps sell stolen property and warns her of danger. Moll uses disguises and false identities, steals goods from shops and homes, and exploits moments of confusion while trying to avoid violence. She accumulates substantial money yet cannot stop. At last she is recognized after taking expensive cloth from a shop. Arrested and sent to Newgate, she is convicted and condemned to death. Terror gives way to remorse, and a minister supports what Moll presents as sincere repentance. Her punishment is reduced to transportation.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In Newgate Moll discovers that Jemmy has also been captured. She and the governess help him choose transportation rather than continue resisting his sentence. Moll and Jemmy sail to America with concealed funds and arrange to begin again as planters. Moll learns that her mother left her property in Virginia. She visits her son Humphrey, who welcomes her and transfers the inheritance while protecting the secret from her former husband, who is also her half-brother. With this property and their own work, Moll and Jemmy prosper in Maryland. After many years they return to England with sufficient wealth, and Moll closes her account by declaring that both now live penitently in old age.",
+            "through": {
+              "chapter": 20
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "moll-flanders"
+      }
+    },
     "monsters-and-legends": {
       "characters": {
         "characters": [
