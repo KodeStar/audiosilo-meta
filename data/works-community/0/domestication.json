@@ -532,6 +532,454 @@
         "work": "dracula"
       }
     },
+    "dragon-haven": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A heavily marked Rain Wild girl serving as keeper to the blue queen Sintara, now weeks upriver from everything she knew. She climbs and hunts better than anyone in the company, is steadily becoming more scaled and less human, and is discovering that the rules she was raised under, especially the one forbidding the marked to love or breed, have no enforcement out here and no obvious replacement.",
+            "id": "thymara",
+            "name": "Thymara",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The Bingtown scholar who came north to study dragons and stayed to travel with them, keeping the expedition's records. Her marriage to Hest Finbok is a contract she now understands the worth of, and her feelings for Captain Leftrin have become the thing she is trying hardest not to act on.",
+            "id": "alise-kincarron",
+            "name": "Alise Kincarron Finbok",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Captain of the liveship barge Tarman and the expedition's practical authority, responsible for feeding and moving dragons, keepers and passengers up a river that eats boats. He is in love with a married woman, at odds with the hunter he was forced to hire, and keeping a secret about how his barge came to be as awake as he is.",
+            "id": "leftrin",
+            "name": "Leftrin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Hest Finbok's secretary, sent upriver as Alise's companion and secretly commissioned to bring back dragon blood and scales for the Chalcedean trade. Fastidious, homesick and increasingly disgusted with himself, he has taken what he came for and now has to live aboard a small boat with the people he stole it from.",
+            "id": "sedric-meldar",
+            "name": "Sedric Meldar",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The blue queen dragon who claimed Thymara, imperious, beautiful and unable to fly. She takes her keeper's devotion as tribute, withholds approval as a tool, and is beginning to find the ground intolerable.",
+            "id": "sintara",
+            "name": "Sintara",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The small copper queen, the most damaged dragon of the clutch, slow of speech and dim of memory, whom nobody expected to survive the journey and no keeper wanted.",
+            "id": "relpda",
+            "name": "Relpda",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The expedition's hunter, an old friend of Leftrin's, competent in the wild and unexpectedly patient with people. He notices what others miss, including how badly the Bingtown secretary is coping.",
+            "id": "carson",
+            "name": "Carson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The tattooed former slave among the keepers, tending the small green queen Fente. He is Thymara's oldest friend in the company and would like to be more, in a group where nobody has agreed what any of that is allowed to mean.",
+            "id": "tats",
+            "name": "Tats",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The strangest and most cheerful of the keepers, devoted past all reason to his small red dragon. Where the other keepers ration their effort, he feeds, grooms and exercises Heeby relentlessly, and is generally regarded as a fool for it.",
+            "id": "rapskal",
+            "name": "Rapskal",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Rapskal's small scarlet dragon, unremarkable in memory and intellect but the best fed and best exercised animal in the herd, and enormously fond of her keeper.",
+            "id": "heeby",
+            "name": "Heeby",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The oldest and most heavily marked keeper, who has appointed himself the company's lawgiver. He argues that the expedition is a new people with the right to make its own rules about property, leadership and children, and he is increasingly willing to enforce those rules on people who did not vote for them.",
+            "id": "greft",
+            "name": "Greft",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A keeper girl who has taken the freedoms of the journey further and faster than the rest, and whose choices become the company's first real crisis when the consequences arrive.",
+            "id": "jerd",
+            "name": "Jerd",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The golden dragon whose argument set the whole migration in motion, and the closest thing the herd has to a leader. He is the only one of them who consistently thinks past the next meal, and he holds fragments of memory the others lack.",
+            "id": "mercor",
+            "name": "Mercor",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The youngest of the keepers, Mercor's devoted attendant, small and gentle and largely ignored in the company's quarrels.",
+            "id": "sylve",
+            "name": "Sylve",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Carson's young nephew, brought along as an extra pair of hands and learning to hunt from him.",
+            "id": "davvie",
+            "name": "Davvie",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The hunter Leftrin did not choose and cannot get rid of, who takes a professional interest in dragon parts and none at all in the expedition's success.",
+            "id": "jess",
+            "name": "Jess",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "dragon-haven"
+      },
+      "recaps": {
+        "ending": "The expedition finds what it was sent for. Beyond a stretch of dry, open country unlike anything in the Rain Wilds, a broad river runs past the ruins of a great Elderling city, and Rapskal, flying above it on Heeby, sees it whole. Kelsingra is real, largely intact, and on the far bank of a river too wide, cold and fast for the dragons and keepers to cross; the company settles instead in a smaller Elderling village on the near side, with stone buildings, remembered voices in the walls and a view of the city they cannot reach. The dragons that survived the journey are hunting for themselves, several are flying, and their keepers have finished becoming something new: scaled, long-lived, no longer Rain Wilders but Elderlings. Greft's attempt to found a new order among them has ended with his death, and the keepers are left to work out their own arrangements about pairing, children and leadership. Alise has left her marriage behind in every way that matters and is openly with Leftrin, who has told her the truth about Tarman. Sedric has confessed what he came upriver to do, been bonded to the copper queen Relpda, changed into an Elderling himself, and found in Carson a life he never planned for. Leftrin will take Tarman back down the river to claim the Traders' payment and bring back supplies, leaving dragons and keepers to hold a city they can only look at, while in Bingtown, Chalced and the Rain Wild councils other people are already deciding what a rediscovered Elderling city and a herd of recovering dragons are worth.",
+        "in_short": "The dragons, keepers and Leftrin's barge Tarman push further up the Rain Wild River. A violent flood sweeps Sedric overboard into the acid water, and the copper dragon Relpda saves him; the dragon blood he had stolen and swallowed binds the two of them mind to mind, which destroys his ability to think of dragons as merchandise. When the hunter Jess turns out to be running the same trade and tries to force him into it, the confrontation ends with Jess dead, Sedric's theft exposed, and Alise learning both what her husband is and what Sedric has been to him. Among the keepers, Greft's attempt to found a new society founders on Jerd's pregnancy and on his own hardening authority, and he dies before he can settle it. The dragons begin to hunt and then to fly, Rapskal's small red Heeby first, and the keepers finish changing into Elderlings. Alise and Leftrin become lovers; Sedric and Carson do too. At last the company comes out of the swamp into open country and finds Kelsingra: a vast Elderling city, intact, on the far bank of a river they cannot cross. They settle in a smaller village opposite it, and Leftrin turns Tarman downriver for supplies and payment.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: in the Liveship Traders trilogy, Bingtown's liveships turned out to have been built from stolen dragon cocoons, and the sea serpents trailing them were dragons unable to complete their life cycle. Tintaglia, the last dragon, hatched in the buried Elderling city beneath Trehaug and bargained with the Rain Wilders: she would defend Bingtown against Chalced if they guided the serpents up the Rain Wild River to cocoon. Malta Vestrit and Reyn Khuprus, changed by dragon contact into Elderlings, married; the war ended in a new alliance. But the serpents arrived too late and too few, and in Dragon Keeper the clutch that hatched at Cassarick was stunted: dragons that could not fly or hunt, with fragmentary ancestral memories, dependent on Rain Wilders who resented feeding them. Tintaglia, her bargain kept, went her own way. The Traders' Council paid to make the problem leave: a company of heavily marked young outcasts was hired as keepers, and Captain Leftrin's liveship barge Tarman was contracted to escort dragons and keepers far upriver in search of Kelsingra, an Elderling city the dragons half remember. Among the keepers were Thymara, who should by custom have been left to die at birth and who was claimed by the haughty blue queen Sintara, and the former slave Tats, the odd, fearless Rapskal, the gentle Sylve, and Greft, who intended to lead. Alise Kincarron, a Bingtown dragon scholar in a hollow marriage to the wealthy Hest Finbok, joined the expedition as its recorder, accompanied by Hest's secretary Sedric, who was secretly sent to steal dragon blood and scales for the Chalcedean market and who had begun, at the close of that book, to take them.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A surge of flood water tears down the river, scattering the company and nearly destroying it. Sedric is swept overboard into water that burns, and it is Relpda, the small damaged copper dragon he has been secretly bleeding, who finds him and keeps him alive. The dragon blood he swallowed does what dragon blood does: it opens a bond between them, and Sedric can suddenly hear the creature he had been treating as a supply of raw material. It also begins changing him physically. Whatever he intended to bring back to Bingtown, he can no longer pretend the dragons are animals, and he is now tied to one of them.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The hunter Jess reveals that he is running the same trade as Sedric and for harder masters, and he intends to take a dragon apart properly rather than bleed one discreetly. He tries to force Sedric's cooperation, and the confrontation aboard Tarman ends with Jess dead. Sedric's own theft comes out with it. Leftrin has to decide what to do with a passenger who has been robbing the creatures the expedition exists to protect, and Alise learns two things at once: exactly what her husband arranged, and what Sedric has been to Hest for years. Her marriage stops being a disappointment and becomes a fact she is free to act on.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Cut off from the settlements, the keepers become a society of their own, and Greft intends to write its rules: who leads, who may pair with whom, and whether the Rain Wild ban on the marked having children still binds them. Jerd's pregnancy makes the question immediate rather than theoretical, and the company divides badly over it. Thymara, courted by Tats and complicated by Rapskal, refuses to be assigned to anyone. Aboard the barge, Alise and Leftrin stop pretending, and Leftrin tells her the truth he has kept from everyone: how Tarman came to be more alive than any other barge on the river. Sedric, bonded to Relpda and changing, begins to be useful instead of ornamental.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Food and river both turn against the expedition, and the dragons' survival becomes a matter of whether they can be made to hunt for themselves. Mercor pushes them toward it; the keepers drive, feed and groom them. Rapskal's relentless attention to Heeby pays off first: the small red dragon flies, which nobody expected of the least impressive animal in the herd, and it changes what the others believe is possible for them. The keepers, meanwhile, are visibly no longer Rain Wilders. Scales, altered eyes and lengthening bones mark them all, and the dragons acknowledge without much interest that they are making Elderlings, as their kind always did.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Greft's authority hardens into something the keepers will not accept, and his illness and injuries settle the argument before they can: he dies, and the company is left to work out its own arrangements without him. Jerd's pregnancy ends without a child. The river changes character as the expedition climbs beyond the swamp country, following old Elderling traces, and the dragons take to the air one after another as their strength returns. Thymara, Tats and Rapskal remain tangled with each other and unresolved. Sedric and Carson become a settled pair, and Alise, with no intention of ever going back to Bingtown, records an expedition that has stopped being an errand and become a migration.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The company comes out into dry, open country and finds Kelsingra: a great Elderling city standing largely intact on the far bank of a broad, swift river, seen first from the air by Rapskal on Heeby. It is real, and it is out of reach; dragons and keepers alike cannot cross the water. They settle instead in a smaller Elderling village on the near bank, stone buildings full of remembered voices, and begin to make it habitable. The dragons hunt and fly; the keepers are Elderlings now, long-lived and scaled and no longer anyone's outcasts. Alise is with Leftrin and will not be returning to her husband, and Sedric is bonded, changed and in love. Leftrin turns Tarman back down the river to collect the payment the Traders owe and the supplies the settlement needs, while downstream in Bingtown, Cassarick and Chalced, other people begin working out what a living Elderling city and a herd of recovered dragons might be worth to them.",
+            "through": {
+              "chapter": 24
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "dragon-haven"
+      }
+    },
+    "dragon-keeper": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A Rain Wild girl of about sixteen, born so heavily marked that custom required she be left in the forest to die; her father took her back and raised her instead, over her mother's objections. She has black claws instead of nails, scaling across her skin, and no future her people will acknowledge, since the heavily marked are forbidden to marry or bear children. She works the canopy as a gatherer, climbs better than anyone, and has spent her life being told what she is not allowed to want.",
+            "id": "thymara",
+            "name": "Thymara",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A Bingtown Trader's daughter from a family with an old name and no money, plain, freckled and bookish, who taught herself everything known about dragons and Elderlings from copied scrolls. She accepted a marriage offer from a wealthy man she barely knew, on terms that gave her an allowance and the right to pursue her study, and she means to use it.",
+            "id": "alise-kincarron",
+            "name": "Alise Kincarron Finbok",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Alise's husband, a rich, handsome and fashionable Bingtown Trader who is charming in company and coldly contemptuous in private. He married for the appearance of a settled life and treats his wife's scholarship as an eccentricity to be tolerated, or used.",
+            "id": "hest-finbok",
+            "name": "Hest Finbok",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Hest's secretary, an elegant and fastidious young man who was Alise's childhood friend before he became her husband's employee. He is sent along to keep Alise company and out of trouble, resents every muddy, insect-ridden mile of the Rain Wilds, and is carrying private arrangements of his own that have nothing to do with her research.",
+            "id": "sedric-meldar",
+            "name": "Sedric Meldar",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Skymaw"
+            ],
+            "description": "A large blue queen dragon, hatched malformed and unable to fly, who nonetheless carries herself as the aristocrat she believes she is. She has fragments of ancestral memory, contempt for humans, and an unshakeable conviction that she is owed service. She rejects the name the Rain Wilders gave her and gives her own.",
+            "id": "sintara",
+            "name": "Sintara",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The captain and owner of the liveship barge Tarman, a squat, powerful river man with a rough manner, an unfashionable crew and an unusual attachment to his vessel. He knows the Rain Wild River better than anyone and is guarded about how far up it he has been.",
+            "id": "leftrin",
+            "name": "Leftrin",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A golden dragon, the least deformed and by far the most thoughtful of the stunted clutch. Where the others rage or sulk, he plans: it is his argument that the dragons must leave the swamp and go upriver in search of the old Elderling city, and his patience that persuades the humans to help.",
+            "id": "mercor",
+            "name": "Mercor",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The liveship barge, built of wizardwood generations ago in a shape nobody builds any more, with painted eyes and thirty-odd legs he is not supposed to have. He is quieter than any other liveship and much older, and Leftrin is careful about who notices how much of him is awake.",
+            "id": "tarman",
+            "name": "Tarman",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former slave from Bingtown, tattooed across his face, who came upriver as a boy and has made a place for himself among Rain Wilders who are not sure he counts as one of them. He is steady, practical and one of the few people who has ever treated Thymara as an equal.",
+            "id": "tats",
+            "name": "Tats",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A cheerfully odd young keeper with scarlet scaling and pale eyes, who says whatever occurs to him and appears to be afraid of nothing at all. The other keepers treat him as a simpleton; his dragon is a small, greedy red queen he insists on calling Heeby.",
+            "id": "rapskal",
+            "name": "Rapskal",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young keeper, small for her age and gentler than most, who attaches herself to the golden dragon Mercor and takes his dignity as her own. She grooms him obsessively and defends him to anyone who calls the dragons vermin.",
+            "id": "sylve",
+            "name": "Sylve",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The oldest and most heavily marked of the keepers, a young man with a hard history who takes it for granted that he will lead. He argues that the expedition is a chance to leave Rain Wild law behind and build something with rules of their own making, starting with the rule that forbids the marked to have children.",
+            "id": "greft",
+            "name": "Greft",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A keeper girl, blonde and confident, quicker than Thymara to decide that the old prohibitions do not bind them once they are beyond Trehaug's reach.",
+            "id": "jerd",
+            "name": "Jerd",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A small copper-coloured dragon, the weakest and least able of the clutch, half-blind and slow-witted from the damage done to her in the cocoon. Nobody expects her to survive the journey and no keeper wants her.",
+            "id": "relpda",
+            "name": "Relpda",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A hunter hired to feed the expedition, an old friend of Leftrin's, broad and weathered and comfortable in the wild. He is more observant of people than his manner suggests, and he travels with his young nephew Davvie.",
+            "id": "carson",
+            "name": "Carson",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The second hunter taken on for the journey, a competent enough woodsman whom Leftrin did not choose and does not want aboard. He asks more questions about the dragons than about the game.",
+            "id": "jess",
+            "name": "Jess",
+            "reveal": {
+              "chapter": 10
+            }
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "dragon-keeper"
+      },
+      "recaps": {
+        "ending": "The expedition is committed and well up the Rain Wild River. Fifteen or so heavily marked young keepers, the stunted dragons, Leftrin's barge Tarman, two hired hunters and two Bingtown passengers are strung out along a poisonous river with no map beyond the dragons' unreliable ancestral memories of a city called Kelsingra. Thymara has been claimed by the blue queen Sintara and is learning that a dragon's affection is a form of hunger; the keepers are already changing physically from constant contact with them, growing more scaled and less human. Greft is quietly gathering the younger keepers around the argument that Rain Wild law, including the rule that the marked must never breed, has no force out here. Alise has seen enough of Leftrin's plain competence and enough of her husband's letters to understand what her marriage actually is, and Leftrin, who has troubles of his own concerning how his barge came to be what he is, has fallen in love with her. Sedric, sick of the river and desperate for the money that would buy him a different life, has begun secretly taking from the dragons the blood and scales he was sent to get, which is theft from a sentient being and, if the dragons ever learn of it, a killing matter. Nobody aboard yet knows whether Kelsingra exists, and Trehaug and Cassarick are already discussing how conveniently the whole problem has floated away upriver.",
+        "in_short": "Generations after the last dragons vanished, the sea serpents finally return up the Rain Wild River to cocoon, but they come too late and too weak, and what hatches at Cassarick is a clutch of stunted dragons that cannot fly or hunt. The Rain Wild Traders, sick of feeding them, contract a company of heavily marked young outcasts as keepers and pay Captain Leftrin's barge Tarman to escort dragons and keepers upriver in search of the legendary Elderling city of Kelsingra, hoping the whole burden simply disappears. Among the keepers is Thymara, a girl who should have been exposed at birth and who is claimed by the imperious blue queen Sintara. Alise Kincarron, a Bingtown scholar trapped in a hollow marriage to the rich Hest Finbok, comes north to study the dragons and joins the expedition, accompanied by Hest's secretary Sedric, who has his own commission: to steal dragon blood and scales worth a fortune in Chalced. The expedition sets out into unmapped river country, the keepers begin to change into something not quite human, Alise and Leftrin fall in love, and Sedric quietly begins to take what he came for.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, in the Liveship Traders trilogy: the Bingtown Traders' greatest asset was the liveship, a vessel built from wizardwood that woke into life and speech once three generations of its owning family had died aboard. The Vestrit family's ship Vivacia quickened for Althea Vestrit's father and was left instead to her brother-in-law Kyle Haven, setting off a long fight for the ship that dragged in the pirate Kennit, who took Vivacia and used her to make himself king of the Pirate Isles. Meanwhile Chalced made war on Bingtown, and Malta Vestrit and Reyn Khuprus of the Rain Wilds were caught up in what lay buried beneath the Rain Wild city of Trehaug: an entombed Elderling city and, in it, a chamber of dragon cocoons. Wizardwood was never wood. Every liveship had been built from the stolen cocoons of unhatched dragons, and the sea serpents that trailed the ships were dragons in an earlier stage of life, unable to complete it because they could no longer find their way up the Rain Wild River to cocoon and hatch. Tintaglia, the last dragon, hatched from the last intact cocoon, and in exchange for the Rain Wilders' help in guiding the serpents home she agreed to defend Bingtown from the Chalcedeans. The war ended in an alliance between Bingtown, the Rain Wilds, the Pirate Isles and the Three Ships folk. Kennit died; Malta and Reyn, transformed by long exposure to dragon influence into Elderlings, married; and the serpents, escorted at last, went up the river to spin their cocoons near Cassarick. It should have been the return of dragons to the world. Instead the serpents arrived old, exhausted and too few, and the memories they needed to shape themselves properly were largely lost.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The cocooned serpents hatch at Cassarick into a clutch of malformed, undersized dragons. They cannot fly, most cannot hunt, and their inherited memories are patchy and unreliable. Tintaglia, having got what she wanted from the bargain, is rarely seen. The Rain Wild Traders are left feeding a herd of enormous, arrogant, half-crippled creatures that eat everything the settlements can catch and give nothing back. In Trehaug, Thymara lives on the margins of that society: born so heavily marked that custom demanded she be left in the forest, saved by her father and resented by her mother, forbidden by Rain Wild law ever to marry or have children because of what she might pass on. She works the canopy as a gatherer and expects nothing else.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In Bingtown, Alise Kincarron has spent years assembling everything known about dragons and Elderlings from copied Trader scrolls. Plain and unmarriageable, she accepted a proposal from the wealthy Hest Finbok on contract terms that fund her study and permit her to travel, and discovered afterwards what her husband is like when the door closes. She uses the contract to go north to the Rain Wilds to see living dragons, and Hest sends his secretary Sedric with her, an old friend of hers who despises the journey and has motives he does not share. The Rain Wild Traders' Council, meanwhile, has hit on a solution to the dragon problem: pay them to leave. The dragons speak of an Elderling city called Kelsingra somewhere far upriver, and the Council will fund an expedition to find it.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Council recruits keepers from among the heavily marked young of Trehaug and Cassarick, the ones their families are quietly glad to see go: Thymara, the tattooed former slave Tats, the strange and fearless Rapskal, the gentle Sylve, the ambitious Greft, Jerd and a dozen more. Each is claimed by a dragon, Thymara by the haughty blue queen Sintara. Captain Leftrin's barge Tarman is contracted to carry supplies and to shepherd the party, with the hunters Carson and Jess to feed it. Alise arrives at Cassarick expecting wonders and finds instead a herd of damaged, filthy, magnificent animals whose condition appalls her; she talks her way onto the expedition as its scholar and recorder. Leftrin, gruff and unpolished, is immediately taken with her.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The expedition starts upriver into country no living Rain Wilder has mapped. The dragons are proud, difficult and constantly hungry; the keepers learn quickly that tending them is closer to serving a court than herding livestock, and that a dragon's glamour can bend a human's judgement without the human noticing. Freed of their families and of Trehaug's rules, the young keepers begin sorting themselves out, with Greft arguing that the old law forbidding the marked to breed has no authority beyond the settlements. Aboard Tarman, Alise records everything, and the contrast between Leftrin's plain decency and the marriage she left behind becomes impossible for her to ignore. Sedric, meanwhile, is miserable, filthy, and increasingly desperate.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sedric's real errand comes clear: dragon parts, blood, scales and organs, are worth an enormous amount in Chalced, where the aging Duke is said to be dying and will pay anything for a cure, and Hest has arranged for Sedric to bring some back. Sedric tells himself it is the price of a life he and Hest could have elsewhere. The river grows more dangerous, the dragons' tempers shorten as food runs thin, and the hunter Jess takes more interest in the dragons than in game. Among the keepers, the physical changes accelerate; constant contact with dragons is remaking them, and nobody knows where that ends. Thymara and Sintara circle each other in a bond that is equal parts devotion and exploitation.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The expedition is committed, far up an unmapped and corrosive river, with no proof that Kelsingra exists at all beyond the dragons' broken ancestral memories. Alise has accepted what her marriage is worth and what Leftrin means to her; Leftrin has fallen in love with her and is keeping his own secrets about the barge he sails. The keepers are visibly less human than when they left, Greft's faction is hardening, and the dragons' hunger is outpacing what two hunters can supply. Sedric, sickened by the river and by himself, begins secretly taking blood and scales from the weakest dragon, an act that is theft from a thinking being and would be a death sentence if the dragons discovered it. Downriver, the Traders congratulate themselves on how neatly the problem has floated away.",
+            "through": {
+              "chapter": 17
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "dragon-keeper"
+      }
+    },
     "dragons-and-demons": {
       "characters": {
         "characters": [
@@ -808,6 +1256,68 @@
           }
         ],
         "work": "dragons-and-demons"
+      }
+    },
+    "drive": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A Martian engineer with a talent for propulsion and a private yacht he has been modifying in his own time. Comfortable, married, and not especially ambitious in a public sense, he has been refining a fusion drive design because the problem interests him rather than because anyone commissioned it, and he intends to take the result out for a quiet test flight himself.",
+            "id": "solomon-epstein",
+            "name": "Solomon Epstein",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Solomon's wife, from a well-established Martian family. She is clear-eyed about her husband's preoccupation with his engineering and about what their life together is, and she is the person he thinks about when he has time to think about anything.",
+            "id": "caitlin-epstein",
+            "name": "Caitlin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "drive"
+      },
+      "recaps": {
+        "ending": "The test works far past anything Solomon predicted. The drive lights and does not stop, the acceleration climbs beyond what a body can take, and the couch he is pinned to becomes the whole of his world. His controls are out of reach, there is no cutoff he can get to, and the drugs and the ship's systems cannot compensate for a burn that simply continues. He works out what he has built while he is dying of it: a drive efficient enough to make the entire solar system reachable, to put Mars in a position to become a real power, and to change what human beings are capable of doing off-planet. He also works out that he will not be there for any of it, and that Caitlin will hear about it after the fact. He dies under acceleration. The yacht keeps burning, carrying his body out of the solar system on a course nothing will ever intercept, and it is still going. The design survives him because the data went out before he did, and the drive that bears his name becomes the foundation of everything the novels take for granted: cheap, fast travel between the planets, a settled Belt, and a Mars strong enough to leave Earth.",
+        "in_short": "Solomon Epstein, a Martian engineer, has spent his spare time modifying the fusion drive on his private yacht, and he takes it out alone for a test. It works far better than he expected and then does not stop. The ship accelerates past the limits of what a human body can survive, and with his controls out of reach and no way to shut the burn down, Solomon is pinned to his couch while the drive runs. In the time he has left he understands what he has done: he has built the engine that will make the whole solar system reachable, transform Mars into a genuine power, and open the outer planets to settlement. He also understands that he will not survive it and that his wife Caitlin will learn about it as news. He dies under acceleration, and the yacht carries his body out of the solar system, still burning. The design survives because the data was already transmitted, and the Epstein Drive becomes the technology the entire series rests on.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "This is a short prequel and stands entirely alone. It is set roughly a century and a half before the first novel, on a Mars that is an ambitious colony rather than an independent power, at a time when travel between planets is slow, expensive and rare, the outer solar system is effectively unreachable, and Earth is the only serious authority in human affairs. Everything the novels treat as ordinary, ships that cross the system in weeks, a populated asteroid belt, a Mars able to face Earth as an equal, follows from a single piece of engineering. This story is about the man who built it and the flight on which he tested it. No knowledge of the series is required, and nothing about the novels' plots is given away.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Solomon Epstein, a Martian engineer, has been quietly reworking the fusion drive on his own yacht, and he goes up alone to test it, expecting a measurable improvement. What he gets is a drive that is efficient beyond any reasonable projection and that will not shut down. The acceleration climbs past what a person can survive, his controls end up out of reach, and there is no cutoff he can get to; the ship keeps burning with him pinned in the couch. Interleaved with the flight is his ordinary life: the marriage to Caitlin, the work, the reasons he was building the thing at all. Dying, he understands exactly what he has made. The drive will put the entire solar system within reach, give Mars the means to become a power in its own right, and open the outer planets to settlement. He does not survive it. The yacht carries his body out of the solar system, still under thrust, and is still going. The design outlives him because his data was transmitted before the test, and the Epstein Drive becomes the foundation of everything the series is built on.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "drive"
       }
     },
     "dune": {

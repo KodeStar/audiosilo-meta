@@ -159,6 +159,225 @@
         "work": "the-ballad-of-songbirds-and-snakes"
       }
     },
+    "the-bands-of-mourning": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Wax",
+              "Lord Waxillium Ladrian"
+            ],
+            "description": "Months after he shot the governor of Elendel in front of the city, Waxillium Ladrian is a divisive figure at home and no longer on speaking terms with his god. He is Twinborn, a Coinshot who Pushes on metal and a Skimmer who can change his own weight, and he is finally about to marry Steris Harms. He is also carrying the knowledge that the woman he loved in the Roughs was never who he thought she was, and that Harmony arranged it, which has left him with a great deal of anger and nowhere useful to put it.",
+            "id": "waxillium-ladrian",
+            "name": "Waxillium Ladrian",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Wax's partner, a Twinborn Slider and Bloodmaker whose bendalloy bubble accelerates time around him and whose stored gold heals injuries that should be fatal. He fights with a duelling cane, refuses to carry a gun, collects hats, and can become almost anyone with an accent and the right coat. He is involved with the kandra MeLaan, which suits them both and alarms most people who hear about it.",
+            "id": "wayne",
+            "name": "Wayne",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A constable with a growing reputation, and the member of the group most likely to have read something relevant. She has stopped waiting to be given permission to lead, and she is far more interested in the historical and scholarly side of this case than anyone expects a police officer to be.",
+            "id": "marasi-colms",
+            "name": "Marasi Colms",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Wax's betrothed, whose wedding preparations are as thorough as her contingency plans. She is socially awkward and entirely aware of it, and she packs for eventualities other people would consider absurd, which is repeatedly why the group survives them.",
+            "id": "steris-harms",
+            "name": "Steris Harms",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A kandra, one of the Faceless Immortals who serve Harmony, and by now a fixture of Wax's circle. She can reshape her borrowed body at will, enjoys the physical world far more than her elders think proper, and treats a dangerous assignment as a holiday.",
+            "id": "melaan",
+            "name": "MeLaan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sazed"
+            ],
+            "description": "The god of this world, once a Terris scholar named Sazed. Wax is not speaking to him at the start of this book, having learned how far Harmony's arrangement of his life went. Harmony still runs the kandra, still knows more than he says, and is more constrained than the people who pray to him have ever been told.",
+            "id": "harmony",
+            "name": "Harmony",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A kandra scholar, fussy and academic where MeLaan is neither, who acts as the kandra's liaison to Wax. He brings the case that starts the book and is considerably more interested in evidence, provenance and correct citation than in the danger attached to any of it.",
+            "id": "vendell",
+            "name": "VenDell",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A kandra sent south to investigate rumors, who has come back missing one of his spikes. Kandra hold their minds in their spikes, so without it he is confused and barely coherent, but he returned carrying an image of a metal bracer that may be the thing generations of scholars have been looking for.",
+            "id": "reluur",
+            "name": "ReLuur",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A gunsmith from the Roughs who outfits Wax and his people for a long trip south. Precise, private, and entirely done with pretending Wayne's attentions are charming.",
+            "id": "ranette",
+            "name": "Ranette",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A noblewoman of New Seran whose estate is the social center of that city and whose interests are aligned with the Set. The party she hosts is the group's way into what the organization has been doing in the south.",
+            "id": "kelesina-shores",
+            "name": "Kelesina Shores",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young sky-sailor from the Malwish, a nation on the southern continent that the Basin had assumed was uninhabited ice. His people wear masks in public and build machines the Basin cannot: flying ships, and medallions, unkeyed metalminds that let anyone at all draw on Feruchemical attributes without being born to the art. He speaks the Basin's language with enormous enthusiasm and very poor accuracy. His expedition was destroyed and he was left behind alone.",
+            "id": "allik-neromnian",
+            "name": "Allik Neromnian",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mr. Suit"
+            ],
+            "description": "Wax's uncle, alive despite a reported death, and a senior figure in the Set, where he is known as Suit. He is calm, precise and genuinely convinced that the organization's work is necessary, and he treats his nephew as a problem of management rather than as family.",
+            "id": "edwarn-ladrian",
+            "name": "Edwarn Ladrian",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Wax's older sister, believed killed years ago alongside their uncle, and in fact alive and in the Set's hands. Sharp-tongued and unsentimental, she is close to a stranger to Wax now, and getting her out is the thing he wants most from this expedition.",
+            "id": "telsin-ladrian",
+            "name": "Telsin Ladrian",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Kelsier",
+              "the Survivor"
+            ],
+            "description": "The figure the Malwish credit with founding their nation and giving them their technology, buried in the temple at the heart of this book. The evidence in the tomb identifies him as Kelsier, the Survivor of the Final Empire's fall, who did not stay dead when he was killed three centuries ago and who crossed to the southern continent after the world was remade.",
+            "id": "the-sovereign",
+            "name": "the Sovereign",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-bands-of-mourning"
+      },
+      "recaps": {
+        "ending": "Wax puts on the Bands of Mourning and, with Feruchemical reserves on a scale nothing living has held since the Lord Ruler, breaks the Set's operation at the temple, brings down their transport and gets his people out. The victory is partial. Edwarn Ladrian escapes, and Telsin leaves with him: Wax's sister is not the prisoner he came to rescue, and has not been for a long time. Allik Neromnian survives and becomes the Basin's first real contact with the Malwish, whose medallion technology, capable of granting Feruchemical attributes to people not born to the art, is a change to the world that nobody has begun to absorb. The burial chamber Marasi found is the tomb of the figure the Malwish call the Sovereign, and the evidence in it identifies him as Kelsier, the Survivor of Era 1, who outlived his own death and founded a nation on the southern continent. Back in Elendel, Wax and Steris marry. Wax puts his earring back in and speaks to Harmony again, and Harmony finally tells him what he has been withholding: the Set serves another god, called Trell, one of several powers that exist beyond this world, and Harmony is bound in ways he has never admitted. Wax keeps the Bands. The Basin ends the book knowing it is neither alone on its own planet nor alone in the universe, and the Set is still moving.",
+        "in_short": "Months after the death of Elendel's governor, the kandra bring Waxillium Ladrian a case: one of their own has come back from the far south damaged and short a spike, carrying an image of a bracer that may be the Bands of Mourning, the metalminds said to have made the Lord Ruler unstoppable. Wax, Wayne, Marasi, Steris and the kandra MeLaan travel to New Seran, where the Set is already established, and their attempt to work the city ends in a fight and a flight. Following the Set out of the mountains they find a hidden airship and Allik Neromnian, a survivor of the Malwish, an advanced nation on the southern continent nobody in the Basin knew existed, whose medallions let ordinary people use Feruchemy. They fly to a buried temple, where the Set captures them and Wax faces his uncle Edwarn. Marasi finds a tomb at its heart belonging to the Malwish founder, whose identity ties the southern continent back to Kelsier, the Survivor. Wax claims the Bands and wrecks the Set's operation, but Edwarn escapes with Telsin, who proves to be with the Set willingly. Wax marries Steris, takes Harmony back, and learns that the Set serves a rival god called Trell.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Background: three centuries ago this world was ash-choked and ruled by an immortal tyrant. A thief called Kelsier began the rebellion that unseated him and died doing it; a young woman named Vin finished it, and later destroyed the god of decay at the cost of her own life. A Terris scholar named Sazed took up the divine powers left behind, became Harmony, and remade the planet into somewhere people could live. Kelsier is worshipped as the Survivor, Vin as the Ascendant Warrior, and their descendants have built the Elendel Basin into a place of railways, electric light and revolvers, where Allomancy and Feruchemy survive thinned into single-power Mistings and Twinborn. Previously: Waxillium Ladrian gave up twenty years as a lawman in the frontier Roughs and came home to run House Ladrian. With his partner Wayne and the constable Marasi Colms he broke a gang whose abductions served a secret organization called the Set, and found that his uncle Edwarn had faked his death and joined it. A year later a rogue kandra called Bleeder set out to break Elendel and maneuvered Wax into shooting Governor Innate in public, in the belief that he was killing her in disguise. She then revealed that she was Paalm, the kandra Harmony had assigned to watch over Wax, who had lived as his beloved Lessie and staged her death at his hands. Wax killed her, then rejected Harmony and set aside the earring the god spoke through. Elendel is still without a functioning government, the Set's purchase on it has been exposed, and Wax and Steris Harms are engaged and not yet married.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Elendel is still unsettled after the death of its governor, and Waxillium Ladrian, who fired the shot, is a divisive figure in a city that cannot decide whether he saved it. He is also, at last, about to marry Steris Harms, and he is not speaking to Harmony. Then the kandra bring him a case. One of their number, ReLuur, was sent to the far south to chase rumors and has come back damaged, missing one of the spikes that holds his mind together and barely able to explain himself. What he brought back is an image of a metal bracer that may be part of the Bands of Mourning, the legendary metalminds said to have been the source of the Lord Ruler's power. The kandra scholar VenDell wants Wax to go south to New Seran, confirm what ReLuur found, and recover the missing spike. Wax, Wayne, Marasi, MeLaan and Steris take the train.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "New Seran is a mountain city in the far south of the Basin where Elendel's authority is resented and its money is not. The group works two problems at once: finding out who has been buying up every rumor about the Bands, and recovering ReLuur's stolen spike from the people who took it. Their route into the first is a party at the estate of a local noblewoman with Set connections, where Steris's exhaustive preparation and Marasi's nerve get them considerably further than Wax's reputation does. Wayne and MeLaan handle the spike by their own methods. The evening ends badly: the Set already knew they were coming, the house turns hostile, and they have to fight their way out with what they have learned. It is clear the Set has been established in New Seran for years, and that it is not chasing a legend out of curiosity.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Following the Set's trail out of the city, the group finds something nobody in the Basin knew existed: a concealed cache holding a flying machine, and with it a survivor of the people who built it. Allik Neromnian comes from the Malwish, a nation on the southern continent that the Basin had assumed was empty ice. The Malwish have technology the Basin cannot imagine, built on medallions, unkeyed metalminds that let anyone at all draw on Feruchemical attributes without being born to the art. Allik's expedition was destroyed by the Set. With his help the group takes the airship and flies for the site where the Bands are supposed to lie, ahead of the Set but not by much.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The party reaches a temple buried in the mountains and goes inside. It was built by whoever founded the Malwish, and it is full of machinery and writing that ties the southern continent's history to the Basin's and both back to the fall of the Final Empire. The Set arrives in force, led by Wax's uncle Edwarn Ladrian, whom the organization calls Suit. The group is broken up and part of it taken. Wax and Suit face each other for the first time since Wax learned his uncle was alive, and Suit makes it plain that the Set's plans are much larger than a stolen relic, and that the organization answers to a patron it calls Trell. Wax also finds his sister Telsin, believed killed years ago alongside their uncle, alive and held by the Set.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Held inside the temple complex, the group works in pieces. Marasi pushes deeper into the structure and finds a burial chamber at its heart, raised for a figure the southerners call the Sovereign, who founded their nation and left them their technology. Wayne and MeLaan cause the kind of trouble they are best at. Steris, a captive with a very large bag, keeps producing things nobody else thought to bring. Wax gets loose and goes after his sister and the Bands at the same time, while the Set moves to take the prize and leave before the mountain and its machinery can be turned against them.",
+            "through": {
+              "chapter": 27
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Wax reaches the Bands of Mourning and puts them on. They hold Feruchemical storage on a scale nothing living has carried since the Lord Ruler, giving him strength, speed, weight, healing and more all at once and in quantity, and with them he wrecks the Set's operation, brings down their transport and gets his people out. It is not a clean win. Edwarn escapes, and Telsin goes with him: she is not the prisoner Wax believed he was rescuing and has been working with the Set. The burial chamber Marasi found is identified as the tomb of the Sovereign, and the evidence in it points at Kelsier, the Survivor of Era 1, who did not stay dead and who crossed to the southern continent and founded the Malwish nation there. Allik survives to become the Basin's first contact with his people, whose medallions can hand Feruchemy to anyone. Back in Elendel, Wax and Steris marry. Wax puts his earring back in and speaks to Harmony again, and Harmony tells him the rest: the Set serves Trell, another god, one of several powers beyond this world, and Harmony is bound in ways he had never admitted. Wax keeps the Bands.",
+            "through": {
+              "chapter": 31
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-bands-of-mourning"
+      }
+    },
     "the-battle-of-the-labyrinth": {
       "characters": {
         "characters": [
@@ -1170,6 +1389,63 @@
           }
         ],
         "work": "the-burning-land"
+      }
+    },
+    "the-butcher-of-anderson-station": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "The Butcher of Anderson Station",
+              "Colonel Frederick Lucius Johnson"
+            ],
+            "description": "A United Nations Marine colonel, an Earther career officer with a reputation for competence and for getting difficult assignments finished. He is proud of his service and believes in the institution he serves, and he was the officer ordered to retake a Belt station seized by its own workers. The Belt knows him as the Butcher of Anderson Station; in the present-day frame of the story he is being held to account for it.",
+            "id": "fred-johnson",
+            "name": "Fred Johnson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-butcher-of-anderson-station"
+      },
+      "recaps": {
+        "ending": "Fred's account is that the station's occupiers tried to surrender and that the surrender was never allowed to happen: the offer did not reach him in a form he was permitted to accept, his orders were to take the station, and he took it. Everyone aboard died, including people who had put down their weapons and people who had never picked any up. He was decorated for it. When he understood what had actually been refused and by whom, he resigned his commission and said so publicly, which destroyed his career on Earth, embarrassed the United Nations, and made him the one Earther in the system whose word the Belt would provisionally accept. That is what he offers the people holding him: not a defense, but the record. He is not executed. The encounter ends with him alive and no longer belonging to Earth in any meaningful sense, at the start of the long second career that makes him the most effective political operator in the Outer Planets Alliance and the man who runs Tycho Station in the novels that follow.",
+        "in_short": "Years after the fact, the man the Belt calls the Butcher of Anderson Station is taken by people who intend to make him answer for it, and the story alternates between that confrontation and the operation itself. Anderson Station was a Belt facility whose workers, pushed past endurance by conditions and by a contract dispute, seized it and killed the people running it. Colonel Fred Johnson of the United Nations Marines was ordered to retake it. The occupiers tried to surrender; the surrender was never permitted to reach him in a form he could accept, and his orders were unambiguous. His marines killed everyone aboard, including those who had already given up. Earth decorated him. When Fred worked out what had been refused and by whom, he resigned publicly and told the truth about it, which ended his career, made him notorious on his own planet, and made him the only Earther the Belt would listen to. Telling that story is what keeps him alive in the present, and what begins his second career in the Outer Planets Alliance.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "This novella is a prequel and stands alone. It is set years before the first novel and needs no knowledge of the series beyond its basic setting: humanity has colonized the solar system, Earth's United Nations and the Mars Congressional Republic are the powers that matter, and the people who live and work in the asteroid belt and the outer planets supply both of them while having no government of their own. Belters depend on shipped air, water and contracts controlled from the inner planets, and the political movement that becomes the Outer Planets Alliance is at this point a scattering of angry, unconnected cells. The story concerns a United Nations Marine officer, the name the Belt gave him, and how he came to have it.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The novella runs on two tracks. In the present, Fred Johnson is held by people from the Belt who lost family at Anderson Station and who want the Butcher to account for himself before they decide what to do with him. In the past, Colonel Fred Johnson of the United Nations Marines is ordered to retake that station after its workers, in a dispute over conditions and contracts that escalated past anyone's control, seized it and killed the people in charge. The occupiers attempted to surrender. The offer never reached Fred in a form he was allowed to act on, his orders were to take the station, and his marines killed everyone aboard, including those who had surrendered and those who had never fought. Earth decorated him for it. When he understood what had been refused, and by whom, he resigned his commission and made the reason public, destroying his standing on his own planet. That account is what he gives his captors, and it is what saves him: he leaves the confrontation alive, no longer Earth's man, and takes up the work that makes him the Outer Planets Alliance's most effective figure and the master of Tycho Station.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-butcher-of-anderson-station"
       }
     },
     "the-butchers-masquerade": {

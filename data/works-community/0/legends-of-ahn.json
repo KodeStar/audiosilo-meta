@@ -1055,6 +1055,431 @@
         "work": "les-miserables"
       }
     },
+    "leviathan-falls": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Former captain of the Rocinante, back aboard his ship after years as Laconia's prisoner. He is old, out of practice, and no longer in command of anything; Naomi runs the resistance and he is one more person on the crew. He is also, from having lived in the high consul's household, one of the few people alive who has some idea what Winston Duarte was trying to do.",
+            "id": "james-holden",
+            "name": "James Holden",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Engineer of the Rocinante and the head of the underground, now operating openly with her crew rather than alone in a shipping container. She is the one who decides what the resistance spends its remaining strength on, and she has begun to suspect that beating Laconia is no longer the problem that matters.",
+            "id": "naomi-nagata",
+            "name": "Naomi Nagata",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The Rocinante's pilot, still flying the same ship after a lifetime, with a grown son somewhere in the same war and very little appetite left for losing people.",
+            "id": "alex-kamal",
+            "name": "Alex Kamal",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Rocinante's mechanic, returned from Laconia physically altered by what was done to him there. He does not sleep as people do, does not damage as people do, and is otherwise recognizably himself: direct, incurious about his own condition, and organized entirely around the people he has decided to protect.",
+            "id": "amos-burton",
+            "name": "Amos Burton",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Laconian marine officer of formidable competence and very little patience, assigned to find the missing high consul and bring him back. She is used to being the most dangerous person present and to being given assignments that cannot officially exist, and she takes the failure of a mission personally to a degree that worries her superiors.",
+            "id": "aliana-tanaka",
+            "name": "Aliana Tanaka",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Laconia's senior scientist, in charge of the empire's entire research effort against whatever lives beyond the ring gates. Conscripted years ago and never released, she has the resources of a government and a problem that is getting worse faster than she can characterize it, and she is one of the few people in either camp being honest about how little anyone understands.",
+            "id": "elvi-okoye",
+            "name": "Elvi Okoye",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A geologist and Elvi's husband, working alongside her aboard the Falcon and providing the running commentary that keeps her from disappearing entirely into the work.",
+            "id": "fayez-sarkis",
+            "name": "Fayez Sarkis",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The high consul's daughter, now living aboard the Rocinante among people who were her father's enemies. She is a teenager with no home, no status and no plan, adjusting to a life in which nobody defers to her, and she carries knowledge of Laconia and of her father that both sides of the war want.",
+            "id": "teresa-duarte",
+            "name": "Teresa Duarte",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Teresa's dog, who came off Laconia with her and has adapted to shipboard life more easily than she has.",
+            "id": "muskrat",
+            "name": "Muskrat",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Alex Kamal's grown son, serving with the resistance aboard its captured Laconian warship. He joined a fight his father was already in, and he is discovering the distance between believing in a cause and being shot at for one.",
+            "id": "kit-kamal",
+            "name": "Kit Kamal",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Captain of the resistance's captured Laconian warship and daughter of the Freehold patriarch whose colony Holden once stranded. Aggressive, effective, and inclined to solve problems by force before anyone finishes proposing an alternative.",
+            "id": "jillian-houston",
+            "name": "Jillian Houston",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Acting head of the Laconian state, ruling in the name of a high consul he cannot produce. He is a competent administrator holding together an empire that depends on a man who is not available, while the losses at the gates get worse, and he knows exactly how little time that arrangement buys him.",
+            "id": "anton-trejo",
+            "name": "Anton Trejo",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "High consul of Laconia, absent. He was left broken by the entities beyond the gates and has since disappeared from his own capital, and the empire's most urgent secret is that nobody knows where he is or what he has become. Prior-book knowledge for a reader starting this volume.",
+            "id": "winston-duarte",
+            "name": "Winston Duarte",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "leviathan-falls"
+      },
+      "recaps": {
+        "ending": "Duarte's plan is finally clear: he intends to end the entities' ability to single out human minds by ending human individuality, joining every person alive into one consciousness permanent enough to survive whatever is on the other side of the gates. He has the reach to do it, and he does. For a moment every human being in every system is part of one mind, and the alternative on offer is annihilation. Holden reaches the heart of the ring station and takes the decision away from him. Using the moment of union, he ends it and shuts the gate network down, closing the door the entities came through and cutting the more than thirteen hundred settled systems off from one another and from Sol. Humanity survives as itself, scattered and separated, each world left with whatever it had. Holden does not survive; Naomi, Amos, Alex, Teresa and Elvi do, on the far side of a network that no longer exists. Laconia's empire ends with the traffic that sustained it. The epilogue, generations later, finds humanity alive on its isolated worlds, its cultures and languages already drifting apart from one another and from the history that put them there.",
+        "in_short": "With Duarte missing and his condition a state secret, Admiral Trejo holds the Laconian empire together while the losses at the ring gates get worse: ships vanish in transit, and the moments when every human mind goes dark stretch from an instant toward minutes. Trejo sends the marine officer Aliana Tanaka to find the high consul, and she hunts the Rocinante for Teresa Duarte, who is now living aboard it. Elvi Okoye, running Laconia's science effort, works out what the enemy is and how the gates make humanity visible to it. Duarte, changed beyond anything human and drawing strength from the network itself, resolves the problem his own way: he begins merging every human mind into a single consciousness that the entities cannot pick apart. Holden, who lived in Duarte's household and understands what he is doing, gets to the heart of the ring station and stops it, shutting the gate network down for good. The entities are locked out, humanity stays itself, and the settled systems are cut off from one another permanently. Holden dies doing it. Generations later, the isolated worlds are still there.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: the alien protomolecule destroyed the station Eros and built a ring gate opening onto a hub connected to more than thirteen hundred worlds. Humanity settled them, fought over them, and eventually lost them to Laconia, the empire built by the rogue Martian admiral Winston Duarte out of alien technology no human fleet could match. Laconia conquered Sol, occupied Medina Station and made itself the single government of the species. The Rocinante's crew survived that conquest at heavy cost: Clarissa Mao died in the escape from Medina, Holden surrendered himself and spent years as Duarte's prisoner, and Bobbie Draper was killed leading the resistance's largest operation. Meanwhile the ring gates turned out to be a doorway used in both directions. Something outside ordinary space destroyed the civilization that built them, and Laconia's use of the gates drew its attention: ships began vanishing in transit and every mind in the ring space went briefly dark. Duarte, who had rebuilt himself with alien technology to be able to face it, attempted a direct confrontation and lost. His flagship was destroyed and his mind was shattered. Admiral Trejo has been governing in his name and hiding his condition. Duarte's daughter Teresa fled Laconia with Amos Burton, who came back from that world no longer entirely human, and with Holden; all three reached the Rocinante, where Naomi now leads the underground. This book opens with the high consul missing and the attacks from beyond the gates getting worse.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Duarte is gone: not merely incapacitated but physically missing from Laconia, and the empire's ability to function depends on nobody finding out. Trejo assigns Aliana Tanaka, a Laconian marine officer with a reputation for getting results and for the cost of them, to locate the high consul quietly. Her most promising lead is his daughter, and his daughter is aboard the Rocinante. The ship carries Holden, Naomi, Alex, Amos, Teresa and her dog, running resistance work in a war that is starting to look beside the point: the losses at the gates are accelerating, transits are killing ships that did nothing wrong, and the blackouts that take every human mind at once are lasting longer each time. Elvi Okoye, still running Laconia's research, is the only person with both the data and the freedom to say plainly that this is now the emergency.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tanaka hunts the Rocinante and Teresa with steadily fewer constraints, and the crew has to keep moving. Elvi's work narrows the problem: the entities exist outside the space human ships travel through, they experience the ring network's traffic as an intrusion, and every transit makes humanity more visible to them. The interludes from beyond the gates make it clear the response is deliberate. Alex's son Kit is serving aboard the resistance's captured Laconian warship under Jillian Houston, which puts another person Alex loves inside the shooting. Teresa, out of place among people who spent their lives fighting her father, begins to be useful rather than protected: she knows Laconia, she knows what was done to her father, and she has a connection to the alien machinery there that nobody else has.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The blackouts and the vanishings pass the point where any government can pretend to manage them, and Laconia's grip on the settled worlds starts to matter less than the schedule of the next transit. Tanaka closes in and forces a confrontation that costs both sides; the resistance's warship and its crew are drawn in. Elvi is given access to the alien artifacts and the ring station itself, and works out that the network has a mechanism for being shut down. That knowledge makes the question political immediately: shutting the gates would strand more than a thousand worlds without ships, food shipments or contact, and most of them would suffer badly for it.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Duarte is located, and he is no longer describable as a man. Whatever the entities did to him left him distributed across the network itself, capable of reaching human minds directly, and he has been using the blackouts to gather and rehearse. Tanaka, whose orders were to retrieve him, has to decide what she is actually serving. Elvi is brought to the ring station to work on the shutdown, under Laconian guard and with the empire's own leadership divided about whether to permit it. The Rocinante makes for the slow zone with Holden aboard, because Holden lived in Duarte's house for years and is the only person on either side who can guess what the high consul thinks he is doing.",
+            "through": {
+              "chapter": 32
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Everything converges on the ring space. Duarte's intention becomes explicit: he means to end the entities' ability to find and destroy individual human minds by ending individual human minds, merging the entire species into one consciousness strong and unified enough to endure. He has the reach to attempt it and no interest in consent. Trejo's authority collapses, Tanaka's mission dissolves into her own reckoning with what she has become, and Elvi's shutdown work turns from a policy question into the only remaining option. Amos, who is no longer bound by the limits that stop other people, gets Holden where he needs to be, and the crew of the Rocinante spend what may be their last hours together saying so.",
+            "through": {
+              "chapter": 45
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Duarte does it. For a moment every human being alive is one mind, with annihilation the only alternative on offer. Holden, inside the ring station, takes the decision away from him: he uses that single moment of union to end it and to shut the gate network down, closing the door the entities came through. Humanity survives as itself, and the price is that the more than thirteen hundred settled systems are cut off from one another and from Sol, permanently, each left with whatever it had on hand. Holden dies. Naomi, Amos, Alex, Teresa and Elvi live. Laconia's empire ends with the traffic that sustained it, and every world begins again alone. Generations later, humanity is still there on those separated worlds, its languages and histories already drifting apart.",
+            "through": {
+              "chapter": 49
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "leviathan-falls"
+      }
+    },
+    "leviathan-wakes": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Juliette Andromeda Mao"
+            ],
+            "description": "The daughter of a wealthy Luna family who walked away from her inheritance to live among Belters, an accomplished racing pinnace pilot who signed on with a small ship in the Belt. When the story opens she is locked in a storage compartment aboard that ship, its crew taken away and something happening in the corridors outside her door.",
+            "id": "julie-mao",
+            "name": "Julie Mao",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Jim Holden"
+            ],
+            "description": "Executive officer of the ice hauler Canterbury, which runs water from the rings of Saturn to the stations of the Belt. An Earther and a former UN Navy officer who left the service under a cloud, he is capable but deliberately unambitious, content with a berth that asks little of him. He has a stubborn streak about honesty and an instinct to make what he learns public rather than sit on it, which shapes everything that follows once his ship answers a distress call.",
+            "id": "james-holden",
+            "name": "James Holden",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The Canterbury's chief engineer, a tall Belter raised in low gravity, calm and extremely competent. She keeps a failing ship running on improvisation and holds its crew together, and she is willing to argue with Holden when nobody else will. She is private about her past and unimpressed by authority of any flag.",
+            "id": "naomi-nagata",
+            "name": "Naomi Nagata",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Canterbury's mechanic, a heavyset Earther out of Baltimore with a flat, friendly manner and no visible squeamishness about violence. He treats Naomi's judgement as a substitute for his own and is unquestioningly loyal to the handful of people he has decided belong to him.",
+            "id": "amos-burton",
+            "name": "Amos Burton",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Canterbury's pilot, a Martian from Mariner Valley with a drawl and a long career in the Martian navy behind him. Talkative and easy company, he is an exceptional ship handler who can get performance out of hardware that should not survive it.",
+            "id": "alex-kamal",
+            "name": "Alex Kamal",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Canterbury's young medic, cheerful and easygoing, more interested in a comfortable berth and small pleasures than in the politics between the inner planets and the Belt.",
+            "id": "shed-garvey",
+            "name": "Shed Garvey",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Captain of the Canterbury, an aging and pragmatic spacer counting down the years to retirement, who would rather not risk his ship on a distress signal but is bound by the salvage laws of the Belt.",
+            "id": "captain-mcdowell",
+            "name": "Captain McDowell",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Josephus Miller"
+            ],
+            "description": "A detective with Star Helix Security, the corporation contracted to police Ceres Station. A Belter born and raised in low gravity, he is middle-aged, divorced, drinking more than he should, and long past caring about promotion. He works cases on intuition and a deep network of informants, and he is handed a routine side contract to locate a wealthy family's runaway daughter and put her on a ship home whether she wants to go or not.",
+            "id": "miller",
+            "name": "Miller",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Miller's partner on Ceres, an Earther recently posted to the station and still adjusting to low gravity and to Belter resentment of anyone from the inner planets. Earnest and willing, he knows his origins make him a liability on the streets he polices.",
+            "id": "havelock",
+            "name": "Havelock",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Miller's superior at Star Helix on Ceres, a Belter who runs station policing as much by politics as by law, weighing corporate instructions against what the station's population will tolerate.",
+            "id": "captain-shaddid",
+            "name": "Captain Shaddid",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A wealthy Luna-based industrialist whose family fortune rests on shipping and engineering contracts, and the father of the runaway daughter whose retrieval he has quietly paid to have arranged.",
+            "id": "jules-pierre-mao",
+            "name": "Jules-Pierre Mao",
+            "reveal": {
+              "chapter": 2
+            }
+          },
+          {
+            "description": "Commanding officer of the Martian Congressional Republic Navy battleship Donnager, flagship of the fleet patrolling the Belt. Rigid and duty-bound, she takes Holden's survivors aboard to answer for the accusations they have broadcast across the system against Mars.",
+            "id": "captain-yao",
+            "name": "Captain Theresa Yao",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Martian naval intelligence officer aboard the Donnager who interrogates Holden's crew. Polite, patient and methodical, he is unconvinced by their account of what destroyed their ship and equally certain that Mars did not do it.",
+            "id": "lopez",
+            "name": "Lieutenant Lopez",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A former UN Marine colonel remembered across the Belt as the Butcher of Anderson Station for the massacre he commanded there. He resigned his commission afterward and became the most prominent public figure in the Outer Planets Alliance, running Tycho Station and its enormous shipbuilding operation. He wants the OPA treated as a government rather than a terrorist movement, and he offers Holden's crew shelter and a purpose.",
+            "id": "fred-johnson",
+            "name": "Fred Johnson",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The scientist directing the secret research program behind the alien material, an articulate and courteous man who can lay out the project's atrocities as a rational trade and genuinely expects to be understood and joined.",
+            "id": "antony-dresden",
+            "name": "Antony Dresden",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "leviathan-wakes"
+      },
+      "recaps": {
+        "ending": "The Nauvoo misses, and Eros keeps burning toward Earth. Miller volunteers for a landing party that puts a fusion bomb on the station's surface, and inside he finds that the protomolecule has been shaped by Julie Mao: her mind survived the infection, and the whole rock is in effect following her. Miller stays behind to talk to what is left of her and persuades her to change course. Together they drive Eros into Venus rather than Earth, and Miller dies with her. Earth is saved and the war between the inner planets and the Belt is pulled back from the edge, with the truth about the corporate experiment made public and Protogen destroyed as a company. The protomolecule, however, is now loose on the surface of Venus, plainly still working and beyond anyone's reach. Holden's crew keep the Rocinante and their independence, working under contract to Fred Johnson, whose Outer Planets Alliance emerges from the crisis as a power Earth and Mars must negotiate with rather than police. Holden and Naomi are together, Amos and Alex remain, and Holden is left carrying the knowledge that whatever is happening on Venus has only started.",
+        "in_short": "An ice hauler answering a distress call in the Belt is destroyed by a stealth warship, and its surviving officer, James Holden, broadcasts the evidence across the system, nearly starting a war between Earth, Mars and the Belt. On Ceres, detective Miller is assigned to find a rich family's runaway daughter, Julie Mao, and discovers she was aboard the ship that lured the ice hauler in. Both trails lead to Eros Station, where Julie is found dead of an alien substance and where the station's million and a half residents are deliberately infected with it as a corporate experiment. Miller and Holden's crew escape and expose Protogen, the company that recovered the protomolecule from Saturn's moon Phoebe, and Miller executes its research director. Eros then begins to move under its own power toward Earth. When an attempt to knock it off course fails, Miller lands on the rock, finds Julie's mind steering it, and persuades her to turn aside. They crash Eros into Venus, and Miller dies. The war is averted; the protomolecule is left growing on Venus.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "The ice hauler Canterbury runs water from the rings of Saturn to the mining stations of the Belt. Its executive officer, the Earther James Holden, and its crew, engineer Naomi Nagata, mechanic Amos Burton, pilot Alex Kamal and medic Shed Garvey, are ordered by Captain McDowell to divert to a distress beacon from a small ship, the Scopuli, abandoned near an asteroid. Holden takes a shuttle across and finds the ship stripped, its crew gone and the beacon deliberately planted as bait. A warship with no transponder then destroys the Canterbury with nuclear torpedoes, killing everyone aboard and leaving the boarding party stranded. The salvaged evidence points at Martian military hardware, and Holden broadcasts what he has found to the whole system rather than keep it quiet. The accusation lights a fuse: Belters who already resent the inner planets riot, and Mars and the Belt slide toward open war. On Ceres Station, detective Miller of Star Helix Security is handed a side contract by his captain: find Juliette Mao, the runaway daughter of a wealthy Luna family, and ship her home against her will. Miller begins pulling the thread while the station around him turns dangerous.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Adrift and hunted in a shuttle with no defenses, Holden's crew are picked up by the Martian battleship Donnager, whose officers want an explanation for the accusation broadcast across the system. The Martians deny destroying the Canterbury and insist the stealth ship was not theirs, and their intelligence officer presses the crew about the Scopuli and about who would benefit from an ice hauler dying loudly. Holden begins to accept that he was maneuvered into starting a war on someone else's behalf. On Ceres, Miller works the missing-person case and learns that Julie Mao abandoned her family's money years earlier to live as a Belter and to work for the Outer Planets Alliance, and that the last ship she signed onto was the Scopuli, the same derelict Holden boarded. His routine contract becomes something much larger, and his interest in the woman he is supposed to arrest deepens the more of her life he reconstructs. Riots spread through Ceres, Star Helix's grip on the station weakens, and Miller's superiors make it clear the Mao contract is unwelcome. Aboard the Donnager, sensors find unidentified ships closing in, running dark and answering no hails.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The ships that ambush the Donnager are the same type that killed the Canterbury, and they cripple the battleship. As it dies, its officers put Holden's crew aboard a Martian corvette with orders to run and tell what they saw. Shed Garvey is killed during the escape, and the Martian officer who leaves with them tries to seize the ship and is shot by Amos. The survivors rename the corvette Rocinante and burn for Tycho Station, the Outer Planets Alliance's vast shipbuilding base, where they are taken in by Fred Johnson, the former UN colonel known across the Belt for the massacre at Anderson Station. Fred wants the war stopped and wants the OPA taken seriously as a government, and Holden's crew and their evidence are useful to both aims. On Ceres, Miller keeps working a case nobody wants worked, and Star Helix pulls him off it.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Stripped of his badge for refusing to let go, Miller follows Julie Mao's trail off Ceres to Eros Station. Holden, chasing the Scopuli's missing cargo for Fred Johnson, is sent to the same rock, and the two men meet there, wary of one another and working the same question from opposite ends. The trail ends in a cheap hotel room where Julie lies dead, her body altered by something that is not any disease anyone has catalogued and that still appears to be active. Whatever the Scopuli carried, she was exposed to it and died alone with it. The station around them then starts behaving wrongly: the security forces are not the local contractors, traffic control is not answering as it should, and an announcement goes out that a radiation leak requires the whole population into the shelters.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The lockdown is a mass killing. Eros's roughly one and a half million residents are herded into shelters and deliberately dosed with radiation to accelerate the alien organism released into the station's air, and the whole event is instrumented and recorded as an experiment. Miller and Holden's crew fight their way through the panic, taking radiation exposure on the way, and reach the Rocinante as the station is sealed and abandoned to the infection. Nobody comes to help, because the attack was arranged by people with the resources to move fleets, stage a war between Earth, Mars and the Belt, and make certain that everyone was looking somewhere else. Holden's crew get out carrying proof of it, and Miller gets out carrying a dose that will kill him slowly and a determination to find whoever chose the rock.",
+            "through": {
+              "chapter": 35
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The evidence leads to Protogen, a corporation, and back to Phoebe, the moon of Saturn where the material was found. What they call the protomolecule is an artifact roughly two billion years old, launched toward Earth long before there was complex life on it to remake, and captured by Saturn instead. Protogen's interest is in what the thing does when it is given a large living population to work with, which is why a station of a million and a half people was chosen. The Rocinante crew and Fred Johnson's OPA fighters locate and storm the corporation's hidden research station. Its director, Antony Dresden, explains the program without apology, presenting the alien technology as too valuable for law or consent to obstruct, and offers to continue the work with OPA backing. Miller shoots him dead in front of the room, ending both the argument and any partnership between himself and Holden, who is appalled by the execution.",
+            "through": {
+              "chapter": 42
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The killing splits Miller from Holden's crew, and Miller drifts, sick and unwelcome. On Eros, the protomolecule finishes with the dead: the station begins broadcasting, then moves under its own power, altering course without any drive plume and dodging everything thrown at it, and it sets a heading for Earth. Missiles cannot hit a target that changes trajectory on its own terms. Earth, Mars and the OPA all understand that if the rock lands, the protomolecule gets the biomass it was originally aimed at. Fred Johnson commandeers the Nauvoo, an enormous Mormon generation ship nearing completion at Tycho, to be used as a battering ram to knock Eros off course, and the combined fleets gather to intercept whatever survives the impact.",
+            "through": {
+              "chapter": 48
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Nauvoo misses, and Eros keeps burning toward Earth. Miller volunteers to land on the surface with a fusion bomb and a team of OPA veterans, and once inside he finds the protomolecule has been shaped by Julie Mao, whose mind survived the infection and is effectively steering the rock. Miller stays behind, talks to what remains of her, and persuades her to turn. Together they drive Eros into Venus instead of Earth, and Miller dies there with her. Earth survives, the war between the inner planets and the Belt is pulled back from the edge, and the truth about the experiment becomes public knowledge, destroying Protogen. The protomolecule is now loose on Venus, out of reach and clearly still working. Holden's crew keep the Rocinante and their independence under contract to Fred Johnson, whose OPA comes out of the crisis as a power the inner planets have to negotiate with. Holden and Naomi are together, and Holden is left knowing that what is happening on Venus has only begun.",
+            "through": {
+              "chapter": 55
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "leviathan-wakes"
+      }
+    },
     "life-of-pi": {
       "characters": {
         "characters": [
@@ -1198,6 +1623,225 @@
           }
         ],
         "work": "life-of-pi"
+      }
+    },
+    "light-bringer": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "The Reaper"
+            ],
+            "description": "The Reaper, believed dead by most of the worlds after the annihilation of his legions on Mercury. He begins the book a castaway: no army, no fleet, no way home, and no certainty that his wife, his son or his friends are still alive. Stripped of everything that made him the Republic's sword, he has to work out what he is without it, and whether the man the propaganda made of him is worth being.",
+            "id": "darrow",
+            "name": "Darrow",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The last son of House Bellona, once Darrow's friend at the Institute and then the enemy who hunted him for years. Long exile and captivity have left him without a cause or a home, and circumstance has thrown him back together with the man who destroyed his family. Courteous, exhausted, and still the finest swordsman most people will ever see, he is trying to be something better than what the Society made of him.",
+            "id": "cassius-au-bellona",
+            "name": "Cassius au Bellona",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Storm Knight"
+            ],
+            "description": "An Olympic Knight of the Rim and son of the late Romulus au Raa, bound by an honor code he applies to himself far more strictly than to anyone else. Far from Io and among people his family calls enemies, he holds to his obligations anyway, and his rigid decency becomes the fixed point the rest of his company navigates by.",
+            "id": "diomedes-au-raa",
+            "name": "Diomedes au Raa",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Heir of the Lune line and, since the fall of Mercury, the most celebrated figure in the Gold cause. Young, disciplined and persuasive, he has the prestige of a victory and the credibility of having earned it, and he is spending both to gather the Society's fractured survivors behind his idea of order. He still believes he is the reasonable one.",
+            "id": "lysander-au-lune",
+            "name": "Lysander au Lune",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Daughter of the Ash Lord, the commander who took Mercury, and now the ranking power of the Gold cause with the largest fleet in the solar system under her. Indulgent, theatrical and entirely ruthless, she intends to finish the Republic, and she regards her brilliant young Lune protege as an asset she owns.",
+            "id": "atalantia-au-grimmus",
+            "name": "Atalantia au Grimmus",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "The Minotaur"
+            ],
+            "description": "A Gold warlord of enormous appetite and equally enormous skill, famous for his vanity, his cruelty and his taste for speeches. Once among the Society's most feared commanders, he is at large again and thrown in with company that would have been unthinkable to him, an ally nobody wants and nobody can spare.",
+            "id": "apollonius-au-valii-rath",
+            "name": "Apollonius au Valii-Rath",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lyria of Lagalos"
+            ],
+            "description": "The Red woman from the Martian camps who was blamed for the abduction of the Sovereign's son and who survived the collapse of Luna. Hardened by everything the past year did to her and out of patience with people who use her, she is looking for the Obsidian woman who disappeared on the night the children were freed.",
+            "id": "lyria",
+            "name": "Lyria",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mustang"
+            ],
+            "description": "Sovereign of what is left of the Solar Republic, governing a state that has lost its expeditionary army, the working parts of its capital, and its most famous soldier inside a single year. Pragmatic, tired and formidably clear-eyed, she is trying to keep a republic alive while the people around her argue for a strongman, and she has to fight a war she cannot win by force alone.",
+            "id": "mustang",
+            "name": "Virginia au Augustus",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The young son of Darrow and Virginia, returned to his mother after his abduction and the violence that followed it. He has his father's stubbornness and his mother's mind, and he has learned far too early what his family's name costs the people who carry it.",
+            "id": "pax-au-andromedus",
+            "name": "Pax au Andromedus",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Sevro's wife, heir to the Julii fortune, and one of the Republic's fiercest Gold partisans. Blunt, fearless and lethal in a fight, she has lost more to this war than almost anyone and answers grief with action.",
+            "id": "victra-au-barca",
+            "name": "Victra au Barca",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Obsidian woman who vanished on the night the abducted children were freed, wanted by the Republic for a crime she did not choose. Immensely strong and unusually gentle, raised inside the Republic rather than among her own people, she is a long way from anyone who knows her and a long way from anywhere that would take her in.",
+            "id": "volga",
+            "name": "Volga Fjorgan",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Goblin"
+            ],
+            "description": "Darrow's oldest friend, founder of the Howlers, and the one person who has never once had to be persuaded to follow him. Whatever the war has done to him since Mercury, his loyalty is unchanged.",
+            "id": "sevro",
+            "name": "Sevro au Barca",
+            "reveal": {
+              "chapter": 77
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "light-bringer"
+      },
+      "recaps": {
+        "ending": "Cassius au Bellona is dead, killed by Lysander au Lune, the boy he spent a decade raising and protecting; the killing is the point at which Lysander stops arguing with his own conscience. Lysander finishes the book as the ascendant figure of the Gold cause, his prestige now greater than Atalantia au Grimmus's and his methods no better than hers, prosecuting the war against the Republic's worlds with deliberate terror. Darrow, who began the book a castaway presumed dead, ends it with an army: he has gone into the Obsidian strongholds and won their people on their own terms, he is reunited with Sevro and with survivors he had counted as lost, and he has come back to himself as something other than either the myth or the wreckage the myth left behind. Virginia still holds the Solar Republic on Luna, weaker than at any point in its short life, with her son safe and her husband alive, and she still refuses to save the state by ending it. Lyria's search for Volga has carried both of them far outside the war's center. Nothing is resolved: the Republic is diminished, the Gold cause is united behind a better and more dangerous leader than it has ever had, and both sides are committed to a final confrontation.",
+        "in_short": "Presumed dead after the annihilation of his legions on Mercury, Darrow is a castaway working his way home in the company of former enemies, among them Cassius au Bellona and the Rim's Diomedes au Raa. While Virginia fights a losing defensive war for the Core and refuses to trade the Republic for a dictatorship, and Lyria hunts for the missing Obsidian Volga, Lysander au Lune converts the prestige of his Mercury victory into real power among the Golds. Lysander runs Darrow's company down and kills Cassius, the man who raised him, and afterward stops pretending to be the restrained one. Darrow survives, goes north into the ice to the Obsidian strongholds, and wins an army on their terms; by the end he is reunited with Sevro and back in the war with a force and a purpose again. Lysander closes the book as the ascendant power of the Gold cause and a far worse enemy than the Republic expected, with the final war still ahead of both of them.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Darrow, born a Red miner on Mars, was surgically remade as a Gold and spent years as a hidden agent before his rebellion broke the color caste, killed the Sovereign Octavia au Lune, and put Virginia au Augustus at the head of a new Solar Republic. A decade later the war had not ended. Darrow defied his own Senate to carry the fight to the Society's remnant, and in the previous book he was cut off on Mercury when the Gold armada of Atalantia au Grimmus destroyed the fleet that had brought him. His Free Legions fought a long and increasingly brutal guerrilla war and were finally annihilated; Mercury fell, and Darrow survived alone, separated from Sevro and from everyone else. On Luna, the Republic was dismantled from inside by a campaign of terror engineered by the Rim's Fear Knight, Atlas au Raa, alongside a populist revolt, a criminal Syndicate and an Obsidian rising; the Senate was gutted and Virginia was left governing wreckage. Ephraim ti Horn died freeing the abducted children, Pax and Electra; the Obsidian Volga disappeared, and Lyria survived. Lysander au Lune, once a hostage of the Rim, came out of the Mercury campaign as the Gold cause's most compelling figure. This book opens with Darrow a castaway, presumed dead, trying to get home.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Darrow is alive and nobody who matters knows it. Adrift and without resources after Mercury, he is traveling under a false face in company he would never have chosen, among them Cassius au Bellona and the Rim's Storm Knight, Diomedes au Raa, and the three of them are trying to work their way back toward the Republic without being recognized, sold or killed. Poverty, disguise and the need to stay invisible push Darrow into places and expedients far beneath the Reaper's legend, including a fighting pit that trades on other people's blood. Meanwhile Lysander au Lune, the hero of the Gold victory at Mercury, is being feted by the Society's survivors, learning how their politics work and how far his new prestige will carry him. His view of himself as a servant of order rather than of ambition survives contact with that world, at least for now.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Darrow's company works its way inward, and its number grows to include the Gold warlord Apollonius au Valii-Rath, a man whose usefulness is exactly proportional to how closely he is watched. On Luna, Virginia au Augustus holds a Republic that has lost its army, its expeditionary fleet and much of its government, with her son Pax returned to her and the Senate a shadow of itself. She has to prepare a defense of the Core against an enemy that badly outnumbers her, while her own allies press for emergency powers and a single hand on the war. Lyria, free of Luna and out of the Republic's reach, sets out after Volga, the Obsidian woman who vanished on the night the children were freed and who is wanted for it. Lysander is drawn deeper into Atalantia's campaign, and into the question of who is using whom.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Gold offensive reaches the Core, and the war becomes a matter of fleets and worlds rather than raids. Virginia commands the Republic's defense through a long and costly campaign, spending ships and people she cannot replace to buy time and space, while Lysander fights on the other side and builds a reputation that is starting to rival Atalantia's own. Neither side can finish the other outright, and the fighting gives way to negotiation: Virginia and Lysander meet directly, each takes the measure of the other, and nothing is settled. Lyria's search carries her further from anything she knows. Darrow, still presumed dead, is closing on a war he does not yet know how he will rejoin.",
+            "through": {
+              "chapter": 36
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Darrow re-enters the war, and the fact of his survival changes its shape: to the Republic he is a resurrection, to the Golds a problem they thought solved, and to Lysander a personal reckoning. His makeshift company, Cassius and Diomedes and Apollonius and the few others who have thrown in with him, is far too small for what he intends, and he begins looking for the only force within reach that could matter, the Obsidians, whose queen is dead and whose loyalty nobody has yet claimed. Lysander moves against Darrow directly, and the pursuit brings both of them and everyone traveling with them into the same fight.",
+            "through": {
+              "chapter": 46
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The confrontation between Lysander's forces and Darrow's company ends in disaster. Cassius au Bellona is killed by Lysander, the boy he raised and hid from the world for a decade, and with him goes the last of the restraint Lysander had been claiming for himself. Darrow gets away, carrying the loss of the friend who had finally become an ally again. Lysander stops arguing with himself: he accepts what he has done and what he means to do next, and the Gold cause acquires a leader who no longer needs Atalantia's permission to be ruthless.",
+            "through": {
+              "chapter": 56
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Darrow goes north into the ice, to the Obsidian strongholds and to a people his revolution freed and then abandoned, who have no reason left to trust anyone flying the Republic's colors. Winning them happens on their terms rather than his, and it costs him. Lyria's pursuit of Volga takes her among the Ascomanni, the Obsidian raiders of the deep dark, in places outside any government's authority. Lysander consolidates his position inside the Gold command, and the balance between him and Atalantia shifts steadily in his favor while the Republic's remaining worlds brace for what he intends to do to them.",
+            "through": {
+              "chapter": 66
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Darrow is no longer a castaway. He has an army again: an Obsidian force won on their own terms, together with a scattering of Republic survivors and improbable allies. What he has become in the process is harder to name, and the people who knew him before can see the difference. Lyria's search for Volga carries her to the far edge of the settled worlds. Lysander's ascendancy among the Golds is effectively complete, and his intentions for the Republic have hardened into something even the Core's own commanders find alarming.",
+            "through": {
+              "chapter": 76
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Darrow is reunited with Sevro and with survivors he had counted as lost, and the last part of the book is the reassembly of both an army and a man who looked finished. He goes back to the war with the Obsidians behind him and a clearer sense of what he is fighting for than he has had since the revolution. Cassius au Bellona is dead at Lysander's hand, and Lysander ends the book the dominant figure of the Gold cause, having eclipsed Atalantia in prestige and abandoned the last of the scruples he used to argue from; his campaign against the Republic's worlds turns openly and deliberately terrible. Virginia holds the Republic together on Luna, weaker than ever and still refusing to trade it for a dictatorship, with her son safe and her husband alive. Lyria and Volga's stories end far from the war's center. Nothing is decided: the Republic is diminished, the Gold cause is stronger and better led than at any point in its history, and both sides close the book committed to a final war, with Darrow, no longer the myth and no longer the wreckage the myth left behind, heading into it.",
+            "through": {
+              "chapter": 89
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "light-bringer"
       }
     },
     "limitless-lands-book-2-conquest-a-litrpg-adventure": {

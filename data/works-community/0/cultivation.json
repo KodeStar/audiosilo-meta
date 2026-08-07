@@ -439,6 +439,276 @@
         "work": "cultivation"
       }
     },
+    "dark-age": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "The Reaper"
+            ],
+            "description": "The Red-born hero of the Rising, now the Republic's most celebrated and most distrusted soldier. His unsanctioned campaign against the last Gold holdouts ended in disaster and disgrace at home, and it has left him on Mercury at the head of the Free Legions with the enemy in the sky above him and no fleet coming. Older, harder, and increasingly certain that only he can finish the war, he begins the book cut off from his wife, his son, and the government he helped create, carrying the weight of what his choices have already cost.",
+            "id": "darrow",
+            "name": "Darrow",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Goblin"
+            ],
+            "description": "Darrow's oldest friend and the savage heart of the Howlers, now a husband and father who has followed Darrow into another war that cannot be won by ordinary means. Loyal past reason, he is on Mercury at Darrow's side while his own daughter is missing somewhere far behind them, and the strain of that shows in everything he does.",
+            "id": "sevro",
+            "name": "Sevro au Barca",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The grandson of the legendary swordsman Lorn au Arcos, a young Gold who joined the Rising and became one of Darrow's Howlers. Proud, gifted with a blade, and painfully conscious of his family's name, he is the youngest of Darrow's inner circle and the one most eager to prove that he has earned his place among them.",
+            "id": "alexandar-au-arcos",
+            "name": "Alexandar au Arcos",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A daughter of the Telemanus house, one of the Republic's great Gold families, and a commander in Darrow's legions. Enormous, blunt, and fearless to a fault, she is among the last of Darrow's senior officers still standing on Mercury and one of the few who will tell him plainly when he is wrong.",
+            "id": "thraxa-au-telemanus",
+            "name": "Thraxa au Telemanus",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The exiled swordsman who spent a decade hiding Lysander from the world before the moon lords of the Rim took them both. Once Darrow's friend, then his enemy, then neither, he begins this book a prisoner in Rim hands, far from anyone who might come for him, one of the loose threads the previous book left hanging.",
+            "id": "cassius-au-bellona",
+            "name": "Cassius au Bellona",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The grandson of the Sovereign the Rising overthrew, raised in exile and now held by the Raa family in their fortress on Io after the fighting at Ilium. Educated, self-controlled, and genuinely convinced that the old order's hierarchy was the only thing keeping humanity from ruin, he begins the book a valuable hostage with no army and no title, weighing what he owes the name he was born to.",
+            "id": "lysander-au-lune",
+            "name": "Lysander au Lune",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Storm Knight"
+            ],
+            "description": "Son of Romulus and Dido au Raa and one of the Rim's Olympic Knights. Rigidly honorable, formidable with a blade, and dutiful to the codes of the moon lords of Jupiter, he serves as Lysander's warden on Io and takes both the obligation and its awkwardness seriously.",
+            "id": "diomedes-au-raa",
+            "name": "Diomedes au Raa",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Widow of Romulus au Raa and ruler of the Rim after his death, leading the moon lords of Jupiter and Saturn. Grieving, vengeful, and far less interested in restraint than her late husband was, she has committed the Rim to war and treats her house's captive Lune heir as both a prize and a problem.",
+            "id": "dido-au-raa",
+            "name": "Dido au Raa",
+            "reveal": {
+              "chapter": 2
+            }
+          },
+          {
+            "description": "Son of Aja au Grimmus, the Protean Knight who served the old Sovereign, and nephew to Atalantia. A brutally capable young Gold raised inside what remains of the Core's power, he arrives in Lysander's life as a peer, a rival, and a reminder that the Society's survivors have their own plans for the Lune name.",
+            "id": "ajax-au-grimmus",
+            "name": "Ajax au Grimmus",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Daughter of the Ash Lord and commander of the Gold armada that has taken the sky over Mercury. Clever, theatrical, and without scruple, she treats the war as a contest of appetite and will and is prepared to burn a planet to take Darrow's army off it. She leads the Society's remnant, and she knows exactly how useful a living Lune heir could be to her.",
+            "id": "atalantia-au-grimmus",
+            "name": "Atalantia au Grimmus",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Mustang"
+            ],
+            "description": "Sovereign of the Solar Republic, holding together a government that is coming apart under her. Her son has been abducted and is still missing, her husband's last campaign disgraced the state she built, the Senate is deadlocked, and the populist Vox Populi movement is turning Luna against her. She governs by law and persuasion in a city where both are running out, and she is the only person still trying to keep the Republic recognizably a republic.",
+            "id": "mustang",
+            "name": "Virginia au Augustus",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Gray thief who was paid to take Pax and Electra and who handed them over. He has spent the time since drinking through the money and avoiding the thought of what he did, but the Luna underworld does not release people, and the Syndicate that commissioned the job still has uses for him. Bitter and self-loathing, he is a man looking for a way to stop being the person who did that.",
+            "id": "ephraim",
+            "name": "Ephraim ti Horn",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An enormous young Obsidian woman born inside the Republic rather than on the ice, who works with Ephraim and is the closest thing he has to family. Gentle by nature and ashamed of her part in the abduction, she wants to be good in a city that has no room for it, and she keeps faith with Ephraim long after he has stopped keeping faith with himself.",
+            "id": "volga",
+            "name": "Volga Fjorgan",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The ruler of Luna's criminal Syndicate, an unseen power whose organization commissioned the abduction of the two children and whose reach runs through the capital's police, gangs and government alike. She trades in obligation and fear, and she holds the leash of nearly everyone in Ephraim's life.",
+            "id": "the-syndicate-queen",
+            "name": "The Syndicate Queen",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Lyria of Lagalos"
+            ],
+            "description": "The Red woman who lost her family in the resettlement camps on Mars and was swept into the Republic's high politics as a servant in the Sovereign's household. Blamed for the abduction of the children she was meant to help watch, she has been held and questioned by the Republic's investigators, caught between a state that needs a culprit and the people who arranged for her to be one.",
+            "id": "lyria",
+            "name": "Lyria",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sister of Ragnar Volarus and queen of the Obsidians freed by the Rising. She led her people out of the ice and into a Republic that promised them a place and delivered camps, dependency and contempt, and her patience with that arrangement has run out. Silent, devout and immensely dangerous, she commands the loyalty of the only army inside Luna that answers to nobody else.",
+            "id": "sefi-the-quiet",
+            "name": "Sefi the Quiet",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Fear Knight"
+            ],
+            "description": "Brother to the late Romulus au Raa and the most feared interrogator of the old Society. A patient, meticulous student of terror who holds that breaking a people's spirit is cheaper and more permanent than breaking their armies, he has spent his career far from the Rim's courts and its codes, and both sides of this war would rather he were somebody else's problem.",
+            "id": "atlas-au-raa",
+            "name": "Atlas au Raa",
+            "reveal": {
+              "chapter": 57
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "dark-age"
+      },
+      "recaps": {
+        "ending": "Mercury is lost. Atalantia's forces break the last Republic positions and the Free Legions are destroyed as a fighting force, killed, scattered or captured. Darrow survives the ruin of the army he built, but alone, cut off from Sevro, from Virginia, and from any means of continuing the war. Lysander au Lune ends the book transformed: no longer a hostage or an heirloom, he has claimed his grandmother's name and standing, proven himself in the field, removed the rivals who stood between him and primacy, and become the figure the Society's survivors are prepared to follow, with ambitions Atalantia will not be able to contain. On Luna the Republic has been gutted from within by a campaign of terror the Rim's Fear Knight, Atlas au Raa, designed: the Senate is broken, the Obsidians have risen, the Syndicate has fought a war in the streets, and Virginia is left governing wreckage. Ephraim ti Horn is dead, having spent his life to free the two abducted children. Volga is gone, marked by the same night. Lyria has survived a city that tried repeatedly to kill her. The Solar Republic that opened the book as a strained but functioning state closes it wounded, leaderless in the field, and facing a Gold cause that is stronger, more unified and better led than at any point since the revolution.",
+        "in_short": "Cut off on Mercury after the Gold armada destroys the fleet that carried them, Darrow and his Free Legions fight a losing guerrilla war against Atalantia au Grimmus, and Darrow's methods grow steadily more terrible as his options narrow. On Luna, Virginia's Republic is dismantled from inside by orchestrated terror, a populist revolt, a criminal Syndicate and a risen Obsidian nation, and the hidden architect of much of it is the Rim's Fear Knight, Atlas au Raa. Ephraim ti Horn, who sold the two abducted children, spends the book trying to undo it and dies buying their freedom; Lyria survives the ruin of the capital. Lysander au Lune leaves his captivity on Io, joins the Gold cause, and by the end has made himself its most compelling figure. Mercury falls, the Free Legions are annihilated, and Darrow survives alone and separated from everyone he loves, while the Republic is left crippled and the Golds ascendant.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Darrow, born a Red miner beneath Mars, was surgically remade as a Gold and spent years as a hidden agent, rising through the Institute and the Society's wars until his rebellion, the Rising, broke the color caste and toppled the Sovereign Octavia au Lune. Virginia au Augustus founded the Solar Republic in its place; she and Darrow married and had a son, Pax. A decade on, the war had not ended. In the previous book the Senate voted to stop the offensive against the last Gold holdouts and Darrow ignored it, taking his Free Legions on an unsanctioned campaign that ended in atrocity, killing vast numbers of civilians and destroying what remained of his political support at home. On Luna, a Gray thief named Ephraim ti Horn was hired to abduct Darrow's son Pax and Sevro's daughter Electra, and delivered them to the people who commissioned the job; a Red refugee named Lyria was implicated in the crime. Far out at Jupiter, the moon lords of the Rim took Lysander au Lune, Octavia's grandson, into their custody, and their ruler Romulus au Raa died, leaving his widow Dido pressing for war. This book opens with Darrow's legions on Mercury, cut off from home.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Darrow's Free Legions are stranded on Mercury. The Republic fleet that carried them there is broken by the Gold armada of Atalantia au Grimmus, and the sky above the planet belongs to the enemy. Cut off, outnumbered, and with no way home, Darrow abandons any hope of a conventional campaign and takes his army into a running war across the continent, trading ground for time and using Mercury's terrain and its weather machines against the forces hunting him. Sevro, Alexandar au Arcos, Thraxa au Telemanus and the Howlers stay with him as the legions bleed. Atalantia answers with orbital bombardment, and the civilian population of Mercury pays for a war fought over their heads by both sides. Meanwhile Lysander au Lune leaves the Rim, where the Raa family has held him since the fighting at Ilium, and is collected by emissaries from the Core, among them Ajax au Grimmus, son of Aja. Drawn back into the world he was raised outside of, Lysander travels to Mercury and into the orbit of Atalantia's war, still weighing what he believes civilization requires and what he is willing to do for it.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On Luna, Virginia au Augustus governs a Republic coming apart. Her son is still missing, the Senate is paralyzed, and the populist Vox Populi movement blames her and Darrow for the war's cost and for the atrocity that ended the last campaign. She works through law, patronage and intelligence to hold her coalition together while enemies inside and outside the government maneuver against her. Ephraim ti Horn, the Gray who took the children, has been living on the proceeds and on his guilt; his old life in the Luna underworld drags him back toward the Syndicate that commissioned the abduction and toward its ruler, whose reach into the city is far deeper than he understood. Volga, his Obsidian partner, stays with him. The tension finally breaks in an orchestrated day of killing that guts the Republic's political class and leaves the capital in open disorder, and Virginia's hold on her own government begins to fail. On Mercury, Darrow's war grinds on with no relief and no resupply.",
+            "through": {
+              "chapter": 31
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Virginia fights to keep the Republic from collapsing into factional violence while the hands behind the massacre stay hidden. Darrow, still running on Mercury, loses people he cannot replace, and the campaign turns crueler as he adopts methods he would once have refused; to the people whose world he is fighting over, his legions look less like liberators every week. Ephraim's search for the children takes him deep into the Syndicate's territory and into bargains he cannot walk away from, with Volga at his side. Lyria, held and questioned over her part in the abduction, is caught between the Republic's investigators and the people who arranged for her to take the blame. And on Luna the Obsidians, brought out of the ice by the revolution and never given the place they were promised, come to the end of their patience under their queen, Sefi the Quiet; their rising adds a third armed force to a city already at war with itself.",
+            "through": {
+              "chapter": 41
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The war on Mercury reaches its worst. Atalantia tightens the noose, Darrow's remaining legions are pushed toward the coast, and their commander grows steadily more willing to spend lives, his own soldiers' included, for a chance at survival. Lysander proves himself among the Golds as a soldier rather than an heirloom and begins to matter to Atalantia's councils on his own account, with Ajax au Grimmus as both rival and threat. On Luna, Ephraim and Volga hunt for where the children are being held, and every step of it costs Ephraim more than the job ever paid. Lyria escapes custody into a city that has become lethal to someone of her Color with no protector, hunted by people who need her silent. Virginia, stripped of much of her authority, works with the few she still trusts to identify the single enemy she now believes has been engineering her government's collapse from the beginning.",
+            "through": {
+              "chapter": 52
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Darrow makes his stand at the city of Tyche, where the last of his army and a mass of refugees are pinned against the sea. The battle costs him more of the people he came to Mercury with, and it fuses his legend and his reputation for ruthlessness into one thing: to the survivors he is the hero of Tyche, to Mercury he is a reason their world is burning. On the other side of the line, Lysander is drawn further into command and into the politics of the Gold houses, where his usefulness and his bloodline are both being weighed. On Luna the Republic's institutions have effectively ceased to function; Virginia is hunted inside her own capital, and Ephraim, Volga and Lyria each move through streets where the Syndicate, the risen Obsidians, the Vox Populi and what remains of the Republic's forces are all fighting for the same ground.",
+            "through": {
+              "chapter": 61
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Lyria survives a chain of captors in the ruins of Luna's underworld, passed between people who each want something different from her, and comes out of it with nothing left to lose. Ephraim, having spent the whole book trying to undo a single job, commits to getting Pax and Electra out whatever it costs him, and Volga stays with him for it. On Mercury, Darrow's force is reduced to a hard core, and the choices in front of him narrow to bad and worse. Lysander's standing among the Golds keeps rising, and he begins to see how Atalantia's war might be won by something other than attrition. Virginia, out of formal power, prepares a last move against the enemy who has been dismantling her Republic from inside it.",
+            "through": {
+              "chapter": 73
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ephraim ti Horn's story ends. Cornered and out of options, he buys the children's freedom with his own life, dying so that Volga can get Pax and Electra clear, and Volga carries the consequences of that night alone afterward. On Luna the fighting between the Syndicate, the risen Obsidians and the remains of the Republic's forces has left the capital unrecognizable, and Virginia's people move at last against the man who orchestrated it: Atlas au Raa, the Rim's Fear Knight, who has been operating in the heart of the Republic. On Mercury, Darrow and the last of the Free Legions brace for the final Gold offensive with no reinforcement and nowhere left to withdraw to.",
+            "through": {
+              "chapter": 77
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Atalantia's forces close on the last Republic positions on Mercury and Darrow's army is destroyed. The Free Legions, the instrument Darrow built and the thing he loved most after his family, cease to exist as a fighting force; the survivors are killed, scattered or taken. Lysander commits himself entirely to the Gold cause, and in the final battles he stops being an heir in somebody else's war and becomes a figure the Golds will follow in his own right, a transformation sealed by the deaths of those who stood between him and that place. Virginia, on Luna, is left to choose between saving what can still be saved and answering what has been done to her family and her Republic.",
+            "through": {
+              "chapter": 86
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Mercury falls. The Republic's expeditionary war ends in total defeat: the Free Legions are annihilated, the planet passes to the Golds, and the news reaching Luna finishes what a year of engineered violence started. Lysander au Lune ends the book acclaimed, having taken the name and standing of his grandmother's line and made himself indispensable to the Gold cause; the Society's survivors now have a young Lune to gather behind, and his ambitions are no longer anyone else's to direct. Darrow survives the ruin of everything he brought to Mercury, but he survives alone, cut off from his wife, his son, his friends, and any force that could carry on the war. Virginia holds what is left of the Republic in a capital gutted from within by Atlas au Raa's long campaign of terror. Ephraim is dead, Volga is gone, the two abducted children have been paid for at a price nobody involved would have chosen, and Lyria has come through with her life and little else. The Republic that opened the book as a flawed government at war closes it as a wounded state facing an ascendant enemy, with its greatest soldier missing and presumed lost.",
+            "through": {
+              "chapter": 92
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "dark-age"
+      }
+    },
     "dawn-of-the-density-god": {
       "characters": {
         "characters": [

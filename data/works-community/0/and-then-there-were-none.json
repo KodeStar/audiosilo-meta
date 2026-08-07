@@ -694,6 +694,497 @@
         "work": "artificial-condition"
       }
     },
+    "assassins-fate": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Tom Badgerlock",
+              "Fitz"
+            ],
+            "description": "FitzChivalry Farseer, lately acknowledged as a prince of the Six Duchies and no longer interested in being one. He believes his younger daughter was murdered, he has a hand full of Silver that unmakes whatever it touches unprotected, and he is travelling south with one purpose: to destroy the Servants of Clerres entirely. He is past fifty, damaged by years of Skill use, and better at killing than at anything else he has ever been asked to do.",
+            "id": "fitzchivalry-farseer",
+            "name": "FitzChivalry Farseer",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Fitz and Molly's younger daughter, about ten years old and small for far less than that, stranded thousands of miles from home in an Elderling city after months lost inside the Skill-pillars. She dreams true, writes everything down, and has survived captivity by being underestimated. Her captors believe she is the awaited one of their prophecies.",
+            "id": "bee",
+            "name": "Bee",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The White Prophet, healed in body but still blind, travelling south in disguise with Fitz. He grew up inside Clerres, knows its walls, its people and its habits, and wants every one of them dead. He is also keeping things from Fitz, as he always has.",
+            "id": "the-fool",
+            "name": "The Fool",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lant"
+            ],
+            "description": "Chade's acknowledged son, a scribe and swordsman of moderate talent who failed to protect Withywoods and has come along to make up for it. He is loyal, unlucky and out of his element on every leg of the journey.",
+            "id": "fitzvigilant",
+            "name": "FitzVigilant",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ash"
+            ],
+            "description": "Chade's apprentice, trained in poisons, disguise and quiet violence, who has spent years being taken for a boy and finds it useful. Young, quick and entirely at home in a conspiracy.",
+            "id": "spark",
+            "name": "Spark",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Withywoods stable boy who survived the raid, attached himself to Fitz's household and refuses to be sent home. He is the only member of the party who never stopped believing Bee might be alive.",
+            "id": "perseverance",
+            "name": "Perseverance",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Servant who led the raid on Withywoods, stranded far from Clerres with her prize and her prophecy and very little else. Her certainty has survived being lost in the Skill-pillars, and she still intends to deliver Bee to the order that raised her.",
+            "id": "dwalia",
+            "name": "Dwalia",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The pale Servant whose fog can make people forget what they are looking at and believe what he wants them to believe. He is powerful, childlike and desperate to be wanted, and Bee has learned exactly where those two things meet.",
+            "id": "vindeliar",
+            "name": "Vindeliar",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An Elderling and the effective ruler of Kelsingra, once a Bingtown Trader's daughter. She takes in a starving foreign child and a party of strangers who came out of a Skill-pillar and begins working out which of them are prisoners and which are jailers.",
+            "id": "malta-khuprus",
+            "name": "Malta Khuprus",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A liveship with a hacked-off face and a violent history, built of wizardwood that was never wood at all. He has capsized, killed crews, been abandoned on a beach and been salvaged, and he is not one person: there is more than one mind in his timbers, and all of them remember being something other than a ship.",
+            "id": "paragon",
+            "name": "Paragon",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Bingtown Trader's daughter who spent her youth fighting for the right to sail her family's liveship and has been at sea ever since. Blunt, seasoned and unimpressed by rank, she knows the Fool by an older acquaintance and an older name.",
+            "id": "althea-vestrit",
+            "name": "Althea Vestrit",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Captain of the liveship Paragon, a disowned Trader's son who made himself a sailor the hard way. He is Althea's husband and the only man who has ever kept Paragon sailing for long.",
+            "id": "brashen-trell",
+            "name": "Brashen Trell",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The son of the pirate king Kennit and the Pirate Isles' reigning queen, handsome, headstrong and deeply unwilling to inherit a throne he never asked for or a father's reputation he does not admire.",
+            "id": "kennitsson",
+            "name": "Kennitsson",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ruler of the Pirate Isles, once a whore aboard a pirate ship and now a queen who governs by force of will. She built a kingdom out of her dead husband's legend and intends her son to keep it.",
+            "id": "etta",
+            "name": "Etta",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The ruling council of Clerres: a handful of Servants who own a walled island fortress, a school, a breeding programme for prophets, and a trade in selling futures to anyone who can pay. They are old, comfortable, and accustomed to being obeyed by everyone within their walls.",
+            "id": "the-four",
+            "name": "The Four",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A dark-skinned man who was a White Prophet in an age long past, and who went south with the Fool when both of them left the Six Duchies. He has been at Clerres a long time and not by choice.",
+            "id": "prilkop",
+            "name": "Prilkop",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "assassins-fate"
+      },
+      "recaps": {
+        "ending": "Clerres is destroyed. Fitz poisons, burns and cuts his way through the fortress, the Four are killed, the school and its records go up, and Dwalia and Vindeliar both die there. Bee is found alive, and father and daughter are reunited in the ruins of the place that took her. Prilkop is freed. Paragon keeps his side of the bargain, carries the survivors clear, and is then allowed to become what his timbers always were, separating into dragons and leaving the sea. The party comes home the long way, by liveship to Bingtown and up the Rain Wild River, and Bee is acknowledged as a Farseer, a princess of the Six Duchies in her own right. Fitz does not recover. The Silver, the Skill and the wounds he took at Clerres have used him up, and he is dying by inches; the Fool, who has spent his life spending Fitz, cannot mend him this time. Fitz goes to the Mountain Kingdom, to the quarry where Verity carved his dragon, and gives himself to the stone as the Skilled have always been able to do, pouring his memories and his self into it and finding his wolf waiting there. Bee goes home to Withywoods with the Fool, who stays to raise her, and with Nettle, Riddle, Lant, Spark and Perseverance around her. The Servants are finished, the prophecies they farmed are over, and Bee is left with her father's journals, her own dreams, and a wolf in the woods.",
+        "in_short": "Believing Bee dead, Fitz sails south with the Fool, Lant, Spark and Perseverance to destroy the Servants of Clerres, taking passage on the mad liveship Paragon with Althea and Brashen Trell. Bee, meanwhile, is alive: recovered at Kelsingra among the Elderlings, then dragged away again by Dwalia and shipped across the world to Clerres, where the Servants examine her as the fulfilment of their prophecies. Fitz's party crosses the Pirate Isles and the southern sea, Paragon bargaining for a future of his own in exchange for the voyage, and reaches the island fortress. Fitz and the Fool go in and take it apart: poison, fire and murder, the ruling Four killed, the school destroyed, Dwalia and Vindeliar dead. In the ruins Fitz finds Bee alive. Paragon carries them clear and is released to become dragons; the survivors sail home by way of Bingtown and the Rain Wild River, and Bee is acknowledged as a Farseer princess. But Fitz is dying of what the Silver and the Skill and Clerres cost him. He goes to the Mountain quarry where Verity carved his dragon, gives his memories and himself into the stone, and finds his wolf there. Bee goes home to Withywoods with the Fool to raise her.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: FitzChivalry Farseer, royal bastard, assassin and Skill user, was left for dead by the usurper Regal, survived by hiding his mind in his wolf Nighteyes, and let the world bury him; Molly married the stablemaster Burrich and raised Fitz's daughter Nettle as Burrich's own. Guided by the Fool, the White Prophet who named him Catalyst, he helped end the Red Ship war. In the Tawny Man trilogy he returned secretly to court, and on the ice island of Aslevjal the Fool was tortured to death by the Pale Woman and brought back by Fitz through the Skill; the dragon Icefyre was freed and dragons returned to the world. The Fool then left the Six Duchies for the south with Prilkop, an older White Prophet. Fitz married Molly at last and lived twenty quiet years at Withywoods. In Fool's Assassin Molly bore a late, tiny daughter, Bee, who seemed simple and was in fact brilliant and prophetic, and then died; and the Fool returned to Buckkeep blinded and broken by the Servants of Clerres, the order that bred him, warning of an unexpected son they hunted. While Fitz tended him, Servants and Chalcedean mercenaries raided Withywoods behind a fog that erased memory and carried Bee off. In Fool's Quest Fitz healed the Fool with Silver from Chade's secret store, silvering his own hand, then hunted the raiders across the kingdom and destroyed their camp, rescuing Shine but arriving moments after Dwalia took Bee into a Skill-pillar. Convinced his daughter was dead, he was publicly acknowledged as Prince FitzChivalry Farseer and set out south with the Fool, Lant, Spark and Perseverance to annihilate Clerres. Bee, lost inside the pillars for months, emerged alive at Kelsingra, the Elderling city on the Rain Wild River, still a prisoner of Dwalia and still the Shaysim of the Servants' prophecies, with no one who loved her knowing she lived.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bee is nursed back from starvation at Kelsingra among Elderlings and dragons, a world she knows only from books. Malta Khuprus works out quickly that the child who fell out of a Skill-pillar is not a member of the party that came with her, and that the pale strangers are her jailers, but Vindeliar's fog makes the truth slippery for everyone around him. Far to the north, Fitz's party travels south with a Silver-gloved hand and a plan that is not really a plan: get to Clerres, kill everyone, and do not expect to return. Fitz's Silver touch is a weapon he cannot control, capable of unmaking whatever it touches, and it is also slowly killing him.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bee is taken out of Kelsingra again. Dwalia gets her away downriver, and the child who was almost safe is back in the hands of the order that stole her, being carried through the Rain Wilds toward the sea and the long voyage to Clerres. She keeps writing, keeps watching, and keeps working on Vindeliar, the only crack in her captors' arrangements. Fitz's party comes down through the Mountains and out to the coast, where the world grows unfamiliar: dragons in the sky, liveships in the harbours, and southern politics that owe the Six Duchies nothing. The distance between father and daughter narrows and neither of them knows it.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At Bingtown the party takes passage on the liveship Paragon, captained by Brashen Trell and sailed by Althea Vestrit, with the pirate heir Kennitsson aboard. The Fool travels openly as Amber, a woman these people knew years ago and remember with mixed feelings, and Fitz becomes her servant again, which suits neither of them. Paragon is not a stable vessel: he is mad, violent, and made from wizardwood that holds more than one mind, none of which was ever human. He agrees to carry them across the southern sea, but on his own terms, and the bargain he strikes is about what he is to be allowed to become when the voyage is over.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The voyage runs through the Pirate Isles, where Etta rules the kingdom her dead husband built and where her son's future is decided over his objections, and out into open water among sea serpents and the ships that hunt them. Aboard Paragon the party rubs against a crew that did not sign on for an assassination, and Amber's secrets and Fitz's temper both cost them. Bee, on another ship on another route, is shipped south as cargo, sustained by her own stubbornness and by the hold she has quietly taken on Vindeliar. Both journeys converge on the same island.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bee reaches Clerres and is delivered to the Servants, who have waited a long time for the child their prophecies promised. What they do with her is examination rather than ceremony: she is caged, questioned, catalogued and mined for dreams, and she learns what the order actually is, a walled school that breeds prophets, farms their visions, and sells futures to anyone rich enough to buy one. Fitz and Amber arrive at the island and begin scouting a fortress Amber grew up inside, buying information, bribing where they can, and finding that the place is far better defended and far more populous than a vengeance party of five can handle.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The reconnaissance goes wrong. Clerres notices strangers asking questions, the harbour stops being safe, and the party's cover comes apart in accusations and closed gates. Amber's plans and Fitz's plans turn out not to be the same plans, and the cost of that lands on the people who came along out of loyalty. Inside the walls, Bee is one prisoner among many, and the Servants' internal rivalries prove as dangerous to her as their intentions. Prilkop, the White Prophet who went south with the Fool decades ago, is found to be held there too. The party has to get inside a fortress that is now expecting them.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "They get in, and Fitz does what he was trained for on a scale nobody asked for. Poison goes into the food and drink of an entire fortress, fires are set, and the assassin the Six Duchies made forty years ago works through Clerres room by room. The Four are confronted and killed, the school's records and its stores of dreams burn, and the order that has been selling the future for generations is destroyed in a night. It is not a clean operation and Fitz does not try to make it one; a great many people die who were never anything but the Servants' property.",
+            "through": {
+              "chapter": 35
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the wreckage Fitz finds Bee alive, and the death he has been avenging for a year turns out never to have happened. Dwalia and Vindeliar both die at Clerres. Prilkop is freed. The survivors fight their way back to the harbour, and Paragon keeps his side of the bargain: he carries them clear, and is then released to become what his timbers always were, separating into dragons and leaving the sea for the sky. Fitz, however, is failing. Between the Silver, the Skill and what Clerres cost him physically, he is being consumed, and neither the Fool nor his own coterie can stop it.",
+            "through": {
+              "chapter": 40
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The long way home runs by liveship to Bingtown and up the Rain Wild River, past Kelsingra and its dragons, and back toward the Six Duchies. Bee, who spent a year as a prisoner and a prophecy, is acknowledged as a Farseer and a princess of the realm in her own right, with Nettle, Riddle, Lant, Spark and Perseverance around her. Fitz spends the journey dying, held together by the Skill and by people who will not let go of him, and knowing perfectly well what is happening. He puts his affairs in order and tells his daughter what he can while he can still do it.",
+            "through": {
+              "chapter": 45
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Fitz goes to the Mountain Kingdom, to the quarry where Verity carved his dragon out of memory-stone, and does what the Skilled have always been able to do at the end: he gives himself to the stone, pouring his memories, his self and his long life into it rather than simply stopping. Nighteyes is waiting there, and what he becomes is neither a man nor a ghost but something with a wolf's heart in it. Bee goes home to Withywoods with the Fool, who stays to raise her, and inherits her father's journals, her mother's house and her own true dreams. The Servants are finished and their prophecies with them; the White Prophet's work is over; and in the woods around Bee's home there is a wolf.",
+            "through": {
+              "chapter": 50
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "assassins-fate"
+      }
+    },
+    "assassins-quest": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Fitz",
+              "Tom"
+            ],
+            "description": "The Farseer bastard, officially dead and buried. He survived Regal's dungeons by retreating into his wolf as his body died, and he has been coaxed back into it over a winter by Burrich and Chade. He is half-wild, easier as a wolf than as a man, with a body ruined by torture and poison and a memory full of gaps. Nothing binds him to the crown any more: the king he swore to is dead, the prince he served is believed dead, and the woman he loved is gone. What he has instead is a single fixed intention, to find Regal and kill him.",
+            "id": "fitzchivalry",
+            "name": "FitzChivalry Farseer",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The wolf Fitz bought caged in Buckkeep Town and bonded with through the Wit. He is now full-grown and the bond is total: they share senses, thoughts and, for a time, a body. He is blunt, sardonic and impatient with human tangles, wanting only a pack, a hunt and a place to sleep, and he stays because Fitz is his pack, not because he approves of anything Fitz intends to do.",
+            "id": "nighteyes",
+            "name": "Nighteyes",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Buckkeep's former stablemaster, who dug Fitz out of his grave and spent the winter dragging him back into a man's shape. Driven out of Buckkeep by Regal's men, lamed, jobless and drinking, he has kept Fitz alive at enormous cost and expects to be obeyed for it. He believes Fitz should go to Kettricken and the Mountains rather than after Regal, and the disagreement is bitter.",
+            "id": "burrich",
+            "name": "Burrich",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The old assassin who trained Fitz, now out of the walls of Buckkeep and living rough, running what is left of a loyalist network for a queen who is over the mountains and a king everyone believes dead. He is exhausted and grimly practical, and he too thinks Fitz should serve the Farseers rather than his own grudge.",
+            "id": "chade",
+            "name": "Chade Fallstar",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The chandler's daughter Fitz grew up loving, who left Buckkeep without telling him where she was going. She believes him dead, along with everyone else. She exists in this book first as the life Fitz did not get to have.",
+            "id": "molly",
+            "name": "Molly",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Chivalry's widow, who buried Fitz and grieves him, and who holds Buckkeep Town and its defences together with almost no money and no authority while the crown sits inland at Tradeford. Scattered and stubborn as ever, she turns out to be formidable when there is nobody else left to do the work.",
+            "id": "lady-patience",
+            "name": "Lady Patience",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The youngest Farseer, now crowned king. He has moved the court inland to Tradeford, stripped Buckkeep of everything portable and left the coastal duchies to defend themselves against the Red Ships. He rules through a Skill coterie of his own, has made the Wit a capital crime and hunts those who carry it, and he had Fitz tortured and condemned.",
+            "id": "regal",
+            "name": "King Regal",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A travelling minstrel, young, ambitious and short of patrons, working the roads between the coast and the inland duchies. She is quick, unsentimental and entirely clear about what she wants: to witness an event worth a song and so make her name. She recognizes more about her fellow traveller than is comfortable and treats the knowledge as an opportunity.",
+            "id": "starling-birdsong",
+            "name": "Starling Birdsong",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An old woman travelling with a party of pilgrims bound for the Mountain Kingdom, small, dry and blunt, who passes the miles at a stone game few people can play well. She is sharper than her years suggest, asks questions that are far too well aimed, and clearly understands things about magic that an ordinary devout old woman would have no way of knowing.",
+            "id": "kettle",
+            "name": "Kettle",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Queen of the Six Duchies in exile, back in her father's country and mourning both her husband and the child she lost. She holds herself to the Mountain idea of the ruler as Sacrifice and is preparing to go herself in search of Verity, on almost no evidence and with almost no help, because nobody else will.",
+            "id": "kettricken",
+            "name": "Kettricken",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The former court jester, who fled Buckkeep with Kettricken and lives in the Mountain Kingdom carving wood and keeping the queen company. Away from Buckkeep the mockery is thinner and the seriousness underneath it plainer: the Fool speaks of being a White Prophet, sent to turn the world onto a better course, and of Fitz as the Catalyst whose choices do the turning. Fiercely attached to Fitz and grieved at having believed him dead.",
+            "id": "the-fool",
+            "name": "The Fool",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The most able of the Skill coterie Galen trained, now the chief instrument of Regal's rule. Patient and quiet, he hunts Fitz through the Skill itself, reaching for him whenever Fitz's guard slips, and he is far stronger in the magic than Fitz has ever been.",
+            "id": "will",
+            "name": "Will",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The rightful King of the Six Duchies, missing for over a year beyond the Mountain Kingdom. He reaches Fitz through the Skill in brief, overwhelming contacts carrying a single command, to come to him. What is left of the plain, dutiful soldier who rode out of Buckkeep is a question the journey is undertaken to answer.",
+            "id": "verity",
+            "name": "Verity Farseer",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A small daughter born to Molly, being raised in a cottage far from Buckkeep. Fitz learns of her existence through the Skill, long after the fact and from a distance, and can do nothing about it.",
+            "id": "nettle",
+            "name": "Nettle",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "assassins-quest"
+      },
+      "recaps": {
+        "ending": "Verity finishes his dragon by pouring the last of himself into it, and the black stone rises as a living creature carrying him. Kettle gives herself to the unfinished dragon she has spent her life owing a debt to, and other members of the party pay their own prices. Fitz kills Will, taking the coterie's Skill knowledge as he does it, and then reaches into Regal's mind and rewrites him, binding him to serve Queen Kettricken and stripping out his hatred of Fitz entirely, which ends the civil war without another battle. Fitz then wakes the old stone dragons sleeping in the Six Duchies by feeding them memories of his own, and the dragons drive the Red Ships from the coast and end the raiding war. Kettricken returns to Buckkeep as reigning queen, carrying Verity's heir, with Chade and Patience to help her rebuild a stripped and half-ruined kingdom. Verity does not come back as a man. Fitz, still officially dead, makes the choice the whole book has been pushing him towards and stays dead: Molly has a life with Burrich and a daughter who calls Burrich father, and Fitz will not walk into it and break it. He parts from the Fool, keeps Nighteyes, and disappears to a quiet place to write the histories of the war nobody knows he fought. The Farseer line is secure, the coast is free, and the man who bought all of it has given up every claim on his own name.",
+        "in_short": "Fitz comes back from the grave half a wolf and spends a winter being coaxed into a man again by Burrich and Chade, then leaves them both to go inland and kill Regal. The attempt fails, and in the middle of it Verity reaches him through the Skill with a single overriding command, to come to him. Compelled, Fitz travels to the Mountain Kingdom with the minstrel Starling and an old pilgrim woman, Kettle, who knows far more about the Skill than she admits, and finds Kettricken and the Fool. The party takes the ancient Skill road beyond the mountains and finds Verity in a stone quarry, carving a dragon and pouring his life into it: the Elderlings of legend are stone dragons, quickened by the people who make them. Through the Skill Fitz sees that Molly is living with Burrich and has borne his daughter, and gives them up. Verity fathers an heir on Kettricken using Fitz's body, then completes his dragon and flies. Fitz kills Will, Skill-commands Regal into loyalty, and wakes the sleeping dragons of the Six Duchies, who end the Red Ship war. Kettricken rules; Fitz stays dead and disappears with his wolf.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously in the Farseer trilogy: FitzChivalry, bastard son of the abdicated Prince Chivalry, was raised in the Buckkeep stables by the stableman Burrich and secretly trained as King Shrewd's assassin by Chade. He carried two magics, the forbidden animal-bond of the Wit and the royal Skill, which the Skillmaster Galen deliberately crippled in him. Outislander Red Ships raided the coast and returned their hostages Forged, emptied of all human feeling. Prince Verity, the King-in-Waiting, burned himself out using the Skill against the raiders and finally rode away beyond the Mountain Kingdom to seek the Elderlings, legendary allies from an older war, leaving his Mountain-born queen Kettricken behind. His younger brother Regal used the absence: he had himself named heir, drained and then murdered the failing King Shrewd through his tame Skill coterie, and stripped Buckkeep to move the court inland, abandoning the coast. Fitz killed two of the coterie in front of the court, was tortured and condemned, and escaped death only by retreating into his bonded wolf Nighteyes while his body died; Burrich and Chade dug him up and brought him back. Kettricken, who had lost Verity's child, fled to the Mountains with the Fool. Molly, Fitz's lover, had already left him without a word. Regal was crowned, the Wit became a hanging matter, and Fitz, officially a corpse, was free of every oath he had ever taken.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Fitz spends the winter in a hut with Burrich, more wolf than man, having to be taught again how to speak, cook and behave as a person. The crossing into Nighteyes has left him with gaps in his memory and a preference for the simpler shape; Burrich, lamed and driven out of Buckkeep, drinks and bullies him back into humanity anyway. Chade comes with news: Regal is crowned and sitting inland at Tradeford, the coastal duchies have been left to face the Red Ships alone, Buckkeep is stripped and Patience is holding its town together on nothing, and Kettricken is in the Mountain Kingdom. Both men want Fitz to go to the queen and serve the Farseer line. Fitz wants Regal dead. The argument ends the household: he takes almost nothing, leaves Burrich behind, and starts inland with only Nighteyes for company.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Fitz works his way inland by hiring out as a labourer and a horse-hand, keeping his name and his wolf hidden. The further from the coast he goes, the stranger the country becomes to him: the inland duchies have never seen a Red Ship, are prospering under Regal, and believe the coast's suffering is exaggerated. He learns that Regal has made the Wit a capital crime and that people suspected of it are being hunted and killed. He falls in with the minstrel Starling Birdsong, who is travelling the same roads looking for an event worth a song, works out far too much about him, and attaches herself to him rather than turning him in. Fitz's Skill remains unreliable, opening at the wrong moments and letting Regal's coterie feel for him, and he dulls it with a herb that costs him more each time.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Fitz reaches Tradeford, the inland seat where Regal has installed his court with everything he took from Buckkeep. He gets himself hired into the grounds and spends days learning the household, the guard rota and the king's habits, and confirming that the coterie is the real power around Regal. He also sees at close hand how comfortable the inland duchies are while the coast burns. Working alone, half-broken and dependent on a wolf who does not understand vengeance, he sets up his attempt on the king, knowing he is unlikely to survive it and no longer greatly caring.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The attempt on Regal fails. Fitz kills men trying to reach him, is badly hurt, and is saved only because Verity chooses that moment to reach him through the Skill with an overwhelming command: come to me. The compulsion is not an invitation but an order, and Fitz can neither disobey it nor stop feeling it. He escapes Tradeford barely alive and turns towards the Mountain Kingdom, driven by a summons from a man everyone believes dead. Travelling as a servant with a party of pilgrims bound for the mountains, he falls in with an old woman named Kettle, who plays a difficult stone game, asks questions that are far too well aimed, and plainly knows things about the Skill that no devout old traveller should know.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The road to the Mountain Kingdom is dangerous in its own right: Regal has soldiers on it, the border is effectively at war because he blames the Mountains for Verity's disappearance, and Will hunts Fitz through the Skill whenever his guard drops. Fitz, Starling, Kettle and Nighteyes get through, and at Jhaampe Fitz finds Kettricken and the Fool, both of whom have mourned him. Kettricken is preparing to go in search of Verity herself, with a map, a handful of people and the Mountain conviction that a ruler is spent for the good of the people. The Fool, out of Buckkeep and out of motley, speaks plainly for the first time about what he believes himself to be, a White Prophet sent to shift the world onto a better course, and about Fitz as the Catalyst through whom the shifting happens.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The party sets out beyond the mountains along an ancient road built by a vanished people, following the map Verity used. The road itself is made of a stuff that drags at the mind and pulls a Skill user out of himself, and travellers on it lose their way in their own heads. Kettle, who has been quietly protecting Fitz from the coterie's attacks, admits what she is: she belonged to a coterie of her own an age ago, has lived far longer than a woman should, and carries a debt she came here to pay. She teaches Fitz to guard his mind with the stone game. The road brings them to a quarry of black stone littered with half-finished dragons, and there they find Verity: alive, filthy, hollowed out, and carving.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Elderlings of Six Duchies legend are dragons of black stone, and they are made: a carver fills the stone with his own memories and life until it wakes and flies. Verity has been at his for a year, has poured most of himself into it and has little left over for his wife or his kingdom. Kettricken, who crossed the mountains for him, is met by a man who can barely remember how to want her. While the party works and guards the quarry, Fitz forces his damaged Skill open and reaches for the people he left behind, and finds Molly in a cottage with a baby daughter and with Burrich, who has taken the place Fitz vacated by dying. He cannot argue, cannot appear and cannot even be angry with justice, and it very nearly finishes him.",
+            "through": {
+              "chapter": 34
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Farseer line needs an heir and Verity has nothing human left to give. With Kettricken's consent, he takes Fitz's body for a night through the Skill and lies with his wife in it, and Kettricken conceives. Fitz is left to live with having been used as an instrument one more time, this time to the marrow. Regal's coterie closes on the quarry, and Will comes in person as well as through the Skill; the party's defences are the stone game, Kettle's old knowledge and Verity's failing attention. Kettle finishes settling her ancient debt with a dragon of her own. Verity carves on towards an end that will not leave a man behind, and the quarry becomes the last battlefield of the civil war.",
+            "through": {
+              "chapter": 38
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Verity spends the last of himself, and his dragon rises and flies with him in it. In the fighting at the quarry Fitz kills Will and strips the coterie's Skill knowledge out of him as he dies; the rest of Regal's coterie is broken. Fitz then reaches Regal's mind directly and rewrites it, binding him to serve Queen Kettricken faithfully and removing his hatred of Fitz altogether, which ends the civil war without another battle. Fitz goes on to wake the old stone dragons sleeping across the Six Duchies, feeding them memories of his own life to quicken them, and the dragons sweep the Red Ships from the coast and end the raiding war. Kettricken returns to Buckkeep as reigning queen with Verity's heir on the way, to rebuild a stripped kingdom with Chade and Patience beside her. Fitz makes the last choice himself: Molly has a daughter and a life with Burrich, and he will not walk back into it. He parts from the Fool, keeps Nighteyes, and vanishes to live quietly and write down the history of a war he fought as a dead man.",
+            "through": {
+              "chapter": 42
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "assassins-quest"
+      }
+    },
     "azarinth-healer-book-five": {
       "characters": {
         "characters": [
