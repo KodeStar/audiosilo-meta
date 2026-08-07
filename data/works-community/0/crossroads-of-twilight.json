@@ -1271,6 +1271,210 @@
         "work": "crucible"
       }
     },
+    "cry-the-beloved-country": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Umfundisi"
+            ],
+            "description": "An elderly Anglican priest serving the rural Zulu community of Ndotsheni. Humble, conscientious, and rooted in his valley, he has little money and limited experience of the city. A letter concerning his sister Gertrude calls him to Johannesburg, where he also hopes to find his missing son Absalom.",
+            "id": "stephen-kumalo",
+            "name": "Stephen Kumalo",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Stephen Kumalo's patient wife, who remains in Ndotsheni when he travels to Johannesburg. She shares the worry caused by the long silence from their son and sacrifices the household's small savings to support her husband's journey.",
+            "id": "mrs-kumalo",
+            "name": "Mrs. Kumalo",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A compassionate priest at the Mission House in Sophiatown. His letter brings Kumalo to Johannesburg, where he becomes the older man's guide through unfamiliar neighborhoods and institutions while helping him search for his scattered family.",
+            "id": "theophilus-msimangu",
+            "name": "Theophilus Msimangu",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Kumalo's younger sister, who left Ndotsheni for Johannesburg with her small son and ceased writing home. A letter reporting that she is ill becomes the immediate reason for Kumalo's journey.",
+            "id": "gertrude-kumalo",
+            "name": "Gertrude Kumalo",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Stephen Kumalo's only son. He left Ndotsheni for Johannesburg and stopped sending news, leaving his parents unsure of his address, employment, or welfare. Finding him becomes the central purpose of Kumalo's search in the city.",
+            "id": "absalom-kumalo",
+            "name": "Absalom Kumalo",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A generous woman who boards Kumalo in Sophiatown. Her orderly, religious household gives him a place of safety amid the city's confusion, and she later welcomes vulnerable members of his family as well.",
+            "id": "mrs-lithebe",
+            "name": "Mrs. Lithebe",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Stephen Kumalo's brother, once a carpenter and now a prosperous Johannesburg shopkeeper and forceful political speaker. He has rejected the church and the authority of hereditary custom, believing economic power and organized labor offer a stronger route to justice.",
+            "id": "john-kumalo",
+            "name": "John Kumalo",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A white Johannesburg engineer and prominent advocate for racial justice, killed during a burglary at his home. His death shocks the city and connects the Kumalo family's search to the neighboring Jarvis family in Ndotsheni.",
+            "id": "arthur-jarvis",
+            "name": "Arthur Jarvis",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A pregnant teenage girl living alone after Absalom, her partner, disappeared. She has little family support and has already been abandoned by other men. Kumalo finds her during his search and asks what future she wants for herself and her child.",
+            "id": "absaloms-girlfriend",
+            "name": "Absalom's Girlfriend",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A respected white attorney who agrees to defend Absalom without charging a fee. He regards the case as one that demands service for the sake of justice and carefully distinguishes Absalom's position from that of the other accused men.",
+            "id": "mr-carmichael",
+            "name": "Mr. Carmichael",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A white farmer whose land overlooks the same drought-stricken valley as Ndotsheni. Reserved and politically conservative, he has had limited contact with his son Arthur's public work and begins the story more familiar with the condition of his fields than with the lives of the Black families below.",
+            "id": "james-jarvis",
+            "name": "James Jarvis",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "James Jarvis's wife and Arthur's mother. She shares her husband's rural life and his shock when news from Johannesburg reaches their farm, then travels with him to support their widowed daughter-in-law and grandchildren.",
+            "id": "margaret-jarvis",
+            "name": "Margaret Jarvis",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Arthur Jarvis's young son. Curious and direct, he visits Kumalo's home on horseback, surprises the priest by speaking some Zulu, and asks candid questions about the valley and its children.",
+            "id": "arthur-jarvis-son",
+            "name": "Arthur Jarvis's Son",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Napoleon Letsitsi"
+            ],
+            "description": "A young agricultural demonstrator sent to Ndotsheni to restore the exhausted land. Trained in farming methods and confident in his mission, he plans contouring, cattle management, and other changes that will demand sacrifices from the villagers.",
+            "id": "napoleon-letsitsi",
+            "name": "Napoleon Letsitsi",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "cry-the-beloved-country"
+      },
+      "recaps": {
+        "ending": "Kumalo returns to Ndotsheni with Absalom's pregnant wife and Gertrude's son, but without Gertrude, who disappears before the journey. Absalom remains under sentence of death. In the valley, Kumalo tries to confront failing soil, hunger, and the community's loss of hope. James Jarvis, transformed by learning about Arthur's convictions, quietly begins helping: milk reaches the children, a dam is planned, and the agricultural demonstrator Napoleon Letsitsi arrives to restore the land. Jarvis's young grandson forms a warm connection with Kumalo, while the death of Margaret Jarvis brings the two grieving families into further sympathy. On the night before Absalom's execution, Kumalo climbs the mountain above the valley and keeps vigil. At dawn, as his son is due to die in Pretoria, he prays for forgiveness and for his country. The novel closes with renewal beginning in Ndotsheni but South Africa's larger liberation still deferred; private compassion has crossed the racial boundary, while the unjust order that damaged both families remains.",
+        "in_short": "The Reverend Stephen Kumalo leaves his impoverished valley for Johannesburg to find his sister Gertrude and his missing son Absalom. Guided by the priest Msimangu, he reunites with Gertrude but discovers that Absalom has killed Arthur Jarvis, a white reformer and the son of a neighboring farmer. Absalom admits firing in fear during a burglary and is sentenced to death; his companions avoid conviction. Arthur's father, James Jarvis, reads his son's writings and begins to understand the racial injustice Arthur opposed. Kumalo returns home with Absalom's pregnant wife and Gertrude's child, while Gertrude disappears. Jarvis then helps the drought-stricken Black community with milk, plans for a dam, and an agricultural adviser. On the eve of Absalom's execution, Kumalo keeps vigil above Ndotsheni. Dawn brings his son's death and the first signs of local renewal, but the country's freedom remains unrealized.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In the drought-damaged valley of Ndotsheni, the Reverend Stephen Kumalo and his wife receive a letter from the Johannesburg priest Theophilus Msimangu. Kumalo's sister Gertrude is ill, and Kumalo must travel to her even though the family has heard nothing from their son Absalom or Stephen's brother John. The journey consumes savings intended for Absalom's education. Johannesburg overwhelms Kumalo: a thief takes advantage of him at the station, and the scale and pace of the city expose how far he is from home. Msimangu welcomes him, explains that Gertrude has fallen into drink and sex work, and warns that the city's social order is breaking families apart. With Msimangu's help, Kumalo confronts Gertrude. She agrees to leave her present life and return with her young son to the safety of Mrs. Lithebe's house. Kumalo's first recovery of a family member gives him hope, but the search for Absalom has barely begun.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kumalo finds his brother John, now a successful shopkeeper and influential political orator. John has abandoned the church and traditional authority, arguing that money and labor power govern Johannesburg, but his bold public voice stops short of risks that might cost him comfort or freedom. The brothers begin tracing their sons, who had been together. Their search passes through factories, reformatories, a bus boycott, and a makeshift settlement created by the city's housing shortage. A young white reformatory worker says Absalom had seemed to improve and left because a girl was pregnant, yet he has vanished again. Before Kumalo can find him, newspapers report that Arthur Jarvis, an engineer known for working toward racial justice, has been shot dead during a burglary. Arthur is the son of James Jarvis, the white farmer whose land lies above Ndotsheni. Fear spreads across Johannesburg as Kumalo and Msimangu recognize that the search is moving toward danger.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After a brief retreat with Msimangu to Ezenzeleni, Kumalo learns that police have arrested Absalom for Arthur Jarvis's murder. Absalom admits entering the house with his cousin and another young man. Startled by Arthur, he fired a revolver he says he carried for protection and did not intend to kill. He also confesses that he then abandoned the weapon and tried to conceal his involvement. Kumalo meets the pregnant girl Absalom had left behind. Her history is unstable, but she agrees to marry Absalom and join the Kumalo household. The lawyer Mr. Carmichael undertakes Absalom's defense without a fee, while the other accused men deny being at the scene. Kumalo is torn between love, shame, and the knowledge that his son must answer truthfully. In Ndotsheni, meanwhile, James and Margaret Jarvis receive word of Arthur's death and leave their farm for Johannesburg, beginning the bereaved father's own journey into the life his son led.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In Johannesburg, James Jarvis meets Arthur's widow, children, and friends and enters his son's study. Reading Arthur's unfinished essays, he encounters a sustained indictment of South Africa's racial order and realizes how little he understood his son's moral and political commitments. The murder trial begins. Absalom maintains that he fired from fear and had no wish to kill, while his cousin and the third defendant deny accompanying him. The prosecution must decide whether the evidence proves a shared criminal plan. Outside the courtroom, public arguments over crime, labor, segregation, and a new gold discovery show a society eager for wealth but unwilling to face the conditions producing fear and poverty. Jarvis continues reading rather than turning away, allowing his grief to open questions he had previously kept at a distance. The two fathers have not yet formed a relationship, but both are being changed by the same death from opposite sides of the racial divide.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The court accepts that Absalom fired the fatal shot and sentences him to death, finding no sufficient grounds for mercy. The other two defendants are acquitted because their presence has not been proved beyond doubt. John Kumalo protects his own son and reacts defensively when Stephen exposes the fear beneath John's public courage. Absalom marries his pregnant girlfriend in prison and says farewell to his father before being transferred to await execution. Msimangu gives Kumalo his savings after deciding to enter a religious community, an act of generosity that helps restore Kumalo's faith in human goodness. As the family prepares to leave Johannesburg, Gertrude speaks of becoming a nun but then disappears, leaving her son behind. Kumalo returns to Ndotsheni with the boy and Absalom's young wife. He comes home burdened by his son's sentence and his sister's loss, yet responsible for a larger household and determined to serve a valley whose physical ruin reflects its fractured families.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Back in Ndotsheni, Kumalo tries to address drought, eroded soil, sick children, and failed leadership. James Jarvis, changed by Arthur's writings and his own grief, begins offering practical help without seeking recognition. Milk is sent for the children; plans develop for a dam; and Napoleon Letsitsi arrives to teach farming methods intended to restore the valley, though these reforms will require difficult changes in grazing and cattle ownership. Arthur's young son visits Kumalo, speaks Zulu with him, and takes a direct interest in the village. When Margaret Jarvis dies, Kumalo sends sympathy, and James makes clear that the assistance will continue. On the night before Absalom's scheduled execution, Kumalo climbs a mountain and keeps vigil alone. He prays for his son, for forgiveness, and for the divided country. Dawn arrives at the hour Absalom is to die. Ndotsheni now has the beginnings of material renewal and a new bond across racial lines, but the wider nation still waits for justice and release from fear.",
+            "through": {
+              "chapter": 36
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "cry-the-beloved-country"
+      }
+    },
     "culmination-a-fantasy-litrpg-adventure": {
       "characters": {
         "characters": [

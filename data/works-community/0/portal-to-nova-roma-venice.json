@@ -2032,6 +2032,294 @@
         "work": "prince-caspian"
       }
     },
+    "prometheus-bound": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A Titan chained in a remote wilderness on Zeus's orders. He has defied the new ruler of the gods by helping mortals, most famously by giving them fire, and he meets punishment with fierce certainty that Zeus will one day need knowledge only he possesses.",
+            "id": "prometheus",
+            "name": "Prometheus",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The divine smith commanded to fasten Prometheus to the rock. He pities the prisoner and dislikes his task, but fear of Zeus and pressure from his escorts overcome his reluctance.",
+            "id": "hephaestus",
+            "name": "Hephaestus",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Strength"
+            ],
+            "description": "A harsh agent of Zeus who supervises Prometheus's binding. He treats obedience to the new divine order as absolute and mocks both the captive and Hephaestus's compassion.",
+            "id": "kratos",
+            "name": "Kratos",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Force"
+            ],
+            "description": "The silent companion of Kratos who helps bring Prometheus to the place of punishment as an embodiment of Zeus's coercive power.",
+            "id": "bia",
+            "name": "Bia",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Oceanids"
+            ],
+            "description": "The daughters of Oceanus, who arrive as a chorus after hearing the blows used to secure Prometheus. They grieve over his suffering, question him about his conflict with Zeus, and remain sympathetic witnesses to his resistance.",
+            "id": "chorus-of-oceanids",
+            "name": "Chorus of Oceanids",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elder divine power and father of the Oceanids. He visits Prometheus offering sympathy and proposing to plead with Zeus, though his caution and willingness to accommodate the new ruler contrast with Prometheus's refusal to submit.",
+            "id": "oceanus",
+            "name": "Oceanus",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A mortal woman driven across the world in torment after Zeus desired her and Hera turned her into a wandering cow pursued by a stinging gadfly. She reaches Prometheus seeking an explanation of her sufferings and knowledge of what lies ahead.",
+            "id": "io",
+            "name": "Io",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The messenger of Zeus, sent to force Prometheus to disclose a prophecy that threatens the ruler's future. His polished authority turns to threats when the prisoner refuses to answer.",
+            "id": "hermes",
+            "name": "Hermes",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "prometheus-bound"
+      },
+      "recaps": {
+        "ending": "Hermes orders Prometheus to reveal the marriage that, according to his secret prophecy, could cost Zeus his power. Prometheus refuses even when Hermes warns that Zeus will answer with a storm, bury him under the rock, and later send an eagle to consume his liver repeatedly. The Oceanids are urged to leave but choose to remain beside him. Zeus then makes good on the immediate threat: thunder, lightning, wind, and convulsion engulf the scene, and Prometheus descends into the abyss still protesting the injustice done to him. He remains unbroken and keeps the prophecy to himself. The drama therefore closes without reconciliation or release; the prisoner suffers a fresh punishment, Zeus's rule remains secure for the moment, and the knowledge that could endanger that rule remains Prometheus's only leverage.",
+        "in_short": "Zeus punishes the Titan Prometheus for aiding humanity, especially for stealing fire, by having Hephaestus chain him to a rock under the supervision of Kratos and Bia. Prometheus tells the sympathetic Oceanids how his gifts taught mortals the arts needed for civilized life, and he rejects Oceanus's offer to seek a compromise. The tormented wanderer Io arrives, and Prometheus recounts both her future trials and the eventual importance of her descendants. He also knows of a marriage that could produce a son capable of overthrowing Zeus. When Hermes demands that he disclose the secret, Prometheus refuses. Zeus answers with a violent storm that casts Prometheus and the Oceanids into the depths. The play ends with Prometheus still captive and suffering, but neither submissive nor deprived of the dangerous knowledge that gives him hope of an eventual change in power.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "At the edge of the world, Kratos and Bia bring Prometheus to a barren rock where Hephaestus reluctantly chains him at Zeus's command. Prometheus has angered the new ruler by protecting mortals and giving them fire. Once his guards leave, a chorus of Oceanids hears his lament and comes to learn why he is being punished. Prometheus explains that he helped Zeus defeat the older divine regime but opposed Zeus's plan to destroy humanity. His gifts gave mortals knowledge, practical arts, and hope. Oceanus offers to intercede, but Prometheus sends him away rather than expose him to danger. Io then arrives in the midst of her divinely imposed wandering. Prometheus describes the hardships still before her and says that one of her distant descendants will eventually free him. He also reveals that he knows of a marriage capable of producing a child stronger than Zeus. Hermes appears and demands the prophecy's details. Prometheus refuses despite threats of harsher torment. The Oceanids stay with him as a storm sent by Zeus tears open the earth and hurls the captive into the depths. Prometheus ends the play still defiant, still imprisoned, and still holding the secret Zeus wants.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "prometheus-bound"
+      }
+    },
+    "prometheus-bound-aeschylus": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Power"
+            ],
+            "description": "A harsh personification of Zeus's authority who escorts Prometheus to a remote mountainside for punishment. He orders Hephaestus to fasten the prisoner securely and treats obedience to the new ruler of the gods as the only acceptable course.",
+            "id": "kratos",
+            "name": "Kratos",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Force"
+            ],
+            "description": "A silent personification of force who accompanies Kratos and Hephaestus during Prometheus's imprisonment. Bia's presence reinforces that Zeus's sentence is being imposed through overwhelming physical power.",
+            "id": "bia",
+            "name": "Bia",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "God of Fire"
+            ],
+            "description": "The divine smith ordered to chain Prometheus to the rock. He pities a fellow god and dislikes the task, but fear of defying Zeus makes him carry out the sentence under Kratos's supervision.",
+            "id": "hephaestus",
+            "name": "Hephaestus",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Forethinker"
+            ],
+            "description": "A Titan condemned by Zeus for helping humanity, especially by stealing fire and placing it in mortal hands. Chained in a wilderness at the edge of the world, he endures the sentence defiantly and possesses knowledge about Zeus's future that the ruler of the gods does not have.",
+            "id": "prometheus",
+            "name": "Prometheus",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Zeus"
+            ],
+            "description": "The newly established ruler of the gods. He never appears directly, but his orders govern Prometheus's imprisonment. Those enforcing the punishment regard his authority as absolute, while Prometheus describes his rule as young, severe, and insecure.",
+            "id": "zeus",
+            "name": "Zeus",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Daughters of Oceanus"
+            ],
+            "description": "Sea nymphs who travel to the isolated rock after hearing Prometheus's cries. They pity him, listen to his account of the conflict among the gods, and remain close even when his defiance places them in danger.",
+            "id": "chorus-of-oceanids",
+            "name": "Chorus of Oceanids",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ocean"
+            ],
+            "description": "An elder Titan and father of the Oceanids who comes to offer Prometheus advice and practical help. He believes tact and submission are safer than open resistance and proposes speaking to Zeus on the prisoner's behalf.",
+            "id": "oceanus",
+            "name": "Oceanus",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A princess of Argos driven across the world in the form of a cow, tormented by a stinging insect and haunted by a watchman who was set over her. Her suffering began after Zeus desired her and Hera responded with jealous persecution. She reaches Prometheus hoping that his prophetic knowledge can explain what remains ahead.",
+            "id": "io",
+            "name": "Io",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Messenger of Zeus"
+            ],
+            "description": "Zeus's divine messenger, sent to force Prometheus to reveal the marriage that could threaten Zeus's rule. He offers relief if Prometheus cooperates and warns of a violent new punishment when the prisoner refuses.",
+            "id": "hermes",
+            "name": "Hermes",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "prometheus-bound-aeschylus"
+      },
+      "recaps": {
+        "ending": "Hermes arrives with Zeus's demand that Prometheus identify the marriage destined to produce a son stronger than his father. Prometheus refuses, believing that Zeus will eventually need this secret and that no threat can make his present suffering worse. Hermes warns that Zeus will shatter the mountain with a thunderbolt, bury Prometheus, and later send an eagle to consume his liver repeatedly. Prometheus still will not yield. The Oceanids are told to withdraw but choose to remain beside him. The predicted storm begins: wind, thunder, lightning, and the convulsion of the earth engulf the rock. Prometheus calls on the surrounding world to witness the injustice as he and the faithful chorus are swallowed into the depths. He remains imprisoned and unbroken, his future liberation by a descendant of Io and his eventual settlement with Zeus still unrealized.",
+        "in_short": "Zeus punishes the Titan Prometheus for giving fire and other forms of knowledge to humanity. Kratos and Bia compel the reluctant smith-god Hephaestus to chain him to a remote cliff. Prometheus tells the sympathetic Oceanids that he once helped Zeus defeat the older Titans but opposed Zeus's plan to destroy mortals. He also knows a secret about a marriage that could cost Zeus his throne. Oceanus urges compromise, but Prometheus rejects his offer to intercede. The tormented wanderer Io arrives, transformed into a cow after attracting Zeus's desire and Hera's anger. Prometheus foretells her long journey, her eventual restoration in Egypt, and the birth of a line that will include the hero who frees him. Hermes then demands the dangerous marriage prophecy. Prometheus refuses despite threats, and the Oceanids refuse to abandon him. Zeus sends a storm that drives Prometheus and his companions beneath the earth, leaving the conflict unresolved.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "At Zeus's command, Kratos and Bia bring Prometheus to a desolate mountainside. Hephaestus must fasten the Titan to the rock with unbreakable restraints. Hephaestus pities Prometheus and dreads the long exposure and isolation ahead, but Kratos insists that mercy toward Zeus's enemy is disobedience. Once they leave, Prometheus calls on the natural world to witness his punishment. He explains that Zeus has sentenced him for helping mortal beings, above all by stealing fire for them. He suffers physically but also knows something about Zeus's future that may eventually force the ruler of the gods to seek his help.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Oceanids arrive after hearing Prometheus's distress and form a sympathetic chorus around him. Prometheus recounts that he supported Zeus in the struggle against the older Titans because strategy, not brute force, was needed for victory. After Zeus gained power, however, he planned to eliminate humanity. Prometheus intervened, gave mortals hope, fire, and the beginnings of practical arts, and was punished for placing limits on Zeus's design. He tells the Oceanids that his foresight extends beyond his chains: Zeus is vulnerable to a future marriage, and only Prometheus knows how the resulting danger can be avoided. He expects that this knowledge will one day make reconciliation necessary.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Oceanus visits and advises Prometheus to control his anger toward the new divine ruler. He offers to appeal to Zeus for leniency, but Prometheus suspects that the intervention would only expose Oceanus to danger and sends him away. Prometheus then expands on what he did for humanity. Mortals once lived without understanding the world around them; he taught them to reason about time, number, language, building, sailing, medicine, divination, and the use of metals. His account presents the gift of fire as part of a broader transfer of knowledge that made organized human life possible. The Oceanids admire the achievement but continue to fear what his open defiance will bring.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Io reaches the rock during her forced wandering. Once a princess of Argos, she was pursued by Zeus, changed into a cow, watched by Argus, and driven onward by a gadfly through Hera's jealousy. She asks Prometheus when her suffering will end. He describes a long route through distant lands before she reaches Egypt, where Zeus will restore her human form and she will bear a son. Her descendants will include a group of women who flee unwanted marriages and, generations later, the hero Heracles, who will release Prometheus. Prometheus also tells Io that Zeus faces overthrow if he enters a particular marriage. Still tormented, Io rushes away to continue the journey he has foretold.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Hermes arrives as Zeus's messenger and demands the identity of the woman whose marriage could produce a son stronger than his father. Prometheus refuses to surrender the secret, dismissing both Hermes's promises and his threats. Hermes warns that Zeus will break the mountain with lightning, bury Prometheus for a long period, and later send an eagle to renew his pain by feeding on his liver. The Oceanids are ordered to leave before the punishment begins, but they reject safety bought by abandoning their companion. A violent storm gathers, the earth shakes, and thunder and lightning engulf the cliff. Prometheus calls on the world to witness what is being done as he and the loyal Oceanids descend into the depths, still withholding the knowledge Zeus needs.",
+            "through": {
+              "chapter": 5
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "prometheus-bound-aeschylus"
+      }
+    },
     "promise-of-the-witch-king": {
       "characters": {
         "characters": [
