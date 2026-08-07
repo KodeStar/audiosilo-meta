@@ -387,6 +387,186 @@
         "work": "the-sparrow"
       }
     },
+    "the-spy-who-came-in-from-the-cold": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A British intelligence officer in his early fifties, head of the Berlin station, running agents into East Germany. Hard, blunt and unsentimental, with a drinker's habits and no talent for office life, he has spent his career in the field and has watched his network in the East destroyed one man at a time. He despises cant about the work and expects nothing from it beyond survival and the occasional professional satisfaction. The book opens with him waiting at a Berlin checkpoint for the last of his agents to cross.",
+            "id": "alec-leamas",
+            "name": "Alec Leamas",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Leamas's best East German agent, a man he recruited and ran for years and regards as a friend as much as a source. He has been getting material out of East Berlin at increasing risk, and the operation to bring him across the checkpoint has become urgent.",
+            "id": "karl-riemeck",
+            "name": "Karl Riemeck",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The head of the British service, known only by his title, an ageing man of donnish manners who keeps his office overheated and speaks in evasions and euphemisms. He never states a purpose directly, and the officers who work for him are told only as much of an operation as their part requires. He proposes to Leamas one last piece of work before retirement.",
+            "id": "control",
+            "name": "Control",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A short, plump, bespectacled officer of the service, mild in manner, badly dressed and easy to underestimate. He appears at the edges of the operation without any stated role in it, and takes a quiet, apparently personal interest in the people it touches.",
+            "id": "george-smiley",
+            "name": "George Smiley",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The operational head of the East German intelligence service, the Abteilung, and the man responsible for the destruction of Leamas's network. Cold, physically formidable and entirely without scruple, he served in London under commercial cover, where he killed to protect himself and escaped before he could be taken. His record includes an anti-Semitism his colleagues note and a war-time past he does not discuss. For Leamas he is both a professional adversary and a personal one.",
+            "id": "hans-dieter-mundt",
+            "name": "Hans-Dieter Mundt",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A young librarian in Bayswater, idealistic, lonely and a member of the local Communist Party branch, which she joined out of a straightforward wish for a fairer world rather than any interest in the politics of espionage. She meets Leamas when he takes a job at the library, is drawn to him without understanding anything about him, and asks almost nothing about his past. Her honesty and her literal-mindedness are absolute.",
+            "id": "liz-gold",
+            "name": "Liz Gold",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An ingratiating, well-dressed Englishman who attaches himself to Leamas after his release from prison, claiming an old acquaintance and offering hospitality, money and sympathy. He is a talent-spotter, working for people he does not name.",
+            "id": "ashe",
+            "name": "Ashe",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A smoother and harder operator to whom Ashe passes Leamas: a recruiter who deals in the practical arrangements of defection and does not pretend to be doing anything else. He handles Leamas's departure from England.",
+            "id": "kiever",
+            "name": "Kiever",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A patient, professional interrogator, Russian by manner and training, who debriefs Leamas over several days in a house in the Netherlands. He is methodical, unhurried and interested in exactly the details a good intelligence officer would want, and he pays properly for what he is told.",
+            "id": "peters",
+            "name": "Peters",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The deputy head of the East German service and its head of counter-intelligence, a small, dark, quick-minded Jew whose family suffered under the Nazis and who is a committed communist for reasons he can argue at length. He takes over Leamas's debriefing in East Germany and is a far more dangerous questioner than Peters: sceptical, imaginative and willing to follow an idea wherever it leads. He detests his own service's operational chief and is looking for the evidence to destroy him.",
+            "id": "jens-fiedler",
+            "name": "Jens Fiedler",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The woman who presides over the secret tribunal convened by the Praesidium, formal and exact in her conduct of the proceedings, concerned that the forms of the hearing be observed whatever its outcome.",
+            "id": "the-president",
+            "name": "The President of the Tribunal",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An advocate who appears for the defence at the tribunal: mild, courteous and apparently harmless, a lawyer rather than an intelligence officer. He questions gently and appears to concede much, and has prepared his case with a thoroughness nobody in the room has anticipated.",
+            "id": "karden",
+            "name": "Karden",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-spy-who-came-in-from-the-cold"
+      },
+      "recaps": {
+        "ending": "The tribunal ends with Fiedler discredited and arrested and Mundt cleared, and Leamas and Liz are held to be executed. Mundt himself takes them out of the prison and puts them in a car with instructions for crossing the Wall. In the car Leamas tells Liz the truth: Mundt has been a British agent for years, and every stage of the operation, including Leamas's disgrace, his recruitment and his lies, was designed to make the East Germans destroy Fiedler, the one man closing in on him. Liz herself was chosen and used because her honest evidence would be believed. Liz refuses to accept a survival bought this way, and Leamas has no defence to offer beyond the trade he has spent his life in. At the Wall, with the escape arranged from the Western side, Liz climbs the ladder and is shot by the guards while Leamas is already at the top and being called across by his own people. He goes back down to her, and is shot dead beside her body. Fiedler is destroyed, Mundt survives in place with the service's protection, and the operation succeeds exactly as it was designed to.",
+        "in_short": "Alec Leamas, the British service's Berlin station head, loses the last agent of his network at a checkpoint and is called home. Control offers him a final operation against Hans-Dieter Mundt, the East German operations chief who destroyed his network. Leamas plays out a public decline into drink, debt, petty employment at a library and prison, along the way falling in with Liz Gold, a young communist librarian. On release he is recruited by East German talent-spotters, debriefed in Holland and taken East, where Jens Fiedler, the service's counter-intelligence chief, uses his information to accuse Mundt of being a British agent. Mundt arrests them both, but Fiedler forces the case to a secret tribunal. There Mundt's advocate produces Liz, brought over on a party exchange, whose truthful answers about a stranger paying her rent expose Leamas's whole story as a British construction. Fiedler is destroyed and Mundt is cleared. Mundt then frees Leamas and Liz, and Leamas realises he was never meant to bring Mundt down: Mundt is London's agent, and the operation existed to protect him. At the Wall, Liz is shot, and Leamas climbs back down to die with her.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Alec Leamas, head of the British service's Berlin station, waits at a checkpoint for Karl Riemeck, the last surviving agent of a network that the East German service has dismantled over the past year. Riemeck is shot dead in the open ground before he can cross. Leamas returns to London expecting to be retired, and blames Hans-Dieter Mundt, the operational chief of the East German Abteilung, a man who once worked in London and killed his way out of it. Control, the head of the service, instead offers him one more job: to stay out in the cold a little longer and go after Mundt. The method is to make Leamas himself look available. He is moved to a dead-end desk, drinks openly, quarrels with colleagues, is eased out of the service without a pension, and sinks into shabby lodgings and debt. Taking a job at a small psychical research library, he meets Liz Gold, a young librarian and member of the local Communist Party branch, and they become lovers. She knows nothing of his past and does not ask.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Leamas's decline is played out in public. His debts mount, his temper is uncontrolled, and he assaults a grocer who refuses him credit, for which he is sent to prison for several months. He tells Liz nothing except that she must not look for him afterwards. In prison his story hardens into a matter of record: a bitter, discarded intelligence officer with no money, no friends and a grievance. On his release he is met almost at once by Ashe, an ingratiating Englishman claiming a chance acquaintance, who feeds him, lends him money and hands him on to a harder man named Kiever. The approach is exactly what the operation was designed to attract, and Leamas lets himself be drawn while appearing to resist. Kiever moves him quickly out of England to a comfortable house in the Netherlands.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the Netherlands Leamas is debriefed over several days by Peters, a patient professional who takes him through his career in detail and pays for it. Leamas gives away real tradecraft and, buried in it, the material Control planted: evidence of large sums paid out of London to a source in the East, of accounts and travel that only a very senior man could have used, and of an operation whose files were closed to him. He offers no conclusion and pretends not to see one. In London, Liz is left behind and is visited by a mild, plump stranger who takes an interest in her and pays her outstanding rent. Leamas's story is checked and found good, and the arrangement changes: rather than being resettled, he is flown out of Holland and taken East, where Peters hands him over and disappears from the case.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In East Germany Leamas is housed in the country and questioned by Jens Fiedler, the Abteilung's counter-intelligence chief, a sharp, argumentative communist who wants to know not only what Leamas did but what it meant. Fiedler reaches the conclusion the material was designed to produce: that the payments and the protected operation point to Mundt, his own chief, as a British agent, and that Leamas is too incurious to have understood what he was carrying. Fiedler puts his accusation to the Praesidium. Mundt strikes first, arresting both of them. Leamas is beaten and interrogated, and Fiedler is held as a conspirator. But Fiedler has support at the top of the party, and the matter cannot simply be buried: he is released and a secret tribunal is convened to decide the charge against Mundt, with Leamas as the principal evidence.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Meanwhile Liz Gold's party branch selects her for a goodwill exchange visit to East Germany, an unlooked-for honour that takes her to a small town and then, without explanation, into custody. At the tribunal Fiedler lays out the case against Mundt, and it holds: the payments, the closed operation and Leamas's account fit together. Then Mundt's advocate, Karden, calls Liz Gold as a witness. Truthfully and without understanding what she is doing, she describes the man who came to see her after Leamas disappeared, the rent that was paid for her and the trip arranged for her. Her evidence proves that Leamas was still in touch with his service throughout the period of his supposed disgrace, and that his defection was an operation. Everything Fiedler built collapses into a British plot to frame Mundt, with Fiedler as its instrument, and Leamas, seeing Liz in the room, understands that his own side put her there.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The tribunal clears Mundt and condemns Fiedler as his accuser, and Leamas and Liz are held to be killed. Mundt then comes for them himself, releases them and gives them a car and instructions for crossing the Wall at a prepared point. In the car Leamas tells Liz what he has finally worked out: Mundt is a British agent, recruited after his London operation went wrong, and the whole enterprise, including Leamas's ruin and every lie he told, existed to destroy Fiedler, who had come too close to the truth. Liz was selected and used precisely because her honesty could not be shaken. Liz is appalled and refuses to accept it; Leamas can only answer with the reality of the trade. At the Wall he climbs first and is called over by the men waiting on the Western side, but Liz is shot from the watchtowers as she follows. Leamas climbs back down into the searchlights to be with her and is shot dead beside her. Fiedler is finished, Mundt is safe in his post, and the operation has done exactly what it was built to do.",
+            "through": {
+              "chapter": 26
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-spy-who-came-in-from-the-cold"
+      }
+    },
     "the-stand": {
       "characters": {
         "characters": [
@@ -614,6 +794,209 @@
           }
         ],
         "work": "the-stand"
+      }
+    },
+    "the-stone-sky": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The woman who was Damaya, then Syenite, and is now Essun. She wakes in Castrima weeks after opening the Obelisk Gate: her right arm is stone, Alabaster is dead, and the comm she saved cannot stay where it is. She is the only person alive who knows what Alabaster wanted done and roughly how to do it, and she is losing more of her body to every use of the obelisks. She also wants her daughter back, and is no longer certain those two goals point the same way.",
+            "id": "essun",
+            "name": "Essun",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The stone eater who first came to Essun as a white-eyed boy on the road, and who has been telling her story throughout. In this book he tells his own as well: where stone eaters come from, what he was before he was stone, and why he attached himself to this particular orogene. He is not neutral, he is not safe, and he is the closest thing to a friend Essun has.",
+            "id": "hoa",
+            "name": "Hoa",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The headwoman of Castrima, holding together a comm of orogenes and ordinary people who have just survived a siege and must now abandon the only shelter that made them viable. She is pragmatic, exhausted and stubborn, and she is one of the few people who argues with Essun as an equal rather than a supplicant.",
+            "id": "ykka",
+            "name": "Ykka",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Castrima's doctor, Essun's lover, and the person who keeps telling her the truth about her own body when she would rather not hear it. He came out of Tirimo with nothing and has made himself indispensable; he is clear-eyed about what Essun is doing to herself and unable to stop her.",
+            "id": "lerna",
+            "name": "Lerna",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The geomest born Binof Leadership Yumenes, who has spent her life chasing the machinery of the civilization that made the obelisks. She leaves the geode with Castrima and keeps studying, which on a march through an ash winter is a liability and occasionally the reason anyone survives.",
+            "id": "tonkee",
+            "name": "Tonkee",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Essun's daughter, who has killed her father, watched the school that took her in destroyed, and set out with the only adult who ever wanted her exactly as she is. She is one of the two people alive who can open the Obelisk Gate, and she has decided what she will do with it: end a world that grinds up children like her, cleanly and for good. She is not raging about it. She has simply thought it through and found no argument against it.",
+            "id": "nassun",
+            "name": "Nassun",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The Guardian who once collected orogene children for the Fulcrum and now travels south with Nassun, remembering almost nothing of who he was. The corestone lodged in his head keeps him alive and keeps him in constant, worsening pain, and pushes him toward harming the child he loves. He is failing, and both of them know it.",
+            "id": "schaffa",
+            "name": "Schaffa",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The gray stone eater who has attached himself to Nassun. He answers questions with questions, offers directions rather than help, and wants the Obelisk Gate opened for reasons of his own. He is very old and very patient, and nothing he says is offered without a purpose behind it.",
+            "id": "steel",
+            "name": "Steel",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A general of Rennanis, captured when its army was destroyed and taken in by Castrima on sufferance. She is a competent soldier with nothing left to command, and she attaches herself to the comm's record-keeping, deciding that what has happened here should be remembered accurately by somebody.",
+            "id": "danel",
+            "name": "Danel",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A woman brought to the tuners of Syl Anagist as an instructor: like them and not like them, able to speak aloud and to move through the city as a person rather than a component. She is meant to teach them the last thing they need in order to make the great engine work, and she teaches them a good deal more than that.",
+            "id": "kelenli",
+            "name": "Kelenli",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the six tuners of Syl Anagist, built alongside Hoa to run the machinery that will tap the planet's core. She is cautious where he is curious, and she has spent her whole existence, like him, in a facility where they are inventory rather than people.",
+            "id": "gaewha",
+            "name": "Gaewha",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An orogene who trained at the Fulcrum in the same years Damaya did, and who is a very long way from the boy she knew: he has lost his legs, most of his teeth, and any illusions about what the world does with people like him. He is with Castrima now, and he is still, by a considerable margin, one of its strongest.",
+            "id": "maxixe",
+            "name": "Maxixe",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The conductor in charge of the tuners' facility in Syl Anagist: the man who oversees their training, their testing and their maintenance. He is not cruel by the standards of his society, which is the point. He treats the tuners with a proprietary, occasionally affectionate concern, and never as anything other than equipment.",
+            "id": "gallat",
+            "name": "Gallat",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-stone-sky"
+      },
+      "recaps": {
+        "ending": "Essun reaches Corepoint, carried through the rock by Hoa, arriving stone-armed, dying and out of time. Nassun has already taken hold of the Obelisk Gate and means to bring the Moon down and end everything. They do not fight over it. Essun opens the Gate too, and instead of turning it against her daughter she uses it for what Alabaster wanted: she catches the Moon and pushes it back onto its orbit. The effort finishes what the Gate started on her body. She turns entirely to stone and dies.\n\nNassun, holding what is left of her mother, carries the work through to the end and chooses not to destroy the world after all. Schaffa's long torment ends at Corepoint; Nassun releases him and he is finally at rest. With the Moon returned, the Earth's grievance is answered: the Seasons will wind down, the ash will clear in time, and the Stillness becomes survivable in a way it has not been for forty thousand years.\n\nHoa remakes Essun as a stone eater, and the book closes with her waking into that new existence, with Hoa beside her and the whole of his account already given. Nassun survives and is carried north, where the people of Castrima, now settled in the emptied city of Rennanis, take her in. Ykka, Lerna, Tonkee, Danel and the rest inherit a world that has a future.",
+        "in_short": "Essun wakes in Castrima with a stone arm, Alabaster dead, and a comm that must abandon its geode and walk north through the ash to the emptied city of Rennanis. Nassun and Schaffa travel to Corepoint on the far side of the world, where the obelisks can be commanded directly, and where Nassun intends to open the Obelisk Gate and bring the Moon down to end all life. Between them, Hoa tells his own origin: forty thousand years ago he was a tuner, an engineered being built by the civilization of Syl Anagist to run a planetary magic engine, and that civilization's attempt to tap the Earth's core cost it the Moon and made the planet an enemy of everything living. Essun has Hoa carry her through the rock to Corepoint, arriving as Nassun takes hold of the Gate. Rather than fight her daughter, Essun opens the Gate and catches the Moon, returning it to its orbit and ending the Seasons for good. The effort turns her entirely to stone. Nassun completes the work, chooses to let the world live, and Hoa remakes Essun as a stone eater.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, in The Fifth Season and The Obelisk Gate. On the continent called the Stillness, civilizations end regularly in seismic catastrophe. Orogenes can control the movement of the earth; they are hated and hunted, and the empire of Sanze controlled the ones it caught through the Fulcrum and through the Guardians, who can shut an orogene's power off by touch.\n\nDamaya, Syenite and Essun are one woman at three ages: a girl given up by her family to a Guardian named Schaffa, a Fulcrum orogene sent on assignment with the ten-ringer Alabaster, and a middle-aged woman hiding in the small comm of Tirimo. As Syenite she escaped to the free island comm of Meov, had a son by Alabaster, and killed that son with her own hands when Guardians came for him, destroying Meov with an obelisk in the process.\n\nAlabaster later tore a rift across the continent at Yumenes, beginning a Season expected to last centuries. The same day, Essun's husband Jija beat their three-year-old son to death for being an orogene and fled south with their daughter Nassun. Essun went after them, gathering Hoa, a stone eater in the shape of a boy, and Tonkee, a geomest, and reached Castrima, an underground comm inside a geode led openly by an orogene named Ykka. Alabaster was there, dying and turning to stone, and he explained what he had done: the Seasons are the consequence of an ancient theft, the Moon was flung out of its orbit tens of thousands of years ago, and catching it and returning it would end the Seasons forever. Doing so requires opening the Obelisk Gate, and Essun was the only candidate he had.\n\nJija took Nassun south to Found Moon, a school for orogene children run by Schaffa, who had survived Meov with his memory gone and a corestone burning in his head. Nassun grew more powerful than anyone there and loved Schaffa as she had never loved her mother. When the compound's Guardians turned on them and Jija came for her with a knife, she turned her father to stone. Alabaster died. The army of Rennanis besieged Castrima, and Essun opened the Obelisk Gate, turned the entire army to stone, and lost her right arm to the same process. Mother and daughter are now the only two people alive who can open the Gate: Essun to catch the Moon, Nassun to end the world with it.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Essun wakes in Castrima weeks after the battle. Her right arm is stone from the shoulder down, Alabaster is dead, and Lerna tells her two things she has not accounted for: that the Gate will take the rest of her the same way if she keeps using it, and that she is pregnant. Castrima cannot stay. The geode's machinery is failing and its stores will not carry the comm through the Season, but the army Essun turned to stone came from Rennanis, a whole city in the north that is now standing empty and provisioned. Ykka's decision is to walk there: hundreds of people, through ashfall, across a continent, in winter.\n\nFar to the south, Nassun leaves the ruins of Found Moon with Schaffa. Steel has told her where the obelisks can be commanded directly, a place called Corepoint on the other side of the world, and she means to reach it. Schaffa is deteriorating: the corestone that keeps him alive is also devouring him, and the pain drives him toward harming the child he is protecting. Nassun holds him together with the silver, which is not something a Guardian should permit and not something a child should be able to do.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Hoa begins telling his own beginning. Forty thousand years ago he was called Houwha, one of six tuners built by the civilization of Syl Anagist: engineered beings, grown rather than born, whose purpose is to run the Plutonic Engine, the vast machine whose components are the obelisks. Syl Anagist runs on magic drawn from living things, its buildings are grown, and its great project, Geoarcanity, will tap the planet's core for limitless power. The tuners live in a facility, are studied, tested and maintained, and are not considered people by anyone who works on them. Into that arrangement comes Kelenli, brought in as their instructor: like them, but able to speak aloud and to walk the city as a citizen.\n\nCastrima's people leave the geode and start north. The march is what an ash winter does to a large group of civilians: bad water, failing feet, ash lung, and comms along the route that will not open their gates. Ykka drives them forward. Essun keeps the road passable with orogeny and pays for it, and Nassun, on the other side of the world, walks south with a Guardian who is dying by degrees.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kelenli takes the tuners out of their facility and walks them through Syl Anagist, which they have never seen. They learn what the city is built on. The people its founders conquered, the Niess, were declared not-quite-human and destroyed, and the tuners were built in their image to be tools. They see the briar patch, where human beings are kept alive, wired into the network, as raw fuel for the magic the city runs on. Kelenli is one of them, made closer to human and permitted to move freely, and she has brought them out deliberately to show them the truth before the engine is launched.\n\nCastrima's march north turns worse. A pack of kirkhusa, once domestic animals, has gone carnivorous and hits the column; people are killed and maimed. Maxixe, an orogene Essun trained beside at the Fulcrum decades ago and who has lost his legs since, holds part of the line. Danel, the captured Rennanis general, writes down what happens because someone should. Lerna takes Essun's stone arm off, and Essun keeps walking.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The tuners understand what they are for and what will happen to them afterward: they are components, and components are decommissioned. Kelenli's teaching has given them the last thing the engine needed and also the will to use it differently. Gallat, the conductor who has raised and managed them, treats the discovery as a maintenance problem.\n\nNassun and Schaffa reach an ancient deadciv station in the far south and find the transport still working: a vehicle that travels through the body of the planet itself. It carries them under the world to Corepoint, a city built by that same lost civilization on the far side of the ocean, standing over the shaft its builders drilled toward the Earth's core. Corepoint is intact, empty of people, and inhabited by stone eaters who watch and say nothing. Schaffa is barely conscious by the time they arrive.\n\nCastrima's column reaches the north with fewer people than set out, and finds Rennanis exactly as the Gate left it: a walled, warm, provisioned city full of statues that were people.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Castrima takes possession of Rennanis. There is food, shelter and a functioning greenland, and there is also the problem of living among the stone bodies of the army Essun killed. Ykka begins the work of making a city out of a refugee column. Essun, who is running out of body and time, decides she cannot stay: Alabaster's work is unfinished, her daughter is at the far end of the world, and the only way to reach either is through the rock.\n\nAt Corepoint, Steel shows Nassun what the place is for. The obelisks answer here more readily than anywhere on the Stillness, and the Gate can be opened from the platform above the shaft. He tells her plainly what she can do with it, including the option of bringing the Moon down and ending everything. Nassun is not persuaded by him so much as already decided. Her one remaining tie is Schaffa, whose corestone will not let him die and will not let him rest, and she is prepared to burn the world to end his pain and her own.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In Syl Anagist, the launch approaches and the tuners make their choice: rather than let the engine simply take what the city wants, they intend to turn it. Kelenli has told them what the conquered Niess were and what their own existence is worth to the people who built them, and the six of them agree that the machine will not be used as designed.\n\nEssun asks Hoa to take her to Corepoint. He carries her through solid rock, a journey of days in which she is held inside stone and cannot move, breathe or die, and he tells her the rest of his story on the way. She arrives on the far side of the world stone-armed, weak and out of time, and she knows what she will find: her daughter, at the Gate, intending to end the world.\n\nAt Corepoint, Nassun has reached the same point from the other direction. Schaffa is failing, the obelisks are gathering overhead, and she is ready.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Syl Anagist's engine launches and the Earth answers. What the tuners set in motion, and what the planet does with it, ends the civilization that built the obelisks: the Moon is thrown out of its orbit, Syl Anagist is destroyed, the Earth becomes the enemy of everything living, and the tuners are turned to stone, the first of the stone eaters. That is where Hoa comes from, and why he has spent forty thousand years waiting for an orogene who could put the Moon back.\n\nAt Corepoint, Essun and Nassun stand at the Gate together. They do not fight. Nassun sees that her mother crossed the world to reach her rather than to stop her, and Essun opens the Gate and does what Alabaster asked: she catches the Moon and returns it to its orbit. The effort completes what the Gate began in her, and she turns entirely to stone and dies. Nassun carries the work through, chooses to let the world live, and releases Schaffa at last, ending his pain. With the Moon restored, the Earth's grievance is answered and the Seasons will end.\n\nHoa remakes Essun as a stone eater. She wakes into that existence with his whole account already told to her, and Nassun, alive, is carried north to Rennanis, where Castrima's people take her in.",
+            "through": {
+              "chapter": 14
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-stone-sky"
       }
     },
     "the-stranger": {

@@ -2062,6 +2062,219 @@
         ],
         "work": "saviors"
       }
+    },
+    "scarlet": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An eighteen-year-old farmer from Rieux in southern France, who runs her grandmother's produce farm and flies the deliveries into Toulouse herself in a battered old ship. Blunt, quick-tempered and fiercely loyal, she has spent two weeks fighting the police, who have written off her grandmother's disappearance as a woman walking out on her life rather than an abduction. She wears a red hooded sweatshirt, waits tables at the village tavern when money is short, and carries her grandmother's gun.",
+            "id": "scarlet-benoit",
+            "name": "Scarlet Benoit",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Scarlet's grandmother and the woman who raised her, a retired military pilot who ran the farm outside Rieux alone for decades. She vanished two weeks before the book opens without a message, a packed bag or any sign of struggle the police will accept. Scarlet is certain she was taken, and equally certain her grandmother was hiding something for most of her life.",
+            "id": "michelle-benoit",
+            "name": "Michelle Benoit",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A waitress at the Rieux tavern and a friend of Scarlet's, cheerfully fascinated by the newcomer fighting in the tavern's back room.",
+            "id": "emilie",
+            "name": "Émilie",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Ze'ev Kesley"
+            ],
+            "description": "A street fighter who turned up in Rieux a few weeks ago and wins in the tavern's back room without apparent effort. Tall and heavily built, with unruly hair, green eyes and a tattoo of letters and numbers on his forearm, he is unnervingly fast in the ring and awkward and quiet outside it. He pays more attention to Scarlet's missing grandmother than a drifter passing through a village has any reason to.",
+            "id": "wolf",
+            "name": "Wolf",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The cyborg mechanic from New Beijing, now the most wanted fugitive on Earth, sitting in a prison cell awaiting delivery to Luna. She knows at last what she is, Lunar and the missing Princess Selene, and wears the improved cyborg hand and foot Dr. Erland left her, but she has no plan beyond getting out of the building.",
+            "id": "cinder",
+            "name": "Linh Cinder",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An American cadet turned thief held in the same New Beijing prison as Cinder, jailed for stealing a military spaceship. Talkative, vain and relentlessly pleased with himself, he offers Cinder a way off the planet on the grounds that the stolen ship is still exactly where he left it.",
+            "id": "carswell-thorne",
+            "name": "Carswell Thorne",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The newly crowned emperor of the Eastern Commonwealth, negotiating with Queen Levana while the plague spreads and his own people demand the escaped cyborg be recaptured. Publicly he is the ruler who was deceived by a Lunar fugitive; privately he cannot decide what he believes about her.",
+            "id": "kai",
+            "name": "Emperor Kai",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The queen of Luna, waiting on the moon for the marriage that will make her empress of the Eastern Commonwealth, and using the promise of the plague antidote to force the pace. She wants the escaped cyborg returned above everything else, and will not say why.",
+            "id": "queen-levana",
+            "name": "Queen Levana",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The palace scientist who told Cinder what she is and then vanished from New Beijing, leaving her an address in Africa and instructions to find him there. He is absent for most of the book, but everything Cinder does is aimed at eventually reaching him.",
+            "id": "dr-erland",
+            "name": "Dr. Dmitri Erland",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Scarlet's estranged father, who drank his way out of her childhood and reappears at the farmhouse burned and badly frightened. He was seized by the same men who took Michelle, held while they tried to get information out of him that he did not have, and let go.",
+            "id": "luc-benoit",
+            "name": "Luc Benoit",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Levana's head thaumaturge, running the queen's operations on Earth from the pack's base in Paris. Composed and unhurried, she treats Earthens and her own subordinates alike as instruments, and what she wants is everything Michelle Benoit knows.",
+            "id": "sybil-mira",
+            "name": "Sybil Mira",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "One of the Lunar operatives quartered in Paris, and Wolf's younger brother. Taken as a child in the same conscription, he has spent years trying to prove himself to their handlers and resents everything about the brother who left.",
+            "id": "ran-kesley",
+            "name": "Ran Kesley",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Cinder's dismantled android friend, reduced to a personality chip that Cinder carried out of New Beijing in her pocket. Aboard the stolen ship she is given somewhere to live again, and immediately has opinions about it.",
+            "id": "iko",
+            "name": "Iko",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "scarlet"
+      },
+      "recaps": {
+        "ending": "Michelle Benoit is killed in the Paris opera house after confirming what she spent her life protecting: she sheltered the injured Lunar princess Selene on her farm for years and arranged the new identity that placed her with a family in New Beijing. That gives Cinder independent proof of who she is. Wolf breaks with his pack to protect Scarlet and is badly hurt doing it, and Sybil Mira escapes with the information she extracted. Cinder, Thorne, Scarlet and Wolf leave Earth together aboard the Rampion, now crewed by Iko, whose personality chip Cinder installs in the ship's systems. Wolf explains that the Paris pack was one of many: Lunar soldiers have been quietly moved into cities across the planet for years, waiting for an order. Emperor Kai publicly announces his engagement to Queen Levana in exchange for the plague antidote, and within hours of the broadcast the packs attack cities on every continent and the invasion of Earth begins. Cinder sets course for Africa to find Dr. Erland, having decided she will not keep running: she means to stop the wedding and claim the Lunar throne herself.",
+        "in_short": "Cinder breaks out of the New Beijing prison with a charming thief named Carswell Thorne and escapes Earth aboard his stolen ship, the Rampion, chasing a name from her own past: Michelle Benoit. In France, Michelle's granddaughter Scarlet is fighting to find the woman herself, who vanished without trace. Scarlet falls in with Wolf, a street fighter who turns out to be a Lunar special operative rebuilt around wolf DNA, and who leads her to the pack holding her grandmother in a Paris opera house. There Michelle reveals that she hid the injured Lunar princess Selene on her farm for years before arranging her new life in New Beijing, and is then killed in front of Scarlet. Wolf turns on his own pack to protect Scarlet, and Cinder arrives in time to fight the thaumaturge running the operation. The four escape together on the Rampion with Iko installed as the ship. Kai announces his engagement to Levana, and Luna's soldiers, planted in cities across Earth, begin the invasion.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Linh Cinder, a cyborg mechanic in New Beijing, was conscripted for plague research and found to be immune to letumosis, then learned the reason - she is Lunar, one of the moon colony's people, who can control what others perceive. Queen Levana of Luna came to Earth demanding marriage to the young emperor Kai in exchange for the plague antidote, meaning to take the Commonwealth and dispose of him afterwards. Cinder went to the royal ball to warn him, was exposed in front of the court as both cyborg and Lunar, and was imprisoned. There the palace scientist Dr. Erland, a Lunar defector himself, told her the truth: she is Princess Selene, the Lunar heir believed to have died in a nursery fire as a small child, smuggled to Earth, rebuilt as a cyborg and hidden ever since. She is the only legitimate rival to Levana's throne. Kai agreed to the marriage to buy the antidote for his dying people, and Cinder was to be handed over to Luna for execution. Her stepsister Peony died of the plague, her android friend Iko was dismantled, and Erland left her a stronger cyborg hand, an escape plan and an address in Africa.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In Rieux, a farming village in southern France, eighteen-year-old Scarlet Benoit has spent two weeks trying to make the police look for her grandmother, Michelle, who disappeared without a word. They close the case as a voluntary departure. At the tavern where Scarlet waits tables she meets a newcomer called Wolf, a street fighter with a tattoo of letters and numbers on his forearm, unnervingly strong in the ring and awkward outside it. In New Beijing, Cinder waits in prison for transfer to Luna and uses her untrained Lunar gift on a guard to get out of her cell. She finds another prisoner, Carswell Thorne, an American cadet jailed for stealing a military spaceship, who offers her a way off the planet if she takes him with her.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Cinder and Thorne escape New Beijing aboard the Rampion, the stolen ship Thorne had hidden, and go into hiding while the Commonwealth broadcasts Cinder's face across Earth. In France, Scarlet's estranged father turns up at the farmhouse burned and terrified: he was seized by the same men who took Michelle, who wanted something Michelle had hidden years ago and would not give up. Wolf admits he recognises them - Lunar operatives working out of Paris - and offers to take Scarlet to where they are. With no better option, she agrees, and the two set off north.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Scarlet and Wolf travel toward Paris by train. In pieces, Wolf tells her what he is: taken from his family as a boy and rebuilt by Luna into a special operative, surgically and genetically fused with wolf DNA, trained in packs, and that he ran away from it. Scarlet does not know how much of it to believe. Cinder, hunting anything that explains her own past, follows a name out of the royal android's data - Michelle Benoit, a retired French pilot with an unexplained gap in her military record - and brings the Rampion down in Europe. On Earth, Kai negotiates with Levana over the antidote and the wedding while being pressed publicly to recapture the escaped cyborg.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Wolf takes Scarlet into Paris, where the pack has occupied the old opera house, and there she learns his loyalties were never what he claimed: he was sent to find her, and the journey north was a delivery. Scarlet is taken prisoner in the cellars. Cinder and Thorne reach the Benoit farm, find it abandoned and search it, then follow the trail toward Paris. Levana's head thaumaturge Sybil Mira is running the operation, and what she wants is everything Michelle Benoit knew about a child she once hid.",
+            "through": {
+              "chapter": 23
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the opera house cellars Scarlet is reunited with her grandmother, who has been held and questioned for weeks and has given up nothing. Michelle finally explains what she was protecting. Years ago a Lunar doctor brought her a badly burned Lunar child to hide, and she kept the girl in a suspended-animation tank in the farm's barn until she was old enough to be given a new identity and placed with a family on the other side of the world. The child was Princess Selene. Michelle destroyed every record and shrank her own life down to the farm rather than risk being traced. Scarlet realises her grandmother's disappearance was never about the two of them at all.",
+            "through": {
+              "chapter": 29
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sybil Mira gets what she came for and has Michelle killed in front of Scarlet. Wolf, who has been playing the obedient operative in front of his pack, breaks with them to protect Scarlet and is beaten for it. Cinder and Thorne reach the opera house and find the pack quartered inside. Cinder confronts Sybil directly and discovers that her untrained gift is strong enough to stand against a trained thaumaturge.",
+            "through": {
+              "chapter": 34
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The fight spreads through the opera house. Wolf turns on the pack outright, including his younger brother Ran, who has spent years trying to prove himself to their handlers. Cinder uses her gift on the wolf soldiers to break the pack's discipline, Thorne fights his way clear, and Scarlet gets out of the cellars. Sybil escapes with what she took from Michelle. Wolf is left badly injured and, for the first time in his life, on no one's side but Scarlet's.",
+            "through": {
+              "chapter": 40
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Cinder, Thorne, Scarlet and Wolf escape Paris aboard the Rampion. Cinder installs Iko's salvaged personality chip in the ship, giving the android a voice and a body of sorts again. Scarlet has lost her grandmother but has confirmation of what Michelle died protecting, and Cinder has proof of her own history from someone other than Dr. Erland. Wolf tells them what the pack was for: hundreds of Lunar soldiers have been placed in cities across Earth over the past years, and Paris held only one of them. On Earth, Kai announces his engagement to Queen Levana, and within hours the wolf soldiers rise in cities on every continent. The crew sets course for Africa to find Erland, with Cinder resolved to stop the wedding and take the throne she was born to.",
+            "through": {
+              "chapter": 47
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "scarlet"
+      }
     }
   }
 }

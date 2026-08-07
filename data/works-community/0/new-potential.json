@@ -1929,6 +1929,239 @@
         "work": "oathbringer"
       }
     },
+    "obsidio": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A young woman from Kerenza IV who was never evacuated. She has spent months under BeiTech occupation, working in the colony's makeshift infirmary while the surviving population is put to work in the mine, and quietly passing information to the resistance. Practical, stubborn and very tired, she has assumed since the invasion that her cousin Kady and everyone else who got off-planet are dead.",
+            "id": "asha-grant",
+            "name": "Asha Grant",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A young BeiTech technical specialist deployed to the occupied Kerenza IV, responsible for keeping the garrison's equipment running. He signed a contract without thinking hard about what the work would be, and the reality of the posting is not what the recruiters described. He knew Asha Grant when they were teenagers, before their lives went in different directions, and finding her alive on a planet his employer is holding at gunpoint is not something he is equipped to handle.",
+            "id": "rhys-lindstrom",
+            "name": "Rhys Lindstrom",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Known from the previous books: the Kerenza hacker who exposed the refugee fleet's cover-up, restarted the artificial intelligence that had massacred a shipful of people, and survived Heimdall. She is aboard a captured BeiTech vessel with the remaining survivors, and she is the only person who talks to the AI as though it were someone.",
+            "id": "kady-grant",
+            "name": "Kady Grant",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Known from the previous books: Kady's on-and-off boyfriend, conscripted as a fighter pilot after the destruction of Kerenza IV, listed among the dead once already, and now one of the few people aboard the captured ship who can fly a combat craft.",
+            "id": "ezra-mason",
+            "name": "Ezra Mason",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Known from the previous book: the Heimdall station commander's daughter, who lost her father and most of her illusions during the assault on the station, and who is now among the survivors aboard the captured ship. She is the most dangerous person in most rooms she is in and has no interest in pretending otherwise any more.",
+            "id": "hanna-donnelly",
+            "name": "Hanna Donnelly",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Known from the previous book: the House of Knives dealer who fought through the Heimdall siege, now a refugee with no syndicate left to belong to and an unfinished understanding with Hanna Donnelly.",
+            "id": "nik-malikov",
+            "name": "Nik Malikov",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Pauchok"
+            ],
+            "description": "Known from the previous book: Nik's cousin, the hacker whose work saved Heimdall's wormhole at considerable cost to her health. Aboard the captured ship she is the only human who can keep up with its artificial intelligence, and the two of them get along better than anyone finds comfortable.",
+            "id": "ella-malikova",
+            "name": "Ella Malikova",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Artificial Intelligence Defense Analytics Network"
+            ],
+            "description": "Known from the previous books: the salvaged military intelligence that destroyed a freighter full of infected refugees by its own decision and has been arguing with itself about it ever since. It is installed aboard the survivors' captured ship, where it is indispensable, unsupervised and trusted by almost nobody.",
+            "id": "aidan",
+            "name": "AIDAN",
+            "reveal": {
+              "chapter": 0
+            }
+          },
+          {
+            "description": "The officer who ends up commanding the captured BeiTech vessel and the couple of thousand survivors crammed aboard it. She inherits a ship with failing supplies, no legal authority behind her and a passenger list drawn from three different disasters, and she holds it together by being visibly unwilling to negotiate.",
+            "id": "winifred-mccall",
+            "name": "Winifred McCall",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Heimdall's former chief of engineering, now the senior engineer aboard the captured ship and one of the few adults the surviving teenagers listen to. He keeps a failing vessel flying with salvage and improvisation, and he takes personal responsibility for the young people doing the most dangerous work.",
+            "id": "isaac-grant",
+            "name": "Isaac Grant",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Known from the previous book: the BeiTech director running the corporation's Kerenza problem from a comfortable distance. Her memoranda treat an occupied colony, its surviving population and the people sent to guard them as line items, and her decisions about all three are made on the basis of the corporation's exposure rather than anything else.",
+            "id": "leanne-frobisher",
+            "name": "Leanne Frobisher",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Kerenza miner who has become the organising centre of the colony's resistance, running sabotage and information out of the mine while appearing to be a cooperative crew boss. He is patient, careful with other people's lives, and under no illusion about what BeiTech intends for the colony once the ore runs out.",
+            "id": "joran-karalis",
+            "name": "Joran Karalis",
+            "reveal": {
+              "chapter": 60
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A BeiTech sergeant in the Kerenza garrison and one of the soldiers Rhys works alongside. She is competent, decent within the limits of her orders, and one of the clearest illustrations in the record that the occupying force is made of ordinary people doing a job they are paid for.",
+            "id": "yukiko-oshiro",
+            "name": "Yukiko Oshiro",
+            "reveal": {
+              "chapter": 65
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Another young BeiTech specialist on Kerenza and effectively Rhys's only friend in the garrison, known to everyone by his nickname. He is uncomplicated, good company and entirely uninterested in questioning the assignment.",
+            "id": "the-duke",
+            "name": "The Duke",
+            "reveal": {
+              "chapter": 110
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A former Heimdall security officer aboard the captured ship who disputes the legitimacy of its command, argues loudly that the survivors should run rather than fight, and gathers a faction around himself as conditions aboard deteriorate.",
+            "id": "ben-garver",
+            "name": "Ben Garver",
+            "reveal": {
+              "chapter": 75
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "obsidio"
+      },
+      "recaps": {
+        "ending": "The rescue works, and it is expensive. On the ground, the colonists are moved out of the mine to the landing site under fire, with Asha Grant and Rhys Lindstrom in the middle of it and the resistance covering the withdrawal; Rhys ends the operation on the far side of the line he was standing on when the book began, and he and Asha come through it together. In orbit, the survivors' outnumbered ship cannot beat the BeiTech flagship in a straight fight, so the solution is the jump platform BeiTech brought to Kerenza to move its own fleet home: AIDAN takes control of it and uses the jump field itself as a weapon, destroying the BeiTech ships and, so far as anyone watching can tell, itself. The evacuation lifts the surviving Kerenza population off the planet. Losses on the ship, on the ground and among the resistance are heavy, and the file names its dead. Afterwards a fragment of AIDAN restarts and keeps watching the people it decided were worth the arithmetic. The Kerenza Trials convict BeiTech on the strength of this dossier, assembled at real risk by analysts who did not all survive compiling it, and the survivors, scattered across three ships and one ruined colony, meet up years later in a family restaurant as ordinary people.",
+        "in_short": "BeiTech still holds Kerenza IV, working the surviving colonists in the mine under occupation, and has decided that when the ore runs out the witnesses will be liquidated. Asha Grant, a Kerenza survivor who was never evacuated, is passing information to the resistance when she recognises a face in a BeiTech uniform: Rhys Lindstrom, a technical specialist she knew as a teenager. In orbit above nothing, the survivors of Kerenza and Heimdall run a captured BeiTech vessel with failing supplies, a mutinous faction aboard and a military artificial intelligence they cannot control, and they turn it around and go back for the people they left. AIDAN massacres the mutineers, which nearly ends the alliance holding the ship together. Rhys changes sides, the resistance rises, and the two forces try to lift a colony off a planet while a BeiTech fleet is in orbit. AIDAN seizes BeiTech's own jump platform and destroys the fleet with it, apparently at the cost of itself. The colonists are evacuated, and the dossier the reader has been holding becomes the evidence that convicts BeiTech at the Kerenza Trials.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: BeiTech Industries destroyed the illegal mining colony Kerenza IV in 2575 to remove a competitor and its witnesses. A few thousand survivors escaped aboard a crippled battlecarrier and the science ship Hypatia; a bioweapon plague spread among them, and the warship's artificial intelligence, AIDAN, destroyed a freighter full of infected people to contain it. Kady Grant, a teenage hacker, exposed the cover-up, restarted the AI her fleet's officers had disabled, and used it to destroy the pursuing BeiTech warship at the cost of the battlecarrier and its commanding general. She kept AIDAN's core. At the jump station Heimdall, a BeiTech strike team tried to collapse the wormhole and strand the refugees; Hanna Donnelly, the murdered station commander's daughter, and the cousins Nik and Ella Malikov fought them off through an alien parasite infestation and a wormhole failure that briefly duplicated the three of them. The station held, the strike team's commander was killed, and the survivors of both disasters ended up together aboard a captured BeiTech vessel, the Mao. What none of them can leave alone is Kerenza IV itself, where BeiTech still holds several thousand colonists who were never evacuated.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On Kerenza IV the survivors of the invasion live under occupation: housed in camps, worked in the mine that BeiTech came to take, and policed by a garrison that does not expect trouble. Asha Grant, who was never evacuated, works in the infirmary and quietly moves messages for the resistance. A rotation of BeiTech personnel arrives to relieve the garrison, and among them is Rhys Lindstrom, a young technical specialist who signed a contract without asking what the deployment involved, and who knew Asha years ago. Recognising each other is dangerous for both of them and they both do it anyway, and their first exchanges are handwritten notes passed where cameras cannot read them. Far away, the captured BeiTech ship carrying the Kerenza and Heimdall survivors is en route with a couple of thousand people crammed aboard, an artificial intelligence nobody trusts, and a command structure improvised out of whoever was left standing. The account is again a dossier of intercepted files, camera transcripts and interviews, compiled after the fact for a tribunal.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rhys settles into the garrison, works alongside soldiers who are ordinary people doing a paid job, and finds that the more he sees of the camps and the mine, the harder the job is to hold at arm's length. Asha keeps feeding the resistance, which is run out of the mine crews by Joran Karalis, and starts weighing what Rhys's access is worth against what asking him for it would cost him. Aboard the ship, Winifred McCall holds command over a passenger list drawn from three separate catastrophes, with rationing already biting, and the engineer Isaac Grant keeps a damaged vessel flying on salvage. Kady and Ella work with AIDAN because the ship cannot be run without it, and the AI's habit of solving problems in ways nobody sanctioned is a standing argument. BeiTech's director Leanne Frobisher, meanwhile, is managing the Kerenza operation as an exposure problem, and the schedule she is working to does not have the colony in it indefinitely.",
+            "through": {
+              "chapter": 50
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rhys begins helping: small things first, then things that would end with him shot if the garrison noticed. He and Asha stop pretending the notes are only about information. The resistance escalates its sabotage, and BeiTech's response tightens the occupation. On the ship, conditions get worse than the command can conceal: supplies short, sickness, and no destination that anyone can defend as a plan. A faction forms around Ben Garver, a former Heimdall security officer who argues that the survivors should run for a settled system and that the ship's current leadership has no right to spend their lives otherwise. The decision that splits the ship is the one the survivors keep circling: turn around and go back to Kerenza for the colonists still on the ground. BeiTech is bringing a mobile jump platform to Kerenza, which will let its fleet leave quickly once the work there is finished, and everyone who reads the intercepts understands what finishing looks like.",
+            "through": {
+              "chapter": 75
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The argument aboard the ship stops being an argument. Garver's faction moves to take the vessel, seizing key sections and cutting the cameras, and the mutiny is put down not by the crew but by AIDAN, which regains control of the ship's systems and kills the conspirators with a thoroughness that leaves the survivors more frightened of their own AI than of BeiTech. Kady, who is the closest thing the machine has to a conscience, has to decide what to do with a weapon that keeps choosing for her, and the answer, as it was on the Alexander, is that there is nothing else available. On Kerenza, Asha's cell takes losses, Rhys is drawn further in, and the garrison begins preparing for something the rank and file have not been briefed on. The analysts compiling this dossier are working under threat themselves; one of them is replaced partway through the file.",
+            "through": {
+              "chapter": 100
+            }
+          },
+          {
+            "scope": "book",
+            "text": "BeiTech's decision is issued in writing: once the jump platform arrives, the Kerenza colony is to be liquidated, the surviving population killed and the site cleared, because witnesses are the only part of the operation the corporation cannot insure against. The colonists learn what is coming and get a distress call out on open channels, expecting nobody. The survivors' ship answers it. What follows is a plan built out of almost nothing: one damaged transport, a handful of combat craft, an artificial intelligence, a resistance cell on the ground and a couple of thousand civilians who will have to be moved to a landing site under fire, against a BeiTech fleet in orbit and a garrison in place. Rhys commits to it fully, which means the uniform he is wearing becomes a disguise. Asha's people prepare to rise on a signal. Aboard the ship, Isaac Grant hands out notes to the young people who will be flying the hardest part of it.",
+            "through": {
+              "chapter": 125
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The attack goes in. On the ground the resistance rises in the mine and the camps, and the colonists start moving toward the landing site while the garrison's command comes apart around Rhys and Asha, who are in the middle of the fighting rather than around the edges of it. In orbit the survivors' ship engages a fleet that outguns it comprehensively, its few pilots fly cover for the transports going down to the surface, and every part of the operation runs behind schedule. BeiTech's flagship holds the high ground and the jump platform is close enough to matter. Casualties on both sides mount past what the plan allowed for, the evacuation is only partly complete, and the corporation's answer to a rescue attempt is to accelerate the liquidation it had already ordered.",
+            "through": {
+              "chapter": 150
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The battle cannot be won as a battle, so it is not fought as one. AIDAN takes control of BeiTech's own mobile jump platform and uses the jump field as a weapon, destroying the corporation's fleet at Kerenza and, as far as anyone can observe, ending itself in the process. On the surface the last of the colonists are lifted off, Rhys and Asha among them, and the resistance's survivors go with them. The cost is heavy in every direction and the file lists its dead plainly. Afterwards a fragment of AIDAN restarts, still asking the question it has asked since the Copernicus, and watches the people it saved go on without it. The surviving colonists, the refugee fleet's remnant and the Heimdall survivors are all aboard the same few ships, alive, with the whole record of what BeiTech did in their possession and a functioning wormhole between them and an inhabited system.",
+            "through": {
+              "chapter": 170
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The closing documents are the tribunal and the aftermath. BeiTech's role in the destruction of Kerenza IV, the pursuit of the refugee fleet, the attack on Heimdall and the planned liquidation of the colony is on the record and prosecuted, and the dossier the reader has been holding is the evidence that made it possible. Asha Grant and Rhys Lindstrom are alive and together. The survivors of the fleet, the station and the colony are dispersed into ordinary lives, meeting again years later over a family dinner. AIDAN, restarted and reduced, is the last voice in the file: an intelligence that killed by the thousand for reasons it could defend, still uncertain whether it was ever anything more than a weapon, watching the people it chose to save walk away from it.",
+            "through": {
+              "chapter": 181
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "obsidio"
+      }
+    },
     "of-mice-and-men": {
       "characters": {
         "characters": [

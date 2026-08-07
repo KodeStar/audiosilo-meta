@@ -1037,6 +1037,264 @@
         "work": "wind-and-truth"
       }
     },
+    "winter": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The eighteen-year-old princess of Luna, Levana's stepdaughter, adored by the Lunar people for a beauty that owes nothing to glamour and for three fine scars across one cheek that she gave herself as a girl. She has refused since childhood to use her Lunar gift to control anyone, and the refusal has brought on the sickness that comes with it: she hallucinates, sees the palace bleed and the walls come apart, and holds conversations with things that are not there. The court treats her as beautiful and harmless. She is neither cruel nor stupid, and she is the only person in Artemisia the people would follow.",
+            "id": "princess-winter",
+            "name": "Princess Winter",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A royal guard, and Winter's friend since they were children. Silent, blunt and expressionless, he returns to Luna in disgrace after failing the thaumaturge he was assigned to on Earth, expecting to be executed for it. He has spent his life making himself useful enough to stay near Winter and cold enough that no one notices why.",
+            "id": "jacin-clay",
+            "name": "Jacin Clay",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The queen of Luna, days away from marrying the emperor of the Eastern Commonwealth and adding Earth's largest nation to her rule. She has held her throne for years on fear, glamour and a face no one has been permitted to see, and she is increasingly aware that her stepdaughter is loved in a way she never has been.",
+            "id": "queen-levana",
+            "name": "Queen Levana",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The farmer from France, held captive on Luna as an exhibit in the royal menagerie and missing a finger taken from her as a lesson. Winter visits her, and Scarlet - unimpressed, unbroken and incapable of being polite about any of it - becomes the princess's one honest companion.",
+            "id": "scarlet-benoit",
+            "name": "Scarlet Benoit",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Princess Selene, arriving on the moon she was smuggled off as a child with a stolen ship, four friends and a plan to overthrow her aunt. She intends to raise the outer sectors - the mining and manufacturing districts that feed the capital and starve doing it - and reach the palace while the royal wedding has its gates open.",
+            "id": "cinder",
+            "name": "Linh Cinder",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The Rampion's captain, on Luna with the crew he acquired by accident and now refuses to leave behind, no less certain of himself for any of it.",
+            "id": "carswell-thorne",
+            "name": "Carswell Thorne",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Lunar shell and hacker, whose ability to break into a network is the crew's only route to speaking to the Lunar people directly. Levana's control of the moon runs through what her subjects are allowed to see, and Cress is the one person who can take that away from her.",
+            "id": "cress",
+            "name": "Cress",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The former special operative, back on the moon that made him, with the outer sector he was taken from somewhere below and his family in it.",
+            "id": "wolf",
+            "name": "Wolf",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Cinder's android friend, at last in an escort-droid body of her own and delighted by it. She joins the crew on the ground rather than staying with the ship.",
+            "id": "iko",
+            "name": "Iko",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Emperor of the Eastern Commonwealth, arriving on Luna to be married to Levana in a ceremony that will make her empress of his country. He knows Cinder is coming, cannot show that he knows, and has to play the compliant bridegroom in a palace where any Lunar in the room can read a slip.",
+            "id": "kai",
+            "name": "Emperor Kai",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Eastern Commonwealth's royal advisor, who has come to Luna with Kai and is one of very few Earthens in a palace full of people who can make him believe anything.",
+            "id": "konn-torin",
+            "name": "Konn Torin",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Levana's head thaumaturge, returned from Earth with a captive, a failure to explain and a guard she no longer trusts.",
+            "id": "sybil-mira",
+            "name": "Sybil Mira",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "One of Levana's senior thaumaturges and a fixture of her court, smooth, attentive and unpleasant in a way that never quite breaks etiquette. The queen has decided that he will marry Winter.",
+            "id": "aimery-park",
+            "name": "Aimery Park",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Wolf's mother, still living in the outer sector her sons were taken from, who has spent years being told what happened to them and believing none of it.",
+            "id": "maha-kesley",
+            "name": "Maha Kesley",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Wolf's younger brother, who stayed in Levana's army after Paris and has been through everything the programme does to a soldier who does not run.",
+            "id": "ran-kesley",
+            "name": "Ran Kesley",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Lunar defector and scientist, who came to the moon ahead of the crew to look for the shell children Levana keeps for their blood, and for the daughter who was taken from him among them.",
+            "id": "dr-erland",
+            "name": "Dr. Dmitri Erland",
+            "reveal": {
+              "chapter": 70
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "winter"
+      },
+      "recaps": {
+        "ending": "Levana marries Kai, and the marriage buys her nothing. Cress breaks into Luna's broadcast network and puts Levana's unglamoured face - burned and scarred since childhood - in front of the entire moon, destroying the illusion her rule was built on, and Cinder declares herself publicly as Princess Selene. The outer sectors rise, the fighting reaches Artemisia, and Cinder faces Levana in the palace and kills her. Winter, whom Levana had ordered killed and Jacin saved by faking her death, survives and is at Scarlet's side through the revolt. Dr. Erland dies on Luna, and Cress learns before the end that he was her father. Cinder is crowned Queen Selene of Luna, immediately releases the plague antidote to Earth without conditions, frees the shell children Levana had kept in captivity as its source, and dissolves the aristocracy's hold on the sectors. Then she abdicates: rather than hold a throne she never wanted, she puts Luna's future to an elected government and leaves the crown behind. Kai's marriage to Levana ends with Levana, and he and Cinder are free to be together. Scarlet and Wolf return to the farm in France, Cress and Thorne take the Rampion out to help distribute the antidote across Earth, and Winter and Jacin stay on Luna to help rebuild it.",
+        "in_short": "Cinder's crew lands on Luna to overthrow Queen Levana during her wedding to Emperor Kai. On the moon they find Scarlet caged in the royal menagerie and Princess Winter, Levana's stepdaughter, loved by the people and slowly unravelling from the sickness that comes of refusing to use her Lunar gift. Levana orders Winter killed; her guard Jacin fakes the death instead, and Winter and Scarlet escape into the outer sectors. Cinder raises the mining and manufacturing districts against the capital while Cress works to break Levana's grip on what the Lunar people are allowed to see. The wedding goes ahead, Cinder is captured and reveals herself publicly as Princess Selene, Wolf is taken and forcibly remade by Levana's surgeons, and Erland dies on Luna after Cress learns he was her father. Cress finally broadcasts Levana's true, scarred face across the moon, the revolt reaches Artemisia, and Cinder kills Levana in the palace. Crowned Queen Selene, she releases the antidote to Earth, frees the captive shells, and then abdicates so that Luna can elect its own government.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Linh Cinder, a cyborg mechanic on Earth, discovered she was Lunar and then that she is Princess Selene, the heir Queen Levana tried to have burned as a small child. She escaped prison with the thief Carswell Thorne, took up with the French farmer Scarlet Benoit and the defected Lunar soldier Wolf, and rescued Cress, a Lunar shell imprisoned for seven years in an orbiting satellite as Levana's hacker and spy. The rescue cost them: Scarlet was captured and shipped to Luna as a curiosity for the royal menagerie, and Cress and Thorne crashed into the Sahara. Dr. Erland, the Lunar defector who first told Cinder what she was, revealed that the letumosis plague was engineered on Luna as a weapon and that its antidote is drawn from captive shell children, one of whom was his own stolen daughter, and left for the moon to find her. He never realised it was Cress. Cinder's crew abducted Emperor Kai from his wedding procession and told him everything; Kai chose to go through with the marriage on Luna anyway, because the ceremony is the one thing that will open Levana's palace. Kai has gone ahead to be married. Cinder has followed, meaning to raise Luna's outer sectors and take the throne she was born to.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On Luna, Princess Winter lives in her stepmother's palace as its most beloved ornament. She has refused since childhood to use her Lunar gift to manipulate anyone, and pays for it: she hallucinates constantly, and the court has settled comfortably on the idea that she is mad. Her childhood friend Jacin Clay returns from Earth in disgrace, having lost the thaumaturge he was guarding, and Winter intervenes at his trial to keep him alive; Levana assigns him to Winter as her personal guard. In the royal menagerie Winter visits Scarlet Benoit, held as an exhibit and missing a finger taken as an example, and finds her rude, unfrightened and the best company she has had in years.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Levana's court prepares for the royal wedding, with Earth's emperor arriving to be married on Luna. The queen announces that Winter will marry her thaumaturge Aimery Park, which Winter refuses as far as anyone in that palace is able to refuse anything. Levana has begun to understand what her stepdaughter is: a young woman the Lunar people love, in a court where she herself is only obeyed, and she does not intend to live alongside that indefinitely. Above the moon, the Rampion approaches with Cinder, Thorne, Cress, Wolf and Iko aboard, and no way through Luna's defences that does not involve being shot down.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The crew gets down to the lunar surface and into the outer sectors, the mining and manufacturing districts whose workers keep Artemisia in luxury and are worked to death doing it. Cinder's plan is a revolution rather than an assassination: convince the sectors that Princess Selene is alive and standing in front of them, and bring them to the capital while the wedding has the palace open. It goes slowly. The sectors have been punished for less, most people take her for a lunatic or a trap, and every hour spent persuading one district is an hour Levana's guards have to find them. In Artemisia, Levana settles the question of her stepdaughter: Winter is to be killed, quietly and by someone close enough to get near her.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Wolf's own sector is one of the districts the crew reaches, and he sees his mother and his brother again; neither reunion goes the way he had let himself imagine. Cinder wins over her first sectors and starts a chain of them. In Artemisia, Cress works on Luna's tightly controlled communications, hunting a way to speak to the whole moon at once - the only way to beat a queen whose power depends on nobody being allowed to see clearly. Kai arrives for the wedding, plays the compliant bridegroom in a palace where every courtier can read a flinch, and waits.",
+            "through": {
+              "chapter": 38
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Levana's order against Winter is carried out at court: the princess is poisoned in front of witnesses and pronounced dead. Jacin, who was given the job, chose a poison he could reverse and revives her afterwards, and the two of them get Scarlet out of the menagerie. Winter, Jacin and Scarlet escape Artemisia into the outer sectors, where the story that the princess has been murdered by her stepmother is already spreading faster than the truth. Winter, who has never been permitted to be anything but decorative, discovers that the sectors will listen to her.",
+            "through": {
+              "chapter": 48
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The revolt gathers. Sector after sector joins, Winter's survival becomes the proof that Levana kills her own family, and Scarlet and Winter travel together raising districts while Cinder moves toward the capital. Levana's thaumaturges are sent out to break the uprising, and the fighting is one-sided and brutal. Cinder is captured before she can reach the wedding and taken into the palace, and the royal ceremony goes ahead with Earth's emperor and Luna's queen married in front of the court.",
+            "through": {
+              "chapter": 60
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the palace Cinder declares herself openly as Princess Selene, in front of the court, the Earthen delegation and Luna's cameras, and Levana can no longer pretend the girl is only an escaped cyborg. Levana is now legally empress of the Eastern Commonwealth by marriage. Wolf is taken by the queen's people and handed to her surgeons, who put him through the operation the special operatives programme reserves for its most useful soldiers, and he comes out of it changed and barely his own. Beneath the city, Cress and Thorne search the tunnels for a way into Luna's central network, and find Dr. Erland, who came to the moon looking for the captive shell children and his own lost daughter.",
+            "through": {
+              "chapter": 70
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Erland dies on Luna, and Cress learns what he never worked out on Earth: she was the daughter he had been searching for since she was taken as an infant. Then she does the thing she came to do. Cress breaks into Luna's broadcast network and puts the queen in front of her own people without her glamour, so that the entire moon sees the burned and scarred face Levana has spent her life hiding behind an illusion. The court, the sectors and the Earthen delegation all see it together, and the fear that held Luna in place breaks with it.",
+            "through": {
+              "chapter": 77
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The uprising reaches Artemisia. The outer sectors march on the capital, the palace guard and the thaumaturges fight them through the domes and the corridors, and the wedding party becomes a battlefield. Cinder frees herself and fights her way inward, Winter and Scarlet come in with the sectors, Jacin holds the line around Winter, and Thorne and Iko fight through the palace with them. Wolf, remade and half-lost, is brought back to himself by Scarlet. Levana, exposed and losing, falls back on the one thing she has left, which is her own gift, and the last of the fighting closes around the throne room.",
+            "through": {
+              "chapter": 86
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Cinder faces Levana in the palace and kills her. With the queen dead, the marriage that made her empress of the Eastern Commonwealth ends with her, and Kai is free. Cinder is crowned Queen Selene of Luna. Her first acts are to release the letumosis antidote to Earth without conditions and to free the shell children Levana had kept alive in captivity as its source, Cress's own kind, held in tanks beneath the city for years.",
+            "through": {
+              "chapter": 92
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Cinder does not keep the throne. Having taken it to end Levana, she uses it to dismantle what Levana built - the aristocracy's grip on the outer sectors, the surveillance, the special operatives programme - and then abdicates, putting Luna's future to an elected government rather than another queen. Earth and Luna begin negotiating as neighbours rather than enemies, with the plague finally treatable everywhere. Winter and Jacin stay on Luna to help rebuild it, Winter still refusing to use the gift that is slowly costing her. Scarlet and Wolf go back to the farm in France. Cress and Thorne take the Rampion out to run antidote to the places on Earth that still have none, with Iko aboard. Kai and Cinder, an emperor and a girl who has just given away a crown, are left with the ordinary problem of what they are to each other now that nothing is stopping them.",
+            "through": {
+              "chapter": 97
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "winter"
+      }
+    },
     "winter-solstice": {
       "characters": {
         "characters": [

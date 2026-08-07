@@ -753,6 +753,214 @@
         "work": "cibola-burn"
       }
     },
+    "cinder": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Cinder"
+            ],
+            "description": "A sixteen-year-old cyborg and the best mechanic in New Beijing, capital of the Eastern Commonwealth, where she runs a repair booth in the weekly market. A hover accident when she was eleven cost her a hand and a leg, replaced with crude prosthetics, and left her with a retinal display and internal wiring she hides under gloves and boots. She remembers nothing of her life before the surgery. Cyborgs have no legal standing in the Commonwealth, so she is effectively the property of her guardian, who keeps every credit she earns. Practical, blunt and stubbornly competent, she is easier with machines than with people and deeply self-conscious about a body she cannot pass off as ordinary.",
+            "id": "cinder",
+            "name": "Linh Cinder",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The household android belonging to Cinder's guardian, fitted with a faulty personality chip that gives her far more enthusiasm, vanity and opinion than her model was designed for. She helps in the workshop, follows celebrity gossip about the prince, and is the closest thing Cinder has to a friend.",
+            "id": "iko",
+            "name": "Iko",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Kaito"
+            ],
+            "description": "The eighteen-year-old crown prince of the Eastern Commonwealth, who comes to Cinder's market booth himself with a malfunctioning royal android he wants repaired quietly. Unpretentious and easy in private, he is under severe strain: his father is dying of the plague, the Lunar queen is pressing him for an alliance, and he expects to inherit the throne far sooner than he wants.",
+            "id": "kai",
+            "name": "Prince Kai",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An older royal android brought to Cinder's booth by the prince in person for repair. Kai insists the job is urgent, will not say what the android was working on, and asks Cinder to keep the whole matter quiet.",
+            "id": "nainsi",
+            "name": "Nainsi",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Cinder's legal guardian and the widow of the man who adopted her. She resents Cinder as an expensive obligation forced on her by a husband who died of the plague within weeks of bringing the girl home, treats her as household property rather than family, and takes everything she earns. She is preoccupied with her daughters' marriage prospects and the family's slipping finances.",
+            "id": "adri",
+            "name": "Linh Adri",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The younger of Adri's two daughters, fourteen, and the only member of the household who treats Cinder as a sister rather than as a machine. Cheerful and romantic, she is excited about the coming annual ball and helps Cinder scavenge parts in the junkyard.",
+            "id": "peony",
+            "name": "Linh Peony",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Adri's elder daughter, who shares her mother's contempt for Cinder and is openly embarrassed to be associated with a cyborg.",
+            "id": "pearl",
+            "name": "Linh Pearl",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Kai's father and emperor of the Eastern Commonwealth, respected as a fair and steady ruler. He has contracted letumosis and is dying in quarantine at the palace, leaving his son to manage the Commonwealth's negotiations with Luna.",
+            "id": "emperor-rikan",
+            "name": "Emperor Rikan",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The royal advisor, who served Kai's father for years and now steers Kai through his first weeks of rule. Formal and cautious, he is preoccupied above all with the Commonwealth's weak position against Luna.",
+            "id": "konn-torin",
+            "name": "Konn Torin",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The elderly head of the royal research laboratory, a brisk, evasive scientist leading the search for a cure to letumosis, the plague sweeping Earth. He administers the cyborg draft, in which cyborgs are conscripted as test subjects and do not come back, and takes an unusual and unexplained interest in Cinder once her results come in.",
+            "id": "dr-erland",
+            "name": "Dr. Dmitri Erland",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The queen of Luna, the settled colony on the moon, whose people can alter what others see and feel. She arrives in New Beijing on the first Lunar state visit in years, pressing for an alliance with the Eastern Commonwealth, and is renowned for a beauty no one at her court is permitted to question. She holds the one thing Earth most needs and intends to be paid for it in crowns.",
+            "id": "queen-levana",
+            "name": "Queen Levana",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Levana's head thaumaturge, the queen's chief servant and enforcer, who accompanies the Lunar delegation to Earth and handles the work Levana will not do in public.",
+            "id": "sybil-mira",
+            "name": "Sybil Mira",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The heir to the Lunar throne and Levana's niece, believed to have burned to death at the age of three in a fire in the palace nursery. Rumours that the child survived have circulated for years on both worlds, and by the close of the book they have an answer: the missing princess and Linh Cinder are the same person, which makes Cinder the one rival claim Levana cannot ignore.",
+            "id": "princess-selene",
+            "name": "Princess Selene",
+            "reveal": {
+              "chapter": 38
+            }
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "cinder"
+      },
+      "recaps": {
+        "ending": "Cinder is exposed at the annual ball as both a cyborg and a Lunar, arrested, and sentenced to be handed over to Queen Levana. Cornered, Kai accepts Levana's terms: he will marry her and surrender Cinder in exchange for the letumosis antidote for his people. In her cell, Dr. Erland admits that he is himself a Lunar defector who came to Earth years ago searching for the lost heir, and tells Cinder who she is: Princess Selene, badly burned in the nursery fire Levana ordered, smuggled off the moon at three years old, rebuilt as a cyborg and hidden on Earth ever since. As the only living person with a stronger claim to the Lunar throne, she is the one thing Levana genuinely fears. Erland fits her with a stronger cyborg hand and foot, tells her to break out and find him in Africa, and leaves. Peony is dead of the plague, Iko has been dismantled and survives only as a personality chip, Adri has disowned her, and Kai now knows what she is but not who. The book closes with Cinder alone in the prison, certain of her identity for the first time and choosing to escape rather than be delivered to Luna.",
+        "in_short": "In New Beijing, generations after a world war, sixteen-year-old Linh Cinder is a cyborg mechanic owned by an unloving guardian in a society that treats cyborgs as property. When Crown Prince Kai brings her a broken royal android to repair, she is drawn into two crises at once: letumosis, an incurable plague that kills the emperor and her stepsister Peony, and Luna, the moon colony whose queen Levana can bend minds and wants Earth's largest empire through marriage. Conscripted as a plague test subject, Cinder proves immune, and the palace scientist Dr. Erland eventually tells her why: she is Lunar. She goes to the royal ball to warn Kai that Levana means to kill him once she is crowned, and is exposed there as both cyborg and Lunar, then jailed. In prison Erland reveals the rest: Cinder is Princess Selene, the Lunar heir believed dead since childhood and the rightful claimant to Levana's throne. Kai agrees to the marriage to buy the antidote for Earth, and Cinder prepares to break out.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In New Beijing, capital of the Eastern Commonwealth, sixteen-year-old Linh Cinder works as a mechanic in the weekly market. She is a cyborg, rebuilt after a hover accident she cannot remember, and by law the property of her guardian, Linh Adri, who took her in unwillingly after her adoptive father died. Her only real companions are the household android Iko and Adri's younger daughter, Peony. Crown Prince Kai comes to her booth in person with a broken royal android called Nainsi, asking her to repair it quietly. While he is there a man collapses in the market with letumosis, the plague that has killed thousands across Earth and has no cure; the emperor himself is dying of it in the palace. Days later Cinder takes Peony to the city junkyard to scavenge parts for an abandoned car, and Peony collapses with the plague's first mark. Cinder calls the quarantine crews and watches her carried away.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Blaming Cinder for Peony's infection, Adri volunteers her for the cyborg draft, in which cyborgs are conscripted as test subjects for plague research and never return. At the palace laboratory Dr. Dmitri Erland injects her with letumosis and she does not sicken: she is immune, the first case he has ever found. Rather than destroy her he hires her, hoping to trace a cure through her blood, and refuses to explain why he thinks she is different from every other subject. Cinder keeps working on Nainsi and keeps crossing paths with Kai, who is trying to hold off Queen Levana of Luna while his father fails. Emperor Rikan dies of letumosis, and Kai becomes emperor-elect at eighteen with a coronation, a Lunar state visit and an epidemic all bearing down on him at once.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Cinder divides her time between the palace laboratory, where Erland pays her to submit to tests he will not explain, and the market booth that supports Adri's household. Kai, under pressure to accept a marriage alliance with Queen Levana in exchange for Lunar help against the plague, invites Cinder to the annual ball, not knowing she is a cyborg; she cannot accept and cannot explain why. She keeps working on Nainsi and keeps finding that the android's fault is not the interesting thing about her. Peony remains in the quarantine ward, and Cinder visits when she can. The palace braces for Levana's arrival, the first Lunar state visit in years, and Kai has to decide what he is willing to trade for the antidote.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Cinder finishes repairing Nainsi and finds what the android had been doing: the late emperor had secretly ordered her to investigate whether Princess Selene, the Lunar heir believed to have burned to death in the palace nursery at the age of three, might still be alive. Levana arrives in New Beijing with her head thaumaturge Sybil Mira and an entourage whose glamour makes them impossible to see plainly. She offers Kai the plague antidote and an end to Lunar hostility in exchange for marriage and the Commonwealth's crown, and makes clear she will not negotiate. Hiding in the palace, Cinder discovers that she can see through the Lunar glamour and that Levana can neither read nor control her. Dr. Erland gives her the explanation she has been dreading: she is Lunar herself, a fugitive from a people Earth despises, and the gift she has spent her life suppressing is real. He urges her to learn to use it. Levana, having glimpsed her, demands the girl be handed over.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Erland gives Cinder doses of an experimental antidote developed from her own immunity, and she runs them to the quarantine ward for Peony. She arrives too late; Peony dies before the injection can take hold, and Cinder gives the remaining dose to a small boy from the market, who recovers. Before the body is collected she takes Peony's identification chip. Told only that Cinder was at the ward, Adri accuses her of theft and turns on her completely. Cinder now knows she is Lunar, that Levana wants her found, and that Kai is being driven toward a marriage that would hand Earth to Luna.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Adri punishes Cinder by having Iko dismantled and her parts sold, leaving Cinder with nothing but the android's personality chip. Cinder decides she cannot leave the city without warning Kai: Levana intends to marry him, take the Commonwealth, and dispose of him afterwards, and the antidote she is dangling is a lever rather than a gift. She repairs the abandoned orange gravel car in Adri's storage as an escape vehicle, salvages one of Peony's dresses, and resolves to reach Kai at the annual ball, tell him the truth, and be gone before the Lunar delegation can take her.",
+            "through": {
+              "chapter": 29
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Cinder arrives at the ball filthy and improvised and gets to Kai. She tells him Levana means to have him killed once she is crowned and begs him to refuse the marriage. Levana confronts them in front of the court and orders Cinder killed as an escaped Lunar fugitive; Kai refuses. Cinder resists the queen's control publicly, and in the struggle to get away her cyborg foot comes loose on the palace stairs, exposing her as both Lunar and cyborg to Kai, the guests and the news cameras. She is arrested and imprisoned to await execution, and Levana renews her demand that the girl be surrendered to Luna.",
+            "through": {
+              "chapter": 33
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In her cell Cinder learns Kai has accepted Levana's terms: he will marry her, and Cinder will be handed to Luna, in exchange for the plague antidote for Earth. Dr. Erland visits and admits he is Lunar too, a defector who came to Earth years ago to search for the missing heir. He explains what her scars and her medical records mean: she is Princess Selene, smuggled off Luna as a badly burned three-year-old, rebuilt as a cyborg, hidden for years in Europe and finally placed with the Linh family in New Beijing. Levana ordered the nursery fire, and Cinder is the only person with a legitimate claim to the Lunar throne and the only person Levana truly fears. Erland leaves her an improved cyborg hand and foot, tells her to break out and meet him in Africa, and disappears. The book ends with Cinder alone in the cell, no longer merely a mechanic, deciding to escape.",
+            "through": {
+              "chapter": 38
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "cinder"
+      }
+    },
     "city-of-dragons-robin-hobb": {
       "characters": {
         "characters": [

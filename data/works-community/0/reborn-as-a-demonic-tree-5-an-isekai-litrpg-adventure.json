@@ -1203,6 +1203,321 @@
         "work": "red-rising"
       }
     },
+    "red-seas-under-red-skies": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Leocanto Kosta"
+            ],
+            "description": "Two years out of Camorr, Locke is living in the free city of Tal Verrar as Leocanto Kosta, a gentleman of leisure with no visible occupation and a great deal of patience. He and Jean are the only survivors of the crew that raised them, and the loss has left its mark: he is thinner, harder to reach, and prone to silences Jean has learned to work around. The two of them are most of the way through a game years in the preparation, aimed at the largest single concentration of loose money in the city.",
+            "id": "locke-lamora",
+            "name": "Locke Lamora",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Jerome de Ferra"
+            ],
+            "description": "Locke's partner and the only family either of them has left, playing the wealthy idler Jerome de Ferra. He carries the crew's practical burdens: the money, the planning, the weapons, and Locke himself, whom he dragged back out of the worst of the grief after Camorr more or less by force. Heavy, bespectacled and courteous in company, he is still one of the most dangerous close fighters in either city, and he still keeps the pair of hatchets he calls the Wicked Sisters.",
+            "id": "jean-tannen",
+            "name": "Jean Tannen",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Master of the Sinspire, the towering gambling house that dominates Tal Verrar and lets players climb its floors only as they win. He is the most powerful private individual in the city, holding the debts and the secrets of most of its aristocracy, and he collects rare pieces from the old Therin Throne empire. He is known for punishing cheats without exception, without hurry and without leaving any doubt about what happened. His vault has never been touched, and it is the object of Locke and Jean's game.",
+            "id": "requin",
+            "name": "Requin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Requin's second and constant companion, who lost a hand, an eye and most of the skin on one side of her body to a fire meant for him. She wears a brass hand in place of the one she lost and moves through the Sinspire as its working authority: nobody reaches Requin without going through her first. She is entirely loyal to him and almost impossible to read.",
+            "id": "selendri",
+            "name": "Selendri",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of a pair of wealthy Sinspire regulars who sit down against Locke and Jean at cards night after night as they work their way up the tower. She treats the table as a matter of standing rather than of money, and neither she nor her regular partner intends to lose to newcomers.",
+            "id": "madam-durenna",
+            "name": "Madam Durenna",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "the Archon"
+            ],
+            "description": "The Archon of Tal Verrar, commander of its army and navy and in practice its military dictator. The office was created to meet an emergency and was never surrendered afterwards, and the city's merchant council has been working to dismantle it ever since. Stragos needs a danger large enough to make Tal Verrar grateful for its soldiers again, and he is entirely willing to spend other people's lives manufacturing one.",
+            "id": "maxilan-stragos",
+            "name": "Maxilan Stragos",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An old sailing master pressed into the Archon's service with the job of making Locke and Jean look, briefly, like men who have spent their lives at sea. Blunt, deeply superstitious and unimpressed by his pupils, he drills Locke in enough vocabulary and stagecraft to give orders convincingly, and insists on every custom a ship must observe, including the cats no crew will sail without.",
+            "id": "caldris",
+            "name": "Caldris",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An experienced hand who signs on to the crew Locke and Jean are given, knowing a great deal more about the sea than the men issuing his orders do.",
+            "id": "jabril",
+            "name": "Jabril",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Captain of the Poison Orchid and one of the most respected pirates working out of the Ghostwind Isles, a Syrune woman who left a naval career behind and now raids under her own articles. She keeps her two small children aboard her ship, runs the crew by vote and custom rather than by fear, and takes a careful, unsentimental view of strangers who turn up with implausible stories.",
+            "id": "zamira-drakasha",
+            "name": "Zamira Drakasha",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "First mate of the Poison Orchid: small, quick and formidably competent, who left a comfortable family behind for the sea and has no intention of going back. She sets the terms on which newcomers earn a place aboard and enforces them personally, and she and Jean recognise something in each other almost at once.",
+            "id": "ezri-delmastro",
+            "name": "Ezri Delmastro",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Zamira Drakasha's young son and daughter, who live aboard the Poison Orchid because their mother will not leave them anywhere she cannot defend. The crew treats their presence as ordinary.",
+            "id": "paolo-and-cosetta",
+            "name": "Paolo and Cosetta",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Poison Orchid's physiker, Collegium-trained, walking with a cane and openly contemptuous of nearly everyone she treats. She is nonetheless very good, which is why the crew tolerates her.",
+            "id": "scholar-treganne",
+            "name": "Scholar Treganne",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Captain of the Dread Sovereign and one of the senior figures among the free captains of the Ghostwind Isles. His standing rests on an old understanding that the pirates keep their raiding small and far from the cities capable of wiping them out, and he takes that understanding more seriously than anyone else at the table.",
+            "id": "jaffrim-rodanov",
+            "name": "Jaffrim Rodanov",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "red-seas-under-red-skies"
+      },
+      "recaps": {
+        "ending": "Jaffrim Rodanov's Dread Sovereign runs down the Poison Orchid and the two crews fight it out hand to hand. Drakasha's people win, and Ezri Delmastro dies in the boarding, which takes from Jean the one thing he had found for himself since Camorr. In Tal Verrar the Archon's manufactured crisis destroys him: the piracy he ordered arrives on terms he cannot steer, Requin and the merchant council move against him while he is exposed, and Locke and Jean get to Stragos face to face. He gives them nothing. The doses he had been handing out were a leash rather than a cure, no antidote exists to be extracted from him, and the two of them walk out of his palace still carrying the poison and no closer to knowing how long it leaves them. The Sinspire keeps its vault: the two-year game against Requin ends in a working understanding rather than the theft it was built for, and the money Locke came to Tal Verrar for stays where it was. Zamira Drakasha sails the Poison Orchid back to the Ghostwind Isles with her children and her crew. Locke and Jean take ship out of Tal Verrar with very little left, looking for anyone - physiker, alchemist or worse - who can undo what the Archon did to them, and with the Bondsmagi of Karthain still carrying an unsettled account for what happened in Camorr.",
+        "in_short": "Two years after Camorr, Locke Lamora and Jean Tannen are deep into a long confidence game in Tal Verrar, aimed at the vault of the Sinspire, the gambling tower run by the untouchable Requin. The city's military ruler, Archon Maxilan Stragos, seizes them, poisons them both, and forces them to sea to manufacture a pirate threat that will make Tal Verrar fund his navy. Neither can sail; their ship is lost and they are captured by Captain Zamira Drakasha of the Poison Orchid, whose crew they join and whose first mate, Ezri Delmastro, falls in love with Jean. Locke persuades the free captains to stage the raids the Archon wants, then returns to Tal Verrar and sells the Archon's secret to Requin instead of robbing him. A rival pirate captain, unwilling to risk the islands, attacks the Orchid, and Ezri is killed. The Archon's scheme collapses and he is broken, but he yields no antidote. Locke and Jean leave the city grieving, nearly penniless, and still poisoned.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "In Camorr, Locke Lamora led the Gentlemen Bastards, a small crew of confidence artists raised beneath a temple by the fraudulent priest Father Chains and trained to rob the nobility while passing for ordinary thieves. Their trade broke the Secret Peace, the arrangement under which Camorr's underworld left the aristocracy alone. A masked figure calling himself the Grey King, backed by a hired sorcerer of the Bondsmagi of Karthain called the Falconer, destroyed the crime lord Capa Barsavi and took his place as Capa Raza, in revenge for a family Barsavi had murdered years earlier. On the way he killed three of the Gentlemen Bastards - Calo, Galdo and Bug - and took everything the crew had saved. Locke and Jean Tannen broke the Falconer, mutilating him so that he could never work sorcery again, warned the duke's secret intelligence chief in time to stop an attack on Camorr's assembled nobility, and Locke killed Raza aboard his own ship. The two of them left Camorr by sea, the last survivors of their crew, pursued by nobody but marked by the Bondsmagi, who do not forgive what was done to one of their own.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Two years later Locke and Jean are in the free city of Tal Verrar, living as the gentlemen Leocanto Kosta and Jerome de Ferra. They are two years into a game aimed at the Sinspire, the great gambling tower whose owner, Requin, holds the debts and secrets of the city's rich and has never been robbed. The tower's upper floors open to a player only as their winnings rise, so the approach has to be earned in public over months of cards, with Requin's maimed, brass-handed second Selendri controlling everything that reaches him. Chapters looking back fill in the intervening years: Locke's collapse into grief and drink after Camorr, Jean's refusal to leave him there, and the slow construction of the Tal Verrar game out of nothing. In the present, the two of them are attacked by professional killers they cannot account for - an interruption that has nothing to do with the Sinspire and everything to do with someone else taking an interest in who they really are.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The attacks turn out to have been a lever. Locke and Jean are taken by soldiers of Maxilan Stragos, the Archon of Tal Verrar, the city's military commander and effective dictator, whose office the merchant council is steadily working to abolish. Stragos has them both poisoned with a slow alchemical compound that will kill them unless he supplies its counteragent at intervals, and then names his price: pirates. Tal Verrar has been free of raiding for years, and a frightened city pays for its navy without argument. He orders them to sea to manufacture the threat he needs. Neither of them can sail, so he provides a ship, the Red Messenger, a crew who must never learn the truth, and an old sailing master named Caldris to drill Locke in enough seamanship and shipboard superstition to give orders without being unmasked. The Sinspire game is left standing while they go.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The voyage fails almost immediately. Caldris dies before the ship is properly clear of land, leaving Locke and Jean in command of a vessel they do not understand, and the crew works out what they are and takes the ship away from them. What saves their lives is capture: the Poison Orchid, under Captain Zamira Drakasha, comes alongside. Instead of being killed they are offered the only bargain pirates offer, which is work, and they set about earning a place aboard on Drakasha's terms and under the eye of her first mate, Ezri Delmastro. Drakasha keeps her two young children aboard and runs the Orchid by articles and vote rather than by fear. Locke, who cannot tell a single useful lie about the sea, has to make himself valuable in other ways, and Jean and Ezri fall into something neither of them was looking for.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Locke eventually gives Drakasha a version of the truth: that they were sent to sea by the Archon of Tal Verrar to provoke exactly the piracy she practises, and that his poison is the only reason they are still working for him. At the free port of Prodigal, where the captains of the Ghostwind Isles keep an uneasy peace among themselves, the proposal goes to the others - staged raids close enough to Tal Verrar's shipping to serve the Archon's purpose without bringing his navy down on the islands. Not every captain believes the risk can be contained, and Jaffrim Rodanov of the Dread Sovereign in particular has his own reasons for wanting the Ghostwinds to stay invisible. Locke and Jean go back to Tal Verrar committed to running two games at once, the Sinspire against Requin and the Archon against everyone, while the poison keeps to its own schedule.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In Tal Verrar, Locke goes over the Archon's head. He takes what he knows straight to Requin and Selendri, trading the truth about Stragos's scheme for a working relationship with the one private power in the city capable of moving against the Archon, and gambles that being useful to Requin is worth more than the money he came for. The double game holds together longer than it has any right to, with Selendri as the channel through which it runs. At sea, meanwhile, Drakasha's arrangement with the other free captains proves less solid than it looked at Port Prodigal: Rodanov, who never accepted the risk, comes after the Poison Orchid.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Dread Sovereign catches the Poison Orchid and the two crews settle it by boarding. Drakasha's people win, but Ezri Delmastro is killed in the fighting, and Jean is left with a loss he has no way to carry. In Tal Verrar the Archon's manufactured crisis turns on him: the piracy he ordered arrives on terms he cannot control, Requin and the merchant council move while he is exposed, and Locke and Jean reach Stragos in person. He has nothing worth giving them. The doses he supplied were a leash rather than a remedy, there is no cure to be had from him, and he is finished as a power in the city either way. The Sinspire's vault stays shut; the long game against Requin ends in an understanding instead of a theft, and most of the fortune Locke spent two years approaching stays where it was. Zamira Drakasha takes the Orchid back to the Ghostwind Isles. Locke and Jean leave Tal Verrar with little money, each other, and the poison still in them.",
+            "through": {
+              "chapter": 16
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "red-seas-under-red-skies"
+      }
+    },
+    "redawn": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A cytonic pilot of the UrDail, returning to her homeworld of ReDawn after being shot down over the human planet Detritus and spending months unconscious among strangers. She left to find allies against the Superiority and comes back to find that her own people are much further down the road to surrendering to it than when she went. Sharp-tongued, impatient with committees, and carrying the guilt of having been absent while the argument was lost.",
+            "id": "alanik",
+            "name": "Alanik",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A young UrDail who moves in the same circles as Alanik and has known her a long time. He is attentive, well connected and quick to offer help with the problem of Rinakin, and he presents himself as sympathetic to the independence faction.",
+            "id": "quilan",
+            "name": "Quilan",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The UrDail leader Alanik follows, the most prominent voice arguing that ReDawn should stay out of the Superiority and take its chances alone. He was the one who encouraged Alanik's search for outside allies. By the time she returns he has been taken by the faction that wants ReDawn inside the Superiority, and his supporters are scattered.",
+            "id": "rinakin",
+            "name": "Rinakin",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Flightleader of Skyward Flight, a human cytonic, and the person on Detritus who has spent the most time in Alanik's head. Formal to a fault, weighed down by responsibilities the DDF never meant a pilot of his rank to carry, and prepared to commit his flight to somebody else's planet on the strength of an argument he believes.",
+            "id": "jorgen-weight",
+            "name": "Jorgen Weight",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A human pilot of Skyward Flight, level-headed and openly sceptical of governments that decide things for people without telling them, which turns out to be a useful instinct on ReDawn.",
+            "id": "fm",
+            "name": "FM",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "redawn"
+      },
+      "recaps": {
+        "ending": "Quilan is exposed: he has been working with the Superiority throughout, and the help he offered Alanik was a means of tracking the independence faction and of delivering ReDawn's cytonics into Superiority hands. The occupation escalates into an open attack, and with the population of an entire tree city at risk and no way to evacuate it by ship, Alanik, Jorgen and the taynix do something nobody has attempted: they hyperjump the tree itself out of danger. ReDawn is not liberated, and the faction that wants Superiority membership is not finished, but the surrender is stopped, the resistance survives with Rinakin's cause intact, and the argument that the Superiority protects rather than owns its members is much harder for anyone on ReDawn to make. What Alanik went looking for she finally gets: an alliance between the UrDail resistance and the humans of Detritus, made by people who fought beside each other rather than by governments. Alanik and Jorgen come out of it able to work cytonically as a pair, which will matter more than either of them yet realizes. Both worlds now face the same enemy, and both know that Winzik will not accept the result.",
+        "in_short": "Able to hyperjump at last, Alanik returns to her homeworld of ReDawn, where the UrDail live in cities grown into enormous floating trees, and finds her people on the point of accepting Superiority membership. Rinakin, the leader of the faction opposing it, has been taken, the resistance is scattered, and Alanik cannot get anyone in authority to listen. Her old acquaintance Quilan offers to help. Out of options at home, she goes back to Detritus and persuades Jorgen to bring Skyward Flight to ReDawn, and human pilots end up fighting over an alien world. Quilan turns out to have been working for the Superiority all along, and the occupation of ReDawn becomes open. With an entire tree city about to be destroyed and no way to evacuate it, Alanik, Jorgen and their taynix hyperjump the tree itself to safety. ReDawn is not free, but the surrender is stopped, and the UrDail resistance and the humans leave the fight as allies.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: humanity survived on the caverned planet Detritus, penned there by the Superiority, a galactic government that ranks species by aggression and hoards faster-than-light travel. Spensa Nightshade turned out to be cytonic, infiltrated a Superiority fighter program on the platform of Starsight, and learned that hyperdrives are living creatures called taynix and that the official Winzik meant to control the world-killing delvers rather than defend anyone from them. She escaped with a hoard of taynix, giving Detritus hyperdrives and a shield, while Winzik gained a fleet and emergency powers, and she has since left to chase the delvers' origin and is out of contact. Alanik, a cytonic pilot of the UrDail from the planet ReDawn, had flown to Detritus looking for allies against the Superiority, was shot down and spent months unconscious there. The humans have since found and trained enough taynix to jump ships between stars and have beaten off a Superiority attack, and Alanik is finally able to go home. Jorgen, flightleader of Skyward Flight, has proved to be cytonic himself.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Alanik hyperjumps home to ReDawn, a world where the UrDail live in cities grown into vast floating trees above an atmosphere nobody can breathe, and finds the political argument she left behind almost over. The faction that wants ReDawn to accept Superiority membership is close to carrying it, presenting the Superiority as protection rather than ownership. Rinakin, the leader of the opposition and the man who sent Alanik looking for allies in the first place, has been taken, and his supporters are scattered or frightened. Alanik's account of the humans, a species the Superiority classifies as a contagion, does not help her case; to most of her people, arriving with news of human friends is proof that she has lost her judgement. Quilan, an old acquaintance with connections on both sides, offers to help her find Rinakin and get her a hearing.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Working with Quilan, Alanik tries to reach Rinakin and to force the question into the open before the vote is finalized, and learns how much of ReDawn's government has already been quietly arranged around a Superiority presence. Every route she takes closes ahead of her, and the pattern is too neat to be luck. It becomes clear she cannot save her planet with the resistance she has left, so she does the thing her people would consider unthinkable and goes back for the humans, asking Jorgen to bring Skyward Flight to ReDawn. Jorgen, already stretched between the DDF and a National Assembly that wants him where it can see him, commits anyway. Human pilots arrive over an alien world, working with taynix hyperdrives and with Alanik as the only translator anyone trusts, and Alanik and Jorgen begin to find that their cytonic abilities work better together than apart.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Superiority stops pretending. Its forces move on ReDawn openly, the membership faction welcomes them, and what was a political argument becomes an occupation. Alanik's efforts to protect the cytonics among her own people become urgent, since the Superiority's interest in cytonics is proprietary and permanent. The humans, fighting over unfamiliar terrain in an atmosphere that will kill them if they descend too far, are outnumbered and cannot be reinforced quickly. Alanik's suspicions about how thoroughly her movements have been anticipated finally have an answer, and it is one she does not want: someone close to her has been reporting everything.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Quilan is revealed as the Superiority's agent; his help was a means of mapping the resistance and delivering ReDawn's cytonics. The occupation turns into an attack, and an entire tree city, with all its people, is about to be destroyed with no way to evacuate it. Alanik, Jorgen and their taynix jump the tree itself to safety, a hyperjump on a scale nobody had attempted. ReDawn is not liberated and the membership faction is not beaten, but the surrender is halted, Rinakin's cause survives, and the Superiority's claim to be a protector is much harder to make on ReDawn now. Alanik gets what she originally flew to Detritus for: an alliance with the humans, made between people who fought together rather than between governments. She and Jorgen finish the battle able to work as a cytonic pair, and both worlds go on facing the same enemy, who will not let the result stand.",
+            "through": {
+              "chapter": 23
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "redawn"
+      }
+    },
     "regicide": {
       "characters": {
         "characters": [

@@ -1290,6 +1290,254 @@
         "work": "skysworn"
       }
     },
+    "skyward": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Spin"
+            ],
+            "description": "A teenager from the caverns of Detritus, the planet where the last remnant of humanity shelters underground while alien Krell raiders attack from above. Her father was a fighter pilot shot down during the defense of Alta Base when she was small, and the Defiant Defense Force recorded him as a coward who fled the battle, a verdict that cost his family its standing and left Spensa, her mother and her grandmother scraping a living outside the main cavern. Fierce, boastful and stubborn, raised on her grandmother's stories of Earth warriors, she wants nothing except to fly and to prove the accusation against her father false.",
+            "id": "spensa-nightshade",
+            "name": "Spensa Nightshade",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Chaser"
+            ],
+            "description": "Spensa's father, a fighter pilot of the Defiant Defense Force known by the callsign Chaser. He was shot down during the Battle of Alta when Spensa was a young child, and the official record says he broke and ran from the fight. Spensa remembers a man who talked to her about the stars and refuses to accept that account of him.",
+            "id": "zeen-nightshade",
+            "name": "Zeen Nightshade",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Spensa's blind grandmother, who keeps the old stories alive: the voyage of the fleet that stranded their ancestors on Detritus, and the tales of Earth heroes she recites from memory. She tells Spensa to listen for the stars, an instruction Spensa takes as a figure of speech.",
+            "id": "gran-gran",
+            "name": "Gran-Gran",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Rig"
+            ],
+            "description": "Spensa's closest friend from the caverns, careful and analytical where she is reckless, and far better than she is at the technical parts of the pilot's entrance exam. He would rather be safe than heroic, and he has a real gift for machinery.",
+            "id": "rodge-mccaffrey",
+            "name": "Rodge McCaffrey",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Admiral of the Defiant Defense Force, a hard veteran who flew at the Battle of Alta. She decides who is allowed into pilot training and is openly determined that the daughter of a man recorded as a deserter will never fly for the DDF.",
+            "id": "ironsides",
+            "name": "Ironsides",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Mongrel"
+            ],
+            "description": "The instructor assigned to train Skyward Flight, a retired pilot with a bad leg and a sour manner. He flew in the same flight as Spensa's father and is one of the few people who will speak of him at all. He insists on the DDF's own rule that any candidate who passes the entrance exam must be trained.",
+            "id": "cobb",
+            "name": "Cobb",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Jerkface"
+            ],
+            "description": "The cadet appointed flightleader of Skyward Flight, from one of the most privileged families on Detritus; his mother sits on the National Assembly. Formal, rule-bound and irritatingly correct, he and Spensa dislike each other immediately, and she refuses to call him anything but Jerkface.",
+            "id": "jorgen-weight",
+            "name": "Jorgen Weight",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Quirk"
+            ],
+            "description": "A cadet from the farming caverns with a gentle, folksy manner and a habit of quoting the sayings of a saint. She is the best natural shot in the flight and by some distance the least aggressive person in it.",
+            "id": "kimmalyn",
+            "name": "Kimmalyn",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A cadet from a comfortable family who reads widely and questions both the DDF's chain of command and the assumptions Detritus society makes about rank and birth. She is usually the calmest voice in the flight.",
+            "id": "fm",
+            "name": "FM",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Amphisbaena",
+              "Amphi"
+            ],
+            "description": "A cadet with a scholarly streak and a taste for long words, steady in the cockpit and quietly convinced that he should have been made flightleader instead of Jorgen.",
+            "id": "arturo-mendez",
+            "name": "Arturo Mendez",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A brash, funny cadet who becomes Spensa's closest friend inside the flight. She is as hungry for glory as Spensa is and even less inclined to hold anything back.",
+            "id": "hurl",
+            "name": "Hurl",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Nedder"
+            ],
+            "description": "A large, cheerful cadet from a well-off family whose older brothers flew for the DDF before him. Very little troubles him.",
+            "id": "nedd",
+            "name": "Nedd",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An enthusiastic, talkative cadet who loves stories about flying and is delighted simply to be allowed near a cockpit.",
+            "id": "bim",
+            "name": "Bim",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A short, strong cadet from a distant cavern community, who says little and whose accent the rest of the flight struggles with.",
+            "id": "morningtide",
+            "name": "Morningtide",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An artificial intelligence aboard a wrecked starfighter that Spensa finds buried in a cavern outside Alta. The ship is far more advanced than anything the DDF can build. Its last order from a pilot long dead was to hide and remain hidden, and it insists at length that it is not truly sentient while displaying curiosity, vanity, and a consuming interest in cataloguing mushrooms.",
+            "id": "m-bot",
+            "name": "M-Bot",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A small yellow slug from the caverns that repeats sounds it hears, fluting them back. It attaches itself to Spensa and cannot be persuaded to leave.",
+            "id": "doomslug",
+            "name": "Doomslug",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "skyward"
+      },
+      "recaps": {
+        "ending": "The Krell throw everything they have at Alta, including a lifebuster bomb meant to destroy the base and the caverns beneath it. The battle costs the DDF badly and kills several of Spensa's friends, Hurl among them. Flying M-Bot, Spensa deliberately uses her cytonic ability for the first time, teleports the ship, and gets above the debris field, where she finds the truth: the Krell fighters are unmanned drones controlled from an orbiting command ship crewed by living aliens. Humanity has not been hunted, it has been imprisoned and culled whenever it grew too numerous or too capable. Spensa destroys the command ship and the assault collapses. Ironsides gives up command and Cobb is made admiral of the DDF; Spensa's father is publicly cleared of cowardice, and Spensa is confirmed as a full pilot under the callsign Spin. M-Bot survives but is severely damaged and must be rebuilt. The DDF now knows the shape of its enemy for the first time, an alien civilization with vastly better technology that treats humans as a contained infestation, and it knows that Spensa can partly do what that civilization does. The ancient orbital platforms overhead, the origin of the fleet that stranded humanity here, and the identity of the people behind the drones are all left open, and Spensa's ability marks her as both the DDF's greatest asset and the thing its jailers will most want to stop.",
+        "in_short": "The last of humanity lives in caverns on the planet Detritus, penned beneath a shell of orbiting debris and raided constantly by alien Krell fighters. Spensa Nightshade wants to be a pilot, but her father was shot down at the Battle of Alta and branded a coward, and Admiral Ironsides is determined to keep his daughter out of a cockpit. Forced into training by an old instructor's insistence on the rules, Spensa flies with Skyward Flight while secretly rebuilding a wrecked, far more advanced starfighter she finds in a cave, whose artificial intelligence calls itself M-Bot. Cadets die around her. She learns her father was not a coward: he was cytonic, able to hear the stars, and Ironsides shot him down out of fear of what that does to a pilot. When the Krell attack Alta with a weapon meant to end humanity on Detritus, Spensa uses the same ability herself, discovers that the Krell fighters are drones flown by aliens who have kept humanity imprisoned, and destroys their command ship.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "The survivors of humanity live in caverns beneath the surface of the planet Detritus, sheltering under a shell of ancient orbiting debris while alien Krell ships raid from above. Their military, the Defiant Defense Force, treats fighter pilots as the highest calling there is. Spensa Nightshade has wanted to fly since she was small, but her father was shot down at the Battle of Alta and recorded as a coward who fled, and the label has followed his family ever since. Living outside the main cavern with her mother and her storytelling grandmother, Spensa studies for the pilot's entrance exam alongside her friend Rodge and passes it. Admiral Ironsides, who intends that no child of a deserter will ever fly, blocks her admission; the cadet instructor Cobb, who flew with her father, forces the issue by citing the DDF's own rule that anyone who passes must be trained. Spensa joins Skyward Flight under Cobb, where her fellow cadets include the strictly correct flightleader Jorgen, the sharpshooter Kimmalyn, the thoughtful FM, the wordy Arturo, the reckless Hurl, the easygoing Nedd, the talkative Bim and the taciturn Morningtide. Ironsides makes no secret of expecting Spensa to fail.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Cadet training is unforgiving. Cobb drills the flight in simulators and then sends them up in real fighters, and cadets are expected to fly against Krell raids while they are still learning. Rodge cannot face it and resigns from the flight, transferring to engineering, where he is far better suited. Refused a place in base housing because of her father's record, Spensa sleeps in a cave and hunts rats to eat. Exploring the caverns, she finds something extraordinary: a wrecked starfighter of a design nobody on Detritus builds, carrying an intact artificial intelligence that calls itself M-Bot. It insists it is not sentient, says its standing order is to remain hidden, and would rather she collected mushrooms. Spensa keeps the discovery to herself and begins scavenging parts to repair the ship, eventually bringing Rodge in to help with the electronics. Meanwhile the flight starts taking real losses, and Spensa's temper and her father's reputation keep her at odds with Jorgen and with the DDF's leadership.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Skyward Flight is thrown against Krell raids again and again, and the cadets begin to die. The survivors are drawn closer together, and Spensa's standing inside the flight rises even as her standing with command does not; Ironsides keeps looking for a reason to remove her. Work on M-Bot progresses slowly, the ship's systems being ancient and far beyond anything the DDF builds, with missing components the main obstacle. Spensa also begins to notice something she cannot explain, a sound like distant stars, strongest during combat, exactly the thing her grandmother has always told her to listen for. And she starts to suspect that the Krell do not fight like an enemy trying to win: their raids escalate and then break off, they strike some targets and ignore others, and nobody in the DDF can say what the Krell actually are.",
+            "through": {
+              "chapter": 19
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The flight's losses mount, and the survivors carry them badly. The rivalry between Spensa and Jorgen erodes into something closer to respect as both are forced to lead under fire, and the flight itself becomes the thing Spensa is fighting for rather than her father's name alone. She keeps working on M-Bot, who grows steadily more talkative and more obviously a person than his own programming will admit he is. Piece by piece she learns more about her father's last flight, and the accounts she is given do not fit together; Cobb clearly knows more than he is willing to say. The sound she hears grows clearer, and she discovers that other pilots have heard it too, and that the DDF regards those pilots with fear rather than interest.",
+            "through": {
+              "chapter": 29
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Spensa learns that the DDF has a secret category for pilots who hear what she hears. They are called defects, the leadership believes they become a danger to their own side, and her father was one of them. The knowledge explains why Ironsides fought so hard to keep her out of a cockpit, and it puts Spensa's own place in the DDF at risk, since discovery would end her career or worse. M-Bot, close to flightworthy again, becomes both her refuge and her secret, and hiding a working starfighter from her own military grows harder. The Krell attacks intensify, and the DDF cannot replace lost ships and lost pilots at the rate it is losing them. Skyward Flight, which began as a full class of cadets, is down to a fraction of its number.",
+            "through": {
+              "chapter": 38
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The truth about the Battle of Alta finally reaches Spensa: her father did not flee. He heard the stars, something happened to him in the middle of the battle, and Ironsides shot him down herself, after which the DDF recorded it as cowardice. Spensa's fury at the admiral is complicated by the discovery that the danger Ironsides feared was not invented. Spensa's own connection to whatever lies beyond the debris field deepens, and she begins to understand that the enemy can hear her when she reaches for it. M-Bot flies again, unarmed but faster and more capable than anything in the DDF's inventory. Casualties among the cadets continue, and the DDF's hold on Alta becomes precarious as the Krell mass for something far larger than a raid.",
+            "through": {
+              "chapter": 47
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Krell launch an all-out assault on Alta carrying a lifebuster, a bomb capable of destroying the base and the caverns beneath it. Every pilot the DDF has goes up, and the flight suffers terribly; Hurl is among the dead. Spensa takes M-Bot into the battle, and in the middle of it she finally uses what she has been hearing, reaching out with her mind to teleport the ship above the debris field. There she finds the truth. The Krell fighters are drones, flown remotely by living aliens from a command ship in orbit, and those aliens have kept humanity penned on Detritus deliberately, bombing the population whenever it grew too numerous or too advanced. Spensa destroys the command ship and the assault collapses. Ironsides surrenders command and Cobb becomes admiral; Spensa's father is cleared, and Spensa is confirmed as a pilot with the callsign Spin. M-Bot survives, badly damaged. Humanity now knows it is a prisoner rather than a hunted remnant, that its jailers belong to a galactic civilization far beyond it technologically, and that at least one human can hear, and travel, the way they do.",
+            "through": {
+              "chapter": 55
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "skyward"
+      }
+    },
     "slaughterhouse-five": {
       "characters": {
         "characters": [

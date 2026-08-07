@@ -1292,6 +1292,195 @@
         "work": "a-hat-full-of-sky"
       }
     },
+    "a-legacy-of-spies": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The narrator: a retired Circus officer, half Breton and half Scottish, who spent his career in the field and in Smiley's service and now lives on his mother's farm in Brittany with his companion Catherine and her daughter. Old, careful with money and content to be forgotten, he is summoned to London by a letter from a Service he no longer recognises, and finds that the past he helped to bury has been dug up.",
+            "id": "peter-guillam",
+            "name": "Peter Guillam",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Guillam's chief now: the head of the Circus in his time, and the man who devised and ran the operations now under investigation. He has long since disappeared from public life, and nobody at the modern Service will say where he is.",
+            "id": "george-smiley",
+            "name": "George Smiley",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Frenchwoman who farms Guillam's land in Brittany and shares his house, direct, unsentimental and incurious about his past, with a daughter who does not speak.",
+            "id": "catherine",
+            "name": "Catherine",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Service's lawyer, courteous, quick and entirely modern, who conducts the interviews. His concern is not with what was right but with what can be defended in front of a parliamentary committee and a court, and with making sure the Service of today is not held responsible for the Service of fifty years ago.",
+            "id": "bunny",
+            "name": "Bunny",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Service's in-house historian and researcher, who has read the surviving files more thoroughly than anyone alive and has noticed exactly which documents are missing. Sharp, hostile and impatient with the old men's evasions, she conducts much of the questioning.",
+            "id": "laura",
+            "name": "Laura",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Circus officer of the fifties and sixties, hard, solitary and a heavy drinker, who ran the Berlin station and its agents into East Germany. He is spoken of in the files and by everyone who knew him as the best field man of his generation, and he has been dead for decades.",
+            "id": "alec-leamas",
+            "name": "Alec Leamas",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young London librarian and communist party member who became attached to Leamas, and who died with him at the Berlin Wall. She had no part in the intelligence world beyond the use that was made of her.",
+            "id": "liz-gold",
+            "name": "Liz Gold",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Leamas's son by a marriage that failed, brought up in Germany and grown into a hard, damaged and unscrupulous man with convictions behind him. He wants money and he wants somebody punished, and he is prepared to threaten in order to get both.",
+            "id": "christoph-leamas",
+            "name": "Christoph Leamas",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The operations chief of the East German service, feared and detested by his own colleagues, a physically cold and violent man with an unsavoury war record. During the period under investigation he was also the Circus's most productive source, recruited in London after an operation went wrong and protected at enormous cost.",
+            "id": "hans-dieter-mundt",
+            "name": "Hans-Dieter Mundt",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Circus's code name for Doris Gamp, an East German woman married to a Stasi officer, who volunteered her services to the West out of anger and conviction rather than money. Devout, headstrong and physically brave, she photographed documents from inside the service that employed her husband and became for a time the Circus's best window into it. She has a young son she is obliged to leave behind.",
+            "id": "tulip",
+            "name": "Tulip",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The head of the Circus during the period under investigation, secretive, ill and manipulative, who conceived the operations at the centre of the enquiry and never told any one participant more than a fraction of the whole. He died shortly after they ended.",
+            "id": "control",
+            "name": "Control",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Liz Gold's daughter, brought up by relatives and told very little about her mother's death. She is educated, temperate and genuinely in search of the truth rather than damages, which makes her harder to deal with than her fellow claimant.",
+            "id": "karen-gold",
+            "name": "Karen Gold",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Scottish Circus veteran who kept the service's safe houses and their secrets for decades, still alive, still discreet, and still loyal to the men she worked for. What she remembers about a particular house in the country is not what the files record.",
+            "id": "millie-mccraig",
+            "name": "Millie McCraig",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "a-legacy-of-spies"
+      },
+      "recaps": {
+        "ending": "The inquiry ends with the Service intending to settle: the claimants will be paid off, the record will be tidied, and the responsibility will rest where it can do the modern Service least harm, which means on Guillam and on men who are dead. Guillam, having told as much of the truth as he judges the dead can bear and having been threatened by Christoph Leamas along the way, leaves London rather than wait for the verdict, and goes to Germany to find Smiley. He finds him very old, in a library in Freiburg, still reading, unrepentant and precise. Smiley confirms what Guillam had worked out: Mundt was the Circus's agent, Windfall existed to protect him, Tulip died at his hands and the Circus concealed it, and Leamas and Liz Gold were expended in the same cause without being told. Asked what it was all for, Smiley says he did it for his service and his country while he believed in them, and that if there was a cause beyond that it was Europe. He offers no defence beyond the fact that the choices were made by men who knew what they cost. Guillam goes back to Brittany, the past acknowledged and nothing about it repaired.",
+        "in_short": "Peter Guillam, long retired to a farm in Brittany, is summoned to London by the modern Service. The children of Alec Leamas and Liz Gold, who died at the Berlin Wall decades earlier, are suing, and a parliamentary committee wants an account of the operations that killed them. Questioned by the Service's lawyer Bunny and its historian Laura, and confronted with files he helped to write and to weed, Guillam recalls the Berlin operations of the fifties and sixties: the East German network, and its best source, a woman code-named Tulip, the wife of a Stasi officer, whom Guillam helped to exfiltrate through Prague and with whom he fell in love. Tulip was murdered soon after reaching England, and the Circus buried it, because her killer was Mundt, the East German operations chief who was also the Circus's own agent. Everything that followed, including the operation that destroyed Leamas and Liz Gold, existed to keep Mundt in place. Threatened by Leamas's son and set up as the Service's scapegoat, Guillam finally tracks down George Smiley in Freiburg and hears him account for it all.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Alec Leamas, head of the Circus's Berlin station in the early nineteen sixties, lost his last agent at a checkpoint and was sent by Control on a final operation. He played out a public ruin into drink, debt and prison, was recruited by East German talent-spotters and taken East, where his information was used by Jens Fiedler, the East German counter-intelligence chief, to accuse his own operations chief, Hans-Dieter Mundt, of working for London. At a secret tribunal, Mundt's advocate produced Liz Gold, a young London librarian who had become Leamas's lover and had been brought East on a party exchange, and her truthful evidence exposed Leamas's defection as a British operation. Fiedler was destroyed and Mundt cleared. Mundt then released Leamas and Liz, because Mundt was in fact the Circus's own agent and the whole operation had been designed to protect him by removing the one man closing in on him. At the Wall, Liz was shot by the guards and Leamas climbed back down to die beside her. Peter Guillam was a junior officer in the Circus at the time, and George Smiley was Control's closest colleague.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Peter Guillam, long retired from the Circus, lives on his mother's farm in Brittany with Catherine, who works the land, and her daughter. A letter from the Service he served for forty years asks him, in terms he cannot refuse, to come to London. He is received in a glass building on the river by Bunny, a Service lawyer, and Laura, its in-house historian, and told what has happened: the children of Alec Leamas and Liz Gold are bringing a civil action over the deaths of their parents at the Berlin Wall, and a parliamentary committee is preparing to examine the operations that led to them. The Service wants an account of two old operations, Mayflower and Windfall, before it is given one by somebody else. Guillam is required to read documents he helped to create, some of which he knows to be false and some of which are missing, and to explain them under questioning by people who were not born when the events occurred.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Through the files and Guillam's own memory, the Berlin story is reassembled. In the years when the Wall was going up, the Circus was running an East German network from West Berlin, with Alec Leamas in charge of the field work and Control and Smiley directing from London. The network's best material came from a woman code-named Tulip: Doris Gamp, the wife of a Stasi officer, who offered herself to the West out of conviction and photographed documents from inside her husband's service. Her product was so good that London built a special handling arrangement around it. Guillam, then a young officer, was drawn into her case. It becomes clear from the surviving papers that only Control and Smiley knew what the material was really being used for, and that Leamas and Guillam were being told a version of the operation designed to keep them convincing rather than informed.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tulip's position becomes untenable and she has to be brought out. Guillam escorts her through Czechoslovakia on a difficult exfiltration, sleeping in safe rooms and moving on false papers, and in the course of it they become lovers; she leaves her young son behind. She is landed in England and housed at a Circus safe house in the country, kept from the world and impatient at being idle. Within a short time she is dead, killed at the house, and the Circus disposes of the matter without a police enquiry and without telling the agents who had risked their lives for her. Guillam was told a story about it that he half believed at the time. The modern Service's researchers have found the gaps in that story, and their questions are directed at what Guillam knew, what he wrote and what he later removed from the file.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The pressure on Guillam comes from two directions. In London, Bunny and Laura shift from asking him to explain the past to preparing him to carry it: the Service means to settle the claim and needs a name to attach to the deaths, and the men who gave the orders are dead. Outside the building, Christoph Leamas, Alec's son, a criminal with nothing to lose, follows Guillam and demands money with threats, while Karen Gold, Liz's daughter, wants only to know why her mother died. Guillam, cornered, works out and finally admits what the operations were for. Mundt, the East German operations chief, had been recruited by the Circus, and Tulip was killed by him because she could have exposed him; the Circus concealed her murder to protect its source. Windfall was built to defend that source, and Leamas and Liz Gold were sent into it without being told they were expendable.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Guillam gives the enquiry what he judges it is entitled to, refuses to invent what would suit it, and leaves London before the settlement is concluded, aware that the Service will arrange the record to protect itself whatever he says. He goes to Germany and, after some searching, finds George Smiley in a library in Freiburg: very old, still working, and entirely clear-eyed about what was done. Smiley confirms the whole of it. Mundt was theirs; Tulip died by his hand and the Circus buried it; Leamas and Liz Gold were used and lost in the same cause; and the men who ordered it understood the cost. Asked what it was for, Smiley answers that he served his country while he could believe in it, and that if there was a larger purpose behind the whole cold enterprise it was Europe. He offers Guillam no absolution and takes none for himself. Guillam returns to Brittany with the past finally spoken aloud and nothing about it undone.",
+            "through": {
+              "chapter": 14
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "a-legacy-of-spies"
+      }
+    },
     "a-memory-called-empire": {
       "characters": {
         "characters": [
@@ -1563,6 +1752,170 @@
           }
         ],
         "work": "a-memory-of-light"
+      }
+    },
+    "a-murder-of-quality": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A small, plump, unmemorable man, once an intelligence officer and now living quietly in Chelsea, no longer in government service. Scholarly, courteous and endlessly patient, he is a listener rather than an interrogator, and his talent is for noticing the detail that everyone else has smoothed over. He agrees to look into a reader's letter as a favour to a wartime colleague, and finds himself in a closed and self-satisfied world he understands well enough to see through.",
+            "id": "george-smiley",
+            "name": "George Smiley",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The editor of a small nonconformist weekly with a devoted and elderly readership. Sensible, kind and conscientious, she worked in intelligence during the war, which is how she knows Smiley. A letter from a long-standing subscriber alarms her enough that she cannot simply file it, and she takes it to Smiley for advice.",
+            "id": "ailsa-brimley",
+            "name": "Ailsa Brimley",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The wife of a junior master at Carne, an ancient and expensive public school, and a faithful reader of the weekly to which she writes. Chapel-going, plainly dressed and known locally for her charity and good works, she is regarded by the school's wives as socially beneath them and by others as a modest, decent woman. Her letter states that her husband intends to kill her, and asks that nothing be done about it yet.",
+            "id": "stella-rode",
+            "name": "Stella Rode",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A science master at Carne, the son of a small tradesman and a grammar-school and provincial university product, who has worked hard to acquire the manners of the place and is quietly despised for it. Anxious, punctilious and eager to belong, he is conscious at every moment of being an outsider among colleagues who were educated at schools like this one.",
+            "id": "stanley-rode",
+            "name": "Stanley Rode",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A detective inspector of the local county police handling the Carne case: solid, honest and shrewd, and well aware that investigating a great school means being managed by it at every turn. He knew Smiley's name from the war, welcomes his help, and shares his files with him more openly than his superiors would like.",
+            "id": "rigby",
+            "name": "Rigby",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior housemaster at Carne, a large, theatrical and cultivated man in his last year before retirement, given to good wine, music and grand gestures, and to talking with practised indiscretion about the school he has served all his life. His brother served with Smiley during the war, which is the introduction that opens Carne's doors. Beneath the performance he is a disappointed man whose career never rose as far as he expected.",
+            "id": "terence-fielding",
+            "name": "Terence Fielding",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A master and the school's unofficial authority on precedence, dress and correct behaviour, fastidious to the point of absurdity and deeply invested in Carne's social hierarchy. He entertains carefully chosen guests, keeps house with his sister, and disapproves of the Rodes on grounds he would describe as taste.",
+            "id": "felix-darcy",
+            "name": "Felix D'Arcy",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "D'Arcy's unmarried sister, who keeps house for him, breeds dogs and shares his views on who is and is not acceptable at Carne, expressed with rather less circumlocution than her brother uses.",
+            "id": "dorothy-darcy",
+            "name": "Dorothy D'Arcy",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The wife of one of the senior masters, a large, gracious woman who has spent decades in the school's society and reads it perfectly. Her conversation is elaborately polite and quietly destructive, and she dispenses gossip about her neighbours as a form of power. She is one of the few people at Carne who says anything about Stella Rode that is not simply admiring.",
+            "id": "shane-hecht",
+            "name": "Shane Hecht",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A vagrant woman, known locally as Mad Janie, who lives rough near the Rodes' house at the edge of the town and is treated by the town as a harmless lunatic. Stella Rode was kind to her, and she is found afterwards with belongings that were not hers. Her ramblings about what she saw that night are dismissed by almost everyone.",
+            "id": "jane-lyn",
+            "name": "Jane Lyn",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A boy in Fielding's house, amiable and not academically able, who is anxious about the examination results that will decide whether he can stay on at the school. He is grateful to his housemaster and reluctant to say anything that might reflect on him.",
+            "id": "perkins",
+            "name": "Perkins",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "a-murder-of-quality"
+      },
+      "recaps": {
+        "ending": "Smiley establishes that Fielding had let the boy Perkins see an examination paper in advance so that he would not be removed from the school, and that Stella Rode obtained proof of it, along with knowledge of an earlier disgrace which Fielding had spent his career living down. Instead of exposing him she kept the evidence and let him understand that she had it, which was the private cruelty she practised on many people while the town admired her charity. With retirement and his reputation in front of him, Fielding killed her, and dressed the crime to point at her husband, whom Carne would have been happy to believe capable of it. When Perkins begins to talk about the examination paper, Fielding kills him too, in what is arranged to look like a road accident. Confronted with the reconstruction, Fielding admits what he did, and is arrested. Jane Lyn, who was the town's preferred culprit, is cleared. Stanley Rode is left innocent of the murder but with the truth about his marriage and no place at the school he tried so hard to enter. Smiley goes back to London with Ailsa Brimley, having exposed a killing that the school would rather have blamed on an outsider.",
+        "in_short": "Ailsa Brimley, editor of a small nonconformist weekly, receives a letter from a reader, Stella Rode, saying that her husband intends to kill her, and takes it to her old wartime colleague George Smiley. Before anything can be done, Stella is beaten to death at her house on the edge of Carne, an ancient public school where her husband teaches science. Smiley goes down, is admitted to the school through the housemaster Terence Fielding, and works alongside Inspector Rigby. Carne assumes the murderer is either Stanley Rode, an outsider by birth and manner, or a local vagrant woman found with the dead woman's belongings; physical evidence has been arranged to incriminate the husband. Smiley finds that Stella's reputation for saintliness concealed a talent for collecting and using other people's shameful secrets. She had proof that Fielding had shown an examination paper to a boy in his house, and knowledge of an older disgrace that would have destroyed him. Fielding killed her to end it, staged the scene against Rode, and later killed the boy when he began to talk. Confronted, he confesses, and Smiley returns to London.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Ailsa Brimley edits a small nonconformist weekly with a loyal, mostly elderly readership. A letter arrives from Stella Rode, a long-standing subscriber and the daughter of a man the paper once honoured, saying plainly that her husband is planning to kill her, and asking that nothing be done for the moment. Uneasy, Ailsa takes it to George Smiley, with whom she worked in intelligence during the war and who is now retired and living quietly in London. Before they can decide how to respond, news comes that Stella Rode has been found beaten to death at North Fields, the house she shared with her husband on the edge of Carne, an ancient and expensive public school where he teaches science. The murder took place on a snowy night after a dinner at the house of Terence Fielding, a senior housemaster. Smiley travels down to Carne, where the county police, in the person of Inspector Rigby, are conducting an investigation hemmed in on all sides by the school's dislike of publicity.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Smiley is admitted to Carne society because Fielding's brother served with him in the war, and he begins to move between the school and the police station. Rigby shows him the case as it stands. Clothing belonging to Stanley Rode, along with other items, has been found in an outbuilding, footprints cross the snow, and the pattern of evidence points steadily at the husband. Rode himself is a nervous, meticulous man from a modest background who has laboured to be accepted at a school that will never accept him, and Carne's masters and their wives, among them the fastidious Felix D'Arcy and the formidably gracious Shane Hecht, make it clear that they regard him as a social intruder and would find his guilt unsurprising. The town, meanwhile, prefers a different culprit: Jane Lyn, a vagrant woman who lives near the house and has been found with belongings that had been Stella's. Smiley is struck by how conveniently the evidence has arranged itself and by how much everyone wishes to believe it.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Smiley begins to take apart the picture of the dead woman. Carne remembers Stella Rode as humble and charitable, active in her chapel, generous to the poor and to Jane Lyn in particular. What Smiley uncovers is a woman who studied the people around her for weaknesses and enjoyed possessing them: who humiliated her husband socially while appearing to support him, who told damaging stories in the guise of confidences, and who kept what she learned rather than using it openly. The letter she sent to the newspaper begins to look less like a frightened appeal than another move in a private campaign. At the same time Smiley picks at the physical evidence: the way the incriminating objects were placed, the timing of the walk home from Fielding's dinner and the movements of everyone who was at that table. The case against Rode is too complete, and the objects that convict him were left where they were certain to be found.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Attention narrows to Fielding, whose career at Carne is ending in disappointment and who is due to retire. Smiley learns that a boy in his house, Perkins, was in danger of being removed from the school after failing an examination, and that his paper was not what it should have been. Perkins is questioned and is frightened and evasive, unwilling to say anything against the housemaster who protected him. Shortly afterwards the boy is killed in what appears to be a road accident. Smiley concludes that Stella Rode had come by proof of what Fielding had done for the boy, and by knowledge of an older episode in his past that he had spent a lifetime burying, and that she had kept both without ever making a demand, so that he lived under her observation. The murder was Fielding's release from her, and the evidence in the outbuilding was placed to hang it on a husband nobody at Carne would defend.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Smiley sets his reconstruction in front of Fielding, who admits to killing Stella Rode and to killing Perkins when the boy began to talk, and he is arrested. Jane Lyn, whom the town had already convicted, is cleared. Stanley Rode is innocent of the murder, but the investigation has stripped away the marriage he defended: the wife everyone praised for her goodness had made a study of his shame, and he has no future at the school he tried to be worthy of. The masters and their wives close ranks around the school's reputation, less troubled by two deaths than by the noise. Smiley, who has no official standing and wanted none, leaves Carne with Ailsa Brimley and returns to London, having proved only that a closed community will believe any story that protects its own and blames an outsider.",
+            "through": {
+              "chapter": 20
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "a-murder-of-quality"
       }
     }
   }

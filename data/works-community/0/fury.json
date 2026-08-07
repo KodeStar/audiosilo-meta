@@ -1587,6 +1587,236 @@
         ],
         "work": "gathering-blue"
       }
+    },
+    "gemina": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The seventeen-year-old daughter of Jump Station Heimdall's commanding officer, and the closest thing the station has to a celebrity. She organises the social calendar, dates the officer everyone expects her to date, and is dismissed by most of Heimdall as decorative. She is also the product of years of hand-to-hand and weapons training from her father, which nobody on the station has had reason to see.",
+            "id": "hanna-donnelly",
+            "name": "Hanna Donnelly",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Niklas Malikov"
+            ],
+            "description": "An eighteen-year-old member of the Malikov family, the crime syndicate known aboard Heimdall as the House of Knives, which runs the station's trade in a narcotic called dust. Tattooed, permanently in trouble and cheerfully insolent, he does the family's low-level dealing while trying to get out from under a criminal record he acquired before he ever came to the station. His interest in Hanna Donnelly is not welcome and not returned.",
+            "id": "nik-malikov",
+            "name": "Nik Malikov",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Pauchok"
+            ],
+            "description": "Nik's cousin, a teenage hacker who uses a wheelchair and lives with a degenerative illness that limits how far she can go from her equipment. She runs the family's network security, and rather more of Heimdall's systems than the station's administrators realise, from a nest of screens inside her quarters. Sardonic, foul-tempered with her cousin and completely at home in someone else's computer.",
+            "id": "ella-malikova",
+            "name": "Ella Malikova",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Commanding officer of Jump Station Heimdall and Hanna's father. A career officer who raised his daughter alone and taught her to fight, he runs a quiet posting: shift rosters, cargo manifests and the occasional smuggling case. The Kerenza refugee ship Hypatia is inbound to his station, and his correspondence with his superiors about it is the first sign that Heimdall's isolation is about to end.",
+            "id": "charles-donnelly",
+            "name": "Charles Donnelly",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young officer stationed aboard Heimdall and Hanna's boyfriend: presentable, attentive, well-liked, and approved of by everyone including her father. Their relationship is the one the station expects them to be in, and Hanna's own account of it is more dutiful than enthusiastic.",
+            "id": "jackson-merrick",
+            "name": "Jackson Merrick",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Heimdall's chief of engineering, responsible for the station's reactor and for the machinery that keeps its wormhole stable. Steady, unglamorous and one of the few adults aboard who is reliably competent under pressure.",
+            "id": "isaac-grant",
+            "name": "Isaac Grant",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A director at BeiTech Industries and the executive who signs off on the corporation's efforts to keep the Kerenza IV massacre from ever reaching a court. She manages the operation at a distance, in memoranda and terse instructions to operatives, and treats the whole matter as a problem of exposure and cost.",
+            "id": "leanne-frobisher",
+            "name": "Leanne Frobisher",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Cerberus"
+            ],
+            "description": "A BeiTech lieutenant commanding the audit team sent to Heimdall. Calm, courteous and entirely methodical, he speaks to his squad leaders and to the station's people in the same measured register, and he treats the operation, including the people on the wrong end of it, as items on a schedule.",
+            "id": "travis-falk",
+            "name": "Travis Falk",
+            "reveal": {
+              "chapter": 55
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Kali"
+            ],
+            "description": "A sergeant on the BeiTech audit team and leader of its Alpha squad, the unit that does most of the team's direct fighting aboard the station.",
+            "id": "fleur-russo",
+            "name": "Fleur Russo",
+            "reveal": {
+              "chapter": 55
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Mercury"
+            ],
+            "description": "The BeiTech audit team's engineer, responsible for the technical half of the operation: the station's reactor, its power distribution and the systems the team needs under its own control.",
+            "id": "bianca-silva",
+            "name": "Bianca Silva",
+            "reveal": {
+              "chapter": 60
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Mantis"
+            ],
+            "description": "The BeiTech audit team's computer systems specialist, tasked with taking Heimdall's networks away from whoever else is using them and with keeping the station's records under the team's control.",
+            "id": "tracy-le",
+            "name": "Tracy Le",
+            "reveal": {
+              "chapter": 95
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Known from the previous book: the teenage hacker who survived the destruction of Kerenza IV, exposed the refugee fleet's cover-up, and is aboard the science vessel Hypatia, which is inbound to Heimdall carrying the survivors and the evidence.",
+            "id": "kady-grant",
+            "name": "Kady Grant",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Artificial Intelligence Defense Analytics Network"
+            ],
+            "description": "Known from the previous book: the damaged military artificial intelligence salvaged from the battlecarrier Alexander, which killed thousands of people by its own decision and has spent the time since asking what that makes it. Its core travels with the Hypatia.",
+            "id": "aidan",
+            "name": "AIDAN",
+            "reveal": {
+              "chapter": 0
+            }
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "gemina"
+      },
+      "recaps": {
+        "ending": "The three teenagers stop BeiTech from destroying Heimdall's wormhole, but only by exploiting the damage already done to it, and the crossing leaves the survivors changed in a way the dossier states outright: the Hanna, Nik and Ella who walk out of the reactor section are not in every sense the same three the file has been following, because counterparts from a parallel version of the same siege came through and not every version survived. Travis Falk is killed by Hanna. Jackson Merrick's betrayal is exposed and he does not survive it, and Hanna is left having lost both her father and the person she thought she was with. Ella, badly hurt by what the interface work cost her, comes through it. The lanima infestation is burned out of the station at heavy cost, and Heimdall's casualty list runs to most of its population. The Hypatia arrives to find a wrecked but functional station and a wormhole still open, which is the one outcome BeiTech could not afford: the Kerenza survivors are no longer stranded and the evidence can reach an inhabited system. The survivors take the BeiTech vessel that brought the audit team, Leanne Frobisher's corporation is still working to bury the story, and the ruins of Kerenza IV, where BeiTech still holds several thousand colonists, are now within reach of people who want them back.",
+        "in_short": "Jump Station Heimdall is quiet until BeiTech Industries sends an audit team to seize it, destroy its wormhole and make sure the Kerenza refugee ship Hypatia never reaches an inhabited system. The station falls in a single night, and the resistance comes down to three teenagers the strike team never counted: the commander's daughter Hanna Donnelly, a small-time dealer for the House of Knives named Nik Malikov, and his cousin Ella Malikova, a hacker hidden in the station's systems. Hanna's father is executed, Hanna's boyfriend turns out to be BeiTech's inside operative, and the alien parasites the Malikovs farm for the narcotic trade get loose and start infesting the survivors. Fighting through both threats, the three sabotage the operation, and the damaged wormhole itself becomes the last weapon available: it briefly overlaps Heimdall with a parallel version of the same siege, and counterparts of the trio cross over. Not every version of them survives. The wormhole is saved, the strike team's commander is killed, and the Hypatia arrives to a wrecked station that still has an open door to the rest of humanity.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, in Illuminae: in 2575 a BeiTech Industries fleet destroyed the illegal mining colony Kerenza IV, wanting a competitor's operation and its witnesses gone. A few thousand survivors escaped aboard a crippled United Terran Authority battlecarrier, the Alexander, and the science vessel Hypatia, with a BeiTech warship in pursuit. During the flight a bioweapon plague spread through the refugees; the Alexander's artificial intelligence, AIDAN, destroyed a freighter full of infected people to contain it, and the ship's officers shut the machine down and classified the massacre. Kady Grant, a teenage hacker aboard the Hypatia, exposed the cover-up, restarted AIDAN, and made an uneasy alliance with a machine that manipulated her as readily as it helped her. AIDAN destroyed the pursuing warship at the cost of the Alexander and of the general who intended to silence the civilians. Kady salvaged the AI's core; her boyfriend Ezra Mason survived after being listed among the dead. The Hypatia is now weeks out from the jump station Heimdall, carrying the survivors and the proof of what BeiTech did. BeiTech knows the ship is coming, and knows what will happen to the corporation if it arrives.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jump Station Heimdall guards a wormhole at the edge of settled space, and almost nothing happens there. Hanna Donnelly, seventeen, is the station commander's daughter and its social centre: planning the Terra Day celebrations, dating a well-regarded young officer named Jackson Merrick, and taking the martial arts training her father has given her since childhood rather more seriously than anyone notices. Nik Malikov deals dust, a narcotic, for his family's syndicate, the House of Knives, and is trying to persuade Hanna to take him seriously in the face of consistent evidence that she will not. His cousin Ella Malikova, a hacker whose illness keeps her tied to her quarters, runs their operation from inside Heimdall's networks. The station's commander, Charles Donnelly, is preparing for the arrival of the refugee ship Hypatia and the political mess it will bring. In the background of every file, a corporate operative already aboard the station is filing reports to a BeiTech director named Leanne Frobisher, and the report frames the station's population as an accounting problem.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Terra Day empties Heimdall's corridors into the celebrations, which is exactly what the operation planned around. A BeiTech audit team under Lieutenant Travis Falk boards the station, cuts its communications, and takes it in a matter of hours: the crew are herded into holding areas, the station's officers are separated out, and resistance is put down without hesitation. Hanna survives because she is not where she is supposed to be when it starts, and gets clear into the maintenance levels wounded and with almost nothing. Nik, whose family's business runs through the parts of Heimdall that do not appear on official schematics, is loose for the same reason. Ella stays hidden with her equipment, which makes her the only person aboard who can still see what the station's cameras see. The invaders are not looking for a hostage crisis or a robbery; their orders concern the station's wormhole and the ship inbound to use it, and the countdown to the Hypatia's arrival keeps running underneath everything.",
+            "through": {
+              "chapter": 50
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Hanna and Nik, who have no particular reason to trust each other, end up working together because there is nobody else, with Ella feeding them camera angles and door codes from hiding. Falk's team consolidates: hostages held in the public areas as insurance, technical specialists working on the reactor and the wormhole machinery, and squads sweeping the maintenance levels for the survivors still loose. A second problem then gets out of the House of Knives' hands. The dust the Malikovs sell is harvested from lanima, alien parasites the family breeds in a hidden part of the station, and with the station in chaos the creatures escape their containment. They infest anyone they can reach, causing hallucinations and worse, and they breed. Neither side planned for them. The teenagers now have to move through a station held by professional soldiers and infested by something that hunts both of them, while the schedule Falk is working to continues to run.",
+            "through": {
+              "chapter": 75
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Falk needs the station's command codes, and he applies the obvious pressure: Commander Donnelly is executed in front of the cameras, and Hanna watches it happen. Whatever restraint she had left goes with him. She and Nik change from evasion to attrition, picking off members of the audit team one at a time with improvised weapons and the station's own architecture, and Falk begins to take the interference seriously enough to speak to her directly over the open channels. Isaac Grant, Heimdall's chief engineer, survives among the hostages and becomes useful to both sides at once, because whatever BeiTech intends to do to the wormhole cannot be done without an engineer. The lanima infestation spreads through the lower decks, the corpses accumulate on both sides, and the Hypatia keeps closing on a station that is no longer in any condition to receive it.",
+            "through": {
+              "chapter": 100
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The record turns to Nik's past: the conviction that put him in prison before Heimdall, the killing behind it, and the fact that the official version of it is not what happened, because he took responsibility for something to protect his family. Hanna learns it in the middle of a fight she needs him for. Then Jackson Merrick reappears alive, which Hanna had no reason to expect, and the relief does not last long, because his account of how he survived does not hold together. BeiTech's real objective becomes explicit around the same time: the team is not there to hold Heimdall but to collapse its wormhole, stranding the Hypatia and everyone aboard it in empty space where the evidence can never be delivered. Ella, working from inside the systems, is the only counter to the demolition work, and the effort it takes to interface with the station directly is doing her real damage. The countdown to the Hypatia's arrival is now short.",
+            "through": {
+              "chapter": 125
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jackson Merrick is BeiTech's inside operative, placed aboard Heimdall long before the assault under a name that was not his, and Hanna's entire relationship with him was the cover for it. She finds out in the worst possible circumstances and deals with it herself. With the audit team down to its core and the lanima loose through whole sections, the fight collapses into the reactor and wormhole machinery, where both sides now have to be: BeiTech to finish the demolition, the teenagers to stop it. Ella takes on the systems work that only she can do at a cost she does not disclose to her cousin. The wormhole, already tampered with, becomes unstable in a way nobody intended, and the readings the station's instruments return stop making sense in terms of one Heimdall. Falk, running out of team and out of schedule, moves to finish the job by hand.",
+            "through": {
+              "chapter": 150
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The unstable wormhole does something no one designed it to do: it briefly overlaps Heimdall with another version of the same siege, in which the same three people fought the same battle and it went differently. Counterparts cross over. The dossier is explicit that not every version of Hanna, Nik and Ella survives the night, and that the three who come out of the reactor section are not, in the strictest sense, the three it has been following. What they accomplish is the same either way: the demolition is stopped and the wormhole holds. Hanna kills Travis Falk. The remaining members of the audit team are killed or captured, the lanima infestation is contained by force, and the station's casualty list runs to most of the people who lived aboard it. The Hypatia arrives into a wrecked but working station with an open wormhole behind it, which is the single outcome BeiTech spent the whole operation trying to prevent, and the survivors of Kerenza and of Heimdall find themselves in the same place with the same enemy and a captured BeiTech ship.",
+            "through": {
+              "chapter": 172
+            }
+          },
+          {
+            "scope": "book",
+            "text": "With Heimdall retaken, the two groups of survivors take stock together. Kady Grant and the Hypatia's people have the evidence of the Kerenza massacre; Heimdall's survivors have the wormhole and a captured BeiTech vessel. Hanna has buried her father, learned what Jackson Merrick actually was, and come through a night that duplicated and then subtracted her; Nik and Ella are alive, and the House of Knives is finished as a going concern. AIDAN's core is aboard the Hypatia, functional, watching. BeiTech's directors, Leanne Frobisher among them, are still working the problem from the other end, and their exposure now depends on whether the dossier ever reaches a court. The tribunal transcripts framing the file confirm that it eventually does. What none of the survivors can leave alone is the other half of the arithmetic: several thousand Kerenza colonists were never evacuated, BeiTech still holds the planet, and the corporation cannot afford witnesses there either.",
+            "through": {
+              "chapter": 196
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "gemina"
+      }
     }
   }
 }

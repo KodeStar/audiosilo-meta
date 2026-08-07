@@ -1439,6 +1439,79 @@
         "work": "the-queen-of-the-damned"
       }
     },
+    "the-queens-army": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A twelve-year-old boy from one of Luna's outer sectors, the eldest of two brothers, taken from his family by the queen's recruiters for a soldier programme nobody comes back from. He is bigger than the other recruits and has never used that for anything, and the programme is designed to teach him to.",
+            "id": "zeev-kesley",
+            "name": "Ze'ev Kesley",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Ze'ev's younger brother, left behind in the sector, too young for the recruiters and openly envious of a selection he does not understand.",
+            "id": "ran-kesley",
+            "name": "Ran Kesley",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Ze'ev's mother, who has no way to refuse the recruiters and knows exactly what refusing would cost the rest of her family.",
+            "id": "maha-kesley",
+            "name": "Maha Kesley",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The queen of Luna, whose army this is. She never appears as a person the recruits can appeal to, only as the authority that owns them.",
+            "id": "queen-levana",
+            "name": "Queen Levana",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-queens-army"
+      },
+      "recaps": {
+        "ending": "Ze'ev survives the programme by becoming what it is designed to produce. He learns to fight the other recruits without hesitating, accepts the surgery that fuses him with wolf DNA and remakes his body, and rises within the pack hierarchy that the training is built around. The cost is deliberate and permanent: the operatives are separated from their families, conditioned into obedience to their thaumaturge handlers, and left with instincts they cannot switch off. He goes into the story as a boy from an outer sector with a younger brother and a mother, and comes out of it as one of Levana's special operatives, known by the name the pack gives him: Wolf. The programme itself is revealed for what it is, the vanguard of an invasion of Earth being assembled years before anyone on Earth suspects it.",
+        "in_short": "A prequel short story from Wolf's point of view. Ze'ev Kesley is twelve when Queen Levana's recruiters come to his outer sector and take him for the army, leaving his mother and his younger brother Ran behind. What follows is the training that turns Lunar children into special operatives: packs, ranked by whoever will fight hardest, deliberate cruelty as a teaching method, thaumaturge handlers who can make a recruit do anything, and finally the surgery that fuses a boy with wolf DNA and rebuilds his body around it. Ze'ev survives by learning to do what the programme wants, including things he cannot undo. He ends the story remade, separated from his family, and given the name Wolf.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "A note before starting: The Queen's Army is a short prequel to the Lunar Chronicles, also collected in Stars Above, and it is Wolf's backstory. It is best read after Scarlet, the novel that introduces him, because the story assumes you already know what a Lunar special operative is and treats the origin as the point rather than the reveal. Context: Luna is a settled colony on the moon whose people can control what others see and feel. Its queen, Levana, rules through thaumaturges and holds the outer sectors - the mining and manufacturing districts - in poverty while the capital lives in luxury. Children are taken from those sectors for the queen's army, and the families are not asked.",
+            "through": {
+              "chapter": 0
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-queens-army"
+      }
+    },
     "the-rascor-plains": {
       "characters": {
         "characters": [
@@ -2076,6 +2149,205 @@
           }
         ],
         "work": "the-reptile-room"
+      }
+    },
+    "the-republic-of-thieves": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Weeks out of Tal Verrar and dying of the poison the Archon put in him, Locke has outlasted every physiker Jean could find and pay for. He has stopped cooperating with the attempt to save him: everyone he was raised with is dead except Jean, the trade he was built for needs a crew he no longer has, and he has largely stopped arguing with the outcome. What is left of him is still the best confidence artist either of them has ever met, when he can be persuaded to want anything.",
+            "id": "locke-lamora",
+            "name": "Locke Lamora",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Locke's partner, and the reason he is still breathing. Since Tal Verrar, Jean has spent every coin they had on doctors, alchemists and quacks, and has been carrying a grief of his own that he does not discuss. Heavy, bespectacled, formidably dangerous at close quarters, and now entirely out of options.",
+            "id": "jean-tannen",
+            "name": "Jean Tannen",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Bondsmage of Karthain and one of the most senior figures in the guild, who arrives with a cure Locke needs and a contract attached to it. She is calm, extremely difficult to lie to, and forthcoming only about the things she has decided to be forthcoming about. She makes it plain from the beginning that she wants something more from Locke than the work she is hiring him to do.",
+            "id": "archedama-patience",
+            "name": "Archedama Patience",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Eyeless Priest"
+            ],
+            "description": "The fraudulent blind priest who bought Locke out of a thieves' orphanage in Camorr and raised him, Jean, Sabetha and the Sanza twins beneath his temple, training them in languages, etiquette and the confidence trade. He has been dead for years by the time of this book, and appears throughout its chapters of memory, where the crew are still children and adolescents in his charge.",
+            "id": "father-chains",
+            "name": "Father Chains",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Sanza twins, Gentlemen Bastards raised alongside Locke, Jean and Sabetha, who were killed in Camorr. They appear only in the chapters that look back at the crew's youth, where they are the pair of quick, irreverent forgers and sleight-of-hand men the crew depended on.",
+            "id": "calo-and-galdo-sanza",
+            "name": "Calo and Galdo Sanza",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The fifth Gentleman Bastard, raised with Locke, Jean and the Sanzas under Father Chains and, by common consent within the crew, the most talented of them. Locke has been in love with her since childhood and has never once handled it well. She left years ago and has been working alone since, and she is now on the other side of the job Locke has just been hired for.",
+            "id": "sabetha-belacoros",
+            "name": "Sabetha Belacoros",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Bondsmage who served the Grey King in Camorr, and whom Locke and Jean mutilated so that he could never work sorcery again. He has been kept alive in Karthain since, insensible, in the state they left him. He is also Archedama Patience's son, which is a fact she does not raise as a threat and does not pretend away either.",
+            "id": "the-falconer",
+            "name": "The Falconer",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Karthaini insurance broker and the Deep Roots party's chief organiser, who hands Locke and Jean the machinery of the campaign on their arrival. He is eager, well-connected, socially indispensable and rather less steady than the people relying on him assume.",
+            "id": "nikoros-via-lupa",
+            "name": "Nikoros Via Lupa",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Proprietor of the large Karthaini inn that serves as the Deep Roots party's headquarters, and therefore as Locke and Jean's base of operations. He is a practical host who has seen several of these election seasons and prices accordingly.",
+            "id": "diligence-josten",
+            "name": "Diligence Josten",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Actor-manager of a failing theatre company in the Therin city of Espara, into which Father Chains places his apprentices. He is talented, bitter, deeply in debt and frequently drunk, and his company cannot perform without him or survive much more of him.",
+            "id": "jasmer-moncraine",
+            "name": "Jasmer Moncraine",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Moncraine company's elderly leading man, who has been playing the same handful of parts for decades and is rarely entirely sober. He is nonetheless the only person in Espara who can carry the roles the company needs carried.",
+            "id": "sylvanus-olivios-andrassus",
+            "name": "Sylvanus Olivios Andrassus",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Moncraine company's costumer and, in practice, the person keeping the whole enterprise from dissolving. She knows exactly how bad the company's position is, handles what money there is, and is the first of the Esparans to take the newcomers seriously.",
+            "id": "jenora",
+            "name": "Jenora",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young Esparan baron who becomes the theatre company's patron, paying its debts and lending it his name because he enjoys the company of actors. He is generous, vain, used to getting what he asks for, and openly taken with Sabetha.",
+            "id": "gennaro-boulidazi",
+            "name": "Gennaro Boulidazi",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-republic-of-thieves"
+      },
+      "recaps": {
+        "ending": "The election ends in defeat: Sabetha's Black Iris party takes Karthain on groundwork laid long before the final weeks, and the Bondsmagi treat the whole contest as the entertainment it always was, the result mattering far less to them than the playing. Patience then delivers what she has been holding back - that Locke is not the Camorri orphan he believes himself to be, but the vessel of a dead Karthaini child called Lamor Acanthus, whose mage parents used forbidden work rather than accept his death - and offers no proof he can test in either direction. Sabetha, given the same account, will not build anything on ground that uncertain: she goes without a farewell in person, deliberately out of reach, leaving Locke a letter and no way to follow. Locke and Jean come out of the contract cured, paid, and free, with their trade ahead of them, no crew, and nothing settled about who Locke is. Behind them in Karthain the Falconer, kept alive by his mother's people in the state Locke and Jean left him in, comes back to himself. He is not the mage he was and he is no longer anyone's prisoner, and the one purpose left to him is the two men who ruined him.",
+        "in_short": "Dying of the poison he took in Tal Verrar, Locke Lamora is saved by Archedama Patience, a senior Bondsmage of Karthain and mother of the sorcerer he and Jean Tannen destroyed in Camorr. Her price is six weeks' work: the Bondsmagi run Karthain's election every five years as a private contest, and Locke and Jean are to direct one party's campaign. The other side is run by Sabetha Belacoros, the fifth Gentleman Bastard, whom Locke has loved since childhood. The campaign becomes a duel of sabotage, bribery and theft that neither of them can keep separate from the rest of it, and they become lovers in the middle of it. Chapters of memory follow the crew as adolescents in Espara, salvaging a bankrupt theatre company, killing the baron who patronised it, and staging his play anyway. Sabetha wins the election. Patience tells Locke he may be the vessel of a dead Karthaini child, and Sabetha, told the same, leaves him. In Karthain, the Falconer wakes.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Locke Lamora and Jean Tannen are the last of the Gentlemen Bastards, a crew of confidence artists raised in Camorr beneath a temple by the fraudulent priest Father Chains, who trained them to rob the nobility while passing for ordinary thieves. In Camorr the crew was destroyed: a man calling himself the Grey King, backed by a hired Bondsmage of Karthain called the Falconer, murdered Calo, Galdo and Bug, took the crew's fortune and seized the city's underworld, before Locke killed him. Locke and Jean mutilated the Falconer so that he could never work sorcery again, which made permanent enemies of his guild. In Tal Verrar their next long game was hijacked by the city's military ruler, Archon Maxilan Stragos, who poisoned them both to force them into his service at sea. They fell in with the pirate captain Zamira Drakasha, broke the Archon's scheme, and lost Ezri Delmastro, whom Jean loved, in a battle with a rival pirate. They left Tal Verrar with no antidote and almost no money, and Locke has been dying by degrees ever since. There was a fifth Gentleman Bastard: Sabetha Belacoros, raised with them, better at the work than any of them, and absent from their lives for years.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the city of Lashain, Locke is close to death and Jean has spent everything they have on physikers who cannot help. Locke has stopped eating and stopped cooperating, and is waiting it out, when Archedama Patience arrives - a Bondsmage of Karthain, one of the guild's senior voices, and the mother of the Falconer, whom Locke and Jean left maimed and mindless. She offers a cure with a contract attached. Every five years the Bondsmagi amuse themselves by running Karthain's parliamentary election as a contest between two parties, each side directed by outside talent hired for the season. She wants Locke and Jean to run the campaign of the Deep Roots party for the next six weeks. Restored and unwillingly grateful, Locke learns the part of the arrangement he was not consulted about: the agent running the opposition is Sabetha. Chapters of memory begin the story of the crew's childhood under Chains and of Locke's long, badly managed attachment to her.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Locke and Jean take the contract and travel to Karthain across the Amathel, the great lake on the city's edge, escorted by Patience's people. Patience is candid that the election is a diversion for her guild and considerably less candid about what the Bondsmagi actually get out of it; she also starts telling Locke things about his own history that he has no way to check and no reason to like. Sabetha is at work in Karthain before they arrive, and Locke's first moves are spent recovering ground she has already taken. In the chapters of memory, Chains decides his apprentices are ready for work he cannot supervise and sends Locke, Jean, Sabetha and the Sanza twins out of Camorr altogether, to make themselves useful a long way from anyone who knows them.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In Karthain, Locke and Jean take over the Deep Roots party's machinery: an inn serving as headquarters, a slate of candidates of very uneven quality, and an organiser named Nikoros Via Lupa whose enthusiasm outruns his judgement. The campaign turns into a private duel. Each side bribes, disrupts, embarrasses and steals from the other, and Sabetha opens by removing Locke from the city entirely, leaving him to talk his way back. Neither of them manages to keep the professional contest and the personal one apart for long. In the chapters of memory, the young Gentlemen Bastards reach the Therin city of Espara and find the theatre company Chains sent them to bankrupt, its manager in jail and its next production impossible, so his instruction to make themselves useful turns into salvaging an enterprise none of them knows anything about.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The election grinds on, and Locke's side is being read from the inside: someone in the Deep Roots organisation is passing everything to the opposition, and the discovery costs both sides money and dignity to exploit. Locke and Sabetha, meeting as adversaries under truces neither of them honours completely, finally stop pretending about everything else between them. Patience keeps returning to Locke's own past, and to the parts of his childhood he cannot actually remember. In Espara, the company is put back together by fraud, borrowed money and the patronage of Gennaro Boulidazi, a young baron who settles its debts, lends it his name, and takes an interest in Sabetha that she has no way to refuse safely.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The last weeks of the Karthain campaign turn openly dirty on both sides, and the affair between Locke and Sabetha makes every move harder to judge. In Espara the arrangement with Boulidazi collapses: he learns enough about the company's newest members to hold it over them, and when he tries to force the matter with Sabetha he is killed. The crew is left having to open a play in a city whose watch will hang all of them if a dead baron is found before the final curtain, and the rest of the Espara story becomes an improvisation to get through the performance with the body unaccounted for and the company out of the city afterwards.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Karthain votes and Locke loses. Sabetha's Black Iris takes the election decisively, on groundwork she laid well before the noisy final weeks; Locke was outplayed rather than outspent. It also becomes clear that the result mattered far less to the Bondsmagi than the exercise did, and that Patience has been steering Locke throughout for reasons of her own. She tells him what she believes he is: not a Camorri orphan at all, but the vessel of a dead Karthaini child named Lamor Acanthus, whose mage parents used forbidden work to refuse his death. Locke cannot verify it and cannot disprove it. Sabetha, given the same account, decides that whatever is between them cannot be built on a foundation neither of them can see the bottom of, and leaves Karthain without him. Locke and Jean are cured, paid, released from the contract and put back on the road, alive and with their trade in front of them, and with no crew and no answers.",
+            "through": {
+              "chapter": 12
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-republic-of-thieves"
       }
     }
   }

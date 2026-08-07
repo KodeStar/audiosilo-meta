@@ -1625,6 +1625,226 @@
         "work": "countdown"
       }
     },
+    "cress": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Crescent Moon"
+            ],
+            "description": "A sixteen-year-old Lunar shell - born without the ability to manipulate what others perceive, and therefore marked for death as an infant. She was taken instead and put to work. For seven years she has lived alone aboard a satellite in Earth's orbit, a gifted hacker forced to run surveillance on Earth for the thaumaturge who keeps her there. She has never cut her hair and knows the world almost entirely through net feeds and dramas, which have left her romantic, imaginative and hopelessly unready for actual people.",
+            "id": "cress",
+            "name": "Cress",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Levana's head thaumaturge, who visits the satellite to collect her spy's reports. She placed Cress there as a child and has kept her useful and isolated ever since, and she is hunting the escaped cyborg for the queen.",
+            "id": "sybil-mira",
+            "name": "Sybil Mira",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The fugitive cyborg mechanic, now certain she is Princess Selene, the missing Lunar heir, and hiding aboard a stolen ship with a crew she did not plan on. She is trying to learn to use a Lunar gift she has spent her life suppressing and hates using, and has settled on a goal she has no idea how to reach: stop the wedding, take Levana's throne, and end the invasion of Earth.",
+            "id": "cinder",
+            "name": "Linh Cinder",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The captain of the stolen ship Rampion, a thief with an unshakeable opinion of himself and a talent for talking his way through situations he should not have entered. He treats the crew's suicidal mission as a business opportunity and Cress, whom he has never met, as a voice on a comm link.",
+            "id": "carswell-thorne",
+            "name": "Carswell Thorne",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The farmer from southern France, aboard the Rampion after the loss of her grandmother, sharpened by grief and impatient with the crew's caution. She is the one person who treats Wolf as a man rather than as a weapon.",
+            "id": "scarlet-benoit",
+            "name": "Scarlet Benoit",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The former Lunar special operative who broke with his pack in Paris. Aboard the Rampion he is the crew's only source on how Luna's soldiers and thaumaturges actually work, and he is uneasy in his own body, watching himself for the instincts that were built into him.",
+            "id": "wolf",
+            "name": "Wolf",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Cinder's android friend, installed as the Rampion's ship system, where she runs the sensors, complains about the accommodation and campaigns steadily for a body of her own.",
+            "id": "iko",
+            "name": "Iko",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Emperor of the Eastern Commonwealth, publicly engaged to Queen Levana and privately counting the days. The wolf soldiers' attacks have killed thousands across Earth, the antidote he bought with the engagement is being rationed out to him a shipment at a time, and the wedding is to be held on Luna.",
+            "id": "kai",
+            "name": "Emperor Kai",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The queen of Luna, days from the marriage that will make her empress of Earth's largest nation, holding the plague antidote as leverage and the invasion in reserve. She still wants the escaped cyborg found.",
+            "id": "queen-levana",
+            "name": "Queen Levana",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The Eastern Commonwealth's royal advisor, managing a young emperor, a war and a wedding at once, and the only person Kai can be honest with.",
+            "id": "konn-torin",
+            "name": "Konn Torin",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Sybil Mira's personal guard and pilot, a young Lunar soldier who says as little as possible and gives away less. He ends up in the hands of Cinder's crew, where he is entirely uninterested in being rescued, recruited or thanked, and appears to be protecting something on Luna he will not name.",
+            "id": "jacin-clay",
+            "name": "Jacin Clay",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Levana's stepdaughter and the princess of Luna, adored across the moon for a beauty that is entirely her own, with three fine scars across one cheek. She refuses on principle to use her Lunar gift to control anyone, and the refusal has cost her: she sees and hears things that are not there, and the court treats her as harmless and mad. She is kinder than anything else in Levana's palace.",
+            "id": "princess-winter",
+            "name": "Princess Winter",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Lunar defector and former palace scientist, found at last in a small desert town in Africa, where he has been treating plague patients and waiting. He knows more about the origins of letumosis and about Luna's programmes than he has ever admitted, including things he has kept from Cinder.",
+            "id": "dr-erland",
+            "name": "Dr. Dmitri Erland",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "cress"
+      },
+      "recaps": {
+        "ending": "The rescue that opens the book costs the crew almost everything before it is repaired. Scarlet is taken to Luna and handed to Princess Winter as a curiosity for the palace menagerie; Cress and Thorne crash into the Sahara, where Thorne is blinded; the Rampion is damaged and Cinder, Wolf and Iko go to ground in Africa. Reunited in the desert town of Farafrah, they find Dr. Erland, who admits that letumosis was engineered on Luna as a weapon and that the antidote is drawn from the blood of Lunar shells - children like Cress, taken from their families and kept alive in captivity for it. Erland reveals that his own daughter was one of those children, and leaves for Luna to find her, never learning that she is the girl standing in front of him. The crew abducts Kai from his own wedding procession on Earth, and Cinder tells him who she is; he believes her, and then insists on going back, because the marriage on Luna is the only way to put Cinder inside Levana's palace. Kai departs for the moon to be married, Scarlet is already a prisoner there, and the Rampion follows with Cinder intending to raise a revolution.",
+        "in_short": "Cinder's crew needs a hacker, and the one they find is Cress, a Lunar shell who has spent seven years imprisoned alone in an orbiting satellite spying on Earth for the thaumaturge Sybil Mira. The rescue goes badly: Sybil arrives mid-operation, Scarlet is captured and shipped to Luna, and Cress and Thorne crash to the Sahara in an escape pod, where Thorne is blinded by the impact. The two cross the desert on foot while Cinder, Wolf and Iko limp to Africa in the damaged Rampion. On Luna, Scarlet is given to Princess Winter as a pet for the palace menagerie. Reunited in Farafrah, the crew finds Dr. Erland, who reveals that letumosis was made on Luna as a weapon and its antidote is drawn from shells held captive there - and that his own lost daughter was a shell, without recognising Cress as her. The crew kidnaps Emperor Kai from his wedding procession; Cinder tells him she is Princess Selene, and Kai chooses to go through with the Lunar wedding anyway, as the way to get her inside the palace.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Linh Cinder, a cyborg mechanic in New Beijing, learned she was Lunar and then that she is Princess Selene, the heir to the Lunar throne believed to have died in a nursery fire as a small child. Queen Levana, who ordered that fire, extracted an engagement from the young emperor Kai in exchange for the plague antidote Earth desperately needs. Cinder escaped prison with the thief Carswell Thorne aboard his stolen ship, the Rampion, and went looking for her own past in France. There she and Thorne fell in with Scarlet Benoit, whose grandmother Michelle had hidden the injured princess for years before arranging her new life on Earth, and with Wolf, a Lunar special operative who broke with his pack to protect Scarlet. Michelle was killed by Levana's head thaumaturge, Sybil Mira. The four escaped together with Cinder's android friend Iko installed as the ship, and the moment Kai's engagement was announced, Lunar soldiers hidden in cities across Earth began attacking. Cinder has decided to stop the wedding and take Levana's throne.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Cress is a sixteen-year-old Lunar shell who has spent seven years alone aboard a satellite in Earth's orbit, hacking and spying for Sybil Mira, who visits to collect her reports and leaves her nothing else. Shells are born unable to manipulate others and are ordered killed at birth on Luna; Cress was taken and kept instead. She has spent months quietly hiding the fugitive cyborg's location from Sybil, and finally makes contact with Cinder's crew herself. She can black out Luna's surveillance of Earth and disable Levana's fleet, but only from the ground, and only if someone comes and gets her. Cinder's crew, hiding aboard the Rampion while wolf soldiers ravage Earth's cities, has no better plan for stopping the royal wedding, and agrees to the rescue.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The crew flies to the satellite with a plan: Thorne goes across to bring Cress out while Cinder, Scarlet, Wolf and Iko hold the ship. Sybil Mira arrives in the middle of it with a guard, Jacin Clay. The Rampion is forced to break away, Cinder is left fighting for the ship, and Thorne is trapped aboard the satellite with Cress as Sybil's shuttle docks. Nothing about the rescue goes to the plan the crew agreed on, and by the end of it the four of them are scattered across two worlds.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Scarlet is captured by Sybil and taken away to Luna. Cress and Thorne escape the satellite in a pod that falls out of orbit and crashes into the Sahara; Thorne strikes his head in the impact and loses his sight. Cress, who has never walked on a planet, finds herself the only one of the two who can see, guiding a blinded stranger across open desert with no water and no idea where the nearest town is. The Rampion, damaged and short of three crew, escapes with Cinder, Wolf, Iko and one prisoner: Jacin Clay, Sybil's guard, who will not explain himself.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Cress and Thorne walk. They ration what little they have, invent a working partnership out of nothing, and Cress gradually stops being the girl who only ever watched other people's lives. Aboard the Rampion, Cinder questions Jacin and eventually lets him return to Luna rather than keep him, judging that he is protecting someone there rather than serving Sybil. Cinder sets course for Africa and Dr. Erland, the only person who might help her plan anything better than running.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On Luna, Scarlet is delivered to the palace and given to Princess Winter, Levana's stepdaughter, as an exhibit for the royal menagerie. Winter is beloved across the moon, scarred across one cheek, and refuses on principle to use her Lunar gift on anyone - a refusal that has left her seeing things that are not there and dismissed by the court as mad. She is also the only person in the palace who treats Scarlet as a person. On Earth, Kai prepares to leave for a wedding on Luna he cannot avoid, while the antidote arrives in deliberately insufficient shipments.",
+            "through": {
+              "chapter": 36
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Cinder, Wolf and Iko reach the desert town of Farafrah and find Dr. Erland running a plague clinic there. He tells Cinder what he has been withholding: letumosis was engineered on Luna as a weapon against Earth, and the antidote that Levana doles out is manufactured from the blood of Lunar shells, children taken from their families and kept alive in captivity to be drained. Erland's own infant daughter was taken as a shell years ago and he believes she may still be alive somewhere in Levana's system.",
+            "through": {
+              "chapter": 42
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Cress and Thorne reach a desert settlement, where they are taken in by a man who intends to sell them rather than help them. Cress uses everything she learned in seven years of watching the world to get them out, and the two are found and picked up by Cinder. The crew is reunited in Farafrah, and Cress finally stands in a room with the people she had only ever heard over a comm. Erland recognises her for a shell without ever suspecting the rest, and leaves for Luna to look for his daughter among the ones held there - which means Cress never learns, and neither does he, that she is the child he is going to find.",
+            "through": {
+              "chapter": 50
+            }
+          },
+          {
+            "scope": "book",
+            "text": "With Cress able to hack Earth's networks again, the crew moves on the wedding. They intercept Emperor Kai's procession and abduct him aboard the Rampion. Cinder tells him everything: that she is Princess Selene, that Levana ordered the fire that was supposed to kill her, that the plague was Lunar-made and the antidote comes from captive shells, and that she intends to take the throne. Kai believes her. He also refuses to stay hidden, because a runaway emperor gives Levana a war and nothing else.",
+            "through": {
+              "chapter": 56
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kai goes back. The wedding will proceed on Luna as arranged, because the ceremony is the one event that opens Levana's palace to outsiders, and Kai's wedding party is the way to get Cinder inside it. He returns to New Beijing, is publicly recovered from his abduction, and departs for the moon to be married. Erland has gone to Luna ahead of them. Scarlet is already there, in the menagerie under Winter's protection. The Rampion follows with Cinder, Thorne, Cress, Wolf and Iko aboard, Cinder intending to reach the sectors beyond the capital and raise the Lunar people against their queen during the wedding itself.",
+            "through": {
+              "chapter": 61
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "cress"
+      }
+    },
     "crime-and-punishment": {
       "characters": {
         "characters": [
