@@ -759,6 +759,435 @@
         "work": "the-river-of-silver"
       }
     },
+    "the-ruby-circle": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A royal Moroi spirit user, newly married and living at the Moroi Court, where his wife is safe only so long as she does not step outside its boundaries. He is back on his medication and clean, which steadies him and takes away his magic, and every decision in front of him is about whether to give that up again. One of the book's two narrators.",
+            "id": "adrian-ivashkov",
+            "name": "Adrian Ivashkov",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A former Alchemist, a trained witch, and a fugitive from the order that raised her. She is married to a Moroi and sheltering at the Moroi Court, protected by the queen's goodwill and confined by it, since the Alchemists are waiting the moment she leaves. Months of re-education have left marks she is not discussing. The book's other narrator.",
+            "id": "sydney-sage",
+            "name": "Sydney Sage",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Jill Mastrano"
+            ],
+            "description": "The Moroi queen's younger half-sister, whose existence is the only thing that lets her sister keep the throne, and who has spent years being moved, hidden and guarded because of it. She is bonded to Adrian and has grown up considerably since the hiding began. She goes missing early in this book.",
+            "id": "jill-dragomir",
+            "name": "Jill Dragomir",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The dhampir who has guarded Jill since the beginning of the hiding, and who takes her disappearance as his own failure. Competent, self-punishing and unwilling to be left out of the search.",
+            "id": "eddie-castile",
+            "name": "Eddie Castile",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lissa"
+            ],
+            "description": "The Moroi queen, and the reason Jill has spent years in hiding: without a second living Dragomir her claim to the throne fails. She shelters Sydney and Adrian at Court against considerable political cost.",
+            "id": "vasilisa-dragomir",
+            "name": "Vasilisa Dragomir",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Moroi spirit user and restored former Strigoi, one of the few people who can approach the group's problems from the magical side rather than the political one.",
+            "id": "sonya-karp",
+            "name": "Sonya Karp",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dhampir guardian of formidable reputation, once Strigoi and restored, now serving at Court and unhappy with how little the search for a missing girl is officially permitted to do.",
+            "id": "dimitri-belikov",
+            "name": "Dimitri Belikov",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The queen's guardian, blunt and impatient with protocol, and one of the few people at Court who treats Sydney as an ally rather than a liability.",
+            "id": "rose-hathaway",
+            "name": "Rose Hathaway",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The young dhampir guardian who was part of the Palm Springs detail, and the father of Olive Sinclair's child - a fact that has upended everything he believed about duty and about himself.",
+            "id": "neil-raymond",
+            "name": "Neil Raymond",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ms. Terwilliger",
+              "Jackie"
+            ],
+            "description": "The witch who trained Sydney, still the source of the workings that can do what neither Moroi magic nor guardian legwork can.",
+            "id": "jaclyn-terwilliger",
+            "name": "Jaclyn Terwilliger",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The small scaled creature Sydney and Adrian summoned together, which spends most of its life dormant as a charm and wakes up hungry. It is bonded to both of them and turns out to be more useful than either expected.",
+            "id": "hopper",
+            "name": "Hopper",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Moroi who was Strigoi and was restored by her sister's spirit magic, pregnant by a dhampir with a child that should not be possible. She is in hiding from everyone who would want to study her, her child, or both.",
+            "id": "olive-sinclair",
+            "name": "Olive Sinclair",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The dhampir raised among the Keepers, the community that lives outside Moroi law in the Appalachian backcountry. Her family and her people's customs matter a great deal to where this search leads.",
+            "id": "angeline-dawes",
+            "name": "Angeline Dawes",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Sydney's younger sister, an Alchemist who reported her and has since watched the consequences. She is the group's only line into the order, and trusting her is a decision with no safe version.",
+            "id": "zoe-sage",
+            "name": "Zoe Sage",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sydney's former lab partner and a former Warrior of Light, still outside both of the societies that shaped him and still willing to help the people who cost him them.",
+            "id": "trey-juarez",
+            "name": "Trey Juarez",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Sydney's father, a career Alchemist who regards his daughter's marriage as proof of everything he warned about, and who is not a neutral party in what the order does next.",
+            "id": "jared-sage",
+            "name": "Jared Sage",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-ruby-circle"
+      },
+      "recaps": {
+        "ending": "Jill is found alive and brought back, and the abduction that removed her is undone. Because the whole danger to her rested on a single rule - that a royal line needs more than one living member for its claim to stand - the resolution is to remove the rule rather than to hide her better: with the law changed, killing Jill no longer unseats a queen, and the years of hiding end. Jill comes back to her own life, and she and Eddie, who has guarded her since the beginning and refused to want anything for himself, are finally together. Olive Sinclair does not survive: her son is born, the first child known to be conceived between a restored Moroi and a dhampir, and he is hidden away to be raised out of reach of Moroi politics and of the Alchemists, both of whom would treat him as evidence rather than a child. Neil is left with a son he cannot openly claim. Sydney's confrontation with her own order and her own family closes the pursuit that has followed her since her escape, and she and Adrian are able to stop running: they stay at Court, married and no longer in hiding, with Sydney free to study and Adrian steady for the first time in his life. The Palm Springs household scatters into lives its members chose.",
+        "in_short": "Sydney and Adrian are married and sheltering at the Moroi Court, safe only inside its boundaries while the Alchemists wait outside for Sydney to leave. Then Jill vanishes. Adrian's bond tells him she is alive but not where, and the official search is limited by exactly the politics that put her in danger. Sydney and Adrian leave the safety of Court to look for her themselves, following the trail through the Moroi world, the Alchemists and the Keepers, the community living outside Moroi law where Olive Sinclair has gone to hide the pregnancy that should be impossible. Sydney's magic, her teacher, and the small creature she and Adrian summoned all matter more than any of the official machinery. Olive's son is born and Olive does not survive; the child is hidden away from everyone who would treat him as proof of something. Jill is found and recovered, and the law that made her life the guarantee of her sister's throne is changed, ending the hiding for good. Jill and Eddie are together at last, Sydney's pursuit by her order is finally settled, and she and Adrian can live openly.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Sydney Sage, an Alchemist, spent two years hiding Jill Dragomir - the Moroi queen's half-sister, whose existence is the only thing keeping her sister on the throne - at a human school in Palm Springs, guarded by the dhampirs Eddie Castile and Angeline Dawes and shadowed by the royal Moroi Adrian Ivashkov, who is psychically bonded to Jill. In that time Sydney discovered she is a witch, was trained in secret by her teacher Jaclyn Terwilliger, learned that the Alchemists' golden lily tattoo carries compulsion, and had hers broken so she could pass as loyal while working against the order. She and Adrian fell in love; her younger sister Zoe found out and reported her, and Sydney was seized and held for months in an Alchemist re-education facility, where she faked conversion to survive. There she found Olive Sinclair, a Moroi restored from Strigoi, pregnant by the dhampir guardian Neil Raymond with a child Moroi biology says cannot exist. Sydney broke both of them out as a rescue party reached the facility, and she and Adrian married in Las Vegas immediately afterwards. Sydney is now a fugitive from her own order, and the only place the Alchemists cannot reach her is the Moroi Court.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sydney and Adrian are living at the Moroi Court as a married couple, protected by the queen and effectively confined: the Alchemists cannot touch Sydney inside its wards, and are waiting for her to step outside them. It is safety without a life in it - Sydney cannot study, work or go anywhere, and Adrian, back on the medication that steadies his moods at the cost of his magic, has nothing to do but be married. Then Jill disappears. Adrian can tell through the bond that she is alive, and nothing else useful; the guardians' official search is hemmed in by the same politics that made Jill a target in the first place, and the longer she is missing the more precarious the queen's position becomes.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sydney and Adrian decide that waiting inside the wards is not a plan, and start working the problem themselves. Sydney's magic and Ms. Terwilliger's knowledge give them approaches the Moroi authorities do not have, and the creature they summoned together turns out to have uses nobody anticipated. The search has a second strand: Olive Sinclair, carrying Neil's child, has gone into hiding, because a pregnancy between a restored Moroi and a dhampir is the kind of fact the Alchemists would lock underground and Moroi society would fight over. Neil is not managing either the secrecy or the fatherhood well. The obvious place for someone to disappear into is the Keepers, the community that lives outside Moroi law in the Appalachian backcountry, where Angeline was raised.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The search takes Sydney and Adrian out of Court and into the Keepers' territory, where the group's usual assumptions about law, marriage and status do not apply and where their standing depends on customs Angeline has to translate for them. They find what they came for and rather more besides. Jill's trail, meanwhile, does not lead anywhere simple: it runs through the Moroi world and through the Alchemists at once, and the more they learn about who benefits from her disappearance the clearer it is that this was arranged rather than opportunistic. Sydney's own family becomes part of the problem, and Zoe - who reported her sister and has been living with the result - is the group's only line into the order.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The two strands converge. Olive's pregnancy is far along and cannot be hidden much longer, and the people who want to study her are closing in from more than one direction, while the search for Jill turns from guesswork into a target. Sydney works magic at a scale she has not attempted before, with Ms. Terwilliger's help and at real cost, because ordinary investigation has run out of road. Adrian faces the choice the whole book has been driving at: his medication keeps him functional and takes away the spirit magic that could actually find Jill, and there is only one way to have both problems solved at once. Sydney's confrontation with the Alchemists - and with her own father - stops being avoidable.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Olive's child is born. He is a dhampir, the first known to be conceived between a restored Moroi and a dhampir, and his existence changes what the Moroi believe about themselves and what the Alchemists believe about restored Strigoi. Olive does not survive, and the group is left with a newborn who would be treated as evidence by everyone with an interest in him, and who has to be placed somewhere neither side can reach. Neil has a son he cannot claim. At the same time the search for Jill produces the answer: where she is being held, and who arranged it, and why removing her was worth the risk to the people who did it. Sydney and Adrian go after her without waiting for permission from the Court.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jill is recovered alive. The problem underneath the whole series is then solved at its root rather than patched again: the law that requires a royal line to have more than one living member is changed, so Jill's death would no longer cost her sister the throne, and there is no longer any reason to hide her. Jill goes back to her own life and to Eddie, who has guarded her from the start and finally stops treating what he wants as a professional failing. Sydney's long conflict with the Alchemists and with her family is settled well enough that she is no longer hunted, and she and Adrian stay at Court, married, sober and steady, with Sydney free to study and Adrian with something to do that he chose. Olive's son is hidden away with people who can raise him unremarked, out of reach of Moroi politics and the Alchemists alike, and Neil has to live with that. The Palm Springs household, thrown together by a hiding assignment, scatters into ordinary lives.",
+            "through": {
+              "chapter": 19
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-ruby-circle"
+      }
+    },
+    "the-ruins-of-gorlan": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The self-styled Lord of Rain and Night, once a baron of the kingdom of Araluen. Fifteen years before the story opens he rebelled against King Duncan, was beaten in battle, and withdrew into the bleak Mountains of Rain and Night with the surviving Wargals, brutish beast-soldiers he commands directly with his mind. He has spent the years since brooding on revenge and is patient, calculating, and physically imposing.",
+            "id": "morgarath",
+            "name": "Morgarath",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A pair of enormous, near-unkillable creatures Morgarath keeps and sends out as assassins. Shaggy and ape-like, they move faster than their bulk suggests, ordinary arrows barely mark their thick hide, and their red stare freezes a victim in place with terror. They are treated in Araluen as half legend, and almost nobody living has faced one.",
+            "id": "kalkara",
+            "name": "The Kalkara",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A slight, quick fifteen-year-old orphan raised as a ward of Castle Redmont, one of five parentless children brought up at the Baron's expense. He knows almost nothing about his parents beyond a claim that his father died as a soldier, and he has always assumed that Battleschool and knighthood are the only way to prove himself worthy of that. He is agile, endlessly curious, a practised climber, and quietly resourceful, none of which looks like the makings of a knight.",
+            "id": "will",
+            "name": "Will",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The King's Ranger for Redmont Fief: a short, grim, grey-bearded man in a mottled cloak who appears and disappears without anyone noticing. Ordinary people believe Rangers work sorcery and give him a wide berth. He speaks bluntly and rarely, carries a heavy longbow, a saxe knife and a throwing knife, and has the confidence of the Baron and the King.",
+            "id": "halt",
+            "name": "Halt",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Lord of Redmont Fief and the man responsible for the castle's wards. He is fair-minded, shrewd about the people who serve him, and fond of a joke that his staff rarely find as funny as he does. He presides over the Choosing, at which each ward is offered, or refused, a craft apprenticeship.",
+            "id": "baron-arald",
+            "name": "Baron Arald",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A ward of Will's age, big, heavily built, and set on Battleschool from the beginning. He has spent years bullying Will and the smaller wards, and the two of them cordially detest one another as the story opens.",
+            "id": "horace",
+            "name": "Horace Altman",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A ward of Castle Redmont, tall, fair and unusually self-possessed, with hopes of a place in the fief's Diplomatic Service. She is a steady friend to Will and rather better than he is at keeping her nerve.",
+            "id": "alyss",
+            "name": "Alyss Mainwaring",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A cheerful, round-faced ward with an obvious gift for cooking, who hopes to be taken on by the castle's kitchen master. She is the warmest of the five wards and the least troubled about her future.",
+            "id": "jenny",
+            "name": "Jenny Dalby",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A thin, talkative ward who enjoys an argument for its own sake and is drawn to the scribes and the law. He is the least physical of the five and entirely untroubled by that.",
+            "id": "george",
+            "name": "George Carter",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Redmont's Battlemaster, who runs the fief's Battleschool and decides which boys are taken into it. Large, blond and genial, he judges candidates on build and stamina as much as on willingness, and he is on close terms with the Baron and with Halt.",
+            "id": "sir-rodney",
+            "name": "Sir Rodney",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The head of Redmont's Diplomatic Service, a tall, elegant woman who trains couriers and negotiators. She is composed to the point of coolness, misses nothing, and has known Halt for a long time.",
+            "id": "lady-pauline",
+            "name": "Lady Pauline",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The horse assigned to Will: small, barrel-chested and unimpressively shaggy next to a battlehorse, and far faster, tougher and cleverer than he looks. Ranger horses are bred and trained apart from other stock and will only accept a rider who knows the proper greeting.",
+            "id": "tug",
+            "name": "Tug",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Halt's former apprentice, now a Ranger with a fief of his own in the south. He is young, tall and good-humoured where Halt is dour, and unusual among Rangers in that he was also trained to the sword, which he uses better than most knights.",
+            "id": "gilan",
+            "name": "Gilan",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-ruins-of-gorlan"
+      },
+      "recaps": {
+        "ending": "Halt and Gilan corner the two Kalkara near the ruins of Morgarath's old castle at Gorlan. Ordinary arrows do almost nothing to them, and Halt's plan depends on fire. He brings one creature down, but the second reaches him, and the terror of its stare leaves him unable to move or shoot. Will, who was sent away with dispatches and disobeyed, arrives in time to set an arrow alight and put it into the creature, which burns and dies. Both Kalkara are destroyed and Halt and Gilan survive. Morgarath's attempt to murder Araluen's senior commanders before a war has failed, but the attempt itself tells the kingdom that he is preparing to move against it, and the fiefs begin arming. Back at Redmont, Will is publicly honoured for what he did, and Baron Arald offers him the place in Battleschool he wanted more than anything a few months earlier. Will refuses it: he is a Ranger's apprentice and intends to stay one. Halt, who is not given to praise, is plainly satisfied. Will's friendship with Horace, impossible at the start of the book, is settled, and the question of who his father was remains open.",
+        "in_short": "Will, a slight, quick orphan raised as a ward of Castle Redmont in the kingdom of Araluen, wants a place in Battleschool and is refused as too small for it. Instead he is taken as apprentice by Halt, the fief's grim Ranger, and learns that the Rangers are not sorcerers but the King's scouts and intelligence corps, trained in concealment, tracking, the knife and the longbow. While Will learns the craft and makes an unlikely peace with Horace, an old tormentor now at Battleschool, the exiled rebel lord Morgarath sends two Kalkara, huge beasts whose stare paralyses with fear, to murder Araluen's senior commanders ahead of a war. Halt and his former apprentice Gilan track the creatures to the ruins of Morgarath's old castle at Gorlan. Halt kills one; when the second overpowers him, Will destroys it with a burning arrow. The kingdom's command survives, and Will, offered the Battleschool place he once longed for, chooses to remain a Ranger's apprentice as Araluen prepares for war.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In the kingdom of Araluen, five orphaned wards of Castle Redmont reach the age at which they are offered craft apprenticeships. Will, the smallest and quickest of them, has always wanted Battleschool, believing it the only way to live up to a father he was told died a soldier. At the Choosing, Baron Arald's Battlemaster Sir Rodney turns him down as too slight, while Horace, a big ward who has bullied Will for years, is accepted. Alyss is taken by the Diplomatic Service, Jenny by the kitchens and George by the scribes, leaving Will the only one unplaced. Halt, the fief's silent and widely feared Ranger, hands the Baron a note about Will, and Will finds himself apprenticed to him instead. Before this, the reader has seen the exiled rebel lord Morgarath in his mountain stronghold, deciding that the way to beat Araluen is to kill the men who would lead its army, and sending out two of his creatures to do it.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Will moves out of the castle to Halt's cottage at the edge of the forest and starts an apprenticeship nothing like the one he imagined. The Rangers turn out not to be sorcerers at all but the King's corps of scouts and intelligence gatherers, one to a fief, answerable to the King through their Commandant. Their reputation for magic is a useful side effect of what they actually do: move unseen in mottled cloaks, watch, and shoot better than anyone else in the kingdom. Halt teaches by setting tasks rather than explaining, and Will spends his days on unseen movement, on drawing a bow far heavier than he expected, and on knife work. He also learns that his old rival Horace is finding Battleschool much harder than he expected.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Will's training deepens: camouflage, silent movement, tracking, and constant archery practice. He is given a horse of his own, Tug, a small shaggy Ranger horse who is faster and cleverer than he looks and will not accept a rider who does not know the proper greeting. At Battleschool, Horace is being systematically bullied by three second-year cadets who make his life miserable and who he cannot report without appearing to whine. Will and Horace, thrown together on a boar hunt in which each of them ends up owing the other his safety, finally put down their old feud and become friends.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Lord Northolt, the most senior commander of the King's army, is found murdered, killed by something no ordinary man could have faced. Halt's former apprentice Gilan, now a Ranger in his own right and a rare swordsman among them, arrives at Redmont, and between them the Rangers identify what did it: the Kalkara, enormous half-legendary beasts that Morgarath keeps and that arrows barely touch. Halt concludes that Morgarath is picking off Araluen's commanders one by one in preparation for war, and that Baron Arald is on the list. Meanwhile the bullying at Battleschool comes into the open, and Horace faces the three older cadets and beats them, which ends their careers there and confirms how good he is going to be.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rather than wait for the Kalkara to reach Redmont, Halt takes the hunt to them. He and Gilan ride out to intercept the creatures before they can reach their next target, working out where they must be heading and what might actually kill them, since arrows plainly will not. Will is sent away with messages and orders to stay clear of the pursuit, and Horace goes with him. Neither of them is willing to leave the two Rangers to face the creatures alone, and they follow the trail instead.",
+            "through": {
+              "chapter": 26
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The hunt converges on the ruins of Castle Gorlan, Morgarath's own seat before his rebellion, now a wreck in a deserted fief. Halt and Gilan set their ambush there and discover how little effect their shooting has: arrows lodge in the creatures' hides without stopping them, and the fear a Kalkara's stare produces is close to physical, holding a man in place while it closes. Halt's answer is fire. Will and Horace, still following against orders, are close enough behind to see what the two Rangers are facing.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the final confrontation Halt kills the first Kalkara, but the second reaches him and the terror of its gaze leaves him rooted and unable to shoot. Will arrives, sets an arrow burning and shoots the creature, which catches fire and dies. Both Kalkara are destroyed, and with them Morgarath's plan to behead the kingdom's command. The attempt has told Araluen what it needed to know, and the fiefs begin preparing for the war Morgarath clearly intends. At Redmont, Will is honoured for what he did, and Baron Arald offers him the Battleschool place he had wanted all his life. Will turns it down and stays Halt's apprentice, and his friendship with Horace, unthinkable a few months earlier, holds.",
+            "through": {
+              "chapter": 32
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-ruins-of-gorlan"
+      }
+    },
     "the-runesmith": {
       "characters": {
         "characters": [

@@ -1366,6 +1366,239 @@
         "work": "the-eye-of-the-world"
       }
     },
+    "the-faceless-ones": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Stephanie Edgley"
+            ],
+            "description": "Skulduggery's partner, now experienced enough that the Sanctuary sends the pair of them out on real cases and resents them for solving them. Her Elemental magic is solid, her tolerance for injury is higher than it should be, and she is bored by the ordinary life her mirror duplicate lives on her behalf. She is also, since the last case, the last known descendant of the Ancients, a fact that makes her valuable to exactly the people she least wants to interest.",
+            "id": "valkyrie-cain",
+            "name": "Valkyrie Cain",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The skeleton detective, an Elemental who came back from his own murder during the war and has been hunting the people responsible for it ever since. He is charming, insufferable, and steadily less patient with a Sanctuary that would rather manage a problem than solve it. Whatever he was during the war, he keeps it to himself.",
+            "id": "skulduggery-pleasant",
+            "name": "Skulduggery Pleasant",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The English sword-fighter who can walk on walls, recovered from her injuries and back at Valkyrie's side. She is direct, fearless and the person Valkyrie goes to when she does not want to be lectured.",
+            "id": "tanith-low",
+            "name": "Tanith Low",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The scarred tailor and fighter who makes the protective clothing Valkyrie and Skulduggery survive in, and who can turn his skin to stone. He would rather be left alone with his work, and he never is.",
+            "id": "ghastly-bespoke",
+            "name": "Ghastly Bespoke",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Grand Mage of the Irish Sanctuary and one of the three Elders who govern magic in Ireland. Elderly, dignified and tired, he led the war against Mevolent and has spent the peace since trying to keep the surviving fanatics quiet.",
+            "id": "eachan-meritorious",
+            "name": "Eachan Meritorious",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the three Elders of the Irish Sanctuary, nervous and irritable, who argues for caution in every meeting and has never had much patience for Skulduggery's methods.",
+            "id": "sagacious-tome",
+            "name": "Sagacious Tome",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The third Elder of the Irish Sanctuary, cool and formal, and the member of the Council least inclined to let Skulduggery do things his own way.",
+            "id": "morwenna-crow",
+            "name": "Morwenna Crow",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An English teenager with impossible hair and a very high opinion of himself, who turns out to be a Teleporter: he can step from one place to any other he can picture. He has had no training and no idea that the magical world exists, and he becomes extremely important to people who need a door opened.",
+            "id": "fletcher-renn",
+            "name": "Fletcher Renn",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A one-armed sorcerer and the public face of the Diablerie, a group devoted to the return of the Faceless Ones. He is precise, formal and comfortable with murder, and he takes his orders from someone he will not name.",
+            "id": "jaron-gallow",
+            "name": "Jaron Gallow",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A member of the Diablerie who kills with knives and treats each killing as an occasion. She is quick, theatrical, and entirely without hesitation.",
+            "id": "murder-rose",
+            "name": "Murder Rose",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The Diablerie's strongman, huge and slow-spoken, who fights with his hands and does not need weapons to be a serious problem.",
+            "id": "gruesome-krav",
+            "name": "Gruesome Krav",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The Texan killer with hollows where his eyes should be, who cuts a seam in stone with a straight razor and travels through solid ground. He is working with the Diablerie for his own reasons and remains, as always, for hire.",
+            "id": "billy-ray-sanguine",
+            "name": "Billy-Ray Sanguine",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A name the Diablerie's people use for whoever is directing them, spoken with the deference usually reserved for a prophet. Nobody outside the group has seen this person or knows what they are, and the Sanctuary is not certain they exist at all.",
+            "id": "batu",
+            "name": "Batu",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The keeper of Dublin's great private library, magically impossible to dislike, and willing to sell information to any side. With the Faceless Ones back in fashion among certain people, her past becomes a subject she would prefer not to discuss.",
+            "id": "china-sorrows",
+            "name": "China Sorrows",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "China Sorrows's brother, a vast, bald, quiet man of extraordinary strength who answers to no faction and does what he judges necessary. He has spent his life working against the return of the Faceless Ones.",
+            "id": "mr-bliss",
+            "name": "Mr Bliss",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The irritable old scientist who runs a hidden medical facility behind a derelict cinema and repairs the damage Skulduggery's cases do to everyone around him, Valkyrie in particular. He argues with all of them and treats all of them anyway.",
+            "id": "kenspeckle-grouse",
+            "name": "Kenspeckle Grouse",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-faceless-ones"
+      },
+      "recaps": {
+        "ending": "The Diablerie get what they wanted. Using the remains of the Grotesquery and a Teleporter, the portal is opened at Aranmore Farm and a Faceless One comes through into a human body, and the cost is enormous: Grand Mage Eachan Meritorious and Elder Morwenna Crow are killed, Elder Sagacious Tome dies after his betrayal is exposed, and Mr Bliss is killed fighting the thing that came through. With no way to stop it from the outside, Skulduggery drives the Faceless One back through the portal and goes with it, and the way closes behind them both. Valkyrie is left on the ground, unhurt and without her partner, and the only comfort available is that he was not destroyed, merely trapped in a dead world with the dark gods. The Irish Sanctuary is left leaderless and the surviving Elders are replaced by a new Grand Mage, Thurid Guild, who has no patience for Skulduggery Pleasant's associates and less for Valkyrie. Tanith, Ghastly, China and Fletcher are alive; the Diablerie is broken but its survivors scatter. Valkyrie goes home with one intention, which the Sanctuary has already refused to help with: getting Skulduggery back.",
+        "in_short": "Teleporters are being murdered one by one, and the investigation leads Skulduggery and Valkyrie to the Diablerie, a group devoted to the return of the Faceless Ones, working under a hidden leader called Batu. They need a Teleporter to open a portal, so the pair race to find and protect Fletcher Renn, an untrained English teenager who is the last one left. Someone inside the Sanctuary is feeding the Diablerie information, and it proves to be Elder Sagacious Tome. The Diablerie steal the remains of the Grotesquery, take Fletcher, and open the portal at Aranmore Farm. A Faceless One crosses into a human body. Meritorious, Crow and Tome all die, and Mr Bliss is killed trying to hold the creature. With nothing else left, Skulduggery drives the Faceless One back through the portal and is dragged through with it as it closes, leaving him alive but trapped in the Faceless Ones' dead world. Thurid Guild takes over the Sanctuary and refuses to mount a rescue, and Valkyrie is left to find another way.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Stephanie Edgley inherited her murdered uncle's estate, met the skeleton detective Skulduggery Pleasant, learned that magic is real, took the name Valkyrie Cain and became his partner. In her first case she killed Nefarian Serpine, one of the surviving lieutenants of the dark sorcerer Mevolent, using the Sceptre of the Ancients, a weapon made by the first sorcerers to drive out the Faceless Ones, the dark gods who ruled before humanity. In her second, Mevolent's general Baron Vengeous escaped prison, recovered the armour of the missing Necromancer general Lord Vile and woke the Grotesquery, a creature built around the remains of a Faceless One, intending to use it to bring the dark gods back. Vengeous was killed and the creature destroyed. Valkyrie also learned why the Sceptre obeyed her: she is descended from the last of the Ancients. She trains as an Elemental, works with the sword-fighter Tanith Low, the tailor Ghastly Bespoke, the librarian China Sorrows and the irascible doctor Kenspeckle Grouse, and hides all of it from her parents behind a duplicate that lives her ordinary life for her.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Teleporters, sorcerers who can step instantly from one place to another, are being hunted and killed. There are very few of them left, and by the time Skulduggery and Valkyrie are put on the case the number is dropping fast. The Sanctuary's Elders, Grand Mage Eachan Meritorious with Morwenna Crow and Sagacious Tome, want the matter handled quietly, which suits nobody. Someone is going to a great deal of trouble to remove a rare and specific talent from the world, and the obvious question is what they intend to do once the last one is theirs.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The killings lead back to the Diablerie, a group that worships the Faceless Ones and was believed to have been wiped out after the war: Jaron Gallow, the one-armed man who speaks for it, the knife-fighter Murder Rose, the strongman Gruesome Krav, and the hired killer Billy-Ray Sanguine, working alongside them. They are not killing Teleporters at random. They need one, and they are removing every other option so that the one they take has nowhere to run. The name they answer to is Batu, someone none of the Sanctuary's people have ever seen.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Skulduggery and Valkyrie find the Teleporter the Diablerie has missed: Fletcher Renn, an untrained, vain English teenager who did not know the magical world existed and can already step anywhere he can picture. Keeping him alive and keeping him in one place turn out to be different problems. Meanwhile the Diablerie recover the remains of the Grotesquery, which everyone had assumed were safely disposed of, and it becomes clear what the plan is: with the creature and a Teleporter, they can open a portal and let the Faceless Ones back into the world. China Sorrows is unusually evasive about the Diablerie, and Mr Bliss, who has spent his life on this particular problem, involves himself.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Every move the Diablerie make is a step ahead of the Sanctuary, and it stops being possible to believe in coincidence: someone inside the Sanctuary is feeding them everything. Skulduggery and Valkyrie find themselves working around their own side as much as against the enemy, hiding Fletcher, chasing the Grotesquery and trying to identify the leak. Batu remains a name rather than a face, and what little they learn suggests someone who believes the Faceless Ones will reward the person who lets them back in.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The traitor is Elder Sagacious Tome, who has been passing the Diablerie the Sanctuary's every decision, and who insists even as he is exposed that he is not the one giving the orders. He does not survive the confrontation for long. The exposure comes too late to matter: the Diablerie take Fletcher, secure the Grotesquery and move to Aranmore Farm, where the ground is thin enough for a portal to be forced open. The Sanctuary, gutted by its own betrayal, follows in what force it can gather.",
+            "through": {
+              "chapter": 32
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At Aranmore Farm the portal is opened and a Faceless One crosses into the world in a human body. It is not a creature that can be fought on any ordinary terms. Grand Mage Eachan Meritorious and Elder Morwenna Crow are killed, the Sanctuary's Cleavers die in numbers, and Mr Bliss, the strongest of them and the one who has spent his life preparing for exactly this, is killed holding it back. The Diablerie is broken in the fighting, but the thing they let through is still standing, the portal is still open, and nothing anyone has is enough to close it.",
+            "through": {
+              "chapter": 38
+            }
+          },
+          {
+            "scope": "book",
+            "text": "With no way to stop the Faceless One from this side, Skulduggery drives it back through the portal and goes through with it, and the way seals behind them both. He is not destroyed; he is trapped in the Faceless Ones' dead world with the dark gods, which is not obviously better. Valkyrie is left standing in a field, unhurt, without her partner and with no one willing to go and get him. The Irish Sanctuary has lost all three of its Elders and Mr Bliss, and the new Grand Mage, Thurid Guild, has no time for Skulduggery Pleasant, less for the child who worked with him, and no intention of authorising a rescue. Tanith, Ghastly, China, Kenspeckle and Fletcher are alive, the surviving members of the Diablerie have scattered, and Valkyrie goes home with one purpose: finding a way to bring Skulduggery back.",
+            "through": {
+              "chapter": 44
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-faceless-ones"
+      }
+    },
     "the-fall-of-five": {
       "characters": {
         "characters": [

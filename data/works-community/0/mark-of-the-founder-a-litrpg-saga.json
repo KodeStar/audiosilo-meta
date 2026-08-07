@@ -330,6 +330,253 @@
         "work": "mark-of-the-founder-a-litrpg-saga"
       }
     },
+    "martin-the-warrior": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A young mouse held as a slave in the coastal fortress of Marshank, the son of Luke the Warrior, who left him a sword and went away to sea. The sword was taken from him when he was captured and now hangs in the tyrant's hall. Seasons of forced labour have not broken him: he refuses to be worked quietly, argues with the guards, and is the one slave the others look to. He is hard, direct, and has no idea yet how to lead anyone anywhere.",
+            "id": "martin",
+            "name": "Martin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Badrang the Tyrant"
+            ],
+            "description": "A stoat warlord who has built the fortress of Marshank on the eastern shore with slave labour, meaning to make himself lord of the coast and, in time, of far more. A former sea raider who came ashore to build something permanent, he is calculating rather than merely brutal, keeps trophies of those he has beaten, and is proudest of a sword he took from a young mouse prisoner.",
+            "id": "badrang",
+            "name": "Badrang",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A young squirrel enslaved at Marshank alongside Martin and his closest friend there. Powerfully built and a superb thrower of javelins, he has an athlete's discipline and a deep, quiet rage at what has been done to him and to his father. His hatred of Badrang is the one thing he cannot reason with.",
+            "id": "felldoh",
+            "name": "Felldoh",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Felldoh's father, an old squirrel who has been a slave at Marshank for many seasons and has learned to survive it. He counsels patience and endurance where his son wants vengeance.",
+            "id": "barkjon",
+            "name": "Barkjon",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Badrang's chief captain and the overseer of the slave pens, a stoat who runs the work gangs with a whip and reports to his master on anything that moves. Cruel by habit and careful never to be caught failing.",
+            "id": "hisk",
+            "name": "Hisk",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young mouse taken by Badrang's slavers, cheerful and stubbornly optimistic even in the pens, who wants to be a healer rather than a fighter and practises on anyone injured. He is far from home and his family have no idea whether he is alive.",
+            "id": "brome",
+            "name": "Brome",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Laterose",
+              "Laterose of Noonvale"
+            ],
+            "description": "A mousemaid from Noonvale, a hidden valley in the north, who has travelled a long way with only a mole for company to find her lost younger brother. She is warm, quick-witted, brave to the point of recklessness, and a fine singer. She has never seen a place like Marshank and she is not deterred by it.",
+            "id": "rose",
+            "name": "Rose",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A mole travelling with Rose as her companion and cook, inseparable from his ladle, slow-spoken and imperturbable. He grumbles about everything and follows her anywhere.",
+            "id": "grumm",
+            "name": "Grumm Trollgrub",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young otter enslaved at Marshank, tough, fast in water and quick with his tongue, and one of the group of prisoners who begin planning a way out.",
+            "id": "keyla",
+            "name": "Keyla",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An otter maid among the slaves of Marshank, scarred by the overseers and hardened by it, who is among the most determined of the prisoners to fight rather than wait.",
+            "id": "tullgrew",
+            "name": "Tullgrew",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A corsair stoat who arrives off the coast with a ship's crew at his back, wearing wooden clogs and a beard plaited with ornaments. He and Badrang were shipmates and partners once, and neither has forgotten how that ended. Boisterous and treacherous in equal measure, he wants Marshank for himself.",
+            "id": "tramun-clogg",
+            "name": "Tramun Clogg",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A badger who leads the Rambling Rosehip Players, a troupe of travelling performers who tour the coast with a cart, a stage and a repertoire. Large, shrewd and maternal toward her company, she has kept them alive on the road for many seasons by knowing exactly when to move on.",
+            "id": "rowanoak",
+            "name": "Rowanoak",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A hare and the leading actor of the Rambling Rosehip Players, a magnificent ham with a voice for the back row, a bottomless appetite and a talent for improvising his way out of trouble. Under the performance he is a capable and very fast fighter.",
+            "id": "ballaw",
+            "name": "Ballaw De Quincewold",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A squirrel of the Rambling Rosehip Players, vain about her looks and her billing, forever arranging her tail and complaining about the roles she is given, and rather braver in a crisis than she lets anyone expect.",
+            "id": "celandine",
+            "name": "Celandine",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "the Warden of Marshwood Hill"
+            ],
+            "description": "An enormous grey heron who rules a stretch of marsh and hill on the road north and considers everything that crosses it his to judge. Formal, imperious and lethally quick, he is not an ally and not exactly an enemy.",
+            "id": "the-warden",
+            "name": "The Warden",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The chief of Noonvale, Rose and Brome's father, who has kept his hidden valley safe for a lifetime by keeping it secret and keeping it out of every quarrel beyond its walls. He regards war as the thing Noonvale exists to avoid.",
+            "id": "urran-voh",
+            "name": "Urran Voh",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "martin-the-warrior"
+      },
+      "recaps": {
+        "ending": "Marshank falls. The allies break the fortress with the Warden's help and the slaves rise inside it, and Badrang's horde is destroyed. Felldoh does not live to see it: consumed by his hatred, he forces his way into the fortress alone and is killed by Badrang's soldiers after cutting down many of them. In the final fighting Martin faces Badrang for the sword and for everything the tyrant took, and Rose is struck down and killed at his side. Martin kills Badrang and takes back his father's sword, and the victory is worth nothing to him. Brome and Grumm survive; Rowanoak, Ballaw and the Rosehip Players survive; the freed slaves are free. Martin will not go back to Noonvale, where every path would remind him of Rose, and he will not stay to be celebrated. He asks that Rose be remembered and that his own part be left alone, and he walks away south by himself into country nobody there knows, carrying the sword. That road is what eventually brings him to Mossflower, and everything Redwall Abbey later remembers about Martin the Warrior begins after this book ends.",
+        "in_short": "Martin, a young mouse, is a slave in Marshank, the coastal fortress built by the stoat tyrant Badrang, who took the sword Martin's father left him. Staked out on the shore for defiance, he is freed by Rose, a mousemaid from the hidden valley of Noonvale searching for her captured brother Brome, and her mole companion Grumm. A slave breakout during a rival corsair's attack scatters them: Martin, Rose and Grumm head north to raise help from Noonvale, while Brome and Martin's friend Felldoh fall in with a troupe of travelling players. Noonvale refuses to go to war, but volunteers defy the decision and come south anyway, and the players and the escaped slaves besiege Marshank. Felldoh, unable to master his hatred of Badrang, attacks alone and is killed. In the final battle the fortress falls and Martin kills Badrang and recovers his sword, but Rose is killed in the fighting. Martin refuses to return to Noonvale or to be honoured, and leaves alone, travelling south into the country where the rest of his story will happen.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "This book stands on its own and needs no earlier reading. It is set generations before Redwall Abbey is built, and it tells the early life of Martin the Warrior, the mouse whose sword and memory the Abbey keeps in the later books. If you have read Redwall or Mossflower, this is the story of the same Martin before he ever reaches Mossflower Wood.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On the eastern shore stands Marshank, a fortress raised out of stone and slave labour by Badrang the Tyrant, a stoat who came off the sea to build himself a kingdom. Among his slaves is Martin, a young mouse taken while travelling, whose father Luke left him a sword that Badrang now keeps as a trophy. Martin will not work quietly. He is beaten for it repeatedly, and when he defies Badrang openly in front of the whole compound he is staked out on the tideline to die. Also in the pens are the squirrel Felldoh and his father Barkjon, the otters Keyla and Tullgrew, and a young mouse called Brome who wants to be a healer. Along the shore come two travellers looking for Brome: his sister Rose, a mousemaid out of a hidden northern valley called Noonvale, and Grumm, a mole with a ladle. They find Martin tied on the sand and cut him loose.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Martin will not simply run: the others are still inside, and Rose will not leave without her brother. The three of them work their way back to Marshank, make contact with the slaves, and begin planning a breakout with Felldoh, Brome, Keyla and Tullgrew, with Barkjon counselling caution and Hisk's overseers watching the pens more closely by the day. Badrang, meanwhile, has troubles of his own coming in off the water. Tramun Clogg, a corsair stoat who was once his shipmate and partner and has never forgiven how that ended, arrives on the coast with a ship's crew and announces openly that he intends to take Marshank for himself. The two warlords begin manoeuvring against each other, and the slaves inside the walls now have both a plan and a distraction.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The slaves break out of Marshank while the two stoats are occupied with each other, but the escape works only in pieces and the escapers are scattered along the coast in different directions. Clogg takes Marshank from Badrang by trickery and holds it briefly before Badrang wins it back and drives him out, and both stoats come out of the affair weaker and angrier. Martin, Rose and Grumm are together but a long way from anywhere, and Rose argues that the only force capable of helping them is her own people. They turn north for Noonvale. Brome and Felldoh, separated from the others, end up further along the coast entirely, alive but with no idea where the rest are. Martin has left Marshank behind with his father's sword still hanging in Badrang's hall, and he has no intention of leaving it there.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Brome and Felldoh are taken in by the Rambling Rosehip Players, a travelling troupe led by Rowanoak the badger and headed by Ballaw De Quincewold, a hare of enormous theatrical presence, with the vain squirrel Celandine among the company. The Players tour the coast with a cart and a stage, and they are considerably more dangerous than they look. Brome takes to performing; Felldoh takes to planning what he will do to Badrang. Meanwhile Martin, Rose and Grumm work north through difficult country and are held up by the Warden, a great heron who rules a marsh and treats travellers crossing it as trespassers to be judged.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The two parties move toward the same end from opposite directions. The Rosehip Players, with Brome and Felldoh, turn back down the coast toward Marshank, gathering escaped slaves as they go, and Felldoh's determination to have Badrang begins to override everything else in him. Martin, Rose and Grumm complete the northward journey with help from creatures of the high country, and reach Noonvale: a hidden valley of orchards and quiet houses that no raider has ever found, ruled by Rose's father, Urran Voh, whose entire policy has been to stay out of the world's quarrels. Martin has come to ask them to leave it.",
+            "through": {
+              "chapter": 27
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Noonvale refuses. Urran Voh will not risk the valley or reveal its existence for a war on the coast, and the council backs him. Rose and Brome's home turns out to be the one place Martin cannot recruit. He prepares to go back alone, and a number of Noonvale creatures defy the decision and come with him anyway, along with allies picked up on the road. The company travels south while, at Marshank, the Rosehip Players and the freed slaves have already begun harassing the fortress, cutting off its foragers and wearing at its walls. Felldoh challenges Badrang directly and is refused, which does nothing to cool him. Badrang shuts the gates and prepares to sit out a siege he expects to win.",
+            "through": {
+              "chapter": 33
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The siege of Marshank begins in earnest as Martin's company arrives and joins the Players and the escaped slaves outside the walls. Badrang has the stone, the numbers and the food; the besiegers have surprise, mobility and a leader the slaves inside will rise for. Assaults are launched and thrown back, tunnels and ruses tried, and losses taken on both sides. Inside the fortress the remaining slaves are worked and watched harder as Badrang realizes his own prisoners are the real danger. Felldoh grows increasingly impossible to hold back, convinced that the whole business can be settled if he can only get at Badrang himself.",
+            "through": {
+              "chapter": 39
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Felldoh finally goes at Marshank alone, fights his way in, and is killed by Badrang's soldiers after cutting down a great many of them. The allies mount their final assault, the Warden of the marsh comes to the fight, and the slaves inside rise; Marshank is broken and the horde with it. Martin fights Badrang for the sword and for everything the tyrant took from him, and in the middle of it Rose is struck down and killed. Martin kills Badrang and takes back his father's sword, and finds the victory empty. He will not return to Noonvale, where everything would remind him of Rose, and he will not stay to be honoured; he asks that Rose be remembered and his own part left alone. The freed slaves scatter to whatever homes they have, Brome and Grumm go north, and Martin walks away south by himself, into the unknown country that will eventually become his home.",
+            "through": {
+              "chapter": 45
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "martin-the-warrior"
+      }
+    },
     "maskerade": {
       "characters": {
         "characters": [
@@ -774,6 +1021,280 @@
           }
         ],
         "work": "matilda"
+      }
+    },
+    "mattimeo": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Mattimeo",
+              "Matthias Methuselah Cornflower"
+            ],
+            "description": "The young son of Matthias, the Warrior of Redwall, and Cornflower. He has grown up as the warrior's son in an abbey that indulges him, and he knows it: he is quick-tempered, quick to fight the other young ones over slights real and imagined, and privately certain that he is destined for something greater than kitchen duties. He is also brave, loyal to his friends when it counts, and unhappily aware that he is not living up to the sword hanging in Great Hall.",
+            "id": "mattimeo",
+            "name": "Mattimeo",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The Warrior of Redwall, once a clumsy novice and now a seasoned fighter and the Abbey's protector, keeper of Martin the Warrior's sword. Seasons of peace have made him a family mouse with a farmer's routine, and his chief worry at the opening of the book is his son, whom he suspects he has failed to discipline. He is patient until the moment he is not.",
+            "id": "matthias",
+            "name": "Matthias",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Matthias's wife and the mother of Mattimeo, a fieldmouse who runs much of the Abbey's kitchen and household. Practical, calm and harder-headed than her gentleness suggests, she is the steady centre of the family.",
+            "id": "cornflower",
+            "name": "Cornflower",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the Cruel"
+            ],
+            "description": "A fox who wears a silken harlequin mask over a face he lets nobody see, and who leads a band of slavers, weasels, stoats, ferrets and rats, working the roads and selling what they catch. He is patient, theatrical and vicious, and he plans in stages rather than lunges. He brings his band into Mossflower deliberately, and unlike an ordinary slaver he has a particular target in mind and a private reason for choosing it.",
+            "id": "slagar",
+            "name": "Slagar",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Brother Alf"
+            ],
+            "description": "The Abbot of Redwall, formerly Brother Alf of the Abbey kitchens and still a keen fisher of the Abbey pond. Elderly, shrewd and unpretentious, he leads Redwall in the tradition of the abbots before him and takes a personal interest in the Abbey's records and its unruly young ones.",
+            "id": "abbot-mordalfus",
+            "name": "Abbot Mordalfus",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The badger of Redwall, older now but no less formidable, who has defended the Abbey once already in her lifetime. She is the Abbey's strength and its second authority after the Abbot, and she has no illusions about what visitors from outside may want.",
+            "id": "constance",
+            "name": "Constance",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Abbey's resident hare, an old campaigner who talks constantly, eats prodigiously, and remains one of the finest trackers and scouts in Mossflower. He has appointed himself the trainer of Redwall's young ones, with mixed results.",
+            "id": "basil-stag-hare",
+            "name": "Basil Stag Hare",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The squirrel who has climbed for Redwall since Matthias was a novice, still the best in the country at getting up anything vertical. Her son Sam is one of Mattimeo's closest friends.",
+            "id": "jess-squirrel",
+            "name": "Jess Squirrel",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jess Squirrel's son and one of Mattimeo's friends, a young squirrel who has inherited his mother's head for heights and her nerve, and who is generally the one who gets the group out of the tree it should not have climbed.",
+            "id": "sam-squirrel",
+            "name": "Sam",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the twin churchmice of Redwall and the most level-headed of Mattimeo's friends, quick-witted and hard to frighten. She and her brother Tim are inseparable.",
+            "id": "tess-churchmouse",
+            "name": "Tess Churchmouse",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tess's twin brother, a young churchmouse being trained as a recorder by his father, and one of Mattimeo's small circle of friends at the Abbey.",
+            "id": "tim-churchmouse",
+            "name": "Tim Churchmouse",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An enormous badger of the western plains who fights with a great double-bladed axe and has been searching for his stolen daughter with single-minded fury. He is a blunt, dangerous ally, and the loss of his child has left him with very little interest in anything else.",
+            "id": "orlando",
+            "name": "Orlando the Axe",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Orlando's young daughter, a badger maid taken from her home by slavers before the story opens. Steady and stubborn far beyond her seasons, she becomes the calm centre of the captives and the one who keeps them from turning on each other.",
+            "id": "auma",
+            "name": "Auma",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of the Guosim shrews, the argumentative river tribe who travel Mossflower's waterways in logboats. He fought alongside Matthias in the war against Cluny and brings his shrews out again without needing to be asked twice.",
+            "id": "log-a-log",
+            "name": "Log-a-Log",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A hedgehog of Mossflower, gruff and solitary, who joins the pursuit for reasons of his own after the slavers pass through his part of the woods.",
+            "id": "jabez-stump",
+            "name": "Jabez Stump",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A raven from the far north, commander of a war party of crows, rooks and magpies who have come south looking for territory. He is a genuine soldier rather than a bandit: disciplined, strategic and contemptuous of ground-dwellers, and he intends to take Redwall as his own roost while its warriors are away.",
+            "id": "general-ironbeak",
+            "name": "General Ironbeak",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Ironbeak's second in command, a crow who claims the gift of foresight and whose visions his general takes seriously. Superstitious and increasingly uneasy about the Abbey and what may inhabit it.",
+            "id": "mangiz",
+            "name": "Mangiz",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An ancient polecat, bleached white with age, who rules a kingdom of pillared caverns hollowed out of the rock far below the southern lands. He is spoken of by his servants as a god and is never seen directly; his subjects work and die in his quarries, and slavers bring him fresh workers for payment.",
+            "id": "malkariss",
+            "name": "Malkariss",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A rat in purple robes who calls himself the Voice of the Host, speaking for the ruler of the underground kingdom and commanding its hooded guards. He conducts the buying of slaves and the running of the pits.",
+            "id": "nadaz",
+            "name": "Nadaz",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "mattimeo"
+      },
+      "recaps": {
+        "ending": "Below Loamhedge, Mattimeo turns the slaves into a rebellion and Matthias's company breaks into the underground kingdom from above. The brute that guards Malkariss's court is killed, the hooded ranks break, and the kingdom of pillars comes down: Malkariss's rule ends and the slaves are freed. Slagar, trying to escape in the collapse, falls to his death in the pit at the heart of his own market. Father and son find each other in the ruins, and Auma is reunited with Orlando. At Redwall, the Abbey wins its own war: Ironbeak's birds, worn down by losses and by a haunting they never work out, are beaten in a final fight in which the general is killed, and the survivors fly north. Matthias's company comes home with the young ones and with the freed slaves, and Redwall opens its gates to them; Auma stays at the Abbey. Mattimeo returns changed, no longer the warrior's spoiled son but someone who led captives out of a pit, and the Abbey recognizes him as its warrior in training. The book closes on a feast, on the sword back in Great Hall, and on Redwall at peace with a new generation ready to defend it.",
+        "in_short": "Seasons after the defeat of Cluny, Redwall Abbey is at peace and Matthias, its warrior, is worrying about his headstrong son Mattimeo. A masked fox called Slagar the Cruel brings a band of slavers into Mossflower disguised as travelling entertainers, performs at the Abbey, drugs its young ones and carries off Mattimeo, the churchmice twins Tess and Tim, Sam Squirrel and others, driving them south to sell. Matthias, Basil Stag Hare, Jess Squirrel and Jabez Stump give chase, joined by Log-a-Log's shrews and by Orlando the Axe, a badger hunting the same slavers for his own stolen daughter. Behind them, Redwall is seized by General Ironbeak, a raven warlord from the north, and the Abbey's remaining defenders under Constance hold out by wearing his superstitious birds down with staged appearances of Martin the Warrior's ghost. The trail leads to the ruined abbey of Loamhedge and the underground kingdom beneath it, ruled by the ancient polecat Malkariss. Mattimeo raises the slaves in revolt as his father breaks in; the kingdom falls, Slagar dies in the pit, Ironbeak is killed at Redwall, and the young ones come home.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, in Redwall: the rat warlord Cluny the Scourge besieged Redwall Abbey in Mossflower Wood with a horde at his back, meaning to take it as his fortress. Matthias, a clumsy young novice who idolized the Abbey's founder, Martin the Warrior, went out to recover Martin's lost sword, surviving the sparrow tribe in the Abbey roof and killing the adder Asmodeus to get it, and returned with allies to break the siege. He killed Cluny by bringing the Abbey's great bell down on him. Old Abbot Mortimer died of his wounds after naming Matthias the Warrior of Redwall, and Methuselah, the Abbey's ancient recorder, was murdered by a young fox thief called Chickenhound, who robbed the gatehouse and escaped south. Brother Alf now leads the Abbey as Abbot Mordalfus. Constance the badger, Basil Stag Hare and Jess Squirrel are all still at Redwall, Martin's sword hangs in Great Hall, and Matthias has married Cornflower.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Redwall Abbey is in its high summer, seasons after the war with Cluny, preparing a feast and quietly indulging its young ones. Chief among them is Mattimeo, son of Matthias the Warrior and Cornflower, who fights the other youngsters, trades on his father's name, and is a disappointment to himself as much as to anyone. Matthias is losing patience with him. Beyond the Abbey, a masked fox called Slagar the Cruel has brought a band of slavers into Mossflower. They travel as a troupe of performers, jugglers and tumblers and a fortune-teller, and they work carefully, hiding their weapons and taking care that nobody who might report them is left able to. Slagar is not hunting at random: he has come to Mossflower for Redwall specifically, and he has a private score to settle with the Abbey's warrior.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The troupe presents itself at Redwall's gate and the Abbey, generous by rule and unsuspecting by habit, lets them in to perform at the feast. During the entertainment the young ones are drugged and carried out of the Abbey grounds. Redwall wakes to find Mattimeo, the churchmice twins Tess and Tim, Sam Squirrel and others gone, along with the performers. Matthias takes the sword down from Great Hall and goes after them with Basil Stag Hare, Jess Squirrel and the hedgehog Jabez Stump, whose own son is among the missing. Slagar has planned for pursuit: he lays false trails, splits his route, and drives the captives hard and southward. The pursuers can follow him, but always a day and a decision behind.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The chase moves out of Mossflower and into rougher country. Log-a-Log brings his Guosim shrews to help, and the pursuers meet Orlando the Axe, an enormous badger who has been hunting the same slave band since it took his daughter Auma, and who joins them with no interest in anything but getting her back. Among the captives, Auma proves the steadiest, keeping the Abbey's young ones from despair and from turning on one another. Slagar drives them on in a chained line, feeding them little, and answers any resistance with the whip. The reader learns who is behind the harlequin mask: Slagar is Chickenhound, the fox thief who robbed Redwall and killed old Methuselah seasons ago, who survived his flight from the Abbey with a ruined face and has spent the time since building a slaver's business and a grudge.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Slagar's ambushes begin to cost the pursuers. He uses the ground against them, setting rockfalls and traps and leaving fighters behind to slow them, and the company loses ground and takes casualties crossing open plains and broken country. Mattimeo, chained and starving, stops posturing and starts organizing, and the captives begin working as a group rather than as frightened individuals. Behind them, Redwall has been left thin: with its warrior, its hare and its best climber all gone south, the Abbey is held by the old, the young and whoever else stayed, under Constance and Abbot Mordalfus.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The birds are led by General Ironbeak, a raven commander who has come south looking for territory and has decided Redwall will be his. His force seizes the Abbey's upper floors and lofts and settles in for a slow conquest of the building from the top down. Constance, Abbot Mordalfus, Cornflower and the remaining Redwallers barricade the lower halls and fight room by room, and being badly outmatched in the open they turn to indirection instead. Ironbeak's second, the crow Mangiz, claims the gift of foresight and is deeply superstitious, so the Redwallers begin staging appearances of Martin the Warrior's ghost in the Abbey's dark corners. The birds start losing sleep, then nerve, and Ironbeak's grip on his own captains begins to slip.",
+            "through": {
+              "chapter": 31
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The war for Redwall goes on with skirmishes in the corridors and losses on both sides, and the haunting continues to unpick Ironbeak's force from the inside while Constance holds the line by force. Far to the south, Matthias's company crosses a bleak stretch of country and comes at last to the ruin of Loamhedge, the long-abandoned abbey whose surviving mice founded Redwall generations ago. Slagar's trail ends there, and it does not stop at the ruin: it goes down. Beneath Loamhedge is a worked entrance into the rock, and past it a kingdom of hollowed caverns and carved pillars nobody above ground knows exists.",
+            "through": {
+              "chapter": 37
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The kingdom below belongs to Malkariss, an ancient polecat bleached white with age, who is spoken of as a god by his servants and never shows himself. His Voice, a purple-robed rat called Nadaz, commands ranks of hooded guards and buys slaves to work the quarries and build his master's endless city of stone. This is Slagar's market: he delivers the Redwall young ones and Auma into the pits and takes his payment. Below ground, Mattimeo, Auma, Tess, Tim and Sam are set to hauling and cutting with slaves who have been there for seasons. Rather than break, Mattimeo begins organizing them for a rising. Above, Matthias, Orlando, Basil, Jess and Log-a-Log's shrews find the ways down and prepare to force an entrance into a place built to be impossible to leave.",
+            "through": {
+              "chapter": 45
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Both sieges end. Below Loamhedge, Mattimeo's slave rebellion rises as Matthias and Orlando break in from above; the monstrous brute guarding Malkariss's court is killed, the hooded ranks break, and the kingdom of pillars collapses along with the polecat's rule. Slagar, trying to escape in the chaos, falls to his death in the pit at the centre of his own market. Matthias and his son find each other, and Orlando gets Auma back. At Redwall, the birds have been worn to nothing by the ghost they cannot explain and by Constance's defence, and the last fight for the Abbey ends with Ironbeak killed and his survivors fleeing north. The pursuers come home with the young ones and with the freed slaves, and Redwall takes them all in. Mattimeo returns as someone who led prisoners out of a pit rather than as the warrior's spoiled son, and the Abbey acknowledges him as the warrior it will one day rely on.",
+            "through": {
+              "chapter": 55
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "mattimeo"
       }
     },
     "memento-jay-kristoff": {
