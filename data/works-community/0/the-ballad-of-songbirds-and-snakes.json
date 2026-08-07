@@ -4951,6 +4951,81 @@
         ],
         "work": "the-carnivorous-carnival"
       }
+    },
+    "the-case-book-of-sherlock-holmes": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The consulting detective whose long career has made his Baker Street methods familiar to clients, criminals, and the police. In these late cases Holmes still relies on exact observation and specialist knowledge, but he also takes direct risks when an investigation demands them.",
+            "id": "sherlock-holmes",
+            "name": "Sherlock Holmes",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Dr Watson"
+            ],
+            "description": "A physician, former army surgeon, and Holmes's closest friend. Watson is the usual narrator and companion, though this collection also experiments with accounts told by Holmes himself and with a story presented outside Watson's first-person voice.",
+            "id": "john-h-watson",
+            "name": "John H. Watson",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The long-suffering landlady of Holmes's rooms at 221B Baker Street. Mrs Hudson maintains the household that remains the partners' professional base and accommodates the secrecy and irregular arrangements required by Holmes's cases.",
+            "id": "mrs-hudson",
+            "name": "Mrs Hudson",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young page in Holmes's Baker Street household. Billy manages callers and messages with tact, follows Holmes's instructions closely, and understands that appearances within the sitting room may be part of an investigation.",
+            "id": "billy",
+            "name": "Billy",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-case-book-of-sherlock-holmes"
+      },
+      "recaps": {
+        "in_short": "The final Sherlock Holmes story collection contains twelve independent investigations from the detective's later career. Holmes and Watson confront cases involving coercion, disputed identity, vanished people, suspicious deaths, unusual animals, old scandals, and schemes built around property or reputation. Baker Street remains the usual point of departure, with Mrs Hudson and the page Billy among the familiar household figures, while several cases take Holmes or Watson beyond London. The narrative form varies more than in the earlier collections: Watson remains the principal chronicler, but Holmes relates \"The Blanched Soldier\" and \"The Lion's Mane\" himself, and \"The Mazarin Stone\" uses a third-person presentation. The volume offers no single continuing plot or final career event. Its unity comes from the older partnership, a set of late experiments in viewpoint and tone, and twelve separate mysteries whose individual solutions remain confined to their own stories.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Collection scope: twelve self-contained stories - \"The Illustrious Client,\" \"The Blanched Soldier,\" \"The Mazarin Stone,\" \"The Three Gables,\" \"The Sussex Vampire,\" \"The Three Garridebs,\" \"The Problem of Thor Bridge,\" \"The Creeping Man,\" \"The Lion's Mane,\" \"The Veiled Lodger,\" \"Shoscombe Old Place,\" and \"The Retired Colourman.\" They share Holmes's late-career setting and recurring associates but do not combine into a chaptered or collection-wide mystery.",
+            "through": {
+              "chapter": 0
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-case-book-of-sherlock-holmes"
+      }
     }
   }
 }

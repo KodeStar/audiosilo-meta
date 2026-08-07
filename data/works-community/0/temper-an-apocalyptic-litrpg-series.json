@@ -802,6 +802,81 @@
         "work": "the-a-b-c-murders"
       }
     },
+    "the-adventures-of-sherlock-holmes": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A consulting detective at 221B Baker Street whose close observation, broad practical knowledge, and exact reasoning allow him to find order in baffling cases. He accepts private clients and sometimes assists Scotland Yard, pursuing problems for their intellectual interest as readily as for a fee.",
+            "id": "sherlock-holmes",
+            "name": "Sherlock Holmes",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Dr Watson"
+            ],
+            "description": "A physician, former army surgeon, and Holmes's trusted friend. Watson narrates the collection, accompanies Holmes on many investigations, and records the methods and human consequences of cases that Holmes approaches more analytically.",
+            "id": "john-h-watson",
+            "name": "John H. Watson",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The landlady of Holmes's Baker Street rooms. Mrs Hudson manages the household in which clients arrive at irregular hours and investigations often begin, tolerating the unusual habits of her celebrated tenant.",
+            "id": "mrs-hudson",
+            "name": "Mrs Hudson",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Scotland Yard inspector who crosses paths with Holmes on more than one investigation. Lestrade is energetic and experienced in official police work, though Holmes often approaches their shared problems from a different direction.",
+            "id": "inspector-lestrade",
+            "name": "Inspector Lestrade",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-adventures-of-sherlock-holmes"
+      },
+      "recaps": {
+        "in_short": "Watson presents twelve independent investigations from his association with Sherlock Holmes. The volume opens with Holmes meeting Irene Adler in \"A Scandal in Bohemia\" and proceeds through problems involving missing people, strange inheritances, threatened households, disputed identities, and objects whose importance is not immediately apparent. Holmes moves between private drawing rooms, London streets, country estates, and Scotland Yard inquiries, using observation and inference while Watson supplies the narrative record and a humane view of clients in distress. Inspector Lestrade and Mrs Hudson recur around the Baker Street partnership, but each adventure brings its own client and mystery. The stories establish the durable pattern of a visitor at 221B Baker Street, an investigation that challenges the first account of events, and an explanation assembled from details others have overlooked, without forming a single continuous plot.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Collection scope: twelve self-contained stories - \"A Scandal in Bohemia,\" \"The Red-Headed League,\" \"A Case of Identity,\" \"The Boscombe Valley Mystery,\" \"The Five Orange Pips,\" \"The Man with the Twisted Lip,\" \"The Blue Carbuncle,\" \"The Speckled Band,\" \"The Engineer's Thumb,\" \"The Noble Bachelor,\" \"The Beryl Coronet,\" and \"The Copper Beeches.\" Watson's accounts share Holmes, the Baker Street setting, and occasional recurring police or household figures, but each story is a separate case rather than a chapter in one mystery.",
+            "through": {
+              "chapter": 0
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-adventures-of-sherlock-holmes"
+      }
+    },
     "the-affair": {
       "characters": {
         "characters": [

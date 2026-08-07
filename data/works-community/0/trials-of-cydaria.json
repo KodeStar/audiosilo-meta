@@ -2398,6 +2398,249 @@
         "work": "twenty-thousand-leagues-under-the-sea"
       }
     },
+    "twenty-years-after": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Once the ambitious Gascon newcomer among the four friends, D'Artagnan is now an experienced officer still waiting for the advancement he believes his service deserves. Cardinal Mazarin recalls him for confidential work as unrest gathers around the regency.",
+            "id": "d-artagnan",
+            "name": "D'Artagnan",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Queen regent for her young son Louis XIV, governing France after her husband's death. Her authority depends heavily on Mazarin, while noble and parliamentary opposition challenges both the minister and the court.",
+            "id": "anne-of-austria",
+            "name": "Anne of Austria",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Cardinal Mazarin"
+            ],
+            "description": "The Italian-born cardinal who succeeded Richelieu as France's chief minister and dominates the regency of Anne of Austria. Cautious, calculating, and widely resented, he seeks reliable agents as the movement called the Fronde gathers strength.",
+            "id": "cardinal-mazarin",
+            "name": "Cardinal Mazarin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The young king of France, still a child under his mother's regency. Political factions struggle around his throne, and the safety and movement of the royal household become central concerns as Paris grows unstable.",
+            "id": "louis-xiv",
+            "name": "Louis XIV",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "D'Artagnan's old adversary and eventual comrade from the earlier adventures, now confined in the Bastille. Their unexpected reunion gives D'Artagnan a source of information about the altered political world around Mazarin.",
+            "id": "rochefort",
+            "name": "Rochefort",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Abbé d'Herblay"
+            ],
+            "description": "Formerly one of the king's musketeers, Aramis has entered the Church and lives as the polished Abbé d'Herblay. His ecclesiastical appearance conceals continuing political interests and the same guarded independence D'Artagnan remembers.",
+            "id": "aramis",
+            "name": "Aramis",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Monsieur du Vallon"
+            ],
+            "description": "The former musketeer has become a wealthy landowner through marriage and now lives in substantial comfort. Porthos remains immensely strong, loyal to D'Artagnan, and eager for the noble title that would complete his rise in the world.",
+            "id": "porthos",
+            "name": "Porthos",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Comte de la Fère"
+            ],
+            "description": "Retired from military life under his noble name, Athos lives quietly on his estate and devotes himself to the education of Raoul. His calm authority is unchanged, but his political judgment does not automatically align with D'Artagnan's new duty.",
+            "id": "athos",
+            "name": "Athos",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Vicomte de Bragelonne"
+            ],
+            "description": "A courteous young nobleman raised under Athos's care. Raoul has been trained to combine courage with restraint and is now ready to begin military service among the younger generation of France's nobility.",
+            "id": "raoul-de-bragelonne",
+            "name": "Raoul de Bragelonne",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A high-born prisoner held at Vincennes and a popular focus for opposition to Mazarin. Confident that help will reach him, he maintains his spirits while his guards try to prevent communication and escape.",
+            "id": "duke-of-beaufort",
+            "name": "The Duke of Beaufort",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Athos's old servant, still remarkable for carrying out complicated instructions with very few words. He enters Vincennes in a humble disguise as part of the patient preparations surrounding Beaufort's imprisonment.",
+            "id": "grimaud",
+            "name": "Grimaud",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The exiled queen of England and sister of the late Louis XIII. With her husband Charles I threatened by civil war, she seeks help in France despite her own poverty and the French court's reluctance to oppose England's Parliament.",
+            "id": "henrietta-maria",
+            "name": "Henrietta Maria",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A grave young Englishman serving the Parliamentary cause. His journey through France has a private purpose connected with the fate of his mother, and his controlled manner conceals an intense determination to punish those he holds responsible.",
+            "id": "mordaunt",
+            "name": "Mordaunt",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "King of England during the civil war with Parliament. Defeated but still resolved to preserve his crown and honor, he receives the service of Athos and Aramis as the struggle around him approaches its final stage.",
+            "id": "charles-i",
+            "name": "Charles I",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A leading commander of the English Parliamentary forces. Disciplined, politically shrewd, and formidable, he employs Mordaunt and stands at the center of the power closing around Charles I.",
+            "id": "oliver-cromwell",
+            "name": "Oliver Cromwell",
+            "reveal": {
+              "chapter": 55
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "twenty-years-after"
+      },
+      "recaps": {
+        "ending": "After escaping the attempt to destroy them at sea, the four friends return to a France still divided by the Fronde. D'Artagnan and Porthos fall into Mazarin's power, escape confinement, and reunite with Athos and Aramis. They reverse their position by capturing Mazarin and compelling him to negotiate. The settlement secures concessions and pardons while also satisfying the friends' personal claims: Porthos obtains the barony he has long wanted, and D'Artagnan receives the advancement repeatedly denied him. In the final danger they act together to protect the royal party, proving that their opposing political allegiances have not broken their fellowship. With the immediate crisis resolved, Athos returns to Raoul, Aramis to his church and political connections, and Porthos to his estate, while D'Artagnan remains in royal service. Charles I is dead, his son remains dispossessed, and the four friends part again in a changed Europe, reconciled but following separate lives.",
+        "in_short": "Twenty years after their first adventures, D'Artagnan remains in royal service while Athos has retired, Porthos has become a wealthy landowner, and Aramis is an abbé. Cardinal Mazarin recruits D'Artagnan during the Fronde; only Porthos joins him, while Athos and Aramis support Mazarin's opponents and help the Duke of Beaufort escape. The friends later divide again over England's civil war, but all four unite in an effort to save Charles I. Mordaunt, Milady's vengeful son, helps defeat them and personally carries out the king's execution. During their escape he attempts to destroy them with an explosive ship and dies after attacking Athos in the water. Back in France, the friends turn the tables on Mazarin by capturing him and forcing a settlement that brings pardons and political concessions. Porthos gains a barony and D'Artagnan gains promotion. Their friendship survives civil war and divided loyalties, but they disperse once more to their separate callings.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, D'Artagnan came to Paris and formed an inseparable friendship with the musketeers Athos, Porthos, and Aramis. Together they protected Queen Anne from Cardinal Richelieu's schemes and opposed Milady de Winter, whose crimes ended with her capture and execution by a tribunal assembled by the friends. D'Artagnan accepted a lieutenant's commission while his companions left active service. Twenty years have now passed and the four are dispersed: D'Artagnan remains a soldier, Athos has retired as the Comte de la Fère, Porthos lives as a prosperous landowner, and Aramis has entered the Church. Richelieu and Louis XIII are dead. Anne governs as regent for the young Louis XIV, and her chief minister, Cardinal Mazarin, faces growing opposition from the movement known as the Fronde.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "France is governed by Queen Anne for the child king Louis XIV, but real authority is associated with Cardinal Mazarin, whose foreign birth, wealth, and policies have made him widely unpopular. Mazarin needs experienced and discreet servants as opposition gathers. D'Artagnan, still only a lieutenant after twenty years of service, is recalled and sent to question the imprisoned Rochefort. The encounter reminds him of the effectiveness of his three old companions. Ordered to find them, D'Artagnan begins tracing men who have long since left their shared life as musketeers. He discovers Aramis living as the Abbé d'Herblay, outwardly committed to the Church but evasive about his political associations. The reunion is friendly, yet D'Artagnan realizes that old affection will not guarantee agreement in the new struggle.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "D'Artagnan finds Porthos wealthy and comfortable but dissatisfied because he lacks a noble title. The prospect of becoming a baron persuades Porthos to join Mazarin's service. Athos, living as the Comte de la Fère and raising the young Raoul de Bragelonne, refuses: his principles place him against the minister. Aramis shares Athos's political allegiance. The four friends therefore meet again on opposing sides, with D'Artagnan and Porthos serving Mazarin while Athos and Aramis support the Fronde. That division becomes active around the Duke of Beaufort, a popular noble held at Vincennes. Grimaud helps prepare Beaufort's escape from within the prison, and Athos and Aramis assist his flight. D'Artagnan and Porthos pursue, but recognition among the combatants prevents the old friends from turning a political clash into a fatal one.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "While the older generation maneuvers around Mazarin and the Fronde, Athos sends Raoul to begin his military career. Raoul proves his courage, forms a close bond with the young Comte de Guiche, and gains experience in the campaign that culminates in the French victory at Lens. In Paris, resistance to Mazarin intensifies through the Parlement and popular leaders. The arrest of the respected councillor Broussel brings crowds into the streets and barricades across the city. Anne initially resists demands for his release, but the danger to the royal household forces concessions. D'Artagnan and Porthos serve the court amid the disorder, while Athos and Aramis remain tied to the opposing party. Personal loyalty continues to restrain all four even as events make their divided commitments harder to reconcile.",
+            "through": {
+              "chapter": 44
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The royal household secretly leaves Paris for Saint-Germain, relying on D'Artagnan and Porthos during the dangerous removal. The capital and court now stand in open confrontation. At the same time, England's civil war draws the friends into a second conflict. Henrietta Maria, the exiled English queen, seeks help for her husband Charles I. Athos and Aramis accept the mission that official France will not undertake and travel toward England. A young Parliamentary agent named Mordaunt also emerges. He is the son of Milady de Winter and has come to avenge her execution upon the men involved in it. His search reaches the executioner of Lille, whose part in Milady's death makes him one of Mordaunt's first targets.",
+            "through": {
+              "chapter": 54
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Athos and Aramis enter the service of Charles I as the king's military position collapses. They attempt to protect him through defeat and betrayal, but Parliamentary forces close in under Oliver Cromwell. Mazarin meanwhile sends D'Artagnan and Porthos to England on business connected with Cromwell, placing them alongside Mordaunt and apparently against their two friends. Once they understand the danger to Athos and Aramis, the old loyalties reassert themselves. The four reunite and turn their skills toward saving Charles, despite their different commissions and the power arrayed against them. Mordaunt recognizes the men he blames for his mother's death and makes their destruction part of his service to the Parliamentary side.",
+            "through": {
+              "chapter": 66
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The four friends make repeated plans to free Charles I from captivity and then to prevent his execution. Mordaunt defeats the final effort by taking the concealed place of the appointed headsman and personally beheading the king. D'Artagnan, Athos, Porthos, and Aramis withdraw with Charles's last trust placed in them, while Mordaunt continues the pursuit. They secure passage from England, but the vessel offered for their escape is packed with gunpowder as a trap. Discovering the plot, they get away before the ship explodes. Mordaunt survives the blast and swims toward their boat. Athos offers to save him, but Mordaunt attacks Athos in the water; D'Artagnan intervenes, and Mordaunt dies. The friends have escaped England together, but their attempt to preserve the king has failed.",
+            "through": {
+              "chapter": 80
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Back in France, the English mission's survivors re-enter the conflict between court and Fronde. D'Artagnan and Porthos expect Mazarin to recognize what they endured, but the minister instead seeks to control men whose independence makes them dangerous. They are detained, while Athos and Aramis also face the consequences of opposing the court. D'Artagnan and Porthos escape confinement by combining ingenuity with Porthos's strength. Reunited, the four friends decide that petitions will not secure justice or safety. They capture Mazarin and confine him in turn, forcing the minister to begin negotiating with men he had intended to hold powerless.",
+            "through": {
+              "chapter": 86
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The four friends capture Mazarin and compel him to negotiate from weakness. Their demands connect the public conflict with private obligations: concessions and pardons are secured, Porthos receives the barony he has long sought, and D'Artagnan gains the advancement that years of service had not brought him. Athos and Aramis are freed from the danger created by their Fronde allegiance. When the royal party faces a final violent threat, all four fight together in its defense, demonstrating that political division has not overcome their fellowship. The immediate French crisis settles sufficiently for them to separate without enmity. Athos returns to Raoul and his estate, Aramis resumes his ecclesiastical and political life, Porthos returns home as a baron, and D'Artagnan continues in royal service with higher rank. Their English mission ended in Charles I's death, but their renewed alliance has survived Mordaunt, civil war, imprisonment, and Mazarin's manipulation.",
+            "through": {
+              "chapter": 90
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "twenty-years-after"
+      }
+    },
     "twilight": {
       "characters": {
         "characters": [

@@ -1969,6 +1969,91 @@
         ],
         "work": "high-heat"
       }
+    },
+    "his-last-bow": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The consulting detective of Baker Street, represented here at several points in his later career. Holmes combines close observation, disguise, specialist knowledge, and carefully planned action when clients or public officials bring him difficult problems.",
+            "id": "sherlock-holmes",
+            "name": "Sherlock Holmes",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Dr Watson"
+            ],
+            "description": "Holmes's physician friend, former army surgeon, and customary chronicler. Watson remains a loyal companion in investigations separated by years, preserving both Holmes's reasoning and the circumstances in which the cases arise.",
+            "id": "john-h-watson",
+            "name": "John H. Watson",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The landlady associated with Holmes's rooms at 221B Baker Street. Mrs Hudson's care for Holmes and management of the household place her close to the unusual visitors, disguises, and alarms that accompany his work.",
+            "id": "mrs-hudson",
+            "name": "Mrs Hudson",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Sherlock Holmes's older brother, whose extraordinary memory and analytical ability serve the British government. Mycroft turns to Sherlock when a matter of national importance requires active investigation outside his own habits and office.",
+            "id": "mycroft-holmes",
+            "name": "Mycroft Holmes",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Scotland Yard inspector who has worked with Holmes before. Lestrade brings the authority and resources of the police to investigations in which Holmes is asked to provide an independent reading of the evidence.",
+            "id": "inspector-lestrade",
+            "name": "Inspector Lestrade",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "his-last-bow"
+      },
+      "recaps": {
+        "ending": "The title story takes place on the eve of Britain's entry into the First World War. Holmes has spent two years under the identity of the Irish-American Altamont, earning the confidence of the German agent Von Bork and feeding his network misleading intelligence. At Von Bork's country house, Holmes arrives with Watson, reveals the deception, and takes Von Bork prisoner along with the agent's papers. Their work completed, Holmes and Watson leave to deliver the captive and evidence to the authorities. Holmes has come out of retirement for this national assignment, while Watson has again joined him in the field. The closing conversation turns from the successful operation to the war approaching Britain, giving the collection a public and historical conclusion rather than the private solution of an ordinary Baker Street case.",
+        "in_short": "This later collection gathers independent cases from different stages of Holmes and Watson's association, including investigations involving government secrets, unusual illnesses, disappearances, foreign connections, and dangers concealed within apparently private affairs. Mycroft Holmes, Inspector Lestrade, and Mrs Hudson return alongside the two central partners. Editions differ over whether \"The Cardboard Box\" belongs here or in The Memoirs of Sherlock Holmes, but the remaining stories form the stable core. The final and only continuing endpoint is the title story, set in August 1914. Holmes has left retirement to spend two years posing as the agent Altamont and infiltrating the German spy Von Bork's network. With Watson's help, he exposes the disguise, captures Von Bork, and secures the agent's papers for Britain. The partners depart together as the country stands at the beginning of war, closing the volume on national service rather than another private case.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Collection scope: \"Wisteria Lodge,\" \"The Red Circle,\" \"The Bruce-Partington Plans,\" \"The Dying Detective,\" \"The Disappearance of Lady Frances Carfax,\" \"The Devil's Foot,\" and \"His Last Bow\" form the collection's stable group of self-contained stories. Many editions also include \"The Cardboard Box,\" which other editions place in The Memoirs of Sherlock Holmes. The cases range across Holmes's later career; the title story is a distinct wartime epilogue rather than the solution to a collection-wide mystery.",
+            "through": {
+              "chapter": 0
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "his-last-bow"
+      }
     }
   }
 }
