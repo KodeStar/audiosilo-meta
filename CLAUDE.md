@@ -289,17 +289,30 @@ flavours: the combined `search?q=` plus the **type-scoped** `works/search`,
 `people/search` and `series/search`, which are the same FTS query with an added
 `kind = ?` predicate (a stored UNINDEXED column - no new index, no artifact
 change, so they answer against every already-published release) returning the
-same per-kind result shapes, composed by the one assembly both paths call
-(`snapshot.results`). The series-position boost applies to `works/search` too and
+same per-kind result shapes. The kind travels as DATA - `kindAny` is the
+unscoped search - so ONE `snapshot.search(kind, q, limit)` and one
+`Server.searchHandler(kind)` serve all four, `ftsHits` picks the SQL constant
+and builds that constant's args together, and `snapshot.results` composes every
+page, batching EVERY per-hit read (cards, work narrators, person names, series
+name+count) over the ids the page holds - a scoped page is 100% one kind, so a
+per-hit query there would be a whole page of sequential round-trips. The ABS
+facade's work search goes through the same `ftsHits`, so a ranking change lands
+on both surfaces. The series-position boost applies to `works/search` too and
 to that scope ONLY, since the ids it resolves are always works; a literal path
 segment beats `{id}` in ServeMux's precedence, which is what lets the three sit
 beside their families' detail routes as `works/latest` already does. The whole
 public surface is described by an **embedded OpenAPI 3.1 document**
 (`internal/serve/openapi.json`, served at `GET /api/v1/openapi.json` OUTSIDE the
 loaded-artifact gate - it is static, and a client discovering the API on a cold
-boot must still get the contract); `TestOpenAPICoversEveryRoute` pins its path
-set to buildMux's registrations, so a route added on one side only fails the
-build, and the site's `/docs/api` page imports that very file at build time and
+boot must still get the contract; being embedded it is constant for the life of
+the binary, so the route carries an `ETag` over those bytes and answers a
+matching `If-None-Match` with 304).
+`TestOpenAPICoversEveryRoute` diffs its path set against the route TABLE
+buildMux registers from (`Server.routes`), so the guard observes the server
+rather than a third hand-written list and a route added on one side only fails
+the build. `TestOpenAPIProseStaysInTheRenderedSubset` additionally pins the
+spec's prose to the one markdown construct the docs page renders (inline code
+spans). The site's `/docs/api` page imports that very file at build time and
 renders it in the site's own design system (`site/src/lib/openapi.ts` +
 `site/src/pages/docs/api.astro`) - no vendored spec viewer, and no second copy of
 the API's shape to keep in step. Membership lists are resolved

@@ -7,36 +7,28 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"sort"
+	"strconv"
 	"strings"
 	"testing"
 )
 
-// specPaths is the API surface the embedded spec must describe, EXACTLY: every
-// pattern buildMux registers, plus the release hook (registered only when a
-// webhook secret is configured, so no test server carries it) and the spec route
-// itself. It is written out by hand rather than read off the mux, because a
-// derived list would agree with a wrong mux; this one is the independent
-// statement of what is public, and either side moving without the other is the
-// failure the test exists to catch.
-var specPaths = []string{
-	"/abs/search",
-	"/api/v1/coverage",
-	"/api/v1/coverage/series-gaps",
-	"/api/v1/coverage/works",
-	"/api/v1/lookup",
-	"/api/v1/openapi.json",
-	"/api/v1/people/search",
-	"/api/v1/people/{id}",
-	"/api/v1/search",
-	"/api/v1/series/search",
-	"/api/v1/series/{id}",
-	"/api/v1/stats",
-	"/api/v1/works/latest",
-	"/api/v1/works/search",
-	"/api/v1/works/{id}",
-	"/api/v1/works/{id}/recordings/{rid}/chapters",
-	"/healthz",
-	"/hooks/github/release",
+// servedPaths is the API surface the embedded spec must describe, EXACTLY - read
+// off the SAME route table buildMux registers from, so the guard observes the
+// server instead of a hand-written third copy of the list that could quietly
+// agree with a wrong mux.
+//
+// The server is constructed WITH a webhook secret so the release hook is in the
+// table: it is registered only on a configured deployment, but the spec
+// describes the whole surface, so the guard has to see it.
+func servedPaths() []string {
+	srv := &Server{cfg: Config{WebhookSecret: strings.Repeat("s", minWebhookSecretBytes)}}
+	rs := srv.routes()
+	out := make([]string, 0, len(rs))
+	for _, r := range rs {
+		out = append(out, r.specPath())
+	}
+	sort.Strings(out)
+	return out
 }
 
 // openAPIDoc is the slice of the spec the drift guard reads.
@@ -55,9 +47,10 @@ func parseSpec(t *testing.T) openAPIDoc {
 	return doc
 }
 
-// TestOpenAPICoversEveryRoute is the drift guard. Adding a route without
-// describing it (or describing one that does not exist) fails here, naming the
-// path - so the spec cannot quietly become fiction.
+// TestOpenAPICoversEveryRoute is the drift guard. It diffs the spec's path set
+// against the server's own route table, so adding a route without describing it
+// (or describing one that does not exist) fails here, naming the path - the spec
+// cannot quietly become fiction.
 func TestOpenAPICoversEveryRoute(t *testing.T) {
 	doc := parseSpec(t)
 	if !strings.HasPrefix(doc.OpenAPI, "3.1") {
@@ -74,12 +67,12 @@ func TestOpenAPICoversEveryRoute(t *testing.T) {
 	sort.Strings(got)
 
 	want := map[string]bool{}
-	for _, p := range specPaths {
+	for _, p := range servedPaths() {
 		want[p] = true
 	}
 	for _, p := range got {
 		if !want[p] {
-			t.Errorf("openapi.json describes %s, which buildMux does not register", p)
+			t.Errorf("openapi.json describes %s, which Server.routes does not register", p)
 		}
 		delete(want, p)
 	}
@@ -112,6 +105,66 @@ func TestOpenAPIOperationsAreComplete(t *testing.T) {
 			}
 		}
 	}
+}
+
+// TestOpenAPIProseStaysInTheRenderedSubset pins the prose to what the site can
+// actually render. OpenAPI descriptions are CommonMark, but the docs page
+// renders exactly ONE construct - the inline code span (see
+// site/src/components/docs/Inline.astro); everything else is interpolated as
+// text, so a link, a bold run or a bullet list would appear on the page as its
+// literal markdown. That is a rendering bug nobody sees until they look, so it
+// fails here in the blocking CI job instead.
+//
+// Widening the prose is fine - it just has to widen the renderer first, and then
+// this guard, together.
+func TestOpenAPIProseStaysInTheRenderedSubset(t *testing.T) {
+	var doc any
+	if err := json.Unmarshal(openAPISpec, &doc); err != nil {
+		t.Fatal(err)
+	}
+	for _, f := range collectProse(doc, "#") {
+		switch {
+		case strings.Contains(f.text, "]("):
+			t.Errorf("%s: markdown link, which the page renders as literal text: %q", f.where, f.text)
+		case strings.Contains(f.text, "**"):
+			t.Errorf("%s: markdown bold, which the page renders as literal text: %q", f.where, f.text)
+		}
+		for _, line := range strings.Split(f.text, "\n") {
+			if strings.HasPrefix(strings.TrimSpace(line), "- ") {
+				t.Errorf("%s: markdown bullet, which the page renders as literal text: %q", f.where, line)
+			}
+		}
+	}
+}
+
+// proseField is one human-readable string in the spec, with the JSON pointer it
+// sits at so a failure names the field to fix.
+type proseField struct {
+	where string
+	text  string
+}
+
+// collectProse walks the document for every description/summary string.
+func collectProse(v any, at string) []proseField {
+	switch t := v.(type) {
+	case map[string]any:
+		var out []proseField
+		for k, child := range t {
+			if s, ok := child.(string); ok && (k == "description" || k == "summary") {
+				out = append(out, proseField{where: at + "/" + k, text: s})
+				continue
+			}
+			out = append(out, collectProse(child, at+"/"+k)...)
+		}
+		return out
+	case []any:
+		var out []proseField
+		for i, child := range t {
+			out = append(out, collectProse(child, at+"/"+strconv.Itoa(i))...)
+		}
+		return out
+	}
+	return nil
 }
 
 // TestOpenAPIRefsResolve pins every local $ref to a component that exists. The
@@ -211,5 +264,82 @@ func TestOpenAPIServedWithoutASnapshot(t *testing.T) {
 	}
 	if served["openapi"] == nil {
 		t.Error("served document has no openapi version")
+	}
+}
+
+// TestOpenAPIRevalidates pins the spec route's caching. The document is embedded
+// and constant for the life of the binary, so a client that already has it
+// should be told so rather than sent hundreds of kilobytes again.
+func TestOpenAPIRevalidates(t *testing.T) {
+	srv := &Server{cfg: Config{}, log: log.Default(), retired: map[string]int{}}
+	srv.mux = srv.buildMux()
+	ts := httptest.NewServer(srv.Handler())
+	t.Cleanup(ts.Close)
+
+	first, err := http.Get(ts.URL + "/api/v1/openapi.json")
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer func() { _ = first.Body.Close() }()
+	if first.StatusCode != http.StatusOK {
+		t.Fatalf("first GET = %d, want 200", first.StatusCode)
+	}
+	etag := first.Header.Get("ETag")
+	if etag == "" {
+		t.Fatal("first GET carries no ETag")
+	}
+	if cc := first.Header.Get("Cache-Control"); cc != specMaxAge {
+		t.Errorf("Cache-Control = %q, want %q", cc, specMaxAge)
+	}
+	if _, err := io.Copy(io.Discard, first.Body); err != nil {
+		t.Fatal(err)
+	}
+
+	req, err := http.NewRequest(http.MethodGet, ts.URL+"/api/v1/openapi.json", nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	req.Header.Set("If-None-Match", etag)
+	second, err := http.DefaultClient.Do(req)
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer func() { _ = second.Body.Close() }()
+	if second.StatusCode != http.StatusNotModified {
+		t.Fatalf("conditional GET = %d, want 304", second.StatusCode)
+	}
+	if got := second.Header.Get("ETag"); got != etag {
+		t.Errorf("304 ETag = %q, want %q", got, etag)
+	}
+	body, err := io.ReadAll(second.Body)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(body) != 0 {
+		t.Errorf("304 carried a %d-byte body", len(body))
+	}
+}
+
+// TestMatchesETag covers the If-None-Match forms RFC 9110 allows, since a wrong
+// answer either serves a 304 for a document the client does not have or never
+// serves one at all.
+func TestMatchesETag(t *testing.T) {
+	const tag = `"abc"`
+	cases := []struct {
+		header string
+		want   bool
+	}{
+		{"", false},
+		{tag, true},
+		{`W/"abc"`, true},
+		{`"other", "abc"`, true},
+		{`"other"`, false},
+		{"*", true},
+		{`"ab"`, false},
+	}
+	for _, tc := range cases {
+		if got := matchesETag(tc.header, tag); got != tc.want {
+			t.Errorf("matchesETag(%q, %q) = %v, want %v", tc.header, tag, got, tc.want)
+		}
 	}
 }

@@ -201,6 +201,29 @@ func coversByWorkSQL(ph string) string {
 		`AND cover_url IS NOT NULL AND cover_url <> '' ORDER BY work_id, id`
 }
 
+// narratorsByWorkSQL reads the distinct narrators across each work's recordings.
+// It rides the (work_id, recording_id) index by prefix. The GROUP BY carries the
+// work id so ONE query serves a whole page of hits, and MIN(ord) keeps each
+// work's narrators in credit order.
+func narratorsByWorkSQL(ph string) string {
+	return `SELECT rn.work_id, p.id, p.name FROM recording_narrators rn JOIN people p ON p.id = rn.person_id ` +
+		`WHERE rn.work_id IN (` + ph + `) GROUP BY rn.work_id, p.id, p.name ORDER BY rn.work_id, MIN(rn.ord)`
+}
+
+func namesByPersonIDSQL(ph string) string {
+	return `SELECT id, name FROM people WHERE id IN (` + ph + `)`
+}
+
+// seriesSummariesByIDSQL reads each series' name AND its member count in one
+// query. The count is the expensive half of a series search hit, and a scoped
+// page is 100% series, so it is the join rather than a COUNT per row. The LEFT
+// JOIN keeps a series with no member works on the page, with a count of zero,
+// instead of dropping it.
+func seriesSummariesByIDSQL(ph string) string {
+	return `SELECT s.id, s.name, COUNT(sw.work_id) FROM series s LEFT JOIN series_works sw ON sw.series_id = s.id ` +
+		`WHERE s.id IN (` + ph + `) GROUP BY s.id, s.name`
+}
+
 // cardsByID builds the work cards for a whole id set in a FIXED number of
 // queries per chunk (works + authors + series + covers), instead of the four
 // queries per work a workCard loop costs. That is what keeps a prolific
@@ -353,6 +376,90 @@ func (s *snapshot) coversByWork(ids []string) (map[string]*string, error) {
 				c := cover
 				out[workID] = &c
 			}
+		}
+		return rows.Err()
+	})
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// narratorsByWork returns each work's distinct narrators in credit order, keyed
+// by work id. A work with no narrators is absent from the map.
+func (s *snapshot) narratorsByWork(ids []string) (map[string][]personRef, error) {
+	out := map[string][]personRef{}
+	err := eachChunk(ids, func(ph string, args []any) error {
+		rows, err := s.db.Query(narratorsByWorkSQL(ph), args...)
+		if err != nil {
+			return err
+		}
+		defer func() { _ = rows.Close() }()
+		for rows.Next() {
+			var workID string
+			var p personRef
+			if err := rows.Scan(&workID, &p.ID, &p.Name); err != nil {
+				return err
+			}
+			out[workID] = append(out[workID], p)
+		}
+		return rows.Err()
+	})
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// namesByPersonID returns the display name of each person id. Ids absent from
+// the catalogue are simply missing from the map.
+func (s *snapshot) namesByPersonID(ids []string) (map[string]string, error) {
+	out := map[string]string{}
+	err := eachChunk(ids, func(ph string, args []any) error {
+		rows, err := s.db.Query(namesByPersonIDSQL(ph), args...)
+		if err != nil {
+			return err
+		}
+		defer func() { _ = rows.Close() }()
+		for rows.Next() {
+			var id, name string
+			if err := rows.Scan(&id, &name); err != nil {
+				return err
+			}
+			out[id] = name
+		}
+		return rows.Err()
+	})
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// seriesSummary is a series' name plus how many works it holds - what a series
+// search hit carries.
+type seriesSummary struct {
+	name  string
+	works int
+}
+
+// seriesSummariesByID returns the name and member count of each series id, in
+// one query per chunk. Ids absent from the catalogue are missing from the map.
+func (s *snapshot) seriesSummariesByID(ids []string) (map[string]seriesSummary, error) {
+	out := map[string]seriesSummary{}
+	err := eachChunk(ids, func(ph string, args []any) error {
+		rows, err := s.db.Query(seriesSummariesByIDSQL(ph), args...)
+		if err != nil {
+			return err
+		}
+		defer func() { _ = rows.Close() }()
+		for rows.Next() {
+			var id string
+			var sum seriesSummary
+			if err := rows.Scan(&id, &sum.name, &sum.works); err != nil {
+				return err
+			}
+			out[id] = sum
 		}
 		return rows.Err()
 	})

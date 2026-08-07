@@ -229,45 +229,88 @@ func (s *Server) swap(next *snapshot) {
 
 // ---- routing ----------------------------------------------------------------
 
+// route is one mux registration: the ServeMux pattern and the handler behind it.
+type route struct {
+	pattern string
+	handler http.Handler
+}
+
+// specPath is the route's OpenAPI path key - its pattern minus the method.
+// ServeMux spells a wildcard "{id}", exactly as OpenAPI templates one, so the
+// two path vocabularies are already the same.
+func (r route) specPath() string {
+	_, path, _ := strings.Cut(r.pattern, " ")
+	return path
+}
+
+// routes is the API surface, in registration order. It exists as DATA because it
+// has two consumers: buildMux registers it, and TestOpenAPICoversEveryRoute
+// diffs the embedded spec's path set against it - so the spec is pinned to what
+// the server actually serves rather than to a third hand-written copy of the
+// list.
+//
+// The static site at "/" is deliberately not here: it is not part of the API and
+// has no spec entry (see buildMux).
+func (s *Server) routes() []route {
+	rs := []route{
+		{"GET /healthz", http.HandlerFunc(s.handleHealthz)},
+	}
+	// Present only when a webhook secret is configured, because that is exactly
+	// when it is registered: an unconfigured deployment does not serve the hook.
+	if s.cfg.WebhookSecret != "" {
+		rs = append(rs, route{"POST " + githubReleaseWebhookPath, http.HandlerFunc(s.handleGitHubReleaseWebhook)})
+	}
+	return append(rs,
+		// The machine-readable description of everything below. It is STATIC, so
+		// it deliberately skips the loaded-artifact gate: a client discovering the
+		// API must get the spec even on a boot that has no data yet.
+		route{"GET /api/v1/openapi.json", s.public(http.HandlerFunc(handleOpenAPI))},
+		route{"GET /api/v1/stats", s.api(s.handleStats)},
+		route{"GET /api/v1/search", s.api(s.searchHandler(kindAny))},
+		// Type-scoped searches. A literal segment beats "{id}" in ServeMux's
+		// precedence rules, so each coexists with its family's detail route
+		// exactly as works/latest already does.
+		route{"GET /api/v1/works/search", s.api(s.searchHandler(kindWork))},
+		route{"GET /api/v1/people/search", s.api(s.searchHandler(kindPerson))},
+		route{"GET /api/v1/series/search", s.api(s.searchHandler(kindSeries))},
+		route{"GET /api/v1/works/latest", s.api(s.handleLatest)},
+		route{"GET /api/v1/works/{id}", s.api(s.handleWork)},
+		route{"GET /api/v1/works/{id}/recordings/{rid}/chapters", s.api(s.handleChapters)},
+		route{"GET /api/v1/people/{id}", s.api(s.handlePerson)},
+		route{"GET /api/v1/series/{id}", s.api(s.handleSeries)},
+		route{"GET /api/v1/lookup", s.api(s.handleLookup)},
+		route{"GET /api/v1/coverage", s.api(s.handleCoverage)},
+		route{"GET /api/v1/coverage/works", s.api(s.handleCoverageWorks)},
+		route{"GET /api/v1/coverage/series-gaps", s.api(s.handleCoverageSeriesGaps)},
+		// Audiobookshelf custom metadata provider (ABS appends /search to the
+		// configured base URL). Outside /api/v1; the specific pattern wins over "/".
+		route{"GET /abs/search", s.api(s.handleABSSearch)},
+	)
+}
+
 func (s *Server) buildMux() http.Handler {
 	mux := http.NewServeMux()
-	mux.HandleFunc("GET /healthz", s.handleHealthz)
-	if s.cfg.WebhookSecret != "" {
-		mux.HandleFunc("POST "+githubReleaseWebhookPath, s.handleGitHubReleaseWebhook)
+	for _, r := range s.routes() {
+		mux.Handle(r.pattern, r.handler)
 	}
-	// The machine-readable description of everything below. It is STATIC, so it
-	// deliberately skips s.api's loaded-artifact gate: a client discovering the
-	// API must get the spec even on a boot that has no data yet.
-	mux.Handle("GET /api/v1/openapi.json", gzipMW(corsMW(http.HandlerFunc(handleOpenAPI))))
-	mux.Handle("GET /api/v1/stats", s.api(s.handleStats))
-	mux.Handle("GET /api/v1/search", s.api(s.searchHandler((*snapshot).search)))
-	// Type-scoped searches. A literal segment beats "{id}" in ServeMux's
-	// precedence rules, so each coexists with its family's detail route exactly
-	// as works/latest already does.
-	mux.Handle("GET /api/v1/works/search", s.api(s.searchHandler(scopedSearch(kindWork))))
-	mux.Handle("GET /api/v1/people/search", s.api(s.searchHandler(scopedSearch(kindPerson))))
-	mux.Handle("GET /api/v1/series/search", s.api(s.searchHandler(scopedSearch(kindSeries))))
-	mux.Handle("GET /api/v1/works/latest", s.api(s.handleLatest))
-	mux.Handle("GET /api/v1/works/{id}", s.api(s.handleWork))
-	mux.Handle("GET /api/v1/works/{id}/recordings/{rid}/chapters", s.api(s.handleChapters))
-	mux.Handle("GET /api/v1/people/{id}", s.api(s.handlePerson))
-	mux.Handle("GET /api/v1/series/{id}", s.api(s.handleSeries))
-	mux.Handle("GET /api/v1/lookup", s.api(s.handleLookup))
-	mux.Handle("GET /api/v1/coverage", s.api(s.handleCoverage))
-	mux.Handle("GET /api/v1/coverage/works", s.api(s.handleCoverageWorks))
-	mux.Handle("GET /api/v1/coverage/series-gaps", s.api(s.handleCoverageSeriesGaps))
-	// Audiobookshelf custom metadata provider (ABS appends /search to the
-	// configured base URL). Outside /api/v1; the specific pattern wins over "/".
-	mux.Handle("GET /abs/search", s.api(s.handleABSSearch))
+	// The static site catches everything the API surface did not claim.
 	if s.site != nil {
 		mux.Handle("/", s.site)
 	}
 	return mux
 }
 
-// api wraps a JSON API handler with CORS, gzip, and the loaded-artifact gate.
+// public is the middleware stack every publicly reachable handler wears: CORS,
+// because browsers call this API directly, and gzip. One spelling of it, so no
+// route can pick up half the stack.
+func (s *Server) public(h http.Handler) http.Handler {
+	return gzipMW(corsMW(h))
+}
+
+// api is public plus the loaded-artifact gate: what every handler that reads a
+// snapshot needs.
 func (s *Server) api(h http.HandlerFunc) http.Handler {
-	return gzipMW(corsMW(s.requireSnapshot(h)))
+	return s.public(s.requireSnapshot(h))
 }
 
 // requireSnapshot answers 503 while no artifact has loaded, so every data
@@ -468,11 +511,12 @@ const (
 	searchPageMax     = 50
 )
 
-// searchHandler builds a search endpoint over run. The combined search and the
-// three type-scoped ones differ only in the query they issue, so the q/limit
-// parsing, the empty-q 400 and the {"results": [...]} envelope live here once
-// rather than in four near-identical handlers.
-func (s *Server) searchHandler(run func(*snapshot, string, int) ([]any, error)) http.HandlerFunc {
+// searchHandler builds the search endpoint for one kind - kindAny for the
+// combined search, kindWork/kindPerson/kindSeries for the type-scoped ones. The
+// four differ only in that value, so the q/limit parsing, the empty-q 400 and
+// the {"results": [...]} envelope live here once rather than in four
+// near-identical handlers.
+func (s *Server) searchHandler(kind searchKind) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		q := strings.TrimSpace(r.URL.Query().Get("q"))
 		if q == "" {
@@ -480,20 +524,12 @@ func (s *Server) searchHandler(run func(*snapshot, string, int) ([]any, error)) 
 			return
 		}
 		limit := clampLimit(r.URL.Query().Get("limit"), searchPageDefault, searchPageMax)
-		results, err := run(s.current(), q, limit)
+		results, err := s.current().search(kind, q, limit)
 		if err != nil {
 			writeErr(w, http.StatusInternalServerError, err.Error())
 			return
 		}
 		writeJSON(w, http.StatusOK, map[string]any{"results": results})
-	}
-}
-
-// scopedSearch adapts a type-scoped search to searchHandler's run signature (the
-// combined search matches it as the method expression (*snapshot).search).
-func scopedSearch(kind searchKind) func(*snapshot, string, int) ([]any, error) {
-	return func(snap *snapshot, q string, limit int) ([]any, error) {
-		return snap.searchScoped(kind, q, limit)
 	}
 }
 

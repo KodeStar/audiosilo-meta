@@ -1,0 +1,15 @@
+---
+// One JSON skeleton block - the request or response shape of an operation,
+// values rendered as types rather than data (see site/src/lib/openapi.ts). Every
+// such block on /docs/api goes through here, so they cannot drift into three
+// nearly-identical spellings; only the top margin differs by position.
+interface Props {
+  code: string
+  /** Tailwind top-margin utility, e.g. `mt-2`. */
+  margin?: string
+}
+const { code, margin = 'mt-3' } = Astro.props
+---
+
+<pre
+  class={`${margin} overflow-x-auto rounded-xl border border-edge bg-raised px-4 py-3 text-xs leading-relaxed text-body`}><code>{code}</code></pre>

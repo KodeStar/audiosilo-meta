@@ -81,14 +81,13 @@ func TestServeLookupsAreIndexed(t *testing.T) {
 		{"asins of a recording", asinsOfSQL, []any{work, recording}},
 		{"isbns of a recording", recordingISBNsSQL, []any{wok, "kramer-reading-2010"}},
 		{"chapter count of a recording", recordingCountSQL, []any{work, recording}},
-		// Per-work reads.
+		// Per-work reads. (A work's narrators and a series' work count are read in
+		// batches now - see TestBatchLookupsAreIndexed.)
 		{"authors of a work", authorsOfSQL, []any{work}},
-		{"narrators of a work", workNarratorsSQL, []any{wok}},
 		{"character aliases of a work", characterAliasSQL, []any{work}},
 		// Series detail.
 		{"works of a series", seriesWorksSQL, []any{series}},
 		{"authors of a series", seriesAuthorsSQL, []any{series}},
-		{"work count of a series", seriesWorksCountSQL, []any{series}},
 		// Person detail: the paged lists AND the totals that must agree with them.
 		{"authored total", authoredTotalSQL, []any{person}},
 		{"narrated total", narratedTotalSQL, []any{person}},
@@ -102,14 +101,16 @@ func TestServeLookupsAreIndexed(t *testing.T) {
 	}
 }
 
-// TestBatchLookupsAreIndexed covers the IN-batch queries cardsByID issues, plus
-// the series-position boost's batched membership read. They carry a rendered
-// placeholder list rather than a fixed argument count, so the guard drives them
-// through the same eachChunk helper the real code uses.
+// TestBatchLookupsAreIndexed covers the IN-batch queries cardsByID issues, the
+// per-kind batches one search page needs, and the series-position boost's
+// batched membership read. They carry a rendered placeholder list rather than a
+// fixed argument count, so the guard drives them through the same eachChunk
+// helper the real code uses.
 func TestBatchLookupsAreIndexed(t *testing.T) {
 	snap := snapshotFor(t, fixtureCatalog())
 	ids := []string{"project-hail-mary", "the-way-of-kings"}
 	seriesIDs := []string{"the-stormlight-archive"}
+	personIDs := []string{"brandon-sanderson", "andy-weir"}
 
 	cases := []struct {
 		name string
@@ -120,6 +121,11 @@ func TestBatchLookupsAreIndexed(t *testing.T) {
 		{"authors by work", ids, authorsByWorkSQL},
 		{"first series by work", ids, firstSeriesByWorkSQL},
 		{"covers by work", ids, coversByWorkSQL},
+		// One search page's per-kind reads: a scoped page is 100% one kind, so a
+		// per-hit query here would be a whole page of sequential round-trips.
+		{"narrators by work", ids, narratorsByWorkSQL},
+		{"names by person id", personIDs, namesByPersonIDSQL},
+		{"summaries by series id", seriesIDs, seriesSummariesByIDSQL},
 		{"members of the probed series", seriesIDs, seriesMembersSQL},
 	}
 	for _, tc := range cases {

@@ -7,10 +7,12 @@
  * document. Nothing here runs in the browser.
  *
  * Deliberately not a general OpenAPI implementation: it resolves LOCAL $refs
- * only, and covers the constructs our own spec uses. A construct we do not
- * emit (remote refs, allOf composition, callbacks) is out of scope rather than
- * half-supported - the drift guard in Go pins the spec's shape, so this side
- * only has to render what that shape allows.
+ * only, and covers exactly the constructs our own spec uses - `oneOf`
+ * (including the nullable spelling), `allOf` composition of object schemas, and
+ * `application/json` bodies. A construct we do not emit is out of scope rather
+ * than half-supported: the drift guards in Go pin the spec's shape, so this
+ * side only has to render what that shape allows, and a speculative branch
+ * nothing reaches is a claim of support nobody has tested.
  */
 
 export interface OpenAPISpec {
@@ -24,11 +26,21 @@ export interface OpenAPISpec {
     parameters?: Record<string, Parameter>
     responses?: Record<string, ResponseObject>
     headers?: Record<string, unknown>
-    securitySchemes?: Record<string, unknown>
   }
 }
 
-export type PathItem = Record<string, Operation | Parameter[] | undefined>
+/**
+ * A path item is its operations, by method. Our spec never uses path-level
+ * `parameters` (every operation declares its own), so the type says so and the
+ * renderer has nothing to merge.
+ */
+export interface PathItem {
+  get?: Operation
+  post?: Operation
+  put?: Operation
+  patch?: Operation
+  delete?: Operation
+}
 
 export interface Operation {
   operationId?: string
@@ -36,7 +48,7 @@ export interface Operation {
   description?: string
   tags?: string[]
   parameters?: Parameter[]
-  requestBody?: { required?: boolean; content?: Record<string, { schema?: Schema }> }
+  requestBody?: { required?: boolean; content?: Content }
   responses?: Record<string, ResponseObject>
 }
 
@@ -49,10 +61,13 @@ export interface Parameter {
   schema?: Schema
 }
 
+/** A body by media type. Every one of ours is `application/json`. */
+export type Content = Record<string, { schema?: Schema }>
+
 export interface ResponseObject {
   $ref?: string
   description?: string
-  content?: Record<string, { schema?: Schema }>
+  content?: Content
 }
 
 export interface Schema {
@@ -70,15 +85,12 @@ export interface Schema {
   required?: string[]
   items?: Schema
   oneOf?: Schema[]
-  anyOf?: Schema[]
+  allOf?: Schema[]
   examples?: unknown[]
 }
 
 /** The HTTP methods a path item may carry, in the order they are rendered. */
-const METHODS = ['get', 'post', 'put', 'patch', 'delete'] as const
-
-/** How deep a response skeleton expands before it collapses to `{ ... }`. */
-const MAX_DEPTH = 8
+const METHODS = ['get', 'post', 'put', 'patch', 'delete'] as const satisfies readonly (keyof PathItem)[]
 
 export interface RenderedParam {
   name: string
@@ -100,7 +112,6 @@ export interface RenderedResponse {
 }
 
 export interface RenderedOperation {
-  id: string
   /** Upper-case HTTP method. */
   method: string
   path: string
@@ -122,7 +133,15 @@ export interface RenderedGroup {
   operations: RenderedOperation[]
 }
 
-/** slug turns a name or path into a stable in-page anchor. */
+/**
+ * slug turns a name or path into a stable in-page anchor.
+ *
+ * Deliberately its own copy of the chain rather than builder.ts's `slugify`:
+ * that one is the DATA MODEL's slug rule, diacritic folding and MaxSlugLen cap
+ * included, and an in-page anchor must not inherit a length cap that exists to
+ * bound a record id - two long paths would collide on one anchor. The two rules
+ * are free to diverge because they answer different questions.
+ */
 export function slug(value: string): string {
   return value
     .toLowerCase()
@@ -134,13 +153,17 @@ export function slug(value: string): string {
  * resolveRef follows a local JSON pointer ("#/components/schemas/WorkCard").
  * A non-local or dangling ref returns undefined rather than throwing: a page
  * that renders one shape as empty beats a build that fails on a typo in prose.
+ *
+ * The pointer segments are used as written. Every ref in our spec is a plain
+ * component name, so the RFC 6901 escapes cannot occur - and decoding them
+ * would corrupt a name that legitimately contained a `%`.
  */
 export function resolveRef(spec: OpenAPISpec, ref: string): unknown {
   if (!ref.startsWith('#/')) return undefined
   let cur: unknown = spec
   for (const part of ref.slice(2).split('/')) {
     if (typeof cur !== 'object' || cur === null) return undefined
-    cur = (cur as Record<string, unknown>)[decodeURIComponent(part.replace(/~1/g, '/').replace(/~0/g, '~'))]
+    cur = (cur as Record<string, unknown>)[part]
     if (cur === undefined) return undefined
   }
   return cur
@@ -189,13 +212,12 @@ function scalarLabel(schema: Schema): string {
  * `oneOf` with a `{"type":"null"}` branch.
  */
 function splitNullable(schema: Schema): { base: Schema; nullable: boolean } {
-  const branches = schema.oneOf ?? schema.anyOf
+  const branches = schema.oneOf
   if (branches?.length) {
     const real = branches.filter((b) => !typeList(b).includes('null'))
     if (real.length !== branches.length) {
       const rest = { ...schema }
       delete rest.oneOf
-      delete rest.anyOf
       return {
         base: real.length === 1 ? { ...rest, ...real[0] } : { ...rest, oneOf: real },
         nullable: true,
@@ -206,6 +228,33 @@ function splitNullable(schema: Schema): { base: Schema; nullable: boolean } {
     return { base: { ...schema, type: typeList(schema).filter((t) => t !== 'null') }, nullable: true }
   }
   return { base: schema, nullable: false }
+}
+
+/**
+ * mergeAllOf collapses an `allOf` composition into one object schema: the
+ * branches' properties and required lists, unioned left to right, over the
+ * node's own. Our spec uses it for one thing - a search hit that IS a work card
+ * plus a discriminator and its narrators - so a union of members is the whole
+ * semantics needed, and composing beats restating the card's fields in a second
+ * schema that can drift.
+ *
+ * A $ref branch already on the stack is skipped, so a cyclic composition
+ * terminates instead of recursing.
+ */
+function mergeAllOf(spec: OpenAPISpec, schema: Schema, refStack: string[]): Schema {
+  const { allOf, ...rest } = schema
+  const properties: Record<string, Schema> = { ...rest.properties }
+  const required = new Set(rest.required ?? [])
+  for (const raw of allOf ?? []) {
+    if (raw.$ref) {
+      if (refStack.includes(raw.$ref)) continue
+      refStack.push(raw.$ref)
+    }
+    const branch = deref(spec, raw)
+    Object.assign(properties, branch.properties)
+    for (const key of branch.required ?? []) required.add(key)
+  }
+  return { ...rest, type: 'object', properties, required: [...required] }
 }
 
 /**
@@ -220,13 +269,15 @@ function splitNullable(schema: Schema): { base: Schema; nullable: boolean } {
  * endpoint that returns them.
  */
 export function schemaSkeleton(spec: OpenAPISpec, schema: Schema): string {
-  return render(spec, schema, 0, 0, [])
+  return render(spec, schema, 0, [])
 }
 
-function render(spec: OpenAPISpec, raw: Schema, indent: number, depth: number, refStack: string[]): string {
-  // Refs and nullability interleave: `{"oneOf": [{"$ref": ...}, {"type":
-  // "null"}]}` only exposes its $ref once the null branch has been split off, so
-  // the two resolutions run alternately until the node stops changing.
+function render(spec: OpenAPISpec, raw: Schema, indent: number, refStack: string[]): string {
+  // Refs, compositions and nullability interleave: `{"oneOf": [{"$ref": ...},
+  // {"type": "null"}]}` only exposes its $ref once the null branch has been
+  // split off, so the resolutions run in turn until the node stops changing. The
+  // ref stack is what guarantees termination - every iteration either consumes a
+  // ref (which can then never be followed again) or removes a composition key.
   const stack = [...refStack]
   let base = raw
   let nullable = false
@@ -237,14 +288,18 @@ function render(spec: OpenAPISpec, raw: Schema, indent: number, depth: number, r
       base = deref(spec, base)
       continue
     }
+    if (base.allOf?.length) {
+      base = mergeAllOf(spec, base, stack)
+      continue
+    }
     const split = splitNullable(base)
-    if (split.base === base) break
-    nullable = nullable || split.nullable
+    if (!split.nullable) break
+    nullable = true
     base = split.base
   }
   const suffix = nullable ? ' | null' : ''
 
-  const branches = base.oneOf ?? base.anyOf
+  const branches = base.oneOf
   if (branches?.length) {
     const names = branches.map((b) => (b.$ref ? refName(b.$ref) : scalarLabel(deref(spec, b))))
     return `<${names.join(' | ')}>${suffix}`
@@ -254,18 +309,16 @@ function render(spec: OpenAPISpec, raw: Schema, indent: number, depth: number, r
   const pad = ' '.repeat(indent)
 
   if (types.includes('array') || base.items) {
-    if (depth >= MAX_DEPTH) return `[ ... ]${suffix}`
-    const item = base.items ? render(spec, base.items, indent + 2, depth + 1, stack) : 'any'
+    const item = base.items ? render(spec, base.items, indent + 2, stack) : 'any'
     return `[\n${pad}  ${item}\n${pad}]${suffix}`
   }
 
   const props = base.properties
   if (props && Object.keys(props).length) {
-    if (depth >= MAX_DEPTH) return `{ ... }${suffix}`
     const required = new Set(base.required ?? [])
     const lines = Object.entries(props).map(([key, value]) => {
       const optional = required.has(key) ? '' : '?'
-      return `${pad}  "${key}${optional}": ${render(spec, value, indent + 2, depth + 1, stack)}`
+      return `${pad}  "${key}${optional}": ${render(spec, value, indent + 2, stack)}`
     })
     return `{\n${lines.join(',\n')}\n${pad}}${suffix}`
   }
@@ -305,6 +358,10 @@ export interface TextSegment {
  * do something with the backticks; splitting into segments the template renders
  * as ELEMENTS means nothing in the spec can ever become markup. An unpaired
  * backtick is left as prose, which is what CommonMark does too.
+ *
+ * Code spans are the WHOLE markdown subset the page renders - links, bold and
+ * bullet lists would come out as their literal source, which is why the Go side
+ * fails the build on them (TestOpenAPIProseStaysInTheRenderedSubset).
  */
 export function inlineSegments(text: string): TextSegment[] {
   const out: TextSegment[] = []
@@ -335,20 +392,22 @@ function renderParams(spec: OpenAPISpec, params: Parameter[]): RenderedParam[] {
       name: p.name ?? '',
       location: p.in ?? '',
       required: p.required === true,
-      type: p.schema ? scalarLabel(splitNullable(deref(spec, p.schema)).base) : '',
+      type: p.schema ? scalarLabel(p.schema) : '',
       constraints: paramConstraints(p.schema),
       description: p.description ?? '',
     }
   })
 }
 
-/** bodySchema picks the JSON schema out of a content map, if there is one. */
-function bodySchema(content: Record<string, { schema?: Schema }> | undefined): Schema | undefined {
-  if (!content) return undefined
-  for (const [mediaType, entry] of Object.entries(content)) {
-    if (mediaType.includes('json') && entry.schema) return entry.schema
-  }
-  return undefined
+/**
+ * bodySkeleton renders the JSON body of a request or a response, or null when
+ * there is none. Every content map in the spec carries exactly one media type,
+ * `application/json`, so that is what it reads - a body in some other type is
+ * not something this page could render anyway.
+ */
+function bodySkeleton(spec: OpenAPISpec, content: Content | undefined): string | null {
+  const schema = content?.['application/json']?.schema
+  return schema ? schemaSkeleton(spec, schema) : null
 }
 
 function renderResponses(spec: OpenAPISpec, responses: Record<string, ResponseObject>): RenderedResponse[] {
@@ -356,11 +415,10 @@ function renderResponses(spec: OpenAPISpec, responses: Record<string, ResponseOb
     .sort(([a], [b]) => a.localeCompare(b))
     .map(([status, raw]) => {
       const res = deref(spec, raw)
-      const schema = bodySchema(res.content)
       return {
         status,
         description: res.description ?? '',
-        skeleton: schema ? schemaSkeleton(spec, schema) : null,
+        skeleton: bodySkeleton(spec, res.content),
       }
     })
 }
@@ -375,22 +433,17 @@ export function groupOperations(spec: OpenAPISpec): RenderedGroup[] {
   const byTag = new Map<string, RenderedOperation[]>()
 
   for (const [path, item] of Object.entries(spec.paths ?? {})) {
-    const shared = (item.parameters as Parameter[] | undefined) ?? []
     for (const method of METHODS) {
-      const op = item[method] as Operation | undefined
+      const op = item[method]
       if (!op) continue
       const rendered: RenderedOperation = {
-        id: op.operationId ?? `${method}-${path}`,
         method: method.toUpperCase(),
         path,
         anchor: slug(`${method}-${path}`),
         summary: op.summary ?? '',
         description: paragraphs(op.description),
-        params: renderParams(spec, [...shared, ...(op.parameters ?? [])]),
-        requestBody: (() => {
-          const schema = bodySchema(op.requestBody?.content)
-          return schema ? schemaSkeleton(spec, schema) : null
-        })(),
+        params: renderParams(spec, op.parameters ?? []),
+        requestBody: bodySkeleton(spec, op.requestBody?.content),
         responses: renderResponses(spec, op.responses ?? {}),
       }
       for (const tag of op.tags?.length ? op.tags : ['Other']) {

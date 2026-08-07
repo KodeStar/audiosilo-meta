@@ -135,7 +135,17 @@
             "description": "One ranked page of mixed results.",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/SearchResults" }
+                "schema": {
+                  "type": "object",
+                  "required": ["results"],
+                  "properties": {
+                    "results": {
+                      "type": "array",
+                      "description": "Hits in rank order, best first. Never null; empty when nothing matched.",
+                      "items": { "$ref": "#/components/schemas/SearchResult" }
+                    }
+                  }
+                }
               }
             }
           },
@@ -159,7 +169,17 @@
             "description": "One ranked page of works.",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/WorkSearchResults" }
+                "schema": {
+                  "type": "object",
+                  "required": ["results"],
+                  "properties": {
+                    "results": {
+                      "type": "array",
+                      "description": "Hits in rank order, best first. Never null; empty when nothing matched.",
+                      "items": { "$ref": "#/components/schemas/WorkResult" }
+                    }
+                  }
+                }
               }
             }
           },
@@ -183,7 +203,17 @@
             "description": "One ranked page of people.",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/PersonSearchResults" }
+                "schema": {
+                  "type": "object",
+                  "required": ["results"],
+                  "properties": {
+                    "results": {
+                      "type": "array",
+                      "description": "Hits in rank order, best first. Never null; empty when nothing matched.",
+                      "items": { "$ref": "#/components/schemas/PersonResult" }
+                    }
+                  }
+                }
               }
             }
           },
@@ -207,7 +237,17 @@
             "description": "One ranked page of series.",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/SeriesSearchResults" }
+                "schema": {
+                  "type": "object",
+                  "required": ["results"],
+                  "properties": {
+                    "results": {
+                      "type": "array",
+                      "description": "Hits in rank order, best first. Never null; empty when nothing matched.",
+                      "items": { "$ref": "#/components/schemas/SeriesResult" }
+                    }
+                  }
+                }
               }
             }
           },
@@ -412,12 +452,8 @@
             }
           },
           "400": {
-            "description": "Neither `asin` nor `isbn` was supplied.",
-            "content": {
-              "application/json": {
-                "schema": { "$ref": "#/components/schemas/Error" }
-              }
-            }
+            "$ref": "#/components/responses/BadRequest",
+            "description": "Neither `asin` nor `isbn` was supplied."
           },
           "404": { "$ref": "#/components/responses/NotFound" },
           "503": { "$ref": "#/components/responses/NoData" }
@@ -481,12 +517,8 @@
             }
           },
           "400": {
-            "description": "Unrecognized `filter` value.",
-            "content": {
-              "application/json": {
-                "schema": { "$ref": "#/components/schemas/Error" }
-              }
-            }
+            "$ref": "#/components/responses/BadRequest",
+            "description": "Unrecognized `filter` value."
           },
           "503": { "$ref": "#/components/responses/NoData" }
         }
@@ -568,12 +600,8 @@
             }
           },
           "400": {
-            "description": "`query` was missing or empty.",
-            "content": {
-              "application/json": {
-                "schema": { "$ref": "#/components/schemas/Error" }
-              }
-            }
+            "$ref": "#/components/responses/BadRequest",
+            "description": "`query` was missing or empty."
           },
           "503": { "$ref": "#/components/responses/NoData" }
         }
@@ -585,7 +613,6 @@
         "operationId": "githubReleaseWebhook",
         "summary": "Release notification (production only)",
         "description": "PRODUCTION ONLY, and registered at all only when the deployment sets `METASERVE_WEBHOOK_SECRET`. It exists so a freshly published data release is adopted in seconds instead of at the next hourly poll; the poll remains the fallback for a missed delivery.\n\nThe body is only a trigger - the server re-queries GitHub and goes through the same checksum-verified atomic swap as a poll, so a forged payload cannot install anything. The request must carry a valid `X-Hub-Signature-256` HMAC over the raw body; anything else is rejected before the body is parsed. The response is always empty: 202 means \"accepted, refreshing in the background\", including for a delivery that is correctly signed but not a matching release event.\n\nError bodies on this route are plain text, not the JSON error envelope the API uses.",
-        "security": [{ "githubWebhookSignature": [] }],
         "parameters": [
           {
             "name": "X-Hub-Signature-256",
@@ -620,14 +647,6 @@
     }
   },
   "components": {
-    "securitySchemes": {
-      "githubWebhookSignature": {
-        "type": "apiKey",
-        "in": "header",
-        "name": "X-Hub-Signature-256",
-        "description": "HMAC-SHA256 of the raw request body, `sha256=<hex>`, keyed with the deployment's webhook secret. Used by the release hook only; every other endpoint is unauthenticated."
-      }
-    },
     "headers": {
       "RetryAfter": {
         "description": "Whole seconds to wait before retrying. It reports the wait the server's refresh loop is actually on, which grows as attempts fail.",
@@ -810,28 +829,28 @@
         }
       },
       "WorkResult": {
-        "type": "object",
-        "description": "A search hit that is a work: the card's fields inline, plus the kind discriminator and the distinct narrators across the work's recordings.",
-        "required": ["kind", "id", "title", "authors", "series", "cover_url", "added_at", "narrators"],
-        "properties": {
-          "kind": { "type": "string", "const": "work" },
-          "id": { "type": "string" },
-          "title": { "type": "string" },
-          "authors": {
-            "type": "array",
-            "items": { "$ref": "#/components/schemas/PersonRef" }
+        "description": "A search hit that is a work: every WorkCard field, plus the kind discriminator and the distinct narrators across the work's recordings. It COMPOSES the card rather than restating it, so the two can never end up describing the same bytes differently; the branches are ordered so the rendered shape matches the order the fields arrive in.",
+        "allOf": [
+          {
+            "type": "object",
+            "required": ["kind"],
+            "properties": {
+              "kind": { "type": "string", "const": "work" }
+            }
           },
-          "series": {
-            "oneOf": [{ "$ref": "#/components/schemas/SeriesRef" }, { "type": "null" }]
-          },
-          "cover_url": { "type": ["string", "null"] },
-          "added_at": { "type": ["string", "null"] },
-          "narrators": {
-            "type": "array",
-            "description": "Every distinct narrator across the work's recordings, in credit order.",
-            "items": { "$ref": "#/components/schemas/PersonRef" }
+          { "$ref": "#/components/schemas/WorkCard" },
+          {
+            "type": "object",
+            "required": ["narrators"],
+            "properties": {
+              "narrators": {
+                "type": "array",
+                "description": "Every distinct narrator across the work's recordings, in credit order.",
+                "items": { "$ref": "#/components/schemas/PersonRef" }
+              }
+            }
           }
-        }
+        ]
       },
       "PersonResult": {
         "type": "object",
@@ -867,47 +886,6 @@
             "work": "#/components/schemas/WorkResult",
             "person": "#/components/schemas/PersonResult",
             "series": "#/components/schemas/SeriesResult"
-          }
-        }
-      },
-      "SearchResults": {
-        "type": "object",
-        "required": ["results"],
-        "properties": {
-          "results": {
-            "type": "array",
-            "description": "Hits in rank order, best first. Never null; empty when nothing matched.",
-            "items": { "$ref": "#/components/schemas/SearchResult" }
-          }
-        }
-      },
-      "WorkSearchResults": {
-        "type": "object",
-        "required": ["results"],
-        "properties": {
-          "results": {
-            "type": "array",
-            "items": { "$ref": "#/components/schemas/WorkResult" }
-          }
-        }
-      },
-      "PersonSearchResults": {
-        "type": "object",
-        "required": ["results"],
-        "properties": {
-          "results": {
-            "type": "array",
-            "items": { "$ref": "#/components/schemas/PersonResult" }
-          }
-        }
-      },
-      "SeriesSearchResults": {
-        "type": "object",
-        "required": ["results"],
-        "properties": {
-          "results": {
-            "type": "array",
-            "items": { "$ref": "#/components/schemas/SeriesResult" }
           }
         }
       },

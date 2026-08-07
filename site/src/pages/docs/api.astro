@@ -3,6 +3,8 @@ import Base from '../../layouts/Base.astro'
 import Backdrop from '../../components/Backdrop.astro'
 import Button from '../../components/Button.astro'
 import Inline from '../../components/docs/Inline.astro'
+import Skeleton from '../../components/docs/Skeleton.astro'
+import { CHIP } from '../../components/docs/chip'
 // The spec is authored in the Go tree and served verbatim at
 // /api/v1/openapi.json, so this page and the machine contract are one document -
 // there is no second copy of the API's shape to keep in step.
@@ -15,11 +17,14 @@ const baseUrl = spec.servers?.[0]?.url ?? 'https://meta.audiosilo.app'
 const intro = paragraphs(spec.info.description)
 const REPO = 'https://github.com/kodestar/audiosilo-meta'
 
+// Short labels only. Everything they stand for is stated in the spec's own
+// description, which renders in full below - this card is the index, not a
+// second copy of the prose.
 const facts = [
   { label: 'Base URL', value: baseUrl },
-  { label: 'Auth', value: 'None - everything is public' },
+  { label: 'Auth', value: 'None' },
   { label: 'CORS', value: 'Open to any origin' },
-  { label: 'Writes', value: 'None - the API is read-only' },
+  { label: 'Writes', value: 'None - read-only' },
 ]
 
 // The skeleton conventions, stated once so every code block below reads without
@@ -56,11 +61,11 @@ const statusClass = (status: string) =>
         </span>
         <h1 class="text-3xl font-bold tracking-tight text-hi sm:text-4xl">API reference</h1>
         {
-          intro.slice(0, 2).map((para) => (
+          spec.info.summary && (
             <p class="mt-4 text-base leading-relaxed text-body">
-              <Inline text={para} />
+              <Inline text={spec.info.summary} />
             </p>
-          ))
+          )
         }
         <div class="mt-8 flex flex-wrap justify-center gap-3">
           <Button href="/api/v1/openapi.json" variant="primary">OpenAPI spec</Button>
@@ -82,6 +87,17 @@ const statusClass = (status: string) =>
             ))
           }
         </dl>
+        {
+          intro.length > 0 && (
+            <div class="mt-4 space-y-3 rounded-2xl border border-edge bg-surface p-5">
+              {intro.map((para) => (
+                <p class="text-sm leading-relaxed text-body">
+                  <Inline text={para} />
+                </p>
+              ))}
+            </div>
+          )
+        }
         <div class="mt-4 rounded-2xl border border-edge bg-surface p-5">
           <p class="text-sm leading-relaxed text-body">
             Response shapes below are JSON skeletons whose values are types, not data:
@@ -91,9 +107,7 @@ const statusClass = (status: string) =>
               conventions.map(([token, meaning]) => (
                 <div class="flex items-baseline gap-3">
                   <dt class="shrink-0">
-                    <code class="rounded bg-raised px-1.5 py-0.5 font-mono text-xs text-hi">
-                      {token}
-                    </code>
+                    <code class={`${CHIP} text-xs text-hi`}>{token}</code>
                   </dt>
                   <dd class="text-xs leading-relaxed text-dim">{meaning}</dd>
                 </div>
@@ -218,7 +232,9 @@ const statusClass = (status: string) =>
                                       </td>
                                       <td class="py-2.5 text-xs leading-relaxed text-body">
                                         {param.constraints && (
-                                          <span class="mr-2 whitespace-nowrap rounded bg-raised px-1.5 py-0.5 font-mono text-[0.7rem] text-dim">
+                                          <span
+                                            class={`${CHIP} mr-2 whitespace-nowrap text-[0.7rem] text-dim`}
+                                          >
                                             {param.constraints}
                                           </span>
                                         )}
@@ -240,7 +256,7 @@ const statusClass = (status: string) =>
                             <h4 class="text-xs font-semibold uppercase tracking-[0.15em] text-dim">
                               Request body
                             </h4>
-                            <pre class="mt-3 overflow-x-auto rounded-xl border border-edge bg-raised px-4 py-3 text-xs leading-relaxed text-body"><code>{op.requestBody}</code></pre>
+                            <Skeleton code={op.requestBody} />
                           </div>
                         )}
 
@@ -261,9 +277,7 @@ const statusClass = (status: string) =>
                                     <Inline text={res.description} />
                                   </span>
                                 </div>
-                                {res.skeleton && (
-                                  <pre class="mt-2 overflow-x-auto rounded-xl border border-edge bg-raised px-4 py-3 text-xs leading-relaxed text-body"><code>{res.skeleton}</code></pre>
-                                )}
+                                {res.skeleton && <Skeleton code={res.skeleton} margin="mt-2" />}
                               </div>
                             ))}
                           </div>
@@ -276,17 +290,12 @@ const statusClass = (status: string) =>
             ))
           }
 
-          <!-- Licence footnote -->
+          <!-- Where to go next. The prose above is the spec's own; these are the
+               two links its plain-text description cannot carry. -->
           <section class="reveal rounded-2xl border border-edge bg-surface p-6">
-            <h2 class="text-lg font-semibold text-hi">Using the data</h2>
-            <p class="mt-3 max-w-2xl text-sm leading-relaxed text-body">
-              The factual core - works, recordings, people and series - is dedicated to the
-              public domain under CC0-1.0. The community layer served alongside it
-              (characters and recaps) is CC BY-SA 3.0, so redistributing it carries
-              attribution and share-alike obligations.
-            </p>
+            <h2 class="text-lg font-semibold text-hi">Further reading</h2>
             <p class="mt-3 text-sm leading-relaxed text-dim">
-              The full policy is in
+              The full licensing policy is in
               <a
                 href={`${REPO}/blob/main/LICENSING.md`}
                 target="_blank"

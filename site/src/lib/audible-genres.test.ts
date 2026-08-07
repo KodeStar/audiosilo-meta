@@ -1,7 +1,5 @@
 import { describe, expect, it } from 'vitest'
 import { readFileSync } from 'node:fs'
-import { dirname, relative, resolve, sep } from 'node:path'
-import { fileURLToPath } from 'node:url'
 
 import { mapGenreClaim, mapGenreClaims } from './audible-genres'
 
@@ -106,53 +104,5 @@ describe('mapGenreClaims', () => {
     ])
     expect(got).toEqual(['epic-fantasy'])
     for (const slug of got) expect(typeof slug).toBe('string')
-  })
-})
-
-// --- The cross-boundary import's release-time guard --------------------------
-
-// audible-genres.ts imports the mapping table from OUTSIDE site/, so the image's
-// site stage (whose build context is site/ alone) has to COPY that file to the
-// matching relative position or `yarn build` fails to resolve the import. That
-// only happens at release time, so moving or renaming the table can otherwise
-// pass PR CI green and break the image build. This test ties the two together:
-// it derives the expected COPY from the module's own import specifier.
-describe('the Dockerfile site stage', () => {
-  const libDir = dirname(fileURLToPath(new URL('./audible-genres.ts', import.meta.url)))
-  const repoRoot = resolve(libDir, '..', '..', '..')
-  const source = readFileSync(resolve(libDir, 'audible-genres.ts'), 'utf8')
-
-  it('copies the table the module imports, to the position the import resolves to', () => {
-    const match = source.match(/from\s+'((?:\.\.\/)+[^']*audiblegenres\.json)'/)
-    if (!match) throw new Error('audible-genres.ts no longer imports audiblegenres.json by a relative path')
-    const repoRel = relative(repoRoot, resolve(libDir, match[1])).split(sep).join('/')
-    // A path inside site/ would need no COPY at all - if the table ever moves
-    // there, delete the Dockerfile line and this test together.
-    expect(repoRel.startsWith('site/')).toBe(false)
-    // The site stage copies site/ to /site, so a path N levels above site/ sits
-    // at the same repo-relative position under the container root.
-    const want = { src: repoRel, dest: `/${repoRel}` }
-
-    const dockerfile = readFileSync(resolve(repoRoot, 'Dockerfile'), 'utf8')
-    const lines = dockerfile.split('\n')
-    const start = lines.findIndex((l) => /^\s*FROM\s+.*\bAS\s+site\s*$/i.test(l))
-    expect(start).toBeGreaterThanOrEqual(0)
-    const rest = lines.slice(start + 1)
-    const end = rest.findIndex((l) => /^\s*FROM\s/i.test(l))
-    const stage = end === -1 ? rest : rest.slice(0, end)
-
-    const copyAt = stage.findIndex((l) => {
-      const m = l.match(/^\s*COPY\s+(\S+)\s+(\S+)\s*$/i)
-      return m !== null && m[1] === want.src && m[2] === want.dest
-    })
-    expect(
-      copyAt,
-      `Dockerfile site stage is missing: COPY ${want.src} ${want.dest}`
-    ).toBeGreaterThanOrEqual(0)
-
-    // ... and it has to land before the build that resolves the import.
-    const buildAt = stage.findIndex((l) => /^\s*RUN\s+.*\byarn\s+build\b/.test(l))
-    expect(buildAt).toBeGreaterThanOrEqual(0)
-    expect(copyAt).toBeLessThan(buildAt)
   })
 })

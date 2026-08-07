@@ -5,8 +5,9 @@
 # stage ships the whole data/ tree into the builder layer, which would make the
 # image build time and cache invalidation grow with the catalogue: exactly what
 # dropping the baked artifact was meant to stop. Nothing in metaserve's build
-# path reads data/ (the only embedded files are schema/*.json and
-# internal/importer/audiblegenres.json).
+# path reads data/ - the embedded files are schema/*.json,
+# internal/importer/audiblegenres.json and internal/serve/openapi.json, the last
+# two of which the site stage also copies across the boundary (see Dockerfile).
 data/
 
 # Git history is not read by any build step (added_at lives in the records now,

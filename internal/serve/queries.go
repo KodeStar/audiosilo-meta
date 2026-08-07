@@ -493,11 +493,10 @@ func (s *snapshot) recordingsOf(workID string) ([]recordingDetail, error) {
 const (
 	narratorsOfSQL = `SELECT p.id, p.name FROM recording_narrators rn JOIN people p ON p.id = rn.person_id ` +
 		`WHERE rn.work_id=? AND rn.recording_id=? ORDER BY rn.ord`
-	asinsOfSQL          = `SELECT region, asin FROM recording_asins WHERE work_id=? AND recording_id=? ORDER BY region, asin`
-	recordingISBNsSQL   = `SELECT isbn FROM recording_isbns WHERE work_id=? AND recording_id=? ORDER BY isbn`
-	characterAliasSQL   = `SELECT character_id, alias FROM character_aliases WHERE work_id=? ORDER BY character_id, ord`
-	recordingCountSQL   = `SELECT COUNT(*) FROM chapters WHERE work_id=? AND recording_id=?`
-	seriesWorksCountSQL = `SELECT COUNT(*) FROM series_works WHERE series_id=?`
+	asinsOfSQL        = `SELECT region, asin FROM recording_asins WHERE work_id=? AND recording_id=? ORDER BY region, asin`
+	recordingISBNsSQL = `SELECT isbn FROM recording_isbns WHERE work_id=? AND recording_id=? ORDER BY isbn`
+	characterAliasSQL = `SELECT character_id, alias FROM character_aliases WHERE work_id=? ORDER BY character_id, ord`
+	recordingCountSQL = `SELECT COUNT(*) FROM chapters WHERE work_id=? AND recording_id=?`
 )
 
 func (s *snapshot) narratorsOf(workID, rid string) ([]personRef, error) {
