@@ -349,6 +349,91 @@
         "work": "a-cauldron-of-bitterness"
       }
     },
+    "a-charlotte-perkins-classic-the-yellow-wallpaper-annotated-with-a-historical-introduction": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "The narrator"
+            ],
+            "description": "An unnamed woman taken to a rented country house after childbirth because her husband believes rest will cure her nervous illness. She wants meaningful company and work, especially writing, but records her thoughts secretly because her treatment forbids exertion.",
+            "id": "narrator",
+            "name": "The Narrator",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The narrator's husband and physician. Certain that he understands both her illness and her needs, he prescribes isolation, inactivity, and freedom from imaginative work while dismissing her objections as symptoms of nervousness.",
+            "id": "john",
+            "name": "John",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "John's sister, who manages the household during the couple's stay. She accepts conventional domestic duties and watches over the narrator, who takes care to hide her writing from her.",
+            "id": "jennie",
+            "name": "Jennie",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The nurse who cares for the narrator and John's baby while the narrator is unwell and finds being with the child emotionally difficult.",
+            "id": "mary",
+            "name": "Mary",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The infant child of the narrator and John. The baby is cared for chiefly by Mary because the narrator's condition makes sustained contact distressing for her.",
+            "id": "the-baby",
+            "name": "The Baby",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "a-charlotte-perkins-classic-the-yellow-wallpaper-annotated-with-a-historical-introduction"
+      },
+      "recaps": {
+        "ending": "Alone at the end of the rental period, the narrator locks the bedroom and throws the key outside. She tears away as much wallpaper as she can, convinced that this will free the woman she sees trapped behind its pattern. When John obtains the key and enters, she identifies herself with the freed figure and continues creeping around the edge of the room over the damaged paper. John faints at the sight. She does not return to his shared understanding of events; instead, she keeps circling the room and crawls over him whenever her path reaches his body. The ending leaves her completely absorbed in the identity produced by her confinement and fixation. John's treatment has not restored her health: his control, disbelief, and enforced inactivity have accompanied a severe psychological breakdown.",
+        "in_short": "After childbirth, an unnamed woman with a serious mental illness is confined by her physician husband John to an upstairs room in a rented country house. He forbids work and discounts her wish for stimulation, company, and a different room. Writing secretly, she becomes increasingly preoccupied with the room's ugly yellow wallpaper. Its confused pattern seems to contain a woman who struggles behind bars and creeps outside at night. As her isolation deepens, the narrator identifies with this figure. Before the family leaves, she locks herself in, tears much of the paper from the walls, and declares that the woman has escaped. John enters and faints. The narrator continues creeping around the room, stepping over his unconscious body, fully absorbed in her delusion rather than cured by the imposed rest.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "An unnamed woman and her physician husband John rent a country house while she recovers from a mental illness following childbirth. John insists that rest and freedom from work are the proper treatment. He chooses an upstairs former nursery as their bedroom, dismisses her dislike of it, and discourages writing, so she keeps a private journal in secret. Separated from her baby and given little control over her days, she fixes on the room's damaged yellow wallpaper. Its pattern begins to seem changeable: she perceives a woman trapped behind it and later imagines women creeping outdoors. She hides the depth of this obsession from John and his sister Jennie. As departure approaches, she locks the door and strips the paper to release the figure. When John enters, she says she has escaped and cannot be put back. He faints, while she continues crawling around the room and over his body, her identity now merged with the woman she believed was imprisoned in the wall.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "a-charlotte-perkins-classic-the-yellow-wallpaper-annotated-with-a-historical-introduction"
+      }
+    },
     "a-christmas-carol": {
       "characters": {
         "characters": [
@@ -826,6 +911,140 @@
         "work": "a-christmas-carol-and-the-night-before-christmas"
       }
     },
+    "a-christmas-carol-dramatized": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A wealthy London moneylender who has reduced life to business and isolation. He rejects charity, treats his clerk harshly, and dismisses Christmas as an interruption, but a warning from his dead partner forces him to confront the human cost of the choices he has made.",
+            "id": "ebenezer-scrooge",
+            "name": "Ebenezer Scrooge",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Scrooge's former business partner, dead for seven years. He appears burdened by a chain made from the objects of commerce and warns Scrooge that a life of selfish indifference creates suffering that cannot be repaired after death.",
+            "id": "jacob-marley",
+            "name": "Jacob Marley",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Scrooge's poorly paid clerk, who works in an inadequately heated office and remains courteous despite his employer's severity. He values the chance to spend Christmas Day away from the counting house.",
+            "id": "bob-cratchit",
+            "name": "Bob Cratchit",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Scrooge's cheerful nephew, who continues inviting his uncle to Christmas dinner despite repeated rebuffs. He regards family affection as valuable in itself and refuses to answer Scrooge's bitterness with resentment.",
+            "id": "fred",
+            "name": "Fred",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The first spirit sent to guide Scrooge, a shifting figure associated with light and memory. The spirit makes Scrooge revisit his lonely childhood, early happiness, and the decisions that gradually narrowed his emotional life.",
+            "id": "ghost-of-christmas-past",
+            "name": "Ghost of Christmas Past",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Scrooge's generous former employer, who made a modest workplace feel abundant through warmth, music, and a Christmas party. His example shows that an employer's power can be used to create happiness without great expense.",
+            "id": "mr-fezziwig",
+            "name": "Mr Fezziwig",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The woman Scrooge once expected to marry. She recognizes that his fear of poverty and devotion to gain have displaced the values they shared, and she releases him from their engagement rather than compete with his new priorities.",
+            "id": "belle",
+            "name": "Belle",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The openhearted second spirit, who shows Scrooge how Christmas is being observed in homes and communities beyond his own locked rooms. The spirit combines abundance with concern for people whom comfortable society neglects.",
+            "id": "ghost-of-christmas-present",
+            "name": "Ghost of Christmas Present",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Bob Cratchit's young son, physically frail but affectionate and engaged with family life. His uncertain health becomes the clearest measure of how poverty and the choices of more powerful people shape the Cratchits' future.",
+            "id": "tiny-tim",
+            "name": "Tiny Tim",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The final spirit, a silent, shrouded figure who answers questions only by pointing. It shows Scrooge a possible future defined by an unmourned death and asks him to understand where his present course leads.",
+            "id": "ghost-of-christmas-yet-to-come",
+            "name": "Ghost of Christmas Yet to Come",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "a-christmas-carol-dramatized"
+      },
+      "recaps": {
+        "ending": "After seeing a neglected grave bearing his own name, Scrooge promises to change the future by changing his conduct. He wakes on Christmas morning with the spirits' visits completed in a single night. Delighted to have time to act, he anonymously sends a large turkey to the Cratchits, gives money to the charity collector he rejected, and joins Fred's family for dinner. The next morning he startles Bob Cratchit before raising his salary and offering practical help to his family. Scrooge becomes a generous employer, an attentive uncle, and a dependable friend. He takes a particular interest in Tiny Tim, who survives in the altered future, and keeps the lessons of the spirits throughout the rest of his life.",
+        "in_short": "Ebenezer Scrooge has made wealth and isolation the center of his life, rejecting his nephew, charity, and the needs of his clerk Bob Cratchit. On Christmas Eve the ghost of his former partner Jacob Marley warns him to change. Three spirits then show him the memories that shaped him, the present lives he ignores, and the lonely death awaiting him. Scrooge sees his lost engagement, the warmth of Fred and the Cratchit family, Tiny Tim's danger, and a future in which his death is treated as an opportunity rather than a loss. Awakening on Christmas morning, he begins repairing his relationships immediately. He supports charity, joins Fred's celebration, raises Bob's salary, and helps the Cratchits. Tiny Tim lives, and Scrooge becomes known for generosity and fellowship rather than fear and contempt.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Ebenezer Scrooge spends Christmas Eve refusing his nephew Fred's dinner invitation, dismissing requests for charity, and begrudging Bob Cratchit a holiday. At home, the ghost of Jacob Marley appears wearing the burden created by a lifetime devoted only to business. Marley warns that Scrooge is making an even heavier fate for himself and announces three visiting spirits. The Ghost of Christmas Past takes Scrooge through memories of his solitary schooldays, his affectionate sister, the joyful employment of Mr Fezziwig, and his relationship with Belle. Scrooge sees how his fear of poverty and growing love of money ended their engagement, and how Belle later found the family life he sacrificed. Distressed by the memories, he tries to shut out the spirit's light.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Ghost of Christmas Present shows Scrooge celebrations across the city and beyond, including Fred's good-humored gathering and the Cratchits' loving but financially strained dinner. Scrooge is moved by Tiny Tim and learns that the child may die if nothing changes. The spirit also confronts him with children representing deprivation and neglect. The silent Ghost of Christmas Yet to Come then reveals a possible future: businessmen joke about a disliked man's death, thieves sell property taken from his room, and nobody mourns him. The Cratchits grieve for Tiny Tim. At last Scrooge recognizes the abandoned grave as his own and promises to live differently. He wakes on Christmas morning, sends food to the Cratchits, donates generously, and accepts Fred's invitation. He later raises Bob's salary and supports the family. Tiny Tim survives, and Scrooge sustains his new life as a generous employer, uncle, and friend.",
+            "through": {
+              "chapter": 2
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "a-christmas-carol-dramatized"
+      }
+    },
     "a-christmas-carol-pc-treasures-version": {
       "characters": {
         "characters": [
@@ -972,6 +1191,188 @@
           }
         ],
         "work": "a-christmas-carol-pc-treasures-version"
+      }
+    },
+    "a-christmas-carol-unabridged-and-fully-dramatized": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A wealthy London moneylender whose devotion to profit has left him isolated and contemptuous of Christmas, generosity, and ordinary companionship. He keeps his office cold, pays his clerk poorly, rejects his nephew's invitation to dinner, and regards poverty as a problem for prisons and workhouses rather than for his conscience.",
+            "id": "ebenezer-scrooge",
+            "name": "Ebenezer Scrooge",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Scrooge's former business partner, dead for seven years when the story opens. His ghost appears burdened by a chain fashioned from the instruments of his selfish working life and warns Scrooge that a still worse fate awaits him unless he changes.",
+            "id": "jacob-marley",
+            "name": "Jacob Marley",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Scrooge's underpaid clerk, a mild and patient family man who works in a poorly heated office and tries to preserve Christmas cheer despite his employer's hostility.",
+            "id": "bob-cratchit",
+            "name": "Bob Cratchit",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Scrooge's cheerful nephew, the son of Scrooge's late sister. He continues inviting his uncle to Christmas dinner despite repeated rebuffs and argues that the season has value even when it brings no financial gain.",
+            "id": "fred",
+            "name": "Fred",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Ghost of Christmas Past"
+            ],
+            "description": "The first of the three spirits promised by Marley, an uncanny figure associated at once with youth, age, light, and memory. The spirit takes Scrooge back through scenes from his own earlier life.",
+            "id": "ghost-of-christmas-past",
+            "name": "Ghost of Christmas Past",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Scrooge's warm-hearted younger sister, seen in his memories when she comes to bring the lonely schoolboy home. She is Fred's mother and died years before the main action.",
+            "id": "fan",
+            "name": "Fan",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Scrooge's former employer, remembered as a jovial merchant who closes his business for Christmas and gives apprentices, family, and friends a generous holiday party.",
+            "id": "mr-fezziwig",
+            "name": "Mr Fezziwig",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The woman once engaged to Scrooge. As his ambition hardens into an overriding pursuit of money, she recognizes that the man she loved has changed and releases him from their promise.",
+            "id": "belle",
+            "name": "Belle",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Ghost of Christmas Present"
+            ],
+            "description": "A large, welcoming spirit surrounded by food and greenery who shows Scrooge how Christmas is being observed around him. His tour encompasses both celebration and hardship, pressing Scrooge to notice lives he ordinarily ignores.",
+            "id": "ghost-of-christmas-present",
+            "name": "Ghost of Christmas Present",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Bob Cratchit's wife and the capable center of the Cratchit household. She manages the family's modest Christmas dinner with pride and warmth, though she has little affection for Scrooge after seeing the conditions under which Bob works.",
+            "id": "mrs-cratchit",
+            "name": "Mrs Cratchit",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Bob Cratchit's youngest son, a gentle child who walks with a crutch and whose frail health worries the family. His affection and hopeful spirit make a strong impression on Scrooge when the Ghost of Christmas Present visits the Cratchit home.",
+            "id": "tiny-tim",
+            "name": "Tiny Tim",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Ghost of Christmas Yet to Come"
+            ],
+            "description": "The last and most frightening Christmas spirit, a silent, shrouded figure who answers Scrooge only by pointing. It leads him through possible future scenes whose meaning he must work out for himself.",
+            "id": "ghost-of-christmas-yet-to-come",
+            "name": "Ghost of Christmas Yet to Come",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "a-christmas-carol-unabridged-and-fully-dramatized"
+      },
+      "recaps": {
+        "ending": "Scrooge wakes on Christmas morning overjoyed to discover that the spirits completed their visits in a single night and that he still has time to change. He anonymously sends a large turkey to the Cratchits, gives a substantial donation to the charity collector he had rejected, attends Fred's family celebration, and greets everyone with unfamiliar warmth. The next morning he startles Bob Cratchit by pretending to be angry about his late arrival, then raises his salary and promises practical help for the family. Scrooge keeps his resolution beyond the holiday: he becomes generous, sociable, and attentive to others, and he acts as a second father to Tiny Tim. The child survives, so the bleak future shown by the final spirit does not occur. Scrooge accepts that some people will mock his transformation, but their judgment no longer governs him; he is remembered instead as someone who learned to honor Christmas throughout the year.",
+        "in_short": "On Christmas Eve, the miserly London businessman Ebenezer Scrooge rejects his nephew, charity collectors, and the needs of his clerk Bob Cratchit. The ghost of his dead partner Marley warns that his selfish life is forging a terrible punishment and announces three further visitors. The Ghost of Christmas Past makes Scrooge confront his lonely childhood, lost love, and gradual surrender to greed. The Ghost of Christmas Present shows him the warmth of the poor Cratchit family, the frailty of Tiny Tim, his nephew's forgiving celebration, and widespread hardship. The Ghost of Christmas Yet to Come reveals an unmourned death, scavengers selling the dead man's belongings, Tiny Tim's empty place, and Scrooge's own neglected grave. Terrified by the future his choices are creating, Scrooge promises to change. He wakes on Christmas morning, gives generously, joins his nephew, improves Bob's circumstances, and becomes a loving benefactor to Tiny Tim, who lives.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Seven years after the death of his business partner Jacob Marley, Ebenezer Scrooge remains a harsh, solitary London moneylender. On Christmas Eve he grudgingly allows his poorly paid clerk Bob Cratchit a holiday, refuses an invitation from his cheerful nephew Fred, and dismisses two men seeking aid for the poor. At home, Scrooge sees Marley's face in his door knocker and is then confronted by Marley's ghost. The apparition carries a heavy chain made from cashboxes, keys, and account books, the consequence of a life spent ignoring human need. Marley warns that Scrooge is making an even heavier chain for himself. He says that three spirits will visit and that accepting their lessons is Scrooge's only hope of escaping the same fate.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Ghost of Christmas Past takes Scrooge into scenes from his own life. He sees himself as a lonely schoolboy, then watches his beloved sister Fan arrive to take him home. He revisits the lively Christmas party given by his generous employer Fezziwig and recognizes how cheaply an employer can make workers happy. The memories grow more painful when Belle, his fiancée, ends their engagement because his pursuit of wealth has displaced every other attachment. A later glimpse shows Belle surrounded by a loving family while Scrooge sits alone after Marley's death. Unable to bear more, Scrooge struggles with the spirit and finds himself returned to his bedroom, exhausted by the loss and regret he has long suppressed.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Ghost of Christmas Present leads Scrooge through the city and beyond, showing celebrations among people with little money but strong bonds of affection. At the Cratchit home, the family's modest feast becomes a joyful occasion. Scrooge is especially moved by Bob's young son Tiny Tim, who is disabled and seriously ill. The spirit warns that the child will die if his circumstances do not improve, throwing Scrooge's own callous arguments about the poor back at him. Scrooge also visits Fred's party, where his nephew and guests enjoy games and laughter despite Scrooge's absence; Fred expresses pity rather than hatred for his uncle. As the spirit ages, it reveals two neglected children who embody Ignorance and Want and warns that society's refusal to care for them will have grave consequences. At midnight the spirit vanishes and a dark, silent figure approaches.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Ghost of Christmas Yet to Come shows Scrooge a future shaped by his present conduct. Businessmen casually discuss an unnamed man's death, while thieves sell curtains, clothing, and even bedding taken from the unattended corpse. A poor couple are relieved because the death gives them more time to repay a debt. Scrooge asks to see tenderness connected with death and is taken to the grieving Cratchit household, where Tiny Tim's chair is empty and Bob mourns his son. Still hoping the despised dead man might be someone else, Scrooge is brought to an overgrown grave and reads his own name on the stone. He understands that he is the unmourned man and that his choices also helped create the future in which Tiny Tim died. Scrooge begs for a chance to alter what he has seen and promises to live by the lessons of past, present, and future.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Scrooge wakes in his own room on Christmas morning and realizes that the spirits' entire work has taken only one night. Delighted that the future is still changeable, he sends a large turkey anonymously to the Cratchits, surprises the charity collector with a generous donation, and accepts Fred's invitation to dinner. The next day he raises Bob's salary and promises to help his family. His reform lasts: Scrooge becomes a dependable friend, a generous employer, and a caring figure in Tiny Tim's life. Tim does not die, and Scrooge gains a reputation for keeping the generous spirit of Christmas throughout the year. He accepts the ridicule of those who doubt such a complete change and concentrates instead on living differently.",
+            "through": {
+              "chapter": 5
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "a-christmas-carol-unabridged-and-fully-dramatized"
       }
     },
     "a-clash-of-kings": {

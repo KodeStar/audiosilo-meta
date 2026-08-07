@@ -4807,6 +4807,192 @@
         "work": "cold-days"
       }
     },
+    "cold-mountain": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A wounded Confederate soldier recovering in a military hospital near the end of the Civil War. Sickened by battle and convinced that returning to the army would destroy what remains of him, he decides to walk home across North Carolina to Ada and Cold Mountain.",
+            "id": "inman",
+            "name": "Inman",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A Charleston-bred minister's daughter living at Black Cove farm near Cold Mountain. Her father has died, the war has isolated the region, and her ornamental education has left her unable to feed herself or manage the land. She waits without knowing whether Inman will return.",
+            "id": "ada-monroe",
+            "name": "Ada Monroe",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Monroe"
+            ],
+            "description": "Ada's late father, an educated and idealistic minister who moved with her from Charleston to the mountain community for his health. His death leaves Ada with Black Cove but without the practical knowledge needed to sustain it.",
+            "id": "monroe",
+            "name": "Mr Monroe",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A resourceful young mountain woman who comes to Black Cove when Ada is near starvation. She understands planting, animals, weather, and the physical work of a farm, and proposes a partnership based on shared labor rather than becoming Ada's servant.",
+            "id": "ruby-thewes",
+            "name": "Ruby Thewes",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A disgraced preacher encountered by Inman on the road while trying to dispose of a woman he has made pregnant. Inman stops him and forces him to face public exposure; Veasey then attaches himself to Inman's journey, talkative and unreliable.",
+            "id": "solomon-veasey",
+            "name": "Solomon Veasey",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A mountain resident who offers hospitality to Inman and Veasey. His coarse friendliness conceals danger, and his knowledge of their status as fugitives gives him power over them.",
+            "id": "junior",
+            "name": "Junior",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "The Goatwoman"
+            ],
+            "description": "An elderly woman who lives alone with her goats and survives by close knowledge of plants, animals, and the mountain. She shelters and treats the injured Inman without demanding his story or allegiance.",
+            "id": "the-goatwoman",
+            "name": "The Goatwoman",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young war widow living alone with her infant and struggling to maintain a small farm. When Inman seeks food and shelter, she offers what little she has, and their shared vulnerability creates a guarded human connection.",
+            "id": "sara",
+            "name": "Sara",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ruby's estranged father, a wandering fiddler whose drinking and absences forced her to raise herself. He returns to the mountains as a Confederate deserter, still improvident but accompanied by music and signs that hardship has altered him.",
+            "id": "stobrod-thewes",
+            "name": "Stobrod Thewes",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A gentle, mentally disabled banjo player traveling with Stobrod. He shares the deserters' precarious refuge in the mountains and is valued for his companionship and music.",
+            "id": "pangle",
+            "name": "Pangle",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The ruthless leader of the local Home Guard, which hunts deserters and intimidates civilians as Confederate authority collapses. He uses wartime power to control the mountain community and treats suspected disloyalty as permission for violence.",
+            "id": "teague",
+            "name": "Teague",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A very young member of Teague's Home Guard. His age and slight build do not make him harmless; he participates in the unit's pursuit of deserters and carries a gun with the authority the war has given him.",
+            "id": "bosie",
+            "name": "Bosie",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "cold-mountain"
+      },
+      "recaps": {
+        "ending": "After reuniting near Cold Mountain, Inman and Ada spend several days together and begin imagining a life after the war, while Ruby and the wounded Stobrod remain with them. Their attempt to return safely is interrupted by Teague's Home Guard. Inman kills Teague and most of the pursuers but confronts the young guard Bosie separately. Inman tries to end the encounter without another death, yet Bosie shoots him. Ada reaches Inman as he dies, ending the homeward journey just after he has found the person and place that sustained it. An epilogue set years later shows Ada continuing at Black Cove with Ruby, Stobrod, Ruby's husband Reid, their children, and Ada's daughter by Inman. The farm has become a durable household shaped by shared work, music, and memory. Ada has neither returned to her former dependence nor abandoned the life she and Inman briefly hoped to build.",
+        "in_short": "Near the end of the American Civil War, wounded Confederate soldier Inman deserts a hospital and walks toward Cold Mountain, hoping to reunite with Ada Monroe. His journey exposes him to betrayal, hunger, killing, and acts of mercy among people damaged by the war. At Black Cove, Ada is nearly helpless after her father's death until the practical Ruby Thewes teaches her to run the farm as an equal partner. Ruby's estranged father Stobrod returns as a deserter and is later shot by Teague's Home Guard, but Ada and Ruby rescue him. Inman finally reaches the women, and he and Ada renew their love while imagining a shared future. When the Home Guard catches them, Inman defeats Teague's party but is shot by the young guard Bosie and dies in Ada's arms. Years later Ada raises Inman's daughter at a flourishing Black Cove alongside Ruby's growing family and Stobrod, preserving the communal life created during the war.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Inman is recovering from a severe wound in a Confederate hospital, where news from the collapsing war and memories of Cold Mountain deepen his refusal to return to battle. A letter from Ada revives his attachment to home. He leaves the hospital without permission and begins walking west, knowing that the army may execute him as a deserter. At Black Cove, Ada Monroe faces a different form of survival. Her minister father has died, hired labor has disappeared, and the accomplishments of her Charleston upbringing are of little use in producing food. She remains emotionally tied to Inman but has received too little news to know whether he is alive. On the road, Inman interrupts the disgraced preacher Solomon Veasey as Veasey tries to conceal the consequences of exploiting a young woman. Inman forces a reckoning, but Veasey soon follows him.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ruby Thewes arrives at Black Cove and offers Ada a practical arrangement: they will work as partners, and Ruby will teach Ada how to read weather, tend livestock, plant, preserve food, and make the farm productive. Ada begins exchanging passive observation for physical competence, while Ruby reveals that an absent, drunken father forced her to become self-reliant as a child. Their household gradually takes shape around shared labor. Inman continues west with Veasey. The two fugitives take temporary work and encounter people trying to profit from wartime disorder. Veasey's impulsiveness repeatedly increases their danger, while Inman's determination to reach Ada competes with the habits of violence and suspicion that years of soldiering have fixed in him.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Junior invites Inman and Veasey into his household, then betrays them to the Home Guard. The captives are marched with other prisoners and shot; Veasey dies, but Inman survives among the bodies and escapes despite another serious wound. An elderly woman living alone with goats shelters him, treats him with herbs and food, and gives him space to recover. Her independent mountain life offers a model of survival outside the institutions that have failed him. At Black Cove, Ada and Ruby continue restoring the farm and building trust. Ada becomes physically capable and increasingly rooted in the landscape rather than merely admiring it. Both women's lives remain exposed to the Home Guard, which claims to police loyalty while exercising violent local power.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Inman moves on from the Goatwoman and eventually seeks shelter from Sara, a young widow trying to keep herself and her baby alive. Their encounter remains restrained by grief and exhaustion. When Federal raiders threaten Sara and take her few resources, Inman resorts again to deadly force, protecting her while recognizing how difficult it is to separate necessary violence from the war's corruption. At Black Cove, Ruby's estranged father Stobrod reappears. He has deserted the Confederate army and now travels as a fiddler. Ruby distrusts him after a childhood of abandonment, but his devotion to music and his altered manner complicate her anger. Ada, meanwhile, has become Ruby's working equal rather than her dependent pupil.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Stobrod and his companion Pangle hide in the mountains with other deserters, living precariously and relying on local help. Teague's Home Guard discovers them. After Pangle innocently reveals too much, the guards execute the men and leave them, but Stobrod survives with grave wounds. Ada and Ruby set out to find him, crossing winter terrain with the competence their months of farm work have developed. They locate Stobrod and begin bringing him toward safety. Inman is now close to Cold Mountain after enduring the long accumulation of hunger, injury, and pursuit. His idea of home has narrowed to Ada and the possibility that a peaceful life with her might still exist, though he does not know how profoundly Ada herself has changed.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Inman finds Ada and Ruby while they are caring for the wounded Stobrod. Ada initially struggles to recognize the gaunt, battle-worn man, but she and Inman renew their bond and spend a brief period imagining work, marriage, and a future at Black Cove. The group then faces Teague's Home Guard. Inman uses the lethal skills he hoped to leave behind, killing Teague and most of his men, but a final confrontation with the young guard Bosie ends when Bosie shoots him. Ada holds Inman as he dies. Years later, she remains at Black Cove and raises their daughter. Ruby has married Reid and has children of her own; Stobrod also belongs to the extended household. The restored farm supports a community built through Ada and Ruby's labor, and Inman's memory survives within the family life he reached but could not share.",
+            "through": {
+              "chapter": 20
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "cold-mountain"
+      }
+    },
     "collapse": {
       "characters": {
         "characters": [

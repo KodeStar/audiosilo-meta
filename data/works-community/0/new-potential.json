@@ -2685,6 +2685,223 @@
         "work": "of-mice-and-men"
       }
     },
+    "oliver-twist-adaptation": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An orphan born in a parish workhouse, where his mother dies immediately after giving birth. Small, underfed, and treated as a burden by the authorities, he nevertheless retains a strong sense of right and a capacity for affection despite repeated cruelty.",
+            "id": "oliver-twist",
+            "name": "Oliver Twist",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The self-important parish beadle who supervises Oliver's removal from the baby farm to the workhouse. He speaks constantly of duty and economy while bullying people who have no power to resist him.",
+            "id": "mr-bumble",
+            "name": "Mr Bumble",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The undertaker who takes Oliver as an apprentice after the parish tries to dispose of him. Mild and commercially minded, he is capable of treating Oliver with limited kindness but rarely protects him from the cruelties of his household.",
+            "id": "mr-sowerberry",
+            "name": "Mr Sowerberry",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A charity boy employed by the Sowerberrys who resents Oliver's arrival. He torments the smaller boy and insults Oliver's dead mother, provoking a resistance that shocks everyone accustomed to Oliver's submission.",
+            "id": "noah-claypole",
+            "name": "Noah Claypole",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "The Artful Dodger"
+            ],
+            "description": "A quick-witted, unusually dressed London boy who finds Oliver exhausted on the road. Calling himself the Artful Dodger, he offers food and lodging and leads Oliver to Fagin's crowded den without explaining how its young residents earn their living.",
+            "id": "jack-dawkins",
+            "name": "Jack Dawkins",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly criminal who shelters a group of boys and trains them as pickpockets. He initially presents his lessons as games, using food, praise, and fear to bind children to him while keeping himself at a distance from their crimes.",
+            "id": "fagin",
+            "name": "Fagin",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "One of Fagin's young pickpockets and a close companion of the Artful Dodger. He joins in the joking life of the den but has a less hardened conscience than some of the adults directing the boys.",
+            "id": "charley-bates",
+            "name": "Charley Bates",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A prosperous, compassionate gentleman whose handkerchief is stolen while Oliver watches in confusion. Unlike the pursuing crowd, he is disturbed by the sick, terrified child accused of the theft and wants the charge examined fairly.",
+            "id": "mr-brownlow",
+            "name": "Mr Brownlow",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young woman associated with Fagin's circle and Bill Sikes. She knows the streets and can play a respectable role when the gang needs one, but her dependence on dangerous men limits the choices open to her.",
+            "id": "nancy",
+            "name": "Nancy",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A violent housebreaker who works with Fagin and dominates Nancy through fear. His readiness to threaten people and his dependence on brute force make him immediately dangerous to Oliver.",
+            "id": "bill-sikes",
+            "name": "Bill Sikes",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Mr Brownlow's suspicious friend, fond of testing hopeful appearances with gloomy predictions. He doubts Oliver's honesty, though his challenges arise more from habitual skepticism than malice.",
+            "id": "mr-grimwig",
+            "name": "Mr Grimwig",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A secretive young man who meets Fagin in the shadows and shows an intense personal interest in keeping Oliver within the criminal world. His reason for hating a child he scarcely knows is not immediately explained.",
+            "id": "monks",
+            "name": "Monks",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The gracious young ward of Mrs Maylie, living with her in the country. She helps nurse the wounded Oliver and listens to his account without judging him by the circumstances in which he was found.",
+            "id": "rose-maylie",
+            "name": "Rose Maylie",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An older, generous woman whose household is targeted by Sikes's burglars. Once Oliver's unwilling part in the crime becomes clear, she protects him and gives him the stable home he has never known.",
+            "id": "mrs-maylie",
+            "name": "Mrs Maylie",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Mrs Maylie's son, an earnest young man in love with Rose. His social prospects make Rose reluctant to accept him, but he values a life with her more than the ambitious career others expect him to pursue.",
+            "id": "harry-maylie",
+            "name": "Harry Maylie",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "oliver-twist-adaptation"
+      },
+      "recaps": {
+        "ending": "Brownlow forces Monks to disclose the history connecting him to Oliver. Oliver is the son of Edwin Leeford and Agnes Fleming; Monks is his resentful half-brother and tried to destroy evidence of Oliver's identity so that he could keep their father's property. Rose is revealed as Agnes's younger sister and therefore Oliver's aunt. Brownlow gives Monks a share of the inheritance, but Monks squanders it and returns to crime. Fagin is convicted and hanged. Sikes, pursued after murdering Nancy, dies accidentally while trying to escape across the rooftops. Bumble and his wife lose their positions and end as paupers in the workhouse they once administered. Harry Maylie gives up political ambition, becomes a clergyman, and marries Rose. Brownlow adopts Oliver, who at last has a secure and loving home; the Maylies and their friends settle nearby.",
+        "in_short": "Workhouse orphan Oliver Twist runs away from an undertaker's household and reaches London, where the Artful Dodger introduces him to Fagin's gang of child pickpockets. The kindly Mr Brownlow tries to rescue him, but Nancy and Bill Sikes drag him back. Forced to assist in a burglary, Oliver is shot and then cared for by Rose and Mrs Maylie. A mysterious criminal called Monks has paid Fagin to corrupt Oliver and conceal his origins. Nancy learns of the scheme and informs Rose, but Sikes murders her after Fagin has her followed. Sikes dies while fleeing, and Fagin is convicted. Brownlow compels Monks to admit that Oliver is his half-brother and that he destroyed evidence to steal their father's estate; Rose is the sister of Oliver's dead mother. Oliver receives his inheritance and is adopted by Brownlow. Rose marries Harry Maylie, while the exploitative parish officers and criminals face the consequences of their choices.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Oliver is born in a workhouse, and his unidentified mother dies moments later. He spends his early childhood hungry and neglected under parish care. Returned to the workhouse, he is chosen by the other boys to ask for more food and is punished for doing so. The parish tries to apprentice him to a brutal chimney sweep, then places him with the undertaker Mr Sowerberry. Oliver shows an aptitude for funeral work but is bullied by Noah Claypole and the Sowerberry household. When Noah insults Oliver's dead mother, Oliver fights back and is beaten and confined. Concluding that nobody there will protect him, he escapes before dawn and starts walking toward London.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Near London, Oliver meets Jack Dawkins, the Artful Dodger, who takes him to Fagin. Oliver does not initially understand that Fagin trains the boys in his den to steal. On his first outing, he is horrified when the Dodger and Charley Bates pick Mr Brownlow's pocket and run, leaving Oliver to be pursued as the thief. A bookseller's testimony clears him in court. Brownlow, disturbed by Oliver's illness and innocence, brings him home and nurses him. A portrait in Brownlow's house bears a striking resemblance to the boy. Fagin fears that Oliver will expose the gang and sends Nancy and Bill Sikes to find him, while Brownlow hopes to prove his trust by giving Oliver an errand with books and money.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Nancy and Sikes seize Oliver on his errand and return him to Fagin. Nancy prevents the men from beating him severely, revealing sympathy that conflicts with her loyalty to the gang. Bumble visits Brownlow and gives a malicious account of Oliver, persuading the disappointed gentleman that the boy has deceived him. Fagin keeps Oliver isolated and tries to make criminal life seem unavoidable. Sikes then takes Oliver on a country housebreaking expedition. The boy is forced through a small window but means to warn the household rather than rob it. A servant shoots him, and the burglars abandon him while escaping. Wounded and feverish, Oliver crawls back to the very house they attempted to enter.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Mrs Maylie and her young ward Rose hear Oliver's story and protect him from arrest, aided by Dr Losberne. Their care allows him to recover in a peaceful country household. Meanwhile, a mysterious man called Monks meets Fagin and condemns the gang for allowing Oliver to escape without being turned into a criminal. In Oliver's birthplace, the dying testimony of an old nurse points to a locket taken from Oliver's mother. Bumble and Mrs Corney acquire the object and see an opportunity to profit from it. Oliver tries to repay Brownlow's kindness but finds that he has left his former address. For a moment Oliver sees Fagin and Monks watching him, confirming that the danger from London has followed him even into the Maylies' protection.",
+            "through": {
+              "chapter": 32
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rose recovers from a dangerous illness but refuses Harry Maylie's proposal because she fears her uncertain birth would damage his future. Bumble marries Mrs Corney and discovers that control of the workhouse brings neither domestic peace nor dignity. Monks buys the locket and ring taken from Oliver's mother and destroys them, hoping to erase proof of the boy's identity. Nancy overhears Monks telling Fagin that Oliver is his brother and that he will benefit if Oliver can be made a criminal. Risking retaliation, she meets Rose and reports the conspiracy, though she refuses to betray Sikes or accept rescue for herself. Rose contacts Brownlow, who has returned to London and is ready to help uncover both Oliver's history and Monks's purpose.",
+            "through": {
+              "chapter": 40
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Brownlow, Rose, and their allies arrange for Nancy to meet them again. Fagin, suspicious of her movements, uses Noah Claypole to follow her. At London Bridge Nancy provides information that can lead them to Monks but still refuses to surrender Sikes, believing loyalty binds her to him despite his violence. Noah reports the meeting to Fagin, who manipulates Sikes into believing Nancy has betrayed the entire gang. In a rage, Sikes murders her. The killing horrifies even many of his criminal associates, and a citywide pursuit begins. Brownlow's group now has enough evidence to detain Monks, while the gang starts to disintegrate under fear, guilt, and police pressure.",
+            "through": {
+              "chapter": 47
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sikes flees after Nancy's murder but cannot escape either pursuit or his own terror. Cornered on a rooftop, he accidentally hangs himself while trying to lower himself to safety. Charley Bates rejects the life that led to Nancy's death. Brownlow compels Monks to explain that Oliver is the legitimate son of Edwin Leeford and Agnes Fleming, while Monks is Oliver's half-brother. Monks destroyed evidence and worked with Fagin to deny Oliver his inheritance; Rose is revealed as Agnes's younger sister and Oliver's aunt. Brownlow divides the property rather than leaving Monks destitute, but Monks later wastes his share. Fagin is tried and executed. Bumble and his wife lose their posts and end in the workhouse. Harry gives up an ambitious public career, becomes a clergyman, and marries Rose. Brownlow adopts Oliver, and the boy settles among the Maylies and friends who finally give him a lasting home.",
+            "through": {
+              "chapter": 53
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "oliver-twist-adaptation"
+      }
+    },
     "on-her-majestys-secret-service": {
       "characters": {
         "characters": [

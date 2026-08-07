@@ -662,6 +662,194 @@
         "work": "the-toll"
       }
     },
+    "the-tragical-history-of-doctor-faustus": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A celebrated scholar at Wittenberg who has exhausted the subjects he once mastered and now seeks power through necromancy. Proud of his intellect and impatient with ordinary human limits, he imagines commanding spirits, gaining wealth, and reshaping kingdoms. Even as his conscience warns him back toward God, he repeatedly chooses ambition and spectacle over repentance.",
+            "id": "doctor-faustus",
+            "name": "Doctor Faustus",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Faustus's servant, who imitates his master's new interest in conjuring and uses the promise of magical instruction to control and tease other servants.",
+            "id": "wagner",
+            "name": "Wagner",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A spirit who urges Faustus to abandon forbidden magic and return to God. The angel gives outward form to the conscience and hope that remain available to him early in his course.",
+            "id": "good-angel",
+            "name": "Good Angel",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A spirit who encourages Faustus's pride, directing him toward magic, wealth, and service to Lucifer whenever doubt begins to trouble him.",
+            "id": "evil-angel",
+            "name": "Evil Angel",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A practitioner of magic whom Faustus invites to teach him the foundations of conjuring. He appeals to Faustus with promises of power, treasure, and influence.",
+            "id": "valdes",
+            "name": "Valdes",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A learned associate of Valdes who joins in encouraging Faustus to pursue necromancy and offers to help instruct him.",
+            "id": "cornelius",
+            "name": "Cornelius",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Mephistopheles"
+            ],
+            "description": "A devil summoned by Faustus who serves as his principal intermediary with Lucifer. He answers questions, carries out commands, and warns from personal experience that separation from God is itself torment, though Faustus refuses to understand the warning.",
+            "id": "mephistophilis",
+            "name": "Mephistophilis",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The ruler of hell, to whom Faustus promises his soul in exchange for twenty-four years of service from Mephistophilis. He reinforces the bargain whenever Faustus considers repentance.",
+            "id": "lucifer",
+            "name": "Lucifer",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The head of the Roman church, encountered during Faustus's travels. Faustus uses invisibility to disrupt his banquet and turn a seat of religious authority into an occasion for mockery.",
+            "id": "pope-adrian",
+            "name": "Pope Adrian",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "The Emperor"
+            ],
+            "description": "The Holy Roman Emperor, who receives Faustus at court and asks to see the spirit of Alexander the Great. He rewards the magician after the apparition satisfies his curiosity.",
+            "id": "emperor-charles-v",
+            "name": "Emperor Charles V",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A skeptical courtier who mocks Faustus's reputation during the imperial visit. Faustus answers the insult by temporarily giving him horns, reducing serious magic to retaliation and entertainment.",
+            "id": "benvolio",
+            "name": "Benvolio",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An unnamed devout man who visits Faustus near the end of his allotted years. He sees that repentance is still possible and urges Faustus to seek mercy instead of surrendering to despair.",
+            "id": "old-man",
+            "name": "Old Man",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The legendary beauty of Troy, raised as a spirit at the request of scholars and later summoned again for Faustus. He turns to her image for consolation as the end of his bargain approaches.",
+            "id": "helen-of-troy",
+            "name": "Helen of Troy",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-tragical-history-of-doctor-faustus"
+      },
+      "recaps": {
+        "ending": "With the twenty-four years almost gone, Faustus entertains fellow scholars by summoning Helen of Troy, then admits that his death is near. The Old Man urges him to repent, but Faustus, terrified by the devils and convinced that he cannot be forgiven, renews his submission to Lucifer and seeks distraction in Helen's image. During his final hour he is left alone to face the consequence of his bargain. He begs time to stop, wishes his soul could cease to exist, and calls for mercy, but he never makes the sustained return he has repeatedly postponed. At midnight devils carry him away. The next morning the scholars find the remains of his body and resolve to give him a proper burial. The Chorus closes by presenting his fall as a warning against knowledge pursued with pride and against crossing moral limits for power.",
+        "in_short": "Doctor Faustus, a brilliant but dissatisfied scholar, turns from conventional learning to necromancy. He summons Mephistophilis and signs away his soul to Lucifer in return for twenty-four years of supernatural service. Although good counsel and his own fear repeatedly move him toward repentance, threats, entertainments, and his pride draw him back. His grand plans shrink into tours, court spectacles, practical jokes, and the summoning of famous figures such as Alexander and Helen of Troy. As the contract expires, an Old Man urges him to seek mercy, but Faustus yields to despair and again binds himself to Lucifer. In his final hour he pleads for time and escape without decisively renouncing the bargain. At midnight devils take him, leaving the scholars to mourn a gifted man destroyed by ambition and delay.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Doctor Faustus of Wittenberg reviews the disciplines he has mastered and dismisses them as too limited for his ambition. He settles on necromancy, encouraged by the magicians Valdes and Cornelius despite warnings voiced by a Good Angel and by his own awareness of religious danger. His first conjuring brings Mephistophilis, a devil who explains that he came because Faustus rejected God, not because the spell compelled him. Mephistophilis also describes hell as the pain of being cut off from heaven. Faustus ignores the warning and proposes a bargain: his soul after twenty-four years in exchange for Mephistophilis's service and the powers that accompany it.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Faustus signs the contract with his blood even as physical signs and his conscience tell him to stop. Mephistophilis grants him books of magic and answers questions, but cannot provide a satisfying account of creation because that subject points toward God. Whenever Faustus considers repentance, the opposing angels return, and Lucifer intervenes with threats and distractions. A parade embodying the seven deadly sins diverts Faustus, who accepts spectacle in place of the limitless knowledge he expected. Meanwhile Wagner and other comic figures imitate their superiors by using fragments of magic for petty domination, reflecting the decline already visible in Faustus's own ambitions.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Faustus travels through Europe with Mephistophilis and arrives in Rome during a papal celebration. Made invisible, he snatches food and drink, strikes members of the gathering, and disrupts the Pope's banquet while the clergy attempt to drive away the unseen spirit. The episode displays the practical freedom his bargain has bought, but also how little he does with it: the scholar who imagined commanding nations now spends his power on an elaborate prank. Comic attempts by lesser characters to conjure spirits continue the same pattern on a smaller scale.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At the court of Emperor Charles V, Faustus is asked to demonstrate his art by calling up the likenesses of Alexander the Great and his companion. The apparitions impress the Emperor. When the skeptical knight Benvolio mocks him, Faustus gives the man horns and later punishes an attempted ambush by Benvolio and his friends. Further episodes with a horse dealer and the Duke and Duchess of Vanholt reduce his magic to tricks, retaliation, and seasonal luxuries. His fame has spread, but the grand political and intellectual achievements he once imagined have not appeared, and the end of the twenty-four-year term is drawing close.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Faustus summons Helen of Troy for admiring scholars. After they leave, an Old Man urges him to repent and trust that mercy remains possible. Faustus wavers, but fear of punishment from the devils and his ingrained despair lead him to renew his submission, and he asks for Helen again as a final distraction. He eventually tells the scholars that he surrendered his soul and that the term expires that night. Alone during the final hour, he begs for time to slow, for nature to hide him, and for his soul to escape destruction. Midnight arrives, and devils carry him away. The scholars later find his broken remains and plan an honorable burial. The Chorus presents his end as the ruin of a gifted man whose pride drove him beyond rightful limits and whose repeated delays exhausted his opportunity to turn back.",
+            "through": {
+              "chapter": 5
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-tragical-history-of-doctor-faustus"
+      }
+    },
     "the-truth": {
       "characters": {
         "characters": [
