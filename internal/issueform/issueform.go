@@ -587,9 +587,16 @@ func (c *composer) source(ref string) outSource {
 
 // getOrCreatePerson returns the slug for a person name, emitting a new person
 // record when the slug is not already in the catalog or this run.
+//
+// The id comes from model.PersonSlug - the same call the bulk importer mints
+// with and pkg/check verifies against - rather than from a bare Slugify, so a
+// name whose slug is an API route literal lands on the one variant both rules
+// accept ("Search" -> search-person). fellBack is the empty-slug case, which
+// this path still REFUSES rather than folding onto the shared catch-all: a form
+// names one person, and the submitter can respell them.
 func (c *composer) getOrCreatePerson(name, sourceRef string) (string, bool) {
-	slug := slugify(name)
-	if slug == "" {
+	slug, fellBack := model.PersonSlug(name)
+	if fellBack {
 		c.fail(StatusInvalid, "name %q produced an empty slug", name)
 		return "", false
 	}

@@ -73,7 +73,8 @@ CREATE INDEX idx_recording_narrators_person ON recording_narrators(person_id);
 -- recording_id) rather than the work_id alone the scale report named: the
 -- predicate always carries both columns, and a work_id-only index still leaves
 -- the recording filter to a row scan of that work's rows. A work-only lookup
--- (search.go's workNarrators) uses the same index by prefix.
+-- (store.go's narratorsByWork, which reads a whole page of hits in one query)
+-- uses the same index by prefix.
 CREATE INDEX idx_recording_narrators_recording ON recording_narrators(work_id, recording_id);
 
 CREATE TABLE recording_asins (

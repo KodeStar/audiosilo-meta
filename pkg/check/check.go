@@ -224,6 +224,7 @@ func load(lst *pack.Listing, rdr *pack.Reader) Result {
 	checkGenresSorted(cat, idx, add)
 	checkCreditPairs(cat, idx, add)
 	checkPersonSlug(cat, idx, add)
+	checkReservedSlug(cat, idx, add)
 	checkSidecarUniqueness(cat, idx, add)
 	checkCharacters(cat, idx, add)
 	checkRecaps(cat, idx, add)

@@ -1,0 +1,318 @@
+---
+import Base from '../../layouts/Base.astro'
+import Backdrop from '../../components/Backdrop.astro'
+import Button from '../../components/Button.astro'
+import Inline from '../../components/docs/Inline.astro'
+import Skeleton from '../../components/docs/Skeleton.astro'
+import { CHIP } from '../../components/docs/chip'
+// The spec is authored in the Go tree and served verbatim at
+// /api/v1/openapi.json, so this page and the machine contract are one document -
+// there is no second copy of the API's shape to keep in step.
+import rawSpec from '../../../../internal/serve/openapi.json'
+import { groupOperations, paragraphs, type OpenAPISpec } from '../../lib/openapi'
+
+const spec = rawSpec as unknown as OpenAPISpec
+const groups = groupOperations(spec)
+const baseUrl = spec.servers?.[0]?.url ?? 'https://meta.audiosilo.app'
+const intro = paragraphs(spec.info.description)
+const REPO = 'https://github.com/kodestar/audiosilo-meta'
+
+// Short labels only. Everything they stand for is stated in the spec's own
+// description, which renders in full below - this card is the index, not a
+// second copy of the prose.
+const facts = [
+  { label: 'Base URL', value: baseUrl },
+  { label: 'Auth', value: 'None' },
+  { label: 'CORS', value: 'Open to any origin' },
+  { label: 'Writes', value: 'None - read-only' },
+]
+
+// The skeleton conventions, stated once so every code block below reads without
+// a legend of its own.
+const conventions = [
+  ['"key"', 'always present'],
+  ['"key?"', 'omitted when empty or unknown'],
+  ['| null', 'the key is present, the value may be null'],
+  ['<A | B>', 'one of those shapes - each is documented under the endpoint that returns it'],
+]
+
+const methodClass = (method: string) =>
+  method === 'GET'
+    ? 'border-pink-500/40 bg-pink-500/10 text-pink-300'
+    : 'border-success/40 bg-success/10 text-success'
+
+const statusClass = (status: string) =>
+  status.startsWith('2')
+    ? 'border-success/40 bg-success/10 text-success'
+    : 'border-edge bg-raised text-dim'
+---
+
+<Base
+  title="API reference - AudioSilo Meta"
+  description="The read-only JSON API over the open AudioSilo audiobook metadata database: search works, people and series, resolve an ASIN or ISBN, and read chapters, characters and recaps. No auth, CORS open."
+>
+  <section class="relative pb-20">
+    <Backdrop variant="page" />
+    <div class="container relative z-10">
+      <!-- Intro -->
+      <div class="reveal mx-auto max-w-3xl text-center">
+        <span class="mb-3 block text-xs font-semibold uppercase tracking-[0.2em] text-pink-500">
+          Developers
+        </span>
+        <h1 class="text-3xl font-bold tracking-tight text-hi sm:text-4xl">API reference</h1>
+        {
+          spec.info.summary && (
+            <p class="mt-4 text-base leading-relaxed text-body">
+              <Inline text={spec.info.summary} />
+            </p>
+          )
+        }
+        <div class="mt-8 flex flex-wrap justify-center gap-3">
+          <Button href="/api/v1/openapi.json" variant="primary">OpenAPI spec</Button>
+          <Button href={REPO} variant="secondary" external>Source on GitHub</Button>
+        </div>
+      </div>
+
+      <!-- At a glance -->
+      <div class="reveal mx-auto mt-12 max-w-4xl">
+        <dl class="grid gap-px overflow-hidden rounded-2xl border border-edge bg-edge sm:grid-cols-2 lg:grid-cols-4">
+          {
+            facts.map((fact) => (
+              <div class="bg-surface p-4">
+                <dt class="text-xs font-semibold uppercase tracking-[0.15em] text-dim">
+                  {fact.label}
+                </dt>
+                <dd class="mt-1 break-words text-sm text-hi">{fact.value}</dd>
+              </div>
+            ))
+          }
+        </dl>
+        {
+          intro.length > 0 && (
+            <div class="mt-4 space-y-3 rounded-2xl border border-edge bg-surface p-5">
+              {intro.map((para) => (
+                <p class="text-sm leading-relaxed text-body">
+                  <Inline text={para} />
+                </p>
+              ))}
+            </div>
+          )
+        }
+        <div class="mt-4 rounded-2xl border border-edge bg-surface p-5">
+          <p class="text-sm leading-relaxed text-body">
+            Response shapes below are JSON skeletons whose values are types, not data:
+          </p>
+          <dl class="mt-3 grid gap-2 sm:grid-cols-2">
+            {
+              conventions.map(([token, meaning]) => (
+                <div class="flex items-baseline gap-3">
+                  <dt class="shrink-0">
+                    <code class={`${CHIP} text-xs text-hi`}>{token}</code>
+                  </dt>
+                  <dd class="text-xs leading-relaxed text-dim">{meaning}</dd>
+                </div>
+              ))
+            }
+          </dl>
+        </div>
+      </div>
+
+      <div
+        class="mx-auto mt-14 max-w-6xl gap-10 lg:grid lg:grid-cols-[15rem_minmax(0,1fr)] lg:items-start"
+      >
+        <!-- Contents -->
+        <nav
+          class="reveal mb-10 rounded-2xl border border-edge bg-surface p-5 lg:sticky lg:top-24 lg:mb-0"
+          aria-label="API contents"
+        >
+          <h2 class="text-xs font-semibold uppercase tracking-[0.15em] text-dim">Contents</h2>
+          <ul class="mt-4 space-y-4">
+            {
+              groups.map((group) => (
+                <li>
+                  <a
+                    class="text-sm font-semibold text-hi transition-colors hover:text-pink-400"
+                    href={`#${group.anchor}`}
+                  >
+                    {group.name}
+                  </a>
+                  <ul class="mt-2 space-y-1 border-l border-edge pl-3">
+                    {group.operations.map((op) => (
+                      <li>
+                        <a
+                          class="block truncate font-mono text-xs text-dim transition-colors hover:text-pink-400"
+                          href={`#${op.anchor}`}
+                          title={`${op.method} ${op.path}`}
+                        >
+                          {op.path}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+
+        <!-- Operations -->
+        <div class="min-w-0 space-y-16">
+          {
+            groups.map((group) => (
+              <section class="reveal scroll-mt-24" id={group.anchor}>
+                <h2 class="text-2xl font-bold tracking-tight text-hi">
+                  <a href={`#${group.anchor}`} class="transition-colors hover:text-pink-400">
+                    {group.name}
+                  </a>
+                </h2>
+                {group.description && (
+                  <p class="mt-3 max-w-2xl text-sm leading-relaxed text-body">
+                    <Inline text={group.description} />
+                  </p>
+                )}
+
+                <div class="mt-6 space-y-6">
+                  {group.operations.map((op) => (
+                    <article
+                      class="scroll-mt-24 overflow-hidden rounded-2xl border border-edge bg-surface"
+                      id={op.anchor}
+                    >
+                      <header class="border-b border-edge px-5 py-4">
+                        <a class="flex flex-wrap items-center gap-3" href={`#${op.anchor}`}>
+                          <span
+                            class={`rounded-md border px-2 py-0.5 font-mono text-xs font-bold ${methodClass(op.method)}`}
+                          >
+                            {op.method}
+                          </span>
+                          <code class="min-w-0 break-all font-mono text-sm text-hi">{op.path}</code>
+                        </a>
+                        <h3 class="mt-2 text-base font-semibold text-hi">{op.summary}</h3>
+                      </header>
+
+                      <div class="space-y-6 px-5 py-5">
+                        {op.description.length > 0 && (
+                          <div class="space-y-3">
+                            {op.description.map((para) => (
+                              <p class="max-w-2xl text-sm leading-relaxed text-body">
+                                <Inline text={para} />
+                              </p>
+                            ))}
+                          </div>
+                        )}
+
+                        {op.params.length > 0 && (
+                          <div>
+                            <h4 class="text-xs font-semibold uppercase tracking-[0.15em] text-dim">
+                              Parameters
+                            </h4>
+                            <div class="mt-3 overflow-x-auto">
+                              <table class="w-full min-w-[36rem] border-collapse text-left text-sm">
+                                <thead>
+                                  <tr class="border-b border-edge text-xs uppercase tracking-wider text-dim">
+                                    <th class="py-2 pr-4 font-medium">Name</th>
+                                    <th class="py-2 pr-4 font-medium">In</th>
+                                    <th class="py-2 pr-4 font-medium">Type</th>
+                                    <th class="py-2 font-medium">Notes</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  {op.params.map((param) => (
+                                    <tr class="border-b border-edge/60 align-top last:border-0">
+                                      <td class="py-2.5 pr-4 font-mono text-xs text-hi">
+                                        {param.name}
+                                        {param.required && (
+                                          <span class="ml-1 text-pink-400" title="required">
+                                            *
+                                          </span>
+                                        )}
+                                      </td>
+                                      <td class="py-2.5 pr-4 text-xs text-dim">{param.location}</td>
+                                      <td class="py-2.5 pr-4 font-mono text-xs text-body">
+                                        {param.type}
+                                      </td>
+                                      <td class="py-2.5 text-xs leading-relaxed text-body">
+                                        {param.constraints && (
+                                          <span
+                                            class={`${CHIP} mr-2 whitespace-nowrap text-[0.7rem] text-dim`}
+                                          >
+                                            {param.constraints}
+                                          </span>
+                                        )}
+                                        <Inline text={param.description} />
+                                      </td>
+                                    </tr>
+                                  ))}
+                                </tbody>
+                              </table>
+                            </div>
+                            {op.params.some((param) => param.required) && (
+                              <p class="mt-2 text-xs text-dim">
+                                <span class="text-pink-400">*</span> required
+                              </p>
+                            )}
+                          </div>
+                        )}
+
+                        {op.requestBody && (
+                          <div>
+                            <h4 class="text-xs font-semibold uppercase tracking-[0.15em] text-dim">
+                              Request body
+                            </h4>
+                            <Skeleton code={op.requestBody} />
+                          </div>
+                        )}
+
+                        <div>
+                          <h4 class="text-xs font-semibold uppercase tracking-[0.15em] text-dim">
+                            Responses
+                          </h4>
+                          <div class="mt-3 space-y-4">
+                            {op.responses.map((res) => (
+                              <div>
+                                <div class="flex flex-wrap items-baseline gap-3">
+                                  <span
+                                    class={`rounded-md border px-2 py-0.5 font-mono text-xs font-bold ${statusClass(res.status)}`}
+                                  >
+                                    {res.status}
+                                  </span>
+                                  <span class="min-w-0 flex-1 text-sm leading-relaxed text-body">
+                                    <Inline text={res.description} />
+                                  </span>
+                                </div>
+                                {res.skeleton && <Skeleton code={res.skeleton} margin="mt-2" />}
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              </section>
+            ))
+          }
+
+          <!-- Where to go next. The prose above is the spec's own; these are the
+               two links its plain-text description cannot carry. -->
+          <section class="reveal rounded-2xl border border-edge bg-surface p-6">
+            <h2 class="text-lg font-semibold text-hi">Further reading</h2>
+            <p class="mt-3 text-sm leading-relaxed text-dim">
+              The full licensing policy is in
+              <a
+                href={`${REPO}/blob/main/LICENSING.md`}
+                target="_blank"
+                rel="noopener"
+                class="text-pink-400 transition-colors hover:text-pink-300">LICENSING.md</a
+              >. The machine-readable contract for everything on this page is at
+              <a
+                href="/api/v1/openapi.json"
+                class="text-pink-400 transition-colors hover:text-pink-300"
+                >/api/v1/openapi.json</a
+              >.
+            </p>
+          </section>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

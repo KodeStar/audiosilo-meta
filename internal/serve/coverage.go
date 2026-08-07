@@ -186,7 +186,7 @@ func (s *snapshot) coverageWhere(filter coverageFilter, q string) (where string,
 	}
 
 	if q != "" {
-		where += ` AND w.id IN (SELECT id FROM search_fts WHERE search_fts MATCH ? AND kind='work')`
+		where += ` AND w.id IN (` + workIDsInFTSSQL + `)`
 		args = append(args, ftsQuery(q))
 	}
 	return where, args, true

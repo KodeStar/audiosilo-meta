@@ -160,18 +160,23 @@ func (s *snapshot) absSearch(query, author, isbn string, limit int) ([]absBook, 
 }
 
 // absWorkSearch runs the FTS query restricted to works and returns matched work
-// ids best-ranked first. It reuses ftsQuery so no user input can break the MATCH.
+// ids best-ranked first. It goes through the same ftsHits the JSON search
+// endpoints use - one SQL constant, one escaping, one ranking - and keeps only
+// the ids, the kind being kindWork by construction. A ranking change therefore
+// lands on both surfaces at once rather than on whichever one was remembered.
 func (s *snapshot) absWorkSearch(query string, limit int) ([]string, error) {
 	if limit <= 0 {
 		limit = absMaxMatches
 	}
-	rows, err := s.db.Query(
-		`SELECT id FROM search_fts WHERE search_fts MATCH ? AND kind='work' ORDER BY bm25(search_fts) LIMIT ?`,
-		ftsQuery(query), limit)
+	hits, err := s.ftsHits(kindWork, ftsQuery(query), limit)
 	if err != nil {
 		return nil, err
 	}
-	return scanIDs(rows)
+	ids := make([]string, 0, len(hits))
+	for _, h := range hits {
+		ids = append(ids, h.id)
+	}
+	return ids, nil
 }
 
 // rankByAuthor is a stable partition: works whose authors match the author query

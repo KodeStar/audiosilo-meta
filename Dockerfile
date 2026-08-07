@@ -34,12 +34,16 @@ RUN corepack enable
 COPY site/package.json site/yarn.lock ./
 RUN yarn install --frozen-lockfile
 COPY site/ ./
-# The site imports the genre mapping table straight out of the Go importer
-# (site/src/lib/audible-genres.ts -> internal/importer/audiblegenres.json) so
-# there is exactly one copy of it in the repo. That import resolves ABOVE /site,
-# so the file has to sit at the same relative position here as it does in the
-# repo. Keep this line in step with any further cross-boundary import.
+# The site imports two files straight out of the Go tree - the genre mapping
+# table (site/src/lib/audible-genres.ts) and the OpenAPI spec the /docs/api page
+# renders (site/src/pages/docs/api.astro) - so there is exactly one copy of each
+# in the repo. Those imports resolve ABOVE /site, so each file has to sit at the
+# same relative position here as it does in the repo. Keep these lines in step
+# with any further cross-boundary import: site/src/lib/dockerfile-imports.test.ts
+# derives the expected COPY set from the site sources and fails when one is
+# missing.
 COPY internal/importer/audiblegenres.json /internal/importer/audiblegenres.json
+COPY internal/serve/openapi.json /internal/serve/openapi.json
 RUN yarn build
 # Astro emits the static site to dist/.
 

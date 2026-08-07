@@ -95,6 +95,15 @@ func (c *composer) addWork(s sections) {
 		c.fail(StatusInvalid, "Title %q produced an empty slug", title)
 		return
 	}
+	if model.IsReservedSlug(workSlug) {
+		// A work stored at an API route literal is unreachable through
+		// /api/v1/works/{id}, so it steps onto the author-suffixed slug the bulk
+		// importer would mint for it - the same formula, so the two composers
+		// cannot put one book in two places.
+		stepped := unreservedWorkSlug(workSlug, authorNames[0])
+		c.note("work slug %q is reserved for an API route - using %q", workSlug, stepped)
+		workSlug = stepped
+	}
 	if _, exists := c.works[workSlug]; exists {
 		// Tier-aware like the ASIN/ISBN and narrator-set gates: a work only the
 		// mirror has ever stated routes to a maintainer, not to a closed duplicate.
@@ -138,6 +147,18 @@ func (c *composer) addWork(s sections) {
 
 	// Optional series placement.
 	c.placeInSeries(s, workSlug, sourceRef)
+}
+
+// unreservedWorkSlug steps a reserved title slug off the route literal, exactly
+// as the bulk importer's candidate chain does: the title plus its first author's
+// slug (importer.AuthorSuffixedWorkSlug, the one bounded formula), falling back
+// to the numeric candidate when that author has no addressable slug of their own
+// - which is the same last resort the chain ends in.
+func unreservedWorkSlug(base, firstAuthor string) string {
+	if slug, fellBack := model.PersonSlug(firstAuthor); !fellBack {
+		return importer.AuthorSuffixedWorkSlug(base, slug)
+	}
+	return importer.NumberedSlugAt(base, 1)
 }
 
 // slugsFor resolves a list of person names to slugs, creating person records,
@@ -324,6 +345,14 @@ func (c *composer) placeInSeries(s sections, workSlug, sourceRef string) {
 	if seriesSlug == "" {
 		c.note("series name %q produced an empty slug - work not placed in the series", name)
 		return
+	}
+	// The series half of the same rule: a series named "Latest" takes the
+	// numeric candidate the importer's chain would give it (SeriesSlugAt), so
+	// both writers resolve the name to one slug.
+	if model.IsReservedSlug(seriesSlug) {
+		stepped := importer.SeriesSlugAt(seriesSlug, 0)
+		c.note("series slug %q is reserved for an API route - using %q", seriesSlug, stepped)
+		seriesSlug = stepped
 	}
 
 	if existing, ok := c.series[seriesSlug]; ok {

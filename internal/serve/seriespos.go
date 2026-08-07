@@ -71,8 +71,11 @@ const maxPositionToken = 8
 // seriesMatchSQL resolves a series-name query through the same FTS index the
 // main search uses, restricted to series rows. It selects the NAME as well as
 // the id (a series row's FTS title column IS its name), so preferWholeName costs
-// no extra query.
-const seriesMatchSQL = `SELECT id, title FROM search_fts WHERE search_fts MATCH ? AND kind='series' ORDER BY bm25(search_fts) LIMIT ?`
+// no extra query. The kind literal is composed from the searchKind constant at
+// COMPILE time, so the value vocabulary has one home and this is still a
+// constant string.
+const seriesMatchSQL = `SELECT id, title FROM search_fts WHERE search_fts MATCH ? AND kind='` +
+	string(kindSeries) + `' ORDER BY bm25(search_fts) LIMIT ?`
 
 // seriesMembersSQL reads the membership of every probed series in ONE query
 // rather than one per candidate. It joins works, so a membership row pointing at

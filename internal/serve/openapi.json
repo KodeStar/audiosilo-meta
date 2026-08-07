@@ -1,0 +1,1324 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "AudioSilo Meta API",
+    "version": "1.0.0",
+    "summary": "The read-only JSON API over the AudioSilo community audiobook metadata database.",
+    "description": "A read-only API over a compiled snapshot of the community metadata database at https://github.com/kodestar/audiosilo-meta.\n\nEverything readable is public: no authentication, no API key and no rate-limit token, and no endpoint writes anything. (A production deployment may additionally register a release-notification hook at `/hooks/github/release`; that one route is HMAC-authenticated and is not part of the read surface.)\n\nThe API surface - `/api/v1/*` and `/abs/search` - carries permissive CORS headers (`Access-Control-Allow-Origin: *`), so a browser may call it directly. `/healthz` and the hook do not.\n\nThe server holds one compiled artifact at a time and swaps in a newer one without a restart, so a response is always a consistent view of a single release. While no artifact has loaded yet (a cold boot still fetching the newest release) every data route answers `503` with a `Retry-After` header; `/api/v1/openapi.json` and the static site are served regardless.\n\nSome fields on `GET /works/{id}` depend on the loaded artifact's internal schema version - characters and recaps need version 2, the whole-book recap summary version 3, genres version 4. A server briefly serving an older artifact omits them rather than failing, so treat every one of them as optional.\n\nLicensing: the factual core (works, recordings, people, series) is dedicated to the public domain under CC0-1.0 and the community layer (characters, recaps) is CC BY-SA 3.0 - see LICENSING.md in the repository for what attribution the share-alike layer requires.",
+    "license": {
+      "name": "CC0-1.0 core with a CC BY-SA 3.0 community layer",
+      "url": "https://github.com/kodestar/audiosilo-meta/blob/main/LICENSING.md"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://meta.audiosilo.app",
+      "description": "Production"
+    }
+  ],
+  "externalDocs": {
+    "description": "audiosilo-meta on GitHub",
+    "url": "https://github.com/kodestar/audiosilo-meta"
+  },
+  "tags": [
+    {
+      "name": "Search",
+      "description": "Full-text search over the catalogue. One combined endpoint returning works, people and series together, plus three type-scoped variants returning a single kind."
+    },
+    {
+      "name": "Works",
+      "description": "Work documents: the abstract book, its recordings, and the community expressive layer."
+    },
+    {
+      "name": "People & Series",
+      "description": "A person's credits and a series' member works, both windowed with unpaged totals."
+    },
+    {
+      "name": "Lookup",
+      "description": "Exact identifier resolution: which recording an ASIN or ISBN names."
+    },
+    {
+      "name": "Coverage",
+      "description": "What the community layer still needs: expressive-layer totals, a filtered per-work browser, and series with missing volumes."
+    },
+    {
+      "name": "Audiobookshelf provider",
+      "description": "The Audiobookshelf custom metadata provider facade. It lives outside /api/v1 because Audiobookshelf appends /search to a configured base URL, and it speaks Audiobookshelf's BookMetadata shape rather than this API's."
+    },
+    {
+      "name": "Server",
+      "description": "Readiness, catalogue totals, this document, and the release-notification hook."
+    }
+  ],
+  "paths": {
+    "/healthz": {
+      "get": {
+        "tags": ["Server"],
+        "operationId": "healthz",
+        "summary": "Readiness probe",
+        "description": "Reports readiness, not liveness: a server that has not loaded an artifact yet answers 503, so a container health check or load balancer keeps it out of rotation until it can actually answer.",
+        "responses": {
+          "200": {
+            "description": "An artifact is loaded and the API is answering.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Health" }
+              }
+            }
+          },
+          "503": {
+            "description": "No artifact has loaded yet. `Retry-After` reports the wait the poll loop is actually on.",
+            "headers": {
+              "Retry-After": { "$ref": "#/components/headers/RetryAfter" }
+            },
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HealthStarting" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/openapi.json": {
+      "get": {
+        "tags": ["Server"],
+        "operationId": "openapi",
+        "summary": "This document",
+        "description": "The OpenAPI description of this API. It is static, so unlike every data route it answers even while the server is still fetching its first artifact.\n\nThe document is embedded in the binary and therefore constant for its lifetime: it is served with a strong `ETag` and a one-hour `Cache-Control`, and a conditional request revalidates instead of downloading it again.",
+        "responses": {
+          "200": {
+            "description": "The OpenAPI 3.1 document.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "An OpenAPI 3.1 document."
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "The `If-None-Match` request header named the current `ETag`, so the copy the client holds is still the document. No body."
+          }
+        }
+      }
+    },
+    "/api/v1/stats": {
+      "get": {
+        "tags": ["Server"],
+        "operationId": "stats",
+        "summary": "Catalogue totals",
+        "description": "Top-line counts for the loaded artifact, plus the time it was built. Computed once when the artifact loads, so it is free to call.",
+        "responses": {
+          "200": {
+            "description": "The loaded artifact's totals.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Stats" }
+              }
+            }
+          },
+          "503": { "$ref": "#/components/responses/NoData" }
+        }
+      }
+    },
+    "/api/v1/search": {
+      "get": {
+        "tags": ["Search"],
+        "operationId": "search",
+        "summary": "Search works, people and series together",
+        "description": "One ranked page mixing all three kinds, ordered by full-text relevance. Every result carries a `kind` discriminator.\n\nMatching is by whole word or word prefix (the last token of the query is treated as a prefix), over work titles and subtitles and the names of authors, narrators and series.\n\nA query that names a series and a number - \"jack reacher 2\", \"jack reacher book 2\", \"jack reacher #2\" - additionally resolves that volume and returns it FIRST, ahead of the relevance hits. The page stays exactly `limit` long, so the boost costs the last hit rather than widening the response. A query that resolves no such volume returns the plain relevance page.",
+        "parameters": [
+          { "$ref": "#/components/parameters/SearchQuery" },
+          { "$ref": "#/components/parameters/SearchLimit" }
+        ],
+        "responses": {
+          "200": {
+            "description": "One ranked page of mixed results.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": ["results"],
+                  "properties": {
+                    "results": {
+                      "type": "array",
+                      "description": "Hits in rank order, best first. Never null; empty when nothing matched.",
+                      "items": { "$ref": "#/components/schemas/SearchResult" }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "500": { "$ref": "#/components/responses/ServerError" },
+          "503": { "$ref": "#/components/responses/NoData" }
+        }
+      }
+    },
+    "/api/v1/works/search": {
+      "get": {
+        "tags": ["Search"],
+        "operationId": "searchWorks",
+        "summary": "Search works only",
+        "description": "The combined search restricted to works. Results are `WorkResult` objects, identical to the work entries of `/api/v1/search`, and the filter is applied inside the query - so `?limit=20` returns up to 20 works rather than the works among 20 mixed hits.\n\nThe series-position boost applies here too: \"jack reacher 2\" returns volume 2 first, exactly as on the combined search.",
+        "parameters": [
+          { "$ref": "#/components/parameters/SearchQuery" },
+          { "$ref": "#/components/parameters/SearchLimit" }
+        ],
+        "responses": {
+          "200": {
+            "description": "One ranked page of works.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": ["results"],
+                  "properties": {
+                    "results": {
+                      "type": "array",
+                      "description": "Hits in rank order, best first. Never null; empty when nothing matched.",
+                      "items": { "$ref": "#/components/schemas/WorkResult" }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "500": { "$ref": "#/components/responses/ServerError" },
+          "503": { "$ref": "#/components/responses/NoData" }
+        }
+      }
+    },
+    "/api/v1/people/search": {
+      "get": {
+        "tags": ["Search"],
+        "operationId": "searchPeople",
+        "summary": "Search people only",
+        "description": "The combined search restricted to people (authors and narrators share one record, so a person may be either or both). Results are `PersonResult` objects. The series-position boost does not apply - the volumes it resolves are works.",
+        "parameters": [
+          { "$ref": "#/components/parameters/SearchQuery" },
+          { "$ref": "#/components/parameters/SearchLimit" }
+        ],
+        "responses": {
+          "200": {
+            "description": "One ranked page of people.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": ["results"],
+                  "properties": {
+                    "results": {
+                      "type": "array",
+                      "description": "Hits in rank order, best first. Never null; empty when nothing matched.",
+                      "items": { "$ref": "#/components/schemas/PersonResult" }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "500": { "$ref": "#/components/responses/ServerError" },
+          "503": { "$ref": "#/components/responses/NoData" }
+        }
+      }
+    },
+    "/api/v1/series/search": {
+      "get": {
+        "tags": ["Search"],
+        "operationId": "searchSeries",
+        "summary": "Search series only",
+        "description": "The combined search restricted to series. Results are `SeriesResult` objects, each carrying the series' member count. The series-position boost does not apply - the volumes it resolves are works.",
+        "parameters": [
+          { "$ref": "#/components/parameters/SearchQuery" },
+          { "$ref": "#/components/parameters/SearchLimit" }
+        ],
+        "responses": {
+          "200": {
+            "description": "One ranked page of series.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": ["results"],
+                  "properties": {
+                    "results": {
+                      "type": "array",
+                      "description": "Hits in rank order, best first. Never null; empty when nothing matched.",
+                      "items": { "$ref": "#/components/schemas/SeriesResult" }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "500": { "$ref": "#/components/responses/ServerError" },
+          "503": { "$ref": "#/components/responses/NoData" }
+        }
+      }
+    },
+    "/api/v1/works/latest": {
+      "get": {
+        "tags": ["Works"],
+        "operationId": "latestWorks",
+        "summary": "Recently added works",
+        "description": "Work cards ordered by when they entered the database, newest first, with at most two works from any one series so a bulk import cannot fill the whole page with one series' volumes. Works with no recorded date sort last.",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "How many works to return. Capped at 50; a non-numeric or non-positive value falls back to the default (12) rather than being clamped to 1.",
+            "schema": { "type": "integer", "default": 12, "minimum": 1, "maximum": 50 }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The newest work cards.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": ["works"],
+                  "properties": {
+                    "works": {
+                      "type": "array",
+                      "items": { "$ref": "#/components/schemas/WorkCard" }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": { "$ref": "#/components/responses/ServerError" },
+          "503": { "$ref": "#/components/responses/NoData" }
+        }
+      }
+    },
+    "/api/v1/works/{id}": {
+      "get": {
+        "tags": ["Works"],
+        "operationId": "work",
+        "summary": "One work in full",
+        "description": "The whole work document: the abstract book, every recording of it (narrators, runtime, publisher, identifiers, chapter count), and the community expressive layer where it exists.\n\n`characters`, `recaps`, `recap_summary` and `genres` depend on the loaded artifact's internal schema version and are omitted - never faked - when the artifact predates them.",
+        "parameters": [{ "$ref": "#/components/parameters/WorkID" }],
+        "responses": {
+          "200": {
+            "description": "The work document.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/WorkDetail" }
+              }
+            }
+          },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" },
+          "503": { "$ref": "#/components/responses/NoData" }
+        }
+      }
+    },
+    "/api/v1/works/{id}/recordings/{rid}/chapters": {
+      "get": {
+        "tags": ["Works"],
+        "operationId": "chapters",
+        "summary": "One recording's chapter list",
+        "description": "The chapter marks of a single recording, in playback order, with millisecond offsets. An unknown work or recording is an empty list rather than a 404: absent chapters and an absent recording are the same answer to a client rendering a timeline.",
+        "parameters": [
+          { "$ref": "#/components/parameters/WorkID" },
+          { "$ref": "#/components/parameters/RecordingID" }
+        ],
+        "responses": {
+          "200": {
+            "description": "The recording's chapters (empty when it has none, or does not exist).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": ["chapters"],
+                  "properties": {
+                    "chapters": {
+                      "type": "array",
+                      "items": { "$ref": "#/components/schemas/Chapter" }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": { "$ref": "#/components/responses/ServerError" },
+          "503": { "$ref": "#/components/responses/NoData" }
+        }
+      }
+    },
+    "/api/v1/people/{id}": {
+      "get": {
+        "tags": ["People & Series"],
+        "operationId": "person",
+        "summary": "One person and a page of their credits",
+        "description": "A person with one page of each credit list - works authored and recordings narrated. Both lists take the same window.\n\nThe lists are paged by default because a person's credits are unbounded: a corporate credit of record (\"Full Cast\", \"Audible Studios\") narrates thousands of works. `authored_total` and `narrated_total` are the UNPAGED counts, so a client can always tell it is seeing a slice.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "The person's slug, e.g. `ray-porter`.",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Credits per list. Capped at 500; a non-numeric or non-positive value falls back to the default (100) rather than being clamped to 1.",
+            "schema": { "type": "integer", "default": 100, "minimum": 1, "maximum": 500 }
+          },
+          { "$ref": "#/components/parameters/Offset" }
+        ],
+        "responses": {
+          "200": {
+            "description": "The person and one page of each credit list.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/PersonDetail" }
+              }
+            }
+          },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" },
+          "503": { "$ref": "#/components/responses/NoData" }
+        }
+      }
+    },
+    "/api/v1/series/{id}": {
+      "get": {
+        "tags": ["People & Series"],
+        "operationId": "series",
+        "summary": "One series and its member works",
+        "description": "A series with its member works in position order. Positions are strings, so a novella (\"2.5\") and an omnibus range (\"1-3.5\") stay distinct from the numbered volumes.\n\nUnlike a person's credits this returns the WHOLE series by default: series membership is bounded by what a series is, and consumers compose a complete series rail from it. Pass `limit` for a window; `works_total` is the unpaged membership either way.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "The series' slug, e.g. `the-stormlight-archive`.",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Member works to return. ABSENT means the whole series (there is no default window); a supplied value is capped at 500. A non-numeric or non-positive value falls back to that same default - the WHOLE series - rather than being clamped to 1.",
+            "schema": { "type": "integer", "minimum": 1, "maximum": 500 }
+          },
+          { "$ref": "#/components/parameters/Offset" }
+        ],
+        "responses": {
+          "200": {
+            "description": "The series and its member works.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/SeriesDetail" }
+              }
+            }
+          },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" },
+          "503": { "$ref": "#/components/responses/NoData" }
+        }
+      }
+    },
+    "/api/v1/lookup": {
+      "get": {
+        "tags": ["Lookup"],
+        "operationId": "lookup",
+        "summary": "Resolve an ASIN or ISBN to a recording",
+        "description": "Exact identifier resolution: given an Audible ASIN or an ISBN, return the work card and the id of the recording that identifier names. Supply one of the two; if both are given, `asin` wins.\n\nAn ISBN is matched against recording ISBNs first and falls back to the work's print ISBNs, in which case the work's first recording is reported. Identifiers must be in their bare stored form (no hyphens).",
+        "parameters": [
+          {
+            "name": "asin",
+            "in": "query",
+            "required": false,
+            "description": "An Audible ASIN, e.g. `B08G9PRS1K`. Takes precedence over `isbn`.",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "isbn",
+            "in": "query",
+            "required": false,
+            "description": "A bare 10- or 13-digit ISBN, e.g. `9781427209269`.",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The work and recording the identifier names.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/LookupResult" }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest",
+            "description": "Neither `asin` nor `isbn` was supplied."
+          },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" },
+          "503": { "$ref": "#/components/responses/NoData" }
+        }
+      }
+    },
+    "/api/v1/coverage": {
+      "get": {
+        "tags": ["Coverage"],
+        "operationId": "coverage",
+        "summary": "Expressive-layer totals",
+        "description": "How many works exist and how many carry each part of the community layer. A sidecar count is OMITTED (never reported as zero) when the loaded artifact predates its table, so a missing key means \"unknowable here\" while `0` means \"genuinely none\".",
+        "responses": {
+          "200": {
+            "description": "The top-line coverage totals.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/CoverageResult" }
+              }
+            }
+          },
+          "500": { "$ref": "#/components/responses/ServerError" },
+          "503": { "$ref": "#/components/responses/NoData" }
+        }
+      }
+    },
+    "/api/v1/coverage/works": {
+      "get": {
+        "tags": ["Coverage"],
+        "operationId": "coverageWorks",
+        "summary": "Works by expressive-layer status",
+        "description": "One filtered, searchable, paginated page of works for the coverage browser. Each row lists which parts of the community layer it still lacks.\n\n`available` is false (with an empty page) when the requested filter's dimension cannot be evaluated against the loaded artifact.",
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "description": "Which works to list. An empty value means `missing`.",
+            "schema": {
+              "type": "string",
+              "default": "missing",
+              "enum": ["missing", "has_characters", "has_recaps", "has_recap_summary"]
+            }
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "required": false,
+            "description": "Narrow by full-text query over the work's title and subtitle and the names of its authors, narrators and series. Whole word or word prefix, the same matching as /api/v1/search.",
+            "schema": { "type": "string" }
+          },
+          { "$ref": "#/components/parameters/PageLimit" },
+          { "$ref": "#/components/parameters/Offset" }
+        ],
+        "responses": {
+          "200": {
+            "description": "One page of works for the filter.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/CoverageWorksResult" }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest",
+            "description": "Unrecognized `filter` value."
+          },
+          "500": { "$ref": "#/components/responses/ServerError" },
+          "503": { "$ref": "#/components/responses/NoData" }
+        }
+      }
+    },
+    "/api/v1/coverage/series-gaps": {
+      "get": {
+        "tags": ["Coverage"],
+        "operationId": "coverageSeriesGaps",
+        "summary": "Series with missing volumes",
+        "description": "One page of the series that have interior gaps: an integer position absent strictly between the lowest and highest present one. A decimal position (\"2.5\") fills no integer slot; an omnibus range (\"1-3.5\") fills every integer it spans.",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "required": false,
+            "description": "Case-insensitive substring of the series name.",
+            "schema": { "type": "string" }
+          },
+          { "$ref": "#/components/parameters/PageLimit" },
+          { "$ref": "#/components/parameters/Offset" }
+        ],
+        "responses": {
+          "200": {
+            "description": "One page of series with gaps.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/SeriesGapsResult" }
+              }
+            }
+          },
+          "500": { "$ref": "#/components/responses/ServerError" },
+          "503": { "$ref": "#/components/responses/NoData" }
+        }
+      }
+    },
+    "/abs/search": {
+      "get": {
+        "tags": ["Audiobookshelf provider"],
+        "operationId": "absSearch",
+        "summary": "Audiobookshelf custom metadata provider",
+        "description": "OUTSIDE /api/v1. This is the endpoint an Audiobookshelf server calls when https://meta.audiosilo.app/abs is configured as a custom metadata provider - Audiobookshelf appends `/search` to that base URL and sends its own parameters.\n\nThe response speaks Audiobookshelf's BookMetadata shape, not this API's: one match per RECORDING (a recording is what a local audiobook is matched against), capped at 10. A matched work that has no recordings yet still answers, as a single work-level match with no narrator, duration or ASIN. Only `title` is guaranteed; `duration` is in MINUTES; `genres` are human-facing labels from this project's own vocabulary; `tags` is never populated, since the data model has no tag concept.\n\nAn `isbn` is resolved exactly first (hyphens are tolerated); otherwise the query is a full-text work search, with `author` used to boost - never to filter, so a mismatched author never empties the results. No match is an empty array, never a 404.",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "required": true,
+            "description": "The title Audiobookshelf is matching. Required.",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "author",
+            "in": "query",
+            "required": false,
+            "description": "The author string Audiobookshelf holds. Loosely matched, and used only to rank.",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "isbn",
+            "in": "query",
+            "required": false,
+            "description": "An ISBN, hyphenated or bare. When it resolves exactly, that recording's work is returned and the title search is skipped.",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "mediaType",
+            "in": "query",
+            "required": false,
+            "description": "Always `book` when Audiobookshelf sends it. Accepted and ignored.",
+            "schema": { "type": "string", "enum": ["book"] }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The matches, best first. Always an array, possibly empty.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ABSSearchResult" }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest",
+            "description": "`query` was missing or empty."
+          },
+          "500": { "$ref": "#/components/responses/ServerError" },
+          "503": { "$ref": "#/components/responses/NoData" }
+        }
+      }
+    },
+    "/hooks/github/release": {
+      "post": {
+        "tags": ["Server"],
+        "operationId": "githubReleaseWebhook",
+        "summary": "Release notification (production only)",
+        "description": "PRODUCTION ONLY, and registered at all only when the deployment sets `METASERVE_WEBHOOK_SECRET`. It exists so a freshly published data release is adopted in seconds instead of at the next hourly poll; the poll remains the fallback for a missed delivery.\n\nThe body is only a trigger - the server re-queries GitHub and goes through the same checksum-verified atomic swap as a poll, so a forged payload cannot install anything. The request must carry a valid `X-Hub-Signature-256` HMAC over the raw body; anything else is rejected before the body is parsed. The response is always empty: 202 means \"accepted, refreshing in the background\", including for a delivery that is correctly signed but not a matching release event.\n\nError bodies on this route are plain text, not the JSON error envelope the API uses.",
+        "parameters": [
+          {
+            "name": "X-Hub-Signature-256",
+            "in": "header",
+            "required": true,
+            "description": "`sha256=<hex>` HMAC-SHA256 of the raw request body, keyed with the deployment's webhook secret.",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "X-GitHub-Event",
+            "in": "header",
+            "required": false,
+            "description": "GitHub's event name. Anything other than `release` is accepted and ignored.",
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/ReleaseWebhook" }
+            }
+          }
+        },
+        "responses": {
+          "202": { "description": "Accepted. A refresh runs in the background if the payload named a published release of this repository." },
+          "400": { "description": "Unreadable body, or a signed payload that is not valid JSON. Plain text." },
+          "401": { "description": "Missing or invalid `X-Hub-Signature-256`. Plain text." },
+          "413": { "description": "Body over 1 MiB. Plain text." }
+        }
+      }
+    }
+  },
+  "components": {
+    "headers": {
+      "RetryAfter": {
+        "description": "Whole seconds to wait before retrying. It reports the wait the server's refresh loop is actually on, which grows as attempts fail.",
+        "schema": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "parameters": {
+      "SearchQuery": {
+        "name": "q",
+        "in": "query",
+        "required": true,
+        "description": "The search query. Matching is by whole word or word prefix; an empty or whitespace-only value is a 400.",
+        "schema": { "type": "string", "minLength": 1 }
+      },
+      "SearchLimit": {
+        "name": "limit",
+        "in": "query",
+        "required": false,
+        "description": "How many results to return. Capped at 50; a non-numeric or non-positive value falls back to the default (20) rather than being clamped to 1.",
+        "schema": { "type": "integer", "default": 20, "minimum": 1, "maximum": 50 }
+      },
+      "PageLimit": {
+        "name": "limit",
+        "in": "query",
+        "required": false,
+        "description": "Rows per page. Capped at 100; a non-numeric or non-positive value falls back to the default (25) rather than being clamped to 1.",
+        "schema": { "type": "integer", "default": 25, "minimum": 1, "maximum": 100 }
+      },
+      "Offset": {
+        "name": "offset",
+        "in": "query",
+        "required": false,
+        "description": "Rows to skip. A negative or non-numeric value is treated as 0.",
+        "schema": { "type": "integer", "default": 0, "minimum": 0 }
+      },
+      "WorkID": {
+        "name": "id",
+        "in": "path",
+        "required": true,
+        "description": "The work's slug, e.g. `project-hail-mary`.",
+        "schema": { "type": "string" }
+      },
+      "RecordingID": {
+        "name": "rid",
+        "in": "path",
+        "required": true,
+        "description": "The recording's slug, unique within its work, e.g. `ray-porter-2021`.",
+        "schema": { "type": "string" }
+      }
+    },
+    "responses": {
+      "BadRequest": {
+        "description": "`q` was missing, empty or whitespace only.",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/Error" }
+          }
+        }
+      },
+      "NotFound": {
+        "description": "No such record.",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/Error" }
+          }
+        }
+      },
+      "ServerError": {
+        "description": "A query against the loaded artifact failed. Not expected in normal operation - an artifact is checksum-verified before it is served - so read it as a bug or a damaged snapshot rather than a condition to code around. Retrying is safe: the API is read-only.",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/Error" }
+          }
+        }
+      },
+      "NoData": {
+        "description": "No artifact has loaded yet - a cold boot still fetching the newest release. Temporary by construction; `Retry-After` reports the wait the server's refresh loop is on.",
+        "headers": {
+          "Retry-After": { "$ref": "#/components/headers/RetryAfter" }
+        },
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/Error" }
+          }
+        }
+      }
+    },
+    "schemas": {
+      "Error": {
+        "type": "object",
+        "description": "The error envelope every JSON 4xx and 5xx uses. The message is human-facing; branch on the status code, not on its text.",
+        "required": ["error"],
+        "properties": {
+          "error": { "type": "string", "examples": ["q is required"] }
+        }
+      },
+      "Health": {
+        "type": "object",
+        "required": ["status", "built_at", "works"],
+        "properties": {
+          "status": { "type": "string", "const": "ok" },
+          "built_at": {
+            "type": "string",
+            "description": "When the loaded artifact was compiled (RFC 3339).",
+            "examples": ["2026-07-11T00:00:00Z"]
+          },
+          "works": { "type": "integer", "description": "Works in the loaded artifact." }
+        }
+      },
+      "HealthStarting": {
+        "type": "object",
+        "required": ["status"],
+        "properties": {
+          "status": { "type": "string", "const": "starting" }
+        }
+      },
+      "Stats": {
+        "type": "object",
+        "required": [
+          "works",
+          "recordings",
+          "people",
+          "series",
+          "total_runtime_min",
+          "total_chapters",
+          "built_at"
+        ],
+        "properties": {
+          "works": { "type": "integer" },
+          "recordings": { "type": "integer" },
+          "people": { "type": "integer", "description": "Authors and narrators share one person record, so this counts both." },
+          "series": { "type": "integer" },
+          "total_runtime_min": { "type": "integer", "description": "Summed recording runtimes, in minutes." },
+          "total_chapters": { "type": "integer" },
+          "built_at": {
+            "type": "string",
+            "description": "When the loaded artifact was compiled (RFC 3339).",
+            "examples": ["2026-07-11T00:00:00Z"]
+          }
+        }
+      },
+      "PersonRef": {
+        "type": "object",
+        "description": "A person by reference. Follow `id` to /api/v1/people/{id} for their credits.",
+        "required": ["id", "name"],
+        "properties": {
+          "id": { "type": "string", "examples": ["ray-porter"] },
+          "name": { "type": "string", "examples": ["Ray Porter"] }
+        }
+      },
+      "SeriesRef": {
+        "type": "object",
+        "description": "A work's membership of one series.",
+        "required": ["id", "name", "position"],
+        "properties": {
+          "id": { "type": "string", "examples": ["the-stormlight-archive"] },
+          "name": { "type": "string", "examples": ["The Stormlight Archive"] },
+          "position": {
+            "type": "string",
+            "description": "The volume position as a STRING, so \"2\", \"2.5\" and the omnibus range \"1-3.5\" stay distinct values. Never parse it as a number without preserving the original.",
+            "examples": ["2.5"]
+          }
+        }
+      },
+      "WorkCard": {
+        "type": "object",
+        "description": "The compact work representation every list and lookup returns. The three nullable fields are always PRESENT - null means the work has no series membership, no cover on any recording, or no recorded date.",
+        "required": ["id", "title", "authors", "series", "cover_url", "added_at"],
+        "properties": {
+          "id": { "type": "string", "examples": ["project-hail-mary"] },
+          "title": { "type": "string", "examples": ["Project Hail Mary"] },
+          "authors": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/PersonRef" }
+          },
+          "series": {
+            "description": "The work's FIRST series membership, or null. A work in several series shows only one here; /api/v1/works/{id} lists them all.",
+            "oneOf": [{ "$ref": "#/components/schemas/SeriesRef" }, { "type": "null" }]
+          },
+          "cover_url": {
+            "type": ["string", "null"],
+            "description": "The first cover URL across the work's recordings, or null. Covers are always remote URLs - this project stores no image files."
+          },
+          "added_at": {
+            "type": ["string", "null"],
+            "description": "When the work entered the database: `YYYY-MM-DD`, or a full RFC 3339 timestamp for records dated by the one-time history backfill. Null when unknown."
+          }
+        }
+      },
+      "WorkResult": {
+        "description": "A search hit that is a work: every WorkCard field, plus the kind discriminator and the distinct narrators across the work's recordings. It COMPOSES the card rather than restating it, so the two can never end up describing the same bytes differently; the branches are ordered so the rendered shape matches the order the fields arrive in.",
+        "allOf": [
+          {
+            "type": "object",
+            "required": ["kind"],
+            "properties": {
+              "kind": { "type": "string", "const": "work" }
+            }
+          },
+          { "$ref": "#/components/schemas/WorkCard" },
+          {
+            "type": "object",
+            "required": ["narrators"],
+            "properties": {
+              "narrators": {
+                "type": "array",
+                "description": "Every distinct narrator across the work's recordings, in credit order.",
+                "items": { "$ref": "#/components/schemas/PersonRef" }
+              }
+            }
+          }
+        ]
+      },
+      "PersonResult": {
+        "type": "object",
+        "description": "A search hit that is a person.",
+        "required": ["kind", "id", "name"],
+        "properties": {
+          "kind": { "type": "string", "const": "person" },
+          "id": { "type": "string" },
+          "name": { "type": "string" }
+        }
+      },
+      "SeriesResult": {
+        "type": "object",
+        "description": "A search hit that is a series, with its member count.",
+        "required": ["kind", "id", "name", "works"],
+        "properties": {
+          "kind": { "type": "string", "const": "series" },
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "works": { "type": "integer", "description": "How many works the series holds." }
+        }
+      },
+      "SearchResult": {
+        "description": "One search hit. Branch on `kind`.",
+        "oneOf": [
+          { "$ref": "#/components/schemas/WorkResult" },
+          { "$ref": "#/components/schemas/PersonResult" },
+          { "$ref": "#/components/schemas/SeriesResult" }
+        ],
+        "discriminator": {
+          "propertyName": "kind",
+          "mapping": {
+            "work": "#/components/schemas/WorkResult",
+            "person": "#/components/schemas/PersonResult",
+            "series": "#/components/schemas/SeriesResult"
+          }
+        }
+      },
+      "Position": {
+        "type": "object",
+        "description": "A logical, EDITION-INDEPENDENT position in the work: the work chapter, 1-based, with 0 meaning front matter or knowledge from earlier books. A consumer maps its own recording timeline onto these ordinals.",
+        "required": ["chapter"],
+        "properties": {
+          "chapter": { "type": "integer", "minimum": 0 }
+        }
+      },
+      "ASINRef": {
+        "type": "object",
+        "description": "One marketplace's ASIN for a recording. A production sold in several marketplaces stays ONE recording; the region rides on the identifier.",
+        "required": ["region", "asin"],
+        "properties": {
+          "region": { "type": "string", "examples": ["us"] },
+          "asin": { "type": "string", "examples": ["B08G9PRS1K"] }
+        }
+      },
+      "WorkXref": {
+        "type": "object",
+        "description": "Cross-references to other databases, and the PRINT ISBNs of the abstract work (a recording's own ISBNs live on the recording). Every field is omitted when unknown; the object itself is omitted when all of them are.",
+        "properties": {
+          "wikidata": { "type": "string", "examples": ["Q100000"] },
+          "openlibrary": { "type": "string" },
+          "goodreads": { "type": "string" },
+          "isbn": { "type": "array", "items": { "type": "string" } }
+        }
+      },
+      "RecordingDetail": {
+        "type": "object",
+        "description": "One narration/production of a work. A work can have many (different narrators, or a full-cast dramatization), each with its own identifiers and chapters.",
+        "required": ["id", "narrators", "asin", "isbn", "chapter_count"],
+        "properties": {
+          "id": { "type": "string", "description": "Unique within its work.", "examples": ["ray-porter-2021"] },
+          "narrators": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/PersonRef" }
+          },
+          "abridged": {
+            "type": "boolean",
+            "description": "Present only when TRUE. An absent key means unabridged or unstated - the underlying field is deliberately tri-state, and nothing guesses it."
+          },
+          "runtime_min": { "type": "integer", "description": "Runtime in minutes. Omitted when unknown." },
+          "release_date": { "type": "string", "description": "`YYYY-MM-DD`, or a partial date. Omitted when unknown." },
+          "publisher": { "type": "string", "description": "The publisher of record. Omitted when unknown." },
+          "asin": {
+            "type": "array",
+            "description": "Region-scoped Audible identifiers. Never null; empty when none.",
+            "items": { "$ref": "#/components/schemas/ASINRef" }
+          },
+          "isbn": {
+            "type": "array",
+            "description": "The recording's own ISBNs, bare. Never null; empty when none. A stated marketplace is deliberately not carried here - this answers \"which recording\", not \"which marketplace\".",
+            "items": { "type": "string" }
+          },
+          "cover_url": { "type": "string", "description": "Remote cover URL. Omitted when none." },
+          "chapter_count": {
+            "type": "integer",
+            "description": "How many chapter marks this recording has; fetch them from /api/v1/works/{id}/recordings/{rid}/chapters."
+          }
+        }
+      },
+      "Character": {
+        "type": "object",
+        "description": "A community-authored, spoiler-gated character entry (CC BY-SA 3.0). Recurring characters are re-described per book, so spoilers stay bounded by which book the reader is in.",
+        "required": ["id", "name", "reveal"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique within this work, NOT globally - two works may each have a `bilbo-baggins`.",
+            "examples": ["ryland-grace"]
+          },
+          "name": { "type": "string" },
+          "aliases": { "type": "array", "items": { "type": "string" } },
+          "role": { "type": "string", "examples": ["protagonist"] },
+          "reveal": {
+            "description": "The spoiler gate: do not show this entry to a listener who has not reached this position.",
+            "$ref": "#/components/schemas/Position"
+          },
+          "description": { "type": "string", "description": "Own-words description, length-capped by the authoring rules." },
+          "xref": { "$ref": "#/components/schemas/CharacterXref" }
+        }
+      },
+      "CharacterXref": {
+        "type": "object",
+        "description": "Cross-references for a character. A shared `wikidata` QID is what links one recurring character across a series' per-work entries.",
+        "properties": {
+          "wikidata": { "type": "string" },
+          "goodreads": { "type": "string" }
+        }
+      },
+      "Recap": {
+        "type": "object",
+        "description": "A community-authored \"story so far\" (CC BY-SA 3.0), safe to show once the listener has finished `through`.",
+        "required": ["through", "text"],
+        "properties": {
+          "through": {
+            "description": "Safe to show once the listener has FINISHED this chapter. No two recaps of one work share it.",
+            "$ref": "#/components/schemas/Position"
+          },
+          "scope": {
+            "type": "string",
+            "enum": ["book", "series"],
+            "description": "`book` recaps this book so far; `series` recaps earlier books. A `series` entry at chapter 0 is the \"previously, in earlier books\" recap. Omitted when unstated."
+          },
+          "text": { "type": "string", "description": "Own-words recap, length-capped by the authoring rules." }
+        }
+      },
+      "RecapSummary": {
+        "type": "object",
+        "description": "Whole-book summaries for a reader who has ALREADY FINISHED the book - both spoil the ending by design. The object is omitted when neither field exists.",
+        "properties": {
+          "in_short": { "type": "string", "description": "The whole arc in one paragraph, ending included." },
+          "ending": { "type": "string", "description": "How the book closes, stated plainly. A crisp handoff into the sequel." }
+        }
+      },
+      "WorkDetail": {
+        "type": "object",
+        "description": "The full work document. `characters`, `recaps`, `recap_summary` and `genres` are additionally gated on the loaded artifact's internal schema version: a server briefly serving an older artifact omits them rather than failing.",
+        "required": ["id", "title", "authors", "language", "series", "recordings"],
+        "properties": {
+          "id": { "type": "string" },
+          "title": { "type": "string" },
+          "subtitle": { "type": "string", "description": "Omitted when none." },
+          "authors": {
+            "type": "array",
+            "description": "The identity author list, in billing order.",
+            "items": { "$ref": "#/components/schemas/PersonRef" }
+          },
+          "language": { "type": "string", "description": "BCP 47 language tag.", "examples": ["en"] },
+          "first_published": { "type": "string", "description": "`YYYY` or `YYYY-MM-DD`. Omitted when unknown." },
+          "description": { "type": "string", "description": "Community-written, never a publisher blurb. Omitted when none." },
+          "genres": {
+            "type": "array",
+            "description": "Slugs from this project's own retailer-neutral vocabulary, ascending. Omitted when the work has none, or the loaded artifact predates genres.",
+            "items": { "type": "string", "examples": ["hard-science-fiction"] }
+          },
+          "series": {
+            "type": "array",
+            "description": "EVERY series this work belongs to (the work card carries only the first). Never null; empty for a standalone.",
+            "items": { "$ref": "#/components/schemas/SeriesRef" }
+          },
+          "xref": { "$ref": "#/components/schemas/WorkXref" },
+          "recordings": {
+            "type": ["array", "null"],
+            "description": "Every known narration of this work. Null when the work has none recorded yet.",
+            "items": { "$ref": "#/components/schemas/RecordingDetail" }
+          },
+          "characters": {
+            "type": "array",
+            "description": "The community character guide, in authored order. CC BY-SA 3.0. Omitted when the work has none.",
+            "items": { "$ref": "#/components/schemas/Character" }
+          },
+          "recaps": {
+            "type": "array",
+            "description": "The community story-so-far recaps, ordered by position. CC BY-SA 3.0. Omitted when the work has none.",
+            "items": { "$ref": "#/components/schemas/Recap" }
+          },
+          "recap_summary": { "$ref": "#/components/schemas/RecapSummary" }
+        }
+      },
+      "Chapter": {
+        "type": "object",
+        "description": "One chapter mark of a recording. These are the RECORDING's timeline, not the edition-independent Position the community layer uses.",
+        "required": ["title", "start_ms", "length_ms"],
+        "properties": {
+          "title": { "type": "string", "examples": ["Chapter 1"] },
+          "start_ms": { "type": "integer", "description": "Offset from the start of the recording, milliseconds." },
+          "length_ms": { "type": "integer", "description": "Chapter length, milliseconds." }
+        }
+      },
+      "NarratedEntry": {
+        "type": "object",
+        "description": "One narration credit: which recording of which work. A person who narrated two recordings of one work appears twice.",
+        "required": ["work", "recording_id"],
+        "properties": {
+          "work": { "$ref": "#/components/schemas/WorkCard" },
+          "recording_id": { "type": "string" }
+        }
+      },
+      "PersonDetail": {
+        "type": "object",
+        "required": ["id", "name", "authored", "narrated", "authored_total", "narrated_total", "limit", "offset"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "sort_name": { "type": "string", "description": "Surname-first form, when recorded. Omitted otherwise." },
+          "authored": {
+            "type": "array",
+            "description": "One page of works authored, by title.",
+            "items": { "$ref": "#/components/schemas/WorkCard" }
+          },
+          "narrated": {
+            "type": "array",
+            "description": "One page of narration credits, by work title.",
+            "items": { "$ref": "#/components/schemas/NarratedEntry" }
+          },
+          "authored_total": { "type": "integer", "description": "UNPAGED count of authored works." },
+          "narrated_total": { "type": "integer", "description": "UNPAGED count of narration credits." },
+          "limit": { "type": "integer", "description": "The window that was applied to each list." },
+          "offset": { "type": "integer" }
+        }
+      },
+      "SeriesEntry": {
+        "type": "object",
+        "required": ["position", "work"],
+        "properties": {
+          "position": {
+            "type": "string",
+            "description": "The volume position as a string: \"2\", \"2.5\", or an omnibus range \"1-3.5\".",
+            "examples": ["2"]
+          },
+          "work": { "$ref": "#/components/schemas/WorkCard" }
+        }
+      },
+      "SeriesDetail": {
+        "type": "object",
+        "required": ["id", "name", "authors", "works", "works_total", "limit", "offset"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "authors": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/PersonRef" }
+          },
+          "works": {
+            "type": "array",
+            "description": "Member works in position order.",
+            "items": { "$ref": "#/components/schemas/SeriesEntry" }
+          },
+          "works_total": { "type": "integer", "description": "UNPAGED membership count." },
+          "limit": { "type": "integer", "description": "The window that was applied. 0 means the whole series was returned - the default." },
+          "offset": { "type": "integer" }
+        }
+      },
+      "LookupResult": {
+        "type": "object",
+        "required": ["work", "recording_id"],
+        "properties": {
+          "work": { "$ref": "#/components/schemas/WorkCard" },
+          "recording_id": {
+            "type": "string",
+            "description": "The recording the identifier names. Empty in the rare case where a work print ISBN matched a work with no recordings."
+          }
+        }
+      },
+      "CoverageTotals": {
+        "type": "object",
+        "description": "An omitted sidecar count means the dimension is not evaluable against the loaded artifact - distinct from a real `0`.",
+        "required": ["works"],
+        "properties": {
+          "works": { "type": "integer" },
+          "with_characters": { "type": "integer" },
+          "with_recaps": { "type": "integer" },
+          "with_recap_summary": { "type": "integer" }
+        }
+      },
+      "CoverageResult": {
+        "type": "object",
+        "required": ["totals"],
+        "properties": {
+          "totals": { "$ref": "#/components/schemas/CoverageTotals" }
+        }
+      },
+      "CoverageWork": {
+        "type": "object",
+        "required": ["id", "title", "authors", "missing"],
+        "properties": {
+          "id": { "type": "string" },
+          "title": { "type": "string" },
+          "authors": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/PersonRef" }
+          },
+          "series": {
+            "description": "Omitted for a standalone work.",
+            "$ref": "#/components/schemas/SeriesRef"
+          },
+          "missing": {
+            "type": "array",
+            "description": "Which parts of the community layer the work still lacks, in a fixed order. Empty when it lacks none.",
+            "items": {
+              "type": "string",
+              "enum": ["characters", "recaps", "recap_summary"]
+            }
+          }
+        }
+      },
+      "CoverageWorksResult": {
+        "type": "object",
+        "required": ["works", "total", "limit", "offset", "available"],
+        "properties": {
+          "works": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/CoverageWork" }
+          },
+          "total": { "type": "integer", "description": "UNPAGED count for this filter." },
+          "limit": { "type": "integer" },
+          "offset": { "type": "integer" },
+          "available": {
+            "type": "boolean",
+            "description": "False when this filter's dimension cannot be evaluated against the loaded artifact; `works` is then empty and `total` 0."
+          }
+        }
+      },
+      "SeriesGap": {
+        "type": "object",
+        "required": ["id", "name", "present", "missing_positions"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "present": {
+            "type": "array",
+            "description": "The raw position strings the series does hold, in numeric order.",
+            "items": { "type": "string" }
+          },
+          "missing_positions": {
+            "type": "array",
+            "description": "The integer positions absent strictly between the lowest and highest present one.",
+            "items": { "type": "integer" }
+          }
+        }
+      },
+      "SeriesGapsResult": {
+        "type": "object",
+        "required": ["gaps", "total", "limit", "offset"],
+        "properties": {
+          "gaps": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/SeriesGap" }
+          },
+          "total": { "type": "integer", "description": "UNPAGED count of series with gaps." },
+          "limit": { "type": "integer" },
+          "offset": { "type": "integer" }
+        }
+      },
+      "ABSSeriesRef": {
+        "type": "object",
+        "description": "Audiobookshelf's series shape.",
+        "required": ["series"],
+        "properties": {
+          "series": { "type": "string" },
+          "sequence": { "type": "string", "description": "The position string, passed through as-is. Omitted when empty." }
+        }
+      },
+      "ABSBook": {
+        "type": "object",
+        "description": "Audiobookshelf's BookMetadata shape - NOT this API's work shape. One entry per recording. Only `title` is guaranteed; every other field is omitted when empty.",
+        "required": ["title"],
+        "properties": {
+          "title": { "type": "string" },
+          "subtitle": { "type": "string" },
+          "author": { "type": "string", "description": "Author names, comma-joined." },
+          "narrator": { "type": "string", "description": "Narrator names, comma-joined." },
+          "publisher": { "type": "string" },
+          "publishedYear": { "type": "string", "description": "A bare 4-digit year, as a string." },
+          "description": { "type": "string" },
+          "cover": { "type": "string", "description": "Remote cover URL." },
+          "isbn": { "type": "string", "description": "The recording's first ISBN, else the work's first print ISBN." },
+          "asin": { "type": "string", "description": "The us-region ASIN when there is one, else the first available." },
+          "genres": {
+            "type": "array",
+            "description": "Human-facing display LABELS (\"Hard Science Fiction\"), not the slugs the JSON API serves.",
+            "items": { "type": "string" }
+          },
+          "tags": {
+            "type": "array",
+            "description": "Never populated: the data model has no tag concept.",
+            "items": { "type": "string" }
+          },
+          "series": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/ABSSeriesRef" }
+          },
+          "language": { "type": "string" },
+          "duration": { "type": "integer", "description": "Runtime in MINUTES, which is what Audiobookshelf expects here." }
+        }
+      },
+      "ABSSearchResult": {
+        "type": "object",
+        "required": ["matches"],
+        "properties": {
+          "matches": {
+            "type": "array",
+            "description": "Always an array - Audiobookshelf hard-fails if it is missing or not one.",
+            "items": { "$ref": "#/components/schemas/ABSBook" }
+          }
+        }
+      },
+      "ReleaseWebhook": {
+        "type": "object",
+        "description": "A GitHub release event. Only these fields are read; everything else in a real GitHub payload is ignored. The body is a trigger only - the server re-queries GitHub for the release it acts on.",
+        "properties": {
+          "action": { "type": "string", "description": "Only `published` triggers a refresh.", "examples": ["published"] },
+          "repository": {
+            "type": "object",
+            "properties": {
+              "full_name": {
+                "type": "string",
+                "description": "Must match the deployment's configured repository, case-insensitively.",
+                "examples": ["KodeStar/audiosilo-meta"]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -364,6 +364,45 @@ func checkCreditPairs(cat *model.Catalog, idx *pathIndex, add addFunc) {
 	}
 }
 
+// checkReservedSlug enforces that no work, person or series id is one of the
+// API's route literals (model.ReservedSlugs: "search" and "latest").
+//
+// The API addresses a record by its slug, and it serves literal segments in the
+// same namespaces - /api/v1/works/latest, /api/v1/works/search,
+// /api/v1/people/search, /api/v1/series/search. A literal wins over a wildcard
+// in the router, so a record stored under one of those words is REACHABLE BY
+// SEARCH AND THEN UNOPENABLE: its own detail route answers with the list
+// endpoint instead. The catalogue held exactly one such record - the work
+// "Search" by Alyssa Rose Ivy - which is why this rule ships with a rename.
+//
+// The remedy is the same one a slug collision already takes: a work steps onto
+// its author-suffixed slug, a series onto its numeric one, and a person onto the
+// single variant model.PersonSlug mints (see ReservedPersonSlug), which is why a
+// person named "Search" can satisfy this rule and checkPersonSlug at once.
+//
+// Recording ids are deliberately out of scope: the literal in their route
+// (/works/{id}/recordings/{rid}/chapters) FOLLOWS the wildcard, so a recording
+// slug can shadow nothing.
+func checkReservedSlug(cat *model.Catalog, idx *pathIndex, add addFunc) {
+	report := func(rel, kind, id string) {
+		if !model.IsReservedSlug(id) {
+			return
+		}
+		add(rel, "%s id %q is a reserved slug (%s name an API route segment): the record is "+
+			"unreachable through its own route, so it must be renamed", kind, id,
+			strings.Join(model.ReservedSlugs(), " and "))
+	}
+	for _, w := range cat.Works {
+		report(idx.work[w], "work", w.ID)
+	}
+	for _, p := range cat.People {
+		report(idx.person[p], "person", p.ID)
+	}
+	for _, s := range cat.Series {
+		report(idx.series[s], "series", s.ID)
+	}
+}
+
 // normISBN lowercases the check digit so 10-char ISBNs compare case-insensitively.
 func normISBN(s string) string { return strings.ToUpper(s) }
 
