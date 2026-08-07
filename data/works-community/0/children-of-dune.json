@@ -3276,6 +3276,221 @@
         "work": "citybound"
       }
     },
+    "clear-and-present-danger": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The CIA's deputy director for intelligence, taking on greater responsibility as James Greer's illness worsens. Ryan expects sensitive work to remain subject to law and oversight, even when senior officials invoke national security.",
+            "id": "jack-ryan",
+            "name": "Jack Ryan",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The CIA's veteran deputy director for intelligence and Ryan's mentor. Seriously ill, he continues to advise Ryan while preparing him to shoulder work that Greer can no longer manage himself.",
+            "id": "james-greer",
+            "name": "James Greer",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The director of Central Intelligence, responsible for an agency whose analytical and operational branches do not always share the same information. He relies on Ryan, Greer, and Robert Ritter for different parts of that mission.",
+            "id": "arthur-moore",
+            "name": "Arthur Moore",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The CIA's deputy director for operations. Experienced in compartmented covert programs, he is accustomed to limiting knowledge to the officials and field officers he believes need it.",
+            "id": "robert-ritter",
+            "name": "Robert Ritter",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The President's national security adviser and a retired naval officer. He turns the administration's demand for action against the Colombian drug trade into plans handled within a very small circle.",
+            "id": "james-cutter",
+            "name": "James Cutter",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The President of the United States, personally shaken when an old friend and the friend's family are murdered aboard a yacht linked to drug smuggling. He demands a response while also carrying the constitutional duties of his office.",
+            "id": "the-president",
+            "name": "The President",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful Colombian drug lord whose organization treats murder, bribery, and political influence as ordinary business tools. The seizure of cartel money and growing American pressure threaten both his wealth and his authority.",
+            "id": "ernesto-escobedo",
+            "name": "Ernesto Escobedo",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Cuban intelligence veteran serving as Escobedo's security and intelligence adviser. Patient, educated, and ambitious, he studies American institutions as carefully as he studies rival figures inside the cartel.",
+            "id": "felix-cortez",
+            "name": "Félix Cortez",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An experienced clandestine officer assigned to help run an unusually sensitive operation connected to Colombia. Calm under pressure and protective of field personnel, he understands both the official plan and the practical cost of carrying it out.",
+            "id": "john-clark",
+            "name": "John Clark",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ding"
+            ],
+            "description": "A young American light-infantry soldier selected for covert duty in Colombia. Fluent in Spanish, skilled in the field, and quick to learn, he becomes an important member of a team operating far from overt American support.",
+            "id": "domingo-chavez",
+            "name": "Domingo Chavez",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An American Army officer commanding one of the small teams sent covertly into Colombia. He is responsible for keeping his soldiers disciplined, concealed, and focused while their intelligence is passed to commanders outside the country.",
+            "id": "captain-ramirez",
+            "name": "Captain Ramirez",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The director of the FBI, leading the legal and financial investigation that follows the murders aboard the yacht. His work brings the bureau into direct contact with the Colombian government and the cartel's interests.",
+            "id": "emil-jacobs",
+            "name": "Emil Jacobs",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A trusted secretary at FBI headquarters. Her access gives her a view of senior officials' schedules and travel, while her private life leaves her unaware that seemingly personal attention may have an official purpose.",
+            "id": "moira-wolfe",
+            "name": "Moira Wolfe",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Coast Guard officer whose cutter stops a suspicious yacht in the Caribbean. His careful handling of the vessel and its crew preserves the evidence needed to connect a brutal crime at sea to a much larger narcotics investigation.",
+            "id": "red-wegener",
+            "name": "Red Wegener",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "clear-and-present-danger"
+      },
+      "recaps": {
+        "ending": "Ryan learns that Cutter and Ritter accepted Cortez's offer to end the American campaign by withdrawing support from the light-infantry teams still inside Colombia. Refusing to leave the soldiers to be killed or captured, Ryan joins John Clark in organizing an unauthorized rescue. They reach the survivors during the fighting around Ninja Hill and extract the remaining Americans, with Chavez proving central to the effort. The cartel's internal struggle ends with both Escobedo and Cortez dead, removing the two men who had directed the counterattack and betrayal. Back in Washington, Ryan rejects the proposed cover story and ensures that Congress receives an honest account of the illegal operation and the decision to abandon its personnel. Cutter's conduct and the administration's secret war are exposed rather than quietly buried. James Greer dies after his illness, leaving Ryan without his longtime mentor and with the burden of the office Greer had been preparing him to assume. The field teams' rescue, rather than the covert campaign itself, becomes Ryan's measure of what service requires.",
+        "in_short": "After drug smugglers murder the President's friend and family aboard a yacht, the administration secretly expands the fight against Colombian cartels. Cutter and CIA operations chief Robert Ritter insert light-infantry teams to track drug flights, enabling interceptions and attacks without informing Congress or Jack Ryan. Cartel intelligence chief Félix Cortez learns of the campaign, exploits FBI secretary Moira Wolfe, arranges FBI director Emil Jacobs's murder, and manipulates both cartel boss Ernesto Escobedo and the Americans. A retaliatory American strike kills cartel leaders, but Cortez then offers Cutter a bargain: abandon the covert teams and he will curb shipments after taking power. Ryan, serving as acting deputy director while James Greer is dying, uncovers the hidden operation and its betrayal. He joins John Clark to rescue the surviving soldiers during the battle at Ninja Hill. Escobedo and Cortez are killed, the Americans come home, and Ryan refuses a cover-up, giving Congress the truth. Greer dies, leaving Ryan to inherit greater responsibility.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Jack Ryan moved from occasional CIA analysis into senior intelligence work under James Greer. He first helped Soviet captain Marko Ramius defect with the missile submarine Red October. After terrorists targeted Ryan's family and the visiting Prince and Princess of Wales, Ryan helped break the group and returned to the agency more permanently. He later took part in strategic-arms negotiations while the CIA's most important Kremlin source was exposed. Ryan used a failed KGB operation and Marko Ramius's insight into Soviet loyalties to force KGB chairman Nikolay Gerasimov to release the source and leave the Soviet Union. Ryan begins this book as a trusted CIA executive with a family in Maryland, a strong belief in lawful service, and an increasingly ill Greer still serving as his mentor.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A family aboard a yacht in the Caribbean is murdered by crewmen involved in drug smuggling. The principal victim was an old friend of the President, making the crime personally significant at the White House. Coast Guard officer Red Wegener intercepts the stolen vessel and preserves evidence that lets the FBI trace the killings toward a Colombian narcotics organization. Director Emil Jacobs's investigation also identifies enormous cartel assets vulnerable to seizure. In Colombia, drug lord Ernesto Escobedo confronts the financial and political pressure while his intelligence adviser, Félix Cortez, studies the Americans behind it. Cortez cultivates Moira Wolfe, a secretary inside the FBI, without telling her his real purpose. The President asks his national security team for stronger action, and James Cutter begins shaping a response outside the ordinary criminal process.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The yacht murders lead to arrests and a financial case that strips a vast sum from cartel control. Wanting more than prosecution, the President authorizes a secret campaign against the Colombian drug network. National security adviser James Cutter and CIA operations chief Robert Ritter keep the program tightly compartmented, including from Jack Ryan and much of the normal oversight structure. American light-infantry teams, among them soldiers led by Captain Ramirez and including Domingo Chavez, are inserted into remote Colombian terrain. John Clark helps manage their field support. The teams observe airstrips and movements so American forces can interfere with drug flights while maintaining deniability. Escobedo sees the losses but does not yet understand the full method. Cortez approaches the problem as intelligence work, using Moira's access and the cartel's local reach to identify the officials and operations applying pressure.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Cutter and Ritter's undeclared campaign now combines surveillance by covert ground teams with attacks on the cartel's transportation system. The American soldiers pass information from hidden observation sites, and drug aircraft begin disappearing or failing to reach their destinations. Ryan remains outside the compartment even as James Greer's declining health forces Ryan to perform more of the deputy director's work. The FBI's seizure of cartel funds adds legal pressure, and Director Emil Jacobs prepares direct discussions in Colombia. Cortez uses clues from the pattern of losses and information obtained through Moira Wolfe to reconstruct the American effort. He sees a chance not merely to protect Escobedo but to reshape the cartel leadership for his own benefit. The field teams are effective, yet their secrecy means that very few officials know where they are or what support they will need if the Colombians locate them.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Cortez uses the relationship with Moira Wolfe to learn Emil Jacobs's travel plans, enabling the cartel to assassinate the FBI director and his party in Colombia. The murder provokes a covert American air strike against a gathering of cartel leaders. The attack inflicts heavy losses but also reveals the reach and seriousness of the secret campaign. Cortez survives and turns the damage to his advantage, encouraging Escobedo's fear while pursuing his own path to power. He also works to find the American observation teams whose reports make the interdiction effort possible. In Washington, Ryan is now carrying Greer's duties and notices decisions and resources that do not fit the operations disclosed to him. Cutter and Ritter face growing political risk because the campaign was conducted without proper congressional notification. The soldiers in Colombia remain in place as the cartel shifts from absorbing losses to hunting them directly.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ryan follows the unexplained operational and budget trail and discovers that American infantry teams have been fighting a secret war in Colombia without his knowledge. Cortez, meanwhile, offers Cutter a bargain designed to serve his own takeover: American support for the ground teams will end, and a future cartel under Cortez will reduce the pressure of drug shipments. With exposure threatening the administration, Cutter and Ritter accept a course that leaves the teams isolated and suppresses the communications and support needed to bring them home. Cartel forces begin attacking the American positions, killing or capturing soldiers. Clark realizes that men sent under his protection are being sacrificed to erase the evidence of the operation. Ryan rejects the claim that secrecy or political necessity permits their abandonment and starts assembling the information and people required for a rescue, even though the officials who created the mission will not authorize one.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ryan confronts the covert arrangement and joins Clark in acting outside Cutter's plan to recover the surviving Americans. They enter Colombia and reestablish contact with men who have been scattered, attacked, and deprived of expected support. Chavez and the other survivors continue fighting as cartel forces close on their positions. At Ninja Hill, the rescue becomes a direct battle rather than a quiet extraction, requiring Clark and Ryan to coordinate air support and movement under fire. The attempt confirms that Cutter's agreement with Cortez was not an orderly termination of policy but a decision to let American personnel disappear for political convenience. The cartel is also splitting from within: Cortez's ambition and his dealings with the Americans have made Escobedo expendable, while each man remains dangerous to the rescue force. The operation has reached its final military phase, but not all of the teams are yet safely out.",
+            "through": {
+              "chapter": 27
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ryan, Clark, Chavez, and their allies extract the surviving American soldiers after the battle around Ninja Hill, refusing to leave the covert teams as casualties of a Washington cover-up. The struggle inside the cartel ends with both Ernesto Escobedo and Félix Cortez dead, so neither the established boss nor the intelligence chief who planned to replace him controls the aftermath. Ryan returns with direct knowledge of how the operation was authorized, hidden, and abandoned. He rejects efforts to protect senior officials through a false account and makes sure congressional overseers receive the truth, exposing Cutter's bargain and the administration's unlawful conduct. The immediate cartel campaign is over, but its political consequences remain. James Greer's terminal illness ends in his death, depriving Ryan of the mentor who brought him into the CIA and taught him the obligations of the office. Ryan is left to carry greater authority with the lesson that loyalty to the service cannot mean concealing wrongdoing or sacrificing its people.",
+            "through": {
+              "chapter": 30
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "clear-and-present-danger"
+      }
+    },
     "clockwork-angel": {
       "characters": {
         "characters": [
@@ -4749,6 +4964,177 @@
           }
         ],
         "work": "collapse"
+      }
+    },
+    "columbus-day": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Joe"
+            ],
+            "description": "A young U.S. Army sergeant home in Maine when aliens attack Earth on Columbus Day. Practical, stubborn, and inclined to act before a situation becomes hopeless, he survives the first contact through fieldcraft and luck. He soon joins the human expedition sent into an interstellar war that humanity barely understands.",
+            "id": "joe-bishop",
+            "name": "Joseph Bishop",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A U.S. Marine noncommissioned officer serving with the forces mobilized after the attack on Earth. Disciplined, formidable, and protective of the people under her command, she is one of the soldiers Bishop comes to trust as humanity is drawn into the alien conflict.",
+            "id": "margaret-adams",
+            "name": "Margaret Adams",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior Chinese officer in the multinational expeditionary force. Experienced and composed, he gives Bishop valuable support as human troops try to operate under alien command on Paradise.",
+            "id": "colonel-chang",
+            "name": "Colonel Chang",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Skippy the Magnificent"
+            ],
+            "description": "A highly advanced artificial intelligence whom Bishop encounters while confined on Paradise. His visible hardware resembles a shiny cylindrical canister, but his knowledge and control of technology are far beyond the younger species fighting nearby. He is boastful, secretive, and constrained in whom he can assist, which makes his willingness to speak with an ordinary human exceptionally important.",
+            "id": "skippy",
+            "name": "Skippy",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A British special-forces officer selected for the small human team assembled after Bishop escapes confinement. Reserved, exacting, and highly capable in hostile boarding operations, he provides professional military experience for a plan built around stolen alien equipment.",
+            "id": "jeremy-smythe",
+            "name": "Jeremy Smythe",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An officer chosen for Bishop's improvised starship crew. She brings organizational discipline to a group that must turn soldiers from several nations into the crew of an unfamiliar alien vessel.",
+            "id": "jennifer-simms",
+            "name": "Jennifer Simms",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A military pilot recruited for the human crew attempting to operate captured alien spacecraft. Her aviation experience makes her one of the people Bishop relies on while Skippy supplies the technical knowledge humans lack.",
+            "id": "maya-desai",
+            "name": "Maya Desai",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A French special-operations soldier who joins Bishop's compact multinational team. He is selected for dangerous boarding and ground assignments in which the humans must depend on training rather than a full understanding of alien systems.",
+            "id": "rene-giraud",
+            "name": "Rene Giraud",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ski"
+            ],
+            "description": "A soldier in the group Bishop draws together for the effort to seize and crew an alien ship. His combat experience helps the hurriedly formed unit carry out missions for which no human military has doctrine or equipment of its own.",
+            "id": "dave-czajka",
+            "name": "Dave Czajka",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A scientist brought into the effort after the captured ship reaches Earth. Friedlander is among the specialists asked to study what Bishop's crew has learned while preserving the secrecy on which the planet's safety depends.",
+            "id": "doctor-friedlander",
+            "name": "Doctor Friedlander",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "columbus-day"
+      },
+      "recaps": {
+        "ending": "Bishop, Skippy, and the human crew bring the captured Flying Dutchman to Earth, proving that the expeditionary force was drawn into an alien conflict under false assumptions. Skippy's existence and the theft of the ship must remain secret: humanity cannot yet survive the attention of the senior species whose clients are fighting the war. Returning home therefore does not end the mission. Earth gains access to alien technology and warning of the wider danger, but it cannot openly use either without revealing what happened on Paradise. With their families and governments informed only as far as security permits, Bishop and the multinational crew accept that they must go back into space. The Flying Dutchman departs Earth again with the newly named Merry Band of Pirates, relying on Skippy to conceal their movements while they work to prevent either side of the alien war from tracing the theft and the artificial intelligence back to humanity. Earth is temporarily safe, not secure, and Bishop's improvised force becomes its covert defense beyond the solar system.",
+        "in_short": "When the Ruhar attack Earth on Columbus Day, U.S. Army sergeant Joe Bishop survives the invasion and later joins a human expedition sent out with the Kristang, the aliens presented as Earth's rescuers. On Paradise, human troops discover that they are expendable auxiliaries in a much older war. Bishop's rise through the ranks ends in confinement, where he meets Skippy, an ancient and extraordinarily powerful artificial intelligence housed in a canister. Skippy reveals that humanity has misunderstood both the war and the danger surrounding Earth. He helps Bishop escape, gather a multinational team, and seize an alien starship that they rename the Flying Dutchman. The newly formed Merry Band of Pirates uses secrecy, raids, and Skippy's control of advanced systems to get the vessel home without exposing Earth. Their return brings warning and technology, but no lasting safety: discovery by the senior alien powers could doom humanity. Bishop and his crew consequently leave Earth again aboard the Dutchman to protect the secret and keep hostile attention away from their planet.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "On Columbus Day, U.S. Army sergeant Joe Bishop is home in Maine when alien troops descend on Earth. The invaders are Ruhar, compact furred aliens whom the soldiers nickname hamsters. Bishop survives the sudden attack and helps resist with whatever weapons are available, but humanity has no effective answer to a force that arrived from space. A second alien species, the reptilian Kristang, then drives the Ruhar away and presents itself as Earth's rescuer. The apparent liberation comes with an invitation that is difficult to refuse: human troops can join the Kristang side of the interstellar war and help keep the enemy away from Earth. Bishop deploys with the resulting multinational force, leaving a damaged and bewildered planet for alien transport and training at Camp Alpha. The humans know almost nothing about the powers employing them, their technology, or the reasons Earth became a target, but most accept the Kristang account because it is the only explanation being offered.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bishop and the expeditionary force travel to Paradise, a habitable world contested by the Kristang and Ruhar. The Kristang place the humans in ground positions and provide only limited information, treating their new allies as inexpensive infantry in a conflict fought with technology far beyond human experience. Combat on Paradise quickly exposes the gap between the public story of noble rescuers and the Kristang officers' indifference to human losses. Bishop's ability to improvise under pressure becomes increasingly important as isolated troops try to defend their positions with inadequate support. Human communications, transport, and intelligence all remain subject to alien priorities, leaving even senior officers with little independent knowledge. At Fort Arrow, Bishop helps keep a bad tactical situation from becoming a disaster. The experience convinces him that the expedition cannot assume its alien commanders value human lives or are telling the truth about the war, even though open resistance would leave the force stranded far from Earth.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bishop's success at Fort Arrow brings an extraordinary promotion, placing a young soldier in a rank he never expected and under scrutiny from both human and Kristang commanders. Rank does not give him real control over the expedition's situation: the humans remain dependent on the Kristang for transport, supplies, and any route back to Earth. He continues using practical, unconventional solutions to keep troops fed and functioning while the campaign shifts around them, but initiative is unwelcome when it exposes failures in the official plan. His unwillingness to accept alien orders without question eventually puts him on the wrong side of the authorities. By the end of the ninth chapter he is confined, apparently cut off from any chance to help the force or learn why the war around Paradise does not match what humanity was told. The confinement instead places him near an object that the species fighting over the planet have failed to understand.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In confinement, Bishop hears a voice from a metallic canister and meets the artificial intelligence he names Skippy. The unassuming hardware contains an intelligence far older and more capable than the Kristang or Ruhar. Skippy is arrogant and evasive, but he can manipulate the advanced systems around them with ease. He explains that the local species are clients in a larger hierarchy and that humanity's supposed rescue does not make the Kristang trustworthy. Earth remains vulnerable, and revealing Skippy to the wrong power could make the danger much worse. Because his restrictions allow him to cooperate with a technologically primitive human in ways he cannot with the local spacefaring species, Bishop becomes the essential partner in an escape. With Skippy opening opportunities no human could create alone, Bishop gets free, recruits a compact multinational team, and begins the audacious task of taking an alien ship. The improvised unit becomes the Merry Band of Pirates, bound together by the need to act without alerting either side to Skippy or to their real objective.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bishop's team seizes a starship and renames it the Flying Dutchman. Skippy can make its systems function and conceal much of what the humans are doing, but that does not turn the soldiers into an experienced space crew. They have to learn alien procedures while moving through hostile territory, and every use of the vessel risks leaving evidence that could be followed to Earth. Boarding actions, work outside the hull, and a carefully chosen raid give the Pirates equipment and information they need while helping to confuse the story of the ship's disappearance. Bishop's objective is no longer victory for either side on Paradise. It is to get the Dutchman and its human crew home, keep Skippy's existence secret, and prevent the alien powers from recognizing that humanity has gained access to technology it should not possess. By the end of the raid, the Pirates have a route toward Earth, but success depends on deception continuing to hold after they leave the immediate battlefield.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Flying Dutchman reaches Earth with Bishop, Skippy, and the multinational crew. Their arrival confirms that the expeditionary force was used in a conflict humanity does not understand and gives Earth's governments knowledge they cannot safely acknowledge. Skippy warns that the Kristang and Ruhar are only lower levels in a hierarchy of far more capable species. If those powers learn that humans stole a ship, crossed interstellar space independently, or are sheltering an ancient artificial intelligence, Earth could be destroyed before it can defend itself. The Dutchman's return must therefore remain tightly concealed, and the ship cannot simply be displayed as the prize that brought the expedition home. After a brief period on Earth, Bishop accepts that protecting the planet requires the Pirates to operate beyond it. The crew prepares the captured vessel for another covert mission and departs again. The book closes with the Merry Band of Pirates outbound aboard the Dutchman, using Skippy's abilities and their own improvisation to preserve the secrecy that is now Earth's main defense.",
+            "through": {
+              "chapter": 19
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "columbus-day"
       }
     }
   }
