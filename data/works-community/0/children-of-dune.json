@@ -3438,6 +3438,106 @@
         "work": "citybound"
       }
     },
+    "classic-adventures-of-sherlock-holmes-red-headed-league": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A London consulting detective approached by Jabez Wilson about the abrupt disappearance of an unusual organization for red-haired men. He treats the strange employment scheme as evidence of a more serious crime.",
+            "id": "sherlock-holmes",
+            "name": "Sherlock Holmes",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A doctor, Holmes's friend, and the narrator of the case. He visits Baker Street while Wilson is explaining his problem and accompanies Holmes during the investigation and its final watch.",
+            "id": "dr-john-watson",
+            "name": "Dr John Watson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A red-haired London pawnbroker whose business has declined. On his assistant's advice, he accepts a well-paid post copying an encyclopedia for four hours each day, then consults Holmes when the supposed Red-Headed League vanishes without explanation.",
+            "id": "jabez-wilson",
+            "name": "Jabez Wilson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Wilson's capable young assistant, who works for unusually low wages and spends considerable time developing photographs in the cellar. He draws Wilson's attention to the Red-Headed League vacancy and helps him obtain the position.",
+            "id": "vincent-spaulding",
+            "name": "Vincent Spaulding",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The red-haired official who interviews Wilson for the League, verifies that his hair is genuine, and hires him to copy an encyclopedia under strict rules. He presents himself as acting on behalf of an eccentric benefactor.",
+            "id": "duncan-ross",
+            "name": "Duncan Ross",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Scotland Yard detective who joins Holmes and Watson for a nighttime operation. He knows the criminal Holmes expects to catch and is eager to make the arrest.",
+            "id": "inspector-jones",
+            "name": "Inspector Jones",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A bank director who allows Holmes, Watson, and Jones into the vault beneath his bank. He is initially impatient with the vigil but accepts Holmes's warning that a valuable store of gold is in danger.",
+            "id": "mr-merryweather",
+            "name": "Mr Merryweather",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "classic-adventures-of-sherlock-holmes-red-headed-league"
+      },
+      "recaps": {
+        "ending": "Holmes, Watson, Inspector Jones, and bank director Merryweather wait in the bank vault behind Wilson's pawnshop. Vincent Spaulding emerges through a tunnel and is arrested as John Clay, a well-known criminal; his accomplice is prevented from escaping above ground. Clay and his partner invented the Red-Headed League, with the partner posing as Duncan Ross, to keep Wilson out of his shop while they dug from its cellar into the bank. They dissolved the League when the tunnel was ready and chose Saturday night for the robbery, expecting the closed bank to give them time before discovery. Holmes had recognized the fake employment as a means of removing Wilson, then confirmed his suspicion by observing Spaulding's worn, stained knees and the position of the neighboring bank. The criminals are taken into custody and the stored gold remains secure.",
+        "in_short": "Pawnbroker Jabez Wilson asks Holmes why a generously paid job offered only to red-haired men has suddenly disappeared. Wilson's assistant, Vincent Spaulding, had encouraged him to apply, and the work kept him away from his shop for fixed hours every day. Holmes suspects that the League was invented to remove Wilson from the premises. After inspecting the shop, Spaulding's trouser knees, and the surrounding streets, he realizes that the pawnshop backs onto a bank holding valuable gold. Holmes, Watson, Inspector Jones, and bank director Merryweather wait in the vault. Spaulding breaks through the floor and is arrested as the criminal John Clay. He and an accomplice created the League and used Wilson's absences to dig a tunnel from the shop cellar. Their robbery is stopped before any gold is taken.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "London pawnbroker Jabez Wilson tells Holmes and Watson that his assistant, Vincent Spaulding, urged him to answer an advertisement for the Red-Headed League. A man calling himself Duncan Ross hired Wilson to copy an encyclopedia for good wages, provided he remained in the League's office for four fixed hours every day. After eight weeks, Wilson arrived to find the office closed and the organization dissolved. Holmes visits the pawnshop, notes Spaulding's worn and stained knees, and studies the nearby buildings. He concludes that the League existed to keep Wilson away while Spaulding and an accomplice worked in the cellar. Because the shop adjoins a bank storing gold, Holmes arranges a watch in its vault with Watson, Inspector Jones, and bank director Merryweather. Spaulding emerges through a newly dug tunnel and is captured as John Clay, an experienced criminal; his partner is intercepted outside. The partner had played Ross, and the pair ended the League once their tunnel was complete. Holmes explains that the artificial job, Spaulding's willingness to accept low wages, the condition of his knees, and the shop's location exposed a planned bank robbery. The gold is saved and both conspirators are taken into custody.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "classic-adventures-of-sherlock-holmes-red-headed-league"
+      }
+    },
     "clear-and-present-danger": {
       "characters": {
         "characters": [

@@ -378,6 +378,326 @@
         "work": "the-narrows"
       }
     },
+    "the-new-annotated-dracula": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A young English solicitor sent to Transylvania to help Count Dracula complete the purchase of an estate near London. Conscientious and curious, he keeps a detailed journal of his difficult journey and is initially determined to be a courteous guest despite the unsettling isolation of Dracula's castle.",
+            "id": "jonathan-harker",
+            "name": "Jonathan Harker",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A Transylvanian nobleman whose invitation brings Jonathan Harker to a remote castle. He welcomes the solicitor with old-fashioned courtesy, unusual physical strength, and an insistence that no servants are present.",
+            "id": "count-dracula",
+            "name": "Count Dracula",
+            "reveal": {
+              "chapter": 1
+            }
+          },
+          {
+            "description": "Jonathan Harker's fiancée, a practical young woman working as an assistant schoolmistress. She studies shorthand so that she can support Jonathan professionally and exchanges affectionate letters with her closest friend, Lucy Westenra.",
+            "id": "mina-murray",
+            "name": "Mina Murray",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Mina's warm and sociable friend, whose beauty and openness attract three proposals on the same day. She accepts Arthur Holmwood while remaining fond of the two men she turns down.",
+            "id": "lucy-westenra",
+            "name": "Lucy Westenra",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A physician who runs a private asylum and records unusual cases on a phonograph. One of Lucy Westenra's unsuccessful suitors, he respects her choice and stays close to Arthur Holmwood and Quincey Morris.",
+            "id": "john-seward",
+            "name": "Dr. John Seward",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Art"
+            ],
+            "description": "Lucy Westenra's chosen fiancé and the son of Lord Godalming. He is a close friend of John Seward and Quincey Morris, the other two men who proposed to Lucy, and bears them no resentment over their shared affection for her.",
+            "id": "arthur-holmwood",
+            "name": "Arthur Holmwood",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An American adventurer from Texas and one of Lucy Westenra's three suitors. Direct, generous, and loyal, he accepts her refusal gracefully and preserves his friendship with both Arthur Holmwood and John Seward.",
+            "id": "quincey-morris",
+            "name": "Quincey Morris",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A patient in Dr. Seward's asylum whose moods and strange compulsions make him the doctor's most absorbing case. He catches and consumes living creatures according to a private calculation about accumulating life, while showing flashes of education and self-command.",
+            "id": "renfield",
+            "name": "R. M. Renfield",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly Whitby resident whom Mina and Lucy meet beside the churchyard. Skeptical of local legends and blunt about death, he nevertheless becomes their regular companion during their stay by the sea.",
+            "id": "mr-swales",
+            "name": "Mr. Swales",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Lucy's widowed mother, whose serious heart condition has been concealed from her daughter to spare her distress. She joins Lucy at Whitby and later relies on the younger woman's friends and doctors when Lucy becomes ill.",
+            "id": "mrs-westenra",
+            "name": "Mrs. Westenra",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Dr. Seward's former teacher, a widely experienced Dutch physician whom Seward asks to examine Lucy's mysterious illness. Energetic, compassionate, and intellectually adventurous, he has Seward's confidence when ordinary diagnosis offers no answer.",
+            "id": "abraham-van-helsing",
+            "name": "Professor Abraham Van Helsing",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-new-annotated-dracula"
+      },
+      "recaps": {
+        "ending": "Dracula escapes England aboard a ship bound for the Black Sea, while Mina's psychic link to him lets Van Helsing's group follow. After the Count is transferred through Galatz, the hunters divide along the routes to his castle. Van Helsing takes Mina to the castle, protects her within a circle of holy wafer, and destroys the three vampire women while Dracula's influence over Mina weakens. Jonathan and Quincey intercept the wagon carrying Dracula's box just before sunset. They force it open, and Jonathan cuts Dracula's throat as Quincey drives a knife into his heart. The Count crumbles, and Mina's forehead scar vanishes, showing that she is free. Quincey dies from a wound received in the fight. Seven years later, Jonathan and Mina return to the region with their son, whom they have named Quincey in their friend's memory. The surviving companions remain close, and Van Helsing reflects that their records preserve the truth even though they offer little conventional proof.",
+        "in_short": "Solicitor Jonathan Harker travels to Count Dracula's Transylvanian castle and discovers that his client is a vampire preparing to move to England. Dracula reaches Whitby and preys on Lucy Westenra despite repeated transfusions and the efforts of Professor Van Helsing. After Lucy dies and becomes a vampire, Van Helsing, Arthur Holmwood, John Seward, and Quincey Morris release her from that state. Mina, now married to Jonathan, organizes the group's records as they hunt Dracula through his London properties. Dracula retaliates by forcing Mina to drink his blood, creating a bond that threatens to transform her but also helps the hunters track him. They destroy his English refuges and pursue him back toward his castle. Jonathan and Quincey kill Dracula moments before sunset, freeing Mina; Quincey dies from his wounds. Years later, Jonathan and Mina commemorate him by giving their son his name.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "English solicitor Jonathan Harker travels through Transylvania to complete Count Dracula's purchase of Carfax, an estate near London. Local people fear his destination and give him a crucifix, but he continues to Dracula's isolated castle. His host is courteous yet unnatural: he appears only at night, casts no reflection, possesses alarming strength, and reacts violently to the sight of blood. Jonathan realizes that the castle is a prison. He later sees Dracula crawl down its wall and encounters three predatory women, from whom the Count claims him for himself. Dracula studies Jonathan's speech and clothes while arranging misleading letters that will make it appear his guest has safely left. Jonathan discovers boxes filled with earth in the ruined chapel and finds Dracula lying within one of them. As workers prepare to carry the boxes away, Jonathan understands that Dracula intends to travel to England and that he must risk an escape before he is abandoned to the women in the castle.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jonathan Harker is trapped in Count Dracula's castle after discovering that the Count is a dangerous supernatural being preparing to move to England in boxes of native earth. In England, Mina Murray waits for Jonathan while staying at Whitby with her friend Lucy Westenra, who has accepted Arthur Holmwood's proposal after also receiving proposals from Dr. John Seward and the American Quincey Morris. Seward studies Renfield, an asylum patient obsessed with consuming living creatures. A violent storm drives the apparently deserted ship Demeter into Whitby harbor with a cargo that includes boxes of earth; its crew has vanished, its dead captain is lashed to the wheel, and a large dog leaps ashore. Soon afterward Lucy resumes sleepwalking. Mina finds her unconscious in the churchyard with a dark figure bending over her and notices two small wounds on her neck. Lucy grows pale and weak, while Renfield's agitation seems tied to the arrival of an unseen master. Mina then receives word that Jonathan is alive but ill in a hospital in Budapest and prepares to go to him.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jonathan Harker survives his imprisonment in Transylvania, while the Demeter's mysterious arrival in England is followed by Lucy Westenra's unexplained nightly loss of blood. Dr. Seward calls in his former teacher, Professor Van Helsing, who recognizes that the danger is unusual but initially withholds his conclusion. Arthur Holmwood gives Lucy a blood transfusion, and Van Helsing surrounds her with garlic and insists that she must never be left unprotected. Lucy's mother, unaware of the purpose, removes the garlic and opens the room. After further attacks, Seward and Van Helsing each donate blood to keep Lucy alive. A wolf then smashes through Lucy's window; the shock kills Mrs. Westenra, and drugged servants are unable to help. Lucy is found desperately weak beside her mother's body. Quincey Morris supplies blood for another transfusion, but Lucy's condition continues to deteriorate. Meanwhile Mina has found Jonathan in Budapest, married him there, and sealed his account of Transylvania, promising not to read it unless duty requires. By the end of the crisis at the Westenra house, Van Helsing and Seward are struggling to keep Lucy alive through the night.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jonathan Harker escapes Dracula's castle, but the Count reaches England and repeatedly drains Lucy Westenra's blood. Despite transfusions and Van Helsing's protections, Lucy dies. Reports then describe a beautiful woman luring children away at night and leaving wounds on their throats. Van Helsing persuades Seward to inspect Lucy's tomb; her coffin is empty at night, and they later see the changed Lucy return with a child. Arthur and Quincey join them, and all four confront the truth that Lucy has become a vampire. After seeing her transformed state, Arthur drives a stake through her heart under Van Helsing's direction. They complete the rites that free her and restore peace to her face. Mina and Jonathan, now married, return to England. Mina reads Jonathan's journal after seeing Dracula in London and shares it with Van Helsing, confirming that Jonathan's experiences were real. The separate journals, letters, newspaper reports, and ship records begin to connect Lucy's death, the arrival at Whitby, and the foreign nobleman who purchased Carfax.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After freeing the vampiric Lucy Westenra, Van Helsing unites Mina and Jonathan Harker with Arthur Holmwood, John Seward, and Quincey Morris to hunt Count Dracula. Mina types and arranges everyone's records, creating a single chronology that identifies the boxes of Transylvanian earth as Dracula's refuges. The men search Carfax and find that many boxes have already been moved elsewhere. While they exclude Mina from their most dangerous discussions, an unseen nighttime presence leaves her confused and exhausted. Renfield, whose behavior has long responded to Dracula's proximity, begs Seward to release him but will not fully explain the danger. The hunters trace shipments and discover that Dracula has distributed boxes among several London houses, including a property in Piccadilly. Renfield is later found mortally injured after trying to resist his master. His account finally makes the immediate threat clear, and the men rush toward Mina's room, realizing that she may be in danger.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Van Helsing's group finds Dracula forcing Mina to drink blood from a wound in his chest while Jonathan lies unconscious beside them. Dracula escapes, but the exchange creates a psychic and physical bond with Mina and places her at risk of becoming a vampire. Van Helsing touches a holy wafer to her forehead, leaving a scar, then uses hypnosis at dawn and dusk to learn what Mina senses through Dracula. The hunters sterilize the Count's boxes of earth with holy wafers and break into his other London properties. They confront him at Piccadilly, but he escapes with money and the final usable box. Shipping evidence and Mina's trances show that Dracula is fleeing England aboard the Czarina Catherine, bound for Varna. The group sets out overland in the hope of reaching the port first and destroying him before he can regain the safety of his Transylvanian stronghold.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Count Dracula flees England with his last box of native earth after attacking Mina Harker and creating a psychic bond that threatens to transform her. The hunters follow him to Galatz and split up along the routes to his castle. Van Helsing escorts Mina into the mountains, where her growing vulnerability becomes clear. He protects her inside a circle marked with holy wafer, enters the castle alone, and destroys the three vampire women before sealing Dracula's tomb against return. Jonathan Harker and Arthur Holmwood pursue the wagon carrying Dracula's box, while John Seward and Quincey Morris close in from another direction. Near sunset the parties converge and fight the armed men guarding the wagon. Jonathan and Quincey force open the box; Jonathan cuts Dracula's throat and Quincey pierces his heart. Dracula disintegrates, Mina's scar disappears, and she is freed from his influence. Quincey dies from a wound suffered in the struggle. Seven years later, Jonathan and Mina revisit the region with their young son, named Quincey after their fallen friend, while the surviving companions remain bound by what they endured together.",
+            "through": {
+              "chapter": 27
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-new-annotated-dracula"
+      }
+    },
+    "the-nutcracker-and-the-mouse-king-brian-sibley": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A kind, imaginative girl in the Stahlbaum family. She is especially drawn to the plain wooden Nutcracker among the elaborate Christmas gifts, nurses him after Fritz damages him, and remains loyal when the adults treat her extraordinary experiences as feverish dreams.",
+            "id": "marie-stahlbaum",
+            "name": "Marie Stahlbaum",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Marie's godfather, a clockmaker and ingenious maker of mechanical toys. His severe appearance and mysterious manner can unsettle the children, but his gifts and stories connect Marie's household to the Nutcracker's hidden history.",
+            "id": "drosselmeier",
+            "name": "Godfather Drosselmeier",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Nutcracker"
+            ],
+            "description": "A wooden Christmas figure given to the Stahlbaum children, dressed like a small soldier and built to crack nuts. Marie takes responsibility for him after Fritz breaks his jaw. During the strange events after midnight, he commands the toys defending the house from the mice.",
+            "id": "nutcracker",
+            "name": "The Nutcracker",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Marie's energetic brother, delighted by toy soldiers and eager to test every new present. His rough use of the Nutcracker causes its injury, though his miniature troops later become part of the battle Marie witnesses.",
+            "id": "fritz-stahlbaum",
+            "name": "Fritz Stahlbaum",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A seven-headed ruler of the mice who emerges at night with an army from beneath the floor. He attacks the Nutcracker's toy forces and later uses threats against Marie's toys and sweets to force her obedience.",
+            "id": "mouse-king",
+            "name": "The Mouse King",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A princess whose beauty once absorbed the attention of an entire royal court. A curse laid upon her by the mouse queen Mouserinks transforms her, and the effort to restore her gives Marie the history behind the Nutcracker's strange appearance.",
+            "id": "princess-pirlipat",
+            "name": "Princess Pirlipat",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The mouse queen whose family is killed after eating the palace's lard. She retaliates by cursing the infant Princess Pirlipat, beginning the conflict that eventually transforms Drosselmeier's young nephew into the Nutcracker.",
+            "id": "queen-mouserinks",
+            "name": "Queen Mouserinks",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A courteous young man from Drosselmeier's family who can crack the exceptionally hard Krakatuk nut. His role in curing Princess Pirlipat exposes him to the mouse queen's curse and binds his fate to the wooden Nutcracker Marie protects.",
+            "id": "drosselmeiers-nephew",
+            "name": "Drosselmeier's Nephew",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-nutcracker-and-the-mouse-king-brian-sibley"
+      },
+      "recaps": {
+        "ending": "After the Nutcracker kills the Mouse King, he leads Marie through a wondrous realm of sweets, toys, and elaborate cities, where she is welcomed as the person who saved him. She later awakens at home, and the adults once again treat her account as a dream. Marie nevertheless declares that she would never have rejected the young man who was cursed into the Nutcracker merely because of his altered appearance. That promise completes what courage in battle could not: the curse is broken. Drosselmeier's nephew arrives in human form and identifies himself as the ruler Marie knew as the Nutcracker. He asks her to marry him, and she accepts. The tale closes by saying that Marie becomes his queen in the marvelous kingdom she visited, joining an ordinary family Christmas to the fairy-tale world whose reality only she consistently trusted.",
+        "in_short": "At Christmas, Marie Stahlbaum chooses an ungainly Nutcracker as her favorite gift and cares for him after her brother damages him. At midnight she sees the household toys come alive under his command and fight a mouse army led by the seven-headed Mouse King. Marie saves the Nutcracker, but the Mouse King later extorts her sweets and toys. Godfather Drosselmeier tells how Queen Mouserinks cursed Princess Pirlipat and how his nephew broke that curse with the hard Krakatuk nut, only to be transformed into the Nutcracker himself. Marie supplies him with a sword, and he kills the Mouse King. He then takes her through his splendid toy kingdom. Back home, Marie's family dismisses her experiences, but she promises she would have loved Drosselmeier's nephew despite his deformity. Her steadfast acceptance breaks his curse; he appears as a young man, proposes to her, and eventually takes her to reign with him in his enchanted realm.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "On Christmas Eve, Marie and Fritz Stahlbaum wait for the family room to be opened and discover presents arranged around a decorated tree. Their inventive godfather Drosselmeier has contributed an intricate mechanical display, but Marie's attention settles on a much simpler figure used for cracking nuts. Fritz tries increasingly hard nuts in its mouth and damages its jaw. Marie takes pity on the Nutcracker, bandages him, and places him carefully with the other toys. When she remains in the room after bedtime, the familiar surroundings begin to change. The clock behaves strangely, noises come from behind the walls, and Marie senses that Drosselmeier and the wooden figure are connected to something beyond an ordinary Christmas game.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Mice pour into the room under the seven-headed Mouse King, while dolls and toy soldiers come alive under the Nutcracker's command. Fritz's disciplined troops initially resist, but confusion and damage weaken the toys. When the Mouse King is about to defeat the Nutcracker, Marie throws her shoe into the struggle and collapses after cutting herself on the glass cabinet. She wakes in bed with an injured arm. Her family treats the battle as a feverish dream, although Drosselmeier's behavior suggests that he knows more. He repairs the Nutcracker and begins telling Marie a story that can explain why the wooden soldier has such an unusual face and why mice are his enemies.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Drosselmeier's tale begins in a royal palace, where Queen Mouserinks takes revenge after her mouse family is killed for stealing the court's lard. She curses the infant Princess Pirlipat, changing the admired child into a grotesque figure. The court learns that only the kernel of the exceptionally hard Krakatuk nut, cracked in a prescribed way by a young man who has never shaved or worn boots, can restore her. After years of searching, Drosselmeier and the royal astronomer find both the nut and the proper young man in Drosselmeier's own nephew. He completes nearly all the ritual, and Pirlipat regains her beauty, but he steps on Mouserinks during the final movement. Her dying curse transfers the deformity to him, leaving him with the appearance of a nutcracker. The ungrateful princess rejects him, and he loses the promised reward.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Mouse King begins visiting Marie at night and threatens to bite the Nutcracker unless she gives him her sweets and treasured toys. She repeatedly sacrifices her possessions, but each payment leads to a new demand. When she finally tells the Nutcracker, he asks for a sword. Fritz provides one from a toy officer, allowing the Nutcracker to challenge his enemy properly. He returns victorious and presents Marie with the Mouse King's seven crowns. The victory ends the nightly extortion and confirms that Marie's loyalty has materially changed the struggle rather than merely furnishing her with a dream. In gratitude, the Nutcracker invites her to see his own country, opening a passage from the Stahlbaum home into a landscape governed by the logic of toys and confectionery.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Nutcracker guides Marie through a marvelous realm of sweets, dolls, and shining miniature cities, where its inhabitants honor her for saving their ruler. She awakens back at home, and her family again refuses to accept the journey as literal, even when she shows the seven crowns. Drosselmeier warns her not to mock his nephew's altered appearance. Marie answers that she would have accepted and loved him regardless, unlike Princess Pirlipat. Her promise breaks the remaining curse. Drosselmeier's nephew appears as a handsome young man, explains that Marie's devotion restored him, and asks her to marry him. She accepts. The story closes with Marie eventually joining him in the enchanted kingdom as its queen, making the realm she visited during the night her lasting home rather than a vanished Christmas vision.",
+            "through": {
+              "chapter": 14
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-nutcracker-and-the-mouse-king-brian-sibley"
+      }
+    },
     "the-obelisk-gate": {
       "characters": {
         "characters": [
@@ -2690,6 +3010,204 @@
           }
         ],
         "work": "the-penultimate-peril"
+      }
+    },
+    "the-phantom-of-the-opera-dramatized": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A young Swedish soprano at the Paris Opera who suddenly performs with remarkable assurance after a period of modest roles. Her unexpected triumph draws renewed attention from Raoul, a friend from her childhood, while leaving the company to wonder how her voice improved so dramatically.",
+            "id": "christine-daae",
+            "name": "Christine Daaé",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The Vicomte de Chagny, a young aristocrat and childhood friend of Christine. Hearing her sing at the Opera revives his devotion to her, but her evasiveness and the strange male voice around her make him jealous, anxious, and determined to discover who controls her.",
+            "id": "raoul-de-chagny",
+            "name": "Raoul de Chagny",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A mysterious presence said to haunt the Paris Opera. Performers and employees attribute impossible appearances, threats, and accidents to him, while the management receives precise written demands for money and the exclusive use of Box Five. Some witnesses describe a deathlike face, but few agree whether he is a man or a ghost.",
+            "id": "opera-ghost",
+            "name": "The Opera Ghost",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Moncharmin"
+            ],
+            "description": "One of the two businessmen who take over management of the Paris Opera. Practical and skeptical, Moncharmin initially assumes that stories of a ghost and demands for payment are tricks arranged by the departing managers or the staff.",
+            "id": "armand-moncharmin",
+            "name": "Armand Moncharmin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Richard"
+            ],
+            "description": "Moncharmin's partner in the new management of the Opera. He joins in testing the ghost's claims and becomes caught between financial responsibility, artistic rivalries, and phenomena neither manager can explain.",
+            "id": "firmin-richard",
+            "name": "Firmin Richard",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Opera's principal prima donna, confident of her position and resentful when Christine's sudden success threatens it. She dismisses the ghost's warnings and expects the new managers to protect her starring roles.",
+            "id": "carlotta",
+            "name": "Carlotta",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The keeper of Box Five and mother of the dancer Meg. Madame Giry treats the Opera Ghost as a real and powerful patron, faithfully carrying messages between him and the managers even when they mock her account.",
+            "id": "madame-giry",
+            "name": "Madame Giry",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young ballet dancer and Madame Giry's daughter. She is among the performers who exchange stories about the Opera Ghost and witness the fear surrounding his supposed appearances backstage.",
+            "id": "meg-giry",
+            "name": "Meg Giry",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Opera's chief scene-shifter, known for claiming that he has seen the ghost clearly. His description of a skeletal figure reinforces backstage fear, and his own fate makes the haunting impossible for the staff to dismiss as harmless gossip.",
+            "id": "joseph-buquet",
+            "name": "Joseph Buquet",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Comte de Chagny"
+            ],
+            "description": "Raoul's much older brother and head of the Chagny family. Protective of their name and position, he regards Raoul's attachment to an opera singer as an unsuitable youthful infatuation.",
+            "id": "philippe-de-chagny",
+            "name": "Philippe de Chagny",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Christine's late father, a gifted traveling violinist who knew Raoul's family on the Brittany coast. His music and stories shaped Christine's childhood and helped bring the two children together.",
+            "id": "daddy-daae",
+            "name": "Daddy Daaé",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A watchful man known around the Opera as the Persian. He understands the building's hidden routes and recognizes dangers that the managers and police cannot see. When Christine disappears, he approaches Raoul as someone able to pursue her captor underground.",
+            "id": "the-persian",
+            "name": "The Persian",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Christine's elderly foster mother and the widow of Professor Valérius. She accepts Christine's belief in the Angel of Music and provides Raoul with fragments of the Daaé family history, though she cannot resolve the danger surrounding her ward.",
+            "id": "mamma-valerius",
+            "name": "Mamma Valérius",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-phantom-of-the-opera-dramatized"
+      },
+      "recaps": {
+        "ending": "Raoul and the Persian survive the mirrored torture chamber and reach Christine, who has been forced to choose between marrying Erik and triggering an explosion beneath the Opera. She turns the scorpion that signifies consent. Her compassion then transforms the confrontation: she allows Erik to kiss her and kisses his disfigured face in return without revulsion. Overcome because no one has shown him such tenderness, Erik releases Christine, Raoul, and the Persian. Christine returns Erik's ring and leaves with Raoul, while Erik later tells the Persian that he expects to die of love and asks him to announce his death. A notice reporting Erik's death appears soon afterward. Christine and Raoul disappear from public view and are believed to have married, while the novel closes by identifying the lonely, gifted, violent man behind the Opera Ghost legend.",
+        "in_short": "At the Paris Opera, soprano Christine Daaé is secretly trained by a voice she believes to be the Angel of Music. Her childhood friend Raoul discovers that the voice belongs to the Opera Ghost, a masked genius living beneath the theater who extorts its managers and demands Christine's devotion. The ghost abducts her, reveals his disfigured face, and later lets her return on a promise of loyalty. Christine and Raoul plan to flee, but the ghost seizes her during a performance. Guided by the Persian, Raoul descends through the Opera's hidden passages and is trapped. The ghost, named Erik, threatens mass destruction unless Christine agrees to marry him. She consents, then responds to his suffering with a freely given kiss. Moved by compassion he has never received, Erik releases Christine and Raoul. The lovers leave together, and Erik dies soon afterward.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "The Paris Opera is unsettled by stories of a ghost who appears backstage, occupies Box Five, and punishes those who cross him. On the night the old managers retire, young soprano Christine Daaé replaces the unavailable prima donna Carlotta and sings with astonishing brilliance. Raoul de Chagny, who knew Christine as a child, recognizes her and hears a male voice speaking to her in her dressing room, although the room is empty when he enters. The new managers, Moncharmin and Richard, receive the predecessors' strange instructions: reserve Box Five and pay the Opera Ghost a regular allowance. They dismiss the warning as a joke. When they use the box despite further threats, its occupants hear an unseen voice, and the theater's rumors begin to look less easily explained.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Raoul follows Christine to the grave of her father, where she expects the Angel of Music promised in childhood to play for her. A marvelous violin is heard, but Raoul is attacked when he tries to investigate. At the Opera, the ghost orders the managers to let Christine sing Marguerite and leave Box Five empty. They instead restore Carlotta to the role. During the performance Carlotta's voice suddenly breaks into a croak, and the great chandelier falls into the audience, killing a spectator. Christine vanishes. Raoul learns that she has left in a mysterious carriage, while the managers face evidence that the ghost can enforce his demands inside a building whose workings they believed they controlled.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Christine reappears at a masked ball, where Raoul sees a figure dressed as the Red Death wearing a skull-like mask. She later takes Raoul onto the Opera roof and explains that her unseen teacher is neither angel nor ghost but a man who carried her through a mirror and down to a house beside an underground lake. There he calls himself Erik. When she removed his mask, she saw a severely disfigured face; in fury he kept her prisoner, then released her after she promised to return willingly. Christine and Raoul declare their love and plan to escape, unaware that Erik is listening. Below the roof, Raoul explores the stage machinery and hidden levels, but the Opera's countless passages allow Erik to remain ahead of him.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Christine delays leaving because of her promise to Erik, while Raoul's jealousy gives way to fear for her safety. The managers try to prevent the ghost from stealing his allowance, yet their elaborate precautions fail and the money disappears. Madame Giry explains that Erik has promised to make her daughter an empress and has used her as his messenger. During a performance of Faust, Christine is abducted from the stage in full view of the company. The police search ordinary exits, and Raoul's brother Philippe becomes involved, but no conventional inquiry can follow the route beneath the Opera. A man known as the Persian stops Raoul and reveals that he knows Erik, understands the underground domain, and may be the only guide capable of reaching Christine.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Persian leads Raoul through concealed doors and flooded cellars, warning him about Erik's traps and skill with a strangling cord. They enter what appears to be Erik's house but are sealed inside a mirrored chamber designed to create unbearable visions of heat and distance. Outside, Christine is held with Erik, who demands that she agree to marry him by a fixed deadline. If she refuses, he intends to ignite a vast store of explosives beneath the crowded Opera. Raoul and the Persian endure escalating heat and thirst, then find a way through the floor into a chamber containing barrels. Their apparent escape only brings them closer to the mechanism of Erik's threat, while Christine is offered two devices—the scorpion for consent and the grasshopper for refusal.",
+            "through": {
+              "chapter": 23
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Raoul and the Persian escape the torture room but remain at Erik's mercy. To prevent the Opera from being destroyed, Christine turns the scorpion and agrees to marry him. Erik floods the chamber holding the two men, then rescues them after Christine's choice. The decisive change comes when Christine responds to Erik as a suffering human being: she lets him kiss her and kisses his face without recoiling. No one, not even his mother, has offered him such acceptance. Overwhelmed, Erik releases Raoul and Christine and lets them leave together after Christine promises to return his ring. He also frees the Persian. Later Erik visits the Persian, reports that Christine kept her promise and that the lovers have gone away, and asks for his death to be announced. A newspaper notice soon records his death, ending the Opera Ghost's story.",
+            "through": {
+              "chapter": 27
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-phantom-of-the-opera-dramatized"
       }
     },
     "the-picture-of-dorian-gray": {

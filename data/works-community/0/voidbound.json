@@ -1645,6 +1645,428 @@
         "work": "war-of-the-wolf"
       }
     },
+    "warbreaker-tenth-anniversary-edition-part-1-of-2-dramatized-adaptation": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Princess Siri"
+            ],
+            "description": "The youngest princess of Idris, impulsive and less formally trained than her elder sister. When her father sends her to fulfill the treaty marriage with Hallandren's God King, she enters an unfamiliar court with little preparation and relies on observation, nerve, and her ability to adapt.",
+            "id": "siri",
+            "name": "Siri",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Princess Vivenna"
+            ],
+            "description": "The eldest princess of Idris, raised from childhood to marry the God King and protect her homeland through duty. When Siri is sent in her place, Vivenna follows to Hallandren, determined to rescue her sister and apply the training that suddenly seems to have been taken from her.",
+            "id": "vivenna",
+            "name": "Vivenna",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "The God King"
+            ],
+            "description": "The God King of Hallandren, a Returned ruler believed to hold an immense store of magical Breath. Siri approaches him expecting a remote and dangerous monarch, but finds a sheltered, silent man whose priests tightly control access to him.",
+            "id": "susebron",
+            "name": "Susebron",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A highly skilled and secretive Awakener operating in T'Telir. He carries Nightblood and pursues objectives that initially make him look like a dangerous criminal, though his interest in the city's political violence is more focused than it first appears.",
+            "id": "vasher",
+            "name": "Vasher",
+            "reveal": {
+              "chapter": 0
+            }
+          },
+          {
+            "description": "A sentient sword carried by Vasher. Nightblood communicates directly with nearby minds, speaks with cheerful curiosity, and urges people to draw it against whatever it understands as evil, making the weapon as hazardous to its wielder as to an enemy.",
+            "id": "nightblood",
+            "name": "Nightblood",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lightsong the Bold"
+            ],
+            "description": "A Returned god of bravery who lives at the Hallandren court. Lightsong doubts the religion built around him and avoids responsibility through cultivated indifference, yet he notices inconsistencies around the court and feels compelled to investigate them.",
+            "id": "lightsong",
+            "name": "Lightsong",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Lightsong's high priest, patient and unwavering in his belief that the Returned god has a purpose. He manages Lightsong's household, answers irreverence with calm loyalty, and tries to guide him toward the responsibilities he avoids.",
+            "id": "llarimar",
+            "name": "Llarimar",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A quick-witted mercenary hired by Vivenna's Idris contacts in T'Telir. He offers military experience, an irreverent education in Awakening, and practical plans for building resistance to Hallandren.",
+            "id": "denth",
+            "name": "Denth",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Denth's large, genial partner, whose jokes and apparent simplicity make him seem less dangerous than his work suggests. He helps Vivenna's group with surveillance, intimidation, and covert operations.",
+            "id": "tonk-fah",
+            "name": "Tonk Fah",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A palace scribe assigned to guide Siri through the God King's court. A member of the Pahn Kahl people, he explains Hallandren customs, conveys instructions from the priesthood, and becomes one of the few attendants who speaks candidly with her.",
+            "id": "bluefingers",
+            "name": "Bluefingers",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The God King's high priest and the public voice of the royal priesthood. Formal and commanding, he enforces the rules surrounding Susebron and treats Siri primarily as part of a dynastic and religious obligation.",
+            "id": "treledees",
+            "name": "Treledees",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Blushweaver the Beautiful"
+            ],
+            "description": "A politically ambitious Returned goddess at the Court of Gods. Confident, perceptive, and willing to use flirtation as leverage, she presses other gods to prepare Hallandren for war and takes a particular interest in Lightsong's military authority.",
+            "id": "blushweaver",
+            "name": "Blushweaver",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The reserved Awakener in Denth's crew and the person chiefly responsible for maintaining their Lifeless companion, Clod. Her hostility toward Vasher is personal, and her loyalty to the mercenary team is stronger than her interest in Vivenna's politics.",
+            "id": "jewels",
+            "name": "Jewels",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful Lifeless soldier used by Denth's mercenary crew. Though animated and sustained through Awakening, he is generally treated as a tool and guard rather than as a living member of the group.",
+            "id": "clod",
+            "name": "Clod",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young Idris nobleman and Vivenna's loyal friend who accompanies her to T'Telir. He lacks her formal authority or the mercenaries' experience, but remains devoted to her safety as her plans grow riskier.",
+            "id": "parlin",
+            "name": "Parlin",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "King Dedelin"
+            ],
+            "description": "King of Idris and father of Vivenna and Siri. Bound by a treaty to send a daughter to the God King, he cannot bear to sacrifice the daughter trained for that fate and sends Siri instead, a choice that burdens both sisters and may endanger his kingdom.",
+            "id": "dedelin",
+            "name": "Dedelin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "warbreaker-tenth-anniversary-edition-part-1-of-2-dramatized-adaptation"
+      },
+      "recaps": {
+        "ending": "This first portion ends with all three viewpoint characters entangled in conflicts they only partly understand. Siri has learned that Susebron is mute, isolated, and unable to read, not the brutal husband she expected. By teaching him and communicating in secret, she has turned their forced marriage into a cautious alliance, while the priesthood and competing gods continue to decide policy around them. Vivenna remains in T'Telir with Denth's mercenary crew, using disruption and propaganda to oppose Hallandren in Idris's name. She believes the resulting unrest is useful resistance, although Vasher's interference and the widening street violence indicate that her campaign serves interests she has not identified. Lightsong's investigation has moved him closer to the court's military struggle despite his efforts to avoid divine responsibility. Blushweaver continues gathering influence over the Lifeless armies. War between Hallandren and Idris is now more likely, and the sisters remain separated, each unaware of how the other's alliances are changing.",
+        "in_short": "King Dedelin sends his unprepared youngest daughter Siri to marry Susebron, Hallandren's God King, instead of the dutiful Vivenna. Siri expects a monster but discovers that Susebron is a sheltered, mute prisoner of his own priesthood. Their secret communication develops into trust as she begins teaching him to read. Vivenna follows to T'Telir intending to rescue Siri and defend Idris. After receiving a dying agent's store of magical Breath, she joins the mercenaries Denth, Tonk Fah, and Jewels and helps organize unrest against Hallandren, believing controlled disruption will prevent an invasion. The mysterious Awakener Vasher and his sentient sword Nightblood repeatedly cross that effort. At the Court of Gods, the skeptical Returned Lightsong investigates troubling events while the ambitious Blushweaver presses for command of the Lifeless armies. By the midpoint, Siri and Susebron are allies, Vivenna's covert campaign is spreading violence she does not fully understand, and multiple factions are pushing Hallandren and Idris toward war.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Vasher, a powerful Awakener carrying the sentient sword Nightblood, escapes imprisonment in T'Telir and continues a hidden mission. In the mountain kingdom of Idris, King Dedelin must honor a treaty by sending a daughter to marry Susebron, the God King of Hallandren. Although Vivenna has been trained for this duty all her life, Dedelin suddenly sends his youngest daughter Siri instead. Siri travels to the colorful capital of T'Telir with almost no preparation for its religion, politics, or use of magical Breath. Vivenna, shocked that her expected role has been taken from her and afraid for her sister, leaves Idris with Parlin. At Hallandren's Court of Gods, the Returned deity Lightsong openly doubts his own divinity but is drawn toward signs that the court's easy luxury conceals a more serious political struggle.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Siri is prepared for a frightening marriage and ordered to present herself to the God King each night. She soon realizes that Susebron does not behave like the tyrant she expected. He is silent, heavily guarded, and constrained by priests led by Treledees. Bluefingers, the palace scribe assigned to Siri, helps her navigate the court while warning her that its factions may use her. Siri begins performing signs of a conventional royal marriage for the servants outside the chamber while privately trying to understand her husband. Lightsong continues avoiding worship and political duty, but Blushweaver urges him to take seriously the possibility of war with Idris and seeks influence over the commands controlling Hallandren's Lifeless soldiers. Vivenna and Parlin reach T'Telir and search for the Idris network that was meant to support her.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Vivenna finds an Idris agent dying and unexpectedly inherits his supply of Breath, a magic her religion taught her to distrust. She also inherits the assistance of the mercenaries Denth, Tonk Fah, and Jewels, along with their Lifeless soldier Clod. Denth presents a plan to weaken Hallandren through covert resistance, and Vivenna uses her royal identity to give the movement legitimacy. The mercenaries teach her the practical rules of Breath and Awakening while making their violent profession seem almost ordinary. Siri discovers that Susebron's tongue was removed, leaving him unable to issue the commands his vast power could support. He is also unable to read. Their shared vulnerability begins to replace fear with sympathy, and Siri starts communicating with him beyond the ritual expected by the palace.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Siri secretly teaches Susebron written language and learns how completely the priesthood has controlled his knowledge and public image. Their marriage becomes a private partnership, but acting openly could put both of them at risk because Siri still cannot tell which palace attendants are trustworthy. Vivenna allows Denth's crew to expand the resistance through rumors, disruption, and attacks on Hallandren interests. She believes the pressure will strengthen Idris and deter invasion, even as unrest in the poorer quarters becomes harder to separate from ordinary violence. Vasher interferes with people and operations connected to the growing conflict, making him appear to be an enemy of Vivenna's cause. Lightsong follows evidence of suspicious activity at the divine court and begins using the intelligence he normally hides beneath indifference.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "By the end of this portion, Siri and Susebron trust one another enough to communicate and plan in secret. She now understands that the feared God King is a sheltered figurehead whose silence benefits the priesthood, while he depends on her for knowledge deliberately denied to him. At court, Blushweaver keeps pressing for military control, and Lightsong's reluctant investigation draws him closer to decisions about the Lifeless armies and the threatened war. Vivenna remains committed to the campaign run by Denth and Tonk Fah. Their operations spread unrest through T'Telir in the name of protecting Idris, but the violence is growing beyond the clean political tool she imagines. Vasher's pursuit of the same networks suggests a hidden conflict beneath the public one. Neither sister has reached the other, and Hallandren and Idris move closer to war while palace, mercenary, and religious factions pursue separate aims.",
+            "through": {
+              "chapter": 31
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "warbreaker-tenth-anniversary-edition-part-1-of-2-dramatized-adaptation"
+      }
+    },
+    "warbreaker-tenth-anniversary-edition-part-2-of-2-dramatized-adaptation": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The younger princess of Idris, unexpectedly sent to Hallandren in place of her elder sister and married to the God King. Her impulsiveness and candor have helped her move beyond the frightening public image surrounding Susebron. By the opening of this part, the two have become allies, and she is trying to understand who controls the court and whether Hallandren truly intends to attack Idris.",
+            "id": "siri",
+            "name": "Siri",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Hallandren's God King and Siri's husband, outwardly an absolute monarch but privately isolated and unable to speak. He holds an immense store of magical Breath yet has been kept uneducated and dependent on his priests. Siri has discovered that he is gentle, curious, and as constrained by palace ritual as she is.",
+            "id": "susebron",
+            "name": "Susebron",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Siri's elder sister, trained from childhood to marry the God King but left behind when their father changed his plan. She followed Siri to Hallandren and fell in with mercenaries who claimed to support her campaign against the city. Their manipulation has stripped away her certainty about her purpose and her own moral judgment.",
+            "id": "vivenna",
+            "name": "Vivenna",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A grim, exceptionally skilled Awakener who moves through Hallandren with the sentient sword Nightblood. He has opposed Denth's operation and intervened in Vivenna's affairs for reasons he reveals only reluctantly. His rough appearance conceals unusually deep knowledge of Breath, Lifeless soldiers, and the history behind the Manywar.",
+            "id": "vasher",
+            "name": "Vasher",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A black sword with a cheerful mental voice and a command to destroy evil, though it has little understanding of what evil is. Drawing it overwhelms nearby people with violent temptation and consumes Breath from its wielder. Vasher normally keeps it sheathed and treats it as both a dangerous weapon and an exasperating companion.",
+            "id": "nightblood",
+            "name": "Nightblood",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Returned god of bravery who doubts his own divinity and treats court politics with studied indifference. He has nevertheless begun investigating suspicious deaths and the growing pressure for war. His visions and instinctive skills suggest that the official account of his former life is incomplete.",
+            "id": "lightsong",
+            "name": "Lightsong the Bold",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A politically ambitious Returned goddess who presses the Court of Gods to prepare for war with Idris. Intelligent, poised, and skilled at gathering influence, she cultivates Lightsong's friendship while trying to secure control of his Lifeless battalions.",
+            "id": "blushweaver",
+            "name": "Blushweaver",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A charismatic mercenary and master swordsman who has served as Vivenna's guide in Hallandren. He presents himself as cynical but dependable, using humor and practical advice to win trust while directing the princess's supposed resistance campaign.",
+            "id": "denth",
+            "name": "Denth",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Denth's large, apparently easygoing associate. He jokes about mercenary work, keeps unusual pets, and handles the less visible parts of the group's operations. His relaxed manner does not make him any less capable or dangerous.",
+            "id": "tonk-fah",
+            "name": "Tonk Fah",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Pahn Kahl scribe in the God King's palace who communicates with Siri through notes and furtive conversations. As a member of a people conquered by Hallandren, he fears both the priests and the prospect of war, and offers Siri secret help navigating the palace.",
+            "id": "bluefingers",
+            "name": "Bluefingers",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The high priest responsible for the God King's household and the public rituals surrounding him. Severe and protective of palace secrets, he regards Siri as a potential danger to an institution he has spent his life preserving.",
+            "id": "treledees",
+            "name": "Treledees",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Lightsong's high priest and closest attendant. Patient, loyal, and far more grounded than the god he serves, he manages the practical demands of Lightsong's court and endures his master's doubts without abandoning him.",
+            "id": "llarimar",
+            "name": "Llarimar",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A quiet member of Denth's mercenary band whose body has been made into a Lifeless. She obeys commands with eerie precision and remains an accomplished fighter. Her condition gives Vivenna an early, unsettling lesson in how casually the group treats death.",
+            "id": "jewels",
+            "name": "Jewels",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "warbreaker-tenth-anniversary-edition-part-2-of-2-dramatized-adaptation"
+      },
+      "recaps": {
+        "ending": "Bluefingers' faction seizes Siri and Susebron and sends the Hallandren Lifeless army toward Idris, intending to make the two nations destroy one another. Lightsong gives up his divine Breath to heal Susebron's mutilated tongue, restoring the God King's ability to speak and use his enormous power. Susebron overwhelms the conspirators and rescues Siri. Vasher kills Denth, then reveals that he is the Returned figure once known as both Kalad and Peacegiver. The supposedly decorative stone soldiers around Hallandren are his hidden army of Lifeless, and he gives Susebron the command that can use them to stop the invasion. War is averted. Vivenna chooses neither a return to her former sheltered life nor a permanent place at court; after warning Idris, she leaves with Vasher to learn more about Awakening and herself. Siri and Susebron remain together to rule, while the sacrifices of Lightsong and Blushweaver end the old balance within the Court of Gods.",
+        "in_short": "In the second half of Warbreaker, Vivenna learns that Denth engineered violence in her name to provoke war, escapes him, and studies Awakening under Vasher. Siri and Susebron discover that the God King is a prisoner of his own priesthood, but their attempt to act is overtaken by a Pahn Kahl conspiracy led inside the palace by Bluefingers. The conspirators kill Blushweaver, seize the royal couple, and dispatch Hallandren's Lifeless army against Idris. Lightsong finally accepts that his return had a purpose and sacrifices his divine Breath to restore Susebron's tongue, allowing the God King to use his vast power and free Siri. Vasher kills Denth and reveals himself as Kalad and Peacegiver; his hidden army of stone-encased Lifeless is sent to halt the invasion. Siri and Susebron remain together, peace is preserved, and Vivenna leaves with Vasher to continue learning beyond the role once chosen for her.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously in Part 1: Idris sends the unprepared Princess Siri to marry Susebron, the feared God King of Hallandren, in place of her elder sister Vivenna. Siri discovers that Susebron is not a tyrant but a sheltered young man whose tongue was removed and whose priests control nearly every aspect of his life. They begin to trust one another while factions in the Court of Gods press for war with Idris. Lightsong, a Returned god who doubts his own divinity, reluctantly investigates signs of a wider plot. Vivenna follows Siri to the city and works with the mercenaries Denth and Tonk Fah to stir opposition, believing she is protecting Idris. Vasher, a mysterious Awakener carrying the sentient sword Nightblood, interferes with their operations and warns that Vivenna is being used. Street violence grows, the sisters remain separated, and the kingdom moves closer to a war that several hidden parties appear to want.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Vivenna's faith in Denth collapses as she recognizes that the riots and killings attributed to her cause were designed to make reconciliation impossible. Cut off from her former allies and stripped of the status on which she relied, she hides among Hallandren's poorest residents and confronts how little she understood the people she meant to save. Vasher eventually takes her in, giving her safety without disguising his contempt for her earlier carelessness. At the palace, Siri and Susebron continue teaching one another in secret. Their partnership becomes a genuine marriage, but learning to read gives Susebron access to records that make his captivity and the danger around his succession increasingly clear. Lightsong keeps following the evidence behind the disturbances even while insisting that his intuitions mean nothing supernatural.",
+            "through": {
+              "chapter": 40
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Under Vasher's reluctant instruction, Vivenna begins to understand both the technical rules of Awakening and the ethical weight of using Breath. She changes her appearance to move unnoticed and turns her attention from performing the role of a rebel princess to undoing Denth's work. Denth, Tonk Fah, and Jewels search for her while continuing the campaign of provocation. Siri and Susebron realize that the priesthood has preserved the God King's enormous store of Breath by making each ruler unable to use it freely and arranging a controlled succession. Their growing knowledge makes them dangerous to those maintaining the system. Meanwhile Blushweaver consolidates command over more Lifeless troops, and Lightsong's investigation draws him deeper into court politics despite his attempts to remain detached.",
+            "through": {
+              "chapter": 46
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Vivenna helps Vasher disrupt the mercenaries' plans and discovers that his harsh manner masks a deliberate effort to limit bloodshed. She also learns enough about Returned history to suspect that his connection to Hallandren is much older than his appearance suggests. In the Court of Gods, the push for war reaches a decisive vote as Blushweaver uses fear and political leverage to assemble the necessary commands. Lightsong refuses to yield his own forces to her, but his resistance cannot by itself expose whoever is coordinating events outside the court. Siri attempts to turn her bond with Susebron into political action, while warnings from Bluefingers make the palace seem ready to close around them. The threatened conflict is no longer a distant possibility: control of the Lifeless armies is becoming the central prize.",
+            "through": {
+              "chapter": 51
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The apparent struggle between the royal household, the priests, and the Returned gods gives way to a deeper conspiracy. Pahn Kahl servants embedded throughout the palace have spent years steering Hallandren and Idris toward mutual destruction. Bluefingers, who had presented himself as Siri's frightened helper, is part of the plan and uses her trust to gain control of the royal couple. The conspirators intend to send Hallandren's Lifeless into Idris while killing or silencing those who could reverse the order. Blushweaver is murdered when she no longer serves their purpose, and Lightsong is captured with other members of the court. Denth moves against Vasher and Vivenna, settling a long personal feud while the army marches. Separate mysteries now converge: the palace coup, the mercenary violence, and the manufactured war all serve the same approaching catastrophe.",
+            "through": {
+              "chapter": 55
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Imprisoned beside the God King, Lightsong finally understands the purpose behind his return. His mortal self died saving another person, and the instincts he dismissed have repeatedly led him toward this moment. He gives Susebron his divine Breath, healing the king's missing tongue. Able to speak Commands at last, Susebron combines that ability with his immense reserve of Breath, breaks the conspirators' control, and saves Siri. Vasher defeats Denth by giving away his Breath during their duel, a move that disrupts Denth's expectations, and kills him. The immediate coup is ended, but the Lifeless army is still beyond ordinary recall and advancing on Idris. Vasher then reveals the final resource hidden in Hallandren: the stone figures placed around the city contain the army once feared as Kalad's Phantoms, and he knows how to command them.",
+            "through": {
+              "chapter": 57
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Vasher discloses that the legendary warlord Kalad and the peacemaker Peacegiver were both identities he used during and after the Manywar. His stone-encased Lifeless, hidden in plain sight for centuries, can overtake the army sent toward Idris. He entrusts their command to Susebron, giving the king the means to stop the invasion before it begins a wider war. With the Pahn Kahl coup broken, Siri and Susebron remain together and can start reshaping a monarchy that kept both of them powerless. Lightsong is gone after spending his single divine Breath to save the king, and Blushweaver's death leaves the Court of Gods permanently altered. Vivenna decides to go first to Idris with the truth, then continue traveling with Vasher. Rather than resume the identity prepared for her since childhood, she chooses an uncertain apprenticeship in Awakening and a life directed by her own judgment.",
+            "through": {
+              "chapter": 59
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "warbreaker-tenth-anniversary-edition-part-2-of-2-dramatized-adaptation"
+      }
+    },
     "warriors-of-the-storm": {
       "characters": {
         "characters": [

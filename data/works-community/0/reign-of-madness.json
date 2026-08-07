@@ -1108,6 +1108,79 @@
         "work": "requirements"
       }
     },
+    "rescue-party": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The officer responsible for an interstellar survey vessel sent to a solar system facing imminent destruction. He must balance the rescue mission against the certainty that the local star will soon explode.",
+            "id": "expedition-commander",
+            "name": "The Expedition Commander",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Specialists drawn from several advanced species who travel to Earth in search of survivors. Their civilization has only recently detected humanity, so the speed of human technological development repeatedly overturns their expectations.",
+            "id": "galactic-survey-team",
+            "name": "The Galactic Survey Team",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A member of the expedition responsible for interpreting the signals still coming from the abandoned planet. The continuing transmission offers the surface party its best clue to what humanity did before the disaster.",
+            "id": "communications-specialist",
+            "name": "The Communications Specialist",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The inhabitants of Earth, discovered by the galactic civilization only when their sun is close to destruction. They are technologically young by galactic standards but have responded to extinction with an effort on an unexpected scale.",
+            "id": "humanity",
+            "name": "Humanity",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "rescue-party"
+      },
+      "recaps": {
+        "ending": "The galactic ship follows the automated radio signal away from Earth and discovers that humanity did not remain on its doomed planet. The species has built a vast fleet and launched it toward another star, carrying its population and culture into space without help from the older interstellar civilizations. The rescuers make contact and prepare to guide the refugees to safety. They are astonished that humans advanced from their first detectable radio technology to a planetary evacuation in only a few generations, a rate far beyond the pattern familiar to the galactic community. The mission therefore changes from an attempt to collect a few survivors into first contact with a self-rescued species. The visitors look forward to teaching the newcomers, but the closing perspective undercuts their confidence: humanity's energy and speed may make it a powerful and disruptive force once admitted to the wider galaxy.",
+        "in_short": "An interstellar survey ship reaches the Solar System shortly before the sun is due to explode. Galactic civilization learned of humanity only recently and assumes that a species so new to radio cannot escape its planet, so a mixed rescue party descends to Earth hoping to save at least a remnant. The cities are empty. With little time before the stellar explosion, the explorers trace an active signal to an underground installation and discover that it is an automatic beacon rather than a gathering place for survivors. The signal points outward. Returning to space and following it, the expedition finds a huge human migration fleet already traveling toward another star. Humanity has independently built enough ships to evacuate Earth and has escaped before its elders arrived. The rescuers establish contact, impressed and unsettled by the extraordinary speed of human progress. Their assumption that they will simply instruct a primitive newcomer is left looking dangerously complacent.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "A galactic survey ship arrives in the Solar System with very little time before the sun explodes. The interstellar community detected Earth's technological civilization only recently and believes the inhabitants cannot yet travel between stars. A rescue party made up of several alien species descends, hoping that shelters or surviving groups may preserve part of humanity. Instead it finds deserted cities and a planet that appears to have been comprehensively abandoned. A continuing radio transmission draws the explorers into an underground installation, but the machinery is automatic and no people are waiting there. The signal is a guide pointing into space. The expedition escapes Earth before the stellar catastrophe and follows the transmission, discovering a vast fleet of human ships heading toward a new star. Humanity has designed and launched its own planetary evacuation within the short period since becoming detectable. The galactic crew makes contact and prepares to help, amazed by a pace of invention that older species have not matched. The rescuers expect to educate the newcomers, while the conclusion suggests that such a rapidly advancing species may soon transform the civilization that believes it is welcoming a pupil.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "rescue-party"
+      }
+    },
     "resistance": {
       "characters": {
         "characters": [

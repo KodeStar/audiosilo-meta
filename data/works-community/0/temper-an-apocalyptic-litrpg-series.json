@@ -1129,6 +1129,318 @@
         "work": "the-accidental-tourist"
       }
     },
+    "the-adventure-of-the-dancing-men": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Mr. Sherlock Holmes"
+            ],
+            "description": "A consulting detective asked to interpret rows of small dancing figures that have begun appearing around a country house. He treats the drawings as a substitution system and works from repeated symbols and word patterns to recover their meaning.",
+            "id": "sherlock-holmes",
+            "name": "Sherlock Holmes",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Dr. Watson"
+            ],
+            "description": "Holmes's friend and the narrator of the investigation. He receives Holmes's explanations, accompanies him to Norfolk when the messages become urgent, and records the case and its solution.",
+            "id": "john-watson",
+            "name": "John Watson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Norfolk landowner of an old local family who consults Holmes because the dancing-figure messages terrify his American wife. Devoted to Elsie and protective of his family honor, he refuses to force her to break a promise made before their marriage.",
+            "id": "hilton-cubitt",
+            "name": "Hilton Cubitt",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Elsie Patrick"
+            ],
+            "description": "Hilton Cubitt's American wife. Before marrying him she acknowledged a painful past and asked that he never question her about it. The appearance of coded figures around their home fills her with fear, but she remains unwilling to explain them.",
+            "id": "elsie-cubitt",
+            "name": "Elsie Cubitt",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An American connected with Elsie's former life in Chicago and the person using the dancing figures to reach her. Persistent and threatening, he rejects her attempt to leave that past behind and follows her to England.",
+            "id": "abe-slaney",
+            "name": "Abe Slaney",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The Norfolk police inspector in charge after violence erupts at the Cubitts' home. He initially works from the physical evidence available at the scene and cooperates with Holmes when the detective arrives with the decoded messages.",
+            "id": "inspector-martin",
+            "name": "Inspector Martin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-adventure-of-the-dancing-men"
+      },
+      "recaps": {
+        "ending": "Holmes deciphers the dancing figures as a substitution cipher used by Abe Slaney, an American criminal who knew Elsie before her marriage. By the time Holmes and Watson reach Norfolk, Hilton Cubitt has been shot dead and Elsie is gravely wounded by a self-inflicted gunshot. Evidence at the window shows that Cubitt exchanged fire with an outside visitor. Holmes writes a message in the same cipher ordering Slaney to come and has it delivered to the farm where he is staying. Believing that Elsie sent it, Slaney arrives and is arrested. He explains that Elsie's father led a Chicago gang and created the code. Elsie fled that life; Slaney followed and tried to force her to return to him. During their final meeting Cubitt appeared, and the two men fired at each other. Cubitt died, while Slaney escaped and Elsie attempted suicide. Slaney's death sentence is reduced because Cubitt fired first. Elsie survives and remains in Norfolk, devoting herself to the management of her husband's estate and care for those in need.",
+        "in_short": "Norfolk landowner Hilton Cubitt asks Sherlock Holmes to explain drawings of dancing stick figures that terrify his American wife Elsie. She had required him to promise never to question her about her past, so he seeks help without breaking her confidence. As more messages appear, Holmes identifies the figures as a substitution cipher and gradually reads them as communications from Abe Slaney. An urgent message brings Holmes and Watson to the Cubitt home too late: Hilton is dead and Elsie is critically wounded. The police suspect murder followed by attempted suicide, but Holmes shows that a third person fired through a window. Using the solved cipher, he summons Slaney and has him arrested. Slaney reveals that he knew Elsie through her father's Chicago criminal gang and pursued her after she escaped to England. Hilton interrupted their final meeting, and the men exchanged shots; Elsie then shot herself in despair. Slaney is convicted, while Elsie recovers and continues her husband's charitable responsibilities in Norfolk.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Hilton Cubitt brings Sherlock Holmes a series of drawings showing small dancing figures. The marks have appeared near Cubitt's Norfolk home and cause intense fear in his American wife, Elsie. Before their marriage she admitted that her past contained shameful associations and asked Hilton never to investigate them; he accepted the condition and still will not force her confidence. Holmes concludes that the figures form a substitution cipher and uses repeated patterns to identify letters. Further messages reveal that someone named Abe Slaney is demanding a response from Elsie and becoming more threatening. Holmes sends an urgent warning, but he and Watson reach Norfolk after Hilton has been shot dead and Elsie badly wounded. Inspector Martin considers the possibility that Elsie killed her husband and then herself. Holmes reads the physical evidence as an exchange of shots through a window and uses the solved cipher to send Slaney a command to come. Slaney arrives believing the message came from Elsie and is arrested. He explains that Elsie's father led a Chicago gang and devised the code. Slaney followed Elsie to England and tried to reclaim her; when Hilton confronted him, the men exchanged fire, killing Hilton, and Elsie then shot herself. Slaney is convicted, and Elsie eventually recovers and remains at the estate.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-adventure-of-the-dancing-men"
+      }
+    },
+    "the-adventures-of-pinocchio": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A wooden puppet carved by Geppetto from a talking piece of pine. He can move and speak before he is fully made, and no sooner are his feet finished than he runs out into the street. Curious, impulsive, and resistant to guidance, he begins life with the freedom of a child but none of a child's judgment.",
+            "id": "pinocchio",
+            "name": "Pinocchio",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A poor woodcarver who wants to make a puppet capable of earning him a living. He receives a strange piece of pine from Master Cherry and names the figure Pinocchio. Though the puppet immediately mocks and troubles him, Geppetto treats him as his son.",
+            "id": "geppetto",
+            "name": "Geppetto",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Master Cherry"
+            ],
+            "description": "A carpenter who finds that a piece of ordinary-looking firewood cries out when he tries to cut it. Alarmed by its voice, he gives the wood to his acquaintance Geppetto rather than use it himself.",
+            "id": "master-antonio",
+            "name": "Master Antonio",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An old cricket who has lived in Geppetto's room for many years. He warns Pinocchio that children who reject work and education come to grief. Pinocchio resents the advice and hurls a mallet at him rather than listen.",
+            "id": "talking-cricket",
+            "name": "The Talking Cricket",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Fire-Eater"
+            ],
+            "description": "The huge, black-bearded director of the Great Marionette Theater. His frightening appearance and explosive temper terrify the puppets, and he initially orders that Pinocchio be used as firewood so his dinner can finish cooking.",
+            "id": "mangiafuoco",
+            "name": "Mangiafuoco",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A marionette in Mangiafuoco's company who recognizes Pinocchio as a fellow puppet. His welcome interrupts the performance and helps turn the theater into a joyful reunion before the director arrives.",
+            "id": "harlequin",
+            "name": "Harlequin",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Two shabby travelers who present themselves as a lame fox and a blind cat. Hearing that Pinocchio has five gold pieces, they tell him that coins planted in the Field of Wonders will multiply into a fortune and invite him to travel with them.",
+            "id": "fox-and-cat",
+            "name": "The Fox and the Cat",
+            "reveal": {
+              "chapter": 12
+            }
+          },
+          {
+            "aliases": [
+              "The Fairy with Azure Hair",
+              "The Little Girl with Blue Hair"
+            ],
+            "description": "A mysterious blue-haired fairy who takes the injured Pinocchio into her house and summons animal doctors to treat him. She combines maternal concern with firm tests of honesty, and Pinocchio's nose lengthens when he lies to her about his gold pieces.",
+            "id": "blue-fairy",
+            "name": "The Blue Fairy",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A large mastiff serving as a police dog. Sent after Pinocchio when the puppet escapes arrest, he falls into deep water and is saved by the fugitive he was chasing.",
+            "id": "alidoro",
+            "name": "Alidoro",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A strange green-skinned fisherman who hauls Pinocchio from the sea in his net. Mistaking the puppet for an unusual fish, he covers him with flour and prepares to fry him with the rest of the catch.",
+            "id": "green-fisherman",
+            "name": "The Green Fisherman",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Lampwick"
+            ],
+            "description": "Pinocchio's closest and most unruly school friend, a thin boy nicknamed for his narrow build. On the night before Pinocchio expects to become a real boy, Candlewick tempts him with a country where children play all day and never study.",
+            "id": "candlewick",
+            "name": "Candlewick",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Little Man"
+            ],
+            "description": "The smiling driver who carries children to the Land of Toys in a wagon drawn by strangely shod donkeys. He is outwardly gentle and patient as he collects his eager passengers, though the frightened animals suggest that the journey is not what it seems.",
+            "id": "the-coachman",
+            "name": "The Coachman",
+            "reveal": {
+              "chapter": 31
+            }
+          },
+          {
+            "description": "A gigantic sea creature feared by sailors and fish alike. It swallows Pinocchio after he returns to puppet form, carrying him into a dark interior large enough to contain other survivors.",
+            "id": "the-dogfish",
+            "name": "The Dogfish",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A large tuna living inside the Dogfish. He has resigned himself to being digested, but Pinocchio's plan to escape gives him a reason to follow the puppet toward the creature's open mouth.",
+            "id": "the-tuna",
+            "name": "The Tuna",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-adventures-of-pinocchio"
+      },
+      "recaps": {
+        "ending": "Inside the Dogfish, Pinocchio discovers Geppetto alive but weakened after two years of confinement. The puppet waits until the creature sleeps with its mouth open, then carries his father toward freedom. The Tuna, inspired by their escape, helps them reach shore when Pinocchio's strength fails. Pinocchio thereafter supports Geppetto through steady work, study, and practical care. He also gives away money he had saved when he learns that the Blue Fairy is ill, choosing her need over his planned new clothes. This sustained change, rather than a single promise, earns his reward. He awakens as a real boy in a clean home, with Geppetto restored to health and the Fairy's gift providing security. Looking at the lifeless wooden puppet he once inhabited, he recognizes the distance between his former recklessness and the responsible son he has become.",
+        "in_short": "Geppetto carves a talking piece of wood into Pinocchio, a puppet whose impatience repeatedly turns good intentions into danger. He abandons school for a marionette show, is cheated out of gold by the Fox and Cat, ignores the Blue Fairy's guidance, and cycles through punishment and rescue. Even after trying school, he follows Candlewick to the Land of Toys, where endless play transforms both boys into donkeys. Pinocchio is sold, injured, and nearly killed for his hide before becoming a puppet again and being swallowed by the giant Dogfish. Inside he finds Geppetto, who was lost at sea while searching for him. Pinocchio carries his father out, receives help from the Tuna, and brings him safely ashore. By working, studying, caring for Geppetto, and sacrificing his savings to help the Fairy, Pinocchio finally demonstrates lasting responsibility. The Fairy transforms him into a real boy and restores the household's health and comfort.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Master Antonio discovers that a piece of pine can speak and gives it to the poor woodcarver Geppetto. Geppetto shapes it into a puppet named Pinocchio, who mocks him and runs away as soon as his feet are finished. A policeman sends Geppetto to jail after assuming that the father has mistreated the puppet. Left alone, Pinocchio rejects the Talking Cricket's warning about disobedience and kills the insect with a thrown mallet. Hunger soon exposes how helpless freedom without foresight can be: Pinocchio finds no food, loses a meal through impatience, and burns off his feet while sleeping near a brazier. Geppetto returns, feeds him, forgives him, and carves new feet after Pinocchio promises to behave. Determined to send his son to school despite their poverty, Geppetto sells his only coat to buy an alphabet book.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On his way to school, Pinocchio sells his alphabet book to attend the Great Marionette Theater. The puppets welcome him, but their celebration disrupts the show and enrages the director Mangiafuoco. The director first threatens to burn Pinocchio and then Harlequin; Pinocchio's willingness to take his friend's place moves him to spare them both. Learning of Geppetto's poverty, Mangiafuoco gives Pinocchio five gold pieces for his father. The Fox and Cat hear about the money and claim that planting it in the Field of Wonders will produce a fortune. Although the Cricket's spirit warns him, Pinocchio follows them, pays for their meal at an inn, and continues alone after they disappear. Two masked assailants pursue him for the coins. Pinocchio hides the gold in his mouth and resists them until they hang him from a great oak tree, leaving him suspended and apparently dying.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Blue Fairy has Pinocchio taken down from the tree and calls animal doctors to save him. He reluctantly takes medicine and then lies about the gold pieces, causing his nose to grow until the Fairy helps him. She promises that he may join Geppetto, but on the way Pinocchio again meets the Fox and Cat. They persuade him to bury his coins in the Field of Wonders and wait for a miraculous harvest. The pair steal the money, and a judge responds to Pinocchio's complaint by imprisoning him. Released during a public amnesty, Pinocchio starts toward the Fairy's home. Further misadventures leave him caught in a farmer's trap and chained outside a chicken coop as a replacement watchdog. When martens arrive to continue an arrangement they had with the former dog, Pinocchio alerts the farmer instead of accepting their bribe. The farmer rewards this honesty by setting him free.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Pinocchio returns to find what appears to be the Blue Fairy's grave and grieves until a pigeon carries him to the coast, where Geppetto has gone to sea searching for him. Pinocchio sees his father struggling in a small boat but cannot reach him and is washed to the Island of Busy Bees. There he finds the Fairy alive and grown into a motherly woman. He agrees to attend school and for a time becomes a diligent pupil. Schoolmates lure him away with a false report of a sea monster, and a fight leaves another boy injured. Pinocchio is arrested, escapes, and is chased by the police dog Alidoro, whom he saves from drowning. Soon afterward a Green Fisherman catches Pinocchio in a net and prepares to fry him, but Alidoro repays the rescue by carrying him away. Pinocchio returns to the Fairy, accepts punishment for his absence, and is finally forgiven. She promises that his improvement will be celebrated and that he can become a real boy.",
+            "through": {
+              "chapter": 29
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On the eve of his promised transformation, Pinocchio looks for his friend Candlewick and learns that the boy is leaving for the Land of Toys, where there is no work or school. Pinocchio joins him despite the Fairy's trust. After months of constant amusement, both boys grow donkey ears and are fully transformed. The Coachman sells them for profit. Candlewick is purchased for labor, while Pinocchio becomes a circus animal and is trained to perform until a fall leaves him lame. A new owner buys him for his hide and throws him into the sea to drown. Fish strip away the donkey body, revealing the wooden puppet beneath, and Pinocchio escapes. While swimming, he is swallowed by the enormous Dogfish long feared along the coast. Inside the creature he follows a distant light and discovers Geppetto, still alive after being lost during his search for his son.",
+            "through": {
+              "chapter": 34
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Pinocchio and Geppetto escape while the sleeping Dogfish rests with its mouth open. Pinocchio carries his weakened father through the water until his strength gives out, and the Tuna, who followed them from the monster, brings both safely to shore. They receive modest help from old acquaintances, while the now-impoverished Fox and Cat demonstrate the end produced by their dishonest lives. Pinocchio settles with Geppetto and earns their living through hard physical work, studying in the evenings and saving carefully. When he learns that the Blue Fairy is ill, he gives up the money intended for new clothes and sends it to her. His consistent labor, generosity, and care for his father show that his character has finally caught up with his wish. He awakens as a human boy in a comfortable room, finds Geppetto healthy and working again, and learns that the Fairy has rewarded them. The old wooden puppet remains nearby as an empty shell of the careless life Pinocchio has left behind.",
+            "through": {
+              "chapter": 36
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-adventures-of-pinocchio"
+      }
+    },
     "the-adventures-of-sherlock-holmes": {
       "characters": {
         "characters": [
@@ -1202,6 +1514,106 @@
           }
         ],
         "work": "the-adventures-of-sherlock-holmes"
+      }
+    },
+    "the-adventures-of-sherlock-holmes-the-boscombe-valley-mystery": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A London consulting detective whose close attention to physical traces lets him challenge the apparently straightforward case against James McCarthy. He travels to Herefordshire after Lestrade asks him to examine the evidence.",
+            "id": "sherlock-holmes",
+            "name": "Sherlock Holmes",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A doctor, Holmes's friend, and the narrator of the investigation. He leaves his medical practice for a brief journey to Boscombe Valley and records Holmes's reasoning as the case develops.",
+            "id": "dr-john-watson",
+            "name": "Dr John Watson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Scotland Yard inspector investigating Charles McCarthy's death. The witnesses and circumstantial evidence have convinced him that the victim's son is responsible, though he invites Holmes to review the case.",
+            "id": "inspector-lestrade",
+            "name": "Inspector Lestrade",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The adult son of the murdered Charles McCarthy. He was seen following his father toward Boscombe Pool, admits that they quarrelled there, and is arrested after returning to find him mortally injured. Despite the evidence, he insists that he did not strike the fatal blow.",
+            "id": "james-mccarthy",
+            "name": "James McCarthy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A tenant farmer on John Turner's Boscombe Valley estate and James's father. He and Turner both made their fortunes in Australia before settling in England. His death beside Boscombe Pool is the crime Holmes is asked to solve.",
+            "id": "charles-mccarthy",
+            "name": "Charles McCarthy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "John Turner's daughter and a childhood companion of James McCarthy. Convinced that James could not have murdered his father, she appeals to Lestrade and Holmes to look beyond the case against him.",
+            "id": "alice-turner",
+            "name": "Alice Turner",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wealthy landowner whose estate includes the McCarthys' farm. He knew Charles McCarthy in Australia and is now in poor health. His daughter Alice is deeply concerned about the charge against James.",
+            "id": "john-turner",
+            "name": "John Turner",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-adventures-of-sherlock-holmes-the-boscombe-valley-mystery"
+      },
+      "recaps": {
+        "ending": "Holmes identifies John Turner as the man who killed Charles McCarthy. In Australia, Turner had led a band of robbers, and McCarthy later recognized him in England and used that knowledge to extort land and money. When McCarthy tried to force a marriage between James and Alice, Turner struck him with a stone beside Boscombe Pool. The victim's final reference to a rat was an unfinished attempt to say Ballarat, pointing back to Australia. Turner gives Holmes a written confession. Because Turner is gravely ill, Holmes does not immediately expose him; instead, he keeps the confession available in case James is convicted. Holmes's analysis of the physical evidence is enough to undermine the prosecution, and James is acquitted. Turner dies several months later, while James and Alice are free to build a life together without knowing every detail of their fathers' history.",
+        "in_short": "James McCarthy is arrested after his father, Charles, is found dying beside Boscombe Pool. Witnesses saw James follow him, and James admits to a quarrel, but Alice Turner asks Holmes to prove her childhood friend innocent. At the scene Holmes finds signs that a third man was present. He learns that Charles had known Alice's wealthy father, John Turner, in Australia and had long held unexplained power over him. Turner confesses that he once led a criminal gang and that Charles had recognized and blackmailed him. When Charles demanded that James marry Alice, Turner killed him with a stone. Holmes retains Turner's confession but uses the physical evidence to clear James, sparing the terminally ill Turner a public trial. James is acquitted, Turner dies soon afterward, and James and Alice are left free of the coercion that caused the crime.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Holmes and Watson travel to Boscombe Valley after Inspector Lestrade asks for help with the killing of farmer Charles McCarthy. The evidence points to Charles's son James, who was seen following him toward Boscombe Pool and admits that they quarrelled shortly before he found his father dying. Alice Turner, James's childhood companion, believes him innocent. Holmes examines the ground and concludes that another man, lame and carrying a blunt weapon, was present. James has concealed a failed marriage, but that secret explains his dispute with his father rather than the murder. Holmes connects the victim's last words and the tracks to Alice's father, John Turner. Turner confesses that he and Charles knew each other in Australia, where Turner had been a robber. Charles later recognized him and used the secret to blackmail him, finally demanding a marriage between James and Alice. Turner killed Charles with a stone to end the coercion. Gravely ill, he signs a confession that Holmes reserves in case it is needed. Holmes's evidence secures James's acquittal; Turner dies months later, and James and Alice remain unaware of the full truth.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-adventures-of-sherlock-holmes-the-boscombe-valley-mystery"
       }
     },
     "the-affair": {

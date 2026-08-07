@@ -2046,6 +2046,226 @@
         "work": "the-gods-of-mars"
       }
     },
+    "the-golden-ass": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An educated young traveler whose fascination with magic takes him to Thessaly. Curious, impulsive, and strongly drawn to sensual adventure, he listens eagerly to tales of witchcraft and looks for a chance to witness it himself.",
+            "id": "lucius",
+            "name": "Lucius",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A traveler Lucius meets on the road to Hypata. He recounts a disturbing story about his friend Socrates and the witch Meroe, giving Lucius his first extended example of the supernatural dangers associated with Thessaly.",
+            "id": "aristomenes",
+            "name": "Aristomenes",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A miserly but prosperous citizen of Hypata who hosts Lucius through a family connection. His household offers little comfort, but his marriage to Pamphile places Lucius close to the magic he is eager to investigate.",
+            "id": "milo",
+            "name": "Milo",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Milo's wife, widely reputed in Hypata to be a powerful witch. Lucius is warned that she uses magic in pursuit of men who attract her and punishes anyone who obstructs her desires.",
+            "id": "pamphile",
+            "name": "Pamphile",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A servant in Milo's household who becomes Lucius's lover. Playful and resourceful, she has access to Pamphile's private rooms and reluctantly agrees to help Lucius observe her mistress's magic.",
+            "id": "fotis",
+            "name": "Fotis",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wealthy woman in Hypata who recognizes Lucius as a relative through his mother's family. She welcomes him generously and warns him that Pamphile's apparent respectability conceals dangerous magical practices.",
+            "id": "byrrhena",
+            "name": "Byrrhena",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young woman abducted by robbers shortly before her wedding. Held in their cave and terrified for her future, she is comforted by an old attendant who tells her the story of Cupid and Psyche.",
+            "id": "charite",
+            "name": "Charite",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A princess in the old woman's tale whose extraordinary beauty brings worship from strangers but leaves her without a husband. An oracle sends her to a mysterious marriage, beginning a long test of trust, endurance, and divine hostility.",
+            "id": "psyche",
+            "name": "Psyche",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The goddess of love in the tale of Psyche. Angered that a mortal woman's beauty is drawing away her honors, she orders her son Cupid to arrange a degrading match for the unsuspecting princess.",
+            "id": "venus",
+            "name": "Venus",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Venus's son, whom she orders to make Psyche fall in love with a degrading match. He disappears from the old woman's account just as Psyche is carried to a palace and visited by a mysterious husband who will not let her see him.",
+            "id": "cupid",
+            "name": "Cupid",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Haemus"
+            ],
+            "description": "Charite's fiancé, from whom she was abducted shortly before their wedding. Her hope that he is still searching for her gives the captive a personal future beyond the robbers' cave.",
+            "id": "tlepolemus",
+            "name": "Tlepolemus",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A supposed friend of Tlepolemus who is consumed by desire for Charite. After ordinary courtship proves impossible, his concealed obsession makes him a grave danger to the married couple.",
+            "id": "thrasyllus",
+            "name": "Thrasyllus",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Priests of the Syrian Goddess"
+            ],
+            "description": "A wandering group of fraudulent devotees who buy Lucius and use public performances, fortune-telling, and displays of religious excitement to obtain money and food. Their private conduct repeatedly exposes the gap between their sacred claims and their behavior.",
+            "id": "wandering-priests",
+            "name": "The Wandering Priests",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wealthy Corinthian who acquires Lucius after learning that the ass enjoys human food and can perform trained tricks. He plans to make the remarkable animal part of an elaborate public entertainment.",
+            "id": "thiasus",
+            "name": "Thiasus",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The goddess who answers Lucius when he prays beside the sea in utter desperation. She appears as a universal divine protector and promises release if he approaches her festival procession and accepts a life of grateful service afterward.",
+            "id": "isis",
+            "name": "Isis",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-golden-ass"
+      },
+      "recaps": {
+        "ending": "Having fled the Corinthian spectacle, Lucius reaches the shore at Cenchreae and prays for divine aid. Isis appears in a dream and directs him to her festival. During the procession he eats roses carried by a priest and immediately regains his human body. The priest explains that Lucius's reckless appetites caused his misery and that freedom now carries an obligation to the goddess. Lucius joins her worship, submits to initiation after waiting for the proper sign, and later travels to Rome. There he undergoes further initiations connected with Isis and Osiris, despite the expense and his occasional uncertainty about why more rites are required. He supports himself as an advocate and receives a place among the cult's officials. The narrative closes with Lucius willingly shaving his head and publicly serving the religion that delivered him, replacing his earlier restless curiosity with disciplined devotion.",
+        "in_short": "Lucius travels through Thessaly in search of magic and persuades the servant Fotis to let him try a witch's ointment. A mistake transforms him into an ass, though he keeps his human mind and can be restored by eating roses. Before he can do so, robbers seize him, beginning a long passage through violent and exploitative owners. In the robbers' cave he hears the tale of Cupid and Psyche, whose suffering ends in divine marriage and immortality, and he briefly helps the captive Charite. Her rescue and marriage give way to tragedy when Thrasyllus murders her husband and she kills herself after taking revenge. Lucius then passes among fraudulent priests, mill workers, soldiers, cooks, and entertainers, observing adultery, cruelty, greed, and sudden reversals of fortune. Faced with forced participation in a public sexual spectacle at Corinth, he escapes to the coast. Isis answers his prayer, provides roses that restore his human form, and draws him into a lasting religious vocation culminating in initiation and priestly service at Rome.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Lucius travels toward Hypata in Thessaly, a region famous for magic. On the road he meets Aristomenes, who tells how his missing friend Socrates was impoverished and living in fear after becoming involved with the witch Meroe. Aristomenes tried to help him leave, but Meroe and another woman entered their locked room by supernatural means, attacked Socrates, and magically concealed his wound. He died when the enchantment failed during the next stage of their journey. Lucius's companion dismisses the account, but it increases Lucius's curiosity. In Hypata, Lucius stays with Milo, a wealthy and extremely frugal acquaintance connected to his mother's family. Milo's household looks ordinary, yet the stories Lucius has heard encourage him to treat every unusual event as possible evidence of enchantment. His desire to experience magic directly, rather than avoid its dangers, is already guiding his choices.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Lucius's wealthy relative Byrrhena welcomes him and warns that Milo's wife Pamphile is a dangerous witch. Instead of withdrawing, Lucius begins an affair with Pamphile's servant Fotis so that he can get closer to her mistress's secrets. At Byrrhena's dinner he hears another grim account of witchcraft, then returns home and attacks three shapes he believes are armed intruders. The next day he is put on public trial, only to discover that the proceeding is part of Hypata's Festival of Laughter and that his victims were enchanted wineskins. Fotis admits her role in the trick and later lets him watch Pamphile use an ointment to become an owl. Lucius asks to imitate her, but Fotis gives him the wrong jar and he becomes an ass while retaining human awareness. Roses would reverse the change, yet robbers raid Milo's house before he can eat any and carry him away with their loot.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Still trapped as an ass, Lucius is driven hard by Milo's robbers and repeatedly misses chances to reach roses. At their mountain hideout he hears the men recount raids in which several companions died. The band then brings in Charite, a young woman abducted shortly before her wedding to Tlepolemus. When a dream leaves her terrified, the old woman guarding the cave begins the story of Cupid and Psyche. Psyche is a mortal princess whose beauty attracts worship that Venus believes belongs to her. Venus orders Cupid to punish her, while an oracle directs Psyche's family to abandon her for a monstrous bridegroom. Instead, she is carried to a marvelous palace where invisible servants provide every comfort, and she is visited at night by a husband she is forbidden to see. Her jealous sisters persuade her that the unknown husband must be a monster and urge her to uncover his identity.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Psyche lights a lamp over her sleeping husband and discovers that he is Cupid. Startled, she wounds him with hot oil, and he leaves because she broke their agreement. After the sisters who misled her die through their own ambition, Psyche searches for Cupid and finally surrenders to Venus. The goddess beats and humiliates her, then imposes a series of impossible tasks, but ants, a reed, an eagle, and other helpers enable Psyche to complete them. Her last journey takes her to the underworld for a portion of Proserpina's beauty. She opens the container and falls into a deathlike sleep; Cupid revives her, appeals to Jupiter, and obtains a lasting settlement. Jupiter makes Psyche immortal, the marriage is formally accepted, and their child is born. Back in the robbers' cave, Lucius tries to escape with Charite. They are recaptured, and the robbers plan a brutal joint punishment for them, leaving both in immediate danger.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tlepolemus, Charite's fiancé, enters the robbers' cave disguised as a famous outlaw called Haemus. He wins the band's confidence, drugs them with wine, frees Charite, and arranges the robbers' capture and death. Lucius expects a reward but instead remains livestock and suffers under careless or sadistic handlers on the couple's estate. His fortunes worsen again after a vicious boy who tormented him is killed by a bear and the boy's mother demands the ass's death. The narrative then turns to Charite's household. Thrasyllus, secretly obsessed with her, murders Tlepolemus during a hunt and pretends the death was accidental. Tlepolemus's ghost reveals the truth to Charite. She feigns acceptance of Thrasyllus, blinds him with a hairpin while he sleeps, and kills herself at her husband's tomb. Thrasyllus shuts himself inside the tomb to die. Lucius is sold and falls into the hands of wandering priests whose fraudulent performances and predatory behavior bring fresh danger.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Lucius continues to pass between owners and witnesses a broad range of domestic cruelty, sexual deception, poverty, and abuse. At a mill he observes the harsh treatment of workers and animals and the miller's wife's affair; after her plot is exposed, supernatural vengeance leads to the miller's death. Lucius later belongs to a gardener and then a soldier before entering the household of two brothers, one a cook and one a pastry maker. They discover that the ass secretly eats prepared human food. Their wealthy master Thiasus is delighted, teaches Lucius to dine and perform tricks, and takes him to Corinth as a public curiosity. A condemned woman is selected to have sex with him during an arena spectacle before she is killed by beasts. Lucius, unwilling to be part of the exhibition and afraid that the animals may attack him too, escapes while his keepers are occupied and runs to the nearby coast at Cenchreae.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Alone beside the sea, Lucius prays for rescue. Isis appears to him in a dream, identifies herself as a universal goddess, and tells him to attend her approaching festival. In the procession, a priest carries the roses she promised; Lucius eats them and returns to human form before the crowd. The priest interprets his years as an ass as the result of reckless curiosity and appetite, and Lucius accepts the obligation to devote his restored life to Isis. After a period of preparation and uncertainty over the cost, he receives a divine sign and undergoes a secret initiation. He later travels to Rome, where further instructions lead him through additional rites associated with Isis and Osiris. Lucius earns a living in the courts and is admitted to a religious office. He ends the account not by returning to his former pleasures but by embracing a visible, disciplined life of priestly service, grateful for the deliverance that ended his animal wandering.",
+            "through": {
+              "chapter": 11
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-golden-ass"
+      }
+    },
     "the-golden-ass-or-metamorphoses": {
       "characters": {
         "characters": [

@@ -1486,6 +1486,217 @@
         "work": "hard-eight"
       }
     },
+    "hard-times-charles-dickens": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A wealthy Coketown educator and political thinker who insists that children should be taught measurable facts and nothing that encourages imagination. He applies the same severe principles to his own household, believing rational calculation sufficient for education and life.",
+            "id": "thomas-gradgrind",
+            "name": "Thomas Gradgrind",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Gradgrind's daughter, raised to suppress imagination and emotion. Though outwardly controlled, she is drawn to the colour and vitality forbidden by her father's system and shares a close, protective bond with her younger brother Tom.",
+            "id": "louisa-gradgrind",
+            "name": "Louisa Gradgrind",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Tom"
+            ],
+            "description": "Gradgrind's son and Louisa's younger brother. Like Louisa, he is frustrated by their rigid upbringing, but he expresses that frustration through self-interest and resentment. He depends heavily on Louisa's affection and expects her to help improve his prospects.",
+            "id": "thomas-gradgrind-junior",
+            "name": "Thomas Gradgrind Junior",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sissy"
+            ],
+            "description": "The daughter of a circus performer and a new pupil in Gradgrind's school. Her answers do not fit its fact-driven methods because she understands people and animals through affection and experience. When her father disappears, Gradgrind offers to take responsibility for her education.",
+            "id": "cecilia-jupe",
+            "name": "Cecilia Jupe",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A rich Coketown manufacturer and banker who loudly presents himself as a self-made man abandoned to hardship in childhood. He is Gradgrind's friend and shares his preference for blunt material facts, though his own stories are dramatic and frequently repeated.",
+            "id": "josiah-bounderby",
+            "name": "Josiah Bounderby",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The manager of the travelling circus with which Sissy and her father perform. His speech is indistinct, but his judgment is humane and practical. He values loyalty among the performers and treats imagination and amusement as necessary parts of life.",
+            "id": "mr-sleary",
+            "name": "Mr Sleary",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A widowed woman of aristocratic background who serves as Bounderby's housekeeper. Conscious of her family connections and reduced position, she watches the bank and its visitors closely while maintaining a show of dignified submission to her employer.",
+            "id": "mrs-sparsit",
+            "name": "Mrs Sparsit",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A power-loom worker in Coketown, worn down by poverty and an unhappy marriage from which the law gives him no affordable release. Honest and thoughtful, he seeks a quiet life with Rachael but finds few choices open to a worker without money or influence.",
+            "id": "stephen-blackpool",
+            "name": "Stephen Blackpool",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A factory worker and Stephen Blackpool's closest friend. Her calm compassion gives him hope amid his difficult home life. She is principled, observant, and willing to care even for people whose actions have caused pain.",
+            "id": "rachael",
+            "name": "Rachael",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A pale, methodical pupil in Gradgrind's school who eagerly supplies definitions in the approved factual style. His early success within the system contrasts with Sissy's difficulty responding to questions that exclude sympathy and imagination.",
+            "id": "bitzer",
+            "name": "Bitzer",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Sissy's father, a circus clown who performs with a trained dog. His declining skill makes him fear that he is holding his daughter back. Sissy remains devoted to him and expects his return even after he vanishes from the circus.",
+            "id": "signor-jupe",
+            "name": "Signor Jupe",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An elderly woman who makes an annual journey to Coketown and lingers near Bounderby's property. She appears poor but takes an intense, unexplained interest in the successful manufacturer and is pleased simply to see him from a distance.",
+            "id": "mrs-pegler",
+            "name": "Mrs Pegler",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A polished young gentleman who comes to Coketown to assist Gradgrind's political cause. Bored, skeptical, and practiced at pleasing people, he quickly studies the Gradgrind household and takes a particular interest in Louisa.",
+            "id": "james-harthouse",
+            "name": "James Harthouse",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A forceful union speaker who urges Coketown's workers to unite against the mill owners. When Stephen refuses to join because of a private promise, Slackbridge publicly denounces him and persuades the other workers to isolate him.",
+            "id": "slackbridge",
+            "name": "Slackbridge",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "hard-times-charles-dickens"
+      },
+      "recaps": {
+        "ending": "Stephen is found at the bottom of an abandoned mine shaft and dies after being rescued, but his final account points Gradgrind and Louisa toward Tom as the bank robber. Sissy has already hidden Tom with Sleary's circus. Bitzer tries to capture him for a reward, but the performers help Tom escape overseas. Tom later dies abroad after expressing remorse and wishing to see Louisa again. Bounderby's supposed history of abandonment is exposed when Mrs Pegler is revealed as the loving mother he rejected; he dies several years later. Gradgrind abandons his faith in pure calculation and becomes more compassionate, though former allies reject him. Sissy forms a happy family. Louisa never remarries or has children, but remains close to Sissy and finds purpose in caring for others. Rachael continues her working life with enduring kindness and keeps Stephen's memory.",
+        "in_short": "In industrial Coketown, Thomas Gradgrind raises his children to trust facts and suppress emotion, while his friend Josiah Bounderby boasts of rising alone from poverty. Gradgrind's daughter Louisa enters a loveless marriage to Bounderby partly to help her brother Tom, who works at Bounderby's bank. Factory worker Stephen Blackpool is rejected by both employers and fellow workers, then suspected when the bank is robbed. The charming James Harthouse exploits Louisa's unhappiness, but she flees to her father rather than begin an affair, forcing Gradgrind to recognize the harm done by his teaching. Stephen dies after falling into an abandoned mine shaft, and his final words expose Tom as the robber. Sleary's circus helps Tom escape abroad, where he later dies remorseful. Bounderby's claim of childhood abandonment is revealed as a lie. Gradgrind adopts a more humane outlook, Sissy builds a loving family, and Louisa remains unmarried but devotes herself to others.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Thomas Gradgrind opens his Coketown school with a demand that children learn only facts. Cecilia Jupe, known as Sissy, struggles with this approach despite her knowledge of circus life, while the model pupil Bitzer answers as expected. Gradgrind later finds his own children, Louisa and Tom, secretly watching Sleary's circus and rebukes them for seeking amusement. His wealthy friend Josiah Bounderby visits the family and repeats his story of overcoming a neglected childhood. Gradgrind and Bounderby go to the circus intending to confront Sissy's father, but discover that he has disappeared, apparently believing Sissy would fare better without him. Gradgrind offers to take Sissy into his household and educate her if she gives up the circus. Sleary parts from her with concern and reminds Gradgrind that people need amusement as well as work.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sissy joins the Gradgrind household but continues to disappoint in lessons built on calculation, even as her kindness influences the family. Louisa and Tom remain emotionally stifled; Tom plans to use Louisa's affection to make his own future easier. Bounderby's aristocratic but impoverished housekeeper, Mrs Sparsit, presides over his home and bank. In the factories, power-loom worker Stephen Blackpool is trapped in a painful marriage to a woman whose alcoholism makes their home unsafe. He asks Bounderby whether he can obtain a divorce and learns that the legal remedy available to wealthy people is far beyond his means. An elderly stranger, Mrs Pegler, also appears in Coketown, showing a mysterious interest in Bounderby while carefully avoiding him. Neither Stephen's home nor the law offers him a practical escape from his misery.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rachael prevents Stephen's wife from taking a potentially fatal amount of medicine, and Stephen is ashamed that he briefly failed to intervene. In the Gradgrind household, Bounderby proposes marriage to Louisa. Gradgrind presents the question as a rational calculation of suitability, never asking whether she loves Bounderby. Knowing the match may benefit Tom, Louisa accepts despite her emotional emptiness and the warning represented by the dying fire she watches. She marries Bounderby, who is much older than she is, and Tom obtains a position at Bounderby's bank. The first part closes with Gradgrind's educational principles apparently established in adult life: Louisa has made a practical marriage, but neither facts nor calculation have given her a language for her own wishes.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Some time after Louisa's marriage, the polished and cynical James Harthouse arrives to support Gradgrind's political interests. He quickly notices Louisa's detachment and learns through Tom that she does not love Bounderby. By flattering Tom and presenting himself as equally bored by ordinary moral claims, Harthouse gains access to Louisa and begins to influence her. At the same time, labour conflict divides Coketown. The union speaker Slackbridge calls on the factory workers to organize, but Stephen refuses because of a private promise to Rachael and is shunned by his fellow workers. Bounderby then summons Stephen and demands information about the union. Stephen will not inform on his companions and criticizes the gulf between workers and owners, so Bounderby dismisses him. Isolated from both sides, Stephen prepares to leave Coketown to find work elsewhere.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Before Stephen leaves, Louisa visits him with Tom and quietly offers money. Tom privately asks Stephen to wait outside Bounderby's bank on several evenings, suggesting that a message or assistance may follow, but nothing happens. Soon afterward the bank is robbed, and Stephen's unexplained loitering makes him the chief suspect once he has left town. Mrs Sparsit, now installed at the bank, watches Louisa closely and imagines her descending step by step toward disgrace. Harthouse continues exploiting Louisa's concern for Tom and presses his pursuit while Bounderby is away. Mrs Sparsit follows Louisa through a storm, expecting to expose an affair, yet loses sight of her. Louisa does not leave with Harthouse. Instead, she goes to her father, tells him that his education left her unable to understand or govern her feelings, and collapses before him. Gradgrind is forced to recognize the failure of the system he imposed on his children.",
+            "through": {
+              "chapter": 27
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Louisa remains at her father's house while Gradgrind begins replacing his confidence in abstract rules with sympathy. Sissy meets Harthouse and calmly tells him to leave Coketown; recognizing that his influence is finished, he complies. Bounderby refuses Gradgrind's request to give Louisa time and declares that she must return by a fixed deadline. When she does not, he treats the marriage as ended. Mrs Sparsit finds Mrs Pegler and brings her before Bounderby, expecting to expose a dangerous accomplice. Instead, Mrs Pegler reveals that she is Bounderby's loving mother, that she did not abandon him, and that his famous account of childhood misery is false. Bounderby is humiliated and dismisses Mrs Sparsit. Meanwhile Stephen has failed to answer public notices asking him to return and clear his name. Rachael and Sissy search the country around Coketown after learning he was last seen walking back toward the town.",
+            "through": {
+              "chapter": 32
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Stephen is discovered alive at the bottom of an abandoned mine shaft, where he fell while returning to defend himself. After being lifted out, he maintains his innocence, recalls that Tom asked him to wait outside the bank, and dies with Rachael beside him. Gradgrind and Louisa realize that Tom committed the robbery. Sissy has anticipated the danger and concealed him among Sleary's circus performers. Gradgrind, Louisa, and Sissy try to send Tom overseas, but Bitzer intercepts them, hoping that returning the thief will advance his career. Sleary and the circus arrange a diversion that allows Tom to escape. Tom later dies abroad after writing remorsefully and wishing to see Louisa again. Gradgrind abandons his rigid philosophy and acts with greater compassion, though his old political associates turn against him. Bounderby dies a few years later. Sissy marries and raises a loving family; Louisa never remarries, but shares in Sissy's family life and uses her experience to show kindness to others. Rachael continues to work and honour Stephen's memory.",
+            "through": {
+              "chapter": 37
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "hard-times-charles-dickens"
+      }
+    },
     "harrow-the-ninth": {
       "characters": {
         "characters": [
