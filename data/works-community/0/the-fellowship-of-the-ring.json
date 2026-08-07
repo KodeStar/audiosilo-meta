@@ -2649,6 +2649,217 @@
         "work": "the-forever-ship"
       }
     },
+    "the-fortune-of-war": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A Royal Navy post-captain bringing the battered Leopard's voyage to an end in the East Indies. The ship is no longer fit for ordinary service, and Jack expects to travel home before taking another command. His professional confidence remains strong, but recent losses, a damaged crew, and the outbreak of war with the United States place him in a changing naval world.",
+            "id": "jack-aubrey",
+            "name": "Jack Aubrey",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Dr Maturin"
+            ],
+            "description": "Jack's friend, surgeon, natural philosopher, and British intelligence agent. He reaches the East Indies after maintaining a deception directed at American intelligence during Leopard's voyage. He still loves Diana Villiers, now in the United States with Johnson, and the new Anglo-American war makes every personal or professional connection there dangerous.",
+            "id": "stephen-maturin",
+            "name": "Stephen Maturin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The British administrator who receives Leopard's survivors in the East Indies. Raffles is intellectually curious, hospitable to Stephen, and attentive to the strategic demands of the region. His station offers the exhausted travellers a brief point of order before their attempted passage home.",
+            "id": "stamford-raffles",
+            "name": "Stamford Raffles",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Captain of La Flèche, the Royal Navy frigate that takes Jack and Stephen as passengers toward home. Yorke is a professional contemporary of Jack's and offers them the security of a fast British warship after Leopard's ordeal.",
+            "id": "charles-yorke",
+            "name": "Captain Yorke",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Captain of HMS Java, which rescues Jack, Stephen, and other survivors at sea. Lambert commands a newly assembled company on a demanding passage and must prepare them for battle when an American heavy frigate appears. He welcomes Jack's experience without surrendering his own authority.",
+            "id": "henry-lambert",
+            "name": "Captain Lambert",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Captain of USS Constitution, the powerful American frigate that encounters Java. Bainbridge is an experienced enemy commander whose larger, well-trained ship presents a severe test for Java's recently formed crew.",
+            "id": "william-bainbridge",
+            "name": "Captain Bainbridge",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Sophia Aubrey's cousin and the woman Stephen has loved through years of separation. She is living in Boston under the protection and control of the wealthy American Johnson. Her earlier departure left Stephen wounded, but news that she is near changes his imprisonment from a purely political danger into a deeply personal one.",
+            "id": "diana-villiers",
+            "name": "Diana Villiers",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mr Johnson"
+            ],
+            "description": "A wealthy American intelligence official with whom Diana Villiers has been living. Johnson knows the value of secret papers and networks on both sides of the Atlantic. Once Stephen reaches Boston, Johnson's official interests and possessive connection to Diana make him an immediate threat.",
+            "id": "harry-johnson",
+            "name": "Harry Johnson",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The young American who followed Louisa Wogan aboard Leopard and helped Stephen during the epidemic. Now in Boston, Herapath remembers both Stephen's medical trust and the complicated intelligence operation surrounding Wogan. His local knowledge makes him one of the few Americans Stephen can approach personally.",
+            "id": "michael-herapath",
+            "name": "Michael Herapath",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Michael Herapath's prosperous father, established in Boston commerce. He receives the British prisoners with the mixture of private hospitality and public caution required during wartime. His position gives Jack and Stephen access to a respectable household while they remain under American authority.",
+            "id": "george-herapath",
+            "name": "George Herapath",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Boston physician involved in Jack's treatment after the Java action. Choate regards the badly injured arm through conventional surgical expectations, while Stephen is determined to preserve it and keep control of his friend's care.",
+            "id": "dr-choate",
+            "name": "Dr Choate",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Captain of HMS Shannon, maintaining a close watch off Boston. Broke has trained his guns and crew with exceptional care and seeks a direct engagement with the American frigate Chesapeake. His ship offers Jack and Stephen a possible return to British protection.",
+            "id": "philip-broke",
+            "name": "Captain Philip Broke",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The American captain newly commanding USS Chesapeake at Boston. Lawrence accepts the prospect of action against Shannon and takes his ship out before a large watching public. He is Jack's professional enemy, though treated as a fellow naval officer rather than a personal adversary.",
+            "id": "james-lawrence",
+            "name": "Captain James Lawrence",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Jack's long-serving steward and one of the familiar hands remaining with him after Leopard's ordeal. Killick guards Jack's belongings and complains through each change of ship, but his attachment is unwavering when Jack is wounded and carried into captivity.",
+            "id": "preserved-killick",
+            "name": "Preserved Killick",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-fortune-of-war"
+      },
+      "recaps": {
+        "ending": "Stephen's work in Boston reveals that Johnson's intelligence service is closing around him and that Diana also needs to escape Johnson's control. With help from the Herapath connection, Stephen gets the badly wounded Jack and Diana out of the city by boat. They reach HMS Shannon, returning to British protection just as Captain Broke brings the frigate into his carefully prepared action with USS Chesapeake. The battle is brief and violent: Shannon's disciplined gunnery and boarding party take Chesapeake, while Captain Lawrence is mortally wounded and Broke suffers a grave head injury. Stephen treats the casualties, including Broke, and Jack again finds himself among Royal Navy officers rather than American captors. Shannon sails for Halifax with her prize. Jack has survived the loss of Java without losing his arm, Stephen has escaped an intelligence trap, and Diana is free of Johnson and reconciled with Stephen. Their personal future is reopened, while Britain and the United States remain at war.",
+        "in_short": "After Leopard reaches the East Indies, Jack Aubrey and Stephen Maturin try to return to Britain. Their first passage ends when La Flèche burns; HMS Java rescues them, then meets USS Constitution. Java is defeated and destroyed, Captain Lambert is mortally wounded, and Jack suffers a shattered arm. Taken prisoner to Boston, Jack undergoes a difficult recovery under Stephen's care. Stephen discovers that Diana Villiers is in the city with the American intelligence chief Johnson, who is also hunting British agents and has identified Stephen as a danger. Assisted by Michael Herapath and local allies, Stephen turns an attempted trap to his advantage, reunites with Diana, and arranges an escape with her and Jack. They reach HMS Shannon before its duel with USS Chesapeake. Shannon captures the American frigate in a short, brutal action. The British party sails toward Halifax: Jack's arm saved, Stephen and Diana reconciled, and all three out of Johnson's reach.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Jack Aubrey has risen through bold commands to post-captain and commodore, married Sophia Williams, and established a home and family despite recurring professional uncertainty. Stephen Maturin is both his closest friend and a British intelligence agent. Stephen still loves Sophia's cousin Diana Villiers, who went to America with the wealthy Johnson, a figure connected to American intelligence. After conquering Mauritius, Jack took the old Leopard on a convict voyage toward New South Wales. Stephen watched the American agent Louisa Wogan and planted false intelligence for her network. Gaol fever devastated the ship; the Dutch Waakzaamheid pursued Leopard until a great sea sank her; ice then crippled Jack's ship. Lieutenant Grant left with a boat party. Jack repaired Leopard at Desolation Island and continued east with a reduced company.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The battered Leopard has finally carried Jack and Stephen into the East Indies, where Stamford Raffles receives them and the ship's surviving company begins to disperse. Jack's transport commission is effectively over, and he expects passage home and a future command rather than further service in Leopard. Stephen closes the immediate phase of his deception aimed at American intelligence, but war with the United States gives that work new urgency and makes Diana's presence in America more troubling. Jack and Stephen take passage in the British frigate La Flèche under Captain Yorke. Their apparent return to ordinary naval security ends when fire races through the ship. La Flèche cannot be saved, and the survivors abandon her at sea. HMS Java rescues them, placing Jack and Stephen aboard another warship whose crew and command are still settling into effective order.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After Leopard reached the East Indies, Jack and Stephen sailed for home in La Flèche, only to lose the frigate to fire and be rescued by HMS Java. Captain Lambert's ship then encountered USS Constitution, a heavier American frigate with an experienced company. Jack, though only a passenger, helped where Lambert welcomed his expertise; Stephen prepared for casualties. Java fought hard but suffered ruinous damage and mounting losses. Lambert was mortally wounded, Jack received a grave injury to his arm, and the British ship was forced to strike. Constitution's crew removed the prisoners and destroyed the captured Java because she could not be taken into service. Jack, Stephen, and their surviving companions are now prisoners of the United States. Jack's wound threatens both his life and his future as a naval officer, while Stephen must protect him under the authority of a country whose intelligence service has reason to scrutinize Stephen himself.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jack and Stephen have lost two ships on the attempted journey home: La Flèche burned, and Java was defeated by USS Constitution. Captain Lambert died of his wounds, Java was destroyed, and Jack entered American captivity with his arm badly shattered. In Boston, Stephen resists any easy decision to amputate and manages Jack's treatment through pain, infection risk, and the restrictions placed on prisoners. The Herapath family provides a useful local connection, and Michael Herapath's memory of Stephen's conduct aboard Leopard creates a basis for trust. Stephen learns that Diana Villiers is also in Boston with Johnson. The discovery brings hope but exposes the larger danger: Johnson is not merely a wealthy protector but an intelligence official, and the papers and agents around him may identify Stephen's real service. Jack's recovery and Stephen's need to reach Diana now proceed under increasingly close American attention.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The British prisoners remain in Boston after Constitution's victory over Java. Stephen has so far saved Jack's injured arm, although Jack is still weak and dependent on careful treatment. Through the Herapaths and his own contacts, Stephen has found Diana living under Johnson's influence. Their reunion confirms that affection survives their separation, but it also places both in immediate danger. Johnson's intelligence organization is seeking British networks, and Stephen can no longer rely on his identity as a naval surgeon to shield him. He counters an attempt to trap him, secures sensitive material, and begins planning flight rather than waiting for formal exchange. Diana intends to leave Johnson, and Jack is too conspicuous and infirm to escape without assistance. Stephen draws on Michael Herapath and trustworthy local help to move all three beyond the reach of Boston authorities before Johnson can close the routes out.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Stephen has preserved Jack's arm, reunited with Diana, and learned that Johnson's intelligence service is moving against them. After defeating a trap and gathering what he needs, he arranges an escape from Boston with Diana and the still-recovering Jack. Local help gets them out by boat while American pursuit remains a threat. Offshore, HMS Shannon under Captain Philip Broke is watching Boston and waiting for a direct contest with USS Chesapeake. Reaching Shannon would return the fugitives to British jurisdiction, but the frigate is itself preparing for battle. Broke has drilled his crew and guns with unusual intensity and has challenged the American ship. Chesapeake, now under Captain James Lawrence, is fitting out to answer before the citizens of Boston. Jack and Stephen's private escape has therefore carried them directly toward a public naval encounter that may decide whether their refuge is secure.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jack and Stephen's homeward passage led from Leopard to the burning La Flèche and then to Java, whose defeat by USS Constitution left Jack badly wounded and both men captive in Boston. Stephen saved Jack's arm, found Diana there with the intelligence chief Johnson, survived Johnson's attempt to close his network around him, and escaped the city with Jack and Diana. Their boat reached HMS Shannon as Captain Broke prepared to fight USS Chesapeake. Shannon's highly trained company won the ensuing battle with exceptional speed, boarding and capturing Chesapeake after a short exchange. Captain Lawrence was mortally wounded, and Broke received a dangerous head wound that Stephen treated. Shannon now carries the captured frigate toward Halifax. Jack is again among British officers and recovering; Stephen and Diana are reconciled and free of Johnson; and the intelligence threat in Boston has been escaped, though the Anglo-American war continues.",
+            "through": {
+              "chapter": 16
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-fortune-of-war"
+      }
+    },
     "the-fourth-secret": {
       "characters": {
         "characters": [

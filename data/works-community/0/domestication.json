@@ -5385,6 +5385,196 @@
         ],
         "work": "echo-burning"
       }
+    },
+    "echo-park": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An LAPD Open-Unsolved detective who has kept the Marie Gesto disappearance file close since 1993. When an arrested killer offers to confess to her murder, Bosch must test the account while confronting the possibility that his original investigation missed the chance to save later victims.",
+            "id": "harry-bosch",
+            "name": "Harry Bosch",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Bosch's partner in the Open-Unsolved Unit. Rider helps evaluate a proposed confession and manage the political pressure around it, while watching Bosch's long personal investment in the Gesto case threaten his judgment.",
+            "id": "kizmin-rider",
+            "name": "Kizmin Rider",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A young woman who vanished in 1993 after leaving a Los Angeles supermarket. Her car was found with groceries still inside, but her body was never recovered. The unsolved disappearance has remained one of Bosch's most persistent cases.",
+            "id": "marie-gesto",
+            "name": "Marie Gesto",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A man arrested after police find human remains in his van. Facing the death penalty, Waits offers to identify multiple victims and lead authorities to their remains, including Marie Gesto, in exchange for a life sentence.",
+            "id": "raynard-waits",
+            "name": "Raynard Waits",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A prosecutor and candidate for district attorney who controls the proposed agreement with Raynard Waits. O'Shea wants recoveries and cleared cases, but the timing of his campaign gives every decision a political consequence.",
+            "id": "rick-oshea",
+            "name": "Rick O'Shea",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An investigator attached to the district attorney's office and the Waits negotiation. Olivas acts as an intermediary between prosecutors, detectives, and the prisoner during a process Bosch regards as vulnerable to manipulation.",
+            "id": "freddy-olivas",
+            "name": "Freddy Olivas",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Raynard Waits's defense attorney. Swann presents the offer to trade information about multiple killings for removal of the death penalty, and he controls much of the early access to what his client claims to know.",
+            "id": "maurice-swann",
+            "name": "Maurice Swann",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An FBI agent and profiler with whom Bosch worked during the hunt for the Poet. She helps assess Waits's behavior and claims, bringing experience with serial offenders as well as a personal connection Bosch has not resolved.",
+            "id": "rachel-walling",
+            "name": "Rachel Walling",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A man Bosch investigated in connection with Marie Gesto's disappearance in 1993. His access, movements, and interest made him important to the original case, but Bosch could not obtain the evidence needed to charge him.",
+            "id": "anthony-garland",
+            "name": "Anthony Garland",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Anthony Garland's wealthy and influential father. He used lawyers and connections to protect his son during the original Gesto inquiry, making the family a difficult target for detectives who lacked decisive physical evidence.",
+            "id": "thomas-rex-garland",
+            "name": "Thomas Rex Garland",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Bosch's former wife and the mother of his daughter, now living in Nevada as a professional poker player. Their renewed contact gives Bosch a family life that competes with the case he has been unable to release.",
+            "id": "eleanor-wish",
+            "name": "Eleanor Wish",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Maddie"
+            ],
+            "description": "Bosch and Eleanor Wish's daughter. Bosch is still learning how to be present for her while working a case that repeatedly draws him toward danger and away from ordinary plans.",
+            "id": "madeline-bosch",
+            "name": "Madeline Bosch",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "echo-park"
+      },
+      "recaps": {
+        "ending": "Waits's knowledge of Marie Gesto was manufactured as part of an escape and misdirection scheme. The field trip gives him access to a hidden weapon; he breaks free, kills again, and retreats to the Echo Park property tied to his childhood and murders. Bosch and Rachel Walling identify the location and stop him after a final pursuit through its concealed spaces. The evidence proves that Waits was a serial killer, but he did not kill Marie. Her disappearance leads back to Anthony Garland, the suspect Bosch could not charge in 1993. Thomas Rex Garland's money and influence helped build the false confession that would shift Marie's murder onto Waits and permanently protect Anthony. The plot also depended on concealed or mishandled information in the old case, forcing Bosch and Rider to confront institutional choices that diverted the original inquiry. Marie's fate is finally separated from Waits's genuine victims and assigned to the man responsible. Rider survives the field-trip attack but chooses a new role in the department, ending her partnership with Bosch. Bosch closes his oldest open case while facing the damage caused by years in which the wrong interests controlled its evidence.",
+        "in_short": "Serial killer Raynard Waits offers prosecutors a deal: in exchange for avoiding execution, he will identify his victims and show police where he buried Marie Gesto, whose 1993 disappearance Harry Bosch never solved. Waits supplies persuasive detail, making Bosch fear that an overlooked report in the old file allowed years of later murders. During a supervised trip to recover Marie, Waits reaches a planted gun, escapes, and leaves Kiz Rider wounded. Bosch and FBI profiler Rachel Walling track him to an Echo Park property connected to his childhood and kill him after a final confrontation. Waits was responsible for multiple murders, but his Gesto confession was false. The story was fed to him to protect Anthony Garland, Bosch's original suspect, with Anthony's wealthy father using influence and intermediaries to move Marie's murder onto a condemned serial killer. Bosch exposes that scheme and finally establishes Marie's fate. Rider survives but leaves their partnership for a different departmental role.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: After three years outside the LAPD, Bosch returned to the department and joined Kiz Rider in the Open-Unsolved Unit. Their first case used new DNA testing to close the 1988 murder of Rebecca Verloren and confirmed that Bosch could still pursue an uncomfortable truth from inside the institution. He remains in contact with former wife Eleanor Wish and is building a relationship with their daughter, Maddie. FBI agent Rachel Walling worked with him during the Nevada hunt for the Poet, a collaboration that also became personally complicated.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bosch still periodically reviews the disappearance of Marie Gesto, a young woman whose empty car and abandoned groceries were found in 1993 but whose body never surfaced. He and Kiz Rider are called into a proposed agreement with Raynard Waits, arrested after human remains are found in his van. Facing execution, Waits offers prosecutors a list of victims and recovery sites in exchange for a life sentence. He claims Marie among his killings. District attorney candidate Rick O'Shea sees the chance to clear several cases, while Bosch sees a suspect who may be trading whatever information he can acquire. He returns to the original file and the Garland family, whose son Anthony was once his strongest uncharged suspect.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Waits provides details that appear to confirm access to information never made public. His account forces Bosch to consider that a lead was overlooked or removed in 1993, allowing the man who took Marie to continue killing. Prosecutors, investigator Freddy Olivas, and defense attorney Maurice Swann negotiate the controlled disclosure while Bosch and Rider try to verify each fact independently. FBI profiler Rachel Walling helps assess Waits and the pattern suggested by the bodies already linked to him. The serial-killer evidence is real, but that does not prove every name he offers. Bosch's review revives his suspicion of Anthony Garland and the resistance created by Anthony's father, Thomas Rex Garland, during the original investigation.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Authorities take Waits on a supervised field trip to recover remains he identifies as Marie's. The outing is also meant to lock his confession to physical evidence, but the route and security have been anticipated. Waits reaches a concealed weapon, attacks the escort, and escapes. Kiz Rider is seriously wounded in the breakdown. The event transforms a politically managed plea process into an urgent manhunt and shows that someone outside custody helped prepare the escape. Bosch can no longer treat the false steps in the Gesto account as a prisoner's improvisation; Waits had details, assistance, and a reason to attach Marie to his genuine series of murders.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bosch and Walling trace Waits through his real history rather than the identity he presented in the deal. Echo Park and a property connected to his childhood explain the environment in which he learned to hide, watch, and build concealed spaces. His surviving pattern confirms multiple murders but does not align cleanly with Marie's disappearance. At the same time, the mechanics of the field-trip escape point toward information and a weapon supplied through the negotiation. Bosch concludes that the Gesto confession served two purposes: it gave Waits leverage for escape and offered someone else a permanent way to assign Marie's murder to a serial killer who would never stand trial for the details.",
+            "through": {
+              "chapter": 26
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The false confession leads back to the Garlands. Anthony remained Bosch's central suspect in 1993, and Thomas Rex Garland had the money, influence, and motive to ensure that the old inquiry ended with another man publicly responsible. Material from the case could be fed through intermediaries to make Waits sound convincing. Bosch also learns that missing or diverted information in the original investigation was not simply his failure to notice an ordinary report; institutional pressure helped keep the Garland lead from developing. This does not erase his responsibility to Marie, but it changes the story Waits used against him. Meanwhile Waits continues killing after his escape and withdraws toward the Echo Park location where the manhunt will have to enter his prepared ground.",
+            "through": {
+              "chapter": 35
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bosch and Rachel Walling locate Raynard Waits at the Echo Park property connected to his childhood and crimes. They pursue him through concealed areas and stop him after a final confrontation, ending the danger created by the failed field trip. The investigation proves that Waits murdered multiple people but falsely claimed Marie Gesto. Her death belongs to Anthony Garland, the suspect Bosch had pursued in 1993, and Thomas Rex Garland used wealth, influence, and the plea process to shift responsibility onto Waits. The escape plan depended on assistance and on details taken from the old case, while earlier institutional interference had helped keep Bosch from completing the Garland inquiry. Marie's case is finally closed on its own evidence rather than absorbed into Waits's series. Kiz Rider survives her wounds but moves toward a different role in the LAPD, ending her day-to-day partnership with Bosch. Bosch has his long-sought answer, together with a clearer view of why it was delayed.",
+            "through": {
+              "chapter": 39
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "echo-park"
+      }
     }
   }
 }

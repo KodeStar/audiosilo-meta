@@ -267,6 +267,178 @@
         "work": "lords-and-ladies"
       }
     },
+    "lost-light": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A recently retired LAPD homicide detective who cannot leave an old unsolved murder alone. Without a badge or official access, Bosch reopens the death of Angella Benton and the movie-set robbery that followed it, relying on former colleagues and his own records while learning what civilian investigation costs.",
+            "id": "harry-bosch",
+            "name": "Harry Bosch",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A young production assistant found strangled outside her apartment four years earlier. Bosch briefly worked her homicide before another team took over; the lack of a solution, and the apparent connection to a large theft from a film production, draw him back after retirement.",
+            "id": "angella-benton",
+            "name": "Angella Benton",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former LAPD robbery-homicide detective left severely disabled by gunfire during the investigation connected to the movie-set theft. He lives with the physical consequences of the old case and gives Bosch a view of work that official files no longer supply.",
+            "id": "lawton-cross",
+            "name": "Lawton Cross",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An FBI agent who disappeared while pursuing the stolen movie money. Her unresolved disappearance becomes a second cold case inside Bosch's inquiry and suggests that the robbery's consequences continued after the original police investigation stalled.",
+            "id": "martha-gessler",
+            "name": "Martha Gessler",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An FBI agent Bosch knows from an earlier organized-crime investigation. Lindell understands the federal interest surrounding the stolen money, but his obligations and the secrecy attached to the case limit what he can safely tell a retired detective.",
+            "id": "roy-lindell",
+            "name": "Roy Lindell",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A prosecutor Bosch trusts to evaluate evidence and legal exposure. Now that he has no departmental authority, Langwiser helps him distinguish what he suspects from what could support action in a case controlled by several agencies.",
+            "id": "janis-langwiser",
+            "name": "Janis Langwiser",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A film producer connected to the production from which a large amount of cash was stolen. Bosch must revisit the production's security, finances, and personnel to decide whether Benton's work there placed her in danger.",
+            "id": "alexander-taylor",
+            "name": "Alexander Taylor",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Bosch's former wife, a onetime FBI agent who left Los Angeles after their marriage ended. Information about her current life becomes unexpectedly important to Bosch as the risks of his private investigation spread beyond the old case.",
+            "id": "eleanor-wish",
+            "name": "Eleanor Wish",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Maddie"
+            ],
+            "description": "Eleanor Wish's young daughter. Her existence changes Bosch's understanding of the years since his marriage ended and gives him a personal future beyond the badge he surrendered.",
+            "id": "madeline-bosch",
+            "name": "Madeline Bosch",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Bosch's former LAPD colleague. Rider remains a cautious point of contact inside the department, where Bosch's old standing does not entitle him to reports, evidence, or the freedom to reopen another team's case.",
+            "id": "kizmin-rider",
+            "name": "Kizmin Rider",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "lost-light"
+      },
+      "recaps": {
+        "ending": "Bosch establishes that Angella Benton's murder, the theft of cash from the film set, the attack that destroyed Lawton Cross's police career, and FBI agent Martha Gessler's disappearance belong to the same chain of concealment. Benton had come too close to the planning behind the theft, while Gessler later followed the money far enough to threaten the people protecting it. The official division between a homicide, a robbery, a police shooting, and a missing-agent case allowed that chain to remain hidden. Bosch survives an effort to stop his inquiry and brings the linked evidence into the open, giving Benton and Gessler an answer even though institutional secrecy has made ordinary justice incomplete. The investigation also exposes a secret kept from Bosch since his separation from Eleanor Wish: Eleanor has raised their daughter, Madeline, without telling him. Bosch meets the child and leaves the case with a new obligation and source of hope. He remains outside the LAPD, but retirement has not ended either his work or his connection to Eleanor and Maddie.",
+        "in_short": "After resigning from the LAPD, Harry Bosch reopens the four-year-old strangling of production assistant Angella Benton. Her death preceded the theft of a large cash shipment from a movie set, and the robbery investigation led to a shooting that killed one detective and left Lawton Cross disabled. Bosch works without a badge through old files, Cross's memories, former colleagues, and the disappearance of FBI agent Martha Gessler, who had followed the stolen money. He finds that the homicide, robbery, attack on the detectives, and Gessler's disappearance were not separate failures but parts of one continuing effort to protect the theft and silence those who understood it. Bosch survives the effort to shut down his inquiry and exposes the linked crimes. The most consequential discovery is personal: former wife Eleanor Wish has a young daughter, Madeline, whom Bosch learns is his child. Still retired, he ends with the prospect of becoming part of her life.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Harry Bosch solved the decades-old murder of abused child Arthur Delacroix, but the case also produced the wrongful public destruction of an innocent suspect and an official falsehood about rookie officer Julia Brasher's fatal accidental shooting. Unable to accept the department's preferred account, Bosch turned in his badge and left the LAPD. His marriage to former FBI agent Eleanor Wish had ended earlier, and she left Los Angeles without rebuilding contact with him.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Now retired, Bosch reviews a case that has remained with him since he briefly caught it four years earlier. Production assistant Angella Benton was strangled outside her apartment. Soon afterward, a large amount of real cash intended for use on a film set disappeared in a carefully executed robbery, creating a possible motive that moved the inquiry beyond an ordinary homicide. Bosch no longer has authority to request records or direct detectives, but he has time, old notes, and the conviction that Benton was lost when agencies divided the events into separate cases. He visits former detective Lawton Cross, whose life was devastated by gunfire during the robbery investigation, and begins reconstructing what Cross and his partner had learned before the attack.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Cross's account and the old case chronology strengthen the connection between Benton's work and the stolen movie money. Bosch revisits people attached to the production, including producer Alexander Taylor, while testing whether Benton saw, carried, or learned something that made her dangerous. He also learns that FBI agent Martha Gessler pursued the missing money and later vanished. Her disappearance has never been satisfactorily resolved. The cases now form a sequence: Benton dies, the cash is stolen, the robbery detectives are attacked, and a federal investigator disappears after continuing the financial trail. Bosch contacts people such as prosecutor Janis Langwiser and FBI agent Roy Lindell, but both the age of the evidence and federal secrecy make each step difficult to turn into a formal inquiry.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bosch follows Gessler's work as well as Benton's, looking for the point at which the two women independently threatened the same concealed operation. The stolen cash was not merely a spectacular set robbery; its movement and the official response created incentives to isolate information among police, federal agents, and the film company. Cross's ruined life shows that violence continued when investigators approached the truth. Because Bosch is a civilian, those protecting the old secret can portray his questions as obsession while denying him the records needed to prove otherwise. He nevertheless identifies inconsistencies in the accepted accounts and evidence that Gessler did not voluntarily abandon her life. The missing-agent case becomes central rather than a side issue.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The inquiry brings Bosch under direct pressure to stop. Information is withheld in the name of federal security, and the people monitoring him possess knowledge beyond anything he disclosed, showing that the old robbery remains actively protected. Bosch concludes that Benton was silenced because of what she knew around the film production and that Gessler was eliminated after tracing the same network through the money. The attack on Cross and his partner fits the same pattern of removing investigators rather than an unrelated street encounter. Bosch has enough of the sequence to understand the cover-up, but he still must survive it and place the evidence where it cannot be separated again into harmless fragments.",
+            "through": {
+              "chapter": 32
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bosch pushes past the institutional barriers and reconstructs the shared design behind the four events. The Benton homicide protected the coming theft; the later attack stopped the robbery detectives; and Gessler disappeared because her federal inquiry followed the proceeds and exposed the connection. The case's keepers attempt to control Bosch using information about his own life, including the whereabouts of Eleanor Wish. That tactic reveals that the secrecy around the investigation extends to surveillance of people with no part in the original crime. Bosch turns that personal threat into another reason to complete the record rather than retreat.",
+            "through": {
+              "chapter": 39
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bosch exposes the chain linking Angella Benton's murder, the movie-set cash theft, the shooting that left Lawton Cross disabled, and Martha Gessler's disappearance. Benton and Gessler were killed at different stages of the same continuing concealment, while the division of jurisdiction kept any one investigator from seeing the whole. Bosch survives the effort to silence him and delivers the evidence needed to make the relationship among the crimes known, though years of official protection prevent a simple, restorative ending. His final discovery is outside the cold case. Eleanor Wish has a young daughter, Madeline, and Bosch learns that he is her father. Meeting Maddie gives him a role he did not know existed and changes the meaning of the future he faced after surrendering his badge. He remains retired, but no longer sees his life as only an aftermath of police work.",
+            "through": {
+              "chapter": 45
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "lost-light"
+      }
+    },
     "mad-ship": {
       "characters": {
         "characters": [

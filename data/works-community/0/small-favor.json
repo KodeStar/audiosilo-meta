@@ -2527,6 +2527,168 @@
         "work": "spirit-bound"
       }
     },
+    "staked": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An ancient Irish Druid preparing an offensive against the vampire network that has repeatedly targeted him and his allies. He plans to use long experience, trusted contacts, and the vampires' own rivalries to reach their oldest leadership.",
+            "id": "atticus-osullivan",
+            "name": "Atticus O'Sullivan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A fully bound Druid carrying a magical mark left by Loki. Accompanied by Orlaith, she pursues a separate route toward removing that vulnerability before the trickster can use it to track or manipulate her.",
+            "id": "granuaile-mac-tiernan",
+            "name": "Granuaile MacTiernan",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Atticus's archdruid, adapting to the modern world after two thousand years of magical confinement. Rather than join Atticus's vampire campaign, he turns toward preserving Druid knowledge by seeking people who might form a new grove.",
+            "id": "owen-kennedy",
+            "name": "Owen Kennedy",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Atticus's telepathic Irish wolfhound. He accompanies the campaign against the vampires, using his senses to warn Atticus while remaining a loyal counterweight to plans shaped by ancient grudges.",
+            "id": "oberon",
+            "name": "Oberon",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Granuaile's Irish wolfhound and telepathic companion. She travels with Granuaile on the attempt to escape Loki's mark and shares the dangers of a mission conducted apart from Atticus and Oberon.",
+            "id": "orlaith",
+            "name": "Orlaith",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An ancient vampire at the top of a far-reaching hierarchy. He treats Druids and younger vampires as pieces in a durable system of control, making him the central target of Atticus's effort to end the organized attacks.",
+            "id": "theophilus",
+            "name": "Theophilus",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An Icelandic vampire whose long association with Atticus includes friendship, bargains, and the disastrous expedition against Thor. His knowledge of vampire politics is essential to reaching Theophilus, though his interests are not identical to Atticus's.",
+            "id": "leif-helgarson",
+            "name": "Leif Helgarson",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of a Polish coven and one of Atticus's established allies. Her knowledge of European magic and hostile supernatural powers gives Granuaile an informed contact while she searches for a way to counter Loki's mark.",
+            "id": "malina-sokolowski",
+            "name": "Malina Sokolowski",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Tempe werewolf who knew Atticus before his staged death and understands how supernatural communities survive in the modern world. She helps Owen find practical footing as he considers gathering and training new Druids.",
+            "id": "greta-sigridsdottir",
+            "name": "Greta Sigridsdottir",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The escaped Norse trickster moving steadily toward Ragnarok. The mark he placed on Granuaile makes him an immediate danger to her even while Atticus and Owen concentrate on vampires and the future of Druidry.",
+            "id": "loki",
+            "name": "Loki",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "staked"
+      },
+      "recaps": {
+        "ending": "Atticus reaches the ancient vampire Theophilus and kills him, breaking the leadership that coordinated the campaign against the Druids. The victory costs lives and does not make every surviving vampire an ally, but it ends Theophilus's direct control and leaves the vampire world to reorganize after the destruction. Granuaile survives her separate journey with Orlaith and succeeds in escaping the magical mark that allowed Loki to reach her, although Loki himself remains free and Ragnarok remains imminent. Owen commits to a future for Druidry by establishing a new grove and beginning the work of training candidates suited to the modern world. The three Druids complete their immediate goals on separate fronts, yet their successes only clear the way for the final crisis: the vampire ruler is gone and Loki's hold on Granuaile is broken, but the trickster's apocalyptic plan has advanced beyond a private feud.",
+        "in_short": "Atticus, Granuaile, and Owen pursue separate goals. Atticus launches a campaign against the ancient vampire hierarchy led by Theophilus, relying on Oberon, Leif Helgarson, and uneasy alliances inside the vampire world. He survives the counterattacks, reaches Theophilus, and kills him, disrupting the organization that had repeatedly targeted the Druids. Granuaile travels with Orlaith in search of magic capable of removing Loki's mark, facing dangerous Slavic powers before she succeeds in escaping the trickster's direct hold. Owen, unwilling to let Druidry die with three survivors, adapts to modern life and starts assembling a new grove to train future Druids. Each narrator wins the immediate struggle: the vampire ruler falls, Granuaile is freed from the mark, and Owen gives the tradition a future. Loki nevertheless remains at large, and the movement toward Ragnarok becomes the unresolved threat binding the three stories together.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, Atticus O'Sullivan survived the Olympian hunt that followed his killing of Bacchus, but the Morrigan died ensuring his survival. Atticus then recovered his archdruid, Owen Kennedy, from a confinement that had removed him from the world for about two thousand years. Owen chose to adapt to the present and began considering how Druidry might continue. Granuaile MacTiernan, now a full Druid, completed an independent mission in India but emerged with a magical mark placed by Loki. The trickster remained free after the assault on Asgard and continued preparing for Ragnarok. Atticus's investigations also exposed an organized vampire threat with ancient leadership, persuading him that waiting for further attacks would only give the vampires another advantage.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The three Druids separate to address dangers that cannot wait. Atticus and Oberon begin an offensive against the vampire hierarchy, seeking a path through its regional powers to Theophilus, the ancient figure directing the organization. Leif Helgarson's experience and position among vampires make him useful, but any plan that relies on vampire rivalries also carries the risk of replacing one hostile ruler with another. Granuaile and Orlaith seek a way to remove Loki's magical mark before it can guide the trickster to her. Owen decides that survival alone is not enough for Druidry and turns toward finding people who might be taught, a task requiring him to understand the modern world as well as ancient bindings.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Atticus's attacks force the vampires to respond while he tries to distinguish temporary allies from servants of Theophilus. The campaign depends on speed and secrecy because the vampire organization has money, human agents, and centuries of practice hiding its leadership. Granuaile follows magical knowledge toward eastern Europe, where Malina and other contacts can identify powers capable of interfering with Loki's mark. Removing it will require confronting local supernatural dangers rather than using an ordinary Druid binding. Owen begins meeting possible allies and candidates for a new grove. His old methods cannot simply be imposed unchanged, so he has to judge character and aptitude while learning how modern communities protect themselves.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The vampire campaign escalates as Theophilus's network attempts to isolate Atticus from the allies and information that can lead him to its center. Leif remains valuable but has his own stake in the shape of the vampire world after Theophilus. Granuaile and Orlaith press deeper into dangerous Slavic territory in search of a permanent answer to Loki's mark; every delay gives Loki another chance to exploit the link. Owen moves from the idea of a grove toward a practical group, drawing on help from people such as Greta who understand both supernatural danger and life in the present. Training new Druids promises continuity, but it also creates people Owen must protect from enemies attracted by that knowledge.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Atticus closes on Theophilus after surviving the vampire network's efforts to turn ambush, divided loyalties, and superior numbers against him. The remaining problem is no longer identifying the hierarchy but reaching its leader without giving him another route of escape. Granuaile reaches the decisive stage of her effort to remove Loki's mark, with Orlaith beside her and hostile powers making the cure as dangerous as the condition. Owen accepts responsibility for a new grove and begins shaping a course of training appropriate to candidates who have not lived in his vanished world. Across all three paths, Loki's preparation for Ragnarok is becoming the threat that will remain even if the vampire campaign, the mark, and the grove are resolved.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Atticus penetrates the vampire hierarchy and kills Theophilus, ending the ancient ruler's campaign against the Druids and throwing the surviving vampire organization into a struggle to reorganize. The alliance with Leif and other vampires achieves its immediate purpose without making their future interests identical to Atticus's. Granuaile and Orlaith survive the dangers surrounding the cure and escape the magical mark Loki placed on Granuaile, denying him that direct means of locating or influencing her. Owen establishes a new grove and commits himself to training candidates, giving Druidry a future beyond Atticus, Granuaile, and himself. The separate victories leave the three Druids better prepared but do not stop Loki. With the vampire ruler dead and Granuaile no longer marked, the approaching Ragnarok becomes the central unresolved danger.",
+            "through": {
+              "chapter": 29
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "staked"
+      }
+    },
     "star-wars-dark-force-rising-the-thrawn-trilogy-book-2": {
       "characters": {
         "characters": [

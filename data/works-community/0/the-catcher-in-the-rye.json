@@ -876,6 +876,175 @@
         "work": "the-city-of-brass"
       }
     },
+    "the-closers": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A veteran homicide detective newly reinstated with the LAPD after three years in retirement. Assigned to the Open-Unsolved Unit, Bosch returns with his old instincts intact but must work inside current rules and prove that coming back was more than nostalgia for the badge.",
+            "id": "harry-bosch",
+            "name": "Harry Bosch",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Bosch's partner in the Open-Unsolved Unit and a detective he has long trusted. Rider combines familiarity with his methods and a stronger regard for the department's present structure as they reopen a murder that was mishandled seventeen years earlier.",
+            "id": "kizmin-rider",
+            "name": "Kizmin Rider",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A sixteen-year-old girl taken from her home and found shot in 1988. Rebecca was the daughter of a Black mother and a white father, and the old investigation considered whether racism, her private relationships, or someone close to the family made her a target.",
+            "id": "rebecca-verloren",
+            "name": "Rebecca Verloren",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Rebecca's father. The unsolved murder helped destroy both his marriage and the life he knew, and the return of detectives forces him to revisit the house, the gun, and the people around his daughter in 1988.",
+            "id": "robert-verloren",
+            "name": "Robert Verloren",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Rebecca's mother. Years of grief and the failure of the original case have left lasting damage, making the reopened inquiry both a possibility of truth and a threat to the limited stability she has recovered.",
+            "id": "muriel-verloren",
+            "name": "Muriel Verloren",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A man identified when modern DNA testing matches blood preserved on the murder weapon. His history and associations make him a central suspect, but Bosch and Rider still have to determine how his blood reached the gun and what part he played in Rebecca's death.",
+            "id": "roland-mackey",
+            "name": "Roland Mackey",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The lieutenant supervising the Open-Unsolved Unit. Pratt gives Bosch and Rider the old Verloren file and expects a case built to present standards, not merely an experienced detective's certainty about what went wrong in 1988.",
+            "id": "abel-pratt",
+            "name": "Abel Pratt",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior LAPD official and Bosch's longstanding institutional adversary. Irving treats Bosch's return as a challenge to discipline and command authority, especially when the cold case begins to expose failures by officers and supervisors from an earlier era.",
+            "id": "irvin-irving",
+            "name": "Irvin Irving",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Bosch's former homicide partner, now working elsewhere in the department. Edgar is part of the professional life Bosch reenters, but reinstatement does not restore their earlier partnership or erase the years Bosch spent outside.",
+            "id": "jerry-edgar",
+            "name": "Jerry Edgar",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Los Angeles Times reporter familiar with Bosch and the department. The reopened murder has public interest as both a family tragedy and a test of whether new forensic evidence can correct an old investigative failure.",
+            "id": "keisha-russell",
+            "name": "Keisha Russell",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-closers"
+      },
+      "recaps": {
+        "ending": "The new DNA result proves that Roland Mackey handled the gun used to kill Rebecca Verloren and breaks open the network the 1988 investigation failed to penetrate. Bosch and Rider establish that Rebecca's death grew out of racist intimidation directed at her interracial family and that people around Mackey concealed their parts afterward. Mackey's death during the renewed inquiry prevents a straightforward interrogation, but it does not stop the detectives from reconstructing how the weapon, abduction, and killing fit together and identifying the surviving responsibility behind the crime. The solution also shows how prejudice and divided attention weakened the original case, leaving Rebecca's parents to carry an uncertainty that should not have lasted seventeen years. Bosch and Rider deliver the truth to Robert and Muriel Verloren, though closure cannot restore their daughter or marriage. Bosch completes his first case after reinstatement and demonstrates that he can still work from within the LAPD. The return is not frictionless - Irvin Irving remains hostile - but Bosch finishes the book as a police detective again rather than a retired investigator borrowing access from others.",
+        "in_short": "Harry Bosch returns to the LAPD after three years away and joins Kiz Rider in the Open-Unsolved Unit. Their first case is the 1988 abduction and shooting of sixteen-year-old Rebecca Verloren. Modern testing finds male blood on the murder weapon and matches it to Roland Mackey, whose racist background gives the old concern about an attack on Rebecca's interracial family new force. Bosch and Rider reinterview her separated parents, reconstruct the missing gun and the girl's private life, and review how the original detectives lost opportunities. Mackey dies as the current investigation closes around him, but the DNA and surviving records let Bosch and Rider establish his part and expose the group responsibility and concealment surrounding the killing. They finally give Robert and Muriel Verloren an answer, though not the life the unsolved case took from them. The closure validates Bosch's decision to return: despite conflict with command, he ends once again working as an LAPD homicide detective.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Harry Bosch left the LAPD after the Arthur Delacroix case convinced him that the department would protect a useful story over an uncomfortable truth. As a civilian he solved the Angella Benton cold case and learned that Eleanor Wish had raised their daughter, Maddie, in Nevada. While investigating retired profiler Terry McCaleb's final case, Bosch helped FBI agent Rachel Walling stop the serial killer called the Poet and began building a relationship with Maddie. The experience persuaded him that he still needed police work, and he applied to return to the LAPD.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bosch is reinstated after three years away and assigned to the LAPD's Open-Unsolved Unit under Lieutenant Abel Pratt. His partner is Kiz Rider, an experienced colleague who knows both his strengths and the trouble that follows when he treats command as an obstacle. Their first file concerns Rebecca Verloren, a sixteen-year-old abducted from her home and found shot in 1988. A fresh examination of preserved evidence finds male blood on the murder weapon. A database match identifies Roland Mackey, giving the detectives a living lead that the original team never had. Before approaching him, Bosch and Rider rebuild the entire case so they can explain what the DNA means rather than mistake a laboratory match for a complete solution.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bosch and Rider meet Rebecca's parents, Robert and Muriel Verloren, whose marriage did not survive the loss and the years without an answer. Rebecca was the child of a white father and Black mother, and the family received racist hostility in the community. Mackey's background and associations make that history immediately relevant, but the detectives keep other possibilities open while tracing the gun, access to the house, Rebecca's school life, and relationships she kept from her parents. The old file shows sincere effort mixed with missed connections and assumptions that hardened too soon. Bosch's return to the department also attracts Irvin Irving's attention, reminding him that a badge restores authority only inside a chain of command he once rejected.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Surveillance and background work place Mackey within a group shaped by white-supremacist loyalties and show that the DNA is consistent with more than casual contact. Bosch and Rider examine whether Rebecca was selected to punish an interracial family, whether the original plan was intimidation rather than murder, and who had possession of the weapon at each stage. Their renewed interest is noticed by people who believed the old case could never be reconstructed. At the same time, the detectives find that important leads were not pursued evenly in 1988. Racism was treated as one theory among many without the full network around Rebecca's family being mapped, and evidence that did not fit the early account lost urgency.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The inquiry closes around Mackey, but his death cuts off the direct interview Bosch and Rider hoped would establish the sequence and identify everyone involved. Rather than treating the dead suspect and DNA match as a convenient administrative closure, Bosch insists on proving how Rebecca left the house, why the family was targeted, and who helped move or conceal the weapon. The detectives return to the original witnesses and compare their current accounts with the 1988 record. Contradictions show that the killing was protected by shared silence and by the fragmented way the first investigation handled the racist group around Mackey. The case can still be closed, but only if the surviving evidence is made to carry more than Mackey's name.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bosch and Rider connect the DNA evidence to the missing gun and the people who participated in the intimidation of the Verloren family. Mackey handled the weapon and had direct involvement, while others supplied opportunity, transport, or concealment. Rebecca's death emerged from the racist targeting of her family even where the participants later minimized their intention. The detectives also identify where the old investigation failed to press the network as a whole, allowing each person to present an isolated fragment and leaving no account strong enough for charges. Bosch's conflict with Irving intensifies as the findings reflect badly on the department's earlier work, but Rider helps keep the case within a form that can survive institutional resistance.",
+            "through": {
+              "chapter": 36
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bosch and Rider close Rebecca Verloren's murder by proving Roland Mackey's connection to the blood-stained weapon and reconstructing the racist intimidation, abduction, and concealment that surrounded her death. Mackey's own death prevents the simple ending of a confession and trial, but the evidence establishes his part and exposes the responsibility of the surviving people who helped the crime remain unsolved. The detectives give Robert and Muriel Verloren the answer withheld for seventeen years. It cannot repair their marriage or recover the years organized around uncertainty, but Rebecca is no longer only an open file. For Bosch, the case completes the arc begun when he surrendered his badge: he can challenge a false or incomplete institutional story while still working inside the department. Irving remains an adversary and the return carries constraints, but Bosch finishes as an active LAPD detective partnered with Rider.",
+            "through": {
+              "chapter": 44
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-closers"
+      }
+    },
     "the-colour-of-magic": {
       "characters": {
         "characters": [
