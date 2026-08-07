@@ -15793,6 +15793,65 @@
         }
       ],
       "title": "Pride and Prejudice"
+    },
+    "pride-and-prejudice-adaptation": {
+      "added_at": "2026-08-07",
+      "authors": [
+        "jane-austen",
+        "clare-west"
+      ],
+      "credits": [
+        {
+          "person": "clare-west",
+          "role": "adaptation"
+        }
+      ],
+      "genres": [
+        "classics",
+        "education",
+        "language"
+      ],
+      "id": "pride-and-prejudice-adaptation",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "judy-bennett-2011": {
+          "abridged": true,
+          "added_at": "2026-08-07",
+          "asin": [
+            {
+              "asin": "B004I42PUC",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71Zm2t66fkL.jpg",
+          "id": "judy-bennett-2011",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "judy-bennett"
+          ],
+          "publisher": "Oxford University Press",
+          "release_date": "2011-01-07",
+          "runtime_min": 193,
+          "sources": [
+            {
+              "imported_at": "2026-08-07",
+              "ref": "B004I42PUC",
+              "type": "libex-import"
+            }
+          ],
+          "work": "pride-and-prejudice-adaptation"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-07",
+          "ref": "B004I42PUC",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Pride and Prejudice (Adaptation)"
     }
   }
 }

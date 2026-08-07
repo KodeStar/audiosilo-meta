@@ -12760,6 +12760,115 @@
         }
       ],
       "title": "Les Miserables"
+    },
+    "les-miserables-abr": {
+      "added_at": "2026-08-07",
+      "authors": [
+        "victor-hugo",
+        "isabel-f-hapgood"
+      ],
+      "credits": [
+        {
+          "person": "isabel-f-hapgood",
+          "role": "translator"
+        }
+      ],
+      "genres": [
+        "classics"
+      ],
+      "id": "les-miserables-abr",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "pete-cross-2018": {
+          "abridged": true,
+          "added_at": "2026-08-07",
+          "asin": [
+            {
+              "asin": "1974917738",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/919VVLb2PkL.jpg",
+          "id": "pete-cross-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "pete-cross"
+          ],
+          "publisher": "Dreamscape Media, LLC",
+          "release_date": "2018-11-13",
+          "runtime_min": 2603,
+          "sources": [
+            {
+              "imported_at": "2026-08-07",
+              "ref": "1974917738",
+              "type": "libex-import"
+            }
+          ],
+          "work": "les-miserables-abr"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-07",
+          "ref": "1974917738",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Les Misérables (ABR)"
+    },
+    "les-miserables-childrens-edition": {
+      "added_at": "2026-08-07",
+      "authors": [
+        "victor-hugo",
+        "matt-larsen"
+      ],
+      "genres": [
+        "childrens",
+        "classics"
+      ],
+      "id": "les-miserables-childrens-edition",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "benjamin-fife-2024": {
+          "abridged": false,
+          "added_at": "2026-08-07",
+          "asin": [
+            {
+              "asin": "B0CV5XM1ZP",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71BoXTde9RL.jpg",
+          "id": "benjamin-fife-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "benjamin-fife"
+          ],
+          "publisher": "Matt Larsen",
+          "release_date": "2024-02-08",
+          "runtime_min": 303,
+          "sources": [
+            {
+              "imported_at": "2026-08-07",
+              "ref": "B0CV5XM1ZP",
+              "type": "libex-import"
+            }
+          ],
+          "work": "les-miserables-childrens-edition"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-07",
+          "ref": "B0CV5XM1ZP",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Les Misérables: Children's Edition"
     }
   }
 }

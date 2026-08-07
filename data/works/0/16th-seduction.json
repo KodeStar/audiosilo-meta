@@ -19224,6 +19224,58 @@
         }
       ],
       "title": "1984"
+    },
+    "1984-amazonclassics-edition": {
+      "added_at": "2026-08-07",
+      "authors": [
+        "george-orwell"
+      ],
+      "genres": [
+        "dystopian",
+        "literary-fiction",
+        "science-fiction"
+      ],
+      "id": "1984-amazonclassics-edition",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "nicholas-boulton-2021": {
+          "abridged": false,
+          "added_at": "2026-08-07",
+          "asin": [
+            {
+              "asin": "1713518457",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71F+6ZzmphL.jpg",
+          "id": "nicholas-boulton-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "nicholas-boulton"
+          ],
+          "publisher": "Brilliance Audio",
+          "release_date": "2021-01-05",
+          "runtime_min": 650,
+          "sources": [
+            {
+              "imported_at": "2026-08-07",
+              "ref": "1713518457",
+              "type": "libex-import"
+            }
+          ],
+          "work": "1984-amazonclassics-edition"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-07",
+          "ref": "1713518457",
+          "type": "libex-import"
+        }
+      ],
+      "title": "1984 (AmazonClassics Edition)"
     }
   }
 }
