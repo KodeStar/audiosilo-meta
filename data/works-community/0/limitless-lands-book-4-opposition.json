@@ -1831,6 +1831,171 @@
         "work": "little-women"
       }
     },
+    "live-and-let-die": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A British Secret Service officer sent to the United States to investigate the movement of old gold coins linked to Soviet espionage. He works under American jurisdiction and must adapt to a criminal network with reach from Harlem to the Caribbean.",
+            "id": "james-bond",
+            "name": "James Bond",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An American intelligence officer and Bond's friend, assigned to work beside him in New York and Florida. Informal but highly capable, he supplies local knowledge and shares the physical risks of the investigation.",
+            "id": "felix-leiter",
+            "name": "Felix Leiter",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Bond's superior in the British Secret Service. He sends Bond to investigate whether a cache of pirate treasure is financing Soviet operations in the Americas.",
+            "id": "m",
+            "name": "M",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The representative of the American authorities who briefs Bond on the case and the limits under which a British officer may operate in the United States.",
+            "id": "captain-dexter",
+            "name": "Captain Dexter",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mr Big"
+            ],
+            "description": "A powerful American criminal who controls an extensive organisation and is suspected of moving seventeenth-century gold to finance Soviet activity. He uses fear, surveillance, and a cultivated association with Caribbean spiritual belief to reinforce his authority.",
+            "id": "buonaparte-ignace-gallia",
+            "name": "Buonaparte Ignace Gallia",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Mr Big's close enforcer, physically imposing and marked by a metal hook replacing part of one arm. He supervises prisoners at the Harlem club and treats violence as routine business.",
+            "id": "tee-hee-johnson",
+            "name": "Tee Hee Johnson",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A softly spoken member of Mr Big's organisation who acts as an intermediary and guard within the Harlem operation.",
+            "id": "whisper",
+            "name": "Whisper",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young woman kept under Mr Big's control and presented as a reader of cards with unusual intuitive ability. She is expected to detect deception for him, but her guarded responses suggest that her loyalty is constrained rather than freely given.",
+            "id": "solitaire",
+            "name": "Solitaire",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Cayman Islander and skilled fisherman whom Bond knows from Jamaica. Strong, disciplined, and familiar with local waters, he becomes Bond's guide and partner for the approach to Mr Big's island base.",
+            "id": "quarrel",
+            "name": "Quarrel",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The head of the British station in Jamaica. He provides Bond with local intelligence and helps organise the covert reconnaissance of the island used by Mr Big's organisation.",
+            "id": "john-strangways",
+            "name": "John Strangways",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "live-and-let-die"
+      },
+      "recaps": {
+        "ending": "Bond plants a mine on the hull of Mr Big's treasure-carrying vessel but is captured with Solitaire before he can withdraw. Mr Big binds them behind the ship so that they will be dragged across a reef and left for sharks and barracuda. The delayed mine explodes first, destroying the vessel and throwing Mr Big into the water. He is killed amid the wreckage and predators. Bond frees himself and Solitaire, and they reach safety despite their injuries. The smuggling route and its Soviet connection are broken. Felix Leiter survives the mauling arranged by Mr Big's men, although he has lost an arm and a leg. In Jamaica, Bond and Solitaire are allowed a period of recovery together before official duties resume. The close treats their relationship as temporary shelter after the operation rather than a settled future.",
+        "in_short": "Bond travels to the United States to investigate gold coins from pirate treasure being sold through a criminal network that supports Soviet activity. The network is controlled by Mr Big, who captures Bond and Felix Leiter in Harlem and keeps the card-reader Solitaire under coercion. Solitaire escapes with Bond, but Mr Big's agents recapture her and later feed Leiter to a shark, leaving him gravely injured. Bond follows the smuggling route to Jamaica, where he and Quarrel locate the island used to load treasure onto a yacht. Bond mines the vessel but is captured with Solitaire and tied behind it to be dragged over a reef. The mine destroys the ship first; Mr Big is killed in the water, and Bond rescues Solitaire. The operation ends with the smuggling network broken and Bond and Solitaire recovering together.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "James Bond arrives in New York to work with Felix Leiter and American authorities on a suspected Soviet financing operation. Rare seventeenth-century gold coins have appeared on the market, possibly drawn from pirate treasure hidden in Jamaica. Investigators believe that Mr Big, a major criminal figure with influence in Harlem and the Caribbean, is selling the coins and directing the proceeds to Soviet espionage. Bond and Leiter begin tracing his organisation through its nightclubs. The narrative depicts segregated mid-century America and the racial assumptions of its officials as features of the period and of the institutions in which the operation takes place.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bond and Leiter enter one of Mr Big's Harlem clubs and are swiftly identified, separated, and taken before him. Mr Big questions Bond with the help of Solitaire, a young card-reader held within his organisation. She covertly signals that Bond is telling the truth, preventing an immediate execution. Mr Big nevertheless has his men assault the agents and warns them away. Bond escapes his guard in a violent struggle, and he and Leiter survive the encounter with a clearer sense of the organisation's discipline and reach. Solitaire, meanwhile, remains under Mr Big's control but has shown Bond that she may be willing to oppose him.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Solitaire contacts Bond and asks him to help her escape. He collects her and they travel south by train under assumed identities, while Mr Big's network searches for them along the route. Their enforced closeness becomes mutual attraction, though Solitaire's fear of recapture remains immediate. In Florida, Bond and Leiter investigate a coastal business connected to the coin traffic and discover that marine specimens are being used to conceal the gold. Mr Big's agents recover Solitaire before Bond can secure her safety, leaving the investigators exposed in territory controlled by the organisation.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Leiter continues investigating alone and is seized by Mr Big's men. They lower him into a shark enclosure and return his mutilated but living body as a warning. Bond responds by killing the responsible warehouse guard and destroying part of the operation, then follows the smuggling chain to Jamaica. There he joins the British station chief John Strangways and the fisherman Quarrel. Evidence indicates that the treasure is gathered and shipped from a small island. Bond trains for a long underwater approach, while the group studies tides, reefs, and patrol patterns for a covert reconnaissance.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bond and Quarrel travel by night toward Mr Big's island base. Bond completes a hazardous underwater swim through reef channels while avoiding sharks and barracuda, then reaches the loading area and confirms that gold is being moved aboard Mr Big's vessel. He plants a limpet mine on the hull with a delayed fuse, intending to destroy the shipment after the ship clears the harbour. Before he can leave the island, guards find him. Solitaire is also being held there, and Mr Big prepares a punishment designed to kill them at sea while making their deaths appear to be the work of the reef and its predators.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Mr Big binds Bond and Solitaire to a line behind his vessel, planning to drag them across coral and expose them to sharks and barracuda. Bond works at their restraints as the ship approaches the reef. The mine he planted detonates before the planned execution is complete, wrecking the vessel and throwing Mr Big and his crew into the sea. Mr Big is killed in the debris-filled water. Bond frees himself and Solitaire and brings her to safety despite their wounds. The treasure route and the Soviet financing scheme are ended, while Leiter survives the earlier shark attack with permanent injuries. Bond and Solitaire remain in Jamaica to recover together before Bond returns to service.",
+            "through": {
+              "chapter": 25
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "live-and-let-die"
+      }
+    },
     "living-dead-in-dallas": {
       "characters": {
         "characters": [

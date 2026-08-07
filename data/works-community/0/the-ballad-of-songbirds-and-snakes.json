@@ -1158,6 +1158,343 @@
         "work": "the-bell-jar"
       }
     },
+    "the-black-echo": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An LAPD homicide detective in Hollywood Division whose refusal to accept convenient answers repeatedly puts him at odds with his superiors. A former Army tunnel soldier in Vietnam, he recognizes the dead man found in a drainage pipe as someone from that buried part of his life.",
+            "id": "harry-bosch",
+            "name": "Harry Bosch",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "William Meadows"
+            ],
+            "description": "The man found dead near Mulholland Dam. He served with Bosch as a tunnel soldier in Vietnam and later struggled with heroin, making an overdose seem plausible until details at the scene trouble Bosch.",
+            "id": "billy-meadows",
+            "name": "Billy Meadows",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Bosch's partner in Hollywood homicide. He is sociable, ambitious, and more willing than Bosch to accommodate department expectations, though he continues helping with the Meadows investigation.",
+            "id": "jerry-edgar",
+            "name": "Jerry Edgar",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The lieutenant commanding Bosch's squad. He is primarily concerned with orderly case management and with keeping Bosch from creating another public problem for the department.",
+            "id": "harvey-pounds",
+            "name": "Harvey Pounds",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior LAPD official who monitors Bosch closely and protects the department's institutional interests. He is stern, politically alert, and unwilling to let Bosch define the limits of his own investigation.",
+            "id": "irvin-irving",
+            "name": "Irvin Irving",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An FBI agent assigned to the bank-robbery squad. Methodical and self-contained, she becomes Bosch's principal federal counterpart when the Meadows death intersects with an unsolved tunnel burglary.",
+            "id": "eleanor-wish",
+            "name": "Eleanor Wish",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An experienced FBI agent working with Eleanor Wish on the tunnel-burglary investigation. He understands the Bureau's evidence and procedures and regards Bosch's independent methods with caution.",
+            "id": "john-rourke",
+            "name": "John Rourke",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Internal Affairs detective assigned to watch Bosch. Lewis treats the surveillance as an opportunity to catch Bosch breaking rules rather than as a neutral inquiry.",
+            "id": "lewis",
+            "name": "Lewis",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Lewis's Internal Affairs partner. He helps maintain the covert watch on Bosch while the homicide detective pursues the Meadows case.",
+            "id": "clarke",
+            "name": "Clarke",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A teenage street hustler who was near the reservoir on the night Meadows died. His shifting account makes him both a possible witness and a vulnerable link in the investigation.",
+            "id": "sharkey",
+            "name": "Sharkey",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-black-echo"
+      },
+      "recaps": {
+        "ending": "Bosch and Wish enter the storm-drain system as the burglary plan reaches its end. FBI agent John Rourke is exposed as the insider who directed the operation and eliminated people who could connect him to it, including Billy Meadows. Rourke tries to kill Bosch underground but dies during the confrontation. Wish then admits that she knowingly took part in the scheme: the targeted vault held valuables tied to men she blamed for her brother's death in Vietnam, and her alliance with Bosch did not erase her role in the crimes. She surrenders and is imprisoned. Bosch solves Meadows's murder and survives both the tunnel and Internal Affairs scrutiny, but the relationship he had begun with Wish ends with her confession. The case leaves him facing the cost of pursuing truth when the people closest to the investigation have concealed the most important facts.",
+        "in_short": "A body in a drainage pipe draws LAPD detective Harry Bosch back to his service as a Vietnam tunnel soldier when he identifies the dead man as former comrade Billy Meadows. Signs that the apparent overdose was staged connect the death to a sophisticated bank-vault burglary carried out through Los Angeles tunnels. Bosch works uneasily with FBI agent Eleanor Wish while Internal Affairs watches him and more witnesses are placed in danger. The inquiry moves from veterans of the tunnel units to the people who knew confidential details of the robbery investigation. Bosch ultimately enters the underground route and breaks up a second operation. He learns that trusted participants on the investigative side helped plan the crimes and silence Meadows. One dies in the confrontation; another confesses and goes to prison. The murder is solved, but Bosch's growing personal attachment to Wish is destroyed by the truth.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Harry Bosch is called to a body in a drainage pipe near Mulholland Dam. Patrol officers assume the dead man overdosed, but Bosch notices signs that the scene has been arranged. He recognizes the victim as Billy Meadows, a fellow member of a Vietnam tunnel unit who later became addicted to heroin. The personal connection gives Bosch another reason to resist pressure for a quick disposition. As he and Jerry Edgar trace Meadows's last movements, Bosch learns that the dead man had recently possessed more money than his circumstances explained. His superiors, including Lieutenant Harvey Pounds and Irvin Irving, are already wary of Bosch's methods, while Internal Affairs detectives Lewis and Clarke begin covertly following him. What looks like a routine drug death becomes a homicide inquiry tied to Bosch's own past.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Evidence around Meadows points toward an earlier burglary in which thieves tunneled into a bank and opened selected safe-deposit boxes. Because the method resembles military tunnel work, Bosch sees a possible role for veterans with Meadows's training. The federal bank-robbery squad, represented by Eleanor Wish and John Rourke, protects its investigation and initially resists Bosch's intrusion. Bosch and Wish nevertheless begin comparing the homicide evidence with the still-unsolved theft. A teenager called Sharkey may have seen activity near the place where Meadows was left, but he is frightened and unreliable. The parallel police and FBI inquiries now share suspects, methods, and an underground geography.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bosch and Wish follow the connections among Meadows, other former tunnel soldiers, and the bank job. Technical details show that the thieves understood both underground construction and the authorities' response. Bosch's refusal to stay within departmental boundaries intensifies the Internal Affairs surveillance. He and Wish also grow personally close, although each continues holding back parts of the past. Sharkey's knowledge makes him increasingly exposed; when he is killed, the case demonstrates that the people behind the tunnel operation are still active and willing to remove witnesses. Bosch concludes that the original burglary was not an isolated event and begins looking for the next target.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The investigation narrows around a fresh underground route and valuables held in another secured location. Bosch uses what he remembers from Vietnam to understand how the team will move, ventilate its passage, and control anyone who reaches it. The killers appear to know investigative information that should be confined to law enforcement, forcing Bosch to consider an insider without yet knowing where the breach lies. Lewis and Clarke's surveillance complicates his movements and creates a second danger around the operation. Bosch and Wish prepare to enter the tunnels rather than wait for the thieves to emerge, aware that the enclosed space favors people trained for it.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bosch and Wish move toward the active tunnel as the robbery team puts its plan into motion. The route, equipment, and timing confirm that Meadows was part of a practiced group and that his death followed a breakdown in trust among its members. Above ground, the overlapping LAPD, FBI, and Internal Affairs operations create confusion about who has reliable information. Underground, Bosch is forced to rely on skills he had hoped to leave in Vietnam. The case has become a contest over who can reach the vault and escape route first, while the identity of the person directing the thieves remains unresolved.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Inside the tunnel system, Bosch discovers that FBI agent John Rourke has been directing the burglary conspiracy and killing participants who threatened to expose it, including Billy Meadows. Rourke attempts to eliminate Bosch but dies in the underground confrontation, ending the immediate operation. Eleanor Wish then reveals her own knowing part in the scheme. Her motive was bound to her brother's death in Vietnam and to the valuables selected from the vault, but she accepts that this does not excuse the crimes. Wish surrenders and is sent to prison. Bosch closes Meadows's murder and emerges from the Internal Affairs pressure, yet his trust in Wish and the relationship developing between them are finished. The epilogue leaves him alive and vindicated on the case, but isolated by what solving it required him to learn.",
+            "through": {
+              "chapter": 10
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-black-echo"
+      }
+    },
+    "the-black-ice": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An LAPD homicide detective in Hollywood Division, still known for pursuing cases beyond the limits set by his supervisors. When a narcotics officer's death is quickly labeled suicide, Bosch sees inconsistencies and begins an inquiry he has not been assigned.",
+            "id": "harry-bosch",
+            "name": "Harry Bosch",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Cal Moore"
+            ],
+            "description": "An LAPD narcotics detective found dead in a motel room, apparently by his own hand. His work concerned the drug called black ice, and his final message suggests that he had uncovered something about his own origins.",
+            "id": "calexico-moore",
+            "name": "Calexico Moore",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Cal Moore's widow, a teacher who had become separated from her husband before his death. She gives Bosch a view of Cal outside police work and wants an honest account of what happened to him.",
+            "id": "sylvia-moore",
+            "name": "Sylvia Moore",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Bosch's lieutenant in Hollywood Division. Pounds insists on assignments, clearance rates, and chain of command, all of which Bosch disregards when he takes an interest in Moore's death.",
+            "id": "harvey-pounds",
+            "name": "Harvey Pounds",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior LAPD official focused on controlling the institutional risk created by a dead narcotics officer. He expects Bosch to observe departmental boundaries and reacts strongly when Bosch does not.",
+            "id": "irvin-irving",
+            "name": "Irvin Irving",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Bosch's regular homicide partner. Edgar assists when available but is less willing to jeopardize his position for a case their squad does not officially own.",
+            "id": "jerry-edgar",
+            "name": "Jerry Edgar",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A deputy medical examiner whose findings help Bosch test the official account of Cal Moore's death. She is direct about the physical evidence and resistant to pressure to make it say more than it can.",
+            "id": "teresa-corazon",
+            "name": "Teresa Corazon",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A homicide detective approaching retirement whose neglected case load includes a dead man with links to the black-ice trade. His records give Bosch a route from Los Angeles street deaths toward the supply chain.",
+            "id": "lucius-porter",
+            "name": "Lucius Porter",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The powerful trafficker known as the Pope, associated with the Mexican source of black ice. His secluded operation and uncertain personal history become central to Bosch's attempt to understand Moore's investigation.",
+            "id": "humberto-zorrillo",
+            "name": "Humberto Zorrillo",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Mexican police officer who becomes Bosch's official guide and uneasy counterpart south of the border. He knows the local balance of authority around the drug operation and the risks of challenging it.",
+            "id": "aguila",
+            "name": "Aguila",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-black-ice"
+      },
+      "recaps": {
+        "ending": "At the Mexican drug compound, Bosch discovers that the dead man in the motel was Humberto Zorrillo, not Cal Moore. Moore and Zorrillo were half brothers, and Moore used the shotgun damage and falsified identifying evidence to exchange their identities. After killing Zorrillo, he intended to leave his police life behind and take control of the black-ice operation under his brother's name. Bosch confronts Moore at the compound; Moore is killed as the operation collapses, and the drug facility is destroyed. The result explains the misleading suicide, the message about discovering who he was, and the Los Angeles murders linked to the trade. Bosch returns with the truth rather than the official version his superiors preferred. Sylvia has to absorb that her husband planned the deception and became the man Bosch pursued. Her connection with Bosch survives the revelation and becomes the beginning of a relationship, while Bosch's unauthorized methods leave his conflict with the department unresolved.",
+        "in_short": "When narcotics detective Cal Moore is found dead in a motel, the LAPD accepts an apparent suicide, but Harry Bosch notices problems with the identification and with Moore's final message. He links the death to black ice, a dangerous street drug moving into Los Angeles from Mexico, and to another homicide that his division has allowed to stagnate. Interviews with Moore's estranged widow Sylvia and a search through his childhood reveal that the detective had been investigating both the supply network and his own family history. Bosch follows the trail across the border to a fortified drug operation controlled by a trafficker called the Pope. There he learns that the motel death was an elaborate identity exchange involving two half brothers. The architect of the deception dies when Bosch confronts him, the production site is destroyed, and Bosch returns with a solution the department had tried to avoid. He and Sylvia begin a relationship after the truth about her husband is established.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: LAPD homicide detective Harry Bosch proved that the apparent overdose of his former Vietnam comrade Billy Meadows was murder tied to a tunnel-based bank burglary. The inquiry forced him to work with FBI agent Eleanor Wish, with whom he began a relationship. In the final underground confrontation, FBI agent John Rourke was exposed as the conspiracy's leader and died; Wish admitted her own participation and went to prison. Bosch solved the case but emerged distrustful, alone, and still in conflict with superiors who regard his independence as a threat.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On Christmas night, Bosch hears that narcotics detective Calexico Moore has been found dead in a motel room with a shotgun wound and an apparent suicide message stating that he had learned who he was. Command officers move quickly to contain the case, but Bosch is troubled by the scene and by gaps in the identification. He was not assigned the investigation, yet he begins collecting details while also carrying a homicide load his division wants closed. A potent street drug known as black ice provides a possible link to Moore's narcotics work. Bosch's decision to pursue that link puts him at odds with Lieutenant Pounds and Irvin Irving almost immediately.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bosch reviews physical evidence from Moore's death with deputy medical examiner Teresa Corazon and finds reasons not to rely on the simple suicide account. He also takes over an ignored case involving a murdered man whose death connects to the distribution of black ice. The drug appears to be moving through an organized route rather than isolated street dealing. Cal's widow Sylvia describes a marriage that had become remote and a husband preoccupied with work and questions about his past. Bosch begins to suspect that Moore's last investigation and his personal search for identity were the same journey.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Records from Cal's childhood and police career point Bosch toward the border region where Cal grew up. At the same time, the Los Angeles homicide reveals how aggressively the black-ice organization protects its route. Bosch and Sylvia grow closer as he asks painful questions about Cal, though he does not promise that the answers will leave her husband's reputation intact. The name Humberto Zorrillo, a trafficker called the Pope, emerges behind the Mexican supply operation. Similarities and connections between Zorrillo's background and Moore's history make the official account of the motel death increasingly doubtful.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bosch travels south without the support his superiors would require and enters a jurisdiction where the Pope's organization has money, armed protection, and influence. With Aguila as his local police contact, Bosch traces the black ice toward a remote compound where the drug is produced. He now believes that Moore learned a family secret connected to Zorrillo and that someone manipulated the condition of the motel body to prevent close identification. The closer Bosch gets to the compound, the less he can rely on official channels, and his investigation becomes an attempt to reach the central figure before the evidence or witnesses disappear.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At the drug operation, Bosch finds evidence that the solution depends on the relationship between Moore and Zorrillo rather than on a routine cartel killing. The two men were half brothers, and the damaged face of the motel corpse allowed records and assumptions to substitute for a secure identification. Bosch enters the compound while authorities close on the production site. He must distinguish the dead brother from the living one and prevent the person using the Pope's identity from completing an escape. The confrontation also places Bosch beyond any protection his department might have offered.",
+            "through": {
+              "chapter": 29
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bosch proves that Cal Moore killed his half brother Humberto Zorrillo and placed Zorrillo's body in the motel as his own. The shotgun wound concealed the exchange, while altered identifying evidence supported the false suicide. Moore then assumed the Pope's identity and intended to take over the black-ice business, turning his search for his origins into an escape from his police life. Bosch confronts Moore at the Mexican compound, where Moore is killed and the drug operation is destroyed. Back in Los Angeles, the result resolves both the motel deception and the related homicides, even though it exposes how eagerly the department accepted a convenient answer. Sylvia learns what Cal did and begins a relationship with Bosch after the case, leaving Bosch personally less isolated but still professionally at odds with Pounds and Irving.",
+            "through": {
+              "chapter": 34
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-black-ice"
+      }
+    },
     "the-black-prism": {
       "characters": {
         "characters": [
@@ -2288,6 +2625,181 @@
           }
         ],
         "work": "the-blythes-are-quoted"
+      }
+    },
+    "the-body-in-the-library": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Miss Marple"
+            ],
+            "description": "An elderly resident of St Mary Mead whose close study of ordinary behaviour gives her an unusual ability to recognize deception. Dolly Bantry asks for her help when a stranger's body appears at Gossington Hall.",
+            "id": "jane-marple",
+            "name": "Miss Jane Marple",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Mrs Bantry"
+            ],
+            "description": "Miss Marple's energetic friend and the mistress of Gossington Hall. Faced with a dead stranger in her library, she is determined to learn the truth and protect her husband from malicious gossip.",
+            "id": "dolly-bantry",
+            "name": "Dolly Bantry",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Colonel Bantry"
+            ],
+            "description": "Dolly's retired military husband. He is bewildered and deeply embarrassed when a young woman's body is discovered in his library, despite having no apparent connection to her.",
+            "id": "arthur-bantry",
+            "name": "Colonel Arthur Bantry",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young dance hostess at the Majestic Hotel whose disappearance becomes linked to the body at Gossington Hall. Her prospects had recently improved through the interest of a wealthy hotel guest.",
+            "id": "ruby-keene",
+            "name": "Ruby Keene",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ruby Keene's older cousin and fellow dancer at the Majestic. Practical and protective, she had brought Ruby into the hotel's entertainment staff and reports her missing.",
+            "id": "josie-turner",
+            "name": "Josie Turner",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wealthy invalid staying at the Majestic Hotel. After losing his children in an accident, he lives with their surviving spouses and has taken a strong paternal interest in Ruby.",
+            "id": "conway-jefferson",
+            "name": "Conway Jefferson",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Conway Jefferson's son-in-law, widowed by the accident that killed Jefferson's children. Sociable and financially pressed, he remains part of Jefferson's household at the hotel.",
+            "id": "mark-gaskell",
+            "name": "Mark Gaskell",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Conway Jefferson's widowed daughter-in-law and the mother of Peter Carmody. Quietly capable, she is considering a future beyond continued dependence on her father-in-law.",
+            "id": "adelaide-jefferson",
+            "name": "Adelaide Jefferson",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Adelaide's observant young son and Conway Jefferson's grandson. He collects facts about crime with more enthusiasm than tact.",
+            "id": "peter-carmody",
+            "name": "Peter Carmody",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A flamboyant young man connected with the film industry who lives near Gossington Hall. His late-night movements and acquaintance with dancers draw early police attention.",
+            "id": "basil-blake",
+            "name": "Basil Blake",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A teenage Girl Guide who disappears after attending an evening meeting. Her case initially seems separate from the death at Gossington Hall.",
+            "id": "pamela-reeves",
+            "name": "Pamela Reeves",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The chief constable overseeing the investigation. He knows the Bantrys personally and works with Inspector Slack while remaining open to Miss Marple's observations.",
+            "id": "colonel-melchett",
+            "name": "Colonel Melchett",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-body-in-the-library"
+      },
+      "recaps": {
+        "ending": "Miss Marple proves that the body in the Bantrys' library was Pamela Reeves, disguised to resemble Ruby Keene, while the burned body in George Bartlett's car was Ruby. Josie Turner and Mark Gaskell arranged the substitution to produce a false timeline and protect their alibis. Conway Jefferson intended to adopt Ruby and leave her a large settlement, reducing the inheritance expected by Mark and Josie. Josie killed both girls and Mark helped execute the plan. Miss Marple uses a false claim about overlooked evidence to provoke Josie into trying to silence Jefferson, allowing the police to catch her. Mark is also arrested. The Bantrys are cleared of scandal, and Jefferson is left to rebuild his family life without the conspirators who exploited him.",
+        "in_short": "A young blonde woman is found dead in the Bantrys' library, although nobody in the household knows her. She is identified as hotel dancer Ruby Keene, whose growing closeness to wealthy Conway Jefferson threatened the expectations of his dependent family. A second missing girl, Pamela Reeves, is apparently found burned in a car, but Miss Marple notices that the two deaths have been arranged around a swapped identity. The library body is Pamela disguised as Ruby; the burned victim is the real Ruby. Josie Turner murdered both young women, and Mark Gaskell helped her construct the alibis and false chronology, because Jefferson planned to adopt Ruby and give her money they expected to inherit. Miss Marple lays a trap, Josie and Mark are arrested, and the Bantrys are publicly cleared.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Dolly Bantry wakes to extraordinary news: the body of an unknown young woman in evening dress has been found in the library at Gossington Hall. Neither she nor Colonel Bantry recognizes the victim. Dolly summons Miss Marple before village gossip can settle on her husband. The police trace the dead woman to Ruby Keene, a dance hostess missing from the Majestic Hotel. Basil Blake, a film worker living nearby, appears to offer a possible link between the glamorous stranger and the quiet country house, but the placement of the body still makes little sense.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At the Majestic, Miss Marple and the investigators learn that Ruby had attracted the affectionate attention of the wealthy invalid Conway Jefferson. He had lost his children in an accident and now supports their widowed spouses, Mark Gaskell and Adelaide Jefferson, along with Adelaide's son Peter. Jefferson's intention to make a substantial provision for Ruby gives several people a financial reason to resent her. Ruby's cousin Josie Turner describes the girl's last evening, while hotel guest George Bartlett cannot account cleanly for his car. The inquiry also reaches Basil Blake, but his concealment of the body does not explain the killing itself. Meanwhile, a schoolgirl named Pamela Reeves is reported missing.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A burned body is discovered in Bartlett's abandoned car and is believed to be Pamela Reeves, apparently connecting her disappearance to Ruby's murder. Miss Marple questions the identification process and studies small discrepancies in the dead dancer's appearance, clothing, and habits. Pamela's movements suggest that she was lured by the promise of a screen test or performance opportunity. The evidence now points toward a deliberate attempt to make two victims exchange places in the official chronology. Jefferson's planned financial gift remains the central motive, while the apparent times of death give the people closest to him carefully constructed alibis.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Miss Marple establishes that Pamela Reeves, dressed and made up to resemble Ruby Keene, was the body left in the Bantrys' library. The burned body in the car was Ruby herself, killed later. Josie Turner murdered both girls, and Mark Gaskell assisted with the substitution and disposal. They acted because Conway Jefferson planned to adopt Ruby and settle money on her, cutting into what they expected from him. The swapped identities created a misleading sequence of deaths and supported their alibis. Miss Marple falsely suggests that decisive evidence survived, prompting Josie to make an incriminating attempt to silence Jefferson. Josie and Mark are arrested, Basil Blake is cleared of murder, and the truth removes the cloud of suspicion over Colonel Bantry.",
+            "through": {
+              "chapter": 18
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-body-in-the-library"
       }
     },
     "the-book-thief": {
