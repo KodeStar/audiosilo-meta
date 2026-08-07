@@ -944,6 +944,241 @@
         "work": "invent"
       }
     },
+    "iron-flame": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A second-year rider at Basgiath War College, bonded to two dragons and wielding lightning, returning to a school whose leadership she now knows is lying about the war. She is stronger and better trained than she was a year ago and still physically fragile, and she is carrying secrets that would get her and everyone she loves executed: that the venin are real, that the rebel city of Aretia is rebuilding, and that her brother Brennan is alive. Grieving Liam Mairi and increasingly unwilling to take anyone's word for anything, she spends the year deciding how much of the truth she is prepared to force into the open.",
+            "id": "violet-sorrengail",
+            "name": "Violet Sorrengail",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The son of Tyrrendor's executed rebel duke, now a graduated rider posted away from the college, and in practice the leader of the revolution operating out of Aretia. He wields shadows, keeps his own counsel by habit and by training, and treats withholding information from Violet as protection rather than betrayal, which is the central argument between them. Because his dragon Sgaeyl is mated to Violet's Tairn, the two of them cannot stay apart for long even when their duties, and their tempers, would separate them.",
+            "id": "xaden-riorson",
+            "name": "Xaden Riorson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Violet's black morningstartail, one of the most powerful dragons in the Vale and the reason she survived her first year. Blunt, impatient and entirely unsentimental about human politics, he speaks into her mind and expects her to keep up. His mating bond with Sgaeyl dictates a great deal of where Violet is allowed to be.",
+            "id": "tairn",
+            "name": "Tairn",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Violet's golden feathertail, a hatchling who bonded far younger than any dragon should and spent herself protecting her rider at Resson. Affectionate, talkative and unlike any other dragon in the Vale, she is now facing changes in herself that neither she nor the older dragons will explain to Violet.",
+            "id": "andarna",
+            "name": "Andarna",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Xaden's blue daggertail, fast, sharp-tongued and mated to Tairn. The mating bond is what keeps her rider and Violet in each other's orbit regardless of postings, and she is not sentimental about that either.",
+            "id": "sgaeyl",
+            "name": "Sgaeyl",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Violet's older brother, publicly dead for six years and privately one of the revolution's leaders in Aretia, where he works as a mender, a rider able to heal wounds that should be fatal. Protective, controlling and convinced that the rebellion has to move at its own pace, he is the family Violet has left and also an obstacle whenever she wants to move faster than he does.",
+            "id": "brennan-sorrengail",
+            "name": "Brennan Sorrengail",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Violet's mother, the general commanding Basgiath War College, and one of the architects of the official version of the war Violet now knows to be false. Rigid, formidable and unreachable, she remains the person best placed to protect Violet and the person least willing to explain anything to her.",
+            "id": "lilith-sorrengail",
+            "name": "Lilith Sorrengail",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Violet's older sister, a serving rider on the border, who has spent her career on the front line of a war whose real enemy she has never been told about. Practical, loyal to the uniform and forced during this year to decide what her loyalty is actually to.",
+            "id": "mira-sorrengail",
+            "name": "Mira Sorrengail",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Violet's closest friend and the steadiest member of her year, now a second-year rider with growing responsibility for a squad of her own. She was not at Resson, so she starts the year outside the circle of people who know what Violet knows, which puts strain on the one friendship Violet most relies on.",
+            "id": "rhiannon-matthias",
+            "name": "Rhiannon Matthias",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A second-year rider in Violet's squad who deals with a lethal year by refusing to stop joking about it. Underneath the routine he is reliable, protective of the squad, and considerably more observant than he lets on.",
+            "id": "ridoc-gamlyn",
+            "name": "Ridoc Gamlyn",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A second-year rider in Violet's squad, older than the rest, methodical and good with detail. He came out of the previous year's fighting injured and spends this one proving that it has not taken him out of the war.",
+            "id": "sawyer-henrick",
+            "name": "Sawyer Henrick",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Violet's oldest friend, now a rider on the college's staff track and the son of a senior officer. He can read a person's recent memories by touch, which makes him a danger to everyone keeping a secret, and his loyalty to the chain of command has never yet been tested against evidence that the chain of command is lying.",
+            "id": "dain-aetos",
+            "name": "Dain Aetos",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A marked rider from Tyrrendor, silver-haired, abrasive and entirely committed to the revolution. Her hostility toward Violet has cooled into a working alliance now that they are on the same side of the same secret.",
+            "id": "imogen-cardulo",
+            "name": "Imogen Cardulo",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A graduated rider, Xaden's closest friend and one of the revolution's most capable fighters, moving between Basgiath, the border and Aretia as the rebellion's needs dictate.",
+            "id": "garrick-tavis",
+            "name": "Garrick Tavis",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Liam Mairi's younger sister, arriving at the Riders Quadrant as a first-year with a rebellion relic on her arm and a brother who died at Resson. She blames Violet for his death and refuses her help, and Violet takes responsibility for keeping her alive anyway.",
+            "id": "sloane-mairi",
+            "name": "Sloane Mairi",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The college's new vice-commandant, installed to tighten discipline after the previous year's losses. He is enthusiastic about interrogation, keeps a close watch on the marked riders and on Violet in particular, and treats cruelty toward cadets as an instrument of policy rather than a loss of control.",
+            "id": "major-varrish",
+            "name": "Major Varrish",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Cat"
+            ],
+            "description": "A gryphon flier from Poromiel, from a prominent family among the drifts, who arrives at Basgiath as part of the alliance between the two powers. Proud, combative and openly resentful of being made a guest in an enemy's school, she also has history with Xaden that predates Violet, which she does not trouble to hide.",
+            "id": "catriona-cordella",
+            "name": "Catriona Cordella",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "iron-flame"
+      },
+      "recaps": {
+        "ending": "Basgiath's protection fails and the venin come through with their wyvern. The battle for the college is the open confrontation the leadership spent a century preventing by lying, and it is enormously costly: much of the school is destroyed, cadets and riders die in numbers, and General Lilith Sorrengail is killed holding the line, spending everything she has to buy the defenders time. Violet fights with her lightning through the whole of it, and Andarna, changed by the sleep she has just come out of, is not the creature anyone expected her to be. The survivors are left with a war that can no longer be denied, an alliance with Poromiel that has become a necessity rather than a favour, and Tyrrendor and Aretia as the centre of whatever resistance is left. The decisive moment belongs to Xaden. To keep Violet alive he does the one thing that cannot be undone, drawing power from the earth the way the venin do. It works, and it costs him what it costs anyone who does it: the book closes on the confirmation that he has become the thing they have been fighting, hiding it from everyone including, for the moment, the woman he saved.",
+        "in_short": "Violet returns to Basgiath for her second year knowing that the venin are real, that Navarre's leaders have hidden it, and that the rebel city of Aretia and her supposedly dead brother are rebuilding a resistance. The college is now run by a vice-commandant who interrogates and tortures cadets to find exactly those secrets, so Violet spends the year lying to her friends, avoiding Dain's memory-reading touch, and running errands for a revolution she is not always told the truth about, including the theft of what Aretia needs to raise its own protective wards. Xaden, posted away and bound to her by their dragons' mating bond, keeps hiding things from her for her own good, and the arguments between them are as central as the war. Alliance with Poromiel's gryphon fliers becomes real, bringing Cat Cordella and others to Basgiath. Violet is captured and tortured, and the confrontation everyone has been avoiding arrives at the college itself: the wards fail, venin and wyvern attack, her mother dies defending the school, and Xaden saves Violet by channelling dark power and becomes venin himself.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Violet Sorrengail was raised to be a scribe at Basgiath War College and ordered into the Riders Quadrant instead by her mother, the general who commands it. Physically fragile and marked out as the easiest kill in her year, she survived by preparation rather than strength, and at the Threshing she bonded two dragons at once, the powerful black morningstartail Tairn and the golden feathertail hatchling Andarna. Her signet turned out to be lightning, a power no living rider shares. Because Tairn is mated to Sgaeyl, she was forced into constant proximity with Xaden Riorson, the wingleader whose father led Tyrrendor's separatist rebellion and was executed by Violet's mother, and their hostility became an alliance and then a relationship. Sent on what was presented as routine border duty, her squad instead found the town of Resson under attack by wyvern and venin, dark wielders who drain the life from the land and who Navarre insists have been extinct for centuries. Her friend Liam Mairi was killed. Violet learned that the wards protecting Navarre are contracting, that villages have been abandoned in secret, and that Xaden and the marked riders have spent years arming Poromiel against the real enemy. Xaden took her to the rebel stronghold of Aretia, where her brother Brennan, mourned for six years, was alive.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Violet returns to Basgiath for her second year holding a set of secrets that would be treason if any of them were spoken aloud: the venin exist, the leadership knows, Aretia is rebuilding, and her brother is alive. The college has changed. A new vice-commandant, Major Varrish, has been installed with a mandate to root out disloyalty, and he is candid about his methods and openly interested in Violet, the marked riders and anyone who was at the border. Xaden has graduated and been posted away, so their dragons' mating bond, rather than any decision of theirs, dictates when they see each other. Among the first-years is Sloane Mairi, Liam's younger sister, who blames Violet for his death. Violet's own friends do not know what she knows, and every conversation is now a calculation about what she can safely say.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The year settles into two jobs done at once: being a second-year cadet, with all the sparring, flight duty and challenges that involves, and being a rebel inside a school hunting for rebels. Violet trains her lightning, which is still as dangerous to her as to anyone else, and works on being a rider whose body can be relied on. Dain's ability to read recent memories through touch turns an old friendship into a constant hazard. Varrish tightens surveillance, and cadets who attract his attention come back changed or not at all. Andarna, meanwhile, is changing in ways that worry Violet, and neither she nor Tairn will explain what is happening to her. Violet keeps digging in the archives, because the official history of the wards has holes in it that somebody deliberately cut.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The revolution's problem becomes concrete: Navarre's protection depends on a wardstone, and Aretia's was destroyed when the rebellion was crushed, so Tyrrendor is defenceless against the venin unless the rebels can raise a new one. That requires knowledge and equipment held at Basgiath, and Violet is the person inside. She works with Brennan, Xaden and the marked riders on a plan she is only partly briefed on, which becomes its own grievance, since Xaden's instinct is to protect her by keeping her ignorant and she has stopped accepting that. Keeping the plan and the people inside it hidden costs her the ordinary things: she lies to her own squad, she cannot be touched by an old friend without risking everyone, and the college's leadership is narrowing its search toward the people she is protecting.",
+            "through": {
+              "chapter": 32
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The rebellion moves from arguing to acting. What Aretia needs is taken out of Basgiath and the work of raising Tyrrendor's own wards begins, along with the production of the alloy weapons that can actually kill a venin. The alliance with Poromiel stops being a smuggling arrangement and becomes official enough that gryphon fliers, including Cat Cordella, are brought into the college to train alongside riders, which almost nobody on either side welcomes. Violet is now openly balancing three loyalties, to her squad, to the revolution and to a relationship in which trust keeps having to be rebuilt. The secrecy she has been living under also fails where it always threatened to: Dain uses his signet on her and learns what she has been hiding, leaving her oldest friend holding the lives of everyone in Aretia. Andarna withdraws into a long sleep that no one will explain to her rider. At Basgiath, Varrish escalates, and the question is no longer whether the leadership will act against the rebels but how much of the school it will burn through to do it.",
+            "through": {
+              "chapter": 44
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Varrish moves against Violet directly. She is taken, held and tortured for what she knows about Aretia and the revolution, and she is got out alive by the people around her rather than by anything the chain of command does. What follows strips away the last of the pretence on all sides. Xaden's secrets come out, including a second signet he has hidden for years because the law would have him killed for it, and Violet has to decide what she does with a truth he never volunteered. The venin's reach into Navarre proves to be closer and better placed than anyone at Basgiath admitted, including people the cadets thought were dead. With Aretia warded, Tyrrendor armed and the fliers allied, the confrontation that the kingdom's leadership spent a century avoiding is no longer avoidable, and it arrives at Basgiath itself.",
+            "through": {
+              "chapter": 56
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Basgiath's wards fail and the venin attack with their wyvern. The battle for the college is enormously costly: much of the school is destroyed, riders and cadets die in numbers, and General Lilith Sorrengail is killed holding the line long enough for the defenders to organize, spending everything she has for a daughter she never learned how to speak to. Violet fights through the whole of it with her lightning, and Andarna emerges from her long sleep as something no one expected, changing what the defenders can do. The survivors end the book with the lie finally broken, a war that can no longer be denied, a real alliance with Poromiel, and Tyrrendor as the centre of the resistance. The last cost is Xaden's. To keep Violet alive he channels power from the earth the way the venin do, which works and which cannot be taken back. He hides what it has made him, and the book closes on the confirmation that the man leading the fight against the venin has become one.",
+            "through": {
+              "chapter": 66
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "iron-flame"
+      }
+    },
     "iron-gold": {
       "characters": {
         "characters": [

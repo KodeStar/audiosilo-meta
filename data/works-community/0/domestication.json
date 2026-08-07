@@ -1809,6 +1809,240 @@
         "work": "dungeon-crawler-carl"
       }
     },
+    "dust": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The machinist who was condemned to cleaning, refused, crossed the surface and came back. She is now mayor of Silo 18, an office she never wanted and holds badly, because the silo will not accept anyone else and because it gives her the authority to keep digging. She spends her time in Mechanical rather than the offices at the top, working on a tunnel toward the neighboring silo. Practical, blunt and unable to leave a broken thing alone, she is admired by the down-deep, resented by much of the rest of the silo, and haunted by the people who died in the uprising her survival set off.",
+            "id": "juliette-nichols",
+            "name": "Juliette Nichols",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A pilot from the world before the silos, and Donald Keene's younger sister, who has been woken out of deep freeze in Silo 1 by her brother and hidden on an unused level. Everything she knew is centuries gone, and the only work she can do is the work she was trained for: flying unmanned aircraft, launched from the surface, out over a landscape nobody has looked at properly in generations. Level-headed and quicker than her brother to act, she is the one person in Silo 1 he trusts.",
+            "id": "charlotte-keene",
+            "name": "Charlotte Keene",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The head of IT in Silo 18 and the keeper of everything the department guards, which now includes the truth about the fifty silos and the book that governs them. He spends his days below the server room with the archives and a radio, reporting to a voice from Silo 1 that expects obedience, and telling it as little as he can. Careful, patient and in love with Juliette, he is the counterweight to her habit of forcing things.",
+            "id": "lukas-kyle",
+            "name": "Lukas Kyle",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the Shepherd"
+            ],
+            "description": "The man who speaks to Silo 18 from Silo 1 and is taken there for the facility's founder. He runs the place under a name that is not his, keeps his sister hidden on a lower level, and is slowly dying from something in his lungs. He knows the whole of the plan because he helped draw the building it is carried out in, and he wants to end it rather than complete it, without yet knowing how.",
+            "id": "donald-keene",
+            "name": "Donald Keene",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A pale, thin former miner in Silo 18's down-deep and one of Juliette's closest friends on the digging crew. He hates the idea of the surface as much as anyone but works the excavator anyway because she asked, and he says out loud the doubts the rest of the crew keep to themselves.",
+            "id": "raph",
+            "name": "Raph",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Jimmy Parker"
+            ],
+            "description": "The lone adult survivor of Silo 17, who spent more than thirty years alone behind a steel door before Juliette came down the ramp. He now shares the empty silo with a handful of children who grew up wild in its farms, and he speaks to Juliette by radio while she digs toward him. Gentle, awkward and easily frightened by crowds and noise, he is more comfortable with the dead silo than he expects to be with a living one.",
+            "id": "solo",
+            "name": "Solo",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The eldest of the children living wild in Silo 17's farm levels, a young man who has kept the younger ones alive for years without any adult help and who governs them by rules of his own making. He is suspicious of outsiders, protective to the point of hostility, and unwilling to be told that the way he has run things was wrong.",
+            "id": "rickson",
+            "name": "Rickson",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The youngest of the Silo 17 children, a small girl who has taught herself to read from loose pages she has collected and bound together, and who guards that book of scraps above anything else she owns. She attaches herself quickly to the adults who are kind to her, and she has a dog she will not be parted from.",
+            "id": "elise",
+            "name": "Elise",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Juliette's father, a doctor who left the mid-level nurseries to work in the down-deep to be nearer his daughter. Quiet and careful, he treats the injuries the digging produces and the arguments it causes, and the long estrangement between the two of them has only recently begun to close.",
+            "id": "peter-nichols",
+            "name": "Peter Nichols",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The head of Mechanical in Silo 18, a friend of Juliette's since long before either of them mattered to the silo. She lost her husband in the uprising and has never entirely stopped blaming the events Juliette set in motion, so her loyalty comes with an edge to it. She is a capable organizer and the person the down-deep actually listens to day to day.",
+            "id": "shirly",
+            "name": "Shirly",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A mechanic in Silo 18's down-deep, sharp-tongued and unimpressed by rank, who argues with Juliette as readily as she works for her. She has a talent for seeing what a group of frightened people actually needs, which turns out to matter more than her talent with a wrench.",
+            "id": "courtnee",
+            "name": "Courtnee",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The sheriff of Silo 18, who took the badge after the uprising and would like the silo to be quiet and lawful again. He is uneasy with a mayor who spends her time underground with a digging machine, and uneasier still with what he half knows about why.",
+            "id": "peter-billings",
+            "name": "Peter Billings",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A priest in Silo 18's mid levels with a substantial following, who preaches that the digging is a sin against the order the silo was given and that its mayor is leading people toward the deaths of everyone. He is a genuine believer rather than an opportunist, which makes him harder to answer.",
+            "id": "father-wendel",
+            "name": "Father Wendel",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A security officer serving a shift in Silo 1, assigned to the quiet night hours and bored enough to be curious. He notices things he is not meant to notice on the lower levels and has to decide what the facility's rules are actually worth.",
+            "id": "darcy",
+            "name": "Darcy",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The founder of the silo project, a former senator and military officer who has slept through most of the centuries his design has been running. When he is woken, he finds his authority in the hands of a man he trusted, and he intends to take it back and finish what he started.",
+            "id": "paul-thurman",
+            "name": "Paul Thurman",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "dust"
+      },
+      "recaps": {
+        "ending": "Silo 1 falls. Juliette, having crossed the surface with a small crew, reaches the facility that has governed every silo for five hundred years and finds Donald Keene dying there, with Thurman awake and trying to take back control. Donald gives her what she needs: the drones' proof that the poisoned ground is a bounded zone maintained deliberately around the silo complex, and the means to end Silo 1's power over the rest. He stays behind and brings the facility down, and does not survive it. With that, no one is left who can shut a silo off from the outside. Silo 18 is already dead, gassed on Thurman's order, with Lukas and most of its population lost, and Silo 17 is a shelter rather than a home, its lower levels flooded and its stores finite. So the survivors leave. Juliette leads them out through the airlock in suits and walks them over the hills, past the invisible line the drones found, until the suits can be opened. Beyond it the air is breathable, the sky is blue, and the ground is green. Charlotte, Solo, Elise, Rickson, Shirly, Courtnee, Raph and the rest come out with her, carrying seeds and tools, and begin a settlement in the open. The remaining silos are still buried and still sealed, and what to do about the people inside them is the question the survivors are left holding.",
+        "in_short": "Juliette Nichols is mayor of Silo 18 and spends her time in Mechanical, driving a buried excavator toward the derelict Silo 17 so she can reach Solo and the children stranded there. The silo is divided over it, and Lukas, who runs IT, is fielding radio calls from Silo 1, which wants the digging stopped. In Silo 1, Donald Keene governs under a dead man's name and has secretly woken his sister Charlotte, who flies salvaged drones out over the landscape and discovers that the poisoned ground is a bounded region rather than a dead world. Charlotte broadcasts the truth to the silos; Silo 1 hunts for the source, Thurman is woken, and Silo 18 is shut down and gassed. Lukas and most of the population die, and the survivors escape through Juliette's tunnel into Silo 17. Juliette crosses the surface to Silo 1, where Donald confirms what the drones found and destroys the facility at the cost of his own life, ending its power over the silos. Juliette then leads the survivors out through the airlock, over the hills and past the edge of the poisoned zone, into open air and living land, where they begin again.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously in the series. In Wool, the people of Silo 18 lived buried and obedient, taught that the outside air was lethal and that wanting to leave was a capital crime punished by being sent out to clean the camera lenses and die. Juliette Nichols, a machinist made sheriff, was condemned for asking what IT was hiding, but friends built her a suit that held. She refused to clean, walked over the hill, saw dozens of other silos in the landscape, and survived in the derelict Silo 17 with its lone inhabitant, Solo. Her survival set off an uprising at home that was crushed at enormous cost. She built a working suit, walked back, and returned to a silo where Bernard was dead and Lukas Kyle held IT and its secrets. In Shift, the origin came out: the collapse of the world was engineered by a circle of powerful men who buried fifty silos of drugged, memory-wiped people to wait out five hundred years, expecting only one to be brought back into the light. Silo 1 administers the rest, staffed by men serving six-month shifts between long freezes. Donald Keene, the architect who unknowingly drew the silos, worked out the whole of it across three shifts and seized control of Silo 1 under another man's name, meaning to end the project rather than finish it.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Juliette is mayor of Silo 18, an office she took because nobody else could hold the silo together and one she conducts from Mechanical rather than the top. Behind a wall in the down-deep her crew has uncovered a digging machine, and she is driving it through the earth toward Silo 17 to reach Solo and the children living there. Much of the silo is against her. Father Wendel preaches that the digging will kill everyone, Sheriff Peter Billings wants order restored, and even her friends in Mechanical, Shirly among them, work the excavator with reservations. Lukas runs IT from the server room below and takes radio calls from Silo 1, where a voice that claims the authority of the silos' founder tells him the digging must stop and the mayor must be brought under control. Lukas reports as little as he can. In Silo 1 itself, that voice belongs to a man running the facility under a borrowed name, who has quietly woken his sister Charlotte out of deep freeze and hidden her on an unused level.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Charlotte, a pilot from the world before the silos, is put to work on the only thing she knows how to do. Donald has her assemble surviving drones and launch them from the surface, and she flies them out over a landscape no one has looked at in five hundred years. Every drone dies at roughly the same distance, and the pattern is too regular to be weather or wear. The pair begin to suspect that the poison is being maintained deliberately in a zone around the silo complex rather than covering the whole earth. Meanwhile Juliette's tunnel gets closer, and Silo 17's inhabitants come into focus: Solo, awkward and long alone, and a group of children raised wild in the farm levels, led by the eldest, Rickson, and including a small girl named Elise who has bound herself a book out of salvaged pages. Silo 18 grows more anxious the nearer the two silos come to touching.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The excavator breaks through, and the two silos are joined. Solo and the children are brought into Silo 18, where they are alarmed by crowds and stairs and rules, and Silo 18's people are alarmed by proof that another silo exists. Juliette begins moving supplies and pumping equipment the other way, intending to drain Silo 17's flooded levels and make it habitable. In Silo 1, Charlotte builds a transmitter and starts broadcasting to every silo at once, telling them plainly what has been done to them and that there is clean air beyond the hills. It is the one thing the Order cannot survive. Silo 1's own staff begin hunting for the source, and Donald's cover as the facility's founder starts to fail. A security officer named Darcy, working the quiet shifts, notices what is happening on the lower levels.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Donald's deception collapses. Silo 1 wakes the man whose name he has been using, and Thurman, the founder of the whole project, takes back control of the facility. Charlotte is caught, Donald is confined, and the broadcasts stop. Thurman treats Silo 18 as a silo beyond correction: it has dug through to a neighbor, its head of IT has been lying, and its population has heard a voice telling them the truth. The Order permits only one response, and he gives the order. In Silo 18 the alarms sound, the doors seal, and gas floods the levels. Thousands die in a matter of minutes. Lukas, in the server room, does not get out. Juliette is deep in the down-deep when it happens and can do nothing but drive the survivors who reach her into the tunnel.",
+            "through": {
+              "chapter": 32
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A few hundred people come out of the tunnel into Silo 17, carrying what they could grab, and find a dark, half-drowned silo with finite stores and no working farms. Juliette, who lost Lukas and the silo she was responsible for on the same day, has to hold together a population that partly blames her for it. Shirly and Courtnee take charge of the practical work: power, water, planting, and a census of who survived. Rickson's children, who were the whole population of Silo 17 a week earlier, become a small minority in their own home. Solo, more comfortable with an empty silo than a crowded one, keeps to the levels he knows. Juliette stops trying to make Silo 17 into a permanent home and begins working on the only question left: who gave the order, and how to reach them.",
+            "through": {
+              "chapter": 40
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Juliette resolves to go to Silo 1 herself. She knows roughly where it lies from what Lukas showed her of the layout, she knows a suit can be built that will survive the walk, and she has done it before. Over the objections of nearly everyone she assembles a small crew, builds the suits, and sets out across the surface. In Silo 1, Donald is held and dying from what has been in his lungs for years, and Charlotte is a prisoner in a facility that has no procedure for an awake woman. Darcy's cooperation becomes the difference between the two of them having no options and having a few. Thurman, meanwhile, proceeds as though nothing has changed, because from his point of view a silo has been closed and the plan is on schedule.",
+            "through": {
+              "chapter": 50
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Juliette reaches Silo 1 and gets inside. The confrontation there is not the one she expected: the man who has been the voice on Lukas's radio is not the architect of her misery but the only person in the facility trying to end it, and he is nearly dead. Donald gives her everything, including the drone flights that map the edge of the poisoned zone and prove the ground beyond the hills is clean, and the truth that the poison is maintained on purpose so that no silo will ever try to leave. Thurman, awake and in command again, is the obstacle. Between Donald, Charlotte, Darcy and Juliette, Silo 1's grip on the fifty silos is broken, and the ability to gas a silo from a distance goes with it.",
+            "through": {
+              "chapter": 58
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Donald stays behind and destroys Silo 1, dying in the facility he drew, so that nobody can ever again shut a silo off from a console. Juliette and Charlotte get clear. With Silo 18 dead and Silo 17 unable to sustain the people crowded into it, Juliette makes the decision the whole series has been moving toward: they leave. The survivors are fitted with suits, walked out through the airlock and led over the hills, past the boundary the drones found, until the readings hold long enough to open a helmet. Beyond the line the air is breathable, the sky is blue, and the land is alive. Solo, Elise, Rickson and the children, Shirly, Courtnee, Raph, Charlotte and a few hundred others come out into the open with seeds, tools and the dead of two silos behind them, and start building above ground. The forty-odd remaining silos are still buried, still sealed, and still full of people who know none of this, and deciding what to do about them is the inheritance the survivors are left with.",
+            "through": {
+              "chapter": 68
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "dust"
+      }
+    },
     "echo-burning": {
       "characters": {
         "characters": [

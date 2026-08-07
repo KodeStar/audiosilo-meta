@@ -561,6 +561,139 @@
         "work": "anna-karenina"
       }
     },
+    "artificial-condition": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "SecUnit"
+            ],
+            "description": "The SecUnit from the survey contract, now traveling alone and disguising itself as an augmented human. It is working its way toward RaviHyral, the mining installation where, according to the record, it killed the humans it was assigned to protect before its memory of the event was erased. It wants to know whether that is what happened. It has no owner supervising it, no legitimate identity, and a constant need to avoid the scans that would expose it as a construct.",
+            "id": "murderbot",
+            "name": "Murderbot",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The bot pilot of a large university research transport, vastly more capable than the cargo bots the SecUnit has been riding with, and travelling between assignments with its crew off ship. It notices its stowaway immediately and bargains rather than reporting it: company, conversation and shared entertainment serials in exchange for help. It is arrogant, invasive, alarmingly powerful and better at planning than the SecUnit is. The SecUnit gives it a rude nickname and shortens it to ART.",
+            "id": "art",
+            "name": "ART",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of three junior technicians stranded on the transit station after the woman they worked for on the installation below kept the results of their project and paid them nothing. Young, stubborn and out of money, she hires the SecUnit, whom she takes for a human security consultant, to protect the group while they try to get their work back.",
+            "id": "tapan",
+            "name": "Tapan",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Tapan's two colleagues, part of the same group of junior technicians cheated out of their project and their pay.",
+            "id": "rami",
+            "name": "Rami",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The third member of the group of junior technicians, and the most reluctant to go anywhere near their former employer again.",
+            "id": "maro",
+            "name": "Maro",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The businesswoman on the installation who employed the three technicians, kept the product of their work, and has no intention of handing it back. She has money, hired security of her own, and the habit of treating junior staff and constructs alike as disposable.",
+            "id": "tlacey",
+            "name": "Tlacey",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A construct owned by Tlacey and built for sexual companionship, kept obedient by exactly the kind of governor module the SecUnit freed itself from, and used by its owner as a courier and an informant. Its situation puts a question to the SecUnit that it would rather not answer: what it owes another construct that is still controlled.",
+            "id": "comfort-unit",
+            "name": "The ComfortUnit",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of two heavily augmented human security operatives working for Tlacey, hired for the work ordinary guards will not do. Equipped for combat and contemptuous of the security consultant they take the SecUnit to be, Wilken works alongside a long-standing partner, Gerth.",
+            "id": "wilken",
+            "name": "Wilken",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "artificial-condition"
+      },
+      "recaps": {
+        "ending": "Tlacey is dead, killed by the ComfortUnit she owned once the SecUnit removes the governor module holding it; the freed construct takes what it needs from her operation and goes its own way. The surviving technicians, Tapan and Maro, recover their work and leave the installation with enough to start again. The SecUnit has its answer about RaviHyral: it did cause the deaths, but through a catastrophic system failure rather than a decision, and the corporation that owned it deleted the record and resold it rather than account for the conditions that produced it. The knowledge does not absolve it, and it concludes that it does not need to be absolved. Back aboard the research transport, ART repairs it and offers to keep it on permanently, since ART's own crew are not due back for a while and it would rather not be alone. The SecUnit refuses. It has read in the newsfeeds that Dr. Mensah and Preservation are locked in a legal fight with GrayCris, the company that tried to kill her team, and that GrayCris is dangerous to her. It takes a fresh fabricated identity and leaves to gather proof of what GrayCris was really doing, with the friendship left open rather than finished.",
+        "in_short": "Traveling alone after leaving the survey team, the SecUnit heads for RaviHyral, the mining installation where the record says it killed the humans it was guarding before its memory was erased. It hitches a ride on a university research transport whose bot pilot, which it nicknames ART, is far more capable than it expected; ART trades help for company, alters its body so scans read it as an augmented human, and joins the investigation. To get down to the mine, the SecUnit takes a job protecting three young technicians whose former employer, Tlacey, stole their work. The exchange she offers is a trap, one of the three is killed, and the SecUnit stops pretending to be human: it dismantles Tlacey's security, frees the ComfortUnit she keeps under a governor module, and that construct kills her. Underground, the SecUnit recovers the lost memory and learns that it did cause the deaths, but through a system failure rather than a choice, and that its owners erased the evidence and resold it. It parts from ART and sets off to find evidence against GrayCris for Dr. Mensah.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: the narrator is a SecUnit, a security construct that secretly disabled its own governor module and can no longer be controlled by the corporation that owns it. On a planetary survey contract it kept a small research team alive against a rival company, GrayCris, which was killing witnesses to an illegal alien remnant salvage operation, and in the process the team learned what it was. Dr. Mensah, who led them, bought the unit to stop the company destroying it and offered to take it home to Preservation, where it would be free. It left instead, alone, on a cargo transport. It carries one unanswered question: the record says that at a mining installation called RaviHyral it went wrong and killed the humans it was assigned to guard, and its memory of that day was deleted afterwards. It is traveling toward the installation to find out whether it is a murderer.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Riding automated cargo transports as an unnoticed passenger, the SecUnit works its way toward RaviHyral. It boards a large university research transport whose bot pilot is far more intelligent than anything it has dealt with, spots it at once, and, being alone and bored while its crew is away, offers a deal instead of an alarm: company, conversation and shared entertainment serials in return for help. The SecUnit nicknames it ART. ART examines the deleted region of its memory, agrees to help it reach the installation, and uses the transport's medical systems to alter the unit's body so that scans will read it as an augmented human rather than as a construct. Arriving at the transit station above RaviHyral with a fabricated identity and nothing visibly dangerous about it, the SecUnit still needs a plausible reason to travel down to the mine, and starts looking for one.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The cover it finds is a job. Three young technicians, Tapan, Rami and Maro, are stranded on the station after the woman they worked for on the installation, Tlacey, kept the results of their project and paid them nothing. They hire the SecUnit as a security consultant, believing it to be human, to protect them while they try to recover their work. It travels down with them, keeping ART on the comm and its own capabilities hidden. Tlacey agrees to an exchange, but her preparations make plain that she has no intention of returning anything, and considerable interest in the unusually effective consultant her former employees have acquired. She also has professional muscle of her own, and a ComfortUnit, another construct held under a governor module, which she uses to carry messages and watch people. The SecUnit works out that the meeting being arranged is a trap and cannot talk its clients out of it.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The exchange goes as badly as expected: Tlacey's people kill Rami. The SecUnit gets Tapan and Maro clear and drops its pretence of being human, and with ART's help it goes after Tlacey's operation directly. Her two augmented security operatives are outmatched once the SecUnit stops pretending, and the ComfortUnit, whose governor module the SecUnit removes, kills Tlacey itself and leaves free. In the mine's abandoned levels the SecUnit finally recovers what happened at RaviHyral: the deaths were real and it was what killed the miners, but the cause was a catastrophic failure of the installation's systems and of its own control module rather than any decision it made, and the company that owned it wiped the record and resold it instead of answering for it. Tapan and Maro get their work back and passage out. The SecUnit returns to ART, which asks it to stay; it refuses, having learned that Dr. Mensah is in a legal fight with GrayCris, and sets off alone to find evidence she can use.",
+            "through": {
+              "chapter": 9
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "artificial-condition"
+      }
+    },
     "azarinth-healer-book-five": {
       "characters": {
         "characters": [

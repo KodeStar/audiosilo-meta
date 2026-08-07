@@ -1107,6 +1107,110 @@
         "work": "rivers-of-london"
       }
     },
+    "rogue-protocol": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "SecUnit"
+            ],
+            "description": "Traveling under a fabricated identity, the SecUnit is on its way to Milu, an abandoned terraforming facility, to find proof that the company GrayCris was running an illegal alien remnant salvage operation there. The evidence is for Dr. Mensah, who is fighting GrayCris in arbitration and who does not know the SecUnit is doing this. It is unowned, unsupervised, and increasingly aware that it cares what happens to people it has no contract with, which it regards as a fault.",
+            "id": "murderbot",
+            "name": "Murderbot",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A small bot belonging to the leader of a corporate assessment team, built for general assistance and treated by its humans as a friend and a companion rather than as equipment. It has no governor module, has never been deliberately lied to, and trusts everyone it meets, which the SecUnit finds naive, useful and hard to look at.",
+            "id": "miki",
+            "name": "Miki",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of the corporate assessment team sent to inspect the abandoned terraforming facility on behalf of a prospective buyer. Senior, capable and used to being listened to, she is genuinely attached to Miki and treats the bot as a member of the group, which shapes how the whole team behaves.",
+            "id": "don-abene",
+            "name": "Don Abene",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of two augmented human security operatives hired to protect the assessment team, equipped for combat and impatient with anyone else's opinion about the team's safety. The SecUnit has met this pair before, working for a different employer on a mining installation, and knows what they are willing to do for money.",
+            "id": "wilken",
+            "name": "Wilken",
+            "reveal": {
+              "chapter": 3
+            }
+          },
+          {
+            "description": "The second of the two augmented security operatives hired for the expedition, and Wilken's long-standing partner. The SecUnit has encountered this one before as well, on the same job.",
+            "id": "gerth",
+            "name": "Gerth",
+            "reveal": {
+              "chapter": 3
+            }
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "rogue-protocol"
+      },
+      "recaps": {
+        "ending": "GrayCris's concealed remnant operation at Milu is exposed, and the surviving members of the assessment team, Don Abene among them, get off the station alive with a first-hand account of it. Wilken and Gerth are stopped and the threats GrayCris left behind are destroyed. Miki does not survive: the small, trusting bot is destroyed protecting its humans, and the SecUnit, which used that trust and then let it fight, treats the loss as its own responsibility and as proof that it does not get to stand outside what happens around it. The SecUnit ends the book with recorded evidence of what GrayCris was doing, a false identity, and no intention of handing the material to a courier. It has concluded that GrayCris, cornered and facing exposure, will go after Dr. Mensah directly, and that the case is not something she can win at a safe distance. It boards a transport heading back toward Preservation to deliver the proof itself, which also means doing the thing it has avoided since it walked away from her offer of a home: seeing her again.",
+        "in_short": "Hunting proof that GrayCris was illegally salvaging alien remnants, the SecUnit travels to Milu, a terraforming facility the company abandoned. It arrives hidden aboard the transport of a corporate assessment team sent to value the station, led by Don Abene, and befriends the team's small assistant bot, Miki, using its trust to move around unseen. The station is not as empty as the record claims: GrayCris left remnant material, contamination and hazards behind, and the two security operatives hired to protect the team, Wilken and Gerth, are working for someone else. As the team takes casualties, the pair seize the survivors and move to destroy the evidence. The SecUnit reveals itself and fights, and Miki is destroyed doing what it believes its humans need. The surviving team escapes with what they witnessed, and the SecUnit keeps hard evidence of what GrayCris hid there. Rather than transmit it anonymously, it decides that proof alone will not protect Dr. Mensah from a company with this much to lose, and takes a transport back toward Preservation to deliver it in person.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: the SecUnit hacked its own governor module, kept a Preservation survey team alive against the company GrayCris, which was killing witnesses to an illegal alien remnant salvage operation, and then left rather than accept the freedom and the home Dr. Mensah offered it. Traveling alone under a false identity, it reached the mining installation where it was supposed to have massacred its clients and learned that the deaths were caused by a system failure its owners covered up. On the way it met ART, the bot pilot of a university research transport, and parted from it after reading in the newsfeeds that Mensah and Preservation are now in a legal fight with GrayCris. GrayCris denies it was ever doing remnant salvage, and the case turns on whether anyone can prove otherwise. The SecUnit has decided to find that proof without telling her, and the likeliest place is Milu, a terraforming facility GrayCris walked away from.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Riding transports toward Milu, the SecUnit finds it will not be arriving alone. A corporate assessment team is being sent out to inspect the abandoned facility for a client considering buying it, and the SecUnit attaches itself to their transport unnoticed. The team is led by Don Abene and includes a small assistant bot called Miki, which its humans treat as a friend rather than as equipment. The SecUnit, contemptuous of how readily Miki trusts everyone, nonetheless makes contact with it in the feed and uses that friendship to move around the ship, and later the station, without being seen. It also recognizes the two augmented security operatives hired to protect the team: Wilken and Gerth, whom it last encountered working for a client it had to fight. Milu itself turns out to be neither as empty nor as harmless as the record claims.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On the abandoned station the assessment team finds a facility that is half-built, badly maintained and in places deliberately concealed. GrayCris left behind exactly the kind of alien remnant material it has been denying it ever touched, along with the contamination and the hazards that come with it. The SecUnit collects the evidence it came for while keeping its presence hidden from everyone except Miki. The station is dangerous and the team takes casualties, and the pattern of what goes wrong stops looking like accident. Wilken and Gerth, who are not working for the client who hired them, move to take control of the survivors and destroy anything that could serve as proof, holding Don Abene and the others as hostages. The SecUnit has to choose between leaving with its data and intervening for people it has no contract with.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The SecUnit stops pretending to be a bystander. It reveals itself to the assessment team, fights the assets GrayCris left behind and the two operatives who betrayed the group, and works with Miki to free the hostages. Miki, doing exactly what it believes its humans need and with none of the SecUnit's caution, is destroyed in the fighting, an outcome the SecUnit blames itself for allowing. Wilken and Gerth are stopped, and what GrayCris hid at Milu is exposed. The surviving team members, Don Abene among them, escape on their shuttle with an account of what they saw, and the SecUnit keeps its own recorded evidence. Instead of transmitting it and disappearing, it concludes that the material alone will not be enough and that GrayCris will move against Dr. Mensah directly. It boards a transport back toward Preservation, intending to deliver the proof itself.",
+            "through": {
+              "chapter": 6
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "rogue-protocol"
+      }
+    },
     "romeo-and-juliet": {
       "characters": {
         "characters": [

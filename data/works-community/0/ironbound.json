@@ -1770,6 +1770,318 @@
         ],
         "work": "king-of-duels"
       }
+    },
+    "kingdom-of-ash": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Queen of Terrasen, held prisoner by Maeve for months, chained in iron and kept in an iron coffin that cuts her off from her magic. She is being systematically broken to make her surrender her blood oath, and she has refused every time. She measures her survival in very small units: what she can still think, what she can still refuse, and how much of herself is left when the lid closes again.",
+            "id": "aelin-galathynius",
+            "name": "Aelin Ashryver Galathynius",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A Fae prince of Doranelle, blood-sworn to Aelin and married to her, who has spent every day since she was taken hunting for the ship, the camp, or the road that will lead him to her. He has stopped sleeping and stopped negotiating. His magic is wind and ice, and his patience is gone.",
+            "id": "rowan-whitethorn",
+            "name": "Rowan Whitethorn",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Queen of the Fae of Doranelle, who took Aelin at the coast and has held her ever since. She wants the blood oath and the Wyrdkeys, and she is prepared to spend as long as it takes. Her power works on minds as much as bodies, and nothing she says can be assumed to be the whole truth.",
+            "id": "maeve",
+            "name": "Maeve",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Fae warrior of Maeve's cadre, blood-sworn and therefore compelled to attend Aelin's confinement and do nothing about it. The oath rules his body; it does not rule what he thinks, and the strain of the difference is destroying him.",
+            "id": "fenrys",
+            "name": "Fenrys",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Fae male in Maeve's service, given charge of Aelin's confinement, who treats the work as a craft and a privilege. He is cruel by preference rather than by order.",
+            "id": "cairn",
+            "name": "Cairn",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Lady of Perranth by right, travelling with Rowan's party in the search for Aelin. Raised locked in a tower and lame from a childhood injury, she has become the practical centre of the group, and she is still deciding what she thinks about the man who betrayed them all.",
+            "id": "elide-lochan",
+            "name": "Elide Lochan",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A five-centuries-old Fae warrior, once Maeve's most lethal servant, now cast out of Aelin's court for the betrayal that led to her capture. He is helping to find her anyway, tolerated rather than trusted, and he does not defend himself to anyone.",
+            "id": "lorcan-salvaterre",
+            "name": "Lorcan Salvaterre",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Fae warrior of Maeve's cadre known as the Lion, quiet and steady, still bound by his blood oath and still searching for Aelin alongside Rowan. Aedion Ashryver is his son, and the two of them have never managed a conversation about it.",
+            "id": "gavriel",
+            "name": "Gavriel",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "General of the Bane and Aelin's cousin, holding Terrasen's northern defences with too few soldiers and a queen who is not the queen. He is grieving, furious, and running a war he was never given the resources to win.",
+            "id": "aedion-ashryver",
+            "name": "Aedion Ashryver",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A shapeshifter wearing Aelin Galathynius's face day and night to keep Terrasen from collapsing, which means being looked at, obeyed, and hated as Aelin while having no power to back it up. She has been at it for months and there is very little of her own life left in it.",
+            "id": "lysandra",
+            "name": "Lysandra",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The senior lord of Terrasen's council, who denied Aelin her crown and now finds himself defending Orynth alongside her court. He is pragmatic to the point of ruthlessness and is preparing for a siege he does not expect to survive.",
+            "id": "darrow",
+            "name": "Lord Darrow",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "King of Adarlan, alone, moving toward Morath with a plan he has told no one. He has magic he has finally learned to shape, including the ability to change his own form, and he intends to walk into Erawan's fortress and take the last Wyrdkey out of it.",
+            "id": "dorian-havilliard",
+            "name": "Dorian Havilliard",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The Valg king, master of Morath, whose armies, wyverns, ilken, and witch-forged siege engines are moving north to finish what his kind began a thousand years ago. He holds the third Wyrdkey.",
+            "id": "erawan",
+            "name": "Erawan",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Outcast heir of the Blackbeak clan and daughter of the last Crochan Queen, riding into the Western Wastes with the Thirteen to ask the witches her clan spent five hundred years hunting to follow her into a war for a continent none of them care about.",
+            "id": "manon-blackbeak",
+            "name": "Manon Blackbeak",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Manon's Second and cousin, the finest rider in the Thirteen, who has followed Manon out of the Ironteeth and into exile without once asking her to justify it.",
+            "id": "asterin-blackbeak",
+            "name": "Asterin Blackbeak",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly Crochan witch, keeper of the hearth and of the old rites, and Manon's great-grandmother. She is the first Crochan willing to take Manon's claim seriously, and she is under no illusions about how hard the rest will be to convince.",
+            "id": "glennis",
+            "name": "Glennis",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Matron of the Blackbeak clan and Manon's grandmother, commanding the Ironteeth host for Morath, who murdered her own daughter and raised the child as a weapon. She intends to take the Wastes back by force and considers Manon's defiance a defect to be corrected permanently.",
+            "id": "blackbeak-matron",
+            "name": "The Blackbeak Matron",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Hand to the King of Adarlan, healed and walking, arriving from the southern continent with the khaganate's armies at his back. He has spent the voyage preparing for a war and dreading a homecoming, because the fleet's landing site is the mountain city his father rules.",
+            "id": "chaol-westfall",
+            "name": "Chaol Westfall",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A healer of the Torre Cesme and Chaol's wife, whose magic does not merely resist Valg corruption but destroys it. She is the only weapon on the continent that Erawan has no answer for, and everyone who knows it wants her somewhere different.",
+            "id": "yrene-westfall",
+            "name": "Yrene Westfall",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Captain of Adarlan's Royal Guard, now flying with the rukhin of the southern continent, bringing sky-riders to a war fought largely in the air.",
+            "id": "nesryn-faliq",
+            "name": "Nesryn Faliq",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Prince of the rukhin and son of the khagan, leading the ruk riders north to fight beside Terrasen.",
+            "id": "sartaq",
+            "name": "Sartaq",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Queen of the Western Wastes, red-haired and unrepentant, who once betrayed Aelin badly in a desert and has spent the years since running a kingdom. She owes a debt and has come to pay it.",
+            "id": "ansel-of-briarcliff",
+            "name": "Ansel of Briarcliff",
+            "reveal": {
+              "chapter": 70
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "kingdom-of-ash"
+      },
+      "recaps": {
+        "ending": "Erawan is destroyed and the Valg are driven out of the world. Maeve, exposed as a Valg queen who had spent millennia hiding as Fae, is unmade by Aelin, who burns her out of existence and out of memory so that even her name is forgotten. Aelin forges the Lock and seals the Wyrdgate, refusing the price the gods intended her to pay and sending them back through it instead; it nearly kills her, and she survives it, drained past anything she has ever been. Orynth stands, at terrible cost: the Thirteen are gone, having flown into the witch towers to break the siege, and Gavriel is among the dead. Manon Blackbeak unites the Ironteeth and the Crochans and takes the Witch Kingdom in the Wastes as its queen. Dorian returns to Adarlan to rebuild a country his father wrecked. Chaol and Yrene take Anielle. Elide is restored as Lady of Perranth with Lorcan beside her, Aedion and Lysandra have each other, Fenrys is free of Maeve at last, and Nesryn and Sartaq return south. Aelin Ashryver Galathynius is crowned Queen of Terrasen with Rowan at her side, in a kingdom that is ruined, free, and full of magic again, with the long work of rebuilding ahead of them.",
+        "in_short": "Aelin spends months chained in an iron coffin while Maeve tries to break her into surrendering her blood oath, and Rowan, Elide, Lorcan, Gavriel, and Fenrys hunt for her across a continent already at war. Terrasen holds its northern border with Aedion commanding and Lysandra wearing Aelin's face. Dorian walks into Morath alone, steals the third Wyrdkey, and travels to the Wastes, where a witch-mirror shows him the truth about the gods, the Lock, and what Maeve really is. Manon Blackbeak wins the Crochans and unites the witch clans. Chaol and Yrene arrive from the south with the khaganate's armies. Aelin is rescued, badly damaged, and fights her way back to herself in time for the siege of Orynth, where Erawan's host, its witch towers, and the Ironteeth nearly take the city; the Thirteen destroy the towers at the cost of their lives. Aelin exposes Maeve as a Valg queen and unmakes her, Erawan is destroyed, and Aelin forges the Lock, sealing the gate and banishing the gods rather than paying them her life. She survives, and is crowned queen of a free Terrasen.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Aelin Galathynius gathered allies she could not pay for, won a pirate fleet at Skull's Bay, married Rowan Whitethorn, and learned from Elena's spirit that forging a new Lock to seal the Wyrdgate would cost her life, which she hid from her court. On the southern coast, betrayed by Lorcan Salvaterre, she was ambushed by Queen Maeve, surrendered herself to save her people, and was chained in iron and sealed in a coffin, with Fenrys compelled to go with her. She had prepared for it: Lysandra would wear her face and hold Terrasen together. Manon Blackbeak learned she is the daughter of the last Crochan Queen, broke with the Ironteeth, and rode west with the Thirteen. Dorian went north with the third Wyrdkey still in Erawan's hands. Meanwhile, on the southern continent, Chaol Westfall was healed of his broken spine by Yrene Towers, who discovered that her magic destroys Valg demons outright; they married, exposed and killed a demon hiding inside the khagan's own daughter, and won the khaganate's armies, its fleet, and the rukhin sky-riders for the northern war. Erawan holds Morath, one Wyrdkey, and an army that has not yet been slowed.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Aelin has been Maeve's prisoner for months, chained in iron that severs her from her magic and shut in an iron coffin between sessions with Cairn, the Fae male Maeve has given charge of her. The object is the blood oath, and Aelin has refused it every time. Fenrys, bound by his own oath, is compelled to be present and forbidden to intervene. Rowan, Elide, Lorcan, and Gavriel have been searching for her since the coast, working their way across the continent on rumours and cold trails. In Terrasen, Aedion holds the northern border against Morath's advance with the Bane and whatever Terrasen's lords will spare, while Lysandra wears Aelin's face in front of the army and the court, unable to explain why the queen's fire never appears. Lord Darrow prepares Orynth for a siege. Dorian Havilliard travels alone toward Morath, and Manon Blackbeak rides west into the Wastes with the Thirteen to find the Crochans.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Morath's armies move north in force, and the northern defences begin to give ground; Aedion's line holds by increments and by casualties he cannot replace. Manon reaches the Crochan camps and is received as exactly what she is to them, a Blackbeak with iron teeth asking five hundred years of hunted witches to follow her. Her great-grandmother Glennis is willing to hear the claim; almost no one else is. Dorian reaches Morath and gets inside by changing his shape, moving through Erawan's fortress as one more servant of it, learning how deep the keep goes and what is kept in it. Aelin, still refusing, begins losing track of how long she has been in the box. Rowan's party narrows the search to Maeve's route and starts closing.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Dorian takes the third Wyrdkey out of Morath, which is the single greatest theft of the war, and gets out alive; but Maeve finds him before he can reach anyone who could use it, and what she wants from him tells him a great deal about what she is. He turns west toward the Wastes, following a lead about an ancient witch-mirror that is said to show what has been and what may be. Manon's case among the Crochans stalls, and she is set a series of proofs that have less to do with strength than with what she is willing to be. Terrasen's border collapses toward Orynth, and Aedion begins the retreat to the city. Rowan, Elide, Lorcan, Gavriel, and their allies locate Maeve's camp, and start planning something that has a very small chance of working.",
+            "through": {
+              "chapter": 34
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The southern fleet reaches the continent, and Chaol Westfall comes ashore with the khaganate's armies at the mountain city of Anielle, which his father rules and which Chaol left as a boy. Yrene is with him, and Nesryn and Sartaq bring the ruk riders overhead. The landing turns into a battle immediately, and Chaol's homecoming is fought rather than negotiated. In the Wastes, Manon finally gives the Crochans something they can accept, and the two halves of her inheritance stop being a contradiction. Aelin's confinement reaches its worst point; what Maeve is doing to her is no longer only about the oath. Rowan's rescue attempt is set in motion, and Fenrys, unable to act on his own account, finds the one thing his oath does not forbid.",
+            "through": {
+              "chapter": 46
+            }
+          },
+          {
+            "scope": "book",
+            "text": "They get her out. Cairn dies, Aelin is freed from the iron, and Rowan has her back, but the woman who comes out of the coffin is not the one who went into it: she flinches from touch, cannot reliably reach her magic, and has lost months of herself. The reunion is difficult for everyone, including her. Fenrys leaves Maeve's service. The group runs, because Maeve will not accept the loss, and Aelin has to relearn how to be a person and a queen at the same time, on the road, in the middle of a war. In the west, Manon is acknowledged and begins to bind the Crochans and her outcast Ironteeth into one force. Around Orynth the situation is deteriorating faster than anyone in the field understands, and Morath's siege engines are being brought north.",
+            "through": {
+              "chapter": 58
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Aelin turns her attention from surviving to finishing the war. She and Rowan set out for Terrasen with what allies they can gather, and Aelin makes it clear she intends to settle with Maeve rather than run from her. Chaol and Yrene's campaign at Anielle grinds on, with Yrene's power proving decisive wherever a Valg-touched enemy is involved. Dorian reaches the Wastes and the mirror. Aedion pulls the last of Terrasen's forces back inside Orynth's walls, Darrow's preparations begin in earnest, and Lysandra keeps up the impersonation because the alternative is telling an army under siege that its queen is not there.",
+            "through": {
+              "chapter": 67
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The witch-mirror shows Dorian the truth. The beings the kingdoms have worshipped as gods are not gods: they came through the gate from another world, they have been trapped here since, and every arrangement made through Elena for a thousand years has been aimed at getting them home. Forging the Lock is the door, and the person who forges it is the price they intend to collect. Dorian also learns what Maeve is, which is not Fae and never was. He starts for Terrasen with the third key and with information that changes what Aelin's sacrifice would actually buy. Orynth is invested; Morath's host encircles the city and the witch towers are brought within range. Manon's united witches, Ansel of Briarcliff's riders out of the Wastes, and Rolfe's ships are all still too far away, and the walls begin to come down.",
+            "through": {
+              "chapter": 78
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Maeve is confronted and exposed: a Valg queen, one of the enemy's own, who fled her kind millennia ago and has passed as the Fae queen of Doranelle ever since, wielding illusion to keep every mind around her convinced of it. Aelin destroys her, burning her out of the world so completely that even the memory of her name goes with her, and the Fae she held are freed. In Terrasen, the siege of Orynth becomes a slaughter. Morath's host and its witch towers work at the walls day after day, Aedion holds the line with fewer soldiers every morning, and Lysandra keeps wearing Aelin's face because a city under siege cannot be told that its queen is not there. Darrow spends the last of the city's reserves. The relief Aelin is bringing is still too far away, and Orynth begins to fall.",
+            "through": {
+              "chapter": 90
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The walls of Orynth break and the fighting reaches the city itself. Gavriel dies holding a line beside the son he never got to have a conversation with. Manon Blackbeak arrives with the Crochans and the outcast Ironteeth she has spent the war winning over, and the witch clans that have hunted each other for five centuries fight on the same side for the first time. The witch towers, siege engines powered by Valg magic that nothing on the walls can answer, are destroyed the only way left: the Thirteen fly into them and detonate them, and every one of them dies doing it. It buys Orynth the hours it needs. What is left of Terrasen's defence regroups in the ruins of its own capital and holds on.",
+            "through": {
+              "chapter": 100
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Aelin reaches Orynth with the southern armies, the khaganate's soldiers, the ruk riders, and every ally she spent two books buying. The city is a ruin and the fighting is in the streets. Chaol and Yrene arrive, and Yrene's magic starts unmaking Valg on the field itself, which nothing in Erawan's army has ever had to fight before. Dorian comes north with the third Wyrdkey. Manon takes the Ironteeth from her grandmother in the only way the Blackbeaks recognize, and the witch clans, divided for five hundred years, fight on the same side. All three keys are in the same place for the first time since the gate was shattered, and Erawan takes the field himself.",
+            "through": {
+              "chapter": 110
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Erawan is destroyed, and Aelin forges the Lock and seals the Wyrdgate. Knowing now that the beings calling themselves gods intended to spend her life to buy their passage home, she sends them back through the gate rather than pay it, and survives, emptied out but alive. The Valg are gone from the world and magic remains in it. The dead are counted: the Thirteen, who broke the siege by flying into the witch towers, and Gavriel among them. Manon unites the Ironteeth and the Crochans and becomes queen of the Witch Kingdom in the Wastes. Dorian goes back to rebuild Adarlan. Chaol and Yrene take Anielle. Elide returns to Perranth as its lady with Lorcan, Aedion and Lysandra stay together, Fenrys is free, and Nesryn and Sartaq turn south. Aelin Ashryver Galathynius is crowned Queen of Terrasen with Rowan beside her, in a wrecked and free kingdom with everything still to rebuild.",
+            "through": {
+              "chapter": 121
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "kingdom-of-ash"
+      }
     }
   }
 }

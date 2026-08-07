@@ -1158,6 +1158,222 @@
         "work": "shattered-limits"
       }
     },
+    "shift-omnibus-edition": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Donny"
+            ],
+            "description": "A first-term congressman from Georgia and a trained architect, young, earnest and out of his depth in Washington. He took the seat with help from a powerful senator he admires, and he still thinks of building things rather than legislating as his real skill. When that senator hands him a design job, a shelter to be sunk beside a proposed nuclear waste facility in his home state, he treats it as the chance to make something that will outlast his career. He is married and trying to keep the marriage steady across the distance between Washington and home.",
+            "id": "donald-keene",
+            "name": "Donald Keene",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The senior senator from Georgia, a former military officer with a surgeon's calm and enormous influence in Washington. He is the driving force behind a national waste depot and the world exposition planned on the same Georgia ground, and he is the man who put Donald in Congress. He gives instructions rather than reasons, and the people around him are used to that.",
+            "id": "paul-thurman",
+            "name": "Senator Paul Thurman",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Donald's friend from their college years and now a fellow congressman, easy-going, ambitious and better at politics than Donald is. He was the one who introduced Donald to the circles he now moves in, and he keeps turning up around the Georgia project.",
+            "id": "mick-webb",
+            "name": "Mick Webb",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Donald's wife, who stays behind in Savannah running her own work while he serves in Washington. Steady, sharp and patient with a marriage conducted mostly by phone, she is the person Donald measures his choices against, and the growing secrecy of his Georgia commission strains what is left of their time together.",
+            "id": "helen-keene",
+            "name": "Helen Keene",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Senator Thurman's daughter, an accomplished engineer, and the woman Donald was involved with in college before he met his wife. Brilliant, direct and entirely at ease in her father's world, she is assigned to work on the same Georgia project, taking the machinery and the lower levels while Donald handles the shape of the building. Her presence unsettles him and his marriage in equal measure.",
+            "id": "anna-thurman",
+            "name": "Anna Thurman",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Donald's younger sister, a military pilot who flies unmanned aircraft on deployment overseas. Practical and unsentimental where her brother is anxious, she is the family member he talks to most honestly, and their conversations run through the years he spends on the Georgia commission.",
+            "id": "charlotte-keene",
+            "name": "Charlotte Keene",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A quiet English scientist attached to Thurman's circle, older than the politicians around him and treated by them with unusual deference. His work concerns machines built at the scale of molecules, and what he has seen of that field has frightened him into helping plan for a world that does not survive it.",
+            "id": "erskine",
+            "name": "Erskine",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A porter in Silo 18 generations before Juliette's time, seventeen years old, who carries loads up and down the great staircase for a living and knows the silo by its landings rather than its levels. Born in circumstances the silo's laws frown on and estranged from his farmer father, he is proud, restless and drawn toward the people muttering that the silo should be run differently.",
+            "id": "mission-jones",
+            "name": "Mission Jones",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The head of Silo 1's psychiatric oversight, the man who reads the reports from every silo and decides what each one needs. He has spent more waking years than anyone on the problem of why the silos fail, and he keeps his conclusions largely to himself.",
+            "id": "victor",
+            "name": "Victor",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Mission's closest childhood friend, taken as a shadow into Silo 18's IT department, where he is being taught things he is not allowed to repeat. The promotion has put a distance between the two of them that neither knows how to close.",
+            "id": "rodny",
+            "name": "Rodny",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mrs. Crowe"
+            ],
+            "description": "An ancient schoolteacher in Silo 18's mid levels who has taught generations of the silo's children, Mission's among them, and who is far older than the silo's rules on age and replacement should allow. She keeps a room full of salvaged oddments and speaks about the past in ways that make the authorities uneasy, and the young people who grew up in her classroom are devoted to her.",
+            "id": "the-crow",
+            "name": "The Crow",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A teenage boy in Silo 17, the son of that silo's head of IT, awkward and solitary and more interested in being left alone than in the trouble spreading through the levels around him. He is given the run of the server room by his father, which is the only place in the silo where anyone can hear what is really happening.",
+            "id": "jimmy-parker",
+            "name": "Jimmy Parker",
+            "reveal": {
+              "chapter": 66
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A cat that finds its way to Jimmy in the emptied levels of Silo 17 and stays. For a long stretch of his life it is the only other living thing he speaks to.",
+            "id": "shadow",
+            "name": "Shadow",
+            "reveal": {
+              "chapter": 78
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "shift-omnibus-edition"
+      },
+      "recaps": {
+        "ending": "Shift closes with Donald Keene in command of Silo 1 under another man's name. Woken for a third time to replace the dead head of the silo's psychiatric oversight, he is finally given access to everything: the Order, the archived legacy of the old world, the running files on all fifty silos, and the reasoning behind the entire scheme. It confirms what he had pieced together across two earlier shifts. The end of the world was engineered by Thurman's circle to forestall a technology they believed no one could contain; the silo populations were selected, drugged and lied to without their consent; and the plan only ever intended one silo to be brought out at the end of it. He also learns what became of his wife: she survived in one of the silos and lived a full life there, believing him dead. In the same span of years covered by his shifts, Silo 17 is destroyed and a teenage Jimmy Parker is sealed alone inside its server room by his father, becoming the man Wool calls Solo, while an uprising in Silo 18 is crushed and that silo's memory of itself is wiped clean again. Broken by what he now knows and by what he helped build, Donald kills Anna and takes Thurman's place at the head of Silo 1, leaving the shifts below him to believe nothing has changed. He holds the authority that decides whether the silos live or die, and he means to use it against the plan rather than for it.",
+        "in_short": "Shift is the prequel to Wool, told in braided timelines. In the years before the silos were occupied, Donald Keene, a young congressman and trained architect, is commissioned by Senator Paul Thurman to design a deep underground facility in Georgia, presented as a shelter beside a national nuclear waste depot. The specifications are dictated to him in ways he does not understand, and the engineer assigned alongside him is Thurman's daughter Anna, his former lover. On the day the site is unveiled at a world exposition, an engineered catastrophe ends life above ground and the invited crowds are herded underground, where a drink handed out at the ceremony strips their memories. Donald wakes centuries later in Silo 1, the silo that secretly administers the other forty-nine, where men serve six-month shifts and sleep frozen between them. Across three shifts he reconstructs the plan he helped build: the apocalypse was deliberate, and the silos are a five-hundred-year experiment meant to yield one surviving population. He learns what became of his wife, watches an uprising crush Silo 18 and a catastrophe empty Silo 17, and ends the book having killed Anna and taken Thurman's place as the master of Silo 1.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, in Wool: thousands of people lived in a buried silo, taught that the outside air was lethal and that saying you wanted to leave was a capital offense, punished by being sent out to wipe the camera lenses and die on the hill. Sheriff Holston walked out and found that the green landscape shown inside his helmet was a fabrication and the real world was ruin. His replacement, the machinist Juliette Nichols, was condemned in turn for asking what the IT department was hiding, but friends in Mechanical and Supply built her a suit that held. She refused to clean, walked over the hill, saw dozens of other silos sunk into the same landscape, and sheltered in the derelict Silo 17 with its lone survivor, Solo. Her survival set off a rebellion at home that was put down at terrible cost. She built a working suit, walked back, and returned to a silo whose ruling order had collapsed. Along the way the silo's secret came out: there are fifty silos, their people were never told, and the rules everyone lives by come from an old book called the Order, written by somebody else. Shift goes back to explain who wrote it, and why.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the middle of the twenty-first century, Donald Keene is a freshman congressman from Georgia with an architect's training and very little idea how Washington works. Senator Paul Thurman, the man who helped put him in office, pulls him aside for a private commission: design a shelter to be buried beside the national nuclear waste facility planned for Georgia, on the same ground as a coming world exposition. The brief is strange. Thurman dictates the depth, the spacing of the floors, the absence of elevators, the enormous central stairwell, the size of the storerooms, and a lower level Donald is told to draw but not to ask about. Donald's marriage to Helen, who stays in Savannah, thins out under the workload and the secrecy. Meanwhile, centuries later, a man called Troy wakes in a facility he only half remembers, is told he is beginning a six-month shift, and is put to work at a desk of screens reporting on places he cannot place.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Donald's design work is compartmented so tightly that no one can see the whole of it, and he begins to notice how much of the specification makes no sense for a shelter: the medical wing, the vast food stores, the machinery Anna Thurman is designing far below him. Anna, the senator's daughter and Donald's college girlfriend, is the one colleague who can answer his questions and will not, and working beside her leaves him guilty and unmoored. In the later timeline, Troy learns the shape of the world he now administers. Silo 1 is not one of the fifty; it is the one that watches the others, staffed by men who wake for six months and sleep frozen for decades between shifts, while the women are kept frozen without being woken at all. He also watches, on his screens, one of the silos die: its population turns on itself, the reports stop, and the men around him treat it as an expected loss.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The two timelines meet. On the opening day of the exposition, with tens of thousands of visitors on the Georgia ground, the attack Thurman's circle has planned takes place: the air is filled with something engineered, the crowds are driven down into the shelters, and the doors close. A drink handed out at the ceremony carries a medication that protects against what is in the air and a drug that takes the recent past out of the mind. Donald is led down with the rest. Erskine, the scientist behind Thurman's certainty, explains the reasoning to him: an unstoppable molecular technology was coming, someone was going to release it, and the only defense the group could imagine was to release their own first and then hide fifty populations underground for five hundred years, with only one meant to be brought out at the end. Helen never reaches the shelter. Donald's first shift ends with him understanding what he drew, and he is put back under.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The book moves to a later century and to Silo 18, generations before Juliette's time. Mission Jones is a seventeen-year-old porter who carries other people's loads up and down the great staircase, proud of his legs and short of prospects, estranged from his farmer father and uneasy about his own birth. His childhood friend Rodny has been taken as a shadow into IT and is no longer allowed to talk to him about anything that matters. Discontent is running through the silo: shortages, resentment of the levels above, and quiet talk of putting things right. In Silo 1, Donald is woken again for another shift. He is no longer a man who believes he is called Troy, he remembers what he helped build, and he starts using his access to look for the one thing nobody in the facility will discuss: what happened to the people who did not make it into the silos, and to his wife.",
+            "through": {
+              "chapter": 42
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Silo 18's unrest becomes an uprising. Mission is carried along by it, past the point where he can choose otherwise, and the old teacher known as the Crow, who has taught most of the silo's young people and remembers more than she should, sits at the center of what the rebels believe about themselves. In Silo 1, Donald finds that one of the fifty silos has gone dark, its cameras blinded from the inside, and that Thurman has had his daughter Anna woken to deal with it, the only woman awake in the facility. Donald and Anna work together in the sealed lower levels for a long stretch, and Anna's evident loyalty to him is a problem he cannot solve. The silo that went dark is not the only one behaving strangely, and Thurman's answer to the problem is the one the Order permits: a silo that cannot be corrected is shut down.",
+            "through": {
+              "chapter": 54
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The rising in Silo 18 is put down. The silo is returned to order, its people are left with a broken account of what happened, and its records are edited so that the next generation will inherit a past that never occurred. Silo 1 counts it as a success. Donald, meanwhile, finds what he has been looking for in the archives: Helen survived the day of the attack, lived out a whole life in one of the silos, and died of old age there, never knowing where he was. It is the fact that finishes him. Whatever he had left of the belief that the plan was survivable, or that his part in it was small, does not outlast it. His second shift ends and he is put back into deep freeze, with Anna as the only person who understands what he now intends.",
+            "through": {
+              "chapter": 66
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The third strand belongs to Silo 17. Jimmy Parker is a teenager whose father runs that silo's IT department and who is given the run of the server room, the only place where the truth of the silo can be heard. Silo 17 comes apart: the people learn too much, the fighting spreads, and the silo's own machinery is turned against it. Jimmy's father seals him inside the server room with food, water and a steel door, and does not come back. The silo empties out around him, level by level, until the water rises in the deep and the noise stops. He learns to survive alone, taking what he needs from the dead floors above, and stops using his own name. A cat becomes his only company. In Silo 1, Donald is woken a third time because the head of the facility's psychiatric oversight is dead, and he is put in that man's chair with access to everything.",
+            "through": {
+              "chapter": 80
+            }
+          },
+          {
+            "scope": "book",
+            "text": "With the files open in front of him, Donald confirms the whole of it: the collapse of the world was deliberate, the silos were selected and drugged rather than saved, the Order exists to keep them ignorant, and only one silo is ever to be brought back into the light. The rest are expected to fail, and are helped to fail when they become inconvenient. He has watched Silo 17 die and Silo 18 be rewritten, and he knows his wife lived and died believing him gone. Broken by it, Donald kills Anna and moves against Thurman, taking the senator's place at the head of Silo 1 and leaving the shifts below to assume the same man is still in charge. The end of the book leaves the fifty silos running exactly as designed, with the one difference that the person now holding the authority to end any of them has decided the plan itself is the thing that should end. Jimmy remains sealed in Silo 17, alone, waiting out the decades until Wool's Juliette Nichols comes down the ramp.",
+            "through": {
+              "chapter": 92
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "shift-omnibus-edition"
+      }
+    },
     "shogun": {
       "characters": {
         "characters": [

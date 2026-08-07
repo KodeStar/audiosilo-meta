@@ -675,6 +675,167 @@
         "work": "system-clash"
       }
     },
+    "system-collapse": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "SecUnit"
+            ],
+            "description": "Still on the contaminated colony world after the crisis with the alien remnant technology, the SecUnit is not working properly. Something happened during that operation that it will not describe, even in its own account, which it keeps redacting whenever it gets close. Its performance reliability drops at bad moments and it insists there is nothing wrong, while everyone around it can see that there is.",
+            "id": "murderbot",
+            "name": "Murderbot",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Perihelion"
+            ],
+            "description": "The research transport's bot pilot, restored, reunited with its crew and deeply involved in the operation on the colony. It is the one presence the SecUnit cannot avoid or deflect, and it has already noticed that its friend is malfunctioning.",
+            "id": "art",
+            "name": "ART",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of ART's crew, leading much of her people's part of the operation and negotiating with a corporation that regards the colonists as inventory.",
+            "id": "iris",
+            "name": "Iris",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The security construct whose governor module the SecUnit removed during the earlier crisis. Now free, working alongside the SecUnit and steadily assembling a personality of its own, it is more patient with humans and much newer to the business of choosing anything.",
+            "id": "three",
+            "name": "Three",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Leading the Preservation contingent, and responsible for making the case that the colonists have an alternative to signing corporate labor contracts.",
+            "id": "arada",
+            "name": "Dr. Arada",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of the Preservation contingent, married to Arada, and one of the people quickest to notice that the SecUnit is not functioning as it should.",
+            "id": "overse",
+            "name": "Dr. Overse",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of the Preservation contingent, reliably willing to talk to anybody, which makes him useful when the job becomes persuading frightened people that strangers can be trusted.",
+            "id": "ratthi",
+            "name": "Dr. Ratthi",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The researcher from the original survey contract, here to make a documentary about constructs and about the SecUnit in particular. Her interviews are the last thing the SecUnit wants to sit through, and her footage ends up mattering to the outcome.",
+            "id": "bharadwaj",
+            "name": "Dr. Bharadwaj",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Barish-Estranza officer still on the planet, working to get colonists' signatures on labor contracts before anyone can offer them anything better. Courteous, calculating, and prepared to make temporary arrangements with opponents when the alternative is losing everything.",
+            "id": "leonide",
+            "name": "Supervisor Leonide",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A senior member of ART's crew, involved in planning the mission and cautious about the risks it keeps requiring.",
+            "id": "seth",
+            "name": "Seth",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "system-collapse"
+      },
+      "recaps": {
+        "ending": "The second group of colonists makes an informed choice. Shown plainly what a Barish-Estranza labor contract does to the people who sign it, and what Preservation is actually offering instead, they refuse the combine and take the alternative. Barish-Estranza's position on the planet collapses and Supervisor Leonide leaves without the workforce the combine came for, and the colony's future moves toward resettlement on the colonists' own terms rather than salvage. The more important resolution is the SecUnit's. The gap it has been redacting out of its own account is finally closed: what it could not talk about was the earlier crisis, when the alien contamination took control of it, and the failures it has spent the whole book denying are the aftereffects of that rather than a hardware fault. It says so, out loud, to ART and to the humans who have been waiting for it to, and having named the thing it can begin dealing with it instead of hiding it. Three carries on learning how to be a person with choices, ART and its crew stay with the SecUnit, and the SecUnit remains what it has been since the beginning: free, difficult, and watching serials while it works. Nothing about the trauma is finished; it is simply no longer secret.",
+        "in_short": "Still on the abandoned colony world after the crisis with the alien remnant technology, the SecUnit is malfunctioning in a way it refuses to describe, redacting parts of its own account and losing reliability at bad moments. When the group discovers a second, isolated settlement of colonists that Barish-Estranza is racing to sign to labor contracts, a team - the SecUnit, Three, ART's crew, the Preservation contingent and Dr. Bharadwaj with her documentary - sets out to reach them first. The second settlement is wary, its old installation is dangerous and not free of contamination, and the combine is willing to misrepresent anything to get signatures. Under pressure the SecUnit freezes, and is finally forced to admit that its fault is not technical: it is the aftermath of having been taken over during the earlier crisis. Naming it is what lets it work again. In the end the colonists are persuaded not by force but by evidence, Bharadwaj's footage among it, of what indenture actually means. They refuse the corporate contracts and choose Preservation's offer, and Barish-Estranza's operation on the planet is finished.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: the SecUnit, free since it hacked its own governor module, followed its friend ART - a university research transport - through a wormhole to a colony a corporation abandoned generations ago. The colony was contaminated by alien remnant technology that could take over people, systems and machines and that produced the altered humans called Targets. ART's crew were recovered and the alien control system was destroyed, but the contamination took control of the SecUnit before ART forced it out, and the SecUnit has not been the same since. The corporate combine Barish-Estranza claims the colony and its inhabitants as salvage and is pressing the colonists to sign labor contracts that amount to indenture; Preservation, represented by Arada and the survivors of the old survey team, is offering them a real alternative. Also present is Three, a Barish-Estranza security construct whose governor module the SecUnit removed and who is now free.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The argument over the colony's future is still running, with Barish-Estranza pushing contracts and Preservation offering resettlement, when the group learns that the colonists they have been dealing with are not the only ones. A second population, cut off from the first for generations, is living at a separate installation elsewhere on the planet and knows nothing about what is happening or who is bidding for them. Barish-Estranza is already moving to reach them first. A team goes after them: the SecUnit, Three, members of ART's crew and the Preservation contingent, with Dr. Bharadwaj along to record a documentary. Meanwhile the SecUnit keeps hitting performance failures it cannot account for and will not report, and edits its own narration whenever it comes near the reason.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The team reaches the second settlement and finds a population that has survived in isolation under its own arrangements and is understandably unconvinced by strangers arriving with offers. Barish-Estranza's people are there too, presenting corporate contracts as a rescue and counting on the colonists not understanding what indenture means. The mission becomes a competition for trust: Arada and the others have to explain a choice to people with no context for either side, while the SecUnit handles security in an installation that is old, damaged, and not free of the same alien contamination that caused everything else. Its malfunction worsens under pressure - it freezes at a critical moment - and it can no longer hide from ART, or from its colleagues, that something is seriously wrong with it.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The situation deteriorates: the contamination in the old installation is a live danger, Barish-Estranza's local representatives are prepared to use pressure and misinformation to secure the contracts, and the colonists are divided between those who want off the planet on any terms and those who trust nobody. The SecUnit, Three and the crew deal with hostile encounters underground and with the standing risk that anything with a system can be compromised. Underneath all of it, the SecUnit finally has to face what has been wrong with it: the thing it keeps redacting is the memory of the earlier crisis, and its failures are not a technical fault but the aftereffects of trauma. Saying so, to people who take it seriously rather than treating it as a defect report, is what begins to make it possible to work again.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The colonists' decision is settled by information rather than by force. Using Dr. Bharadwaj's documentary footage, the group's own records, and the SecUnit's understanding of how a story persuades an audience, the team shows the second settlement exactly what a Barish-Estranza labor contract does to the people who sign it and what Preservation is genuinely offering. The colonists reject the combine's terms and choose to deal with Preservation instead. Barish-Estranza loses its claim on the second settlement and Supervisor Leonide's operation on the planet ends. The SecUnit closes the book with its malfunction identified, acknowledged and being dealt with rather than concealed: it names the trauma, tells ART and the others, and keeps working. Three continues learning what it wants, ART's crew stay, and the SecUnit stops pretending that what happened to it did not happen.",
+            "through": {
+              "chapter": 12
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "system-collapse"
+      }
+    },
     "system-interference": {
       "characters": {
         "characters": [

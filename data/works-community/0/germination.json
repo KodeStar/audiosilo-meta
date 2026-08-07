@@ -658,6 +658,241 @@
         "work": "ghostwater"
       }
     },
+    "gideon-the-ninth": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An eighteen-year-old indentured servant of the Ninth House, a cold, sunless world of tombs, ossuaries and reanimated skeleton labour at the far edge of the Empire. Delivered to the Ninth as an infant and raised there without family or standing, she has spent her whole life trying to leave and has failed at every attempt. She is trained with the sword and prefers a heavy two-handed blade to the rapier a proper cavalier is expected to carry, and she meets the House's misery with sarcasm and a stack of contraband magazines. Her ambition at the start of the book is simple: enlist with the Emperor's Cohort and never see the Ninth again.",
+            "id": "gideon-nav",
+            "name": "Gideon Nav",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Harrow",
+              "the Reverend Daughter"
+            ],
+            "description": "The Reverend Daughter and heir of the Ninth House, a teenage necromancer of extraordinary skill whose art is bone: she raises, shapes and wields skeletons the way lesser adepts manage a single construct. She effectively governs a House reduced to a handful of the elderly and its skeleton servants, and she has personally blocked every one of Gideon's escape attempts. The two have loathed each other since childhood. Harrowhark is disciplined, secretive and ruthless about the Ninth's survival, and she holds the House's founding duty, the sealed tomb it exists to guard, above everything else.",
+            "id": "harrowhark-nonagesimus",
+            "name": "Harrowhark Nonagesimus",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Ninth House's cavalier primary, a heavy, melancholy man far more devoted to the enormous epic poem he has been composing for years than to swordsmanship. When the Emperor's summons requires the House to send its heir and her cavalier to the First House, Ortus leaves the Ninth instead, departing with his mother on the shuttle that brought the letter and forcing Harrowhark to find a replacement at once.",
+            "id": "ortus-nigenad",
+            "name": "Ortus Nigenad",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "One of the small group of priests who keep Canaan House, the crumbling seat of the First House on the Emperor's abandoned home world. He greets the eight visiting delegations warmly, feeds them, and tells them almost nothing: there is no curriculum, no schedule and no explanation of how a candidate is meant to become a Lyctor. He asks only that they not force the doors that are locked and that they work things out for themselves.",
+            "id": "teacher",
+            "name": "Teacher",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Corona"
+            ],
+            "description": "One of the twin heirs of the wealthy Third House, tall, golden-haired and immediately the most striking person in any room. She is presented as the Third's necromancer princess and behaves like it, warm and confident in company, and she is openly devoted to her sister Ianthe.",
+            "id": "coronabeth-tridentarius",
+            "name": "Coronabeth Tridentarius",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Coronabeth's twin and the Third House's other heir, pale and washed out where her sister is vivid, with a dry, needling manner. She appears content to be overlooked beside Coronabeth, and she watches the other delegations, and the house itself, far more closely than she lets on.",
+            "id": "ianthe-tridentarius",
+            "name": "Ianthe Tridentarius",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Babs"
+            ],
+            "description": "Cavalier primary of the Third House, a vain and heavily drilled duellist who is generally acknowledged, not least by himself, to be the finest swordsman among the visiting cavaliers.",
+            "id": "naberius-tern",
+            "name": "Naberius Tern",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Heir of the Second House and a serving captain of the Emperor's Cohort, who treats the gathering as a posting rather than a mystery. She argues for rules, shared information and a chain of command, and is steadily frustrated by the other Houses' secrecy.",
+            "id": "judith-deuteros",
+            "name": "Judith Deuteros",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Necromancer heir of the Fifth House and a historian by training, whose speciality is the long dead: she reaches ghosts and old memory where other adepts work only on flesh and bone. Organized and genuinely friendly, she is the first to try to get the eight delegations to behave like colleagues rather than rivals.",
+            "id": "abigail-pent",
+            "name": "Abigail Pent",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Cavalier of the Fifth House and Abigail Pent's husband, an amiable middle-aged man who holds a civil post at home rather than a martial one. He makes a deliberate effort to be kind to the younger candidates, including the Ninth's silent cavalier.",
+            "id": "magnus-quinn",
+            "name": "Magnus Quinn",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Master Warden of the Sixth House, whose people live aboard a vast orbiting library. A necromancer of unusual range and an obsessive reasoner, he treats Canaan House as a problem to be solved and shares his findings far more freely than anyone expects. He is blunt, quick, and uninterested in the posturing between the Houses.",
+            "id": "palamedes-sextus",
+            "name": "Palamedes Sextus",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Cavalier of the Sixth House and Palamedes Sextus's lifelong partner in everything he does. Quiet and economical, she fights with paired short blades rather than the traditional rapier and offhand dagger, and she is one of the most dangerous people in the building.",
+            "id": "camilla-hect",
+            "name": "Camilla Hect",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The very young necromancer heir of the Eighth House, dressed in white and severe far beyond his years. The Eighth's art is siphoning, drawing power out of another living soul. He regards the Ninth House as heretical and says so openly, and he treats the competition as a moral trial in which he expects to be found worthy.",
+            "id": "silas-octakiseron",
+            "name": "Silas Octakiseron",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Cavalier of the Eighth House and Silas Octakiseron's uncle, a scarred Cohort veteran twice his necromancer's age. He speaks rarely and does what Silas requires of him.",
+            "id": "colum-asht",
+            "name": "Colum Asht",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Necromancer heir of the Fourth House, a teenager sent out young as the Fourth's tradition demands. He is out of his depth among the older candidates and works hard not to let it show.",
+            "id": "isaac-tettares",
+            "name": "Isaac Tettares",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Cavalier of the Fourth House and Isaac Tettares's inseparable companion, a teenager as young as her necromancer, eager to prove herself and quick to take offence on his behalf.",
+            "id": "jeannemary-chatur",
+            "name": "Jeannemary Chatur",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Necromancer heir of the Seventh House, who arrives seriously ill and spends most of her time in a wheeled chair, tiring easily and coughing blood. She is cheerful about it, curious about everyone, and entirely unbothered by the Ninth's forbidding reputation. She takes an immediate interest in Gideon and treats her as a person rather than as scenery.",
+            "id": "dulcinea-septimus",
+            "name": "Dulcinea Septimus",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "gideon-the-ninth"
+      },
+      "recaps": {
+        "ending": "Cytherea the First, an original Lyctor who has spent the book impersonating the Seventh House's dying heir, kills or disables almost everyone left at Canaan House: Palamedes Sextus destroys himself trying to stop her, Silas Octakiseron and Colum Asht die, and Camilla Hect is critically injured. Gideon and Harrowhark are the last standing, and Harrowhark cannot win without paying the price that makes a Lyctor, which she has refused from the beginning. Gideon takes the decision away from her and impales herself on an iron railing, giving Harrow her soul on her own terms. Harrowhark ascends, destroys Cytherea with Gideon's power, and survives. A Cohort ship reaches the First House and removes the survivors: Harrowhark and Ianthe Tridentarius, the first new Lyctors in ten thousand years; Coronabeth Tridentarius, revealed over the course of the book to have no necromancy at all; Judith Deuteros of the Second; and Camilla Hect. Ianthe is entirely at ease with what she did to her own cavalier. Harrowhark is not: she leaves the First House immortal, carrying Gideon's two-handed sword, refusing to accept the ascension she was given. What she intends to do about that is what the next book is built on.",
+        "in_short": "Gideon Nav is an indentured servant of the Ninth House, a dying world of tombs, and has spent eighteen years failing to escape it. When the Emperor summons every House's necromantic heir and cavalier to compete for immortality as a Lyctor, the Ninth's heir Harrowhark Nonagesimus, Gideon's lifelong enemy, is left without a cavalier and offers Gideon her freedom in exchange for the role. At Canaan House the eight delegations find no instructions, only a sealed facility of laboratories and a set of trials, and then the candidates begin to be murdered. Gideon, ordered to stay silent, befriends the Sixth House's Palamedes Sextus and the Seventh's dying Dulcinea Septimus, and is slowly forced into a real partnership with Harrow. The secret of Lyctorhood proves to be that a necromancer must consume their cavalier's soul; Ianthe Tridentarius kills her own cavalier to claim it first, and Dulcinea is revealed to be Cytherea the First, an ancient Lyctor who has been killing the candidates. Cornered, Gideon kills herself so that Harrowhark can take her soul and survive. Harrow ascends, destroys Cytherea, and is carried off the First House as a Lyctor of the Emperor, with Gideon inside her.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "The Ninth House is the last and least of the Empire's nine Houses: a cold world of tombs and ossuaries kept running by reanimated skeletons and a dwindling population of the elderly, founded to guard a sealed tomb no one is permitted to open. Gideon Nav, an eighteen-year-old indentured to the House since infancy, makes another attempt to escape and enlist with the Emperor's Cohort, and is stopped once again by Harrowhark Nonagesimus, the House's teenage heir and necromancer, who has foiled every previous attempt. A summons then arrives from the Emperor: each House is to send its necromantic heir and that heir's cavalier primary to the First House, where those who succeed will be raised to Lyctor, the Emperor's immortal saints. Harrowhark's designated cavalier, Ortus Nigenad, flees the House rather than go. With no one else to take the role, Harrow offers Gideon a bargain: serve as her cavalier and be released from the Ninth's service afterwards. Gideon accepts, and the two leave the Ninth together.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Gideon and Harrowhark reach Canaan House, the decaying seat of the First House on the Emperor's long-abandoned home world, and find the other delegations gathering: the Second's Cohort officers, the Third's twin princesses and their duellist, the Fourth's two teenagers, the Fifth's historian and her husband, the Sixth's librarian pair, and the Eighth's boy necromancer and his uncle. The priest who welcomes them, called Teacher, provides rooms and meals and no instructions whatsoever. There is no test, no schedule and no explanation of how a Lyctor is made. Harrowhark forbids Gideon to speak to anyone, puts her in Ninth face paint and dark glasses, and sets about searching the building alone. The candidates work out that much of Canaan House is locked, that keys to those doors exist somewhere, and that a way down into a sealed facility beneath the house can be found by anyone willing to look for it.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Beneath Canaan House lies a warren of laboratories left behind by the Emperor's original saints. Each is opened by one of a set of keys and sets a different challenge: a theorem to reconstruct, a construct to survive, a problem in necromantic theory to solve. The delegations begin working through the trials, some alone and some in pairs, and the Ninth falls behind because Harrowhark will not cooperate with anybody. Gideon, with nothing to do while her necromancer studies, drifts into the company of the other cavaliers, gives up the pretence of muteness, and strikes up a friendship with Dulcinea Septimus, the Seventh House's dying necromancer. Palamedes Sextus of the Sixth proves willing to trade information openly, while Silas Octakiseron of the Eighth treats the Ninth as an enemy on principle. One of the laboratories comes close to killing them, and Gideon and Harrowhark are forced, for the first time in their lives, to fight as an actual pair. Their bargain starts to look less like a transaction than an alliance, though neither of them will say so.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Abigail Pent and Magnus Quinn of the Fifth House are found dead in the facility beneath the house, killed in a way that rules out an accident. With no way off the planet and no authority to appeal to, the delegations turn on one another: Judith Deuteros of the Second tries to impose a chain of command and is ignored, Silas Octakiseron accuses the Ninth outright, and Palamedes Sextus and Camilla Hect begin investigating the deaths as a murder rather than a mishap. The trials underground continue regardless and the challenges get worse. Harrowhark is visibly deteriorating, sleepless and sick and convinced that something in Canaan House is after her in particular, and she and Gideon are pushed into a working honesty neither of them wanted, with Gideon standing guard over her and Harrow admitting for the first time that she needs her. The surviving candidates begin to suspect that they were not brought to the First House to be taught anything, and that the real point of the trials is something nobody has told them.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The killings continue. Isaac Tettares and Jeannemary Chatur of the Fourth House are murdered, and the Seventh's cavalier is found to have been dead far longer than anyone realised, his body kept walking by someone else's craft. The survivors conclude that one of the Emperor's original Lyctors is in the house with them. Tempers break into open violence: the Sixth and Third cavaliers duel, and Silas Octakiseron attacks Harrowhark directly to siphon her, with Gideon barely able to intervene. Cornered, Harrowhark finally tells Gideon the truth about the Ninth House: she was born a necromancer because her parents killed the House's two hundred children to make her, and she has carried it ever since. Gideon, an infant on the Ninth when it happened, stays with her anyway. Palamedes Sextus then works out what a Lyctor actually is. The process requires a necromancer to consume their own cavalier's soul, which becomes an inexhaustible power source; cavalier and necromancer are meant to end together, and the laboratories are a set of instructions for committing that murder. Ianthe Tridentarius acts on it first, killing Naberius Tern and ascending, and it emerges that it was always Ianthe, not Coronabeth, who carried the Third House's necromancy. Dulcinea Septimus is unmasked as Cytherea the First, an original Lyctor who took a dying woman's identity and has been killing the candidates one by one. In the fighting that follows, Palamedes destroys himself in an attempt to end her, Silas Octakiseron and Colum Asht are killed, and Camilla Hect is left gravely wounded. Cytherea is still standing.",
+            "through": {
+              "chapter": 36
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Gideon and Harrowhark are left to face Cytherea alone, and Harrow, who has refused the price from the beginning, cannot beat her without it. Gideon settles the argument herself: she throws herself onto the iron spikes of a railing so that the death is her own choice and not Harrow's, and Harrowhark absorbs her soul and ascends. As a Lyctor, powered by Gideon, Harrow destroys Cytherea. A Cohort ship arrives at the First House shortly afterwards and takes off the survivors: Harrowhark, Ianthe Tridentarius, Coronabeth Tridentarius, Judith Deuteros and Camilla Hect. Harrowhark leaves Canaan House alive and immortal, carrying Gideon's two-handed sword, and unable to look at what she has become.",
+            "through": {
+              "chapter": 37
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "gideon-the-ninth"
+      }
+    },
     "god-emperor-of-dune": {
       "characters": {
         "characters": [

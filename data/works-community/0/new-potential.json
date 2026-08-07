@@ -895,6 +895,220 @@
         "work": "night-watch"
       }
     },
+    "nona-the-ninth": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A woman in an adult body who has been awake for six months and remembers nothing before that. She learns quickly, but not the way an adult does: she reads badly, takes almost everything literally, and is frightened of very little. She is happiest with dogs, with her friends from the school where she works as a teaching aide, and with the people she lives with. She knows the body she is in is borrowed and that the people looking after her would rather somebody else were inside it, and she would prefer not to think about that. She considers her life close to perfect.",
+            "id": "nona",
+            "name": "Nona",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Cavalier of the Sixth House, who survived Canaan House and has spent the time since keeping Nona alive and hidden. Practical, watchful and almost entirely without small talk, she does the work of holding the household together and does not discuss what she wants out of it.",
+            "id": "camilla-hect",
+            "name": "Camilla Hect",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A cavalier of the Emperor's original generation, ten thousand years old, occupying the body of the Lyctor she once served. She passes as Nona's father, holds down a job in the city, and gives the household its only adult who has seen the Empire from the inside. She is blunt about what she is and about what the arrangement is costing everyone in it.",
+            "id": "pyrrha-dve",
+            "name": "Pyrrha Dve",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An old dog in the neighbourhood whom Nona loves without qualification and walks at every opportunity. Nona's attachment to dogs generally, and to this one in particular, is the most consistent thing about her.",
+            "id": "noodle",
+            "name": "Noodle",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The leader of the group of teenagers Nona attaches herself to at the school where she works. Hard, guarded and respected by the others without having to ask for it, she is the person whose good opinion Nona most wants, and she has her own reasons for keeping the group together in an occupied city.",
+            "id": "hot-sauce",
+            "name": "Hot Sauce",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Sixth House's Master Warden, who died at Canaan House and did not entirely stop. What is left of him is carried in Camilla Hect's body and can speak and act through it, an arrangement that is neither stable nor sustainable for either of them. He is still the fastest reasoner in any room he is nominally present in.",
+            "id": "palamedes-sextus",
+            "name": "Palamedes Sextus",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the Emperor",
+              "the Necrolord Prime",
+              "God"
+            ],
+            "description": "The man who speaks in Nona's recurring dream, telling the story of the world he came from and how it ended: an ordinary life, an unexpected talent for raising the dead, and a planet already past saving. He addresses the dream's listener directly and familiarly, as somebody he has known a very long time.",
+            "id": "john",
+            "name": "John",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior officer of Blood of Eden, the armed movement that holds the city and exists to destroy the Nine Houses and the Emperor. She takes an interest in Nona as both an asset and a problem, and negotiates over her accordingly.",
+            "id": "we-suffer-and-we-suffer",
+            "name": "We Suffer And We Suffer",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young Blood of Eden soldier: fast, aggressive and fiercely loyal to the people she is assigned to protect. She has no patience for the Nine Houses or for anybody who came out of them.",
+            "id": "pash",
+            "name": "Pash",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Coronabeth Tridentarius"
+            ],
+            "description": "A defector from the Third House living among Blood of Eden under a shortened name, golden and charming and useful to them precisely because of where she came from. She is kind to Nona, and her loyalties are not simple.",
+            "id": "crown",
+            "name": "Crown",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Second House officer who survived Canaan House, now held by Blood of Eden as part prisoner, part source and part collaborator. She is the movement's most detailed authority on how the Nine Houses actually work, and her standing among them is precarious.",
+            "id": "judith-deuteros",
+            "name": "Judith Deuteros",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the Resurrection Beast"
+            ],
+            "description": "A Resurrection Beast, the accumulated ghost of a world that died ten thousand years ago, present in the sky above the planet where Nona lives. It is the largest single fact of the war being fought over the city, and the people underneath it have learned to go about their lives with it in view.",
+            "id": "varun-the-eternal",
+            "name": "Varun the Eternal",
+            "reveal": {
+              "chapter": 16
+            }
+          },
+          {
+            "aliases": [
+              "Ianthe Tridentarius"
+            ],
+            "description": "The Third House Lyctor, in the Emperor's service, who arrives with the forces of the Nine Houses when they finally come for Harrowhark Nonagesimus's body.",
+            "id": "ianthe-the-first",
+            "name": "Ianthe the First",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Gideon Nav"
+            ],
+            "description": "Gideon Nav, returned in her own body, resurrected and renamed by the Emperor, whose daughter she turns out to be. She arrives with the House forces at the end of the book, on his side.",
+            "id": "kiriona-gaia",
+            "name": "Kiriona Gaia",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "nona-the-ninth"
+      },
+      "recaps": {
+        "ending": "The Nine Houses come for Harrowhark Nonagesimus's body and take the city with it. Ianthe the First arrives, and so does Gideon Nav, resurrected in her own body as the Emperor's daughter and renamed Kiriona Gaia, and finally the Emperor himself. Varun the Eternal, the Resurrection Beast that has hung over the planet for the whole book, comes down. Camilla Hect and Palamedes Sextus, who can no longer survive sharing a single body, complete instead the true union that Lyctorhood was always a corruption of: what wakes is neither of them but one new person, who takes the name Paul. Nona's identity is finally established. She is Alecto, the Emperor's original cavalier, made out of the soul of the world he killed in order to raise the Nine Houses, and the sleeper sealed in the Ninth House's tomb, the body Harrowhark was raised to guard and grew up loving. The dream that has run through the book was the Emperor telling her their shared history. Nona's six months are over: the person she has been ends, and Alecto wakes in her place. Harrowhark's soul is still adrift, Gideon is on the Emperor's side of the line, Blood of Eden and the Nine Houses are now openly at war, and the crime the Empire was founded on is no longer a secret to the people fighting it.",
+        "in_short": "Six months after the destruction of the Emperor's station, a woman called Nona wakes each day in a besieged city with no memory of anything before her first, entirely happy six months of life. Her body is Harrowhark Nonagesimus's, and the household hiding her, Camilla Hect, Pyrrha Dve and Palamedes Sextus, who survives inside Camilla, do not know whose soul is in it. Nona works at a school, loves dogs and is adored by a gang of local teenagers, while Blood of Eden negotiates over her, the Nine Houses demand her back, and a Resurrection Beast hangs over the planet. Every night she dreams a man telling her how the old world died and the Empire was made. When the Houses finally arrive, with Ianthe, with the Emperor, and with Gideon Nav resurrected as his daughter Kiriona Gaia, the answers land at once: Camilla and Palamedes merge into a single new person called Paul, and Nona is revealed as Alecto, the Emperor's first cavalier, made from the soul of the world he destroyed and sealed for ten thousand years in the Ninth House's tomb. Nona's short life ends and Alecto wakes.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: the Emperor of the Nine Houses summoned each House's necromantic heir and cavalier to compete for elevation to Lyctor, his immortal saints. Harrowhark Nonagesimus of the Ninth House went with Gideon Nav, the indentured servant she had grown up tormenting, standing in as her cavalier. The competition turned out to require a necromancer to consume their own cavalier's soul, and an ancient Lyctor was murdering the candidates; Gideon killed herself so that Harrowhark would survive it, and Harrowhark ascended carrying her.\n\nIn the second book Harrowhark was taken to the Emperor's station to be trained against the Resurrection Beasts, the ghosts of worlds destroyed ten thousand years ago. She could not use any Lyctoral power, because before leaving she had had Ianthe Tridentarius cut Gideon out of her memory so that she could never consume her: Gideon's soul had been intact inside her the whole time. When that arrangement collapsed, Gideon woke in Harrowhark's body and Harrowhark's soul was left adrift in the River, the medium the dead pass through. Two of the Emperor's original Lyctors, Mercymorn and Augustine, made a long-planned attempt to kill him, revealing first that the Resurrection Beasts are the ghosts of worlds he himself destroyed. The attempt failed and the station was destroyed; Gideon escaped with Ianthe. The body of another ancient Lyctor proved to be shared with his own dead cavalier, Pyrrha Dve.\n\nA short interlude published between the two books, told through the reports of Judith Deuteros, the Second House officer who survived the First House, establishes Blood of Eden: an old, well-organised movement outside the Nine Houses dedicated to destroying the Empire and its Emperor. Judith is their prisoner, and Coronabeth Tridentarius is among them.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Six months later, in a city on a planet held by Blood of Eden and besieged from orbit by the Nine Houses' Cohort, a woman called Nona wakes up every morning happy. She has existed for six months, remembers nothing before that, and has a child's grasp of the world despite being in an adult body. She lives with Camilla Hect, Pyrrha Dve, and what remains of Palamedes Sextus, who shares Camilla's body; she works as an aide at a school, adores dogs, and is devoted to the teenagers she has befriended there. The body she lives in is Harrowhark Nonagesimus's, and the household's entire purpose is to keep it, and whoever is inside it, out of the hands of both Blood of Eden and the Nine Houses, while working out whose soul it actually holds and how Harrowhark might be recovered. Nona is not stable and is deteriorating, which everybody except Nona is counting down. A Resurrection Beast hangs in the sky over the city, and every night Nona dreams the same dream, in which a man tells her at length about a world that ended a very long time ago.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Blood of Eden's leadership takes a direct interest in Nona. She is interviewed and tested by the movement's officers, We Suffer And We Suffer among them, who understand that the body is a House Lyctor's and want to know what use can be made of it. Nona is guarded by Pash and befriended by Crown, a Third House defector living among them, and she is taken to see Judith Deuteros, the Cohort officer Blood of Eden has held since before the siege. The household's position is that they are cooperating; in practice Camilla, Palamedes and Pyrrha are buying time, because Nona's body is failing and the Nine Houses are known to be coming for it. Nona herself wants a birthday party and a dog, and is far more interested in her friends at the school than in any of it. The dream continues: the man in it describes the last years of the old world, the people who were preparing to leave it, and his discovery that he could raise and command the dead.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Pressure on the household increases from both directions. Blood of Eden splits over what to do with Nona, whether to hand her over, use her, or destroy the body before the Houses can have it, and the movement's internal politics turn on people with their own histories with the Empire. The Nine Houses open negotiations for the return of Harrowhark Nonagesimus's body, which means a price and a deadline. Varun the Eternal, the Resurrection Beast overhead, becomes an active danger rather than a fixture of the skyline. Camilla and Palamedes reach the limit of what their arrangement can sustain: sharing one body is killing them both, and every remaining option is bad. Nona's own condition worsens, and the household grows increasingly certain that whoever is inside the body, it is not Harrowhark. In the dream, the man's account reaches the end of the old world: what he did to try to stop it, what it cost, and the point at which stopping it was no longer what he was doing.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Events move toward a handover. Blood of Eden, the city's population and the household are all preparing for the Houses' arrival, and Nona is being made ready as a bargaining piece she does not fully understand. Her friends from the school are drawn in as well, because the children of an occupied city are not bystanders and Hot Sauce's group has been keeping secrets of its own. Nona's decline accelerates, and the question of what she is stops being academic: the evidence points away from Harrowhark and away from Gideon both. In the dream, the man's account reaches the Resurrection itself, the death of the old system and the raising of the Nine Houses out of what was left of it.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The siege breaks. The Nine Houses arrive in force, and with them Ianthe the First and Gideon Nav, resurrected in her own body, in the Emperor's service and going by the name he gave her, Kiriona Gaia. The Emperor comes himself. Camilla Hect and Palamedes Sextus, out of time and unable to continue divided, complete the union the Sixth House's art was always for, and what wakes is neither of them but a single new person who takes the name Paul. Varun the Eternal comes down on the city. And Nona is finally identified: she is Alecto, the Emperor's first cavalier, made from the soul of the world he destroyed in order to build his Empire, the sleeper in the Ninth House's sealed tomb whom Harrowhark spent her childhood guarding and loving. The dream running through the book was the Emperor's own account of it, told to her. Nona's six months end. The person she has been does not survive the answer, and Alecto wakes in her place, with Harrowhark's soul still missing and the war between the Nine Houses and Blood of Eden now entirely open.",
+            "through": {
+              "chapter": 32
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "nona-the-ninth"
+      }
+    },
     "not-till-we-are-lost": {
       "characters": {
         "characters": [
@@ -2326,6 +2540,188 @@
           }
         ],
         "work": "one-shot"
+      }
+    },
+    "onyx-storm": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A third-year rider at what is left of Basgiath, bonded to two dragons, wielding lightning, and one of the few people who knows exactly what the war against the venin actually is. She comes into this book grieving her mother, carrying the authority that comes from having been right when the leadership was lying, and holding a secret heavier than any she has kept before: what Xaden became to save her. Physically she is still the most breakable rider in any room, and she still compensates with knowledge, preparation and a refusal to be managed by the people who love her.",
+            "id": "violet-sorrengail",
+            "name": "Violet Sorrengail",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The heir of Tyrrendor and the leader of the resistance, who channelled power from the earth to keep Violet alive during the battle for Basgiath and became venin doing it. He is fighting to stay himself, concealing what he is from almost everyone, and carrying both a hidden second signet and a hunger that gets harder to refuse the longer the war lasts. His relationship with Violet is now bound up in that concealment, and their dragons' mating bond still keeps them within reach of one another.",
+            "id": "xaden-riorson",
+            "name": "Xaden Riorson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Violet's black morningstartail, among the oldest and most powerful dragons alive, blunt to the point of rudeness and entirely without patience for human hesitation. His mating bond with Sgaeyl and his own long memory of the Vale both shape what Violet is able to do.",
+            "id": "tairn",
+            "name": "Tairn",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Violet's golden dragon, who came out of a long sleep during the battle for Basgiath as something no rider had seen before. She is unlike the other dragons of the Vale in ways the Vale has never explained, and the question of what she actually is, and where the rest of her kind went, is one Violet can no longer put aside.",
+            "id": "andarna",
+            "name": "Andarna",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Xaden's blue daggertail, fast and sharp-tongued, mated to Tairn. She is closer than anyone to what her rider has become and is not inclined to discuss it.",
+            "id": "sgaeyl",
+            "name": "Sgaeyl",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Violet's older brother, a mender and one of the leaders of the resistance based in Aretia, who spent six years officially dead. Protective and habitually controlling, he is now one of the last of Violet's family and one of the people whose caution she most often has to argue past.",
+            "id": "brennan-sorrengail",
+            "name": "Brennan Sorrengail",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Violet's older sister, a serving rider who spent her career defending a border against an enemy she was never told the truth about. She comes into this book having lost her mother and having chosen the resistance over the command structure she was raised in.",
+            "id": "mira-sorrengail",
+            "name": "Mira Sorrengail",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Violet's closest friend and a rider who has grown into command, steady where Violet is impulsive and one of the few people who will tell her plainly when she is wrong. She now knows everything Violet spent the previous year hiding from her.",
+            "id": "rhiannon-matthias",
+            "name": "Rhiannon Matthias",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A rider in Violet's circle who has kept his sense of humour through two years in which most of his classmates died. Beneath it he is dependable in a fight and quietly aware of how much everyone around him is carrying.",
+            "id": "ridoc-gamlyn",
+            "name": "Ridoc Gamlyn",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A rider in Violet's circle, older and more methodical than the rest, who has kept flying and fighting through injuries that would have ended anyone else's career.",
+            "id": "sawyer-henrick",
+            "name": "Sawyer Henrick",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Violet's oldest friend, whose ability to read recent memories through touch spent a year making him a danger to her. He ends the previous book on the other side of the argument he started on, having seen for himself what the command he trusted was concealing.",
+            "id": "dain-aetos",
+            "name": "Dain Aetos",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A marked rider from Tyrrendor, silver-haired and abrasive, wholly committed to the resistance and long past pretending to be a model cadet. She and Violet have become allies through repeated proof rather than affection.",
+            "id": "imogen-cardulo",
+            "name": "Imogen Cardulo",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Xaden's closest friend and one of the resistance's most capable fighters, positioned close enough to him to notice things about him that Xaden would rather nobody noticed.",
+            "id": "garrick-tavis",
+            "name": "Garrick Tavis",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Xaden's cousin, a rider and a member of the resistance's inner circle from the beginning, with his own standing among the marked riders of Tyrrendor.",
+            "id": "bodhi-durran",
+            "name": "Bodhi Durran",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Liam Mairi's younger sister, a rider now rather than the hostile first-year who arrived blaming Violet for her brother's death. She came through the battle for Basgiath and has stopped refusing the people trying to keep her alive.",
+            "id": "sloane-mairi",
+            "name": "Sloane Mairi",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Cat"
+            ],
+            "description": "A gryphon flier from Poromiel, from a prominent family among the drifts, brought into Basgiath by the alliance and kept there by the war. Proud and combative, with history with Xaden that predates Violet, she has become a working ally rather than a guest under guard.",
+            "id": "catriona-cordella",
+            "name": "Catriona Cordella",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "onyx-storm"
+      },
+      "recaps": {
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Violet Sorrengail was raised to be a scribe and ordered into Basgiath War College's Riders Quadrant by her mother, the general commanding it. Physically fragile and expected to die in her first weeks, she survived on preparation rather than strength and bonded two dragons at once, the black morningstartail Tairn and the golden feathertail Andarna, and her signet turned out to be lightning. Tairn's mating bond with Sgaeyl tied her to Xaden Riorson, son of the executed leader of Tyrrendor's separatist rebellion, and their hostility became an alliance and then a relationship. At the border town of Resson she learned that Navarre's leadership has spent a century lying: the venin, dark wielders who drain the life out of the land, are real, the wards protecting the kingdom are failing, villages have been abandoned in secret, and Xaden's marked riders have been arming Poromiel against them from the rebel city of Aretia, where Violet's brother Brennan turned out to be alive. Her second year was spent hiding all of that inside a school run by an interrogator, raising new wards for Tyrrendor, arming it with weapons that can kill venin, and building a real alliance with Poromiel's gryphon fliers. It ended with the wards at Basgiath failing and the venin attacking the college outright: the school was devastated, General Lilith Sorrengail died holding the line, Andarna woke from a long sleep as something no rider had seen before, and Xaden saved Violet by drawing power from the earth the way the venin do, becoming venin himself and concealing it.",
+            "through": {
+              "chapter": 0
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "onyx-storm"
       }
     },
     "outlander": {
