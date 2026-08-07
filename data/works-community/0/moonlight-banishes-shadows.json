@@ -402,6 +402,162 @@
         "work": "moonlight-banishes-shadows"
       }
     },
+    "moonraker": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A British Secret Service officer beginning a week of routine headquarters duty in London. He is an accomplished card player and expects his next dangerous overseas assignment to arrive only after the Moonraker missile test.",
+            "id": "james-bond",
+            "name": "James Bond",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The head of the British Secret Service and a senior member of Blades. Disturbed by another member's apparent cheating, he asks Bond to observe a card game before assigning him to a more consequential inquiry.",
+            "id": "m",
+            "name": "M",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Service's chief of staff and one of Bond's closest professional colleagues. He briefs Bond on office business and helps define the initially ordinary shape of Bond's week.",
+            "id": "bill-tanner",
+            "name": "Bill Tanner",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sir Hugo Drax"
+            ],
+            "description": "A wealthy industrialist acclaimed for funding and directing the Moonraker, a missile presented as an independent British deterrent. Blunt, energetic, and intensely competitive, he has become a national hero despite gaps in the story of his wartime past.",
+            "id": "hugo-drax",
+            "name": "Hugo Drax",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The chairman of Blades, the exclusive London club where M and Bond confront the problem of a member suspected of cheating at cards.",
+            "id": "lord-basildon",
+            "name": "Lord Basildon",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The senior police official supervising a covert investigation inside the Moonraker establishment. He cooperates with the Secret Service after a security officer at the project is killed.",
+            "id": "ronnie-vallance",
+            "name": "Ronnie Vallance",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Drax's secretary at the Moonraker site. Competent and self-contained, she is also working covertly for the police and monitoring unexplained activity among the project's predominantly German staff.",
+            "id": "gala-brand",
+            "name": "Gala Brand",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Drax's personnel chief at the missile site. Watchful and intrusive, he searches Gala Brand's room and treats Bond's arrival with suspicion.",
+            "id": "willy-krebs",
+            "name": "Willy Krebs",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A German technical specialist serving as one of Drax's senior assistants on the Moonraker project. He shares the closed loyalty of the inner team around Drax.",
+            "id": "dr-walter",
+            "name": "Dr Walter",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "moonraker"
+      },
+      "recaps": {
+        "ending": "Drax reveals that the Moonraker carries a nuclear warhead and is aimed at London, not the North Sea. His public British identity is a construction: he is a German former soldier seeking revenge, aided by Soviet matériel and a loyal German team. Bond and Gala escape confinement beneath the rocket's exhaust and alter its guidance so that it will fall into the sea. Drax and his men flee aboard a Soviet submarine, but the redirected missile detonates where the submarine is passing and destroys them. Britain receives a cover story that preserves confidence in the defence programme. Bond expects that his ordeal with Gala may lead to a relationship, but she tells him that she is already engaged to another police officer. They part after completing the mission, and Bond returns alone to his service life.",
+        "in_short": "M asks Bond to determine how national hero Sir Hugo Drax is cheating at cards, and Bond defeats him at his own method. When a security officer is murdered at Drax's Moonraker missile site, Bond joins the investigation beside undercover policewoman Gala Brand. Suspicious German staff, falsified survey information, and Drax's violence reveal that the project is not what it appears. Gala discovers that the missile is aimed at London and is captured; Bond is also seized after surviving an attempted killing. Drax admits he is a German revanchist and has armed the rocket with a Soviet nuclear warhead. Bond and Gala escape from beneath the launch mechanism, redirect the missile into the North Sea, and survive. The explosion destroys the submarine carrying Drax and his followers. Gala then tells Bond she is engaged, leaving him to return alone to ordinary service.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Bond expects a quiet week of headquarters duty until M asks for confidential help at Blades. Sir Hugo Drax, the industrialist financing Britain's Moonraker missile, has been winning heavily at bridge, and M believes he is cheating. Drax is publicly celebrated as a wartime survivor and self-made patriot, so a scandal would damage a project of national importance. Bond watches Drax and identifies his method. He then joins M at the table, provokes Drax into very high stakes, and uses the same advantage against him. Drax loses a substantial sum but leaves without public exposure, regarding Bond as a personal enemy rather than knowing his profession.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A security officer at the Moonraker site is shot before he can report serious concerns. Bond is assigned to replace him for the final days before the test launch and coordinates with police official Ronnie Vallance. At the coastal compound he meets Drax's secretary, Gala Brand, who is secretly gathering evidence for the police, and encounters Drax's insular German technical staff, including Krebs and Walter. Bond finds the atmosphere disciplined but hostile. Krebs searches rooms, Drax discourages questions, and apparently minor discrepancies around the site suggest that the murder concerns more than ordinary industrial security.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bond and Gala compare suspicions while trying not to expose her covert role. Evidence connects the murdered officer's concerns to unusual activity near the coast and to the project's tightly controlled inner staff. Bond investigates the cliffs and survey points around the launch area. An engineered landslide nearly kills him, confirming that someone at the site is prepared to eliminate inquiry rather than merely conceal an administrative offence. He survives and continues working toward the launch deadline, increasingly convinced that Drax's public status and the Moonraker's stated test plan conceal a hostile purpose.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Gala obtains access to Drax's private information and realises that the guidance figures do not match the announced launch into the North Sea. Her attempt to preserve the evidence is discovered, and Drax's men capture and interrogate her. Bond follows the trail but is also taken. The investigators are now prisoners inside the project on the eve of the launch, while public officials outside still expect a triumphant test. Drax controls the compound, its communications, and a technical team personally loyal to him, leaving Bond and Gala little chance to warn London before the firing sequence begins.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Drax tells Bond and Gala that his British identity is false. A former German soldier, he has built his reputation and the Moonraker project as instruments of revenge. The missile is fitted with a Soviet-supplied nuclear warhead and targeted at London, where its destruction will be presented as a disastrous test accident. Bond and Gala are confined where the launch exhaust should kill them and erase evidence. They work free under extreme time pressure and reach the rocket's controls, but the launch sequence is already progressing and Drax's men are preparing to escape by sea.",
+            "through": {
+              "chapter": 26
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bond and Gala alter the Moonraker's guidance so that it returns to the North Sea instead of striking London, then escape the launch area before the blast. Drax and his German staff withdraw aboard a Soviet submarine. The redirected nuclear missile falls near the submarine and destroys it, killing Drax and his followers while London survives. Authorities issue a cover story for the explosion and the loss of the project. Bond anticipates that his closeness with Gala may continue, but she reveals that she is engaged to a fellow police officer and is due to marry him. Bond accepts the separation and returns to the solitary routine of his work.",
+            "through": {
+              "chapter": 30
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "moonraker"
+      }
+    },
     "morning-star": {
       "characters": {
         "characters": [
@@ -1358,6 +1514,181 @@
           }
         ],
         "work": "moving-pictures"
+      }
+    },
+    "murder-at-the-vicarage": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The vicar of St Mary Mead and the story's narrator. Thoughtful, tolerant, and more observant than his mild manner suggests, he is drawn into the inquiry when Colonel Protheroe is found dead in his study.",
+            "id": "leonard-clement",
+            "name": "Leonard Clement",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Leonard's much younger wife. Her candour, unconventional habits, and sharp social instincts regularly unsettle the more traditional residents of St Mary Mead.",
+            "id": "griselda-clement",
+            "name": "Griselda Clement",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Miss Marple"
+            ],
+            "description": "An elderly St Mary Mead resident with a gift for noticing small inconsistencies and comparing village behaviour with familiar patterns of human weakness.",
+            "id": "jane-marple",
+            "name": "Miss Jane Marple",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Colonel Protheroe"
+            ],
+            "description": "A wealthy, domineering magistrate widely disliked in the village. He has come into conflict with his family, the vicar, and several local residents before he is found shot at the vicarage.",
+            "id": "lucius-protheroe",
+            "name": "Colonel Lucius Protheroe",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Colonel Protheroe's second wife, considerably younger than her husband. She is unhappy in her marriage and has attracted village gossip through her friendship with Lawrence Redding.",
+            "id": "anne-protheroe",
+            "name": "Anne Protheroe",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Colonel Protheroe's daughter from his first marriage. Defiant and difficult to read, she has a strained relationship with both her father and her stepmother.",
+            "id": "lettice-protheroe",
+            "name": "Lettice Protheroe",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young artist working in St Mary Mead. His closeness to Anne Protheroe is already a source of scandal when the murder brings his movements under official scrutiny.",
+            "id": "lawrence-redding",
+            "name": "Lawrence Redding",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The forceful police inspector assigned to the case. Energetic and confident in conventional methods, he has little patience for village gossip or Miss Marple's indirect observations.",
+            "id": "inspector-slack",
+            "name": "Inspector Slack",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The county chief constable and an old acquaintance of the Clements. He supervises the investigation and treats Leonard as a useful witness rather than an immediate outsider.",
+            "id": "colonel-melchett",
+            "name": "Colonel Melchett",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Hawes"
+            ],
+            "description": "Leonard's nervous curate. His troubled manner and private difficulties make his behaviour an additional puzzle during the investigation.",
+            "id": "reverend-hawes",
+            "name": "Reverend Hawes",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The village doctor and a friend of Leonard. Practical and discreet, he examines the body and helps the investigators assess medical questions surrounding the crime.",
+            "id": "doctor-haydock",
+            "name": "Dr Haydock",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A poised, seriously ill woman who has recently taken a house in St Mary Mead. Her guarded interest in the Protheroe family makes her presence significant to the inquiry.",
+            "id": "mrs-lestrange",
+            "name": "Mrs Lestrange",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "murder-at-the-vicarage"
+      },
+      "recaps": {
+        "ending": "Miss Marple identifies Anne Protheroe and Lawrence Redding as the conspirators. Their separate confessions were calculated to make both appear innocent once the physical evidence contradicted each account, while manipulated timing and misleading sounds confused the witnesses. Lawrence also attempts to divert suspicion toward Hawes. The accumulated inconsistencies allow Miss Marple to reconstruct the plan, and the pair are arrested before they can leave together. Mrs Lestrange's secrecy proves unrelated to the murder: she is Lettice's dying mother, and mother and daughter are reconciled. Hawes survives the attempt to make him look guilty. With the case resolved, Leonard and Griselda return to village life and learn that they are expecting a child.",
+        "in_short": "The disliked Colonel Protheroe is found shot in the vicar's study in St Mary Mead. His wife Anne and the artist Lawrence Redding each make suspicious confessions, but neither account fits the timing and physical evidence. Inspector Slack pursues a succession of villagers with motives, while the vicar Leonard Clement and Miss Marple notice contradictions involving a note, misleading sounds, and the movements around the vicarage. Miss Marple concludes that Anne and Lawrence acted together: the competing confessions and false chronology were parts of a plan designed to clear them both. They are arrested. Other mysteries prove separate from the killing, including Mrs Lestrange's concealed connection to Lettice Protheroe, and the Clements end the case looking forward to a child.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In St Mary Mead, the severe and unpopular Colonel Protheroe quarrels with the vicar, Leonard Clement, over a financial irregularity in the church accounts. Leonard later returns to the vicarage and finds Protheroe shot dead in his study. The dead man had arranged to meet him there, but Leonard had been called away by a message that proves false. A note on the desk and conflicting statements about when a shot was heard make the time of death uncertain. Anne Protheroe and the artist Lawrence Redding, whose attachment has already caused gossip, both come under suspicion as the police begin tracing everyone who had reason to resent the colonel.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The inquiry widens beyond the Protheroe household. Lawrence and Anne each offer an account that appears incriminating, yet the medical and physical evidence prevents the police from accepting either story at face value. Inspector Slack concentrates on concrete clues, while Miss Marple compares the witnesses' conduct with patterns she has seen elsewhere in village life. Leonard learns that several people were moving near the vicarage and that apparently precise evidence about the hour of the shooting is unreliable. Lettice Protheroe behaves evasively, and the newly arrived Mrs Lestrange shows a guarded interest in the family, creating a second secret around the victim's home.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The supposed chronology continues to break down. Testimony about the gunshot, the note beside the body, and objects moved around the study suggests deliberate staging rather than a sudden quarrel. Attention also falls on Leonard's curate, Hawes, whose nervous condition and connection to the church accounts make him vulnerable to suspicion. Mrs Lestrange's secrecy is tied to Lettice rather than to a clear motive for the shooting. Miss Marple becomes convinced that the most conspicuous evidence has been arranged to send the police along competing paths, and Leonard helps her compare what each witness could actually have seen or heard with what they merely assumed.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Miss Marple shows that Anne Protheroe and Lawrence Redding planned the murder together. Their apparently impulsive, separate confessions were meant to be disproved, leaving each with the appearance of having been falsely suspected, while the false message, altered timing, and misleading sounds obscured the real sequence. Lawrence also tries to shift the case toward Hawes, who is found dangerously ill but survives. Once Miss Marple brings the contradictions into a single reconstruction, Anne and Lawrence are prevented from escaping and arrested. Mrs Lestrange is revealed not as the killer but as Lettice's dying mother, and they are reconciled. Leonard and Griselda resume their life at the vicarage with the news that Griselda is pregnant.",
+            "through": {
+              "chapter": 12
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "murder-at-the-vicarage"
       }
     },
     "murder-on-the-orient-express": {
