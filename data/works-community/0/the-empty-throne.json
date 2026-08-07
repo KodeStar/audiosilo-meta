@@ -1599,6 +1599,128 @@
         "work": "the-faceless-ones"
       }
     },
+    "the-fall-albert-camus": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A French expatriate encountered in an Amsterdam sailors' bar. He is polished, sociable, and eager to guide a visiting compatriot through the city. Once a successful Paris defense lawyer, he now calls himself a judge-penitent, though the meaning of that title emerges only as his monologue unfolds.",
+            "id": "jean-baptiste-clamence",
+            "name": "Jean-Baptiste Clamence",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The unnamed French visitor to whom Clamence speaks. He says almost nothing directly; his background and reactions are conveyed through Clamence's replies and guesses, making him both an audience for the confession and a person Clamence hopes to understand.",
+            "id": "the-interlocutor",
+            "name": "The Interlocutor",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Gorilla"
+            ],
+            "description": "The imposing proprietor of Mexico City, the Amsterdam bar where Clamence meets the visitor. He speaks only Dutch, watches his customers closely, and relies on Clamence to help French patrons order.",
+            "id": "the-bartender",
+            "name": "The Bartender",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An unidentified woman whom Clamence notices leaning over a Paris bridge at night. After he passes her, he hears a body strike the water and cries behind him, but he neither turns back nor summons help. The remembered failure becomes central to his judgment of himself.",
+            "id": "the-woman-on-the-bridge",
+            "name": "The Woman on the Bridge",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A fellow prisoner in a wartime camp who is dying of thirst. Clamence recalls taking the man's ration of water after persuading himself that his own survival mattered more, an episode he offers as evidence against the virtuous image he once maintained.",
+            "id": "the-dying-prisoner",
+            "name": "The Dying Prisoner",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A client from Clamence's celebrated years at the Paris bar. Her case, involving the death of her husband, lets him present himself publicly as a compassionate defender of the weak while privately enjoying the admiration his performance earns.",
+            "id": "the-widow",
+            "name": "The Widow",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-fall-albert-camus"
+      },
+      "recaps": {
+        "ending": "Clamence reveals that he keeps the stolen panel known as The Just Judges in his room, accepting the possibility that displaying it may eventually bring arrest and public judgment. His judge-penitent practice is now fully explained: he confesses his own failures in sweeping terms so that his listener recognizes the same impulses in himself, after which Clamence can pass judgment on them both. He has selected the visitor because the man resembles his former self and is also a lawyer. Feverish in bed, Clamence imagines repeating the moment when the woman fell into the Seine and wishes for another chance to rescue her, but immediately recognizes that the chance will never come. The wish is inseparable from his desire to recover innocence without surrendering his authority. His confession therefore ends without absolution or reform. He remains in Amsterdam, using self-accusation as a means of mastery, while the silent listener is drawn into the judgment.",
+        "in_short": "In an Amsterdam bar, former Paris lawyer Jean-Baptiste Clamence addresses an unnamed French visitor over several days. He describes the admired life he once led, taking pleasure in defending the unfortunate and performing generous acts. A mocking laugh and the memory of a woman whose suicide he failed to prevent expose how much his goodness depended on superiority and applause. His confidence collapses into self-scrutiny, failed attempts at love, dissipation, and memories of selfish conduct during wartime imprisonment. In Amsterdam he remakes himself as a judge-penitent: by confessing his own guilt first, he induces others to admit that they too are compromised, preserving his power to judge them. He also keeps the stolen Just Judges panel, courting punishment while controlling its terms. Recognizing the visitor as another lawyer much like his former self, Clamence turns the entire confession upon him. No redemption follows; the closing wish to save the drowned woman is acknowledged as impossible and self-serving.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In the sailors' quarter of Amsterdam, Jean-Baptiste Clamence helps an unnamed French visitor order a drink at a bar called Mexico City. Urbane and attentive, he offers himself as a guide and explains that he used to be a successful defense lawyer in Paris. He specialized in widows, orphans, and other sympathetic clients, enjoyed assisting strangers, and appeared to possess effortless generosity. His satisfaction, however, was closely tied to applause and to occupying the superior position of protector, advocate, or guide. He now lives near the bar and gives his profession the puzzling name judge-penitent. The visitor says little, so the account takes the form of Clamence's uninterrupted interpretation of both their lives.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Clamence expands on his former happiness and admits that his apparent humility concealed a need to stand above other people. A small public dispute reveals how badly he reacts when another man humiliates him and he cannot answer effectively. More disturbing is a disembodied laugh he hears behind him while crossing a Paris bridge. The sound returns in memory and begins to undermine his confident self-image. He reviews his charitable gestures and professional successes, recognizing that they often supplied the pleasure of being seen as virtuous. The admired lawyer was not simply a fraud, but his kindness was entangled with vanity, control, and an expectation of gratitude. Once he begins judging his motives, he can no longer recover his previous innocence.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Clamence describes his relations with women as another arena in which affection yielded to conquest and control. He wanted devotion without reciprocal obligation and sometimes caused pain merely to prove his continued power. His growing self-consciousness makes ordinary life feel like an accumulating trial in which every remembered action supplies evidence. The decisive memory is of passing a woman leaning over a bridge at night. After walking on, he hears her fall into the river and cry out, yet does not return or call for help. For years he suppresses the incident; once recalled, it destroys his claim to instinctive courage and compassion. He tries to silence judgment through drink, sexual pursuits, and deliberate excess, but these evasions do not restore his former ease.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Clamence turns to the war years and to conduct that further weakens his moral self-portrait. After leaving France, he was interned in North Africa. In the camp he accepted a position of informal authority among the prisoners, then drank water allotted to a dying companion after convincing himself that his own survival was more useful. He presents this not as an isolated lapse but as proof that lofty principles bend under fear and need. In Amsterdam he has also acquired the missing panel of The Just Judges from the Ghent Altarpiece and keeps it in his room. Possessing an image of rightful judgment while living among fog, canals, and displaced people suits the identity he is constructing. His confession increasingly sounds less like a request for forgiveness than preparation for judging his listener.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Clamence explains the method behind his title. As a judge-penitent he accuses himself publicly and comprehensively, inviting listeners to recognize their own vanity, cowardice, and desire for power in his story. Once they agree that no one is innocent, his prior confession gives him the authority to judge them. He has cultivated the visiting lawyer because the man resembles the successful advocate Clamence once was. The stolen Just Judges panel remains in his room, where it may expose him to punishment, but even that risk is arranged on his terms. Ill and feverish, he imagines hearing the woman enter the river again and calls for the chance to save her, then concedes that the moment cannot be repeated. The fantasy does not redeem him. He remains both accused and accuser, converting acknowledged guilt into a lasting form of dominance, while his listener becomes the latest subject of the judgment.",
+            "through": {
+              "chapter": 6
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-fall-albert-camus"
+      }
+    },
     "the-fall-of-five": {
       "characters": {
         "characters": [

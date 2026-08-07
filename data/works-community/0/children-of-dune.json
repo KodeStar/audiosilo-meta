@@ -519,6 +519,168 @@
         "work": "children-of-time"
       }
     },
+    "choephori": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Son of Agamemnon"
+            ],
+            "description": "Agamemnon's exiled son, returned secretly to Argos as a young man. Apollo has ordered him to punish his father's killers, and he comes to Agamemnon's tomb with his loyal companion Pylades before attempting to enter the palace.",
+            "id": "orestes",
+            "name": "Orestes",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A prince of Phocis and Orestes' trusted companion in exile. He returns to Argos beside Orestes and supports the mission against the rulers of the palace, speaking little but remaining present at its decisive moments.",
+            "id": "pylades",
+            "name": "Pylades",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "King Agamemnon"
+            ],
+            "description": "The murdered king of Argos and father of Orestes and Electra. Buried without the full honor his children believe he deserves, he remains an unseen center of the action as they appeal to his spirit for aid and demand vengeance for his death.",
+            "id": "agamemnon",
+            "name": "Agamemnon",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Daughter of Agamemnon"
+            ],
+            "description": "The daughter of Agamemnon and Clytemnestra, still living under the authority of her father's killers. Sent to pour offerings at Agamemnon's tomb after Clytemnestra has a frightening dream, she is divided between the ritual she has been ordered to perform and her loyalty to her dead father.",
+            "id": "electra",
+            "name": "Electra",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Libation Bearers"
+            ],
+            "description": "Enslaved women of the palace who accompany Electra to Agamemnon's tomb with ritual offerings. Sharing hostility toward the household's rulers, they guide Electra's prayer, help her interpret signs of Orestes' return, and support the siblings' demand for justice.",
+            "id": "chorus-of-libation-bearers",
+            "name": "Chorus of Libation Bearers",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Queen of Argos"
+            ],
+            "description": "Agamemnon's widow and the mother of Orestes and Electra, now ruling Argos with Aegisthus after killing her husband. Disturbed by an ominous dream, she sends offerings to Agamemnon's grave in an effort to appease the dead.",
+            "id": "clytemnestra",
+            "name": "Clytemnestra",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Nurse"
+            ],
+            "description": "Orestes' former nurse and a loyal servant of Agamemnon's house. She grieves sincerely when told that Orestes has died, remembering the labor of caring for him as a baby, and is sent to summon Aegisthus to meet the supposed messengers.",
+            "id": "cilissa",
+            "name": "Cilissa",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Clytemnestra's partner and Agamemnon's cousin, who shares the rule of Argos after helping bring about Agamemnon's death. He is called to the palace to hear in person the strangers' report that Orestes has died.",
+            "id": "aegisthus",
+            "name": "Aegisthus",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "choephori"
+      },
+      "recaps": {
+        "ending": "Disguised as a traveler, Orestes gains entry to the palace by reporting his own death. Aegisthus comes without his usual guards and is killed inside. Clytemnestra then confronts her son and appeals to the bond between mother and child. Orestes hesitates, but Pylades reminds him that Apollo ordered the revenge. Orestes kills Clytemnestra beside Aegisthus and displays both bodies, defending his actions as punishment for Agamemnon's murder. His confidence immediately collapses when he sees the Furies, avenging spirits invisible to the chorus, approaching to punish the killing of a blood relative. He leaves Argos to seek purification and protection from Apollo at Delphi. The usurpers are dead and Agamemnon avenged, but Orestes has repeated the family's pattern of violence and now faces divine pursuit.",
+        "in_short": "Years after Clytemnestra and Aegisthus murder Agamemnon and take power in Argos, Agamemnon's exiled son Orestes returns under an order from Apollo to avenge his father. At Agamemnon's tomb he reunites with his sister Electra, and the siblings pray for help in overthrowing the palace rulers. Orestes enters the palace disguised as a traveler bearing false news of his own death. His former nurse is sent to fetch Aegisthus, and the sympathetic chorus ensures that Aegisthus comes without guards. Orestes kills him, then confronts Clytemnestra. Though he hesitates when his mother appeals to him, Pylades recalls Apollo's command, and Orestes kills her as well. He presents the deaths as justice for Agamemnon, but the Furies immediately appear to him as punishers of kin-murder. Pursued by them, Orestes flees to Apollo's sanctuary for purification, transferring the conflict from family revenge to divine judgment.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, Agamemnon returned to Argos after commanding the Greek victory at Troy. His wife Clytemnestra killed him in the palace, avenging his sacrifice of their daughter Iphigenia, and also killed his captive Cassandra. Clytemnestra's partner Aegisthus claimed that the murder repaid older crimes committed by Agamemnon's father against Aegisthus's family. Clytemnestra and Aegisthus now rule Argos. Agamemnon's son Orestes has grown up in exile, while his daughter Electra remains at the palace under the authority of her father's killers.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Orestes returns secretly to Argos with his companion Pylades and visits Agamemnon's tomb. He offers a lock of hair and calls on his dead father while explaining that Apollo has commanded him to punish Agamemnon's killers. A procession approaches from the palace, so Orestes and Pylades hide nearby. Electra leads enslaved women carrying offerings for the grave. The gifts have been sent by Clytemnestra, whose frightening dream has made her fear the anger of the dead. Electra is unwilling to speak a dutiful prayer on behalf of the woman who murdered Agamemnon and asks the chorus how she should proceed.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Guided by the chorus, Electra pours the offerings while praying for Orestes' return and for justice against Clytemnestra and Aegisthus. She finds a lock of hair and footprints near the tomb that suggest her brother may be close. Orestes emerges and identifies himself. Electra is initially cautious, but tokens and shared memories persuade her that he truly has returned. Brother, sister, and chorus join in an extended appeal to Agamemnon's spirit, grieving his dishonorable death and asking his aid. Their reunion turns private mourning into a plan to recover the household and punish its rulers.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Orestes and Electra consider both the demands of family loyalty and Apollo's threat of punishment if Orestes fails to avenge Agamemnon. They also hear the meaning of Clytemnestra's dream: she imagined giving birth to a snake that drew blood while nursing from her. Orestes takes the serpent as an image of himself returning against his mother. He decides to approach the palace disguised as a traveler from Phocis and falsely announce that Orestes has died abroad. The report should win the strangers admission and isolate Clytemnestra and Aegisthus. Electra withdraws so she will not expose the deception, while the chorus remains ready to assist.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Orestes and Pylades reach the palace in disguise and tell Clytemnestra that Orestes is dead. She receives the news with formal grief and orders that the visitors be housed. Orestes' old nurse Cilissa is sent to summon Aegisthus. Unlike Clytemnestra, the nurse openly mourns the child she raised. She reports that Clytemnestra instructed Aegisthus to bring his armed attendants, but the chorus persuades Cilissa to alter the message and call him alone. Aegisthus arrives eager to verify the news for himself and enters the palace without his guard, giving Orestes the opening his plan required.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Orestes kills Aegisthus inside the palace. When Clytemnestra realizes that the supposed stranger is her son, she confronts him and appeals to the life she gave him. Orestes falters, but Pylades reminds him of Apollo's command, and he takes Clytemnestra inside to die beside Aegisthus. Orestes then displays both bodies and the garment used to trap Agamemnon, arguing that the punishment was just. His certainty gives way to terror as he alone sees the Furies arriving to avenge his mother's blood. The chorus cannot see them, but Orestes flees toward Apollo's sanctuary at Delphi in search of purification. Agamemnon has been avenged and the usurpers removed, yet the cycle of family murder continues through the avenger himself.",
+            "through": {
+              "chapter": 7
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "choephori"
+      }
+    },
     "cibola-burn": {
       "characters": {
         "characters": [

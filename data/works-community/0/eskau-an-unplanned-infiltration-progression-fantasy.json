@@ -910,6 +910,160 @@
         "work": "eternitys-battleship"
       }
     },
+    "eugene-onegin": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A fashionable young man from St Petersburg who has mastered society's manners but grown bored with its pleasures. After inheriting a country estate from his uncle, he withdraws to rural life, where his aloof intelligence and refusal to follow local customs make him an object of curiosity.",
+            "id": "eugene-onegin",
+            "name": "Eugene Onegin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The elder Larin daughter, quiet, solitary, and deeply absorbed in novels. Unlike her sociable sister, she feels out of place in conventional country life and responds to Onegin's arrival with the intensity of a romantic imagination.",
+            "id": "tatyana-larina",
+            "name": "Tatyana Larina",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Onegin's young neighbor, a poet recently returned from study in Germany. Earnest, idealistic, and inexperienced, he believes strongly in friendship and romantic devotion and is engaged to Olga Larina.",
+            "id": "vladimir-lensky",
+            "name": "Vladimir Lensky",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tatyana's younger sister and Lensky's fiancée. Pretty, cheerful, and at ease in local society, she fits the familiar image of a charming young woman more readily than her introspective sister does.",
+            "id": "olga-larina",
+            "name": "Olga Larina",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Tatyana and Olga's mother"
+            ],
+            "description": "The widowed mother of Tatyana and Olga. In youth she had romantic tastes of her own, but an arranged marriage brought her to the country, where she gradually adapted and became a practical manager of family and estate life.",
+            "id": "madame-larina",
+            "name": "Madame Larina",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Tatyana's nurse"
+            ],
+            "description": "Tatyana's elderly nurse and trusted attendant. When Tatyana tries to speak about love, the nurse answers from the very different experience of an early arranged marriage and helps her deliver a private letter.",
+            "id": "filipyevna",
+            "name": "Filipyevna",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A landowner with a colorful past as a brawler and gambler, now outwardly settled into respectable rural life. His reputation as an authority on duels makes him the formal second when Lensky challenges Onegin.",
+            "id": "zaretsky",
+            "name": "Zaretsky",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The General",
+              "The Prince"
+            ],
+            "description": "Tatyana's husband, a distinguished general and prince in St Petersburg society who is related to Onegin. He proudly introduces Onegin to his wife when the two men meet at a glittering social gathering.",
+            "id": "tatyanas-husband",
+            "name": "Tatyana's husband",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "eugene-onegin"
+      },
+      "recaps": {
+        "ending": "Onegin writes repeatedly to Tatyana and receives no answer. He finally enters her rooms unannounced and finds her reading one of his letters in tears. Tatyana acknowledges that she still loves him, but she also contrasts his present pursuit with his rejection of her when she was an unknown country girl. She suspects that her elevated social position has helped awaken his desire. Whatever her private feelings, she has married and will not betray her husband. She leaves Onegin stunned and alone. Her husband then enters, and the narrator breaks off the story without arranging a reconciliation or a new beginning. Lensky remains dead, Olga has long since married another man, and Tatyana chooses fidelity and self-command over the romantic fulfillment she once sought. Onegin is left to confront both the finality of her refusal and the consequences of his earlier emotional detachment.",
+        "in_short": "Bored St Petersburg aristocrat Eugene Onegin inherits a country estate and befriends the idealistic poet Vladimir Lensky. Through Lensky he meets the Larin sisters: Lensky's cheerful fiancée Olga and the reserved, imaginative Tatyana. Tatyana falls in love with Onegin and writes him an unguarded confession, but he rejects her in a cool lecture. Later, irritated at a crowded name-day celebration, Onegin flirts with Olga to punish Lensky. The insult leads to a duel that neither friend has the courage to stop, and Onegin kills Lensky. He leaves Russia to travel; Olga soon marries someone else. Tatyana studies Onegin's books, begins to understand the poses behind his personality, and is taken to Moscow, where she marries a prince. Years later Onegin meets her as an assured society figure and falls desperately in love. Tatyana admits she still loves him, but refuses to betray her husband, leaving Onegin alone with the consequences of his past choices.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Eugene Onegin grows up in St Petersburg with the education and accomplishments expected of a fashionable young gentleman. He becomes skilled at charm, dress, theater-going, dining, and love affairs, but repetition turns all of them into sources of boredom. Attempts at reading and writing do not cure his restless detachment. When his wealthy uncle becomes gravely ill, Onegin travels to the country and inherits the estate after the man's death. At first he enjoys the change and reforms his peasants' obligations, but rural life soon bores him as well. He avoids neighboring landowners and earns a reputation for arrogance, while remaining cut off from the social world that formerly occupied him.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Onegin befriends Vladimir Lensky, a young neighboring landowner and romantic poet whose warmth and idealism contrast with Onegin's skepticism. Lensky is engaged to Olga Larina and brings Onegin to meet her family. Olga is cheerful and conventionally attractive; her elder sister Tatyana is withdrawn, imaginative, and devoted to romantic fiction. Tatyana quickly identifies Onegin with the heroes of her books and falls in love. Unable to contain the feeling, she writes him a direct confession and has her nurse arrange its delivery. Onegin is moved by her sincerity but does not share her readiness for commitment. He meets her in the garden and prepares to answer.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Onegin tells Tatyana that he is not suited to marriage and would eventually make her unhappy. He praises her openness but advises her to control her feelings, turning her confession into an occasion for instruction. Tatyana remains wounded and preoccupied, while Lensky and Olga continue toward marriage. Winter confines the country households. Lensky persuades Onegin to attend Tatyana's name-day celebration by promising a small family gathering. Tatyana has meanwhile had a troubling dream in which Onegin appears amid frightening creatures and kills Lensky, but she cannot interpret it. When the celebration arrives, Onegin finds a crowded provincial party instead of the quiet visit he expected.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Angry with Lensky for bringing him to the crowded party and uncomfortable under Tatyana's attention, Onegin deliberately monopolizes Olga and dances with her. Lensky reads the flirtation as a betrayal by both his friend and his fiancée. He leaves and sends Onegin a formal challenge through Zaretsky. Although Onegin recognizes that he behaved badly and that reconciliation would be wiser, concern about social judgment keeps him from stopping the ritual. He arrives late at the duel and uses his servant as second, but these breaches do not prevent it. Onegin shoots and kills Lensky. The poet's imagined futures—glory or ordinary domestic life—are both erased, and Onegin leaves the district under the weight of what he has done.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Olga grieves briefly, then marries a military officer and leaves home. Tatyana remains drawn to the absent Onegin. Visiting his deserted estate, she reads his marked books and begins to see how much his identity may be assembled from fashionable attitudes and literary models. Her mother, worried that she has refused local suitors, takes her to Moscow for the marriage season. Tatyana dislikes the noisy journey, the crowded relatives' homes, and the repetitive social circuit, and she misses the countryside. Nevertheless, she is noticed at an assembly by an important general, opening a future far removed from the secluded life in which she first met Onegin.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After years of travel, Onegin returns to St Petersburg society and sees Tatyana transformed into a composed, admired princess, married to a distinguished general. Her self-possession and apparent indifference captivate him. Their former positions reverse: Onegin becomes consumed by love, sends letter after letter, and receives no reply. Entering her rooms unexpectedly, he finds her weeping over his words. Tatyana admits that she still loves him, but remembers that he rejected her when she lacked rank and glamour. She questions whether her social prominence now contributes to his passion. Despite her unhappiness and enduring feeling, she refuses to violate her marriage. She leaves him, her husband enters, and the narrative abandons Onegin at the moment of irreversible loss.",
+            "through": {
+              "chapter": 8
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "eugene-onegin"
+      }
+    },
     "ever-after": {
       "characters": {
         "characters": [
@@ -1420,6 +1574,160 @@
           }
         ],
         "work": "every-which-way-but-dead"
+      }
+    },
+    "evgenii-onegin": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A fashionable young man from St Petersburg who has mastered society's manners but grown bored with its pleasures. After inheriting a country estate from his uncle, he withdraws to rural life, where his aloof intelligence and refusal to follow local customs make him an object of curiosity.",
+            "id": "evgenii-onegin",
+            "name": "Evgenii Onegin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The elder Larin daughter, quiet, solitary, and deeply absorbed in novels. Unlike her sociable sister, she feels out of place in conventional country life and responds to Onegin's arrival with the intensity of a romantic imagination.",
+            "id": "tatyana-larina",
+            "name": "Tatyana Larina",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Onegin's young neighbor, a poet recently returned from study in Germany. Earnest, idealistic, and inexperienced, he believes strongly in friendship and romantic devotion and is engaged to Olga Larina.",
+            "id": "vladimir-lensky",
+            "name": "Vladimir Lensky",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tatyana's younger sister and Lensky's fiancée. Pretty, cheerful, and at ease in local society, she fits the familiar image of a charming young woman more readily than her introspective sister does.",
+            "id": "olga-larina",
+            "name": "Olga Larina",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Tatyana and Olga's mother"
+            ],
+            "description": "The widowed mother of Tatyana and Olga. In youth she had romantic tastes of her own, but an arranged marriage brought her to the country, where she gradually adapted and became a practical manager of family and estate life.",
+            "id": "madame-larina",
+            "name": "Madame Larina",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Tatyana's nurse"
+            ],
+            "description": "Tatyana's elderly nurse and trusted attendant. When Tatyana tries to speak about love, the nurse answers from the very different experience of an early arranged marriage and helps her deliver a private letter.",
+            "id": "filipyevna",
+            "name": "Filipyevna",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A landowner with a colorful past as a brawler and gambler, now outwardly settled into respectable rural life. His reputation as an authority on duels makes him the formal second when Lensky challenges Onegin.",
+            "id": "zaretsky",
+            "name": "Zaretsky",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The General",
+              "The Prince"
+            ],
+            "description": "Tatyana's husband, a distinguished general and prince in St Petersburg society who is related to Onegin. He proudly introduces Onegin to his wife when the two men meet at a glittering social gathering.",
+            "id": "tatyanas-husband",
+            "name": "Tatyana's husband",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "evgenii-onegin"
+      },
+      "recaps": {
+        "ending": "Onegin writes repeatedly to Tatyana and receives no answer. He finally enters her rooms unannounced and finds her reading one of his letters in tears. Tatyana acknowledges that she still loves him, but she also contrasts his present pursuit with his rejection of her when she was an unknown country girl. She suspects that her elevated social position has helped awaken his desire. Whatever her private feelings, she has married and will not betray her husband. She leaves Onegin stunned and alone. Her husband then enters, and the narrator breaks off the story without arranging a reconciliation or a new beginning. Lensky remains dead, Olga has long since married another man, and Tatyana chooses fidelity and self-command over the romantic fulfillment she once sought. Onegin is left to confront both the finality of her refusal and the consequences of his earlier emotional detachment.",
+        "in_short": "Bored St Petersburg aristocrat Evgenii Onegin inherits a country estate and befriends the idealistic poet Vladimir Lensky. Through Lensky he meets the Larin sisters: Lensky's cheerful fiancée Olga and the reserved, imaginative Tatyana. Tatyana falls in love with Onegin and writes him an unguarded confession, but he rejects her in a cool lecture. Later, irritated at a crowded name-day celebration, Onegin flirts with Olga to punish Lensky. The insult leads to a duel that neither friend has the courage to stop, and Onegin kills Lensky. He leaves Russia to travel; Olga soon marries someone else. Tatyana studies Onegin's books, begins to understand the poses behind his personality, and is taken to Moscow, where she marries a prince. Years later Onegin meets her as an assured society figure and falls desperately in love. Tatyana admits she still loves him, but refuses to betray her husband, leaving Onegin alone with the consequences of his past choices.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Evgenii Onegin grows up in St Petersburg with the education and accomplishments expected of a fashionable young gentleman. He becomes skilled at charm, dress, theater-going, dining, and love affairs, but repetition turns all of them into sources of boredom. Attempts at reading and writing do not cure his restless detachment. When his wealthy uncle becomes gravely ill, Onegin travels to the country and inherits the estate after the man's death. At first he enjoys the change and reforms his peasants' obligations, but rural life soon bores him as well. He avoids neighboring landowners and earns a reputation for arrogance, while remaining cut off from the social world that formerly occupied him.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Onegin befriends Vladimir Lensky, a young neighboring landowner and romantic poet whose warmth and idealism contrast with Onegin's skepticism. Lensky is engaged to Olga Larina and brings Onegin to meet her family. Olga is cheerful and conventionally attractive; her elder sister Tatyana is withdrawn, imaginative, and devoted to romantic fiction. Tatyana quickly identifies Onegin with the heroes of her books and falls in love. Unable to contain the feeling, she writes him a direct confession and has her nurse arrange its delivery. Onegin is moved by her sincerity but does not share her readiness for commitment. He meets her in the garden and prepares to answer.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Onegin tells Tatyana that he is not suited to marriage and would eventually make her unhappy. He praises her openness but advises her to control her feelings, turning her confession into an occasion for instruction. Tatyana remains wounded and preoccupied, while Lensky and Olga continue toward marriage. Winter confines the country households. Lensky persuades Onegin to attend Tatyana's name-day celebration by promising a small family gathering. Tatyana has meanwhile had a troubling dream in which Onegin appears amid frightening creatures and kills Lensky, but she cannot interpret it. When the celebration arrives, Onegin finds a crowded provincial party instead of the quiet visit he expected.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Angry with Lensky for bringing him to the crowded party and uncomfortable under Tatyana's attention, Onegin deliberately monopolizes Olga and dances with her. Lensky reads the flirtation as a betrayal by both his friend and his fiancée. He leaves and sends Onegin a formal challenge through Zaretsky. Although Onegin recognizes that he behaved badly and that reconciliation would be wiser, concern about social judgment keeps him from stopping the ritual. He arrives late at the duel and uses his servant as second, but these breaches do not prevent it. Onegin shoots and kills Lensky. The poet's imagined futures—glory or ordinary domestic life—are both erased, and Onegin leaves the district under the weight of what he has done.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Olga grieves briefly, then marries a military officer and leaves home. Tatyana remains drawn to the absent Onegin. Visiting his deserted estate, she reads his marked books and begins to see how much his identity may be assembled from fashionable attitudes and literary models. Her mother, worried that she has refused local suitors, takes her to Moscow for the marriage season. Tatyana dislikes the noisy journey, the crowded relatives' homes, and the repetitive social circuit, and she misses the countryside. Nevertheless, she is noticed at an assembly by an important general, opening a future far removed from the secluded life in which she first met Onegin.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After years of travel, Onegin returns to St Petersburg society and sees Tatyana transformed into a composed, admired princess, married to a distinguished general. Her self-possession and apparent indifference captivate him. Their former positions reverse: Onegin becomes consumed by love, sends letter after letter, and receives no reply. Entering her rooms unexpectedly, he finds her weeping over his words. Tatyana admits that she still loves him, but remembers that he rejected her when she lacked rank and glamour. She questions whether her social prominence now contributes to his passion. Despite her unhappiness and enduring feeling, she refuses to violate her marriage. She leaves him, her husband enters, and the narrative abandons Onegin at the moment of irreversible loss.",
+            "through": {
+              "chapter": 8
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "evgenii-onegin"
       }
     },
     "evil-under-the-sun": {

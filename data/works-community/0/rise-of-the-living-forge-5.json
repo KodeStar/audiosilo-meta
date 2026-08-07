@@ -1547,6 +1547,261 @@
         "work": "romeo-and-juliet"
       }
     },
+    "roots": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The first son of Omoro and Binta Kinte, born in the Mandinka village of Juffure in the Gambia. Raised in a Muslim family, he learns his people's language, customs, history, work, and religious duties as he grows toward manhood.",
+            "id": "kunta-kinte",
+            "name": "Kunta Kinte",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Kunta's father, a respected Mandinka man of Juffure. He names his first son, teaches him family identity and religious practice, and represents the paternal line through which Kunta understands his place among the Kintes.",
+            "id": "omoro-kinte",
+            "name": "Omoro Kinte",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Kunta's mother, whose household labor, discipline, and care shape his early life in Juffure. As her firstborn grows, she balances affection with the community's expectations that he become increasingly independent.",
+            "id": "binta-kinte",
+            "name": "Binta Kinte",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Kunta's younger brother. His birth changes Kunta's position in the family, giving the older boy both pride and new responsibilities as he advances through the stages of Mandinka childhood.",
+            "id": "lamin-kinte",
+            "name": "Lamin Kinte",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The senior instructor who oversees Kunta's age group during its formal manhood training. Exacting and authoritative, he teaches endurance, discipline, communal duties, and the history expected of Mandinka men.",
+            "id": "kintango",
+            "name": "Kintango",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An older enslaved musician on the Virginia plantation who plays the fiddle at white social events. Talkative, shrewd, and experienced in plantation life, he is one of the first people able to bridge the isolation surrounding the newly arrived African.",
+            "id": "fiddler",
+            "name": "Fiddler",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A physician and Virginia plantation owner who treats Kunta after slave catchers mutilate his foot. He purchases Kunta from his brother's plantation, placing him among enslaved workers whose treatment is less chaotic but whose bondage remains absolute.",
+            "id": "william-waller",
+            "name": "Dr. William Waller",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The enslaved cook in Dr. Waller's household. Capable, sharp-spoken, and accustomed to hearing news through the house, she is established on the plantation when Kunta begins working there.",
+            "id": "bell",
+            "name": "Bell",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The daughter of Kunta and Bell, born enslaved in Virginia. She grows up in a close household shaped by Bell's practical care and Kunta's determination that his child know her family identity.",
+            "id": "kizzy",
+            "name": "Kizzy",
+            "reveal": {
+              "chapter": 52
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The Waller family's daughter and Kizzy's childhood companion. Their closeness gives Kizzy unusual access to reading and writing, but it remains constrained by the power Missy Anne's family holds over Kizzy and her parents.",
+            "id": "missy-anne",
+            "name": "Missy Anne",
+            "reveal": {
+              "chapter": 53
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A poor North Carolina plantation owner whose consuming interest is breeding and fighting gamecocks. He buys Kizzy after she is separated from her family and exercises complete legal power over her life.",
+            "id": "tom-lea",
+            "name": "Tom Lea",
+            "reveal": {
+              "chapter": 61
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Chicken George"
+            ],
+            "description": "Kizzy's son on Tom Lea's plantation. As a boy he is lively, confident, and quick with people, and he is fascinated by the gamecocks that dominate Lea's attention.",
+            "id": "george-lea",
+            "name": "George Lea",
+            "reveal": {
+              "chapter": 67
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An elderly enslaved trainer of Tom Lea's fighting cocks. He recognizes George's interest and begins teaching him the demanding craft of caring for and handling gamecocks.",
+            "id": "mingo",
+            "name": "Mingo",
+            "reveal": {
+              "chapter": 69
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A deeply religious young woman whom George courts. She values family stability and plain dealing more than the gambling world surrounding his work with fighting cocks.",
+            "id": "matilda",
+            "name": "Matilda",
+            "reveal": {
+              "chapter": 73
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "George and Matilda's son, trained as a blacksmith. Serious, skilled, and more restrained than his father, he earns an important position within the family through a trade needed on every plantation.",
+            "id": "tom-murray",
+            "name": "Tom Murray",
+            "reveal": {
+              "chapter": 85
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A young enslaved woman admired for her skill with cloth and dye. Her talent, self-possession, and affection attract the blacksmith Tom.",
+            "id": "irene",
+            "name": "Irene",
+            "reveal": {
+              "chapter": 88
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A granddaughter of Tom and Irene who grows up in Henning, Tennessee. She marries Will Palmer, and their household becomes the next setting in which the family's account of Kunta Kinte is repeated to younger generations.",
+            "id": "cynthia-murray",
+            "name": "Cynthia Murray",
+            "reveal": {
+              "chapter": 104
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The daughter of Cynthia and Will Palmer. Educated at Lane College, she meets Simon Alexander Haley and carries her family's oral history into the household in which their son Alex will grow up.",
+            "id": "bertha-palmer",
+            "name": "Bertha Palmer",
+            "reveal": {
+              "chapter": 110
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An ambitious student whom Bertha meets through college. His education is supported by determined work, scholarship, and family sacrifice, and he hopes to build a professional life in agriculture.",
+            "id": "simon-alexander-haley",
+            "name": "Simon Alexander Haley",
+            "reveal": {
+              "chapter": 112
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The author as a member of the family narrative. He inherits repeated fragments about an African ancestor, a river, a guitar, and a few African words, and investigates whether they can be connected to a specific family and place in West Africa.",
+            "id": "alex-haley",
+            "name": "Alex Haley",
+            "reveal": {
+              "chapter": 120
+            },
+            "role": "protagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "roots"
+      },
+      "recaps": {
+        "ending": "The family establishes itself in Henning, Tennessee, where Tom's descendants enter new trades, acquire property, and continue telling children about Kunta Kinte. Cynthia marries lumberman Will Palmer; their daughter Bertha attends Lane College and marries Simon Alexander Haley. Their son Alex grows up hearing the inherited African sounds and stories from older relatives. As an adult writer, he pursues the account through records, travel, and oral testimony. In the Gambia, a griot in Juffure recites a Kinte history that includes a young man taken away by strangers at a time consistent with the family tradition. Haley links this account to the voyage of the slave ship Lord Ligonier and to records in colonial America, presenting Kunta as the ancestor whose story survived seven generations. The book closes by connecting the reconstructed family saga to Haley's own life and by honoring the relatives who preserved names and memories despite enslavement, forced separation, and the passage of two centuries.",
+        "in_short": "Kunta Kinte grows up in Juffure, the Gambia, learning Mandinka and Muslim traditions before slave traders kidnap him and ship him to colonial America. Sold in Virginia and renamed Toby, he repeatedly tries to escape; after his foot is mutilated, he survives, marries Bell, and teaches their daughter Kizzy fragments of his language and ancestry. Kizzy is sold away after helping another enslaved person and gives birth to George, who becomes the renowned cockfighter Chicken George. George and Matilda's son Tom, a blacksmith, leads the expanding family through sale, Civil War, emancipation, and relocation to Tennessee. Later generations build businesses and pursue education while repeating the story of their African forebear. Alex Haley, Kunta's descendant, investigates the inherited names and words through archives and oral history. His search reaches Juffure, where a griot's genealogy identifies a Kinte youth taken by strangers, allowing Haley to connect the family's American history to Kunta and to present the survival of that memory across seven generations.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Kunta Kinte is born in 1750 in Juffure, a Mandinka village in the Gambia, to Omoro and Binta Kinte. His childhood is organized by family, age groups, farming seasons, Islamic worship, oral history, and clear stages of growing responsibility. He learns to tend goats, respect elders, understand the village's social bonds, and take pride in his descent from the Kinte line. The birth of his brother Lamin moves him toward an older brother's role. During formal training under Kintango, Kunta and the boys of his age group endure discipline and instruction intended to make them adult members of the community. As a young man he travels beyond Juffure and imagines marriage, work, and a future embedded in his people. While outside the village seeking wood for a drum, he is attacked and captured by slave traders. Bound with other captives, he is taken toward the coast, separated from everything that has defined his life.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kunta is imprisoned in the hold of the slave ship Lord Ligonier amid disease, violence, and death. Captives who do not share a language gradually coordinate resistance, but their uprising fails and the crossing continues. In Maryland, Kunta is sold and taken to a Virginia plantation, where white people call him Toby. He refuses the new name internally and studies the speech and routines around him while planning escape. Repeated attempts end in capture. After another flight, slave catchers mutilate his foot, destroying his ability to run as he once did. Dr. William Waller treats him and transfers him to a different plantation. Kunta survives the injury and begins forming cautious relationships with other enslaved people, especially the older Fiddler, while holding tightly to his name, his faith, and his memories of Juffure. Survival now requires learning the plantation world without accepting its claim to define him.",
+            "through": {
+              "chapter": 40
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On Dr. Waller's plantation, Kunta becomes a driver and develops friendships with Fiddler and the gardener. He and Bell, the household cook, overcome suspicion and marry. Their daughter Kizzy is born into slavery, but Kunta teaches her Mandinka words, tells her about Juffure, and insists that she remember the Kinte name. Bell conveys plantation news and tries to protect the family within the limits imposed on them. Kizzy grows close to Missy Anne Waller and learns to read and write, an ability barred to most enslaved people. When Kizzy uses that knowledge to create a traveling pass for Noah, a young man attempting escape, the deception is discovered. The Wallers sell her away despite her parents' pleas. Kunta and Bell are left with no legal means to follow or recover their only child, and the family's continuity depends on what Kizzy can carry in memory.",
+            "through": {
+              "chapter": 62
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kizzy is taken to North Carolina and sold to Tom Lea, who rapes her. She gives birth to George and raises him with the story of Kunta Kinte, preserving African words and the account of the ancestor who refused to surrender his name. George's energy and charm draw him into Lea's obsession with cockfighting. Under the veteran trainer Mingo, he becomes an expert handler and earns the name Chicken George. Travel to matches gives him unusual mobility and confidence, but his successes remain subject to Lea's ownership and gambling. George marries the devout Matilda, and they build a large family. Their marriage is strained by his long absences and appetites, yet Matilda maintains the household and the inherited history. When Lea loses heavily, George is sent to England in connection with the debt, separating him from his wife and children for years. The family's prospects increasingly center on the children, especially Tom, who learns blacksmithing.",
+            "through": {
+              "chapter": 88
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tom becomes a highly skilled blacksmith and marries Irene, whose work with textiles and dyes complements his trade. The family is sold to the Murray plantation, where Tom's usefulness gives him limited room to negotiate while he remains enslaved. Chicken George returns after years in England and tries to resume leadership of a family that has learned to rely on Tom. The Civil War brings uncertainty, danger, and conflicting reports about freedom. After emancipation, the family confronts white hostility and the difficulty of building independent lives without land or protection. George's forceful personality and Tom's steadier judgment pull in different directions, but the kin group remains together. Seeking a safer beginning, they leave North Carolina for Tennessee. Their movement is no longer an owner's forced sale: they travel as a free family carrying tools, skills, faith, and the story that has passed from Kunta to Kizzy, George, and Tom's generation.",
+            "through": {
+              "chapter": 105
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The family settles in Henning, Tennessee. Tom's blacksmithing anchors the household, and later generations enter business, acquire property, pursue education, and establish families of their own. Cynthia, a descendant of Tom and Irene, marries Will Palmer, whose lumber enterprise prospers. Their daughter Bertha attends Lane College and meets Simon Alexander Haley; their son Alex grows up hearing older relatives repeat the family account of an African named Kunta Kinte, a river called Kamby Bolongo, and other sounds preserved without written explanation. As an adult, Alex investigates slave-ship records, colonial documents, family testimony, and West African oral history. His search leads to Juffure, where a griot recites a Kinte genealogy containing a young Kunta who disappeared after going to cut wood. Haley connects that tradition with the Lord Ligonier's voyage and the family's American line. The narrative closes by joining the reconstructed history to the author's own generation, presenting the survival and recovery of the Kinte story as the family's answer to forced displacement and separation.",
+            "through": {
+              "chapter": 120
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "roots"
+      }
+    },
     "royal-assassin": {
       "characters": {
         "characters": [

@@ -3009,6 +3009,178 @@
         "work": "once-upon-a-broken-heart"
       }
     },
+    "one-day-in-the-life-of-ivan-denisovich": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Shukhov"
+            ],
+            "description": "A Soviet prisoner serving a ten-year sentence in a forced-labor camp after being accused of spying when he escaped German captivity during the war. Known in camp by his surname, he is practical, observant, and skilled at masonry. He preserves his dignity through careful work, small acts of independence, and constant attention to food, warmth, tools, and timing.",
+            "id": "ivan-denisovich-shukhov",
+            "name": "Ivan Denisovich Shukhov",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The experienced leader of Shukhov's 104th work squad. He assigns jobs, negotiates with camp officials, and manages the men's efforts so that their rations and survival chances improve. The squad obeys him because his authority is joined to competence and protection.",
+            "id": "andrei-prokofyevich-tyurin",
+            "name": "Andrei Prokofyevich Tyurin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tyurin's Ukrainian deputy in the 104th squad. Young, capable, and trusted, he helps organize the day's work and distribute the squad's food. His position gives him authority, but he remains part of the prisoners' shared struggle rather than an agent of the guards.",
+            "id": "pavlo",
+            "name": "Pavlo",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Alyosha"
+            ],
+            "description": "A quiet Baptist prisoner in Shukhov's squad who keeps a tiny handwritten copy of the Gospels and prays openly. He accepts privation with a faith Shukhov does not share, yet the two men respect each other and speak seriously about what freedom and prayer mean.",
+            "id": "alyoshka",
+            "name": "Alyoshka",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Caesar"
+            ],
+            "description": "An educated prisoner with connections outside the camp who receives valuable food parcels. He works in the office rather than on the building site and discusses film and art with other intellectuals. Shukhov performs small services for him in return for food.",
+            "id": "caesar-markovich",
+            "name": "Caesar Markovich",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Captain"
+            ],
+            "description": "A former Soviet naval captain, newly imprisoned and still accustomed to direct speech and military standards. He challenges petty mistreatment more openly than seasoned prisoners consider safe and is punished with a term in the camp cells.",
+            "id": "ivan-buynovsky",
+            "name": "Ivan Buynovsky",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Jackal"
+            ],
+            "description": "A disgraced prisoner who survives by begging, scavenging, informing, and licking out other men's bowls. His lack of restraint and camp solidarity has cost him the respect of the squad, making him an example of the degradation Shukhov tries to avoid.",
+            "id": "fetyukov",
+            "name": "Fetyukov",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Latvian prisoner and accomplished mason who works beside Shukhov. Cheerful, resourceful, and physically strong, he owns a good trowel and matches Shukhov's pride in skilled labor as the squad races to build a wall before evening count.",
+            "id": "kilgas",
+            "name": "Kilgas",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young prisoner in the 104th squad whom the older men regard almost as a son. Alert, eager, and adaptable, he carries out errands and is thought likely to learn the habits needed to endure the camp.",
+            "id": "gopchik",
+            "name": "Gopchik",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A deaf prisoner who survived the Buchenwald concentration camp before entering Soviet imprisonment. He works on the masonry team and communicates imperfectly, but his strength and loyalty make him a valued member of the squad.",
+            "id": "senka-klevshin",
+            "name": "Senka Klevshin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young medical orderly in the camp infirmary who hopes to become a writer. When Shukhov reports feeling ill, Kolya checks his temperature but cannot admit him because the limited places for sick prisoners have already been assigned.",
+            "id": "kolya-vdovushkin",
+            "name": "Kolya Vdovushkin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "The Tatar"
+            ],
+            "description": "A camp guard who finds Shukhov still in his bunk after reveille. He initially threatens him with confinement but instead orders him to clean the guards' floor, setting the day's calculations of punishment and survival in motion.",
+            "id": "the-tatar",
+            "name": "The Tatar",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A civilian building supervisor at the work site who tries to discipline the prisoners when he discovers they have covered windows to keep out the cold. Tyurin confronts him and the squad closes ranks, exposing how little authority Der has without the men's cooperation.",
+            "id": "der",
+            "name": "Der",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "one-day-in-the-life-of-ivan-denisovich"
+      },
+      "recaps": {
+        "ending": "After the squad's urgent final masonry work, Shukhov nearly risks punishment by lingering to conceal his trowel and check the wall, but he reaches the returning column. A second count delays everyone while a missing prisoner is found. Back at camp, Shukhov queues to collect Caesar's parcel and helps protect its contents during the searches and counts, receiving food in return. Buynovsky is taken away to begin ten days in the punishment cells. Shukhov eats an extra supper, keeps a fragment of hacksaw blade hidden from the guards, shares food with Alyoshka, and settles into his bunk. He reviews the day by camp standards: he avoided solitary confinement, the fever did not worsen, his squad retained a favorable assignment, he worked well, and he gained several small portions of food and useful materials. The day has therefore been unusually fortunate, even though it is only one of thousands in his sentence. His sense of success shows both his resilience and the system's power to reduce a human life to survival inside its rules.",
+        "in_short": "Ivan Denisovich Shukhov wakes ill in a Soviet labor camp but is denied the infirmary and sent out with the 104th squad into severe cold. Every part of the day becomes a practical contest over warmth, food, tools, searches, counts, and the favor of officials. Squad leader Tyurin secures a tolerable assignment, and Shukhov, Kilgas, Senka, and the others build a wall at an unfinished power station. Skilled work gives Shukhov a temporary sense of purpose, even as the men labor under coercion. He saves mortar, conceals his good trowel, and returns to camp without being caught with a scrap of metal that might become a tool. By helping the privileged Caesar guard a parcel, he earns extra food. Buynovsky is sent to the punishment cells, while Alyoshka speaks with Shukhov about faith and freedom. Before sleep, Shukhov counts the day as good because he escaped serious punishment, ate more than usual, worked successfully, and preserved a few tiny advantages. The judgment reveals both his endurance and the narrow terms imposed by imprisonment.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Prisoner Ivan Denisovich Shukhov wakes late and feverish in a Soviet forced-labor camp. A guard threatens him with punishment but instead makes him clean a floor. The infirmary has no room, so he joins the 104th squad for breakfast, searches, counting, and the march into intense cold. Their experienced leader Tyurin avoids a worse assignment and takes them to an unfinished power station. There Shukhov's practical intelligence governs every choice: he protects his bread, finds bits of fuel and material, warms himself through movement, and works as a mason with Kilgas and Senka. The squad's shared interest in a good work rating turns coerced labor into a burst of skilled cooperation as they race to use the mortar before it freezes. Shukhov hides his preferred trowel for another day and barely rejoins the column in time. After repeated counts and searches, the men return to camp. Shukhov collects Caesar's parcel, guards it, and receives food for his help; he also conceals a piece of metal that may become a small knife. Buynovsky is led away for ten days of punishment. Shukhov eats an extra meal, gives Alyoshka a biscuit, and reflects on the Baptist's faith. He falls asleep satisfied: he has avoided major punishment, worked well, eaten more than usual, and gained several small advantages. It has been a good day by camp standards, one among the thousands making up his sentence.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "one-day-in-the-life-of-ivan-denisovich"
+      }
+    },
     "one-flew-over-the-cuckoos-nest": {
       "characters": {
         "characters": [

@@ -3695,6 +3695,216 @@
         "work": "the-moving-finger"
       }
     },
+    "the-murder-at-the-vicarage": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The rector of St Mary Mead and the novel's narrator. Kindly, observant, and sometimes too ready to think well of people, he becomes directly involved when a disliked parishioner is found shot in his study. His position gives him access to nearly every household in the village, though he is less practiced at interpreting its gossip than some of his neighbors.",
+            "id": "leonard-clement",
+            "name": "Leonard Clement",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Leonard's much younger wife. Griselda is lively, irreverent, and openly uninterested in behaving like an ideal rector's spouse. Her teasing manner masks loyalty and good sense, and her movements around the vicarage make her an important witness to the household's comings and goings.",
+            "id": "griselda-clement",
+            "name": "Griselda Clement",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Leonard's adolescent nephew, who lives at the vicarage. Dennis is curious about crime, interested in Lettice Protheroe, and prone to treating the investigation as an exciting puzzle before its dangers become clear.",
+            "id": "dennis-clement",
+            "name": "Dennis Clement",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Clements' young maid, whose domestic work places her near the study and front door at crucial times. Mary is an uncertain cook and a literal reporter of what she has seen and heard, making her testimony useful even when it is incomplete.",
+            "id": "mary",
+            "name": "Mary",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A wealthy retired colonel, local magistrate, and churchwarden whose domineering conduct has earned him many enemies. He is harsh toward his family and determined to investigate irregularities in the church accounts. His appointment with Leonard at the vicarage puts him at the center of the case.",
+            "id": "lucius-protheroe",
+            "name": "Colonel Lucius Protheroe",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Colonel Protheroe's second wife. Anne is quiet and self-controlled beside her forceful husband, and Leonard recognizes that her marriage is unhappy. She has been sitting for a portrait by Lawrence Redding, a circumstance that attracts village attention.",
+            "id": "anne-protheroe",
+            "name": "Anne Protheroe",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Colonel Protheroe's daughter by his first marriage. Lettice cultivates an absent-minded, languid manner and shows little affection for her father or stepmother. Her evasiveness and habit of appearing unexpectedly make her difficult for the investigators to read.",
+            "id": "lettice-protheroe",
+            "name": "Lettice Protheroe",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A painter working in St Mary Mead who is restoring a tomb at the church and painting Anne Protheroe's portrait. Lawrence is personable and impulsive, but his open quarrel with Colonel Protheroe and his closeness to Anne make him an immediate figure of interest after the shooting.",
+            "id": "lawrence-redding",
+            "name": "Lawrence Redding",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Miss Marple"
+            ],
+            "description": "An elderly resident of St Mary Mead who lives beside the vicarage. Gentle in manner and deeply informed about village behavior, she notices small inconsistencies and compares unfamiliar crimes with familiar patterns of vanity, fear, and deception.",
+            "id": "jane-marple",
+            "name": "Jane Marple",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Leonard's anxious curate. Hawes is troubled by ill health and by the prospect of Colonel Protheroe examining the church accounts. His nervous behavior gives the police reason to scrutinize him closely.",
+            "id": "hawes",
+            "name": "Hawes",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The village physician and a trusted friend of the Clements. Haydock examines Colonel Protheroe's body and provides the medical estimate on which the disputed timeline depends.",
+            "id": "doctor-haydock",
+            "name": "Doctor Haydock",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The energetic police inspector assigned to the murder. Slack favors direct questioning and tangible evidence, and he has little patience for village gossip, even when its details bear on the case.",
+            "id": "inspector-slack",
+            "name": "Inspector Slack",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The county's chief constable, who oversees the official inquiry and knows Leonard socially. Melchett is more diplomatic than Inspector Slack but is repeatedly confronted by evidence that supports incompatible solutions.",
+            "id": "colonel-melchett",
+            "name": "Colonel Melchett",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A reserved woman newly arrived in St Mary Mead whose presence provokes speculation among the village's habitual observers. She has a private reason for coming to the village and does not initially explain her interest in the Protheroe household.",
+            "id": "mrs-lestrange",
+            "name": "Mrs Lestrange",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A visiting archaeologist directing a dig on Colonel Protheroe's land. His claims about the excavation and the identity of his talkative secretary, Miss Cram, create a separate mystery during the murder inquiry.",
+            "id": "doctor-stone",
+            "name": "Doctor Stone",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-murder-at-the-vicarage"
+      },
+      "recaps": {
+        "ending": "Miss Marple identifies Anne Protheroe and Lawrence Redding as partners in both the affair and the murder. Their separate confessions were coordinated attempts to create confusion, while the misleading time evidence and other planted clues were meant to make several innocent people look possible. When suspicion begins to settle on Hawes, he is drugged and evidence is arranged around him, but Leonard's arrival prevents his death and the deception fails. The police arrest Anne and Lawrence after Miss Marple explains how their movements and the apparent timing fit together. The investigation also clears away its independent mysteries: the supposed archaeologist is exposed as an impostor, and Mrs Lestrange is revealed as Lettice's terminally ill mother rather than Protheroe's lover. Lettice is able to spend her mother's remaining time with her. In the Clements' household, Griselda tells Leonard that she is pregnant, closing the case with their family looking toward a changed future.",
+        "in_short": "In St Mary Mead, rector Leonard Clement remarks that the overbearing Colonel Protheroe has made himself widely disliked. Soon afterward Protheroe is shot in the vicarage study while Leonard has been diverted by a false summons. The clock, a handwritten note, conflicting witness accounts, and two separate confessions create an uncertain timeline. Inspector Slack pursues physical evidence while Leonard and Miss Marple attend to the village's web of affairs, grudges, hidden family ties, financial trouble, and an unrelated archaeological fraud. Suspicion moves among Lawrence Redding, Anne and Lettice Protheroe, the curate Hawes, and several newcomers. Miss Marple ultimately shows that Anne and Lawrence, who are lovers, planned the crime together and used false confessions and manipulated clues to obscure their cooperation. Their attempt to frame and silence Hawes fails, and they are arrested. Mrs Lestrange proves to be Lettice's dying mother, while the excavation mystery is separately resolved. Afterward Griselda reveals that she and Leonard are expecting a child.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Rector Leonard Clement introduces St Mary Mead, where information circulates rapidly among neighbors and few private actions stay private. At lunch he jokes that anyone who killed the domineering Colonel Protheroe would be doing the village a service. The remark soon looks unfortunate: Protheroe is a strict magistrate, an unpleasant husband and father, and a churchwarden preparing to challenge irregularities in the parish accounts. Leonard meets the colonel's unhappy wife Anne, his evasive daughter Lettice, and the painter Lawrence Redding, whose work brings him into the Protheroe household. Leonard's young wife Griselda and his nephew Dennis also observe the tensions around them. A newcomer, Doctor Stone, is conducting an archaeological excavation on Protheroe's land, creating another source of disagreement. Against this crowded background, Protheroe arranges to meet Leonard at the vicarage study.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Leonard is called away to visit a supposedly dying parishioner, but the message proves false. When he returns, Colonel Protheroe is dead at the desk in the vicarage study, shot through the head. A note and a stopped clock seem to establish when he was waiting, yet witness accounts do not fit neatly together. Doctor Haydock's medical judgment leaves room for doubt, and the study was accessible from more than one direction. Inspector Slack and Colonel Melchett begin the official inquiry. Lawrence Redding has quarreled with Protheroe and has an obvious emotional connection to Anne, while Hawes fears the colonel's investigation of the church money. Lettice behaves secretively, Griselda's movements are not immediately clear, and Miss Marple reports observations from her garden next door. The sheer number of people with a motive makes the apparently simple scene increasingly uncertain.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Lawrence confesses to shooting Protheroe, but details of his account conflict with the medical and physical evidence. Anne then offers a confession of her own, creating two incompatible claims that cannot both describe the crime. Both are released while the inquiry continues. Leonard and the police examine the pistol, the note, the clock, and reports of a shot, but each promising clue produces a new contradiction. Miss Marple emphasizes that several unusual incidents around the vicarage may matter more than the dramatic confessions. Suspicion also touches Hawes, whose nervousness and financial difficulties appear to connect him to Protheroe's threatened audit. Meanwhile, the village remains occupied with the private newcomer Mrs Lestrange and with Doctor Stone's excavation. These side mysteries complicate the social picture without yet explaining who entered the study at the decisive time.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The investigation broadens beyond the original suspects. Lettice admits to concealing and moving an object in the study, but her reason is personal and does not account for the murder. Mrs Lestrange's secrecy is tied to the Protheroe family, while evidence surrounding the archaeological dig suggests that its organizer may not be what he claims. Miss Marple separates these independent deceptions from the shooting itself. She and Leonard continue testing the timeline against what neighbors could see and hear from nearby houses and paths. The supposed precision of the clock and note now looks less reliable, and the two confessions increasingly resemble devices that obstructed the inquiry rather than solved it. Hawes remains vulnerable because Protheroe had discovered trouble in the church accounts, giving someone a ready-made suspect on whom further evidence could be planted.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The excavation is exposed as a fraud carried out under a false professional identity, resolving one suspicious thread without linking it to Protheroe's death. Mrs Lestrange is revealed to be Lettice's mother, long absent and now terminally ill; Lettice's furtive behavior has largely been an attempt to protect that relationship. With these distractions removed, Miss Marple concentrates on the coordinated behavior surrounding the study and on the advantage created by two apparently competing confessions. Before she can bring the pattern fully into the open, Hawes is found dangerously drugged, with circumstances arranged to make him appear guilty and suicidal. Leonard summons help in time. The attack shows that the murderer is still acting and that Hawes's genuine misconduct over parish money has been used to support a false solution to the larger crime.",
+            "through": {
+              "chapter": 29
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Miss Marple explains that Anne Protheroe and Lawrence Redding planned the murder together. Their affair supplied the motive, while their separate confessions were designed to hide cooperation behind an apparent choice between two individual killers. Misleading time evidence, staged clues, and the later attempt to implicate Hawes extended the confusion. Once the unrelated secrets involving Lettice, Mrs Lestrange, and the fraudulent excavation are set aside, the couple's linked movements and deceptions provide the consistent solution. Anne and Lawrence are arrested. Hawes survives the effort to silence and frame him, though his own financial wrongdoing remains. Lettice is reunited with her dying mother and can share the time Mrs Lestrange has left. Life at the vicarage settles after the investigation, and Griselda tells Leonard that she is pregnant, giving the Clements an unexpected personal future beyond the case.",
+            "through": {
+              "chapter": 32
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-murder-at-the-vicarage"
+      }
+    },
     "the-murder-of-roger-ackroyd": {
       "characters": {
         "characters": [

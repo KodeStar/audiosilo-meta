@@ -806,6 +806,177 @@
         "work": "knight-of-shadows"
       }
     },
+    "la-dame-aux-camelias-camille": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The unnamed observer who attends the sale of a celebrated courtesan's possessions and buys her copy of Manon Lescaut. His curiosity brings him into contact with Armand Duval, whose account of Marguerite Gautier's final years becomes the main narrative.",
+            "id": "narrator",
+            "name": "The narrator",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A famous young Parisian courtesan whose elegance, extravagant habits, and customary bouquet of camellias made her widely known. She has recently died of consumption when the narrator first learns of her, and the auction of her belongings exposes how quickly fashionable society has reduced her life to gossip and objects for sale.",
+            "id": "marguerite-gautier",
+            "name": "Marguerite Gautier",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A young man who arrives distraught after Marguerite's auction and seeks the inscribed book bought by the narrator. His grief is plainly personal, and he becomes the narrator's friend before explaining the history of his love for Marguerite.",
+            "id": "armand-duval",
+            "name": "Armand Duval",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Marguerite's worldly friend and neighbor, familiar with the practical arrangements and financial pressures of Parisian society. She helps Armand gain entry to Marguerite's circle and often acts as an intermediary between the lovers.",
+            "id": "prudence-duvernoy",
+            "name": "Prudence Duvernoy",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A sociable acquaintance of both Armand and Marguerite who helps bring them together in Paris. He belongs comfortably to the theatrical and fashionable world surrounding Marguerite without sharing Armand's intense attachment.",
+            "id": "gaston-rieux",
+            "name": "Gaston Rieux",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Marguerite's loyal maid, responsible for the household's daily routines and for caring for her mistress during bouts of illness. Her position gives her a close view of Marguerite's private suffering behind her public life.",
+            "id": "nanine",
+            "name": "Nanine",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wealthy older admirer who supports Marguerite and treats her with paternal concern, partly because she resembles his dead daughter. His money offers security but also imposes conditions on how she may live.",
+            "id": "the-duke",
+            "name": "The Duke",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wealthy young man accepted in Marguerite's established social circle. His ability to pay for access to that world makes him a source of jealousy for Armand and a reminder of the arrangements on which Marguerite has depended.",
+            "id": "baron-de-varville",
+            "name": "Baron de Varville",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Armand's respectable, protective father. Alarmed by his son's attachment to Marguerite, he comes to intervene with the authority of family duty and conventional society behind him.",
+            "id": "monsieur-duval",
+            "name": "Monsieur Duval",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Armand's younger sister, whose prospects for a socially approved marriage become entangled with the Duval family's fear of scandal. She is chiefly present through the obligations others invoke on her behalf.",
+            "id": "blanche-duval",
+            "name": "Blanche Duval",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Another courtesan in Marguerite's Parisian circle. Armand turns to her after his break with Marguerite, drawing Olympe into a campaign meant to provoke and wound his former lover.",
+            "id": "olympe",
+            "name": "Olympe",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "la-dame-aux-camelias-camille"
+      },
+      "recaps": {
+        "ending": "While Armand is away, Marguerite's illness worsens amid debt and abandonment. Her letters record that she still loves him and hopes for his return, but he learns the truth too late: she dies with only a few loyal attendants near her, and her possessions are seized and sold. Armand returns after her death, visits her grave, and has her body moved so he can see her once more, an experience that leaves him physically and emotionally broken. Monsieur Duval finally confirms that Marguerite left Armand only because he had appealed to her to protect the family's reputation and Blanche's marriage. Armand is left knowing that the apparent betrayal for which he punished Marguerite was an act of sacrifice. He gives the narrator her portrait and preserves her memory, while the narrator closes the account by recognizing both Marguerite's generosity and the cruelty of the social judgment that isolated her.",
+        "in_short": "After the death of Marguerite Gautier, a celebrated Parisian courtesan, an unnamed narrator meets the grieving Armand Duval and hears their history. Armand had admired Marguerite from afar, then became her lover despite her illness, debts, and dependence on wealthy patrons. She returned his love and left Paris with him for a quieter life in the country. Armand's father secretly persuaded her that their relationship would disgrace the Duval family and prevent Armand's sister from marrying. Marguerite sacrificed her happiness and made Armand believe she had chosen a richer lover. Not knowing her reason, he retaliated publicly and then left France. Marguerite's consumption and financial troubles overtook her; she died alone before Armand returned. Her letters and his father's confession reveal the truth, leaving Armand to mourn a woman whom society treated as disreputable but whose final choice was selfless.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "An unnamed narrator attends the auction of the belongings of Marguerite Gautier, a young Parisian courtesan recently dead of consumption. Her rooms attract fashionable onlookers who treat the sale as entertainment. The narrator buys a copy of Manon Lescaut because of its handwritten dedication. Soon afterward, a distressed young man named Armand Duval asks about the book and explains that he gave it to Marguerite. Moved by his grief, the narrator lets him have it and befriends him. After visiting Marguerite's grave and arranging for her remains to be transferred, Armand falls ill. When he recovers enough to speak, he offers to tell the narrator how he knew her.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Armand explains that he first saw Marguerite in fashionable Parisian venues and became fascinated by her. During one of her serious illnesses he repeatedly asked after her without leaving his name. Much later, their mutual acquaintances Gaston Rieux and Prudence Duvernoy bring him into Marguerite's company. Her lively public manner initially makes light of his devotion, but she is touched to learn that he was the anonymous visitor who cared about her health. When a violent coughing fit exposes how fragile she is, Armand urges her to protect herself and declares his love. Marguerite allows the affair to begin, though she warns him that her life, debts, and other admirers cannot simply disappear. Armand accepts her conditions while already struggling with jealousy.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Armand and Marguerite grow genuinely attached, but their happiness is strained by the practical structure of her life. A wealthy duke and Baron de Varville help sustain expenses that Armand cannot meet, and he repeatedly mistakes Marguerite's financial dependence for indifference. Reconciliations follow their quarrels, and she eventually chooses a quieter life with him at Bougival outside Paris. In the country her health and spirits improve, and the couple live with an ease neither found in Paris. Armand discovers, however, that Marguerite has been selling possessions and taking on losses to preserve their household. His attempt to settle matters with his own limited fortune reveals how precarious their retreat remains.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Monsieur Duval confronts Armand and demands that he end a relationship he regards as ruinous. Armand refuses, convinced of Marguerite's sincerity. His father then meets Marguerite privately and appeals to her on different grounds: public knowledge of the affair threatens the respectable marriage planned for Armand's innocent sister, Blanche. Marguerite agrees to give Armand up without revealing why. She returns to Paris and resumes contact with Varville, leaving a letter that makes her departure appear voluntary and mercenary. Armand is devastated and interprets the evidence as proof that her promises were false. He leaves with his father, unaware that Marguerite has surrendered the life she wanted in order to protect his family.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Back in Paris, Armand seeks revenge instead of an explanation. He begins appearing with Olympe, a courtesan in the same circle, and uses public encounters to make Marguerite jealous. Marguerite begs him to stop and, during a private reunion, admits that she still loves him but says she is bound by a promise she cannot disclose. Armand briefly believes they may be reconciled, only to find her gone again. In anger he sends her money as if paying for their night together, humiliating her and confirming the harshest terms society places on her. He then leaves France. Marguerite, already gravely ill, loses the protection of former patrons and faces mounting debts while still following news of Armand.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Marguerite's final letters reveal a rapid decline marked by illness, creditors, and the disappearance of most of her social circle. She hopes Armand will return and learns that Monsieur Duval has promised to tell him the truth, but she dies before seeing him again. Her belongings are auctioned to satisfy her debts. Armand returns too late, reads the record of her last days, and learns from his father that Marguerite abandoned him only after being asked to save Blanche's marriage and the Duval name from scandal. His own retaliation now appears as punishment inflicted on someone who was protecting his family. He visits Marguerite's grave, preserves her portrait, and entrusts her story to the narrator, who presents her not as the role Paris assigned her but as a woman capable of loyal love and costly sacrifice.",
+            "through": {
+              "chapter": 27
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "la-dame-aux-camelias-camille"
+      }
+    },
     "lair-of-dreams": {
       "characters": {
         "characters": [
