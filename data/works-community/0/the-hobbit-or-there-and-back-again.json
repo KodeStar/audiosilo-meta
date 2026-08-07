@@ -1225,6 +1225,257 @@
         "work": "the-hunger-games"
       }
     },
+    "the-kingdom-of-copper": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The Banu Nahida of Daevabad and the only acknowledged Nahid healer alive, married to the emir Muntadhir and confined to a palace she is not permitted to leave. Five years after she was brought to the city she has become a formidable healer, but her position rests entirely on the king's tolerance, and she survives it the way she survived Cairo: by watching, bargaining, and giving away nothing she does not have to. She still does not know who her parents were.",
+            "id": "nahri",
+            "name": "Nahri",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Alizayd al Qahtani",
+              "Ali"
+            ],
+            "description": "The king's younger son, exiled to the Geziri provinces and widely expected to die there. He survived, and in the desert village that took him in he has found a use for what the marid left in him: he can call water where there is none. He hides what that means, prays it will fade, and has built a life among people who value him for the well he found rather than the name he carries.",
+            "id": "alizayd",
+            "name": "Alizayd",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Darayavahoush e-Afshin",
+              "the Afshin"
+            ],
+            "description": "The Nahids' warrior, killed on Daevabad's lake and raised again by Banu Manizheh, restored to the body and the unbound magic his people held before Suleiman's punishment. He is bound to Manizheh's service and to a plan he did not choose, training soldiers in a hidden camp far from the city, and he carries the memory of everything he did the last time he was handed orders and told they were necessary.",
+            "id": "dara",
+            "name": "Dara",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Banu Manizheh"
+            ],
+            "description": "The Nahid healer the world believed the ifrit murdered twenty years ago, alive and at large beyond Daevabad's veil. She raised Dara from the dead, she has the grand wazir's loyalty, and she intends to take back the city her family lost. Nahri is her daughter, a fact Nahri does not know.",
+            "id": "manizheh",
+            "name": "Manizheh",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Ghassan al Qahtani"
+            ],
+            "description": "King of Daevabad and bearer of Suleiman's seal. Five years on he governs by threat and hostage: he knows precisely whom each person under him loves, and he says so. He has kept Nahri obedient by naming what will happen to the Daeva tribe, and to individual Daevas, the moment she disappoints him.",
+            "id": "ghassan",
+            "name": "Ghassan",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Emir of Daevabad and Nahri's husband, in a marriage that is a treaty rather than a partnership. Still fonder of wine, poetry and company than of governing, he has spent five years watching his father use his wife as an instrument, unable to protect her, his brother, or Jamshid e-Pramukh, whose injuries have never healed.",
+            "id": "muntadhir",
+            "name": "Muntadhir",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ghassan's daughter and the most politically capable of his children, who has spent her younger brother's exile managing the household, the court's expectations and the family's public face.",
+            "id": "zaynab",
+            "name": "Zaynab",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Kaveh e-Pramukh"
+            ],
+            "description": "Grand wazir of Daevabad and Jamshid's father, the senior Daeva in the king's government and an unwavering advocate for what he believes his tribe is owed. He travels frequently to the Daeva provinces on the crown's business.",
+            "id": "kaveh",
+            "name": "Kaveh",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Jamshid e-Pramukh"
+            ],
+            "description": "Kaveh's son and Muntadhir's closest companion, left partly crippled by the Afshin's arrows five years ago. No healer, Nahri included, has been able to undo the damage, and he has rebuilt a life around the limits it set.",
+            "id": "jamshid",
+            "name": "Jamshid",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Nahri's assistant in the palace infirmary, a Daeva woman who trained under the previous Nahids and has guided Nahri's practice since she arrived. Devoted to Daeva tradition and to the restoration of her tribe's standing, she is the closest thing Nahri has to a teacher.",
+            "id": "nisreen",
+            "name": "Nisreen",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Geziri djinn of Bir Nabat, the desert village that took Ali in after finding him half-dead. Talkative, cheerful and hard to offend, he has become Ali's closest friend and treats the prince's grim self-denial as a personal challenge.",
+            "id": "lubayd",
+            "name": "Lubayd",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Geziri warrior of Bir Nabat, blunt and formidably capable, who fights beside Ali and has no patience at all for the politics of Daevabad.",
+            "id": "aqisa",
+            "name": "Aqisa",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An ifrit who has attached himself to Manizheh's cause. Like all his kind he is one of the original daevas who refused Suleiman's judgement, unchanged and very old, and his knowledge of what the Nahids used to be able to do is worth more to Manizheh than his sword. Nothing he offers is offered freely.",
+            "id": "aeshma",
+            "name": "Aeshma",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Ali's mother, an Ayaanle noblewoman of Ta Ntry and Ghassan's queen, who returns to Daevabad with plans of her own. Wealthy, exceptionally well connected and entirely unsentimental about court politics, she has never accepted her son's exile and does not intend to leave his future to his father.",
+            "id": "hatset",
+            "name": "Hatset",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Subhashini Sen"
+            ],
+            "description": "A shafit physician in Daevabad, trained in human medicine, who treats the part-human patients the Nahid infirmary will not admit. Capable and direct, she is deeply suspicious of any offer of partnership from a Nahid, and says so.",
+            "id": "subhashini",
+            "name": "Subhashini",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-kingdom-of-copper"
+      },
+      "recaps": {
+        "ending": "Manizheh's assault succeeds completely. Dara brings her forces across the cursed lake and destroys the Citadel, killing most of the Royal Guard with it, while inside the palace Kaveh releases a vapour Manizheh built from Nahid poison-craft: it kills Geziri djinn and leaves everyone else untouched. The Navasatem gathering becomes a massacre. Ghassan dies with the rest, and Muntadhir is left mortally wounded and beyond ordinary healing. Suleiman's seal passes to Alizayd, who survives the vapour only because of the marid magic in him. Kaveh reveals that Jamshid is his son by Manizheh, which makes Jamshid a Nahid and Nahri's half-brother, and Manizheh tells Nahri to her face that she is her daughter. Refusing to be taken, Nahri and Ali throw themselves into the lake and are carried half a world away, surfacing in the Nile. Because the bearer of Suleiman's seal is no longer on the island, Daevabad's magic goes out with him: the wards, the conjuring, the healing, all of it. Manizheh ends the book holding a city that no longer works, keeping Muntadhir alive as leverage over Jamshid, whom she means to install as her heir. Dara has delivered exactly what he was raised from the dead to deliver, and is beginning to understand what he has let himself become for a second time. Nahri and Ali are alive, magicless and stranded in Egypt, and they are the only two people who might undo any of it.",
+        "in_short": "Five years after The City of Brass, Nahri is Daevabad's Banu Nahida and Muntadhir's unwilling wife, kept obedient by King Ghassan's threats against her tribe. Ali, exiled to the desert, has survived assassins and hidden the water magic the marid left in him. Summoned home for Navasatem, the celebration held once a century, he joins Nahri in rebuilding the ruined Nahid hospital to treat the city's despised shafit. While treating Jamshid, Nahri discovers he carries Nahid blood. Outside the city, Dara, resurrected and bound to Banu Manizheh, trains her army while arguing against her methods. Manizheh strikes during Navasatem: Dara destroys the Citadel while Kaveh releases a poison that kills Daevabad's Geziri, Ghassan among them. Muntadhir is mortally wounded, Kaveh reveals Jamshid as his and Manizheh's son, and Nahri learns that Manizheh is her mother. Suleiman's seal passes to Ali, and when he and Nahri escape into the lake and surface in the Nile, Daevabad's magic fails with the seal-bearer gone. Manizheh holds a broken city; Nahri and Ali are stranded in Egypt.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, in The City of Brass: Nahri, a young con artist in Ottoman Cairo, accidentally summoned Darayavahoush the Afshin, a daeva warrior, and learned that she carried the blood of the Nahids, the family of magical healers who once ruled the djinn city of Daevabad. Dara brought her there, hunted by ifrit the whole way. Daevabad had been taken from the Nahids fourteen centuries earlier by the Qahtani family, who rule its six tribes and confine the part-human shafit to poverty. King Ghassan installed Nahri in his palace as the first Nahid healer in twenty years and set his devout younger son Alizayd to tutor her; the two became friends while Ali was secretly funding a shafit organization, a betrayal that cost lives and destroyed his standing. Nahri learned that Dara is remembered by the other tribes as the Scourge of Qui-zi, responsible for a massacre of shafit during the war, and she bargained a betrothal to Ghassan's heir Muntadhir to protect herself and the Daeva tribe. When Dara tried to take her out of the city, the escape became a bloodbath: he crippled Jamshid e-Pramukh with his arrows, and on the cursed lake the marid seized Ali, possessed him and used him to kill Dara. Nahri was married to Muntadhir; Ali was exiled to the Geziri desert on an assignment meant to kill him. In the epilogue Dara woke restored to life and to the unbound magic his people held before Suleiman's punishment, raised by Kaveh e-Pramukh and by Banu Manizheh, the Nahid healer believed murdered two decades ago, who revealed that Nahri is her daughter.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Five years have passed. Nahri is Daevabad's Banu Nahida and Muntadhir's wife in a marriage neither of them chose, running the palace infirmary and effectively a prisoner of Ghassan's goodwill. Ali survived his exile: after assassins came for him in Am Gezira, the desert village of Bir Nabat took him in, and he has quietly used the water magic the marid left in him to bring the village a spring. He refuses to think about what that magic makes him. Far from both of them, Dara is alive. Restored by Manizheh, bound to her service and to a body whose power he does not recognize, he is training a small force of young Daeva recruits in a hidden camp, and he is beginning to understand that the woman who raised him from the dead intends to take Daevabad back by any means she can reach.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ghassan summons Ali home to Daevabad for Navasatem, the festival held once a century, and everyone involved reads the summons as a trap of some kind. Ali returns with his Bir Nabat friends Lubayd and Aqisa to a court that has not forgiven him: Muntadhir treats his brother's return as a threat to his own position, and their mother Hatset arrives from Ta Ntry with plans for her son that he has not agreed to. Nahri, denied any authority beyond the infirmary, has an ambition of her own. She wants to reopen the ruined Nahid hospital in the shafit district and treat shafit patients in it, which would break with everything her tribe expects of her and everything Ghassan is willing to permit.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Nahri and Ali resume the alliance that got them both into trouble five years ago, working together on the hospital. She recruits shafit physicians, among them Subhashini Sen, who has no reason to trust a Nahid, and finds that rebuilding the place means confronting what her own family did to the shafit long before the Qahtanis ever arrived. Ghassan permits the project because it is useful to him, and goes on controlling Nahri by naming exactly who will suffer if she disappoints him. Muntadhir watches his wife and his brother work together and draws his own conclusions. In the mountains, Dara's misgivings harden as he learns what Manizheh is prepared to use: ifrit allies, and Nahid craft turned to purposes no healer should be putting it to.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Treating Jamshid, Nahri finds something that should not be there: his body resists her healing the way only Nahid flesh does. Jamshid, the grand wazir's son, carries Nahid blood, and the implications go far beyond a medical curiosity, because a second living Nahid changes who can hold Daevabad and who can be forced to. Kaveh's behaviour, and his long absences to the Daeva provinces, start to look like something other than provincial administration. Ali's questions about where the treasury's money has been going lead him toward the same answer from a different direction. Preparations for Navasatem fill the city with visitors and soldiers, and violence between shafit and Daeva becomes an almost daily occurrence.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The hospital opens, and for a short while it works: shafit and Daeva treated in the same building, with Nahri, Ali and Subhashini's physicians sharing the wards. It does not survive the city's politics. Navasatem brings the tribes together and brings every grievance between them along too; bloodshed between shafit and Daeva escalates, and Ghassan's answer is to tighten his hold on everyone who might matter, Nahri included. She and Muntadhir reach a fragile understanding and then lose it. Kaveh departs for the provinces at a conspicuously convenient moment, and beyond the veil Manizheh's preparations are complete.",
+            "through": {
+              "chapter": 31
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the last days of Navasatem, Ghassan's grip closes. He forces Nahri into a position with no acceptable answer, and Ali, whose marid-given abilities can no longer be hidden from his father, becomes a liability the king will not tolerate. Muntadhir is left choosing between his brother, his wife and his king, and chooses badly in every direction. Beyond the lake, Manizheh's army is ready. Dara, who has spent the book arguing with her about what is genuinely necessary, is given his orders, and obeys them.",
+            "through": {
+              "chapter": 37
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Manizheh takes Daevabad. Dara brings her army across the cursed lake and brings down the Citadel, killing most of the Royal Guard, while inside the palace Kaveh releases a vapour Manizheh made from Nahid poison-craft that kills Geziri djinn and nobody else. The Navasatem gathering becomes a massacre: Geziri die throughout the palace and the city, Ghassan among them, and Muntadhir is left mortally wounded. Suleiman's seal passes to Ali, who lives through the vapour because of what the marid did to him. Kaveh reveals that Jamshid is his son by Manizheh, making Jamshid a Nahid and Nahri's half-brother, and Nahri meets her mother for the first time and is told exactly what she is. With the palace lost and nothing left to hold, Nahri and Ali throw themselves into the lake rather than be taken. Because the bearer of the seal has left the island, Daevabad's magic goes out with him.",
+            "through": {
+              "chapter": 41
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Nahri and Ali surface half a world away, in the Nile, alive and stranded with no magic to carry them anywhere. Behind them, Daevabad belongs to Banu Manizheh: a city without magic, its Geziri population devastated, its Royal Guard destroyed, Muntadhir dying and kept as leverage, and Jamshid claimed as the Nahid heir his mother intends to seat on the throne. Dara has won everything he was raised from the dead to win, and understands too late what it cost and who paid.",
+            "through": {
+              "chapter": 42
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-kingdom-of-copper"
+      }
+    },
     "the-kite-runner": {
       "characters": {
         "characters": [

@@ -670,6 +670,800 @@
         "work": "it"
       }
     },
+    "jade-city": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Kaul Lan"
+            ],
+            "description": "The eldest of the three Kaul grandchildren and the Pillar, or head, of the No Peak clan, one of the two great jade-wearing families of Janloon. He inherited the position young, when his grandfather stepped back, and governs by patience and persuasion rather than force, weighing every decision against what the clan can afford to lose. He is widely respected and privately unsure of himself, permanently measured against a legendary predecessor, and he carries the quiet humiliation of a marriage that ended when his wife left him. A highly capable Green Bone, he would rather settle a problem with a negotiation than a blade.",
+            "id": "kaul-lanshinwan",
+            "name": "Kaul Lanshinwan",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Kaul Hilo",
+              "the Horn"
+            ],
+            "description": "The middle Kaul sibling and the Horn of No Peak, the clan's military leader, responsible for its Fists and Fingers and for answering any insult to the family. Charming, quick-tempered and physically formidable, he is adored by the young warriors under his command and feared by everyone else in Janloon. He is fiercely loyal to his brother Lan even when he disagrees with him, and settles problems with immediate action where Lan would deliberate. He is involved with Maik Wen, the sister of his two closest lieutenants, a relationship his family does not approve of.",
+            "id": "kaul-hiloshudon",
+            "name": "Kaul Hiloshudon",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Kaul Shae"
+            ],
+            "description": "The youngest Kaul sibling, returning to Janloon after two years in Espenia, where she studied business and lived with a foreign boyfriend. She left Kekon after quarrelling with her grandfather and gave up her jade before going, an act the clan treats as close to desertion. Trained at the same academy as her brothers and gifted at both jade abilities and analysis, she wants an ordinary professional life outside the family business and resists every attempt to draw her back into it.",
+            "id": "kaul-shaelinsan",
+            "name": "Kaul Shaelinsan",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Kaul Sen",
+              "the Torch of Kekon"
+            ],
+            "description": "The Kaul grandfather, founder of the No Peak clan and a national hero of the war that drove the Shotarian occupation off Kekon, which he led alongside his old comrade Ayt Yugontin. Age and illness have worn him down; he no longer runs the clan but still expects to be obeyed, and his interference repeatedly undercuts his grandson Lan. He is devoted to his oldest adviser and openly disappointed in his granddaughter.",
+            "id": "kaul-seningtun",
+            "name": "Kaul Seningtun",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Doru"
+            ],
+            "description": "The Weather Man of No Peak, in charge of the clan's businesses and finances, and Kaul Sen's closest adviser for decades. Elderly, softly spoken and habitually secretive, he keeps his own counsel and his own arrangements, and treats the younger Kauls as children who have not earned their positions. Lan and Hilo both distrust him, and his sympathies toward Kekon's former occupiers are an old source of suspicion, but he is protected by the grandfather's loyalty.",
+            "id": "yun-dorupon",
+            "name": "Yun Dorupon",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Anden"
+            ],
+            "description": "A cousin taken into the Kaul household as a boy after his mother's death, now in his final year at Kaul Dushuron Academy, the clan's training school for Green Bones. He is half Espenian, which shows in his face and marks him as an outsider in Janloon, and he is unusually gifted with jade, enough that his teachers expect great things of him. He is also frightened of it: his mother was a Green Bone who lost her mind and her life to jade overexposure, and he does not know whether the same is waiting for him. He is devoted to Lan and Hilo, who raised him, and privately unsure he wants the life the clan has planned for him.",
+            "id": "emery-anden",
+            "name": "Emery Anden",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Wen"
+            ],
+            "description": "Hilo's girlfriend and the sister of the Maik brothers who serve as his lieutenants. She is a stone-eye, born unable to perceive or bear jade at all, a condition Kekonese custom treats as unlucky and shameful; because of it she can never be a Green Bone and is considered an unsuitable match for the Horn of a clan. Practical, composed and quietly ambitious for the family, she manages the household and its social obligations and understands Janloon's politics better than most of the men who make it.",
+            "id": "maik-wen",
+            "name": "Maik Wen",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The elder Maik brother and Hilo's chief Fist, a broad, unhurried man with exceptional Perception. The Maiks' father disgraced the family name, and Hilo took the brothers in when no other clan would have them, so their loyalty to him is absolute. Kehn handles the daily discipline and deployment of the Horn's men.",
+            "id": "maik-kehn",
+            "name": "Maik Kehn",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The younger Maik brother, wiry and volatile, who does the work the clan does not discuss: killings arranged quietly and without ceremony. He is devoted to Hilo without reservation and takes more pleasure in violence than his brother does.",
+            "id": "maik-tar",
+            "name": "Maik Tar",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ayt Mada"
+            ],
+            "description": "The Pillar of the Mountain clan, No Peak's rival for control of Janloon, and the adopted daughter of the clan's founder Ayt Yugontin. She took the leadership after her father's death in a succession fight with her adoptive brother, and few in either clan believe she came by it cleanly. Disciplined, patient and entirely unsentimental, she is the only woman to lead a great clan and she intends to bring all of Kekon's jade under a single authority, her own.",
+            "id": "ayt-madashi",
+            "name": "Ayt Madashi",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The Horn of the Mountain and Ayt Mada's military commander: a heavy, powerful Green Bone known for winning fights by absorbing punishment no one else could survive. He believes in his Pillar's vision of one clan over Kekon and holds the Kaul brothers in open contempt.",
+            "id": "gont-asch",
+            "name": "Gont Asch",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A jadeless young man from one of Janloon's poor districts, the son of a Green Bone who died before he was born, convinced that jade is owed to him and that one lucky theft would change his life. He opens the book robbing a Green Bone of his jade outside a restaurant under clan protection, and he returns to the same ambition however badly it goes for him.",
+            "id": "bero",
+            "name": "Bero",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Woon Papi"
+            ],
+            "description": "Lan's Pillarman, the aide who manages the Pillar's schedule, security and messages and one of the few people the Pillar speaks to candidly. Steady, discreet and conscientious, he studied alongside the Kauls at the academy and has served Lan since he took the seat.",
+            "id": "woon-papidonwa",
+            "name": "Woon Papidonwa",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Lan's former wife, who left him and the world of the clans behind. Her departure is a private wound he has never worked through, and she wants nothing further to do with jade, Green Bones or the Kaul family.",
+            "id": "eyni",
+            "name": "Eyni",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "the White Rat"
+            ],
+            "description": "A Royal Council politician backed by No Peak in the contest for the chancellorship of Kekon. Genial, heavy-set and thoroughly transactional, he understands that a chancellor holds the office at the pleasure of whichever clan put him in it.",
+            "id": "son-tomarho",
+            "name": "Son Tomarho",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "jade-city"
+      },
+      "recaps": {
+        "ending": "No Peak's New Year's Eve offensive against the Mountain's leadership fails to kill Ayt Mada, but it costs her the Horn of her clan: Anden, wearing far more jade than his body can carry, stops Gont Asch's heart with Channeling, and is so badly damaged by the act that he renounces jade permanently, ending the career the clan raised him for. The war between the clans stops from exhaustion rather than resolution. Ayt Mada keeps the Mountain and remains committed to a single unified clan over Kekon. Hilo is confirmed as Pillar of No Peak, with his sister Shae as Weather Man, Maik Kehn as Horn and Maik Tar as his Pillarman, and he announces that he will marry Wen, a stone-eye, over his family's objections. Kaul Sen, estranged from Hilo since the killing of his old Weather Man, is left isolated and failing. The clan has survived, but it has lost its Pillar, the grandfather's blessing, and any illusion that its quarrel with the Mountain can be contained inside Janloon: both clans now have foreign money, foreign buyers and foreign enemies in play, and Kekon's jade has become an international commodity. Bero, the jadeless thief from the opening pages, is still alive and still chasing jade.",
+        "in_short": "On the island nation of Kekon, bioenergetic jade gives trained Green Bones superhuman abilities, and the jade trade belongs to the clans. In the capital, Janloon, the Kaul family's No Peak clan is led by Kaul Lan as Pillar and his brother Hilo as Horn. When Ayt Mada, Pillar of the rival Mountain clan, demands that No Peak submit to a single unified clan under her and Lan refuses, the two families slide into open war of street killings, poached businesses and a fight for control of Kekon's government. Lan's sister Shae, home from Espenia, exposes No Peak's own Weather Man as a traitor and is pressed into replacing him. Lan, secretly weakened by a sabotaged supply of the jade drug shine, is ambushed and killed by the Mountain's Horn, Gont Asch. Hilo takes the Pillar's seat and strikes back on New Year's Eve; the attack fails to kill Ayt Mada, but the Kauls' cousin Anden kills Gont with a lethal use of Channeling and is so damaged that he gives up jade forever. The war ends in stalemate: Ayt Mada lives, No Peak survives, and Hilo marries Wen.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Kekon is a small island nation whose mountains hold bioenergetic jade, a mineral that grants trained Kekonese extraordinary abilities: strength, speed, heightened senses, deflection of force and the power to disrupt another body from a distance. Those who wear it are called Green Bones, and the jade trade is controlled by the clans. In the capital, Janloon, two great clans divide the city between them: No Peak, run by the Kaul family, and the Mountain. Both were founded by veterans of the resistance that drove out the Shotarian occupation a generation ago. No Peak's Pillar, its head, is Kaul Lan, the eldest grandson; his younger brother Hilo is the Horn, commanding the clan's warriors; their grandfather Kaul Sen, the war hero who built No Peak, has handed over the title without surrendering his authority, and the clan's businesses are run by his old ally, the Weather Man Yun Dorupon. The book opens with Bero, a jadeless young man from a poor district, robbing a Green Bone of his jade outside the Twice Lucky, a restaurant that pays No Peak for protection, and with Hilo answering the theft in person. Beneath the routine business of tribute payments and protected shops, relations between the two clans are deteriorating, and each is watching the other for weakness.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kaul Shae, the youngest of the three siblings, comes home to Janloon after two years in Espenia, the wealthy foreign power whose money and culture increasingly shape Kekon. She left after quarrelling with her grandfather and gave up her jade before going, which the clan regards as close to desertion; she now wants an ordinary career and no part in family business, and her brothers cannot understand it. Their cousin Anden, half Espenian and raised in the Kaul house, is in his final year at Kaul Dushuron Academy, the clan's school for Green Bones, where he is the strongest student in his class and privately frightened by what that means. A chance confrontation with Mountain Green Bones at a public festival shows how little goodwill is left between the clans. Ayt Mada, the Mountain's Pillar, then summons Lan to her family's estate and puts a proposal to him directly: the two clans should become one under her leadership, with the Kauls given an honored but subordinate place. She argues that a divided Kekon cannot hold its jade against foreign powers. Lan refuses, and both of them understand what the refusal commits them to.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Mountain begins taking No Peak apart commercially, poaching its tributary businessmen, the Lantern Men, and pressuring shopkeepers to change allegiance. Lan finds he can get little support from inside his own clan: his grandfather countermands him, and the Weather Man Yun Dorupon treats the clan's finances as private ground. Lan is also concealing a personal problem. He is struggling to carry his jade and suffering the symptoms of overexposure, and he has quietly begun taking SN1, the drug called shine, which raises a wearer's tolerance and which Green Bones consider shameful. Shae takes an outside job but is steadily drawn back toward the clan's difficulties, and her analytical work turns up irregularities in No Peak's accounts. Kekon's entire jade supply is supposed to be mined, refined and distributed under national control; evidence begins to accumulate that jade is being diverted out of that system and off the island, and that people inside the clans know about it.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The rivalry becomes open warfare. Green Bones on both sides settle grievances with clean-bladed duels, and beyond the duels there are ambushes, beatings and killings; Hilo answers every Mountain move at once and escalates. Property is destroyed, and neither clan can back down without losing the loyalty of the people who pay it for protection. Lan is fighting on several fronts at once: against the Mountain, against his grandfather's interference, and against his own worsening condition. Shae is pulled steadily further into the clan's affairs, and her scrutiny of its accounts keeps returning to arrangements the Weather Man has never explained to anyone. The Kauls begin to suspect that some of the damage being done to No Peak is not coming from outside it.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Shae's examination of the clan's finances hardens into proof: Yun Dorupon has been running arrangements he never disclosed, tying No Peak's own Weather Man to jade leaving Kekon and to interests aligned with the country's former occupiers. Lan concludes that he cannot govern the clan while the man remains in place, strips him of the Weather Man's office and turns to Shae to replace him, forcing her to choose between the life she wanted and the clan she was born into. Kaul Sen is enraged at the removal of the friend he has protected for fifty years and turns on his grandsons; the disgraced Weather Man withdraws to a place where clan violence traditionally cannot follow. The street war continues through a typhoon and its aftermath: both clans consolidate territory, mark out which districts and businesses belong to whom, and prepare for something larger than duels. Lan's reliance on shine worsens, and it is noticed by people who can make use of it. His brother and sister both realize that the Pillar has been keeping something from them, and that No Peak's position is considerably weaker than the family has been willing to admit.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Lan goes to the Temple of Divine Return, where the deposed Weather Man has taken sanctuary, meaning to settle the matter himself. Gont Asch, the Horn of the Mountain, is waiting for him. Lan's abilities fail under the strain of the fight, his supply of shine having been tampered with, and Gont kills him and takes his jade. No Peak loses its Pillar without warning. Hilo, who has spent the book as the clan's blunt instrument, becomes head of the family, and the character of the war changes with him: where Lan calculated, Hilo intends to answer a killing with killings. The Kauls are left with grief, a furious and failing grandfather, a leadership in transition, and an enemy who has just demonstrated that she is willing to murder a Pillar.",
+            "through": {
+              "chapter": 34
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Hilo takes the Pillar's seat and rebuilds the clan's leadership around people he trusts without reservation: Maik Kehn as Horn, Kehn's brother Tar as his Pillarman, and Shae confirmed as Weather Man. Kaul Sen demands that the disgraced Yun Dorupon be pardoned and left in peace; Hilo has him killed anyway, which ends whatever was left between the new Pillar and his grandfather. The clans then open a second front. The chancellorship of Kekon's Royal Council falls vacant, and each clan works to install its own candidate, since whoever holds the office shapes how the government treats the clans' businesses and their jade. No Peak's man, the councilman Son Tomarho, takes the post. At the academy, Anden finishes first in his class, which means the clan will shortly award him jade, the thing he has spent his life being told he was made for and has come to dread.",
+            "through": {
+              "chapter": 43
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Shae uses her foreign education to build relationships for No Peak abroad, reaching toward Espenia's capital and its commercial and political networks, and her work confirms what the accounts had hinted at: the Mountain has been selling Kekonese jade out of the country to foreign buyers, which is both a crime and a betrayal of the national interest that No Peak can use against Ayt Mada. Wen, who as a stone-eye cannot be sensed by any Green Bone's Perception, quietly gathers information the clan could not otherwise reach, and does it without Hilo's permission. With the Mountain overextended and its activities exposed, Hilo assembles a plan to end the war in a single night by removing the people who run the rival clan, and sets it for the New Year.",
+            "through": {
+              "chapter": 50
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On New Year's Eve, No Peak strikes at the Mountain's leadership simultaneously across Janloon. The plan does not survive contact: the targets are defended, and the fighting is far bloodier than intended. Anden, who has just graduated and been given the jade he never wanted, is pulled into the worst of it. Confronted by Gont Asch and wearing far more jade than his body can safely carry, he uses Channeling to stop the Horn's heart, killing him. The surge leaves Anden physically wrecked and convinced that jade will destroy him as it destroyed his mother, and he renounces it completely. Gont's death costs the Mountain its military commander and blunts Ayt Mada's campaign, but she survives, keeps her clan, and the war ends in exhaustion rather than victory. Hilo is left the undisputed Pillar of a battered No Peak, with Shae as his Weather Man, and he announces that he will marry Wen despite what the family thinks of the match. Anden, having given up the future the clan trained him for, no longer has a place in it. Bero, still without jade, is alive, unrepentant, and looking for his next opportunity.",
+            "through": {
+              "chapter": 57
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "jade-city"
+      }
+    },
+    "jade-legacy": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Kaul Hilo",
+              "the Pillar"
+            ],
+            "description": "Pillar of the No Peak clan, in the job for years now and no longer the young Horn who took it after his brother's murder. He still governs by instinct, personal loyalty and a willingness to answer violence immediately, in a Kekon that increasingly rewards lawyers, diplomats and foreign capital instead. He is angry with his wife and his sister over the secret they kept from him, unwilling to say so directly, and unable to stop fighting a war he inherited from his grandfather's generation.",
+            "id": "kaul-hiloshudon",
+            "name": "Kaul Hiloshudon",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Kaul Shae",
+              "the Weather Man"
+            ],
+            "description": "The Weather Man of No Peak, running the clan's business and political side and, increasingly, its international one. She is the architect of the strategy that tied Kekon to Espenia, and she carries the consequences of it, along with a working relationship with her brother that has gone cold and formal since he learned what she helped his wife do.",
+            "id": "kaul-shaelinsan",
+            "name": "Kaul Shaelinsan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Wen",
+              "Kaul Wen"
+            ],
+            "description": "Hilo's wife, a stone-eye who cannot perceive or wear jade, and the mother of his children. The injuries she took working secretly for the clan have left her with lasting damage to her speech and movement, and much of her energy goes into recovering what she can of both. She is undiminished in judgement and in ambition for the family, and unrepentant about what she did.",
+            "id": "maik-wen",
+            "name": "Maik Wen",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Anden"
+            ],
+            "description": "The Kauls' half-Espenian cousin, back in Kekon and wearing jade again after years of refusing it. Rather than take a place among the clan's warriors he is studying medicine, on the conviction that what jade does to the human body is a medical problem that Kekon has never seriously examined. He remains the family member most willing to say uncomfortable things to the Pillar, and he has a life in Espenia he has not closed off.",
+            "id": "emery-anden",
+            "name": "Emery Anden",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ayt Mada"
+            ],
+            "description": "Pillar of the Mountain clan and Hilo's opposite number for the whole of the war. Older now, still without an obvious successor, and still convinced that Kekon can only protect its jade under one clan rather than two. Her strategy of trading with Kekon's enemies has failed expensively, but her position inside her own clan is unshaken and her patience is longer than anyone else's.",
+            "id": "ayt-madashi",
+            "name": "Ayt Madashi",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The surviving Maik brother, Wen's sibling and Hilo's most trusted enforcer, responsible for the clan's killings and for the work it does not put in writing. Absolutely loyal to the Pillar and less and less restrained by anything else.",
+            "id": "maik-tar",
+            "name": "Maik Tar",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Woon Papi"
+            ],
+            "description": "Shae's Shadow, the senior aide to the Weather Man, and before that Kaul Lan's Pillarman. Quietly capable and completely dependable, he has served three Kauls in turn and has been in love with the current one for years without saying so usefully.",
+            "id": "woon-papidonwa",
+            "name": "Woon Papidonwa",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior Fist of No Peak: steady, well-liked among the clan's warriors, and more comfortable with the modern, organized shape the clan's military side has been forced into than with the older tradition of duels and personal grudges. As the war drags on he is given increasing responsibility for it.",
+            "id": "juen-nu",
+            "name": "Juen Nu",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Niko"
+            ],
+            "description": "Kaul Lan's son, brought back from Espenia as a small child and raised in the Kaul house by Hilo and Wen alongside their own children. As the son of a Pillar he is treated by the whole clan as the heir to No Peak, a role decided for him before he was old enough to have an opinion about it. He is watchful and serious, aware that he is being measured, and aware that he is the only child in the house who is not Hilo's own.",
+            "id": "kaul-niko",
+            "name": "Kaul Niko",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ru"
+            ],
+            "description": "Hilo and Wen's son, a stone-eye like his mother, which means he will never wear jade or be a Green Bone in a family and a country that measure worth in exactly those terms. Sociable, funny and sharply intelligent, he grows up entirely comfortable with the clan and entirely excluded from the thing it is built around, and he has no intention of accepting that as a limit.",
+            "id": "kaul-ru",
+            "name": "Kaul Ru",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Jaya"
+            ],
+            "description": "Hilo and Wen's daughter, born with an aptitude for jade and none at all for patience. She is combative from childhood, drawn to the warrior side of the clan, and much more like her father than anyone in the household finds convenient.",
+            "id": "kaul-jaya",
+            "name": "Kaul Jaya",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Cory"
+            ],
+            "description": "Dauk Losun's Espenian-born son, a lawyer, and Anden's partner from their time together in Port Massy. He belongs to Espenia in a way Anden never will and to Kekon in a way Espenia will never quite let him forget, and the distance between the two countries is the standing problem in their relationship.",
+            "id": "dauk-corujon",
+            "name": "Dauk Corujon",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A jadeless man from Janloon who has spent his entire adult life failing to steal his way into greenness, and who has survived every disaster he caused. Bitter, unattached and permanently convinced he is owed something, he drifts toward whoever will use him.",
+            "id": "bero",
+            "name": "Bero",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "jade-legacy"
+      },
+      "recaps": {
+        "ending": "The clan war that has run through three generations of the Kaul and Ayt families ends. With the Mountain's succession settled in favor of a leader prepared to deal, the two great clans come to terms and stop trying to destroy each other; Kekon's jade industry, its politics and its place among foreign powers all end the book in a shape neither founder would recognize. What cannot be settled by negotiation is settled between Hilo and Ayt Mada personally, at the end of a rivalry that has cost both families almost everything: Ayt Mada dies, and Hilo does not outlive her. The Pillar's seat of No Peak passes to Niko, Kaul Lan's son, who takes it as a decision of his own rather than as the inheritance he was raised to resent, with Shae, Wen, Anden and Jaya around him. The family is smaller than it was, having lost Ru to an anti-clan killing years earlier and having buried much of the generation that started the war, and it is still standing. The book closes on the survivors remembering their dead.",
+        "in_short": "Over roughly two decades, the war between No Peak and the Mountain becomes a long, cold struggle fought through business, politics, foreign alliances and assassination while Kekon transforms into a modern country entangled with Espenia. Hilo remains Pillar and Shae Weather Man, slowly repairing a relationship broken by Wen's secret work; Wen recovers what she can from her injuries; Anden becomes a doctor studying jade's effects on the body. The Mountain fields assassins trained in a concealed discipline that hides them from Perception, a jade miners' strike shakes the country, and an anti-clan movement grows into open violence. The next generation grows up: Niko, Lan's son and the reluctant heir; Ru, a stone-eye who builds a public life arguing that jade should not determine a person's worth, and who is murdered for it; and Jaya, a fighter without restraint. Niko leaves the clan and later returns on his own terms. The war finally ends in a settlement with the Mountain's next leader and in a last confrontation between Hilo and Ayt Mada, which neither survives. Niko becomes Pillar of No Peak.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, in Jade City and Jade War: on the island nation of Kekon, bioenergetic jade gives trained Kekonese, called Green Bones, heightened strength, speed and senses, and the jade trade belongs to the clans. In the capital, Janloon, the Kaul family's No Peak clan and Ayt Mada's Mountain clan went to war after Ayt demanded that the two become one under her. No Peak's Pillar, Kaul Lan, was murdered; his brother Hilo took the seat, made their sister Shae his Weather Man, and married Wen, a stone-eye who can neither wear nor be sensed through jade. Their cousin Anden killed the Mountain's Horn with a lethal use of Channeling, renounced jade, and was exiled to Espenia, where he found the Kekonese immigrant community of Port Massy, took up jade again to defend it, and became involved with Dauk Cory. The war then went global: Espenia bought Kekonese jade and the drug that lets foreigners use it, while the Mountain sold jade to Kekon's enemies through the smuggler Zapunyo. No Peak killed Zapunyo, but the operation left Wen seriously and permanently injured, and Hilo discovered that she had been working secretly for the clan with Shae's knowledge. Lan's son Niko was brought back from Espenia to be raised as the clan's heir. Kekon ended the book bound tightly to Espenia, and the two clans ended it still at war.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The clan war has not ended; it has changed shape. No Peak, under Hilo as Pillar with Shae as Weather Man, and the Mountain under Ayt Mada now fight through business, politics, foreign alliances and targeted killing rather than open street battle. The Kaul household is in a poor state: Wen is working to recover from the injuries she took on the operation abroad, relearning speech and movement, and Hilo has forgiven neither her nor Shae for keeping her work from him. Kekon itself is changing fast. Espenian money, Espenian soldiers and the Espenian appetite for jade are everywhere, the country's independence is increasingly nominal, and ordinary Kekonese are beginning to ask aloud why two families should control the nation's jade. Anden, home from Espenia and wearing jade again, is training as a doctor rather than as a warrior, on the argument that what jade does to the human body is a medical question nobody has taken seriously.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "No Peak discovers that the Mountain has been training Green Bones in a discipline the clans do not teach: a way of concealing a jade aura so that even a skilled user of Perception cannot sense the wearer. Assassins who cannot be felt coming change what is possible in the war, and No Peak has to rebuild its assumptions about its own security from the ground up. Both clans push further abroad, into Espenia, Shotar and beyond, while the black market in jade grows, fed by the drugs that let foreigners tolerate it. Hilo finds himself governing something that is now an international business as much as a martial brotherhood, and dislikes it. The children of the family, Lan's son Niko and Hilo and Wen's own son and daughter, are growing up inside all of this with very different temperaments and very different prospects.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Years pass. No Peak's overseas operations mature, and the clan learns to be a multinational business while remaining a clan, with all the awkwardness that implies; the Mountain does the same. Anden qualifies as a physician and works on the medical side of jade, on tolerance, overexposure and the drugs the clans have used for decades without understanding them, and becomes the person the family turns to when jade is what is killing someone. Shae's authority as Weather Man is at its height while her relationship with Hilo stays cold and correct. Ayt Mada, who has no children, begins to face the problem that a clan built entirely around one person will not outlast her. On Kekon, resentment of foreign influence and of the clans themselves keeps growing, and it starts to organize.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The conflict reaches the mines. A strike over pay and conditions in the jade industry becomes a national crisis, because the clans can neither allow the jade supply to stop nor be seen crushing ordinary Kekonese workers. Foreign powers use the disruption for their own ends, and Kekon's dependence on Espenia becomes a live political argument rather than a background fact. Inside the family, the next generation is coming of age. Niko is being trained as an heir he never asked to be; Ru, Hilo and Wen's son, is a stone-eye who will never wear jade and has grown into a sharp, sociable young man determined to matter anyway; Jaya, their daughter, is a natural fighter with no patience for restraint. Hilo has to decide how much of his own world to force on each of them, and gets it wrong in different ways with each.",
+            "through": {
+              "chapter": 29
+            }
+          },
+          {
+            "scope": "book",
+            "text": "More time passes, and the war grinds on at a lower temperature with occasional lethal spikes. Ayt Mada, whose clan is built entirely around her and who is running out of time to arrange what follows her, looks within the Ayt family for a successor she can shape. No Peak works with Espenia and against it by turns as Kekonese sovereignty and the foreign military presence become the central issue in national politics. Anti-clan feeling hardens into an organized movement that regards the Green Bones as a criminal aristocracy and is prepared to act on that belief. Niko, who has never wanted the Pillar's seat and has been told all his life that it is his, spends time abroad working and growing up, and gets his first real taste of a life with no clan in it.",
+            "through": {
+              "chapter": 36
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Niko refuses the future the family arranged for him. He leaves the clan and leaves Kekon, choosing to live without jade and without the name, which Hilo takes as a personal repudiation and cannot discuss calmly. Ru, unable to be a Green Bone, builds a public identity instead, organizing and speaking for stone-eyes and arguing that a person's worth in Kekon should not depend on jade, a position that makes him visible, admired, and to people who hate the clans a target. He is murdered. The killing devastates the family and hits Hilo and Wen hardest of all, and it turns the anti-clan movement from a political nuisance into a blood matter that No Peak will pursue for as long as it takes.",
+            "through": {
+              "chapter": 43
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The hunt for Ru's killer becomes a permanent undertaking for the clan, carried across borders and years. Jaya, grieving and highly capable, becomes the family's most violent instrument, and her willingness to take the war anywhere creates as many problems as it solves. Kekonese politics turn on the foreign bases and on who actually governs the country, and No Peak has to decide whether the Espenian alliance is worth its price. Hilo and Shae, worn down and out of alternatives, repair their relationship enough to run the clan together properly again. Ayt Mada settles her succession on a young relative raised and educated abroad, who gives the Mountain a modern and respectable face, and fractures open inside the clan almost immediately as an heir with ideas of his own begins to resent the woman who made him. No Peak sees a way out that does not require another generation of killing.",
+            "through": {
+              "chapter": 50
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The search for Ru's killer ends, and older history surfaces that changes how both families understand the war they inherited. Niko comes back, on his own terms and by his own decision rather than because he was fetched. Hilo, Shae, Anden and the clan's leadership assemble a settlement: pressure applied inside the Mountain, combined with an offer its next generation can accept, on the shared understanding that the war cannot be won outright and that both clans have paid enough for it. The last obstacle is the two people who have been fighting it personally since the beginning, neither of whom can be bought off, outlasted or persuaded to retire.",
+            "through": {
+              "chapter": 56
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The clan war ends. With its succession settled in favor of a leader willing to deal, the Mountain comes to terms with No Peak, and Kekon's two great clans stop trying to destroy each other. What is not settled by negotiation is settled between Hilo and Ayt Mada, who face each other directly at the end of a rivalry that has consumed both their families for three generations: Ayt Mada dies, and Hilo does not outlive her. The Pillar's seat passes to Niko, Lan's son, who takes it as his own decision rather than as the inheritance he grew up resenting, with Shae, Wen, Anden and Jaya around him. Kekon closes the saga as a modern country with a place in the world, its jade traded internationally and its clans pushed into legitimacy, and the family at the center of the story ends it much diminished by the people it has lost and still standing. The last passages belong to the survivors and to their dead.",
+            "through": {
+              "chapter": 63
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "jade-legacy"
+      }
+    },
+    "jade-war": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Kaul Hilo",
+              "the Pillar"
+            ],
+            "description": "Pillar of the No Peak clan since his elder brother Lan was murdered by the Mountain, and formerly its Horn. Charismatic, hot-tempered and physically dangerous, he leads by personal loyalty rather than policy and takes every attack on the clan as an attack on his family. He is married to Wen, a stone-eye, against the expectations of Kekonese society, and he relies on his sister Shae to run the parts of the clan he has no patience for. The stalemate that ended the last round of the clan war has not changed his intention to destroy Ayt Mada eventually.",
+            "id": "kaul-hiloshudon",
+            "name": "Kaul Hiloshudon",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Kaul Shae",
+              "the Weather Man"
+            ],
+            "description": "The Weather Man of No Peak, running the clan's businesses, finances and political relationships, a job she took reluctantly and now does with authority. Educated abroad in Espenia, she is the member of the family who understands that Kekon's future will be decided by foreign trade, foreign money and foreign armies as much as by street fighting, and she is pushing the clan's interests overseas. Her relationship with Hilo is close and combative; she is one of very few people who can argue with him and be heard.",
+            "id": "kaul-shaelinsan",
+            "name": "Kaul Shaelinsan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Wen",
+              "Kaul Wen"
+            ],
+            "description": "Hilo's wife, and a stone-eye, born unable to perceive or wear jade at all, which Kekonese custom regards as a misfortune close to a disgrace. She manages the Kaul household and the clan's social and charitable face, and is far more ambitious on the clan's behalf than her husband realizes. Her condition makes her invisible to a Green Bone's Perception, and she has already used that once to do work the clan could not otherwise have done.",
+            "id": "maik-wen",
+            "name": "Maik Wen",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Anden"
+            ],
+            "description": "The Kauls' half-Espenian adopted cousin, who graduated at the top of his academy class and then renounced jade entirely after killing the Mountain's Horn with Channeling nearly destroyed him. Unable to be what the clan raised him to be and unwilling to explain himself, he is sent out of Kekon to Espenia, to board with a Kekonese immigrant family in Port Massy and study there. He experiences the arrangement as exile and punishment as much as opportunity.",
+            "id": "emery-anden",
+            "name": "Emery Anden",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Kaul Sen",
+              "the Torch of Kekon"
+            ],
+            "description": "The Kaul grandfather, founder of No Peak and one of the heroes of Kekon's war of independence, now very old, very ill and estranged from the grandson who runs his clan. His authority is long spent, but his name still carries enormous weight in Kekon.",
+            "id": "kaul-seningtun",
+            "name": "Kaul Seningtun",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "the Horn"
+            ],
+            "description": "The Horn of No Peak, promoted by Hilo after he became Pillar, and the elder of the two Maik brothers. Calm, methodical and enormously loyal, he commands the clan's warriors and manages the daily business of an armed organization that is also fighting a cold war. He is Wen's brother.",
+            "id": "maik-kehn",
+            "name": "Maik Kehn",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the Pillarman"
+            ],
+            "description": "Hilo's Pillarman, the younger Maik brother, who carries out the killings and errands the clan does not put in writing. Effective, unsentimental and increasingly reliant on the confidence that comes from being the Pillar's personal instrument.",
+            "id": "maik-tar",
+            "name": "Maik Tar",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Woon Papi"
+            ],
+            "description": "Formerly Lan's Pillarman, now Shae's Shadow, the senior aide who supports the Weather Man and manages her office. Conscientious, discreet and steadying, he is one of the few people who sees how much the job costs her, and his regard for her is more than professional.",
+            "id": "woon-papidonwa",
+            "name": "Woon Papidonwa",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ayt Mada"
+            ],
+            "description": "Pillar of the Mountain clan, which she still intends to make the only clan on Kekon. The last round of the war cost her a Horn and much of her momentum without loosening her grip on her own people. Patient, ruthless and strategically far-sighted, she is playing a longer game than her rivals, and her view is that Kekon's jade must be defended from foreign powers by a single unified authority rather than divided between quarrelling families.",
+            "id": "ayt-madashi",
+            "name": "Ayt Madashi",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A smuggler from the Uwiwa Islands who has grown rich moving Kekonese jade to buyers who cannot obtain it legally. Sentimental about his family and utterly pragmatic about everything else, he lives on a fortified estate outside Kekon's reach, guarded by hired fighters who wear stolen jade and take drugs to tolerate it, and he is the reason jade keeps leaving the island.",
+            "id": "zapunyo",
+            "name": "Zapunyo",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A jadeless opportunist from Janloon who has spent years trying and failing to make himself into somebody through stolen jade. Persistent, resentful and entirely without loyalty, he treats every disaster he survives as evidence that the next scheme will work.",
+            "id": "bero",
+            "name": "Bero",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A university academic whom Shae becomes involved with: mild, thoughtful and entirely outside the world of clan violence. The relationship gives Shae a life away from the clan, which is exactly why it is difficult to sustain and why her brother distrusts it.",
+            "id": "maro",
+            "name": "Maro",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Kaul Lan's former wife, who left him before his death and has built a life abroad, far from Kekon, jade and the clans. She has no wish to be found by the Kaul family and no reason to trust them.",
+            "id": "eyni",
+            "name": "Eyni",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Niko"
+            ],
+            "description": "A small boy living abroad with his mother, and the son Kaul Lan never knew he had. He has been raised outside Kekon with no knowledge of the clan, which makes him, by the reckoning of the Kaul family, the rightful heir of a dead Pillar.",
+            "id": "kaul-niko",
+            "name": "Kaul Niko",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Dauk"
+            ],
+            "description": "The informal leader of the Kekonese community in Southtrap, the immigrant district of Port Massy in Espenia. A respected elder who settles disputes, protects his neighbors and keeps a small circle of jade-wearing men around him, he holds a position much like a small clan Pillar's, without any authority the Espenian state recognizes and without the protection Kekonese custom would give him at home.",
+            "id": "dauk-losunyin",
+            "name": "Dauk Losunyin",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Cory"
+            ],
+            "description": "Dauk Losun's son, Espenian-born, a law student with an easy confidence in a country his parents still find foreign. He is impatient with the old-country customs his father maintains and drawn to Anden as someone who is both Kekonese in a way he is not and as adrift in Port Massy as he would be in Janloon.",
+            "id": "dauk-corujon",
+            "name": "Dauk Corujon",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "jade-war"
+      },
+      "recaps": {
+        "ending": "No Peak's operation against the smuggler Zapunyo succeeds: he is killed and the pipeline carrying Kekonese jade to the Mountain's foreign buyers is destroyed, a serious defeat for Ayt Mada's overseas strategy but not the end of her clan. The victory is paid for at home. Wen, who had been working secretly as the clan's intelligence asset because no Green Bone can sense her, is caught in an explosion and survives with lasting injuries that impair her speech and movement. Hilo learns both that his wife nearly died and that she had been operating for months with his sister's knowledge and his own ignorance, and neither relationship recovers by the end of the book. Anden comes home to Kekon, wearing jade again after taking it up to defend the Kekonese community in Port Massy, and leaves behind a life and a partner in Espenia that he has not given up. Lan's son Niko is now being raised in the Kaul house alongside Hilo and Wen's own children, as No Peak's presumed heir. Kekon closes the book bound tightly to Espenia, with foreign soldiers wearing its jade and foreign money in its politics, and with No Peak and the Mountain still at war, on a board that now covers several countries.",
+        "in_short": "With the Kaul grandfather dead and Anden exiled to Espenia, the war between No Peak and the Mountain becomes a global one. Espenia, fighting a proxy war abroad, wants Kekonese jade and the drug that lets foreigners use it, and Shae, as Weather Man, trades access for weapons and political cover, while Ayt Mada's Mountain moves jade to Kekon's enemies through Zapunyo, a smuggler in the Uwiwa Islands. In Port Massy, Anden discovers the Kekonese immigrant community and the criminal crews preying on it, takes up jade again to defend it, and becomes involved with Dauk Cory. The Kauls also discover that Lan left a son, Niko, being raised abroad by his mother, and bring the boy back to Kekon. Hilo commits the clan to killing Zapunyo, and the operation succeeds, but the escape goes wrong: Wen, who has been secretly working for the clan with Shae's help, is badly injured in an explosion and permanently impaired. Hilo learns of the deception, the Mountain remains unbeaten, and the clan war continues on an international stage.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, in Jade City: on the island nation of Kekon, bioenergetic jade grants trained Kekonese, called Green Bones, heightened strength, speed, senses and other abilities, and the jade trade is controlled by clans. In the capital, Janloon, the Kaul family's No Peak clan went to war with Ayt Mada's Mountain clan after she demanded that No Peak submit to a single unified clan under her leadership and Kaul Lan, No Peak's Pillar, refused. During the war Lan's sister Shae, newly home from Espenia, exposed the clan's own Weather Man, Yun Dorupon, as a traitor, and Lan removed him. Lan, secretly weakened by a sabotaged supply of the jade drug shine, was then ambushed and killed by Gont Asch, the Horn of the Mountain. Lan's younger brother Hilo became Pillar, made Shae his Weather Man, installed the Maik brothers Kehn and Tar as Horn and Pillarman, and had the disgraced Yun Dorupon executed against their grandfather's wishes, permanently estranging the two men. A No Peak offensive on New Year's Eve failed to kill Ayt Mada, but the Kauls' adopted cousin Anden killed Gont Asch with a lethal use of Channeling, an act that damaged him so badly he renounced jade for good. The war ended in exhaustion rather than victory, with both clans intact, Kekon's jade drawing serious foreign interest, and Hilo married to Wen, a stone-eye, over his family's objections.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kaul Sen, the founder of No Peak and a hero of Kekon's war of independence, dies, and Janloon turns out for a funeral that is also a demonstration of the clan's strength. His death removes the last check on Hilo's authority and the last living link to the friendship between the two clans' founders. Anden, who still refuses to wear jade, is sent out of the country: Hilo places him with a Kekonese family in Port Massy, in Espenia, to study, and everyone involved understands the arrangement as exile. The clan war, meanwhile, has cooled into something colder and much larger. Espenia is fighting a war abroad against forces backed by Ygutan, and it wants Kekonese jade and shine for its own soldiers. Both No Peak and the Mountain can see that Kekon's future will be settled by foreign trade and foreign politics as much as by street fighting, and Shae begins pushing the clan's business overseas.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Anden's life in Port Massy is a hard demotion. He is a charity case in a stranger's household, in a country where Kekonese immigrants are treated as second class, and without jade he is nobody in either culture. He begins to learn how the diaspora works: its own informal leadership, its own protection arrangements, and the Espenian criminal crews who have discovered that Kekonese jade is worth a fortune to men willing to take the drug that makes it usable. He meets Dauk Cory, the confident, Espenian-raised son of the community's leading family. In Kekon, Shae negotiates with Espenian commercial and government interests, trading access to jade for advantage, while the Mountain pursues its own foreign strategy: Ayt Mada is moving jade off the island through Zapunyo, a smuggler based in the Uwiwa Islands whose private guards wear stolen Kekonese jade and who sells to whoever pays, including Kekon's enemies.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In Port Massy, Anden is drawn further into the affairs of the Kekonese community of Southtrap, whose respected elder Dauk Losun keeps order among his own people much as a small clan would, without jade laws, without status and without any authority the Espenian state recognizes. The crews' appetite for jade puts that community under mounting pressure. In Janloon, Shae becomes involved with Maro, an academic entirely outside clan life, and finds that a private life and the Weather Man's job do not sit comfortably together, while the clan's leadership argues over how far No Peak should go in binding itself to Espenian interests.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The clans fight through institutions as much as in the streets. Control of the body that governs the mining and distribution of Kekon's jade, and influence over the Royal Council, determine who profits from foreign demand, and both clans buy politicians, businesses and newspapers accordingly. There are killings, formal grievances and duels, and No Peak's overseas ventures are attacked as fast as they are built. Hilo builds a family life alongside the war, as he and Wen raise children and the clan's inner circle closes tighter around him. The Kauls also learn that Lan left a child: his former wife, Eyni, was pregnant when she left him and has been raising the boy, Niko, abroad, with no intention of handing the son of a dead Pillar to the clan she blames for his death. For Hilo the question is not negotiable, because the child is a Kaul and belongs in Kekon with his family. Ayt Mada, still committed to one clan over Kekon, works to make No Peak's foreign strategy fail, betting that Kekon's interests lie with Ygutan and the smuggling network rather than with Espenia, and that the Kauls will be remembered as the family that sold the country's jade to foreigners.",
+            "through": {
+              "chapter": 29
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In Espenia, the crews move openly against the Kekonese community, and Anden, who has spent two books insisting he is finished with jade, puts it on again to fight, accepting that he cannot protect anyone as a bystander. He and Cory become close in the process. No Peak also settles the question of Lan's son: Niko is brought back to Kekon and raised in the Kaul house alongside Hilo and Wen's own children, as Lan's heir. On the strategic side, the clan concludes that Zapunyo is the hinge of the Mountain's foreign business and that killing him would cut Ayt Mada off from her buyers. Because he lives outside Kekon, heavily guarded and beyond the reach of any ordinary clan attack, the operation will have to be built slowly, disguised as legitimate business, and carried out with help from outside the clan.",
+            "through": {
+              "chapter": 37
+            }
+          },
+          {
+            "scope": "book",
+            "text": "No Peak's alliance with Espenia becomes formal and expensive: Kekonese jade and shine for Espenian soldiers, in exchange for weapons, money and political protection. It also means foreigners wearing jade, trained abroad and relying on drugs rather than a lifetime of discipline, which offends everything Kekonese tradition holds about who jade belongs to and leaves No Peak open to the charge of selling the country. Ayt Mada uses that charge for everything it is worth while running her own trade with Ygutan through the smuggler. Wen, who cannot be perceived by any Green Bone, begins working as an intelligence asset for the clan, going where no Green Bone could go unnoticed. Shae knows, and makes use of it. Hilo does not know, and neither woman intends to tell him.",
+            "through": {
+              "chapter": 45
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Preparations for the strike on Zapunyo take over the clan: his compound is studied, his associates are approached, and the operation is concealed inside an ordinary-looking commercial negotiation. Hilo and Ayt Mada meet face to face, each measuring what the other can still afford to spend, and neither offers anything. The costs of the war keep accumulating on both sides in money, in reputation and in dead Green Bones, and Kekon itself is now a country that foreign governments make plans about rather than a place that decides its own affairs. Wen's role in the operation grows, because she can stand next to a jade wearer without being sensed, and Shae lets her take it.",
+            "through": {
+              "chapter": 53
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The operation goes ahead in the Uwiwa Islands. Zapunyo is killed, and with him goes the network that carried the Mountain's jade to its foreign buyers. The withdrawal does not go cleanly. An explosion catches Wen, and she survives with serious injuries, including damage that impairs her speech and movement and that will not fully heal. Hilo learns not only that his wife was nearly killed, but that she had been working for the clan for a long time, with his sister's knowledge and with his own kept deliberately in the dark.",
+            "through": {
+              "chapter": 59
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Mountain's foreign pipeline is destroyed and Ayt Mada's strategy is badly set back, but she is not beaten, and No Peak's victory is paid for at home. Wen lives, permanently impaired, and Hilo cannot forgive either her deception or Shae's part in it; the trust between the Pillar and his Weather Man, and between Hilo and his wife, is broken in a way that will not be quickly repaired. Anden comes home to Kekon, wearing jade again and no longer in exile, leaving behind a life and a partner in Espenia that he has not given up. Niko is growing up in the Kaul house as Lan's son and No Peak's presumed heir, alongside Hilo and Wen's own children. Kekon ends the book tied tightly to Espenia, with foreign soldiers wearing its jade and foreign money in its politics, and with both clans still at war on a board that now spans several countries.",
+            "through": {
+              "chapter": 63
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "jade-war"
+      }
+    },
     "jane-eyre": {
       "characters": {
         "characters": [

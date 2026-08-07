@@ -112,6 +112,284 @@
         "work": "the-wind-through-the-keyhole"
       }
     },
+    "the-winter-of-the-witch": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Vasya"
+            ],
+            "description": "Pyotr Vladimirovich's youngest daughter, who can see the chyerti, the old spirits of Rus', and who spent the winter in Moscow passing as a boy in the Grand Prince's household. That is over. The city has burned, her disguise is public knowledge, and Moscow has decided she is a witch. She is nineteen years old, has no place in the world of her sister's terem or her brother's church, and is not willing to give up either her family or the old powers she is one of the last people able to speak to.",
+            "id": "vasilisa-petrovna",
+            "name": "Vasilisa Petrovna",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The bay stallion out of the winter-king's herd who has carried Vasya since she left home. He speaks, chooses his own rider, and will wear neither saddle nor bridle. He is the one thing in the world she is sure of.",
+            "id": "solovey",
+            "name": "Solovey",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The priest from the north, now the most persuasive voice in a frightened, half-burnt Moscow. He knows exactly what Vasya is, he has always known, and he has spent years being unable to decide whether he wants her destroyed or wants her. What he says from the pulpit, a terrified city will do.",
+            "id": "konstantin-nikonovich",
+            "name": "Konstantin Nikonovich",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Vasya's elder sister, Princess of Serpukhov, mistress of a household in Moscow and mother of a young family. She has spent the winter shielding her sister at a cost she cannot really afford, and she is a formidable woman inside the narrow room her world has given her: she manages people, and she does not panic.",
+            "id": "olga-petrovna",
+            "name": "Olga Petrovna",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Masha"
+            ],
+            "description": "Olga's daughter, a small girl with her aunt's sight and her aunt's disinclination to be told what to do. She can see the household spirits and the things that come with them, and unlike Vasya at that age she has somebody to say so to.",
+            "id": "marya-vladimirovna",
+            "name": "Marya Vladimirovna",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sasha",
+              "Brother Aleksandr"
+            ],
+            "description": "Vasya's brother: monk of the Trinity, cousin and companion of the Grand Prince, and a fighting man whichever habit he happens to be wearing. He lied for his sister in front of his order and his prince and has not been forgiven for it. He believes in God and in Vasya at the same time and has stopped trying to make the two fit together neatly.",
+            "id": "aleksandr-petrovich",
+            "name": "Aleksandr Petrovich",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Olga's servant: blunt, unimpressed, entirely trusted, and in that household longer than anyone can quite account for. She says almost nothing about where she came from.",
+            "id": "varvara",
+            "name": "Varvara",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Grand Prince of Moscow, holding a half-burnt city, an angry population and a fragile alliance of quarrelsome princes. He was publicly deceived by a girl over the winter and is not inclined to let it go, but he has a much larger problem coming north out of the steppe and very little time.",
+            "id": "dmitrii-ivanovich",
+            "name": "Dmitrii Ivanovich",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the Bear",
+              "the one-eyed man",
+              "the Eater"
+            ],
+            "description": "Chaos: the winter-king's one-eyed twin, who eats fear and madness and is fed by every frightened crowd in Rus'. Chained once by a man's freely given death, he is loose again and thoroughly enjoying it. He is a liar by nature but keeps the letter of a bargain, which is the only handle anyone has ever had on him.",
+            "id": "medved",
+            "name": "Medved",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Frost",
+              "the winter-king",
+              "Karachun"
+            ],
+            "description": "Frost and death both: the one who comes for people who die in the cold, and who walks the dead to where they go next. His power is what people remember of him, and Rus' remembers less every year; he spent most of what remained on keeping Vasya alive through two winters, and the season he draws his strength from is ending.",
+            "id": "morozko",
+            "name": "Morozko",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Midnight",
+              "Lady Midnight"
+            ],
+            "description": "The chyert of the midnight hour, a black-haired woman on a black horse. Midnight is a place as much as a time in her keeping, and the road that runs through it can take a traveller almost anywhere. She is proud, impatient, bound by older loyalties than Vasya's, and helps only for a price.",
+            "id": "polunochnitsa",
+            "name": "Polunochnitsa",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A very small mushroom-spirit with no obvious powers and no sense of self-preservation, who decides that Vasya is his and follows her regardless of what she says about it. He is a great deal more useful than he looks.",
+            "id": "ded-grib",
+            "name": "Ded Grib",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The witch of the oldest tales, who lives where the midnight road runs out and keeps her own counsel. She is far more closely connected to Vasya than Vasya expected, and she knows where the women of that line came from, what they could do, and what was done to them.",
+            "id": "baba-yaga",
+            "name": "Baba Yaga",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The golden mare, fastest thing alive, who was caught once with a bridle that forces obedience and has no intention of being caught again. She is contemptuous of people on principle and will not be ridden by anyone who has not earned it. Her name means fire.",
+            "id": "pozhar",
+            "name": "Pozhar",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mamai"
+            ],
+            "description": "The commander of the Horde, who has raised an army and is marching north to break Moscow's growing independence for good and restore the tribute and the obedience Rus' has been withholding.",
+            "id": "mamai",
+            "name": "Mamai",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The Horde's champion, a magnificent horseman who spent part of the winter in Moscow as an envoy and made a strong impression there. He now rides with Mamai's army.",
+            "id": "chelubey",
+            "name": "Chelubey",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-winter-of-the-witch"
+      },
+      "recaps": {
+        "ending": "Dmitrii's army meets Mamai's at Kulikovo and wins, and the price is enormous. The battle opens with single combat: Sasha rides out against the Horde's champion Chelubey and the two kill each other in the first pass. Konstantin Nikonovich does not survive the campaign either. Vasya fights on both levels at once, in the field and among the powers nobody else can see, with the chyerti she bargained for, the golden mare who finally consented to carry her, and the two brothers, winter and chaos, on the same side for the first time. Afterwards she goes with Morozko along the starlit road the dead take, to see her brother off properly. The long war between the winter-king and the Bear ends not in another chaining but in an oath, leaving the twins balanced instead of at each other's throats. Vasya keeps her side of every bargain she made. Her family knows exactly what she is now and has decided it is not something to be ashamed of: Olga's house is open to her, and Marya, who has the same sight, will be taught rather than hurried into a marriage. Vasya's own place is the one nobody in her world had a word for at the start: neither wife nor nun, but the person standing between the people of Rus' and the old powers so that both can go on existing. She turns north again, towards her father's lands and the lake in the fir grove, and she and Morozko part on the understanding that he will come back with the winter.",
+        "in_short": "Moscow, burnt and terrified, blames Vasya, and Konstantin's preaching turns the city on her; behind him stands the Bear, loose again and feeding on the panic. Vasya survives the pyre but Solovey is killed getting her clear, and she escapes with nothing. She heals in the winter-king's house beyond the world, refuses to stay safe there, and comes back out with a plan to save both Rus' and its dying spirits at once. Travelling the midnight road with the chyert called Midnight and a stubborn mushroom-spirit, she bargains for allies, learns her own ancestry from the witch at the road's end, and frees Morozko, whom his brother had chained. Returning to Moscow she is taken in by her family and grudgingly accepted by Dmitrii, because Mamai and the Horde are marching north. Rather than destroy the Bear, Vasya bargains with him and turns him south. At Kulikovo the Russians win; Sasha is killed in single combat with the Horde's champion, Konstantin dies, and the two immortal brothers make peace. Vasya, no longer hiding, takes up a place between her people and the old powers, and she and Morozko part until winter.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Vasilisa Petrovna of Lesnaya Zemlya can see the chyerti, the household and forest spirits of Rus', at a time when Rus' is forgetting them. In the north a priest's preaching starved those spirits of the small offerings that kept them strong, the binding on a one-eyed devil called the Bear failed, and the dead began to walk; Vasya's father, Pyotr Vladimirovich, gave his life freely so that Morozko, the winter-king, could chain his brother again. Refusing marriage and the convent both, Vasya left home on Solovey, a stallion who chose her, wearing a blue jewel Morozko had made for her at the cost of much of his own strength. Travelling as a boy, she destroyed a band of raiders, was taken up by the Grand Prince Dmitrii as his brave young Vasilii, and rode into Moscow, where her sister Olga is a princess and her brother Sasha a warrior monk. There she was exposed by Kasyan Lutovich, an ancient sorcerer who had put his own death out of reach and was working to bring Dmitrii down. Kasyan was killed, but Moscow burned, and the city came out of that winter certain that the Grand Prince had been deceived by a girl and that the girl is a witch. Konstantin Nikonovich, the priest from the north, is in Moscow, preaching.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Moscow is still smoking and looking for somebody to blame, and Konstantin gives the city Vasya. He is not preaching alone: the Bear is loose again and standing at his shoulder, and a frightened city is precisely what feeds him. Dmitrii cannot defend a girl the crowd has already convicted, and does not try very hard. Olga's household is surrounded, Vasya is seized, and she is condemned to burn. She survives the fire, but Solovey is killed getting her out of the crowd, and she escapes Moscow hurt, hunted and stripped of the one thing she could not bear to lose. In the forest beyond the city the Bear finds her and takes his time about enjoying it. She has nothing left at all, and very nearly does not survive the night.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Vasya is taken to the winter-king's house among the firs, where nothing hurts, nothing changes and grief goes quiet. She heals there, and she and Morozko stop pretending about what is between them. But the house is a comfortable trap, and staying in it would mean forgetting Solovey and everyone still in Moscow, so she makes herself leave. Outside, the position is bad on every front. The Bear is free and growing on the city's terror, with Konstantin as his voice; Morozko is death and winter and the year is turning against him, on top of everything he has already spent; and the chyerti of Rus' are dying out as the country forgets them. Vasya refuses to choose between the two worlds she belongs to and decides to fight for both, and turns back towards the human one.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Vasya discovers that she can travel by midnight: a road running through the dark, where one place opens onto another and the hours are countries in their own right. Her guide, reluctantly, is Polunochnitsa, the chyert called Midnight. A very small mushroom-spirit, Ded Grib, attaches himself to her and refuses to be sent away. Along the road she begins collecting allies the only way that works with chyerti, by bargaining: they are old, proud, dwindling and thoroughly disinclined to spend themselves for a Rus' that has stopped leaving bread out for them, and every one of them wants something in return. She is also looking for Morozko, who has gone silent.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The midnight road carries Vasya into stranger country and finally to the house of a witch out of the oldest stories, Baba Yaga, who turns out to be her own ancestor. Vasya learns where her sight came from: a line of women who could see, among them the grandmother who walked out of the forest, married into Moscow and was later taken and kept by Kasyan, and a nearer relative than that who has been hiding in plain sight in her sister's household all along. She also finds out why Morozko went quiet. His brother has him chained in a place outside the world, which is why there has been nobody to stand between the Bear and Moscow. Vasya gets him free.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Vasya comes back out of the dark with the beginnings of an army nobody else can see: chyerti bound to her by bargains, a mushroom-spirit, Midnight herself, and the winter-king, free but greatly reduced. She also takes possession of the golden bridle, an old thing that forces any spirit into obedience, and meets the golden mare that Kasyan once used it on, who will tolerate Vasya's company only on the condition that it is never used again. The human war is arriving meanwhile. Mamai has raised the Horde and is marching north to break Dmitrii for good, and Moscow, half burnt and freshly terrified, has to be talked into standing at all.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Vasya returns to a Moscow that still wants her dead. Olga takes her in, Marya refuses to be kept out of any of it, and Sasha stands with her; Dmitrii is harder to move, but a war he may well lose makes him listen. Konstantin is still the Bear's creature and still dangerous, because he can turn a crowd faster than anyone alive. Then Vasya makes the decision the rest of the book turns on. Instead of trying to destroy the Bear, she bargains with him: terror and chaos are exactly the weapons an outnumbered Rus' is going to need, and she means to point them south at the Horde. The price is that she has to trust the least trustworthy creature in the world, hold him to the letter of an agreement, and accept that his brother will not forgive her for it quickly.",
+            "through": {
+              "chapter": 23
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The princes of Rus' gather and march south towards the Don to meet Mamai. Sasha rides as what he has always half been, a soldier in a monk's habit. Vasya rides openly, no longer pretending to be a boy, and does the work nobody else can: moving men and messages by the midnight road, and keeping the Horde's allies from arriving on time. Not all of Rus' is on Dmitrii's side, either. Oleg of Ryazan has made his own arrangement with Mamai, and there will be Russians on both sides of the field. The Bear keeps to the letter of his bargain so far, and looks forward to the battle for reasons of his own.",
+            "through": {
+              "chapter": 27
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On the eve of the battle Vasya finally wins the golden mare, by asking rather than taking, and rides her without a bridle. The chyerti come in behind her, most of them, because she has offered them something worth being remembered for. Dmitrii's army crosses the Don and forms up with the river at its back, so that nobody can run. Vasya, Morozko and the Bear stand on the same side for the first time in their very long quarrel, the two brothers agreeing to hold their own war until this one is finished.",
+            "through": {
+              "chapter": 31
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The armies meet at Kulikovo. It opens with single combat: Sasha, Brother Aleksandr, rides out against the Horde's champion Chelubey, and the two of them kill each other in the first pass. The battle that follows is enormous and very close-run. Vasya fights it on both levels at once, in the field and among the powers nobody else can see, while Morozko walks it as what he is, gathering up the dead. Konstantin does not come through it. Dmitrii's army breaks Mamai, and the Horde is driven from the field.",
+            "through": {
+              "chapter": 34
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rus' has its victory and has paid heavily for it. Sasha is dead, and Vasya goes with Morozko along the starlit road that the dead travel, to see her brother off properly. The long quarrel between the winter-king and the Bear ends not in another chaining but in an oath, leaving the twins balanced instead of at war. Vasya keeps her side of every bargain she made with the chyerti. Her family now knows exactly what she is and has decided it is nothing to be ashamed of: Olga's house is open to her, and Marya, who sees what Vasya sees, will be taught rather than hurried into a marriage. Vasya's own place is the one her world had no word for at the start of all this, neither wife nor nun but the person standing between the people of Rus' and the old powers so that both can go on existing. She turns north again, towards her father's lands and the lake in the fir grove, and she and Morozko part on the understanding that he will come back with the winter.",
+            "through": {
+              "chapter": 37
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-winter-of-the-witch"
+      }
+    },
     "the-wise-mans-fear": {
       "characters": {
         "characters": [
