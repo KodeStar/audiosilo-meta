@@ -869,6 +869,231 @@
         "work": "moving-pictures"
       }
     },
+    "murder-on-the-orient-express": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A celebrated Belgian detective, small, immaculate, and vain of his moustaches, travelling back from a case in the East and anxious to reach London. He works by talking to people and weighing what they choose to say against what they cannot help revealing, and he is far more interested in character than in cigarette ash. Chapter positions in this entry follow the book's three parts read straight through, so Part Two chapter one is counted as chapter nine.",
+            "id": "hercule-poirot",
+            "name": "Hercule Poirot",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A young Englishwoman travelling home from Baghdad, where she has been a governess. Cool, competent, and strikingly self-possessed under discomfort and delay, she manages her own affairs without fuss. Poirot notices her calm on the Taurus Express and also a moment when it deserts her.",
+            "id": "mary-debenham",
+            "name": "Mary Debenham",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A British Army officer on leave from India, correct, reticent, and given to short declarative opinions and a pipe. He is protective of Miss Debenham, whom he meets on the journey from Syria, and disapproves of discussing other people's business.",
+            "id": "colonel-arbuthnot",
+            "name": "Colonel Arbuthnot",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A director of the company that runs the international sleeping cars and an old friend of Poirot, genial, excitable, and fond of a good dinner. He arranges a berth for Poirot on a train that should have been empty and is not, and later asks him to take charge of the investigation to spare the company a scandal.",
+            "id": "monsieur-bouc",
+            "name": "Monsieur Bouc",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wealthy elderly American travelling with a secretary and a valet, said to be in business of an unspecified kind. He has a pleasant manner and, as Poirot observes him, an expression that does not match it. Believing himself in danger, he offers Poirot a large sum to act as his bodyguard, and is refused.",
+            "id": "samuel-ratchett",
+            "name": "Samuel Edward Ratchett",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ratchett's private secretary and interpreter, a friendly young American who speaks no language but his own and is glad of company on a long journey. He handles his employer's correspondence and travel arrangements, and admits without much prompting that he does not like the man he works for.",
+            "id": "hector-macqueen",
+            "name": "Hector MacQueen",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ratchett's English valet, correct, colourless, and answering questions in the fewest words a servant can use. He suffers from toothache on the journey and shares a compartment with another passenger.",
+            "id": "edward-masterman",
+            "name": "Edward Masterman",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A talkative middle-aged American woman travelling home from a visit to her daughter, with strong views on foreigners, sanitation, and the conduct of railways, which she shares with everyone in the coach. Her compartment adjoins Ratchett's, and she is convinced that a man was in it during the night.",
+            "id": "mrs-hubbard",
+            "name": "Mrs Hubbard",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An ancient and formidable Russian aristocrat, tiny, ugly, and entirely unbothered by either fact, travelling with her own maid. She speaks with the bluntness of someone who has not had to be tactful for sixty years and expects to be obeyed.",
+            "id": "princess-dragomiroff",
+            "name": "Princess Dragomiroff",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young and beautiful Hungarian woman travelling with her husband, quiet, foreign-educated, and content to let him answer for her. She keeps to her compartment for most of the journey.",
+            "id": "countess-andrenyi",
+            "name": "Countess Elena Andrenyi",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Hungarian diplomat travelling with his wife on a diplomatic passport, courteous, guarded, and quick to invoke his privileges when questions become personal.",
+            "id": "count-andrenyi",
+            "name": "Count Rudolph Andrenyi",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A middle-aged Swedish woman returning from missionary work, trained as a nurse and easily reduced to tears by any unkindness. Her English is uncertain and her anxiety to be helpful is considerable.",
+            "id": "greta-ohlsson",
+            "name": "Greta Ohlsson",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A large, cheerful Italian-American who has lived many years in the United States and sells motor cars. He talks readily, gestures a great deal, and shares a compartment with Ratchett's valet, whose reserve he finds trying.",
+            "id": "antonio-foscarelli",
+            "name": "Antonio Foscarelli",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A large American travelling as a salesman of typewriter ribbons, loud, friendly, and in the corridor a good deal. His account of himself does not survive Poirot's first serious question.",
+            "id": "cyrus-hardman",
+            "name": "Cyrus Hardman",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Princess Dragomiroff's German lady's maid, middle-aged, respectable, and frightened of officials. She is devoted to her mistress and gives her evidence with obvious nervousness.",
+            "id": "hildegarde-schmidt",
+            "name": "Hildegarde Schmidt",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The French conductor of the Istanbul to Calais coach, a long-serving employee of the sleeping-car company, responsible for the passengers, the bells, and the door to the next carriage. He is on duty in the corridor for most of the night.",
+            "id": "pierre-michel",
+            "name": "Pierre Michel",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Greek doctor travelling in the same coach, who examines the body and works out what he can about the wounds and the time of death. He assists Poirot and Monsieur Bouc throughout the enquiry and is inclined to believe whatever the medical evidence suggests, even when it contradicts itself.",
+            "id": "dr-constantine",
+            "name": "Dr Constantine",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "murder-on-the-orient-express"
+      },
+      "recaps": {
+        "ending": "Poirot works out that every passenger in the Istanbul to Calais coach is connected to the Armstrong household. Mrs Hubbard is the actress Linda Arden, Daisy Armstrong's grandmother; the Countess Andrenyi is Daisy's aunt, and her husband altered her passport to hide it; Mary Debenham was the child's governess and Greta Ohlsson her nurse; Princess Dragomiroff was godmother to Daisy's mother; Hildegarde Schmidt was the family's cook and Masterman Colonel Armstrong's soldier servant; Foscarelli was their chauffeur; Colonel Arbuthnot was Armstrong's friend from the war; MacQueen was the son of the district attorney who prosecuted the case; Hardman was a detective in love with the accused nursemaid; and Pierre Michel, the conductor, was her father. Twelve of them stabbed Ratchett once each, in the dark, so that none could know whose blow was fatal, a jury carrying out the sentence the courts never delivered. The confusing evidence, the varying wounds, the smashed watch, the woman in the scarlet kimono and the stranger in a conductor's uniform were all planted to support a story about an outsider. Poirot lays two solutions before Monsieur Bouc and Dr Constantine: an unknown assassin who boarded at the stop and left again, or the truth. They choose the first, and Poirot says that having offered his solutions he takes his leave of the case. The snowplough clears the line and the train goes on with the Yugoslav police to be given the convenient explanation.",
+        "in_short": "Returning urgently to London, Hercule Poirot boards the Simplon Orient Express at Istanbul and finds it inexplicably full for the time of year. Among the passengers is an American named Ratchett, who offers Poirot money to protect him from enemies and is refused. That night the train is stopped by a snowdrift in the Balkans, and in the morning Ratchett is found stabbed a dozen times behind a locked door. A charred scrap of paper identifies him as Cassetti, the man who kidnapped and murdered the child Daisy Armstrong in America and escaped punishment on a technicality. Investigating for the sleeping-car company, Poirot finds the evidence absurdly abundant and contradictory: wounds struck with different hands and force, a scarlet kimono, a conductor's uniform, a stopped watch, and an alibi for every passenger. He eventually establishes that all of them are connected to the Armstrong household, and that twelve of them stabbed the man once each, as a jury and executioners. Poirot offers two explanations and allows the innocuous one, an outside assassin, to be given to the police.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Hercule Poirot leaves Syria after a case and travels by the Taurus Express towards Istanbul, sharing the journey with an English governess, Mary Debenham, and Colonel Arbuthnot, an army officer coming from India. A telegram at Istanbul recalls him to London at once, and his friend Monsieur Bouc, a director of the sleeping-car company, secures him a berth on the Simplon Orient Express although the coach is unaccountably full for the time of year. The passengers include the American Ratchett, his secretary MacQueen and his valet Masterman, the talkative Mrs Hubbard, an aged Russian princess and her maid, a Hungarian count and countess, a Swedish nurse, an Italian-American car salesman, an American commercial traveller, and Debenham and Arbuthnot. Ratchett tells Poirot that he has received threatening letters and offers a large fee for protection; Poirot declines. In the night Poirot is woken repeatedly by bells, a cry from the next compartment, a woman in a scarlet kimono in the corridor, and the sensation of the train coming to a stand. By morning the express is buried in a snowdrift somewhere in Yugoslavia, and Ratchett is found dead in his locked compartment, stabbed many times over.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "With the train stranded and no police able to reach it, Monsieur Bouc asks Poirot to investigate, assisted by Dr Constantine, a Greek doctor travelling in the same coach. The medical evidence is strange from the start: twelve wounds, some shallow and some deep, some apparently struck left-handed and some right-handed, and at least a few inflicted after death. A woman's handkerchief embroidered with the letter H and a pipe cleaner are found in the compartment; the window is open although there are no tracks in the snow outside; and a watch in the dead man's pyjama pocket is smashed and stopped at a quarter past one. Among the burnt papers in the ashtray Poirot recovers a charred fragment reading that someone should remember little Daisy Armstrong. The name identifies the dead man as Cassetti, who kidnapped and killed the Armstrongs' three-year-old daughter in America and escaped conviction on a technical point. The crime destroyed the whole household: Daisy's mother died in childbirth from the shock, her father shot himself, and a French nursemaid suspected by the police threw herself from a window and was afterwards proved innocent.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Poirot interviews the passengers in turn in the restaurant car. The conductor, Pierre Michel, accounts for his night in the corridor. MacQueen admits disliking his employer and knew nothing of his real name. Mrs Hubbard insists that a man was in her compartment in the dark and that the communicating door to Ratchett's compartment was unbolted. The Swedish nurse and the valet supply each other with alibis, as do others in convenient pairs, so that nearly every passenger is vouched for by somebody. Princess Dragomiroff answers with contemptuous frankness and mentions that she was a friend of the Armstrong family, and that Mrs Armstrong's mother was the American actress Linda Arden. The Andrenyis, travelling on a diplomatic passport, say very little. Colonel Arbuthnot denies smoking anything but a pipe and refuses to gossip about Miss Debenham. A button from a sleeping-car conductor's uniform is found in Mrs Hubbard's compartment, and a small dark man with a womanish voice, in such a uniform, begins to appear in several accounts.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The remaining interviews add more contradictions than clarity. Hardman admits that he is not a typewriter-ribbon salesman but a private detective, hired by Ratchett himself to watch for the small dark man. Foscarelli talks freely and reveals that he has lived long in America. Mary Debenham is questioned about a remark Poirot overheard on the Taurus Express and declines to explain it. Hildegarde Schmidt gives her evidence in obvious fear. Poirot then examines the passengers' luggage. The murder weapon, a cheap dagger, is found in Mrs Hubbard's sponge bag; a conductor's uniform tunic with a button missing turns up in the German maid's case; and the scarlet kimono is discovered folded neatly in Poirot's own suitcase, put there by somebody who wanted him to understand that he was being played with. Every alibi holds and every piece of physical evidence contradicts another.",
+            "through": {
+              "chapter": 23
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Poirot sits back and thinks. He draws up a list of the suspicious points and puts ten questions to Bouc and Constantine, among them why the watch was smashed at a time that suits nobody, why so much evidence should point in so many directions at once, and why a coach full of strangers of every nationality should be travelling together in the dead of winter. He notices a grease spot smeared across the Christian name on the Hungarian diplomatic passport, and reasons that the initial beneath it has been altered from an H, the same letter as on the handkerchief. He extracts from Princess Dragomiroff the fact that the Armstrongs' surviving relative, Mrs Armstrong's younger sister, was named Helena. Poirot begins to test the passengers' stated identities against the household of the Armstrong tragedy, and finds that the connections multiply rather than stop.",
+            "through": {
+              "chapter": 27
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Poirot assembles everyone and shows that every passenger in the coach belonged to the Armstrong household or its circle. Mrs Hubbard is Linda Arden, the dead child's grandmother; the Countess Andrenyi is Daisy's aunt, her passport altered by her husband to conceal it; Mary Debenham was the governess and Greta Ohlsson the child's nurse; Princess Dragomiroff was godmother to Daisy's mother; Hildegarde Schmidt was the family's cook and Masterman the colonel's soldier servant; Foscarelli was their chauffeur; Arbuthnot was Armstrong's friend in the war; MacQueen was the son of the prosecuting attorney; Hardman was in love with the nursemaid who killed herself; and Pierre Michel, the conductor, was her father. Twelve of them stabbed Ratchett once each in the darkened compartment, so that no one could know which blow killed him, a jury carrying out the sentence the law had failed to pass. The contradictory clues, the mysterious woman in the kimono and the stranger in uniform were manufactured to support a story about an outsider who boarded and vanished. Poirot offers Monsieur Bouc and Dr Constantine two solutions: that outsider, or the truth. They accept the first, and Poirot declares his part in the case finished as the line is cleared and the train moves on.",
+            "through": {
+              "chapter": 32
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "murder-on-the-orient-express"
+      }
+    },
     "my-sisters-keeper": {
       "characters": {
         "characters": [
@@ -2019,6 +2244,86 @@
           }
         ],
         "work": "never-go-back"
+      }
+    },
+    "never-say-die": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Fifteen, living in San Francisco with the Pleasures and going to an American school, which is what everyone agreed would be best for him. He is withdrawn and going through the motions, because the thing he came here to get away from is not the spying but Jack's death, and being somewhere else has not helped. He has no intention of working for anybody's intelligence service again.",
+            "id": "alex-rider",
+            "name": "Alex Rider",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Alex's closest friend, who has known what he really is for years and whose family have taken him in. She watches him grieving and getting no better, and she is one of the few people he will listen to.",
+            "id": "sabina-pleasure",
+            "name": "Sabina Pleasure",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sabina's father, the investigative journalist who has known Alex since France. He and his wife have given Alex a home in California and are trying, without much success, to give him an ordinary adolescence.",
+            "id": "edward-pleasure",
+            "name": "Edward Pleasure",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The American housekeeper who raised Alex from the age of eight and was killed in front of him in the Egyptian desert. Alex watched the jeep destroyed and has spent every day since living with it, which is why a piece of new information about that day is the one thing capable of moving him.",
+            "id": "jack-starbright",
+            "name": "Jack Starbright",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "never-say-die"
+      },
+      "recaps": {
+        "ending": "Alex is proved right: Jack Starbright is alive. She was not in the jeep that was destroyed in front of him, and she has been held since by the criminals who let him believe otherwise. Alex finds where she is being kept and gets her out, and the two of them are reunited after a year in which he had accepted that she was dead. The people responsible for holding her are stopped along with the scheme they were running. What Alex is left with is the thing Scorpia Rising took from him and this book gives back: he has a family again, and the grief that had shaped everything since Cairo turns out to have been built on a lie he was told deliberately.",
+        "in_short": "A year after Jack Starbright was killed in front of him in the Egyptian desert, Alex Rider is living in San Francisco with Sabina Pleasure and her parents, grieving and going through the motions of an ordinary school life. Then something reaches him that suggests Jack did not die that day. Nobody official believes it, and Alex goes after it himself, which takes him out of America and back into the criminal world he had promised himself he was finished with. The trail leads to the people who staged her death and have kept her since, and it ends with Alex finding Jack alive and getting her out. The loss the previous book built its ending on is undone, and Alex has his guardian back.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Alex Rider was recruited by MI6 at fourteen after his uncle Ian's murder, and was used again and again by Alan Blunt and Mrs Jones: Herod Sayle's poisoned school computers, Dr Hugo Grief's clones at Point Blanc, General Alexei Sarov, Damian Cray, Nikolai Drevin's space station, a snakehead in Southeast Asia, a manufactured famine in Kenya. The assassin Yassen Gregorovich, dying, sent him to Scorpia in Venice, where he was recruited with a lie about his father before turning on the organisation; MI6 then admitted that John Rider had been their own officer inside Scorpia under the codename Hunter, and that Alex's parents died when a bomb brought down their plane. Scorpia's final operation was aimed at Alex personally. In Cairo it took him and his guardian, and its operative Razim had Jack Starbright killed in a rigged jeep in front of him, to measure his reaction. Alex stopped the plot and Scorpia was destroyed; Blunt was forced out and Mrs Jones took over. With no family left in London, Alex went to live with the Pleasures in San Francisco.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A year after Cairo, Alex is in San Francisco with Sabina and her parents, at an American school, apparently safe and not recovering. Then something reaches him that does not fit what he watched happen in the desert, and points to the possibility that Jack Starbright was never in the jeep at all. It is thin, nobody with any authority takes it seriously, and Alex acts on it anyway, which puts him back into the world he had left and against people who staged her death and have held her since. He finds where she is being kept and gets her out alive. The scheme her captors were running is broken with them. Jack is alive and back with Alex, and the loss the previous book ended on is undone.",
+            "through": {
+              "chapter": 24
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "never-say-die"
       }
     },
     "new-dreams": {

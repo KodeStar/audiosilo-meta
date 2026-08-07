@@ -978,6 +978,242 @@
         "work": "the-bell-jar"
       }
     },
+    "the-black-prism": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Kip Delauria"
+            ],
+            "description": "A fifteen-year-old boy from Rekton, a small town in the ruined satrapy of Tyrea. Heavy, sharp-tongued and used to being the butt of the town's jokes, he lives close to destitution because his mother spends what little they have on the drug haze. He has never been told who his father is. He scavenges the old battlefield at nearby Sundered Rock, where the civil war of sixteen years ago ended, and he reacts to light in ways he does not yet have a name for.",
+            "id": "kip",
+            "name": "Kip",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The Prism: the one living person who can split light into every colour, and by doing so hold the world's magic in balance. He is the spiritual head of the Seven Satrapies and the most powerful drafter alive, sixteen years after winning the False Prism's War against his younger brother Dazen. Charming, restless and privately afraid, he has set himself five great purposes and keeps a careful count of the years he believes he has left.",
+            "id": "gavin-guile",
+            "name": "Gavin Guile",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Gavin's younger brother, dead sixteen years. When the Chromeria named Gavin the next Prism, Dazen refused to accept it, declared himself Prism instead, and split the Seven Satrapies in a civil war remembered as the False Prism's War. It ended at Sundered Rock in Tyrea, and the histories say Gavin killed him there. Tyrea has been treated as a defeated province ever since.",
+            "id": "dazen-guile",
+            "name": "Dazen Guile",
+            "reveal": {
+              "chapter": 2
+            }
+          },
+          {
+            "description": "A red and green bichrome drafter and a member of the Blackguard, the elite corps sworn to protect the Prism and the White. Before the war she was betrothed to Gavin Guile. A fire at her family's estate killed several of her brothers and was blamed on his brother Dazen, and the war that followed finished the ruin of her house. She is small, fast, quick to anger, and has never entirely put down her grievance against Gavin.",
+            "id": "karris-white-oak",
+            "name": "Karris White Oak",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A man held in a seamless cell of blue luxin somewhere beneath the world, fed through a slot and visited by exactly one person. He insists on his own name, keeps count of the years, and works patiently at the only project left to him: getting out.",
+            "id": "the-prisoner",
+            "name": "The prisoner",
+            "reveal": {
+              "chapter": 3
+            }
+          },
+          {
+            "aliases": [
+              "Lina"
+            ],
+            "description": "Kip's mother, worn down by years of the drug haze and by whatever she has been running from. She is cruel to her son as often as she is affectionate, and she has kept hidden both the name of his father and an object she has never explained.",
+            "id": "katalina-delauria",
+            "name": "Katalina Delauria",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Rekton's dyer, a quiet widower whose daughter is away studying at the Chromeria. The town respects him for reasons it cannot quite articulate, and he is plainly more than a provincial craftsman who happened to settle in a backwater.",
+            "id": "corvan-danavis",
+            "name": "Corvan Danavis",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Liv"
+            ],
+            "description": "Aliviana Danavis, the dyer's daughter, now a yellow drafter in her final years at the Chromeria. Clever and proud, she is held on a short leash by the debts her schooling has run up and by the fact that she is Tyrean, which in the Seven Satrapies is a thing to apologise for. She knew Kip when they were children in Rekton.",
+            "id": "liv-danavis",
+            "name": "Aliviana Danavis",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The self-declared king of Tyrea and son of the satrap the Chromeria deposed at the end of the war. He is assembling an army of soldiers and unlicensed drafters and intends to take back the satrapy his family lost, starting with the towns that submitted.",
+            "id": "rask-garadul",
+            "name": "Rask Garadul",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Orea Pullawr"
+            ],
+            "description": "The White: the administrative head of the Chromeria and the deliberate counterweight to the Prism. Elderly and confined to a wheeled chair, she runs the institution's politics, its money and its informants with great patience, and is entirely immune to charm.",
+            "id": "the-white",
+            "name": "The White",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Commander of the Blackguard, a very large Parian officer with a shaved head and an unshakeable calm. He answers to the White and the Prism both, trains his people hard, and is one of the few men Gavin Guile treats as an equal.",
+            "id": "ironfist",
+            "name": "Ironfist",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Gavin's father, head of House Guile and the satrapy of Ruthgar's representative on the Spectrum, the council of Colors that governs the Chromeria alongside the White. A lifetime of drafting red has left his eyes unable to bear light, so he conducts all his business from a sealed, unlit room. He is the most dangerous political operator in the Seven Satrapies, plays the card game Nine Kings for stakes that are never really about cards, and treats his family as instruments.",
+            "id": "andross-guile",
+            "name": "Andross Guile",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Gavin's mother and the manager of House Guile's public face and much of its private business. She is warmer to Kip than her husband is and considerably shrewder than she allows herself to appear.",
+            "id": "felia-guile",
+            "name": "Felia Guile",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A man burned almost past recognition, his skin cracked through with seams of every colour of luxin. He takes command of the rebellion's drafters and offers them something the Chromeria never has: a future in which drafters are not put to death when their power runs out, and in which the Chromeria's authority is broken altogether.",
+            "id": "the-color-prince",
+            "name": "The Color Prince",
+            "reveal": {
+              "chapter": 88
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-black-prism"
+      },
+      "recaps": {
+        "ending": "Garriston cannot be held. Gavin gets the city's people out by sea and leaves Corvan Danavis, his old general, in charge of the refugees, while the rebellion takes the ruined city. Rask Garadul is dead, killed by Kip with the jewelled dagger his mother left him, and one of the dagger's seven stones has filled with stolen colour, which nobody can yet explain. Command of the rebellion passes to the Color Prince, who intends to break the Chromeria outright. Aliviana Danavis, disgusted by how the Chromeria treats Tyrea and by the Freeing, the ritual killing of drafters who reach the end of their power, goes over to him willingly. Karris is recovered alive and knows now that Kip is a Guile. Beneath the Chromeria, the prisoner breaks out of his blue cell and finds only another cell beyond it, and at the same time Gavin loses blue for good. The last thing the book gives the reader is the truth behind all of it: the man the world calls Gavin Guile is Dazen. He won the war, took his dead-seeming brother's name, face and office, and has kept the real Gavin alive in a private prison ever since. Kip is the son of a man who does not exist, and Gavin's five great purposes and shrinking span of colours are the debts of a sixteen-year-old lie.",
+        "in_short": "In the Seven Satrapies, drafters turn light into luxin, a physical substance, and pay for it with their lives; the Prism alone can draft every colour, and the Chromeria governs magic in his name. Sixteen years after Gavin Guile won a civil war against his brother Dazen, a fifteen-year-old boy named Kip watches his Tyrean town destroyed by a would-be king, receives a jewelled dagger and the claim that Gavin is his father from his dying mother, and is swept up by the Prism himself. At the Chromeria Kip meets a family that regards him as a liability, while Gavin conceals two things: that his colours are failing one by one, and that he keeps a prisoner in a cell beneath the tower. When the rebellion marches, Gavin raises a luxin wall around the city of Garriston in a week and still loses it. Kip kills the rebel king with the dagger, which drinks the man's magic; Liv Danavis defects to the rebels' new leader, the Color Prince; and the reader learns that the Prism is actually Dazen, wearing his brother's name, and that the prisoner below is the real Gavin Guile.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In the Seven Satrapies, magic is drafting: a drafter converts light of one colour into luxin, a physical substance with its own properties, and pays for it with their body and eventually their life. One person in each generation, the Prism, can split light into every colour, and the Chromeria on the Jasper Isles trains and governs drafters under him and under an administrator called the White. Kip, a heavy and much-mocked fifteen-year-old, lives in the Tyrean town of Rekton with a mother lost to the drug haze. Tyrea is the losing side of the False Prism's War, fought sixteen years earlier between Gavin Guile and his younger brother Dazen and ended at Sundered Rock a short walk from the town. Kip scavenges that battlefield for scraps of old luxin. Word arrives that a man calling himself King Garadul, son of Tyrea's deposed satrap, is raising an army and marching on the towns that submitted to the Chromeria. Far away on the Jaspers, Gavin Guile tests his colours each morning, as Prisms do, and finds that the count he has been keeping in private is running out faster than anyone knows.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Garadul's army reaches Rekton and burns it, killing most of the town. Kip survives. He finds his mother dying, and she presses on him a jewelled dagger she has kept hidden for years, tells him that Gavin Guile is his father, and demands that he take revenge for her. Kip is left with a knife he does not understand, a claim he cannot prove, and no home. On the Jaspers, Gavin learns that he has a son in Tyrea. He also keeps a secret that would end him: below the Chromeria, in a cell of blue luxin, sits a prisoner whom Gavin alone visits and feeds, and who has spent sixteen years planning to get out. Karris White Oak, a Blackguard who was betrothed to Gavin before the war and has never forgiven what the war cost her family, is drawn back into his orbit as he prepares to leave the Chromeria on business he will not explain to the Spectrum.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Gavin reaches the ruins of Rekton, finds Kip, and claims him as his son in front of witnesses. They are hunted by Garadul's men and by a colour wight, a drafter who has passed the limit a body can bear and remade himself in luxin; Gavin destroys it. He carries Kip away on a craft of his own invention that skims across open water faster than any ship. Kip learns that Rekton's dyer, Master Danavis, was no provincial craftsman but Gavin's general in the war, hidden in a backwater ever since, and that he has been quietly watching over Kip for years. Kip says nothing about the dagger and keeps it out of sight. Gavin, alone, confirms what he has been dreading: one of his seven colours has gone and will not come back, which by his own arithmetic gives him about five years before the rest follow.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Gavin brings Kip to the Chromeria on Little Jasper and installs him as an acknowledged Guile bastard, which pleases nobody. The Spectrum, the council of Colors that governs alongside the White, treats a Tyrean rebellion as a provincial nuisance and is far more interested in what the Prism is doing without their permission. Kip is summoned to the sealed, lightless room of his grandfather Andross Guile, who sits as Red on the Spectrum, cannot bear light after a lifetime of drafting, and conducts the family's business and the Chromeria's politics from the dark. Andross makes Kip play the card game Nine Kings and makes plain what the boy is worth to him. Kip's grandmother Felia Guile is warmer and no less calculating. Aliviana Danavis, the dyer's daughter and a yellow drafter in her final years of study, is set to look after Kip, and the two of them recognise each other from childhood.",
+            "through": {
+              "chapter": 32
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kip is tested and turns out to be capable of drafting more than one colour, which makes him valuable and also a problem, and he begins the miserable business of learning to draft alongside students years younger and far better prepared. Andross Guile keeps summoning him to the dark room and the card table, and every game costs Kip something. Gavin argues with the Spectrum over Tyrea and is refused the force he asks for. Liv is pulled between her loyalty to Kip, her family debts, and the patrons who own those debts. Karris is sent south as the Chromeria's envoy to the man calling himself King Garadul, a mission designed to look like diplomacy and to gather intelligence. Gavin, unable to move the Spectrum, resolves to go to Tyrea himself and to defend Garriston, the one real city left in the satrapy, with whatever he can raise.",
+            "through": {
+              "chapter": 42
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Karris's embassy fails; Garadul takes her prisoner rather than treating with the Chromeria, and his army moves on Garriston. Gavin sails south with Kip, Ironfist and a small force, defying the Spectrum's caution, and Liv is sent to Tyrea as well on an errand of her own patrons' devising. Garriston is a broken city, still garrisoned and still resented as the place where the war was settled, with a governor who has no intention of fighting and walls that will not stand. Gavin surveys it and decides that the only way to hold it is to build something no drafter has ever built. Kip, in the middle of all this, is being trained on the run, and continues to keep the jewelled dagger secret from everyone.",
+            "through": {
+              "chapter": 52
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Gavin raises the Brightwater Wall around Garriston out of luxin, working the whole circuit of the city in a matter of days: a feat that has no precedent and that costs him more than he admits. The city fills with refugees from the countryside and with a scratch garrison of soldiers, sailors and untrained drafters. Kip is put to work and starts to find, painfully, that he is good for something. Liv arrives in Tyrea and is confronted with the other side of the story she has been raised on: what the Chromeria did to her satrapy after the war, and what it does to its own drafters at the end of their span. Karris, still a prisoner in Garadul's camp, learns that the rebellion is no longer really Garadul's, and that something older and stranger is directing it.",
+            "through": {
+              "chapter": 62
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The rebel army arrives before Garriston with its own drafters and a core of colour wights who have already abandoned the limits the Chromeria sets. Gavin's defence rests on the wall, on a handful of trained fighters, and on himself, and he is quietly running out of colours to spend. Liv, travelling with the rebellion, is offered a place in it and a version of the future in which drafters are not executed once their power fails, the practice the Chromeria calls the Freeing. Karris tries to escape her captivity. Kip is armed, frightened and repeatedly told to stay out of the way. Below the Chromeria, thousands of miles from any of this, the prisoner finishes the work of sixteen years and gets his hands on the seam of his cell.",
+            "through": {
+              "chapter": 72
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The battle for Garriston is fought over the wall and then through the streets. Gavin spends himself holding the line, and the wall he built is not enough against wights and cannon together. Kip, cut off in the fighting, comes face to face with Rask Garadul and kills him with his mother's jewelled dagger; the knife does something no weapon should do, drinking the dying man's magic into one of the seven stones set in its hilt. Karris is found and freed. The city is lost regardless, and Gavin turns from defending Garriston to evacuating it, putting the population aboard every hull in the harbour while the rebellion takes the walls.",
+            "through": {
+              "chapter": 84
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Command of the rebellion passes to the Color Prince, a man burned nearly to ruin whose skin is cracked through with every colour of luxin, and whose ambition is not Tyrea but the destruction of the Chromeria itself. Liv Danavis chooses his side, openly and by her own reasoning. Gavin gets the refugees out to sea and leaves Corvan Danavis, his general from the war, in command of them; Karris survives and now knows Kip is a Guile; Kip keeps a dagger that has begun to fill with stolen colour. Beneath the Chromeria the prisoner breaks out of the blue cell at last and finds only another cell waiting beyond it, and in the same hour Gavin loses blue permanently. And the reader is finally told what the book has been withholding: the man the world calls Gavin Guile is Dazen. He won the war, took his brother's name, face and office, and has kept the real Gavin alive in a private prison for sixteen years. The Prism is an impostor, his failing colours are the price of it, and the boy he has just claimed as a son is the son of a dead man's name.",
+            "through": {
+              "chapter": 95
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-black-prism"
+      }
+    },
     "the-blade-itself": {
       "characters": {
         "characters": [
@@ -1129,6 +1365,507 @@
         "work": "the-blade-itself"
       }
     },
+    "the-blinding-knife": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Kip Guile"
+            ],
+            "description": "The acknowledged bastard son of the Prism, sixteen years old, heavy, self-mocking and quietly furious about most of it. He survived the destruction of his home town and the fall of Garriston, he can draft more colours than almost anyone his age, and he carries a jewelled dagger his mother left him that drank the magic of the man he killed with it. At the Chromeria he is a Guile without any of a Guile's training, watched by a grandfather who regards him as a mistake to be managed.",
+            "id": "kip",
+            "name": "Kip",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The Prism, and in truth Dazen Guile wearing his dead brother's name, face and office since he won the False Prism's War sixteen years ago. He is losing his colours one at a time, faster than he can hide, and each loss is tied to the prisoner he keeps below the Chromeria. Having failed to hold Garriston, he returns to a Chromeria that blames him for the loss and to a war he cannot fight for much longer.",
+            "id": "gavin-guile",
+            "name": "Gavin Guile",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The real Gavin Guile, held for sixteen years in a set of nested cells of coloured luxin beneath the Chromeria by the brother who took his name. He has broken out of the blue cell and found another one waiting, and he is already working on that one. Every cell he breaks costs the false Gavin the matching colour.",
+            "id": "the-prisoner",
+            "name": "The prisoner",
+            "reveal": {
+              "chapter": 1
+            }
+          },
+          {
+            "description": "A red and green bichrome and a Blackguard, back at the Chromeria after captivity in Tyrea and the retreat from Garriston. Her old betrothal to Gavin is unfinished business for both of them, and she is now one of the very few people whose loyalty he has actually earned. Her family, the White Oaks, are nearly extinct and remain a piece on Andross Guile's board.",
+            "id": "karris-white-oak",
+            "name": "Karris White Oak",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The head of House Guile and the Spectrum's Red, running the Chromeria's politics from a sealed dark room. He uses the card game Nine Kings as an interrogation, a lesson and a trap at once, and he wants Kip either useful or gone. He collects rare things, including the Nine Kings cards themselves, and he has never explained why.",
+            "id": "andross-guile",
+            "name": "Andross Guile",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Orea Pullawr"
+            ],
+            "description": "The White, head of the Chromeria's administration, ageing and visibly failing, still the shrewdest political mind on the Jaspers and Andross Guile's only real counterweight. She runs her own informants and has begun looking hard at who will come after her.",
+            "id": "the-white",
+            "name": "The White",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Gavin's mother, still managing House Guile's respectable face while her husband works in the dark. She is near the end of her span as a drafter and knows it, and she knows a great deal about her family that she has never said aloud.",
+            "id": "felia-guile",
+            "name": "Felia Guile",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Aliviana Danavis, formerly a Chromeria student, now travelling with the rebellion by her own choice. She has accepted the Color Prince's argument that the Chromeria's rule and its ritual killing of spent drafters are worth destroying, and she is learning what her own colour can do without the limits she was taught.",
+            "id": "liv-danavis",
+            "name": "Aliviana Danavis",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The burned man who took over the Tyrean rebellion, whose skin is seamed with every colour of luxin and who now leads an army north out of the ruins of Garriston. He preaches that drafters should be free to become whatever their magic makes of them, and that the Chromeria is the only thing standing in the way.",
+            "id": "the-color-prince",
+            "name": "The Color Prince",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Commander of the Blackguard, whose people are being asked to guard a Prism the Spectrum no longer trusts while running a class of raw recruits through the worst training on the Jaspers. He is fair, immovable, and increasingly caught between the offices he serves.",
+            "id": "ironfist",
+            "name": "Ironfist",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Blackguard and Ironfist's brother, put in charge of hammering the new recruits into shape. Scarred, exacting and unnervingly quiet, he carries a reputation from the war that the recruits only hear in fragments.",
+            "id": "tremblefist",
+            "name": "Tremblefist",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Adrasteia"
+            ],
+            "description": "Adrasteia, a slave girl competing for one of the few open Blackguard places, which would buy her freedom. Small, fast and deliberately unremarkable, she is hiding what she can actually do: she drafts paryl, a colour below the visible spectrum that the Chromeria does not teach and mostly refuses to admit exists.",
+            "id": "teia",
+            "name": "Teia",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The outstanding recruit of Kip's class and its natural leader: disciplined, fast, and sincerely devoted to what the Blackguard is supposed to be. He decides early that Kip is worth defending and does not change his mind.",
+            "id": "cruxer",
+            "name": "Cruxer",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A recruit in Kip's class who drafts more than one colour and would rather build things than fight. He makes his own spectacles and gadgets and is the squad's engineer long before anyone gives him the title.",
+            "id": "ben-hadad",
+            "name": "Ben-hadad",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A recruit in Kip's class, an enthusiastic grappler with no sense of tact and an unexpected ability to blurt out the one thing nobody else has noticed.",
+            "id": "ferkudi",
+            "name": "Ferkudi",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young red drafter attached to the rebellion, handsome, charming and entirely without conscience. He attaches himself to Liv, and it becomes clear quickly that he is dangerous to everyone around him, including his own side.",
+            "id": "zymun",
+            "name": "Zymun",
+            "reveal": {
+              "chapter": 46
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A pirate cannoneer of enormous and erratic talent, obsessed with his guns and with his own legend, who has crossed the Prism's path before and holds a grudge about it.",
+            "id": "gunner",
+            "name": "Gunner",
+            "reveal": {
+              "chapter": 108
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-blinding-knife"
+      },
+      "recaps": {
+        "ending": "Gavin marries Karris in defiance of his father's plans for a more profitable match, then sails to meet the rebellion. In the fighting around Ru he destroys the bane, the great floating body of luxin the rebellion had been growing so that an old god could be born back into the world. It costs him everything: when it is over his drafting is gone, and the Prism who could split light into seven colours cannot make one. Half-drowned and unrecognised, he is fished out of the water by the pirate cannoneer Gunner, who keeps him. The Seven Satrapies are left believing their Prism is dead, with a war they are losing, an Andross Guile free to fill the vacancy, and a Chromeria whose next Prism will have to come from somewhere. Karris is a Guile by marriage and a widow by every report she is given. Kip survives, blooded and increasingly unwilling to be managed, and now knows what the jewelled dagger is and roughly what his grandfather wants it for. Liv has gone further into the rebellion than she can walk back from. Below the Chromeria, the real Gavin Guile breaks out of another cell, and another of his brother's colours goes with it.",
+        "in_short": "Garriston is lost and the Chromeria blames its Prism. While the Color Prince's army marches north out of Tyrea, Kip fights his way through Blackguard training, makes a squad out of the other misfits, and is played against his grandfather Andross across a card table that is never really about cards. The jewelled dagger Kip carries turns out to be an artifact old enough to predate the Chromeria: a knife that can strip a drafter of their magic. Gavin, secretly the brother who stole the Prism's name, loses colours faster than he can conceal, holds the Spectrum together with bluff, and buries his own mother at the ritual that kills drafters at the end of their span. He marries Karris against his father's wishes and sails to fight the rebellion at Ru, where he destroys the vast floating bane of luxin that would have birthed an old god. The victory takes his drafting entirely, and he is pulled from the sea by the pirate Gunner. The satrapies are told their Prism is dead; below the Chromeria, the real Gavin Guile breaks through another wall of his prison.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: in the Seven Satrapies, drafters turn light into luxin and burn out their lives doing it; the Prism alone drafts every colour, and the Chromeria governs magic in his name under an administrator called the White. Sixteen years ago Gavin Guile beat his brother Dazen in the False Prism's War. Kip, a fifteen-year-old from the Tyrean town of Rekton, lost his home and his mother to a rebel king's army, and was left a jewelled dagger and the claim that Gavin Guile was his father. Gavin collected him and installed him at the Chromeria under the cold eye of Andross Guile, head of the family and the Spectrum's Red. When the rebellion marched, Gavin raised a wall of luxin around Garriston in days and still lost the city; he evacuated its people and left them with his old general Corvan Danavis. Kip killed the rebel king with the dagger, which drank the man's magic into one of its seven stones. Liv Danavis went over to the rebellion's new leader, the Color Prince. Two things the world does not know: the man who calls himself Gavin is really Dazen, who took his brother's name and face after the war, and the real Gavin has been alive the whole time in a prison beneath the Chromeria, breaking out of one coloured cell into the next. Each cell he breaks costs the false Prism that colour, and blue is already gone.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The refugees from Garriston are landed on the Jaspers and become somebody else's problem, and the Spectrum sets about blaming Gavin for the loss of a city they refused to help him defend. He returns to a Chromeria where his authority is thinner than it has ever been, his colours are still failing, and the prisoner below has already begun work on the next cell. Kip, now an acknowledged Guile with no standing, is entered for the Blackguard's open trials, the annual scramble in which a few dozen candidates fight for a handful of places. He is heavier, slower and worse trained than everyone he is up against. Andross Guile summons him back to the dark room, and it is made clear that the card game is the price of being tolerated at all.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kip survives the trials and the training that follows, and the class of recruits sorts itself into squads. He ends up attached to a group of misfits and standouts: Cruxer, the best of them and the one who decides Kip is worth backing; Ben-hadad, who builds things; Ferkudi, who says whatever occurs to him; and Teia, a slave girl for whom a Blackguard place means freedom and who is concealing a talent the Chromeria does not teach. Tremblefist, Ironfist's scarred brother, runs them into the ground. Karris is back on duty and back within reach of Gavin, and neither of them handles it well. Andross keeps Kip at the card table and keeps winning.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Color Prince's army moves north out of Tyrea toward Atash, gathering wights and unlicensed drafters as it goes, and the Chromeria's answer is committees. Gavin can no longer draft blue at all and is concealing how much else is going. Liv, travelling with the rebellion, is given work that suits her superviolet and pushed to see how far past the Chromeria's limits a drafter can go without becoming a monster; she is not sure the Color Prince is lying about anything, which is the problem. Teia's secret starts to surface: she drafts paryl, an invisible colour beneath the spectrum the Chromeria admits to, useful for exactly the things nobody is supposed to do.",
+            "through": {
+              "chapter": 34
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The jewelled dagger is finally identified. It is far older than the Chromeria, dating to the prophet who founded it, and it is a weapon built to take a drafter's magic away and store it. Kip has been carrying an artifact that several very dangerous people have spent lifetimes looking for, and Andross Guile is one of them. Kip also begins to learn what the Nine Kings cards really are: a few of them carry the memories of the people they depict, and a viewer can live them. Meanwhile a young red drafter named Zymun attaches himself to Liv and the rebellion, charming, ruthless and untethered. At the Chromeria, whispers about the Order of the Broken Eye, an old assassins' society the Chromeria insists it destroyed centuries ago, stop sounding like folklore.",
+            "through": {
+              "chapter": 46
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Gavin sets about raising a fleet and an army with money and authority he does not really have, inventing his way around the shortfall as he goes. The Spectrum fights him at every step; Andross manoeuvres to marry his son to a useful house and to control whatever comes next. Karris and Gavin stop pretending about each other. Kip's squad becomes a unit rather than a collection of recruits, and Teia's paryl makes her quietly indispensable and quietly at risk. The Color Prince takes city after city in Atash, and the refugees start arriving faster than the satrapies can lie about it.",
+            "through": {
+              "chapter": 58
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The recruits reach their final trials and Kip's squad is confirmed. Reports come back that the rebellion is not merely marching but building something at sea: a vast growing island of luxin the old texts call a bane, the sort of thing the histories say once housed gods. Gavin, whose remaining colours he now counts in single figures, decides the fleet must sail before it finishes forming. Zymun proves how dangerous he is to his own side as well as to the Chromeria's. Kip presses his grandfather across the card table for the one thing Andross will not trade, and starts to understand how much of his own history has been arranged.",
+            "through": {
+              "chapter": 70
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sun Day comes, the Chromeria's central festival, and with it the Freeing: the rite in which drafters who have reached the end of their span kneel before the Prism and are killed by him rather than be allowed to break and become wights. Felia Guile is one of them. She asks for it, and her son performs it, and before she dies she leaves him things about his family and its arrangements that he did not know and cannot now check. The ceremony is also the moment the Order of the Broken Eye chooses to show that it is real and inside the Chromeria's walls. Kip sees the Freeing for what it is, and so does everyone else who has been arguing that the Color Prince is simply wrong.",
+            "through": {
+              "chapter": 82
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Gavin marries Karris, publicly and quickly, refusing the match his father had arranged and accepting the cost of that refusal. Then he sails. The bane has finished rising in the sea off Atash, a floating body of luxin large enough to be mistaken for land, and the rebellion is gathered around it: something is being grown inside it, and the old accounts agree on what happens if it is allowed to be born. Gavin's plan requires him to spend colours he no longer has. Kip goes with the fleet. Liv is on the other side of the water, close enough to the thing being made to understand exactly what her side is doing.",
+            "through": {
+              "chapter": 94
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The battle is fought around Ru and out over the water. The rebellion's wights and cannon maul the Chromeria's fleet, and the fighting on land goes badly enough that the city cannot be held either. Gavin reaches the bane. Destroying it means putting more into one working than any drafter is built to survive, and he does it anyway, unmaking the island of luxin and the god forming inside it before it can draw breath. Kip is in the fighting and comes out of it alive. When the sea closes over the wreck of the bane, the Prism's magic is simply gone: he cannot draft a single colour, and there is no one left on the water who knows to look for him.",
+            "through": {
+              "chapter": 105
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Gunner, a pirate cannoneer with an old grudge against the Prism and an unreliable grip on reality, pulls a half-drowned man out of the sea and keeps him. Gavin Guile, drained, unrecognised and without a scrap of magic, becomes cargo. The Seven Satrapies are told their Prism died at Ru. Karris is a Guile by marriage and a widow by every account she is given; Andross Guile is left with an empty office to fill and a grandson he has not decided what to do with; Kip comes home with the knife, a squad, and the beginning of an idea about what his family has actually done. Liv is too far inside the rebellion to walk back out of it. Beneath the Chromeria the real Gavin Guile breaks another cell wall, and another colour is taken from the brother who put him there.",
+            "through": {
+              "chapter": 115
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-blinding-knife"
+      }
+    },
+    "the-blood-mirror": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Kip Guile",
+              "Lord Guile"
+            ],
+            "description": "Driven off the Jaspers by his own grandfather, Kip arrives in the Blood Forest with a squad, a wife he barely knows, an ancient magic-stealing knife and no authority whatsoever. He is a polychrome with an unusual gift for reading people and for will-casting, and he is about to find out whether a boy who has never commanded anything can raise an army in a satrapy the rest of the world has written off.",
+            "id": "kip",
+            "name": "Kip",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The man the satrapies believe died at Ru, in truth Dazen Guile, who took his brother's name after the False Prism's War. He is blind, without a single colour, and shut in the deepest of the coloured cells beneath the Chromeria: the prison he designed himself, for the brother he replaced. Nobody outside that room knows he is alive.",
+            "id": "gavin-guile",
+            "name": "Gavin Guile",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "The White",
+              "Karris White Oak"
+            ],
+            "description": "The White: head of the Chromeria's administration, decades younger than anyone who has held the office before her, mourning a husband she was married to for a matter of weeks and presiding over a war she is losing. She was raised to the post by her dying predecessor precisely because she is not one of the Spectrum's own, and every Color on that council knows it.",
+            "id": "karris-guile",
+            "name": "Karris Guile",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Head of House Guile, the Spectrum's Red, and now the most powerful man in the Seven Satrapies by some distance. With the war going badly he is pressing for promachos, the emergency office that suspends normal government and puts one man in charge of everything, and there is nobody left with the standing to stop him.",
+            "id": "andross-guile",
+            "name": "Andross Guile",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Adrasteia"
+            ],
+            "description": "A Blackguard and paryl drafter living as a member of the Order of the Broken Eye, the assassins' society she was sent to infiltrate. Her handler is the White, her cover requires her to do the Order's work, and the deeper she goes the fewer people there are who could confirm which side she is actually on. She hunts for the Order's hidden head, known only as the Old Man of the Desert.",
+            "id": "teia",
+            "name": "Teia",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Kip's wife by a marriage arranged in a hurry for the alliances it bought. A Malargos of Ruthgar, trained from childhood in negotiation and court politics, she is the reason anyone in the Blood Forest will listen to Kip at all, and she is far more use to him as a diplomat than he initially understands. The marriage itself is unfinished business between them.",
+            "id": "tisis-malargos",
+            "name": "Tisis Malargos",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Kip's squad commander and conscience, a Blackguard by training and instinct who left the Jaspers rather than leave Kip. He wants the group to be something honourable, and he holds it to that standard whether or not the war allows it.",
+            "id": "cruxer",
+            "name": "Cruxer",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The squad's engineer, a multi-coloured drafter who would rather solve a problem with a mechanism than a sword, and who keeps producing devices that turn out to matter more than anyone expected.",
+            "id": "ben-hadad",
+            "name": "Ben-hadad",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The squad's archer: laconic, unsentimental about killing, and the best shot any of them have seen. He is not much interested in the moral arguments the others keep having.",
+            "id": "winsen",
+            "name": "Winsen",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "The Color Prince"
+            ],
+            "description": "The leader of the rebellion that now holds Tyrea, Atash and much of the Blood Forest, a burned man seamed with every colour of luxin who no longer bothers with the title of prince. He preaches the end of the Chromeria and the Freeing, and he is deliberately growing the banes, the floating islands of luxin in which the old gods can be seeded.",
+            "id": "the-white-king",
+            "name": "The White King",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The Prism-elect: charming in public, a murderer in private, and the son Karris bore and lost before the war. He is what the Chromeria has instead of a Prism, and he intends to be more than a figurehead.",
+            "id": "zymun",
+            "name": "Zymun",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Aliviana Danavis, once a Chromeria student, now something the Chromeria has no vocabulary for. She works at the banes, where the rebellion is growing the vessels the old gods were said to inhabit, and she has stopped thinking of herself as anyone's subordinate.",
+            "id": "liv-danavis",
+            "name": "Aliviana Danavis",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The former commander of the Blackguard, a Parian of immense reputation who has lost both the Prism he was sworn to and his faith in the institution that employed him. His own country has a claim on him that he has spent his whole career refusing.",
+            "id": "ironfist",
+            "name": "Ironfist",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Order of the Broken Eye's most accomplished assassin and Teia's teacher, a paryl drafter who moves unseen, keeps his own rituals, and collects the teeth of the people he kills. He is fond of Teia, which is not a safe thing to be.",
+            "id": "murder-sharp",
+            "name": "Murder Sharp",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-blood-mirror"
+      },
+      "recaps": {
+        "ending": "Karris learns what her marriage actually was: the man she married is Dazen Guile, who took his dead brother's name, face and office after the False Prism's War and has been lying to her, and to everyone, for sixteen years. Gavin himself comes to the end of his descent through the cells he built, blind and without magic, and is out of that prison alive by the close of the book, no longer Prism and no longer anyone the satrapies think exists. Andross Guile holds the Chromeria as promachos, with Zymun installed as Prism-elect and Karris as a White with the title but not the power. Teia is further inside the Order of the Broken Eye than anyone can retrieve her from, still hunting its hidden head. Kip finishes the book as a war leader with a real army, a liberated city and a name in the Blood Forest, and with a marriage to Tisis that has become an actual partnership. On the other side, the White King's forces are still growing their banes, and Aliviana Danavis has taken a seed crystal and become something that is not a drafter any more, an old god of superviolet reborn under the name Ferrilux. The last defensible ground in the north is Kip's, the Jaspers are Andross's, and the gods are coming back.",
+        "in_short": "Blind, powerless and given up for dead, Gavin is imprisoned in the deepest of the cells he built beneath the Chromeria and works his way down through them, forced back through everything the war cost. Above him, Andross Guile has himself made promachos and rules the Seven Satrapies outright, with the murderous Zymun as Prism-elect and Karris holding the White's title without its authority. Teia lives as an assassin of the Order of the Broken Eye, killing to hold a cover nobody can confirm, hunting the Order's hidden master. Kip and Tisis, exiled to the Blood Forest, raise an irregular army out of foresters, ghosts and refugees, break the siege of the city of Dunbheo, and turn a marriage of convenience into a real one. The White King's armies keep taking ground and his banes keep growing, and Aliviana Danavis takes a seed crystal and ascends as Ferrilux, an old god returned. By the end Karris has learned that her husband is Dazen, not Gavin, and Gavin is out of the cells alive with nothing left of what he was.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: the Prism who was lost at Ru was really Dazen Guile, who beat his brother in the False Prism's War, took Gavin's name and office, and kept the real Gavin alive in nested coloured cells beneath the Chromeria. Stripped of every colour destroying the rebellion's bane, he was enslaved, escaped, and made it home only for his father Andross to blind him and lock him in that same prison. No one knows he is alive. Orea Pullawr died and Karris, widowed within weeks of marrying, was raised to the White. Andross produced Zymun as Prism-elect: a charming murderer who is also the son Karris bore and lost before the war. Teia, a Blackguard and the only known paryl drafter, was sent into the Order of the Broken Eye, the assassins' society the Chromeria pretended it had destroyed, and is still inside it with a stolen invisibility cloak and no way to prove her loyalty. Kip, hunted off the Jaspers by his grandfather, fled with his squad and married Tisis Malargos for the alliances it bought. The Color Prince, now calling himself the White King, holds Tyrea and Atash and is growing banes, the floating islands of luxin in which the old gods were said to be seeded. Liv Danavis works for him. Kip still carries the ancient knife that takes a drafter's magic.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Gavin wakes blind in a cell of his own design, fed through a slot, with no magic, no light and no way to tell how long he has been there. The only route he has is down: the cells are stacked, and each one has to be broken through. Above him, the Chromeria is being reorganised around a war it is losing. Karris takes up the White's office and discovers immediately that the Spectrum regards her as an inconvenient appointment rather than a superior. Kip, Tisis and the squad arrive in the Blood Forest, a satrapy already half overrun, and find no army, no chain of command and no obvious reason for anyone there to take orders from a disgraced Guile bastard.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Andross Guile presses the Spectrum to make him promachos, the wartime office that suspends the ordinary government of the satrapies and hands one man everything, and the war gives him all the argument he needs. Karris fights it and loses. Zymun, as Prism-elect, begins testing how far his position lets him go, and it becomes clear he is a danger to his own side and to his mother personally. In the Blood Forest, Kip starts gathering what is left: forest irregulars, refugees, hunters, a few drafters, people with nothing to go back to. Teia takes the Order's work as it is given to her, because refusing a job is how a spy is identified.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The rebellion's leader is Koios White Oak, Karris's own brother, believed burned to death in the fire that destroyed her family's estate before the war and blamed on Dazen Guile. He survived, and the White King's campaign is as much a family reckoning as a revolution. Karris has to run a war against her brother while the office above her is held by her father-in-law. Kip's ragged force starts to look like an army and starts winning small engagements, and Kip discovers he can will-cast, imposing his will through luxin in a way the Chromeria does not teach. His marriage to Tisis is still, awkwardly, a marriage on paper only.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Gavin breaks down into the next cell and the next, and blindness plus isolation stop being separable from memory: the descent forces him back through the war, what he did to win it, and what he did afterwards to keep the name he took. Teia is ordered to kill for the Order in ways she cannot square with anything, and her hunt narrows toward the Old Man of the Desert, the hidden head nobody in the Order has seen. Kip's army moves on Dunbheo, a Blood Forest city under siege by the White King's forces and being sold out from inside by its own council. Andross, now with the power he wanted, begins spending it.",
+            "through": {
+              "chapter": 38
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kip takes Dunbheo. The siege is broken by a combination of irregular warfare, Tisis's negotiating and Kip's willingness to do things no Chromeria-trained drafter would, and the city ends up his, which makes him a lord in fact whether or not anyone confirms it. The Blood Forest starts calling his force by a name. Karris, boxed in politically, turns to the one thing the White really controls, information, and starts pulling on the threads her predecessor left her, including the question of what exactly happened at the end of the False Prism's War. Zymun makes his first serious attempt to remove her.",
+            "through": {
+              "chapter": 48
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The White King's armies press on the Blood Forest and his banes keep growing out at sea, each one a vessel for something the old accounts call a god. Liv is at the heart of that work and is offered the last step. Teia, deep enough in the Order to be trusted with its secrets, learns how far its reach goes and how long it has been inside the Chromeria's institutions rather than merely opposed to them. Kip and Tisis stop being allies and become a marriage. Gavin, still descending, runs out of versions of the war he can tell himself and has to account for what he actually did to his brother.",
+            "through": {
+              "chapter": 58
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Aliviana Danavis takes a seed crystal at a bane and stops being a drafter at all: she comes out of it as Ferrilux, one of the old gods of superviolet returned to the world in a human body. The White King now has powers on his side that the Chromeria's doctrine says cannot exist. Kip consolidates the Blood Forest and prepares for a war on a scale his irregulars were never built for. Karris closes on the truth she has been circling. Teia is left holding what she has learned with nobody to hand it to, and the Order's plans for the Chromeria enter a new phase.",
+            "through": {
+              "chapter": 68
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Karris finds out what her marriage really was. Her husband is Dazen Guile: he killed or replaced his brother at the end of the war, took Gavin's name, face and office, and lied to her and to the whole of the Seven Satrapies for sixteen years. Gavin comes to the bottom of the prison he built and is out of it alive by the close of the book, blind, without a colour to his name, and no longer the man any of the titles refer to. Andross Guile holds the satrapies as promachos with Zymun as his Prism-elect, and Karris keeps the White's title and very little of its power. Teia is beyond recall inside the Order, still hunting its master. Kip ends the book with an army, a liberated city, a name in the Blood Forest and a wife who is now a partner. Facing all of it: a White King who is Karris's own brother, banes still ripening at sea, and a returned god in Ferrilux.",
+            "through": {
+              "chapter": 79
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-blood-mirror"
+      }
+    },
     "the-blood-of-olympus": {
       "characters": {
         "characters": [
@@ -1259,6 +1996,120 @@
         "work": "the-blood-of-olympus"
       }
     },
+    "the-blythes-are-quoted": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Mistress of Ingleside at Glen St. Mary, and by this stage of the series a woman whose name carries weight in the district. She appears chiefly in the short domestic scenes that link the stories, sitting with her family and reading her poems aloud, and in the stories themselves she is mostly offstage: a figure the neighbours quote, admire, envy, or resent according to their own natures. Several of the verses in the book are presented as her work.",
+            "id": "anne-blythe",
+            "name": "Anne Blythe",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The long-established doctor at Glen St. Mary, whose opinion the neighbourhood repeats as settled fact. He appears in the linking family scenes, dry and affectionate, and is talked about throughout the stories by people who have their own reasons for approving or disliking him.",
+            "id": "gilbert-blythe",
+            "name": "Gilbert Blythe",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Ingleside housekeeper of a lifetime, elderly and unchanged in her loyalties, who takes part in the family conversations with her usual certainty about the failings of the neighbours and the merits of the Blythes.",
+            "id": "susan-baker",
+            "name": "Susan Baker",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The poet of the Blythe family, present in the linking scenes of the first part and represented throughout the book by verses attributed to him. His poems are read aloud at Ingleside and are the occasion for much of the family's talk.",
+            "id": "walter-blythe",
+            "name": "Walter Blythe",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The eldest Blythe son, grown and settled, who appears in the family scenes and is referred to in the district as one of the Ingleside children the Glen has watched grow up.",
+            "id": "jem-blythe",
+            "name": "Jem Blythe",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The youngest Blythe daughter, grown up now, who takes part in the family conversations at Ingleside between the stories.",
+            "id": "rilla-blythe",
+            "name": "Rilla Blythe",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Blythe twins, grown women by the time of these stories, who appear in the linking scenes at Ingleside and are counted among the Glen's own.",
+            "id": "nan-and-di-blythe",
+            "name": "Nan and Di Blythe",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-blythes-are-quoted"
+      },
+      "recaps": {
+        "ending": "The book has no single plot to resolve. It closes at the end of its second part, after the war, with the Blythes older, the family circle reduced by Walter's death, and the last of the linking scenes at Ingleside given over to reading his verses and to the family's talk around them. The stories of the second part end as they began, in the private affairs of Glen St. Mary and Four Winds neighbours, several of them on a note of irony or plain bitterness rather than the reconciliations the earlier books preferred. The Blythes themselves are left as the district sees them: prosperous, respected, endlessly quoted, and privately carrying a loss the Glen mentions but does not feel. Taken as a whole the collection is Montgomery's closing word on the world of Avonlea and the Glen, published complete only long after her death, and it leaves that world intact but noticeably darker than she had drawn it before.",
+        "in_short": "The last Anne book is not a novel but a collection: two parts of short stories set in and around Glen St. Mary and Four Winds, interleaved with poems attributed to Anne and Walter Blythe and with brief scenes of the Blythe family at Ingleside talking over those poems and their neighbours. The first part is set before the First World War and the second after it. The Blythes themselves stay mostly at the edges; the stories belong to the people of the district, who quote the doctor and his wife, measure themselves against Ingleside, and conduct their own courtships, feuds, deceptions, and reconciliations. The tone is markedly harder than in the earlier books, with more irony and more unhappiness allowed to stand. Walter's death in the war is the shadow across the second part, and his verses are read aloud in the family scenes. Montgomery sent the manuscript to her publisher at the very end of her life; a shortened version appeared decades later, and the complete text only in 2009.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Anne Shirley, brought up as an orphan at Green Gables in Avonlea, married Doctor Gilbert Blythe and raised their family at Ingleside in Glen St. Mary, with the housekeeper Susan Baker in charge of the kitchen. Their children are Jem, Walter, the twins Nan and Di, Shirley, and the youngest, Rilla, and the family's closest friends have long been the Meredith children of the Glen manse. The First World War took the young men of the district: Jem was taken prisoner and came home, and Walter, the poet of the family, was killed in France, leaving verses that were published and widely read. This book is not a continuation of that story but a collection of short pieces set in the same countryside, with the Blythes seen mostly from outside, as the neighbours see and talk about them.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The first part is set in the years before the First World War. It gathers short stories of Glen St. Mary and the Four Winds district, each complete in itself, about courtships long delayed, family quarrels, mistaken judgements, secrets kept for years, and the small tyrannies of respectable households. Between them come poems attributed to Anne Blythe and to her son Walter, and short scenes at Ingleside in which the family reads those poems aloud and comments on them and on the neighbours. The Blythes are not the subject of the stories; they are the fixed point the district measures itself against, quoted approvingly by some characters and resented by others, and the effect is to show the familiar world of the earlier books from the outside. The register is drier and more ironic than the novels, and unhappy situations are more often left unrepaired.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The second part is set after the war. The Blythe household is older and Walter is dead, and the linking scenes at Ingleside are quieter, with his verses read aloud among the family and his absence present in the talk. The stories continue as before, drawn from the private lives of the district: marriages made and broken, old grudges, deceptions discovered too late, and lives narrowed by pride or by respectability, with several endings that offer no consolation at all. The Blythes remain at the margins, quoted and discussed by people who mostly know them only by reputation. The collection ends there, without a plot to conclude, leaving Glen St. Mary as it stands after the war and closing the sequence that began with an orphan child arriving at Green Gables.",
+            "through": {
+              "chapter": 2
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-blythes-are-quoted"
+      }
+    },
     "the-book-thief": {
       "characters": {
         "characters": [
@@ -1357,6 +2208,253 @@
           }
         ],
         "work": "the-book-thief"
+      }
+    },
+    "the-broken-eye": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Kip Guile"
+            ],
+            "description": "A Blackguard inductee and the Prism's acknowledged bastard, sixteen years old and newly notorious after the disaster at Ru. He is a polychrome of unusual range, he can live other people's memories through a handful of ancient cards, and he is carrying an artifact that strips drafters of their magic. With his father missing and presumed dead, the only Guile left to deal with him is the grandfather who has spent two books deciding whether he is worth keeping.",
+            "id": "kip",
+            "name": "Kip",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The man the world knew as the Prism, in fact Dazen Guile wearing his brother's stolen name. He came out of the battle at Ru without a scrap of magic and was pulled from the sea by a pirate. He is now an oar slave with no colours, no rank, no leverage and no proof of who he is, and he is a very long way from the Jaspers.",
+            "id": "gavin-guile",
+            "name": "Gavin Guile",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The real Gavin Guile, sixteen years in a nest of coloured cells beneath the Chromeria, breaking out of one only to find the next. He is the reason his brother's colours have been failing, and he is still working.",
+            "id": "the-prisoner",
+            "name": "The prisoner",
+            "reveal": {
+              "chapter": 1
+            }
+          },
+          {
+            "aliases": [
+              "Karris Guile",
+              "Karris White Oak"
+            ],
+            "description": "Karris Guile, married and widowed inside a season, a Blackguard whose husband is officially dead and who is not permitted to grieve in public. The White takes her out of the Blackguard and puts her to work as an agent instead, which turns out to be an education in how the Chromeria is really run.",
+            "id": "karris-white-oak",
+            "name": "Karris",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The head of House Guile and the Spectrum's Red, who now has a vacant Prism's office, a war going badly, and no rival of his own weight left standing. He works entirely from a dark room and expects the succession to go the way he arranges it.",
+            "id": "andross-guile",
+            "name": "Andross Guile",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Orea Pullawr"
+            ],
+            "description": "The White, head of the Chromeria's administration and openly dying. She spends what she has left arranging the things that will outlast her, including who succeeds her and who is placed where before Andross Guile can fill every seat himself.",
+            "id": "the-white",
+            "name": "The White",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Adrasteia"
+            ],
+            "description": "A Blackguard and a paryl drafter, the only one anyone knows of. Because paryl is invisible and undocumented, she is the one asset the Chromeria has that can go where nothing else can, which is why she is asked to do something no inductee should be asked to do.",
+            "id": "teia",
+            "name": "Teia",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Commander of the Blackguard, who lost a Prism on his watch and is now protecting an institution that is quietly turning on itself. He holds his people together while the Spectrum argues over what a Blackguard is for.",
+            "id": "ironfist",
+            "name": "Ironfist",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The best of Kip's squad and its commander in everything but name: fast, principled and stubbornly loyal, holding the group together as the reasons to stay at the Chromeria run out.",
+            "id": "cruxer",
+            "name": "Cruxer",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A pirate captain and cannoneer of genuine and unstable genius, who has a rower on his ship he suspects is worth more than the ship. His decisions are made by whim, superstition and whatever will make the better story about Gunner.",
+            "id": "gunner",
+            "name": "Gunner",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Aliviana Danavis, now well past anything the Chromeria taught her, working for the rebellion on the banes: the vast floating bodies of luxin that the old accounts say are where gods are made. She has stopped arguing with herself about which side she is on.",
+            "id": "liv-danavis",
+            "name": "Aliviana Danavis",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The burned man leading the rebellion, whose armies now hold Tyrea and most of Atash and whose declared aim is the end of the Chromeria and of the Freeing. His interest in the banes suggests his ambitions run past politics.",
+            "id": "the-color-prince",
+            "name": "The Color Prince",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A young noblewoman of the Malargos family of Ruthgar, beautiful, well trained in the uses of both, and sent to attach herself to Kip because her house wants something from the Guiles. She is far better at politics than Kip is, and rather less cynical than her instructions require.",
+            "id": "tisis-malargos",
+            "name": "Tisis Malargos",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An assassin of the Order of the Broken Eye, the society the Chromeria has insisted for centuries was destroyed. He is a paryl drafter, he can move unseen, he is meticulous, chatty and entirely without limits, and he collects teeth.",
+            "id": "murder-sharp",
+            "name": "Murder Sharp",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A young red drafter brought to the Chromeria as a claimant to the empty Prism's office, presented with paperwork the Spectrum finds hard to argue with. Charming in public and hollow underneath, he was last seen doing the rebellion's work.",
+            "id": "zymun",
+            "name": "Zymun",
+            "reveal": {
+              "chapter": 54
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-broken-eye"
+      },
+      "recaps": {
+        "ending": "Gavin gets back to the Jaspers under his own power and is beaten there by his father. Andross has him blinded and put in the deepest of the coloured cells beneath the Chromeria: the prison Gavin built himself, for the brother he stole a name from. No one outside that room knows he is alive. The Order of the Broken Eye is exposed as a live organisation with people inside the Chromeria's own walls, and Teia is left inside it, cut off from anyone who can vouch for her and carrying an invisibility cloak she is not supposed to have. Orea Pullawr dies and Karris is raised to the White, an office she never wanted, at the youngest age anyone can remember, with Andross Guile installed opposite her and Zymun confirmed as Prism-elect. Kip cannot stay: his grandfather has made the Jaspers lethal for him, so he leaves with his squad, marrying Tisis Malargos on the way out because the marriage buys them an army's worth of allies in Ruthgar and the Blood Forest. The rebellion, unopposed, holds most of two satrapies. The Seven Satrapies end the book with a boy king for a Prism, a young widow for a White, an old man holding the real power, and their actual Prism blind in a hole under their feet.",
+        "in_short": "The Prism is presumed dead at Ru, and the Chromeria fills the hole with whoever is nearest: Andross Guile takes control of the succession and produces Zymun, a charming psychopath who turns out to be the son Karris bore and lost before the war. The dying White sends Teia into the Order of the Broken Eye, the assassins' society the Chromeria claims to have wiped out, where she is trained by the killer Murder Sharp and given a cloak that makes her invisible. Kip fights his grandfather across a card table and a city, survives repeated attempts on his life, and is pushed into an alliance-marriage with Tisis Malargos. Gavin, an oar slave with no magic, works his way off Gunner's ship and back to the Jaspers, where his father takes him, blinds him, and locks him in the deepest of the cells he once built for his brother. Orea Pullawr dies and Karris is made the White. Kip and his squad flee the Jaspers for the Blood Forest, and the rebellion keeps everything it has taken.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: drafters in the Seven Satrapies turn light into luxin and shorten their lives doing it, and are killed by the Prism in a rite called the Freeing when their power runs out. The man the world calls Gavin Guile is really his brother Dazen, who won the False Prism's War sixteen years ago, took the dead-seeming Gavin's name and office, and has kept the real Gavin alive ever since in a set of nested coloured cells below the Chromeria. Every cell the prisoner breaks costs the false Prism that colour. Kip, a Tyrean boy claimed as Gavin's bastard, came to the Chromeria carrying a jewelled dagger that turned out to be an ancient artifact capable of stripping a drafter's magic. He got through Blackguard training and made a squad of friends there, including Teia, a slave who drafts the invisible colour paryl. Liv Danavis defected to the Color Prince, the burned man leading a rebellion that has taken Tyrea and marched into Atash. Gavin buried his own mother at the Freeing, married Karris White Oak against his father's wishes, then destroyed the rebellion's bane at Ru at the cost of every colour he had. Powerless and unrecognised, he was fished out of the sea by the pirate Gunner. The satrapies were told their Prism was dead.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Gavin is an oar slave. He has no magic, no name he can use, and no way of proving anything to anyone, so he survives by being useful to Gunner, who is unpredictable and much cleverer than he looks. On the Jaspers the Prism is mourned, the war is going badly, and the vacancy at the top of the Chromeria is the only thing the Spectrum can concentrate on. Andross Guile begins arranging the succession. Karris, widowed within weeks of her wedding, is taken out of the Blackguard by the White and put to work as her agent, which is a promotion disguised as a demotion. Kip is left at the Chromeria as the least defended Guile alive, and the attempts on him start almost at once.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Orea Pullawr, the White, is dying and knows roughly how long she has. She spends it placing people. Teia is the piece she cannot replace: paryl is invisible, undocumented and exactly what the Chromeria's enemies use, so the White asks her to go into the Order of the Broken Eye as a spy, with Karris as her only handler and no way to prove her loyalty if she is caught by either side. Kip, meanwhile, keeps being drawn back to the ancient cards, which let a viewer live the memories of the dead, and to what they show about his own family's history. Andross wants the cards, the knife, and Kip out of the way, in roughly that order.",
+            "through": {
+              "chapter": 26
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Teia is taken in by the Order and trained by Murder Sharp, a paryl drafter and assassin who is patient, talkative and entirely unhinged, and who teaches her things the Chromeria refuses to admit are possible. The Order proves to be old, wealthy and embedded, with members inside the Chromeria itself. Kip survives another attempt on his life and is approached by Tisis Malargos, a Ruthgari noblewoman whose family has its own claim on the Guiles and who has been sent to make herself useful to him. Karris runs Teia, works the White's networks, and starts to see the shape of the thing her mother-in-law's family has been doing for decades. Gavin, still at sea, begins to work out how to get off the ship.",
+            "through": {
+              "chapter": 40
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Andross produces a claimant for the Prism's office: Zymun, a young red drafter with documents the Spectrum cannot easily dismiss. Zymun is the same charming, empty young man who was travelling with the rebellion, and nothing about his arrival is an accident. Kip finally beats his grandfather across the card table, and discovers that Andross does not consider a loss binding. Teia earns her place in the Order the only way it can be earned, and is given a shimmercloak, a garment that makes its wearer effectively invisible, of which the Order holds the last few in the world. Liv, out with the rebellion, is working on the banes: the enormous floating islands of luxin that the old accounts say are where the old gods are seeded and grown.",
+            "through": {
+              "chapter": 54
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Zymun's parentage comes out: he is the child Karris bore before the war and was told she would never see, taken from her and raised elsewhere by arrangement of the family that now wants him crowned. Karris has to sit opposite the son she lost and recognise what he is. Teia goes deeper into the Order and finds that its ambitions are not simply murder for hire; it wants the Chromeria's whole structure gone, and it has been waiting a very long time. Gavin gets himself off Gunner's ship and starts the long journey back toward the Jaspers, blind to how much has changed. Kip's position at the Chromeria becomes untenable, and Tisis, whatever her instructions were, stops following them exactly.",
+            "through": {
+              "chapter": 66
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Zymun is confirmed as Prism-elect, which puts the succession in Andross Guile's hand and a murderer in the Chromeria's highest office. The White is failing fast and finishes arranging what she can. The Order sets its plan for Sun Day, the festival that gathers every important person in the satrapies into the same few streets, and Teia has to decide how much she can let happen in order to stay inside it. Kip is formally moved against by his grandfather and finds that being a Guile protects him from nothing. His squad closes around him.",
+            "through": {
+              "chapter": 78
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Gavin comes back to the Jaspers under his own power, without magic, without allies, and without anyone expecting him. Karris is being groomed for an office she does not want. Andross is one ceremony away from owning the Chromeria outright. The Order's people are in position across Big Jasper. Teia, cloaked and alone, is in the middle of it with no way to signal anyone, and the assassins she has been living with are about to do the thing she was sent in to prevent.",
+            "through": {
+              "chapter": 88
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sun Day comes apart. The Order strikes in the open, the Blackguard fights in the streets, and the ceremony that was meant to install a new Prism becomes a battle. Teia moves against Murder Sharp and the Order's plan from inside it, at the price of any hope of coming back out clean. Kip and his squad fight through the city. Gavin reaches the Chromeria in the middle of the chaos and gets far enough to confront his father, who has been ready for him longer than he has been alive.",
+            "through": {
+              "chapter": 98
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Andross wins. He has Gavin blinded and shut in the deepest of the coloured cells beneath the Chromeria, the prison Gavin built for the brother whose name he took, and no one else is told he is alive. Orea Pullawr dies, and her arrangements hold: Karris is raised to the White, the youngest in memory, opposite Andross Guile and above a Prism-elect who is her own lost son. Teia is left inside the Order, unable to prove what she is to anyone, holding a shimmercloak she was never meant to keep. Kip cannot survive another week on the Jaspers, so he leaves with his squad, and marries Tisis Malargos on the way out because that marriage is worth allies, money and a place to stand in Ruthgar and the Blood Forest. The rebellion, unopposed all season, holds two satrapies and is still growing its banes. The Seven Satrapies close the book with a boy for a Prism, a widow for a White, an old man holding everything that matters, and the real Prism blind in a hole under the tower.",
+            "through": {
+              "chapter": 110
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-broken-eye"
       }
     },
     "the-brothers-hawthorne": {
@@ -2067,6 +3165,286 @@
           }
         ],
         "work": "the-burning-land"
+      }
+    },
+    "the-burning-white": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Kip Guile",
+              "Lord Guile"
+            ],
+            "description": "The commander of the Nightbringers, the army he built out of foresters, refugees and irregulars in the Blood Forest. He is seventeen, married to Tisis Malargos, in possession of an ancient knife that takes a drafter's magic and a set of cards that carry the dead's memories, and he is one of the very few people between the White King's armies and the Chromeria. A significant number of people have decided he is the Lightbringer of prophecy; he has not.",
+            "id": "kip",
+            "name": "Kip",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Gavin Guile"
+            ],
+            "description": "Dazen Guile, who took his brother's name and the Prism's office after the False Prism's War and held them for sixteen years. He is blind, has no magic at all, and is out of his father's prison but a long way from the Jaspers, with no title, no proof and nothing left to trade on but the man he actually is.",
+            "id": "dazen-guile",
+            "name": "Dazen Guile",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "The White",
+              "Karris White Oak"
+            ],
+            "description": "The White, ruling a Chromeria under siege alongside a father-in-law who holds the emergency office of promachos and does not intend to give it back. She knows now that her husband was Dazen wearing his brother's name, she is fighting a war against her own surviving brother, and the Prism-elect the Chromeria has installed is the son she lost before the war.",
+            "id": "karris-guile",
+            "name": "Karris Guile",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Adrasteia"
+            ],
+            "description": "A Blackguard living as an assassin of the Order of the Broken Eye, invisible when she wants to be, and by now the only person with any chance of finding the Order's hidden master, the Old Man of the Desert. She has spent years doing the Order's work to keep a cover no one can confirm, and the bill for that is coming due.",
+            "id": "teia",
+            "name": "Teia",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Promachos of the Seven Satrapies: head of House Guile, holder of the wartime office that suspends ordinary government, and the man actually running the defence of the Jaspers. Ancient, brilliant, and entirely willing to spend anyone. Whatever the Chromeria survives, he intends to be what is left standing.",
+            "id": "andross-guile",
+            "name": "Andross Guile",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Kip's wife and his diplomat, negotiator and political brain, without whom the Nightbringers would have neither supplies nor allies. What began as an arranged marriage for the alliances it bought is now the partnership the whole campaign rests on.",
+            "id": "tisis-malargos",
+            "name": "Tisis Malargos",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Koios White Oak",
+              "The Color Prince"
+            ],
+            "description": "Koios White Oak, Karris's brother, burned nearly to death in the fire that destroyed their family before the war and now the leader of everything set against the Chromeria. His fleets and armies are converging on the Jaspers, and his banes, the floating islands of luxin in which old gods are seeded, are ripening with them.",
+            "id": "the-white-king",
+            "name": "The White King",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The Prism-elect: Karris's lost son, a fluent liar and an unhesitating murderer, holding an office that is supposed to be sacred at the exact moment the Chromeria most needs it to mean something.",
+            "id": "zymun",
+            "name": "Zymun",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Aliviana Danavis",
+              "Liv"
+            ],
+            "description": "Aliviana Danavis as she is now: not a drafter but Ferrilux, an old god of superviolet returned into a human body, allied with the White King on terms that are not obviously his. Kip and Karris both knew the girl she used to be.",
+            "id": "ferrilux",
+            "name": "Ferrilux",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A pirate captain and the finest cannoneer alive, still convinced that his own life is a legend in progress, carrying a blind passenger he cannot decide whether to sell, worship or shoot.",
+            "id": "gunner",
+            "name": "Gunner",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An old sailor working Gunner's ship who happens to bear the name of god, which the crew find funny and which he does not explain. He is unbothered, unhurried, and inclined to answer a question with a better one.",
+            "id": "orholam-the-sailor",
+            "name": "Orholam",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Commander of the Nightbringers under Kip and the conscience of the whole enterprise, still trying to hold an irregular army to the Blackguard's standards in a war that does not reward them.",
+            "id": "cruxer",
+            "name": "Cruxer",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Nightbringers' engineer, a multi-coloured drafter whose spectacles, mechanisms and improvised siege work do as much for the army as its fighters.",
+            "id": "ben-hadad",
+            "name": "Ben-hadad",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Parian of enormous standing, once commander of the Blackguard, now pulled back toward the country and the throne he spent his career declining. Paria's weight in the coming war depends largely on what he decides to be.",
+            "id": "ironfist",
+            "name": "Ironfist",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Order of the Broken Eye's foremost assassin and Teia's old teacher: a paryl drafter who moves unseen, keeps elaborate private rituals, and takes the teeth of the people he kills. He knows what Teia is and has still not decided what to do about it.",
+            "id": "murder-sharp",
+            "name": "Murder Sharp",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The Guile family's chief slave, who has run Andross Guile's household and his correspondence for decades and knows more of the family's business than any of its members. Elderly, deferential, and permanently in the room.",
+            "id": "grinwoody",
+            "name": "Grinwoody",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-burning-white"
+      },
+      "recaps": {
+        "ending": "The Jaspers hold. The White King's fleet and armies are broken against the islands, with the Chromeria's great mirror array turned on them as a weapon and Kip's Nightbringers arriving in time to matter; Koios White Oak dies, the banes are destroyed, and the gods seeded in them go with them. Zymun's bid for real power ends in his death. Teia kills Murder Sharp and unmasks the Old Man of the Desert, who proves to have been inside House Guile's own household the whole time; the Order is not so much destroyed as taken over. Dazen submits to Orholam's Glare, is judged, and comes out of it with his sight restored, though not his drafting; he survives the battle and is reunited with Karris, who keeps the White's office. Kip learns that the man he called father was his uncle: his father was the real Gavin Guile, which makes Zymun his half-brother and explains a great deal of what Andross has done about him. He and Tisis go back to the Blood Forest to govern it. Andross Guile is alive, still promachos, and still the most dangerous person in the Seven Satrapies. Teia disappears back into the shadows on her own terms. The war is over, the Chromeria has to be rebuilt, and the Guiles are still the Guiles.",
+        "in_short": "The White King's armies, fleets and god-bearing banes converge on the Jaspers for the last battle of the war. Kip fights his Nightbringers across the Blood Forest to reach the islands in time; Karris holds the Chromeria beside a father-in-law who will not surrender the promachos's power; Teia hunts the Order of the Broken Eye's hidden master through a city about to be besieged; and Dazen Guile, blind and without magic, comes home by sea in the company of a pirate and an old sailor who bears the name of god. Dazen submits to Orholam's Glare, is judged and forgiven, and gets his sight back if not his drafting. The Chromeria's great mirrors are turned on the enemy fleet, the banes are destroyed, Koios White Oak is killed, and Zymun's ambitions end with him. Teia kills Murder Sharp and finds the Old Man of the Desert inside the Guiles' own household. Kip learns that his father was the real Gavin Guile and the man who raised him was his uncle. Karris remains the White, Andross remains promachos, and Kip and Tisis go home to govern the Blood Forest.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: the man who ruled as Prism for sixteen years was Dazen Guile, wearing the name and face of the brother he beat in the False Prism's War and kept prisoner beneath the Chromeria. Destroying a bane at Ru cost him every colour; he was enslaved, escaped, and was blinded and locked in his own prison by his father Andross, who then had himself made promachos, the wartime office that puts one man over everything. Karris was raised to the White, married and widowed in a matter of weeks, and has since learned who her husband really was. The Prism-elect, Zymun, is the son she bore and lost before the war, and a murderer. The rebellion's leader turned out to be her brother Koios White Oak, believed burned to death years ago and now calling himself the White King; his armies hold Tyrea, Atash and much of the Blood Forest, and his banes, floating islands of luxin, are growing old gods back into the world. Aliviana Danavis took a seed crystal and became one of them, Ferrilux. Kip, driven off the Jaspers, married Tisis Malargos, raised an irregular army in the Blood Forest, broke the siege of Dunbheo and made himself its lord. Teia is still inside the Order of the Broken Eye, hunting its hidden head. And Dazen Guile is out of the cells alive: blind, powerless, and officially dead.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Dazen is at sea, blind and useless, aboard a ship run by the pirate Gunner, who cannot decide what a former Prism is worth. Among the crew is an old sailor who bears the name of god, takes no offence at the jokes about it, and asks Dazen questions he does not want to answer. On the Jaspers, Karris and Andross govern in uneasy tandem while every report says the same thing: the White King is coming to the islands, and he is bringing the banes with him. Kip's Nightbringers hold what they can in the Blood Forest and start the long fight toward the coast. Teia works the Order from inside, closer to the Old Man of the Desert than anyone has ever been and with nobody left to report to.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The war in the north becomes a running campaign: Kip's army is outnumbered everywhere, wins by moving faster than a regular force can, and pays for every win in people he knows by name. Tisis keeps them supplied and allied by negotiation the army mostly never hears about. At the Chromeria, Zymun uses the Prism-elect's office to accumulate real leverage, and Karris has to weigh what she owes a son she never raised against what he is. Andross begins preparing the islands for a siege on a scale nobody living has planned for. Dazen, still at sea, starts to reckon honestly with what he did to win the war and what he did afterwards to keep it.",
+            "through": {
+              "chapter": 26
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Teia closes on the Order's structure and finds that it is older, richer and far better placed than the Chromeria ever admitted, with hands inside the institutions that are supposed to oppose it. Murder Sharp knows what she is, or nearly, and the two of them circle each other. On the mainland Kip's reputation runs ahead of him, and with it the argument about the Lightbringer prophecies, which a great many people are now applying to him and which he refuses to claim. The White King consolidates the north and moves his banes toward the Cerulean Sea. Ironfist is pulled back toward Paria and the throne he has spent his life refusing.",
+            "through": {
+              "chapter": 40
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Gunner's ship works its way toward the Jaspers, and the old sailor keeps steering Dazen's thinking rather than the vessel. Andross has the Chromeria's great mirror array overhauled: a system built centuries ago to move light around Big Jasper, which can also be aimed. Karris organises the islands for a siege and the evacuation of everyone who cannot fight. Kip's campaign turns from holding ground to racing for the coast, because the Blood Forest cannot be saved if the Jaspers fall. Teia is forced into choices that cost her people she cannot afford to lose.",
+            "through": {
+              "chapter": 54
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The banes converge on the Cerulean Sea, and with each one comes a drafter who took a seed crystal and stopped being human: the old gods the Chromeria's whole doctrine says were destroyed. Ferrilux, who used to be Liv Danavis, is one of them, and her alliance with the White King is plainly a matter of convenience on both sides. Paria's decision arrives with Ironfist. Kip reaches the sea with an army that has been fighting continuously for months, and the Chromeria has to decide whether to let a boy nobody appointed bring an unaccountable force onto the islands.",
+            "through": {
+              "chapter": 68
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The enemy fleet comes into sight of the Jaspers and the siege begins in earnest: cannon, wights, drafters and the banes themselves grinding at the islands' defences. Karris runs the defence of Big Jasper while Andross runs everything else, and the two of them stop pretending to be allies. Zymun's usefulness runs out and his ambitions turn on the people who installed him. Kip's Nightbringers fight their way into the battle from the outside. Teia, invisible in a city under bombardment, finally has both her old teacher and the Order's master in reach.",
+            "through": {
+              "chapter": 82
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Dazen reaches the Jaspers in the middle of the siege, blind, with no rank and nothing but his own account of himself. What is left to him is Orholam's Glare: the mirror array turned on a single person as a judgement, which the tradition says leaves the guilty dead. He goes to it deliberately, is judged for the war, the theft of his brother's name and the sixteen years of prison beneath the tower, and comes out of it alive with his sight restored. His drafting does not come back. The old sailor's identity stops being a joke.",
+            "through": {
+              "chapter": 96
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The battle for the islands turns into the kind of fight where the defenders' only advantages are the mirrors and the fact that they have nowhere to retreat to. The great array is aimed at the enemy fleet and used as a weapon. Kip's army takes the fighting to the banes themselves, which have to be destroyed before the gods riding them can be brought fully ashore. Karris fights in the streets of her own city. Teia kills Murder Sharp, which she has been putting off for years, and the Order's chain of command is finally short enough to follow to its end.",
+            "through": {
+              "chapter": 110
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Teia follows it and unmasks the Old Man of the Desert. The Order's master has been inside House Guile's own household all along, close enough to Andross Guile to hear everything, for as long as anyone has been looking in the wrong direction. The banes come apart one after another and the gods with them, Ferrilux included, though not without cost to the people who bring them down. Zymun makes his play for something more than the Prism's title and is killed for it. Koios White Oak's army is broken on the Jaspers and Koios dies with it, and the war his fire and his grievance started ends where the Chromeria began.",
+            "through": {
+              "chapter": 124
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the wreckage, the last of the family's secrets is settled. Kip is not Dazen's son. His father was the real Gavin Guile, which makes the man who claimed and raised him his uncle, makes Zymun his half-brother, and accounts for most of what Andross Guile has spent four books doing about him. It changes nothing between Kip and Dazen that either of them wants changed. The Chromeria is standing but hollowed out: a Prism-elect dead, the Blackguard cut to pieces, an entire theology of what luxin is and what the gods were now impossible to keep teaching in the old form.",
+            "through": {
+              "chapter": 138
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The war ends with the Jaspers held. Dazen Guile survives with his sight and without his magic, no longer anyone's Prism, and is reunited with Karris, who keeps the White's office and the job of rebuilding the institution under it. Andross Guile comes out of it alive and still promachos, unrepentant and still the most dangerous man in the Seven Satrapies. Teia, having taken the Order's head apart from the inside, does not come back to the Blackguard; she keeps working out of sight, on her own terms. Kip and Tisis go home to the Blood Forest to govern the satrapy his army saved. The gods are gone, the banes are gone, the Chromeria's teaching about what luxin and the old gods were cannot be kept in its old form, and the world has to be put back together by the people who broke it.",
+            "through": {
+              "chapter": 152
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-burning-white"
       }
     },
     "the-butcher-of-anderson-station": {

@@ -274,6 +274,237 @@
         "work": "edgedancer"
       }
     },
+    "elantris": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Spirit"
+            ],
+            "description": "Crown prince of Arelon, in his mid-twenties, well liked and stubbornly optimistic. On the morning the story opens he wakes to find the Shaod has taken him: his skin has turned grey and blotched, his hair has fallen out, and his heart no longer beats. Arelish custom treats the transformed as dead, so his father announces his death and has him carried through the gates of the ruined city of Elantris. Inside, he refuses to despair, gives his name as Spirit to keep his identity hidden, and starts looking for a way to make survival there bearable. He is also a scholar of the Aons, the drawn characters that once carried Elantrian magic.",
+            "id": "raoden",
+            "name": "Raoden",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A broad, dry-humoured Dula farmer who has been inside Elantris long enough to know how it works. He explains to Raoden what being an Elantrian means: injuries never heal and their pain never fades, hunger never eases, and anyone who accumulates enough of both eventually stops responding to the world at all. Pessimistic on principle and loyal in practice, he becomes Raoden's first friend and constant companion.",
+            "id": "galladon",
+            "name": "Galladon",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Princess of Teod, tall, blunt and better educated than the Arelish court expects, a competent fencer and a much better politician than she is given credit for. Betrothed to Raoden by treaty, she arrives in Arelon to be told he is already dead, and her marriage contract makes her his widow and a princess of Arelon regardless. Grieving a man she never met, she decides to stay and involve herself in the country's politics rather than go home.",
+            "id": "sarene",
+            "name": "Sarene",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Sarene's seon: a floating ball of light with a glowing character at its centre, able to carry speech instantly between others of its kind. Formal, patient and considerably older than his manner suggests, he serves as her messenger, her scout and the one person in Arelon she can speak to freely.",
+            "id": "ashe",
+            "name": "Ashe",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "King of Arelon and Raoden's father: a merchant who took the throne after the fall of Elantris and rebuilt the country on trade. He ranks his nobility purely by wealth and reassesses their titles every year, which keeps the aristocracy competing rather than conspiring. Hard, superstitious and openly contemptuous of his son.",
+            "id": "iadon",
+            "name": "Iadon",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A gyorn, a high priest of the Fjordell empire's religion, sent to Arelon with three months to convert the country. If he fails, his empire's armies will come and the kingdom will be destroyed, so he regards conversion as the merciful option. Cold, disciplined and organised, he thinks of himself as an administrator rather than a preacher and takes quiet pride in having converted a neighbouring nation without bloodshed. His office is marked by bright red armour worn as a vestment.",
+            "id": "hrathen",
+            "name": "Hrathen",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The seon who served Raoden before the Shaod took him. Seons are bound to the people they serve, and when that person is taken by the Shaod the seon loses its mind; Ien drifts through Elantris repeating fragments and no longer answers properly to anything Raoden says to him.",
+            "id": "ien",
+            "name": "Ien",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Sarene's uncle: an enormous scarred man with a ruined voice who cooks for his own household rather than employ a kitchen, keeps deliberately clear of court politics, and gives Sarene a place to stay and a family to belong to in Kae. He knows far more about Arelon and Teod than a retired merchant should.",
+            "id": "kiin",
+            "name": "Kiin",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Arelish arteth, a junior priest assigned to assist Hrathen in Kae. Slight, intense and tireless, he preaches with a fervour Hrathen cannot match, and his hatred of Elantris and its inhabitants is clearly personal rather than doctrinal. Hrathen finds him useful and unsettling in equal measure.",
+            "id": "dilaf",
+            "name": "Dilaf",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The oldest and wealthiest of Arelon's nobles, and under Iadon's system the highest-ranked. Shrewd, unhurried and genuinely fond of the reform-minded circle Raoden had gathered before his death, he becomes the natural leader of the group Sarene attaches herself to.",
+            "id": "roial",
+            "name": "Duke Roial",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A soldier raised to the nobility, old-fashioned about honour and duty and slightly out of place among merchants. He maintains a private legion, which makes him the only member of the reform circle with real force at his disposal.",
+            "id": "eondel",
+            "name": "Count Eondel",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the three figures who divide Elantris between them, holding the ruined palace with a disciplined band. Unlike the other two she uses her position to protect the children who are thrown into the city, and she is the only gang leader Raoden finds capable of being reasoned with.",
+            "id": "karata",
+            "name": "Karata",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The self-declared baron who rules the university quarter of Elantris and its library, styling his followers as a court and feeding them on boiled book bindings. His claim to a title is as thin as everything else about his kingdom.",
+            "id": "aanden",
+            "name": "Aanden",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The leader of the wildest of Elantris's three factions. Her followers have given up on speech and reason entirely and attack anyone who comes near the food thrown through the city gates, which makes her territory the one part of Elantris nobody can negotiate with.",
+            "id": "shaor",
+            "name": "Shaor",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An extravagant and vain Arelish duke with a taste for display and ambitions well beyond his rank. Under Iadon's rules, rank follows money, which makes Telrii's finances a matter of national politics.",
+            "id": "telrii",
+            "name": "Duke Telrii",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "elantris"
+      },
+      "recaps": {
+        "ending": "Raoden works out why Elantris fell. A decade earlier a vast chasm opened in the land, changing the shape of the country that the Aons are derived from, so every Aon drawn since has been missing one line and has therefore failed. Elantris itself was built as a single enormous Aon, so adding the missing line to the city's own plan completes it. The magic returns: the city shines again and every Elantrian, Raoden and Sarene included, is restored to health. The Fjordell invasion led by Dilaf, whose warriors have been physically reshaped by their order's own magic, is broken by the restored Elantrians. Hrathen turns fully against the empire he served, saves Sarene from Dilaf, and dies of his injuries having chosen against everything he came to Arelon to accomplish. Raoden reveals that he is alive, takes the throne of Arelon and marries Sarene, joining Arelon and Teod against Fjorden. The country is left with a working Elantris, a working magic and a great deal of rebuilding to do after both the fall of the city and the invasion. Wyrn's empire has lost Arelon but is not defeated, and remains the standing threat to both kingdoms.",
+        "in_short": "Ten years after the shining city of Elantris fell and its people became grey, permanently wounded near-immortals, Prince Raoden of Arelon is taken by the same transformation and thrown inside its walls. Declared legally dead, he hides his identity behind the name Spirit, befriends the pessimistic Galladon, and sets about turning the city's scavenging factions into a working community while studying the failed Elantrian magic. Outside, Princess Sarene of Teod arrives to find herself Raoden's legal widow and stays to fight both the merchant-king Iadon and Hrathen, a Fjordell high priest with three months to convert Arelon or see it destroyed. Hrathen's manoeuvring brings down Iadon and installs a compliant duke; the reformers' counter-plot collapses; and Sarene is eventually taken by the transformation herself and reunited with Raoden inside Elantris. When Fjorden invades under the fanatic Dilaf, Raoden discovers that the magic failed because the land itself changed shape and every Aon needs one more line. He adds it to Elantris, which is one enormous Aon, restoring the city and its people. Hrathen turns on his empire and dies saving Sarene, and Raoden takes the throne.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Arelon's capital stands beside Elantris, a city that for centuries housed shining, near-immortal beings who healed the sick and worked wonders for the country around them. Ten years before the story opens a disaster called the Reod ended that: the Elantrians' magic failed, their bodies decayed, and the city was walled off and abandoned. The transformation that once created Elantrians, the Shaod, still takes people at random, and those it takes are declared dead and thrown inside. Prince Raoden of Arelon wakes to find the Shaod has taken him, and his father, King Iadon, announces his death and has him cast into the city. There he meets a Dula named Galladon, who explains that in Elantris wounds never heal, hunger never eases and pain simply accumulates until the sufferer stops responding to anything at all. On the same days, Princess Sarene of Teod arrives to marry Raoden and is informed that she is already his widow, a status her marriage contract makes binding, and a Fjordell high priest named Hrathen lands in the city with three months to convert Arelon to his religion before his empire's armies destroy it.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Raoden gives his name inside the city as Spirit and refuses to let the pain govern him. He learns that Elantris is divided between three factions, Shaor's feral followers, Karata in the ruined palace and the self-styled Baron Aanden in the university, who fight over the food thrown through the gates. He also begins studying the Aons, the drawn characters that once powered Elantrian magic, and finds that they can still be drawn and still glow, but never complete or take effect. Sarene, in mourning for a man she never met, insists on staying in Arelon, quickly reads Iadon's court, where noble rank is bought and reassessed by wealth every year, and attaches herself to her uncle Kiin's household and to the circle of reformers Raoden had gathered. Hrathen begins his campaign methodically, courting nobles and exploiting the country's resentments, assisted by an Arelish under-priest named Dilaf whose loathing of Elantris runs far beyond doctrine.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Raoden concludes that what destroys Elantrians is not the pain itself but having nothing to set against it, and starts recruiting: newcomers are met at the gate, given work and a share of the food, and the recovered streets are cleaned. He deals with the factions in turn, drawing the palace and university groups into his growing community, though Shaor's followers remain beyond reason. Sarene plays the fool at court while working steadily against Iadon, building a bloc among the reformers and sparring, literally, with the young nobles who underestimate her. She also forces the court to acknowledge Elantris at all by organising deliveries of food and supplies to its gates. Hrathen wins converts among the lesser nobility and the merchants and looks for a way to break Iadon's authority, while his rivalry with Dilaf sharpens as the arteth pushes for open violence against the Elantrians.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "New Elantris takes shape inside the ruin: streets cleared, roles assigned, food shared out, Karata caring for the children and Galladon organising the practical work. It is a genuine settlement rather than a camp, and having a purpose visibly slows the collapse of the people in it. Raoden's study of the Aons progresses without a breakthrough; the characters behave as though something in them is incomplete. Sarene's charity work brings her inside the walls, where she meets the man calling himself Spirit and discovers that the Elantrians are neither dead nor monstrous. At court the reformers argue about how to unseat Iadon without a civil war. Hrathen, blocked politically, changes approach: he arranges for an enormous sum of Fjordell money to reach the ambitious Duke Telrii, exploiting the Arelish law that makes rank a function of wealth.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Telrii's sudden fortune makes him richer than the king, and by Arelon's own rules that undermines Iadon's title. Cornered and disgraced, Iadon takes his own life, and Telrii claims the throne with Fjordell backing, though he stops short of converting the country outright. The reformers are left without a candidate and without a strategy. Inside Elantris, Sarene and Spirit work together on supplies and teaching, and she comes to respect him without knowing who he is. His community grows, but so does the pain he has been holding at bay, and every Elantrian in the city is one more injury from collapse. Hrathen, watching Dilaf's followers harden into a mob, begins to doubt the outcome he has spent months engineering.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "With Telrii on the throne and Fjordell influence spreading through Kae, the reformers move to put someone of their own in power, and Sarene agrees to a political marriage to the elderly Duke Roial to give the group a legitimate claim. The plan collapses when it is betrayed from inside their own circle: Roial is killed, the conspiracy is broken, and the reformers' remaining strength is spent in the aftermath. Inside Elantris, Raoden finally brings Shaor's followers under control, and for the first time since the Reod the whole city answers to one person, though the effort has cost him. Hrathen's mission succeeds in form while slipping out of his hands, as Dilaf's fanaticism turns from conversion toward destroying the Elantrians outright.",
+            "through": {
+              "chapter": 38
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sarene is taken by the Shaod herself and thrown into Elantris, where she discovers that Spirit is Raoden, alive and leading the city, and their alliance becomes both open and personal. Raoden's own condition worsens: he has been carrying the community's burdens and his accumulated pain is close to breaking him. Outside the walls Fjorden's grip tightens, and Sarene's father, King Eventeo of Teod, is forced to weigh surrendering his kingdom's religion to spare it from invasion. Raoden continues to work on the Aons without success, while Hrathen discovers that the bloodless conversion he wanted is being replaced by something far more violent than anything he intended.",
+            "through": {
+              "chapter": 46
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Fjorden moves openly. Dilaf turns out to be far more than an over-zealous priest, and Hrathen's careful diplomatic conversion is swept aside by an invasion force of Fjordell warriors whose bodies have been reshaped by their order's own magic. Kae is attacked, the court scatters, and the Elantrians penned inside their walls are an obvious target. Raoden, weakening badly, keeps working at the Aons while Sarene organises what defence the community can manage. Hrathen, forced to choose between the empire he serves and what he has come to believe about the people he was sent to convert, begins acting against his own side.",
+            "through": {
+              "chapter": 54
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Raoden works out why Elantris fell: a decade earlier a vast chasm split the land, changing the shape the Aons are derived from, so every Aon has been missing one line ever since. Because the city of Elantris is itself laid out as a single enormous Aon, he adds the missing line to the city's own plan. The magic returns, Elantris shines again, and every Elantrian, Raoden and Sarene among them, is restored. The restored Elantrians destroy Dilaf and his invasion force. Hrathen breaks with Fjorden completely, saves Sarene from Dilaf and dies of his injuries. Raoden reveals that he is alive, takes the throne of Arelon with Sarene beside him, and the restored city becomes the country's defence. Fjorden's wider ambition is checked rather than ended, and Wyrn remains a threat to both Arelon and Teod.",
+            "through": {
+              "chapter": 63
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "elantris"
+      }
+    },
     "eldest": {
       "characters": {
         "characters": [

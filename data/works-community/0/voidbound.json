@@ -1308,6 +1308,187 @@
         "work": "waking-gods"
       }
     },
+    "war-lord": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An old pagan Northumbrian lord, master of the sword Serpent-Breath, and by common repute the most famous warrior in Britain. He has outlived nearly every king he served and holds the great fortress on its rock above the sea that he spent a lifetime winning back. He wants only to be left in peace there, and two things prevent it: he is sworn to Guthfrith, the Norse king of Northumbria, whom he despises, and he made Aethelstan, the Saxon king ruling everything to the south, who swore in return that he would never invade Northumbria while Uhtred lived.",
+            "id": "uhtred",
+            "name": "Uhtred of Bebbanburg",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The Irish swordsman who has fought beside Uhtred for a lifetime: his second in command, his closest friend, and the man he trusts to tell him when he is being a fool.",
+            "id": "finan",
+            "name": "Finan",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Italian-born woman who came north with Uhtred after the fighting for Lundene, carried away from her own country by slavers as a child. She shares his hall at Bebbanburg, speaks to him more bluntly than anyone but Finan dares, and has no patience at all with Saxon kings.",
+            "id": "benedetta",
+            "name": "Benedetta",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Alfred's grandson: the king Uhtred raised, taught and twice put on his throne, now ruler of Wessex, Mercia and East Anglia and the most powerful man in Britain. Devoutly Christian and increasingly certain that God means him to rule the whole island, he is no longer the young man who needed Uhtred's protection, and the oath he swore to leave Northumbria alone sits badly with his ambition.",
+            "id": "aethelstan",
+            "name": "Aethelstan",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Norse king of Northumbria, brother of the dead Sigtryggr, and Uhtred's nominal lord. Drunken, cruel and distrusted by the men who are supposed to follow him, he holds the last kingdom in Britain outside Saxon rule and has neither the wit nor the loyalty to keep it.",
+            "id": "guthfrith",
+            "name": "Guthfrith",
+            "reveal": {
+              "chapter": 1
+            }
+          },
+          {
+            "description": "Uhtred's son and heir, a capable warrior who commands men at Bebbanburg and will hold the fortress after his father. He carries the same name, as every lord of Bebbanburg does.",
+            "id": "uhtred-the-younger",
+            "name": "Uhtred the Younger",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Norse warrior and poet who holds land from Uhtred on the northern border. Formidable in a fight, cheerfully irreligious, and one of the few neighbours whose company Uhtred actively enjoys.",
+            "id": "egil-skallagrimmrson",
+            "name": "Egil Skallagrimmrson",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Norse lord who has taken the Christian faith and become the man King Aethelstan trusts and favours above everyone else. Handsome, fervent in his new religion and persuasive at court, he holds land in the north-west and speaks with the king's voice. Uhtred distrusts him from their first meeting and cannot justify it beyond instinct.",
+            "id": "ingilmundr",
+            "name": "Ingilmundr",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young, ambitious West Saxon sent north with the king's authority over Northumbrian lands. Contemptuous of the old lord of Bebbanburg and open about what he thinks the fortress is worth, he has Aethelstan's warrant and intends to use it.",
+            "id": "ealdred",
+            "name": "Ealdred",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A bishop in Aethelstan's service, Danish by descent and Saxon by loyalty, and one of the shrewdest men at the king's court. He carries the king's demands to Uhtred and is honest with him about what they mean, which makes him the nearest thing to a friend Uhtred has among Aethelstan's churchmen.",
+            "id": "oda",
+            "name": "Oda",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Norse king of Dublin: an ambitious and capable war leader with a fleet, a family claim to Northumbria, and the intention of taking back everything the Norse have lost in Britain. He is willing to make an ally of every enemy Aethelstan has.",
+            "id": "anlaf",
+            "name": "Anlaf",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "King of Alba and the most dangerous ruler in the north, an old rival who has spent years testing Northumbria's borders. Made to acknowledge Aethelstan as his overlord, he has no intention of remaining anyone's client king.",
+            "id": "constantine",
+            "name": "Constantine",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "King of Strath Clota, whose lands lie between the Scots and the Norse of the Irish Sea. Another ruler forced to bow to Aethelstan's overlordship, and another who brings his army against him when the chance comes.",
+            "id": "owain",
+            "name": "Owain",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "war-lord"
+      },
+      "recaps": {
+        "ending": "The alliance is destroyed at Brunanburh. After a day of shield wall against shield wall the Saxon line holds and then breaks the enemy, and the Norse and Scottish army is slaughtered as it runs. Constantine loses his son, the northern kings' strength is broken, and Anlaf escapes with what is left of his fleet back to Ireland. Ingilmundr, the favourite Aethelstan trusted and loved above everyone, is revealed to have been the enemy's man, a betrayal that costs the king more privately than the battle cost him in warriors. Aethelstan is left the undisputed ruler of all the English and overlord of Britain, and the victory becomes the thing his name is remembered for. Uhtred, who fought for the north rather than for the king, comes out of it alive and with what he wanted: Bebbanburg is his, Ealdred's claim on it is finished, and a king who has broken one oath is in no position to break another. He rides home with Finan to Benedetta and his family, an old man who has fought his last battle, and takes up again the only thing he ever truly wanted - the fortress above the sea, and the prospect of dying in his own hall rather than in a shield wall. The series ends with him there, alive, holding the place he spent a lifetime taking back.",
+        "in_short": "Aethelstan, the king Uhtred made, breaks the oath he swore, invades Northumbria and takes the last kingdom in Britain outside Saxon rule, forcing its lords - Uhtred among them - and the kings of the Scots, the Strathclyde Britons and the Welsh to accept him as overlord. Uhtred, old and wanting only peace, is squeezed by the king's new favourites: the Norse convert Ingilmundr, whom Aethelstan trusts above anyone, and the ambitious Ealdred, who covets Bebbanburg and seizes the fortress while Uhtred is away. Uhtred takes it back by trickery. Meanwhile Anlaf, the Norse king of Dublin, assembles a great alliance of Scots, Strathclyde Britons and the Norse of Ireland and Northumbria to destroy Aethelstan and divide his kingdoms, and offers Uhtred a crown to join it or stand aside. Uhtred chooses against the invaders. The armies meet at Brunanburh, where a day-long slaughter ends with the alliance broken, Constantine's son dead and Anlaf fleeing to his ships. Aethelstan is left ruler of all the English; Uhtred survives, keeps Bebbanburg, and goes home to the sea.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Earlier in the series: Uhtred of Bebbanburg, born to a Northumbrian lord, raised by Danes and pagan all his life, spent forty years as the sword of the Christian kings of Wessex and Mercia - Alfred, then Alfred's son Edward and daughter Aethelflaed - while never losing sight of his real purpose: Bebbanburg, the sea fortress stolen from him as a boy, which he finally took back by storm. He also raised, taught and repeatedly saved Alfred's grandson Aethelstan, whose enemies called him a bastard to keep him from the throne. When Edward died, Uhtred was dragged into the succession war, endured captivity at the hands of a brutal enemy champion, and saw Aethelstan's rivals destroyed at Lundene. Aethelstan was crowned king of Wessex, Mercia and East Anglia, the mightiest ruler in Britain, and swore to Uhtred that he would never invade Northumbria while Uhtred lived. Northumbria, the last kingdom outside Saxon rule, had been held by Uhtred's son-in-law Sigtryggr; since Sigtryggr's death it has passed to his brother Guthfrith, a drunkard Uhtred despises and is nonetheless sworn to. Uhtred is old now, wants no more wars, and has Finan, Benedetta and his family around him in the fortress above the sea.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far: Aethelstan breaks his oath. He marches an army north, takes Northumbria for himself, and Guthfrith's kingship collapses; the king flees his own country rather than face the Saxons. Uhtred, who wanted no part of any of it, finds his lands inside a Saxon realm for the first time in his life. Aethelstan then summons the rulers of Britain to acknowledge him as their overlord, and one by one they do it - Constantine of Alba, Owain of Strath Clota, the kings of Wales - and Uhtred, the man who put Aethelstan on his throne, is required to swear with the rest. The king receiving those oaths is not the young man Uhtred taught: he is imperious, convinced that God intends him to rule the whole island, and surrounded by new favourites. Two of them matter. Ingilmundr is a Norse lord turned devout Christian, the man Aethelstan trusts and loves above all others, and whom Uhtred mistrusts on sight without being able to say why. Ealdred is a young West Saxon given authority over the north, contemptuous of Uhtred and open about how much he would like Bebbanburg for himself. Uhtred goes home understanding that his peace is over and that the king's men will not leave his fortress alone.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far: The king's men take what they want. Drawn away from home, Uhtred loses Bebbanburg to Ealdred, who occupies it with the king's warrant while the garrison has no orders that would let it resist, and Guthfrith's flight ends with the deposed king dead. Landless, with only his household warriors and the help of his neighbour Egil Skallagrimmrson, Uhtred does not attempt a siege he could never win: he takes his fortress back by a trick, which restores his home and puts him in open defiance of Aethelstan's authority. While the Saxons quarrel over the north, a far larger danger gathers in the west. Anlaf, the Norse king of Dublin, has built an alliance to break Aethelstan and carve up his kingdoms - the Norse of Ireland and of Northumbria, Constantine and the Scots, Owain of Strath Clota, all of them men who knelt to the Saxon king and resented it. Anlaf seeks Uhtred out and makes him an offer: Northumbria, and a crown, if he joins the invasion or simply keeps his men at home. Uhtred has every reason to hate Aethelstan by now, and the choice is genuinely open - an old man with a fortress to protect, working out which oath still binds him and which side would leave the north standing.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far: The invasion comes. Anlaf's fleets land, his allies march, and Aethelstan calls out the levies of all his kingdoms. Uhtred makes his choice: whatever he owes Aethelstan personally, he will not stand aside while a Norse and Scottish army takes Northumbria, and he brings his men to the muster with Finan and Egil beside him. What he carries with him is worth more than the numbers he adds, because he has met Anlaf and knows something of how the alliance means to fight. The two armies come together at Brunanburh, and the battle is the largest and worst Uhtred has seen in a lifetime of them: shield wall grinding against shield wall hour after hour, the Saxon line bending, men dying in their thousands, and the whole of Aethelstan's kingdom resting on whether it holds. Old as he is, Uhtred is in the line, and the day turns on the flanks, where his judgement is needed more than his sword arm.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far: The alliance is destroyed. The Saxon line holds through the long day and then breaks the enemy, and the Norse and Scottish army is slaughtered as it flees. Constantine's son is among the dead, the northern kings' strength is broken, and Anlaf escapes with the remains of his fleet to Ireland. Ingilmundr, the man Aethelstan trusted and loved above everyone, is revealed to have been the enemy's from the start. Aethelstan is left the undisputed ruler of all the English and the overlord of Britain, and Brunanburh becomes the victory his name is remembered for. Uhtred, who fought the battle for the north rather than for the king, comes out of it alive: he keeps Bebbanburg, Ealdred's claim on it is finished, and the two men are reconciled in the plain way that survivors of the same slaughter are. He rides home with Finan to Benedetta and his family, an old man who has fought his last battle, and takes up again the only thing he ever really wanted - the fortress above the sea, and the chance to die in his own hall rather than in a shield wall.",
+            "through": {
+              "chapter": 15
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "war-lord"
+      }
+    },
     "war-of-the-wolf": {
       "characters": {
         "characters": [

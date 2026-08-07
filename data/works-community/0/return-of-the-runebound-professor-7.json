@@ -1407,6 +1407,260 @@
         "work": "rhythm-of-war"
       }
     },
+    "rilla-of-ingleside": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Bertha Marilla Blythe"
+            ],
+            "description": "The youngest of the Ingleside children, not quite fifteen when the book opens, pretty, vain of her looks, and the only Blythe with no ambition beyond a few years of parties and good times before she settles down. She is sensitive about the slight lisp that comes back when she is agitated, hates responsibility, and has never been asked to be useful in her life. Her elder brothers and sisters are grown and mostly away at college; she is still a schoolgirl at home with her mother and Susan.",
+            "id": "rilla-blythe",
+            "name": "Rilla Blythe",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Mistress of Ingleside, with a grown family scattered between home and college. She is happy, settled, and, at the opening of the book, chiefly occupied with her children's futures and the ordinary business of the Glen.",
+            "id": "anne-blythe",
+            "name": "Anne Blythe",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The doctor at Glen St. Mary, long established in his practice, and the steady centre of the Ingleside household.",
+            "id": "gilbert-blythe",
+            "name": "Gilbert Blythe",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Ingleside housekeeper of many years, elderly now, fiercely devoted to the family, and the household's most reliable source of opinion. She reads the newspaper aloud, argues with the world, and refuses on principle to be discouraged by anything.",
+            "id": "susan-baker",
+            "name": "Susan Baker",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Once Miss Cornelia Bryant of Four Winds, now Mrs. Marshall Elliott of the Glen, still blunt and still practical, and a constant visitor at the Ingleside kitchen with the news of the district.",
+            "id": "cornelia-elliott",
+            "name": "Mrs. Marshall Elliott",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The eldest Blythe son, just finished at Redmond and about to begin medicine, red-haired, energetic, and impatient for something worth doing. He is quietly attached to Faith Meredith and owns a small brown-and-white dog who will not leave his side.",
+            "id": "jem-blythe",
+            "name": "Jem Blythe",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The second Blythe son, home from Redmond after an illness, beautiful, dreamy, and a poet. He loves the valley, hates ugliness and cruelty more than most people can understand, and has always been closer to Rilla than any of the others. Years ago he told the children that he had seen the Pied Piper coming over the hills.",
+            "id": "walter-blythe",
+            "name": "Walter Blythe",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The quiet Blythe son, brown and self-contained, still a schoolboy at the opening of the book and Susan's particular charge since his difficult infancy. He says little and thinks a good deal.",
+            "id": "shirley-blythe",
+            "name": "Shirley Blythe",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A schoolteacher who boards at Ingleside, some fifteen years older than Rilla and her closest confidante. Dark, clever, and given to moods, she is engaged to a man working abroad and is troubled by vivid dreams she believes to be prophetic.",
+            "id": "gertrude-oliver",
+            "name": "Gertrude Oliver",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The son of Owen and Leslie Ford of the little house on Four Winds Harbour, a visitor to the Glen in the summers, older than Rilla and much admired by every girl in the district. Easy, teasing, and well travelled, he takes notice of Rilla at her first grown-up party.",
+            "id": "kenneth-ford",
+            "name": "Kenneth Ford",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The eldest of the manse children, now grown, a beautiful and warm-hearted young woman studying at Redmond, still as fearless and impulsive as she was as a child, and long understood to belong to Jem Blythe.",
+            "id": "faith-meredith",
+            "name": "Faith Meredith",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The quieter Meredith daughter, gentle, watchful, and reserved, who keeps house at the manse and keeps her own feelings entirely to herself.",
+            "id": "una-meredith",
+            "name": "Una Meredith",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Brought up by Mrs. Marshall Elliott since she was found as a runaway child, and now a young woman of the Glen, still plain-spoken to the point of rudeness, engaged to a local man and full of the district's news.",
+            "id": "mary-vance",
+            "name": "Mary Vance",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jem Blythe's small, ugly, devoted dog, who follows him everywhere and is uneasy whenever his master is out of sight.",
+            "id": "dog-monday",
+            "name": "Dog Monday",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Jims"
+            ],
+            "description": "A newborn baby whose mother has died and whose father has gone overseas, found by Rilla in a wretched house up the Glen and carried home in a soup tureen because there was nothing else to put him in. He is sickly, ugly, and entirely unwanted by anyone else.",
+            "id": "jims",
+            "name": "James Kitchener Anderson",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A prosperous, disagreeable Glen farmer with long whiskers, known throughout the district by an unflattering nickname, who holds and loudly airs opinions that set him against most of his neighbours.",
+            "id": "mr-pryor",
+            "name": "Mr. Pryor",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Mr. Pryor's daughter, a pale, timid, colourless girl of Rilla's acquaintance who has never in her life stood up to her father, and who is in love with a young man of the Glen.",
+            "id": "miranda-pryor",
+            "name": "Miranda Pryor",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The small son of the minister and his second wife, a solemn, intense child who takes everything he is told with complete literalness and feels things far beyond his years.",
+            "id": "bruce-meredith",
+            "name": "Bruce Meredith",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "rilla-of-ingleside"
+      },
+      "recaps": {
+        "ending": "The war ends. Jem Blythe, missing for months, is found to have been a prisoner in Germany, escapes, and comes home lame but alive, and Dog Monday's long vigil at the station platform ends when he finally meets the right train. Jerry Meredith recovers from his wound and Carl Meredith comes home having lost an eye. Shirley returns from the flying corps. Susan Baker, having refused a proposal of marriage during the war, takes a modest holiday of her own at the end of it. Gertrude Oliver is married to her fiancé. Jims's father comes back from France, marries again, and takes the boy, so Rilla gives up the child she raised from a soup tureen and finds she has grown up in the process. Walter is not among the returning. His mother, his family, and Una Meredith, who never told anyone what she felt for him, carry that loss into the peace, and his last poem has made him known far beyond the Glen. Kenneth Ford comes back at last and walks up to Ingleside, and when he asks Rilla whether she has kept the promise she made him the night before he sailed, her old childhood lisp returns in her answer. Rilla ends the book engaged, and the Glen begins the long work of living afterwards.",
+        "in_short": "Rilla Blythe is not quite fifteen and wants nothing but a few years of parties when the First World War begins on the night of her first grown-up dance. Over the next four years the war takes her brothers and her friends: Jem enlists at once, Jerry Meredith with him, and Walter, held back at first by illness and then tormented for not going, enlists in his turn. Rilla, who has never been useful in her life, brings home an orphaned newborn in a soup tureen and raises him, founds and runs a Junior Red Cross, and learns to wait and work while the casualty lists come in. Jem's dog takes up a station-platform vigil that lasts the whole war. Walter is killed at the front, and his last letter to Rilla asks her not to grieve. Later Jem is reported wounded and missing, and the family lives for months in uncertainty before learning that he is a prisoner and has escaped. The armistice comes; Jem, Shirley, Jerry, and Carl come home, Walter does not, and Rilla, grown up, is claimed by Kenneth Ford.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Anne Shirley, brought up as an orphan at Green Gables in Avonlea, married Doctor Gilbert Blythe and has raised their family at Ingleside in Glen St. Mary, with the housekeeper Susan Baker and the old friend once known as Miss Cornelia Bryant, now Mrs. Marshall Elliott, close at hand. The Blythe children are Jem, Walter, the twins Nan and Di, Shirley, and the youngest, Rilla. Their closest friends are the children of the Glen manse: Jerry, Faith, Una, and Carl Meredith, whose widowed father, the Reverend John Meredith, married Rosemary West after a long delay caused by a promise Rosemary had made to her sister. As children the two families spent their summers in a wooded hollow they called Rainbow Valley, where Walter once told them he had seen the Pied Piper coming over the hills and they promised to follow when he called. The elder children are now grown and mostly away at Redmond College. This book opens in the summer of 1914.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rilla Blythe, the youngest at Ingleside and not yet fifteen, is looking forward to four carefree years before she need think about anything. The household gathers for the summer: Jem home from Redmond and quietly attached to Faith Meredith, Walter recovering from typhoid, Nan and Di, Shirley, and Gertrude Oliver, the schoolteacher who boards at Ingleside and is Rilla's confidante. Gertrude is uneasy over a dream she cannot explain. Rilla goes to her first grown-up party, a dance at the Four Winds lighthouse, wearing her first long dress, and is noticed by Kenneth Ford. In the middle of the evening word arrives that Britain has declared war on Germany, and the young men talk of nothing else. Rilla, whose slippers have been taken as a joke, walks home barefoot and humiliated, and afterwards remembers that night as the last of the old world.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jem enlists in the first days, along with Jerry Meredith, and the Glen begins to divide between those who are going and those who are not. Walter, still weak from illness, cannot go, and takes his exclusion harder than anyone guesses. When Jem's train pulls out, his dog follows it to the station and refuses to come home, settling in the shed by the platform to watch every train that comes in, and there he stays. Sent up the Glen on an errand, Rilla finds a newborn baby in a wretched house where the mother has died and the father has gone overseas, and carries the child home in a soup tureen for want of anything else. Challenged by her mother to take the responsibility or give it up, she keeps him, names him Jims, and begins to learn from a book how to raise a baby. She also founds a Junior Red Cross among the Glen girls and finds herself its president.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The war settles into a long ordeal at home. Susan reads the despatches aloud and follows the fighting on a map; every reverse is argued over in the Ingleside kitchen and every list of casualties is read with dread. Jem writes from the front. Rilla struggles with Jims, who thrives despite her inexperience, and with the Junior Red Cross, which teaches her to organize, to endure disagreeable people, and to finish what she begins. The heavy Canadian losses in the spring fighting bring the war home to the Glen for the first time, and the district begins to count its own dead. Walter, well again, is bitterly conscious that he has not enlisted; he is talked about, and one day he receives an envelope containing a white feather. He says nothing about it to his family, and Rilla, who understands him better than anyone, watches him with growing fear.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Walter decides to enlist and tells Rilla first, out in the valley. He explains that he is going precisely because he is afraid, that he could not live with staying at home, and that he has no illusions about what he is going to. Anne bears it without protest, and Rilla promises him that she will not cry when he goes and will keep her courage while he is away. Walter trains, and then sails. Una Meredith says goodbye to him and keeps to herself what it costs her. Ingleside settles into the routine of waiting: letters, parcels, Red Cross work, and the newspaper. Rilla is no longer the girl who wanted only a good time; she runs her committee, raises Jims, and holds herself together in public. Kenneth Ford, before he goes overseas himself, comes to Ingleside to say goodbye and asks Rilla for a promise she keeps privately and takes entirely seriously.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rilla takes on the affairs of a timid Glen girl whose father, who is against the war, has forbidden her to marry her soldier before he sails; Rilla arranges the wedding herself, in the man's own house, and carries it off. Life at home goes on in a mixture of small comedy and constant dread. Then, one night, Jem's dog howls at the station, and the household knows without being told that something has happened. Word follows that Walter has been killed in action in France. His last letter reaches Rilla afterwards: he tells her that he had known he would not come back, that he was not afraid at the end, and that she is not to grieve for him but to keep her courage. Rilla does not cry. The poem Walter wrote at the front is published and read across the country. Ingleside goes on, and Anne, after a long illness of grief, gets up again because the others need her.",
+            "through": {
+              "chapter": 23
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The war drags into its worst years. Shirley turns eighteen and enlists in the flying corps, and his mother has to let another son go. Carl Meredith is at the front and Jerry Meredith is badly wounded. Susan Baker receives, and briskly refuses, a proposal of marriage from a neighbour she despises. The great German advance in the spring brings the Glen its blackest Sunday, when the news seems to leave no hope at all and only Susan refuses to admit defeat. Then Ingleside is told that Jem has been wounded and is missing, and there the matter rests: month after month passes with no word whether he is alive or dead, while his dog keeps his place at the station. Rilla, hardened and entirely grown up, keeps the household and her mother going. Faith Meredith, nursing overseas, waits as they all wait.",
+            "through": {
+              "chapter": 29
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Word comes at last that Jem is alive, a prisoner in Germany. He escapes, and in time he comes home, lame and much altered but himself, and his dog's long watch on the station platform is over. The tide turns on the western front, and the armistice is celebrated in the Glen with bells and bonfires. Carl Meredith returns having lost an eye, Jerry recovers, and Shirley comes back from the flying corps. Susan takes a modest holiday of her own, and Gertrude Oliver is married. Jims's father comes home from France, marries again, and claims his son, so Rilla gives up the child she raised and understands how much the four years have made of her. Walter does not return, and his family and Una Meredith carry that with them into the peace. Kenneth Ford comes back at last and walks up to Ingleside, and when he asks Rilla whether she kept the promise she made him before he sailed, the lisp of her childhood comes back in her answer. The book ends with Rilla engaged and the Glen beginning again.",
+            "through": {
+              "chapter": 35
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "rilla-of-ingleside"
+      }
+    },
     "rise-of-the-density-god": {
       "characters": {
         "characters": [
