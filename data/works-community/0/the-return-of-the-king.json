@@ -202,6 +202,407 @@
         "work": "the-return-of-the-king"
       }
     },
+    "the-revenge-of-seven": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Number Four"
+            ],
+            "description": "The fourth of the nine, holding together a group that has just lost one of its members and been betrayed by another. He has stopped treating the war as something to survive and started treating it as something to win, which makes him harder on the people around him and on himself. His Legacies are now broad enough that he is the group's most flexible fighter, and his priorities are recovering Ella and finding out what the Mogadorians are actually building on Earth.",
+            "id": "john-smith",
+            "name": "John Smith",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Number Ten"
+            ],
+            "description": "The youngest Garde, one of the book's narrators, and a prisoner aboard Setrakus Ra's warship. She is not being tortured or killed, which frightens her more than either would: she is being talked to, taught, and shown things, and she is expected to agree with them. Her Legacies reach minds and dreams, and they are the only way she has of doing anything at all from inside a Mogadorian ship.",
+            "id": "ella",
+            "name": "Ella",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A young Mogadorian, son of a senior officer, and one of the book's narrators. As a boy he was used in an experiment that connected his mind to that of a dead Garde, and he has carried her memories and her point of view ever since, along with an earth-shaking Legacy no Mogadorian should have. That inheritance turned him against everything he was raised in. He has spent years surviving alone between the two sides, and he knows the Mogadorian order, its installations, and its plans from the inside.",
+            "id": "adam",
+            "name": "Adam",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The first of the nine, killed years before the Garde ever met each other. She survives in this book as the presence in Adam's mind, the source of his memories of Lorien and of the conscience that made him break with his own people. Through him she is the closest thing to a witness the Garde have to their own earliest losses.",
+            "id": "number-one",
+            "name": "Number One",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Number Seven"
+            ],
+            "description": "The seventh of the nine, and a different person since the Everglades. Grief has given her a Legacy of lethal cold and taken away most of her patience; she is now among the most dangerous of the Garde rather than its healer. She wants Number Five, and everyone around her knows it.",
+            "id": "marina",
+            "name": "Marina",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The sixth of the nine, invisible when she chooses and able to call down weather. She is the group's best soldier and its most willing to operate independently, and she takes on the missions that require going somewhere dangerous with almost no support.",
+            "id": "number-six",
+            "name": "Number Six",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The ninth of the nine, whose Chicago base and resources have kept the group operating. Fast, strong, and able to move along any surface, he is more use than ever now that the war has turned into raids on fortified positions, and no more inclined to caution than he ever was.",
+            "id": "number-nine",
+            "name": "Number Nine",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The fifth of the nine, who killed Number Eight and went over to the Mogadorians, and who lost an eye to Marina doing it. He can fly and can take on the properties of whatever he touches. He is now on the enemy's side of the war, with the Garde's own knowledge of how they operate.",
+            "id": "number-five",
+            "name": "Number Five",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "John's human friend, who has been in this war since Ohio without a single Legacy to show for it. He handles the group's technology and research alongside his father and refuses to be left behind on any operation, which is a standing argument he mostly wins.",
+            "id": "sam-goode",
+            "name": "Sam Goode",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sam's father, whose recovered memories of meeting the Loric ships in 1980 and hiding the children who arrived on them are now the group's best source of intelligence about what the Loric left on Earth. He works the research side of the war rather than the fighting side.",
+            "id": "malcolm-goode",
+            "name": "Malcolm Goode",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "John's girlfriend from Paradise, fully part of the group's operations now. She has no powers, trains and fights anyway, and is one of the few people John will still take advice from.",
+            "id": "sarah-hart",
+            "name": "Sarah Hart",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Mogadorian leader. He has Ella aboard his ship and is spending time on her personally rather than disposing of her, and what he wants from the Garde has changed: he is preparing to be seen by the human world rather than to keep operating out of caves and disguised compounds.",
+            "id": "setrakus-ra",
+            "name": "Setrakus Ra",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The Chimaera who has guarded John since Lorien, able to take any animal's shape. He is no longer the only one of his kind the Garde know about.",
+            "id": "bernie-kosar",
+            "name": "Bernie Kosar",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-revenge-of-seven"
+      },
+      "recaps": {
+        "ending": "Setrakus Ra's plan turns out to be public rather than covert. Having spent years operating out of hidden bases, he presents himself openly to the world's governments as a visitor offering help, in a form humans will accept, and much of the world is prepared to listen. Then the Mogadorian warships decloak over New York and other cities and the invasion begins in the open. The Garde are split when it starts: Six, Marina, and Adam are in Mexico looking for the Loric sanctuary Malcolm Goode remembered, while John, Sam, Sarah, Nine, and Malcolm are in New York, where the first ships arrive. Ella is still aboard Setrakus Ra's ship, now knowing exactly what he wants from her and refusing it. Adam has burned his own side for good and is trusted, if not liked, by the Garde. The war stops being a secret hunt for nine children and becomes an open invasion of Earth, with the Garde outnumbered, scattered across two continents, and holding one advantage: they know what the Loric left behind here, and the Mogadorians have not found it yet.",
+        "in_short": "After Number Eight's death and Ella's capture, the Garde regroup around three things: recovering Ella, understanding what the Mogadorians are building, and Marina's determination to find Number Five. Ella, held aboard Setrakus Ra's warship, learns that he is her grandfather and that he intends her to inherit what he has built, and she resists while trying to warn the others in their sleep. Adam, a Mogadorian who carries the memories of Number One after an experiment on him as a boy, and the earth-shaking Legacy that came with them, defects and brings the Garde what he knows. Together they raid Ashwood Estates, a Mogadorian settlement in Virginia disguised as an ordinary suburb, and find beneath it the enemy's technology, captive Chimaerae, and evidence of a plan to approach the world's governments openly. The group splits: Six, Marina, and Adam go to Mexico to find a Loric sanctuary, and John's group goes to New York. Setrakus Ra presents himself to humanity as a benefactor, and then the warships decloak and the invasion begins.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Nine Loric children were sent to Earth with guardians called Cepans when the Mogadorians destroyed Lorien. Numbers One, Two, and Three were killed first. Number Four, John Smith, was found in Ohio, where his guardian Henri died; Number Six joined him, along with his human friend Sam Goode and a Chimaera called Bernie Kosar. Number Seven, called Marina, was found in Spain; the orphan she protected was Number Ten, called Ella, from a second Loric ship. Number Nine was freed from a Mogadorian mountain base, and Number Eight was found in India. All of their Cepans are now dead, including Ella's, and the charm that once made the nine killable only in order no longer protects them. Sam's father Malcolm was recovered from Mogadorian hands, and his returning memories revealed that humans met the Loric ships when they landed. Number Five was found last, and betrayed them: he had already made terms with the Mogadorians, and he killed Number Eight. Marina, in grief, developed a Legacy of lethal cold and took one of Five's eyes. Setrakus Ra took Ella captive. Five of the nine remain, and one of them is on the enemy's side.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Garde pull themselves back together after Florida. John takes the group's losses as a reason to fight harder rather than to hide, Marina has come out of it colder and more dangerous, and everyone's first objective is Ella. Ella, meanwhile, is aboard Setrakus Ra's warship, held in reasonable comfort and treated as a guest rather than a prisoner, which unsettles her more than a cell would. He talks to her, shows her things, and appears to be waiting for her to come round to something. A third strand opens with Adam, a young Mogadorian and the son of a senior officer, who was used as a boy in an experiment that joined his mind to a dead Garde's. He has carried her memories ever since, along with a Legacy no Mogadorian should possess, and he has been living between the two sides.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Adam breaks with his own people for good and makes contact with the Garde, offering what he knows about Mogadorian installations, chains of command, and intentions. He is a Mogadorian asking Loric survivors to trust him weeks after one of their own betrayed them, and the reception is what would be expected. Number Five is now openly on the enemy's side, and Marina intends to find him. Aboard the warship, Setrakus Ra's interest in Ella becomes explicit: he has a specific role in mind for her, and he expects her to accept it. Her Legacies work on minds, so the only thing she can do from inside is reach for the Garde in their sleep and try to tell them what she has learned.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Setrakus Ra tells Ella what she is to him: she is his granddaughter, and he means her to inherit what he has built rather than to die with the rest of the Garde. He offers her a version of the war in which she is on the winning side and her people survive, and he makes it as reasonable as he can. Ella refuses and keeps refusing, while continuing to gather everything she can about his plans. On Earth, Adam's intelligence gives the Garde a target that changes their understanding of the enemy entirely: Ashwood Estates, a Mogadorian settlement in Virginia that looks from the road like an ordinary American suburb, complete with houses and lawns, and which has been operating for years within reach of the American capital.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Garde raid Ashwood Estates with Adam guiding them. Beneath the suburb they find the real installation: Mogadorian technology, records, and Chimaerae held in stasis, Loric creatures like Bernie Kosar that the enemy captured rather than killed. They also find evidence of what Setrakus Ra is actually preparing, and it is not another hunting operation. The Mogadorians intend to approach the governments of Earth openly, presenting themselves as visitors offering help. The raid destroys the site and confirms Adam as an ally, at the cost of announcing to the Mogadorian leadership that the Garde have someone on the inside.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "With the Mogadorian plan exposed, the Garde have two problems that cannot be solved in one place, and they split. Six, Marina, and Adam head for Mexico, following what Malcolm Goode remembered about a Loric sanctuary hidden there, on the reasoning that whatever the Loric left on Earth is the only thing that might change the odds. John, Sam, Sarah, Nine, and Malcolm head for New York, where Setrakus Ra intends to make his public approach to the world's governments. Ella, still aboard his ship, now understands the full shape of what he is planning and can do nothing about it except refuse him. Both groups are moving toward events they cannot stop, and the Garde have never been more thinly spread.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Setrakus Ra presents himself to humanity, in a form humans will accept, as a visitor offering aid rather than a conqueror, and enough of the world is willing to hear him out. The deception holds only briefly: the Mogadorian warships decloak over New York and other cities and the invasion begins openly. John's group is in New York when the first ships arrive; Six, Marina, and Adam are in Mexico, still searching for the sanctuary; Ella is aboard Setrakus Ra's ship, refusing the inheritance he has offered her. Adam has destroyed any way back to his own people. The war has changed shape entirely: it is no longer a hidden hunt for a handful of children, but an open invasion of Earth, with the Garde outnumbered, separated across two continents, and holding only one real advantage, which is that they know the Loric left something behind here and the Mogadorians have not found it.",
+            "through": {
+              "chapter": 30
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-revenge-of-seven"
+      }
+    },
+    "the-rise-of-nine": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Number Four"
+            ],
+            "description": "The fourth of the nine, now travelling with Number Nine after freeing him from the Mogadorian base in West Virginia. He has lost his guardian Henri, been separated from Six, and left Sam Goode in enemy hands, and getting Sam back is the thing he will not be argued out of. His Legacies are strengthening but his judgement is still driven by the people he refuses to abandon, which Nine treats as a weakness and Six treats as a liability.",
+            "id": "john-smith",
+            "name": "John Smith",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The ninth of the nine, recently freed after a long imprisonment and impatient to hit back. He is the strongest of the Garde met so far, fast, and able to run along walls and ceilings as though gravity does not apply to him. He was raised in Chicago by a Cepan who trained him in a purpose-built penthouse, and he returns there with John. Confident to the point of recklessness, he treats caution as cowardice and wants to attack the Mogadorians directly rather than keep hiding.",
+            "id": "number-nine",
+            "name": "Number Nine",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The sixth of the nine, and the most capable fighter among them. Having pulled Marina and Ella out of Spain, she now leads their half of the group, planning routes, forging papers, and deciding what risks are worth taking. She can turn invisible and call down storms, and she is the one pushing hardest to gather every surviving Garde before the Mogadorians can isolate them again.",
+            "id": "number-six",
+            "name": "Number Six",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Number Seven"
+            ],
+            "description": "The seventh of the nine, out of the Spanish convent where she spent most of her life and grieving the guardian and the friend who died getting her out. Her Legacies are healing, breathing underwater, and seeing in the dark, and she is only now learning to fight. She travels with Six, Ella, and Crayton, out of her depth but determined not to be the one who has to be protected.",
+            "id": "marina",
+            "name": "Marina",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Number Ten"
+            ],
+            "description": "The tenth Garde, a child who came to Earth on a second Loric ship that arrived after the first, raised by her Cepan Crayton. She spent years hidden as an orphan in a Spanish convent and is now travelling openly with the others. Her Legacies are still emerging and unusual: she can shift her apparent age and reach other minds, including in sleep. She is the youngest of the group and the one everyone else tries to keep out of the fighting.",
+            "id": "ella",
+            "name": "Ella",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ella's Cepan, who came on the second Loric ship and carries the history of Lorien's fall that the nine were never told, including how the second ship came to be launched at all. Calm and methodical, he takes charge of moving Six, Marina, and Ella across the world and follows the reports that lead them toward India.",
+            "id": "crayton",
+            "name": "Crayton",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The eighth of the nine, found in the mountains of India, where villagers have spent years telling stories about a boy in a cave who can do impossible things and have come to treat him as a god. He can teleport himself and others and can change his shape at will, which makes him the hardest of the Garde to pin down and, at first meeting, the hardest to trust. He has been alone for a long time and has been guarding something in the mountain that concerns all of them.",
+            "id": "number-eight",
+            "name": "Number Eight",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "John's human friend from Paradise, captured by the Mogadorians during the escape from their West Virginia base and held since. He has no Legacies and no protection, and the fact that he was taken because he insisted on helping is what drives John's plans through most of the book.",
+            "id": "sam-goode",
+            "name": "Sam Goode",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Number Nine's Cepan, who raised and trained him in Chicago and built the fortified penthouse and training hall the two of them used. He did not survive the attack in which Nine was captured. He is present in the book only through Nine's memories and through the equipment, resources, and defences he left behind.",
+            "id": "sandor",
+            "name": "Sandor",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Chimaera who has guarded John since Lorien, usually in the shape of a beagle. He travels with John and Nine, changes into whatever the fight requires, and can communicate with John directly.",
+            "id": "bernie-kosar",
+            "name": "Bernie Kosar",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The girl John left in Paradise, Ohio. He has not been able to establish whether she had anything to do with the agents who were waiting for him there, and the question sits between him and any attempt to contact her.",
+            "id": "sarah-hart",
+            "name": "Sarah Hart",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The leader of the Mogadorians, the figure behind the destruction of Lorien and the hunt for the nine. Until now he has been a name in Loric history and an authority the soldiers invoke rather than anyone the Garde have seen. What the Garde learn about him in this book is that he is on Earth, that he is directing the search personally, and that he is far beyond an ordinary Mogadorian officer.",
+            "id": "setrakus-ra",
+            "name": "Setrakus Ra",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-rise-of-nine"
+      },
+      "recaps": {
+        "ending": "The two halves of the group converge on the Mogadorian installation in New Mexico. John and Nine break in to free Sam Goode, and Six, Marina, Ella, and Eight reach them, so that for the first time since Lorien the surviving Garde stand together in one place: Four, Six, Seven, Eight, Nine, and Ten, with Sam and Bernie Kosar. Setrakus Ra confronts them in person and proves to be something far worse than the soldiers they have been fighting, but united they are able to hold him and force him to withdraw rather than being picked off individually, which is the first thing that has ever worked. Sam is freed. The victory is partial and expensive: Crayton, Ella's guardian, was killed in the mountains of India, and the Garde have now lost every adult who came with them from Lorien except the knowledge those adults passed on. The survivors leave together for Chicago and Nine's fortified penthouse, which becomes their base. The charm that protected them by number is gone, so from this point any of them can be killed at any time, and the only defence they have is the one that just worked: staying together.",
+        "in_short": "The surviving Garde spend the book converging. John and Number Nine hole up in Nine's fortified Chicago penthouse, argue about tactics, and then set out for a Mogadorian installation in New Mexico to free Sam Goode, hunted the whole way by federal agents. Six, Marina, Ella, and Ella's guardian Crayton follow reports of a boy in the Himalayas who performs miracles and find Number Eight, who can teleport and change shape and who has been guarding a cave whose paintings appear to show the Garde's own future. The Mogadorians attack them in the mountains: Crayton is killed and Six is taken prisoner. Marina, Ella, and Eight escape and go after her. All of the survivors meet at the New Mexico base, where they free Sam and face Setrakus Ra, the Mogadorian leader, in person for the first time. Fighting together they force him to withdraw. The Garde leave for Chicago as a single group of six, having lost the last of their Cepans and the protection of the charm that once made them killable only in order.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Nine Loric children were sent to Earth with adult guardians called Cepans when the Mogadorians destroyed Lorien, protected by a charm that let them be killed only in the order of their numbers. Numbers One, Two, and Three are dead. Number Four grew up as John Smith, settled in Paradise, Ohio, and was found there; the battle that followed killed his guardian Henri but brought him Number Six, the most experienced of the survivors, and revealed that his dog Bernie Kosar is a Chimaera, a Loric shape-shifter. John left Ohio with Six and his human friend Sam Goode, and Sarah Hart behind. In Spain, Number Seven, called Marina, had spent years in a convent orphanage with a Cepan who had abandoned the mission; when the Mogadorians attacked Santa Teresa, that guardian and a local friend were killed, Six arrived, and the orphan girl Ella turned out to be Number Ten, from a second Loric ship, collected by her Cepan Crayton. John and Sam meanwhile broke into a Mogadorian mountain base in West Virginia and freed Number Nine, but Sam was captured. Six survivors are alive in two groups, each looking for the other, and the Mogadorians hold Sam.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "John and Nine, with Bernie Kosar, go to ground in Chicago in the penthouse Nine's Cepan Sandor built and equipped: fortified, stocked, and fitted with a training hall. Sandor died when Nine was captured, and Nine has come back to an empty version of his old life. The two of them train and clash constantly. Nine wants to take the war to the Mogadorians immediately; John wants to find Sam Goode, who was captured covering their escape from West Virginia, and refuses to move on to anything else first. Meanwhile Six, Marina, Ella, and Ella's Cepan Crayton are out of Spain and moving. Crayton begins filling in what the nine were never told about Lorien's last days and the second ship that carried Ella. Six is running their half of the group, and the news reports Crayton is tracking point them toward the mountains of India.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "John and Nine leave Chicago for the American southwest, following what they can piece together about where Sam is being held. The manhunt for John is now a national one, and federal agents are as much of a problem as Mogadorians. The tension between the two Garde is constant: Nine is faster, stronger, and openly contemptuous of John's attachments, while John will not be talked out of the rescue. In India, Six's group reaches the foothills and starts asking about the stories that brought them there: villagers speak of a boy who has lived in a mountain cave for years and who can do things nobody can explain, and who is treated locally as a god. Crayton believes the stories describe one of the nine.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the mountains Six, Marina, Ella, and Crayton find Number Eight. He can teleport himself and other people and can change his shape at will, and his first instinct on being found is to test the strangers rather than trust them, which makes the meeting an ugly one. Once he accepts who they are, he shows them what he has been living beside: a cave whose walls carry paintings that seem to record events the Garde have not lived through yet, including images of the survivors themselves. The find suggests the Loric left more behind on Earth than nine children and their Chests, and that someone expected them to come here. John and Nine, still travelling, close on the site in New Mexico where they believe Sam is held.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Mogadorians attack in the Himalayas, in strength and with the clear intention of taking the Garde alive rather than killing them. The fight in the mountains costs the group badly: Crayton is killed, and with him goes the last adult who remembered Lorien first-hand. Number Six is captured and carried off. Marina, Ella, and Eight escape and immediately set out to get her back, with Eight's teleporting the only reason they can move fast enough to try. Marina, who spent years being told she would never need to fight, is now doing nothing else. In America, John and Nine reach the Mogadorian installation in New Mexico and begin working out how to get inside.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "John and Nine get into the New Mexico base, a large underground Mogadorian facility, and fight their way toward the cells. Marina, Ella, and Eight are converging on the same place, and Six, held prisoner there, is being kept alive deliberately. What the Garde find inside makes the scale of the Mogadorian presence on Earth undeniable: this is not a hunting party but an established operation with laboratories, garrisons, and prisoners. Sam Goode is found alive. As the fighting spreads through the base, the separate groups of Garde reach each other, and it becomes clear that the Mogadorian leadership has arranged the confrontation as much as they have.",
+            "through": {
+              "chapter": 26
+            }
+          },
+          {
+            "scope": "book",
+            "text": "All of the surviving Garde stand together for the first time: John, Six, Marina, Eight, Nine, and Ella, with Sam freed and Bernie Kosar with them. Setrakus Ra, the Mogadorian leader, faces them in person, and he is far beyond the soldiers they have fought so far. Individually none of them can stand against him; together they hold him long enough to force him to break off, which is the first real evidence that Six's argument was right and that gathering was worth what it cost. They get out and leave for Chicago and Nine's penthouse, which becomes their base of operations. The cost of the book is heavy: Crayton is dead, the last of their Cepans, and the charm that once made the nine killable only in order no longer protects anyone. From here every one of them is vulnerable at any moment, and staying together is the only defence they have found.",
+            "through": {
+              "chapter": 30
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-rise-of-nine"
+      }
+    },
     "the-river-of-silver": {
       "characters": {
         "characters": [

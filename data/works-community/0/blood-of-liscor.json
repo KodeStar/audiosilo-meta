@@ -1576,6 +1576,142 @@
         "work": "bondsfungi"
       }
     },
+    "bookshops-bonedust": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Viv"
+            ],
+            "description": "A young orc mercenary, years before she gives up the work. She is strong, fast, impatient and hungry to be noticed, convinced that the way to matter in a company is to be first into every fight, and she has no interests, habits or ambitions outside soldiering. She does not read. A serious wound to the leg early in the book takes her out of the campaign she was desperate to be part of and strands her in a small coastal town with weeks of nothing to do, which is a situation she is entirely unequipped for.",
+            "id": "viv",
+            "name": "Viv",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The veteran captain of the mercenary company Viv serves in, currently under contract to hunt down a necromancer. Experienced and unsentimental about his people, he is the one who decides that an injured fighter is a liability rather than an asset and orders Viv to sit the campaign out until she is fit.",
+            "id": "rackam",
+            "name": "Rackam",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A gnome in the same mercenary company as Viv: cheerful, talkative and considerably more dangerous than her size suggests. She is the closest thing Viv has to a friend in the company.",
+            "id": "gallina",
+            "name": "Gallina",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A necromancer operating along this stretch of coast, and the target of the contract Viv's company is working. She is feared, competent and unhurried, she raises and commands the dead, and her interest in the region is not idle.",
+            "id": "varine-the-pale",
+            "name": "Varine the Pale",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A rattkin bookseller, owner of Thistleburr Booksellers in the town of Murk. Blunt, sardonic and permanently unimpressed, she runs a shop that is quietly failing and is well aware of it. She has firm opinions about books and firmer ones about people who announce that they do not read, and she starts handing titles to Viv partly to make a point. She accepts help with the shop with conspicuously poor grace.",
+            "id": "fern",
+            "name": "Fern",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dwarf who runs a bakery in Murk: warm, forward, funny and entirely comfortable in her own skin. She takes an immediate and uncomplicated interest in Viv, feeds her, and becomes her closest company during the weeks Viv is stuck in the town.",
+            "id": "maylee",
+            "name": "Maylee",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "bookshops-bonedust"
+      },
+      "recaps": {
+        "ending": "Varine the Pale's move on Murk is broken, at real cost to the town and to Viv, who fights it out on a leg that has not finished healing and alongside neighbours rather than soldiers. Rackam's company comes back for her once it is over. Viv is fit to travel and goes back to mercenary work, which is still what she wants at this stage of her life, so the parting is not a wrench so much as a return to schedule. She and Maylee separate on affectionate terms, both having understood from the start that it was temporary. Fern, unsentimental to the last, sends her off with a book. Thistleburr Booksellers is still standing and, for the first time in a long while, has customers, a tidied stock and a regular gathering of readers who keep coming back. What Viv takes away from Murk is smaller and more consequential than the fight: she has learned to read for pleasure, she has spent weeks somewhere she was a neighbour rather than a weapon, and she has watched a small business run by someone who cares about it more than it pays her. Nothing in the book commits her to anything, and at the close she is still a mercenary, riding out with her company, but her sense of what a life could be made of has changed.",
+        "in_short": "Years before the events of Legends & Lattes, Viv is a young orc mercenary in Rackam's company, hunting the necromancer Varine the Pale. Impatient to prove herself, she charges ahead in a skirmish, takes a bad wound to the leg, and is left to convalesce for weeks in Murk, a damp and unremarkable coastal town, while the company continues without her. Bored past endurance, she wanders into Thistleburr Booksellers, a failing shop run by a sardonic rattkin named Fern, who starts pressing books on her. Viv, who has never read for pleasure, discovers she likes it. She also meets Maylee, a dwarf baker, and the two fall in easily together. With nothing else to do, Viv sets about repairing and reviving the shop, and in the process becomes part of the town. Then Varine comes to Murk for what she wants there and the dead rise in the streets. Viv fights alongside her neighbours, on a leg not yet healed, and Varine's attempt is broken. When the company returns, Viv rides out with it, still a mercenary, but changed by the weeks she spent standing still.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "This book is a prequel. It is set years before Legends & Lattes and does not depend on it in any way, so a listener may start here without having read the other book, and nothing in it is spoiled by doing so. All that carries across is the central character, Viv, and here she is much younger and a very different person. At the opening she is an orc mercenary in her twenties, ambitious and entirely committed to the adventuring life, serving in a company led by a veteran captain named Rackam. The company is under contract to hunt down Varine the Pale, a necromancer operating along the coast. That is the whole of the background required.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Viv, impatient and convinced that the way to be noticed is to be first into the fight, charges ahead of Rackam's company during an engagement with Varine the Pale's forces and takes a serious wound to the leg. Rackam pulls her out of the campaign and leaves her to convalesce for several weeks in Murk, a small, damp, thoroughly unremarkable coastal town, while the company continues the hunt without her. Viv, who has never in her adult life had empty time and no idea how to fill it, is bored within days. Wandering the town, she finds Thistleburr Booksellers, a failing shop run by a rattkin named Fern, who is unimpressed by her, sceptical of her interest, and openly unforgiving when Viv admits she does not read.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Fern begins pushing books on Viv, at first largely to get rid of her and then in earnest, and Viv, with nothing else to do, starts reading and finds to her own surprise that she enjoys it. She also meets Maylee, a dwarf who runs a bakery in the town, and the two of them fall in together easily and without much ceremony. Viv starts putting her convalescence to use on the shop itself: clearing it out, mending what is broken, reorganising the stock and thinking seriously about why nobody comes in. Fern accepts the help grudgingly. Murk, which Viv had written off as somewhere to wait out an injury, gradually becomes a place where she is known by name.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Viv's efforts to bring custom into Thistleburr begin to work. She rearranges the shop, recommends books to people on the strength of what she has read herself, and sets up a regular gathering of readers, and the business turns from a slow failure into a going concern. Her leg improves, though never fast enough to satisfy her, and she trains against her own impatience. At the same time it becomes clear that Varine the Pale's interest in this stretch of coast is not incidental. Signs of necromancy start appearing around Murk, and Viv, the only person in the town who has fought such things professionally, recognises them for what they are.",
+            "through": {
+              "chapter": 19
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Viv's warnings are hard to act on. She is one injured mercenary in a town with no garrison, her company is somewhere else entirely, and she has no standing to make anyone prepare for something they have not seen. She keeps working on the shop and her reading, and her relationship with Maylee deepens even as both of them understand that Viv will leave when she is fit. Evidence accumulates that Varine wants something that is in Murk, and that she is coming for it herself rather than sending others, which gives the town a deadline it does not know it has.",
+            "through": {
+              "chapter": 26
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Varine the Pale comes to Murk, and the dead rise in the town. Viv fights, still lame, and for the first time in her life she is fighting alongside people she knows as neighbours rather than alongside a paid company, defending a place rather than completing a contract. The bookshop and the people around it are at the centre of it. The fighting is costly, the town takes real damage, and Viv is badly used, but Varine's attempt on Murk is broken.",
+            "through": {
+              "chapter": 33
+            }
+          },
+          {
+            "scope": "book",
+            "text": "With Varine's move on the town beaten off, Murk begins putting itself back together and Viv's leg finishes healing. Rackam's company returns for her and she goes back to the work she was raised into, because at this point in her life it is still what she wants. She leaves Murk a reader, with a book from Fern and a settled, unresentful parting from Maylee, and with the shop she rebuilt still standing and, for the first time, busy. The habits she brought to Thistleburr, the readers' gathering, the tidied stock and the attention to what a shop is actually for, stay behind her. She rides out with the company having quietly learned that there is more than one way to spend a life.",
+            "through": {
+              "chapter": 41
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "bookshops-bonedust"
+      }
+    },
     "bound": {
       "characters": {
         "characters": [
