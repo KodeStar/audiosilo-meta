@@ -1666,6 +1666,689 @@
         "work": "jane-eyre"
       }
     },
+    "jane-eyre-adaptation": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An orphan raised without affection in her aunt's household. Plain-spoken, observant, and determined to preserve her self-respect, she survives an unhappy childhood and seeks the education and paid work that will let her direct her own life.",
+            "id": "jane-eyre",
+            "name": "Jane Eyre",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Jane's wealthy aunt, who promised her dying husband to care for Jane but regards the orphan as an unwelcome dependent. She favors her own children and treats Jane's resistance as proof of bad character.",
+            "id": "mrs-reed",
+            "name": "Mrs Reed",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Mrs Reed's spoiled son and Jane's older cousin. He bullies Jane with the confidence that his mother and the servants will punish her if she defends herself.",
+            "id": "john-reed",
+            "name": "John Reed",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A servant at Gateshead who sometimes offers Jane kindness and conversation, though she also obeys Mrs Reed and helps enforce the child's punishments.",
+            "id": "bessie-lee",
+            "name": "Bessie Lee",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The clergyman who controls Lowood School. He preaches humility and deprivation to the pupils while exercising harsh authority over them, and accepts Mrs Reed's hostile account of Jane before she arrives.",
+            "id": "mr-brocklehurst",
+            "name": "Mr Brocklehurst",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Jane's thoughtful friend at Lowood. Intelligent, patient, and guided by a deep Christian faith, she responds to cruelty with endurance rather than Jane's instinctive defiance.",
+            "id": "helen-burns",
+            "name": "Helen Burns",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The humane superintendent of Lowood, respected by the pupils. She recognizes Jane's honesty, helps clear her name after Mr Brocklehurst humiliates her, and becomes an important teacher and example.",
+            "id": "miss-temple",
+            "name": "Miss Temple",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The housekeeper at Thornfield Hall, who welcomes Jane when she arrives as a governess. Her calm manner and ordinary domestic concerns give Jane an initial sense of security in the unfamiliar house.",
+            "id": "mrs-fairfax",
+            "name": "Mrs Fairfax",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Adèle"
+            ],
+            "description": "Jane's lively young French pupil at Thornfield. Fond of clothes, presents, and performance, she is Mr Rochester's ward and the reason Jane has been employed as a governess.",
+            "id": "adele-varens",
+            "name": "Adèle Varens",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mr Rochester"
+            ],
+            "description": "The owner of Thornfield Hall and guardian of Adèle. Abrupt, restless, and accustomed to commanding others, he questions Jane closely and finds her direct answers more interesting than conventional flattery.",
+            "id": "edward-rochester",
+            "name": "Edward Rochester",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A beautiful and accomplished woman from a prominent family who visits Thornfield. She and Rochester appear to be natural social equals, and Jane believes they intend to marry.",
+            "id": "blanche-ingram",
+            "name": "Blanche Ingram",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A visitor from the West Indies whose arrival at Thornfield unsettles Rochester. He knows something about Rochester's earlier life and becomes involved in a violent, unexplained incident during his stay.",
+            "id": "richard-mason",
+            "name": "Richard Mason",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Bertha Mason"
+            ],
+            "description": "Rochester's wife, kept under supervision in the upper part of Thornfield after years of severe mental illness and violence. Her existence, concealed from Jane, makes Rochester's attempted marriage to Jane unlawful.",
+            "id": "bertha-antoinetta-mason",
+            "name": "Bertha Antoinetta Mason",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A serious young clergyman who shelters Jane after she collapses near his home. Disciplined and ambitious for missionary work, he respects endurance and usefulness but distrusts emotional claims that conflict with duty.",
+            "id": "st-john-rivers",
+            "name": "St John Rivers",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "St John's warm, educated sister, who receives the destitute Jane into Moor House. She offers Jane companionship founded on shared interests and affection rather than dependence.",
+            "id": "diana-rivers",
+            "name": "Diana Rivers",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "jane-eyre-adaptation"
+      },
+      "recaps": {
+        "ending": "After rejecting St John Rivers's proposal of a loveless missionary marriage, Jane returns to seek Rochester. Thornfield has burned down; Bertha Mason set the fire and died after jumping from the roof, while Rochester was injured trying to save the household and lost his sight and one hand. Jane finds him living in seclusion at Ferndean. Now financially independent and able to meet him freely, she assures him that she has returned by choice. They marry. Rochester gradually recovers sight in one eye and is able to see their first child. Diana and Mary Rivers also marry, while St John continues his missionary work in India and appears to be approaching death with the same absolute commitment that governed his life. Jane closes as Rochester's partner rather than his employee or dependent, with the legal obstacle removed and the imbalance between them greatly reduced.",
+        "in_short": "Orphaned Jane Eyre is abused at Gateshead and sent to the harsh Lowood School, where friendship and education help her become a teacher. Seeking a wider life, she becomes governess at Thornfield Hall and falls in love with its owner, Edward Rochester. Their planned marriage is stopped by the revelation that Rochester already has a living wife, Bertha Mason, confined at Thornfield because of severe mental illness. Jane refuses to become his mistress and flees. Destitute, she is rescued by the Rivers siblings, discovers they are her cousins, and inherits a fortune that she shares with them. St John Rivers asks her to marry him and join his missionary work, but she refuses a union without love. Jane returns to find Thornfield burned, Bertha dead, and Rochester blinded and maimed. Independent and still loving him, Jane reunites with Rochester and marries him; he later regains enough sight to see their child.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Jane Eyre is an orphan living at Gateshead with her aunt, Mrs Reed, and cousins who resent her presence. After John Reed attacks her and Jane resists, she is locked in the room where her uncle died and becomes terrified and ill. Jane finally tells Mrs Reed that her cruelty has destroyed any claim to affection. Mrs Reed sends her to Lowood, a charity school run by the severe clergyman Mr Brocklehurst, having first described Jane to him as deceitful. At Lowood, poor food, cold rooms, and strict discipline replace the comforts of Gateshead, but Jane begins to find companionship and the possibility of education.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At Lowood, Jane befriends Helen Burns, whose patience and faith differ sharply from Jane's anger at injustice. Mr Brocklehurst publicly humiliates Jane as a liar, but Miss Temple hears her story, verifies it, and restores her reputation. Disease spreads through the badly managed school, exposing its neglect and forcing reforms. Helen, already ill with tuberculosis, dies with Jane beside her. Jane remains at the improved school for years, first as a pupil and then as a teacher. When Miss Temple leaves, Jane realizes how narrow her own life has become and advertises for a new post. She is hired as governess to Adèle Varens at Thornfield Hall, where the housekeeper Mrs Fairfax receives her kindly.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jane begins teaching Adèle and meets Thornfield's owner, Edward Rochester, after encountering him on the road. Rochester is abrupt and searching in conversation but values Jane's honesty. Strange laughter and disturbances in the house are attributed to the servant Grace Poole. One night Jane wakes to find Rochester's bed curtains burning and saves him; he makes her keep the incident private. Jane's attachment to him deepens, although she assumes the difference in wealth and status rules out any future between them. When Rochester hosts a fashionable party, the beautiful Blanche Ingram appears to be his intended bride. Jane watches their apparent courtship and tries to master her jealousy.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A visitor named Richard Mason arrives from the West Indies and is secretly attacked during the night. Jane helps Rochester tend him without being told who caused his wounds. Jane later returns to Gateshead, where the dying Mrs Reed admits that she concealed a letter from Jane's uncle John Eyre, who had wished to adopt her. Back at Thornfield, Rochester leads Jane to believe she must leave because he will marry Blanche, then reveals that he loves Jane and asks her to marry him instead. Jane accepts. Uneasy signs accompany the engagement, including damage to Jane's wedding veil, but Rochester continues to dismiss her fears and presses toward the ceremony.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jane and Rochester's wedding is interrupted by the declaration that Rochester is already married. His wife, Bertha Mason, is alive and confined at Thornfield under Grace Poole's care; she caused the fire and attacked her brother Richard. Rochester explains the disastrous marriage arranged in his youth and asks Jane to live with him abroad despite the legal barrier. Jane still loves him but refuses to sacrifice her principles or independence, and she leaves secretly. After exhausting her money, she collapses near Moor House and is rescued by the siblings St John, Diana, and Mary Rivers. Jane recovers, takes work as a village schoolteacher, and begins building a modest life apart from Rochester.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "St John discovers Jane's identity and tells her that her uncle John Eyre has died, leaving her a large fortune. She also learns that the Rivers siblings are her cousins. Delighted to have family, Jane divides the inheritance equally among the four of them. St John plans missionary work in India and trains Jane to assist him. He asks her to marry him, not from romantic love but because he considers her disciplined enough to be a missionary's wife. Jane offers to go as his colleague but refuses the marriage. Under the force of his will she nearly yields, then seems to hear Rochester calling her name from a great distance. She decides to learn what has happened to him.",
+            "through": {
+              "chapter": 23
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jane returns to Thornfield and finds it a burned ruin. Bertha set the house on fire and died after jumping from the roof; Rochester saved the servants but was blinded and lost a hand. He now lives in isolation at Ferndean. Jane goes to him with independent means and assures him that she has chosen to return. With Bertha dead and Jane no longer economically dependent on Rochester, they marry and establish a companionate life. Rochester later recovers sight in one eye and sees their first child. Diana and Mary Rivers find happy marriages, while St John remains in India, wholly committed to missionary work even as his health fails. Jane's long effort to unite love, conscience, family, and freedom ends with a marriage she can enter as an equal moral agent.",
+            "through": {
+              "chapter": 25
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "jane-eyre-adaptation"
+      }
+    },
+    "jane-eyre-amazonclassics-edition": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An orphan of ten living as an unwanted dependent in her aunt's comfortable home at Gateshead. Thoughtful, observant, and passionate about fairness, Jane has learned to endure isolation but resists when her cousin John bullies her and the household treats her as morally inferior.",
+            "id": "jane-eyre",
+            "name": "Jane Eyre",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Jane's widowed aunt and guardian, who promised her dying husband that she would care for the orphan. She resents Jane, favors her own children, and interprets the girl's resistance to mistreatment as deceit and ingratitude.",
+            "id": "mrs-reed",
+            "name": "Mrs Reed",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Mrs Reed's fourteen-year-old son, indulged by his family and accustomed to commanding Jane. He torments her, throws a book at her, and then has her blamed when she defends herself.",
+            "id": "john-reed",
+            "name": "John Reed",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A servant at Gateshead who can be impatient with Jane but also tells her stories, tends her when she is ill, and shows more warmth than the Reed family does. Jane values Bessie's occasional affection even while recognizing her readiness to accept the household's judgments.",
+            "id": "bessie-lee",
+            "name": "Bessie Lee",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The clergyman who controls Lowood Institution, the charity school proposed for Jane. Severe in dress and manner, he praises deprivation as moral training and accepts Mrs Reed's claim that Jane is deceitful before the girl has any chance to establish herself.",
+            "id": "mr-brocklehurst",
+            "name": "Mr Brocklehurst",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The superintendent of Lowood, dignified and compassionate within an institution marked by cold, hunger, and strict discipline. She recognizes the pupils' needs, treats them with respect, and makes a strong impression on the newly arrived Jane.",
+            "id": "miss-temple",
+            "name": "Miss Temple",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An older Lowood pupil whom Jane sees being punished without protest. Intelligent, reflective, and deeply religious, Helen responds to hardship with patience rather than rebellion and becomes Jane's first close friend.",
+            "id": "helen-burns",
+            "name": "Helen Burns",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The elderly housekeeper at Thornfield Hall, who welcomes Jane on her arrival as governess. Her friendly, practical manner makes the quiet house feel less forbidding, though Jane initially mistakes her for its owner.",
+            "id": "mrs-fairfax",
+            "name": "Mrs Fairfax",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A lively French child living at Thornfield as Mr Rochester's ward and placed under Jane's instruction. Fond of dresses, songs, and attention, she speaks freely about her former life with her mother and quickly warms to her new governess.",
+            "id": "adele-varens",
+            "name": "Adèle Varens",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A servant at Thornfield employed in sewing and other household work. Mrs Fairfax identifies her as the source of a strange, disquieting laugh heard from an upper floor, making her an object of Jane's curiosity.",
+            "id": "grace-poole",
+            "name": "Grace Poole",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The master of Thornfield, first encountered by Jane on a wintry road after his horse slips. Abrupt, physically unimposing, and accustomed to questioning others closely, he returns to the hall with an injury and is revealed as Jane's employer and Adèle's guardian.",
+            "id": "edward-rochester",
+            "name": "Edward Rochester",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A beautiful, accomplished guest at Thornfield from a socially prominent family. She performs confidently before the house party and appears to be the woman Rochester intends to court, while treating governesses and social inferiors with open disdain.",
+            "id": "blanche-ingram",
+            "name": "Blanche Ingram",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A visitor newly arrived from the West Indies who has known Rochester abroad. His unexpected presence disturbs his host, although Mason himself behaves cordially among the Thornfield guests.",
+            "id": "richard-mason",
+            "name": "Richard Mason",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Rochester's living wife, Bertha Antoinetta Mason, whose existence is disclosed when his wedding to Jane is stopped. Mentally ill and prone to violence, she has been confined in the upper part of Thornfield under Grace Poole's supervision, the hidden cause of the house's frightening incidents.",
+            "id": "bertha-mason",
+            "name": "Bertha Mason",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A reserved young clergyman at Moor House who helps shelter Jane after she collapses near his home. Disciplined, intelligent, and emotionally controlled, he is committed to religious duty and plans a life of missionary work rather than comfort.",
+            "id": "st-john-rivers",
+            "name": "St John Rivers",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of St John's sisters at Moor House, warm, educated, and eager to befriend the destitute Jane without pressing her for a history she is not ready to give. Diana's conversation and kindness offer Jane a sense of intellectual companionship and home.",
+            "id": "diana-rivers",
+            "name": "Diana Rivers",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "jane-eyre-amazonclassics-edition"
+      },
+      "recaps": {
+        "ending": "Jane returns to Thornfield and finds the house burned and abandoned. She learns that Bertha set the fire and died after leaping from the roof; Rochester saved the servants but was badly injured, losing a hand and his sight. Jane finds him living quietly at Ferndean. Now financially independent and able to meet him freely, she tells him that she has come to stay. They marry, with Adèle placed at a better school and remaining part of Jane's life. Rochester gradually recovers enough sight in one eye to see their first child. Jane reports ten years of an equal and happy marriage. Diana and Mary Rivers also marry, while St John continues his missionary work in India. His health is failing, and the novel closes with his unwavering expectation of death and spiritual reward. Jane's final position is the opposite of her childhood dependence: she has family, property, purpose, and a marriage entered by her own choice.",
+        "in_short": "Orphaned Jane Eyre grows up mistreated by her aunt, then endures the harsh Lowood school, where her friend Helen dies and Jane later becomes a teacher. Seeking independence, she becomes governess at Thornfield Hall and falls in love with its troubled master, Edward Rochester. Their wedding is stopped by the discovery that Rochester already has a living wife, Bertha Mason, confined at Thornfield because of severe mental illness. Jane refuses to become his mistress and leaves with almost nothing. The Rivers siblings rescue her; she later learns they are her cousins and shares a large inheritance with them. She rejects St John Rivers's proposal that she marry him for missionary work and returns to Rochester. Bertha has burned Thornfield and died, while Rochester was blinded and maimed rescuing others. Jane reunites with him at Ferndean, marries him as an independent equal, and builds the loving home she had long lacked. Rochester eventually regains partial sight.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Ten-year-old Jane Eyre is an orphan living at Gateshead with her aunt, Mrs Reed, and the Reed children. The family treats her as an inferior dependent, and her cousin John bullies her. When Jane fights back after he injures her, she is locked in the red-room where her uncle died. Terror and distress make her ill. The apothecary Mr Lloyd recognizes her misery and suggests school, an escape Jane wants. Mrs Reed arranges to send her to Lowood Institution under the severe clergyman Mr Brocklehurst, telling him that Jane is deceitful. Before leaving, Jane finally tells her aunt how cruelly she has been treated. At Lowood, Jane finds cold rooms, inadequate food, rigid discipline, and rows of girls expected to endure deprivation quietly. The superintendent, Miss Temple, provides one of the few signs of humane authority.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At Lowood, Jane befriends Helen Burns, an intelligent older pupil whose religious patience contrasts with Jane's anger at injustice. Brocklehurst visits and publicly labels Jane a liar, ordering the school to shun her, but Miss Temple listens to Jane's account and clears her name after checking it. A typhus outbreak exposes Lowood's neglect and kills many pupils. Helen, already dying of consumption, spends her final night with Jane and dies beside her. Public scrutiny brings reforms, and conditions improve. Jane remains for eight years, first as a pupil and then as a teacher. When Miss Temple marries and leaves, Jane recognizes her desire for a wider life. She advertises for a governess position and receives an offer from Mrs Fairfax at Thornfield Hall. After a last visit from Bessie, Jane leaves the institution that shaped both her discipline and her hunger for independence.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jane arrives at Thornfield and becomes governess to Adèle Varens, the lively French ward of the absent master, Edward Rochester. Mrs Fairfax manages the household, while an odd laugh from an upper floor is attributed to servant Grace Poole. Jane meets Rochester without knowing him when his horse falls on the road; after his return he questions her closely and shows interest in her drawings and character. His abrupt manner and troubled history intrigue her, and their conversations begin to break Thornfield's isolation. One night Jane hears the strange laugh, smells smoke, and discovers Rochester asleep with his bed curtains burning. She wakes him and helps extinguish the fire. Rochester again blames Grace Poole but asks Jane to keep the event private. His gratitude and emotion strengthen Jane's attachment, even as his secrecy makes the danger in the house harder to understand.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rochester hosts a large party at Thornfield, including the beautiful Blanche Ingram, who appears to be his intended bride. Jane tries to suppress her feelings while watching their apparent courtship and enduring Blanche's contempt for governesses. Rochester disguises himself as a fortune-telling woman to question his guests and probe Jane's emotions. The gathering is disrupted by the arrival of Richard Mason from the West Indies, whose presence visibly alarms Rochester. During the night, a cry sounds from the upper floor. Mason has been attacked and badly wounded. Rochester secretly brings Jane to tend him while forbidding the two to speak, then sends Mason away under medical care before morning. Grace Poole is once again presented as responsible, but her continued employment and Rochester's evasions persuade Jane that Thornfield conceals a more complicated danger.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jane returns to Gateshead after Mrs Reed suffers a stroke. Her aunt remains bitter and reveals that she concealed a letter from Jane's uncle John Eyre, who had wished to adopt her. Mrs Reed dies without reconciliation. Back at Thornfield, Rochester leads Jane to believe he will marry Blanche, then declares his love for Jane and proposes. She accepts, despite Mrs Fairfax's concern about their unequal positions. Ominous events precede the wedding, including the destruction of Jane's veil. At the ceremony, a solicitor and Richard Mason stop the marriage by proving that Rochester already has a living wife. He takes the group to the upper floor, where Bertha Mason is confined under Grace Poole's care; Bertha caused the fire and attacks. Rochester explains the disastrous marriage and asks Jane to live with him abroad despite the legal bond. She loves him but refuses a relationship that would violate her conscience. Before dawn, she leaves Thornfield alone with little money.",
+            "through": {
+              "chapter": 27
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jane's money is lost during her flight, and she wanders hungry across the moors after being refused shelter and work. Near collapse, she is admitted to Moor House by the Rivers siblings: the clergyman St John and his sisters Diana and Mary. Jane withholds her past and uses the name Jane Elliott, but their kindness gives her a temporary home. St John finds her work teaching a small village school for poor girls. The position is humble, yet Jane values the independence and gradually gains the pupils' trust. She meets Rosamond Oliver, the wealthy and charming daughter of the school's benefactor, and sees that she and St John are attracted to each other. St John suppresses the possibility of marriage because he believes Rosamond is unsuited to the difficult missionary life he intends to lead.",
+            "through": {
+              "chapter": 32
+            }
+          },
+          {
+            "scope": "book",
+            "text": "St John discovers Jane's real identity while tracing news from a solicitor: her uncle John Eyre has died and left her a fortune of twenty thousand pounds. She also learns that St John, Diana, and Mary are her cousins. Delighted to have relatives more than wealth, Jane divides the inheritance equally among the four of them and restores Moor House as a shared home. St John prepares for missionary work in India and trains Jane to assist him. He asks her to marry him, not from romantic love but because he considers her suitable for the work. Jane offers to accompany him as a cousin, but refuses a loveless marriage that she believes would destroy her. Under the pressure of his will and religious appeal she nearly consents. Then, in a moment she cannot explain, she hears Rochester's voice calling her name from far away. She resolves to discover what has happened to him.",
+            "through": {
+              "chapter": 35
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jane travels back to Thornfield and finds it a burned ruin. She learns that Bertha set the house on fire, climbed to the roof, and died in a fall. Rochester got the servants out but was gravely injured when the building collapsed, losing one hand and his sight. Jane finds him living in seclusion at Ferndean. Her return restores his hope; now independently wealthy and free to choose, she can join him without becoming dependent or compromising her principles. They marry and form a quiet, close partnership. Adèle remains under Jane's care and is moved to a kinder school. Over time Rochester recovers enough sight in one eye to see their first child. Jane looks back after ten years of marriage as content and equal in the relationship. Diana and Mary marry as well, while St John remains in India, devoted to missionary work and approaching death with certainty in his calling.",
+            "through": {
+              "chapter": 38
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "jane-eyre-amazonclassics-edition"
+      }
+    },
+    "jane-eyre-naxos-edition": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An orphan of ten living as an unwanted dependent in her aunt's comfortable home at Gateshead. Thoughtful, observant, and passionate about fairness, Jane has learned to endure isolation but resists when her cousin John bullies her and the household treats her as morally inferior.",
+            "id": "jane-eyre",
+            "name": "Jane Eyre",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Jane's widowed aunt and guardian, who promised her dying husband that she would care for the orphan. She resents Jane, favors her own children, and interprets the girl's resistance to mistreatment as deceit and ingratitude.",
+            "id": "mrs-reed",
+            "name": "Mrs Reed",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Mrs Reed's fourteen-year-old son, indulged by his family and accustomed to commanding Jane. He torments her, throws a book at her, and then has her blamed when she defends herself.",
+            "id": "john-reed",
+            "name": "John Reed",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A servant at Gateshead who can be impatient with Jane but also tells her stories, tends her when she is ill, and shows more warmth than the Reed family does. Jane values Bessie's occasional affection even while recognizing her readiness to accept the household's judgments.",
+            "id": "bessie-lee",
+            "name": "Bessie Lee",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The clergyman who controls Lowood Institution, the charity school proposed for Jane. Severe in dress and manner, he praises deprivation as moral training and accepts Mrs Reed's claim that Jane is deceitful before the girl has any chance to establish herself.",
+            "id": "mr-brocklehurst",
+            "name": "Mr Brocklehurst",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The superintendent of Lowood, dignified and compassionate within an institution marked by cold, hunger, and strict discipline. She recognizes the pupils' needs, treats them with respect, and makes a strong impression on the newly arrived Jane.",
+            "id": "miss-temple",
+            "name": "Miss Temple",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An older Lowood pupil whom Jane sees being punished without protest. Intelligent, reflective, and deeply religious, Helen responds to hardship with patience rather than rebellion and becomes Jane's first close friend.",
+            "id": "helen-burns",
+            "name": "Helen Burns",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The elderly housekeeper at Thornfield Hall, who welcomes Jane on her arrival as governess. Her friendly, practical manner makes the quiet house feel less forbidding, though Jane initially mistakes her for its owner.",
+            "id": "mrs-fairfax",
+            "name": "Mrs Fairfax",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A lively French child living at Thornfield as Mr Rochester's ward and placed under Jane's instruction. Fond of dresses, songs, and attention, she speaks freely about her former life with her mother and quickly warms to her new governess.",
+            "id": "adele-varens",
+            "name": "Adèle Varens",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A servant at Thornfield employed in sewing and other household work. Mrs Fairfax identifies her as the source of a strange, disquieting laugh heard from an upper floor, making her an object of Jane's curiosity.",
+            "id": "grace-poole",
+            "name": "Grace Poole",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The master of Thornfield, first encountered by Jane on a wintry road after his horse slips. Abrupt, physically unimposing, and accustomed to questioning others closely, he returns to the hall with an injury and is revealed as Jane's employer and Adèle's guardian.",
+            "id": "edward-rochester",
+            "name": "Edward Rochester",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A beautiful, accomplished guest at Thornfield from a socially prominent family. She performs confidently before the house party and appears to be the woman Rochester intends to court, while treating governesses and social inferiors with open disdain.",
+            "id": "blanche-ingram",
+            "name": "Blanche Ingram",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A visitor newly arrived from the West Indies who has known Rochester abroad. His unexpected presence disturbs his host, although Mason himself behaves cordially among the Thornfield guests.",
+            "id": "richard-mason",
+            "name": "Richard Mason",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Rochester's living wife, Bertha Antoinetta Mason, whose existence is disclosed when his wedding to Jane is stopped. Mentally ill and prone to violence, she has been confined in the upper part of Thornfield under Grace Poole's supervision, the hidden cause of the house's frightening incidents.",
+            "id": "bertha-mason",
+            "name": "Bertha Mason",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A reserved young clergyman at Moor House who helps shelter Jane after she collapses near his home. Disciplined, intelligent, and emotionally controlled, he is committed to religious duty and plans a life of missionary work rather than comfort.",
+            "id": "st-john-rivers",
+            "name": "St John Rivers",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of St John's sisters at Moor House, warm, educated, and eager to befriend the destitute Jane without pressing her for a history she is not ready to give. Diana's conversation and kindness offer Jane a sense of intellectual companionship and home.",
+            "id": "diana-rivers",
+            "name": "Diana Rivers",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "jane-eyre-naxos-edition"
+      },
+      "recaps": {
+        "ending": "Jane returns to Thornfield and finds the house burned and abandoned. She learns that Bertha set the fire and died after leaping from the roof; Rochester saved the servants but was badly injured, losing a hand and his sight. Jane finds him living quietly at Ferndean. Now financially independent and able to meet him freely, she tells him that she has come to stay. They marry, with Adèle placed at a better school and remaining part of Jane's life. Rochester gradually recovers enough sight in one eye to see their first child. Jane reports ten years of an equal and happy marriage. Diana and Mary Rivers also marry, while St John continues his missionary work in India. His health is failing, and the novel closes with his unwavering expectation of death and spiritual reward. Jane's final position is the opposite of her childhood dependence: she has family, property, purpose, and a marriage entered by her own choice.",
+        "in_short": "Orphaned Jane Eyre grows up mistreated by her aunt, then endures the harsh Lowood school, where her friend Helen dies and Jane later becomes a teacher. Seeking independence, she becomes governess at Thornfield Hall and falls in love with its troubled master, Edward Rochester. Their wedding is stopped by the discovery that Rochester already has a living wife, Bertha Mason, confined at Thornfield because of severe mental illness. Jane refuses to become his mistress and leaves with almost nothing. The Rivers siblings rescue her; she later learns they are her cousins and shares a large inheritance with them. She rejects St John Rivers's proposal that she marry him for missionary work and returns to Rochester. Bertha has burned Thornfield and died, while Rochester was blinded and maimed rescuing others. Jane reunites with him at Ferndean, marries him as an independent equal, and builds the loving home she had long lacked. Rochester eventually regains partial sight.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Ten-year-old Jane Eyre is an orphan living at Gateshead with her aunt, Mrs Reed, and the Reed children. The family treats her as an inferior dependent, and her cousin John bullies her. When Jane fights back after he injures her, she is locked in the red-room where her uncle died. Terror and distress make her ill. The apothecary Mr Lloyd recognizes her misery and suggests school, an escape Jane wants. Mrs Reed arranges to send her to Lowood Institution under the severe clergyman Mr Brocklehurst, telling him that Jane is deceitful. Before leaving, Jane finally tells her aunt how cruelly she has been treated. At Lowood, Jane finds cold rooms, inadequate food, rigid discipline, and rows of girls expected to endure deprivation quietly. The superintendent, Miss Temple, provides one of the few signs of humane authority.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At Lowood, Jane befriends Helen Burns, an intelligent older pupil whose religious patience contrasts with Jane's anger at injustice. Brocklehurst visits and publicly labels Jane a liar, ordering the school to shun her, but Miss Temple listens to Jane's account and clears her name after checking it. A typhus outbreak exposes Lowood's neglect and kills many pupils. Helen, already dying of consumption, spends her final night with Jane and dies beside her. Public scrutiny brings reforms, and conditions improve. Jane remains for eight years, first as a pupil and then as a teacher. When Miss Temple marries and leaves, Jane recognizes her desire for a wider life. She advertises for a governess position and receives an offer from Mrs Fairfax at Thornfield Hall. After a last visit from Bessie, Jane leaves the institution that shaped both her discipline and her hunger for independence.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jane arrives at Thornfield and becomes governess to Adèle Varens, the lively French ward of the absent master, Edward Rochester. Mrs Fairfax manages the household, while an odd laugh from an upper floor is attributed to servant Grace Poole. Jane meets Rochester without knowing him when his horse falls on the road; after his return he questions her closely and shows interest in her drawings and character. His abrupt manner and troubled history intrigue her, and their conversations begin to break Thornfield's isolation. One night Jane hears the strange laugh, smells smoke, and discovers Rochester asleep with his bed curtains burning. She wakes him and helps extinguish the fire. Rochester again blames Grace Poole but asks Jane to keep the event private. His gratitude and emotion strengthen Jane's attachment, even as his secrecy makes the danger in the house harder to understand.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rochester hosts a large party at Thornfield, including the beautiful Blanche Ingram, who appears to be his intended bride. Jane tries to suppress her feelings while watching their apparent courtship and enduring Blanche's contempt for governesses. Rochester disguises himself as a fortune-telling woman to question his guests and probe Jane's emotions. The gathering is disrupted by the arrival of Richard Mason from the West Indies, whose presence visibly alarms Rochester. During the night, a cry sounds from the upper floor. Mason has been attacked and badly wounded. Rochester secretly brings Jane to tend him while forbidding the two to speak, then sends Mason away under medical care before morning. Grace Poole is once again presented as responsible, but her continued employment and Rochester's evasions persuade Jane that Thornfield conceals a more complicated danger.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jane returns to Gateshead after Mrs Reed suffers a stroke. Her aunt remains bitter and reveals that she concealed a letter from Jane's uncle John Eyre, who had wished to adopt her. Mrs Reed dies without reconciliation. Back at Thornfield, Rochester leads Jane to believe he will marry Blanche, then declares his love for Jane and proposes. She accepts, despite Mrs Fairfax's concern about their unequal positions. Ominous events precede the wedding, including the destruction of Jane's veil. At the ceremony, a solicitor and Richard Mason stop the marriage by proving that Rochester already has a living wife. He takes the group to the upper floor, where Bertha Mason is confined under Grace Poole's care; Bertha caused the fire and attacks. Rochester explains the disastrous marriage and asks Jane to live with him abroad despite the legal bond. She loves him but refuses a relationship that would violate her conscience. Before dawn, she leaves Thornfield alone with little money.",
+            "through": {
+              "chapter": 27
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jane's money is lost during her flight, and she wanders hungry across the moors after being refused shelter and work. Near collapse, she is admitted to Moor House by the Rivers siblings: the clergyman St John and his sisters Diana and Mary. Jane withholds her past and uses the name Jane Elliott, but their kindness gives her a temporary home. St John finds her work teaching a small village school for poor girls. The position is humble, yet Jane values the independence and gradually gains the pupils' trust. She meets Rosamond Oliver, the wealthy and charming daughter of the school's benefactor, and sees that she and St John are attracted to each other. St John suppresses the possibility of marriage because he believes Rosamond is unsuited to the difficult missionary life he intends to lead.",
+            "through": {
+              "chapter": 32
+            }
+          },
+          {
+            "scope": "book",
+            "text": "St John discovers Jane's real identity while tracing news from a solicitor: her uncle John Eyre has died and left her a fortune of twenty thousand pounds. She also learns that St John, Diana, and Mary are her cousins. Delighted to have relatives more than wealth, Jane divides the inheritance equally among the four of them and restores Moor House as a shared home. St John prepares for missionary work in India and trains Jane to assist him. He asks her to marry him, not from romantic love but because he considers her suitable for the work. Jane offers to accompany him as a cousin, but refuses a loveless marriage that she believes would destroy her. Under the pressure of his will and religious appeal she nearly consents. Then, in a moment she cannot explain, she hears Rochester's voice calling her name from far away. She resolves to discover what has happened to him.",
+            "through": {
+              "chapter": 35
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jane travels back to Thornfield and finds it a burned ruin. She learns that Bertha set the house on fire, climbed to the roof, and died in a fall. Rochester got the servants out but was gravely injured when the building collapsed, losing one hand and his sight. Jane finds him living in seclusion at Ferndean. Her return restores his hope; now independently wealthy and free to choose, she can join him without becoming dependent or compromising her principles. They marry and form a quiet, close partnership. Adèle remains under Jane's care and is moved to a kinder school. Over time Rochester recovers enough sight in one eye to see their first child. Jane looks back after ten years of marriage as content and equal in the relationship. Diana and Mary marry as well, while St John remains in India, devoted to missionary work and approaching death with certainty in his calling.",
+            "through": {
+              "chapter": 38
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "jane-eyre-naxos-edition"
+      }
+    },
     "jingo": {
       "characters": {
         "characters": [

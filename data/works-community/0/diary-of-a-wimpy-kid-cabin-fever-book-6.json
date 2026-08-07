@@ -2589,6 +2589,248 @@
         ],
         "work": "doctor-zhivago"
       }
+    },
+    "dombey-and-son": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A prosperous London merchant who regards family life through the future of his firm, Dombey and Son. The birth of a male heir fulfills his central ambition, while his living daughter receives little of his attention. Formal, proud, and accustomed to obedience, he mistakes rank and commercial authority for personal worth.",
+            "id": "paul-dombey",
+            "name": "Paul Dombey",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Mr. Dombey's young daughter, about six when her brother is born. She is affectionate, observant, and eager for her father's love, though he treats her as secondary to the son who can carry the business name. Her immediate devotion to the infant Paul begins the novel's central sibling bond.",
+            "id": "florence-dombey",
+            "name": "Florence Dombey",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Little Paul"
+            ],
+            "description": "The long-awaited son and heir born into the Dombey household. His father immediately imagines him as the future of the family firm, but the child is physically delicate and depends on the care of Florence and a hired nurse after his mother's death.",
+            "id": "paul-dombey-junior",
+            "name": "Paul Dombey Jr.",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Mr. Dombey's wife and the mother of Florence and the newborn Paul. Exhausted after giving birth, she dies at the beginning of the story, leaving the household to reorganize itself around the infant whom her husband prizes.",
+            "id": "fanny-dombey",
+            "name": "Fanny Dombey",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A friend of Mr. Dombey's sister who moves within the family's social circle. Sentimental, ceremonious, and deeply impressed by Dombey's status, she helps arrange the practical response to the newborn Paul's need for a nurse.",
+            "id": "miss-tox",
+            "name": "Miss Tox",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mrs. Richards"
+            ],
+            "description": "A working-class mother hired to nurse the infant Paul under the name Mrs. Richards. Dombey tries to make the arrangement purely contractual and limits her contact with her own family, but she brings ordinary warmth into the children's lives.",
+            "id": "polly-toodle",
+            "name": "Polly Toodle",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Florence's sharp-tongued young maid and loyal companion. Practical and fiercely protective, she sees clearly how little affection Florence receives from the adults who control the Dombey household.",
+            "id": "susan-nipper",
+            "name": "Susan Nipper",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A spirited young employee of Dombey and Son and the nephew of instrument-maker Solomon Gills. Open, capable, and hopeful about advancement, he meets Florence through an accident in the city and treats her with unaffected kindness.",
+            "id": "walter-gay",
+            "name": "Walter Gay",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Uncle Sol"
+            ],
+            "description": "Walter Gay's uncle, a kind but financially struggling maker and seller of nautical instruments. He keeps the Wooden Midshipman shop and places great faith in Walter's future, while relying on old friendships when business turns against him.",
+            "id": "solomon-gills",
+            "name": "Solomon Gills",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A retired sea captain and devoted friend of Solomon Gills. Warm-hearted, literal-minded, and equipped with a hook in place of one hand, he offers practical loyalty to Sol and Walter and regards the Wooden Midshipman as a second home.",
+            "id": "captain-cuttle",
+            "name": "Captain Cuttle",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A retired army officer living near Miss Tox. Loud, self-important, and fond of presenting his opinions as military wisdom, he is eager to cultivate a closer acquaintance with the wealthy and imposing Mr. Dombey.",
+            "id": "major-bagstock",
+            "name": "Major Bagstock",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The learned proprietor of the Brighton school chosen for young Paul. He runs an intensive academic household with the help of his family and assistants, treating the accumulation of knowledge as a demanding system into which pupils must fit.",
+            "id": "doctor-blimber",
+            "name": "Doctor Blimber",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An older pupil in Doctor Blimber's establishment whose prolonged education has left him amiable, wealthy, and socially awkward. He is kind to young Paul and quickly becomes captivated by Florence when she visits her brother.",
+            "id": "mr-toots",
+            "name": "Mr. Toots",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The polished manager at Dombey and Son. Smooth, observant, and indispensable in office business, he enjoys unusual access to Dombey's confidence while keeping his own thoughts carefully controlled.",
+            "id": "james-carker",
+            "name": "James Carker",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An aging society woman encountered by Dombey while traveling with Major Bagstock. Concerned with position, appearance, and arranging an advantageous future for her daughter, she maintains an elaborate air of fragile refinement.",
+            "id": "mrs-skewton",
+            "name": "Mrs. Skewton",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Edith Granger"
+            ],
+            "description": "Mrs. Skewton's beautiful widowed daughter. Composed and proud, she understands that her mother displays her as a social prize and meets Dombey without pretending that such courtship is founded on affection.",
+            "id": "edith",
+            "name": "Edith Granger",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "dombey-and-son"
+      },
+      "recaps": {
+        "ending": "James Carker's schemes end with his flight and death beneath a train, while the concealed damage to Dombey and Son contributes to the firm's collapse. Dombey loses his commercial power, his social household, and the pride that kept him apart from Florence. Walter and Florence marry and go abroad; Susan Nipper eventually marries Mr. Toots. After a period of illness and isolation, Dombey finally accepts Florence's continued love and is reconciled with her. In the final chapter, years have passed. Florence and Walter have children, including a son named Paul, and the family lives in comfort after Walter's successful career. The older Dombey is physically diminished but emotionally transformed, tender toward his grandchildren and especially attached to the little girl who resembles Florence. Edith remains apart but sends Florence a loving message. The family name continues through affection rather than through the rigid commercial dynasty Dombey once tried to impose.",
+        "in_short": "Merchant Paul Dombey values his long-awaited son as heir to Dombey and Son while neglecting his loving daughter Florence. The frail boy, also named Paul, forms a deep bond with Florence but dies after an oppressive education, destroying his father's dynastic hopes. Young employee Walter Gay loves Florence, is sent abroad, and is feared lost. Dombey then marries the proud widow Edith Granger in a loveless match encouraged and manipulated by his manager James Carker. The marriage becomes a contest of control; Edith flees with Carker to punish Dombey, then rejects Carker, while Dombey drives Florence from home. Walter returns alive and later marries Florence. Carker dies while fleeing, and Dombey's firm collapses. Stripped of status and left alone, Dombey finally receives the forgiveness Florence has always offered. Years later he is a gentle grandfather within Florence and Walter's family, valuing the daughter and granddaughter whom his former idea of succession would have overlooked.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "The wealthy merchant Paul Dombey welcomes the birth of a son as the promised continuation of Dombey and Son. His wife Fanny dies after the delivery, leaving six-year-old Florence and the infant Paul in a formal household governed by his pride. Dombey hires Polly Toodle as a wet nurse, renames her Mrs. Richards, and tries to prevent personal attachments from complicating the arrangement. Florence, largely ignored by her father, devotes herself to her brother. During an outing connected with Polly's own family, Florence becomes separated in London and is robbed before the young clerk Walter Gay helps her reach his uncle Solomon Gills's nautical shop. She is returned safely, but Dombey blames Polly for the breach of his rules and dismisses her. Little Paul grows into a delicate, unusually solemn child whose strongest attachment is to Florence.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Walter Gay enters the orbit of the Dombey household through Florence and hopes to advance in Dombey's firm, while his affectionate uncle Sol struggles to keep the Wooden Midshipman shop secure with Captain Cuttle's help. Paul's frailty leads first to a stay at Brighton under Mrs. Pipchin and then to Doctor Blimber's school. The school's relentless program of study weighs heavily on him. Florence visits, learns his lessons so she can help him, and becomes the center of his emotional life. Paul grows weaker despite the adults' plans for his education and future. Brought home, he dies with Florence beside him, imagining peace beyond the sound of the sea. His death removes the son on whom Dombey built his personal and commercial hopes, but it does not teach him how to respond to the daughter who shares his loss.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After Paul's death, Florence remains in her father's house but cannot overcome Dombey's coldness. Walter's friendship offers her a rare source of uncomplicated kindness. At the firm, manager James Carker watches both Walter and Dombey closely. Walter is assigned to sail for Barbados on company business, a promotion that removes him from Florence and from Uncle Sol. Dombey travels with the boastful Major Bagstock and meets Mrs. Skewton and her widowed daughter Edith Granger. Edith is beautiful, proud, and openly conscious of being managed as a valuable social match. Dombey, seeking a wife suited to his position, begins courting her. Carker makes himself useful in the arrangements and increasingly occupies the confidential space between Dombey's business and domestic affairs.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "News arrives that Walter's ship has been lost, and he is presumed dead. Solomon Gills disappears while trying to learn more, leaving Captain Cuttle to guard the Wooden Midshipman and hope for both men's return. Florence grieves for Walter while her isolation at home deepens. Dombey continues his courtship of Edith despite the absence of love on either side. Edith recognizes the bargain being made and despises the social pressures represented by her mother, yet proceeds with it. James Carker encourages the match while strengthening his influence over Dombey. Dombey and Edith marry, establishing an impressive new household built on pride, display, and incompatible wills. Florence hopes the marriage may bring her affection through a new mother, but the underlying struggle for authority is already present.",
+            "through": {
+              "chapter": 31
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Dombey's marriage to Edith quickly becomes hostile. He expects submission as part of the position he has given her; she refuses to offer the obedience or affection that he assumes can be commanded. Florence and Edith nevertheless form a sincere attachment, giving each other the tenderness absent from their relationships with Dombey. Captain Cuttle keeps Sol's shop closed and protected, maintaining faith in the missing Walter. Mr. Toots continues his awkward but honorable devotion to Florence, while Susan Nipper remains her practical defender. Carker moves easily between office and household, presents himself as Dombey's efficient agent, and studies the conflict for his own advantage. Dombey interprets the women's closeness through his own resentment rather than recognizing Florence's steady wish to love him.",
+            "through": {
+              "chapter": 39
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The contest between Dombey and Edith hardens into open separation within their home. Dombey uses Carker to carry commands to his wife, while Carker exploits the role to increase humiliation and mistrust on both sides. Edith resolves to escape the marriage in a way that will strike directly at Dombey's pride. She leaves with Carker, allowing the world to believe they are lovers and making Dombey's trusted manager the instrument of his public disgrace. When Florence approaches her devastated father with compassion, he turns his rage on her and strikes her. Convinced that she cannot remain, Florence flees the house and reaches Captain Cuttle at the Wooden Midshipman. Dombey is left with the consequences of rejecting the one person who still came to him out of love.",
+            "through": {
+              "chapter": 48
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At the Wooden Midshipman, Florence is reunited with Walter Gay, who survived the wreck and has returned to England. Walter offers safety and renewed hope, while Captain Cuttle's long loyalty is rewarded by the recovery of the young man he regarded as lost. Dombey remains isolated and consumed by the scandal. Evidence of Carker's concealed conduct begins to emerge, including his manipulation of both business and personal relationships. Abroad, Edith makes clear that she used the appearance of an elopement to punish Dombey and has no intention of becoming Carker's partner. Carker, suddenly stripped of control and pursued by the results of his schemes, flees. Florence and Walter acknowledge their love, but the wider consequences for Dombey, Carker, and the firm have not yet finished unfolding.",
+            "through": {
+              "chapter": 56
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Florence marries Walter and leaves England with him, supported by the friends who gathered around the Wooden Midshipman. Carker's attempt to escape accountability ends when he encounters Dombey and is killed beneath a train. The damage hidden within Dombey and Son comes fully into view, and the business collapses, taking with it the status on which Dombey built his identity. Susan Nipper and Mr. Toots also marry. Ill, impoverished, and alone, Dombey finally accepts Florence when she returns to care for him, and they reconcile. Years later Walter has prospered, and he and Florence are raising a son named Paul and a daughter. Dombey lives as a changed man within their family, loving the grandchildren without treating them as instruments of a dynasty. Edith remains separate but sends Florence affection, and the novel closes with Dombey particularly moved by the granddaughter who resembles the daughter he once failed to value.",
+            "through": {
+              "chapter": 62
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "dombey-and-son"
+      }
     }
   }
 }

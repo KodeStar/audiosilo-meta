@@ -2747,6 +2747,225 @@
         "work": "bleak-house"
       }
     },
+    "bleak-house-charles-dickens": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An orphaned young woman brought up to believe she should expect little from life. She becomes companion to Ada Clare at Bleak House and also narrates much of the story. Modest, observant, and practical, she has a gift for making troubled households more humane while remaining uncertain about her own origins.",
+            "id": "esther-summerson",
+            "name": "Esther Summerson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The kindly master of Bleak House and guardian of Esther, Ada, and Richard. He has inherited a connection to the ruinous Jarndyce and Jarndyce lawsuit but detests the case and warns his young wards not to build their lives around it.",
+            "id": "john-jarndyce",
+            "name": "John Jarndyce",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A warm-hearted young ward in Jarndyce and Jarndyce who comes to live at Bleak House with Esther. She quickly becomes Esther's closest friend and is quietly devoted to her cousin Richard.",
+            "id": "ada-clare",
+            "name": "Ada Clare",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ada's energetic cousin and another ward in the Jarndyce suit. Amiable but restless, he tries several professions without settling and is dangerously tempted by the possibility that the Chancery case will someday make him rich.",
+            "id": "richard-carstone",
+            "name": "Richard Carstone",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The elegant, remote wife of Sir Leicester Dedlock. Though surrounded by wealth and social deference at Chesney Wold, she is chronically bored until a piece of copied legal handwriting stirs a powerful response she tries to conceal.",
+            "id": "lady-dedlock",
+            "name": "Lady Dedlock",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Lady Dedlock's much older husband, a wealthy baronet devoted to family rank and tradition. His pride can make him seem rigid, but his attachment to his wife is sincere and deeper than the formal manners of Chesney Wold suggest.",
+            "id": "sir-leicester-dedlock",
+            "name": "Sir Leicester Dedlock",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Dedlocks' controlled and formidable lawyer. After noticing Lady Dedlock's reaction to a law-copyist's handwriting, he begins a patient inquiry into the writer and her interest in him. He treats private knowledge as a means of preserving the social order he serves.",
+            "id": "mr-tulkinghorn",
+            "name": "Mr Tulkinghorn",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An ambitious young clerk in the law office of Kenge and Carboy. He is immediately struck by Esther and pursues both her and any information that might explain her resemblance to a grand lady whose portrait he has seen.",
+            "id": "william-guppy",
+            "name": "William Guppy",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A solitary, impoverished law-writer lodging above Krook's shop. His fine hand attracts Tulkinghorn's attention, but his dependence on opium and his hidden past leave few obvious traces of who he once was.",
+            "id": "nemo",
+            "name": "Nemo",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A homeless boy who earns pennies sweeping a crossing. He is treated as a nuisance by officials and survives at society's edge, yet what he witnessed concerning Nemo makes him important to people far more powerful than he is.",
+            "id": "jo",
+            "name": "Jo",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The eccentric, illiterate proprietor of a rag-and-bottle shop surrounded by discarded legal papers. He calls himself the Lord Chancellor of his cluttered court and hoards documents whose value he cannot read.",
+            "id": "krook",
+            "name": "Krook",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young surgeon whose calm competence and generosity distinguish him even when he has little money or status. He meets Esther through Bleak House and becomes a trusted friend of the household before leaving England as a ship's doctor.",
+            "id": "allan-woodcourt",
+            "name": "Allan Woodcourt",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Charley"
+            ],
+            "description": "The responsible eldest child of the Neckett family. After her father's death, she works to care for her younger siblings and later enters Esther's service, where her loyalty and directness make her much more than an ordinary maid.",
+            "id": "charley-neckett",
+            "name": "Charlotte Neckett",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Lady Dedlock's French maid, proud, watchful, and conscious that she remains an outsider within the grand household whose habits she has learned.",
+            "id": "hortense",
+            "name": "Hortense",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A police inspector whose friendly, conversational manner masks a highly methodical investigator. He observes servants and aristocrats with equal care and is skilled at letting suspects underestimate how much he already knows.",
+            "id": "inspector-bucket",
+            "name": "Inspector Bucket",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly moneylender who dominates his family from his chair and takes a predatory interest in every scrap of property connected with the Chancery suit. His granddaughter Judy and grandson Bart help him pursue debts and papers.",
+            "id": "grandfather-smallweed",
+            "name": "Grandfather Smallweed",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "bleak-house-charles-dickens"
+      },
+      "recaps": {
+        "ending": "Inspector Bucket establishes that Hortense, not Lady Dedlock, killed Tulkinghorn and tried to make suspicion fall on her former mistress. Before that truth can protect her, Lady Dedlock flees Chesney Wold, believing her past has disgraced Sir Leicester. Esther and Bucket pursue her through bitter weather but find her dead at the cemetery where Captain Hawdon was buried. Sir Leicester survives a stroke and remains devoted to his wife. In Chancery, newly discovered papers seem ready to settle Jarndyce and Jarndyce, but the accumulated legal costs have consumed the entire estate. Richard, exhausted by his obsession, dies after reconciling with John Jarndyce, leaving Ada a young widow with their child. Jarndyce releases Esther from her promise to marry him after recognizing that she and Allan Woodcourt love one another. Esther marries Allan and lives with him in a second Bleak House, while Ada and her child remain within their loving circle.",
+        "in_short": "Esther Summerson joins Ada Clare and Richard Carstone as wards of John Jarndyce, whose family has been damaged for generations by an endless Chancery suit. Richard becomes consumed by the case, while Esther's unknown parentage connects her to the proud Lady Dedlock and to Captain Hawdon, a dead law-writer. Tulkinghorn uncovers that Lady Dedlock is Esther's mother and threatens exposure. Esther survives smallpox, learns the truth, and agrees to keep it secret. After Tulkinghorn is murdered, Lady Dedlock believes she will be blamed and flees; Inspector Bucket discovers that the dismissed maid Hortense is the killer, but Esther finds her mother dead at Hawdon's grave. The Jarndyce case finally ends only because costs have swallowed the inheritance, and Richard dies after wasting his health on it. John Jarndyce gives up his engagement to Esther so that she can marry Allan Woodcourt. Ada, widowed with a child, and Esther remain part of the family Jarndyce built in defiance of the ruin created by the law.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Esther Summerson, raised by an austere godmother and given no clear account of her parents, is sent to become companion to Ada Clare. Ada and her cousin Richard Carstone are wards in Jarndyce and Jarndyce, a Chancery suit that has dragged on so long that nobody can reliably explain it. Their guardian, John Jarndyce, welcomes all three to Bleak House and urges them to treat the lawsuit as a curse rather than a promised fortune. Ada and Richard fall in love, though Richard has not chosen a profession. Elsewhere, the wealthy Lady Dedlock reacts unexpectedly to the handwriting on a copied legal document shown by the family lawyer, Tulkinghorn. He traces the hand to a poor copyist calling himself Nemo, who is found dead in his room above Krook's rag shop. Jo, a destitute crossing sweeper, is among the few people who can connect Nemo to his lonely burial.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Life at Bleak House gives Esther the family she has never had. Richard tries medicine and then the law, but each abandoned career leaves him more willing to believe the Chancery case will secure his future. Ada's love cannot break that attraction. Esther meets the capable young surgeon Allan Woodcourt, while the law clerk William Guppy notices that she resembles Lady Dedlock and begins investigating her history. Tulkinghorn also pursues the mystery behind Nemo's handwriting. The dead copyist's papers have vanished into Krook's chaotic shop, and Jo remains vulnerable because he saw a veiled lady asking about Nemo's grave. At Chesney Wold, Lady Dedlock maintains her public composure as questions about the anonymous writer move ever closer to her private past.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jo is driven from place to place by people who want him silent. When he reaches Bleak House sick with smallpox, Esther helps care for him and then contracts the disease herself while nursing Charley. She survives but is left scarred. Guppy's inquiries and Tulkinghorn's separate investigation increasingly connect Nemo with Lady Dedlock, while discarded papers pass among Krook, the grasping Smallweeds, and men who understand their possible value. Richard gives up another profession and commits himself to Jarndyce and Jarndyce despite Jarndyce's warnings. His fixation strains the household and his relationship with Ada, who continues to stand by him. Inspector Bucket enters the tangle as a seemingly genial policeman with a sharp eye for the links among witnesses, servants, and secrets.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Esther learns that Lady Dedlock is her mother and that Nemo was Captain Hawdon, her father. Lady Dedlock admits that she believed her baby had died and begs Esther to preserve the secret that protects Sir Leicester and the Dedlock name. Esther agrees, though the meeting changes her understanding of her whole life. Tulkinghorn has also assembled the truth and uses it to control Lady Dedlock, promising silence only while it suits his view of the family's interests. Richard and Ada marry privately, but Richard's health and judgment continue to deteriorate as he borrows against the hoped-for settlement. Jarndyce, who has offered Esther a secure future as his wife, remains unable to rescue Richard from the case. Allan Woodcourt returns to England and helps the suffering people others ignore, including the dying Jo.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tulkinghorn tells Lady Dedlock that he intends to disclose her history to Sir Leicester. Soon afterward he is shot dead in his rooms, and suspicion gathers around people he threatened, including Lady Dedlock. Inspector Bucket quietly reconstructs the crime, examining the lawyer's movements, servants, and the anger of Hortense, Lady Dedlock's dismissed maid. Meanwhile, hidden documents offer fresh hope that Jarndyce and Jarndyce can finally be resolved. Richard, now gravely worn down, treats this development as vindication rather than recognizing how much the suit has cost him and Ada. When Lady Dedlock learns that her secret is circulating and believes arrest or public disgrace is near, she leaves Chesney Wold. Sir Leicester suffers a stroke but makes clear that he forgives her and wants her home. Bucket and Esther set out to find her.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bucket proves that Hortense murdered Tulkinghorn and tried to direct blame toward Lady Dedlock. The discovery comes too late to stop Lady Dedlock's flight. Esther and Bucket follow a trail through winter streets, only to find her mother dead at the cemetery gate near Captain Hawdon's grave. Sir Leicester survives but is left physically diminished and grieving. The recovered Jarndyce papers at last bring the great lawsuit to judgment, where the parties discover that legal expenses have consumed the whole estate. Richard's imagined inheritance disappears at the same moment as his remaining strength; he reconciles with Jarndyce and dies, leaving Ada with their infant. Jarndyce recognizes that Esther and Allan Woodcourt love one another and releases her from their engagement. Allan and Esther marry and settle in another house named Bleak House. Ada and her child remain close to them, preserving the affectionate family that Jarndyce created even as the court destroyed the fortune around which so many lives had been organized.",
+            "through": {
+              "chapter": 15
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "bleak-house-charles-dickens"
+      }
+    },
     "blood-of-dragons-robin-hobb": {
       "characters": {
         "characters": [
