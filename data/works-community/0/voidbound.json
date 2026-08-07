@@ -851,6 +851,295 @@
         "work": "voracious"
       }
     },
+    "voyager": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "James Fraser",
+              "Red Jamie"
+            ],
+            "description": "A Highland laird in his mid-twenties, left wounded and half-conscious on the field at Culloden with a shattered leg and no wish to survive. He has spent two years trying to prevent the rising and has lost everything to it, including the wife he sent back through the standing stones. Stubborn, honourable, and quietly formidable even in ruin, he expects to be shot with the rest of the Jacobite wounded.",
+            "id": "jamie",
+            "name": "Jamie Fraser",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Black Jack Randall"
+            ],
+            "description": "The English dragoon captain who tormented Jamie and Claire for years. He fought at Culloden and died there, and Jamie's last clear memory of the battle is of the two of them meeting on the field. His marriage to Mary Hawkins, made to give his dying brother's child a name, is what secures the family line that leads to Frank Randall.",
+            "id": "black-jack-randall",
+            "name": "Jonathan Randall",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Claire Fraser",
+              "Claire Beauchamp"
+            ],
+            "description": "Returned to 1948 through the stones and pregnant with Jamie's child, a woman with no way back and a husband waiting for her who has spent three years believing her lost. Practical and stubborn, she sets about building a life she did not choose, and in time trains as a physician in Boston. Twenty years later, in 1968, she is a surgeon, a widow, and the mother of a grown daughter.",
+            "id": "claire",
+            "name": "Claire Randall",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Claire's first husband, a Cambridge historian who takes her back after her three-year disappearance and agrees to raise another man's child as his own. Decent, wounded, and proud, he sets conditions: the past is never discussed, and Claire never searches for Jamie Fraser again.",
+            "id": "frank-randall",
+            "name": "Frank Randall",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Janet Murray"
+            ],
+            "description": "Jamie's elder sister, who holds Lallybroch together through the years of occupation, redcoat searches, and near-starvation that follow Culloden. Sharp, unsentimental, and quietly ruthless in defence of her family, she manages an estate legally owned by a child and a brother the English are hunting.",
+            "id": "jenny",
+            "name": "Jenny Murray",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Bree"
+            ],
+            "description": "Claire's daughter, twenty years old in 1968, tall and red-haired, an engineering student raised in Boston by Frank. She has recently learned the truth about her parentage and is struggling with it, torn between the father who brought her up and a man two centuries dead whom her mother will not stop looking for.",
+            "id": "brianna",
+            "name": "Brianna Randall",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The young historian who first helped Claire trace the men of Lallybroch, now caught up in a much larger search: whether Jamie Fraser can be followed through twenty years of Scottish records. Methodical and patient, he works through prison rolls and ledgers while his interest in Brianna grows.",
+            "id": "roger",
+            "name": "Roger Wakefield",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An English army officer, young, fair and small of stature, who takes up the governorship of Ardsmuir prison and finds among the Jacobite inmates a man he has met before under humiliating circumstances. Cultured, scrupulous, and lonely, he offers Jamie parole, conversation, and a friendship complicated by feelings he does not expect to have returned.",
+            "id": "lord-john-grey",
+            "name": "Lord John Grey",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The elder daughter of the Dunsany family, at whose Lake District estate Jamie is placed as a paroled groom. Wilful, spoiled, and facing a marriage to a rich old man she detests, she discovers who her father's Scottish servant really is and uses it against him.",
+            "id": "geneva-dunsany",
+            "name": "Geneva Dunsany",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "William",
+              "Ninth Earl of Ellesmere"
+            ],
+            "description": "A small boy raised as the heir to an English earldom, imperious, fearless, and devoted to the Scottish groom who teaches him to ride. Jamie is the only person he will obey, and the resemblance between them becomes harder to overlook as the boy grows.",
+            "id": "willie",
+            "name": "Willie",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The French orphan Jamie took off the Paris streets, now a grown man with one hand missing, living in Edinburgh and helping run Jamie's illicit business. Charming, capable, and wholly loyal, he handles the parts of the trade that need a light touch.",
+            "id": "fergus",
+            "name": "Fergus Fraser",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ian Murray the younger"
+            ],
+            "description": "Jenny's fourteen-year-old son, gangling and rash, who has run away from Lallybroch to find his uncle in Edinburgh and is determined not to be sent home. He is inseparable from his enormous half-wolf dog, Rollo, and has an unerring instinct for being where the trouble is.",
+            "id": "young-ian",
+            "name": "Young Ian",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Yi Tien Cho"
+            ],
+            "description": "A small Chinese exile living rough in Edinburgh, a scholar and poet in his own country who now survives on Jamie's protection and a good deal of drink. Erudite, exasperating, and largely misunderstood by everyone around him, he has a story he has never been asked to tell.",
+            "id": "mr-willoughby",
+            "name": "Mr. Willoughby",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A woman from Jamie's Highland past, once infatuated with him and no friend to Claire, now a widow with two daughters. What she has become to Jamie in the twenty years since Culloden is a fact Claire learns without warning.",
+            "id": "laoghaire",
+            "name": "Laoghaire MacKenzie",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Laoghaire's elder daughter, a blunt, self-possessed teenager who has decided what she wants from life and is not much troubled by other people's objections to it. She holds Claire responsible for wrecking her mother's marriage.",
+            "id": "marsali",
+            "name": "Marsali MacKimmie",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mrs. Abernathy",
+              "Gillian Edgars"
+            ],
+            "description": "The Scottish herbalist Claire knew at Cranesmuir, who was condemned as a witch and whom Claire believed dead. She is alive, rich, and settled on a West Indies plantation, still pursuing the Jacobite obsession that took her through the stones in the first place, and still perfectly willing to use people up to get what she wants.",
+            "id": "geillis-duncan",
+            "name": "Geillis Duncan",
+            "reveal": {
+              "chapter": 58
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "voyager"
+      },
+      "recaps": {
+        "ending": "In Jamaica the trail leads to Geillis Duncan, alive under a married name and rich on a sugar plantation. She has been collecting gemstones because they are what a traveller needs to survive the stones, and she means to go forward through a cave called Abandawe to put a Scottish king on the throne, taking Young Ian as the sacrifice she believes the passage requires. Claire follows her into the cave and kills her; Jamie and Ian get out alive. Lord John Grey, now governor of Jamaica, has meanwhile put Jamie's son Willie in front of him again, and Claire has learned who the boy is. Wanted for murder and piracy and unable to stay, the Frasers put to sea, and the ship is destroyed in a hurricane. Claire and Jamie are washed ashore on the coast of Georgia, penniless, alive, and in the American colonies, with Young Ian and a few survivors. They have no way back to Scotland and no wish to go. The book ends with the two of them beginning again on a new continent.",
+        "in_short": "Jamie Fraser survives Culloden, spends years hiding as an outlaw on his own land, then seven more in Ardsmuir prison, and is finally paroled to an English estate where a coerced night with the daughter of the house leaves him a son he can never acknowledge. In 1968 Claire, Brianna and Roger trace him through the records and find proof that he is alive in Edinburgh twenty years on, printing seditious pamphlets under an assumed name. Claire goes back through the stones and finds him. Their reunion is immediately complicated: Jamie is a smuggler with a burned print shop, a runaway nephew, and a wife in the Highlands he never mentioned. When Young Ian is carried off by pirates, the Frasers follow him across the Atlantic aboard a ship bound for the West Indies, through a typhoid epidemic, a shipwreck and a Jamaican governor's ball, to a confrontation with Geillis Duncan, who is alive and means to use the boy in a passage through the stones. Claire kills her; a hurricane then wrecks their ship and casts them ashore in the American colonies.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, in Outlander and Dragonfly in Amber: Claire Randall, a wartime nurse, was carried from 1945 to 1743 through the standing stones at Craigh na Dun. Compelled to marry the outlawed Highlander Jamie Fraser to escape an English officer, Captain Jonathan Randall, she came to love him and chose to stay in the past. Knowing that the Jacobite rising of 1745 would end in the destruction of the Highlands, the two spent two years in France trying to stop Charles Stuart before he could sail, at the cost of a stillborn daughter and Jamie's imprisonment. The rising happened anyway. They rode out with it, saw the early victory at Prestonpans and the long retreat that followed, and on the eve of Culloden Jamie killed his kinsman Dougal MacKenzie to protect Claire, then sent her back through the stones pregnant with their second child, intending to die in the battle. Claire returned to 1948 and to her first husband, Frank Randall, who raised her daughter Brianna as his own. In 1968, two years after Frank's death, Claire told Brianna the truth, and the historian Roger Wakefield found a record showing that Jamie Fraser did not die at Culloden.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jamie wakes on the field at Culloden among the dead, his leg wounded, with Jonathan Randall's body lying across him; Randall died in the battle. Highlanders who can still walk carry the wounded to a farmhouse, where English officers work through the survivors shooting them in turn. Jamie's name comes up before Lord Melton, an English officer whose brother owes Jamie a debt of honour, and Melton refuses to execute him. Rather than take him prisoner, he has Jamie loaded into a wagon and sent home to Lallybroch to die there. Meanwhile, in 1948, Claire arrives back in her own century pregnant and destroyed by grief. Frank takes her back and offers to raise the child as his, on terms: she will not speak of the past, she will not look for Jamie Fraser, and the child will be his daughter. They leave England for a new post in Boston.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jamie does not die. He recovers at Lallybroch and, since the estate is under constant threat from patrolling redcoats, spends years hiding in a cave on his own hillside, a hunted man the tenants call the Dunbonnet. His sister Jenny feeds him, his family shields him, and the whole district lies to the English for him. Life at Lallybroch grinds on under occupation, hunger, and the punitive laws that follow the rising, and Jenny bears another son. When there is nothing left to hold together and the estate is desperate for money, Jamie has himself betrayed and taken by the English so that his family can claim the reward on his head, on the understanding that he will be imprisoned rather than hanged.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jamie is held for years at Ardsmuir, an isolated Scottish prison where he becomes the spokesman for the Jacobite inmates. The new governor, Lord John Grey, is a young English officer who has met Jamie once before and has reason to feel humiliated by it; he gives Jamie parole, chess and conversation, and finds his feelings running further than he intends. A wandering madman brought in from the moors dies muttering about a white witch and a cache of French gold, and Jamie escapes briefly to follow it, which gives Grey the leverage to keep him under closer control. When Ardsmuir is closed and its prisoners are transported to the American colonies as indentured labour, Grey quietly arranges instead for Jamie to be paroled to an English estate in the Lake District. In 1968, Claire, Brianna and Roger comb through prison rolls and ledgers trying to follow him, while Brianna struggles to accept what her mother has told her.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At Helwater, Jamie works as a groom under a false name, forbidden to leave the estate. Geneva Dunsany, the elder daughter of the house, discovers his real identity and blackmails him into her bed on the eve of her marriage to a rich old earl. She dies giving birth to a son, and the circumstances of the earl's own death leave the boy heir to the title. Jamie, who cannot claim the child without ruining him, stays on as a servant to be near him and teaches him to ride. Lord John Grey marries Geneva's sister Isobel and takes on the family, promising to see the boy raised well. When the resemblance between groom and heir becomes impossible to ignore, Jamie leaves. In 1968 the search stalls and starts again, and Claire faces the question of what she would do if Jamie were ever actually found.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Roger finds it: a seditious pamphlet and a printer's imprint that place a Scottish printer named Alexander Malcolm in Edinburgh in 1766, twenty years after Culloden, with a description and a history that can only belong to Jamie Fraser. Claire has to decide whether to leave her life, her career and her grown daughter to go back to a man who has lived two decades she knows nothing about. Brianna, who has come to accept the story, tells her to go. Claire settles her affairs in Boston, has clothes made to suit the period, packs medicines and instruments, and says goodbye to her daughter and to Roger. She goes to Craigh na Dun and steps into the stones.",
+            "through": {
+              "chapter": 23
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Claire finds the print shop in Edinburgh and walks in on Jamie, who faints at the sight of her. The reunion is joyful and then complicated. Jamie lodges in a brothel, prints treasonous pamphlets, and finances everything by smuggling French brandy, with the one-handed Fergus grown up and running errands, a Chinese exile called Mr. Willoughby in tow, and his fourteen-year-old nephew Young Ian hiding in the city rather than going home to Jenny. Excise men and a corrupt official circle the business. The print shop is burned down during a fight in which Young Ian kills a man who was searching it. Worse, Claire learns from Ian what Jamie never told her: after Ardsmuir he married Laoghaire MacKenzie, and the marriage still stands. Jamie takes them all out of Edinburgh on a smuggling run to the coast.",
+            "through": {
+              "chapter": 31
+            }
+          },
+          {
+            "scope": "book",
+            "text": "They go home to Lallybroch, where Claire is met with delight by some of the family and cold anger by others, and where Laoghaire soon arrives to claim her husband. In the confrontation that follows Claire leaves, and Laoghaire shoots Jamie; Claire comes back to treat the wound and the two of them finally have out everything the twenty years have left unsaid. A lawyer establishes that Jamie owes Laoghaire a settlement he cannot possibly pay, which sends him after a cache of treasure hidden on a small island off the coast, left there years earlier and known to almost nobody. Young Ian, the only strong swimmer, dives for it and brings it up, and is seized on the beach by the crew of a pirate ship, which sails with him aboard.",
+            "through": {
+              "chapter": 39
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jamie's cousin Jared provides a ship, the Artemis, and the Frasers sail for the West Indies after the pirates, guessing that the boy will be sold there. Claire signs on as surgeon; Fergus and Marsali, Laoghaire's elder daughter, have stowed away together and intend to marry, which Jamie forbids until a priest can be found. Jamie is violently seasick for most of the crossing and manages it with acupuncture from Mr. Willoughby, who finally tells the story of how a Chinese scholar came to be a drunk in Edinburgh. The crew is superstitious, the winds are contrary, and the trail of the pirate ship is thin, but a Scottish sailor's account and a merchant's records keep them following it westward across the Atlantic.",
+            "through": {
+              "chapter": 45
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A British warship hails the Artemis: typhoid has killed most of her officers, and her acting captain presses Claire aboard to fight the epidemic. She saves what men she can, then discovers that the captain has identified Jamie as a wanted traitor and a murderer and intends to arrest him in Jamaica. Rather than be carried there, Claire goes over the side off the coast of Hispaniola and reaches shore, where an eccentric priest living in the hills gives her food and shelter. The Artemis, blown off course by a storm and beached for repairs, turns out to be on the same stretch of coast, and Claire and Jamie find each other again. With the ship refitted and the priest willing to officiate, Fergus and Marsali are married.",
+            "through": {
+              "chapter": 52
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In Jamaica the Frasers move carefully, wanted men in a small colony. Slave markets and plantation gossip put them on the track of a boy answering Young Ian's description, sold to a wealthy estate owner, and they buy a slave named Ishmael who has been inside that household. Invited to the new governor's ball, Jamie and Claire find that the governor is Lord John Grey, an old friend of Jamie's from his prison years, whose arrival is both a comfort and a danger given the warrants out against them. At the same reception Claire recognises another guest: Geillis Duncan, the woman she watched condemned as a witch twenty years earlier, alive, wealthy, married under another name, and buying up gemstones.",
+            "through": {
+              "chapter": 58
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Geillis has Young Ian, and her interest in him is not casual. She has spent years assembling the stones she believes a traveller needs, has worked out a prophecy about a Scottish king, and means to go forward through a passage in a cave called Abandawe, using the boy as the blood price she thinks the crossing demands. Claire follows her into the cave, where the sound of the passage is overwhelming, and kills her. Ian is freed and the party escapes. In Jamaica, Lord John has also brought out the boy Jamie fathered at Helwater, and Claire finally sees for herself the son Jamie has never been able to claim. With warrants out against them for murder and piracy, the Frasers cannot remain in Jamaica and put to sea, and the ship is caught and broken by a hurricane. Claire and Jamie are washed up alive on the coast of Georgia, in the American colonies, with Young Ian and a handful of survivors, no money, no ship, and no intention of going back. They begin again there.",
+            "through": {
+              "chapter": 63
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "voyager"
+      }
+    },
     "waking-gods": {
       "characters": {
         "characters": [

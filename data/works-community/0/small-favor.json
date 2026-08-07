@@ -547,6 +547,229 @@
         "work": "smileys-people"
       }
     },
+    "snuff": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "His Grace, the Duke of Ankh",
+              "Blackboard Monitor Vimes"
+            ],
+            "description": "Commander of the Ankh-Morpork City Watch and, by marriage, Duke of Ankh, a rank he has never become reconciled to. A copper by instinct and conviction, suspicious of privilege, including his own, and grimly aware of how much anger he keeps under control. He is a devoted, awkward father who reads his small son a bedtime story every night without fail, and he is about to be removed from the city and the job for the first time in his adult life.",
+            "id": "sam-vimes",
+            "name": "Sam Vimes",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The Patrician of Ankh-Morpork, who governs by knowing exactly what people will do and arranging matters accordingly. He has taken an interest in the idea of Commander Vimes being sent somewhere with no crime in it.",
+            "id": "lord-vetinari",
+            "name": "Lord Vetinari",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Vimes's wife: an aristocrat by birth, a dragon breeder by enthusiasm, and immovable once she has decided what is good for her family. She has inherited a large country estate and has determined that her husband is going to take a holiday on it.",
+            "id": "lady-sybil",
+            "name": "Lady Sybil",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Vimes's six-year-old son, cheerful, observant, and currently engrossed in a natural history of animal droppings, a subject he can discuss at any length and in any company.",
+            "id": "young-sam",
+            "name": "Young Sam",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Vimes household's gentleman's gentleman: impeccably correct, quietly amused, and equipped with a past on the streets that he has never entirely put down. He carries useful things in his hat and is a great deal more dangerous than any butler needs to be.",
+            "id": "willikins",
+            "name": "Willikins",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The landlord of the village pub, an incomer with a professional welcome and a very good memory for faces, who recognizes Vimes rather faster than a country publican should. He knows a good deal about what happens locally and is careful about which parts of it he mentions.",
+            "id": "jiminy",
+            "name": "Jiminy",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A retired officer among the local gentry, straight-backed, courteous, and rather more troubled by the district's arrangements than his neighbours are. He has old-fashioned ideas about honour that his acquaintances find inconvenient.",
+            "id": "colonel-makepeace",
+            "name": "Colonel Makepeace",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The young local chief constable, the third generation of his family to hold the post, with no training, no colleagues, and a rule book he has largely worked out for himself. Earnest, badly out of his depth, and braver than his situation deserves.",
+            "id": "feeney-upshot",
+            "name": "Feeney Upshot",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A goblin who attaches himself to Vimes: filthy, evil-smelling, sardonic, and entirely unbothered by either fact. He knows the country, the caves, and the river better than anyone alive, and turns up whenever Vimes is about to need him.",
+            "id": "stinky",
+            "name": "Stinky",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A writer of children's books who lives locally and is regarded by the county as an eccentric. She has spent years among the goblins, has learned their language and their beliefs, and teaches those who will learn, which the neighbourhood considers at best foolish.",
+            "id": "miss-felicity-beedle",
+            "name": "Miss Felicity Beedle",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young goblin woman living in the caves above the estate, taught music by Miss Beedle, who plays the harp with a skill that is impossible to explain away. What she can do is an argument in itself about what goblins are.",
+            "id": "tears-of-the-mushroom",
+            "name": "Tears of the Mushroom",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A local man who works as an enforcer for people with money: fast, capable, and entirely without hesitation, and unusual even among killers in that he seems to feel nothing about it at all.",
+            "id": "stratford",
+            "name": "Stratford",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A veteran Ankh-Morpork Watch sergeant of limited ambition and considerable seniority, who handles an item of goblin property in the course of a routine inquiry and begins, slowly and frighteningly, to stop being himself.",
+            "id": "sergeant-colon",
+            "name": "Sergeant Colon",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A six-inch-tall Watch officer who was raised by gnomes and does the jobs no full-sized copper can, going into places nobody thinks to guard. He is a formidable fighter and is beginning to have questions about where he actually came from.",
+            "id": "wee-mad-arthur",
+            "name": "Wee Mad Arthur",
+            "reveal": {
+              "chapter": 52
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "snuff"
+      },
+      "recaps": {
+        "ending": "Vimes proves the case: local landowners, with money and a name behind them, have been shipping goblins abroad as slave labour for the tobacco plantations and running smuggled goods on the same boats, and a young goblin woman was murdered to keep it quiet. Stratford, the killer, makes a last attempt on Vimes and on his family, and is taken; the aristocrat who financed the trade is dealt with by Vetinari on terms that leave him with nothing. The captured goblins are freed, Sergeant Colon recovers once the goblin pot he was carrying is returned to its owners, and the young country constable Feeney Upshot finishes the case as a real policeman with a future in the Watch. The decisive stroke is not an arrest: at a concert in Ankh-Morpork's Opera House, in front of the city's wealthy and powerful, Tears of the Mushroom plays the harp, and an audience that had always been told goblins were vermin sits and listens to one make music. On the strength of that, and of the case Vimes has built, the law changes and goblins become people, with the rights that follow. Vimes goes home to the city and the job, having taken the only holiday of his life and turned it, as everyone including his wife expected, into police work.",
+        "in_short": "Sam Vimes, Commander of the Ankh-Morpork City Watch and reluctant Duke of Ankh, is made to take a holiday at his wife's country estate, where he finds that a copper is still a copper. The district's goblins are treated as vermin, which under local law they are, and a young goblin woman has been murdered. The local chief constable, a young man named Feeney Upshot, arrests Vimes for it; Vimes turns him into a deputy instead, and together they uncover a trade run by the county's own gentry, shipping goblins abroad as slaves and smuggling goods on the return leg, with a professional killer named Stratford enforcing it. Vimes pursues the boats downriver through a flood, is nearly killed, and brings the evidence and the survivors back. The case ends not only in arrests but in a change of the law: at a concert in Ankh-Morpork a goblin girl plays the harp for the city's rich and powerful, and goblins are recognized as people. Vimes returns to the city with his family, his holiday having gone exactly as everyone expected.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, in earlier books: Sam Vimes rose from a drunken night watchman to Commander of the Ankh-Morpork City Watch, rebuilding it into a large mixed force of humans, dwarfs, trolls, werewolves, and others, and became Duke of Ankh through his marriage to the aristocratic Lady Sybil Ramkin, a title he has never enjoyed. He answers, grudgingly, to Lord Vetinari, the Patrician, who finds him useful precisely because he cannot be bought or flattered. Vimes distrusts privilege, especially his own, polices by the principle that the law applies to everybody or it is not the law, and keeps a tight hold on his own temper because he knows what is underneath it. During an earlier case an ancient dwarfish thing got into his head and has remained there since, watching, as a kind of unwelcome guardian. He and Sybil have a young son, and Vimes's fiercest personal rule is that he is home to read to the boy at six o'clock.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Vimes is manoeuvred by his wife, with Lord Vetinari's approval, into taking the first holiday of his adult life: a stay at the Ramkin family's country estate, along with Lady Sybil, six-year-old Young Sam, and Willikins. The countryside receives him as a duke, which he loathes, and he discovers immediately that he does not know how to stop being a policeman. He notices the things the locals no longer see: the careful way people talk around certain subjects, the deference that goes slightly wrong, and the goblins who live in the hills above the estate and are regarded by everybody as vermin, which under the law here is exactly what they are.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Vimes explores the village and its pub, where the landlord recognizes him faster than any country publican should. He meets the local gentry at dinner and finds them polite, incurious, and united in the view that goblins are pests to be cleared. Young Sam, meanwhile, has fallen in love with a local children's author's book about animal droppings and pursues the subject relentlessly. Vimes takes note of a young local man who talks to him about the goblins and then is not seen again, and of the fact that nobody appears to consider this worth reporting. The country grows quietly more hostile the longer he asks questions, and the smell of a crime he cannot yet name settles over the whole estate.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Vimes finds the body of a young goblin woman who has been beaten to death. Under local law this is not murder, because a goblin is not a person, and the district has no intention of treating it as one. Feeney Upshot, the young and entirely untrained chief constable, arrives and arrests Vimes for the killing; Vimes, who could have stopped him, allows it, then takes charge of both the arrest and the constable, and begins turning him into a real policeman. Back in Ankh-Morpork the Watch has picked up a goblin item as evidence, and Sergeant Colon, who has handled it, is being slowly and frighteningly taken over by whatever is bound up in it. Vimes starts building a case in a place where the local magistrates, the local money, and the local law are all on the other side.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Vimes goes up into the goblin caves and learns what the district has been careful not to know: the goblins have a religion, a language, a craft, and a rigorous moral code, and one young goblin woman, taught by the local children's author, plays the harp well enough to settle the question of what goblins are for anyone honest enough to listen. The reason for the murder becomes clear as the trade behind it surfaces: goblins have been rounded up and shipped abroad as slave labour for the tobacco plantations, with smuggled goods carried on the return trips, organized and financed by people with land, titles, and friends. Enforcing it is Stratford, a local killer who works without hesitation or feeling, and who now knows that the Duke of Ankh is asking questions.",
+            "through": {
+              "chapter": 45
+            }
+          },
+          {
+            "scope": "book",
+            "text": "With Feeney beside him and a goblin guide who knows every inch of the country, Vimes goes after the boats carrying the captured goblins downriver. A storm turns into a flood, and the pursuit becomes a night run down a rising river that no sane person would attempt, ending with Vimes half drowned and washed up a long way from anywhere. In the city, Wee Mad Arthur works the docks and the warehouses from angles nobody thinks to guard, following the smuggled goods back to the people paying for them, and turns up an unexpected fact about his own origins along the way. Vimes survives, catches up with the boats, and takes them, and the surviving goblins are freed and, for the first time, in the hands of somebody prepared to treat what was done to them as a crime.",
+            "through": {
+              "chapter": 60
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The pursuit ends downriver at Quirm, where Vimes, filthy and exhausted, hands over prisoners, evidence, and a case, and is put back together by the local Watch and eventually by his wife. Stratford, however, is not among those taken, and is loose and moving. Vimes returns to the estate and then to Ankh-Morpork with everything he needs: witnesses, documents, the boats, and the survivors. Sergeant Colon is freed of what he was carrying once the goblin property is returned to the people it belongs to. Feeney, having done everything asked of him and rather more, is no longer a village constable in anything but title, and the question is no longer whether the crime can be proved but whether a court will accept that a crime against goblins is a crime at all.",
+            "through": {
+              "chapter": 72
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The case moves to the city, where the law, not the arrests, is the real battleground: everything Vimes has depends on goblins being people, and at present they legally are not. Vetinari, who has been several steps ahead throughout, arranges the occasion for settling it, a concert at the Opera House before an audience of the city's wealthiest and most influential. Vimes prepares the evidence, Miss Beedle prepares her pupil, and the aristocratic families behind the trade prepare to brazen it out. Stratford, who has nothing left to lose, makes his own preparations, and they involve Vimes's household.",
+            "through": {
+              "chapter": 85
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At the Opera House, Tears of the Mushroom plays the harp in front of the city's rich and powerful, and an audience raised to believe goblins were vermin listens to one make music. That, together with the case Vimes has built, is enough: the law is changed and goblins become people, with everything that follows from it. Stratford makes his last attempt, going after Vimes and his family, and is taken; the estate is set alight in the course of it. The aristocrat who financed the slaving trade is dealt with by Vetinari on terms that strip him of everything, the freed goblins are given standing and protection, Sergeant Colon recovers, and Feeney Upshot ends the affair as a genuine policeman with a career in front of him. Vimes goes home to Ankh-Morpork with his wife and son, having taken the only holiday of his life and turned it, exactly as everyone expected, into police work.",
+            "through": {
+              "chapter": 97
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "snuff"
+      }
+    },
     "son": {
       "characters": {
         "characters": [
@@ -646,6 +869,236 @@
           }
         ],
         "work": "son"
+      }
+    },
+    "soul-music": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A sixteen-year-old boarder at the Quirm College for Young Ladies, orphaned when her parents died in a coach accident. Relentlessly practical and unimpressed by anything that cannot be demonstrated, she has always been able to do things she has never questioned: people forget she is there when she wants them to, and doors are not always an obstacle. She has a white streak in her hair and a habit of asking exactly the question nobody wants asked. She has never been told who her grandfather is.",
+            "id": "susan",
+            "name": "Susan Sto Helit",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The anthropomorphic personification of death, a robed skeleton who collects the souls of the dying and speaks in a voice that arrives inside the head. Curious about the living for far longer than is good for him, he has taken a family, an apprentice and a granddaughter, and he remembers everything, permanently and in full. Faced with a loss he cannot accept, he abandons his duty and goes away to find out whether it is possible for him to forget.",
+            "id": "death",
+            "name": "Death",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Duke of Sto Helit, and Susan's father. Once a farm boy taken on as Death's apprentice, he left that service to marry Death's adopted daughter Ysabell and to rule a small, prosperous duchy. He and his wife raised Susan deliberately as an ordinary child, telling her nothing whatever about where the family came from.",
+            "id": "mort",
+            "name": "Mort",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Buddy"
+            ],
+            "description": "A young harpist from Llamedos, a wet and rocky country of rain, druids and bards, who has left home against his father's wishes to make a living from music in the city. Earnest, gentle and entirely without worldly sense, he believes that music matters more than anything else, which is a more dangerous position than he understands. His name means bud of the holly.",
+            "id": "imp",
+            "name": "Imp y Celyn",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A dwarf horn player in Ankh-Morpork, short of money, short of patience and short of most other things. He is the practical member of any group he joins, permanently concerned with where the next meal is coming from, and a competent musician who has never come close to being a famous one.",
+            "id": "glod",
+            "name": "Glod Glodsson",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Cliff"
+            ],
+            "description": "A troll musician who makes his rhythms by striking rocks, and who has been scraping a living in the city's less rewarding venues. Slow, amiable and considerably shrewder than he appears, he adopts a shorter stage name once the band starts getting noticed.",
+            "id": "cliff",
+            "name": "Lias Bluestone",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Death's servant, an elderly, dry, permanently disapproving man who keeps the house, cooks, and has run the domestic side of the Duty for a very long time. He was once a wizard, and he has excellent reasons for staying exactly where he is. He is alarmed by his master's disappearance and knows better than most what it will cost.",
+            "id": "albert",
+            "name": "Albert",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The rodent branch of the Duty, a skeletal rat in a small black robe carrying a small scythe, who collects the souls of rats and takes a keen interest in matters well outside that remit. He communicates entirely in squeaks and is a great deal more effective than his size suggests.",
+            "id": "death-of-rats",
+            "name": "The Death of Rats",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A talking raven who acts as interpreter for the Death of Rats, in exchange for a diet he describes at length and nobody wants to hear about. He is opinionated, easily offended, and extremely reluctant to say a certain word aloud.",
+            "id": "quoth",
+            "name": "Quoth",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Archchancellor of Unseen University, loud, hearty and impatient with anything requiring a committee. He notices that something is affecting his wizards and objects to it chiefly on the grounds of the noise and the embarrassment.",
+            "id": "ridcully",
+            "name": "Mustrum Ridcully",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "CMOT Dibbler"
+            ],
+            "description": "Ankh-Morpork's most enterprising street trader, who has failed at more industries than most people have heard of and has never once been discouraged. He recognises the new music as the largest opportunity of his career and appoints himself the band's manager, with contracts written in his own favour and merchandise ready before the first performance is over.",
+            "id": "dibbler",
+            "name": "Cut-Me-Own-Throat Dibbler",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior wizard of Unseen University, elderly, portly and entirely conventional, until the new music reaches the faculty. He then develops opinions about hair, leather and rebellion that are new to him and deeply distressing to the Archchancellor.",
+            "id": "the-dean",
+            "name": "The Dean",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young, practical wizard of Unseen University who does most of the faculty's actual thinking and is the only member of it inclined to investigate a phenomenon rather than shout at it. He works out rather more about what the music is than anyone wants to hear.",
+            "id": "ponder-stibbons",
+            "name": "Ponder Stibbons",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The secretary of the Guild of Musicians, who controls who is allowed to play for money in Ankh-Morpork and enforces it rigorously. Small-minded, procedural and absolutely certain of his own authority, he regards unlicensed musicians as a threat to the trade and is prepared to go a long way to remove one.",
+            "id": "mr-clete",
+            "name": "Mr Clete",
+            "reveal": {
+              "chapter": 48
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The orangutan keeper of Unseen University's library, who turns out to be a capable pianist when the occasion demands it, and who is not remotely self-conscious about joining in.",
+            "id": "the-librarian",
+            "name": "The Librarian",
+            "reveal": {
+              "chapter": 90
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "soul-music"
+      },
+      "recaps": {
+        "ending": "Death comes back. His attempt to forget fails, because forgetting is the one thing he cannot do, and he returns to find his granddaughter standing between the music and the boy it intends to use up. The Music With Rocks In has arranged Buddy's death to complete him as a legend, and Susan cannot hold it off alone. Death confronts the music directly, drives it out of the guitar and out of the world, and then does what he did once before for the sake of someone he cared about: he reaches back and puts the accident right, so that Imp y Celyn lives. The music leaves the Disc and goes looking for somewhere else, leaving only echoes behind, and the guitar is destroyed. Imp survives with his life ahead of him and goes home to Llamedos; Glod and Cliff come out of it intact and better off than they started; Dibbler, having sold everything a fashion could be printed on, moves on to his next enterprise. Death takes back the Duty and, as a kindness, removes Susan's memory of Buddy and of the whole affair, returning her to school and to an ordinary life. The kindness is imperfect: she is still who she is, she still cannot always be seen when she does not wish to be, and traces of what happened remain.",
+        "in_short": "When Susan Sto Helit's parents are killed in a coach accident, Death, who is her grandfather, cannot bear it and abandons his duty to go away and try to forget. Susan, sixteen and rigorously sensible, is fetched from boarding school by Albert and the Death of Rats and made to take up the Duty in his place. At the same time a young harpist from Llamedos, Imp y Celyn, arrives in Ankh-Morpork, is refused a licence by the Guild of Musicians, and buys an ancient guitar from a shop that is not there the next day. The guitar carries the Music With Rocks In, a force older than the Disc that uses musicians and discards them. With the dwarf Glod and the troll Cliff, Imp becomes Buddy of the Band With Rocks In; the music sweeps the city, infects the wizards, and makes Cut-Me-Own-Throat Dibbler rich. Susan discovers that Buddy should already be dead and that the music is keeping him alive for its own ends, and repeatedly intervenes. At the climax Death returns, drives the music out of the world, and restores Imp's life, then takes Susan's memory of it and sends her back to school.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Death is the robed skeleton who collects the souls of the dying, and he has been curious about the living for a very long time. He once took on a farm boy named Mort as his apprentice, and when the arrangement ended badly he set matters right at his own cost, dismissed the boy from his service, and gave him his blessing to marry Ysabell, the daughter Death had adopted and raised in his house. Mort became Duke of Sto Helit and the two had a daughter. Later, Death was briefly relieved of his office altogether and spent a season living as a mortal farmhand under the name Bill Door, harvesting a field and learning, at first hand, what it is to have a limited amount of time and to lose people. He fought to get his duty back and won it. From that period there also remains a small subordinate, the Death of Rats. Death returned to his work permanently changed, and permanently attached to the living in a way his office does not allow for.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Mort, Duke of Sto Helit, and his wife Ysabell are killed when their coach goes off a road in a storm. Death, who is Ysabell's father and therefore the girl's grandfather, cannot accept it, and the loss is worse for him because he forgets nothing, ever. Rather than continue, he walks away from the Duty entirely and goes away in search of a way to forget, which for him has never been possible and which he intends to attempt anyway. Their daughter Susan, sixteen years old, is left at the Quirm College for Young Ladies, where she has always been an awkward pupil: sharply logical, difficult to teach anything she considers untrue, and possessed of abilities she has never thought worth mentioning, including the knack of not being noticed. Meanwhile, in the rainy land of Llamedos, a young harpist named Imp y Celyn quarrels with his father and sets out for Ankh-Morpork to make a living from music.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "With Death gone, the Duty is going undone, and Albert and the Death of Rats come to fetch Susan. Binky, Death's horse, takes her out into a world where she can see lifetimers running out and is expected to be present when they do. She resists, argues, and starts doing the work anyway. In Ankh-Morpork, Imp discovers that playing for money requires a Guild of Musicians licence he cannot afford, and falls in with two other unlicensed players: Glod Glodsson, a dwarf horn player, and Lias Bluestone, a troll who drums on rocks. When Imp's harp is destroyed in a brawl he buys a replacement from a small shop in an alley, an old guitar priced at a dozen dollars, and the shop is not there when he goes back. The instrument is far older than it looks, and playing it produces a music nobody on the Disc has heard before.",
+            "through": {
+              "chapter": 55
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Band With Rocks In begins to play, and the effect on audiences is immediate and physical. The music spreads through Ankh-Morpork faster than any fashion: young people change how they dress and speak, crowds form wherever the band appears, and the sound gets into places it has no business being, including Unseen University, where the Dean acquires a leather jacket and opinions and the Archchancellor's authority stops working. Cut-Me-Own-Throat Dibbler appoints himself manager, renames Imp as Buddy, and has merchandise on sale before the audience has left. Susan, working the Duty, encounters Buddy and finds something wrong with him that she cannot explain, and finds herself unwilling to do what the job requires. The Death of Rats and a foul-tempered raven take an unhelpful interest in her decisions.",
+            "through": {
+              "chapter": 85
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Susan learns what is actually happening. Buddy's life should already have ended, and it is the music that is keeping him going, because it wants a player and intends to keep this one until it has finished with him. The Music With Rocks In is not a style but a thing: older than the Disc, drifting between worlds, it takes hold of musicians, drives them to play, makes them briefly enormous, and uses them up. Susan begins deliberately intervening to keep Buddy alive, which is precisely the abuse of the Duty that ended her father's apprenticeship. Albert warns her where it leads. Far away, Death has enlisted in the Klatchian Foreign Legion, an outfit whose members have all joined in order to forget and have all forgotten what it was, and his own experiment is failing, because he is constitutionally incapable of forgetting anything and drink does nothing to a body with no chemistry to affect. At the University, Ponder Stibbons works out more about the phenomenon than anyone wants to hear.",
+            "through": {
+              "chapter": 110
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The band becomes the largest thing in the city. Imitators appear everywhere, the wizards form an ensemble of their own, and the Librarian is recruited to a piano when one is needed. This brings the Guild of Musicians down on them: its secretary, Mr Clete, cannot license the band, cannot control it, and cannot tolerate it, and he arranges for the problem to be removed by people who do that professionally. Dibbler, meanwhile, is thinking bigger, and announces a free festival, an event on a scale nobody has attempted, with the band at the centre of it. Susan keeps standing between Buddy and the end of his life, and the music keeps arranging opportunities. Death, having failed entirely to forget, begins the journey back.",
+            "through": {
+              "chapter": 140
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The free festival happens, an enormous crowd and the band at the height of what the music can make of them, and afterwards the tour continues because the music will not let it stop. The pattern it wants is clear enough: a musician who burns very brightly and then dies young becomes permanent, and the music has arranged such endings before. It sets up an accident on the road for Buddy that mirrors the one that killed Susan's parents. Susan reaches him and holds the moment open, but she is a sixteen-year-old standing against something that has crossed between worlds and has done this many times before, and holding it is all she can do. It is at this point that Death, having discovered that the one thing he cannot do is forget, comes back to take up his own duty.",
+            "through": {
+              "chapter": 170
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Death confronts the music itself, forces it out of the guitar and out of the world, and destroys the instrument; the music leaves the Disc to look for another one, and only echoes of it remain behind. He then reaches back and undoes the accident, so that Imp y Celyn lives, and the arrangement he made for his daughter's husband long ago is quietly repeated for his granddaughter's sake. Imp goes home to Llamedos with his life restored. Glod and Cliff survive the whole business better off than they began it, and Dibbler, having sold everything the fashion could be printed on, turns to his next enterprise. Death resumes the Duty. As a last kindness he takes away Susan's memory of Buddy and of everything that happened, and returns her to school and an ordinary life, though the kindness is incomplete: she is still her grandfather's granddaughter, still not always visible when she chooses otherwise, and something of the music, and of the boy, stays with her.",
+            "through": {
+              "chapter": 197
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "soul-music"
       }
     },
     "soulsmith": {

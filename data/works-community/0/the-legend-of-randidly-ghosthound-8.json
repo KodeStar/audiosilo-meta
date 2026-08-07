@@ -1348,6 +1348,193 @@
         "work": "the-lies-of-locke-lamora"
       }
     },
+    "the-light-fantastic": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A failed wizard of Ankh-Morpork's Unseen University, expelled after one of the eight great spells of the Octavo lodged itself in his mind and crowded out everything he tried to learn afterwards. He can cast nothing, speaks several languages, and treats running away as a skill worth being good at. Since being pressed into service as guide to the Disc's first tourist he has been carried from one disaster to the next, and the book opens with him falling off the edge of the world. His hat is embroidered with the word wizzard.",
+            "id": "rincewind",
+            "name": "Rincewind",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A small, cheerful insurance clerk from the wealthy Agatean Empire on the far side of the Disc, and the first tourist the Discworld has ever had. He carries a picture-making box, a phrasebook, and an unshakeable belief that the world is fundamentally a friendly place put on for his benefit. He does not recognise danger when it is directly in front of him, which has so far worked out better for him than it has for anyone travelling with him.",
+            "id": "twoflower",
+            "name": "Twoflower",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Twoflower's travelling chest, made of sapient pearwood and moving on hundreds of small legs. It holds far more than its size allows, follows its owner across continents and through impossible places, and destroys anything that threatens him. It cannot be reasoned with, outrun, or left behind.",
+            "id": "the-luggage",
+            "name": "The Luggage",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The vast star turtle on whose shell four elephants stand carrying the Discworld. Astronomers on the Disc have noticed that it has changed course and is swimming steadily toward a red star that grows larger in the sky with every passing day, and nobody knows why.",
+            "id": "great-a-tuin",
+            "name": "Great A'Tuin",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The anthropomorphic personification of death, a robed skeleton with a scythe who speaks in a voice that arrives directly inside the listener's head. He collects the souls of the notable and the interesting, keeps a careful diary of appointments, and has been trying to keep an appointment with Rincewind for some time without success. He is patient, literal-minded, and increasingly curious about the living.",
+            "id": "death",
+            "name": "Death",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Archchancellor of Unseen University and the most senior wizard on the Disc, weighed down with ceremonial titles and a robe to match. Elderly, imperious, and thoroughly conventional, he treats magic as a matter of ritual and precedence. When the Octavo begins acting on its own he takes charge of the University's response and attempts to recover the missing spell by force of high magic.",
+            "id": "galder-weatherwax",
+            "name": "Galder Weatherwax",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young senior wizard of Unseen University, unusual among his colleagues for being neither fat nor obviously magical. He keeps files, draws up organisational charts, and thinks of the University as an institution to be managed rather than a brotherhood of spellcasters. He is patient, tidy, and quietly determined to climb every rung of the eight orders of wizardry, and he pays close attention to what the Octavo is doing.",
+            "id": "trymon",
+            "name": "Ymper Trymon",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A mercenary captain hired to bring Rincewind back to Unseen University alive. Competent, practical, and impatient with the men she leads, she is a professional in a trade that mostly attracts amateurs, and she pursues her quarry across country with more persistence than her employers expected.",
+            "id": "herrena",
+            "name": "Herrena the Henna-Haired Harridan",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The Disc's greatest hero, now eighty-seven years old, toothless, thin as a stick, and still alive after a career that has killed every rival he ever had. He has been robbing temples and fighting monsters since before most kingdoms existed, owns almost nothing, and has strong opinions about the modern habit of wearing trousers. Age has cost him his teeth and much of his hearing but none of his speed or nerve.",
+            "id": "cohen",
+            "name": "Cohen the Barbarian",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young woman of the Circle Sea country who was chosen by her people's druids as a sacrifice at a stone circle, and who is unimpressed by the honour. Sensible, blunt, and quick to organise the people around her, she attaches herself to the travellers after being freed and takes a particular interest in Cohen.",
+            "id": "bethan",
+            "name": "Bethan",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The keeper of Unseen University's library, the largest collection of magical books on the Disc. A surge of raw magic turns him into an orangutan, and once he discovers how convenient long arms are for reaching high shelves he declines every offer to be turned back. He communicates in a single syllable, is enormously strong, and is fiercely protective of the books in his care.",
+            "id": "the-librarian",
+            "name": "The Librarian",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Discworld's most powerful book of magic, written by the Creator and holding the eight great spells that underpin the world. It sits chained in a cellar beneath Unseen University, is aware of its own contents, and has begun taking an interest in the fact that one of its spells is missing.",
+            "id": "the-octavo",
+            "name": "The Octavo",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-light-fantastic"
+      },
+      "recaps": {
+        "ending": "Trymon takes the Octavo, reads seven of the eight great spells directly into his mind, and is immediately hollowed out and worn by the Things from the Dungeon Dimensions, which use him as a doorway into the world. Rincewind climbs the Tower of Art and confronts him, and after being pursued through a landscape inside Trymon's head he destroys him with a half-brick in a sock. With the Things beaten back, Rincewind reads the Octavo, the eighth spell finally leaving his mind, and the eight spells together settle the world. The red star turns out not to be a threat at all: Great A'Tuin was swimming to it to give birth, and eight small turtles hatch and swim away from the star carrying eight tiny worlds of their own, with the Disc passing safely by. Rincewind, at last free of the spell, can begin learning ordinary magic and returns to Unseen University as a student. Twoflower decides he has seen enough of the world and goes home to the Agatean Empire, leaving the Luggage behind as a parting gift to Rincewind, who is now stuck with it. Cohen the Barbarian and Bethan are married, and Cohen settles into a comfortable position in the Circle Sea kingdoms.",
+        "in_short": "Rincewind and Twoflower fall off the edge of the Discworld and are saved when the great spell lodged in Rincewind's head rewrites reality to put them back on it, because it has work for him. A red star is growing in the Disc's sky and Great A'Tuin is swimming straight at it; the wizards of Unseen University learn that the eight spells of the Octavo must be read together to save the world, and one of them is inside Rincewind. Hunted by mercenaries hired by the ambitious wizard Trymon, the pair cross the continent with the aging hero Cohen the Barbarian and a rescued sacrifice named Bethan, while Trymon murders the Archchancellor and seizes control of the University. In Ankh-Morpork, with the star filling the sky and the city in the grip of panic and star cults, Trymon reads the Octavo himself and is possessed by creatures from the Dungeon Dimensions. Rincewind kills him at the top of the Tower of Art and reads the spells, and the star proves to be where Great A'Tuin was going to hatch eight baby turtles. Freed of his spell at last, Rincewind returns to the University, and Twoflower goes home, leaving him the Luggage.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Rincewind, an inept wizard expelled from Unseen University after one of the eight great spells of the Octavo lodged itself in his mind, was ordered by the Patrician of Ankh-Morpork to act as guide to Twoflower, the Discworld's first tourist, a rich and relentlessly optimistic insurance clerk from the distant Agatean Empire. Twoflower's introduction of insurance burned much of Ankh-Morpork to the ground, and the two fled the city together, accompanied by Twoflower's Luggage, a walking chest of sapient pearwood that is devoted to its owner and lethal to everyone else. Their travels took them through a temple of the ancient evil Bel-Shamharoth and the dragon-haunted Wyrmberg to the kingdom of Krull at the very Rim of the world, where scholars intended to sacrifice them to a voyage over the edge. They escaped, only to be swept over the Rimfall themselves, and the story broke off with the pair falling off the edge of the Discworld into open space.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "As Rincewind and Twoflower fall off the Disc, reality shifts around them and they find themselves alive in a forest, deposited back on the world. The cause is the spell in Rincewind's head, one of the eight great spells of the Octavo, which has decided it needs him alive. At Unseen University the Octavo, the Creator's own book of magic, has begun acting without being asked; the wizards discover that the world is in danger and that all eight spells must be spoken together to save it. Above the Disc a red star has appeared and is growing, and Great A'Tuin, the turtle carrying the world, is swimming directly toward it. The Archchancellor, Galder Weatherwax, sets out to recover the missing spell by summoning Rincewind back to the University, watched closely by Ymper Trymon, an ambitious young wizard with a filing system and plans of his own. Death, meanwhile, continues to turn up wherever Rincewind is, and continues to be disappointed.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Galder's summoning fails to fetch Rincewind, so the University's response becomes less refined: a band of mercenaries under Herrena the Henna-Haired Harridan is hired to bring the wizard in alive. Rincewind and Twoflower keep moving through the countryside with Herrena's people behind them, at one point taking shelter in a shop that appears in places where no shop was and vanishes again afterwards, its owner condemned to wander between worlds. Across the Disc the red star grows brighter and ordinary people begin to notice it, and the wizards' assurances that everything is under control convince nobody. Panic follows: mobs form in the cities, wizards are blamed for whatever the star turns out to be, and cults spring up devoted to welcoming it.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Still pursued, Rincewind and Twoflower fall in with Cohen the Barbarian, the Disc's greatest hero, now eighty-seven, toothless and entirely undiminished in every other respect. Together they interrupt a druid ceremony at a stone circle, where a young woman named Bethan has been selected as a sacrifice, and get her away from the priests. Bethan joins the party and quickly makes herself indispensable, and she and Cohen take a clear liking to each other. At Unseen University, Galder Weatherwax dies in a magical accident that Trymon arranges and then presents as a tragedy, which leaves Trymon in charge of the University and of the search for the eighth spell. The raw magic now loose in the world also turns the Librarian into an orangutan; discovering that this makes shelving considerably easier, he refuses to be changed back. The star continues to swell in the sky, and magic itself begins to behave unreliably as the world approaches it.",
+            "through": {
+              "chapter": 38
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The travellers cross troll country, where the local inhabitants turn out to be slow and stupid in the heat and sharp-witted in the cold, and Cohen is fitted with a set of diamond teeth that solve the greatest inconvenience of his old age. Herrena's band is still on their trail, and the Luggage, separated from its owner and thoroughly bad-tempered about it, crosses the country after them, leaving a trail of people who wish they had not got in its way. With the star now dominating the sky, magic failing across the Disc and the countryside emptying as people head for the cities or for the cults, the party turns toward Ankh-Morpork, where the Octavo and the other seven great spells are kept.",
+            "through": {
+              "chapter": 50
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Twoflower is brought close to death and spends the interval in Death's own domain, where he introduces Death and the other Horsemen to a card game they find considerably more absorbing than their duties, which delays them at an awkward moment. The party reaches Ankh-Morpork to find the city in chaos. The red star fills half the sky, ordinary magic barely works, and the streets belong to mobs hunting wizards and to star cults preaching that the light is a deliverance. At Unseen University, Trymon has consolidated his authority and made himself the man who will save the world. Rather than gather the eight orders of wizards to read the spells as tradition requires, he takes the Octavo for himself and reads seven of the great spells directly into his own head, intending to hold all of that power alone. It is more than a human mind can contain. The Things from the Dungeon Dimensions, formless creatures pressing at the edges of reality, take him over and begin using him as a way in, and the Tower of Art at the heart of the University becomes the point where they will break through.",
+            "through": {
+              "chapter": 62
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rincewind climbs the Tower of Art to face what is left of Trymon, is drawn into the nightmare landscape inside his head, and kills him with a half-brick in a sock, driving the Things back out of the world. He then reads the Octavo, and the eighth spell leaves his mind at last; the eight spells spoken together steady the world. The red star proves to be no danger: Great A'Tuin was making for it in order to give birth, and eight small turtles hatch there and swim away carrying eight tiny new worlds, while the Disc passes safely on. Free of the spell for the first time in his life, Rincewind returns to Unseen University to begin learning magic properly. Twoflower, satisfied with his holiday, goes home to the Agatean Empire and leaves the Luggage to Rincewind as a gift. Cohen and Bethan marry, and Cohen accepts a comfortable place among the kingdoms of the Circle Sea.",
+            "through": {
+              "chapter": 76
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-light-fantastic"
+      }
+    },
     "the-lightning-thief": {
       "characters": {
         "characters": [
