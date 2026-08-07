@@ -1015,6 +1015,266 @@
         "work": "the-help"
       }
     },
+    "the-hero-of-ages": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Empress in name and the most dangerous Allomancer alive in practice, still uneasy with both facts. She travels with Elend's armies as they take city after city, hunting the Lord Ruler's hidden storage caverns, and she carries the knowledge that releasing the power at the Well of Ascension was her own mistake. She wears a single earring she has had since childhood and rarely thinks about it. Practical, direct, and increasingly certain that the war will end with her doing something no one else can, she spends much of the book trying to work out what her enemy actually wants.",
+            "id": "vin",
+            "name": "Vin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Emperor of the surviving remnant of the Final Empire and now a Mistborn himself, a year into learning powers most Allomancers grow up with. The scholar who once wrote constitutions has become a general who takes cities, and he is uncomfortably good at it. He is trying to feed a dying world, hold an empire together through ashfall and earthquake, and reconcile the philosopher he was with the man who now orders sieges.",
+            "id": "elend-venture",
+            "name": "Elend Venture",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The Terris Keeper, carrying the collected religions of a dead world and no longer believing in any of them. Tindwyl's death broke his faith, and he has set himself to reading through his catalogue of hundreds of beliefs one by one, writing a short dismissal of each and moving on. He continues to serve the empire out of habit and loyalty rather than conviction, and he alone is still working through the corrupted Terris records that describe the Hero of Ages.",
+            "id": "sazed",
+            "name": "Sazed",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Lestibournes"
+            ],
+            "description": "The crew's Tineye, now grown and sent north to the canal city of Urteau to watch a skaa government that has turned violent. Since his uncle's death he has burned tin constantly, never letting it go, until his senses are so raw that daylight blinds him and cloth hurts his skin. He keeps himself wrapped and hooded, works the city's underground alone, and is convinced that this time he will be the one who matters.",
+            "id": "spook",
+            "name": "Spook",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The crew's Soother, sent with Spook to Urteau to talk a hostile city into joining the empire. He is older, softer, and more tired than he admits, and his talent for steering a room has limits he is about to find.",
+            "id": "breeze",
+            "name": "Breeze",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Hammond"
+            ],
+            "description": "The crew's Thug, serving as one of Elend's commanders and one of the last people alive who knew Kelsier. He is still cheerful, still argumentative, and still the man everyone turns to when the line has to hold.",
+            "id": "ham",
+            "name": "Ham",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A kandra who broke his Contract and returned to the Homeland to be judged for it, imprisoned in the body of a dog by his own people. He is old by kandra reckoning, stubborn, and convinced that the danger he came home to warn about is real, while the Generations who rule his people prefer their thousand-year traditions and their refusal to interfere in the affairs of humans.",
+            "id": "tensoon",
+            "name": "TenSoon",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Kelsier's brother, a Steel Inquisitor whose spiked body is no longer entirely his own. Something speaks to him constantly and moves his hands when he resists, and the man he was survives only in narrow moments between one act and the next. What is left of him is the empire's most dangerous enemy.",
+            "id": "marsh",
+            "name": "Marsh",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The force released from the Well of Ascension: a god whose nature is decay, entropy, and the ending of things, freed after a thousand years of imprisonment. It cannot be seen or fought, it speaks to anyone whose body carries a metal spike, and it has spent centuries quietly altering every written record in the world so that history itself would deliver its escape. Its stated aim is not conquest but completion, and the ashfalls, quakes, and dying crops are its work.",
+            "id": "ruin",
+            "name": "Ruin",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Breeze's wife, formerly the flighty noblewoman of Luthadel, now travelling with him on the empire's business and considerably harder-edged than her manner suggests. She is Lord Cett's daughter and uses that leverage without embarrassment.",
+            "id": "allrianne",
+            "name": "Allrianne",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A general in Elend's army, risen from the skaa rebellion, and one of the most devout members of the Church of the Survivor. Steady, disciplined, and openly religious in a camp where faith is currency, he is trusted absolutely by soldiers who trust very little else.",
+            "id": "demoux",
+            "name": "Demoux",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The crippled warlord who once besieged Luthadel, now an unlikely member of Elend's court and Breeze's father-in-law. He is blunt, self-interested, and useful, and he says the things nobody else at the table will.",
+            "id": "ashweather-cett",
+            "name": "Ashweather Cett",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A koloss, one of the brutish war creatures Vin controls by Allomancy, distinguished from the rest by an unusual and unsettling degree of self-awareness. He speaks in short sentences, thinks about what he is, and has decided that he is the one who leads.",
+            "id": "human",
+            "name": "Human",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Citizen"
+            ],
+            "description": "The ruler of Urteau, who overthrew its nobility in the name of the skaa and governs by public trial and public execution. He preaches equality, wears working clothes, forbids anything that looks like privilege, and burns those he judges to be of noble blood. He claims the Survivor's authority for all of it.",
+            "id": "quellion",
+            "name": "Quellion",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The obligator who rules Fadrex City, a Canton head of the old Steel Ministry who has kept his faith in the Lord Ruler through the empire's collapse. Precise, courteous, and genuinely devout, he refuses to acknowledge Elend as emperor and holds his city against the imperial army. He is also, impossibly, still able to burn atium, which no one else in the world can obtain.",
+            "id": "yomen",
+            "name": "Yomen",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The sister of Urteau's ruler, kept close to him and guarded constantly, watched by a city that treats her as its first lady. She has begun slipping out alone into the gardens, uneasy about what is being done in her brother's name and unable to say so to anyone who would listen.",
+            "id": "beldre",
+            "name": "Beldre",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-hero-of-ages"
+      },
+      "recaps": {
+        "ending": "The world ends and is remade. Elend takes Fadrex City in a last battle fought with koloss and the last of the atium, and Yomen's resistance collapses. Vin, having worked out that atium is Ruin's own body and that Preservation's body is the mists, draws that power into herself and Ascends. She and Ruin destroy each other, both gods annihilated, and Vin dies with the enemy she was created to stop. Moments later Marsh, still not his own man, kills Elend. Both Ascendant powers are left without a holder, and Sazed, who has spent the book methodically discarding every religion he collected, is the one standing where they can be taken up. He was the Hero of Ages the corrupted prophecies pointed to all along. Holding Ruin and Preservation together, he becomes Harmony, and uses the two of them in balance to repair the planet: the ashfalls stop, the ashmounts quiet, the mists are set right, green things and a normal sun return, and the survivors sheltering in the Lord Ruler's last storage cavern walk out into a world that can support them. Spook, the last of Kelsier's crew still standing in the north, is left to lead them, with Beldre beside him. Marsh survives, released at last from the thing that used him. Sazed leaves behind the collected knowledge of the old world and a written account for those who come after, and steps back to watch what they do with it.",
+        "in_short": "A year after the Well of Ascension is opened, the world is dying: ash buries the land, the ashmounts erupt, crops fail, and the god called Ruin works openly toward the end of everything, whispering to anyone whose body carries a metal spike and having spent a thousand years forging the written record to arrange its own release. Elend, now emperor and Mistborn, hunts the Lord Ruler's hidden storage caverns city by city while besieging Fadrex, held by the obligator Yomen. Spook fights a fanatical skaa regime in Urteau and is nearly destroyed by a voice claiming to be Kelsier. TenSoon rallies his people against their own rulers. Sazed, who lost his faith with Tindwyl, works through the corrupted Terris records. Vin discovers that atium is Ruin's body and the mists are Preservation's, draws that power into herself, and destroys Ruin at the cost of her own life; Marsh kills Elend moments later. Sazed, left holding both powers, is the Hero of Ages: he becomes Harmony, repairs the ruined planet, and leads the survivors out of the last storage cavern into a living world.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Kelsier, a half-skaa thief turned Mistborn, assembled a crew to bring down the thousand-year Final Empire, recruited the street thief Vin, and got himself publicly killed by the immortal Lord Ruler in order to become a martyr and start a revolt. Vin discovered the Lord Ruler was an impostor who had taken the power at the Well of Ascension a thousand years earlier, and killed him. Elend Venture, a scholarly nobleman, was made king of Luthadel, with Kelsier's surviving crew as his government. A year later, three armies besieged the city while Elend's own Assembly deposed him, and the ash and mists began behaving strangely, with the mists killing people for the first time. Sazed and the Keeper Tindwyl found that the ancient prophecies of the Hero of Ages had been systematically forged. In the battle for Luthadel, Clubs, Dockson, and Tindwyl were killed. Vin took control of a koloss army by raw Allomancy, saved the city, and then found the Well of Ascension beneath the imperial palace. She used a fraction of its power to heal the dying Elend, which snapped him into Allomancy and made him a Mistborn, and then released the power as the forged inscription instructed. The Well had been a prison. Releasing it freed Ruin, a god of decay that had spent a thousand years editing the world's written records to engineer exactly that moment. Elend was crowned emperor, Marsh was left under Ruin's control, and the ash began falling harder than ever.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A year after the Well was opened, the world is visibly dying. The ashmounts erupt continuously, ash buries the fields faster than it can be cleared, earthquakes shake the dominances, and the mists now linger into daylight and kill some of those who go out into them. Elend, emperor and Mistborn, takes city after city with Vin at his side, not for conquest but to reach the storage caverns the Lord Ruler hid beneath each of them, stocked with food, water, and a metal plate carrying instructions for surviving what is coming. One cavern, still unfound, is believed to hold the atium hoard nobody has ever located. Sazed travels with the army carrying a portfolio of hundreds of religions and no belief in any of them, working through the catalogue and rejecting each in turn since Tindwyl's death. Breeze, Allrianne, and Spook are sent north to Urteau to bring a hostile skaa government into the empire. In the kandra Homeland, TenSoon submits to trial for breaking his Contract. And Ruin, loose in the world, speaks to everyone whose body carries a spike.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Elend brings his army to Fadrex City, ruled by Yomen, an obligator of the old Steel Ministry who has kept the Lord Ruler's faith and refuses to recognize the empire. The siege stalls, and Vin notices something that should be impossible: Yomen is burning atium, a metal that has not existed in circulation since the Lord Ruler died. In Urteau, Spook finds a city governed by the Citizen, Quellion, who executes anyone he judges to be of noble blood and claims the Survivor's authority for it. Spook, burning tin without pause until his senses are raw, works the underground alone while Breeze fails to talk the regime around. He begins hearing a voice he is certain belongs to Kelsier, telling him what to do. TenSoon argues his case before the kandra Generations, who would rather punish him than hear the warning he came home to give. Vin, meanwhile, works out the rule that governs their enemy: Ruin can see and speak through metal spikes driven into a body, which means every Inquisitor, every koloss, and every kandra is a potential window.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The siege of Fadrex settles into negotiation and maneuver. Vin and Elend meet Yomen, who is courteous, immovable, and openly contemptuous of an emperor he considers a usurper, and Vin becomes certain the missing atium is somewhere in his city. The koloss under imperial control grow harder to hold as Ruin pulls at them, and Elend struggles with what it means to be a scholar who now takes cities by force. In Urteau, Spook uncovers what Quellion's people are doing beneath the drained canals and begins working with Beldre, the Citizen's watched and increasingly uneasy sister. Sazed, still refusing every religion in his portfolio, returns to the corrupted Terris rubbings and the accounts of the Hero of Ages, and starts cataloguing exactly which passages have been altered and what the alterations have in common. Vin takes a risk to get inside Fadrex herself and is captured.",
+            "through": {
+              "chapter": 26
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Held prisoner in Fadrex, Vin studies her captor and his impossible supply of atium, and reasons her way toward what atium actually is, which is not a metal that occurs naturally at all. Away from the mists and from her usual routines, she also begins to reconsider the small habits of her own life, including the earring she has worn since childhood without ever asking where it came from. In Urteau, Spook learns that Quellion's regime has flooded the city's dry canal system with fuel and intends to use it, and that the voice guiding him has been steering him toward acts he would not otherwise have chosen. Marsh strikes at imperial targets on Ruin's behalf. Elend, running out of time and short of food, has to decide how long a siege the dying world can afford.",
+            "through": {
+              "chapter": 34
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The voice Spook believes is Kelsier persuades him to take a metal spike into his own body, which floods him with strength beyond anything a Tineye should have. Urteau burns: the fuel in the canals is set alight and the city goes up around him. Spook saves as many people as he can reach, gets Beldre out, and finally understands that the voice was never Kelsier at all but Ruin, which has been using his grief and his need to be important the way it uses every spike it can reach. Elsewhere, Vin gets clear of Fadrex, and the crew begins assembling what they know: the storage caverns are being destroyed as fast as they are found, the ash is accelerating, and their enemy is not trying to rule the world but to finish it.",
+            "through": {
+              "chapter": 43
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Two long-standing mysteries resolve. The mists that have been sickening and occasionally killing people are not an attack: they are snapping ordinary people into Allomancy, and the empire has been unknowingly acquiring an army of new Allomancers, Demoux among them. The mists themselves are the body of Preservation, the god that opposed Ruin and imprisoned it at the Well, and which spent itself in the doing. In the Homeland, TenSoon exposes how the ruling Generations have controlled the kandra for a thousand years, breaks their hold, and turns his people from their refusal to interfere. Sazed, having discarded the last religion in his catalogue, is left with nothing but the corrupted Terris documents, and keeps working because there is nothing else left to do.",
+            "through": {
+              "chapter": 52
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Vin completes the reasoning she started in Yomen's prison: atium is not a metal but Ruin's own body, which is why the Lord Ruler hoarded and rationed it, and why Ruin wants the last cache more than it wants any city. That explains Yomen's supply and what is hidden beneath Fadrex. It also explains the earring Vin has worn since childhood, which is not jewelry, and which has given Ruin a view of everything she has thought and planned for as long as she has been fighting it. Elend presses the assault on Fadrex with the last of his forces while the world's remaining cities begin to fail outright, and the crew races to gather survivors into the storage caverns before the ash finishes the job.",
+            "through": {
+              "chapter": 61
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The end comes quickly. Elend commits everything to taking Fadrex, using koloss and the last atium anyone will ever burn, and Yomen's defense breaks. The kandra come out of hiding under TenSoon to stand with the humans for the first time in their history. Spook holds together what is left of the north. The survivors of the empire are herded toward the Lord Ruler's final cavern, the one storehouse deep enough and stocked well enough to keep them alive through what is coming, while ash falls thickly enough to bury a standing man and the sun is no longer visible at all.",
+            "through": {
+              "chapter": 70
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Vin faces Ruin directly. Understanding at last that the mists are Preservation's power waiting to be claimed, she draws them into herself and Ascends, becoming the counterweight the world has lacked since the Lord Ruler's day. She and Ruin tear at each other as gods rather than as people, and both are destroyed: Ruin is ended, and Vin dies with it. Moments later Marsh, still not his own man, kills Elend. The two powers that have shaped the world for a thousand years are left with no one holding them.",
+            "through": {
+              "chapter": 76
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sazed is the one standing where the powers can be taken up, and he takes both. The forged prophecies of the Hero of Ages pointed at him all along: not a warrior, but the man who spent his life collecting everything the world believed and then had to decide what was worth keeping. Holding Ruin and Preservation in balance, he becomes Harmony, and uses them together to repair the planet: the ashmounts are quieted, the ash is cleared, the mists are set right, plants and a proper sun return, and the survivors sheltering in the last storage cavern walk out into a world that can feed them. Spook, now the senior figure of Kelsier's crew, leads them, with Beldre beside him. Marsh is released from the thing that had been wearing him and survives. Sazed leaves behind the accumulated knowledge of the old world and a written account of what happened, and withdraws to watch what the survivors make of the world he has given back to them.",
+            "through": {
+              "chapter": 82
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-hero-of-ages"
+      }
+    },
     "the-hitchhikers-guide-to-the-galaxy": {
       "characters": {
         "characters": [

@@ -1318,6 +1318,121 @@
         ],
         "work": "exiled-lands"
       }
+    },
+    "exit-strategy": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "SecUnit"
+            ],
+            "description": "Returning from Milu with proof of GrayCris's illegal salvage operation, the SecUnit is traveling under a false identity toward Preservation to deliver the evidence to Dr. Mensah in person. It is out of practice at being near people it cares about, still passing as an augmented human whenever it has to, and about to discover that its plan has been overtaken by events.",
+            "id": "murderbot",
+            "name": "Murderbot",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The leader of the survey team the SecUnit once guarded, a planetary administrator of Preservation Alliance and the legal holder of the SecUnit's contract, a technicality she keeps only to protect it. She has spent the time since the survey fighting GrayCris in arbitration over what the company did on that planet, which has made her its most expensive problem.",
+            "id": "ayda-mensah",
+            "name": "Dr. Ayda Mensah",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The survey team's lawyer, now running the legal fight against GrayCris. Blunt, formidable, and not remotely intimidated by corporate security or by the fact that she is operating on a company-owned station.",
+            "id": "pin-lee",
+            "name": "Pin-Lee",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of the old survey team, delighted to see the SecUnit again and entirely willing to say so out loud, which the SecUnit finds harder to cope with than being shot at.",
+            "id": "ratthi",
+            "name": "Dr. Ratthi",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The augmented human from the survey team, still watchful of the SecUnit and still the fastest of the group inside the feed, which makes him valuable in a place where every system belongs to the other side.",
+            "id": "gurathin",
+            "name": "Dr. Gurathin",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A military-grade security construct deployed by the station's corporate security against the SecUnit: larger, faster and far better armed than a standard unit, and operating under full external control with none of the SecUnit's freedom or hesitation. It is the most dangerous opponent the SecUnit has faced.",
+            "id": "combat-secunit",
+            "name": "The Combat SecUnit",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "exit-strategy"
+      },
+      "recaps": {
+        "ending": "Mensah is freed and GrayCris's last attempt at leverage fails: the company is exposed at TranRollinHyfa, and with the arbitration already lost, it has nothing left to trade. The rescue nearly costs the SecUnit everything - it takes catastrophic damage destroying the Combat SecUnit sent after them, and what survives has to be rebuilt during the trip out. Pin-Lee, Ratthi and Gurathin get everyone onto a transport bound for Preservation. Aboard, the humans treat the SecUnit as one of them, and Mensah, dealing with the aftereffects of being held hostage, makes clear that she holds its contract only as a legal shield and that its choices are its own. The SecUnit, which has spent three books running from exactly this, admits it does not want to leave. It goes with them to Preservation Station, where it has no legal category, no fixed job description, and a great many people who would like to talk to it about its feelings. The immediate threat is over; what is unresolved is what a free construct is supposed to do with itself, and whether it can live among people who like it.",
+        "in_short": "Carrying evidence of GrayCris's illegal salvage back to Preservation, the SecUnit learns from the newsfeeds that Dr. Mensah has been taken hostage by the company and is being held at TranRollinHyfa, a corporate station. It diverts there, works its way past scans built to catch constructs, and finds Pin-Lee, Ratthi and Gurathin already attempting a legal rescue that is going nowhere. Working with them, it locates Mensah, gets her out of GrayCris's custody, and turns the extraction into a running fight when station security is turned against them. GrayCris, financially ruined by the arbitration, throws combat bots and a military-grade Combat SecUnit at them; the SecUnit destroys it and is nearly destroyed in return. The group escapes on a transport bound for Preservation, the hostage plan collapses, and the SecUnit is rebuilt on the way out. Mensah, recovering from her captivity, tells it plainly that it is a person and that the contract she holds exists only to shield it. For the first time the SecUnit chooses company, and goes with them instead of vanishing.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: the SecUnit hacked its own governor module, saved a Preservation survey team from GrayCris, a company that was killing witnesses to its illegal alien remnant salvage, and then left rather than accept Dr. Mensah's offer of a home. Traveling alone, it learned the truth behind the massacre in its deleted memory, made a friend of ART, the bot pilot of a research transport, and then went to the abandoned station at Milu, where it gathered hard evidence of what GrayCris had been doing and where a small trusting bot called Miki was destroyed. Mensah has been fighting GrayCris in arbitration ever since the survey contract ended, and the company has been losing badly. The SecUnit is on its way back toward Preservation with the evidence, intending to hand it over in person rather than send it, having concluded that a cornered GrayCris will come after her directly.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Stopping at a corporate transit station on the way back, the SecUnit finds the newsfeeds carrying a story it was not expecting: Dr. Mensah has disappeared, and the official account of it does not hold together. GrayCris, ruined by the arbitration and desperate for something to trade with, has taken her and is holding her at TranRollinHyfa, a company station where security answers to whoever is paying. The SecUnit changes course. Getting onto the station means passing scans designed to catch exactly what it is, so it works its way in on falsified permissions and a fabricated employer, keeping its weapons and its capabilities out of sight. Once there it discovers that it is not the only rescue attempt in progress: Pin-Lee, Ratthi and Gurathin are already on the station trying to do it through lawyers, money and official channels, and they are being watched.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The SecUnit makes contact with the humans from the old survey team, who are relieved and far too pleased to see it. Together they plan an extraction: the lawyers keep the official channels loud and visible while the SecUnit goes after Mensah directly, using station systems, hacked drones and its own ability to walk through a facility as a piece of equipment nobody looks at twice. It reaches her, alive and held by GrayCris's people, and gets her out of confinement. The company's security works out what has happened almost immediately, and the station stops being somewhere they can leave quietly. Mensah, exhausted and drugged, is the priority; the SecUnit's own condition is a secondary concern to everyone except her.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The escape becomes a running fight across the station. GrayCris commits what it has left, including combat bots and a military-grade Combat SecUnit that outclasses the SecUnit in every measurable way. The SecUnit destroys it, at the cost of catastrophic damage to itself; what remains of it has to be rebuilt aboard the transport out. GrayCris's attempt to use Mensah as leverage collapses, its operation on the station is exposed, and the survivors reach a ship bound for Preservation. On the way, Mensah, dealing with the aftermath of her own captivity, makes plain that the SecUnit is a person with a choice and that the contract she holds over it is only a shield. Rebuilt and still unsure what it wants to be, the SecUnit chooses, for now, to go with them to Preservation rather than disappear again.",
+            "through": {
+              "chapter": 8
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "exit-strategy"
+      }
     }
   }
 }

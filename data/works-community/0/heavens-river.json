@@ -364,6 +364,255 @@
         "work": "heavens-river"
       }
     },
+    "heir-of-fire": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Aelin Ashryver Galathynius",
+              "Elentiya"
+            ],
+            "description": "Sent across the sea by the King of Adarlan to murder the royal family of Wendlyn, she has done nothing of the kind. She spends her days drunk in the port city of Varese, avoiding the palace, avoiding the woods where magic still works, and avoiding the name she admitted to herself at the end of her last winter: Aelin Ashryver Galathynius, heir to the throne of Terrasen. She came to find out how the king of Adarlan crushed magic and how to undo it, and instead she has stalled, sick with grief for a murdered friend and terrified of the power she has never let herself use.",
+            "id": "celaena-sardothien",
+            "name": "Celaena Sardothien",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A Fae warrior of Doranelle, silver-haired, tattooed down one side of his face and neck, several centuries old and blood-sworn to Queen Maeve. He has magic of wind and ice and can take the form of a white-tailed hawk. Sent to collect Celaena, he treats her with open contempt and is assigned to make something useful of her whether she cooperates or not. He gives away nothing about himself.",
+            "id": "rowan-whitethorn",
+            "name": "Rowan Whitethorn",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Queen of the Fae, who rules from the city of Doranelle across the mountains from Wendlyn. She is Celaena's great-aunt through her mother's line, ancient, beautiful, and entirely unreadable. She offers a bargain: master the fire magic she has inherited, and Maeve will tell her what the king of Adarlan is actually doing and how magic might be freed. She keeps a cadre of immensely powerful warriors bound to her by blood oath.",
+            "id": "maeve",
+            "name": "Maeve",
+            "reveal": {
+              "chapter": 4
+            }
+          },
+          {
+            "description": "Heir to the Blackbeak clan of the Ironteeth witches, granddaughter of its Matron, and leader of the coven called the Thirteen. She has iron teeth and iron nails she can retract, white hair, and no interest at all in the affairs of mortals. Summoned with the other Ironteeth clans to a mountain stronghold in Adarlan's north, she is told the witches will finally be given what they have wanted for five centuries, and that they must first prove they can master the beasts being bred there.",
+            "id": "manon-blackbeak",
+            "name": "Manon Blackbeak",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Manon's Second in the Thirteen and her cousin, the finest rider among them and the one witch who will argue with Manon to her face. She is louder, warmer, and more openly loyal than the Ironteeth are supposed to be.",
+            "id": "asterin-blackbeak",
+            "name": "Asterin Blackbeak",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Manon's Third, broad and silent, whose duty is to guard the heir's body before anything else, including Manon's own wishes.",
+            "id": "sorrel",
+            "name": "Sorrel",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Matron of the Blackbeak clan and Manon's grandmother, ancient and pitiless, who has spent five hundred years waiting for the Ironteeth to reclaim their kingdom in the west. She raised Manon to be a weapon and corrects her with a hand or a claw when she judges her insufficiently ruthless.",
+            "id": "blackbeak-matron",
+            "name": "The Blackbeak Matron",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The runt of the wyvern pens, scarred, undersized, and kept alive only as a training target for the others. He has an unusual patience and a stubbornness the handlers cannot beat out of him, and Manon picks him over the magnificent bull she was expected to claim.",
+            "id": "abraxos",
+            "name": "Abraxos",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Captain of the Royal Guard of Adarlan, still at his post in Rifthold and no longer able to pretend he serves a king he can respect. He is trying to find a way to free Dorian, to undo what was done to magic, and to survive the consequences of having sent Celaena overseas. He has begun working with the small Terrasen resistance in the city, which trusts him no more than he trusts it.",
+            "id": "chaol-westfall",
+            "name": "Chaol Westfall",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Crown Prince of Adarlan, who now knows he carries raw, unschooled magic in a kingdom where possessing it is a capital crime. He has withdrawn from Chaol to keep him safe, plays the idle prince for his father's court, and spends his nights trying to work out what he is and how long he can hide it.",
+            "id": "dorian-havilliard",
+            "name": "Dorian Havilliard",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young healer in the castle infirmary, quiet and observant, who came to Rifthold from Fenharrow after Adarlan's armies destroyed her family. She has treated Dorian discreetly for years and has noticed more about him than she has ever said aloud.",
+            "id": "sorscha",
+            "name": "Sorscha",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "General of the Bane, Terrasen's legendary legion, now serving in Adarlan's army and famous across the empire as the Wolf of the North. He is the king's celebrated young war hero, arrogant, hard-drinking, and openly insolent at court. He is also Aelin Galathynius's cousin, and Chaol cannot decide whether he is a traitor to his own kingdom or something more complicated.",
+            "id": "aedion-ashryver",
+            "name": "Aedion Ashryver",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A city guard in Rifthold, a baker's daughter of southern descent, and one of the best archers in the capital. She is blunt, practical, and involved with the rebel network far more deeply than her uniform suggests.",
+            "id": "nesryn-faliq",
+            "name": "Nesryn Faliq",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A half-Fae cook at the mountain fortress of Mistward, elderly, sharp-tongued, and a keeper of the old stories. He puts the newcomer to work scouring pots and gives ground on nothing.",
+            "id": "emrys",
+            "name": "Emrys",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A half-Fae youth at Mistward, cheerful and talkative, eager to be a warrior and entirely unimpressed by the sullen mortal woman scrubbing dishes beside him.",
+            "id": "luca",
+            "name": "Luca",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Terrasen lord in his twenties, scarred and hunted, who has spent a decade running from Adarlan and now works with the resistance in Rifthold. He wants the lost heir found and is losing patience with everyone who claims to be helping.",
+            "id": "ren-allsbrook",
+            "name": "Ren Allsbrook",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "description": "One of the king of Adarlan's commanders, sent across the sea into Wendlyn with a force of soldiers who do not behave like soldiers. Something is deeply wrong with him and with the men he leads, and the Fae who go out to face them do not come back the same.",
+            "id": "narrok",
+            "name": "Narrok",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "heir-of-fire"
+      },
+      "recaps": {
+        "ending": "Aelin ends the book as a declared queen with a court beginning to form around her. Summoned to Doranelle, she refuses to give Maeve her blood oath and instead extracts what she needs; Rowan, released from Maeve's service, swears his own blood oath to Aelin, becoming the first member of her court and leaving Maeve outmanoeuvred and furious. Aelin sails for Adarlan intending to free Aedion, break Dorian's collar, and destroy the king. In Rifthold, everything has gone wrong: Aedion is in the dungeons awaiting execution, Sorscha has been beheaded, and Dorian, exposed as a magic-wielder, has been fitted with a black wyrdstone collar that hands his body to something else. Chaol has fled the castle to go to ground with the rebels, keeping the knowledge that Celaena and Aelin Galathynius are one person. Manon Blackbeak, now Wing Leader of the Ironteeth host, has bonded with the runt wyvern Abraxos and commands an aerial army being readied for a war whose purpose has not been explained to her. The king holds at least one Wyrdkey, three towers of black stone in his castle keep magic pinned down across the continent, and his forces in the south are producing creatures nobody has yet named.",
+        "in_short": "Sent to Wendlyn to kill its royal family, Celaena instead drinks her way through the summer until the Fae warrior Rowan Whitethorn hauls her before Queen Maeve, who offers information about the Wyrdkeys in exchange for mastering the fire magic she has spent her life refusing. Exiled to the fortress of Mistward under Rowan's brutal tutelage, she is forced through her own history, the massacre of her family and the guilt she has carried since, and finally claims both her power and her name: Aelin Ashryver Galathynius, queen of Terrasen. In Rifthold, Chaol allies with the rebels and with Aedion Ashryver, Aelin's cousin, discovering that three black towers in the glass castle are what hold magic down, while Dorian falls in love with the healer Sorscha and struggles to hide his own magic. In the north, the Ironteeth witch Manon Blackbeak claims a scarred runt wyvern and rises to lead an aerial host being raised for the king. When Adarlan's demon-ridden soldiers assault Mistward, Aelin burns them. She then faces Maeve, wins Rowan's blood oath instead of giving her own, and sails home, unaware that Aedion is condemned, Sorscha executed, and Dorian collared.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Celaena Sardothien, an assassin taken out of the Endovier salt mines by Crown Prince Dorian Havilliard, won a competition to become the King of Adarlan's Champion and spent a year in the glass castle at Rifthold under a false name. She secretly faked the deaths of her assigned targets, fell in love with Chaol Westfall, the captain of the guard, and befriended Nehemia Ytger, the princess of occupied Eyllwe. Following the king's hidden source of power, she learned of the Wyrdkeys, three fragments of a shattered gate between worlds whose holder can command what lies beyond it, and concluded that the king possesses at least one and used it to strip magic from the continent ten years ago. Nehemia was then murdered, and Celaena discovered that her friend had arranged her own death to force her into open rebellion. Celaena finally admitted who she is: Aelin Ashryver Galathynius, the heir of Terrasen, believed killed as a child when Adarlan destroyed her family. Chaol worked it out independently and, to save her, had the king send her overseas to Wendlyn with orders to assassinate its royal house. She sailed vowing to return and take back her kingdom. Dorian, meanwhile, discovered he has magic, a capital crime in his father's empire.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Celaena has been in Wendlyn for weeks and has not gone near the palace she was sent to destroy. She drinks, brawls, and avoids thinking. Rowan Whitethorn, a Fae warrior blood-sworn to Queen Maeve, tracks her down and takes her over the mountains to Doranelle. Maeve, who is Celaena's great-aunt, sets terms: learn to control the fire magic she inherited from her mother's line, prove it to Rowan's satisfaction, and Maeve will answer her questions about the Wyrdkeys and about how magic might be restored. Celaena is sent to Mistward, a half-Fae border fortress, with Rowan as her keeper. She is given no training and no respect, only kitchen work. Far to the north, in Adarlan, the Ironteeth witch clans have been summoned to a mountain stronghold; Manon Blackbeak, heir of the Blackbeak clan, arrives with her coven to find that the king's people are breeding enormous winged beasts called wyverns and expect the witches to ride them. In Rifthold, Chaol Westfall is trying to find a way to undo what was done to magic, and Dorian is hiding the power surfacing in him.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Mistward wears Celaena down. She scours pots under the eye of the cook Emrys, refuses to shift into her Fae form, and stalls every time Rowan pushes her toward her magic; he responds with escalating brutality and open scorn. She keeps her identity to herself. In Rifthold, Chaol makes contact with Aedion Ashryver, the celebrated young general known as the Wolf of the North, who was born in Terrasen and now commands for Adarlan; Chaol cannot tell whether the man is a traitor or a very patient loyalist. He also works with Nesryn Faliq, a city guard tied to the rebel network, and with the Terrasen lord Ren Allsbrook. Dorian's relationship with the castle healer Sorscha deepens as she quietly covers for him. At the wyvern pens, Manon is expected to claim the finest bull for herself, and instead takes the scarred, undersized runt the handlers use as bait, naming him Abraxos. The Ironteeth clans are told nothing about the war they are being armed for.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rowan finally gets Celaena to shift into her Fae form, and her magic proves to be an enormous, badly controlled well of fire that she can neither shut off nor aim. The training becomes a war of attrition between them. She also learns that Mistward's half-Fae are being picked off by something crossing the border, and that people are dying in ways magic cannot explain. In Rifthold, Aedion reveals himself to Chaol: he never served Adarlan willingly and has spent ten years positioning the Bane to fight for Terrasen when its queen returns. Chaol and Aedion begin hunting the mechanism that killed magic, and Chaol finds that three towers of black stone built into the glass castle are what pin it down across the continent. Dorian and Sorscha become lovers, both knowing what discovery would cost them. Manon and the Thirteen learn to fly, and Abraxos, written off by everyone, proves faster and more agile than the beasts bred for it.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Training becomes a war of attrition that neither of them is winning. Rowan pushes Celaena past what she can hold and she loses control of her fire repeatedly, with consequences the fortress has to clean up; she comes close to walking away from the bargain entirely. What keeps her there is Mistward itself: the half-Fae who live in it are being killed on the border by something the garrison cannot describe, and she starts caring about people she meant to ignore. Rowan begins to treat her as a soldier rather than a nuisance. In Rifthold, Chaol, Aedion, Nesryn, and the Terrasen rebels move from talking to planning, working out how the black towers might be brought down and how Dorian might be got out of the castle before anyone notices what he is. Dorian and Sorscha take risks with each other that they both know are unaffordable. In the north, the Ironteeth clans are pushed harder as the Blackbeak, Yellowlegs, and Blueblood heirs are measured against each other, and Manon's grandmother makes clear that anything short of first place is a failure.",
+            "through": {
+              "chapter": 35
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Celaena's control begins to come, and with it the memories she has spent ten years refusing. Rowan drags her through the night Adarlan came for her family, her uncle's murder, and what happened to the people who died getting her out of Terrasen, and forces her to see how much of the guilt she has been carrying she assigned to herself. In return she learns something of his own history and what Maeve's blood oath has cost him. The two stop being jailer and prisoner. Celaena tells him her name. In the north, the Ironteeth hold war games between the clans, and Manon leads the Thirteen through them; her grandmother watches for any sign of softness. In Rifthold, the rebellion's plans accelerate: Chaol, Aedion, Ren, and Nesryn plot to strike at the towers and to get Dorian out of the castle, while the king's attention turns increasingly southward to Duke Perrington's holdings at Morath.",
+            "through": {
+              "chapter": 45
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Adarlan's forces cross into Wendlyn under a commander named Narrok, and the Fae sent against them are destroyed by something the soldiers carry inside them: demons out of the Wyrdgate, wearing men as bodies, feeding on despair. Celaena recognizes what they are and understands at last what the king's rings and collars of black stone are for. The war games in the north end with Manon named Wing Leader of the entire Ironteeth host, over the Yellowlegs and Blueblood heirs, though the price of the title and the loyalty she showed her coven to earn it sit badly with her grandmother. In Rifthold, the plot against the towers comes to a head. Aedion is taken by the king's men and imprisoned for treason, condemned to public execution, having deliberately drawn the blame away from Chaol. Chaol, exposed, is left with no move that does not cost someone else everything, and Dorian, trying to shield him, comes closer than ever to being discovered.",
+            "through": {
+              "chapter": 55
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The demon-ridden force reaches Mistward and overruns it. Celaena, with Rowan and the Wyrdmarks Nehemia taught her, breaks Narrok and burns the creatures out of the men they were riding, unleashing her full power for the first time and surviving it. She accepts what she is and what she owes, and declares herself Aelin Ashryver Galathynius, Queen of Terrasen, in front of Mistward's survivors. Maeve summons her to Doranelle to collect on their bargain, and the price named is Aelin's blood oath, which would bind her to Maeve for life. In Rifthold, the king moves against his own household: Dorian's magic is exposed in front of the court, and his father makes an example of the person Dorian loves, executing Sorscha in the courtyard. Chaol, hunted, is forced to run for his life while Dorian holds his father off, and Aedion waits in the dungeons for the axe.",
+            "through": {
+              "chapter": 62
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At Doranelle, Aelin refuses to swear to Maeve and turns the meeting on her, getting the answers she came for and denying her aunt the one thing she wanted. Rowan, released from Maeve's service, swears the blood oath to Aelin instead, becoming the first member of her court, and the two leave together for Adarlan. Aelin sails home to free Aedion, break the king's hold on Dorian, and take back Terrasen. She does not yet know how badly she is already too late: Sorscha is dead, and Dorian, defeated by his father, has been fitted with a collar of black Wyrdstone that gives a Valg demon the use of his body and leaves nothing of the prince visible. Chaol has escaped the castle and gone to ground in the city with the rebels, carrying the secret of who Celaena really is. In the north, Manon Blackbeak flies at the head of an aerial army whose purpose the witches still have not been told, and Duke Perrington's works at Morath continue.",
+            "through": {
+              "chapter": 68
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "heir-of-fire"
+      }
+    },
     "hell-difficulty-tutorial": {
       "characters": {
         "characters": [

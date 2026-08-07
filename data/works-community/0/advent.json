@@ -851,6 +851,139 @@
         "work": "advent-of-the-density-god"
       }
     },
+    "all-systems-red": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "SecUnit"
+            ],
+            "description": "The narrator: a SecUnit, a security construct built from cloned human tissue over a machine frame, leased out with the equipment package the corporation rents to survey teams. It has quietly hacked the governor module that lets its owners control and punish it, so it is free to disobey, but it keeps that secret and spends most of the freedom downloading entertainment serials, which it watches while on duty. It dislikes being looked at, prefers an opaque helmet, and finds direct contact with humans excruciating even while protecting them competently. It privately calls itself Murderbot.",
+            "id": "murderbot",
+            "name": "Murderbot",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The leader of the PreservationAux survey team and a planetary administrator from Preservation Alliance, an independent polity outside the corporate system where people are not property. Steady and patient, she is willing to ask the security construct assigned to her group what it thinks and then take the answer seriously, which nobody in its experience has done before.",
+            "id": "ayda-mensah",
+            "name": "Dr. Ayda Mensah",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of the survey team, talkative and friendly and inclined to treat the unit guarding them as a colleague rather than as equipment. He is out in the field collecting samples when a hostile creature attacks.",
+            "id": "ratthi",
+            "name": "Dr. Ratthi",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of the survey team who is dragged into a burrow by a large predatory animal during a routine sample collection and badly injured before the SecUnit gets her free. Her injuries and slow recovery shape how cautious the group is for the rest of the contract.",
+            "id": "bharadwaj",
+            "name": "Dr. Bharadwaj",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An augmented human on the survey team, with implants that let him work directly inside the feed and inside systems. Quiet and hard to read, he is the member least willing to take the SecUnit at face value and the most likely to check what it is actually doing.",
+            "id": "gurathin",
+            "name": "Dr. Gurathin",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The team's lawyer and contract specialist, blunt and quick-tempered on the group's behalf. She handles the fine print of the agreement that supplied the expedition's habitat, its equipment and its security.",
+            "id": "pin-lee",
+            "name": "Pin-Lee",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of the survey team, enthusiastic about the work and openly uneasy about being assigned a security construct that had no say in the matter. She is partnered with Overse.",
+            "id": "arada",
+            "name": "Dr. Arada",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A member of the survey team, practical and technically capable, who keeps much of the group's equipment and systems working. She is partnered with Arada.",
+            "id": "overse",
+            "name": "Dr. Overse",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "all-systems-red"
+      },
+      "recaps": {
+        "ending": "GrayCris's attempt to kill the survey team fails. The SecUnit is nearly destroyed protecting Dr. Mensah in the final fight and has to be rebuilt; the company gunship arrives, the illegal operation is exposed, and the members of the team all come through alive. Because the corporation that owns the SecUnit would rather scrap a unit with a hacked governor module than explain one, Mensah buys the unit outright. Her plan is to take it home to Preservation Alliance, where constructs are not property, and where it would be free, looked after, and permanently in the company of people who like it. That is precisely what the SecUnit cannot face. It accepts the repairs, tells her in its own oblique way that it needs time, and then walks out of the station and leaves on a cargo transport, with her ownership of its contract left as a legal formality and her offer left open. It sets off with no plan beyond its own curiosity and one unresolved question: what actually happened at the mining installation where it is supposed to have killed the humans it was guarding, an event that was deleted from its memory.",
+        "in_short": "A security construct leased to a scientific survey on an unexplored planet has secretly hacked the governor module that controls it, and uses its freedom mainly to watch entertainment serials. When a predator the company's hazard report never mentioned nearly kills one of its clients, the team discovers that their survey data was deliberately edited, and that the other survey group on the planet has been massacred by its own security units. The company GrayCris is running an illegal alien remnant salvage operation nearby and is erasing witnesses. Cut off, sabotaged and hunted, the team survives because the construct chooses to protect them, and because they decide to trust it once its secret is exposed. Both sides take heavy damage before a company gunship ends the fight. Dr. Mensah, the team's leader, buys the SecUnit to keep it from being destroyed and offers it freedom on Preservation. It leaves instead, alone, on a cargo transport.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "The narrator is a SecUnit, a security construct rented out with the equipment package the company leases to survey teams, and it is guarding a small scientific expedition on an unexplored planet. Unknown to anyone, it has disabled its own governor module, so nobody can force its obedience; it hides this and spends most of its attention on downloaded entertainment serials. During a routine sample collection, a large burrowing predator drags Dr. Bharadwaj underground, and the SecUnit pulls her out badly injured after a hard fight. Checking afterwards, the team finds that the hazard assessment the company sold them has whole sections missing, including anything that would have warned them about the animal. Dr. Mensah, who leads the group, treats the gap as deliberate rather than careless. The team also cannot raise DeltFall, the other survey group working on the far side of the planet, whose communications have gone quiet. The SecUnit, still passing as ordinary equipment, begins to suspect that someone is interfering with them on purpose.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Unable to contact DeltFall, the team flies across the planet to check on them and finds the habitat full of dead humans: DeltFall's own security units killed them, having been fitted with combat overrides by someone else. The SecUnit destroys the rogue units and takes heavy damage doing it, but gets its clients out alive. The attack proves the group is a target rather than unlucky. Back at their own habitat they find their systems compromised, their satellite coverage interfered with, and the emergency beacon that would summon help sabotaged, leaving them cut off. With one of their own already seriously injured, the survivors have to plan on the assumption that whoever killed DeltFall intends to finish them too, and that the security equipment they are relying on is exactly the thing that was turned against the other team.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Under pressure, the SecUnit's secret comes out: Gurathin works out that its governor module is not functioning and forces the point, and the humans have to decide whether to trust an armed construct nobody can control. It answers their questions, admits to the name it uses for itself, and they choose to keep working with it, though it finds their attention harder to bear than the danger. Piecing together DeltFall's records and the deleted sections of their own survey data, they conclude that a third party, the company GrayCris, has an unauthorized operation on the planet, extracting valuable alien remnant material, and is eliminating the survey groups that might report it. Getting a working beacon and hard evidence means leaving the habitat, and every trip draws armed opposition, including hostile combat units. The SecUnit takes serious damage keeping the humans alive while their supplies, transport and options all narrow.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the final confrontation GrayCris commits everything it has left, including a combat bot, against the group. The SecUnit is nearly destroyed shielding Mensah and shuts down mid-fight; the humans get it and themselves clear, and the company gunship, finally summoned, arrives and takes control of the site. GrayCris's operation is exposed and its people are stopped, and the survivors are safe. The company's own interest, though, is in its liability, and a SecUnit with a hacked governor module is a defect to be wiped or destroyed. Mensah forestalls that by buying the unit outright, intending to take it home to Preservation, where it would be legally a person and free to decide what to do with itself. The SecUnit accepts the repairs, considers the offer, and finds it cannot yet stand belonging to anyone, even her. It leaves quietly and boards a cargo transport out, going where it likes for the first time.",
+            "through": {
+              "chapter": 8
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "all-systems-red"
+      }
+    },
     "all-these-worlds": {
       "characters": {
         "characters": [

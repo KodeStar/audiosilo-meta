@@ -334,6 +334,219 @@
         "work": "hannibal-rising"
       }
     },
+    "harrow-the-ninth": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Harrow",
+              "Harrowhark the First"
+            ],
+            "description": "The Reverend Daughter of the Ninth House, now one of the Emperor's Lyctors and no longer entirely well. She has been taken from the First House to be trained as an immortal saint, and something about her ascension has gone badly wrong: she cannot do the things a Lyctor is supposed to do, she is sick almost constantly, and she cannot reliably trust what she sees or what she remembers. She is certain that at least one person around her intends to kill her, and she is preparing accordingly.",
+            "id": "harrowhark-nonagesimus",
+            "name": "Harrowhark Nonagesimus",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The Ninth House's cavalier in the previous book, an indentured swordswoman who died at Canaan House so that Harrowhark could become a Lyctor. A Lyctor's cavalier is consumed at the moment of ascension and continues afterwards as the necromancer's power source, which is what Harrowhark carried away from the First House.",
+            "id": "gideon-nav",
+            "name": "Gideon Nav",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ianthe Tridentarius"
+            ],
+            "description": "The Third House's surviving twin, who murdered her own cavalier at Canaan House to become a Lyctor and has had no visible difficulty with the consequences. She ascended cleanly where Harrowhark did not, and she attaches herself to Harrowhark as tutor, tormentor and only real company, offering help that always costs something.",
+            "id": "ianthe-the-first",
+            "name": "Ianthe the First",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "John Gaius",
+              "the Necrolord Prime",
+              "God"
+            ],
+            "description": "The Emperor of the Nine Houses, ten thousand years old, who raised the Houses after the death of the old world and has been worshipped as God ever since. In person he is mild, informal and disarmingly ordinary, apologetic about the ceremony that surrounds him and openly fond of the two new Lyctors. He takes on Harrowhark's instruction himself.",
+            "id": "the-emperor",
+            "name": "The Emperor",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A woman's corpse, perfectly preserved and unchanged, whom Harrowhark sees and speaks with constantly and whom nobody else perceives. Harrowhark has known her since she broke into the Ninth House's sealed tomb as a child, and she loves her without reservation. The tomb the Ninth exists to guard is the tomb she lies in, and she is the reason Harrowhark does most of what she does.",
+            "id": "the-body",
+            "name": "The Body",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the Saint of Joy"
+            ],
+            "description": "One of the Emperor's original Lyctors, a specialist in the living body who can unmake a person from the inside out. She is furious more or less continuously, treats the existence of new Lyctors as an insult, and makes no secret of wanting Harrowhark gone. She has served the Emperor since the Resurrection and does not appear to have enjoyed any of it.",
+            "id": "mercymorn-the-first",
+            "name": "Mercymorn the First",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the Saint of Patience"
+            ],
+            "description": "Another of the Emperor's original Lyctors, urbane, amused and by far the most sociable of the ancients. He handles Harrowhark's arrival with courtesy where Mercymorn handles it with contempt, and he is candid about the fact that ten thousand years of service have left the survivors strange.",
+            "id": "augustine-the-first",
+            "name": "Augustine the First",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The third of the Emperor's surviving original Lyctors, silent to the point of seeming absent, who explains himself to nobody. He spends most of his time elsewhere on the station and answers questions with as few words as he can manage.",
+            "id": "saint-of-duty",
+            "name": "The Saint of Duty",
+            "reveal": {
+              "chapter": 2
+            }
+          },
+          {
+            "description": "The Ninth House cavalier who left rather than accompany Harrowhark to the First House. In the account of Canaan House that runs alongside the present-day chapters of this book, he did not leave: he is Harrowhark's cavalier primary throughout, a mournful, unathletic man still reciting his unfinished epic poem, and Gideon Nav is not there at all.",
+            "id": "ortus-nigenad",
+            "name": "Ortus Nigenad",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the Resurrection Beast"
+            ],
+            "description": "A Resurrection Beast: the accumulated ghost of a world that died when the old system did, grown over ten thousand years into something enormous, and one of a small number of them that hunt the Emperor across space. Number Seven is on its way to the Lyctors' station, and killing it is the reason the new Lyctors are being trained at all.",
+            "id": "number-seven",
+            "name": "Number Seven",
+            "reveal": {
+              "chapter": 11
+            }
+          },
+          {
+            "description": "Necromancer heir of the Fifth House, a historian whose art is speaking with ghosts and with the distant past. She appears in this book's account of the events at Canaan House, where she is the candidate most interested in what the First House was before it was abandoned, and the one most willing to organize the others.",
+            "id": "abigail-pent",
+            "name": "Abigail Pent",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A figure lying in a sealed coffin in the depths of Canaan House in this book's account of it, dressed in clothing from nowhere in the Nine Houses and carrying a weapon nobody there recognises. She is not dead. As the account proceeds she begins to wake, and what she is interested in is Harrowhark.",
+            "id": "the-sleeper",
+            "name": "The Sleeper",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "harrow-the-ninth"
+      },
+      "recaps": {
+        "ending": "Harrowhark's condition turns out to be self-inflicted. Before leaving Canaan House she had Ianthe perform surgery on her brain to cut Gideon Nav out of her memory entirely, so that she could never consume her. That is why she is an immortal Lyctor with none of a Lyctor's power, Gideon's soul sitting intact and untouched inside her, and why the Canaan House she remembers has Ortus Nigenad in it instead. When that arrangement collapses, Gideon wakes in Harrowhark's body and narrates the rest of the book. Mercymorn and Augustine choose the same moment to make the attempt on the Emperor they have been preparing for ten thousand years, telling Gideon first what he actually did: the Resurrection Beasts are the ghosts of the worlds he himself destroyed, and the Empire is built on that. The attempt fails, the Emperor survives it, Mercymorn does not, and the station is destroyed in the process. The body of the Saint of Duty proves to be shared with his own long-dead cavalier, Pyrrha Dve, who is still inside it. Gideon escapes aboard a shuttle with Ianthe, wearing Harrowhark's body and using Harrowhark's necromancy, while Harrowhark's own soul is left adrift in the River inside the wreck of the Canaan House her surgery built. Harrowhark is lost, the Empire's founding crime is known to the people who survived, and Gideon leaves the book intending to get her back.",
+        "in_short": "Harrowhark Nonagesimus leaves Canaan House as one of the Emperor's Lyctors and is taken to his station beyond the Nine Houses to be trained against the Resurrection Beasts, the vast ghosts of dead worlds that hunt him. She is a disaster: constantly ill, unable to use a Lyctor's power, unsure of her own perceptions, and under repeated attack by one of the Emperor's ancient saints. Interleaved with this is an account of the events of the previous book in which Gideon Nav does not exist, Harrowhark's cavalier is Ortus Nigenad, and a sleeping woman in a coffin wakes and hunts her. The two are the same problem: before leaving the First House, Harrowhark had Ianthe cut Gideon out of her memory so that she could never consume her, leaving Gideon's soul intact inside her and Harrowhark a Lyctor in name only. When the arrangement fails, Gideon wakes in Harrowhark's body. Mercymorn and Augustine make their long-planned attempt to kill the Emperor, revealing that he destroyed the old worlds himself; the attempt fails and the station is destroyed with it. Gideon escapes with Ianthe, wearing Harrowhark's body, while Harrowhark's soul is left adrift in the River.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, in Gideon the Ninth: the Emperor summoned the necromantic heir and cavalier of each of the Nine Houses to Canaan House, the abandoned seat of the First House, to compete for elevation to Lyctor, the immortal saints who serve him. Harrowhark Nonagesimus, heir of the Ninth House, went with Gideon Nav, an indentured servant of the Ninth and her lifelong enemy, who stood in as her cavalier in exchange for her freedom. The candidates were given no instructions, only a sealed facility of laboratories beneath the house, and then they began to be murdered. The secret of Lyctorhood proved to be that a necromancer becomes immortal by consuming their own cavalier's soul, which then powers them forever. Ianthe Tridentarius of the Third House killed her cavalier to claim it. The Seventh House's dying heir was revealed to be Cytherea the First, one of the Emperor's original Lyctors, who had been killing the candidates; Palamedes Sextus of the Sixth destroyed himself trying to stop her, and most of the others died. Rather than let Harrowhark be killed refusing the price, Gideon impaled herself on an iron railing so that Harrow would have no choice. Harrowhark ascended, destroyed Cytherea, and was taken off the First House alive: a Lyctor, with Gideon's soul inside her, and unwilling to accept it.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The book runs on two tracks. In the present, Harrowhark has been taken far beyond the Nine Houses to the Emperor's station, where the new Lyctors are to be trained, and she is plainly broken: she vomits blood, she cannot do what a Lyctor is supposed to do, her perception of her own surroundings cannot be relied upon, and she is convinced that someone aboard means to kill her. Ianthe Tridentarius, who ascended without difficulty, is her only companion and not a kind one. Running alongside this is an account of the events at Canaan House from the previous book, told differently: in it Harrowhark's cavalier is Ortus Nigenad, who never fled the Ninth, and Gideon Nav does not exist at all. The two versions cannot both be true, and the Harrowhark of the present-day chapters gives no sign of noticing the difference.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Emperor's station holds him and the three of his original Lyctors still alive: Mercymorn the First, hostile to Harrowhark from the moment she arrives; Augustine the First, merely amused by her; and the Saint of Duty, who says almost nothing to anyone. The Emperor himself is disarmingly ordinary and takes charge of Harrowhark's education personally. The purpose of the training is a Resurrection Beast, the ghost of a world that died ten thousand years ago and has been growing ever since, which is closing on the station and which the Lyctors will eventually have to go out and fight. Harrowhark is attacked, repeatedly and without explanation, by the Saint of Duty, and survives largely because she prepared for exactly that. She is also working from a numbered sequence of letters she wrote to herself in advance, each sealed and each to be opened only under a stated condition. Everywhere she goes she is accompanied by the Body, the corpse from the Ninth House's sealed tomb, whom nobody else can see. Meanwhile the Canaan House account continues, with Ortus at her side and the same candidates gathering for the same trials.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Harrowhark's training goes badly. Her body rebels, her necromancy behaves like a Ninth House adept's rather than a Lyctor's, and the ancients treat her as either an embarrassment or a threat. Mercymorn's hostility becomes explicit, Augustine keeps a polite distance, and the attempts on Harrowhark's life continue. Ianthe alternates between teaching her and using her, and the two settle into a partnership neither would call friendship. Harrowhark is taught what the River is, the medium the dead pass into and the thing necromancy actually draws on, and what it does to a soul that enters it unprotected. In the Canaan House account, the trials proceed and the candidates start dying much as before, and something new surfaces: deep in the facility there is a sealed coffin with a living woman inside it, dressed and armed like nothing in the Nine Houses. She is beginning to wake.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The attempts on Harrowhark's life escalate and she sets out to establish who is behind them and why, with her sealed letters as her only reliable source of instruction: each is opened at its stated moment, and each was written by someone who knew far more about her situation than she does. Ianthe extracts a price for every piece of help. In the Canaan House account the sleeper gets out of her coffin and begins hunting Harrowhark through the house while the surviving candidates try to hold her off. The two accounts begin interfering with each other, images and people from one appearing in the other, and Harrowhark's grip on which of them she is actually living in weakens. It becomes clear that her illness, her blind spots and the impossible version of Canaan House are all the same problem.",
+            "through": {
+              "chapter": 31
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Both threads come apart. The Resurrection Beast reaches the system and the Lyctors have to meet it in the River, where the Beast and the ordinary dead can both reach a soul that is not properly defended, and Harrowhark, who cannot do what the others do, is a liability in a fight none of them can afford to lose. In the Canaan House account the sleeper runs the survivors down one by one and the house itself starts to fail, until the version of events Harrowhark has been living inside can no longer hold its shape. Her body gives out, and the thing she has been unable to reach since the moment she ascended, the reason she is a Lyctor with no Lyctor's power, finally forces its way to the surface.",
+            "through": {
+              "chapter": 39
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The explanation is Harrowhark's own doing. Before leaving Canaan House she had Ianthe operate on her brain and cut Gideon Nav out of her memory entirely, precisely so that she could never use her. Gideon's soul is inside her, intact and unconsumed, which is why she has a Lyctor's immortality and none of a Lyctor's power, and the Canaan House she has been remembering is the version her mutilated memory could support, with Ortus Nigenad standing where Gideon should be. The sealed letters were left by the woman who planned all of it. With Harrowhark's own soul displaced into the River, Gideon wakes up in Harrowhark's body and takes over the narration of the book, with Harrowhark's necromancy at her disposal, Ianthe as her only ally, and everyone aboard the station having to decide what to do about a Lyctor who is suddenly somebody else.",
+            "through": {
+              "chapter": 46
+            }
+          },
+          {
+            "scope": "book",
+            "text": "With Gideon in control of Harrowhark's body, the situation on the station collapses. Mercymorn and Augustine reveal that they have spent ten thousand years waiting for a chance to kill the Emperor, and they tell the truth about the Resurrection first: the Resurrection Beasts are the ghosts of the worlds of the old system, and it was the Emperor who killed them. Their attempt fails. The Emperor survives it and Mercymorn does not, and the station is destroyed in the fighting. Gideon faces the Saint of Duty and finds that his body is shared with his own long-dead cavalier, Pyrrha Dve, who has been surfacing in it all along. Gideon and Ianthe get off the station alive aboard a shuttle. Harrowhark's soul is not with them: it is adrift in the River, inside the ruin of the imaginary Canaan House her surgery built, and recovering her is what Gideon leaves the book intending to do.",
+            "through": {
+              "chapter": 53
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "harrow-the-ninth"
+      }
+    },
     "harry-potter-and-the-chamber-of-secrets": {
       "characters": {
         "characters": [

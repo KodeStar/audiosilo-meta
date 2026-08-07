@@ -908,6 +908,261 @@
         "work": "empire"
       }
     },
+    "empire-of-storms": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Queen of Terrasen in name, camped on her own southern border with a court of five and no army. She holds two of the three Wyrdkeys and a plan she will not share with anyone, including the people who have sworn their lives to her. She is running out of time, money, and allies at the same rate, and she has begun making trades whose full price she keeps to herself.",
+            "id": "aelin-galathynius",
+            "name": "Aelin Ashryver Galathynius",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A Fae prince of Doranelle, blood-sworn to Aelin and her closest confidant, with wind and ice magic and a hawk's form. He has stopped trying to talk her out of things and started making sure she survives them. He is the only person who reliably knows when she is lying.",
+            "id": "rowan-whitethorn",
+            "name": "Rowan Whitethorn",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "General of the Bane and Aelin's cousin, half Fae, blood-sworn to her and responsible for holding together the only fighting force loyal to her. He is furious with the Terrasen lords who will not acknowledge his queen, and openly hostile to the two Fae warriors Maeve has sent to shadow them.",
+            "id": "aedion-ashryver",
+            "name": "Aedion Ashryver",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A shapeshifter, formerly a courtesan of Rifthold, whose magic returned when the towers fell and who can now take any form she has studied. She is learning to fight, raising her ward Evangeline, and has made herself indispensable to Aelin as a scout, a spy, and a friend who is not afraid of her.",
+            "id": "lysandra",
+            "name": "Lysandra",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Lysandra's young ward, a scarred girl determined to be useful and increasingly aware of how dangerous the company she keeps has become.",
+            "id": "evangeline",
+            "name": "Evangeline",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The daughter of Terrasen's Lady of Perranth, on the road north out of Morath with a ruined ankle, a Wyrdstone shard, and orders from a dying woman to find Aelin Galathynius. She was raised locked in a tower and has almost no experience of the world, which she compensates for with patience and a very good ear for a lie.",
+            "id": "elide-lochan",
+            "name": "Elide Lochan",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Fae warrior five centuries old, the most lethal of Queen Maeve's blood-sworn cadre, with dark magic that can smother life outright. Exiled and hunting the Wyrdkeys for his queen, he falls in with Elide on the road under a false name and finds himself escorting her north. He is loyal to Maeve above every other consideration.",
+            "id": "lorcan-salvaterre",
+            "name": "Lorcan Salvaterre",
+            "reveal": {
+              "chapter": 2
+            }
+          },
+          {
+            "description": "Wing Leader of the Ironteeth host, sent out with the Thirteen to hunt Aelin Galathynius for Morath. She has begun asking questions her grandmother will not answer, chiefly about her own mother, and she is no longer certain the Ironteeth are on the right side of anything.",
+            "id": "manon-blackbeak",
+            "name": "Manon Blackbeak",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Manon's Second and cousin, the finest rider in the Thirteen, carrying a hundred years of a secret the Blackbeaks punished her for and have never let her speak of.",
+            "id": "asterin-blackbeak",
+            "name": "Asterin Blackbeak",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The scarred runt wyvern Manon claimed, now the fastest flier in the host, who likes flowers, sunlight, and Manon, in roughly that order.",
+            "id": "abraxos",
+            "name": "Abraxos",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "King of Adarlan, inheritor of his father's ruined empire and of magic he is still learning to use. He has lost his capital and most of his court and is trying to work out what one king with raw power and no army can actually do against Morath.",
+            "id": "dorian-havilliard",
+            "name": "Dorian Havilliard",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The senior lord of Terrasen's council, elderly and unsentimental, who kept the kingdom's remnants alive through ten years of occupation. He does not accept Aelin's claim: to him she is a girl who vanished, spent a decade as an assassin for hire, and has come back with no army, no treasury, and no proof she can rule.",
+            "id": "darrow",
+            "name": "Lord Darrow",
+            "reveal": {
+              "chapter": 6
+            }
+          },
+          {
+            "description": "Matron of the Blackbeak clan and Manon's grandmother, who has commanded the Ironteeth for five centuries and intends to lead them back into their stolen kingdom in the west whatever the cost to her own bloodline.",
+            "id": "blackbeak-matron",
+            "name": "The Blackbeak Matron",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Fae warrior of Maeve's cadre, young by Fae reckoning, with a wolf's form and a twin brother he does not talk about. He is charming, insolent, and bound by a blood oath he plainly resents, sent along with Gavriel to watch Aelin and report back.",
+            "id": "fenrys",
+            "name": "Fenrys",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Fae warrior of Maeve's cadre known as the Lion, quiet and courteous, with a mountain lion's form. He fought in Terrasen decades ago, and Aedion Ashryver is his son, a fact neither of them has any idea what to do with.",
+            "id": "gavriel",
+            "name": "Gavriel",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Pirate Lord of Skull's Bay in the Dead Islands, whose hands carry a magical map of the seas. He and Aelin have unfinished business from years ago, and he has spent the time since building a fleet and an empire of his own out of the Bay.",
+            "id": "rolfe",
+            "name": "Captain Rolfe",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The first Queen of Adarlan, a thousand years dead, who has steered Aelin's life from the beginning. She finally begins explaining what she has been building toward, the gate, the keys, and the Lock, and what it will cost the person who closes it.",
+            "id": "elena-galathynius",
+            "name": "Elena Galathynius",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Valg king who was defeated a thousand years ago and never destroyed, now awake at Morath and in command of its armies, its ilken, and its Wyrdstone. He holds the third key and wants the other two.",
+            "id": "erawan",
+            "name": "Erawan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Queen of the Fae of Doranelle, Aelin's great-aunt, who was denied Aelin's blood oath and lost Rowan to her. She has been patient about it. Her cadre is scattered across the continent on errands she has not explained, and her fleet is not where anyone expected it to be.",
+            "id": "maeve",
+            "name": "Maeve",
+            "reveal": {
+              "chapter": 70
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "empire-of-storms"
+      },
+      "recaps": {
+        "ending": "The book ends with Aelin in chains. At the coast, with the ritual to forge the Lock finally within reach, Maeve arrives with a fleet, having been told exactly where to find her by Lorcan. Aelin surrenders herself to spare her court and her allies, and Maeve has her beaten, bound in iron, and sealed inside an iron coffin, taking her away by ship along with Fenrys, whose blood oath forces him to go. Rowan, Aedion, Lysandra, Elide, and Gavriel are left alive on the shore with nothing but the promise to find her. Lorcan is exiled from the court for the betrayal, with Elide the one who names the sentence. It emerges that Aelin had prepared for a version of this: Lysandra will wear her face and hold Terrasen together, buying the kingdom time it does not know it needs. Manon Blackbeak survives her grandmother's attempt to kill her and learns that she is the daughter of the last Crochan Queen, half of the people the Ironteeth have hunted for five hundred years; she and the Thirteen become outcasts and turn west to find the Crochans and, if they will have her, a crown. Dorian is left carrying the war on the northern front with a witch's help and no plan. Erawan holds Morath, one Wyrdkey, and an army nobody has yet slowed down.",
+        "in_short": "Refused recognition by Terrasen's lords, Aelin gambles everything on alliances she cannot pay for: she wins Rolfe's pirate fleet at Skull's Bay by destroying a Valg armada, courts the sea dragons and the Fae, and marries Rowan. Elide Lochan travels north with Lorcan Salvaterre, Maeve's exiled warrior, carrying a Wyrdstone shard toward a queen she has never met. Dorian, driven out of a fallen Rifthold, falls in with the witch Manon Blackbeak, and the two raid the Ferian Gap and turn toward Morath after the third Wyrdkey. Manon's defiance finally provokes her grandmother, who tries to kill her and reveals that Manon is the daughter of the last Crochan Queen; Manon and the Thirteen break with the Ironteeth. Aelin learns from Elena the true price of forging the Lock and closing the Wyrdgate: her own life. She spends the book concealing that from everyone. At the coast, on the verge of the ritual, Lorcan's message brings Maeve's fleet down on them. Aelin gives herself up to save her court, and is chained in iron and shipped away in a coffin, leaving Rowan and the others to find her and Lysandra to wear her face.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Aelin Galathynius returned to Rifthold, freed her condemned cousin Aedion, and took back her old life on her own terms, killing the assassin master Arobynn Hamel and inheriting his fortune along with the Amulet of Orynth, which proved to contain the third Wyrdkey. Lysandra, a courtesan of the city, was revealed as a shapeshifter and became her ally. Aelin destroyed the black tower that had kept magic dead for a decade, restoring it across the continent, then confronted the king of Adarlan; Dorian Havilliard broke the Valg collar on his own will and killed his father, who claimed with his last breath that he too had been a Valg puppet. The blast that ended it shattered Chaol Westfall's spine, and he sailed for the southern continent with Nesryn Faliq to seek healing and an army. Aelin brought down the glass castle and left Dorian a king over ruins. At Morath, the witch Manon Blackbeak defied her clan to free a servant named Elide Lochan, and the dying Kaltain Rompier destroyed much of the fortress, pressing a Wyrdstone shard into Elide's hand and telling her to find Celaena Sardothien. Behind it all stood Erawan, the Valg king, awake and unopposed at Morath. Aelin turned north for Terrasen with two of the three keys and no army.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Aelin reaches Terrasen's border and is met not with a crown but with a summons. Lord Darrow, who held the kingdom's remnants together through the occupation, refuses to recognize her: she has no army, no treasury, and a decade of assassin's work behind her, and he tells her plainly that she will not be queen. Her whole court is five people. Aedion is incandescent, Rowan is calculating, and Aelin turns south instead, chasing money and ships rather than legitimacy. Elide Lochan, meanwhile, is walking north out of Morath with a shattered ankle and Kaltain's Wyrdstone shard sewn into her clothes, and falls in with a hard, unfriendly man calling himself Lorcan, who is in fact Lorcan Salvaterre, Maeve's most dangerous warrior, hunting the Wyrdkeys for his queen. Neither tells the other the truth. In the north, Manon Blackbeak is ordered to hunt Aelin down, and finds herself stalling. Erawan's forces move out of Morath in numbers, and Rifthold falls, driving Dorian out of his own capital.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Two of Maeve's cadre, Fenrys and Gavriel, catch up with Aelin's party and attach themselves to it under orders to observe. Aedion realizes that the courteous, quiet Gavriel is his father, a fact neither of them handles well. Aelin sets course for Skull's Bay in the Dead Islands to buy or bully a fleet out of the Pirate Lord Rolfe, with whom she has old and unpleasant history. Lysandra practises new shapes and begins working as Aelin's scout. Elide and Lorcan continue north, hunted by ilken, Erawan's winged creations, and their partnership becomes something neither will name. Manon's grandmother grows suspicious of her hesitation and starts testing her. Dorian, homeless and hunted, works his way north with magic he can barely aim, and the war reaches the coastal towns before any of the kingdoms are ready for it.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At Skull's Bay, Aelin takes over Rolfe's town by simply installing herself in it, and their negotiation is interrupted by the war arriving: a Valg fleet enters the bay, escorted by things that are not men. Aelin and Rowan destroy it, and the sea dragons of legend rise to help. Rolfe, whose enchanted map has begun showing him what is coming, throws in with her, and the old Mycenian alliance is revived; Aelin now has ships. She also has a reputation spreading ahead of her as the Fire-Bringer. In the north, Dorian and Manon Blackbeak meet, and after an initial standoff decide they are more useful to each other than to anyone else. Elide and Lorcan reach the fringes of the war and are drawn toward Aelin's path. Manon's defiance is now open enough that the Blackbeak Matron begins arranging an answer to it.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Elena's spirit finally tells Aelin what has been withheld from her since the first tomb: the gate between worlds cannot simply be locked with the keys returned to it. A new Lock must be forged, and forging it will consume the person who does it. Aelin has been told, in effect, that the plan she has organized her life around ends with her death, and she keeps it from Rowan, from Aedion, from all of them, while quietly making arrangements for what comes after. She continues gathering allies, ships, and leverage, and begins spending money and promises at a rate her court finds alarming. Dorian and Manon travel together toward the Ferian Gap, where Erawan keeps wyverns and, they believe, the last Wyrdkey may be traced. Elide and Lorcan, still lying to each other about who they are, arrive close enough to Aelin's forces to be noticed.",
+            "through": {
+              "chapter": 39
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Dorian and Manon strike the Ferian Gap, destroying part of Erawan's breeding operation, and their alliance turns into something more complicated for both of them. Aelin and Rowan stop pretending about what they are to each other and acknowledge the bond between them openly. Aelin also begins building the trap she means to spring on Erawan, a plan that requires her to be exactly where he expects her to be, and continues spending money, ships, and promises at a rate that alarms her own court. Elide and Lorcan, still each concealing who they really are, work their way closer to Aelin's forces through country the war has already crossed. Manon is summoned by her grandmother and goes knowing it is a reckoning rather than an audience, and the Thirteen go with her.",
+            "through": {
+              "chapter": 50
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Blackbeak Matron tries to have Manon killed, and in doing so reveals what has been hidden from her for a century: Manon is the daughter of Rhiannon Crochan, the last Crochan Queen, whom the Matron murdered. Manon is half of the people the Ironteeth have hunted for five hundred years, and she was bred as a weapon against them. The Thirteen fight their way out, and Manon, gravely wounded, is carried away by Abraxos; her coven are outcasts now, hunted by every Ironteeth clan, and she turns west toward the Wastes to look for the Crochans she was raised to exterminate. Elide finally reaches Aelin and delivers Kaltain's Wyrdstone shard, and the truth about Lorcan comes out on all sides: he has been Maeve's the whole time. Elide is taken into Aelin's court and promised Perranth. Aelin and Rowan are wed, quickly and without ceremony, in the middle of a war. The fleet and the allies gather on the southern coast for the ritual that will forge the Lock. Lorcan, cast out of the group's trust and convinced he is protecting his queen's interests, sends word to Maeve about exactly where Aelin will be.",
+            "through": {
+              "chapter": 66
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Maeve's fleet arrives at the coast in overwhelming force. With her court outnumbered and her allies about to be slaughtered, Aelin makes the trade: herself for their lives. Maeve takes her, beaten and chained in iron, and seals her in an iron coffin aboard ship, and Fenrys, bound by blood oath, is compelled to go with them. Rowan, Aedion, Lysandra, Elide, and Gavriel are left standing on the shore. Lorcan's betrayal is exposed, and Elide casts him out of the court herself. What Aelin left behind is a contingency: Lysandra will take her shape and hold Terrasen together while the rest of them hunt for her, and only a handful of people will know the queen at Orynth is not the queen. Manon, cast out and half dead, rides west to find the Crochans with the Thirteen. Dorian carries on north with what he has learned about the third key. Erawan still holds Morath, his armies are moving, and the one person who could close the gate is in a box on the sea.",
+            "through": {
+              "chapter": 75
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "empire-of-storms"
+      }
+    },
     "enders-game": {
       "characters": {
         "characters": [

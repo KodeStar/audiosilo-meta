@@ -490,6 +490,260 @@
         "work": "without-fail"
       }
     },
+    "wool-omnibus-edition-wool-1-5": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The silo's sheriff, a careful and widely liked man who has been a widower for three years. His wife Allison was sent outside to clean and died on the hillside within sight of the silo's cameras, and he has kept her questions as well as her office ever since. He knows the silo's laws better than anyone, including the single unforgivable one: saying aloud that you wish to go outside. He has decided to break it on purpose.",
+            "id": "holston",
+            "name": "Holston",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Holston's wife, a technician skilled with the silo's computers and employed to recover data lost from its servers. Warm, stubborn and endlessly curious, she wants a child and spends her spare hours picking through old records. The gaps she finds there, and the files somebody took trouble to delete, convince her that the story the silo tells about its own past is not true.",
+            "id": "allison",
+            "name": "Allison",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The silo's mayor for decades, an elderly woman who won the office young and has held it by being trusted rather than feared. She treats the silo's people as an extended family, worries about the falling birth rate and the restless lower levels, and has never made peace with the cleanings she is obliged to preside over. Her long working partnership with her deputy is the closest thing either of them has to a marriage.",
+            "id": "mayor-jahns",
+            "name": "Mayor Jahns",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The silo's senior deputy, a lean, gruff man near the end of a long career, who has served under more than one sheriff and has been quietly in love with Mayor Jahns for most of his life without ever saying so. He is loyal, unpolished, and openly suspicious of the departments at the top of the silo.",
+            "id": "marnes",
+            "name": "Marnes",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The head of IT, a short, precise man with round glasses who runs the silo's most powerful department. IT owns the servers, the computers, the outside sensors and the manufacture of the suits used for cleanings, and Bernard is accustomed to mayors deferring to him. He is polite, quick, and unmistakably the person in any room who knows the most.",
+            "id": "bernard-holland",
+            "name": "Bernard Holland",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The IT lab technician who prepares a condemned person for the walk outside: fitting the suit, running the checklist, and explaining what is expected of them with the wool pads and the sensor lenses. He treats the ritual as a procedure with steps, which is what makes it possible for him to perform it.",
+            "id": "nelson",
+            "name": "Nelson",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A machinist from Mechanical at the very bottom of the silo, who has spent her adult life keeping the main generator and the pumps alive. Practical, blunt and famously stubborn, she thinks in terms of broken parts and root causes and has no patience for the politics of the upper levels. She has not been up to the top in years and is estranged from her father, who lives in the mid levels. The dead sheriff named her as his replacement, and the mayor comes down the entire length of the silo to offer her the badge.",
+            "id": "juliette-nichols",
+            "name": "Juliette Nichols",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Juliette's father, a doctor who delivers babies in one of the silo's mid-level nurseries. Quiet and dutiful, he has been estranged from his daughter since she left for Mechanical as a girl, and the two have barely spoken since.",
+            "id": "peter-nichols",
+            "name": "Peter Nichols",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young shadow in the sheriff's office and the candidate IT would prefer to see wearing the badge. Agreeable, careful of his prospects, and comfortably aligned with the department that backs him.",
+            "id": "peter-billings",
+            "name": "Peter Billings",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An elderly electrician in Mechanical who repairs the silo's small electronics and has not left his workshop, or the down-deep, in decades. His own people consider him eccentric, but there is nothing electrical in the silo he cannot take apart and put back together, and he was the nearest thing Juliette had to a teacher.",
+            "id": "walker",
+            "name": "Walker",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The head of Mechanical, a large, heavily bearded man who runs the down-deep's workforce and answers to the upper levels only when he must. He is fiercely protective of his people, contemptuous of decisions taken by officials who have never stood beside the generator, and slow enough to anger that his anger carries weight.",
+            "id": "knox",
+            "name": "Knox",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young IT technician who spends his off hours alone in the darkened top-floor cafeteria with a chart and a pencil, mapping the handful of stars the outside sensors can pick out at night. Shy, methodical and more curious than ambitious, he is one of very few people at the top of the silo who treats the new sheriff as something other than an intruder.",
+            "id": "lukas-kyle",
+            "name": "Lukas Kyle",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young technician Juliette trained as a shadow in Mechanical before he was promoted up to IT. Bright, eager and still loyal to the people who raised him, he thinks of himself as one of hers rather than one of theirs.",
+            "id": "scottie",
+            "name": "Scottie",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A mechanic on the generator crew in the down-deep and one of Juliette's closest friends there. Level-headed and quick to act, she is one of the people Mechanical turns to when the department has to organize itself.",
+            "id": "shirly",
+            "name": "Shirly",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The head of Supply, a small, sharp-tongued older woman who runs the department that manufactures nearly everything the silo uses. Supply's relationship with IT is a rivalry as much as a partnership, and she is one of the few people in the silo willing to act against IT's interests.",
+            "id": "mclain",
+            "name": "McLain",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Jimmy Parker"
+            ],
+            "description": "The only living resident of Silo 17, a bearded man who has spent more than thirty years alone behind the steel door of that silo's server room. He was a boy when his silo collapsed and was sealed inside for his own safety; he has kept himself going since on stored food and scavenged water, talking mostly to himself. He is skittish around another person, protective of his territory, and knows the dead silo better than anyone alive.",
+            "id": "solo",
+            "name": "Solo",
+            "reveal": {
+              "chapter": 60
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "wool-omnibus-edition-wool-1-5"
+      },
+      "recaps": {
+        "ending": "Juliette crosses the hills from Silo 17 in a suit she has built herself, forces her way into Silo 18 through the airlock and survives the burn cycle meant to sterilize the chamber. Her return is more than the existing order can absorb. Bernard Holland's rule ends with his death, and Lukas Kyle, whom Bernard had been training as his shadow, is left holding IT and everything it guards: the Order, the hidden equipment in the server room, and the knowledge that Silo 18 is one of fifty. The cost of the uprising is enormous. Knox and many of Mechanical's and Supply's people are dead, whole levels are wrecked, and the survivors have to rebuild among neighbors who no longer believe the story they were raised on. Juliette, condemned and presumed dead, is now the only person who has walked outside and come back, which makes her both a danger to the silo's peace and the closest thing it has to a leader. Weeks later she is back in Mechanical with Shirly and Walker, refusing to let the silo settle into its old habits. She has left Solo alone in Silo 17 with a promise, and she begins working out how to reach him without crossing the poisoned surface, by digging through the earth between the two silos. A short closing scene returns to Silo 17 and the man waiting there.",
+        "in_short": "Thousands of people live in a buried silo of more than a hundred and forty levels, taught that the air outside is lethal and that merely wishing to leave is a capital offense, punished by being sent out to clean the camera lenses and die on the hill. When Sheriff Holston follows his dead wife outside, he discovers that the beautiful landscape his helmet shows him is a fabrication and the real world is ruin. His replacement, the machinist Juliette Nichols, is fetched up from Mechanical at the bottom of the silo, and when she starts asking what the IT department is hiding she is condemned to cleaning herself. Friends in Mechanical and Supply secretly build her a suit that holds. Juliette refuses to clean, walks over the hill, sees dozens of other silos sunk into the landscape, and takes shelter in the derelict Silo 17, where a lone survivor called Solo has lived for decades. Her survival shatters the ritual that kept her own silo obedient and sets off a bloody uprising. She builds a working suit, walks back, and returns to a silo whose ruling order has collapsed and whose deepest secret, that there are fifty silos and someone outside is watching them all, now sits in friendlier hands.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "The silo is a buried tower of more than a hundred and forty levels joined by one enormous spiral staircase. A wall screen in the top-floor cafeteria shows a dead brown landscape and the broken skyline of a city on the horizon. Saying aloud that you want to go outside is the silo's one unforgivable crime, punished by cleaning: the offender is sealed into a protective suit, sent out with wool pads to wipe the camera lenses, and dies on the hillside among earlier cleaners. Everyone swears they will not clean, and everyone does. Three years earlier, Sheriff Holston's wife Allison, a technician who recovered deleted data from the silo's servers, became convinced that the silo's recorded history had been falsified and the view outside faked. She said the forbidden words and was sent out. Holston has now asked to follow her. Mayor Jahns, Deputy Marnes and Bernard Holland of IT preside while the technician Nelson fits his suit. Outside, Holston's visor shows him blue sky, green hills and a gleaming city, and he cleans the lenses as every cleaner does before walking toward the city. As he goes, the image degrades: the display has been feeding him a lie, and the real world is ash and rubble. He finds Allison's body on the hill and dies beside her.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "With the sheriff's post empty, Mayor Jahns and her elderly deputy Marnes decide to carry the badge down themselves rather than summon a candidate up. Holston left a name behind him: Juliette Nichols, a machinist from Mechanical at the very bottom of the silo. The journey down the great staircase takes days and lays out the silo's geography and its factions: the up-top with its screen and its offices, the mid levels with the hydroponic farms, the nurseries and the bazaar, and the down-deep, where Mechanical keeps the generator and the pumps running and resents being governed from above. Along the way Jahns visits Juliette's father, a doctor in one of the nurseries, who has not spoken to his daughter in years. Bernard Holland, head of IT and the silo's most powerful official, lobbies against Juliette and pushes his own preferred candidate, a young shadow named Peter Billings. Jahns and Marnes, who have worked side by side for decades without ever admitting what they feel, edge toward saying it.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In Mechanical, Jahns and Marnes find Juliette Nichols in the middle of an unpopular argument for shutting the silo's generator down long enough to repair it properly instead of patching it forever. She is capable, blunt and entirely uninterested in policing, but she has her own reasons for wanting access to the sheriff's files, and she accepts the badge. Jahns is delighted; Bernard is not. On the long climb home Jahns weakens and dies. Her canteen had been refilled during a stop at IT, and Marnes is certain she was poisoned. He carries her up and the silo mourns a mayor who had held office longer than most residents have been alive. With Jahns gone, Bernard Holland steps in as acting mayor while keeping his hold on IT, concentrating more power in one man than the silo's arrangements were meant to allow.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Marnes is found dead in his apartment, recorded as a suicide, and Juliette arrives at the top of the silo to take a job with no deputy and no allies. She is out of place among the up-top offices and openly distrusted by Bernard, who tried to keep her from the badge in the first place. Instead of settling in she reopens the case of Holston and his wife and starts asking what Allison found in the servers, recovering traces of that old work. She keeps a line open to Mechanical through Walker, the ancient electrician who never leaves his workshop, and she asks Scottie, a technician she trained herself before he was promoted into IT, to look quietly into what the department is hiding. She also meets Lukas Kyle, an IT worker who spends his nights alone in the darkened cafeteria charting the few stars the outside sensors can see.",
+            "through": {
+              "chapter": 23
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Scottie is found dead, and Juliette has no doubt he was killed for what she asked him to look for. Pushing harder, she comes to believe that IT has run the silo for generations behind whichever mayor happened to hold the title, and that the suits issued for a cleaning are built to fail on purpose: the seals and the heat tape are chosen so that no one who walks out can walk far. Bernard moves before she can prove any of it. Juliette is arrested, charged with the silo's capital offense on evidence arranged for the purpose, and sentenced to cleaning. Her friends in the down-deep are far below her and cut off, and she is held at the top of the silo to be fitted for a suit.",
+            "through": {
+              "chapter": 29
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Word of Juliette's sentence reaches Mechanical, and Walker, Knox and the Supply chief McLain quietly arrange a substitution: the tape and seals packed into her suit are made by Supply rather than by IT, and they will hold. Juliette is walked into the airlock and pushed out. Her visor shows her the same false paradise Holston saw, but she has been warned what to expect and does not believe it. She refuses to clean the lenses, which no condemned person has ever done, and instead of lying down on the hill she turns and walks. Watching from inside, a silo that has built its obedience on the certainty that everyone cleans sees the ritual break in front of it. From the top of the hill Juliette sees something no one inside has ever been shown: the land is pocked with other silos, dozens of them, laid out in a grid across the depression.",
+            "through": {
+              "chapter": 38
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Juliette's refusal shatters the story the silo has been told about itself, and the down-deep boils over while Bernard tries to contain the damage. Knox, McLain and the workers of Mechanical and Supply arm themselves and start up the staircase, meaning to take IT's server room and find out what has been kept from them. Bernard, needing a successor he can control, begins drawing Lukas Kyle closer and testing him. On the surface, Juliette walks until her air is nearly gone and drops down the ramp of the nearest silo she can reach. Inside she finds a place long dead: dark, stripped, unlit, and drowned far below. She peels off the failing suit, breathes air that does not kill her, and begins scavenging for food and light in the ruins of Silo 17.",
+            "through": {
+              "chapter": 44
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Silo 18 tears itself apart. The march up the staircase becomes a siege of the upper levels, with Mechanical and Supply pushing toward IT and Bernard's people holding the landings above them. Casualties mount on both sides and ordinary residents are caught in between. Bernard falls back to the server room, the one part of the silo that actually matters, and takes Lukas with him. In Silo 17, Juliette works her way down through level after ruined level and finds the wreckage of an old catastrophe: smashed doors, burned floors, and water swallowing everything below a certain depth. She survives on scavenged stores and starts to understand that this silo did not simply fail. It was emptied violently a long time ago, and the machinery that kept it alive was deliberately shut off.",
+            "through": {
+              "chapter": 51
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Juliette discovers that Silo 17 has one living resident: a bearded, half-wild man who calls himself Solo and who has spent most of his life behind the steel door of that silo's server room. He was a boy when his silo fell and was sealed in for his own protection. From him Juliette learns how Silo 17 died, and in the server room she finds the same equipment Bernard guards in Silo 18, including a radio. Using it she reaches home and speaks to Lukas, who by now is Bernard's chosen shadow and has been shown the truth a piece at a time: there are fifty silos, all of them watched from elsewhere, and the rules everyone lives by come out of an old book called the Order. Presumed dead by everyone she loves, Juliette starts planning how to get back.",
+            "through": {
+              "chapter": 60
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In Silo 18 the rebellion is broken. The push up the stairs collapses, Bernard's side keeps the server room, and Knox is among the dead; the survivors fall back to Mechanical, where Shirly and the others keep the generator turning and wait for the reckoning. Lukas, kept in the server room, is trained as Bernard's successor and given the silo's real history in installments, while keeping Juliette's radio calls to himself. In Silo 17, Juliette decides she will not stay. She strips the abandoned silo's stores for suit parts and builds one properly, using everything she has worked out about why IT's suits are designed to come apart. With Solo's reluctant help she makes it airtight, and walks out onto the surface again, heading back over the hills toward Silo 18.",
+            "through": {
+              "chapter": 70
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Juliette reaches Silo 18's airlock and gets inside, surviving the burn meant to sterilize the chamber. Her return finishes what her refusal to clean began: Bernard's rule ends with his death, and Lukas, who now knows the silo's real history and how many silos there are, is left in charge of IT. The uprising has cost the silo enormously, with Knox and much of Mechanical's and Supply's strength dead and whole levels wrecked, and the survivors must rebuild alongside people who no longer believe what they were taught. Weeks later Juliette is back in Mechanical with Shirly and Walker, no longer able to pretend that the outside is unreachable or that Silo 17 is empty. She has left Solo behind with a promise to return, and she begins working out how to reach him without crossing the surface, by digging through the earth between the two silos. A brief closing scene returns to Silo 17 and its solitary survivor.",
+            "through": {
+              "chapter": 82
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "wool-omnibus-edition-wool-1-5"
+      }
+    },
     "words-of-radiance": {
       "characters": {
         "characters": [

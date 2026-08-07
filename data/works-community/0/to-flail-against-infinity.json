@@ -1366,6 +1366,251 @@
         "work": "tower-of-blight"
       }
     },
+    "tower-of-dawn": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Hand to King Dorian of Adarlan and formerly Captain of the Royal Guard, arrived in the southern continent in a wheeled chair with no feeling below the waist. He has two tasks: persuade the khagan of the vast southern empire to send armies north into a war that is not his, and find out whether the healers of Antica can undo what a blast of raw magic did to his spine. He carries an enormous amount of guilt, about Dorian, about Aelin, about the oaths he broke and the ones he kept, and he has not yet worked out how much of it is his to carry.",
+            "id": "chaol-westfall",
+            "name": "Chaol Westfall",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A healer at the Torre Cesme, the finest healing academy in the world, and its most gifted student. She came out of Fenharrow as a refugee after Adarlan's soldiers burned her town and killed her mother, worked her way across a continent, and has built a life in Antica. She is assigned to the Adarlanian lord in the wheeled chair and wants nothing to do with him, and the fact that her oath will not let her refuse makes it worse.",
+            "id": "yrene-towers",
+            "name": "Yrene Towers",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Formerly a city guard of Rifthold, now Captain of Adarlan's Royal Guard and Chaol's companion on the mission. Her family emigrated from the southern continent and she still has relatives in Antica, which gives her a foothold at court that Chaol does not have. She is a superb archer and increasingly restless in a role that keeps her standing beside a negotiating table.",
+            "id": "nesryn-faliq",
+            "name": "Nesryn Faliq",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ruler of the khaganate, an empire of thirty-odd conquered kingdoms governed from Antica, and one of the most powerful men alive. He has six children and has never named an heir, on the principle that they should earn it. He is grieving his youngest daughter and is in no hurry to commit soldiers to a northern war.",
+            "id": "urus",
+            "name": "Urus, Khagan of the Southern Continent",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The khagan's second son and prince of the rukhin, the horse-lords turned sky-riders who live in the Tavan Mountains and fly enormous birds called ruks. He is thoughtful, watchful, and unusually willing to listen to two foreigners with an implausible story about demons.",
+            "id": "sartaq",
+            "name": "Sartaq",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The khagan's eldest son, master of the empire's spy networks and its most accomplished politician. He controls what information reaches his father, is contemptuous of Adarlan, and treats Chaol's request as a bargaining position rather than an emergency.",
+            "id": "arghun",
+            "name": "Arghun",
+            "reveal": {
+              "chapter": 2
+            }
+          },
+          {
+            "description": "The khagan's second daughter, sharp-tongued and politically ruthless, who commands a fleet and enjoys watching her siblings compete. She befriends Nesryn on her own terms.",
+            "id": "hasar",
+            "name": "Hasar",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The khagan's third son, a cavalry commander, straightforward and good-natured, who has been in love with Yrene Towers for some time and has not been discouraged as firmly as he might have been.",
+            "id": "kashin",
+            "name": "Kashin",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The khagan's third daughter, gentle and newly married, expecting her first child. She has been quiet since her youngest sister's death.",
+            "id": "duva",
+            "name": "Duva",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The khagan's youngest daughter, who died some months before the book opens by walking off a tower in the middle of the night. The family has no explanation for it and the household does not discuss it.",
+            "id": "tumelun",
+            "name": "Tumelun",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Healer on High, who runs the Torre Cesme, elderly, kind, and entirely unfooled by anybody. She assigns Yrene to Chaol's case deliberately, for reasons that have as much to do with Yrene as with the patient.",
+            "id": "hafiza",
+            "name": "Hafiza",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Head librarian of the khagan's great library, guardian of texts in languages nobody living reads, who takes requests seriously and questions even more so.",
+            "id": "nousha-esfandiar",
+            "name": "Nousha Esfandiar",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Sartaq's ruk, a great golden bird of prey large enough to carry two riders, fiercely protective of him and unimpressed by strangers.",
+            "id": "kadara",
+            "name": "Kadara",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young rukhin rider of the Eridun clan, blunt, funny, and one of the best fliers in the aerie, with an ongoing feud with a rider from a neighbouring clan that everyone but the two of them understands perfectly.",
+            "id": "borte",
+            "name": "Borte",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sartaq's hearth-mother and the elder of the Eridun aerie, keeper of the rukhin's oldest stories, including the ones about what lives in the marshes to the south and why the clans stopped going there.",
+            "id": "houlun",
+            "name": "Houlun",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A travelling merchant encountered in the mountains, older than he looks and more capable than a merchant should be, searching the southern continent for a relative he has never met.",
+            "id": "falkan-ennar",
+            "name": "Falkan Ennar",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A rukhin rider of the Berlad clan, a good flier and a worse diplomat, whose long-running quarrel with Borte is the aerie's chief entertainment.",
+            "id": "yeran",
+            "name": "Yeran",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "tower-of-dawn"
+      },
+      "recaps": {
+        "ending": "Chaol is healed. The Valg residue is burned out of his spine and he walks again, and he and Yrene Towers marry before they leave Antica. Yrene destroys the demon that has been riding the princess Duva, saving her and her unborn child, which finally convinces the khagan that the northern war is already inside his own household; he commits his armies, and Hasar's fleet, to sailing for Terrasen. Sartaq brings the rukhin, and he and Nesryn ride north together as partners in every sense. The alliance Chaol was sent to beg for is won, and it is far larger than anything Dorian dared ask. More than that, they carry two pieces of knowledge north with them: that a healer's magic can unmake a Valg demon outright, which no army has ever been able to do, and that the Valg reached this world long before the war a thousand years ago, and that their queens were as real as their kings. Yrene also carries something she has not told Chaol. They sail for a continent that has, in the months they were gone, gone very badly wrong, and neither of them yet knows what has happened to Aelin, to Dorian, or to Terrasen.",
+        "in_short": "Chaol Westfall and Nesryn Faliq sail to Antica in the southern continent to beg an army from the khagan and to find a healer for Chaol's broken spine. Chaol is assigned to Yrene Towers, a refugee from Adarlan's conquests who despises everything he represents, and their sessions turn up something worse than an injury: a Valg residue left in the wound, which fights back. Healing it forces Chaol through his own history and slowly gives him back his legs, and it turns Yrene's hostility into partnership and then love. Nesryn goes south with Prince Sartaq to the ruk riders of the mountains, where the clans' oldest stories and the monstrous spiders of the Dagul Fens reveal that the Valg have been in the southern continent for thousands of years. Court politics stall the alliance until a demon hidden inside the khagan's own daughter is exposed and destroyed by Yrene's magic, proving the danger is already inside the palace. The khagan commits his armies and fleet, Sartaq brings the rukhin, Chaol and Yrene marry, and they all turn north for a war whose state they cannot guess.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Aelin Galathynius revealed herself in Rifthold, freed her cousin Aedion, and destroyed the black tower that had kept magic dead across the continent for a decade. Confronting the king of Adarlan in his throne room, she and Chaol Westfall watched Dorian Havilliard break the Valg collar that had enslaved him and kill his own father, who claimed with his last breath that he had himself been possessed for years. The magic loosed in that room shattered Chaol's spine, leaving him alive but without the use of his legs. Aelin brought down the glass castle, left Dorian king over a ruined capital, and turned north to claim Terrasen and to fight Erawan, the Valg king waking at the fortress of Morath with an army, wyverns, witches, and one of the three Wyrdkeys. Chaol, unable to walk and unwilling to be a burden, sailed for the southern continent with Nesryn Faliq, both to seek the legendary healers of the Torre Cesme in Antica and to ask the khagan of that vast empire for an army. Neither of them knows what has happened in the north since they left.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Chaol and Nesryn arrive in Antica, the god-city, capital of an empire of thirty-odd conquered kingdoms ruled by the khagan Urus. They are received politely and helped with nothing. The khagan has six children and has never named an heir, so every audience is a contest between them: Arghun controls the spies and the flow of information, Hasar controls a fleet, Kashin commands cavalry, Sartaq leads the sky-riding rukhin, and Duva is newly married and pregnant. The family is in mourning for the youngest, Tumelun, who walked off a tower months ago for no reason anybody can name. Chaol's request for soldiers is treated as a foreign quarrel of no consequence. Separately, the Torre Cesme sends a healer to assess him: Yrene Towers, the academy's most gifted student, who fled Fenharrow as a child after Adarlan's soldiers burned her town and killed her mother, and who makes no attempt to hide what she thinks of an Adarlanian lord asking her for help.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Yrene's oath obliges her to take the case whatever she feels about it, and she begins working on Chaol's spine. The damage is not simply physical; when she reaches into the injury with her magic, something in it pushes back, cold and aware and unlike anything the Torre has records for. The sessions leave both of them shaking, and they can only be done a little at a time. Nesryn, whose family emigrated from Antica a generation ago, reconnects with relatives in the city and gets further with the khagan's children socially than Chaol does formally. Sartaq is the one prince who takes the story of the Valg seriously enough to ask follow-up questions. Chaol pushes himself through exercises with a stubbornness that alarms his healer, and the two of them argue their way, slowly, into something like a working relationship.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The negotiations stall. Arghun blocks what he can and trades information for concessions, and the khagan will not move without cause. Yrene's history and Chaol's begin to come out to each other. Years ago in a coastal town, a young woman passing through gave Yrene a fortune in gold and spent a night teaching her how to defend herself, which is the only reason Yrene ever reached Antica at all; the woman was Celaena Sardothien, and the connection between the healer and the man in the chair is older than either realized. Chaol and Nesryn, whose relationship has been drifting for months, end it honestly and remain friends. Sartaq, convinced that the rukhin's oldest stories bear on what Chaol has described, offers to take Nesryn south into the Tavan Mountains to see for herself, and she goes.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Yrene identifies what is in Chaol's wound: a residue of Valg magic, left by the blast that broke him, actively resisting every attempt to heal it. Getting it out means fighting it, and it fights by dragging Chaol back through the worst of his own memories, his father, his oath, Dorian, Aelin, and everything he believes he failed at. Yrene has to go in with him. The work is brutal and it begins, slowly, to produce results. Meanwhile there are attempts on Chaol's life in the city, and it becomes clear that someone in Antica does not want the alliance made or the healing finished. Nesryn and Sartaq fly south on his ruk, Kadara, to the mountain aeries of the rukhin, leaving Chaol to hold the court on his own.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At the Eridun aerie Nesryn meets Sartaq's hearth-mother Houlun, keeper of the clan's oldest stories, and the young riders Borte and Yeran. Houlun tells them what the rukhin have avoided for generations: the Dagul Fens to the south are held by the kharankui, enormous intelligent spiders, and the clan's tales describe them as something that came from elsewhere and was here long before the khaganate. Nesryn learns to fly. In Antica, Chaol works the great library with the head librarian Nousha, hunting ancient records in dead languages, and Yrene finds fragments describing a war and an enemy that the northern continent believed was a thousand years old and which the south remembers as far older. Session by session Yrene drives the darkness in Chaol's spine back, and sensation begins to return to his legs.",
+            "through": {
+              "chapter": 38
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Nesryn and Sartaq go into the Dagul Fens with a shapeshifting travelling merchant, Falkan Ennar, and find the kharankui waiting for them. What they learn there confirms the worst reading of the old stories: the Valg came to this world long before the war the northern kingdoms remember, they made bargains and left things behind, and there were queens among them as well as kings. The three barely get out. In Antica, Chaol takes his first steps. Yrene, working out what her power actually does, discovers something no army has: a healer's magic does not merely resist Valg corruption, it destroys it, unmaking the demon rather than driving it out. That single fact changes what a war against Erawan could look like. It also makes Yrene a target, and the attacks in the city sharpen.",
+            "through": {
+              "chapter": 48
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The pieces come together at court. Chaol and Yrene, comparing the library's records with what Nesryn and Sartaq brought back from the fens, realize that the enemy is not waiting at the northern border, it is already inside the palace, and has been for some time. Tumelun's death was not what it appeared. The trail leads to Duva, whose gentleness and quiet since her sister's death are the work of a Valg demon wearing her, hidden well enough to fool her own family for months. Chaol, walking now, and Yrene move against it in the heart of the khagan's household, at enormous risk to Duva and her unborn child.",
+            "through": {
+              "chapter": 58
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Yrene destroys the demon inside Duva and saves both her and the child, in front of the khagan and his court. That ends the argument: the war is not a foreign quarrel, and the khagan commits his armies, with Hasar's fleet to carry them and Sartaq's rukhin flying north on their own wings. Chaol's spine is fully healed. He and Yrene marry before they leave Antica, and she sails north with him as his wife and as a weapon Erawan has no answer for. Nesryn and Sartaq go north together, in command of the sky-riders. What they carry with them is more than an army: the knowledge that a healer can unmake a Valg outright, and the knowledge that the Valg came to this world long before the last war and that their queens are as real as their kings. None of them yet know what has happened in the north while they were gone, or that Aelin Galathynius is no longer where they left her.",
+            "through": {
+              "chapter": 68
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "tower-of-dawn"
+      }
+    },
     "towers-of-midnight": {
       "characters": {
         "characters": [
