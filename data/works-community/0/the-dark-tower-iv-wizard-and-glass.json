@@ -1745,6 +1745,181 @@
         "work": "the-dragon-republic"
       }
     },
+    "the-drop": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A veteran LAPD detective back in the Open-Unsolved Unit and approaching compulsory retirement. He is raising his teenage daughter alone while working a decades-old murder and a politically sensitive death at the same time, knowing that departmental decisions can shorten or extend the investigative life he still wants.",
+            "id": "harry-bosch",
+            "name": "Harry Bosch",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Bosch's partner in Open-Unsolved. He is diligent, ambitious, and comfortable with the technical work needed to bring old evidence into a modern investigation, though Bosch does not always treat him as an equal participant.",
+            "id": "david-chu",
+            "name": "David Chu",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A nineteen-year-old woman murdered in 1989. Preserved biological evidence from her body produces a modern DNA hit that should be impossible, forcing Bosch and Chu to reconsider both the identity of the donor and the history behind the sample.",
+            "id": "lily-price",
+            "name": "Lily Price",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A convicted sexual offender whose DNA matches evidence from Lily Price's murder. He was only eight years old when she died, so the result cannot be treated as a simple identification and instead points toward a biological connection that he may not understand himself.",
+            "id": "clayton-pell",
+            "name": "Clayton Pell",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A psychologist who treats people convicted of sexual offenses, including Clayton Pell. She is protective of clinical boundaries but willing to help Bosch understand patterns of abuse and risk; their professional contact also develops a personal dimension.",
+            "id": "hannah-stone",
+            "name": "Hannah Stone",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Los Angeles city councilman and former senior LAPD official whose long history with Bosch is openly hostile. When his son dies in a fall from a hotel, Irving demands an investigation that cannot be dismissed as either police retaliation or political favoritism.",
+            "id": "irvin-irving",
+            "name": "Irvin Irving",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Irvin Irving's adult son, found dead after falling from a room at the Chateau Marmont. His work, state of mind, and relationship with his powerful father become central to determining whether the death was suicide or whether someone sent him over the balcony.",
+            "id": "george-irving",
+            "name": "George Irving",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Maddie"
+            ],
+            "description": "Bosch's teenage daughter, now living with him in Los Angeles after her mother's death in Hong Kong. Intelligent and observant, she is interested in her father's work, while Bosch tries to give her security without hiding the demands and dangers of his profession.",
+            "id": "madeline-bosch",
+            "name": "Madeline Bosch",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Kiz Rider"
+            ],
+            "description": "Bosch's former Open-Unsolved partner, now working in the department's senior command structure. She understands his methods and the politics surrounding the Irving investigation, but her position requires her to consider consequences beyond a single case.",
+            "id": "kizmin-rider",
+            "name": "Kizmin Rider",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A man whose biological and personal history becomes relevant to the impossible DNA result in the Lily Price case. Bosch must establish the relationship through evidence rather than assume that a family match alone proves murder.",
+            "id": "chilton-hardy",
+            "name": "Chilton Hardy",
+            "reveal": {
+              "chapter": 110
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-drop"
+      },
+      "recaps": {
+        "ending": "The impossible DNA hit is explained by kinship rather than laboratory error. Clayton Pell did not kill Lily Price as a child; the biological material belongs to his father, Chilton Hardy, whose violence extends beyond the single 1989 case. Bosch's investigation identifies Hardy as Lily's killer and exposes a predatory history that had remained hidden behind disconnected victims and an unknown family relationship. Pell is forced to confront the fact that the same man responsible for his origin and inherited DNA is also the murderer the sample was pointing toward. In the parallel inquiry, Bosch determines that George Irving went to the Chateau Marmont intending to end his own life; the evidence does not support the politically useful homicide theory promoted around his fall. Irvin Irving responds to an answer he does not want by using his influence against Bosch rather than accepting the limits of the evidence. David Chu's disclosure of protected case information breaks Bosch's trust and damages their partnership. Bosch nevertheless retains a defined period in the department's retirement program, giving him a little more than three years before he must leave. He ends with Maddie at home and a visible clock on the police work he still considers unfinished.",
+        "in_short": "Working in Open-Unsolved with David Chu, Bosch receives a DNA match in the 1989 murder of Lily Price, but the donor, convicted offender Clayton Pell, was eight when she died. The anomaly leads through Pell's family history and psychologist Hannah Stone to his biological father, Chilton Hardy, whom Bosch identifies as Lily's killer and a long-hidden predator. At the same time, city councilman and former police official Irvin Irving demands that Bosch investigate the hotel fall that killed his son George. Political pressure favors a murder finding, but Bosch concludes that George took his own life. Irving turns the unwelcome result against Bosch, while Chu's leak of confidential information destroys trust between the partners. Bosch's own deadline is clarified when he is placed in the department's retirement-option program with a little more than three years left to serve. Still raising Maddie after Eleanor's death, he closes the cases knowing exactly how limited his remaining time as an LAPD detective has become.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Bosch returned to the LAPD after retirement, first joining Open-Unsolved and later working current homicides. The Fortune Liquors case took him to Hong Kong after a video showed his daughter Maddie captive. Bosch rescued her, but former wife Eleanor Wish was killed, and the supposed triad connection proved false: the kidnapping was a separate extortion plot. Maddie now lives with Bosch in Los Angeles. He has moved back to the Open-Unsolved Unit with David Chu and again works old cases, but mandatory retirement is approaching and the department has not promised him indefinite time.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A new laboratory result reopens the 1989 murder of nineteen-year-old Lily Price. DNA recovered from her body matches Clayton Pell, a convicted sexual offender, yet Pell was only eight when Lily was killed. Bosch and partner David Chu must decide whether the old sample was contaminated, the modern test was mishandled, or the match points to a relationship rather than the named offender. Before they can settle into the cold case, Bosch is also assigned the death of George Irving, son of councilman and former police official Irvin Irving, after a fall from the Chateau Marmont.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bosch and Chu pursue both cases under different kinds of pressure. In Lily's case, they confirm that the DNA result is meaningful but cannot make Pell the adult attacker he would have needed to be in 1989. Pell's history and treatment with psychologist Hannah Stone suggest that abuse and unknown parentage may explain the genetic link. At the hotel, George Irving's room, movements, and injuries must answer whether he jumped or was pushed. His father's political power guarantees scrutiny of every conclusion, and senior officers want Bosch's independence without accepting all the disruption it brings.",
+            "through": {
+              "chapter": 37
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The cold case turns toward familial DNA. Bosch looks past Clayton Pell's convictions to the circumstances of his birth and the adults who shaped his life, seeking a male relative whose genetic profile could have produced the laboratory match. Hannah helps him understand Pell without treating the patient as merely evidence. Their work also brings Bosch and Hannah closer personally. In the Irving inquiry, interviews and records weaken the simple claim that political or business enemies arranged a killing, even as confidential details begin moving beyond the investigative team.",
+            "through": {
+              "chapter": 57
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bosch establishes that George Irving carried private burdens and had reasons for choosing the hotel himself. The physical sequence increasingly supports a deliberate fall rather than an intruder forcing him from the balcony. Irvin Irving resists that direction and treats any adverse conclusion as part of his long conflict with the LAPD. Meanwhile, the leak of restricted information creates consequences for the investigation and for Bosch's confidence in Chu. The Lily Price inquiry narrows toward the man who fathered Clayton Pell, a figure missing from the official histories Bosch first received.",
+            "through": {
+              "chapter": 78
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The family search narrows toward the missing adult who fathered Clayton Pell and could therefore explain the 1989 DNA without making Pell a child murderer. Bosch must turn the genetic relationship into ordinary evidence by establishing the man's identity, history, and access to Lily Price. The inquiry also forces Pell to face a biological past inseparable from violence. On the political case, Bosch prepares to report that George's death was suicide, knowing that the answer will satisfy neither Irving nor officials hoping for a manageable compromise.",
+            "through": {
+              "chapter": 96
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bosch proves that Chilton Hardy, not eight-year-old Clayton Pell, was the source of the DNA and the man who murdered Lily Price. Hardy's exposure resolves the impossible match and reveals a broader history of predation behind the old case. George Irving's fall is separately resolved as suicide; Bosch refuses to recast it as murder for the benefit of either Irvin Irving or the department. Irving retaliates politically, and Chu's leak leaves his partnership with Bosch badly damaged. Bosch's own status is set by the Deferred Retirement Option Plan: he has a little more than three years of LAPD service remaining before mandatory retirement. He returns to Maddie with two cases answered and a fixed countdown on how many more he can carry as a police detective.",
+            "through": {
+              "chapter": 114
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-drop"
+      }
+    },
     "the-dungeon-anarchists-cookbook": {
       "characters": {
         "characters": [

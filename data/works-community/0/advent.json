@@ -851,6 +851,204 @@
         "work": "advent-of-the-density-god"
       }
     },
+    "after-the-funeral": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The Belgian private detective whom the Abernethie family solicitor consults after two deaths disturb an already uneasy inheritance. Poirot approaches the family indirectly, testing memories and motives before entering their circle himself.",
+            "id": "hercule-poirot",
+            "name": "Hercule Poirot",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The careful family solicitor who attends Richard Abernethie's funeral and takes seriously Cora Lansquenet's startling suggestion that her brother was murdered. His knowledge of the relatives makes him Poirot's principal guide to the case.",
+            "id": "mr-entwhistle",
+            "name": "Mr Entwhistle",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Richard Abernethie's youngest sister, long regarded by the family as tactless and unreliable. At the gathering after the funeral, she voices a suspicion everyone else would prefer to dismiss.",
+            "id": "cora-lansquenet",
+            "name": "Cora Lansquenet",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Cora Lansquenet's companion at her isolated cottage. Once the owner of a small tea shop, she is practical about the household and familiar with Cora's enthusiasm for buying pictures of doubtful merit.",
+            "id": "miss-gilchrist",
+            "name": "Miss Gilchrist",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A composed and perceptive member of the Abernethie family, formerly married to Richard's late brother Leo. She watches the surviving relatives closely and becomes increasingly troubled by a detail she cannot immediately identify.",
+            "id": "helen-abernethie",
+            "name": "Helen Abernethie",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Richard's invalid younger brother, who lives away from the family home and speaks at length about his poor health. He resents demands on his comfort while remaining acutely interested in the inheritance.",
+            "id": "timothy-abernethie",
+            "name": "Timothy Abernethie",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Timothy's capable and patient wife, accustomed to nursing him and managing their household around his complaints. She is far more active and observant than her husband.",
+            "id": "maude-abernethie",
+            "name": "Maude Abernethie",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Richard's niece, energetic and business-minded, who runs an interior-decorating concern. She treats the legacy as practical capital and is impatient with the older generation's evasions.",
+            "id": "susan-banks",
+            "name": "Susan Banks",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Susan's husband, a quiet chemist whose reserved manner and professional knowledge attract suspicion when poison becomes part of the case.",
+            "id": "gregory-banks",
+            "name": "Gregory Banks",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Richard's glamorous niece, an actress who reacts to family tensions with theatrical directness. Her ambitions and expensive way of life make the inheritance useful to her.",
+            "id": "rosamund-shane",
+            "name": "Rosamund Shane",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Rosamund's husband, an actor and aspiring producer. Charming and financially ambitious, he hopes money from the Abernethie estate will support a theatrical venture.",
+            "id": "michael-shane",
+            "name": "Michael Shane",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young Abernethie cousin with debts and a habit of trying speculative ways to make money. His casual manner does little to reassure the relatives who know his financial position.",
+            "id": "george-crossfield",
+            "name": "George Crossfield",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The longtime butler at Enderby Hall. He knows the family routines, remembers its earlier members, and observes the return of the scattered heirs with formal discretion.",
+            "id": "lanscombe",
+            "name": "Lanscombe",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The police inspector responsible for the investigation into Cora Lansquenet's death. He shares information with Poirot while the detective explores the family relationships behind the physical evidence.",
+            "id": "inspector-morton",
+            "name": "Inspector Morton",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "after-the-funeral"
+      },
+      "recaps": {
+        "ending": "Poirot proves that Miss Gilchrist killed Cora Lansquenet. Before the funeral, she murdered Cora and then attended the family gathering disguised as her, relying on the relatives' long separation and Cora's familiar mannerisms to pass unnoticed. Her remark that Richard had been murdered was designed to make Cora's subsequent death look like the silencing of someone who knew a family secret. The inheritance disputes supplied several plausible suspects, while an arsenic-laced wedding cake sent to Miss Gilchrist helped present her as another target. Her real object was a painting among Cora's unfashionable purchases that she had recognised as a valuable Vermeer. Helen Abernethie had unconsciously noticed that Cora looked wrong at the funeral; when the memory began to return, Miss Gilchrist attacked her, but Helen survives. Poirot's reconstruction of the disguise, the painting, and the staged threats breaks the case. The surviving Abernethies are left to divide Richard's estate without the imagined murder conspiracy that had turned them against one another.",
+        "in_short": "After wealthy Richard Abernethie's funeral, his estranged sister Cora unexpectedly says that he was murdered. The family dismisses her, but she is killed the next day, and solicitor Mr Entwhistle asks Poirot to investigate Richard's heirs. Their debts, ambitions, and resentments provide many possible motives; poison sent to Cora's companion, Miss Gilchrist, and an attack on Helen Abernethie deepen the apparent family plot. Poirot discovers that Richard died naturally. Miss Gilchrist had already murdered Cora, impersonated her at the funeral, and planted the murder suggestion so Cora's own death would appear connected to the inheritance. She wanted a valuable Vermeer hidden among Cora's cheap-looking pictures and staged an attack on herself to support the deception. Helen had half-recognised that the woman at the funeral was not Cora, prompting Miss Gilchrist's attempt to silence her. Helen survives, and Poirot exposes the disguise and the true motive.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "The relatives of wealthy Richard Abernethie gather at Enderby Hall after his funeral. His death following illness appears natural, and his will distributes a substantial estate among the surviving branches of the family. The gathering exposes how little the relatives now see one another and how useful the money would be to several of them. As the solicitor Mr Entwhistle explains the arrangements, Richard's eccentric sister Cora Lansquenet remarks that Richard was murdered. The family treats the statement as one of Cora's habitual indiscretions, yet Entwhistle is unsettled by both the words and the reactions around the room.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Cora returns to the cottage she shares with Miss Gilchrist and is found murdered there after a brutal attack. Her death gives alarming weight to what she said after Richard's funeral. Inspector Morton begins the police inquiry, while Entwhistle reviews the heirs: invalid Timothy and his capable wife Maude; Susan Banks and her chemist husband Gregory; actress Rosamund and her husband Michael Shane; indebted George Crossfield; and Helen Abernethie. Each has financial concerns, but Cora's own small legacy seems inadequate as a motive. Entwhistle consults Poirot, who agrees that the sequence may have been arranged to direct attention toward Richard's family.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Poirot uses Mr Goby to check the relatives' finances and sends Entwhistle back through conversations that may reveal what Cora knew. Susan visits Cora's cottage and examines the household and her aunt's collection of undistinguished paintings. Miss Gilchrist describes their life together and her own lost tea shop. The investigation finds private pressures throughout the family but no clear reason for anyone to kill Richard, whose illness had already placed his fortune within reach. Poirot focuses on the assumptions produced by Cora's remark: whether it reflected knowledge, gossip, or a deliberate attempt to shape what the family would believe after her death.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A wedding cake sent through the post poisons Miss Gilchrist with arsenic, though she survives. The incident suggests that Cora's companion may know something dangerous and reinforces the appearance of a determined killer moving among the heirs. Poirot enters the family circle under a professional pretext connected with the contents and sale of Enderby Hall, allowing him to watch the relatives together. Their quarrels and needs remain real, but their accounts of the funeral are oddly uniform because everyone expected Cora to behave tactlessly. Helen senses that something at the gathering was wrong without yet being able to recover the exact impression.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Poirot presses on details of appearance, memory, and the way a familiar person can be recognised from manner rather than close observation. Attention also returns to Cora's pictures and to what happened to the contents of her cottage. Helen's buried memory begins to surface: the unease dates from seeing Cora at the funeral, not merely hearing her accusation. Before she can safely explain it, she is struck and seriously injured. The attack confirms that her observation matters. Poirot now has to connect the false trail of Richard's supposed murder, the staging of danger around Miss Gilchrist, and an object valuable enough to justify Cora's death.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Poirot identifies Miss Gilchrist as the killer. She murdered Cora before Richard's funeral, disguised herself as Cora for the family gathering, and planted the claim that Richard had been murdered. Because the relatives had not seen Cora for years, an imitation of her clothes, voice, and familiar head movements carried the deception. Cora's death then appeared to be retaliation for secret knowledge, sending suspicion toward Richard's heirs. Miss Gilchrist also sent herself the poisoned cake to pose as a threatened witness and attacked Helen when Helen began to remember that the apparent Cora looked wrong. The motive was one of Cora's supposedly poor pictures: Miss Gilchrist recognised it as a genuine and highly valuable Vermeer and tried to secure it unnoticed. Richard's death was natural; the imagined conspiracy around it was the screen for Cora's murder and the theft of the painting. Helen survives, and Poirot's reconstruction exposes both the impersonation and the staged clues.",
+            "through": {
+              "chapter": 26
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "after-the-funeral"
+      }
+    },
     "all-systems-red": {
       "characters": {
         "characters": [

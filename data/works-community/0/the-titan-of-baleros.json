@@ -1309,6 +1309,211 @@
         "work": "the-twelfth-conclave"
       }
     },
+    "the-two-swords": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A dark elf ranger reunited with the friends he mistakenly mourned, though the war has taken Tarathiel and Delly and left Bruenor badly wounded. Drizzt now fights with allies again while trying to distinguish defense from the vengeance that nearly consumed him.",
+            "id": "drizzt-do-urden",
+            "name": "Drizzt Do'Urden",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "King of Mithral Hall, gravely injured in the defense that stopped Obould's immediate assault. Bruenor's survival matters to the dwarves as both a personal hope and a political question, since a continuing war requires someone able to unite scattered forces.",
+            "id": "bruenor-battlehammer",
+            "name": "Bruenor Battlehammer",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Bruenor's adopted daughter and Drizzt's partner. Catti-brie helps hold the companions together around Bruenor's sickbed and brings Taulmaril to the renewed fighting when the siege gives way to a struggle over the surrounding land.",
+            "id": "catti-brie",
+            "name": "Catti-brie",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Bruenor's foster son, carrying Aegis-fang and grieving Delly's death. Wulfgar must decide what responsibility to Colson now requires and whether his future lies with the companions or with the northern people from whom he first came.",
+            "id": "wulfgar",
+            "name": "Wulfgar",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The halfling member of the Companions of the Hall. Regis survives the siege and supports Wulfgar through the practical journey created by Delly's death, while remaining a trusted scout and negotiator in Bruenor's wider cause.",
+            "id": "regis",
+            "name": "Regis",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The child whom Wulfgar and Delly raised after leaving Auckney. With Delly dead and war surrounding Mithral Hall, Colson's need for a secure home forces Wulfgar to settle an obligation that courage in battle cannot answer.",
+            "id": "colson",
+            "name": "Colson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The elf warrior who helped pull Drizzt out of solitary vengeance. Innovindil continues the campaign after Obould killed Tarathiel, combining aerial scouting and patience with a determination that grief should sharpen her purpose without owning it.",
+            "id": "innovindil",
+            "name": "Innovindil",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The orc king whose army has failed to take Mithral Hall but controls much of the country around it. Obould must turn a coalition built for conquest into something that can survive winter, rival chiefs and the competing ambitions of his giant allies.",
+            "id": "obould-many-arrows",
+            "name": "Obould Many-Arrows",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The frost giant leader allied with Obould. Gerti's warriors remain the coalition's strongest answer to dwarven fortifications, but she has her own claim to authority and no intention of letting an orc king convert her aid into permanent command over the giants.",
+            "id": "gerti-orelsdottr",
+            "name": "Gerti Orelsdottr",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A veteran commander responsible for Mithral Hall's disciplined defense. Banak must convert survival under siege into a workable campaign outside the gates without spending dwarf lives as if Obould's enormous host can be defeated in one charge.",
+            "id": "banak-brawnanvil",
+            "name": "Banak Brawnanvil",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The shield dwarf leader whose break with Mirabar brought experienced soldiers to Bruenor's side. Torgar helps connect Mithral Hall's defense to the wider dwarf response and presses for action against the invaders holding the surface approaches.",
+            "id": "torgar-hammerstriker",
+            "name": "Torgar Hammerstriker",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Mirabar's sceptrana and an ally of the dwarves after choosing regional defense over her city's cautious politics. Shoudra's magic and judgment remain useful as Bruenor's coalition shifts from holding fixed fortifications to coordinating separate forces.",
+            "id": "shoudra-stargleam",
+            "name": "Shoudra Stargleam",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The gnome inventor whose explosives helped save Mithral Hall. Nanfoodle remains with the defenders as they assess what his devices accomplished and look for ways to contest an enemy who still holds the numerical advantage.",
+            "id": "nanfoodle-buswilligan",
+            "name": "Nanfoodle Buswilligan",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A drow swordsman embedded in the forces that helped unleash Obould's invasion. Tos'un has survived the collapse of the hidden drow scheme and now looks for an escape from allies who are increasingly willing to spend one another for advantage.",
+            "id": "tos-un-armgo",
+            "name": "Tos'un Armgo",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-two-swords"
+      },
+      "recaps": {
+        "ending": "Bruenor recovers enough to resume command and the dwarves carry the war back outside Mithral Hall, coordinating with allied forces to break Obould's immediate hold on the approaches. The renewed fighting ends the frost giants' decisive support for the invasion. The defenders win important battles but cannot destroy the enormous orc population or remove Obould, whose strength and authority survive every attempt to reduce the war to a duel. Obould, in turn, cannot conquer Mithral Hall and begins acting as the ruler of occupied territory rather than the leader of an endlessly advancing horde. That balance leaves the North divided and opens the possibility of a settlement without making either side trust the other. Wulfgar and Regis return Colson to Meralda in Auckney, ending the improvised parenthood that Delly helped sustain; Wulfgar then turns back toward his own northern people. Drizzt and Catti-brie remain together, and Innovindil's companionship has helped Drizzt accept that a long life requires releasing the dead without abandoning them. The companions survive, but Obould's realm remains a fact the dwarves must confront rather than a raiding force they can simply chase away.",
+        "in_short": "Mithral Hall has survived Obould's siege, but Bruenor is gravely wounded, Delly and Tarathiel are dead and the orc host controls much of the surrounding land. As Bruenor recovers, Banak, Torgar, Shoudra and Nanfoodle help turn a desperate defense into a coordinated dwarf counteroffensive. Drizzt and Innovindil fight with purpose rather than blind revenge, while Obould struggles to hold together orcs, giants and hidden drow whose interests are separating. Wulfgar and Regis take Colson back to Auckney and return the child to Meralda, allowing Wulfgar to face Delly's loss and choose his own people again. The renewed campaign breaks the giants' support, but Obould survives and the dwarves cannot remove the vast orc population from the territory it occupies. Mithral Hall remains free, Obould begins governing a durable realm and the war settles into a balance that force alone cannot resolve. Drizzt and Catti-brie remain together as the immediate crisis ends.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: King Obould Many-Arrows united orc tribes, allied with Gerti Orelsdottr's frost giants and invaded the northern lands around Mithral Hall. Hidden drow agents encouraged the war while Mirabar's divided response drove Sceptrana Shoudra Stargleam, Torgar Hammerstriker and Nanfoodle Buswilligan into Bruenor's coalition. At Shallows, Drizzt saw a tower collapse and wrongly concluded that Bruenor, Catti-brie and Regis had died, though all three escaped. His grief drove a solitary campaign until the elves Innovindil and Tarathiel joined him. Obould killed Tarathiel and survived Drizzt's challenge. At Mithral Hall, Nanfoodle's explosives broke a giant-supported assault, but Bruenor was gravely wounded and Delly Curtie was killed, leaving Colson in the companions' care. Drizzt finally reached the hall and learned his friends were alive. The companions begin this book reunited but diminished, with Obould undefeated and a great orc population holding the land outside the dwarves' surviving fortress.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Mithral Hall has survived the attack without ending the siege. Bruenor lies gravely wounded, and the uncertainty around his recovery weighs on a clan that depends on him for more than battlefield orders. Catti-brie, Drizzt, Wulfgar and Regis remain close while Banak Brawnanvil maintains the defenses and Torgar, Shoudra and Nanfoodle assess what forces can still be used outside the gates. Wulfgar grieves Delly while caring for Colson, a responsibility that now requires a decision about the child's permanent home. Drizzt is no longer fighting under the false belief that his companions are dead, but Tarathiel's murder and Obould's survival leave vengeance close at hand. Innovindil continues beside him, insisting through her conduct that mourning need not become surrender. Across the occupied land, Obould faces a different problem: his horde won territory, but feeding, disciplining and governing its many tribes will determine whether the conquest lasts.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Obould works to turn military momentum into a durable realm, balancing chiefs who expect plunder, shamans who proclaim divine purpose, frost giants who consider themselves partners and drow survivors who never intended an orc kingdom to become independent. His forces continue attacking exposed communities so that Mithral Hall cannot gather relief without risking the people beyond its walls. Drizzt and Innovindil scout and strike with narrower tactical goals than Drizzt's earlier solitary rampage. They learn that Obould's army is becoming harder to treat as one target: some bands obey a king's strategy while others follow local ambition. Inside the hall, Banak preserves strength for the right opening instead of answering every provocation. Bruenor's condition begins to improve, allowing hope of a coordinated response. Wulfgar accepts that keeping Colson near a battlefield because he fears another separation would repeat the possessiveness and avoidance that once governed his own recovery.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bruenor recovers sufficiently to take part in planning and refuses to let survival inside Mithral Hall count as victory while allies and settlements remain exposed. His return restores direction to the dwarf coalition, though Banak and the others temper his desire for an immediate decisive blow. Torgar helps connect forces displaced by Mirabar's earlier caution, while Shoudra and Nanfoodle support a campaign that must rely on timing and position rather than equal numbers. The companions' roads divide according to need. Drizzt and Catti-brie remain central to the military effort, and Innovindil keeps watch on Obould's movements and the giant alliance. Wulfgar and Regis take responsibility for moving Colson away from the war and toward Auckney, where the truth of the child's birth and Meralda's claim can finally be addressed. The choice is painful precisely because Wulfgar has become a genuine father to the child, not because he has failed at the role.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The dwarves begin a broader counteroffensive, combining Mithral Hall's veterans with allied companies and using strong ground to keep Obould from bringing the full host against one point. Bruenor's recovery gives the campaign a visible leader, while Banak and Torgar supply the discipline needed to prevent enthusiasm from turning into an exposed charge. Drizzt and Catti-brie attack the enemy's mobility and command rather than counting ordinary soldiers slain, a change from the ranger's vengeance after Shallows. Innovindil continues to pursue justice for Tarathiel without mistaking her own death for payment. Obould gives ground where necessary and preserves the core of his army, behaving more like a king protecting future power than a raider demanding constant advance. Friction grows with Gerti's giants and with the remaining drow agents, whose expectation that the orcs would exhaust themselves has not been met. Neither coalition is as unified as it appears from the opposing line.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Winter slows the largest movements and exposes the political shape beneath the fighting. Obould must keep tribes fed and loyal while defending land already taken; permanent camps, patrols and rules begin replacing the horde's first rush. The dwarves use the pause to regroup and coordinate attacks against the alliance's strongest separate elements. Gerti's frost giants remain formidable, but their partnership with Obould is strained by competing pride and by the orc king's refusal to remain dependent on them. The hidden drow cause fractures of their own as personal survival overtakes the original plan. Away from the main armies, Wulfgar and Regis complete the difficult journey created by Delly's death. They bring Colson back to Meralda in Auckney, giving the child a safe home connected to her birth rather than keeping her inside Wulfgar's war. The farewell leaves Wulfgar grieving both Delly and the family life they briefly made, but free to choose his next allegiance honestly.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bruenor's coalition launches its strongest renewed effort and wins back control of critical approaches to Mithral Hall. The fighting breaks the frost giants' decisive support and removes the siege power on which Obould's early victories depended. Dwarf and allied forces inflict serious losses, but Obould preserves enough of his army to prevent the campaign from becoming a complete expulsion. He remains personally dangerous and politically established; the occupied orcs are now too numerous and rooted to be erased by one victory. Mithral Hall is secure, yet the region is divided between powers neither able to conquer the other without ruin. Obould begins governing what he holds, creating the basis for a settlement even while Bruenor and the companions distrust him. Wulfgar and Regis return after placing Colson with Meralda, and Wulfgar turns toward the northern people and identity he had long avoided. Innovindil has helped Drizzt understand that honoring Tarathiel and the other dead does not require living only for revenge. Drizzt and Catti-brie remain together as the Companions of the Hall move out of the immediate crisis into an uneasy new political world.",
+            "through": {
+              "chapter": 31
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-two-swords"
+      }
+    },
     "the-two-towers": {
       "characters": {
         "characters": [

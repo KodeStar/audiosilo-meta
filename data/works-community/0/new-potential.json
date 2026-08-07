@@ -895,6 +895,178 @@
         "work": "night-watch"
       }
     },
+    "nine-dragons": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An LAPD homicide detective whose investigation of a liquor-store killing becomes inseparable from the safety of his daughter in Hong Kong. Bosch knows the victim from an earlier case and treats that debt as personal, even before a threat against his family drives him outside his jurisdiction.",
+            "id": "harry-bosch",
+            "name": "Harry Bosch",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An owner of Fortune Liquors in South Los Angeles, shot during an apparent robbery. He once helped Bosch during a murder investigation, and the detective remembers both the assistance and the dignity with which Li ran his store in a difficult neighborhood.",
+            "id": "john-li",
+            "name": "John Li",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An LAPD detective with knowledge of Chinese gangs and language who is assigned to assist Bosch. He helps interpret the customs and possible triad connections around Fortune Liquors, while Bosch remains alert to the danger of relying on cultural assumptions instead of evidence.",
+            "id": "david-chu",
+            "name": "David Chu",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A man linked to a Chinese criminal organization and to payments collected from businesses such as Fortune Liquors. Bosch regards him as a plausible source of pressure on John Li, but the evidence must still show whether that pressure included murder.",
+            "id": "bo-jing-chang",
+            "name": "Bo-Jing Chang",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Bosch's former wife, a former FBI agent now living in Hong Kong and earning her living as a poker player. She has raised their daughter Maddie for most of the girl's life and remains the parent responsible for her daily safety abroad.",
+            "id": "eleanor-wish",
+            "name": "Eleanor Wish",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Maddie"
+            ],
+            "description": "Bosch and Eleanor's teenage daughter, living and attending school in Hong Kong. Bosch's recent discovery of her existence has grown into a loving but still developing relationship conducted largely across the Pacific.",
+            "id": "madeline-bosch",
+            "name": "Madeline Bosch",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A man in Eleanor's Hong Kong circle who helps Bosch navigate the city and search for Maddie. His local knowledge and willingness to enter dangerous places make him an important ally once official channels appear too slow.",
+            "id": "sun-yee",
+            "name": "Sun Yee",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "John Li's adult son and a member of the family Bosch must question after the shooting. His position gives him knowledge of the store's business and his father's routines, while grief and family loyalty complicate the interview.",
+            "id": "robert-li",
+            "name": "Robert Li",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Bosch's regular homicide partner. The Fortune Liquors investigation begins within their detail, though the need for specialized gang knowledge brings David Chu into the center of Bosch's work.",
+            "id": "ignacio-ferras",
+            "name": "Ignacio Ferras",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A supervisor in Bosch's homicide chain of command. He expects Bosch to keep the Los Angeles murder investigation moving even as federal and international complications begin to pull the detective away from it.",
+            "id": "larry-gandle",
+            "name": "Larry Gandle",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "nine-dragons"
+      },
+      "recaps": {
+        "ending": "The rescue in Hong Kong saves Maddie but costs Eleanor Wish her life. Bosch brings his traumatized daughter back to Los Angeles, where they must begin living as a family while grieving the parent who raised her. Evidence after their return separates the kidnapping from the threat Bosch received during the Fortune Liquors investigation: Maddie was taken in a locally arranged extortion scheme, not on orders from Bo-Jing Chang or a Los Angeles triad. The coincidence caused Bosch to read the video through the case he was already pursuing and to charge into Hong Kong expecting the wrong enemy. The original homicide also turns inward. Bosch establishes that John Li was killed by his own son, Robert, in a family crime obscured by the store's protection payments and Chang's genuine criminal associations. The triad theory explained intimidation around the business but not the fatal shot. Bosch closes Li's murder and clears the false connection between the two crimes. The lasting outcome is personal: Eleanor is dead, Maddie has lost her home and mother, and Bosch becomes her full-time parent while remaining a detective.",
+        "in_short": "Bosch investigates the shooting of Fortune Liquors owner John Li, who once helped him on a case. Payments to a triad figure, Bo-Jing Chang, make the murder look like gang enforcement. After Bosch receives a video showing his daughter Maddie captive in Hong Kong, he assumes the triad has struck at his family and flies there. With Eleanor Wish and local help, he pursues the abductors and rescues Maddie, but Eleanor is shot and killed during the violent recovery. Bosch returns to Los Angeles with his daughter and completes the liquor-store case. The two crimes were not one conspiracy: Maddie's abduction was an independent extortion plot in Hong Kong, while John Li was killed by his son Robert rather than by Chang's organization. Bosch solves the murder but has acted on a false linkage with devastating consequences. Maddie now lives with him, leaving father and daughter to build a home together while mourning Eleanor.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: After returning from retirement, Bosch worked in the LAPD's Open-Unsolved Unit and closed two old cases before moving back into current homicide work with Ignacio Ferras. A recent case involving stolen radioactive material brought him into conflict with the FBI and with Rachel Walling, again showing how quickly he will resist another agency's control. Outside work, Bosch is trying to be a father to teenage Maddie, the daughter former wife Eleanor Wish raised without his knowledge. Eleanor and Maddie now live in Hong Kong, so the relationship Bosch values most is still long-distance.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "John Li, owner of Fortune Liquors in South Los Angeles, is shot behind the counter. Bosch remembers Li as a witness who helped him years earlier and takes responsibility for finding his killer. The scene resembles a robbery, but details of the shooting and Li's conduct suggest a more specific confrontation. Because the store serves a Chinese immigrant family and may have been paying protection money, detective David Chu joins the inquiry for his knowledge of Asian gangs. Bosch begins interviewing the Li family and tracing who knew the owner's routines.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The investigation identifies Bo-Jing Chang, a man tied to a triad and to money collected from local Chinese businesses. Bosch and Chu find evidence that John Li faced organized pressure, making Chang a strong suspect, but the case is not yet sufficient to explain the shooting itself. The inquiry becomes more volatile when information reaches the public and the suspect realizes police attention is closing in. Bosch pushes for an arrest while trying to distinguish actual evidence from assumptions about how a gang-related killing should look.",
+            "through": {
+              "chapter": 26
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bosch receives a video showing Maddie bound and in danger in Hong Kong. Because it arrives while he is pressing the triad case, he believes the threat is retaliation designed to make him release Chang or abandon the investigation. Unable to trust a slow official response with his daughter's life, he leaves Los Angeles for Hong Kong. The murder case is suddenly personal on a different scale: Bosch must find Maddie in an unfamiliar city while fearing that every move against Chang may worsen her danger.",
+            "through": {
+              "chapter": 40
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In Hong Kong, Bosch reunites with Eleanor and enlists Sun Yee's local help. They follow Maddie's movements, phone information, and the abductors' demands through crowded districts rather than waiting for distant agencies to coordinate. The search reveals people around Maddie's daily life who had access to her, complicating Bosch's certainty that a Los Angeles triad directed everything. He nevertheless treats time as the decisive factor and prepares for a direct recovery, while Eleanor insists on taking part in bringing their daughter home.",
+            "through": {
+              "chapter": 55
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bosch's group locates Maddie and forces a violent rescue. She is recovered alive, but gunfire during the escape kills Eleanor. Bosch must protect a traumatized Maddie, absorb the death of the woman who raised her, and arrange their return to Los Angeles. The rescue does not by itself prove who ordered the kidnapping or whether Bosch was right to connect it to the Los Angeles case. The identity and access of the people encountered in Hong Kong leave questions that he can only answer after Maddie is safe.",
+            "through": {
+              "chapter": 69
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Back in Los Angeles, Bosch completes both reconstructions. Maddie's kidnapping was an independent Hong Kong extortion scheme organized through people near her, not an operation ordered by Bo-Jing Chang in response to the Li investigation. At Fortune Liquors, protection payments and Chang's gang ties had supplied a convincing false direction, but the physical and family evidence identifies John Li's son Robert as the killer. Bosch closes the homicide while recognizing that his assumption about a shared triad plot drove the desperate rescue. Eleanor remains dead, and Maddie returns with Bosch as both survivor and grieving child. She moves into his Los Angeles home, making him her full-time parent just as their relationship faces its most painful beginning.",
+            "through": {
+              "chapter": 85
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "nine-dragons"
+      }
+    },
     "no-time-like-the-past": {
       "characters": {
         "characters": [
