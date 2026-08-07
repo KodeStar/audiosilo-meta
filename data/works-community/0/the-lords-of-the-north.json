@@ -1307,6 +1307,187 @@
         "work": "the-magic-faraway-tree"
       }
     },
+    "the-man-with-the-golden-gun-with-interview": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A missing British agent who returns to London after months with little clear memory of his identity. His behavior is controlled and strangely detached, and he asks to see M with the apparent formality of an officer reporting back to duty.",
+            "id": "james-bond",
+            "name": "James Bond",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The head of the British Secret Service and Bond's commanding officer. M agrees to meet the long-missing agent despite the security risk, relying on established precautions while hoping Bond may genuinely have returned.",
+            "id": "m",
+            "name": "M",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "M's secretary and a familiar colleague of Bond's at headquarters. She recognizes the importance of his unexpected return but must follow the office's security procedures before letting him approach M.",
+            "id": "miss-moneypenny",
+            "name": "Miss Moneypenny",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A distinguished neurologist who has treated senior members of the Service. He helps assess Bond after the failed attack on M and directs the long process of undoing the conditioning imposed on him.",
+            "id": "sir-james-molony",
+            "name": "Sir James Molony",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Pistols"
+            ],
+            "description": "A highly paid killer identified by three nipples and a gold-plated handgun. Scaramanga is believed to work for criminal and hostile political interests around the Caribbean, and his reputation for exceptional marksmanship makes him a target suited to Bond's double-0 skills.",
+            "id": "francisco-scaramanga",
+            "name": "Francisco Scaramanga",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Bond's former secretary, now serving at the Secret Service station in Jamaica. Capable and resourceful, she recognizes Bond after his recovery and supplies local intelligence that helps him narrow the search for Scaramanga.",
+            "id": "mary-goodnight",
+            "name": "Mary Goodnight",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The proprietor of a small Jamaican establishment called 3½ Love Lane. Tiffy is observant, protective of the birds around her premises, and wary of the armed stranger whose arrival brings violence into her business.",
+            "id": "tiffy",
+            "name": "Tiffy",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A taciturn European member of the group meeting at Scaramanga's Jamaican hotel. Hendriks represents interests beyond ordinary organized crime and watches the proceedings with particular attention to security.",
+            "id": "mr-hendriks",
+            "name": "Mr. Hendriks",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An American casino operator attending Scaramanga's business conference. Binion is one of several men considering the group's investments and illicit plans, and he treats the meeting as a negotiation among established criminal interests.",
+            "id": "sam-binion",
+            "name": "Sam Binion",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Bond's longtime American ally, working undercover at the Thunderbird Hotel. Leiter is helping an American operation against Scaramanga's organization and quietly coordinates with Bond without exposing either man's real purpose.",
+            "id": "felix-leiter",
+            "name": "Felix Leiter",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An American agent operating alongside Felix Leiter at the Thunderbird. Nicholson is part of the covert effort to collect evidence against the assembled criminals and prepare a strike against their Jamaican base.",
+            "id": "nicholson",
+            "name": "Nicholson",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-man-with-the-golden-gun-with-interview"
+      },
+      "recaps": {
+        "ending": "Scaramanga's excursion train becomes the setting for the final clash. Once Bond's identity is known, the journey turns into an attempted execution, but Bond, Felix Leiter, and Nicholson's operation destroys the train and breaks up the conference. Mary Goodnight is brought clear of the danger. Bond and Scaramanga escape the wreck into the marshes, where their pursuit ends in a close gunfight. Scaramanga wounds Bond with a poisoned bullet, but Bond kills him. Bond is found and taken to hospital, where treatment saves his life. The surviving conspirators' plans are exposed, and the Jamaican operation is dismantled. During his recovery Bond declines a high public honor, preferring to remain an anonymous working agent. Goodnight remains close to him, but he does not accept the settled domestic future she imagines, leaving him alive, restored to the Service, and emotionally resistant to permanent commitment.",
+        "in_short": "After losing his memory in Japan, James Bond reaches the Soviet Union and is brainwashed into returning to London to kill M. The attempt fails; treatment restores him, and M tests his recovery by sending him to Jamaica after the assassin Francisco Scaramanga. With help from Mary Goodnight, Bond finds Scaramanga and takes a job as his temporary assistant at the Thunderbird Hotel, where gangsters are meeting over criminal investments and sabotage. Felix Leiter and another American agent are already undercover there. Bond's identity is exposed as the group takes an excursion train, prompting a violent showdown that wrecks the train and scatters the conspiracy. Bond pursues Scaramanga into the marshes and kills him, though a poisoned bullet nearly kills Bond in turn. He recovers in hospital, refuses a public honor, and returns to Service life without accepting Goodnight's implied hope of marriage.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: after destroying Blofeld's Japanese stronghold, Bond lost his memory and lived with Kissy Suzuki before travelling toward the Soviet Union in search of his past.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "James Bond, long missing after his mission in Japan, unexpectedly returns to Secret Service headquarters and requests a private meeting with M. Soviet treatment has conditioned him to regard M as an enemy, and he attempts to kill his chief with a concealed weapon. Office defenses foil the attack. Rather than discard Bond, M places him under Sir James Molony's care, and months of neurological and psychological treatment undo much of the conditioning. To determine whether Bond can again function as an agent, M gives him a demanding assignment in Jamaica: find and kill Francisco Scaramanga, a freelance assassin known for his gold-plated pistol and work with hostile and criminal organizations. The mission offers Bond a route back to double-0 duty but is also dangerous enough to serve as a final test of his recovery.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In Jamaica, Bond makes contact with Mary Goodnight, his former secretary and now a member of the local station. Her information helps him follow Scaramanga's trail west. At Tiffy's 3½ Love Lane, Bond encounters the assassin in person and sees his casual cruelty and confidence with a handgun. Instead of attacking immediately in a crowded setting, Bond accepts Scaramanga's offer of well-paid temporary work. He travels with him to the unfinished Thunderbird Hotel, where Scaramanga needs an assistant and security man for a private gathering. Bond's improvised cover places him beside his target, but it also leaves him isolated among Scaramanga's associates, with no safe opportunity yet to carry out M's order.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At the Thunderbird, Bond prepares drinks, records discussions, and watches Scaramanga's guests assemble. The men represent casino, property, narcotics, and other criminal interests. Their conference concerns the failing Jamaican development as well as plans for wider illegal operations and political disruption. Mr. Hendriks stands apart from the American gangsters as a representative of Soviet interests. Bond hides his scrutiny beneath the role of a capable hired assistant while looking for a chance to isolate Scaramanga. The meeting confirms that the gunman is more than a solitary killer: he is protecting a network that combines organized crime with hostile intelligence aims. Bond remains unsuspected for the moment, but Hendriks is waiting for outside information about a British agent believed to be operating in Jamaica.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bond discovers that Felix Leiter and an American agent named Nicholson are undercover at the hotel, gathering evidence and preparing action against Scaramanga's group. The allies exchange information cautiously while Bond continues serving the conference. Entertainment and staged hospitality give way to mounting suspicion. Mary Goodnight reaches the hotel and warns Bond that his identity is in danger of being transmitted to Hendriks. Her appearance also puts her at risk inside the gang's isolated base. Bond sabotages what he can and prepares for an open fight, while Leiter and Nicholson arrange explosives connected with the development's railway. Scaramanga still uses Bond, but the margin for maintaining the false role is disappearing as Hendriks receives the information he has been awaiting.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Scaramanga takes the conference party on an excursion aboard the property's small train. Hendriks identifies Bond as the British agent sent against them, turning the outing into a planned execution. Goodnight is also caught in the danger, while Leiter and Nicholson move ahead with their attempt to destroy the gang's route and base. Bond fights back aboard the train and gets Goodnight clear before the explosives and gunfire wreck the excursion. The criminal meeting is broken apart and several conspirators are killed. Scaramanga survives the destruction and flees into the marsh country, with the wounded Bond following rather than allowing his primary target to escape. Their mission has narrowed to a direct contest away from the ruined train and the larger operation.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the marshes, Bond and Scaramanga stalk and shoot at one another after the train's destruction. Scaramanga uses a last concealed weapon to hit Bond with a poisoned bullet, but Bond kills him before collapsing. Bond's allies recover him, and prolonged hospital treatment saves his life. The Thunderbird conspiracy has been shattered, its plans and participants exposed, while Scaramanga's career ends with his death. During Bond's convalescence, the Service proposes a high public honor for his work. He refuses it because public distinction would be incompatible with the anonymous life he intends to resume. Mary Goodnight remains affectionate and imagines a more permanent future with him, but Bond recoils from marriage and chooses continued independence. Restored in body and accepted back into the Service, he completes the mission M gave him as proof of his recovery.",
+            "through": {
+              "chapter": 17
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-man-with-the-golden-gun-with-interview"
+      }
+    },
     "the-mark-of-athena": {
       "characters": {
         "characters": [
@@ -1744,6 +1925,90 @@
           }
         ],
         "work": "the-maze-runner"
+      }
+    },
+    "the-memoirs-of-sherlock-holmes": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The Baker Street consulting detective whose powers of observation and deduction have made him known to private clients and the police. These recollections include both mature investigations and episodes from his life before Watson began publishing the cases.",
+            "id": "sherlock-holmes",
+            "name": "Sherlock Holmes",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Dr Watson"
+            ],
+            "description": "A physician, former army surgeon, and Holmes's closest companion. Watson narrates the cases, sometimes reconstructing events Holmes told him about, and frames the collection as a record of his friend's career.",
+            "id": "john-h-watson",
+            "name": "John H. Watson",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sherlock Holmes's older brother, possessed of exceptional powers of observation and an even wider command of facts. Mycroft prefers settled habits and abstract reasoning to the exertion of fieldwork, but his abilities make him an important figure when he enters Watson's record.",
+            "id": "mycroft-holmes",
+            "name": "Mycroft Holmes",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Scotland Yard inspector and recurring professional associate of Holmes. Lestrade represents the official investigation when he appears, bringing police authority and practical experience to cases in which Holmes is also involved.",
+            "id": "inspector-lestrade",
+            "name": "Inspector Lestrade",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A professor of mathematics whom Holmes regards as an intellectual equal. He enters the collection only in its closing story, where the conflict between the two men becomes the volume's final concern.",
+            "id": "professor-moriarty",
+            "name": "Professor Moriarty",
+            "reveal": {
+              "chapter": 0
+            }
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-memoirs-of-sherlock-holmes"
+      },
+      "recaps": {
+        "ending": "In \"The Final Problem,\" Holmes tells Watson that Professor Moriarty directs a far-reaching criminal organization and that Holmes's work has brought it close to destruction. Moriarty threatens him, and Holmes leaves England with Watson while the police move against the organization. At a hotel in Switzerland, a false message draws Watson away to attend an Englishwoman said to be ill. He returns to the Reichenbach Falls and finds signs that Holmes and Moriarty reached the path together but did not return. Holmes has left a note explaining that he anticipated Moriarty's pursuit and accepted the confrontation. Watson concludes that both men fell to their deaths and closes the volume with a memorial to his friend. Later Holmes stories disclose that Holmes survived, but the ending of this collection presents his disappearance as a death and leaves Watson bereaved.",
+        "in_short": "Watson's second collection ranges across independent cases and also looks backward into Holmes's early life, including his first substantial investigation and an old family ritual he examined before becoming a professional detective. Other stories bring problems from racing, medicine, business, the military, and domestic life, while \"The Greek Interpreter\" introduces Holmes's older brother Mycroft. The volume ends with the full-spoiler events of \"The Final Problem.\" Holmes identifies Professor Moriarty as the organizer of a large criminal network and becomes the target of Moriarty's retaliation after arranging a police assault on it. Holmes and Watson travel to Switzerland, where Watson is lured away by a false summons. At the Reichenbach Falls, Holmes and Moriarty apparently struggle and fall to their deaths. Watson finds Holmes's farewell note and ends the collection believing his friend dead, although later stories reveal that Holmes survived the encounter.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Collection scope: the usual eleven-story volume contains \"Silver Blaze,\" \"The Yellow Face,\" \"The Stockbroker's Clerk,\" \"The Gloria Scott,\" \"The Musgrave Ritual,\" \"The Reigate Squire\" (also titled \"The Reigate Squires\"), \"The Crooked Man,\" \"The Resident Patient,\" \"The Greek Interpreter,\" \"The Naval Treaty,\" and \"The Final Problem.\" \"The Cardboard Box\" is included in some editions of the Memoirs and placed with His Last Bow in others. The stories are separate investigations; only the closing story supplies the collection's concluding career event.",
+            "through": {
+              "chapter": 0
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-memoirs-of-sherlock-holmes"
       }
     },
     "the-metamorphosis": {
