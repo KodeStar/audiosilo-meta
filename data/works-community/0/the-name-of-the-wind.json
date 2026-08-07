@@ -203,6 +203,181 @@
         "work": "the-name-of-the-wind"
       }
     },
+    "the-narrows": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A retired LAPD detective asked to look beyond the natural-cause explanation for Terry McCaleb's death. Bosch's private inquiry soon joins an active FBI hunt, while contact with Eleanor Wish and their daughter gives him a reason to consider what comes after retirement.",
+            "id": "harry-bosch",
+            "name": "Harry Bosch",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A retired FBI profiler and heart-transplant recipient who has died before Bosch arrives. The records and unfinished analysis aboard his boat suggest that he had quietly returned to an old serial-murder investigation shortly before his death.",
+            "id": "terry-mccaleb",
+            "name": "Terry McCaleb",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Graciela Rivers"
+            ],
+            "description": "Terry McCaleb's widow. Troubled by unanswered questions around his final days, she asks Bosch to examine the material he left behind and to determine whether his death was connected to the investigative work he had resumed.",
+            "id": "graciela-mccaleb",
+            "name": "Graciela McCaleb",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "McCaleb's friend and former fishing partner, familiar with the profiler's boat and routines. Buddy's observations help Bosch reconstruct McCaleb's last work, though Bosch does not accept anyone's account without testing it.",
+            "id": "buddy-lockridge",
+            "name": "Buddy Lockridge",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An FBI agent once assigned to the serial killer called the Poet. New communications and bodies bring her back to that unfinished hunt, where she must work within a tightly controlled bureau operation while deciding whether Bosch is an obstacle or an ally.",
+            "id": "rachel-walling",
+            "name": "Rachel Walling",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The name used for a serial murderer who targeted members of law enforcement and left literary messages around the crimes. Evidence that the killer may still be alive drives both McCaleb's unfinished work and the FBI deployment in the desert.",
+            "id": "the-poet",
+            "name": "The Poet",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Bosch's former wife, now living in the Las Vegas area and making her living as a professional poker player. She is raising their daughter and must decide how much room Bosch can safely and reliably occupy in the child's life.",
+            "id": "eleanor-wish",
+            "name": "Eleanor Wish",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Maddie"
+            ],
+            "description": "Bosch and Eleanor Wish's young daughter. Bosch has only recently learned that she exists, and his visits to Nevada place the possibility of fatherhood beside the familiar pull of an increasingly dangerous case.",
+            "id": "madeline-bosch",
+            "name": "Madeline Bosch",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An FBI agent Bosch knows from an earlier case. Lindell provides a guarded connection to the bureau as Bosch's private inquiry intersects with an operation whose leaders do not welcome an unsupervised former detective.",
+            "id": "roy-lindell",
+            "name": "Roy Lindell",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Los Angeles County sheriff's detective who knew McCaleb and respected his profiling work. Winston gives Bosch a law-enforcement connection as he tests whether the circumstances around McCaleb's death and final inquiry warrant official attention.",
+            "id": "jaye-winston",
+            "name": "Jaye Winston",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-narrows"
+      },
+      "recaps": {
+        "ending": "McCaleb's unfinished work and the desert graves lead Bosch and Rachel Walling to the same fugitive serial killer. The Poet has controlled the investigation with messages, selected victims, and false routes, drawing the FBI into terrain prepared for an attack. Bosch identifies the plan and follows the killer into the Las Vegas flood-control channels as a storm sends water through the system. The confrontation ends with the Poet swept away in the flood; the immediate threat is stopped, but the absence of a securely recovered body denies Bosch and Walling absolute certainty. McCaleb's death is understood through the dangerous investigation he had resumed and the strain it placed on his transplanted heart, rather than as an isolated mystery with no connection to his work. Bosch also begins a real relationship with his daughter Maddie and renews contact with Eleanor. Having proved that he still needs the work but also has a life beyond it, he decides to seek reinstatement with the LAPD, bringing his retirement arc to a return rather than a retreat.",
+        "in_short": "After retired FBI profiler Terry McCaleb dies, his widow asks Harry Bosch to examine the investigative material he left aboard his boat. McCaleb had found signs that the serial murderer known as the Poet was alive and active. At the same time, FBI agent Rachel Walling is summoned to a desert site where buried victims and messages turn the old unfinished hunt into a new operation. Bosch and Walling reluctantly combine his independent reconstruction with her bureau access. The Poet has anticipated the official response and uses the graves to direct agents toward a prepared trap. Bosch follows the killer into the flood-control channels beneath Las Vegas during a storm; the Poet is carried away by the rushing water, ending the immediate attack without leaving a conclusive body. McCaleb's final exertions are tied to the same pursuit. In Nevada, Bosch also builds a relationship with his daughter Maddie and reconnects with Eleanor Wish. He ends ready to return to the LAPD.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously for Bosch: After resigning from the LAPD, Harry privately solved the linked Angella Benton murder, movie-set robbery, attack on two detectives, and disappearance of FBI agent Martha Gessler. The case also revealed that former wife Eleanor Wish had raised their daughter, Madeline, without telling him. Bosch remains retired but has begun trying to enter Maddie's life. Premise from an earlier investigation: FBI agent Rachel Walling once hunted a serial murderer called the Poet, who targeted law-enforcement figures and used lines associated with Edgar Allan Poe. That hunt ended without the final certainty needed to erase the threat.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Terry McCaleb, the retired FBI profiler and heart-transplant recipient who once investigated Bosch, has died after becoming ill on his boat. His widow Graciela is troubled by his final behavior and asks Bosch to determine whether the death was truly only a medical event. On the boat Bosch reviews notes, records, and traces of work McCaleb had not discussed with his family. Buddy Lockridge helps account for McCaleb's last movements. The material points away from a domestic mystery and toward a case that drew the profiler back into old habits despite his health. Bosch sees indications that McCaleb believed a dangerous offender from an unfinished FBI investigation had returned.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "FBI agent Rachel Walling is summoned to the Nevada desert, where communications attributed to the Poet lead investigators to buried victims. The discovery revives the bureau's unresolved hunt and places Walling, whose career was damaged by its earlier course, back at the center of it. Bosch follows McCaleb's analysis toward the same conclusion and enters the federal operation without invitation. He and Walling clash over access and control, but each holds something the other needs: Bosch can reconstruct McCaleb's independent reasoning, while Walling has the new messages, graves, and resources of the task force. During trips through Nevada, Bosch also meets his daughter Maddie and cautiously reconnects with Eleanor Wish.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The desert burials establish that the Poet remained active beyond the point when the earlier investigation appeared to end. The killer has not merely hidden; he has chosen when and how the FBI will rediscover him. Bosch and Walling compare the new scene with McCaleb's notes and recognize that messages aimed at investigators are part of the method. The task force follows geographic and victim patterns, but Bosch suspects that the apparent trail is designed to concentrate federal personnel where the killer can watch and control them. McCaleb's final inquiry now looks like an early response to the same bait. The work exposed his fragile health to renewed strain, linking his death to the case even before Bosch can determine whether there was a direct attack.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bosch and Walling move from identifying old victims to anticipating the Poet's current design. The burial site and communications have drawn the FBI into a predictable operation, and weaknesses inside its perimeter may be deliberate. Bosch's refusal to remain inside the chain of command lets him test routes and assumptions the official team has accepted, though it also leaves him without protection when he closes on the trap. In Las Vegas, his case work repeatedly crosses the time he is trying to spend with Maddie. Eleanor allows contact but expects him to prove that the child will not always come second to danger. Bosch begins to understand that returning to investigation and becoming a father cannot be treated as separate future choices.",
+            "through": {
+              "chapter": 32
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Poet springs the operation prepared around the desert investigation. The messages and bodies were instruments for positioning pursuers as much as evidence of past crimes. Bosch and Walling survive the shift from search to attack and trace the killer toward the flood-control system serving Las Vegas. With a storm approaching, the channels and tunnels offer both concealment and a lethal natural weapon. Bosch continues when the formal operation cannot move quickly enough, forcing a pursuit into the narrows while rising water removes safe exits. McCaleb's work has supplied the bridge to this moment, but Bosch must finish the chase directly.",
+            "through": {
+              "chapter": 39
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bosch confronts the Poet in the Las Vegas flood-control channels as storm water surges through them. The killer's plan to turn the renewed FBI hunt into an attack is broken, and the Poet is swept away in the flood. No securely recovered body provides a clean final confirmation, but the immediate threat and prepared operation are ended. The evidence McCaleb left behind shows that he had recognized the killer's return and pushed his transplanted heart while pursuing it; his death belongs to the cost of that unfinished work even without a conventional murder solution. Rachel Walling survives the hunt. Bosch leaves Nevada with more than a closed pursuit: he has begun knowing Maddie as his daughter and reopened a relationship with Eleanor. He decides that retirement has not removed his need to investigate and moves toward reinstatement with the LAPD, intending to combine the work with a place in Maddie's life.",
+            "through": {
+              "chapter": 45
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-narrows"
+      }
+    },
     "the-obelisk-gate": {
       "characters": {
         "characters": [
