@@ -2395,6 +2395,217 @@
         "work": "queen-of-shadows"
       }
     },
+    "rage-of-a-demon-king": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A former Ravensburg blacksmith and veteran of Calis's Novindus expedition, now a trusted officer preparing the Kingdom for invasion. Erik combines a soldier's endurance with a craftsman's understanding of horses, equipment, and fortifications, and he remains most effective when plans have broken down.",
+            "id": "erik-von-darkmoor",
+            "name": "Erik von Darkmoor",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Roo"
+            ],
+            "description": "One of Krondor's new merchant princes and Erik's oldest friend. Roo has turned information, credit, and audacity into a fortune, but the threatened invasion converts his warehouses, ships, and financial network from private success into essential parts of the Kingdom's defence.",
+            "id": "rupert-avery",
+            "name": "Rupert Avery",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Jimmy the Hand"
+            ],
+            "description": "The elderly Duke of Krondor, once a street thief and royal squire, now the city's shrewdest administrator. James has spent a lifetime surviving wars and intrigues and believes Calis's warning when many nobles still hope the invasion can be contained elsewhere.",
+            "id": "james",
+            "name": "Duke James",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Prince of Krondor and the royal commander responsible for the Western Realm. Patrick must balance the capital's political expectations against James's harsher strategic judgment as the Emerald Queen's fleet approaches.",
+            "id": "patrick",
+            "name": "Prince Patrick",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Pug's son and the Knight-Marshal of Krondor, a career soldier without his father's magical gifts. William commands the city's defenders and understands that their task may be to preserve the Kingdom's army rather than the city itself.",
+            "id": "william",
+            "name": "William",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The former orphan of Crydee who became a Great One on Kelewan. Pug is now an elder magician whose experience with rifts, the Valheru, and other worlds makes him one of the few people able to investigate what lies behind the Pantathians' invasion.",
+            "id": "pug",
+            "name": "Pug",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A powerful, independent magician who rescued Pug during his investigation of the demon realm. Miranda knows more about interworld dangers than she initially shares and works beside Pug while keeping her family history and long-term purpose private.",
+            "id": "miranda",
+            "name": "Miranda",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Tomas and Aglaranna's son, a commander whose human and elven blood also carries the Valheru legacy inherited through his father. Years spent tracking the Emerald Queen have made Calis a specialist in an enemy whose military and supernatural aims cannot be separated.",
+            "id": "calis",
+            "name": "Calis",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Once a kitchen boy at Crydee, Tomas bears the power and memories of the Valheru Ashen-Shugar while retaining his human identity. He rules Elvandar with Queen Aglaranna and has become an elder guardian whose ancient inheritance may be needed again.",
+            "id": "tomas",
+            "name": "Tomas",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Isalani gambler whose jokes and denials of magic conceal a rare understanding of how reality can be manipulated. Nakor assists Pug and Miranda because he recognises that the invasion's deepest danger is not the army visible from the coast.",
+            "id": "nakor",
+            "name": "Nakor",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior Pantathian serpent priest working within the Emerald Queen's cause. Jakan treats conquest as the means to a religious and magical end, and his command of rites linking worlds makes him more dangerous than his place in the army's formal hierarchy suggests.",
+            "id": "jakan",
+            "name": "Jakan",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The woman in whose name Novindus was conquered and the invasion fleet assembled. To her followers she is a sacred queen tied to the Pantathians' lost goddess; to the Kingdom she remains a remote figure whose personal will cannot yet be separated from the priests and powers surrounding her.",
+            "id": "emerald-queen",
+            "name": "The Emerald Queen",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The strategist who forged the Emerald Queen's conquered peoples into an effective invasion force. Fadawah is an experienced human general who values logistics and flexible command over religious zeal, making him capable of continuing a campaign even when its supernatural leadership changes.",
+            "id": "fadawah",
+            "name": "Fadawah",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "One of Fadawah's senior field commanders, a disciplined professional charged with taking and holding ground in the Kingdom. Duko's loyalty is to his soldiers and to competent command more than to the Emerald Queen's religion.",
+            "id": "duko",
+            "name": "Duko",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "rage-of-a-demon-king"
+      },
+      "recaps": {
+        "ending": "The Kingdom survives the first campaign but loses Krondor. James and William die during the defence and destruction of the city, buying time for Patrick's army and civilians to withdraw. Roo's fortune and trading network are consumed in the emergency he prepared for; Erik becomes one of the commanders holding the retreat together through Ravensburg and Darkmoor. Fadawah's advance is checked, not eliminated, and Duko remains with an occupying force in the west, so the human war continues beyond the book. The supernatural purpose of the invasion is exposed: the woman Jorna, Miranda's mother, has been presented as the Emerald Queen and used as a vessel in the Pantathians' attempt to restore Alma-Lodaka, while Jakan's traffic with the demon realm has opened a greater danger involving the demon king Maarg. Pug, Miranda, Nakor, Calis, and Tomas prevent that power from taking Midkemia and deny the Pantathians their intended triumph. Miranda is the daughter of Jorna and Macros the Black, and Macros returns in a renewed body, adding an old guardian to the damaged world's defenders. The invasion has been blunted, but the Western Realm remains occupied and must be reclaimed.",
+        "in_short": "The Emerald Queen's fleet invades the Kingdom despite years of warning. Roo converts his merchant fortune into supplies and transport, Erik helps command the defence, and Duke James and William prepare Krondor for a battle they know may end in evacuation and destruction. Fadawah's disciplined armies force the Kingdom eastward; Krondor falls after James and William die buying time, while Erik helps preserve the retreat through Ravensburg and Darkmoor. Roo survives but much of the commercial world he built is consumed by war. Pug, Miranda, Nakor, Calis, and Tomas pursue the invasion's hidden purpose. The Emerald Queen is exposed as Jorna, Miranda's mother and a vessel in the Pantathians' plan to restore Alma-Lodaka, while Jakan's dealings reveal a still greater threat from the demon king Maarg. The crossing is stopped, and Miranda is revealed as the daughter of Jorna and Macros the Black as Macros returns in renewed form. Fadawah is checked but not destroyed, Duko still holds conquered territory, and the Kingdom faces the task of retaking the west.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, in the Serpentwar Saga: Erik von Darkmoor and Rupert Avery were condemned for the death of Erik's abusive half-brother, secretly spared, and trained for Calis's reconnaissance company. In Novindus they found the Emerald Queen's forces conquering a continent to prepare an invasion of the Kingdom. Calis is the son of Tomas and the elven queen Aglaranna, joining human and elven blood to the Valheru inheritance Tomas carries from Ashen-Shugar. Pug and Tomas, once the young heroes of the Riftwar, are now elder guardians confronting dangers that cross worlds. Erik stayed in royal service after returning; Roo became a merchant prince in Krondor, using his foreknowledge of war to build both a fortune and a supply network. Roo's ambition damaged his marriage to Karli through his involvement with Sylvia Esterbrook. Fadawah has completed the enemy fleet. Pug's investigation, aided by the secretive magician Miranda and the Isalani wanderer Nakor, has confirmed that demonic power stands behind part of the campaign, though the Emerald Queen's true identity and the Pantathians' final purpose remain concealed.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Krondor prepares for an invasion many of its residents still experience mainly as rumours, shortages, and military demands. Duke James and Prince Patrick organise the Western Realm while William commands its soldiers. Erik helps turn Calis's intelligence into practical defence and Roo places warehouses, shipping contacts, and credit at the Kingdom's disposal. Queg and the sea routes matter because the approaching war will be decided as much by transport as by battle. At the same time Pug and Miranda compare what they know of demons and rifts. Their alliance is real but incomplete: Miranda has rescued Pug and shares his objective, yet still withholds the history that explains her unusual knowledge.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Calis and Tomas confer at Elvandar, linking the new invasion to the oldest dangers of Midkemia. Calis's mixed inheritance gives him insight into both mortal war and the Valheru legacy, while Tomas understands why any design involving ancient powers cannot be treated as a local conflict. Nakor joins Pug and Miranda's investigation with his unconventional understanding of magic. Evidence points toward Jakan and other Pantathian priests operating behind the Emerald Queen's public cause. The Queen is revered as a sacred embodiment connected to Alma-Lodaka, the creator the serpent people seek to restore, but the relationship between the woman, the goddess, and the priests controlling access to her is not yet settled.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Warnings become invasion. Fadawah's fleet reaches the Kingdom with experienced troops, siege equipment, and commanders able to adapt when individual plans fail. Political schemes and divided priorities have not stopped James and William from preparing Krondor for the worst, and Roo's supplies keep armies moving as normal trade collapses. Erik takes increasing responsibility in the field. Betrayal and infiltration weaken the defenders just as the onslaught begins, allowing the invaders to establish their campaign on Kingdom soil. Duko emerges as one of the enemy's effective human commanders, less interested in Pantathian theology than in winning the war assigned to him.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The defence of Krondor becomes a managed catastrophe. James and William know that holding the city indefinitely would trap and destroy the Kingdom's western army, so the defenders evacuate what they can and deny the invaders an intact capital. The destruction kills both men and ends the long life of James, once Jimmy the Hand, in service to the city that raised him. Prince Patrick and the surviving forces withdraw eastward. Roo escapes, but warehouses, businesses, and much of the fortune he built are swallowed by the war. Erik helps impose order on the retreat as Fadawah presses the advantage. The enemy has taken Krondor, yet the Kingdom still has an army because the defenders chose survival over a symbolic last stand.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The campaign moves through Ravensburg and Darkmoor, returning Erik to the country where his life began. Retreat, delay, and improvised defences wear down both sides. Erik's knowledge of the land and his ability to keep soldiers, horses, and supplies functioning make him central to preventing withdrawal from becoming collapse. Roo's remaining network continues to serve the army even after the commercial Krondor he knew has ceased to exist. Fadawah is forced to spend strength for every advance, while Duko and other commanders secure captured territory behind him. The Kingdom has not retaken the west, but it has denied the invaders the quick destruction on which their larger plan depended.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The invasion's concealed design is finally separated from its public story. The Emerald Queen is Jorna, Miranda's mother, made into a sacred vessel for the Pantathians' attempt to restore Alma-Lodaka; she is not an independent conqueror directing every part of the war. Jakan's use of demon forces has also exposed Midkemia to Maarg, a demon king whose appetite is greater than the serpent priests' design and whose arrival would turn their promised victory into another kind of ruin. Pug, Miranda, Nakor, Calis, and Tomas confront the interworld threat and prevent Maarg's power from taking Midkemia, breaking the supernatural core of the campaign. Miranda's hidden history is revealed fully: she is the daughter of Jorna and Macros the Black. Macros returns in a renewed body, alive again but not as the man Pug once knew. On the battlefield, Fadawah is checked rather than destroyed, and Duko retains occupied ground after Krondor's fall. James and William are dead; Patrick, Erik, and Roo survive. The Kingdom has stopped annihilation, but reclaiming the Western Realm remains the next war.",
+            "through": {
+              "chapter": 28
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "rage-of-a-demon-king"
+      }
+    },
     "rainbow-valley": {
       "characters": {
         "characters": [

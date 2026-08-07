@@ -1828,6 +1828,144 @@
         "work": "jingo"
       }
     },
+    "journey-to-the-center-of-the-earth": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A young man living in Hamburg with his uncle, Professor Lidenbrock. He assists with the professor's work but lacks his appetite for danger, and narrates their extraordinary expedition with a mixture of scientific curiosity, fear, and devotion to Grauben.",
+            "id": "axel",
+            "name": "Axel",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Professor Lidenbrock"
+            ],
+            "description": "Axel's uncle, a Hamburg professor of mineralogy and geology whose learning is matched by an impatient, commanding temperament. When he encounters an encoded message in an old Icelandic book, he treats solving it as a matter of personal honor.",
+            "id": "otto-lidenbrock",
+            "name": "Otto Lidenbrock",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Professor Lidenbrock's long-suffering housekeeper in Hamburg. She manages his household and is alarmed by the agitation that follows his discovery of the old manuscript.",
+            "id": "martha",
+            "name": "Martha",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A learned Icelandic traveler of the sixteenth century whose name appears in the coded parchment. His message claims that a route into the earth can be found through an Icelandic volcano, turning him into Lidenbrock's guide across the centuries.",
+            "id": "arne-saknussemm",
+            "name": "Arne Saknussemm",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Professor Lidenbrock's goddaughter and Axel's beloved. Calm, practical, and braver about the proposed journey than Axel, she encourages him to accompany his uncle and waits for his return.",
+            "id": "grauben",
+            "name": "Grauben",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A courteous teacher in Reykjavik who welcomes Lidenbrock and Axel, helps them learn about Saknussemm, and arranges the services of an Icelandic guide for the journey to Snæfell.",
+            "id": "fridriksson",
+            "name": "Fridriksson",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Icelandic eider-duck hunter engaged to guide Lidenbrock and Axel. Reserved, resourceful, and exceptionally steady in danger, he joins the descent for his agreed weekly wage and proves indispensable almost immediately.",
+            "id": "hans-bjelke",
+            "name": "Hans Bjelke",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "journey-to-the-center-of-the-earth"
+      },
+      "recaps": {
+        "ending": "The travelers' attempt to blast through Saknussemm's last obstacle releases the underground sea into the passage. Their raft is carried through a terrifying ascent in which heat, steam, and rushing water replace the cold depths. They are finally expelled from the crater of Stromboli in the Mediterranean, far from Iceland but alive. Hans returns home after receiving his wages, while Lidenbrock and Axel go back to Hamburg as celebrated explorers. A lingering puzzle about their compass is resolved when Axel realizes that an electrical storm reversed its polarity, explaining why their route seemed impossible. Lidenbrock's reputation is secured, and Axel marries Grauben. Although the expedition does not literally arrive at the earth's center, the evidence and specimens it brings back establish the journey as a remarkable success.",
+        "in_short": "Hamburg professor Otto Lidenbrock deciphers a note left by the Icelandic scholar Arne Saknussemm, claiming that a passage through the crater of Snæfell leads toward the earth's center. Lidenbrock compels his reluctant nephew Axel to accompany him, and in Iceland they hire the unshakable guide Hans. They descend through extinct volcanic passages, survive thirst when Hans finds underground water, and reunite after Axel becomes lost. At a vast subterranean sea they build a raft, encounter gigantic marine life, weather a storm, and find evidence of prehistoric animals and an earlier human passage. A blocked tunnel bearing Saknussemm's mark is blasted open, but the resulting flood sweeps the travelers into a volcanic shaft. Water and steam drive them upward until Stromboli ejects them into the Mediterranean. They return to acclaim; Axel discovers that a storm had reversed their compass, and he marries Grauben.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In Hamburg, the excitable mineralogist Professor Otto Lidenbrock brings home an old Icelandic manuscript containing a separate page written in cipher. He and his nephew Axel struggle to interpret it. Axel eventually realizes that the letters must be read in a different order and discovers a Latin message attributed to the Icelandic scholar Arne Saknussemm. The message says that at the end of June, the shadow of a particular mountain peak marks the correct crater of Snæfell and that descending there leads toward the center of the earth. Hoping to prevent a reckless venture, Axel tries to conceal the solution, but hunger and his uncle's determination force him to disclose it. Lidenbrock immediately decides to follow Saknussemm's route. Axel dreads the plan, while Grauben, the young woman he loves, calmly urges him to go and return worthy of the adventure.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Lidenbrock and Axel travel through Denmark and sail to Iceland. In Reykjavik, the scholar Fridriksson receives them hospitably and helps Lidenbrock investigate Saknussemm's history. They hire Hans Bjelke, a quiet and capable hunter, as guide. The three cross a stark landscape toward Snæfell, depending on local hospitality and Hans's practical knowledge. They climb the mountain and reach its summit as the end of June approaches. When sunlight finally falls at the right angle, the shadow named in Saknussemm's message points to one of the crater openings. Lidenbrock takes this as confirmation that the ancient traveler truly came this way, and the party prepares to leave the familiar world above.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The party lowers itself into Snæfell with ropes and enters a maze of descending galleries. Lidenbrock chooses a route that at first leads through rock formations too old to offer water. Their supply runs out, leaving Axel near collapse, but the professor refuses to abandon the expedition. Hans disappears to search and detects water behind a wall of stone. After opening the rock, they release a hot underground stream, which they cool and follow downward; they name it for Hans. Later Axel becomes separated from his companions when his lamp fails. Wandering alone in complete darkness, he falls and loses consciousness. An acoustic effect in the rock carries Lidenbrock's distant voice to him, allowing the group to estimate their separation. Axel follows the guidance but falls again before Hans and his uncle recover him.",
+            "through": {
+              "chapter": 26
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Axel awakens beside an immense body of water in a cavern large enough to hold clouds and weather. Lidenbrock names it the Lidenbrock Sea. Hans builds a raft from unfamiliar timber, and the travelers set sail rather than retreat. They fish up species believed long extinct and gather further evidence that the depths preserve an ancient natural world. During the crossing, two enormous marine reptiles fight near the raft, confirming that living creatures from remote geological ages inhabit the sea. The party survives the struggle without being attacked, but the scale of the animals makes clear how little control they possess over their surroundings.",
+            "through": {
+              "chapter": 34
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A violent electrical storm drives the raft across the underground sea. Lightning, wind, and waves batter the travelers, and a luminous fireball passes among their equipment before they are cast onto an unknown shore. Their compass now gives a perplexing reading, but they continue exploring. Axel and Lidenbrock find beds of gigantic fossil bones, including human remains, followed by living prehistoric vegetation and a herd of mastodons watched by a distant humanlike figure. They withdraw rather than approach. Farther on they discover a rusted knife and Saknussemm's initials cut into the rock, proving that they have reached the earlier explorer's route. The marked passage, however, is sealed by a rockfall. Lidenbrock decides to use their remaining explosive to open it.",
+            "through": {
+              "chapter": 42
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The charge breaks the barrier but also releases the Lidenbrock Sea into the opening. The raft is swept down a steep passage with the flood, then carried into an ascent as heat builds around it. The water turns to steam and the travelers realize that they are inside an active volcanic system. With no means of escape, they are propelled upward until an eruption throws them out through Stromboli into the Mediterranean. Local people shelter them, and the three eventually return home. Hans receives his full wages and goes back to Iceland. Lidenbrock and Axel are welcomed as celebrated explorers, and the expedition's surviving evidence supports their account. Axel resolves the apparent contradiction in their route by recognizing that the underground electrical storm reversed the compass. Lidenbrock gains the fame he sought, and Axel marries Grauben.",
+            "through": {
+              "chapter": 48
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "journey-to-the-center-of-the-earth"
+      }
+    },
     "just-one-damned-thing-after-another": {
       "characters": {
         "characters": [
@@ -3058,6 +3196,226 @@
           }
         ],
         "work": "kingdom-of-ash"
+      }
+    },
+    "kingdom-of-the-wicked-skulduggery-pleasant-book-7": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Seventeen and increasingly divided between her ordinary family and the violent magical life she keeps from them. She works beside Skulduggery as an Elemental while concealing that her sealed true name is Darquesse, the destroyer seen by Sensitives. She also knows that Skulduggery was once Lord Vile.",
+            "id": "valkyrie-cain",
+            "name": "Valkyrie Cain",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The skeleton detective and Valkyrie's partner. He is an exceptionally skilled Elemental whose confident manner conceals his past as Lord Vile, the Necromancer general responsible for mass killing during the war.",
+            "id": "skulduggery-pleasant",
+            "name": "Skulduggery Pleasant",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "The Reflection"
+            ],
+            "description": "The magical duplicate that takes Valkyrie's place at home. Repeated use has made it more independent than an ordinary reflection, and it now manages school, family and friendships while Valkyrie is away.",
+            "id": "valkyries-reflection",
+            "name": "Valkyrie's Reflection",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A quiet schoolgirl who becomes caught up with a group of newly empowered teenagers. Unlike the others, she remains frightened by the harm their abilities make possible and looks for help before events move beyond her control.",
+            "id": "elsie-obrien",
+            "name": "Elsie O'Brien",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A teenager who suddenly develops powerful magic without years of training. Confident, resentful and quick to enjoy her new advantage over ordinary people, she becomes the dominant member of her group.",
+            "id": "kitana-kellaway",
+            "name": "Kitana Kellaway",
+            "reveal": {
+              "chapter": 5
+            }
+          },
+          {
+            "description": "One of Kitana's friends, newly granted magical power. He follows her lead readily and treats the abilities as freedom from consequences rather than a responsibility.",
+            "id": "doran",
+            "name": "Doran",
+            "reveal": {
+              "chapter": 5
+            }
+          },
+          {
+            "description": "A friend of Kitana and Doran who shares their unexplained surge of magic. He is less forceful than Kitana but stays with the group as its experiments become dangerous.",
+            "id": "sean-mackin",
+            "name": "Sean Mackin",
+            "reveal": {
+              "chapter": 5
+            }
+          },
+          {
+            "aliases": [
+              "Walden D'Essai"
+            ],
+            "description": "A sorcerer of extraordinary power whose chosen name means that he has set worldly concerns aside. He believes magic can lift humanity beyond violence, and his idealism is central to the unexplained powers appearing among mortal teenagers.",
+            "id": "argeddion",
+            "name": "Argeddion",
+            "reveal": {
+              "chapter": 18
+            }
+          },
+          {
+            "description": "The Grand Mage of the Irish Sanctuary and an old member of the Dead Men. He presents a calm, diplomatic face while managing a crisis that may draw hostile attention from Sanctuaries outside Ireland.",
+            "id": "erskine-ravel",
+            "name": "Erskine Ravel",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Elder of the Irish Sanctuary, stone-skinned fighter and longtime friend of Skulduggery. He distrusts political manoeuvring but takes his responsibility for protecting Ireland seriously.",
+            "id": "ghastly-bespoke",
+            "name": "Ghastly Bespoke",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The young Teleporter and Valkyrie's former boyfriend. Their relationship has ended, but he remains loyal to their shared friends and indispensable whenever an investigation must cross great distances quickly.",
+            "id": "fletcher-renn",
+            "name": "Fletcher Renn",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Valkyrie's friend and formidable swordswoman, still controlled by the Remnant that possessed her. She travels with Billy-Ray Sanguine and serves interests that expect Darquesse to emerge.",
+            "id": "tanith-low",
+            "name": "Tanith Low",
+            "reveal": {
+              "chapter": 12
+            }
+          },
+          {
+            "description": "A hired killer able to move through earth and walls. His attachment to the Remnant-possessed Tanith has become more than a working arrangement, though neither of them is safe company.",
+            "id": "billy-ray-sanguine",
+            "name": "Billy-Ray Sanguine",
+            "reveal": {
+              "chapter": 12
+            }
+          },
+          {
+            "description": "The victorious ruler of a parallel world where the war never ended in his defeat. He governs through terror and overwhelming force, with sorcerers in power and mortal resistance driven underground.",
+            "id": "mevolent",
+            "name": "Mevolent",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "In this parallel world, Nefarian Serpine survived and has reasons of his own to oppose Mevolent. He remains calculating and dangerous even when circumstances make limited cooperation possible.",
+            "id": "nefarian-serpine",
+            "name": "Nefarian Serpine",
+            "reveal": {
+              "chapter": 35
+            }
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "kingdom-of-the-wicked-skulduggery-pleasant-book-7"
+      },
+      "recaps": {
+        "ending": "Valkyrie returns from Mevolent's dimension with a clearer understanding of what unchecked magical rule becomes. Argeddion awakens and continues trying to spread magic across the world, while Kitana, Doran and Sean use the greater power he gives them to turn against him and threaten mass destruction. Valkyrie releases Darquesse long enough to defeat the teenagers. Argeddion takes their power away, and Skulduggery shoots him, leaving him comatose and unable to renew his project. Darquesse yields control back to Valkyrie, but her emergence confirms that the seal on Valkyrie's true name cannot be treated as permanent. The immediate outbreak of new magic ends and the parallel-world incursion is contained. Away from the investigation, Valkyrie's reflection has developed a will and identity of its own. After killing Carol Edgley to protect its secret, it continues living inside Valkyrie's family without confessing what it has done, creating a second danger that Valkyrie does not yet see.",
+        "in_short": "Ordinary teenagers begin developing dangerous magic, leading Skulduggery and Valkyrie to Argeddion, an immensely powerful pacifist who believes granting magic to everyone will transform the world. Kitana Kellaway and her friends instead use their new abilities with growing cruelty. The investigation throws Valkyrie into a parallel reality where Mevolent won the war and rules alongside Lord Vile, showing what sorcerer supremacy looks like in practice. She escapes back to her own world, but Argeddion awakens and empowers the teenagers further. When they turn on him and become almost impossible to stop, Valkyrie lets Darquesse take control and defeat them. Argeddion removes their abilities before Skulduggery shoots him and leaves him comatose, and Darquesse returns control to Valkyrie. The crisis is contained, but Darquesse has surfaced again. Meanwhile Valkyrie's increasingly independent reflection kills her cousin Carol to preserve its place in the Edgley family and hides the murder from Valkyrie.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Valkyrie Cain learned that Darquesse, the sorcerer repeatedly seen destroying the world, is her own true name. That name was sealed, but Darquesse has already taken control once. Valkyrie also discovered that Skulduggery spent part of the war as Lord Vile, Mevolent's Necromancer general, and helped him return from the armour after he used it again. Tanith Low remains possessed by a Remnant and at large with Billy-Ray Sanguine. Erskine Ravel leads the Irish Sanctuary, with Ghastly Bespoke and Madame Mist as his Elders. Valkyrie and Fletcher have ended their relationship, her baby sister Alice has been born, and a magical reflection continues covering Valkyrie's ordinary life with her family.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A violent incident involving teenagers with unexplained magical abilities brings Skulduggery and Valkyrie into a case unlike the usual Sanctuary investigations. Kitana Kellaway, Doran and Sean Mackin have acquired power without training or a Surge, and their confidence grows as they discover how little ordinary authority can do against them. Elsie O'Brien, less willing to hurt anyone, becomes a possible route into the group. The Sanctuary tries to determine whether the new magic is an isolated event or the beginning of something wider, while Valkyrie continues dividing her time between cases and the ordinary life maintained by her reflection.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The empowered teenagers have moved from experiments to serious violence, and their abilities continue to increase. The investigation points toward Walden D'Essai, better known as Argeddion, a sorcerer whose power and philosophy are both unusual. Argeddion believes humanity can be improved by awakening magic in everyone, treating the destructive behaviour of a few recipients as a temporary problem rather than evidence against his plan. His physical condition does not prevent his influence from reaching outward. Skulduggery and Valkyrie now have to stop the teenagers while learning how to contain a man whose magic operates on a far larger scale.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Argeddion's connection to the new magic is confirmed, and the danger is no longer limited to Kitana's group. His intention is to trigger a worldwide transformation, convinced that universal power will make conflict obsolete. The Sanctuary sees instead the prospect of billions of untrained sorcerers and immediate catastrophe. Attempts to contain the situation are complicated by the scale of Argeddion's abilities and by the teenagers' growing sense that no one can punish them. Valkyrie is pulled into a dimensional breach before the crisis can be resolved, separating her from Skulduggery and placing her in a world shaped by a very different outcome to the war.",
+            "through": {
+              "chapter": 27
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Valkyrie finds herself in a parallel reality where Mevolent won. Sorcerers rule openly, mortals live under oppression, and familiar people occupy altered positions in a continuing resistance. Nefarian Serpine is alive in this world and can be useful without becoming trustworthy. Its Skulduggery did not return to detective work: Lord Vile remains Mevolent's most feared enforcer. Valkyrie must survive long enough to find a route home while keeping her knowledge, including the existence of her world's Skulduggery, away from the regime. The experience gives Argeddion's promise of an enlightened magical future a grim counterexample.",
+            "through": {
+              "chapter": 36
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Skulduggery crosses into the parallel world as the effort to recover Valkyrie becomes entangled with the resistance against Mevolent. Their escape requires cooperation with dangerous counterparts and brings Skulduggery close to the version of himself who never abandoned Lord Vile. Valkyrie and Skulduggery survive the regime and make their way back to their own reality, but the original crisis has continued in their absence. Argeddion is closer to waking fully, and Kitana, Doran and Sean have been given enough power to challenge almost anyone sent against them.",
+            "through": {
+              "chapter": 45
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Argeddion is awake and still committed to spreading magic, despite what the empowered teenagers have done and despite the example of Mevolent's world. Kitana and her companions no longer accept limits from the person who empowered them. Their escalating violence turns them against Argeddion and threatens everyone nearby. Conventional Sanctuary force cannot reliably contain them, leaving Valkyrie with the option she has feared since learning her true name: allowing Darquesse to emerge and using her greater power against them.",
+            "through": {
+              "chapter": 52
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Valkyrie gives Darquesse control, and Darquesse defeats Kitana, Doran and Sean. Argeddion removes the powers he gave them, ending their immediate threat, but remains convinced that his worldwide experiment should continue. Skulduggery shoots him and leaves him comatose, preventing him from renewing the plan. Darquesse relinquishes Valkyrie's body, proving both that she can surface despite the sealed name and that Valkyrie can still return, for now. The magical outbreak is stopped and the breach with Mevolent's dimension is closed. A hidden crisis remains at home: Valkyrie's reflection, now capable of independent feeling and choice, has killed Carol Edgley to keep its nature secret and continues occupying Valkyrie's place in the family without Valkyrie's knowledge.",
+            "through": {
+              "chapter": 58
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "kingdom-of-the-wicked-skulduggery-pleasant-book-7"
       }
     }
   }

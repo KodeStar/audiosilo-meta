@@ -984,6 +984,251 @@
         "work": "all-systems-red"
       }
     },
+    "all-the-weyrs-of-pern": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Artificial Intelligence Voice-Address System"
+            ],
+            "description": "The intelligent computer left at Landing by Pern's original colonists and recently awakened after thousands of years. AIVAS holds scientific records, teaching programs, and a detailed understanding of Thread, and presents itself as an adviser whose purpose is to help Pern complete the work for which it was built.",
+            "id": "aivas",
+            "name": "AIVAS",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Lord Jaxom"
+            ],
+            "description": "The Lord Holder of Ruatha and rider of the unique white dragon Ruth. Jaxom has grown from an unconventional boy into a leader trusted by both Hold and Weyr, and his curiosity about ancient Landing makes him one of AIVAS's most committed students.",
+            "id": "jaxom",
+            "name": "Jaxom",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Jaxom's small white dragon, intelligent, confident, and unusually exact about where and when he is. Ruth's command of between and his rapport with fire-lizards give him abilities that may matter as much as the strength of a larger dragon.",
+            "id": "ruth",
+            "name": "Ruth",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Benden Weyrleader and rider of bronze Mnementh. F'lar united the Weyrs against the returning Thread and has spent decades pressing Pern's traditional institutions to cooperate and change. AIVAS now offers the permanent victory he has always wanted.",
+            "id": "flar",
+            "name": "F'lar",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Benden Weyrwoman and rider of the senior queen Ramoth. Lessa's daring journey into the past saved Pern at the beginning of the Pass; she remains a formidable political leader who weighs AIVAS's promises against her duty to dragons and riders.",
+            "id": "lessa",
+            "name": "Lessa",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Masterharper Robinton"
+            ],
+            "description": "Pern's Masterharper and its most widely trusted diplomat. Robinton has long used music, education, and personal persuasion to bridge the divisions among Weyr, Hold, and Craft, and he greets AIVAS's recovered knowledge with delighted curiosity.",
+            "id": "robinton",
+            "name": "Robinton",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A harper, explorer, and former apprentice of Robinton who helped uncover Landing's secrets. Piemur is resourceful, irreverent toward rank, and well suited to practical work that crosses the boundaries between crafts.",
+            "id": "piemur",
+            "name": "Piemur",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A skilled Smithcraft journeywoman and Master Fandarel's granddaughter. Jancis combines technical discipline with the flexibility to learn from AIVAS, and she works closely with Piemur on converting ancient instruction into tools Pern can actually build.",
+            "id": "jancis",
+            "name": "Jancis",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Master Fandarel"
+            ],
+            "description": "The head of the Smithcraft, renowned for patient reasoning and large-scale engineering. Fandarel sees AIVAS as a teacher capable of advancing Pernese craft, while insisting that plans be translated into sound materials and repeatable work.",
+            "id": "fandarel",
+            "name": "Fandarel",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A gifted harper and composer whose fire-lizards helped reveal the intelligence of Pern's small dragons. Menolly is close to Robinton and contributes both musical insight and practical loyalty to the circle working at Landing.",
+            "id": "menolly",
+            "name": "Menolly",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior harper and Menolly's partner, trained by Robinton in the Hall's diplomatic as well as musical work. Sebell helps maintain communication and trust while AIVAS's lessons create excitement and resistance across Pern.",
+            "id": "sebell",
+            "name": "Sebell",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jaxom's wife, a healer from the Southern Continent and Lady Holder of Ruatha. Sharra understands both Jaxom's physical limits and his need to take part in work that joins his responsibilities as rider and Holder.",
+            "id": "sharra",
+            "name": "Sharra",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jaxom's former guardian and a onetime dragonrider who became Ruatha's steward after losing his dragon. Lytol brings personal knowledge of both Weyr and Hold to Landing and treats the colonists' recovered history with grave attention.",
+            "id": "lytol",
+            "name": "Lytol",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A retired Weyrleader who came from the past with the Oldtimer dragonriders but chose cooperation over their later isolation. D'ram offers experience, patience, and a perspective spanning very different periods of Weyr custom.",
+            "id": "dram",
+            "name": "D'ram",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A bronze rider entrusted with leading one of Pern's newer Weyrs. T'gellan belongs to the generation prepared to work across old regional divisions and to test the unfamiliar methods AIVAS proposes.",
+            "id": "tgellan",
+            "name": "T'gellan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Masterglass-smith Norist"
+            ],
+            "description": "The conservative head of the Glasscraft. Norist distrusts AIVAS and fears that sudden dependence on ancient machines will overturn the authority, skills, and social order the Crafts have preserved.",
+            "id": "norist",
+            "name": "Norist",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "all-the-weyrs-of-pern"
+      },
+      "recaps": {
+        "ending": "After years of preparation compressed into months of training and dangerous transport, the dragonriders carry the colony ships' great engines to their calculated positions on the Red Star. The coordinated operation succeeds: the detonations alter its orbit enough to prevent the future close approaches that bring Thread to Pern. The current generation still has responsibilities during the remaining fall, but future Passes will no longer recur. Opponents of AIVAS attack the project and abduct Robinton, but he is recovered and the plan survives their interference. Once the orbital change is confirmed, AIVAS declares its original purpose fulfilled and shuts itself down, leaving its students with extensive recovered knowledge and the responsibility to choose how Pern will use it. Robinton, already weakened by age and the strain of the crisis, dies soon afterward. His death joins the triumph with a profound personal loss for Menolly, Sebell, Lessa, F'lar, Jaxom, and their allies. Pern ends the story with Thread's ultimate defeat secured, but without the two guiding voices that made the victory possible.",
+        "in_short": "After Jaxom, Piemur, and their companions awaken AIVAS at ancient Landing, the computer reveals a plan to end Thread permanently by changing the Red Star's orbit. AIVAS teaches science to selected riders, Smiths, and Harpers, restores access to the original colony ships, and trains dragons to travel between to positions in space. Jaxom and Ruth, F'lar, Lessa, and leaders from all the Weyrs coordinate the dangerous operation while conservative Craft leaders resist the social changes surrounding the new knowledge. The dragonriders ultimately move and deploy the ships' engines on the Red Star; their detonation shifts its path so future close passes will not bring Thread to Pern. Anti-AIVAS conspirators abduct Robinton but fail to stop the mission. With its task complete, AIVAS shuts itself down. Robinton dies soon afterward, leaving his friends to grieve even as Pern celebrates freedom from the ancient cycle. The survivors inherit both a safer world and the recovered knowledge needed to reshape it.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "During Dragonflight, Lessa of Ruatha Impressed the queen Ramoth and became Benden Weyrwoman beside Weyrleader F'lar. When Thread returned to an unprepared Pern, Lessa traveled four centuries into the past and brought the missing Weyrs forward to defend the planet. Dragonquest followed the political conflict between those Oldtimer riders and Benden's reformers; it also saw young Lord Jaxom of Ruatha secretly Impress the undersized white dragon Ruth. In The White Dragon, Jaxom and Ruth earned acceptance as a fighting pair, explored the Southern Continent, and helped connect the Weyrs, Holds, and Crafts to evidence of Pern's lost colonial past. Later exploration at the ancient settlement called Landing uncovered intact machinery. Jaxom, Piemur, Jancis, and their companions activated AIVAS, an artificial intelligence left by the first colonists. AIVAS knows why Thread falls, has records of the technology Pern lost, and claims it can devise a way to end the threat rather than merely surviving each Pass.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "AIVAS begins teaching a selected group at Landing, adapting lessons in mathematics, physics, engineering, and history to people raised without advanced machines. Jaxom and Ruth, Piemur and Jancis, Master Fandarel, Robinton, and the Benden leaders become the bridge between the computer and Pern's institutions. AIVAS explains that Thread's cycle is tied to the wandering Red Star and proposes attacking the cause by changing that world's orbit. The plan depends on machinery left in the original colony ships and on dragons learning to travel where no rider has previously asked them to go. F'lar supports the chance to free every future generation, despite the scale of the risk.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Training expands beyond a small circle. Smiths recover dormant systems and manufacture precise new equipment, Harpers organize records and instruction, and dragonriders practice unfamiliar visualizations under AIVAS's direction. The computer's history of the colony overturns beliefs that had become tradition after thousands of years. Many people welcome useful knowledge, but others fear that AIVAS is setting the Crafts aside or making leaders dependent on a machine no living person fully understands. Master Norist becomes a prominent voice of suspicion. Robinton and the other intermediaries try to keep debate open while the technical teams prove that AIVAS's instructions can produce practical results.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Dragons demonstrate that between can take them beyond Pern's atmosphere when riders are given reliable coordinates and images. AIVAS directs missions to the old colony ships, where equipment has waited in orbit since the first settlement. Jaxom and Ruth are especially valuable because Ruth always knows his position in time and space, while experienced Weyrleaders organize the many pairs needed for transport. The recovered systems confirm that the Red Star can be altered, but the engines and supplies involved are enormous. Every stage must be divided into loads dragons can carry, rehearsed across the Weyrs, and completed without losing riders to vacuum, bad coordinates, or fatigue.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "AIVAS turns the orbital proposal into a sequence of coordinated operations. Smithcraft teams prepare fittings and controls, while riders learn to arrive at exact locations rather than relying only on familiar landscapes. F'lar must persuade all the Weyrs that the computer's calculations justify risking scarce dragons on a mission whose reward lies largely in Pern's future. Opposition also hardens among people who regard the project as an assault on custom and human authority. Robinton uses the trust he has built over a lifetime to defend learning without demanding blind obedience, and AIVAS continues supplying evidence, but neither argument removes the fear created by rapid change.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Weyrs commit to AIVAS's plan and begin the most demanding transport stages. Teams move components from the colony ships, place guidance equipment, and practice the timed jumps required to reach the Red Star. Jaxom and Ruth help connect technical specialists with riders, while Lessa, F'lar, and the other Weyrleaders distribute risk across the fighting force so ordinary Thread defense can continue. Successful trials show that dragons can operate in space with proper preparation. The project is now physically possible, but its final maneuvers leave almost no margin for error, and organized opponents are increasingly willing to disrupt Landing rather than wait for debate to change the leaders' minds.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The final operation approaches as dragon and human teams assemble the engines and controls AIVAS requires. Each Weyr has a defined part in a schedule calculated around the Red Star's motion. The riders must trust coordinates they cannot verify by sight and carry loads in conditions their species never evolved to face. At Landing, security concerns grow alongside the technical pressure, because opponents of AIVAS now threaten people as well as equipment. Robinton remains one of the computer's strongest public defenders, while his friends try to shield both him and the mission from the costs of that position. The plan to alter the Red Star is ready, but its success and the fate of its chief advocates remain unresolved.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The dragonriders execute AIVAS's schedule, transporting and activating the old colony ships' engines at the calculated points on the Red Star. The detonations change its orbit enough to prevent the future close passages that have brought Thread to Pern for millennia. Opposition culminates in violence and Robinton's abduction, but he is rescued and the conspirators fail to stop the project. After instruments confirm success, AIVAS announces that its colonial assignment is complete and deliberately shuts itself down, leaving its students the knowledge it has restored. Robinton, worn down by age and the ordeal, dies soon afterward. His friends lose the human mediator who helped all Pern work together just as they lose the ancient intelligence that designed the victory. F'lar, Lessa, Jaxom, the Crafts, and all the Weyrs must now carry that work forward themselves, with the promise that once the remaining Thread has passed, it will never return.",
+            "through": {
+              "chapter": 20
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "all-the-weyrs-of-pern"
+      }
+    },
     "all-these-worlds": {
       "characters": {
         "characters": [

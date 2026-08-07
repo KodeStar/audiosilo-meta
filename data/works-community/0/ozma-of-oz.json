@@ -326,6 +326,168 @@
         "work": "pandemonium"
       }
     },
+    "passage-to-dawn": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A dark elf ranger who has spent six years sailing with Captain Deudermont and fighting pirates along the Sword Coast. The distance from Mithral Hall has given him room to live beyond Menzoberranzan's shadow, though memories of friends he could not save still shape his choices.",
+            "id": "drizzt-do-urden",
+            "name": "Drizzt Do'Urden",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Bruenor's adopted daughter, a formidable archer and Drizzt's partner aboard the Sea Sprite. She has built a life with him since the defense of Mithral Hall while continuing to carry Wulfgar's memory and the unanswered grief surrounding his apparent death.",
+            "id": "catti-brie",
+            "name": "Catti-brie",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The principled captain of the Sea Sprite, known along the Sword Coast for hunting pirates rather than joining them. He judges crew members by discipline and conduct, which earned Drizzt and Catti-brie a place on his ship long before most ports trusted them.",
+            "id": "captain-deudermont",
+            "name": "Captain Deudermont",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Sea Sprite's capable and irritable wizard. Robillard protects the vessel with battle magic and professional vigilance, and he treats every unusual passenger or supernatural disturbance as a problem that should be understood before it reaches the deck.",
+            "id": "robillard",
+            "name": "Robillard",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Drizzt's intelligent black panther companion, summoned through an onyx figurine from another plane. Guenhwyvar remains a link between the ranger's years of exile, his adopted family and the life he has made at sea.",
+            "id": "guenhwyvar",
+            "name": "Guenhwyvar",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The dwarf king of Mithral Hall and the center of the family Drizzt found on the surface. Six years after the drow siege, he has a secure kingdom, but the loss of Wulfgar and the long absence of Drizzt and Catti-brie still mark his household.",
+            "id": "bruenor-battlehammer",
+            "name": "Bruenor Battlehammer",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A halfling companion of Drizzt and Bruenor who has enjoyed the prosperous years after the siege. He prefers negotiation and a comfortable chair to open battle, but old loyalty brings him back when the companions reform for another journey north.",
+            "id": "regis",
+            "name": "Regis",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An eccentric wizard of the Harpell family and a long-standing friend of the companions. Harkle combines genuine power with experimental methods, making him valuable for a journey that requires magical travel and answers to supernatural clues.",
+            "id": "harkle-harpell",
+            "name": "Harkle Harpell",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful balor whom Drizzt drove from the mortal world during the struggle against the Crystal Shard. Errtu has returned with a personal hatred of the ranger and uses hidden knowledge, servants and carefully chosen promises to draw the companions where he wants them.",
+            "id": "errtu",
+            "name": "Errtu",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The barbarian warrior the companions believed killed beneath Mithral Hall six years earlier. The collapse cast him into Errtu's reach instead, and he has survived years of demonic imprisonment and torment. His rescue restores a friend to the company, but not the unscarred man they remember.",
+            "id": "wulfgar",
+            "name": "Wulfgar",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "passage-to-dawn"
+      },
+      "recaps": {
+        "ending": "The companions reach Errtu's stronghold in the north and fight through the demon's servants to the captive whose identity he has concealed. Drizzt faces the balor again and defeats him, ending the immediate threat and breaking his control over the prisoner. The captive is not merely a memory or a lure: it is Wulfgar. When the chamber collapsed in Mithral Hall six years earlier, he was taken into demonic imprisonment rather than killed, and he has endured sustained torment in the years since. Bruenor, Regis, Drizzt and Catti-brie recover the friend they had mourned, and Catti-brie returns Aegis-fang to him. His survival is a victory, but it does not restore the relationships or confidence that existed before his fall. Catti-brie and Drizzt have built a life together, while Wulfgar returns deeply scarred and uncertain of his place. The Companions of the Hall are physically reunited, yet their next task will be helping Wulfgar live with freedom and with the years that passed without him.",
+        "in_short": "Six years after the siege of Mithral Hall, Drizzt and Catti-brie sail with Captain Deudermont aboard the Sea Sprite, hunting pirates while Bruenor and Regis remain in the restored dwarven kingdom. The demon Errtu, whom Drizzt once banished during the fight over the Crystal Shard, draws him into a new pursuit using attacks, visions and the promise of knowledge about someone lost. Drizzt and Catti-brie leave the ship, reunite with Bruenor, Regis and Harkle Harpell, and follow the trail north toward Icewind Dale. Errtu's clues are designed to exploit Drizzt's guilt and the companions' unresolved grief. In the final battle Drizzt defeats the balor and the group reaches his hidden prisoner. Wulfgar, believed dead beneath Mithral Hall six years earlier, was instead taken by the demon and has survived years of torment. The companions free him and return Aegis-fang, reuniting their family while recognizing that Wulfgar has come back profoundly changed and that Catti-brie and Drizzt now share a life together.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Drizzt Do'Urden found a family in Bruenor Battlehammer, Catti-brie, Wulfgar and Regis after escaping Menzoberranzan. Together they defended Icewind Dale, reclaimed Mithral Hall and defeated enemies including the demon Errtu, who served the master of the Crystal Shard before Drizzt drove him from the mortal world. During a later drow raid, Wulfgar held back a yochlol while his friends escaped a collapsing chamber. Only his warhammer Aegis-fang was recovered, and the companions believe he died. Drizzt and Catti-brie subsequently survived Menzoberranzan and helped defend Mithral Hall from Matron Baenre's invasion, which ended with her death and the drow retreat. Six years have passed. Bruenor still rules the hall, Regis lives there in comfort, and Drizzt and Catti-brie have made a life together at sea with Captain Deudermont, though Wulfgar's loss remains part of all of them.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Six years after the drow invasion, Drizzt and Catti-brie serve aboard Captain Deudermont's Sea Sprite, helping hunt pirates along the Sword Coast. The work gives Drizzt a useful purpose beyond guarding Mithral Hall and allows the pair to live together without every choice being measured against the war. Deudermont values them as disciplined crew, while the ship's wizard Robillard remains alert to the unusual dangers that follow the ranger. That caution proves justified when supernatural signs and coordinated threats begin intruding on the voyage. The demon Errtu, once driven from the mortal world by Drizzt during the fall of the Crystal Shard, is again able to act against him. Rather than attack openly, the balor begins with indirect pressure and knowledge chosen to awaken Drizzt's oldest guilt.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Errtu's provocations make clear that the danger is aimed at Drizzt rather than at the Sea Sprite alone. The demon offers hints about someone the ranger lost and arranges each clue so that ignoring it feels like abandoning a possible survivor. Drizzt and Catti-brie leave Deudermont's command to pursue the matter on land, accepting that the captain cannot carry his whole crew into a private supernatural war. They return to the family they have seen only intermittently during their years at sea. Bruenor's kingdom has prospered and Regis has grown comfortable, but neither hesitates once the danger is understood. Harkle Harpell adds magical knowledge and transport to the expedition. The Companions of the Hall reform around an absence none of them has ever fully accepted, though they still regard Wulfgar's loss as final.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The reunited companions follow Errtu's trail north. The route and the demon's messages repeatedly point toward Icewind Dale, where Drizzt first fought Errtu and where the Crystal Shard's tower fell. Harkle's magic speeds parts of the journey but cannot resolve whether the offered knowledge is truth or bait. Bruenor approaches the problem as a rescue until proof makes that impossible, while Regis looks for the self-interest behind each messenger and attack. Catti-brie sees that Errtu is exploiting Drizzt's habit of accepting personal blame for every loss connected to him. Drizzt understands the manipulation but cannot turn away from even a small chance that someone he mourned may still be reached. Enemy attacks grow stronger as the party nears the frozen north, confirming that the clues lead to a prepared confrontation.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In Icewind Dale, the pursuit narrows toward Errtu's hidden position and the prisoner at the center of his threats. The demon uses servants, hostile terrain and deceptive appearances to separate the companions and make Drizzt commit himself before he understands what is being offered. Bruenor, Regis, Catti-brie, Harkle and Guenhwyvar keep the expedition from becoming the solitary reckoning Errtu intended. The evidence establishes that a real captive exists, but the balor continues to conceal the person's identity and to exploit Drizzt's memories of the dead. The companions penetrate the outer defenses and prepare for a final assault. Aegis-fang remains with them as the tangible reminder of Wulfgar, whom they still believe was crushed beneath Mithral Hall, and none of them yet knows why Errtu has drawn that old loss into his revenge.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The companions break into Errtu's stronghold and reach the confrontation the balor has arranged. Drizzt defeats the demon again, allowing the party to free the hidden prisoner. The captive is Wulfgar. He was not killed when the chamber beneath Mithral Hall collapsed; he was taken into Errtu's power and has survived six years of demonic imprisonment and torment. Bruenor, Regis, Drizzt and Catti-brie recover the companion they had mourned, and Catti-brie gives Aegis-fang back to him. The reunion restores Wulfgar to the world but cannot return the lost years or erase what was done to him. Drizzt and Catti-brie have become partners during his absence, and Wulfgar comes home carrying wounds that freedom alone will not heal. The Companions of the Hall are together again, but their future now depends on helping him find a life beyond captivity and beyond the place he once expected to hold.",
+            "through": {
+              "chapter": 25
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "passage-to-dawn"
+      }
+    },
     "past-tense": {
       "characters": {
         "characters": [
