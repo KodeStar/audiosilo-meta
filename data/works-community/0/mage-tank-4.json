@@ -728,6 +728,446 @@
         "work": "mageling"
       }
     },
+    "magician-apprentice": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An orphan boy of about thirteen kept as a ward of Castle Crydee's kitchen, on the Far Coast of the Kingdom of the Isles. He gathers shellfish, runs errands, and is due to be offered to the castle's craftmasters on Choosing Day along with the other boys of his year. Small for his age and quicker with his wits than with his hands, he privately doubts any master will want him, and he is quietly infatuated with the Duke's daughter, a girl far above anything an orphan could reasonably hope for.",
+            "id": "pug",
+            "name": "Pug",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Pug's closest friend, son of Castle Crydee's cook and his wife, a head taller and broader than Pug and a natural athlete. He has wanted a soldier's life for as long as he can remember and talks openly of serving in the Duke's guard. He treats Pug as a brother rather than a competitor, and the two have grown up together in the keep.",
+            "id": "tomas",
+            "name": "Tomas",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Duke of Crydee's magician: a stout, bearded man rarely seen without his pipe, who keeps a tower room crowded with books, scrolls and instruments. Magic is a suspect trade in the Kingdom and its practitioners are commoners of uncertain standing, so he holds his place at court on the Duke's favour and his own good sense. On Choosing Day he claims Pug as his apprentice when no craftmaster will take the boy.",
+            "id": "kulgan",
+            "name": "Kulgan",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Duke of Crydee's daughter, close to Pug in age, dark-haired and accustomed to being obeyed. She is sharp-tongued, headstrong, and impatient with the narrow life expected of a nobleman's daughter on the Far Coast, and she is a good deal more aware of Pug than he dares to imagine.",
+            "id": "carline",
+            "name": "Princess Carline",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lord Borric"
+            ],
+            "description": "Borric conDoin, Duke of Crydee and Warden of the West, cousin to the King and one of the great lords of the Kingdom of the Isles. A widower who rules the Far Coast from his castle with a soldier's directness, he presides over the Choosing himself and takes a personal interest in the boys of his household.",
+            "id": "borric",
+            "name": "Duke Borric",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Duke's elder son and heir to Crydee, fair-haired and open-tempered, easy with the castle's servants and popular with the garrison. He is the more diplomatic of the two brothers and the one expected to hold the duchy after his father.",
+            "id": "lyam",
+            "name": "Lyam conDoin",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Duke's younger son, dark, lean and dry-humoured, with a swordsman's quickness and a habit of saying exactly what he thinks. He is the sharper and less trusting of the two brothers, and he takes soldiering and the defence of the Far Coast very seriously.",
+            "id": "arutha",
+            "name": "Arutha conDoin",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly priest of Astalon attached to the Duke's household, who has taught the castle's children their letters and numbers for two generations. Dry, exacting and formidably learned, with a priest's own quiet arts, he takes a share in Pug's schooling alongside Kulgan.",
+            "id": "tully",
+            "name": "Father Tully",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Kulgan's franklin and household man, a big, weather-beaten former soldier from the mountains who keeps the magician's rooms, does the cooking, and handles anything that calls for a strong arm or a level head. He is taciturn but reliable, and he accepts Pug's arrival without comment.",
+            "id": "meecham",
+            "name": "Meecham",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A firedrake, a small distant cousin of the true dragons, who has attached himself to Kulgan's tower for the hearth and the food. He is intelligent, wilful, and comes and goes entirely as he pleases, and he takes an immediate liking to the new apprentice.",
+            "id": "fantus",
+            "name": "Fantus",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A sergeant of the Crydee garrison, born in the Empire of Great Kesh to the south, a broad and dark-skinned soldier of long service. Steady, good-humoured and entirely competent, he is trusted by the Duke and by both of the Duke's sons.",
+            "id": "gardan",
+            "name": "Gardan",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A squire of the Duke's court, son of the Baron of Tulan, a little older than Pug. Charming, quick with a joke and quicker to take offence, he has ambitions regarding the Duke's daughter and does not welcome the sudden elevation of a kitchen boy into the same circle.",
+            "id": "roland",
+            "name": "Roland",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Huntmaster of Crydee, a lean, self-contained man orphaned young, who spent part of his boyhood among the elves of Elvandar. He speaks their language, is welcome in their forest, and serves as the Duke's usual go-between with them. His skill with the longbow has no equal on the Far Coast, and he keeps his own counsel about almost everything else.",
+            "id": "martin-longbow",
+            "name": "Martin Longbow",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Queen of the elves of Elvandar, the great forest north of Crydee. Ageless in appearance, formal and careful in her dealings with humans, she rules with the counsel of her spellweavers and has kept her people apart from the Kingdom's affairs. Word of the strangers on the Far Coast is enough to bring her into council with the Duke.",
+            "id": "aglaranna",
+            "name": "Queen Aglaranna",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Chieftain of the dwarven village of Caldara in the Grey Towers, a stocky, pipe-smoking veteran who leads his people's warriors. He knows the old mine workings beneath the mountains better than anyone alive and treats the danger there as a matter of routine.",
+            "id": "dolgan",
+            "name": "Dolgan",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A robed sorcerer encountered deep beneath the Grey Towers, keeping company with a dying dragon. He speaks as if he already knows who has come and why, sees that a gift is made, and offers no account of himself, his powers or his interest in the matter.",
+            "id": "macros",
+            "name": "Macros the Black",
+            "reveal": {
+              "chapter": 9
+            }
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "magician-apprentice"
+      },
+      "recaps": {
+        "ending": "The book closes in the middle of the Riftwar rather than at its resolution. The Tsurani hold the valley and the forests near the Grey Towers, and the Kingdom's western armies can contain them but not drive them out. Duke Borric has taken the field in the east with Lyam, leaving Arutha and Swordmaster Fannon to hold Crydee. Tomas, wearing the white and gold armour given to him beneath the mountains, fights alongside the elves of Elvandar and grows steadily less like the boy who left Crydee; the memories and appetites of its long-dead owner rise in him, and the elves fear what he is becoming as much as they value what he can do. Queen Aglaranna is caught between the two judgements. Pug, who has never managed ordinary magic, is caught up in fighting outside Crydee, uses what power he can reach, is overwhelmed and taken alive. Instead of being killed he is carried back through the rift to the invaders' own world as a prisoner, and Crydee counts him among the dead. Nothing is settled: the war has years left to run, the invaders' world is still unknown, and the sorcerer met beneath the mountains has explained nothing. The story continues directly in Magician: Master.",
+        "in_short": "On the Far Coast of the Kingdom of the Isles, an orphan kitchen boy named Pug is chosen as apprentice to Kulgan, the Duke of Crydee's magician, while his friend Tomas is taken into the garrison. Pug proves unable to work magic by any method Kulgan knows, but he saves the Duke's daughter from trolls and is raised to squire. A wrecked ship brings the first evidence of strangers from another world, and Duke Borric carries the warning east to Krondor and to the unstable King in Rillanon. On the way his party is ambushed and driven into the abandoned dwarven mines, where Tomas is separated from the rest, meets a dying dragon and a sorcerer, and is given an ancient suit of white and gold armour that begins to change him. The invaders, the Tsurani, come through their rift in force and the Riftwar begins. The fighting grinds on for years, Tomas grows into something no longer entirely human, and Pug is captured outside Crydee and carried through the rift as a slave.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Pug is an orphan boy raised in the kitchens of Castle Crydee, on the Far Coast of the Kingdom of the Isles, where Duke Borric conDoin rules as Warden of the West. Caught out by a storm while gathering shellfish on the shore, he shelters through the worst of it and gets back to the keep in time for Choosing Day, the morning on which the castle's craftmasters take the year's boys as apprentices. His friend Tomas, the cook's son, is claimed by the swordmaster for the garrison. Pug is passed over by every master in turn and is left standing alone until Kulgan, the Duke's magician, takes him at the last moment. Magic is a suspect trade in the Kingdom and a magician's apprentice has no obvious future, but the choice lifts Pug out of the kitchen: he moves into the magician's tower, gains a place among the castle's people rather than its servants, and finds himself within sight of the Duke's household, including the Duke's daughter Carline.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Pug's lessons go badly. Kulgan's exercises simply will not work for him, and neither master nor apprentice can say why, though Kulgan and Father Tully both suspect the failure is not for want of ability. Life at the keep otherwise suits him: he inherits the company of Kulgan's firedrake Fantus, the friendship of Meecham, and lessons from Tully alongside the Duke's children. Out beyond the walls Pug comes on Princess Carline set upon by trolls and drives them off, and the Duke rewards him with the rank of squire and a small holding, which does not please the court's other squires, Roland in particular. Not long afterwards a vessel of unfamiliar make is wrecked on the coast. Its crew is gone, but a dying man is recovered whose dress, weapons and speech match nothing known on the Far Coast, and the objects found with him defeat Kulgan's understanding entirely. The Duke begins to treat the possibility of an unknown enemy seriously.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kulgan and Tully reach an alarming conclusion: the strangers are not from anywhere in this world, but come through some kind of gateway from another. The elves of Elvandar are brought into council and confirm that something is moving in the forests. Part of Pug's difficulty is finally explained as well, since his talent appears not to answer to the methods Kulgan was taught and may belong to a different discipline altogether, one no human magician of the Kingdom practises. Duke Borric decides the warning has to be carried east in person, first to the Prince of Krondor and then, if necessary, to the King, and he sets out with Arutha, Kulgan, Pug, Tomas, Meecham, Gardan and Martin Longbow. Crossing toward the Grey Towers the party is ambushed in force by the dark elves of the northern forests, driven off the road, and forced to take shelter in the abandoned dwarven mines of Mac Mordain Cadal beneath the mountains.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The party is scattered in the dark of the mines. Tomas, separated and hunted, falls in with Dolgan, chieftain of the dwarves of the Grey Towers. Deeper still they come upon Rhuagh, an ancient dragon at the end of his life, attended by a sorcerer who seems to have been expecting them. Before the dragon dies, gifts are made, and Tomas receives a suit of white and gold armour older than any human kingdom. He puts it on. He and Dolgan work their way out through the mountains, while the Duke's party, believing Tomas lost, reaches the coast and takes ship, passing Sorcerer's Isle, a place sailors avoid, on the way to Krondor. Tomas begins to dream another man's memories, and finds himself growing stronger, quicker and stranger than he was.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At Krondor, Prince Erland hears the Duke out but can spare no army: the court is dominated by eastern rivals, chief among them Guy du Bas-Tyra, and the western warning is not believed. Borric and Pug travel on to the island capital of Rillanon to petition King Rodric himself, who proves unstable and difficult, veering between grand building schemes and suspicion, but who is finally persuaded to raise the Armies of the East. The warning comes too late to prevent what it predicted. The invaders, who call themselves Tsurani, come through their rift in strength, take the valley and the forests around the Grey Towers, and dig in. What follows is not a raid but a war of position for ground the enemy means to keep, and it settles into a grinding campaign through the forests of Crydee and Yabon.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The war becomes years of stalemate in the forests. Duke Borric takes the field in the east with Lyam, leaving Arutha to hold Crydee with Swordmaster Fannon, while Martin's trackers and the elves harry the invaders' flanks. Tomas, all but unrecognisable in the ancient armour, fights alongside the elves of Elvandar; Queen Aglaranna and her advisers watch his growing power with open unease, because his strength and his ruthlessness are no longer those of a boy from Crydee, and some of them argue that he should be killed. Pug continues to fail at ordinary magic while showing occasional flashes of something else entirely. When the Tsurani finally press Crydee itself, Pug is caught up in the fighting outside the walls, reaches for what power he can, and is overwhelmed and taken alive. Rather than killing him, the Tsurani carry him back through the rift to their own world as a prisoner. At home he is counted among the dead.",
+            "through": {
+              "chapter": 18
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "magician-apprentice"
+      }
+    },
+    "magician-master": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Once an orphan boy of Crydee and a magician's apprentice who could not make his master's magic work, now four years a slave in a Tsurani labour camp in the swamps of Kelewan. He has learned the language and something of the Empire that holds him, keeps his head down, and has largely given up expecting to see his own world again. He is still the same stubborn, observant boy underneath, and still carries a talent nobody, himself included, has been able to explain.",
+            "id": "pug",
+            "name": "Pug",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A travelling singer from Tyr-Sog in the Kingdom's north, captured by the Tsurani and sent to the swamp camp. Glib, adaptable and endlessly talkative, he has an ear for languages and an ambition to be a great minstrel that survives even slavery. He attaches himself to Pug, and the two keep each other alive.",
+            "id": "laurie",
+            "name": "Laurie",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A slave on the Shinzawai estate, taken as a girl when the Empire subdued the Thuril highlands. Proud, sharp-tempered and unbroken by her position, she works in the household and makes no secret of what she thinks of the people who own her. She and Pug find an understanding.",
+            "id": "katala",
+            "name": "Katala",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Lord of the Shinzawai, head of one of the Empire's great houses and a careful player of the Game of the Council, the endless contest of position among Tsurani nobles. He has fought in the war on the barbarian world and has come to conclusions about it that he cannot state openly.",
+            "id": "kamatsu",
+            "name": "Kamatsu of the Shinzawai",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Elder son of the Lord of the Shinzawai and an officer of the Empire's forces in the war beyond the rift. Disciplined and formal in the Tsurani manner, he is set to learn the Kingdom's language from his father's newly bought slaves, for a purpose the household will not discuss.",
+            "id": "kasumi",
+            "name": "Kasumi of the Shinzawai",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Younger son of the Lord of the Shinzawai, quieter and more thoughtful than his brother, and more willing to deal with a slave as a person. He is being raised to the same duties and the same discretion as the rest of the household.",
+            "id": "hokanu",
+            "name": "Hokanu of the Shinzawai",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The boy from Crydee's kitchens who was given a suit of ancient white and gold armour beneath the Grey Towers. He now fights alongside the elves of Elvandar and is more than a match for anything the Tsurani send against him, but the armour has brought with it the memories, the power and the temper of Ashen-Shugar, one of the Valheru who ruled Midkemia before men existed. Less of Tomas is left with every battle, and the elves are divided over whether he is their protector or their next disaster.",
+            "id": "tomas",
+            "name": "Tomas",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Queen of the elves of Elvandar, ruler of the forest and its spellweavers. She is drawn to the transformed human warrior who has come to her forest and afraid of him at the same time, and she must weigh her council's demand that he be destroyed against what his strength is worth to her people in a war they cannot win alone.",
+            "id": "aglaranna",
+            "name": "Queen Aglaranna",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Duke of Crydee's younger son, dark and dry-humoured, left holding the Far Coast while his father and brother fight in the east. With Crydee starved of reinforcements he takes ship for Krondor to argue the west's case in person, and finds the city very different from the one his family remembers.",
+            "id": "arutha",
+            "name": "Arutha conDoin",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A boy thief of Krondor, a member of the Mockers, the city's thieves' guild, and by his own account the best of them. Cocky, fast, and far better informed about Krondor than anyone in the palace, he attaches himself to a visiting nobleman out of curiosity and calculation, and turns out to be worth a great deal more than his years suggest.",
+            "id": "jimmy-the-hand",
+            "name": "Jimmy the Hand",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Daughter of the ailing Prince of Krondor and heir to the Western Realm, a young woman kept close by the man now governing the city in the King's name. Slight, quiet and a good deal tougher than she looks, she has been waiting for a chance to get out.",
+            "id": "anita",
+            "name": "Princess Anita",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Duke of Bas-Tyra, the most powerful lord of the Eastern Realm and the King's Viceroy in Krondor, where he rules in fact if not in name. Able, ruthless and entirely without sentiment, he is the conDoin family's long-standing rival and treats the west's demands for troops as a nuisance.",
+            "id": "guy-du-bas-tyra",
+            "name": "Guy du Bas-Tyra",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A weather-beaten sea captain and former pirate working the Krondor waterfront, loud, profane in the way of sailors, and superbly competent with a ship. He has reasons of his own for wanting to be out of the city and throws in with the Prince's party.",
+            "id": "amos-trask",
+            "name": "Amos Trask",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Duke of Crydee's daughter, left at home while her family fights the war. Still headstrong, she has grown out of the girl she was, has mourned the apprentice believed killed at Crydee, and is looking for something to do beyond waiting on other people's news.",
+            "id": "carline",
+            "name": "Princess Carline",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Great One of the Tsurani Assembly of Magicians: stout, comfortable, fond of his food and a great deal shrewder than he lets himself appear. The Great Ones stand outside Tsuranuanni's law and above its lords, and he has spent a long career understanding exactly what that is worth. He takes an interest in the Assembly's most unusual new member.",
+            "id": "hochopepa",
+            "name": "Hochopepa",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A sorcerer of great age and unclear allegiance who keeps an island the Kingdom's sailors will not approach. He appears where events are turning, gives advice without explaining his reasons, and appears to know a great deal more about the war and its causes than anyone else alive.",
+            "id": "macros",
+            "name": "Macros the Black",
+            "reveal": {
+              "chapter": 9
+            }
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "magician-master"
+      },
+      "recaps": {
+        "ending": "The Riftwar ends. The truce talks are broken by treachery and the fighting resolves into a final battle in the east, at Sethanon, where King Rodric is mortally wounded and names Lyam conDoin his heir before he dies. Pug, no longer using his Tsurani name, and Tomas take a hand in the battle, and the sorcerer Macros closes the rift between the worlds at the apparent cost of his own life, stranding the Tsurani army on Midkemia for good. Lyam is crowned in Rillanon. There it emerges that Martin Longbow, huntmaster of Crydee, is Duke Borric's natural son and therefore Lyam's elder half-brother with a claim on the crown; Martin renounces it publicly and the succession holds. Arutha becomes Prince of Krondor and is betrothed to Anita; Martin is confirmed Duke of Crydee; Carline and Laurie find each other; Kasumi's stranded Tsurani soldiers swear to the Kingdom and are settled at LaMut under his command. Pug and Katala remain on Midkemia to build a life and, in time, a place where magic can be studied openly. Tomas, now at peace with the Valheru memories he carries, shares the rule of Elvandar with Aglaranna. What none of them can answer is what Macros knew, what the vision in Pug's final trial was warning of, or why the enemy that drove the Tsurani's ancestors across space should matter to Midkemia at all.",
+        "in_short": "Carried through the rift at the end of Magician: Apprentice, Pug spends four years as a slave in the Tsurani swamps before he and a captured Kingdom singer, Laurie, are bought by the Shinzawai, a great house secretly working for peace. On their estate Pug meets and loves Katala, and the magical talent he could never use finally surfaces. The Assembly of Magicians claims him, trains him, and elevates him as the Great One Milamber. On Midkemia, Tomas is nearly consumed by the Dragon Lord whose armour he wears before he regains himself, and Prince Arutha rescues Princess Anita from Guy du Bas-Tyra's grip on Krondor with the help of a boy thief called Jimmy the Hand. Sickened by the slaughter staged at the Warlord's games, Milamber destroys the arena and flees Kelewan with Katala. Duke Borric dies of his wounds, the Tsurani peace attempt is betrayed, and the war ends in a battle at Sethanon where King Rodric is killed after naming Lyam his heir. Macros closes the rift and is lost, Lyam is crowned, and Martin Longbow is revealed as Borric's bastard son and renounces his claim.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, in Magician: Apprentice: Pug, an orphan raised in Castle Crydee on the Far Coast of the Kingdom of the Isles, was chosen as apprentice to the Duke's magician Kulgan but could not work magic by any method his master knew. His friend Tomas joined the garrison. A wrecked ship revealed the existence of invaders from another world, and Duke Borric's journey east to warn the Prince of Krondor and the King came too late: the Tsurani opened a rift and seized the valley and forests near the Grey Towers, beginning a long war. On the way east the Duke's party was driven into the abandoned dwarven mines, where Tomas was separated from the rest and given a suit of ancient white and gold armour by a dying dragon, watched by a sorcerer who explained nothing. The armour began to fill Tomas with another being's memories and power, and he now fights alongside the elves of Elvandar, who fear what he is becoming. After years of stalemate Pug was caught in the fighting outside Crydee and carried back through the rift as a slave. At home he is believed dead. This book picks the story up four years later, with the war still running.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Pug has spent four years as a slave in a Tsurani swamp camp, cutting and hauling logs under brutal overseers. He has learned the language and something of the world called Kelewan and of Tsuranuanni, the rigid empire that rules it. A newly captured Kingdom man arrives, a travelling singer named Laurie, and the two become allies. Their situation changes when they are bought out of the camp and taken north to the estate of the Shinzawai, one of the Empire's great houses. Lord Kamatsu and his elder son Kasumi want one specific thing from them: someone to teach Kasumi to speak the King's Tongue like a native, for reasons nobody in the household will explain. Life on the estate is a different order of existence from the swamp. Pug is set to work in the gardens, where he meets Katala, a slave taken from the Thuril highlands, and for the first time since his capture he begins to build a life rather than simply survive.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On Midkemia, Tomas has all but disappeared into the armour he wears. The memories of Ashen-Shugar, one of the Valheru or Dragon Lords who ruled the world in an age before men, rise in him with every battle, and he becomes a warrior the Tsurani cannot stand against and a presence the elves of Elvandar cannot control. Queen Aglaranna is drawn to him and frightened of him at once, while her advisers argue that he must be destroyed before he turns on them. On Kelewan, Pug's life at the Shinzawai estate settles: he and Katala grow close, Laurie's lessons with Kasumi continue, and the household's purpose becomes a little clearer. Kamatsu belongs to a faction that wants the war ended, and their plan turns on getting a message to the Kingdom's King behind the Warlord's back. The family travels with their two Midkemian slaves in attendance, and Pug begins to show flashes of a power he cannot account for.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Pug's power breaks out where it cannot be concealed, and the Assembly of Magicians takes him: on Kelewan a man with the talent belongs to the Great Ones, who stand outside the law and above the great houses, and no lord's claim on a slave outweighs that. He is taken to the City of Magicians, freed of his slave status and put through a long and punishing training under masters including the stout, pragmatic Hochopepa. On Midkemia, Prince Arutha travels to Krondor to beg for reinforcements and finds the city in the hand of Guy du Bas-Tyra, the King's Viceroy and the conDoins' old rival, with Princess Anita, the heir of Krondor, effectively his prisoner. Arutha falls in with the Mockers, the city's thieves' guild, and with a young thief named Jimmy the Hand, and together they get Anita out of the palace and away.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Arutha, Anita and their companions escape Krondor by sea with the smuggler captain Amos Trask, survive a hard voyage, and reach Crydee, where Arutha and Anita's attachment deepens. On Kelewan, Pug completes the Assembly's training and passes its final trial, in which he is shown the history of the world and something of the ancient force that once drove the Tsurani's ancestors across space to reach it. He emerges as a Great One under the name Milamber, one of the most powerful magicians of the Empire, answerable to no lord and free to go where he pleases. He returns for Katala and marries her. In the north of Midkemia, Tomas is brought back from the edge by the intervention of the sorcerer Macros and by what remains of his own humanity, and finds a balance between the boy from Crydee and the Dragon Lord whose memories he carries. He and Aglaranna acknowledge each other openly.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Summoned with the other Great Ones to the Warlord's Imperial Games in the Holy City, Milamber watches Midkemian prisoners butchered for the crowd's entertainment and, in a rage he does not entirely control, tears the arena apart with storm and earthquake before walking out. By Tsurani standards the act is unforgivable, and it makes him an outlaw in all but name; he takes Katala and flees to Midkemia. The Assembly, humiliated, withdraws its support from the Warlord, and the political ground on Kelewan shifts far enough for the peace faction's plan to move. On Midkemia the war has ground on for years. Duke Borric is mortally wounded at the front and dies, and Lyam becomes Duke of Crydee. Kasumi crosses the rift under the Shinzawai plan carrying terms, and for the first time an end to the war looks possible.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The truce talks are broken by treachery: the Warlord's faction attacks under the flag of parley, and the fighting resolves into a final battle in the east, at Sethanon. King Rodric is mortally wounded there and names Lyam his heir before he dies. Pug and Tomas take a hand in the battle, and the sorcerer Macros closes the rift between the worlds at the apparent cost of his own life, cutting the Tsurani army on Midkemia off from home for good. The war ends. Lyam is crowned in Rillanon, where an old matter finally comes out: Martin Longbow, huntmaster of Crydee, is Borric's natural son and therefore Lyam's elder half-brother, with a claim on the crown. Martin renounces it publicly and the succession holds. Arutha becomes Prince of Krondor and is betrothed to Anita, Martin is confirmed Duke of Crydee, Carline and Laurie find each other, and Kasumi's stranded Tsurani soldiers swear to the Kingdom and are settled at LaMut. Pug and Katala remain on Midkemia, with the question of what Macros knew, and what his warning meant, still unanswered.",
+            "through": {
+              "chapter": 16
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "magician-master"
+      }
+    },
     "make-me": {
       "characters": {
         "characters": [

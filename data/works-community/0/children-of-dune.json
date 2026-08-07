@@ -961,6 +961,428 @@
         "work": "cinder"
       }
     },
+    "city-of-ashes": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Fifteen, a newly discovered Shadowhunter still living an ordinary Brooklyn life while her mother lies in a coma no doctor can explain. She has begun dating her oldest friend Simon, partly because the alternative is impossible: the boy she actually wants turned out to be her brother. Her one clear gift is for runes, and she has no training worth the name.",
+            "id": "clary-fray",
+            "name": "Clary Fray",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Raised as a Shadowhunter and now known to be Valentine's son, which has poisoned his place in the only home he has. He has moved out of the Institute rather than be watched, is sleeping badly, and takes on fights he does not need to. His feelings for Clary have not changed just because he has been told what she is to him.",
+            "id": "jace-wayland",
+            "name": "Jace Wayland",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Clary's oldest friend, now her boyfriend, still an ordinary human in a world that keeps nearly killing him. He is trying to hold on to a normal life of band practice and school while knowing exactly how little he can do if anything goes wrong. Being bitten by vampires last year has left marks he does not talk about.",
+            "id": "simon-lewis",
+            "name": "Simon Lewis",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Lightwood daughter, a capable and showy fighter who trains hard and flirts harder. She is protective of Jace in her own way and openly amused by Clary's inexperience, though she is willing to teach her.",
+            "id": "isabelle-lightwood",
+            "name": "Isabelle Lightwood",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The eldest Lightwood child, careful, dutiful and unhappy. He is keeping two secrets at once: that he is in love with someone he cannot admit to, and that the person is not a Shadowhunter at all. His loyalty to Jace remains absolute even as the Clave's suspicion of Jace grows.",
+            "id": "alec-lightwood",
+            "name": "Alec Lightwood",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Lightwoods' youngest child, nine years old, back from Idris with his mother. He is small, short-sighted, obsessed with stories and manga, and desperate to be taken seriously by the older Shadowhunters who mostly forget he is in the room.",
+            "id": "max-lightwood",
+            "name": "Max Lightwood",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Alec and Isabelle's mother, returned from Idris to run the New York Institute. Formidable and cold under pressure, she was once in Valentine's Circle herself, and the discovery of whose son Jace really is has turned her affection for him into wary suspicion.",
+            "id": "maryse-lightwood",
+            "name": "Maryse Lightwood",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Clary's mother, still unconscious in a Manhattan hospital after taking a potion to put herself beyond Valentine's reach. She is present in the book mainly as an unanswerable question: nobody knows how to wake her, and much of what she did and why she did it remains hers alone.",
+            "id": "jocelyn-fray",
+            "name": "Jocelyn Fray",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Once the Shadowhunter Lucian Graymark, now a werewolf and the leader of a Manhattan pack, and the closest thing Clary has to a guardian while her mother is in hospital. He runs a bookshop, keeps the peace between his pack and the Institute, and lets Jace stay with him when nobody else will.",
+            "id": "luke-garroway",
+            "name": "Luke Garroway",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young werewolf of Luke's pack, sharp-tongued and self-possessed, who ran away from a difficult family and was bitten a year or so ago. She meets Jace at a Downworlder bar and dislikes Shadowhunters on principle, having had good reason.",
+            "id": "maia-roberts",
+            "name": "Maia Roberts",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Clave's Inquisitor, sent from Idris to investigate the New York Institute and the boy Valentine raised. Rigid, grief-hardened and entirely unmoved by anyone's protests, she treats Jace as an enemy agent from the moment she arrives and is willing to imprison a teenager to prove it.",
+            "id": "imogen-herondale",
+            "name": "Imogen Herondale",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Clary's father and the leader of the old Circle, at large with the Mortal Cup and no longer bothering to hide. His campaign against the Clave has resumed, and he is collecting the rest of the Mortal Instruments, the objects the angel Raziel left to the first Shadowhunters.",
+            "id": "valentine-morgenstern",
+            "name": "Valentine Morgenstern",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The High Warlock of Brooklyn, still charging for his services and still watching Alec Lightwood rather more closely than he admits. He is drawn into the Institute's problems repeatedly, and is one of the few people willing to say plainly what the Clave is doing wrong.",
+            "id": "magnus-bane",
+            "name": "Magnus Bane",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A knight of the Seelie Court, elegant and evasive, who moves between the faerie realm and the city. He is Isabelle's companion for an evening and the escort who brings the Shadowhunters underground when they need an audience with his queen.",
+            "id": "meliorn",
+            "name": "Meliorn",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The ruler of the Seelie Court, beautiful, ancient and precise. She grants audiences freely and gives nothing away without a price, and she prefers her prices to be paid in the form of something the payer will regret.",
+            "id": "seelie-queen",
+            "name": "The Seelie Queen",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of the New York vampire clan, boyish in appearance and formally correct in everything he does. He observes the treaties scrupulously, which does not make him an ally, and he arrives at the Institute carrying news nobody wants to hear.",
+            "id": "raphael-santiago",
+            "name": "Raphael Santiago",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "city-of-ashes"
+      },
+      "recaps": {
+        "ending": "The confrontation ends on Valentine's ship in the East River. He has taken four Downworlder captives, Simon and Maia among them, and completes the ritual that turns the Mortal Sword into a demonic instrument. Jace fights him; the Inquisitor Imogen, who had spent the book trying to destroy Jace, dies taking the blow meant for him, having finally accepted that he is not his father's creature. Simon is drained almost to nothing and revives by drinking Jace's blood, which leaves him a Daylighter, a vampire who can walk in sunlight, something no one has ever heard of. Clary draws an unfamiliar rune on the hull that tears the ship apart, and Valentine escapes into the water with the Cup and the corrupted Sword, leaving two of the three Mortal Instruments in his hands and only the Mirror unaccounted for. The survivors are pulled out of the river by Luke's pack. Maryse's suspicion of Jace is broken and he is welcomed back to the Institute; Clary and Simon have ended their attempt at a relationship, and what happened in the Seelie Court sits unresolved between Clary and Jace, who still believe themselves to be siblings. Jocelyn remains in her coma, and Valentine is stronger than he was.",
+        "in_short": "Valentine is at large with the Mortal Cup, and Downworlder children begin turning up dead across the city, drained for a ritual. The Clave sends the Inquisitor Imogen Herondale to New York, convinced that Jace, as Valentine's son, is his father's spy; she imprisons him in the Silent City just as Valentine attacks it, slaughters the Silent Brothers and takes the second Mortal Instrument, the Mortal Sword. Jace escapes and shelters with Luke. Clary and Simon try to be a couple, but an audience with the Seelie Queen forces Clary to kiss Jace in front of him, and Simon walks away; shortly afterwards he is killed and rises as a vampire. The Inquisitor's attempt to trade Jace to Valentine collapses when Valentine shows he does not want him back. Valentine seizes four Downworlders, Simon and Maia among them, to complete a ritual aboard his ship. Clary destroys the ship with a rune of her own making. The Inquisitor dies saving Jace, Valentine escapes with the Cup and the Sword, and Simon, revived on Jace's blood, becomes a vampire who can walk in daylight.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Clary Fray grew up believing she was an ordinary Brooklyn teenager until she saw a demon killed in a nightclub and her mother Jocelyn was abducted the next day. She learned that she is Nephilim, a Shadowhunter, one of the angel-descended hunters who police demons and keep treaties with the Downworlder races, and that her memories had been repeatedly wiped by the warlock Magnus Bane at Jocelyn's request. Her father is Valentine Morgenstern, who once led the Circle in an attempt to purge Downworlders and overthrow the Clave, and who faked his death years ago. Clary recovered the Mortal Cup, the object that creates new Shadowhunters, but the Institute's tutor Hodge betrayed them and handed it, and Jace, to Valentine. At a ruined hospital on the river Valentine revealed that he had raised Jace as his own son under a false name, and that Clary is his daughter, so that Jace and Clary, who had begun to fall in love, believe themselves to be brother and sister. Valentine escaped through a Portal with the Cup. Jocelyn was recovered alive but comatose after drinking a potion to escape him, and lies in a hospital nobody can help her from. Clary's family friend Luke was revealed as a werewolf and a former Shadowhunter, Valentine's old sworn partner, and Clary's best friend Simon, an ordinary human, survived being taken by vampires.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jace has moved out of the Institute. Maryse Lightwood has come back from Idris with her youngest son Max, and she can no longer look at the boy she helped raise without seeing Valentine's son; the Clave has ordered him watched. Clary is trying to live an ordinary life with her mother still comatose, training a little, and has begun dating Simon largely because the alternative is unthinkable. A faerie child is found murdered and drained of blood, the first of several Downworlder deaths that Downworlders are quick to blame on Shadowhunters. Jace picks a fight at a werewolf bar, where he meets Maia Roberts, a young member of Luke's pack. Then the Clave's Inquisitor, Imogen Herondale, arrives from Idris to conduct her own investigation. She has decided in advance that Jace is his father's agent, and she has him arrested and taken to the cells beneath the Silent City.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "While Jace is held in the Bone City, Valentine attacks it. He kills the Silent Brothers, takes the second of the Mortal Instruments, the Mortal Sword, and leaves; Jace survives only because he is already in the cells, and walks out through the wreckage. Because the Clave now assumes he was complicit, he cannot go back to the Institute, and Luke takes him in. The murders of Downworlder children continue, the treaty between the Clave and the Downworlders comes under real strain, and the Inquisitor's grip on the investigation tightens rather than loosens. Clary and Jace keep colliding, unable either to be together or to leave each other alone, and Simon can see it happening.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Needing information about Valentine's plans, Clary, Jace, Simon and Isabelle go down into the Seelie Court. The Queen agrees to help, but sets a price: Clary must be kissed by the person she most desires. Clary tries to make it Simon, and it does not work; she kisses Jace instead, in front of everyone, and Simon watches. He ends their relationship on the way out, hurt but clear-eyed about what he has just seen. Shortly afterwards Simon is killed. Because of the vampire blood already in him from the attack a year earlier, he does not stay dead; he is buried, and Clary calls him out of the grave. He rises as a vampire, and has to work out at once what that means for his mother, his band, his school, and everything else he had been trying to keep.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Simon begins learning what he now is, hiding it from his family and refusing to join Raphael's clan. The Inquisitor decides that Jace's real value is as a bargaining chip and opens negotiations to hand him to Valentine in exchange for the Mortal Instruments, over the Lightwoods' objections. Alec, quietly, is spending more time than he can explain with Magnus Bane. Valentine's collection of Downworlder blood continues, and the pattern of the victims makes clear he is preparing a ritual rather than simply killing. Clary keeps producing runes that are not in any book, and nobody, including her, understands where they come from.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Inquisitor's bargain collapses. Confronted with the offer of his son, Valentine makes it plain that Jace is worth nothing to him, and the Inquisitor's entire theory falls apart in front of her. Her interference has already weakened the Institute's protections, and demons get in. In the fighting a demon that feeds on fear moves through the building, and Clary invents a rune that makes a person fearless in order to face it. The Inquisitor, who has spent the whole book trying to destroy Jace, ends by defending him. Valentine, meanwhile, has what he needs to begin, and is waiting on the water.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Valentine's ritual requires the blood of one of each of the four Downworlder kinds. He takes captives to complete the set, Simon and Maia among them, and holds them aboard his ship in the East River. Luke's pack, the Lightwoods, Clary and Jace converge on the ship. Clary gets aboard and finds Simon barely alive; Jace goes after his father, and the Inquisitor makes her final choice, dying in Jace's place when Valentine strikes at him. Valentine completes the ritual and the Mortal Sword is turned from a heavenly weapon into a demonic one.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On the sinking ship Simon, drained almost to nothing, drinks Jace's blood and survives; it leaves him a Daylighter, a vampire able to walk in sunlight, which no one has ever heard of before. Clary draws a rune of her own making on the hull and the vessel comes apart around them. Valentine escapes into the water with the Mortal Cup and the corrupted Sword; only the third Instrument, the Mirror, remains unfound, and nobody knows what it is. Luke's pack pulls the survivors out of the river. Maryse's suspicion of Jace is broken and he is taken back into the Institute; Clary and Simon are no longer together; Jocelyn is still in her coma; and what happened in the Seelie Court sits unresolved between Clary and Jace, who continue to believe they are brother and sister.",
+            "through": {
+              "chapter": 19
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "city-of-ashes"
+      }
+    },
+    "city-of-bones-cassandra-clare": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Clarissa Fray"
+            ],
+            "description": "A fifteen-year-old art student living in Brooklyn with her mother. She is small, red-haired, and stubborn, happier drawing than arguing, and has spent her whole life assuming she is entirely ordinary. On a night out at a Manhattan club she watches three armed teenagers kill a boy that nobody else in the room seems able to see, which is the first crack in that assumption.",
+            "id": "clary-fray",
+            "name": "Clary Fray",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Clary's best friend since childhood, a bookish, dryly funny teenager who plays in a struggling band with his schoolfriends. He knows nothing of any world beyond the ordinary one and follows Clary into trouble out of pure loyalty. His feelings for her have gone past friendship, which she has not noticed.",
+            "id": "simon-lewis",
+            "name": "Simon Lewis",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A fair-haired boy of about seventeen, one of the three young hunters Clary sees at the club. Arrogant, quick with an insult, and unnervingly good with a blade, he treats hunting demons as both a duty and a sport. He is genuinely startled that Clary can see him at all, since ordinary people cannot, and that curiosity is what makes him take an interest in her.",
+            "id": "jace-wayland",
+            "name": "Jace Wayland",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A tall, dark-haired girl who hunts alongside Jace and her older brother, armed with a long electrum whip and willing to act as bait to draw a demon out of a crowd. Confident and theatrical, she enjoys the work and has very little patience for ordinary humans.",
+            "id": "isabelle-lightwood",
+            "name": "Isabelle Lightwood",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Isabelle's older brother, dark-haired, quieter and far more cautious than either of his companions, and fiercely protective of Jace. He distrusts Clary from the moment she appears and resents the disruption she brings into their household.",
+            "id": "alec-lightwood",
+            "name": "Alec Lightwood",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Clary's mother, a painter who has raised her alone and told her almost nothing about her own past. Calm on the surface and immovable underneath, she responds to Clary's account of the club by announcing that the two of them are leaving the city at once, and lets slip words that mean nothing at all to her daughter.",
+            "id": "jocelyn-fray",
+            "name": "Jocelyn Fray",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jocelyn's oldest friend, a big, shabby man who runs a second-hand bookshop and has been a steady presence in Clary's life since she was small. When Clary comes to him for help after her mother disappears, he is inexplicably cold to her and sends her away.",
+            "id": "luke-garroway",
+            "name": "Luke Garroway",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The eccentric woman who occupies the ground-floor apartment of Clary's building, reading fortunes from tarot cards and tea leaves amid a great deal of clutter and a very old set of curtains. She has known Jocelyn for years and clearly knows more about the family upstairs than a neighbour should.",
+            "id": "madame-dorothea",
+            "name": "Madame Dorothea",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The tutor at the New York Institute, a greying scholar who trains its young hunters, keeps its library, and is rarely seen without his black bird. Learned and kind in a distracted way, he has not set foot outside the building in many years and shows no sign of wanting to.",
+            "id": "hodge-starkweather",
+            "name": "Hodge Starkweather",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the Silent Brothers, the order of archivists and lorekeepers who guard the Bone City beneath a Manhattan cemetery. His eyes and mouth are sealed with runes and he speaks directly into the minds of those around him. His order can search a person's memory as readily as a book, and their judgement carries weight with the Clave.",
+            "id": "brother-jeremiah",
+            "name": "Brother Jeremiah",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Shadowhunter of the previous generation who founded the Circle, a movement that meant to purge the Downworlder races and then turned on its own government. His rebellion was put down years ago and he is believed to have died in a fire; older Shadowhunters still lower their voices when they say his name. He is hunting for the Mortal Cup, the object that can make new Shadowhunters, and he does not much mind who he has to go through to reach it.",
+            "id": "valentine-morgenstern",
+            "name": "Valentine Morgenstern",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The High Warlock of Brooklyn, a glittering, theatrical figure with cat's eyes who throws enormous parties for the city's Downworlders. Centuries old and expensively bored, he does nothing for free, remembers everything, and takes an immediate interest in the Lightwood brother who cannot look at him directly.",
+            "id": "magnus-bane",
+            "name": "Magnus Bane",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A vampire of the New York clan who has the face of a boy of fourteen. Courteous, devout, and careful about the treaties that keep his kind and the Shadowhunters from open war, he would rather negotiate a problem away than fight over it.",
+            "id": "raphael-santiago",
+            "name": "Raphael Santiago",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "city-of-bones-cassandra-clare"
+      },
+      "recaps": {
+        "ending": "Hodge Starkweather, once a member of Valentine's Circle and cursed by the Clave never to leave the Institute, betrays the household: he takes the Mortal Cup from Clary and hands Jace over to Valentine in exchange for his freedom. Clary and Luke follow to a derelict building on the river, where Valentine reveals that he raised Jace as his own son under a dead man's name, that Jocelyn is his wife, and that Clary is therefore his daughter. Jace and Clary, who had just begun to fall in love, are told they are brother and sister, and neither of them is given any reason to doubt it. Valentine escapes through a Portal with the Mortal Cup; Clary shatters the mirror behind him so he cannot be followed. Jocelyn is recovered alive but locked in a coma of her own making, and is taken to a hospital where no ordinary doctor can help her. Simon has survived being turned into a rat and nearly drained by vampires; Luke's true nature as a werewolf and former Shadowhunter is out in the open; and Clary is left knowing exactly who her father is, with the Mortal Cup in his hands and her mother beyond waking.",
+        "in_short": "Fifteen-year-old Clary Fray watches three teenagers kill a demon in a Manhattan club, an event nobody else can see, and within a day her mother is abducted and her ordinary life is gone. Taken in by the young hunters of the New York Institute, she learns that she is Nephilim, one of the Shadowhunters who police demons and Downworlders, and that her memories have been deliberately blocked for years. Her mother's disappearance is the work of Valentine Morgenstern, a Shadowhunter who once led a rebellion and now wants the Mortal Cup, the object that creates new Shadowhunters. Clary recovers the Cup from a tarot deck her mother painted, learns that her family friend Luke is a werewolf, and discovers a talent for creating runes nobody has seen before. Their tutor Hodge betrays them and delivers the Cup and Jace to Valentine, who reveals that he is father to both Jace and Clary. Valentine escapes with the Cup, and the two are left believing themselves to be siblings.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Clary Fray and her best friend Simon Lewis talk their way into the Pandemonium Club in Manhattan, where Clary watches three armed teenagers her own age corner and kill a blue-haired boy. Simon sees none of it, and when she reports it there is no body. The next day her mother Jocelyn is frightened and insistent that the two of them leave the city immediately, and mentions people and words Clary has never heard. Clary storms out. When she calls home that evening she hears a struggle, and her mother tells her not to come back and to call their old family friend Luke. She goes home anyway to find the apartment wrecked and her mother gone, and is attacked by a demon that she manages to kill with a device one of the club hunters had planted on her. Jace, the fair-haired boy from the club, arrives and takes her, wounded and half-conscious, to a converted church in Manhattan called the Institute.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At the Institute, Clary meets the Lightwoods, Alec and Isabelle, and their tutor Hodge Starkweather, and learns what the world actually contains: Shadowhunters, descended from an angel, who hunt demons with runed weapons under a body of law called the Clave, and Downworlders, the vampires, werewolves, warlocks and faeries with whom they keep an uneasy treaty. Clary is one of the Nephilim herself, and something has been blocking her memories for years. The Institute is attacked, which tells Hodge that Clary matters to somebody. Returning to her ruined apartment with Jace, she meets her downstairs neighbour Madame Dorothea, who knows far more about Jocelyn than a neighbour should. Luke turns Clary away coldly when she goes to him, and she overhears him speaking with two strangers about a man named Valentine and about the Mortal Cup, the object that makes new Shadowhunters, which they are certain Jocelyn has hidden.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Hodge explains the recent history: Valentine Morgenstern founded the Circle, a movement that meant to purge Downworlders and overthrow the Clave, and its uprising was put down years ago; Valentine is believed to have died in a fire, and Jocelyn was his wife. The Silent Brothers take Clary down into the Bone City to search her mind, and find a block placed by the warlock Magnus Bane. Clary and the others crash Magnus's party to demand answers, and he admits Jocelyn paid him to wipe her daughter's memories over and over. During the party Simon is briefly turned into a rat and carried off by vampires. Clary begins to piece together how much of her life was arranged for her, and to notice how easily she and Jace fall into each other's company.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The group raids the vampires' derelict hotel to get Simon back, arriving on a flying motorcycle and leaving with Simon alive but badly frightened, having been bitten. The vampire Raphael Santiago is careful to keep the incident from becoming a breach of the treaty. Clary's memories keep returning in fragments, and she works out that her mother would never have kept the Mortal Cup anywhere but close to hand. She and Jace grow closer, and on his birthday they end up alone in the Institute's greenhouse, where he tells her something of his childhood: his father was killed in front of him when he was ten, and he was raised afterwards by the Lightwoods. Simon, who has loved Clary for years, walks in on them.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Clary realises the Mortal Cup is inside a tarot deck her mother painted, and pulls it out of the card with a rune she invents on the spot, a talent nobody has seen before. Before they can leave, a greater demon rises in the apartment, using Madame Dorothea's body; Dorothea is killed and Jace is very badly hurt driving the thing off. Luke arrives with a pack of werewolves, and everything he had hidden comes out: he is a werewolf, and before that he was Lucian Graymark, a Shadowhunter, Valentine's closest friend and sworn partner. He tells Clary the rest of it, that Valentine survived, that Jocelyn took the Cup and ran, faking her own death, and that Clary's whole childhood was an act of concealment. Magnus heals Jace, and the Cup is finally in Shadowhunter hands.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Hodge, a former Circle member cursed never to leave the Institute, betrays them all. He takes the Mortal Cup from Clary and delivers Jace to Valentine to buy his own freedom. Clary and Luke follow to a ruined hospital on the river, where Valentine is holding Jocelyn, unconscious and unwakeable after drinking a potion to keep herself out of his hands. Valentine tells Jace that he is his true father, that he raised him under another man's name, and then tells them both that Clary is his daughter as well, so that the two of them are brother and sister. Neither is given any grounds to doubt it. Valentine escapes through a Portal with the Cup, and Clary destroys the mirror behind him. Jocelyn is carried out alive but comatose and taken to a hospital; Simon has survived; and Clary is left with a father she never knew, a brother she had been falling in love with, and a mother nobody can wake.",
+            "through": {
+              "chapter": 23
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "city-of-bones-cassandra-clare"
+      }
+    },
     "city-of-dragons-robin-hobb": {
       "characters": {
         "characters": [
@@ -1175,6 +1597,945 @@
           }
         ],
         "work": "city-of-dragons-robin-hobb"
+      }
+    },
+    "city-of-fallen-angels": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Sixteen, training seriously as a Shadowhunter for the first time and living with her mother again now that Jocelyn is awake. The war is over, her father is dead, and she is free to be with Jace; the difficulty is that Jace has begun avoiding her without explaining why.",
+            "id": "clary-fray",
+            "name": "Clary Fray",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Jace Herondale",
+              "Jace Wayland"
+            ],
+            "description": "Raised by Valentine, born a Herondale, and now living as a Lightwood at the New York Institute. He is not sleeping, he is training past the point of sense, and he is pulling away from Clary for reasons he will not give, convinced that whatever his father did to him before he was born has not finished with him.",
+            "id": "jace-lightwood",
+            "name": "Jace Lightwood",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A vampire who can walk in daylight and carries a Mark that punishes anyone who harms him sevenfold, which makes him the most interesting thing in the city to several people he has never met. He is playing gigs with his band, dating Isabelle and Maia at the same time without either knowing, and no longer welcome in his own house.",
+            "id": "simon-lewis",
+            "name": "Simon Lewis",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The Lightwood daughter, hunting regularly again and keeping her grief over her youngest brother behind a hard, flippant manner. She has started seeing Simon, on the understanding that neither of them is to take it seriously.",
+            "id": "isabelle-lightwood",
+            "name": "Isabelle Lightwood",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Openly with Magnus now and travelling with him between assignments, which has given him time to work out that his partner is several centuries old and he is not. It is the first thing in his life he has had no idea how to fight.",
+            "id": "alec-lightwood",
+            "name": "Alec Lightwood",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The High Warlock of Brooklyn, immortal, wealthy and in a relationship with a mortal teenager whose questions about his past he mostly deflects. He is called in whenever the Institute meets something it cannot identify, and he does not always say everything he knows.",
+            "id": "magnus-bane",
+            "name": "Magnus Bane",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Clary's mother, awake after more than a year unconscious and rebuilding a life with Luke. She is uneasy about Jace in a way she cannot fully justify, because of what she saw Valentine do to a child once before, and she keeps things from Clary for what she considers good reasons.",
+            "id": "jocelyn-fray",
+            "name": "Jocelyn Fray",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Werewolf pack leader, bookshop owner, and about to marry Jocelyn. He acts as the city's Downworlder representative and is drawn into the investigation when Shadowhunter bodies begin turning up in ways that suggest a Downworlder killer and a deliberate provocation.",
+            "id": "luke-garroway",
+            "name": "Luke Garroway",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A werewolf of Luke's pack, working at a Downworlder bar and studying when she can. She has been seeing Simon, does not know he is also seeing Isabelle, and does not talk about the boy who bit her and left her to become what she is.",
+            "id": "maia-roberts",
+            "name": "Maia Roberts",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Kyle"
+            ],
+            "description": "A young musician who talks his way into Simon's band and then into offering him a room, at a point when Simon has nowhere else to go. He is friendly, evasive about his own history, keeps punishing training hours, and is clearly not telling Simon why he turned up when he did.",
+            "id": "jordan-kyle",
+            "name": "Jordan Kyle",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A vampire of great age and beauty who led the New York clan before Raphael, and who has come back to the city with plans of her own. She has Simon brought to her, tells him he is being hunted, and offers him a place at her side in exchange for his loyalty.",
+            "id": "camille-belcourt",
+            "name": "Camille Belcourt",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A small, shy girl who follows Simon's band and idolises him, and who is friends with the sister of one of the band members. She keeps turning up where Simon is, and he keeps failing to pay attention to her.",
+            "id": "maureen-brown",
+            "name": "Maureen Brown",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The veiled woman directing a cult that meets in a disused Brooklyn church, gathering followers who believe they are serving something greater and submitting to experiments in her name. She is far older than any demon the Shadowhunters routinely deal with, and what she is attempting has been tried before.",
+            "id": "lilith",
+            "name": "Lilith",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Sebastian"
+            ],
+            "description": "Valentine's son by blood, given demon blood before he was born, who passed himself off as Sebastian Verlac in Idris and was killed at the end of the war. His body went into a river and was never recovered.",
+            "id": "jonathan-morgenstern",
+            "name": "Jonathan Morgenstern",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "city-of-fallen-angels"
+      },
+      "recaps": {
+        "ending": "On the roof of a Manhattan building, Lilith completes the ritual she has been building all book: Jace, marked and controlled by her since the war, has supplied his blood, and Simon's is the last ingredient because it carries Jace's angel blood in it. Simon refuses to give it, and when Lilith strikes at him the Mark of Cain destroys her, throwing her attack back sevenfold. Clary breaks the rune that has been holding Jace and he is himself again for the first time in weeks. It is too late: the ritual has gone far enough. Jonathan Morgenstern, Valentine's son, wakes in the coffin Lilith prepared for him, and Jace, still bound to him by her work, leaves with him. The two vanish from the roof, and neither the Clave nor Clary has any idea where they have gone. Elsewhere, Camille Belcourt turns Simon's young fan Maureen into a vampire. Simon has lost his home and nearly lost himself; Alec has learned that Camille offered him something he had no business considering; and Clary is left standing on the roof with a ring in her hand and Jace gone, taken by the brother she watched die.",
+        "in_short": "Six weeks after the war, Clary is training as a Shadowhunter, Jocelyn and Luke are planning a wedding, and Jace has begun avoiding Clary without explanation, tormented by dreams of hurting her. Simon, a Daylighter carrying the Mark of Cain, is thrown out by his mother, hunted by vampires who want to use him, and taken in by a werewolf named Kyle who turns out to be a guard assigned by the Praetor Lupus and, worse, the man who bit Maia. Camille Belcourt, the old head of the New York clan, tries to recruit Simon; Alec, worried about Magnus's immortality, secretly asks her for a way to make him mortal. Shadowhunters are being murdered and drained, and Clary traces the pattern to a cult repeating Valentine's demon-blood experiments on infants. Its leader is the demon Lilith, who has been controlling Jace through a rune and intends to raise Jonathan Morgenstern from the dead. On a rooftop, Simon's Mark destroys Lilith and Clary frees Jace, but the ritual has already worked. Jonathan wakes, and Jace, still bound to him, disappears with him.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Clary Fray grew up an ordinary New Yorker before learning she was a Shadowhunter and that her father was Valentine Morgenstern, who tried twice to overthrow the Clave and purge the Downworlder races. Valentine gathered the three Mortal Instruments and summoned the angel Raziel at Lake Lyn, killing Jace to do it; Clary had rewritten the ritual in her own name, so the angel answered to her instead, destroyed Valentine and granted her one request, which she used to bring Jace back. Before that, Jace and Clary spent two books believing themselves brother and sister, which turned out to be a lie of Valentine's. Jace is a Herondale, taken as a newborn and given angel blood; Valentine's true son, Jonathan, was given demon blood and grew up to pose as a Shadowhunter named Sebastian Verlac, kill Max Lightwood and betray Alicante to demons before Jace killed him on the battlefield. His body was never found. Clary's mother Jocelyn was woken from her coma and is with Luke, a werewolf pack leader who was born a Shadowhunter. Clary's oldest friend Simon became a vampire, then a Daylighter able to walk in sunlight, and carries the Mark of Cain, which turns any harm done to him back on the attacker sevenfold. The war ended with Downworlders seated on the Clave's Council for the first time.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Six weeks after the war, Simon is trying to hold together a life that no longer fits: his mother has found out what he is and reacted by calling him a monster, so he has left home; he is seeing both Isabelle Lightwood and Maia Roberts and has not told either about the other; and his band is playing small Brooklyn shows. Strangers keep approaching him and dying rather than answering questions, and vampires attack him more than once, protected only by the Mark he carries. Clary is training at the Institute and preparing for her mother's wedding to Luke. Jace has begun avoiding her, refusing to explain, sleeping badly and turning up at odd hours. Meanwhile a Shadowhunter's body is found in the city, drained of blood and left where it will be blamed on Downworlders.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A musician named Kyle joins Simon's band and offers him a spare room, which Simon takes because he has nowhere else. More dead Shadowhunters turn up. Simon is summoned by Camille Belcourt, the ancient vampire who led the New York clan before Raphael and has returned to the city; she tells him people are hunting him for his Mark and offers him a place beside her if he will help her take the clan back. He refuses to answer either way. Luke and the Institute try to keep the murders from breaking the new Accords. Jace, questioned by Clary, tells her only that he is dreaming of hurting her, and will not let her near him.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kyle is revealed to be a werewolf, sent by the Praetor Lupus, an order that assigns guardians to newly turned Downworlders, and he has been assigned to Simon. Camille is captured with Magnus's help and held for the Clave, and while she is in custody Alec goes to see her alone; she offers to tell him how a warlock's immortality might be ended, which is the question he has not been able to stop asking about Magnus. Clary follows the trail of the killings to a disused church in Brooklyn where a cult calling itself the Church of Talto meets. In its basement she finds evidence of experiments on unborn children with demon blood, and a dead infant, which is exactly what Valentine did to his own son.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kyle's full name comes out: he is Jordan Kyle, the boy who bit Maia and vanished afterwards, and Maia is not remotely willing to hear his apology. Simon's living arrangement becomes untenable and his double relationship collapses in front of both girls at once. Clary brings what she found in the church to Jocelyn, who tells her more about the experiments Valentine performed and about the child he raised on demon blood. Alec keeps returning to Camille without telling Magnus. The Shadowhunter murders continue, all of them tied to the cult, and the Clave still has no suspect.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Clary goes back to the cult's building and finds the woman who leads it, veiled and evasive, presiding over followers who have been giving up their unborn children to her work. The bodies in the basement are the failures. Investigating further, Clary finds a rune on Jace that neither of them put there, and learns that it has been on him since the end of the war. It explains the dreams, the withdrawal and the sleeplessness: he has not been himself, and whoever placed the rune has been steering him for weeks. Jace, understanding at last what has been done to him, tries to keep Clary away from what is coming, and cannot.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The woman is Lilith, greatest of demons, and the experiments in the church were rehearsals. Her real work is on the roof of a half-built luxury tower, where she has kept the body of Jonathan Morgenstern in a coffin surrounded by her runes. Jace has been her instrument, drawn to the site by the rune she set on him, and his blood, carrying the angel blood Valentine gave him, is part of the ritual. She needs one more thing: the blood of a Daylighter, because Simon's power came from drinking Jace's. Simon is taken to the roof, and Clary and Jace are there with him, one of them unable to act freely at all.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Simon refuses to give his blood. When Lilith attacks him the Mark of Cain reflects the blow sevenfold and destroys her. Clary breaks the rune binding Jace and he comes back to himself, but the ritual has already done what it needed to do: Jonathan Morgenstern wakes. He is alive again, Jace is tied to him by Lilith's work, and the two of them leave the roof together and disappear. Camille, still at large, turns Simon's young fan Maureen into a vampire. Alec's dealings with Camille come to light. Simon has lost his home and his mother; Maia and Jordan have started, cautiously, to talk; and Clary is left on the roof with Jace gone, taken by the brother she believed dead.",
+            "through": {
+              "chapter": 19
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "city-of-fallen-angels"
+      }
+    },
+    "city-of-glass": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Still barely trained, still inventing runes nobody has recorded, and now determined to reach the Shadowhunter homeland of Idris because a warlock there may be able to wake her mother. She has been told that Jace is her brother and has not found any way to make herself believe it in the part of her that matters.",
+            "id": "clary-fray",
+            "name": "Clary Fray",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Valentine's son by upbringing and, as far as anyone knows, by blood. He is going to Idris with the Lightwoods and is prepared to do almost anything to keep Clary out of the war, including deceiving her. He believes there is something wrong in him that his father put there, and he does not say so out loud.",
+            "id": "jace-wayland",
+            "name": "Jace Wayland",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Now a vampire who can walk in daylight, which makes him unique and therefore interesting to people he would rather not interest. He is still Clary's closest friend and still the person most likely to be arrested, exiled or used as leverage in a country where Downworlders are not welcome.",
+            "id": "simon-lewis",
+            "name": "Simon Lewis",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lucian Graymark"
+            ],
+            "description": "A werewolf pack leader who was born a Shadowhunter, exiled after he was bitten, and has spent years keeping Jocelyn and Clary safe. Returning to Idris means returning to a country that threw him out, and to a Clave that will not want to hear what he has to say about arming Downworlders.",
+            "id": "luke-garroway",
+            "name": "Luke Garroway",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Lightwood daughter, travelling to Idris with her family as the Clave gathers for war. Capable, blunt and fiercely attached to her brothers, she is one of the few people who will say to Clary's face what everyone else is thinking.",
+            "id": "isabelle-lightwood",
+            "name": "Isabelle Lightwood",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The eldest Lightwood child, still carrying his feelings for a warlock he cannot mention in front of his parents, and still the first to volunteer for anything dangerous. Idris is where his family's history and their old Circle membership are common knowledge.",
+            "id": "alec-lightwood",
+            "name": "Alec Lightwood",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The youngest Lightwood, nine years old, brought to Alicante with the rest of the family. He reads constantly, notices more than the adults credit him with, and wants very much to be allowed to help.",
+            "id": "max-lightwood",
+            "name": "Max Lightwood",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Clary's mother, unconscious since she drank a potion to put herself beyond Valentine's reach. Everything Clary does in this book proceeds from the search for something that will wake her, and from the fact that the answers about her past are locked inside her.",
+            "id": "jocelyn-fray",
+            "name": "Jocelyn Fray",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Clary's father, holding two of the three Mortal Instruments and hunting the third. He has demanded that the Clave submit to him and is prepared to make his point with demons, which no Shadowhunter has ever been able to command before.",
+            "id": "valentine-morgenstern",
+            "name": "Valentine Morgenstern",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Luke's older sister, who lives alone in a narrow house in Alicante and takes Clary in. She was married once to a Shadowhunter who left her, she stopped speaking to her brother when he became a werewolf, and she has kept a great deal of the previous generation's history to herself.",
+            "id": "amatis-herondale",
+            "name": "Amatis Herondale",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Shadowhunter of about Jace's age staying with the Penhallow family in Alicante, a cousin from the Institute in Paris whose own household was destroyed. He is charming, unusually helpful to Clary, an excellent rider and fighter, and interested in her in a way she finds flattering and slightly odd.",
+            "id": "sebastian-verlac",
+            "name": "Sebastian Verlac",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Clave's new Inquisitor, appointed after his predecessor's death. He is genial in manner and ruthless in method, and his first significant act in the book is to decide what to do with a vampire the Clave never agreed to admit into Idris.",
+            "id": "inquisitor-aldertree",
+            "name": "Inquisitor Aldertree",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The High Warlock of Brooklyn, found in Idris where Clary expected to find someone else. He is the only person likely to be able to brew what Jocelyn needs, he wants paying, and he is unusually reluctant to discuss his own history with Valentine's generation.",
+            "id": "magnus-bane",
+            "name": "Magnus Bane",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The former tutor of the New York Institute, who betrayed Clary and Jace to Valentine in exchange for release from the curse that kept him indoors. He has been in Idris since, and knows more about the Mortal Instruments and Valentine's intentions than anyone else still alive.",
+            "id": "hodge-starkweather",
+            "name": "Hodge Starkweather",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An angel, held captive for years beneath the ruins of a country house and bound so that he cannot speak or free himself. He communicates in visions rather than words, showing what he has seen rather than explaining it, and what he has seen includes the experiments his captor performed.",
+            "id": "ithuriel",
+            "name": "Ithuriel",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The angel from whom all Shadowhunters descend, who gave the first of them the three Mortal Instruments and has not been seen since. He can be summoned only by someone holding all three, at the lake where the first Nephilim were made, and he is bound to grant the summoner a single request.",
+            "id": "raziel",
+            "name": "Raziel",
+            "reveal": {
+              "chapter": 19
+            }
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "city-of-glass"
+      },
+      "recaps": {
+        "ending": "Valentine's rebellion ends at Lake Lyn, which is itself the third Mortal Instrument, the Mirror. He kills Jace there and uses the summoning to call the angel Raziel, expecting to be granted command of the Nephilim. Clary has already altered the runes of the ritual so that they name her instead, so the angel is bound to her, not to him. Raziel kills Valentine and grants Clary one request, and she asks for Jace's life; Jace wakes. On the battlefield Jace has already fought and killed the young man who called himself Sebastian, whose body falls into the river and is never recovered. In Alicante, Magnus uses the Book of the White to wake Jocelyn, who confirms what the angel's visions implied: Jace is not her son and never was. Valentine took him as an infant after his true parents, Stephen and Celine Herondale, died, and raised him under a dead man's name with angel blood in him. Jocelyn's own son, Jonathan, was the one Valentine fed on demon blood, and he was the boy passing himself off as Sebastian Verlac. Clary and Jace are not related. The Downworlders who fought under Clary's Alliance rune are given seats on the Council, Alec claims Magnus publicly, Max Lightwood is dead, and Simon goes home to New York still bearing the Mark of Cain.",
+        "in_short": "Told that only a warlock in Idris can wake her mother, Clary follows the Lightwoods to the Shadowhunter homeland after Jace tries to leave her behind, and arrives by a Portal of her own making. In Alicante she is taken in by Luke's estranged sister Amatis, Simon is imprisoned for being a vampire on Shadowhunter soil, and she is befriended by a visiting Shadowhunter named Sebastian Verlac. Searching for the spellbook that will wake Jocelyn, she and Jace find an angel chained beneath Valentine's old country house whose visions reveal that Valentine experimented on unborn children with angel and demon blood. Sebastian sabotages the city's defences, kills the Lightwoods' youngest son and is exposed as Jonathan Morgenstern, Valentine's true son. Clary invents a rune that lets Shadowhunters and Downworlders fight as bound partners, and the Clave accepts the alliance. Jace kills Sebastian on the battlefield, and Valentine kills Jace at Lake Lyn to summon the angel Raziel, only for Clary to have rewritten the ritual in her own name. Raziel destroys Valentine and restores Jace. Jocelyn wakes and confirms that Jace is a Herondale, not her son, and that Clary and Jace were never siblings.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Clary Fray discovered she was a Shadowhunter after seeing a demon killed in a nightclub and losing her mother Jocelyn the next day. Her father is Valentine Morgenstern, who once led the Circle in an attempt to purge the Downworlder races and overthrow the Clave, and who faked his own death. Valentine took the Mortal Cup, then slaughtered the Silent Brothers to take the Mortal Sword and corrupted it into a demonic instrument aboard his ship, from which he escaped when Clary destroyed the vessel with a rune of her own invention. Only the third Mortal Instrument, the Mirror, is still unaccounted for, and nobody knows what it is. Valentine told Jace and Clary that he is father to both of them, so the two believe themselves to be brother and sister; Jace was raised by Valentine under another man's name and has been mistrusted by the Clave ever since the truth came out. The Inquisitor Imogen Herondale died defending him. Jocelyn lies comatose in a Manhattan hospital after drinking a potion to keep herself out of Valentine's hands. Clary's oldest friend Simon was killed and rose as a vampire, and after drinking Jace's blood became a Daylighter, able to walk in sunlight, which no vampire has ever done. Luke, once the Shadowhunter Lucian Graymark, leads a Manhattan werewolf pack and looks after Clary in her mother's place.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A former Circle member named Madeleine finds Clary and tells her that Jocelyn's coma is self-inflicted and can be undone, but only by a warlock living in Idris, the Shadowhunter homeland. Madeleine is killed before she can help further. The Lightwoods are being recalled to Alicante as the Clave gathers against Valentine, and Clary intends to travel with them, but Jace disables the Portal behind him rather than let her follow into a war. Clary makes her own Portal instead and comes through with Luke and Simon, falling into Lake Lyn on the way; the water of that lake is poison to Shadowhunters and leaves her ill and disoriented. Luke's estranged sister Amatis takes her in, and the reunion between Clary and Jace is furious on both sides.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Alicante is a city with demon-repelling towers and a hard rule against Downworlders, so Simon's arrival is treated as a crime. He is imprisoned in the Gard and questioned by the new Inquisitor, Aldertree, who starves him and offers to trade his freedom for testimony against the Lightwoods. Clary, staying with Amatis, is taken to meet the Penhallow family and is befriended by Sebastian Verlac, a Shadowhunter of her own age from the Paris Institute whose household was destroyed. He is charming and helpful, and Jace dislikes him immediately. The Clave debates Valentine's demand that it submit to him, and refuses to consider arming Downworlders.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Clary rides out with Sebastian to find the warlock who can wake her mother and discovers he is dead, killed by Valentine's demons; Magnus Bane is waiting in his place. Magnus tells her the antidote cannot be made without the Book of the White, a spellbook Jocelyn once owned, and that its last known location was Valentine's country manor. In the Gard, Simon shares a cell with a ragged prisoner who calls himself Samuel and who talks a great deal about the Mortal Instruments. Demons reach Alicante despite the towers, which should be impossible, and the Clave's confidence in its own defences begins to crack. Jace and Clary are alone together more than either of them can afford, with the fact of what they have been told about each other sitting between them.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Simon is got out of the Gard, and the prisoner who called himself Samuel turns out to be Hodge Starkweather, the Institute tutor who betrayed Clary and Jace to Valentine. Jace and Clary go to Valentine's abandoned country manor for the Book of the White. Following the dreams that have been troubling him, Jace finds an angel chained in the cellar beneath the house, held captive for years and unable to speak. The angel shows them both a series of visions: Valentine experimented on unborn children, giving one the blood of a demon and another the blood of an angel. Clary finds the Book of the White in the house. The angel is released and the manor comes down with him, and Jace is left with far more questions about himself than he had before.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Someone climbs Alicante's demon towers and disables the wards that keep the city safe. Max Lightwood, awake at night and quick to notice things adults do not, sees who does it, and is killed for it; his family finds him in the morning. Valentine's demons come through the failing defences in force and the city takes heavy losses. Valentine's terms are repeated to the Council: surrender the government to him, or be destroyed. Magnus has the Book of the White and can wake Jocelyn, but the Clave is in no condition to protect anyone, and the Downworlders, barred from the city and blamed for its troubles, have no reason to help.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sebastian Verlac is exposed. He is not a Verlac at all: he is Jonathan Christopher Morgenstern, Valentine's true son, the child fed demon blood before he was born. He killed the real Sebastian Verlac and took his place, he brought down the towers, and he killed Max. He kills Hodge as well before he goes. Clary, working from what she can do that no one else can, invents a rune that binds a Shadowhunter and a Downworlder together as partners, giving each a share of the other's strengths. She takes it to the Council, and Luke brings the werewolves, vampires, warlocks and faeries to fight beside the Nephilim for the first time. Clary also marks Simon with the Mark of Cain, so that anyone who harms him suffers sevenfold. The Clave marches for Brocelind Plain.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The battle is fought by paired Shadowhunters and Downworlders, and it holds. Jace hunts down the young man who called himself Sebastian and kills him; the body goes into the river and is not recovered. Valentine takes Simon to Lake Lyn to complete the summoning, and finds he cannot spill the blood of a marked man without destroying himself, so he uses Jace instead and kills him. The lake is the third Mortal Instrument, the Mirror, and with all three Valentine calls the angel Raziel. But Clary has reached the ritual runes ahead of him and rewritten the name in them as her own. Raziel answers to her, kills Valentine, and grants her the one request the summoner is owed. She asks for Jace, and he wakes.",
+            "through": {
+              "chapter": 19
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Magnus wakes Jocelyn with the Book of the White, and she confirms what the angel's visions implied. Jace is not her son. Valentine took him as a newborn after his true parents, Stephen and Celine Herondale, died, and raised him under a dead man's name with angel blood in him; Jocelyn's own son Jonathan, the one given demon blood, was the boy calling himself Sebastian. Clary and Jace are not related and never were. The Clave, having survived because of Downworlder help, gives the Downworlders seats on its Council and rewrites the Accords, and Alec Lightwood makes his relationship with Magnus public in front of all of them. Max Lightwood is buried in Idris. Simon returns to New York still carrying the Mark of Cain, and Jocelyn, awake at last, has her daughter back and a dead son she never speaks of easily.",
+            "through": {
+              "chapter": 20
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "city-of-glass"
+      }
+    },
+    "city-of-heavenly-fire": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Seventeen, a trained Shadowhunter now, and the one thing her brother wants more than the destruction of the Clave. She carries a blade forged for her family generations ago, and the plan she eventually settles on depends on being close enough to Jonathan for him to believe he has won.",
+            "id": "clary-fray",
+            "name": "Clary Fray",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Jace Lightwood"
+            ],
+            "description": "Free of Lilith at last and carrying heavenly fire in his body, which he cannot control, discharge or safely touch anyone through. He is the only weapon anybody has that Jonathan's Endarkened cannot simply absorb, and learning to use it without killing the people around him is the whole of his life at the moment.",
+            "id": "jace-herondale",
+            "name": "Jace Herondale",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Daylighter vampire, no longer protected by the Mark of Cain he traded away, and therefore as vulnerable as anyone else in a war between Shadowhunters. He is with Isabelle, banned from most of the places the fighting is planned, and determined to be useful anyway.",
+            "id": "simon-lewis",
+            "name": "Simon Lewis",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The last Lightwood daughter, hard and capable and openly with Simon now, which the Clave regards as another Downworlder problem. She has lost one brother already and has no intention of losing anyone else.",
+            "id": "isabelle-lightwood",
+            "name": "Isabelle Lightwood",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jace's sworn partner, leading missions and holding his family together while trying and failing to get Magnus to speak to him again. What he did behind Magnus's back is not something either of them has found a way past.",
+            "id": "alec-lightwood",
+            "name": "Alec Lightwood",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The High Warlock of Brooklyn, no longer with Alec and still working with the Shadowhunters because the alternative is worse. He knows more about the realm Jonathan is drawing power from than he has ever admitted, for reasons that have to do with his own father.",
+            "id": "magnus-bane",
+            "name": "Magnus Bane",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Clary's mother, who has now watched her son destroy two generations of her family and is done hoping he can be reached. She gives Clary a Morgenstern blade she kept hidden for years, and tells her what it was made for.",
+            "id": "jocelyn-fray",
+            "name": "Jocelyn Fray",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Werewolf pack leader, Downworlder Council member, and the adult most likely to be shouted down in Alicante for saying that the Clave will need Downworlders again. He is recovering from wounds taken when Jonathan turned the first of the Endarkened.",
+            "id": "luke-garroway",
+            "name": "Luke Garroway",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sebastian"
+            ],
+            "description": "Valentine's son, at the head of an army of Endarkened Shadowhunters and destroying Institutes one after another. He is unhurried about it. What he actually wants is not conquest in the ordinary sense, and it involves his sister.",
+            "id": "jonathan-morgenstern",
+            "name": "Jonathan Morgenstern",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A twelve-year-old Shadowhunter of the Los Angeles Institute, small, fair and already a serious fighter, who carries her family's ancient sword. She is closest to Julian Blackthorn, and she is present when Jonathan's forces come for her home.",
+            "id": "emma-carstairs",
+            "name": "Emma Carstairs",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The second-eldest Blackthorn child of the Los Angeles Institute, about Emma's age and abruptly responsible for a houseful of younger siblings. Quiet, watchful and much steadier than a boy of twelve should have to be.",
+            "id": "julian-blackthorn",
+            "name": "Julian Blackthorn",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A werewolf of the Praetor Lupus, Simon's flatmate and guard, who has finally begun to repair things with Maia. The Praetor's house is one of the first places Jonathan's forces go looking for allies of the Clave.",
+            "id": "jordan-kyle",
+            "name": "Jordan Kyle",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A werewolf of the New York pack, level-headed and increasingly the person the pack turns to while Luke is occupied with the Council and his injuries.",
+            "id": "maia-roberts",
+            "name": "Maia Roberts",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Silent Brother who speaks aloud, older than he looks and connected to the Herondale and Carstairs families by a history he tells only in pieces. He is the closest thing the Clave has to an expert on heavenly fire, and he is the one who helps Jace live with it.",
+            "id": "brother-zachariah",
+            "name": "Brother Zachariah",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Consul, head of the Clave, running a war from a city filling with refugees. She is more reasonable than her predecessors and still bound by a Council that would rather blame Downworlders than change anything.",
+            "id": "jia-penhallow",
+            "name": "Jia Penhallow",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Prince of Hell and the ruler of the burnt-out demon realm Jonathan has been drawing on. He is courteous, exact and entirely transactional, he was already owed something before any of this began, and he is not in a hurry.",
+            "id": "asmodeus",
+            "name": "Asmodeus",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "city-of-heavenly-fire"
+      },
+      "recaps": {
+        "ending": "The confrontation happens in Edom, the burnt demon world Jonathan has been drawing on. Jace's heavenly fire and Clary's Morgenstern blade are used together, and what they burn out of Jonathan is the demon blood Valentine gave him before he was born. For a few minutes what remains is the boy he would otherwise have been, frightened and ordinary, and he dies as that boy, in front of the mother and sister who had given up on him. His army of Endarkened cannot be restored and the war ends with them destroyed. Getting home costs more than the fighting did: Magnus's father Asmodeus, who rules Edom, sets his own price for opening the way, and Simon pays it, giving up his vampirism, his immortality and every memory of the Shadow World. He is returned to Brooklyn as an ordinary human who does not recognise any of the people he saved. Afterwards the Clave imposes the Cold Peace on the fair folk for their part in the war, which punishes those with faerie blood among the Nephilim as well. Brother Zachariah is restored to mortal life by the heavenly fire and reunited with the woman who waited for him; Magnus and Alec repair what Alec broke; Jocelyn and Luke marry; Emma Carstairs and Julian Blackthorn go back to Los Angeles bound as parabatai. In the closing pages Simon begins Ascension, and his memories start to come back.",
+        "in_short": "Jonathan Morgenstern's Endarkened destroy Institutes across the world, and the Clave withdraws every surviving Shadowhunter to Alicante while Jace struggles to control the heavenly fire burning inside him. Among the refugees are Emma Carstairs and the Blackthorn children of Los Angeles. Jonathan takes hostages, the fair folk are exposed as his allies, and he offers terms that amount to a demand for his sister. Clary, Jace, Simon, Isabelle and Alec let themselves be taken to reach him, and cross into Edom, a dead demon world ruled by Magnus's father Asmodeus. There Jonathan is struck with heavenly fire and Clary's family blade, which burns the demon blood out of him; for a few minutes he is the ordinary boy he might have been, and then he dies. The Endarkened are destroyed with him. To open the way home Asmodeus takes his price from Simon, stripping away his immortality and every memory of the Shadow World and returning him to Brooklyn as a human who knows none of them. The Clave imposes a punitive Cold Peace on the faeries, and Simon, at the very end, begins to remember.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Clary Fray is the daughter of Valentine Morgenstern, who twice tried to overthrow the Clave and purge the Downworlder races and was destroyed by the angel Raziel. Her brother Jonathan was given demon blood before birth; he posed as a Shadowhunter called Sebastian, killed the youngest Lightwood child, betrayed Alicante to demons and was killed in the war, then raised from the dead by the demon Lilith. Jace, who is a Herondale rather than a Morgenstern and was given angel blood by Valentine, was bound to Jonathan by Lilith's ritual so that neither could be killed without the other, and spent months under Jonathan's influence while Clary infiltrated their household. Clary's friend Simon, a vampire who can walk in daylight, summoned Raziel and traded away the Mark of Cain for the sword Glorious; Clary used its heavenly fire to sever the bond and free Jace, and the fire remained inside him. Jonathan escaped, took an infernal cup made from Lilith's remains to an old sacred site, and forced a company of captured Shadowhunters to drink, turning them into the Endarkened: fighters who keep their training and lose themselves entirely. Luke's sister Amatis is among them. Magnus Bane ended his relationship with Alec Lightwood after learning Alec had been asking an old vampire how a warlock might be made mortal. Jonathan now commands an army the Clave has never faced.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jonathan's Endarkened begin destroying Institutes one by one, striking without warning and leaving few survivors. Los Angeles falls: the Blackthorn children lose their father and their home, and Emma Carstairs, twelve years old and close to Julian Blackthorn, loses her parents and survives the attack with him. The Praetor Lupus, the werewolf order that guards the newly turned, is also attacked, and Jordan Kyle is killed there. The Clave orders every Institute abandoned and every Shadowhunter withdrawn to Alicante, which fills with frightened and grieving refugees. Jace, meanwhile, cannot control the heavenly fire in him: it answers to his temper, burns what he touches, and makes him the one weapon the Endarkened have no defence against and the one person nobody can stand next to.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In Alicante the Consul, Jia Penhallow, tries to run a war with a Council that would rather argue about Downworlders. Brother Zachariah works with Jace on containing the fire. Jocelyn gives Clary a Morgenstern blade she has kept hidden for years, one of a pair, and tells her what it was made for and who carries its twin. Emma and Julian are among the survivors quartered in the city, and Emma will not accept the Clave's account of how her parents died. Simon and Isabelle are together openly, which the Clave dislikes; Alec cannot get Magnus to talk to him. Then Jonathan makes contact and sets out his terms, and they are not about territory: he wants his sister.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jonathan takes hostages to force the Clave to listen, and it emerges that the fair folk have been supplying and sheltering him. The Council's response is punitive and immediate, and the alliance the last war built starts to come apart. The Endarkened cannot be reasoned with, cannot be turned back, and grow in number every time an Institute falls. Magnus is drawn further in as it becomes clear where Jonathan's power is being drawn from, and what he knows about that realm has to do with a father he has never named. Attempts to hold ground fail, and the Clave is reduced to defending one city.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jonathan proposes a parley and names his price for sparing the Nephilim: Clary, delivered to him. Rather than let the Clave decide, Clary, Jace, Simon, Isabelle and Alec agree among themselves to be taken, since being taken is the only way to reach him at all. Magnus goes with them because none of the rest can survive where they are going. What passes for Jonathan's stronghold is not on this world: he has been operating out of Edom, a realm burned to ash long ago by demons and ruled by one of the Princes of Hell. They cross over, and the way back closes behind them.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Edom is a dead world of ash and heat under a wrong sky, with the ruins of a city that mirrors Alicante. The group is separated and hunted; Magnus is taken by the realm's ruler, who turns out to be Asmodeus, a Prince of Hell and Magnus's father. Jonathan holds his court in the ruins with the Endarkened around him, and makes Clary an offer that has been the point of everything he has done: he intends to unmake the world he was born into and rule what replaces it, with her beside him. Jace's heavenly fire, uncontrollable everywhere else, is the one thing in Edom that Jonathan's people cannot stand against.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The confrontation goes as far as it can go. Jonathan is struck with heavenly fire and with the Morgenstern blade Jocelyn gave Clary, and what burns out of him is the demon blood Valentine put in him before he was born. What is left for a few minutes is the boy he would otherwise have been: frightened, unremarkable, aware of what has been done in his name and of what he has done. He dies as that boy, with his mother and his sister there. His army cannot be restored and the war ends with the Endarkened destroyed. The Shadowhunters have won, and are stranded in a dead world with no way home.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Asmodeus will open the way out of Edom, and he sets his own terms. The price is paid by Simon: his vampirism, his immortality, and every memory of the Shadow World and everyone in it. The others return to Alicante; Simon wakes in Brooklyn as an ordinary human who has never heard of Shadowhunters, does not know why he has been away, and does not recognise Clary or Isabelle when they come to find him. Magnus, who understands what his father took, has nothing to say about it that helps.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the aftermath the Clave imposes the Cold Peace on the fair folk for their part in the war, stripping them of their Council seat and their protections, and it falls on Nephilim with faerie blood as well; the Blackthorns lose their eldest sister to it. Emma Carstairs and Julian Blackthorn are sent back to Los Angeles and bind themselves as parabatai. Brother Zachariah is burned free of what made him a Silent Brother by the heavenly fire and returns to mortal life and to the woman who waited a very long time for him. Magnus and Alec repair what Alec broke, Jocelyn and Luke marry, Maia takes over the New York pack, and Jace, no longer carrying the fire, has an ordinary life to try. Simon, still without his memories, is taken in hand by people who refuse to let him go, begins the process of Ascension to become a Shadowhunter, and starts to remember.",
+            "through": {
+              "chapter": 24
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "city-of-heavenly-fire"
+      }
+    },
+    "city-of-lost-souls": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Sixteen, and the only person unwilling to accept the Clave's conclusion that Jace cannot be recovered. She is a competent rune-maker and an indifferent fighter, and the plan she settles on requires her to convince everyone she loves that she has changed sides.",
+            "id": "clary-fray",
+            "name": "Clary Fray",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Jace Herondale"
+            ],
+            "description": "Missing since the night Jonathan Morgenstern woke, bound to him by the demon Lilith so that whatever is done to one happens to the other. Nobody knows whether he went willingly, and the Clave has already worked out that killing Jonathan would kill him too.",
+            "id": "jace-lightwood",
+            "name": "Jace Lightwood",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Daylighter carrying the Mark of Cain, sharing a flat with Jordan Kyle and no longer welcome at his mother's house. He is Clary's oldest friend and the person she trusts with the parts of a plan she will not tell the Shadowhunters, which puts him in the position of lying to all of them.",
+            "id": "simon-lewis",
+            "name": "Simon Lewis",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Grieving a dead brother and a missing one, and channelling it into hunting. She is unsentimental about what the Clave will do to Jace if it finds him, and among the most determined to find him first. Her thing with Simon has stopped being casual and she will not say so.",
+            "id": "isabelle-lightwood",
+            "name": "Isabelle Lightwood",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jace's closest friend and sworn partner, searching for him with everything he has, while quietly continuing the private enquiry into whether Magnus could be made mortal. He knows exactly how his partner would take it if he found out.",
+            "id": "alec-lightwood",
+            "name": "Alec Lightwood",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The High Warlock of Brooklyn, working with the Institute on the problem of a bond no Shadowhunter magic can cut. He has centuries of history he does not discuss, including who his father was, and a boyfriend who has begun asking about all of it.",
+            "id": "magnus-bane",
+            "name": "Magnus Bane",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Clary's mother, who has now lost a son twice and cannot afford to lose a daughter. She tells Clary things about Jonathan's childhood that she has never told anyone, and she is entirely clear that her son is beyond saving.",
+            "id": "jocelyn-fray",
+            "name": "Jocelyn Fray",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Werewolf pack leader and the Downworlder representative to the Council, now effectively Clary's stepfather and one of the few adults who will argue her case in front of the Clave.",
+            "id": "luke-garroway",
+            "name": "Luke Garroway",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sebastian"
+            ],
+            "description": "Valentine's son, raised on demon blood, killed in the war and brought back by Lilith's ritual. He is charming, patient and entirely without conscience, he considers Clary his sister and his property, and he has taken Jace because the bond between them makes Jace impossible to kill without killing him.",
+            "id": "jonathan-morgenstern",
+            "name": "Jonathan Morgenstern",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A werewolf of Luke's pack and a friend of Simon's, still working out what she thinks about Jordan Kyle's reappearance in her life. She joins the search when the pack is asked to help.",
+            "id": "maia-roberts",
+            "name": "Maia Roberts",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A werewolf of the Praetor Lupus, Simon's flatmate and guard, and the man who bit Maia years ago and has been trying to make up for it ever since. He is steady, practical and out of his depth in Shadowhunter politics.",
+            "id": "jordan-kyle",
+            "name": "Jordan Kyle",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The ruler of the Seelie Court, who receives Clary and offers a means of speaking secretly across any distance. She never gives anything without arranging to be owed, and she has her own reasons for wanting the Shadowhunters occupied.",
+            "id": "seelie-queen",
+            "name": "The Seelie Queen",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The ancient vampire who turned Simon's young fan and who once led the New York clan, now hunted by both the Clave and her own kind. She is the one who told Alec that a warlock's immortality can be undone, and she expects to be paid for the rest of it.",
+            "id": "camille-belcourt",
+            "name": "Camille Belcourt",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The girl who followed Simon's band, now a vampire, small and doll-like and increasingly unwilling to be told what to do by the woman who made her.",
+            "id": "maureen-brown",
+            "name": "Maureen Brown",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Silent Brother unlike the others: his face is unscarred and he speaks aloud, and he takes an interest in the Herondale boy that he does not fully explain. He was something else before he joined the Brotherhood, and he is willing to help where the Clave will not.",
+            "id": "brother-zachariah",
+            "name": "Brother Zachariah",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The angel from whom the Nephilim descend, who can be called by someone with a claim on him and who does not answer twice for nothing. What he keeps is as much the point as what he gives.",
+            "id": "raziel",
+            "name": "Raziel",
+            "reveal": {
+              "chapter": 18
+            }
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "city-of-lost-souls"
+      },
+      "recaps": {
+        "ending": "Simon calls the angel Raziel and asks for a weapon, paying with the Mark of Cain, which the angel takes back; in exchange he receives the sword Glorious, which holds heavenly fire. Clary uses it on Jace. The fire burns away Lilith's rune and the bond that tied him to Jonathan, so that Jace is himself again and Jonathan can be killed without killing him, but the fire does not leave: it stays inside Jace, so that he cannot safely touch anyone, Clary least of all. Jonathan escapes. He takes the Infernal Cup to an old sacred site and forces a company of captured Shadowhunters to drink from it, turning them into the Endarkened, warriors who keep their skills and lose everything else; Amatis, Luke's sister, is among them, and Luke is left gravely wounded. Jonathan leaves with an army the Clave has no answer to. In New York, Camille Belcourt is killed and the child vampire Maureen takes the clan. Magnus learns what Alec has been doing behind his back and ends the relationship. The book closes with Jace alive and burning, Clary unable to touch him, and Jonathan Morgenstern at the head of a force of turned Shadowhunters preparing to come for the rest.",
+        "in_short": "With Jace missing and bound to Jonathan Morgenstern so that killing one would kill both, the Clave decides Jace is expendable and Clary decides otherwise. Taking a pair of faerie rings from the Seelie Queen so she can speak secretly to Simon, she lets Jonathan take her, and lives in the apartment that moves between cities with a Jace who is calm, content and not himself. Isabelle, Alec, Magnus and Simon search for a way to break the bond; the Iron Sisters tell them only heavenly fire can do it. Clary discovers that Jonathan has a cup of Lilith's making with which he intends to turn Shadowhunters into servants of demons. Simon summons the angel Raziel and trades the Mark of Cain for the sword Glorious, and Clary drives its heavenly fire into Jace, freeing him and severing the bond, though the fire remains in his body. Jonathan escapes, uses the Infernal Cup on a company of captured Shadowhunters, and rides away with an army of the Endarkened.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Clary Fray is the daughter of Valentine Morgenstern, the Shadowhunter who twice tried to overthrow the Clave and purge the Downworlder races. Valentine was destroyed by the angel Raziel at the end of the war, after Clary rewrote his summoning ritual in her own name; her one request from the angel was Jace's life, since Valentine had killed him. For two books Clary and Jace believed themselves brother and sister, which was a lie of Valentine's: Jace is a Herondale, taken as a newborn and given angel blood, while Valentine's true son Jonathan was given demon blood, posed as a Shadowhunter called Sebastian, killed the youngest Lightwood child and betrayed Alicante before Jace killed him in battle. His body was never recovered. In the months after the war the demon Lilith marked Jace and used him to raise Jonathan from the dead, needing the blood of Jace and of Clary's friend Simon, a vampire who can walk in daylight and who carries the Mark of Cain. Simon's Mark destroyed Lilith, but the ritual had already worked: Jonathan woke, Jace was left bound to him so that harm to one is harm to the other, and the two of them vanished. Clary's mother Jocelyn is with Luke, a werewolf pack leader born a Shadowhunter; Alec Lightwood is with the warlock Magnus Bane and has begun secretly asking an old vampire how a warlock's immortality might be ended.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Clave convenes and reaches the obvious conclusion: because Jace and Jonathan are bound, the only certain way to destroy Jonathan is to accept that Jace will die with him, and the Council authorises it. Clary refuses to accept the verdict, and the Lightwoods refuse with her. Jocelyn tells Clary what Jonathan was like as a child and makes it plain that she believes her son cannot be saved and should not be. The search produces nothing, because the pair are not anywhere the Clave can track. Alec continues his private enquiries with Camille Belcourt about ending a warlock's immortality, and does not tell Magnus. Simon, living with Jordan Kyle, is drawn into the search as the person Clary trusts most.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Clary goes to the Seelie Court and comes away with a pair of faerie rings that let two people speak mind to mind at any distance; she gives one to Simon and tells nobody else. When Jonathan comes for her, she goes with him deliberately, letting her family and the Clave believe she has chosen her brother's side. He takes her to the apartment he shares with Jace, which is warded and windowless and opens onto a different city each time they leave it, so that she has no idea where in the world she is. Jace is there, unhurt and untroubled, easy and affectionate in a way he has never been, with none of the guilt or grief that used to define him. He does not think he is being controlled, and that is the most alarming part.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Clary reports to Simon through the ring while pretending to settle in. In New York, Isabelle, Alec, Magnus, Simon and Jordan work the problem from the other end. The Iron Sisters, who forge the Shadowhunters' weapons and answer to nobody, tell them that what Lilith made can only be undone by heavenly fire, which no one living has. Magnus, who knows more about Lilith's kind than he will say, confirms it. Alec's meetings with Camille go on. Jonathan begins letting Clary see fragments of what he is planning, confident that she will come round to it, and shows a possessive interest in her that has nothing brotherly in it.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jonathan takes Clary and Jace to a gathering in a foreign city where demons and their servants mix openly, and it becomes clear he is recruiting rather than hiding. Clary searches his rooms and finds a cup, black and wrong, made from what Lilith left behind: with it he can force a Shadowhunter to drink and turn them into something that keeps its training and loses its will. His intention is an army of them. She also learns what he means to do with the Shadowhunters he takes, and how little time there is. A warlock is coerced into building him what he needs, and Clary passes everything she can to Simon through the ring while trying to reach whatever is left of Jace underneath Lilith's work.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The others close in on the apartment's location, and Clary's position becomes untenable as Jonathan starts to suspect her. She is nearly caught with the ring. Jace, still not himself, is the more immediate problem: the bond means that any attack on Jonathan is an attack on him, so nobody can act until it is cut. Isabelle, Alec, Magnus, Simon and Jordan reach the building; Brother Zachariah lends help the Clave has refused. With no source of heavenly fire in the world, the only remaining option is to ask for one directly, and the only person with a claim on an angel's attention is the man wearing his Mark.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Simon summons Raziel and asks for a weapon. The angel takes back the Mark of Cain in payment and gives him the sword Glorious, which holds heavenly fire. Clary drives it into Jace. The fire burns Lilith's rune out of him and severs the bond, so Jonathan can now be killed without killing Jace, but it does not go out: it stays in Jace's body, so that he cannot touch anyone without risk. Jonathan, no longer protected, escapes rather than fight. Jace survives, barely, and is not the same.",
+            "through": {
+              "chapter": 19
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jonathan takes the Infernal Cup to an old sacred site with a company of captured Shadowhunters and forces them to drink, turning them into the Endarkened: fighters who keep their skill and lose everything that made them themselves. Amatis, Luke's sister, is among them, and Luke is left badly wounded in the fighting. Jonathan rides away with an army the Clave has never faced and no obvious way to reverse what he has done. In New York, Camille Belcourt is killed and the child vampire Maureen takes over the clan. Magnus finds out what Alec has been asking Camille and ends their relationship. Jace is alive and free of Lilith at last, but he burns from the inside with heavenly fire, and Clary cannot touch him.",
+            "through": {
+              "chapter": 21
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "city-of-lost-souls"
       }
     },
     "citybound": {

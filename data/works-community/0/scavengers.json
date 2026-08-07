@@ -1606,6 +1606,229 @@
         "work": "separation-a-fantasy-litrpg-adventure"
       }
     },
+    "servant-of-the-empire": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Ruling Lady of the Acoma, in her early twenties, who in a single year took a destroyed house and made it one of the powers of the Empire. She rules for her small son and is now watched by everyone in the Game of the Council. Her strength has always been a willingness to question rules other Tsurani treat as natural law, and her position remains precarious: she has beaten the Minwanabi once, and they have not stopped.",
+            "id": "mara",
+            "name": "Mara of the Acoma",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Mara's small son and heir to the Acoma, grandson of the Lord of the Anasati through his dead father. He is growing up indulged, boisterous and conscious of his rank, and his safety is a permanent strategic problem for his mother.",
+            "id": "ayaki",
+            "name": "Ayaki",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "First Adviser of the Acoma, formerly Mara's nurse. Old, blunt and increasingly frail, she has spent her life in the household and now spends it arguing with a mistress who listens to her about half the time and does something unprecedented the other half.",
+            "id": "nacoya",
+            "name": "Nacoya",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Force Commander of the Acoma, a scarred veteran of long service who now commands thousands of soldiers instead of a few dozen. He is entirely correct, entirely loyal, and increasingly aware of his own age.",
+            "id": "keyoke",
+            "name": "Keyoke",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Acoma Force Leader, once a masterless grey warrior whom Mara took into service when custom said he had no honour left to offer. Witty, irreverent with his mistress and formidable in the field, he owes the Acoma everything and says so.",
+            "id": "lujan",
+            "name": "Lujan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Spy Master of the Acoma, a man of no fixed appearance who can pass as a labourer, a merchant or a priest, and who runs the best intelligence network in the Empire out of inns, brothels and market stalls. He is patient to the point of coldness and thinks in years rather than seasons.",
+            "id": "arakasi",
+            "name": "Arakasi",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The new Lord of the Minwanabi, who inherited the house after his father's public disgrace. Heavy, self-indulgent and painfully aware that he is not the man his father was, he opens his rule by binding himself and his family to the destruction of the Acoma in the most absolute terms available to a Tsurani.",
+            "id": "desio",
+            "name": "Desio of the Minwanabi",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "First Adviser of the Minwanabi, a thin, dry, highly capable man who served the old lord and now serves the son. He can see exactly how badly his house is being run and exactly how dangerous the enemy is, and he has no polite way of saying either.",
+            "id": "incomo",
+            "name": "Incomo",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Cousin to the Lord of the Minwanabi, recalled from command on the barbarian world. He is the most gifted soldier of his generation, cold, patient and precise, and he plays the Game of the Council the way he fights a campaign. Where his cousin is loud and impulsive, he is neither.",
+            "id": "tasaio",
+            "name": "Tasaio of the Minwanabi",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A red-haired man from the barbarian world beyond the rift, third son of a minor noble house there, taken prisoner in the war and sold into slavery in the Empire. He is educated, argumentative and completely unwilling to behave as a Tsurani slave is supposed to behave, which by Empire law should get him killed within a week.",
+            "id": "kevin",
+            "name": "Kevin of Zun",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A courtesan of great beauty and greater ambition, expensively kept and skilled at attaching herself to powerful men. She has a long-standing interest in the Acoma and a personal grudge behind it, and her charm covers a genuinely vicious temper.",
+            "id": "teani",
+            "name": "Teani",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Warlord of Tsuranuanni, holder of the white and gold and master of the Empire in all but name. He directs the war beyond the rift, uses it to raise his allies and bleed his rivals, and has grown accustomed to being unopposed.",
+            "id": "almecho",
+            "name": "Warlord Almecho",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Heir to the Lord of the Shinzawai, a northern house that has kept clear of the Acoma-Minwanabi feud. Courteous, level-headed and unusually willing to see a woman as a ruler rather than a marriage prospect, he has never disguised his regard for Mara.",
+            "id": "hokanu",
+            "name": "Hokanu of the Shinzawai",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Emperor, the Light of Heaven, a young man raised to be a religious figure rather than a ruler and hedged about by ritual. Tradition says he intercedes with the gods and leaves government to the Warlord, and he has begun to find that division less acceptable than his predecessors did.",
+            "id": "ichindar",
+            "name": "Ichindar",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Great One of the Assembly of Magicians, and the only one anybody knows of who was born on the barbarian world. The Great Ones stand outside the Empire's law and above its lords; this one is regarded with particular unease, because nobody can predict what a man of his origins will consider intolerable.",
+            "id": "milamber",
+            "name": "Milamber",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Heir to the Lord of the Anasati, clever, bookish and cold, who has never forgiven Mara for passing him over in favour of his brother and for what became of that brother. His house is bound by blood to protect Mara's son; he shares none of his father's willingness to let the matter rest there.",
+            "id": "jiro",
+            "name": "Jiro of the Anasati",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "servant-of-the-empire"
+      },
+      "recaps": {
+        "ending": "The Minwanabi are destroyed. Arakasi's long infiltration opens the family's defences from the inside, Mara's forces take the great lake estate, and Tasaio, beaten and with no honourable exit left, takes his own life. The feud that has run between the two houses for generations ends with the Acoma standing and the Minwanabi extinguished as a political entity, their lands, wealth and holdings granted to Mara by the Emperor. Ichindar goes further: he names her Servant of the Empire, an honour granted only a handful of times in the Empire's history and never in living memory, marking her as one who has served Tsuranuanni above her own house. It makes her, at a stroke, the most celebrated and most exposed figure in the Empire, and it does not make her safe. The office of Warlord has been abolished and Ichindar now rules directly, which suits Mara and enrages the traditionalist houses who blame her for the change; Jiro of the Anasati is among them. The war beyond the rift is over, and the peace returns the surviving barbarian prisoners to their own world, so Kevin, who changed how Mara thinks about honour, slavery and power, goes home. Mara marries Hokanu of the Shinzawai. Nacoya is dead. The Great Game continues, and Mara has just given the Empire's conservatives a common enemy. The story concludes in Mistress of the Empire.",
+        "in_short": "Desio of the Minwanabi opens his rule by swearing a blood oath to the god of death to destroy the Acoma, and recalls his brilliant cousin Tasaio from the war to do it. Mara, consolidating her unexpected victory, buys barbarian slaves cheaply and among them a Midkemian named Kevin of Zun, who refuses to behave as a slave and becomes her lover and her most persistent critic. Under his questioning she starts to see the Game of the Council as something that could be changed rather than only survived. The Warlord Almecho falls and dies, a violent scramble for his office follows, and the young Emperor Ichindar seizes the moment to abolish the Warlord's office and rule directly, with Mara among his most useful supporters. Desio dies and Tasaio takes the Minwanabi, and the feud becomes open war. Mara loses Nacoya to an assassin and comes close to losing everything, but Arakasi's infiltration finally opens the Minwanabi estate. Tasaio takes his own life, the Emperor grants Mara his lands and names her Servant of the Empire, Kevin goes home under the peace, and Mara marries Hokanu of the Shinzawai.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, in Daughter of the Empire: on the world of Kelewan, the Empire of Tsuranuanni is governed by rigid honour and by the Game of the Council, an endless contest among the great houses fought with marriages, trade, assassination and staged accidents. Mara was pulled out of a temple at seventeen when her father and brother were killed in the war on the barbarian world, in a battle arranged by the Minwanabi, leaving her Ruling Lady of a house reduced to a handful of soldiers. She rebuilt it by breaking convention: she recruited masterless grey warriors, bargained with a cho-ja queen for a hive on Acoma land, and took the spymaster Arakasi and his network into her service. To force the rival Anasati into protecting her she married their least regarded son, Buntokapi, then manoeuvred him into a position where honour left him no choice but to take his own life, leaving her ruling for their infant son Ayaki, whose Anasati blood obliges Lord Tecuma to keep protecting the house. Finally she survived a trap at Lord Jingu of the Minwanabi's own estate, losing her guard Papewaio but proving before the Warlord and the assembled nobility that her host had broken guest-right. Jingu took his own life, and his son Desio inherited a damaged house and a debt of vengeance.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Desio of the Minwanabi begins his rule by binding his house to its purpose in the most absolute way a Tsurani can: a blood oath sworn to Turakamu, the god of death, committing the Minwanabi to destroy the Acoma or be destroyed themselves. He recalls his cousin Tasaio from command on the barbarian world to plan the campaign, and it quickly becomes clear that Tasaio is the more dangerous of the two by a wide margin, a soldier of real brilliance who is patient, precise and entirely without impulse. On the Acoma side Mara is consolidating a victory nobody expected her to win. She expands the estate's trade aggressively, and when the war floods the markets with cheap barbarian prisoners she buys a large number of them, including a red-haired Midkemian named Kevin of Zun, whose behaviour makes it immediately obvious that he has no intention of being a Tsurani slave.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kevin should not survive his own insolence, but Mara keeps him alive first out of curiosity and then for his usefulness: he knows things about the enemy world nobody in the Empire has bothered to learn, and he asks questions no Tsurani would ask. He becomes her lover and, more disruptively, her critic, challenging the assumptions she has never examined, that slaves are property, that honour requires suicide, that the Game of the Council is simply how the world works. Meanwhile the Minwanabi campaign begins in earnest with attacks on Acoma trade, caravans and allies rather than open battle, and the Hamoi Tong, the Empire's assassins' guild, is set on Mara and her son. Arakasi fights a quiet war of intelligence against an opponent who is at least his equal, and the Acoma survive by a narrowing margin.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Politics on the imperial scale begins to move faster than the feud. Events beyond the rift go badly for the Warlord, and the Assembly of Magicians, which stands above the Empire's law, withdraws the support that made his position unassailable; Almecho does not survive the collapse of his authority. A violent scramble for the white and gold follows, settled largely by assassination, and the young Emperor Ichindar uses the chaos to do what no Light of Heaven has done in centuries: he abolishes the office of Warlord and takes the government of the Empire into his own hands. Mara, who has become one of the most visible ruling lords in Tsuranuanni, backs him, which puts the Acoma at the centre of imperial politics and sets them against every traditionalist house that wants the old order back. Jiro of the Anasati is prominent among those houses, and his grievance against Mara is personal as well as political.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Minwanabi leadership passes to Tasaio when Desio dies, and the feud becomes open war between the two houses, fought with armies as well as agents. Tasaio is a far more capable enemy than his cousin: he attacks Mara's alliances, her trade and her officers, forces engagements on ground of his choosing, and comes close to breaking the Acoma more than once. Mara's own household is not safe, and neither is her son. Kevin's presence beside her, meanwhile, has become a political liability as well as a personal complication, since a ruling lady of the Empire openly attached to a barbarian slave hands her enemies an easy weapon. Mara refuses to give him up, and pays for it in standing.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The war with the Minwanabi reaches its worst point. Nacoya, First Adviser and the woman who raised Mara, is killed by an assassin, and the loss takes from Mara both her oldest counsellor and the last person who could tell her she was wrong without calculation. Mara comes near to losing the Acoma outright, and survives on the strength of the unconventional things she built years earlier: the grey warriors who owe her their names, the cho-ja hive, and Arakasi's network. Arakasi, playing the longest game of his career, works his way into the Minwanabi household itself, at severe personal cost, and finds what Mara needs. Beyond the rift, meanwhile, the war that has run through both books is finally ending, and the terms of the peace include returning the surviving barbarian prisoners to their own world.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Arakasi's infiltration opens the Minwanabi from within, Mara's forces take the great lake estate, and Tasaio, beaten with no honourable exit remaining, takes his own life. The feud ends with the Minwanabi extinguished as a house and their lands, wealth and holdings granted to the Acoma by the Emperor. Ichindar then names Mara Servant of the Empire, an honour awarded only a handful of times in Tsuranuanni's history, marking her as one who has served the Empire above her own house; it makes her the most celebrated figure in the Empire and, because the traditionalist houses blame her for the abolition of the Warlord's office, one of the most exposed. The peace returns the barbarian prisoners home, and Kevin, who changed the way Mara sees her own society, goes back to his world. Mara marries Hokanu of the Shinzawai. She has won everything she set out to win, and made a new set of enemies in the process.",
+            "through": {
+              "chapter": 24
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "servant-of-the-empire"
+      }
+    },
     "shades-first-rule-a-fantasy-litrpg-adventure": {
       "characters": {
         "characters": [
@@ -2012,6 +2235,418 @@
           }
         ],
         "work": "shadow-and-bone"
+      }
+    },
+    "shadow-kiss": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Rosemarie Hathaway"
+            ],
+            "description": "A dhampir novice in her final year at St. Vladimir's Academy, months away from graduating as a guardian. She is bonded to Lissa Dragomir and takes on the darkness Lissa's spirit magic produces, which has left her volatile and prone to rages she cannot always explain. Since a friend was killed in front of her over the winter she has been carrying a private guilt, refusing counselling, and beginning to see things that other people do not.",
+            "id": "rose-hathaway",
+            "name": "Rose Hathaway",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Vasilisa Dragomir"
+            ],
+            "description": "The last of the royal Dragomir line and Rose's bondmate, a Moroi who wields spirit and is learning to control it with Adrian Ivashkov's help rather than with medication. Her healing and compulsion are growing stronger, and so is the cost, most of which Rose absorbs without telling her. She is with Christian Ozera and being groomed by the royal families for a political future she is not sure she wants.",
+            "id": "lissa-dragomir",
+            "name": "Lissa Dragomir",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Russian guardian at the Academy and Rose's combat instructor, widely regarded as one of the best fighters in Moroi society. Controlled and deliberate, he has admitted that he returns Rose's feelings and has held to the position that acting on them would compromise them both as Lissa's guardians. He is one of the few adults Rose trusts entirely.",
+            "id": "dimitri-belikov",
+            "name": "Dimitri Belikov",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dhampir novice and one of Rose's closest friends, killed by a Strigoi in Spokane during the winter break while trying to protect her. Rose blames herself for his death. As the new term begins she starts glimpsing him standing silently at the edge of crowds and outside windows, watching her and never speaking.",
+            "id": "mason-ashford",
+            "name": "Mason Ashford",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Moroi long shunned for his parents' choice to become Strigoi, sharp-tongued, defensive, and one of the only Moroi at the school willing to use his fire magic in a fight. He is Lissa's boyfriend, and his friendship with Rose is built mostly on insults.",
+            "id": "christian-ozera",
+            "name": "Christian Ozera",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dhampir novice who survived the Spokane captivity alongside Rose and came out of it quieter and harder. He is a careful, disciplined fighter and takes the final year's assignments more seriously than anyone.",
+            "id": "eddie-castile",
+            "name": "Eddie Castile",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A royal Moroi in his twenties, the queen's great-nephew, and a spirit user who reads auras and walks into other people's dreams. He is staying near the Academy to teach Lissa how to handle spirit, and he uses dream-walking to reach Rose whenever she will not talk to him awake. He drinks and smokes heavily, partly because it dulls spirit's effects on him.",
+            "id": "adrian-ivashkov",
+            "name": "Adrian Ivashkov",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A guardian who teaches combat theory at the Academy and has never had patience with Rose. Blunt and quick to assume the worst of her, he plays an aggressor in the novices' field assessments.",
+            "id": "stan-alto",
+            "name": "Stan Alto",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The captain of the Academy's guardians, who designs and oversees the novices' final field experience. Fair, unsentimental and willing to hear Rose out when other staff will not.",
+            "id": "alberta-petrov",
+            "name": "Alberta Petrov",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The headmistress of St. Vladimir's, rigid about procedure and still inclined to treat Rose as a discipline problem rather than a promising novice.",
+            "id": "kirova",
+            "name": "Headmistress Kirova",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Moroi prince who was arrested after kidnapping and exploiting Lissa for her healing magic, and who has spent the intervening months in custody awaiting trial. Dying of a wasting disease and utterly unrepentant, he still regards what he did as reasonable and still knows more about spirit than almost anyone alive.",
+            "id": "victor-dashkov",
+            "name": "Victor Dashkov",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A non-royal Moroi girl who was once Rose and Lissa's tormentor and became an ally after her mother was killed by Strigoi. She now lives at the Royal Court, trains constantly, and has taught herself to use water magic as a weapon.",
+            "id": "mia-rinaldi",
+            "name": "Mia Rinaldi",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A shy Moroi underclassman, tall and awkward for her age, who idolizes Lissa and Rose from a distance. She is one of the students who takes up Christian's offer to teach Moroi to use their magic offensively.",
+            "id": "jill-mastrano",
+            "name": "Jill Mastrano",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "shadow-kiss"
+      },
+      "recaps": {
+        "ending": "Warned by Mason's ghost, Rose sees Strigoi gathering outside the school's wards, and the attack comes that night. Humans working for the Strigoi have broken the wards, and the Strigoi come through in numbers no one has ever faced on Moroi ground. Students and staff are killed, and many are dragged away alive into a cave system nearby to be kept as food. A rescue party goes in after them. Rose fights through the caves alongside Christian, kills several Strigoi, and most of the captives, including Eddie, are brought out. Dimitri is not among them. When the dead are counted his body is missing, and the guardians conclude what Rose refuses to hear: he was bitten and taken alive, and has been awakened as a Strigoi. He and Rose had promised each other that neither would be left in that state, and everyone around her treats the promise as impossible to keep. Rose does not. She leaves St. Vladimir's without graduating, breaks with Lissa, who begs her to stay, and sets out for Russia, where she believes Dimitri would go, intending to find him and end it herself.",
+        "in_short": "Rose returns to St. Vladimir's for her final term haunted by Mason's death and by Mason himself, whose silent ghost keeps appearing to her. She is assigned to guard Christian Ozera for the novices' six-week field experience rather than Lissa, and her visions cost her badly when she freezes during a staged attack and is hauled before a disciplinary hearing. At the Royal Court, Victor Dashkov is convicted and imprisoned for what he did to Lissa. Rose learns that being shadow-kissed, brought back from the dead, is why the dead can reach her, and that Mason has been trying to warn her rather than accuse her. She and Dimitri finally give in to what they feel and spend a night together, and he says he will step aside as her instructor so they can be together openly. Hours later the Strigoi come. The wards have been broken by human accomplices, the school is overrun, and the survivors are taken into nearby caves. Rose fights in the rescue, but Dimitri is taken alive and turned Strigoi. Rose leaves school and the country to hunt him down and keep the promise they made each other.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Rose Hathaway is a dhampir novice at St. Vladimir's Academy, training to guard the living Moroi vampires against the undead Strigoi. She is bonded to her best friend Lissa Dragomir, the last of a royal line, because Lissa unknowingly used spirit magic to bring Rose back from death as a child; Rose can feel Lissa's emotions, enter her mind, and absorb the madness spirit leaves behind, and is called shadow-kissed for it. Lissa was tormented and finally kidnapped by Victor Dashkov, a family friend who wanted her healing for his own fatal illness; he was caught and awaits trial. Rose trains under the guardian Dimitri Belikov, and the two are in love and forbidden to act on it. Over the winter, coordinated Strigoi attacks with human helpers forced the school to move the holiday to a guarded ski resort. There Rose met Adrian Ivashkov, an idle royal Moroi who is also a spirit user, and learned that Christian's aunt Tasha had asked Dimitri to leave the Academy for her. Rose repeated a rumour about a Strigoi nest in Spokane, and her friend Mason went after it. All of them were captured, and Mason was killed in front of Rose before she destroyed the two Strigoi. Dimitri refused Tasha and stayed. Rose came back marked as a Strigoi killer, silently grieving, and seeing Mason's ghost.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The final term opens with the novices' field experience: for six weeks each novice is assigned a Moroi to guard around the clock while guardians stage surprise attacks to test them. Rose expects Lissa and is given Christian Ozera instead, because the bond would tell her where Lissa is and make the test meaningless; Eddie draws Lissa. Rose takes the assignment as an insult and Christian enjoys it. Underneath the routine, Rose is in worse shape than anyone knows. She refuses to talk about Mason's death, she is carrying more of Lissa's spirit darkness than ever, and she has begun seeing Mason himself, standing silent and unmoving at the edges of crowds. She tells no one, on the reasonable assumption that they will conclude she has lost her mind.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "During a staged attack, Stan Alto grabs Christian while Rose stands frozen, staring at Mason's ghost, and does nothing. Stan reports it as deliberate, and Rose is put in front of a hearing where she cannot explain herself without admitting to hallucinations. Dimitri argues for her, but the damage to her record is real and she is punished. Her temper is worse, her mood swings sharper, and she begins to suspect the darkness she draws off Lissa is doing more to her than she has admitted. Lissa, meanwhile, is being drawn deeper into royal politics and is quietly using compulsion in situations that do not require it, which unsettles Rose more than the ghosts do.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rose, Lissa, Christian and Dimitri travel to the Royal Court for Victor Dashkov's trial, and Rose is required to testify about the kidnapping and about the charm Victor used on her and Dimitri. Victor, visibly dying, defends himself as a man who did what the situation required and warns Lissa that she will end up understanding him. He is convicted and sentenced to prison. At Court, Rose sees Mia Rinaldi, now living there and training seriously, and spends time with Adrian, who reads her aura and tells her something in it has changed since Spokane. The ghosts follow Rose the whole trip, which finally convinces her they are not simply a symptom of grief.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Back at school, Rose stops hiding the visions from everyone and starts working out what they mean. She learns that being brought back from death has left her standing partly on the other side of it: the dead are drawn to her, and outside the school's wards they can reach her freely. There is precedent in the history of St. Vladimir, a spirit-using saint whose own shadow-kissed guardian was said to have gone mad. Mason is not accusing her. He is trying to tell her something, and Rose begins to follow him instead of turning away. The strain of taking Lissa's darkness keeps rising, and the field experience grinds on with Christian, who has started teaching younger Moroi to use their magic offensively.",
+            "through": {
+              "chapter": 19
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rose and Dimitri stop pretending. After the field experience ends and Rose reaches the end of what she can hold in, the two of them spend a night together in a cabin at the edge of the campus and say plainly that they are in love. Dimitri decides he will resign as her instructor and ask to be reassigned so that they can be together without either of them being compromised, and for the first time Rose can see a future that contains both her duty and him. That same day Mason's ghost appears again, more insistent than before, and leads Rose to look beyond the wards, where she sees Strigoi assembled in numbers no one has ever reported and realizes the school is about to be attacked.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rose raises the alarm and, after some resistance, is believed. It is already too late. The wards have been sabotaged by humans working for the Strigoi, and the attackers come through the campus at night in a coordinated assault, killing students, staff and guardians. Rather than feeding on the spot, many Strigoi drag captives away alive into a cave system beyond the school grounds, to keep as a food supply until they can be turned or killed. The surviving guardians assemble a rescue party, and Rose insists on going in with it. The fighting in the caves is close, dark and brutal, and Rose kills more Strigoi than she can keep count of, with Christian burning a path beside her.",
+            "through": {
+              "chapter": 27
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Most of the captives are brought out alive, Eddie among them, and the Strigoi in the caves are destroyed. When the losses are counted, Dimitri is not on either list. His body is not found, and a guardian confirms what Rose saw in the caves: he was bitten and taken alive, which means he has been awakened as a Strigoi. Every adult treats him as dead and unreachable. Rose remembers what she and Dimitri promised each other, that neither would leave the other to exist that way, and decides she is the only person who will keep it. She turns down the chance to graduate, tells Lissa she is going and breaks their bond of trust in the process, and leaves the country for Russia, where she believes he would have gone, carrying a stake and no plan beyond finding him.",
+            "through": {
+              "chapter": 29
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "shadow-kiss"
+      }
+    },
+    "shadowland": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Suze"
+            ],
+            "description": "A sixteen-year-old from Brooklyn whose widowed mother has remarried and moved the family to Carmel-by-the-Sea, California. Suze is a mediator: she can see and speak with the dead, and ghosts with unfinished business seek her out whether she wants them or not. She has kept the ability secret from her mother her whole life, has no intention of mentioning it at her new school, and has learned to settle a difficult haunting with her fists when talking fails, which leaves her with injuries she is constantly having to explain away. Guarded and sarcastic, she arrives in California expecting to hate it.",
+            "id": "suze-simon",
+            "name": "Susannah Simon",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The ghost already occupying the bedroom Suze is given in her stepfather's house, a young man in nineteenth-century clothes who died in that room roughly a century and a half earlier. He is calm, courteous and unbothered by his own situation, treats Suze's arrival with amusement rather than resentment, and says almost nothing about why he is still there. He reads over her shoulder, comments on her decisions, and turns up when she is in trouble.",
+            "id": "jesse",
+            "name": "Jesse",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The ghost of a student who shot herself on the school grounds after her boyfriend ended their relationship, and who has flatly refused to accept that she is dead. She still behaves as though she runs the school, is possessive about the boy who left her, and turns violent the moment she realizes Suze can see her. She grows stronger and less controllable the longer she is opposed.",
+            "id": "heather-chambers",
+            "name": "Heather Chambers",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The principal of the Junipero Serra Mission Academy, the Carmel school Suze is enrolled in. He is elderly, courteous and unshakably patient, and he is also a mediator, the first Suze has ever met. He has spent decades persuading the dead to move on by listening to them, keeps his ability hidden from the school and the church, and is appalled to discover that Suze's answer to a dangerous ghost is to hit it. He orders her to leave the school's haunting to him.",
+            "id": "father-dominic",
+            "name": "Father Dominic",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A popular senior at the Mission Academy and the boy Heather was seeing before her death. He is friendly and well liked, knows nothing about what haunts the school, and takes an interest in Suze almost immediately, which makes him a target.",
+            "id": "bryce-martinson",
+            "name": "Bryce Martinson",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The ghost of Suze's father, who died when she was a child and has never moved on. He turns up when it suits him, usually to tell his daughter she is taking too many risks, and he is the reason she has known since childhood exactly what she is.",
+            "id": "suzes-father",
+            "name": "Suze's father",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Suze's new stepfather, a building contractor slowly restoring the old Carmel house the family has moved into. Cheerful, well meaning and an enthusiastic cook, he tries hard with his stepdaughter and has no idea what she can do.",
+            "id": "andy-ackerman",
+            "name": "Andy Ackerman",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A television journalist, widowed when Suze was small, who has remarried and moved west for a new husband and a new job. She worries about her daughter's bruises and her habit of disappearing at night, and has never suspected the reason for either.",
+            "id": "suzes-mother",
+            "name": "Suze's mother",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Sleepy"
+            ],
+            "description": "The eldest of Suze's three stepbrothers, a high-school senior who works, sleeps and drives, in roughly that order, and takes almost nothing seriously. Suze privately calls him Sleepy.",
+            "id": "jake-ackerman",
+            "name": "Jake Ackerman",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Dopey"
+            ],
+            "description": "The middle stepbrother, in Suze's own year at the Mission Academy, a wrestler who resents her arrival and makes no secret of it. Suze privately calls him Dopey.",
+            "id": "brad-ackerman",
+            "name": "Brad Ackerman",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Doc"
+            ],
+            "description": "The youngest stepbrother, twelve years old, relentlessly academic and full of facts nobody asked for. He is the only one of the three Suze warms to, and she privately calls him Doc.",
+            "id": "david-ackerman",
+            "name": "David Ackerman",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A classmate at the Mission Academy who writes for the school paper, has albinism, and knows every piece of local and school gossip worth knowing. She is the first person in California to be straightforwardly friendly to Suze, and her interest in the school's history turns out to be useful.",
+            "id": "ceecee-webb",
+            "name": "CeeCee Webb",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "CeeCee's inseparable friend, a joker with a car, who adopts Suze into their group at lunch on her first day.",
+            "id": "adam-mctavish",
+            "name": "Adam McTavish",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Mission Academy's reigning popular student, wealthy and used to being the center of attention, who treats the new girl as competition.",
+            "id": "kelly-prescott",
+            "name": "Kelly Prescott",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "shadowland"
+      },
+      "recaps": {
+        "ending": "Suze performs the exorcism at the school without telling Father Dominic, and Heather, far stronger than expected, comes close to killing her before Jesse intervenes. Between them the ghost is forced out, and the haunting of the Mission Academy is over. Suze is left with injuries she has no intention of explaining at home. Father Dominic learns what she did and disapproves of every part of it, but accepts that there are now two mediators in one small town and that arguing with her is better than working without her; they agree to keep each other's secret and to handle whatever comes next together. Bryce recovers from his injuries. Suze's mother and stepfather remain entirely unaware of what their daughter does at night, and her stepbrothers have settled into treating her as a fact of life. Jesse stays where he has always been, in Suze's bedroom, still without explaining why he never moved on, and the wary truce between them has become something closer. Suze, who arrived expecting to hate California, ends the book with no wish to leave it.",
+        "in_short": "Sixteen-year-old Susannah Simon moves from Brooklyn to Carmel-by-the-Sea when her widowed mother remarries, acquiring a stepfather, three stepbrothers and a bedroom that already has an occupant: Jesse, the ghost of a young man who died there in the nineteenth century. Suze is a mediator, able to see the dead and help them finish what holds them here, and her new school is haunted by Heather Chambers, a student who shot herself on the grounds after a breakup and refuses to move on. The principal, Father Dominic, turns out to be a mediator too, but he wants Heather reasoned with while Suze wants her fought. When Heather's attacks put Suze's classmate Bryce in hospital, Suze secretly assembles an exorcism and performs it where Heather died. The rite goes badly and nearly kills her, but with Jesse's help Heather is driven out for good. Suze and Father Dominic agree to work together, and Jesse remains in her room.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Susannah Simon leaves Brooklyn for Carmel-by-the-Sea when her widowed mother marries Andy Ackerman, a local contractor with three sons. Suze is a mediator: she can see and speak with the dead, who come to her for help finishing whatever keeps them here, and she has never told her family. The bedroom she is given in Andy's half-restored Victorian house turns out to be occupied already, by Jesse, the ghost of a young man who died in that room well over a century ago and who is entirely unbothered by acquiring a roommate. On her first day at the Junipero Serra Mission Academy she is taken up by CeeCee and Adam, sized up by Kelly Prescott, and confronted by Heather Chambers, the ghost of a student who shot herself on the school grounds after her boyfriend ended their relationship. Heather has no intention of accepting that she is dead, and she turns on Suze the moment she understands that she can be seen. Suze answers the way she always has, with her fists.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The school's principal, Father Dominic, turns out to be a mediator as well, the first Suze has ever met, and their methods could not be less alike: he has spent decades talking the dead into leaving, and he is horrified to hear how she handles them. He orders her to stay away from Heather and let him reason with her. Heather has other ideas. Bryce Martinson, the senior she was seeing before she died, notices Suze and asks her out, and Heather's jealousy makes her stronger and more destructive. Suze keeps coming home bruised and keeps having to account for it. Jesse, watching from her bedroom, tells her plainly that she is out of her depth, and her own father's ghost turns up to say much the same thing. Suze ignores both of them, and she and Father Dominic settle into an uneasy alliance built mostly on arguing.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Heather escalates from damage to real harm. She attacks Suze directly and turns on Bryce, who is hurt badly enough to be taken to hospital. Father Dominic's attempts to reason with her achieve nothing; she is angrier and stronger every day. Suze, who has been keeping the worst of it from him, concludes that Heather cannot be talked down and will keep hurting people until somebody stops her, and she starts looking for a way to force her out. Jesse, who has watched Suze come home injured over and over, argues against it. CeeCee's appetite for school history fills in what happened the day Heather died, and Suze begins working out what an exorcism would require and where it would have to be performed.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Suze commits to the exorcism. She goes behind Father Dominic's back to assemble what the rite needs and settles on performing it at the place Heather died, knowing the priest would forbid it and that Jesse believes it will get her killed. Around all of this, ordinary life keeps demanding attention: her mother's questions, her stepbrothers, school, and Bryce's slow recovery. Heather, aware that something is being prepared against her, becomes openly dangerous and no longer confines herself to the school grounds. The confrontation the two of them have been building toward can no longer be put off, and Suze goes back to the school at night to finish it.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The exorcism goes wrong. Heather is far stronger than Suze had allowed for, the confrontation turns violent, and Suze is badly hurt and close to being killed before Jesse intervenes. Between them the ghost is finally forced out, and Heather is gone for good. Suze survives with injuries she has to explain away at home, and the school's haunting is over. Father Dominic, learning what she did, is appalled by her methods but accepts that the two of them are stuck with each other; they agree to work together in future and to keep what they are to themselves. Bryce recovers. Jesse stays exactly where he has always been, in Suze's bedroom, still unwilling to say why he never moved on, and Suze, who arrived in California determined to hate it, finds she is in no hurry to leave.",
+            "through": {
+              "chapter": 20
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "shadowland"
       }
     },
     "shadows-of-self": {

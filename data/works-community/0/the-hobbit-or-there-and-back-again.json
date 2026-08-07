@@ -851,6 +851,223 @@
         "work": "the-hostile-hospital"
       }
     },
+    "the-hound-of-the-baskervilles": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The consulting detective of Baker Street, at the height of his practice and much in demand. He opens the book by reconstructing the life of an unknown visitor from a walking stick left behind in the hall, chiefly to test whether his companion has learned anything from watching him work. He is scornful of superstition, insistent that a case be treated as a problem in evidence, and secretive about his own plans even with his closest friend. Pressure of other work keeps him in London while the case unfolds in Devon, so much of the investigation is conducted at a distance through written reports.",
+            "id": "sherlock-holmes",
+            "name": "Sherlock Holmes",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Dr. Watson"
+            ],
+            "description": "A doctor and former army surgeon who shares rooms with Sherlock Holmes and writes up his cases. Practical, brave and conscientious, he is sensitive about being patronised for his slower reasoning. When Holmes cannot leave London he is sent to Devon as the detective's eyes and ears, charged with guarding a client and reporting everything he sees, and he narrates the greater part of the book through his letters and diary.",
+            "id": "john-watson",
+            "name": "John H. Watson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A country doctor practising on Dartmoor, tall, thin and stooping, with a passion for comparative anatomy and the shapes of skulls, and a spaniel that follows him everywhere. He gave up a hospital career to marry and settle in the country. Medical attendant and personal friend to the late Sir Charles Baskerville, he brings Holmes both a family manuscript from the previous century and the facts of a recent death he is not satisfied with.",
+            "id": "james-mortimer",
+            "name": "Dr. James Mortimer",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The late owner of Baskerville Hall, a man who had made a large fortune in South Africa and returned to restore the family estate and spend his money on the district. Nervous, generous and in poor health, he had come to half believe the old family legend and would not walk on the moor after dark. He was found dead at the far end of the yew alley of his own grounds one night, with no mark of violence on him.",
+            "id": "sir-charles-baskerville",
+            "name": "Sir Charles Baskerville",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An ancestor of the family in the time of the Great Rebellion, described in a manuscript preserved at the Hall: a violent and dissolute squire who carried off a farmer's daughter and hunted her across the moor when she escaped, and whose own death that night is the origin of the legend of a spectral hound pursuing the Baskervilles.",
+            "id": "hugo-baskerville",
+            "name": "Hugo Baskerville",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The heir to the Baskerville estate, a nephew of Sir Charles, small, alert and weathered from years of farming in Canada. Newly arrived in England to take up his inheritance, he is level-headed and stubborn, refuses to be frightened away from his own property, and is inclined to treat the family legend as nonsense even after strange things begin happening to him in his London hotel.",
+            "id": "sir-henry-baskerville",
+            "name": "Sir Henry Baskerville",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The driver of the cab that carried a bearded stranger who followed Sir Henry through London. Traced by Holmes through the official register, he gives a straightforward account of his fare and repeats, with some enjoyment, the name the passenger gave him.",
+            "id": "john-clayton",
+            "name": "John Clayton",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The butler at Baskerville Hall, a tall, black-bearded, formal man whose family has served the Baskervilles for generations. He and his wife were the only people in the house when Sir Charles died, and he was left a substantial legacy in the will. He behaves oddly about the household at night and is plainly anxious to leave the Hall and set up in business elsewhere.",
+            "id": "john-barrymore",
+            "name": "John Barrymore",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The housekeeper at Baskerville Hall and the butler's wife, a heavy, impassive woman who keeps the house running correctly while showing every sign of private distress. Watson hears her weeping at night more than once, and her husband denies that anything is wrong.",
+            "id": "eliza-barrymore",
+            "name": "Eliza Barrymore",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A convicted murderer who has escaped from the prison at Princetown and is believed to be hiding somewhere on the moor. Soldiers and warders are searching for him, the district has been warned, and every isolated household is locking its doors, since he is described as a man who would stop at nothing.",
+            "id": "selden",
+            "name": "Selden",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A naturalist living at Merripit House on the moor, a small, spare, precise man with a butterfly net who left an unsuccessful career as a schoolmaster in the north of England. He knows the moor and its dangerous bogs better than anyone, is friendly and helpful to the new arrivals, and offers to show Watson the country and the neolithic remains scattered over it.",
+            "id": "jack-stapleton",
+            "name": "Jack Stapleton",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The dark-haired, striking young woman living at Merripit House and introduced as the naturalist's sister, in appearance and manner entirely unlike him. Mistaking Watson for the new heir at their first meeting, she urgently begs him to leave Devon at once, and then, when her mistake is discovered, retracts the warning and asks him to forget it.",
+            "id": "beryl-stapleton",
+            "name": "Beryl Stapleton",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly neighbour at Lafter Hall, a litigious man who spends his money bringing lawsuits against his neighbours and the parish over rights of way and similar questions, and who has quarrelled with his own daughter. His other hobby is astronomy, and he keeps a powerful telescope on his roof with which he watches the moor for the escaped convict.",
+            "id": "mr-frankland",
+            "name": "Mr. Frankland",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young woman living in Coombe Tracey, the daughter of the litigious Mr. Frankland, who married against her father's wishes and was deserted by her husband. Cut off by her family and earning a precarious living by typewriting, she had been helped quietly by Sir Charles Baskerville, and Watson traces her as the writer whose initials appear in a letter burned in Sir Charles's grate on the night he died.",
+            "id": "laura-lyons",
+            "name": "Laura Lyons",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Scotland Yard inspector Holmes summons from London at the critical stage of the case, brisk, wiry and openly pleased to be working with him. He arrives by train with no idea of what he is being asked to do and follows Holmes onto the moor at night.",
+            "id": "lestrade",
+            "name": "Lestrade",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-hound-of-the-baskervilles"
+      },
+      "recaps": {
+        "ending": "Holmes, Watson and Lestrade lie in wait in the fog outside Merripit House while Sir Henry walks home alone across the moor as bait. An enormous hound, its muzzle and coat smeared with phosphorus so that it burns in the dark, is loosed after him; the three men shoot it dead as it pulls him down, and Sir Henry is left shaken and physically ill but alive. In the house they find Beryl Stapleton tied up and gagged, and she confirms that she is Stapleton's wife, not his sister, and that he has kept the hound in an old tin mine in the heart of the Grimpen Mire. Stapleton flees into the mire in the fog to reach the animal; only one of his boots is ever found, on the path into the bog, and he is presumed to have drowned in it. Weeks later, in Baker Street, Holmes lays out the whole account for Watson: Stapleton was a Baskerville himself, the son of Sir Charles's younger brother, who came to Devon under an assumed name to remove the two lives standing between him and the estate, using the family legend as his instrument. His wife had been coerced into helping him and turned against him at the end. Sir Henry, badly shaken in health, is sent abroad on a long voyage with Dr. Mortimer to recover, with the promise that he will come back the man he was before he inherited.",
+        "in_short": "Dr. Mortimer brings Sherlock Holmes an old family manuscript about a spectral hound said to hunt the Baskervilles, and the recent death of Sir Charles Baskerville, found dead in the yew alley of his Dartmoor home with the footprints of a gigantic dog nearby. When the heir, Sir Henry, arrives from Canada, he is warned off by an anonymous letter and shadowed in London, so Holmes sends Watson to Devon with him while he stays behind. On the moor Watson meets the neighbours, including the naturalist Stapleton and the woman introduced as his sister, uncovers the Barrymores' secret help to the escaped convict Selden, and traces Laura Lyons, who was lured into asking Sir Charles for a meeting on the night he died. The convict dies wearing Sir Henry's cast-off clothes, mistaken for him. Holmes has in fact been living secretly on the moor and reveals that Stapleton, a concealed Baskerville heir, is behind the deaths and that his supposed sister is his wife. They use Sir Henry as bait; a phosphorus-painted hound attacks him in the fog and is shot, and Stapleton disappears into the great bog while trying to escape.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "At Baker Street, Holmes and Watson examine a walking stick left behind by a caller and deduce the career of its owner, who returns to collect it: Dr. James Mortimer, a country doctor from Dartmoor. Mortimer produces an eighteenth-century family manuscript recording how a brutal ancestor, Hugo Baskerville, carried off a farmer's daughter, pursued her across the moor when she fled, and was found dead beside her with an enormous hound standing over him, and how a curse has followed the family since. He then gives the modern facts. Sir Charles Baskerville, who had restored the family fortune with South African money and was full of plans for the district, was found dead at the end of the yew alley of his own grounds. The inquest recorded heart failure, and there was no mark on him, but his face was distorted, his footprints showed that he had run from the house rather than toward it, and Mortimer says privately that he saw the tracks of a gigantic hound on the ground a little distance away, which he told nobody. Holmes dismisses the supernatural but is interested in the human agency behind it. Mortimer's real difficulty is what to do about the new heir, Sir Henry Baskerville, who is arriving from Canada, and whether it is safe to let him live at the Hall.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sir Henry Baskerville, a small, hardy young man raised in Canada, arrives in London and comes to Baker Street with Mortimer. He has already received a strange thing at his hotel: an anonymous letter of words cut from a newspaper telling him to keep away from the moor if he values his life. Holmes identifies the newspaper and deduces the message was assembled in a hotel by someone anxious to disguise a hand. Two boots also disappear from Sir Henry's room, one old and one new, and the old one is later returned. Sir Henry insists on going to Devon regardless. Leaving the hotel, Holmes and Watson see a bearded man watching him from a cab and give chase without catching it. Holmes traces the cab through the official register and questions the driver, John Clayton, who reports that his fare followed the party, gave orders through the trap, paid well, and told him that his name was Sherlock Holmes. Unable to leave London himself because of other work, Holmes sends Watson to Devon with Sir Henry, with orders to keep close to him and to report every fact without theorising.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Watson, Sir Henry and Mortimer travel down to Devon, passing armed guards on the road: a convicted murderer named Selden has escaped from the prison at Princetown and is loose on the moor. Baskerville Hall proves to be a gloomy old house run by the butler Barrymore and his wife, who ask to leave once the new master has settled in. Watson hears a woman crying in the night and finds that Mrs. Barrymore has been weeping, though her husband denies it, and he learns that Barrymore was left a large legacy by Sir Charles and cannot account fully for his movements. Watson also establishes that a man with a black beard, as the London watcher had, could have been the butler. Walking on the moor, he meets Jack Stapleton, a naturalist from Merripit House who chases butterflies across country that no stranger could cross safely, and who points out the Grimpen Mire, a bog that swallows ponies and men. A long moaning cry sounds over the moor, which the local people say is the hound. Stapleton's sister Beryl, striking and dark, catches Watson alone, takes him for Sir Henry, and urgently tells him to go back to London and never set foot on the moor again; when she learns her mistake she will not explain herself.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Watson sends written reports to Holmes. Sir Henry is increasingly taken with Beryl Stapleton, and when he manages to speak to her alone her brother rushes at them in a fury, then calls the next day to apologise and explain that he cannot bear the thought of losing her, asking only for a delay of three months. Watson also settles the Barrymore question: following the butler at night, he and Sir Henry find him signalling with a candle from a window to a light out on the moor, and force the truth from him. Mrs. Barrymore's brother is Selden, the escaped convict, and the couple have been feeding him and hiding him until he can be got abroad. Sir Henry and Watson go out to take him and fail; while they are on the moor, Watson sees the outline of a tall, thin man standing motionless against the moon on a distant tor, a figure that is neither the convict nor anyone he knows. Barrymore, in return for their silence, reveals that Sir Charles had gone to the gate that night to meet a woman, and that a burnt letter in the study grate had asked him to be there at ten o'clock and was signed with the initials L. L.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Mortimer identifies the initials as Laura Lyons, the daughter of the quarrelsome Mr. Frankland of Lafter Hall, who married against her father's wishes, was deserted, and lives poorly in Coombe Tracey. Watson calls on her and, after some evasion, she admits writing to Sir Charles to ask his help in paying for a divorce and asking him to meet her at the gate at ten. She insists that she never kept the appointment because help reached her from another quarter that night, and she is plainly frightened of naming the person who encouraged her to write. Riding home, Watson is waylaid by Frankland, who is celebrating his latest lawsuits and boasting that his telescope has shown him a boy carrying food out to a hiding place on the moor, which he believes must be the convict's. Watson goes out alone to the neolithic stone huts on the hillside, finds one that has been lived in, with food, a pannikin and a note recording his own movements, and waits for the occupant to return. The man who walks in is Sherlock Holmes, who has been on the moor in secret from the beginning, watching everyone, including Watson.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Holmes explains that he stayed hidden so that his presence would not put his opponent on guard, and that Watson's reports reached him daily. He has established two things Watson did not: that Beryl Stapleton is not the naturalist's sister but his wife, and that Stapleton is the man who prompted Laura Lyons to write to Sir Charles and then kept her from the meeting. As they talk, a scream comes out of the darkness and they find a body at the foot of a crag, dressed in a suit of Sir Henry's tweeds. It is Selden, who had been given the baronet's cast-off clothes by his sister, and who was hunted to death in mistake for him. Stapleton appears out of the dark, plainly expecting a different body, and covers his reaction quickly. At the Hall, Holmes notices a family portrait of Hugo Baskerville and sees Stapleton's face in it, which supplies the motive: Stapleton is a concealed member of the family with a claim on the estate. Holmes lacks legal proof and sets a trap. He and Watson pretend to leave for London, Lestrade is summoned from Scotland Yard, Laura Lyons is told the truth about the man she trusted, and Sir Henry is told to keep his dinner engagement at Merripit House and to walk home alone across the moor.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Holmes, Watson and Lestrade hide in the open near Merripit House while a fog rolls in off the moor and nearly ruins the plan. Sir Henry leaves the house and walks home alone, and an enormous hound is loosed after him, its muzzle and coat painted with phosphorus so that it burns in the darkness. The three men shoot it dead as it brings him down, and Sir Henry escapes with his life but is severely shaken. Searching the house, they find Beryl Stapleton bound and gagged in an upper room, badly used and finally willing to speak: she is Stapleton's wife, forced for years into playing his sister, and she directs them to an old tin mine on an island in the heart of the Grimpen Mire where the hound was kept. Stapleton has fled into the bog in the fog to reach it, and is never seen again; a single boot of Sir Henry's, used to give the dog the scent, lies on the path where it was dropped. Weeks later, in Baker Street, Holmes sets out the full account. Stapleton was the son of Sir Charles's younger brother, born abroad, who had run a school in Yorkshire under another name before coming to Devon as a naturalist to clear away the two lives between himself and the Baskerville fortune, using the family legend and a savage dog bought in London as his weapon. He frightened Sir Charles, who had a weak heart, into a fatal run down the yew alley, and stole Sir Henry's boots in order to set the hound on him. Sir Henry, worn down in body and nerve, sails on a long voyage with Dr. Mortimer to recover.",
+            "through": {
+              "chapter": 15
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-hound-of-the-baskervilles"
+      }
+    },
     "the-house-at-pooh-corner": {
       "characters": {
         "characters": [

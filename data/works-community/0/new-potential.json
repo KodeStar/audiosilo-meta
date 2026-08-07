@@ -3496,6 +3496,249 @@
         "work": "onyx-storm"
       }
     },
+    "out-of-oz": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "the Wicked Witch of the West"
+            ],
+            "description": "The green-skinned woman remembered across Oz as the Wicked Witch of the West, long dead when this book opens. Her book of magic, the Grimmerie, her broom and her surviving descendants are still being hunted by both governments now fighting over Oz, which is why her family cannot live openly.",
+            "id": "elphaba",
+            "name": "Elphaba",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The girl from another world, older now, whose two previous visits to Oz left two dead Witches behind her. A natural disaster in her own country pitches her back into Oz for a third time, still cheerfully certain of her own innocence and still, to most Ozians, the most notorious foreigner alive.",
+            "id": "dorothy",
+            "name": "Dorothy",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A green-skinned girl of about nine or ten, working as a scullery maid in a great Munchkinland house under a name that is not hers. She has been passed from hand to hand since infancy and told almost nothing about where she came from. Watchful, largely silent, and far more interested in water and weather than in people, she is the descendant of the Wicked Witch of the West, and the adults who know it have agreed that she is safer not knowing.",
+            "id": "rain",
+            "name": "Rain",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Lady Glinda, once the most celebrated woman in Oz and briefly its Throne Minister, now a widow of enormous wealth and dwindling influence, keeping to her late husband's Munchkinland estate while the country falls apart around her. Vain, and shrewder than she allows anyone to see, she is hosting an occupying army in her own house under the polite fiction that they are guests.",
+            "id": "glinda",
+            "name": "Glinda",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The courteous, capable officer of Loyal Oz who billets his men on Lady Glinda's estate and behaves throughout as a guest rather than an occupier. He has commanded in this manner before, and his manners have never once prevented him from carrying out an order.",
+            "id": "general-cherrystone",
+            "name": "General Cherrystone",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Lady Glinda's lady's maid, elderly, rigidly proper, and made frantic by the presence of soldiers in the house. Her devotion to her mistress's dignity outlasts every practical reason for it.",
+            "id": "miss-murth",
+            "name": "Miss Murth",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Cowardly Lion, no longer in anybody's employ since he defaulted on the Emperor's commission, travelling with the Clock of the Time Dragon company. Protective, anxious and habitually pessimistic, he has spent the years since guarding the Witch's book of magic and the people connected to it.",
+            "id": "brrr",
+            "name": "Brrr",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The foul-tempered dwarf who owns the Clock of the Time Dragon, a travelling prophetic theatre he insists is older than Oz and that he serves rather than commands. He decides where the company goes by consulting the Clock, and he is rarely willing to explain himself to anyone.",
+            "id": "mr-boss",
+            "name": "Mr. Boss",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Munchkinlander formerly of the Cloister of Saint Glinda, who walked out of the convent to travel with the Clock company and married its dwarf. She keeps the party fed and dosed out of a considerable knowledge of what grows beside the road.",
+            "id": "little-daffy",
+            "name": "Little Daffy",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A veiled, withdrawn woman travelling with the Clock company, born Nor in the Vinkus household of Kiamo Ko and carried off from it as a child by Emerald City soldiers. What was done to her in the years that followed left her unable to be touched, and she has built a life out of keeping her distance from everyone, including those who love her.",
+            "id": "ilianora",
+            "name": "Ilianora",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Witch's presumed son, now a grown man living hidden in the countryside and wanting nothing to do with Oz's politics. He has spent ten years keeping his daughter's existence secret, which has meant not raising her, and he has no idea how to be her father now that she has been brought to him.",
+            "id": "liir",
+            "name": "Liir",
+            "reveal": {
+              "chapter": 49
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Quadling woman with a gift for sensing the present moment, Liir's partner and Rain's mother, who plays a stringed instrument called a domingon. She gave her daughter away in infancy to keep her alive, a decision she has never explained to the girl's satisfaction.",
+            "id": "candle",
+            "name": "Candle",
+            "reveal": {
+              "chapter": 49
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Eminence of Munchkinland, the sorceress who governs the seceded province and prosecutes its war against Loyal Oz. A shape-shifter of formidable skill and equally formidable vanity, she is a great deal older and better established than her sudden public prominence suggests.",
+            "id": "la-mombey",
+            "name": "La Mombey",
+            "reveal": {
+              "chapter": 61
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A quick, restless boy at the boarding school where Rain is hidden, raised by a guardian he speaks of with unease and glad of any distance he can get from her. He is the first person Rain chooses for herself, and the two of them become inseparable.",
+            "id": "tip",
+            "name": "Tip",
+            "reveal": {
+              "chapter": 72
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A kitchen servant at the boarding school, roughly Rain's age, with no illusions about her position and no intention of complaining about it. She is one of the few people who treats the strange new girl as entirely ordinary.",
+            "id": "scarly",
+            "name": "Scarly",
+            "reveal": {
+              "chapter": 72
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "The Emperor Apostle"
+            ],
+            "description": "The ruler of Loyal Oz and the dead Witch's younger brother, who governs as a living saint and has made a state religion of himself. He has spent years hunting the Grimmerie and the last of his own family, with no evident curiosity about which of them he is related to.",
+            "id": "shell-thropp",
+            "name": "Shell Thropp",
+            "reveal": {
+              "chapter": 89
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "out-of-oz"
+      },
+      "recaps": {
+        "ending": "The war ends less in victory than in exhaustion and a change of legitimacy. La Mombey's great secret is exposed: Tip, the boy Rain loves, has been Ozma Tippetarius all along, the rightful heir to the throne of Oz, taken as an infant and held under a shape-changing spell so that Munchkinland's ruler could govern in her place. The spell is broken. Ozma is restored to her own form and inherits a divided country she never asked for, and Rain loses her first love in the process, because the person who comes out of the spell is not the boy who went into it. Dorothy is spared the sentence Munchkinland passed on her and is finally returned to her own world, closing the account that opened when a house fell on Nessarose. The Clock of the Time Dragon company, having spent three books guarding the Witch's inheritance, is released from the duty. Rain concludes that there is nowhere in Oz the Grimmerie can safely rest, not the Emperor's church, not Munchkinland's sorceress, not her own family, and that she is the only person left with no reason to want to use it. She takes the book and Elphaba's broom and flies west, out over the desert and the sea, past the edge of everything Oz has mapped, leaving her parents, her friends and Ozma behind her. The series closes with the Witch's granddaughter carrying the Witch's magic out of Oz altogether.",
+        "in_short": "A third accident throws Dorothy back into Oz, into a country at war with itself: Munchkinland has seceded under the sorceress La Mombey, and Loyal Oz, ruled by the Emperor Apostle, is fighting it for Restwater and the water supply of the whole land. Rain, a green-skinned girl descended from the Wicked Witch of the West, is a scullery maid on Lady Glinda's estate, told nothing of who she is. When Glinda freezes the lake to stall the invasion and is arrested for treason, Rain is carried off with the Witch's book of magic by the Clock of the Time Dragon company, restored to the parents who gave her up, and then hidden at a boarding school, where she falls in love with a boy called Tip. Dorothy, meanwhile, is tried in Munchkinland for the deaths of both Witches and sentenced to die. In the end Tip is revealed to be Ozma, the rightful heir to Oz, hidden all her life by La Mombey under a spell. Her restoration takes the ground out from under the war, Dorothy is sent home, and Rain, deciding that no one in Oz should hold the Grimmerie, carries it out of the country on the Witch's broom and over the sea.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously in the series: Elphaba Thropp, born green, became the Wizard's most determined enemy and then the figure Oz remembers as the Wicked Witch of the West. She died at Kiamo Ko when Dorothy, a girl from another world, threw water on her, leaving behind a book of magic called the Grimmerie, a broom, and Liir, a boy she never acknowledged as her son. In Son of a Witch, Liir hunted for Nor, the girl carried off from Kiamo Ko by soldiers, served in the Emperor's forces, and destroyed the secret dragon stables that had been terrorizing Oz. Nursed back from the fall that followed by a Quadling girl called Candle, he learned that the throne had passed to an Emperor Apostle who rules Oz as a living saint and who is Elphaba's own brother, Shell. Candle bore Liir a green-skinned daughter and hid her from the Emperor's men. In A Lion Among Men, Brrr, the Cowardly Lion, was sent by that court to interrogate Yackle, an ancient woman who could not die, and came away instead with the Grimmerie, which he carried into the keeping of the travelling Clock of the Time Dragon company. Oz has meanwhile split in two: Munchkinland has seceded under the sorceress La Mombey, and Loyal Oz is fighting it for Restwater, the lake the country's water comes from.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A third journey brings Dorothy back to Oz, thrown there by an earthquake in her own country. In Munchkinland, Lady Glinda has retired to her late husband's estate at Mockbeggar Hall, where a Loyal Oz force under General Cherrystone has installed itself on the pretence of protecting her. Among her servants is a green-skinned girl called Rain, kept ignorant of her own name and family for her safety, and among her possessions is the Grimmerie, left in her keeping. Glinda works out what Cherrystone is actually doing: building a fleet in secret, inside her own outbuildings, in order to seize Restwater and with it the water supply of the entire country. Having no army, she uses the book, and freezes the lake. It buys Munchkinland time and costs her everything she has left. She is arrested for treason and confined in her own house, and Rain is got out of Mockbeggar with the Grimmerie, into the hands of the travelling company that has been shadowing her.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rain travels with the Clock of the Time Dragon: the dwarf Mr. Boss, his wife Little Daffy, the veiled Ilianora, and Brrr the Cowardly Lion, all of whom know exactly who she is and none of whom will tell her much of it. The Clock stages its prophetic tableaux for village audiences and steers the company by a logic of its own. Rain carries the Grimmerie without being able to read it and without wanting it. She is a difficult child to protect: incurious about her own history, attached to nothing and nobody, and drawn far more strongly to water than to any of the adults arranging her life. The war closes the roads around them, the Emperor's ministry is hunting both the book and the Witch's line, and the company concludes that the girl cannot stay on the road.",
+            "through": {
+              "chapter": 48
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rain is brought to a hidden house near Restwater and handed over to her parents. Liir and Candle gave her away as an infant to keep the Emperor's men from finding a green-skinned child, and neither of them has any idea how to undo ten years of that decision now. Rain, for her part, does not particularly want parents. The three of them keep house together uneasily while the armies manoeuvre for the lake, and Rain spends her time in the water, where she is more at home than anyone around her can account for. The Grimmerie, which nobody under that roof will use, sits there as a standing invitation to whoever finds them.",
+            "through": {
+              "chapter": 60
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Dorothy, at large in Oz again, is taken into custody in Munchkinland and put on trial for the deaths of the two Witches: Nessarose, killed when Dorothy's house fell on her, and Elphaba, killed by a bucket of water. The proceedings are a political performance staged by La Mombey, the Eminence of Munchkinland, for a country that needs an enemy, and Dorothy's defence, that she intended none of it, is beside the point. Brrr is dragged into the case on her account and finds his own history put on public display alongside hers. Dorothy is convicted and sentenced to death. Meanwhile the war for Restwater grinds forward, and it becomes clear that Rain's family cannot stay hidden much longer.",
+            "through": {
+              "chapter": 70
+            }
+          },
+          {
+            "scope": "book",
+            "text": "With the house by the lake no longer safe, Rain is put out of reach again: enrolled under a false name at St. Prowd's, a boarding school, where a green-skinned girl is explained away and expected to keep her head down. She is bad at being a schoolgirl and good at being ignored, until two people make the place bearable. Scarly, a kitchen servant, treats her as entirely ordinary. Tip, a restless boy uneasy about the guardian who raised him, becomes the first person Rain has ever chosen for herself, and the two of them fall in love with the completeness available only at that age. For a while Rain has something like an ordinary life. It does not hold: the war reaches the city, the school empties, and the people hunting the Witch's line are closing on her.",
+            "through": {
+              "chapter": 88
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rain's parentage stops being a secret. The Emperor Apostle, Shell Thropp, who rules Loyal Oz as a living saint, is her great-uncle, and he and La Mombey now want the same two things: the Grimmerie, and the last of Elphaba's line. Rain is moved through a country at war, in and out of the Emerald City, hidden and found and hidden again, while the adults who have spent her whole life managing her are scattered by the fighting. She begins, for the first time, to use the book rather than merely carry it, and to treat being the Witch's granddaughter as a fact about herself rather than only a danger. Tip goes with her.",
+            "through": {
+              "chapter": 103
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The war reaches its crisis, and with it the question of who has any right to govern Oz at all. La Mombey's hold on Munchkinland rests on a deception decades old: the boy Tip is not a boy and never was a commoner. He is Ozma, the rightful heir to the throne of Oz, taken as an infant and kept all his life under a shape-changing spell. The spell is broken, and Tip becomes the young woman Ozma Tippetarius, to the dismay of both of them. Rain loses the person she loved on the terms she loved him, and Ozma is handed a country she never asked for. Rain uses the Grimmerie herself, at real cost, and Dorothy's sentence is not carried out. With a legitimate heir restored, the war between Loyal Oz and Munchkinland loses the ground it had been standing on.",
+            "through": {
+              "chapter": 113
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Oz settles into an aftermath rather than a victory. Ozma is restored and left to make what she can of a divided country. Dorothy, who has been the pretext for a great deal of the trouble, is finally sent back to her own world for good. Rain is left holding the one object nobody in Oz should have, and she decides that the Grimmerie has no safe keeper anywhere in the country: not the Emperor's church, not Munchkinland's sorceress, not her own parents. So she takes it out of Oz herself, flying west on the Witch's broom, over the desert and out across the sea beyond the edge of every map Oz possesses. She goes alone, leaving her parents, the Clock company and the girl who used to be Tip behind her. The book closes with Rain out past Oz altogether, in the water she has been drawn to since she was a child, and with the Witch's inheritance out of Ozian hands at last.",
+            "through": {
+              "chapter": 117
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "out-of-oz"
+      }
+    },
     "outlander": {
       "characters": {
         "characters": [

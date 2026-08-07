@@ -3194,6 +3194,224 @@
         "work": "from-dead-to-worse"
       }
     },
+    "frostbite": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Rosemarie Hathaway"
+            ],
+            "description": "A seventeen-year-old dhampir novice at St. Vladimir's Academy, part human and part vampire, training to become a guardian for the mortal Moroi. She is psychically bonded to her best friend Lissa Dragomir, able to feel her emotions and slip into her mind, and she quietly absorbs the darkness that Lissa's spirit magic leaves behind. Blunt, reckless and physically gifted, she is approaching the qualifying test that decides whether she will be allowed to graduate as a guardian, and she is still concealing a forbidden attachment to her instructor.",
+            "id": "rose-hathaway",
+            "name": "Rose Hathaway",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Vasilisa Dragomir"
+            ],
+            "description": "The last of the royal Dragomir line and Rose's best friend, a Moroi who wields spirit, a rare fifth element that lets her heal and compel others at a cost to her own mind. Steadier than she was, with medication and with Christian Ozera beside her, she has become popular at the Academy and is increasingly uneasy about how much of her illness Rose takes on through their bond.",
+            "id": "lissa-dragomir",
+            "name": "Lissa Dragomir",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Russian guardian at the Academy, considered one of the finest fighters in Moroi society, and Rose's combat instructor. Reserved, disciplined and seven years older than her, he holds a hard line against the feelings the two of them share, on the grounds that a guardian distracted by love is a guardian who will fail the Moroi in his charge.",
+            "id": "dimitri-belikov",
+            "name": "Dimitri Belikov",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Rose's mother and a celebrated guardian, assigned for Rose's whole life to a Moroi lord overseas and content to leave her daughter to be raised by the Academy. Small, hard and formidably skilled, she comes to the school on business connected to the recent Strigoi attacks. Rose's resentment of her long absence sits between them from their first conversation.",
+            "id": "janine-hathaway",
+            "name": "Janine Hathaway",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A red-haired dhampir novice and one of Rose's closest friends, cheerful, quick with a joke, and openly in love with her. He is impatient to prove himself as a fighter and frustrated by how much of a novice's training consists of theory and restraint.",
+            "id": "mason-ashford",
+            "name": "Mason Ashford",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dhampir novice who trains alongside Rose and Mason, quieter than his friend and steady under pressure. He is usually the one arguing for caution.",
+            "id": "eddie-castile",
+            "name": "Eddie Castile",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Moroi shunned by most of his peers because his parents chose to become Strigoi, sarcastic and quick to expect the worst of people, and now Lissa's boyfriend. He is one of the very few Moroi willing to use his fire magic as a weapon, a position his society finds close to unthinkable.",
+            "id": "christian-ozera",
+            "name": "Christian Ozera",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Christian's aunt, who took him in after his parents were killed and who carries burn scars on her face from that night. Warm, blunt and widely liked, she travels and speaks for a position most Moroi refuse to entertain: that Moroi should be taught to fight with their magic rather than leaving every risk to their guardians. She is a long-standing friend of Dimitri.",
+            "id": "tasha-ozera",
+            "name": "Tasha Ozera",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A royal Moroi in his early twenties and the queen's great-nephew, who drinks, smokes and drifts through a life with no obligations attached to it. He is also a spirit user, which lets him see the auras around people and walk into their dreams, and he identifies what Lissa is almost immediately. He flirts with Rose without pause and proves harder to dismiss than he first appears.",
+            "id": "adrian-ivashkov",
+            "name": "Adrian Ivashkov",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A non-royal Moroi girl who spent the previous year tormenting Rose and Lissa and was afterwards frozen out by the royals whose approval she wanted. She appears at the ski resort subdued and unwelcome, no longer part of any crowd.",
+            "id": "mia-rinaldi",
+            "name": "Mia Rinaldi",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The reigning Moroi queen and Adrian's great-aunt, who arrives at the resort with a large entourage. Imperious and used to deference, she takes a pointed interest in the company her great-nephew is keeping.",
+            "id": "tatiana-ivashkov",
+            "name": "Queen Tatiana Ivashkov",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The captain of the Academy's guardians, responsible for the novices' training and their assignments. Practical and even-handed, she is one of the few authority figures who deals with Rose plainly rather than through discipline.",
+            "id": "alberta-petrov",
+            "name": "Alberta Petrov",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An old and powerful Strigoi, unhurried and fond of an audience, who keeps human servants and treats captives as entertainment. His age makes him far stronger and faster than the newly turned Strigoi guardians are trained to expect.",
+            "id": "isaiah",
+            "name": "Isaiah",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Strigoi who works alongside Isaiah, colder and more practical than he is, and impatient with his games.",
+            "id": "elena",
+            "name": "Elena",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "frostbite"
+      },
+      "recaps": {
+        "ending": "Rose, Christian, Eddie and Mia are held in a basement in Spokane by the Strigoi Isaiah and Elena, who feed on them at leisure while human servants guard the house by day. Mason, who had been separated from the group, returns and gets inside to help. In the escape attempt Christian burns Elena with fire magic and Rose fights Isaiah, but Isaiah catches Mason and breaks his neck in front of her. In a rage Rose kills both Strigoi with a silver stake, and the survivors are recovered by guardians soon afterwards. Rose is not punished, but she is given two molnija marks for the Strigoi she killed and carries the certainty that Mason died because she told him where the Strigoi were and then failed to stop him. Grieving, she begins to see Mason standing silently at the edge of her vision, and cannot tell whether he is a ghost or the first sign that spirit's darkness is unravelling her mind. Dimitri turns down Tasha Ozera's offer and stays at the Academy. He and Rose finally admit aloud what they feel, and also why they cannot act on it: each of them would save the other before saving Lissa, and that makes them unfit to guard her together. Mia leaves the resort an ally rather than an enemy, and the wider Moroi world is left arguing about whether Moroi must learn to fight.",
+        "in_short": "A guardian and the Moroi family he protected are found slaughtered, and the evidence shows the impossible: Strigoi cooperating with one another and using human servants in daylight. St. Vladimir's Academy cancels the usual holiday plans and moves the students to a heavily guarded ski resort, where Rose Hathaway must deal with her famous, largely absent mother, a new spirit user named Adrian Ivashkov, and the news that Christian's aunt Tasha has asked Dimitri to become her guardian and share her life. Rose lets slip what she overheard about a Strigoi nest in Spokane, and Mason, Mia and Eddie slip away to hunt it. Rose and Christian follow, and all five are captured by the Strigoi Isaiah and Elena and kept as food. They break out with fire magic and a stolen stake, but Isaiah kills Mason in front of Rose before she kills both Strigoi. Rose returns marked as a Strigoi killer and consumed by guilt, and starts seeing Mason's silent ghost. Dimitri refuses Tasha's offer, and he and Rose acknowledge their feelings and the reason they cannot act on them.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Rose Hathaway is a dhampir, half human and half vampire, training at St. Vladimir's Academy to become a guardian for the mortal Moroi. Moroi are living vampires who command the elements and are hunted by the undead Strigoi, who kill when they feed and can only be destroyed by a silver stake, decapitation or fire. Rose and her best friend Lissa Dragomir, the last of the royal Dragomir family, spent two years hiding among humans before guardians led by Dimitri Belikov brought them back to school. Rose is bound to Lissa by a one-way psychic link, created when Lissa unknowingly brought Rose back from death after the car crash that killed the rest of the Dragomirs; Rose can feel Lissa's emotions and enter her mind, and is described as shadow-kissed. Lissa's magic is spirit, a rare fifth element that heals and compels but corrodes the user's mind, and much of that darkness passes into Rose through the bond. The campaign of threats that terrorized Lissa last year was the work of Victor Dashkov, a trusted family friend who wanted her healing for himself; he was captured and awaits trial, and his daughter Natalie became Strigoi to free him and was killed. Lissa is now with Christian Ozera, an outcast whose parents chose to turn Strigoi. Rose trains under Dimitri, and the attraction between them is mutual, unspoken and against every rule they both live by.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Dimitri drives Rose off campus to be tested by Arthur Schoenberg, a legendary retired guardian, and they find him dead in the house he was guarding, along with the entire Moroi family in his care. The scene is wrong in ways that frighten the guardians who examine it: Strigoi worked together in a coordinated group, which their nature is supposed to prevent, and they had living humans helping them get past a home's defenses. Similar attacks are reported elsewhere, and it becomes clear that someone is organizing them. The Academy tightens its security and cancels the students' usual travel plans, and the adults begin arguing about what the change means for a society that has always relied on isolated, defensive guarding.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rose's mother Janine, a famous guardian Rose has barely lived with, arrives at the school in connection with the attacks, and their reunion is cold on both sides. Rose is stung publicly when her mother dismisses her ambitions in front of other novices. Christian's aunt Tasha Ozera also visits, scarred and outspoken, and argues to anyone who will listen that Moroi should be trained to fight with their magic rather than depending entirely on dhampirs; the idea splits students and staff alike. With winter break approaching and travel considered unsafe, the school relocates the holiday to a Moroi-owned ski resort in Idaho under heavy guardian protection. Mason, who has made no secret of wanting to be more than Rose's friend, is glad of the chance to spend the break near her.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At the resort Rose meets Adrian Ivashkov, a wealthy, idle royal Moroi who drinks constantly, sees the auras around people, and turns out to be a spirit user like Lissa. Mia Rinaldi, who tormented Rose and Lissa the previous year, is also there, quiet and shut out by the royals she once courted. Rose keeps Mason at arm's length while spending as much time as she can near Dimitri, and then learns what Tasha has actually come to propose: she wants Dimitri as her guardian, and she wants a life and children with him. Dimitri does not refuse outright. Rose, who cannot offer him anything of the kind without both of them losing everything, has to watch him consider it.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Queen Tatiana arrives with her court and singles Rose out at a public dinner, warning her away from Adrian in front of the room; Rose answers back and is humiliated for it. Janine gives Rose a small blue eye charm sent by the father Rose has never been told anything about. Mia learns that her mother has been killed in one of the Strigoi attacks, and the news changes her: she stops competing for status and starts asking guardians to teach her to fight, having already taught herself to use water magic offensively. The argument over whether Moroi should learn to defend themselves grows louder throughout the resort. Rose, meanwhile, overhears guardians discussing a group of Strigoi believed to be nesting in the city of Spokane, and repeats it to Mason.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Mason, hungry to prove himself and to impress Rose, leaves the resort for Spokane to hunt the Strigoi, taking Eddie and Mia with him. Rose realizes what he has done and follows with Christian, intending to drag them back before anyone is hurt. The five of them are found first. The Strigoi in Spokane have human servants who can move by day, and the group is taken while the sun is up and locked in the basement of a house. Their captors are Isaiah, an ancient Strigoi who enjoys drawing the situation out, and Elena, who is only interested in the practicalities. The captives are kept as a food supply, fed on one at a time, and no one outside knows where they are.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the basement the group works out a plan that depends on Christian's fire magic and on getting a silver stake into someone's hands. When the moment comes, Christian burns Elena and Rose engages Isaiah. Mason, who had gotten out and come back for them, throws himself at Isaiah to keep him off Rose, and the Strigoi kills him with a single movement. Rose, beyond thought, destroys both Strigoi. Guardians reach the house shortly afterwards and bring the survivors out. Rose is not blamed by anyone in authority, and is marked with two molnija tattoos for the Strigoi she killed, but she knows she gave Mason the location and then failed to stop him. In the days that follow she begins to see him standing silently nearby, saying nothing, and cannot decide whether she is being haunted or losing her mind to the darkness she carries for Lissa.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Back at the Academy, Rose refuses counselling and holds her grief in. Dimitri turns down Tasha's offer and stays at St. Vladimir's, and he and Rose finally say aloud what they have both been avoiding. They also agree on why it cannot happen: in a real attack each would save the other before saving Lissa, which would make them useless as her guardians. Mia leaves the resort a friend rather than an enemy, having chosen to learn to fight, and the debate Tasha started is now being had across Moroi society. Rose returns to training with a new, colder motivation, still seeing Mason at the edge of her vision and telling nobody.",
+            "through": {
+              "chapter": 23
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "frostbite"
+      }
+    },
     "fugitive-telemetry": {
       "characters": {
         "characters": [

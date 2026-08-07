@@ -450,6 +450,220 @@
         "work": "mist-wardens"
       }
     },
+    "mistress-of-the-empire": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Ruling Lady of the Acoma and Servant of the Empire, the most celebrated figure in Tsuranuanni and the one the traditionalist houses hold responsible for the end of the Warlord's office. She has spent her adult life beating the Game of the Council at its own rules while quietly ceasing to believe in them, and she now holds more land, more soldiers and more enemies than any ruler of her generation.",
+            "id": "mara",
+            "name": "Mara of the Acoma",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Lord of the Shinzawai's heir and Mara's husband, a capable soldier and an unusually thoughtful Tsurani noble who married a woman more powerful and more famous than himself without resenting it. He is devoted to her and to both of her sons, and he carries the expectations of his own house as well as hers.",
+            "id": "hokanu",
+            "name": "Hokanu of the Shinzawai",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Mara's elder son and heir to the Acoma, now a boy of about twelve, grandson of the late Lord of the Anasati through his father. Proud, high-spirited and conscious of his rank, he is growing into the young lord his mother has spent his whole life protecting.",
+            "id": "ayaki",
+            "name": "Ayaki",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Mara's younger son, a small boy fathered by the barbarian Kevin of Zun and raised as Tsurani. He has his father's red hair, which nobody in the Empire can fail to notice, and Hokanu has raised him as his own without hesitation.",
+            "id": "justin",
+            "name": "Justin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Spy Master of the Acoma, whose network is the finest in the Empire and who has spent decades never being noticed. Precise, self-contained and long practised at feeling nothing he cannot use, he has begun to find that his profession has costs he did not price in.",
+            "id": "arakasi",
+            "name": "Arakasi",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Force Commander of the Acoma armies, once a masterless grey warrior taken into service when custom said he had nothing left to offer. Wry, capable and entirely devoted to the house that gave him back a name.",
+            "id": "lujan",
+            "name": "Lujan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Acoma's old Force Commander, now Adviser for War, aged and lamed by a lifetime of campaigns but still the soundest military judgement in the household. He has served three generations of the family.",
+            "id": "keyoke",
+            "name": "Keyoke",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "First Adviser of the Acoma, a former officer and a cousin of Lujan's, raised to the post after Nacoya's death. He is quick, ironic and given to asking awkward questions, which is precisely why Mara chose him.",
+            "id": "saric",
+            "name": "Saric",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Formerly First Adviser of the Minwanabi, now serving the house that destroyed his own, a fate Tsurani custom makes both possible and humiliating. Thin, dry and extremely shrewd, he brings a lifetime of studying the Acoma from the other side of the board.",
+            "id": "incomo",
+            "name": "Incomo",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Lord of the Anasati, cold, scholarly and unforgiving, who has never stopped resenting Mara for choosing his brother over him and for what came of it. He leads the traditionalist houses who want the Warlord's office restored and the Emperor pushed back into his temple, and he is a far more patient enemy than the Minwanabi ever were.",
+            "id": "jiro",
+            "name": "Jiro of the Anasati",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "First Adviser of the Anasati, a subtle and self-satisfied strategist who has run his house's intelligence for decades and considers the Acoma Spy Master the only opponent worth his attention. He enjoys the contest for its own sake.",
+            "id": "chumaka",
+            "name": "Chumaka",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The Emperor, the Light of Heaven, who broke centuries of precedent by abolishing the Warlord's office and ruling directly. He depends heavily on the support of Mara and the reformist houses, and his position is far less secure than the ceremony surrounding him suggests. He has daughters and no son.",
+            "id": "ichindar",
+            "name": "Ichindar",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young courtesan of extraordinary beauty, sold as a child and trained for the trade, who has learned to give nothing of herself away. She is bitter, guarded, and entirely uninterested in being rescued.",
+            "id": "kamlio",
+            "name": "Kamlio",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Mara and Hokanu's daughter. Her existence raises a question neither parent can settle easily, since two great houses both need an heir and there is only one child between them.",
+            "id": "kasuma",
+            "name": "Kasuma",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Emperor's eldest daughter, raised in the seclusion of the imperial palace. Tsurani precedent has no place for a female heir to the golden throne, which leaves her position both powerless and politically fraught.",
+            "id": "jehilia",
+            "name": "Jehilia",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "mistress-of-the-empire"
+      },
+      "recaps": {
+        "ending": "The Empire's old order ends. The traditionalist rising is broken and Jiro of the Anasati is killed, and the Assembly of Magicians, which had claimed the right to forbid Mara's war and then moved to destroy her outright, is forced to accept limits on that authority: the cho-ja magic Mara brought back from beyond the eastern border is proof that the Great Ones' supremacy rested on a secret and on an old crime rather than on the natural order they claimed. Ichindar does not survive the fighting. Justin, Mara's younger son, married to the late Emperor's eldest daughter Jehilia, takes the golden throne, with Mara standing behind it as the effective power in the Empire. The Warlord's office is not restored and the Game of the Council, in the form that killed Mara's father, her brother and her elder son, is finished as the organising principle of Tsurani politics. The costs are permanent: Ayaki is dead, and the reconciliation between Mara and Hokanu, and the settlement of which of their houses their daughter will inherit, is reached the hard way. Arakasi has destroyed the Hamoi Tong and has, at last, something of his own in Kamlio. The trilogy closes with Mara alive, her family secure, and an empire remade around a throne her barbarian-fathered son now holds.",
+        "in_short": "Mara, Servant of the Empire, loses her elder son Ayaki to an assassin's attempt meant for her, and declares blood feud on Jiro of the Anasati, whom the evidence appears to name. The Assembly of Magicians forbids the war outright, and Mara, denied justice by a power that answers to nobody, begins to ask why the Great Ones hold that authority at all. Arakasi hunts down the Hamoi Tong that supplied the assassin, and frees a courtesan named Kamlio in the process. Mara travels east beyond the Empire's border to Thuril and to the free cho-ja hives, and learns that the Assembly broke and enslaved the cho-ja centuries ago and forbade them magic, a history the Empire has been kept ignorant of. She returns with allies the Great Ones did not expect her to have. Jiro's traditionalists rise to restore the Warlord's office, the Assembly moves to destroy Mara, and the Empire falls into civil war. Jiro is killed and Ichindar dies; the Assembly's authority is curbed; and Mara's younger son Justin, married to the Emperor's daughter, takes the throne.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, in the Empire trilogy: on the world of Kelewan, Mara was pulled out of a temple at seventeen when her father and brother were killed in a war engineered by the Minwanabi, leaving her Ruling Lady of a house reduced to a handful of soldiers. She rebuilt it against every Tsurani convention, recruiting masterless grey warriors, allying with a cho-ja hive, and taking the spymaster Arakasi into her service. She forced the rival Anasati to protect her by marrying their least regarded son, Buntokapi, then manoeuvred him into taking his own life, leaving her ruling for their son Ayaki. She destroyed Lord Jingu of the Minwanabi by proving he had broken guest-right, and later destroyed his successor Tasaio outright, ending the feud. Along the way she took a barbarian slave, Kevin of Zun, as her lover; he questioned everything her society took for granted and went home when the war beyond the rift ended, leaving her with a second son, Justin. The Warlord's office was abolished and the Emperor Ichindar now rules directly, a change the conservative houses blame on Mara. The Emperor granted her the Minwanabi lands and named her Servant of the Empire, the highest honour Tsuranuanni gives. She has since married Hokanu of the Shinzawai. Her enemies now are Jiro of the Anasati and the traditionalists who want the old order back.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Mara's position at the height of the Empire lasts a very short time. An assassin of the Hamoi Tong strikes at her and misses, and her elder son Ayaki is killed instead, crushed when his horse goes down. The evidence recovered from the killer points to the Anasati, and Mara, who has spent her life calculating before she moves, declares blood feud on Jiro without calculating at all. The Empire braces for a war between two of its greatest houses, and then something unprecedented happens: the Assembly of Magicians intervenes and forbids it. The Great Ones stand outside Tsuranuanni's law and above its lords, and their word ends the matter; Mara is left with a dead child, a named enemy and no lawful remedy. Her marriage to Hokanu strains under the grief, and for the first time she begins to examine the Assembly itself rather than accepting it as a fact of the world.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Forbidden open war, both sides fight the quiet kind. Jiro assembles the traditionalist houses into a coalition aimed at restoring the Warlord's office and forcing the Emperor back into his ceremonial seclusion, with his First Adviser Chumaka running an intelligence campaign against the Acoma that is a match for anything Arakasi has faced. Arakasi's own priority is the Hamoi Tong, the assassins' guild that took the contract, and he sets out to destroy the organisation rather than merely trace it, working his way inward at considerable personal risk. In the course of it he buys the freedom of a courtesan named Kamlio, a young woman who has been sold and used since childhood and who wants nothing whatever from him, and finds himself with an attachment he has no professional use for. Evidence about who really commissioned Ayaki's death proves less straightforward than it first appeared.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Unable to move against Jiro and unwilling to accept the Assembly's authority as final, Mara goes looking for the thing nobody in the Empire has: knowledge the Great Ones do not control. She travels east into the Thuril Confederation, a free people the Empire once failed to conquer, and beyond it to the cho-ja hives outside imperial territory. What she finds there overturns the Empire's account of itself. Centuries ago the Assembly fought and broke the cho-ja and imposed a treaty forbidding them magic, and the hives inside Tsuranuanni have lived under that prohibition ever since without their human neighbours knowing it happened. Beyond the border the cho-ja have queens who work magic freely. Mara, who went east for leverage, comes back with allies and with the knowledge that the Great Ones' supremacy rests on a suppressed history rather than on any natural order.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Mara returns to an Empire close to breaking. Jiro's coalition is strong enough to challenge the throne openly, Ichindar's direct rule has never had a legal foundation beyond the fact that nobody stopped him, and the Assembly is increasingly unwilling to leave events to run. Mara's own household is under sustained attack, her marriage to Hokanu is strained by grief and by the question of which house their daughter will inherit, and her position as Servant of the Empire makes her a target rather than a shield. She commits to the Emperor's side, knowing that if Jiro wins, the Acoma end with him. When the Assembly finally moves, it moves against her directly, and Mara becomes the first ruler in the Empire's history to be condemned by the Great Ones and to have a defence against them.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Empire falls into civil war. Jiro's traditionalist alliance marches on the holy city of Kentosani to unseat the Emperor and restore the Warlord's office, and the fighting reaches the imperial palace itself. The Assembly, having judged Mara a threat to the Empire's stability, sends its magicians against her, and for the first time the Great Ones meet an opponent they cannot simply erase: the cho-ja magic Mara brought back from beyond the border holds them off, and the fact that it exists at all is a public refutation of everything the Assembly has claimed. Arakasi's long campaign against the Hamoi Tong reaches its end. Mara stakes the survival of her house, her family and the throne on a settlement that would end the Game of the Council rather than win another round of it.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The traditionalist rising is broken and Jiro of the Anasati is killed. The Assembly, confronted with the cho-ja and with the history it suppressed, is forced to accept limits on the authority it has exercised unopposed for centuries. Ichindar does not survive the fighting, and the succession falls to his eldest daughter Jehilia, whom Tsurani precedent cannot seat alone; she is married to Justin, Mara's younger son, and he takes the golden throne with his mother standing behind it as the effective power in the Empire. The Warlord's office is not restored, and the Game of the Council, in the form that killed Mara's father, her brother and her elder son, ends as the organising principle of Tsurani politics. Mara and Hokanu reconcile and settle the inheritance of their daughter between their two houses. Arakasi, having destroyed the Tong, has Kamlio. Mara ends the trilogy alive, her family secure, and the Empire remade around a throne held by a barbarian's son.",
+            "through": {
+              "chapter": 24
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "mistress-of-the-empire"
+      }
+    },
     "mitosis": {
       "characters": {
         "characters": [

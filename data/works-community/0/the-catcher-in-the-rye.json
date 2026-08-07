@@ -1459,6 +1459,211 @@
         "work": "the-cruel-prince"
       }
     },
+    "the-crystal-shard": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A dark elf living in Icewind Dale, on the slopes of the lone mountain called Kelvin's Cairn above the ten frontier towns. He left his people's underground city and their goddess years ago and has made a life on the surface as a ranger, fighting with two scimitars and accompanied by a magical panther. Most of the region still recoils from him on sight; he keeps to his cave, ranges the tundra, and is content to be useful without being welcome.",
+            "id": "drizzt",
+            "name": "Drizzt Do'Urden",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A great black panther summoned by an onyx figurine Drizzt carries, able to stay for a limited time before she must return to her own world and rest. She scouts, fights and hunts alongside him.",
+            "id": "guenhwyvar",
+            "name": "Guenhwyvar",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "King of a dwarven clan that mines the valley beneath Kelvin's Cairn in Icewind Dale, and a master smith. Blunt, hot-tempered, generous in ways he refuses to admit to, he trades with the ten towns and defends them without much liking them. He was driven out of his clan's ancestral home as a boy and does not talk about it.",
+            "id": "bruenor",
+            "name": "Bruenor Battlehammer",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A halfling and the spokesman of Lonelywood, the smallest and least ambitious of the ten towns, where he fishes as little as he can manage and naps as much as possible. He came north from the southern cities in a hurry some years ago, carrying a ruby pendant he did not come by honestly; the gem is enchanted, and anyone who looks into it for long finds themselves agreeing with him.",
+            "id": "regis",
+            "name": "Regis",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young human woman orphaned in a raid and raised by Bruenor among the dwarves as his daughter. Sharp, direct and unafraid of the tundra or of the people on it, she is one of the few in Icewind Dale who never treated the dark elf as a threat.",
+            "id": "catti-brie",
+            "name": "Catti-brie",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young man of the barbarian tribes that follow the reindeer herds across the tundra, tall and immensely strong even by their standards. He is raised on the tribes' contempt for the settled townsfolk and their certainty that a warrior's death is the only death worth having.",
+            "id": "wulfgar",
+            "name": "Wulfgar",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An untalented apprentice wizard in the city of Luskan, kept on by his masters for their own convenience and despised by all of them, including himself. He is willing to do almost anything to be thought of as a wizard rather than a servant, and his ambition is entirely out of proportion to his ability.",
+            "id": "akar-kessell",
+            "name": "Akar Kessell",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A wizard of the Hosttower of the Arcane in Luskan, patient, secretive and interested in power for its own sake. He manages his apprentices as assets and keeps close track of anything unusual happening in the north.",
+            "id": "dendybar",
+            "name": "Dendybar the Mottled",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "King of one of the barbarian tribes of the tundra, a huge one-eyed warrior with a reputation built on cruelty as much as on strength. He argues the scattered tribes into a single host and intends to take the towns' wealth by force.",
+            "id": "heafstaag",
+            "name": "Heafstaag",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Spokesman of Bryn Shander, the largest of the ten towns and the one on the hill everyone else falls back to. He is the closest thing the region has to a statesman and spends most of his energy keeping nine other spokesmen from feuding.",
+            "id": "cassius",
+            "name": "Cassius",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Spokesman of Targos, the second town of the region and its most aggressive. Proud, quarrelsome and jealous of Bryn Shander's position, he resists any arrangement that does not put Targos at the front of it.",
+            "id": "kemp",
+            "name": "Kemp",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Spokesman of Termalaine, a town on the exposed shore of the lake nearest the dwarven valley. He is one of the few town leaders who deals fairly with the dwarves and takes the warnings about the tundra seriously.",
+            "id": "agorwal",
+            "name": "Agorwal",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A frost giant commanding a lair of giants and goblin-kin in the hills, organizing raids on the trade routes with more discipline than such a band usually manages. His grin, which never leaves his face, is the reason for his name.",
+            "id": "biggrin",
+            "name": "Biggrin",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A balor, a demon of enormous size and power, drawn to Icewind Dale by an artifact it recognizes. It serves the artifact's holder while the arrangement suits it, and treats every mortal in the arrangement as temporary.",
+            "id": "errtu",
+            "name": "Errtu",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-crystal-shard"
+      },
+      "recaps": {
+        "ending": "Wulfgar brings the barbarian tribes down on the besieging army from behind while the towns hold Bryn Shander's walls, and the horde breaks apart. Drizzt gets inside Cryshal-Tirith, drives off the demon Errtu and reaches Kessell, whose mind the Crystal Shard has long since hollowed out. The tower is destroyed, and Kessell, fleeing onto the mountain with the artifact still concentrating its light, brings down an avalanche that buries him; Crenshinibon is lost under the ice with him. In the dwarven valley Bruenor is dug out of the collapsed tunnels alive, hurt badly enough that he expects to die of it, and takes the opportunity to tell Drizzt about Mithril Hall, the lost ancestral home of Clan Battlehammer, and to ask that someone find it. Then he recovers, and finds himself committed. Wulfgar's five years of service are finished and he pledges his help freely; Regis, who has learned that his old master in the south has finally traced him, would rather travel than sit and wait. Catti-brie stays behind in Icewind Dale. The three set out to find a dwarven kingdom nobody has seen in two centuries and whose location Bruenor cannot remember.",
+        "in_short": "Akar Kessell, a failed apprentice wizard abandoned to die in the tundra of Icewind Dale, finds Crenshinibon, the Crystal Shard, an ancient artifact that grants power and feeds on ambition. While he raises a crystal tower and enslaves the goblin and giant tribes of the north, the ten frontier towns are dealing with a barbarian invasion, which they break with warning from the dark elf Drizzt Do'Urden and help from Bruenor Battlehammer's dwarves. Bruenor spares a young barbarian, Wulfgar, and indentures him for five years, teaching him the forge while Drizzt teaches him to fight; Bruenor forges him the warhammer Aegis-fang and sends him to kill a white dragon, and Wulfgar returns to his people as their king. Kessell's army then descends on Icewind Dale. The towns are forced into alliance by the halfling Regis and his enchanted pendant, Bruenor's dwarves collapse their own tunnels on the horde and Bruenor is believed dead, and Wulfgar's barbarians break the siege. Drizzt confronts Kessell, whose artifact destroys him under an avalanche. Bruenor, found alive, sets out to find his clan's lost home, Mithril Hall.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Drizzt Do'Urden is a dark elf who abandoned his people's underground city, and the goddess whose cruelty they build their lives around, and came to the surface to live by his own conscience. That journey cost him nearly everything he had, and he did not find anywhere on the settled frontier that would have him. Some years ago he came north to Icewind Dale, a frozen wedge of tundra at the edge of the maps where ten small towns fish the lakes and a dwarven clan mines the valley beneath the region's one mountain. He keeps a cave on that mountain, ranges the tundra as a ranger, and fights with two scimitars and a great panther he summons from an onyx figurine. Most people in the ten towns still recoil from him on sight. The dwarf king Bruenor Battlehammer and his adopted human daughter Catti-brie do not: they took his measure years ago, argued for him when nobody else would, and count him a friend and an ally of the clan.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the city of Luskan, the wizard Akar Kessell murders his own master to buy the favor of the wizards he serves, and is then taken along on a trade journey north to Icewind Dale and abandoned in the tundra to die. Buried in the ice he finds Crenshinibon, the Crystal Shard, an ancient artifact that offers exactly the power he has always been refused, and takes hold of him as thoroughly as he takes hold of it. In Icewind Dale, the ten towns bicker as usual over fishing rights while Bruenor Battlehammer's dwarves mine the valley and Drizzt Do'Urden watches the tundra from Kelvin's Cairn. The halfling Regis, spokesman of Lonelywood, learns from a captured scout that the barbarian tribes are gathering for a raid, Drizzt confirms it, and the towns are warned.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The barbarian tribes, united under King Heafstaag and expecting the towns to be asleep, march on Icewind Dale. Forewarned, the townsfolk and the dwarves set a trap outside Bryn Shander; the barbarian host is broken with heavy losses on both sides, and the tribes are shattered as a power in the region for years. Among the fallen, Bruenor finds a young barbarian named Wulfgar still alive and claims him as an indentured servant for five years rather than let him be killed with the rest, which the boy regards as an insult worse than death. The towns return to their feuding and the dwarves to their mines, and the survivors of the tribes scatter back into the tundra.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Over five years of service Wulfgar grows into an enormous young man and, more slowly, into a different one. Bruenor teaches him the forge and the discipline that goes with it, and arranges for Drizzt to teach him to fight as something other than a berserker; the two become friends. Bruenor forges him a warhammer, Aegis-fang, and sets him a final test: a white dragon lairing in an ice cave north of the valley. Wulfgar kills the dragon, and Drizzt takes a curved blade of exceptional make from its hoard. Wulfgar's debt is paid. He returns to the scattered barbarian tribes, defeats Heafstaag in single combat and is acclaimed king, intending to make his people something other than raiders.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the far north, Kessell uses the Crystal Shard to raise Cryshal-Tirith, a crystalline tower, and to bind the goblin, orc and giant tribes of the region into an army; the artifact also draws the demon Errtu, who serves the arrangement while waiting for its chance at the shard. Drizzt, Wulfgar and Bruenor's dwarves destroy a raiding lair commanded by the frost giant Biggrin and learn from it that something far larger is massing. The warning is carried to the ten towns, where the spokesmen argue over precedence instead of preparing, and only Bryn Shander and the dwarves take it seriously.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kessell's army comes down on Icewind Dale. The outlying towns are overrun or abandoned and the survivors crowd behind the walls of Bryn Shander, where the spokesmen are still refusing to cooperate until Regis uses the enchantment of his ruby pendant to force them into a single command. Cryshal-Tirith is raised outside the town and the siege begins. Bruenor's dwarves fight a running defence through their own tunnels and finally bring the ceilings down on the goblins pursuing them; afterwards Bruenor cannot be found, and his clan and his friends take him for dead. Wulfgar, meanwhile, argues the barbarian tribes into marching to the aid of the people they raided five years earlier.",
+            "through": {
+              "chapter": 19
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Wulfgar's barbarians strike the besieging army from behind while the towns hold the walls, and the horde disintegrates. Drizzt enters Cryshal-Tirith, drives off the demon Errtu and confronts Kessell, whose mind the shard has hollowed out entirely; the tower is destroyed, and Kessell, fleeing onto the mountainside with the artifact still gathering light, triggers an avalanche that buries him. Crenshinibon is lost under the ice. In the dwarven valley, Bruenor is dug out of the rubble alive but badly hurt, and while he believes himself dying he tells Drizzt about Mithril Hall, the lost home of Clan Battlehammer, and asks that it be found. He then recovers, and holds himself to it. With his indenture served, Wulfgar pledges to go with him; Regis, who has learned that his old guildmaster in the south has finally traced him, decides travelling beats waiting. The three leave Icewind Dale to search for a kingdom whose location Bruenor cannot remember.",
+            "through": {
+              "chapter": 24
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-crystal-shard"
+      }
+    },
     "the-curious-incident-of-the-dog-in-the-night-time": {
       "characters": {
         "characters": [

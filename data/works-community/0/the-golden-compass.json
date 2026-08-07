@@ -769,6 +769,236 @@
         "work": "the-grim-grotto"
       }
     },
+    "the-halflings-gem": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A dark elf ranger from Icewind Dale, fighting with two scimitars and a summoned panther, now travelling south across country where nobody has ever seen one of his kind and everybody has heard the stories. He is chasing an assassin who took his friend, and he knows the chase is exactly what the assassin wants; he is also carrying the loss of the dwarf who was the first person on the surface to call him a friend.",
+            "id": "drizzt",
+            "name": "Drizzt Do'Urden",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A young barbarian king of the tundra tribes, enormous, immensely strong and armed with the magical warhammer Aegis-fang. He has left his people to go south after a friend, and every league of the journey takes him further from anything he understands. He is more certain of himself than the situation warrants.",
+            "id": "wulfgar",
+            "name": "Wulfgar",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A halfling from Calimport, taken prisoner by the assassin sent to bring him home to the guildmaster he robbed years ago. He is being carried south toward a reckoning he has spent his whole adult life avoiding, and his only assets are patience, a good ear for what people want, and a talent for being underestimated.",
+            "id": "regis",
+            "name": "Regis",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An assassin of extraordinary skill in the employ of a Calimport guildmaster, carrying a stolen halfling and a stolen gem back to his master. He fights with a saber and a jeweled dagger, wants nothing that money can buy, and has arranged his route so that the dark elf can follow it, because the only thing that interests him now is finding out which of them is better.",
+            "id": "artemis-entreri",
+            "name": "Artemis Entreri",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A great black panther summoned from another world by an onyx figurine Drizzt carries, able to stay for a limited time before she must return and rest.",
+            "id": "guenhwyvar",
+            "name": "Guenhwyvar",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wizard of the Harpell family who keeps a tower on the coast north of Waterdeep, considerably more disciplined and more formidable than his relatives. He offers the travellers shelter, tests what they are made of, and knows where to find the things they will need for a journey into the south.",
+            "id": "malchor-harpell",
+            "name": "Malchor Harpell",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A banshee haunting the ruins near the abandoned village of Conyberry, the undead remnant of an elf sorceress, guarding a hoard she no longer has any use for. Her wail can kill, and she does not part with anything willingly.",
+            "id": "agatha",
+            "name": "Agatha",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The captain of the Sea Sprite, a fast schooner out of Waterdeep. Precise, professional and used to judging strangers quickly because his trade requires it, he takes passengers on his own assessment of them rather than on their papers or their appearance.",
+            "id": "deudermont",
+            "name": "Captain Deudermont",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dwarf king of Clan Battlehammer, who fell into a chasm in the depths of Mithril Hall clinging to a shadow dragon and whom his friends have every reason to believe dead. Burned, battered and entirely unwilling to stay at the bottom of a hole, he begins the climb back out.",
+            "id": "bruenor",
+            "name": "Bruenor Battlehammer",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young human woman raised by Bruenor as his daughter among the dwarves of Icewind Dale, and a fine archer. She stayed in the north after the escape from Mithril Hall rather than go south with Drizzt and Wulfgar, and she is not finished grieving.",
+            "id": "catti-brie",
+            "name": "Catti-brie",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wizard of Longsaddle, enthusiastic, scattered and reliably dangerous to stand next to, who attached himself to the search for Mithril Hall and has no intention of detaching now.",
+            "id": "harkle-harpell",
+            "name": "Harkle Harpell",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The ruler of Silverymoon, one of the great powers of the north, courteous and formidable. She takes an interest in the fate of Mithril Hall and in the dwarf who claims it, and she can put transport at a traveller's disposal that no road can match.",
+            "id": "alustriel",
+            "name": "Lady Alustriel",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A merchant of the desert city of Memnon who deals in guides, camels, information and whatever else a stranger can be sold. He talks continuously, offers his services cheaply, and is loyal to whichever party is paying him at the time, which is rarely only one.",
+            "id": "sali-dalib",
+            "name": "Sali Dalib",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The master of the most powerful thieves' guild in Calimport, comfortable, unhurried and utterly secure in his own city. He has waited years to get his stolen ruby pendant back and to make an example of the halfling who took it, and he intends to enjoy both.",
+            "id": "pasha-pook",
+            "name": "Pasha Pook",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Pasha Pook's resident wizard, who keeps the guild house's defences and its scrying, and whose position depends on being useful rather than on being trusted. He is more thoughtful than most of the men around him and takes a professional interest in the halfling.",
+            "id": "lavalle",
+            "name": "LaValle",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A wererat, leader of a large band of his kind in the sewers and back alleys of Calimport, allied to Pasha Pook's guild and pushing constantly for a larger share of it. Ingratiating to Pook's face and resented by everyone else in the organization.",
+            "id": "rassiter",
+            "name": "Rassiter",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-halflings-gem"
+      },
+      "recaps": {
+        "ending": "Inside Pasha Pook's guild house the fight goes on at two levels. Above, Bruenor, Wulfgar and Catti-brie break the guild's defences and scatter the wererats; below, Drizzt sets aside the mask, fights Entreri as himself, and finally has the better of him, though the assassin gets away into the city alive and the matter between them is left open. Regis gets his hands on the ruby pendant again and turns the guild's own people against their master, and Pook is killed in his own chambers. For a short while Regis is the master of the guild he ran away from, and he finds he does not want it; he leaves it to someone else and goes north with his friends. Drizzt, who has spent the journey hidden behind a magical mask, walks openly through Calimport in daylight before they go. Bruenor, alive and now certain of what he intends, turns the company north again: Mithril Hall belongs to his clan and he means to take it back, which will require an army he does not yet have. Wulfgar and Catti-brie acknowledge what has grown between them and are betrothed. The five friends leave the south together.",
+        "in_short": "Drizzt and Wulfgar pursue the assassin Artemis Entreri south to rescue Regis, who has been taken to Calimport along with the ruby pendant he once stole from the guildmaster Pasha Pook. The wizard Malchor Harpell sends them after a magical mask, taken from the banshee Agatha, that lets Drizzt pass as a surface elf, and they win passage out of Waterdeep aboard Captain Deudermont's ship. In the north, Bruenor Battlehammer proves to have survived his fall into Garumn's Gorge; he climbs out, reunites with Catti-brie and Harkle Harpell, and with Lady Alustriel's help races south, where the four friends meet on the desert road and continue to Calimport together. Entreri delivers Regis to Pook. The companions storm the guild house: Regis regains the pendant and turns the guild against its master, Pook is killed, and Drizzt beats Entreri in a duel he fights without the mask, though the assassin escapes. Regis briefly inherits the guild and gives it away. The five go north together, Wulfgar and Catti-brie betrothed and Bruenor set on reclaiming Mithril Hall.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Bruenor Battlehammer led Drizzt Do'Urden, Wulfgar and Regis out of Icewind Dale to find Mithril Hall, the lost ancestral home of his dwarven clan. They found it, deep inside a mountain in the Evermoors, and found it held by gray dwarves in the service of a shadow dragon. Cornered at the chasm called Garumn's Gorge, Bruenor set himself alight, threw himself onto the dragon's back and fell with it into the depths so that the others could escape; his friends believe him dead. In the same escape the assassin Artemis Entreri, sent north from the southern city of Calimport by the guildmaster Pasha Pook, seized Regis and started south with him, meaning to return both the halfling and the enchanted ruby pendant Regis stole from Pook years ago. Entreri has taken no trouble to hide his route, because what he wants above everything is a duel with the dark elf. Drizzt and Wulfgar have gone after him. Catti-brie, Bruenor's adopted human daughter, freed during the fighting in the halls, remained in the north.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Drizzt and Wulfgar ride south down the Sword Coast on Entreri's obvious trail. On the way they are taken in at the Tower of Twilight by the wizard Malchor Harpell, who feeds them, measures Wulfgar against a standard the young barbarian is not used to being held to, and tells them what their real problem is: a dark elf cannot cross the settled south without every town he enters turning out against him, and they cannot afford the delay. Malchor points them at a solution, a magical mask that will disguise Drizzt's heritage, held in the ruins near the abandoned village of Conyberry by Agatha, a banshee. They go there and take it from her, at some risk and not without cost. With the mask on, Drizzt appears to be a surface elf, and the road south opens up.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The two reach Waterdeep to find the sailing season closing and no ship willing to take them, until Captain Deudermont of the Sea Sprite judges them on his own assessment and offers them passage. They put out to sea in pursuit. Ahead of them, Entreri drives Regis south along the coast and then by ship, keeping the halfling alive and cooperative and staying just far enough in front to be followed. Regis's attempts to leave a trail or slip away cost him, and Entreri's grip does not loosen. The chase passes down the coast to Baldur's Gate and on toward the southern kingdoms, and Drizzt is left uneasily aware that everything about the route has been arranged for his benefit.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the north, Bruenor is alive. He survived the fall into Garumn's Gorge, badly burned, and hauls himself back out of the mountain's depths past the things living down there. Reunited with Catti-brie and with Harkle Harpell, he has to face what his survival now means: he is a king in fact, with a stolen kingdom to reclaim and no army to do it with, and at the same time his friends are a thousand miles south walking into an assassin's trap. He chooses the friends, and puts the kingdom off. Lady Alustriel of Silverymoon, who has her own interest in what becomes of Mithril Hall, provides them with the means to travel faster than any road allows, and Bruenor, Catti-brie and Harkle set off south.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Sea Sprite is attacked by pirates on the run south, and Wulfgar's strength and Drizzt's blades settle the fight and earn Deudermont's lasting regard. Put ashore on the southern coast, the two cross scorching country toward Calimport by way of Memnon, where they hire the merchant Sali Dalib as a guide and discover that he has sold them to someone else at the same time. Bruenor, Catti-brie and Harkle come down out of the sky onto the same road, and the reunion is the first good thing to happen to any of them since Mithril Hall. The four go on to Calimport together. Ahead of them, Entreri delivers Regis to Pasha Pook, who takes back his ruby pendant and keeps the halfling alive for a punishment he wants to arrange properly.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Calimport is Entreri's ground and Pook's city, a sprawl of guilds, markets and sewers where the companions have no standing and no allies. They go to ground, take stock of the guild house and its defences, and find that Pook is protected by the wizard LaValle, by Entreri himself, and by Rassiter and his wererats, who hold the tunnels beneath the district and are resented by everyone in the organization they supposedly serve. Regis, held prisoner and expecting the worst, works patiently on the mistrust between Pook and his allies. The friends make their plan and force their way into the guild house.",
+            "through": {
+              "chapter": 19
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The assault splits. Bruenor, Wulfgar and Catti-brie fight through the guild house above while Drizzt goes after Entreri, and the two of them carry their duel down through the building and into the dark below the city, where the wererats hold the tunnels. Drizzt takes off the mask and fights as himself, which is what Entreri wanted and also what costs Entreri the advantage he had counted on. Above them the guild's discipline breaks down as Pook's own people begin choosing sides, and Regis, no longer entirely a prisoner, positions himself to reach the pendant.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Regis gets hold of the ruby pendant and turns Pook's guild against its master; Pook is killed in his own chambers. Drizzt gets the better of Entreri at last, but the assassin escapes into the city alive, and neither of them regards the question as settled. For a few days Regis is the master of the guild he once ran from, and discovers he does not want it; he hands it on and leaves. Drizzt walks Calimport openly, without the mask, before they go. The five friends are together again, and Bruenor, alive and now clear about what he intends, turns the company north: Mithril Hall belongs to Clan Battlehammer and he means to retake it, which will mean raising an army first. Wulfgar and Catti-brie acknowledge what is between them and are betrothed, and the road out of the south leads back toward the mountain that nearly killed them all.",
+            "through": {
+              "chapter": 25
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-halflings-gem"
+      }
+    },
     "the-handmaids-tale": {
       "characters": {
         "characters": [
