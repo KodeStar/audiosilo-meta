@@ -10975,6 +10975,75 @@
         }
       ],
       "title": "Bazyliszek - legenda [Basilisk: A Legend]"
+    },
+    "bbc-classics-adventure-collection": {
+      "added_at": "2026-08-07",
+      "authors": [
+        "arthur-conan-doyle",
+        "robert-louis-stevenson",
+        "john-buchan",
+        "h-g-wells",
+        "jonathan-swift"
+      ],
+      "genres": [
+        "action-adventure",
+        "classics",
+        "mystery",
+        "science-fiction",
+        "short-stories"
+      ],
+      "id": "bbc-classics-adventure-collection",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "kenny-blyth-2021": {
+          "abridged": false,
+          "added_at": "2026-08-07",
+          "asin": [
+            {
+              "asin": "1529142520",
+              "region": "us"
+            },
+            {
+              "asin": "B092DSZVWJ",
+              "region": "ca"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/914SQcWwDwL.jpg",
+          "id": "kenny-blyth-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kenny-blyth",
+            "michael-bertenshaw",
+            "tony-turner"
+          ],
+          "publisher": "BBC Digital Audio",
+          "release_date": "2021-06-03",
+          "runtime_min": 2046,
+          "sources": [
+            {
+              "imported_at": "2026-08-07",
+              "ref": "1529142520",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-07",
+              "ref": "B092DSZVWJ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "bbc-classics-adventure-collection"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-07",
+          "ref": "1529142520",
+          "type": "libex-import"
+        }
+      ],
+      "title": "BBC Classics: Adventure Collection"
     }
   }
 }

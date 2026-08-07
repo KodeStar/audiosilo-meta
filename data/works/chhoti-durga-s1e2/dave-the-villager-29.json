@@ -12612,6 +12612,66 @@
         }
       ],
       "title": "David Copperfield"
+    },
+    "david-copperfield-adaptation": {
+      "added_at": "2026-08-07",
+      "authors": [
+        "charles-dickens",
+        "clare-west"
+      ],
+      "credits": [
+        {
+          "person": "clare-west",
+          "role": "adaptation"
+        }
+      ],
+      "genres": [
+        "classics",
+        "education",
+        "language",
+        "literary-fiction"
+      ],
+      "id": "david-copperfield-adaptation",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "andrew-burt-2010": {
+          "abridged": true,
+          "added_at": "2026-08-07",
+          "asin": [
+            {
+              "asin": "B004H5OM3K",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71go6+0HFxL.jpg",
+          "id": "andrew-burt-2010",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andrew-burt"
+          ],
+          "publisher": "Oxford University Press",
+          "release_date": "2010-12-27",
+          "runtime_min": 174,
+          "sources": [
+            {
+              "imported_at": "2026-08-07",
+              "ref": "B004H5OM3K",
+              "type": "libex-import"
+            }
+          ],
+          "work": "david-copperfield-adaptation"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-07",
+          "ref": "B004H5OM3K",
+          "type": "libex-import"
+        }
+      ],
+      "title": "David Copperfield (Adaptation)"
     }
   }
 }

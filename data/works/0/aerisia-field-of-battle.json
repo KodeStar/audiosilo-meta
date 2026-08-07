@@ -2028,6 +2028,69 @@
       ],
       "title": "Aeson: Blue"
     },
+    "aesops-fables": {
+      "added_at": "2026-08-07",
+      "authors": [
+        "aesop",
+        "vernon-jones",
+        "g-k-chesterton"
+      ],
+      "credits": [
+        {
+          "person": "g-k-chesterton",
+          "role": "introduction"
+        },
+        {
+          "person": "vernon-jones",
+          "role": "translator"
+        }
+      ],
+      "genres": [
+        "childrens",
+        "classics"
+      ],
+      "id": "aesops-fables",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "paul-ansdell-2019": {
+          "abridged": false,
+          "added_at": "2026-08-07",
+          "asin": [
+            {
+              "asin": "1974937305",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91cpuVNS2zL.jpg",
+          "id": "paul-ansdell-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "paul-ansdell"
+          ],
+          "publisher": "Dreamscape Media, LLC",
+          "release_date": "2019-02-06",
+          "runtime_min": 268,
+          "sources": [
+            {
+              "imported_at": "2026-08-07",
+              "ref": "1974937305",
+              "type": "libex-import"
+            }
+          ],
+          "work": "aesops-fables"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-07",
+          "ref": "1974937305",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Aesop's Fables"
+    },
     "aesops-fables-bbc": {
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
@@ -2099,6 +2162,60 @@
         }
       ],
       "title": "Aesop's Fables (BBC)"
+    },
+    "aesops-fables-for-children": {
+      "added_at": "2026-08-07",
+      "authors": [
+        "aesop"
+      ],
+      "genres": [
+        "childrens",
+        "classics",
+        "fairy-tales-folklore",
+        "nature",
+        "short-stories"
+      ],
+      "id": "aesops-fables-for-children",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "steve-blane-2013": {
+          "abridged": true,
+          "added_at": "2026-08-07",
+          "asin": [
+            {
+              "asin": "B00GY03Y0S",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91azUiVGk1L.jpg",
+          "id": "steve-blane-2013",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "steve-blane"
+          ],
+          "publisher": "Dover Publications",
+          "release_date": "2013-11-27",
+          "runtime_min": 71,
+          "sources": [
+            {
+              "imported_at": "2026-08-07",
+              "ref": "B00GY03Y0S",
+              "type": "libex-import"
+            }
+          ],
+          "work": "aesops-fables-for-children"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-07",
+          "ref": "B00GY03Y0S",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Aesop's Fables for Children"
     },
     "aestrangel-the-fallen": {
       "added_at": "2026-08-02",
