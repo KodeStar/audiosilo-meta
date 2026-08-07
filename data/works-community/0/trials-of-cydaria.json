@@ -1384,6 +1384,183 @@
         "work": "truly-devious"
       }
     },
+    "trunk-music": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An LAPD homicide detective returning to duty after suspension and departmental therapy. Assigned to a new team under Lieutenant Grace Billets, Bosch takes charge when a producer is found shot in the trunk of his Rolls-Royce and resists the convenient assumption that the killing is purely a mob matter.",
+            "id": "harry-bosch",
+            "name": "Harry Bosch",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Bosch's regular homicide partner, attentive to the career and financial pressures that Bosch often ignores. Edgar helps work the Aliso scene and the Los Angeles side of the investigation.",
+            "id": "jerry-edgar",
+            "name": "Jerry Edgar",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A detective newly paired with Bosch and Edgar. Careful, capable, and willing to challenge assumptions, Rider becomes an important part of the team examining Tony Aliso's business and personal life.",
+            "id": "kizmin-rider",
+            "name": "Kizmin Rider",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The lieutenant commanding Bosch's homicide squad after his reinstatement. Billets gives him room to pursue the case while expecting him to keep the investigation supportable and the chain of command informed.",
+            "id": "grace-billets",
+            "name": "Grace Billets",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Tony Aliso"
+            ],
+            "description": "A producer of unsuccessful low-budget films whose body is found in the trunk of his Rolls-Royce. His frequent Las Vegas trips and unexplained finances suggest that his film company served purposes beyond making movies.",
+            "id": "anthony-aliso",
+            "name": "Anthony Aliso",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tony Aliso's widow. Her marriage had long been damaged by his absences and infidelity, and Bosch must decide how much of her controlled response reflects estrangement and how much it conceals.",
+            "id": "veronica-aliso",
+            "name": "Veronica Aliso",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Las Vegas organized-crime figure whose money moved through Tony Aliso's film business. Marks has both the resources to order a professional killing and a strong interest in keeping federal agents and Los Angeles detectives away from his operation.",
+            "id": "joey-marks",
+            "name": "Joey Marks",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Lucky"
+            ],
+            "description": "A hard-edged member of Joey Marks's Las Vegas organization. His access to Aliso and apparent ability to carry out a disciplined execution make him an immediate focus when Bosch follows the victim's money to Nevada.",
+            "id": "luke-goshen",
+            "name": "Luke Goshen",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The former FBI agent with whom Bosch became close during the Meadows investigation before her role in that crime sent her to prison. Now free and living in Las Vegas, she earns her living at poker and meets Bosch again when his case brings him there.",
+            "id": "eleanor-wish",
+            "name": "Eleanor Wish",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An FBI agent operating inside the Las Vegas criminal network under the name Luke Goshen. His undercover assignment explains conduct that looked incriminating to Bosch and creates a conflict between the homicide case and a longer federal operation against Joey Marks.",
+            "id": "roy-lindell",
+            "name": "Roy Lindell",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior LAPD official monitoring Bosch's return to active duty. Irving wants the Aliso murder solved but is alert to the institutional trouble Bosch can create by arresting a protected federal operative or accusing powerful people without sufficient evidence.",
+            "id": "irvin-irving",
+            "name": "Irvin Irving",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "trunk-music"
+      },
+      "recaps": {
+        "ending": "Bosch establishes that Tony Aliso's death was staged to resemble a Las Vegas mob execution and that the decisive motive lay in Aliso's own household and the money he had concealed. Veronica Aliso is exposed as responsible for the scheme against her husband rather than the innocent widow the staging was meant to suggest. The investigation also clears up the apparent case against Luke Goshen: he is FBI agent Roy Lindell, working undercover against Joey Marks, and Bosch's homicide inquiry had collided with a protected federal operation. Marks's criminal network remains the subject of the federal case, but it did not provide the simple answer initially assumed for Tony's murder. Bosch closes the homicide after surviving the final effort to preserve its cover story. Away from the case, he and Eleanor Wish decide that their renewed relationship is not temporary. They marry in Las Vegas, giving Bosch an unexpectedly hopeful personal future as he returns to Los Angeles police work.",
+        "in_short": "Back on the LAPD after suspension, Harry Bosch leads Jerry Edgar and Kiz Rider in investigating film producer Tony Aliso, found shot in the trunk of his Rolls-Royce. The scene suggests a mob execution, and Aliso's hidden role moving Las Vegas money makes Joey Marks and enforcer Luke Goshen obvious targets. Bosch follows the case to Nevada, where he unexpectedly reunites with Eleanor Wish, now out of prison and playing poker. The apparent mob solution becomes unstable when Goshen proves to be undercover FBI agent Roy Lindell and the federal operation conflicts with Bosch's murder inquiry. Bosch returns to Aliso's finances and marriage, ultimately proving that the mob-style scene concealed a domestic conspiracy and that widow Veronica Aliso was responsible for her husband's death. The homicide is solved, the federal case against Marks survives, and Bosch's reconciliation with Eleanor becomes permanent when they marry in Las Vegas.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Suspended after attacking Lieutenant Harvey Pounds, Harry Bosch privately solved the 1961 murder of his mother and learned that political fixer Gordon Mittel arranged it to protect Arno Conklin's career. His relationship with Sylvia Moore remained over, and he moved toward reinstatement while rebuilding his earthquake-damaged home. Eleanor Wish, the former FBI agent Bosch once loved, had gone to prison for her part in the bank conspiracy they investigated together.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Harry Bosch returns to active homicide duty under Lieutenant Grace Billets, working with Jerry Edgar and Kiz Rider. Their first major case begins when film producer Tony Aliso is found shot in the trunk of his Rolls-Royce near the Hollywood Bowl. The execution-style scene looks like organized crime's so-called trunk music, but Bosch refuses to let the appearance decide the case. Aliso's unsuccessful movies do not explain his expensive life, regular Las Vegas travel, or cash. His widow Veronica describes an estranged marriage and his affairs. Records indicate that the production company was a channel for money connected to Las Vegas figure Joey Marks, giving the team a plausible criminal motive while also raising the risk that a local murder inquiry has entered a larger federal investigation.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bosch takes the inquiry to Las Vegas while Edgar and Rider continue tracing Aliso's finances and relationships in Los Angeles. Joey Marks's organization appears to have used Aliso's films to move and clean money, and Marks's associate Luke Goshen has the access and manner of a professional enforcer. Evidence pushes Bosch toward Goshen despite resistance from federal authorities protecting their own interests. In Las Vegas Bosch also finds Eleanor Wish, the former FBI agent whose crimes ended their earlier relationship. She has served her sentence and now supports herself as a poker player. Their meeting reopens feelings neither has resolved, though Bosch must separate that personal history from a case in which nearly everyone is concealing an allegiance or a source of money.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The case against Luke Goshen appears strong enough for Bosch to act, but the arrest collides directly with an FBI operation. Goshen is actually Roy Lindell, an agent working undercover inside Joey Marks's organization. His apparent criminal role and access to Aliso were part of an effort to build a federal case, not proof that he carried out the murder. The revelation forces Bosch to reconsider a scene designed to send police toward the mob. Aliso did handle money for Marks, but that relationship may have provided camouflage rather than the murder's true motive. Bosch and Eleanor meanwhile renew their relationship, both aware that trust cannot be restored by pretending the events that sent her to prison never happened.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "With Lindell's identity clarified, Bosch returns to the discrepancies closest to Tony Aliso: the money he kept outside his business records, the condition of his marriage, and Veronica's account of his movements. The mob-style placement of the body increasingly looks like deliberate misdirection by someone who knew investigators would discover the Las Vegas connection. Edgar and Rider help close gaps between the financial trail and the private relationships around Aliso. Bosch concludes that the widow's distance from Tony was not merely the result of a failed marriage and that the hidden money gave her a direct reason to make the death look like punishment ordered by Marks.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bosch proves that Veronica Aliso was responsible for the plan that killed Tony and disguised the death as a professional mob execution. The staging exploited Tony's real work for Joey Marks, drawing police toward an organization that had reason to silence him but was not the immediate answer to the homicide. Roy Lindell's undercover identity is protected once Bosch separates the federal operation from the murder, leaving the FBI to continue pursuing Marks. Bosch survives the final confrontation and closes the case with Edgar and Rider. His renewed bond with Eleanor Wish also reaches a decision: rather than separate again when the investigation ends, they marry in Las Vegas. Bosch returns to Los Angeles with a solved homicide, a functioning place on Billets's team, and a personal commitment he had not expected to make.",
+            "through": {
+              "chapter": 10
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "trunk-music"
+      }
+    },
     "turn-coat": {
       "characters": {
         "characters": [

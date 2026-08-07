@@ -717,6 +717,189 @@
         "work": "thud"
       }
     },
+    "thunderball-with-interview": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A senior British Secret Service officer whose recent poor health and declining fitness lead M to order him to a nature-cure clinic. His stay there puts him across the path of a suspicious patient before he is assigned to the international search for two stolen nuclear weapons.",
+            "id": "james-bond",
+            "name": "James Bond",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The head of the British Secret Service and Bond's exacting superior. Concerned by Bond's medical report, he sends him to Shrublands and later directs Britain's part in the urgent search for the stolen weapons.",
+            "id": "m",
+            "name": "M",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A physiotherapist at the Shrublands clinic who supervises Bond's treatments. She is capable, attractive, and more sympathetic to him than the clinic's austere regime initially suggests.",
+            "id": "patricia-fearing",
+            "name": "Patricia Fearing",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wealthy foreign patient at Shrublands whose manner and possessions make Bond suspicious. Their hostility escalates after Bond notices evidence connecting him to criminal activity.",
+            "id": "count-lippe",
+            "name": "Count Lippe",
+            "reveal": {
+              "chapter": 4
+            }
+          },
+          {
+            "description": "The founder and chairman of SPECTRE, a disciplined international criminal organization assembled from experienced operatives. He presides over its councils with calculated brutality and directs a scheme intended to extort the Western powers with nuclear weapons.",
+            "id": "ernst-stavro-blofeld",
+            "name": "Ernst Stavro Blofeld",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "SPECTRE Number One"
+            ],
+            "description": "A wealthy, imposing Italian who commands SPECTRE's field operation in the Bahamas. His yacht, the Disco Volante, gives him a respectable public identity and the mobility needed for the operation.",
+            "id": "emilio-largo",
+            "name": "Emilio Largo",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An Italian airman recruited to divert a NATO bomber carrying two nuclear weapons. His access to the flight and his resemblance to another crew member make the theft possible.",
+            "id": "giuseppe-petacchi",
+            "name": "Giuseppe Petacchi",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Domino"
+            ],
+            "description": "Largo's much younger Italian mistress, living aboard his yacht in Nassau. Intelligent and self-possessed despite her dependent position, she is also Giuseppe Petacchi's sister.",
+            "id": "dominique-vitali",
+            "name": "Dominique Vitali",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Bond's American friend and former CIA partner, sent to Nassau as part of the nuclear search. Now working with the Pinkerton agency, he brings local cover, practical assistance, and a pilot's knowledge to their investigation.",
+            "id": "felix-leiter",
+            "name": "Felix Leiter",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A physicist serving SPECTRE because the organization has coerced him. His technical expertise is essential to handling the stolen weapons, but his allegiance is based on fear rather than loyalty.",
+            "id": "ladislav-kotze",
+            "name": "Ladislav Kotze",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Largo's hard, trusted operatives aboard the Disco Volante, used for surveillance, punishment, and armed work when the operation begins to close around them.",
+            "id": "vargas",
+            "name": "Vargas",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "thunderball-with-interview"
+      },
+      "recaps": {
+        "ending": "Bond joins the underwater assault on Largo's men as they move one of the warheads. The opposing swimmers fight with knives, spears, and explosives, and the arrival of allied support turns the battle against SPECTRE. Largo nearly kills Bond, but Domino, freed after being tortured for helping the investigation, shoots Largo with a spear gun. Both nuclear weapons are recovered before the ransom deadline, ending the immediate threat, although Blofeld is not among the defeated field team and remains at large. Bond and Domino are taken to hospital after their injuries, sharing the exhausted aftermath of an operation that cost her brother and nearly killed them both.",
+        "in_short": "SPECTRE, led by Ernst Stavro Blofeld, steals a NATO bomber carrying two nuclear weapons and threatens to destroy major cities unless an enormous ransom is paid. Emilio Largo directs the field operation from the Bahamas, hiding the aircraft and warheads beneath the sea. After an enforced health cure introduces him to one of the conspiracy's agents, James Bond follows a clue to Nassau and investigates Largo with Felix Leiter. Bond befriends Largo's mistress Domino and proves that SPECTRE murdered her brother after using him to steal the bomber. Domino agrees to help but is discovered and tortured. Bond and allied divers attack Largo's underwater force as it moves a bomb into position. Domino escapes and saves Bond by killing Largo, while the coerced scientist Kotze turns against SPECTRE. The weapons are recovered and the ransom plot fails, but Blofeld remains free.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "James Bond is an experienced officer of the British Secret Service who has repeatedly survived assignments against organized crime and hostile intelligence services. M remains his demanding chief, and former CIA officer Felix Leiter is a trusted American ally from earlier operations. Bond begins this case between missions, with accumulated strain showing in his medical results rather than with a specific unfinished case from the preceding books.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "M is dissatisfied with Bond's health report and orders him to spend two weeks at Shrublands, a clinic built around diet, rest, and physical treatment. Bond resents the regime but takes an interest in his physiotherapist, Patricia Fearing. Another patient, Count Lippe, behaves secretively and has a criminal association that Bond recognizes. Lippe traps Bond in a traction machine and turns the controls high enough to threaten his life. Patricia releases him in time. Bond retaliates by using a treatment on Lippe in a way that leaves the count badly burned, turning their mutual suspicion into a private war.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ernst Stavro Blofeld convenes SPECTRE and demonstrates the combination of careful accounting and lethal discipline with which he controls the organization. Its new operation is nuclear extortion. Giuseppe Petacchi, an Italian airman with access to a NATO training flight, kills and replaces a crew member, poisons the others, and diverts a bomber carrying two atomic weapons. He lands it in shallow water near the Bahamas, where Emilio Largo's team removes the bombs and hides the aircraft. Largo then kills Petacchi, eliminating a witness. SPECTRE sends the Western governments a demand for a vast payment and threatens to destroy cities if the deadline passes.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Britain and the United States begin a desperate search for the missing aircraft and bombs. Bond studies the available reports and connects Count Lippe's activity at Shrublands with the timing of the theft. His reasoning points toward the Bahamas, and he is sent to Nassau. There he begins watching Largo, a conspicuously wealthy man whose fast yacht, the Disco Volante, could support an operation at sea. Bond also meets Largo's mistress, Dominique Vitali, known as Domino, and learns that the dead airman Petacchi was her brother. The evidence is incomplete, but Largo and his vessel become the center of Bond's inquiry.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Felix Leiter joins Bond in Nassau under civilian cover, and the two investigate by air and water. They search likely stretches of sea for the missing bomber while Bond cultivates his acquaintance with Domino and accepts Largo's hospitality. Bond's underwater reconnaissance around the Disco Volante confirms that Largo's apparently sporting expedition is guarded like a military operation. He survives an attempt to kill him during the dive and becomes convinced that the yacht is connected to the hidden weapons. Bond and Leiter locate signs of the submerged aircraft, bringing the search close to proof even as the ransom deadline approaches.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bond tells Domino that Largo's organization used and murdered her brother, supporting the accusation with evidence recovered during the search. Grief and anger overcome her remaining loyalty to Largo, and she agrees to carry a signal that can reveal where the Disco Volante takes the bomb. Largo discovers the betrayal, confines her, and tortures her for information. Bond and Leiter meanwhile assemble the naval and diving support needed to intercept SPECTRE underwater. The coerced physicist Ladislav Kotze also begins looking for a way out, while Largo commits his men to moving a warhead toward its target.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bond joins allied combat swimmers in an underwater attack on Largo's force as it transports one of the nuclear weapons. The fight is confused and brutal, but reinforcements help destroy the SPECTRE team and secure the bomb. Largo gets the better of an exhausted Bond and is about to kill him when Domino, having survived her captivity, shoots Largo with a spear gun. Both bombs are recovered before SPECTRE can carry out its threat, defeating the extortion plan. Blofeld remains outside the field operation and escapes the disaster. Bond and Domino are hospitalized, where they begin recovering from the battle and its personal losses.",
+            "through": {
+              "chapter": 25
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "thunderball-with-interview"
+      }
+    },
     "thunderhead": {
       "characters": {
         "characters": [
@@ -1397,6 +1580,233 @@
           }
         ],
         "work": "tiamats-wrath"
+      }
+    },
+    "tik-tok-of-oz": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Queen Ann Soforth"
+            ],
+            "description": "The ambitious ruler of the tiny mountain kingdom of Oogaboo. Dissatisfied with governing a few households, she forms an army and announces a plan to conquer the world despite knowing little about warfare or the lands beyond her valley.",
+            "id": "queen-ann",
+            "name": "Queen Ann",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Jo Files"
+            ],
+            "description": "The only private soldier in Queen Ann's army, which otherwise consists entirely of officers. He carries out the practical work of marching while his superiors issue orders.",
+            "id": "private-files",
+            "name": "Private Files",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A girl from Oklahoma who survives a shipwreck and washes ashore in a fairy country. Sensible and friendly, she faces each wonder with courage and takes particular care of her companion Hank.",
+            "id": "betsy-bobbin",
+            "name": "Betsy Bobbin",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Betsy's faithful mule and fellow survivor of the shipwreck. Patient but stubborn, he stays close to Betsy as their travels carry them farther from the ordinary world.",
+            "id": "hank",
+            "name": "Hank",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The beautiful ruler of the Rose Kingdom, a garden inhabited by living flower people. She must protect her subjects from mortal intruders, whose presence the roses regard as dangerous.",
+            "id": "princess-ozga",
+            "name": "Princess Ozga",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A kindly wanderer who now lives in Oz. He has left his comfortable home to find a beloved brother whom the Nome King has kept prisoner for years.",
+            "id": "the-shaggy-man",
+            "name": "The Shaggy Man",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "The Rainbow's Daughter"
+            ],
+            "description": "A graceful sky fairy who has again been left behind when her father's rainbow vanished. She joins the travelers while waiting for another chance to return to the clouds.",
+            "id": "polychrome",
+            "name": "Polychrome",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A copper mechanical man whose thought, speech, and action are controlled by separate clockwork springs. Loyal and strong when properly wound, he has been sent to aid the Shaggy Man's search.",
+            "id": "tik-tok",
+            "name": "Tik-Tok",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Nome King"
+            ],
+            "description": "The deposed and restored ruler of the underground Nomes, formerly called Roquat. He is suspicious of visitors, resents Oz, and refuses to release the Shaggy Man's captive brother.",
+            "id": "ruggedo",
+            "name": "Ruggedo",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Ruggedo's chief steward and a more even-tempered Nome. He serves the king faithfully while recognizing that Ruggedo's anger repeatedly brings trouble upon the underground kingdom.",
+            "id": "kaliko",
+            "name": "Kaliko",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Lovely Lady of Light"
+            ],
+            "description": "A radiant fairy ruler in the realm on the far side of the earth. She receives the unexpected travelers kindly after their fall through the Hollow Tube.",
+            "id": "queen-erma",
+            "name": "Queen Erma",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Great Jinjin"
+            ],
+            "description": "The supreme official of the powerful fairies who live on the opposite side of the world. He hears the travelers' complaint against Ruggedo and decides how the Nome King must answer for his conduct.",
+            "id": "tititi-hoochoo",
+            "name": "Tititi-Hoochoo",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young dragon chosen to carry out Tititi-Hoochoo's judgment. Though not fully grown, he is confident, well equipped with fairy magic, and entirely unafraid of Ruggedo and the Nomes.",
+            "id": "quox",
+            "name": "Quox",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Shaggy Man's long-lost brother, held in the Nome King's metal forest. Captivity and enchantment have left him ashamed to let his rescuers see his face.",
+            "id": "the-shaggy-mans-brother",
+            "name": "The Shaggy Man's Brother",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Kansas girl whose many adventures have made her one of the best-known people in Oz. She is delighted to welcome Betsy as another girl from the ordinary world who has reached the fairyland.",
+            "id": "dorothy-gale",
+            "name": "Dorothy Gale",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Dorothy's friend and the young ruler of Oz. She welcomes Betsy and the returning travelers to the Emerald City after their long journey through the Nome Kingdom.",
+            "id": "ozma",
+            "name": "Ozma",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "tik-tok-of-oz"
+      },
+      "recaps": {
+        "ending": "Quox carries out Tititi-Hoochoo's judgment against Ruggedo, using the fairy gifts entrusted to him to overcome the Nome King. Kaliko becomes king and proves willing to release the Shaggy Man's brother from the metal forest. The rescued man is ashamed of the ugly face Ruggedo's enchantment gave him, but a kindly kiss breaks the spell and restores his natural appearance. Ruggedo loses his throne and, for the time being, abandons his hostility. Queen Ann's attempted conquest ends without an empire, while Private Files and Princess Ozga find happiness together. The travelers reach Oz, where Dorothy is delighted to meet Betsy. Ozma offers Betsy and Hank a permanent home, and they accept. Polychrome eventually returns to the rainbow, and the Shaggy Man is reunited with his brother in a country where both can live among friends.",
+        "in_short": "Queen Ann leads the absurdly officer-heavy army of Oogaboo out to conquer the world. Elsewhere, shipwrecked Betsy Bobbin and her mule Hank join the Shaggy Man, Polychrome, and Tik-Tok on a mission to rescue the Shaggy Man's brother from Ruggedo, the Nome King. Ruggedo drops the travelers through the Hollow Tube to the far side of the world, where Tititi-Hoochoo sends the dragon Quox to punish him. Quox defeats Ruggedo, Kaliko becomes Nome King, and the prisoner is freed. A kiss removes the enchantment that made the Shaggy Man's brother hide his face. Queen Ann gains no empire, but her company reaches Oz safely. Betsy and Hank accept a home with Ozma, Polychrome returns to the rainbow, and the Shaggy Man's family is reunited.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "The Shaggy Man and Tik-Tok are friends of Ozma living in Oz, and Polychrome once traveled there with Dorothy. Beneath the earth, the Nome ruler Ruggedo has repeatedly opposed Ozma and her companions. Though defeated before, he again controls the Nome Kingdom and still holds the Shaggy Man's brother prisoner.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Queen Ann Soforth of tiny Oogaboo appoints nearly every able man an officer and leaves Private Files as the army's only ordinary soldier. She marches out to conquer the world, but magic and unfamiliar country quickly frustrate the campaign. Far away, Betsy Bobbin and her mule Hank survive a shipwreck and reach the Rose Kingdom, where living roses object to mortal intruders. Queen Ann's army arrives in the same region. The flower people drive the outsiders away, and the travelers escape with Princess Ozga, whose future is now tied to the wandering company.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Betsy and Hank meet the Shaggy Man, who is searching for the brother Ruggedo has imprisoned, and Polychrome, who has again fallen from her father's rainbow. Tik-Tok joins them as Ozma's mechanical helper. Their route brings them to the Nome Kingdom, where Ruggedo refuses to surrender his captive. Rather than face the whole company fairly, the Nome King opens the Hollow Tube and sends the travelers falling through the earth. They emerge on the opposite side of the world in a realm governed by powerful fairies, far from both Oz and the prisoner they hoped to rescue.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The stranded travelers are welcomed by Queen Erma and brought before Tititi-Hoochoo, the Great Jinjin. After hearing how Ruggedo used the Hollow Tube and continues to hold the Shaggy Man's brother, Tititi-Hoochoo sends the young dragon Quox to deliver judgment. Quox and the travelers pass back through the tube into the Nome Kingdom. Ruggedo boasts that the fairies cannot frighten him, but Quox carries magical gifts chosen especially to overcome the Nome King's powers and the particular fears of his subjects. The rescue party is now back beneath the earth with a protector Ruggedo cannot easily dismiss.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Quox defeats Ruggedo and ends his rule. Kaliko becomes Nome King and releases the Shaggy Man's brother from the metal forest. Ruggedo's spell has made the prisoner hide his ugly face, but a kind kiss breaks the enchantment and restores him. Ruggedo loses his throne and temporarily gives up his wicked conduct. Queen Ann wins no empire, though Private Files and Princess Ozga find a happier future together. The company reaches Oz, where Dorothy welcomes Betsy and Ozma offers both Betsy and Hank a permanent home. They accept, while Polychrome returns to the rainbow and the Shaggy Man settles in Oz with his rescued brother.",
+            "through": {
+              "chapter": 25
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "tik-tok-of-oz"
       }
     },
     "tinker-tailor-soldier-spy": {

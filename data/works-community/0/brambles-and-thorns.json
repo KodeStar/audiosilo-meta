@@ -2116,6 +2116,186 @@
         "work": "caraval"
       }
     },
+    "cards-on-the-table": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The Belgian detective, invited to a dinner whose host promises to display his private collection of people who have killed without being caught. Poirot distrusts both the boast and the host's taste for dangerous effects, but accepts and becomes one of four investigators studying the same closed circle.",
+            "id": "hercule-poirot",
+            "name": "Hercule Poirot",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A wealthy collector of curiosities, secrets, and dangerous acquaintances. He enjoys making people uncomfortable and claims he can recognise those who have escaped justice. His dinner party places four investigators and four guests with shadowed pasts at separate bridge tables.",
+            "id": "mr-shaitana",
+            "name": "Mr Shaitana",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A successful writer of detective stories, energetic, imaginative, and inclined to prefer dramatic theories to ordinary facts. Shaitana invites her as one of his four representatives of detection, and she conducts her own inquiries among the women connected with the suspects.",
+            "id": "ariadne-oliver",
+            "name": "Ariadne Oliver",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior Scotland Yard officer whose solid manner conceals a patient understanding of people. He represents official police work at Shaitana's dinner and coordinates the inquiry without dismissing Poirot's less conventional questions.",
+            "id": "superintendent-battle",
+            "name": "Superintendent Battle",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A British officer whose work has taken him through military and intelligence circles abroad. Cool, discreet, and accustomed to judging danger, he is the fourth investigator at the dinner and follows the international histories behind the guests.",
+            "id": "colonel-race",
+            "name": "Colonel Race",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A fashionable physician with a large practice, an easy bedside manner, and the confidence of a man used to being welcomed into private homes. He plays bridge boldly and brings the same expansive good humour to Shaitana's dinner.",
+            "id": "dr-roberts",
+            "name": "Dr Geoffrey Roberts",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elegant widow and exceptionally strong bridge player, composed, intelligent, and unsentimental. She remembers every card and makes few unnecessary statements.",
+            "id": "mrs-lorrimer",
+            "name": "Mrs Lorrimer",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young woman of modest means who shares a cottage with her friend Rhoda Dawes. Shy and anxious under questioning, she has worked as a companion and carries a strong fear that an incident from an earlier household may be brought into the open.",
+            "id": "anne-meredith",
+            "name": "Anne Meredith",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An explorer and former army officer, quiet, self-contained, and more comfortable with action than explanation. His reserve gives Shaitana ample opportunity for insinuation without immediate contradiction.",
+            "id": "major-despard",
+            "name": "Major John Despard",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Anne Meredith's practical, outspoken housemate and friend. She is less easily intimidated than Anne and helps Mrs Oliver reconstruct the circumstances of Anne's former employment. Her frankness also attracts Major Despard's attention.",
+            "id": "rhoda-dawes",
+            "name": "Rhoda Dawes",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The widow of an explorer who died during an expedition with Major Despard. Her account of her marriage and of Despard's conduct complicates the version suggested by Shaitana's insinuations.",
+            "id": "mrs-luxmore",
+            "name": "Mrs Luxmore",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A former domestic servant in the household of one of Dr Roberts's patients. Her recollection of illness, treatment, and household tensions gives Battle a view of an old death from below stairs.",
+            "id": "elsie-batt",
+            "name": "Elsie Batt",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "cards-on-the-table"
+      },
+      "recaps": {
+        "ending": "Poirot identifies Dr Geoffrey Roberts as Shaitana's murderer. During the bridge game Roberts moved about freely as dummy, took a slim dagger from the room, and stabbed the host while the other players were absorbed in their cards. Shaitana had recognised that Roberts had used medical access to remove inconvenient patients in the past. When the inquiry threatened him, Roberts also killed Mrs Lorrimer by injection and arranged the scene as suicide, using her genuine admission about her husband's death to make a false confession to Shaitana's murder seem credible. Poirot breaks him with a manufactured eyewitness and with the contrast between what each player's bridge record shows about temperament and opportunity. The other histories are separated from the present crime. Mrs Lorrimer had killed her husband years earlier but did not kill Shaitana. Major Despard's expedition shooting was an accident he concealed to protect Mrs Luxmore. Anne Meredith caused a former employer's death while hiding theft; when she later tries to drown Rhoda Dawes, Despard rescues Rhoda and Anne herself drowns. Roberts is arrested, while Despard and Rhoda are left free to begin a life together.",
+        "in_short": "Mr Shaitana, a collector of dangerous secrets, invites four detectives and four people he believes have killed before without conviction to dinner. While Poirot, Superintendent Battle, Colonel Race, and Ariadne Oliver play bridge in one room, Dr Roberts, Mrs Lorrimer, Major Despard, and Anne Meredith play in another beside their host. Shaitana is stabbed while they play, leaving four suspects who all had opportunity. The investigators reopen the old deaths Shaitana had discovered and study the bridge score for signs of character and movement. Mrs Lorrimer admits killing her husband, then dies after apparently confessing to Shaitana's murder. Poirot proves that Dr Roberts killed both Shaitana and Mrs Lorrimer, having previously exploited his medical position to kill patients. Despard's old shooting was accidental. Anne had caused a former employer's death while concealing theft and later tries to kill Rhoda Dawes, but drowns during the attempt. Roberts is trapped and arrested; Despard and Rhoda survive.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "At an exhibition Poirot meets Mr Shaitana, a flamboyant collector who boasts that his finest collection consists of people who have murdered without being caught. Shaitana arranges a dinner for eight guests: four investigators - Poirot, Superintendent Battle, Colonel Race, and detective novelist Ariadne Oliver - and four people whose histories he has privately marked - Dr Roberts, Mrs Lorrimer, Major Despard, and Anne Meredith. After dinner the groups divide into two bridge tables. The investigators play in one room while the other four play near Shaitana, who sits by the fire. At the end of the evening Shaitana is found stabbed with a slender weapon taken from his own collection. Every player at that table had opportunities to leave a seat while acting as dummy, and none admits noticing the crime.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The four investigators divide the work according to their strengths. Battle follows records and witnesses, Race looks into Despard's life abroad, Mrs Oliver approaches the personal circles around Anne and Mrs Lorrimer, and Poirot concentrates on psychology. The bridge score becomes a record of the evening: Mrs Lorrimer played with exceptional control, Roberts took risks, Despard was steady, and Anne became increasingly uncertain. Poirot asks not only who could have crossed the room but who would act suddenly under pressure. Each suspect denies knowing why Shaitana invited them. Early inquiries reveal a questionable death or accident somewhere in each past, but the evidence is too incomplete to show which history Shaitana understood correctly or which guest feared immediate exposure.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Poirot and Battle interview the four separately and reconstruct their lives. Dr Roberts's successful practice gives him access to patients and medicines, though he laughs off gossip around an earlier household. Mrs Lorrimer answers with precision and offers no emotional defence. Anne Meredith is frightened by questions about a former employer and by the possibility that small thefts may be discovered. Major Despard admits that an expedition ended with a man shot but rejects the malicious version of events. Poirot also asks each player what they remember of the room during the game, testing attention rather than demanding a direct accusation. The accounts differ over movements, ornaments, and conversation, while the score sheets continue to show when each person could have left the table unnoticed.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The investigators reach people who can clarify the old cases. Elsie Batt describes the household of one of Dr Roberts's former patients and the medical treatment surrounding a suspicious death. Rhoda Dawes, Anne's confident housemate, helps Mrs Oliver trace the companion position Anne once held and the valuables that disappeared there. Mrs Luxmore gives an account of the South American expedition that does not match the simple suggestion that Despard deliberately killed her husband. These inquiries establish that Shaitana had found genuine secrets, but not all the secrets are equivalent and not every concealment is murder. Poirot becomes increasingly interested in the difference between a person who plans patiently and one who seizes a brief opportunity, because Shaitana's death required both nerve and perfect timing.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Mrs Lorrimer privately admits to Poirot that she killed her husband years ago. Soon afterward she is found dead, apparently by her own hand, with a confession that seems to accept responsibility for Shaitana as well. Poirot does not believe the second confession fits either her character or the physical circumstances. Her death removes the strongest bridge player and appears to close the case too efficiently. Meanwhile the histories of Despard and Anne sharpen in different directions, and Rhoda's knowledge places strain on her friendship with Anne. Poirot prepares a trap based on an alleged observer who could have seen into Shaitana's room, while Battle checks the means by which Mrs Lorrimer died. The solution now depends on whether the apparent suicide is accepted as an ending or recognised as another attempt to arrange the table.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Poirot names Dr Geoffrey Roberts as the murderer of both Shaitana and Mrs Lorrimer. Acting as dummy during the bridge game, Roberts could move through the room naturally, take the slim dagger, and stab Shaitana while the others concentrated on their cards. Shaitana knew of earlier deaths in which Roberts had abused the trust and access of a physician. Roberts later injected Mrs Lorrimer and staged her death as suicide, attaching a false confession to the true fact that she had killed her husband years before. Poirot's supposed eyewitness is a trap that forces Roberts to reveal himself, while the bridge record supports the opportunity and temperament. The other secrets are disentangled: Despard accidentally shot Mr Luxmore and concealed the circumstances to protect Mrs Luxmore; Anne caused a former employer's death while covering theft. Anne then tries to drown Rhoda, but Despard saves Rhoda and Anne drowns. Roberts is arrested, and Despard and Rhoda are left together.",
+            "through": {
+              "chapter": 31
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "cards-on-the-table"
+      }
+    },
     "carls-doomsday-scenario": {
       "characters": {
         "characters": [

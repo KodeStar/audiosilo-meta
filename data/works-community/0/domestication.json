@@ -339,6 +339,173 @@
         "work": "domestication"
       }
     },
+    "dorothy-and-the-wizard-in-oz": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A practical Kansas girl already familiar with Oz and its wonders. While traveling in California, she is caught in an earthquake and dropped into a strange country beneath the earth with Zeb, Jim, and Eureka.",
+            "id": "dorothy-gale",
+            "name": "Dorothy Gale",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Dorothy's young cousin, who is driving her from the railway station when the earthquake opens beneath them. Though the underground marvels alarm him, he loyally shares the dangers of the journey.",
+            "id": "zeb-hugson",
+            "name": "Zeb Hugson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The farm horse pulling Zeb's buggy. Once below the earth he can speak, but remains a plain, skeptical horse who would prefer dependable oats and solid ground to magic.",
+            "id": "jim",
+            "name": "Jim",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Dorothy's small white kitten. In the lands beneath the earth she gains speech and shows herself curious, proud, and inclined to chase anything smaller than herself.",
+            "id": "eureka",
+            "name": "Eureka",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Wizard of Oz"
+            ],
+            "description": "Dorothy's old friend, formerly the celebrated ruler of the Emerald City. His balloon descends into the underground country, and his stage tricks and resourcefulness make him valuable to the stranded travelers.",
+            "id": "the-wizard",
+            "name": "The Wizard",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The handsome young ruler of the Mangaboos, a people who grow like plants in a city of glass. He receives the visitors with suspicion and expects the Wizard to explain the damage caused by his arrival.",
+            "id": "prince-of-the-mangaboos",
+            "name": "Prince of the Mangaboos",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A newly grown ruler of the Mangaboos. Beautiful and cold, she regards ordinary flesh-and-blood people as troublesome strangers and soon makes their position in the glass city dangerous.",
+            "id": "princess-of-the-mangaboos",
+            "name": "Princess of the Mangaboos",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A solitary man living among cliffs, where he braids many kinds of manufactured goods from his long hair. He gives the travelers food and directions during their search for a way upward.",
+            "id": "the-braided-man",
+            "name": "The Braided Man",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The young ruler of Oz and Dorothy's friend. She possesses powerful magic and watches for Dorothy's return from a distance when the underground journey has nearly exhausted every other hope.",
+            "id": "ozma",
+            "name": "Ozma",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Dorothy's old companion, made of straw and famous in Oz for the brains the Wizard once gave him. He welcomes the travelers and is eager to compare his unusual abilities with Jim's ordinary strength.",
+            "id": "the-scarecrow",
+            "name": "The Scarecrow",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A lively wooden horse who serves Ozma and her friends. He is small beside Jim but swift, tireless, and confident that an enchanted creature can outdo a farm horse.",
+            "id": "the-sawhorse",
+            "name": "The Sawhorse",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "dorothy-and-the-wizard-in-oz"
+      },
+      "recaps": {
+        "ending": "Ozma brings Dorothy and her companions safely to Oz, where Zeb and Jim meet Dorothy's extraordinary friends. Jim races the Sawhorse and learns that an enchanted wooden horse has advantages an ordinary animal cannot match. Suspicion then falls on Eureka when one of the Wizard's nine tiny piglets disappears. At a formal trial the kitten is found guilty after seeming to admit the deed, but the Wizard produces the missing piglet alive from his coat pocket and clears her. The Wizard chooses to remain in Oz and study real magic under Glinda. Zeb is too homesick for ordinary life to settle in the fairyland, while Jim also longs for his familiar stable. Ozma uses the Magic Belt to send Zeb and Jim back to their California ranch and Dorothy and Eureka home to Kansas. The underground party therefore separates safely, with Dorothy able to visit her friends in Oz again and the Wizard at last becoming one of them.",
+        "in_short": "An earthquake in California drops Dorothy, her cousin Zeb, the horse Jim, and the kitten Eureka into a succession of countries beneath the earth. They meet Dorothy's old friend the Wizard, whose balloon has also fallen, and together escape the glass city of the vegetable Mangaboos. Their route passes through a valley of invisible people, a country of wooden Gargoyles, and a cavern of young dragons. When they can go no farther, Ozma magically carries them to Oz. After reunions and contests, Eureka is accused of eating one of the Wizard's tiny piglets, but the animal is found unharmed. The Wizard stays in Oz to learn magic, while Ozma sends homesick Zeb and Jim back to California and returns Dorothy and Eureka to Kansas.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Dorothy Gale has visited the Land of Oz more than once. On her first journey she befriended the Scarecrow and Tin Woodman and exposed the celebrated Wizard as an ordinary showman. On a later visit she met Ozma, the rightful young ruler of Oz, and helped restore the royal family of Ev. Dorothy has since returned to her Kansas home, but Ozma remains her friend.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "While visiting relatives in California, Dorothy rides from the railway station with her young cousin Zeb, his horse Jim, and her kitten Eureka. An earthquake opens the road beneath them, and the entire buggy falls into a glowing underground country. Jim and Eureka discover that they can speak there. The travelers reach a city of glass inhabited by the Mangaboos, people who grow on plants rather than being born. A balloon soon descends carrying Dorothy's old friend the Wizard of Oz. The Mangaboos blame the strangers for damage in their city, and the travelers realize that they must find another way home.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Dorothy, Zeb, the Wizard, Jim, and Eureka escape the Mangaboos through a dark passage. They emerge in the Valley of Voe, whose people and dangerous bears are invisible because of a magical fruit. With help from friendly inhabitants, the party crosses the valley without being caught by the bears. A Braided Man living alone among the cliffs supplies food and explains some of the strange lands around them. Still searching for a route toward the surface, the travelers enter a country inhabited by wooden Gargoyles, who attack intruders despite being unable to speak.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The travelers fight their way out of the Gargoyles' country and cross a cavern occupied by young dragons whose larger parents are away. At last they reach a place from which no ordinary escape seems possible. Dorothy calls on Ozma, trusting that her friend may be watching through the Magic Picture. Ozma uses the Magic Belt to bring the whole company to the Emerald City. Dorothy and the Wizard reunite with their Oz friends, while Zeb and Jim marvel at a land where beings such as the Scarecrow and Sawhorse are alive.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In Oz, Jim races the Sawhorse but cannot beat the tireless enchanted creature. A more serious dispute begins when one of the Wizard's nine tiny piglets vanishes and Eureka is accused of eating it. Ozma oversees a trial, and the kitten's own evasive answers make her look guilty. The Wizard finally produces the missing piglet alive from his pocket, proving that Eureka did not eat it. He decides to remain in Oz and learn genuine magic from Glinda. Zeb and Jim prefer their familiar California home, so Ozma sends them back to the ranch with the Magic Belt. Dorothy and Eureka are likewise returned safely to Kansas, ending the adventure with every traveler where he or she most wishes to be.",
+            "through": {
+              "chapter": 20
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "dorothy-and-the-wizard-in-oz"
+      }
+    },
     "dr-no-with-interview": {
       "characters": {
         "characters": [
@@ -3236,6 +3403,186 @@
           }
         ],
         "work": "drums-of-autumn"
+      }
+    },
+    "dumb-witness": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The Belgian detective, drawn into the case by a letter from Emily Arundell that reaches him two months late. Her uneasy reference to a supposed accident convinces Poirot that she wanted an investigation she did not dare request openly.",
+            "id": "hercule-poirot",
+            "name": "Hercule Poirot",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Poirot's English friend and the narrator of the investigation. Hastings is more willing than Poirot to accept straightforward explanations and more susceptible to a distressed relative, but he follows the case loyally.",
+            "id": "arthur-hastings",
+            "name": "Captain Arthur Hastings",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A wealthy, strong-willed elderly woman living at Littlegreen House in Market Basing. She distrusts the relatives who expect to inherit from her and is devoted to her wire-haired terrier Bob. An alarming incident prompts her to write cautiously to Poirot.",
+            "id": "emily-arundell",
+            "name": "Emily Arundell",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Emily Arundell's companion, nervous, impressionable, and accustomed to being directed by stronger personalities. She is eager to be useful and easily unsettled by conflict inside the family.",
+            "id": "wilhelmina-lawson",
+            "name": "Wilhelmina Lawson",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Emily's nephew, charming, irresponsible, and continuously in need of money. He treats his aunt's fortune as a family resource that has been unreasonably withheld and makes little effort to hide his expectations.",
+            "id": "charles-arundell",
+            "name": "Charles Arundell",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Charles's sister, elegant, restless, and also short of money despite expensive tastes. She is engaged to Dr Donaldson, whose controlled manner and serious ambitions make an odd contrast with her family.",
+            "id": "theresa-arundell",
+            "name": "Theresa Arundell",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Emily Arundell's niece, married to Dr Tanios and the mother of two children. Anxious and worn down, she complains of her husband's control while also appearing frightened of what separation would mean for her and the children.",
+            "id": "bella-tanios",
+            "name": "Bella Tanios",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Bella's husband, a doctor from Smyrna who has brought his family to England. Intelligent, courteous, and conscious that the Arundells distrust him as a foreigner, he tries to manage Bella's instability and the couple's financial troubles without making either public.",
+            "id": "jacob-tanios",
+            "name": "Dr Jacob Tanios",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Theresa's fiance, a serious young doctor interested in research and in securing a stable future before marriage. His controlled, unemotional manner makes an odd contrast with the improvident Arundell family.",
+            "id": "rex-donaldson",
+            "name": "Dr Rex Donaldson",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of two unmarried sisters in Market Basing devoted to spiritualism and table-turning. Her seances at Littlegreen House create a strange display around Emily shortly before the older woman's death.",
+            "id": "isabel-tripp",
+            "name": "Isabel Tripp",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Isabel's sister and partner in spiritualist experiments. She shares Isabel's confidence in messages from beyond and her belief that the events at Littlegreen House have a supernatural explanation.",
+            "id": "julia-tripp",
+            "name": "Julia Tripp",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Emily Arundell's lively and intelligent wire-haired terrier. He is blamed for leaving a ball at the top of the stairs before his mistress fell, though he cannot give his own account of where he carried it.",
+            "id": "bob",
+            "name": "Bob",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "dumb-witness"
+      },
+      "recaps": {
+        "ending": "Poirot proves that Bella Tanios killed Emily Arundell. Bella had stretched a cord across the stairs and placed Bob's ball nearby so that Emily's first fall would be blamed on the dog. When Emily survived and changed her will, Bella later poisoned her with phosphorus, producing symptoms that passed as a recurrence of liver disease. The luminous effect witnessed during the Tripps' séance came from the poison rather than a spirit, while Bob's habits showed that the ball had been planted. Poirot eliminates Charles and Theresa despite their greed, Dr Donaldson despite his knowledge, Miss Lawson despite inheriting, and Dr Tanios despite Bella's efforts to make him appear threatening. Faced with Poirot's conclusion and unwilling to expose her children to a public trial, Bella takes her own life after leaving an admission. Poirot treats the death as the final consequence of the case rather than a victory. Miss Lawson, who retains Emily's estate under the valid will, chooses to distribute substantial shares to the family. Bob is given a secure home with Hastings, who has been his firm advocate throughout the investigation.",
+        "in_short": "Poirot receives a delayed letter from Emily Arundell, an elderly woman who wrote after falling down the stairs at Littlegreen House. By the time he investigates, Emily has died of what was called liver disease and has disinherited her family in favour of her companion, Wilhelmina Lawson. Poirot studies Emily's indebted nephew Charles, his sister Theresa and her doctor fiance, and their cousin Bella Tanios with her husband Jacob. The fall was blamed on the terrier Bob's ball, but Bob's behaviour shows the scene was arranged. Poirot discovers that Bella stretched a cord across the stairs and later killed Emily with phosphorus, hoping to inherit for herself and her children. The poison also explains the glow seen during a spiritualist séance. Bella had tried to turn suspicion toward her husband; when Poirot confronts her, she takes her own life and leaves an admission. Lawson shares much of the inheritance, and Hastings provides Bob with a home.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Poirot receives a letter dated two months earlier from Emily Arundell of Littlegreen House, Market Basing. Emily writes guardedly about a recent accident and makes clear that she is worried, though she never directly accuses anyone. Poirot and Hastings discover that she has since died, officially from the liver trouble for which she was already being treated. Before her death she had survived a fall down the stairs, attributed to stepping on the ball of her wire-haired terrier Bob. The letter's delay and Emily's caution persuade Poirot that the fall was not accidental. He enters the household under a pretext, since the family believes there is nothing left to investigate.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Emily's relatives had gathered at Littlegreen House shortly before the fall. Her nephew Charles is openly in debt, his sister Theresa has expensive tastes and an engagement to the ambitious Dr Donaldson, and their cousin Bella Tanios is trapped in a strained marriage to Dr Jacob Tanios. All expected to benefit from Emily's estate. Instead, after the staircase incident Emily made a new will leaving almost everything to her nervous companion, Wilhelmina Lawson. The change gives Lawson a clear financial advantage but also suggests Emily wanted to prevent her family profiting from her death. Poirot studies the stairs, Bob's routines, and the household's movements, treating the supposed dumb witness as more dependable than several human accounts.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Poirot and Hastings interview the possible heirs and find motive everywhere but no simple fit. Charles and Theresa make no secret of needing money. Donaldson has medical knowledge and a practical interest in Theresa's prospects. Bella describes her husband as controlling and dangerous, while Jacob presents himself as a doctor trying to protect an unstable wife and two children. Lawson alternates between self-importance and fear, easily influenced by whoever last spoke to her. The local Tripp sisters recount a séance held at Littlegreen House, during which a strange luminous appearance surrounded Emily. The family accepted the death that followed as natural, but Poirot considers whether the apparent return of an old illness was deliberately produced.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The physical reconstruction strengthens Poirot's belief that the staircase fall was engineered. Bob did not normally leave his ball in the position where Emily supposedly stepped on it, and marks around the stair suggest a cord could have been stretched across the passage. Emily's survival explains both her fear and the rapid change to her will. Poirot also investigates the medicines, domestic supplies, and medical symptoms surrounding her later death. The séance is treated as evidence rather than superstition: the glow seen around Emily may have had a chemical cause. At the same time, tension inside the Tanios marriage increases, with Bella seeking protection and Jacob warning that her account cannot be accepted at face value.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Poirot begins to separate greed from the capacity to carry the plan through. Lawson inherited but lacked both the nerve and the foresight behind the staged accident. Charles and Theresa wanted money but their behaviour after Emily's death does not explain the careful use of Bob's ball. Donaldson's knowledge is relevant without proving that he used it. The key sequence is now clear: a first attempt made to resemble a household mishap, Emily's secret appeal to Poirot, a changed will, and a later death whose symptoms resembled her known liver complaint. Poirot identifies phosphorus as the likely poison and connects it to the strange light seen at the séance. He prepares to confront the person who could exploit both family prejudice and medical ambiguity.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Poirot identifies Bella Tanios as Emily Arundell's murderer. Bella arranged the staircase fall by stretching a cord and planting Bob's ball so the terrier would be blamed. After Emily survived, changed her will, and wrote to Poirot, Bella administered phosphorus; its effects were mistaken for liver disease, and it also produced the luminous appearance observed during the séance. Bella hoped to secure money for herself and her children and tried to shape suspicion around her husband Jacob. Bob's habits disprove the staged accident, while the medical and household evidence support the poisoning. Poirot clears Lawson, Charles, Theresa, Donaldson, and Jacob of the murder. Rather than face public arrest and expose her children to the trial, Bella takes her own life and leaves an admission. Lawson remains the legal heir but voluntarily shares the estate with the family. Hastings takes responsibility for Bob, whose behaviour supplied the silent evidence that opened the case.",
+            "through": {
+              "chapter": 30
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "dumb-witness"
       }
     },
     "dune": {
