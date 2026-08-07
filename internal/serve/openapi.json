@@ -4,7 +4,7 @@
     "title": "AudioSilo Meta API",
     "version": "1.0.0",
     "summary": "The read-only JSON API over the AudioSilo community audiobook metadata database.",
-    "description": "A read-only API over a compiled snapshot of the community metadata database at https://github.com/kodestar/audiosilo-meta.\n\nEverything here is public: there is no authentication, no API key and no rate-limit token, and every response carries permissive CORS headers (`Access-Control-Allow-Origin: *`), so a browser may call it directly. No endpoint writes anything.\n\nThe server holds one compiled artifact at a time and swaps in a newer one without a restart, so a response is always a consistent view of a single release. While no artifact has loaded yet (a cold boot still fetching the newest release) every data route answers `503` with a `Retry-After` header; `/api/v1/openapi.json` and the static site are served regardless.\n\nSome fields on `GET /works/{id}` depend on the loaded artifact's internal schema version - characters and recaps need version 2, the whole-book recap summary version 3, genres version 4. A server briefly serving an older artifact omits them rather than failing, so treat every one of them as optional.\n\nLicensing: the factual core (works, recordings, people, series) is dedicated to the public domain under CC0-1.0 and the community layer (characters, recaps) is CC BY-SA 3.0 - see LICENSING.md in the repository for what attribution the share-alike layer requires.",
+    "description": "A read-only API over a compiled snapshot of the community metadata database at https://github.com/kodestar/audiosilo-meta.\n\nEverything readable is public: no authentication, no API key and no rate-limit token, and no endpoint writes anything. (A production deployment may additionally register a release-notification hook at `/hooks/github/release`; that one route is HMAC-authenticated and is not part of the read surface.)\n\nThe API surface - `/api/v1/*` and `/abs/search` - carries permissive CORS headers (`Access-Control-Allow-Origin: *`), so a browser may call it directly. `/healthz` and the hook do not.\n\nThe server holds one compiled artifact at a time and swaps in a newer one without a restart, so a response is always a consistent view of a single release. While no artifact has loaded yet (a cold boot still fetching the newest release) every data route answers `503` with a `Retry-After` header; `/api/v1/openapi.json` and the static site are served regardless.\n\nSome fields on `GET /works/{id}` depend on the loaded artifact's internal schema version - characters and recaps need version 2, the whole-book recap summary version 3, genres version 4. A server briefly serving an older artifact omits them rather than failing, so treat every one of them as optional.\n\nLicensing: the factual core (works, recordings, people, series) is dedicated to the public domain under CC0-1.0 and the community layer (characters, recaps) is CC BY-SA 3.0 - see LICENSING.md in the repository for what attribution the share-alike layer requires.",
     "license": {
       "name": "CC0-1.0 core with a CC BY-SA 3.0 community layer",
       "url": "https://github.com/kodestar/audiosilo-meta/blob/main/LICENSING.md"
@@ -85,7 +85,7 @@
         "tags": ["Server"],
         "operationId": "openapi",
         "summary": "This document",
-        "description": "The OpenAPI description of this API. It is static, so unlike every data route it answers even while the server is still fetching its first artifact.",
+        "description": "The OpenAPI description of this API. It is static, so unlike every data route it answers even while the server is still fetching its first artifact.\n\nThe document is embedded in the binary and therefore constant for its lifetime: it is served with a strong `ETag` and a one-hour `Cache-Control`, and a conditional request revalidates instead of downloading it again.",
         "responses": {
           "200": {
             "description": "The OpenAPI 3.1 document.",
@@ -97,6 +97,9 @@
                 }
               }
             }
+          },
+          "304": {
+            "description": "The `If-None-Match` request header named the current `ETag`, so the copy the client holds is still the document. No body."
           }
         }
       }
@@ -125,7 +128,7 @@
         "tags": ["Search"],
         "operationId": "search",
         "summary": "Search works, people and series together",
-        "description": "One ranked page mixing all three kinds, ordered by full-text relevance. Every result carries a `kind` discriminator.\n\nMatching is by whole word or word prefix (the last token of the query is treated as a prefix), over work titles and the names of authors, narrators and series.\n\nA query that names a series and a number - \"jack reacher 2\", \"jack reacher book 2\", \"jack reacher #2\" - additionally resolves that volume and returns it FIRST, ahead of the relevance hits. The page stays exactly `limit` long, so the boost costs the last hit rather than widening the response. A query that resolves no such volume returns the plain relevance page.",
+        "description": "One ranked page mixing all three kinds, ordered by full-text relevance. Every result carries a `kind` discriminator.\n\nMatching is by whole word or word prefix (the last token of the query is treated as a prefix), over work titles and subtitles and the names of authors, narrators and series.\n\nA query that names a series and a number - \"jack reacher 2\", \"jack reacher book 2\", \"jack reacher #2\" - additionally resolves that volume and returns it FIRST, ahead of the relevance hits. The page stays exactly `limit` long, so the boost costs the last hit rather than widening the response. A query that resolves no such volume returns the plain relevance page.",
         "parameters": [
           { "$ref": "#/components/parameters/SearchQuery" },
           { "$ref": "#/components/parameters/SearchLimit" }
@@ -150,6 +153,7 @@
             }
           },
           "400": { "$ref": "#/components/responses/BadRequest" },
+          "500": { "$ref": "#/components/responses/ServerError" },
           "503": { "$ref": "#/components/responses/NoData" }
         }
       }
@@ -184,6 +188,7 @@
             }
           },
           "400": { "$ref": "#/components/responses/BadRequest" },
+          "500": { "$ref": "#/components/responses/ServerError" },
           "503": { "$ref": "#/components/responses/NoData" }
         }
       }
@@ -218,6 +223,7 @@
             }
           },
           "400": { "$ref": "#/components/responses/BadRequest" },
+          "500": { "$ref": "#/components/responses/ServerError" },
           "503": { "$ref": "#/components/responses/NoData" }
         }
       }
@@ -252,6 +258,7 @@
             }
           },
           "400": { "$ref": "#/components/responses/BadRequest" },
+          "500": { "$ref": "#/components/responses/ServerError" },
           "503": { "$ref": "#/components/responses/NoData" }
         }
       }
@@ -267,7 +274,7 @@
             "name": "limit",
             "in": "query",
             "required": false,
-            "description": "How many works to return. Clamped to [1, 50].",
+            "description": "How many works to return. Capped at 50; a non-numeric or non-positive value falls back to the default (12) rather than being clamped to 1.",
             "schema": { "type": "integer", "default": 12, "minimum": 1, "maximum": 50 }
           }
         ],
@@ -289,6 +296,7 @@
               }
             }
           },
+          "500": { "$ref": "#/components/responses/ServerError" },
           "503": { "$ref": "#/components/responses/NoData" }
         }
       }
@@ -310,6 +318,7 @@
             }
           },
           "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" },
           "503": { "$ref": "#/components/responses/NoData" }
         }
       }
@@ -342,6 +351,7 @@
               }
             }
           },
+          "500": { "$ref": "#/components/responses/ServerError" },
           "503": { "$ref": "#/components/responses/NoData" }
         }
       }
@@ -364,7 +374,7 @@
             "name": "limit",
             "in": "query",
             "required": false,
-            "description": "Credits per list. Clamped to [1, 500].",
+            "description": "Credits per list. Capped at 500; a non-numeric or non-positive value falls back to the default (100) rather than being clamped to 1.",
             "schema": { "type": "integer", "default": 100, "minimum": 1, "maximum": 500 }
           },
           { "$ref": "#/components/parameters/Offset" }
@@ -379,6 +389,7 @@
             }
           },
           "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" },
           "503": { "$ref": "#/components/responses/NoData" }
         }
       }
@@ -401,7 +412,7 @@
             "name": "limit",
             "in": "query",
             "required": false,
-            "description": "Member works to return. ABSENT means the whole series (there is no default window); a supplied value is clamped to [1, 500].",
+            "description": "Member works to return. ABSENT means the whole series (there is no default window); a supplied value is capped at 500. A non-numeric or non-positive value falls back to that same default - the WHOLE series - rather than being clamped to 1.",
             "schema": { "type": "integer", "minimum": 1, "maximum": 500 }
           },
           { "$ref": "#/components/parameters/Offset" }
@@ -416,6 +427,7 @@
             }
           },
           "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" },
           "503": { "$ref": "#/components/responses/NoData" }
         }
       }
@@ -456,6 +468,7 @@
             "description": "Neither `asin` nor `isbn` was supplied."
           },
           "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/ServerError" },
           "503": { "$ref": "#/components/responses/NoData" }
         }
       }
@@ -475,6 +488,7 @@
               }
             }
           },
+          "500": { "$ref": "#/components/responses/ServerError" },
           "503": { "$ref": "#/components/responses/NoData" }
         }
       }
@@ -501,7 +515,7 @@
             "name": "q",
             "in": "query",
             "required": false,
-            "description": "Narrow by full-text query over the work's title and the names of its authors, narrators and series. Whole word or word prefix, the same matching as /api/v1/search.",
+            "description": "Narrow by full-text query over the work's title and subtitle and the names of its authors, narrators and series. Whole word or word prefix, the same matching as /api/v1/search.",
             "schema": { "type": "string" }
           },
           { "$ref": "#/components/parameters/PageLimit" },
@@ -520,6 +534,7 @@
             "$ref": "#/components/responses/BadRequest",
             "description": "Unrecognized `filter` value."
           },
+          "500": { "$ref": "#/components/responses/ServerError" },
           "503": { "$ref": "#/components/responses/NoData" }
         }
       }
@@ -550,6 +565,7 @@
               }
             }
           },
+          "500": { "$ref": "#/components/responses/ServerError" },
           "503": { "$ref": "#/components/responses/NoData" }
         }
       }
@@ -559,7 +575,7 @@
         "tags": ["Audiobookshelf provider"],
         "operationId": "absSearch",
         "summary": "Audiobookshelf custom metadata provider",
-        "description": "OUTSIDE /api/v1. This is the endpoint an Audiobookshelf server calls when https://meta.audiosilo.app/abs is configured as a custom metadata provider - Audiobookshelf appends `/search` to that base URL and sends its own parameters.\n\nThe response speaks Audiobookshelf's BookMetadata shape, not this API's: one match per RECORDING (a recording is what a local audiobook is matched against), capped at 10. Only `title` is guaranteed; `duration` is in MINUTES; `genres` are human-facing labels from this project's own vocabulary; `tags` is never populated, since the data model has no tag concept.\n\nAn `isbn` is resolved exactly first (hyphens are tolerated); otherwise the query is a full-text work search, with `author` used to boost - never to filter, so a mismatched author never empties the results. No match is an empty array, never a 404.",
+        "description": "OUTSIDE /api/v1. This is the endpoint an Audiobookshelf server calls when https://meta.audiosilo.app/abs is configured as a custom metadata provider - Audiobookshelf appends `/search` to that base URL and sends its own parameters.\n\nThe response speaks Audiobookshelf's BookMetadata shape, not this API's: one match per RECORDING (a recording is what a local audiobook is matched against), capped at 10. A matched work that has no recordings yet still answers, as a single work-level match with no narrator, duration or ASIN. Only `title` is guaranteed; `duration` is in MINUTES; `genres` are human-facing labels from this project's own vocabulary; `tags` is never populated, since the data model has no tag concept.\n\nAn `isbn` is resolved exactly first (hyphens are tolerated); otherwise the query is a full-text work search, with `author` used to boost - never to filter, so a mismatched author never empties the results. No match is an empty array, never a 404.",
         "parameters": [
           {
             "name": "query",
@@ -603,6 +619,7 @@
             "$ref": "#/components/responses/BadRequest",
             "description": "`query` was missing or empty."
           },
+          "500": { "$ref": "#/components/responses/ServerError" },
           "503": { "$ref": "#/components/responses/NoData" }
         }
       }
@@ -665,14 +682,14 @@
         "name": "limit",
         "in": "query",
         "required": false,
-        "description": "How many results to return. Clamped to [1, 50]; a non-numeric or non-positive value falls back to the default.",
+        "description": "How many results to return. Capped at 50; a non-numeric or non-positive value falls back to the default (20) rather than being clamped to 1.",
         "schema": { "type": "integer", "default": 20, "minimum": 1, "maximum": 50 }
       },
       "PageLimit": {
         "name": "limit",
         "in": "query",
         "required": false,
-        "description": "Rows per page. Clamped to [1, 100].",
+        "description": "Rows per page. Capped at 100; a non-numeric or non-positive value falls back to the default (25) rather than being clamped to 1.",
         "schema": { "type": "integer", "default": 25, "minimum": 1, "maximum": 100 }
       },
       "Offset": {
@@ -708,6 +725,14 @@
       },
       "NotFound": {
         "description": "No such record.",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/Error" }
+          }
+        }
+      },
+      "ServerError": {
+        "description": "A query against the loaded artifact failed. Not expected in normal operation - an artifact is checksum-verified before it is served - so read it as a bug or a damaged snapshot rather than a condition to code around. Retrying is safe: the API is read-only.",
         "content": {
           "application/json": {
             "schema": { "$ref": "#/components/schemas/Error" }

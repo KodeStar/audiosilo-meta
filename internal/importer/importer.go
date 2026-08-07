@@ -1547,7 +1547,10 @@ func (p *planner) getOrCreateWork(title, fullTitle string, authors workAuthors, 
 		return nil
 	}
 	slug := cands[free].slug
-	if slug != base {
+	switch {
+	case model.IsReservedSlug(base):
+		warn("work slug %q is reserved for an API route; using %q for %q", base, slug, title)
+	case slug != base:
 		warn("work slug %q taken by a different book; using %q for %q", base, slug, title)
 	}
 	ws := &workState{
@@ -1587,7 +1590,7 @@ func (p *planner) findSeries(name string) *seriesState {
 		return nil
 	}
 	for i := 0; ; i++ {
-		ss, exists := p.series[NumberedSlugAt(base, i)]
+		ss, exists := p.series[SeriesSlugAt(base, i)]
 		if !exists {
 			return nil
 		}
@@ -2234,10 +2237,13 @@ func (p *planner) getOrCreateSeries(name string, warn func(string, ...any)) *ser
 		return nil
 	}
 	for i := 0; ; i++ {
-		slug := NumberedSlugAt(base, i)
+		slug := SeriesSlugAt(base, i)
 		ss, exists := p.series[slug]
 		if !exists {
-			if slug != base {
+			switch {
+			case model.IsReservedSlug(base):
+				warn("series slug %q is reserved for an API route; using %q for %q", base, slug, name)
+			case slug != base:
 				warn("series slug %q taken by a different series; using %q for %q", base, slug, name)
 			}
 			ss = &seriesState{
@@ -2430,7 +2436,14 @@ type workCandidate struct {
 // exactly that slug.
 func workCandidates(base string, authors workAuthors, pos positionClaim) (cands []workCandidate, primary int) {
 	cands = make([]workCandidate, 0, 55)
-	cands = append(cands, workCandidate{slug: base})
+	// A base that IS an API route literal ("search", "latest") is a place to
+	// LOOK and never a place to create: a work stored there is unreachable
+	// through /api/v1/works/{id} (pkg/check's checkReservedSlug refuses it), so
+	// the row steps onto the author-suffixed candidate exactly as it would for a
+	// slug another book had taken. Probing it still matters - the tree could hold
+	// a record minted before the rule, and merging into it beats forking beside
+	// it.
+	cands = append(cands, workCandidate{slug: base, probeOnly: model.IsReservedSlug(base)})
 	mintable := workSlugAt(base, authors.first(), 1)
 	cands = append(cands, workCandidate{slug: mintable})
 	seen := map[string]bool{base: true, mintable: true}
@@ -2491,6 +2504,13 @@ func workSlugAt(base, firstAuthor string, i int) string {
 	}
 	return BoundedSlugTail(base, credit+numeric)
 }
+
+// AuthorSuffixedWorkSlug is the FIRST disambiguated work-slug candidate -
+// "<base>-<firstAuthor>", bounded exactly as the bulk chain bounds it - exported
+// for internal/issueform, which steps a reserved title slug off the route
+// literal the same way this package does. One formula, so the two composers can
+// never mint two different answers to "where does the work titled Search go".
+func AuthorSuffixedWorkSlug(base, firstAuthor string) string { return workSlugAt(base, firstAuthor, 1) }
 
 // workSlugTruncated reports whether the i'th candidate had to shorten the title
 // to fit MaxSlugLen, i.e. whether the bounded candidate differs from the plain

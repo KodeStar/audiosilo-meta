@@ -16,6 +16,11 @@ export default defineConfig({
     // metaserve, so the page reads THAT file rather than a copy that could drift.
     // The production build resolves it either way; this is what additionally
     // lets `astro dev` read it.
-    server: { fs: { allow: ['..'] } },
+    //
+    // Scoped to internal/ rather than the whole repo: '..' would let the dev
+    // server hand out anything in the checkout - the entire data/ tree, a local
+    // meta.sqlite, a .env - over a port that is often bound to more than
+    // localhost. The page needs exactly one file, and it is under here.
+    server: { fs: { allow: ['../internal'] } },
   },
 })

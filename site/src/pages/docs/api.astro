@@ -245,9 +245,11 @@ const statusClass = (status: string) =>
                                 </tbody>
                               </table>
                             </div>
-                            <p class="mt-2 text-xs text-dim">
-                              <span class="text-pink-400">*</span> required
-                            </p>
+                            {op.params.some((param) => param.required) && (
+                              <p class="mt-2 text-xs text-dim">
+                                <span class="text-pink-400">*</span> required
+                              </p>
+                            )}
                           </div>
                         )}
 

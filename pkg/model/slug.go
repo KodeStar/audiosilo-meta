@@ -200,6 +200,15 @@ const UnslugPersonID = "person"
 // that substitution so a caller that CREATES the record can warn about it,
 // while a caller that only MATCHES stays silent.
 //
+// A name whose slug is a RESERVED route literal takes the one canonical variant
+// instead (ReservedPersonSlug): a person named "Search" is `search-person`. That
+// step happens here, in the one function both the minting and the checking call,
+// so the two rules a reserved person slug sits between - "the id IS the slug of
+// the name" and "no id is a route literal" - are satisfied by the same answer
+// rather than by two that could disagree. It is not a fallBack: nothing was lost
+// and no conflation happened, so a caller that warns on the catch-all stays
+// quiet here.
+//
 // It lives here, beside Slugify, because the importer mints person ids with it
 // and pkg/check verifies them against it (checkPersonSlug) - two packages that
 // cannot import each other. A second copy would be a contract with two
@@ -208,6 +217,9 @@ const UnslugPersonID = "person"
 func PersonSlug(name string) (slug string, fellBack bool) {
 	if slug = Slugify(name); slug == "" {
 		return UnslugPersonID, true
+	}
+	if IsReservedSlug(slug) {
+		return ReservedPersonSlug(slug), false
 	}
 	return slug, false
 }

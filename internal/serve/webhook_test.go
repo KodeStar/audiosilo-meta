@@ -69,6 +69,46 @@ func TestWebhookDisabledWithoutSecret(t *testing.T) {
 	}
 }
 
+// TestWebhookRouteAbsentWithoutSecret pins the ROUTE rather than the status one
+// request happened to get. The hook is the only authenticated surface on an
+// otherwise public server, so "not configured" has to mean "not registered":
+// there must be nothing to reach, not a handler that declines. A 404 alone
+// cannot say that - a static site answers 404 too - so this reads the route
+// table itself, and then confirms that on a mux WITH a site the path is served
+// by the site, which is only possible if the route was never registered.
+func TestWebhookRouteAbsentWithoutSecret(t *testing.T) {
+	registers := func(cfg Config) bool {
+		for _, r := range (&Server{cfg: cfg}).routes() {
+			if r.specPath() == githubReleaseWebhookPath {
+				return true
+			}
+		}
+		return false
+	}
+	if registers(Config{}) {
+		t.Error("the release hook is in the route table with no webhook secret configured")
+	}
+	if !registers(Config{WebhookSecret: testWebhookSecret}) {
+		t.Error("the release hook is NOT in the route table with a webhook secret configured")
+	}
+
+	srv, err := New(Config{DBPath: buildFixtureDB(t, fixtureCatalog()), Site: writeSiteFixture(t), swapGrace: time.Minute})
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, method := range []string{http.MethodPost, http.MethodGet} {
+		rec := httptest.NewRecorder()
+		srv.Handler().ServeHTTP(rec, httptest.NewRequest(method, githubReleaseWebhookPath, strings.NewReader(`{}`)))
+		if rec.Code != http.StatusNotFound {
+			t.Errorf("%s %s = %d, want 404: the route must not exist", method, githubReleaseWebhookPath, rec.Code)
+		}
+		if !strings.Contains(rec.Body.String(), "CUSTOM 404") {
+			t.Errorf("%s %s was answered by something other than the static site: %q",
+				method, githubReleaseWebhookPath, rec.Body.String())
+		}
+	}
+}
+
 func TestWebhookRejectsUnauthenticatedAndOversizedRequests(t *testing.T) {
 	seed := buildFixtureDB(t, fixtureCatalog())
 	fake := newFakeGitHub(t, tagR1, makeAssets(t, readDB(t, seed), "", nil))

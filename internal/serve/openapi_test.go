@@ -300,6 +300,10 @@ func TestOpenAPIRevalidates(t *testing.T) {
 		t.Fatal(err)
 	}
 	req.Header.Set("If-None-Match", etag)
+	// Accept-Encoding is set EXPLICITLY so the transport neither adds it nor
+	// transparently strips the Content-Encoding off the answer: this assertion is
+	// about the header the gzip middleware puts on the wire.
+	req.Header.Set("Accept-Encoding", "gzip")
 	second, err := http.DefaultClient.Do(req)
 	if err != nil {
 		t.Fatal(err)
@@ -310,6 +314,13 @@ func TestOpenAPIRevalidates(t *testing.T) {
 	}
 	if got := second.Header.Get("ETag"); got != etag {
 		t.Errorf("304 ETag = %q, want %q", got, etag)
+	}
+	// A 304 carries no body, so it must not claim one is encoded: the client
+	// applies these headers to the copy it ALREADY has, which it holds in
+	// whatever encoding it was served in. Announcing gzip here tells a client
+	// with an identity-cached copy to gunzip plain JSON (RFC 9110 15.4.5).
+	if enc := second.Header.Get("Content-Encoding"); enc != "" {
+		t.Errorf("304 Content-Encoding = %q, want none: a bodyless response encodes nothing", enc)
 	}
 	body, err := io.ReadAll(second.Body)
 	if err != nil {

@@ -355,6 +355,23 @@ func TestPersonSlugMatchesName(t *testing.T) {
 	}
 }
 
+// TestReservedSlugsAbsentIsValid is checkReservedSlug's passing fixture, and it
+// carries the case the rule had to be designed around: a person actually NAMED
+// "Search" sits at the one variant model.PersonSlug mints for a reserved word,
+// which satisfies this rule and checkPersonSlug at the same time. The near
+// misses beside it ("searching", "latest-2") prove only the whole word is taken.
+func TestReservedSlugsAbsentIsValid(t *testing.T) {
+	dir := t.TempDir()
+	files := baseValid()
+	files["people/se/search-person.json"] = `{"id":"search-person","license":"CC0-1.0","name":"Search","sources":[{"type":"user"}]}`
+	files["works/se/searching/work.json"] = `{"authors":["author-one"],"id":"searching","language":"en","license":"CC0-1.0","sources":[{"type":"user"}],"title":"Searching"}`
+	files["series/la/latest-2.json"] = `{"id":"latest-2","license":"CC0-1.0","name":"Latest","sources":[{"type":"user"}],"works":[{"position":"1","work":"searching"}]}`
+	writeEntities(t, dir, files)
+	if res := Load(dir); !res.OK() {
+		t.Fatalf("a tree whose ids merely resemble the reserved words reported problems: %v", res.Problems)
+	}
+}
+
 // TestRegionalReleaseShapesValid is the passing fixture for the regional-release
 // schema change: one production, released in two marketplaces, stays ONE
 // recording. Its isbn[] mixes a bare string (region unstated) with the
@@ -518,6 +535,32 @@ func TestLoadRuleViolations(t *testing.T) {
 					f["people/au/author-one.json"], `"name":"Author One"`, `"name":"Madeleine L'Engle"`, 1)
 			},
 			want: `person id "author-one" does not match its name "Madeleine L'Engle" (want "madeleine-lengle")`,
+		},
+		{
+			// The route-literal defect: /api/v1/works/search is a literal
+			// segment, so the work stored at that id can be found by search and
+			// then never opened. One such work was really in the tree.
+			name: "work id is a reserved route literal",
+			mutate: func(f map[string]string) {
+				f["works/se/search/work.json"] = `{"authors":["author-one"],"id":"search","language":"en","license":"CC0-1.0","sources":[{"type":"user"}],"title":"Search"}`
+			},
+			want: `work id "search" is a reserved slug`,
+		},
+		{
+			name: "series id is a reserved route literal",
+			mutate: func(f map[string]string) {
+				f["series/la/latest.json"] = `{"id":"latest","license":"CC0-1.0","name":"Latest","sources":[{"type":"user"}],"works":[{"position":"1","work":"book-one"}]}`
+			},
+			want: `series id "latest" is a reserved slug`,
+		},
+		{
+			// A person named "Search" belongs at search-person; the bare word
+			// fails this rule (and checkPersonSlug names the same fix).
+			name: "person id is a reserved route literal",
+			mutate: func(f map[string]string) {
+				f["people/se/search.json"] = `{"id":"search","license":"CC0-1.0","name":"Search","sources":[{"type":"user"}]}`
+			},
+			want: `person id "search" is a reserved slug`,
 		},
 		{
 			name: "duplicate person wikidata",
