@@ -536,6 +536,227 @@
         "work": "silence"
       }
     },
+    "silver-shadows": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An Alchemist, a trained witch and a prisoner of her own order, held in a re-education facility whose location she does not know. Everything she relied on has been taken from her: her charms, her books, her contact with the outside, and eventually daylight, food and sleep. What she has left is her mind, which the facility exists to dismantle, and a very clear understanding that visible resistance will only prolong the process. She is one of this book's two narrators.",
+            "id": "sydney-sage",
+            "name": "Sydney Sage",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A royal Moroi spirit user and the book's other narrator, left behind when the Alchemists took Sydney. He is off the medication that stabilizes him, which means his magic works and nothing else about him does. He tries to reach her through dreams, cannot, and has no legal standing to demand anything from a human order the Moroi are not willing to fight over. Grief, spirit and drink make an extremely poor combination in him.",
+            "id": "adrian-ivashkov",
+            "name": "Adrian Ivashkov",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The Alchemist directing Sydney's re-education: composed, patient and entirely convinced she is performing a kindness. She frames every deprivation as treatment and every confession as a step towards health, and she is not moved by anything Sydney says.",
+            "id": "sheridan",
+            "name": "Sheridan",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Jill Melrose"
+            ],
+            "description": "The Moroi queen's half-sister, still in hiding and now without the Alchemist who ran her protection. Bonded to Adrian, she experiences his collapse from the inside, and it costs her more than anyone around her understands.",
+            "id": "jill-dragomir",
+            "name": "Jill Dragomir",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jill's dhampir guardian, who takes Sydney's disappearance as a personal failure and puts himself into the search for her without being asked.",
+            "id": "eddie-castile",
+            "name": "Eddie Castile",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The young British dhampir guardian attached to the group, correct to the point of stiffness and more entangled in other people's lives than his manner suggests.",
+            "id": "neil-raymond",
+            "name": "Neil Raymond",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sydney's younger sister, who reported her and now has to live with what the order does with a report. She was raised to believe re-education is treatment, and the belief is not surviving contact with the result.",
+            "id": "zoe-sage",
+            "name": "Zoe Sage",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Keeper-raised dhampir attached to the group, blunt, loyal and impatient with everyone's caution about rescuing Sydney.",
+            "id": "angeline-dawes",
+            "name": "Angeline Dawes",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Moroi spirit user whose sister was restored from Strigoi by her own magic. Kind, lonely and bonded to a sister she cannot find, she is drawn to Adrian, who is the only other person who understands what spirit costs.",
+            "id": "nina-sinclair",
+            "name": "Nina Sinclair",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Alchemist detained in the same facility, held far longer than Sydney and worn down to compliance. He knows the routines, the guards and the geography, and he is a reminder of what waits at the end of the process.",
+            "id": "duncan",
+            "name": "Duncan",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The former Alchemist who broke Sydney's tattoo, brought back into the search because he knows more about the order's internal workings than anyone else who will speak to Moroi.",
+            "id": "marcus-finch",
+            "name": "Marcus Finch",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Moroi spirit user and restored former Strigoi who lends the search her contacts and her judgement, and keeps the group's rescue effort from becoming a suicide attempt.",
+            "id": "sonya-karp",
+            "name": "Sonya Karp",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A dhampir guardian of formidable reputation, himself once Strigoi and restored, who joins the effort to find Sydney because the people asking are his people.",
+            "id": "dimitri-belikov",
+            "name": "Dimitri Belikov",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Ms. Terwilliger",
+              "Jackie"
+            ],
+            "description": "The witch who trained Sydney, now trying to help find her by means the Moroi and the dhampirs cannot supply, and painfully aware that she is the reason Sydney had anything worth hiding.",
+            "id": "jaclyn-terwilliger",
+            "name": "Jaclyn Terwilliger",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Nina's older sister: a Moroi who was Strigoi and was restored by her sister's spirit magic, one of a handful of people this has ever happened to, and therefore of enormous interest to anyone who studies the condition. She has been held and examined rather than helped.",
+            "id": "olive-sinclair",
+            "name": "Olive Sinclair",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "silver-shadows"
+      },
+      "recaps": {
+        "ending": "Sydney gets herself and Olive Sinclair out of the re-education facility, using magic she improvises from whatever the place will let her hold, and the escape converges with the rescue Adrian, Marcus, Eddie, Neil, Dimitri and Sonya have finally been able to mount once the location was known. Olive is pregnant, and the father is Neil Raymond - a child conceived between a restored Moroi and a dhampir, which by everything the Moroi believe about themselves should not be possible, and which is exactly the kind of fact the Alchemists were holding her to study. Sydney comes out of the facility physically wrecked and clear-headed, having spent months performing a conversion she never underwent. Adrian, who had been drinking, using spirit without his medication and had come close to giving up on her - including a moment with Nina Sinclair that he regrets and admits to - is reunited with her. Neither of them intends to be separated again or to leave the decision to anyone else, so they marry in Las Vegas, immediately and without asking permission from the Alchemists, the Moroi or their own families. Sydney is now a fugitive from her order rather than a target of it, Jill is still in hiding, Zoe is left with what she set in motion, and Olive's pregnancy is a secret several very powerful groups would want.",
+        "in_short": "Sydney is held in an Alchemist re-education facility: underground, windowless, deliberately starved of food, sleep, daylight and information, and worked on until she renounces vampires and confesses to corruption. She refuses, is punished, and then changes tactics and performs the conversion her captors want, buying herself movement, privileges and time. Outside, Adrian falls apart - off his medication, drinking, unable to reach her through dreams - while Eddie, Neil, Marcus, Sonya and Dimitri hunt for a facility the Alchemists have hidden for generations, and Zoe lives with having reported her own sister. Inside, Sydney finds another prisoner: Olive Sinclair, a Moroi restored from Strigoi, held for study rather than reform - and pregnant, by the dhampir Neil Raymond, which should be impossible. Sydney improvises magic out of nothing and gets them both out as the rescue party closes in from outside. Reunited and refusing to be separated again by anyone's rules, she and Adrian marry in Las Vegas.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Sydney Sage is an Alchemist - one of a secret human order that hides vampires from the world - who spent two years running the assignment that concealed Jill Dragomir, the Moroi queen's half-sister, at a human school in Palm Springs. In that time she discovered she is a witch, was trained in secret, learned from the defector Marcus Finch that the Alchemists' golden lily tattoo carries compulsion, and had hers broken so she could pass as loyal while being nothing of the kind. She also fell in love with Adrian Ivashkov, a royal Moroi spirit user who is psychically bonded to Jill, and they began a relationship that her order regards as the worst corruption possible. Adrian, meanwhile, stopped taking the medication that steadies his moods so he could use spirit for research into preventing Strigoi conversion, work carried out with Sonya Karp and Nina Sinclair. Sydney's younger sister Zoe, newly made an Alchemist and posted as her partner, discovered the relationship and reported it. At the end of the last book Sydney was seized in daylight, stripped of her charms and driven into the desert to be re-educated - a process she had already seen the results of in a man who came out of it hollow.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sydney wakes in a cell with no window, no clock and no way of knowing where she is. The facility is run as a course of treatment: she is told she has been corrupted by vampires, that her family loves her, and that she will be released once she is well. Cooperation earns light, food and company; refusal earns darkness, hunger and hours of recorded instruction. The Alchemist directing her case is calm, kind in manner and completely immovable. Sydney refuses to confess to anything and is punished for it. Outside, Adrian has no idea where she has been taken. The Alchemists will not acknowledge holding her, the Moroi are not willing to start a war with them over one human girl, and Adrian - off his medication and drinking again - cannot reach her in dreams the way he can reach anyone else.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The pressure escalates. Sydney is deprived of sleep and food for long stretches, kept in the dark, and given confession scripts to repeat until they sound like her own. She works out that open defiance simply extends the process indefinitely, and begins to give her captors small, slow, believable concessions instead. She learns the shape of the place: other detainees, guards, the rhythm of the day, the fact that she is not the only person here and not the longest-serving. Outside, Eddie, Neil and the others start searching in earnest, Sonya lends her contacts, and Marcus Finch is brought in because he knows more about the Alchemists' internal machinery than anyone willing to speak to Moroi. Zoe, who set all of this in motion, is discovering that re-education is not what she was told it was.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sydney commits fully to the performance: she confesses, repents, accepts the doctrine and behaves like a model patient. It works. She is moved out of isolation into the facility's social routine, allowed classes, meals and supervised contact, and she uses every inch of it to map the building and learn its habits. She befriends a long-term detainee who has been broken into genuine compliance and knows the place inside out. What she cannot get is anything to work magic with, so she starts learning to do without her charms and books. Outside, the search narrows, and Adrian's condition worsens: spirit without medication has him swinging between frantic activity and collapse, and Jill takes the worst of it through the bond.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sydney discovers that the facility holds someone who is not there for re-education at all: Olive Sinclair, Nina's sister, a Moroi who was Strigoi and was restored, kept and examined as a specimen. Olive is also pregnant, and the father is Neil Raymond - a child between a restored Moroi and a dhampir, which everything the Moroi believe about themselves says cannot happen. It is a fact that would matter enormously to several groups, and the Alchemists have it locked underground. Sydney now has a second person to get out and a reason larger than herself. Outside, Adrian has stopped believing she is alive; drinking, unmedicated and grieving, he lets himself drift towards Nina, who understands spirit as nobody else does, and pulls back from it.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sydney plans the escape from inside with nothing but improvised materials and the magic she can work without tools, while the search outside finally produces the facility's location. She has to weigh who can be brought out and who is too far gone to want to leave. Adrian pulls himself together enough to be useful, and the rescue is assembled: Marcus for the Alchemist side of it, Eddie, Neil, Dimitri and Sonya for the rest. Sydney's own preparations and the rescue party's timetable are set independently of each other, and both are running towards the same night, in the middle of a desert where there is nowhere to hide if either goes wrong.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sydney gets herself and Olive out, working magic from improvised materials, and the escape meets the rescue party coming the other way. She has been in the facility for months, is physically wrecked, and never converted at all - the model patient was a performance kept up for the whole of it. Olive's pregnancy comes out, with Neil as the father, and with it the fact that a restored Moroi can conceive with a dhampir. Adrian, who had been unmedicated, drinking and briefly convinced she was gone - including a moment with Nina that he admits to - has her back. Rather than let the Alchemists, the Moroi or their families decide anything else for them, Sydney and Adrian go to Las Vegas and marry immediately. Sydney is now a fugitive from her own order, Jill is still hiding, Zoe has to live with what her report produced, and the news about Olive is a secret with very dangerous value.",
+            "through": {
+              "chapter": 26
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "silver-shadows"
+      }
+    },
     "silvers": {
       "characters": {
         "characters": [
@@ -1557,6 +1778,213 @@
           }
         ],
         "work": "skin-game"
+      }
+    },
+    "skulduggery-pleasant": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Valkyrie Cain"
+            ],
+            "description": "A twelve-year-old girl from the coastal town of Haggard, north of Dublin, living an ordinary life with her parents and bored by most of it. She was closer to her uncle Gordon than to anyone else in the family, read his horror novels against her mother's wishes, and treated his big house outside town as the most interesting place she knew. She is stubborn, sharp-tongued, hard to frighten and almost impossible to send home once she has decided to stay. Gordon's sudden death draws her to the reading of his will and into the company of a stranger nobody else seems willing to talk about.",
+            "id": "valkyrie-cain",
+            "name": "Stephanie Edgley",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A detective who turns up at Gordon Edgley's funeral wrapped in a long coat, scarf, hat and sunglasses, and leaves without explaining himself. Under the disguise there is no face at all: he is a walking, talking skeleton, a sorcerer who died a very long time ago and came back anyway. He is an Elemental, commanding fire, air, water and earth, wears a well-cut suit, drives an old Bentley, and talks almost constantly, usually to irritate whoever he is fighting. He was a friend of Gordon's, and his interest in Gordon's death goes far beyond courtesy.",
+            "id": "skulduggery-pleasant",
+            "name": "Skulduggery Pleasant",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Stephanie's uncle, a wealthy and widely read writer of horror novels, whose sudden death opens the book. He was the one relative who spoke to Stephanie as an equal, and he left behind a house full of books, oddities and research notes. His work turns out to have strayed into subjects that got him killed.",
+            "id": "gordon-edgley",
+            "name": "Gordon Edgley",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Stephanie's father and Gordon's brother: amiable, easily distracted, fond of bad jokes and entirely unaware of the world his daughter is stepping into. He and Stephanie's mother, Melissa, are the ordinary life she has to keep lying to.",
+            "id": "desmond-edgley",
+            "name": "Desmond Edgley",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A sorcerer who served the dark mage Mevolent through the war and changed sides only when defeat was certain, buying a truce he has never honoured in spirit. Unhurried and courteous in a way that is worse than shouting, he is known for his red right hand, a skinless thing that kills with a gesture and a great deal of pain. He is searching for something Gordon Edgley had learned, and Skulduggery has old and personal reasons to want him stopped.",
+            "id": "nefarian-serpine",
+            "name": "Nefarian Serpine",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The dark sorcerer who fought a long war to tear open the way for the Faceless Ones and rule beside them. He was defeated a lifetime ago and is spoken of as dead, but his lieutenants outlived him and his cause has never entirely gone away.",
+            "id": "mevolent",
+            "name": "Mevolent",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A tailor whose suits and coats are stitched through with protective magic, and a retired fighter whose face has been crossed with scars since birth because of a curse laid on his mother. He is calm, loyal and slow to anger, keeps well clear of Sanctuary politics, and has never yet refused Skulduggery anything. He can turn his skin to stone.",
+            "id": "ghastly-bespoke",
+            "name": "Ghastly Bespoke",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young English sorcerer who arrives in Ireland on Sanctuary business: cheerful, blunt, and formidably good with the sword she carries strapped to her back. Her particular talent lets her walk up walls and across ceilings as easily as a floor. She takes to Stephanie at once and treats her as a colleague rather than a child in the way.",
+            "id": "tanith-low",
+            "name": "Tanith Low",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The keeper of an enormous private library in Dublin and a dealer in information, artefacts and favours. Her magic makes everyone who looks at her love her, an advantage she uses without the slightest embarrassment. She has a long and complicated history with Skulduggery, and she keeps her loyalties flexible enough to survive whichever side wins.",
+            "id": "china-sorrows",
+            "name": "China Sorrows",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Grand Mage of the Irish Sanctuary, an elderly and courteous man who helped lead the war against Mevolent and now presides over a peace he does not entirely trust. He is one of three Elders who govern magic in Ireland.",
+            "id": "eachan-meritorious",
+            "name": "Eachan Meritorious",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the three Elders of the Irish Sanctuary, composed and severe, and inclined to keep the magical world's business well away from ordinary people.",
+            "id": "morwenna-crow",
+            "name": "Morwenna Crow",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The third Elder of the Irish Sanctuary, an anxious, irritable man who would rather the past stayed buried and who has little patience for Skulduggery's methods.",
+            "id": "sagacious-tome",
+            "name": "Sagacious Tome",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A very large, bald, softly spoken sorcerer of enormous physical strength, and China Sorrows's brother. He belongs to no faction, states his intentions rarely, and is treated with caution by everyone on every side.",
+            "id": "mr-bliss",
+            "name": "Mr Bliss",
+            "reveal": {
+              "chapter": 24
+            }
+          },
+          {
+            "description": "A Sanctuary soldier killed in the line of duty and brought back to serve Serpine, dressed in white instead of the Cleavers' grey. He never speaks, never tires and never stops, and he fights with a scythe.",
+            "id": "the-white-cleaver",
+            "name": "The White Cleaver",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "skulduggery-pleasant"
+      },
+      "recaps": {
+        "ending": "Valkyrie gets the Sceptre back and uses it herself, killing Nefarian Serpine and ending the threat he posed to the Sanctuary, to her family and to the world Gordon died trying to warn people about. It also settles, at least partly, the debt owed for the murder of Skulduggery's wife and child and for Skulduggery's own death during the war. Skulduggery, badly damaged by his captivity, is put back together and returns to work. The Sanctuary survives the attack on it and the Elders remain in place, but the ease with which Serpine reached them has shaken everyone's confidence in the peace that followed the war. Valkyrie goes home to Haggard and to parents who know nothing about any of it, and she decides that she is not going back to an ordinary life: she stays on as Skulduggery's partner, keeps the name Valkyrie Cain, and continues her training as an Elemental. Gordon's house, his fortune and his research are hers. The Faceless Ones remain a distant threat rather than a defeated one, and Serpine was not the only one of Mevolent's people who survived the war.",
+        "in_short": "When her uncle Gordon, a horror novelist, dies suddenly, twelve-year-old Stephanie Edgley inherits his house and estate and meets Skulduggery Pleasant, a skeleton detective who investigates Gordon's death and reveals that magic is real. Attacked at Gordon's house by a man demanding a mysterious key, Stephanie becomes Skulduggery's partner, takes the protective name Valkyrie Cain, and begins learning Elemental magic. The killer is Nefarian Serpine, once a lieutenant of the dark sorcerer Mevolent and the man who tortured and killed Skulduggery during the war. Serpine is hunting the Sceptre of the Ancients, a weapon that can destroy anything and that was once used to drive out the Faceless Ones, the dark gods who ruled before mankind. With help from Tanith Low, Ghastly Bespoke and the information broker China Sorrows, Valkyrie finds the Sceptre first, and it binds itself to her. Serpine takes it, captures Skulduggery and attacks the Sanctuary, but Valkyrie recovers the weapon and kills him with it. She goes home, tells her parents nothing, and stays on as Skulduggery's partner.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Gordon Edgley, a rich and successful writer of horror novels, dies suddenly, and his will leaves his house, his fortune and his estate to his twelve-year-old niece Stephanie, to the loud disgust of the rest of the family. At the funeral and again at the reading of the will, Stephanie notices a stranger in a long coat, hat, scarf and sunglasses who says almost nothing and leaves without explaining who he is. Staying alone at Gordon's house during a storm, she is attacked by a man who demands that she hand over a key she has never heard of. The stranger comes back and drives him off with fire, and when the fight is over he takes off the disguise: there is no face underneath, only a skull. He introduces himself as Skulduggery Pleasant, a detective, and tells her that magic is real, that a whole hidden world runs alongside the ordinary one, and that her uncle did not die of natural causes. Gordon was murdered.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Skulduggery tries to send Stephanie back to her parents and fails; she insists on being part of the investigation, and he gives in. He explains how magic works: sorcerers are broadly either Elementals, who command fire, air, water and earth, or Adepts, who specialise in stranger disciplines, and their affairs are governed by Sanctuaries, with Ireland's run by three Elders. A generation ago a war was fought against the dark sorcerer Mevolent, who wanted to bring back the Faceless Ones, the dark gods who ruled the world before humanity. Mevolent lost, but several of his lieutenants survived. Skulduggery also warns her that names carry power: the name you are given can be used against you, so sorcerers take a name of their own choosing as protection. Stephanie chooses Valkyrie Cain. The obvious suspect in Gordon's murder is Nefarian Serpine, who changed sides at the end of the war and was never punished for anything he did during it. Skulduggery takes Valkyrie to Ghastly Bespoke, a scarred tailor who makes her clothing stitched with protective magic.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Valkyrie begins learning Elemental magic, starting with the basics of air, and meets more of Skulduggery's world: Tanith Low, a sword-carrying young sorcerer from England who can walk up walls, and China Sorrows, who keeps a vast library, sells information to whoever pays, and is magically impossible not to love. From them and from Gordon's own notes, the object everyone is chasing takes shape: the Sceptre of the Ancients, a weapon made by the first sorcerers and used to drive the Faceless Ones out of the world. It has been a legend for centuries, but Gordon had been researching it seriously, and the key Serpine's man came for is part of the route to where it lies. Serpine's servants, including Hollow Men, paper-skinned things filled with foul gas, come after Valkyrie more than once, and it becomes clear that Serpine believes she has what he needs.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Skulduggery brings the matter to the Sanctuary, where Grand Mage Eachan Meritorious and the Elders Morwenna Crow and Sagacious Tome are reluctant to move openly against Serpine, whose truce is protected by treaty. Valkyrie learns why the case is personal for Skulduggery: during the war Serpine had his wife and child killed and then tortured and killed Skulduggery himself, and Skulduggery came back from death as bones held together by magic and rage. Other interested parties circle the investigation, among them Mr Bliss, China's enormously strong brother, whose loyalties nobody can read. Serpine's attacks escalate, and Valkyrie is nearly killed more than once while she is still barely able to control the magic she is learning.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Working from Gordon's research, Skulduggery and Valkyrie reach the underground chamber where the Sceptre of the Ancients was hidden. Valkyrie is the one who takes hold of it, and because she is the first living person to touch it, the weapon binds itself to her and will answer to nobody else while she lives. It fires a black lightning that destroys whatever it strikes. Serpine's forces take it from them, and Serpine now has a servant nobody expected: a Sanctuary Cleaver, killed and brought back in white, silent and relentless. Skulduggery is captured and taken to Serpine's castle, where Serpine sets about repaying, at length, the centuries of pursuit. Valkyrie is left with Tanith and Ghastly, the Sanctuary in disarray, and no way of knowing whether her partner still exists.",
+            "through": {
+              "chapter": 31
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Valkyrie, Tanith and Ghastly go after Skulduggery. Serpine, meanwhile, moves against the Sanctuary itself: his Hollow Men and the White Cleaver overwhelm its defences, Cleavers die, and the Elders are pushed to the edge of defeat. Serpine's aim is not merely revenge on the people who forced his surrender. He wants the road opened for the Faceless Ones, and with the Sceptre in his possession he believes nothing in the world can stop him from doing it. Skulduggery is found broken and scattered by what Serpine has done to him, and it falls to Valkyrie to reach the Sceptre before Serpine can finish what he has started.",
+            "through": {
+              "chapter": 38
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Valkyrie recovers the Sceptre and uses it on Serpine, killing him and ending both his plan and the long debt owed for Skulduggery's murdered family. The Sanctuary survives, but the attack has shown how thin the peace after the war really is. Skulduggery is repaired and back on his feet, and Gordon's murder is closed. Valkyrie goes home to parents who still believe she has spent the summer tidying her uncle's house, and she chooses not to go back to the life she had: she keeps the name Valkyrie Cain, keeps training as an Elemental, and stays on as Skulduggery Pleasant's partner. Gordon's house and everything in it, including his research, are hers now. The Faceless Ones remain out there, and Serpine was not the only one of Mevolent's people to survive the war.",
+            "through": {
+              "chapter": 45
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "skulduggery-pleasant"
       }
     },
     "skysworn": {

@@ -1703,6 +1703,249 @@
         "work": "redawn"
       }
     },
+    "redwall": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Matthias of Redwall"
+            ],
+            "description": "A young novice mouse at Redwall Abbey, clumsy in a habit and sandals that never seem to fit him, forever tripping over his own feet during the Abbey's quiet duties. He is far more interested in the great tapestry in Redwall's hall, which shows Martin the Warrior, the mouse who founded the Abbey's peace, than he is in kitchen work or the herb beds. Good-hearted, stubborn and untrained, he has no idea how to fight, but he is the first at the Abbey to take the news of an approaching rat horde entirely seriously.",
+            "id": "matthias",
+            "name": "Matthias",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Cluny the Scourge",
+              "the Scourge"
+            ],
+            "description": "An enormous one-eyed rat warlord, a former ship's rat whose name is used to frighten the young across the whole country. He is scarred, missing an eye, and fights with a long muscular tail that he uses as a whip and a weapon. He travels with a horde of rats, weasels, stoats and ferrets who follow him out of terror rather than loyalty, and he rules them by fear, killing any captain who questions him. He arrives in Mossflower country looking for a stronghold to hold as his own.",
+            "id": "cluny",
+            "name": "Cluny",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The elderly Abbot of Redwall, a mouse who has led the Abbey most of his long life and whose golden jubilee the Abbey is preparing to celebrate. He is a healer and a pacifist, convinced that Redwall's open door and its care of the sick and hungry are worth more than any weapon, and he is reluctant to let his community think of itself as a fortress.",
+            "id": "abbot-mortimer",
+            "name": "Abbot Mortimer",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young fieldmouse living at the Abbey with her parents, practical and warm, who works in Redwall's kitchens and orchard. She and Matthias are close from the start, and she is the one who notices when he goes quiet with worry.",
+            "id": "cornflower",
+            "name": "Cornflower",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The badger of Redwall, immensely strong and normally placid, who pulls the Abbey cart and looks after the smallest creatures. When danger comes she is the most formidable fighter inside the walls, and she takes charge of the practical business of defending them: watches, weapons, barricades. She has little patience with the Abbot's reluctance to prepare for war.",
+            "id": "constance",
+            "name": "Constance",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The ancient gatehouse keeper and recorder of Redwall, so old that nobody remembers him young. He keeps the Abbey's books and histories, reads old and forgotten scripts, and enjoys a puzzle more than almost anything. He becomes Matthias's teacher and closest confidant once Matthias begins asking what became of Martin the Warrior's sword.",
+            "id": "methuselah",
+            "name": "Methuselah",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Abbey's hedgehog cellarkeeper, in charge of the barrels of October ale and strawberry cordial and fiercely protective of his stores. Prickly in both senses, he is a steady presence in the Abbey's defence.",
+            "id": "ambrose-spike",
+            "name": "Ambrose Spike",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A vixen who lives in Mossflower Wood and sells her skills as a healer to whoever will pay. She attaches herself to the rat horde as its doctor, and she is entirely willing to trade what she learns in one camp for goods from another.",
+            "id": "sela",
+            "name": "Sela",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Sela's grown son, a young fox who assists his mother and shares her trade in information. Greedy, sly, and less careful than she is, he is chiefly interested in what he can steal.",
+            "id": "chickenhound",
+            "name": "Chickenhound",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Basil"
+            ],
+            "description": "A hare living rough in Mossflower Wood, a retired scout and forager with a monocle-and-parade-ground manner of speech and an appetite that never stops. Beneath the bluster he is an expert tracker, silent when he needs to be, and a dangerous fighter with his long hind legs. He attaches himself to the Abbey's cause largely for the meals, and stays for the friendship.",
+            "id": "basil-stag-hare",
+            "name": "Basil Stag Hare",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A squirrel of Mossflower and the finest climber in the country, able to go up a sheer wall where nobody else can. She lives near the Abbey with her small son and lends her skill to Redwall when a climb is the only way to get something done.",
+            "id": "jess-squirrel",
+            "name": "Jess Squirrel",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young sparrow of the tribe that nests in the roof spaces high above Redwall, a fierce and aggressive people who speak a clipped tongue of their own and regard everything below them as beneath notice. She is small, quick-tempered and curious, and she is the first of her tribe to treat a captured mouse as something other than food or an enemy.",
+            "id": "warbeak",
+            "name": "Warbeak",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The king of the sparrow tribe in the Abbey roof, an old bird whose grip on his own mind is slipping. He rules by violence and hoards a collection of things taken from below, including one bright object he will let nobody touch or even look at.",
+            "id": "king-bull-sparra",
+            "name": "King Bull Sparra",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The leader of a large, quarrelsome tribe of shrews who live along the river in Mossflower and argue about everything, including whether to argue. He is a ferryman and a rope-handler, tough and loyal once his loyalty is won, and his name is a title passed to whoever leads the tribe.",
+            "id": "log-a-log",
+            "name": "Log-a-Log",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A huge white owl who rules a stretch of the woods and makes no secret of eating anyone small enough to carry off. Vain about his own reputation, he can be handled by a creature who knows which name to drop in front of him.",
+            "id": "captain-snow",
+            "name": "Captain Snow",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Asmodeus Poisonteeth"
+            ],
+            "description": "An enormous adder living beneath the old quarry, feared throughout Mossflower and spoken of only in whispers. His gaze holds his prey still while he takes his time, and no creature who has gone looking for him has come back. Whatever he takes is dragged down into his lair and kept there.",
+            "id": "asmodeus",
+            "name": "Asmodeus",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "redwall"
+      },
+      "recaps": {
+        "ending": "Matthias returns with the sword and with allies gathered on his journey, and Redwall's defenders retake the Abbey. Matthias hunts Cluny through the building and up into the belfry, where he cuts through the ropes holding the great bell so that it falls and kills the warlord. Leaderless, the horde breaks and scatters into the woods. The victory is costly: old Abbot Mortimer does not survive the fighting, and before he dies he names Matthias the Warrior of Redwall and asks that the Abbey stay what it has always been, a place that heals rather than conquers. Methuselah is already dead, killed by the young fox Chickenhound, who robbed the gatehouse and fled south. Martin's sword is hung in Great Hall where any creature can see it, and Matthias takes on the duty that goes with it. Warbeak becomes queen of the sparrows in the roof and keeps her friendship with the Abbey. Matthias and Cornflower marry, and the closing pages look ahead to the seasons of peace that follow and to their son, Mattimeo, who will grow up in an Abbey that now has a warrior as well as an abbot.",
+        "in_short": "Redwall Abbey, a peaceable house of mice and woodlanders in Mossflower Wood, is threatened when the rat warlord Cluny the Scourge and his horde seize the ruined church nearby and decide the Abbey will be their fortress. Matthias, a clumsy young novice who idolizes the Abbey's founder, Martin the Warrior, becomes convinced that Redwall can only be saved by recovering Martin's lost sword. Guided by riddles the ancient recorder Methuselah unpicks, he is captured by the sparrow tribe in the Abbey roof, escapes with the young sparrow Warbeak, and follows the sword's trail across Mossflower, gathering a hare, a squirrel, a tribe of shrews and the sparrows as allies, and finally killing the adder Asmodeus in his lair to take the weapon back. Meanwhile Constance the badger holds the walls through siege, tunnelling and treachery until Cluny at last gets inside. Matthias returns, and in the belfry he brings the Abbey's great bell down on Cluny. The Abbot dies of his wounds after naming Matthias the Warrior of Redwall.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Redwall Abbey stands in Mossflower Wood, a red sandstone house of mice and woodland creatures who farm, brew, and take in anyone who arrives hungry or hurt. Matthias, a young novice with a gift for tripping over his own habit, is more interested in the Abbey's great tapestry of Martin the Warrior, its founder, than in the duties the elderly Abbot Mortimer sets him. The Abbey is preparing a jubilee feast for the Abbot when word comes that Cluny the Scourge, a one-eyed rat warlord whose name is used to frighten children, has come into the country with a horde behind him and taken over the ruined church of Saint Ninian's along the south road. Cluny wants a stronghold, and Redwall's walls are the best building for miles. He sends his terms and is refused. Constance the badger begins organizing a defence over the Abbot's misgivings, and Matthias, who has never held a weapon, volunteers for the wall.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Cluny probes the Abbey and finds it harder than he expected: the gates hold, the defenders shoot back, and his captains begin to fear him more than they fear Redwall. He kills one of them for arguing. Sela, a vixen healer from the woods, attaches herself to the horde and quietly sells what she learns to both sides, with her son Chickenhound running her errands. Cluny sends a climber over the Abbey wall by night to steal the tapestry of Martin the Warrior, reasoning that taking the Redwallers' symbol will break their nerve. The thief is caught on the wall and killed, but the tapestry is already gone. Instead of despairing, Matthias decides that if the image of Martin can be stolen, the reality cannot: Martin's sword, lost long ago, must still exist somewhere, and Redwall needs it. Methuselah, the Abbey's ancient recorder, starts working through old writings and inscriptions with him.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The siege settles into a long, ugly business. Cluny builds a battering ram and it is destroyed; he tries to tunnel under the wall and the Abbey's moles collapse the tunnel on the diggers; his archers are answered from the ramparts. He takes a family of voles hostage at Saint Ninian's to force a surrender, and Matthias, out beyond the walls for the first time, meets Basil Stag Hare, a boastful and very capable old campaigner who helps him get the prisoners out. In a night assault Cluny is knocked from the Abbey wall and lies senseless for days; a captain who claims his place is killed the moment he wakes. Inside Redwall, Methuselah's reading of the Abbey's oldest inscriptions convinces him and Matthias that the trail of Martin's sword begins above their heads, with the tribe of sparrows that nests in the Abbey roof and steals whatever shines.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Matthias climbs into the roof spaces and is taken prisoner by the sparrow tribe, a fierce people with their own clipped speech and their own court, ruled by the increasingly unhinged King Bull Sparra. The king does indeed hold Martin's sword among his hoard and will let nobody near it. A young sparrow called Warbeak is set to guard the captive and, against every custom of her tribe, begins to treat him as a friend. When Matthias moves for the sword, Bull Sparra seizes it and pitches off the roof in his madness, falling to his death far below, and the sword is lost somewhere outside the Abbey grounds. Matthias gets out of the roof alive with Warbeak, whose friendship becomes an alliance. With the sword's trail now leading away from Redwall, Matthias leaves the Abbey to follow it, taking Basil Stag Hare and Jess Squirrel with him while Constance holds the walls.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Matthias's search takes him across Mossflower. He falls in with the Guosim shrews, a loud and quarrelsome river tribe, and wins the loyalty of their leader, Log-a-Log. He deals with Captain Snow, a great owl who eats anyone small enough to carry, by using the name of a creature the owl cannot stand. The clues converge on the old quarry and on Asmodeus Poisonteeth, an enormous adder who took the fallen sword down into his lair and whose gaze holds prey helpless. Back at the Abbey, Cluny discovers Sela's double-dealing and turns on the foxes, and the siege grinds on with the defenders thinning and the walls harder to man each week.",
+            "through": {
+              "chapter": 36
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Matthias goes down into the adder's lair beneath the quarry. He resists Asmodeus's hypnotic gaze long enough to reach the sword the snake has hoarded, and kills him with it. The weapon Martin the Warrior carried is back in the hands of a Redwaller. Matthias turns for home, and he does not come alone: Basil, Jess Squirrel, Log-a-Log's shrews and Warbeak's sparrows all march with him. He also comes back changed, no longer a novice playing at being a warrior. At Redwall the situation is at its worst. Sela the vixen has been executed for double-dealing and her son Chickenhound, left for dead, was carried inside and nursed back to health by the Abbey, which he repaid by robbing the gatehouse and killing old Methuselah before he fled. The defenders are exhausted, the horde has learned the walls, and Cluny, recovered and more dangerous for having been humiliated, is preparing the assault that will finish it.",
+            "through": {
+              "chapter": 43
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Cluny finally gets inside Redwall by treachery, using the cover of a parley to seize the gate, and the Abbey falls. Its people are made prisoners in their own home, with Constance and the Abbot held and the horde looting the cellars and the kitchens. Cluny has what he came for and begins turning the Abbey into the fortress he always wanted. It is at that moment that Matthias returns with the sword and with the army he gathered on the road. The shrews and the sparrows and the woodlanders attack from outside while the Redwallers rise inside, and the fight moves from the grounds into the building itself, room by room, with Matthias looking for Cluny and Cluny, for the first time in his life, being hunted.",
+            "through": {
+              "chapter": 51
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The battle ends in the Abbey belfry. Matthias corners Cluny beneath the great bell and cuts through the ropes holding it, and the falling bell kills the warlord. With Cluny dead the horde breaks apart and scatters into the woods, and Redwall is free. The cost is heavy. Methuselah is already dead at Chickenhound's hands, and Abbot Mortimer does not survive his wounds; before he dies he names Matthias the Warrior of Redwall and asks that the Abbey remain a house of healing rather than a fortress. Martin's sword is hung in Great Hall alongside the recovered story of its owner, and Matthias accepts the duty that comes with it. Warbeak becomes ruler of the sparrows in the roof and keeps peace with those below. Matthias and Cornflower marry, and the Abbey settles into the seasons of quiet that follow, with their son Mattimeo growing up under the sword his father carried.",
+            "through": {
+              "chapter": 58
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "redwall"
+      }
+    },
     "regicide": {
       "characters": {
         "characters": [

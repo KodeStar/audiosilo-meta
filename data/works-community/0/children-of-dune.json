@@ -3034,6 +3034,492 @@
         "work": "clockwork-angel"
       }
     },
+    "clockwork-prince": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Theresa Gray"
+            ],
+            "description": "An American girl of sixteen, stranded in London and living at the London Institute among Shadowhunters. She can Change: holding an object that belonged to someone, she takes on that person's shape and can reach their thoughts and memories, an ability she has no explanation for. Her aunt is dead, her brother has betrayed her, and the mundane inventor who wants her is still at large, so the Institute is both refuge and the only place working against him. Bookish and stubborn, she reads her way through the Institute library, insists on being useful to the search rather than protected from it, and finds herself caught between Will Herondale, who has turned deliberately cold toward her, and his gravely ill parabatai Jem Carstairs, who has not.",
+            "id": "tessa-gray",
+            "name": "Tessa Gray",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "William Herondale"
+            ],
+            "description": "A seventeen-year-old Shadowhunter of the London Institute, Welsh by birth, who came to the Institute as a boy and has not seen his family since. He is a gifted, reckless fighter with a cruel and quotable tongue, given to drinking, gambling and disappearing at night, and he works hard at being disliked. He was the one who pulled Tessa out of the Dark Sisters' house and has been distant and insulting to her ever since. Only Jem Carstairs, his parabatai, is allowed close to him, and even Jem does not know what Will is hiding or why he goes out alone.",
+            "id": "will-herondale",
+            "name": "Will Herondale",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "James Carstairs"
+            ],
+            "description": "Will's parabatai, a Shadowhunter of the same age whose parents were killed in front of him in Shanghai by a demon that forced a drug on him. The drug turned his hair and eyes silver, keeps him alive, and is slowly killing him; without it he would die within days, and each dose shortens what is left. He is gentle, patient and clear-eyed where Will is destructive, plays the violin, and is the person the whole household relies on to make Will bearable. He is openly fond of Tessa. His supply of the drug is becoming harder and more expensive to obtain.",
+            "id": "jem-carstairs",
+            "name": "Jem Carstairs",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Head of the London Institute, a small, determined woman in her twenties who inherited the post from her father and has been fighting for the Clave's respect ever since. She runs the household, its accounts and its investigations, takes in strays such as Tessa and Sophie, and is held responsible by the Clave for the disaster of Mortmain's escape. Her authority over the Institute is formally challenged at the start of the book, and she is given a deadline to produce results.",
+            "id": "charlotte-branwell",
+            "name": "Charlotte Branwell",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Charlotte's husband, an inventor who spends most of his time in the Institute crypt building devices that tend to explode. Amiable and easily distracted, he is devoted to Charlotte but frequently forgets meetings, meals and the Clave entirely. His gadgets are treated as a joke by the household, though some of them work.",
+            "id": "henry-branwell",
+            "name": "Henry Branwell",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Shadowhunter girl raised at the Institute after her parents' deaths, who wants nothing to do with demon hunting. She refuses to train, dresses for a London society she is not part of, and talks constantly of marrying an ordinary man and living an ordinary life in an ordinary house. She resents Tessa's arrival and is barely civil to most of the household.",
+            "id": "jessamine-lovelace",
+            "name": "Jessamine Lovelace",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A maid at the Institute, formerly a mundane servant in a grand house, dismissed and scarred across the face by an employer's son. Charlotte took her in and she is fiercely loyal in return, especially to Tessa, whom she serves and befriends. She has no patience for Will. Along with the other women of the household she is put into weapons training when the Lightwood brothers arrive as instructors.",
+            "id": "sophie-collins",
+            "name": "Sophie Collins",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tessa's older brother, who wrote to her from London and whose letters brought her to England. He proved to be working for Mortmain, sold her to the Dark Sisters, and betrayed the Institute from inside, and he has been in hiding ever since. Charming, self-pitying and entirely self-interested, he is the one thread the Institute has back to the man they are hunting.",
+            "id": "nate-gray",
+            "name": "Nate Gray",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "The Magister"
+            ],
+            "description": "A mundane businessman and inventor who built an army of clockwork automatons animated by bound demon energies and who tried to have Tessa delivered to him as a bride. He escaped the Institute's trap and has vanished, leaving the Clave without a single confirmed address for him. He hates Shadowhunters with a patience that suggests a reason, he claims to know exactly what Tessa is, and he seems to have known the Institute's business from the inside.",
+            "id": "axel-mortmain",
+            "name": "Axel Mortmain",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Head of a wealthy London Shadowhunter family and a member of the Council, cold and correct in manner and long convinced that the London Institute should have been his. He presses the Clave to remove Charlotte from her post and sends his two sons to the Institute as instructors, which everyone understands is also a way of watching her.",
+            "id": "benedict-lightwood",
+            "name": "Benedict Lightwood",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Benedict Lightwood's younger son, close in age to Will and openly hostile to him over an old quarrel involving Gabriel's sister. Quick-tempered and eager to prove himself, he arrives at the Institute as a training instructor on his father's orders and makes no secret of thinking little of the place.",
+            "id": "gabriel-lightwood",
+            "name": "Gabriel Lightwood",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Benedict Lightwood's elder son, recently returned from several years at the Madrid Institute. Reserved, formal and much steadier than his brother, he is sent to train the women of the Institute household and takes the work seriously, particularly Sophie's. He is plainly uncomfortable about his father's dealings and says less than he knows.",
+            "id": "gideon-lightwood",
+            "name": "Gideon Lightwood",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A warlock of London, centuries old, with slit-pupilled cat's eyes and an appetite for parties, colour and expensive things. He is one of the few Downworlders who will deal with the Institute, acts as go-between for the vampire Camille Belcourt, and agrees to help Will with a private matter of his own for a price. Under the flippancy he is capable, well-informed and unusually kind.",
+            "id": "magnus-bane",
+            "name": "Magnus Bane",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A vampire of London, once second to the clan leader the Shadowhunters destroyed, elegant and entirely transactional. She claims to know something about Mortmain and is willing to trade it, but she negotiates through Magnus Bane and expects a pardon and the Institute's protection in return. Nothing she offers comes without a condition attached.",
+            "id": "camille-belcourt",
+            "name": "Camille Belcourt",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The elderly, retired head of the York Institute, suspicious of strangers and contemptuous of the London Institute and its young mistress. He kept meticulous records and trophies of his own hunts, including a raid decades ago that the London Shadowhunters now need to know about, and he guards both his archive and his family's private grief.",
+            "id": "aloysius-starkweather",
+            "name": "Aloysius Starkweather",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "The Consul"
+            ],
+            "description": "The Consul, the highest elected office of the Clave, a large and imposing former Shadowhunter who knew Charlotte's father and treats her as a girl playing at his old friend's job. He grants her a fortnight to produce Mortmain and makes clear that Benedict Lightwood is waiting to take the Institute if she fails.",
+            "id": "josiah-wayland",
+            "name": "Josiah Wayland",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Cecy"
+            ],
+            "description": "Will's younger sister, who arrives at the Institute alone at the end of the book and demands to be trained as a Shadowhunter. She has not seen her brother since he left home as a boy, she is as stubborn and as sharp-tongued as he is, and she has come with the intention of bringing him back to their family.",
+            "id": "cecily-herondale",
+            "name": "Cecily Herondale",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "clockwork-prince"
+      },
+      "recaps": {
+        "ending": "Mortmain's reach extends into the Institute itself: Nate Gray is fatally injured by one of the clockwork creatures and dies in Tessa's arms, leaving only fragments of what he knew. Charlotte uncovers proof that the Consul, Josiah Wayland, has been passing information to Mortmain from the Clave's highest office, confronts him with it, and keeps the Institute. Benedict Lightwood withdraws his claim rather than have his demon pox and his payments from Mortmain made public; his elder son Gideon leaves the family house for the Institute, where Sophie's regard for him is returned. Charlotte tells Henry that she is expecting a child. Jessamine remains in the Silent City. Tessa is engaged to Jem, who is dying and whose supply of the drug that sustains him is increasingly precarious. Will, having learned that the curse he built his life around never existed, tells Tessa he loves her, discovers he is too late, and says nothing further out of loyalty to his parabatai, so the three of them go on together with it unspoken. Mortmain is still free, with his automaton army, the Pyxis taken from the Institute, and an unexplained purpose for Tessa. The book closes with a girl at the Institute door: Cecily, Will's younger sister, come to take him home and refusing to leave without him.",
+        "in_short": "London, 1878. Tessa Gray is living at the London Institute while the Clave gives Charlotte Branwell a fortnight to find the vanished inventor Axel Mortmain or forfeit the Institute to Benedict Lightwood. The search produces Mortmain's history rather than his address: he was the adopted mundane son of two warlocks killed in a Shadowhunter raid, and has spent his life building an automaton army to avenge them. Jessamine Lovelace is exposed as having fed information to Tessa's traitor brother Nate and is taken to the Silent City. Will Herondale, who has believed since he was twelve that a demon cursed everyone who loves him, forces that demon to admit it lied, and is freed just as Tessa accepts a proposal from his dying parabatai, Jem Carstairs. Benedict's claim on the Institute collapses when his demon pox and his dealings with Mortmain surface, and Charlotte holds her post after discovering that the Consul himself has been Mortmain's informant. Nate dies of his injuries in Tessa's arms, Mortmain remains at large, and Will's sister Cecily arrives at the Institute demanding to be trained.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, in Clockwork Angel: in 1878 Tessa Gray sailed from New York to London to join her brother Nathaniel after her aunt's death. She was met instead by the Dark Sisters, two warlocks who imprisoned her and forced her to discover that she could Change, taking another person's shape by holding something of theirs and reaching their thoughts and memories. They told her she was being prepared for a man called the Magister, who meant to marry her. Will Herondale, a Shadowhunter of the London Institute, got her out, and she was taken into the Institute household: its head Charlotte Branwell and her inventor husband Henry, the resentful Jessamine Lovelace, the scarred maid Sophie, and Will's parabatai Jem Carstairs, kept alive by a demon drug that is also killing him. The hunt for the Magister led them to a vampire's house and to an army of clockwork automatons animated by bound demon energies. The Magister proved to be Axel Mortmain, a mundane industrialist with a private grudge against Shadowhunters and a plan that requires Tessa herself. Nathaniel had been working for him throughout and betrayed the Institute from inside; two of its household were killed in the attack. Mortmain escaped, telling Tessa he had arranged her birth and knew what she was. Tessa stayed on at the Institute with no family left, wearing the small clockwork angel her mother left her, which ticks like a heart.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Clave's patience has run out. The Consul, Josiah Wayland, gives Charlotte a fortnight to find Mortmain or lose the Institute, and Benedict Lightwood, who has wanted it for years, is ready to take it. Benedict's sons Gideon and Gabriel are installed as training instructors for the women of the household, which everyone understands is also a way of watching Charlotte. Tessa, who has no family left and no standing among Shadowhunters, insists on being part of the search rather than kept out of it. Will is colder and more reckless than in the previous book and refuses to explain his nights away from the Institute to anyone, including Jem, whose illness is worsening and whose drug supply is becoming harder to obtain. The one lead available is Camille Belcourt, a vampire who was second to the clan leader the Shadowhunters destroyed; she claims to know something of Mortmain and will trade it, negotiating through the warlock Magnus Bane, for a pardon and the Institute's protection.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Camille's terms are agreed, and what she gives points the Institute north. Mortmain's history runs back to a pair of warlocks named Shade, who built mechanical creatures and raised a mundane boy as their son. Charlotte, Will and Tessa travel to York to see Aloysius Starkweather, the old and hostile former head of the York Institute, who led the raid that destroyed the Shades decades ago and kept records of it. Using an object from his collection Tessa Changes and lives through that raid from inside another person's memory: Shadowhunters killing the warlock household, and the boy they had raised surviving it. That boy was Axel Mortmain, and his war on the Nephilim is a revenge he has spent a lifetime preparing. Starkweather's family carries a private grief of its own, a granddaughter who died the first time she was Marked, which suggests his bloodline was not what the Clave believed. Meanwhile Will is pursuing something of his own with Magnus Bane's help, vanishing at night and refusing to say why, leaving Jem to cover for him.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jessamine has been leaving the Institute at night in disguise. She is followed and caught: she has been meeting Nate Gray, who has promised her marriage and the ordinary mundane life she has always wanted, and she has been passing him what she learns at the Institute. Questioned by the Silent Brothers under the Mortal Sword, which compels the truth, she gives up what she knows and is taken to the Silent City, and the household learns that Mortmain's real object inside the Institute was the Pyxis, the sealed box of bound demon energies he needs to animate his automatons. Nate is taken into custody. Around this the household's private lives tighten: Sophie is drawn to Gideon Lightwood, who is increasingly ashamed of his father and says less than he knows; Jem's health continues to slip; and Will, still working with Magnus Bane, is hunting a specific demon for reasons he will not explain to anyone.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jem tells Tessa that he loves her and asks her to marry him, knowing what his illness means, and she accepts; he gives her his mother's jade pendant. Will's private hunt is finally explained. When he was twelve he opened a Pyxis in his father's study and released a demon, Marbas, which told him that from then on anyone who loved him would die. His older sister died that same night. Believing it, he ran from his family to the Institute and has spent five years making himself unlovable on purpose, which is the whole of his cruelty toward Tessa and his distance from everyone else. With Magnus Bane's help he summons and binds Marbas, which admits there was never a curse at all: it had frightened a child with a lie and killed his sister to make the lie hold. Will comes back free to love and be loved for the first time since he was a boy, and finds Tessa engaged to his parabatai.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Will's long-mocked insistence that demon pox is real turns out to matter. Benedict Lightwood has the disease, contracted through years of consorting with demons, and Will and Magnus see the proof at a demon revel held at Benedict's own house. Gideon, who has broken with his father, supplies the rest: Benedict has been taking Mortmain's money, which is why he pushed so hard for the Institute. Faced with exposure, Benedict withdraws his claim; Gideon leaves for the Institute while Gabriel stays behind with their father. Charlotte's fortnight is almost spent and the investigation has produced a history rather than an address. Mortmain is a mundane raised by warlocks the Nephilim killed, he holds property under names that are not his, and he has consistently known Institute business that no outsider should know, which points at someone inside the Clave.",
+            "through": {
+              "chapter": 19
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Mortmain reaches inside the Institute one last time: Nate Gray is fatally injured by one of the clockwork creatures and dies in Tessa's arms. Charlotte uncovers correspondence proving that the Consul, Josiah Wayland, has been supplying Mortmain with information from the Clave's highest office, confronts him, and keeps the Institute; Benedict Lightwood's claim collapses, Gideon settles at the Institute for good, and Sophie's feeling for him is returned. Charlotte tells Henry she is expecting a child. Tessa is engaged to Jem, who is dying and knows it. Will, freed from a curse that never existed, tells Tessa he loves her, learns he is too late, and chooses silence and his parabatai's happiness over his own. Mortmain remains at large with his automaton army, the stolen Pyxis and an unexplained use for Tessa, and the Clave's own leadership has been compromised. In the closing pages a girl arrives at the Institute door demanding to be trained as a Shadowhunter: Cecily, Will's younger sister, come to bring him home.",
+            "through": {
+              "chapter": 21
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "clockwork-prince"
+      }
+    },
+    "clockwork-princess": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Theresa Gray"
+            ],
+            "description": "A young American woman living at the London Institute, able to Change into another person by holding something that belonged to them and to reach that person's thoughts and memories. She is engaged to Jem Carstairs, whose illness is worsening, and she is still the object of Axel Mortmain's plans, which no one at the Institute understands. She has no family left, no legal standing among Shadowhunters, and no clear idea of what she is; she wears a small clockwork angel that belonged to her mother and that ticks like a heart. She loves Jem and has never resolved what she feels for his parabatai, Will Herondale.",
+            "id": "tessa-gray",
+            "name": "Tessa Gray",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "William Herondale"
+            ],
+            "description": "A Shadowhunter of the London Institute, Welsh by birth, released at the end of the previous book from a childhood belief that everyone who loved him would die. Free to feel and to be loved for the first time in five years, he finds that Tessa is promised to Jem, his parabatai and the person he loves most in the world, and he has chosen to say nothing further about it. His sister Cecily is now living at the Institute and trying to persuade him to come home. He is a formidable fighter, still reckless, and no longer performing cruelty for anyone's benefit.",
+            "id": "will-herondale",
+            "name": "Will Herondale",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "James Carstairs"
+            ],
+            "description": "Will's parabatai and Tessa's fiance, kept alive by a demon drug that is also killing him. The drug turned his hair and eyes silver and the doses that sustain him shorten what is left of his life. He is patient, generous and clear-sighted, plays the violin, and is the steadying centre of the household. He and Tessa are planning their wedding against the clock: his supply of the drug has become nearly impossible to obtain, and everyone in the Institute knows what that means.",
+            "id": "jem-carstairs",
+            "name": "Jem Carstairs",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Head of the London Institute, who held her post against Benedict Lightwood's challenge and is now expecting her first child while running the household, its investigations and its dealings with a Clave whose leadership she knows to be compromised. She is practical, tenacious and protective of everyone under her roof, including those the Clave would not count as hers.",
+            "id": "charlotte-branwell",
+            "name": "Charlotte Branwell",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Charlotte's husband, an inventor who works in the Institute crypt on devices most of the household treats as a joke. Cheerful, forgetful and entirely devoted to Charlotte, he is more useful than anyone expects when the Institute needs equipment that does not exist yet.",
+            "id": "henry-branwell",
+            "name": "Henry Branwell",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Formerly a mundane maid at the Institute, scarred by a previous employer's son and taken in by Charlotte. She is now training in earnest with the household's weapons, is trusted as a member of it rather than a servant, and is attached to Gideon Lightwood, a Shadowhunter, which is a difficult thing for a mundane woman to be.",
+            "id": "sophie-collins",
+            "name": "Sophie Collins",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Cecy"
+            ],
+            "description": "Will's younger sister, living at the Institute and training as a Shadowhunter after arriving alone at its door. She came to bring Will home to their parents in Wales and has stayed instead, learning the work from scratch as an adult among people who began as children. She is as stubborn and as sharp as her brother, resents being treated as a novice, and finds herself increasingly interested in Gabriel Lightwood.",
+            "id": "cecily-herondale",
+            "name": "Cecily Herondale",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Benedict Lightwood's elder son, who broke with his father and moved into the Institute. Reserved and dependable, he trains the household's women, is quietly in love with Sophie, and carries the shame of what his family has done.",
+            "id": "gideon-lightwood",
+            "name": "Gideon Lightwood",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Benedict Lightwood's younger son, who stayed with his father when his brother left and is increasingly unable to explain or excuse what is happening at the family house. Proud, quick-tempered and out of his depth, he has an old feud with Will and a growing interest in Will's sister Cecily.",
+            "id": "gabriel-lightwood",
+            "name": "Gabriel Lightwood",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Magister"
+            ],
+            "description": "A mundane inventor and industrialist with an army of clockwork automatons animated by bound demon energies, still at large after the Institute failed twice to take him. He was raised by warlocks whom Shadowhunters killed, and his war on the Nephilim is a revenge he has spent his life preparing. He wants Tessa Gray, claims to have arranged her birth, and has enough reach into ordinary commerce to control what the Institute can buy.",
+            "id": "axel-mortmain",
+            "name": "Axel Mortmain",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Head of the Lightwood family, forced to withdraw his claim on the Institute after his dealings with Mortmain and his demon pox came to light. He has shut himself up in his house, refuses visitors, and is deteriorating in ways his sons cannot manage or explain.",
+            "id": "benedict-lightwood",
+            "name": "Benedict Lightwood",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Shadowhunter girl raised at the Institute, returned to it from the Silent City under confinement after passing information to Mortmain's agent, the man she believed would marry her and take her away from Shadowhunter life. She is frightened, diminished and kept apart from the household, and no one is certain how far she can be trusted.",
+            "id": "jessamine-lovelace",
+            "name": "Jessamine Lovelace",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A servant taken on at the Institute who turns out to be an extraordinary fighter and a considerable asset in the armoury. She sings long, bloody ballads about murder and betrayal while she works, to the household's general discomfort.",
+            "id": "bridget-daly",
+            "name": "Bridget Daly",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A centuries-old warlock of London, extravagant, well-connected and one of the few Downworlders who will work with the Institute. He helped Will in the previous book, knows more about Mortmain's kind of magic than the Nephilim do, and is the person the household turns to when the problem is not one a blade solves.",
+            "id": "magnus-bane",
+            "name": "Magnus Bane",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Head of the London werewolf pack, fastidious, theatrical and openly uninterested in Shadowhunter opinion. He is Magnus Bane's lover, and the Institute has reason to want both his information and his goodwill.",
+            "id": "woolsey-scott",
+            "name": "Woolsey Scott",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "clockwork-princess"
+      },
+      "recaps": {
+        "ending": "Cornered in Mortmain's stronghold beneath Cadair Idris, Tessa discovers what her mother's clockwork angel is: an angel, Ithuriel, bound inside it, whose life has been sustaining and healing her since birth. She takes the angel's own shape and uses its power to destroy Mortmain and burn out his automaton army, ending the threat and freeing the angel. Henry is crippled in the battle and will not walk again, and the parabatai bond between Will and Jem breaks during the fight. Jem is not dead: dying and out of the drug that sustained him, he was taken by the Silent Brothers and survived the transformation into one of them, and he returns as Brother Zachariah, no longer able to marry Tessa or to live as James Carstairs. Will and Tessa, who turned to each other in grief, marry with Jem's blessing and have two children, James and Lucie. Charlotte becomes Consul; Sophie Ascends and marries Gideon; Cecily marries Gabriel. Will lives a full life and dies an old man with Tessa and Jem beside him, and Tessa, who does not age, outlives them all. The book closes in the present day on Blackfriars Bridge, where Tessa keeps a standing appointment with Jem, still a Silent Brother, once a year, and where the two of them are still waiting for a change that might one day give them back to each other.",
+        "in_short": "Tessa Gray and Jem Carstairs plan their wedding while Axel Mortmain quietly buys up the drug keeping Jem alive, and Benedict Lightwood's demon pox turns him into a monster his own sons must destroy. Mortmain's agents reach into the Institute, Jessamine Lovelace is killed, and Tessa is carried off to his stronghold beneath the Welsh mountain Cadair Idris. Will Herondale rides for Wales alone and the household follows; Jem, out of his drug and dying, is left behind, and during the pursuit Will feels their parabatai bond break. Mortmain tells Tessa what she is: the deliberately engineered child of a Shadowhunter mother and a Greater Demon that took the body of her mother's husband, made shapeshifter, fertile, and unmarked, to be his bride and the mother of a new race. Cornered, Tessa takes the shape of the angel bound inside her mother's clockwork pendant and destroys Mortmain and his automaton army. Jem is not dead; he survived by becoming a Silent Brother. Will and Tessa marry and have children, Will dies of old age with both of them beside him, and the story ends more than a century later with Tessa and Jem meeting on Blackfriars Bridge.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously in The Infernal Devices: Tessa Gray came from New York to London in 1878, was imprisoned by two warlocks who forced her to discover that she can Change into anyone whose possession she holds, and was rescued by Will Herondale of the London Institute. She has lived there since, among Charlotte and Henry Branwell, the maid Sophie, Jessamine Lovelace and Will's parabatai Jem Carstairs, who is kept alive and slowly killed by a demon drug. Her brother Nate betrayed her and the Institute to Axel Mortmain, a mundane inventor with an army of clockwork automatons who wants Tessa for reasons of his own; Nate died of his injuries in Tessa's arms. Mortmain was raised by warlocks killed in a Shadowhunter raid and has spent his life preparing revenge on the Nephilim, and he escaped both attempts to take him, with a stolen box of bound demon energies. Charlotte kept the Institute against Benedict Lightwood's challenge after his demon pox and his payments from Mortmain came to light, and after discovering that the Consul himself had been Mortmain's informant. Will learned that the demon who told him as a child that everyone who loved him would die had lied, freeing him five years too late: Tessa had just accepted a proposal from the dying Jem, and Will said nothing. Will's sister Cecily arrived at the Institute demanding to be trained.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tessa and Jem are engaged and their wedding is being arranged, but the drug that keeps Jem alive has become impossible to buy: Mortmain has been quietly acquiring the entire supply, so that Jem's death is now a matter of weeks and is in Mortmain's gift. Will, who says nothing about his own feelings, spends his time hunting for a source anywhere in Britain. Cecily Herondale is training at the Institute and still trying to make her brother come home to Wales; Gideon Lightwood is living there too, close to Sophie; Gabriel remains at the family house, where Benedict has shut himself away, refuses to be seen, and is behaving in ways his sons cannot explain. Charlotte, expecting a child, runs the Institute and its search knowing that the Clave's own leadership has been compromised. Nobody has found Mortmain, who has no fixed address, several false names, and the ability to reach the Institute's household without being seen.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Gabriel arrives at the Institute for help: his father's demon pox has run its course and Benedict Lightwood is no longer a man but a monstrous creature loose on the family estate. The Shadowhunters go to the house and destroy it, and both Lightwood brothers move into the Institute for good, their family name in ruins. Jessamine Lovelace is released from the Silent City into the Institute's custody, frightened and much reduced, kept apart from the household and trusted by no one. The Institute's defences are tested by Mortmain's automatons, which are better made than the ones the Shadowhunters have fought before, and it becomes plain that what Mortmain wants in exchange for leaving them alone is Tessa herself. Charlotte refuses to consider it. Jem's condition continues to worsen, and the wedding is brought forward against the certainty that time is running out.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Mortmain reaches inside the Institute. Jessamine, manipulated and coerced, is used to get his creatures past its protections, and she is killed for what she does or fails to do; the household finds her too late to save her. In the same stroke Tessa is taken out of the Institute and carried away, and every search the Shadowhunters mount for her fails, because Mortmain's stronghold is not in London and is not on any map the Clave holds. Jem, out of the drug that sustains him and told that Tessa is gone, deteriorates sharply. The Institute pieces together, from Mortmain's history, his properties and the fragments Nate and Jessamine left behind, that the place they are looking for is in Wales, under the mountain Cadair Idris.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Will rides for Wales alone the moment the location is known, refusing to wait for the Clave and riding almost without rest. Jem, too ill to follow, is left in the Institute's care as the last of his drug runs out; the Silent Brothers take him, and the household expects him to die. Charlotte, Henry, Cecily, Gideon, Gabriel and Sophie follow Will west with what weapons Henry can devise. In Mortmain's stronghold beneath the mountain, Tessa is held in comfort and dressed for a wedding: Mortmain intends to marry her, and he has a use for her that goes beyond the marriage. He begins to tell her, in pieces, what she is and why she exists, and it becomes clear that her ability to Change and her lack of a warlock's mark were designed rather than accidental.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Mortmain gives Tessa the whole of it. Her birth was engineered: her mother was of Shadowhunter blood, and her father was a Greater Demon that Mortmain summoned into the body of her mother's husband, so that the child would be a shapeshifter without a warlock's mark and, unlike a warlock, able to bear children. She was made to be his bride and the beginning of a race of his own, and her brother Nate, an ordinary human child of the same marriage, was never any relation to that plan. On the road west Will feels the parabatai bond tear, and believes Jem has died. He reaches the mountain ahead of the others and gets to Tessa, and the two of them, grieving Jem and expecting to die there, admit to each other what neither has said. Mortmain's automaton army is assembled beneath Cadair Idris, and the handful of Shadowhunters converging on the mountain have no realistic chance against it.",
+            "through": {
+              "chapter": 19
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The battle at Cadair Idris goes badly: the Shadowhunters are hopelessly outnumbered by the automatons, and Henry is struck down and crippled, losing the use of his legs. Cornered by Mortmain, Tessa finally learns what the clockwork angel her mother left her actually is. An angel, Ithuriel, is bound inside it, and its life has been keeping her alive and healing her injuries since she was born. Tessa takes the angel's own shape, the one form she has never been able to hold, and its power destroys Mortmain and burns out the mechanical army with him. The angel is freed and the pendant falls silent. The threat that has shaped all three books ends there, at the cost of Henry's legs, of Jessamine's life, and, as far as anyone at the mountain knows, of Jem's.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jem did not die. Dying and beyond the drug's help, he was taken by the Silent Brothers and survived the transformation into one of them; he returns as Brother Zachariah, unable to marry Tessa or to live as James Carstairs, but alive and still himself enough to release them both. Will and Tessa marry with his blessing and have two children, James and Lucie. Charlotte becomes Consul; Sophie Ascends to Shadowhunter and marries Gideon; Cecily marries Gabriel; Henry works from a wheelchair for the rest of his life. Will lives to be an old man, and dies with Tessa and Jem beside him. Tessa, who does not age, outlives her husband, her friends and eventually her children. The book closes more than a century later, in the present day, on Blackfriars Bridge in London, where Tessa keeps the appointment she and Jem have kept once a year for decades: he is still a Silent Brother, she is still waiting, and the two of them go on meeting there in the hope that will one day change.",
+            "through": {
+              "chapter": 23
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "clockwork-princess"
+      }
+    },
     "club-dead": {
       "characters": {
         "characters": [
