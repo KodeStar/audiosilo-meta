@@ -518,6 +518,184 @@
         "work": "h-m-s-surprise"
       }
     },
+    "halts-peril": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A full Ranger and Halt's former apprentice. Will begins the book tracking Tennyson alongside his mentor and Horace, using the patience and fieldcraft Halt taught him while carrying more responsibility than he once did as an apprentice.",
+            "id": "will",
+            "name": "Will",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Will's former mentor and one of the Ranger Corps' most experienced members. Halt has just helped secure the throne of Clonmel for his nephew and refuses to let Tennyson escape to rebuild the Outsiders elsewhere.",
+            "id": "halt",
+            "name": "Halt",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An Araluen knight and the Rangers' closest companion. Horace combines exceptional skill with a sword with the steadiness needed during a long pursuit in which the enemy prefers traps and hidden attacks to open combat.",
+            "id": "horace",
+            "name": "Horace Altman",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The fugitive leader of the Outsiders. His false claims to divine protection have been exposed in Clonmel, but he still has devoted followers, stolen wealth and professional killers with which to begin again.",
+            "id": "tennyson",
+            "name": "Tennyson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Genovesan assassin in Tennyson's service. Bacari is trained to attack from concealment with a compact crossbow and to use poison so that even a minor wound can become fatal.",
+            "id": "bacari",
+            "name": "Bacari",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A second Genovesan assassin travelling with Tennyson. Marisi shares Bacari's preference for ambush, poisoned bolts and escape routes prepared before an opponent knows an attack has begun.",
+            "id": "marisi",
+            "name": "Marisi",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The remaining adherents of Tennyson's movement. Some continue to trust his spiritual claims even after the setback in Clonmel, while others follow the organisation because it still offers food, protection or a share of its wealth.",
+            "id": "outsiders",
+            "name": "The Outsiders",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A healer based in Grimsdell Wood whose practical knowledge was once mistaken for sorcery. Malcolm is an old ally of Will and Halt and has experience treating injuries that ordinary battlefield medicine cannot resolve.",
+            "id": "malcolm",
+            "name": "Malcolm",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Will's small, shaggy Ranger horse and trusted working partner. Tug's endurance and responsiveness are vital during the sustained chase after Tennyson.",
+            "id": "tug",
+            "name": "Tug",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Halt's Ranger horse, trained for long travel, quiet movement and the subtle commands used by the Corps. Abelard carries Halt through the pursuit that opens the book.",
+            "id": "abelard",
+            "name": "Abelard",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Horace's battlehorse and travelling companion. Kicker is powerful enough for a fully equipped knight but disciplined around the lighter Ranger horses during the chase.",
+            "id": "kicker",
+            "name": "Kicker",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "halts-peril"
+      },
+      "recaps": {
+        "ending": "Will's judgement and Malcolm's treatment bring Halt back from the poisoned wound, although his recovery is gradual. Once Halt can travel, the companions return to the unfinished pursuit rather than allowing Tennyson time to establish another secure following. They locate the Outsiders' refuge and turn the fraud at the centre of the movement against its leader, depriving him of the authority that had kept frightened followers obedient. Tennyson's organisation breaks apart, and Tennyson does not survive the final confrontation. The surviving Genovesan threat is also ended, so the pursuit that began at Clonmel is complete rather than deferred to another campaign. Will, Halt and Horace emerge alive, with Will having borne the central burden of keeping his mentor alive and making decisions while Halt could no longer direct him. The three friends can return to Araluen, and the next novel begins a separate mission involving Horace in Nihon-Ja.",
+        "in_short": "Immediately after the events in Clonmel, Will, Halt and Horace pursue Tennyson and the remnants of the Outsiders. The fugitive preacher uses decoys, divided trails and two Genovesan assassins to slow them while seeking a place to rebuild his following. During an ambush Halt is struck by a poisoned crossbow bolt. The chase becomes a fight to keep him alive: Will and Horace must deal with the assassins, learn what poison was used and obtain expert help before the wound kills him. Malcolm's treatment and Will's observations identify a course that saves Halt. After his recovery, the companions resume the mission, find Tennyson's refuge and expose his manipulation to his own followers. The Outsiders collapse and Tennyson dies in the final confrontation. Will has not only completed the pursuit but proved capable of acting under the prospect of losing the mentor who shaped his life.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Crowley sent Will, Halt and Horace to Hibernia to investigate the Outsiders, a movement that created or exploited disorder and then demanded wealth and obedience for promised protection. In Clonmel, Halt revealed that the weak King Ferris was his identical twin brother and that Halt had left a claim to the throne behind when he came to Araluen. Tennyson reinforced his supposed miracles with hidden Genovesan assassins using poison and compact crossbows. Will uncovered the mechanism while Horace challenged the movement publicly. Ferris was killed, so Halt briefly impersonated him to prevent a collapse of royal authority and secure the succession for their nephew Sean Carrick. Sean became king and the Outsiders lost Clonmel, but Tennyson escaped with followers, treasure and surviving Genovesans. Will, Halt and Horace set out in immediate pursuit; this book opens while that chase is still under way.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Will, Halt and Horace follow Tennyson from the defeat of the Outsiders in Clonmel. The fugitives are more difficult to catch than an ordinary band of travellers: Tennyson still commands obedient followers, and the Genovesan assassins understand how to conceal a trail and prepare an attack before pursuit reaches them. The Araluens find signs that the party is trying to confuse its direction and gain enough distance for Tennyson to recover from the damage to his reputation. Halt keeps the group moving because every delay increases the chance that the preacher will find another frightened community and reconstruct the same system of staged danger and purchased protection.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tennyson divides his people and uses false trails and expendable followers to make the pursuit uncertain. The three companions have to decide which signs belong to the leader and which are intended to pull them away from him. Will and Halt rely on Ranger fieldcraft while Horace protects the group whenever concealment gives way to violence. The Genovesans remain the most serious immediate danger. Their poisoned crossbows let them attack from cover without winning a conventional fight, and their purpose is not necessarily to defeat all three Araluens at once; disabling one pursuer would be enough to break the pace of the chase and let Tennyson disappear.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The pursuit produces the ambush the Rangers have feared. A Genovesan bolt strikes Halt, leaving a wound that appears small but carries a dangerous poison. Will and Horace can no longer treat speed as their only priority: continuing at once may kill Halt, while stopping gives Tennyson the escape he has been seeking. They secure their injured companion and turn their attention to the assassins, because identifying the poison and finding anything carried for protection against it may be Halt's only chance. Will must track and question enemies trained never to leave useful evidence, all while watching his mentor weaken.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Halt's condition worsens as the poison spreads, and the information recovered from the Genovesans is incomplete. Different toxins can produce similar early symptoms but require different treatment, making a confident guess potentially as dangerous as delay. Horace helps obtain expert assistance while Will stays close to Halt, recording changes and applying the practical habits his mentor once demanded of him. Malcolm, the healer from Grimsdell Wood, becomes their best hope. The crisis reverses their old roles: Halt cannot make the decisions, and Will has to combine Malcolm's knowledge with his own observations and accept responsibility for the choice that follows.",
+            "through": {
+              "chapter": 36
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Malcolm and Will settle on the treatment that matches Halt's symptoms. Halt survives the immediate crisis and begins to recover, ending the Genovesans' attempt to remove the most experienced pursuer with a single hidden shot. The delay has nevertheless given Tennyson time to gather the remainder of his movement in a defensible refuge and restore control through the familiar combination of ceremony, fear and deception. Will, Halt and Horace regroup. Rather than attacking a body of believers as though it were an ordinary army, they plan to separate Tennyson from the appearance of divine authority on which his leadership depends.",
+            "through": {
+              "chapter": 44
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Halt recovers sufficiently to join Will and Horace in completing the pursuit. They infiltrate Tennyson's refuge and use their knowledge of his methods to show his followers that the voice of authority they obey is another human deception. Once the performance surrounding him fails, Tennyson cannot hold the movement together by belief alone. His organisation breaks apart, and he dies during the final confrontation; the remaining Genovesan danger is ended as well. The companions finish the task that began in Clonmel and prevent the Outsiders from establishing a new base. Will returns with Halt alive because he was able to observe, choose and act when his mentor could not guide him, a severe confirmation that he now stands as a Ranger in his own right.",
+            "through": {
+              "chapter": 52
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "halts-peril"
+      }
+    },
     "hammered-kevin-hearne": {
       "characters": {
         "characters": [

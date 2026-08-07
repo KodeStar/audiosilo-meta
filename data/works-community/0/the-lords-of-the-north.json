@@ -888,6 +888,215 @@
         "work": "the-lost-metal"
       }
     },
+    "the-lost-princess-of-oz": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The young fairy ruler of Oz, suddenly missing from her chambers in the Emerald City. Her disappearance, together with the loss of powerful magic tools, alarms every part of the kingdom.",
+            "id": "ozma",
+            "name": "Ozma",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ozma's closest friend and the determined leader of the search. Dorothy refuses to wait helplessly in the Emerald City and sets out across unfamiliar country to find the lost princess.",
+            "id": "dorothy-gale",
+            "name": "Dorothy Gale",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The court magician of Oz, whose black bag of useful magic has vanished along with Ozma. Even without his usual equipment, the Wizard joins Dorothy and applies his experience to each strange obstacle.",
+            "id": "the-wizard-of-oz",
+            "name": "The Wizard of Oz",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Dorothy's small black dog and faithful traveling companion. Toto's sharp nose and readiness to investigate make him useful when the search party enters places where appearances are misleading.",
+            "id": "toto",
+            "name": "Toto",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The wise sorceress of the south, troubled to discover that her Great Book of Records and other magical resources have also disappeared. The robbery shows that Ozma's loss is part of a larger design.",
+            "id": "glinda",
+            "name": "Glinda the Good",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Cookie Cook of the Yips, distressed by the theft of her diamond-studded golden dishpan. Cayke values the pan as the special tool behind her famous cooking and leaves home to recover it.",
+            "id": "cayke",
+            "name": "Cayke the Cookie Cook",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A large, learned-looking frog who serves as Cayke's adviser among the Yips. The Frogman speaks with great confidence and agrees to guide Cayke into the wider Land of Oz.",
+            "id": "the-frogman",
+            "name": "The Frogman",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A girl who lives in the Emerald City and joins Dorothy's expedition. Betsy is an experienced traveler in Oz and meets the party's odd discoveries with practical courage.",
+            "id": "betsy-bobbin",
+            "name": "Betsy Bobbin",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A brave girl who has made her home in Oz with Cap'n Bill. Trot joins the search for Ozma and contributes curiosity, loyalty, and a willingness to face unfamiliar magic.",
+            "id": "trot",
+            "name": "Trot",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A good-natured boy famous for getting lost. Button-Bright travels with Dorothy's party, although keeping track of him soon becomes another problem for the searchers.",
+            "id": "button-bright",
+            "name": "Button-Bright",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Dorothy's large feline friend, who still calls himself cowardly despite many brave deeds. He provides strength, transportation, and loyal protection on the expedition.",
+            "id": "the-cowardly-lion",
+            "name": "The Cowardly Lion",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful tiger whose enormous appetite never leads him to harm anyone. He accompanies the Cowardly Lion and helps carry and guard the younger members of the party.",
+            "id": "the-hungry-tiger",
+            "name": "The Hungry Tiger",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A square-bodied creature whose chief weapon is a fearsome growl. The Woozy is an old friend of Dorothy's group and joins the search as a loyal, unusual member of the company.",
+            "id": "the-woozy",
+            "name": "The Woozy",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A large lavender-colored bear who collects answers to questions about the world. His little companion supplies the answers, making the pair valuable guides when the two search parties meet.",
+            "id": "the-big-lavender-bear",
+            "name": "The Big Lavender Bear",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A tiny pink bear whose statements are always true. Kept by the Big Lavender Bear, he can settle questions that guessing, magic, and ordinary investigation cannot answer.",
+            "id": "the-little-pink-bear",
+            "name": "The Little Pink Bear",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A shoemaker who has secretly studied magic and resents the more celebrated magicians of Oz. The Pink Bear's truthful answers identify Ugu as the thief the searchers have been seeking.",
+            "id": "ugu",
+            "name": "Ugu the Shoemaker",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-lost-princess-of-oz"
+      },
+      "recaps": {
+        "ending": "Inside Ugu's wicker castle, Dorothy's party recovers the stolen magical treasures and learns that the lost princess has been hidden by transformation rather than carried away as a prisoner. The Little Pink Bear's truthful answers identify the enchanted peach pit that is really Ozma, and she is restored to her proper form. Ugu is reduced to the form of a dove and refuses the chance to become a man again, preferring to fly away. Dorothy asks that he be forgiven rather than punished further. Cayke receives her golden dishpan, Glinda and the Wizard regain their tools, and every traveler returns safely. The adventure also leaves the Frogman humbler and Cayke less dependent on a possession for her sense of worth, while Ozma resumes her place in the Emerald City among her relieved friends.",
+        "in_short": "Ozma vanishes from the Emerald City at the same time that magical treasures disappear from Dorothy, the Wizard, and Glinda. Dorothy leads a search party across the Winkie Country, while Cayke the Cookie Cook and the self-important Frogman separately seek Cayke's stolen golden dishpan. After visits to strange communities, a Truth Pond, and the home of two magical bears, the parties unite. The Little Pink Bear's unfailing answers point to Ugu the Shoemaker, a jealous magician who has stolen the missing objects and hidden Ozma through enchantment. The friends overcome Ugu's defenses in his wicker castle, recover the magic, and discover Ozma transformed into a peach pit. She is restored, Ugu departs as a dove, and Dorothy persuades everyone to answer his wrongdoing with forgiveness.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Ozma rules Oz from the Emerald City, where Dorothy, the Wizard, Betsy, Trot, and many friends have found homes. Glinda the Good watches events with powerful magic, while Dorothy's past journeys have filled every region with friends. The story begins with a new danger inside this usually peaceful fairyland.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Dorothy discovers that Ozma has vanished from her rooms in the Emerald City. At the same time, important magical objects are missing: Dorothy cannot find the Magic Picture, the Wizard has lost his black bag, and Glinda's Great Book of Records and other treasures have disappeared. With no easy magical way to locate the princess, Dorothy organizes an expedition with the Wizard, Toto, Betsy, Trot, Button-Bright, the Cowardly Lion, the Hungry Tiger, and the Woozy. Elsewhere, Cayke the Cookie Cook of the Yips finds that her diamond-studded golden dishpan has been stolen. She and the grandly confident Frogman set out on their own search, unaware that their smaller mystery is tied to Ozma's disappearance.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Dorothy's company crosses the Merry-Go-Round Mountains and visits the puzzling city of Thi, where appearances and customs make useful information hard to obtain. Toto and Button-Bright each create fresh worries, and Button-Bright becomes separated from the others once again. The travelers then reach Herku, whose ruler keeps strangers under his control and whose people draw unnatural strength from a special food. Meanwhile, Cayke and the Frogman continue through the Winkie Country. At the Truth Pond, its water strips away false appearances and self-deception, leaving the Frogman less certain of his supposed wisdom. Both parties keep moving toward the same remote country, gathering clues but still lacking a name for the thief or a clear sign of Ozma.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After crossing with an unhappy ferryman, the travelers meet the Big Lavender Bear and the Little Pink Bear. The larger bear has gathered countless questions, while the little bear gives answers that are always true. Cayke and the Frogman arrive as well, and the two expeditions finally unite. By asking the Pink Bear careful questions, they connect the stolen dishpan with Ozma's disappearance and identify Ugu the Shoemaker as the thief. Ugu has secretly taught himself powerful magic and, jealous of the famous magicians of Oz, has taken their most useful treasures for himself. The whole company now has a destination: Ugu's wicker castle. Dorothy prepares to recover Ozma and the stolen objects, while the Wizard must face a magician who possesses much of the magic that would normally help them.",
+            "through": {
+              "chapter": 19
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Dorothy's party reaches Ugu's wicker castle and meets defenses built from stolen magic. Ugu refuses to surrender, but the searchers combine courage, truthful answers, and the magic they can recover to overcome him. The Little Pink Bear reveals the final secret: Ozma has been transformed into a peach pit and hidden among ordinary objects. She is found and restored, while the other stolen treasures, including Cayke's golden dishpan, the Wizard's black bag, and Glinda's records, return to their owners. Ugu is changed into a dove. Dorothy asks Ozma to forgive him, and when offered restoration he chooses to remain a bird and flies away. Ozma and her friends return safely to the Emerald City, the Frogman carries home a humbler view of himself, and Cayke has learned that her skill and happiness do not depend entirely on her splendid pan.",
+            "through": {
+              "chapter": 26
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-lost-princess-of-oz"
+      }
+    },
     "the-lost-sisters": {
       "characters": {
         "characters": [
@@ -1012,6 +1221,153 @@
           }
         ],
         "work": "the-lost-sisters"
+      }
+    },
+    "the-lost-stories": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An orphan raised at Redmont who trained under Halt and became a full Ranger. By the end of the preceding novels, Will is an experienced scout and archer whose closest relationships include his former mentor, the knight Horace and the Courier Alyss.",
+            "id": "will",
+            "name": "Will",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Will's former mentor and one of the most respected Rangers in Araluen. Halt left a royal family in Hibernia, helped rebuild the Ranger Corps with Crowley and has spent much of his adult life serving King Duncan from Redmont.",
+            "id": "halt",
+            "name": "Halt",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Will's childhood companion and one of Araluen's finest knights. Horace has fought beside the Rangers in Araluen, Skandia, Hibernia and Nihon-Ja, combining exceptional swordsmanship with a direct and dependable nature.",
+            "id": "horace",
+            "name": "Horace Altman",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A Redmont ward who entered the Diplomatic Service and became a skilled Courier. Alyss is trained to negotiate, gather information and remain composed under pressure, and her friendship with Will developed into a committed partnership.",
+            "id": "alyss",
+            "name": "Alyss Mainwaring",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Evanlyn"
+            ],
+            "description": "King Duncan's daughter and heir, who first travelled with Will under the name Evanlyn. Cassandra has since represented Araluen abroad and shared dangerous campaigns with Will, Halt and Horace.",
+            "id": "cassandra",
+            "name": "Princess Cassandra",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Halt's former apprentice and an experienced Ranger in his own right. Gilan is unusual among Rangers for carrying a sword as well as a bow and has served as a field agent, commander and mentor to younger members of the Corps.",
+            "id": "gilan",
+            "name": "Gilan",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Commandant of the Ranger Corps and Halt's oldest Araluen friend. Crowley helped organise resistance to Morgarath before the first rebellion and later rebuilt the Rangers as the kingdom's intelligence and scouting service.",
+            "id": "crowley",
+            "name": "Crowley",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Head of Araluen's Diplomatic Service and Alyss's mentor. Lady Pauline is a precise observer and negotiator whose calm authority complements the field skills of Halt and the Rangers.",
+            "id": "lady-pauline",
+            "name": "Lady Pauline",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ruler of Araluen and Cassandra's father. Duncan depends on the Ranger Corps for intelligence and on trusted friends such as Halt, Horace and Alyss for missions in which the kingdom's military and diplomatic interests overlap.",
+            "id": "king-duncan",
+            "name": "King Duncan",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Will's fellow wards from Redmont, trained as a cook and later known for her own food and hospitality. Jenny remains connected to the companions whose apprenticeships took them into the Rangers, Battleschool, diplomacy and scribal work.",
+            "id": "jenny",
+            "name": "Jenny Dalby",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Redmont ward who entered the scribal profession. George's legal knowledge, languages and eye for exact records provide a quieter counterpart to the physical skills of Will and Horace.",
+            "id": "george",
+            "name": "George Carter",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Will's Ranger horse and working partner, trained for silent movement and a complex set of spoken and physical signals. Tug has carried Will from his apprenticeship into his adult service as a Ranger.",
+            "id": "tug",
+            "name": "Tug",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-lost-stories"
+      },
+      "recaps": {
+        "in_short": "Presented as recovered accounts from Araluen's past, this collection fills gaps before, between and after the preceding novels rather than continuing one book-length plot. Its stories revisit the central circle at different ages: Halt's Hibernian origins and early Ranger service, the truth about Will's parents, missions involving Rangers and Couriers, quieter dangers around Redmont and changes in the friends' personal lives. Familiar figures including Will, Halt, Horace, Alyss, Gilan, Crowley, Cassandra, Pauline and Jenny appear in combinations that the main campaigns did not always have room to show. The later material carries the characters beyond the return from Nihon-Ja and gives Will and Alyss a long-awaited wedding. Taken together, the fragments turn mysteries and passing references from the series into a broader history of the Ranger Corps and the people around it; they do not introduce a single new antagonist or a continuous final campaign.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Collection note: these are separate accounts set at different points in the history of Araluen, and their internal chapter numbering restarts with each story. This sidecar therefore provides only a collection-level entry and does not assign linear chapter gates or identify individual story culprits. Previously in the series, Will grew from a Redmont ward into a full Ranger under Halt; Horace became a leading knight; Alyss became a Courier and Will's partner; and Cassandra served Araluen both as princess and field companion. Their campaigns defeated Morgarath, helped Skandia resist the Temujai, saved Macindaw, exposed the Outsiders in Hibernia and preserved Emperor Shigeru's rule in Nihon-Ja. Halt survived the Genovesan poison used during the pursuit of Tennyson, and Horace returned safely from Ran-Koshi. The stories that follow move backward and forward around that shared history rather than beginning after it in a single timeline.",
+            "through": {
+              "chapter": 0
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-lost-stories"
       }
     },
     "the-lovely-bones": {
@@ -1169,6 +1525,208 @@
         "work": "the-lovely-bones"
       }
     },
+    "the-lunatic-cafe": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A St. Louis animator and court-authorized vampire executioner whose work repeatedly draws her into police investigations and supernatural politics. Anita is dating Richard after learning that he is a werewolf, while continuing to resist Jean-Claude's claim on her and the two mystical marks connecting them.",
+            "id": "anita-blake",
+            "name": "Anita Blake",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A junior-high science teacher and werewolf who is dating Anita. Richard wants a committed relationship without hiding what he is, but his refusal to kill in order to gain rank leaves him in conflict with the harsher customs of his pack.",
+            "id": "richard-zeeman",
+            "name": "Richard Zeeman",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Dolph"
+            ],
+            "description": "The detective who leads the Regional Preternatural Investigation Team. Dolph calls Anita to scenes where ordinary forensic explanations do not account for the injuries and expects her to distinguish evidence of animal attacks from the work of shapeshifters.",
+            "id": "rudolph-storr",
+            "name": "Rudolph Storr",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The master vampire of St. Louis. Jean-Claude regards his bond with Anita as both political and personal, and he is unwilling to concede her to Richard without being given an equal chance to court her.",
+            "id": "jean-claude",
+            "name": "Jean-Claude",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A journalist and werewolf who has previously traded information with Anita. Irving understands the local pack's internal pressures and helps her approach its leaders without treating their customs as simple extensions of human law.",
+            "id": "irving-griswold",
+            "name": "Irving Griswold",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of the St. Louis werewolf pack. Marcus values order backed by physical dominance and expects Richard either to submit to his authority or challenge him under pack law.",
+            "id": "marcus-fletcher",
+            "name": "Marcus Fletcher",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Marcus's partner and a powerful figure within the werewolf pack. Raina is confident, coercive, and closely involved in the alliances linking the city's wolves with other shapeshifter groups.",
+            "id": "raina-wallis",
+            "name": "Raina Wallis",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of St. Louis's wereleopards. Gabriel moves within the same uneasy coalition as Marcus and Raina and makes clear that cooperation among different kinds of shapeshifters does not imply trust or shared values.",
+            "id": "gabriel",
+            "name": "Gabriel",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A vampire devoted to Jean-Claude and openly jealous of Anita's place in his attention. Gretchen treats Anita's refusal of him as irrelevant to the threat she believes Anita poses.",
+            "id": "gretchen",
+            "name": "Gretchen",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A woman who presents herself as a researcher studying lycanthropes and asks Anita for help locating members of the shapeshifter community. Her request overlaps uncomfortably with the disappearances Anita has been asked to investigate.",
+            "id": "elvira-drew",
+            "name": "Elvira Drew",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Death"
+            ],
+            "description": "A professional hunter known among vampires as Death. Edward is interested in the people stalking shapeshifters and brings skills, weapons, and a hunter's perspective to an investigation in which Anita cannot rely on official channels alone.",
+            "id": "edward",
+            "name": "Edward",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A solitary swan shapeshifter living under an old curse that prevents him from remaining permanently human. Kaspar is knowledgeable about the missing shapeshifters but wary of every faction asking questions about them.",
+            "id": "kaspar-gunderson",
+            "name": "Kaspar Gunderson",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young werewolf connected to Jean-Claude's businesses and to Richard's pack. Stephen's divided obligations show how easily a less powerful shapeshifter can be used by pack leaders, vampires, or human investigators.",
+            "id": "stephen",
+            "name": "Stephen",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-lunatic-cafe"
+      },
+      "recaps": {
+        "ending": "Elvira Drew's supposed research is a cover for a group that captures shapeshifters and records their suffering for paying customers. Kaspar Gunderson has helped the hunters identify victims because they promised to end the curse that leaves him divided between human and swan forms. Anita, Richard, Edward, and their allies locate the captives and break up the operation. The hunters are killed or stopped, and Kaspar is killed when he remains a threat. The immediate disappearances are solved, but the investigation also exposes the coercive alliance run by Marcus, Raina, and Gabriel. Richard still refuses to gain leadership by killing Marcus, leaving that pack conflict unresolved. In Anita's personal life, Jean-Claude compels a compromise rather than accepting her exclusive relationship with Richard: Anita will give each man a fair opportunity to court her. Richard nevertheless asks her to marry him, and she accepts, while acknowledging that the promised dates with Jean-Claude must still occur. She ends the book engaged to Richard but still bound to Jean-Claude, with the rivalry among all three now explicit.",
+        "in_short": "Anita Blake's relationship with Richard Zeeman becomes serious just as the St. Louis police and local shapeshifters ask her to investigate violent deaths and several disappearances. Richard's werewolf pack is controlled by Marcus and Raina, who pressure him to settle a leadership struggle through lethal pack law. A purported researcher, Elvira Drew, seeks Anita's help finding lycanthropes, while Edward joins Anita in tracing human hunters. The missing shapeshifters are being captured for recorded killings, and the cursed swan shapeshifter Kaspar Gunderson has aided the hunters in hope of becoming permanently human. Anita and her allies end the operation, and Kaspar is killed. Richard refuses to take Marcus's place by killing him. Jean-Claude, unwilling to abandon his pursuit of Anita, forces a courtship compromise in which she agrees to date both him and Richard. Richard proposes and Anita accepts, leaving her engaged to Richard while the supernatural bond and personal attraction linking her to Jean-Claude remain unresolved.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Anita Blake raises the dead professionally in St. Louis and serves as a court-authorized vampire executioner. She killed Nikolaos, allowing Jean-Claude to become the city's master vampire, but he placed two mystical marks on her and calls her his human servant. Anita rejects his claim. Later cases forced her to confront the dangerous scale of her own animator power and to help Jean-Claude defeat rival master vampires. During the latest conflict, Anita began dating Richard Zeeman and learned that he is a werewolf. She was angry that he concealed it but did not reject him for being a shapeshifter. Richard wants a human relationship with her, while Jean-Claude continues to pursue her and treats their supernatural bond as the basis for a deeper partnership. Anita begins this book drawn toward Richard and determined that neither man's supernatural status will decide her choices.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Anita and Richard are trying to build an ordinary dating relationship despite his life as a werewolf and her work among the dead. A police call interrupts them: Dolph has a death whose injuries suggest an attack by something stronger than a normal animal. The physical evidence raises the possibility of a lycanthrope, but Anita cautions against treating every shapeshifter as a killer. At the same time, Jean-Claude refuses to accept that Anita's choice of Richard ends his own pursuit. The investigation and the romantic dispute both draw Anita deeper into the overlapping territories of St. Louis's vampires and shapeshifters.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Through Irving, Anita is brought to the Lunatic Cafe, a meeting place used by local shapeshifters. Marcus, the werewolf pack leader, says that shapeshifters have gone missing and asks for Anita's help. His partner Raina and the wereleopard leader Gabriel support a harsh system in which power and protection depend on dominance. Richard has enough strength to challenge Marcus, but he will not kill simply to take the pack. Jean-Claude presses a separate contest, insisting that Anita give him the same chance to court her that she has given Richard. Anita is now investigating whether the violent death and the missing shapeshifters are connected while trying to prevent the rivalries around her from deciding her private life.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Elvira Drew approaches Anita as a researcher interested in lycanthropes and asks for help finding members of the community. Because shapeshifters are already missing, Anita treats the request cautiously rather than supplying names. Edward also becomes involved, following signs that human hunters are targeting supernatural prey. Anita's questions meet resistance from people who fear exposure as much as violence. The case points away from an uncontrolled animal attack and toward organized people who know how to locate shapeshifters, while tensions within Richard's pack make cooperation difficult.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Anita and Edward follow the disappearances into a deliberate hunting operation rather than a series of unrelated deaths. Evidence suggests that victims are selected with inside knowledge and that the hunters preserve records of what they do. Kaspar Gunderson, a swan shapeshifter trapped by an old curse, emerges as a possible link among people who otherwise share little trust. Richard helps Anita while still resisting pressure to resolve the pack struggle through a death challenge. Jean-Claude continues enforcing the courtship bargain, ensuring that the danger of the case does not suspend the triangle among them.",
+            "through": {
+              "chapter": 32
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The search closes on the site where captive shapeshifters are being held. Anita, Richard, Edward, and their allies prepare to intervene against well-armed human hunters without exposing the prisoners to further harm. The captors' operation depends on buyers willing to pay for recordings of shapeshifters being forced to change and killed. Anita now knows that someone familiar with the supernatural community has been helping the group choose and secure victims, but the full bargain behind that cooperation is not yet settled. The pack leaders' effort to control Richard remains a threat beyond the immediate rescue.",
+            "through": {
+              "chapter": 38
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Elvira Drew is exposed as part of the group abducting shapeshifters and producing recordings of their deaths. Kaspar Gunderson supplied access and information because the hunters promised relief from the curse that divides his human and swan existence. Anita and her allies free the surviving captives and end the operation; Kaspar is killed when the confrontation makes him an active threat. Marcus, Raina, and Gabriel retain their positions, and Richard still refuses to kill Marcus merely to become pack leader. Jean-Claude forces Anita to honor a compromise in which she dates both him and Richard instead of choosing Richard without giving Jean-Claude a chance. Richard proposes marriage and Anita accepts, but her agreement to Jean-Claude's courtship remains. The case closes with the human hunters defeated and Anita engaged, while both the pack challenge and the romantic triangle continue.",
+            "through": {
+              "chapter": 43
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-lunatic-cafe"
+      }
+    },
     "the-magic-faraway-tree": {
       "characters": {
         "characters": [
@@ -1305,6 +1863,182 @@
           }
         ],
         "work": "the-magic-faraway-tree"
+      }
+    },
+    "the-magic-of-oz": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A restless Munchkin boy from Mount Munch who secretly learns a powerful word of transformation from his father. Kiki wants to escape an ordinary life and test the freedom his new magic seems to promise.",
+            "id": "kiki-aru",
+            "name": "Kiki Aru",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Kiki's father, a quiet Munchkin who knows a rare transformation charm but has kept it secret. Bini Aru uses the magic cautiously and does not realize that his son has overheard its key.",
+            "id": "bini-aru",
+            "name": "Bini Aru",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The former Nome King"
+            ],
+            "description": "The deposed Nome King, still bitter toward Ozma and the people of Oz. Ruggedo recognizes that Kiki's transformation magic could serve his old desire for revenge and encourages the boy's worst ambitions.",
+            "id": "ruggedo",
+            "name": "Ruggedo",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The fairy ruler of Oz, whose approaching birthday inspires her friends to seek unusual gifts. Ozma's trusting and peaceful rule is the very thing Ruggedo hopes to overthrow.",
+            "id": "ozma",
+            "name": "Ozma",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A girl living happily in Oz, determined to find a birthday surprise worthy of Ozma. Dorothy's search leads toward troublesome monkeys and eventually crosses the path of the conspirators.",
+            "id": "dorothy-gale",
+            "name": "Dorothy Gale",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Ozma's court magician and Dorothy's companion in the search for a birthday gift. The Wizard's magic depends on tools and learning rather than boasting, and he watches unfamiliar enchantments closely.",
+            "id": "the-wizard-of-oz",
+            "name": "The Wizard of Oz",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A brave girl who hopes to bring Ozma a marvelous living flower from a lonely island. Trot sets out with Cap'n Bill, trusting friendship and persistence more than magic.",
+            "id": "trot",
+            "name": "Trot",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Trot's old sailor companion, practical and protective as ever. Cap'n Bill joins her expedition for the magic flower and steps onto the island despite its suspicious appearance.",
+            "id": "capn-bill",
+            "name": "Cap'n Bill",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A transparent, proud, and sharp-tongued glass animal who agrees to guide Trot and Cap'n Bill. Because she is not made of flesh, some enchantments affect her differently from her companions.",
+            "id": "the-glass-cat",
+            "name": "The Glass Cat",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The dignified leopard king of the Forest of Gugu. He presides over the beasts' council and listens when two strange creatures arrive with a proposal to turn the animals against human beings.",
+            "id": "gugu",
+            "name": "Gugu",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Dorothy's large and loyal feline friend, traveling with her and the Wizard. His presence matters in the Forest of Gugu, where the wild beasts judge visitors according to forms as well as intentions.",
+            "id": "the-cowardly-lion",
+            "name": "The Cowardly Lion",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A solitary magical duck who values the privacy of his remote home. Though reluctant to become involved with strangers, he has knowledge that may help those trapped by the Magic Isle.",
+            "id": "the-lonesome-duck",
+            "name": "The Lonesome Duck",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-magic-of-oz"
+      },
+      "recaps": {
+        "ending": "The Wizard learns the transformation word, recovers his black bag with the Glass Cat's help, and reverses Kiki and Ruggedo's attack on the Forest of Gugu. Trot and Cap'n Bill are freed from the Magic Isle, and the flower they sought becomes part of Ozma's birthday celebration. Dorothy's adventures with the monkeys also end safely, and the friends gather in the Emerald City with their gifts. Ozma offers mercy to the defeated conspirators. Kiki is ashamed of having let Ruggedo guide him and returns to his father, Bini Aru, with a chance to use better judgment. Ruggedo remains defiant until he drinks from the Fountain of Oblivion; its water removes his memories of hatred and revenge, leaving the former Nome King harmless and giving the celebration a peaceful close.",
+        "in_short": "Kiki Aru secretly learns his father's transformation word and runs away, only to meet Ruggedo, the former Nome King. Ruggedo persuades him to use the charm in a plot against Ozma, beginning with an attempt to raise the beasts of the Forest of Gugu against human beings. At the same time, Dorothy, the Wizard, Trot, Cap'n Bill, and the Glass Cat pursue separate birthday gifts for Ozma. Trot and Cap'n Bill become rooted to the Magic Isle, while the Wizard's party collides with Kiki's enchantments. The Wizard overhears the magic word, the Glass Cat recovers his lost black bag, and the conspirators are defeated. The friends are rescued in time for Ozma's party. Kiki repents and goes home; Ruggedo drinks from the Fountain of Oblivion and forgets his long hatred.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Ozma rules Oz from the Emerald City, aided by Dorothy and the Wizard. Trot and Cap'n Bill have also made their home there, and the Glass Cat is one of their unusual friends. Ruggedo, once the Nome King, has repeatedly plotted against Oz and has lost his throne, but not his resentment.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On Mount Munch, Kiki Aru overhears the secret word his father, Bini Aru, uses to transform one creature into another. Hungry for adventure and importance, Kiki changes himself into a hawk and flies away. He soon meets Ruggedo, the deposed Nome King, who is still looking for a way to harm Ozma. Ruggedo flatters the inexperienced boy and proposes that they use the transformation charm to conquer Oz. Meanwhile, Ozma's friends prepare for her birthday. Dorothy and the Wizard consider a gift of performing monkeys, while Trot and Cap'n Bill decide to seek a marvelous flower said to grow on a magic island. The Glass Cat agrees to guide the latter pair, sending several separate journeys into motion.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kiki and Ruggedo adopt fantastic animal shapes and enter the Forest of Gugu, where they try to persuade King Gugu and the assembled beasts that all human beings are their enemies. The forest rulers are wary, but Kiki's ability to change bodies gives the threat real force. Elsewhere, the Glass Cat leads Trot and Cap'n Bill to the Magic Isle. The island's beautiful flower is protected by an enchantment: as soon as the two flesh-and-blood visitors step ashore, their feet take root and they cannot leave. The Glass Cat escapes the trap and goes for help. Dorothy, the Wizard, and the Cowardly Lion also reach the forest, bringing Ozma's friends into the path of the disguised conspirators just as Kiki begins using his magic against those who oppose the plan.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kiki's transformations throw the Forest of Gugu into confusion, and the Wizard loses the black bag that contains his most useful equipment. Yet Kiki speaks the secret word where the Wizard can hear and remember it. The Glass Cat searches successfully for the missing bag, while information from the Lonesome Duck helps the friends deal with the separate enchantment of the Magic Isle. Once reunited with his tools and armed with the transformation word, the Wizard can undo false shapes, expose Ruggedo and Kiki, and prevent the proposed war between animals and people. Trot and Cap'n Bill are released from the roots that held them, and their quest for the magic flower can at last be completed. The several parties turn back toward the Emerald City in time for Ozma's birthday.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "With the forest conspiracy defeated and Trot and Cap'n Bill rescued, Ozma's friends finish gathering their birthday surprises. Dorothy's efforts with the monkeys produce further confusion, including a visit to the College of Athletic Arts, but the mishaps are set right and the company reaches the Emerald City. Ozma receives the magic flower and the other gifts at a joyful party. She responds to Kiki and Ruggedo with mercy instead of vengeance. Kiki recognizes how badly Ruggedo used his pride and returns to Mount Munch and his father. Ruggedo will not willingly abandon his hatred, so he is given water from the Fountain of Oblivion. He forgets his old grudges and schemes, leaving him harmless. Ozma's birthday therefore ends with her friends safe, the beasts at peace, and both conspirators denied the revenge they planned.",
+            "through": {
+              "chapter": 23
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-magic-of-oz"
       }
     },
     "the-man-with-the-golden-gun-with-interview": {

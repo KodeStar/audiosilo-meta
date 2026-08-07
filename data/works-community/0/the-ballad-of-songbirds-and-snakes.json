@@ -4807,6 +4807,230 @@
         "work": "the-calculating-stars"
       }
     },
+    "the-cardinal-of-the-kremlin": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A CIA analyst whose grasp of Soviet military affairs has brought him into arms-control work at the highest level. His part in the secret Red October defection remains closely held, and he now has to judge both weapons data and the ambitions of the officials across the negotiating table.",
+            "id": "jack-ryan",
+            "name": "Jack Ryan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Misha"
+            ],
+            "description": "An elderly Soviet Army colonel and decorated tank officer who serves close to the defense minister. The physical injuries and honors he carries from the war make him an emblem of Soviet military history as well as a trusted presence inside the defense establishment.",
+            "id": "mikhail-filitov",
+            "name": "Mikhail Semyonovich Filitov",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The CIA's deputy director for intelligence and Ryan's senior mentor. Greer draws on Ryan's analysis of Soviet personalities and strategic weapons while protecting sensitive sources whose reporting reaches only a small circle.",
+            "id": "james-greer",
+            "name": "James Greer",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The director of central intelligence. A former judge with a restrained manner, Moore must balance the value of extraordinary human intelligence against the diplomatic and personal risks involved in obtaining it.",
+            "id": "arthur-moore",
+            "name": "Arthur Moore",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The CIA's deputy director for operations, responsible for the clandestine machinery behind the agency's most sensitive cases. Ritter is practical about risk and closely guards operational details even from colleagues on the analytical side.",
+            "id": "robert-ritter",
+            "name": "Robert Ritter",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A CIA officer serving in Moscow under diplomatic cover. Fluent, composed, and experienced at working under surveillance, she takes part personally in the careful contacts needed to keep the agency's Soviet networks functioning.",
+            "id": "mary-pat-foley",
+            "name": "Mary Pat Foley",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The CIA station chief in Moscow, officially posted as an American diplomat. He and his wife Mary Pat work as a practiced team while maintaining an ordinary family life beneath the attention of Soviet counterintelligence.",
+            "id": "edward-foley",
+            "name": "Edward Foley",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The chairman of the KGB and a powerful contender in the Soviet leadership. Gerasimov commands the security service's foreign and domestic reach and treats both intelligence successes and political weakness as opportunities to enlarge his position.",
+            "id": "nikolay-gerasimov",
+            "name": "Nikolay Gerasimov",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The general secretary of the Soviet Union, attempting cautious political and economic change while preserving his authority. His position is threatened by harder-line rivals who can use setbacks in defense or intelligence against him.",
+            "id": "andrey-narmonov",
+            "name": "Andrey Narmonov",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Soviet Army colonel sent to inspect a remote directed-energy research installation. Bondarenko is a demanding professional who looks past formal presentations to the training, security, and battlefield usefulness of the system under development.",
+            "id": "gennady-bondarenko",
+            "name": "Gennady Bondarenko",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A gifted American Army officer and physicist working on Tea Clipper, an experimental laser central to the United States missile-defense program. His technical insight makes him valuable to his own government and a target for foreign intelligence.",
+            "id": "alan-gregory",
+            "name": "Alan Gregory",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A scientist working alongside Alan Gregory on the American laser program. She combines technical ability with an understanding of Gregory's intense concentration, and their personal relationship places her close to highly protected defense work.",
+            "id": "candace-long",
+            "name": "Candace Long",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Afghan resistance commander fighting Soviet forces in the mountains. A patient organizer and expert marksman, he is interested in a heavily defended Soviet installation whose purpose could affect the war far beyond its perimeter.",
+            "id": "the-archer",
+            "name": "The Archer",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior KGB foreign-intelligence officer who deals with Ryan during the Moscow arms talks. Golovko is observant, disciplined, and able to discuss common interests without ceasing to represent a rival service.",
+            "id": "sergey-golovko",
+            "name": "Sergey Golovko",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The former Soviet submarine captain whose defection with Red October was secretly aided by Ryan. Now living under American protection, he can explain how senior Soviet officials may weigh institutional duty against personal and family survival.",
+            "id": "marko-ramius",
+            "name": "Marko Ramius",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-cardinal-of-the-kremlin"
+      },
+      "recaps": {
+        "ending": "KGB chairman Gerasimov tries to turn the exposure of CARDINAL and an operation against Tea Clipper into political power, but Ryan uses the chairman's own vulnerability to force an exchange. An American plan removes Gerasimov's family from Soviet control, and Gerasimov defects with them rather than face destruction at home. Filitov is released and brought out as part of the same operation. In Afghanistan, the resistance assault on the Soviet laser complex badly damages the rival system, while the attempted seizure of Alan Gregory and Candace Long in the United States fails. Narmonov survives Gerasimov's challenge and receives leverage for strategic-arms compromise. Filitov reaches America and meets Marko Ramius, another man who broke with the Soviet state, but age, illness, and interrogation have exhausted him; he dies soon afterward. The United States honors his decades of service in secret. Ryan returns from Moscow having protected the strategic balance and rescued the agent whose intelligence helped shape it, while beginning a wary professional relationship with Sergey Golovko.",
+        "in_short": "As American and Soviet laser programs alter the strategic-arms negotiations, the CIA depends on CARDINAL, a deeply placed Soviet source, for information about Moscow's project. A compromised courier operation leads the KGB toward the source, while KGB chairman Nikolay Gerasimov prepares to use the intelligence victory in a challenge to Soviet leader Andrey Narmonov. Jack Ryan joins the arms delegation in Moscow and discovers that CARDINAL is war hero Mikhail Filitov. Ryan turns Gerasimov's political exposure into leverage, forcing him to release Filitov and defect with his own family. At the same time, Afghan resistance fighters cripple the Soviet laser site and an attempt to seize American scientist Alan Gregory fails. Filitov reaches the United States and meets fellow defector Marko Ramius, but dies after completing his long service. Gerasimov's removal strengthens Narmonov and helps open the way to an arms agreement, while Ryan preserves both the American program and CARDINAL's legacy.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Jack Ryan survived an Ulster Liberation Army campaign against his family and returned to sustained work for the CIA under James Greer. He later concluded that Soviet submarine captain Marko Ramius intended to defect with Red October, a new missile submarine whose quiet propulsion system made it exceptionally valuable. Ryan helped establish secret contact, boarded the boat, and assisted Ramius and his officers in reaching American control while the United States staged the submarine's destruction. The Soviets believe Red October was lost; Ramius is alive under American protection, and Ryan's personal part in the affair is among the government's most closely guarded secrets.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The United States is developing Tea Clipper, a powerful experimental laser associated with missile defense, while intelligence indicates that the Soviet Union has its own directed-energy project at a remote Central Asian installation. CIA leaders receive valuable material on the Soviet effort from a highly placed source known only as CARDINAL. In Moscow, the Foleys manage the dangerous human chain by which secret film and messages move out of the Soviet system. Jack Ryan analyzes the weapons information for James Greer, Arthur Moore, and Robert Ritter without being told more than he needs to know about the source. Inside the Soviet hierarchy, KGB chairman Nikolay Gerasimov watches General Secretary Narmonov for a weakness that could be turned into a leadership challenge.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Colonel Gennady Bondarenko inspects the Soviet laser facility and finds serious flaws in its military readiness despite the scientific promise of the equipment. His candid assessment forces senior officials to consider both the project's potential and its vulnerability. Across the border, an Afghan resistance commander known as the Archer gathers information about the guarded site and begins treating it as a target rather than an unexplained complex. In the United States, Major Alan Gregory and Candace Long work on Tea Clipper under tight security. The two superpowers therefore possess competing programs at very different stages, and intelligence about either one could reshape the arms negotiations. CARDINAL continues reporting from within the Soviet defense establishment, but increased KGB attention makes every transfer more dangerous.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A failure in the Moscow communications chain gives Soviet counterintelligence a path toward the CIA's protected source. The KGB proceeds cautiously, studying contacts and routines instead of immediately revealing how much it knows. Moore, Greer, Ritter, and the Foleys recognize that an important operation may be in danger but do not yet have enough information to identify the break or safely warn everyone exposed by it. Meanwhile, the Archer develops his plan against the Soviet laser installation, and American officials prepare for strategic-arms talks in which each side's knowledge of the other's research will matter. Ryan is added to the delegation because his understanding of Soviet programs and personalities can support the formal negotiators as well as the intelligence mission behind them.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The KGB follows the compromised route into the small circle around the Soviet defense leadership. Counterintelligence arrests the source and begins an interrogation while keeping the discovery tightly contained, preventing the CIA from knowing at once how much has been exposed. In Washington, agency leaders understand that one of their most important operations has probably failed but have few direct ways to help the person in custody. Gerasimov sees the capture not only as an intelligence success but as a weapon against rivals in the Soviet leadership. Ryan arrives in Moscow for the arms talks as the weapons negotiations, the struggle around Narmonov, and the source's fate begin to converge, but the identity behind the CARDINAL cryptonym remains restricted while the agency assesses the damage.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ryan learns that CARDINAL is Colonel Mikhail Filitov, the celebrated Soviet tank veteran who spent decades passing defense secrets from his position near the defense minister. Filitov is under interrogation, and Gerasimov intends to use the capture for political profit. The KGB chairman's ambitions threaten Narmonov at the same time that the Soviet leader has reason to seek a workable arms agreement. Ryan begins dealing with KGB officer Sergey Golovko and looks for pressure that can protect Filitov without exposing more CIA assets. In the United States, a Soviet operation moves against Alan Gregory and Candace Long in an effort to obtain Tea Clipper knowledge directly. The FBI and CIA close on the attempt before the scientists can be carried beyond recovery. The failure deprives Gerasimov of the technological prize he expected and gives the Americans more room to act against him.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ryan confronts Gerasimov with a choice: cooperate in Filitov's release and leave the Soviet Union, or face disclosures that will destroy his political future and may cost him his life. Because the KGB can retaliate against the chairman through his family, the Americans must secure them before the threat can be credible. The Foleys and other officers assemble an extraction under intense surveillance while Ryan continues the public arms negotiations. Gerasimov tests the proposal and searches for a way to preserve his power, but the loss of the American scientists and the danger of Ryan's information narrow his options. Separately, the Archer's fighters approach the Soviet laser complex, bringing the military strand of the crisis close to action. Neither the extraction nor the attack has yet reached its outcome.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The CIA gets Gerasimov's family beyond immediate KGB control and compels the chairman to complete the bargain. Gerasimov defects with them, and Filitov is released and extracted from the Soviet Union. The removal of the KGB chairman breaks his planned challenge to Narmonov and gives the Soviet leader room to pursue strategic compromise. In Afghanistan, the resistance attack badly damages the Soviet laser installation, while the failed operation against Gregory leaves Tea Clipper secure. Filitov reaches the United States and is able to meet Marko Ramius, whose earlier defection offers a different ending to a life spent serving the Soviet military. Filitov's health has been ruined by age, wounds, and captivity, and he dies soon after reaching safety. He is honored privately for the intelligence he supplied over many years. Ryan returns home after an operation that has saved CARDINAL but can offer him only a brief freedom, preserved the American program, and altered the balance inside the Soviet leadership.",
+            "through": {
+              "chapter": 27
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-cardinal-of-the-kremlin"
+      }
+    },
     "the-carnivorous-carnival": {
       "characters": {
         "characters": [
