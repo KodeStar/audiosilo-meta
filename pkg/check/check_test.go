@@ -847,7 +847,20 @@ func joinProblems(ps []Problem) string {
 // report, because that is not drift: it is a checkout from before the storage
 // migration, where every one of the thousands of problems says the same thing.
 // metacheck says it there, once per family, and says how to fix it.
+//
+// It does not run under -race. What the detector has to see is the parallel pack
+// loader, and the fixture suites exercise every one of its paths - several packs
+// in every family, more work items than workers, problems and advisories from
+// different packs merged together (TestParallelLoadIsDeterministic,
+// TestParallelLoadExercisesEveryFamily). The real tree adds DATA coverage, not
+// concurrency coverage: 133k works of the same code path, at a cost that took
+// the package past Go's 10-minute default test timeout and made `go test -race
+// ./...` a 13-minute gate. The tree is still validated on every push - by this
+// test in the ordinary (non-race) run, and by `go run ./cmd/metacheck` in CI.
 func TestRealDataTree(t *testing.T) {
+	if raceEnabled {
+		t.Skip("skipped under -race: the fixture suites cover the parallel loader; the real tree is data coverage, and CI validates it in the non-race run and through metacheck")
+	}
 	const dataDir = "../../data"
 	if _, err := os.Stat(dataDir); err != nil {
 		t.Skipf("no data tree at %s: %v", dataDir, err)

@@ -13,8 +13,17 @@
 // accounting all come out of that one walk (pack.Listing). A caller that is also
 // WRITING calls LoadStore instead and hands over its pack.Store, so the walk is
 // shared too. What is never shared is residency: a pack is released as soon as
-// it has been validated, so validating a tree costs one pack at a time however
-// it was entered.
+// it has been validated, so validating a tree costs a bounded number of packs at
+// a time however it was entered.
+//
+// The per-pack work - parse, schema-validate, decode, size - is INDEPENDENT
+// between pack files, so it runs on a bounded pool of GOMAXPROCS workers (see
+// parallel.go). Everything cross-record still runs afterwards, single-threaded,
+// over the assembled catalogue. The result is deterministic by construction: a
+// worker fills a packResult of its own and the coordinating goroutine merges
+// them in the listing's order, so the catalogue, the problems and the advisories
+// come out exactly as a sequential walk would have produced them, whatever order
+// the workers finished in (TestParallelLoadIsDeterministic pins it).
 //
 // This package is PUBLIC API: it is consumed by the sibling audiosilo-sidecars
 // tool as an ordinary module dependency, so its exported surface is a contract.
@@ -101,6 +110,13 @@ func newPathIndex() *pathIndex {
 }
 
 // loader is one walk's accumulating state, shared by both layout walkers.
+//
+// A loader is single-goroutine state. The pack walk runs one loader PER PACK
+// FILE (see loadPack), each with its own catalog, index and problem lists, and
+// the coordinating goroutine merges them back in listing order - so nothing here
+// is ever written from two goroutines, and the parallel load needs no locks. The
+// only fields shared across those per-pack loaders are read-only: dir, schemas,
+// and rdr (asked, never filled - see readPack).
 type loader struct {
 	dir string
 	// rdr is a writer's parse cache (a pack.Store's, via LoadStore), READ but
@@ -112,16 +128,27 @@ type loader struct {
 	cat     *model.Catalog
 	idx     *pathIndex
 	schemas schemaSet
-	add     addFunc
-	warn    addFunc
+	probs   []Problem
+	warns   []Problem
+}
+
+// add records a rule violation against path.
+func (l *loader) add(path, format string, args ...any) {
+	l.probs = append(l.probs, Problem{Path: path, Msg: fmt.Sprintf(format, args...)})
+}
+
+// warn records an advisory against path.
+func (l *loader) warn(path, format string, args ...any) {
+	l.warns = append(l.warns, Problem{Path: path, Msg: fmt.Sprintf(format, args...)})
 }
 
 // Load walks dir, validates it, and returns the result. dir is the data root.
 //
 // Nothing is kept: a pack is parsed, validated and released as the walk moves
-// past it, so the load's peak memory is one pack plus the Catalog it is
-// building. A caller that is also WRITING calls LoadStore, which shares the
-// writer's walk - and the same release-as-you-go applies there.
+// past it, so the load's peak memory is the packs currently in flight (at most
+// one per worker) plus the Catalog it is building. A caller that is also WRITING
+// calls LoadStore, which shares the writer's walk - and the same
+// release-as-you-go applies there.
 func Load(dir string) Result {
 	lst, err := pack.List(dir)
 	if err != nil {
@@ -156,6 +183,17 @@ func Load(dir string) Result {
 // calls Load. Once a Flush has made the store's walk stale, LoadStore takes a
 // fresh one and re-reads everything, so post-write validation IS a full
 // independent load.
+//
+// It is PARALLEL over pack files, exactly as Load is, and borrowing the store's
+// parse cache does not change that. The borrower only ever ASKS the cache
+// (pack.Reader.Cached, a lookup in two maps that writes to neither) and never
+// fills it, so the workers do concurrent reads of a map nothing is writing -
+// which is safe, and is stated as such on pack.Reader. What makes it hold is
+// that LoadStore is SYNCHRONOUS in its caller: a store is single-goroutine state
+// and its owner is blocked here for the duration, so no Read, Drop or Flush can
+// be running alongside the pool. Each cached *pack.File is touched by exactly
+// one worker (a listing names a file once), so the render memo a size check
+// leaves on it is not shared either.
 func LoadStore(s *pack.Store) Result {
 	lst := s.Listing()
 	if lst == nil {
@@ -169,13 +207,6 @@ func LoadStore(s *pack.Store) Result {
 // as it has been validated.
 func load(lst *pack.Listing, rdr *pack.Reader) Result {
 	dir := lst.Dir()
-	var probs, warns []Problem
-	add := func(path, format string, args ...any) {
-		probs = append(probs, Problem{Path: path, Msg: fmt.Sprintf(format, args...)})
-	}
-	warn := func(path, format string, args ...any) {
-		warns = append(warns, Problem{Path: path, Msg: fmt.Sprintf(format, args...)})
-	}
 
 	schemas, err := compileSchemas()
 	if err != nil {
@@ -187,11 +218,11 @@ func load(lst *pack.Listing, rdr *pack.Reader) Result {
 		return Result{Problems: []Problem{{Path: dir, Msg: err.Error()}}}
 	}
 
-	l := &loader{dir: dir, rdr: rdr, cat: &model.Catalog{}, idx: newPathIndex(), schemas: schemas, add: add, warn: warn}
+	l := &loader{dir: dir, rdr: rdr, cat: &model.Catalog{}, idx: newPathIndex(), schemas: schemas}
 
 	// A file under no family root at all belongs to nothing.
 	for _, rel := range lst.Stray() {
-		add(rel, "unrecognized location (not under any of the %s roots)", familyRoots())
+		l.add(rel, "unrecognized location (not under any of the %s roots)", familyRoots())
 	}
 
 	var recs []recordWithPath
@@ -208,7 +239,13 @@ func load(lst *pack.Listing, rdr *pack.Reader) Result {
 		recs = append(recs, l.loadPackFamily(def, lst.Tree(def.Family), lst.Files(def.Family))...)
 	}
 
+	// The cross-record rules run once, single-threaded, over the assembled
+	// catalogue: they are the whole point of loading everything before judging
+	// anything, and nothing about them is per-pack. They take the loader's own
+	// add/warn as method values - an addFunc is exactly that shape.
 	cat, idx := l.cat, l.idx
+	add, warn := l.add, l.warn
+
 	workByID := map[string]*model.Work{}
 	for _, w := range cat.Works {
 		if _, dup := workByID[w.ID]; !dup {
@@ -237,10 +274,10 @@ func load(lst *pack.Listing, rdr *pack.Reader) Result {
 	checkOrphanPeople(cat, recs, idx, warn)
 	checkSidecarPositionScale(cat, idx, warn)
 
-	sortProblems(probs)
-	sortProblems(warns)
+	sortProblems(l.probs)
+	sortProblems(l.warns)
 
-	return Result{Problems: probs, Warnings: warns, Catalog: cat}
+	return Result{Problems: l.probs, Warnings: l.warns, Catalog: cat}
 }
 
 func sortProblems(ps []Problem) {

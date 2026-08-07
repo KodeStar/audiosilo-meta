@@ -24,7 +24,12 @@ import (
 // reads a pack the store never asked for keeps it to itself; the store re-reads
 // that pack if it ever needs it.
 //
-// A Reader is not safe for concurrent use.
+// A Reader is not safe for concurrent use with anything that FILLS or empties it
+// - Read and Drop are the two, and a Store calls both. Concurrent LOOKUPS
+// (Cached, peek) are safe, because they only read the two maps and write to
+// neither; check.LoadStore relies on exactly that, validating a tree on a pool of
+// goroutines that ask the cache and never fill it, while the store's own
+// goroutine is blocked in the call.
 type Reader struct {
 	dir   string
 	cache map[string]*File

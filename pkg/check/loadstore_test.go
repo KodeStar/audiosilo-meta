@@ -57,7 +57,10 @@ func loadCases() map[string]loadCase {
 	})
 
 	return map[string]loadCase{
-		"valid":      {files: packValid()},
+		"valid": {files: packValid()},
+		// Several packs in every family, so the comparison runs over a pool
+		// rather than over one work item per family (see parallel_test.go).
+		"many packs": {files: parallelTree(), problems: true, warnings: true},
 		"too deep":   {files: tooDeep, problems: true},
 		"stray":      {files: stray, problems: true},
 		"misfiled":   {files: misfiled, problems: true},
@@ -243,6 +246,45 @@ func TestLoadStoreUsesThePacksTheStoreRead(t *testing.T) {
 	}
 	if len(res.Catalog.People) != 2 {
 		t.Fatalf("people = %d, want 2", len(res.Catalog.People))
+	}
+}
+
+// TestLoadStoreSharesTheCacheAcrossWorkers is the concurrency half of the
+// borrowed cache. The pack walk runs on a pool, so several workers ask the
+// store's Reader at once; that is safe because they only ever LOOK (Cached
+// reads two maps and writes to neither) and because LoadStore is synchronous in
+// its caller, so the store itself is not running. Under -race this is the case
+// that would catch a borrower that started filling the cache instead.
+//
+// Every pack is primed into the reader first, so every worker takes the cached
+// path rather than reading the file, and the answer still has to be Load's.
+func TestLoadStoreSharesTheCacheAcrossWorkers(t *testing.T) {
+	files := parallelTree()
+	byPath := t.TempDir()
+	writeTree(t, byPath, files)
+	viaStore := t.TempDir()
+	writeTree(t, viaStore, files)
+
+	s, err := pack.Open(viaStore)
+	if err != nil {
+		t.Fatal(err)
+	}
+	rdr := s.Reader()
+	for rel := range files {
+		if _, err := rdr.Read(rel); err != nil {
+			t.Fatalf("priming %s: %v", rel, err)
+		}
+	}
+
+	want, got := Load(byPath), LoadStore(s)
+	if a, b := joinProblems(want.Problems), joinProblems(got.Problems); a != b {
+		t.Errorf("problems differ\nLoad:\n%s\nLoadStore:\n%s", a, b)
+	}
+	if a, b := joinProblems(want.Warnings), joinProblems(got.Warnings); a != b {
+		t.Errorf("warnings differ\nLoad:\n%s\nLoadStore:\n%s", a, b)
+	}
+	if a, b := catalogDigest(t, want.Catalog), catalogDigest(t, got.Catalog); a != b {
+		t.Errorf("catalog differs\nLoad:\n%s\nLoadStore:\n%s", a, b)
 	}
 }
 
