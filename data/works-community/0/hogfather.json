@@ -289,6 +289,214 @@
         "work": "holes"
       }
     },
+    "homeland": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Drizzt Do'Urden"
+            ],
+            "description": "The thirdborn son of House Do'Urden, a noble family of the drow city of Menzoberranzan. By his people's custom a third living son is given to the Spider Queen at birth, and he survives only because one of his brothers dies during the raid the house launches on the night he is born. Raised as a household servant and page under the supervision of his sister Vierna, he grows up learning the city's rules of ambition, obedience and treachery. He has extraordinary reflexes and an instinct for weapons, and also an instinct for fairness and pity that nothing in his upbringing accounts for and that he learns early to hide.",
+            "id": "drizzt",
+            "name": "Drizzt",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The weapon master of House Do'Urden and the deadliest swordsman in Menzoberranzan, a male who fights with two blades and trains the house's warriors. He is openly contemptuous of the priestesses he serves and takes evident satisfaction in killing the clerics of rival houses. He was for many years Matron Malice's consort, and he takes an interest in the house's youngest son that nobody in the household can account for.",
+            "id": "zaknafein",
+            "name": "Zaknafein Do'Urden",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Matron Mother of House Do'Urden and Drizzt's mother, a high priestess of the Spider Queen whose ambition drives everything the house does. She orders the destruction of a rival house to advance her rank, rules her children by fear and religious authority, and measures every relationship, including motherhood, by what it can be made to yield.",
+            "id": "matron-malice",
+            "name": "Matron Malice Do'Urden",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The eldest daughter of House Do'Urden and its senior priestess after her mother. She is the most orthodox and the most brutal of the sisters, quick with the many-headed snake whip that is a priestess's badge of office, and she takes Drizzt's oddities as insults to the goddess.",
+            "id": "briza",
+            "name": "Briza Do'Urden",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The second daughter of House Do'Urden, a priestess given charge of Drizzt for the first sixteen years of his life. She teaches him the city's laws and his place in them, and is as close to gentle as anyone in the household, though her patience is always in the service of the house and its goddess.",
+            "id": "vierna",
+            "name": "Vierna Do'Urden",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The youngest of House Do'Urden's daughters, a priestess still low in the family's order and watchful of her sisters. She competes with Briza for their mother's approval and takes no interest in Drizzt beyond his usefulness to the house.",
+            "id": "maya",
+            "name": "Maya Do'Urden",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A son of House Do'Urden who advances to elderboy on the night of the raid, when his older brother dies in circumstances that suit him. Ambitious, capable and entirely practical about murder, he leads the house's patrols into the tunnels around the city and later escorts Drizzt to the warriors' school.",
+            "id": "dinin",
+            "name": "Dinin Do'Urden",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The secondborn son of House Do'Urden and a wizard, senior in the family's order of males and resented for it by his younger brother. He takes part in the assault on the rival house on the night Drizzt is born.",
+            "id": "nalfein",
+            "name": "Nalfein Do'Urden",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The patron of House Do'Urden, Matron Malice's consort of the moment and the male the household treats as Drizzt's father. He holds his position entirely at Malice's pleasure and has neither authority nor security in it.",
+            "id": "rizzen",
+            "name": "Rizzen Do'Urden",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A drow of House DeVir studying at the city's school of wizardry, and the only member of his family to survive the night his house is destroyed, because he was not at home. He does not know which house attacked his, and he sets himself to find out and to take revenge, with no expectation of surviving it.",
+            "id": "alton-devir",
+            "name": "Alton DeVir",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young wizard of House Hun'ett who finds the survivor of the ruined house wandering the tunnels and, instead of killing him, brings him to his own matron. Cold and calculating even by the standards of his city, he sees other people almost entirely as instruments.",
+            "id": "masoj-hunett",
+            "name": "Masoj Hun'ett",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Matron Mother of House Hun'ett, a rival family ranked near House Do'Urden. She shelters the surviving DeVir noble not out of mercy but because a living witness with a grievance is a useful weapon to keep in reserve against a house she intends to move against eventually.",
+            "id": "sinafay-hunett",
+            "name": "SiNafay Hun'ett",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A great black panther summoned from another world by an onyx figurine, bound to serve whoever holds the statuette. Intelligent and self-possessed, the cat obeys commands but is plainly not merely a tool, and it responds to Drizzt with a recognition its owner has never earned.",
+            "id": "guenhwyvar",
+            "name": "Guenhwyvar",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young surface elf, the only survivor of a gathering destroyed by a drow raiding party. Drizzt cannot bring himself to kill her, and hides her under her mother's body, smeared with her mother's blood, so that the other raiders will believe the work already done.",
+            "id": "the-elf-child",
+            "name": "The Elf Child",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "homeland"
+      },
+      "recaps": {
+        "ending": "Drizzt tells Zaknafein that he cannot live as a drow and leaves House Do'Urden for the wild tunnels of the Underdark, taking nothing but his blades. His flight is a public renunciation of the Spider Queen, and it costs the house the goddess's favor. To buy it back, Matron Malice sacrifices Zaknafein to Lolth in her son's place, and Zaknafein goes willingly, having decided that his son is the one thing he has ever done that was worth anything. Meanwhile Masoj Hun'ett and Alton DeVir are sent into the tunnels to kill Drizzt. Masoj orders the panther Guenhwyvar to kill Alton so that no witness remains, and Drizzt then kills Masoj and takes the onyx figurine that commands the cat. When Drizzt learns what was done to his father, he understands both that he was loved and that he can never go back: his family will keep hunting him for as long as his heresy stands between them and their goddess. He walks into the deep tunnels with the panther as his only companion, an exile with no destination.",
+        "in_short": "In the drow city of Menzoberranzan, Drizzt Do'Urden is born a third son of House Do'Urden on the night his mother destroys a rival house, and escapes the sacrifice custom demands of him only because a brother is murdered in the same raid. Raised as a servant, then trained in swordsmanship by the house weapon master Zaknafein, he proves the finest young blade of his generation and, at the warriors' academy, the finest student of his class. He also proves incapable of the cruelty his people take for granted. Sent on a raid to the surface, he finds not the monsters he was taught about but an elf family at a celebration, and he saves a small girl by hiding her and letting the raiders believe her dead. Back in the city he renounces the Spider Queen outright and learns that Zaknafein, who shares his revulsion, is his true father. Rather than become what his city requires, Drizzt abandons his house for the wild Underdark. Malice sacrifices Zaknafein in his place, and Drizzt, having killed the wizard sent to hunt him and claimed the panther Guenhwyvar, goes into exile alone.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Menzoberranzan is a drow city built inside an enormous cavern, ruled by the priestesses of the Spider Queen and organized entirely around rank. Houses may destroy one another provided no witness survives to accuse them. On the night House Do'Urden storms and wipes out House DeVir, Matron Malice bears a third son, Drizzt, whom custom requires her to sacrifice to the goddess. He lives because his brother Nalfein is killed during the raid by his other brother Dinin, leaving only two sons and no offering owed. One DeVir noble survives the massacre: Alton, who was away at the wizards' school. He is found wandering the tunnels by Masoj Hun'ett and taken in by Matron SiNafay Hun'ett, who keeps him as a weapon to be used later. Sixteen years on, Drizzt serves as the house's page prince, taught the city's laws and manners by his sister Vierna, and finds that he cannot make himself feel what everyone around him feels about cruelty.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Drizzt is turned over to Zaknafein, the house weapon master and the finest swordsman in the city, to be trained. The two spar daily for years, and Drizzt becomes an extraordinary fighter with two blades. Zaknafein, who despises the priestesses and kills their clerics whenever a house war gives him the excuse, watches his student for signs of the same instinct and finds them, though he explains nothing. Drizzt learns how his city actually works: that ambition is the only virtue, that the goddess rewards treachery when it succeeds, and that the household's affection for him is measured entirely by his usefulness. His unease grows, and he learns to keep it to himself.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Drizzt is sent to the city's academy, escorted by Dinin, to be finished as a warrior at Melee-Magthere alongside the sons of other noble houses. The training is superb and the instruction that accompanies it is propaganda: the masters teach that the surface elves betrayed the drow long ago and that every other race exists to be killed or used. Drizzt outfights everyone put in front of him while quietly refusing to believe the history lessons. Elsewhere in the academy complex, Alton DeVir murders a disfigured master known as the Faceless One and takes his place, using the position to hunt for the house that destroyed his family. Masoj Hun'ett, studying wizardry in the same schools, is instructed by his mother to watch the young Do'Urden and to be ready to kill him.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Drizzt finishes at the top of his class and spends his final years of schooling among the wizards and the priestesses. He encounters Guenhwyvar, a great black panther summoned by an onyx figurine that Masoj commands, and the cat treats him with an interest and a loyalty it never shows its owner. At the graduation rite, the students are brought before the priestesses for a ceremony in honor of the Spider Queen. Drizzt is repelled by it and shuts his mind against the goddess entirely, and the priestesses notice that one graduate did not surrender. He returns to House Do'Urden a finished warrior and a heretic who has not yet said so out loud.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Drizzt is assigned to Dinin's patrol, which ranges the tunnels around Menzoberranzan hunting whatever it finds. The patrol takes a group of deep gnomes; Drizzt argues for mercy and gets a compromise worse than either outcome, as the drow maim the gnome leader and send him home as a warning. The experience settles the question for Drizzt: his people's cruelty is not a means to anything, it is the point. Back in the house, Zaknafein presses him about what he saw and what he did, and the two circle the thing neither of them will say plainly. Matron Malice, watching her youngest son's growing detachment, begins to consider what to do about it.",
+            "through": {
+              "chapter": 23
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Dinin's patrol is sent to the surface to destroy an elf gathering. Drizzt goes expecting the monsters the academy described and finds families at a celebration under the stars. He cannot make himself take part, and when a small elf girl is left in front of him he hides her beneath her mother's body and smears her with blood so the other raiders will pass her by. Back in Menzoberranzan he refuses the celebration and finally says aloud that he wants nothing to do with the Spider Queen. Malice orders Zaknafein to deal with him. Instead, the two fight and then talk, and Drizzt learns that the weapon master who trained him is his father and that Zaknafein has carried the same revulsion for centuries, expressed only in the clerics he has killed. Neither of them can go on living in the house on those terms.",
+            "through": {
+              "chapter": 27
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Drizzt leaves House Do'Urden for the wild Underdark rather than become what the city requires. His desertion is read as heresy and strips the house of the goddess's favor, and Matron Malice restores it by sacrificing Zaknafein to Lolth in her son's place; Zaknafein accepts the offering, satisfied that Drizzt got out. SiNafay Hun'ett sends Masoj and Alton into the tunnels to finish the job. Masoj orders Guenhwyvar to kill Alton so no witness will remain, and Drizzt then kills Masoj and claims the figurine that summons the panther. Learning at last what his father did and what it cost, Drizzt understands that his family will never stop hunting him while he lives outside their goddess's reach. He goes deeper into the tunnels with Guenhwyvar, homeless, hunted, and unwilling to be anything other than what he is.",
+            "through": {
+              "chapter": 30
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "homeland"
+      }
+    },
     "house-of-earth-and-blood": {
       "characters": {
         "characters": [

@@ -1496,6 +1496,230 @@
         "work": "the-two-towers"
       }
     },
+    "the-valley-of-fear": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The consulting detective of Baker Street, well established and selective about the cases he takes. He opens the book working out a cipher message from a nervous informant, and is at his most combative on the subject of the criminal organisation he believes stands behind half the unsolved crime in London. He is impatient with official routine, keeps his conclusions to himself until he can stage them, and treats a country murder inquiry as an opportunity to test a theory rather than as a duty.",
+            "id": "sherlock-holmes",
+            "name": "Sherlock Holmes",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Dr. Watson"
+            ],
+            "description": "A doctor and former army surgeon, Holmes's friend, lodger and biographer, who records the case and supplies the patient questioning that draws Holmes out. He is used to being kept in the dark about his friend's reasoning and says so, and he narrates the English half of the story.",
+            "id": "john-watson",
+            "name": "John H. Watson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A frightened informant inside a criminal organisation who occasionally sends Holmes warnings for money, using a false name and never meeting him. He posts a message in a book cipher and then writes again in obvious panic to say that his position has become dangerous and that Holmes should ignore what he sent.",
+            "id": "fred-porlock",
+            "name": "Fred Porlock",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A former mathematical prodigy and author of a celebrated treatise on astronomy, living quietly as a coach in London. Holmes describes him as the organiser of a large part of the crime of the capital, a man who plans and never appears, and points to a costly painting on his wall as evidence that his modest salary is not his real income. Nothing has ever been proved against him, and the police regard Holmes's conviction on the subject as a private obsession.",
+            "id": "professor-moriarty",
+            "name": "Professor Moriarty",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Scotland Yard inspector, tall, bony and Aberdonian, taciturn and slow to enthusiasm but genuinely able. He has consulted Holmes on two previous cases and respects his methods while refusing to accept his theories on trust. He brings the Birlstone case to Baker Street and works it in the country with Holmes.",
+            "id": "alec-macdonald",
+            "name": "Inspector Alec MacDonald",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The master of Birlstone Manor House, a Sussex property surrounded by a moat and reached by a drawbridge that is raised at night. He is an American of about fifty who arrived in the district five years before with money made in the California gold fields, and is liked locally for being generous, unpretentious and fearless. He is reserved about his past, hinting only that he has enemies, and the case opens with the body in his study being identified as his.",
+            "id": "john-douglas",
+            "name": "John Douglas",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The master of Birlstone's closest friend, a well-built, handsome Englishman who knew him in America and stays at the manor for long periods. He raises the alarm on the night of the killing and gives the first account of what he found. His manner afterwards strikes the investigators as unusually composed for a man who has just lost a friend.",
+            "id": "cecil-barker",
+            "name": "Cecil Barker",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The mistress of Birlstone Manor, an Englishwoman considerably younger than her husband, who met him after his arrival in the district. She is calm and self-possessed in circumstances that would break most people, shows little grief in public, and does not immediately ask to see the body, which the local police note against her.",
+            "id": "ivy-douglas",
+            "name": "Ivy Douglas",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The butler at Birlstone Manor House, a correct and nervous servant who is among the first into the study after the alarm and who can speak to the household's routine, the raising of the drawbridge, and his master's habits.",
+            "id": "ames",
+            "name": "Ames",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The head of the Sussex county detective force, a brisk, capable countryman who is already at work when the London men arrive. He is open-minded, welcomes Holmes's help without resentment, and lays out the local evidence fully.",
+            "id": "white-mason",
+            "name": "White Mason",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An American who came to Birlstone with a sawn-off shotgun of a make sold in the United States, and who is the source of the whole affair at the manor house. His quarrel with the master of the house goes back many years, to their shared past in America.",
+            "id": "ted-baldwin",
+            "name": "Ted Baldwin",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A young Irish American who arrives in the coal and iron valley of Vermissa in 1875, out of a job in Chicago and cheerfully unbothered about why. Confident, quick with his fists and openly contemptuous of the local police, he carries the recognition signs of a fraternal order whose lodge effectively governs the valley, and sets out to make himself known to its leaders as soon as he arrives.",
+            "id": "jack-mcmurdo",
+            "name": "Jack McMurdo",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The daughter of the German boarding-house keeper with whom McMurdo lodges in Vermissa, a fair-haired young woman who hates the valley and what goes on in it. She is already being pursued by a powerful member of the lodge, and her father wants her out of the district altogether.",
+            "id": "ettie-shafter",
+            "name": "Ettie Shafter",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A friendly, easy-going lodge man who travels into the valley on the same train as McMurdo and gives him his first account of how things are run there, and who remains one of the few men in Vermissa McMurdo can talk to plainly.",
+            "id": "mike-scanlan",
+            "name": "Mike Scanlan",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Bodymaster of Lodge 341 at Vermissa and the real power in the valley: saloon keeper, county official, and organiser of the order's business. Black-bearded, genial in manner and instantly dangerous when crossed, he presides over the lodge's meetings and decides which men are to be beaten and which are to be killed.",
+            "id": "boss-mcginty",
+            "name": "Black Jack McGinty",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-valley-of-fear"
+      },
+      "recaps": {
+        "ending": "Douglas is tried for the death at Birlstone and acquitted: the coroner's court and the assizes accept that he killed Ted Baldwin in self-defence when Baldwin came to murder him. Holmes, however, warns him that the danger is not over, because the men who sent Baldwin have hired a much more formidable organisation in London to finish the work, and urges him to leave England. Douglas and his wife take his advice and sail for South Africa. Some weeks later Cecil Barker comes to Baker Street with the news that Douglas has been lost overboard from the ship in a gale off St Helena, with nobody able to say how it happened. Holmes tells him plainly that this was murder, and that the hand behind it is Professor Moriarty's, whose organisation was paid to see the sentence carried out; a good man has been destroyed to satisfy an old grudge and to protect the reputation of a criminal machine that does not fail. Barker demands to know whether nothing can be done, and Holmes answers that Moriarty has left no evidence and that the reckoning will have to wait, but promises that he will have him in the end. The book closes with the London case unresolved and the long contest between Holmes and Moriarty still open.",
+        "in_short": "Holmes decodes a warning from an informant inside a criminal organisation that a man named Douglas at Birlstone is in danger, and within the hour Inspector MacDonald arrives to say that Douglas has been shot dead in his moated Sussex manor house. The body is unrecognisable, killed by a sawn-off American shotgun; a card marked V.V. 341 lies beside it, a wedding ring is missing, and the dead man's forearm carries a brand. Holmes distrusts the composure of the widow and of the family friend Cecil Barker, recovers a bundle of American clothes from the moat, and reveals that the dead man is not Douglas at all but the intruder who came to kill him; Douglas himself has been hiding in a concealed room in the house. Douglas hands over a written account of his past, which turns back twenty years to the Vermissa Valley in America, where a young man named Jack McMurdo joined a lodge of the Scowrers, a fraternal order that ruled the coal country by terror, rose in its councils and finally broke it: McMurdo was the Pinkerton agent Birdy Edwards. Douglas is acquitted of the Birlstone killing, but is lost overboard at sea soon afterwards, and Holmes names Moriarty as the man behind it.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "At Baker Street, Holmes receives a message in cipher from Fred Porlock, an informant who occasionally sells him warnings from inside a criminal organisation, followed by a second note in panic asking him to ignore it because his position has become unsafe. Holmes works out that the cipher is keyed to a common reference book, identifies the almanac used, and reads the message: someone called Douglas, a wealthy country gentleman at Birlstone House in Sussex, is in immediate danger. Watson presses him about the source, and Holmes describes Professor Moriarty, an outwardly respectable mathematician and author whom he regards as the organising brain behind a great part of London's serious crime, and whose expensive tastes cannot be explained by his salary. Inspector Alec MacDonald of Scotland Yard, a shrewd and cautious Aberdonian who has worked with Holmes before, arrives while they are talking; he has recently called on Moriarty himself and been charmed by him, which Holmes finds ominous. MacDonald has come with news that has just reached the Yard: Mr. Douglas of Birlstone Manor House was murdered the previous night. Holmes recognises that the warning arrived too late, and the three men take the train to Sussex.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Birlstone Manor House is an old moated building whose drawbridge is still raised every night. On the previous evening the household was roused by Cecil Barker, a friend of the family staying in the house, who found the master of the house dead in the study, his head destroyed at close range by a shotgun with the barrels sawn short, of a pattern sold in the United States. The window was open and there was a bloody boot mark on the sill, suggesting an escape across the moat. Beside the body lay a card bearing the letters V. V. and the number 341, the dead man's wedding ring had been taken from under another ring left in place, and there was an old brand in the shape of a triangle inside a circle on his forearm. One of a pair of dumb-bells is missing from the room. Holmes, White Mason of the county force and MacDonald go over the ground together. Douglas was an American of about fifty who had come to the district five years earlier with money from the California gold fields, was popular and generous, and never spoke of his past except to hint that he had enemies. His widow and Barker are strikingly calm, and Barker's account of the escape route does not satisfy Holmes, who observes that a bicycle has been abandoned in the shrubbery and that a stranger answering no description in the house had been staying at a hotel in Tunbridge Wells under the name Hargrave.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The investigators build up the household. Mrs. Douglas married her husband after his arrival in England and knew nothing of his American life beyond his occasional references to a valley of fear and to men who might come for him. Barker knew him in the gold fields and has been an intimate of the house ever since. A maid's evidence, and then Holmes's own observation of the couple laughing together in the garden the day after the death, convince him that the widow and Barker are concealing something, though he refuses to say what he thinks it is. He fixes on two details the others have passed over: the missing dumb-bell, which he insists is central, and the fact that the escape across the moat would have left a trail that nobody found. He borrows an umbrella, spends time at the edge of the water, and finally has the moat dragged at the spot below the window, bringing up a bundle weighted with the missing dumb-bell. It contains a suit of clothes of American make, a pair of boots and a knife, none of them the dead man's.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Holmes assembles Mrs. Douglas, Barker, MacDonald and White Mason in the study and states his case: the man in the room was not shot by an escaping intruder, and the body is not John Douglas. He has a lamp placed in the window as a signal, and a man steps out of a hidden chamber built into the old wall of the house, where he has been concealed since the night of the killing. It is Douglas himself, alive. He explains that the dead man was Ted Baldwin, an American who came to Birlstone to murder him; they struggled and the shotgun went off under Baldwin's chin, destroying his face. Since Baldwin was of his own build and carried the same brand on his arm, Douglas exchanged clothes and marks with him on Barker's advice and hid, meaning to let the world believe him dead and so end the pursuit; his wife and Barker were in it with him, which accounts for their composure. He hands Holmes a written narrative of his American years, and the story turns away from Sussex entirely.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The narrative leaves England for the American coal and iron country twenty years earlier. In 1875 a young Irish American named Jack McMurdo travels by train into the Vermissa Valley, a smoky industrial gorge of mines and furnaces, having left Chicago after trouble he does not care to explain and carrying a reputation as a coiner. A fellow passenger, Mike Scanlan, warns him what the valley is: a fraternal order known as the Eminent Order of Freemen, whose Vermissa branch is Lodge 341, has become a criminal society called the Scowrers, and it beats, burns and murders anyone who opposes it while the police look away. McMurdo lodges with the German Jacob Shafter and falls in love with his daughter Ettie, who is already being pursued by a lodge man, Ted Baldwin. McMurdo presents himself to Boss McGinty, the Bodymaster of the lodge and the real ruler of the valley, survives a hostile examination about his past, and is initiated in a brutal ceremony that includes branding his forearm with the order's mark. He quickly makes himself useful and popular in the lodge, sits in on its councils as it orders beatings and killings, including an attack on a newspaper editor who has printed the truth about it, and openly takes Ettie from Baldwin, who does not forgive it.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The lodge's grip on the valley tightens. Ettie begs McMurdo to take her away before he is dragged further in, and he refuses to go yet, saying he will be free to leave when his work is finished. The mine owners and the railway companies, unable to get help from the local police or the courts, bring in the Pinkerton Detective Agency, and word runs through the valley that an agent named Birdy Edwards is somewhere among them collecting evidence, unrecognised and taking notes on every man in the lodge. McGinty and his council are badly shaken by this and turn their energy to finding him. Meanwhile the ordinary business of the order goes on, including an attempt on the life of a mine manager, Chester Wilcox, who has resisted them; the party sent to blow up his house finds that he has been warned and moved his family, and the outrage fails. Suspicion, fear and reprisal spread. McMurdo, now trusted at the highest level of the lodge, is present at every discussion of how the informer is to be found and dealt with.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "McMurdo tells McGinty and the inner circle that he has made contact with Birdy Edwards, that the detective trusts him, and that he can bring him to his own house on a given night, where the leading men of the lodge can be waiting to kill him. The plan is agreed and the council gathers in McMurdo's rooms. When the moment comes, the trap closes the other way: McMurdo is Birdy Edwards. He has spent his time in the valley building a complete case against the order, the house is surrounded by police and mine company men, and McGinty and his chief lieutenants are seized. Edwards had married Ettie and sent her out of the valley beforehand. The trials break the Scowrers: McGinty is hanged with several others, many more go to long prison terms, and the reign of terror in Vermissa ends. Edwards has to run for the rest of his life from the men who were only imprisoned. Ettie dies some years afterwards in Chicago; he makes money in California, changes his name to Douglas, and finally settles in England, where Ted Baldwin, released at last, traced him to Birlstone.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Back in England, Douglas is tried for the death of Ted Baldwin and acquitted on the ground that he acted in self-defence. Holmes tells him that the verdict changes nothing about his position: the people who sent Baldwin have engaged a far more capable organisation in London to complete the work, and Douglas should leave the country at once. Douglas and his wife sail for South Africa. A few weeks later Cecil Barker brings the news to Baker Street that Douglas was washed overboard in a gale off St Helena and that no one can say how it happened. Holmes states flatly that this was murder, arranged by Professor Moriarty, whose organisation was hired to see the old sentence carried out and which does not leave evidence behind. Barker asks whether nothing can be done; Holmes answers that Moriarty is beyond the reach of any proof he can presently offer, but that the account between them is not closed and will be settled in time. The Birlstone case is solved and the man it was about is dead, and the larger contest that the opening cipher hinted at remains unfinished.",
+            "through": {
+              "chapter": 15
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-valley-of-fear"
+      }
+    },
     "the-vampire-lestat": {
       "characters": {
         "characters": [

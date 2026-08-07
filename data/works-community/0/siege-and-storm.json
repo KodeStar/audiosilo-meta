@@ -818,6 +818,233 @@
         "work": "silvers"
       }
     },
+    "silverthorn": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Prince of Krondor and ruler of the Western Realm, younger brother to King Lyam. Dark, lean and dry-humoured, a veteran of nine years of war and a superb swordsman, he is a careful and suspicious administrator who trusts evidence rather than assurances. He has returned to Krondor to marry Princess Anita, and he is not comfortable with ceremony.",
+            "id": "arutha",
+            "name": "Prince Arutha",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Daughter of the late Prince Erland and heir of Krondor in her own right, about to marry Arutha. Slight, self-possessed and considerably tougher than she appears, she spent her girlhood as a political hostage and knows the city's court better than her husband-to-be does.",
+            "id": "anita",
+            "name": "Princess Anita",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Jimmy the Hand",
+              "Squire James"
+            ],
+            "description": "Formerly the best young thief in the Mockers, Krondor's thieves' guild, and now a squire of the Prince's court, a promotion he wears lightly. Quick-witted, quick-fingered and incurably curious, he keeps his old contacts in the sewers and back alleys and hears things the palace never would.",
+            "id": "jimmy",
+            "name": "Jimmy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Duke of Crydee and Warden of the West, formerly the duchy's huntmaster, and half-brother to the King and the Prince through their father. Quiet, watchful and happiest in a forest, he was raised in part among the elves of Elvandar and is still the finest archer in the Kingdom. He has come east for his brother's wedding.",
+            "id": "martin",
+            "name": "Duke Martin Longbow",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "King of the Isles, eldest of the conDoin brothers, crowned at the end of the Riftwar. Fair, open-tempered and conciliatory by nature, he is trying to knit together a kingdom whose eastern and western nobles spent the war distrusting each other.",
+            "id": "lyam",
+            "name": "King Lyam",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The conDoin brothers' sister, once the sheltered daughter of Crydee and now a woman with her own opinions and no patience for being managed. She has come to Krondor for the wedding with the singer she married.",
+            "id": "carline",
+            "name": "Princess Carline",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A singer of Tyr-Sog who was a prisoner on the Tsurani world during the war and came home to marry into the royal family. Talkative, observant and better travelled than most of the court, he is still more comfortable in a taproom than at a state dinner.",
+            "id": "laurie",
+            "name": "Laurie",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Knight-Marshal of Krondor, commander of the Prince's armies, a Keshian-born soldier who rose from the ranks in Crydee's garrison. Steady, blunt and entirely loyal, he has served the conDoins since Arutha was a boy.",
+            "id": "gardan",
+            "name": "Gardan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A moredhel chieftain in the Northlands who has drawn the scattered dark elf clans together under one banner. His followers hail him as the figure their prophecies promised, the one who will lead them south to reclaim the lands they say were theirs, and he commands a loyalty and a discipline the moredhel have never shown before.",
+            "id": "murmandamus",
+            "name": "Murmandamus",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The orphan of Crydee who became the most powerful magician in the Kingdom, trained on the Tsurani world and elevated there as a Great One. He came home at the end of the Riftwar with his wife Katala and has spent the peace trying to give magic in the Kingdom a respectable home of its own rather than a magician's tower and a bad reputation.",
+            "id": "pug",
+            "name": "Pug",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Hadati hillman of the mountains of Yabon, a hunter and warrior of a people who keep their own customs and their own gods. His village was destroyed by a moredhel raiding force, and he has sworn a blood oath against the chieftain who led it. He is formidable in the hills and single-minded about his purpose.",
+            "id": "baru",
+            "name": "Baru",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A veteran mercenary and an old travelling companion of Laurie's from the years before the war. Practical, cynical about causes and paid work alike, and reliable in a fight, he joins the Prince's party because his friend asks him to.",
+            "id": "roald",
+            "name": "Roald",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A monk of the order of Ishap at the abbey of Sarth, whose library is the greatest collection of records in the world. A former soldier before he took orders, he is both a capable fighting man and the person best able to find what the Prince's party needs among the abbey's shelves.",
+            "id": "dominic",
+            "name": "Brother Dominic",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Duke of Crydee's old magician, Pug's first master, stout and pipe-smoking and as sceptical as ever. He has followed his former apprentice into the new academy, where he argues about method with men who were trained on another world entirely.",
+            "id": "kulgan",
+            "name": "Kulgan",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The boy from Crydee's kitchens who took the white and gold armour of the Valheru and became something between a man and a Dragon Lord. He has made peace with the two natures he carries and now shares the rule of the elven forest with its queen, respected by the elves and still, to human eyes, unnervingly other.",
+            "id": "tomas",
+            "name": "Tomas",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Queen of Elvandar, ruler of the elves and their spellweavers, who took a human consort at the end of the Riftwar. She governs a people who are slow to change and who are still adjusting to what her choice has made of their court.",
+            "id": "aglaranna",
+            "name": "Queen Aglaranna",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "silverthorn"
+      },
+      "recaps": {
+        "ending": "The Silverthorn is brought back to Krondor, the priests use it, and Anita wakes. On the way south Baru meets Murad, the moredhel chieftain who destroyed his village, and kills him in single combat. Arutha reappears alive in his own city and the fiction of his death has served its purpose, though not without cost among those who mourned him. The immediate danger is over and the larger one is only now visible. The assassins, the poisoning and the gathering in the Northlands are all Murmandamus's work; he is not a raider but the head of an organised power, he wants Arutha dead specifically, and what he is ultimately after is not the Kingdom's throne but something buried beneath the eastern city of Sethanon. Neither Pug nor the Ishapians can yet say what that thing is, only that the records treat it as a matter of the world's survival. Murmandamus withdraws north to build his army rather than striking at once. Arutha, restored to Anita and to Krondor, begins preparing the Kingdom for an invasion whose real purpose he does not understand, and Pug turns to the question of who or what is directing the moredhel, having concluded that it is neither moredhel nor human. The story continues in A Darkness at Sethanon.",
+        "in_short": "A year into the peace, Prince Arutha returns to Krondor to marry Princess Anita, and Squire Jimmy uncovers a guild of assassins, the Nighthawks, hunting the Prince on behalf of someone in the far north. At the wedding a poisoned bolt meant for Arutha strikes Anita instead, and she falls into a sleep no healer can break. The poison is Silverthorn, which grows only at the Black Lake of Moraelin deep in moredhel country, so Arutha lets it be given out that he has died and rides north in secret with Martin, Laurie, Jimmy, the mercenary Roald and a Hadati hillman named Baru. They research their enemy at the Ishapian abbey of Sarth, fight off an attack there, and take the monk Dominic with them. Meanwhile Pug founds an academy of magic at Stardock and begins to suspect that the intelligence behind the moredhel is neither moredhel nor human. The party reaches Moraelin, takes the Silverthorn, and fights its way home; Baru kills the chieftain who destroyed his village; Anita is healed. The enemy, Murmandamus, is revealed as the leader of a gathering northern army whose true objective lies beneath the city of Sethanon.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, in the Riftwar Saga: an invasion from the world of Kelewan, through a magical rift, began a nine-year war on Midkemia. Pug, an orphan boy of Crydee taken prisoner and enslaved on the invaders' world, proved to have great magical talent, was trained by the Tsurani Assembly of Magicians, and was elevated as a Great One. His friend Tomas took an ancient suit of white and gold armour from a dying dragon beneath the Grey Towers and was filled with the memories and power of the Valheru, the Dragon Lords who ruled Midkemia before men. He came close to losing himself entirely before finding a balance, and now shares the rule of the elven forest of Elvandar with Queen Aglaranna. Duke Borric of Crydee died of his wounds; the war ended when the sorcerer Macros closed the rift, apparently destroying himself, in a battle at Sethanon where King Rodric was killed after naming Lyam conDoin his heir. Martin Longbow, huntmaster of Crydee, was revealed as Borric's natural son and Lyam's elder half-brother and publicly renounced any claim to the crown; he is now Duke of Crydee. Lyam rules from Rillanon, his brother Arutha is Prince of Krondor, and the Kingdom is at peace and rebuilding.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Arutha returns to Krondor to marry Princess Anita, and the Kingdom's nobility converges on the city for the wedding: King Lyam, Duke Martin, Princess Carline and her husband Laurie, and others from as far as Crydee. In the far north something is stirring among the moredhel, the dark elves of the Northlands, who are gathering under a chieftain called Murmandamus whom they hail as the figure their prophecies promised. In Krondor, Squire Jimmy, once the best young thief in the Mockers, notices what nobody at court does: the thieves' guild is quietly losing men, and there are professionals working the city who do not belong to it. He identifies them as Nighthawks, a guild of assassins, and works out that their target is the Prince. Attempts on Arutha's life follow, and the court's efforts to trace them run straight into a conspiracy better organised, better funded and considerably stranger than any hired murder should be.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jimmy and Arutha track the Nighthawks to their nest and take it, but the victory raises worse questions than it settles. Some of the assassins do not stay dead, rising again to fight after they should have been killed, and what is found on the bodies points north to the moredhel rather than to any employer in Krondor. The hideout is destroyed; the network behind it plainly is not. Against this the wedding goes ahead, and Arutha and Anita are married before the assembled nobility of the Kingdom. At the ceremony a last assassin strikes. The crossbow bolt is meant for Arutha and hits Anita instead. The wound alone would not kill her, but the bolt is poisoned, and she sinks into a sleep from which no priest or healer in the city can rouse her.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The priests of Ishap slow Anita's decline but cannot reverse it. The poison is Silverthorn, from a plant that grows only at the Black Lake, Moraelin, deep in moredhel country, and only the plant itself will yield a cure. Arutha resolves to fetch it in person, and to travel unnoticed he lets it be given out that he has died of grief, leaving Krondor in other hands while he rides north in secret with Martin, Laurie, Jimmy and a mercenary named Roald. On the way they take up with Baru of the Hadati hillmen, whose village was destroyed by the moredhel chieftain Murad and who has sworn to kill him. The party turns aside to the Ishapian abbey at Sarth, whose library is the greatest in the world, to learn what they can about Murmandamus and the prophecy he claims. The monk Dominic helps them search, and what they find suggests the northern gathering is not another raiding season but part of a much older design.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The abbey at Sarth is attacked by moredhel and their allies, who want the library's records as badly as Arutha does. The monks and the Prince's party fight them off, and Dominic joins the company for the journey north through increasingly hostile country. Elsewhere, Pug has founded an academy of magic on the island of Stardock in the Great Star Lake, gathering students and teachers, Kulgan among them, in the first serious attempt to make magic in the Kingdom a discipline rather than a suspicion. His own attention is on the pattern behind the Nighthawks and the moredhel gathering, and he has begun to conclude that the intelligence directing them is neither moredhel nor human, and that the war just ended may prove to have been the smaller emergency.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Elvandar receives warning of the northern gathering, and Tomas and Queen Aglaranna begin preparing the elves for a war they had hoped was finished. Arutha's party reaches Moraelin, the Black Lake, where the Silverthorn grows under heavy moredhel guard, and forces its way in. They take the plant and get out with it, though not without loss, and turn south with pursuit close behind them. What they have learned along the way is as important as what they carry: Murmandamus is not simply raising a raiding host, he is assembling an army with a specific objective, and both the Ishapian records and Pug's own reading point toward the eastern city of Sethanon.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Running south with the Silverthorn, the party fights clear of its pursuers, and Baru finally meets Murad, the chieftain who destroyed his village, and kills him in single combat. The plant reaches Krondor in time; the priests prepare the cure and Anita wakes. Arutha reappears alive in his own city, and the fiction of his death, whatever it cost those who believed it, has served its purpose. The larger picture is worse than the poisoning. The Nighthawks, the attempts on Arutha's life and the gathering in the Northlands are all Murmandamus's work, he wants Arutha dead in particular, and what he ultimately wants is not the Kingdom's throne but something buried beneath Sethanon which neither Pug nor the Ishapians can yet identify. Murmandamus withdraws north to build his army rather than striking at once, and Arutha, restored to his wife and his city, begins preparing the Kingdom for an invasion whose real purpose nobody understands.",
+            "through": {
+              "chapter": 19
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "silverthorn"
+      }
+    },
     "six-of-crows": {
       "characters": {
         "characters": [

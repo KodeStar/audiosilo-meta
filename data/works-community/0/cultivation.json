@@ -1062,6 +1062,438 @@
         "work": "dark-age"
       }
     },
+    "darkest-hour": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Suze"
+            ],
+            "description": "A sixteen-year-old mediator, now a year into her Californian life. She sees and speaks with the dead and helps them finish whatever holds them here, usually by fighting them, and her family still knows nothing about it. School is out for the summer, she needs a job, and the ghost who lives in her bedroom is the one part of Carmel she would not give up. She has never been told how he died, and has never quite dared to ask.",
+            "id": "suze-simon",
+            "name": "Susannah Simon",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The ghost of a young man who died in the nineteenth century in the room that is now Suze's bedroom, where he has remained ever since. Courteous, self-contained and reluctant to talk about his own death, he is Suze's confidant and the person whose opinion she pretends not to care about. Neither of them says out loud what has grown between them.",
+            "id": "jesse",
+            "name": "Jesse",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The principal of the Mission Academy and a mediator of long standing, who counsels the dead rather than fighting them and has never persuaded Suze to do the same. He is the only adult who knows what she is, and the limits of what he knows about their shared ability become an issue in this book.",
+            "id": "father-dominic",
+            "name": "Father Dominic",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A boy of about eight, staying with his family at a Pebble Beach resort for the summer, whom Suze is hired to look after. He is withdrawn, exhausted and frightened, and it takes Suze very little time to work out why: he sees the dead exactly as she does, has no idea what that makes him, and has been told by the adults around him that something is wrong with him.",
+            "id": "jack-slater",
+            "name": "Jack Slater",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jack's older brother, a poised, wealthy teenager staying at the resort for the summer. He is charming, attentive and interested in Suze from the moment he meets her, and he behaves throughout as though he already knows more about her than he should.",
+            "id": "paul-slater",
+            "name": "Paul Slater",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The ghost of a young woman from a prominent nineteenth-century Californian family, still dressed for the century she died in, elegant and used to being obeyed. She was engaged to her own cousin, Hector de Silva, who disappeared in 1850 before the wedding. She appears to Suze with one demand: that the digging in the Ackermans' backyard stop.",
+            "id": "maria-de-silva",
+            "name": "Maria de Silva",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The ghost of the man Maria married after her cousin vanished, physically imposing and with an ugly reputation in his own lifetime. He is dangerous in a way Maria is not: she gives the orders and he carries them out.",
+            "id": "felix-diego",
+            "name": "Felix Diego",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Suze's stepfather, whose summer project is a hot tub in the backyard, which means excavating ground that has not been disturbed since the house was built.",
+            "id": "andy-ackerman",
+            "name": "Andy Ackerman",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A television journalist, remarried and settled in Carmel, who is pleased her daughter has found summer work and has no idea what else her daughter does.",
+            "id": "suzes-mother",
+            "name": "Suze's mother",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Sleepy"
+            ],
+            "description": "The eldest stepbrother, working a summer job and otherwise asleep. Suze calls him Sleepy.",
+            "id": "jake-ackerman",
+            "name": "Jake Ackerman",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Dopey"
+            ],
+            "description": "The stepbrother in Suze's own year, a wrestler and a reliable irritant. Suze calls him Dopey.",
+            "id": "brad-ackerman",
+            "name": "Brad Ackerman",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Doc"
+            ],
+            "description": "The twelve-year-old youngest stepbrother, whose enthusiasm for research and local history makes him unexpectedly useful. Suze calls him Doc.",
+            "id": "david-ackerman",
+            "name": "David Ackerman",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Suze's friend and classmate, a school-paper writer with albinism who can find anything in an archive and enjoys doing it. She helps trace the history of the family who once owned the land the Ackermans live on.",
+            "id": "ceecee-webb",
+            "name": "CeeCee Webb",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "CeeCee's inseparable friend and Suze's, good-humored and usually driving.",
+            "id": "adam-mctavish",
+            "name": "Adam McTavish",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "darkest-hour"
+      },
+      "recaps": {
+        "ending": "Jesse's remains are found in the Ackermans' backyard and given a proper burial, and the murder that kept him here is finally uncovered: Maria de Silva, who did not want to marry the cousin she was engaged to, had Felix Diego kill him in the boarding house that became Suze's home, and the two spent a century and a half keeping it quiet. Maria and Diego are driven off for good, and Suze is seriously hurt doing it. With his death accounted for and his body at rest, nothing is holding Jesse here, and Suze has to face losing him. He does not go. Jesse chooses to stay, and the reason is Suze, which neither of them knows what to do with, and which changes nothing about the fact that one of them is dead. Jack Slater leaves at the end of the summer no longer frightened of what he can see and knowing he is not the only one. Paul Slater leaves too, making it clear he intends to come back, and that he knows a great deal more about what people like them can do than Father Dominic has ever told her.",
+        "in_short": "Suze takes a summer job minding Jack Slater, a frightened boy staying at a Pebble Beach resort, and quickly realizes he sees the dead as she does. His older brother Paul does too, calls people like them shifters rather than mediators, and claims to know far more about the ability than Father Dominic. Meanwhile Suze's stepfather starts excavating the backyard for a hot tub, and the ghost of Maria de Silva, a nineteenth-century woman engaged to her cousin Hector, appears to demand the digging stop. Research reveals that Hector, who supposedly vanished in 1850, is Jesse: he was murdered in the house on Maria's orders by Felix Diego, the man she married instead, and buried in the yard. Maria and Diego attack to keep it hidden, and Suze is badly hurt driving them out. Jesse's remains are found and buried properly, freeing him to move on, and he stays instead, for Suze. Paul leaves promising to return.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Susannah Simon is a mediator: she sees and speaks with the dead, who come to her to have whatever holds them here finished, and she has kept it from her family her whole life. Her mother's remarriage moved her from Brooklyn to Carmel-by-the-Sea, into a house her stepfather Andy is restoring, with three stepbrothers she privately calls Sleepy, Dopey and Doc. Her bedroom came with Jesse, the ghost of a young man who died in that room in the nineteenth century and has never said why he stayed; over a year he has become the person she tells the truth to, and neither of them will name what else he has become. At the Junipero Serra Mission Academy the principal, Father Dominic, turned out to be a mediator as well, and the two work together while disagreeing about method: he counsels the dead, she fights them. Suze has driven a violent ghost out of the school, carried a dead woman's message into a wealthy family's affairs, and stopped four dead teenagers from killing the boy they blamed for their crash, learning afterward that he had earned their anger.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Summer in Carmel, and Suze needs a job. She is hired to look after Jack Slater, a young boy staying with his family at a Pebble Beach resort, and finds him exhausted, withdrawn and terrified. It takes her very little time to work out why: Jack sees the dead exactly as she does, has no idea what he is, and has been treated by the adults around him as a problem to be managed. His older brother Paul is charming, attentive and openly interested in Suze. At home, Andy has decided the backyard needs a hot tub, which means digging up ground that has been undisturbed since the house was built.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Suze begins teaching Jack what she knows, against the wishes of his parents, who would rather he stopped talking about it. Paul encourages her, then tells her why: he sees the dead too. He calls people like them shifters rather than mediators and claims to know far more about what they can do than Father Dominic has ever admitted to. Meanwhile a ghost arrives at the Ackerman house: Maria de Silva, a young woman from an old Californian family, dressed for the middle of the nineteenth century, who orders Suze to stop the excavation in the backyard and threatens her when she refuses. With CeeCee's help Suze traces the family history and finds that Maria was engaged to her own cousin, Hector de Silva, who disappeared in 1850 on his way to marry her and was assumed to have run off. The portrait that comes with the story is unmistakably Jesse.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jesse never ran. He was killed in the boarding house that later became the Ackermans' home, and buried in the yard Andy is about to dig up, which is why Maria wants the work stopped. Suze keeps as much of this from Jesse as she can while she works out the rest of it, and finds that Maria is not acting alone: Felix Diego, the man Maria married after her cousin vanished, is with her, and he is the one who does the harm. The threats become attacks. Suze's work with Jack continues alongside it, and Paul's interest in her sharpens as he realizes how little she knows about what they are. The excavation goes ahead on schedule.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The confrontation comes at the house, and it is the most dangerous fight Suze has been in. The whole of it comes out: Maria had no intention of marrying a cousin she did not want, arranged for Diego to kill him in that room, and the two of them have spent a century and a half making sure nobody found the body. Jesse, who never understood why he could not leave, hears it from the people who killed him. Suze is seriously injured before it ends, but Maria and Diego are driven off for good, and the bones in the backyard are uncovered.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jesse's remains are given a proper burial, and with his murder accounted for and his body at rest there is nothing left to hold him here. Suze spends the end of the book expecting to lose him. He does not go: Jesse chooses to stay, and the reason is her, which neither of them has any idea what to do with and which does not change the fact that one of them is dead. Suze recovers from her injuries with the usual explanations at home. Jack leaves with his family at the end of the summer, steadier than he arrived and no longer believing he is the only one. Paul goes with them, promising to be back, and leaves Suze with the knowledge that he understands what they can do far better than Father Dominic ever has.",
+            "through": {
+              "chapter": 24
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "darkest-hour"
+      }
+    },
+    "daughter-of-the-empire": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The daughter of Lord Sezu of the Acoma, seventeen years old and days away from taking final vows as a novice in the temple of Lashima. She is intelligent, stubborn and entirely untrained in politics, having chosen the contemplative life precisely to avoid the endless manoeuvring of the Tsurani nobility. Word from the war beyond the rift takes that choice away from her and leaves her the head of a great house that has just been reduced to almost nothing.",
+            "id": "mara",
+            "name": "Mara of the Acoma",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Mara's childhood nurse, an old woman of the Acoma household who has served the family all her life. Blunt, superstitious, sharp about people, and unafraid to tell her mistress uncomfortable truths, she becomes the closest thing the ruined house has to a political adviser.",
+            "id": "nacoya",
+            "name": "Nacoya",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Force Commander of the Acoma, a scarred veteran of many campaigns who has served the family since Mara's father was a boy. Utterly correct in manner, he is one of the very few survivors of the disaster that killed his lord, and he holds himself responsible for a house he can no longer defend.",
+            "id": "keyoke",
+            "name": "Keyoke",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Strike Leader of the Acoma and Keyoke's constant shadow, a large, silent soldier of exceptional skill. He is the officer entrusted with Mara's personal safety, and his loyalty to the house is absolute even when the honour code he lives by turns against him.",
+            "id": "papewaio",
+            "name": "Papewaio",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Lord of the Minwanabi, master of one of the Empire's five greatest houses and the hereditary enemy of the Acoma. Powerful, well allied and confident, he arranged the deaths that left the Acoma leaderless and intends to finish the family without ever appearing to have broken the forms of honour.",
+            "id": "jingu",
+            "name": "Jingu of the Minwanabi",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The Acoma hadonra, the estate's manager, a small anxious man responsible for its accounts, herds, workers and trade. He is scrupulously honest and permanently alarmed by his new mistress's willingness to spend money on things no Tsurani noble would spend money on.",
+            "id": "jican",
+            "name": "Jican",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Lord of the Anasati, head of another of the Empire's great houses, an old rival of Mara's father and currently allied with the Minwanabi. He is a careful, intelligent player of the Game of the Council who prefers advantage to bloodshed and dislikes being manoeuvred.",
+            "id": "tecuma",
+            "name": "Tecuma of the Anasati",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The second son of the Lord of the Anasati, thickset, loud and physical, with a taste for wrestling, drink and the pleasure houses of the city. His father regards him as the least gifted of his sons, and he knows it.",
+            "id": "buntokapi",
+            "name": "Buntokapi",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The eldest son and heir of the Lord of the Anasati, clever, cold and well aware of his own quality. He takes an interest in Mara and does not take being passed over gracefully.",
+            "id": "jiro",
+            "name": "Jiro of the Anasati",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A grey warrior, one of the masterless soldiers whose lord was destroyed and who are held by Tsurani custom to have lost all honour and all place in the world. Cheerful, quick-tongued and a gifted officer, he is a distant cousin of the Acoma and is offered something no grey warrior is ever offered.",
+            "id": "lujan",
+            "name": "Lujan",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Former Spy Master of a house destroyed in the Game of the Council, who kept his network alive after his master's death with no one left to serve. Unremarkable to look at and able to pass as anything from a labourer to a priest, he offers his organisation to the one ruler who might survive long enough to use it.",
+            "id": "arakasi",
+            "name": "Arakasi",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A younger son of the Lord of the Shinzawai, a northern house that keeps out of the Minwanabi quarrel. Courteous, observant and noticeably more thoughtful than the other young nobles Mara meets, he treats her as a person rather than as a piece on a board.",
+            "id": "hokanu",
+            "name": "Hokanu of the Shinzawai",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The ruler of a hive of the cho-ja, the insectoid people who live alongside humans on Kelewan and whose warriors, silk and craftsmen are prized by every great house. A new queen bargains for the land her hive will settle on, and negotiates on terms most Tsurani nobles are too proud to learn.",
+            "id": "cho-ja-queen",
+            "name": "The cho-ja Queen",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A courtesan of striking beauty and expensive tastes, ambitious far beyond the position her trade allows and skilled at making herself indispensable to powerful men. Her charm is entirely deliberate and her temper, when it slips, is vicious.",
+            "id": "teani",
+            "name": "Teani",
+            "reveal": {
+              "chapter": 9
+            }
+          },
+          {
+            "description": "Mara's infant son, heir to the Acoma and, through his father, grandson of the Lord of the Anasati. His birth alters the balance between the two houses, because a family that would happily see the Acoma destroyed cannot afford to see its own blood destroyed with it.",
+            "id": "ayaki",
+            "name": "Ayaki",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Warlord of Tsuranuanni, holder of the white and gold, the most powerful man in the Empire after the Light of Heaven himself. He commands the war on the barbarian world, uses it to keep rival houses obedient and bled, and enjoys his own supremacy openly.",
+            "id": "almecho",
+            "name": "Warlord Almecho",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "daughter-of-the-empire"
+      },
+      "recaps": {
+        "ending": "Mara survives the Minwanabi trap and turns it. Attending the Warlord's celebration at Lord Jingu's own estate, protected only by the guest-right that Tsurani custom makes absolute, she is hunted through the house by his agents; Papewaio is killed defending her. Rather than fleeing, Mara forces the matter into the open in front of the Warlord and the assembled nobility, and demonstrates that Jingu attempted murder under his own roof. The dishonour is total and public, and Jingu takes his own life. His son Desio inherits the Minwanabi with their alliances weakened and their standing damaged, and swears a blood oath to his god that he will destroy the Acoma. Mara goes home the acknowledged victor of the season's Game. In one year she has taken a house of a few dozen soldiers and rebuilt it into a power with thousands of men, a cho-ja hive, an intelligence network under Arakasi, and a reputation nobody expected. She rules for her infant son Ayaki, whose Anasati blood obliges Lord Tecuma to protect him even though Tecuma will never forgive her for his son's death. The war beyond the rift continues, the Warlord's grip on the Empire is unchallenged, and the feud that has consumed both houses for generations is not over. The story continues in Servant of the Empire.",
+        "in_short": "Mara, seventeen and about to take vows as a temple novice, is called home when her father and brother are killed on the barbarian world in a battle engineered by the Minwanabi, leaving her Ruling Lady of a house reduced to a handful of soldiers. Guided by her old nurse Nacoya and her Force Commander Keyoke, she rebuilds by breaking Tsurani convention: she recruits masterless grey warriors, bargains with a cho-ja queen for a hive on Acoma land, and takes the spymaster Arakasi into her service. To gain protection she marries Buntokapi, the least promising son of the Anasati, so his family must defend her house, then manoeuvres him into a position where honour leaves him no choice but to take his own life, leaving her ruling for their infant son. Finally she attends the Warlord's celebration at the Minwanabi estate, where her enemy Lord Jingu means to kill her without breaking guest-right. Papewaio dies protecting her, but Mara exposes Jingu's treachery before the Empire and he is forced to take his own life, leaving his son Desio sworn to destroy her.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "This book runs alongside the Riftwar Saga and tells the story from the other side of the rift, on the world of Kelewan. What a reader needs going in is the setting rather than any earlier plot. Kelewan is ruled by the Empire of Tsuranuanni, a rigid, ancient society in which honour is public, absolute and more valuable than life, and in which suicide is an accepted answer to disgrace. Below the Emperor, called the Light of Heaven and treated as a religious figure rather than a governing one, real power belongs to the Warlord and to the great houses, who compete endlessly for position in what they call the Game of the Council: a contest fought with marriages, trade, assassination and manufactured accidents, in which whole families are erased and the winners are congratulated. Above the law entirely stands the Assembly of Magicians, the Great Ones, who answer to no lord. For some years the Empire has been fighting a war on another world, reached through a magical rift and inhabited by people the Tsurani call barbarians. The Warlord runs that war, and the great houses send their sons and their armies to it, knowing that it is being used to raise some families and bleed others.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Mara, seventeen, is pulled out of the temple of Lashima on the morning she is to take her final vows: her father, Lord Sezu of the Acoma, and her brother Lanokota are dead on the barbarian world, killed in a battle deliberately arranged to expose them. She is now Ruling Lady of the Acoma, a great house reduced to a name, an estate and a few dozen soldiers, with almost all of its strength buried on another world. Her enemy is Lord Jingu of the Minwanabi, whose family has been at feud with hers for generations and who intends to finish the work this season. Her assets are an old nurse, Nacoya, who becomes her adviser, a Force Commander, Keyoke, who is one of the few survivors, and the soldier Papewaio. Everyone expects her to be dead or married off within months. Mara, who has no training in politics whatever, decides to play the Game of the Council instead.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Mara begins by doing things no Tsurani ruler would consider. She sends Keyoke to make contact with grey warriors, the masterless soldiers whose lords were destroyed and who are held to have lost all honour and all place in the world, and offers them service under the Acoma: hundreds accept, among them a quick-witted distant cousin named Lujan, and the house's strength grows in secret. When Papewaio is caught by the letter of the honour code and condemned to die for an act that saved her, she circumvents the sentence by declaring the condemned man's black headband the badge of a new honour guard rather than a mark of death. She also opens negotiations with a young cho-ja queen for a hive to be founded on Acoma land, bargaining for warriors, silk and craftsmen, and paying in courtesy that other nobles are too proud to offer.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Strength alone will not save the Acoma from the Minwanabi, so Mara buys protection with a marriage. She approaches Lord Tecuma of the Anasati, her father's old rival and Jingu's ally, and asks for one of his sons, then deliberately chooses Buntokapi, the coarse and slow-witted second son whom Tecuma values least. The bargain works exactly as intended: with Anasati blood ruling the Acoma, the Anasati must defend the house they had been helping to destroy, and Jingu's alliance is broken. The price is that Buntokapi becomes Ruling Lord and Mara becomes a subordinate wife in her own house, subject to a husband who is loud, violent-tempered and pleased with his new power. She endures him, bears him a son, Ayaki, and waits. During this period Arakasi, the surviving Spy Master of a house destroyed years earlier, brings her his intact intelligence network and enters Acoma service.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Buntokapi rules badly and hates the paperwork, so Mara encourages the parts of his character that will get him out of the way: she buys him a town house in Sulan-Qu, where the wrestling matches and the gambling are, and where a beautiful and ambitious courtesan named Teani makes herself indispensable to him. To keep the estate running in his absence he grants his wife written authority to act in his name. Mara uses it. Acting with her husband's seal she manoeuvres the Acoma into positions that damage the Minwanabi and set the house at odds with the Warlord's interests, decisions Buntokapi would never have permitted and which, once made, cannot be unmade. She then arranges for him to discover exactly what has been done in his name, at a moment of her choosing rather than his.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Buntokapi comes home and learns everything, and finds that Tsurani honour has closed every exit. He can kill his wife, but that would put his infant son under Anasati regency and hand the Acoma to his own father, ending the house's independence and his own standing with it; he cannot disown decisions taken lawfully under his own authority; and he cannot outmanoeuvre the woman who arranged the position. He takes his own life by the sword, in the correct form, and dies as Lord of the Acoma. Mara is Ruling Lady again, with Ayaki as her heir. Lord Tecuma understands perfectly what has been done to his son and will never forgive her, but Ayaki is his grandson and Anasati blood, so he must go on protecting the house that killed Buntokapi. The Acoma have survived the year, and the Minwanabi have lost their ally.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Mara is summoned to a celebration for the Warlord held at Lord Jingu's own lake estate, an invitation she cannot refuse and which Jingu intends to be her last journey. Under Tsurani custom a guest cannot be harmed by her host, so Jingu's plan is to have her killed in a way that cannot be traced to him, and the household is full of his agents. Mara arrives with a small guard and spends the visit under continuous attack. Papewaio is killed defending her. Rather than run, she forces the matter into the open before the Warlord and the assembled nobility of the Empire and proves that murder was attempted under Jingu's roof. The disgrace is absolute and public, and Jingu takes his own life to spare his family total ruin. His son Desio inherits a damaged house and swears a blood oath to destroy the Acoma. Mara goes home the season's clear victor, ruling for her son, with an army, a cho-ja hive and a spy network she did not have a year earlier.",
+            "through": {
+              "chapter": 18
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "daughter-of-the-empire"
+      }
+    },
     "dawn-of-the-density-god": {
       "characters": {
         "characters": [
