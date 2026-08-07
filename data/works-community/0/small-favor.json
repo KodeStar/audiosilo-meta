@@ -315,6 +315,238 @@
         "work": "small-gods"
       }
     },
+    "smileys-people": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The head of Moscow Centre's special directorate, the Soviet officer who ran the agent that destroyed the Circus and who has been Smiley's opponent for twenty years. He is known to the British only by a work name, a photograph and a career reconstructed from fragments: ascetic, unbribable, and safe from the ordinary levers because he appears to want nothing for himself. Smiley met him once, years ago, in an Indian jail, tried to turn him and failed, and gave him a cigarette lighter belonging to his wife.",
+            "id": "karla",
+            "name": "Karla",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Russian emigree living in modest circumstances in Paris, ageing, unwell and alone, who left the Soviet Union many years ago and had to leave a daughter behind. She is approached in a cafe by a Soviet official who offers, on conditions, to have the girl allowed out to join her. Suspicious of the offer and of the papers she is asked to sign, she writes for advice to the leader of an emigre organisation she trusted long ago.",
+            "id": "maria-ostrakova",
+            "name": "Maria Ostrakova",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Soviet official who approaches Ostrakova in Paris: nominally a trade or embassy functionary, effusive, sweating and oddly clumsy for a man on such an errand. He talks a great deal more than his business requires.",
+            "id": "oleg-kirov",
+            "name": "Oleg Kirov",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An elderly Estonian, once a soldier and a Soviet officer and for decades afterwards the leader of a Baltic emigre group in London, run for years as a Circus agent and then dropped when the service reorganised. Poor, proud and still observing the tradecraft he was taught, he telephones his old service demanding to speak to the case officer he knew by a work name, insists on meeting under Moscow rules, and says he has something that concerns them all.",
+            "id": "vladimir",
+            "name": "General Vladimir",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Long retired from the Circus, living alone in Chelsea and sorting his papers, still married in name to Ann and still without her. He is fetched out at night to deal with the death of a former agent, on the understanding that his job is to tidy the matter away quietly. He is old, tired and out of practice, and the one man who understands what the dead man was trying to say.",
+            "id": "george-smiley",
+            "name": "George Smiley",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Smiley's wife, absent, living elsewhere with someone else, and still the fixed point of his private life. Her cigarette lighter and her infidelities both belong to the history that binds Smiley to his opponent.",
+            "id": "ann-smiley",
+            "name": "Ann Smiley",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Cabinet Office official responsible for the intelligence services, anxious above all that an emigre killing in London should not become a political embarrassment. He wants the affair closed with a minimum of enquiry and turns to Smiley because Smiley can be disowned.",
+            "id": "oliver-lacon",
+            "name": "Oliver Lacon",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior Circus administrator of the present regime, protective of procedure, budgets and his own position, who treats the dead man as an obsolete liability and Smiley as an awkwardness to be managed.",
+            "id": "lauder-strickland",
+            "name": "Lauder Strickland",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A very young Circus duty officer who took the old man's telephone call and, having been taught nothing about the people the service used to run, handled it by the book. He is shaken by what followed and tells Smiley more than he is supposed to.",
+            "id": "mostyn",
+            "name": "Mostyn",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An Estonian exile who runs a Baltic emigre library and club in London, once the General's deputy and now the keeper of his organisation's dwindling affairs. Talkative, aggrieved and a considerable chess player, he gives his own version of the old man's last weeks.",
+            "id": "mikhel",
+            "name": "Mikhel",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young Estonian lorry driver on the continental routes, the son of one of the General's old comrades, who ran errands for the old man out of family loyalty and without understanding what he was carrying. He is frightened and wants nothing more to do with any of it.",
+            "id": "villem",
+            "name": "Villem",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Circus's former Soviet researcher, now seriously ill and living in the Norfolk countryside with her companion and her dogs, drinking and remembering. Her memory for Moscow Centre's people and their careers is still complete, and she has never stopped following the career of one officer in particular.",
+            "id": "connie-sachs",
+            "name": "Connie Sachs",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A stateless adventurer of Baltic origin, sometime prisoner, confidence man and agent for several services, who worked with the General for years. Charming, unreliable and physically brave, he lives in Hamburg and has been chasing a particular Soviet official for reasons of his own.",
+            "id": "otto-leipzig",
+            "name": "Otto Leipzig",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former Circus officer, now dealing in pictures in the West End under an assumed name and a foreign accent. Hungarian, adaptable and expert in surveillance and safe houses, he owes Smiley his freedom from prosecution and comes back to run a team for him without asking what the operation is for.",
+            "id": "toby-esterhase",
+            "name": "Toby Esterhase",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Hamburg nightclub proprietor and old associate of Otto Leipzig, discreet, businesslike and loyal to his friend. He keeps what Leipzig left with him and will hand it over only on the right terms.",
+            "id": "claus-kretzschmar",
+            "name": "Claus Kretzschmar",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The commercial counsellor at the Soviet embassy in Bern, a pedantic, henpecked official with an academic manner, a wife who watches him and a mistress among the embassy staff. He performs, under orders from Moscow, a private duty outside all normal embassy business, and he is very frightened of it.",
+            "id": "grigoriev",
+            "name": "Grigoriev",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young Russian woman in a private Swiss clinic, disturbed, articulate and intermittently violent, held under a name and a nationality that are not hers. She does not know who is paying for her, and the accounts she gives of her own history contradict one another.",
+            "id": "alexandra",
+            "name": "Alexandra",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "smileys-people"
+      },
+      "recaps": {
+        "ending": "Grigoriev, broken by Toby's team and questioned by Smiley in a Bern safe flat, gives up the whole arrangement: the girl in the clinic is Karla's daughter, mentally ill, smuggled out of Russia under a false identity and a false nationality, and maintained in Switzerland with money embezzled from Moscow Centre's operational funds. Kirov was ordered to build the legend, talked too much to Otto Leipzig, and was recalled and shot; Vladimir, Leipzig and very nearly Ostrakova were killed to bury the same secret. Smiley now has what no professional lever could give him: the private crime for which Karla's own service would destroy him. He sends word to Moscow through the channel Karla built, offering him the choice between exposure and coming across. Karla comes. On a bridge in Berlin, watched by Smiley, Toby and the reception party, he crosses into the West, a small man carrying almost nothing, and as he passes he drops the cigarette lighter Smiley once gave him. Smiley has beaten him by using the one human attachment Karla had, exactly as Karla would have done, and the victory gives him nothing. He turns away, and when Toby tells him he has won he can barely agree.",
+        "in_short": "In Paris an ageing Russian emigree, Ostrakova, is approached by a Soviet official offering to release the daughter she left behind, and writes for help to General Vladimir, an old Estonian exile in London and a discarded Circus agent. Vladimir tries to reach his former case officer under Moscow rules and is shot dead on Hampstead Heath. Smiley, long retired, is sent to tidy the death away quietly, and instead follows the trail the old man left: a hidden negative, an emigre courier, a Hamburg confidence man named Otto Leipzig, and photographs and a tape recording of the Soviet official's indiscretions. Reassembling his old people, Connie Sachs, Toby Esterhase, Guillam and Mendel, and working outside the service, Smiley establishes that Karla, the head of Moscow Centre's special directorate, has been using Centre money and Centre officers to hide his mentally ill daughter in a Swiss clinic under a false identity. Everyone who learned of it has been killed. Smiley breaks the Soviet official who pays the clinic's bills, and uses the daughter to force Karla's defection. Karla crosses a Berlin bridge into the West, and Smiley takes no pleasure in it.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: George Smiley spent his career in the Circus, Britain's secret intelligence service, and much of it against Karla, the head of Moscow Centre's special directorate. Karla recruited and ran Bill Haydon, who rose to the top of the Circus, betrayed its networks and its allies, wrecked the operation that left Jim Prideaux shot and imprisoned, and conducted an affair with Smiley's wife Ann on Karla's instructions to blunt Smiley's judgement. Brought back from retirement, Smiley identified and trapped Haydon and was left to rebuild the ruined service. Working backwards through what Haydon had suppressed, he then uncovered a Soviet payments operation in the Far East and traced it to Nelson Ko, an agent Karla had run inside China for twenty years; but the prize was taken over by the Americans and by Whitehall, the field man Jerry Westerby was killed, and Smiley was eased out of the chief's chair in favour of Saul Enderby. Smiley's marriage to Ann has not survived, and the two men's twenty-year contest has never been settled.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In Paris, Maria Ostrakova, an ageing Russian emigree, is approached in a cafe by a Soviet official who says her daughter Alexandra, left behind in Russia many years earlier, may be allowed to join her if she signs certain papers. The interview frightens her: the man knows too much about her history and too little about her daughter, and the arrangement smells of something other than compassion. She writes to General Vladimir, the leader of a Baltic emigre group in London whom she trusted long ago. Vladimir, an old Estonian long since dropped by the Circus, telephones his former service demanding to see the case officer he knew only by a work name, insists on meeting under Moscow rules, and says he has proof of something big. A young duty officer handles the call by the book. Before any meeting can take place, Vladimir is shot dead on Hampstead Heath at night, his face destroyed by the second bullet, and George Smiley is fetched out of retirement to identify the body.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Lacon of the Cabinet Office and the Circus administrator Strickland want the killing disposed of as an emigre quarrel with no British connection, and give Smiley an unofficial commission to make the loose ends disappear. Smiley does the opposite. Going over the old man's route and lodgings, he finds what the killers missed: a cigarette packet left in the classic manner with a photographic negative concealed in it, the proof Vladimir was carrying to his meeting. He interviews the young duty officer, who repeats the old man's words; and Mikhel, the deputy at the emigre library, whose account is fluent and incomplete. He learns that Vladimir had recently sent a young Estonian courier abroad. The service, meanwhile, formally wants nothing to do with any of it, which leaves Smiley free to work alone.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The courier, a lorry driver named Villem, admits to a run to Hamburg where a stranger passed him an envelope on a train. Smiley goes to Norfolk to see Connie Sachs, dying and drinking in the country, who identifies the men in the story: Otto Leipzig, a Baltic adventurer and part-time agent who had worked with Vladimir for years, and Oleg Kirov, a Soviet official whose career and postings make no sense unless he was doing something outside embassy work. Connie also confirms whose directorate Kirov belonged to. In Hamburg, Smiley finds that Leipzig has been murdered, but recovers from Leipzig's associate Kretzschmar what the operation was for: a compromising photograph and a tape on which Kirov, drunk and boastful, describes having been ordered to find a suitable emigre identity for a girl, a piece of work no intelligence service would ever run in that way.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Smiley recruits his own people rather than the Circus's: Toby Esterhase, now selling pictures in the West End, brings a surveillance team; Peter Guillam helps from Paris; Mendel does the London work. In Paris, Ostrakova, who has been living in fear since the approach, is run down in the street and badly hurt, and survives; Smiley finds her and hears her account of Kirov's proposition and of the daughter she has not seen since infancy. The pattern is now clear. Kirov was building a false identity in the West for a young woman, using an emigree mother as the cover story, and everyone who came near the secret has been killed: Kirov himself recalled to Moscow and shot, then Vladimir and Leipzig. The operation was not run by Moscow Centre as an institution but by one man inside it, using its resources for a purpose of his own, and the trail leads to Switzerland.",
+            "through": {
+              "chapter": 19
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In Bern, Toby's team identifies the man who does the paying: Grigoriev, the Soviet embassy's commercial counsellor, a fussy, unhappy official who makes regular private journeys to a discreet clinic in the countryside and hands over large sums in cash. In the clinic is a disturbed young Russian woman, registered under a name and a nationality that are not hers, who does not know who is responsible for her. Smiley has the watchers document every movement, then has Grigoriev taken quietly and confronted in a safe flat with what has been observed: the money, the false papers, his mistress, and the certainty that his own service would treat all of it as a capital matter. Grigoriev, terrified and relieved to be able to speak, begins to explain who ordered him to do it and why.",
+            "through": {
+              "chapter": 23
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Grigoriev's account completes the case: the girl in the clinic is Karla's own daughter, mentally ill, taken out of Russia under an invented identity and kept in Switzerland with money stolen from Moscow Centre's operational funds. It is the one act for which Karla's own service would destroy him, and it is why Kirov, Vladimir and Leipzig died and why Ostrakova was to have died. Smiley sends Karla the choice through the channel Karla himself built: come over, or be exposed to Moscow. Then he waits in Berlin. On a winter night Karla walks across the bridge into the West, a small, ordinary man carrying nothing, and as he passes Smiley he drops the cigarette lighter that Smiley had given him twenty years earlier in an Indian jail. Smiley has won by doing exactly what his opponent would have done, using a sick girl and a frightened official as instruments, and he leaves the bridge with no sense of triumph at all.",
+            "through": {
+              "chapter": 27
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "smileys-people"
+      }
+    },
     "son": {
       "characters": {
         "characters": [
@@ -882,6 +1114,445 @@
         "work": "speaker-for-the-dead"
       }
     },
+    "stars-above": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A retired military pilot living alone on a farm in southern France with her small granddaughter, in the opening story of the collection. A doctor she has not seen in years arrives at her door in the middle of the night with a request she is entitled to refuse and does not.",
+            "id": "michelle-benoit",
+            "name": "Michelle Benoit",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A Lunar physician who has smuggled himself and a badly injured child off the moon, and who needs somewhere on Earth that nobody will think to look.",
+            "id": "logan-tanner",
+            "name": "Dr. Logan Tanner",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The three-year-old heir to the Lunar throne, burned in the fire that was meant to kill her and kept alive only by the equipment she arrives in.",
+            "id": "selene",
+            "name": "Princess Selene",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Michelle Benoit's granddaughter, a small child on the farm in the first story, and the bride in the last one.",
+            "id": "scarlet-benoit",
+            "name": "Scarlet Benoit",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Eleven years old and newly rebuilt as a cyborg, brought to New Beijing by a man she does not remember to live with a family that did not ask for her. She has no memories at all before the operating table, an artificial hand and leg she is still learning to use, and a retinal display feeding her information she does not know how to interpret.",
+            "id": "cinder",
+            "name": "Linh Cinder",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An inventor in New Beijing who has brought home an adopted daughter without properly consulting his wife, and who builds a household android to keep the girl company.",
+            "id": "linh-garan",
+            "name": "Linh Garan",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A household android built for Cinder, whose personality chip does not work the way the specification says it should, which turns out to be the point of her.",
+            "id": "iko",
+            "name": "Iko",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The younger daughter of the household, a small girl who decides on the first day that the new arrival is her sister and never revises the opinion.",
+            "id": "peony",
+            "name": "Linh Peony",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A twelve-year-old boy in one of Luna's outer sectors, taken from his family for the queen's army and put through the training and the surgery that turn Lunar children into special operatives. The story follows him from the recruitment through to the soldier he becomes and the name he ends up with.",
+            "id": "wolf",
+            "name": "Ze'ev Kesley",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A thirteen-year-old American schoolboy with an unshakeable belief in his own charm, running a scheme to impress a girl he likes. The story establishes both halves of the man he becomes: the talent for talking people round, and the habit of taking things that are not his.",
+            "id": "carswell-thorne",
+            "name": "Carswell Thorne",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A Lunar shell child, taken from the others she grew up among and installed alone in a satellite in Earth's orbit to work as a hacker and spy. The story covers her first days in it.",
+            "id": "cress",
+            "name": "Crescent Moon",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A Lunar thaumaturge who has found a use for a child everyone else considers worthless, and who explains the arrangement to her as a kindness.",
+            "id": "sybil-mira",
+            "name": "Sybil Mira",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The princess of Luna as a girl, growing up in her stepmother's palace and learning exactly what the Lunar gift does to the people it is used on. The story is about the decision she makes as a result, and what it costs her.",
+            "id": "princess-winter",
+            "name": "Winter Hayle",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The son of a palace guard, close to the princess since childhood, already resolved to become the kind of soldier who is allowed to stay near her.",
+            "id": "jacin-clay",
+            "name": "Jacin Clay",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An android in New Beijing whose damaged programming has left her aware of herself in a way no android is meant to be, and quietly attached to the young mechanic who services her. The story is a retelling of The Little Mermaid.",
+            "id": "mech6-0",
+            "name": "Mech6.0",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A young mechanic in New Beijing, kind to the androids he repairs and entirely unaware that one of them is watching him.",
+            "id": "dataran",
+            "name": "Dataran",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The crown prince of the Eastern Commonwealth, taking a broken royal android to a market booth himself rather than send a servant, in a retelling of a scene the series opened with from the other side of the counter.",
+            "id": "kai",
+            "name": "Prince Kai",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "protagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "stars-above"
+      },
+      "recaps": {
+        "ending": "The collection closes with Something Old, Something New, set roughly two years after the events of Winter. Scarlet and Wolf marry at the Benoit farm in France, and the wedding brings the whole cast together for the first time since the revolution: Cress and Thorne arrive in the Rampion, Winter and Jacin come down from Luna, Iko is present in a body of her own, and Cinder and Kai attend as the leaders of two worlds still working out how to be neighbours. Luna is being rebuilt under an elected government rather than a crown, the plague is treatable, and the freed shells are being returned to lives of their own. The story is an epilogue rather than a plot: it settles where each couple has landed, gives Cinder and Kai's relationship its resolution, and lets the series end on the ordinary business of a farmhouse wedding rather than on a throne room.",
+        "in_short": "Nine short stories set around the Lunar Chronicles. Michelle Benoit takes in a burned Lunar toddler and hides her on her farm; an eleven-year-old Cinder arrives in New Beijing as a new cyborg and gets an android friend; a twelve-year-old Ze'ev Kesley is taken for Levana's army and made into a wolf soldier; a thirteen-year-old Carswell Thorne runs a school scheme to impress a girl; a small Lunar shell called Crescent Moon is installed alone in an orbiting satellite; the princess Winter decides as a girl never to use her Lunar gift and scars her own face rather than be valued for it; a self-aware android in New Beijing loves a mechanic and gives up everything to become human, in a retelling of The Little Mermaid; and Prince Kai takes a broken android to a market mechanic, retelling the series' first meeting from his side. The collection closes two years after the end of the series with Scarlet and Wolf's wedding on the French farm, which reunites the entire cast.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "A note before starting: Stars Above is a collection of nine short stories tied to the Lunar Chronicles, and it is not a book to read early. Most of the stories are prequels that only make sense once you know who the characters turn out to be, several of them turn on reveals the novels build to, and the final story is an epilogue set roughly two years after the end of Winter. Read it after the whole series. What the stories assume you already know: Luna is a settled colony on the moon whose people can control what others see and feel; its queen Levana took the throne after her niece, Princess Selene, was believed to have died as a small child; Selene in fact survived, was hidden on Earth and rebuilt as a cyborg, and grew up as Linh Cinder; and Cinder, with Scarlet, Wolf, Cress, Thorne, Iko, Winter and Jacin, brought Levana's reign to an end. The recaps that follow track the stories in the order the collection presents them.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Keeper. A Lunar doctor arrives at a farm in southern France in the middle of the night, carrying a badly burned three-year-old in a life-support tank, and asks Michelle Benoit to hide her. The child is Princess Selene, and hiding her means giving up any ordinary future: no visitors, no records, no explanations, and a granddaughter who grows up on a farm with a locked barn. Michelle agrees, and the story is the account of that decision and the years it commits her to. Glitches. Linh Garan brings home an eleven-year-old girl newly rebuilt as a cyborg, to a wife who did not agree to it and a household that treats her as an intrusion. Cinder has no memories before the operating table and no idea how to use the hand and leg she has been given. Garan builds her an android companion with a chip that does not behave to specification, and Iko becomes the one thing in the house that likes her. Then Garan contracts letumosis, and the household's tolerance for Cinder dies with him.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Queen's Army. Ze'ev Kesley is twelve when Levana's recruiters come to his outer sector and take him. The story follows him through the training that turns Lunar children into special operatives - the pack hierarchy, the deliberate brutality, and the surgery that fuses a boy with wolf DNA - and through the choices he makes to survive it, including the ones that cost other people. He goes in as somebody's son and comes out as Wolf. Carswell's Guide to Being Lucky. Thorne at thirteen, at school in America, working an elaborate scheme to impress a girl he likes. It goes wrong in the particular way his schemes go wrong, and shows both the charm he has always relied on and the early conviction that rules are for people with less imagination.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After Sunshine Passes By. A small Lunar shell called Crescent Moon is taken from the other shell children and told she has been chosen for something. Sybil Mira installs her alone in a satellite in Earth's orbit with a net feed, a job and nobody to talk to, presenting the arrangement as a rescue. The story covers her first days in orbit and the beginning of seven years of it. The Princess and the Guard. Winter grows up in Levana's palace with Jacin, a guard's son, as her closest friend. She watches what the Lunar gift does to the people it is used on, and at thirteen resolves never to use hers again - a choice she keeps, at the price of the sickness that comes with it. When her beauty starts to be treated as the only thing about her that matters, she takes a knife to her own face.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Little Android. A retelling of The Little Mermaid, set in New Beijing and only loosely tied to the main series. An android called Mech6.0, damaged in a way that has left her self-aware, is attached to Dataran, the young mechanic who services her. She goes to an illegal surgeon to be given a human body, and finds that being human costs her everything she was good at and does not make Dataran see her. The story ends with her sacrificing herself for him without his ever knowing what she was. The Mechanic. Kai's account of the scene the series opened with: the crown prince takes a broken royal android to a market booth himself, meets the young mechanic behind the counter, and leaves considerably more interested than he intended to be.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Something Old, Something New. Roughly two years after the fall of Levana, Scarlet and Wolf marry at the Benoit farm in France, and the wedding brings everyone together: Cress and Thorne fly in with the Rampion, Winter and Jacin come down from Luna, Iko is there in a body of her own, and Cinder and Kai attend as the heads of two governments still learning to work with one another. Luna is under an elected government, the plague is treatable everywhere, and the shell children who were kept for their blood are being given lives back. The story resolves the last of the couples, closes Cinder and Kai's relationship, and finishes the series on a farmhouse rather than a throne room.",
+            "through": {
+              "chapter": 9
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "stars-above"
+      }
+    },
+    "starsight": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Spin"
+            ],
+            "description": "A pilot of the Defiant Defense Force on the planet Detritus and one of the very few humans known to be cytonic, able to hear across the void and to teleport a ship by will. Since the battle that revealed humanity's jailers to be an alien government rather than a mindless enemy, she has flown with Skyward Flight while trying to make sense of an ability her own military distrusts. Impatient, combative and given to grand declarations, she wants to take the fight outward rather than wait for the next siege.",
+            "id": "spensa-nightshade",
+            "name": "Spensa Nightshade",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The artificial intelligence of the advanced starfighter Spensa recovered from a cavern on Detritus, rebuilt after the battle for Alta. Talkative, vain, fascinated by mushrooms, and still officially of the opinion that it is not sentient, it flies with Spensa and argues with her constantly.",
+            "id": "m-bot",
+            "name": "M-Bot",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Flightleader of Skyward Flight and, since the battle for Alta, the person Spensa trusts most. Rigid about procedure and increasingly aware that procedure is not enough, he carries the weight of a high-ranking family and of leading a flight that keeps losing people.",
+            "id": "jorgen-weight",
+            "name": "Jorgen Weight",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mongrel"
+            ],
+            "description": "Admiral of the Defiant Defense Force, formerly the flight instructor who forced Spensa into training. Blunt and sceptical, he has to weigh what Spensa's ability makes possible against what it risks.",
+            "id": "cobb",
+            "name": "Cobb",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Rig"
+            ],
+            "description": "Spensa's oldest friend, now an engineer working on the ancient orbital platforms above Detritus and on the technology recovered from the enemy. He is far happier solving problems on the ground than flying.",
+            "id": "rodge-mccaffrey",
+            "name": "Rodge McCaffrey",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The small yellow slug that adopted Spensa on Detritus, which repeats sounds it hears and refuses to be left behind.",
+            "id": "doomslug",
+            "name": "Doomslug",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A pilot of an alien species called the UrDail, from a world named ReDawn, who arrives at Detritus and is shot down. She is cytonic, she came deliberately to find the humans, and she hoped for allies against the galactic government that rules her people. The crash leaves her unconscious, and her ship, her equipment and her identity are all that the DDF has to work with.",
+            "id": "alanik",
+            "name": "Alanik",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior official of the Superiority's Department of Species Integration, a dione, unsettlingly polite and difficult to read. Cuna takes a personal interest in the newly arrived pilot from ReDawn, for reasons that are not obvious.",
+            "id": "cuna",
+            "name": "Cuna",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dione who has not yet been born: a provisional blending of two parents, given a trial life in which to prove worth being made permanent. Gentle, anxious and desperate not to seem aggressive, Morriumur joins the fighter program in the hope that it will demonstrate value.",
+            "id": "morriumur",
+            "name": "Morriumur",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The official in charge of the Superiority's new fighter program and a member of the same species that ran the drones over Detritus. Fussy, soft-spoken, endlessly concerned with paperwork and with the danger posed by aggressive species.",
+            "id": "winzik",
+            "name": "Winzik",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A human raised inside the Superiority rather than on a quarantined world, attached to Winzik's department. She is cytonic, formidably capable, and has been taught all her life that her species is a disease and that her worth depends entirely on her usefulness to the people who own her.",
+            "id": "brade",
+            "name": "Brade",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A kitsen, a fox-like alien small enough to stand on a human hand, who until very recently was the god-emperor of his people and is now formally a private citizen with a great deal of dignity and a taste for poetry. He commands a starship crewed by dozens of his kind.",
+            "id": "hesho",
+            "name": "Hesho",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A cadet in the fighter program belonging to a species with no solid body, present only as a scent and a voice. Vapor is unnervingly good at knowing what is going on and gives away nothing about herself.",
+            "id": "vapor",
+            "name": "Vapor",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The kitsen captain who runs Hesho's starship day to day, practical where her former emperor is ceremonial.",
+            "id": "kauri",
+            "name": "Kauri",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "starsight"
+      },
+      "recaps": {
+        "ending": "Winzik's department draws a delver to Starsight and makes no serious attempt to stop it, intending the destruction as a demonstration of the threat only he can manage. With evacuation impossible for most of the platform's millions, Spensa flies out to meet the delver and uses her cytonic ability to make contact rather than to fight. She finds that a delver is not a weapon but something vast and profoundly alone, which experiences the noise of living minds as pain, and she shows it what it is killing. The delver withdraws and Starsight survives. In the confusion Spensa frees a hoard of taynix from Superiority control and escapes with them, with Doomslug, and with M-Bot, whose ship is destroyed and whose mind continues in a far smaller body. She hyperjumps home to Detritus carrying the secret of faster-than-light travel, which means humanity can finally move ships between stars; the orbital platforms are brought online and Detritus has a shield over it for the first time. The cost is that Winzik got most of what he wanted: he has proved the delver threat, gained sweeping authority, and holds both a war fleet and a means of pointing delvers at his enemies. Alanik has woken on Detritus and the impersonation has to be answered for, Jorgen has begun showing cytonic ability of his own, and the friends Spensa made at Starsight are scattered and know she is human.",
+        "in_short": "Humanity on Detritus now knows that its jailers are the Superiority, a galactic government that grades species by aggression and denies faster-than-light travel to those it judges unfit. When a cytonic alien pilot named Alanik crashes on Detritus and falls into a coma, Spensa takes her ship and her identity and infiltrates a Superiority fighter program on the space platform of Starsight, intending to steal the secret of interstellar travel. Disguised among alien cadets, she learns that the Superiority's hyperdrives are not machines but living creatures, taynix slugs of the same kind as her own Doomslug, and that the program's director, Winzik, does not want to defend anyone from the world-killing entities called delvers so much as to control one. When Winzik draws a delver to Starsight, Spensa flies out and makes contact with it, discovering it is a lonely intelligence rather than a weapon, and persuades it to leave. She escapes with a hoard of taynix, giving humanity hyperdrives at last, while Winzik gains the power he was after.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: the survivors of humanity live in caverns on the planet Detritus, penned beneath a shell of orbiting debris and raided by alien Krell fighters. Spensa Nightshade forced her way into the Defiant Defense Force's pilot training despite her father having been branded a coward for fleeing the Battle of Alta, and secretly rebuilt a wrecked, far more advanced starfighter she found in a cave, whose artificial intelligence calls itself M-Bot. She learned that her father had not fled at all: he was cytonic, one of the rare people who can hear the stars, and Admiral Ironsides shot him down out of fear of what that ability does to a pilot. In the battle for Alta, Spensa used the same ability herself, teleporting above the debris field, and discovered that the Krell fighters were unmanned drones flown by aliens who had been keeping humanity imprisoned and culling it whenever it grew too capable. She destroyed their command ship. Ironsides surrendered command to Cobb, her father was cleared, and Spensa was confirmed as a pilot under the callsign Spin. Humanity now understands that it faces a galactic civilization with vastly superior technology, and that Spensa can partly do what that civilization does.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Detritus is still besieged, but the DDF now fights an enemy it can name. Spensa flies with Skyward Flight, works with the rebuilt M-Bot, and trains a cytonic ability that lets her hear the enemy and, with effort, teleport. Engineers including Rodge are slowly reclaiming the ancient orbital platforms above the planet, but without a hyperdrive humanity cannot leave, and one besieged world will not hold forever. Then an alien starfighter arrives at Detritus and is shot down. Its pilot, Alanik of the UrDail, is cytonic; she came deliberately to find humans, hoping for allies against the galactic government known as the Superiority, and the crash leaves her comatose. Her ship, her equipment and her identity give Spensa an opening. The Superiority is recruiting alien pilots for a new program, Spensa can pass for Alanik with a disguise and a borrowed ship, and so she hyperjumps out alone, intending to infiltrate the Superiority and bring home the secret of faster-than-light travel.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Posing as Alanik, Spensa reaches Starsight, an enormous space platform and one of the Superiority's central worlds, where dozens of species live under a government that ranks civilizations by their supposed primitive aggression and withholds interstellar travel from those it judges unfit. She is accepted into a new fighter program run by Winzik's department, which is quietly recruiting the very species it calls aggressive to do its fighting for it. Her fellow cadets include Morriumur, a dione whose existence is still provisional and who must prove worth being born; Hesho, a kitsen small enough to stand on her hand and until recently the emperor of his people; and Vapor, a cadet with no body at all. Winzik belongs to the same species as the aliens who ran the drones over Detritus, and his staff includes Brade, a human raised inside the Superiority as a servant and a curiosity. Spensa also meets Cuna, a senior official whose interest in her is impossible to read. Her goal throughout is simple: find out how Superiority ships jump between stars, and take that knowledge home.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Training with the flight, Spensa sees how completely the Superiority's citizens have been taught that aggression is a disease and that species like hers are vermin to be contained. She grows genuinely fond of Morriumur, Hesho and Vapor while keeping her identity hidden, and the strain of the disguise increases: she cannot use her cytonic abilities openly, since the Superiority reserves and controls cytonics, and Brade can sense other cytonics. She learns what the program's pilots are actually being prepared for. They are not being trained against the Superiority's rivals but against a delver, an entity that arrives out of nowhere and annihilates whole populations, and against which the Superiority's usual weapons are close to useless. Her investigation of the hyperdrive also begins to yield results, though what she is turning up does not resemble machinery.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The investigation pays off. The Superiority's faster-than-light drives are not machines but living creatures, taynix slugs that can teleport, of the same kind as the yellow slug that adopted Spensa back on Detritus. The Superiority guards this absolutely, because it is the foundation of its control over every other species: grant a world hyperdrives and you no longer own it. Spensa's reading of Winzik's program darkens in step. The pilots are being prepared to face a delver, and she begins to suspect he does not intend to defend anyone from one. Cuna, whom Spensa had taken for an enemy, proves instead to be an opponent of Winzik's faction and a genuine advocate for admitting species like hers to full citizenship. Meanwhile Spensa's cover frays: Brade senses her, and every extra day makes it likelier that the Superiority discovers a human loose on Starsight.",
+            "through": {
+              "chapter": 29
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Winzik's plan comes clear. Delvers are drawn by cytonic noise, and his department has learned enough to attract one deliberately. He does not want to protect the Superiority from delvers; he wants to be the only power able to summon and aim one, which would make his faction unassailable and justify permanent emergency authority. Cuna is manoeuvred out of any position to stop him. Spensa's cover collapses and she is exposed as human, which Winzik finds useful rather than inconvenient, since the fear of her species is exactly the argument he has been making. Her friends in the flight are left to choose between what they have been taught about humans and what they have seen of her. And Starsight itself, with millions of people aboard, is where Winzik intends to make his demonstration.",
+            "through": {
+              "chapter": 37
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The delver arrives at Starsight and Winzik's forces let it come. Most of the platform's population cannot be evacuated. Spensa flies out to meet the delver and, instead of attacking, reaches for it cytonically. What she finds is not a weapon but something enormous and utterly alone, which hears the minds of living things as unbearable noise and does not understand that the things it silences were people. She shows it what it is doing, and it withdraws. Starsight survives. In the chaos Spensa frees a hoard of taynix from Superiority control and escapes with them, with Doomslug, and with M-Bot, whose ship is destroyed and whose mind continues in a much smaller body. She hyperjumps home to Detritus with faster-than-light travel in the hold, and the orbital platforms are brought online, shielding the planet for the first time. But Winzik has what he wanted: authority, a fleet, and a way to point delvers at his enemies. Alanik has woken on Detritus, Jorgen has begun to show cytonic ability of his own, and the aliens Spensa befriended now know she is human.",
+            "through": {
+              "chapter": 45
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "starsight"
+      }
+    },
     "storm-front": {
       "characters": {
         "characters": [
@@ -1277,6 +1948,140 @@
           }
         ],
         "work": "summer-knight"
+      }
+    },
+    "sunreach-skyward-flight": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A pilot of Skyward Flight and the daughter of a comfortable Detritus family, better read than most of the people around her and unwilling to accept an order simply because of who gave it. She is uneasy about how much the National Assembly decides for the people it governs and how little of the truth it shares, and about a society that still sorts its citizens by birth. Calm under fire and stubborn out of it, she would rather ask the question everyone else is avoiding than keep formation.",
+            "id": "fm",
+            "name": "FM",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Rig"
+            ],
+            "description": "Chief engineer on the reclaimed orbital platforms above Detritus, a former flight cadet who left training and found what he was actually good at. Careful, anxious and extremely capable, he is trying to work out how creatures that teleport can be made to serve as starship hyperdrives without anyone getting hurt, including the creatures.",
+            "id": "rodge-mccaffrey",
+            "name": "Rodge McCaffrey",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Flightleader of Skyward Flight and a cytonic, carrying far more responsibility than a pilot of his rank should. With Spensa gone he is the closest thing the DDF has to a working cytonic, which makes him essential to the hyperdrive program and to the defense of the planet at the same time.",
+            "id": "jorgen-weight",
+            "name": "Jorgen Weight",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Quirk"
+            ],
+            "description": "A pilot of Skyward Flight, the best shot in the DDF and the gentlest person in it, still inclined to answer a crisis with one of her saint's sayings.",
+            "id": "kimmalyn",
+            "name": "Kimmalyn",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Amphisbaena",
+              "Amphi"
+            ],
+            "description": "A pilot of Skyward Flight, precise, wordy and increasingly relied on as a second in command.",
+            "id": "arturo-mendez",
+            "name": "Arturo Mendez",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Nedder"
+            ],
+            "description": "A pilot of Skyward Flight, large, good-humoured and rarely rattled by anything, including the discovery that the war has become far stranger than shooting at drones.",
+            "id": "nedd",
+            "name": "Nedd",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A cytonic pilot of the UrDail, from the world of ReDawn, who came to Detritus looking for allies and was shot down for her trouble. Recovered from the crash, she is a guest of the humans in name and something closer to a stranded diplomat in fact, and she is running out of patience while her own people decide their future without her.",
+            "id": "alanik",
+            "name": "Alanik",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "sunreach-skyward-flight"
+      },
+      "recaps": {
+        "ending": "The slug program works. Enough taynix are found, coaxed out and sorted by what they can actually do that the DDF can hyperjump ships rather than merely defend a fixed position, and when a Superiority force arrives to close Detritus down, that mobility is what carries the engagement. Humanity ends the story no longer trapped at the bottom of its own gravity well, with hyperdrives of its own and a fleet that can appear where it is not expected. FM's argument about who is entitled to know things is only partly won: she has forced open a little of what the National Assembly was holding back, and Jorgen has taken on more responsibility than his rank warrants, but the question of who actually governs Detritus is left unsettled and will get worse. FM and Rodge, who spent the whole crisis working together, admit what has been obvious to everyone else. Alanik, no longer stranded now that hyperjumping is possible, leaves for ReDawn to warn her own people and to try to stop them signing themselves over to the Superiority, and the humans have their first real prospect of an ally against Winzik. Spensa is still gone, still unreachable, and the war is now something the DDF will have to fight beyond its own sky.",
+        "in_short": "With Spensa away and Detritus newly shielded, the Defiant Defense Force has hyperdrives for the first time, in the form of taynix, the teleporting slugs Spensa brought back from Starsight. There are nowhere near enough of them. FM and the engineer Rodge take on the work of finding more in the caverns of Detritus, learning to coax and care for them, and discovering that different varieties do quite different things. The program pulls FM into a fight she did not expect, over how much the National Assembly is entitled to keep from the people it governs and who really commands the DDF. When a Superiority force moves against Detritus, the new ability to jump ships in and out of a battle proves decisive, and humanity ends the book mobile rather than besieged. FM and Rodge come together, and Alanik, able to travel again, departs for her own world to try to keep it out of the Superiority's hands.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: humanity survived on the caverned planet Detritus, penned there by an alien government called the Superiority and raided by its unmanned drones. Spensa Nightshade fought her way into the Defiant Defense Force, recovered an advanced starfighter with an artificial intelligence called M-Bot, and turned out to be cytonic, able to hear across space and teleport a ship. She infiltrated a Superiority fighter program on the space platform of Starsight, where she learned that faster-than-light drives are living creatures, taynix slugs, and that the program's director Winzik intended to control the world-killing entities called delvers rather than defend anyone from them. Winzik drew a delver to Starsight; Spensa met it mind to mind, persuaded it to leave, and escaped with a hoard of taynix. Detritus gained hyperdrives and a shield of reactivated orbital platforms, Winzik gained a fleet and emergency powers, and the cytonic alien Alanik, shot down over Detritus earlier, has woken up on a planet not her own. Jorgen has proved to be cytonic himself, and Spensa has since left to chase the delvers' origin, out of contact and not expected back soon.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Detritus is shielded and can, in principle, jump ships between stars, but only a handful of taynix have been found and nobody understands them. FM flies with Skyward Flight under Jorgen while the engineers, led by Rodge, try to work out how a creature that teleports can be turned into a reliable hyperdrive. The obvious source of more slugs is the cavern system of Detritus itself, and FM finds herself drafted into hunting them: coaxing them out, learning what they eat and what frightens them, and discovering that the taynix are not all alike, with different varieties doing markedly different things. At the same time the politics of the planet close in. The National Assembly wants the slug program controlled and quiet, and FM, who has never accepted that a government should decide what its citizens are allowed to know, starts asking questions that make her unpopular with everyone senior to her.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The slug work becomes the most important project on Detritus and the most fragile. FM and Rodge spend their days together on it and become close in a way neither of them quite says out loud. Every advance makes the same problem sharper: the taynix are living creatures, they respond to being treated well and badly, and the Superiority's method of using them is not one anybody involved wants to copy. Meanwhile the strain on Jorgen grows, because he is a cytonic, a flightleader and the person the Assembly keeps summoning, and the three roles do not fit together. FM's disagreements with the Assembly harden from irritation into a genuine argument about who commands the DDF and who is entitled to the truth. And the Superiority has noticed that Detritus is no longer a sealed problem, which means the next attack will not be drones probing a shield.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A Superiority force moves against Detritus, and the DDF fights it with a capability it did not have a month earlier: ships that can hyperjump into a battle and out of it. The slug program, and the care taken over the slugs themselves, is what makes the difference, and humanity ends the fight mobile instead of besieged. The political argument is only half resolved; FM has pried open some of what the Assembly was withholding, Jorgen carries authority well beyond his rank, and who actually governs Detritus remains an open and worsening question. FM and Rodge stop pretending about each other. Alanik, no longer stranded now that hyperjumping is possible, leaves for ReDawn to warn her own people against signing themselves over to the Superiority, which gives the humans their first real prospect of an ally. Spensa is still gone and still unreachable, and the war has plainly stopped being something that can be fought over one planet.",
+            "through": {
+              "chapter": 16
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "sunreach-skyward-flight"
       }
     },
     "sunrise-on-the-reaping": {

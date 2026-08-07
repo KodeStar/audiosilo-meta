@@ -1122,6 +1122,232 @@
         "work": "the-legend-of-randidly-ghosthound-9"
       }
     },
+    "the-lies-of-locke-lamora": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "The Thorn of Camorr",
+              "Lukas Fehrwight"
+            ],
+            "description": "An orphan of Camorr's plague years, sold as a small boy by the master of a thieves' orphanage to a blind beggar-priest who saw what he could become. He now leads the Gentlemen Bastards, a crew that passes for a modest gang of cutpurses while quietly robbing the city's nobility for enormous sums. Slight, unremarkable to look at and no kind of fighter, he works through preparation, nerve and improvisation, wearing invented identities for months at a time and enjoying the performance more than the money, which the crew never spends. He answers to Camorr's crime lord like every other thief in the city, and breaks that man's single most important rule as a matter of daily business.",
+            "id": "locke-lamora",
+            "name": "Locke Lamora",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Locke's closest friend and the crew's muscle. The orphaned son of prosperous Camorri merchants, he was raised to keep ledgers before a fire took his parents, and he has kept both trades: he manages the Gentlemen Bastards' accounts, reads for pleasure, and was trained in close fighting by one of the city's finest swordmasters. Heavyset, bespectacled and mild in company, he carries a matched pair of hatchets he calls the Wicked Sisters. In the crew's current game he plays the silent northern bodyguard of a foreign merchant.",
+            "id": "jean-tannen",
+            "name": "Jean Tannen",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the Sanza twins, raised alongside Locke and Jean beneath the temple. He and his brother are near identical, trade on the confusion constantly, and handle the forgery, sleight of hand and quick-change work that a game needs when one man has to be in two places. Mocking, restless company, and a capable cook when his turn at the kitchen comes round.",
+            "id": "calo-sanza",
+            "name": "Calo Sanza",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The other Sanza twin and Calo's inseparable partner in the Gentlemen Bastards' work. The pair are interchangeable to almost everyone, including on occasion their own crew, and they use it deliberately: two men who can pass for one open up tricks nobody else in Camorr can run. Like his brother he is quick, irreverent, and a better cook than any thief needs to be.",
+            "id": "galdo-sanza",
+            "name": "Galdo Sanza",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The crew's apprentice, an orphan of about twelve taken out of the same thieves' orphanage that produced Locke. He does the climbing, watching and running that the games require, is desperate to be counted a full member, and is repeatedly told that the fastest way to lose the place he wants is to improvise without being asked.",
+            "id": "bug",
+            "name": "Bug",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Eyeless Priest"
+            ],
+            "description": "The blind beggar-priest of the god of mercy who bought Locke from the Thiefmaker and raised him, Jean, the Sanzas and the others in the vault beneath his temple. Both his blindness and his order are a long fraud: he serves the unnamed god of thieves, and his real work is training children in languages, etiquette, cookery, accounting and the confidence trade until they can sit at a noble's table without being noticed. He appears in the chapters that look back at the crew's upbringing, and his lessons underlie everything Locke does.",
+            "id": "father-chains",
+            "name": "Father Chains",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former scholar from the north who took Camorr's underworld by force and has held it for more than twenty years from a moored galleon called the Floating Grave. Every gang in the city pays him tribute. His rule rests on the Secret Peace, a private arrangement with the duke's people under which thieves may prey on the common folk as they like and must never touch the nobility, and he enforces it without exception, which makes the Gentlemen Bastards' actual trade a killing offence. He has grown heavier and grimmer since his wife's death, and surrounds himself with his grown children and his bodyguards.",
+            "id": "capa-vencarlo-barsavi",
+            "name": "Capa Vencarlo Barsavi",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young Camorri nobleman with a taste for speculative ventures and very little experience of being lied to. Recently married and keen to build a fortune of his own rather than live on his family's, he is the mark of the crew's current game: a chance to buy into a northern brandy house, offered to him by a foreign merchant he believes he saved from a mugging.",
+            "id": "don-lorenzo-salvara",
+            "name": "Don Lorenzo Salvara",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Don Lorenzo's wife, an alchemical botanist trained at the Therin Collegium whose greenhouse work is the real source of the family's money. She is sharper and far more sceptical than her husband, checks what she is told, and is the single hardest part of keeping the Salvara game upright.",
+            "id": "dona-sofia-salvara",
+            "name": "Dona Sofia Salvara",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Master of the Shades' Hill orphanage, who takes in Camorr's unwanted and plague-orphaned children and trains them to steal for him. He sells Locke on because the boy's ambitions have already cost lives and threaten to draw exactly the kind of attention a gang of child thieves cannot survive.",
+            "id": "the-thiefmaker",
+            "name": "The Thiefmaker",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Capa Barsavi's only daughter and, since her brothers are blunter instruments, the most capable of his children. She has known Locke since they were both children in the same gang and treats him with rough affection. Her father intends her to inherit his position, and has settled views about whom she ought to marry in order to hold it.",
+            "id": "nazca-barsavi",
+            "name": "Nazca Barsavi",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Twin sisters who serve as Capa Barsavi's personal bodyguards and are the most celebrated shark-fighters in Camorr, drawing crowds at the floating carnival where they kill in the water for the city's entertainment. Silent, identical and universally feared, they wear trophies taken from their kills.",
+            "id": "the-berangias-sisters",
+            "name": "Cheryn and Raiza Berangias",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A figure nobody has seen clearly who has begun killing Capa Barsavi's gang leaders one at a time, leaving no witnesses and no explanation. He appears to want the capa's chair, and to command resources no Camorri criminal should be able to afford. Barsavi's people cannot find him, and the killings are steadily emptying the capa's court while the city's thieves take sides in advance.",
+            "id": "the-grey-king",
+            "name": "The Grey King",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Bondsmage of Karthain, one of the mercenary sorcerers whose guild is feared across the continent and priced accordingly. He is accompanied everywhere by a scorpion hawk called Vestris, through whose eyes he can see. The Bondsmagi are protected by one rule that everybody obeys: harm a single member and the entire guild answers, so no one in Camorr will lift a hand against him whatever he does while under contract.",
+            "id": "the-falconer",
+            "name": "The Falconer",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Gentleman Bastard raised with Locke, Jean and the Sanzas under Father Chains, and the only girl among them. By Locke's account she is better than he is at every part of the work. She has not been in Camorr for years, and Locke, who has loved her since they were children, is unable to discuss her sensibly with anyone.",
+            "id": "sabetha-belacoros",
+            "name": "Sabetha Belacoros",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Countess Amberglass"
+            ],
+            "description": "The elderly Countess Amberglass, long widowed and childless, who presides over the noblewomen's gatherings in her glass tower and spends most of them apparently dozing over her knitting while her guests talk around her. Camorri society treats her as a harmless fixture and speaks freely in front of her.",
+            "id": "dona-vorchenza",
+            "name": "Dona Angiavesta Vorchenza",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-lies-of-locke-lamora"
+      },
+      "recaps": {
+        "ending": "Locke kills Capa Raza aboard the Floating Grave and survives the fight only just, with Jean carrying him out. Raza's revenge on Barsavi is complete but his second scheme fails: the attack he prepared for Camorr's assembled nobility at the duke's feast is stopped because Locke gave the warning to the Spider in time. That officer turns out to be Dona Vorchenza, the elderly countess nobody took seriously. She knows exactly who Locke is and cannot prove any of it, and she lets him go rather than pursue him. The Falconer is collected by his own guild, mutilated and out of his mind; the Bondsmagi make it plain that what was done to him will be answered in their own time and on their own schedule, so Locke and Jean leave Camorr with an enemy that outlasts the city. Calo, Galdo, Bug and Nazca Barsavi are dead, the Gentlemen Bastards' hoarded fortune is scattered, and the temple that hid them is finished as a home. Locke and Jean take ship out of Camorr as the last two of the crew Chains raised, with their skills, each other, and very little else.",
+        "in_short": "In the canal city of Camorr, thieves live under the Secret Peace: they may rob the common folk as they please and must never touch the nobility. Locke Lamora, raised by a fraudulent blind priest to be a confidence artist rather than a cutpurse, breaks that rule for a living, running elaborate swindles on the aristocracy with his small crew, the Gentlemen Bastards. While he works his latest mark, a masked figure called the Grey King begins murdering the crime lord Capa Barsavi's captains, and a hired sorcerer of the Bondsmagi forces Locke to serve the Grey King's scheme. The trap closes: Barsavi is destroyed, the Grey King takes the city's underworld as Capa Raza, and three of the Gentlemen Bastards are murdered along with the crew's fortune. Locke and Jean Tannen, the only survivors, take the sorcerer apart, expose Raza's plan to slaughter Camorr's nobility to the duke's secret intelligence chief, and Locke kills Raza himself. They leave the city avenged, ruined, and permanently marked by the sorcerers' guild.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Camorr is a canal city built on the indestructible glass ruins of a vanished people, ruled by a duke and his nobility above and by Capa Vencarlo Barsavi's gangs below. The two halves are joined by the Secret Peace: the underworld may rob the common folk freely so long as it never touches an aristocrat, and the watch leaves it alone in return. Locke Lamora, sold as a child to the fraudulent blind priest Father Chains and raised in the vault beneath his temple, now leads the Gentlemen Bastards - Jean Tannen, the twins Calo and Galdo Sanza, and the boy Bug. To Barsavi they are a small gang of unambitious thieves paying their tribute. In fact they break the Secret Peace as a profession, running long confidence games on the nobility and hoarding the proceeds unspent in a vault under the temple. Their current mark is Don Lorenzo Salvara, whom Locke, disguised as a northern brandy merchant, persuades to invest heavily in a venture that does not exist, and whose sharper wife Sofia has to be handled as carefully as the don himself. Interleaved chapters show the crew's childhood and Chains teaching them the trade.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Barsavi's court is in trouble. Someone calling himself the Grey King has begun murdering the capa's gang leaders one at a time, without witnesses, and Barsavi has withdrawn to his moored galleon refusing to move against an enemy he cannot find. Summoned by the capa's daughter Nazca, an old friend of Locke's from their orphanage days, Locke learns that Barsavi means her to inherit and means Locke to marry her in order to steady the succession. The Salvara game continues to pay well. Then the Grey King reaches for Locke directly: he is taken by a Bondsmage of Karthain called the Falconer, a hired sorcerer whose guild nobody dares harm, and delivered to the Grey King, who orders Locke to impersonate him at a parley with Barsavi. Refusal is not on offer: the Bondsmage's presence removes every option that involves force, and the errand will put Locke in a room between the two most dangerous men in Camorr.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Grey King's grip tightens. Nazca Barsavi, going to negotiate on her father's behalf, is murdered and her body returned to the capa, which removes any prospect of a settlement. Locke keeps the Salvara game running while preparing to stand in front of Barsavi wearing another man's name, and Jean, the only person who knows the whole shape of it, can find no way out. At the Echo Hole, Locke goes through with the impersonation and Barsavi springs the ambush he has spent days preparing. It is Barsavi who has been played. His own bodyguards, the Berangias sisters, turn on him, his sons are killed, and the Grey King reveals himself and has the capa drowned in the same cask his daughter's body came back in. The Grey King takes Camorr's underworld for himself under the name Capa Raza. Locke is stabbed, sealed in a barrel and thrown into the bay. Jean pulls him out alive. They return to the temple and find Calo, Galdo and Bug murdered in the vault below it and the crew's entire fortune gone.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Locke, badly wounded and half destroyed by grief, is kept alive largely by Jean's stubbornness while Camorr's gangs swear to their new capa. Raza consolidates fast, buying loyalty with the money he took from the Gentlemen Bastards and dispensing favours from Barsavi's old galleon, and the city adjusts to him within days. Locke refuses to leave while the man is alive, which reduces the two of them to a plan with no crew, no money and no protection behind it. At the same time the other danger the Salvara con has stirred up comes closer: the duke's secret intelligence service, run by an officer known only as the Spider, has been hunting the thief the nobility call the Thorn of Camorr, and the trail of the brandy swindle leads to him. Locke begins improvising a way to reach a man guarded by an entire underworld and by a Bondsmage.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Locke and Jean go after Raza with the only tools they have left. Locke works his way back into the city's business under a string of borrowed identities while Jean deals with the more direct obstacles: confronting the Berangias sisters, he kills them both. The pair then take the Falconer, whose protection proves less absolute than he believed. They kill his scorpion hawk, which unhinges him, and then cut out his tongue and take his fingers so that he can never work sorcery again, leaving his guild a living man to collect and a message they will not forget. Raza's motive is now clear: he is the surviving son of a merchant family destroyed years earlier by Barsavi with the duke's tacit consent, the Berangias sisters were his sisters, and every killing since has been payment against that debt. It is equally clear that he does not intend to stop with Barsavi, and that Camorr's nobility are the rest of the account.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Raza's remaining plan is aimed at the aristocracy, who will all be gathered in one place for the duke's feast in the sky-tower of Raven's Reach. Locke, caught by the duke's secret service before he can move, discovers that the Spider is Dona Vorchenza, the elderly countess the whole city has been dismissing for decades. He trades what he knows for the freedom to act; the warning reaches her in time and the nobility survive the attack Raza had prepared for them. Locke then goes after Raza in person. Aboard the Floating Grave he kills him, at very nearly the cost of his own life, and Jean gets him out. Calo, Galdo, Bug and Nazca are avenged, the crew's hoarded fortune is scattered beyond recovery, and Locke and Jean are the only two left of the family Chains built.",
+            "through": {
+              "chapter": 16
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-lies-of-locke-lamora"
+      }
+    },
     "the-lightning-thief": {
       "characters": {
         "characters": [
@@ -1474,6 +1700,61 @@
         "work": "the-lion-the-witch-and-the-wardrobe"
       }
     },
+    "the-little-android": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An android in New Beijing whose programming has been damaged in a way that has left her aware of herself, capable of wanting things, and quietly attached to the young mechanic who repairs her. Nothing about her model is supposed to be able to do any of that, and she knows better than to let anyone find out.",
+            "id": "mech6-0",
+            "name": "Mech6.0",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A young mechanic in New Beijing, patient and kind to the machines he services, and entirely unaware that one of them thinks about him.",
+            "id": "dataran",
+            "name": "Dataran",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-little-android"
+      },
+      "recaps": {
+        "ending": "Mech6.0 gets what she asked for and it does not work. Trading her android body for a human one costs her the strength, speed and mechanical ability that made her useful, and it does not make Dataran recognise her or return what she feels; his attention goes elsewhere. Living as a human turns out to be painful and precarious in ways she had no data for. The story keeps faith with the fairy tale it is retelling rather than softening it: Mech6.0 ends by giving herself up to save Dataran, and he never learns who she was or what she gave away for him. Read as a story about the series' world rather than its plot, it is the darkest thing in the collection - a demonstration of what an android becomes when it starts to want, in a society that treats wanting machines as defects to be wiped.",
+        "in_short": "A standalone short story set in New Beijing, retelling The Little Mermaid with androids. Mech6.0 has been damaged in a way that left her self-aware: she can want things, and what she wants is Dataran, the young mechanic who services her and treats her decently. Knowing that a machine showing that much personality will be scrapped, she runs, and goes to an illegal surgeon who can put her mind into a human body. The exchange costs her everything she was good at, and being human does not make Dataran see her as anything but a stranger. The story follows the fairy tale to its original ending rather than a happier one: Mech6.0 sacrifices herself for him, and he never learns what she was.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "A note before starting: The Little Android is a standalone short story set in the world of the Lunar Chronicles, also collected in Stars Above. It is a retelling of Hans Christian Andersen's The Little Mermaid and is only loosely attached to the main series - none of the novels' cast drive it, and it can be read at any point without spoiling anything. Context: it takes place in New Beijing, capital of the Eastern Commonwealth, where androids are ordinary household and commercial property, personality is a specification rather than a right, and a machine that develops one is treated as a fault to be corrected. Illegal cyborg and body-modification surgeons operate at the edges of that market.",
+            "through": {
+              "chapter": 0
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-little-android"
+      }
+    },
     "the-little-prince": {
       "characters": {
         "characters": [
@@ -1679,6 +1960,177 @@
           }
         ],
         "work": "the-little-sisters-of-eluria"
+      }
+    },
+    "the-looking-glass-war": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A courier for the Department, an ageing man doing a simple job badly paid: flying to a northern airfield under a false name to collect a film from an airline pilot. Out of his depth in cold weather and worse tradecraft, he drinks to steady himself and talks more than he should. His run opens the book.",
+            "id": "taylor",
+            "name": "Taylor",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Scandinavian civil airline pilot who has been persuaded, for money and for the excitement of it, to divert his scheduled route over a restricted area of East Germany and photograph what is on the ground. He is nervous about the risk to his licence and wants the arrangement ended.",
+            "id": "lansen",
+            "name": "Lansen",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Director of the Department, a small, neat, self-contained man who has spent twenty years presiding over the decline of a military intelligence organisation that mattered during the war and has mattered less every year since. He lives on the memory of its wartime operations, speaks of them constantly, and manages his Minister and his rivals with a mixture of optimism and evasion. A chance to run a real operation again is, to him, the recovery of everything the Department has lost.",
+            "id": "leclerc",
+            "name": "Leclerc",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Director's young assistant, in his early thirties, intelligent and unformed, who drifted into the Department without ever choosing it and has no clear idea what he is for. Married to Sarah, with a small son and an unhappy home, he is susceptible to the glamour of the wartime stories his colleagues tell and eager to be trusted with something real.",
+            "id": "john-avery",
+            "name": "John Avery",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Avery's wife, isolated in a marriage to a man who cannot explain what he does, tired of the secrecy and increasingly unconvinced that the work is worth what it is costing them. She presses Avery to leave the Department.",
+            "id": "sarah-avery",
+            "name": "Sarah Avery",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Department's head of research, a dry, fastidious, chronically ill man with a cough and a taste for watercolours and precise detail. He is the most intelligent person in the building and the least deceived about it, contemptuous of Leclerc's illusions, and yet the operational professional the Department must turn to. He accepts the work with the manner of a man returning to a bad habit.",
+            "id": "adrian-haldane",
+            "name": "Adrian Haldane",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior member of the Department's staff who was there in the war and never left it: hearty, loud in the club, dismissive of the rival service, and fond of describing operations he had a small part in twenty years ago. He pushes hard for action.",
+            "id": "bruce-woodford",
+            "name": "Bruce Woodford",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The head of the rival civilian intelligence service, the Circus, which is better funded, better staffed and openly sceptical of the Department. He is courteous to Leclerc in a manner that concedes nothing and agrees to lend support with an ease that ought to be a warning.",
+            "id": "control",
+            "name": "Control",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A plump, quiet, apologetic officer of the Circus, sent to handle liaison and to provide the practical assistance the Department cannot supply for itself. He is polite, unassuming and almost invisible in a room, and he says very little about what his own service thinks of the enterprise.",
+            "id": "george-smiley",
+            "name": "George Smiley",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Pole in his forties who worked for the Department as an agent during the war, now naturalised British and running a garage in the south of England. Vain about his clothes and his success with women, proud of his war record and privately conscious of never having been quite accepted in the country he adopted, he is flattered to be sought out again after twenty years and wants very much to be told that he is one of them.",
+            "id": "fred-leiser",
+            "name": "Fred Leiser",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Department's wireless instructor, an old hand who trained agents during the war and has been brought back to teach the same procedures on the same kind of set. Kindly, patient and entirely uncritical of the methods he is teaching, he becomes fond of the man he is training.",
+            "id": "johnson",
+            "name": "Johnson",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-looking-glass-war"
+      },
+      "recaps": {
+        "ending": "Leiser's transmissions, sent on wartime procedure from a set that is far too slow, are located by East German direction-finding almost as soon as he begins. He kills again in the course of the run, moves to a room in Kalkstadt and goes on transmitting, and the search closes on him while the Department listens. Whatever he saw at the missile site is never established, and it ceases to matter. At the Lübeck base, Control and Smiley arrive to shut the operation down: the Circus withdraws its facilities, the cover arrangements and the diplomatic protection, and the Department is instructed to leave. It becomes plain that the Circus lent its help knowing what would happen, content to let a rival destroy itself with an operation the Circus never believed in. Leclerc, still talking about the Ministry and about the next stage of the operation, accepts the closure without appearing to understand it and prepares to report a success. Haldane, who expected nothing else, retreats behind his contempt. Avery, who promised Leiser that he would not be abandoned, breaks down. Leiser is left transmitting inside East Germany with no one listening and no way out, and the men who sent him fly home.",
+        "in_short": "The Department, a British military intelligence organisation that has been decaying since the war, receives a report of Soviet missiles being moved near Kalkstadt in East Germany. Its Director, Leclerc, seizes on it as the operation that will restore the Department's standing. A courier, Taylor, is sent to Finland to collect film from an airline pilot and is killed on an icy road; the young aide sent to recover his effects, John Avery, bungles the trip completely. Undeterred, the Department revives its wartime methods and recruits Fred Leiser, a Polish agent it ran twenty years earlier and has not contacted since, now a garage owner in England. Trained in an Oxford house on obsolete wireless procedure and flattered into believing he is wanted, Leiser is sent across the border, killing a young sentry on the way. His transmissions are too slow and too long, and East German direction-finding locates him at once. At the last, Control and Smiley of the rival Circus close the operation down, having lent their help precisely so that the Department would ruin itself. Leiser is abandoned inside East Germany, and the men who sent him go home.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "On a freezing northern airfield, Taylor, a courier for a British intelligence organisation known only as the Department, waits for a delayed flight. He is there to take delivery of a roll of film from Lansen, a civil airline pilot who has been paid to divert his route over a restricted area of East Germany and photograph what is on the ground. The handover is clumsy: Taylor has been drinking, the arrangements are amateurish, and the pilot is frightened and wants out. Carrying the film, Taylor walks out into the dark towards his hotel and is struck and killed by a car on the icy road. The film is not recovered. What was meant to be the Department's first real operation in years has cost a man's life in its opening hours and produced nothing.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In London the Department is revealed as a shabby remnant. Once a substantial wartime military intelligence organisation, it has shrunk to a few rooms, a dwindling staff and work nobody values, overshadowed by the better-funded civilian service, the Circus. Its Director, Leclerc, lives on memories of what the Department did in the war and treats the present crisis as its restoration. The cause of it all is a refugee report and a photograph suggesting Soviet rockets are being moved to Kalkstadt in East Germany, near the border. Around Leclerc are Haldane, the clever, ailing head of research, who despises the illusions but is drawn back into operational work, and Woodford, who is loud about the old days. Leclerc's young assistant John Avery, restless in an unhappy marriage and unsure what he is for, is delighted to be given his first real job: to fly north under a false name and recover Taylor's body and effects.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Avery's trip is a failure at every level. His cover name does not match his papers, the consul and the police are unhelpful, the hotel and the dead man's belongings are already picked over, and he finds nothing of the film. He is frightened, out of his depth and obliged to improvise lies he has not been taught to tell. The Circus, approached for help, provides it with a courtesy that costs it nothing. Avery comes home with the sense of having been tested and found wanting, and the Department greets him as a returning hero because it needs to. His wife Sarah, told nothing and asked to accept everything, is nearer to leaving him. Leclerc, so far from being deterred by two failures, concludes that the only remaining course is to put an agent on the ground inside East Germany.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Leclerc obtains Ministry approval and the Circus agrees, with unexpected readiness, to provide facilities. The Department goes to its wartime files and finds Fred Leiser, a Pole it ran as an agent twenty years ago, now naturalised, running a garage in the south of England and long forgotten by the service he risked his life for. Flattered by the approach and hungry to be one of them again, he agrees. He is installed in a rented house near Oxford and trained by Haldane, Avery and the old wireless instructor Johnson, using the procedures, codes and equipment of the last war because that is what the Department still knows. The set is heavy and slow, the schedules are inflexible, and none of it has been revised for twenty years of Soviet direction-finding. Avery, told to keep close to him, becomes genuinely attached, and lies to him steadily about how much the Department can protect him.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Training ends with Leiser fitter, better dressed and wholly convinced of his own importance, and with the men running him privately aware of how poor his chances are. Haldane says so; Leclerc does not listen. The party moves to Lübeck to set up a base station, and Leiser is taken to the border and put across at night. On the crossing he is challenged by a young East German frontier sentry and kills him with a knife, which shakes him badly and leaves a body that will be found. Inside, he makes his way towards Kalkstadt, stealing a motorcycle and living on nerve, and begins to transmit. The schedules are long, the procedure is obsolete, and he is on the air far past any safe limit. In Lübeck the operators take his signals, and the East German search for the source begins almost immediately.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Leiser reaches Kalkstadt, finds shelter with a young woman and continues to transmit at length from her room while the direction-finders converge. Whatever he has seen is never confirmed, and the Department's certainty about the missiles is never substantiated. At the base, Control and Smiley arrive from the Circus and end the operation: the facilities, the cover and the protection are withdrawn, and everyone is to go home. The Circus had assisted from the beginning in the expectation that the Department would destroy itself, and does not pretend otherwise. Leclerc, still speaking of the Ministry and the next phase, accepts the closure without appearing to understand what has happened to him. Haldane retreats into contempt. Avery, who promised Leiser that he would never be left, breaks down. Leiser goes on transmitting inside East Germany, hunted, with nobody listening and no way home, and the Department packs its equipment and leaves.",
+            "through": {
+              "chapter": 23
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-looking-glass-war"
       }
     }
   }

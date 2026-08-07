@@ -203,6 +203,218 @@
         "work": "the-name-of-the-wind"
       }
     },
+    "the-obelisk-gate": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The woman who was Damaya and then Syenite, now living in the underground comm of Castrima under the name Essun. She has survived the Rift, the murder of her younger child and the loss of her daughter, and she is the strongest living orogene apart from the man she has just found dying. Two things pull against each other in her: she wants Nassun back, and she has been handed a task by Alabaster that she does not know how to refuse. She is middle-aged, out of patience, and unwilling to belong to another community that will turn on her.",
+            "id": "essun",
+            "name": "Essun",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Once the Fulcrum's ten-ring senior, and the man who deliberately tore the continent open at Yumenes. He is in Castrima now and dying by inches: his body turns to stone from the extremities inward, and the stone eater Antimony consumes what he sheds. He has strength enough left to teach, to be difficult, and to insist, and very little time in which to hand over what he knows.",
+            "id": "alabaster",
+            "name": "Alabaster",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The stone eater who traveled with Essun in the shape of a strange white-eyed boy and has since stopped pretending. He is smaller and less imposing than others of his kind, protective of Essun in a way stone eaters are not usually, and unwilling to explain most of what he is or wants. Others of his kind take an interest in her too, and not on the same terms.",
+            "id": "hoa",
+            "name": "Hoa",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The headwoman of Castrima: an orogene who neither hides what she is nor apologizes for it, and who has built a comm where orogenes and ordinary people share the same space, which nowhere else on the continent manages. She holds it together by force of personality and by refusing to pretend the arrangement is comfortable. She and Essun recognize each other's strength immediately and do not much like each other.",
+            "id": "ykka",
+            "name": "Ykka",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Born Binof Leadership Yumenes, now a geomest who walked away from her family and her name to study obelisks and the ruins of the civilization that made them. She has followed Essun to Castrima and settled in, and she is at least as interested in the machinery of the geode the comm lives inside as in any of the people in it.",
+            "id": "tonkee",
+            "name": "Tonkee",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The doctor who came from Tirimo, now Castrima's only real physician and a member of its governing council. He is younger than Essun, unsentimental about her, and one of the very few people who will tell her plainly when he thinks she is wrong.",
+            "id": "lerna",
+            "name": "Lerna",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The stone eater who carried Alabaster out of the sea years ago and has kept him alive long past the point where he should have died. She waits beside him in Castrima, consuming the parts of him that have turned to stone, and answers questions only when it suits her.",
+            "id": "antimony",
+            "name": "Antimony",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Essun's daughter, taken south by her father after he killed her brother. She is capable, watchful, and old beyond her years about adults: she spent her childhood being trained in secret by a mother who was frightened for her and frightening to her, and she travels now with the man who murdered her brother for being what she also is. She is looking, in her own way, for somewhere she is wanted as she is.",
+            "id": "nassun",
+            "name": "Nassun",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Nassun's father, a stone-knapper from Tirimo, traveling south with his daughter after beating his son to death. He genuinely loves Nassun, and he is looking for a place he has heard of where orogenes can be cured. He has not let himself decide what he will do if no such place exists.",
+            "id": "jija",
+            "name": "Jija",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The Guardian who once took Damaya to the Fulcrum, and who by any reasonable account should not have survived Meov. He surfaces far to the south with most of his memory gone and in constant pain from the thing lodged in his head, running a school for orogene children in the comm of Jekity. What is left of him is still capable of great gentleness, and is still not safe.",
+            "id": "schaffa",
+            "name": "Schaffa",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of Castrima's council, from an old Leadership family, with filed teeth and no appetite for the work of governing. She is blunt about what the comm can and cannot afford, and she takes up with Tonkee.",
+            "id": "hjarka",
+            "name": "Hjarka",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "One of two Guardians stationed alongside Schaffa at Found Moon, sharing the work of collecting and training the orogene children brought to Jekity. He is watchful, correct, and increasingly interested in how far Schaffa has drifted from what a Guardian is supposed to be.",
+            "id": "umber",
+            "name": "Umber",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The second Guardian at Found Moon, brightly cheerful in the way Guardians often are and not remotely reassuring for it. She keeps a close eye on the children's progress, and a closer one on Schaffa's.",
+            "id": "nida",
+            "name": "Nida",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A stone eater the color of gray rock, who appears to people without being invited, answers questions with questions, and clearly wants something from the orogenes he attends. He is not visibly on anyone's side, and he is patient in a way that suggests he has been waiting a very long time.",
+            "id": "steel",
+            "name": "Steel",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-obelisk-gate"
+      },
+      "recaps": {
+        "ending": "Rennanis breaks into the geode and Essun ends the battle by herself. She takes hold of the onyx, the largest and least tractable of the obelisks, opens the Obelisk Gate, and turns the entire attacking army to stone where it stands. Castrima survives, and the cost lands on Essun's body: using the Gate turns her to stone the way it turned Alabaster. Her right arm goes first. She wakes days later, alive, one-armed, in a comm that now owes her everything, with Alabaster dead and his work unfinished.\n\nIn the south, Nassun has killed her father, seen Found Moon destroyed, and been left with Schaffa, whose pain is constant and whose survival depends on things she is willing to do. A stone eater called Steel offers her a destination: Corepoint, on the far side of the world, where the obelisks can be reached directly. Nassun has decided that a world which does this to children like her is not worth keeping, and she means to use the Gate accordingly.\n\nEssun learns that her daughter is alive and has commanded an obelisk on her own. Mother and daughter are now the only two people living who can open the Obelisk Gate, and they want opposite things from it: Essun to catch the Moon and end the Seasons, Nassun to end everything.",
+        "in_short": "Essun stays in Castrima because Alabaster is there, dying, turning to stone, and demanding that she learn what the Fulcrum never taught. He tells her the truth: he opened the Rift on purpose, the Seasons are the consequence of an ancient injury rather than nature, the Moon exists and was flung out of its orbit long ago, and the way to end the Seasons for good is to catch it and put it back. That requires opening the Obelisk Gate, the whole network at once, and Essun is the only candidate left. He dies partway through her education. Meanwhile Nassun is taken south by her father to Found Moon, a school for orogene children run by Schaffa, who survived Meov, remembers almost nothing, and loves her. Nassun becomes more powerful than anyone there. When the compound's Guardians turn on them and her father finally comes for her with a knife, she turns him to stone. Castrima is besieged by the army of Rennanis; Essun opens the Gate, turns the whole army to stone, and loses her right arm to the same process, waking days later to learn that her daughter is alive, strong, and intends to use the Gate to end the world.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, in The Fifth Season. The Stillness is a continent whose civilizations end regularly in seismic catastrophe. Orogenes can control the movement of the earth; they are hated, and the empire of Sanze controlled the ones it caught through the Fulcrum in Yumenes and through the Guardians, who can shut an orogene's power off by touch.\n\nDamaya, Syenite and Essun are one woman at three ages. As Damaya she was given up by her family and taken to the Fulcrum by a Guardian named Schaffa, who broke her hand on the road to teach her obedience. As Syenite she was sent on assignment with Alabaster, the Fulcrum's only ten-ringer, who showed her the node stations where orogene children are mutilated and wired into chairs to hold the empire steady. Their assignment ended with the coastal city of Allia destroyed, and a stone eater named Antimony carried them to Meov, a free island comm where Syenite lived for two years with Alabaster and Meov's leader Innon, and bore a son, Corundum. When Guardians found Meov, Innon was killed, Alabaster was taken away through the rock by Antimony, and Syenite killed her own infant son rather than let Schaffa carry him off to a node station, destroying Meov with an obelisk in the process. She walked away and began again under a new name.\n\nIn the present, Alabaster tore a rift across the continent at Yumenes, beginning a Season expected to last centuries. The same day, Essun's husband Jija discovered their children were orogenes, beat their three-year-old son Uche to death, and fled south with their daughter Nassun. Essun left Tirimo to find them, accompanied by Hoa, a stone eater in the shape of a boy, and Tonkee, a geomest who was once the Leadership girl Binof. They reached Castrima, an underground comm inside a geode led openly by an orogene named Ykka, and found Alabaster there, half turned to stone and being consumed by Antimony. He asked Essun whether she had ever heard of a thing called a moon.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Essun stays in Castrima because Alabaster is there and because there is nowhere better to go. He is dying: his body turns to stone from the fingers inward, and Antimony eats what he sheds. He tells her plainly that he opened the Rift on purpose, that the Seasons are the consequence of an ancient injury rather than a fact of the world, and that ending them permanently is possible. What he wants from her is that she learn to use the obelisks properly, which the Fulcrum never taught and could not have taught. His first lesson is a demand rather than an explanation, and Essun resents both the demand and how much she needs him to keep talking.\n\nCastrima is a comm built inside a geode: crystals the size of towers, hollowed into dwellings, powered by machinery no one understands, hidden beneath a small surface settlement. Ykka, its headwoman, keeps orogenes and ordinary people living together, an arrangement that is never more than one incident from collapse.\n\nFar to the south, Nassun travels with her father. Jija is looking for a place he has heard of where orogenes can be cured. Nassun, trained in secret and painfully by her mother, understands both that her father loves her and that he killed her brother for being what she is.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jija brings Nassun to Found Moon, in the comm of Jekity: a compound where orogene children are being gathered and taught, and where the Guardian in charge is Schaffa. He is not the man who took Damaya to the Fulcrum. He remembers almost nothing of his past, the thing embedded in his head hurts him constantly and pushes him toward harming orogenes, and he resists it. He takes to Nassun at once, and she to him: he is the first adult who has treated her orogeny as something to develop rather than something to hide or beat out of her.\n\nIn Castrima, Alabaster teaches Essun to see the silver, the threads of magic that run between and through every living thing. It is the material the obelisks actually work in, and it is a different order of power from orogeny. She is a difficult student and he is a worse teacher, and time is against both of them.\n\nCastrima's council argues about stores, about the winter, and about the orogenes, with Ykka, Lerna, Tonkee and Hjarka all pulling different ways. Essun refuses to take any role in the comm, and is given one anyway.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Alabaster keeps talking while he still can. The obelisks are the surviving machinery of a civilization that fell tens of thousands of years ago, built to draw and direct magic on a planetary scale. The Moon exists; that civilization lost it, flinging it out of its orbit; and the Earth's hostility to everything living dates from that theft. Alabaster's plan is not revenge. He wants the Moon caught and returned, which would end the Seasons for good, and doing it requires an orogene who can open the Obelisk Gate, the entire network at once. Essun is the only candidate he has left, and he is running out of body.\n\nAt Found Moon, Nassun outpaces the other children quickly. Schaffa teaches her things the Fulcrum would have called impossible, including the use of the silver, and shields her from the methods Guardians normally use. Jija watches his daughter become more of what he brought her south to have removed, and says less and less about it.\n\nWord reaches Castrima that a comm in the north, Rennanis, has survived the Season by taking what it needs from everyone within reach, and that its army is moving south.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Castrima's danger becomes concrete: Rennanis is coming, it has an army, and a working geode full of food and warmth is exactly the prize worth taking. Ykka's council splits over whether to fight, run or bargain, and Essun is pulled into the comm's politics whether she wants it or not, because in practice the comm's defense is her. She and Lerna become lovers, more from proximity and exhaustion than from anything either would call a decision. Tonkee dismantles the geode's machinery to find out how it works. Essun practices with the obelisks in earnest, drawing on them a piece at a time, with Alabaster correcting her while he still has a voice.\n\nAt Found Moon, Nassun reaches for the sapphire obelisk that hangs above Jekity, and it answers her. Schaffa is proud of her and increasingly at war with the corestone in his head, which wants her controlled or dead. The Guardians Umber and Nida begin to treat both of them as problems to be managed rather than colleagues to be worked with.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Alabaster dies. The last of him goes to stone, Antimony takes it, and Essun is left holding a task she does not fully understand and cannot put down: the Gate, the Moon, and no teacher. She keeps practicing alone, and every attempt costs her something she cannot name yet.\n\nRennanis's scouts reach Castrima's territory and the first engagements go badly enough to end the argument: the comm will fight. Ykka forces orogenes and ordinary people to work the defense together, in public, which several people on both sides would rather die than do.\n\nAt Found Moon the situation deteriorates. Nassun's power is now past any child there and past most Guardians. Jija, who has finally understood that nobody is going to cure his daughter, watches her work with Schaffa and cannot make what he sees fit anything he believes. Umber and Nida conclude that Schaffa has become unreliable and that the school is a failed experiment, and prepare to act on it.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Rennanis army arrives and besieges the surface settlement above the geode. Castrima's defense depends on people who despise each other holding a line together, and it very nearly does not hold. Essun readies herself to do the one thing she is certain she can do, knowing what reaching for an obelisk at that scale has already taken out of her.\n\nAt Found Moon, the Guardians move against Schaffa and Nassun. Neither Umber nor Nida survives what follows, and the school does not survive it either. Then Jija comes for his daughter with a knife, having decided at last what she is, and Nassun draws on the sapphire and turns her father to stone where he stands. Everything she had built in the south is gone in a night, and the only person left to her is a Guardian being eaten alive from the inside by the thing in his head.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rennanis breaks into the geode and Essun ends the battle alone. She takes hold of the onyx, the largest and least tractable of the obelisks, opens the Obelisk Gate, and turns the entire attacking army to stone where it stands. Castrima survives. The cost lands on her body, which is the rule Alabaster never spelled out: the Gate turns its user to stone the way it turned him. Her right arm goes first. She wakes days later, alive and one-armed, in a comm that now owes her its existence and still does not know what to do with her.\n\nIn the south, Nassun has killed her father, lost Found Moon, and been left with Schaffa, whose pain is now constant. The stone eater Steel gives her a destination: Corepoint, on the far side of the world, where the obelisks can be commanded directly. Nassun has concluded that a world that does this to children like her is not worth preserving, and she intends to use the Gate accordingly.\n\nEssun learns that her daughter is alive and has taken hold of an obelisk on her own. The two of them are now the only people living who can open the Obelisk Gate, and they mean to use it for opposite ends.",
+            "through": {
+              "chapter": 21
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-obelisk-gate"
+      }
+    },
     "the-odyssey": {
       "characters": {
         "characters": [

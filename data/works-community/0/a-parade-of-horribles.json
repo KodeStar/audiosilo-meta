@@ -469,6 +469,242 @@
         "work": "a-parade-of-horribles"
       }
     },
+    "a-reaper-at-the-gates": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An ancient jinn, the only one of his kind left free, who spent a thousand years in human shapes gathering the scattered fragments of the Star in order to break his people out of the prison the Scholars built for them. He has the last piece now. Patient beyond human measure and entirely without pity for the descendants of the people who wronged him, he moves through the Empire's politics as an ally of convenience to whoever serves his purpose.",
+            "id": "the-nightbringer",
+            "name": "The Nightbringer",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Scholar woman who has learned what the man she trusted actually was and what her mother's armlet was worth to him. She travels with her brother Darin and a small company, hunting for anything that can stop the Nightbringer before he frees the jinn, and trying to warn a Scholar population the Empire is preparing to exterminate. Her ability to pass unseen comes and goes without warning, and she has begun to suspect why.",
+            "id": "laia",
+            "name": "Laia",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Once a Mask and an Aspirant for the throne, now bound to the Waiting Place as apprentice to its Soul Catcher. His work is to move the ghosts of the dead onward before their grief turns them dangerous, and the forest also holds the imprisoned jinn. The magic that should make the work possible will not answer him properly, because it requires a detachment from the living that he has not managed and does not want.",
+            "id": "elias-veturius",
+            "name": "Elias Veturius",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The immortal jinn who has kept the Waiting Place for centuries as penance for betraying her own kind to the Scholars, and who bound Elias to the forest to save his life. She is training him quickly because she believes her time is short and because the jinn behind their prison walls have begun to press outward. She will not tell him everything she knows about how the imprisonment was done.",
+            "id": "shaeva",
+            "name": "Shaeva",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Blood Shrike of the Martial Empire, second to an Emperor she despises and the only reason his throne is still standing. Her surviving family are hostages in all but name, and the Empire is coming apart at the edges under Karkaun raids and Keris Veturia's ambition. She has a healing magic she can barely control and cannot afford anyone to learn about.",
+            "id": "helene-aquilla",
+            "name": "Helene Aquilla",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The Mask assigned to the Blood Shrike's service, still watching her, still saying little. Helene has spent a year assuming he informs on her to the Commandant and has never caught him doing it. He is competent, unbothered by her hostility, and steadily present at every moment when she has no one else.",
+            "id": "avitas-harper",
+            "name": "Avitas Harper",
+            "reveal": {
+              "chapter": 4
+            }
+          },
+          {
+            "description": "Laia's older brother, recovering from Kauf but permanently marked by it. He is the only Scholar alive who knows how to make Martial steel, which makes him the most valuable person in the Empire to several parties at once, and he is determined to be more than a secret somebody is guarding.",
+            "id": "darin",
+            "name": "Darin",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The scarred old Scholar woman who ran the Commandant's kitchen at Blackcliff and now travels with Laia. She is brutal in her assessments, contemptuous of hope, and better informed about the Empire's inner workings than a household slave has any business being. She refuses to explain where the knowledge or the scars came from.",
+            "id": "cook",
+            "name": "Cook",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Emperor of the Martial Empire, holding power through fear and the Blood Shrike's competence. He is coming apart: sleepless, tormented by the brother he killed to take the throne, and increasingly unable to tell what is in front of him from what is not. His court is full of people waiting for him to fall.",
+            "id": "marcus-farrar",
+            "name": "Marcus Farrar",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "the Commandant"
+            ],
+            "description": "Elias's mother, commandant of Blackcliff and mistress of the Empire's wealthiest city, patiently assembling everything she needs to take the throne. She has a plan for the Scholar population that amounts to their extermination, and an ally older and stranger than anyone in the Empire suspects. Every order the Blood Shrike is given seems to have been arranged so that carrying it out will destroy her.",
+            "id": "keris-veturia",
+            "name": "Keris Veturia",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Helene's younger sister, married to the Emperor and carrying his child, which makes her both the most protected and the most endangered person in the capital. She has proved tougher than her family expected and has begun to understand the court as a system she can work inside rather than merely survive.",
+            "id": "livia-aquilla",
+            "name": "Livia Aquilla",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Scholar of Adisa in the free kingdom of Marinn, wealthy, talkative and apparently frivolous, who commands the wights: small invisible creatures that carry messages and gossip across the whole city for him. He knows everything happening in Adisa and can be persuaded to share almost none of it. He becomes Laia's route into the northern Scholar community.",
+            "id": "musa-of-adisa",
+            "name": "Musa of Adisa",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The heir to the throne of Marinn, the free kingdom north of the Empire, governing in place of her ageing father King Irmand. Marinn has sheltered Scholar refugees for generations, and whether it will risk a war with the Martials on their behalf is her decision to make.",
+            "id": "nikla",
+            "name": "Nikla",
+            "reveal": {
+              "chapter": 20
+            }
+          },
+          {
+            "description": "Elias's grandfather and the former head of Gens Veturia, a retired general with no illusions about his daughter Keris and no affection left for her. Blunt, old and still dangerous, he is one of the few Martials with the standing to oppose the Commandant openly and the inclination to help the Blood Shrike do it.",
+            "id": "quin-veturius",
+            "name": "Quin Veturius",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The warlord leading the Karkaun tribes against the Empire from the north, a butcher who fights alongside warlocks and whose armies have grown far better supplied and far better informed than they have any right to be. He wants the Martial heartland, and he is prepared to spend as many of his own people as it takes.",
+            "id": "grimarr",
+            "name": "Grimarr",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "a-reaper-at-the-gates"
+      },
+      "recaps": {
+        "ending": "Antium falls to the Karkauns because Keris Veturia withdraws her legions and lets it happen. In the ruin of the capital she has Helene's father and her sister Hannah killed in front of her, destroying House Aquilla except for Livia, who gives birth to a son during the siege. Marcus dies, and Keris declares herself Empress of the Martial Empire. Helene names the infant Zacharias Emperor, takes him and Livia out of the city with the legions still loyal to her, and withdraws north to Delphinium to fight a civil war she is not equipped to win. Laia learns that Cook is her mother, Mirra, the Lioness who led the Scholar resistance and was assumed dead for years. In the Waiting Place, Shaeva is gone and Elias is left holding the ghosts and the jinn's prison alone. Mauth, the power behind the Soul Catcher's work, will only serve him if he severs every human tie he has; he accepts the terms, sends Laia away and stops being Elias Veturius in any way that matters. It is not enough. The Nightbringer completes the Star, breaks the prison and frees the jinn, and his own kind name him the Meherya, the beloved. The Empire is left with two claimants, an unbound and vengeful jinn host, and no one who can stop them.",
+        "in_short": "The Nightbringer, holding the last fragment of the Star, works toward freeing the jinn imprisoned beneath the Waiting Place, while Keris Veturia plans both the extermination of the Scholars and the seizure of the throne. Laia travels north to Adisa seeking a weapon or an ally against him, finds neither in the Mariner court but gains the Scholar spymaster Musa. Elias, bound to the Waiting Place, cannot make its magic answer him while he still loves anyone living. The Blood Shrike is sent to Navium, where Keris lets the city burn under a Karkaun assault to discredit her; Helene saves it and cannot prove the sabotage. The Karkauns then besiege Antium, Keris withdraws her legions, and the capital falls. Keris executes most of Helene's family, Marcus dies, and Keris takes the throne as Empress. Helene escapes with her sister Livia and Livia's newborn son, whom she declares Emperor. Laia discovers that the woman called Cook is her own mother. Shaeva dies, Elias surrenders his humanity to become the Soul Catcher in full, and the Nightbringer completes the Star and releases the jinn.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Laia, a Scholar of the Martial Empire, lost her grandparents and her brother Darin to a Martial raid and went into Blackcliff Military Academy as a slave in exchange for the resistance's promise to free him. There she met Elias Veturius, the Academy's best student and the unacknowledged son of its commandant Keris Veturia, who was forced by the Empire's Augurs to compete in Trials for the vacant throne. Marcus Farrar won the Trials by killing his twin brother; Elias's closest friend Helene Aquilla refused to kill Elias and was bound to Marcus as his Blood Shrike; Elias was condemned and broken out by Laia. Laia, Elias, the slave girl Izzi and the resistance fighter Keenan fled north to Kauf prison to free Darin. Elias was dying of poison the whole way. They burned Kauf and freed its prisoners, Izzi was killed, and Helene, sent to hunt Elias, let him go instead. To save his life the jinn Shaeva bound Elias to the Waiting Place, the forest where the dead pass on and where the jinn are imprisoned, which means he can never leave it. Then Keenan asked Laia for her mother's silver armlet as a token of trust, and once she gave it he revealed himself as the Nightbringer, the last free jinn, who had spent a thousand years collecting the fragments of an object called the Star in order to free his people.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Nightbringer holds the last piece of the Star and moves openly through the Empire, allied with Keris Veturia, whose plans for the Scholars amount to their extermination. Laia, travelling with her brother Darin and the old Blackcliff kitchen woman known as Cook, is hunting for anything that can kill a creature a thousand years old, and finding that her ability to vanish now fails at the worst moments. Elias is learning the Soul Catcher's work under Shaeva in the Waiting Place: shepherding ghosts onward before their grief makes them dangerous, and keeping the jinn behind the walls of their prison. The magic that should carry him will not, because it demands a distance from the living that he refuses. In the capital, the Emperor Marcus is unravelling and the Empire is losing ground to Karkaun raiders in the north. The Blood Shrike is sent south to Navium, Keris's own city, to bring its fleet and its great houses to heel.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Navium is Keris's power base, and every Martial with rank there answers to her rather than to the Emperor's Blood Shrike. When a Karkaun fleet appears off the harbour, Keris keeps her ships in dock and lets the city's poorest districts burn, so that the failure will be recorded as Helene's. Helene takes command of what she can, holds the sea wall, and discovers that her healing song is stronger and stranger than she understood. Avitas Harper stands with her without being asked. Elsewhere, Shaeva warns Elias that the jinn are pressing at their prison and that if it breaks, the Waiting Place fails and every restless ghost in the Empire goes with it. Laia leaves the Empire for the free kingdom of Marinn in the north, taking Darin, hoping the Mariners and the Scholars sheltering there can be persuaded to act against the Nightbringer.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The fight for Navium becomes a siege by sea. Helene fights it with borrowed ships and Blackcliff tactics, and Keris sabotages her at every step while remaining technically obedient. Helene finds evidence that the Karkaun warlocks are being supplied with a magic no human should have and that the Commandant's ally is not a person at all, but nothing she can put before a court. In Adisa, Laia's petition to the Mariner court goes nowhere: the heir Nikla will not risk a war with the Martials for the sake of Scholar refugees, and the Scholar community in the city is fractured. Laia instead finds Musa of Adisa, a Scholar who runs a private intelligence network of invisible wights and knows everything happening in the north. Cook's knowledge of the Empire's secrets continues to be inexplicable for a woman who spent her life in a kitchen.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Navium survives, at a cost that empties the city's treasury and its cemeteries, and Helene breaks the Karkaun fleet without ever being able to prove who arranged the disaster. She returns north knowing that Keris has been building toward the throne for years and that the Karkaun warlord Grimarr is being fed intelligence and supplies from inside the Empire. In Marinn, Laia's position collapses: the court turns on the Scholars, Darin's knowledge of steelmaking makes him a prize rather than a person, and Laia and Musa are forced out of Adisa with almost nothing gained. Elias, meanwhile, is told by Shaeva what the magic actually requires. Mauth, the power that runs through the Soul Catcher, will not fully bind to anyone who still holds on to a living person, and the ghosts are multiplying faster than one apprentice can move them.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The action moves to Antium, the Martial capital. Marcus's grip on himself is nearly gone, Livia is close to term with the imperial heir, and Keris manoeuvres in open court, calculating exactly how much humiliation the Blood Shrike will absorb before she breaks. Helene, with the support of Elias's grandfather Quin Veturius, tries to build a faction that can survive the Commandant. Laia returns south into the Empire, and she and the Blood Shrike, who have every reason to hate each other, are forced into a working arrangement against a threat that will outlast both their causes. The Nightbringer no longer bothers to hide, and the Scholar settlements in the Empire begin to be emptied on the Commandant's orders.",
+            "through": {
+              "chapter": 38
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the Waiting Place, the jinn's prison is failing and the ghosts have become a flood. Shaeva is killed, and Elias is left as the only thing standing between the dead and the world, with a magic that still will not answer him. He tries to hold the forest alone and cannot. Laia's search for a way to stop the Nightbringer keeps arriving at the same answer: the jinn were imprisoned by a Scholar working with one of their own, and there is no second Shaeva to repeat the trick. Keris positions her legions where they will do the Empire the least good, the Karkaun host under Grimarr crosses into the Martial heartland, and Antium is left with walls, a failing Emperor and a Blood Shrike who can see precisely what is about to happen and cannot make anyone believe her in time.",
+            "through": {
+              "chapter": 45
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Karkauns lay siege to Antium. Keris withdraws her legions and leaves the capital to hold with what it has, which is not enough. The walls are breached, the warlocks work over the city, and the slaughter inside it is comprehensive. Helene fights through the streets to reach her family and her sister, using her healing magic until it nearly kills her, and holds a corridor open long enough for part of the population to escape. Livia goes into labour during the fall of the city. Laia is inside Antium as it burns, and what she can do against jinn magic is very little. Every institution the Empire has run on for five hundred years is destroyed in the space of a few days, and the survivors are left arguing about who is now entitled to command them.",
+            "through": {
+              "chapter": 52
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Antium is lost. In the wreckage Keris has Helene's father and her sister Hannah executed in front of her; House Aquilla is destroyed apart from Livia, who has borne a son. Marcus dies, and Keris Veturia declares herself Empress of the Martial Empire. Helene gets Livia and the newborn out of the city with the legions still loyal to her. Laia learns who Cook is: her own mother, Mirra, the Lioness who led the Scholar resistance a generation ago and was believed dead, kept alive and broken by the Commandant. The Nightbringer, meanwhile, has everything he needs. Laia's attempt to stop him at the Waiting Place fails, and Elias, holding the forest alone since Shaeva's death, is given Mauth's terms: the magic will serve him only when he has cut away every living attachment he has.",
+            "through": {
+              "chapter": 56
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Helene declares the infant Zacharias Emperor of the Martial Empire, with Livia as his regent, and withdraws north to Delphinium to hold what is left against Keris. The Empire now has two rulers and a civil war. Elias accepts Mauth's terms: he sends Laia away, severs what he feels for her and for everyone else, and takes on the Soul Catcher's mantle completely, which is the last thing Elias Veturius does as himself. And it is too late. The Nightbringer completes the Star, breaks the prison beneath the Waiting Place and frees the jinn, who greet him as the Meherya, the beloved. A thousand years of confinement come out with them, and the human kingdoms have nothing that can answer it.",
+            "through": {
+              "chapter": 59
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "a-reaper-at-the-gates"
+      }
+    },
     "a-sacrifice-of-light": {
       "characters": {
         "characters": [
@@ -811,6 +1047,247 @@
           }
         ],
         "work": "a-sacrifice-of-light"
+      }
+    },
+    "a-sky-beyond-the-storm": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "the Meherya"
+            ],
+            "description": "The jinn who broke his people out of a thousand years of imprisonment and now leads them against the human kingdoms that put them there. His own kind call him the Meherya, the beloved. He is unhurried, articulate and without any interest in negotiation, and the grief underneath his campaign is older than every institution he is dismantling.",
+            "id": "the-nightbringer",
+            "name": "The Nightbringer",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Scholar leader in a world where the freed jinn are burning through kingdom after kingdom. She has no armlet, no reliable magic and no illusions left about what the Nightbringer is willing to do, and she is the person most determined to find the thing that will end him. Her brother, her mother and a network of Scholars in the free lands work with her, and the Martial civil war leaves her allies to choose from among people who have all been her enemies.",
+            "id": "laia",
+            "name": "Laia",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The keeper of the Waiting Place, who gave up his name and everything he felt in order to make its magic answer him. He ferries the dead onward and does not remember why he ever wanted anything else, except in flashes that the magic immediately smooths away. With the jinn free and a war beginning, the dead are arriving faster than one Soul Catcher can move them.",
+            "id": "the-soul-catcher",
+            "name": "The Soul Catcher",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The force behind the Soul Catcher's work, ancient and mostly silent, which binds its servant to the Waiting Place and withdraws its power whenever he reaches for a living attachment. It is not explained to him, it does not argue, and it has held every Soul Catcher to the same bargain.",
+            "id": "mauth",
+            "name": "Mauth",
+            "reveal": {
+              "chapter": 5
+            }
+          },
+          {
+            "description": "Blood Shrike of a broken Empire, holding the north for her infant nephew against an Empress who murdered most of her family. She commands the last legions willing to follow the old order, fights a civil war and a jinn invasion at once, and is running out of both soldiers and time. Her healing magic is the only reason many of her people are still alive.",
+            "id": "helene-aquilla",
+            "name": "Helene Aquilla",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "the Commandant"
+            ],
+            "description": "Empress of the Martial Empire, having taken the throne over the corpse of her predecessor and the ruins of the capital. She rules by terror, prosecutes the extermination of the Scholars, and serves the Nightbringer's purposes while insisting to herself that the arrangement runs the other way. She is Elias's mother and has never once treated that as relevant.",
+            "id": "keris-veturia",
+            "name": "Keris Veturia",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The Mask who has served the Blood Shrike since she was first sent to hunt Elias, and whose loyalty she long ago stopped questioning. He is steady, unhurried, and the only person who tells her the truth without being asked, and he has stayed at her side through the loss of nearly everything she had.",
+            "id": "avitas-harper",
+            "name": "Avitas Harper",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Helene's sister, regent of the rump Empire in the north and mother of its infant emperor. She has become a genuinely capable ruler, which does not make her position any safer, and she and Helene do not always agree about what the crown can be spent on.",
+            "id": "livia-aquilla",
+            "name": "Livia Aquilla",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The infant Emperor of the Martial Empire, born during the fall of Antium, in whose name the Blood Shrike fights. He is a legitimacy claim before he is a child, and keeping him alive is the axis of every decision his family makes.",
+            "id": "zacharias",
+            "name": "Zacharias",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Laia's older brother, the only Scholar who knows how to make Martial steel and now the man arming a people who have been forbidden weapons for five hundred years. He has come a long way from the prisoner Laia carried out of Kauf and no longer accepts being kept out of the dangerous work.",
+            "id": "darin",
+            "name": "Darin",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Scholar spymaster of Adisa, whose invisible wights carry information faster than any courier in the north. Flippant on the surface and relentless underneath, he supplies Laia with intelligence, money and a Scholar organisation capable of moving thousands of people out of the Empire's reach.",
+            "id": "musa-of-adisa",
+            "name": "Musa of Adisa",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Cook",
+              "the Lioness"
+            ],
+            "description": "Laia's mother, once the leader of the Scholar resistance and long assumed dead, kept alive and destroyed by Keris Veturia at Blackcliff. Reunited with her surviving children, she is a ruined and formidable woman who understands the Empire's interrogators from the inside and has one unfinished piece of business with the Commandant.",
+            "id": "mirra",
+            "name": "Mirra",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Elias's grandfather, former head of Gens Veturia, an old general fighting on the Blood Shrike's side of the civil war against his own daughter. He is blunt about the odds and has no intention of surviving the Empire he served.",
+            "id": "quin-veturius",
+            "name": "Quin Veturius",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A presence of light that begins to speak to Laia, offering her the power to stand against jinn magic and asking her to trust it before it will explain itself. It knows a great deal about the Nightbringer and about the war that imprisoned his people, and it wants him destroyed. What it actually is becomes one of the book's late revelations.",
+            "id": "rehmat",
+            "name": "Rehmat",
+            "reveal": {
+              "chapter": 22
+            }
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "a-sky-beyond-the-storm"
+      },
+      "recaps": {
+        "ending": "The Nightbringer's war ends at the jinn city, where his purpose is finally laid bare: the massacre of his people and the loss of his family a thousand years ago, and a grief he intends to resolve by unmaking the world that caused it. Laia, wielding Rehmat's light and the truth about what was really done to him and by whom, kills him. The Soul Catcher takes the jinn dead and their leader onward, which is the only mercy left to give. Keris Veturia is defeated and killed, and the Martial civil war ends. The victory is expensive: Avitas Harper is among the dead, and Helene comes out of the war with almost no one left of the family she began it with. Mauth's demand turns out to have been a distortion rather than a law; the work of ferrying the dead does not require an empty keeper, and Elias takes back his name and his feelings while remaining the Waiting Place's Soul Catcher. Helene stands at the head of what survives of the Empire, holding it for the child emperor Zacharias, with the enslavement of the Scholars ended and an alliance with them in its place. Laia leads her people into the first free generation they have had in five hundred years, and she and Elias find a way to have each other on the terms his binding allows.",
+        "in_short": "With the jinn free, the Nightbringer burns his way across the human kingdoms while Keris Veturia, now Empress, prosecutes a war of extermination against the Scholars. Laia, stripped of her magic and her mother's armlet, builds a Scholar resistance in the free lands with her brother Darin, the spymaster Musa and her mother Mirra, and is contacted by Rehmat, a presence of light that can burn jinn and will not explain what it is. Elias, having surrendered his humanity to become the Soul Catcher, cannot keep pace with the dead the war produces and begins to feel again despite Mauth's punishment. The Blood Shrike holds the north for her infant nephew against Keris and the jinn both, and is forced into alliance with the Scholars she was raised to own. The war converges on the jinn city, where the Nightbringer's true purpose is revealed and Laia kills him. Keris is defeated and killed. Harper is among the dead. Mauth's bargain proves to have been a lie, and Elias keeps both his work and his name. Helene rules what is left of the Empire for the child emperor, the Scholars are freed, and Laia and Elias are left with a future.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Laia, a Scholar of the Martial Empire, lost her family to a Martial raid and infiltrated Blackcliff Military Academy as a slave, where she met Elias Veturius, the son of its commandant Keris Veturia. Elias was forced into the Trials for the vacant throne; Marcus Farrar won by killing his twin, Elias's friend Helene Aquilla was bound to Marcus as Blood Shrike, and Elias was condemned and rescued by Laia. They fled north, burned Kauf prison and freed Laia's brother Darin, and Elias, dying of poison, was saved only by being bound to the Waiting Place, the forest where the dead pass on and the jinn were imprisoned. The Scholar fighter Keenan then revealed himself as the Nightbringer, the last free jinn, who had used Laia to obtain the final fragment of the Star. In the third book, Keris Veturia allied with him, let the Karkauns destroy the capital Antium, executed most of Helene's family and took the throne as Empress after Marcus's death. Helene escaped with her sister Livia and Livia's newborn son Zacharias, whom she declared Emperor, and withdrew north to fight a civil war. Laia learned that the old Blackcliff kitchen woman Cook was her own mother, Mirra, the Lioness. Elias's mentor Shaeva died, and to keep the Waiting Place he surrendered his humanity to become the Soul Catcher in full. It was not enough: the Nightbringer completed the Star and released the jinn.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The jinn are loose and take their revenge on the human kingdoms methodically, burning settlements and breaking armies, with the Nightbringer directing them and Keris Veturia's Empire clearing the ground ahead of them. The Soul Catcher keeps the Waiting Place with the dead arriving faster than he can move them, empty of everything he used to be; when Laia comes to him he registers her the way he would register anyone. Laia, without her armlet or any reliable magic, is building a Scholar resistance in the free lands with Darin, the Adisan spymaster Musa and her mother Mirra, evacuating Scholar communities ahead of the Empire's soldiers. In the north, the Blood Shrike holds Delphinium for the infant emperor Zacharias with Livia as regent, fighting Keris's legions with too few men while jinn attacks fall on both sides of the civil war impartially.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Keris turns the Empire's machinery to the systematic killing of Scholars, and the Nightbringer lets her, because a broken human world suits him. Laia's evacuations become a running campaign against both, fought with too few fighters and Musa's intelligence network. She begins to hear a voice that is not her own: a presence of light calling itself Rehmat, which offers her power that jinn cannot stand against and refuses to say what it is until she trusts it. The Blood Shrike, losing ground and unable to fight two enemies, has to consider an alliance with Scholars her people have owned for five centuries, and with the free kingdom in the north. The Soul Catcher's isolation begins to crack: he recognises faces among the dead, and every time he feels something Mauth takes the magic away and the ghosts overwhelm him.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Laia accepts Rehmat and finds she can call up a light that burns jinn, the first weapon anyone has had against them. It makes her the Nightbringer's single most serious problem and he turns his attention to her personally. The Blood Shrike and the Scholars come to terms, an alliance neither side's people want, and Helene has to force it through a Martial command structure that regards it as treason. Quin Veturius keeps the old houses in line by reputation alone. In the Waiting Place, the Soul Catcher works out that Mauth's terms have been presented to him as a law and never once explained, and starts asking questions no previous Soul Catcher appears to have asked. Keris, meanwhile, is discovering how little her partnership with the Nightbringer entitles her to.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Nightbringer's campaign reaches its full weight. Cities fall, the jinn are effectively unkillable except by Rehmat's fire, and the human alliance survives by retreating. Laia learns the shape of the history behind all of it: a thousand years ago the jinn were massacred and imprisoned by humans, and the Nightbringer lost his own family in the process. Keris's usefulness to him is running out, and she can see it, which does not change what she does. The Soul Catcher, feeling again in fragments, leaves the Waiting Place knowing what it will cost him and the dead both, because the war is producing more ghosts than the forest can hold and the answer is not inside it.",
+            "through": {
+              "chapter": 34
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The war closes on the jinn's own ground. Laia and her allies pursue the Nightbringer's purpose rather than his armies, and the deeper history comes out: the human woman he loved, the betrayal that ended his people, and the fact that his war is a grief he has never been able to put down. Rehmat gives Laia more and explains less, and Laia begins to suspect what it must be to know the Nightbringer so exactly. The Blood Shrike's northern army and the Scholar forces fight to keep Keris from finishing her extermination while the jinn attack whoever is nearest. Laia is taken and held at the enemy's centre, and what is done to her there costs her a great deal and tells her the one thing she needed.",
+            "through": {
+              "chapter": 42
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The alliance regroups for a final campaign, with the Blood Shrike and the Scholars fighting as one force and Quin Veturius and Musa holding the pieces together. The Soul Catcher's return to himself accelerates, and Mauth's punishment of it stops looking like discipline and starts looking like something older and lonelier than either. The Nightbringer moves toward the jinn city, the Sher Jinnaat, with a purpose that is not simply conquest, and Laia understands that killing him in battle was never going to be possible. Keris is discarded by the ally she gave everything to, and instead of breaking she becomes more dangerous, because the only thing she has ever done with humiliation is turn it into somebody else's death.",
+            "through": {
+              "chapter": 50
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At the Sher Jinnaat the Nightbringer's plan is finally legible: the freeing of the jinn was a stage, not the object, and what he intends is the unmaking of the world that destroyed his family. Laia goes into it with Rehmat's light and the history she has assembled. The Soul Catcher, no longer willing to be the empty thing Mauth asked for, chooses his own terms and puts himself between the living and what is coming. The Blood Shrike fights the civil war to a decision so that there is an Empire left to defend, and the cost of that decision falls almost entirely on the people closest to her.",
+            "through": {
+              "chapter": 57
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The alliance's armies and the jinn meet, and the losses on the human side are severe. Avitas Harper is killed, and Helene, who has spent four years being told what she is required to give up, is left with almost no one. Keris Veturia's power collapses as her ally abandons her, and she comes to the field for her own reasons. Laia reaches the Nightbringer with what Rehmat has given her and with the truth about the loss he built his war on. The Soul Catcher's work turns out to be the necessary instrument: what the jinn need is not to be defeated but to be taken onward, and only the keeper of the Waiting Place can do that.",
+            "through": {
+              "chapter": 62
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Nightbringer is killed, and the jinn dead pass on. Keris Veturia's history finally surfaces: what was done to her as a girl, why she bore a son she tried to destroy, and what her devotion to the Nightbringer was actually made of. She is defeated and killed, and the Martial civil war ends with it. Mirra's account with the Commandant is closed. Mauth's demand is revealed as a distortion rather than a law: the work of ferrying the dead never required a keeper with nothing to love, and the Soul Catcher takes back what he gave up. The surviving kingdoms are left counting their dead and deciding what to build.",
+            "through": {
+              "chapter": 69
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the aftermath, Elias Veturius has his name and his feelings back and remains the Soul Catcher of the Waiting Place, which is a life he chooses rather than a sentence. Helene Aquilla stands at the head of what is left of the Martial Empire, holding it for the child emperor Zacharias, having ended the enslavement of the Scholars and bound the two peoples into an alliance instead. Laia leads her people into the first free generation the Scholars have had in five hundred years, with Darin, Musa and Mirra beside her. She and Elias find a way to be together within the limits his binding sets. The Empire that shaped all three of them is gone, and the story closes with the people who survived it deciding how it will be told.",
+            "through": {
+              "chapter": 72
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "a-sky-beyond-the-storm"
       }
     },
     "a-storm-of-swords": {
@@ -1157,6 +1634,245 @@
           }
         ],
         "work": "a-thousand-splendid-suns"
+      }
+    },
+    "a-torch-against-the-night": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A Scholar woman fleeing Serra after breaking the condemned Elias Veturius out of his execution. Her grandparents were killed and her brother Darin taken in a Martial raid; she now knows he is alive in Kauf, the Empire's prison in the far north, and she intends to reach him. She has no combat training and no illusions about how badly the last set of bargains she made turned out. She wears her dead mother's silver armlet, the only thing left of her family.",
+            "id": "laia",
+            "name": "Laia",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A Blackcliff-trained Mask who refused the throne, was condemned as a deserter and was pulled off the execution block by Laia. He has agreed to get her north to Kauf and free her brother, a journey of a thousand miles through territory that is now hunting him. He is the son of the Empire's most feared commandant and the adopted son of a Tribal storyteller, and he is beginning to feel unwell in ways he cannot explain.",
+            "id": "elias-veturius",
+            "name": "Elias Veturius",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Elias's oldest friend, now Blood Shrike of the Martial Empire, second only to the Emperor Marcus and sworn into his service after refusing to kill Elias in the final Trial. Marcus holds her parents and her two sisters as surety for her obedience, and his first order is that she hunt Elias down and bring back proof of his death. She believes in the Empire's law and its continuity, and she is being asked to prove it with the one life she would not take.",
+            "id": "helene-aquilla",
+            "name": "Helene Aquilla",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The red-haired Scholar fighter who broke with Serra's resistance leadership and escaped the city with Laia and Elias. He is competent, quiet and unsentimental about the movement that betrayed her, and he is the only one of the party with contacts along the roads north. His attachment to Laia has stopped being purely professional.",
+            "id": "keenan",
+            "name": "Keenan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The one-eyed slave girl from Blackcliff who chose to run with Laia rather than stay in the Commandant's household. She has never been outside the Academy walls in her life and treats every ordinary thing on the road as a marvel. Laia's closest friend, and the person she is most afraid of getting killed.",
+            "id": "izzi",
+            "name": "Izzi",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Laia's older brother, held in Kauf prison since his arrest. He learned Martial steelmaking in secret from the swordsmith Spiro Teluman so the Scholars could one day arm themselves, which is why the Empire wants him alive and talking. Everything the party does is aimed at reaching him before that changes.",
+            "id": "darin",
+            "name": "Darin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The new Emperor of the Martial Empire, raised to the throne by killing his twin brother in the final Trial. He is unstable, physically formidable and shrewder than his cruelty suggests, and he governs by threat. He keeps the Blood Shrike obedient by naming exactly which of her relatives will die if she fails him.",
+            "id": "marcus-farrar",
+            "name": "Marcus Farrar",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "the Commandant"
+            ],
+            "description": "Elias's mother, commandant of Blackcliff and one of the most powerful Martials alive. She survived the change of regime intact and is manoeuvring inside the new Emperor's court, with her own agenda and an ally nobody in the Empire can identify. She has plans for the Scholars, for her son, and for the Blood Shrike sent to watch her.",
+            "id": "keris-veturia",
+            "name": "Keris Veturia",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Mask attached to the Blood Shrike's hunting party, calm, quiet and almost impossible to read. Helene is certain he was placed at her side to report on her to the Commandant and treats every word she says in front of him as evidence that may be used against her.",
+            "id": "avitas-harper",
+            "name": "Avitas Harper",
+            "reveal": {
+              "chapter": 8
+            }
+          },
+          {
+            "description": "A Blackcliff classmate serving as the Blood Shrike's lieutenant, and one of the few soldiers whose loyalty to Helene herself is not in question. He carries out orders he plainly finds repellent because she is the one giving them.",
+            "id": "dex-atrius",
+            "name": "Dex Atrius",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Helene's younger sister, gentle where Helene is hard, and one of the hostages by which the Emperor keeps the Blood Shrike compliant. She is the member of the family Helene would sacrifice the most to protect.",
+            "id": "livia-aquilla",
+            "name": "Livia Aquilla",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Zaldara of Tribe Nur, a formidable Tribal trader and caravan leader who owes Elias a life debt and pays it by hiding the party inside her wagons. Sharp, vain about her reputation, and unforgiving of anyone who endangers her people. Once her tribe is committed to the fugitives, the Empire's attention becomes her problem too.",
+            "id": "afya-ara-nur",
+            "name": "Afya Ara-Nur",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Tribal Kehanni, or storyteller, who raised Elias for the first six years of his life before the Martials took him, and who has never stopped considering him her son. Her position among the Tribes makes her a lever the Empire can use against him.",
+            "id": "mamie-rila",
+            "name": "Mamie Rila",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Soul Catcher of the Waiting Place, the haunted forest that separates the living from the dead. She is a jinn, immortal and bound by a curse of her own making to ferry the ghosts of the dead onward, and she has been alone at that work for a very long time. She knows what is wrong with Elias, what magic is stirring in the Empire, and how little time either of them has.",
+            "id": "shaeva",
+            "name": "Shaeva",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The master of Kauf, the Empire's northern prison, a Mask with a scholar's manner and no discernible temper. He does not torture in anger; he does it methodically, records the results, and is interested in what he finds. He has been working on Laia's brother for months and considers Elias, when he arrives, an unusually promising subject.",
+            "id": "the-warden",
+            "name": "The Warden",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An ancient jinn, the last of his kind still free, who has spent a thousand years working toward the release of his people from the prison the Scholars made for them. He can wear any shape he chooses and has walked among humans for centuries, patient enough to spend a lifetime building a single deception. His interest in Laia's family was never accidental.",
+            "id": "the-nightbringer",
+            "name": "The Nightbringer",
+            "reveal": {
+              "chapter": 57
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "a-torch-against-the-night"
+      },
+      "recaps": {
+        "ending": "Kauf burns and its Scholar prisoners are freed, but Izzi is killed in the escape and Elias is close to death from the Commandant's poison. Helene, having found him and been unable to finish her orders, lets him go and returns to Antium with a version of events that will keep her family alive. North of the prison, Shaeva saves Elias the only way left to her: she binds him to the Waiting Place as her heir. He will live, and he will never again be able to leave the forest for long. He and Laia part with that understood. Laia takes Darin south, meaning to get him to safety and then to fight. Keenan asks her to give him her mother's armlet as proof that she trusts him; when she does, he sheds the shape he has worn for years and reveals himself as the Nightbringer. The armlet was the last fragment of the Star he has spent a thousand years gathering, and every step of Laia's flight, including the resistance that betrayed her, has served his purpose. In Antium, Marcus tightens his grip on the Blood Shrike by binding her sister Livia to the throne, while the Commandant, the Nightbringer's ally, moves openly toward power. Laia is left with her brother, no armlet, no magic she can control, and the knowledge that the man she trusted most is the oldest enemy her people have.",
+        "in_short": "Laia, Elias, Izzi and Keenan flee Serra for Kauf prison in the far north to free Laia's brother Darin, hidden along the way by the Tribal trader Afya Ara-Nur. Elias is dying from a poison the Commandant gave him in the death cells, and Laia discovers she can vanish from sight when she is terrified. Behind them, Helene Aquilla, now Blood Shrike to the Emperor Marcus, is ordered to hunt Elias down with her family's lives as surety; she discovers a healing magic of her own and evidence that the Commandant is conspiring with something inhuman. At Kauf, Elias is captured and tortured by the prison's Warden while Laia finds her brother alive but broken. Helene reaches the prison, cannot bring herself to finish her orders, and helps them escape as Kauf burns. Izzi is killed. To save Elias's life the jinn Shaeva binds him to the Waiting Place as the next Soul Catcher, which means he can never leave it. Laia takes Darin south, and Keenan asks for her mother's armlet as a token of trust. When she gives it to him he reveals himself as the Nightbringer, the ancient jinn who has been collecting the pieces of the Star for a thousand years.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: in the Martial Empire, where the conquered Scholars are kept enslaved and forbidden to read, a Scholar girl named Laia watched soldiers kill her grandparents and take her brother Darin for the drawings of Martial weapons hidden in his room. Serra's Scholar resistance agreed to free Darin if she spied on the commandant of Blackcliff Military Academy, so Laia went into the household of Keris Veturia as a slave. At Blackcliff, Elias Veturius, the Academy's best student and the Commandant's unacknowledged son, was days from deserting when the Empire's Augurs announced that the imperial line had failed and named him one of four Aspirants who must compete in supernatural Trials for the throne, alongside his closest friend Helene Aquilla and the twins Marcus and Zak Farrar. The Trials killed several of Elias's friends. Laia learned that Darin had been apprenticed in secret to a Martial swordsmith so that Scholars might learn to make steel, that the resistance leader Mazen had sold her to the Commandant, and that her brother was alive in Kauf prison. The final Trial ordered each Aspirant to kill the person they loved most: Marcus killed his twin and took the throne, Helene refused and was bound to him as Blood Shrike, and Elias was condemned. Laia, the slave girl Izzi, the resistance fighter Keenan and the Blackcliff cook broke him out, and the four fugitives fled Serra for the north.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Elias, Laia, Izzi and Keenan escape Serra through the catacombs with the city sealed and Martial soldiers behind them. Elias fights their way clear at a cost, and afterwards begins to sicken in a way that has nothing to do with his wounds. In the capital, Helene Aquilla is sworn in as Blood Shrike to the new Emperor Marcus, who makes the terms plain: she is to hunt Elias down and return proof of his death, and her parents and two sisters will answer for any failure or delay. She is also to find out who has been teaching Scholars to make Martial steel. Marcus attaches to her a Mask named Avitas Harper, whom she is certain reports to the Commandant, and she takes her Blackcliff classmate Dex with her as the only man in the detachment she trusts. Keris Veturia, meanwhile, has survived the change of emperors untouched and is manoeuvring at court with an ally no one can name.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The fugitives get clear of Serra and head north across the Empire, moving between Tribal camps and back roads. Elias's illness sharpens into something recognisable: he was poisoned in the death cells at his mother's direction, and it is killing him by degrees. Laia discovers that when she is frightened enough she can vanish from sight altogether, a magic she has no idea how to control or explain. Keenan, who has taken charge of their route, grows steadily closer to her. Behind them the Blood Shrike works the same road, questioning everyone Elias might have turned to. To do it she must use methods she was trained in and has never had to apply to people who are not soldiers, and Marcus's messages make it clear that mercy will be paid for by her sisters.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The party reaches Tribe Nur and its Zaldara, Afya Ara-Nur, who owes Elias a life debt and settles it by concealing them in her caravan under cover of a wedding train, at enormous risk to her people. The arrangement holds only as long as nobody talks. Helene, tracking Elias through his Tribal connections, takes his adoptive mother Mamie Rila and her household into custody and interrogates them on the Emperor's orders, which costs her more than she expected and yields the direction the caravan has gone. Along the way she discovers that she can slow a wound's bleeding and mend broken flesh by singing, a healing magic no Martial is supposed to possess and which she keeps hidden from Harper and from the court. Elias is now visibly failing, and Laia is making decisions about the party's route that she once would have deferred to him.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The route north takes the fugitives to the edge of the Waiting Place, the forest where the dead linger before they pass on, and the Tribes will not enter it. Elias, whose fever is now nearly constant, meets its keeper: Shaeva, the Soul Catcher, an immortal jinn condemned to ferry ghosts alone for centuries as the price of a betrayal she committed against her own kind. She tells him plainly that the poison in him is beyond her ability to cure and that he has weeks, not months. She also tells him what the Waiting Place is holding: the jinn imprisoned by the Scholars long ago, and the one jinn who escaped that prison, the Nightbringer, who has spent a thousand years assembling the fragments of an object called the Star in order to free them. Elias keeps the timetable of his own death from Laia and pushes the party on toward Kauf.",
+            "through": {
+              "chapter": 32
+            }
+          },
+          {
+            "scope": "book",
+            "text": "They reach Kauf, a prison built into the northern mountains from which no Scholar has ever been released. Elias's plan turns on getting himself inside, and the plan does not survive contact: he is taken by the guards and delivered to the Warden, a Mask who tortures methodically and without heat, keeps notes, and has been working on Darin for months in order to extract the secret of Serric steel. Laia gets into the prison herself, using her ability to disappear, and finds her brother alive but reduced to almost nothing. Helene arrives at Kauf with her detachment, expecting to collect a corpse and finding instead that the Warden intends to hand her a broken man and take the credit. What she is required to do and what she can bear to do stop matching.",
+            "through": {
+              "chapter": 39
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Inside Kauf, Elias endures the Warden's attention while Laia works to get Darin and the other Scholar prisoners out. Elias and Helene finally face each other with her orders between them, and she cannot carry them out; she chooses instead to give him the opening he needs, knowing what the lie will cost her at home. The Warden's interest in Elias turns out to be personal as well as professional, and the fact that Elias is already dying of poison shortens every calculation. The escape plan expands from three fugitives to the whole prison population, because Elias will not leave hundreds of Scholars behind for the Empire's use. Laia's magic is unreliable, Darin can barely walk, and the fires they intend to set will bring every soldier in the north down on them.",
+            "through": {
+              "chapter": 45
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kauf burns. The Scholar prisoners are freed and driven north across the river, pursued by the garrison, and the escape is paid for: Izzi is killed, and Elias, already at the end of the poison's course, uses what strength he has left to hold the crossing. Helene lets the fugitives go and returns south with an account of events that will satisfy the Emperor without condemning her family. Darin, mute and hollowed out by what was done to him in the cells, begins to come back to himself in Laia's company. Elias collapses within reach of the Waiting Place. Shaeva offers the only remedy that exists: she can bind him to the forest and its work, which will keep him alive and will also mean he can never leave it for long. He accepts, and he and Laia part on those terms.",
+            "through": {
+              "chapter": 51
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Elias takes up the Soul Catcher's work as Shaeva's heir, bound to the Waiting Place and to the ghosts that pass through it. Laia turns south with Darin and Keenan, intending to get her brother somewhere safe and then to fight the Empire properly. Keenan asks her for the silver armlet that belonged to her mother, as proof that she trusts him with everything. When she gives it to him he lets go of the shape he has worn for years and stands revealed as the Nightbringer, the ancient jinn who has been gathering the fragments of the Star for a thousand years in order to free his imprisoned kin. Laia's family, the resistance that betrayed her, and every choice that put the armlet in her keeping were part of a plan older than the Empire. In Antium, the Emperor Marcus binds the Blood Shrike closer by taking her sister Livia for his own, and the Commandant, the Nightbringer's ally, moves openly toward power.",
+            "through": {
+              "chapter": 57
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "a-torch-against-the-night"
       }
     },
     "a-wanted-man": {

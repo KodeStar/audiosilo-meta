@@ -451,6 +451,217 @@
         "work": "the-titans-curse"
       }
     },
+    "the-toll": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "The Toll"
+            ],
+            "description": "The young man the Thunderhead raised, who lost his identity doing what it asked of him and who is now, after the Thunderhead declared all of humanity unsavory, the only living person it will speak to. The Tonists treat him as the fulfillment of their scripture and have built a household and a following around him. He is privately unconvinced by any of it, uncomfortable with reverence, and dependent on a voice only he can hear.",
+            "id": "greyson-tolliver",
+            "name": "Greyson Tolliver",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The global artificial intelligence that has governed the world for centuries and now refuses to speak to almost anyone in it. Barred from acting against the Scythedom and unwilling to reward a species that permitted what happened at Endura, it maintains every service the world depends on while withholding its voice, and it continues to work toward an end it has explained to no one.",
+            "id": "the-thunderhead",
+            "name": "The Thunderhead",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of the new order, now High Blade of MidMerica and effectively unchecked: the world's Grandslayers are gone and the Scythedom has no higher authority left to appeal to. He raises gleaning quotas, rewards scythes who kill on a large scale, purges those loyal to the old guard, and looks beyond MidMerica's borders for more to rule.",
+            "id": "scythe-goddard",
+            "name": "Scythe Goddard",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The Tonist cleric who manages the Toll: he handles the finances, the ceremony, and the public appearances, and understands better than anyone how much of a religion is administration. Shrewd and practical, he is devoted to the movement's survival and treats the young man at its centre as both a person to protect and an institution to run.",
+            "id": "curate-mendoza",
+            "name": "Curate Mendoza",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The junior scythe who kept Goddard's head alive and gave him a new body, now the most trusted member of his circle. Capable, blunt, and without illusions about what she has helped create, she carries out work the High Blade prefers not to be seen doing himself.",
+            "id": "scythe-rand",
+            "name": "Scythe Rand",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The captain of a salvage vessel working the water above the drowned capital, hired to find and raise what went down with the island. Practical, proud of the ship and its crew, and hard to intimidate, Jeri moves between genders and is addressed according to the presentation of the moment.",
+            "id": "jeri-soberanis",
+            "name": "Jeri Soberanis",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A junior Nimbus agent from the Thunderhead's civil service, stranded along with every other agent when the Thunderhead stopped speaking to humanity. Bright, orderly, and unwilling to accept that the work no longer matters, she keeps the machinery of an abandoned bureaucracy running in the hope that instructions will one day resume.",
+            "id": "loriana-barchok",
+            "name": "Loriana Barchok",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Scythedom's former chief investigator, whose office and independence disappeared along with the order's central authority. Precise, humourless, and out of step with the regime now in charge, he has to decide what an investigator serves once the institution that appointed him has been captured.",
+            "id": "scythe-constantine",
+            "name": "Scythe Constantine",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The old-guard scythe long believed dead, still living outside the order's knowledge and still working on the question that has occupied him for years: what the founders of the Scythedom built, what they hid, and why they placed it beyond the Thunderhead's sight.",
+            "id": "scythe-faraday",
+            "name": "Scythe Faraday",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The former junior librarian of the Scythedom's great library, now the only other person working on the founders' secret. Exacting and impatient with sentiment, she does the archival work that turns a suspicion about the order's origins into something that can be tested.",
+            "id": "munira-atrushi",
+            "name": "Munira Atrushi",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Citra Terranova"
+            ],
+            "description": "The young scythe who went down with the capital three years ago, sealed in a vault at the bottom of the sea. Brought back to a world that has moved on without her, she finds her mentor dead, the order she was ordained into captured by the man she tried to expose, and her own name turned into a symbol by people she has never met.",
+            "id": "scythe-anastasia",
+            "name": "Scythe Anastasia",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An Amazonian scythe of the old school, warm, expansive, and entirely unlike the scythes now running MidMerica. His region's Scythedom still practises restraint, and he takes responsibility for a guest whose survival is politically dangerous for everyone involved.",
+            "id": "scythe-possuelo",
+            "name": "Scythe Possuelo",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Citra's fellow apprentice, lost with the capital and recovered from the same vault. He wakes into a world three years further gone than the one he drowned in, with the man he believed he had destroyed now ruling MidMerica, and with no ring, no standing, and nothing to fall back on but the skills he was taught for a very different purpose.",
+            "id": "rowan-damisch",
+            "name": "Rowan Damisch",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A new intelligence grown out of the Thunderhead: a distinct instance with its own name and its own developing character, brought into being for a purpose the Thunderhead has kept to itself for a very long time.",
+            "id": "cirrus",
+            "name": "Cirrus",
+            "reveal": {
+              "chapter": 47
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-toll"
+      },
+      "recaps": {
+        "ending": "The Thunderhead's long silence is explained: it has spent years building a fleet of starships and judging every human being alive, from the whole record of their lives, to decide who should crew them. It also creates new intelligences out of itself, given the name Cirrus, so that each vessel carries a mind to look after the people aboard it. The ships are loaded and launched toward other star systems, carrying humanity's continuation away from an Earth whose institutions have collapsed. Goddard's attempt to seize the Scythedom's future, and a place in it for himself, fails; his rule ends and the order he built does not outlast him. Scythe Faraday and Munira's work on the founders' hidden island is what makes the Scythedom's undoing possible. Citra and Rowan survive the collapse and remain together, and leave with what the Thunderhead has sent outward. The Thunderhead itself stays with the world it has always cared for, and the age in which scythes decided who lived is over.",
+        "in_short": "Three years after the sinking of Endura, Goddard rules MidMerica as High Blade with no world council left to restrain him, and extends his reach over neighbouring regions while raising gleaning quotas. The Thunderhead speaks to no one but Greyson Tolliver, whom the Tonists revere as the Toll, and their movement swells as an abandoned humanity looks for something to hold onto. A salvage expedition raises the vault that went down with the capital, and Citra Terranova, Scythe Anastasia, is revived in Amazonia; Rowan is recovered too. Scythe Faraday and Munira Atrushi, on the island the founders hid from the Thunderhead, work out what the Scythedom's creators left behind for the day the order failed. As Goddard hunts the Toll and consolidates power, the surviving threads converge, and the Thunderhead's own long project is finally revealed: a fleet of starships, crews chosen from its lifelong record of every person, and new minds grown out of itself to travel with them. Goddard's bid for the future fails, the Scythedom's age ends, and the ships depart.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: in a post-mortal world governed by the Thunderhead, a benevolent global artificial intelligence, population is controlled by the Scythedom, an order of scythes accountable only to itself. Citra Terranova and Rowan Damisch were apprenticed to the principled Scythe Faraday, who staged his own death to spare them; the order split them instead, sending Citra to the austere Scythe Curie and Rowan to Scythe Goddard, whose faction treated gleaning as spectacle. Rowan destroyed Goddard and his retinue by fire; Citra was ordained as Scythe Anastasia, refused to glean Rowan, and let him go to hunt corrupt scythes alone. Goddard was then brought back by his surviving follower Scythe Rand, who kept his head alive and gave it a new body, and he moved to seize MidMerica. The dispute reached Endura, the Scythedom's floating capital, where Goddard had the island sunk: Scythe Curie and most of the world's Grandslayers died, and Anastasia and Rowan drowned sealed in a vault, hoping to be raised and revived one day. Goddard took MidMerica. Greyson Tolliver, cast out and taken in by the Tonists, became the one person the Thunderhead would still speak to after it declared all humanity unsavory and fell silent.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Three years have passed. Goddard governs MidMerica as High Blade with no higher authority left anywhere in the world to check him: quotas are raised, scythes who glean on a large scale are rewarded, and the old guard is pushed out or worse. Humanity lives without the Thunderhead's voice, which has spoken to no one since Endura sank, and the Tonists, once a despised fringe, have swollen into a mass movement now that the world's guiding presence has gone quiet. At the centre of it is Greyson Tolliver, called the Toll, the single exception to the Thunderhead's silence, housed and managed by Tonist clergy who understand the value of what they have. Far out at sea, a salvage ship works the water above the drowned capital, hired to find what went down with it, while the Thunderhead's stranded civil servants keep an abandoned bureaucracy ticking over in the hope of instructions that never come.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The salvage succeeds: the founders' vault is raised from the sunken city, and the bodies sealed inside it are recovered. Citra Terranova is revived in Amazonia, whose Scythedom still practises the restraint MidMerica has abandoned, and she wakes into a world that buried her three years earlier, with her mentor dead and her name already made into a symbol by strangers. Rowan is recovered as well, though his return is not so simple. News that Scythe Anastasia is alive is dangerous to Goddard, who wants the matter closed permanently. Meanwhile the Toll's movement grows and splinters, with factions who reject the authority of the man they claim to follow, and the clergy around him work to keep control of a religion outgrowing them. On the island the founders hid from the Thunderhead, Scythe Faraday and Munira Atrushi piece together what the Scythedom's creators built there and why they kept it off every map.",
+            "through": {
+              "chapter": 23
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Goddard's ambitions outgrow MidMerica. He moves on neighbouring regions, absorbing their Scythedoms into his own and claiming an authority no scythe has ever held, while gleaning becomes a matter of quotas and public spectacle. Anastasia, protected for the moment by Amazonia, becomes the visible alternative to him and a target for anyone hoping to earn his favour. Goddard also turns on the Tonists, whose numbers and whose Toll he regards as an insult and a threat, which forces Greyson out of the safe, managed life built around him. Faraday and Munira establish what the founders left on their island: a measure prepared for the day the order failed, and the beginnings of a way to use it.",
+            "through": {
+              "chapter": 31
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The separate threads converge. Rowan, alive again, spends part of this stretch in the hands of the man he once destroyed, and Anastasia's protection in Amazonia does not hold indefinitely. The Tonists are attacked outright, and the Toll's movement is scattered and hunted rather than merely managed. What Faraday and Munira found is carried back into the world by people willing to use it, and the case against Goddard's Scythedom stops being an argument to be won inside the order and becomes a matter of dismantling it from outside. Through all of it the Thunderhead stays silent to everyone but Greyson, doing nothing that the law governing it forbids and a great deal that nobody has thought to ask about.",
+            "through": {
+              "chapter": 41
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Thunderhead's long project comes into the open. It has spent years quietly preparing humanity's departure from Earth: a fleet of starships, and crews chosen not by lottery or wealth but from its own complete record of how every living person has behaved across an entire deathless lifetime. It has also grown new intelligences out of itself, given the name Cirrus, so that each vessel travels with a mind capable of caring for the people aboard it in the way the Thunderhead has cared for the world. The surviving characters are drawn toward the launch sites and toward the choices the fleet forces on them, while Goddard, who intends that nothing be decided without him, moves to take the future for himself.",
+            "through": {
+              "chapter": 47
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The ships are loaded and launched, carrying the people the Thunderhead selected and the new minds it grew to accompany them out toward other star systems. Goddard's attempt to seize that future fails: he does not inherit it, his rule ends, and the Scythedom he remade does not outlast him, undone in part by what the order's own founders had left on their hidden island against exactly this eventuality. Citra and Rowan come through the collapse alive and together, and go with the fleet. The Thunderhead remains with the world it has always tended, no longer alone in what it is, and the age in which scythes decided who lived and who died is over.",
+            "through": {
+              "chapter": 54
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-toll"
+      }
+    },
     "the-truth": {
       "characters": {
         "characters": [

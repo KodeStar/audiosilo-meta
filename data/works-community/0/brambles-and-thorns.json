@@ -1392,6 +1392,170 @@
         "work": "calibans-war"
       }
     },
+    "call-for-the-dead": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A short, plump, unremarkable-looking officer of Britain's security service, badly dressed and easily overlooked. A scholar of seventeenth-century German literature by training, he was recruited into intelligence work before the war and spent it in Germany under cover, running a small network of agents he recruited himself. Back in London he has been reduced to routine vetting and loyalty interviews, work he performs with painstaking care and no appetite for office politics. His marriage to Lady Ann Sercomb has collapsed, which he bears quietly. Patient, courteous and unusually attentive to small inconsistencies, he is the sort of investigator who notices what does not fit and cannot let it alone.",
+            "id": "george-smiley",
+            "name": "George Smiley",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Ann Smiley"
+            ],
+            "description": "Smiley's wife, a beautiful and well-connected woman from an aristocratic family, whose marriage to an obscure and dowdy intelligence officer astonished everyone who knew her. She has left him and gone abroad. She is largely absent from the events of the book but is a constant background presence in Smiley's thoughts.",
+            "id": "lady-ann-sercomb",
+            "name": "Lady Ann Sercomb",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The senior official who sits between the service and its political masters, a smooth career administrator with no field experience and an unfailing instinct for what will embarrass the department. He values presentation, ministerial comfort and a tidy file above the truth of any particular case, and his handling of the Fennan affair is governed throughout by damage limitation. Smiley regards him with weary contempt.",
+            "id": "maston",
+            "name": "Maston",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior Foreign Office official, Jewish, able and well regarded, who had been a communist sympathiser as an Oxford undergraduate in the 1930s. An anonymous letter revives the old allegation, and Smiley is sent to interview him. The two men talk amicably on a walk in the park, and Smiley leaves convinced there is nothing in it and tells him so.",
+            "id": "samuel-fennan",
+            "name": "Samuel Fennan",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Fennan's wife, a small, frail German Jewish refugee who survived the camps and carries their damage in her body and her manner. She lives with her husband in a house at Walliston, sees almost no one, and receives Smiley with a bitter, mocking hostility, treating his questions as another intrusion by a state that has already taken everything from her. Her account of the night of her husband's death does not entirely hold together.",
+            "id": "elsa-fennan",
+            "name": "Elsa Fennan",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A younger colleague of Smiley's who has moved into work on East German and satellite intelligence. Loyal, discreet and fond of Smiley, he supplies the departmental knowledge and old files that Smiley can no longer obtain for himself.",
+            "id": "peter-guillam",
+            "name": "Peter Guillam",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Special Branch inspector close to retirement, thin, dry and precise, who is drawn into Smiley's private investigation. He is a practical policeman with no illusions about official reticence, willing to do legwork the service will not authorise, and he becomes Smiley's most useful ally.",
+            "id": "mendel",
+            "name": "Mendel",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The disreputable proprietor of a Battersea car-hire business, a heavy drinker who rents out vehicles without asking questions and keeps deliberately vague records. He is the one lead Smiley can follow to the fair-haired foreigner who has been using one of his cars.",
+            "id": "adam-scarr",
+            "name": "Adam Scarr",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A German whom Smiley recruited and ran as an agent during the war: lame, physically imposing, formidably intelligent and, at that time, entirely committed to the fight against the Nazis. Smiley thought of him as his best and most difficult pupil, and the two men parted with real affection. He has since made a career in East German intelligence.",
+            "id": "dieter-frey",
+            "name": "Dieter Frey",
+            "reveal": {
+              "chapter": 14
+            }
+          },
+          {
+            "description": "A fair-haired, cold-mannered East German operative working in London under commercial cover. He does the practical and violent work of the network he serves, efficiently and without evident feeling, and disposes of anyone who becomes a liability to it.",
+            "id": "hans-dieter-mundt",
+            "name": "Hans-Dieter Mundt",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "call-for-the-dead"
+      },
+      "recaps": {
+        "ending": "Smiley induces Elsa Fennan to send a message that will bring her controller to a meeting. Dieter Frey does not come himself: Mundt murders her at the theatre where the exchanges had been made, removing the last witness who could name the network. Smiley picks up the trail the same night and confronts Dieter on a river bridge in dense fog. They fight, and Dieter, who has the advantage and could kill him, recognises his old case officer and lets go; he falls into the water and drowns. Mundt is already out of the country and escapes to East Germany unpunished. Elsa and Samuel Fennan are both dead, and the service accepts a version of events that spares it embarrassment: Maston can present the case as closed and the department as blameless. Smiley, who has resigned, takes no satisfaction from having been right. He is left with the knowledge that he killed a man he had made, and that the loyalties on which his profession rests are indistinguishable in kind from those of the other side. Convalescing and adrift, he receives word from Ann and leaves England to go to her, his return to the service unresolved.",
+        "in_short": "George Smiley, an unassuming officer of Britain's security service, conducts a routine loyalty interview with the Foreign Office official Samuel Fennan after an anonymous letter revives his student communism. Days later Fennan is found shot at home beside a typed suicide note blaming the interview. Smiley's superior wants the affair buried, but details refuse to fit: an early morning telephone call Fennan himself had booked, his widow Elsa's shifting account, and a friendly letter Fennan had posted to Smiley before he died. Working outside the service with the police inspector Mendel and his colleague Peter Guillam, Smiley traces a hired car to a Battersea garage and a fair-haired foreigner, and uncovers a courier routine run through a suburban theatre. The material reaching Moscow was too poor to have been chosen by Fennan: the agent was Elsa, recruited by Dieter Frey, a German whom Smiley himself had recruited and run during the war. Fennan had discovered her and meant to tell Smiley. Elsa is murdered to silence her; Smiley kills Dieter in the fog on the Thames, and Dieter's gunman, Mundt, escapes to East Germany.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "George Smiley is a middle-aged, deliberately inconspicuous officer of Britain's security service, a former academic who ran agents in Germany during the war and now handles routine vetting. His wife, Lady Ann Sercomb, has left him. An anonymous letter alleges that Samuel Fennan, a senior Foreign Office official, was a communist at Oxford in the 1930s, and Smiley interviews him informally on a walk in the park, decides there is nothing in the allegation and effectively tells him so. Two days later Fennan is found shot dead in his house at Walliston, with a typed note blaming the interview for ending his career. Maston, the department's political head, is concerned chiefly with the scandal and expects Smiley to close the matter quietly. Visiting the widow, Elsa Fennan, a frail concentration camp survivor who receives him with open hostility, Smiley is interrupted by a telephone call from the exchange: an eight-thirty morning call had been booked for that day. Elsa says she ordered it herself. Smiley does not believe a man who intends to shoot himself that night would want waking, and the explanation she gives sits badly with everything else about her.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Smiley reports his doubts and is told, in effect, to drop them: Maston wants a suicide caused by nothing the department did, and treats Smiley's inconvenient detail as a personal failing. The quarrel is bitter and unresolved. Smiley continues privately. He enlists Mendel, a Special Branch inspector near retirement who is willing to do the observation and enquiry that no one will now authorise, and draws on his colleague Peter Guillam for departmental knowledge of East German operations. A letter from Fennan himself arrives, posted before his death, warm in tone and proposing a further meeting, which is not the act of a man about to kill himself. Small facts accumulate around the widow: her account of the evening does not match the timetable, a strange car has been seen near the house, and her regular attendance at a suburban repertory theatre appears to be more than a habit. Elsa, questioned again, is by turns contemptuous and frightened, and answers with the practised evasions of someone who has been schooled.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The car seen near the Fennan house is traced to Adam Scarr, a drunken Battersea garage owner who hires vehicles out without records. Scarr admits, for money, that the man using it is a fair-haired foreigner he knows only by a nickname and who pays generously in cash. Before the lead can be developed further, Smiley is attacked at his own front door and left seriously injured; he wakes in hospital with time to think. The attack settles the question: this is not an investigation into a suicide but into an active intelligence network operating in London, one which now regards Smiley as dangerous. Maston's response is to seal the case off. Rather than take part in a whitewash, Smiley resigns from the service, which leaves him free to pursue the matter as a private citizen with Mendel and Guillam helping him unofficially.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Adam Scarr, the one man who could describe the fair-haired foreigner, is found dead, which closes that line of enquiry and confirms how thorough the opposition is. Working from outside, Smiley reconstructs how the network operated. The suburban theatre was the exchange point: identical cases were swapped there under cover of a regular audience, so that the courier and the source never had to meet. He also revisits the question of what was actually passed to Moscow. Fennan had access to material of real importance, but what left the house was second-rate, badly chosen and unsystematic, the kind of selection made by someone who could only take what happened to come home in a briefcase. The inefficiency is the proof: the source was not Fennan at all. Elsa, embittered by what was done to her in the camps and persuaded that she was serving peace rather than a foreign state, had been recruited and run for years. Fennan, Smiley now believes, had discovered it. The anonymous denunciation and the interview gave him his opening, and the morning call was booked so that he could telephone Smiley and tell him everything before he lost his nerve.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The controller behind the network is Dieter Frey, a German whom Smiley recruited, trained and ran during the war and remembers with something close to love: lame, brilliant, and now a senior officer of East German intelligence. His practical man in London is Hans-Dieter Mundt, the fair-haired foreigner from the garage, who killed Fennan, staged the suicide, attacked Smiley and disposed of Scarr. Smiley persuades Elsa to send a message arranging a meeting, intending to take Dieter. Instead Mundt goes to the theatre and murders her there among the audience. Smiley pursues Dieter through fog to a bridge over the Thames, where the two men fight. Dieter gets his hands to Smiley's throat, recognises the man who made him and releases his grip rather than kill him, and goes into the river. Mundt has already left the country.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "With both Fennans dead, Dieter drowned and Mundt safely back in East Germany, the case is closed on terms that suit everyone official. The department can record a resolved security matter without conceding that a suicide it had accepted was a murder, and Maston is spared. Smiley takes no credit and wants none. Having resigned, he is left to weigh what the affair cost: a man killed for trying to tell the truth, a damaged woman used and then murdered by the people who recruited her, and an agent of his own making dead by his hand. He recognises that Dieter's fanaticism and his own service differ less in method than in the aims they serve, and that Dieter, at the end, was the one who declined to kill. Convalescent, alone and without a profession, Smiley receives word from Ann and leaves England to join her abroad, the future of both his marriage and his career unsettled.",
+            "through": {
+              "chapter": 18
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "call-for-the-dead"
+      }
+    },
     "carls-doomsday-scenario": {
       "characters": {
         "characters": [

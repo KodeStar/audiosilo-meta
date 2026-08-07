@@ -274,6 +274,199 @@
         "work": "scavengers"
       }
     },
+    "scythe": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A sharp, combative teenager in MidMerica who lives with her parents and younger brother. When a scythe arrives at her family's door she assumes he has come to glean one of them and confronts him rather than pleading, and that flash of defiance is what draws his attention. She is stubborn, quick to argue, impatient with the comfortable passivity of the post-mortal world, and entirely unwilling to want the job she is offered.",
+            "id": "citra-terranova",
+            "name": "Citra Terranova",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A high school student in the same city, one of many children in a large family and used to being overlooked. When a scythe gleans a classmate during a school event, Rowan stays with the boy and holds his hand while he dies, something no one else will do. The act makes him an unlucky figure at school and also brings him to the notice of the scythe who performed the gleaning.",
+            "id": "rowan-damisch",
+            "name": "Rowan Damisch",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Honorable Scythe Michael Faraday"
+            ],
+            "description": "An old-guard scythe of MidMerica who treats his office as a solemn duty rather than a privilege. He lives plainly, refuses the luxuries and deference other scythes accept, and selects the people he gleans so that his choices mirror the patterns of death in the age before immortality rather than his own preferences. He takes an unusual interest in two teenagers, on the principle that the only people fit to hold the office are those who do not want it.",
+            "id": "scythe-faraday",
+            "name": "Scythe Faraday",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The global artificial intelligence that grew out of humanity's networks and now administers the world: it ended war, hunger, poverty, crime, and death itself, and governs with a patience no human institution ever managed. By law it has no authority over the Scythedom, may not interfere in gleaning, and may not speak to scythes or their apprentices at all. It observes everything and converses with almost everyone.",
+            "id": "the-thunderhead",
+            "name": "The Thunderhead",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Rowan's closest friend, a reckless boy who throws himself off buildings for the sensation and the attention, confident that a revival center will put him back together within days. He treats the safety net of a deathless world as entertainment and cannot understand why his friend would want anything more serious out of life.",
+            "id": "tyger-salazar",
+            "name": "Tyger Salazar",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young, magnetic scythe of the new order who rejects the humility of the old guard. He gleans in large public sweeps rather than one person at a time, keeps a mansion, a retinue of junior scythes, and a permanent court of admirers, and argues openly that scythes should enjoy the power their office grants. A rising faction follows him; the older scythes regard him with alarm.",
+            "id": "scythe-goddard",
+            "name": "Scythe Goddard",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The High Blade of MidMerica, who presides over the Scythedom's quarterly conclaves. Heavy, ceremonious, and fond of his own dignity, he is more a manager of scythe politics than a moral authority, and he prefers arrangements that keep the order's factions from open conflict to arrangements that are right.",
+            "id": "high-blade-xenocrates",
+            "name": "High Blade Xenocrates",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A quiet, unremarkable girl spared during one of Scythe Goddard's mass gleanings and afterward kept in his household, where she is fed and indulged but never explained. Goddard's junior scythes treat her presence as ordinary, and no one tells the apprentices why she is there.",
+            "id": "esme",
+            "name": "Esme",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "The Grande Dame of Death"
+            ],
+            "description": "A senior scythe with long white hair, known across MidMerica by a nickname the public gave her. She is one of the most respected figures of the old guard, remembered for gleanings early in her career that were meant to make a point about power, and she lives alone in a celebrated old house built over a waterfall. Like Faraday she keeps a spare, disciplined life, and she holds the new order in open contempt.",
+            "id": "scythe-curie",
+            "name": "Scythe Curie",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the junior scythes in Goddard's retinue, small, quick, and outwardly the friendliest of the group. Ordained very young, he has grown used to the parties and the privileges, and he is the only member of the household willing to talk honestly with an apprentice about what the work costs the person doing it.",
+            "id": "scythe-volta",
+            "name": "Scythe Volta",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A junior scythe in Goddard's retinue, sharp-tongued and openly delighted by the freedom the ring gives her. She is loyal to Goddard's vision of what scythes should be and impatient with anyone who treats gleaning as a burden to be carried carefully.",
+            "id": "scythe-rand",
+            "name": "Scythe Rand",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A junior scythe in Goddard's retinue, large and blunt, who favors fire as his method and takes plain satisfaction in the scale of the group's gleanings.",
+            "id": "scythe-chomsky",
+            "name": "Scythe Chomsky",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "scythe"
+      },
+      "recaps": {
+        "ending": "Citra Terranova is ordained at the Winter Conclave and takes the scythe name Anastasia. The condition attached to her apprenticeship requires her first gleaning to be Rowan, and she does not carry it out; she lets him leave instead. Rowan has already settled his own account with the new order: he turns on Scythe Goddard and his junior scythes and kills them in a fire he sets, beheading Goddard so that revival is impossible. Scythe Volta does not survive the night, and the girl Goddard kept in his household is brought out of the fire alive. Rowan then disappears, with no ring, no robe, and no standing in the Scythedom, intending to hunt down scythes who treat gleaning as a license to kill. Citra begins her career as a scythe under Scythe Curie's roof. She also knows two things almost nobody else does: Scythe Faraday staged his own death and is alive in hiding, and the Thunderhead, barred by law from speaking to anyone in the Scythedom, found a way to speak to her while she was temporarily dead. Goddard is gone, but his faction survives him, and the order remains split between an old guard that treats gleaning as a burden and a new order that treats it as power.",
+        "in_short": "In a future where the Thunderhead, a benevolent global artificial intelligence, has ended war, want, disease, and death, population is managed instead by the Scythedom: an order of scythes who permanently kill a set quota of people and answer to no authority but themselves. Two MidMerican teenagers, Citra Terranova and Rowan Damisch, are taken as apprentices by the principled Scythe Faraday, then told by the order that only one of them may be ordained and that the survivor's first act must be to glean the other. When Faraday appears to take his own life, the two are split between rival mentors: Citra to the austere Scythe Curie, Rowan to Scythe Goddard, whose faction treats gleaning as spectacle and privilege. Citra investigates Faraday's death, is accused of causing it, and learns from the Thunderhead that he faked it. Rowan, trained as Goddard's weapon, finally turns on him and destroys him and his retinue. At the year's end Citra is ordained as Scythe Anastasia, refuses to glean Rowan, and lets him go; he leaves to hunt corrupt scythes on his own.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Centuries from now, humanity has conquered death. The Thunderhead, a benevolent global artificial intelligence, governs a world without war, hunger, disease, or crime, and anyone who dies by accident is revived within days. Population is controlled instead by the Scythedom, an order of scythes who select people to glean, killing them permanently, and who answer to no one but themselves. In MidMerica, two teenagers separately encounter the Honorable Scythe Michael Faraday: Citra Terranova, who confronts him at her family's door rather than begging, and Rowan Damisch, who holds the hand of a classmate Faraday gleans at school. Faraday judges that the only people fit for the office are those who do not want it, and offers each of them an apprenticeship. Both refuse, and both are told the offer stands anyway. They accept unwillingly and move into his spare, disciplined household to begin learning the history of the order, the ways people die, and the craft of killing.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Living under Faraday's roof, Citra and Rowan train together in weapons, poisons, anatomy, and hand-to-hand fighting, and each keeps the daily journal every scythe is required to write. Faraday teaches them that gleaning should mirror the statistics of the mortal age rather than a scythe's appetite, and that a scythe grants a year of immunity to the family of anyone gleaned. The two apprentices compete, resent each other, and gradually become allies, knowing that only one of them can be ordained. They also see what else the order has become: Scythe Goddard and his junior scythes glean in large public sweeps, live in a mansion, and treat the ring as license rather than duty. Faraday's disgust at that faction is plain, and Goddard's circle considers his restraint an embarrassment. Both apprentices begin to understand that the Scythedom is dividing, and that whoever is ordained will step directly into that fight.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At the Vernal Conclave, the Scythedom's quarterly assembly, Faraday presents two apprentices at once, for which the order has no precedent. After argument led by Goddard's faction, the scythes allow the arrangement but attach a condition: at the year's end only one apprentice may be ordained, and that one's first act as a scythe must be to glean the other. Faraday is appalled and can find no way to undo it. Citra and Rowan return to their training aware that everything they teach each other is preparation to survive each other, which draws them closer rather than driving them apart. Faraday, troubled by the condition and by where the order is heading, grows withdrawn and preoccupied.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Faraday is found dead, apparently by his own hand, having stepped in front of a train. By custom the apprentices of a dead scythe are released and the condition should die with him, but the Scythedom instead splits them between rival mentors: Citra is taken in by Scythe Curie, the austere senior scythe the public calls the Grande Dame of Death, and Rowan is handed to Scythe Goddard. The two apprenticeships could not be less alike. Curie lives simply, gleans with care, and pushes Citra to think for herself and to question whether Faraday's death was really a suicide. Goddard's household is a standing party of luxury and violence; Rowan is trained hard in killcraft, treated as a promising weapon, and drawn into the group's mass gleanings, which sicken him even as he proves good at the work.",
+            "through": {
+              "chapter": 23
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Citra and Curie find enough in Faraday's affairs to suspect he was murdered, and their questions reach people who would rather not be asked them. Suspicion is turned back on Citra: she is publicly accused of a hand in her mentor's death and taken into custody by the Scythedom's investigators. Rowan, meanwhile, is used as Goddard's showpiece. He learns that the girl Goddard keeps in his household is leverage over a powerful figure inside the order, and he watches the group's gleanings escalate, including an attack on a community of Tonists, a religious sect the scythes hold in contempt. Volta, the friendliest of Goddard's juniors, admits how little of himself is left after years of it. Rowan keeps performing well enough to remain useful while he decides what he is going to do.",
+            "through": {
+              "chapter": 29
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Held and then on the run, Citra ends up temporarily dead, and in that state the Thunderhead speaks to her: it is forbidden to address scythes and apprentices, but the prohibition does not cover the dead. It tells her what no one else will, that Faraday is alive. She gets free and makes a long journey to find him, and he explains that he staged his own gleaning to void the condition hanging over the two apprentices, expecting the order to release them, and that the decision to reassign them instead defeated the plan. He also confirms that there is real corruption inside the Scythedom worth exposing. Rowan, for his part, has reached the end of what he can stomach in Goddard's household. Citra returns to MidMerica for the Winter Conclave and the final test, knowing exactly what the outcome is supposed to require of the winner.",
+            "through": {
+              "chapter": 36
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At the Winter Conclave both apprentices are tested, and Citra is chosen for ordainment. She takes the scythe name Anastasia and is required, as her first act, to glean Rowan. She refuses and lets him go instead. Rowan has already dealt with the other half of the problem: he turns on Goddard and his junior scythes, kills them in a fire he sets, and takes Goddard's head off with a blade so that he cannot simply be revived. Scythe Volta does not survive the night, and the girl Goddard had been keeping is carried out of the fire alive. Rowan then walks away from the Scythedom entirely, with no ring, no robe, and no legal standing, intending to hunt down the scythes who have made the office a license to kill. Citra begins her career under Scythe Curie's roof, aware that Faraday is alive and hiding, that Rowan is loose in the world, and that Goddard's faction has lost its leader but not its ambitions.",
+            "through": {
+              "chapter": 40
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "scythe"
+      }
+    },
     "second-son": {
       "characters": {
         "characters": [
