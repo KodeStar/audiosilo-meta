@@ -1719,6 +1719,215 @@
         "work": "the-fallen-goddess"
       }
     },
+    "the-farseer-assassins-apprentice": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Fitz",
+              "Newboy"
+            ],
+            "description": "A six-year-old boy delivered to the Six Duchies royal family by his mother's father, who wants nothing more to do with him. He is the acknowledged bastard of Prince Chivalry, the King-in-Waiting, and his existence is a scandal that ends his father's career before the boy has spoken a dozen words at court. Raised in the stables at Buckkeep with no name of his own, he grows up half servant and half unwanted kin, watching a family he cannot claim. He has an unschooled talent for reaching the minds of animals, a thing his guardian treats as a shameful sickness rather than a gift, and he is quick, watchful, and desperate to be of use to somebody.",
+            "id": "fitzchivalry",
+            "name": "FitzChivalry Farseer",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Prince Chivalry's stableman and closest man, a dark, blunt, hard-drinking horseman who is handed the boy and told to raise him. He is scrupulously fair and completely unsentimental, teaching the boy horses, hounds, hawks and discipline while giving him almost no affection. He recognizes the boy's beast-magic at once and sets himself to beating it out of him, insisting it is a filthy thing no Farseer should touch. Whatever it costs him, he keeps the boy fed, whole and out of trouble because Chivalry left him to do it.",
+            "id": "burrich",
+            "name": "Burrich",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "King Shrewd's second son, a plain, square, practical soldier with none of his elder brother's polish. He is decent to the boy from their first meeting and is unexpectedly saddled with the succession when Chivalry steps aside. He carries the royal Skill magic and the defence of a coast that is beginning to be raided, and he does his duty without complaint or flourish.",
+            "id": "verity",
+            "name": "Verity Farseer",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "King Shrewd's eldest son and King-in-Waiting, a gifted diplomat and soldier admired throughout the Six Duchies. He is married to Lady Patience and has no legitimate children. The revelation of a bastard son ruins his standing, and he renounces the throne and withdraws to the inland estate of Withywoods rather than let the scandal be used against the crown. He never meets the boy, and remains for him a reputation rather than a father.",
+            "id": "chivalry",
+            "name": "Chivalry Farseer",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "King of the Six Duchies, an old and calculating ruler who has outlived one queen and married another. He summons the bastard boy privately and makes a bargain with him: the crown will feed, house and school him, and in return he will be the king's man before he is anyone else's, taking his loyalty from no other hand. He gives the boy a pin as the token of that agreement, and thereafter treats him as a useful possession rather than a grandson.",
+            "id": "king-shrewd",
+            "name": "King Shrewd",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "King Shrewd's youngest son by his second queen, raised inland at Tradeford tastes and manners. He is elegant, sharp-tongued and fastidious, dresses richly, and makes no attempt to hide his contempt for a stable-raised bastard who reminds the court of his brother's disgrace. He is ambitious for a crown that two elder brothers stand between him and, and he is well practised at charming his father.",
+            "id": "regal",
+            "name": "Regal Farseer",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The daughter of a Buckkeep Town chandler, a year or two older than the boy, who runs the shop and the candle-making while her father drinks. She is brisk, proud and quick-tempered, and she takes the ragged stable boy for a town child like herself. She is his first real friend outside the keep and the one person who likes him for no reason of duty.",
+            "id": "molly",
+            "name": "Molly",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "King Shrewd's jester, a slight figure with colourless skin, pale eyes and white hair, of unguessable age and sex, who mocks the court in riddles and rhymes that are usually cleverer than they first sound. Everyone at Buckkeep finds the Fool unsettling. The Fool takes an interest in the bastard boy that has nothing to do with the boy's usefulness, appearing without warning, saying things that will only make sense later, and refusing to explain any of them.",
+            "id": "the-fool",
+            "name": "The Fool",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A gaunt, pockmarked old man who lives unseen in the walls of Buckkeep and comes for the boy at night by way of a hidden stair. He is the king's private assassin, the hand that does the quiet work the crown will not put its name to, and he has been told to train a successor. He teaches herbs, poisons, forgery, lock-work and the habit of noticing everything, and he is the closest thing to a kind teacher the boy has, which does not soften what he is training him for.",
+            "id": "chade",
+            "name": "Chade Fallstar",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Chivalry's widow, an eccentric noblewoman living in retirement with her maid Lacey. She is scattered, blunt, and famously difficult, given to a dozen half-finished enthusiasms at once, and she has spent years resenting the boy whose existence took her husband from the throne. When she finally sends for him the meeting goes badly, and then she abruptly appoints herself responsible for his education and his prospects, whether or not either of them enjoys the arrangement.",
+            "id": "lady-patience",
+            "name": "Lady Patience",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A puppy given to the boy as a gift, over the objection of everyone who suspects what will happen. He is cheerful, greedy and entirely devoted, and the bond between them becomes the deepest attachment in the boy's life, kept secret because the beast-magic that makes it possible is forbidden at Buckkeep.",
+            "id": "smithy",
+            "name": "Smithy",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Skillmaster of Buckkeep, charged with finding and training those who can use the Farseer magic. He is severe, self-righteous and physically punishing with his students, and he loathes Chivalry's bastard on sight, treating the boy's presence in his class as an insult to the royal line. He controls who is judged to have the talent and who is not, and he uses that power freely.",
+            "id": "galen",
+            "name": "Galen",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Daughter of the ruler of the Mountain Kingdom and the bride chosen for Verity in a match arranged by proxy. Tall, fair and plainly dressed by Six Duchies standards, she has been raised to think of a ruler as the Sacrifice, the one who is spent for the good of the people, and she takes that duty entirely seriously. She is warm, direct and wholly unprepared for the ornamental role a Buckkeep queen is expected to play.",
+            "id": "kettricken",
+            "name": "Kettricken",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Kettricken's elder brother and the heir of the Mountain Kingdom, a big, plain-spoken man with an old wound that has never healed properly. He supports the marriage alliance and speaks frankly about what the Mountain Kingdom and the Six Duchies each stand to gain, which is not at all what the boy has been told to expect of him.",
+            "id": "rurisk",
+            "name": "Prince Rurisk",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-farseer-assassins-apprentice"
+      },
+      "recaps": {
+        "ending": "Fitz refuses to poison Rurisk and warns him instead, but Regal's plot runs on without him: Rurisk dies, and Fitz is poisoned nearly to death by those carrying out Regal's orders. Kettricken is wed to Verity by proxy, with Regal standing in his brother's place, and then leaves the Mountains for Buckkeep as queen-in-waiting. Verity reaches through the Skill during the crisis and Galen, striking at his king in Regal's service, is destroyed. Regal's treachery is understood by Verity, Chade and Burrich, but nothing can be proved to King Shrewd, and Regal returns to court unpunished and more dangerous than before. Fitz survives, nursed by Burrich and the Fool, but the poison leaves him with a wrecked constitution and shaking fits that come without warning. He has learned what he is worth to the men who own him: a tool that may be spent. He goes home to a Buckkeep where the Red Ship raids are worsening, where Verity is burning himself out with the Skill, and where Fitz is bound by a boyhood covenant to a king who is beginning to fail. Molly is still in Buckkeep Town, and Fitz has told her nothing about what he actually does.",
+        "in_short": "A six-year-old boy is delivered to the Six Duchies court as the bastard of Prince Chivalry, whose career the scandal ends. Raised in the stables at Buckkeep by the stableman Burrich, the boy takes a private bargain from King Shrewd: he will be the king's man, and in return he will be fed, housed and taught. The teaching turns out to include poisons. The old assassin Chade trains him in the crown's quiet work while Burrich beats at his forbidden beast-magic and the Skillmaster Galen, who hates Chivalry's bastard, ruins his chance at the royal Skill. Outislander Red Ships begin raiding the coast and returning hostages hollowed of feeling. Sent to the Mountain Kingdom for Prince Verity's proxy wedding to Kettricken, Fitz is ordered to kill her brother Rurisk and refuses. Regal's plot kills Rurisk anyway and very nearly kills Fitz. He survives poisoned and permanently damaged, the wedding stands, Galen is destroyed, and Regal walks away untouched.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "A six-year-old boy is brought to the town of Moonseye by his mother's father and handed over to Prince Verity as the bastard son of Verity's elder brother Chivalry, the King-in-Waiting of the Six Duchies. Chivalry's stableman Burrich is made responsible for him. The scandal costs Chivalry the throne: he renounces the succession and retires to the inland estate of Withywoods without ever meeting his son, leaving Verity as heir. Burrich takes the boy to the coastal fortress of Buckkeep, where he grows up in the stables with no name and no acknowledged place, half servant and half embarrassment. In Buckkeep Town he falls in with the chandler's daughter Molly and a few other children. Then old King Shrewd sends for him privately and makes a bargain: the crown will feed, house and school him, and in exchange he will belong to the king before he belongs to anyone else. Shrewd gives him a pin as the token of it, and the boy accepts without understanding what he has agreed to.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Fitz grows up between the stables and the keep, learning horses and hounds from Burrich and lessons from the keep's teachers. Burrich discovers that the boy can reach the minds of animals, the old magic called the Wit, and sets himself to stamping it out, taking away the dog Fitz has bonded with and forbidding him ever to do it again. Fitz obeys unwillingly and in secret does not. He also draws the attention of King Shrewd's pale jester, the Fool, who says unsettling things to him and explains none of them. King Shrewd's youngest son Regal makes no secret of despising him. Word comes from Withywoods that Chivalry has died after a fall from a horse, and Fitz grieves a father he never spoke to. Verity, now King-in-Waiting, takes up the burden of a coast that has begun to suffer raids by Outislander ships with red-painted hulls.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A gaunt, pockmarked old man named Chade begins waking Fitz at night and leading him up a hidden stair. Chade is the king's private assassin, and Shrewd's half of the bargain includes training a successor: herbs, poisons, forgery, locks, and the habit of watching everything. Fitz learns what the crown does not put its name to and takes his first assignments. Travelling with Verity to Neatbay, where a coastal duke has left a watchtower unmanned and his shore open to raiders, Fitz uses his forbidden animal sense on a noblewoman's lapdog to nudge her towards persuading her husband; the tower is manned again. Chade shadows the journey disguised as a sour old woman called Lady Thyme. Fitz begins to understand exactly what he has agreed to be, and how little say he has in it.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Red Ship raiders take the village of Forge and do something new: they hold the villagers hostage, take payment, and return them alive but hollowed out, stripped of all feeling for their own families. The Forged ones cannot be healed and cannot be lived with, and the Six Duchies have no answer to it. Verity spends himself using the Skill to watch the coast and turn the raiders aside. Into this comes Lady Patience, Chivalry's widow, who has come to Buckkeep and finally sends for the boy whose existence cost her husband a crown. The interview goes badly. She then abruptly decides to take charge of his education, gives him a place of his own above the stables and a scattering of impractical lessons, and presents him with a puppy, Smithy, whom Fitz quietly bonds with in defiance of everything Burrich has taught him.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Verity persuades King Shrewd to let the Skillmaster Galen train a new coterie of Skill users to support the crown against the raiders, and Fitz insists on being tested with the rest. Galen hates Chivalry's bastard and sets out to break him with starvation, humiliation and beatings. When Fitz begins to make progress anyway, Galen attacks him at the Witness Stones and leaves him for dead; he is found and nursed back over weeks, and returns to the training against advice. At the coterie's final trial he cannot reach anyone through the Skill and is judged to have no talent at all, while Galen's chosen students are made the king's coterie. Fitz accepts the verdict as his own failure. Chade and Burrich are less convinced, and Fitz goes back to the work Chade trained him for.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Fitz carries out the killings the crown requires of him, and learns how little of himself he gets to keep. Regal negotiates a marriage that will secure the Six Duchies' inland border: Kettricken, daughter of the ruler of the Mountain Kingdom, is to be wed to Verity by proxy at Jhaampe, with Regal standing in for his brother. Fitz rides with the wedding party carrying secret orders from Chade, and finds Jhaampe stranger and plainer than Buckkeep, its rulers holding themselves as the Sacrifice, spent for the good of their people. He meets Kettricken, who takes the marriage and the duty entirely seriously, and her brother Prince Rurisk, whom Fitz has been sent to kill as an obstacle to the alliance. Rurisk turns out to be no obstacle at all, and to have been misrepresented to Buckkeep on purpose.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Fitz refuses the order and warns Rurisk instead, but Regal's plan does not depend on him. Rurisk dies, and Fitz is poisoned and left barely alive. Kettricken is wed to Verity by proxy with Regal standing in his place, and the alliance holds. During the crisis Verity reaches through the Skill and Galen, striking at his king on Regal's behalf, is destroyed. Regal returns to Buckkeep untouched: Verity, Chade and Burrich know what he did, and none of it can be proved to King Shrewd. Nursed by Burrich and the Fool, Fitz survives with his health permanently broken, subject to shaking fits from the poison. He goes home to a coast still being raided, a King-in-Waiting burning himself out with the Skill, a king who is beginning to fail, and a boyhood covenant he cannot get out of. Molly is still waiting in Buckkeep Town, and knows nothing of what he actually is.",
+            "through": {
+              "chapter": 24
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-farseer-assassins-apprentice"
+      }
+    },
     "the-fault-in-our-stars": {
       "characters": {
         "characters": [

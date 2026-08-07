@@ -652,6 +652,368 @@
         "work": "the-lost-hero"
       }
     },
+    "the-lost-metal": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Wax",
+              "Lord Waxillium Ladrian"
+            ],
+            "description": "Six years on, Waxillium Ladrian is a senator in Elendel, a husband and a father, and no longer the man who chased criminals across rooftops. He is still Twinborn, a Coinshot who Pushes on metal and a Skimmer who can change his own weight, and he still has the Bands of Mourning, but he has put the lawman's life down deliberately and is trying to believe he can leave it there. His relationship with Harmony is functional rather than warm: he wears the earring, he answers when the god speaks, and he has not forgiven him for anything.",
+            "id": "waxillium-ladrian",
+            "name": "Waxillium Ladrian",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Still a Twinborn Slider and Bloodmaker, still refusing to carry a gun, still collecting hats and identities. He works cases with Marasi now rather than with Wax, and he is a better investigator than his performance suggests, because the performance is most of how he investigates. He has spent his adult life quietly paying a debt for something he did as a boy, and he has never told most of the people around him about it.",
+            "id": "wayne",
+            "name": "Wayne",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A senior constable with a reputation and a caseload, working the Set's remaining activity in the Basin. She is a Pulser, able to slow time inside a bubble, and she has grown into someone who assumes command rather than waiting to be handed it. She is also the person in this story most willing to follow a question past the point where the answer stops being comfortable.",
+            "id": "marasi-colms",
+            "name": "Marasi Colms",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Wax's wife, and by some distance the most competent administrator in the family. Her habit of planning in exhaustive detail for improbable disasters has become a civic asset rather than a social embarrassment, and she runs the political side of Wax's life with the same thoroughness she applies to everything else.",
+            "id": "steris-ladrian",
+            "name": "Steris Ladrian",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Max"
+            ],
+            "description": "Wax and Steris's young son, who has inherited abilities of his own and rather more of his father's instincts than his mother would prefer. He is a child throughout this book, kept well away from the work, and the reason Wax gives for having stopped doing it.",
+            "id": "maxillium-ladrian",
+            "name": "Maxillium Ladrian",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Sazed"
+            ],
+            "description": "The god of this world, once the Terris scholar Sazed. He speaks to Wax through an earring, tells him less than he knows, and is markedly more constrained than he was when this era began: another power has terms with him, and he cannot simply act on his own world whenever he chooses.",
+            "id": "harmony",
+            "name": "Harmony",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A kandra, one of Harmony's Faceless Immortals, long attached to Wax's circle and to Wayne in particular. Her work for the god increasingly takes her away from the Basin and from him.",
+            "id": "melaan",
+            "name": "MeLaan",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A gunsmith and an old friend from the Roughs, still building weapons for people she considers worth the trouble, and still entirely uninterested in Wayne. She has a life of her own that he has spent years declining to notice.",
+            "id": "ranette",
+            "name": "Ranette",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Malwish sky-sailor from the southern continent who became the Basin's first contact with his people, now settled in the north and acting as a link between two nations that are still deciding what they are to each other.",
+            "id": "allik-neromnian",
+            "name": "Allik Neromnian",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An agent of the Ghostbloods, the secretive organization that turns up wherever the Set's business is, who becomes Marasi's partner and guide. She is competent, deflective, and knows a great deal more about what is actually happening than she is willing to say, including things about the world that nobody in the Basin has been told.",
+            "id": "moonlight",
+            "name": "Moonlight",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Set officer running the organization's interests in Bilming, wealthy, theatrical and pleased with himself. He treats the catastrophe his employers are preparing as a commercial opportunity, and he is the point at which the conspiracy becomes a person Wayne can get close to.",
+            "id": "gave-entrone",
+            "name": "Gave Entrone",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Autonomy"
+            ],
+            "description": "The god the Set serves, a power from beyond this world that has been reaching toward it for centuries and that holds Harmony to terms limiting what he may do here. It works through worshippers, proxies and a metal of its own, and its interest in this planet is not diplomatic.",
+            "id": "trell",
+            "name": "Trell",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Wax's older sister, who left with their uncle rather than being rescued from him. She is not a follower in the Set and never was, and what she has been building in Bilming is her own project as much as her patron's.",
+            "id": "telsin-ladrian",
+            "name": "Telsin Ladrian",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Kelsier",
+              "the Survivor"
+            ],
+            "description": "The head of the Ghostbloods, known to his own people by a name rather than a face. He is Kelsier, the man who began the rebellion that ended the Final Empire three centuries ago and was killed doing it, and who is worshipped across the Basin as the Survivor. He did not stay dead, he has been working on this world and beyond it ever since, and his goals overlap with Wax's only partially.",
+            "id": "thaidakar",
+            "name": "Thaidakar",
+            "reveal": {
+              "chapter": 62
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-lost-metal"
+      },
+      "recaps": {
+        "ending": "The Set's weapon is detonated where it cannot be carried clear, and Wayne dies containing it: he holds the blast inside his own accelerated-time bubble so that it takes him and a stretch of Bilming instead of taking the city and everyone in it. Wax confronts what his sister has become and destroys the avatar Autonomy has built out of her; Telsin does not survive it, and the god itself is forced back off the world rather than killed. Bilming is wrecked but standing, Elendel is not attacked, and the Malwish fleet stands down into negotiation instead of bombardment. Wax survives, badly used, and does not go back to being a lawman; he returns to Steris and their children and to the political work of a Basin that now has to be told the truth about itself. That truth is the real handoff: this world is one of many, Harmony is one god among several and is bound by terms he did not choose, other powers have been interested in Scadrial for centuries, and organizations like the Ghostbloods have been operating in that wider contest the whole time. Marasi ends the book as the Basin's link to them and to everything beyond it, holding knowledge her own government is not ready for. Wayne is buried a hero of a city that never knew what he was quietly paying for, and remembered by the people he paid. Harmony tells Wax that what has just happened was an opening move rather than a conclusion, and looks past him to the generation coming after.",
+        "in_short": "Six years on, Waxillium Ladrian is a senator and a father who has left the lawman's work behind, while Wayne and Marasi Colms still work cases for the constabulary. A Set investigation leads them to Bilming, a coastal city rebuilt on southern technology, where the organization has been constructing a weapon out of god metal capable of destroying Elendel. Marasi falls in with the Ghostbloods and learns what the Basin never knew: this world is one of many, Harmony is one god among several, and the Set serves another called Trell, which holds Harmony to terms that keep him from intervening directly. Wax discovers that the Set is led by his sister Telsin, who was never a prisoner, and that she has been prepared as the body through which Trell can act in person. The Malwish fleet arrives ready to destroy Bilming rather than let the weapon be finished. In the end Wayne dies containing the explosion inside his own speed bubble, Wax destroys the god's avatar and his sister with it, and Elendel survives to be told that it has always been a small part of a much larger contest.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Background: three centuries before this era, the world was ash-choked and ruled by an immortal tyrant. A thief called Kelsier began the rebellion that unseated him and died doing it; a young woman named Vin finished it, and later destroyed the god of decay at the cost of her own life. A Terris scholar named Sazed took up the divine powers left behind, became Harmony, and remade the planet into somewhere people could live. Kelsier is worshipped as the Survivor and Vin as the Ascendant Warrior, and the Elendel Basin their descendants built now runs on railways, electricity and industry, with Allomancy and Feruchemy thinned into single-power Mistings and Twinborn. Previously in this era: Waxillium Ladrian left twenty years of frontier law enforcement to run House Ladrian, and with his partner Wayne and the constable Marasi Colms broke a gang working for a hidden organization called the Set, discovering that his uncle Edwarn had faked his death to join it. A rogue kandra then maneuvered him into publicly killing Elendel's governor, and revealed that she was the kandra Harmony had assigned to watch him, who had lived for years as the woman he loved. Wax and his people afterwards travelled south, made contact with the Malwish, an advanced nation on the southern continent, recovered the Bands of Mourning, and found the tomb of the Malwish founder, who was Kelsier himself, alive long after his supposed death. Wax's sister Telsin turned out to be with the Set by choice. Harmony finally admitted that the Set serves another god called Trell, that there are powers beyond this world, and that his own hands are tied. Wax married Steris and kept the Bands.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Six years have passed. Waxillium Ladrian is a senator in Elendel, married to Steris and the father of two small children, and he has largely stepped back from the work that made him famous. The Basin has industrialized further, Elendel has grown, and the Set has been quiet long enough for people to stop worrying about it. Wayne and Marasi Colms still work cases together for the constabulary, Marasi as a senior officer with a growing reputation and Wayne as whatever the job needs him to be that day. An investigation into leftover Set activity turns up more than a smuggling operation: the organization has been building something, and the trail runs out of Elendel and toward Bilming, a coastal city that has grown rich, secretive and technologically strange in a very short time. Wax is drawn back in, still on cool terms with Harmony, who tells him only a fraction of what he knows.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The team moves on Bilming. The city has been remade with southern technology: its harbor, its factories and its transport run on machines the Basin cannot build, and its authorities have no interest at all in cooperating with Elendel. Working undercover, Wayne gets inside the Set's operations from the bottom. Marasi falls in with the Ghostbloods, a secretive organization that turns out to know a great deal about powers and places beyond this world, and is partnered with one of their agents. What the Set is assembling in Bilming is a weapon, and not a conventional one: it involves the god metals, harmonium among them, and a metal nobody in the Basin has catalogued. Harmony admits to Wax that he cannot simply intervene. He is bound by terms agreed with another god, and the Set serves that god.",
+            "through": {
+              "chapter": 19
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The scale of the problem becomes clear. The Set is not planning a coup or a war of secession; it is preparing to destroy a city. The device being built will release the energy locked inside a god metal, and Elendel is the target. Wayne's position inside the organization gets him near the people running it, including a Set officer in Bilming who treats the coming catastrophe as a business venture. Marasi and the Ghostbloods work the science and the supply chain, and Marasi begins to grasp that the people helping her are not natives of Basin politics at all. Meanwhile the Malwish of the southern continent, who have their own history with the metal involved, start to move, and their fleet is not coming to negotiate.",
+            "through": {
+              "chapter": 27
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The pieces come together badly. The weapon exists, it can be moved, and the Set is far closer to using it than anyone in Elendel believed. The Malwish arrive off the coast prepared to burn Bilming rather than allow what is being built there to be finished, which leaves Wax's people with two disasters to prevent and very little to prevent them with. In Elendel, Steris does the work nobody else thought to do, turning her habit of planning for improbable catastrophes into an actual evacuation.",
+            "through": {
+              "chapter": 34
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Wax learns what the Basin has been living inside of. There are gods beyond Harmony and whole worlds beyond this one, and people who travel between them. Harmony holds this world under terms he did not choose, and the god the Set serves, which they call Trell, is one of the powers that has been probing Scadrial for centuries. The Ghostbloods are part of that wider contest rather than a local criminal syndicate, and Marasi's work with them has put her further ahead of her own government than she is comfortable being. The Set's leadership is also finally exposed to Wax, and the person directing the organization is not a stranger: his sister Telsin, taken by the Set years ago, has not been a captive for a very long time. Wax, who spent one book refusing his god and another taking him back, has to decide what he is willing to do for a deity who admits he is neither all-powerful nor entirely honest.",
+            "through": {
+              "chapter": 45
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The fight for Bilming begins. The Set moves the weapon, the Malwish move on the city, and Wax, Wayne and Marasi end up working separate parts of the same disaster. Wayne, who has spent his adult life paying for a man he killed as a boy, settles that account on his own terms. Wax uses the Bands of Mourning, which give him Feruchemical power on a scale nobody has held since the Lord Ruler, and finds it is still not enough for what the Set has been building toward, because his sister has been prepared for something considerably more than command of an organization.",
+            "through": {
+              "chapter": 55
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Telsin is not merely leading the Set. She has been made the vessel through which Autonomy, the god the Set calls Trell, can act on this world in person, and once that is complete there is a god standing in Bilming wearing a human body. Harmony cannot answer it without breaking the terms that keep the whole world from becoming an open battlefield, so the people on the ground have to. The weapon is live and inside the city. Wax, Wayne and Marasi have very little time and no good options, and the plan they settle on requires somebody to be in the same place as the explosion when it happens.",
+            "through": {
+              "chapter": 65
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The bomb goes off where it could not be carried clear, and Wayne dies containing it, holding the blast inside his own accelerated-time bubble so that it takes him and a stretch of Bilming rather than the city and everyone in it. Wax confronts what his sister has become and destroys Autonomy's avatar; Telsin does not survive it, and the god is driven back off the world rather than killed. Bilming is wrecked but standing, Elendel is never attacked, and the Malwish fleet stands down into negotiation. Wax survives and does not return to the lawman's life, going back instead to Steris, their children, and the political work of a Basin that now has to be told what it is part of: one world among many, under a god who is one power among several and bound by terms he did not choose, watched for centuries by others. Marasi ends the book as the Basin's link to the Ghostbloods and to everything beyond it. Wayne is buried a hero of a city that never knew what he had spent his life paying for, mourned by the people he paid. Harmony tells Wax that this was an opening move rather than an ending, and looks past him to the generation that will have to handle the rest.",
+            "through": {
+              "chapter": 74
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-lost-metal"
+      }
+    },
+    "the-lost-sisters": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The narrator of this novella, which takes the form of a long letter she writes to her twin sister. A mortal raised in the High Court of Faerie by the fey general who killed their parents, Taryn concluded early that the way to survive among the fey is to give them nothing to push against: to be pleasant, to be quiet, to be chosen rather than to fight. She sets out her own account of their childhood, her courtship, and the choices that put her and Jude on opposite sides, defending herself and accusing her sister by turns.",
+            "id": "taryn-duarte",
+            "name": "Taryn Duarte",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Taryn's twin, the person the letter is addressed to. As Taryn describes her, Jude answered Faerie's contempt by arming herself against it, refusing to be small, and courting danger in pursuit of a place at court, which Taryn regards as both admirable and reckless enough to have endangered them both.",
+            "id": "jude-duarte",
+            "name": "Jude Duarte",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The fox-haired fey lord who courted Taryn in secret while courting her sister in the open. He treats the people around him as material for a story he is arranging, enjoys the tensions he creates, and asks Taryn to keep their attachment hidden, which she does.",
+            "id": "locke",
+            "name": "Locke",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Vivi"
+            ],
+            "description": "The sisters' half-fey eldest sibling, Madoc's own daughter, who despises Faerie and keeps one foot in the human world. In Taryn's telling she is the one who could always leave, which is exactly why her advice to leave was never much use to the twins.",
+            "id": "vivienne",
+            "name": "Vivienne",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The redcap general who killed the sisters' mother and her human husband and then raised all three girls as his own. Taryn describes a childhood of comfort and swordwork under a father who was indulgent, unrepentant and impossible to refuse.",
+            "id": "madoc",
+            "name": "Madoc",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The sisters' mother, who had once been Madoc's wife, fled Faerie with their half-fey elder sister, and made a second life and a second family in the mortal world. Taryn returns repeatedly to what her mother's choices set in motion.",
+            "id": "eva",
+            "name": "Eva",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The High King's youngest son, the cruellest of the young gentry, and the ringleader of the group that made the mortal twins a target. Taryn recalls his hostility as a fact of daily life at court, and her own strategy of never giving him a reason to look at her.",
+            "id": "cardan",
+            "name": "Cardan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The princess of the Undersea fostered at the High Court, one of Cardan's circle, and a former sweetheart of Locke's. Her contempt for mortals is part of the atmosphere Taryn describes learning to live inside.",
+            "id": "nicasia",
+            "name": "Nicasia",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-lost-sisters"
+      },
+      "recaps": {
+        "ending": "The letter ends without absolution on either side. Taryn has said what she came to say: that she loved Locke and wanted him, that she knew he was courting Jude at the same time and said nothing, that she watched her sister be humiliated and did not intervene, and that she would make many of the same choices again because the alternative, as she sees it, was to be as exposed and as hated as Jude made herself. She asks for forgiveness while admitting she has not really earned it and is not certain she is sorry in the way Jude would need her to be. She is engaged to Locke and will marry him, which secures the place in Faerie she has wanted since childhood, and she does not pretend the marriage is a triumph so much as a settlement. The confession is addressed to Jude but framed as something Taryn may never manage to hand over, so the sisters are left where the previous book left them: each convinced the other chose wrongly, still bound by blood and by a shared childhood neither can put down, with the quarrel unresolved and Taryn's wedding ahead of them.",
+        "in_short": "A companion novella to The Cruel Prince, told as a long confessional letter from Taryn Duarte to her twin, Jude. Taryn retells their shared childhood from her own side: their mother's flight from Faerie, Madoc's arrival and the murders, and their upbringing in a court that despised them for being mortal. Where Jude decided to fight for a place, Taryn decided to earn one by being agreeable, and she explains her secret courtship with Locke, who was pursuing both sisters at once and asked her to keep silent about it. She admits she stayed quiet while Jude was humiliated by Cardan's circle, admits her jealousy, and argues that her own strategy of accommodation was no more cowardly than Jude's was reckless. The letter carries her through the discovery of the deception, the sisters' rupture, and her engagement to Locke, and closes with an apology she concedes is incomplete: she wants forgiveness, she is not sure she deserves it, and she is not sure she would choose differently.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, in The Cruel Prince: the mortal twins Jude and Taryn Duarte were carried into Faerie as children by Madoc, the redcap general who had killed their mother, once his own wife, and the human man she married. Raised in his household alongside their half-fey sister, Vivienne, they grew up despised by the fey gentry, particularly Prince Cardan and his companions Nicasia, Valerian and Locke. Jude sought power to protect herself, swore herself to Prince Dain as a spy, killed Valerian when he attacked her, and discovered that Locke had been courting both sisters at once and that Taryn had known and hidden it, which broke the twins apart. At the coronation, Prince Balekin murdered the High King and most of his heirs with Madoc's help, and Jude escaped with the youngest prince, Cardan. Learning that her small brother Oak was secretly the true heir and that Madoc meant to rule through him, Jude made Cardan High King on condition that he obey her for a year and a day, imprisoned Balekin, broke Madoc's plan, and sent Oak to the human world. Taryn remained in Faerie, engaged to Locke, still estranged from her sister. This novella is Taryn's account of those same years.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Taryn addresses her twin directly, setting out to explain rather than excuse. She goes back to their mother, who fled Faerie and Madoc with her half-fey daughter and built an ordinary mortal life, and to the day Madoc arrived, killed both their parents in front of them and then took all three girls home with him as his own. Taryn describes the two conclusions the twins drew from the same childhood: Jude decided that safety lay in becoming dangerous, and Taryn decided that it lay in becoming unobjectionable, since mortals in Faerie survive on the goodwill of the fey. She recounts the daily humiliations of their schooling among the gentry, her habit of absorbing them quietly, and her irritation at a sister whose defiance drew more attention onto both of them. Then she turns to Locke, who noticed her, courted her, and asked her to keep it secret, and she describes what that attention was worth to a girl who had spent years training herself not to be noticed at all.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Taryn admits the part she has been circling: she knew Locke was courting Jude at the same time as her, understood that he was arranging the two of them into a story he found entertaining, and said nothing. She kept silent through her sister's public humiliations, weighed jealousy against loyalty and chose the courtship, and she describes the calculation without pretending it was noble: Locke could give her the settled place in Faerie she had wanted since childhood, and telling Jude would have cost her that. When the deception came out and the sisters broke, Taryn was accused of a betrayal she does not entirely dispute. Her defence is that Jude, too, kept secrets, took risks that endangered them both, and never once considered that Taryn's way of surviving might be as deliberate as her own. She closes with an apology she knows is partial, an engagement she intends to go through with, and an acknowledgement that she may never actually put this letter into her sister's hands.",
+            "through": {
+              "chapter": 2
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-lost-sisters"
+      }
+    },
     "the-lovely-bones": {
       "characters": {
         "characters": [

@@ -1368,6 +1368,237 @@
         ],
         "work": "romeo-and-juliet"
       }
+    },
+    "royal-assassin": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Fitz"
+            ],
+            "description": "The acknowledged bastard of the late Prince Chivalry, raised in the Buckkeep stables and trained in secret as King Shrewd's assassin. He is in his late teens and returning from the Mountain Kingdom badly damaged: the poison that nearly killed him at Kettricken's proxy wedding has left him with tremors and seizures that arrive without warning. He carries the forbidden beast-magic of the Wit, an erratic and unreliable grip on the royal Skill, and a boyhood oath binding him to a king who is now failing. He wants an ordinary life with Molly and cannot have one while the crown owns him.",
+            "id": "fitzchivalry",
+            "name": "FitzChivalry Farseer",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Buckkeep's stablemaster, once Chivalry's man and the closest thing Fitz has to a father. Blunt, proud and often drunk, he nursed Fitz through the poisoning and brings him home. He still regards the Wit as a foul thing and will not be argued out of it, and his loyalty to the Farseer line is absolute even as the line begins to come apart.",
+            "id": "burrich",
+            "name": "Burrich",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "King Shrewd's jester, pale-skinned, colourless-eyed and ageless, who speaks in riddles and rhymes and is feared or dismissed by most of the court. The Fool tended Fitz through his recovery and treats him as important for reasons the Fool will not explain, talking of prophecy, of catalysts, and of futures that hinge on small choices. Beneath the mockery is a fierce and entirely serious attachment to King Shrewd.",
+            "id": "the-fool",
+            "name": "The Fool",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "King-in-Waiting of the Six Duchies and Fitz's uncle, a plain, decent, soldierly man who has been holding the coast almost alone. He spends himself daily using the Skill to find and turn aside the Red Ship raiders, and it is visibly consuming him: he is greying, gaunt and exhausted, with nothing left over for his court, his treasury or his new wife.",
+            "id": "verity",
+            "name": "Verity Farseer",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Verity's queen-in-waiting, brought from the Mountain Kingdom to a court that finds her strange. Raised to see a ruler as the Sacrifice, spent for the good of the people, she arrives ready to work and finds she is expected only to be decorative. Her husband has no time for her, the ladies of the keep freeze her out, and she is lonely, homesick and increasingly determined to make herself useful whether or not anyone gives her permission.",
+            "id": "kettricken",
+            "name": "Kettricken",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "King of the Six Duchies, old and visibly failing. He is in constant pain and is kept dosed with smoke and herbs by his attendants, which leaves him lucid only in patches. In his clear moments he is still the shrewd ruler who bought a bastard boy's loyalty with a pin; the rest of the time he signs and agrees to whatever is set in front of him.",
+            "id": "king-shrewd",
+            "name": "King Shrewd",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "King Shrewd's youngest son, elegant, inland-minded and openly resentful of the two brothers between him and the throne. He has never been called to account for the deaths at Jhaampe. He surrounds his father with attendants of his own choosing, cultivates the inland dukes who care nothing for the raided coast, and treats Fitz as vermin that has survived longer than it should have.",
+            "id": "regal",
+            "name": "Regal Farseer",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The king's private assassin, an old scarred man who lives unseen in the walls of Buckkeep and taught Fitz the trade. He is Fitz's handler, his closest confidant and the only person who tells him the truth about court politics. He is loyal to King Shrewd personally and is increasingly unable to reach the man he serves.",
+            "id": "chade",
+            "name": "Chade Fallstar",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The chandler's daughter from Buckkeep Town and Fitz's oldest friend. Her father's death left debts that took the shop and the candle trade with it, and she comes to Buckkeep to work as a servant, proud, capable and hating the loss of her independence. She loves Fitz and knows almost nothing true about how he spends his time.",
+            "id": "molly",
+            "name": "Molly",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Chivalry's widow, living at Buckkeep with her maid Lacey amid a chaos of half-finished projects. Scattered, sharp and stubborn, she has taken it on herself to be Fitz's patron and to badger the court into giving him a future, and she is one of the few people at Buckkeep who says exactly what she thinks about Regal.",
+            "id": "lady-patience",
+            "name": "Lady Patience",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dog Fitz bonded with as a boy through the Wit, kept secretly at Buckkeep. He is entirely devoted to Fitz, shares his senses with him, and is the one warm and uncomplicated thing in his life.",
+            "id": "smithy",
+            "name": "Smithy",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A wolf cub sold caged and half-starved in Buckkeep Town, bought by Fitz out of pity and set free. The bond that forms between them is deeper than anything Fitz has known, and it will not be undone: the wolf thinks in packs and hunts and now, of loyalty. He is sardonic, practical, contemptuous of human complication, and unwilling to let Fitz go anywhere alone.",
+            "id": "nighteyes",
+            "name": "Nighteyes",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of the Skill coterie trained by the late Skillmaster Galen, quiet and watchful where the others are strident. He is more able than he lets on, and his loyalties within the royal family are not the ones his office implies.",
+            "id": "will",
+            "name": "Will",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A member of Galen's Skill coterie, arrogant about her talent and openly hostile to Fitz, whom she regards as a failed student and a stain on the Skill. She spends her time close to the king's apartments.",
+            "id": "serene",
+            "name": "Serene",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A member of Galen's Skill coterie, young, vain and quick to sneer, who takes his cues from Serene and from the prince who favours the coterie. Like her he is often found attending the failing king.",
+            "id": "justin",
+            "name": "Justin",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "royal-assassin"
+      },
+      "recaps": {
+        "ending": "King Shrewd is killed in his bed, drained through the Skill by Justin and Serene on the night Chade's escape plan is to run. Fitz kills them both in the great hall in front of the assembled court and is taken. Regal has him beaten, tried for the king's murder and for practising beast-magic, and left broken in a cell to die. Fitz does die, in every sense the keep can verify: on Chade's and Burrich's plan he retreats into Nighteyes as his body fails, and the two men dig his corpse out of its grave and spend weeks coaxing a wolf back into a man's body. He recovers as something less than he was, half-feral, with his health and his Skill in ruins. Kettricken, who has lost Verity's child, flees Buckkeep for the Mountain Kingdom with the Fool and a small escort, carrying the last hope of the Farseer line with her. Regal has himself crowned, strips Buckkeep of its wealth and moves the court inland to Tradeford, abandoning the coast to the Red Ships. Verity is somewhere beyond the Mountains, alive at least in the moments he can reach Fitz through the Skill, and everyone at home believes him dead. Molly has left without saying where, carrying a child Fitz does not know about. Patience and Burrich mourn a man who is not dead. Fitz, officially a corpse and finally free of the covenant that owned him, resolves to hunt down Regal.",
+        "in_short": "Fitz comes home to Buckkeep from the Mountains poisoned, shaking and no safer than he left. Verity is burning himself out Skilling against the Red Ships, King Shrewd is failing and kept drugged, and Kettricken is isolated in a court that has no use for a queen who wants to work. Fitz bonds with a wolf cub, Nighteyes, becomes Molly's lover in secret, and hunts Forged ones for the queen. Verity leaves on a desperate journey beyond the Mountains to find the Elderlings, and Regal immediately begins converting his brother's absence into a crown: he has himself named King-in-Waiting, strips Buckkeep and prepares to abandon the coast. Molly, refused first place in Fitz's life, leaves him. Shrewd is murdered through the Skill by two of the coterie, and Fitz kills them in front of the court. Regal has him tortured and condemned; Fitz escapes into the wolf as his body dies and is dug up and slowly brought back by Burrich and Chade. Kettricken, her child lost, flees for the Mountains with the Fool. Regal is crowned, and Fitz, officially dead, sets out to kill him.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "In the first book, a six-year-old bastard was delivered to the Six Duchies court as the son of Prince Chivalry, the King-in-Waiting, and the scandal ended Chivalry's career: he abdicated in favour of his brother Verity and died soon after without ever meeting the boy. Raised in the Buckkeep stables by Chivalry's stableman Burrich, the boy took a bargain from old King Shrewd, becoming the king's man in exchange for food, shelter and schooling, and was quietly trained as a royal assassin by Chade, who lives hidden in the walls of the keep. He grew up with two magics: the Wit, a forbidden bond with animals that Burrich beat him for, and the Skill, the Farseer talent, which the Skillmaster Galen deliberately crippled in him out of hatred for Chivalry's bastard. Outislander Red Ships began raiding the coast, taking hostages and returning them Forged, alive but stripped of all feeling. Sent to the Mountain Kingdom for Verity's proxy wedding to Kettricken, Fitz was ordered by Regal's faction to kill her brother Rurisk and refused; Rurisk was killed anyway and Fitz was poisoned nearly to death. The marriage stood, Galen was destroyed striking at Verity through the Skill, and Regal, whose plot it was, returned to court unpunished. Fitz survived with his health broken and shaking fits that come without warning, still bound by a boyhood oath to a king who is beginning to fail.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Fitz recovers slowly in the Mountain Kingdom, tended by the Fool and Burrich, and comes home to Buckkeep still subject to seizures and unable to trust his own body. He finds a court in worse shape than he left it. Verity is spending himself daily using the Skill to turn Red Ship raiders away from the coast, and it is visibly consuming him: he is grey, gaunt and has nothing left over for his treasury, his court or his wife. Kettricken has arrived from the Mountains expecting to be spent for her people and finds she is expected instead to be ornamental; the ladies of the keep freeze her out and her husband barely sees her. King Shrewd is failing, in constant pain and kept dosed with herbs and smoke by attendants of Regal's choosing, lucid only in patches. Regal, who has never been called to account for Jhaampe, cultivates the inland dukes and treats Fitz as vermin that has outlived its usefulness.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Molly comes to Buckkeep as a servant: her father's death left debts that took the chandlery, and her independence with it. She and Fitz become lovers in secret, and Fitz begins to imagine a life that is his own, without ever being able to tell her what he actually does for the crown. In Buckkeep Town he finds a wolf cub sold caged and starving, buys him and frees him, and cannot help bonding with him through the Wit. The wolf, Nighteyes, becomes a permanent, sardonic presence in his mind and refuses to be sent away, though every hour of it is a risk with Burrich watching and the Wit a hanging matter. Kettricken, refusing to sit idle while the coast burns, begins to make herself a presence in Buckkeep, and Fitz is drawn into her service as well as Chade's. The Red Ships keep coming, and the Forged ones left behind become a problem in the countryside around Buckkeep itself.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kettricken organizes and leads a hunt to clear the Forged ones from the lands around Buckkeep, winning herself a following among the common folk and the coastal dukes that the court had not expected. Fitz rides with her, hunting alongside Nighteyes, and an attempt on the queen's life makes plain that someone at Buckkeep wants her gone. Verity, out of resources and unable to hold the coast with the Skill alone, settles on a desperate plan: to go himself beyond the Mountain Kingdom in search of the Elderlings, the legendary allies who answered the Six Duchies in an earlier raiding war. Before he leaves, he and Kettricken finally reach one another, and she conceives. Verity rides out with a small guard, leaving the throne, the coast and his queen in the keeping of a drugged king and a court full of Regal's friends.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "With Verity gone and no word from him, Regal begins converting his brother's absence into a crown. He argues that Verity is dead, has himself named King-in-Waiting, and starts stripping Buckkeep of its treasury, its stores and its defensible strength, preparing to move the court inland to Tradeford where the Red Ships cannot reach. Shrewd signs whatever is put in front of him. The coastal dukes, watching their duchies burn, get nothing. Fitz's Wit becomes an open accusation against him and his movements are watched; he keeps hunting Forged ones and keeps Nighteyes hidden. Kettricken, pregnant and increasingly the only Farseer at Buckkeep who behaves like one, holds what she can. Fitz's own Skill remains a locked door he can only occasionally force, and Verity reaches him through it in brief, exhausted contacts from somewhere beyond the mountains.",
+            "through": {
+              "chapter": 19
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kettricken loses Verity's child, and with it the argument that kept Regal from the throne. Molly, who has waited long enough to learn that Fitz will always put the Farseers first, asks him to choose and then leaves Buckkeep without telling anyone where she is going. Fitz, unable to follow, throws himself back into Chade's work. The Skill coterie Galen trained is plainly serving Regal rather than the crown, and its members are constantly in attendance on a king who grows weaker every week. Buckkeep itself comes under threat from the sea, and the coastal duchies begin to talk openly of what they will do if the crown abandons them. Chade and Fitz plan to get the king and the queen out of Buckkeep before Regal completes his takeover.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Regal moves openly to have himself crowned and the court removed inland, and the coastal dukes are left to arrange their own defence. Fitz, Chade, Burrich and the Fool set a plan to smuggle King Shrewd and Queen Kettricken out of Buckkeep on the night of the ceremony, with the Fool and a small escort to take the queen to the Mountain Kingdom where Verity may still be found. Burrich admits to Fitz what Fitz had half guessed, that he too carries the Wit and abandoned it long ago, which is why he has fought so hard to keep Fitz from it. Fitz's own bond with Nighteyes is by now indistinguishable from the way he thinks. The court is thick with Regal's guards and with the coterie, and Fitz is watched too closely to move without being seen.",
+            "through": {
+              "chapter": 29
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On the night of the escape, King Shrewd is killed in his bed, drained through the Skill by Justin and Serene. Fitz feels it happen and kills them both in the great hall in front of the whole assembled court. He is seized on the spot. Kettricken and the Fool get clear of Buckkeep and away towards the Mountains, but Fitz is thrown into Regal's dungeons, beaten, starved and put on trial for the king's murder and for practising beast-magic, which is itself a death sentence. Nothing said in his defence matters; the verdict was decided before the trial. Regal takes his time. Burrich and Chade, unable to break him out, get one thing to him in his cell: a plan, and the means to use it.",
+            "through": {
+              "chapter": 32
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Fitz dies in his cell, and it is not a trick that the keep can see through: as his broken body fails he retreats into Nighteyes, and by every test available he is a corpse. Burrich and Chade dig him out of his grave and spend weeks coaxing a wolf back into a man, feeding him, holding him and refusing to let him stay in the easier shape. He comes back half-feral, his health wrecked, his Skill in ruins, and something in him permanently changed by the crossing. Regal has himself crowned, empties Buckkeep and withdraws the court to Tradeford, leaving the coastal duchies to the Red Ships. Kettricken, her child lost, is away over the mountains with the Fool. Verity is alive somewhere beyond them, believed dead by everyone at home. Molly is gone without a word, carrying a child Fitz knows nothing about, and Patience and Burrich grieve a man who is not dead. Officially a corpse and finally out from under the covenant that owned him since he was six, Fitz sets himself one purpose: to find Regal and kill him.",
+            "through": {
+              "chapter": 35
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "royal-assassin"
+      }
     }
   }
 }

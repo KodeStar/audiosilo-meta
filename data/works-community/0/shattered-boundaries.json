@@ -1374,6 +1374,487 @@
         "work": "shift-omnibus-edition"
       }
     },
+    "ship-of-destiny": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The elder Vestrit granddaughter, adrift in a small boat with the ruler of Jamaillia after the flooding of the buried city swept her out of the Rain Wilds. She is injured, scarred, starving and entirely on her own, with a spoiled monarch to keep alive and no one coming for her. The vain, manipulative girl of the previous books is gone; what is left is a formidable negotiator who has discovered that she is the only competent person in the boat.",
+            "id": "malta-vestrit",
+            "name": "Malta Vestrit",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The young Satrap of Jamaillia, kidnapped out of a burning Bingtown and carried off down a river, seasick, drug-deprived and completely unfitted for any of it. He is petulant, cowardly and self-pitying, and he is also, technically, the source of every legal authority in the region, which makes him worth keeping alive.",
+            "id": "satrap-cosgo",
+            "name": "Satrap Cosgo",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The younger Vestrit daughter, mate aboard the Paragon and hunting the Pirate Isles for the liveship that should have been hers. She is a proven sailor now, and she has stopped caring what Bingtown thinks a Trader's daughter may do. What she has not worked out is what she will actually do when she finds the Vivacia, or what she wants from Brashen.",
+            "id": "althea-vestrit",
+            "name": "Althea Vestrit",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Captain of the Paragon, sober, competent and carrying a crew of misfits into pirate waters on a mission with no legal standing and no backing. He is finally doing the job he was trained for, and is painfully aware that his authority rests on nothing but his crew's willingness to keep granting it.",
+            "id": "brashen-trell",
+            "name": "Brashen Trell",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The refitted liveship, blind, huge and sailing again after a generation on a beach. He is proud of being useful and terrified of being abandoned, and the closer the voyage comes to the Pirate Isles the more of his own buried history begins to work its way to the surface, none of which he wants to look at.",
+            "id": "paragon",
+            "name": "Paragon",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The foreign woodworker who bought and rebuilt Paragon, sailing aboard him as his advocate and, at need, as ship's carpenter and healer. She speaks of the world balanced at a point where a few people's choices decide which way it falls, and she is unshakeably certain that Paragon matters. About herself she still says almost nothing.",
+            "id": "amber",
+            "name": "Amber",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Vestrit son, now openly one of Kennit's people: priest, healer, adviser and the man who explains Kennit to everyone including Kennit. He has chosen this, and he knows what it costs him to keep choosing it. His loyalty to the ship he grew up on is the one thing in him that has never wavered.",
+            "id": "wintrow-vestrit",
+            "name": "Wintrow Vestrit",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "King of the Pirate Isles in everything but ceremony, with a fleet, a liveship and a reputation as the liberator of slaves. He is charming, ruthless and privately convinced that the world is arranged for his benefit, and he takes what he wants on the assumption that wanting it makes it his. The wizardwood charm on his wrist knows exactly what he is.",
+            "id": "kennit",
+            "name": "Kennit",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Kennit's woman, now his queen in practice: literate, armed, expensively dressed and entirely committed to him. She is jealous, dangerous, and clear-eyed about almost everything except the man she has given herself to.",
+            "id": "etta",
+            "name": "Etta",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Vestrit liveship, sailing under Kennit. What speaks from her figurehead is no longer only the accumulated memories of a Bingtown Trader family; something far older that was sealed into her wizardwood is rising through her, and it does not think of itself as a ship at all.",
+            "id": "vivacia",
+            "name": "Vivacia",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The last dragon, freed from her cocoon beneath the drowned Elderling city and now flying over the Rain Wilds and Bingtown. She is vast, vain, impatient and openly contemptuous of humans, and she is also the only creature capable of driving the Chalcedean fleet off the coast. She has one overriding purpose: to see the sea serpents up the river to the cocooning grounds so that her kind does not end with her.",
+            "id": "tintaglia",
+            "name": "Tintaglia",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Rain Wild Trader of the Khuprus family, grieving the woman he believes drowned in the collapse of the buried city. He is the human Tintaglia deals with most, negotiating between a dragon, the Rain Wild settlements and a Bingtown at war, and he cannot make himself stop searching the river for a body or a survivor.",
+            "id": "reyn-khuprus",
+            "name": "Reyn Khuprus",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Vestrit matriarch, hiding in a burning, besieged Bingtown where her family's name is under suspicion of collaboration. She is old, exhausted and better than anyone else at seeing what alliances the city will actually need to survive, and nobody in authority wants to hear it from her.",
+            "id": "ronica-vestrit",
+            "name": "Ronica Vestrit",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The elder Vestrit daughter, holding her family's Trader seat through a war with her mother in hiding, her son among pirates, her daughter missing and her husband gone. She has stopped waiting for a man to tell her what her name obliges her to do.",
+            "id": "keffria-vestrit",
+            "name": "Keffria Vestrit",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Jamaillian Companion left behind in Bingtown when the Satrap was taken. Using his seal and his absence, she has claimed authority over the city's negotiations, and she governs from fear as much as from policy: brittle, suspicious, and surrounded by hard young Trader men who are happy to be her enforcers.",
+            "id": "serilla",
+            "name": "Serilla",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The youngest Vestrit child, a boy caught in a besieged city with his mother and grandmother. His encounter with the dragon changes what he is for, and he becomes her voice among people who will not listen to her directly.",
+            "id": "selden-vestrit",
+            "name": "Selden Vestrit",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "ship-of-destiny"
+      },
+      "recaps": {
+        "ending": "Kennit dies. He is brought down in the fighting that ends the Chalcedean threat, and the kingdom he built passes to Etta, who is carrying his child, with Wintrow beside her as adviser and the Vivacia, restored to herself, as their ship. Althea, who could have pressed her claim, lets Vivacia go: the ship belongs with Wintrow, and Althea's place is aboard Paragon with Brashen, whom she marries, and who is her captain in fact as well as in name. Paragon comes through his own history intact: the truth of what was done aboard him and what he did in return is finally spoken, Amber gives him carved eyes, and he sails whole for the first time in a generation. Tintaglia keeps her bargain. The Chalcedean fleet is broken and driven off, the sea serpents are brought up the Rain Wild River to the cocooning grounds, and they spin their cocoons under the dragon's guard, so that her kind will not end with her. Malta and Reyn, changed by long contact with dragon blood and Elderling stone, are married and take a leading part in the settlement that follows; Selden is changed too, and speaks for the dragon. Bingtown, the Rain Wilds, the Three Ships families and the Tattooed emerge from the siege as a single polity that has effectively bought its independence, with the Satrap restored on terms he had no power to refuse and Serilla's improvised regime finished. Amber's work is done, and she leaves.",
+        "in_short": "Malta, swept out of the Rain Wilds with the Satrap of Jamaillia, keeps them both alive, reaches the Pirate Isles and turns herself into a negotiator for a Bingtown under siege. Reyn, believing her dead, brokers the bargain that saves the coast: Tintaglia, the last dragon, will drive off the Chalcedean fleet if the sea serpents are helped up the Rain Wild River to cocoon. Aboard Paragon, Althea and Brashen find the Vivacia; Althea is taken and raped by Kennit, and the ship herself is being overtaken by the ancient dragon memory sealed into her wizardwood. Paragon's own buried past comes out, and with it what tied a pirate king to a mad liveship. The siege of Bingtown ends in a general alliance of Traders, Rain Wilds, Three Ships and Tattooed. Kennit dies; Etta, carrying his heir, inherits his kingdom with Wintrow and the Vivacia beside her. Althea gives up her claim to the ship, marries Brashen and keeps Paragon, restored and given new eyes. Malta and Reyn, transformed into Elderlings, marry and help settle the peace, and the serpents cocoon under Tintaglia's guard.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously in the Liveship Traders: the Bingtown Trader ship Vivacia woke as a liveship on old Ephron Vestrit's death, and his will gave her not to his sailor daughter Althea but to his son-in-law Kyle Haven, who barred Althea from the deck, forced his son Wintrow off his monastery path and aboard, and put the ship into the slave trade. The pirate captain Kennit, building a kingdom in the Pirate Isles on the reputation of freeing slaves, took the Vivacia, kept Wintrow, who had saved his life, and won the ship's affection for himself. Althea earned a mate's ticket in disguise, and with Brashen Trell and the foreign woodworker Amber refitted the mad, blinded liveship Paragon and sailed to take Vivacia back. In Bingtown, the Satrap's visit ended with the city burning, the Satrap kidnapped and Chalcedean galleys raiding the harbour, forcing the Old Traders, the Three Ships families and the Tattooed into an unwilling alliance. Malta Vestrit carried the Satrap up the Rain Wild River to force the Rain Wilds to commit; an earthquake and flood destroyed the buried Elderling city beneath Trehaug, and out of the great wizardwood log in its depths came Tintaglia, the last dragon, who flew. Malta was swept away downriver and Reyn Khuprus was left believing her drowned. Wizardwood, it emerged, is dragon cocoon, which makes every liveship the remains of one of Tintaglia's kin, and a tangle of sea serpents that has swum north for a lifetime waits at the river mouth for someone to let them pass.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Malta comes to in a small boat on the sea with the Satrap of Jamaillia, injured, scarred across the head and with no one looking for her. Cosgo is useless, frightened and self-pitying, and keeping him alive is entirely her problem; she does it because a living Satrap is the only lever Bingtown has left. The girl who spent two books manipulating drawing rooms turns into someone who can bargain for water. Far behind her, Reyn searches the flooded diggings and the riverbanks and finds nothing. Bingtown is under siege by Chalcedean raiders, the Vestrit house is suspect, and Ronica and Keffria are hiding in a city that no longer has a functioning government. At sea, the Paragon runs south towards the Pirate Isles with Brashen as captain, Althea as mate and Amber aboard, hunting a liveship in waters where every hull is hostile.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tintaglia makes her terms plain to the Rain Wilds and to Bingtown: she will break the Chalcedean fleet and keep the coast clear, and in exchange the humans will get the sea serpents up the river to the cocooning grounds, feed them, and see them safely through the winter. Neither side trusts the other and neither has an alternative. Reyn becomes the man who negotiates with her, partly because he is the one she will speak to and partly because it is the only thing keeping him upright. In Bingtown, the Companion Serilla has used the absent Satrap's seal to make herself the city's authority, and governs through fear and a group of hard young Trader men. Ronica, who can see what alliances the city actually needs, has no standing to propose them.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Paragon finds Kennit's fleet, and the meeting goes badly: Althea is taken aboard the Vivacia, and she and Wintrow are reunited on opposite sides of everything. Kennit rapes her. The ship who should have been her family's does not intervene, because what is now speaking from Vivacia's figurehead is no longer only a Trader family's memories; the ancient dragon sealed into her wizardwood has surfaced and taken her over, and it does not regard itself as a ship or the humans aboard as anything much. Wintrow, who has chosen Kennit and defended him for two books, has to face what he has been serving. Malta, meanwhile, reaches the Pirate Isles with the Satrap and finds herself negotiating for Bingtown with people who hold every advantage.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Paragon's own history comes up as they close on the Vivacia, and it is worse than Bingtown's version of it. The ship was owned by a family whose sons sailed him, he was taken by a pirate who used him and them appallingly, and what he did to end that is why he lay blinded on a beach for a generation. The thread runs directly to Kennit, whose past and Paragon's are the same story told from different decks. Amber, who has always insisted Paragon mattered, holds him together while it surfaces. At sea and ashore the war widens: Chalcedean galleys raid the Rain Wild River as well as Bingtown, and Serilla's regime begins to break down under the pressure of a siege it cannot win.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bingtown stops being able to afford its own factions. The Old Traders, the Three Ships families and the Tattooed former slaves make common cause because the alternative is a Chalcedean city, and the Rain Wilds come in behind them with Tintaglia's bargain attached. Ronica and Keffria find themselves useful again, and Selden's encounter with the dragon leaves him changed and speaking for her among people who will not deal with her directly. Malta, from the far side of the world, works the Satrap towards terms that would give Bingtown what it has wanted for three generations. Tintaglia begins doing what she promised, and the Chalcedean fleet learns what a dragon is.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The serpents are brought up the Rain Wild River, a long, ugly, expensive operation that the Rain Wilders carry out because they gave their word and because a dragon is watching. Starved, half-mad and barely remembering what they came for, the serpents reach the cocooning grounds and begin to spin, and Tintaglia broods over them. Malta and Reyn's separate journeys converge, and long exposure to dragon blood and Elderling stone has begun to change them both physically into something that is no longer quite human. In the south, Paragon and the Vivacia are on a collision course, with Althea aboard the wrong ship, Wintrow's loyalties finally breaking, and Kennit unable to imagine that anything could go against him.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The two liveships meet, and the confrontation is fought as much inside the ships as between them. Paragon speaks his own history aloud at last, which is also Kennit's, and stops being the mad ship of Bingtown legend; Amber carves him eyes, and he can see for the first time in a generation. Aboard the Vivacia the dragon that displaced her is challenged by Wintrow and by the ship's own buried self, and Vivacia begins to come back. Kennit, whose whole life has been an act of will imposed on other people's reality, finds the story he has been telling about himself contradicted by the ship that was there when it happened. The Chalcedean fleet, driven off the northern coast by Tintaglia, comes south, and everyone still afloat has to fight it.",
+            "through": {
+              "chapter": 34
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kennit is killed in the fighting that ends the Chalcedean threat. Etta, carrying his child, inherits the kingdom he assembled, and Wintrow stays with her as her adviser and the child's, with the Vivacia, herself again, as their ship. Althea, who has spent three books trying to get that ship back, lets her go: Vivacia belongs where Wintrow is. Paragon, restored and sighted, is hers and Brashen's. In the north, Tintaglia has kept her side of the bargain, the serpents are cocooned under her guard, and the coast is clear of Chalcedean raiders for the first time in years. Bingtown, the Rain Wilds, the Three Ships and the Tattooed have fought the siege as one people and mean to keep governing as one.",
+            "through": {
+              "chapter": 37
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The settlement is made on Bingtown's terms. The Satrap is restored to a throne he holds only because Malta kept him alive, and the charter dispute is resolved in favour of a city that no longer needs Jamaillia's permission for anything; Serilla's improvised regime ends with him. Malta and Reyn, both visibly changed by dragon blood and Elderling stone into something new, are married, and take a leading part in the accord between Bingtown, the Rain Wilds and the dragon; Selden, changed as well, speaks for Tintaglia. Althea marries Brashen and keeps Paragon, whole and sighted and finally at peace with what he is. Etta rules the Pirate Isles with Wintrow beside her, raising Kennit's heir aboard the Vivacia. Amber, whose insistence that a mad ship mattered turned out to be the hinge of all of it, says her goodbyes and goes, still explaining nothing about herself. The serpents sleep in their cocoons, and dragons will come back into a world that had almost finished forgetting them.",
+            "through": {
+              "chapter": 40
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "ship-of-destiny"
+      }
+    },
+    "ship-of-magic": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The younger daughter of the Bingtown Trader family that owns the liveship Vivacia. She has sailed with her father since she was a girl, knows the ship and the trade better than anyone else in her family, and assumes without question that Vivacia will be hers. She is stubborn, hot-tempered, physically capable and completely uninterested in the drawing-room life a Trader's daughter is supposed to want. She has no legal standing whatever, which she is about to discover.",
+            "id": "althea-vestrit",
+            "name": "Althea Vestrit",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The liveship of the Vestrit family, built of wizardwood from the Rain Wilds and, like all liveships, expected to wake into consciousness once three generations of her owning family have died aboard her. She is intensely sensitive to the people who touch her decks and takes her sense of herself from whichever Vestrit is closest, which makes her loyalties dangerously easy to shape.",
+            "id": "vivacia",
+            "name": "Vivacia",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Master of the Vivacia and head of the Vestrit family, dying slowly and painfully aboard his own ship on the last run home to Bingtown. He is a proud, old-fashioned Trader who sailed with his younger daughter at his side for years and who has left the disposal of his ship and his family to a will nobody has read.",
+            "id": "ephron-vestrit",
+            "name": "Ephron Vestrit",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Ephron's wife and the true manager of the Vestrit fortunes, who has spent years quietly holding the family's debts and contracts together while her husband sailed. She is shrewd, tired and inflexible about Trader propriety, and she is carrying obligations, including a debt owed to a Rain Wild family, that she has told her daughters almost nothing about.",
+            "id": "ronica-vestrit",
+            "name": "Ronica Vestrit",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The elder Vestrit daughter, married to the sea captain Kyle Haven and mother of Wintrow, Malta and Selden. She was raised to run a household rather than a trading house, defers to her husband on principle, and has never had to choose between him and her mother or her sister before.",
+            "id": "keffria-vestrit",
+            "name": "Keffria Vestrit",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Keffria's husband, an able and ambitious sea captain from outside the Trader families who has spent his marriage being treated as an outsider by them. He regards the Vestrit ship as an asset being wasted by sentiment, has firm ideas about what boys and women are for, and is prepared to be as ruthless as necessary now that the ship is finally within his reach.",
+            "id": "kyle-haven",
+            "name": "Kyle Haven",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Keffria's son, taken to a monastery of Sa as a boy and now nearly finished with his novitiate. He is thoughtful, devout and physically slight, has no interest in ships or trade, and is summoned home for his grandfather's death expecting to return to the monastery afterwards. His faith has never yet been tested by anything harder than fasting.",
+            "id": "wintrow-vestrit",
+            "name": "Wintrow Vestrit",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Keffria's elder daughter, thirteen and furious about it. She is clever, vain and impatient to be treated as a woman, with a sharp instinct for how to work the adults around her and no experience at all of consequences. Bingtown's rules about courtship, Trader daughters and Rain Wild suitors strike her as obstacles rather than protections.",
+            "id": "malta-vestrit",
+            "name": "Malta Vestrit",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Vivacia's first mate under Ephron Vestrit, a competent sailor and the disowned son of a Bingtown Trader family. He drinks, chews a drug that is eating him, and has spent years keeping himself just employable. He respects Althea, which is not the same as being any use to her, and his own prospects vanish along with his captain.",
+            "id": "brashen-trell",
+            "name": "Brashen Trell",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A pirate captain out of the Pirate Isles, elegant, controlled and quite unlike the drunks and brawlers around him. He intends to make himself king of the pirate towns, and has worked out that the way to do it is to be seen freeing slaves rather than merely taking cargo. He wears a small carved wizardwood charm on his wrist that talks back to him, and he keeps his own counsel about almost everything.",
+            "id": "kennit",
+            "name": "Kennit",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Kennit's first mate, a huge, scarred, straightforward pirate who was raised in the slave trade's shadow and hates slavers with his whole heart. He is loyal, blunt and much less clever than his captain, and the bargain between them is that Sorcor gets his slavers and Kennit gets whatever Kennit is really after.",
+            "id": "sorcor",
+            "name": "Sorcor",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A woman of the pirate town of Divvytown who belongs to the brothel Kennit visits and is treated by him as a convenience. Hard, watchful and used to being disposable, she begins to attach herself to him with an intensity he neither invited nor understands.",
+            "id": "etta",
+            "name": "Etta",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A liveship beached and abandoned on the shore outside Bingtown, hull up, with his eyes hacked away. He belonged to a Trader family that lost crew after crew aboard him, and Bingtown regards him as mad and murderous, a ship who rolled and drowned his own people. He is bitter, lonely, unpredictable and desperate for company, and he talks to the few people willing to walk out to him.",
+            "id": "paragon",
+            "name": "Paragon",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A newcomer to Bingtown who has taken a shop on Rain Wild Street to sell carved wooden beads, unsettling the Traders by being a foreigner in a city that does not sell property to outsiders. She has pale gold skin and eyes, gloves, and an evasive way with questions about where she is from. She works wood extraordinarily well, and she takes an interest in the beached liveship that nobody else in Bingtown can account for.",
+            "id": "amber",
+            "name": "Amber",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young man of the Khuprus family of the Rain Wild settlements upriver, veiled as all Rain Wilders are when they come to Bingtown, since the river marks those who live beside it. His family holds an old debt against the Vestrits, and he begins a courtship along the formal Rain Wild lines, beginning with a gift that carries a dream.",
+            "id": "reyn-khuprus",
+            "name": "Reyn Khuprus",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The leader of a tangle of sea serpents moving north, one of the few of his kind who still half-remembers that they were meant to be something more and that there is a thing they are supposed to do. He is losing his memory and his tangle is losing its sense of itself, and he searches the sea for one who can tell them what they have forgotten.",
+            "id": "maulkin",
+            "name": "Maulkin",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "ship-of-magic"
+      },
+      "recaps": {
+        "ending": "Kennit gets what he has been manoeuvring for and takes the Vivacia. Kyle Haven is beaten and put off his own deck, and the ship, drawn to Kennit's certainty in a way she never was to Kyle's bullying, begins to belong to her captor. Wintrow, tattooed as his father's property and with nowhere to go, stays aboard and keeps Kennit alive by tending the ruined leg the serpent left him, which binds the pirate to him and him to the pirate. The Vivacia is out of the slave trade and into piracy, and the Vestrits have lost her. In Bingtown the news arrives as ruin: the family's ship, its livelihood and its heir are gone, Ronica's debts are called in, and the Trader families are quarrelling with the New Traders and the Satrap's grants while Chalcedean galleys move in the northern channel. Althea has earned a mate's ticket the hard way, sailing as a hand aboard another liveship, and has proof at last that she can do the work; she comes home to find there is no ship to claim and sets herself to getting Vivacia back. Brashen is ashore and out of prospects. Amber has bought the mad liveship Paragon outright, to Bingtown's scandal, and has her own reasons for wanting him afloat. Malta, courted by a veiled Rain Wilder, has opened a gift she was warned about and stepped into an entanglement she does not understand. Out at sea a tangle of serpents has found one who remembers, and has begun to move north.",
+        "in_short": "In the merchant city of Bingtown, old Ephron Vestrit dies aboard his liveship Vivacia and she wakes into consciousness, as liveships do when three generations of a family have died on their decks. His younger daughter Althea, who has sailed with him for years, expects to inherit her; instead the will gives the ship to her sister Keffria and so to Keffria's husband Kyle Haven, who bars Althea from the deck and drags his son Wintrow out of a monastery to serve aboard because the ship needs a Vestrit. Kyle puts Vivacia into the slave trade. Althea sets out to earn a mate's ticket and prove her claim, sailing disguised aboard another liveship. In the Pirate Isles, Kennit works to make himself king by freeing slaves, and decides that what he needs is a liveship of his own. Ashore, the mad blinded liveship Paragon acquires an unlikely new owner in the newcomer Amber, Malta is drawn into a Rain Wild courtship, and sea serpents search for a memory they have lost. Kennit takes Vivacia, breaks Kyle, keeps Wintrow, and leaves the Vestrits ruined and Althea determined to win her ship back.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "The Liveship Traders begins a new story with a new cast, in a different part of the same world as the Farseer trilogy; no knowledge of those books is needed, and none of their characters appear here. All that carries over is the shape of the world. Far to the north lies the kingdom of the Six Duchies, which has spent recent years fighting a ruinous sea war against raiders from the Outislands, a war that has emptied its treasury and badly disrupted trade the length of the coast. South of it, past the Chalced States, lies Bingtown, a merchant city founded generations ago by settlers who took a charter from the Satrap of Jamaillia and pushed north into the Cursed Shores. Beyond Bingtown are the Rain Wilds, up a river whose water changes anyone who lives beside it, and where the wizardwood that liveships are built from is quarried. Magic in this world is real, rare and always paid for in one currency or another; in these southern lands dragons are a matter of legend rather than of living memory. Bingtown's Old Traders keep to a charter, their family debts and their own council, and they are being crowded by New Traders arriving with fresh grants from a young and spendthrift Satrap.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Bingtown Trader Ephron Vestrit is dying aboard his liveship Vivacia on her last run home, tended by his younger daughter Althea, who has sailed with him for years and knows the ship better than anyone. Liveships are built of wizardwood bought at ruinous cost from the Rain Wilds and are said to wake into consciousness once three generations of the owning family have died on their decks; Ephron is the third. He dies, and Vivacia quickens, aware and newborn and reaching for whoever is nearest. Althea has always assumed the ship would be hers. Instead the will leaves the Vivacia to her elder sister Keffria, which in practice means to Keffria's husband, the outsider captain Kyle Haven, who has waited a long time to be given something by this family. Ronica Vestrit, who has quietly managed the family's debts for years, backs the arrangement.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kyle bars Althea from the ship, offering her a place in the household but none on the deck. She refuses, walks out of the family house with nothing, and sets herself to earning a ship's ticket on her own merits so that she can come back with proof that she is a sailor rather than a sentimental girl. Kyle also sends for his son Wintrow, who has spent most of his life in a monastery of Sa and is a season from taking his final vows, and keeps him: a liveship needs a family member aboard, and Kyle intends to make a sailor out of the boy whether or not the boy consents. Wintrow is wretched and useless on deck, and Vivacia, who takes her sense of herself from whoever is closest, fastens on him. Meanwhile Brashen Trell, Ephron's competent, disowned, drug-chewing first mate, finds himself ashore with no berth and no name.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the Pirate Isles, Captain Kennit intends to make himself king of the pirate towns and has worked out how: his mate Sorcor wants slavers taken and slaves freed, and freed slaves make a reputation. Kennit is elegant, controlled and secretive, and he wears a small carved wizardwood charm on his wrist that speaks to him with an unwelcome frankness. Out in the deep water a tangle of sea serpents led by Maulkin moves north, half-remembering that they were once meant for something else and searching for one who can tell them what. In Bingtown, the newcomer Amber sells carved beads on Rain Wild Street and scandalizes the Traders by being a foreigner who owns property, and takes an unexplained interest in Paragon, the blinded liveship beached outside the harbour who is said to have drowned crew after crew and who talks to anyone who walks out to him.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kyle takes the Vivacia south and puts her into the slave trade, the one cargo that will pay off the Vestrit debts fastest and the one every Old Trader charter was written to forbid. Wintrow, forced aboard, watches slaves chained in the hold and cannot reconcile any of it with what he was taught; Vivacia has to carry their misery in her timbers and begins to come apart under it. Kyle answers his son's resistance with escalating brutality. Ashore, Althea works her way up through hard berths, learning what a woman without a name is worth on a working deck, and Malta Vestrit, thirteen and impatient, forces her way into adult society and attracts the attention of a veiled Rain Wild suitor whose family holds an old debt against hers.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kyle has Wintrow tattooed with the ship's sigil across his face in the manner of a slave, marking him as property and ending any pretence that the boy is being made a sailor rather than broken into one. Wintrow's attempts to escape fail badly and cost him more each time, and the bond between him and Vivacia becomes the only thing either of them has. Althea, unable to get a fair berth as herself, signs aboard the liveship Ophelia in disguise as a ship's boy and finally gets to do the work she was raised to, well enough that the ship and her captain take her side. Brashen drifts through the same ports. Kennit, raiding steadily and building his legend, is attacked by a sea serpent and loses a leg, and comes to the conclusion that what his ambitions require is a liveship of his own.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bingtown itself begins to crack. New Traders arrive with grants sold by the Satrap in defiance of the old charter, slavery spreads into a city whose founding agreement forbade it, Chalcedean galleys patrol the channel as the Satrap's hired escorts, and the Old Trader families argue about whether to petition, resist or simply survive. Ronica, calling in and putting off debts, finds the Vestrit position worse than she admitted even to herself, and the Rain Wild family that holds the family's oldest obligation makes it plain what payment they would accept. Malta, courted with formal Rain Wild gifts, treats the whole thing as a game she can win. Out at sea, Maulkin's tangle finds a white serpent who may hold what the others have forgotten.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kennit sets his trap and takes the Vivacia. Kyle is defeated on his own deck and put out of the ship; the crew is disposed of or turned; and Vivacia, who was never given a reason to love the man who owned her, responds to Kennit's absolute certainty about himself in a way that frightens Wintrow badly. Kennit's leg has gone septic and is killing him, and Wintrow, the only person aboard with a healer's training, keeps him alive through it. The debt runs both ways from then on. Wintrow, tattooed as a slave and with no family left that can protect him, has to decide whether he is a prisoner, a hostage or something worse, and the ship he loves is drifting away from him towards a man who is very good at being loved.",
+            "through": {
+              "chapter": 34
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The news reaches Bingtown as the ruin of the Vestrits: the liveship, the family's livelihood and its heir are all in a pirate's hands, and Ronica's creditors will not wait. Keffria is left to face what her husband did with the ship and with her son. Althea comes home with a mate's ticket earned the hard way aboard the Ophelia, sailing disguised as a boy, and finds there is no ship left to claim and no one who can give it back to her; she resolves to take Vivacia back herself, and Brashen, ashore and out of options, is the only sailor likely to help her. Amber buys the mad blinded Paragon outright, to the horror of Bingtown, for reasons she does not explain. Malta opens the Rain Wild gift she was warned to leave shut and steps into an entanglement she cannot see the shape of. And out in the deep water, the serpents have found one who remembers, and turn north.",
+            "through": {
+              "chapter": 38
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "ship-of-magic"
+      }
+    },
     "shogun": {
       "characters": {
         "characters": [

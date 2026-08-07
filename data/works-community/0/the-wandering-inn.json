@@ -1394,6 +1394,214 @@
         "work": "the-well-of-ascension"
       }
     },
+    "the-wicked-king": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A mortal in her late teens who serves as seneschal to the High King of Elfhame and, in secret, rules through him: Cardan is bound by oath to obey her for a year and a day, and the commands he gives at court are hers. She holds power nobody has agreed to give her and keeps it with spycraft, poison tolerance and nerve, while the clock on the oath runs down and she cannot tell a single person why she is so anxious about the date.",
+            "id": "jude-duarte",
+            "name": "Jude Duarte",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The youngest son of the murdered High King, crowned through Jude's manoeuvring and bound to do as she says for a year and a day. He wears the crown as a provocation, fills his days with drink and revels, mocks the office and the girl holding his leash, and occasionally shows a sharper political instinct than anyone expects of him. What he actually wants from Jude is impossible to read.",
+            "id": "cardan",
+            "name": "Cardan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jude's twin, engaged to Locke and preparing for the wedding that will finally give her the settled place in Faerie she has always wanted. The sisters are on speaking terms again but not repaired; Taryn resents both Jude's refusal to live quietly and the danger she keeps walking into.",
+            "id": "taryn-duarte",
+            "name": "Taryn Duarte",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jude's adoptive father, the redcap general who backed Balekin's coup and lost. Stripped of his command and kept away from the throne, he is still the most dangerous soldier in Elfhame and still speaks to Jude as a father would. He is patient, he wants a war, and he is working out who is really giving the orders.",
+            "id": "madoc",
+            "name": "Madoc",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A green-skinned hob and the most seasoned of the spies of the Court of Shadows, now working for Jude. He handles locks, thefts and the practical business of running informants, and he is candid with her about how badly her position could go wrong.",
+            "id": "the-roach",
+            "name": "The Roach",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The explosives expert of the Court of Shadows, white-haired and unflappable, one of the few people who knows exactly what Jude is doing and helps her do it. She is loyal, practical, and better company than anyone else Jude works with.",
+            "id": "the-bomb",
+            "name": "The Bomb",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Taryn's betrothed, a fey lord who once courted both Duarte sisters at the same time for his own entertainment. Cardan appoints him Master of Revels, which gives him a court office and licence to stage entertainments, and he uses it to arrange situations that produce the reactions he enjoys watching.",
+            "id": "locke",
+            "name": "Locke",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Vivi"
+            ],
+            "description": "The eldest Duarte sister, half fey, living in the human world with her mortal girlfriend and raising Oak there. She has the life away from Faerie she always wanted and no intention of returning, and she is increasingly unwilling to keep lying to Heather about what she is.",
+            "id": "vivienne",
+            "name": "Vivienne",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Vivi's mortal girlfriend in the human world, who shares a flat with her and the children and knows nothing about Faerie. She is warm, ordinary and entirely unprepared for the truth about the family she has attached herself to.",
+            "id": "heather",
+            "name": "Heather",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Jude's small half-brother, secretly the son of the murdered Prince Dain and therefore the true heir of the blood, growing up in the human world where nobody can crown him. He is settling happily into a mortal childhood, which complicates every plan to bring him back.",
+            "id": "oak",
+            "name": "Oak",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Madoc's fey wife and Oak's mother, who hid the boy's parentage for years and now lives apart from her son. She has never trusted Jude, and she is the person with the most to lose from any move Madoc makes.",
+            "id": "oriana",
+            "name": "Oriana",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Princess of the Undersea, Cardan's former sweetheart and her mother's envoy to the High Court. She despises mortals as thoroughly as ever, still considers Cardan hers, and carries the growing impatience of a sea power that the land cannot afford to fight.",
+            "id": "nicasia",
+            "name": "Nicasia",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Cardan's eldest brother, who murdered their father and most of their family to seize a crown he never got to wear, now held prisoner in the Tower of Forgetting. Confinement has not humbled him: he is composed, contemptuous, and evidently still able to get messages out of his cell.",
+            "id": "prince-balekin",
+            "name": "Prince Balekin",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Queen of the Undersea and Nicasia's mother, ruler of the one power in the world that Elfhame cannot easily fight. She is negotiating terms with the new High King and treats her own patience as a resource to be spent for advantage.",
+            "id": "queen-orlagh",
+            "name": "Queen Orlagh",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-wicked-king"
+      },
+      "recaps": {
+        "ending": "Madoc finally moves against the throne in the open, backed by soldiers and by allies gathered while the court was distracted, and demands that Cardan give up the crown. With Jude's year and a day almost spent and a claim through the child heir Oak the obvious way for Madoc to legitimise a seizure, Cardan and Jude marry in front of the court. The marriage makes Jude High Queen of Elfhame, wrecking Madoc's plan, since there is now a crowned consort in the way of any regency. It is the moment Jude's hidden power becomes real and public rather than a secret held by an oath. Cardan's next act, moments later and in front of everyone, is to exile her: he banishes Jude from Faerie, and a royal command is not something she can refuse. She is put out into the mortal world, forbidden to return, cut off from the court, her spies and her brother's future, and with no explanation of whether the betrayal was calculation, revenge for the leash she kept him on, or something else entirely. Madoc remains at large with his forces intact, the Undersea has its treaty and Balekin, and the High Queen of Elfhame is stranded in the human world.",
+        "in_short": "Five months after crowning Cardan, Jude Duarte runs Elfhame from behind the throne as his seneschal, holding him to an oath that expires after a year and a day. She fends off assassins, the scheming of her exiled adoptive father Madoc, and the demands of Queen Orlagh of the Undersea, whose envoy is Cardan's former sweetheart Nicasia, while trying to keep her secret from a court that would kill a mortal for far less. Taryn marries Locke, Cardan makes Locke Master of Revels, and Jude's grip on both the king and the realm slowly loosens. Jude is seized by the Undersea and held beneath the water until Cardan buys her back with a treaty and the prisoner Balekin. Back at court, with the oath nearly expired and Madoc's rebellion breaking into the open, Cardan and Jude marry, making her High Queen and destroying Madoc's claim to a regency. Then, in front of the assembled court, Cardan exiles her to the mortal world, and she cannot disobey.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, in The Cruel Prince: the mortal twins Jude and Taryn Duarte were taken into Faerie as children by Madoc, the redcap general who had killed their mother, once his wife, and her human husband. Raised in his household with their half-fey sister Vivienne, they were despised by the fey gentry, above all by Prince Cardan and his companions. Wanting power of her own, Jude swore herself to Prince Dain as a spy and joined his Court of Shadows, killed Valerian when he attacked her, and lost her sister's trust when she discovered Locke had been courting both twins at once with Taryn's knowledge. At the coronation, Prince Balekin murdered the High King and most of his heirs, with Madoc as his ally, and Dain was shot by the Ghost, Balekin's man inside the Court of Shadows. Jude captured Cardan, the last heir who could pass the crown, and learned that her small brother Oak was secretly Dain's son and the true heir Madoc intended to rule through. She put Cardan on the throne instead, in exchange for his oath to obey her for a year and a day, saw Balekin imprisoned and Madoc stripped of his command, and sent Oak to the human world to be raised by Vivi. Taryn stayed behind, engaged to Locke.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Five months into Cardan's reign, Jude serves as his seneschal, which lets a mortal stand beside the throne without anyone asking why the High King listens to her. In private she is the one ruling: the oath binds Cardan to obey her, and she uses it to keep him from wrecking the crown he never wanted. The court is dangerous ground. The Living Council resents her, the gentry resent her more, Cardan drinks and holds revels and needles her at every opportunity, and he appoints Locke, now Taryn's betrothed, as Master of Revels over Jude's objection. Balekin sits in the Tower of Forgetting, unrepentant. Madoc, out of office but not out of power, watches the palace and asks pointed questions. The Undersea is pressing for terms, with Queen Orlagh's daughter Nicasia at court to make the pressure felt. Oak is safe in the human world with Vivi and her girlfriend Heather, and Jude means to keep him there for years yet. She has the Court of Shadows, an income of secrets, and a deadline she has told no one about.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jude's position starts to cost more than it pays. There are attempts on her life and on Cardan's, and it becomes clear that someone inside the palace is working for an enemy. She questions Balekin in his cell and learns that his imprisonment has not cut him off from correspondents, and that his interest in the Undersea is not idle. Orlagh's demands harden, and Nicasia makes plain that a treaty on the sea's terms is the price of peace. Jude keeps the realm running by exhausting herself: reading reports, buying informants, managing Cardan in public and arguing with him in private, while the antagonism between them turns into something neither will name. She visits the human world to see Oak, and finds Vivi's relationship with Heather strained by everything Vivi has not told her. Meanwhile Madoc, courteous and unhurried, keeps testing where the real authority in Elfhame sits.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Taryn marries Locke, and the wedding brings the whole court together, including Madoc, who uses the occasion for his own purposes. The sisters' truce holds only as long as neither says what she means. Jude's control of Cardan grows more precarious as the year and a day nears its end and she has no plan for what follows; her authority depends entirely on an oath that will simply stop. Cardan, for his part, has begun ruling in ways Jude did not instruct, and their relationship shifts from hostility to something intimate that neither of them trusts. The Undersea's pressure and the palace's internal treachery converge, and Jude realises that Madoc knows more about how the throne is really being run than he should.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jude is seized by the Undersea and taken beneath the water, where she is held for a long stretch, kept alive by enchantment and deliberately broken down by her captors, with Nicasia among them. She endures it, gives up nothing useful, and comes back harder and more frightened than she will admit. Her release is bought at a price: a treaty with Queen Orlagh on terms the land would rather not have accepted, and the handing over of Balekin, who leaves the Tower of Forgetting to become Elfhame's ambassador to the Undersea, a punishment that looks a great deal like a promotion. Jude returns to a court that has kept moving without her, an oath nearly expired, and a general who has spent her absence preparing.",
+            "through": {
+              "chapter": 26
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Back at the palace, the secret that has held Elfhame together comes apart. Madoc learns that it is Jude, not Cardan, who has been ruling, and he moves from testing to acting, gathering soldiers and allies for a claim of his own with the child heir Oak as his justification. Jude tries to hold her position with the days on the oath running out, weighing whether to force one last binding on Cardan, whether to bring Oak home, and whether Cardan can be trusted at all once he is free. Her spies confirm that Madoc's rebellion is real and close, and that the court will not defend a mortal seneschal. Cardan, meanwhile, is no longer behaving like a man being led.",
+            "through": {
+              "chapter": 29
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Madoc moves openly against the throne, demanding that Cardan give up the crown, with force behind the demand and a regency for Oak as his path to legitimacy. Cardan and Jude counter it by marrying in front of the court: the marriage makes Jude High Queen of Elfhame, which leaves no room for a regent and turns her hidden power into a public, permanent fact. Then, moments after the ceremony, Cardan exiles her. He banishes Jude from Faerie before the assembled court, and because it is a royal command she cannot refuse it. She is put out into the mortal world, barred from returning, separated from her spies, her sister and her brother, and given no reason for any of it. Madoc remains in the field with his army, the Undersea has its treaty and Balekin, and the newly crowned High Queen of Elfhame is stranded among humans with no way home.",
+            "through": {
+              "chapter": 32
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-wicked-king"
+      }
+    },
     "the-wide-window": {
       "characters": {
         "characters": [
