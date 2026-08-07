@@ -516,6 +516,236 @@
         "work": "pandemonium"
       }
     },
+    "paradiso": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The living pilgrim who has already crossed Hell and climbed Mount Purgatory. Now purified and guided by Beatrice, he rises through the heavens while trying to understand divine order in terms a human mind can hold. He remains both the traveler within the poem and the poet charged with reporting what he sees.",
+            "id": "dante",
+            "name": "Dante",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Dante's guide through Paradise and the woman whose intervention began his rescue. She explains how creation moves toward God, corrects Dante's mistaken assumptions, and leads him upward by the power of her increasingly radiant gaze.",
+            "id": "beatrice",
+            "name": "Beatrice",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A blessed soul whom Dante meets in the sphere of the Moon. She was taken from religious life and forced into marriage, and she helps him understand why the souls visible in the lowest sphere are still wholly content with their place in Heaven.",
+            "id": "piccarda-donati",
+            "name": "Piccarda Donati",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Justinian I"
+            ],
+            "description": "The Byzantine emperor who speaks for the souls associated with Mercury. He identifies himself through his work as a lawgiver and presents Roman history as part of a providential design rather than merely a record of conquest.",
+            "id": "justinian",
+            "name": "Emperor Justinian",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A prince of the Angevin house whom Dante knew in life, encountered among the loving souls of Venus. His warm greeting opens a discussion of differing natural gifts and the social disorder caused when people are forced into roles unsuited to them.",
+            "id": "charles-martel",
+            "name": "Charles Martel",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A noblewoman from northern Italy who appears in the sphere of Venus. Speaking without shame from the blessed state, she predicts coming political troubles and sharply criticizes the corruption of the region she knew on earth.",
+            "id": "cunizza-da-romano",
+            "name": "Cunizza da Romano",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Thomas Aquinas"
+            ],
+            "description": "A Dominican theologian shining among the wise spirits in the sphere of the Sun. He courteously names the members of his circle and becomes a principal teacher for Dante, explaining difficult points through ordered argument.",
+            "id": "saint-thomas-aquinas",
+            "name": "Saint Thomas Aquinas",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Franciscan theologian who leads a second circle of wise souls in the Sun. In a deliberate crossing of institutional lines, he honors Saint Dominic and recounts the Dominican founder's service to the Church.",
+            "id": "saint-bonaventure",
+            "name": "Saint Bonaventure",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Dante's crusading ancestor, appearing as a bright spirit within the cross of Mars. He greets Dante as a descendant and begins by recalling the cleaner civic life of the Florence into which he was born.",
+            "id": "cacciaguida",
+            "name": "Cacciaguida",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Peter the Apostle"
+            ],
+            "description": "The apostle who examines Dante on faith among the saints in the sphere of the fixed stars. He questions the pilgrim as a teacher testing whether Dante understands both the nature of faith and the grounds for his own belief.",
+            "id": "saint-peter",
+            "name": "Saint Peter",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "James the Great"
+            ],
+            "description": "The apostle who tests Dante on hope after Peter's examination of faith. His presence continues the pilgrim's formal accounting of the virtues that orient the soul toward God.",
+            "id": "saint-james",
+            "name": "Saint James",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "John the Apostle"
+            ],
+            "description": "The apostle who examines Dante on charity, the last of the three theological virtues tested in the fixed stars. His brightness temporarily overwhelms Dante's sight before the questioning begins.",
+            "id": "saint-john",
+            "name": "Saint John",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The first human being, encountered among the blessed after Dante's examination on charity. He answers the pilgrim's questions about humanity's earliest condition, his time in Eden, and the changing language of human beings.",
+            "id": "adam",
+            "name": "Adam",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Bernard of Clairvaux"
+            ],
+            "description": "A contemplative monk who appears beside Dante in the Empyrean when Beatrice has taken her place in the celestial rose. Devoted to Mary and practiced in contemplation, he becomes Dante's final guide toward the direct vision the journey has sought.",
+            "id": "saint-bernard",
+            "name": "Saint Bernard",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "paradiso"
+      },
+      "recaps": {
+        "ending": "In the Empyrean, Beatrice returns to her place in the celestial rose and Saint Bernard becomes Dante's final guide. Bernard explains the order of the blessed and then prays to Mary to obtain the grace Dante needs for the last vision. Dante looks into the divine light and perceives creation gathered into a single unity. He then apprehends the Trinity as three distinct yet equal circles and sees, within that mystery, an image of human nature joined to the divine. His intellect cannot solve how the two natures fit together, but a final illumination satisfies what reasoning cannot. At that instant his desire and will come fully into harmony with the love that orders the universe. The poem ends not with Dante descending to earth, but with his inner motion aligned with God's, leaving the task of communicating a vision that memory and language can only imperfectly preserve.",
+        "in_short": "After passing through Hell and Purgatory, Dante rises with Beatrice through the celestial spheres. Encounters with blessed souls teach him about freedom, vows, providence, justice, love, wisdom, sacred history, and the corruption of earthly institutions. His ancestor Cacciaguida predicts his exile and commissions him to tell the truth about the journey despite the cost. Beyond the planets, Dante is examined by apostles on faith, hope, and charity, then learns about angels and creation as he approaches the realm outside space and time. In the Empyrean he sees the blessed ordered as a vast rose. Beatrice takes her seat among them, and Saint Bernard guides him to the final vision. Through Mary's intercession, Dante beholds the unity of creation, the Trinity, and the mystery of divine and human nature joined in Christ. A sudden illumination brings his intellect, desire, and will into accord with the love governing all things.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously in the Divine Comedy, Dante became lost in a dark wood and was unable to climb toward safety. The Roman poet Virgil, sent through the intervention of Beatrice, led him through Hell, where punishments exposed the forms and consequences of unrepented sin. They then climbed Mount Purgatory, where souls willingly undergo purification and learn to direct love rightly. Near the summit Virgil declared Dante's will restored and could guide him no farther. Beatrice replaced him, confronted Dante with his past failures, and led him through the waters of forgetting sin and renewing the memory of good. Purified and ready to rise, Dante now stands with Beatrice in the earthly paradise at the beginning of the final stage of his journey.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Dante invokes divine aid for a task that strains memory and language, then rises with Beatrice from the earthly paradise. She explains that all created things move according to an order directed toward God, though free beings can turn aside. In the sphere associated with the Moon, Dante meets souls whose religious vows were left incomplete through external force. Piccarda Donati explains that every blessed soul is perfectly content because each will agrees with God's will; apparent differences of rank do not produce envy. Beatrice distinguishes coercion from consent and explains that a vow cannot simply be exchanged without regard to what was promised. The travelers then reach Mercury, where a spirit approaches who is ready to identify himself and explain the sphere's concern with honorable action touched by earthly ambition.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Emperor Justinian recounts the providential course of Roman power and argues that both those who oppose the imperial sign and those who exploit it misunderstand its sacred history. He also tells of Romeo of Villeneuve, a faithful servant repaid with suspicion. Beatrice explains redemption as the restoration of humanity through an act combining divine justice and generosity. In Venus, Charles Martel discusses the providential variety of human talents and the damage caused when society assigns people roles against their dispositions. Cunizza da Romano and Folco of Marseille speak from the same sphere, mixing memories of earthly love with prophecies and political rebuke. Reaching the Sun, Dante and Beatrice are encircled by wise spirits. Thomas Aquinas names the members of his luminous company, joining philosophers, theologians, historians, and contemplatives in a harmony that exceeds their former divisions.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Thomas Aquinas, a Dominican, praises Francis of Assisi and criticizes the decline of his own order; Bonaventure, a Franciscan, answers by praising Dominic and correcting failures among Franciscans. Their crossed tributes make the two founders complementary servants of the same Church. Aquinas then warns against hasty judgment and clarifies questions about human wisdom, while the spirits reveal their hope for resurrected bodies. Dante and Beatrice rise to Mars, where lights form a cross filled with souls who gave their lives for the faith. Cacciaguida emerges from it and greets Dante as his descendant. He recalls an older Florence marked by modest households and civic restraint, contrasting it with the wealth, faction, and social confusion of Dante's city.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Cacciaguida traces Dante's ancestry and describes how migration and faction transformed Florence. He then confirms the exile that earlier speakers have darkly predicted: Dante will lose his city, depend on others, and learn the pain of compromised companions. Yet Cacciaguida also gives the suffering a purpose, charging him to report the whole vision honestly. Among the warriors of Mars, Dante sees figures associated with defense of the faith. In Jupiter, the just rulers form letters and then the image of an eagle that speaks with a collective voice. The eagle insists that divine justice exceeds human measurement, challenging Dante's anxiety about virtuous people beyond Christian teaching. It identifies exemplary and corrupt rulers, then reveals that Trajan and Ripheus were saved in ways that preserve both grace and justice, showing that no human observer can map the limits of divine mercy.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In Saturn, the heaven of contemplation, Dante encounters Peter Damian and Benedict, who condemn luxury and institutional decay within religious life. The golden ladder of contemplatives reaches beyond Dante's sight, and Beatrice's beauty has become too intense for him to bear directly. From the sphere of the fixed stars, he looks back at the small inhabited earth and the full path through the planets. A triumph of Christ and the saints appears, followed by Mary, whose ascent is celebrated by the surrounding lights. Saint Peter then examines Dante on faith. Dante defines it, explains the authority on which his belief rests, and professes his creed; Peter circles him in approval. Saint James arrives to test hope, and Beatrice states that Dante possesses it before he describes its source and object for himself.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Saint John tests Dante on charity after the apostle's brilliance temporarily blinds him. Dante identifies God as the highest object of love and explains how created goods participate in that love. Adam restores Dante's sight and answers questions about Eden, his original language, and the duration of his first life there. Saint Peter then denounces corrupt popes, and Dante is made to look once more at the route below before entering the Primum Mobile. Beatrice explains the relation between the physical spheres and the nine orders of angels, whose speed reflects their nearness to God rather than their apparent spatial size. She corrects confused earthly accounts of angelic nature and describes their creation, their immediate division through rebellion, and the unbroken contemplation of the faithful angels. Her final rebuke turns toward irresponsible teachers who obscure truth for display or profit.",
+            "through": {
+              "chapter": 29
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Dante and Beatrice enter the Empyrean, the realm beyond physical space and time. A river of light and living sparks becomes, as Dante's sight adjusts, the immense celestial rose in which the blessed are seated and angels move between humanity and God. Beatrice has returned to her own throne, and Saint Bernard now stands beside Dante as his final guide. He explains the rose's order and directs Dante toward Mary. Bernard prays that she secure for the living pilgrim the strength to behold the ultimate reality without losing the moral transformation the journey has achieved. Dante's vision passes from the unity binding all creation to the threefold mystery of the Trinity and the union of human and divine nature. Reason cannot complete the final understanding, but an instant of grace brings his desire and will into perfect accord with the love that moves the whole cosmos.",
+            "through": {
+              "chapter": 33
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "paradiso"
+      }
+    },
     "passage-to-dawn": {
       "characters": {
         "characters": [

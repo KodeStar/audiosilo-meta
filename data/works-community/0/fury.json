@@ -1042,6 +1042,155 @@
         "work": "fusing"
       }
     },
+    "gangsta-granny": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An eleven-year-old boy whose parents leave him with his grandmother every Friday night. Ben finds her cabbage-heavy meals, quiet routines, and games of Scrabble painfully dull, and he would rather be at home reading his plumbing magazine. His ambition is to become a plumber, a practical interest his dance-obsessed parents do not understand.",
+            "id": "ben",
+            "name": "Ben",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Granny"
+            ],
+            "description": "Ben's elderly grandmother, who lives alone and looks after him on Friday evenings. She serves cabbage in many forms, likes Scrabble, and at first seems to Ben to lead an uneventful life. Her poor hearing and slow movement make him underestimate how alert and independent she is.",
+            "id": "granny",
+            "name": "Granny",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mum"
+            ],
+            "description": "Ben's mother, an enthusiastic follower of televised ballroom dancing. She and her husband use Friday nights for dance-related outings and expect Ben to share their excitement, paying little attention to his genuine interest in plumbing.",
+            "id": "ben-mum",
+            "name": "Ben's Mum",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Dad"
+            ],
+            "description": "Ben's father, who is as devoted to ballroom dancing as his wife. He dreams of seeing Ben become a dancer and dismisses plumbing as an unsuitable future, creating a distance between father and son despite his underlying concern for Ben.",
+            "id": "ben-dad",
+            "name": "Ben's Dad",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The friendly owner of the local newsagent's shop, where Ben buys Plumbing Weekly. Raj is talkative, inventive about sales, and interested in Ben's plans, making him one of the few adults who takes the boy's enthusiasm seriously.",
+            "id": "raj",
+            "name": "Raj",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A watchful neighbor who appoints himself guardian of local order. Mr Parker pays close attention to other people's movements and is eager to report anything he considers suspicious, which makes secrecy difficult for Ben and Granny.",
+            "id": "mr-parker",
+            "name": "Mr Parker",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The glamorous male star of the ballroom program that Ben's parents adore. Flavio is a distant celebrity to Ben but an object of intense admiration in his household, and an appearance involving him becomes the center of his parents' plans.",
+            "id": "flavio-flavioli",
+            "name": "Flavio Flavioli",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Her Majesty"
+            ],
+            "description": "The Queen, encountered inside the Tower of London at the climax of Ben and Granny's expedition. Instead of reacting only as a remote public figure, she listens to their explanation and recognizes the personal motives behind their extraordinary intrusion.",
+            "id": "the-queen",
+            "name": "The Queen",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "gangsta-granny"
+      },
+      "recaps": {
+        "ending": "Ben and Granny reach the Crown Jewels but are discovered by the Queen before taking anything. After hearing why they came, the Queen allows them to leave without punishment, turning the failed robbery into a private adventure they can treasure. Granny then admits that her earlier criminal career was invented: the jewels Ben found were inexpensive, and she created the Black Cat stories because she wanted her grandson to find her interesting. Their real expedition, however, has made them close. Ben soon learns that Granny has cancer. His parents finally recognize both her importance to him and how poorly they have listened to their son. Granny dies later that year, leaving Ben grieving but grateful for their shared secret. When the Queen subsequently acknowledges him in public, he knows that the Tower adventure truly happened. He carries forward a new respect for older people and for the hidden lives they may have led.",
+        "in_short": "Ben dreads Friday nights with his cabbage-serving grandmother until he finds a tin of jewels and hears her claim to be the Black Cat, an international thief. Eager to complete the one robbery she says she never managed, Ben uses his knowledge of plumbing to plan a route into the Tower of London for the Crown Jewels. Their preparations bring grandson and grandmother together while they evade Ben's dance-obsessed parents and a nosy neighbor. They enter the Tower but are caught by the Queen, who hears them out and lets them go. Granny later confesses that her criminal stories and jewels were make-believe, invented because Ben seemed bored by her; the adventure itself was real. Ben learns she is seriously ill, and her death leaves him with a deeper love for her and an understanding that elderly people should not be dismissed as uninteresting.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Eleven-year-old Ben spends every Friday evening at Granny's house while his parents pursue their enthusiasm for ballroom dancing. He dislikes her many cabbage dishes, her Scrabble games, and what he assumes is a dull life. Ben's own passion is plumbing, and he secretly buys Plumbing Weekly from Raj's shop because his parents want him to take up dancing instead. After rudely calling Granny boring, Ben feels guilty. A curious discovery in her kitchen then changes his view: her biscuit tin contains jewelry rather than biscuits. The find suggests that the quiet old woman may have a past Ben has never imagined.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "When Ben confronts Granny about the jewels, she says that she once traveled the world as a renowned thief called the Black Cat. She supplies him with increasingly elaborate accounts of stolen treasures and tells him that the Crown Jewels remain the great prize she never obtained. Ben is captivated for the first time by her stories. The two decide to attempt that final theft together, not for wealth but to fulfill her unfinished ambition. Ben's knowledge of pipes and drains gives them the basis of a route into the Tower of London. Their shared secret transforms Friday nights: he now looks forward to seeing her, and Granny responds to his attention with new energy.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ben and Granny develop their plan around the Tower's plumbing and London sewer system. They gather equipment and rehearse while trying to avoid Mr Parker, a self-important neighbor who watches the area and suspects unusual activity. Ben's parents remain focused on ballroom dancing and on turning their son into a performer, failing to notice what matters to him. When Granny has a fall and is taken to hospital, Ben is frightened by her frailty and the plan appears over. She nevertheless insists on continuing once she can leave. The prospective robbery has become less about jewels than about the trust and companionship growing between them.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The night of the attempt arrives while Ben's parents are occupied with a major dancing event. Disguised and equipped for the underground journey, Ben and Granny make their way through the sewers toward the Tower. Age, exhaustion, security, and the difficult route repeatedly threaten to stop them, while Mr Parker's suspicions increase the risk of being reported. Ben applies the practical skills he has learned from plumbing to keep them moving. They finally enter the Tower itself and draw close to the Crown Jewels, accomplishing a feat neither could have managed alone even though escape is far from certain.",
+            "through": {
+              "chapter": 27
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ben and Granny reach the Crown Jewels but are found by the Queen. She listens to their story and, understanding that their expedition is rooted in an elderly woman's dream and a grandson's devotion, lets them go without taking the jewels. Back home, Granny tells Ben the truth: she was never the Black Cat, and the jewelry in her tin was worthless. She invented the career because she wanted him to see her as interesting. Ben is not angry, because their real adventure has made them love and understand each other. He then learns that Granny has cancer. His parents set aside their dancing obsession and the family becomes more attentive, but Granny dies later that year. Ben mourns her and keeps their night at the Tower private. A later public acknowledgment from the Queen confirms the adventure, and Ben is left with lasting respect for the stories and dignity of older people.",
+            "through": {
+              "chapter": 34
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "gangsta-granny"
+      }
+    },
     "garden-of-sanctuary": {
       "characters": {
         "characters": [

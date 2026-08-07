@@ -1130,6 +1130,218 @@
         "work": "inferno-dan-brown"
       }
     },
+    "inferno-dante-alighieri": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A living Florentine who finds himself spiritually lost midway through life. Frightened away from a direct climb toward safety, he accepts a journey through the afterlife. He is both the pilgrim who reacts to each encounter and the poet who later arranges the experience into a moral and political vision.",
+            "id": "dante",
+            "name": "Dante",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The ancient Roman poet whom Dante recognizes as his literary master. Sent to rescue him when the direct path is blocked, Virgil offers the guidance of reason and experience and proposes to lead Dante through Hell and onward as far as his own limitations permit.",
+            "id": "virgil",
+            "name": "Virgil",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A blessed woman from Dante's life who descends to Limbo to ask Virgil to aid him. Her concern overcomes Dante's fear at the start of the descent, and she represents the divine grace and personal love standing behind his journey.",
+            "id": "beatrice",
+            "name": "Beatrice",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The harsh boatman who carries dead souls across Acheron into Hell. He recognizes that Dante is alive and initially refuses him passage, but Virgil silences the objection by invoking a will higher than Charon's.",
+            "id": "charon",
+            "name": "Charon",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A judge stationed at the entrance to the circles of active sin. He listens as each soul confesses and signals its assigned depth by winding his tail around himself, turning judgment into a visible sentence.",
+            "id": "minos",
+            "name": "Minos",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A noblewoman of Ravenna swept forever in the storm of the lustful beside Paolo. She tells Dante how their shared reading encouraged the kiss that began their doomed affair, presenting her history in the language of a love that seems to act upon her rather than through her choices.",
+            "id": "francesca-da-rimini",
+            "name": "Francesca da Rimini",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A formidable Florentine political leader found among the heretics. Rising from a burning tomb, he speaks to Dante with civic pride and immediately asks about the pilgrim's ancestry, treating their exchange as a continuation of Florence's factional struggle.",
+            "id": "farinata-degli-uberti",
+            "name": "Farinata degli Uberti",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former minister to Emperor Frederick II whose soul is enclosed in a thorn tree among those violent against themselves. He can speak only when his branches are broken, and he defends his loyalty while recounting how courtly envy destroyed his reputation.",
+            "id": "pier-delle-vigne",
+            "name": "Pier delle Vigne",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A respected Florentine scholar encountered running beneath a rain of fire. Dante remembers him as an important teacher and addresses him with affection, while Brunetto remains intensely concerned with Dante's future reputation and the political hostility awaiting him.",
+            "id": "brunetto-latini",
+            "name": "Brunetto Latini",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A monster with an honest human face, a patterned reptilian body, hairy paws, and a scorpion-like tail. He embodies fraud's inviting appearance and concealed danger and serves as the terrifying means by which Dante and Virgil descend into the eighth circle.",
+            "id": "geryon",
+            "name": "Geryon",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Odysseus"
+            ],
+            "description": "The Greek hero concealed with Diomedes inside a divided flame among fraudulent counselors. Speaking through the fire, he recounts a final voyage driven by his refusal to accept the limits of home, age, and the world known to his companions.",
+            "id": "ulysses",
+            "name": "Ulysses",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A medieval Italian soldier and strategist enclosed in flame among the fraudulent counselors. Believing Dante to be another dead soul, he asks first about the political condition of Romagna before explaining how a promise of absolution shaped his damnation.",
+            "id": "guido-da-montefeltro",
+            "name": "Guido da Montefeltro",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Pisan count frozen in the circle of treachery, gnawing the head of Archbishop Ruggieri. When Dante asks about this terrible hatred, Ugolino pauses his punishment to identify them and prepare an account of the imprisonment that joined their names.",
+            "id": "count-ugolino",
+            "name": "Count Ugolino",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Dis",
+              "Lucifer"
+            ],
+            "description": "The gigantic fallen angel fixed at Hell's lowest point. He has three faces and six batlike wings whose beating freezes the lake around him; in his three mouths he chews the souls judged to represent the deepest forms of betrayal.",
+            "id": "satan",
+            "name": "Satan",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "inferno-dante-alighieri"
+      },
+      "recaps": {
+        "ending": "At the bottom of the frozen ninth circle, Dante and Virgil see Satan fixed in the ice. His six wings generate the wind that keeps Cocytus frozen, and his three mouths chew Judas Iscariot, Brutus, and Cassius, figures associated with betrayal of spiritual and imperial authority. Virgil judges that they have seen all of Hell and times their escape. With Dante holding on, he climbs down Satan's shaggy body until they pass the earth's center; direction reverses, and what seemed a descent becomes a climb. Virgil explains that the fall of the rebel angel displaced the land and formed both the pit of Hell and the mountain rising in the opposite hemisphere. The travelers follow a narrow subterranean path along a stream for many hours. They finally emerge through an opening and see the stars, leaving the damned behind. Dante has completed the first stage of the journey, but he has not yet undergone the purification required before reaching Beatrice.",
+        "in_short": "Lost in a dark wood and blocked from climbing toward safety, Dante accepts the guidance of the Roman poet Virgil. They pass through Hell's nine circles, whose punishments expose increasingly deliberate forms of sin: appetite without restraint, heresy, violence, fraud, and treachery. Dante speaks with famous lovers, citizens, rulers, teachers, and political enemies, repeatedly confronting the ways desire, pride, faction, and corrupt counsel distort human freedom. Virgil protects and instructs him, though force and reason meet limits at several thresholds. In the final frozen circle, Count Ugolino recounts his death by starvation, and the travelers find Satan trapped at the center, chewing Judas, Brutus, and Cassius. They escape by climbing down Satan's body and passing the earth's center, where their orientation reverses. A hidden passage leads them back beneath the open sky and the stars, ready for the ascent of Purgatory.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Midway through life, Dante finds himself lost in a dark wood. Three beasts prevent him from climbing a sunlit hill, and the shade of Virgil appears. The Roman poet explains that a different route is necessary: Dante must travel through the realms of the dead before another guide can take him higher. Dante hesitates until Virgil reveals that Beatrice came from Heaven to ask for his rescue. Reassured, he follows. Beyond Hell's gate they see the spiritually uncommitted, rejected by both good and evil, and cross Acheron after Virgil overrules Charon's objection to a living passenger. In Limbo, Dante meets virtuous non-Christians deprived of the vision of God. Deeper down, Minos assigns the damned to their circles. Among the lustful, Francesca da Rimini describes the love and shared reading that led to her death with Paolo, and Dante collapses in pity.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Dante wakes among the gluttonous, battered by foul weather and guarded by Cerberus. The Florentine Ciacco predicts continued civic conflict. In the next circles, hoarders and squanderers roll weights against one another, while the wrathful fight on the Styx and the sullen remain submerged. Phlegyas carries the travelers across the marsh, where Dante angrily confronts Filippo Argenti. Fallen angels bar the gate of Dis, a limit Virgil cannot overcome by argument alone, but a heavenly messenger arrives and opens the way. Inside the city's walls, heretics lie in burning tombs. Farinata degli Uberti rises to discuss Florentine factions with Dante, while Cavalcante de' Cavalcanti anxiously asks about his son. Farinata explains that the dead perceive distant events but are blind to the present, and he predicts Dante's coming exile before directing the travelers onward.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Virgil explains the moral structure of lower Hell: violence occupies the seventh circle, fraud the eighth, and treachery the ninth. The travelers cross a river of boiling blood where tyrants and killers are guarded by centaurs. In the wood of the suicides, souls have become thorn trees torn by harpies; Pier delle Vigne recounts how envy at Frederick II's court drove him to destroy himself. Wasteful souls are hunted through the wood. On a burning plain they meet Capaneus, still defiantly blasphemous, and Virgil describes the aged figure whose tears feed Hell's rivers. Along a stone embankment Dante encounters his former teacher Brunetto Latini among those forced to run beneath the fire. Their respectful conversation mixes affection, prophecy, and Brunetto's concern for the reputation he will leave behind.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Three other Florentine shades ask Dante about their city's condition, and he condemns its recent pride and excess. At the edge of the abyss, Virgil summons Geryon, the composite monster that represents fraud, and the travelers ride him down to Malebolge. In the first ditches of the eighth circle, seducers and exploiters are whipped, flatterers are sunk in filth, and corrupt churchmen are planted headfirst in fiery holes. Dante condemns the sale of sacred offices while speaking with Pope Nicholas III, who mistakes him for a later pope expected to join the punishment. Diviners and false prophets walk with their heads twisted backward; Dante weeps at their distortion, and Virgil rebukes misplaced pity. The canto closes with Virgil naming figures from classical and medieval traditions as they continue toward the next ditch.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The travelers pass barrators submerged in boiling pitch and guarded by quarrelsome demons. Virgil negotiates an escort, but the demons' pursuit forces Dante and Virgil to escape by sliding into the next ditch. Hypocrites walk under gilded cloaks made crushingly heavy with lead, including Caiaphas, stretched across the path. Thieves are bound and transformed by serpents, their human and reptilian forms repeatedly stolen from one another; Dante addresses Florence with bitter irony after recognizing several citizens. Among fraudulent counselors, each soul is hidden inside a moving flame. Ulysses shares one flame with Diomedes and recounts a final voyage beyond the boundaries set for human travel. His appeal to knowledge drives his exhausted crew onward until a divinely sent storm sinks their ship within sight of a mountain they were not permitted to reach.",
+            "through": {
+              "chapter": 26
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Guido da Montefeltro, believing Dante dead, explains that Pope Boniface VIII promised him absolution in advance for fraudulent military advice; at death, a devil successfully claimed that repentance cannot coexist with intending the sin. Sowers of division are themselves cut apart, and the troubadour Bertran de Born carries his severed head. Falsifiers suffer disease and corruption: alchemists scratch at diseased skin, impersonators run mad, counterfeiters swell with thirst, and liars burn with fever. Virgil rebukes Dante for becoming absorbed in an undignified quarrel between two shades. The giants then form a living boundary around the ninth circle. Nimrod speaks incomprehensibly, while Antaeus, persuaded by Virgil, lifts the travelers and sets them down on the frozen lake of Cocytus, where traitors are trapped in ice rather than fire.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Dante crosses the frozen regions assigned to traitors against kin, country, guests, and benefactors. He encounters Bocca degli Abati and sees Count Ugolino gnawing Archbishop Ruggieri's skull. Ugolino recounts how he and his children were locked in a tower and starved, then resumes his vengeance. In the zone of treachery against guests, some souls' bodies remain alive on earth while demons occupy them. At Hell's center stands Satan, a gigantic three-faced figure fixed in the ice. His wings create the freezing wind, and his mouths chew Judas, Brutus, and Cassius. Virgil climbs down Satan's body with Dante until they pass the center of the earth and their direction reverses. They then follow a long hidden passage out of the pit. The journey through Hell ends when they emerge beneath the sky and once again see the stars.",
+            "through": {
+              "chapter": 34
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "inferno-dante-alighieri"
+      }
+    },
     "inferno-from-the-divine-comedy": {
       "characters": {
         "characters": [

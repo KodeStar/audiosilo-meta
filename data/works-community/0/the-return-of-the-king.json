@@ -2035,6 +2035,133 @@
         "work": "the-runesmith"
       }
     },
+    "the-sand-man": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A university student whose childhood terror returns when he meets a travelling seller who resembles a sinister visitor from his father's household. Imaginative and emotionally intense, he becomes convinced that a hostile power has reached back into his life.",
+            "id": "nathanael",
+            "name": "Nathanael",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Nathanael's clear-minded fiancée and Lothair's sister. She reads Nathanael's account of Coppelius and argues that the threatening figure has gained power chiefly through Nathanael's own fear and imagination.",
+            "id": "clara",
+            "name": "Clara",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Clara's brother and Nathanael's close friend. Nathanael addresses his first account of the returning sandman to Lothair, trusting him as a member of the family to which Nathanael hopes to belong.",
+            "id": "lothair",
+            "name": "Lothair",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A harsh lawyer who visited Nathanael's father at night during Nathanael's childhood. To the boy he became identified with the legendary Sandman who steals children's eyes. Coppelius frightened and abused Nathanael after catching him spying on the adults' secret experiments.",
+            "id": "coppelius",
+            "name": "Coppelius",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An Italian barometer seller whose arrival at Nathanael's rooms revives the student's fear of Coppelius. Coppola offers optical instruments and insists on showing Nathanael a selection of spectacles and spyglasses.",
+            "id": "giuseppe-coppola",
+            "name": "Giuseppe Coppola",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A professor who lives opposite Nathanael and presents the rarely seen Olimpia as his daughter. He proudly introduces her to society at an elaborate gathering.",
+            "id": "spalanzani",
+            "name": "Professor Spalanzani",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Spalanzani's beautiful, secluded daughter, whom Nathanael watches through a spyglass from across the street. Her stillness and limited conversation strike other people as strange, but Nathanael interprets her attention as profound sympathy.",
+            "id": "olimpia",
+            "name": "Olimpia",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Nathanael's father, a gentle parent who becomes grave and secretive when Coppelius visits. He conducts dangerous nighttime experiments with the lawyer and tries to protect his hidden son when Coppelius discovers the boy.",
+            "id": "nathanaels-father",
+            "name": "Nathanael's Father",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Nathanael's mother, who sends the children to bed early whenever Coppelius is expected. Her evasive explanation of the Sandman helps turn an ordinary bedtime warning into a focus for Nathanael's fears.",
+            "id": "nathanaels-mother",
+            "name": "Nathanael's Mother",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A fellow student who remains skeptical of Nathanael's fascination with Olimpia. He gently points out her mechanical manner and the unease she causes other observers.",
+            "id": "siegmund",
+            "name": "Siegmund",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-sand-man"
+      },
+      "recaps": {
+        "ending": "Nathanael discovers that Olimpia is an automaton when he sees Spalanzani and Coppola fighting over her body; Coppola carries it away while Spalanzani reveals that its eyes came from him. The shock drives Nathanael into a violent breakdown. After a period of recovery he returns to Clara and appears restored, and they plan a peaceful future together. On a visit to a town tower, however, Nathanael looks through Coppola's spyglass at Clara and again falls into madness. He tries to throw her from the tower, but Lothair rescues her. Nathanael then sees Coppelius in the crowd below and leaps to his own death. Coppelius disappears, while Clara is later reported to have found the quiet domestic happiness that Nathanael could not share.",
+        "in_short": "University student Nathanael believes the sinister lawyer Coppelius, associated with a childhood story about the Sandman, caused his father's death. A barometer seller named Coppola revives that terror. Through a spyglass bought from Coppola, Nathanael becomes obsessed with Olimpia, the strangely passive daughter of Professor Spalanzani, and turns away from his practical fiancée Clara. Olimpia is exposed as an automaton built by Spalanzani and Coppola, and the shock sends Nathanael into madness. He later recovers and reunites with Clara, but a view through the same spyglass triggers another attack atop a tower. He tries to throw Clara down; her brother Lothair saves her, and Nathanael leaps to his death after seeing Coppelius below. Clara survives and eventually achieves a tranquil family life.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Nathanael writes to his friend Lothair after meeting the barometer seller Giuseppe Coppola, whom he identifies with Coppelius, a terrifying lawyer from his childhood. As a boy, Nathanael secretly watched Coppelius and his father perform strange experiments; Coppelius caught and tormented him, and Nathanael later blamed the lawyer for the explosion that killed his father. Clara, who receives the letter, urges Nathanael not to surrender his reason to an inward fear. He rejects her interpretation and becomes increasingly estranged from her. Back at university, he buys a spyglass from Coppola and uses it to watch Professor Spalanzani's secluded daughter Olimpia. Nathanael mistakes her fixed attention and sparse responses for ideal understanding, falls in love with her, and dismisses his friends' unease. He then sees Spalanzani and Coppola tearing Olimpia apart in a dispute and learns that she is an automaton. The revelation causes a breakdown. After recovering, Nathanael reunites with Clara and seems well, but the spyglass triggers another attack on a tower. He attempts to kill Clara, is stopped by Lothair, sees Coppelius below, and leaps to his death. Clara survives and later finds a peaceful domestic future.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-sand-man"
+      }
+    },
     "the-scarecrow-of-oz": {
       "characters": {
         "characters": [
