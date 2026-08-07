@@ -595,6 +595,213 @@
         "work": "tenacity"
       }
     },
+    "the-a-b-c-murders": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The Belgian detective, now living in a modern London flat and semi-retired, though he denies growing older with more energy than the denial requires. He receives the first of the anonymous letters that begin the case and insists on treating it as a challenge addressed to him personally. His method here is to study the victims rather than pursue the murderer, which exasperates the police.",
+            "id": "hercule-poirot",
+            "name": "Hercule Poirot",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Poirot's old friend and companion in many cases, back in England on a visit from his ranch in South America. Loyal, warm-hearted, and easily convinced by the last strong personality he has met, he narrates most of the story and is impatient with Poirot's habit of sitting still and thinking.",
+            "id": "arthur-hastings",
+            "name": "Captain Arthur Hastings",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A shabby, ailing man in cheap lodgings who travels the country selling stockings on commission. He served in the war, was wounded in the head, and suffers from headaches and blackouts in which he cannot afterwards say where he has been. He is timid with landladies, anxious about money, and reads reports of crimes in the newspapers with an unsettled attention.",
+            "id": "alexander-bonaparte-cust",
+            "name": "Alexander Bonaparte Cust",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Scotland Yard inspector who has known Poirot for many years, cheerful, sceptical, and fond of teasing him about foreign methods. He brings the official view of the first letter and remains on friendly terms as the case grows.",
+            "id": "inspector-japp",
+            "name": "Chief Inspector Japp",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An elderly woman who keeps a small tobacconist and newsagent's shop in a back street of Andover, worn down by years of work and by a husband she left long ago. Her neighbours know her as a hard-worked and frightened woman.",
+            "id": "alice-ascher",
+            "name": "Alice Ascher",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Alice Ascher's estranged husband, a German-born drunkard who has pestered her for money for years and threatened her in public more than once. Loud, maudlin, and thoroughly disreputable, he is the obvious suspect for the Andover police.",
+            "id": "franz-ascher",
+            "name": "Franz Ascher",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Alice Ascher's niece, a domestic servant in London and the only relative who showed the old woman any kindness. Sensible, quietly spoken, and honest, she gives Poirot a clear account of her aunt's circumstances.",
+            "id": "mary-drower",
+            "name": "Mary Drower",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The police inspector from Scotland Yard put in charge of the case, efficient, modern, and openly dismissive of Poirot as a relic of an earlier generation. He prefers records, laboratories, and systematic searching to speculation about character.",
+            "id": "inspector-crome",
+            "name": "Inspector Crome",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young waitress at a seafront cafe in Bexhill, pretty, flirtatious, and fond of dances and admirers, to the exasperation of the man she is engaged to. Her parents run a small guest house.",
+            "id": "betty-barnard",
+            "name": "Betty Barnard",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Betty Barnard's elder sister, a shorthand typist in London, dark and plain beside her sister and unwilling to pretend anything about her. Her flat, unsentimental honesty about the family impresses Poirot, and she becomes one of his helpers.",
+            "id": "megan-barnard",
+            "name": "Megan Barnard",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Betty Barnard's fiance, a young clerk in an estate agent's office, devoted to her and tormented by jealousy over her behaviour with other men. He is highly strung and shaken to pieces by her death.",
+            "id": "donald-fraser",
+            "name": "Donald Fraser",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wealthy retired throat specialist living near Churston in Devon, a noted collector of Chinese art with a settled routine that includes an evening walk. His wife is bedridden and he manages the household around her illness.",
+            "id": "carmichael-clarke",
+            "name": "Sir Carmichael Clarke",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Sir Carmichael Clarke's secretary, a strikingly beautiful young Scandinavian woman who runs the household correspondence and the collection's catalogue. She is composed, capable, and entirely aware of the impression she makes; Hastings is much struck by her.",
+            "id": "thora-grey",
+            "name": "Thora Grey",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sir Carmichael Clarke's younger brother, who has spent years knocking about the world in the East and comes home when his brother is killed. Brisk, forceful, and full of practical energy, he takes charge of the family's affairs and pushes hard for the amateurs to do something rather than wait on the police.",
+            "id": "franklin-clarke",
+            "name": "Franklin Clarke",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sir Carmichael Clarke's wife, gravely ill and kept sedated for the pain, so that her mind wanders between clarity and confusion. In one of her clearer intervals she remembers something she saw from her window that nobody else thought worth recording.",
+            "id": "lady-clarke",
+            "name": "Lady Charlotte Clarke",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-a-b-c-murders"
+      },
+      "recaps": {
+        "ending": "Poirot explains that there was never a maniac working through the alphabet. The murders were a screen for one killing, on the principle that the safest place to hide a leaf is a forest. Franklin Clarke killed his brother Sir Carmichael for the fortune he expected to inherit, having realised that once Lady Clarke died his brother would marry Thora Grey and disinherit him. To conceal that single motive he invented a lunatic, wrote the challenges to Poirot, and manufactured a series in which his brother's death would be simply the third item. He found his scapegoat in Alexander Bonaparte Cust, an ill, suggestible ex-soldier subject to blackouts, engaged him by letter for a fictitious stocking firm, supplied him with the goods and with railway guides, and sent him to each town on the appointed day, so that Cust would half believe in his own guilt when the police came. The fourth murder, at Doncaster, was deliberately made to break the alphabetical pattern, so that the series would collapse into apparent madness at the moment Cust was caught. Poirot secures his proof and Franklin Clarke is arrested. Cust is cleared and released, his health attended to, and finds himself briefly famous and, for the first time, of interest to other people. Megan Barnard and Donald Fraser are left with a future to work out between them, and Hastings and Poirot part with Poirot cheerfully unrepentant about the theatricality of his methods.",
+        "in_short": "Poirot receives a typed letter signed A.B.C. daring him to prevent a crime at Andover on a stated date. An old shopkeeper named Alice Ascher is found battered behind her counter with an ABC railway guide open beside her. A second letter names Bexhill, where a young waitress, Betty Barnard, is strangled on the beach; a third names Churston, where Sir Carmichael Clarke is killed on his evening walk. The country panics over an alphabet maniac, while an ailing travelling salesman, Alexander Bonaparte Cust, moves from town to town selling stockings and suffering blackouts. Poirot gathers the victims' relatives into an unofficial working party and studies the dead rather than hunting the killer. A fourth murder at Doncaster breaks the pattern, and Cust is arrested with a bloodstained knife, half convinced he is guilty. Poirot proves he cannot be, and shows that the series was camouflage for a single murder: Sir Carmichael's brother Franklin Clarke killed him for the inheritance and built a fictitious madman around it, using Cust as the scapegoat. Clarke is arrested and Cust set free.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Captain Hastings, visiting England from South America, finds Poirot in his London flat with an anonymous typed letter signed A.B.C., which mocks him and names Andover and the twenty-first of the month. Poirot takes it seriously; Chief Inspector Japp does not. On the day named, an elderly woman called Alice Ascher is found dead behind the counter of her small tobacconist's shop in Andover, struck down from in front, with an ABC railway guide lying open at the Andover page beside her. The local police arrest her estranged husband, Franz Ascher, a drunkard who had threatened her for years, but the letter that arrived before the murder makes no sense on that theory. Poirot goes down to Andover, talks to the neighbours and to the dead woman's niece, Mary Drower, and examines the shop for himself. He is struck less by the physical evidence than by the fact that the victim was chosen, and by the question of how a stranger could have known her name and the letter it began with.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A second letter arrives naming Bexhill-on-Sea and the twenty-fifth. The police watch the town, but Betty Barnard, a young waitress from a seafront cafe, is found strangled with her own belt on the beach in the early hours, an ABC railway guide beneath the body. Her parents are prostrate; her sister Megan speaks about her with a bleak honesty that Poirot values; and her fiance, Donald Fraser, is nearly broken by jealousy and grief, having spent the evening walking the streets looking for her. The papers begin to write about an alphabet murderer. Inspector Crome of Scotland Yard takes charge, treats Poirot as an amateur out of his period, and concentrates on typewriters, railway guides, and the movements of known lunatics.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The third letter names Churston, but it is misdirected through a wrongly written address and reaches Poirot too late. Sir Carmichael Clarke, a wealthy retired specialist, is struck down on his evening walk near his house in Devon, with the usual railway guide left beside him. His household consists of his dying wife, Lady Clarke, her nurse, and his secretary Thora Grey; his brother Franklin comes home from the East to take charge of the family's affairs. Public alarm is now considerable. Poirot refuses to chase the murderer through timetables and announces that he intends to study the three victims instead, looking for the point at which one man could have known all of them, or could have chosen them. Hastings finds the method unbearably slow.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Poirot forms an unofficial working party out of the people the murders have injured: Franklin Clarke, Megan Barnard, Donald Fraser, Thora Grey, and Mary Drower. He sets them to talk to one another and to remember. Small facts surface, among them that a man selling stockings called at more than one of the houses. Lady Clarke, in a lucid interval, mentions having seen her husband speaking to a stranger at the gate, something she had never been asked about. Meanwhile the elderly travelling salesman Alexander Bonaparte Cust arrives in one town after another with his suitcase of stockings, troubled by headaches and by lost hours he cannot account for. A fourth letter names Doncaster on the day of the St Leger, when the town will be packed with racegoers, and the police prepare for an impossible watch.",
+            "through": {
+              "chapter": 23
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At Doncaster a man is stabbed in a crowded cinema and found only after the audience has begun to leave. He is George Earlsfield, whose initials break the alphabetical sequence; the man sitting in front of him had a name beginning with D. An ABC guide is under the seat. Cust returns to his London lodgings with blood on his sleeve and a knife in his pocket, sees his own description in the newspapers, and takes flight. He collapses in the street and is arrested, and in the police station he makes a confused confession, apparently believing that he committed the murders during his blackouts. The evidence against him is heavy: the guides, the stockings, his presence in each town. Poirot, however, is not satisfied. Cust cannot type, and for the Bexhill murder he has an alibi that the police themselves can confirm, which no explanation of madness can dispose of.",
+            "through": {
+              "chapter": 29
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Poirot puts the case to the group he has assembled and explains that there was never an alphabet maniac. The series was camouflage for a single murder, in the way that a leaf is hidden in a forest. Franklin Clarke killed his brother Sir Carmichael for the inheritance, having understood that when Lady Clarke died his brother would marry Thora Grey and cut him out. He wrote the challenges to Poirot, chose the victims to make a pattern, and recruited Alexander Bonaparte Cust by letter for a stocking company that did not exist, sending him with railway guides to each town on the appointed day, so that a sick and suggestible man would half believe himself guilty when he was finally taken. The Doncaster killing was made irregular on purpose, so that the whole sequence would look like a madman breaking down at the moment of arrest. Poirot secures his proof, and Franklin Clarke is arrested. Cust is released, cleared and provided for, and finds himself an unexpected celebrity; Megan Barnard and Donald Fraser are left to make something of what is left; and Hastings, having suspected almost everyone else in turn, concedes the point.",
+            "through": {
+              "chapter": 34
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-a-b-c-murders"
+      }
+    },
     "the-affair": {
       "characters": {
         "characters": [

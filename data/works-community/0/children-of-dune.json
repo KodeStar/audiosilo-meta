@@ -1673,6 +1673,211 @@
         "work": "clockwork-angel"
       }
     },
+    "club-dead": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A telepathic waitress at Merlotte's bar in Bon Temps, Louisiana, still with Bill Compton but no longer comfortable in the relationship. Twice now she has been hurt badly for the sake of vampire business, and she has begun to price her own cooperation. She is stubborn, practical and increasingly known among the supernatural community of the region as a human worth having, which is not the same thing as being safe.",
+            "id": "sookie-stackhouse",
+            "name": "Sookie Stackhouse",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Sookie's vampire lover, a Bon Temps native who died in the Civil War and came home more than a century later. He has been working long nights on a confidential project for the vampire hierarchy of Louisiana and will not tell Sookie what it is. He is distracted, secretive and short with her, and at the start of the book he leaves town on business he describes only vaguely.",
+            "id": "bill-compton",
+            "name": "Bill Compton",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sookie's boss at Merlotte's and a shapeshifter, one of the few people in Bon Temps who knows most of what she is mixed up in. He does not hide his opinion that the vampires are using her, and he gives her time off and a certain amount of cover when she needs it.",
+            "id": "sam-merlotte",
+            "name": "Sam Merlotte",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The thousand-year-old Norse vampire who rules the vampires of northern Louisiana from his Shreveport bar, Fangtasia. Bill's disappearance is his problem as much as Sookie's, since a vampire cannot be taken out of a territory without insult to the one who holds it. He brings her the news, arranges her protection, and, as always, expects the arrangement to leave her further in his debt.",
+            "id": "eric-northman",
+            "name": "Eric Northman",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Eric's second at Fangtasia, blonde, dry and thoroughly unsentimental, who handles the practical side of running the bar and the territory while Eric travels.",
+            "id": "pam",
+            "name": "Pam",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The vampire who made Bill Compton into what he is, and to whom he is bound by the tie between maker and child. Sookie learns of her existence only when Bill vanishes, along with the fact that Bill had been intending to leave Bon Temps and go back to her.",
+            "id": "lorena-ball",
+            "name": "Lorena Ball",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Shreveport werewolf who runs his family's surveying company and is sent to escort Sookie to Jackson, Mississippi, because his father's gambling debts are owed to vampires. Big, dark-haired and easy-tempered, he is decent to Sookie beyond what the errand requires, and openly unhappy about being anybody's collateral.",
+            "id": "alcide-herveaux",
+            "name": "Alcide Herveaux",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Alcide's former lover, a shapeshifter from Jackson who has moved on to a werewolf fiance but has not finished with Alcide. She is immediately and openly hostile to Sookie, and she takes every opportunity in company to humiliate her.",
+            "id": "debbie-pelt",
+            "name": "Debbie Pelt",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The vampire made from a famous singer, brain-damaged by a botched change and known to everyone by a nickname because his real name upsets him. He is sent to Jackson to help watch over Sookie, and he is as likely to cause an incident as to prevent one.",
+            "id": "bubba",
+            "name": "Bubba",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A friend of Sookie's from school who now runs a dress shop in Bon Temps and who turns up in Jackson on the arm of a wealthy vampire. She is glad to see Sookie and plainly nervous about being seen with her, and she is deeper into the vampire world than Sookie realized.",
+            "id": "tara-thornton",
+            "name": "Tara Thornton",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An old, wealthy Mississippi vampire, courteous in a formal Italian-American style, who keeps Tara Thornton as his companion and pays for her comfortably. He is well connected among the vampires of Jackson.",
+            "id": "franklin-mott",
+            "name": "Franklin Mott",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The bouncer at Josephine's, the Jackson bar the supernatural community calls Club Dead. He is a goblin, squat and smoldering to the touch, and he enforces the bar's single rule, that nobody starts a fight inside, with unarguable force.",
+            "id": "mr-hob",
+            "name": "Mr. Hob",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The vampire King of Mississippi, who rules from a walled mansion outside Jackson. Genial, immensely old and entirely ruthless, he keeps a court of vampires and a staff of werewolves, and treats other kingdoms' property as fair game when it suits him.",
+            "id": "russell-edgington",
+            "name": "Russell Edgington",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The tattooed vampire who tends bar at Fangtasia, taken on after the previous bartender's destruction. He is part of Eric's small circle in Shreveport and takes a share in the decisions about what to do while Eric is away.",
+            "id": "chow",
+            "name": "Chow",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "club-dead"
+      },
+      "recaps": {
+        "ending": "Sookie gets Bill out of Russell Edgington's estate alive, having killed Lorena herself with a wooden stake when she found her torturing him. The rescue costs her nearly everything: starved and out of his mind in the trunk of the car, Bill drinks from Sookie until she is close to death and forces himself on her, and she is left too weak to stand. Debbie Pelt, who shoved her into that trunk deliberately, is broken with completely by Alcide, cast out in front of the people whose opinion she values. Sookie is healed with vampire blood and taken home. The Mississippi affair is settled between kings and sheriffs in the way vampire politics is always settled, and Russell Edgington keeps his throne. What does not survive is Sookie's relationship with Bill. She learns that he had planned to leave her for his maker before he was taken, and that the secret project he would not discuss is a database of the world's vampires, valuable enough that a king would kidnap and torture him for it. Sookie has the only copy and keeps it hidden rather than handing it over, which gives her leverage with the Queen of Louisiana and with Eric. She tells Bill they are finished. Eric, who spent the book in Jackson under a false name looking out for her, ends it with a much clearer idea of what he wants from her, and Alcide ends it free of Debbie and interested in Sookie.",
+        "in_short": "Bill Compton is distant, secretive about a project for the vampire hierarchy, and then simply gone. Eric Northman tells Sookie the truth twice over: Bill had been planning to leave her for Lorena, the vampire who made him, and he has since been kidnapped and taken to Mississippi. Sookie agrees to help find him and travels to Jackson escorted by Alcide Herveaux, a werewolf whose family owes the vampires money. Posing as his girlfriend, she works the supernatural bar the locals call Club Dead, dodging Alcide's vicious ex-fiancee Debbie Pelt, is staked in the parking lot by a fanatic, and is healed by Eric, who is in Jackson under a false name. She traces Bill to the estate of Russell Edgington, the vampire King of Mississippi, who wants the database Bill has been building. Getting inside, she finds Bill chained and being tortured by Lorena, and kills Lorena. In the escape, Debbie pushes Sookie into the car trunk with a starving, deranged Bill, who nearly kills her. Sookie survives, keeps the database hidden as leverage, and ends her relationship with Bill.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Sookie Stackhouse is a telepathic waitress at Merlotte's bar in Bon Temps, Louisiana, in a world where vampires live openly. She is in a relationship with Bill Compton, a Civil War veteran turned vampire who came back to his family's house across the cemetery from hers. In the previous two years her grandmother was murdered by a killer who was really hunting Sookie, and Sookie herself was nearly killed before she unmasked him. She has learned that her boss Sam Merlotte is a shapeshifter, that the woods hold worse things than vampires, and that maenads exist. Bill answers to Eric Northman, the thousand-year-old Norse vampire who rules the vampires of the area from his Shreveport bar and who takes a proprietary interest in Sookie's telepathy. Eric has already rented her out once, to the vampires of Dallas, where she was taken prisoner by the anti-vampire Fellowship of the Sun, nearly raped, and shaken by how readily Bill's obligations to his own kind outweighed his obligations to her. She loves Bill but no longer trusts the world he belongs to, and she has begun insisting on being paid and asked rather than used.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bill has been working long nights on something he will not discuss, a project for the vampire authorities of Louisiana, and he has been distant with Sookie for weeks. He leaves town on vague business, and then stops answering. An intruder breaks into Sookie's house searching for Bill's work and she is nearly killed getting away from him. Eric Northman arrives with two pieces of news that arrive together. The first is that Bill had been intending to leave Sookie and go back to Lorena, the vampire who made him. The second is that Bill has been taken, snatched out of Eric's territory, and is being held somewhere in Mississippi. That is an insult to Eric as much as a crisis for Sookie, but Eric cannot simply invade another king's territory, and a human who can read minds can go where a vampire sheriff cannot. Furious, humiliated and unwilling to leave Bill to be tortured, Sookie agrees to go looking for him.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sookie is driven to Jackson by Alcide Herveaux, a Shreveport werewolf who runs a surveying company and whose father's gambling debts are held by vampires, which is why he is available to be lent. Alcide is decent, plainspoken and irritated at being used as collateral, and the two get on. She is to pose as his girlfriend so that they can spend evenings at Josephine's, a Jackson bar for the supernatural community that its regulars call Club Dead, where she can listen to the thoughts of vampires' human hangers-on for word of Bill. Alcide's former lover Debbie Pelt is a fixture there, engaged to a werewolf and openly vicious toward Sookie. In the club Sookie also runs into Tara Thornton, an old friend from Bon Temps, on the arm of a wealthy Mississippi vampire named Franklin Mott. The bar's one law, no violence inside, is enforced by a goblin bouncer, which does nothing for the parking lot.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Outside the club Sookie is attacked and staked by a fanatic and comes very close to dying. She is saved by Eric, who has been in Jackson all along under a false name, posing as an ordinary out-of-town vampire so that he can watch over the operation without provoking the local king. Eric heals her with his blood and stays close. Bubba, the damaged vampire made from a famous singer, is also in town to help, with the usual mixed results. Piecing together what she overhears, Sookie establishes that Bill is being held by Russell Edgington, the vampire King of Mississippi, at his walled estate outside Jackson, and that what Edgington wants is the project Bill would not talk about. She also learns that Lorena is there, and that Bill is not simply a prisoner but is being tortured.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sookie gets onto the Edgington estate while the vampires are at rest and searches the outbuildings. She finds Bill chained, burned and starving, with Lorena working on him, and when Lorena comes for her Sookie kills her with a wooden stake. She frees Bill and, with help from outside, gets him out of the grounds during a diversion, hiding him in the trunk of the car. Debbie Pelt, seizing the chance, shoves Sookie into that trunk and shuts it. Bill, starved past reason and unable to recognize her, drinks from her almost to death and forces himself on her before Eric can get the trunk open. Sookie survives, barely, and is healed with vampire blood again. Alcide, when he learns what Debbie did, casts her out in front of the people whose good opinion she lives on and is finished with her for good.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Recovering, Sookie is finally told what all of it was for. Bill's secret project is a database of the vampires of the world, their identities, their histories and their weaknesses, compiled at the order of the Queen of Louisiana. It is worth a kidnapping and a war, which is why Russell Edgington took him. Sookie has the only copy, retrieved and hidden where nobody else can reach it, and she declines to hand it over on request. The Mississippi business is closed the way vampire politics closes: negotiated between rulers, with Russell Edgington still on his throne and Eric's territorial insult paid for. Bill is alive and healing, and Sookie has to decide what remains between them after the trunk, and after Lorena.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sookie ends the relationship. Bill had been planning to leave her for the vampire who made him before he was ever taken, he kept the work that endangered them both secret from her, and he nearly killed her in the trunk. She keeps the database rather than surrender it, which makes her a person the Queen of Louisiana has to deal with instead of a human who can simply be taken from. She goes home to Bon Temps, to her house and her job at Merlotte's, badly hurt and no longer anybody's girlfriend. Eric, who spent the whole affair in Jackson under an assumed name looking after her and paid for it in blood, is more openly interested in her than ever, and Alcide Herveaux, now free of Debbie Pelt, is interested too. Sookie is out of Bill's world, in the sense that she has left him, and further into the supernatural world than she has ever been.",
+            "through": {
+              "chapter": 15
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "club-dead"
+      }
+    },
     "cold-days": {
       "characters": {
         "characters": [

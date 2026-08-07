@@ -2319,6 +2319,396 @@
         ],
         "work": "the-miserable-mill"
       }
+    },
+    "the-murder-of-roger-ackroyd": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The general practitioner of King's Abbot, a quiet Home Counties village, and the narrator of the story. A bachelor in middle life, he keeps house with his sister, attends most of the households in the district, and is trusted with their private troubles as doctors usually are. He is dry, observant, and mildly amused by village society, and he sets down the events of the case as a written record.",
+            "id": "james-sheppard",
+            "name": "Dr James Sheppard",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Dr Sheppard's unmarried elder sister, who keeps his house and considers the affairs of King's Abbot her proper study. She gathers information through servants, tradespeople, and an unerring instinct for where to be, and reaches conclusions by leaps that her brother finds infuriating and frequently correct. She is the most efficient news service in the village.",
+            "id": "caroline-sheppard",
+            "name": "Caroline Sheppard",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wealthy widow of King's Abbot whose husband died about a year before the story opens, in circumstances that set the village talking. She dies in her sleep of an overdose of a sleeping draught, and the district is divided over whether it was accident or suicide. In her last months she had been withdrawn and unwell.",
+            "id": "mrs-ferrars",
+            "name": "Mrs Ferrars",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The principal man of the neighbourhood, a wealthy manufacturer who has settled at Fernly Park and taken up the manner of a country squire. Widowed, hearty, and generous, he supports a household of dependants and was expected to marry Mrs Ferrars. He is a straightforward man, uneasy with concealment, and something has been preying on his mind.",
+            "id": "roger-ackroyd",
+            "name": "Roger Ackroyd",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Roger Ackroyd's stepson, a good-looking and charming young man with expensive habits and a poor record of paying for them. He depends on his stepfather's money, has quarrelled with him over it more than once, and is generally understood in the village to be engaged to Flora Ackroyd. He is staying at the local inn rather than at Fernly.",
+            "id": "ralph-paton",
+            "name": "Ralph Paton",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Roger Ackroyd's niece, a fair, self-possessed young woman who lives at Fernly with her mother on her uncle's charity. She is practical about what dependence costs and clear-eyed about her own position, and she is publicly engaged to Ralph Paton.",
+            "id": "flora-ackroyd",
+            "name": "Flora Ackroyd",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Roger Ackroyd's widowed sister-in-law and Flora's mother, who lives at Fernly on his money while resenting the terms. Vague, effusive, and perpetually short of cash, she is much given to hints and to conversations that circle their subject for a long time before arriving.",
+            "id": "mrs-cecil-ackroyd",
+            "name": "Mrs Cecil Ackroyd",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A friend of Roger Ackroyd and a well-known big-game hunter, staying at Fernly. Tanned, taciturn, and awkward in company, he says almost nothing and notices a good deal. His silences are frequently mistaken for dullness.",
+            "id": "major-blunt",
+            "name": "Major Hector Blunt",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Roger Ackroyd's private secretary, a cheerful and capable young man who handles his employer's correspondence and business papers and is at ease in the household. He is on good terms with everyone at Fernly.",
+            "id": "geoffrey-raymond",
+            "name": "Geoffrey Raymond",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The butler at Fernly Park, smooth, soft-footed, and correct to a fault. He has a habit of being close to doors, and an interest in his employer's private conversations that goes beyond the requirements of service.",
+            "id": "parker",
+            "name": "Parker",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The housekeeper at Fernly Park, tall, handsome, and rigidly composed, disliked by the younger servants for her severity. She calls at Dr Sheppard's surgery on a pretext and steers the conversation towards drugs and the treatment of addiction, which he finds curious.",
+            "id": "miss-russell",
+            "name": "Miss Russell",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A parlourmaid at Fernly Park, better spoken and better educated than her position would suggest. She gives notice shortly before the murder after a private interview with her employer, and is reticent about her reasons.",
+            "id": "ursula-bourne",
+            "name": "Ursula Bourne",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A retired detective who has taken the cottage next door to Dr Sheppard under an assumed name, meaning to grow vegetable marrows and be left alone. Small, egg-headed, and elaborately moustached, with an exact and slightly theatrical manner, he is a Belgian whose reputation in criminal cases is European, and who has ordered the world to suit himself. Flora Ackroyd's appeal brings him out of retirement.",
+            "id": "hercule-poirot",
+            "name": "Hercule Poirot",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The police inspector from the neighbouring town who takes charge of the murder investigation. Brisk, thorough in a conventional way, and confident that the obvious answer is the right one, he assembles his case with energy and does not welcome complications.",
+            "id": "inspector-raglan",
+            "name": "Inspector Raglan",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A shabby, restless stranger with a rough manner who is seen near the gates of Fernly on the night of the murder. He proves to have a police record and a drug habit, and to have been born in the district, and he refuses at first to explain what brought him back.",
+            "id": "charles-kent",
+            "name": "Charles Kent",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-murder-of-roger-ackroyd"
+      },
+      "recaps": {
+        "ending": "Poirot gathers the household and states that he knows who killed Roger Ackroyd, then tells Dr Sheppard privately that the murderer is Sheppard himself. Sheppard was the blackmailer who had been bleeding Mrs Ferrars for a year over her husband's death, and he killed Ackroyd within minutes of leaving him, before Ackroyd could finish the letter naming him. He propped a dictaphone to play back his employer's recorded voice at half past nine, so that witnesses would place the murder later than it happened, and he arranged for a telephone call to reach him at ten fifteen so that he would be the man to return and discover the body, and so recover the dictaphone in his bag. Every misleading time in his own written account is an omission rather than a lie. Poirot explains that he suspected him from the beginning because Sheppard's account of that evening contained a gap it could not explain. He offers no bargain but tells him that for his sister's sake a different ending is available, and that the police will be told in the morning. Ralph Paton, found and cleared, is free to acknowledge his marriage to Ursula Bourne; Flora Ackroyd, released from her pretended engagement, is free to accept Major Blunt. Sheppard adds a final chapter to his manuscript, admits what he has left out, addresses it to Poirot, and sets out veronal for himself.",
+        "in_short": "In the village of King's Abbot, Mrs Ferrars dies of an overdose and the district whispers that she poisoned her husband a year earlier. Her friend Roger Ackroyd tells the local doctor, James Sheppard, that she confessed to the murder and had been blackmailed ever since by someone she would not name. A letter from her arrives while they talk; Ackroyd sends Sheppard away to read it alone, and that evening he is found stabbed in his locked study, the letter gone. His stepson Ralph Paton disappears, and Flora Ackroyd asks the retired detective who has taken the cottage next door to Sheppard, Hercule Poirot, to clear him. Poirot dismantles a series of small lies: Flora never saw her uncle alive that evening, the parlourmaid is secretly married to Ralph, the stranger at the gate is the housekeeper's son, and the telephone call that brought Sheppard back was made from a call box. Poirot finally names the murderer as Sheppard himself, the blackmailer, who killed Ackroyd at once and used a dictaphone to fake the time of death. He is given until morning, and ends his own account with a confession.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Dr James Sheppard, the doctor of the village of King's Abbot, is called out early to the death of Mrs Ferrars, a wealthy widow, who has died of an overdose of a sleeping draught. His sister Caroline, who runs the village's unofficial news service, is certain it was suicide and equally certain that Mrs Ferrars poisoned her husband a year before. The chief man of the district, Roger Ackroyd of Fernly Park, had been expected to marry her. Sheppard sketches the neighbourhood: Ackroyd's widowed sister-in-law and her daughter Flora living on his money, his charming and heavily indebted stepson Ralph Paton, his secretary Geoffrey Raymond, his friend Major Blunt, the butler Parker, the housekeeper Miss Russell, and the newcomer next door to the Sheppards, an eccentric retired man who grows vegetable marrows. Dining at Fernly that evening, Sheppard finds Ackroyd badly shaken. Ackroyd tells him that Mrs Ferrars did kill her husband, that she had confessed it to him, and that she had been blackmailed for a year by someone she refused to name. A letter from her is brought in during their talk. Ackroyd begins it, then says he will read it alone later, and Sheppard leaves. On his way out he passes a stranger at the lodge gates asking the way to the house.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At a quarter past ten Sheppard is telephoned at home and told that Ackroyd has been murdered. He goes back to Fernly, where Parker denies making any call. The study door is locked from within; they break in and find Ackroyd dead in his chair, stabbed with an ornamental Tunisian dagger taken from the hall. Mrs Ferrars's letter has gone. The window stands open and there are footmarks on the sill. Flora says she said goodnight to her uncle at a quarter to ten, and Raymond and Parker both heard him speaking in the study at half past nine, which fixes the time of death within a narrow span. Ralph Paton has vanished from the inn where he was staying and cannot be found, and Inspector Raglan builds his case against him with confidence. Flora refuses to accept it and calls on the neighbour with the marrows, who turns out to be Hercule Poirot, living in retirement under another name. He agrees to take the case on the condition that everyone concerned will have to face the whole truth, and Sheppard, as the doctor who found the body, becomes his companion in the investigation.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Poirot works through the household. He establishes that an armchair had been moved out of its usual place and put back, that Ackroyd had recently bought a dictaphone which is nowhere in the study, and that Parker has a history of blackmailing a former employer, which explains his eavesdropping without explaining the murder. In the summerhouse Poirot finds a scrap of starched cambric and a hollow goose quill of the kind used to take a drug. A gold wedding ring, engraved with an initial and a date in March, is fished out of the goldfish pond. He assembles the family and asks each of them for an account of the evening, warning them that anyone concealing something small will be suspected of something large. Mrs Cecil Ackroyd is evasive about her debts, Raymond about his, Miss Russell about her interest in drug addiction, and Flora about the minutes she claims to have spent with her uncle. Ralph Paton remains missing.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The concealed matters come out one by one. Mrs Ackroyd admits she was in the study looking for her brother-in-law's will. Raymond's debts have been settled by an unexplained windfall. Parker admits to listening at the door. The telephone call that brought Sheppard back to Fernly is traced to the call box at the railway station, made by a man whose voice nobody can identify. Poirot spends an evening at the Sheppards' mah jong table gathering village opinion, and afterwards tells Sheppard that he now knows how the murder was managed, though not by whom he will yet say. He begins to draw up a table of the times each person can be accounted for and asks Sheppard to keep writing his record of the case.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The stranger seen at the gates is identified as Charles Kent, a drug addict with a police record who was born in the district. He was at Fernly that night but can prove he left before the murder, and he was there to see Miss Russell, who is his mother. Flora then admits that she never saw her uncle alive after dinner at all: she had gone to his room to take forty pounds from his bureau, and invented the goodnight to explain her presence. That collapses a good deal of the timetable the police had built on it. Ursula Bourne, the parlourmaid, confesses that she is secretly married to Ralph Paton, that she told Ackroyd so on the day of the murder, and that she quarrelled with Ralph in the summerhouse that night. The ring from the pond is hers. Poirot, who has known where Ralph is for some time, produces him, and announces that he will name the murderer at a gathering the next day.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At the gathering Poirot lays out what each person had hidden, clears Ralph Paton, and says that the murderer is present. Afterwards he speaks to Dr Sheppard alone and names him. Sheppard was the blackmailer who had been extorting money from Mrs Ferrars over her husband's death, and he killed Ackroyd within minutes of leaving him, before the letter could be read to the end. He set the dictaphone to play back Ackroyd's recorded voice at half past nine so that the murder would appear to have happened after he had gone, moved the chair to hide the machine from the doorway, and arranged for a telephone call to reach him at a quarter past ten, so that he would be the one to return, break in, and carry the dictaphone away in his bag. His written account of that evening is true in every sentence and silent at the crucial minute. Poirot explains that he suspected him from the first because of that gap in the narrative, and tells him that for Caroline's sake there is another way out, since the police will hear everything in the morning. Ralph and Ursula are free to acknowledge their marriage, Flora is free to accept Major Blunt, and Sheppard writes a last chapter admitting what he left out before setting out a fatal dose of veronal for himself.",
+            "through": {
+              "chapter": 27
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-murder-of-roger-ackroyd"
+      }
+    },
+    "the-mysterious-affair-at-styles": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Captain Hastings"
+            ],
+            "description": "An English army officer invalided home from the Western Front, recovering on sick leave when an old friend invites him to convalesce at Styles Court. Amiable, conventional, and rather too ready to be impressed by whoever he has spoken to last, he has a private ambition to try his hand at detection. He narrates the case, recording what he sees and what he is told, and he is often several steps behind the man he brings into it.",
+            "id": "arthur-hastings",
+            "name": "Arthur Hastings",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A retired Belgian police detective, small, precise, and elaborately moustached, living in the nearby village among a party of war refugees whose settlement Mrs Inglethorp has paid for. He limps a little and dresses with fastidious care, insists on order in small things, and prefers to sit and reason from the arrangement of a room rather than crawl about measuring footprints. Hastings knew him years earlier in Belgium and holds his abilities in high regard.",
+            "id": "hercule-poirot",
+            "name": "Hercule Poirot",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The elderly mistress of Styles Court in Essex, an energetic and autocratic woman who controls the money that keeps the household and much of the district going. She sits on committees, organises war charities, and expects gratitude. The estate came to her from her first husband, and her stepsons live on her allowance rather than on any inheritance of their own. She has recently married a much younger man, to the dismay of her family.",
+            "id": "emily-inglethorp",
+            "name": "Emily Inglethorp",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Mrs Inglethorp's new husband, some twenty years her junior, with a long black beard, thick spectacles, and a stiff, ceremonious manner. He is a distant relation of her companion, appeared in the district only recently, and is universally assumed by the household and the village to have married for money. He takes charge of his wife's affairs and is disliked by every member of the family.",
+            "id": "alfred-inglethorp",
+            "name": "Alfred Inglethorp",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Mrs Inglethorp's elder stepson and Hastings's friend, who invites him to Styles. A country magistrate of middle age, he farms a little, keeps up appearances on an allowance from his stepmother, and resents both his dependence and her new marriage. His own marriage is visibly cool, and there is village talk of his attentions to a farmer's young wife.",
+            "id": "john-cavendish",
+            "name": "John Cavendish",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "John Cavendish's wife, striking and reserved, with a stillness that Hastings finds difficult to read. She keeps her own counsel, moves about the grounds alone, and is on distant terms with her husband. She is on friendlier terms with a London specialist staying in the village, which the household notices.",
+            "id": "mary-cavendish",
+            "name": "Mary Cavendish",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The younger Cavendish brother, a qualified doctor who never practised and now writes indifferent verse. Diffident, moody, and easily flustered, he lives at Styles on the same allowance as his brother. He is fond of the young dispenser who lodges with the family and worries about her more than he admits.",
+            "id": "lawrence-cavendish",
+            "name": "Lawrence Cavendish",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Mrs Inglethorp's companion and factotum for some years, a large, weather-beaten, plain-spoken woman who runs errands, gardens, and manages the household's practical business. She is devoted to her employer and states her opinions without softening them, chief among them that the new husband is a fortune hunter. Her insistence on saying so provokes a quarrel that drives her from the house.",
+            "id": "evelyn-howard",
+            "name": "Evelyn Howard",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young woman without means whom Mrs Inglethorp has taken in as a protegee. Cheerful and lively, she works at the dispensary of the local Red Cross hospital, where she makes up prescriptions and has ready access to the poisons cupboard. Hastings admires her considerably.",
+            "id": "cynthia-murdoch",
+            "name": "Cynthia Murdoch",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A distinguished London specialist in toxicology, staying in the village ostensibly to rest after a breakdown in health. Dark, saturnine, and formal, he is a frequent visitor at Styles, where he is on notably good terms with Mary Cavendish. He is given to long solitary walks at night, which the neighbourhood finds odd in a convalescent.",
+            "id": "dr-bauerstein",
+            "name": "Dr Bauerstein",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The elderly parlourmaid at Styles, long in Mrs Inglethorp's service and loyal to her. She carries the household's coffee and cocoa, knows the routine of the bedrooms, and overhears a quarrel in the boudoir on the afternoon before the tragedy. Her account of times and small domestic details becomes important evidence.",
+            "id": "dorcas",
+            "name": "Dorcas",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Scotland Yard detective inspector, brisk and cheerful, who has worked with Poirot on Continental cases and treats him with amused respect. He is sent down to Styles once the death becomes a police matter and is prepared to act on the evidence in front of him.",
+            "id": "inspector-japp",
+            "name": "Inspector Japp",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-mysterious-affair-at-styles"
+      },
+      "recaps": {
+        "ending": "Poirot recovers the missing letter, which had been rolled up and pushed into an ornamental spill vase on the mantelpiece of the boudoir. It proves that Alfred Inglethorp and Evelyn Howard are secretly cousins and lovers who planned the murder together. Miss Howard's loudly advertised hatred of him was cover; it was she, disguised with a false beard and glasses, who bought strychnine at the village chemist's and signed his name, so that the evidence pointing at him could be demolished at will. The poison was worked into Mrs Inglethorp's bromide sleeping powders, so that her medicine delivered a concentrated fatal dose days later, with both of them apparently elsewhere. Alfred courted suspicion deliberately, planning to produce an unshakeable alibi at his trial and be acquitted beyond any second prosecution. Poirot's refusal to let him be arrested too early is what makes the case against him possible. The pair are taken into custody. John Cavendish is acquitted and reconciles with Mary, whose coldness had been jealousy rather than indifference. Lawrence Cavendish and Cynthia Murdoch become engaged, Hastings having proposed to Cynthia himself and been gently refused. Dr Bauerstein's night walks are explained by his arrest as an enemy agent, unconnected with the murder. Hastings leaves Styles with his admiration for Poirot confirmed, and the two agree to work together again.",
+        "in_short": "Invalided home from the war, Captain Hastings goes to stay at Styles Court, where his friend John Cavendish lives on the money of his elderly stepmother, Emily Inglethorp, who has just married a much younger man the whole family distrusts. Mrs Inglethorp dies in the night of strychnine poisoning behind a bolted door, hours after a violent quarrel and after making and apparently destroying a new will. Hastings brings in Hercule Poirot, a Belgian detective living among refugees in the village. Suspicion falls on the husband, but Poirot works to protect him, then dismantles the case against him in public. Instead the family closes in: John Cavendish is arrested and tried. Poirot finds the letter everyone has been looking for hidden in a vase, and shows that Alfred Inglethorp and Evelyn Howard, secretly cousins and lovers, poisoned Mrs Inglethorp between them, using her own sleeping powders to delay the dose and inviting suspicion that could be safely destroyed later. John is acquitted, and the guilty pair are arrested.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Captain Hastings, on sick leave from the Front, accepts an invitation from his friend John Cavendish to convalesce at Styles Court in Essex. The house belongs to John's stepmother, Emily Inglethorp, a wealthy and managing old lady on whose allowance the family lives. She has recently married Alfred Inglethorp, a bearded man twenty years her junior whom the entire household believes to be after her money. Also at Styles are John's reserved wife Mary, his diffident brother Lawrence, Cynthia Murdoch, a young dependant who works in a hospital dispensary, and Evelyn Howard, Mrs Inglethorp's blunt and devoted companion. Miss Howard says openly that Mr Inglethorp is a fortune hunter, quarrels with her employer over it, and leaves the house. In the village Hastings meets an old acquaintance, Hercule Poirot, a retired Belgian detective living among refugees whose lodging Mrs Inglethorp pays for. Tension in the house grows; on the afternoon of the 17th of July Mrs Inglethorp is heard quarrelling violently with someone in her boudoir, drives into town, and returns tired and secretive, taking her papers to bed with her.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the small hours the household is woken by Mrs Inglethorp in convulsions behind her locked bedroom door. The doors to the adjoining rooms are bolted as well and have to be forced. She dies before the doctors can do anything, and Dr Bauerstein, a London toxicologist staying in the village, says at once that the symptoms are those of strychnine. Her husband is not in the house. Hastings walks to the village and asks Poirot to take the case; Poirot agrees on condition that he is allowed to pursue it to the end in his own way. Examining the sealed bedroom he notes a coffee cup ground to powder in the grate's fender, a small stain on the carpet, an overturned table, a scrap of dark green fabric caught on the bolt of the door into Cynthia's room, and, in the fireplace, a charred fragment of a will made that very afternoon. The despatch case in which Mrs Inglethorp kept her private papers has been forced open and something taken from it. Poirot learns that she had summoned her solicitor and made a new will only hours before she died.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Analysis confirms strychnine, and the question becomes how it was administered, since the coffee and the cocoa she drank both test clear and the poison acted far later in the night than it should have. At the inquest the evidence turns against Alfred Inglethorp: a chemist's assistant testifies that he sold strychnine to a man he took to be Mr Inglethorp, who signed the poison book in that name; the destroyed will was believed to have been in his favour; and he flatly refuses to say where he spent the evening of the murder. Miss Howard is recalled and repeats her opinion with force. The coroner's jury returns wilful murder against a person or persons unknown, but the village and the police are in no doubt. Hastings expects Poirot to hand the man over. Instead Poirot announces that his object is to prevent Alfred Inglethorp's arrest, and will not explain why.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "When the police are ready to make the arrest, Poirot forces the issue in front of Inspector Japp of Scotland Yard: he demonstrates that Inglethorp can account for the crucial evening with witnesses who cannot be shaken, and that the chemist's evidence therefore proves only that somebody impersonated him. A false black beard is found in the attic dressing-up chest, recently used. Attention swings back to the household. Poirot pursues small things that nobody else considers evidence: the shred of green fabric, an extra coffee cup that has vanished, the papers taken from the despatch case, Lawrence Cavendish's white face in the sickroom, and Mary Cavendish's movements in the night. Dr Bauerstein's habit of tramping the countryside after dark, and his friendship with Mary, attract suspicion of their own. Relations between John and Mary Cavendish deteriorate to open estrangement.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Dr Bauerstein is arrested, but for espionage rather than murder; his night walks had nothing to do with the poisoning. Then the police act on the evidence they have assembled and arrest John Cavendish, whose quarrel with his stepmother, chronic need of money and unexplained purchase of a false beard tell heavily against him. He is committed for trial. Mary, shaken out of her reserve, admits to Hastings that she was in her mother-in-law's room that night and that the torn green fabric was hers; she had gone in hoping to find a document of her own concern. Poirot, who could have destroyed the prosecution's case at once, holds back, telling Hastings only that a single missing link would make everything certain. The trial goes badly. Counsel for the defence can shake nothing, and the verdict looks a foregone conclusion.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Poirot finds the missing link: the letter taken from the despatch case, rolled up and hidden in a spill vase on the boudoir mantelpiece, where nobody had thought to look. It is a note from Alfred Inglethorp to Evelyn Howard, and it proves that the two are secretly cousins and lovers who planned the murder together. Miss Howard's public loathing of him was a blind. She bought the strychnine in the village disguised in a false beard and glasses, signing his name so that the evidence against him would be certain to collapse; Alfred deliberately refused to explain his movements, intending to be tried, acquitted, and so put beyond a second prosecution. The strychnine was added to Mrs Inglethorp's bromide sleeping powders, so that her tonic delivered a concentrated dose days later, at an hour when both of them could show they were elsewhere. Poirot's obstruction of the early arrest is what makes the true case possible. The pair are taken. John Cavendish is acquitted and reconciled with Mary; Lawrence, who had suppressed evidence in the belief that Cynthia was implicated, becomes engaged to her; and Hastings, refused by Cynthia, leaves Styles with his faith in Poirot complete.",
+            "through": {
+              "chapter": 13
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-mysterious-affair-at-styles"
+      }
     }
   }
 }

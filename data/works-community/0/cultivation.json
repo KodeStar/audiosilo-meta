@@ -439,6 +439,202 @@
         "work": "cultivation"
       }
     },
+    "curtain": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Poirot's oldest friend, now a widower in late middle age, returning to the house where the two of them first worked together many years before. He narrates the case as he did the first one. Warm-hearted, conventional and easily alarmed, he is painfully conscious of being slower than he was, and he is preoccupied above all with his grown daughter Judith, whose reserve he cannot get past.",
+            "id": "arthur-hastings",
+            "name": "Captain Arthur Hastings",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The Belgian detective at the end of his life, crippled by arthritis and confined to a wheelchair, with a failing heart that obliges him to keep ampoules of a stimulant within reach. His body has given out and his mind has not, and he has come back to Styles for a purpose he has thought through carefully. He sends for Hastings to be his hands, his eyes and his legs.",
+            "id": "hercule-poirot",
+            "name": "Hercule Poirot",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Poirot's manservant, a large, silent, capable man who lifts him, dresses him and wheels him about, and who is otherwise scarcely noticed by the household.",
+            "id": "curtiss",
+            "name": "Curtiss",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Hastings's daughter, a research assistant to Dr Franklin, cool, clever, and impatient with sentiment. She holds views about usefulness and about lives that are not worth prolonging, and states them with a directness her father finds chilling. She keeps her private affairs entirely to herself.",
+            "id": "judith-hastings",
+            "name": "Judith Hastings",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The proprietor of Styles, now a guest house, an elderly retired soldier, courteous, vague and visibly worn down. He is hopeless with money and is nagged in front of his guests by his wife, which the other residents find painful to watch.",
+            "id": "colonel-luttrell",
+            "name": "Colonel Luttrell",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Colonel Luttrell's wife, who runs the guest house with brisk efficiency and a sharp tongue, and who corrects and belittles her husband in public. She is a capable manager and can be charming when it suits the business.",
+            "id": "daisy-luttrell",
+            "name": "Mrs Daisy Luttrell",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A research scientist working on the properties of a poisonous West African bean, absorbed in his work to the exclusion of nearly everything else, including his invalid wife. Blunt and awkward in company, he employs Judith Hastings as his assistant and would like to go to Africa to continue the research.",
+            "id": "john-franklin",
+            "name": "Dr John Franklin",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Dr Franklin's wife, a delicate woman who spends much of her time lying down and who talks charmingly about being a burden to her husband. Other people find her either pathetic or exhausting, depending on the day and their own patience.",
+            "id": "barbara-franklin",
+            "name": "Barbara Franklin",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The nurse engaged to look after Mrs Franklin, competent and outwardly patient, though privately weary of a patient whose illness leaves her a good deal of energy for making demands.",
+            "id": "nurse-craven",
+            "name": "Nurse Craven",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A quiet, unassuming guest with a stammer and a passion for bird-watching, forever offering people his field glasses. He is a good listener, sympathetic and self-effacing, the sort of man everyone confides in and nobody remembers afterwards.",
+            "id": "stephen-norton",
+            "name": "Stephen Norton",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A good-looking man of the world staying at Styles, amusing, practised and with a reputation where women are concerned. Hastings dislikes him on sight and is alarmed by the amount of time Judith spends in his company.",
+            "id": "major-allerton",
+            "name": "Major Allerton",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A guest in her thirties, still handsome but withdrawn and apologetic, who avoids talking about her family. She becomes friendly with Hastings and eventually tells him that she is living under a changed surname because of a notorious case in her past.",
+            "id": "elizabeth-cole",
+            "name": "Elizabeth Cole",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wealthy baronet, recently returned from a colonial governorship, hearty, popular and full of plans for the estate he has inherited nearby. He is an old acquaintance of the Franklins and takes a kindly interest in Barbara Franklin's health.",
+            "id": "boyd-carrington",
+            "name": "Sir William Boyd Carrington",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "curtain"
+      },
+      "recaps": {
+        "ending": "Four months after Poirot's death, Hastings receives the manuscript Poirot left for him. X was Stephen Norton. Norton never committed a murder with his own hands: he studied people, found the crack in each of them, and by patient sympathetic suggestion brought them to the point of killing, then withdrew and watched somebody else be blamed. He had done it in the five earlier cases, he pushed Colonel Luttrell to the shot that nearly killed his wife, and he was working on Judith. Barbara Franklin had prepared a poisoned drink for her husband; Poirot, who could not prevent the attempt and would not let it succeed, saw to it that the revolving bookcase table was turned so that she took her own draught, and he takes the responsibility for her death on himself. Poirot also reveals that Hastings's impulse to poison Major Allerton was Norton's work, and that he drugged Hastings's cocoa that night to stop him. Since nothing could be proved against a man who only talked, Poirot appointed himself judge: his helplessness was partly assumed, he could walk when he chose, and he drugged Norton's cocoa, went to his room in the night, shot him neatly through the forehead, locked the door from outside with a duplicate key, and returned. He then withheld the heart medicine that would have saved him, submitting to the same judgement he had passed on Norton, and leaving the whole account to Hastings.",
+        "in_short": "Hastings, a widower, returns to Styles, the country house where he first met Poirot, now a shabby guest house. Poirot is there, crippled and dying, and tells him that one of the residents is a murderer he calls X, who has been present at five deaths for which other people were convicted or blamed, and refuses to name the person. Hastings watches the household: the bickering Luttrells, the research scientist John Franklin and his invalid wife Barbara, the mild bird-watcher Norton, the plausible Major Allerton, and his own daughter Judith. Colonel Luttrell shoots his wife and calls it an accident; she recovers. Hastings, convinced Allerton means to ruin Judith, plans to poison him and falls asleep before he can. Barbara Franklin then dies of poison in her coffee, and the inquest calls it suicide. Norton hints that he has seen something through his field glasses and is found shot in his locked room. Poirot dies of heart failure days later. His posthumous manuscript reveals that Norton was X, an instigator who talked others into murder, and that Poirot, unable to prove anything, killed him and then let himself die.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Captain Arthur Hastings first met Hercule Poirot at Styles Court in Essex during the First World War, when Poirot was a Belgian refugee living in the village and Hastings was convalescing at the house; the poisoning of its mistress was the case that began their partnership. In the years that followed Hastings acted as Poirot's companion and chronicler through many investigations, argued with him about method, and was regularly wrong about the murderer. He married and went to live in the Argentine, and by the time of this book he is a widower with grown children, among them a daughter, Judith. Poirot has long since become a famous man and has grown old.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Hastings comes back to Styles, which is now a run-down guest house kept by Colonel Luttrell and his sharp-tongued wife. Poirot has taken rooms there and asked him to come. Hastings is shocked by his condition: arthritis has crippled him, he cannot walk, his heart is failing and he keeps a stimulant beside him. His mind is unaffected, and he explains why he is there. He has studied five entirely separate cases, in different places and years, in which somebody was convicted or generally held guilty of murder, and in each of them one particular person was present. That person he calls X, and X is at Styles now. Poirot flatly refuses to give the name, on the ground that Hastings could not conceal what he knew and that the knowledge would be dangerous. He wants Hastings to be his legs and his eyes, and to report what he sees without knowing what it means.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Hastings takes stock of the household. Dr John Franklin is working on the poisonous properties of a West African bean, assisted by Hastings's daughter Judith, who states unsentimental opinions about useless lives that disturb her father. Franklin's wife Barbara is an invalid who talks about being a burden, attended by Nurse Craven. Sir William Boyd Carrington, a wealthy and popular baronet, has arrived from a colonial governorship and is an old friend of the Franklins. Stephen Norton is a mild, stammering bird-watcher who lends people his field glasses and listens to their troubles. Major Allerton is an experienced philanderer whose attentions to Judith alarm Hastings badly. Elizabeth Cole is quiet and evasive about her family, and eventually admits to Hastings that her real name is different, and that her sister was convicted of killing their father and died in an asylum, one of the five cases Poirot has described. Meanwhile the Luttrells' marriage is played out in public, with Mrs Luttrell humiliating her husband in front of the guests night after night.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Colonel Luttrell, out with a rifle after rabbits, fires at a moving shape in the shrubbery and hits his wife. She is badly wounded but recovers, and the near tragedy transforms the marriage: she becomes gentle with him and he cheers up remarkably. Hastings, who was present, is uneasy about the conversation that preceded the shot. His own preoccupation is Judith. Convinced that Allerton is a practised seducer who means to ruin her and abandon her, and that nothing he says will stop it, Hastings comes to the conclusion that the only solution is to kill him, and prepares to do it with an overdose of Poirot's sleeping tablets dropped into a nightcap. He carries the plan almost to the point of execution and then falls into a heavy sleep and wakes to find the moment gone. In the morning he is appalled at himself. Poirot, when he speaks to him, is unusually severe about the danger of a man deciding to take a life.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Barbara Franklin's mood swings between despair and a strange gaiety; she talks about being an obstacle to her husband's career and about the African post he has been offered. On a warm evening the party takes coffee on the terrace and afterwards moves indoors, the cups standing for a time on a revolving bookcase table by the window. In the night Barbara Franklin is taken ill and dies, poisoned with the drug her husband extracts from the Calabar bean. The inquest hears evidence of her low spirits and returns a verdict of suicide while of unsound mind, which the household accepts with relief and which Poirot makes no attempt to disturb. Hastings is troubled by it: he remembers her talk of the future that evening, and it did not sound like a woman preparing to die.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Norton lets slip that while watching birds he saw something through his field glasses that startled him, and refuses to say what or who. He tells Poirot he will speak to him about it, goes up to his room that night, and is found in the morning shot through the exact centre of the forehead, the door locked and the key in his dressing gown pocket, so that the death is recorded as suicide. Poirot, who has been visibly weaker for days, says almost nothing about it, and within a short time his heart fails and he dies at Styles, with the ampoules that might have revived him out of his reach on the table. Hastings is desolate. Judith, who has been silent and unhappy throughout, tells him that she has never had the slightest interest in Allerton and that she loves John Franklin, and she leaves with him for Africa. Among Poirot's effects Hastings is given a copy of Shakespeare's Othello, and is told that a sealed manuscript addressed to him is to be delivered in four months' time.",
+            "through": {
+              "chapter": 19
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The manuscript arrives and Poirot's last case is explained. X was Stephen Norton. He killed nobody with his own hands; he found the weakness in other people and worked on it with sympathy and suggestion until they did the killing, then stood aside while somebody else was convicted, which is why no charge could ever touch him. He had done it five times before, he brought Colonel Luttrell to the shot that nearly killed his wife, and he was at work on Judith. Barbara Franklin had prepared the poisoned drink for her husband; Poirot could not prevent the attempt but would not let it succeed, and the revolving table was turned so that she took the cup herself, a death for which he takes the responsibility. He also tells Hastings that his impulse to poison Allerton was Norton's doing, and that Poirot drugged his cocoa that night to stop him. Since nothing could be proved against a man who only talked, Poirot judged the case himself: his helplessness was in part assumed and he could walk when he chose, and he drugged Norton, went to his room, shot him precisely through the forehead, locked the door from outside with a duplicate key and returned. Having done it, he refused to let his own life be saved, left his heart medicine out of reach, and submitted to the same judgement, leaving Hastings the whole account.",
+            "through": {
+              "chapter": 20
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "curtain"
+      }
+    },
     "cytonic": {
       "characters": {
         "characters": [
@@ -1198,6 +1394,452 @@
         "work": "dawnshard"
       }
     },
+    "dead-and-gone": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A telepathic waitress at Merlotte's bar in Bon Temps, Louisiana. She has accepted that she is part fairy, descended from the prince Niall Brigant, and she is spared by the new Nevada regime because her mind-reading makes her useful. She is bonded to the vampire Eric Northman by exchanged blood, estranged from Bill Compton since learning he was ordered to seduce her, and quietly building a relationship with Hunter, the small telepathic son of her dead cousin.",
+            "id": "sookie-stackhouse",
+            "name": "Sookie Stackhouse",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The owner of Merlotte's, a shapeshifter and Sookie's employer of many years. Cautious by temperament, he has kept what he is hidden from the town for his whole adult life, and the decision facing every two-natured person in the world falls hardest on someone whose livelihood depends on Bon Temps liking him.",
+            "id": "sam-merlotte",
+            "name": "Sam Merlotte",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Viking vampire who owns Fangtasia and holds Shreveport and its territory as sheriff, now serving Felipe de Castro of Nevada with a regent set over him. He and Sookie share a blood bond and an unresolved attachment, and he is increasingly concerned that the new king's people will decide to claim Sookie outright.",
+            "id": "eric-northman",
+            "name": "Eric Northman",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sookie's vampire neighbor and former lover, now permanently out of favor after she learned he was sent to Bon Temps under the old queen's orders to attach himself to her. He keeps to his house across the cemetery, works on his vampire database, and has never stopped watching out for her whether she wants it or not.",
+            "id": "bill-compton",
+            "name": "Bill Compton",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sookie's brother, a werepanther by infection rather than birth, married to Crystal Norris of Hotshot. The marriage is unhappy and unfaithful on both sides and is common knowledge in two communities, which does nothing for his standing with the panthers or with his sister.",
+            "id": "jason-stackhouse",
+            "name": "Jason Stackhouse",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A New Orleans witch lodging in Sookie's upstairs rooms since the hurricane, capable, loud, and not always careful. She is the closest thing Sookie has to a female friend in the house and provides most of its magical defenses.",
+            "id": "amelia-broadway",
+            "name": "Amelia Broadway",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jason's wife, a werepanther born in the inbred, insular community at Hotshot. She is pregnant, restless, and openly unfaithful, and her behavior has strained relations between Jason and the panthers who consider her theirs.",
+            "id": "crystal-norris",
+            "name": "Crystal Norris",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A werepanther from Hotshot and one of Jason's regular drinking companions, a quiet man who keeps his distance from the rest of the panther community and seems more comfortable in Jason's company than in his own family's.",
+            "id": "mel-hart",
+            "name": "Mel Hart",
+            "reveal": {
+              "chapter": 2
+            }
+          },
+          {
+            "description": "Sookie's fairy godmother, a full-blooded fairy of Niall's line who has appeared throughout Sookie's life to pull her out of danger. She is pregnant, which for a fairy is rare and precious, and she is more anxious than usual about what her own people are doing.",
+            "id": "claudine-crane",
+            "name": "Claudine Crane",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sookie's great-grandfather, prince of the fairies, ancient and courtly. He visits her when it suits him, deflects her questions about fairy politics, and is plainly managing a conflict among his own kind that he does not want to describe to her.",
+            "id": "niall-brigant",
+            "name": "Niall Brigant",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Shreveport werewolf and locksmith, blunt and competent, who has done security work for Sookie's household before. He is trusted enough by both wolves and vampires to be hired as a bodyguard when Sookie's house needs guarding.",
+            "id": "tray-dawson",
+            "name": "Tray Dawson",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A fairy who looks almost exactly like Jason Stackhouse and turns out to be a relative, Niall's son and therefore Sookie's great-uncle. His behavior is erratic and his loyalties are impossible to read, and Niall speaks of him with a mixture of grief and warning.",
+            "id": "dermot-brigant",
+            "name": "Dermot Brigant",
+            "reveal": {
+              "chapter": 6
+            }
+          },
+          {
+            "description": "A fairy noble who leads the faction opposing Niall Brigant. He wants the fae to sever every remaining tie with the human world, and he regards Niall's human-blooded descendants as the tie most worth cutting.",
+            "id": "breandan",
+            "name": "Breandan",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A fairy in Breandan's service, beautiful and entirely without pity, who works alongside Lochlan. The pair are known among their own people for taking a craftsman's interest in the suffering of others.",
+            "id": "neave",
+            "name": "Neave",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A fairy in Breandan's service and Neave's inseparable partner, sharing her tastes and her reputation. Where she is theatrical he is methodical, and neither is deterred by anything a captive says.",
+            "id": "lochlan",
+            "name": "Lochlan",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A vampire made by the same maker as Bill Compton, and therefore his sister in blood, living well away from Louisiana. Their shared history is long and painful, and she has kept her distance from him for years.",
+            "id": "judith-vardamme",
+            "name": "Judith Vardamme",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "dead-and-gone"
+      },
+      "recaps": {
+        "ending": "The fairy war ends with Sookie's rescue and Niall's victory, both paid for heavily. Bill kills Neave and Eric kills Lochlan, but the fairies' blood is poison to vampires and Bill is left dying of it; he survives only because Sookie has Eric find Judith Vardamme, his sister in blood, whose blood heals him. Niall kills Breandan, then tells Sookie that the only way to stop the killing for good is to shut Faery, and closes the doors between the worlds behind him. Sookie loses her fairy godmother Claudine and her bodyguard Tray Dawson in the fighting, and is left physically maimed and badly traumatized by her captivity. Claude and Dermot are among the part-fairies stranded on the human side. In Bon Temps, Mel Hart is exposed as the man responsible for Crystal's death, and the Hotshot panthers deal with him under their own law rather than the state's. Jason is cleared and widowed. Eric's marriage to Sookie by vampire custom stands, which shields her from Felipe de Castro and Victor Madden but binds her further into vampire politics. The two-natured are now public, permanently, and Bon Temps has to decide what it thinks of that.",
+        "in_short": "The world's shapeshifters and werewolves announce their existence on television, and Sam Merlotte changes shape in front of his own customers. Days later Jason's pregnant wife Crystal is found crucified in the bar's parking lot, and the search for her killer runs through the whole book alongside a far larger danger: a faction of fairies led by Breandan wants every human-blooded descendant of Prince Niall Brigant dead, and Sookie is at the top of the list. Eric marries Sookie by vampire custom to keep her out of the new Nevada regime's hands, and guards are posted around her home, but the fairies kill her protectors one by one, including her fairy godmother Claudine and the werewolf Tray Dawson. Sookie is captured and tortured by Neave and Lochlan before Niall, Bill and Eric reach her. Bill is poisoned killing Neave and is saved by another of his maker's children. Niall kills Breandan, then closes Faery entirely and says goodbye. Crystal's killer proves to be Jason's friend Mel Hart, who is executed by the Hotshot panthers.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Sookie Stackhouse is a telepathic waitress in Bon Temps, Louisiana, where vampires live openly and everyone else supernatural does not. She has loved and lost Bill Compton, worked as a telepath for the vampire queen of Louisiana, and become entangled with Eric Northman, the sheriff of her territory, to whom she is bound by a blood bond. A bombing at a vampire summit in Rhodes gutted Louisiana's vampires, and Felipe de Castro, king of Nevada, then invaded the weakened state, killed the queen and took Louisiana, installing the relentlessly cheerful Victor Madden as regent over Eric. Sookie was spared as a useful asset. She has learned that she is part fairy through her great-grandfather Prince Niall Brigant, who has begun visiting her; that Bill first came to Bon Temps under orders to seduce her; and that her dead cousin Hadley left a small son, Hunter, who is telepathic like her. Her brother Jason, a werepanther, is unhappily married to Crystal Norris of the isolated Hotshot community, and the witch Amelia Broadway is still lodging upstairs.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The world's two-natured people announce themselves in a coordinated worldwide broadcast, and Sam Merlotte changes into a collie in front of his own customers to prove it. Bon Temps reacts in every direction at once: some regulars take it calmly, some stop coming, and a few become openly hostile. Sookie, who has known for years, spends her shifts managing other people's shock. Days later, Jason's wife Crystal, pregnant and long estranged from him, is found crucified on a signboard in the bar's parking lot. The murder is a public statement, timed to look like an attack on the newly revealed shapeshifters. The sheriff's office and the Hotshot werepanthers both investigate, and Jason, whose marriage was notoriously bad, is the obvious suspect to everyone but his sister.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The investigation into Crystal's death produces no answer. The panthers of Hotshot conduct their own inquiry with methods the parish sheriff would not approve of, and Jason remains under suspicion in both. Federal agents arrive in Bon Temps wanting to know how Sookie came to survive the Rhodes hotel bombing and what exactly she can do, an attention she cannot afford. Eric grows uneasy: Victor Madden's interest in Sookie is proprietary, and under the new regime a valuable human without a vampire's claim on her is simply available. Niall visits and is evasive in a new way, warning Sookie to be careful without explaining what of. A man who could pass for Jason's twin appears at the edges of events; he is Dermot, Niall's son and Sookie's great-uncle, and nobody can say whose side he is on.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The fairy quarrel comes into the open. Niall's rival Breandan wants the fae to cut every tie to the human world and holds that Niall's human-blooded descendants should be destroyed along with the connection; Sookie is the most obvious target. Eric acts before Victor Madden can: he presents Sookie with a ceremonial knife in front of witnesses, marrying her by vampire custom, which places her formally under his protection and out of the reach of anyone in Felipe de Castro's court. Guards are posted at her house, including the Shreveport werewolf Tray Dawson, and Sookie's life narrows to work, watchfulness and a house full of people carrying weapons. Meanwhile Crystal's murder still has no solution, and the town's temper about the shapeshifters continues to sour.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Breandan's people attack in earnest, and the protections around Sookie fail one at a time. Tray Dawson is killed defending her, and Claudine, her pregnant fairy godmother, is killed as well. Sookie herself is taken. Her captors are Neave and Lochlan, two fairies in Breandan's service who work on her over a period of days with deliberate, unhurried cruelty and no interest in information. She survives by refusing to give them the reaction they want and by holding on to the certainty that Niall and the vampires are looking for her, while the damage they do goes past anything she has suffered before.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Niall, Bill and Eric find Sookie and kill her captors: Bill tears out Neave's throat and Eric finishes Lochlan. Because fairy blood is poison to vampires, Bill is left dying, and Sookie has Eric track down Judith Vardamme, another child of Bill's maker, whose blood restores him. Niall kills Breandan, ending the war, and then tells Sookie that the only permanent protection for her is a closed door: he shuts Faery, stranding Claude, Dermot and the other part-fairies on the human side and taking his leave of Sookie for good. She is left maimed, badly damaged in mind as well as body, and married to Eric by vampire law. In Bon Temps the murder is finally solved: Mel Hart, Jason's quiet drinking companion, was responsible for Crystal's death and helped stage the crucifixion to look like an anti-shifter killing. The Hotshot panthers take him and settle it under their own law.",
+            "through": {
+              "chapter": 19
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "dead-and-gone"
+      }
+    },
+    "dead-as-a-doornail": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A telepathic waitress at Merlotte's bar in Bon Temps, Louisiana, living alone in her grandmother's house and no longer able to pretend she is outside the supernatural world. She is carrying a killing nobody else knows about, a brother who has been forced into a shape he did not choose, and a growing reputation among vampires and shapeshifters as a human worth using. She is stubborn about doing right by the people she considers hers.",
+            "id": "sookie-stackhouse",
+            "name": "Sookie Stackhouse",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Sookie's brother, a Bon Temps road crew supervisor who was kidnapped and bitten repeatedly by a werepanther the previous winter. Because he was made rather than born, his change is partial and painful: he becomes a hybrid of man and cat rather than a true panther. He faces his first full moon with his sister as his only company, and he is looking for someone to blame.",
+            "id": "jason-stackhouse",
+            "name": "Jason Stackhouse",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young woman from the closed werepanther community of Hotshot who is seeing Jason Stackhouse. Her family is not pleased about the connection, and she is caught between them and him.",
+            "id": "crystal-norris",
+            "name": "Crystal Norris",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Sookie's boss, the owner of Merlotte's and a shapeshifter. He is shot in the leg outside his own bar early in the book, which puts him on crutches and leaves Sookie effectively running the place.",
+            "id": "sam-merlotte",
+            "name": "Sam Merlotte",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A short-order cook newly hired at Merlotte's. She has worked kitchens in small towns all over the region, never staying long anywhere, and she is friendly enough without being anybody's friend.",
+            "id": "sweetie-des-arts",
+            "name": "Sweetie Des Arts",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Sookie's friend from school, who runs a dress shop in Bon Temps. Her arrangement with a wealthy Mississippi vampire has been handed on to someone else without her consent, and she is frightened, bruised and unwilling to explain.",
+            "id": "tara-thornton",
+            "name": "Tara Thornton",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sookie's former lover, the vampire who lives across the cemetery from her, returned from his travels in South America. He wants her back and she does not want him, and their dealings are civil, frequent and uncomfortable.",
+            "id": "bill-compton",
+            "name": "Bill Compton",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The head of the Hotshot werepanther community and a road crew foreman, a steady, courteous man who has made no secret of wanting to marry Sookie. He is among those shot by the sniper working the area.",
+            "id": "calvin-norris",
+            "name": "Calvin Norris",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The thousand-year-old vampire sheriff of the area, restored to himself after the witches' curse and, as far as anyone can tell, with no memory of the weeks he spent hidden in Sookie's house. He lends Merlotte's a bartender while Sam is laid up, and he keeps finding reasons to have Sookie where he can see her.",
+            "id": "eric-northman",
+            "name": "Eric Northman",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A small, red-haired English vampire lent to Merlotte's by Eric to tend bar while Sam recovers. Elaborately courteous, he wears an eyepatch, tells stories of a piratical life at sea, and is popular with the customers.",
+            "id": "charles-twining",
+            "name": "Charles Twining",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The leader of the Shreveport werewolf pack, a retired air force officer who has run pack business with military discipline. His death leaves the packmaster's place open at the worst possible time.",
+            "id": "colonel-flood",
+            "name": "Colonel Flood",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Shreveport werewolf who has twice been Sookie's ally, now backing his father's claim to lead the pack. He asks Sookie to serve as an impartial witness at the contest, which puts her in the middle of pack politics she has no standing in.",
+            "id": "alcide-herveaux",
+            "name": "Alcide Herveaux",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Alcide's father, who runs the family surveying company and considers himself the natural successor as packmaster. Proud, aging and heavily in debt from gambling, he is not as strong a candidate as his son believes.",
+            "id": "jackson-herveaux",
+            "name": "Jackson Herveaux",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Shreveport motorcycle dealer and werewolf, the other candidate for packmaster. Ordinary-looking and widely liked among the pack's rank and file, he wants the position badly.",
+            "id": "patrick-furnan",
+            "name": "Patrick Furnan",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A vampire who has taken over Tara Thornton's arrangement from her previous protector. He is small, cruel and territorial, he answers to a powerful vampire elsewhere, and he treats Tara as property to be damaged as he likes.",
+            "id": "mickey",
+            "name": "Mickey",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A private investigator hired, with his wife Lily, by the Pelt family of Jackson to find out what became of their daughter Debbie. He is thorough, polite and hard to lie to, and he does not believe Sookie's account of the last time she saw her.",
+            "id": "jack-leeds",
+            "name": "Jack Leeds",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The tall, beautiful woman who appeared at Sookie's side during the fight with the witches and would not say what she was. She continues to turn up when Sookie is in danger, cheerfully unhelpful about her own nature, and admits only that looking after Sookie is a duty of hers.",
+            "id": "claudine",
+            "name": "Claudine",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "dead-as-a-doornail"
+      },
+      "recaps": {
+        "ending": "Both threats turn out to have been sitting inside Merlotte's all along. The sniper is Sweetie Des Arts, the short-order cook, who was bitten by a shapeshifter years ago, became something she despises, and has been moving from town to town killing two-natured people ever since. She corners Sookie with a rifle and is killed before she can fire, and the shootings stop. Sam, Calvin Norris and the others she wounded recover. The second threat is Charles Twining, the courteous English vampire Eric lent to the bar. He set the fire at Sookie's house and he attacks her openly at the end: he was sent to Louisiana to avenge Long Shadow, the vampire Eric destroyed at Fangtasia years earlier, and killing Eric's favorite human was the closest he could get. He is destroyed. The werewolf pack ends the book under Patrick Furnan, who cheated his way through the contest; Jackson Herveaux is dead, and Alcide, who blames Sookie for not preventing it, is no longer easy company. Tara Thornton is free of Mickey, bought out of the arrangement by Eric at a price Sookie will owe. Bill is back in Bon Temps and unwelcome. The last word belongs to Eric, who tells Sookie that his memory has come back: he remembers the weeks in her house, their nights together, and Debbie Pelt dying on her kitchen floor, which means Sookie's one real secret is now shared with the most dangerous person she knows.",
+        "in_short": "Sookie sees her brother Jason through his first full moon as a bitten werepanther, then finds that someone is shooting shapeshifters across the parish: Sam Merlotte is hit in the leg, Calvin Norris is wounded, and a young woman is killed. Running the bar in Sam's place, Sookie takes on a vampire bartender lent by Eric, an Englishman named Charles Twining. Her house is set on fire in the night and she barely escapes. Meanwhile the Shreveport werewolf pack loses its leader and holds a contest to replace him; Sookie is asked to witness, sees Patrick Furnan cheat, and cannot stop the contest that kills Alcide's father. Private investigators hired by Debbie Pelt's family press her about the disappearance she is responsible for, and she has to get Eric's help to free her friend Tara from a brutal vampire. Sookie works out that the sniper is Sweetie Des Arts, the bar's own cook, a woman bitten years ago who hates what she became; Sweetie is killed. Charles then attacks Sookie, revealed as an assassin avenging a vampire Eric destroyed, and is destroyed himself. Eric ends the book by telling Sookie that he remembers everything.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Sookie Stackhouse is a telepathic waitress at Merlotte's bar in Bon Temps, Louisiana, in a world where vampires live openly. Her grandmother was murdered by a man hunting Sookie; her boss Sam Merlotte is a shapeshifter; and she has survived a maenad, the anti-vampire Fellowship of the Sun, and a vampire kingdom's politics. Her relationship with the vampire Bill Compton ended after he planned to leave her for his maker and then, starving and out of his mind, nearly killed her during his own rescue in Mississippi; she killed his maker herself. She is watched, wanted and repeatedly used by Eric Northman, the thousand-year-old sheriff of the area. Last winter a coven cursed Eric with amnesia, Sookie hid him in her house for pay, and they became lovers; when the curse broke he remembered none of it. On the same night, Debbie Pelt broke in to kill Sookie and Sookie shot her dead, a killing Eric helped conceal and then forgot, leaving Sookie the only person who knows. Her brother Jason was kidnapped and bitten by a werepanther from the isolated community of Hotshot and will now change with the full moon. Sookie is also guarded, on and off, by a beautiful woman named Claudine who will not explain what she is.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sookie spends the first full moon of Jason's new life with him, out at his house by the pond, because there is no one else to do it. Because he was bitten rather than born to it, his change is partial and agonizing and leaves him a hybrid of man and cat, an object of contempt to the born werepanthers of Hotshot. He is furious about it and looking for someone to punish. Back in town, Sam Merlotte is shot in the leg by a rifle as he steps out of Merlotte's, and the bar is left without an owner on his feet. Sookie takes on the running of it, hires help, and starts hearing about other shootings in the area. The victims have nothing obvious in common until Sookie sees what the police cannot: every one of them is two-natured.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The shootings continue. Calvin Norris, the head of Hotshot, is badly wounded, and a young woman is killed outright, and the shapeshifter community of the parish realizes it is being hunted by someone who knows what they are. Sookie, who now has to keep Merlotte's staffed at night, accepts Eric Northman's offer of a bartender: Charles Twining, a small, courteous English vampire with an eyepatch and a stock of stories about a life at sea, who proves to be very good with customers. Bill Compton comes home from South America and starts finding reasons to be near Sookie, who does not want him back. The Shreveport werewolf pack loses Colonel Flood, its longtime leader, and the pack's succession is suddenly an open question.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Alcide Herveaux asks Sookie to serve as an impartial witness at the contest that will decide the next packmaster, between his father Jackson Herveaux and Patrick Furnan, a motorcycle dealer with the rank and file behind him. Sookie also has her friend Tara Thornton to worry about: Tara's arrangement with a wealthy vampire has been handed on to Mickey, a vicious vampire who is hurting her and whom Tara is too frightened to leave. Sookie asks Eric for help, which costs her. On top of that, private investigators hired by Debbie Pelt's family arrive from Jackson, asking careful questions about the night Debbie disappeared, and Sookie, who shot her, has to lie to their faces without any assurance that they believe her.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sookie's house is set on fire in the night. She gets out alive, but part of the house is gutted, most of what her grandmother left her is ruined, and a man's body is found in the burned area. She is left camping in what remains and depending on the goodwill of people she does not entirely trust, with money from the pack and the vampires paying for the repairs. Eric handles Mickey, and Tara is freed from him at a price that will be Sookie's to pay eventually. Between the sniper, the arson, the pack's succession fight and the Pelts' investigators, Sookie cannot tell which of the several people circling her is the one actually trying to kill her.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The packmaster contest is held, and Sookie, witnessing, sees Patrick Furnan cheat in one of the trials. She cannot stop what follows: the contest ends in a fight to the death, and Jackson Herveaux is killed. Furnan becomes packmaster of Shreveport. Alcide, grieving and looking for a reason, blames Sookie for not preventing it, and the friendship between them goes cold. Sookie, meanwhile, works out the pattern behind the shootings by thinking about who has been present in every town where a shapeshifter was shot, rather than about who hates them.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The sniper is Sweetie Des Arts, the short-order cook at Merlotte's, who was bitten by a shapeshifter years ago, became a thing she cannot stand being, and has since moved from town to town killing two-natured people. She corners Sookie with the rifle and is killed before she can use it, and the shootings end. That same night Charles Twining attacks Sookie in the open. The polite English bartender was sent to Louisiana to avenge Long Shadow, the vampire Eric destroyed at Fangtasia years ago; he set the fire at Sookie's house, and killing Eric's favorite human was the nearest thing to revenge available to him. He is destroyed. Sam recovers, Tara is free of Mickey, and Sookie is left with a half-burned house and a ruined friendship with Alcide. Then Eric comes to tell her that his memory has returned: he remembers the weeks in her house, what they were to each other, and Debbie Pelt dying on her kitchen floor.",
+            "through": {
+              "chapter": 13
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "dead-as-a-doornail"
+      }
+    },
     "dead-beat": {
       "characters": {
         "characters": [
@@ -1366,6 +2008,1254 @@
           }
         ],
         "work": "dead-beat"
+      }
+    },
+    "dead-ever-after": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A telepathic waitress and now part owner of Merlotte's, living alone in her grandmother's house with her fairy relatives gone and her one wish spent. Her marriage to Eric Northman is finished in everything but name, she is out of favor with the vampires who used to protect her, and the ordinary business of running a bar in Bon Temps is most of what she has left.",
+            "id": "sookie-stackhouse",
+            "name": "Sookie Stackhouse",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The shapeshifter who owns Merlotte's, Sookie's business partner and closest friend, recently returned from the dead and not comfortable in his own life since. He is grateful, unsettled and awkward with her in ways neither of them can name.",
+            "id": "sam-merlotte",
+            "name": "Sam Merlotte",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Viking vampire sheriff of Area Five, still bound by the marriage contract his dead maker signed on his behalf with the queen of Oklahoma. He and Sookie are barely speaking; she chose to spend her one wish on someone else, and he has not pretended it did not matter.",
+            "id": "eric-northman",
+            "name": "Eric Northman",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sookie's vampire neighbor, steady and undemanding, who has stopped competing for her and simply keeps himself available. He is one of the few people whose loyalty to her has never been conditional on anything.",
+            "id": "bill-compton",
+            "name": "Bill Compton",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Eric's child and lieutenant, running Fangtasia and openly contemptuous of the Oklahoma arrangement. She would rather see her maker fight it than accept it, and she has little patience left for Sookie's part in the situation.",
+            "id": "pam",
+            "name": "Pam Ravenscroft",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sookie's brother, settled at last and engaged to Michele Schubert. He has become genuinely reliable, which is new, and he stands by his sister without needing to be asked.",
+            "id": "jason-stackhouse",
+            "name": "Jason Stackhouse",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sookie's former friend and fellow waitress at Merlotte's, released from prison after her part in a plot against Sookie's life. Broke, unemployable and full of grievance, she comes to the bar to ask for her old job back.",
+            "id": "arlene-fowler",
+            "name": "Arlene Fowler",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A half-demon lawyer who has handled supernatural estates around New Orleans for many years and who was a friend of Sookie's fairy grandfather Fintan. Precise, courteous and enormously well connected, he arrives with information about Sookie's family that nobody else has ever offered her.",
+            "id": "desmond-cataliades",
+            "name": "Desmond Cataliades",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Mr. Cataliades's niece, a part-demon young woman who dresses in whatever colors come to hand, speaks in a rapid run-on, and is a great deal more dangerous than she looks. She works as her uncle's messenger and muscle.",
+            "id": "diantha",
+            "name": "Diantha",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The vampire queen of Oklahoma, who holds a marriage contract signed by Eric's maker before his death. Handsome, direct and used to getting her way, she comes to Louisiana to see what she has bought.",
+            "id": "freyda",
+            "name": "Freyda",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wealthy New Orleans developer, father of Sookie's friend Amelia, who spent months trying to get hold of the fairy token Sookie's grandmother left her. Losing it has not made him lose interest in her.",
+            "id": "copley-carmichael",
+            "name": "Copley Carmichael",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The former head of the anti-vampire Fellowship of the Sun, disgraced and stripped of his church, now a diminished figure living on other people's tolerance. His hatred of Sookie has survived everything else about him.",
+            "id": "steve-newlin",
+            "name": "Steve Newlin",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Eric's day man, a werewolf who guards his privacy fiercely and does his job exactly. He keeps his distance from Sookie's affairs and from everyone else's, and volunteers nothing about his own.",
+            "id": "mustapha-khan",
+            "name": "Mustapha Khan",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A vampire made by Eric long before Pam, cool and self-contained, who has been keeping watch over Sookie on her maker's orders without ever introducing herself.",
+            "id": "karin",
+            "name": "Karin",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "dead-ever-after"
+      },
+      "recaps": {
+        "ending": "The murder case against Sookie falls apart, the group of old enemies working against her is broken up, and the danger to her is ended rather than merely postponed. Her friends and the vampires who still owe her, including Bill, Pam and Karin, are what carry her through it. Mr. Cataliades leaves her with the answer to a question she has had all her life: her telepathy is a gift he made long ago to the descendants of his friend Fintan who were born with the spark to hold it, which is why she has it and Jason does not. Eric's marriage contract with Freyda cannot be broken, and he goes to Oklahoma. He and Sookie part deliberately and finally, each understanding that the other made a choice they could not undo, and the vampire marriage between them is over. Sookie keeps her half of Merlotte's, keeps her house, and stops trying to live in the supernatural world's politics. Sam, alive because of what she spent, is the person she chooses and who chooses her, and the series closes with the two of them together and Sookie's life her own for the first time since the night a vampire first walked into the bar.",
+        "in_short": "Sookie's one wish is spent, her fairy relatives are gone, and her marriage to Eric is finished in all but name while the queen of Oklahoma presses the contract that will take him away. Then Arlene Fowler, just out of prison for conspiring to kill her, turns up at Merlotte's asking for her job back and is found strangled behind the bar days later, and Sookie is arrested for the murder. The case against her is part of something arranged: a group of people who hate her, backed by money and by a bargain-maker willing to trade in favors, have set out to destroy her by law first and by force afterward. Her friends, her brother, and the vampires who still stand by her hold the line while the frame comes apart. Mr. Cataliades, a half-demon lawyer, reveals that Sookie's telepathy was his gift to her fairy grandfather's line. In the end Sookie is cleared, Eric leaves for Oklahoma for good, and Sookie makes a life with Sam.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Sookie Stackhouse is a telepathic waitress and part owner of Merlotte's in Bon Temps, Louisiana, where vampires and shapeshifters live openly. She is part fairy through her great-grandfather Prince Niall Brigant, who closed Faery permanently after a war fought over his human-blooded descendants nearly killed her. Her grandmother left her a cluviel dor, a fairy token good for one wish, and Sookie spent it bringing her employer Sam Merlotte back from the dead during the fight that exposed the werewolf Jannalynn Hopper as the architect of a murder meant to disgrace Eric Northman. Eric, the vampire sheriff Sookie married by vampire custom, understood that she could have used the wish to release him from the marriage contract his dead maker signed with Freyda, queen of Oklahoma, and their relationship has not survived it. Niall has taken Sookie's cousin Claude away for treachery and her great-uncle Dermot has gone home to Faery. Louisiana still belongs to Felipe de Castro, who has never learned who killed his regent.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sookie is living alone and working, with the fairies gone from her house and the cluviel dor used up. Sam is alive and grateful and strange with her; having died and come back has left him unsure of himself, and neither of them is willing to talk plainly about what she spent to do it. Eric will not see her, Pam is barely civil, and the marriage everyone in the vampire world knows about is over in every way except paperwork. Into this comes Arlene Fowler, released from prison after her part in a plot to have Sookie killed, wanting her old waitressing job back as though nothing had happened. Sookie refuses her. Arlene leaves the bar angry and makes sure several people hear about it.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Arlene is found dead behind Merlotte's, strangled and left in the dumpster, and the parish arrests Sookie for her murder. The evidence is circumstantial but tidy, the public quarrel is remembered by half the bar, and Bon Temps divides sharply over whether the telepathic woman who consorts with vampires is capable of it. Sookie spends time in a cell before she is bailed out, and comes home to find her name in the papers and her business damaged. Meanwhile the queen of Oklahoma sends word that she intends to enforce the marriage contract on Eric, and the vampires of Area Five begin to arrange themselves around a departure nobody wants to name.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "It becomes clear that Sookie has not simply been unlucky. A number of people with old grievances against her have been brought together and financed, among them Copley Carmichael, who never got the fairy token he wanted, and Steve Newlin, whose ruined church left him nothing but his hatred; behind the arrangement is something that deals in favors rather than money. The plan is to destroy Sookie by law and, if that fails, more directly. Her defense is her friends: Jason and Michele, Bill, Sam and the lawyers Sam can afford. Desmond Cataliades, a half-demon attorney who was a friend of her fairy grandfather Fintan, arrives with his niece Diantha and tells Sookie where her telepathy actually came from, along with a warning about what is being organized against her.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The pressure moves from the courthouse to Sookie's doorstep. Eric's day man Mustapha Khan disappears, and it emerges that he has been leaned on through someone he cares about rather than turning of his own accord. Attempts are made on Sookie directly, and she discovers she has had a guard she never knew about: Karin, an older child of Eric's, set to watch her house. The murder case begins to come apart as the people who assembled it fall out with one another, and Sookie's friends work backwards from the conspirators to the death itself. Freyda arrives in person to collect what the contract owes her, and Eric, who cannot break an agreement made by his maker, prepares to leave Louisiana.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The frame collapses and the conspiracy against Sookie is broken, its members dead, ruined or scattered, and the charges against her dropped. Mr. Cataliades explains the last of her family's history: the telepathy is a gift he made long ago to Fintan's descendants who were born able to carry it, which is why it fell on Sookie and Hunter and not on Jason. Eric's contract stands. He and Sookie say goodbye deliberately rather than bitterly, and he goes to Oklahoma as Freyda's husband, ending the vampire marriage and, with it, Sookie's place in vampire politics. She keeps her house, her half of Merlotte's, and the friends who stood up for her when the parish believed she was a murderer. Sam, alive because of the wish she spent on him, finally says what he has not been able to say since he came back, and Sookie chooses him. The series ends with her ordinary life restored to her and shared.",
+            "through": {
+              "chapter": 19
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "dead-ever-after"
+      }
+    },
+    "dead-in-the-family": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A telepathic waitress in Bon Temps, recovering slowly from the torture she survived at the hands of two fairies. She is physically scarred, sleeping badly, and flinching at things that never bothered her before. She is married to Eric Northman by vampire custom, cut off from Faery since her great-grandfather closed it, and sharing her house with fairy relatives she is still learning to live with.",
+            "id": "sookie-stackhouse",
+            "name": "Sookie Stackhouse",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The Viking vampire sheriff of Area Five, owner of Fangtasia, and Sookie's husband by vampire law. He is under constant pressure from Victor Madden, the regent Nevada placed over him, and he is more careful with Sookie than he has ever been while telling her less than she wants to know about his own past.",
+            "id": "eric-northman",
+            "name": "Eric Northman",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Eric's child and second in command at Fangtasia, blunt, sardonic and completely loyal to her maker. She treats Sookie with a wary respect that has grown into something close to friendship.",
+            "id": "pam",
+            "name": "Pam Ravenscroft",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sookie's vampire neighbor, still weak and badly damaged by the fairy blood that poisoned him when he saved her. His recovery has stalled, he refuses to explain why, and Sookie's anger at his original deception has softened into worry.",
+            "id": "bill-compton",
+            "name": "Bill Compton",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The shapeshifter who owns Merlotte's, now publicly known as two-natured along with the rest of his kind. Business at the bar has suffered since the revelation, and he is dating Jannalynn Hopper of the Shreveport werewolf pack.",
+            "id": "sam-merlotte",
+            "name": "Sam Merlotte",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sookie's brother, widowed by Crystal's murder and steadier than he has been in years. He has started seeing Michele Schubert, a woman with no patience for nonsense, and is trying to be a better neighbor to his sister than he used to be.",
+            "id": "jason-stackhouse",
+            "name": "Jason Stackhouse",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Claudine's brother, a beautiful and vain part-fairy stranded on the human side when Faery closed. Cut off from his own world and grieving his sister, he attaches himself to Sookie as the only close kin he has left and moves into her house.",
+            "id": "claude-crane",
+            "name": "Claude Crane",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sookie's great-uncle, a fairy who could pass for Jason's twin, likewise stranded outside Faery. Something has been done to his mind that leaves him unreliable and easily led, and he drifts in and out of Sookie's house doing odd jobs while nobody can quite decide whether to trust him.",
+            "id": "dermot-brigant",
+            "name": "Dermot Brigant",
+            "reveal": {
+              "chapter": 3
+            }
+          },
+          {
+            "description": "The Roman vampire who made Eric more than a thousand years ago and who still holds the authority of a maker over him. Courteous, ancient and utterly certain of his rights, he arrives in Louisiana unannounced and expects Eric to accommodate him and his companion.",
+            "id": "appius-livius-ocella",
+            "name": "Appius Livius Ocella",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Appius's other surviving child, a vampire in the body of a boy of about thirteen, turned out of the wreckage of the Russian imperial family. He is charming in short bursts, physically strong beyond his size, and visibly unwell in his mind, and the household around him grows tense whenever he is quiet.",
+            "id": "alexei-romanov",
+            "name": "Alexei Romanov",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Packmaster of the Long Tooth werewolves in Shreveport, an old friend of Sookie's who keeps finding reasons to visit her land. He wants her formally tied to his pack and is not always honest about how he goes about it.",
+            "id": "alcide-herveaux",
+            "name": "Alcide Herveaux",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Long Tooth pack's enforcer, a small, sharply dressed young werewolf with an appetite for violence that her size disguises. She is dating Sam, which everyone regards as an unlikely pairing, and she carries out Alcide's discipline without hesitation.",
+            "id": "jannalynn-hopper",
+            "name": "Jannalynn Hopper",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Alcide's second in command, a capable and well-liked werewolf brought in from outside the parish. He has a keen nose and is the one who reports that something is buried in the woods on Sookie's property.",
+            "id": "basim-al-saud",
+            "name": "Basim al Saud",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Sookie's cousin Hadley's small son, living in Red Ditch with his father Remy. He is telepathic like Sookie, about to start school, and has no idea yet that the thoughts he hears are not something other children can hear too.",
+            "id": "hunter-savoy",
+            "name": "Hunter Savoy",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A fairy stranded on the human side, who was Claudine's lover and the father of the child she was carrying when she died. He holds Sookie responsible for that death and has come looking for a reckoning.",
+            "id": "colman",
+            "name": "Colman",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "dead-in-the-family"
+      },
+      "recaps": {
+        "ending": "The visit from Eric's maker ends in the woods behind Sookie's house. Alexei, past any control, has already killed Eric's day man Bobby Burnham and the vampire Felicia, and the final fight destroys both him and Appius Livius Ocella, who dies of the wounds his own child gave him. Colman, the fairy who came to avenge Claudine, dies in the same night's violence, ending that debt. Sookie is hurt again but alive, and Eric is left grieving a maker he both loved and could never refuse, with the ties to his own past finally cut. The body buried on Sookie's land is identified as Alcide's second, Basim al Saud, killed by the Long Tooth pack after he was found to be working against Alcide; the pack settles the matter internally and Sookie's land is cleared. Bill's poisoning is finally healed and he begins to recover his strength. Claude and Dermot remain in Sookie's house, Dermot still under whatever was done to his mind, and Sookie has found a place for herself as the person teaching Hunter how to live with telepathy. Victor Madden's rivalry with Eric is unresolved and getting worse.",
+        "in_short": "Sookie is recovering badly from her torture when Eric's maker, the Roman vampire Appius Livius Ocella, arrives uninvited with his other child, Alexei Romanov, a boy vampire out of the murdered Russian imperial family whose mind never survived what was done to him. Alexei's presence destabilizes everything: he escapes control, kills Eric's day man and one of his vampires, and forces a hunt through the woods behind Sookie's house that ends with both Alexei and Appius destroyed. Alongside this, a body is found buried on Sookie's land and proves to be Alcide's second, Basim al Saud, killed by his own pack for conspiring against the packmaster, and a grieving fairy named Colman comes to make Sookie pay for Claudine's death and dies in the same night's fighting. Sookie's cousins Claude and Dermot settle into her house, Bill slowly heals, and Sookie begins teaching Hunter to manage his telepathy before he starts school.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Sookie Stackhouse is a telepathic waitress in Bon Temps, Louisiana, where vampires live openly and the world's shapeshifters and werewolves have now revealed themselves too. Louisiana belongs to Felipe de Castro of Nevada, who conquered it after a bombing and a hurricane left the old queen helpless, and his regent Victor Madden sits over Eric Northman, the vampire sheriff Sookie is married to by vampire custom. Sookie is part fairy through her great-grandfather Prince Niall Brigant. A fairy war fought over Niall's human-blooded descendants nearly killed her: she was abducted and tortured by two of the enemy's servants, her fairy godmother Claudine and her bodyguard Tray Dawson were killed, and Bill Compton was poisoned saving her. Niall ended the war and then closed Faery permanently, stranding part-fairies such as Claude and Dermot on the human side. Sookie's brother Jason is a widower after his wife Crystal's murder, and Sookie has a small telepathic cousin, Hunter, whom she is quietly helping.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sookie is healing far more slowly than she admits. The scars are visible and the fear is not: she jumps at noises, avoids the woods, and cannot make herself feel safe in her own house. Claude, grieving his sister and locked out of Faery, invites himself to live with her, and Dermot begins turning up as well, working on the house and behaving as though his thoughts are not entirely his own. Bill remains weak from the fairy poisoning and will not explain why he is not recovering. Then Eric tells Sookie that his maker is coming: Appius Livius Ocella, who turned him more than a thousand years ago and whose authority over him has never lapsed. Appius arrives with a companion, a vampire in the body of a boy, and installs himself in Eric's life without being asked.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The boy is Alexei Romanov, Appius's other child, taken out of the massacre of the Russian imperial family and never made whole afterward. He is charming when he chooses and frightening when he does not, and Appius manages him the way one manages a fire. Eric, reduced by his maker's presence to something less than the sheriff he is, cannot refuse either of them. Elsewhere, Alcide asks to use Sookie's woods for the pack's runs, and his second, Basim al Saud, reports that a body has been buried on her property and that fairies have been on the land. Sookie also spends a day with Hunter, teaching him what to do with the thoughts he cannot help hearing before he starts school and gives himself away.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Alexei's condition worsens. He slips his keepers, and Appius's confidence that he can be contained looks increasingly like denial. At the same time Sookie learns she is being hunted on her own account: Colman, a fairy who was Claudine's lover and the father of her unborn child, blames Sookie for Claudine's death and has been circling the property. The buried body on her land is dug up and the pack's own politics close around it. Victor Madden keeps pressing Eric, opening a rival bar in Shreveport and testing how much humiliation the sheriff will absorb, and Eric has no attention to spare for it while his maker is under his roof.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Alexei breaks loose completely. He kills Eric's day man Bobby Burnham and the vampire Felicia, and Appius finally admits he cannot control his own child. Eric, Pam and the rest of the Shreveport vampires organize a hunt, and Sookie's house at the edge of the woods becomes the place it converges on. Bill, still weak, comes anyway. The buried body is confirmed as Basim al Saud, and the reason for his death lies inside Alcide's pack rather than outside it, which does nothing to make Sookie's land less dangerous while a maddened vampire and a vengeful fairy are both loose in the trees.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The hunt ends in the woods behind Sookie's house in a confused, bloody fight. Alexei is destroyed, and Appius dies of the injuries his own child inflicted, so Eric loses the maker who had unbalanced his whole life and grieves him despite everything. Colman is killed in the same night, ending the vendetta for Claudine. Sookie is injured yet again and left with the aftermath rather than any triumph. Basim's killing is settled inside the werewolf pack: he had been conspiring against Alcide and the pack's enforcer dealt with him, and Sookie's land is finally cleared of it. Bill begins to recover at last. Claude and Dermot stay on in the house, Dermot still not himself, and Sookie ends the book with a household of stranded fairy relatives, a husband whose obligations to his maker are finally over, and Victor Madden still waiting.",
+            "through": {
+              "chapter": 14
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "dead-in-the-family"
+      }
+    },
+    "dead-reckoning-charlaine-harris": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A telepathic waitress in Bon Temps, married to the vampire Eric Northman by vampire custom and sharing her house with two stranded fairy relatives. She is steadier than she was after her torture but not recovered, increasingly resentful of the blood bond that makes her feelings public property, and tired of being useful to people with more power than she has.",
+            "id": "sookie-stackhouse",
+            "name": "Sookie Stackhouse",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The shapeshifter who owns Merlotte's. Business has never recovered from the public revelation of the two-natured, money is tight, and an attack on the bar is the last thing he can afford. He is still involved with the werewolf enforcer Jannalynn Hopper, a relationship his friends find hard to understand.",
+            "id": "sam-merlotte",
+            "name": "Sam Merlotte",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Viking vampire sheriff of Area Five and Sookie's husband by vampire law. Free of his maker at last, he is being squeezed hard by Victor Madden, the regent Nevada set over Louisiana, who blocks his business, poaches his customers and refuses his people every request. He is angrier than he lets Sookie see.",
+            "id": "eric-northman",
+            "name": "Eric Northman",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Eric's child and lieutenant, who runs Fangtasia and has never pretended to be anything but ruthless. She has a private reason to hate Victor Madden that she has kept from almost everyone, and it is eating at her.",
+            "id": "pam",
+            "name": "Pam Ravenscroft",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sookie's vampire neighbor, recovered from the poisoning that nearly destroyed him and back to full strength. His attachment to Sookie is undiminished and he no longer expects it to be returned; he simply makes himself available when she needs someone she can rely on.",
+            "id": "bill-compton",
+            "name": "Bill Compton",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sookie's part-fairy cousin, lodging in her house since Faery closed and running a strip club in Monroe that has become a refuge for the other fae stranded on this side. Vain, blunt and affectionate in his own way, he keeps his real plans to himself.",
+            "id": "claude-crane",
+            "name": "Claude Crane",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sookie's great-uncle, a fairy who looks like Jason's twin and lives in her attic. He is helpful, hard-working and plainly not in full possession of himself, and Sookie has come to believe that something was deliberately done to his mind.",
+            "id": "dermot-brigant",
+            "name": "Dermot Brigant",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Felipe de Castro's regent in Louisiana, based in Shreveport and set over Eric. Unfailingly pleasant, he has spent months obstructing Eric in every way that stops short of open attack, and both sides know an accommodation is no longer possible.",
+            "id": "victor-madden",
+            "name": "Victor Madden",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Packmaster of the Shreveport werewolves, who has decided that binding Sookie to his pack is worth almost any tactic. His judgment about her, and about what she owes him, has been poor for some time.",
+            "id": "alcide-herveaux",
+            "name": "Alcide Herveaux",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Long Tooth pack's enforcer and Sam's girlfriend, small, expensively dressed and genuinely dangerous. Her devotion to the pack outweighs everything else she claims to care about.",
+            "id": "jannalynn-hopper",
+            "name": "Jannalynn Hopper",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Shreveport hairdresser and a friend of Pam's, calm and observant, who moves easily between the human and vampire worlds. His sister Miriam is seriously ill.",
+            "id": "immanuel-earnest",
+            "name": "Immanuel Earnest",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Immanuel's sister and Pam's lover, dying of leukemia. Vampire law requires a regent's permission before anyone may be turned, and permission has been refused.",
+            "id": "miriam-earnest",
+            "name": "Miriam Earnest",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Eric's day man, a werewolf who goes by a name he chose for himself and handles the daylight business Eric cannot. Guarded, professional, and firm about the difference between the work and his private life.",
+            "id": "mustapha-khan",
+            "name": "Mustapha Khan",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young human who works around the vampires of Shreveport and has a personal grievance against Victor Madden over a family death. He is willing to take risks that a sensible person would not.",
+            "id": "colton",
+            "name": "Colton",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The younger sister of Debbie Pelt, the shapeshifter who vanished after trying to kill Sookie. She has spent years insisting that Sookie is responsible and has been ordered by her own kind to leave the matter alone.",
+            "id": "sandra-pelt",
+            "name": "Sandra Pelt",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The vampire queen of Oklahoma, who does not appear in person. Her name surfaces in old documents belonging to Eric's dead maker, in terms that concern Eric's future rather than his past.",
+            "id": "freyda",
+            "name": "Freyda",
+            "reveal": {
+              "chapter": 23
+            }
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "dead-reckoning-charlaine-harris"
+      },
+      "recaps": {
+        "ending": "Eric and Pam's conspiracy succeeds: Victor Madden and his entourage are lured to Fangtasia after hours and killed there, with Sookie, Bill, Mustapha, Colton, Immanuel and the Shreveport vampires all taking part. The killing is concealed rather than confessed, so Eric holds Area Five with Felipe de Castro's regent gone and the certainty that the king will eventually ask questions. Pam has lost Miriam, who died before permission to turn her ever came, and her grief is what drove the whole plot. Sandra Pelt's campaign against Sookie is broken and she is taken out of circulation, though nobody expects her to stay quiet forever. In the attic, Sookie has found her grandmother's letter and learned that her real grandfather was the fairy Fintan, along with the gift he left: a cluviel dor, a fairy love token that will grant its holder one wish, which she tells almost no one about. Dermot's curse is broken and he is himself again. The book closes on a document Sookie was never meant to see: Eric's dead maker pledged him in marriage to Freyda, the vampire queen of Oklahoma, an obligation Eric has known about and not mentioned, and which neither of them can simply refuse.",
+        "in_short": "Someone throws a firebomb into Merlotte's, and Sookie's attempt to find out why runs into an old enemy's vendetta. At the same time Eric and Pam decide they can no longer live under Victor Madden, the regent Nevada placed over Louisiana, who has spent months strangling Eric's business and who refused Pam permission to turn her dying lover Miriam. Sookie is drawn into the conspiracy against him. Clearing out her attic with her fairy cousins Claude and Dermot, she finds a letter from her grandmother revealing that her real grandfather was the fairy Fintan, and with it a cluviel dor, a fairy token that grants one wish to whoever holds it. Dermot's curse is broken by a ritual the three of them perform. The plot against Victor comes to a head at Fangtasia, where he and his people are ambushed and destroyed. In the aftermath Sookie discovers papers showing that Eric's dead maker promised him in marriage to the vampire queen of Oklahoma.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Sookie Stackhouse is a telepathic waitress in Bon Temps, Louisiana, where vampires and shapeshifters are both public knowledge. Louisiana was conquered by Felipe de Castro of Nevada, whose regent Victor Madden now sits over Eric Northman, the vampire sheriff Sookie is married to by vampire custom and bound to by exchanged blood. Sookie is part fairy: her great-grandfather, Prince Niall Brigant, fought a war against a faction that wanted his human-blooded descendants dead, during which Sookie was abducted and tortured, her fairy godmother Claudine was killed, and Bill Compton was poisoned rescuing her. Niall then closed Faery for good, stranding part-fairies including Sookie's cousin Claude and her great-uncle Dermot, who now live in her house; Dermot's mind has been tampered with. Eric's maker recently arrived with a second, damaged child, and the visit ended with both of them destroyed. Sookie's brother Jason is a widower, and Sookie is quietly teaching her small telepathic cousin Hunter how to manage his gift.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Someone throws a firebomb through the window at Merlotte's during business hours. The damage is contained and nobody is killed, but Sam cannot absorb the loss and the attack looks deliberate rather than random. Sookie helps with the cleanup and starts listening to what the parish is thinking, on the assumption that an arsonist in a small town rarely keeps it to himself. Her home life is crowded: Claude has settled in permanently and Dermot is living in the attic, still not himself and still working through the accumulated contents of four generations of Stackhouses. Alcide Herveaux turns up uninvited and in no clothes, a clumsy attempt to tie Sookie to his pack that leaves her angrier with him than she has ever been.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The investigation into the fire makes slow progress, and Sookie begins to suspect the target was her rather than Sam. In Shreveport, Eric's position under Victor Madden has become intolerable: the regent has opened a competing club, blocked Eric's ventures and refused every request his people make, all with unbroken good humor. Pam is more openly furious than her maker, and Sookie learns why. Pam's lover Miriam Earnest is dying of leukemia, and only a regent may authorize a new vampire being made; Victor has refused, and goes on refusing. Sookie also starts to work through the attic in earnest with Dermot, sorting a century of family belongings she has never had the heart to touch.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Eric and Pam stop talking about tolerating Victor and start planning to kill him, which under vampire law is treason against Felipe de Castro unless it is never discovered. They assemble people with reasons of their own: Bill, Eric's day man Mustapha Khan, Immanuel Earnest, and Colton, a young man who blames Victor for a death in his family. Sookie is brought in because her telepathy can tell them what Victor's human staff know. Meanwhile the trail from the firebombing leads back to Sandra Pelt, the sister of Debbie Pelt, who has never stopped believing Sookie killed her and has been hiring people to make Sookie's life dangerous.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sandra Pelt's campaign escalates from arson to direct attempts on Sookie, and dealing with her runs alongside everything else. Sookie, Claude and Dermot perform a fairy ritual intended to break whatever was done to Dermot's mind, and it works: he becomes coherent, purposeful and grateful, and remembers who cursed him and why. The plan against Victor takes shape around a pretext he cannot refuse, an occasion at Fangtasia after closing that will put him and his guards inside Eric's own building with limited numbers. Pam presses for it hardest, because Miriam's time is running out and Victor's permission is never going to come.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sorting the attic, Sookie finds a letter her grandmother left her and learns the truth behind her own family: Adele Stackhouse's children were fathered not by her husband but by Fintan, a half-fairy and Niall's son, which is where Sookie's blood and her telepathy come from. With the letter is a hidden object, a cluviel dor, a fairy love token that will grant one wish to the person holding it. Sookie keeps it, tells almost nobody, and understands that if the vampires learn of it she will never be allowed to keep it. Miriam dies without ever being turned. The plan for Fangtasia is finalized, every participant briefed, and the trap set for a night when Victor will come with only as many guards as courtesy allows.",
+            "through": {
+              "chapter": 19
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Victor Madden and his entourage walk into Fangtasia after hours and are attacked by everyone Eric has assembled. The fight is close, protracted and expensive, and Sookie is in it rather than watching; when it ends, Victor and all of his people are dead and the bodies are disposed of so that nothing can be proved. Eric holds Area Five outright for the first time since the conquest, with the knowledge that Felipe de Castro will eventually come asking what became of his regent. Pam has her revenge and nothing else, Miriam being already dead. Sandra Pelt's vendetta is broken and she is put out of the way. Dermot, restored to himself, stays on. And in the papers left behind by Eric's dead maker Sookie finds a contract: Appius pledged Eric in marriage to Freyda, the vampire queen of Oklahoma, an arrangement Eric knew about and never mentioned to her.",
+            "through": {
+              "chapter": 23
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "dead-reckoning-charlaine-harris"
+      }
+    },
+    "dead-to-the-world": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A telepathic waitress at Merlotte's bar in Bon Temps, Louisiana, single again after ending her relationship with the vampire Bill Compton and trying hard to have an ordinary winter. She owns her grandmother's house, works doubles, and has learned to charge the supernatural community for her services. She still hears every mind around her, which makes solitude a relief rather than a punishment.",
+            "id": "sookie-stackhouse",
+            "name": "Sookie Stackhouse",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The thousand-year-old Norse vampire who owns Fangtasia and rules the vampires of northern Louisiana. Sookie finds him on a dark road on New Year's Eve, barefoot and half dressed, with no memory of who or what he is beyond the fact that he is a vampire. Stripped of a millennium of calculation, he is gentle, affectionate and frightened, and nothing like the man who has spent two years maneuvering her into his debt.",
+            "id": "eric-northman",
+            "name": "Eric Northman",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sookie's former lover, the Bon Temps vampire who lives across the cemetery from her. He leaves the country at the start of the book on research of his own, and their dealings are polite, painful and brief.",
+            "id": "bill-compton",
+            "name": "Bill Compton",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Sookie's brother, now a road crew supervisor in Bon Temps and involved with a young woman from the isolated crossroads community of Hotshot. He disappears from his own house in the first days of the year, leaving blood on the dock behind it and no other trace.",
+            "id": "jason-stackhouse",
+            "name": "Jason Stackhouse",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sookie's boss at Merlotte's and a shapeshifter. He keeps the bar running, keeps her secrets, and does what he can to help find Jason, while making no secret of wishing she would stay out of vampire business.",
+            "id": "sam-merlotte",
+            "name": "Sam Merlotte",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Eric's second at Fangtasia and the vampire who has to run northern Louisiana while its sheriff is missing. Practical and cold-blooded about the crisis, she is the one who negotiates with Sookie to hide Eric, and who names the price.",
+            "id": "pam",
+            "name": "Pam",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The tattooed vampire who tends bar at Fangtasia. With Eric gone he shares the running of the territory with Pam, and he is less inclined than she is to spend vampire money on a human's protection.",
+            "id": "chow",
+            "name": "Chow",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young woman from Hotshot, a closed rural community outside Bon Temps whose families keep to themselves and marry among themselves. She has been seeing Jason Stackhouse, and she is one of the last people to have been with him before he disappeared.",
+            "id": "crystal-norris",
+            "name": "Crystal Norris",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A waitress at Merlotte's, a divorced mother with a young son, who practices Wicca with a small local circle. She is uneasy about being asked to help with vampire business, but she knows which witches are ordinary practitioners and which are something else.",
+            "id": "holly-cleary",
+            "name": "Holly Cleary",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The head of the Hotshot community, a road crew foreman and a werepanther. Courteous, watchful and openly interested in Sookie, he offers his people's help in the search for Jason and expects the favor to be remembered.",
+            "id": "calvin-norris",
+            "name": "Calvin Norris",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of a coven that has come to Shreveport demanding a share of the vampires' businesses. Her witches are not ordinary Wiccans: they are also werewolves, and they drink vampire blood, which makes their magic far stronger than it should be. She is the reason the sheriff of the area is wandering the roads with no memory.",
+            "id": "hallow-stonebrook",
+            "name": "Hallow Stonebrook",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Hallow's brother and second in the coven, a witch and werewolf who handles the violence her plans require.",
+            "id": "mark-stonebrook",
+            "name": "Mark Stonebrook",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The Shreveport werewolf who escorted Sookie to Jackson the year before, now running his family's surveying business and free of his engagement. His pack is drawn into the fight against the coven, and he and Sookie remain on cautious, friendly terms.",
+            "id": "alcide-herveaux",
+            "name": "Alcide Herveaux",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of the Shreveport werewolf pack, a retired air force officer who runs pack business like a command. He negotiates the alliance with the vampires against the coven and expects discipline from everyone involved.",
+            "id": "colonel-flood",
+            "name": "Colonel Flood",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A tall, black-haired woman of striking beauty who appears at Sookie's side when the fighting starts, announces that she is looking after her, and will not explain much beyond that. She is not human, she is not a shapeshifter or a vampire, and she is unwilling to be anywhere near iron or lemons.",
+            "id": "claudine",
+            "name": "Claudine",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Jackson shapeshifter who was cast out by Alcide Herveaux for trying to get Sookie killed in Mississippi. Publicly disgraced and blaming Sookie for it, she has not let the matter drop.",
+            "id": "debbie-pelt",
+            "name": "Debbie Pelt",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "dead-to-the-world"
+      },
+      "recaps": {
+        "ending": "The alliance of vampires, werewolves and local Wiccans destroys Hallow Stonebrook's coven in a running fight at their hideout. Mark Stonebrook is killed, Hallow is taken alive, and she is made to undo the spell she cast. Before that happens, Debbie Pelt lets herself into Sookie's house with a rifle. She shoots at Sookie and hits Eric, who puts himself in the way, and Sookie kills her with a shotgun. Eric disposes of the body and the truck so completely that no one will ever find them, and the two of them agree to say nothing. Then the curse is broken. Eric wakes as himself, with his thousand years and his calculation restored, and remembers nothing at all of the weeks he spent in Sookie's house: not their nights together, not the fighting, and not Debbie Pelt. He goes back to Shreveport as the sheriff he was, pays Sookie what he owes her, and is baffled by whatever it is she will not say. Jason is found alive, dumped near his own house after being held and bitten repeatedly by a werepanther, and he will change at the next full moon whether he wants to or not; who took him is still unknown. Sookie is left with a brother turning into something he did not choose, a killing nobody knows about but her, and a memory of Eric that only she carries.",
+        "in_short": "Driving home on New Year's Eve, Sookie finds Eric Northman running down a dark road half naked with no memory of who he is, cursed by a coven of witches who are also werewolves and who want a share of his businesses. Pam pays Sookie to hide him at her house, where an unguarded and affectionate Eric becomes her lover. At the same time Sookie's brother Jason vanishes from his home, and the trail leads toward the closed werepanther community of Hotshot. Sookie's telepathy helps a coalition of vampires, werewolves and local Wiccans find and destroy the coven, killing Hallow Stonebrook's brother and taking Hallow alive to lift the curse. On the same night, Debbie Pelt breaks into Sookie's house to kill her, wounds Eric, and is shot dead by Sookie; Eric makes the body disappear. When the curse breaks, Eric returns to himself with no memory of any of it, including the killing and the weeks with Sookie. Jason is found alive but bitten, and will become a werepanther at the next full moon.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Sookie Stackhouse is a telepathic waitress at Merlotte's bar in Bon Temps, Louisiana, in a world where vampires live openly among humans. Her grandmother was murdered by a killer who was really hunting Sookie, and Sookie herself has twice been nearly killed for vampire business. Her boss Sam Merlotte is a shapeshifter; the parish has been visited by a maenad; and she has been held prisoner by the anti-vampire Fellowship of the Sun in Dallas. Her relationship with Bill Compton, the vampire who came home to Bon Temps, is over: he had been planning to leave her for Lorena, the vampire who made him, before he was kidnapped and tortured in Mississippi, and when Sookie rescued him he nearly killed her while out of his mind with hunger. She killed Lorena herself. She also came away with the database of vampires Bill had been compiling for the Queen of Louisiana, which she keeps hidden as leverage. All of this is watched over by Eric Northman, the thousand-year-old Norse vampire who rules the area from his Shreveport bar and who wants Sookie for reasons he has never bothered to disguise. In Jackson she met the werewolf Alcide Herveaux, whose ex-lover Debbie Pelt tried to have her killed and was cast out of decent society for it.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sookie works New Year's Eve at Merlotte's, newly single and determined to be dull for a while. Bill leaves the country on research of his own, which suits her. Driving home in the early hours she nearly hits a man running down the road in the cold: Eric Northman, barefoot, half dressed, and with no memory of anything except that he is a vampire. She takes him in. Pam and Chow arrive with the explanation. A coven has come to Shreveport demanding a cut of the vampires' businesses, and its witches are not ordinary practitioners: they are werewolves who drink vampire blood, which makes their magic strong enough to strip a thousand-year-old sheriff of his mind and set him wandering. Until the coven can be found and the curse broken, Eric has to be hidden somewhere no vampire would think to look, and Pam offers Sookie money to keep him at her house. Sookie takes the job.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Living with Eric is nothing like knowing him. Without a millennium of scheming he is warm, direct, easily hurt and completely dependent on her, and Sookie finds herself protecting him. Then her brother Jason vanishes. His truck is at his house, the door is open, and there is blood on the dock over the pond behind it. The police can do nothing with it. Sookie learns that Jason had been seeing Crystal Norris, a young woman from Hotshot, an isolated crossroads community whose families never marry outsiders, and that Crystal's account of the night is a lie. Sookie goes to Hotshot herself and finds a community of werepanthers, headed by Calvin Norris, who offers his people's help in the search and makes plain that he would like Sookie for himself. Nobody in Hotshot will say what happened to her brother.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sookie is pulled in two directions: hunting for Jason and being paid to hide Eric while the vampires hunt the coven. Fangtasia's people are outmatched and know it, and the coven has begun killing. To find Hallow Stonebrook and her brother Mark, the vampires make an alliance with the Shreveport werewolf pack under Colonel Flood, with Alcide Herveaux among them, and with a circle of local Wiccans who want nothing to do with either side but are more afraid of Hallow. Sookie's telepathy is what makes the alliance work, since she can read the human minds around the coven's operation. She and Eric become lovers during the days he is hidden with her, an intimacy neither of them could have had otherwise, and she is clear-eyed that it will not survive the return of his memory.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The coalition locates the coven's hideout and attacks. The fight is bloody and one-sided in both directions by turns, since the witches are werewolves with vampire blood in them, and both the pack and the vampires take losses. Sookie is in the middle of it and is guarded by a tall, striking woman who appears from nowhere, introduces herself as Claudine, says she is there to look after Sookie, and refuses to explain what she is beyond being neither vampire nor shifter. Mark Stonebrook is killed. Hallow is taken alive rather than destroyed, because she is the only one who can undo what she did to Eric, and the vampires' methods for persuading her are not ones Sookie wants described to her.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "That same night, Debbie Pelt lets herself into Sookie's house with a rifle. Cast out by Alcide and disgraced in front of everyone she cares about, she blames Sookie and has come to finish it. She fires, and Eric puts himself between them and takes the bullet. Sookie kills her with a shotgun. Eric, still without his memory but entirely competent, disposes of the body and Debbie's truck so thoroughly that they will never be found, and the two of them agree that nobody else will ever know. Sookie is left with a death on her conscience and no one she can tell. Then Hallow is made to lift the curse, and Eric's thousand years come back to him.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Eric wakes as himself and remembers nothing of the weeks he spent in Sookie's house: not their nights together, not the alliance, not Debbie Pelt bleeding on her kitchen floor. He returns to Shreveport as the sheriff he always was, pays Sookie generously for hiding him, and is left plainly aware that something happened that she will not discuss. Sookie decides not to tell him. Jason is found alive, dumped near his own house after weeks of being held in a shed and bitten repeatedly by a werepanther; whoever took him is still unidentified, and Jason will change at the next full moon whether he chooses to or not, without the strength or the standing of a panther born to it. Sookie ends the book with her brother permanently altered, a killing that only she remembers, and a private history with Eric Northman that he does not know he has.",
+            "through": {
+              "chapter": 15
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "dead-to-the-world"
+      }
+    },
+    "dead-until-dark": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A waitress in her mid-twenties at Merlotte's bar in the small northern Louisiana town of Bon Temps. She has been able to hear other people's thoughts since childhood, a talent she calls her disability and hides as best she can; the town has settled on treating her as simple. She lives with her grandmother in the old family house, swims and sunbathes to keep some pleasure in her life, and has never managed a normal relationship because she always knows what a man is thinking. The public existence of vampires, revealed a couple of years earlier once a synthetic blood made it possible for them to live openly, fascinates her, and she has been waiting for one to walk into the bar.",
+            "id": "sookie-stackhouse",
+            "name": "Sookie Stackhouse",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A vampire who has returned to Bon Temps to claim the house his family left him across the cemetery from the Stackhouse place. He was born in the area, fought in the Civil War, and did not come home from it as a living man. Courteous, old-fashioned, and deliberately mainstreaming into human society now that vampires are public, he drinks bottled synthetic blood and wants to be accepted as a taxpaying resident. Sookie is drawn to him above all because his mind is completely silent to her, which is the first rest she has ever had in company.",
+            "id": "bill-compton",
+            "name": "Bill Compton",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The owner of Merlotte's bar and grill and Sookie's boss for several years. He is a compact, red-gold-haired man who arrived in Bon Temps from somewhere else, keeps his private life entirely to himself, and lives in a trailer behind his own bar. He looks out for Sookie, is plainly attracted to her, and disapproves of her interest in vampires. Sookie has never been able to read him properly: where other minds give her words and pictures, his gives her a shifting blur she cannot settle on.",
+            "id": "sam-merlotte",
+            "name": "Sam Merlotte",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sookie's older brother, who works for the parish road crew and has inherited the family house's other half of trouble. Good-looking, vain, and constantly involved with women, he treats Bon Temps as his personal hunting ground and has slept with a great many of the local waitresses and barflies. He and Sookie love each other but scrape against each other constantly; he has never been comfortable with her telepathy.",
+            "id": "jason-stackhouse",
+            "name": "Jason Stackhouse",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Gran"
+            ],
+            "description": "Sookie and Jason's grandmother, who raised them both after their parents drowned in a flash flood when Sookie was seven. She is elderly, sharp, endlessly busy, and unembarrassed by her granddaughter's gift. She belongs to the Descendants of the Glorious Dead, a local club devoted to Civil War history, and is delighted at the idea of a genuine veteran of that war living down the road.",
+            "id": "adele-stackhouse",
+            "name": "Adele Stackhouse",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A red-haired waitress at Merlotte's, several times married and currently between husbands, with two small children. She is Sookie's closest friend at work, warm and gossipy, and comfortable with Sookie in a way most of the town is not.",
+            "id": "arlene-fowler",
+            "name": "Arlene Fowler",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The short-order cook at Merlotte's, a flamboyant Black man who wears makeup and bright nail polish and takes obvious pleasure in unsettling the bar's more conventional customers. He is a good cook, an unreliable employee, and one of the few people in Bon Temps who does not treat Sookie as damaged.",
+            "id": "lafayette-reynold",
+            "name": "Lafayette Reynold",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A waitress at Merlotte's who works the shift opposite Sookie's. She has a taste for rough company and for men who will hurt her a little, and she has been seen with vampires. She and Sookie have never liked each other much.",
+            "id": "dawn-green",
+            "name": "Dawn Green",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A detective with the Bon Temps police, from an old local family that has come down in the world. He is stubborn, not stupid, and openly suspicious of Jason Stackhouse once the local women start turning up dead. Sookie has known him and his sister Portia all her life.",
+            "id": "andy-bellefleur",
+            "name": "Andy Bellefleur",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A member of the parish road crew alongside Jason and one of Arlene's former husbands. He is a small, wiry Cajun with a thick accent that comes and goes, an easy manner with women, and a habit of turning up wherever people are talking. He remains friendly with Arlene and is around her children often.",
+            "id": "rene-lenier",
+            "name": "Rene Lenier",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A vampire well over a thousand years old, Norse by origin, tall and blond and openly amused by almost everything. He owns Fangtasia, a vampire bar in Shreveport built to sell the experience of vampires to tourists, and holds authority over the vampires of the surrounding territory, Bill included. He is immediately interested in Sookie once he learns what she can do, and treats that interest as a claim.",
+            "id": "eric-northman",
+            "name": "Eric Northman",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Eric's second at Fangtasia, a blonde vampire who works the door in a trailing black gown as part of the bar's act and is far more practical than the costume suggests. She is dry, direct, and unbothered by human feeling, and she takes a certain liking to Sookie.",
+            "id": "pam",
+            "name": "Pam",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A vampire made from a famous singer whose body was taken from a morgue by an admiring attendant. The change went wrong because he was already too far gone, leaving him simple, unpredictable, and prone to violence if startled. Other vampires keep him quietly employed, never speak his human name in front of him, and call him Bubba; he prefers the blood of cats to anything bottled.",
+            "id": "bubba",
+            "name": "Bubba",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "dead-until-dark"
+      },
+      "recaps": {
+        "ending": "Sookie catches the truth out of another mind: the killer is Rene Lenier, Arlene's former husband and Jason's workmate. His own sister took a vampire lover, and he strangled her for it; since then he has killed local women who did the same. Maudette Pickens and Dawn Green died that way, and Sookie's grandmother died in Sookie's place, because Sookie was the woman in Bon Temps sleeping with a vampire. Rene attacks her, and she survives the assault only barely, badly injured; he is stopped, and Sookie is healed by being given vampire blood. Two things about her life are permanently changed by the night. Sam Merlotte turns out to be a shapeshifter: the stray collie that has been sleeping at her house was her boss, keeping watch over her. And the vampire world now knows exactly what she can do. Jason is cleared of the murders and released, but he is still on the wrong side of his sister and taking vampire blood as a drug. Bill returns from vampire business in New Orleans having taken on a formal position among his own kind, which will pull him away from Bon Temps more and more. Sookie is left with her grandmother's house, a vampire lover, and no way back to an ordinary life.",
+        "in_short": "In small-town Bon Temps, Louisiana, telepathic barmaid Sookie Stackhouse falls for Bill Compton, a Civil War veteran turned vampire who has come home to claim his family's house, and whose mind is blessedly silent to her. Their courtship runs alongside a string of stranglings: local women who have slept with vampires are being murdered, and Sookie's womanizing brother Jason, who knew several of them, becomes the sheriff's favorite suspect. Sookie's grandmother is killed in the family kitchen, apparently in Sookie's place. Bill introduces Sookie to the vampires of Shreveport, including the ancient Eric Northman, who quickly finds uses for her gift. Reading a stray memory, Sookie realizes the murderer is Rene Lenier, who began by killing his own sister for taking a vampire lover. He nearly kills her before he is stopped, and she is saved by vampire blood. In the process she learns that her boss, Sam Merlotte, is a shapeshifter, and that her town has always held far more than she knew.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Sookie Stackhouse waits tables at Merlotte's bar in Bon Temps, a small town in northern Louisiana. She has been telepathic since childhood, hides it as well as she can, and is generally written off locally as slow. Vampires revealed themselves to the world two years earlier, once a synthetic blood made it possible for them to live without preying on people, and Sookie has been hoping one would come to Bon Temps. When Bill Compton walks into the bar she is delighted to discover that his mind gives her nothing at all. She follows a rough couple called the Rattrays outside and interrupts them draining Bill's blood, which sells at high prices as a drug. Days later the Rattrays catch her alone in the parking lot and beat her nearly to death; Bill drives them off and heals her by making her drink his blood. In the background, a local woman named Maudette Pickens has been found strangled in her apartment. She had been known to keep company with vampires, and Sookie's brother Jason had been with her, which draws the attention of the Bon Temps police.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Rattrays die when their trailer is torn apart in what is officially recorded as a freak tornado, and Sookie understands well enough what really happened. Bill begins courting her in his formal, old-fashioned way and starts restoring his inherited house across the cemetery. Sookie's grandmother, delighted to have a genuine Civil War veteran nearby, persuades Bill to address the Descendants of the Glorious Dead, and he speaks to a packed room about the war and the men he served with. Then Dawn Green, the other Merlotte's waitress, is found strangled in her bedroom. Both dead women had slept with vampires and both had slept with Jason, and he had made videotapes with them, so Andy Bellefleur and the parish sheriff pull him in for questioning repeatedly. Jason turns on Sookie for her relationship with Bill, and the town's mood toward vampires curdles. Sookie, in love and out of her depth, has to decide how far she is willing to go into Bill's world.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bill takes Sookie to Fangtasia, a vampire bar in Shreveport, to ask whether any local vampire knew the murdered women. There she meets Eric Northman, who is more than a thousand years old and holds authority over the vampires of the area, and his second, Pam. When Sookie picks up an impending police raid from a mind in the room and warns Eric in time, she reveals her ability to exactly the people she should have hidden it from, and Eric marks her as a resource he intends to use. Worse follows at home: Sookie comes back to the house to find that her grandmother has been strangled in the kitchen. Gran had taken over an evening Sookie was expected to be home for, and the town and Sookie both understand that the killer had come for Sookie, the one woman in Bon Temps openly seeing a vampire. Jason, wild with grief, blames his sister at the funeral.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Gran leaves Sookie the house, and Sookie goes on alone in it. She and Bill become lovers. Bill's old acquaintances Malcolm, Diane and Liam, vampires with no interest at all in mainstreaming, turn up at Sookie's door to look her over and enjoy frightening her, and their contempt for the rules makes plain how thin Bill's respectability is. Sookie learns that her great-uncle Bartlett, who molested her as a child and whom she had told Bill about, has been found dead; she does not have to ask who arranged it, and the knowledge sits badly with her. The tension between Bon Temps and the vampires breaks when locals burn the Monroe house where Malcolm, Diane and Liam sleep, killing all three, along with humans who were inside. The killings of local women have not stopped, and Sookie is increasingly certain she is on the list.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Eric summons Bill and Sookie to Fangtasia and makes his first real demand: Sookie is to read the minds of the bar's employees to find out who has been stealing from him. She identifies Long Shadow, the bartender, who lunges at her across the bar and is staked by Eric on the spot, drenching Sookie in blood. Bill is then called away to New Orleans on vampire business and leaves Bubba, an unstable vampire made from a famous singer, to guard the house while he is gone. In Bon Temps another young woman connected with Jason is strangled, and this time the evidence is enough for the police to arrest him. Sookie, frightened, grieving, and now certain that she is what the murderer actually wants, is left with a guard she cannot rely on and no idea which familiar face is doing the killing.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sitting with Arlene and her children, Sookie catches an image out of a mind that tells her who the killer is: Rene Lenier, Arlene's former husband and Jason's workmate on the road crew. Years earlier his own sister took a vampire lover, and Rene strangled her for it; since then he has been killing women in the parish who did the same, which is why Maudette Pickens and Dawn Green died, and why Adele Stackhouse died in her granddaughter's place. Rene attacks Sookie and very nearly kills her. She survives, badly hurt, he is stopped, and vampire blood pulls her back from the worst of the damage. In the middle of it she discovers that Sam Merlotte is a shapeshifter, and that the stray collie sleeping at her house had been her boss standing guard. Jason is released and cleared. Bill comes back from New Orleans holding a formal position among the vampires of the area, one that will keep taking him away from her. Sookie ends the book alive, publicly attached to a vampire, and known to Eric Northman as something worth owning.",
+            "through": {
+              "chapter": 12
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "dead-until-dark"
+      }
+    },
+    "deadlocked": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A telepathic waitress in Bon Temps, married to Eric Northman by vampire custom and quietly carrying a cluviel dor, a fairy token good for a single wish, which she has told almost no one about. Her marriage is failing under the weight of a contract she was never meant to see, promising Eric to another vampire monarch, and her patience with the whole supernatural world is close to gone.",
+            "id": "sookie-stackhouse",
+            "name": "Sookie Stackhouse",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The Viking vampire sheriff of Area Five, holding Louisiana territory with the king's regent conveniently dead and the king himself paying close attention. He is under an obligation his dead maker made for him and has not found a way to talk to Sookie about it, which is doing more damage than the obligation itself.",
+            "id": "eric-northman",
+            "name": "Eric Northman",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Eric's child and second, sharper-tongued than ever since losing her lover Miriam. She is impatient with her maker's paralysis over the Oklahoma contract and blunt with Sookie about what it will cost both of them.",
+            "id": "pam",
+            "name": "Pam Ravenscroft",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The shapeshifter who owns Merlotte's and Sookie's employer and oldest friend in town. He has taken her on as a business partner in the bar, and his relationship with the werewolf enforcer Jannalynn Hopper is one of the few things he and Sookie do not discuss honestly.",
+            "id": "sam-merlotte",
+            "name": "Sam Merlotte",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sookie's vampire neighbor, fully recovered and serving Eric loyally. He has stopped asking Sookie for anything and become simply dependable, which she finds harder to argue with than his old persistence.",
+            "id": "bill-compton",
+            "name": "Bill Compton",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sookie's part-fairy cousin, who runs the club Hooligans in Monroe as a haven for the fae stranded in this world. He has been away a great deal, is evasive about where, and has developed a marked interest in what Sookie keeps in her house.",
+            "id": "claude-crane",
+            "name": "Claude Crane",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sookie's great-uncle, restored to himself since the curse on him was broken and living in her attic. He is warm, capable and openly homesick for a world whose doors were shut behind him.",
+            "id": "dermot-brigant",
+            "name": "Dermot Brigant",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The vampire king of Nevada, Louisiana and Arkansas, visiting Shreveport with his retinue. He is charming, meticulous, and openly curious about what became of the regent he left in charge of the state.",
+            "id": "felipe-de-castro",
+            "name": "Felipe de Castro",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A young woman with were and fairy blood who turns up at a party at Eric's house offering herself as a blood donor, and makes a point of doing it in front of Sookie. She is nervous underneath the performance and appears to be following someone else's instructions.",
+            "id": "kym-rowe",
+            "name": "Kym Rowe",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Long Tooth pack's enforcer and Sam's girlfriend, small, sharp and violent, who has never accepted Sookie's place in Sam's life or in the pack's affairs.",
+            "id": "jannalynn-hopper",
+            "name": "Jannalynn Hopper",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Eric's day man, a werewolf who values his privacy and does his job precisely. He is drawn into the investigation because Eric needs someone who can move around in daylight and be trusted.",
+            "id": "mustapha-khan",
+            "name": "Mustapha Khan",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elf living at Hooligans among Claude's collection of stranded fae, cheerful, hungry and entirely unbothered by human squeamishness. He is friendly to Sookie in a way that does not reassure her.",
+            "id": "bellenos",
+            "name": "Bellenos",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A wealthy New Orleans developer and the father of Sookie's friend Amelia. He has known since the storm that Sookie's family possessed a fairy object of real power, and he wants it.",
+            "id": "copley-carmichael",
+            "name": "Copley Carmichael",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Debbie Pelt's younger sister, who has spent years blaming Sookie for Debbie's disappearance and has been jailed and warned off more than once without effect. She is out again and has stopped pretending to want anything but Sookie dead.",
+            "id": "sandra-pelt",
+            "name": "Sandra Pelt",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Sookie's great-grandfather and prince of the fairies, who shut Faery behind him and has been beyond reach ever since. Matters on the human side have grown serious enough to bring him back.",
+            "id": "niall-brigant",
+            "name": "Niall Brigant",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "deadlocked"
+      },
+      "recaps": {
+        "ending": "Jannalynn Hopper is exposed as the person who arranged for Kym Rowe to be sent to Eric's party, a scheme meant to discredit Eric in front of the visiting king and clear Sookie out of Sam's life; Kym's death was part of the machinery. Jannalynn does not survive the confrontation that follows, and neither, briefly, does Sam: he is killed in the fighting, and Sookie uses her one wish, the cluviel dor, to bring him back to life. It works, and it costs her everything the token might have been saved for. Eric, whose freedom from the Oklahoma marriage contract was the obvious use for a single wish, understands exactly what she chose and cannot forgive it; their marriage is effectively over from that moment even though neither of them says so outright. Niall Brigant returns from Faery and reveals that Claude has been working against Sookie and after the cluviel dor himself; he takes Claude back through the door for judgment, and Dermot chooses to go home with him, leaving Sookie's house empty of fairies. Felipe de Castro leaves Louisiana without proving anything about Victor Madden's disappearance but without being satisfied either. Sam is alive, changed by having died, and does not yet know what Sookie spent to bring him back.",
+        "in_short": "Felipe de Castro comes to Shreveport with his retinue, still curious about the regent who vanished, and at a party at Eric's house a young half-fairy named Kym Rowe offers Eric her blood in front of Sookie. Hours later Kym is found dead in Eric's yard, and Eric is the obvious suspect in front of the one vampire he cannot afford to look guilty to. Sookie investigates while her marriage collapses under the contract pledging Eric to the vampire queen of Oklahoma, while her fairy cousin Claude behaves more and more strangely, and while Sandra Pelt makes one final attempt on her life. The trail behind Kym leads to Jannalynn Hopper, the werewolf enforcer dating Sam, who arranged the whole display to ruin Eric. The confrontation that ends it kills Sam, and Sookie spends her one fairy wish on bringing him back rather than on freeing Eric from Oklahoma. Niall returns to take Claude away for treachery, Dermot goes home to Faery with him, and Sookie and Eric are finished.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Sookie Stackhouse is a telepathic waitress in Bon Temps, Louisiana, where vampires and shapeshifters both live openly. She is married by vampire custom to Eric Northman, sheriff of Area Five, whose territory belongs to Felipe de Castro, king of Nevada; Eric, Pam, Sookie and several allies recently killed the king's regent Victor Madden in secret, and nobody knows whether that will stay hidden. Sookie is part fairy through her great-grandfather Prince Niall Brigant, who ended a fairy war fought over his human-blooded descendants and then closed Faery permanently, stranding her cousin Claude and her great-uncle Dermot on this side; both live in her house. Sorting her grandmother's things, Sookie learned that her real grandfather was the fairy Fintan and found the gift he left behind: a cluviel dor, which grants its holder a single wish. She also found papers showing that Eric's dead maker promised him in marriage to Freyda, the vampire queen of Oklahoma, an obligation Eric knew about and hid from her.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Felipe de Castro arrives in Shreveport with his companions for a stay of several days, ostensibly social, in fact an inquiry into what became of Victor Madden. Eric has to entertain him, which means a party at his house with Sookie present and every vampire in the area on display. Sookie and Eric are barely speaking about the Oklahoma contract and are pretending otherwise in public. During the party a young woman named Kym Rowe, carrying were and fairy blood, walks in and offers Eric her throat in front of everyone, and he takes it. Sookie leaves in a fury. Later that night Kym Rowe is found dead in Eric's yard, strangled, with the king of Louisiana on the premises and Eric the last person known to have fed from her.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The death has to be solved quickly, because Felipe cannot ignore a human murdered on his sheriff's property and Eric cannot afford any scrutiny at all with Victor Madden's disappearance still unexplained. Sookie starts working out who Kym Rowe was and who sent her: the girl's approach was staged, her blood was chosen to be irresistible, and someone paid for the performance. The investigation takes Sookie to Hooligans, Claude's club in Monroe, now a colony of stranded fae including the elf Bellenos, where she is welcomed with an enthusiasm that unsettles her. Claude himself has been absent a great deal and answers questions about it badly.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The trail behind Kym Rowe leads into werewolf circles and toward the Long Tooth pack's enforcer, Jannalynn Hopper, whose motive for humiliating Eric is not obvious and whose relationship with Sam is looking more calculated the closer Sookie looks at it. At the same time Sookie learns she is being watched by people acting for Copley Carmichael, Amelia's father, who has worked out that her family owns a fairy object of real power and intends to have it. The cluviel dor becomes a liability rather than a comfort. Eric, cornered between the king's suspicion and the Oklahoma contract, withdraws further, and Sookie realizes he has been treating the marriage as already lost.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sandra Pelt, out of custody and past all restraint, makes her final attempt on Sookie's life, and Sookie kills her; the body is disposed of quietly, ending a feud that has followed her for years. The pressure around the cluviel dor keeps rising, with Copley Carmichael's people, the fae at Hooligans and Sookie's own household all circling it, and Sookie increasingly certain that Claude is not simply curious. The Kym Rowe investigation closes on Jannalynn, and Sookie has to decide how to tell Sam that the woman he is with arranged a killing to serve pack politics.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jannalynn is exposed: she arranged for Kym Rowe to be sent to Eric's party to disgrace him in front of the king and to break up his marriage, and Kym's death followed from it. The confrontation turns into a fight, Jannalynn does not survive it, and neither does Sam, who is killed in front of Sookie. Sookie uses the cluviel dor on him, spending her single wish to bring him back to life, and it works. Eric knows immediately what she could have used it for instead, and their marriage does not survive the knowledge, even though the Oklahoma contract still stands over him. Niall Brigant comes back through the closed door, reveals that Claude has been working against Sookie and after the cluviel dor for himself, and takes him away to be judged; Dermot chooses to go home to Faery with them. Felipe de Castro leaves Louisiana with his questions about Victor Madden unanswered. Sookie is left with Merlotte's, a resurrected friend who does not know what his life cost, and no husband.",
+            "through": {
+              "chapter": 16
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "deadlocked"
       }
     },
     "death-masks": {
@@ -1690,6 +3580,222 @@
           }
         ],
         "work": "death-of-kings"
+      }
+    },
+    "death-on-the-nile": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A young Englishwoman who has inherited an American fortune and is admired everywhere she goes for her looks, her money and her competence. She buys a country estate, reorganises it, and is used to arranging the world to suit herself, including the lives of the people who depend on her. She is generous by habit and does not always notice what her generosity costs other people.",
+            "id": "linnet-ridgeway",
+            "name": "Linnet Ridgeway",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Linnet's school friend, small, dark, and intense, whose family lost everything and who now has nothing at all. She is passionately in love with Simon Doyle and says so without embarrassment. She comes to Linnet to ask a favour for him, and warns, half laughing, that she loves too fiercely for her own good.",
+            "id": "jacqueline-de-bellefort",
+            "name": "Jacqueline de Bellefort",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A large, good-looking, cheerful young man with no money and no head for office work, engaged to Jacqueline de Bellefort. He is straightforward to the point of simplicity, hates towns, and wants a job in the country where he can manage land.",
+            "id": "simon-doyle",
+            "name": "Simon Doyle",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Belgian detective, on holiday and determined to remain on holiday, who keeps meeting the principals of this affair by accident, first in a London restaurant and then in Egypt. He gives warnings that nobody takes and observes people at length in the sun.",
+            "id": "hercule-poirot",
+            "name": "Hercule Poirot",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A pleasant, sensible Englishwoman of limited means travelling with her son, on whom she dotes and about whom she is not deceived. She makes friends easily and enjoys Poirot's company.",
+            "id": "mrs-allerton",
+            "name": "Mrs Allerton",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Mrs Allerton's son, an idle, charming young man of uncertain health and uncertain occupation, who lives abroad cheaply and writes a book he never finishes. He is a distant cousin of Linnet's circle and is vague about his London acquaintances.",
+            "id": "tim-allerton",
+            "name": "Tim Allerton",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An American trustee of the Ridgeway fortune, one of the firm that has managed Linnet's money since her father died. Hearty and expansive in manner, he turns up in Egypt claiming a chance meeting and is anxious to have documents signed without too much reading.",
+            "id": "andrew-pennington",
+            "name": "Andrew Pennington",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A British colonel with a vague official position, travelling on the Nile steamer in pursuit of an agitator believed to be aboard under an assumed identity. Dry, capable and discreet, he has worked with Poirot before and shares the investigation with him.",
+            "id": "colonel-race",
+            "name": "Colonel Race",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A once-popular novelist of overheated romances, now drinking heavily and convinced that her books are suppressed by conspiracies. She talks loudly about her work to anyone within reach and is a constant embarrassment to her daughter.",
+            "id": "salome-otterbourne",
+            "name": "Salome Otterbourne",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Salome Otterbourne's daughter, a sullen, defensive young woman worn out by managing her mother and hiding the bottles. Her rudeness is armour, and Poirot treats it as such.",
+            "id": "rosalie-otterbourne",
+            "name": "Rosalie Otterbourne",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly and immensely snobbish American, travelling with a companion and a nurse and interested only in people whose families she recognises. She is rude to nearly everyone and expects deference as a matter of course.",
+            "id": "miss-van-schuyler",
+            "name": "Miss Van Schuyler",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Miss Van Schuyler's poor relation and unpaid companion, a plain, patient young American who is fetched and scolded all day and considers herself lucky to be travelling at all. She is kinder and shrewder than anybody gives her credit for.",
+            "id": "cornelia-robson",
+            "name": "Cornelia Robson",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A calm, sturdy hospital nurse engaged to attend Miss Van Schuyler, professionally incurious and entirely unimpressed by her employer's rank. She keeps her patient's business to herself.",
+            "id": "miss-bowers",
+            "name": "Miss Bowers",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A stout, elderly Austrian physician of considerable European reputation, travelling for pleasure and pleased to lecture anyone who will listen. His cabin becomes the ship's sickroom when it is needed.",
+            "id": "dr-bessner",
+            "name": "Dr Bessner",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A scruffy, loudly opinionated young man who denounces wealth, leisure and the whole class of people travelling with him, and is particularly offensive about Linnet Doyle. He takes an interest in Cornelia Robson and is contemptuous of Miss Van Schuyler.",
+            "id": "mr-ferguson",
+            "name": "Mr Ferguson",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Linnet Doyle's French maid, who dresses her, guards her jewellery and is discontented with her position and her prospects of marriage. She is quick to feel a slight and quick to see an advantage.",
+            "id": "louise-bourget",
+            "name": "Louise Bourget",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "death-on-the-nile"
+      },
+      "recaps": {
+        "ending": "Poirot and Race establish that Simon Doyle and Jacqueline de Bellefort planned everything together. Their public quarrel, the broken engagement and the relentless pursuit across Europe and Egypt were staged so that each would have an unassailable alibi. In the saloon Jacqueline fired a shot that hit nothing; as soon as the witnesses had scattered to fetch help, Simon picked up the pistol, went to his wife's cabin, shot her through the head, returned, scrawled a letter J on the wall to incriminate Jacqueline, and then shot himself through the leg to produce the wound he had been carried away with. Jacqueline retrieved and disposed of the pistol wrapped in a stolen velvet stole. She afterwards killed the maid Louise Bourget, who had tried to blackmail them, and shot Mrs Otterbourne through the door as she was about to name the person she had seen. The purpose was Linnet's fortune, after which Simon would in time have married Jacqueline. Confronted, Simon breaks down. As they are being taken off the steamer, Jacqueline uses a second small pistol to shoot Simon and then herself, sparing them both a trial. The other threads settle: Pennington's frauds are exposed, Miss Van Schuyler's thefts are managed quietly by her nurse, Tim Allerton returns the pearls he had replaced with a copy and is let off by Poirot on condition he goes straight, and Tim and Rosalie Otterbourne leave together, as do Cornelia Robson and Dr Bessner.",
+        "in_short": "Linnet Ridgeway, a young and much-envied heiress, marries Simon Doyle, the penniless fiance of her friend Jacqueline de Bellefort, who had asked her to give him a job. Jacqueline follows the honeymoon couple across Europe and up the Nile, appearing wherever they go, until all three are aboard the steamer Karnak with Poirot and Colonel Race. After a boulder narrowly misses Linnet at a temple, Jacqueline drunkenly shoots Simon in the leg one night in the saloon and is taken away sedated. In the morning Linnet is found shot in her bed with the letter J written in blood on the wall. Two more deaths follow: the maid Louise Bourget, stabbed after hinting that she knew something, and Salome Otterbourne, shot as she is about to name a witness. Poirot shows that Simon and Jacqueline committed the murders together, the long public feud having been staged to give each of them an alibi, with Linnet's fortune as the object. Jacqueline shoots Simon and herself rather than face arrest.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Linnet Ridgeway, young, beautiful and enormously rich, buys a country estate and rearranges the neighbourhood to suit it. Her school friend Jacqueline de Bellefort, who has nothing, comes to ask a favour: that Linnet employ her fiance Simon Doyle, a big, cheerful, unemployable young man, as land agent. Linnet meets him and marries him herself. The scandal travels ahead of them. Poirot, dining in a London restaurant, watches Jacqueline and Simon together before the marriage and hears the intensity with which she speaks of him. Various other people are shown preparing to travel: Mrs Allerton and her idle son Tim, the American trustee Andrew Pennington in New York, a young man with violent opinions about the rich, and others whose paths will cross in Egypt. Linnet and Simon leave on honeymoon and find Jacqueline waiting for them at each stop, silent, smiling and always visible, which no law can prevent and which is slowly wearing them both down.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At Assuan the Doyles arrive at the hotel where Poirot is staying, and Jacqueline arrives with them. Linnet begs Poirot to make her stop; Poirot instead goes to Jacqueline and warns her that she is opening her heart to evil, and she shows him the small pearl-handled pistol she carries. Simon tries a blunter approach and gets nowhere. During an excursion to a temple a boulder crashes down from above and narrowly misses Linnet, though Jacqueline was demonstrably elsewhere. The party boards the steamer Karnak for the journey up the Nile, and Jacqueline books a passage at the last moment. The other passengers include Colonel Race, travelling on official business of his own, the novelist Salome Otterbourne and her daughter Rosalie, the imperious Miss Van Schuyler with her companion Cornelia Robson and her nurse Miss Bowers, the Austrian Dr Bessner, the aggressive young Mr Ferguson, Pennington the trustee, the Allertons, and Linnet's French maid Louise Bourget. Poirot watches the tension aboard tighten day by day.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "One night in the observation saloon Jacqueline, who has been drinking, taunts Simon until she snatches out her pistol and fires at him, hitting him in the leg. Cornelia Robson and a young fellow passenger get her away to her cabin, where Miss Bowers sedates her and stays with her; Simon is carried to Dr Bessner's cabin and his leg set. In the confusion the pistol disappears from the saloon. In the morning Linnet is found shot through the head as she slept, with a letter J daubed in blood on the wall above her, and her string of pearls missing from the dressing table. Colonel Race joins Poirot in the investigation, since the steamer is beyond any police force and everyone aboard is a suspect. The medical evidence puts the death in the small hours, and both Jacqueline and Simon appear to have been watched over all night.",
+            "through": {
+              "chapter": 26
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Poirot and Race work through the passengers. The pistol is dredged up from the river wrapped in a velvet stole belonging to Miss Van Schuyler, with two shots fired from it and the stole scorched and holed. The pearls turn up and prove to be a good imitation. Miss Bowers admits that she is employed to watch Miss Van Schuyler, whose habit of taking other people's property is a family affliction, and that the old lady took the pearls and returned them. Pennington's business papers show that he has been speculating with Linnet's fortune and needed her signature, and his story of a chance meeting collapses. Others have their own reasons for discomfort: Rosalie Otterbourne is protecting her mother's drinking, Ferguson conceals more than his politics, and Tim Allerton is evasive about his London connections. Louise Bourget, the maid, hints in front of witnesses that she may have seen something, refuses to say what, and is later found dead in her cabin, stabbed, with a torn corner of a banknote in her hand.",
+            "through": {
+              "chapter": 32
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Salome Otterbourne comes to Poirot and Race announcing that she saw who went into the maid's cabin, and is shot dead through the doorway before she can give the name. The shot is fired with a pistol taken from Race's own cabin, and the passengers' movements at that moment are again nearly impossible to fix. The steamer turns back with three bodies aboard. Poirot resolves the lesser mysteries as he goes: the imitation pearls were substituted for the real ones by Tim Allerton, working with a London acquaintance who supplied the copies; the agitator Race has been hunting is aboard under an assumed archaeological identity; and Pennington's frauds, though real, do not fit the shape of the murders. Poirot returns to the physical facts of the first killing, in particular the stole used to muffle the shot, the two bullets, and the exact sequence of the evening in the saloon.",
+            "through": {
+              "chapter": 38
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Poirot lays out the truth. Simon Doyle and Jacqueline de Bellefort acted together, and the whole public spectacle of the jilted girl pursuing the honeymoon couple was arranged to give each of them a perfect alibi. In the saloon Jacqueline fired a shot that hit nothing; the moment the witnesses had gone for help, Simon took the pistol, went to his wife's cabin, shot her, wrote the letter J on the wall, and then shot himself through the leg, so that the wound he was carried away with was self-inflicted and the timing was false. Jacqueline recovered the pistol and sank it in the river wrapped in the stolen stole. She afterwards stabbed Louise Bourget, who had seen enough to attempt blackmail, and shot Mrs Otterbourne through the door before she could identify her. The object was Linnet's fortune, which Simon would inherit as her husband, after which the two intended to marry in a decent interval. Simon breaks down when confronted with the evidence. As the pair are taken off the steamer, Jacqueline shoots Simon and then herself with a second small pistol she had kept. Pennington is left to answer for his frauds, Tim Allerton returns the pearls and is given a chance to reform, and he and Rosalie leave together, while Cornelia Robson accepts Dr Bessner.",
+            "through": {
+              "chapter": 42
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "death-on-the-nile"
       }
     }
   }
