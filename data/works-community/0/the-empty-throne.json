@@ -295,6 +295,70 @@
         "work": "the-enchanted-wood"
       }
     },
+    "the-enchanter-vladimir-nabokov": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An unnamed middle-aged man whose outward self-control conceals a sexual fixation on young girls. After noticing one particular child in a park, he begins arranging his life around gaining access to her, presenting himself to adults as a respectable and attentive suitor.",
+            "id": "the-man",
+            "name": "The Man",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An unnamed girl of about twelve whom the man first watches in a park. She remains largely unaware of the intentions he projects onto her and is dependent on the adults who decide where she will live and travel.",
+            "id": "the-girl",
+            "name": "The Girl",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The girl's widowed and seriously ill mother. Believing the man's courtship sincere, she accepts the security his marriage appears to offer both her and her daughter.",
+            "id": "the-girls-mother",
+            "name": "The Girl's Mother",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-enchanter-vladimir-nabokov"
+      },
+      "recaps": {
+        "ending": "After his wife's death, the man assumes responsibility for her daughter and collects the girl so that they can travel together. He stops at a hotel and waits until he believes she is asleep before approaching her sexually. She wakes, understands the danger, and screams. The sound brings other people toward the room and destroys the private fantasy through which he had disguised his intended abuse. The man runs from the hotel in panic. Seeing no escape from exposure, he throws himself in front of a moving vehicle and is killed. The girl survives, while his attempt to obtain control over her ends in public discovery and his death.",
+        "in_short": "An unnamed man conceals a sexual fixation on young girls behind an ordinary adult life. After noticing a twelve-year-old child in a park, he courts her sick, widowed mother, not out of love but to secure lawful access to the daughter. The mother marries him and then dies, leaving him as the girl's guardian. While taking the child away, he stops with her at a hotel and attempts to turn his long-maintained fantasy into abuse. She wakes and screams, alerting others nearby. He flees the room and, faced with discovery, kills himself by stepping into the path of a vehicle. The scheme that he imagined as patient and controlled collapses as soon as the girl recognizes the threat and calls for help.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "An unnamed middle-aged man is sexually fixated on young girls but has so far maintained a respectable outward life. In a park he notices a child of about twelve and becomes obsessed with possessing her. Learning that her widowed mother is gravely ill, he begins a calculated courtship. The mother believes his interest genuine and marries him, while he treats the marriage as a route to future control of her daughter. After the mother dies, he becomes responsible for the girl and collects her for a journey. At a hotel he waits until she appears to be asleep, then approaches her with the intention of sexual abuse. She wakes and screams, drawing other people toward the room. His private fantasy gives way to the reality of a frightened child and imminent exposure. He runs outside and deliberately steps into the path of a moving vehicle, dying at once. The girl survives his attempt to isolate her.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-enchanter-vladimir-nabokov"
+      }
+    },
     "the-end": {
       "characters": {
         "characters": [
@@ -1314,6 +1378,192 @@
           }
         ],
         "work": "the-essential-iliad"
+      }
+    },
+    "the-exorcist": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A veteran Jesuit priest and archaeologist working in northern Iraq. A discovery among the ruins gives him a sense that an old spiritual conflict is approaching again. He is physically frail but experienced in confronting alleged possession.",
+            "id": "lankester-merrin",
+            "name": "Lankester Merrin",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A successful actor and director temporarily living in Georgetown while making a film. Practical, direct, and not religious, she is devoted to her twelve-year-old daughter Regan and initially seeks medical explanations when the girl's behavior changes.",
+            "id": "chris-macneil",
+            "name": "Chris MacNeil",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Rags"
+            ],
+            "description": "Chris MacNeil's affectionate twelve-year-old daughter. She lives with her mother in a rented Georgetown house, makes art and models, and has begun using a Ouija board to speak with an unseen companion she calls Captain Howdy.",
+            "id": "regan-macneil",
+            "name": "Regan MacNeil",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A Jesuit priest and trained psychiatrist who counsels other clergy. Intelligent and skeptical, he is suffering a crisis of faith and intense guilt about his elderly mother's poverty and isolation.",
+            "id": "damien-karras",
+            "name": "Damien Karras",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A British director working with Chris on her current film. He is sharp-tongued, drinks heavily, and visits the MacNeil house socially, where his public quarrels and later fate draw police attention.",
+            "id": "burke-dennings",
+            "name": "Burke Dennings",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A homicide detective investigating a death near the MacNeil residence. Mild and conversational in manner, he is nevertheless persistent, observant, and difficult to divert once the evidence suggests more than an accident.",
+            "id": "william-kinderman",
+            "name": "William Kinderman",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Chris's secretary and close household companion. She helps care for Regan, manages practical matters around the house, and remains loyal as the crisis becomes harder to conceal.",
+            "id": "sharon-spencer",
+            "name": "Sharon Spencer",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The MacNeils' reserved Swiss houseman. His guarded manner and family troubles make him one subject of Kinderman's inquiries, though he continues to help the household through Regan's illness.",
+            "id": "karl-engstrom",
+            "name": "Karl Engstrom",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Karl's wife and the MacNeils' housekeeper. She is quiet, religious, and increasingly frightened by the disturbances surrounding Regan.",
+            "id": "willie-engstrom",
+            "name": "Willie Engstrom",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A physician who treats Regan and coordinates extensive neurological and psychiatric testing. He searches for an organic cause and regards an exorcism, if used at all, as a possible form of suggestion rather than proof of the supernatural.",
+            "id": "samuel-klein",
+            "name": "Samuel Klein",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Jesuit priest and friend of Damien Karras. Warm and sociable, he is concerned about Karras's grief and failing faith and remains close when the MacNeil case reaches its violent end.",
+            "id": "joseph-dyer",
+            "name": "Joseph Dyer",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Captain Howdy"
+            ],
+            "description": "The hostile intelligence speaking through Regan after her condition has passed beyond ordinary illness. It gives shifting identities, mixes taunts with fragments of private knowledge, and tries to convince observers that Regan is beyond rescue.",
+            "id": "the-demon",
+            "name": "The Demon",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-exorcist"
+      },
+      "recaps": {
+        "ending": "Merrin and Karras conduct the exorcism while the presence in Regan attacks their confidence and exploits Karras's guilt. During a pause Karras leaves the room, then returns to find Merrin dead after his weakened heart has failed. When the presence mocks Merrin's death, Karras strikes Regan and demands that it enter him instead. It does, and Karras regains control just long enough to throw himself through the bedroom window and down the Georgetown steps. Father Dyer reaches the dying priest and gives him absolution. Regan recovers without a clear memory of what happened. Chris takes her away from Washington, grateful but unable to explain the sacrifice that saved her. Before leaving, Regan notices Dyer's clerical collar and kisses his cheek. Kinderman later seeks out Dyer, and the two begin the friendship he had earlier tried to form with Karras. Merrin and Karras are dead, but Regan is free and the immediate manifestations have ended.",
+        "in_short": "While actor Chris MacNeil is working in Georgetown, her twelve-year-old daughter Regan develops alarming physical and psychological symptoms after communicating with an imaginary figure through a Ouija board. Medical testing finds no adequate cause. A director dies outside the house under impossible circumstances, and detective William Kinderman begins investigating. As Regan's behavior and apparent knowledge become increasingly inexplicable, Chris turns to Jesuit psychiatrist Damien Karras, who is grieving his mother and doubting his faith. Karras initially looks for fraud or illness, but the accumulated evidence persuades him to request an exorcism. The Church assigns experienced priest Lankester Merrin to lead it. During the rite Merrin dies, and Karras provokes the presence into leaving Regan for him. He then leaps to his death before it can control him completely. Regan recovers with little memory of the ordeal and leaves Washington with Chris, while Karras's sacrifice and Merrin's endurance leave the survivors with a renewed possibility of faith.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In northern Iraq, the elderly Jesuit archaeologist Lankester Merrin uncovers an object associated with a force he has encountered before and senses that another confrontation is coming. In Georgetown, actor Chris MacNeil is living with her twelve-year-old daughter Regan while directing a film. Strange sounds come from the attic, furniture seems to move, and Regan says she has been communicating through a Ouija board with someone she calls Captain Howdy. Elsewhere in Washington, Jesuit psychiatrist Damien Karras struggles with failing faith and guilt over leaving his impoverished mother in institutional care. Regan is initially cheerful and affectionate, but small changes in her sleep and behavior concern Chris. The disturbances still admit ordinary explanations, and Chris turns first to the household and to doctors rather than religion.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Regan's condition worsens into seizures, violent behavior, and dramatic changes in voice and personality. Doctors subject her to painful neurological tests but find no lesion that explains the symptoms. Karras's mother dies while he is away, deepening his grief and self-reproach. Film director Burke Dennings is then found dead at the bottom of the steep steps beside the MacNeil house after being left alone there with Regan. His injuries do not fit an ordinary fall. Detective William Kinderman quietly investigates the household and notices links between Dennings's death and a desecration at a nearby church. Chris is terrified by Regan's decline but still follows medical advice. The specialists increasingly discuss severe psychiatric disturbance, while the events inside the bedroom become harder to reconcile with any diagnosis they offer.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After further treatment fails, the doctors suggest that the ritual of exorcism might have psychological value if Regan believes she is possessed. Chris, who has no religious faith, seeks out Karras because he is both a priest and a psychiatrist. He approaches the case skeptically and looks for signs of suggestion, deception, or overlooked illness. The personality speaking through Regan claims several identities, displays knowledge she should not possess, and directs calculated taunts at Karras's grief. Physical manifestations in the room and Regan's altered appearance intensify Chris's conviction that an external presence is involved. Kinderman continues asking about Dennings and gradually closes in on the possibility that the fatal event began inside Regan's room. Karras refuses to call the condition possession without stronger proof, but he begins recording and testing what he witnesses.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Karras studies recordings, consults specialists, and checks the supposed languages spoken in Regan's room. Some displays prove less conclusive than they first appeared, but other evidence resists his attempts to explain it. He recognizes that the hostile personality wants attention and despair, and he becomes concerned that Regan's weakening body cannot survive much longer. Chris acknowledges the connection between Regan's condition and Dennings's death, while Kinderman's questions make clear that he suspects a killing rather than an accident. Karras finally concludes that there is enough evidence to ask Church authorities for permission to perform an exorcism, despite his own uncertainty. The request moves upward through the Jesuit order, and the Church chooses Lankester Merrin, whose past experience makes him the principal exorcist. Karras is assigned to assist him.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Merrin arrives at the MacNeil house and begins the rite with Karras. He warns his assistant not to become absorbed in the presence's different voices or claims, viewing them as tactics meant to distract and demoralize. The exorcism becomes a prolonged physical and spiritual ordeal. Regan is restrained while the presence assaults both priests with abuse, apparent private knowledge, and violent manifestations. Karras is especially vulnerable when it imitates or invokes his mother, and Merrin repeatedly steadies him. Between sessions, Merrin's poor health is evident, but he insists on continuing because Regan is failing. Chris and the others wait outside with little power to help. The conflict narrows to whether the priests can endure the attack without accepting its message that love, faith, and human effort are futile.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "During a pause in the rite, Karras leaves the bedroom briefly. He returns to find Merrin dead, his weakened heart having failed beside Regan's bed. The presence exults over the death. Overcome by anger, Karras attacks it and demands that it leave Regan and enter him. The transfer occurs; Karras's face and manner change, but he resists long enough to hurl himself through the window. He falls down the steep outdoor steps and is mortally injured. Father Dyer reaches him and administers absolution before he dies. Regan soon returns to herself, physically battered but with little memory of the events. Chris prepares to leave Georgetown with her and thanks Dyer. Regan notices his priest's collar and kisses him, suggesting an emotional trace of the sacrifice made for her. Kinderman later visits Dyer and proposes that they see a film together, beginning a friendship. The manifestations have ended and Regan is free, at the cost of both exorcists' lives.",
+            "through": {
+              "chapter": 16
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-exorcist"
       }
     },
     "the-eye-of-the-bedlam-bride": {

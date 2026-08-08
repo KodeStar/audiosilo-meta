@@ -3454,6 +3454,229 @@
         "work": "artificial-condition"
       }
     },
+    "as-i-lay-dying": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A perceptive son of Addie and Anse Bundren and the novel's first narrator. He observes his family with unusual precision and often seems able to understand what others leave unspoken. As his mother lies dying, he agrees to make a short wagon trip with Jewel to earn money for the household.",
+            "id": "darl-bundren",
+            "name": "Darl Bundren",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "One of Addie's sons, physically powerful, guarded, and quick to anger. He works beside Darl but keeps apart from him emotionally, and his silent intensity makes him difficult for the rest of the family to read.",
+            "id": "jewel-bundren",
+            "name": "Jewel Bundren",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The eldest Bundren son, a skilled and methodical carpenter. He builds his dying mother's coffin beneath her window, concentrating on the angles and workmanship even while the sound of his tools carries into her room.",
+            "id": "cash-bundren",
+            "name": "Cash Bundren",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Bundren family matriarch, gravely ill and watching from her bed while Cash constructs her coffin outside. Her approaching death has drawn neighbors to the isolated farm and placed the family under pressure to honor her wishes.",
+            "id": "addie-bundren",
+            "name": "Addie Bundren",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Addie's husband and the father of the Bundren children, a poor farmer given to explaining his troubles as the result of bad luck and other people's actions. He intends to carry out Addie's request that she be buried with her relatives in Jefferson.",
+            "id": "anse-bundren",
+            "name": "Anse Bundren",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A neighbor of the Bundrens who visits Addie's sickroom. Proud of her cooking and firm in her religious judgments, she interprets the family's behavior through her own ideas about duty, pride, and salvation.",
+            "id": "cora-tull",
+            "name": "Cora Tull",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Cora's husband, a neighboring farmer who repeatedly gives the Bundrens practical help. More restrained than his wife, he witnesses key moments at the farm and reports them with a mixture of concern and disbelief.",
+            "id": "vernon-tull",
+            "name": "Vernon Tull",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Bundrens' only daughter, seventeen and privately distressed by a pregnancy resulting from her encounter with Lafe. She believes Darl knows her secret and urgently wants to reach a town where she might obtain help.",
+            "id": "dewey-dell-bundren",
+            "name": "Dewey Dell Bundren",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A farm worker who impregnated Dewey Dell. He does not accompany her, but gives her ten dollars and tells her to seek a medicine in town, leaving her to manage the danger and secrecy alone.",
+            "id": "lafe",
+            "name": "Lafe",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The local doctor summoned to the Bundren farm as Addie nears death. Heavy, direct, and experienced, he recognizes that the call came too late for him to change the outcome and is impatient with Anse's explanations.",
+            "id": "doctor-peabody",
+            "name": "Doctor Peabody",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The youngest Bundren child. He has just caught a large fish when his mother dies, and his attempt to understand the difference between a living person and a dead body takes the form of literal, unsettling associations.",
+            "id": "vardaman-bundren",
+            "name": "Vardaman Bundren",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A local minister who once had an affair with Addie and is Jewel's biological father. On hearing that Addie is dying, he hurries toward the Bundren farm intending to confess, but her death lets him preserve his public reputation.",
+            "id": "reverend-whitfield",
+            "name": "Reverend Whitfield",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A farmer who shelters the Bundrens after their disastrous river crossing. He and his family feed them, tend Cash, and watch Anse obtain a replacement team through a bargain that costs Jewel his horse.",
+            "id": "armstid",
+            "name": "Armstid",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Mottson druggist whom Dewey Dell approaches in hopes of ending her pregnancy. He recognizes what she is asking for but refuses to provide it and warns her against trusting anyone who claims to offer an easy remedy.",
+            "id": "moseley",
+            "name": "Moseley",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A farmer who allows the Bundrens to put their animals and Addie's coffin in his barn for the night as they near Jefferson.",
+            "id": "gillespie",
+            "name": "Gillespie",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An assistant at a Jefferson pharmacy who falsely presents himself to Dewey Dell as a doctor. Knowing she is desperate for an abortion, he uses the promise of treatment to isolate and sexually exploit her.",
+            "id": "macgowan",
+            "name": "MacGowan",
+            "reveal": {
+              "chapter": 55
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "as-i-lay-dying"
+      },
+      "recaps": {
+        "ending": "The Bundrens finally reach Jefferson and bury Addie, but the journey has damaged nearly everyone except Anse. To avoid being sued for the barn fire, the family helps seize Darl, who is taken by train to the state hospital in Jackson while laughing and speaking of himself from outside his own identity. Cash's broken leg has been encased in concrete, leaving the skin injured and the limb shortened; Peabody condemns the treatment. Dewey Dell again seeks an abortion, but pharmacy assistant MacGowan deceives and sexually exploits her instead of helping. Anse then takes the ten dollars she had guarded for the procedure. He uses the trip to acquire false teeth and, after borrowing shovels from a Jefferson woman for Addie's burial, quickly returns with that woman as his new wife. He introduces her to the children as the new Mrs. Bundren. Addie is buried as promised, yet Anse converts the family's ordeal into a means of satisfying his own wants, while Darl is institutionalized and the other children carry the journey's physical and emotional consequences.",
+        "in_short": "As Addie Bundren dies on her family's poor Mississippi farm, her husband Anse prepares to honor her request for burial in Jefferson. Their children Cash, Darl, Jewel, Dewey Dell, and Vardaman join a wagon journey delayed by flood and driven by private motives: Cash wants tools, Dewey Dell seeks an abortion, and Anse wants new teeth. A flooded river kills the mules, breaks Cash's leg, and nearly sweeps away the coffin. Anse sacrifices Jewel's beloved horse to obtain another team, while the family crudely encases Cash's leg in concrete. Addie's own narration reveals her alienation from Anse and her affair with minister Whitfield, which produced Jewel. Darl later burns a barn in an attempt to end the degrading journey, but Jewel rescues the coffin. The family reaches Jefferson, buries Addie, and commits Darl to an asylum to avoid liability. Dewey Dell is exploited by a pharmacy clerk, and Anse takes her money, buys teeth, and immediately introduces a new Mrs. Bundren.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "On an isolated Mississippi farm, Addie Bundren lies close to death while her eldest son, Cash, methodically builds her coffin beneath her window. Her sons Darl and Jewel prepare to haul a load of lumber for three dollars, although the trip may keep them away at the moment of her death. Darl is observant and probing; Jewel is silent and angry. Their father, Anse, complains about misfortune but insists that he must eventually carry Addie's body to Jefferson because he promised to bury her among her relatives. Neighbors Cora and Vernon Tull visit and form their own judgments about the family. Dewey Dell, the only daughter, hides the fact that she is pregnant by a worker named Lafe and hopes the journey toward town may allow her to end the pregnancy. The youngest child, Vardaman, is away fishing. As a storm and flooding threaten the roads, Anse lets Darl and Jewel leave. Doctor Peabody is summoned and makes the difficult climb toward the house, but Addie's condition is already beyond useful treatment.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Addie dies while Darl and Jewel are away with the wagon. Darl narrates the event as if he can see what is happening at home: Dewey Dell continues fanning her mother until the final breath, Anse awkwardly announces the death, and Cash keeps working on the coffin. Peabody knows he was called too late and has little patience for Anse's claims of duty. Vardaman returns with the fish he caught and cannot make sense of the sudden division between his mother and her body. In grief and confusion he attacks Peabody's team, then connects the cleaned fish with what has happened to Addie. Cash completes a carefully beveled coffin and explains his construction as a practical problem. After Addie has been placed inside, Vardaman secretly drills holes through the lid so she can breathe, not understanding that the auger enters her face. The family remains committed to taking the body to Jefferson, but Darl and Jewel have not yet returned and the worsening weather is making the promised trip more difficult.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Darl and Jewel return after their borrowed wagon breaks down, and the family completes preparations for Addie's funeral journey. Neighbors gather, religious words are spoken, and the coffin is loaded onto the wagon. Anse has waited for his sons despite the summer heat, so the body is already deteriorating. Cash tries to balance the coffin carefully, while Jewel's fierce handling of it exposes his grief even though he refuses conventional displays of feeling. Each family member has a separate reason for reaching Jefferson. Anse presents the trip as obedience to Addie's wishes; Cash expects to obtain a graphophone and tools; Dewey Dell hopes to find help for her pregnancy; and Vardaman imagines seeing a toy train. Darl continues to interpret the others' motives in ways that disturb them. With bridges damaged and the river swollen by rain, the Bundrens set out in their old wagon behind Anse's mules, refusing advice to postpone the burial. The journey has become both a public spectacle and a test of how far Anse will make his family go in the name of his promise.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Bundrens discover that the main bridge is impassable and attempt a dangerous river crossing. Anse, Dewey Dell, and Vardaman cross separately, while Darl, Jewel, and Cash take the wagon and coffin through the flooded ford with Vernon Tull's help. A surge overturns the wagon. The mules drown, Cash reinjures the leg he had already hurt, and Addie's coffin is swept into the current. Jewel fights through the water and saves the coffin, while Darl and the others recover Cash's scattered carpentry tools from the riverbed. The crossing leaves the family stranded with no team and with Cash in serious pain, but Anse still refuses to abandon the trip or accept a less distant burial. The ordeal confirms Jewel's intense attachment to Addie through action, even as Darl watches him with an increasingly provocative understanding. The family must now find shelter, replace the dead mules, and care for Cash with few resources. Addie's body continues to decay, drawing attention along the route and turning the private promise of burial into an escalating danger for everyone traveling with it.",
+            "through": {
+              "chapter": 38
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The family's history becomes clearer. Addie recalls her loneliness as a schoolteacher, her loveless marriage to Anse, and her conviction that words such as love and motherhood fail to match lived experience. After bearing Cash and Darl, she had an affair with the minister Whitfield and gave birth to Jewel. She later bore Dewey Dell and Vardaman as part of what she considered her obligation to Anse, and made him promise to carry her body to Jefferson. Whitfield, hearing that she is dying, decides to confess the affair, but on learning she is already dead he treats his intention as sufficient and keeps the secret. After the river disaster, Armstid shelters the Bundrens. Anse obtains a new team by surrendering Jewel's beloved horse and using resources belonging to Cash and others, deepening the cost of his promise. In Mottson, Dewey Dell asks druggist Moseley for a way to end her pregnancy, but he refuses. Townspeople object to the smell from the coffin and hurry the family onward. With no proper medical help, the Bundrens cover Cash's injured leg in a crude cast made from cement, then resume the road to Jefferson.",
+            "through": {
+              "chapter": 45
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Bundrens continue toward Jefferson with Cash suffering inside the hardening concrete cast and Jewel carrying the loss of his horse. They stop at Gillespie's farm and place the coffin in the barn. During the night, Vardaman sees Darl set fire to the building. Darl's act is an attempt to bring the degrading journey to an end, but the blaze threatens the farm's livestock and property as well as Addie's body. Jewel repeatedly enters the burning barn, frees the animals, and carries the coffin out, sustaining burns while once again saving his mother through physical effort. The family can no longer ignore Darl's responsibility. Gillespie could prosecute them and demand payment they cannot make, so the others accept a plan to have Darl committed to the state hospital in Jackson after they reach Jefferson. Dewey Dell, who resents Darl for knowing about her pregnancy, and Jewel, who fought with him earlier, support the decision. The coffin survives, but preserving Anse's promise has now cost the family its mules, Jewel's horse, Cash's health, Darl's freedom, and much of its standing among the people along the road.",
+            "through": {
+              "chapter": 52
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In Jefferson, the family borrows shovels and finally buries Addie. Men arrive to take Darl to the state hospital in Jackson; Jewel grabs him and Dewey Dell attacks him, helping restrain the brother whose commitment will protect the family from consequences for the barn fire. Darl leaves by train, laughing and referring to himself as though he were someone else. Cash is taken to Doctor Peabody, who removes the concrete cast and condemns the treatment; the leg and skin have been badly damaged and Cash will be left with a permanent limp. Dewey Dell goes to a pharmacy seeking an abortion. MacGowan, an assistant pretending to be a doctor, gives her a useless substance and sexually exploits her. Anse then demands the ten dollars Lafe gave her, taking away her remaining chance to seek help. Having fulfilled the burial promise, Anse buys the false teeth he has wanted. He also approaches the Jefferson woman who loaned the family shovels and returns with her carrying a graphophone. He introduces her to his astonished children as the new Mrs. Bundren, ending the journey with his own wishes satisfied while the rest of the family bears its losses.",
+            "through": {
+              "chapter": 59
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "as-i-lay-dying"
+      }
+    },
     "assassins-fate": {
       "characters": {
         "characters": [

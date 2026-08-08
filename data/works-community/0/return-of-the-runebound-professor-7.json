@@ -1608,6 +1608,244 @@
         "work": "rhythm-of-war"
       }
     },
+    "richard-ii": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "King Richard II"
+            ],
+            "description": "The King of England, ruling by inherited right and presiding over a formal accusation of treason between two nobles. He is ceremonially confident but must manage a conflict that touches his own court and reputation.",
+            "id": "richard-ii",
+            "name": "Richard II",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Henry Hereford",
+              "Henry Bolingbroke"
+            ],
+            "description": "John of Gaunt's son and the Duke of Hereford, who formally accuses Thomas Mowbray of treason, embezzlement, and complicity in the Duke of Gloucester's death. He insists on defending his honor through trial by combat.",
+            "id": "bolingbroke",
+            "name": "Bolingbroke",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Duke of Norfolk"
+            ],
+            "description": "A powerful nobleman accused by Bolingbroke of treason and involvement in Gloucester's death. He denies the charges and demands combat to clear his name.",
+            "id": "thomas-mowbray",
+            "name": "Thomas Mowbray",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Duke of Lancaster"
+            ],
+            "description": "Bolingbroke's father, an elderly son of Edward III and uncle to Richard. He values lawful order and family honor, yet his loyalty to the crown limits how far he will oppose the king on his son's behalf.",
+            "id": "john-of-gaunt",
+            "name": "John of Gaunt",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Duchess of Gloucester"
+            ],
+            "description": "The widow of the murdered Duke of Gloucester and sister-in-law to John of Gaunt. She urges Gaunt to treat her husband's death as an injury to their entire royal family and seek punishment.",
+            "id": "duchess-of-gloucester",
+            "name": "Duchess of Gloucester",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Duke of Aumerle"
+            ],
+            "description": "The Duke of York's son and a favorite of Richard. He accompanies Bolingbroke partway into exile despite their political hostility and remains close to the king.",
+            "id": "aumerle",
+            "name": "Aumerle",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Duke of York"
+            ],
+            "description": "Richard's uncle and John of Gaunt's brother. He criticizes the king's expensive court and poor counsel while continuing to recognize his lawful authority.",
+            "id": "duke-of-york",
+            "name": "Duke of York",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Queen Isabel"
+            ],
+            "description": "Richard's queen, deeply attached to her husband. Before his Irish expedition, she feels an unexplained foreboding and fears that approaching sorrow is already present.",
+            "id": "queen-isabel",
+            "name": "Queen Isabel",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Earl of Northumberland"
+            ],
+            "description": "A powerful northern lord angered by Richard's treatment of the nobility and Bolingbroke's inheritance. He helps organize support for Bolingbroke's return to England.",
+            "id": "northumberland",
+            "name": "Northumberland",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Richard's close court favorites. He remains with the queen when the king departs for Ireland and becomes a target of the nobles who blame the favorites for misgovernment.",
+            "id": "bushy",
+            "name": "Bushy",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A courtier favored by Richard and associated with Bushy and Bagot. He helps advise the queen during the king's absence and is condemned by the returning opposition as a corrupt influence.",
+            "id": "green",
+            "name": "Green",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A churchman loyal to Richard and the principle of hereditary monarchy. As Richard's authority collapses, Carlisle warns that removing an anointed king will bring prolonged civil bloodshed.",
+            "id": "bishop-of-carlisle",
+            "name": "Bishop of Carlisle",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A servant in the Duke of York's household who tends the garden while the queen listens nearby. He interprets the neglected kingdom through the practical order required to maintain plants and trees.",
+            "id": "gardener",
+            "name": "Gardener",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Duchess of York"
+            ],
+            "description": "York's wife and Aumerle's mother. Protective of her son, she welcomes Bolingbroke as a kinsman but remains alert to dangers facing her family after the change of power.",
+            "id": "duchess-of-york",
+            "name": "Duchess of York",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A nobleman in the new king's circle who listens as Henry wishes aloud for release from the fear posed by the imprisoned Richard. He interprets the remark as a call for decisive action.",
+            "id": "exton",
+            "name": "Exton",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "richard-ii"
+      },
+      "recaps": {
+        "ending": "Richard is imprisoned at Pomfret Castle, where he reflects on identity, kingship, and isolation. After he attacks a keeper who reports that the new king has withdrawn a customary privilege, Exton and armed men enter. Richard kills one attacker before Exton kills him. Exton brings Richard's body to Henry IV, expecting approval, but Henry condemns the deed and banishes him, while acknowledging that his own words may have prompted it. Elsewhere, the new king hears that rebels against him have been defeated and pardons the Bishop of Carlisle. With Richard dead and reports of severed heads arriving from the fighting, Henry announces a pilgrimage to Jerusalem to atone for the bloodshed associated with his rise. Bolingbroke holds the crown as Henry IV, but the violence predicted by Carlisle has begun, and the legitimacy of the new reign remains burdened by deposition and regicide.",
+        "in_short": "Richard II stops a trial by combat between Henry Bolingbroke and Thomas Mowbray, banishes both men, and later seizes Bolingbroke's inheritance after John of Gaunt dies. While Richard campaigns in Ireland, Bolingbroke returns, claiming only his estate, and rapidly gains noble support. Richard's allies collapse; he submits to Bolingbroke and is taken to London. In Parliament, Bolingbroke presses charges, Richard relinquishes the crown, and Bolingbroke becomes Henry IV. A plot to restore Richard is discovered when York finds his son Aumerle's involvement; Henry pardons Aumerle after the Duchess of York pleads for him. The queen is separated from Richard and sent to France. At Pomfret, Richard is attacked by Exton and killed after fighting back. Henry condemns Exton, although his own words inspired the murder, and plans a penitential journey to Jerusalem as his contested reign begins.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "King Richard summons Henry Bolingbroke and Thomas Mowbray to hear their accusations. Bolingbroke charges Mowbray with treason and involvement in the Duke of Gloucester's death; Mowbray denies it. John of Gaunt refuses to pursue vengeance for Gloucester outside lawful royal authority, despite the murdered man's widow urging action. Richard arranges a trial by combat at Coventry, then halts it before the duel begins. He banishes Bolingbroke for ten years, reduced to six after seeing Gaunt's grief, and banishes Mowbray for life. Mowbray laments losing his native language, while Bolingbroke leaves England bitter but controlled. Richard then prepares an expedition to Ireland, already short of money and surrounded by favorites whose influence troubles older nobles.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The dying Gaunt rebukes Richard for exploiting England and wasting its inherited wealth. After Gaunt dies, Richard seizes his lands and revenues rather than allowing Bolingbroke to inherit, alarming York and other nobles because their own property now seems insecure. Richard names York as regent and leaves for Ireland. Northumberland, Ross, and Willoughby learn that Bolingbroke has returned with armed supporters, publicly claiming his lawful inheritance. York lacks the resources and confidence to resist effectively. The Welsh force waiting for Richard disperses after rumors of his death, while the queen's foreboding deepens. Bushy and Green flee toward Bristol; Bolingbroke's party captures and executes them, and the nobles who had supported Richard increasingly join the returning exile.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Richard returns from Ireland and initially trusts that divine kingship and loyal subjects will defeat Bolingbroke. Successive reports strip away that confidence: the Welsh troops are gone, favorites have been executed, York has submitted, and more nobles have changed sides. At Flint Castle, Bolingbroke presents himself as a subject seeking only the restoration of his title and estate, backed by an army. Richard recognizes that he has no effective choice and agrees to go with him to London. The queen overhears a gardener compare the neglected country to an untended garden and learns that Richard is expected to be deposed. Her personal grief now joins the public collapse of his rule.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In Parliament, Bolingbroke demands judgment on the charges surrounding Gloucester's death. The Bishop of Carlisle argues that a lawful king cannot be judged by a subject and predicts civil war if Richard is deposed. He is arrested for treason. Richard is brought in to relinquish the crown publicly. He and Bolingbroke hold it between them before Richard surrenders it, and Richard examines how royal identity dissolves when its ceremonies and authority are removed. He refuses to read a written confession of crimes and asks for a mirror, which he breaks after seeing that his face does not display his inner ruin. Bolingbroke becomes King Henry IV. Aumerle and the Abbot of Westminster then join a secret plan intended to remove the new king and restore Richard.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On the road to confinement, Richard and Queen Isabel share a final meeting. Richard tells her to return to France and preserve his story, while Northumberland forces them apart. At York's house, York discovers a sealed document showing that his son Aumerle is involved in the conspiracy against Henry IV. He rides to expose it despite the Duchess of York's pleas. Aumerle reaches the king first and confesses; York demands punishment, while the duchess kneels until Henry pardons her son. The other conspirators receive no such protection. Henry later speaks of his unease while Richard remains alive, and Exton interprets the remark as a wish for Richard's death. Richard, meanwhile, has been sent to Pomfret Castle.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At Pomfret, Richard tries to occupy his isolation by analyzing his situation, but each reflection returns him to mortality and the loss of kingship. A groom visits and tells him that Bolingbroke rode Richard's former horse at the coronation. When a keeper refuses Richard's accustomed food privilege on orders from above, Richard attacks him. Exton enters with armed servants; Richard seizes a weapon and kills one man before Exton strikes him down. The new king receives reports that the conspirators against him have been killed and pardons Carlisle. Exton then presents Richard's body. Henry condemns and banishes Exton, denying that he ordered the murder even as he recognizes that his own anxious words encouraged it. He announces a journey to Jerusalem to seek absolution. Henry IV possesses the throne, but Richard's blood and the suppression of resistance darken the new reign from its beginning.",
+            "through": {
+              "chapter": 19
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "richard-ii"
+      }
+    },
     "right-ho-jeeves": {
       "characters": {
         "characters": [

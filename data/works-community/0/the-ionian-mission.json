@@ -1707,6 +1707,247 @@
         "work": "the-kaiju-preservation-society"
       }
     },
+    "the-kids-shakespeare-collection-volume-1": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The young son of the Montague family, whose household is locked in a long feud with the Capulets. Impulsive and intensely romantic, he attends a Capulet celebration in disguise and falls in love with Juliet before learning who she is.",
+            "id": "romeo",
+            "name": "Romeo",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The young daughter of the Capulet family. Expected to accept her parents' plans for her future, she instead forms an immediate attachment to Romeo, the son of her family's enemies.",
+            "id": "juliet",
+            "name": "Juliet",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A Jewish moneylender in Venice who has endured insults from Antonio. When Antonio asks him for a loan, Shylock proposes an unusually severe bond as the penalty for nonpayment.",
+            "id": "shylock",
+            "name": "Shylock",
+            "reveal": {
+              "chapter": 4
+            }
+          },
+          {
+            "description": "A wealthy and intelligent heiress of Belmont whose late father devised a test to choose her husband. Bound by its rules, she nevertheless looks for ways to exercise her own judgment and help those she loves.",
+            "id": "portia",
+            "name": "Portia",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Mark Antony"
+            ],
+            "description": "A Roman general and one of the three rulers who govern after Julius Caesar's death. His political duties pull him toward Rome, while his love for Cleopatra keeps drawing him back to Egypt.",
+            "id": "antony",
+            "name": "Antony",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The queen of Egypt, a charismatic and politically astute monarch whose relationship with Antony is both a great passion and a danger to their positions of power.",
+            "id": "cleopatra",
+            "name": "Cleopatra",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Octavius Caesar"
+            ],
+            "description": "Antony's fellow ruler in the Roman triumvirate. Controlled and strategically patient, he expects Antony to put Roman government before his life with Cleopatra.",
+            "id": "caesar",
+            "name": "Caesar",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A rich Athenian celebrated for extravagant hospitality. He gives money and gifts freely to friends and flatterers, assuming that their affection will prove equally generous if he ever needs help.",
+            "id": "timon",
+            "name": "Timon",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A blunt philosopher who distrusts wealth, ceremony, and professed friendship. He attends Timon's gatherings but refuses to flatter his host, warning that the crowd around him is drawn to his money.",
+            "id": "apemantus",
+            "name": "Apemantus",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "King of Navarre"
+            ],
+            "description": "The young king of Navarre, who persuades three companions to join him in years of study and to avoid romantic entanglements. The arrival of a diplomatic party led by the Princess of France immediately tests the promise.",
+            "id": "ferdinand",
+            "name": "Ferdinand",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A French princess who comes to Navarre on official business with three ladies. Intelligent and composed, she keeps the king to the terms of his own restrictions while recognizing the attraction growing between the two groups.",
+            "id": "princess-of-france",
+            "name": "Princess of France",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Kate"
+            ],
+            "description": "The elder daughter of Baptista Minola. Sharp-tongued and openly resistant to the marriage expected of her, she refuses to make herself agreeable merely to satisfy her father or her suitors.",
+            "id": "katherina",
+            "name": "Katherina",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A confident gentleman who arrives in Padua intending to marry a wealthy woman. Undeterred by reports of Katherina's temper, he treats their courtship as a contest he fully expects to control.",
+            "id": "petruchio",
+            "name": "Petruchio",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A respected Venetian general who has secretly married Desdemona. He is sent to defend Cyprus and relies on the apparent honesty of the officers serving under him.",
+            "id": "othello",
+            "name": "Othello",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Othello's ensign, angered that Cassio received a promotion he wanted. He conceals his resentment behind a reputation for honesty while beginning to manipulate the people around Othello.",
+            "id": "iago",
+            "name": "Iago",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The daughter of a Venetian senator and Othello's new wife. She has chosen the marriage freely and follows Othello to Cyprus, confident in their love despite her father's opposition.",
+            "id": "desdemona",
+            "name": "Desdemona",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-kids-shakespeare-collection-volume-1"
+      },
+      "recaps": {
+        "ending": "The collection closes with Othello. Iago convinces Othello that Desdemona has been unfaithful with Cassio, using a misplaced handkerchief and staged conversations as false evidence. Othello kills Desdemona, then learns from Emilia that the accusation was invented. Iago kills Emilia when she exposes him, but is captured. Othello, realizing that he murdered an innocent wife, kills himself beside Desdemona. Cassio is left to govern Cyprus and Iago faces punishment. Earlier selections have also reached complete endings: Romeo and Juliet's deaths reconcile their families; Portia defeats Shylock's claim against Antonio; Caesar outlasts Antony and Cleopatra; Timon dies estranged from Athens; the lovers of Navarre postpone marriage for a year; and Katherina and Petruchio end their contest publicly aligned.",
+        "in_short": "Seven Shakespeare stories are presented in sequence. Romeo and Juliet marry across a family feud but die after a failed plan, prompting peace. Portia saves Antonio from Shylock's bond and reunites with Bassanio. Antony and Cleopatra lose their struggle with Caesar and take their own lives. Generous Timon is abandoned when his fortune fails and dies hating Athens. Navarre's king and friends break their vow to avoid women, but the Princess of France postpones their marriages after her father's death. Petruchio marries the resistant Katherina and subjects her to a harsh campaign of control before they return to Padua together. Iago then tricks Othello into believing Desdemona unfaithful. Othello kills her, discovers the deception, and kills himself; Iago is arrested.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In Verona, Romeo Montague and Juliet Capulet fall in love although their families are enemies. Friar Laurence secretly marries them, hoping the union will end the feud. After Tybalt kills Romeo's friend Mercutio, Romeo kills Tybalt and is banished. Juliet's parents arrange another marriage, so the friar gives her a potion that makes her appear dead. His explanation fails to reach Romeo, who finds Juliet in the tomb and takes poison. She wakes, sees him dead, and kills herself. Confronted with the result of their hatred, the Montagues and Capulets agree to reconcile.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Romeo and Juliet's secret marriage ends in their deaths and brings their feuding families to peace. In Venice, Antonio borrows money from Shylock so Bassanio can court Portia, accepting a bond that permits Shylock to take a pound of his flesh if the debt is not repaid. Bassanio succeeds in the test established by Portia's father, but Antonio's ships appear lost. At the trial Portia, disguised as a lawyer, argues that Shylock may claim flesh but no blood, making the penalty impossible. Shylock is defeated under Venetian law. Portia later reveals the disguise to Bassanio, Antonio learns that his ships have survived, and the couples reunite at Belmont.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The first two selections end with the reconciliation of Romeo and Juliet's families and Portia's defeat of Shylock's claim against Antonio. The collection then follows Antony, whose love for Cleopatra conflicts with his duties as a Roman ruler. He attempts peace with Caesar by marrying Caesar's sister Octavia, but returns to Cleopatra. Their forces lose to Caesar at Actium and their position in Egypt collapses. Misled by a false report that Cleopatra is dead, Antony wounds himself and dies with her. Cleopatra refuses the humiliation of being displayed in Caesar's triumph and ends her own life. Caesar takes control of Egypt and orders the lovers buried together.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Romeo and Juliet die after their plan to escape the feud fails; Portia saves Antonio from Shylock's bond; and Caesar defeats Antony and Cleopatra, who take their own lives. In Athens, the wealthy Timon gives lavish gifts and holds feasts for people he considers friends. The philosopher Apemantus warns him that these companions are flatterers, while Timon's steward worries that the household is spending far beyond its means. Creditors begin demanding payment. Timon remains certain that the friends who benefited from his generosity will support him when asked.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The earlier tragedies and comedies have reached their separate conclusions. Timon's confidence in friendship proves misplaced when his wealthy companions refuse every request for aid. He invites them to another banquet, serves only warm water, and drives them away before abandoning Athens. Living in the wilderness, he discovers gold and gives it away in ways intended to damage the city he now hates. He rejects appeals to return and dies alone. Alcibiades marches on Athens, but agrees to punish only his enemies and spare the wider population after the city's leaders submit.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After Timon dies estranged from Athens, the collection turns to Navarre. King Ferdinand and three companions swear to devote themselves to study and avoid women, only for the Princess of France and her ladies to arrive on diplomatic business. The men fall in love and secretly write to the women, each believing the others still faithful to the oath. Their hypocrisy is exposed, and both groups play disguises and practical jokes before the courtship becomes open. News arrives that the princess's father has died. She and her companions leave for a year of mourning, requiring the men to prove that their declarations will endure before any marriage can take place.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The lovers of Navarre separate for a year after the Princess of France learns of her father's death. In Padua, several men want to marry Bianca, but her father insists that her elder sister Katherina must marry first. Petruchio accepts the challenge and marries Katherina despite her resistance. He then withholds food, rest, and ordinary choices while claiming to act for her benefit, forcing her to agree with whatever he says. They return for Bianca's wedding, where Petruchio wagers that his wife will prove the most obedient. Katherina comes when summoned and delivers a speech supporting marital duty, winning the wager and ending the couple's public struggle with Petruchio in control.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The collection's final story follows Othello, a Venetian general who has married Desdemona. His ensign Iago resents Cassio's promotion and sets out to ruin both men. In Cyprus, Iago gets Cassio dismissed, then encourages him to ask Desdemona for help. He presents her advocacy as evidence of an affair and arranges for her handkerchief to appear in Cassio's possession. Consumed by jealousy, Othello kills Desdemona. Emilia exposes her husband Iago's manipulation and explains the handkerchief, whereupon Iago kills her and is captured. Othello understands that Desdemona was innocent and kills himself. Cassio survives to govern Cyprus, while the authorities take Iago away for punishment.",
+            "through": {
+              "chapter": 13
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-kids-shakespeare-collection-volume-1"
+      }
+    },
     "the-kill-order": {
       "characters": {
         "characters": [
