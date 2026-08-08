@@ -100,6 +100,152 @@
         "work": "the-book-thief"
       }
     },
+    "the-bookshop": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A widowed woman who has lived for years in the isolated Suffolk town of Hardborough. Quiet and physically unassuming, she nevertheless commits her savings and labor to opening the town's only bookshop in the long-empty Old House. She understands books better than local power and begins with faith that a useful business can justify its place.",
+            "id": "florence-green",
+            "name": "Florence Green",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Hardborough's leading social figure, wealthy, energetic, and accustomed to having her preferences treated as civic needs. She decides that the Old House should become an arts centre and regards Florence's bookshop as an obstacle, even though she had done nothing to acquire the building before Florence acted.",
+            "id": "violet-gamart",
+            "name": "Violet Gamart",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Violet Gamart's retired military husband. The General lends rank and social solidity to the Gamart household but usually follows his wife's direction in local affairs.",
+            "id": "general-gamart",
+            "name": "General Gamart",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The cautious manager of the local bank from which Florence seeks financing. He treats the Old House and a bookshop in Hardborough as doubtful securities, representing the practical resistance that confronts her before the more deliberate opposition becomes visible.",
+            "id": "mr-keble",
+            "name": "Mr. Keble",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A marshman with practical knowledge of Hardborough, its animals, buildings, and people. He helps Florence understand the Old House, including the unexplained disturbances locally attributed to a presence called the rapper, and offers advice without the town's usual social maneuvering.",
+            "id": "mr-raven",
+            "name": "Mr. Raven",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A sharp, unsentimental schoolgirl hired to help in the bookshop. Christine handles customers and stock with directness, quickly understanding both Florence's vulnerability and the evasions of the adults around them.",
+            "id": "christine-gipping",
+            "name": "Christine Gipping",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Christine's overworked mother, whose large household leaves little room for sentiment. She arranges her daughter's employment with Florence and deals with the bookshop in the brisk terms of necessity.",
+            "id": "mrs-gipping",
+            "name": "Mrs. Gipping",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A cultivated BBC employee who moves easily through the Gamarts' social circle and presents himself as Florence's sympathetic adviser. His agreeable manner and apparent detachment make his loyalties difficult to judge.",
+            "id": "milo-north",
+            "name": "Milo North",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly, reclusive member of an old local family who lives largely apart from Hardborough society. Florence asks his opinion before stocking a controversial new novel, and his direct, independent judgment makes him an unexpected ally of her attempt to sell serious books.",
+            "id": "mr-brundish",
+            "name": "Mr. Brundish",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-bookshop"
+      },
+      "recaps": {
+        "ending": "Violet Gamart's campaign succeeds through political influence rather than through the merits of the competing plans for Old House. Legislation tailored to the situation allows the local authority to acquire a building left unused for a specified period, placing Florence's shop and home beyond her defense. Mr. Brundish makes the rare decision to leave his seclusion and confront Mrs. Gamart on Florence's behalf, but he collapses and dies before his support can change the outcome. With her strongest independent ally gone and Milo North's apparent friendship exposed as useless, Florence loses Old House and closes the business. She leaves Hardborough with little money and no public acknowledgment that the shop had served the town. Her final response is not triumph over her opponents but shame and grief that the community where she spent years of her life proved unwilling to sustain a bookshop. Mrs. Gamart's vision of local culture prevails by excluding the person who actually created it.",
+        "in_short": "In 1959, widow Florence Green opens a bookshop in Old House, a damp and reputedly haunted building in the Suffolk town of Hardborough. The business slowly finds customers, and schoolgirl Christine Gipping becomes Florence's capable assistant. Florence's decision brings her into conflict with Violet Gamart, the town's dominant social figure, who wants the building reserved for an arts centre. Florence earns the support of reclusive Mr. Brundish, notably after seeking his judgment on whether to stock Lolita, but most townspeople accommodate whichever side holds more power. Milo North appears friendly while remaining aligned with the Gamarts. Mrs. Gamart uses family and political influence to secure a law enabling the authorities to take Old House. Brundish dies after setting out to defend Florence, leaving her without an ally strong enough to resist. Forced to close, Florence departs Hardborough ashamed that the town where she lived for years did not want her bookshop.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In 1959, Florence Green decides that Hardborough needs a bookshop and purchases Old House, a long-vacant building beside the water. The choice consumes her savings and requires a bank loan, while the damp, awkward property offers poor security and is said to contain an unexplained presence known locally as the rapper. Florence proceeds because no one else has tried to supply the town with books. Her initiative attracts the attention of Violet Gamart, Hardborough's socially dominant resident. Mrs. Gamart announces that she has long imagined Old House as an arts centre and expects Florence to yield to that supposedly superior civic purpose. Florence has already risked her livelihood on the property and declines. What begins as a modest commercial project therefore places her against a woman whose wishes are reinforced by wealth, connections, and the town's habit of compliance.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Florence opens the shop and confronts the ordinary difficulties of stock, credit, damp, limited space, and customers uncertain what they want. The business does begin to establish itself, proving that Hardborough can support at least a modest trade in books. She hires Christine Gipping, a schoolgirl whose blunt intelligence and efficiency compensate for her lack of deference. Christine becomes a genuine help rather than a decorative assistant. Mr. Raven provides practical local advice, including a matter-of-fact acceptance of the disturbances in Old House. Meanwhile, Mrs. Gamart's disapproval spreads indirectly through people who depend on her favor. Florence remains focused on keeping the shop solvent and useful, but she is operating in a community where social influence can alter banking, employment, and public opinion without ever issuing a direct order.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Milo North enters Florence's circle with the polished manner of a sympathetic adviser, though his ease within the Gamarts' world makes his support uncertain. Florence faces a consequential stock decision when the controversial novel Lolita becomes available. Rather than rely on gossip, she asks Mr. Brundish, an elderly recluse known for independent judgment, whether the book deserves a place in her shop. He advises her to sell it, and Florence orders a substantial quantity. The copies attract buyers and give the shop an unusual moment of commercial and cultural importance. Brundish's approval also creates a rare alliance between Florence and someone whose standing Mrs. Gamart cannot casually dismiss. Yet the shop's success does not end the dispute over Old House. It gives Mrs. Gamart more reason to replace Florence's uncontrolled enterprise with an institution she can define and supervise.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The forces surrounding the shop become harder to treat as ordinary business problems. Milo North's friendliness offers Florence little protection, and his connection to Mrs. Gamart shows how easily information and influence move through Hardborough's polite social network. The Gamarts pursue official means of obtaining Old House for their arts centre, using family connections beyond the town to turn a private preference into public policy. Florence's independence leaves her with few people able or willing to oppose them. Christine remains loyal and perceptive, but she is a child without power; customers who value the shop are not organized into a defense. Mr. Brundish is the significant exception. From his chosen isolation, he recognizes the injustice being done and decides that private approval is no longer sufficient.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Mrs. Gamart's political connections produce a legal mechanism allowing the authorities to acquire Old House because of its history of vacancy, defeating Florence through a rule shaped to fit her property. Mr. Brundish leaves his seclusion to confront Mrs. Gamart and defend the bookshop, but he collapses and dies before his intervention can alter the decision. Without his support, Florence has no counterweight to the network aligned against her. Milo North does not rescue her, and the shop's actual service to readers carries less force than the Gamarts' declared cultural plans. Florence is compelled to close, surrender Old House, and leave Hardborough with her finances and confidence damaged. As she departs, she feels shame that after years in the town she could not make it accept a bookshop. The defeat confirms that Hardborough preferred managed prestige to the independent cultural life Florence had already built.",
+            "through": {
+              "chapter": 10
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-bookshop"
+      }
+    },
     "the-boy-in-the-dress": {
       "characters": {
         "characters": [

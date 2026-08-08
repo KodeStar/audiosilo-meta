@@ -3541,6 +3541,296 @@
         "work": "the-halflings-gem"
       }
     },
+    "the-halloween-tree": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A boy wearing a skeleton costume who gathers with his friends for Halloween. Curious, energetic, and loyal to the absent Pipkin, he emerges as the natural leader of the group.",
+            "id": "tom-skelton",
+            "name": "Tom Skelton",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Pip"
+            ],
+            "description": "The most beloved and adventurous boy in Tom's group of friends. He unexpectedly misses their Halloween gathering, and the others soon learn that illness has placed him in danger.",
+            "id": "joe-pipkin",
+            "name": "Joe Pipkin",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Carapace Clavicle Moundshroud"
+            ],
+            "description": "The tall, unsettling inhabitant of the house beside the immense Halloween Tree. He seems to command its many carved pumpkins, knows more than he explains about Halloween, and claims knowledge of the missing Pipkin.",
+            "id": "moundshroud",
+            "name": "Mr. Moundshroud",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Tom and Pipkin's companions on Halloween night. He arrives wrapped as a mummy, one of the traditional figures represented among the boys' costumes.",
+            "id": "ralph-bengstrum",
+            "name": "Ralph Bengstrum",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of Tom and Pipkin's costumed group who comes dressed as a gargoyle. He joins the other boys in looking for the friend they expected to lead their night.",
+            "id": "wally-babb",
+            "name": "Wally Babb",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the costumed boys who gathers for trick-or-treating and joins Tom in wondering why Pipkin has not appeared.",
+            "id": "hackles-nibley",
+            "name": "Hackles Nibley",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Pipkin's friends and a member of the group assembled for Halloween. He shares the boys' excitement about the night and their concern when Pipkin is absent.",
+            "id": "fred-fryer",
+            "name": "Fred Fryer",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A boy in Tom and Pipkin's Halloween group, introduced among the friends who gather with Tom in costume.",
+            "id": "george-smith",
+            "name": "George Smith",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the costumed friends who gather with Tom on Halloween and expect Pipkin to join them.",
+            "id": "henry-hank",
+            "name": "Henry-Hank",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-halloween-tree"
+      },
+      "recaps": {
+        "ending": "At the end of the historical journey, the boys find Pipkin still beyond their reach and Moundshroud demands a price for returning him. Money and possessions have no value against a human life, so each friend offers one year from the far end of his own lifespan. Their combined gift is accepted, and Pipkin is released. The boys return from their extraordinary flight to their own town on Halloween night. Pipkin has survived the medical danger that kept him from joining them, and when they telephone his house they hear his voice and know that he will recover. Moundshroud and the vast tree are gone from their immediate world, but the travelers now understand their costumes as descendants of many cultures' attempts to face winter, death, spirits, and remembrance. Their rescue succeeds because they accept a real future cost together, turning their knowledge of mortality into an act of friendship rather than fear.",
+        "in_short": "On Halloween night, Tom Skelton and his costumed friends discover that their admired companion Pipkin is missing and in grave danger. Their search brings them to a dark house and an enormous tree hung with jack-o'-lanterns, where the enigmatic Mr. Moundshroud offers pursuit rather than simple answers. Traveling by a supernatural kite, the boys follow glimpses of Pipkin through centuries of human responses to death: Egyptian burial rites, classical beliefs, Celtic fires, persecution associated with witchcraft, cathedral gargoyles, and Mexico's Day of the Dead. Each stage explains something represented by their modern costumes while Pipkin remains just beyond rescue. Finally, Moundshroud asks what they will give for their friend. Each boy surrenders one year from the end of his life, and the combined offering buys Pipkin's return. Back in their own time, they learn that he has survived his illness and will recover, carrying home a deeper understanding of Halloween and of the loyalty that saved him.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "On Halloween night, Tom Skelton and a group of friends assemble in costumes, ready to follow Joe Pipkin, the boldest among them. Pipkin does not appear. The boys go to his house and realize that he is ill and that something more serious than a missed evening may be happening. Their search continues to a forbidding house at the edge of town, beside which stands an enormous tree loaded with carved pumpkins. Its owner, the gaunt and elusive Mr. Moundshroud, knows of Pipkin and suggests that the boy has been carried beyond the reach of an ordinary rescue. When Pipkin appears only to be swept away again, Tom and the others accept Moundshroud's challenge to follow. Their familiar night of trick-or-treating becomes a journey tied both to Pipkin's life and to the forgotten meanings of their costumes.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Moundshroud fashions a supernatural means of travel and leads the boys out of their town and backward through history. They pursue Pipkin while Moundshroud insists that understanding Halloween requires understanding how people have faced death. In ancient Egypt, the group encounters a civilization organized around preserving the dead and preparing them for another existence. Ralph's mummy costume no longer seems like an arbitrary disguise but a distant remnant of those beliefs. The journey then carries them toward the classical world, where festivals, gods, and ideas about the dead change form without disappearing. Pipkin remains visible in fleeting moments, drawn onward by the force that has taken him. The boys learn that this is not a tour they can leave at will: every delay risks losing their friend, while every destination reveals another layer beneath their own October customs.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The pursuit crosses Europe and the changing boundary between older seasonal rites and later religious practice. Moundshroud shows the boys autumn fires and ceremonies associated with the end of harvest, when the living imagined the border with the dead growing thin. He connects these traditions to later fears of witches and to the persecutions that turned such figures into symbols of terror. The travelers also confront the great stone forms of medieval churches, where gargoyles and other grotesque faces place reminders of danger and death on sacred buildings. The boys' costumes repeatedly prove to be compressed history: images inherited without the wearers knowing the experiences that shaped them. They continue to see Pipkin ahead of them but cannot hold him, and the accumulating lessons make clear that rescuing him will require more than bravery or speed.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Moundshroud's journey reaches Mexico, where the dead are remembered through a celebration that combines grief, affection, food, music, and bright imagery rather than treating death only as a hidden terror. The boys finally understand that the many forms behind Halloween are different ways of living with mortality. When the pursuit ends, Pipkin is still held beyond them and Moundshroud asks what his life is worth. The boys first think in terms of things they own, but the only meaningful payment is part of their own lives. Tom and his companions each offer one year from the end of his lifespan. Their combined gift is enough, and Pipkin is returned. The travelers arrive home and telephone him; he has survived the illness and medical crisis that prevented him from joining them and is expected to recover. Their Halloween ends with their friend alive and with the knowledge that their costumes, fears, and rescue all belong to humanity's long effort to face death without surrendering love.",
+            "through": {
+              "chapter": 20
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-halloween-tree"
+      }
+    },
+    "the-halloween-tree-dramatized": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A boy wearing a skeleton costume who gathers with his friends for Halloween. Curious, energetic, and loyal to the absent Pipkin, he emerges as the natural leader of the group.",
+            "id": "tom-skelton",
+            "name": "Tom Skelton",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Pip"
+            ],
+            "description": "The most beloved and adventurous boy in Tom's group of friends. He unexpectedly misses their Halloween gathering, and the others soon learn that illness has placed him in danger.",
+            "id": "joe-pipkin",
+            "name": "Joe Pipkin",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Carapace Clavicle Moundshroud"
+            ],
+            "description": "The tall, unsettling inhabitant of the house beside the immense Halloween Tree. He seems to command its many carved pumpkins, knows more than he explains about Halloween, and claims knowledge of the missing Pipkin.",
+            "id": "moundshroud",
+            "name": "Mr. Moundshroud",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Tom and Pipkin's companions on Halloween night. He arrives wrapped as a mummy, one of the traditional figures represented among the boys' costumes.",
+            "id": "ralph-bengstrum",
+            "name": "Ralph Bengstrum",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of Tom and Pipkin's costumed group who comes dressed as a gargoyle. He joins the other boys in looking for the friend they expected to lead their night.",
+            "id": "wally-babb",
+            "name": "Wally Babb",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the costumed boys who gathers for trick-or-treating and joins Tom in wondering why Pipkin has not appeared.",
+            "id": "hackles-nibley",
+            "name": "Hackles Nibley",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Pipkin's friends and a member of the group assembled for Halloween. He shares the boys' excitement about the night and their concern when Pipkin is absent.",
+            "id": "fred-fryer",
+            "name": "Fred Fryer",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A boy in Tom and Pipkin's Halloween group, introduced among the friends who gather with Tom in costume.",
+            "id": "george-smith",
+            "name": "George Smith",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the costumed friends who gather with Tom on Halloween and expect Pipkin to join them.",
+            "id": "henry-hank",
+            "name": "Henry-Hank",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-halloween-tree-dramatized"
+      },
+      "recaps": {
+        "ending": "At the end of the historical journey, the boys find Pipkin still beyond their reach and Moundshroud demands a price for returning him. Money and possessions have no value against a human life, so each friend offers one year from the far end of his own lifespan. Their combined gift is accepted, and Pipkin is released. The boys return from their extraordinary flight to their own town on Halloween night. Pipkin has survived the medical danger that kept him from joining them, and when they telephone his house they hear his voice and know that he will recover. Moundshroud and the vast tree are gone from their immediate world, but the travelers now understand their costumes as descendants of many cultures' attempts to face winter, death, spirits, and remembrance. Their rescue succeeds because they accept a real future cost together, turning their knowledge of mortality into an act of friendship rather than fear.",
+        "in_short": "On Halloween night, Tom Skelton and his costumed friends discover that their admired companion Pipkin is missing and in grave danger. Their search brings them to a dark house and an enormous tree hung with jack-o'-lanterns, where the enigmatic Mr. Moundshroud offers pursuit rather than simple answers. Traveling by a supernatural kite, the boys follow glimpses of Pipkin through centuries of human responses to death: Egyptian burial rites, classical beliefs, Celtic fires, persecution associated with witchcraft, cathedral gargoyles, and Mexico's Day of the Dead. Each stage explains something represented by their modern costumes while Pipkin remains just beyond rescue. Finally, Moundshroud asks what they will give for their friend. Each boy surrenders one year from the end of his life, and the combined offering buys Pipkin's return. Back in their own time, they learn that he has survived his illness and will recover, carrying home a deeper understanding of Halloween and of the loyalty that saved him.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "On Halloween night, Tom Skelton and a group of friends assemble in costumes, ready to follow Joe Pipkin, the boldest among them. Pipkin does not appear. The boys go to his house and realize that he is ill and that something more serious than a missed evening may be happening. Their search continues to a forbidding house at the edge of town, beside which stands an enormous tree loaded with carved pumpkins. Its owner, the gaunt and elusive Mr. Moundshroud, knows of Pipkin and suggests that the boy has been carried beyond the reach of an ordinary rescue. When Pipkin appears only to be swept away again, Tom and the others accept Moundshroud's challenge to follow. Their familiar night of trick-or-treating becomes a journey tied both to Pipkin's life and to the forgotten meanings of their costumes.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Moundshroud fashions a supernatural means of travel and leads the boys out of their town and backward through history. They pursue Pipkin while Moundshroud insists that understanding Halloween requires understanding how people have faced death. In ancient Egypt, the group encounters a civilization organized around preserving the dead and preparing them for another existence. Ralph's mummy costume no longer seems like an arbitrary disguise but a distant remnant of those beliefs. The journey then carries them toward the classical world, where festivals, gods, and ideas about the dead change form without disappearing. Pipkin remains visible in fleeting moments, drawn onward by the force that has taken him. The boys learn that this is not a tour they can leave at will: every delay risks losing their friend, while every destination reveals another layer beneath their own October customs.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The pursuit crosses Europe and the changing boundary between older seasonal rites and later religious practice. Moundshroud shows the boys autumn fires and ceremonies associated with the end of harvest, when the living imagined the border with the dead growing thin. He connects these traditions to later fears of witches and to the persecutions that turned such figures into symbols of terror. The travelers also confront the great stone forms of medieval churches, where gargoyles and other grotesque faces place reminders of danger and death on sacred buildings. The boys' costumes repeatedly prove to be compressed history: images inherited without the wearers knowing the experiences that shaped them. They continue to see Pipkin ahead of them but cannot hold him, and the accumulating lessons make clear that rescuing him will require more than bravery or speed.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Moundshroud's journey reaches Mexico, where the dead are remembered through a celebration that combines grief, affection, food, music, and bright imagery rather than treating death only as a hidden terror. The boys finally understand that the many forms behind Halloween are different ways of living with mortality. When the pursuit ends, Pipkin is still held beyond them and Moundshroud asks what his life is worth. The boys first think in terms of things they own, but the only meaningful payment is part of their own lives. Tom and his companions each offer one year from the end of his lifespan. Their combined gift is enough, and Pipkin is returned. The travelers arrive home and telephone him; he has survived the illness and medical crisis that prevented him from joining them and is expected to recover. Their Halloween ends with their friend alive and with the knowledge that their costumes, fears, and rescue all belong to humanity's long effort to face death without surrendering love.",
+            "through": {
+              "chapter": 20
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-halloween-tree-dramatized"
+      }
+    },
     "the-handmaids-tale": {
       "characters": {
         "characters": [
