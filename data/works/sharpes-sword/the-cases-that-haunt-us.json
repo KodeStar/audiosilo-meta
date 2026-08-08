@@ -5111,6 +5111,74 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "esh-alladi-2021": {
+          "abridged": false,
+          "added_at": "2026-08-08",
+          "asin": [
+            {
+              "asin": "0241537568",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81T5hOgZorL.jpg",
+          "id": "esh-alladi-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "esh-alladi"
+          ],
+          "publisher": "Penguin Classics",
+          "release_date": "2021-10-07",
+          "runtime_min": 300,
+          "sources": [
+            {
+              "imported_at": "2026-08-08",
+              "ref": "0241537568",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-castle-of-otranto"
+        },
+        "neville-jason-2006": {
+          "abridged": true,
+          "added_at": "2026-08-08",
+          "asin": [
+            {
+              "asin": "B002V1NZTO",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4557891,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4654022,
+              "start_ms": 4557891,
+              "title": "Chapter 2"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/818POxcfNDL.jpg",
+          "id": "neville-jason-2006",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "neville-jason"
+          ],
+          "publisher": "Naxos AudioBooks",
+          "release_date": "2006-01-01",
+          "runtime_min": 153,
+          "sources": [
+            {
+              "imported_at": "2026-08-08",
+              "ref": "B002V1NZTO",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-castle-of-otranto"
+        },
         "neville-jason-2014": {
           "abridged": false,
           "added_at": "2026-08-07",
@@ -5161,6 +5229,61 @@
             {
               "imported_at": "2026-08-07",
               "ref": "B00M3CE4XM",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-castle-of-otranto"
+        },
+        "tony-jay-2006": {
+          "abridged": false,
+          "added_at": "2026-08-08",
+          "asin": [
+            {
+              "asin": "B002V1OI4K",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3128703,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2997557,
+              "start_ms": 3128703,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2970018,
+              "start_ms": 6126260,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2735450,
+              "start_ms": 9096278,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2502322,
+              "start_ms": 11831728,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51eJvUyH02L.jpg",
+          "id": "tony-jay-2006",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "tony-jay"
+          ],
+          "publisher": "Blackstone Audio, Inc.",
+          "release_date": "2006-05-09",
+          "runtime_min": 238,
+          "sources": [
+            {
+              "imported_at": "2026-08-08",
+              "ref": "B002V1OI4K",
               "type": "libex-import"
             }
           ],

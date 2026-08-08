@@ -11024,6 +11024,58 @@
         }
       ],
       "title": "Ulysses"
+    },
+    "ulysses-amazonclassics-edition": {
+      "added_at": "2026-08-08",
+      "authors": [
+        "james-joyce"
+      ],
+      "genres": [
+        "classics",
+        "literary-fiction"
+      ],
+      "id": "ulysses-amazonclassics-edition",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "aidan-kelly-2020": {
+          "abridged": false,
+          "added_at": "2026-08-08",
+          "asin": [
+            {
+              "asin": "1799744787",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/711ZnLkD7SL.jpg",
+          "id": "aidan-kelly-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "aidan-kelly",
+            "alana-kerr-collins"
+          ],
+          "publisher": "Brilliance Audio",
+          "release_date": "2020-01-21",
+          "runtime_min": 1870,
+          "sources": [
+            {
+              "imported_at": "2026-08-08",
+              "ref": "1799744787",
+              "type": "libex-import"
+            }
+          ],
+          "work": "ulysses-amazonclassics-edition"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-08",
+          "ref": "1799744787",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Ulysses (AmazonClassics Edition)"
     }
   }
 }
