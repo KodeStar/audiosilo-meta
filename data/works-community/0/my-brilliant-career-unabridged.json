@@ -1530,6 +1530,171 @@
         "work": "nana"
       }
     },
+    "national-velvet": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A fourteen-year-old girl in the horse-loving Brown household at Sewels. Velvet is dreamy in conversation but intensely observant around animals, and she believes that a difficult piebald horse has the makings of a great racer. Her ambition grows from caring for him to imagining him in the Grand National.",
+            "id": "velvet-brown",
+            "name": "Velvet Brown",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A wandering young man who comes to the Brown home carrying a connection to Mrs. Brown's past. He knows horses and racing, takes work with the family, and recognizes that Velvet's unlikely dream deserves practical help even when he doubts it can succeed.",
+            "id": "mi-taylor",
+            "name": "Mi Taylor",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Piebald",
+              "Pie"
+            ],
+            "description": "A powerful, unruly piebald gelding whose speed and jumping ability capture Velvet's imagination. After he comes into her possession, he becomes the center of her work and of her extraordinary racing plan.",
+            "id": "the-piebald",
+            "name": "The Piebald",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Araminty Brown"
+            ],
+            "description": "Velvet's formidable mother, a large, composed woman who runs the crowded family without fuss. Long before the story she was a celebrated swimmer, an achievement she seldom discusses. She understands the discipline behind Velvet's improbable ambition and gives support without sentimentality.",
+            "id": "mrs-brown",
+            "name": "Mrs. Brown",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Velvet's father, a butcher whose practical habits contrast with the passions of his children. He is protective of his household and skeptical of schemes that threaten its order, but he is also capable of letting Velvet pursue work she takes seriously.",
+            "id": "mr-brown",
+            "name": "Mr. Brown",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The eldest Brown daughter, absorbed in her appearance, courtship, and the social world beyond the family. Her concerns provide a domestic counterpoint to Velvet's consuming interest in horses.",
+            "id": "edwina-brown",
+            "name": "Edwina Brown",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Mally"
+            ],
+            "description": "One of Velvet's older sisters, lively and sharply aware of the shifting alliances among the Brown children. She shares in the noisy family life surrounding Velvet's horses and racing plans.",
+            "id": "malvolia-brown",
+            "name": "Malvolia Brown",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "One of the Brown sisters, part of the close, argumentative household in which Velvet's private convictions must become a family undertaking before they can become real.",
+            "id": "meredith-brown",
+            "name": "Meredith Brown",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Velvet's much younger brother, energetic, literal-minded, and fascinated by whatever is happening around him. His interruptions and questions are a constant part of life in the Brown home.",
+            "id": "donald-brown",
+            "name": "Donald Brown",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "One of Velvet's horses before the Piebald becomes her overwhelming concern. Sir Pericles is part of the stable through which Velvet has learned patience, responsibility, and close attention to horses as individuals.",
+            "id": "sir-pericles",
+            "name": "Sir Pericles",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "national-velvet"
+      },
+      "recaps": {
+        "ending": "Velvet rides the Piebald in the Grand National after Mi finds that his own racing history leaves him unable to take the mount. Horse and rider survive the immense field and the punishing jumps and finish first, but Velvet collapses after the race. Officials discover that the winning jockey is an underage girl who entered under false credentials, so she is disqualified and the official victory passes elsewhere. Public amazement turns Velvet into a national celebrity, bringing journalists and commercial offers to Sewels. The Browns refuse to let the achievement be converted into a spectacle or a career manufactured by outsiders. Velvet returns home with the Piebald, physically exhausted but secure in the knowledge that together they accomplished what she believed they could. Mi, having helped make the attempt possible and confronted the fear left by his own past, prepares to move on from the household.",
+        "in_short": "Fourteen-year-old Velvet Brown lives in a bustling Sussex family and cares more deeply about horses than about ordinary expectations for girls. When she acquires a difficult piebald gelding, she becomes convinced that he can win the Grand National. Mi Taylor, a young wanderer with racing knowledge and a hidden connection to Mrs. Brown's athletic past, helps her train the horse. Mrs. Brown quietly backs the plan, while the family pools labor and money to make an entry possible. Mi expects to ride but cannot overcome the memory of an earlier racing disaster, so Velvet cuts her hair, assumes a male identity, and takes his place. She and the Piebald cross the finish first, but she collapses and is exposed as an underage girl, causing their disqualification. The resulting fame brings lucrative offers, which Velvet and her family reject. She returns to ordinary life with the horse, valuing the achievement itself over an official title or public celebrity.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In the village of Sewels, fourteen-year-old Velvet Brown lives with her butcher father, her strong and self-contained mother, three sisters, and young brother Donald. The household is crowded with competing interests, but Velvet's attention belongs to horses. She studies them closely, rides whenever she can, and treats their temperaments as seriously as those of people. Mi Taylor, a penniless young traveler with a working knowledge of horses, arrives carrying the name of Mrs. Brown, whose youthful feat as a long-distance swimmer is seldom mentioned in the family. He is taken on as hired help. Velvet is meanwhile captivated by a wild piebald horse that has shown exceptional power over fences. When chance gives her ownership of him, her certainty that he is extraordinary begins to draw Mi into her plans.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Velvet names and tends the Piebald while Mi helps turn her instinctive faith into a training routine. The horse is difficult, but his speed, endurance, and jumping ability convince them that her first extravagant idea may have substance: she wants to enter him in the Grand National. The proposal is far beyond the normal reach of the Brown family and conflicts with the restrictions placed on Velvet by age, sex, and racing rules. Mi understands those obstacles better than she does, yet he also sees what the horse can do. Mrs. Brown does not dismiss the ambition. Remembering the lonely discipline behind her own swimming success, she makes clear that a serious attempt must be supported by serious labor. The family begins to organize itself around Velvet's purpose, even as the ordinary disputes and romances of the Brown children continue.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Training the Piebald becomes a demanding household enterprise. Velvet rides, observes, and works with him, while Mi manages the technical preparation and tries to anticipate the realities of a professional steeplechase. Mrs. Brown contributes money associated with her earlier swimming achievement, giving the project the material chance that enthusiasm alone could not provide. An entry in the National is secured and the practical problem of presenting the horse and a qualified rider must be solved without drawing attention to Velvet's age. Mi is the natural choice to ride, and he prepares alongside the horse. Yet his competence conceals an old wound from his racing days: he once pushed a mount into a fatal fall, and returning to a major race forces him to face a fear that skill has not erased.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Brown party takes the Piebald to Aintree, where the scale and professional machinery of the Grand National make their private undertaking suddenly public and dangerous. Velvet is supposed to remain behind the scenes while Mi rides. As the start approaches, however, Mi accepts that he cannot safely master the fear attached to his previous accident. Rather than abandon the horse's chance, Velvet assumes the jockey's place. With cropped hair and borrowed credentials, she passes as a boy long enough to reach the course. She and the Piebald join a field of experienced riders and horses for a race whose great fences and relentless pace test everything they have built in training.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Velvet and the Piebald survive the Grand National's falls and obstacles and reach the finish ahead of the field. The effort leaves Velvet unable to sustain her disguise: she collapses, and examination reveals that the apparent jockey is a fourteen-year-old girl without a valid right to ride. Horse and rider are therefore disqualified despite crossing first. News of the feat spreads rapidly, turning Velvet into a national sensation and bringing reporters, film proposals, and offers to profit from her story. The Browns protect her from becoming a public commodity, and Velvet herself has no desire to replace her life with celebrity. What matters to her is that the Piebald proved capable of the race and that she accompanied him through it. She returns to Sewels and the family stable. Mi, whose knowledge helped her reach Aintree and whose refusal to ride made her own ride necessary, is ready to continue on his way after facing the burden of his racing past.",
+            "through": {
+              "chapter": 20
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "national-velvet"
+      }
+    },
     "native-son": {
       "characters": {
         "characters": [

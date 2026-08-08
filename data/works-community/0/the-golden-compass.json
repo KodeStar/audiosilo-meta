@@ -1069,6 +1069,101 @@
         "work": "the-good-the-bad-and-the-undead"
       }
     },
+    "the-grand-inquisitor": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The younger Karamazov brother, a novice attached to a monastery and the listener to Ivan's imagined religious tale. His compassionate faith makes him an especially important audience for Ivan's challenge to divine justice and human freedom.",
+            "id": "alyosha-karamazov",
+            "name": "Alyosha Karamazov",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Alyosha's intellectual older brother and the creator and narrator of the prose poem about Christ's return to Seville. He uses the encounter he imagines to test whether people can bear freedom when obedience, security, and authority offer easier comforts.",
+            "id": "ivan-karamazov",
+            "name": "Ivan Karamazov",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Christ",
+              "the Prisoner"
+            ],
+            "description": "Jesus, imagined by Ivan as returning silently to sixteenth-century Seville during the Inquisition. The people recognize him and respond to his acts of mercy, but church authorities arrest him. He answers the Inquisitor's long accusation without argument, finally responding with a kiss.",
+            "id": "jesus",
+            "name": "Jesus",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An aged cardinal who commands the Inquisition in Seville. He has Jesus arrested and privately argues that Christ burdened humanity with a freedom most people cannot endure. Claiming that the Church has corrected that work through miracle, mystery, authority, and managed obedience, he threatens to burn his prisoner before silently releasing him after receiving a kiss.",
+            "id": "grand-inquisitor",
+            "name": "The Grand Inquisitor",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A grieving woman in the Seville crowd who begs the returned Christ to restore her dead child. Her appeal leads to the girl's revival and helps make the crowd's recognition of the visitor unmistakable before the Inquisitor intervenes.",
+            "id": "childs-mother",
+            "name": "The Child's Mother",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young girl being carried for burial when her mother appeals to Christ. She rises at his command, an event witnessed by the people and by the approaching Grand Inquisitor.",
+            "id": "dead-child",
+            "name": "The Dead Child",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-grand-inquisitor"
+      },
+      "recaps": {
+        "ending": "The Inquisitor finishes his case by insisting that the institution he serves has accepted the burden of governing weak and frightened people, even if doing so requires deception and an alliance with worldly power. Jesus never disputes him. Instead, he kisses the old man. Shaken, the Inquisitor opens the cell and orders his prisoner to leave Seville and never return. Ivan says the kiss remains in the old man's heart without changing his doctrine. Alyosha then answers his brother's bleak poem by kissing Ivan, recognizing the gesture Ivan has just described. Ivan is pleased but remains committed to his rebellion against a moral order that permits innocent suffering, and the brothers part with Alyosha intending to remember the best in him.",
+        "in_short": "Ivan Karamazov tells his devout brother Alyosha a prose poem in which Jesus returns to Seville during the Inquisition. The people recognize him, but an aged cardinal has him arrested. In the prison cell, the Grand Inquisitor argues that Christ was wrong to reject the temptations of miracle, mystery, and authority, because most people value bread, certainty, and collective obedience more than freedom. He claims the Church has corrected Christ's teaching by taking control of human conscience and making happiness possible through submission. Jesus remains silent and answers only by kissing him. The shaken Inquisitor releases him but does not abandon his beliefs. Alyosha responds to Ivan's troubling tale by kissing his brother, echoing its final gesture of love without resolving Ivan's revolt against a world built on innocent suffering.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Ivan Karamazov shares an imagined prose poem with his religious brother Alyosha. In sixteenth-century Seville, while the Inquisition is burning heretics, Jesus returns among the people. They recognize him, gather around him, and witness acts of healing and the restoration of a dead child. The aged Grand Inquisitor sees what has happened, orders the visitor arrested, and comes alone to question him in prison. The cardinal identifies his silent prisoner and argues that Christ made a disastrous choice by refusing the temptations offered in the wilderness. In his view, humanity cannot bear genuine moral freedom: most people want food, certainty, spectacle, and an authority that removes responsibility from them. He says the Church has therefore reversed Christ's work, ruling through miracle, mystery, and authority while carrying the painful knowledge of its own deception. Jesus offers no defense and finally kisses the old man. Disturbed, the Inquisitor releases him and commands him never to return, though he retains his doctrine. Alyosha answers Ivan's story with a kiss of his own, expressing love for his brother without accepting the argument the poem embodies.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-grand-inquisitor"
+      }
+    },
     "the-grapes-of-wrath-dramatized": {
       "characters": {
         "characters": [
@@ -2163,6 +2258,197 @@
           }
         ],
         "work": "the-great-gatsby-dramatized"
+      }
+    },
+    "the-great-gatsby-original-1925-edition": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A young Midwesterner and Yale graduate who moves to West Egg in 1922 to work in the bond business. He rents a modest house between mansions and narrates what he observes, trying to balance his habit of withholding judgment with a growing awareness of the carelessness around him.",
+            "id": "nick-carraway",
+            "name": "Nick Carraway",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Nick's wealthy next-door neighbor in West Egg, known initially by reputation and by the enormous mansion where he lives. At the close of Nick's first evening in the East, Nick sees him alone outside, reaching across the bay toward a distant green light.",
+            "id": "jay-gatsby",
+            "name": "Jay Gatsby",
+            "reveal": {
+              "chapter": 1
+            }
+          },
+          {
+            "description": "Nick's cousin, now married to Tom Buchanan and living across the bay in East Egg. Charming, restless, and alert to the constraints of her privileged marriage, she masks dissatisfaction with playful conversation and carefully managed emotion.",
+            "id": "daisy-buchanan",
+            "name": "Daisy Buchanan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Daisy's immensely wealthy husband, a former college football star with an imposing physique and an aggressive manner. He expects his social position to protect his authority and openly promotes racist ideas. During Nick's first visit, an interrupted telephone call makes his infidelity evident.",
+            "id": "tom-buchanan",
+            "name": "Tom Buchanan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A competitive golfer and friend of Daisy's whom Nick meets at the Buchanans' house. Cool, self-contained, and socially observant, she becomes Nick's guide to the private tensions behind the family's polished surroundings.",
+            "id": "jordan-baker",
+            "name": "Jordan Baker",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "George Wilson's energetic and dissatisfied wife, who is conducting an affair with Tom Buchanan. She treats Tom as a route out of the bleak garage and cramped life she shares with George in the industrial wasteland between Long Island and New York.",
+            "id": "myrtle-wilson",
+            "name": "Myrtle Wilson",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The worn, struggling owner of a garage in the valley of ashes. He hopes to buy and resell Tom's car and does not recognize that Tom's visits are really for Myrtle, his wife.",
+            "id": "george-wilson",
+            "name": "George Wilson",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Myrtle Wilson's sister, who joins Myrtle, Tom, and Nick at their Manhattan apartment. She encourages the affair and confidently circulates a false explanation that existing spouses prevent Tom and Myrtle from marrying.",
+            "id": "catherine",
+            "name": "Catherine",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A bespectacled guest whom Nick finds examining the books in Gatsby's library. Surprised that the volumes are real rather than decorative imitations, he is one of the few partygoers who pauses to consider the construction behind his host's public image.",
+            "id": "owl-eyes",
+            "name": "Owl Eyes",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Meyer Wolfshiem"
+            ],
+            "description": "A gambler and underworld associate whom Gatsby introduces to Nick over lunch in Manhattan. Gatsby says Wolfsheim arranged the fixed 1919 World Series, presenting him as a powerful criminal connection rather than merely a social acquaintance.",
+            "id": "meyer-wolfsheim",
+            "name": "Meyer Wolfsheim",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A frequent guest who has settled so comfortably into Gatsby's mansion that other people call him the boarder. He is one of the many people drawn into Gatsby's hospitality without becoming a close friend.",
+            "id": "ewing-klipspringer",
+            "name": "Ewing Klipspringer",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Greek coffee-shop owner near Wilson's garage. After Myrtle's death he stays with the devastated George, listens to him, and tries unsuccessfully to keep him from acting while grief and suspicion distort his thinking.",
+            "id": "michaelis",
+            "name": "Michaelis",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Gatsby's elderly father, who comes from Minnesota after reading of his son's death. Grieving but proud, he preserves a childhood schedule that shows his son's early determination to remake himself and is awed by the scale of the life Gatsby built.",
+            "id": "henry-c-gatz",
+            "name": "Henry C. Gatz",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-great-gatsby-original-1925-edition"
+      },
+      "recaps": {
+        "ending": "George Wilson traces the yellow car that killed Myrtle to Gatsby's house, shoots Gatsby in his swimming pool, and then kills himself. Nick takes responsibility for the aftermath but cannot persuade Daisy, Tom, Gatsby's former guests, or his business associates to attend the funeral. Gatsby's father arrives and shares evidence of his son's lifelong drive for self-invention; Owl Eyes is among the very few mourners. Nick later meets Tom and learns that Tom identified Gatsby to George as the car's owner, while withholding Daisy's role as the driver. Tom and Daisy have already left without an address, protected by their wealth from the damage they helped cause. Disgusted with the East, Nick ends his relationship with Jordan and returns to the Midwest. Before leaving, he looks across the water from Gatsby's empty property and reflects on Gatsby's pursuit of Daisy and on the larger human habit of reaching toward an imagined future while being drawn backward by the past.",
+        "in_short": "In 1922, bond salesman Nick Carraway rents a house beside the mansion of Jay Gatsby, a mysterious millionaire famous for lavish parties. Gatsby has built his fortune and public identity around the hope of reclaiming Nick's cousin Daisy, whom he loved before the war and who married the wealthy Tom Buchanan. Nick arranges their reunion, but Gatsby's demand that Daisy erase her years with Tom turns the revived romance into a confrontation. Daisy cannot deny loving Tom, and while driving Gatsby's car she strikes and kills Tom's mistress, Myrtle Wilson. Gatsby protects Daisy by accepting the blame, but she withdraws into her marriage. Tom directs Myrtle's grieving husband George toward Gatsby; George kills Gatsby and himself. Almost none of Gatsby's guests attend his funeral. Nick recognizes the destructiveness beneath Tom and Daisy's privilege, breaks with Jordan Baker, and returns west, leaving Gatsby's dream as both a remarkable act of hope and a doomed attempt to recover the past.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In the spring of 1922, Nick Carraway leaves the Midwest to sell bonds in New York and rents a small house in West Egg, the less socially established of Long Island's wealthy communities. Across the bay in East Egg live his cousin Daisy, her powerful husband Tom Buchanan, and their young daughter. At dinner Nick meets the golfer Jordan Baker and sees signs that Daisy's charming manner conceals unhappiness. A telephone call exposes Tom's ongoing affair, while Tom's bullying conversation and racist arguments reveal his need to dominate others. Back at home, Nick sees his neighbor Jay Gatsby for the first time: a solitary figure outside an immense mansion, stretching his arms toward a green light at the end of Daisy's dock across the water.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tom takes Nick through the valley of ashes, an industrial wasteland watched over by a faded optician's billboard. At George Wilson's garage they collect George's wife Myrtle, Tom's mistress, and go to an apartment Tom keeps in Manhattan. The afternoon becomes a drunken gathering with Myrtle's sister Catherine and the McKees. Myrtle imitates the manners of wealth and speaks as though Tom will rescue her from George. When she repeatedly invokes Daisy during an argument, Tom strikes her and breaks her nose. Later, Nick attends one of the enormous parties at Gatsby's house. Guests arrive without invitations and spread contradictory rumors about their host. Nick unknowingly speaks with Gatsby, who proves courteous and restrained amid the disorder. Gatsby then holds a private conversation with Jordan, leaving her astonished but unwilling to tell Nick what was said.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Gatsby drives Nick to lunch and offers a polished but doubtful account of inherited wealth, Oxford, wartime honors, and extensive travel. In Manhattan he introduces Meyer Wolfsheim, a gambler reputed to have fixed the 1919 World Series, suggesting that Gatsby's fortune has connections he does not explain. Jordan then tells Nick the history behind Gatsby's secrecy. Gatsby and Daisy fell in love in Louisville before he went to war, but Daisy eventually married Tom. On the eve of that wedding she received a letter that nearly made her cancel it, then resumed the marriage. Gatsby deliberately bought his house across the bay and gives parties in the hope that Daisy will appear. He has asked Jordan to persuade Nick to invite Daisy to tea, allowing Gatsby to meet her again without initially announcing that he will be there.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Nick invites Daisy to his cottage without telling her that Gatsby will attend. Gatsby arrives in heavy rain, intensely nervous, and the first minutes of the reunion are painfully awkward. Nick leaves the pair alone; when he returns, their embarrassment has given way to intimacy and Gatsby's long anticipation seems briefly fulfilled. He takes Daisy and Nick through his mansion, displaying rooms, possessions, and imported clothes as evidence of the life he has constructed. Daisy weeps over the shirts, and Gatsby watches her responses as if they can confirm the dream he formed during their separation. From his house the green light on Daisy's dock is now close and ordinary. Nick senses that achieving the meeting has changed the symbol's power, even while Gatsby and Daisy become absorbed in one another.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Gatsby's original name was James Gatz, and as a poor young man he invented a new identity before attaching himself to the wealthy Dan Cody. He later tells Tom that Daisy loves him, and Tom begins investigating his background and business. On the hottest day of the summer, Nick, Jordan, Gatsby, Daisy, and Tom go to a suite at the Plaza Hotel. Gatsby demands that Daisy say she never loved Tom. She cannot do so, and Tom attacks Gatsby's claim to respectability by exposing his involvement in illegal alcohol sales and other suspect dealings with Wolfsheim. Daisy retreats from Gatsby toward the security of her marriage. Driving back in Gatsby's yellow car, Daisy strikes and kills Myrtle, who runs into the road. Gatsby tells Nick that Daisy was driving but says he will take responsibility. He waits outside the Buchanan house to protect her, while Nick sees Tom and Daisy privately drawing together.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Gatsby tells Nick how he met Daisy as a young officer and let her believe he belonged to her wealthy world. He still waits for her call, refusing to abandon the future he built around her. George Wilson, unhinged by Myrtle's death and convinced her lover owned the yellow car, traces it to Gatsby. He shoots Gatsby in his swimming pool and then kills himself. Nick manages the aftermath but finds that the crowds who used Gatsby's hospitality will not attend his funeral. Daisy and Tom leave without an address, Wolfsheim refuses involvement, and even Klipspringer calls only about belongings. Gatsby's father comes from Minnesota, proud of his son's youthful plans for self-improvement; Owl Eyes is one of the few other mourners. Nick later learns that Tom told George the car belonged to Gatsby. Concluding that Tom and Daisy use wealth to escape the damage they cause, Nick ends his relationship with Jordan and returns west. Gatsby's empty mansion leaves him reflecting on the enduring pursuit of a future that the past keeps out of reach.",
+            "through": {
+              "chapter": 9
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-great-gatsby-original-1925-edition"
       }
     },
     "the-great-gatsby-this-side-of-paradise": {
