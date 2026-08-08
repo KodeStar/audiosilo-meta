@@ -3850,6 +3850,158 @@
         "work": "summer-knight"
       }
     },
+    "summer-of-fear": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A teenage girl whose comfortable family life is disrupted when an orphaned cousin comes to stay. Rachel is initially ashamed of her instinctive dislike of Julia because everyone else sees a bereaved, appealing newcomer. As accidents and changes accumulate around her, Rachel must decide whether her jealousy explains what she sees or whether the danger is real.",
+            "id": "rachel-bryant",
+            "name": "Rachel Bryant",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Rachel's cousin, brought into the Bryant home after the sudden deaths of her parents. Julia arrives from a rural background appearing shy, plain, and dependent, but she quickly learns how to win the family's sympathy and attention. Rachel alone feels immediate unease around her.",
+            "id": "julia",
+            "name": "Julia",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Rachel's boyfriend at the beginning of the summer. Mike is familiar with the Bryant family and initially treats Julia as Rachel's unfortunate cousin, but he is soon drawn toward the newcomer in ways that deepen Rachel's isolation.",
+            "id": "mike",
+            "name": "Mike",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Rachel's close friend and one of the people whose opinion normally helps anchor her. Carolyn's response to Julia becomes an important measure of how thoroughly the newcomer is reshaping Rachel's social world.",
+            "id": "carolyn",
+            "name": "Carolyn",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Rachel's older brother. Peter is part of the lively family life Julia enters and, like the rest of the household, is inclined to interpret Rachel's hostility as jealousy rather than a warning.",
+            "id": "peter-bryant",
+            "name": "Peter Bryant",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Rachel's younger brother, whose uncomplicated acceptance of Julia contributes to the sense that Rachel is the only member of the household who remains wary of their cousin.",
+            "id": "bobby-bryant",
+            "name": "Bobby Bryant",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Dad"
+            ],
+            "description": "Rachel's father, who accepts responsibility for his orphaned niece and wants her to feel fully included. His generosity makes him reluctant to credit Rachel's suspicions without evidence.",
+            "id": "mr-bryant",
+            "name": "Mr. Bryant",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mom"
+            ],
+            "description": "Rachel's mother, who responds to Julia's loss with sympathy and practical care. She expects Rachel to help the new arrival adjust, leaving Rachel unable to express her unease without seeming selfish.",
+            "id": "mrs-bryant",
+            "name": "Mrs. Bryant",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An older neighbor with knowledge of folklore and occult practices. Professor Jarvis is willing to take Rachel's observations seriously and helps her consider whether the pattern around Julia could have a supernatural cause.",
+            "id": "professor-jarvis",
+            "name": "Professor Jarvis",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "summer-of-fear"
+      },
+      "recaps": {
+        "ending": "Rachel finds enough evidence of Julia's witchcraft to understand that the apparent accidents, illnesses, and changes in affection were parts of a deliberate effort to displace her. Julia's hold over the family weakens once Rachel can identify the methods being used instead of reacting only with fear and jealousy. In the final confrontation, Julia tries to remove Rachel permanently and secure the life she has been taking over, but the violence she has set in motion turns against her. Julia dies, while Rachel and the rest of the Bryant family survive. The immediate supernatural threat is over, and Rachel is vindicated, but the summer cannot be reduced to an ordinary rivalry: her family has to absorb that their sympathy was exploited and that Rachel faced danger while they dismissed her. Rachel emerges with a harder trust in her own perception and an awareness that evil can present itself through vulnerability and charm rather than open menace.",
+        "in_short": "When orphaned cousin Julia joins the Bryant household for the summer, Rachel Bryant feels an unease no one else shares. Julia soon changes from an awkward newcomer into the focus of family and social attention, drawing away Rachel's boyfriend Mike as Rachel suffers bizarre illnesses, accidents, and losses. Because Rachel has obvious reasons to be jealous, her warnings sound cruel and self-serving. She investigates instead and, with guidance from Professor Jarvis, connects Julia to witchcraft and to objects used to direct harm. Julia has been deliberately weakening Rachel's relationships and position in the family so she can take over her life. Once Rachel understands the pattern, she resists Julia's influence and confronts her. Julia's final attempt to eliminate Rachel fails and rebounds into Julia's own death. Rachel survives, her family finally recognizes the danger, and the summer ends with her instincts vindicated but her former sense of safety permanently changed.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Rachel Bryant is looking forward to an ordinary summer when news arrives that her aunt and uncle have died and their daughter Julia will live with the Bryants. The family welcomes the orphaned girl and expects Rachel to share her room, friends, and routines. Julia first appears shy and unsophisticated, making Rachel's immediate dislike seem especially unfair. Everyone interprets the tension as a natural adjustment between cousins. Rachel nevertheless senses that Julia's helplessness is partly performed and notices how carefully she studies the household. As Julia begins attracting sympathy from Rachel's parents and brothers, Rachel has no concrete accusation she can make. Her unease is therefore turned back on her as evidence that she is spoiled or jealous.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Julia adapts quickly, becoming more polished and socially confident while moving into places Rachel assumed were securely hers. Mike pays increasing attention to Julia, and other people also respond to her with an enthusiasm that leaves Rachel isolated. At the same time, Rachel is struck by sudden physical and emotional setbacks that keep her from events or make her appear unstable. Strange reactions from animals and unexplained objects add to her fear, but each event can be dismissed on its own. Julia remains composed and sympathetic in front of the family, while Rachel's anger makes her look like the aggressor. The more urgently Rachel protests, the easier it becomes for others to regard her as the source of the problem.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rachel stops relying on her family to validate her suspicions and begins looking for a pattern. She connects Julia's private behavior and possessions with the illnesses, accidents, and changes occurring around the household. Professor Jarvis, an older neighbor familiar with occult traditions, listens more seriously than Rachel's relatives have. His knowledge gives her a framework for understanding how personal objects and handmade figures might be used to focus hostile intent. This possibility is frightening but also clarifying: Rachel may not be imagining the threat, and Julia's growing control over Mike and the Bryant family may be something more than charm. Investigation carries its own risk, because Julia has reason to act if she realizes Rachel is gathering proof.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The evidence persuades Rachel that Julia is practicing witchcraft and has deliberately targeted her health, relationships, and credibility. Julia's goal is not simply to be included in the Bryant family but to displace Rachel within it. By presenting herself as wounded and loving, she has made Rachel's truthful reactions look selfish. Professor Jarvis's guidance helps Rachel identify the means by which the attacks are directed and consider how their effects might be stopped. Julia responds to resistance by escalating the danger. Rachel must protect herself while dealing with relatives and friends who remain susceptible to Julia's version of events. The conflict moves from a struggle over belief toward an immediate threat to Rachel's life.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rachel uses what she has learned to break Julia's concealed advantage and confront the purpose behind the summer's apparently unrelated events. Julia has exploited grief, sympathy, and attraction while using supernatural means to weaken the one person who distrusted her. In the final crisis she attempts to eliminate Rachel and complete her takeover of Rachel's place in the household. The destructive force Julia has directed outward instead turns against her, and Julia dies. Rachel and her family survive, and the pattern that seemed like jealousy or coincidence can no longer be denied. Although the immediate danger ends, the experience changes Rachel's relationship to her own judgment: she was correct when no one believed her, and she had to move past their disbelief to save herself.",
+            "through": {
+              "chapter": 20
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "summer-of-fear"
+      }
+    },
     "sunreach-skyward-flight": {
       "characters": {
         "characters": [

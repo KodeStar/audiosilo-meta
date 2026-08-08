@@ -4767,6 +4767,159 @@
         "work": "the-mysterious-affair-at-styles-with-ebook"
       }
     },
+    "the-mysterious-stranger": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A boy growing up in the isolated Austrian village of Eseldorf in 1590 and the narrator of the strange events that follow. He has absorbed his community's religious fears and assumptions, but his meetings with a supernatural visitor force him to question human judgment, cruelty, and reality itself.",
+            "id": "theodor-fischer",
+            "name": "Theodor Fischer",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A beautiful, charismatic youth who introduces himself to Theodor and his friends as an angel and a nephew of the biblical Satan. During their first meeting he reads thoughts, produces food, and creates living miniature people. His pleasant manner is paired with an inhuman detachment from their suffering.",
+            "id": "satan",
+            "name": "Satan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Theodor's two closest boyhood friends in Eseldorf. He accompanies Theodor to the secluded place where they encounter the mysterious young stranger.",
+            "id": "seppi-wohlmeyer",
+            "name": "Seppi Wohlmeyer",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The third member of Theodor's circle of friends. Good-hearted and impulsive, he shares the other boys' fascination with the newcomer who calls himself Satan.",
+            "id": "nikolaus-bauman",
+            "name": "Nikolaus Bauman",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A kindly, impoverished local priest who has lost his position and lives with his niece Marget. Theodor wants the stranger's powers to relieve the household's hardship.",
+            "id": "father-peter",
+            "name": "Father Peter",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Father Peter's niece, who shares his poverty and cares for him. She hopes to marry Wilhelm Meidling, though her uncle's disgrace has made the household's future uncertain.",
+            "id": "marget",
+            "name": "Marget",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young man devoted to Marget. He remains loyal to her despite Father Peter's disgrace and the household's poverty.",
+            "id": "wilhelm-meidling",
+            "name": "Wilhelm Meidling",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A self-important astrologer with influence in Eseldorf. He treats any challenge to his reputation as a threat and uses the village's credulity to turn suspicion against Father Peter.",
+            "id": "the-astrologer",
+            "name": "The Astrologer",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An elderly woman living at the edge of the community whom the villagers fear as a witch. Their readiness to condemn her exposes the violence hidden beneath Eseldorf's claims to piety.",
+            "id": "ursula",
+            "name": "Ursula",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-mysterious-stranger"
+      },
+      "recaps": {
+        "ending": "After repeatedly showing Theodor how easily human lives can be redirected, Satan leaves him with a final explanation more radical than any earlier lesson. Theodor's village, history, religion, friends, and even the apparently supernatural visitor are not independent realities. They are forms within a solitary dream. Satan tells him that no God, universe, heaven, hell, or human race exists outside his imagining, and that Theodor himself is alone, an unbounded thought moving through eternity. The conclusion therefore dissolves the distinction between the cruel world Satan has judged and the miracles he used to expose it. Father Peter's case, Nikolaus's fate, and the village's persecutions become episodes in the same unstable appearance. Theodor is left without the familiar moral and religious structure of Eseldorf and with the task of recognizing the dreamlike nature of everything he believed solid.",
+        "in_short": "In the Austrian village of Eseldorf in 1590, Theodor Fischer and two friends meet a beautiful youth named Satan, who says he is an angel. He performs effortless miracles but regards human suffering with a detachment that horrifies the boys. Theodor asks him to aid the disgraced Father Peter and his niece Marget, yet the resulting money brings an accusation of theft and imprisonment. Satan's interventions repeatedly demonstrate his claim that humanity lacks a reliable moral sense: villagers persecute vulnerable neighbors, and even merciful alterations of fate produce disturbing outcomes. He changes lives, shows Theodor distant scenes, and treats individual existence as material that can be reshaped. At the end he overturns the entire framework of the story, telling Theodor that the world, its God and devils, and all other people are only a dream, and that Theodor alone exists as a wandering thought.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In 1590, Theodor Fischer recalls life in Eseldorf, an Austrian village governed by custom, religious authority, and fear of supernatural evil. While exploring outside the village with Seppi Wohlmeyer and Nikolaus Bauman, he meets a graceful young stranger who calls himself Satan and explains that he is an angelic relative of the better-known fallen angel. Satan wins the boys' confidence through charm and wonders. He produces food and fashions a tiny living society, then destroys its inhabitants without remorse when they irritate him. The boys are appalled, but Satan explains that angels stand outside humanity's ideas of right and wrong. The encounter leaves Theodor fascinated by a being whose generosity, power, and apparent friendliness are inseparable from complete emotional distance.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Theodor continues meeting Satan and becomes both his admirer and his uneasy student. He tells the angel about Father Peter, a kindly priest living in poverty with his niece Marget after falling out of favor. Satan arranges for money to appear in the household, apparently rescuing them from immediate want, though unexplained good fortune is dangerous in a community governed by rumor. Around them, the villagers' fear of witchcraft makes isolated people such as old Ursula vulnerable to accusation. Satan insists that these reactions are expressions of humanity's defective moral sense rather than exceptions to it, while Theodor struggles to reconcile that judgment with the teachings on which he was raised.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Father Peter is accused of stealing the money and is imprisoned, leaving Marget exposed to poverty, rumor, and the possible loss of her future with Wilhelm Meidling. Theodor asks Satan to help, but the angel's methods never resemble ordinary justice. He can influence minds, reveal private motives, and shift a person's prospects with no visible effort. His demonstrations show that tiny changes produce entirely different lives, many of them still marked by suffering. He also exposes the villagers' eagerness to accept authority and join in punishment. Theodor increasingly understands that Satan's aid may improve an immediate situation while undermining every comforting belief about providence and moral order.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Satan broadens Theodor's view beyond Eseldorf, showing him human violence and misery across distances and eras. The angel argues that people praise themselves for a moral sense that chiefly enables them to distinguish right from wrong and then choose cruelty. In the village, fear and public opinion remain more powerful than evidence. When Theodor seeks kinder outcomes for people he loves, Satan demonstrates that a future cannot simply be repaired at one point: altering a single link replaces the entire chain that follows. Nikolaus's fate becomes the most painful example. A change intended to spare him from one foreseen death leads instead to an earlier death, which Satan describes as preferable only because it prevents years of greater suffering. Theodor cannot share the angel's impersonal calculation.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Theodor has now seen miracles, distant horrors, persecution, and the reshaping of individual destinies. Satan continues to treat human institutions as products of fear, vanity, and collective suggestion. Father Peter's troubles reach a resolution only through manipulation that separates outward happiness from ordinary sanity and truth. To the villagers, events can be accepted as justice once authority and appearances align, even when the route to that result is irrational. For Theodor, Satan's lessons have removed confidence not only in his neighbors but also in stable cause, moral desert, and the evidence of his own senses. The world he knew has become a stage whose people and outcomes can be changed at the angel's whim.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In their final exchange, Satan carries his argument beyond criticism of human conduct. He tells Theodor that the apparent world has no existence of its own: Eseldorf, history, religion, every other person, and Satan himself are images within a dream. There is no external God or devil, no heaven or hell, and no human race whose moral failures require explanation. Theodor alone exists, not as the village boy he imagines himself to be but as a solitary thought moving through eternity. All the earlier miracles and altered destinies have prepared him to distrust the permanence of appearances, but the conclusion erases the reality of the entire framework in which those events seemed to matter. Satan vanishes, leaving Theodor with the assertion that he must eventually recognize his limitless isolation and continue dreaming other worlds.",
+            "through": {
+              "chapter": 11
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-mysterious-stranger"
+      }
+    },
     "the-mystery-of-the-blue-train": {
       "characters": {
         "characters": [

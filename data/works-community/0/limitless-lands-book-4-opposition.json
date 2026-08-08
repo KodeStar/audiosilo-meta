@@ -2802,6 +2802,171 @@
         "work": "living-dead-in-dallas"
       }
     },
+    "london-fields": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Sam"
+            ],
+            "description": "An American writer living in London while terminally ill and unable to produce the book he believes should complete his career. He exchanges apartments with the successful novelist Mark Asprey and begins recording the lives of three people he meets nearby, treating their approaching collision as the material he has been missing.",
+            "id": "samson-young",
+            "name": "Samson Young",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A thirty-four-year-old Londoner who says she has known since childhood that she will be murdered on her thirty-fifth birthday. She also believes she has identified the place and the likely men involved. Controlled, observant, and expert at presenting a different self to each person, she becomes the center of Samson's unwritten novel.",
+            "id": "nicola-six",
+            "name": "Nicola Six",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A petty criminal, habitual cheat, and obsessive darts player who lives through schemes, pornography, and constant small betrayals. He dreams of reaching a major televised darts final while his debts and impulsiveness keep him tied to harsher men.",
+            "id": "keith-talent",
+            "name": "Keith Talent",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wealthy, courteous married man whose sheltered life has left him emotionally unprepared for Nicola. He is devoted to ideals of tenderness and refinement and quickly imagines that his meeting with her offers an escape from his troubled household.",
+            "id": "guy-clinch",
+            "name": "Guy Clinch",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The successful English novelist whose London flat Samson occupies through an apartment exchange. Although absent for much of the immediate action, his reputation, possessions, and example of effortless literary success continually shadow Samson's attempt to write.",
+            "id": "mark-asprey",
+            "name": "Mark Asprey",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Guy's wife and the mother of Marmaduke. Exhausted by a child whose violence dominates the household, she and Guy have become trapped in separate forms of helplessness.",
+            "id": "hope-clinch",
+            "name": "Hope Clinch",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The young son of Guy and Hope Clinch. Exceptionally aggressive and difficult to control, he turns family life into a succession of crises and embodies the disorder Guy hopes to escape.",
+            "id": "marmaduke-clinch",
+            "name": "Marmaduke Clinch",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Keith's wife, who bears the practical and emotional costs of his lies, absences, and criminal ambitions. She cares for their daughter while recognizing far more of Keith's conduct than he admits.",
+            "id": "kath-talent",
+            "name": "Kath Talent",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The young daughter of Keith and Kath Talent. Her vulnerability and need for care stand in contrast to Keith's self-absorption and the adult deceptions surrounding the family.",
+            "id": "kim-talent",
+            "name": "Kim Talent",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A criminal associate and rival in Keith's world of betting, debt, and manipulated contests. He understands Keith's weaknesses and is prepared to profit from them.",
+            "id": "chick-purchase",
+            "name": "Chick Purchase",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "london-fields"
+      },
+      "recaps": {
+        "ending": "Nicola's thirty-fifth birthday arrives with the death she has predicted, but the identity of her killer defeats the pattern Samson and the reader have been encouraged to expect. Keith and Guy have each been manipulated toward the appointed night, yet Samson has never been merely the detached author of their movements. His illness, envy, dependence on Nicola's story, and growing identification with the murderer have made him another participant. Samson meets Nicola and kills her, completing the event he has been writing toward and revealing that the narrator who claimed to discover the plot also supplied its ending. Nicola has knowingly shaped his approach as she shaped Keith's and Guy's. The manuscript itself remains entangled with Mark Asprey, whose literary success and appetite for other people's material have shadowed Samson throughout. The close leaves authorship morally and textually unstable: Samson's final work records a murder he commits, while the book's ownership and framing can still be appropriated by the healthier, more successful writer.",
+        "in_short": "Terminally ill American writer Samson Young takes over novelist Mark Asprey's London flat and finds the subject for his final book in Nicola Six. Nicola says she knows she will be murdered on her thirty-fifth birthday and has identified two possible killers: Keith Talent, a criminal and darts obsessive, and Guy Clinch, a wealthy family man. She constructs a separate persona for each, offering Keith sexual excitement and Guy an ideal of endangered purity, while Samson secretly turns their movements into fiction. Keith pursues a televised darts breakthrough amid debts and betrayals; Guy neglects his collapsing household for his fantasy of rescuing Nicola. Samson's health and narrative distance deteriorate as the predicted date nears. The expected contest between Keith and Guy proves a diversion. Samson himself meets and kills Nicola, fulfilling the story he thought he was merely observing. His manuscript, like the lives inside it, remains vulnerable to appropriation by Mark Asprey.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Samson Young, an American writer who is seriously ill, comes to London through an apartment exchange with the celebrated novelist Mark Asprey. Unable to invent a final book, Samson becomes interested in people around the Black Cross pub. Nicola Six tells him she has long foreseen her own murder on her thirty-fifth birthday and believes the killer has entered her life. Two contrasting men attract her attention. Keith Talent is a violent, dishonest petty criminal whose chief ambition is success at darts. Guy Clinch is wealthy, married, and painfully courteous, seeking relief from a household overwhelmed by his aggressive small son. Samson begins treating Nicola, Keith, and Guy as a ready-made story, even though Nicola understands that she is being written about and may be directing the material herself.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Nicola develops different identities for her two possible murderers. With Keith she enters the language of sex, appetite, money, and danger that he understands, encouraging his fantasies while learning how easily he can be steered. With Guy she presents herself as vulnerable and sexually untouched, allowing him to imagine a courtly rescue and a purer life beyond his wife Hope and their uncontrollable son Marmaduke. Neither man recognizes the other version of Nicola. Samson observes their meetings, gathers private information, and turns the triangle into chapters. His supposed objectivity is already compromised: he needs Nicola's death to give his stalled career a conclusion, and she reads what he writes while continuing to arrange the action.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Keith's attempt to become a serious darts contender is entangled with cheating, pornography, unpaid debts, and the influence of men such as Chick Purchase. At home, Kath and their daughter Kim absorb the consequences of his selfishness. Nicola alternately rewards and frustrates him, tying his desire for her to the future he imagines on television. Guy, meanwhile, invests more deeply in the fiction she has built for him. He gives her money and attention and increasingly treats his own family as an obstacle to an idealized love. Nicola maintains control by supplying each man with the signs he expects. Samson's illness worsens, but his manuscript grows; the more completely he converts the people around him into characters, the less convincing his claim to be only a witness becomes.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The approaching darts contest gives Keith's schemes a deadline parallel to Nicola's predicted birthday. He continues to lie to Kath, gamble, and rely on arrangements he does not control, while Nicola encourages both his confidence and his jealousy. Guy's attachment becomes an elaborate private romance founded on false assumptions about Nicola. His money allows the fantasy to continue, but it cannot make him understand her motives. Samson now possesses the outline he wanted: a murder victim, two candidates, a fixed date, and a city darkened by social and environmental unease. Yet authorship is shared uneasily between him and Nicola. She supplies scenes, withholds information, and appears to know how he will shape them, while he becomes emotionally and physically dependent on completing her design.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "As Nicola's birthday nears, the separate plots begin to fail. Keith's criminal obligations and darts ambitions expose how little command he has over his own future. Guy has risked his marriage and moral self-image for a woman he knows only through a performance tailored to him. Samson can no longer keep his failing body and private resentments outside the book. His envy of Mark Asprey, his need for a masterpiece, and his fascination with Nicola bind him to the murder story as more than its recorder. Nicola continues moving all three men toward the appointed night. The question is no longer simply whether Keith or Guy will kill her, but whether the roles of author, victim, and murderer have been assigned truthfully at all.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Nicola's thirty-fifth birthday brings the murder she has predicted. Keith and Guy have each seemed capable of reaching the appointed place under the pressure of her deceptions, but neither completes the pattern Samson has presented. Samson himself has crossed from observer into participant. Dying, jealous, and dependent on Nicola's story for his final achievement, he meets her and kills her, supplying the ending he claimed to be waiting to discover. Nicola has understood and cultivated this possibility, making the writer another of the men she directs toward her death. The revelation also recasts Samson's narrative: his apparent confession of limited knowledge has concealed his central agency. His completed manuscript cannot secure uncontested authorship or redemption. Mark Asprey, the successful absent novelist whose flat and possessions framed Samson's London stay, remains positioned to absorb and claim the material, extending the novel's pattern of exploitation from bodies and relationships to the story itself.",
+            "through": {
+              "chapter": 24
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "london-fields"
+      }
+    },
     "looking-for-alibrandi": {
       "characters": {
         "characters": [
