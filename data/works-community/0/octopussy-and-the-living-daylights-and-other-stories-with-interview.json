@@ -63,6 +63,280 @@
         "work": "octopussy-and-the-living-daylights-and-other-stories-with-interview"
       }
     },
+    "oedipus-rex": {
+      "characters": {
+        "characters": [
+          {
+            "description": "King of Thebes, admired for having saved the city from the Sphinx. When plague strikes, he commits himself publicly to finding the cause and protecting his people. He is decisive, intelligent, and accustomed to solving crises, but his confidence makes him quick to suspect opposition when an answer threatens his authority.",
+            "id": "oedipus",
+            "name": "Oedipus",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Jocasta's brother and a trusted Theban noble. Sent to consult Apollo's oracle at Delphi about the plague, he returns with the command that the unpunished murderer of the former king Laius must be found and expelled or killed.",
+            "id": "creon",
+            "name": "Creon",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The former king of Thebes and Jocasta's first husband, killed years before on a journey. The oracle's demand makes the unresolved circumstances of his death the center of Oedipus's investigation.",
+            "id": "laius",
+            "name": "Laius",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The collective voice of Theban elders. They pray for deliverance from the plague, respond to each stage of Oedipus's inquiry, and try to preserve order when accusations divide the royal household.",
+            "id": "chorus-of-theban-elders",
+            "name": "Chorus of Theban Elders",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A blind prophet respected in Thebes for his insight into divine matters. Oedipus summons him to identify Laius's killer. Tiresias initially refuses to speak, convinced that the knowledge will bring pain, and his reluctance rapidly puts him into conflict with the king.",
+            "id": "tiresias",
+            "name": "Tiresias",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Queen of Thebes, widow of Laius, sister of Creon, and wife of Oedipus. She enters to stop the quarrel between the two men. Practical and protective of her household, she doubts that prophetic messages reliably determine human events.",
+            "id": "jocasta",
+            "name": "Jocasta",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly visitor from Corinth who arrives with news about King Polybus, the man Oedipus regards as his father. Hoping to reassure Oedipus about an old prophecy, he reveals that he also knows something about Oedipus's infancy.",
+            "id": "corinthian-messenger",
+            "name": "Corinthian Messenger",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An old servant once attached to Laius's household and now living as a shepherd. He is brought for questioning because he survived the attack in which Laius died and may be able to settle the contradictions in Oedipus's inquiry.",
+            "id": "theban-shepherd",
+            "name": "Theban Shepherd",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "oedipus-rex"
+      },
+      "recaps": {
+        "ending": "The shepherd confirms that Oedipus was the infant son of Laius and Jocasta whom he had been ordered to abandon. Oedipus therefore fulfilled the prophecy he tried to escape: without knowing their identities, he killed his father at a crossroads and married his mother after saving Thebes. Jocasta hangs herself when the truth becomes unavoidable. Oedipus finds her body, uses pins from her clothing to blind himself, and returns before the Thebans asking to be driven from the city. Creon assumes authority but refuses to make an immediate decision about exile until the gods' wishes are known. Oedipus asks Creon to care for Antigone and Ismene and is allowed a final meeting with them before being led away. The city has identified the source of its pollution, but the play closes before Oedipus's permanent destination is settled.",
+        "in_short": "A plague afflicts Thebes, and King Oedipus vows to find the murderer of the former king Laius after an oracle identifies that unpunished crime as the cause. The prophet Tiresias accuses Oedipus himself, which the king treats as a conspiracy. Jocasta tries to discredit prophecy, but her account of Laius's death at a crossroads reminds Oedipus of a man he once killed. A Corinthian messenger then reveals that Oedipus was adopted, and Laius's surviving shepherd confirms that Oedipus was the child of Laius and Jocasta, abandoned because an oracle said he would kill his father. Oedipus has unknowingly fulfilled that prophecy and married his mother. Jocasta hangs herself; Oedipus blinds himself and asks for exile. Creon takes control, postpones judgment until divine guidance is obtained, and agrees to care for Oedipus's daughters.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Thebes is devastated by plague, crop failure, and deaths in childbirth. Citizens led by a priest appeal to Oedipus, the king who previously saved the city from the Sphinx. Oedipus has already sent his brother-in-law Creon to Apollo's oracle at Delphi. Creon returns with the command that Thebes must punish or expel the person who killed Laius, the king before Oedipus. The old investigation failed because the city was occupied with the Sphinx, and the only reported survivor said that a band of robbers committed the murder. Oedipus promises to reopen the case both for the city's sake and for his own security as Laius's successor. He calls for witnesses and treats the search as a public duty.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Oedipus declares a curse on Laius's unknown killer and orders the Thebans to withhold shelter and worship from the guilty person. The Chorus recommends consulting Tiresias, the blind prophet. Tiresias arrives unwilling to disclose what he knows, but Oedipus interprets his silence as disloyalty and accuses him of helping with the murder. Provoked, Tiresias says that Oedipus is the polluting criminal he seeks and hints that the king does not understand his true parentage or his relationship to those closest to him. Oedipus rejects the accusation and concludes that Creon has recruited Tiresias in a plot to take the throne. Tiresias leaves after predicting that the murderer, believed to be a foreigner, will prove to be a native Theban whose apparent prosperity will collapse.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Creon denies plotting against Oedipus, arguing that his privileged position already gives him influence without the burdens of kingship. Their quarrel nearly leads Oedipus to punish him, but Jocasta and the Chorus intervene. Jocasta tries to calm Oedipus by describing an oracle that supposedly failed: Laius was told he would die by his son's hand, yet their infant was exposed to die and Laius was reportedly killed by strangers where three roads met. The location and details alarm Oedipus. He explains that he left Corinth after hearing a prophecy that he would kill his father and marry his mother, and that on his journey he killed an older man and his attendants at a crossroads. If that man was Laius, Oedipus may have cursed and condemned himself. He sends for the surviving shepherd, holding to the hope that the report of multiple attackers will clear him.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A messenger from Corinth announces that Polybus, whom Oedipus believes to be his father, has died naturally and that Corinth wants Oedipus as king. This seems to disprove the prediction of patricide, although Oedipus still fears marrying his living mother Merope. Trying to remove that fear, the messenger reveals that Polybus and Merope were not Oedipus's biological parents. Years ago he received the infant Oedipus from a Theban shepherd and gave him to the Corinthian couple. Jocasta recognizes the implication and urgently begs Oedipus to stop asking questions, but he mistakes her fear for shame about his possible low birth. The summoned Theban shepherd finally admits that the child came from Laius's household and was the son of Laius and Jocasta. Ordered to abandon the infant because of the prophecy, the shepherd instead passed him to the Corinthian messenger. Oedipus now understands his identity and how the prophecy has been fulfilled.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jocasta hangs herself inside the palace. Oedipus discovers her body, removes pins from her clothing, and blinds himself with them, declaring that he can no longer bear to see the people and places connected with his actions. He appears before the Chorus bloodied and broken, accepting that he killed Laius and married his own mother even though he acted without knowing their identities. Creon takes control of Thebes. Oedipus asks to be expelled to the mountain where he was meant to die as an infant and asks that his daughters Antigone and Ismene be protected, since the disgrace surrounding their family will shape their lives. Creon allows him to embrace the girls but will not decide his exile until an oracle clarifies what should be done. Oedipus is led back inside, stripped of the certainty and power with which he began the investigation.",
+            "through": {
+              "chapter": 5
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "oedipus-rex"
+      }
+    },
+    "oedipus-the-king": {
+      "characters": {
+        "characters": [
+          {
+            "description": "King of Thebes, admired for having saved the city from the Sphinx. When plague strikes, he commits himself publicly to finding the cause and protecting his people. He is decisive, intelligent, and accustomed to solving crises, but his confidence makes him quick to suspect opposition when an answer threatens his authority.",
+            "id": "oedipus",
+            "name": "Oedipus",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Jocasta's brother and a trusted Theban noble. Sent to consult Apollo's oracle at Delphi about the plague, he returns with the command that the unpunished murderer of the former king Laius must be found and expelled or killed.",
+            "id": "creon",
+            "name": "Creon",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The former king of Thebes and Jocasta's first husband, killed years before on a journey. The oracle's demand makes the unresolved circumstances of his death the center of Oedipus's investigation.",
+            "id": "laius",
+            "name": "Laius",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The collective voice of Theban elders. They pray for deliverance from the plague, respond to each stage of Oedipus's inquiry, and try to preserve order when accusations divide the royal household.",
+            "id": "chorus-of-theban-elders",
+            "name": "Chorus of Theban Elders",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A blind prophet respected in Thebes for his insight into divine matters. Oedipus summons him to identify Laius's killer. Tiresias initially refuses to speak, convinced that the knowledge will bring pain, and his reluctance rapidly puts him into conflict with the king.",
+            "id": "tiresias",
+            "name": "Tiresias",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Queen of Thebes, widow of Laius, sister of Creon, and wife of Oedipus. She enters to stop the quarrel between the two men. Practical and protective of her household, she doubts that prophetic messages reliably determine human events.",
+            "id": "jocasta",
+            "name": "Jocasta",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly visitor from Corinth who arrives with news about King Polybus, the man Oedipus regards as his father. Hoping to reassure Oedipus about an old prophecy, he reveals that he also knows something about Oedipus's infancy.",
+            "id": "corinthian-messenger",
+            "name": "Corinthian Messenger",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An old servant once attached to Laius's household and now living as a shepherd. He is brought for questioning because he survived the attack in which Laius died and may be able to settle the contradictions in Oedipus's inquiry.",
+            "id": "theban-shepherd",
+            "name": "Theban Shepherd",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "oedipus-the-king"
+      },
+      "recaps": {
+        "ending": "The shepherd confirms that Oedipus was the infant son of Laius and Jocasta whom he had been ordered to abandon. Oedipus therefore fulfilled the prophecy he tried to escape: without knowing their identities, he killed his father at a crossroads and married his mother after saving Thebes. Jocasta hangs herself when the truth becomes unavoidable. Oedipus finds her body, uses pins from her clothing to blind himself, and returns before the Thebans asking to be driven from the city. Creon assumes authority but refuses to make an immediate decision about exile until the gods' wishes are known. Oedipus asks Creon to care for Antigone and Ismene and is allowed a final meeting with them before being led away. The city has identified the source of its pollution, but the play closes before Oedipus's permanent destination is settled.",
+        "in_short": "A plague afflicts Thebes, and King Oedipus vows to find the murderer of the former king Laius after an oracle identifies that unpunished crime as the cause. The prophet Tiresias accuses Oedipus himself, which the king treats as a conspiracy. Jocasta tries to discredit prophecy, but her account of Laius's death at a crossroads reminds Oedipus of a man he once killed. A Corinthian messenger then reveals that Oedipus was adopted, and Laius's surviving shepherd confirms that Oedipus was the child of Laius and Jocasta, abandoned because an oracle said he would kill his father. Oedipus has unknowingly fulfilled that prophecy and married his mother. Jocasta hangs herself; Oedipus blinds himself and asks for exile. Creon takes control, postpones judgment until divine guidance is obtained, and agrees to care for Oedipus's daughters.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Thebes is devastated by plague, crop failure, and deaths in childbirth. Citizens led by a priest appeal to Oedipus, the king who previously saved the city from the Sphinx. Oedipus has already sent his brother-in-law Creon to Apollo's oracle at Delphi. Creon returns with the command that Thebes must punish or expel the person who killed Laius, the king before Oedipus. The old investigation failed because the city was occupied with the Sphinx, and the only reported survivor said that a band of robbers committed the murder. Oedipus promises to reopen the case both for the city's sake and for his own security as Laius's successor. He calls for witnesses and treats the search as a public duty.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Oedipus declares a curse on Laius's unknown killer and orders the Thebans to withhold shelter and worship from the guilty person. The Chorus recommends consulting Tiresias, the blind prophet. Tiresias arrives unwilling to disclose what he knows, but Oedipus interprets his silence as disloyalty and accuses him of helping with the murder. Provoked, Tiresias says that Oedipus is the polluting criminal he seeks and hints that the king does not understand his true parentage or his relationship to those closest to him. Oedipus rejects the accusation and concludes that Creon has recruited Tiresias in a plot to take the throne. Tiresias leaves after predicting that the murderer, believed to be a foreigner, will prove to be a native Theban whose apparent prosperity will collapse.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Creon denies plotting against Oedipus, arguing that his privileged position already gives him influence without the burdens of kingship. Their quarrel nearly leads Oedipus to punish him, but Jocasta and the Chorus intervene. Jocasta tries to calm Oedipus by describing an oracle that supposedly failed: Laius was told he would die by his son's hand, yet their infant was exposed to die and Laius was reportedly killed by strangers where three roads met. The location and details alarm Oedipus. He explains that he left Corinth after hearing a prophecy that he would kill his father and marry his mother, and that on his journey he killed an older man and his attendants at a crossroads. If that man was Laius, Oedipus may have cursed and condemned himself. He sends for the surviving shepherd, holding to the hope that the report of multiple attackers will clear him.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A messenger from Corinth announces that Polybus, whom Oedipus believes to be his father, has died naturally and that Corinth wants Oedipus as king. This seems to disprove the prediction of patricide, although Oedipus still fears marrying his living mother Merope. Trying to remove that fear, the messenger reveals that Polybus and Merope were not Oedipus's biological parents. Years ago he received the infant Oedipus from a Theban shepherd and gave him to the Corinthian couple. Jocasta recognizes the implication and urgently begs Oedipus to stop asking questions, but he mistakes her fear for shame about his possible low birth. The summoned Theban shepherd finally admits that the child came from Laius's household and was the son of Laius and Jocasta. Ordered to abandon the infant because of the prophecy, the shepherd instead passed him to the Corinthian messenger. Oedipus now understands his identity and how the prophecy has been fulfilled.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jocasta hangs herself inside the palace. Oedipus discovers her body, removes pins from her clothing, and blinds himself with them, declaring that he can no longer bear to see the people and places connected with his actions. He appears before the Chorus bloodied and broken, accepting that he killed Laius and married his own mother even though he acted without knowing their identities. Creon takes control of Thebes. Oedipus asks to be expelled to the mountain where he was meant to die as an infant and asks that his daughters Antigone and Ismene be protected, since the disgrace surrounding their family will shape their lives. Creon allows him to embrace the girls but will not decide his exile until an oracle clarifies what should be done. Oedipus is led back inside, stripped of the certainty and power with which he began the investigation.",
+            "through": {
+              "chapter": 5
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "oedipus-the-king"
+      }
+    },
     "of-mice-and-men": {
       "characters": {
         "characters": [
