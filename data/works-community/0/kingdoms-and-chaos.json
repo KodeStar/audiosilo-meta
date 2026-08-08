@@ -2978,6 +2978,235 @@
         "work": "lastrock"
       }
     },
+    "le-morte-darthur-the-death-of-arthur": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The hidden son of Uther Pendragon and Igraine, raised as Sir Ector's foster child without knowing his royal birth. As a youth he draws the sword fixed in a stone, the sign that identifies England's rightful king. His claim is challenged by established rulers, so he begins his reign needing both military success and Merlin's counsel to unite the realm.",
+            "id": "king-arthur",
+            "name": "King Arthur",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "King of England before Arthur. His desire for Igraine, then the wife of the Duke of Tintagel, leads him to accept Merlin's magical assistance and a bargain concerning the child who will result.",
+            "id": "uther-pendragon",
+            "name": "Uther Pendragon",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The wife of the Duke of Tintagel when Uther becomes determined to possess her. Deceived by Uther's magically assumed likeness of her husband, she later becomes Uther's queen and Arthur's mother.",
+            "id": "igraine",
+            "name": "Igraine",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A prophet and magician who advises Uther and then Arthur. He arranges Arthur's secret fostering, explains the sign of the sword, and guides the young king through dangers that strength alone cannot resolve. His knowledge of future events is extensive but does not always enable him to prevent them.",
+            "id": "merlin",
+            "name": "Merlin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The infant born to Queen Morgause after Arthur unknowingly sleeps with his own half-sister. Merlin warns that this child is bound up with the destruction of Arthur's realm, making Mordred a threat before he can act for himself.",
+            "id": "mordred",
+            "name": "Mordred",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A formidable knight from Northumberland who alone succeeds in drawing a sword from a visiting damsel's scabbard. Proud, impulsive, and fiercely loyal to Arthur, he begins a chain of adventures shadowed by the warning that the sword will bring suffering to its bearer.",
+            "id": "balin",
+            "name": "Sir Balin",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Arthur's nephew and one of the young knights tested by quests surrounding the king's wedding. He is brave and devoted to his family, but his early adventures show that knightly violence can have consequences which courtesy and reputation do not erase.",
+            "id": "gawain",
+            "name": "Sir Gawain",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The daughter of King Leodegrance, chosen by Arthur as his queen. Her father sends the Round Table as part of the marriage settlement. At Camelot she becomes the central lady of Arthur's court and an important judge of knightly conduct.",
+            "id": "guinevere",
+            "name": "Queen Guinevere",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Arthur's half-sister, wife of King Urien, and a woman trained in magic. She conspires with Sir Accolon to replace Arthur's true sword and scabbard with counterfeits, intending that Accolon defeat him and that Urien can then be removed as well.",
+            "id": "morgan-le-fay",
+            "name": "Morgan le Fay",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A knight whose skill, courage, and courtesy make him the outstanding champion of Arthur's court. He undertakes adventures in disguise, frees prisoners held by oppressive knights, and repeatedly defends Queen Guinevere's honor. His devotion to her is already stronger than ordinary service to a queen.",
+            "id": "lancelot",
+            "name": "Sir Lancelot",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Beaumains"
+            ],
+            "description": "A young man who arrives at court without declaring his lineage and asks to be fed for a year before making a second request. Sir Kay mockingly assigns him kitchen work and calls him Beaumains. He accepts the humiliation patiently while concealing that he is Gawain's brother and a capable fighter.",
+            "id": "gareth",
+            "name": "Sir Gareth",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A Cornish prince and the nephew of King Mark. An exceptional fighter and musician, he enters Ireland under an assumed name after being wounded in combat and is healed there. His loyalty to Mark is complicated by the king's suspicion and by Tristram's bond with La Beale Isolde.",
+            "id": "tristram",
+            "name": "Sir Tristram",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Isolde the Fair"
+            ],
+            "description": "An Irish princess skilled in healing, called La Beale Isolde. She tends the wounded Tristram before fully understanding his identity. Although promised to King Mark, she and Tristram become bound to one another during the voyage to Cornwall.",
+            "id": "isolde",
+            "name": "La Beale Isolde",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The son of Lancelot and Elaine of Corbenic, raised apart from his father and brought to Camelot when the Grail quest is about to begin. His purity allows him to occupy the Siege Perilous, the place at the Round Table that has remained empty for the knight destined to achieve the Grail.",
+            "id": "galahad",
+            "name": "Sir Galahad",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A son of King Pellinore and one of the knights committed to the quest for the Holy Grail. Earnest but inexperienced in spiritual matters, he must learn that success in this quest depends on resisting temptation and understanding signs, not merely on prowess in combat.",
+            "id": "percival",
+            "name": "Sir Percival",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Lancelot's cousin and one of the three knights who advance furthest in the Grail quest. His trials force him to choose between immediate human loyalties and the demands of faith, testing whether his intentions are as disciplined as his conduct.",
+            "id": "bors",
+            "name": "Sir Bors",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "le-morte-darthur-the-death-of-arthur"
+      },
+      "recaps": {
+        "ending": "Mordred's attempted seizure of the kingdom draws Arthur home from his war with Lancelot. A last truce fails, and the battle destroys almost both armies. Arthur kills Mordred but receives a mortal wound. He orders Bedivere to return Excalibur to the lake; after Bedivere obeys, a mysterious barge bearing Morgan le Fay and other queens carries Arthur away toward Avalon, leaving uncertain whether he has died or may return. Constantine succeeds him. Guinevere enters a convent at Amesbury and refuses to renew her relationship with Lancelot. Lancelot adopts a religious life with several surviving knights, later conducts Guinevere's burial beside Arthur, and dies after years of penance. Bedivere also remains in religious service. The Round Table is therefore not restored: its fellowship has been broken by divided loyalties, private vengeance, and civil war, while its surviving members turn away from worldly knighthood.",
+        "in_short": "Uther Pendragon fathers Arthur through Merlin's magic, and the secretly fostered boy becomes king after drawing the sword from the stone. Arthur unites the realm, marries Guinevere, and gathers the Round Table, whose knights undertake adventures that mix courage with destructive pride. Lancelot becomes its greatest champion and Guinevere's lover; Tristram and Isolde follow a similarly doomed path. The Grail quest exposes the fellowship's moral failures, though Galahad, Percival, and Bors reach its goal. Afterward, Agravain and Mordred reveal Lancelot and Guinevere's adultery. Lancelot rescues the condemned queen but accidentally kills Gawain's brothers, producing a war between former allies. Mordred exploits Arthur's absence to seize power. Arthur returns, kills Mordred in a final battle, and is mortally wounded before being taken toward Avalon. Guinevere becomes a nun, Lancelot becomes a penitent religious, and the survivors disperse, leaving the Round Table and Arthur's kingdom ended.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Uther Pendragon desires Igraine, the wife of the Duke of Tintagel, and Merlin gives him the duke's appearance so he can enter her castle. Arthur is conceived through this deception and secretly fostered by Sir Ector as the price of Merlin's help. After Uther's death, the young Arthur draws a sword from a stone and is recognized as king, though rival rulers resist his claim. With Merlin's advice he survives their wars, receives Excalibur from the Lady of the Lake, and begins gathering loyal knights. Arthur unknowingly fathers Mordred with his half-sister Morgause, and Merlin warns that the child will one day help destroy the realm. In a separate cycle, Sir Balin draws a perilous sword, kills the Lady of the Lake, and continues through a series of violent adventures. At King Pellam's castle he strikes the Dolorous Stroke, wounding the king and laying the surrounding land waste. Balin and his brother Balan later meet in concealing armor, fight without recognizing one another, and die after discovering their kinship.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Arthur consolidates his kingship and marries Guinevere, whose father gives him the Round Table. Gawain, Tor, and Pellinore undertake quests that reveal both the promise and the dangers of Arthur's chivalric order, and the knights swear to avoid treachery and protect those who seek aid. Morgan le Fay attempts to have Accolon kill Arthur with the true Excalibur while Arthur carries a false one. The scheme fails, but Morgan escapes and throws Excalibur's protective scabbard into a lake. Arthur and his allies defeat a coalition of five kings and suppress further challenges at home. When the Roman emperor Lucius demands tribute, Arthur carries the war abroad, defeats the Roman forces, and returns after establishing his power over the territories he has conquered. Camelot and the Round Table now stand at the center of a successful kingdom, although family rivalries and earlier prophecies remain unresolved.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sir Lancelot establishes himself as the outstanding knight of the Round Table through a succession of rescues and combats. He frees captives, defeats Sir Tarquin, repeatedly protects Queen Guinevere, and resists attempts by enchantresses to control him. His achievements strengthen Arthur's court, while his particular devotion to Guinevere grows increasingly visible. Gareth, one of Gawain's brothers, arrives anonymously and accepts a year of kitchen service under the mocking name Beaumains. When Lynette asks for a champion to save her sister Lyonesse, Gareth claims the adventure. Lynette initially scorns his apparent low rank, but he defeats a series of colored knights and overcomes the Red Knight besieging Lyonesse. His identity is revealed, his courtesy survives the tests placed on him, and he is reconciled with the knights he defeated. Gareth and Lyonesse marry, adding another celebrated knight to Arthur's fellowship.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The narrative turns to Sir Tristram, nephew of the suspicious King Mark of Cornwall. Tristram becomes a renowned knight after fighting for Cornwall and being healed in Ireland by Isolde. Charged with escorting Isolde to marry Mark, he drinks a love potion with her, binding them in a relationship that continues after the marriage and repeatedly brings exile, disguise, jealousy, and danger. Tristram's rivalries with Palomides and other knights eventually connect his adventures to the Round Table, where his prowess approaches Lancelot's. Mark repeatedly plots against Tristram, and the lovers' temporary escapes cannot remove the king's hostility; Mark finally kills Tristram treacherously, and Isolde dies in grief. Meanwhile, Lancelot and Guinevere's relationship is no longer merely courtly devotion. Elaine of Corbenic, aided by enchantment and disguise, conceives Lancelot's son Galahad. Lancelot's divided loyalties, Guinevere's jealousy, and periods of madness or separation reveal how unstable the private foundations of Arthur's public fellowship have become.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Galahad arrives at Camelot, takes the long-empty Siege Perilous, and draws a sword intended for the knight destined to achieve the Holy Grail. When the Grail appears veiled before the Round Table, the knights vow to seek it, scattering the fellowship across spiritual trials they cannot solve by combat alone. Gawain's violent habits leave him unable to advance. Lancelot confesses his sins and receives a partial vision, but his adultery with Guinevere prevents him from reaching the quest's highest goal. Percival and Bors survive temptations through repentance and fidelity, while Galahad remains the quest's purest knight. The three reach the Grail and travel to Sarras. Galahad receives a complete vision and dies after asking to leave mortal life; Percival later dies as a hermit. Bors returns alone to Camelot and reports what happened. The quest is achieved, but it removes the best knights, exposes the shortcomings of many others, and leaves the Round Table diminished rather than renewed.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After the Grail quest, Lancelot and Guinevere resume their relationship. Agravain and Mordred force the matter into the open by trapping Lancelot in the queen's chamber. Lancelot escapes after killing Agravain and other accusers, but Guinevere is condemned to burn. His rescue saves her and begins open civil conflict; during it he unknowingly kills Gareth and Gaheris, who had refused to support the execution. Gawain's grief turns him into Lancelot's relentless enemy and compels Arthur to wage war against Lancelot in France. Although Lancelot repeatedly spares Gawain, their feud prevents a lasting settlement. Mordred, left to govern Britain, falsely announces Arthur's death, claims the crown, and attempts to make Guinevere his queen. She shuts herself in the Tower of London rather than submit. Arthur abandons the continental war and returns home. In the fighting at Dover, Gawain is mortally wounded; before dying he acknowledges that his vengeance helped cause the disaster and writes to Lancelot asking him to aid Arthur against Mordred.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Arthur and Mordred agree to negotiate, each warning his army to attack only if a sword is drawn. When a knight draws his weapon to kill an adder, both sides mistake the action for treachery. The resulting battle destroys nearly all the remaining forces. Arthur drives a spear through Mordred, killing him, but Mordred gives Arthur a mortal wound. Arthur orders Bedivere to throw Excalibur into the lake. Bedivere twice conceals that he has not obeyed, then finally returns the sword and sees an arm receive it. A barge carrying Morgan le Fay and other queens bears Arthur toward Avalon, and his ultimate fate remains uncertain. Constantine becomes king. Guinevere enters a convent at Amesbury and refuses Lancelot's request that they resume life together. Lancelot and surviving companions adopt lives of prayer and penance; he later buries Guinevere beside Arthur and eventually dies. Bedivere also remains in religious service. The fellowship, its romances, and its political order end together, with no restoration of the Round Table.",
+            "through": {
+              "chapter": 21
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "le-morte-darthur-the-death-of-arthur"
+      }
+    },
     "legacies": {
       "characters": {
         "characters": [
