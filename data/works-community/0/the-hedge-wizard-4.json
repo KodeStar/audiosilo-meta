@@ -2082,6 +2082,190 @@
         "work": "the-hero-of-ages"
       }
     },
+    "the-historian": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An unnamed young woman who reconstructs her family's connection to Dracula from memories, letters, and scholarly records. At sixteen she is observant, widely traveled, and accustomed to the absences created by her diplomat father's work, but she knows little about his private history.",
+            "id": "the-narrator",
+            "name": "The narrator",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The narrator's loving but reserved father, a scholar who later entered diplomatic and philanthropic work. Paul has educated his daughter through travel, yet his reaction to an old book marked with a dragon reveals a history he has deliberately kept from her.",
+            "id": "paul",
+            "name": "Paul",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Vlad Țepeș",
+              "Dracula"
+            ],
+            "description": "The fifteenth-century Wallachian prince whose violent rule contributed to later legends of Dracula. The documents Paul studies raise the possibility that Vlad survived death as a vampire and now takes an active interest in scholars who investigate him.",
+            "id": "vlad-dracula",
+            "name": "Vlad Dracula",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Paul's distinguished graduate adviser, an expert in the history of the Mediterranean world. Rossi's usual skepticism was shaken years earlier when a mysterious dragon-emblazoned book led him into research on Dracula; he records that investigation in letters addressed to whoever inherits the danger.",
+            "id": "bartholomew-rossi",
+            "name": "Bartholomew Rossi",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A brilliant, severe graduate student who challenges Paul during the search for the missing Rossi. Helen has an independent reason to study the professor's past and refuses to let academic courtesy or personal risk keep her from the investigation.",
+            "id": "helen-rossi",
+            "name": "Helen Rossi",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A learned Turkish scholar Paul and Helen meet in Istanbul. Turgut possesses a dragon book like theirs and combines historical expertise with knowledge of a quiet fellowship that has long guarded against Dracula's influence.",
+            "id": "turgut-bora",
+            "name": "Turgut Bora",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly keeper of Ottoman archival knowledge who helps connect the search to records of Sultan Mehmed's struggle with Vlad Dracula. His familiarity with obscure documents makes him an important guide through the historical trail.",
+            "id": "selim-aksoy",
+            "name": "Selim Aksoy",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Helen's mother, a Hungarian woman whose youthful relationship with Rossi left her to raise their daughter alone. Illness and old fear surround her memories, but her testimony gives Helen and Paul a personal link to Rossi's earlier travels in eastern Europe.",
+            "id": "helen-mother",
+            "name": "Helen's mother",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An eminent Bulgarian historian whose deep knowledge of medieval monasteries and surviving oral traditions provides a crucial bridge between fragmentary documents and a real location. Age and political surveillance have made him careful without extinguishing his intellectual courage.",
+            "id": "professor-stoichev",
+            "name": "Professor Stoichev",
+            "reveal": {
+              "chapter": 49
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Bulgarian official assigned to accompany foreign visitors. Ranov's watchfulness and loyalty to the state make private research difficult, and Paul and Helen cannot be sure where ordinary surveillance ends and a more dangerous influence begins.",
+            "id": "ranov",
+            "name": "Ranov",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young English scholar who helps the narrator after her father's disappearance. Barley brings knowledge of libraries and manuscripts to the search and becomes a trusted companion as the trail moves from Oxford toward continental Europe.",
+            "id": "barley",
+            "name": "Barley",
+            "reveal": {
+              "chapter": 60
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Oxford scholar and mentor who listens seriously to the narrator's evidence. Master James offers institutional knowledge, practical assistance, and a safer point of contact as she and Barley try to follow Paul's research.",
+            "id": "master-james",
+            "name": "Master James",
+            "reveal": {
+              "chapter": 61
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-historian"
+      },
+      "recaps": {
+        "ending": "The narrator and Barley follow the documentary trail to a remote French monastery, where they find Paul alive but held by Dracula. Dracula has gathered a vast historical library and wants a learned custodian who can order and extend it; generations of marked books have helped him identify possible servants. Helen, long absent and infected by Dracula, also reaches the monastery. She kills Dracula with a silver bullet, ending his immediate threat, but dies herself after the confrontation. Paul and his daughter are reunited and finally able to mourn Helen with knowledge of what happened to her. The narrator later becomes a historian and preserves the family's papers rather than publishing every detail. Years afterward, while conducting research in a library, she is given another old volume bearing the familiar dragon image. The delivery leaves open the disturbing possibility that Dracula's system of choosing and following historians survived the destruction of the body they confronted.",
+        "in_short": "An unnamed narrator discovers that her diplomat father Paul once searched for Dracula. As a graduate student, Paul received a blank book marked with a dragon; his adviser Bartholomew Rossi, who had received an identical book, then vanished. Paul joined Helen, Rossi's previously unknown daughter, and followed archival clues through Istanbul, Hungary, Romania, and Bulgaria. They found Rossi imprisoned in Dracula's hidden tomb and ended his vampiric suffering, but Dracula escaped. Paul and Helen married and had the narrator. Years later Dracula bit Helen, who disappeared while trying to keep her family safe. When Paul is abducted in the 1970s, his daughter and the English student Barley resume the hunt through the family's letters. They find Dracula's new library in a French monastery. Helen arrives and kills Dracula with a silver bullet, then dies. Paul is rescued, but a dragon-marked book delivered to the narrator years later suggests that the ancient threat, or its method of recruiting historians, may remain.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In the 1970s, a sixteen-year-old girl living with her diplomat father Paul finds an old book in his library. Its pages are largely blank except for a woodcut of a dragon and the name Dracula. Paul's alarm leads him to begin telling her about his graduate years. In the 1950s, he found the same kind of volume among his belongings and took it to his adviser, Professor Bartholomew Rossi. Rossi admitted that an identical book had appeared on his desk in 1930. His research connected it to Vlad Dracula, the fifteenth-century Wallachian ruler whose cruelty inspired vampire legends. Rossi left letters documenting his inquiries and his fear that the subject of them was not dead. Soon after sharing this history with Paul, Rossi disappeared from his office under violent and inexplicable circumstances, leaving Paul with the letters and the marked book.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Paul investigates Rossi's disappearance while reading the older scholar's account of journeys through archives and monasteries. At the university he meets Helen, a formidable graduate student who reveals that Rossi was her father, though he never knew she existed. Suspicious of Paul at first, she joins him when it becomes clear that both are following the same danger. Evidence around the library suggests that Dracula can use human or vampiric agents to watch scholars and silence inquiry. Rossi's letters show that the dragon books are not ordinary artifacts: they appear without explanation and seem to select their owners. Paul and Helen conclude that locating Dracula's burial place may also locate Rossi. Their developing partnership is founded on scholarship, shared personal stakes, and the realization that respectable institutions offer little protection against an enemy who has worked through archives for centuries.",
+            "through": {
+              "chapter": 26
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Paul and Helen travel to Istanbul, where Ottoman records may preserve knowledge lost elsewhere. They meet Turgut Bora, a Turkish scholar who owns another dragon book and knows of a brotherhood formed to resist Dracula. With help from archival experts, they connect old maps and documents to Sultan Mehmed's campaign against Vlad and to a concealed monastic site. Attacks on people involved in the research confirm that the opposition is active. The trail then leads toward Hungary and Helen's family. Her mother explains her past relationship with Rossi and the circumstances of Helen's birth, turning an academic search into a family history shaped by abandonment, secrecy, and fear. Paul and Helen grow closer while discovering that Rossi's earlier path through eastern Europe can be reconstructed only by combining records from different languages, political systems, and religious traditions.",
+            "through": {
+              "chapter": 40
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The search carries Paul and Helen through communist eastern Europe, where official surveillance compounds the supernatural danger. In Bulgaria they find Professor Stoichev, whose knowledge of monasteries and oral tradition helps interpret the final documents. With their movements watched by Ranov, they identify the monastery concealing Dracula's tomb and reach its hidden chambers. Rossi is there, kept alive in a transformed state by Dracula. He is able to recognize Paul and Helen, but rescue is no longer possible; they release him from vampirism by killing him. Dracula appears, confirming that the scholar's captivity served a deliberate purpose, but he escapes their attempt to destroy him. Paul and Helen leave with Rossi's fate resolved but the larger threat intact. Their shared ordeal becomes the foundation of a life together, even as they understand that Dracula now knows them personally.",
+            "through": {
+              "chapter": 54
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Paul and Helen marry and become the parents of the narrator. Their apparent escape does not last: Dracula finds Helen and infects her, and she disappears while trying to keep the danger away from her family. Paul spends years searching for her, disguising parts of the search as diplomatic travel and withholding the truth from his daughter. In the 1970s he vanishes as Rossi once did, leaving documents that compel his daughter to continue the investigation. She seeks help in Oxford and joins forces with the young scholar Barley. The letters now let her see her childhood journeys as stages in Paul's hunt for Helen. By comparing his recent route with the older evidence, she and Barley conclude that Dracula has shifted his center of operations westward and that a monastery in France may hold both the vampire's library and the missing Paul.",
+            "through": {
+              "chapter": 68
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The narrator and Barley reach the French monastery and find Paul held inside Dracula's immense secret library. Dracula explains that his distribution of dragon-marked books identifies historians capable of becoming useful custodians of the collection; Paul has been selected in the line that included Rossi. Before Dracula can complete his plan, Helen arrives. Though infected and separated from her family for years, she has continued hunting him. She kills Dracula with a silver bullet, but dies after the confrontation. Paul is freed and reunited with his daughter, and the family can finally account for Helen's absence and death. The narrator preserves the collected testimony and eventually becomes a historian herself. Much later, an old dragon-emblazoned volume is deliberately delivered to her in a library. Its appearance suggests that the mechanism behind the books, and possibly Dracula's influence, was not wholly ended at the monastery.",
+            "through": {
+              "chapter": 79
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-historian"
+      }
+    },
     "the-history-of-tom-jones-a-foundling": {
       "characters": {
         "characters": [

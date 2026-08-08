@@ -1464,6 +1464,165 @@
         "work": "the-dunwich-horror-dramatized"
       }
     },
+    "the-dupin-mysteries": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "C. Auguste Dupin"
+            ],
+            "description": "An impoverished Parisian gentleman with an exceptional gift for analysis. He shares secluded rooms with the narrator and delights in reconstructing other people's thoughts from small observations. When the police are baffled by the killings in the Rue Morgue, he investigates independently, relying on physical evidence and close reasoning rather than official procedure.",
+            "id": "auguste-dupin",
+            "name": "Auguste Dupin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Dupin's unnamed friend, housemate, and admiring chronicler. He meets Dupin in Paris through their shared interest in a rare book and accompanies him through all three investigations, asking the questions that allow Dupin to explain his methods.",
+            "id": "narrator",
+            "name": "The narrator",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly woman found dead in her locked house in the Rue Morgue. She and her daughter had withdrawn a large sum from the bank shortly before the killings, but the money remains at the scene.",
+            "id": "madame-lespanaye",
+            "name": "Madame L'Espanaye",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Madame L'Espanaye's daughter and the second victim of the apparently impossible Rue Morgue murders. Her body is discovered forced high into the chimney of the locked room.",
+            "id": "camille-lespanaye",
+            "name": "Camille L'Espanaye",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A bank clerk who escorted Madame L'Espanaye home with a withdrawal. The police arrest him despite the lack of a convincing motive, giving Dupin an innocent suspect to clear.",
+            "id": "adolphe-le-bon",
+            "name": "Adolphe Le Bon",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A French sailor whose lost animal and unusual ribbon provide Dupin with a route to the truth behind the Rue Morgue murders. Dupin draws him to the apartment with a newspaper advertisement and assures him that he is not accused of the killings.",
+            "id": "the-sailor",
+            "name": "The sailor",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young Parisian woman whose disappearance and death become Dupin's second major inquiry. Once employed at a perfume shop, she had previously vanished for several days and returned without a full public explanation.",
+            "id": "marie-roget",
+            "name": "Marie Rogêt",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Marie Rogêt's fiancé, who becomes entangled in the speculation surrounding her death. His movements and his distressed response to the discovery are among the facts Dupin separates from the newspapers' more sensational claims.",
+            "id": "st-eustache",
+            "name": "St. Eustache",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "G—"
+            ],
+            "description": "The Prefect of the Paris police, energetic and experienced but committed to exhaustive physical searches. He consults Dupin when ordinary methods fail and tends to dismiss solutions that depend on understanding how an adversary thinks.",
+            "id": "prefect-g",
+            "name": "Prefect G—",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "D—"
+            ],
+            "description": "A powerful minister, poet, and mathematician who steals a compromising letter from a royal lady while she is unable to object. Knowing how the police search, he keeps leverage over her and remains confident that the letter cannot be recovered.",
+            "id": "minister-d",
+            "name": "Minister D—",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A royal woman whose politically dangerous letter is taken in her presence by Minister D—. She commissions the Prefect to recover it without publicity, since open action would expose the secret the letter represents.",
+            "id": "the-royal-lady",
+            "name": "The royal lady",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-dupin-mysteries"
+      },
+      "recaps": {
+        "ending": "In the final case, Dupin recognizes that Minister D— has defeated the police by anticipating their painstaking search and making the stolen letter look unimportant. During a social visit, Dupin spots a damaged and altered letter displayed openly in the minister's rooms. He returns with a duplicate, arranges a disturbance outside, and exchanges the two. Dupin later gives the genuine letter to Prefect G— in return for the promised reward. The Prefect can now restore it to the royal owner, ending the minister's power over her. Dupin has left a pointed message inside the substitute so that D— will know who outwitted him when he next tries to use the document. The collection therefore closes with Dupin solving a crime through the same imaginative identification that guided the earlier cases: he succeeds by reasoning from another mind rather than merely searching harder.",
+        "in_short": "Auguste Dupin, an impoverished Parisian scholar, solves three mysteries narrated by his housemate. In the Rue Morgue case, two women appear to have been murdered in a locked room by an impossible assailant; Dupin follows evidence of inhuman strength and an unmatched voice to a sailor's escaped orangutan, clearing the man wrongly arrested. He next analyzes conflicting newspaper accounts of Marie Rogêt's death, stripping away rumors and arguing that one man, rather than a gang, killed her, though the story does not dramatize an arrest. Finally, a minister steals a sensitive royal letter and defeats repeated police searches. Dupin realizes the minister would hide it in plain sight, identifies the disguised paper in his rooms, and secretly replaces it with a copy. He returns the original to the Prefect for a reward, ending the minister's hold over its owner and proving that imaginative reasoning can succeed where routine investigation fails.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "The unnamed narrator meets C. Auguste Dupin in Paris and, fascinated by his analytical powers, takes rooms with him. Their private life is interrupted by reports of a horrifying double murder in the Rue Morgue. Madame L'Espanaye has been found mutilated in the courtyard, while her daughter Camille's body was forced into a chimney inside a room that seemed locked from within. Witnesses agree that they heard two voices, but no one can identify the shrill speaker's language. The police arrest the bank clerk Adolphe Le Bon, although the victims' recently withdrawn money was not stolen. Dupin examines the scene and finds a route through a spring-fastened window, hair that is not human, signs of extraordinary strength, and a sailor's ribbon. An advertisement brings the sailor to him. The man explains that his escaped orangutan, imitating shaving with a razor, killed the women while he watched helplessly and then fled. Le Bon is released, and Dupin's solution establishes his ability to combine physical clues with an imaginative reconstruction of events.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After solving the Rue Morgue murders by identifying a sailor's escaped orangutan as the killer, Dupin is asked to consider the death of Marie Rogêt. The popular young woman disappears from Paris and is later found dead in the Seine. Newspapers build elaborate theories from the condition of the body, disputed sightings, objects found near the river, and the behavior of her fiancé. Dupin treats the published reports as evidence that must itself be tested. He rejects confident assumptions about when the body surfaced and argues that several supposedly connected clues may have been staged or misunderstood. He also disputes the theory of a gang attack, reasoning instead toward a single strong man with a personal connection to Marie and drawing attention to evidence associated with a boat. Unlike the first case, the solution remains primarily an exercise in analysis: the culprit is not confronted within the narrated action, and the precise official outcome is withheld. The case emphasizes Dupin's ability to correct public certainty by identifying weak reasoning and comparing probabilities.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Dupin has solved the locked-room killings in the Rue Morgue and analyzed the evidence surrounding Marie Rogêt's death. In the final case, Prefect G— explains that Minister D— has stolen a compromising letter from a royal lady and is using possession of it as political leverage. Police have repeatedly searched the minister's rooms, furniture, books, and walls with exacting care but found nothing. Dupin concludes that their very thoroughness has made them predictable. Because D— understands police methods, the letter is unlikely to be hidden in a secret compartment. Visiting the minister, Dupin notices a battered, readdressed paper displayed carelessly in a card rack and recognizes it as the altered letter. He returns with a convincing substitute and has an associate create a disturbance in the street; when the minister looks away, Dupin swaps the papers. He later hands the original to the astonished Prefect for the large reward. The royal owner is freed from D—'s leverage, while the false letter contains a message ensuring that the minister will recognize Dupin's hand when his scheme fails.",
+            "through": {
+              "chapter": 3
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-dupin-mysteries"
+      }
+    },
     "the-dutch-house": {
       "characters": {
         "characters": [
