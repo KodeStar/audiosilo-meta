@@ -3432,6 +3432,152 @@
         "work": "skyward"
       }
     },
+    "slam": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A sixteen-year-old London skateboarder who narrates the story. He is studying art, hopes to avoid repeating his parents' early mistakes, and consults a poster and autobiography of Tony Hawk as if the famous skater were a private adviser.",
+            "id": "sam-jones",
+            "name": "Sam Jones",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Sam's mother, who had him when she was sixteen and raised him largely on her own. Her history makes Sam acutely aware of how an unplanned pregnancy can redirect a young life.",
+            "id": "annie-jones",
+            "name": "Annie Jones",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The celebrated American skateboarder whom Sam idolizes. Sam does not know him personally; instead, he imagines conversations with the Tony Hawk poster in his bedroom and interprets lines from Hawk's memoir as guidance.",
+            "id": "tony-hawk",
+            "name": "Tony Hawk",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A girl from a more affluent family whom Sam meets at a party. Their rapid, intense relationship gives Sam a glimpse of a life beyond school and skating, while also bringing him into uneasy contact with her parents.",
+            "id": "alicia-burns",
+            "name": "Alicia Burns",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Alicia's father. Protective, educated, and more financially secure than Sam's family, he reacts to Sam through the expectations he has for Alicia's future.",
+            "id": "robert-burns",
+            "name": "Robert Burns",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Alicia's mother, who shares the difficult task of responding to her daughter's relationship with Sam and the consequences that follow from it.",
+            "id": "andrea-burns",
+            "name": "Andrea Burns",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Annie's boyfriend. His place in the household initially makes Sam uncomfortable, particularly when changes in Annie's own life complicate the family's future.",
+            "id": "mark",
+            "name": "Mark",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sam's father, who also became a parent while young but has not shared equally in the daily work of raising Sam. His limited example helps explain Sam's fear that young fatherhood will lead to absence or failure.",
+            "id": "dave-jones",
+            "name": "Dave Jones",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Sam and Alicia's baby. His arrival turns an alarming possibility into a person who depends on both young parents, forcing them to replace abstract plans with daily choices.",
+            "id": "rufus",
+            "name": "Rufus",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "slam"
+      },
+      "recaps": {
+        "ending": "Alicia gives birth to Rufus, and Sam remains involved rather than repeating his father's pattern of distance. Parenthood is exhausting and constrains both teenagers, but their families provide imperfect support while Sam and Alicia learn practical care. Sam's imagined journeys into the future have shown several possible versions of their lives, including strain, separation, and new relationships; they are warnings and possibilities, not a fixed prediction. Sam continues his education and retains ambitions beyond immediate survival. He and Alicia are not presented with a simple permanent romantic solution, but they share responsibility for Rufus and gain a more mature understanding of one another. The closing perspective accepts that Sam cannot know the whole shape of his future. He can only make the next responsible choice and remain present for his son.",
+        "in_short": "Sam Jones is a sixteen-year-old London skateboarder determined not to repeat the history of his mother, Annie, who had him at the same age. He begins a relationship with Alicia Burns, but after they drift apart she tells him she is pregnant. Panicked, Sam runs away briefly and is also propelled in a series of unexplained flashes into possible futures, where he sees himself and Alicia caring for their son, Rufus. The visions show that parenthood will be difficult and that their relationship may change, but they also make the baby real to him. Annie reveals that she too is pregnant, complicating the family without withdrawing her support. Alicia has Rufus, and Sam stays involved, continues school, and begins learning how to be a father. The future remains open rather than idealized, but Sam chooses responsibility over disappearance.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Sixteen-year-old Sam Jones lives in London with his mother, Annie, who became pregnant with him at sixteen. He is passionate about skateboarding and art and treats a Tony Hawk poster and memoir as a source of imagined advice. Sam believes he is doing better than his parents did at his age: he is still in school, has plans, and is not tied down. At a party he meets Alicia Burns, whose comfortable family background differs from his own. They become absorbed in each other quickly. Sam enjoys the relationship but is uneasy around Alicia's parents and uncertain how the intensity fits with the rest of his life.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sam and Alicia's early closeness fades, and Sam assumes the relationship is ending. Alicia then tells him she is pregnant. The news directly recreates the situation Sam has spent his life treating as a warning: he is the same age his mother was when she had him. He feels trapped by consequences he cannot reverse and struggles to imagine himself as a father. The Burns family has expectations for Alicia that make Sam feel judged, while Annie understands more personally what both teenagers face. Sam seeks answers from his imagined Tony Hawk, but the borrowed words cannot make the decision for him. Fear overtakes him, and escape begins to seem easier than staying to face Alicia and their families.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sam runs away to Hastings, hoping distance will remove him from the pregnancy and the adults' reactions. The attempt quickly exposes how little independence he actually has: he lacks money, a workable plan, and any way to stop thinking about Alicia. He returns to London. Around the same period, he experiences an unexplained leap into a possible future. He finds himself older, living amid the exhaustion and disorder of caring for a baby called Rufus, with knowledge missing between his present and that moment. The experience is disorienting, but it transforms the pregnancy from a frightening statement into a glimpse of a child and a daily life that may soon exist.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Further flashes carry Sam into different moments of a possible future with Alicia and Rufus. They show sleep loss, arguments, practical dependence on their families, and the narrowing of choices that comes with caring for a child. They also reveal affection and competence that Sam cannot yet imagine possessing. Back in the present, Annie announces that she is pregnant too, making Sam an expectant father and brother at once. The news unsettles him but also undercuts any simple division between responsible adults and reckless teenagers. Sam begins to understand that fear and imperfect circumstances do not eliminate the obligation to keep showing up.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Alicia gives birth to Rufus. Sam remains involved and starts learning the repetitive, tiring work of caring for his son, supported unevenly by Annie and Alicia's parents. The reality is neither the total ruin he feared nor an easy romantic resolution. His future visions suggest that he and Alicia may not remain a conventional couple and that both can form other relationships, but they continue to share responsibility for Rufus. Sam also keeps pursuing education and a life beyond the immediate crisis. He ends without certainty about where every choice will lead, but he no longer treats running away as an answer. He accepts that fatherhood consists of continuing to be present and making the next decision for the child who now depends on him.",
+            "through": {
+              "chapter": 20
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "slam"
+      }
+    },
     "slaughterhouse-five": {
       "characters": {
         "characters": [

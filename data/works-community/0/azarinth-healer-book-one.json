@@ -1737,6 +1737,160 @@
         "work": "azarinth-healer-book-two"
       }
     },
+    "b-j-harrison-reads-the-canterville-ghost": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Mr. Otis"
+            ],
+            "description": "The American minister who buys Canterville Chase despite being plainly warned that it is haunted. Practical and confident, he assumes that anything included with the property can be managed by modern household methods.",
+            "id": "hiram-b-otis",
+            "name": "Hiram B. Otis",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mrs. Otis"
+            ],
+            "description": "Mr. Otis's composed wife, a celebrated New York beauty who approaches the disturbances at Canterville Chase with the same unflustered practicality as the rest of her family.",
+            "id": "lucretia-otis",
+            "name": "Lucretia Otis",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Otises' eldest son, named for George Washington. He repeatedly removes the old bloodstain in the library with a commercial cleaner and treats its unexplained return as a maintenance problem.",
+            "id": "washington-otis",
+            "name": "Washington Otis",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Otises' fifteen-year-old daughter, a spirited and compassionate rider. Unlike her brothers, she does not turn the haunting into a contest and is embarrassed when the ghost is humiliated.",
+            "id": "virginia-otis",
+            "name": "Virginia Otis",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "The Stars and Stripes"
+            ],
+            "description": "The Otises' mischievous twin boys. Their names are not given; they delight in traps, missiles, and relentless practical jokes directed at the household ghost.",
+            "id": "the-otis-twins",
+            "name": "The Otis Twins",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The former owner of Canterville Chase, who conscientiously tells Mr. Otis that the house has been haunted for centuries before agreeing to sell it.",
+            "id": "lord-canterville",
+            "name": "Lord Canterville",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "The Canterville Ghost"
+            ],
+            "description": "The ancient resident ghost of Canterville Chase, accustomed to terrifying generations of the English aristocracy. He expects chains, dreadful costumes, and carefully staged appearances to overwhelm the new owners.",
+            "id": "sir-simon-de-canterville",
+            "name": "Sir Simon de Canterville",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The elderly housekeeper at Canterville Chase. She solemnly confirms the history of the library bloodstain and faints when a storm follows its removal.",
+            "id": "mrs-umney",
+            "name": "Mrs. Umney",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "The Duke of Cheshire"
+            ],
+            "description": "A young English duke who is devoted to Virginia and seeks opportunities to spend time with her during the family's stay at Canterville Chase.",
+            "id": "cecil",
+            "name": "Cecil",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "b-j-harrison-reads-the-canterville-ghost"
+      },
+      "recaps": {
+        "ending": "Virginia returns through the hidden panel carrying jewels and leads her family to a concealed chamber, where Sir Simon's chained skeleton lies beside the evidence of his long imprisonment. The Otises arrange a formal funeral, and Virginia places flowers on his grave after helping his spirit reach peace. Mr. Otis tries to return the valuable jewels to Lord Canterville, but Lord Canterville insists that Virginia keep them as the ghost intended. Years later Virginia marries Cecil, now Duke of Cheshire. When they revisit Sir Simon's grave, she tells her husband that the ghost taught her the meaning of life and death and why love is stronger than either. She will not disclose exactly what she saw during her absence, and Cecil accepts the private bond she keeps with Sir Simon.",
+        "in_short": "American minister Hiram Otis buys the haunted Canterville Chase and moves in with his practical family. The resident ghost, Sir Simon, expects to terrify them, but Mr. Otis offers lubricant for his chains, Washington repeatedly cleans the supernatural bloodstain, and the twins answer every apparition with traps and missiles. His dignity and health ruined, Sir Simon withdraws. Virginia Otis eventually finds him grieving and learns that he longs to die but cannot reach peace. A prophecy says an innocent child must weep and pray for him, and Virginia agrees to accompany him into a supernatural darkness. She returns hours later with jewels and reveals the chamber containing his remains. After Sir Simon is buried, the haunting ends. Virginia later marries the Duke of Cheshire and keeps secret the details of what she experienced, saying only that Sir Simon taught her about love, life, and death.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "American minister Hiram B. Otis buys Canterville Chase from Lord Canterville even after being warned that a ghost has troubled the house for centuries. He moves in with his wife Lucretia, their sons Washington and the unnamed twins, and their daughter Virginia. The housekeeper identifies an old bloodstain in the library as a relic of Lady Eleanore de Canterville's murder, but Washington removes it with stain cleaner. It returns by morning. That night the ghost appears in chains, expecting terror; Mr. Otis instead offers him lubricating oil, while the twins throw a pillow at him. The baffled ghost retreats, outraged that the family has answered his performance with household products and mockery.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Washington continues cleaning the library stain, which repeatedly returns in changing colors. Sir Simon prepares several of the terrifying roles that once made him famous, but each attempt goes wrong. The twins attack him with a pea-shooter, he injures himself while trying to wear the ancestral armor, and Mrs. Otis offers him medicine when his ghostly laughter sounds unwell. He then encounters what appears to be another ghost and flees in fear, only to discover later that the figure is a crude imitation made by the Otis children. The humiliation leaves the once-proud haunting specialist shaken and determined to devise an elaborate revenge.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sir Simon's efforts at revenge are defeated by further traps, and his fear of the twins reduces him to creeping quietly through the house. The family begins to assume the haunting is over. Virginia then finds the ghost alone and miserable. He admits killing his wife, though he argues that her brothers punished him by starving him to death. More importantly, he explains that he has been unable to sleep for centuries and longs for rest in the Garden of Death. A prophecy says that an innocent child must weep for him and pray for his soul. Despite the danger, Virginia pities him and agrees to help. She follows him through the wall and vanishes, leaving her alarmed family unable to find her.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After hours of searching, the Otises hear a supernatural crash and Virginia reappears through a hidden panel, pale and carrying a box of jewels. She tells them Sir Simon has died and leads them to a secret chamber containing his chained skeleton, the remains left after his brothers-in-law imprisoned and starved him. Because Virginia prayed and wept for him, his soul can finally rest. The family holds a solemn funeral and buries him beneath an old tree. Lord Canterville permits Virginia to keep the jewels Sir Simon gave her. Years later she marries Cecil, the Duke of Cheshire, and visits the grave with him. She keeps the details of her supernatural journey private but says Sir Simon taught her about life, death, and the power of love.",
+            "through": {
+              "chapter": 7
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "b-j-harrison-reads-the-canterville-ghost"
+      }
+    },
     "b-j-harrison-reads-the-legend-of-sleepy-hollow": {
       "characters": {
         "characters": [
