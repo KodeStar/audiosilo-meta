@@ -4720,6 +4720,117 @@
         "work": "the-murder-of-roger-ackroyd"
       }
     },
+    "the-murders-in-the-rue-morgue": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A Frenchman from an illustrious family whose fortunes have collapsed. He lives in deliberate seclusion in Paris and takes intense pleasure in solving problems through close observation and disciplined inference. The narrator first meets him while both are searching for the same rare book, and the two soon become housemates.",
+            "id": "c-auguste-dupin",
+            "name": "C. Auguste Dupin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An unnamed visitor to Paris who meets Dupin in a library and becomes his friend, housemate, and admiring observer. He relates the investigation and often serves as the audience for Dupin's explanations.",
+            "id": "narrator",
+            "name": "The Narrator",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly woman who lives with her daughter in a secluded house on the Rue Morgue. Neighbors know little about the pair beyond their comfortable circumstances and withdrawn habits. She is found dead in the courtyard after violent sounds draw people to the house.",
+            "id": "madame-lespanaye",
+            "name": "Madame L'Espanaye",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Madame L'Espanaye's unmarried daughter and sole companion. She shares her mother's isolated home and is one of the two victims in the baffling locked-room crime that attracts Dupin's attention.",
+            "id": "camille-lespanaye",
+            "name": "Camille L'Espanaye",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A bank clerk who carried a large withdrawal of gold to the L'Espanaye house several days before the murders. The police arrest him despite the lack of a clear explanation for how he could have committed the crime, prompting Dupin to take a personal interest in clearing him.",
+            "id": "adolphe-le-bon",
+            "name": "Adolphe Le Bon",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The head of the Paris police and an acquaintance of Dupin. He gives Dupin permission to inspect the crime scene but remains committed to conventional investigative methods and to the case against Le Bon.",
+            "id": "prefect-g",
+            "name": "Prefect G.",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A French merchant sailor who has recently returned from the East Indies. Dupin draws him to the apartment with a newspaper notice claiming that a valuable escaped animal has been found, reasoning that the sailor can explain the extraordinary evidence from the Rue Morgue.",
+            "id": "sailor",
+            "name": "The Sailor",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ourang-Outang"
+            ],
+            "description": "A powerful orangutan brought from Borneo by the sailor. Its unusual strength, agility, hair, and inhuman voice account for clues that the witnesses and police cannot reconcile with any human intruder.",
+            "id": "orangutan",
+            "name": "The Orangutan",
+            "reveal": {
+              "chapter": 1
+            }
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-murders-in-the-rue-morgue"
+      },
+      "recaps": {
+        "ending": "Dupin's reconstruction is confirmed when the sailor admits that he brought an orangutan home from Borneo and had been trying to contain it. After watching its owner shave, the animal escaped with a razor and entered the L'Espanaye house by climbing a lightning rod. Its attempt to imitate shaving turned violent: it killed Madame L'Espanaye with the blade and strangled Camille. Frightened when the sailor appeared at the window and threatened it with a whip, the orangutan tried to conceal the bodies, forcing Camille's corpse up the chimney and throwing her mother through the window. Its escape left the room apparently sealed because the window's spring closed automatically while a broken nail made the fastening look intact. The sailor eventually recaptures and sells the animal. The authorities release Adolphe Le Bon, while the police prefect resents Dupin's success and Dupin dismisses the prefect's habit of confusing procedural activity with genuine analysis.",
+        "in_short": "In Paris, the unnamed narrator befriends the impoverished but brilliant C. Auguste Dupin. When Madame L'Espanaye and her daughter Camille are brutally killed inside an apparently locked room, witnesses report hearing one French voice and another voice no one can identify. The police arrest bank clerk Adolphe Le Bon, but Dupin studies the physical evidence instead of accepting the obvious suspect. A secretly sprung window, extraordinary strength, nonhuman hair, marks that no human hand could make, and the witnesses' contradictory impressions lead him to an escaped orangutan. Dupin lures its sailor owner to his rooms with a newspaper notice. The sailor explains that the animal entered the house with a razor, killed both women while imitating its owner's shaving, and hid the bodies in panic. Le Bon is released, and Dupin's reconstruction exposes the limits of the police inquiry.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "The narrator meets C. Auguste Dupin, an impoverished French gentleman with exceptional powers of observation, and shares a secluded Paris home with him. Their attention turns to the sensational deaths of Madame L'Espanaye and her daughter Camille in a room that appeared locked from within. Witnesses agree that they heard a Frenchman and a second speaker, yet each assigns the strange voice to a different foreign language. The victims' injuries require tremendous force, valuables remain behind, and the known exits appear impossible. Police arrest bank clerk Adolphe Le Bon because he recently delivered gold to the women. Dupin inspects the scene and finds that one window could close itself by a spring; its broken nail only made it seem secured. Hair, hand marks, agility, and the unrecognizable voice point not to a foreign murderer but to an orangutan. He places an advertisement designed to summon the animal's owner. A sailor then confesses that his orangutan escaped carrying a razor, climbed into the house, and killed the women while imitating shaving. When threatened with a whip, it panicked, thrust Camille up the chimney, threw Madame L'Espanaye through the window, and fled. The sailor later recovers the animal, Le Bon is released, and Dupin has solved the case by explaining evidence the police treated as contradictions.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-murders-in-the-rue-morgue"
+      }
+    },
     "the-mysterious-affair-at-styles": {
       "characters": {
         "characters": [

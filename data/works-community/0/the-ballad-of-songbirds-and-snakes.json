@@ -3699,6 +3699,459 @@
         "work": "the-broken-eye"
       }
     },
+    "the-bronte-sisters-collection": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A ten-year-old orphan living unhappily with her aunt's family at Gateshead. Intelligent and intensely conscious of injustice, Jane endures isolation but resists when her cousin abuses her.",
+            "id": "jane-eyre",
+            "name": "Jane Eyre",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Jane's widowed aunt and reluctant guardian. She favors her own children and treats Jane as an unwelcome dependent whose resistance proves bad character.",
+            "id": "mrs-reed",
+            "name": "Mrs Reed",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The clergyman who directs Lowood Institution. He advocates severe deprivation for its pupils and accepts Mrs Reed's accusation that Jane is deceitful.",
+            "id": "mr-brocklehurst",
+            "name": "Mr Brocklehurst",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Lowood's compassionate superintendent, who offers humane care within a school marked by hunger, cold, and rigid discipline.",
+            "id": "miss-temple",
+            "name": "Miss Temple",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An older Lowood pupil who becomes Jane's first close friend. Thoughtful and deeply religious, Helen meets punishment and illness with patience.",
+            "id": "helen-burns",
+            "name": "Helen Burns",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The housekeeper at Thornfield Hall, whose practical kindness welcomes Jane into the quiet and initially puzzling household.",
+            "id": "mrs-fairfax",
+            "name": "Mrs Fairfax",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A lively French child living at Thornfield as Mr Rochester's ward and placed under Jane's instruction.",
+            "id": "adele-varens",
+            "name": "Adèle Varens",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The master of Thornfield, first met when Jane helps him after his horse slips. Abrupt and searching, he is intrigued by her independent judgment.",
+            "id": "edward-rochester",
+            "name": "Edward Rochester",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Rochester's wife, Bertha Antoinetta Mason, whose existence is disclosed when his wedding to Jane is stopped. Seriously ill and violent, she has been confined in Thornfield's upper rooms.",
+            "id": "bertha-mason",
+            "name": "Bertha Mason",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A reserved clergyman who helps shelter Jane after she collapses near Moor House. Disciplined and emotionally controlled, he plans a life of missionary work.",
+            "id": "st-john-rivers",
+            "name": "St John Rivers",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The tenant of Thrushcross Grange, whose visits to his landlord's hostile household prompt Nelly Dean to relate its history.",
+            "id": "mr-lockwood",
+            "name": "Mr Lockwood",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Lockwood's guarded and unsociable landlord, master of Wuthering Heights and the commanding presence in its strained household.",
+            "id": "heathcliff",
+            "name": "Heathcliff",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A rough-spoken young resident of Wuthering Heights whose pride conflicts with his neglected education and uncertain status.",
+            "id": "hareton-earnshaw",
+            "name": "Hareton Earnshaw",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A beautiful, sharp-tongued young widow living unhappily at Wuthering Heights and openly disdainful of Lockwood's conversation.",
+            "id": "catherine-linton",
+            "name": "Catherine Linton",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A longtime servant of the Earnshaw and Linton families who becomes the principal narrator of the history behind Wuthering Heights.",
+            "id": "nelly-dean",
+            "name": "Nelly Dean",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Cathy Earnshaw"
+            ],
+            "description": "The spirited daughter of the old master of Wuthering Heights, wild and affectionate, who forms an intense childhood bond with Heathcliff.",
+            "id": "catherine-earnshaw",
+            "name": "Catherine Earnshaw",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Catherine's older brother, who resents Heathcliff and uses his authority as master of Wuthering Heights to degrade him.",
+            "id": "hindley-earnshaw",
+            "name": "Hindley Earnshaw",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A refined neighbor whose gentle manners and protected home introduce Catherine to a social world far removed from Wuthering Heights.",
+            "id": "edgar-linton",
+            "name": "Edgar Linton",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Edgar's sheltered younger sister, who later becomes fascinated by Heathcliff despite Catherine's warnings about him.",
+            "id": "isabella-linton",
+            "name": "Isabella Linton",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The frail son of Heathcliff and Isabella. Timid and demanding, he is vulnerable to a father who views him as a means to acquire property.",
+            "id": "linton-heathcliff",
+            "name": "Linton Heathcliff",
+            "reveal": {
+              "chapter": 57
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young farmer at Linden-Car who recounts his attachment to the mysterious tenant of Wildfell Hall. Sociable and proud, Gilbert is also impulsive when jealous.",
+            "id": "gilbert-markham",
+            "name": "Gilbert Markham",
+            "reveal": {
+              "chapter": 73
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The reserved young widow who rents Wildfell Hall with her small son and a servant. She supports herself through painting and fiercely protects her privacy and child.",
+            "id": "helen-graham",
+            "name": "Helen Graham",
+            "reveal": {
+              "chapter": 73
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Helen Graham's young son, whom she guards closely from alcohol and other influences she considers harmful.",
+            "id": "arthur-graham",
+            "name": "Arthur Graham",
+            "reveal": {
+              "chapter": 73
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Helen's faithful servant and only adult companion at Wildfell Hall. Her loyalty suggests a shared history the neighbors do not know.",
+            "id": "rachel",
+            "name": "Rachel",
+            "reveal": {
+              "chapter": 73
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A quiet neighboring gentleman whose private understanding with Helen Graham fuels Gilbert's jealousy and local speculation.",
+            "id": "frederick-lawrence",
+            "name": "Frederick Lawrence",
+            "reveal": {
+              "chapter": 75
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A charming and confident gentleman whom Helen meets while staying with her aunt and uncle. His attention attracts her despite warnings about his principles.",
+            "id": "arthur-huntingdon",
+            "name": "Arthur Huntingdon",
+            "reveal": {
+              "chapter": 88
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A fashionable woman in Helen's social circle who enjoys admiration and brings rivalry into the company surrounding Huntingdon.",
+            "id": "annabella-wilmot",
+            "name": "Annabella Wilmot",
+            "reveal": {
+              "chapter": 90
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lord Lowborough"
+            ],
+            "description": "A serious nobleman among Huntingdon's companions who is trying to master destructive habits and hopes honorable attachment will support reform.",
+            "id": "lowborough",
+            "name": "Lowborough",
+            "reveal": {
+              "chapter": 90
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Helen's gentle friend, whose compliant nature leaves her vulnerable to the stronger personalities arranging marriages around her.",
+            "id": "milicent-hargrave",
+            "name": "Milicent Hargrave",
+            "reveal": {
+              "chapter": 90
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Milicent's brother and a polished visitor during Helen's married life. He presents himself as a sympathetic alternative to Huntingdon's cruelty.",
+            "id": "walter-hargrave",
+            "name": "Walter Hargrave",
+            "reveal": {
+              "chapter": 99
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-bronte-sisters-collection"
+      },
+      "recaps": {
+        "ending": "Jane Eyre ends with Jane independently marrying the injured Rochester after Bertha's death. Wuthering Heights ends with Heathcliff dead and the younger Catherine and Hareton planning a marriage that reunites the families and estates. The final novel, The Tenant of Wildfell Hall, closes after Helen returns to nurse her abusive husband, Arthur Huntingdon, through his last illness. His death frees her legally, and an inheritance makes her independently wealthy. Gilbert repairs his friendship with Frederick Lawrence, learns that Helen still loves him, and overcomes his doubts about their difference in fortune. Helen and Gilbert marry and live at Staningley with her son. Frederick marries Esther Hargrave, while the reformed Hattersley has made a happier home with Milicent. The collection therefore ends with Helen secure in a marriage entered freely after escaping coercion and protecting her child.",
+        "in_short": "The collection brings together three stories of constrained lives and chosen bonds. Jane Eyre survives an abusive childhood, becomes Rochester's governess, leaves when his existing marriage is exposed, gains family and an inheritance, then returns after Bertha's death to marry Rochester as an equal. In Wuthering Heights, Heathcliff's thwarted bond with Catherine Earnshaw becomes a campaign of revenge against the Earnshaw and Linton families. He gains both estates, but the younger Catherine and Hareton overcome his abuse, fall in love, and plan to marry after his death. In The Tenant of Wildfell Hall, Gilbert Markham learns that the supposed widow Helen Graham is hiding from Arthur Huntingdon, whose drinking, cruelty, and infidelity endangered her and their son. Helen later nurses Huntingdon through his fatal illness. Once free and financially secure, she accepts Gilbert, and they form a new household with her child.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Orphaned Jane Eyre lives at Gateshead with her aunt, Mrs Reed, and is treated as inferior to the Reed children. After Jane defends herself against her bullying cousin, she is locked in the room where her uncle died and becomes ill. Mrs Reed sends her to Lowood Institution after telling its director, Mr Brocklehurst, that Jane is deceitful. At Lowood, Jane encounters cold, hunger, and rigid discipline, although superintendent Miss Temple treats the pupils humanely. Jane befriends Helen Burns, whose patient religious outlook contrasts with her own anger at injustice.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Brocklehurst publicly brands Jane a liar, but Miss Temple verifies Jane's account and clears her name. A typhus epidemic then exposes the consequences of Lowood's poor food and unhealthy conditions. Helen Burns is dying of consumption rather than the fever, and Jane is with her when she dies. Public scrutiny brings reforms. Jane stays at Lowood for eight years as pupil and teacher. After Miss Temple marries and leaves, Jane recognizes her desire for a wider life. She advertises for work and accepts a position as governess at Thornfield Hall, where she will teach a young French girl.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Brocklehurst humiliates Jane publicly, but Miss Temple investigates and clears her name. A typhus outbreak exposes Lowood's neglect; Helen, already dying of consumption, dies beside Jane. Reforms improve the school. Jane remains as pupil and teacher before advertising for work and becoming governess to Adèle Varens at Thornfield Hall. She meets the master, Edward Rochester, after his horse slips, and their searching conversations draw them together. Strange laughter in the house is attributed to servant Grace Poole. When Jane finds Rochester's bed curtains burning, she wakes him and helps put out the fire, but he conceals its cause.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jane's attachment to Rochester grows, but he returns to Thornfield with guests including the beautiful Blanche Ingram. Jane believes Blanche will become his wife and struggles to conceal her feelings. Rochester disguises himself as a fortune-teller to question his guests and probe Jane's emotions. Richard Mason arrives from the West Indies, alarming Rochester. During the night Mason is attacked in an upper room. Jane tends his wound in silence while Rochester arranges his departure. Grace Poole remains the supposed source of the violence, yet her continued employment persuades Jane that Rochester is concealing a more complicated danger.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rochester hosts guests including Blanche Ingram, whom Jane thinks he intends to marry. The arrival of Richard Mason from the West Indies alarms Rochester, and Mason is secretly attacked in the upper house. After Jane visits the dying Mrs Reed, Rochester declares his love and proposes. Their wedding is stopped by proof that Rochester already has a living wife, Bertha Mason, confined at Thornfield and responsible for its frightening incidents. Rochester asks Jane to live with him despite the legal marriage. Loving him but unwilling to compromise her principles, she leaves alone with little money.",
+            "through": {
+              "chapter": 27
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jane loses her money after fleeing Thornfield and wanders hungry until St John Rivers and his sisters Diana and Mary shelter her at Moor House. Using another surname, she becomes teacher at a village school. St John discovers that Jane's uncle has left her twenty thousand pounds and that the Rivers siblings are her cousins. Jane shares the inheritance equally, gaining family as well as financial independence. St John prepares for missionary work in India and asks Jane to marry him because he considers her useful to his calling, not because he loves her. She refuses a loveless marriage. After believing she hears Rochester calling her from far away, she resolves to learn what has happened to him.",
+            "through": {
+              "chapter": 35
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jane nearly dies on the moors before St John Rivers and his sisters shelter her. She teaches a village school, then learns that an uncle has left her a fortune and that the Rivers siblings are her cousins. Jane shares the inheritance with them. St John asks her to marry him for missionary work rather than love; she refuses. After seeming to hear Rochester call her, she returns to find Thornfield burned. Bertha died in the fire, while Rochester was blinded and lost a hand rescuing others. Jane finds him at Ferndean and marries him as an independent equal. He later recovers enough sight in one eye to see their child.",
+            "through": {
+              "chapter": 38
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The collection turns to Wuthering Heights. Tenant Lockwood makes two uncomfortable visits to his landlord Heathcliff and meets Hareton Earnshaw, the widowed Catherine Linton, and the servant Joseph without understanding their relationships. A snowstorm forces him to stay overnight in an old chamber associated with Catherine Earnshaw. He dreams that a ghostly child calls at the window, and Heathcliff's desperate response to Catherine's name shows how strongly the past controls him. Back at Thrushcross Grange, Lockwood asks Nelly Dean to explain the household. She begins with the old Earnshaw family and the orphan boy its master brought home from Liverpool.",
+            "through": {
+              "chapter": 42
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The collection turns to Wuthering Heights. Tenant Lockwood meets his hostile landlord Heathcliff and the strange household of Catherine Linton and Hareton Earnshaw. Forced to stay during a storm, he sleeps in a room associated with Catherine Earnshaw and believes her ghost calls at the window. Nelly Dean begins the family history. The old Mr Earnshaw adopted Heathcliff; Catherine loved the orphan, while her brother Hindley hated and degraded him. Catherine later accepted the refined Edgar Linton's proposal while telling Nelly that her bond with Heathcliff was deeper. Heathcliff heard only that marrying him would lower her and disappeared.",
+            "through": {
+              "chapter": 47
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Catherine marries Edgar and lives at Thrushcross Grange. After three years Heathcliff returns unexpectedly wealthy and polished, but intent on settling old injuries. Hindley accepts him as a gambling companion and risks Wuthering Heights against him. Isabella Linton becomes infatuated with Heathcliff. Catherine warns that Isabella misunderstands him, while Heathcliff sees the attraction as a way to injure Edgar. Conflict among Catherine, Edgar, and Heathcliff leads Catherine to isolate herself and become seriously ill. Heathcliff elopes with Isabella and brings her to Wuthering Heights, where she discovers that her marriage has placed her in a violent household with a husband who does not love her.",
+            "through": {
+              "chapter": 54
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Catherine marries Edgar. Heathcliff returns wealthy after three years and pursues revenge, encouraging Hindley's ruin and using Isabella Linton's infatuation to hurt Edgar. He elopes with Isabella and abuses her. Catherine becomes dangerously ill amid the conflict. Her final reunion with Heathcliff is loving and accusatory; she dies after giving birth to a daughter. Isabella escapes, and Hindley's death lets Heathcliff acquire Wuthering Heights and keep Hareton uneducated. When Isabella later dies, Heathcliff takes their frail son Linton and plans a marriage between him and Edgar's daughter Catherine so that he can gain Thrushcross Grange.",
+            "through": {
+              "chapter": 59
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Edgar raises his daughter Catherine at Thrushcross Grange with little knowledge of Wuthering Heights. After Isabella's death, Edgar brings her frail son Linton north, but Heathcliff claims the boy. Catherine meets Hareton and later begins corresponding with Linton. Heathcliff encourages their attachment because their marriage would place the Grange within his reach. Nelly stops the letters, yet Catherine secretly visits Linton, whose affection is mixed with selfishness and fear of his father. Edgar's health fails. Though he eventually permits supervised meetings, Linton is plainly ill and under pressure. Heathcliff traps Catherine and Nelly at Wuthering Heights and refuses to let Catherine return to her dying father until she marries Linton.",
+            "through": {
+              "chapter": 65
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Catherine escapes in time to see Edgar before he dies, but her forced marriage has already placed her inheritance under Linton's control. Heathcliff brings her back to Wuthering Heights. Linton soon dies after naming his father as heir, giving Heathcliff control of both estates and leaving Catherine dispossessed. Lockwood visits before leaving and sees her mock Hareton's effort to educate himself. When Lockwood returns months later, Nelly has moved to Wuthering Heights. Catherine has regretted her contempt, apologized, and offered to teach Hareton to read. He responds with loyalty, and their growing affection begins to undo Heathcliff's plan to make the younger generation repeat the hatred of the older one.",
+            "through": {
+              "chapter": 70
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Young Catherine secretly visits Linton, who is ill and frightened of Heathcliff. As Edgar is dying, Heathcliff imprisons Catherine and Nelly and forces Catherine to marry his son before she can return to her father. Linton inherits and soon dies after naming Heathcliff his heir, leaving Catherine trapped and dispossessed. Lockwood departs. On returning months later, he learns that Catherine has apologized for mocking Hareton and begun teaching him to read. They fall in love. Their happiness empties Heathcliff's revenge of purpose. Preoccupied by Catherine Earnshaw's memory, he refuses food and dies. Catherine and Hareton plan to marry and move to Thrushcross Grange, reuniting the families and estates.",
+            "through": {
+              "chapter": 72
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Tenant of Wildfell Hall begins with Gilbert Markham describing the new occupants of a secluded old house. Helen Graham lives at Wildfell Hall with her young son Arthur and servant Rachel, earns money by painting, and protects her privacy. She is especially determined that Arthur should not acquire a taste for alcohol, a position that draws criticism from the neighborhood. Gilbert is intrigued and begins visiting, gradually transferring his attention from Eliza Millward to Helen. Helen accepts some friendship but warns him against expectations she cannot satisfy. Her reserve and the unexplained circumstances of her household encourage gossip, while Gilbert becomes increasingly possessive without yet knowing the history behind her caution.",
+            "through": {
+              "chapter": 80
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Tenant of Wildfell Hall begins with farmer Gilbert Markham's account of a mysterious new neighbor. Helen Graham rents the decaying hall with her young son Arthur and servant Rachel, supports herself by painting, and refuses to explain her past. Her strict efforts to keep alcohol from her son provoke local debate. Gilbert becomes increasingly attached to her, but gossip links Helen to the quiet landowner Frederick Lawrence. Helen insists she cannot offer Gilbert the future he wants. When Gilbert sees an apparently intimate meeting between Helen and Lawrence, jealousy overcomes him. He later attacks Lawrence on the road and hides his responsibility.",
+            "through": {
+              "chapter": 87
+            }
+          },
+          {
+            "scope": "book",
+            "text": "To correct Gilbert's assumptions without exposing herself publicly, Helen gives him her diary. It begins with her youth under an aunt and uncle and her attraction to Arthur Huntingdon, whose charm outweighs warnings about his weak principles. Helen believes love and moral influence can reform him. She marries him, but domestic life quickly reveals his selfishness, drinking, and resentment of correction. His companions encourage dissipation, and he treats Helen's convictions as an obstacle to amusement. Their son becomes her chief purpose, while Huntingdon begins trying to teach the child his own habits.",
+            "through": {
+              "chapter": 95
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Huntingdon's long absences and drinking companions deepen Helen's isolation. She discovers his affair with Annabella Lowborough, a betrayal of both Helen and Annabella's husband. Walter Hargrave offers sympathy while pressing his own claim on Helen, but she refuses to answer one betrayal with another. Huntingdon deliberately encourages their son to drink and mock restraint, making escape a matter of protecting the child. Helen plans to support herself by painting and leave secretly. Huntingdon discovers her diary, confiscates her money and keys, and destroys her artistic means of independence, defeating the first plan.",
+            "through": {
+              "chapter": 104
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Huntingdon has destroyed Helen's first escape plan by taking her money, keys, and painting materials, but she continues searching for a safe way to remove her son. Lord Lowborough learns of Annabella's adultery, bringing that relationship to an end, while Ralph Hattersley begins to understand the suffering his conduct has caused Milicent and shows signs of real change. Walter Hargrave continues pressing Helen to accept his protection and affection; she rejects him decisively, unwilling to exchange one form of dependence for another. Helen remains trapped at Grassdale, outwardly managing the household while secretly relying on the possibility that trustworthy family help may allow a second attempt.",
+            "through": {
+              "chapter": 112
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Helen remains outwardly controlled while preparing another escape. Around her, some members of Huntingdon's circle confront the damage caused by their conduct: Lord Lowborough learns of Annabella's betrayal, and Ralph Hattersley begins to recognize Milicent's misery. Helen decisively rejects Walter Hargrave. With help from Frederick Lawrence, who is revealed as her brother, she finally leaves Grassdale with her son and Rachel. She adopts the surname Graham and hides at Wildfell Hall, a Lawrence family property, supporting them through art. Gilbert now understands both her supposed widowhood and the meetings he misread. He recognizes the injustice of his suspicions and of his attack on the brother who enabled her escape.",
+            "through": {
+              "chapter": 116
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Gilbert returns Helen's diary, respects the limits on their relationship, and gradually repairs his friendship with Frederick. When Huntingdon becomes gravely ill, Helen returns to Grassdale to nurse him. Fear and temporary promises do not become lasting reform, and he dies, leaving her legally free. Helen later inherits substantial property. Gilbert nearly abandons hope because her wealth seems to place her beyond him, and a false report suggests she will marry someone else. He finally seeks the truth and finds that Helen's feelings remain unchanged. They marry and settle at Staningley with her son. Frederick marries Esther Hargrave, and the reformed Hattersley establishes a more peaceful life with Milicent.",
+            "through": {
+              "chapter": 125
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-bronte-sisters-collection"
+      }
+    },
     "the-brothers-hawthorne": {
       "characters": {
         "characters": [
