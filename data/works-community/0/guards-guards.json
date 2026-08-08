@@ -518,6 +518,170 @@
         "work": "h-m-s-surprise"
       }
     },
+    "h-p-lovecrafts-the-shadow-over-innsmouth": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A young traveler making an antiquarian tour of New England on a limited budget. Curious and methodical, he decides to pass through the isolated seaport of Innsmouth after hearing that outsiders avoid it and that the cheapest bus route runs through the town. He begins asking about its history before seeing it for himself.",
+            "id": "the-narrator",
+            "name": "The narrator",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A railway ticket clerk in Newburyport who reacts strongly when the narrator asks about traveling through Innsmouth. He explains the town's poor reputation, describes its economic decline and strange-looking residents, and directs the narrator to a local bus despite advising him to choose another route.",
+            "id": "newburyport-ticket-agent",
+            "name": "The Newburyport ticket agent",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An Innsmouth sea captain and merchant from the previous century. Voyages in the South Pacific brought him unusual gold and enough wealth to revive some of the town's industries, although outsiders never learned exactly where his valuable cargo originated.",
+            "id": "obed-marsh",
+            "name": "Obed Marsh",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The driver of the bus between Newburyport and Innsmouth. He has the peculiar facial features associated with old Innsmouth families and is one of the first present-day residents the narrator observes closely.",
+            "id": "joe-sargent",
+            "name": "Joe Sargent",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young employee at Innsmouth's grocery store who comes from outside the town. Relieved to speak with another outsider, he marks useful places on a map, summarizes which streets are safest, and identifies an elderly resident who may be willing to discuss the town's past.",
+            "id": "grocery-clerk",
+            "name": "The grocery clerk",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A very old Innsmouth resident known for drinking and for remembering events that most townspeople refuse to discuss. Other residents dismiss him, but the grocery clerk suggests that liquor may persuade him to talk about the Marsh family and the town's history.",
+            "id": "zadok-allen",
+            "name": "Zadok Allen",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A present-day member of the powerful Marsh family and owner of Innsmouth's operating refinery. The family's surviving wealth and influence make him one of the few prominent figures in an otherwise decaying town.",
+            "id": "barnabas-marsh",
+            "name": "Barnabas Marsh",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The unfriendly attendant at Innsmouth's Gilman House hotel. He gives the narrator a room when a supposed bus failure leaves no transport out of town, placing the traveler inside a building whose staff and guests soon become a direct threat.",
+            "id": "gilman-house-clerk",
+            "name": "The Gilman House clerk",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An ancient amphibious people described by Zadok as living beneath the sea. They trade gold and fish with selected coastal communities in exchange for worship, secrecy, and human sacrifices, and can produce hybrid descendants with human partners. Their influence lies behind Innsmouth's prosperity and isolation.",
+            "id": "deep-ones",
+            "name": "The Deep Ones",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The narrator's late maternal grandmother, whose obscure origins become important when he investigates his family after escaping Innsmouth. A portrait and family records reveal that she came from the Marsh line and carried the ancestry responsible for the changes now beginning in him.",
+            "id": "narrators-grandmother",
+            "name": "The narrator's grandmother",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The narrator's maternal uncle, who investigated the family's ancestry before him. What Douglas learned drove him to suicide, and his fate becomes both evidence and a warning when the narrator follows the same trail.",
+            "id": "uncle-douglas",
+            "name": "Uncle Douglas",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "h-p-lovecrafts-the-shadow-over-innsmouth"
+      },
+      "recaps": {
+        "ending": "After the narrator reports his experience, federal authorities raid Innsmouth, make mass arrests, and attack the offshore reef. He initially regards the operation as the removal of a hidden menace. His later genealogical research changes that understanding: his maternal grandmother descended from Obed Marsh and the sea people, and an uncle killed himself after discovering the same inheritance. The narrator gradually develops the physical traits he once found repellent in Innsmouth and dreams of an immense city beneath the sea. Fear gives way to anticipation as he comes to believe that transformation will bring longevity and a return to his ancestral home. He decides to rescue a similarly affected cousin from confinement and travel with him to the underwater city of Y'ha-nthlei. The fugitive who escaped Innsmouth therefore ends by accepting that he belongs to the people he exposed.",
+        "in_short": "A young antiquarian traveler visits the decaying Massachusetts port of Innsmouth despite warnings about its hostile residents and their peculiar appearance. An elderly drunk, Zadok Allen, tells him that sea captain Obed Marsh once made a bargain with amphibious beings called Deep Ones, trading worship and human lives for gold, fish, and intermarriage. Trapped overnight when transport fails, the traveler escapes a hunt by townspeople and sees their inhuman allies moving through the streets. His report prompts a federal raid and an attack on the reef offshore. Later research uncovers the reason the town's faces seemed familiar: the narrator's own grandmother belonged to the Marsh bloodline. As his body begins to change, terror is replaced by dreams of the Deep Ones' underwater city. He resolves to free an affected cousin from an asylum and join their immortal relatives beneath the sea.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In 1927, a young traveler is touring historic New England towns while keeping his expenses low. At a railway station in Newburyport, he asks about the unusually cheap bus to Arkham that passes through Innsmouth. The ticket clerk is alarmed by his interest. He describes Innsmouth as an isolated, decaying seaport whose people are secretive, unhealthy-looking, and unwelcome elsewhere. The town once prospered through shipping and manufacturing, then declined after Captain Obed Marsh returned from South Pacific voyages with unexplained gold and founded a strange local religion. Disease and unrest later killed many residents, leaving the Marsh family in control of what remained. Intrigued rather than deterred, the narrator examines unfamiliar pieces of Innsmouth gold in a museum and decides to spend a day investigating. He boards the bus driven by Joe Sargent, an Innsmouth man whose narrow head, staring eyes, and rough skin display the appearance the clerk had tried to describe.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The narrator rides into Innsmouth through a landscape of abandoned farms and salt marshes. The town itself is far more ruined than he expected: many houses have collapsed, the harbor is almost empty, and the few residents watch him with open suspicion. He notices that older townspeople often share the same disturbing facial and bodily traits, while younger children appear more ordinary. At a grocery store he meets a clerk from Arkham, one of the only outsiders working locally. The clerk draws a map, points out landmarks, and explains that the Marsh refinery and the Esoteric Order of Dagon still dominate Innsmouth. He also identifies Zadok Allen, a very old resident who sometimes talks when given alcohol. The narrator tours churches converted to the local order, sees more signs of surveillance, and finds the town's architecture and family names oddly compelling. He buys liquor and approaches Zadok, hoping to separate real history from the fearful rumors repeated outside Innsmouth.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Liquor persuades Zadok Allen to tell the history Innsmouth suppresses. On a remote Pacific island, Obed Marsh learned of a community that prospered by bargaining with immortal sea beings. Marsh brought their rites home after access to the island was lost. The beings supplied fish and strange gold; Innsmouth offered worship and human sacrifices through the Esoteric Order of Dagon. As the pact deepened, human residents were compelled to marry the amphibious Deep Ones. Their children looked human when young but changed with age and eventually went to live beneath the sea at Y'ha-nthlei, beyond Devil Reef. Townspeople who resisted Marsh briefly jailed him and his followers, but creatures from the water overwhelmed the opposition. The deaths attributed to an epidemic concealed that takeover. Zadok says Innsmouth is now controlled by hybrids and that worse plans are approaching completion. When he sees movement near the water, his fear becomes panic. He runs away, leaving the narrator unsure how much to believe but convinced that he must depart on the evening bus.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The evening bus is said to have broken down, forcing the narrator to take a room at the Gilman House. Suspecting a trap, he secretly bolts connecting doors and stays alert. During the night, people gather in the hotel and try his doors. He escapes through a window and crosses rooftops while search parties spread through town. Roads out are guarded, telephone service is unavailable, and the pursuers coordinate with uncanny voices and footsteps. Using the grocery clerk's map, he avoids the main routes and heads toward the abandoned railway line. Before reaching safety, he sees a procession crossing the road from the direction of the sea. The figures combine human clothing and movement with fishlike or amphibian bodies; some move on four limbs, and many wear the jewelry associated with Innsmouth. The sight confirms Zadok's story. The narrator hides, then flees along the disused tracks until exhaustion and horror overwhelm him. He loses consciousness beyond the town, having escaped the immediate hunt.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The narrator reaches safety and reports what he learned. Federal agencies investigate Innsmouth, arrest many inhabitants, place others in secret detention, and use naval force against Devil Reef and the underwater settlement beyond it. The public receives only an incomplete explanation, while the narrator initially believes that a dangerous hidden community has been destroyed. He then resumes an old interest in his mother's ancestry. Records, family stories, and a portrait connect his grandmother to Obed Marsh and explain why Innsmouth's residents seemed disturbingly familiar. His uncle Douglas had uncovered the same lineage before taking his own life. Over the following years the narrator's appearance changes: his eyes, skin, posture, and dreams increasingly resemble those of the people he fled. Dreams of relatives in the submerged city teach him to view the change as an awakening rather than an illness. He expects to outlive ordinary humanity beneath the sea and no longer fears the Deep Ones. Planning to free an affected cousin from an asylum, he intends to go with him to Y'ha-nthlei and accept their shared inheritance.",
+            "through": {
+              "chapter": 5
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "h-p-lovecrafts-the-shadow-over-innsmouth"
+      }
+    },
     "halloween-party": {
       "characters": {
         "characters": [
@@ -1286,6 +1450,171 @@
           }
         ],
         "work": "hannibal-rising"
+      }
+    },
+    "hard-boiled-wonderland-and-the-end-of-the-world": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Narrator"
+            ],
+            "description": "An unnamed Tokyo Calcutec who encrypts information by passing it through his subconscious. Methodical, solitary, and fond of music and ordinary comforts, he accepts an unusual private assignment from an elderly scientist.",
+            "id": "calcutec-narrator",
+            "name": "The Calcutec",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The scientist's energetic granddaughter, first encountered operating a strangely silent elevator. She wears pink, communicates resourcefully when speech is impossible, and guides the Calcutec through the concealed approaches to her grandfather's laboratory.",
+            "id": "the-granddaughter",
+            "name": "The Granddaughter",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly researcher living in a hidden underground laboratory. He studies consciousness and asks the Calcutec to perform a special form of data shuffling, withholding much of the experiment's purpose.",
+            "id": "the-professor",
+            "name": "The Professor",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The newcomer to a walled town at the End of the World. The Gatekeeper separates him from his shadow and assigns him work as a Dreamreader, though he remembers little about where he came from.",
+            "id": "the-dreamreader",
+            "name": "The Dreamreader",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The Dreamreader's shadow, cut away at the town gate and confined apart from him. It retains a stronger sense that the town is dangerous and urges him to learn its layout before the shadow weakens.",
+            "id": "the-shadow",
+            "name": "The Shadow",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The powerful custodian of the End of the World's only gate. He tends the town's beasts, imposes its rules, and removes the newcomer's shadow before allowing him to enter.",
+            "id": "the-gatekeeper",
+            "name": "The Gatekeeper",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The young woman who assists the Dreamreader in the town's library, bringing him old unicorn skulls from which he reads dreams. She is gentle and attentive but says she has no mind in the sense he remembers.",
+            "id": "end-of-world-librarian",
+            "name": "The End of the World Librarian",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An old military man living in the End of the World. He offers the Dreamreader companionship and guarded information about the town, its seasons, and the consequences of living without a shadow.",
+            "id": "the-colonel",
+            "name": "The Colonel",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Tokyo librarian who helps the Calcutec investigate the unicorn skull left in his keeping. Her remarkable appetite and openness draw him into a personal connection beyond the research.",
+            "id": "tokyo-librarian",
+            "name": "The Tokyo Librarian",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Two intimidating operatives who invade the Calcutec's apartment and demand the old scientist's data. Their deliberate violence demonstrates that the conflict around the experiment extends beyond his employers in the System.",
+            "id": "junior-and-big-boy",
+            "name": "Junior and Big Boy",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "hard-boiled-wonderland-and-the-end-of-the-world"
+      },
+      "recaps": {
+        "ending": "In Tokyo, the Calcutec learns that the Professor's experiment has made the End of the World consciousness permanent. His ordinary awareness will end when the forced transition occurs, and no available procedure can stop it. After spending his remaining time with the librarian, he drives to the waterfront, listens to music, and waits in his car as sleep overtakes him. In the End of the World, the Dreamreader and his shadow reach the escape route. The shadow insists they must leave together, but the Dreamreader concludes that the town and its people are products of his own mind and that abandoning them would evade his responsibility. He chooses to remain and try to recover the fragments of mind dispersed among the unicorn skulls. The shadow escapes alone through the pool, promising that the two remain connected. The Dreamreader returns toward the town and the librarian, accepting a bounded inner world while the outside self disappears into it.",
+        "in_short": "A Tokyo Calcutec performs subconscious encryption for a secretive Professor, while alternating chapters follow a Dreamreader admitted to a walled town called the End of the World, where his shadow is cut away. The Calcutec learns that the Professor altered his brain and built the town as a hidden third consciousness. A timer has begun: his ordinary mind will soon cease and the End of the World will become his permanent reality. Attempts to reach the Professor through tunnels inhabited by INKlings cannot reverse the process. The Calcutec spends his last hours with a librarian, then waits for the transition in his car. Inside the End of the World, the Dreamreader maps an escape with his weakening shadow and discovers that music can recover traces of mind. At the escape point he lets the shadow leave alone, deciding to remain because the town's inhabitants are parts of himself for whom he is responsible. As the outer consciousness ends, the inner narrator returns toward the town and its librarian.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In Tokyo, an unnamed Calcutec is taken through a silent elevator and a dangerous underground route to the hidden laboratory of an elderly Professor. Calcutecs work for the System, protecting information by processing it through their subconscious minds. The Professor gives him numerical data to shuffle by a special method and entrusts him with a unicorn skull. In alternating chapters, another unnamed man arrives at a walled settlement called the End of the World. The Gatekeeper cuts away his shadow and confines it, warning that the separation is required for life in town. The newcomer becomes the Dreamreader. In the library he places his hands on old unicorn skulls and reads the dreams held inside them, assisted by a young librarian who says she has no mind. His shadow urges him to resist the town's calm surface and begin gathering information for an escape.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Calcutec consults a city librarian about the skull and learns about legends of unicorns, while their research develops into mutual attraction. The Professor's granddaughter warns that her grandfather and his work are in danger. The Calcutec's assignment appears connected to a struggle between the System and the Factory, rival organizations that exploit different forms of information control. Beneath Tokyo, hostile creatures called INKlings make access to the laboratory perilous. At the End of the World, the Dreamreader becomes familiar with the library, the Gatekeeper, and an old Colonel who cautiously describes the town's order. The shadow is losing strength and tells him to make a map before winter. The Dreamreader explores the wall, river, woods, abandoned spaces, and the daily movement of the golden beasts, looking for a weakness in a place designed to remove desire and memory.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Junior and Big Boy invade the Calcutec's apartment, destroy his possessions, and injure him while demanding the Professor's research. The attack confirms that the encrypted data has consequences neither the System nor the Professor explained. The Professor has disappeared underground, and his granddaughter recruits the Calcutec to help find him. Before the descent, the Calcutec learns that a deadline is approaching inside his own mind. At the End of the World, winter advances and many golden beasts die outside the gate. The Dreamreader continues reading skulls while trying to reach the librarian's missing inner life. His shadow weakens in confinement and insists that delay will make escape impossible. The Dreamreader completes more of the town map but is increasingly attached to the librarian and the quiet world he is supposed to flee.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Calcutec and the Professor's granddaughter travel through the subterranean tunnels, evading INKlings, crossing dark water, and climbing through the hidden infrastructure beneath the city. They locate the Professor, who explains that the Calcutec's brain was experimentally given multiple cognitive circuits. The End of the World is not merely a dream but a sealed inner world created as a third circuit. An error and subsequent tampering have started an irreversible transition: soon the Calcutec's ordinary consciousness will shut down and the inner world will continue permanently. In the town, the Dreamreader's search turns toward music. Although the residents lack minds, an encounter with musical instruments and the memory carried by melody suggests that lost feeling has not been destroyed. He begins to believe fragments of mind are stored in the dreams within the unicorn skulls.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Professor cannot reverse the approaching change. The Calcutec returns to the surface with only a short span of ordinary life remaining. Institutional explanations and the prospect of a consciousness that may technically persist do not alter the fact that the self he knows is about to end. He settles practical matters and chooses how to spend his remaining hours rather than surrender them to the System. He eats and talks with the Tokyo librarian, allowing their brief intimacy to become the central human event of his final day. In the End of the World, the shadow is close to death, and the Gatekeeper's control makes direct departure impossible. The Dreamreader keeps working with skulls and memory while preparing to use the escape route marked on his map. His discovery that music can awaken feeling strengthens both his bond with the librarian and his uncertainty about leaving her behind.",
+            "through": {
+              "chapter": 35
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Calcutec accepts that no rescue will preserve his ordinary consciousness. After spending his last meaningful time with the librarian, he drives to the waterfront, listens to music, and waits alone in his car as the transition approaches. In the End of the World, the Dreamreader frees his failing shadow and reaches the pool that provides a way through the wall. At the final moment he refuses to go. He has concluded that the town, the librarian, and its other residents are creations or divided portions of his own mind; leaving them in a state without full selves would be another form of abandonment. He sends the shadow through the escape alone and chooses to stay, hoping to recover the scattered fragments of mind preserved in the skulls. The shadow accepts the separation while insisting that they remain connected. As the outer Calcutec falls asleep, the Dreamreader turns back toward the walled town and the librarian, making the End of the World his continuing reality.",
+            "through": {
+              "chapter": 40
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "hard-boiled-wonderland-and-the-end-of-the-world"
       }
     },
     "hard-eight": {

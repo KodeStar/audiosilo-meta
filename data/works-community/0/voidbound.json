@@ -1645,6 +1645,336 @@
         "work": "war-of-the-wolf"
       }
     },
+    "war-of-the-worlds-dramatized": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An unnamed writer living near Woking with his wife. Thoughtful, observant, and interested in science, he becomes the principal witness to the Martian arrival and describes the invasion from his own limited point of view.",
+            "id": "narrator",
+            "name": "The narrator",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A respected astronomer and acquaintance of the narrator who observes unusual flashes on Mars. His scientific curiosity makes him one of the first people in England to take an interest in the strange events.",
+            "id": "ogilvy",
+            "name": "Ogilvy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A London journalist living near Woking. Ogilvy wakes him after the first cylinder lands, hoping Henderson can help spread news of the extraordinary object on Horsell Common.",
+            "id": "henderson",
+            "name": "Henderson",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Astronomer Royal, summoned to examine the cylinder on Horsell Common. He joins the small group of experts and local officials trying to understand the object and communicate with whatever is inside it.",
+            "id": "stent",
+            "name": "Stent",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The beings that emerge from the cylinder on Horsell Common. They come from Mars and have bodies, movements, and needs unlike those of humans; at first, the watching crowd can only guess at their intentions.",
+            "id": "martians",
+            "name": "The Martians",
+            "reveal": {
+              "chapter": 4
+            }
+          },
+          {
+            "description": "The narrator's wife, who shares his home near Woking. She listens to his early account of the cylinder and depends on him as the growing danger begins to disrupt their ordinary life.",
+            "id": "narrators-wife",
+            "name": "The narrator's wife",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A soldier separated from his unit during the first fighting. Exhausted and shaken, he tells the narrator how the Martian machines overwhelmed the troops sent against them.",
+            "id": "artilleryman",
+            "name": "The artilleryman",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A clergyman the narrator encounters while fleeing the devastated country around Weybridge. The destruction has badly shaken his faith and self-control, but for the moment the two men travel together in search of safety.",
+            "id": "curate",
+            "name": "The curate",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A medical student in London whose experiences provide a second view of the invasion. As reports from Surrey reach the capital, he recognizes the danger and tries to escape the spreading panic.",
+            "id": "narrators-brother",
+            "name": "The narrator's brother",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young married woman encountered by the narrator's brother during the flight from London. Separated from her surgeon husband, she travels with her sister-in-law and struggles to preserve their horse and carriage amid the crowds.",
+            "id": "mrs-elphinstone",
+            "name": "Mrs. Elphinstone",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The commander of a Royal Navy torpedo ram protecting refugee ships off the English coast. As civilians try to cross the water, he takes his vessel directly toward the approaching Martian fighting machines.",
+            "id": "captain-of-hms-thunder-child",
+            "name": "Captain of HMS Thunder Child",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "war-of-the-worlds-dramatized"
+      },
+      "recaps": {
+        "ending": "In London, the narrator finds the Martian fighting machines motionless and their operators dead. The invaders had no resistance to earthly microorganisms, so ordinary bacteria defeated them after human weapons and institutions had failed. England begins to recover, although the invasion has killed many people and permanently altered the survivors' sense of security. Believing his wife died in the destruction of Leatherhead, the narrator returns alone to the ruins of his home near Woking. She unexpectedly arrives there with a cousin, having escaped before the town was destroyed, and the couple are reunited. Later study of the abandoned Martian machinery expands human knowledge, while observations of Mars and activity elsewhere in the solar system leave open the possibility of another attack. The narrator continues to suffer vivid memories of the invasion and recognizes how fragile human dominance has always been.",
+        "in_short": "Unusual flashes on Mars precede the fall of cylinders in southern England. An unnamed writer near Woking sees the first Martians emerge and attack with a Heat-Ray, then sends his wife toward safety as towering fighting machines advance. Military resistance collapses under the Heat-Ray and poisonous Black Smoke. The narrator survives the destruction of Weybridge, travels with a terrified curate, and later hides beside a Martian pit while the invaders feed and build. In a parallel account, his brother escapes the panic in London and reaches a refugee ship after HMS Thunder Child sacrifices itself against the machines. The curate's loss of control leads to his death, while the narrator remains concealed. When he finally enters a silent London, he discovers that the Martians have died from earthly bacteria to which humans have acquired resistance. He returns to his damaged home expecting to be alone and is reunited with his wife, who escaped Leatherhead before its destruction.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "During a close approach of Mars, astronomers observe flashes on its surface but do not understand their significance. Soon afterward, a large object falls on Horsell Common near Woking. Ogilvy discovers that it is a metal cylinder and realizes that something inside is unscrewing its lid. Curiosity draws a crowd, along with scientific and local authorities. When the cylinder opens, strange Martian beings emerge. A group approaches under a white flag, but the newcomers use an invisible Heat-Ray to burn the delegation and many spectators. The narrator escapes the common, carrying the first direct knowledge that the arrival is both extraterrestrial and violently dangerous.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Heat-Ray sets fires around the common, yet many nearby residents initially treat the event as a local disturbance. The narrator reaches home and tells his wife what he saw. As the danger grows, he hires a cart and takes her to relatives in Leatherhead, intending to return the vehicle. On his journey back, a violent storm reveals enormous three-legged fighting machines moving across the countryside. Buildings are wrecked, people flee, and further cylinders arrive. The narrator loses the cart and struggles home through darkness and destruction. There he meets an artilleryman whose unit was wiped out by the Martian machines, confirming that organized troops have already suffered a devastating defeat.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The narrator shelters with the artilleryman, watching soldiers and civilians prepare a defense while Martian fighting machines range across Surrey. He joins the stream of refugees but becomes caught in the battle near Weybridge and Shepperton. Artillery destroys one machine, yet the remaining Martians answer with the Heat-Ray and cause widespread ruin. Thrown into the river, the narrator narrowly avoids being crushed or burned and eventually crawls away through the wreckage. Hungry, exhausted, and unsure whether Leatherhead or his wife survived, he encounters a curate whose religious certainty has collapsed under the catastrophe. The two continue together as Martian control spreads.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The narrator and the curate move through an increasingly empty countryside while the Martians expand their attack, using both the Heat-Ray and a lethal Black Smoke against military positions. The narrative also follows the narrator's brother in London. News arrives slowly, but mass flight begins once the scale of the invasion becomes clear. He helps Mrs. Elphinstone and her sister-in-law resist thieves and joins them in the chaotic exodus toward the coast. Offshore, refugee vessels face approaching fighting machines. HMS Thunder Child charges the Martians, destroying machines and buying time for civilian ships to escape, though the warship is lost. The narrator's brother and the two women get away by sea, while the narrator remains cut off inland with no news of his wife.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Fleeing another attack, the narrator and curate are trapped in a ruined house beside a newly opened Martian pit. Through a narrow gap, they observe handling machines at work and learn that the invaders feed by taking blood from captured humans. Days of confinement, hunger, and fear destroy what remains of the curate's restraint. His cries threaten to expose them, and the narrator strikes him to silence him. A Martian handling machine investigates, takes the curate, and searches the house, but fails to find the narrator. He remains hidden until the sounds from the pit cease. Emerging into the open, he finds the Martians gone from the site and the red plant growth they brought already dying. The surrounding land is strangely still, and he begins walking toward London.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On the way to London, the narrator meets the artilleryman again. The soldier imagines an underground society that could preserve humanity, but his lack of real preparation exposes the plan as fantasy, and the narrator leaves. London appears deserted beneath dying red vegetation. Expecting to find the Martians triumphant, he instead discovers their machines standing silent and the invaders dead. Earthly bacteria, harmless enough to adapted humans, killed the Martians because they possessed no immunity. Survivors return and organized life begins again. Convinced that his wife died when Leatherhead was destroyed, the narrator goes back to his damaged home near Woking. His wife, who escaped with a cousin before the attack, arrives there and they reunite. The invasion is over, but its losses, captured technology, and the possibility of future danger permanently change humanity's view of itself and of the solar system.",
+            "through": {
+              "chapter": 27
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "war-of-the-worlds-dramatized"
+      }
+    },
+    "war-of-the-worlds-dramatized-h-g-wells": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An unnamed philosophical writer living near Woking with his wife. Curious about astronomy and confident in modern civilization at the outset, he becomes the principal witness to the Martian landing and invasion, recording both his own flight across Surrey and London and the experiences his younger brother later relates to him.",
+            "id": "narrator",
+            "name": "The Narrator",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An astronomer at Ottershaw who observes flashes on Mars and invites the narrator to view the planet through his telescope. He is among the first people to inspect the object that falls on Horsell Common and the first to understand that it is an artificial cylinder rather than a meteorite.",
+            "id": "ogilvy",
+            "name": "Ogilvy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The intelligent inhabitants of Mars, whose cylinders arrive in southern England after signs of launches are seen through telescopes. Their weak-looking bodies initially appear helpless in Earth's gravity, but they deploy advanced machines and a devastating Heat-Ray against the people gathered near their landing site.",
+            "id": "martians",
+            "name": "The Martians",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The narrator's wife, who shares his home at Maybury. He takes her to relatives in Leatherhead when the danger around Woking becomes unmistakable, then is separated from her after returning the borrowed cart, making the hope of reunion central to his flight.",
+            "id": "narrators-wife",
+            "name": "The Narrator's Wife",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A soldier separated from his battery after the Martian fighting machines destroy the forces sent against them. Exhausted but observant, he reaches the narrator's house and explains how quickly conventional troops and guns have been overwhelmed.",
+            "id": "artilleryman",
+            "name": "The Artilleryman",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A clergyman from Weybridge whom the narrator meets amid the ruined countryside. The invasion has shattered his understanding of divine order, leaving him frightened, despairing, and dependent on the narrator as the two seek shelter together.",
+            "id": "curate",
+            "name": "The Curate",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The narrator's younger brother, a medical student in London. His part of the account follows the capital's delayed recognition of the invasion and the enormous civilian flight that begins when the Martians advance toward the city.",
+            "id": "narrators-brother",
+            "name": "The Narrator's Brother",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The wife of a doctor, encountered by the narrator's brother while she and her younger sister are trying to escape the spreading panic. Determined to reach safety after their driver flees, she joins forces with him on the congested road away from London.",
+            "id": "mrs-elphinstone",
+            "name": "Mrs. Elphinstone",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Mrs. Elphinstone's younger sister and companion during the flight from London. Frightened and repeatedly concerned that they should wait for Mrs. Elphinstone's missing husband, she nevertheless continues with her sister and the narrator's brother toward the coast.",
+            "id": "miss-elphinstone",
+            "name": "Miss Elphinstone",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "war-of-the-worlds-dramatized-h-g-wells"
+      },
+      "recaps": {
+        "ending": "In deserted London, the narrator discovers that the Martians and their fighting machines have suddenly become still. The invaders are dead or dying, defeated not by human weapons but by terrestrial microorganisms against which they have no immunity. Other survivors emerge, and organized life begins to return. Physically safe but mentally exhausted, the narrator is cared for by strangers and eventually makes his way back through the damaged suburbs to his home in Woking. There, after believing that both must have died, he is reunited with his wife. Human authorities study the abandoned Martian machinery and the possibility of future attacks, while astronomers watch Mars with new concern. The invasion leaves the narrator aware that human dominance is neither guaranteed nor absolute, and that ordinary life continues under the knowledge that another world has already tried to conquer Earth.",
+        "in_short": "After astronomers observe eruptions on Mars, cylinders fall in southern England carrying Martians armed with a Heat-Ray, poison gas, and towering fighting machines. An unnamed writer near Woking survives the first attack, gets his wife to Leatherhead, and is then cut off from her as the invasion expands. Conventional forces collapse. The narrator flees with a traumatized curate and is trapped beside a Martian feeding site, while his brother escapes the mass evacuation of London and reaches a departing ship after witnessing the warship Thunder Child sacrifice itself against the machines. Emerging into a ruined London, the narrator finds the Martians abruptly dead: Earthly microorganisms, harmless to humanity through long adaptation, have destroyed the invaders. He returns home and is unexpectedly reunited with his wife. Humanity survives, but the abandoned technology and the possibility of another attack permanently alter its view of its place in the universe.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "The narrator recalls a time when humanity assumed life on Earth was secure, unaware that intelligent beings on a cooling Mars were observing the planet. Astronomers see flashes from Mars on successive nights, but few connect them with danger. Soon afterward, what appears to be a meteorite lands on Horsell Common near Woking. The astronomer Ogilvy examines the object and recognizes it as a large manufactured cylinder. Crowds gather while its lid slowly unscrews from within. The narrator visits the site, sees movement inside, and returns home unsettled as news of the strange arrival spreads.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Martians emerge from the cylinder on Horsell Common. Though their bodies struggle in Earth's stronger gravity, they assemble a weapon that projects an invisible Heat-Ray, burning the delegation approaching them and killing many onlookers. The narrator escapes through the confusion. At first the disaster remains local and is treated with disbelief, but soldiers cordon off the common as a second cylinder arrives. The narrator returns to his home and tries to preserve an ordinary routine until the fighting draws closer. Realizing his wife is in danger, he borrows a cart and takes her to relatives in Leatherhead, then returns toward Maybury to give back the cart. A violent storm breaks as towering Martian fighting machines advance through the countryside, overturning the narrator on the road and leaving him separated from his wife.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The narrator shelters at home with an artilleryman whose unit was destroyed. The soldier explains that the Martians now move in huge three-legged fighting machines, against which ordinary troops have achieved little. They travel together toward London before separating. The narrator instead attempts to reach Leatherhead, joining streams of refugees as guns and fires spread across Surrey. At Weybridge and Shepperton, human artillery briefly damages a fighting machine, but the Martians answer with the Heat-Ray. Driven into the river, the narrator narrowly survives the destruction and escapes across a landscape of burned towns, dead civilians, and abandoned possessions.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The narrator meets a curate whose faith and judgment have collapsed under the invasion, and the two move through the ruined countryside. The narrative also follows the narrator's brother in London, where incomplete reports give way to panic when the Martians begin using a lethal Black Smoke and advance beyond the defensive lines. Millions flee north and east in a chaotic mass. The brother helps Mrs. Elphinstone and her sister defend their carriage and joins their attempt to reach the coast. They secure passage on a steamer. As Martian machines approach the crowded evacuation fleet, the torpedo ram Thunder Child attacks them, destroying two machines at the cost of the ship and its crew and giving the civilian vessels time to escape. The brother and the two women reach safety across the Channel.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The narrator and the curate take shelter in a house just as another Martian cylinder crashes nearby, trapping them behind fallen earth. Through a gap, the narrator observes the invaders closely. He learns that they handle objects through mechanical tentacles, cultivate the red weed spreading across the land, and feed by taking blood directly from captured humans. Days of confinement and scarce food intensify the conflict between the two men. When the curate's terrified shouting threatens to expose them, the narrator strikes him to silence him. A Martian tentacle enters, removes the curate, and searches the ruined house, but fails to find the narrator. He remains hidden until the Martians leave, then emerges into an uncannily quiet landscape transformed by red growth.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The narrator travels through empty streets and meets the artilleryman again on Putney Hill. The soldier proposes building an underground community that will preserve human knowledge, train future generations, and eventually capture Martian machines. The plan briefly appeals to the narrator, but he realizes that the soldier prefers talking and leisure to the sustained labor his scheme would require. Leaving him, the narrator enters London. The city is silent and largely abandoned, with bodies in the streets, red weed clogging the waterways, and no organized resistance. Convinced that humanity has lost, he walks toward the sounds made by the Martians, prepared to face them rather than continue hiding.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In London, the narrator discovers motionless fighting machines and Martian bodies. The invaders have died from terrestrial microorganisms to which humans have acquired resistance over countless generations. Survivors begin to reappear, and the danger ends as abruptly as it began. After a period of physical and mental recovery, the narrator returns through the damaged suburbs to his home near Woking. He expects to find only ruins and memories, but his wife, who also believed him dead, returns there and they are reunited. In the aftermath, people study the abandoned Martian equipment, reconsider the possibility of life on other planets, and prepare for the chance of another invasion. The narrator resumes his life, though the experience leaves him unable to regard either civilization or human supremacy as secure.",
+            "through": {
+              "chapter": 27
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "war-of-the-worlds-dramatized-h-g-wells"
+      }
+    },
     "warbreaker-tenth-anniversary-edition-part-1-of-2-dramatized-adaptation": {
       "characters": {
         "characters": [
@@ -2643,6 +2973,176 @@
           }
         ],
         "work": "waybound"
+      }
+    },
+    "wda-classics-presents-h-g-wells-war-of-the-worlds": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An unnamed writer living near Woking with his wife. Thoughtful, observant, and interested in science, he becomes the principal witness to the Martian arrival and describes the invasion from his own limited point of view.",
+            "id": "narrator",
+            "name": "The narrator",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A respected astronomer and acquaintance of the narrator who observes unusual flashes on Mars. His scientific curiosity makes him one of the first people in England to take an interest in the strange events.",
+            "id": "ogilvy",
+            "name": "Ogilvy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A London journalist living near Woking. Ogilvy wakes him after the first cylinder lands, hoping Henderson can help spread news of the extraordinary object on Horsell Common.",
+            "id": "henderson",
+            "name": "Henderson",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Astronomer Royal, summoned to examine the cylinder on Horsell Common. He joins the small group of experts and local officials trying to understand the object and communicate with whatever is inside it.",
+            "id": "stent",
+            "name": "Stent",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The beings that emerge from the cylinder on Horsell Common. They come from Mars and have bodies, movements, and needs unlike those of humans; at first, the watching crowd can only guess at their intentions.",
+            "id": "martians",
+            "name": "The Martians",
+            "reveal": {
+              "chapter": 4
+            }
+          },
+          {
+            "description": "The narrator's wife, who shares his home near Woking. She listens to his early account of the cylinder and depends on him as the growing danger begins to disrupt their ordinary life.",
+            "id": "narrators-wife",
+            "name": "The narrator's wife",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A soldier separated from his unit during the first fighting. Exhausted and shaken, he tells the narrator how the Martian machines overwhelmed the troops sent against them.",
+            "id": "artilleryman",
+            "name": "The artilleryman",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A clergyman the narrator encounters while fleeing the devastated country around Weybridge. The destruction has badly shaken his faith and self-control, but for the moment the two men travel together in search of safety.",
+            "id": "curate",
+            "name": "The curate",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A medical student in London whose experiences provide a second view of the invasion. As reports from Surrey reach the capital, he recognizes the danger and tries to escape the spreading panic.",
+            "id": "narrators-brother",
+            "name": "The narrator's brother",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young married woman encountered by the narrator's brother during the flight from London. Separated from her surgeon husband, she travels with her sister-in-law and struggles to preserve their horse and carriage amid the crowds.",
+            "id": "mrs-elphinstone",
+            "name": "Mrs. Elphinstone",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The commander of a Royal Navy torpedo ram protecting refugee ships off the English coast. As civilians try to cross the water, he takes his vessel directly toward the approaching Martian fighting machines.",
+            "id": "captain-of-hms-thunder-child",
+            "name": "Captain of HMS Thunder Child",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "wda-classics-presents-h-g-wells-war-of-the-worlds"
+      },
+      "recaps": {
+        "ending": "In London, the narrator finds the Martian fighting machines motionless and their operators dead. The invaders had no resistance to earthly microorganisms, so ordinary bacteria defeated them after human weapons and institutions had failed. England begins to recover, although the invasion has killed many people and permanently altered the survivors' sense of security. Believing his wife died in the destruction of Leatherhead, the narrator returns alone to the ruins of his home near Woking. She unexpectedly arrives there with a cousin, having escaped before the town was destroyed, and the couple are reunited. Later study of the abandoned Martian machinery expands human knowledge, while observations of Mars and activity elsewhere in the solar system leave open the possibility of another attack. The narrator continues to suffer vivid memories of the invasion and recognizes how fragile human dominance has always been.",
+        "in_short": "Unusual flashes on Mars precede the fall of cylinders in southern England. An unnamed writer near Woking sees the first Martians emerge and attack with a Heat-Ray, then sends his wife toward safety as towering fighting machines advance. Military resistance collapses under the Heat-Ray and poisonous Black Smoke. The narrator survives the destruction of Weybridge, travels with a terrified curate, and later hides beside a Martian pit while the invaders feed and build. In a parallel account, his brother escapes the panic in London and reaches a refugee ship after HMS Thunder Child sacrifices itself against the machines. The curate's loss of control leads to his death, while the narrator remains concealed. When he finally enters a silent London, he discovers that the Martians have died from earthly bacteria to which humans have acquired resistance. He returns to his damaged home expecting to be alone and is reunited with his wife, who escaped Leatherhead before its destruction.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "During a close approach of Mars, astronomers observe flashes on its surface but do not understand their significance. Soon afterward, a large object falls on Horsell Common near Woking. Ogilvy discovers that it is a metal cylinder and realizes that something inside is unscrewing its lid. Curiosity draws a crowd, along with scientific and local authorities. When the cylinder opens, strange Martian beings emerge. A group approaches under a white flag, but the newcomers use an invisible Heat-Ray to burn the delegation and many spectators. The narrator escapes the common, carrying the first direct knowledge that the arrival is both extraterrestrial and violently dangerous.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Heat-Ray sets fires around the common, yet many nearby residents initially treat the event as a local disturbance. The narrator reaches home and tells his wife what he saw. As the danger grows, he hires a cart and takes her to relatives in Leatherhead, intending to return the vehicle. On his journey back, a violent storm reveals enormous three-legged fighting machines moving across the countryside. Buildings are wrecked, people flee, and further cylinders arrive. The narrator loses the cart and struggles home through darkness and destruction. There he meets an artilleryman whose unit was wiped out by the Martian machines, confirming that organized troops have already suffered a devastating defeat.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The narrator shelters with the artilleryman, watching soldiers and civilians prepare a defense while Martian fighting machines range across Surrey. He joins the stream of refugees but becomes caught in the battle near Weybridge and Shepperton. Artillery destroys one machine, yet the remaining Martians answer with the Heat-Ray and cause widespread ruin. Thrown into the river, the narrator narrowly avoids being crushed or burned and eventually crawls away through the wreckage. Hungry, exhausted, and unsure whether Leatherhead or his wife survived, he encounters a curate whose religious certainty has collapsed under the catastrophe. The two continue together as Martian control spreads.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The narrator and the curate move through an increasingly empty countryside while the Martians expand their attack, using both the Heat-Ray and a lethal Black Smoke against military positions. The narrative also follows the narrator's brother in London. News arrives slowly, but mass flight begins once the scale of the invasion becomes clear. He helps Mrs. Elphinstone and her sister-in-law resist thieves and joins them in the chaotic exodus toward the coast. Offshore, refugee vessels face approaching fighting machines. HMS Thunder Child charges the Martians, destroying machines and buying time for civilian ships to escape, though the warship is lost. The narrator's brother and the two women get away by sea, while the narrator remains cut off inland with no news of his wife.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Fleeing another attack, the narrator and curate are trapped in a ruined house beside a newly opened Martian pit. Through a narrow gap, they observe handling machines at work and learn that the invaders feed by taking blood from captured humans. Days of confinement, hunger, and fear destroy what remains of the curate's restraint. His cries threaten to expose them, and the narrator strikes him to silence him. A Martian handling machine investigates, takes the curate, and searches the house, but fails to find the narrator. He remains hidden until the sounds from the pit cease. Emerging into the open, he finds the Martians gone from the site and the red plant growth they brought already dying. The surrounding land is strangely still, and he begins walking toward London.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On the way to London, the narrator meets the artilleryman again. The soldier imagines an underground society that could preserve humanity, but his lack of real preparation exposes the plan as fantasy, and the narrator leaves. London appears deserted beneath dying red vegetation. Expecting to find the Martians triumphant, he instead discovers their machines standing silent and the invaders dead. Earthly bacteria, harmless enough to adapted humans, killed the Martians because they possessed no immunity. Survivors return and organized life begins again. Convinced that his wife died when Leatherhead was destroyed, the narrator goes back to his damaged home near Woking. His wife, who escaped with a cousin before the attack, arrives there and they reunite. The invasion is over, but its losses, captured technology, and the possibility of future danger permanently change humanity's view of itself and of the solar system.",
+            "through": {
+              "chapter": 27
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "wda-classics-presents-h-g-wells-war-of-the-worlds"
       }
     }
   }
