@@ -1212,6 +1212,174 @@
         "work": "fathers-and-sons-ivan-turgenev"
       }
     },
+    "faust-johann-wolfgang-von-goethe": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A celebrated scholar who has mastered the established fields of learning but feels that none has brought him genuine understanding. Restless, isolated, and close to despair, he turns to magic in the hope of reaching truths beyond ordinary study.",
+            "id": "faust",
+            "name": "Faust",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A mocking devil who appears before the Lord and claims that Faust can be led away from his striving. He receives permission to test the scholar, confident that human appetite and confusion will make his task easy.",
+            "id": "mephistopheles",
+            "name": "Mephistopheles",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Gretchen"
+            ],
+            "description": "A young woman whom Faust approaches in the street. Modest, direct, and wary of the unfamiliar gentleman, she refuses his offer to escort her and returns to the small household she shares with her mother.",
+            "id": "margarete",
+            "name": "Margarete",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Faust's learned assistant, diligent and conventional in his scholarship. He values the accumulation and transmission of knowledge that Faust has come to find empty, making him an earnest contrast to his master's spiritual hunger.",
+            "id": "wagner",
+            "name": "Wagner",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A vast spirit associated with the living forces of the earth. Faust summons it in his study and briefly believes he has reached an equal, but the spirit rejects that claim and leaves him shaken.",
+            "id": "earth-spirit",
+            "name": "Earth Spirit",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A novice scholar who comes to seek Faust's academic guidance. Mephistopheles receives him in Faust's gown and gives a cynical parody of advice about university study and professional learning.",
+            "id": "student",
+            "name": "Student",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The supernatural keeper of a kitchen where a potion can restore Faust's youthful appearance. Her grotesque ritual and household bewilder Faust, while Mephistopheles treats the proceedings as familiar business.",
+            "id": "witch",
+            "name": "The Witch",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Martha"
+            ],
+            "description": "Margarete's neighbor, a sociable widow troubled by the unexplained absence of her husband. She helps arrange a meeting between Margarete and Faust after Mephistopheles offers supposed news about the missing man.",
+            "id": "marthe-schwerdtlein",
+            "name": "Marthe Schwerdtlein",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Margarete's soldier brother. Returning home after her pregnancy has become public, he is furious about the injury to the family's honor and waits outside to confront the man responsible.",
+            "id": "valentin",
+            "name": "Valentin",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young woman who talks with Margarete at the well about another unmarried woman's pregnancy. Her harsh gossip forces Margarete to recognize how completely her own circumstances and judgments have changed.",
+            "id": "lieschen",
+            "name": "Lieschen",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "faust-johann-wolfgang-von-goethe"
+      },
+      "recaps": {
+        "ending": "Faust reaches the prison where Margarete awaits execution for drowning her infant. Delirious at first, she recognizes him and responds with joy, but the prospect of flight fills her with dread. She imagines the graves of her mother and brother and insists that she must remain to face divine judgment. Mephistopheles appears at the door and warns that dawn is coming. Margarete recoils from him, entrusts herself to God, and calls upon heaven for protection. A voice from above declares her saved, while Mephistopheles says she is condemned and pulls Faust away. The drama therefore closes with Margarete physically left to her sentence but spiritually redeemed, while Faust escapes in Mephistopheles's company and remains bound to the dangerous course created by their bargain.",
+        "in_short": "The scholar Faust, despairing of the limits of knowledge, enters a wager with Mephistopheles: if any experience satisfies him so completely that he wishes it to last, he will forfeit himself. Restored to youth, Faust becomes infatuated with Margarete, called Gretchen. With Mephistopheles arranging access, Faust gives her jewelry, wins her love, and begins a relationship whose costs fall largely on her. A sleeping potion meant to conceal their meeting kills her mother; Faust, aided by Mephistopheles, kills her brother Valentin; and Margarete becomes pregnant. After a night of supernatural revelry, Faust learns that she has drowned her baby and is imprisoned. He attempts a rescue, but the distraught Margarete refuses to flee, submits herself to God's judgment, and is proclaimed saved by a heavenly voice. Mephistopheles drags Faust away, leaving the scholar's wager and moral peril unresolved.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In the heavenly prologue, Mephistopheles claims that the learned Faust can be diverted from his restless search for truth, and the Lord permits the test. Faust himself sits in his study disgusted by the limits of philosophy, law, medicine, and theology. He turns to magic, invokes the Earth Spirit, and is humiliated when the spirit denies their equality. On the brink of suicide, he is recalled to life by Easter bells and memories of childhood faith. Walking outside with his assistant Wagner, Faust is honored by townspeople for medical work once performed with his father, though privately he doubts that their remedies did more good than harm. A black poodle follows him home. In the study it reveals itself as Mephistopheles, who returns with an offer: he will serve Faust in this life, but if Faust ever becomes so satisfied that he wishes a moment to remain, Faust will die and owe him service beyond death. Faust accepts the wager and signs in blood.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Mephistopheles begins Faust's tour of worldly experience with coarse entertainment in Auerbach's cellar, then takes him to a witch who prepares a potion that makes him appear young. In the witch's mirror Faust sees an image of ideal beauty, and soon afterward he encounters Margarete, or Gretchen, in the street. She refuses his abrupt offer of companionship, but he demands that Mephistopheles obtain her for him. Mephistopheles places a casket of jewelry in her room. Margarete is delighted and puzzled by the gift, though her mother later turns it over to the Church. A second cache is therefore entrusted to Margarete's neighbor Marthe, who is willing to keep it secret. Faust's pursuit has moved from fantasy to a planned introduction, with Mephistopheles using wealth and deception to overcome the barriers around Margarete.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Mephistopheles tells Marthe that her absent husband is dead and says a second witness can confirm the report. This fiction provides the occasion for Faust and Margarete to meet in Marthe's garden. While Marthe questions Mephistopheles about marriage, Faust and Margarete walk together. She describes her narrow domestic life and the labor of caring for her mother and young sister; he presents his fascination as sincere devotion. Margarete admits that she was first wary of him but is now drawn to him, and their private meeting ends in a kiss. Alone later, she recognizes how thoroughly he occupies her thoughts. Faust, however, alternates between gratitude for the natural world and impatience for possession. Mephistopheles exploits that impatience, pressing him back toward Margarete and dismissing his attempts at spiritual retreat.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Margarete's love deepens while Faust's visits remain dangerous and secret. When she questions his religion, he answers in broad language about feeling and the divine rather than accepting her conventional faith. He gives her a sleeping potion for her mother so that they can be together undisturbed. The consequences soon become visible. At the well, Margarete hears another unmarried pregnant woman condemned and realizes that she now faces the same social judgment. She prays in anguish before an image of the grieving Virgin. Faust's desire has been fulfilled, but Margarete is left pregnant, isolated, and burdened by fear.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Margarete's brother Valentin returns as the family's disgrace has become public. He confronts Faust and Mephistopheles in the street; with Mephistopheles's assistance, Faust mortally wounds him. Dying before the gathered neighbors, Valentin denounces Margarete and predicts her public ruin. In the cathedral she is overwhelmed by guilt over her mother, her brother, and her pregnancy, while an accusing spirit intensifies her terror until she collapses. Faust nevertheless follows Mephistopheles to the witches' gathering on the Brocken. Amid the spectacle he sees a pale figure resembling Margarete, with a mark around her neck that suggests execution. The vision breaks through the night's distractions and turns his attention back to the woman he abandoned.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Faust learns that Margarete has been imprisoned after drowning her newborn child and furiously accuses Mephistopheles of concealing her misery. He demands a rescue. Mephistopheles provides supernatural horses and helps him reach the prison, though he refuses responsibility for the chain of harm. Faust takes the jailer's keys and enters Margarete's cell. At first she mistakes him for the executioner; when she recognizes him, affection and memories briefly return, but she cannot accept his plan to flee. Haunted by the deaths of her child, mother, and brother, she chooses to remain and entrusts herself to divine judgment. Mephistopheles appears as dawn approaches and declares her condemned, but a voice from above answers that she is saved. He carries Faust away, leaving Margarete to her earthly sentence while her spiritual fate is secured and Faust's own bargain remains in force.",
+            "through": {
+              "chapter": 25
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "faust-johann-wolfgang-von-goethe"
+      }
+    },
     "feast-of-fools": {
       "characters": {
         "characters": [
