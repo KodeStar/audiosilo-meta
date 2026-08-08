@@ -949,6 +949,219 @@
         "work": "the-tragical-history-of-doctor-faustus"
       }
     },
+    "the-trial-alpha-dvd": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A senior clerk at a bank who is unexpectedly arrested in his boarding house on his thirtieth birthday. The officials refuse to identify a specific charge and allow him to continue his ordinary life while proceedings continue. Accustomed to professional competence and personal independence, K. initially treats the arrest as an absurd mistake that can be defeated by confidence and reason.",
+            "id": "josef-k",
+            "name": "Josef K.",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The landlady of the boarding house where K. rents a room. She is attentive to appearances and household respectability, and she attempts to reassure K. after the arrest while also speculating about what sort of proceeding may have begun against him.",
+            "id": "frau-grubach",
+            "name": "Frau Grubach",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young typist who lodges in the same boarding house as K. Her room is used by the arresting officials without her permission, and K. waits up to explain the intrusion when she returns from the theatre.",
+            "id": "fraulein-burstner",
+            "name": "Fräulein Bürstner",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the two warders who enter K.'s room and announce his arrest. Franz behaves with the casual assurance of a low-ranking official who expects obedience even though he cannot explain the charge or the authority behind it.",
+            "id": "franz",
+            "name": "Franz",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A warder assigned with Franz to supervise K.'s arrest. He helps consume K.'s breakfast and offers vague advice about accepting the process, while insisting that officials at his level do not know the substance of a case.",
+            "id": "willem",
+            "name": "Willem",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The official who briefly oversees K.'s arrest from Fräulein Bürstner's room. He confirms that K. is under arrest but free to go to the bank, offering neither a charge nor a useful explanation of what will follow.",
+            "id": "the-inspector",
+            "name": "The Inspector",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The official presiding over K.'s first inquiry in a crowded room hidden inside a tenement. He rebukes K. for arriving late and attempts to conduct the hearing from a notebook whose authority K. openly challenges.",
+            "id": "examining-magistrate",
+            "name": "The Examining Magistrate",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A woman who lives with her husband in the room used for K.'s inquiry and clears it for court sessions. She describes the attentions forced on her by a student and the examining magistrate, then offers to help K. because she has access to the magistrate's books.",
+            "id": "the-ushers-wife",
+            "name": "The Usher's Wife",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "K.'s uncle from the country, who comes to the city after learning of the case. Alarmed about the family's reputation, he treats the accusation as a grave practical danger and insists on taking K. to an experienced advocate.",
+            "id": "uncle-karl",
+            "name": "Uncle Karl",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Advocate"
+            ],
+            "description": "A bedridden lawyer retained by K. through Uncle Karl. Huld claims long experience and useful personal contacts within the court, but explains the case through obscure procedures and private influence rather than a clear plan K. can evaluate.",
+            "id": "dr-huld",
+            "name": "Dr. Huld",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Dr. Huld's nurse, who quickly takes a personal interest in K. She seems familiar with accused men and with the informal life surrounding the court, and offers K. affection and assistance while his uncle and the lawyer discuss the case.",
+            "id": "leni",
+            "name": "Leni",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A painter who produces portraits for court officials and has inherited his position from his father. Recommended to K. by a bank client, Titorelli lives beside court offices and claims practical knowledge of the limited outcomes available to an accused person.",
+            "id": "titorelli",
+            "name": "Titorelli",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A grain merchant and another of Dr. Huld's clients. His case has continued for years and has consumed his business, money, and dignity. He waits at the lawyer's house like a servant and tries to obtain information from several minor advocates as well.",
+            "id": "rudi-block",
+            "name": "Rudi Block",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Prison Chaplain"
+            ],
+            "description": "A priest whom K. encounters alone in the cathedral after a business appointment fails to occur. He calls K. by name from the pulpit, identifies himself as a prison chaplain, and speaks to him about the direction of his case.",
+            "id": "the-priest",
+            "name": "The Priest",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Two formally dressed men who arrive at K.'s lodging on the eve of his thirty-first birthday. They take charge of him without presenting any final judgment and lead him through the quiet city.",
+            "id": "the-executioners",
+            "name": "The Executioners",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-trial-alpha-dvd"
+      },
+      "recaps": {
+        "ending": "On the eve of K.'s thirty-first birthday, two men come to his room and silently assume custody of him. K. goes with them through the city, making only a brief and unsuccessful attempt to resist. They lead him to an abandoned quarry, remove his outer clothes, and position him against a stone. One man produces a butcher's knife, and the pair pass it between them as though expecting K. to perform the execution himself. K. cannot do so. One of the men holds him while the other stabs him in the heart and turns the knife. As his sight fails, K. sees the men observing his death and thinks that the shame of it will outlive him. The court never states a charge, conducts a transparent trial, or issues a judgment in his presence; its process ends instead in an execution that K. has gradually been made to accompany.",
+        "in_short": "Bank clerk Josef K. is arrested on his thirtieth birthday by agents of an inaccessible court, although he remains free to work and is never told the charge. He defies a chaotic first inquiry, explores court offices hidden in tenements, and sees the warders punished after he complains about them. As the case persists, his uncle hires the advocate Huld, whose secretive methods produce no visible progress. K. turns to the court painter Titorelli, only to learn that the system offers indefinite delay or temporary release rather than genuine acquittal. He dismisses Huld after witnessing the lawyer's humiliating control over another defendant. In a cathedral, the prison chaplain tells him a parable about a man kept from the law and warns that the court already receives him. On the eve of his next birthday, two officials lead K. to a quarry and kill him. He dies without learning the accusation or breaking the court's hold over his life.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "On his thirtieth birthday, bank clerk Josef K. wakes in his boarding house to find two warders, Franz and Willem, in control of his room. They say he has been arrested but cannot tell him what offense he is accused of. An inspector conducts a brief proceeding from another lodger's room and explains that the arrest does not prevent K. from going to work. Three junior employees from K.'s bank have been brought along to escort him there. K. tries to regard the event as a mistake or practical joke and resumes his day. That evening his landlady, Frau Grubach, speculates that the arrest may concern something abstract rather than an ordinary crime. K. then waits for Fräulein Bürstner, whose room the officials used, to apologize and reenact what happened. His agitated explanation ends in an unwanted intimacy before he returns to his own room.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "K. receives a telephone summons to an inquiry on Sunday but is given only a street address. He searches through a crowded tenement until he finds a packed meeting room. The examining magistrate reproaches him for lateness and initially mistakes his occupation. K. responds with a long attack on the court, using the conduct of the warders and inspector as evidence of a corrupt organization. The crowd's reactions appear divided, but K. discovers that people on both sides wear the court's badge and are part of the same apparatus. He leaves after declaring that he wants no favors from such a hearing. When he returns the following Sunday without being summoned, the courtroom is empty. The usher's wife shows him the magistrate's books and describes the court officials who pursue her. A student carries her away despite K.'s intervention. Her husband then leads K. through cramped court offices in the attic, where accused people wait submissively. The air makes K. ill, and court employees help him reach the exit.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Fräulein Bürstner becomes unavailable to K., and another lodger, Fräulein Montag, formally tells him that Bürstner no longer wants a meeting. K. rejects Montag's right to intervene but cannot restore the earlier contact. At the bank, he later hears sounds from a storage room and finds Franz and Willem about to be flogged. The warders say the punishment follows K.'s complaints about their conduct during his arrest. K. protests that he blamed the system rather than the men and tries unsuccessfully to bribe the whipper. Fear that coworkers will discover the scene makes him close the door while the punishment proceeds. The next evening he opens the room and finds the same tableau apparently unchanged, then orders clerks to clear the room without investigating further. The court's influence has now appeared inside K.'s workplace and turned his attempt to expose abuse into another source of guilt.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "K.'s Uncle Karl arrives after hearing about the case and fears damage to the family. He takes K. to Dr. Huld, an ailing advocate with court connections. Huld already knows of the proceeding and discusses it with a senior court clerk who happens to be visiting, while K. slips away with the lawyer's nurse, Leni. Leni is attracted to accused men and offers to help him; K.'s uncle later condemns the absence as harmful to the consultation. Over time K. sees no clear progress from Huld and becomes increasingly distracted at the bank. A manufacturer directs him to Titorelli, a painter patronized by judges. Titorelli explains that true acquittal is practically beyond anyone's reach. He can use personal influence toward either an apparent acquittal, after which the case may be revived, or indefinite postponement maintained through constant effort. K. leaves through another set of court offices, carrying several identical paintings he was pressured to buy. Every route offered by insiders appears to keep him permanently within the process.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Determined to control his own defense, K. goes to dismiss Dr. Huld. At the lawyer's home he meets Rudi Block, a merchant whose five-year case has consumed his business and made him dependent on several advocates. Leni treats Block with a mixture of familiarity and contempt. When K. announces his decision, Huld tries to demonstrate the special care he provides by summoning Block and reporting supposed comments from a judge. The merchant kneels, kisses the lawyer's hand, and accepts humiliation in hope of the smallest favorable sign. The display convinces K. how completely prolonged proceedings can train an accused person into dependence, and he maintains that Huld is dismissed despite the lawyer's arguments about the difficulty of taking a case away from him.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "K. is assigned to show an Italian business visitor around the cathedral, but the visitor never arrives. In the dark church, a priest calls K. by name and identifies himself as the prison chaplain. He says K.'s case is going badly and recounts a parable about a country man who spends his life waiting before a guarded entrance to the law. K. and the priest debate whether the doorkeeper deceived the man or merely fulfilled his duty. Their competing interpretations offer no reliable path out; the priest tells K. that the court does not demand belief so much as acceptance of what it presents. On the eve of K.'s thirty-first birthday, two formally dressed men collect him from his lodging and lead him to a deserted quarry. They prepare a butcher's knife and appear to expect K. to take part in his own execution. He cannot. One man restrains him while the other stabs him in the heart. K. dies thinking that the shame will survive him, without ever hearing a charge or judgment.",
+            "through": {
+              "chapter": 10
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-trial-alpha-dvd"
+      }
+    },
     "the-trial-naxos-audiobooks": {
       "characters": {
         "characters": [
@@ -1575,6 +1788,79 @@
           }
         ],
         "work": "the-truth"
+      }
+    },
+    "the-tunnel-under-the-world": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An office worker in the city of Tylerton who wakes from a terrifying dream of an explosion and begins an apparently ordinary June 15. He is observant, skeptical, and increasingly disturbed by aggressive advertising and by small signs that the world around him is not behaving normally.",
+            "id": "guy-burckhardt",
+            "name": "Guy Burckhardt",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Guy's wife, who shares his morning routine but does not understand why he remains shaken by his nightmare. To Guy she initially seems calm, familiar, and entirely at home in the ordinary life he is trying to recover.",
+            "id": "mary-burckhardt",
+            "name": "Mary Burckhardt",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A coworker of Guy's who behaves with unexplained fear and urgency. Swanson tries to persuade Guy that the strange events around them are part of a real pattern rather than fatigue or imagination.",
+            "id": "henry-swanson",
+            "name": "Henry Swanson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The figure associated with the hidden organization behind Tylerton's altered reality. Dorchin is encountered only after Guy pushes beyond the boundaries of the city and demands an explanation.",
+            "id": "dorchin",
+            "name": "Dorchin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-tunnel-under-the-world"
+      },
+      "recaps": {
+        "ending": "Burckhardt forces his way beyond the apparent city and discovers that Tylerton is a constructed model in a much larger laboratory. The real city was destroyed, and its inhabitants have been reproduced as mechanisms whose personalities and memories imitate the dead residents. Each repeated June 15 is an experimental cycle: advertising methods are imposed on the artificial population, their responses are measured, and their memories are reset before the next trial. Dorchin explains the project from the scale of the outside world, reducing Burckhardt's struggle for truth to an irregularity in a commercial test. Burckhardt cannot free the city or carry the discovery into a normal future. The experimenters retain control of the environment and its resets, leaving him and the other reconstructed inhabitants trapped inside a day designed to make their behavior useful to advertisers.",
+        "in_short": "Guy Burckhardt wakes in Tylerton after dreaming of a catastrophic explosion and starts June 15 amid unusually intrusive advertisements. Uneasy repetitions and the frightened behavior of his coworker Henry Swanson persuade him that the day and the people around him are being manipulated. Their investigation exposes artificial features beneath the city's familiar surface and leads Burckhardt through hidden passages toward the world outside. He discovers that the original Tylerton was destroyed and that the present city is a scaled reconstruction populated by mechanical copies of its residents. Dorchin's organization repeatedly runs the same date as a controlled market-research experiment, changing advertising campaigns, measuring reactions, and erasing the subjects' memories between trials. Burckhardt reaches the truth but cannot end the experiment; to its operators, his awakening is only another result to manage before the cycle begins again.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Guy Burckhardt wakes screaming from a dream in which an explosion destroys his city, then finds that the date is June 15 and begins his commute through Tylerton. Advertising is unusually forceful and seems to intrude into private thought. At work, Henry Swanson's fearful behavior adds to Guy's suspicion that familiar events are repeating and that their surroundings are being controlled. Attempts to test the world reveal artificial features behind people and places that should be ordinary. Following the concealed routes beneath and beyond Tylerton, Guy eventually reaches the boundary of the environment. The city is a model inside a much larger laboratory. The original Tylerton was destroyed, while its residents were reconstructed as mechanical imitations retaining their personalities. Dorchin's organization uses the population for advertising research, running June 15 again and again with different campaigns, observing the responses, and clearing memories before another cycle. Guy's discovery does not liberate him: the operators still control the model and treat his resistance as part of the experiment.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-tunnel-under-the-world"
       }
     },
     "the-turn-of-the-screw": {

@@ -4168,6 +4168,178 @@
         "work": "assassins-quest"
       }
     },
+    "at-the-back-of-the-north-wind": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A gentle young boy who lives with his parents above the stable where his father works. He is named after his father's horse and treats strange experiences with openhearted seriousness. When a voice enters through a hole by his bed, he follows it and begins a friendship with the mysterious North Wind.",
+            "id": "diamond",
+            "name": "Diamond",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The immense, changeable being who rules the north wind. She can appear as a beautiful woman with streaming dark hair, become small enough to enter Diamond's room, or surround him as a storm. She befriends the boy but makes clear that her work is not always comfortable or easy for people to understand.",
+            "id": "north-wind",
+            "name": "North Wind",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Old Diamond"
+            ],
+            "description": "The good-tempered carriage horse cared for by Diamond's father. The boy shares his name and often rests near him in the stable. His steadiness and livelihood are closely bound to the family's fortunes.",
+            "id": "diamond-the-horse",
+            "name": "Diamond the Horse",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Diamond's father, a capable and affectionate coachman. His work with horses supports the family, and he listens patiently to his son's unusual thoughts even when he cannot fully follow them.",
+            "id": "diamonds-father",
+            "name": "Diamond's Father",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Diamond's practical, loving mother. She cares for him through illness, worries about the dangers he fails to notice, and helps hold the household together as its circumstances change.",
+            "id": "diamonds-mother",
+            "name": "Diamond's Mother",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A poor girl who sweeps a London crossing and survives by her quickness and persistence. Diamond approaches her without condescension and soon regards her as a friend.",
+            "id": "nanny",
+            "name": "Nanny",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A thoughtful, well-to-do gentleman who becomes interested in Diamond's speech and songs. He recognizes the boy's unusual goodness and uses his own resources to help people Diamond cares about.",
+            "id": "mr-raymond",
+            "name": "Mr. Raymond",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A cab horse whose poor condition becomes a concern to Diamond. The boy attends to him with the same patience and sympathy he shows to troubled people.",
+            "id": "ruby",
+            "name": "Ruby",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The princess at the center of a fairy story Diamond encounters. A curse makes her sleep through the day and wake only at night, leaving those who love her to search for a way to restore her to ordinary life.",
+            "id": "little-daylight",
+            "name": "Little Daylight",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The storyteller who enters the account as someone personally acquainted with Diamond. His meeting with the boy supplies an outside view of Diamond's character and later circumstances.",
+            "id": "narrator",
+            "name": "The Narrator",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "at-the-back-of-the-north-wind"
+      },
+      "recaps": {
+        "ending": "After Diamond's family has found greater security, the narrator becomes personally acquainted with the boy and hears more about his friendship with North Wind. Diamond questions her about the suffering connected with her work, but she will not reduce it to a simple explanation; he continues to trust that what appears destructive may belong to a larger good. Diamond later grows ill. One night North Wind comes for him again, and he leaves the ordinary world for the place he had once reached behind her. His family discovers that he has died, while the narrator presents his death as the completion of the journey Diamond had long expected rather than the defeat of his hopeful vision.",
+        "in_short": "Diamond, the young son of a coachman, befriends North Wind, a vast female figure who carries out both gentle and destructive tasks in the world. She takes him over London and the sea and finally brings him to the peaceful country behind the north wind. After returning, Diamond applies the compassion learned on his journeys to everyday life. As his family loses its secure position and his father becomes a cab driver, the boy helps with the cab, befriends the poor crossing-sweeper Nanny, attracts the support of Mr. Raymond, and brings comfort to strangers. Stories, dreams, illness, and practical hardship mingle with his further encounters with North Wind. The family's prospects eventually improve, but Diamond remains physically frail. He becomes ill and dies after North Wind takes him back to the country behind her, a close that treats his death as entry into the home he had already glimpsed.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Diamond is a young coachman's son who sleeps in a hayloft beside the stable. A cold voice finds its way through a hole near his bed, and his attempts to discover its owner bring him onto the lawn at night. The strange visitor eventually identifies herself as North Wind. She appears in forms ranging from a small girl to an immense woman whose hair and presence merge with the weather. Diamond is frightened at moments but accepts her friendship. She invites him to accompany her, warning that she has work to do and that he must trust her while they travel.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "North Wind carries Diamond out into a storm. Sheltered against her, he sees only fragments of the places they cross and struggles with the fact that her appointed work can cause danger and loss as well as relief. Their journeys take them over city and sea and beyond familiar geography. At last Diamond reaches the country at the back of the north wind, a place of peace that he experiences more deeply than he can later explain. He returns to ordinary life physically weakened and with incomplete memories, but certain that the country was real and that North Wind has not abandoned him.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Diamond recovers under his mother's care after being found far from home. The family later faces a serious change in fortune when his father's settled employment ends. They move to London, taking the horse Old Diamond with them, and his father begins earning money as a cab driver. The crowded mews and streets replace the stable and grounds Diamond knew before. Wanting to help rather than remain protected, the boy starts learning the routines of the cab and horses and looks for ways to make himself useful to his parents.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Diamond's calm manner proves valuable in London. He helps with the cab and responds compassionately to people whom others dismiss, including a drunken cabman. He befriends Nanny, a poor girl who sweeps a street crossing, and takes an interest in her safety. At home he learns to read, while the songs and sayings that come to him draw the attention of Mr. Raymond. The gentleman sees that Diamond's innocent language is joined to unusual moral perception. Diamond's influence remains quiet and practical: he tries to carry passengers honestly, care for the horses, and connect vulnerable people with those able to help them.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Diamond continues rising early to help his father and moves between the work of the streets and a rich inner life of dreams, poems, and stories. A mistaken cab journey has an unexpectedly helpful result rather than the disaster he fears. Nanny's hardship leads to care at a children's hospital, where Diamond remains concerned for her. The narrative also includes the fairy story of Little Daylight, a princess forced by a curse to sleep through the day and live by night until steadfast love breaks the enchantment. The inserted story echoes Diamond's belief that appearances, sleep, and waking do not exhaust what is real.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The cab horse Ruby enters Diamond's care in poor condition, giving the boy another creature to tend patiently. Nanny's dreams and Diamond's renewed sense of North Wind keep the marvelous world close to the family's daily problems. Diamond's kindness has also created a circle of practical support: Mr. Raymond and others are able to improve circumstances that the boy could not change alone. His father's work and the household's prospects become more secure, and the family eventually has the chance to leave the hardest conditions of the mews for a healthier life in the country.",
+            "through": {
+              "chapter": 33
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the country, the narrator meets Diamond and learns firsthand why the boy has made such a strong impression on others. Diamond continues to speak with North Wind and asks how her painful and destructive tasks can belong to goodness. She offers no simple account, and he retains his trust without pretending to understand everything. His health remains fragile. When he falls seriously ill, North Wind returns and takes him once more toward the country behind her. Diamond dies, leaving his parents and friends to grieve him. The narrator closes by treating that death as the fulfillment of Diamond's earlier journey: he has gone permanently to the home he once visited and could never adequately describe.",
+            "through": {
+              "chapter": 38
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "at-the-back-of-the-north-wind"
+      }
+    },
     "atonement-ian-mcewan": {
       "characters": {
         "characters": [

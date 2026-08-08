@@ -2043,6 +2043,182 @@
         "work": "ronia-the-robbers-daughter"
       }
     },
+    "room-a-novel-booktrack-edition": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A five-year-old boy who has spent his entire life in Room, the locked shed where he lives with Ma. He treats the room and its objects as his whole universe, and narrates with a child's mixture of close observation, private rules, and incomplete understanding.",
+            "id": "jack",
+            "name": "Jack",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Jack's mother and the only other person who lives with him in Room. She structures his days around lessons, exercise, games, and stories while shielding him from much of the truth about their confinement. Her resourcefulness and devotion have kept him healthy under extreme conditions.",
+            "id": "ma",
+            "name": "Ma",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The man who controls the locked space where Ma and Jack live. He operates the door, electricity, food, and other supplies, visiting at night while Jack is expected to stay hidden in Wardrobe.",
+            "id": "old-nick",
+            "name": "Old Nick",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The police officer who first understands Jack's confused account after his escape and uses his clues to locate Room. Patient and attentive, she becomes the crucial link between Jack's unfamiliar words and the real address the police need.",
+            "id": "officer-oh",
+            "name": "Officer Oh",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ma's mother and Jack's grandmother. She is overwhelmed by her daughter's return and immediately welcomes a grandson she had never known existed, trying to give both of them affection and practical support as they adjust.",
+            "id": "grandma",
+            "name": "Grandma",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Leo"
+            ],
+            "description": "Grandma's partner, whom Jack calls Steppa. Warm, playful, and less anxious around Jack than many of the adults, he helps the boy encounter ordinary life without demanding that he understand it all at once.",
+            "id": "steppa",
+            "name": "Steppa",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ma's father and Jack's grandfather, newly returned after learning that Ma has been found. He loves his daughter but finds the circumstances of Jack's birth painfully difficult to face, making the family reunion strained.",
+            "id": "grandpa",
+            "name": "Grandpa",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A doctor overseeing Ma and Jack's care after their rescue. He explains that recovery will take time and tries to protect them from being overwhelmed, treating Jack's unusual habits as adaptations rather than misbehavior.",
+            "id": "dr-clay",
+            "name": "Dr. Clay",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A nurse at the clinic where Ma and Jack initially recover. Calm and practical, she helps Jack navigate food, bathing, medical routines, and contact with unfamiliar people while respecting his need to remain close to Ma.",
+            "id": "noreen",
+            "name": "Noreen",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ma's brother and Jack's uncle, now a father with a family of his own. His reunion with Ma brings another branch of the life that continued while she was missing into Jack's rapidly expanding world.",
+            "id": "paul",
+            "name": "Paul",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Paul's wife and Ma's sister-in-law. She welcomes Ma and Jack into a busy household but must also manage the attention and disruption that follow their rescue.",
+            "id": "deana",
+            "name": "Deana",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Paul and Deana's young daughter, and Jack's cousin. Her ordinary childhood, possessions, and ease with the outside world give Jack a close comparison for how differently he has grown up.",
+            "id": "bronwyn",
+            "name": "Bronwyn",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "room-a-novel-booktrack-edition"
+      },
+      "recaps": {
+        "ending": "After a period of treatment, public attention, and painful family adjustment, Ma and Jack begin living at Grandma and Steppa's home. Ma survives her suicide attempt and returns from the hospital, but Jack has learned that he can remain safe with other people and no longer needs her every moment. His hair is cut, and he sends the long braid to Ma as a sign of the strength he once believed it held for him. Before settling into their new life, Jack asks to visit Room once more. The police take him and Ma back to the shed. Seen from outside and emptied of many familiar objects, it is smaller and less complete than the universe he remembers. Jack says goodbye to Room and its remaining objects, then leaves with Ma. Their bond endures, but the visit confirms that captivity is now a place they can depart rather than the boundary of Jack's world.",
+        "in_short": "Five-year-old Jack has known only Room, the shed where an abductor has imprisoned his mother for seven years. Ma has built him a structured life while hiding the scale of their captivity. When their captor's finances worsen, she tells Jack the truth and trains him to escape by pretending to be dead inside a rug. Jack gets free, alerts a stranger, and gives a police officer enough information to rescue Ma. Outside, he confronts open space, crowds, relatives, medicine, and constant public interest, while Ma struggles with trauma and anger over the life taken from her. After a hostile interview, Ma attempts suicide and is hospitalized. Jack gradually accepts care from Grandma and Steppa and discovers that separation from Ma is survivable. When she returns, mother and son visit the shed one last time. Its power has diminished now that Jack can see it as one small place in a much larger world, and they leave it together.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Jack turns five in Room, the locked space where he has always lived with Ma. Their days follow routines of meals, lessons, exercise, games, television, and sleep. Jack thinks the objects in Room are singular and alive, while the people and places on television are mostly unreal. At night he sleeps in Wardrobe when Old Nick visits. Ma accepts supplies from Old Nick but resists his control where she can, and Jack understands only that the man must not see or touch him. Small details reveal what Jack cannot yet grasp: Old Nick controls the coded door and has held Ma there since before Jack was born. Ma uses every available resource to keep Jack physically active and mentally engaged, even as confinement and Old Nick's visits take a heavy toll on her.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After Old Nick cuts the power, Ma decides their situation has become too dangerous to endure. She tells Jack that the outside world is real and that Old Nick abducted her years earlier, but Jack initially rejects a truth that overturns everything he knows. Ma first plans to make him appear ill so Old Nick will take him to a hospital. When that fails, she devises a more dangerous escape: Jack will pretend to be dead, be wrapped in Rug, and wait until Old Nick carries him away for burial. Ma teaches him how to unroll himself, jump from the truck, find another person, and ask for the police. Jack rehearses the sequence despite his terror of Outside and of acting without Ma.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jack carries out the escape plan. Old Nick removes the rug containing him from Room and puts it in his truck. Jack struggles free, jumps onto the road, and attracts the attention of a man walking a dog. Old Nick tries to seize him but flees when the man intervenes. Jack's language and sense of place are hard for the police to interpret, yet Officer Oh patiently identifies useful clues from his account. The police locate the property, open the shed, and rescue Ma. Reunited at a clinic, Jack and Ma face a world of doctors, police, relatives, light, distance, and choice. Jack is relieved to have Ma but cannot yet understand why familiar objects from Room are being treated as evidence or why the new world contains so many versions of everything.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At the clinic, Jack and Ma begin treatment while the story of their rescue draws intense attention. Jack meets Grandma, Steppa, Grandpa, Uncle Paul, and other relatives whose connections are obvious to the adults but bewildering to him. He struggles with stairs, unfamiliar food, germs, privacy, and the expectation that people and objects remain real when he cannot see them. Ma, now publicly identified as Joy, resents questions that judge the choices she made to raise Jack in captivity. A television interview presses her especially hard about whether she should have tried to separate from him earlier. Soon afterward Ma takes an overdose. Jack finds her and summons help. While she is hospitalized, he remains with Grandma and Steppa, painfully separated from her but slowly forming independent relationships and learning the rhythms of a household beyond Room.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jack continues adapting while Ma receives psychiatric care. With Grandma and Steppa he ventures outside, meets neighbors, plays with another child, and learns that unfamiliar experiences can be frightening without being dangerous. He cuts his long hair and has the braid delivered to Ma, no longer needing to keep all its imagined strength for himself. When Ma returns, their reunion is loving but their relationship has changed: Jack has proved he can exist apart from her, and both must build a life not organized by survival in captivity. Jack asks to see Room again. The police escort them to the shed, now partly emptied. From this new perspective it appears cramped and ordinary rather than limitless. Jack says goodbye to the place and its objects, and he and Ma walk away together toward a future that remains difficult but is finally open.",
+            "through": {
+              "chapter": 5
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "room-a-novel-booktrack-edition"
+      }
+    },
     "roots": {
       "characters": {
         "characters": [
