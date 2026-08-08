@@ -1422,6 +1422,177 @@
         "work": "love-story"
       }
     },
+    "lucky-jim": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A young lecturer in medieval history nearing the end of a probationary year at a provincial university. He dislikes his subject, distrusts academic pretension, and survives professional conversations by concealing irritation behind strained politeness.",
+            "id": "jim-dixon",
+            "name": "Jim Dixon",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The absent-minded professor who controls whether Dixon's appointment will be renewed. Welch prizes amateur music, historical pageantry, and cultured conversation, while remaining largely unaware of the inconvenience he causes other people.",
+            "id": "professor-welch",
+            "name": "Professor Welch",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A lecturer who has recently returned to work after an apparent suicide attempt. She relies heavily on Dixon for reassurance and treats his attention as evidence of a relationship, leaving him caught between concern, guilt, and a desire to escape.",
+            "id": "margaret-peel",
+            "name": "Margaret Peel",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A fellow junior lecturer and one of Dixon's few straightforward allies at the university. He shares Dixon's uncertainty about academic employment and offers a comparatively clear-eyed view of their colleagues.",
+            "id": "alfred-beesley",
+            "name": "Alfred Beesley",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A history student whose choice of special subject could increase Dixon's teaching load. Intelligent and persistent, he tries to discover what intellectual direction Dixon can offer while Dixon attempts to avoid firm commitments.",
+            "id": "michie",
+            "name": "Michie",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Welch's elder son, an aspiring painter who affects an assured cultural manner. He is dismissive toward Dixon and arrives with Christine Callaghan, whom he treats as his social and romantic possession.",
+            "id": "bertrand-welch",
+            "name": "Bertrand Welch",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A young woman visiting the Welches as Bertrand's girlfriend. She initially appears reserved and aligned with Bertrand's superior attitude, but Dixon finds himself strongly attracted to her and curious about the person behind her formality.",
+            "id": "christine-callaghan",
+            "name": "Christine Callaghan",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Professor Welch's practical wife, who manages the household and its guests during the musical weekend. She expects Dixon to account for the damage and disorder that appear during his stay.",
+            "id": "mrs-welch",
+            "name": "Mrs Welch",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The wife of a university colleague and a friend within the Welches' circle. Direct, observant, and more candid than most of Dixon's acquaintances, she speaks to him without the usual academic ceremony.",
+            "id": "carol-goldsmith",
+            "name": "Carol Goldsmith",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Christine's wealthy Scottish uncle, whose opinion matters to Bertrand. He listens more closely than the Welches expect and responds favorably to directness, even when Dixon's conduct is far from polished.",
+            "id": "julius-gore-urquhart",
+            "name": "Julius Gore-Urquhart",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former companion of Margaret whose account of Margaret's crisis conflicts with the version Dixon has been encouraged to accept.",
+            "id": "mrs-catchpole",
+            "name": "Mrs Catchpole",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "lucky-jim"
+      },
+      "recaps": {
+        "ending": "Dixon's drunken public lecture on English tradition turns into an open parody of the voices and attitudes he has spent the year enduring. He collapses after alienating the university leadership, and Welch confirms that his appointment will not be renewed. The professional disaster frees him from a career he never wanted. Gore-Urquhart, amused by Dixon's directness and unimpressed by Bertrand, offers him a well-paid job as his secretary in London. Mrs Catchpole explains that Margaret's apparent suicide attempt was arranged to look more serious than it was, releasing Dixon from much of the guilt that kept him tied to her. Christine learns of Bertrand's unfaithfulness and ends their relationship. She and Dixon choose each other and arrange to leave together. On their way out they encounter the Welch family, and Dixon is finally able to laugh openly at the people whose approval had governed him.",
+        "in_short": "Jim Dixon is a probationary history lecturer who despises both his medieval research and the pretensions surrounding his provincial university. His job depends on the vague Professor Welch, so he endures a disastrous musical weekend, a burdensome attachment to Margaret Peel, and conflict with Welch's arrogant son Bertrand. Dixon falls for Bertrand's girlfriend, Christine Callaghan, while trying to suppress every honest response that might end his academic career. At a public lecture, alcohol and frustration overcome him, and he mocks the cultural attitudes he was meant to celebrate before collapsing. Welch dismisses him, but the failure becomes an escape: Christine's uncle Gore-Urquhart offers Dixon a better-paid London job. Margaret's supposed suicide attempt is exposed as manipulative, and Christine leaves Bertrand after learning of his infidelity. Dixon and Christine depart together, freed from the relationships and institution that had trapped them.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Jim Dixon is nearing the end of his first year as a medieval-history lecturer and does not know whether his appointment will be renewed. His prospects depend on Professor Welch, whose confused directions and enthusiasm for amateur culture force Dixon into outward deference. Dixon has little interest in his academic article, his assigned subject, or the special course sought by the capable student Michie. He is also entangled with Margaret Peel, a colleague recovering from an apparent suicide attempt. Margaret treats Dixon as her chief source of emotional support, and he feels too guilty to reject the intimacy she expects. With his colleague Beesley he can acknowledge some of his frustration, but at work he relies on evasions, delayed tasks, and private grimaces to avoid openly offending the people who control his future.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Dixon attends a musical weekend at the Welch home because refusing might endanger his job. There he meets Welch's arrogant son Bertrand and Bertrand's girlfriend, Christine Callaghan. Dixon is attracted to Christine but assumes her manner and relationship place her beyond his reach. After drinking heavily, he falls asleep with a cigarette and burns the Welches' bedding and a bedside table. He tries to conceal the damage instead of admitting responsibility, creating a new source of anxiety under Mrs Welch's scrutiny. The weekend combines amateur music, cultural display, and awkward social obligations, reinforcing Dixon's contempt for the world whose approval he needs. His encounters with Christine also complicate the attachment Margaret already assumes exists between them.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Back at the university, Dixon continues postponing academic work and avoiding decisions about Michie's proposed course. Professor Welch remains vague about Dixon's employment while assigning him a public lecture on English tradition, a subject that demands the ceremonial enthusiasm Dixon finds hardest to imitate. Margaret alternates vulnerability with pressure, keeping Dixon tied to her through fear that a rejection could cause another crisis. Dixon sees more of Christine and discovers that conversation with her can be direct and sympathetic despite her connection to Bertrand. His hopes remain limited by the difference in their circumstances and by Bertrand's hostility. The concealed damage at the Welch house and Dixon's other small deceptions continue to threaten exposure.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At the college's summer ball, Dixon's obligations to Margaret collide with his increasing attraction to Christine. Margaret's distress again draws attention and leaves Dixon managing her feelings, but he also spends time with Christine and arranges to take her home. During the taxi ride their reserve breaks down and they acknowledge their attraction with a kiss. The moment gives Dixon a glimpse of a life outside his humiliating academic role, yet Christine remains Bertrand's girlfriend and is uneasy about betraying him. Dixon has also antagonized Bertrand, whose confidence and social connections make him seem the safer choice. What began as private dislike is becoming an open personal conflict, while Dixon's lecture and employment decision still approach.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Dixon's conflict with Bertrand becomes physical, confirming that polite accommodation has failed. He learns more about the gap between Bertrand's cultivated self-presentation and his conduct toward other people. Christine's uncle, Julius Gore-Urquhart, observes Dixon within this strained social circle and responds better to his lack of polish than Dixon expects. Dixon nevertheless appears to be losing on every immediate front: Christine feels bound to settle matters with Bertrand, Margaret continues to claim his care, Professor Welch is dissatisfied, and the public lecture that could determine his future is close. Dixon prepares badly and increasingly uses alcohol to make the required performance tolerable.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Dixon gives his public lecture while drunk. Instead of sustaining the approved celebration of English tradition, he slips into exaggerated imitations of the voices and attitudes around him, exposing the contempt he has spent the year hiding, and finally collapses. Professor Welch tells him his appointment will not be renewed. The apparent catastrophe releases Dixon from an academic career he neither values nor performs well. Gore-Urquhart then offers him a better-paid position as his secretary in London. Mrs Catchpole explains that Margaret arranged her apparent suicide attempt to ensure discovery, weakening the guilt by which Dixon felt bound to her. Christine discovers that Bertrand has been unfaithful and ends their relationship. She chooses Dixon, and the two prepare to leave together. Encountering the Welch family as they depart, Dixon no longer needs their approval and openly laughs at the social world that had kept him anxious and deferential.",
+            "through": {
+              "chapter": 25
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "lucky-jim"
+      }
+    },
     "luke-evans-reads-treasure-island": {
       "characters": {
         "characters": [

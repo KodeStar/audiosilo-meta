@@ -2523,6 +2523,122 @@
         "work": "the-oedipus-plays-amazonclassics-edition"
       }
     },
+    "the-old-man-who-read-love-stories": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An elderly settler living alone in El Idilio, a remote outpost on the edge of the Amazonian forest. Years spent among the Shuar taught him how to move through the jungle and respect its dangers. He reads romantic novels slowly and with intense concentration, preferring distant tales of love to the crude life around him.",
+            "id": "antonio-jose-bolivar-proano",
+            "name": "Antonio José Bolívar Proaño",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "the mayor",
+              "the Slug"
+            ],
+            "description": "The unpopular official who governs El Idilio. Sweaty, loud, and contemptuous of local knowledge, he is quick to issue orders but poorly equipped to understand the forest or the people who depend on it.",
+            "id": "the-mayor",
+            "name": "The Mayor",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A travelling dentist who visits El Idilio by riverboat to extract teeth for the isolated settlement. He is Antonio's friend and brings him the sentimental novels that have become his chief pleasure.",
+            "id": "rubicundo-loachamin",
+            "name": "Rubicundo Loachamín",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Antonio's wife, who accompanies him when the young couple leave the mountains for a government settlement in the Amazon. Their difficult early years in the forest shape the solitary life Antonio later leads.",
+            "id": "dolores-encarnacion-del-santisimo-sacramento-estupinan-otavalo",
+            "name": "Dolores Encarnación del Santísimo Sacramento Estupiñán Otavalo",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Shuar man who becomes Antonio's closest companion during the years when the community accepts the settler into its way of life. His friendship is central to Antonio's understanding of the forest and of the boundary between belonging and merely being welcomed.",
+            "id": "nushino",
+            "name": "Nushiño",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A large female cat driven into conflict with humans after hunters kill her mate and cubs. Antonio recognizes purpose rather than random savagery in her attacks and understands that stopping her will require patience and respect for a formidable animal.",
+            "id": "the-female-cat",
+            "name": "The Female Cat",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-old-man-who-read-love-stories"
+      },
+      "recaps": {
+        "ending": "Antonio faces the wounded female cat alone after the mayor and the other men withdraw. He understands that she has drawn him toward her dying mate and that her campaign against humans began with the destruction of her cubs. Forced into the final confrontation, Antonio shoots and kills her. He feels no triumph: the animal's death strikes him as another shameful consequence of outsiders invading a world they neither understand nor respect. He throws away the weapon associated with the killing and returns toward El Idilio. Back in his hut, he seeks refuge once more in a love story, turning from the brutality of the forest's colonization toward the distant emotional world that reading allows him to inhabit.",
+        "in_short": "Antonio José Bolívar Proaño lives in the Amazonian outpost of El Idilio, where he waits for a travelling dentist to bring him sentimental novels. His years among the Shuar have given him knowledge that the settlement's blustering mayor lacks. When mutilated bodies appear, Antonio determines that a female jungle cat is deliberately hunting humans after careless outsiders killed her cubs and mate. The mayor forces a party into the forest, but his noise and fear make the hunt more dangerous. Antonio eventually continues alone, reading the animal's movements and recognizing the grief behind its violence. In the final encounter he kills the cat because there is no safe alternative, then mourns the needless destruction caused by intruders. He returns home disgusted with human arrogance and retreats into one of the love stories that offer him a gentler imagined world.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "A riverboat arrives at El Idilio carrying the dentist Rubicundo Loachamín, who provides rough treatment to the settlement and brings novels for his elderly friend Antonio José Bolívar Proaño. A dead white man has also been brought from the forest. The mayor hastily blames the Shuar, but Antonio studies the body and explains that a large female cat killed him. The man's own hunting party slaughtered her young, and she is now pursuing the humans responsible. Antonio's accurate reading of the wounds reveals both his deep experience of the jungle and the mayor's ignorance.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Antonio remembers how he and his wife Dolores left the highlands as young settlers and struggled to survive in the Amazon. After her death, the Shuar taught him the skills and restraint needed to live in the forest, though he could never fully become one of them. His friendship with Nushiño ended in violence and left Antonio separated from that community. He eventually settled in El Idilio and discovered a love of reading, especially romantic novels whose unfamiliar cities and powerful emotions let him travel beyond his hut. In the present, further signs confirm that the bereaved female cat is hunting near the settlement, and Antonio's knowledge makes him essential to any pursuit.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After another death, the mayor organizes an armed expedition and insists that Antonio accompany it. The official treats the forest as an enemy that can be subdued by guns and orders, while Antonio notices tracks, weather, silence, and the animal's deliberate attempts to control their route. The inexperienced men make slow progress and expose themselves through noise and panic. Antonio concludes that the cat is not attacking indiscriminately: human hunters began the cycle by destroying her family, and she has learned to associate their kind with the threat. As the danger grows, the mayor's authority proves useless beside Antonio's patient understanding.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The hunting party breaks apart, leaving Antonio to face the female cat on her terms. She leads him to her mortally wounded mate, making clear the loss that has driven her attacks. Antonio tries to avoid a crude contest, but the wounded animal continues to force an encounter. He finally shoots and kills her. The act brings relief from immediate danger but no sense of victory; Antonio regards the death as the result of human greed and stupidity invading the forest. He discards the weapon and returns to El Idilio burdened by shame. In his hut he opens a love story and immerses himself in its distant world, using reading as a refuge from the violence he has witnessed and committed.",
+            "through": {
+              "chapter": 8
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-old-man-who-read-love-stories"
+      }
+    },
     "the-one": {
       "characters": {
         "characters": [
