@@ -1760,6 +1760,168 @@
         "work": "les-miserables-abr"
       }
     },
+    "less-than-zero": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An eighteen-year-old college student returning to Los Angeles for Christmas vacation. He moves among wealthy friends, clubs, drugs, and family obligations with growing detachment, often watching disturbing behavior without deciding whether or how to intervene.",
+            "id": "clay",
+            "name": "Clay",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Clay's girlfriend in Los Angeles, though neither is certain what remains of their relationship after his months away at college. She meets him at the airport and wants emotional clarity from him that he struggles to provide.",
+            "id": "blair",
+            "name": "Blair",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Clay's oldest friends. Formerly charming and well provided for, he has become thin, elusive, and frightened, repeatedly failing to appear when Clay tries to meet him.",
+            "id": "julian",
+            "name": "Julian",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A friend who moves easily through the same circuit of parties, clubs, and expensive houses as Clay. He supplies gossip and companionship while sharing much of the group's appetite for spectacle.",
+            "id": "trent",
+            "name": "Trent",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wealthy drug dealer known to Clay's circle. Calm and emotionally remote, he treats other people's desperation as a source of profit and entertainment.",
+            "id": "rip",
+            "name": "Rip",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wealthy friend of Blair and Clay who hosts and attends parties across Los Angeles. Her social confidence and access to luxurious spaces place her near the center of the vacation's drifting nightlife.",
+            "id": "kim",
+            "name": "Kim",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young woman in Clay's social circle whose heavy drug use and disordered eating have made her visibly unwell. Her friends notice her deterioration but respond with little sustained concern.",
+            "id": "muriel",
+            "name": "Muriel",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A man who controls access to money and clients within the city's drug trade and sex work. Julian's debt leaves him subject to Finn's instructions.",
+            "id": "finn",
+            "name": "Finn",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Clay's mother, absorbed in shopping, appearances, and the management of a divided family. Her conversations with Clay rarely move beyond schedules, gifts, and surface reassurance.",
+            "id": "clays-mother",
+            "name": "Clay's Mother",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Clay's father, who lives separately from the family and meets his son in formal public settings. Their exchanges are polite but strained, with neither able to establish meaningful intimacy.",
+            "id": "clays-father",
+            "name": "Clay's Father",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "less-than-zero"
+      },
+      "recaps": {
+        "ending": "Clay's search for Julian exposes the coercion behind his friend's disappearance: Julian owes money to Rip and is being sold to clients by Finn. Clay accompanies him to a hotel and watches without preventing the transaction, then withdraws while Julian remains trapped. Later, Rip takes Clay and Trent to witness the sexual assault of a drugged twelve-year-old girl. Clay is horrified, but the others treat the girl's suffering as entertainment, bringing the moral vacancy of his social world into its starkest form. Clay finally tells Blair that he does not think he ever loved her, ending the relationship without offering the understanding she wanted. He leaves Los Angeles carrying memories of violence and exploitation that he neither stopped nor fully processed. His departure provides distance but no cleansing resolution for Julian, Blair, or the other people he leaves behind.",
+        "in_short": "Clay returns from college to spend Christmas in Los Angeles and drifts through a wealthy social circle defined by parties, drugs, casual sex, and emotional disconnection. He resumes an uncertain relationship with Blair and tries to locate his childhood friend Julian, who has become evasive and visibly desperate. Family meetings and nights with Trent, Kim, Rip, and others repeatedly expose suffering that the group observes without meaningful response. Clay eventually learns that Julian's drug debt has placed him under Finn's control and watches as Julian is sent to a hotel client for money. Soon afterward, Rip takes Clay and Trent to witness the sexual assault of a drugged child, an episode that reveals the extreme cruelty beneath their practiced indifference. Clay tells Blair he does not believe he ever loved her and leaves Los Angeles. He escapes the city geographically, but the ending offers no rescue for Julian or moral resolution for Clay.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Clay returns from college in New Hampshire to Los Angeles for Christmas. Blair meets him at the airport, but their reunion is uneasy: they have been involved with each other, yet time apart has made the relationship undefined. At home, Clay finds his family divided and distracted, with conversation focused on purchases, appearances, and holiday arrangements. He begins calling old friends and moving through familiar streets marked by billboards and warnings that seem to reflect his anxiety. Parties bring him back into contact with Trent, Kim, and others whose wealth provides constant access to houses, clubs, and drugs. Clay repeatedly tries to reach Julian, a close childhood friend, but Julian avoids firm plans and fails to appear, giving Clay the first sign that something serious has changed.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Clay settles into a pattern of parties, clubs, driving, and disconnected encounters. Blair wants to know where she stands with him, while Clay neither commits nor decisively ends the relationship. His meetings with his mother and father emphasize how little emotional contact exists within the family. Around him, drug use is routine and visible distress rarely interrupts anyone's plans. Muriel appears dangerously thin and unwell, yet concern for her quickly gives way to gossip and the next event. Rip, a wealthy dealer, remains composed and available within the group, treating drugs as another ordinary transaction. Clay continues searching for Julian, whose missed meetings and strained calls increasingly suggest fear rather than simple unreliability.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The vacation becomes a sequence of nights whose glamour is repeatedly interrupted by evidence of damage. Clay and his friends encounter overdoses, illness, and death with a passivity that unsettles him but seldom changes his behavior. He watches people use one another and recognizes that money protects his circle from many consequences while enabling new forms of exploitation. Blair continues seeking honesty, but Clay responds with distance and leaves important conversations unfinished. Julian finally makes limited contact and asks for help, though he avoids explaining the full situation. His appearance and behavior point to heavy drug use and a debt he cannot manage. Clay senses that Rip is connected to the pressure on him.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Clay's attempts to help Julian remain hesitant and fragmented. Julian admits enough about his debt to make clear that the problem is immediate, but he disappears again rather than accepting a simple solution. Clay continues moving between Blair, family obligations, parties, and encounters with Trent and Rip, as if routine might keep the crisis at a distance. The social group's indifference grows harder to separate from deliberate cruelty: vulnerable people become objects of curiosity, and no one wants responsibility for what they see. Clay is repelled but also recognizes his own habit of watching and leaving. His memories of earlier innocence with Julian sharpen the contrast with the frightened young man now trying to secure money.",
+            "through": {
+              "chapter": 29
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Clay learns the concrete terms of Julian's predicament. His debt to Rip and his dependence on drugs have put him under Finn's control. Julian is being made to meet paying clients, and Clay accompanies him to a hotel where an older man has purchased access to him. Clay remains long enough to understand what is happening but does not stop it; he leaves while Julian is still trapped in the arrangement. The episode strips away Julian's remaining claims that he can manage the situation and forces Clay to see how money, addiction, and coercion operate together. Even so, Clay soon returns to the same social circuit. Blair senses him withdrawing further and presses him about whether their relationship ever meant what she believed it did.",
+            "through": {
+              "chapter": 37
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rip invites Clay and Trent to a house where a drugged twelve-year-old girl is being sexually assaulted. Rip and Trent treat the scene as entertainment. Clay is horrified and wants to leave, but his reaction does not become an effective intervention, completing the book's pattern of witnessing without rescue. With his return to college approaching, he meets Blair and finally answers her demand for honesty by saying that he does not think he ever loved her. Their relationship ends without reconciliation. Clay leaves Los Angeles, but departure does not repair the harm he has seen or abandoned. Julian remains caught in addiction and exploitation, Blair is left with his rejection, and the larger circle continues unchanged. Clay carries away intrusive images of the city's violence, advertisements, and empty movement rather than a clear lesson or renewed purpose.",
+            "through": {
+              "chapter": 44
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "less-than-zero"
+      }
+    },
     "leviathan-falls": {
       "characters": {
         "characters": [
