@@ -1585,6 +1585,246 @@
         "work": "ultimate-level-1-ultimate-truths"
       }
     },
+    "ulysses-amazonclassics-edition": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A young writer and teacher living in a Martello tower outside Dublin. Still mourning his mother and troubled by having refused to pray at her deathbed, he feels used by Buck Mulligan and out of place beside the visiting Haines. Proud, intellectually restless, and nearly penniless, he intends not to return to the tower after the day begins.",
+            "id": "stephen-dedalus",
+            "name": "Stephen Dedalus",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Buck Mulligan"
+            ],
+            "description": "A medical student sharing the Martello tower with Stephen. Witty, theatrical, and irreverent, he turns Stephen's grief and religious unease into material for jokes while expecting Stephen to help pay for their life together.",
+            "id": "malachi-mulligan",
+            "name": "Malachi Mulligan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An English visitor staying at the tower with Stephen and Mulligan. He is interested in Irish culture but treats Ireland and its people with the detached curiosity of an outsider, making Stephen wary of him.",
+            "id": "haines",
+            "name": "Haines",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mr Deasy"
+            ],
+            "description": "The headmaster of the boys' school where Stephen teaches. Certain of his own financial and political wisdom, he pays Stephen's wages, lectures him about thrift and history, and asks him to place a letter about cattle disease with the Dublin press.",
+            "id": "garrett-deasy",
+            "name": "Garrett Deasy",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Poldy"
+            ],
+            "description": "A thirty-eight-year-old Dublin advertising canvasser living at 7 Eccles Street with his wife, Molly. Practical, observant, and given to private chains of association, he prepares breakfast, buys a pork kidney, reads letters addressed to his household, and begins his rounds before attending a funeral.",
+            "id": "leopold-bloom",
+            "name": "Leopold Bloom",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Marion Bloom"
+            ],
+            "description": "Bloom's wife, a professional singer born in Gibraltar. From bed she receives breakfast and a letter from concert promoter Blazes Boylan, whose planned visit later that day weighs heavily on Bloom's thoughts.",
+            "id": "molly-bloom",
+            "name": "Molly Bloom",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Leopold and Molly's fifteen-year-old daughter, who is living away from home while working with a photographer in Mullingar. Her morning letter reports on her life there and prompts both parental concern and memories of the Bloom household.",
+            "id": "milly-bloom",
+            "name": "Milly Bloom",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A confident concert promoter arranging a singing tour for Molly. His morning letter announces that he will call at the Bloom home that afternoon, and Bloom recognizes him as a rival for Molly's attention.",
+            "id": "blazes-boylan",
+            "name": "Blazes Boylan",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The assumed name of a woman with whom Bloom exchanges secret, romantic letters under his own alias, Henry Flower. Her latest note seeks greater intimacy, while Bloom remains intrigued but cautious about meeting her.",
+            "id": "martha-clifford",
+            "name": "Martha Clifford",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Dublin acquaintance who stops Bloom in the street, talks about mutual friends, and asks him to put his name down at Paddy Dignam's funeral. His request forces Bloom to conceal the letter he has just collected under an assumed name.",
+            "id": "m-coy",
+            "name": "M'Coy",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Stephen's father, a sociable, financially diminished widower whose talk mixes stories, songs, resentments, and memories. He rides to Paddy Dignam's funeral with Bloom and other Dublin acquaintances while Stephen follows his separate course through the city.",
+            "id": "simon-dedalus",
+            "name": "Simon Dedalus",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A composed Dublin businessman who accompanies Bloom to Paddy Dignam's funeral. Considerate toward the dead man's family and skilled at smoothing social friction, he is one of the more sympathetic members of the funeral party.",
+            "id": "martin-cunningham",
+            "name": "Martin Cunningham",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The forceful editor of the Freeman's Journal, encountered as Bloom tries to secure a newspaper advertisement and Stephen delivers Mr Deasy's letter. Surrounded by noise, deadlines, and verbal display, he demands firmer terms before accepting Bloom's advertising proposal.",
+            "id": "myles-crawford",
+            "name": "Myles Crawford",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The proprietor of a Dublin pub where Bloom stops for a light lunch. He serves Bloom a cheese sandwich and wine, discusses Paddy Dignam's death, and offers a comparatively calm refuge from the crowded restaurants nearby.",
+            "id": "davy-byrne",
+            "name": "Davy Byrne",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A combative Irish nationalist holding court in Barney Kiernan's pub. He challenges Bloom's belonging and politics, turning a drinking-room argument about nationhood, persecution, and violence into a personal confrontation.",
+            "id": "the-citizen",
+            "name": "The Citizen",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A young woman sitting with friends and children on Sandymount Strand during an evening fireworks display. Romantic and self-conscious, she notices Bloom watching her and deliberately presents herself to his gaze before leaving, when her limp becomes apparent.",
+            "id": "gerty-macdowell",
+            "name": "Gerty MacDowell",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Madam Bella"
+            ],
+            "description": "The imposing proprietor of a Nighttown brothel entered by Bloom while he searches for Stephen. She takes command of the room and becomes the central figure in Bloom's feverish vision of humiliation and reversed power.",
+            "id": "bella-cohen",
+            "name": "Bella Cohen",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "ulysses-amazonclassics-edition"
+      },
+      "recaps": {
+        "ending": "After Bloom and Stephen leave the cabman's shelter, Bloom takes Stephen to 7 Eccles Street because he has no key and must climb in through the basement. They drink cocoa and compare parts of their lives, but Stephen declines Bloom's suggestions that he stay or become closer to the household. The men urinate outside together, then part, and Stephen walks away into the night. Bloom returns to bed beside Molly, notices evidence of Boylan's visit, and asks that breakfast be brought to him in the morning. In the final chapter, Molly lies awake reviewing her afternoon with Boylan, her marriage, former admirers, motherhood, aging, and Bloom's peculiarities. Her thoughts do not resolve the marriage's tensions, but they range back to the beginning of their relationship in Gibraltar. The book closes with her memory of accepting Bloom's proposal, ending in an emphatic inward renewal of that assent.",
+        "in_short": "On 16 June 1904, Stephen Dedalus leaves the Martello tower after conflict with Buck Mulligan, teaches, and wanders Dublin while brooding over family, art, history, and his mother's death. Leopold Bloom begins the same day at home with his singer wife Molly, aware that Blazes Boylan intends to visit her. Bloom attends Paddy Dignam's funeral, pursues newspaper advertising work, eats, walks, and endures hostility over his identity and opinions. Their routes repeatedly approach before Bloom follows a drunken Stephen into Nighttown. After Stephen is struck by a soldier, Bloom protects him and takes him home for cocoa. Stephen refuses an invitation to stay and departs. Bloom returns to Molly's bed after Boylan's visit. Awake beside him, Molly reflects on lovers, marriage, her body, and her past, finally recalling the day she accepted Bloom's proposal and affirming that remembered choice.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "On the morning of 16 June 1904, Stephen Dedalus lives in a Martello tower with medical student Buck Mulligan and their English guest, Haines. Mulligan's mockery, Haines's patronizing interest in Ireland, and Stephen's guilt over his mother's death leave him alienated. After the three bathe and eat, Stephen decides he will not return to the tower. He teaches a history lesson at a boys' school in Dalkey, receives his wages, and listens while headmaster Garrett Deasy lectures him on money, politics, and history. Deasy asks Stephen to help publish a letter about cattle disease. Stephen then walks alone on Sandymount Strand. His observations of the shore, passing people, language, family, faith, and artistic ambition mingle with memories and speculation as he postpones returning to Dublin and continues his solitary movement through the day.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The narrative turns to Leopold Bloom at 7 Eccles Street. He buys a kidney, makes breakfast for Molly, and reads a letter from their daughter Milly. Molly receives a letter from concert promoter Blazes Boylan, who plans to call that afternoon; Bloom understands the intimate threat behind the visit. Before attending Paddy Dignam's funeral, Bloom collects a romantic letter from Martha Clifford addressed to his alias, Henry Flower, attends part of a Catholic service, visits a chemist, and takes a bath. He rides to Glasnevin Cemetery with Martin Cunningham, Simon Dedalus, and Jack Power. Their conversation and the funeral prompt reflections on death, family, religion, and Bloom's father and infant son. The men notice Stephen at a distance, but he and Bloom still follow separate paths. Dignam is buried, and Bloom leaves the cemetery to resume the practical business of the day while thoughts of Molly and Boylan remain close.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bloom visits the Freeman's Journal offices while trying to renew an advertisement for Alexander Keyes. Amid the newspaper's machinery and the staff's displays of rhetoric, he obtains conditional approval from the advertiser but fails to close the deal because editor Myles Crawford wants firmer terms. Stephen arrives separately to deliver Deasy's cattle letter and then leads several newspapermen toward a pub, telling them a parable on the way. Hungry, Bloom walks through central Dublin, avoiding an unpleasant crowded restaurant before eating bread, cheese, and wine at Davy Byrne's. He thinks repeatedly about food, bodies, Molly, and Boylan, whom he then spots nearby and evades by entering the National Museum. At the National Library, Stephen presents a complex theory linking Shakespeare's life, marriage, and fatherhood to Hamlet. Mulligan and the scholars challenge him, and Stephen ultimately denies believing his own construction. Bloom passes through the library during this discussion, bringing his orbit close to Stephen's again without a meeting.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A sequence of intersecting journeys follows clergy, officials, shopkeepers, musicians, the Dedalus family, Bloom, Boylan, and many others through Dublin, ending as the vice-regal procession crosses the city. Bloom shops for a book for Molly, while Boylan arranges a gift and travels toward his appointment with her. In the Ormond Hotel bar, Simon Dedalus and other men sing as Bloom eats with Richie Goulding. Music, memories, and Bloom's anxious awareness of Boylan's progress overlap; he writes back to Martha and leaves before the song-filled gathering ends. Later, at Barney Kiernan's pub, Bloom joins a group dominated by the Citizen, whose aggressive nationalism and antisemitic hostility turn conversation into confrontation. Bloom argues that persecution cannot define a nation and that love is stronger than violence. When Martin Cunningham takes Bloom away, the Citizen pursues them and throws a biscuit tin at the departing carriage. Bloom escapes the attack, but the exchange exposes how readily his neighbors treat him as an outsider.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At Sandymount Strand, Gerty MacDowell watches fireworks with friends and children while becoming aware of Bloom's attention. She knowingly poses for him; he masturbates from a distance, then sees her limp as she leaves. The church clock and fireworks make clear that Boylan's visit to Molly has already occurred. Bloom next goes to the National Maternity Hospital, where Mina Purefoy is enduring a long labor. He finds Stephen drinking with medical students and joins their talk as the prose shifts through styles associated with the development of English. News arrives that Mina has safely given birth, and the group heads into Nighttown. In the brothel district, Bloom follows Stephen through a prolonged sequence in which fears, desires, memories, accusations, and transformations appear as hallucinated drama. Stephen sees a vision of his dead mother and smashes a lamp. Outside, he argues with British soldiers and is knocked down. Bloom intervenes, guards the dazed young man, and recognizes in him a vulnerable possible son. As Bloom watches over Stephen, he envisions his own dead child, Rudy.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bloom brings Stephen to a cabman's shelter, where they drink coffee and listen skeptically to a sailor's stories. Their conversation reveals affinities but also differences in age, temperament, politics, and experience. Bloom then takes Stephen to 7 Eccles Street, entering through the basement because he lacks his key. Over cocoa they compare their lives, and Bloom imagines ways Stephen might become connected with the household, but Stephen declines the invitation to stay. After the two urinate in the yard and part, Stephen walks away. Bloom returns to bed with Molly, aware of Boylan's visit but also restoring ordinary contact by asking for breakfast in the morning. Molly remains awake. Her unpunctuated thoughts range over Boylan, Bloom, former admirers, motherhood, money, music, sex, aging, and the constraints and pleasures of her life. Moving back through memories of Gibraltar and early courtship, she recalls Bloom's proposal and her decision to accept him. The novel ends inside that remembered assent, with the marriage unsettled yet bound to a foundational act of affirmation.",
+            "through": {
+              "chapter": 18
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "ulysses-amazonclassics-edition"
+      }
+    },
     "un-incidente-en-el-puente-de-owl-creek-traducido-an-occurrence-at-owl-creek-bridge-translated": {
       "characters": {
         "characters": [
