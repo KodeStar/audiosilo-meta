@@ -3791,6 +3791,161 @@
         "work": "white-witch-black-curse"
       }
     },
+    "whose-body": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An aristocratic amateur detective whose light manner conceals a disciplined interest in evidence. When a stranger is found dead in an architect's bath, he takes up the puzzle for its own sake and soon connects it with a second, apparently unrelated disappearance.",
+            "id": "lord-peter-wimsey",
+            "name": "Lord Peter Wimsey",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Wimsey's capable valet and former wartime sergeant. He manages practical details, photography, and inquiries with discretion, while also watching for signs that the investigation is placing too much strain on his employer.",
+            "id": "mervyn-bunter",
+            "name": "Mervyn Bunter",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Scotland Yard detective and Wimsey's friend. Methodical and less theatrical than the amateur sleuth, he is investigating the disappearance of the financier Sir Reuben Levy when the body-in-the-bath case begins.",
+            "id": "charles-parker",
+            "name": "Charles Parker",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A respectable architect who discovers an unknown naked man in the bath of his London flat. His bewilderment and lack of any plausible connection to the dead man make him both a suspect to the police and an object of Wimsey's concern.",
+            "id": "alfred-thipps",
+            "name": "Alfred Thipps",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Thipps's elderly mother, who shares his flat. Her diffuse account of the night contains observations that become more useful once Wimsey separates what she noticed from how she interpreted it.",
+            "id": "mrs-thipps",
+            "name": "Mrs Thipps",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The police inspector initially responsible for the corpse in Thipps's bath. Certain that the obvious household suspects must be involved, he represents an official line of inquiry that Wimsey considers too narrow.",
+            "id": "inspector-sugg",
+            "name": "Inspector Sugg",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A wealthy Jewish financier who vanishes from his home on the same night that the unidentified body appears. The corpse resembles him in broad physical terms, but important details challenge the convenient assumption that the two cases are identical.",
+            "id": "sir-reuben-levy",
+            "name": "Sir Reuben Levy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sir Reuben's wife. She gives Parker a careful account of her husband's last evening and insists that the dead man in the bath is not him, despite the resemblance on which the first public theories depend.",
+            "id": "lady-levy",
+            "name": "Lady Levy",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A distinguished specialist in diseases of the nervous system whose hospital and home stand near the scene of the bath mystery. His medical authority and familiarity with bodies make his evidence especially important to Wimsey.",
+            "id": "sir-julian-freke",
+            "name": "Sir Julian Freke",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Wimsey's formidable mother, socially observant and far less conventional than her title suggests. She supplies family intelligence, affectionate advice, and useful access without treating her son's detecting as a mere eccentricity.",
+            "id": "dowager-duchess-of-denver",
+            "name": "The Dowager Duchess of Denver",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "whose-body"
+      },
+      "recaps": {
+        "ending": "Wimsey concludes that Sir Julian Freke engineered both mysteries. Freke murdered Sir Reuben Levy, disposed of Levy's body, and moved an unclaimed corpse from his medical work into Thipps's bath. He altered the substitute body and supplied misleading details so that investigators would first mistake it for Levy and then become trapped by the differences. His purpose was revenge rooted in his old attachment to Lady Levy and his hatred of the man she married. Once Wimsey reconstructs the transfer across the nearby roofs and the medical manipulation of the corpse, Freke realizes that he has been exposed. He attempts to silence Wimsey, but Bunter and Parker intervene and the evidence secures the case. Thipps is cleared. The solution also forces Wimsey to confront the human cost of treating murder as an absorbing intellectual game, and Bunter helps him through the return of his wartime distress.",
+        "in_short": "An unknown naked man wearing pince-nez is found in architect Alfred Thipps's bath just as financier Sir Reuben Levy disappears. Lord Peter Wimsey investigates the bath while his police friend Charles Parker follows Levy's movements. The corpse resembles Levy but is not him, and the combination of likeness and discrepancy proves deliberate. Physical evidence, medical knowledge, and access between neighboring buildings lead Wimsey to neurologist Sir Julian Freke. Freke killed Levy out of long-held personal hatred, disposed of his body, and planted another corpse in Thipps's flat after modifying it to create a false identification. The elaborate substitution was intended to confuse the two investigations and divert suspicion toward innocent people. Wimsey reconstructs the scheme; Freke tries unsuccessfully to stop him and is caught, while Thipps is exonerated.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Lord Peter Wimsey hears that architect Alfred Thipps has found a naked male corpse in his bath. The dead man is an apparent stranger, wears only a pair of pince-nez, and seems to have been placed in the flat during the night. Inspector Sugg promptly suspects Thipps and his elderly mother. Wimsey examines the room and body with his valet Bunter, noticing details that make a casual intrusion unlikely. At the same time, Wimsey's Scotland Yard friend Charles Parker is investigating the disappearance of Sir Reuben Levy, a wealthy financier who left home unexpectedly after returning for the evening. The missing man and the corpse have a superficial physical resemblance, encouraging an easy identification, but Lady Levy is certain the body is not her husband. Wimsey and Parker agree to compare their supposedly separate cases.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Examination confirms that the man in the bath is not Sir Reuben Levy. The body carries carefully chosen oddities, including spectacles that do not naturally belong with it, while its condition points to someone with medical knowledge. Thipps has no credible motive and no explanation for how a corpse could have been brought through his occupied flat. Parker traces Levy's final known movements and learns that his disappearance was managed without the noise or disorder expected from an impulsive crime. Wimsey studies the geography around Thipps's building, including the neighboring medical premises associated with the eminent neurologist Sir Julian Freke. The question changes from identifying a convenient victim to understanding why an unknown body was made to resemble a missing public figure.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Wimsey and Bunter pursue the dead man's identity among people whose deaths might leave them unclaimed. The inquiry suggests that the bath victim came from outside Levy's world and had been available to someone with legitimate access to human remains. Measurements, photographs, and the body's physical alterations support the idea that the resemblance to Levy was manufactured after death. Meanwhile Parker finds no persuasive financial conspiracy behind Levy's disappearance. Wimsey experiences a period of severe strain as the murder recalls his wartime trauma, but the evidence continues to converge on a single planner who possessed medical skill, nearby access, and knowledge of both victims. A route over the roofs offers a way to place the substitute corpse in Thipps's flat without passing through the household in the ordinary manner.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The two cases resolve into one deliberate construction. Wimsey determines that Sir Reuben was the true murder victim and that the corpse in the bath was planted to create a false trail. The killer wanted the body initially taken for Levy, yet also embedded discrepancies that would undermine that identification and entangle investigators in an impossible puzzle. Medical control over an unclaimed corpse explains how the substitute could be selected and altered; the neighboring buildings explain how it was transported. Sir Julian Freke's past connection with Lady Levy supplies the personal motive that the financial inquiries failed to find. Wimsey prepares a full written reconstruction while recognizing that the suspect is dangerous and now has reason to act quickly.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sir Julian Freke is exposed as the architect of the crimes. Nursing an old grievance against Sir Reuben Levy, he murdered Levy and disposed of his body through his medical facilities. He then obtained another corpse, changed its appearance enough to suggest Levy while preserving contradictions, and carried it into Thipps's bath by the concealed route between the buildings. The spectacle was designed to confuse identity, timing, and motive and to place innocent people under suspicion. Once Wimsey has assembled the physical evidence and motive, Freke attempts to silence him, but Bunter and Parker prevent the attack and the case is secured. Thipps is cleared. With the intellectual puzzle finished, Wimsey suffers the emotional recoil of the violence he has uncovered, and Bunter steadies him through the episode.",
+            "through": {
+              "chapter": 13
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "whose-body"
+      }
+    },
     "wicked-the-life-and-times-of-the-wicked-witch-of-the-west": {
       "characters": {
         "characters": [

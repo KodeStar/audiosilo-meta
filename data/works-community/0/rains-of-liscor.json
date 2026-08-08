@@ -608,6 +608,341 @@
         "work": "raising-steam"
       }
     },
+    "rambo": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A decorated Vietnam veteran and former Green Beret serving a prison sentence after the violence surrounding his return to civilian life. Years of combat and captivity have left him wary of institutions, but he remains exceptionally skilled in survival, infiltration, and guerrilla warfare.",
+            "id": "john-rambo",
+            "name": "John Rambo",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Colonel Trautman"
+            ],
+            "description": "Rambo's former commanding officer and the man who trained him for unconventional war. Trautman understands both Rambo's abilities and the cost at which they were acquired, and brings him an offer that could secure his release from prison.",
+            "id": "samuel-trautman",
+            "name": "Samuel Trautman",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The American official directing a secret operation to photograph a Vietnamese prison camp where prisoners of war may still be held. Controlled and politically minded, he insists that Rambo observe strict limits and return with evidence rather than attempt a rescue.",
+            "id": "marshall-murdock",
+            "name": "Marshall Murdock",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A hard-edged member of Murdock's operational team who helps manage transport and security at the mission base. He treats Rambo as an expendable field asset and follows Murdock's authority.",
+            "id": "ericson",
+            "name": "Ericson",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Vietnamese resistance operative assigned to guide Rambo through the country. Resourceful, multilingual, and familiar with local patrols and river routes, she hopes eventually to reach the United States and builds a rapid bond with him.",
+            "id": "co-bao",
+            "name": "Co Bao",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of an armed riverboat crew hired to carry Rambo and Co Bao toward the prison camp. Tay knows the waterways and agrees to make the dangerous journey in exchange for payment.",
+            "id": "tay",
+            "name": "Tay",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An emaciated American serviceman held in the prison camp Rambo has been ordered to observe. His condition confirms that living prisoners remain there and turns an intelligence mission into an immediate moral choice.",
+            "id": "banks",
+            "name": "Banks",
+            "reveal": {
+              "chapter": 52
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Captain Vinh"
+            ],
+            "description": "The Vietnamese officer overseeing the prison camp and its guards. He is responsible for keeping the American captives concealed and works with Soviet personnel when Rambo's intrusion threatens the camp.",
+            "id": "vinh",
+            "name": "Vinh",
+            "reveal": {
+              "chapter": 57
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Lieutenant Colonel Podovsky"
+            ],
+            "description": "A Soviet intelligence officer operating with the Vietnamese forces. Patient, controlled, and practiced in coercive interrogation, he tries to turn Rambo's capture into a warning that can be transmitted to the American command.",
+            "id": "podovsky",
+            "name": "Podovsky",
+            "reveal": {
+              "chapter": 68
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A massive Soviet soldier serving Podovsky at the camp. He relies on physical intimidation and violence during Rambo's imprisonment and later pursues him from the air.",
+            "id": "yushin",
+            "name": "Yushin",
+            "reveal": {
+              "chapter": 69
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "rambo"
+      },
+      "recaps": {
+        "ending": "After Co Bao is killed, Rambo wages a personal campaign against the Vietnamese and Soviet forces pursuing him. He reaches the prison camp, frees the American captives, and takes a helicopter for the flight back to Thailand. Yushin attacks in another gunship, but Rambo survives the aerial battle and destroys his pursuer. He lands at Murdock's base with the prisoners whom the operation was designed not to find. Rambo then wrecks the command center and forces Murdock at knifepoint to acknowledge the men still missing in Vietnam and to pursue their rescue. He does not take the offered path back into ordinary American life. The surviving prisoners are safe, Trautman remains the person who best understands him, and Rambo walks away from the base still alienated from the country for which he fought.",
+        "in_short": "John Rambo is released from prison for a covert mission to photograph a Vietnamese camp where American prisoners may remain. Mission chief Murdock orders him to gather evidence only, while Colonel Trautman watches over the operation. Guided by Vietnamese agent Co Bao, Rambo infiltrates the camp and rescues a prisoner named Banks. Murdock, fearing the political consequences of proof that captives were abandoned, orders the extraction helicopter to leave them behind. Rambo is recaptured and tortured by Soviet officer Podovsky, but Co frees him. After she is killed, Rambo destroys the forces hunting him, returns to the camp, and rescues the remaining prisoners. He defeats Yushin in an aerial battle and flies the captives to the American base. There he confronts Murdock and demands action for the men still missing, then leaves rather than returning home.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, Vietnam veteran John Rambo returned to the United States unable to find a place in civilian life. A confrontation with a small-town sheriff escalated into a manhunt in the mountains, where the survival and combat training Rambo learned as a Green Beret made him extraordinarily dangerous. His former commander, Colonel Samuel Trautman, tried to prevent further deaths and finally persuaded him to surrender. Rambo survived the confrontation but was imprisoned, while Trautman remained his closest link to the military past that shaped him.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "John Rambo is performing hard labor in prison when Colonel Trautman visits with an offer. Intelligence suggests that American prisoners may still be held in Vietnam, and the government wants a veteran capable of entering the country without attracting attention. If Rambo accepts and succeeds, he can earn his freedom. He agrees, partly because the missing men represent comrades his country may have left behind. At the operational base in Thailand, mission director Marshall Murdock explains that Rambo is to reach a former prison camp, photograph any prisoners he sees, and leave without engaging the guards. Murdock presents the mission as tightly controlled reconnaissance. Rambo distrusts the officials but accepts the limits and prepares to return to the landscape of his war.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rambo's insertion is disrupted when equipment catches as he jumps from the aircraft, forcing him to abandon much of the gear selected for the mission. He continues with weapons and skills he knows he can rely on. Inside Vietnam he meets Co Bao, the local operative assigned to guide him. She moves him through river traffic and hostile territory while helping him avoid patrols. Co is capable and independent, and she and Rambo develop trust despite the speed and danger of the mission. As they approach the camp, Rambo learns that it is not the empty ruin the planners expected. Guards remain active, making clear that the intelligence and Murdock's assurances did not describe the whole situation.",
+            "through": {
+              "chapter": 45
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rambo infiltrates the prison camp and finds living American captives in severe condition. Rather than leave with photographs, he frees one prisoner, Banks, and begins carrying him toward extraction. The choice violates Murdock's explicit order but answers the real purpose for which Rambo believed he had been sent. Vietnamese troops pursue them as Co helps them reach the rendezvous. An American helicopter approaches, and rescue appears possible. When Murdock learns that Rambo has brought a live prisoner, however, he orders the flight crew to break off. Proof of surviving prisoners would expose the falseness of the mission's assumptions and create consequences Murdock is unwilling to face. Rambo and Banks are abandoned on the ground and fall back into enemy hands.",
+            "through": {
+              "chapter": 64
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rambo is returned to the camp, where Soviet officer Podovsky takes charge of his interrogation. Podovsky and the powerful soldier Yushin torture him and attempt to force him to radio the American base with a warning to stop further operations. Rambo reaches Murdock by radio but turns the demanded message into a personal threat against the official who betrayed him. Co Bao infiltrates the camp in disguise and frees Rambo. During their escape, the two acknowledge their attachment and imagine a future beyond the mission. That possibility ends almost immediately when enemy fire kills Co. Rambo buries her, takes her pendant, and abandons any remaining attempt to withdraw quietly. Grief and betrayal turn his escape into a campaign against the soldiers hunting him.",
+            "through": {
+              "chapter": 82
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Using the forest, improvised traps, and captured weapons, Rambo eliminates the patrols pursuing him. He works his way back toward the prison camp instead of escaping alone. There he attacks the guards and releases the surviving American prisoners. Rambo and the captives seize a helicopter and head toward the Thai base, but Yushin pursues them in a heavily armed Soviet gunship. The fight appears to force Rambo's damaged helicopter down. He uses the apparent crash to draw Yushin close, returns fire, and destroys the pursuing aircraft. The former prisoners continue toward the American command with direct proof of everything Murdock tried to suppress.",
+            "through": {
+              "chapter": 98
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rambo lands at Murdock's base with the rescued prisoners, exposing the operation's deception. He storms into the command center, destroys its equipment, and confronts Murdock with a knife. Rather than kill him, Rambo orders him to locate and recover the other Americans still missing in Vietnam. The freed men receive care, and Trautman asks Rambo what he will do now that he has earned his release. Rambo rejects an easy return to the country that sent soldiers to war and then tried to forget them. He wants the nation to value its veterans as much as they valued it, but he does not believe that wish has been fulfilled. Leaving Trautman and the base behind, he walks away alone, free but still without a settled home.",
+            "through": {
+              "chapter": 106
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "rambo"
+      }
+    },
+    "rambo-iii": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A former Green Beret living apart from the United States at a Buddhist monastery in Thailand. Rambo channels his strength into work and ritual combat, seeking quiet after years of war, although his training and loyalty to Colonel Trautman remain central to him.",
+            "id": "john-rambo",
+            "name": "John Rambo",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Colonel Trautman"
+            ],
+            "description": "Rambo's former commanding officer, mentor, and closest friend. He comes to Thailand seeking Rambo's help with a mission supporting Afghan resistance fighters against the Soviet occupation.",
+            "id": "samuel-trautman",
+            "name": "Samuel Trautman",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An American official coordinating aid to the Afghan resistance. He helps brief Trautman and Rambo on the Soviet campaign and the covert effort to supply the mujahideen.",
+            "id": "griggs",
+            "name": "Griggs",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Colonel Zaysen"
+            ],
+            "description": "The Soviet commander of a fortified base in Afghanistan. He uses aircraft, armor, and torture to crush local resistance, and sees Trautman's capture as an opportunity to uncover the network aiding the mujahideen.",
+            "id": "alexei-zaysen",
+            "name": "Alexei Zaysen",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Zaysen's exceptionally strong subordinate and chief enforcer. Kourov guards the Soviet fortress and personally joins the hunt when Rambo begins operating inside the base.",
+            "id": "kourov",
+            "name": "Kourov",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An Afghan guide and trader who meets Rambo across the Pakistani border. Mousa knows the routes, factions, and customs of the region, and agrees to take him through dangerous territory toward Trautman's prison.",
+            "id": "mousa-ghani",
+            "name": "Mousa Ghani",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A leader among the Afghan resistance fighters. Masoud explains the cost of the Soviet campaign to his people and must balance Rambo's rescue plan against responsibility for the families and fighters under his protection.",
+            "id": "masoud",
+            "name": "Masoud",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young Afghan boy living among the resistance community. Curious and determined to take part in the struggle around him, he attaches himself to Rambo despite the extreme danger of the rescue mission.",
+            "id": "hamid",
+            "name": "Hamid",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "rambo-iii"
+      },
+      "recaps": {
+        "ending": "Rambo and Trautman escape Zaysen's fortress with other prisoners but are pursued across the Afghan landscape. Rambo kills Kourov during close combat in a cavern, and the fugitives reach open ground only to face Zaysen's massed troops, armor, and helicopter. Masoud and the mujahideen arrive on horseback and turn the confrontation into a battle. Rambo takes control of a tank and drives directly against Zaysen's helicopter; the collision destroys both vehicles, but Rambo survives and Zaysen is killed. With the Soviet force defeated, Rambo and Trautman say farewell to Mousa, Masoud, Hamid, and the fighters. Rambo gives Hamid a token of friendship before leaving Afghanistan with Trautman. The rescue restores the bond between the two soldiers, but Rambo again departs without returning to a conventional American life.",
+        "in_short": "John Rambo is living at a Thai monastery when Colonel Trautman asks him to join a mission aiding Afghan resistance fighters against Soviet forces. Rambo refuses to return to war, but changes his mind after Trautman goes alone and is captured by Colonel Zaysen. Guided from Pakistan by Mousa Ghani, Rambo meets Masoud's mujahideen and the boy Hamid. A Soviet attack on their village shows the danger civilians face. Rambo infiltrates Zaysen's fortress, eventually frees Trautman and other prisoners, and fights through Soviet troops during their escape. After killing Zaysen's enforcer Kourov, Rambo and Trautman appear trapped by a larger Soviet force, but Masoud's fighters arrive. In the final battle Rambo uses a tank against Zaysen's helicopter, killing the commander and surviving the collision. Rambo and Trautman leave Afghanistan together after saying farewell to their Afghan allies.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, Vietnam veteran John Rambo survived a violent confrontation after returning to an America in which he could not find a place. His former commander, Colonel Samuel Trautman, persuaded him to surrender and remained his closest ally. Later, Rambo accepted a covert mission to locate American prisoners in Vietnam. Mission director Murdock abandoned him when he found living captives, but Rambo escaped Soviet and Vietnamese forces, freed the prisoners, and brought them to the American base. He then walked away from military authority once more, still deeply loyal to Trautman but unwilling to trust the institutions that had used them both.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "John Rambo has settled at a Buddhist monastery in Thailand, supporting the monks through construction work and earning extra money in dangerous stick-fighting contests. Colonel Trautman finds him there and asks him to join an operation in Afghanistan, where Soviet forces are waging war against resistance fighters and civilians. Rambo refuses. He respects Trautman but believes he has finally found a way to live without returning to combat. Trautman proceeds without him. American official Griggs later brings news that the mission failed and Trautman has been captured. The government considers a direct rescue too dangerous. Loyalty overcomes Rambo's wish for peace: he takes the mission information and decides to enter Afghanistan himself.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Trautman is held in a Soviet fortress commanded by Colonel Zaysen. Zaysen interrogates him about American support for the Afghan resistance, but Trautman refuses to cooperate and warns that Rambo will come for him. Rambo crosses into Pakistan, obtains weapons, and meets Mousa Ghani, an Afghan guide with the contacts needed to move through the border region. Mousa explains that a rescue cannot be separated from the wider war: Soviet patrols control the roads, villages have been destroyed, and local fighters have their own urgent responsibilities. Despite the risks, Mousa agrees to lead Rambo toward the resistance community nearest Zaysen's base.",
+            "through": {
+              "chapter": 35
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rambo and Mousa reach fighters led by Masoud and meet Hamid, a boy eager to take part in the resistance. Masoud is willing to discuss Trautman's prison but cannot sacrifice all his people for one foreign captive. The reality of the occupation becomes immediate when Soviet helicopters attack the community. Rambo joins the defense and helps civilians escape, but the assault inflicts casualties and leaves the survivors with still fewer resources. Masoud's fighters must protect their families and continue their own struggle. Rambo prepares to attempt the rescue with only limited help, while Hamid's determination to accompany him creates another life for which he must take responsibility.",
+            "through": {
+              "chapter": 51
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rambo, Mousa, and Hamid approach the Soviet fortress through the surrounding caves and defenses. Their first attempt reaches prisoners but triggers an alarm before they can complete the rescue. Soviet troops respond in force, and the group must withdraw under fire. Hamid is wounded, reinforcing that the boy cannot safely continue. Rambo sends him and Mousa away rather than expose them to another assault. He remains behind alone, studies the base, and prepares to re-enter it without expecting outside support. Inside, Zaysen continues trying to break Trautman, unaware that Rambo has chosen the direct and nearly impossible approach Trautman predicted.",
+            "through": {
+              "chapter": 67
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rambo penetrates the fortress, frees Trautman, and releases other captives while Soviet troops converge on them. The rescue becomes a running battle through the base and into the cave system outside. Rambo and Trautman fight as a team again, using captured weapons and the terrain to offset the larger force. Zaysen commits men and aircraft to stop their escape. His enforcer Kourov corners Rambo in the caverns, where the two fight at close quarters until Rambo kills him. Although the fugitives break out of the caves, Zaysen's remaining troops and armored vehicles surround them on open ground, leaving Rambo and Trautman facing an army with little cover and no apparent route away.",
+            "through": {
+              "chapter": 83
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Masoud's mujahideen charge into the battlefield on horseback, giving Rambo and Trautman the support they seemed to have lost. The Afghan fighters engage the Soviet troops while Rambo takes control of a tank. Zaysen attacks from his helicopter, and Rambo drives directly toward him. Tank and aircraft collide; Zaysen is killed, while Rambo emerges alive from the wreckage. With the Soviet force defeated, the surviving resistance fighters regroup. Rambo and Trautman thank Mousa and Masoud and say farewell to Hamid, whom Rambo leaves with a small token of friendship. The two Americans depart Afghanistan together. Trautman has been rescued and their bond reaffirmed, but Rambo's future remains outside ordinary military or civilian structures.",
+            "through": {
+              "chapter": 94
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "rambo-iii"
+      }
+    },
     "rappaccinis-daughter": {
       "characters": {
         "characters": [

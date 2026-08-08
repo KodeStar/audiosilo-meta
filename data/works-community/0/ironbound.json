@@ -2369,6 +2369,162 @@
         "work": "jade-war"
       }
     },
+    "jamaica-inn": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A capable young woman from Helford who has managed her widowed mother's farm through years of declining health. After her mother's death she honors a promise to live with her aunt Patience at Jamaica Inn, despite repeated warnings about the isolated establishment and its violent landlord.",
+            "id": "mary-yellan",
+            "name": "Mary Yellan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Mary's late mother, whose long illness left Mary to run their small farm. Her final wish sends Mary to live with her sister Patience, whom Mary remembers as lively and beautiful from childhood.",
+            "id": "mrs-yellan",
+            "name": "Mrs. Yellan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Mary's aunt, once remembered as cheerful and confident but now nervous, worn, and completely dominated by her husband. She welcomes Mary with affection yet is too frightened of Joss to explain what has happened at the inn.",
+            "id": "patience-merlyn",
+            "name": "Patience Merlyn",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The enormous, brutal landlord of Jamaica Inn and Patience's husband. He keeps the inn closed to ordinary trade, conducts secret business at night, and rules his household and associates through intimidation and sudden violence.",
+            "id": "joss-merlyn",
+            "name": "Joss Merlyn",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The albino vicar of Altarnun, whose white hair and pale eyes give him an unusual appearance. Educated, observant, and outwardly considerate, he listens seriously when Mary explains her fears about Jamaica Inn.",
+            "id": "francis-davey",
+            "name": "Francis Davey",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Joss's younger brother, an independent horse dealer who readily admits that some of his business is theft. He resembles Joss physically but is quicker, more humorous, and less threatening, leaving Mary attracted to him despite her distrust of the Merlyn family.",
+            "id": "jem-merlyn",
+            "name": "Jem Merlyn",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The local magistrate and landowner who has long suspected that Jamaica Inn shelters criminal activity. He represents the practical legal authority Mary hopes can act against Joss, although obtaining evidence remains difficult.",
+            "id": "squire-bassat",
+            "name": "Squire Bassat",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Squire Bassat's kindly wife. She gives the exhausted Mary food, warmth, and calm attention, offering a brief view of ordinary domestic security far removed from Jamaica Inn.",
+            "id": "mrs-bassat",
+            "name": "Mrs. Bassat",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Harry the Pedlar"
+            ],
+            "description": "A traveling pedlar associated with Joss's rough company. Familiar with the roads and willing to use force, he is one of the men whose presence confirms that the inn's nighttime trade involves more than smuggled goods.",
+            "id": "harry",
+            "name": "Harry",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "jamaica-inn"
+      },
+      "recaps": {
+        "ending": "Mary finds Joss and Patience murdered at Jamaica Inn and turns for help to Francis Davey, only to discover that the apparently sympathetic vicar is the organizer who directed Joss and the wreckers. Davey forces Mary to leave with him across the moor, explaining his rejection of conventional faith and his plan to escape by sea. Jem, who has returned after trying to alert the authorities, follows them. Near the stone formations on the moor, Davey's control gives way to panic and exaltation; Jem shoots him before he can carry Mary away. The criminal operation is exposed, and Mary is freed from the inn and from the promise that brought her there. She initially plans to return to Helford and rebuild an independent life. When she meets Jem driving a wagon toward a roaming future, however, she accepts that she does not want safety without him. She joins him on the road, choosing uncertainty and mutual freedom over a settled return to her former home.",
+        "in_short": "After her mother's death, Mary Yellan leaves Helford to live with her aunt Patience at remote Jamaica Inn. She finds Patience terrified and diminished, while her violent husband Joss uses the empty inn as a base for smugglers. Mary is drawn to Joss's horse-thieving brother Jem but cannot fully trust him. Her search for help leads to the pale vicar Francis Davey and the magistrate Squire Bassat. Joss eventually reveals that his gang does not merely smuggle: it creates false coastal signals, wrecks ships, and robs the dead. Mary is forced to witness a wreck and escapes to raise the alarm. She returns to find Joss and Patience murdered, then learns that Davey was the hidden leader who ordered the operation. He abducts her onto the moor, where Jem catches up and kills him. With the inn's crimes ended, Mary gives up her plan to return alone to Helford and leaves with Jem for an unsettled life on the road.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "After the death of her mother, twenty-three-year-old Mary Yellan leaves their farm at Helford to keep a promise that she will live with her aunt Patience. The coach journey takes her into bleak Bodmin Moor, and the driver is alarmed to learn that her destination is Jamaica Inn, a place avoided by respectable travelers. At the inn Mary finds almost no guests and a household ruled by her huge uncle, Joss Merlyn. Patience, once cheerful and attractive, has become frightened and exhausted under his control. Joss warns Mary not to pry into his affairs and makes clear that disobedience will be dangerous. Mary decides to stay for Patience's sake, while resolving to discover what business brings rough men and secret nighttime activity to the isolated inn.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Life at Jamaica Inn confirms Mary's suspicions. Wagons and groups of men arrive after dark, the bar becomes a place of drunken violence, and Joss keeps Mary and Patience away from locked rooms and hidden cargo. Mary understands that the inn is involved in smuggling, but she fears there is a worse secret behind Joss's authority over the men. During an expedition away from the inn she meets Francis Davey, the strikingly pale vicar of Altarnun. Unlike the people who simply warn her away, he listens to her concerns and offers help. Mary remains determined to protect Patience, who refuses to leave her husband and will not speak openly against him. With no clear evidence to take to a magistrate, Mary returns to the inn and continues watching.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Mary meets Jem Merlyn, Joss's younger brother, who survives by dealing in horses and admits that he steals some of them. His resemblance to Joss makes her wary, but his humor and independence distinguish him from the innkeeper. Their attraction grows alongside mutual suspicion: Jem mocks Mary's determination while warning her that she is in real danger. Mary also learns that Squire Bassat has tried to uncover Joss's operations but has been unable to catch him with incriminating goods. The contrast between legal suspicion and Joss's continuing confidence suggests that someone protects the gang or helps it evade investigation. Mary has possible allies in Davey and Bassat, yet she remains isolated at the inn because Patience will not abandon Joss.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jem takes Mary to the busy Christmas market at Launceston, giving her a day of freedom from the inn. He sells a horse and spends time with her, but the outing ends in confusion when he disappears and Mary is left without safe transport home. The experience deepens her feelings for him without resolving whether he can be trusted. Back on the moor, Mary's efforts to seek assistance bring her into contact with the Bassat household, where she receives practical kindness and a clearer sense that the magistrate is prepared to act if proof can be obtained. Meanwhile, Joss's drinking and fear increase. He hints that the contraband moved through Jamaica Inn is only one part of his work and that he is haunted by acts more serious than smuggling.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Joss's secret is exposed when Mary is taken with his gang to the coast. The men use a false light to lure a ship onto the rocks, then descend on the wreck to steal cargo and prevent survivors from identifying them. Mary sees that the operation is organized murder as well as robbery. Horrified, she escapes and tries to bring the authorities before the gang can disperse. Her knowledge now gives Squire Bassat the evidence and urgency he lacked, but it also makes her a direct threat to everyone involved. The events confirm that Joss acts under pressure from a leader whose identity Mary still does not know. She struggles back across the moor, intent on reaching Patience and ending the control Jamaica Inn has held over both of them.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Mary returns to Jamaica Inn and finds Joss and Patience murdered. Seeking help from Francis Davey, she discovers that the vicar was the hidden leader who used Joss to run the wrecking gang and had the couple killed when the operation collapsed. Davey forces Mary to travel with him across the moor as he attempts to escape toward the coast. His calm religious manner falls away as he describes his contempt for ordinary belief and his own grandiose vision of freedom and power. Jem, who had been trying to involve the authorities, follows them and shoots Davey before he can take Mary farther. With Patience dead and the gang exposed, Mary is released from her obligation to remain at the inn. She considers returning to Helford alone, but when Jem sets out with a wagon and no fixed home, she chooses to go with him and share his uncertain life.",
+            "through": {
+              "chapter": 18
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "jamaica-inn"
+      }
+    },
     "jane-austens-classic-pride-and-prejudice": {
       "characters": {
         "characters": [

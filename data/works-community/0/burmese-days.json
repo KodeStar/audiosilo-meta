@@ -192,6 +192,177 @@
         "work": "burmese-days"
       }
     },
+    "busmans-honeymoon": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An aristocratic amateur detective beginning married life with Harriet Vane. He intends their stay at Talboys to be a private honeymoon, but the discovery of a corpse draws him back into investigation and the moral burden that follows it.",
+            "id": "lord-peter-wimsey",
+            "name": "Lord Peter Wimsey",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A detective novelist newly married to Peter. Independent and observant, she shares both the practical discomforts of their neglected country house and the inquiry that begins there, while learning how Peter's cases affect him after the excitement of deduction has passed.",
+            "id": "harriet-vane",
+            "name": "Harriet Vane",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Peter's valet, former wartime sergeant, and trusted practical ally. He accompanies the couple to Talboys, tackles the disorder left by the absent owner, and applies his usual precision to household arrangements and evidence alike.",
+            "id": "mervyn-bunter",
+            "name": "Mervyn Bunter",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The unpleasant and widely disliked former owner of Talboys, who sold the house to Peter but failed to prepare it for the newlyweds' arrival. His absence first appears to be another breach of agreement; the later discovery of his body turns the household confusion into a murder case.",
+            "id": "william-noakes",
+            "name": "William Noakes",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A local woman employed to look after Talboys. Talkative and full of village information, she is among the people expected to have made the house ready and becomes an important witness to Noakes's habits and recent movements.",
+            "id": "mrs-ruddle",
+            "name": "Mrs Ruddle",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Noakes's niece, a respectable local woman with an anxious manner and a personal interest in his affairs. Her expectations, relationships, and knowledge of the household all require examination after his death.",
+            "id": "agnes-twitterton",
+            "name": "Agnes Twitterton",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A local garage mechanic connected romantically with Miss Twitterton. Familiar with practical machinery and with the movements of people around the village, he assists the household and is questioned as part of the inquiry.",
+            "id": "frank-crutchley",
+            "name": "Frank Crutchley",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The senior local police officer who takes charge after Noakes is found. Calm and competent, he works with Peter rather than resenting his involvement, testing village statements against the physical evidence at Talboys.",
+            "id": "superintendent-kirk",
+            "name": "Superintendent Kirk",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A chimney sweep called to the neglected house. His work and recollections provide evidence about the condition of Talboys and the timing of activity around it.",
+            "id": "mr-puffett",
+            "name": "Mr Puffett",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The local clergyman, part of the village circle that receives Peter and Harriet. His knowledge of the community helps place the suspects within the web of obligations, resentments, and gossip surrounding Noakes.",
+            "id": "mr-goodacre",
+            "name": "Mr Goodacre",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Peter's unconventional and affectionate mother. Though not part of the investigation at Talboys, her involvement in the wedding and correspondence keeps the newlyweds connected to the larger Wimsey family.",
+            "id": "dowager-duchess-of-denver",
+            "name": "The Dowager Duchess of Denver",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "busmans-honeymoon"
+      },
+      "recaps": {
+        "ending": "Frank Crutchley is proved to have murdered William Noakes. He exploited his mechanical skill and knowledge of Talboys to arrange a delayed blow from a heavy object, allowing him to appear elsewhere when the fatal mechanism operated. The disturbed household equipment and inconsistent timing reveal that the scene was engineered rather than the result of a simple fall. Crutchley's motive lies in Noakes's money and in his plans involving Agnes Twitterton; his courtship was part of a self-interested scheme rather than the security she imagined. Peter's reconstruction leads to Crutchley's arrest and conviction. The legal success gives Peter no satisfaction: because his detection has helped send a man to execution, his wartime trauma and horror of responsibility return. On the morning the sentence is carried out, Harriet remains with him through the crisis. Their honeymoon ends with a clearer, more difficult form of intimacy, founded on her willingness to share the consequences of the work as well as the pleasure of solving its puzzle.",
+        "in_short": "Newly married Lord Peter Wimsey and Harriet Vane travel to Talboys, the country house Peter bought for her, only to find it unprepared and its former owner William Noakes missing. Noakes is soon discovered dead in the cellar. Local testimony and the state of the house make the time and method of death appear impossible. Working with Superintendent Kirk, Peter and Harriet learn that Noakes had deceived and offended many people. Clocks, wireless equipment, household objects, and conflicting alibis reveal a delayed mechanical murder rather than an accidental fall. Garage mechanic Frank Crutchley rigged the fatal blow so it would occur while he was elsewhere, seeking financial advantage through Noakes and his niece Agnes Twitterton. Crutchley is caught, convicted, and executed. The result reawakens Peter's war trauma and his anguish over causing a death through detection. Harriet supports him through the execution morning, and their first case as a married couple deepens their partnership beyond the romance of the honeymoon.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Lord Peter Wimsey, an aristocratic amateur detective, cleared novelist Harriet Vane of murder and fell in love with her. Harriet resisted his proposals for years because she feared that gratitude and social inequality would make marriage a surrender of independence. During an investigation at her former Oxford college, they finally worked as equal partners, and Harriet accepted him. Both understand that Peter's brilliance as a detective coexists with severe wartime trauma and with distress over the human consequences of the cases he solves.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After a socially elaborate wedding, Peter Wimsey and Harriet Vane escape to Talboys, an old house in the village of Paggleham that Peter bought as a surprise for Harriet. Their private honeymoon immediately becomes a practical ordeal. William Noakes, the former owner, has not kept his promises: the house is cold, dirty, and unprepared, and he is nowhere to be found. Bunter and local helpers struggle to make it habitable while the couple meet neighbors whose accounts show that Noakes was evasive, miserly, and disliked. The disorder is initially comic and inconvenient, but his unexplained absence and the condition of the property create a more serious question about what happened before the newlyweds arrived.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Noakes is found dead in the cellar at Talboys with a fatal head injury. The position of the body suggests a fall or a direct assault, yet the timing does not fit neatly with the household's arrival and the movements reported by villagers. Superintendent Kirk begins the official inquiry and accepts Peter's close examination of the scene. Mrs Ruddle, Noakes's niece Agnes Twitterton, garage mechanic Frank Crutchley, and other local figures provide statements colored by money, resentment, and gossip. Noakes had given several people reasons to wish him harm. Peter and Harriet postpone the seclusion they intended and begin testing what the physical condition of the house can establish independently of uncertain memories.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The inquiry exposes Noakes's financial deceptions and the conflicting interests around his estate. Miss Twitterton's expectations and her relationship with Crutchley bring inheritance and marriage into the possible motives, but other villagers also had grievances. The medical estimate of death creates an apparent impossibility because the strongest suspects seem to have alibis at the necessary time. Peter focuses on objects whose state has changed: clocks, the wireless, work done in the house, and the arrangement of items near the cellar. The evidence suggests that the fatal injury need not have been delivered while the murderer stood beside Noakes. Harriet contributes her own observations and sees that marriage has not removed the fundamental risk of Peter's detecting life.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Peter and Kirk reconstruct a mechanism that could separate the killer's action from the moment of death. Someone with practical skill prepared a heavy household object to strike Noakes after a delay, then relied on the confused clocks, sounds, and routines at Talboys to support a false chronology. This explains why ordinary alibi testing has failed. Crutchley's mechanical competence and access become increasingly significant, while his attachment to Miss Twitterton appears less disinterested when placed beside the likely distribution of Noakes's money. Peter moves toward a demonstration that will connect the altered equipment and physical traces to the person who set the trap.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Frank Crutchley is identified as Noakes's murderer. He arranged a delayed mechanical blow using the contents and fittings of Talboys, allowing the device to kill Noakes while he maintained an alibi elsewhere. The inconsistencies involving the house's clocks, wireless, and moved objects expose the construction. His motive was financial: Noakes's estate and Crutchley's calculated relationship with Agnes Twitterton offered a route to money. Peter's solution leads to arrest, conviction, and a death sentence. The outcome turns the honeymoon case from an intellectual success into a personal ordeal. As Crutchley's execution approaches, Peter is overcome by responsibility for the chain of detection that made it possible and by renewed wartime distress. Harriet stays with him through the final morning, accepting that their marriage must hold his suffering as well as their shared wit and work.",
+            "through": {
+              "chapter": 20
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "busmans-honeymoon"
+      }
+    },
     "calamity": {
       "characters": {
         "characters": [
