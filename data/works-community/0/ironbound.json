@@ -3604,6 +3604,175 @@
         "work": "journey-to-the-center-of-the-earth"
       }
     },
+    "journey-to-the-center-of-the-earth-amazonclassics-edition": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A young man living in Hamburg with his uncle, Professor Lidenbrock. Axel narrates the expedition and has enough scientific training to assist the professor, but he is far more alert to danger and far less eager to gamble his life on an untested theory.",
+            "id": "axel",
+            "name": "Axel",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Professor Lidenbrock"
+            ],
+            "description": "Axel's uncle, a Hamburg professor of mineralogy and geology. Brilliant, impatient, and intensely stubborn, he treats difficult questions as personal challenges and expects his household to accommodate his work. The discovery of a coded note in an old Icelandic book immediately absorbs him.",
+            "id": "otto-lidenbrock",
+            "name": "Otto Lidenbrock",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The professor's goddaughter and Axel's beloved. Calm and practical, she is less frightened by Lidenbrock's proposed journey than Axel expects and urges him to meet the challenge with courage.",
+            "id": "grauben",
+            "name": "Grauben",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Professor Lidenbrock's long-suffering housekeeper. She manages the Hamburg household and is accustomed to the noise, impatience, and sudden demands produced by the professor's enthusiasms.",
+            "id": "martha",
+            "name": "Martha",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Arne Saknussemm"
+            ],
+            "description": "A sixteenth-century Icelandic scholar and traveler whose name appears in a cryptogram hidden inside an old manuscript. Lidenbrock believes the coded message records a discovery that conventional science has overlooked.",
+            "id": "arne-saknussemm",
+            "name": "Arne Saknussemm",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A courteous Icelandic scholar in Reykjavík who shares Lidenbrock's scientific interests. He welcomes the travelers, helps them gather local information, and directs them toward a dependable guide without knowing the full purpose of their expedition.",
+            "id": "professor-fridriksson",
+            "name": "Professor Fridriksson",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Hans"
+            ],
+            "description": "An Icelandic eider-duck hunter hired to guide Lidenbrock and Axel across the island. Quiet, observant, and physically capable, Hans agrees to serve for a fixed weekly wage and approaches hardship with a steadiness that contrasts with the professor's impatience.",
+            "id": "hans-bjelke",
+            "name": "Hans Bjelke",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The captain who carries Axel and Lidenbrock from Copenhagen to Iceland. Familiar with the northern route and its rough water, he gives them safe passage to Reykjavík at the beginning of their expedition.",
+            "id": "captain-bjarne",
+            "name": "Captain Bjarne",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A gigantic humanlike figure glimpsed in the illuminated underground forest, apparently watching over a herd of mastodons. The explorers observe him from a distance and retreat rather than test whether this startling survivor is real or an illusion.",
+            "id": "giant-herdsman",
+            "name": "The Giant Herdsman",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "journey-to-the-center-of-the-earth-amazonclassics-edition"
+      },
+      "recaps": {
+        "ending": "The blast at the blocked gallery sends the explorers' raft into a violent downward torrent. The water eventually drives them upward through a volcanic shaft, and the heat turns the ascent into an eruption. Axel, Lidenbrock, and Hans are expelled from Stromboli in the Mediterranean rather than emerging in Iceland. They recover with help from local people and return to Hamburg, where their survival and observations make Lidenbrock famous. Axel marries Grauben, while Hans eventually goes home to Iceland. Axel later realizes that the electrical storm reversed their compass, explaining why they had misread the direction of their underground voyage. Saknussemm's route has been confirmed even though the party never literally stands at the planet's center, and the knife Axel recovered provides a final material link to the earlier explorer.",
+        "in_short": "Hamburg geologist Otto Lidenbrock discovers a coded message left by the Icelandic scholar Arne Saknussemm, claiming that a route beneath Snæfell leads toward the center of the Earth. He takes his reluctant nephew Axel to Iceland and hires the unshakable Hans as guide. The three descend through the volcano, survive thirst, separation, and falls, and reach a vast subterranean sea lit by electrical phenomena. They cross it on a raft, witness prehistoric creatures, and find evidence of ancient human life. On the far shore they discover Saknussemm's initials beside a blocked passage and blast it open. The explosion sweeps them through flooded depths and then up a volcanic conduit, ejecting them from Stromboli in Italy. They return celebrated: Lidenbrock gains scientific fame, Axel marries Grauben, and Hans goes back to Iceland. Axel also discovers that their compass was reversed during the underground storm, resolving the mystery of their route.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In Hamburg, Professor Otto Lidenbrock buys an old Icelandic manuscript and finds a separate sheet covered in runes. His nephew Axel recognizes that the symbols conceal Latin written in a transposition code, but he initially withholds the solution because he fears where Lidenbrock's ambition will lead. Hunger and the professor's refusal to abandon the puzzle force Axel to reveal the message. It was written by the sixteenth-century scholar Arne Saknussemm and claims that a particular crater of Snæfell in Iceland offers a route toward the center of the Earth when a mountain shadow marks the correct entrance. Lidenbrock immediately resolves to test the claim. Axel argues that heat and pressure should make the descent impossible, but his uncle counters with competing scientific theories. Grauben, whom Axel loves, encourages him to go and promises to marry him after his return. The reluctant nephew begins preparing to accompany Lidenbrock north.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Lidenbrock and Axel travel through Denmark and sail to Reykjavík. Professor Fridriksson receives them warmly and helps Lidenbrock hire Hans Bjelke, a reserved and highly competent Icelandic hunter. Without disclosing the full plan, the travelers cross a severe volcanic landscape toward Snæfell, relying on Hans for provisions, navigation, and dealings with isolated households. Axel's dread persists as the mountain grows nearer, while Lidenbrock treats every difficulty as confirmation that the real work is about to begin. They reach the extinct volcano and climb toward its summit. Inside the crater they find several possible shafts and must wait for the right light to identify Saknussemm's route. The expected shadow finally falls across the correct opening, giving Lidenbrock the sign described in the cryptogram and leaving the party poised to descend.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Axel, Lidenbrock, and Hans lower themselves into Snæfell's crater, hauling instruments and supplies down a succession of ledges. The rock strata become a practical lesson in geology, and the temperatures do not rise as Axel feared. At a fork, Lidenbrock chooses a route that proves to be a dead end. The detour consumes their water, and Axel becomes dangerously weak. Hans goes alone to search through the surrounding rock and detects water beyond a wall. He opens a small passage, releasing a hot underground stream that cools enough to drink. The party names it in Hans's honor and follows its course deeper, now supplied with water and a natural guide through the darkness. Lidenbrock's confidence is renewed, while Axel has survived his first overwhelming crisis below ground.",
+            "through": {
+              "chapter": 23
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The explorers continue through immense underground formations until Axel becomes separated from the others after losing contact with the guiding stream. Alone in complete darkness, he panics, injures himself, and wanders through branching passages. An acoustic effect eventually carries Lidenbrock's distant voice to him through the rock. Following their exchanged signals, Axel falls down a steep gallery and is knocked unconscious, but he awakens reunited with his uncle and Hans. They have reached the shore of a vast body of water beneath the earth, with a beach, clouds, and a strange diffuse light. Lidenbrock names the sea after himself. The discovery changes the expedition from a descent through narrow tunnels into a voyage across an unknown subterranean world.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Hans builds a raft from underground timber, and the three explorers set out across the Lidenbrock Sea with the stream's fresh water and their remaining provisions. They take soundings, fish up forms unlike surface species, and witness a violent struggle between enormous marine reptiles. A geyser rises from a rocky islet, demonstrating that heat remains active below. An electrical storm then overtakes the raft. Wind, waves, lightning, and magnetic effects carry the party helplessly onward and damage their equipment. They survive the storm and reach land, but Lidenbrock's calculations seem to place them back on the shore from which they began, an apparent reversal that leaves Axel discouraged and the professor determined to inspect the coast before conceding failure.",
+            "through": {
+              "chapter": 35
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Exploration of the shore reveals immense fossil remains and evidence connected with early human life, followed by a forest of giant fungi and ancient vegetation. In the distance the travelers glimpse a gigantic humanlike herdsman among living mastodons and withdraw without approaching. Farther along, Lidenbrock finds a rusted knife and then Saknussemm's initials cut into the rock, proving that the earlier traveler reached this coast. The marked route is blocked by a fallen mass of stone. Refusing to turn back, the party packs explosives against the obstruction and retreats to the raft before setting the charge. The blast opens the barrier but also collapses the shore beneath them. Water pours through the new gap and sweeps the raft into the passage, carrying the explorers beyond any possibility of returning by the route they know.",
+            "through": {
+              "chapter": 41
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The flood propels the raft through darkness, first downward and then abruptly upward. Their remaining food and equipment are largely lost, and the surrounding water grows dangerously hot as they enter an active volcanic system. The shaft becomes a rising column of steam, water, and molten material, carrying the three men toward the surface in an eruption. They are expelled from Stromboli in the Mediterranean, far from Iceland, and survive with aid from the islanders. Back in Hamburg, Lidenbrock's account and the evidence they brought make him celebrated rather than ridiculed. Axel marries Grauben, and Hans eventually returns to Iceland with his wages and the gratitude of his companions. Axel later determines that the electrical storm reversed the compass needle, explaining the mistaken belief that the raft had returned to its starting shore. The expedition verifies Saknussemm's underground route and returns all three travelers alive, though they do not literally reach the Earth's center.",
+            "through": {
+              "chapter": 45
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "journey-to-the-center-of-the-earth-amazonclassics-edition"
+      }
+    },
     "just-one-damned-thing-after-another": {
       "characters": {
         "characters": [
