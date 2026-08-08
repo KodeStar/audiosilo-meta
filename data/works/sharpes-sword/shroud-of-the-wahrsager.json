@@ -9260,6 +9260,12 @@
       "authors": [
         "hermann-hesse"
       ],
+      "credits": [
+        {
+          "person": "paul-ansdell",
+          "role": "translator"
+        }
+      ],
       "genres": [
         "classics"
       ],
@@ -11420,6 +11426,10 @@
             {
               "asin": "197492887X",
               "region": "us"
+            },
+            {
+              "asin": "B01LZGRXY7",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -11498,6 +11508,11 @@
             {
               "imported_at": "2026-07-30",
               "ref": "197492887X",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-08",
+              "ref": "B01LZGRXY7",
               "type": "libex-import"
             }
           ],
@@ -11598,6 +11613,34 @@
             {
               "imported_at": "2026-07-30",
               "ref": "B0FKTQCSYT",
+              "type": "libex-import"
+            }
+          ],
+          "work": "siddhartha"
+        },
+        "samantha-novak-2020": {
+          "abridged": false,
+          "added_at": "2026-08-08",
+          "asin": [
+            {
+              "asin": "1662118910",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/816YS27MX-L.jpg",
+          "id": "samantha-novak-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "samantha-novak"
+          ],
+          "publisher": "Native Publishing House",
+          "release_date": "2020-06-10",
+          "runtime_min": 249,
+          "sources": [
+            {
+              "imported_at": "2026-08-08",
+              "ref": "1662118910",
               "type": "libex-import"
             }
           ],
@@ -12322,6 +12365,16 @@
         {
           "imported_at": "2026-08-02",
           "ref": "1982739495",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-08",
+          "ref": "1662118910",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-08",
+          "ref": "B01LZGRXY7",
           "type": "libex-import"
         }
       ],
