@@ -1732,6 +1732,223 @@
         "work": "a-feast-for-crows"
       }
     },
+    "a-fine-balance": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Dina Dalal"
+            ],
+            "description": "A Parsi widow living alone in a coastal Indian city during the Emergency. Dina protects the independence she gained after her husband's death by doing piecework for an export company, hiring tailors to sew in her flat despite pressure from her brother and landlord.",
+            "id": "dina-shroff",
+            "name": "Dina Shroff",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A college student from a mountain town and the son of Dina's former school friend. Unhappy in his hostel, Maneck boards in Dina's flat. He is observant and sensitive but discouraged by the political fear and rapid change surrounding him.",
+            "id": "maneck-kohlah",
+            "name": "Maneck Kohlah",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An experienced tailor who comes to the city with his nephew Omprakash in search of work. Ishvar is patient, sociable, and inclined to preserve hope through repeated reversals. He takes responsibility for Om while carrying the memory of the caste violence that destroyed their family.",
+            "id": "ishvar-darji",
+            "name": "Ishvar Darji",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Om"
+            ],
+            "description": "Ishvar's young nephew and fellow tailor. Quick-tempered, proud, and restless under humiliation, Om resents both the city's hardships and his uncle's caution. Ishvar hopes steady work will prepare him for marriage and an independent household.",
+            "id": "omprakash-darji",
+            "name": "Omprakash Darji",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Dina's prosperous older brother and guardian after their parents die. Nusswan values security, reputation, and patriarchal authority. He considers Dina's independent life impractical and repeatedly offers support on terms that would place her back under his control.",
+            "id": "nusswan-shroff",
+            "name": "Nusswan Shroff",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Dina's husband, a chemist whose warmth and respect give her a brief marriage free from her brother's rule. His early death leaves Dina grieving but determined to preserve the autonomy their life together made possible.",
+            "id": "rustom-dalal",
+            "name": "Rustom Dalal",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ishvar's father, born into a family of leather workers considered untouchable by the village caste order. Wanting a different future for his sons, Dukhi sends them away to learn tailoring, a decision that challenges the occupation assigned to them by birth.",
+            "id": "dukhi-mochi",
+            "name": "Dukhi Mochi",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Dukhi's son, Ishvar's brother, and Omprakash's father. Trained as a tailor outside his native village, Narayan returns with greater confidence and refuses to accept that the local landowner should control his vote.",
+            "id": "narayan-darji",
+            "name": "Narayan Darji",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Muslim tailor who accepts the young Ishvar and Narayan as apprentices despite caste prejudice and communal suspicion. Ashraf becomes their teacher, employer, and close family friend, helping them establish a trade beyond leather work.",
+            "id": "ashraf-chacha",
+            "name": "Ashraf Chacha",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful upper-caste landowner in Ishvar and Om's home village. Thakur Dharamsi enforces economic and political obedience through intimidation, regarding lower-caste villagers' attempt to vote freely as a direct challenge to his authority.",
+            "id": "thakur-dharamsi",
+            "name": "Thakur Dharamsi",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Maneck's charismatic college friend and student-union leader. Avinash helps him endure hostel life and openly resists corruption and political repression, even as arrests and disappearances make such activism increasingly dangerous.",
+            "id": "avinash",
+            "name": "Avinash",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A physically disabled beggar who moves through the city on a wheeled platform. Shankar welcomes Ishvar and Om among the pavement dwellers and acts as a generous guide to the precarious community organized under the Beggarmaster.",
+            "id": "shankar",
+            "name": "Shankar",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The organizer who controls a network of city beggars, arranging territories, protection, and payments. He is feared for treating disability as a source of income and has influence far beyond that of the people who work under him.",
+            "id": "beggarmaster",
+            "name": "Beggarmaster",
+            "reveal": {
+              "chapter": 6
+            }
+          },
+          {
+            "description": "A hair collector and occasional pavement companion of Ishvar and Om. Rajaram survives by gathering cut hair for sale and is constantly searching for a more secure livelihood amid the city's unstable informal economy.",
+            "id": "rajaram",
+            "name": "Rajaram",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "a-fine-balance"
+      },
+      "recaps": {
+        "ending": "The Emergency leaves the household permanently scattered. After the forced-sterilization camp, Ishvar loses both legs to infection and Om is castrated on Thakur Dharamsi's orders. Their tailoring livelihood is gone, and they eventually survive by begging together. Dina's landlord ends her illegal sewing business and she cannot maintain the flat; Nusswan takes her into his home, where her security depends on serving his family and accepting the authority she resisted for years. Maneck leaves India for work in the Gulf. When he returns in 1984 after his father's death, he finds his family home and the people he loved altered or lost. He learns of Avinash's death and his sisters' suicides, sees the reduced circumstances of Dina, Ishvar, and Om, and concludes that the future holds no recovery. After encountering Ishvar and Om begging in the street, he deliberately steps in front of a train. Dina continues to give the two men food when they visit, and their teasing briefly restores the ease of the old household, a surviving fragment of affection within lives narrowed by violence and dependency.",
+        "in_short": "During India's 1975 Emergency, four people form an improvised household in a coastal city. Widowed Dina Dalal hires village tailors Ishvar and Omprakash and takes student Maneck Kohlah as a boarder, hoping the income will preserve her independence. The tailors have fled caste violence that killed their family; Maneck is estranged from a changing mountain home and shaken by the disappearance of his activist friend. Suspicion gives way to friendship as they work and eat together, but state campaigns repeatedly destroy their footing. A slum clearance makes the tailors homeless, police send them to forced labor, and a later mass-sterilization drive returns them to the village power that once murdered their relatives. Ishvar loses his legs and Om is castrated. Dina loses her flat and becomes dependent on her controlling brother; the tailors become beggars. Years later Maneck returns from overseas, sees how completely their shared hopes have collapsed, and kills himself. Dina still secretly welcomes Ishvar and Om for meals, preserving a small remnant of their former family.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In 1975, amid the declaration of a national Emergency, Dina Dalal tries to preserve an independent life in a coastal city. Widowed young after a loving marriage to Rustom, she has resisted returning permanently to the household of her controlling brother, Nusswan. Failing eyesight makes her old sewing work difficult, so she accepts a contract to assemble dresses for an export company and hires two tailors, Ishvar and his nephew Omprakash. She is wary of strangers in her flat and conceals the arrangement from a landlord who forbids commercial use. Maneck Kohlah, the son of a school friend, also arrives as a paying boarder while attending college. The crowded flat brings together four people who initially regard one another with suspicion, each depending on the arrangement for income, shelter, or escape from an unwanted home.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ishvar and Om's history begins in a village where their family belongs to a leather-working caste subjected to routine humiliation. Ishvar's father, Dukhi, sends Ishvar and his brother Narayan to Ashraf Chacha in another town to learn tailoring, hoping a new occupation will loosen the caste system's hold. The brothers become skilled and return with greater expectations for themselves. Narayan insists on casting his own ballot rather than submitting to Thakur Dharamsi, the local landowner who controls elections. Dharamsi retaliates with lethal collective violence: Narayan is tortured and the family home is burned with relatives trapped inside. Ishvar and the young Om survive because they are away. Their eventual search for work in the city is therefore not simple migration but the continuation of an escape from a village order that destroyed nearly everyone close to them.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Maneck grew up in a Himalayan town where his parents ran a small general store and made a popular soft drink. Roads, commercial competition, and development gradually undermine the family's business and Maneck's sense of home. Sent away to study refrigeration, he finds his college hostel filthy and brutal until the student leader Avinash befriends him. Avinash's protests against corruption become dangerous under the Emergency, and his disappearance deepens Maneck's disillusionment. In the city, Ishvar and Om work in Dina's flat by day but sleep in a makeshift settlement. They befriend Shankar, a disabled beggar, and other pavement residents connected to the Beggarmaster. The four central characters remain divided by class and habit, yet everyday work begins to turn Dina's guarded business arrangement into mutual reliance.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Government beautification schemes erase the tailors' fragile shelter when bulldozers clear the slum. Ishvar and Om lose their possessions and move through streets, temporary roofs, and a railway station while still trying to report for work. Police round them up as vagrants and send them to a rural labor project, where official slogans about discipline conceal coercion, hunger, and corruption. Dina cannot complete the export order without them and has little power to discover where they have gone. The Beggarmaster eventually uses money and connections to secure their release. Their return exposes the scale of danger faced by people without documents, housing, or influence, and Dina's earlier insistence on keeping their lives outside her door becomes harder to sustain.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Dina increasingly allows Ishvar and Om to share the flat's daily life, first out of necessity and then affection. Maneck and Om move from hostility toward friendship, while meals, jokes, and the steady construction of garments give the household a temporary rhythm. Outside, the Emergency continues through arbitrary inspections, propaganda, disappearances, and schemes that treat poor citizens as obstacles to be relocated. The tailors' friends on the pavement remain exposed to violence, and Maneck learns enough about Avinash's fate to understand that political opposition can be erased without explanation. Dina's contract is also insecure: the middleman can replace her, the landlord can evict her for running a workshop, and Nusswan remains ready to interpret any setback as proof that a woman should not live alone.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Shared hardship turns the four residents into something close to a family. They mark celebrations together, finish difficult orders, and create a quilt from scraps of the garments they have sewn, each piece recalling a stage of their life in the flat. The world around them keeps removing members of the wider community. Shankar's death reveals painful ties within the Beggarmaster's network, and the funeral draws together people normally treated as disposable. Ishvar continues to plan for Om's marriage, believing a wife and family can give his nephew a stable future. The possibility of a village match encourages the tailors to return to their old region, even though the power structures responsible for their family's destruction have never been dismantled.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ishvar and Om travel toward their home district to pursue a marriage arrangement. The Emergency's family-planning drive has become a quota system in which officials and police force poor people into sterilization camps. The tailors are seized despite Ishvar's age and Om's unmarried status. Thakur Dharamsi recognizes them as survivors of the family he destroyed and uses the camp to complete his revenge. Om is castrated rather than merely sterilized. Ishvar's operation becomes infected; inadequate treatment leads to the amputation of both legs. The marriage plan and their ability to earn a living as tailors are destroyed together. By the time they can return to the city, the physical independence on which their place in Dina's household depended has been taken from them.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Dina cannot hold the household together after Ishvar and Om return disabled. Her sewing arrangement collapses, her landlord reclaims the flat, and she moves into Nusswan's home under conditions that reduce her independence to family service. Ishvar and Om eventually beg for a living. Maneck leaves India for work in the Gulf, then returns in 1984 after his father's death. He finds that the mountain home he remembered has vanished, learns that Avinash was killed and Avinash's sisters later died by suicide, and visits Dina in her diminished circumstances. Seeing Ishvar without legs and Om castrated and begging convinces him that the connections and hopes of 1975 have been destroyed. Maneck steps deliberately in front of a train. Dina nevertheless continues to feed Ishvar and Om during their visits when Nusswan is away; their familiar joking briefly revives the companionship of the flat even though none of them has recovered the life they planned.",
+            "through": {
+              "chapter": 17
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "a-fine-balance"
+      }
+    },
     "a-fistful-of-charms": {
       "characters": {
         "characters": [
