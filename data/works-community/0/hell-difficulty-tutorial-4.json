@@ -1791,6 +1791,242 @@
         "work": "henrik-ibsens-the-wild-duck"
       }
     },
+    "henry-iv-pt-1": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Henry Bolingbroke"
+            ],
+            "description": "The king of England, whose seizure of Richard II's crown has left him burdened by unrest and questions about the legitimacy of his rule. He hopes to make a pilgrimage to Jerusalem, but rebellion at home demands his attention first.",
+            "id": "king-henry-iv",
+            "name": "King Henry IV",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Hal",
+              "Harry Monmouth"
+            ],
+            "description": "The king's eldest son and heir. He spends his time in taverns with Falstaff and other disreputable companions, but privately indicates that he understands the expectations attached to his position and does not intend to neglect them forever.",
+            "id": "prince-hal",
+            "name": "Prince Hal",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Sir John Falstaff"
+            ],
+            "description": "An aging knight and Prince Hal's closest tavern companion. Large, boastful, inventive, and habitually short of money, he treats theft and deception as occasions for entertainment while relying on Hal's affection and royal prospects.",
+            "id": "falstaff",
+            "name": "Falstaff",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Harry Percy"
+            ],
+            "description": "The king's celebrated young northern commander, known for courage, impatience, and an intense concern for honor. His refusal to surrender valuable prisoners deepens a dispute between the crown and the Percy family.",
+            "id": "hotspur",
+            "name": "Hotspur",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Thomas Percy"
+            ],
+            "description": "Hotspur's uncle and a skilled political organizer. He believes King Henry has forgotten the Percy family's help in gaining the throne and encourages coordinated resistance to the crown.",
+            "id": "earl-of-worcester",
+            "name": "Earl of Worcester",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Henry Percy"
+            ],
+            "description": "Hotspur's father and the head of the powerful Percy family. Once an important supporter of Henry Bolingbroke, he now joins his relatives in challenging the king they helped place on the throne.",
+            "id": "earl-of-northumberland",
+            "name": "Earl of Northumberland",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Prince Hal's quick-minded companion, less credulous than Falstaff and willing to make Falstaff himself the object of a joke. He devises a plan in which Hal and he will rob the robbers after the Gadshill theft.",
+            "id": "ned-poins",
+            "name": "Ned Poins",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lady Percy",
+              "Kate"
+            ],
+            "description": "Hotspur's wife. Affectionate and direct, she recognizes that her husband's sleeplessness and secrecy signal political danger and presses him to trust her with his plans.",
+            "id": "lady-kate-percy",
+            "name": "Lady Kate Percy",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Dame Quickly"
+            ],
+            "description": "The hostess of the Boar's Head tavern in Eastcheap, where Hal and Falstaff gather. She tries to collect Falstaff's unpaid debts but is easily drawn into his arguments and evasions.",
+            "id": "mistress-quickly",
+            "name": "Mistress Quickly",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Welsh ruler, warrior, and ally of the Percys who holds Mortimer captive and then connects his family to the rebel cause. Proud of his learning and supernatural reputation, he clashes with Hotspur's impatience during their planning.",
+            "id": "owen-glendower",
+            "name": "Owen Glendower",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Edmund Mortimer"
+            ],
+            "description": "A claimant with a strong hereditary connection to the English crown and the brother of Hotspur's wife. Captured while fighting Glendower, he has married his captor's daughter and joins the alliance against Henry.",
+            "id": "mortimer",
+            "name": "Mortimer",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Prince John"
+            ],
+            "description": "King Henry's younger son, who enters military service against the rebellion. His seriousness and readiness for battle contrast with the public reputation of his older brother Hal.",
+            "id": "john-of-lancaster",
+            "name": "John of Lancaster",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Archibald Douglas"
+            ],
+            "description": "A formidable Scottish nobleman allied with Hotspur. His arrival strengthens the rebel army, and his battlefield courage makes him one of the royal side's most dangerous opponents.",
+            "id": "earl-of-douglas",
+            "name": "Earl of Douglas",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Sir Walter Blunt"
+            ],
+            "description": "A loyal knight serving King Henry as soldier and messenger. He brings the court a detailed report of Hotspur's victory over the Scots, helping establish both the northern danger and Hotspur's military reputation.",
+            "id": "walter-blunt",
+            "name": "Walter Blunt",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "henry-iv-pt-1"
+      },
+      "recaps": {
+        "ending": "At Shrewsbury, Worcester withholds King Henry's offer of pardon because he fears that Hotspur might accept it and later blame him for the rebellion. Battle follows. Prince Hal rescues his father from Douglas and kills Hotspur in single combat, proving the courage that his public reputation had concealed. Falstaff survives an encounter with Douglas by pretending to be dead, then finds Hotspur's body and falsely claims the kill; Hal lets the boast stand. Worcester and Vernon are captured and condemned after the king learns that his peace terms were never delivered honestly. Douglas is released without ransom in recognition of his valor. The royal army wins the field, but the wider rising is not over: Northumberland and the Archbishop of York still threaten the crown. Henry divides his forces, sending John and Westmoreland north while he and Hal turn toward Wales to confront Glendower and Mortimer.",
+        "in_short": "King Henry IV faces a rebellion led by the Percy family, whose young champion Hotspur resents the king's treatment of his relatives and allies. Henry's heir, Prince Hal, spends his time in Eastcheap with the witty, dishonest Falstaff, yet intends eventually to exchange his disreputable life for royal duty. After joining a highway robbery and exposing Falstaff's extravagant lies, Hal is summoned to court. He reconciles with his father and promises to answer Hotspur in battle. The rebels divide the kingdom in anticipation of victory, but illness, delay, and disagreement weaken their coalition. At Shrewsbury, Worcester hides the king's offer of mercy from Hotspur, ensuring battle. Hal saves Henry and kills Hotspur, while Falstaff avoids death and claims credit for the corpse. Worcester is executed for concealing the peace offer. The king wins Shrewsbury, and Hal has begun to redeem his name, but rebellion continues in the north and Wales.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, Henry Bolingbroke returned from exile while King Richard II was away in Ireland, first demanding restoration of his inheritance and then taking the crown as Henry IV. The Percy family helped him gain power. Richard was imprisoned and murdered, leaving Henry's rule shadowed by bloodshed and uncertain legitimacy. Supporters of the old order challenged the new king, and Henry defeated them, but the realm remained unsettled. Prince Hal, Henry's eldest son, inherited the position of royal heir without yet acquiring a reputation suited to it.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "King Henry longs to make a pilgrimage to Jerusalem but postpones it when reports of fighting arrive from Wales and the north. He envies Northumberland's heroic son Hotspur and contrasts him with his own heir, Prince Hal, who spends his days among tavern companions. A dispute over Hotspur's prisoners brings the Percys before the king. Hotspur refuses to yield them unless Henry helps ransom Mortimer, whom the king regards as a traitor after his capture by Owen Glendower. Worcester, Northumberland, and Hotspur decide to unite with Mortimer, Glendower, and Douglas against the crown. Meanwhile, Hal trades jokes with Falstaff in Eastcheap. Poins proposes a highway robbery and secretly tells Hal that the two of them can disguise themselves, steal the proceeds from Falstaff's party, and later hear whatever false account Falstaff invents. Alone, Hal acknowledges that his wild conduct is temporary and that a visible reform will make his eventual change more striking.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Hotspur prepares for rebellion while refusing to explain his secret letters and sleeplessness to his worried wife Kate. At Gadshill, Falstaff and his companions rob travelers carrying money for the royal treasury. Hal and Poins, wearing disguises, then attack the thieves and take the stolen money without being recognized. Back at the Boar's Head, Falstaff tells an increasingly impossible story about the many armed men who overcame him. Hal exposes the deception, and Falstaff immediately claims that he recognized the prince and refused to fight him. News from court ends the game: rebellion is gathering, and Hal must answer his father. Hal and Falstaff rehearse the coming royal interview by playing the king and prince in turn, mixing comedy with Falstaff's appeal not to be cast aside. When the sheriff searches the tavern, Hal protects the sleeping Falstaff but promises to repay the stolen money and report for duty.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Glendower, Mortimer, Hotspur, and Worcester meet to divide England and Wales among themselves. Hotspur quarrels over the proposed borders and mocks Glendower's claims of supernatural power, though the allies eventually return to practical preparations. Mortimer's marriage to Glendower's Welsh-speaking daughter embodies the new alliance, while Hotspur's impatience strains it. At Westminster, Henry rebukes Hal for abandoning public life and warns that Hotspur has captured the admiration a prince should command. Hal accepts the criticism, promises to defeat Hotspur, and takes command in the coming campaign. Back in Eastcheap, Falstaff quarrels with Mistress Quickly until Hal announces that both have military assignments: Hal will lead troops, and Falstaff must command infantry. The king and prince are reconciled, but the rebel and royal forces are now moving toward open war.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The rebel coalition begins to break apart before the decisive encounter. Northumberland reports himself too ill to join Hotspur, while Glendower cannot bring his troops in time. Worcester urges delay, but Hotspur presses forward despite being badly outnumbered. In the royal camp, Hal and Westmoreland learn that the rebels have assembled at Shrewsbury. Falstaff arrives with a company of impoverished and poorly equipped recruits, having profited by excusing men who could pay. Hal condemns the condition of the soldiers, while Falstaff treats them as expendable. Walter Blunt carries Henry's offer to hear the rebels' grievances and pardon them if they submit. Hotspur sends Vernon to ask for details, but both sides prepare for combat. That night the rebels debate their chances, conscious that key allies have failed them but unwilling to retreat.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At Shrewsbury, Worcester hears Henry offer full pardon if the rebels disperse. Fearing that Hotspur may accept and later hold him responsible, Worcester tells Hotspur that the king rejected peace. The armies fight. Douglas kills men dressed as the king and nearly kills Henry himself, but Hal drives him away and saves his father. Hal then meets Hotspur and kills him in single combat. Falstaff, having pretended to die when Douglas attacked him, rises after Hal leaves and carries Hotspur's body away while claiming that he delivered the fatal wound; Hal tolerates the lie. The rebel army collapses. Captured Worcester and Vernon are executed when Henry learns that they concealed his terms, while Hal has Douglas released without ransom. The victory repairs Hal's standing and ends Hotspur's challenge, but not the entire rebellion. Henry sends John of Lancaster and Westmoreland against Northumberland and the Archbishop of York, while he and Hal prepare to campaign against Glendower and Mortimer in Wales.",
+            "through": {
+              "chapter": 5
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "henry-iv-pt-1"
+      }
+    },
     "henry-iv-pt-2": {
       "characters": {
         "characters": [
@@ -2242,6 +2478,450 @@
           }
         ],
         "work": "henry-v"
+      }
+    },
+    "henry-vi-pt-2": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The pious but politically uncertain king of England. He welcomes Margaret as his queen and hopes marriage will bring peace, while stronger personalities compete to direct the crown and the realm around him.",
+            "id": "king-henry-vi",
+            "name": "King Henry VI",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Queen Margaret"
+            ],
+            "description": "Henry's new French queen. Intelligent, forceful, and frustrated by her husband's weakness, she quickly recognizes the rivalries at court and forms a close political partnership with Suffolk.",
+            "id": "margaret-of-anjou",
+            "name": "Margaret of Anjou",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "William de la Pole"
+            ],
+            "description": "The ambitious nobleman who negotiated Henry's marriage and escorts Margaret to England. His influence over the new queen gives him a path to power despite public anger over the costly terms of the French settlement.",
+            "id": "duke-of-suffolk",
+            "name": "Duke of Suffolk",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Humphrey of Gloucester",
+              "Lord Protector"
+            ],
+            "description": "The king's uncle and Protector of England, widely respected by ordinary people. He objects to surrendering French territories for Henry's marriage and becomes the chief obstacle to the court faction gathering around Margaret and Suffolk.",
+            "id": "duke-of-gloucester",
+            "name": "Duke of Gloucester",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Eleanor Cobham"
+            ],
+            "description": "Gloucester's proud and ambitious wife. She resents yielding precedence to Queen Margaret and is tempted by predictions that her husband might rise above his present station.",
+            "id": "duchess-of-gloucester",
+            "name": "Duchess of Gloucester",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Cardinal Beaufort"
+            ],
+            "description": "The powerful churchman who is King Henry's great-uncle and Gloucester's bitter rival. He joins other nobles seeking to end the Protector's authority.",
+            "id": "cardinal-of-winchester",
+            "name": "Cardinal of Winchester",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Richard Plantagenet"
+            ],
+            "description": "A powerful duke with a concealed claim to the English crown through the Mortimer line. He studies the divisions at court, gathers allies, and waits for a favorable moment to advance his family's cause.",
+            "id": "duke-of-york",
+            "name": "Duke of York",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A leading noble aligned with the queen's faction and a rival of York. Disputes over his conduct in France and his closeness to the Lancastrian court make him a focus of Yorkist hostility.",
+            "id": "duke-of-somerset",
+            "name": "Duke of Somerset",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A politically adaptable nobleman aligned with the court faction that distrusts Gloucester. He watches the rivalry around the Protector and is ready to turn information about Gloucester's household to political use.",
+            "id": "duke-of-buckingham",
+            "name": "Duke of Buckingham",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An experienced nobleman linked to York and opposed to the Suffolk-Somerset interest at court. He and his son Warwick are important members of a faction whose strength extends beyond personal argument.",
+            "id": "earl-of-salisbury",
+            "name": "Earl of Salisbury",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Richard Neville"
+            ],
+            "description": "Salisbury's influential son and a partisan of York's side in the court's disputes. His status and military following make his allegiance important as the nobles divide over policy in France and power at home.",
+            "id": "earl-of-warwick",
+            "name": "Earl of Warwick",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An armorer accused by his apprentice Peter of saying that York is the rightful king. He must defend himself in a formal combat whose result will be treated as divine judgment on the accusation.",
+            "id": "thomas-horner",
+            "name": "Thomas Horner",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A man who claims that a miracle at Saint Albans has restored his sight. Gloucester's practical questioning soon tests whether the supposed cure and the disability that preceded it are genuine.",
+            "id": "saunder-simpcox",
+            "name": "Saunder Simpcox",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Kentish rebel whom York identifies as a useful instrument for testing popular resistance while York is sent to Ireland. Cade claims noble ancestry and promises his followers a radically altered social order.",
+            "id": "jack-cade",
+            "name": "Jack Cade",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "henry-vi-pt-2"
+      },
+      "recaps": {
+        "ending": "York returns from Ireland with an army, initially claiming that he seeks only the removal of Somerset. When Somerset appears despite reports that he was imprisoned, York openly asserts his right to the crown. The rival houses gather their supporters and fight at Saint Albans. York kills the elder Clifford, while York's son Richard kills Somerset. Warwick's forces break through, and the defeated King Henry and Queen Margaret flee toward London. Young Clifford finds his father's body and vows revenge against the whole house of York. York, Salisbury, Warwick, and their allies pursue the royal party, intending to press York's claim before Henry can recover. Cade's revolt has failed, but the deeper conflict York cultivated now becomes an open dynastic war.",
+        "in_short": "Henry VI's marriage to Margaret of Anjou strengthens Suffolk while increasing resentment over England's losses in France. Court rivals unite against the popular Protector Gloucester. His ambitious wife Eleanor is convicted of seeking supernatural predictions, and Gloucester is stripped of office, arrested, and murdered. Suffolk is banished for his role and killed at sea; Cardinal Beaufort dies tormented by guilt. York, whose hereditary claim is stronger than Henry's, is sent to suppress unrest in Ireland and secretly uses Jack Cade to test rebellion at home. Cade's populist rising seizes London but collapses after royal pardons draw away his followers, and Alexander Iden kills him. York then returns with an army. When his demand that Somerset be removed is frustrated, he openly claims the crown. The factions meet at Saint Albans, where Yorkists kill Somerset and Clifford and force Henry and Margaret to flee. Political intrigue has become the Wars of the Roses.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, Henry V's infant son inherited the crowns of England and France as Henry VI. English nobles governed during his minority while fighting to preserve his father's conquests. Joan of Arc helped restore the French cause; the English heroes Talbot and his son died in battle, and much of France was lost. Rival English factions hardened around Richard, Duke of York, and the supporters of Lancaster. Suffolk captured Margaret of Anjou and arranged her marriage to Henry without a dowry, secretly agreeing to surrender Anjou and Maine. The match gives Suffolk influence over the new queen as England begins this play divided abroad and at court.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Suffolk presents Margaret to Henry, who is delighted with his new queen. Gloucester is alarmed that the marriage settlement gives up Anjou and Maine, while other nobles blame him for England's decline in France. Margaret dislikes Gloucester's wife Eleanor and quickly identifies Gloucester's protectorship as a limit on her own power. Suffolk, the cardinal, York, Somerset, and Buckingham form a loose coalition to bring him down, though they have competing ambitions. Eleanor dreams of royalty and is encouraged by Hume to consult practitioners of magic, unaware that her enemies are financing the trap. A petitioner's complaint about Suffolk exposes the strain beneath the formal welcome. Separately, York explains to Salisbury and Warwick that his descent through the Mortimer line gives him a better hereditary title than Henry. They agree to support him but decide to proceed cautiously while the other factions weaken one another.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "During a royal gathering at Saint Albans, Gloucester exposes Saunder Simpcox, who has pretended that a shrine cured his blindness. The episode reinforces Gloucester's reputation for practical justice but cannot protect his household. Eleanor attends a forbidden ceremony seeking prophecies about the king and leading nobles; Buckingham and York interrupt it and arrest her. York then sets out his claim to Salisbury and Warwick in detail, securing their allegiance. In the trial by combat between the armorer Horner and his apprentice Peter, the frightened Peter wins after the drunken Horner admits the treasonous words attributed to him. Eleanor is sentenced to public penance and banishment. Gloucester must surrender his office as Protector and watches his disgraced wife depart. With his political authority gone, the court faction can move directly against him.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At Parliament in Bury St Edmunds, Margaret and her allies accuse Gloucester of corruption and treason. Henry weakly permits his arrest, though Gloucester denies the charges and recognizes that his enemies intend his death. Suffolk arranges for hired killers to murder him in custody. When the body is produced, Warwick points to signs of violence, and public anger turns against Suffolk. Henry banishes Suffolk, forcing an anguished separation between him and Margaret. At sea, pirates capture Suffolk and execute him; his severed head is later delivered to the queen. Cardinal Beaufort dies in terror and apparent remorse, further associating Gloucester's destruction with guilt. York is ordered to lead an army against rebellion in Ireland. Before leaving, he reveals his plan to have Jack Cade stir disorder in England under a false claim of Mortimer descent, allowing York to measure support and return with troops when the government is weakest.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jack Cade leads a rising in Kent, presenting himself as the rightful Mortimer heir and promising his followers abundant food, cheap goods, and the destruction of literacy, law, and inherited rank. The rebels defeat royal forces led by the Staffords and enter London. They kill Lord Saye and his son-in-law, and Cade attempts to rule through arbitrary commands. The city turns into a battleground as loyalists resist. Buckingham and Clifford finally offer pardons in Henry's name and appeal to memories of Henry V, causing most of Cade's followers to abandon him. Cade escapes hungry into the garden of Alexander Iden, attacks the landowner, and is killed. Iden takes Cade's head to the king. The immediate revolt ends, but its success has exposed the government's weakness just as York prepares to return from Ireland with an army of his own.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "York lands with troops and says he seeks only the removal of Somerset, using that demand to avoid an immediate charge of treason. Buckingham assures him that Somerset is confined, and York briefly dismisses his army. When Margaret and Somerset then appear together, York declares his royal title openly. Salisbury and Warwick join him; Margaret, Clifford, and Somerset defend Henry. At the first battle of Saint Albans, York kills the elder Clifford, and York's son Richard kills Somerset. Warwick breaks the Lancastrian defenses and the Yorkists win. Henry, Margaret, and their surviving allies flee toward London. Young Clifford discovers his father's corpse and swears vengeance not only on York's fighting men but on his entire family. York's party pursues the king, determined to press the claim before the Lancastrians can regroup. The play ends as court rivalry becomes open civil war between the houses of York and Lancaster.",
+            "through": {
+              "chapter": 5
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "henry-vi-pt-2"
+      }
+    },
+    "henry-vi-pt-3": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The Lancastrian king, gentle and devout but unable to control the civil war around him. Faced with Yorkist occupation of Parliament, he values an immediate peace even when its terms threaten his own dynasty.",
+            "id": "king-henry-vi",
+            "name": "King Henry VI",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Queen Margaret"
+            ],
+            "description": "Henry's forceful queen and the principal defender of their son's inheritance. She rejects Henry's compromise with York and takes command of the Lancastrian cause herself.",
+            "id": "margaret-of-anjou",
+            "name": "Margaret of Anjou",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Richard Plantagenet"
+            ],
+            "description": "The head of the house of York, whose army has defeated the king's supporters and occupied Parliament. He claims the crown by hereditary right and accepts a settlement making him Henry's heir.",
+            "id": "duke-of-york",
+            "name": "Duke of York",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Edward of York",
+              "Earl of March"
+            ],
+            "description": "York's eldest son and military heir. Confident and ambitious, he supports his father's claim and is ready to turn battlefield success into kingship for his house.",
+            "id": "edward",
+            "name": "Edward",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Richard of Gloucester"
+            ],
+            "description": "York's physically disabled younger son, a fierce soldier whose intelligence and ruthlessness are already apparent. He presses his father to seize the crown outright and treats family advancement as a personal mission.",
+            "id": "richard",
+            "name": "Richard",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Richard Neville"
+            ],
+            "description": "The powerful Yorkist commander whose victories and large following make him central to the struggle for the crown. He backs York's hereditary case and acts as military partner to York's sons.",
+            "id": "earl-of-warwick",
+            "name": "Earl of Warwick",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A committed Lancastrian soldier driven by his father's death at Yorkist hands. He supports Margaret's refusal to accept compromise and seeks vengeance against York and his descendants.",
+            "id": "lord-clifford",
+            "name": "Lord Clifford",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Prince of Wales"
+            ],
+            "description": "The young son of Henry and Margaret, whose right to inherit is displaced by Henry's agreement with York. His mother organizes the Lancastrian resistance in his name.",
+            "id": "prince-edward",
+            "name": "Prince Edward",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "York's youngest son, a child placed under the care of a tutor during the fighting. His family identity makes him a target even though he has no command in the war.",
+            "id": "rutland",
+            "name": "Rutland",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "George Plantagenet",
+              "Duke of Clarence"
+            ],
+            "description": "Edward and Richard's brother. He receives the dukedom of Clarence after the Yorkist victory, gaining rank in a royal family whose alliances will test his loyalty.",
+            "id": "george-of-clarence",
+            "name": "George of Clarence",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A widow seeking the return of lands confiscated after her Lancastrian husband's death. Her petition brings her before Edward, where she resists his attempt to make political favor conditional on becoming his lover.",
+            "id": "lady-elizabeth-grey",
+            "name": "Lady Elizabeth Grey",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Louis XI"
+            ],
+            "description": "The king of France, approached by both Lancastrian and Yorkist envoys. His decision about marriage and military support becomes important to the English struggle.",
+            "id": "king-louis-of-france",
+            "name": "King Louis of France",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A staunch Lancastrian noble who supports Margaret abroad and remains with her cause through military defeat. He values dynastic loyalty above the changing advantages of the war.",
+            "id": "earl-of-oxford",
+            "name": "Earl of Oxford",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A loyal Yorkist who joins Richard in freeing Edward from Warwick's custody. He helps the deposed king escape and regroup before Edward openly renews his claim.",
+            "id": "lord-hastings",
+            "name": "Lord Hastings",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "henry-vi-pt-3"
+      },
+      "recaps": {
+        "ending": "Edward defeats Warwick at Barnet, where Warwick and his brother Montague are killed. Clarence abandons Warwick and returns to his brothers before the Yorkists defeat Margaret's army at Tewkesbury. Prince Edward is captured and stabbed to death after defying the Yorkist brothers. Margaret is taken prisoner. Richard then goes to the Tower and murders the captive Henry VI, treating the last Lancastrian king as an obstacle to his own family's security and to his private ambition. Edward IV ends the play on the throne with Queen Elizabeth and their infant son, believing the civil conflict settled. Yet Richard's closing thoughts make clear that peace within the victorious house of York is unstable: Henry and his son are dead, but Richard is already looking beyond his brother's reign toward the crown for himself.",
+        "in_short": "After York forces Henry VI to name him heir, Queen Margaret rejects the settlement and defeats York at Wakefield, where Clifford kills young Rutland and Margaret helps humiliate York before his death. York's sons Edward and Richard continue the claim. Following the brutal victory at Towton, Edward becomes king and Henry is captured. Edward secretly marries Elizabeth Grey while Warwick is negotiating a French marriage for him. Humiliated, Warwick joins Margaret and brings Clarence with him, briefly restoring Henry. Edward escapes, returns with Burgundian support, regains London, and captures Henry again. Clarence changes sides once more, rejoining his brothers before the decisive battles. Warwick dies at Barnet; Margaret's army loses at Tewkesbury; the Yorkist brothers kill Prince Edward. Richard murders Henry in the Tower. Edward IV appears secure with his wife and infant heir, but Richard's ambition points toward another seizure of the crown.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, Henry VI's weak government lost most English territory in France while noble factions competed at home. Suffolk arranged Henry's marriage to Margaret of Anjou and gained influence through her, but court enemies destroyed the popular Protector Gloucester and Suffolk himself was later killed. Richard, Duke of York, concealed a hereditary claim stronger than Henry's and encouraged Jack Cade's failed rebellion while serving in Ireland. York then returned with an army, openly claimed the crown, and defeated the royal party at Saint Albans. Somerset and the elder Clifford were killed. Henry and Margaret fled, while York and his allies marched toward London to convert military victory into dynastic power.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "York and his allies occupy Parliament and press his claim to Henry's throne. To prevent immediate bloodshed, Henry agrees to remain king for life while naming York and his descendants as heirs, disinheriting his own son. Margaret refuses the settlement and raises a northern army with Clifford and other Lancastrians. Although York has sworn not to seize the crown during Henry's life, his sons persuade him to resume the struggle after Henry's party breaks the agreement. At Wakefield, the Yorkists are overwhelmed. Clifford kills York's young son Rutland despite the tutor's pleas. Margaret and Clifford capture York, mock him with a paper crown, show him a cloth stained with Rutland's blood, and kill him. His head is sent to the gates of York. The compromise has collapsed, and the war passes to York's surviving sons Edward, George, and Richard.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Edward and Richard learn of their father and brother's deaths and join Warwick to continue the Yorkist cause. A vision of three suns appearing to merge encourages the brothers to see unity and victory in the heavens. Both sides gather for the battle of Towton. Henry withdraws from command and sits apart, grieving as he watches a father discover that he has killed his son and a son discover that he has killed his father, making the civil war's cost personal and indiscriminate. Clifford is mortally wounded, and the Lancastrian army is defeated. Margaret and Prince Edward escape toward France, while Henry flees toward Scotland. Edward is proclaimed King Edward IV. He makes George Duke of Clarence and Richard Duke of Gloucester, and Warwick accepts the role of chief supporter to the new Yorkist king.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Living quietly in the north, Henry is recognized by gamekeepers and taken into Yorkist custody. Edward meets Lady Elizabeth Grey, who petitions for restoration of her late husband's lands. He tries to make his help conditional on her yielding to him, but she refuses; impressed and attracted, he decides to marry her despite the political consequences. Richard, watching Edward's rise and marriage, privately acknowledges that his own ambition reaches toward the crown and that he will remove whatever stands in his way. In France, Warwick asks King Louis to bind Yorkist England to France through Edward's marriage to Lady Bona. Margaret pleads for Lancastrian assistance. Letters then reveal that Edward has married Elizabeth instead. Publicly humiliated, Warwick abandons Edward, allies with Margaret, and promises his daughter to Prince Edward. Clarence also joins Warwick. Louis grants support for an invasion intended to depose Edward and restore Henry.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Edward's marriage to Elizabeth and the advancement of her relatives anger his brothers and allies. Clarence defects to Warwick, who invades while Edward's forces are dispersed. Warwick captures Edward and restores Henry VI, assigning governing power to himself and Clarence. Henry welcomes release from prison, names Warwick and Clarence protectors, and recognizes promise in the young Henry Richmond. Richard and Hastings rescue Edward, who escapes abroad and returns with support from Burgundy. Claiming at first that he seeks only his dukedom, Edward gathers followers, enters London, and takes Henry prisoner again. Queen Elizabeth, who had taken sanctuary while pregnant, presents Edward with an infant son after his return. Warwick summons the Lancastrian forces for battle, while Margaret and Prince Edward sail from France. The brief Lancastrian restoration ends before Margaret can reinforce it, and the rival armies move toward the final campaigns.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At Coventry, Clarence abandons Warwick and returns to Edward and Richard. The Yorkists defeat Warwick at Barnet; Warwick and his brother Montague die after seeing their political power collapse. Margaret and Prince Edward nevertheless continue the Lancastrian cause, but their army is defeated at Tewkesbury. The captured prince refuses to submit and is stabbed by Edward, Clarence, and Richard. Margaret begs to die with him but is kept alive as a prisoner. Richard goes to the Tower, where Henry predicts the destruction Richard will cause. Richard kills him and admits that the crown, rather than loyalty to Edward, directs his course. Edward IV closes the public action in possession of the throne, Queen Elizabeth beside him and their infant son presented as the Yorkist future. Henry and Prince Edward are dead and Margaret is captive, but Richard's private ambition leaves the victorious dynasty threatened from within.",
+            "through": {
+              "chapter": 5
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "henry-vi-pt-3"
       }
     },
     "heretics-of-dune": {

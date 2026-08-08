@@ -3942,6 +3942,204 @@
         ],
         "work": "decline-and-fall"
       }
+    },
+    "defending-jacob": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An assistant district attorney in Newton, Massachusetts, respected for his courtroom instincts and his steady family life. He initially leads the investigation into the stabbing death of a local schoolboy. Andy narrates the case while also answering questions before a grand jury, making clear that his account is shaped by a later crisis. He is deeply protective of his wife and teenage son and accustomed to keeping painful family history private.",
+            "id": "andy-barber",
+            "name": "Andy Barber",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Andy's wife and Jacob's mother. Thoughtful, sociable, and more willing than Andy to examine uncomfortable possibilities, she has built a secure suburban home around the family. The murder of a boy from Jacob's school quickly makes that security feel fragile.",
+            "id": "laurie-barber",
+            "name": "Laurie Barber",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Andy and Laurie's fourteen-year-old son, a quiet student in the same class as the murdered Ben Rifkin. He can seem detached and awkward, and he has had a difficult relationship with some classmates. His parents know him as a private adolescent whose reserve is easy for outsiders to misread.",
+            "id": "jacob-barber",
+            "name": "Jacob Barber",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The assistant district attorney questioning Andy before a grand jury. Direct and methodical, he presses past Andy's carefully framed account and signals that the inquiry concerns more than the original schoolboy murder.",
+            "id": "neal-logiudice",
+            "name": "Neal Logiudice",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The fourteen-year-old Newton student found stabbed in a park on his way to school. His death begins the investigation and exposes tensions among classmates and their parents.",
+            "id": "ben-rifkin",
+            "name": "Ben Rifkin",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Ben's grieving father, a fellow member of the Barbers' community. He expects Andy and the district attorney's office to find whoever killed his son, before the case turns the two families into opposing centers of public attention.",
+            "id": "dan-rifkin",
+            "name": "Dan Rifkin",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A detective who works closely with Andy on the initial investigation. Duffy is experienced, practical, and personally loyal, but his duty is to the evidence even when it begins to point toward Andy's home.",
+            "id": "paul-duffy",
+            "name": "Paul Duffy",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A classmate of Jacob and Ben who gives investigators information about hostility between the boys. His statements help shift attention toward Jacob, although the social dynamics behind them are not simple.",
+            "id": "derek-yoo",
+            "name": "Derek Yoo",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A student who knows Jacob, Derek, and Ben. She offers a more sympathetic view of Jacob than many classmates do and becomes an important witness as lawyers reconstruct the students' friendships and rivalries.",
+            "id": "sarah-grohl",
+            "name": "Sarah Grohl",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The veteran defense lawyer hired to represent Jacob. Calm, exacting, and alert to the difference between suspicion and proof, he insists that the Barbers control what they say and prepares to challenge both the physical evidence and the story the prosecution builds around it.",
+            "id": "jonathan-klein",
+            "name": "Jonathan Klein",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A convicted murderer serving a life sentence and Andy's estranged father. Andy has concealed both the relationship and its violent history from nearly everyone. Contact with him forces the family to consider whether a capacity for violence can be inherited.",
+            "id": "billy-barber",
+            "name": "Billy Barber",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A registered sex offender who lives near the park where Ben was killed. His history and proximity make him an alternative suspect for the defense, but suspicion alone does not establish his connection to the crime.",
+            "id": "leonard-patz",
+            "name": "Leonard Patz",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A psychiatrist retained by the defense to evaluate Jacob and discuss the disputed idea of inherited violent tendencies. She gives the Barbers a clinical framework for behavior that they have previously understood only as temperament.",
+            "id": "elizabeth-vogel",
+            "name": "Elizabeth Vogel",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A girl Jacob meets while the Barbers are away after the trial. Friendly and independent, she spends time with him at the resort, giving the family a brief glimpse of ordinary teenage companionship.",
+            "id": "hope-connors",
+            "name": "Hope Connors",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "defending-jacob"
+      },
+      "recaps": {
+        "ending": "After Jacob's trial collapses, Andy learns that Leonard Patz's confession was forced by a man acting for Billy Barber, and that Patz was killed to make the confession convincing. Andy keeps this from Laurie, but her confidence in Jacob continues to erode. During a family trip to Jamaica, Jacob becomes the last known person to have been with Hope Connors before she disappears. Hope is eventually found dead, although there is no proof that Jacob killed her. On the drive home, Laurie asks Jacob about Hope and then deliberately sends the car into a concrete barrier. Jacob dies; Laurie survives with severe injuries and says she cannot remember the crash. The grand-jury testimony threaded through Andy's story is an inquiry into Laurie's actions. Andy protects her by describing the crash as an accident and concealing his reason to think otherwise. No indictment follows. He remains beside Laurie, bearing the knowledge of what his father arranged, what Laurie did, and the uncertainty that was never resolved about Jacob.",
+        "in_short": "Massachusetts prosecutor Andy Barber takes charge after Ben Rifkin, a boy from his son's school, is stabbed to death. Evidence and classmates' accounts soon make Andy's fourteen-year-old son Jacob the suspect, costing Andy his job and isolating the family. Andy supports Jacob without reserve, while his wife Laurie becomes increasingly troubled by Jacob's emotional distance and by violence in Andy's family history. At trial, the defense attacks the uncertain evidence and points to local offender Leonard Patz. The case ends when Patz apparently confesses and dies, but Andy later learns that his imprisoned father arranged the confession and murder. On a later family trip, a girl last seen with Jacob disappears and is found dead. Laurie, convinced Jacob may be dangerous, deliberately crashes their car. Jacob dies and Laurie survives. In the grand-jury scenes framing the novel, Andy hides his suspicion that Laurie caused the crash, leaving both crimes legally unresolved and the family destroyed by doubt.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Assistant district attorney Andy Barber is questioned before a grand jury about events that he initially presents as the history of another case. Months earlier, fourteen-year-old Ben Rifkin was found stabbed in a Newton park on his way to school. Andy took charge of the investigation, working with Detective Paul Duffy and trying to reassure the victim's parents and an anxious community. The killing also touched Andy's home because his son Jacob attended Ben's school. Accounts from students suggest that Ben bullied Jacob and that the two had openly disliked each other. Andy is slow to regard this as more than ordinary school hostility, but the inquiry begins to move uncomfortably close to his family.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A fingerprint connected to Jacob is found on Ben's clothing, and police searching the Barber home recover a knife that could resemble the missing weapon. Jacob says he found Ben's body, tried to help, and then kept silent because he feared suspicion; he denies killing him. Andy is removed from the investigation, and prosecutor Neal Logiudice takes over. Jacob is arrested, transforming the Barbers from a respected local family into the focus of hostility and press attention. Defense attorney Jonathan Klein begins preparing the case and warns Andy and Laurie against trying to explain away every troubling detail. Andy remains certain of Jacob's innocence. Laurie loves her son but is less able to dismiss his remoteness and the accusations made by other students.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The defense examines Jacob's background as well as the evidence. Andy reveals a fact he has hidden for years: his father, Billy Barber, is a convicted murderer serving life in prison. A psychiatrist discusses whether violent impulses may run through the family, though no genetic theory can answer whether Jacob committed this crime. Online writing associated with Jacob becomes another source of alarm because it imagines Ben's death in disturbing terms, while Jacob treats it as fantasy rather than confession. Klein also focuses on Leonard Patz, a convicted sex offender who lives near the park and had previous contact with Ben. Patz is investigated as a plausible alternative suspect, but the available facts remain incomplete. The family enters the trial divided less by loyalty than by how much uncertainty each parent can tolerate.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At trial, the prosecution argues that Jacob's resentment of Ben, his knife, the fingerprint, and his unsettling online story form a coherent picture. The defense emphasizes the absence of a murder weapon, the ordinary explanation for a fingerprint from a classmate, weaknesses in student testimony, and Leonard Patz as a source of reasonable doubt. Derek Yoo's accusations are tested against the complicated relationships among the students, while Sarah Grohl offers evidence that does not fit the prosecution's simple account. Andy experiences the proceedings both as a trained lawyer and as a father who cannot accept the state's interpretation of his son. Laurie becomes more frightened by how little she can truly know about Jacob. As the trial approaches its decisive stage, neither side has direct proof of what happened in the park.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Leonard Patz leaves a written confession to Ben's murder and is found dead, apparently by suicide. With its alternative suspect now claiming responsibility, the prosecution abandons Jacob's case and he is freed without a verdict. The Barbers leave Newton, hoping distance will allow them to recover, but acquittal by dismissal cannot restore their old certainty. Andy later learns that Patz did not voluntarily resolve the crime: Billy Barber used an intermediary to force the confession and arrange Patz's death in order to save his grandson. Andy does not tell Laurie. The revelation removes the event on which Jacob's freedom rests without proving whether Jacob killed Ben, leaving Andy to carry another secret while the family tries to behave as though the ordeal is over.",
+            "through": {
+              "chapter": 36
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On a family trip to Jamaica, Jacob befriends a girl named Hope Connors. She disappears after spending time with him, and suspicion again settles on Jacob because he was among the last people known to have seen her. The Barbers return home after Hope is found dead but no evidence establishes what happened. Laurie's fear hardens into a conclusion that Andy still resists. While driving with Jacob, she questions him about Hope, accelerates, and crashes into a concrete barrier. Jacob dies and Laurie is badly injured. The grand-jury inquiry framing Andy's narrative concerns whether Laurie deliberately killed him. Andy testifies that the collision was an accident, withholding his belief that she chose it. Laurie claims no memory, and she is not indicted. Andy stays with her, protecting the last member of his family while left with unresolved doubt about Jacob and full knowledge of the crimes committed in his defense.",
+            "through": {
+              "chapter": 42
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "defending-jacob"
+      }
     }
   }
 }
