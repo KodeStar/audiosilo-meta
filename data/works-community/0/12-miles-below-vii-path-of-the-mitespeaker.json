@@ -560,6 +560,175 @@
         "work": "1984"
       }
     },
+    "1984-amazonclassics-edition": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A thirty-nine-year-old records clerk at the Ministry of Truth in Airstrip One. His job is to alter old publications so that the Party always appears correct. Troubled by memories that conflict with official history, he secretly begins a diary even though private dissent is punishable as thoughtcrime.",
+            "id": "winston-smith",
+            "name": "Winston Smith",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The distant, mustachioed face presented everywhere as the infallible leader of Oceania. Posters, telescreens, and public rituals make him the focus of compulsory loyalty and connect his image with the Party's constant surveillance.",
+            "id": "big-brother",
+            "name": "Big Brother",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A commanding member of the Inner Party whom Winston notices during the Two Minutes Hate. His controlled manner and intelligent face give Winston the unproven feeling that O'Brien may privately share his doubts about the Party.",
+            "id": "obrien",
+            "name": "O'Brien",
+            "reveal": {
+              "chapter": 1
+            }
+          },
+          {
+            "description": "The Party's designated enemy, denounced during the daily Two Minutes Hate as a traitor who leads a mysterious opposition called the Brotherhood. Winston cannot know how much of the official account is true, but Goldstein serves as the public target for fear and anger.",
+            "id": "emmanuel-goldstein",
+            "name": "Emmanuel Goldstein",
+            "reveal": {
+              "chapter": 1
+            }
+          },
+          {
+            "description": "Winston's anxious neighbor in Victory Mansions, worn down by work and family life. Her children belong to Party youth groups and treat suspicion, denunciation, and imagined executions as games.",
+            "id": "mrs-parsons",
+            "name": "Mrs Parsons",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Winston's neighbor and colleague, an enthusiastic Party volunteer who organizes community activities and praises his aggressively orthodox children. He is sweaty, dull, and utterly sincere in his loyalty.",
+            "id": "tom-parsons",
+            "name": "Tom Parsons",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Winston's mother, remembered only in uncertain childhood fragments from the years of upheaval before the Party secured complete control. His dreams associate her with protection, private loyalty, and a kind of feeling that the present society has nearly erased.",
+            "id": "winstons-mother",
+            "name": "Winston's mother",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A philologist at the Ministry of Truth who works on the new edition of the Newspeak dictionary. Intelligent and absorbed in his task, he openly explains that Newspeak is designed to shrink the range of possible thought until dissent becomes impossible to formulate.",
+            "id": "syme",
+            "name": "Syme",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Winston's estranged wife, seen in his memories as rigidly obedient to Party teaching. Their marriage failed because she treated intimacy solely as a duty owed to the state and showed no independent affection for him.",
+            "id": "katharine",
+            "name": "Katharine",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An elderly dealer in secondhand goods who owns a small shop in a prole district. He encourages Winston's interest in objects from the past, sells him a glass paperweight, and shows him an upstairs room without a visible telescreen.",
+            "id": "mr-charrington",
+            "name": "Mr Charrington",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young mechanic in the Ministry of Truth's Fiction Department. After previously alarming Winston with her apparent orthodoxy and frequent presence near him, she secretly passes him a note declaring her love, forcing him to reconsider what she wants.",
+            "id": "julia",
+            "name": "Julia",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "1984-amazonclassics-edition"
+      },
+      "recaps": {
+        "ending": "After prolonged torture at the Ministry of Love, Winston is taken to Room 101 and confronted with his overwhelming fear of rats. He begs O'Brien to inflict the punishment on Julia instead, surrendering the last loyalty he had tried to preserve. The Party eventually releases him. He and Julia meet once and admit that each betrayed the other; neither feels the former attachment. Winston now spends his days at the Chestnut Tree Cafe, drinking gin and following official war reports. When the telescreen announces a great Oceanian victory, he experiences the news as personal salvation. His resistance, his trust in memory, and his love for Julia have all been destroyed. He accepts the Party's version of reality and loves Big Brother, completing the psychological conquest O'Brien intended.",
+        "in_short": "In Oceania, the Party controls public life, private conduct, and the historical record. Winston Smith secretly rejects its rule while falsifying old news at the Ministry of Truth. He begins an illegal diary, then forms a forbidden relationship with Julia and rents a room where they believe they can meet unwatched. Hoping an organized resistance exists, they approach the Inner Party official O'Brien and pledge themselves to the supposed Brotherhood. O'Brien is actually directing a trap. The Thought Police arrest the couple, and O'Brien tortures Winston until he abandons evidence, independent judgment, and finally his loyalty to Julia. Released after betraying her under the threat of his worst fear, Winston meets Julia and learns that both have been changed beyond affection. Alone at the Chestnut Tree Cafe, he accepts the Party's reality and feels love for Big Brother.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Winston Smith lives in Airstrip One, a province of Oceania governed by the Party and watched through telescreens. Although he works at the Ministry of Truth rewriting old reports to match the Party's latest claims, he privately doubts the official version of the past. He buys a blank book in a prole neighborhood and begins a diary, an act that exposes his thoughtcrime if discovered. During the compulsory Two Minutes Hate he studies O'Brien, a powerful Inner Party official whom he imagines might share his discontent, and a dark-haired young woman whose attention makes him fear she is an informer. Dreams of his vanished mother and of an unspoiled landscape sharpen his sense that life was once different. At work he calmly changes a prediction that proved wrong, making the documentary record agree with the present while the discarded evidence is destroyed.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Winston's colleague Syme explains his work on the Newspeak dictionary: each edition removes words so that unorthodox ideas will eventually become impossible to express. Winston realizes that Syme's intelligence may itself put him at risk. He records memories of his failed marriage to the dutiful Katharine and of a desperate encounter with a prostitute, recognizing how the Party tries to eliminate pleasure and redirect personal feeling toward political loyalty. He decides that hope, if any remains, lies among the proles, who form most of the population but lack a shared understanding of their strength. Searching for reliable evidence of the past, he visits a prole pub but learns little from an old man's fragments. At Mr Charrington's secondhand shop he is drawn to a glass paperweight and an upstairs room that seems free of surveillance. On leaving, he sees the dark-haired woman nearby and assumes the Thought Police may be closing in.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The dark-haired woman slips Winston a note saying that she loves him. After cautious attempts to speak without attracting the telescreens, they arrange a country meeting. She tells him her name is Julia. Away from the city they begin a sexual relationship, which both understand as a private rebellion against Party discipline. Julia is practical and skeptical of grand political explanations; she breaks rules for her own freedom while maintaining a convincing public image as an enthusiastic Party member. Their later meetings are brief and precarious. Seeking a more durable refuge, Winston rents the room above Mr Charrington's shop. Julia brings real coffee, sugar, and other luxuries obtained through her contacts, temporarily turning the room into a private domestic world. Winston shows her the paperweight, whose enclosed piece of coral comes to represent the small, protected life they are trying to create.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Winston and Julia continue using the rented room while the city prepares for Hate Week. Syme disappears from official life so completely that even his name is removed from a committee list. O'Brien finally speaks to Winston, using a discussion of the Newspeak dictionary to give him an address, and Winston takes this as the invitation he has hoped for. He and Julia visit O'Brien's luxurious apartment, where he switches off his telescreen and confirms their belief that he belongs to the Brotherhood. They agree to commit serious crimes for the resistance, though neither will promise to be separated forever from the other. O'Brien initiates them with wine and promises Winston a copy of Emmanuel Goldstein's forbidden book. Winston leaves convinced that his private rebellion has joined a larger movement, despite knowing that the choice is likely to lead to capture and death.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "During Hate Week, Oceania's enemy abruptly changes, and Winston's department works without rest to alter every record of the abandoned alliance. He receives Goldstein's book and reads it in the room above the shop. Its analysis explains how endless war consumes resources, preserves hierarchy, and allows each ruling power to keep its population controlled. Julia joins him, but their refuge is exposed when a concealed telescreen answers Winston's declaration that they are doomed. Armed officers break in and shatter the glass paperweight. Mr Charrington enters without his elderly disguise: he is an operative of the Thought Police, and the room has always been a trap. Winston and Julia are beaten, separated, and arrested.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Imprisoned in the Ministry of Love, Winston encounters other prisoners before O'Brien appears and confirms that he has long served the Party, not the resistance. Through beatings, machinery, drugs, and relentless questioning, O'Brien forces Winston to distrust his senses and accept that the Party determines truth. He explains that its purpose is power itself: it intends to control human beings inwardly, not merely secure outward obedience. Winston is nursed back to physical strength after he learns to repeat the required answers, but he still believes his love for Julia remains beyond the Party's reach. In Room 101, O'Brien threatens him with starving rats, his deepest terror. Winston begs that Julia be subjected to them instead. Released after this betrayal, he later meets Julia; each admits betraying the other, and their bond is gone. At the Chestnut Tree Cafe, Winston hears news of an Oceanian victory and embraces the official triumph. His independent self has been extinguished, and he loves Big Brother.",
+            "through": {
+              "chapter": 24
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "1984-amazonclassics-edition"
+      }
+    },
     "61-hours": {
       "characters": {
         "characters": [

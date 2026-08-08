@@ -2545,6 +2545,227 @@
         "work": "metamorphosis"
       }
     },
+    "middlemarch": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An earnest, independently minded young gentlewoman living with her uncle at Tipton Grange. Dorothea wants her life and inheritance to serve a serious moral purpose, distrusts fashionable luxury, and dreams of contributing to work larger than the limited accomplishments expected of her.",
+            "id": "dorothea-brooke",
+            "name": "Dorothea Brooke",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Dorothea's younger sister, affectionate and observant but more accepting of ordinary comfort and social convention. Celia loves Dorothea while quietly recognizing that her sister's ideals can make simple choices unnecessarily severe.",
+            "id": "celia-brooke",
+            "name": "Celia Brooke",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Guardian and uncle to Dorothea and Celia, a well-meaning landowner with reforming opinions and an interest in entering politics. His talk is expansive and inconsistent, and his habits as a landlord do not always match his public principles.",
+            "id": "arthur-brooke",
+            "name": "Arthur Brooke",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wealthy baronet and neighbor who admires Dorothea and seeks her advice about improving cottages on his estate. His practical kindness attracts her interest in the project, although he understands that interest as encouragement of his courtship.",
+            "id": "sir-james-chettam",
+            "name": "Sir James Chettam",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A much older clergyman and landowner whose years of scholarship have produced extensive notes toward a grand religious work. Dorothea sees in his learning an opportunity to assist an important intellectual vocation, while his solemn reserve lends authority to her idealized view of him.",
+            "id": "edward-casaubon",
+            "name": "Edward Casaubon",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Casaubon's young cousin, encountered in Rome while studying art. Lively, skeptical, and conscious of his dependence on wealthier relatives, Will resists Casaubon's judgments and is drawn to Dorothea's sympathy and seriousness.",
+            "id": "will-ladislaw",
+            "name": "Will Ladislaw",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young doctor newly settled in Middlemarch after advanced study in Paris and Edinburgh. Lydgate hopes to make medical discoveries, improve hospital practice, and remain free of provincial entanglements. His pride rests on professional ability rather than local rank.",
+            "id": "tertius-lydgate",
+            "name": "Tertius Lydgate",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The beautiful, accomplished daughter of a prosperous Middlemarch manufacturer and mayor. Rosamond has refined manners, musical talent, and ambitions beyond the social world in which she was raised. The newly arrived Lydgate interests her partly because his background seems distinguished and unfamiliar.",
+            "id": "rosamond-vincy",
+            "name": "Rosamond Vincy",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Rosamond's brother, a good-humored young man expected to enter the church despite his lack of purpose or academic discipline. Fred is in debt and bases his confidence on the hope that his elderly relative Peter Featherstone will leave him a substantial inheritance.",
+            "id": "fred-vincy",
+            "name": "Fred Vincy",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Caleb Garth's capable daughter, employed as companion and nurse to Peter Featherstone at Stone Court. Plain-spoken, perceptive, and unwilling to encourage false hopes, Mary has known Fred since childhood and expects him to become useful before she will take his courtship seriously.",
+            "id": "mary-garth",
+            "name": "Mary Garth",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly, wealthy landowner at Stone Court whose possible heirs attend him with anxious deference. Suspicious and manipulative, he enjoys testing the expectations of relatives, including Fred Vincy, while Mary Garth cares for him with greater honesty.",
+            "id": "peter-featherstone",
+            "name": "Peter Featherstone",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wealthy banker who is prominent in Middlemarch's evangelical and charitable affairs. Bulstrode uses money and moral authority to influence institutions, including the new hospital, and expects professional allies to support his religious program.",
+            "id": "nicholas-bulstrode",
+            "name": "Nicholas Bulstrode",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A clergyman, naturalist, and doctor to poorer patients whose intelligence and generosity earn Lydgate's respect. He supplements an inadequate income by playing cards and hopes eventually to obtain a more secure living.",
+            "id": "camden-farebrother",
+            "name": "Camden Farebrother",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Mary's father, a land agent and surveyor whose enthusiasm for land, buildings, and honest work is stronger than his interest in profit. His generosity has sometimes harmed his own family's finances, but his practical judgment makes him widely trusted.",
+            "id": "caleb-garth",
+            "name": "Caleb Garth",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A coarse, talkative traveler who recognizes Bulstrode from an earlier period of his life. Raffles treats that knowledge as leverage, appearing without welcome and making clear that the respectable banker cannot easily dismiss him.",
+            "id": "john-raffles",
+            "name": "John Raffles",
+            "reveal": {
+              "chapter": 53
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "middlemarch"
+      },
+      "recaps": {
+        "ending": "Dorothea learns that Will loves her and chooses to marry him despite the clause in Casaubon's will that costs her most of Casaubon's property if she does so. Their marriage is loving; Will enters public life and eventually Parliament, while Dorothea's influence is expressed chiefly through the lives she supports rather than the grand achievement she once imagined. Fred Vincy abandons the church, learns estate management under Caleb Garth, marries Mary, and becomes a successful, contented farmer. Bulstrode leaves Middlemarch in disgrace, accompanied by his loyal wife. Lydgate's reputation never fully recovers there. He and Rosamond move away; he earns a large income treating wealthy patients but regards his abandoned scientific ambition as a failure, and he dies at fifty. Rosamond later marries a prosperous older physician. Farebrother receives the Lowick living, while Mr Brooke's political ambitions end. The community continues, often unaware of the quiet moral effects its members have had on one another.",
+        "in_short": "In Middlemarch, idealistic Dorothea Brooke marries the scholar Casaubon hoping to share a great vocation, but finds an insecure husband and an empty project. After his death, his hostile will threatens to disinherit her if she marries his cousin Will Ladislaw; she ultimately chooses Will over wealth. Ambitious doctor Tertius Lydgate marries Rosamond Vincy, whose expensive expectations help drive him into debt and dependence on banker Nicholas Bulstrode. When Bulstrode's concealed past and his conduct toward the dying blackmailer Raffles become public, Lydgate is unjustly tainted by association and leaves town with his medical hopes diminished. Fred Vincy loses an expected inheritance, accepts work under Caleb Garth, and matures enough to marry Mary Garth. Dorothea gives Lydgate crucial trust, marries Will, and supports his public career. Fred and Mary build a useful, happy life; Bulstrode departs disgraced; and Lydgate becomes financially successful elsewhere but dies believing his original vocation was lost.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Dorothea Brooke lives at Tipton Grange with her younger sister Celia and their amiable, inconsistent uncle. Hungry for a life of moral and intellectual usefulness, Dorothea takes more interest in improving cottages than in the courtship of Sir James Chettam. She instead idealizes the much older clergyman Edward Casaubon, believing she can help complete his immense scholarly study. She accepts his proposal despite Celia's misgivings and Sir James's disappointment; Sir James gradually turns toward Celia. Marriage quickly exposes the distance between Dorothea's hopes and Casaubon's guarded habits. On their honeymoon in Rome, she discovers that he offers neither a clear role in his work nor the spiritual companionship she imagined. Her request for meaningful tasks wounds his pride. She also meets his lively young cousin Will Ladislaw, an artist supported by the family, whose criticism of Casaubon's unfinished scholarship makes the tensions within the marriage more visible. Dorothea remains committed to her duty, but returns toward England with the first certainty that her chosen vocation may not exist.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Middlemarch's other households come into view. Fred Vincy is burdened by debt and expects his elderly relative Peter Featherstone to make him an heir; Mary Garth, caring for Featherstone, refuses to encourage Fred unless he becomes responsible. Fred's loan has exposed Mary's father Caleb to financial loss. Rosamond Vincy is fascinated by Tertius Lydgate, a well-connected young doctor who has come to pursue medical research and reform. Lydgate initially believes he can admire her without changing his plans. His work draws him into the struggle around a new fever hospital. Banker Nicholas Bulstrode finances the institution and seeks religious as well as administrative influence. Lydgate supports Bulstrode's preferred chaplain over Camden Farebrother, a capable clergyman and amateur naturalist whom Lydgate personally likes, creating local resentment and an obligation to Bulstrode. Dorothea and Casaubon return from Rome with their disappointment unspoken. Will visits Lowick, and his ease with Dorothea increases Casaubon's jealousy even though Dorothea continues to act from sympathy rather than declared romantic feeling.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Fred becomes seriously ill, and Lydgate's successful treatment increases the Vincys' admiration for the doctor. Rosamond and Lydgate move from flirtation toward an engagement, each carrying assumptions about marriage and money the other has not examined. Fred's debt forces Caleb Garth to sacrifice savings, distressing Mary and making Fred's need to find useful work unavoidable. Featherstone dies after trying to make Mary burn one of his wills; she refuses to act without witnesses. The wills he leaves defeat the expectations of Fred and the assembled relatives, and Stone Court passes elsewhere. At Lowick, Casaubon suffers a heart attack. Lydgate warns Dorothea that her husband may die suddenly and should avoid strain. Casaubon, increasingly suspicious of Will's presence and of Dorothea's independent judgment, tries to secure her future obedience to his unfinished work. Dorothea wants to be loyal but cannot honestly promise before knowing what he will ask. Will, meanwhile, accepts work on Mr Brooke's reform newspaper, giving him a reason to remain near Middlemarch despite Casaubon's hostility.",
+            "through": {
+              "chapter": 33
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Lydgate marries Rosamond and furnishes their home on credit, underestimating how quickly comfort and status will outrun his income. His professional independence is already compromised by local alliances and competition. Fred, disappointed of inheritance and unsuited to the church, is pressed to choose an honest occupation; Mary remains firm that affection cannot replace character. Mr Brooke launches a parliamentary campaign as a reformer, but opponents expose the poor conditions on his own estates, and his public appearance collapses into ridicule. Will continues working for him and remains welcome to Dorothea, which aggravates Casaubon's fear that his wife compares them. Casaubon forbids Will to visit Lowick and adds a provision to his will designed to control Dorothea after his death. Before Dorothea can answer his request that she promise to carry out his wishes, Casaubon dies in the garden. Her grief is mixed with the dawning recognition that the demand she was prepared to accept might have bound her permanently to a fruitless labor.",
+            "through": {
+              "chapter": 42
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Casaubon's will leaves Dorothea his property but declares that she will lose it if she marries Will Ladislaw. The clause shocks her by converting Casaubon's jealousy into a public suspicion, and it causes Sir James and others to treat Will as a danger. Dorothea has not yet named her feeling for Will, while Will is offended by assumptions that he seeks her money. Lydgate and Rosamond's marriage grows strained as debts accumulate. She resists economies and treats his medical ambitions as secondary to the life she expected; he is too proud to disclose the full crisis early. Fred, disappointed of inheritance and unsuited to the church, has still not established an independent future that would satisfy Mary. Mr Brooke abandons his parliamentary campaign, and Will prepares to leave the newspaper work that has kept him in Middlemarch. At Stone Court, Bulstrode encounters John Raffles, a disreputable man who knows him from an earlier life and uses that knowledge to demand money and attention.",
+            "through": {
+              "chapter": 53
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Raffles's appearance confronts Bulstrode with the history concealed beneath his religious respectability. As a young man Bulstrode profited from a dishonest business and prevented its rightful heiress from learning of her inheritance; his later marriage made the gains secure. That heiress was Will Ladislaw's mother, linking Bulstrode's secret to Will's poverty. Bulstrode offers Will money as a form of restitution, but Will refuses wealth derived from wrongdoing. Lydgate and Rosamond's conflict over debt becomes open. She appeals secretly to his aristocratic relatives, only to receive a humiliating refusal, while Lydgate's efforts to reduce their household are repeatedly frustrated. Will's continuing connection with Rosamond also creates painful misunderstandings about his feeling for Dorothea. Fred finally abandons the church as a career. Farebrother, though he loves Mary himself, speaks honestly on Fred's behalf, and Caleb begins training Fred in land management. Fred now has a path by which work, rather than an expected inheritance, might make him worthy of Mary.",
+            "through": {
+              "chapter": 62
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Raffles returns to Stone Court dangerously ill, and Bulstrode places him under Lydgate's care. Lydgate gives strict instructions, including limits on opium and alcohol. Terrified that Raffles will expose him, Bulstrode fails to maintain the prescribed safeguards and permits brandy to be given; Raffles dies. During the same crisis Bulstrode lends Lydgate the money needed to relieve his debts. Raffles has disclosed enough for Bulstrode's history and the suspicious circumstances of the death to become public. At a town meeting Bulstrode is denounced and driven from his charitable positions. The timely loan makes the community suspect that Lydgate accepted payment to conceal wrongdoing, although he knew neither Bulstrode's past nor what occurred after he left the sickroom. His practice begins to collapse under the association. Bulstrode's wife, devastated by the disclosure, nevertheless chooses to remain with him. Fred continues developing into reliable work under Caleb. Will's position remains constrained by Casaubon's codicil: declaring love for Dorothea would expose both of them to the claim that he seeks her wealth.",
+            "through": {
+              "chapter": 71
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Dorothea visits Rosamond hoping to repair the Lydgates' marriage and affirm her belief in Lydgate. Rosamond, moved out of her usual self-protection, tells Dorothea that Will has never loved her and is devoted to Dorothea. Dorothea and Will finally speak openly and decide to marry, accepting that Casaubon's codicil will cost Dorothea most of his estate. Fred completes his moral and practical education under Caleb, marries Mary, and becomes a successful farmer and land agent; their shared life proves happier than the inheritance he once pursued. Sir James and Celia continue their settled family life. Bulstrode leaves Middlemarch in disgrace, supported by his wife. Lydgate and Rosamond also leave. He abandons his original research ambitions and prospers as a fashionable physician, but regards that success as failure and dies at fifty; Rosamond later remarries comfortably. Will builds a public career and enters Parliament. Dorothea finds fulfillment in marriage, motherhood, and the good she enables around her rather than in a famous independent achievement. The town's judgments fade, while the consequences of its residents' quiet choices continue through other lives.",
+            "through": {
+              "chapter": 87
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "middlemarch"
+      }
+    },
     "midnight-alley": {
       "characters": {
         "characters": [

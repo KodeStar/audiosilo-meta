@@ -1683,6 +1683,426 @@
         "work": "sad-cypress"
       }
     },
+    "saint-joan": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A teenage peasant from Domremy who arrives at Vaucouleurs certain that Saints Catherine and Margaret, together with the archangel Michael, have ordered her to relieve Orleans and see the Dauphin crowned. Direct, practical, and unwavering, she treats a military campaign as an obvious duty and expects soldiers and nobles to recognize the same necessity.",
+            "id": "joan",
+            "name": "Joan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Robert"
+            ],
+            "description": "The military commander at Vaucouleurs. Initially exasperated by Joan's repeated requests for armor, a horse, and an escort to the Dauphin, he questions her companions and tests her confidence before allowing her mission to proceed.",
+            "id": "robert-de-baudricourt",
+            "name": "Robert de Baudricourt",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Polly"
+            ],
+            "description": "A local gentleman and soldier who believes Joan's account of her calling. He supports her request to travel to the Dauphin and is willing to accompany her despite Robert's initial skepticism.",
+            "id": "bertrand-de-poulengey",
+            "name": "Bertrand de Poulengey",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "The Dauphin"
+            ],
+            "description": "The uncrowned French heir, uncertain of his legitimacy and intimidated by the debts, courtiers, and military failures surrounding him. He hides among his nobles to test Joan, but her confidence offers him a way to imagine exercising authority rather than avoiding it.",
+            "id": "charles-vii",
+            "name": "Charles VII",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior churchman at the Dauphin's court. Politically cautious and conscious of the Church's authority, he is impressed by Joan's force but wary of accepting a private revelation without examination.",
+            "id": "archbishop-of-rheims",
+            "name": "Archbishop of Rheims",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Bastard of Orleans"
+            ],
+            "description": "The experienced French commander directing the defense of Orleans. He respects military realities and initially regards Joan as an untrained enthusiast, but he listens when her confidence and the changing conditions give the army a chance to act.",
+            "id": "dunois",
+            "name": "Dunois",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Peter Cauchon"
+            ],
+            "description": "The Bishop of Beauvais, a learned churchman aligned with the English cause. He regards Joan's insistence on answering directly to her voices as a threat to the Church's universal authority and argues that she must be judged for heresy rather than treated merely as a military enemy.",
+            "id": "bishop-cauchon",
+            "name": "Bishop Cauchon",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Richard de Beauchamp"
+            ],
+            "description": "The English Earl of Warwick, a courteous but determined political opponent of Joan. He sees her appeal to a united France under its king as dangerous to the feudal order as well as to English power and seeks a lawful means to remove her.",
+            "id": "earl-of-warwick",
+            "name": "Earl of Warwick",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "John de Stogumber"
+            ],
+            "description": "An English chaplain whose national hatred of Joan is more emotional than theological. He demands punishment in the language of religion while showing little interest in the careful distinctions Cauchon makes about heresy.",
+            "id": "chaplain-de-stogumber",
+            "name": "Chaplain de Stogumber",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A powerful French noble and soldier at Charles's court. Concerned with practical alliances and his own influence, he has little patience for Joan's certainty or for policies that threaten established interests.",
+            "id": "la-tremouille",
+            "name": "La Tremouille",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Dominican official who directs Joan's examination at Rouen. Intellectually disciplined and experienced in heresy trials, he presents the court as an effort to return an erring Christian to obedience while steadily narrowing the choices available to her.",
+            "id": "the-inquisitor",
+            "name": "The Inquisitor",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Dominican friar who assists at Joan's trial and attends her at the execution. He is part of the judging institution but shows personal concern for her soul and tries to make the consequences of her choices clear.",
+            "id": "brother-martin-ladvenu",
+            "name": "Brother Martin Ladvenu",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An ordinary English soldier present at Joan's execution. His brief act of pity stands apart from the political and theological arguments made by his superiors.",
+            "id": "the-english-soldier",
+            "name": "The English Soldier",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "saint-joan"
+      },
+      "recaps": {
+        "ending": "Joan is tried at Rouen by a church court operating under English power. The judges repeatedly press her to submit her private revelations to the Church. Faced with execution, she signs a recantation, but when she discovers that submission means lifelong imprisonment rather than release, she withdraws it and accepts death. She is burned, and the witnesses' later reactions expose the gulf between the legal reasoning of the trial and the human reality of the punishment. In the epilogue, set twenty-five years later, Charles learns that a new inquiry has annulled the conviction. In a dream, Joan and figures from her life return; a later cleric announces that she will eventually be canonized. They all praise her once history has made admiration safe, yet each finds a reason to recoil when she asks whether she should return to life. Left alone, Joan asks when the world will be ready to receive its saints.",
+        "in_short": "Joan, a peasant girl convinced that saints have commanded her to save France, persuades Robert de Baudricourt to send her to the Dauphin. She recognizes Charles in disguise, gives him confidence to claim his kingship, and helps transform the defense of Orleans before urging his coronation at Rheims. Her direct appeal to divine authority and to French nationhood alarms both church and feudal leaders. After the coronation, Charles and his commanders prefer compromise, leaving Joan isolated when she continues the war. Captured and handed to the English, she is tried for heresy at Rouen. She briefly recants under threat of death, then rejects perpetual imprisonment and is burned. Twenty-five years later her conviction is annulled. In a dream epilogue, former allies and enemies praise her, and a future visitor reports her canonization; nevertheless, none wants her disruptive presence restored. Joan ends by asking when humanity will be ready for the saints it honors only after killing them.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "At Vaucouleurs in 1429, amid a period of French defeat, Robert de Baudricourt is baffled by disturbances in his household and by the persistence of Joan, a teenage peasant who has repeatedly demanded an audience. Joan tells him that heavenly voices have ordered her to raise the siege of Orleans and arrange the Dauphin's coronation. She asks for a horse, armor, and soldiers to escort her to court. Robert questions Bertrand de Poulengey and finds that local men have begun to share her confidence. Joan shows no deference to Robert's doubts and treats the military task as both urgent and achievable. Her certainty, along with the response she inspires in others, overcomes his resistance. Even Robert's domestic troubles seem to resolve in her presence, strengthening the impression she makes. Robert supplies what she needs and sends her toward the Dauphin, beginning her movement from an obscure village into the French war.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At Chinon, the uncrowned Charles is surrounded by creditors, factional nobles, and advisers who doubt both his legitimacy and his capacity to rule. To test Joan, he exchanges places with a courtier, but she identifies him among the crowd. In private, Charles admits his fear, lack of money, and wish to escape responsibility. Joan does not solve his political difficulties; instead, she gives him confidence that he has a duty to act as France's king. Her energy shifts the court's mood, although the Archbishop remains cautious about treating her voices as divine authority. The court debates whether she is inspired, naive, or politically dangerous, but its mockery no longer controls the decision. Charles agrees to let her join the campaign for Orleans and accepts coronation at Rheims as a real objective. Joan thus wins official backing without resolving the churchmen's doubts or the nobles' concern about her growing influence.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Outside besieged Orleans, Dunois waits for a favorable wind before moving troops and supplies across the Loire. He respects Joan's courage but explains that determination cannot replace military conditions. When the wind changes, Joan sees it as confirmation of her mission, while Dunois is persuaded less by a miracle than by her ability to turn opportunity into resolve. She insists that the French should attack rather than remain trapped in defensive calculation. The campaign succeeds and the English are driven from Orleans. Her victories alter the war and make her a public symbol. In the English camp, the Earl of Warwick, Bishop Cauchon, and Chaplain de Stogumber consider what she represents. Warwick fears the national loyalty that could weaken feudal rule; Cauchon fears an individual claiming divine direction outside the Church; Stogumber simply wants the English enemy destroyed. They agree that capturing Joan and condemning her through church law will serve their different purposes.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Charles is crowned at Rheims, fulfilling the central promise of Joan's mission, but the ceremony also reveals how far she has moved beyond her allies. Joan wants to continue at once against Paris and complete the military recovery of France. Charles prefers negotiation and the comforts of established kingship; the Archbishop distrusts her independent spiritual certainty; La Tremouille protects political interests; and even Dunois warns that soldiers cannot support her without limit. Joan longs to return to her village but believes her voices require further action. She finds that a victorious symbol is welcome at court only while her demands align with the plans of powerful men. The leaders who benefited from her victories are unwilling to follow her next campaign, and Dunois makes plain that if she is captured he cannot sacrifice the army to rescue her. She nevertheless chooses to continue, accepting an isolation that makes the plans discussed by her English and ecclesiastical enemies increasingly dangerous.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Captured and sold into English hands, Joan is brought before a church court at Rouen. The Inquisitor and Cauchon insist that the issue is not her patriotism but her refusal to submit her voices and judgment to the Church. Joan answers with the same plain certainty that once moved soldiers, but in the courtroom her impatience and literal honesty are turned into evidence against her. The court offers mercy only on terms that deny the authority by which she has lived. When threatened with burning, she signs a recantation. She then learns that obedience will leave her imprisoned for life, deprived of the open world she values. Declaring that her voices and actions were true, she retracts the confession and is condemned as a relapsed heretic. Joan is burned. Ladvenu reports her steadfastness, Stogumber is shattered by seeing the physical cruelty he had demanded, and an English soldier's small kindness at the fire becomes a sign that compassion survived where institutions failed.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Twenty-five years after Joan's death, Charles learns that a new church inquiry has overturned the judgment against her. As he sleeps, Joan appears, followed by allies and enemies from the earlier scenes. Their afterlife conversation measures historical praise against the choices they made while she lived. Cauchon discovers that his defense of church authority did not protect his reputation; Dunois and the others honor Joan without denying that they abandoned her; and the English soldier receives one brief release from damnation for the cross he gave her. A visitor from the twentieth century announces that Joan has been canonized as a saint. The company celebrates the news, but when Joan joyfully asks to return to life, each person retreats behind a reason why her presence would again be inconvenient or dangerous. Alone once more, she confronts the pattern by which society venerates dead reformers while resisting living ones and asks when the world will be ready for its saints.",
+            "through": {
+              "chapter": 7
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "saint-joan"
+      }
+    },
+    "saint-joan-dramatised": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A teenage peasant from Domremy who arrives at Vaucouleurs certain that Saints Catherine and Margaret, together with the archangel Michael, have ordered her to relieve Orleans and see the Dauphin crowned. Direct, practical, and unwavering, she treats a military campaign as an obvious duty and expects soldiers and nobles to recognize the same necessity.",
+            "id": "joan",
+            "name": "Joan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Robert"
+            ],
+            "description": "The military commander at Vaucouleurs. Initially exasperated by Joan's repeated requests for armor, a horse, and an escort to the Dauphin, he questions her companions and tests her confidence before allowing her mission to proceed.",
+            "id": "robert-de-baudricourt",
+            "name": "Robert de Baudricourt",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Polly"
+            ],
+            "description": "A local gentleman and soldier who believes Joan's account of her calling. He supports her request to travel to the Dauphin and is willing to accompany her despite Robert's initial skepticism.",
+            "id": "bertrand-de-poulengey",
+            "name": "Bertrand de Poulengey",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "The Dauphin"
+            ],
+            "description": "The uncrowned French heir, uncertain of his legitimacy and intimidated by the debts, courtiers, and military failures surrounding him. He hides among his nobles to test Joan, but her confidence offers him a way to imagine exercising authority rather than avoiding it.",
+            "id": "charles-vii",
+            "name": "Charles VII",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior churchman at the Dauphin's court. Politically cautious and conscious of the Church's authority, he is impressed by Joan's force but wary of accepting a private revelation without examination.",
+            "id": "archbishop-of-rheims",
+            "name": "Archbishop of Rheims",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Bastard of Orleans"
+            ],
+            "description": "The experienced French commander directing the defense of Orleans. He respects military realities and initially regards Joan as an untrained enthusiast, but he listens when her confidence and the changing conditions give the army a chance to act.",
+            "id": "dunois",
+            "name": "Dunois",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Peter Cauchon"
+            ],
+            "description": "The Bishop of Beauvais, a learned churchman aligned with the English cause. He regards Joan's insistence on answering directly to her voices as a threat to the Church's universal authority and argues that she must be judged for heresy rather than treated merely as a military enemy.",
+            "id": "bishop-cauchon",
+            "name": "Bishop Cauchon",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Richard de Beauchamp"
+            ],
+            "description": "The English Earl of Warwick, a courteous but determined political opponent of Joan. He sees her appeal to a united France under its king as dangerous to the feudal order as well as to English power and seeks a lawful means to remove her.",
+            "id": "earl-of-warwick",
+            "name": "Earl of Warwick",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "John de Stogumber"
+            ],
+            "description": "An English chaplain whose national hatred of Joan is more emotional than theological. He demands punishment in the language of religion while showing little interest in the careful distinctions Cauchon makes about heresy.",
+            "id": "chaplain-de-stogumber",
+            "name": "Chaplain de Stogumber",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A powerful French noble and soldier at Charles's court. Concerned with practical alliances and his own influence, he has little patience for Joan's certainty or for policies that threaten established interests.",
+            "id": "la-tremouille",
+            "name": "La Tremouille",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Dominican official who directs Joan's examination at Rouen. Intellectually disciplined and experienced in heresy trials, he presents the court as an effort to return an erring Christian to obedience while steadily narrowing the choices available to her.",
+            "id": "the-inquisitor",
+            "name": "The Inquisitor",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Dominican friar who assists at Joan's trial and attends her at the execution. He is part of the judging institution but shows personal concern for her soul and tries to make the consequences of her choices clear.",
+            "id": "brother-martin-ladvenu",
+            "name": "Brother Martin Ladvenu",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An ordinary English soldier present at Joan's execution. His brief act of pity stands apart from the political and theological arguments made by his superiors.",
+            "id": "the-english-soldier",
+            "name": "The English Soldier",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "saint-joan-dramatised"
+      },
+      "recaps": {
+        "ending": "Joan is tried at Rouen by a church court operating under English power. The judges repeatedly press her to submit her private revelations to the Church. Faced with execution, she signs a recantation, but when she discovers that submission means lifelong imprisonment rather than release, she withdraws it and accepts death. She is burned, and the witnesses' later reactions expose the gulf between the legal reasoning of the trial and the human reality of the punishment. In the epilogue, set twenty-five years later, Charles learns that a new inquiry has annulled the conviction. In a dream, Joan and figures from her life return; a later cleric announces that she will eventually be canonized. They all praise her once history has made admiration safe, yet each finds a reason to recoil when she asks whether she should return to life. Left alone, Joan asks when the world will be ready to receive its saints.",
+        "in_short": "Joan, a peasant girl convinced that saints have commanded her to save France, persuades Robert de Baudricourt to send her to the Dauphin. She recognizes Charles in disguise, gives him confidence to claim his kingship, and helps transform the defense of Orleans before urging his coronation at Rheims. Her direct appeal to divine authority and to French nationhood alarms both church and feudal leaders. After the coronation, Charles and his commanders prefer compromise, leaving Joan isolated when she continues the war. Captured and handed to the English, she is tried for heresy at Rouen. She briefly recants under threat of death, then rejects perpetual imprisonment and is burned. Twenty-five years later her conviction is annulled. In a dream epilogue, former allies and enemies praise her, and a future visitor reports her canonization; nevertheless, none wants her disruptive presence restored. Joan ends by asking when humanity will be ready for the saints it honors only after killing them.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "At Vaucouleurs in 1429, amid a period of French defeat, Robert de Baudricourt is baffled by disturbances in his household and by the persistence of Joan, a teenage peasant who has repeatedly demanded an audience. Joan tells him that heavenly voices have ordered her to raise the siege of Orleans and arrange the Dauphin's coronation. She asks for a horse, armor, and soldiers to escort her to court. Robert questions Bertrand de Poulengey and finds that local men have begun to share her confidence. Joan shows no deference to Robert's doubts and treats the military task as both urgent and achievable. Her certainty, along with the response she inspires in others, overcomes his resistance. Even Robert's domestic troubles seem to resolve in her presence, strengthening the impression she makes. Robert supplies what she needs and sends her toward the Dauphin, beginning her movement from an obscure village into the French war.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At Chinon, the uncrowned Charles is surrounded by creditors, factional nobles, and advisers who doubt both his legitimacy and his capacity to rule. To test Joan, he exchanges places with a courtier, but she identifies him among the crowd. In private, Charles admits his fear, lack of money, and wish to escape responsibility. Joan does not solve his political difficulties; instead, she gives him confidence that he has a duty to act as France's king. Her energy shifts the court's mood, although the Archbishop remains cautious about treating her voices as divine authority. The court debates whether she is inspired, naive, or politically dangerous, but its mockery no longer controls the decision. Charles agrees to let her join the campaign for Orleans and accepts coronation at Rheims as a real objective. Joan thus wins official backing without resolving the churchmen's doubts or the nobles' concern about her growing influence.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Outside besieged Orleans, Dunois waits for a favorable wind before moving troops and supplies across the Loire. He respects Joan's courage but explains that determination cannot replace military conditions. When the wind changes, Joan sees it as confirmation of her mission, while Dunois is persuaded less by a miracle than by her ability to turn opportunity into resolve. She insists that the French should attack rather than remain trapped in defensive calculation. The campaign succeeds and the English are driven from Orleans. Her victories alter the war and make her a public symbol. In the English camp, the Earl of Warwick, Bishop Cauchon, and Chaplain de Stogumber consider what she represents. Warwick fears the national loyalty that could weaken feudal rule; Cauchon fears an individual claiming divine direction outside the Church; Stogumber simply wants the English enemy destroyed. They agree that capturing Joan and condemning her through church law will serve their different purposes.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Charles is crowned at Rheims, fulfilling the central promise of Joan's mission, but the ceremony also reveals how far she has moved beyond her allies. Joan wants to continue at once against Paris and complete the military recovery of France. Charles prefers negotiation and the comforts of established kingship; the Archbishop distrusts her independent spiritual certainty; La Tremouille protects political interests; and even Dunois warns that soldiers cannot support her without limit. Joan longs to return to her village but believes her voices require further action. She finds that a victorious symbol is welcome at court only while her demands align with the plans of powerful men. The leaders who benefited from her victories are unwilling to follow her next campaign, and Dunois makes plain that if she is captured he cannot sacrifice the army to rescue her. She nevertheless chooses to continue, accepting an isolation that makes the plans discussed by her English and ecclesiastical enemies increasingly dangerous.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Captured and sold into English hands, Joan is brought before a church court at Rouen. The Inquisitor and Cauchon insist that the issue is not her patriotism but her refusal to submit her voices and judgment to the Church. Joan answers with the same plain certainty that once moved soldiers, but in the courtroom her impatience and literal honesty are turned into evidence against her. The court offers mercy only on terms that deny the authority by which she has lived. When threatened with burning, she signs a recantation. She then learns that obedience will leave her imprisoned for life, deprived of the open world she values. Declaring that her voices and actions were true, she retracts the confession and is condemned as a relapsed heretic. Joan is burned. Ladvenu reports her steadfastness, Stogumber is shattered by seeing the physical cruelty he had demanded, and an English soldier's small kindness at the fire becomes a sign that compassion survived where institutions failed.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Twenty-five years after Joan's death, Charles learns that a new church inquiry has overturned the judgment against her. As he sleeps, Joan appears, followed by allies and enemies from the earlier scenes. Their afterlife conversation measures historical praise against the choices they made while she lived. Cauchon discovers that his defense of church authority did not protect his reputation; Dunois and the others honor Joan without denying that they abandoned her; and the English soldier receives one brief release from damnation for the cross he gave her. A visitor from the twentieth century announces that Joan has been canonized as a saint. The company celebrates the news, but when Joan joyfully asks to return to life, each person retreats behind a reason why her presence would again be inconvenient or dangerous. Alone once more, she confronts the pattern by which society venerates dead reformers while resisting living ones and asks when the world will be ready for its saints.",
+            "through": {
+              "chapter": 7
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "saint-joan-dramatised"
+      }
+    },
     "salamandastron": {
       "characters": {
         "characters": [
