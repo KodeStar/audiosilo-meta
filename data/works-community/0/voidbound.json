@@ -1140,6 +1140,109 @@
         "work": "voyager"
       }
     },
+    "waiting-for-godot": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Didi"
+            ],
+            "description": "A talkative, reflective wanderer waiting beside a country road for a man named Godot. Vladimir tries to remember prior events, reason through the pair's situation, and keep their appointment in view. He is the more persistent of the two friends and repeatedly reminds Estragon why they cannot leave.",
+            "id": "vladimir",
+            "name": "Vladimir",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Gogo"
+            ],
+            "description": "Vladimir's weary companion, first seen struggling to remove a painful boot. Estragon is preoccupied with hunger, sleep, beatings, and other immediate discomforts, and remembers less reliably than Vladimir. He often proposes leaving, yet remains with his friend to wait for Godot.",
+            "id": "estragon",
+            "name": "Estragon",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An imperious traveler who stops on the road while driving Lucky toward a market. Pozzo presents himself as a landowner and treats his companion as property, issuing orders while seeking attention and company from Vladimir and Estragon.",
+            "id": "pozzo",
+            "name": "Pozzo",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Pozzo's exhausted servant, burdened with luggage and controlled by a rope around his neck. Lucky rarely speaks and obeys commands to dance or think; when ordered to think aloud, he delivers a long, disintegrating torrent of language.",
+            "id": "lucky",
+            "name": "Lucky",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A timid messenger who arrives near the end of the day's wait. He says that he tends goats for Godot and has been sent to report that Godot will not come that evening but intends to come the next day.",
+            "id": "boy",
+            "name": "Boy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The absent man whom Vladimir and Estragon believe they have arranged to meet by the tree. They are uncertain about the terms of the appointment and what they expect from him, but the prospect of his arrival governs their decision to remain.",
+            "id": "godot",
+            "name": "Godot",
+            "reveal": {
+              "chapter": 1
+            }
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "waiting-for-godot"
+      },
+      "recaps": {
+        "ending": "On the second evening, after Pozzo and Lucky have gone, a boy again brings word that Godot will not come today but will come tomorrow. The messenger denies having met Vladimir the previous day, deepening the uncertainty over whether the days repeat or memory is failing. Vladimir tries to make the boy remember him so that their waiting will leave some trace. Alone again, Vladimir and Estragon consider hanging themselves from the tree, but their rope is too weak. They agree to return the next day with a better rope and say that they will leave now. Neither moves. Godot never appears, no rescue or explanation arrives, and the play ends with the pair still held in place by the promise of tomorrow.",
+        "in_short": "Vladimir and Estragon wait beside a nearly bare tree for Godot, though they are unsure about their appointment and cannot settle what he might do for them. They pass the time with arguments, reconciliations, games, stories, and thoughts of leaving or dying. The domineering Pozzo crosses the road with Lucky, his burdened servant, and later returns blind while Lucky has become mute. At the end of each day, a boy says Godot will not come that evening but will come tomorrow; on the second visit he denies remembering the first. The tree gains leaves, but memory and chronology remain unstable. Vladimir and Estragon repeatedly decide to go, yet do not move. Godot never arrives, and their waiting continues beyond the play's close.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "On a country road near a leafless tree, Vladimir and Estragon wait for Godot. Neither is certain that they are in the right place or on the right day, but Vladimir insists on honoring the appointment. They fill the time by discussing scripture, Estragon's nightly beatings, food, boots, hats, separation, and suicide, repeatedly considering departure without leaving. Pozzo arrives controlling Lucky with a rope and loading him with baggage. He says he plans to sell Lucky, whose distress briefly moves Estragon. At Pozzo's command Lucky dances and then produces a prolonged, incoherent speech until the others silence him. Master and servant depart. Near evening, a boy reports that Godot will not come today but will surely come tomorrow. He says that Godot treats him well but beats his brother. After the messenger leaves, the waiting men again say they will go, but remain where they are.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The next day Vladimir and Estragon return to the same road. The tree now has leaves, although Estragon remembers little of the preceding day. Their attempts to verify the past through wounds, boots, and exchanged hats produce no lasting certainty. Pozzo and Lucky return transformed: Pozzo is blind and dependent on help, while Lucky is mute. All four fall and struggle to rise. Pozzo rejects Vladimir's effort to establish when the change happened, insisting that time cannot be divided into the certainties Vladimir seeks, and he leaves with Lucky. A boy again announces that Godot will not come that evening but will come tomorrow. He claims not to be the messenger who came before. Vladimir asks him to remember this encounter. Estragon and Vladimir consider hanging themselves, decide to bring a stronger rope tomorrow, and agree to leave. Godot has not appeared, and, despite their stated decision, the two men do not move.",
+            "through": {
+              "chapter": 2
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "waiting-for-godot"
+      }
+    },
     "waiting-for-the-barbarians": {
       "characters": {
         "characters": [

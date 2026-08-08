@@ -2272,6 +2272,142 @@
         "work": "seedfolks"
       }
     },
+    "seize-the-day": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Wilky Adler"
+            ],
+            "description": "A man in his forties living at New York's Hotel Gloriana after losing his sales job and separating from his wife. Born Wilky Adler, he adopted the name Tommy Wilhelm during an unsuccessful attempt to become an actor. Burdened by money worries and hungry for sympathy, he has staked his remaining funds on a commodities scheme run by Dr. Tamkin.",
+            "id": "tommy-wilhelm",
+            "name": "Tommy Wilhelm",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Tommy's elderly father, a successful retired physician who also lives at the Gloriana. Dr. Adler values discipline, independence, and the respectable life he believes he built through his own efforts. He is embarrassed by Tommy's failures and resists his son's appeals for emotional or financial rescue.",
+            "id": "dr-adler",
+            "name": "Dr. Adler",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Dr. Tamkin"
+            ],
+            "description": "A talkative self-styled psychologist and speculator who befriends Tommy at the hotel. Tamkin offers grand theories about the true and false selves, tells unverifiable stories about his past, and manages the joint commodities account holding Tommy's last substantial savings.",
+            "id": "tamkin",
+            "name": "Tamkin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tommy's estranged wife and the mother of their two sons. She remains offstage but exerts constant pressure through telephone calls and financial demands. She refuses to agree to a divorce while insisting that Tommy continue meeting the family's expenses.",
+            "id": "margaret",
+            "name": "Margaret",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A devout woman whom Tommy loves and hopes to marry. Their future is blocked because Margaret will not divorce him and because Tommy lacks the stability to establish a new household.",
+            "id": "olive",
+            "name": "Olive",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Tommy's sister, who asks their father to support her artistic ambitions. Dr. Adler groups her requests with Tommy's dependence, reinforcing Tommy's sense that his father sees both children chiefly as demands upon him.",
+            "id": "catherine",
+            "name": "Catherine",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An elderly resident of the Hotel Gloriana who joins Dr. Adler and Tommy at breakfast. His presence makes Tommy more conscious of the polished public version of family success that his father presents to other people.",
+            "id": "mr-perls",
+            "name": "Mr. Perls",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A newspaper-stand clerk in the hotel lobby who exchanges a few familiar words with Tommy. The strained encounter reflects Tommy's sensitivity to judgment and his wish to find connection in even routine contact.",
+            "id": "rubin",
+            "name": "Rubin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "seize-the-day"
+      },
+      "recaps": {
+        "ending": "The lard position consumes Tommy's remaining savings, and Tamkin disappears with the authority over their joint account. Tommy turns again to Dr. Adler, confessing the depth of his trouble and asking for help, but his father refuses to assume responsibility for him. Margaret then presses her demands by telephone and rejects his pleas for relief, while his hoped-for future with Olive remains inaccessible. Wandering through the city in a state of financial and emotional collapse, Tommy is carried along with a crowd into a funeral chapel. He does not know the dead man, yet the sight of the body releases the grief he has been unable to express. He weeps openly and uncontrollably among the mourners. The practical crises are not solved: his money is gone, his marriage remains unresolved, and neither his father nor Tamkin rescues him. The ending instead gives him a moment of surrender to shared human mortality and sorrow.",
+        "in_short": "Tommy Wilhelm, a failed actor and recently unemployed salesman, spends a desperate day at the New York hotel where his prosperous elderly father lives. Separated from his wife Margaret, blocked from marrying Olive, and nearly out of money, Tommy longs for his father to recognize and rescue him. Dr. Adler instead condemns his dependence. Tommy has entrusted his last savings to the dubious Dr. Tamkin, who combines psychological theories with a speculative bet on lard futures. As the market turns against them, Tamkin distracts Tommy with talk of instinct, suffering, and the divided self, then disappears. Tommy loses his money and is refused help by both his father and his unyielding wife. Swept into the funeral of a stranger, he finally breaks down in profound public grief. Nothing material is repaired, but his tears connect his private anguish to a larger human sorrow.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Tommy Wilhelm begins the day at the Hotel Gloriana in New York, where he is living close to his father, Dr. Adler, but receives little comfort from him. Tommy is out of work after leaving a sales position, separated from his wife Margaret, and responsible for expenses he can barely meet. His earlier attempt at an acting career also failed, though it gave him the name he still uses instead of Wilky Adler. At breakfast, Dr. Adler presents himself as a vigorous, self-sufficient old man and treats Tommy's troubles as evidence of weak judgment. Tommy, painfully conscious of the contrast between them, wants sympathy but expects rebuke. He has nevertheless placed hope in another father-like figure, Dr. Tamkin, and in a commodities investment that contains most of what remains of his money.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tommy's memories show a pattern of choices made against advice: he pursued Hollywood despite warnings, abandoned a stable job after conflict with his employers, and entered a speculative partnership with Tamkin despite doubting the man's credentials and stories. His present family life is equally trapped. Margaret demands continued support and will not release him through divorce, preventing him from marrying Olive. Tommy asks Dr. Adler for understanding and indirectly for help, but his father insists that an adult must carry his own burdens. Tamkin answers Tommy's distress with a theory that each person contains a false, socially driven self and a deeper true self. The language appeals to Tommy's desire for meaning, though it does not resolve whether Tamkin is a healer, a fraud, or both.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tommy and Tamkin watch their joint commodities position at the brokerage. Tommy has contributed the crucial money and worries about every movement in the price of lard, while Tamkin controls the transactions and continues to speak in sweeping psychological and spiritual terms. The market moves against them. Tommy's distrust grows, but so does his dependence: withdrawing would require him to accept both the financial loss and the failure of another hoped-for guide. Tamkin produces a poem and further theories about living in the present, turning the wait into an improvised lesson on suffering. Beneath the talk, Tommy recognizes that his remaining security is disappearing and that he has again entrusted his life to someone he cannot fully believe.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The speculation collapses and Tamkin vanishes, leaving Tommy without his savings or a clear means of finding him. Tommy makes a final appeal to Dr. Adler, exposing his fear and asking for support, but his father refuses to take on his life. A telephone confrontation with Margaret brings more demands and no release from their marriage. With his plans for Olive and financial recovery in ruins, Tommy follows the movement of a crowd and enters a funeral chapel by accident. Facing the body of a stranger, he begins to weep with an intensity that overtakes embarrassment and self-control. The day ends without a practical rescue, but his private desperation opens into grief for mortality and human suffering beyond himself.",
+            "through": {
+              "chapter": 7
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "seize-the-day"
+      }
+    },
     "sense-and-sensibility": {
       "characters": {
         "characters": [
