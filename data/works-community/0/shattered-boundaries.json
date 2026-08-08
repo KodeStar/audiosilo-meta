@@ -1584,6 +1584,88 @@
         "work": "sherlock-holmes-the-final-problem-and-the-empty-house"
       }
     },
+    "sherlock-holmes-the-speckled-band-dramatized": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A consulting detective in London whose attention to physical detail lets him test apparently impossible stories against practical evidence. Helen Stoner asks him to explain her sister's unexplained death before a similar danger reaches her.",
+            "id": "sherlock-holmes",
+            "name": "Sherlock Holmes",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A doctor, Holmes's friend, and the narrator of the case. He accompanies Holmes to Stoke Moran and keeps watch with him when they attempt to identify the danger threatening Helen Stoner.",
+            "id": "john-watson",
+            "name": "Dr. John Watson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A frightened young woman living at the decaying Stoke Moran estate with her violent stepfather. Her twin sister Julia died there two years earlier after speaking of a whistle and a speckled band; now Helen has been moved into the same bedroom and hears the whistle herself.",
+            "id": "helen-stoner",
+            "name": "Helen Stoner",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Helen's late twin sister. She died shortly before her planned marriage after several nights of hearing a low whistle, leaving behind only a few mysterious words and no obvious fatal injury.",
+            "id": "julia-stoner",
+            "name": "Julia Stoner",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Helen and Julia's stepfather, a physically powerful doctor who spent years in India and now lives in reduced circumstances at Stoke Moran. His temper and violence terrify the household, and the sisters' marriages would reduce the income he controls from their mother's estate.",
+            "id": "grimesby-roylott",
+            "name": "Dr. Grimesby Roylott",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "sherlock-holmes-the-speckled-band-dramatized"
+      },
+      "recaps": {
+        "ending": "Holmes determines that Roylott murdered Julia and intended to kill Helen with a venomous swamp adder trained to crawl from his room through the ventilator and down the false bell-pull to the bed. The nightly whistle recalled the snake, and the saucer of milk helped Roylott train it. Holmes and Watson wait in Helen's darkened room. When the snake descends, Holmes strikes at it with a cane, driving it back through the ventilator. It bites Roylott instead, killing him within seconds. The speckled band in Julia's dying words was the patterned snake around him. Helen is taken safely away. Holmes acknowledges that his intervention indirectly caused Roylott's death but feels no guilt over the outcome.",
+        "in_short": "Helen Stoner asks Sherlock Holmes for help after being moved into the bedroom where her twin Julia died mysteriously two years before. Julia had heard a nightly whistle and died speaking of a speckled band; Helen has now heard the same sound. Their violent stepfather, Dr. Grimesby Roylott, would lose part of the sisters' inheritance when either married. At Stoke Moran, Holmes finds a ventilator opening into Roylott's room, a useless bell-pull hanging over the bed, and signs that the bed cannot be moved. He and Watson keep watch and intercept a venomous snake sent through the ventilator. Holmes drives it back, and it kills Roylott. The snake was both the murder weapon and the speckled band Julia saw, while the whistle was Roylott's signal for its return.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Helen Stoner comes to Sherlock Holmes after hearing a low whistle in the bedroom where her twin Julia died two years earlier. Julia had been engaged, had heard the same whistle for several nights, and died in terror while referring to a speckled band. Both sisters lived with their violent stepfather, Dr. Grimesby Roylott, who controls income from their mother's estate that would diminish when they married. Roylott threatens Holmes, confirming his dangerous temper. At Stoke Moran, Holmes inspects Helen's room and notices that its bed is fixed beneath a bell-pull that operates nothing. Beside it is a ventilator opening not outdoors but into Roylott's room, where a saucer of milk and a secured chair provide further clues. Holmes and Watson wait in darkness. A venomous swamp adder crawls through the ventilator and down the cord; Holmes strikes it, sending it back to bite Roylott fatally. Roylott used the snake to kill Julia and meant to repeat the crime before Helen's marriage. His whistle summoned it home, and its markings explain Julia's final words. Helen is safe, and Holmes accepts responsibility for turning Roylott's weapon back upon him.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "sherlock-holmes-the-speckled-band-dramatized"
+      }
+    },
     "shift-omnibus-edition": {
       "characters": {
         "characters": [

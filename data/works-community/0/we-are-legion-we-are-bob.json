@@ -1101,6 +1101,188 @@
         "work": "when-you-reach-me"
       }
     },
+    "where-eagles-dare": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Major Smith"
+            ],
+            "description": "The British officer commanding a small airborne mission into the Bavarian Alps. Calm, secretive, and fluent in German, he carries orders to recover a captured American general from the nearly inaccessible Schloss Adler before the Germans can extract Allied plans from him.",
+            "id": "john-smith",
+            "name": "John Smith",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Lieutenant Schaffer"
+            ],
+            "description": "An American Ranger assigned to Smith's otherwise British team. An expert climber and exceptionally capable combat soldier, he has not been told why an American was included and quickly realizes that his commander knows more than the briefing disclosed.",
+            "id": "morris-schaffer",
+            "name": "Morris Schaffer",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Colonel Turner"
+            ],
+            "description": "A senior British intelligence officer involved in briefing Smith's rescue party. He explains that the captive general knows the planning for the coming second front and therefore must be recovered before interrogation compromises it.",
+            "id": "wyatt-turner",
+            "name": "Wyatt-Turner",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The naval intelligence chief who helps direct the mission from Britain. He emphasizes the urgency of rescuing Carnaby and entrusts Smith with instructions that are not shared with the rest of the team.",
+            "id": "admiral-rolland",
+            "name": "Admiral Rolland",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "General Carnaby"
+            ],
+            "description": "An American brigadier general captured after his aircraft comes down on a flight to the Middle East. The Germans take him to Schloss Adler for questioning because the British briefing says he has full knowledge of plans for the Allied invasion of Europe.",
+            "id": "george-carnaby",
+            "name": "George Carnaby",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the British operatives selected for Smith's airborne rescue team. He enters enemy territory under the same orders as the others, but the unexplained deaths within the party place every member under suspicion.",
+            "id": "ted-berkeley",
+            "name": "Ted Berkeley",
+            "reveal": {
+              "chapter": 1
+            }
+          },
+          {
+            "description": "A member of the British commando group parachuted near Schloss Adler. Like the other operatives, he has been chosen for experience behind enemy lines and is told that the mission is a direct attempt to recover General Carnaby.",
+            "id": "olaf-christiansen",
+            "name": "Olaf Christiansen",
+            "reveal": {
+              "chapter": 1
+            }
+          },
+          {
+            "description": "A British operative in Smith's rescue party. He takes part in the hazardous approach to the castle while Smith and Schaffer try to determine why members of their small team are being killed.",
+            "id": "lee-thomas",
+            "name": "Lee Thomas",
+            "reveal": {
+              "chapter": 1
+            }
+          },
+          {
+            "description": "A British agent who secretly parachutes from the team's aircraft although she was omitted from the men's briefing. Smith knows her assignment, but her unexpected presence deepens Schaffer's doubts about the mission's stated purpose.",
+            "id": "mary-ellison",
+            "name": "Mary Ellison",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A British agent established in the Alpine village below Schloss Adler under the cover of working at an inn. She provides Mary with local clothing and helps Smith's party move through the heavily guarded area without exposing the larger plan.",
+            "id": "heidi-schmidt",
+            "name": "Heidi Schmidt",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The German commandant at Schloss Adler, responsible for the fortress and for the high-value prisoner brought there. He participates in the effort to identify Carnaby's military knowledge and the people sent to recover him.",
+            "id": "colonel-kramer",
+            "name": "Colonel Kramer",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Gestapo officer who arrives at Schloss Adler during the interrogation. Suspicious, observant, and unwilling to accept convenient explanations, he is a threat to every disguise and competing intelligence claim in the room.",
+            "id": "major-von-hapen",
+            "name": "Major von Hapen",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "where-eagles-dare"
+      },
+      "recaps": {
+        "ending": "Smith's apparent betrayal in the castle is a deception designed to make the real German agents in the British team identify themselves and write down the names of their contacts in Britain. The supposed General Carnaby is actually Cartwright Jones, an actor and intelligence operative who never possessed the invasion plans. Smith, Schaffer, Mary, and Jones escape Schloss Adler with the lists, fighting through the cable-car system and then reaching an airfield with Heidi's help. On the flight home, Smith reveals the last purpose of the operation: the conflicting intelligence exposed Colonel Wyatt-Turner as Germany's senior agent inside British command. Faced with arrest, trial, and execution, Turner chooses to jump from the aircraft without a parachute. Rolland has recovered a complete record of the enemy network, while Smith and the exhausted Schaffer survive the mission.",
+        "in_short": "Major John Smith leads an Allied team into the Bavarian Alps to rescue American General Carnaby from Schloss Adler. American Ranger Morris Schaffer soon realizes the mission is concealed beneath several layers of deception as team members die and British agent Mary Ellison appears without having been included in the briefing. Inside the castle, Smith claims to be a German agent and persuades three supposed rescuers to expose themselves as traitors and list their contacts. He then reveals the truth to Schaffer: Carnaby is an actor, the rescue is staged, and the operation's real aim is to identify Germany's network inside British intelligence. Smith, Schaffer, Mary, and the false general escape after a running battle through the castle, cable cars, village, and airfield. During the flight home, Smith identifies briefing officer Wyatt-Turner as the senior mole. Turner jumps to his death, and Admiral Rolland receives the lists needed to dismantle the network.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Major John Smith leads a small group of British operatives and American Ranger Lieutenant Morris Schaffer on a night parachute drop into the Bavarian Alps. Their stated task is to rescue American Brigadier General George Carnaby, whose aircraft was forced down while he was traveling with knowledge of Allied plans. The Germans have taken him to Schloss Adler, a fortress reached chiefly by cable car. The mission is already irregular: Schaffer does not understand why he is the sole American, and Smith holds private instructions. After landing, one member of the party is found dead with injuries that do not fit a parachuting accident. Smith conceals some of what he discovers and keeps the survivors moving toward the village, while the possibility of a killer inside the team changes the rescue into a second, unspoken investigation.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Smith makes contact with Mary Ellison, a British agent who secretly jumped from the same aircraft, and with Heidi Schmidt, an agent working under cover at the local inn. Their presence confirms to Schaffer that the official briefing was incomplete. The party enters the village in German uniform and tries to approach the castle amid tight security. Further suspicious deaths and arrests reduce their freedom of action. Smith continues to issue orders without explaining his full objective, asking Schaffer to trust him while preserving the appearance that the remaining British operatives share a single rescue mission. Mary uses Heidi's local cover to position herself near the German officers, while Smith and Schaffer prepare for the exposed cable-car route and the difficult climb into Schloss Adler.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Smith and Schaffer reach Schloss Adler by combining the cable-car approach with a dangerous climb into the fortress. Mary has also entered the castle under cover. General Carnaby is held before Colonel Kramer and other German officers, while members of Smith's party fall into German hands. Instead of making an immediate rescue, Smith enters the interrogation and abruptly claims that he is a German intelligence officer operating under a false British identity. He accuses the supposed Carnaby of being an impostor and says the captured British commandos are German agents whose loyalty must be tested. The reversal appears to Schaffer to confirm that Smith has betrayed the mission, but the elaborate claim also unsettles the Germans and places Smith in control of the questioning long enough to demand proof from the prisoners.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Smith forces Berkeley, Christiansen, and Thomas to compete in proving their value to Germany. Each writes a list of German agents operating in Britain so that the lists can be compared. Smith then tells Schaffer that the betrayal was staged: the three men really are enemy agents inside British intelligence, and the entire mission was designed to identify them and their contacts. The prisoner presented as Carnaby is Cartwright Jones, an actor and operative who does not know Allied invasion plans. Major von Hapen's suspicions threaten the deception, but Mary intervenes, and Smith's group turns the interrogation into an escape. With the lists secured and Jones freed, they fight through the castle while Smith sets explosives and delays pursuit. The original rescue story has achieved its real purpose, but everyone who knows the truth must still get down from an isolated fortress full of German troops.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Smith, Schaffer, Mary, and Cartwright Jones escape Schloss Adler through gunfire, explosions, and a battle around the cable cars. They reach the village, join Heidi, seize transport, and force their way to an airfield where an Allied aircraft extracts them. The surviving enemy agents from the team do not carry their intelligence back to Germany, while Smith preserves the written lists of their British contacts. On the flight home he reveals the final target of Admiral Rolland's operation. Information available to the traitors, along with discrepancies exposed by the mission, identifies Colonel Wyatt-Turner as the senior German agent inside British command. Confronted with certain arrest and execution, Turner jumps from the aircraft without a parachute. Rolland now has the evidence needed to dismantle the network. Smith and Schaffer return alive, with Schaffer exhausted by the number of secrets, reversals, and battles hidden inside what was presented as a rescue.",
+            "through": {
+              "chapter": 16
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "where-eagles-dare"
+      }
+    },
     "where-the-crawdads-sing-reeses-book-club": {
       "characters": {
         "characters": [
