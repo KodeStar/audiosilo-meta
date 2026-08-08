@@ -2017,6 +2017,221 @@
         "work": "richard-ii"
       }
     },
+    "richard-iii": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Duke of Gloucester"
+            ],
+            "description": "The younger brother of King Edward IV, a brilliant and resentful nobleman who addresses the audience as his confidant. With civil war over, he finds peace unrewarding and resolves to seize the crown through deception, setting his brothers and their allies against one another while hiding his purpose behind an appearance of loyalty.",
+            "id": "richard",
+            "name": "Richard",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Duke of Clarence",
+              "George"
+            ],
+            "description": "Richard's elder brother, arrested after a prophecy leads King Edward to fear that an heir whose name begins with G will threaten his children. Clarence trusts Richard to help him, unaware that Richard arranged both the suspicion and his imprisonment.",
+            "id": "clarence",
+            "name": "Clarence",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lady Anne"
+            ],
+            "description": "The widow of Prince Edward, son of the deposed Henry VI. She meets Richard while mourning Henry, whose body she accompanies, and denounces Richard for the deaths that destroyed her family. Her grief and anger make his attempt to court her seem unthinkable.",
+            "id": "anne-neville",
+            "name": "Anne Neville",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Queen Margaret"
+            ],
+            "description": "The widow of Henry VI and former queen, living in the shadow of the Yorkist court that defeated her family. Bitter and politically powerless, she confronts her enemies with curses, naming the losses she believes will repay them for her own.",
+            "id": "margaret-of-anjou",
+            "name": "Margaret of Anjou",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The ailing Yorkist king whose victories ended the civil conflict. He tries to reconcile the factions around his court, particularly his wife's relatives and the older nobles, but his authority is weakened by illness and by Richard's secret manipulations.",
+            "id": "king-edward-iv",
+            "name": "King Edward IV",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Queen Elizabeth"
+            ],
+            "description": "Edward IV's queen and the mother of his heirs. She fears the king's failing health will expose her children and her Woodville relatives to hostile nobles, and she recognizes Richard as the most dangerous figure near the succession.",
+            "id": "elizabeth-woodville",
+            "name": "Elizabeth Woodville",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful nobleman who becomes Richard's closest political partner. He readily helps turn suspicion against the queen's family and presents himself as an energetic supporter of Richard's claim.",
+            "id": "buckingham",
+            "name": "Buckingham",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lord Hastings"
+            ],
+            "description": "A senior Yorkist lord recently freed from confinement and an enemy of the queen's relatives. He considers Richard a trusted friend and believes his own loyalty to Edward's sons leaves him secure amid the struggle over the succession.",
+            "id": "hastings",
+            "name": "Hastings",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Prince of Wales",
+              "Edward"
+            ],
+            "description": "The eldest son and heir of Edward IV and Elizabeth Woodville. Still a boy when summoned to London after his father's death, he shows intelligence and composure while the adults around him compete to control his accession.",
+            "id": "prince-edward",
+            "name": "Prince Edward",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Duke of York"
+            ],
+            "description": "The younger son of Edward IV and Elizabeth Woodville. Quick-witted and daring in conversation, he jokes sharply with Richard when he joins his brother in London, though his age leaves him dependent on the adults directing both princes' movements.",
+            "id": "young-york",
+            "name": "Young York",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lord Stanley"
+            ],
+            "description": "A cautious nobleman whose wife is connected to Richmond, a possible rival claimant. He serves the court while watching its dangers closely and is less willing than many around him to trust apparent security.",
+            "id": "stanley",
+            "name": "Stanley",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Henry Tudor",
+              "Earl of Richmond"
+            ],
+            "description": "An exiled Lancastrian claimant who lands in England to challenge Richard's rule. He presents his cause as a means to end tyranny and civil division, gathering nobles who have abandoned the king before meeting him in battle.",
+            "id": "richmond",
+            "name": "Richmond",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A follower whom Richard recruits for a secret act of violence after Buckingham hesitates. Tyrell is willing to arrange the deed and later reports its completion directly to the king.",
+            "id": "tyrell",
+            "name": "Tyrell",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "richard-iii"
+      },
+      "recaps": {
+        "ending": "On the night before Bosworth, the ghosts of Richard's victims visit his camp and condemn him, then promise Richmond victory. Richard wakes shaken but goes into battle determined to fight. Stanley's position remains uncertain until the fighting begins, when he and other wavering nobles support Richmond. Richard fights fiercely after losing his horse and searches for Richmond on foot, but Richmond kills him. Stanley retrieves the crown and places it on Richmond, who becomes Henry VII. Richmond announces that he will marry Elizabeth of York, joining the Lancastrian and Yorkist lines. He pardons surviving opponents who submit, orders burial for the dead, and promises a peaceful government. Richard's defeat ends his violent reign, while the planned marriage offers a political settlement to the dynastic conflict that enabled his rise.",
+        "in_short": "Richard, Duke of Gloucester, decides to take the English crown held by his brother Edward IV. He engineers Clarence's imprisonment and murder, courts Lady Anne despite his part in her family's destruction, and exploits distrust between the old nobility and Queen Elizabeth's relatives. After Edward dies, Richard and Buckingham isolate the young heir, imprison both royal sons in the Tower, eliminate their protectors, and persuade London to accept Richard as king. Richard then has the princes killed, discards Anne, and seeks a marriage that would strengthen his title. Buckingham rebels after Richard refuses him a promised reward, but is captured and executed. The exiled Henry Tudor, Earl of Richmond, invades with support from Richard's defecting nobles. Haunted by his victims before Bosworth, Richard fights but is killed by Richmond. Crowned Henry VII, Richmond plans to marry Elizabeth of York, uniting the rival houses and promising an end to civil war.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "England has emerged from civil war under Edward IV, but the king's younger brother Richard, Duke of Gloucester, resents the peace and privately resolves to become king. He manipulates Edward into imprisoning their brother Clarence by fostering fear of a prophecy about the succession. Although Richard assures Clarence that he will help, he secretly orders his death. Richard then interrupts the funeral procession of Henry VI and confronts Lady Anne, widow of Henry's son. She curses him for the deaths of her husband and father-in-law, yet Richard's audacious performance of repentance and devotion persuades her to accept his ring. At court, hostility divides Queen Elizabeth's Woodville relatives from older nobles such as Hastings and Buckingham. The displaced Queen Margaret appears among them, condemns Yorkists and Woodvilles alike, and predicts suffering for those who profited from her family's defeat. Richard presents himself as the victim of court intrigue while directing it. Hired killers drown Clarence in a wine cask, carrying out Richard's first major step toward the throne.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Edward IV tries to restore peace among the court factions and believes he has reconciled their leaders. Richard then reveals that Clarence has already been killed, and Edward is devastated that his earlier order of execution was not countermanded in time. The sick king soon dies, leaving the young Prince Edward as heir. Queen Elizabeth fears for her family, while Richard and Buckingham move quickly to control the transition. On the journey to London, they arrest the queen's brother Rivers and her son Grey, along with Vaughan, separating the prince from his maternal protectors. Elizabeth takes her younger son, York, into sanctuary. Richard and Buckingham nevertheless secure the boy's release, arguing that sanctuary should not obstruct royal business. The two princes are brought together and lodged in the Tower, officially while preparations are made for Edward's coronation. Their alert questions reveal their unease, but Richard now controls both heirs and the governing council around them.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Richard and Buckingham remove the remaining obstacles to a seizure of power. Rivers, Grey, and Vaughan are executed at Pomfret. Hastings, confident that Richard favors him, refuses to support setting aside Edward's sons. At a council meeting Richard abruptly accuses Queen Elizabeth and Hastings's mistress of witchcraft, then declares Hastings a traitor and has him beheaded without a proper trial. Buckingham stages public claims that Edward's children are illegitimate and that Richard is the lawful heir. London initially responds with silence, so Buckingham arranges a delegation that finds Richard displaying false reluctance between two churchmen. After repeated appeals, Richard accepts the crown as though yielding to public duty. The princes remain confined in the Tower while their uncle prepares to rule in their place, and the women of their family are prevented from reaching them. Richard's conspiracy has become an open usurpation backed by controlled councils, executions, and manufactured consent.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Now crowned, Richard asks Buckingham to arrange the deaths of the princes. Buckingham hesitates, so Richard turns to Tyrell, who has the boys killed in the Tower. Richard also plans to dispose of Queen Anne and marry his niece Elizabeth, hoping to strengthen his disputed title. Opposition grows rapidly. Buckingham, angered when Richard withholds the earldom he had promised, joins a rising connected with the exiled Henry Tudor, Earl of Richmond. Bad weather disrupts the rebellion, Buckingham is captured, and Richard sends him to execution. Queen Margaret's earlier curses appear fulfilled as Elizabeth Woodville, the Duchess of York, and Margaret confront the scale of their losses. Richard tries to make Elizabeth Woodville assist his proposed marriage to her daughter, using threats and political arguments. Reports then arrive that Richmond is approaching and that nobles are deserting. Richard marches toward Bosworth, distrusting Stanley because Stanley's stepson Richmond leads the invasion and holding Stanley's son as security for his obedience.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Richard and Richmond establish camps near Bosworth. During the night, the ghosts of Prince Edward, Henry VI, Clarence, Rivers, Grey, Vaughan, the young princes, Hastings, Anne, and Buckingham pass through the camps. They condemn Richard to despair and death while encouraging Richmond. Richard wakes frightened and recognizes that his own conscience has turned against him, though by morning he resumes his defiance. Richmond tells his followers they are fighting to free England from a violent ruler; Richard urges his army to reject an invading claimant. In the battle, several nobles with uncertain loyalties withhold support from Richard, and Stanley joins Richmond. After Richard's horse is killed, he fights on foot and desperately seeks either a new mount or Richmond himself. Richmond defeats and kills him. Stanley presents Richard's crown to the victor, now Henry VII. Richmond promises pardons and proper burial for the dead and announces his marriage to Elizabeth of York, intended to unite the rival dynasties and end the cycle of civil war.",
+            "through": {
+              "chapter": 5
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "richard-iii"
+      }
+    },
     "right-ho-jeeves": {
       "characters": {
         "characters": [

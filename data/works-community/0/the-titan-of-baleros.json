@@ -761,6 +761,400 @@
         "work": "the-tower-of-the-elephant-conan"
       }
     },
+    "the-tragedy-of-hamlet-prince-of-denmark": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Prince Hamlet"
+            ],
+            "description": "The prince of Denmark, grieving for his dead father and disturbed by his mother's swift marriage to his uncle. A thoughtful student recently returned from Wittenberg, he distrusts the court's celebrations and remains preoccupied with mortality, loyalty, and the contrast between public appearance and private feeling.",
+            "id": "hamlet",
+            "name": "Hamlet",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "King Claudius"
+            ],
+            "description": "Hamlet's uncle, newly crowned king after the death of his brother and newly married to the widowed Queen Gertrude. He is a confident public ruler who balances mourning with celebration, manages foreign threats, and urges Hamlet to accept the new order.",
+            "id": "claudius",
+            "name": "Claudius",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Queen Gertrude"
+            ],
+            "description": "Hamlet's mother, queen of Denmark, and widow of the former king. Her rapid marriage to Claudius wounds Hamlet deeply, though she hopes her son will stop mourning, remain at court, and accept her new husband as family.",
+            "id": "gertrude",
+            "name": "Gertrude",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Ghost"
+            ],
+            "description": "An armed apparition resembling Denmark's dead king, seen at night on the castle battlements. Its resemblance to Hamlet's father and its silence toward the watch suggest that some unresolved danger remains behind the recent royal death.",
+            "id": "ghost-of-king-hamlet",
+            "name": "Ghost of King Hamlet",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Hamlet's trusted friend from Wittenberg. Rational and steady, he initially doubts reports of the apparition but confirms what he sees and brings Hamlet to the battlements, remaining a loyal witness when the prince's situation grows dangerous.",
+            "id": "horatio",
+            "name": "Horatio",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young noblewoman at court, daughter of Polonius and sister of Laertes. She has received Hamlet's romantic attention, but her father and brother warn that a prince may not be free to choose his own wife and urge her to guard her reputation.",
+            "id": "ophelia",
+            "name": "Ophelia",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The king's senior counsellor and father of Laertes and Ophelia. Fond of elaborate advice and confident in his own explanations, he watches his children's conduct closely and treats private relationships as matters to investigate and manage.",
+            "id": "polonius",
+            "name": "Polonius",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Polonius's son and Ophelia's protective brother. Before returning to France, he warns Ophelia against relying on Hamlet's declarations and receives a long catalogue of advice from their father.",
+            "id": "laertes",
+            "name": "Laertes",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former school companion of Hamlet invited to Elsinore by the king and queen. He arrives with Guildenstern under the appearance of friendship, while the royal couple expects the pair to discover the cause of Hamlet's changed behavior.",
+            "id": "rosencrantz",
+            "name": "Rosencrantz",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former school companion of Hamlet who comes to court alongside Rosencrantz. His friendly visit also serves Claudius and Gertrude's effort to observe Hamlet and report what is troubling him.",
+            "id": "guildenstern",
+            "name": "Guildenstern",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The prince of Norway, seeking to recover lands his father lost to Denmark. His military preparations concern Claudius at the opening of the play, making him a distant counterpart to Hamlet as another son living with a father's political legacy.",
+            "id": "fortinbras",
+            "name": "Fortinbras",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The leading performer in a visiting company known to Hamlet. He can summon intense emotion for an ancient story and readily adapts the troupe's planned court performance when Hamlet asks for additional material.",
+            "id": "first-player",
+            "name": "First Player",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A cemetery worker preparing a grave while singing and joking about death. His practical familiarity with human remains gives Hamlet a stark encounter with how status, memory, and identity end in the same physical condition.",
+            "id": "first-gravedigger",
+            "name": "First Gravedigger",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-tragedy-of-hamlet-prince-of-denmark"
+      },
+      "recaps": {
+        "ending": "At Ophelia's funeral, Hamlet reveals himself and struggles with Laertes in the grave. Claudius then arranges their fencing match using a sharpened, poisoned blade and a poisoned cup as a second method. Laertes wounds Hamlet with the treated weapon; in the scuffle they exchange swords, and Hamlet wounds Laertes with it. Gertrude unknowingly drinks from the poisoned cup and dies. The dying Laertes admits the plot and blames Claudius. Hamlet stabs Claudius and forces him to drink the remaining poison, killing him, then forgives Laertes before both men die. Hamlet prevents Horatio from taking his own life and charges him to tell the true story. Fortinbras arrives from Poland, claims the Danish throne, and orders Hamlet honored as a soldier. The royal family is dead, and political authority passes to Norway's prince.",
+        "in_short": "Prince Hamlet returns to a Danish court transformed by his father's death and his mother Gertrude's marriage to his uncle Claudius. His father's ghost says Claudius murdered him and demands revenge. Hamlet adopts erratic behavior while testing the accusation, alienating Ophelia and alarming the court. A play that mirrors the alleged murder provokes Claudius, confirming his guilt. Hamlet delays killing him, then mistakenly kills Ophelia's father Polonius and is sent toward England under a secret death order, which he redirects against Rosencrantz and Guildenstern. Ophelia loses her sanity and dies; her brother Laertes returns seeking vengeance. Claudius arms Laertes with a poisoned sword and prepares poisoned wine for a fencing match. Gertrude drinks the wine, Laertes and Hamlet wound each other with the poisoned blade, and Laertes exposes the plot. Hamlet kills Claudius before dying. Fortinbras arrives to find the royal house destroyed and assumes rule, while Horatio survives to explain what happened.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Denmark is tense after the death of King Hamlet and the accession of his brother Claudius, who has also married the widowed Queen Gertrude. Guards at Elsinore have seen an armed ghost resembling the dead king, and Horatio brings Prince Hamlet to watch for it. Hamlet is already grieving and disgusted by his mother's quick remarriage. The ghost speaks privately to him, claiming that Claudius poured poison into the sleeping king's ear and stole both crown and queen. It commands Hamlet to avenge the murder while sparing Gertrude from physical harm. Hamlet makes Horatio and the guards swear secrecy and warns that he may behave strangely to conceal his purpose. Elsewhere, Laertes departs for France after warning his sister Ophelia not to trust Hamlet's courtship. Their father Polonius reinforces the warning and orders Ophelia to reject Hamlet. By the act's close, Hamlet accepts the burden of revenge but has only the ghost's account and no settled plan for acting on it.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Polonius sends a servant to investigate Laertes in Paris. Ophelia then reports that Hamlet came to her looking disordered and distraught; Polonius decides rejected love has driven the prince mad. Claudius and Gertrude invite Hamlet's old companions Rosencrantz and Guildenstern to discover the cause of his behavior. Ambassadors report that Norway has restrained Fortinbras from attacking Denmark, though his army will cross Danish territory toward Poland. Hamlet recognizes that Rosencrantz and Guildenstern were summoned to watch him and refuses to confide in them. A company of actors arrives, and a player's emotional account of an ancient revenge sharpens Hamlet's shame at his own inaction. He asks the company to perform a drama about a ruler's murder and plans to add lines resembling the ghost's accusation. By observing Claudius during the performance, Hamlet hopes to obtain evidence stronger than a supernatural claim that might be misleading him.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Claudius and Polonius secretly observe a meeting between Hamlet and Ophelia. Hamlet rejects her, condemns marriage and corruption, and leaves her grieving; Claudius concludes that frustrated love does not fully explain his danger. At the court performance, Hamlet comments pointedly as the actors stage a king's poisoning and the murderer's courtship of the widow. Claudius abruptly stops the play, convincing Hamlet and Horatio that the ghost spoke truth. Left alone, Claudius admits his guilt in prayer but finds himself unable to surrender the rewards of the crime. Hamlet discovers him kneeling and postpones revenge because he does not want to kill Claudius at a moment that appears spiritually favorable. During a heated confrontation with Gertrude, Hamlet hears someone hiding behind a curtain and thrusts his sword through it, killing Polonius, whom he had mistaken for Claudius. The ghost briefly returns to redirect Hamlet toward his neglected task. Gertrude cannot see it and becomes more alarmed about her son's state.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Hamlet conceals Polonius's body and treats Rosencrantz and Guildenstern with open contempt. Claudius sends him to England with them, secretly ordering the English king to execute Hamlet. On the way, Hamlet encounters troops led by Fortinbras's captain and is struck by their willingness to risk death over a small disputed territory, renewing his resolve. In Denmark, Ophelia's grief over her father's death overwhelms her sanity. Laertes returns at the head of an angry crowd, initially ready to overthrow Claudius, but the king redirects his demand for justice toward Hamlet. Ophelia appears distributing flowers and speaking in fragments, then later drowns in a stream. News arrives that Hamlet has escaped the voyage and is returning. Claudius and Laertes arrange a fencing match in which Laertes will use an unblunted sword coated with poison; Claudius also prepares a poisoned drink in case the blade fails. Their scheme is in place when Gertrude announces Ophelia's death.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Back in Denmark, Hamlet watches gravediggers prepare Ophelia's grave and reflects over the skull of the court jester Yorick, whom he knew as a child. When the funeral party arrives, Hamlet learns whose burial it is, declares his love for Ophelia, and grapples with the furious Laertes. Hamlet later tells Horatio that he found Claudius's execution order during the voyage, replaced it with instructions that Rosencrantz and Guildenstern be killed, and returned after a pirate attack. He accepts a fencing challenge against Laertes despite a sense of danger. During the match, Gertrude drinks from Claudius's poisoned cup. Laertes wounds Hamlet with the poisoned blade, but the men exchange weapons and Hamlet wounds Laertes with it. As Gertrude dies, Laertes confesses the conspiracy and identifies Claudius. Hamlet kills the king with both sword and poison. Laertes and Hamlet forgive one another before dying. Hamlet asks Horatio to live and tell the truth, naming Fortinbras as his likely successor. Fortinbras arrives, assumes authority over the ruined court, and orders military honors for Hamlet.",
+            "through": {
+              "chapter": 5
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-tragedy-of-hamlet-prince-of-denmark"
+      }
+    },
+    "the-tragedy-of-romeo-and-juliet": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The young son of the Montague household. At first he withdraws from family and friends because Rosaline does not return his love, but he is eloquent, emotionally intense, and willing to cross the boundaries imposed by Verona's feud when his feelings change.",
+            "id": "romeo",
+            "name": "Romeo",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The only daughter of the Capulet household, not yet fourteen when her parents begin considering a marriage to Paris. She is respectful but thoughtful, and her first meeting with Romeo awakens a private resolve that soon conflicts with her family's expectations.",
+            "id": "juliet",
+            "name": "Juliet",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Romeo's cousin and a member of the Montague family. He tries to stop the opening street fight, seeks the cause of Romeo's sadness, and encourages him to overcome his attachment to Rosaline by noticing other women.",
+            "id": "benvolio",
+            "name": "Benvolio",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Romeo's quick-witted friend and a kinsman of Verona's prince. He mocks romantic melancholy, delights in elaborate wordplay, and draws Romeo toward the Capulet feast, bringing restless energy to a feud in which he belongs to neither house.",
+            "id": "mercutio",
+            "name": "Mercutio",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Juliet's cousin and a fierce defender of Capulet honor. He is eager to fight the Montagues in the opening disturbance and recognizes Romeo beneath his disguise at the family feast, regarding the intrusion as an insult that must be answered.",
+            "id": "tybalt",
+            "name": "Tybalt",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "The Nurse"
+            ],
+            "description": "The woman who raised Juliet and remains her affectionate attendant. Talkative, earthy, and familiar with the girl in a way her parents are not, she becomes Juliet's trusted messenger when formal household rules cannot accommodate Juliet's wishes.",
+            "id": "nurse",
+            "name": "Nurse",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Franciscan friar trusted by Romeo, with practical knowledge of medicinal plants and poisons. He criticizes Romeo's sudden changes of heart yet agrees to assist the young couple because he hopes their union could reconcile the hostile families.",
+            "id": "friar-laurence",
+            "name": "Friar Laurence",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lord Capulet"
+            ],
+            "description": "Juliet's father and head of the Capulet house. He welcomes Paris's interest but initially says Juliet is young and should have some voice in the match. At his feast he restrains Tybalt rather than permit violence against a guest.",
+            "id": "capulet",
+            "name": "Capulet",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lady Capulet"
+            ],
+            "description": "Juliet's mother, who approaches her daughter about Paris as a desirable husband. More formal with Juliet than the nurse is, she treats the proposed marriage as a sound family arrangement.",
+            "id": "lady-capulet",
+            "name": "Lady Capulet",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Count Paris"
+            ],
+            "description": "A noble kinsman of Verona's prince who asks Capulet for permission to marry Juliet. He is an honorable and socially approved suitor, confident that the families can arrange a suitable courtship.",
+            "id": "paris",
+            "name": "Paris",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Prince Escalus"
+            ],
+            "description": "The ruler responsible for keeping peace in Verona. Angered by repeated public violence between the households, he warns that another breach will be punished by death.",
+            "id": "prince-escalus",
+            "name": "Prince Escalus",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lord Montague"
+            ],
+            "description": "Romeo's father and head of the Montague family. He is involved in the old rivalry with the Capulets but is chiefly concerned when Romeo isolates himself and asks Benvolio to learn what troubles him.",
+            "id": "montague",
+            "name": "Montague",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A poor seller of medicines in Mantua whose thin appearance reveals his hardship. Although the law forbids the sale Romeo requests, financial desperation makes him vulnerable to a large offer.",
+            "id": "apothecary",
+            "name": "Apothecary",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-tragedy-of-romeo-and-juliet"
+      },
+      "recaps": {
+        "ending": "Because a quarantine prevents Friar Laurence's letter from reaching Mantua, Romeo hears only that Juliet has died. He buys poison and enters the Capulet tomb, where he fights and kills Paris. Romeo drinks the poison beside Juliet and dies before her sleeping draught wears off. Juliet wakes, sees Romeo dead, and refuses to leave with the frightened friar. She kills herself with Romeo's dagger. The watch discovers the bodies and summons both families and the prince. Friar Laurence explains the secret marriage, Tybalt's death, the potion plan, and the failed message; Romeo's letter supplies further evidence. Montague also reports that Romeo's mother has died from grief during his exile. Confronted with the destruction of their children, Capulet and Montague end their feud and promise memorials to Romeo and Juliet. The prince judges that the hatred of both houses has punished the entire city.",
+        "in_short": "An old feud divides Verona's Montague and Capulet families. Romeo Montague enters a Capulet feast and falls in love with Juliet Capulet; within a day, Friar Laurence secretly marries them, hoping the match will make peace. Instead, Tybalt kills Romeo's friend Mercutio, and Romeo kills Tybalt. The prince banishes Romeo, while Juliet's parents order her to marry Paris. Friar Laurence gives Juliet a draught that will make her appear dead so Romeo can meet her after she wakes. The plan fails when Romeo never receives the explanation. Told that Juliet has died, he returns, kills Paris at the tomb, and takes poison beside her. Juliet wakes to find him dead and stabs herself. The friar reveals their marriage and the failed scheme. Their grieving parents finally abandon the feud and agree to honor the young couple whose deaths exposed its cost.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "A prologue announces that children of Verona's feuding Montague and Capulet houses will love one another and die. Servants of the families start a street brawl that draws in leading relatives until Prince Escalus restores order and threatens death for any further public fighting. Romeo Montague has avoided the disturbance because he is absorbed in unreturned love for Rosaline. Benvolio urges him to look elsewhere. Paris asks Capulet to marry Juliet, and Capulet invites him to a family feast, saying his daughter is still young. Romeo, Benvolio, and Mercutio attend the masked celebration uninvited. Romeo sees Juliet and forgets Rosaline; Juliet responds to him before either knows the other's identity. Tybalt recognizes Romeo's voice and wants to attack, but Capulet forbids violence at his gathering. After Romeo and Juliet discover that they belong to enemy families, each understands that the new attachment is already dangerous.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Romeo remains near the Capulet home after the feast and hears Juliet speak from a window about loving him despite his name. He answers, and they pledge themselves to one another. Juliet insists that their intentions must be honorable, and they arrange to exchange news about marriage. Friar Laurence is surprised that Romeo has abandoned Rosaline but agrees to marry the pair, hoping the alliance might end the feud. Tybalt sends a challenge to Romeo over the intrusion at the feast. The nurse meets Romeo as Juliet's intermediary, and he gives her instructions for Juliet to come to the friar's cell. After the nurse delays the news with teasing complaints, she finally tells Juliet where to go. Romeo and Juliet meet Friar Laurence and proceed into the private marriage ceremony, joining the two households without the knowledge of their parents.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tybalt confronts Romeo. Because Tybalt is now secretly his relative by marriage, Romeo refuses to answer the challenge. Mercutio fights in his place and is fatally wounded when Romeo intervenes. Enraged by his friend's death, Romeo kills Tybalt. The prince rejects demands for execution but banishes Romeo from Verona. Juliet first grieves for Tybalt, then remains loyal to her husband. Friar Laurence prevents Romeo from harming himself and arranges for him to spend one night with Juliet before leaving for Mantua. The lovers part at dawn. Mistaking Juliet's grief for mourning over Tybalt, Capulet decides she must quickly marry Paris. Juliet refuses, and her father threatens to disown her. Lady Capulet offers no aid, and the nurse advises Juliet to accept Paris because Romeo is banished. Feeling betrayed by her closest attendant, Juliet decides to seek the friar's help and to face death rather than enter a second marriage.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Paris discusses the approaching wedding with Friar Laurence just before Juliet arrives. Once they are alone, Juliet threatens to kill herself rather than marry while already bound to Romeo. The friar proposes that she take a potion that will suppress her signs of life for about two days. Her family will place her in its tomb, while a letter will summon Romeo to be present when she wakes and take her to Mantua. Juliet returns home, tells Capulet she accepts the marriage, and prompts him to move the ceremony forward. Alone that night, she fears the potion may fail, kill her, or leave her awake among the dead, but she drinks it. The next morning the nurse finds Juliet unresponsive. Capulet, Lady Capulet, Paris, and the nurse turn their wedding preparations into mourning, believing that Juliet has died, and her body is carried to the family vault according to the friar's design.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A quarantine stops the messenger carrying Friar Laurence's letter, while Romeo's servant reaches Mantua with the false appearance that Juliet is dead. Romeo buys poison from an impoverished apothecary and returns to Verona. At the Capulet tomb he meets Paris, who believes Romeo has come to dishonor the dead. They fight, and Romeo kills Paris before entering the vault. He takes poison beside Juliet and dies moments before she wakes. Friar Laurence arrives but flees when the watch approaches; Juliet refuses to follow and kills herself with Romeo's dagger. The watch gathers the prince and both families. Friar Laurence recounts the secret marriage, the banishment, the sleeping potion, and the undelivered message, with Romeo's letter confirming the account. Capulet and Montague recognize that their feud destroyed their children, reconcile, and promise golden memorials to them. The prince closes the case by making the families and the city confront their shared loss.",
+            "through": {
+              "chapter": 5
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-tragedy-of-romeo-and-juliet"
+      }
+    },
     "the-tragical-history-of-doctor-faustus": {
       "characters": {
         "characters": [
