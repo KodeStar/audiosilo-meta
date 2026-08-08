@@ -2459,6 +2459,103 @@
         "work": "salamandastron"
       }
     },
+    "salome": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The young princess of Judaea, daughter of Herodias and stepdaughter of Herod. She leaves the royal banquet for the terrace, where the imprisoned prophet's voice draws her attention. Accustomed to being obeyed, she is fascinated by what is forbidden to her.",
+            "id": "salome",
+            "name": "Salome",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "John the Baptist"
+            ],
+            "description": "A prophet held in a cistern beneath Herod's palace. His declarations condemn the ruling household, especially the marriage of Herod and Herodias. Herod fears his spiritual authority, while Herodias wants him silenced.",
+            "id": "jokanaan",
+            "name": "Jokanaan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The ruler of Judaea, husband of Herodias and stepfather of Salome. Troubled by omens and by Jokanaan's preaching, he nevertheless keeps the prophet imprisoned rather than surrendering him to his enemies. His attention toward Salome is possessive and unwelcome.",
+            "id": "herod",
+            "name": "Herod",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Salome's mother and Herod's wife. Jokanaan publicly condemns her marriage, and she resents both his accusations and Herod's fixation on her daughter.",
+            "id": "herodias",
+            "name": "Herodias",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Young Syrian"
+            ],
+            "description": "The young captain of Herod's guard. Deeply infatuated with Salome, he watches her during the banquet and yields when she asks him to disobey Herod's order by bringing Jokanaan out of the cistern.",
+            "id": "narraboth",
+            "name": "Narraboth",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A companion of Narraboth who notices the danger in the captain's obsessive attention to Salome. He repeatedly warns Narraboth and reads the strange appearance of the moon as an omen.",
+            "id": "page-of-herodias",
+            "name": "The Page of Herodias",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "salome"
+      },
+      "recaps": {
+        "ending": "Bound by the oath he made before his guests, Herod reluctantly orders Jokanaan's execution after Salome refuses every substitute for the prophet's head. The head is brought from the cistern on a silver shield. Salome addresses it and kisses its mouth, completing the desire that Jokanaan rejected while alive. Herod is appalled by the spectacle. He first orders the palace lights extinguished, but moonlight reveals Salome still absorbed in the severed head. Unable to tolerate what he sees, he commands his soldiers to kill her. They advance together and crush Salome beneath their shields. Jokanaan, Narraboth, and Salome are all dead; Herod and Herodias remain in power, but the banquet has ended in the violence foreshadowed throughout the play.",
+        "in_short": "At Herod's palace, Princess Salome becomes fascinated by Jokanaan, the imprisoned prophet who condemns her mother Herodias's marriage to Herod. Narraboth, the young guard captain infatuated with Salome, brings Jokanaan from his cistern for her. The prophet rejects Salome's advances, and Narraboth kills himself in despair. Later Herod begs Salome to dance and swears to grant any reward. After performing, she demands Jokanaan's head. Herod offers jewels and power instead, but Salome will not change her request, and Herod orders the execution. Salome receives the severed head and kisses it. Horrified, Herod commands his soldiers to kill her, and they crush her beneath their shields.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "During a banquet at Herod's palace, Salome leaves the hall to escape her stepfather's attention. On the terrace she hears Jokanaan, a prophet imprisoned in a cistern for denouncing Herod and Herodias. Salome persuades Narraboth, the guard captain who adores her, to bring the prisoner out. She becomes consumed with desire for Jokanaan, but he rejects her and returns below. Narraboth, unable to bear the encounter, kills himself. Herod and Herodias come outside, arguing over omens, the prophet, and Herod's interest in Salome. Herod asks Salome to dance and publicly promises her any reward. She performs, then demands Jokanaan's head on a silver shield. Herod offers riches, sacred objects, and political favors instead, but she refuses every substitute. Trapped by his oath, he authorizes the execution. When the head is brought up, Salome addresses it and kisses its mouth. Herod reacts with horror and orders the lights put out; seeing her still illuminated by the moon, he commands his soldiers to kill her. They crush Salome beneath their shields, ending the banquet in violence.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "salome"
+      }
+    },
     "samson-agonistes": {
       "characters": {
         "characters": [
@@ -2563,6 +2660,130 @@
           }
         ],
         "work": "samson-agonistes"
+      }
+    },
+    "sarah-plain-and-tall": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A girl living with her father and younger brother on a prairie farm. She remembers the songs and warmth of her mother, who died after Caleb was born, and watches carefully as Sarah arrives in answer to Papa's advertisement. Thoughtful and protective, she narrates the family's cautious hope that Sarah might stay.",
+            "id": "anna-witting",
+            "name": "Anna Witting",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Anna's younger brother, born shortly before their mother's death. Curious, direct, and hungry for stories about the parent he cannot remember, he openly asks the questions Anna is reluctant to voice and quickly hopes Sarah will become part of their family.",
+            "id": "caleb-witting",
+            "name": "Caleb Witting",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Papa"
+            ],
+            "description": "Anna and Caleb's widowed father, a prairie farmer who has raised them alone since his wife's death. Quiet and capable, he places an advertisement for a wife and corresponds with Sarah Wheaton, inviting her to visit the farm for a month before either of them makes a permanent promise.",
+            "id": "jacob-witting",
+            "name": "Jacob Witting",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A woman from the coast of Maine who answers Jacob's advertisement and agrees to come west for a trial visit. She describes herself as plain and tall. Independent, practical, and affectionate, she loves the sea, sings old songs, draws, and wants to learn the work of the prairie rather than be treated as a guest.",
+            "id": "sarah-wheaton",
+            "name": "Sarah Wheaton",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sarah's brother in Maine, with whom she has been living before answering Jacob's advertisement. His approaching marriage helps prompt Sarah to seek a new home, and Sarah's memories of him remain tied to the family and ocean she has left behind.",
+            "id": "william-wheaton",
+            "name": "William Wheaton",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Wittings' neighbor and Matthew's wife. Friendly and reassuring, she welcomes Sarah into prairie life and understands the difficulty of leaving one landscape and family for another.",
+            "id": "maggie",
+            "name": "Maggie",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A neighboring farmer and Maggie's husband. He helps Jacob with the practical cooperation farm families need from one another across the open prairie.",
+            "id": "matthew",
+            "name": "Matthew",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "sarah-plain-and-tall"
+      },
+      "recaps": {
+        "ending": "Sarah learns to drive the wagon and then goes to town alone. Because she has spoken so often of missing Maine and the sea, Anna and Caleb fear that she has used the trip to leave them. Sarah returns at dusk carrying practical supplies as well as colored pencils for the family. She explains that missing the sea does not mean she wants to abandon the prairie: if she left, she would miss Jacob, Anna, and Caleb even more. Her return answers the question that has troubled the children throughout her visit. Sarah has chosen their family and intends to stay, allowing them to look ahead to her marriage to Jacob and to a home shaped by both her coastal memories and their prairie life.",
+        "in_short": "Widowed prairie farmer Jacob Witting advertises for a wife, and Sarah Wheaton writes from Maine before agreeing to visit for a month. Jacob's children, Anna and Caleb, want her to stay but fear she will miss the sea too much. Sarah arrives with shells, songs, drawing paper, and her cat. She joins the farm's work, learns to ride and drive, teaches the family songs, and tries to make the prairie home her own while speaking honestly about the coast she loves. After a severe storm, she proves that she will face hardship alongside them. When she later drives to town alone, the children think she may be leaving. Sarah returns with supplies and colored pencils and tells them that although she misses the sea, she would miss Jacob, Anna, and Caleb more. She has chosen to stay and become part of their family.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Anna and her younger brother Caleb live with their widowed father, Jacob, on a prairie farm. Their mother died after Caleb was born, leaving Anna with memories of her songs and Caleb with questions about the woman he never knew. Jacob places a newspaper advertisement for a wife. Sarah Wheaton answers from Maine, where she has lived with her brother William near the sea. In letters exchanged with Jacob and the children, Sarah describes herself as plain and tall, asks about the family and farm, and says she sings. She agrees to visit them for a month so they can decide whether they suit one another. Anna and Caleb begin imagining her arrival, hopeful that she will bring singing back to the house and anxious that she may decide not to remain.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sarah arrives from Maine wearing a yellow bonnet and bringing her cat, Seal, along with gifts from the coast. She gives the children shells and lets them listen for the sound of the sea, then begins learning the rhythms of the farm. She is warm but direct, and she does not pretend that the prairie resembles the home she left. Sarah sings and draws, tells Anna and Caleb about swimming in the ocean, and shows an eagerness to participate in outdoor work. The children study every sign of whether she is happy. Caleb asks openly if she will stay, while Anna worries more quietly that the flat, dry landscape cannot compete with Sarah's love for Maine.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sarah becomes more fully involved in farm life. She befriends their neighbor Maggie, who also understands what it means to make a home far from one's original family. Sarah learns to ride Jacob's horse and wants to learn to drive the wagon herself, insisting on competence and independence. She helps repair the roof and shares work with Jacob rather than remaining inside the house. Yet she continues to miss the sea and tries to preserve it through pictures, colors, shells, and songs. Anna and Caleb grow increasingly attached to her, so every reference to Maine renews their fear that her visit is temporary and that the household will become quiet again when she leaves.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A fierce storm strikes the farm. The family shelters together, and Sarah helps protect the animals and face the damage, demonstrating that she will share the difficult parts of prairie life as well as its pleasures. Later she learns to drive the wagon and goes into town alone. Anna and Caleb become convinced that she may be leaving for Maine, especially when she is gone for hours. Sarah returns at dusk with household supplies and colored pencils. She tells them that she will always miss the sea, but that if she left the prairie she would miss Jacob, Anna, and Caleb even more. By returning of her own choice, she resolves the children's fear: she intends to stay and make a life with their family.",
+            "through": {
+              "chapter": 9
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "sarah-plain-and-tall"
       }
     },
     "saturday": {

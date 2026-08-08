@@ -3162,6 +3162,143 @@
         "work": "looking-for-alibrandi"
       }
     },
+    "lord-arthur-saviles-crime": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A wealthy young English nobleman engaged to Sybil Merton. Conscientious and literal-minded beneath his polished social manner, he treats a fashionable palm-reader's ominous forecast as a moral obligation rather than a vague amusement.",
+            "id": "lord-arthur-savile",
+            "name": "Lord Arthur Savile",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A fashionable London hostess whose reception brings Lord Arthur and Mr Podgers together. She delights in unusual guests and treats palmistry as sophisticated entertainment.",
+            "id": "lady-windermere",
+            "name": "Lady Windermere",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A professional palm-reader celebrated in fashionable society. His confident readings amuse Lady Windermere's guests, but what he sees in Lord Arthur's hand visibly unsettles him and makes Arthur demand a private explanation.",
+            "id": "mr-podgers",
+            "name": "Mr Podgers",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Lord Arthur's beloved fiancée. She trusts him and expects their wedding soon, unaware that the reading at Lady Windermere's party has thrown his plans into turmoil.",
+            "id": "sybil-merton",
+            "name": "Sybil Merton",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly relative of Lord Arthur who is fond of him and frequently troubled by indigestion. Arthur selects her as the intended victim of what he hopes will be a discreet and painless crime.",
+            "id": "lady-clementina-beauchamp",
+            "name": "Lady Clementina Beauchamp",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A clerical relative of Lord Arthur with a noted interest in clocks. After devising his first plan, Arthur considers the Dean as another possible subject for the murder he believes fate requires.",
+            "id": "dean-of-chichester",
+            "name": "The Dean of Chichester",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young Russian with revolutionary connections whom Lord Arthur consults when seeking a more forceful means of fulfilling the prediction. He directs Arthur to a specialist in explosives.",
+            "id": "count-rouvaloff",
+            "name": "Count Rouvaloff",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An explosives expert recommended to Lord Arthur by Count Rouvaloff. He prepares a small bomb disguised as a clock for Arthur's attempt on the Dean of Chichester.",
+            "id": "herr-winckelkopf",
+            "name": "Herr Winckelkopf",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "lord-arthur-saviles-crime"
+      },
+      "recaps": {
+        "ending": "After the poison and bomb schemes fail to make him a murderer, Lord Arthur sees Mr Podgers beside the Thames late at night. He pushes the palm-reader over the parapet and watches him disappear into the river. Podgers's body is recovered, and the death is officially treated as suicide, leaving Arthur free from suspicion. Believing he has finally completed the act foretold in his palm, Arthur marries Sybil. Years later they remain happy and have children. When Lady Windermere dismisses Podgers as a fraud who told clients whatever suited him, Arthur refuses to accept her judgment: he credits the prediction with leading him to the contented life he now enjoys. The story therefore closes with Arthur prosperous and unpunished, sincerely grateful to the man he killed and unaware of the full absurdity of his moral reasoning.",
+        "in_short": "At Lady Windermere's reception, the fashionable palm-reader Mr Podgers privately tells Lord Arthur Savile that he is destined to commit murder. Arthur decides that honor requires him to fulfill this fate before marrying his fiancée, Sybil Merton. He first gives an elderly relative a poison capsule, but she dies naturally without taking it. He next sends an explosive clock to the Dean of Chichester, only for the device to make a harmless commotion. Despairing over the failures and the delayed wedding, Arthur encounters Podgers by the Thames and pushes him into the river. The death is judged a suicide, so Arthur concludes that the prophecy has been satisfied and marries Sybil. They live happily and raise a family. Years later Lady Windermere calls Podgers an impostor, but Arthur insists that he owes the palm-reader all his happiness.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Lady Windermere entertains an assortment of fashionable guests at a London reception, where Mr Podgers reads palms for their amusement. His interpretations are confident and flattering until he examines the hand of Lord Arthur Savile, a young aristocrat preparing to marry Sybil Merton. Podgers abruptly becomes evasive, and Arthur sees that the man has discovered something frightening. Unable to dismiss the incident as party entertainment, Arthur presses the palm-reader to tell him privately what the hand reveals. The evening that began as a social diversion leaves Arthur convinced that his future contains a grave secret.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Mr Podgers tells Lord Arthur that he is fated to commit murder. Arthur accepts the prediction as certain and is horrified by the thought of bringing an undisclosed future crime into his marriage. During a bleak walk through London he decides that the only honorable course is to perform the murder before marrying Sybil, so that their life together will not be interrupted by it later. He postpones the wedding without explaining the real reason. His response turns the palm-reader's claim into a practical duty: he must choose a victim and arrange a crime while protecting Sybil from both knowledge and scandal.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Arthur considers possible victims with the detached care of someone planning an obligation. He settles first on Lady Clementina Beauchamp, an elderly relative who is fond of him and suffers from digestive complaints. A chemist supplies Arthur with a powerful poison in capsule form. Presenting it as an effective American remedy to be taken during her next attack, he gives the capsule to Lady Clementina, who accepts his concern gratefully. Arthur then leaves England and waits for news, believing he has arranged a death that will appear natural. Although he dislikes deceiving her, he continues to regard the plan as a necessary sacrifice before his marriage can proceed.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Lady Clementina dies while Arthur is away, and he initially assumes that his plan succeeded. When he later sorts through her possessions, however, he finds the poison capsule untouched; her death was natural, so he still has not fulfilled Podgers's forecast. Arthur next turns to the Dean of Chichester, a relative interested in clocks. Through Count Rouvaloff he finds Herr Winckelkopf, who makes a small explosive disguised as a timepiece. Arthur sends it to the Dean, but the supposed bomb produces only a harmless disturbance that the household treats as an amusing novelty. With both carefully designed attempts defeated by chance, Arthur becomes desperate, while his unexplained postponement continues to keep him apart from Sybil.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After his poison and bomb schemes fail, Arthur wanders beside the Thames at night and happens upon Mr Podgers leaning over the parapet. He suddenly sees a direct solution and pushes the palm-reader into the river. Podgers's body is later recovered, but the authorities regard the death as suicide and do not suspect Arthur. Certain that he has now committed the murder predicted for him, Arthur feels released from his duty and marries Sybil. Years pass happily, and the couple have children. When Lady Windermere later remarks that Podgers was a fraud, Arthur rejects the idea and says that he owes the man his happiness. He remains unaware that his faith in the prediction created the very crime it seemed to foretell, and he suffers no legal or social consequences for killing the supposed prophet.",
+            "through": {
+              "chapter": 6
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "lord-arthur-saviles-crime"
+      }
+    },
     "lord-of-chaos": {
       "characters": {
         "characters": [
