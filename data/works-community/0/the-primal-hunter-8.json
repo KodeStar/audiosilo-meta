@@ -1753,6 +1753,167 @@
         "work": "the-prisoner-of-zenda"
       }
     },
+    "the-prisoner-of-zenda-adaptation": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An English gentleman whose red hair, features, and family history connect him to the royal house of Ruritania. Independent and drawn to adventure, he travels to Ruritania for its new king's coronation and discovers that he closely resembles the monarch.",
+            "id": "rudolf-rassendyll",
+            "name": "Rudolf Rassendyll",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Rudolf V"
+            ],
+            "description": "The new king of Ruritania, whose appearance is almost identical to Rudolf Rassendyll's. Informal and good-humored when they meet, he is due to be crowned the following day despite opposition from his half-brother.",
+            "id": "king-rudolf",
+            "name": "King Rudolf",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An experienced officer loyal to the king. Sapt is decisive, guarded, and willing to adopt an extraordinary deception when the king's failure to appear at his coronation would hand an advantage to his enemies.",
+            "id": "colonel-sapt",
+            "name": "Colonel Sapt",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young officer devoted to the Ruritanian king. Fritz assists Sapt and becomes Rudolf Rassendyll's trusted companion during the dangerous effort to preserve the throne.",
+            "id": "fritz-von-tarlenheim",
+            "name": "Fritz von Tarlenheim",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Black Michael"
+            ],
+            "description": "The king's ambitious half-brother and Duke of Strelsau. Michael has strong support in part of the capital and stands to gain the throne if the king cannot be crowned.",
+            "id": "duke-michael",
+            "name": "Duke Michael",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The king's cousin and intended bride, admired by the Ruritanian public. Flavia is dignified, observant, and conscious that her personal choices carry consequences for the country.",
+            "id": "princess-flavia",
+            "name": "Princess Flavia",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Frenchwoman closely connected to Duke Michael. She is alert to the danger surrounding Michael's plans and has reasons of her own for opposing his interest in Princess Flavia.",
+            "id": "antoinette-de-mauban",
+            "name": "Antoinette de Mauban",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The youngest and boldest of Duke Michael's armed followers. Rupert is charming in manner, highly dangerous, and too ambitious to be fully controlled even by the man he serves.",
+            "id": "rupert-of-hentzau",
+            "name": "Rupert of Hentzau",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A servant with access to the castle at Zenda. His knowledge of the building and its guards makes him valuable to anyone trying to discover where and how the captive king is held.",
+            "id": "johann",
+            "name": "Johann",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Michael's trusted men assigned to guard the prisoner at Zenda. Detchard is an experienced fighter and part of the castle's final defense against a rescue.",
+            "id": "detchard",
+            "name": "Detchard",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-prisoner-of-zenda-adaptation"
+      },
+      "recaps": {
+        "ending": "The rescue at Zenda succeeds. Rudolf Rassendyll enters the castle, reaches the imprisoned king, and defeats Detchard before the prisoner can be killed. Within the castle, Duke Michael discovers Rupert with Antoinette; Rupert kills Michael during the confrontation and escapes despite Rudolf's pursuit. The real king survives and can resume his public place without the country learning that an English visitor was crowned in his name. Princess Flavia discovers that the man she came to love was Rudolf Rassendyll rather than her royal cousin. Rudolf and Flavia acknowledge their feelings, but they accept that her duty is to Ruritania and to the restored monarch. Rudolf returns to England, while Sapt and Fritz help preserve the secret of the substitution. Flavia remains in Ruritania, and the two are separated by the obligations that saved the kingdom. Rupert remains at large, but Michael's attempt to seize the throne has failed and the rightful king is restored.",
+        "in_short": "English traveler Rudolf Rassendyll arrives in Ruritania and finds that he is almost indistinguishable from its new king. When agents of the king's half-brother, Duke Michael, drug and abduct the monarch before the coronation, loyal officers Sapt and Fritz persuade Rudolf to take his place. Rudolf is crowned and continues the disguise while they search for the captive, who is guarded at Michael's castle in Zenda. During the deception Rudolf falls in love with Princess Flavia, the king's intended bride. Information from Antoinette de Mauban and the servant Johann helps the loyalists plan a rescue. Rudolf reaches the prisoner and defeats his guard, while Michael is killed by his own treacherous follower Rupert of Hentzau. Rupert escapes, but the king is restored. Flavia learns Rudolf's identity and returns his love; duty nevertheless requires her to remain in Ruritania, so Rudolf goes home alone and the substitution remains secret.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Rudolf Rassendyll is a wealthy Englishman whose unusual red hair and facial features come from an old family connection with the royal Elphbergs of Ruritania. Looking for adventure, he travels to Ruritania as the country prepares to crown King Rudolf. Near Zenda, Rudolf meets Colonel Sapt, Fritz von Tarlenheim, and the king himself. The resemblance between the two Rudolfs is extraordinary. The king is friendly and invites the English visitor to dine with them on the night before the coronation, while political tension surrounds the king's ambitious half-brother, Duke Michael.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The king is drugged and cannot attend his coronation. Sapt concludes that Michael's supporters arranged the attack and warns that failure to crown the king could allow Michael to take power. Because Rudolf looks almost exactly like the monarch, Sapt and Fritz persuade him to impersonate the king for the ceremony. Rudolf passes through the coronation without being exposed. When the three return, however, the real king has disappeared and evidence shows that Michael's men have taken him. Rudolf must continue the disguise while Sapt and Fritz seek the prisoner. At court, he meets Princess Flavia, the king's cousin and expected bride, and begins to care for her despite the false identity between them.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The captive king is held at Michael's castle in Zenda, and a direct attack might cause the guards to kill him. Rudolf continues appearing in public as king, strengthening the crown while concealing the abduction. His feelings for Flavia deepen, but Sapt reminds him that the deception must end with the true monarch's return. Michael's French companion, Antoinette de Mauban, covertly opposes parts of the duke's plan, while Rupert of Hentzau emerges as Michael's most daring and unpredictable follower. Through Johann, a servant at Zenda, Rudolf's party begins to learn the castle's routines and the danger surrounding the prisoner.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Johann's information reveals that the king is closely guarded and that his captors are prepared to kill him if a rescue starts. Rudolf's allies move closer to Zenda and look for an approach that will reach the prisoner before the alarm can be carried out. Rupert privately shows that his ambitions extend beyond loyalty to Michael, then violently rejects the limits of negotiation. With the king's health and safety worsening, delay is no longer acceptable. Sapt, Fritz, Rudolf, and their helpers organize an assault in which distractions draw guards away while Rudolf approaches the prison by the castle moat.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The attack on Zenda coincides with conflict among Michael's own followers. Michael finds Rupert with Antoinette, and Rupert kills the duke before fleeing. Rudolf enters the castle from the moat, reaches the captive, and defeats Detchard before the guard can murder the king. The loyalists recover the injured but living monarch, although Rupert escapes. Once the real king can resume the throne, Rudolf's impersonation ends. Flavia learns the truth and understands that she fell in love with Rudolf Rassendyll. They admit their love, but Flavia's duty to the country requires her to stay and support the restored king. Rudolf returns to England, Sapt and Fritz keep the substitution secret, and Michael's attempt to take the crown ends in failure.",
+            "through": {
+              "chapter": 10
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-prisoner-of-zenda-adaptation"
+      }
+    },
     "the-professor-charlotte-bronte": {
       "characters": {
         "characters": [

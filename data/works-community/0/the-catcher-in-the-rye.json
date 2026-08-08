@@ -547,6 +547,168 @@
         "work": "the-centennial-tournament"
       }
     },
+    "the-chamber": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A young lawyer in Chicago who asks to join the final appeals for Sam Cayhall, a Mississippi prisoner awaiting execution. Adam was born into the Cayhall family but grew up using a different surname after his parents tried to escape its history. Taking the case forces him to confront both his grandfather and the secrecy that shaped his childhood.",
+            "id": "adam-hall",
+            "name": "Adam Hall",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Adam's grandfather, an unrepentant former Ku Klux Klan member on Mississippi's death row for a 1967 bombing that killed two young boys. Abrasive, racist, and suspicious of lawyers, he has survived years of appeals and initially treats his grandson as another outsider trying to manage him.",
+            "id": "sam-cayhall",
+            "name": "Sam Cayhall",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sam's daughter and Adam's aunt. Now living in Memphis as the wife of a prosperous businessman, she has concealed her connection to Sam and copes with the family's past through alcohol. She becomes Adam's most important source on the private damage done by the Cayhalls' violence and silence.",
+            "id": "lee-cayhall-booth",
+            "name": "Lee Cayhall Booth",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Adam's father and Sam's son, already dead when the case begins. He changed the family's name, moved away from Mississippi, and tried to keep his children apart from Sam. Adam's memories of him and the unanswered questions around his death make the legal case inseparable from a family reckoning.",
+            "id": "eddie-cayhall",
+            "name": "Eddie Cayhall",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior lawyer at Kravitz and Bane who has long overseen the firm's representation of Sam. He understands death-penalty litigation, Mississippi politics, and Sam's capacity to resist his own defense, and he gives Adam institutional support without pretending the case is easy.",
+            "id": "garner-goodman",
+            "name": "Garner Goodman",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Mississippi politician whose career was advanced by prosecuting Sam Cayhall. Now governor as the execution approaches, he must consider pleas for clemency while also protecting the public image built around the case.",
+            "id": "david-mcallister",
+            "name": "David McAllister",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An FBI agent whose knowledge reaches back to the violent campaign surrounding the bombing. He knows that the official account left important people and facts outside the courtroom, making him a valuable but guarded source for Adam's investigation.",
+            "id": "wyn-lettner",
+            "name": "Wyn Lettner",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Jewish civil-rights lawyer targeted by the office bombing for which Sam was convicted. His twin sons were killed when they entered the building, and the destruction of his family remains at the moral center of the case.",
+            "id": "marvin-kramer",
+            "name": "Marvin Kramer",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Marvin Kramer's wife and the mother of the two boys killed in the bombing. Her family's loss stands behind the state's determination to carry out Sam's sentence and complicates every attempt to discuss the case only as a question of procedure.",
+            "id": "ruth-kramer",
+            "name": "Ruth Kramer",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A violent Klansman connected to the bombing campaign in which Sam took part. He is more elusive than Sam and becomes central to Adam's effort to separate Sam's actual conduct from the simpler story accepted at trial.",
+            "id": "rollie-wedge",
+            "name": "Rollie Wedge",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-chamber"
+      },
+      "recaps": {
+        "ending": "The last appeals fail, Governor McAllister refuses clemency, and Sam is executed in Mississippi's gas chamber. Adam remains with him to the end after their difficult professional relationship has become a genuine bond between grandson and grandfather. The investigation has established that Sam did not act alone and was not the person who designed and planted the bomb, but his long participation in Klan violence and his presence in the conspiracy leave him morally responsible for the deaths. The fuller truth arrives too late to change the legal outcome, while Rollie Wedge remains beyond the reach of the case. Lee confronts the family history that she had tried to bury, and Adam comes away with a less simplified understanding of both his father and Sam. He cannot save his client, but he prevents Sam from dying entirely isolated and ends the Cayhall family's habit of meeting its past only with concealment.",
+        "in_short": "Chicago lawyer Adam Hall volunteers to represent Sam Cayhall, the grandfather his family taught him to hide, during the last weeks before Sam's execution in Mississippi. Sam, a former Klansman, was convicted for a bombing aimed at Jewish civil-rights lawyer Marvin Kramer that killed Kramer's twin sons. Adam pursues appeals, challenges the death sentence, and investigates evidence that another Klansman was the principal bomb maker. He also draws his alcoholic aunt Lee into a painful reconstruction of the family history that drove his father to change their name and later take his own life. The legal deadlines close faster than Adam can turn the incomplete truth into relief. Although Sam gradually trusts his grandson and acknowledges more of his responsibility, the courts reject the appeals and the governor denies clemency. Sam dies in the gas chamber with Adam nearby. Adam has failed to stop the execution, but he has learned that legal guilt, factual participation, and moral responsibility do not fit into a single easy account.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In 1967 a bomb destroys the office of Jewish civil-rights lawyer Marvin Kramer in Greenville, Mississippi, killing his twin sons. Decades later Sam Cayhall, an elderly former Klansman convicted of the bombing, is running out of appeals on death row. Adam Hall, a young lawyer at the Chicago firm that represents Sam, reveals that he is Sam's grandson. Adam's father changed the family name and moved away, leaving Adam to grow up with fragments of the Cayhalls' history. Against advice about his inexperience and Sam's hostility, Adam asks to handle the case. He travels to Mississippi and meets a client who openly retains his racist beliefs and resents the grandson whose family abandoned him. The execution date gives Adam only weeks to master the record, find new grounds for relief, and decide how much of this work is legal duty and how much is an attempt to understand his own family.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Adam begins building constitutional and procedural challenges while trying to make Sam cooperate. The old man has lived through earlier trials and reversals and assumes that every lawyer will eventually lose or leave. Adam also reconnects with his aunt Lee Cayhall Booth, Sam's daughter, whose affluent Memphis life masks alcoholism and deep fear of public exposure. Lee helps Adam recover the story his father would not tell: growing up under Sam's authority, living with Klan violence, and trying to escape the Cayhall name. The case also leads Adam toward the surviving Kramer family and toward officials whose careers are tied to the prosecution. Governor David McAllister, once associated with putting Sam on death row, has political reasons to let the sentence proceed. Adam understands that even a sound legal claim will be judged within a public history in which two children are dead and his client has never shown remorse.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "As court filings and execution preparations advance together, Adam investigates the bombing rather than relying only on the old trial record. He finds indications that Sam was part of a larger Klan operation and may not have been the expert who made and placed the device. FBI agent Wyn Lettner knows more about the era's network of informants, bombers, and protected sources than he is initially willing to disclose. Sam offers pieces of information but still protects old loyalties and distinguishes, for his own purposes, between taking part in a conspiracy and directly killing the Kramer boys. Adam presses him to see that the distinction does not erase responsibility. Lee's memories become more specific and more painful, connecting Sam's extremism to the collapse of Adam's immediate family. The case is now both an attempt to stop an execution and a search for the people whose participation was never fully tried.",
+            "through": {
+              "chapter": 27
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Adam's inquiries point toward Rollie Wedge, a Klansman with the explosives knowledge and mobility to have carried out the bombing while leaving Sam to bear the conviction. That possibility weakens the state's clean version of the crime but does not make Sam innocent: he joined the operation, shared its purpose, and remained loyal to its perpetrators afterward. Adam and his firm turn every new fact into motions for hearings and stays, while prosecutors argue that none of it changes the lawful verdict. Lee's struggle with alcohol worsens under the pressure, and Adam learns more about his father's despair and suicide. Sam, facing the increasing reality of death, becomes less combative with Adam without undergoing a simple transformation. Their conversations move beyond litigation toward the harm he caused his children and the hatred to which he gave his life.",
+            "through": {
+              "chapter": 38
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The courts reject the defense's major claims and the remaining routes narrow to emergency review and executive clemency. Adam tries to use the evidence about Wedge, unequal prosecution, and the manner of execution, but the legal system treats the case as one that has already received exhaustive process. McAllister listens to the clemency appeal under intense political scrutiny and refuses to intervene. At the prison, officials test the gas chamber and explain the final procedures while demonstrators and reporters gather outside. Sam prepares a will and final messages and speaks more honestly with Adam about the bombing and their family, though he cannot repair decades of damage in a few days. Adam arranges contact with Lee and remains determined that Sam will not face the chamber alone, even as he accepts that no pending motion is likely to stop the execution.",
+            "through": {
+              "chapter": 47
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Every final application for a stay fails, and no confession or newly uncovered participant produces a legal rescue. Sam is moved through the prison's death protocol and says goodbye to Lee and Adam. Adam has come to care for his grandfather without excusing either his racism or his role in the bombing. Sam enters the gas chamber and is executed while Adam remains close enough to witness his final moments. The state has punished the man it convicted, but the investigation leaves a more complicated record: Rollie Wedge was central to the actual construction and placement of the bomb and remains unpunished, while Sam's willing involvement and long silence helped make the killings possible. Afterward, Adam and Lee are left to absorb the death and the history surrounding it. Adam returns from the case unable to supply a last-minute triumph, yet no longer separated from his family's past by a false name and deliberate ignorance.",
+            "through": {
+              "chapter": 54
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-chamber"
+      }
+    },
     "the-charlotte-perkins-gilman-classic-herland": {
       "characters": {
         "characters": [
