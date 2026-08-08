@@ -5562,6 +5562,236 @@
         "work": "streams-of-silver"
       }
     },
+    "suite-francaise": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The devout, status-conscious mother of the large Pericand household. As German forces approach Paris, she organizes the family's hurried departure with children, servants, luggage, and an elderly relative, trying to preserve domestic order amid the general panic.",
+            "id": "charlotte-pericand",
+            "name": "Charlotte Pericand",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Charlotte's teenage son, restless under his family's conventional expectations. The flight from Paris excites his desire to act independently and to take part in the national crisis rather than remain among the civilians.",
+            "id": "hubert-pericand",
+            "name": "Hubert Pericand",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Charlotte's adult son, a Catholic priest placed in charge of a group of troubled orphan boys during the exodus. Earnest and dutiful, he believes moral discipline can hold his charges together while ordinary institutions collapse around them.",
+            "id": "philippe-pericand",
+            "name": "Philippe Pericand",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A celebrated, self-important writer who flees Paris with Florence, his companion. He regards comfort, food, and the preservation of his manuscripts as matters of exceptional importance, even as he is forced onto the same crowded roads as everyone else.",
+            "id": "gabriel-corte",
+            "name": "Gabriel Corte",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wealthy bachelor and collector whose attachment to beautiful possessions outweighs his sympathy for other refugees. He leaves Paris with treasured objects packed into his car and treats the disorder of the road chiefly as a threat to his private world.",
+            "id": "charles-langelet",
+            "name": "Charles Langelet",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A modest bank employee caught in the evacuation with his wife, Jeanne. Their employer denies them space in his car but still expects them to report for work away from Paris, leaving the couple to make the dangerous journey on foot.",
+            "id": "maurice-michaud",
+            "name": "Maurice Michaud",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Maurice Michaud's practical and devoted wife. She shares his exhausting journey out of Paris while both worry about their soldier son, Jean-Marie, from whom the invasion has cut off reliable news.",
+            "id": "jeanne-michaud",
+            "name": "Jeanne Michaud",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Maurice and Jeanne Michaud's son, a young French soldier separated from his unit during the retreat. Wounded and dependent on strangers, he experiences the war far from his anxious parents.",
+            "id": "jean-marie-michaud",
+            "name": "Jean-Marie Michaud",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Michauds' bank director, preoccupied with his business and his mistress during the evacuation. He expects obedience from employees whose safety he has done little to protect.",
+            "id": "monsieur-corbin",
+            "name": "Monsieur Corbin",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young woman living in the village of Bussy with her formidable mother-in-law while her husband is a prisoner of war. Reserved and lonely within the Angellier household, she must receive a German officer billeted in their home.",
+            "id": "lucile-angellier",
+            "name": "Lucile Angellier",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Lucile's wealthy, severe mother-in-law, who manages family property and rents with close attention. She despises the occupying army and insists that Lucile maintain a cold, formal household around their German lodger.",
+            "id": "madame-angellier",
+            "name": "Madame Angellier",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A cultivated German officer assigned to the Angelliers' house in Bussy. A composer in civilian life, he behaves with restraint and courtesy, complicating Lucile's determination to see him only as a representative of the occupying force.",
+            "id": "bruno-von-falk",
+            "name": "Bruno von Falk",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A farmer in Bussy who has returned from French military service embittered by defeat and occupation. Proud, suspicious, and protective of his household, he resents the German soldier billeted on his farm.",
+            "id": "benoit-sabarie",
+            "name": "Benoit Sabarie",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Benoit's young wife, admired in the village and unsettled by the attention of the German soldier lodged at the farm. Before marrying Benoit she had cared for the wounded Jean-Marie Michaud during the French retreat.",
+            "id": "madeleine-sabarie",
+            "name": "Madeleine Sabarie",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A German soldier billeted with Benoit and Madeleine. More intrusive than the officers quartered elsewhere in the village, he takes an unwelcome interest in Madeleine and deepens Benoit's anger at the occupation.",
+            "id": "bonnet",
+            "name": "Bonnet",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A local aristocrat who presents herself as dutiful and charitable under occupation. Her public concern for the village coexists with a strong instinct to protect her family's standing and property.",
+            "id": "viscountess-de-montmort",
+            "name": "Viscountess de Montmort",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "suite-francaise"
+      },
+      "recaps": {
+        "ending": "After Benoit kills the German soldier Bonnet, Lucile hides the fugitive in the Angellier house while German troops search Bussy. She asks Bruno for a permit and fuel to visit Paris, concealing her real purpose. Bruno, aware that she is withholding something but still attached to her, supplies the papers. Lucile then carries Benoit out of the village hidden in her car, committing herself to active resistance rather than to the private happiness she had briefly imagined with Bruno. Madame Angellier, once rigidly hostile to Lucile, helps protect the secret. Germany's war widens, and Bruno's regiment is ordered away toward the campaign in the Soviet Union. He and Lucile part without resolving their mutual love. The surviving manuscript ends with the occupation continuing, Benoit escaping toward Paris, and Bruno departing Bussy with the German army, leaving the villagers to face an uncertain next phase of the war.",
+        "in_short": "As German forces invade France in 1940, Parisians of sharply different classes join the chaotic flight south. The Pericands lose their priest son Philippe and their elderly relative; the Michauds endure the road after their employer abandons them but are reunited with their wounded soldier son; other refugees expose their selfishness while trying to preserve comfort and possessions. After the armistice, German troops occupy Bussy. Lucile Angellier, trapped with a hostile mother-in-law while her husband is a prisoner, grows close to the cultivated officer Bruno von Falk, who is billeted in their house. Elsewhere, farmer Benoit Sabarie kills the German soldier harassing his wife, Madeleine. Lucile hides Benoit and uses travel papers obtained from Bruno to smuggle him toward Paris. When Bruno's regiment is sent east, he and Lucile separate, their affection overridden by the realities of occupation and her decision to aid a fugitive.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "News of the German advance turns anxiety in Paris into a mass departure. The wealthy Pericand family tries to move an entire household, including children, servants, and an infirm grandfather, while Charlotte struggles to keep the habits and hierarchies of ordinary life intact. Her teenage son Hubert longs to escape the family's control and take useful action. Writer Gabriel Corte leaves with Florence and focuses on protecting his work and comfort. Collector Charles Langelet packs precious objects into his car. Bank employees Maurice and Jeanne Michaud receive no place in their director Corbin's car, although he orders them to report to Tours. Across the city, individual plans merge into the same congested flight from the approaching army.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The refugees move through crowded roads, uncertain lodgings, and towns overwhelmed by demand for food and fuel. Class privilege offers only uneven protection as vehicles stall and official arrangements fail. The Pericands become separated during an air attack, and Hubert seizes the chance to leave them and look for soldiers. Charlotte believes him lost while trying to account for the rest of her family. The Michauds continue largely on foot, sustained by their loyalty to each other and tormented by the absence of news about their son Jean-Marie. He has been wounded during the retreat and is taken in by strangers, including the young Madeleine. Corte and Langelet respond to scarcity by placing their own needs ahead of those around them.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The collapse of the French defense scatters soldiers and civilians through the same landscape. Hubert briefly attaches himself to troops and discovers that his romantic idea of battle bears little resemblance to confusion, fear, and defeat. Jean-Marie recovers slowly under Madeleine's care, and affection develops between them even though his thoughts remain tied to home. Philippe Pericand, responsible for a group of orphan boys, attempts to lead them safely through the disorder by relying on discipline and religious duty. The restraints he expects to govern them weaken as the crisis continues. Other refugees secure food, transport, or shelter by exploiting whoever is more vulnerable, revealing how quickly social courtesy disappears under pressure.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Philippe's charges turn against him and kill him, leaving the Pericands to receive another family tragedy after the confusion of the road. Their elderly relative also dies after being left behind, while possessions he meant the family to inherit are taken. Hubert survives and returns, his brief experience of war having stripped away much of his eagerness for glory. Jean-Marie recovers and rejoins Maurice and Jeanne, but his separation from Madeleine ends their tentative bond. Corbin dismisses the Michauds for failing to reach Tours as ordered, then keeps Maurice when the bank cannot function without his skill. Langelet obtains petrol through deception, returns to Paris, and dies in a street accident. The refugees drift back under armistice, carrying private losses that contrast with public efforts to restore normal life.",
+            "through": {
+              "chapter": 31
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After the defeat, German troops are billeted in the village of Bussy. Lucile Angellier lives with her austere mother-in-law while her unfaithful husband remains a prisoner of war. Their assigned officer, Bruno von Falk, is courteous, educated, and a musician, qualities that unsettle the women's determination to treat him only as an enemy. Madame Angellier maintains rigid hostility; Lucile begins to recognize the individual behind the uniform while remaining conscious of the unequal power between them. Across the village, occupation rearranges social relations. Some residents seek favor with German officers, others protect their property, and poorer households bear intrusions with fewer choices. Farmer Benoit Sabarie is especially angered by Bonnet, the German soldier lodged with him and his wife Madeleine.",
+            "through": {
+              "chapter": 38
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Daily proximity draws Lucile and Bruno into a guarded companionship centered on music and conversation. Their attraction grows, but Lucile knows that her husband is Bruno's prisoner in a broader sense and that the occupation makes an ordinary romance impossible. Madame Angellier watches them with suspicion and continues collecting rents from tenants whose resources have been diminished by war. The German presence produces compromises throughout Bussy: formal politeness masks resentment, and local elites cultivate influence while claiming patriotic principle. At the Sabarie farm, Bonnet's interest in Madeleine becomes increasingly threatening. Benoit's jealousy is joined to political rage and wounded pride, making the household one of the village's most dangerous points of conflict.",
+            "through": {
+              "chapter": 44
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Lucile and Bruno acknowledge the depth of their attachment without finding a future that could separate it from the war. News about Lucile's husband further weakens her remaining loyalty to the marriage, yet the possibility of choosing Bruno still carries the weight of collaboration. At the farm, conflict with Bonnet reaches violence: Benoit shoots and kills the German soldier, then becomes the object of an intensive search. Villagers must decide whether fear and self-protection outweigh solidarity with a fugitive. Madeleine turns to Lucile for help. Lucile conceals Benoit in the Angellier house, placing herself and her mother-in-law at grave risk and transforming her private dislike of occupation into a concrete act against it.",
+            "through": {
+              "chapter": 49
+            }
+          },
+          {
+            "scope": "book",
+            "text": "With German forces searching for Benoit, Lucile asks Bruno for authorization and fuel to travel to Paris. She does not disclose that the fugitive will be hidden in her car. Bruno grants the request despite sensing that she is keeping something from him, allowing personal trust to override caution. Madame Angellier helps preserve the hiding place, and Lucile successfully carries Benoit away from Bussy toward people who can help him continue resisting. Germany's invasion of the Soviet Union brings orders for Bruno's regiment to leave the village for the eastern campaign. Bruno and Lucile part with their love unresolved: he departs as an officer of the occupying army, while she has chosen to aid the man who killed one of its soldiers. Bussy remains occupied as the surviving narrative ends, with war widening and every character's future uncertain.",
+            "through": {
+              "chapter": 53
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "suite-francaise"
+      }
+    },
     "summer-knight": {
       "characters": {
         "characters": [

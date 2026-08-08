@@ -506,6 +506,186 @@
         "work": "dorothy-and-the-wizard-in-oz"
       }
     },
+    "dr-no": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The head of the British Secret Service station in Jamaica. He follows a precise routine for radio contact with London, making his sudden failure to transmit an immediate concern to headquarters.",
+            "id": "john-strangways",
+            "name": "John Strangways",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Strangways's secretary at the Jamaica station. She handles the scheduled radio exchange with London and is present when the station's routine is violently interrupted.",
+            "id": "mary-trueblood",
+            "name": "Mary Trueblood",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "007"
+            ],
+            "description": "A British Secret Service agent returning to duty after nearly dying from poison on his previous mission. His superiors question whether he is fully recovered, and he is assigned a seemingly routine investigation in Jamaica as a test and a chance to regain confidence.",
+            "id": "james-bond",
+            "name": "James Bond",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The head of the British Secret Service and Bond's superior. Concerned by Bond's recent injuries and choices in equipment, he sends him to investigate the disappearance of the Jamaica station chief.",
+            "id": "m",
+            "name": "M",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Armourer"
+            ],
+            "description": "The Service's firearms specialist. He evaluates Bond's preferred pistol and equips him with replacement weapons chosen for greater stopping power and reliability.",
+            "id": "major-boothroyd",
+            "name": "Major Boothroyd",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Colonial Secretary in Jamaica and an old acquaintance of Strangways. He briefs Bond on the missing man's recent interests, including a dispute involving the isolated island of Crab Key.",
+            "id": "pleydell-smith",
+            "name": "Pleydell-Smith",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young Jamaican photographer who persistently tries to take Bond's picture soon after he arrives. Bond suspects that the photograph is meant to identify or track him rather than serve an ordinary newspaper assignment.",
+            "id": "annabel-chung",
+            "name": "Annabel Chung",
+            "reveal": {
+              "chapter": 4
+            }
+          },
+          {
+            "description": "A Cayman Islander and experienced fisherman who previously helped Bond in Jamaica. Familiar with local waters and fieldcraft, he agrees to assist the investigation of Crab Key despite its dangerous reputation.",
+            "id": "quarrel",
+            "name": "Quarrel",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Honeychile Rider",
+              "Honey"
+            ],
+            "description": "A self-reliant young Jamaican woman whom Bond encounters collecting valuable shells on Crab Key. She knows the island's shore and wildlife well, carries a broken nose from an earlier assault, and has come despite warnings because the shells offer a path to independence.",
+            "id": "honey-rider",
+            "name": "Honey Rider",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The secretive owner of Crab Key, where a guano business operates behind armed security and frightening rumors. He receives Bond and Honey as prisoners in an elaborate private establishment and presents himself as a scientist and strategist beyond ordinary law.",
+            "id": "doctor-no",
+            "name": "Doctor Julius No",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Jamaican government officer responsible for investigating Strangways's disappearance. He accepts the surface evidence more readily than Bond and sees little reason to connect the case to a larger conspiracy.",
+            "id": "colonel-johns",
+            "name": "Colonel Johns",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "dr-no"
+      },
+      "recaps": {
+        "ending": "Bond survives Doctor No's engineered endurance course, escapes into the island complex, and reaches the guano-loading area while No is supervising operations. He takes control of machinery and sends a mass of guano down on No, burying and killing him. Bond then finds Honey Rider, who has survived the ordeal arranged for her, and the two escape in the armored vehicle the guards used to impersonate a dragon. They reach the Jamaican authorities and expose what happened on Crab Key. With the island's secret operation broken, Bond chooses to delay his formal report long enough to recover with Honey, while London receives proof that the missing station officers were victims of No's conspiracy.",
+        "in_short": "After surviving a previous poisoning, James Bond is sent to Jamaica to investigate the disappearance of station chief John Strangways and his secretary. Strangways had been examining Crab Key, a private guano island owned by Doctor Julius No and guarded by men who spread tales of a dragon. Attempts on Bond's life confirm that the case is active. With his former ally Quarrel, Bond secretly lands on the island and meets shell collector Honey Rider. No's armored vehicle finds them and kills Quarrel; Bond and Honey are captured. No reveals that his hidden installation interferes with American missile tests and that he works with Soviet intelligence. He subjects Bond to a lethal obstacle course, but Bond survives, escapes, and kills No by burying him beneath guano. Bond rescues Honey, and they flee Crab Key in the supposed dragon vehicle.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "James Bond is a veteran double-O agent in the British Secret Service under M, authorized to kill when assignments require it. His earlier missions have brought him into repeated conflict with Soviet intelligence and the execution organization SMERSH, as well as criminal networks operating across Europe and the Americas. In Jamaica he previously worked with the fisherman Quarrel. Bond's most recent operation ended when the SMERSH officer Rosa Klebb stabbed him with a poisoned blade, leaving him close to death. He has survived after prolonged treatment, but whether he is physically and mentally ready to return to field duty remains uncertain.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In Jamaica, British station chief John Strangways and his secretary Mary Trueblood are murdered just before their scheduled radio contact with London, and the killers remove their bodies and records. In London, James Bond has recovered from poisoning but irritates M by defending the lightweight pistol that failed him. The armourer, Major Boothroyd, replaces it with more powerful weapons. M assigns Bond what appears to be a modest case: discover why Strangways and Trueblood vanished. In Kingston, local officials suggest that Strangways ran away with his secretary. Bond is unconvinced. Colonial Secretary Pleydell-Smith explains that Strangways had recently investigated Crab Key, an isolated guano island owned by the secretive Doctor No, after protected birds were killed there.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bond studies Strangways's files and finds signs that the missing officer was seriously interested in Crab Key. Someone monitors Bond's inquiries, beginning with Annabel Chung's persistent effort to photograph him, and deadly creatures are planted in his room as a warning or assassination attempt. Bond reunites with Quarrel, the Cayman fisherman who helped him on an earlier mission. They investigate the island's reputation: local people fear a dragon said to patrol it, while Doctor No's guards exclude visitors. Convinced that the disappearances and attempts on his life point to Crab Key, Bond and Quarrel prepare weapons and supplies, then make a secret nighttime crossing to the island by canoe.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On Crab Key, Bond and Quarrel encounter Honey Rider, a young woman collecting rare shells along the shore. Bond persuades her to leave quickly because the island's guards are searching the area. The three conceal their traces and move through swamp and vegetation, but aircraft and patrols steadily narrow the hunt. The island's supposed dragon proves to be an armored, flame-equipped vehicle designed to frighten away intruders. It attacks the fugitives and kills Quarrel. Bond and Honey are captured and taken into a surprisingly luxurious facility hidden within Doctor No's industrial operation. Their captors decontaminate them, provide food and rooms, and make clear that Doctor No intends to meet them on his own terms.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Doctor Julius No receives Bond and Honey at dinner and recounts the making of his criminal empire. He survived an execution by enemies because his heart lies on the right side of his body, rebuilt himself, acquired Crab Key, and concealed a sophisticated technical base beneath the guano business. He explains that his equipment disrupts American guided-missile tests and that he has aligned himself with Soviet interests. Bond rejects his effort to present the scheme as proof of superior intellect. No decides to use both captives as subjects in calculated deaths. Honey is taken away, while Bond is forced into a specially built obstacle course intended to test endurance through heat, electricity, injury, and attacks by dangerous creatures.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bond crawls through Doctor No's obstacle course, enduring electric shocks, extreme heat, cuts, and encounters with venomous creatures before escaping the final underwater threat. Instead of collapsing as No expects, he breaks into the working areas of the island base. At the guano-loading site, Bond seizes control of machinery and releases a heavy flow of guano onto Doctor No, burying and killing him. He then searches for Honey and discovers that she has survived the death arranged for her. Together they take the armored vehicle that created the island's dragon legend and escape. Bond gets word to the Jamaican authorities, exposing No's responsibility for the missing agents and the sabotage operation. With the immediate threat ended, he and Honey remain together while he postpones the full return to official duty.",
+            "through": {
+              "chapter": 20
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "dr-no"
+      }
+    },
     "dr-no-with-interview": {
       "characters": {
         "characters": [

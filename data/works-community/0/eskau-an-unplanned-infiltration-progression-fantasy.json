@@ -1064,6 +1064,132 @@
         "work": "eugene-onegin"
       }
     },
+    "evangeline-a-tale-of-acadie": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A young Acadian woman raised in the peaceful farming settlement of Grand-Pré. She is Benedict Bellefontaine's only child and is admired for her kindness, composure, and devotion to her community. At the opening she and Gabriel are preparing to marry.",
+            "id": "evangeline-bellefontaine",
+            "name": "Evangeline Bellefontaine",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The son of the village blacksmith Basil Lajeunesse and Evangeline's beloved. He is an Acadian farmer and musician whose approaching marriage to Evangeline joins two old family friends.",
+            "id": "gabriel-lajeunesse",
+            "name": "Gabriel Lajeunesse",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Evangeline's prosperous father, a farmer whose household represents the settled life of Grand-Pré. A widower, he is affectionate toward his daughter and warmly approves her marriage to Gabriel.",
+            "id": "benedict-bellefontaine",
+            "name": "Benedict Bellefontaine",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Gabriel's father, the village blacksmith and Benedict's longtime friend. Vigorous and hospitable, he looks forward to the union of their children and shares the communal confidence of Grand-Pré before the expulsion.",
+            "id": "basil-lajeunesse",
+            "name": "Basil Lajeunesse",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Catholic priest of Grand-Pré and a trusted spiritual guide to the Acadian families. He counsels patience and faith when the community is placed under military control.",
+            "id": "father-felician",
+            "name": "Father Felician",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly notary of Grand-Pré, respected as a living link to the settlement's past. He has a very large family and joins the neighbors gathered for Evangeline and Gabriel's betrothal feast.",
+            "id": "rene-leblanc",
+            "name": "René Leblanc",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "evangeline-a-tale-of-acadie"
+      },
+      "recaps": {
+        "ending": "Many years after the Acadians are scattered, Evangeline settles in Philadelphia and serves the suffering as a Sister of Mercy. During an epidemic she walks among the sick and recognizes Gabriel, now an old man, lying near death. He wakes long enough to know her, and the two embrace before he dies. Evangeline accepts that their earthly search is over and soon dies herself. They are buried together in Philadelphia, while the poem returns to the distant Acadian landscape and the memory of the displaced community. Their reunion does not restore the life taken from them, but it gives a final spiritual resolution to Evangeline's lifelong fidelity.",
+        "in_short": "In the Acadian village of Grand-Pré, Evangeline Bellefontaine is about to marry Gabriel Lajeunesse when British authorities order the French-speaking population expelled. Their homes are destroyed, Evangeline's father dies, and separate ships carry the lovers away. Evangeline spends years following reports of Gabriel through the American interior. She reaches Basil's new Louisiana home only after Gabriel has departed and repeatedly misses him as her search moves across rivers, prairies, missions, and towns. Time turns her personal quest into a broader life of faith and service. As a Sister of Mercy in Philadelphia, she tends victims during an epidemic and at last finds Gabriel among them. Now elderly and dying, he recognizes her and dies in her arms. Evangeline later dies and is buried beside him, their shared grave preserving the memory of a love and homeland broken by forced exile.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Grand-Pré is an orderly Acadian farming village whose residents live by shared labor and Catholic custom. Benedict Bellefontaine's daughter Evangeline and Basil Lajeunesse's son Gabriel have grown up together and are now betrothed. Their families and neighbors gather for a feast, confident that the marriage will continue the harmony of the settlement. The celebration is shadowed by the arrival of British ships and soldiers, though the villagers do not yet know what the authorities intend.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "British troops summon the Acadian men to the church and announce that the Crown is confiscating their land, livestock, and homes and deporting the entire population. The men are detained while their families wait in fear. Father Felician urges the prisoners not to answer injustice with violence. Outside, women and children prepare for removal and search for their relatives amid growing confusion. Evangeline's wedding plans vanish as she and Gabriel face separation with the rest of Grand-Pré.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The soldiers burn Grand-Pré as the inhabitants are forced toward the shore. Benedict, overwhelmed by the destruction of his home and community, dies during the removal. Evangeline remains beside him and is delayed while the deportees are divided among ships. Gabriel is placed aboard a different vessel. Evangeline leaves Acadia bereaved and separated from him, holding only the hope that she can find him after the scattered exiles reach their new destinations.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Years of wandering follow the deportation. Evangeline travels with Father Felician and other exiles, following uncertain news of Gabriel through towns and settlements. Their route eventually takes them down the Mississippi into Louisiana. In the bayou country she finds Basil, who has rebuilt his fortunes among fellow Acadians, but learns that Gabriel left shortly before her arrival. Basil joins her pursuit, and they follow his trail westward, always arriving after he has moved on.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Evangeline's search stretches across the American interior and through many years. Reports lead toward camps, prairies, and a western mission, but none brings a lasting reunion. Gabriel, believing Evangeline lost to him, continues to wander, and their paths repeatedly fail to meet. As youth passes, Evangeline's hope becomes quieter and less tied to any single rumor. She ultimately returns east, dedicating herself to religious service and caring for people in need.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Living in Philadelphia as a Sister of Mercy, the now-aged Evangeline ministers to the poor and sick. During an epidemic she enters a crowded hospital and recognizes Gabriel among the dying. He awakens, recognizes her, and dies in her embrace, ending the search only at the close of his life. Evangeline accepts the reunion as the fulfillment allowed them and later dies herself. She is buried beside Gabriel, and their joined resting place becomes a memorial to their fidelity and to the Acadian people dispersed from their homeland.",
+            "through": {
+              "chapter": 10
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "evangeline-a-tale-of-acadie"
+      }
+    },
     "ever-after": {
       "characters": {
         "characters": [
