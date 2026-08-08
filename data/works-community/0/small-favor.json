@@ -4747,6 +4747,159 @@
         "work": "steelheart"
       }
     },
+    "still-alice": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A fifty-year-old Harvard professor whose research and teaching focus on language and cognition. Alice is accomplished, independent, physically active, and deeply invested in the intellectual life she has built. When familiar words and routes begin slipping away from her, she initially tries to explain the lapses as stress or menopause.",
+            "id": "alice-howland",
+            "name": "Alice Howland",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Alice's husband, a successful Harvard scientist absorbed in his laboratory and career. He loves Alice but is accustomed to a marriage organized around two demanding academic lives, and at first has difficulty accepting that her lapses may be serious.",
+            "id": "john-howland",
+            "name": "John Howland",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Alice and John's youngest daughter, who has rejected college for an acting career in Los Angeles. Her choice is a persistent source of conflict with Alice, who sees formal education as essential and worries that Lydia is limiting her future.",
+            "id": "lydia-howland",
+            "name": "Lydia Howland",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Alice's elder daughter, a lawyer living near her parents. Anna is married to Charlie and trying to have a child. She shares her mother's ambition and directness, though the two can clash over family decisions.",
+            "id": "anna-howland",
+            "name": "Anna Howland",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Alice and John's son, who is training to become a doctor. Tom approaches problems analytically and is part of the close but busy family Alice is determined to keep connected.",
+            "id": "tom-howland",
+            "name": "Tom Howland",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Anna's husband and a member of the Howlands' immediate family circle. He supports Anna as the couple pursue fertility treatment and confront the new uncertainty surrounding Alice's health.",
+            "id": "charlie",
+            "name": "Charlie",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A neurologist who evaluates Alice after her memory failures can no longer be dismissed. He orders cognitive testing and medical investigations, treating her concerns seriously while proceeding cautiously toward a diagnosis.",
+            "id": "dr-davis",
+            "name": "Dr. Davis",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The chair of Alice's department at Harvard and a professional colleague who must address concerns about her teaching. His conversations with her make the effects of her illness on her academic role impossible to keep private.",
+            "id": "eric-wellman",
+            "name": "Eric Wellman",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Alice's deceased older sister, remembered as part of the family tragedy that shaped Alice's youth. Anne's history becomes newly significant when Alice and her doctors investigate whether the dementia in the family was hereditary.",
+            "id": "anne",
+            "name": "Anne",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "still-alice"
+      },
+      "recaps": {
+        "ending": "By the final stage of the novel, Alice can no longer work, travel independently, follow her old memory tests, or consistently recognize the people around her. The computer file she once created to guide her toward suicide appears on her screen, but she cannot retain its instructions long enough to carry them out. John accepts a position in New York and prepares to leave; Alice remains in Cambridge, where Anna and Charlie now have twins and Lydia has returned from Los Angeles to help care for her. Although Alice has lost much of the language and autobiographical knowledge that once defined her, she still responds emotionally to her family. After Lydia performs a scene for her, Alice cannot explain its subject but identifies the feeling it conveyed as love. The closing exchange leaves her illness unchanged while showing that connection and emotion remain accessible after many other capacities have gone.",
+        "in_short": "Harvard professor Alice Howland begins losing words and becoming disoriented at fifty. She is diagnosed with early-onset Alzheimer's disease caused by a hereditary mutation, forcing her husband John and their three adult children to confront both her decline and their own genetic risk. Alice leaves teaching, loses increasing amounts of independence, and creates a support group and public speech that let her speak for people living with dementia. Her relationship with her daughter Lydia improves as Alice becomes less able to impose old expectations. A plan Alice left herself for suicide fails because she can no longer follow it. John chooses a new job in New York, while Lydia returns to Cambridge and the family arranges Alice's care. At the end Alice cannot name many people or ideas, but after watching Lydia act she can still recognize and express love.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Alice Howland is a respected Harvard psychologist with a full schedule of lectures, research, travel, and family obligations. Shortly after turning fifty, she begins experiencing lapses that do not resemble ordinary distraction: a familiar word vanishes during a lecture, appointments escape her, and she becomes lost while running near her own home. She conceals much of this from John and tries to attribute it to hormonal change or overwork. Her family life is outwardly successful but contains tensions, especially her disagreement with Lydia, the youngest child, who wants to act rather than attend college. As the episodes recur, Alice realizes that professional expertise and careful organization are no longer enough to compensate, and she seeks medical help.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Neurological examinations and cognitive tests confirm that Alice's memory difficulties are progressive. She is diagnosed with early-onset Alzheimer's disease, a conclusion she and John initially struggle to absorb because of her age and intellectual ability. Genetic testing identifies a familial mutation, recasting the supposed alcoholism and decline of Alice's late father and creating a possible risk for Anna, Tom, and Lydia. Alice tells the children; each must decide whether to be tested. Anna, who is pursuing fertility treatment, learns that she carries the mutation, Tom does not, and Lydia chooses not to know. Alice continues teaching for a time, but student complaints and meetings with department chair Eric Wellman expose how badly the illness is affecting her work.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Alice steps away from Harvard and tries to preserve control through routines, exercise, medication, and daily memory questions stored on her computer. The file also contains instructions directing her to hidden pills if she can no longer answer. Without teaching and research, she feels increasingly excluded from the identities and conversations that once organized her days. John focuses on possible treatments and laboratory work, often responding to the illness as a problem to solve, while Alice wants time and companionship that acknowledge how limited their future may be. The couple continue to negotiate how much independence remains safe and how openly they should discuss a future neither can control.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Alice's symptoms progress despite treatment. She loses possessions, repeats questions, and needs increasing supervision. She also finds that many support services speak chiefly to caregivers rather than to the people who have dementia. Alice gathers other patients into a group where they can discuss the experience directly, giving her a new community after the loss of her academic role. At home, her relationship with Lydia begins to soften: Alice becomes more attentive to the work acting requires, and Lydia treats her mother's remaining abilities with patience. John continues to pursue research and possible treatment options, while Alice presses for choices centered on the time and capacities she still has.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Alice prepares a speech for a dementia conference. With Lydia's help she marks the text so she can keep her place and delivers an account of living inside the disease, asking to be seen as a person rather than reduced to a diagnosis. The speech gives her a public voice even as ordinary speech becomes harder. She then loses more of the ability to run alone, read reliably, prepare food, and recognize familiar places and people. Her sense of time fragments, and family gatherings bring both warmth and confusion. John considers a career opportunity in New York, intensifying the conflict between his professional plans and Alice's wish that he remain present during the limited time in which she can still know him.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Alice reaches a stage in which names, relationships, and much of her former professional life are no longer available to her. John prepares for his move to New York, and Lydia gives up her life in Los Angeles to return to Cambridge and share responsibility for Alice's daily care near Anna, Charlie, and their twins. Alice cannot consistently identify her children or understand complex conversation, yet she continues to register tone, safety, pleasure, and affection. Lydia reads and performs a scene for her, then asks what she thinks it is about. Alice cannot retrieve the story or analytical vocabulary that her old self would have supplied, but she recognizes the emotion and answers that it concerns love. Her cognitive losses remain profound, while the final moment establishes that emotional connection has survived.",
+            "through": {
+              "chapter": 25
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "still-alice"
+      }
+    },
     "stolen": {
       "characters": {
         "characters": [

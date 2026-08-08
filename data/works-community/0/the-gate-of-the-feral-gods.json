@@ -2004,6 +2004,251 @@
         "work": "the-godfather"
       }
     },
+    "the-godfather-multivoice-presentation": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Don Corleone",
+              "The Godfather"
+            ],
+            "description": "The head of the Corleone family, known to friends and petitioners as the Godfather. An Italian immigrant who has built wealth and political influence outside ordinary law, he presents himself as a man of reason, obligation, and reciprocal friendship. His power rests as much on favors and loyalty as on violence.",
+            "id": "vito-corleone",
+            "name": "Vito Corleone",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Vito's youngest son, a decorated Marine veteran newly returned from the Second World War. Intelligent, controlled, and dressed apart from the family's older traditions, he brings his girlfriend Kay to his sister's wedding while insisting that his father's criminal power does not define his own future.",
+            "id": "michael-corleone",
+            "name": "Michael Corleone",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Michael's American girlfriend, raised outside the Italian American world of the Corleones. At Connie's wedding she listens as Michael explains the family stories that other guests already understand, and she trusts his assurance that he intends to live differently from his father.",
+            "id": "kay-adams",
+            "name": "Kay Adams",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sonny"
+            ],
+            "description": "Vito's eldest son and expected heir, physically forceful, quick-tempered, and openly unfaithful to his wife. Sonny is devoted to his family but lacks his father's patience and secrecy, making his emotional reactions easy for both allies and rivals to read.",
+            "id": "santino-corleone",
+            "name": "Santino Corleone",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Fredo"
+            ],
+            "description": "Vito's middle son. Dutiful but less forceful than Sonny or Michael, he participates in the family's public ceremonies and business without appearing suited to command. His father regards him with affection mixed with disappointment.",
+            "id": "fredo-corleone",
+            "name": "Frederico Corleone",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Corleones' informally adopted son and trained lawyer, serving as Vito's counselor. Calm, discreet, and skilled at making the family's demands sound reasonable, he translates between legitimate institutions and the Don's system of favors while remaining personally loyal to the household that raised him.",
+            "id": "tom-hagen",
+            "name": "Tom Hagen",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Connie"
+            ],
+            "description": "Vito's daughter, whose wedding gathers the family, its allies, and its petitioners. She marries Carlo Rizzi in a lavish celebration, beginning a household whose private balance of power differs sharply from the protection surrounding her childhood home.",
+            "id": "constanzia-corleone",
+            "name": "Constanzia Corleone",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Connie's bridegroom, a handsome man from Nevada whose late father was Sicilian. The marriage gives him a place near the Corleone family, but Vito keeps him away from sensitive operations and provides him only a modest business opportunity.",
+            "id": "carlo-rizzi",
+            "name": "Carlo Rizzi",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A popular singer and Vito's godson, once helped out of an oppressive band contract by the Corleone family. His voice and film career are failing when he returns for Connie's wedding, and he again asks the Don to use influence on his behalf.",
+            "id": "johnny-fontane",
+            "name": "Johnny Fontane",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A feared enforcer whose extraordinary loyalty to Vito is matched by his capacity for violence. Even among the wedding guests he seems isolated and dangerous. Before meeting the Don, he rehearses a formal expression of devotion that does not come naturally to him.",
+            "id": "luca-brasi",
+            "name": "Luca Brasi",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the two senior caporegimes directing soldiers for the Corleone family. Jovial in manner and deeply experienced in the practical work of the organization, he becomes an instructor to Michael when the younger man must understand the family's methods.",
+            "id": "peter-clemenza",
+            "name": "Peter Clemenza",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sal Tessio"
+            ],
+            "description": "A veteran caporegime in the Corleone organization, quieter and more reserved than Clemenza. He commands a separate body of soldiers and has served Vito for decades, giving him both authority and an expectation of future independence.",
+            "id": "salvatore-tessio",
+            "name": "Salvatore Tessio",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Turk"
+            ],
+            "description": "A narcotics entrepreneur called the Turk, backed by the Tattaglia family. He approaches Vito for financing and political protection, presenting drugs as the next great criminal business. His proposal tests whether the Don's old system can resist a more profitable and destabilizing trade.",
+            "id": "virgil-sollozzo",
+            "name": "Virgil Sollozzo",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A corrupt New York police captain who gives Sollozzo official protection. His uniform makes a direct attack on him far more dangerous than ordinary gang conflict, and his willingness to use police power against Michael helps erase the younger man's remaining distance from family business.",
+            "id": "mark-mccluskey",
+            "name": "Captain Mark McCluskey",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A young Sicilian woman Michael sees while living under protection in the countryside. Her beauty affects him with an immediacy he experiences as physical destiny. Courtship proceeds formally through her family and offers him a private life far from New York.",
+            "id": "apollonia-vitelli",
+            "name": "Apollonia Vitelli",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Don Barzini"
+            ],
+            "description": "The head of a powerful rival New York family. Outwardly polished and respectful, he attends Corleone occasions as a fellow Don. Vito considers him a more formidable strategist than rivals who advertise their hostility.",
+            "id": "emilio-barzini",
+            "name": "Emilio Barzini",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-godfather-multivoice-presentation"
+      },
+      "recaps": {
+        "ending": "After Vito dies, Michael allows the rival families to believe the Corleones are weakening while he prepares a coordinated settlement. During the baptism of Connie's child, his men kill Barzini, Tattaglia, and other principal enemies. Moe Greene is also killed, clearing the family's control in Nevada. Tessio reveals himself as the intermediary for Barzini's planned attack and is taken away to die. Michael confronts Carlo with his part in arranging Sonny's murder, promises exile, and then has Clemenza strangle him. Connie accuses Michael before Kay; he denies ordering Carlo's death, and Kay initially accepts the denial. She later learns enough from Tom Hagen to understand that Michael has become the Don. After leaving for a time, she returns with their children and converts to Catholicism, praying for Michael's soul. The Corleone family prepares to transfer its base to Nevada under Michael's command. Vito's project of protecting his family has produced a successor more calculating and absolute, while Michael's promise to remain outside that world has been completely reversed.",
+        "in_short": "At his daughter's wedding, New York crime boss Vito Corleone grants favors through a system of loyalty and obligation. When he refuses to support Virgil Sollozzo's narcotics business, he is shot and a gang war begins. His youngest son Michael, previously determined to remain respectable, protects him in the hospital and kills Sollozzo and police captain McCluskey, then hides in Sicily. Sonny leads the family war but is betrayed by Connie's husband Carlo and murdered. Michael's Sicilian wife Apollonia is also killed. Vito makes peace, recognizes Barzini as the force behind the conflict, and brings Michael home. Michael marries Kay, succeeds his father, and moves toward Nevada while concealing his plans. After Vito's death, Michael has the rival leaders killed, executes the disloyal Tessio, and orders Carlo's death for betraying Sonny. Kay learns that her husband is now the Don she believed he would never become. The family survives and expands, but Michael completes his moral transformation into his father's more ruthless successor.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In 1945, Vito Corleone presides over his daughter Connie's Long Island wedding. While guests celebrate, men including undertaker Amerigo Bonasera, baker Nazorine, and singer Johnny Fontane privately ask the Don for help they cannot obtain through ordinary institutions. Vito grants favors but defines them as obligations within a network of friendship and respect. The gathering introduces his volatile eldest son Sonny, gentler middle son Fredo, adopted counselor Tom Hagen, and youngest son Michael, a decorated war veteran who has brought his non-Italian girlfriend Kay Adams. Michael explains the family's history while distancing himself from it. Vito sends Tom to Hollywood to persuade producer Jack Woltz to give Johnny a valuable film role. When money and polite pressure fail, the severed head of Woltz's prized horse demonstrates the force behind the Don's requests. Johnny receives the role, and the Corleone system appears powerful enough to reach politics, unions, entertainment, and private family life.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Virgil Sollozzo asks Vito for money and political protection to build a narcotics trade backed by the Tattaglia family. Vito refuses because drugs could destroy the political relationships on which his organization depends, but Sonny's visible interest tells Sollozzo that the family may be divided. Luca Brasi is sent to investigate and is murdered. Gunmen then shoot Vito in the street. With the Don critically wounded, Sonny assumes command and prepares for war while Tom is briefly abducted and released with demands for a deal. Michael, still considered a civilian, finds his father's hospital room unguarded and realizes another attack is imminent. He moves Vito, recruits a frightened visitor to pose as protection, and faces Sollozzo's men until police arrive. Captain McCluskey, who is protecting Sollozzo, breaks Michael's jaw. The attack convinces Michael that legal status offers no safety and that he can no longer remain outside the conflict.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sollozzo proposes a meeting with Michael, believing Vito's previously uninvolved son can negotiate peace. Michael instead volunteers to kill both Sollozzo and Captain McCluskey. Because killing a police officer will bring enormous pressure, the family verifies McCluskey's corruption and plans the act carefully. Clemenza teaches Michael how to use a hidden pistol and leave without hesitation. At an Italian restaurant, Michael retrieves the weapon from the lavatory and shoots both men. The family begins a public campaign exposing McCluskey's criminal ties while Michael is secretly sent to Sicily. His choice makes him a murderer and binds his future to the organization he had rejected. In New York, Sonny directs a violent struggle against the Tattaglias and their allies as Vito slowly recovers, but neither side can secure a clean victory.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The gang war settles into costly stalemate. Sonny's temper drives aggressive retaliation but also makes him predictable. Connie's marriage has become abusive; when Carlo beats her and she calls the Corleone home, Sonny races toward her without adequate protection. Gunmen ambush him at a toll plaza and kill him. Vito, recovered but grieving, resumes command and asks Bonasera to repair Sonny's body for burial, calling in the undertaker's wedding-day debt. Rather than continue a war that could endanger Michael, Vito summons the other Dons and agrees to peace and a limited accommodation with the narcotics trade. He promises not to avenge Sonny. Reading the meeting closely, he concludes that Barzini, not the more obvious Tattaglia, has directed the attack on his family. The peace is therefore a truce designed to bring Michael safely home, not an end to the struggle for control.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In Sicily, Michael lives under guard and learns more about the violence that shaped his father's generation. He falls in love with Apollonia Vitelli and marries her through local custom. Their brief marriage ends when a car bomb intended for Michael kills Apollonia, proving that the New York conflict reaches even his refuge. In New York, Vito's peace agreement stops the immediate war and permits the arrangements needed to bring Michael safely home. The losses of Sonny and Apollonia have nevertheless removed the futures the younger generation once expected. Barzini's hidden direction of the rival alliance remains unresolved, and Vito's promise not to seek vengeance limits what he can do openly. Michael returns with far less distance from his father's world than he possessed at Connie's wedding.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Back in the United States, Michael seeks out Kay, tells her he is now working with his father, and asks her to marry him while promising that the family will become legitimate. They begin a family, but Michael reveals only what supports that promised future. He visits Nevada and asserts control over the Corleones' plans there, rebuking Fredo for supporting casino operator Moe Greene against his own family. In New York, Clemenza and Tessio are told they must wait before forming independent organizations. Vito teaches Michael how rivals and trusted subordinates will test him, warning that Barzini will arrange a supposed peace meeting through a traitor close to the family. Vito then dies of a heart attack while playing with his grandson in the garden. At the funeral, Tessio offers to arrange the meeting with Barzini, confirming the warning. Rivals interpret Vito's death as their opportunity, while Michael maintains a calm appearance and completes the plans his father helped him design.",
+            "through": {
+              "chapter": 29
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Michael stands as godfather at the baptism of Connie and Carlo's child while his organization executes a coordinated attack. Barzini, Tattaglia, and other enemy leaders are killed, as is Moe Greene, removing opposition in both New York and Nevada. Tessio's attempt to deliver Michael to Barzini is exposed; he asks Tom to save him but is taken away for execution. Michael then confronts Carlo. After obtaining his confession that he helped set Sonny's fatal ambush, Michael has Clemenza strangle him despite promising that he would merely be expelled from the family. Connie accuses Michael of killing her husband. He denies the charge to Kay, but she eventually learns from Tom enough to recognize the truth and the position Michael now occupies. She leaves, then returns with their children and adopts Catholic prayer as a way to hope for his soul. As the family prepares to relocate to Nevada, Michael is firmly established as Don: he has preserved the Corleone empire by becoming the calculating criminal ruler he once promised Kay he would never be.",
+            "through": {
+              "chapter": 32
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-godfather-multivoice-presentation"
+      }
+    },
     "the-gods-of-mars": {
       "characters": {
         "characters": [

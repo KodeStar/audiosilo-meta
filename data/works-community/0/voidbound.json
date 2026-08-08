@@ -3464,6 +3464,188 @@
         ],
         "work": "wda-classics-presents-h-g-wells-war-of-the-worlds"
       }
+    },
+    "wda-classics-presents-mary-shelleys-frankenstein": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The captain of an expedition seeking a northern passage and scientific discovery. In letters to his sister Margaret, he records the rescue and testimony of Victor Frankenstein.",
+            "id": "robert-walton",
+            "name": "Robert Walton",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Genevan student whose desire to understand and generate life grows into a secret, consuming experiment. Walton finds him near death in the Arctic, where Victor explains the choices that brought him there.",
+            "id": "victor-frankenstein",
+            "name": "Victor Frankenstein",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Victor's adopted cousin, childhood companion, and intended bride. She is closely attached to the Frankenstein family and represents the domestic bonds Victor neglects during his scientific obsession.",
+            "id": "elizabeth-lavenza",
+            "name": "Elizabeth Lavenza",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Victor's loving and socially respected father, based in Geneva. He finances Victor's studies and tries to draw his son back toward family life whenever Victor retreats into secrecy and grief.",
+            "id": "alphonse-frankenstein",
+            "name": "Alphonse Frankenstein",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Victor's youngest brother, still a child when Victor leaves Geneva for university.",
+            "id": "william-frankenstein",
+            "name": "William Frankenstein",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Victor's loyal friend from childhood, drawn more to literature, languages, and public service than to experimental science. He comes to Ingolstadt and cares for Victor during a severe illness.",
+            "id": "henry-clerval",
+            "name": "Henry Clerval",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A chemistry professor at Ingolstadt whose welcoming manner and account of scientific progress encourage Victor to undertake ambitious research.",
+            "id": "m-waldman",
+            "name": "M. Waldman",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "The Creature"
+            ],
+            "description": "A large humanlike being made from dead matter and brought to life by Victor. His first experience is immediate rejection: Victor is horrified by the result of his work and runs away, leaving the new being without explanation or support.",
+            "id": "victors-creation",
+            "name": "Victor's Creation",
+            "reveal": {
+              "chapter": 5
+            }
+          },
+          {
+            "description": "A young woman long connected with the Frankenstein household. She is charged with William's murder when an item taken from the child is discovered among her belongings, although Elizabeth firmly defends her.",
+            "id": "justine-moritz",
+            "name": "Justine Moritz",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The blind father of an exiled French family living in a modest cottage. His inability to see the creation's appearance gives the isolated being hope that conversation might win acceptance.",
+            "id": "de-lacey",
+            "name": "De Lacey",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "De Lacey's son, who shares the cottage with his father and sister Agatha. His lessons to Safie also provide the secretly observing creation with language and an education in human society.",
+            "id": "felix-de-lacey",
+            "name": "Felix De Lacey",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The daughter of a Turkish merchant and the woman Felix loves. She finds the De Laceys in exile and studies French with them, unaware that another pupil is listening from hiding.",
+            "id": "safie",
+            "name": "Safie",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "wda-classics-presents-mary-shelleys-frankenstein"
+      },
+      "recaps": {
+        "ending": "After the creation murders Elizabeth, Alphonse Frankenstein dies from the accumulated shock, and Victor devotes what remains of his life to pursuit. The chase crosses the continent and reaches the Arctic Ocean. Walton's crew finds Victor stranded on the ice and brings him aboard, but he cannot recover. He completes his warning about destructive ambition and dies. When the expedition's survival is threatened, Walton accepts his crew's demand to return to England. He then discovers the creation beside Victor's body. The being grieves for his creator and says that his crimes have made him as wretched as his victims. With Victor dead and vengeance exhausted, he declares that he will build a funeral fire for himself. He leaves through the cabin window and travels away over the ice; Walton never confirms whether he carries out that intention.",
+        "in_short": "Robert Walton's Arctic expedition rescues Victor Frankenstein, who tells how he became obsessed with creating life while studying at Ingolstadt. Victor animates a powerful humanlike being but abandons him in disgust. The creation educates himself while secretly observing the De Laceys and longs for fellowship, yet repeated rejection turns him against his maker. He kills Victor's brother William and allows Justine to be condemned, then demands a female companion. Victor agrees but destroys his second creation before bringing her to life. In revenge, the being kills Henry Clerval and Victor's bride Elizabeth. The deaths of Victor's remaining family leave him committed to a pursuit that ends in the Arctic. Victor dies aboard Walton's ship. The creation mourns over him, says that he plans to destroy himself, and disappears across the frozen sea.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Robert Walton leads a ship into Arctic ice and writes to his sister about the expedition. His crew rescues Victor Frankenstein, an ill stranger who has been traveling alone across the frozen sea. After hearing Walton speak of discovery at any cost, Victor offers his own life as a warning. He describes a happy Genevan childhood with Elizabeth Lavenza and Henry Clerval, followed by studies at Ingolstadt. There the professors Krempe and Waldman turn his old interest in natural philosophy toward chemistry and anatomy. Victor learns how to impart life and withdraws from friends and family while assembling a large human form. The experiment succeeds, but the result horrifies him. He abandons the living being, suffers a breakdown, and depends on the newly arrived Clerval to nurse him back to health.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Victor begins to recover until his father reports that William, Victor's young brother, has been killed. Near Geneva, Victor glimpses his creation during a storm and concludes that the being murdered the child. He does not reveal his experiment, believing no one would credit the story. Justine Moritz is arrested because a miniature carried by William is found in her possession. Elizabeth speaks in her defense, but Justine's confession, obtained under religious pressure and later withdrawn in private, helps secure a guilty verdict. She is executed. Victor regards both deaths as consequences of the life he made and his refusal to speak, but remains silent and retreats into the Alpine landscape.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The creation confronts Victor among the mountains and asks him to listen before judging. He recounts awakening alone, learning to survive outdoors, and discovering that people attack him on sight. Hidden in a shelter beside the De Lacey cottage, he watches Felix, Agatha, and their blind father treat one another with care. He gathers firewood for them at night and learns words from their conversations. Safie's arrival brings regular language lessons that he follows from hiding. Reading and observation give him a knowledge of history, morality, family, and property, while also making the absence of companionship in his own life increasingly painful.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The creation speaks privately to blind De Lacey and is received calmly, but Felix returns and beats him before hearing his explanation. The family soon leaves the cottage. In despair and anger, the creation burns their abandoned home. A later attempt to save a drowning child ends with him being shot. He travels to Geneva, kills William after discovering his connection to Victor, and plants evidence on Justine. He now asks Victor to make a female companion who will share his exile, promising that both beings will disappear into a remote wilderness. Victor fears the request but accepts, reasoning that a companion may end the violence and remove his creation from humanity.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Victor accompanies Clerval to Britain and separates from him to work on an isolated Scottish island. While constructing a female being, he imagines the danger that she may refuse the promised exile or that the pair may reproduce. He tears the unfinished body apart while the first creation watches. The being promises to be present on Victor's wedding night. After disposing of the remains at sea, Victor lands in Ireland and is detained for murder. The dead man is Clerval, killed by strangulation. Victor becomes dangerously ill, then is acquitted when evidence establishes that he was elsewhere at the time of the killing. His father takes him back toward Geneva, but Victor tells him nothing of the threat.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Victor and Elizabeth marry. Expecting the creation to attack him, Victor sends Elizabeth away while he searches their lodging, leaving her unprotected. The creation kills her and escapes. Alphonse dies after learning of the murder, and Victor asks the authorities to hunt the being, without success. He follows his enemy across Europe and Russia and onto the Arctic ice, sustained by supplies and messages the creation leaves to prolong the chase. Walton's expedition rescues Victor, who finishes his history and dies aboard ship. Walton chooses to turn back when his crew refuses further danger. The creation visits Victor's body, expresses remorse without denying his crimes, and says that he intends to die by fire. He then vanishes over the ice, and his ultimate fate remains unseen.",
+            "through": {
+              "chapter": 24
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "wda-classics-presents-mary-shelleys-frankenstein"
+      }
     }
   }
 }
