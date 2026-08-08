@@ -326,6 +326,219 @@
         "work": "the-tale-of-cupid-and-psyche"
       }
     },
+    "the-tale-of-despereaux": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An unusually small castle mouse born with open eyes and very large ears. Despereaux disappoints his family by loving music, stories, light, and a human princess instead of learning to fear people and search for crumbs.",
+            "id": "despereaux-tilling",
+            "name": "Despereaux Tilling",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The human princess of the castle. Pea is grieving for her mother when Despereaux first approaches her, and she responds to the tiny mouse's courtesy and devotion with gentleness rather than fear.",
+            "id": "princess-pea",
+            "name": "Princess Pea",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Despereaux's father and a member of the castle's mouse community. Lester believes strongly in mouse rules and is alarmed by his youngest son's lack of ordinary fear.",
+            "id": "lester-tilling",
+            "name": "Lester Tilling",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Despereaux's French mother, who is given to dramatic declarations and regrets having produced such a small, unconventional child. Her concern for appearances makes it difficult for her to defend him from the mouse community.",
+            "id": "antoinette-tilling",
+            "name": "Antoinette Tilling",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Despereaux's older siblings. Furlough tries to teach him proper mouse behavior and is horrified to discover him speaking to Princess Pea, an offense the mouse council treats as grave.",
+            "id": "furlough-tilling",
+            "name": "Furlough Tilling",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The formal leader of the castle mice, responsible for enforcing their laws. He presides over Despereaux's hearing and treats contact with humans as a threat to the entire community.",
+            "id": "most-very-honored-head-mouse",
+            "name": "The Most Very Honored Head Mouse",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The mouse who marks condemned mice with red thread before they are sent to the dungeon. Hovis carries out his office but shows Despereaux a measure of compassion absent from the council's judgment.",
+            "id": "hovis",
+            "name": "Hovis",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Princess Pea's father, left rigid with grief after the queen's death. He tries to remove the causes of his pain by outlawing soup, spoons, rats, and other reminders throughout the kingdom.",
+            "id": "king-phillip",
+            "name": "King Phillip",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Roscuro"
+            ],
+            "description": "A young dungeon rat whose name means light. Unlike other rats, Chiaroscuro is fascinated by brightness and dreams of living above, a desire his fellow rat Botticelli regards as weakness.",
+            "id": "chiaroscuro",
+            "name": "Chiaroscuro",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An old, sophisticated dungeon rat who teaches Roscuro that a rat should prize darkness and the suffering of others. He uses a heart-shaped locket taken from a prisoner as a tool for his cruel games.",
+            "id": "botticelli-remorso",
+            "name": "Botticelli Remorso",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A neglected girl sold by her father to a man she calls Uncle in exchange for a few ordinary goods. Repeated blows to her ears have left Miggery hard of hearing, and a glimpse of Princess Pea gives her the fixed dream of becoming a princess herself.",
+            "id": "miggery-sow",
+            "name": "Miggery Sow",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Uncle"
+            ],
+            "description": "The man who acquires Miggery from her father and uses her as an overworked servant. He is not her relative, and his frequent blows contribute to her hearing loss.",
+            "id": "mig-uncles-owner",
+            "name": "Miggery Sow's Owner",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The jailer of the castle dungeon, who survives its darkness by following a rope that guides him back toward the stairs. Gregory responds to Despereaux's presence and story with unexpected mercy.",
+            "id": "gregory",
+            "name": "Gregory",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The castle cook, whose work has been diminished by the king's ban on soup. She is intimidating to a mouse, but the chance to make soup again awakens her generosity as well as her pride in her craft.",
+            "id": "cook",
+            "name": "Cook",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Princess Pea's mother, remembered for her kindness and her particular love of soup. Her sudden death leaves both the king and the princess governed by grief and helps shape Roscuro's fate.",
+            "id": "the-queen",
+            "name": "The Queen",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-tale-of-despereaux"
+      },
+      "recaps": {
+        "ending": "Despereaux enters the dungeon armed with a sewing needle, following the smell of the soup Cook has made despite the king's ban. He reaches Princess Pea after Miggery Sow has helped Roscuro take her captive. Mig learns that Roscuro never intended or had the power to make her a princess and turns against him. Despereaux confronts the rat, but the resolution comes through Pea's offer of mercy: if Roscuro guides them out, he may live above and receive soup. The promise reaches the part of him that has always wanted light and belonging. Roscuro leads Pea, Mig, and Despereaux out of the dungeon. Pea is restored to her father, soup returns to the kingdom, and Roscuro is permitted access to both the bright castle and the dungeon. Mig's longing to matter is finally recognized, and Despereaux survives as Pea's honored friend. The tale ends with its characters brought together at a shared table rather than divided between light and darkness.",
+        "in_short": "Despereaux Tilling is a tiny castle mouse who loves music, stories, light, and Princess Pea. The mouse council condemns him to the dungeon for speaking to a human. There he becomes entangled with Chiaroscuro, or Roscuro, a rat whose longing for light ended in disaster when his appearance frightened the queen to death. Blamed by Pea and driven back underground, Roscuro plots revenge. He recruits Miggery Sow, an abused servant who dreams of becoming a princess, to abduct Pea. Despereaux learns of the plan and enters the dungeon with a sewing needle as a sword, aided by Cook's forbidden soup. Mig turns on Roscuro when she realizes he has deceived her, and Despereaux reaches the captives. Pea offers Roscuro soup and a place in the light if he leads them out. He accepts. Pea returns safely, soup is restored, Roscuro can move between castle and dungeon, Mig receives care, and Despereaux remains the princess's friend.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Despereaux Tilling is born into a family of castle mice, unusually small and with his eyes already open. He grows into a mouse who prefers music and stories to crumbs and who does not develop the fear of humans that his family considers essential. Drawn by music, he enters the presence of King Phillip and Princess Pea and speaks directly to the princess. Pea treats him kindly, and Despereaux falls in love with her. His brother Furlough reports the forbidden contact. The mouse council, led by the Most Very Honored Head Mouse, tries Despereaux for revealing himself to a human and sentences him to the dungeon, where rats are expected to kill him. The threadmaster Hovis marks him with red thread, and his own family does not prevent the punishment. Despereaux is pushed into the darkness below the castle, carrying only his love and the storybook idea of a knight serving a princess.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The tale turns to Chiaroscuro, called Roscuro, a young dungeon rat fascinated by light. Botticelli Remorso instructs him to embrace darkness and cause suffering, but Roscuro ventures upstairs toward the brightness of a royal banquet. He falls into the queen's soup, and the sight of him so frightens her that she dies. Princess Pea glares at Roscuro with hatred, and he retreats to the dungeon convinced that light has rejected him. The grieving king bans rats and also outlaws soup and the utensils associated with it. Roscuro keeps a token of the bright world and allows his longing to harden into a desire for revenge on Pea. Despereaux, meanwhile, survives his first encounter with the dungeon because Gregory the jailer takes interest in him and in the story he carries.",
+            "through": {
+              "chapter": 23
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Miggery Sow loses her mother when she is young, and her father sells her to a man she calls Uncle for a red tablecloth, a hen, and cigarettes. Mig works without care or education and is struck so often around the ears that she becomes hard of hearing. When she sees Princess Pea pass by, she mistakes the visible beauty of royal life for freedom from all pain and decides that she will become a princess. A soldier discovers that Uncle has broken the king's law by keeping soup-making materials and removes Mig from his custody. She is sent to work at the castle, but her deafness, clumsiness, and lack of training make every task difficult. Carrying a tray to the dungeon brings her into contact with Roscuro, who recognizes that her dream can be used against Princess Pea.",
+            "through": {
+              "chapter": 33
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Roscuro persuades Mig that she can take Pea's place if they bring the princess into the dungeon. Mig accepts because she does not understand either political power or Roscuro's desire for revenge. Roscuro also destroys the rope Gregory uses to navigate below, leaving the jailer lost in the darkness, where he dies. Despereaux, back in the castle after surviving the dungeon, overhears enough of their plan to know that Pea is in danger. He tries to warn the king, but a grieving ruler who has outlawed rats and soup cannot accept a mouse as his daughter's rescuer. Despereaux turns instead to the code of the stories he loves. He asks Hovis for help, obtains a sewing needle to use as a sword, and prepares to return voluntarily to the darkness that nearly killed him. Roscuro and Mig enter Pea's room and force her toward the dungeon, where Roscuro intends to keep her from the light as he believes she once kept him from it.",
+            "through": {
+              "chapter": 40
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Pea is taken deep into the dungeon. Mig expects to exchange identities with her, but Pea explains that a crown and dress cannot make someone a princess. Roscuro's assurances begin to fail, exposing that he has used Mig's longing for his own revenge. Despereaux descends with his needle despite fear and exhaustion. Cook, defying the king's old prohibition, makes soup; she gives Despereaux food and allows him to continue, and the soup's smell travels into the dungeon as a reminder of the lost queen and the life above. Botticelli attempts to guide Despereaux toward destruction, while the dungeon's darkness and rats make the rescue increasingly dangerous. Despereaux continues because his love for Pea is stronger than his expectation of success.",
+            "through": {
+              "chapter": 46
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the dungeon, Mig understands that Roscuro cannot make her a princess and turns against the deception. Despereaux reaches Pea and confronts Roscuro with the needle, acting as the knight he imagined even though he is physically no match for a rat. The decisive change comes when Pea offers Roscuro mercy rather than the condemning look he has remembered: if he guides them out, he can have soup and some access to the light. The aroma and promise break through his revenge. Roscuro leads Pea, Mig, and Despereaux safely out of the dungeon. Pea is reunited with the king, and soup returns to the castle. Roscuro is allowed to divide his life between the world above and the dungeon instead of being wholly rejected by either. Mig is treated with the care denied her for most of her life, and Despereaux remains close to Pea as a friend and honored rescuer. Their shared meal replaces the separations that drove the story.",
+            "through": {
+              "chapter": 52
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-tale-of-despereaux"
+      }
+    },
     "the-tattooist-of-auschwitz": {
       "characters": {
         "characters": [
