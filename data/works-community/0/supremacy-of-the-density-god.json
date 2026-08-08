@@ -443,6 +443,199 @@
         "work": "supremacy-of-the-density-god"
       }
     },
+    "swanns-way": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The reflective first-person narrator, first encountered as an adult whose attempts to sleep draw him through memories of rooms, fears, and childhood habits. Much of the opening follows his younger self at Combray, where his intense need for his mother's evening kiss makes ordinary bedtime separations feel momentous.",
+            "id": "narrator",
+            "name": "The Narrator",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The narrator's affectionate mother. Her goodnight kiss is the center of his childhood bedtime ritual, and her absence from his room when the family has a guest leaves him distressed enough to risk his father's displeasure.",
+            "id": "narrators-mother",
+            "name": "The Narrator's Mother",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The narrator's father, generally decisive about household routines and less anxious than the women around him. Though the child expects punishment after defying bedtime rules, his father unexpectedly tells the boy's mother to stay with him for the night.",
+            "id": "narrators-father",
+            "name": "The Narrator's Father",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The narrator's vigorous, unconventional grandmother, who values fresh air, long walks, natural expression, and useful gifts. She dislikes social pretension and tries to give her grandson objects with genuine artistic worth rather than fashionable substitutes.",
+            "id": "grandmother",
+            "name": "The Narrator's Grandmother",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The narrator's invalid great-aunt in Combray, confined largely to two adjoining rooms from which she closely observes the household and the town. She receives visitors after Sunday service, worries over routine, and depends on Françoise while also testing her loyalty.",
+            "id": "aunt-leonie",
+            "name": "Aunt Léonie",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A capable servant in Aunt Léonie's household whose cooking and practical authority shape daily life at Combray. She follows a firm personal code of duty and hierarchy, combining devoted service with judgments that can be severe.",
+            "id": "francoise",
+            "name": "Françoise",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A cultivated family friend and frequent visitor at Combray. The narrator's relatives know him as the courteous son of a stockbroker and do not understand the reach of his fashionable Parisian connections. His arrival one evening disrupts the narrator's expected goodnight kiss.",
+            "id": "charles-swann",
+            "name": "Charles Swann",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Jewish school friend of the narrator who introduces him to contemporary writing and speaks with theatrical contempt for conventional society. His visits to Combray expose both his social awkwardness and the prejudices of the narrator's family.",
+            "id": "bloch",
+            "name": "Bloch",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A retired piano teacher and modest composer who lives near Combray with his daughter. Shy and morally earnest, he is pained by conduct he considers improper and is treated condescendingly by people who know little of his musical gifts.",
+            "id": "vinteuil",
+            "name": "Vinteuil",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Vinteuil's daughter, seen near her father's Montjouvain home in the company of an older female friend. Her public behavior troubles her father, while the narrator's glimpses of their household leave him curious about a life he does not understand.",
+            "id": "mlle-vinteuil",
+            "name": "Mlle Vinteuil",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Swann's daughter, first glimpsed by the young narrator near Tansonville. Her association with the forbidden Swann path, and the direct look she gives him, make her an immediate object of fascination before he has any real acquaintance with her.",
+            "id": "gilberte-swann",
+            "name": "Gilberte Swann",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A fashionable woman of uncertain social standing whom Swann meets through the Verdurin circle. He is not initially attracted to her, but her attention, their repeated meetings, and the meanings he attaches to music and art gradually make her central to his life.",
+            "id": "odette-de-crecy",
+            "name": "Odette de Crécy",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The possessive hostess of a self-declared circle of loyal regulars. She rewards agreement, discourages outside attachments, and treats taste as another instrument for keeping her guests dependent on her salon.",
+            "id": "mme-verdurin",
+            "name": "Mme Verdurin",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A physician and regular at the Verdurins' gatherings. His habitual puns and uncertain social manner make him appear foolish to Swann, though the salon responds to his remarks with the enthusiasm expected of its members.",
+            "id": "doctor-cottard",
+            "name": "Doctor Cottard",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A well-connected newcomer welcomed into the Verdurin circle. His growing familiarity with Odette gives Swann a rival upon whom his jealousy can fasten, while the hosts prefer Forcheville's compliance to Swann's independence.",
+            "id": "forcheville",
+            "name": "Forcheville",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "swanns-way"
+      },
+      "recaps": {
+        "ending": "In Paris, the adolescent narrator organizes his days around seeing Gilberte in the Champs-Élysées. Their games grow into a fragile friendship, and he is admitted to the Swann household, but his desire for constant reassurance makes every delay or cool response painful. Gilberte gradually withdraws, and his attempts to recover her attention only deepen his dependence until he forces himself to stop visiting. The book then shifts to the adult narrator walking in the Bois de Boulogne. Remembering the elegance once embodied there by Mme Swann, he finds that the people, clothes, carriages, and social meanings he associated with the place have disappeared. The landscape cannot restore the past because the observer and the world have both changed. The volume closes not with a recovered scene but with recognition that memory preserves an arrangement of time that the physical setting no longer contains.",
+        "in_short": "An adult narrator's reflections on sleep and memory lead back to childhood visits to Combray, where family rituals, his longing for his mother, the church, gardens, servants, neighbors, and two country walks form the first geography of his imagination. A madeleine dipped in tea unexpectedly restores this world with an intensity deliberate recollection could not achieve. The narrative then turns to family friend Charles Swann's earlier obsession with Odette de Crécy. Music and repeated meetings transform mild interest into love, while exclusion from the Verdurin salon and uncertainty about Odette feed destructive jealousy. Swann eventually recognizes that his love has largely vanished, though he later marries Odette. In Paris, the young narrator falls for their daughter Gilberte and suffers through an unequal childhood attachment. Returning as an adult to the Bois de Boulogne, he sees that the fashionable world he remembers is gone and concludes that places alone cannot recover lost time.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "The adult narrator describes the unstable border between waking and sleep, when memory can briefly place him in rooms from different periods of his life. One memory settles on childhood nights at Combray. When Charles Swann dines with the family, the boy cannot receive his usual goodnight kiss from his mother. He waits in anguish and intercepts her after the guest leaves, expecting his disobedience to be punished. Instead, his father sees his distress and tells his mother to sleep in the boy's room. She reads to him, but the unexpected concession feels less like triumph than recognition that his suffering is real. The narrator also recalls how little his family understood Swann: to them he was a familiar, socially modest neighbor, though elsewhere he moved among aristocrats and connoisseurs. These involuntary night memories remain fragmentary until, years later, the taste of cake softened in tea suddenly brings a forgotten past within reach.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The taste of the madeleine restores Combray in widening detail. The narrator remembers Aunt Léonie's confined household, Françoise's formidable cooking and code of service, the church of Saint-Hilaire, local figures, family visitors, and the rhythms by which private habits became an entire world. Two walking routes organize his imagination. The Méséglise way passes Swann's property at Tansonville, where he first sees Gilberte, and Montjouvain, where he secretly witnesses Mlle Vinteuil and her companion treating the dead composer's memory with calculated disrespect. The Guermantes way directs his longing toward the aristocratic family whose name seems to promise history and romance. Nature, buildings, art, gossip, and desire become inseparable in these recollections. His hopes of becoming a writer remain uncertain, but moments of intense perception suggest that ordinary appearances contain meanings he might someday learn to express.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The story moves back to Swann before the narrator's birth. Through the Verdurins' salon he repeatedly meets Odette de Crécy, a woman who initially does not match his preferences. He begins to imagine her through art, and a phrase from Vinteuil's sonata becomes the emblem of their intimacy. Once attached, Swann grows dependent on Odette's availability and on the Verdurin circle that controls access to her. Mme Verdurin resents his outside connections and favors Forcheville, whose attention to Odette intensifies Swann's suspicion. He questions servants, reconstructs evenings, spies outside windows, and presses Odette for confessions, but facts provide no lasting certainty. Evidence of relationships and desires she concealed enlarges the past he cannot investigate or control. His jealousy outlives much of his pleasure in her company. After prolonged suffering, travel and time loosen the obsession, and a dream helps him recognize how little the woman he loved resembles the image he created. He nevertheless later marries Odette, making Gilberte the daughter of the passion his family never knew about.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "As a boy, the narrator invests place-names with imagined colors, histories, and promises of travel, but ill health keeps him in Paris. In the Champs-Élysées he meets Gilberte Swann during children's games and falls in love with her. Small signs of favor bring elation; absences and ambiguous words bring despair. He becomes welcome at her parents' home and observes Odette in her later position as Mme Swann, yet closeness to the family cannot give him command of Gilberte's feelings. When she becomes less responsive, he tries withdrawal both as a test and as a cure. The attachment slowly recedes, showing that even emotions that appear permanent can be altered by habit and time. Years afterward, the adult narrator walks through the Bois de Boulogne seeking the elegance he remembers from Mme Swann's appearances there. Changed fashions and customs reveal the attempt's impossibility. The remembered world survives in time, not as a fixed reality waiting in the old place, and the present landscape makes its disappearance more visible rather than reversing it.",
+            "through": {
+              "chapter": 4
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "swanns-way"
+      }
+    },
     "swarm": {
       "characters": {
         "characters": [
