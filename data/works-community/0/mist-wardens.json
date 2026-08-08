@@ -997,6 +997,407 @@
         "work": "mitosis"
       }
     },
+    "moby-dick-amazonclassics-edition": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The narrator, a restless former schoolteacher who goes to sea when life ashore becomes oppressive. He chooses a whaling voyage for its danger and scope, observing the people, labor, natural history, and symbolism of the hunt with an expansive, questioning intelligence.",
+            "id": "ishmael",
+            "name": "Ishmael",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A highly skilled harpooner from the fictional Pacific island of Rokovoko. Tattooed and initially alarming to Ishmael, he proves calm, generous, courageous, and practical. The two become close friends and agree to seek a berth on the same whaling ship.",
+            "id": "queequeg",
+            "name": "Queequeg",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Coffin"
+            ],
+            "description": "The talkative proprietor of the Spouter-Inn in New Bedford. Faced with a shortage of beds, he places Ishmael in a room shared with the absent harpooner Queequeg and helps turn their alarming first meeting into an orderly arrangement.",
+            "id": "peter-coffin",
+            "name": "Peter Coffin",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A celebrated former sailor who preaches at the Whaleman's Chapel in New Bedford. He climbs into a ship-shaped pulpit and delivers a sermon on Jonah, obedience, and the burden of speaking unwelcome truth before Ishmael and Queequeg leave for Nantucket.",
+            "id": "father-mapple",
+            "name": "Father Mapple",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Captain Peleg"
+            ],
+            "description": "A retired whaling captain and part-owner of the Pequod. Blunt, energetic, and commercially minded, he interviews Ishmael and Queequeg, argues over their shares, and signs them for the voyage while defending the absent Captain Ahab's ability.",
+            "id": "peleg",
+            "name": "Peleg",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Captain Bildad"
+            ],
+            "description": "A wealthy Quaker part-owner of the Pequod and a former whaler. Stern, economical, and outwardly pious, he joins Peleg in hiring the crew and presses for the smallest possible financial shares.",
+            "id": "bildad",
+            "name": "Bildad",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A mysterious old man on the Nantucket waterfront who questions Ishmael and Queequeg about signing aboard the Pequod. He offers dark, ambiguous warnings about Ahab and the voyage without explaining exactly what he knows.",
+            "id": "elijah",
+            "name": "Elijah",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Pequod's first mate, a capable Nantucket whaleman, husband, and father. Serious, cautious, and guided by his Quaker conscience, he accepts the dangers of whaling as work but distrusts needless risk and uncontrolled passion.",
+            "id": "starbuck",
+            "name": "Starbuck",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Pequod's easygoing second mate. Cheerful in danger and inclined to turn unsettling events into jokes or practical problems, he commands one of the whaleboats and works with the harpooner Tashtego.",
+            "id": "stubb",
+            "name": "Stubb",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Pequod's short, solidly built third mate, less experienced and less reflective than Starbuck or Stubb. He treats whales chiefly as valuable prey and commands a boat with Daggoo as his harpooner.",
+            "id": "flask",
+            "name": "Flask",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Wampanoag harpooner from Martha's Vineyard who serves in Stubb's boat. Quick, daring, and exceptionally accurate with a harpoon, he is one of the Pequod's three principal harpooners.",
+            "id": "tashtego",
+            "name": "Tashtego",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A towering African harpooner from the fictional village of Kabenda. His strength and imposing presence make him a key member of Flask's whaleboat crew.",
+            "id": "daggoo",
+            "name": "Daggoo",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Pippin"
+            ],
+            "description": "A young Black cabin boy aboard the Pequod. Sensitive, musical, and treated as an outsider by much of the crew, he plays a tambourine during shipboard celebrations and assists with routine work.",
+            "id": "pip",
+            "name": "Pip",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Captain Ahab"
+            ],
+            "description": "The Pequod's scarred captain, long absent from view after the ship sails. He has lost a leg and walks on a replacement made from whale bone. Commanding and withdrawn, he paces the deck at night and appears consumed by an intense private purpose.",
+            "id": "ahab",
+            "name": "Ahab",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the White Whale"
+            ],
+            "description": "An enormous white sperm whale known to whalers for unusual power and ferocity. Ahab identifies him as the whale that destroyed his leg and declares that hunting him, rather than ordinary profit, is the Pequod's true mission.",
+            "id": "moby-dick",
+            "name": "Moby Dick",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A secretive Parsee harpooner who emerges during the Pequod's first lowering with several previously hidden sailors. He commands the harpoon in Ahab's own boat and shares an unusually close, private understanding with the captain.",
+            "id": "fedallah",
+            "name": "Fedallah",
+            "reveal": {
+              "chapter": 48
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "moby-dick-amazonclassics-edition"
+      },
+      "recaps": {
+        "ending": "During three days of pursuit, Moby Dick repeatedly destroys Ahab's boats and resists every attack. Fedallah is lost and later seen bound to the whale by a harpoon line, fulfilling part of his warning to Ahab. On the final day the whale attacks the Pequod itself. Ahab makes one last cast, but the line catches around him and pulls him from the boat. The damaged ship sinks with Starbuck, Stubb, Flask, Queequeg, Pip, and the rest of the crew, while the final whirlpool draws down the remaining boat and closes over the Pequod's flag. Ishmael alone survives. Queequeg's coffin, converted earlier into a life buoy, rises from the wreck and supports him through a night and a day. The Rachel, still searching for Captain Gardiner's missing son, finds Ishmael and rescues him. Ahab's private obsession has therefore destroyed the entire expedition, while the object made in anticipation of Queequeg's death becomes the means of preserving the narrator who tells their story.",
+        "in_short": "Ishmael befriends the harpooner Queequeg and joins the whaling ship Pequod. Its scarred captain, Ahab, reveals that the voyage's true purpose is to hunt Moby Dick, the white whale that took his leg. First mate Starbuck objects, but Ahab binds the crew to his quest. As the ship hunts ordinary whales and meets other vessels, warnings accumulate: Fedallah predicts Ahab's death, Pip is psychologically broken after being abandoned at sea, and several captains describe recent encounters with Moby Dick. Ahab refuses every chance to turn aside, even denying aid to the Rachel, which is searching for its captain's missing son. In a three-day chase, Moby Dick smashes the boats and then the Pequod. A harpoon line drags Ahab to his death, and the ship sinks with everyone aboard except Ishmael. He floats on Queequeg's coffin until the Rachel rescues him.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Seeking relief from life ashore, Ishmael travels to New Bedford intending to join a whaling voyage. At the crowded Spouter-Inn he must share a bed with Queequeg, a tattooed harpooner whose unfamiliar appearance first frightens him. Queequeg's generosity quickly overcomes Ishmael's assumptions, and the men form a close friendship. After hearing Father Mapple preach on Jonah, they go to Nantucket and choose the Pequod, an old ship decorated with whale bone. Its owners Peleg and Bildad hire them for shares of the voyage's profit. They explain that Captain Ahab is still recovering from an injury but defend his skill. A strange waterfront prophet named Elijah hints at calamity and at hidden matters aboard the ship. Ishmael and Queequeg join the crew, though Ahab remains unseen as preparations for departure continue.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Pequod leaves Nantucket under the working command of its three mates: the conscientious Starbuck, humorous Stubb, and practical Flask. Their whaleboat crews include the harpooners Queequeg, Tashtego, and Daggoo. Ahab finally appears on deck, marked by a long scar and supported by a leg made from whale bone. He initially says little and maintains an intimidating distance. He then gathers the crew, nails a gold doubloon to the mast, and promises it to the first person who sights Moby Dick, the enormous white sperm whale that destroyed his leg. Ahab makes the sailors drink together and pledge themselves to the hunt. Starbuck objects that a whale acts without moral intention and that the owners expect a profitable voyage, but Ahab treats the animal as the visible form of an intolerable power behind the world. His personal revenge has become the ship's governing purpose.",
+            "through": {
+              "chapter": 36
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ahab studies charts and reports to predict Moby Dick's movements while keeping the Pequod on routes where ordinary whales can still be hunted. When whales are first sighted and the boats lower, several men secretly brought aboard by Ahab emerge from concealment. Their leader is Fedallah, the harpooner in Ahab's private boat. The revelation confirms that Ahab prepared his pursuit before sailing and concealed part of the crew from the owners and officers. A sudden squall disrupts the chase, and Starbuck's boat is placed in danger. The ship continues onward with its divided command structure exposed: Starbuck remains professionally loyal but morally opposed to the captain's obsession, while Ahab has his own boat and handpicked men ready for the White Whale.",
+            "through": {
+              "chapter": 48
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Pequod begins killing and processing sperm whales. Stubb takes the first whale, and the crew tows it alongside, cuts away the blubber, renders the oil, and confronts the constant hazards of sharks, lines, boats, and immense bodies. Ishmael expands the voyage into a broad examination of whales and whaling while also recounting the stories exchanged when ships meet at sea. One such story, from the Town-Ho, concerns a mutinous conflict aboard another vessel that ended when Moby Dick intervened violently. Later the Pequod meets the Jeroboam, whose self-proclaimed prophet Gabriel warns Ahab away from the White Whale and links an earlier officer's death to the pursuit. Ahab disregards these accounts. Ishmael and Queequeg remain bound together in both friendship and work, at one point joined by a rope while Queequeg labors on a whale's carcass and Ishmael must guard his safety from the deck.",
+            "through": {
+              "chapter": 72
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The voyage continues through encounters with large herds and with ships carrying different experiences of the hunt. The Pequod enters a vast gathering of sperm whales and penetrates its calmer center, yet the surrounding boats turn the hunt into confusion and bloodshed. Practical success does nothing to weaken Ahab's fixation. During a later lowering, the cabin boy Pip replaces an injured oarsman in Stubb's boat. Pip panics and jumps overboard, forcing the crew to cut loose a captured whale to save him. Warned not to repeat it, he jumps again. Stubb continues the chase, expecting another boat to retrieve him, and Pip is left alone in the open ocean before rescue. He survives physically but returns psychologically altered, speaking with a disordered insight that the crew calls madness. His vulnerability and abandonment reveal the human cost of a ship increasingly governed by the hunt.",
+            "through": {
+              "chapter": 93
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Pequod keeps gathering oil and information. It meets the English ship Samuel Enderby, whose Captain Boomer lost an arm to Moby Dick but feels no desire to seek the whale again. Ahab reacts impatiently to this contrasting response and damages his artificial leg while leaving. Back aboard, the leg's failure deepens his dependence on the ship's craftsmen and his anger at bodily limits. Queequeg then falls gravely ill and asks the carpenter to make him a coffin in the form of a Pacific burial chest. He tests the finished box and prepares calmly for death. Instead, he decides that he still has duties to perform and recovers, using the coffin as a storage chest. The episode briefly turns an object of death into a sign of continued life, while Ahab presses onward despite accumulating warnings from people who have already survived the whale he seeks.",
+            "through": {
+              "chapter": 110
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Fedallah tells Ahab that before dying he will see two hearses unlike ordinary hearses and that only hemp can kill him; Ahab interprets the prophecy as a promise that he cannot die at sea. A violent typhoon surrounds the Pequod with lightning and sets the harpoons glowing. Starbuck sees the storm as a final warning and urges retreat, but Ahab uses the spectacle to reinforce his authority. When the compass and log line fail, he improvises replacements and continues. A lost life buoy is replaced by Queequeg's coffin. The Rachel begs Ahab to help search for its captain's young son, missing after a whale chase, but Ahab refuses to lose time. After the damaged Delight reports another fatal encounter with Moby Dick, Ahab spends a quiet interval with Starbuck and admits the cost of forty years at sea. He still refuses to turn home. At last he sights the White Whale and begins the chase.",
+            "through": {
+              "chapter": 132
+            }
+          },
+          {
+            "scope": "book",
+            "text": "For three days Ahab and the boats pursue Moby Dick. The whale repeatedly breaks the boats and scatters the crews, but Ahab treats each failure as a reason to renew the attack. Fedallah disappears and is later seen dead, lashed to the whale by a line, becoming the first strange hearse of his prophecy. On the final day Moby Dick turns from the boats and rams the Pequod, which begins to sink. Ahab throws another harpoon, but the running line loops around him and pulls him from the boat, fulfilling the prediction that hemp would kill him. The ship goes down with Starbuck, Stubb, Flask, Queequeg, Pip, and all the remaining crew. Its suction draws the last boat and debris into the closing whirlpool. Ishmael alone escapes. Queequeg's coffin rises as the ship's life buoy and keeps him afloat until the Rachel, still searching the sea for its captain's missing son, finds and rescues him. Ishmael survives to relate the destruction caused by Ahab's pursuit.",
+            "through": {
+              "chapter": 136
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "moby-dick-amazonclassics-edition"
+      }
+    },
+    "moby-dick-classic-drama": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A sailor who joins the Pequod and serves as the story's principal witness. Curious, reflective, and drawn to the danger of whaling, he forms a close friendship with Queequeg before the voyage and watches Ahab's private revenge overtake the ship's ordinary purpose.",
+            "id": "ishmael",
+            "name": "Ishmael",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A tattooed Pacific Islander and expert harpooner whom Ishmael meets while seeking a berth. His initial strangeness gives way to generosity, steadiness, and courage, and the men become friends before signing onto the same ship.",
+            "id": "queequeg",
+            "name": "Queequeg",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Captain Ahab"
+            ],
+            "description": "The scarred captain of the Pequod, walking on a leg made from whale bone after an earlier encounter with Moby Dick. He turns a commercial whaling voyage into a personal campaign against the White Whale and uses his authority and force of personality to enlist the crew in it.",
+            "id": "ahab",
+            "name": "Ahab",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Pequod's first mate, an experienced whaler with a wife and child at home. Conscientious and cautious, he challenges Ahab's decision to risk the ship and crew for revenge rather than pursue the voyage's legitimate work.",
+            "id": "starbuck",
+            "name": "Starbuck",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Pequod's cheerful second mate, a capable whaleman who answers danger with humor and concentrates on the practical business of the hunt.",
+            "id": "stubb",
+            "name": "Stubb",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Pequod's third mate, a compact, energetic officer who treats whales chiefly as quarry and commands one of the ship's hunting boats.",
+            "id": "flask",
+            "name": "Flask",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the White Whale"
+            ],
+            "description": "The huge white sperm whale that destroyed Ahab's leg. Famous among whalers for surviving attacks and damaging boats, he becomes the sole object of Ahab's increasingly destructive pursuit.",
+            "id": "moby-dick",
+            "name": "Moby Dick",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A secretive Parsee harpooner whom Ahab has brought aboard with a concealed boat crew. He serves in Ahab's own whaleboat and shares prophetic warnings about the captain's fate.",
+            "id": "fedallah",
+            "name": "Fedallah",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Pippin"
+            ],
+            "description": "A young Black cabin boy aboard the Pequod. Sensitive and vulnerable among the hardened whalers, he is pressed into service in a hunting boat when another crew member cannot row.",
+            "id": "pip",
+            "name": "Pip",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Captain Gardiner"
+            ],
+            "description": "The captain of the Rachel, encountered near the end of the Pequod's voyage. He begs Ahab to help search for a whaleboat carrying his missing young son.",
+            "id": "gardiner",
+            "name": "Gardiner",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "moby-dick-classic-drama"
+      },
+      "recaps": {
+        "ending": "Ahab pursues Moby Dick for three days despite the destruction of his boats and the loss of Fedallah. On the final day, Fedallah's body is seen caught against the whale, fulfilling part of his prophecy. Moby Dick rams the Pequod and leaves it sinking. Ahab makes a last attempt to harpoon the whale, but the line catches him and drags him into the sea. Starbuck, Stubb, Flask, Queequeg, Pip, and the remaining sailors go down with the ship. Ishmael is the sole survivor. Queequeg's coffin, earlier converted into a life buoy, rises from the wreck and supports him until the Rachel finds him while continuing its search for Captain Gardiner's missing son. Ahab's refusal to value any claim above revenge has destroyed the ship, while Ishmael lives to preserve the crew's story.",
+        "in_short": "Ishmael befriends the harpooner Queequeg and joins the Pequod, commanded by the scarred Captain Ahab. Ahab reveals that he intends to hunt Moby Dick, the white whale that took his leg, and bends the crew to his private revenge despite first mate Starbuck's objections. The ship hunts other whales and gathers warnings from vessels that have encountered Moby Dick. Pip is psychologically broken after being left alone at sea, Queequeg survives an illness for which he orders a coffin, and Fedallah gives Ahab a prophecy that the captain mistakes for protection from death. Ahab refuses to help the Rachel search for its captain's missing son and begins a three-day chase. Moby Dick destroys the boats and rams the Pequod. A harpoon line drags Ahab to his death, and the ship sinks with the crew. Ishmael alone survives, floating on Queequeg's coffin until the Rachel rescues him.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Ishmael goes to sea and befriends Queequeg, a Pacific Island harpooner whose generosity overcomes Ishmael's first alarm at his appearance and customs. They sign onto the Pequod, a Nantucket whaling ship commanded by the mysterious Captain Ahab. Once at sea, Ishmael meets the officers, including the responsible first mate Starbuck and the more easygoing Stubb and Flask. Ahab finally appears, visibly scarred and using a whale-bone leg. He gathers the sailors and announces that their true objective is Moby Dick, the enormous white sperm whale that took his leg. He offers a gold coin to the first lookout who sights it and binds the crew to his revenge. Starbuck argues that they were hired to hunt whales for profit, not to pursue an animal as though it were a moral enemy, but Ahab overrules him. A hidden boat crew led by the harpooner Fedallah emerges during the hunt, revealing how thoroughly Ahab planned his private mission before departure.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Pequod hunts and processes ordinary whales while Ahab searches other ships for news of Moby Dick. Accounts from men who have survived the White Whale give him repeated reasons to abandon the chase, but he treats each warning as further confirmation of his purpose. When the cabin boy Pip is assigned to a whaleboat, fear makes him jump overboard. After he does so again, the crew continues after the whale and leaves him alone until another boat finds him. He returns psychologically broken and becomes closely attached to Ahab, whose flashes of sympathy do not alter the ship's course. Queequeg later falls gravely ill and orders a coffin, then unexpectedly recovers. The coffin is eventually adapted as a life buoy. Fedallah predicts strange signs that will precede Ahab's death and says that hemp will kill him. Ahab reads the prophecy as assurance that he cannot die at sea. Starbuck continues urging caution, but the captain rejects both moral appeals and dangerous omens.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "As the Pequod approaches Moby Dick's waters, storms, damaged instruments, and reports of deaths fail to turn Ahab aside. The Rachel asks him to help search for a missing whaleboat carrying Captain Gardiner's son, but Ahab refuses to delay. He sights Moby Dick and pursues him for three days. The whale repeatedly smashes the hunting boats, and Fedallah is lost; his body later appears caught against the whale, fulfilling part of his warning. On the final day Moby Dick rams the Pequod itself. Ahab throws one last harpoon, but its line loops around him and pulls him into the sea. The ship sinks with Starbuck, Stubb, Flask, Queequeg, Pip, and the rest of the crew. Ishmael alone escapes the wreck. Queequeg's coffin rises as the life buoy and keeps him afloat until the Rachel, still searching for its own missing child, rescues him. He survives as the sole witness to the end of Ahab's voyage.",
+            "through": {
+              "chapter": 3
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "moby-dick-classic-drama"
+      }
+    },
     "moby-dick-or-the-whale": {
       "characters": {
         "characters": [
@@ -1169,6 +1570,233 @@
           }
         ],
         "work": "moby-dick-or-the-whale"
+      }
+    },
+    "moby-dick-the-ultimate-american-epic-of-the-sea": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The novel's reflective narrator, a restless former schoolteacher who goes to sea whenever life ashore becomes oppressive. He signs on to the Pequod as an ordinary sailor and approaches whaling with curiosity, humor, and an appetite for philosophical digression.",
+            "id": "ishmael",
+            "name": "Ishmael",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A celebrated harpooner from the fictional Pacific island of Rokovoko. His tattooed appearance initially alarms Ishmael when they are made to share a bed at the Spouter-Inn, but his calm generosity quickly overturns Ishmael's prejudices and the two become close companions.",
+            "id": "queequeg",
+            "name": "Queequeg",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The imposing minister of the Whaleman's Chapel in New Bedford, himself a former sailor. He climbs into a ship-shaped pulpit and delivers a sermon on Jonah, duty, truth, and the danger of trying to flee a divine command.",
+            "id": "father-mapple",
+            "name": "Father Mapple",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A blunt, energetic co-owner of the Pequod and a retired whaling captain. He negotiates Ishmael's share of the voyage, values Queequeg's skill despite his religion, and speaks evasively about the captain who will command them.",
+            "id": "captain-peleg",
+            "name": "Captain Peleg",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wealthy Quaker and co-owner of the Pequod whose solemn piety sits beside a hard eye for business. He joins Peleg in hiring the crew and calculating their shares, then leaves the management of the voyage to the ship's officers.",
+            "id": "captain-bildad",
+            "name": "Captain Bildad",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A ragged stranger who confronts Ishmael and Queequeg after they sign onto the Pequod. Claiming prophetic insight, he issues obscure warnings about Captain Ahab and the voyage, without giving the pair enough concrete information to act on.",
+            "id": "elijah",
+            "name": "Elijah",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Pequod's first mate, a capable Nantucket Quaker with a wife and child ashore. Serious, disciplined, and cautious, he regards whaling as dangerous work to be done for a living rather than as a stage for reckless displays.",
+            "id": "starbuck",
+            "name": "Starbuck",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Pequod's easygoing second mate. Cheerful in danger and accustomed to killing whales as routine labor, he commands one of the ship's three whaleboats and balances Starbuck's gravity with casual confidence.",
+            "id": "stubb",
+            "name": "Stubb",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Pequod's short, sturdy third mate, a practical seaman from Martha's Vineyard. He treats whales chiefly as valuable quarry and commands the third whaleboat with more appetite for the hunt than reflection on its risks.",
+            "id": "flask",
+            "name": "Flask",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Gay Head harpooner assigned to Stubb's boat. Quick and highly skilled, he works alongside Queequeg and Daggoo as one of the three nonwhite harpooners on whom the Pequod's mates depend during a chase.",
+            "id": "tashtego",
+            "name": "Tashtego",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A towering African harpooner assigned to Flask's boat. His strength and commanding presence make him one of the Pequod's most conspicuous crewmen when the whaleboats are lowered.",
+            "id": "daggoo",
+            "name": "Daggoo",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young Black cabin boy aboard the Pequod who also serves as a tambourine player during the crew's recreation. Initially a minor member of the ship's company, he is cheerful, sensitive, and poorly suited to the violence of a whale chase.",
+            "id": "pip",
+            "name": "Pip",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Old Thunder"
+            ],
+            "description": "The Pequod's scarred, one-legged captain, long absent from the deck after sailing. He finally appears as a formidable, isolated figure whose missing leg has been replaced with carved whale ivory and whose fixed intensity unsettles the crew.",
+            "id": "captain-ahab",
+            "name": "Captain Ahab",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the White Whale"
+            ],
+            "description": "An immense white sperm whale already notorious among whalers for surviving attacks and destroying boats. Ahab identifies him as the whale that took his leg and turns the Pequod's commercial voyage into a personal hunt for him.",
+            "id": "moby-dick",
+            "name": "Moby Dick",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A secretive, turbaned harpooner whom Ahab has concealed aboard with a private boat crew. He emerges only when the Pequod first lowers for whales and appears to share a close, ominous understanding with the captain.",
+            "id": "fedallah",
+            "name": "Fedallah",
+            "reveal": {
+              "chapter": 48
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "moby-dick-the-ultimate-american-epic-of-the-sea"
+      },
+      "recaps": {
+        "ending": "Ahab finds Moby Dick and pursues him for three days, refusing every warning and every chance to turn back. On the final day the whale smashes the Pequod while Ahab's boat remains in the water. Ahab makes one last cast and is caught by his own harpoon line, which drags him from the boat to his death. The damaged ship sinks with Starbuck, Stubb, Flask, Queequeg, Pip, Fedallah's crew, and nearly everyone else aboard. Tashtego, still trying to secure the flag as the mast goes under, pulls a circling bird down with the ship. Ishmael alone escapes the wreck. Queequeg's unused coffin rises as a life buoy and keeps him afloat until the Rachel, still searching for her captain's missing son, finds and rescues him. Moby Dick survives, while Ahab's attempt to impose his private vengeance on the voyage destroys the captain, ship, and crew whose purposes he subordinated to it.",
+        "in_short": "Ishmael befriends the harpooner Queequeg and joins the Nantucket whaler Pequod. Its captain, Ahab, has lost a leg to the white sperm whale Moby Dick and secretly means to use the entire voyage to hunt him. He binds the crew to his revenge despite first mate Starbuck's objections, follows reports from other ships, and repeatedly places the men and their ordinary work at risk. The voyage includes successful hunts, disasters in the whaleboats, Pip's psychological collapse after being left in the sea, and mounting signs that Ahab will not turn aside. Even when the Rachel asks for help finding a lost boat, he refuses. After a three-day chase, Moby Dick destroys the Pequod. Ahab is dragged to his death by his harpoon line, and the ship sinks with everyone except Ishmael. Floating on the coffin Queequeg had once ordered for himself, Ishmael is rescued by the returning Rachel and survives to tell the story.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Feeling trapped and melancholy on land, Ishmael decides to ship as a common sailor on a whaling voyage. In New Bedford he is forced to share a room at the Spouter-Inn with Queequeg, a tattooed harpooner whose unfamiliar customs initially frighten him. The fear gives way to friendship when Ishmael recognizes Queequeg's generosity and composure. They attend the Whaleman's Chapel, where Father Mapple delivers a sermon on Jonah's failed attempt to flee his duty and on the cost of speaking unwelcome truth. Queequeg then tells Ishmael enough of his history to show that he left his island home to learn about the wider world. The two resolve to travel together to Nantucket and seek a berth on the same ship.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ishmael and Queequeg reach Nantucket, where Queequeg's selection of the Pequod decides which whaler they will join. The ship's Quaker owners, Peleg and Bildad, hire them and explain that Captain Ahab remains out of sight while recovering from the loss of his leg to a whale. A stranger named Elijah offers dark but vague warnings about Ahab and the voyage. After preparations and an uneasy final encounter with Elijah, the Pequod leaves Nantucket on Christmas Day. Ahab still does not appear on deck. The owners depart in a small boat after seeing the vessel away, leaving the sailors under the working command of the mates as the ship heads into the Atlantic.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Pequod's officers and boat crews come into view: the sober first mate Starbuck, genial second mate Stubb, practical third mate Flask, and the harpooners Queequeg, Tashtego, and Daggoo. Ahab finally appears, marked by a long scar and standing on an ivory leg. He gathers the crew, nails a gold doubloon to the mast as a reward, and declares that their true quarry is Moby Dick, the white whale that maimed him. Starbuck objects that vengeance against an animal is madness and not the business for which the ship sailed, but Ahab wins the rest of the crew into a ritual pledge to the hunt. While the Pequod continues normal whaling, Ahab studies charts for the whale's likely route. During the first lowering, a hidden boat crew led by the mysterious Fedallah suddenly emerges from the ship, revealing that Ahab secretly brought his own hunters aboard. A squall breaks up the chase, and the boats return after a dangerous night apart from the ship.",
+            "through": {
+              "chapter": 48
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After the failed first chase, Ishmael accepts the voyage's danger and formally settles his affairs with Queequeg's help. Ahab remains intent on predicting Moby Dick's movements, while ordinary encounters and hunts continue around his private purpose. The Pequod speaks ships carrying news and stories, including an account of conflict aboard the Town-Ho that ended when Moby Dick killed a brutal mate. The crew sights a giant squid, which Queequeg regards as a sign that a sperm whale may be near. These episodes broaden the whale's reputation and keep Ahab's objective present even when the ship is occupied by navigation, lookout duty, and the practical routines of a commercial whaler.",
+            "through": {
+              "chapter": 60
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Stubb's boat kills a sperm whale, and the Pequod begins the dangerous labor of securing, cutting, and processing the carcass while sharks tear at it alongside the ship. Stubb makes the cook Fleece address the feeding sharks, turning the old man's sermon into a bleak comment on appetite and violence. A meeting with the plague-stricken Jeroboam brings another report connected to Moby Dick: one of its crew died while trying to attack the white whale after a fanatic had warned against it. The Pequod later carries both a sperm whale's head and a right whale's head, one on either side. While drawing oil from the sperm whale's head, Tashtego falls into its great cavity as the head breaks loose and sinks. Queequeg dives after him, cuts into the descending mass, and brings him back alive.",
+            "through": {
+              "chapter": 78
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The voyage ranges through further hunts, meetings, and extended examinations of whales and whaling. The Pequod enters a vast herd and briefly reaches a calm center where mothers and calves are sheltered, even as the boats' pursuit creates panic around them. Pip, temporarily assigned to Stubb's boat, jumps overboard during a chase. After he does so again, Stubb leaves him in the open sea to teach him not to abandon the boat; he is eventually recovered but returns psychologically broken and speaking with strange insight. The crew renders whale blubber in the fiery try-works, and Ishmael narrowly avoids steering the ship into danger after becoming mesmerized by the flames. At the mast, sailors read different meanings into Ahab's doubloon. The English whaler Samuel Enderby supplies direct news through Captain Boomer, who lost an arm to Moby Dick but refuses to pursue the whale again. Ahab leaves frustrated by Boomer's lack of vengeance.",
+            "through": {
+              "chapter": 100
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ahab's determination hardens as the Pequod moves deeper into the region where he expects Moby Dick. The ship visits or hears of further whalers, but neither successful voyages nor warnings alter his course. Queequeg becomes gravely ill and asks the carpenter to make him a coffin; after deciding that he still has business to finish, he unexpectedly recovers, and the unused coffin remains aboard. Ahab orders the blacksmith Perth to forge a special harpoon, personally completing a weapon meant for the white whale. The joyful Bachelor, homeward bound with a full hold, offers a stark contrast to the Pequod. A dying whale and other omens accumulate around Ahab's obsession. When his quadrant displeases him, he destroys it and insists he can navigate without it. During a violent electrical storm, pale fire crowns the masts and Ahab's harpoon. Starbuck urges him to read the event as a warning and turn home, but Ahab instead presents it as confirmation of his authority and purpose.",
+            "through": {
+              "chapter": 119
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After the storm, Ahab continues to defeat every practical and moral check on the hunt. He reverses the ship's compasses when they fail, rejects the need for reliable instruments, and refuses Starbuck's last efforts to redirect him. The Rachel asks the Pequod to help search for a missing whaleboat containing the captain's son, but Ahab will not lose time. Soon afterward the Pequod finds Moby Dick and chases him for three days. Boats are smashed and Fedallah disappears; his body is later seen lashed by line to the whale, fulfilling part of his warning to Ahab. Starbuck repeatedly begs the captain to stop, but Ahab launches again. On the final day Moby Dick rams the Pequod. Ahab casts his harpoon, becomes caught in the running line, and is pulled from his boat. The ship sinks with the crew while the whale escapes. Ishmael alone survives, kept afloat by Queequeg's coffin, until the Rachel finds him while continuing its search for the lost child.",
+            "through": {
+              "chapter": 135
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "moby-dick-the-ultimate-american-epic-of-the-sea"
       }
     },
     "mockingjay": {

@@ -4126,6 +4126,161 @@
         "work": "the-dungeon-anarchists-cookbook"
       }
     },
+    "the-dunwich-horror-dramatized": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The isolated, albino daughter of Old Whateley, raised amid her father's forbidden books and rituals outside Dunwich. She has little formal education but has read widely in the occult volumes kept at the family farm.",
+            "id": "lavinia-whateley",
+            "name": "Lavinia Whateley",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Lavinia's father, a poor and reclusive Dunwich farmer feared for his knowledge of sorcery. He keeps forbidden books, observes strange rites on the surrounding hills, and inspires deep suspicion among his neighbors.",
+            "id": "old-whateley",
+            "name": "Old Whateley",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Lavinia Whateley's newborn son, whose human father is not identified. He is unusually large and mature-looking from birth, and Old Whateley greets his arrival as the fulfillment of an important plan.",
+            "id": "wilbur-whateley",
+            "name": "Wilbur Whateley",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The learned head librarian at Miskatonic University. His command of old languages and occult texts allows him to recognize the danger behind Wilbur's request to consult the library's complete copy of the Necronomicon.",
+            "id": "henry-armitage",
+            "name": "Dr. Henry Armitage",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A Miskatonic professor of languages and one of Armitage's trusted colleagues. His expertise makes him a natural participant when Wilbur's death leaves the scholars with documents written in a difficult code.",
+            "id": "warren-rice",
+            "name": "Professor Warren Rice",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A professor of medicine and comparative anatomy at Miskatonic University. Armitage summons him to help assess Wilbur's extraordinary remains after the fatal library break-in.",
+            "id": "francis-morgan",
+            "name": "Dr. Francis Morgan",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The large guard dog at Miskatonic University's library. Like other dogs, it reacts violently to Wilbur's scent and becomes the first defense against his attempt to enter the collection at night.",
+            "id": "miskatonic-watchdog",
+            "name": "The Miskatonic Watchdog",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An enormous invisible being that escapes from the ruined Whateley farmhouse. Its weight leaves vast tracks, while its passage crushes vegetation, destroys buildings, and kills livestock.",
+            "id": "the-dunwich-horror",
+            "name": "The Dunwich Horror",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A member of another branch of the Whateley family who remains involved with the frightened Dunwich community. He relays observations as the invisible creature moves through the countryside.",
+            "id": "curtis-whateley",
+            "name": "Curtis Whateley",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An elderly member of a Whateley branch not associated with Old Whateley's household. His knowledge of local traditions helps the townspeople interpret the tracks and disturbances around Dunwich.",
+            "id": "zebulon-whateley",
+            "name": "Zebulon Whateley",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-dunwich-horror-dramatized"
+      },
+      "recaps": {
+        "ending": "Armitage, Rice, and Morgan follow the invisible Horror to Sentinel Hill carrying a powder that can briefly make it visible and an incantation derived from Wilbur's diary. The powder reveals an immense, many-limbed organism whose partly human features connect it to the Whateleys. From a distance, Dunwich observers watch the professors perform the rite and hear the creature call to Yog-Sothoth for help. The spell destroys or banishes it with a tremendous shock. The final discovery explains the Whateley mystery: Lavinia gave birth to twins fathered by Yog-Sothoth. Wilbur was the more human child, while Old Whateley concealed and fed the rapidly growing second child inside the farmhouse. That twin became the Dunwich Horror after escaping. The countryside survives because Armitage understood Wilbur's plans in time, though the beings Wilbur hoped to admit from outside ordinary reality remain a wider possibility.",
+        "in_short": "In isolated Dunwich, Lavinia Whateley bears twins fathered by the entity Yog-Sothoth. One is the unnaturally fast-growing Wilbur; the other, far less human, is hidden inside the family farmhouse by their sorcerous grandfather. Wilbur seeks a complete Necronomicon to perform a rite that would open the world to outside beings. After Miskatonic librarian Henry Armitage refuses him access, Wilbur breaks into the library and is killed by its guard dog. Armitage deciphers his diary and learns of the threat. The hidden twin then escapes, an invisible giant that devastates farms and kills families around Dunwich. Armitage and professors Warren Rice and Francis Morgan track it to Sentinel Hill, expose its shape with a chemical powder, and destroy it with an incantation. Only then do the witnesses understand that the Horror was Wilbur's brother, and the child who looked more like their otherworldly father.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Dunwich is an isolated, decaying Massachusetts village surrounded by hills associated with old rites and unexplained sounds. On a remote farm, the feared Old Whateley lives with his albino daughter Lavinia and studies forbidden books. Lavinia gives birth to Wilbur without naming a human father. Old Whateley celebrates the child and hints that his importance reaches beyond the family. Wilbur's growth is unnaturally rapid: within months he walks and speaks, and within a few years he appears nearly adult. He keeps his body heavily covered, avoids close inspection, and alarms dogs. Meanwhile, Old Whateley repeatedly buys cattle even though the herd never seems to increase, and he enlarges the farmhouse to make room for something the neighbors do not see.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Wilbur grows into a huge, secretive scholar while Old Whateley continues adapting the farmhouse and feeding an unseen presence. Before dying, the old man instructs Wilbur about caring for it and completing a ritual. Lavinia later disappears, leaving Wilbur alone. His family's damaged Latin Necronomicon lacks material he needs, so he visits Miskatonic University to compare it with the complete copy guarded by Dr. Henry Armitage. Armitage reads enough of the requested passage to understand that Wilbur is seeking a method to open a gate for entities outside the human world. He refuses to lend the book and warns other libraries not to help. Wilbur leaves determined to obtain the missing knowledge by another means.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Wilbur breaks into the Miskatonic library at night to steal the Necronomicon, but the guard dog attacks and kills him. When Armitage and his colleagues examine the body, Wilbur's clothing reveals a largely nonhuman anatomy hidden beneath his human-looking upper form. The remains rapidly dissolve before they can be preserved. Armitage takes possession of Wilbur's coded diary and, with prolonged work and help from Professors Warren Rice and Francis Morgan, deciphers its mixture of symbols and languages. The diary confirms that Wilbur planned to use a rite from the Necronomicon to bring outside beings fully into the human world. It also points to a second, growing danger still confined at the Whateley farm. Armitage realizes that Wilbur's death has removed the person tending that presence, not the presence itself.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After Wilbur's death, the Whateley farmhouse erupts and collapses. Something enormous and invisible escapes, leaving tracks of extraordinary size and crushing trees and brush as it moves. The creature raids farms for cattle and then attacks occupied homes, while gunfire has no visible effect. Telephone reports and physical trails convince the people of Dunwich that Old Whateley's hidden presence is loose. Roads become impassable and residents gather in fear as entire households in the creature's path are destroyed. The devastation follows a route through country long associated with the Whateleys and the old hilltop rites.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Armitage, Rice, and Morgan reach Dunwich with a chemical powder and an incantation reconstructed from Wilbur's diary. They trace the invisible Horror toward Sentinel Hill while local observers watch from a distance. Cast into the air, the powder briefly outlines a colossal being with many limbs and a distorted, partly human face linked to the Whateley family. The professors perform the rite as the creature calls upon Yog-Sothoth, then a great shock marks its destruction or expulsion from the visible world. The final evidence reveals that Lavinia's unexplained pregnancy produced twins fathered by Yog-Sothoth. Wilbur was the child who could pass imperfectly among humans; Old Whateley had hidden the other in the farmhouse, fed it with the mysteriously diminishing cattle, and enlarged the building as it grew. When Wilbur died, the neglected twin broke free and became the Dunwich Horror. Armitage's reading of the diary allows the three scholars to stop it before Wilbur's larger plan can admit more beings into the world.",
+            "through": {
+              "chapter": 10
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-dunwich-horror-dramatized"
+      }
+    },
     "the-dying-of-the-light": {
       "characters": {
         "characters": [

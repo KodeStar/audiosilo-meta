@@ -945,6 +945,330 @@
         "work": "the-iron-queen"
       }
     },
+    "the-island-of-doctor-moreau": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An educated Englishman found adrift after the wreck of the Lady Vain. Weak from hunger but observant and morally troubled by cruelty, he narrates his rescue and the increasingly disturbing discoveries he makes on an isolated island.",
+            "id": "edward-prendick",
+            "name": "Edward Prendick",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A medically trained Englishman traveling aboard the Ipecacuanha with a cargo of animals. He saves Prendick's life, drinks heavily, and is accompanied by a peculiar servant whose appearance and manner unsettle the rescued man.",
+            "id": "montgomery",
+            "name": "Montgomery",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Montgomery's strange attendant, whose short body, dark hair, pointed ears, and luminous eyes make Prendick uneasy. He serves Montgomery faithfully and endures open hostility from the ship's crew.",
+            "id": "mling",
+            "name": "M'ling",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful, white-haired scientist living in seclusion on the island. Prendick recognizes him as the notorious English vivisector whose methods caused a public scandal years earlier.",
+            "id": "doctor-moreau",
+            "name": "Doctor Moreau",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A large cat brought to the island in a cage. Its prolonged cries from Moreau's workroom convince Prendick that a conscious being is suffering behind the locked door.",
+            "id": "the-puma",
+            "name": "The Puma",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An ape-derived inhabitant of the island who speaks and is eager to display his limited learning. His almost human behavior is among the clearest early signs that the island's population does not fit ordinary categories.",
+            "id": "the-ape-man",
+            "name": "The Ape-Man",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A powerful Beast Person who leads the communal recitation of the rules governing the island's altered inhabitants. His authority rests on memory, ritual, and fear of Moreau, whom the community treats as its maker and judge.",
+            "id": "the-sayer-of-the-law",
+            "name": "The Sayer of the Law",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A predatory Beast Person whose furtive behavior draws Prendick's suspicion after an animal is found killed. He represents the struggle between Moreau's imposed rules and the instincts that his operations have not erased.",
+            "id": "the-leopard-man",
+            "name": "The Leopard-Man",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A dog-derived Beast Person who attaches himself loyally to Prendick. His companionship offers Prendick protection as the authority holding the island's society together begins to fail.",
+            "id": "the-dog-man",
+            "name": "The Dog-Man",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dangerous Beast Person combining hyena and pig traits. Cunning, watchful, and less restrained than many of the others, he becomes Prendick's chief threat after the island's human leadership collapses.",
+            "id": "the-hyena-swine",
+            "name": "The Hyena-Swine",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-island-of-doctor-moreau"
+      },
+      "recaps": {
+        "ending": "After Moreau and Montgomery die and the boats are destroyed, Prendick survives alone among the Beast People for many months. Without Moreau's threat and repeated discipline, they gradually abandon speech, clothing, upright posture, and the Law, reverting toward the animals from which they were made. Prendick protects himself through bluff and caution, aided for a time by the loyal Dog-Man. The Hyena-Swine kills the dog and is then killed by Prendick. Eventually a small boat drifts ashore carrying two dead men. Prendick repairs and provisions it, escapes the island, and is rescued at sea. He does not try to convince others of his story. Back in human society, he remains haunted by the resemblance between ordinary people and Moreau's unstable creations, fearing that reason and restraint are only a thin covering over animal impulses. He withdraws from crowds and finds his greatest peace in study and in contemplating the stars.",
+        "in_short": "Shipwreck survivor Edward Prendick is rescued by Montgomery and taken to a remote island ruled by Doctor Moreau, a disgraced vivisector. Moreau has surgically reshaped animals into speaking, upright Beast People and controls them through pain, fear, and a ritual Law forbidding animal behavior. Prendick initially mistakes the experiments for work on human victims, then learns their true nature. The creatures retain strong instincts despite Moreau's conditioning. A puma escapes the laboratory and kills Moreau; Montgomery then releases the remaining animals, gives them alcohol, and dies in the resulting violence, while the island's boats burn. Alone, Prendick watches the Beast People gradually lose speech and human habits. After killing the dangerous Hyena-Swine, he escapes in a drifting boat and returns to civilization. Unable to stop seeing animal impulses beneath human conduct, he lives apart and seeks calm in scientific study.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Edward Prendick survives the wreck of the Lady Vain and drifts in a dinghy after his companions die. Near death, he is rescued by the Ipecacuanha. Montgomery, an Englishman with medical knowledge, revives him and explains that the schooner is carrying animals to an unnamed island. Prendick is disturbed by Montgomery's oddly formed servant, M'ling, and by the drunken captain's abuse of both servant and animals. He learns that Montgomery has lived away from ordinary society for years. The ship approaches its destination amid tension between Montgomery and the captain, leaving Prendick uncertain why the animals are being transported or what awaits ashore.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At the island, Montgomery is met by a commanding white-haired man. The Ipecacuanha unloads cages and supplies, but its captain refuses to carry Prendick onward and sets him adrift. The islanders reluctantly bring him ashore. Prendick recognizes their leader as Doctor Moreau, a brilliant vivisector driven from England after public exposure of his experiments. Moreau and Montgomery house Prendick in an outer room of their enclosure and refuse to explain their work. The island's misshapen laborers seem almost human but move and speak strangely. Locked doors, secrecy, and Moreau's reputation persuade Prendick that the settlement conceals deliberate suffering.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A puma's prolonged cries come from Moreau's laboratory. Unable to bear them, Prendick flees into the forest, where he encounters a population of deformed, partly articulate beings and sees one drinking like an animal. He is followed by a predatory figure and barely reaches the enclosure. Hearing what sounds like a human cry, he concludes that Moreau is transforming people into animal shapes. When he sees a bandaged figure escape the laboratory, he runs again, believing that he may become the next subject. Moreau and Montgomery pursue him. Trapped at the shore, Prendick threatens to drown rather than surrender, forcing them to offer an explanation.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Prendick takes refuge among the Beast People. In their settlement, the Sayer of the Law leads a ritual list of prohibitions against going on all fours, drinking like an animal, eating flesh, and attacking humans. The creatures identify Moreau as the master who made and punishes them. Moreau and Montgomery find Prendick and finally explain that he has reversed the truth: Moreau begins with animals and uses surgery, training, and fear to force them toward human form and behavior. He regards the pain involved as scientifically irrelevant and admits that none of his creations remains stable. Animal instincts and physical traits return despite constant discipline. The current laboratory subject is the puma, not a human captive. Prendick accepts the explanation while remaining horrified by the work and its results.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Prendick observes the Beast People and the fragile order imposed on them. Evidence that one has killed and eaten a rabbit leads Moreau to assemble the community and invoke the Law. The Leopard-Man flees. During the pursuit, Prendick shoots him rather than let Moreau return him to the laboratory, though afterward he wonders whether the creature was certainly guilty. Soon the puma breaks free despite its restraints. Moreau pursues it into the forest, and both are mortally wounded in their struggle. Prendick and Montgomery recover Moreau's body. With the island's maker dead, the Beast People begin testing whether the old authority and its punishments still exist. The Law remains in their memory, but its power is already weakening.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Montgomery loses control after Moreau's death. He releases the remaining experimental animals, gives alcohol to the Beast People, and joins their disorderly celebration. Violence follows: Montgomery and M'ling are killed, and the enclosure burns along with the boats, medicines, weapons, and much of the food. Prendick is left alone. He preserves his safety partly by claiming that Moreau will return and partly by living among the creatures, but over the following months they steadily revert. Speech, clothing, the Law, and human posture fade as animal habits reassert themselves. The loyal Dog-Man accompanies Prendick until the Hyena-Swine kills him; Prendick then kills the Hyena-Swine. A boat carrying two corpses eventually drifts to the island. Prendick uses it to escape and is rescued, but on returning to society he cannot forget the Beast People. Human faces and behavior seem to him equally capable of reversion, so he withdraws into solitude, books, chemistry, and astronomy.",
+            "through": {
+              "chapter": 22
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-island-of-doctor-moreau"
+      }
+    },
+    "the-island-of-dr-moreau": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An educated Englishman found adrift after the wreck of the Lady Vain. Weak from hunger but observant and morally troubled by cruelty, he narrates his rescue and the increasingly disturbing discoveries he makes on an isolated island.",
+            "id": "edward-prendick",
+            "name": "Edward Prendick",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A medically trained Englishman traveling aboard the Ipecacuanha with a cargo of animals. He saves Prendick's life, drinks heavily, and is accompanied by a peculiar servant whose appearance and manner unsettle the rescued man.",
+            "id": "montgomery",
+            "name": "Montgomery",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Montgomery's strange attendant, whose short body, dark hair, pointed ears, and luminous eyes make Prendick uneasy. He serves Montgomery faithfully and endures open hostility from the ship's crew.",
+            "id": "mling",
+            "name": "M'ling",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful, white-haired scientist living in seclusion on the island. Prendick recognizes him as the notorious English vivisector whose methods caused a public scandal years earlier.",
+            "id": "doctor-moreau",
+            "name": "Doctor Moreau",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A large cat brought to the island in a cage. Its prolonged cries from Moreau's workroom convince Prendick that a conscious being is suffering behind the locked door.",
+            "id": "the-puma",
+            "name": "The Puma",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An ape-derived inhabitant of the island who speaks and is eager to display his limited learning. His almost human behavior is among the clearest early signs that the island's population does not fit ordinary categories.",
+            "id": "the-ape-man",
+            "name": "The Ape-Man",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A powerful Beast Person who leads the communal recitation of the rules governing the island's altered inhabitants. His authority rests on memory, ritual, and fear of Moreau, whom the community treats as its maker and judge.",
+            "id": "the-sayer-of-the-law",
+            "name": "The Sayer of the Law",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A predatory Beast Person whose furtive behavior draws Prendick's suspicion after an animal is found killed. He represents the struggle between Moreau's imposed rules and the instincts that his operations have not erased.",
+            "id": "the-leopard-man",
+            "name": "The Leopard-Man",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A dog-derived Beast Person who attaches himself loyally to Prendick. His companionship offers Prendick protection as the authority holding the island's society together begins to fail.",
+            "id": "the-dog-man",
+            "name": "The Dog-Man",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dangerous Beast Person combining hyena and pig traits. Cunning, watchful, and less restrained than many of the others, he becomes Prendick's chief threat after the island's human leadership collapses.",
+            "id": "the-hyena-swine",
+            "name": "The Hyena-Swine",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-island-of-dr-moreau"
+      },
+      "recaps": {
+        "ending": "After Moreau and Montgomery die and the boats are destroyed, Prendick survives alone among the Beast People for many months. Without Moreau's threat and repeated discipline, they gradually abandon speech, clothing, upright posture, and the Law, reverting toward the animals from which they were made. Prendick protects himself through bluff and caution, aided for a time by the loyal Dog-Man. The Hyena-Swine kills the dog and is then killed by Prendick. Eventually a small boat drifts ashore carrying two dead men. Prendick repairs and provisions it, escapes the island, and is rescued at sea. He does not try to convince others of his story. Back in human society, he remains haunted by the resemblance between ordinary people and Moreau's unstable creations, fearing that reason and restraint are only a thin covering over animal impulses. He withdraws from crowds and finds his greatest peace in study and in contemplating the stars.",
+        "in_short": "Shipwreck survivor Edward Prendick is rescued by Montgomery and taken to a remote island ruled by Doctor Moreau, a disgraced vivisector. Moreau has surgically reshaped animals into speaking, upright Beast People and controls them through pain, fear, and a ritual Law forbidding animal behavior. Prendick initially mistakes the experiments for work on human victims, then learns their true nature. The creatures retain strong instincts despite Moreau's conditioning. A puma escapes the laboratory and kills Moreau; Montgomery then releases the remaining animals, gives them alcohol, and dies in the resulting violence, while the island's boats burn. Alone, Prendick watches the Beast People gradually lose speech and human habits. After killing the dangerous Hyena-Swine, he escapes in a drifting boat and returns to civilization. Unable to stop seeing animal impulses beneath human conduct, he lives apart and seeks calm in scientific study.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Edward Prendick survives the wreck of the Lady Vain and drifts in a dinghy after his companions die. Near death, he is rescued by the Ipecacuanha. Montgomery, an Englishman with medical knowledge, revives him and explains that the schooner is carrying animals to an unnamed island. Prendick is disturbed by Montgomery's oddly formed servant, M'ling, and by the drunken captain's abuse of both servant and animals. He learns that Montgomery has lived away from ordinary society for years. The ship approaches its destination amid tension between Montgomery and the captain, leaving Prendick uncertain why the animals are being transported or what awaits ashore.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At the island, Montgomery is met by a commanding white-haired man. The Ipecacuanha unloads cages and supplies, but its captain refuses to carry Prendick onward and sets him adrift. The islanders reluctantly bring him ashore. Prendick recognizes their leader as Doctor Moreau, a brilliant vivisector driven from England after public exposure of his experiments. Moreau and Montgomery house Prendick in an outer room of their enclosure and refuse to explain their work. The island's misshapen laborers seem almost human but move and speak strangely. Locked doors, secrecy, and Moreau's reputation persuade Prendick that the settlement conceals deliberate suffering.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A puma's prolonged cries come from Moreau's laboratory. Unable to bear them, Prendick flees into the forest, where he encounters a population of deformed, partly articulate beings and sees one drinking like an animal. He is followed by a predatory figure and barely reaches the enclosure. Hearing what sounds like a human cry, he concludes that Moreau is transforming people into animal shapes. When he sees a bandaged figure escape the laboratory, he runs again, believing that he may become the next subject. Moreau and Montgomery pursue him. Trapped at the shore, Prendick threatens to drown rather than surrender, forcing them to offer an explanation.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Prendick takes refuge among the Beast People. In their settlement, the Sayer of the Law leads a ritual list of prohibitions against going on all fours, drinking like an animal, eating flesh, and attacking humans. The creatures identify Moreau as the master who made and punishes them. Moreau and Montgomery find Prendick and finally explain that he has reversed the truth: Moreau begins with animals and uses surgery, training, and fear to force them toward human form and behavior. He regards the pain involved as scientifically irrelevant and admits that none of his creations remains stable. Animal instincts and physical traits return despite constant discipline. The current laboratory subject is the puma, not a human captive. Prendick accepts the explanation while remaining horrified by the work and its results.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Prendick observes the Beast People and the fragile order imposed on them. Evidence that one has killed and eaten a rabbit leads Moreau to assemble the community and invoke the Law. The Leopard-Man flees. During the pursuit, Prendick shoots him rather than let Moreau return him to the laboratory, though afterward he wonders whether the creature was certainly guilty. Soon the puma breaks free despite its restraints. Moreau pursues it into the forest, and both are mortally wounded in their struggle. Prendick and Montgomery recover Moreau's body. With the island's maker dead, the Beast People begin testing whether the old authority and its punishments still exist. The Law remains in their memory, but its power is already weakening.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Montgomery loses control after Moreau's death. He releases the remaining experimental animals, gives alcohol to the Beast People, and joins their disorderly celebration. Violence follows: Montgomery and M'ling are killed, and the enclosure burns along with the boats, medicines, weapons, and much of the food. Prendick is left alone. He preserves his safety partly by claiming that Moreau will return and partly by living among the creatures, but over the following months they steadily revert. Speech, clothing, the Law, and human posture fade as animal habits reassert themselves. The loyal Dog-Man accompanies Prendick until the Hyena-Swine kills him; Prendick then kills the Hyena-Swine. A boat carrying two corpses eventually drifts to the island. Prendick uses it to escape and is rescued, but on returning to society he cannot forget the Beast People. Human faces and behavior seem to him equally capable of reversion, so he withdraws into solitude, books, chemistry, and astronomy.",
+            "through": {
+              "chapter": 22
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-island-of-dr-moreau"
+      }
+    },
     "the-jonathan-swift-classic-gullivers-travels": {
       "characters": {
         "characters": [
