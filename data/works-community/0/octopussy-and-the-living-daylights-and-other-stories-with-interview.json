@@ -3372,6 +3372,374 @@
         "work": "oscar-wildes-the-canterville-ghost"
       }
     },
+    "othello": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A Venetian gentleman consumed by resentment after Desdemona marries Othello. He pays Iago to help him pursue her and readily accepts Iago's claim that the marriage can be undone.",
+            "id": "roderigo",
+            "name": "Roderigo",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ancient"
+            ],
+            "description": "Othello's ensign, angered that Cassio received a promotion he wanted. He presents himself to Roderigo as a cynical schemer while continuing to appear loyal to Othello and the other Venetians.",
+            "id": "iago",
+            "name": "Iago",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Venetian senator and Desdemona's father. Awakened with news of her secret marriage, he assumes she could not have chosen Othello freely and seeks official intervention.",
+            "id": "brabantio",
+            "name": "Brabantio",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Moor"
+            ],
+            "description": "A respected general in Venetian service and Desdemona's new husband. Calm under Brabantio's accusations, he trusts that his military record and an honest account of the courtship will answer the charge against him.",
+            "id": "othello",
+            "name": "Othello",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Othello's newly promoted lieutenant, a courteous Florentine officer with more theoretical than battlefield experience. His advancement over Iago is one source of Iago's grievance.",
+            "id": "michael-cassio",
+            "name": "Michael Cassio",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Brabantio's daughter and Othello's wife. She openly confirms that she chose the marriage, balancing affection for her father with a firm declaration of loyalty to her husband.",
+            "id": "desdemona",
+            "name": "Desdemona",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The chief magistrate of Venice, presiding over urgent plans to defend Cyprus from a Turkish fleet. He listens to Brabantio's complaint but accepts Desdemona's own account of her marriage.",
+            "id": "duke-of-venice",
+            "name": "Duke of Venice",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Iago's wife and Desdemona's attendant in Cyprus. Practical and outspoken, she accompanies Desdemona on the voyage and has a more skeptical view of relations between husbands and wives than her mistress does.",
+            "id": "emilia",
+            "name": "Emilia",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The governor of Cyprus before Othello's arrival. He welcomes the Venetian force after the Turkish fleet is destroyed by a storm and treats Cassio as a fellow soldier and friend.",
+            "id": "montano",
+            "name": "Montano",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A woman in Cyprus who loves Cassio and is troubled by his long absences. Cassio treats their relationship casually and asks her to copy embroidery from a handkerchief he has found.",
+            "id": "bianca",
+            "name": "Bianca",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Venetian nobleman and Desdemona's kinsman, sent to Cyprus with official letters from the state. His arrival brings the authority and scrutiny of Venice into Othello's increasingly troubled household.",
+            "id": "lodovico",
+            "name": "Lodovico",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Brabantio's brother and Desdemona's uncle. He comes to Cyprus with Lodovico and becomes one of the Venetian witnesses to the final crisis.",
+            "id": "gratiano",
+            "name": "Gratiano",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "othello"
+      },
+      "recaps": {
+        "ending": "Iago arranges a night attack in which Roderigo attacks Cassio, Cassio wounds Roderigo, and Iago secretly wounds Cassio, then kills Roderigo to silence him. Othello, believing Cassio dead, smothers Desdemona in their bed despite her denials. Emilia arrives, discovers the murder, and exposes the handkerchief plot: she found the token and gave it to Iago, never knowing his purpose. When Iago cannot silence her, he kills her and is captured. Othello understands that Desdemona was innocent and that he has been deceived. He wounds Iago, then kills himself beside Desdemona. Letters found on Roderigo confirm the conspiracy. Cassio survives and is appointed governor of Cyprus; Lodovico orders him to determine Iago's punishment and returns to Venice with the report. Iago remains alive in custody and refuses to explain himself further.",
+        "in_short": "Othello, a celebrated Venetian general, secretly marries Desdemona and takes command in Cyprus. His ensign Iago resents both Othello and the promoted lieutenant Cassio. After engineering Cassio's dismissal, Iago persuades Othello that Desdemona is unfaithful with Cassio. A handkerchief that Emilia finds and Iago plants in Cassio's room becomes false proof. Othello's trust collapses into jealousy, while Desdemona cannot understand why her loyal advocacy for Cassio worsens matters. Iago manipulates Roderigo into attacking Cassio, then kills Roderigo. Othello smothers Desdemona. Emilia reveals Iago's plot, and Iago kills her before being arrested. Realizing that Desdemona was innocent, Othello kills himself. Cassio survives to govern Cyprus, and Iago is taken away for punishment.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Roderigo complains that Iago has taken his money while failing to help him win Desdemona. Iago reveals his anger that Othello promoted Cassio instead of him and says his outward service conceals private hostility. The pair wake Desdemona's father, Brabantio, and report that she has secretly married Othello. Brabantio gathers officers to confront the general, but Othello is also summoned before the Venetian council because a Turkish attack threatens Cyprus. Othello refuses to hide and relies on his public service and the truth of the courtship to defend him.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Before the Duke and senators, Brabantio accuses Othello of using unnatural means to secure Desdemona's love. Othello explains that she was moved by the story of his life, and Desdemona confirms that she freely chose him. The state sends Othello to command Cyprus; Desdemona asks to accompany him and is placed temporarily in Iago's care. Iago urges Roderigo to follow them and continue financing his hopes. Alone, Iago begins shaping a plan to exploit Othello's trust and to suggest that Cassio and Desdemona are lovers. In Cyprus, a storm destroys the Turkish fleet before battle. Desdemona, Cassio, Emilia, and Iago arrive safely, followed by Othello, whose reunion with his wife is affectionate and secure.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Iago persuades Roderigo that Desdemona will soon tire of Othello and turn to Cassio. During the celebrations, he pressures Cassio to drink, then has Roderigo provoke him. Cassio fights Montano and loses his lieutenancy when Othello restores order. Iago advises the distraught Cassio to ask Desdemona to plead for him, presenting helpful counsel that will also make their meetings look suspicious. As Desdemona promises to press Cassio's case, Iago draws Othello's attention to Cassio leaving her company and slowly introduces doubts about their honesty. Othello resists at first but demands proof. Iago reports an invented episode suggesting Cassio dreamed about Desdemona and says he saw Cassio with the special handkerchief Othello gave his wife. Othello accepts the insinuations, vows revenge, and promotes Iago to lieutenant.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Desdemona has accidentally dropped her handkerchief. Emilia finds it and gives it to Iago, who places it where Cassio will discover it; Emilia does not know his plan. Othello demands the token from Desdemona and treats her inability to produce it as confirmation of betrayal. She continues advocating for Cassio, unaware that this sounds incriminating to her husband. Cassio asks Bianca to copy the embroidery from the handkerchief he found. Iago then arranges for Othello to overhear a conversation about Bianca while believing Cassio is boasting about Desdemona. When Bianca angrily returns the handkerchief, the sight completes Iago's false case. Othello decides Desdemona must die, and Iago agrees to deal with Cassio. Visiting Venetian Lodovico witnesses Othello strike Desdemona and is shocked by the change in him.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Othello questions Emilia about Desdemona and then accuses his wife directly, refusing her denials. Desdemona turns to Iago for help, and he pretends not to understand the cause. Iago tells Roderigo that killing Cassio will prevent Othello and Desdemona from leaving Cyprus and will preserve Roderigo's chance. Othello orders Desdemona to dismiss Emilia and prepare for bed. The women discuss the unequal standards applied to wives and husbands; Desdemona remains devoted to Othello despite her fear. At night Roderigo attacks Cassio, but Cassio wounds him. Iago strikes Cassio from hiding, then kills Roderigo when others approach. He publicly takes charge of the confusion and tries to direct suspicion toward Bianca.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Convinced that Iago has arranged Cassio's death, Othello confronts the sleeping Desdemona and smothers her, ignoring her pleas of innocence. Emilia enters and reports the street violence; Desdemona briefly revives only to protect Othello before dying. Emilia rejects Othello's claim that Iago proved the adultery and summons witnesses. When Othello mentions the handkerchief, she reveals that she found it and gave it to her husband. Iago kills Emilia but is captured. The evidence, including letters on Roderigo, exposes the entire scheme. Othello finally understands that Desdemona was faithful. He wounds Iago, then kills himself beside his wife. Cassio survives his injuries and is placed in command of Cyprus. Lodovico orders that Iago be held for punishment and prepares to report the catastrophe to Venice; Iago refuses further explanation.",
+            "through": {
+              "chapter": 15
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "othello"
+      }
+    },
+    "othello-william-shakespeare": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Othello's ensign, resentful because Cassio received the lieutenancy he wanted. He tells Roderigo that his outward loyalty is a disguise and begins using the senator's anger over Desdemona's marriage against Othello.",
+            "id": "iago",
+            "name": "Iago",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A wealthy Venetian gentleman in love with Desdemona. Angry that she has married Othello, he funds and follows Iago's schemes in the hope of breaking the marriage.",
+            "id": "roderigo",
+            "name": "Roderigo",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Venetian senator and Desdemona's father. He is awakened with news of her secret marriage and immediately assumes that Othello must have used unlawful means to win her.",
+            "id": "brabantio",
+            "name": "Brabantio",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Moor"
+            ],
+            "description": "A respected general in Venetian service who has secretly married Desdemona. Calm under Brabantio's accusation, he trusts his military record and Desdemona's own testimony to justify the match.",
+            "id": "othello",
+            "name": "Othello",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Michael Cassio"
+            ],
+            "description": "Othello's newly appointed lieutenant, a courteous Florentine officer. His promotion over Iago makes him an unsuspecting focus of the ensign's resentment.",
+            "id": "cassio",
+            "name": "Cassio",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Duke of Venice"
+            ],
+            "description": "Venice's chief civic authority. Faced with an urgent threat to Cyprus, he calls on Othello to command the defense and hears Brabantio's complaint about the general's marriage.",
+            "id": "duke-of-venice",
+            "name": "Duke of Venice",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Brabantio's daughter and Othello's new wife. Before the Venetian council she states that she chose Othello freely and asks to accompany him to Cyprus rather than remain behind.",
+            "id": "desdemona",
+            "name": "Desdemona",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Iago's wife and Desdemona's attendant. She travels with the military party to Cyprus and is familiar with her husband's cynical manner without yet knowing his larger purpose.",
+            "id": "emilia",
+            "name": "Emilia",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Venetian official commanding Cyprus before Othello arrives. He welcomes the party after the Turkish fleet is destroyed and joins the island's celebration of safety.",
+            "id": "montano",
+            "name": "Montano",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A woman in Cyprus who has an affectionate relationship with Cassio. She is frustrated by his absences and becomes involved when he asks her to copy the embroidery on a handkerchief he has found.",
+            "id": "bianca",
+            "name": "Bianca",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Venetian nobleman and Desdemona's kinsman who arrives in Cyprus with official letters. His visit brings the authority and scrutiny of Venice into Othello's household.",
+            "id": "lodovico",
+            "name": "Lodovico",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Brabantio's brother and Desdemona's uncle. He accompanies Lodovico to Cyprus as the Venetian visitors become witnesses to the collapse of Othello's household.",
+            "id": "gratiano",
+            "name": "Gratiano",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "othello-william-shakespeare"
+      },
+      "recaps": {
+        "ending": "Othello enters Desdemona's bedroom convinced that she betrayed him and kills her despite her denials. Emilia discovers what has happened and exposes the handkerchief plot: she gave it to Iago, who used it to frame Cassio. Iago kills Emilia when she refuses to stay silent, then is captured after fleeing. Othello wounds Iago, learns that Desdemona and Cassio were innocent, and kills himself beside his wife. Cassio survives the attack and is appointed governor of Cyprus. Lodovico orders that Iago be held for punishment and that Othello's property pass to Gratiano. The Turkish threat has vanished, but Iago's manipulation destroys Othello, Desdemona, Emilia, and Roderigo, leaving Cassio and the Venetian officials to restore civil authority.",
+        "in_short": "Othello, a respected Venetian general, marries Desdemona and takes her to Cyprus. His ensign Iago, angry over Cassio's promotion, engineers Cassio's dismissal and persuades Othello that Cassio and Desdemona are lovers. A handkerchief dropped by Desdemona and stolen by Emilia becomes Iago's false proof. Othello's trust turns into jealousy; he humiliates Desdemona, orders Cassio's death, and resolves to kill his wife. Iago manipulates Roderigo into attacking Cassio, then kills Roderigo to protect himself, though Cassio survives. Othello kills Desdemona. Emilia reveals Iago's deception, and Iago kills her before being arrested. Once Othello understands that Desdemona was innocent, he kills himself. Cassio is left in command of Cyprus, while Iago faces punishment.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In Venice, Iago tells Roderigo that he hates Othello for promoting Cassio instead of him. The pair awaken Senator Brabantio and report that his daughter Desdemona has secretly married Othello. Brabantio accuses the general of using magic, but an urgent military council is already preparing a defense of Cyprus against the Turks. Before the Duke, Othello explains that Desdemona came to love him through hearing about his life and travels. Desdemona confirms that she chose the marriage. Brabantio reluctantly yields, and Othello is ordered to Cyprus with Desdemona. Iago arranges for the trusting Roderigo to follow them and privately plans to use Cassio and Desdemona to poison Othello's confidence.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A storm destroys the Turkish fleet before Othello's party reaches Cyprus, ending the military danger. Iago notices Cassio's courteous attention to Desdemona and decides to present it as desire. During the island's celebration, he pressures Cassio to drink, sends Roderigo to provoke him, and turns the resulting fight into a public emergency in which Montano is wounded. Othello dismisses Cassio from the lieutenancy. Pretending friendship, Iago advises the disgraced officer to ask Desdemona to plead for his restoration. Cassio follows the advice, while Iago plans to make Desdemona's innocent advocacy look like evidence of an affair.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Desdemona promises Cassio that she will persist until Othello restores him. Iago draws Othello's attention to Cassio leaving her and gradually suggests that their friendship is improper, using hesitation and warnings about jealousy to make the accusation seem reluctant. Othello demands proof but begins doubting his wife. Desdemona drops the handkerchief that was Othello's first gift to her; Emilia finds it and gives it to Iago, who plants it in Cassio's room. Iago falsely reports that Cassio spoke of Desdemona in his sleep and says he saw Cassio with the handkerchief. Othello accepts the story, vows revenge, makes Iago his lieutenant, and orders him to kill Cassio while deciding to kill Desdemona himself.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Unable to produce the missing handkerchief, Desdemona meets Othello's increasingly harsh demands and still tries to help Cassio. Cassio gives the handkerchief to Bianca to copy, unaware of its origin. Iago stages a conversation in which Cassio laughs about Bianca while Othello, hidden at a distance, believes the subject is Desdemona. When Bianca returns the handkerchief, Othello treats the sight as confirmation. Venetian envoys arrive with orders recalling Othello and appointing Cassio in Cyprus. Othello strikes Desdemona in public, alarming Lodovico. He later interrogates and insults her while refusing her denials. Iago assures Roderigo that killing Cassio will prevent Othello's departure and keep alive Roderigo's hopes of winning Desdemona.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Desdemona prepares for bed with Emilia, troubled by Othello's behavior but still devoted to him. In the street, Roderigo attacks Cassio and is wounded; Iago secretly wounds Cassio, then kills Roderigo and shifts suspicion toward Bianca. Othello, hearing the disturbance, assumes Cassio is dead and goes to Desdemona. He accuses her once more and smothers her. Emilia arrives, discovers the killing, and publicly explains that she found the handkerchief and gave it to Iago. Her testimony reveals the entire fraud. Iago kills Emilia and flees but is captured. Othello wounds him, then kills himself after recognizing Desdemona's innocence. Cassio survives and becomes governor of Cyprus. Lodovico takes charge, sending news to Venice and ordering Iago held for judgment.",
+            "through": {
+              "chapter": 33
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "othello-william-shakespeare"
+      }
+    },
     "our-souls-at-night": {
       "characters": {
         "characters": [

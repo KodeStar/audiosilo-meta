@@ -990,6 +990,200 @@
         "work": "shadows-seventh-step"
       }
     },
+    "shakespeare-for-kids-hamlet": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A student and loyal friend of Prince Hamlet. Summoned to the castle after guards see an apparition, he is skeptical at first but becomes a trusted witness to the strange events around the royal family.",
+            "id": "horatio",
+            "name": "Horatio",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ghost of King Hamlet"
+            ],
+            "description": "An apparition resembling Denmark's dead king, dressed in armor. Its silent appearances to the night watch lead Horatio and the guards to seek out Prince Hamlet.",
+            "id": "ghost",
+            "name": "Ghost",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "King Claudius"
+            ],
+            "description": "The new king of Denmark, brother of the recently deceased King Hamlet and new husband of Queen Gertrude. He presents the marriage and succession as a return to political stability.",
+            "id": "claudius",
+            "name": "Claudius",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The prince of Denmark, grieving for his father and distressed by his mother's rapid marriage to Claudius. He feels isolated at court and wants to return to his studies in Wittenberg.",
+            "id": "hamlet",
+            "name": "Hamlet",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Queen Gertrude"
+            ],
+            "description": "Hamlet's mother, formerly married to the dead king and now queen beside Claudius. She urges her son to end his prolonged mourning and remain with the court.",
+            "id": "gertrude",
+            "name": "Gertrude",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The royal counselor and father of Laertes and Ophelia. Confident in his own judgment and fond of lengthy advice, he is eager to prove his usefulness to the new king.",
+            "id": "polonius",
+            "name": "Polonius",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Polonius's son and Ophelia's brother. Preparing to return to France, he warns Ophelia not to assume that Hamlet's attention can overcome the political demands placed on a prince.",
+            "id": "laertes",
+            "name": "Laertes",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Norwegian prince seeking to recover territory his father lost to Denmark. His military preparations create a political concern for Claudius's new government.",
+            "id": "fortinbras",
+            "name": "Fortinbras",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Polonius's daughter, who has received Hamlet's romantic attention. Pressured by both her father and brother, she agrees to avoid private contact with the prince.",
+            "id": "ophelia",
+            "name": "Ophelia",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former school companion of Hamlet, invited to court by Claudius and Gertrude. He agrees to spend time with the prince while quietly reporting what he learns to the king.",
+            "id": "rosencrantz",
+            "name": "Rosencrantz",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former school companion of Hamlet who arrives with Rosencrantz. He joins the court's attempt to discover the reason for Hamlet's changed behavior.",
+            "id": "guildenstern",
+            "name": "Guildenstern",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leading performer in a visiting theater company. His command of tragic storytelling gives Hamlet an idea for testing whether the Ghost's accusation is true.",
+            "id": "first-player",
+            "name": "First Player",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "First Clown"
+            ],
+            "description": "A cemetery worker who treats death with practical humor while digging Ophelia's grave. His handling of old bones forces Hamlet to confront how completely death erases social rank.",
+            "id": "gravedigger",
+            "name": "Gravedigger",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "shakespeare-for-kids-hamlet"
+      },
+      "recaps": {
+        "ending": "Hamlet returns to Denmark and encounters Ophelia's funeral, where he and Laertes struggle in their grief. Claudius arranges a fencing match using Laertes's poisoned blade and a poisoned drink as a backup. During the bout, Gertrude unknowingly drinks from the poisoned cup. Laertes wounds Hamlet; after the weapons are exchanged, Hamlet wounds Laertes with the same blade. The dying queen warns Hamlet, and Laertes confesses the plot and blames Claudius. Hamlet stabs Claudius and forces him to drink the poison. Claudius, Gertrude, Laertes, and Hamlet all die. Hamlet asks Horatio to tell the true story and gives his support to Fortinbras, who arrives to find the Danish court dead and claims the kingdom. Horatio survives to explain what happened.",
+        "in_short": "Prince Hamlet mourns his father while his uncle Claudius rules Denmark and has married Hamlet's mother, Gertrude. The dead king's Ghost tells Hamlet that Claudius murdered him. Hamlet adopts erratic behavior while seeking proof, then uses a play about a royal murder to provoke Claudius. After accidentally killing Polonius, Hamlet is sent toward England under a secret death order but escapes. Ophelia breaks down after her father's death and drowns; her brother Laertes returns seeking revenge. Claudius recruits Laertes for a rigged fencing match using poison. Gertrude drinks the poisoned cup, Hamlet and Laertes wound each other with the poisoned sword, and Laertes exposes the plot. Hamlet kills Claudius before dying. Fortinbras enters the ruined court and succeeds to Denmark, while Horatio remains to tell Hamlet's story.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Denmark has a new king: Claudius, brother of the recently dead King Hamlet, has married the widowed Queen Gertrude. Prince Hamlet remains in deep mourning and distrusts the speed of the marriage. Horatio and castle guards tell him that an apparition resembling his father has appeared at night. The Ghost meets Hamlet and claims that Claudius murdered him by pouring poison into his ear, then took his crown and wife. It demands revenge but tells Hamlet not to harm Gertrude. Hamlet makes Horatio and the guards swear secrecy and warns them that he may begin behaving strangely while he investigates whether the apparition has told the truth.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Hamlet's disturbing conduct alarms the court. Polonius decides that rejected love for Ophelia has driven the prince mad and offers to observe him for Claudius. The king and queen invite Hamlet's old companions Rosencrantz and Guildenstern to discover what troubles him, but Hamlet quickly realizes they were sent to question him. A traveling company of actors arrives. Moved by the ease with which a performer can express grief, Hamlet criticizes his own delay and forms a test: the actors will perform a murder resembling the Ghost's account while Hamlet and Horatio watch Claudius. If the king reacts, Hamlet hopes to gain evidence of guilt.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Claudius and Polonius secretly observe Hamlet meeting Ophelia, but his harsh rejection convinces the king that love alone does not explain his behavior. During the court performance, Hamlet inserts a scene in which a ruler is poisoned through the ear by a relative who then wins his wife. Claudius abruptly stops the play, confirming Hamlet's suspicions. The king tries to pray and admits his crime privately, but Hamlet passes up the chance to kill him because he fears sending a praying murderer to heaven. Confronting Gertrude in her room, Hamlet hears someone hidden behind a curtain and stabs through it, killing Polonius. The Ghost appears again to Hamlet, while Gertrude sees nothing. Hamlet urges her to reject Claudius and prepares to be sent to England.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Claudius sends Hamlet to England with Rosencrantz and Guildenstern, secretly ordering that Hamlet be executed. Polonius's death destroys Ophelia's stability; she wanders the court singing and speaking in fragments. Laertes returns with angry supporters, demanding an account of his father's death. Claudius redirects his anger toward Hamlet and proposes a fencing match in which Laertes will use a poisoned blade, with poisoned wine ready if the sword fails. News arrives that Hamlet escaped his voyage after a pirate encounter and is returning to Denmark. Gertrude then reports that Ophelia drowned after falling from a tree into a stream. Laertes and Claudius prepare to carry out their plan when Hamlet comes back.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At the cemetery Hamlet discovers that the grave being prepared is Ophelia's. He and Laertes clash at her funeral, each overwhelmed by grief. Hamlet later tells Horatio that he found Claudius's execution order at sea, replaced it with an order condemning Rosencrantz and Guildenstern, and returned to Denmark. He accepts a fencing challenge against Laertes despite an uneasy feeling. During the match Gertrude drinks the poisoned wine intended for Hamlet. Laertes wounds Hamlet with the poisoned blade; the swords are exchanged and Hamlet wounds Laertes. As they die, Gertrude identifies the poisoned drink and Laertes reveals Claudius's plot. Hamlet kills Claudius, reconciles with Laertes, and asks Horatio to tell the story. Fortinbras arrives after the deaths and assumes authority in Denmark.",
+            "through": {
+              "chapter": 20
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "shakespeare-for-kids-hamlet"
+      }
+    },
     "shane-jack-schaefer": {
       "characters": {
         "characters": [

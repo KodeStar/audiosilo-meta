@@ -2480,6 +2480,231 @@
         ],
         "work": "georges-marvelous-medicine"
       }
+    },
+    "germinal": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A twenty-one-year-old mechanic who arrives in the Montsou mining district hungry and unemployed after losing a railway job for striking a superior. Intelligent, proud, and susceptible to violent anger, he has no mining experience but accepts dangerous underground work and begins learning both the trade and the grievances of the workers around him.",
+            "id": "etienne-lantier",
+            "name": "Étienne Lantier",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Bonnemort"
+            ],
+            "description": "An elderly cart driver whose given name is Vincent Maheu. After roughly half a century in and around the mines, coal dust has permanently damaged his lungs and blackened his saliva. His nickname, suggesting repeated escapes from death, reflects the industry's long claim on his body.",
+            "id": "vincent-maheu",
+            "name": "Vincent Maheu",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A respected coal hewer at Le Voreux and the principal wage earner in a household spanning three generations. Competent, patient, and initially cautious about conflict with the company, he helps Étienne obtain work when the mine crew is short-handed.",
+            "id": "maheu",
+            "name": "Maheu",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Maheu's wife, who manages a crowded home in the miners' settlement and stretches the family's inadequate earnings across food, rent, and many children. Practical and formidable, she understands both the household's dependence on the mine and the impossibility of sustaining it on wages that never cover its needs.",
+            "id": "maheude",
+            "name": "La Maheude",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Maheus' fifteen-year-old daughter, whose slight build and cropped appearance initially lead Étienne to mistake her for a boy. She works underground pushing coal tubs to support the household and moves through the mine with the competence of someone employed there since childhood.",
+            "id": "catherine-maheu",
+            "name": "Catherine Maheu",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A strong, experienced miner in Maheu's crew. He quickly recognizes Étienne's interest in Catherine and asserts his own claim on her with possessive confidence, making personal rivalry part of the newcomers' already difficult adjustment underground.",
+            "id": "chaval",
+            "name": "Chaval",
+            "reveal": {
+              "chapter": 3
+            }
+          },
+          {
+            "description": "The eldest Maheu son, a miner who already has a child with Philomène. Irreverent and pleasure-seeking outside work, he nevertheless shares the dangerous occupation on which his extended family depends.",
+            "id": "zacharie-maheu",
+            "name": "Zacharie Maheu",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A younger Maheu son employed underground as a trapper. Small, unruly, and accustomed to neglect, he moves freely through the settlement and mine with other children who have learned adult vices alongside the demands of labor.",
+            "id": "jeanlin-maheu",
+            "name": "Jeanlin Maheu",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former miner dismissed for political agitation who now runs the Avantage tavern near Le Voreux. Familiar with socialist arguments and local grievances, he offers Étienne food, information, and a gathering place while favoring gradual organization over impulsive confrontation.",
+            "id": "rasseneur",
+            "name": "Rasseneur",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Russian émigré and skilled mechanic who lodges at Rasseneur's tavern. Quiet in daily life but uncompromising in his anarchism, he rejects reform and political organization, believing that the existing social order must be destroyed before anything new can grow.",
+            "id": "souvarine",
+            "name": "Souvarine",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The general manager of the Montsou mines, responsible for representing the company to workers and shareholders. Although materially comfortable, he feels trapped between remote owners, labor unrest, and an unhappy private household, and he approaches the miners chiefly through the demands of his office.",
+            "id": "hennebeau",
+            "name": "Hennebeau",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young mining engineer and Hennebeau's nephew, charged with supervising operations underground. Technically capable and accustomed to authority, he deals directly with crews over safety, output, and discipline.",
+            "id": "paul-negrel",
+            "name": "Paul Négrel",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wealthy shareholder whose family fortune rests partly on the Montsou mines. He regards inherited ownership as prudent stewardship and lives at La Piolaine, largely insulated from the physical conditions that produce his income.",
+            "id": "leon-gregoire",
+            "name": "Léon Grégoire",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Grégoires' sheltered daughter and sole heir. Generous within the narrow charitable habits taught by her parents, she knows mining families mainly as recipients of visits and gifts rather than as workers tied to the source of her comfort.",
+            "id": "cecile-gregoire",
+            "name": "Cécile Grégoire",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An independent mine owner struggling to keep the Jean-Bart pit competitive against the larger Montsou company. More directly exposed to financial failure than the Grégoire shareholders, he still depends on extracting labor from miners facing the same dangers and scarcity.",
+            "id": "deneulin",
+            "name": "Deneulin",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young mine worker from the settlement, known for her open sexuality and rough humor. She is attracted to Étienne and takes part in the communal life of the miners without sharing Catherine's reserve.",
+            "id": "mouquette",
+            "name": "Mouquette",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "germinal"
+      },
+      "recaps": {
+        "ending": "After the defeated miners return to work, Souvarine secretly sabotages Le Voreux. Water and unstable ground overwhelm the shaft, destroying the mine and trapping workers below. Négrel directs a long rescue effort; Zacharie dies during it. Étienne, Catherine, and Chaval remain cut off underground, where Étienne kills Chaval in a final fight. Catherine dies beside Étienne before rescuers reach him. Elsewhere, the mentally damaged Bonnemort strangles the visiting Cécile Grégoire. The catastrophe ends Deneulin's remaining independence and devastates the district without changing the system that made the strike. Étienne recovers and leaves Montsou for Paris, intending to continue political work. Maheude, now responsible for the surviving children, goes back underground because the family must eat. As Étienne walks through the spring countryside, he imagines the workers' suppressed anger as new growth beneath the soil: the strike has failed in the immediate sense, but collective resistance has taken root and will return.",
+        "in_short": "Unemployed mechanic Étienne Lantier arrives at Montsou and joins the Maheu family underground at Le Voreux. Appalled by dangerous work and chronic hunger, he studies socialism and helps organize a strike after the mining company effectively cuts wages. The stoppage spreads, but the workers' small relief fund collapses and starvation divides them. A march across the district turns destructive; shopkeeper Maigrat dies, and soldiers later fire on a crowd, killing Maheu, Mouquette, and others. The survivors return to work defeated. The anarchist Souvarine then sabotages Le Voreux, causing a catastrophic flood and collapse. Trapped with Catherine and her abusive partner Chaval, Étienne kills Chaval, but Catherine dies before Étienne is rescued. Zacharie also dies in the rescue effort, while Bonnemort kills the sheltered heiress Cécile Grégoire. Maheude returns to mining to feed her remaining children. Étienne leaves for Paris convinced that, although this strike failed, the workers' shared consciousness is growing toward a future uprising.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Étienne Lantier reaches the Montsou coal district on a freezing night after losing his railway job. At Le Voreux he meets the elderly miner Bonnemort, whose damaged lungs embody a lifetime of coal work, and learns that the Maheu crew needs a hand. The Maheu household already sends several members underground to meet debts that continually exceed its wages. Étienne takes the vacant job and descends with Maheu, fifteen-year-old Catherine, Chaval, and the others. He is shocked by heat, darkness, water, cramped seams, and the constant possibility of collapse. Catherine teaches him to handle the coal tubs, and his attraction to her provokes the possessive Chaval. Above ground, company rules and deductions leave the workers responsible for hazards they cannot control. Étienne completes the punishing shift and finds temporary help at Rasseneur's tavern, where the former miner and the Russian anarchist Souvarine represent different forms of opposition to the company. With no better option, Étienne commits himself to mining.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Étienne settles into the district and gains skill underground, eventually lodging with the Maheus. Their home in the company settlement is crowded, hungry, and completely dependent on the wages of adults and children. Across the district, the Grégoire family receives steady income from inherited mine shares and practices charity without questioning the arrangement that protects its comfort. Manager Hennebeau and engineer Négrel administer production while independent owner Deneulin struggles to keep his own pits profitable. Catherine becomes involved with Chaval, whose jealousy and violence deepen Étienne's resentment. At the Avantage, Étienne reads political works and debates Rasseneur and Souvarine. He begins corresponding with the socialist organizer Pluchart and promotes an international workers' association, hoping that a relief fund will let miners withstand a future dispute. His education and confidence make him increasingly influential among men who recognize their hardship but fear the consequences of challenging the company.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Months of work make Étienne a trusted member of the Maheu household and a more forceful advocate of collective action. Conditions underground remain unsafe. Jeanlin is badly injured in an accident, adding another dependent to a family that cannot afford lost wages. The company, concerned about poor timbering, announces a new payment system that separates support work from coal cutting while lowering the rate paid for coal. Management presents the change as a safety reform; miners calculate that it is an effective wage reduction imposed on people already near starvation. Étienne argues that the moment has come to resist. Rasseneur doubts the workers can survive a prolonged stoppage, and Souvarine dismisses limited wage demands as inadequate, but anger spreads through the settlements. Delegates from the crews meet and vote not to return underground. The strike begins with only a modest fund, uncertain outside support, and no guarantee that all pits or families will remain united.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The strike closes Le Voreux and other pits. Maheu and selected delegates present the miners' case to Hennebeau, but the manager refuses to restore the old terms and insists that the company cannot negotiate under pressure. Étienne becomes the strike's public leader, urging solidarity and promising support from the wider socialist movement. The available money quickly disappears. Families sell possessions, incur fresh debt, and divide scraps of food; Maigrat, the local shopkeeper, uses credit and sexual coercion to exploit their desperation. Some miners begin questioning Étienne, while Rasseneur's more cautious influence returns. Pluchart visits and speaks at a large meeting, linking the local dispute to international labor organization. The miners vote to continue despite hunger. Catherine remains with Chaval, who breaks with the strike and takes work at Deneulin's Jean-Bart pit. The conflict now extends beyond a single wage schedule: it has become a test of whether workers scattered across competing mines can act as one body longer than their families can endure without pay.",
+            "through": {
+              "chapter": 23
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Hunger and frustration turn the stoppage into a moving confrontation. A crowd led largely by the miners' women marches from pit to pit, forcing work to stop and attacking machinery associated with continued production. At Jean-Bart, Catherine is caught between Chaval, the strikers, and Étienne; Deneulin can neither protect his operation nor persuade the crowd that destroying it will improve their position. The march grows more volatile as it crosses the district. Hennebeau sees the mass approach while dealing with the collapse of his own domestic life, and the authorities prepare troops to defend company property. The crowd reaches Maigrat's shop. Trying to escape across a roof, the shopkeeper falls and is killed; women who remember his abuses mutilate his body. The day's violence fractures public sympathy and gives the company grounds for greater repression. It also reveals that Étienne, despite his leadership, cannot direct the rage released by weeks of deprivation. The strike continues, but its participants are exhausted, divided, and increasingly surrounded by force.",
+            "through": {
+              "chapter": 29
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Soldiers occupy the mining sites while hunger reduces the strikers' ability to hold together. Jeanlin, living partly apart from his family in an underground refuge, kills a young sentry without a political or practical purpose, another sign that violence has escaped organized control. The company brings in replacement workers under military protection. A crowd gathers at Le Voreux, insulting the newcomers and confronting the troops with stones and threats. When the soldiers fire, Maheu, Mouquette, and other miners and family members are killed or wounded. The deaths destroy the remaining momentum of the strike. Hennebeau offers concessions that do not amount to victory, and workers begin returning underground because their households have no food. Étienne is blamed both by those who followed him and by authorities who see him as an agitator. He has lost his leadership, the strike fund, and his faith that a single burst of solidarity could overcome the company's resources. Le Voreux resumes production under the same broad system the miners had challenged.",
+            "through": {
+              "chapter": 34
+            }
+          },
+          {
+            "scope": "book",
+            "text": "As defeated miners return to Le Voreux, Souvarine acts on his belief that only destruction can clear the way for change. He secretly damages the mine's shaft system, allowing water and unstable ground to overwhelm it. The works collapse, killing workers and trapping others below. Négrel leads a prolonged rescue effort, during which Zacharie dies. Étienne, Catherine, and Chaval remain isolated in flooded passages. Étienne kills Chaval during a final fight, but Catherine weakens and dies beside him before rescuers break through. Étienne is eventually brought out alive. At the Maheu home, the mentally damaged Bonnemort strangles Cécile Grégoire when she visits, bringing the violence of the mines into direct contact with the sheltered shareholder family. Maheude, widowed and responsible for surviving children, must return to underground work. Étienne recovers and leaves Montsou for Paris to continue organizing. Walking through the spring fields, he believes the failed strike has nevertheless planted a durable consciousness among the workers and that a larger uprising will eventually emerge.",
+            "through": {
+              "chapter": 40
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "germinal"
+      }
     }
   }
 }
