@@ -267,6 +267,159 @@
         "work": "lords-and-ladies"
       }
     },
+    "lost-horizon": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A novelist and former Oxford contemporary of Hugh Conway who reconstructs Conway's extraordinary disappearance from documents and conversations. His account frames the central story and reflects his determination to discover what became of his friend after the official trail ended.",
+            "id": "rutherford",
+            "name": "Rutherford",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A British diplomat in his late thirties, experienced, gifted with languages, and marked by exhaustion after supervising an evacuation during unrest at Baskul. Calm under danger and inclined toward detached reflection, he becomes the natural leader of four passengers whose aircraft is taken far off course.",
+            "id": "hugh-conway",
+            "name": "Hugh Conway",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A young British vice-consul evacuated from Baskul with Conway. Energetic, conventional, and impatient with uncertainty, he looks to Conway for leadership but presses for direct action when their flight is diverted. His desire to return to familiar life contrasts with Conway's unusual composure.",
+            "id": "mallinson",
+            "name": "Mallinson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An English missionary traveling from Baskul. Resolute and practical, she interprets the group's unexpected journey as a possible opportunity for religious work and is less disturbed by their isolation than Mallinson expects.",
+            "id": "roberta-brinklow",
+            "name": "Roberta Brinklow",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An American passenger evacuated with Conway's party. Affable and adaptable, he presents himself as a businessman and responds to the group's predicament with curiosity rather than panic. His relaxed manner helps him settle quickly into unfamiliar surroundings.",
+            "id": "henry-barnard",
+            "name": "Henry D. Barnard",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The pilot who has replaced the expected aviator without the passengers' knowledge. He refuses to explain himself and flies the aircraft far from its planned route, carrying Conway's party deep into increasingly remote mountain country.",
+            "id": "talu",
+            "name": "Talu",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A courteous Chinese resident of Shangri-La who meets the stranded travelers and guides them to the lamasery. Educated, patient, and difficult to hurry, he acts as the community's interpreter and intermediary while offering few immediate answers about why the travelers were brought there.",
+            "id": "chang",
+            "name": "Chang",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young Manchu woman living at Shangri-La, accomplished in music and possessed of a quiet, self-contained manner. Conway is drawn to her serenity, while Mallinson sees in her another person who should be free to leave the valley.",
+            "id": "lo-tsen",
+            "name": "Lo-Tsen",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The ancient spiritual head of Shangri-La, living in secluded rooms above the lamasery. Frail in body but intellectually alert, he asks to meet Conway privately and begins explaining the hidden settlement's history, purpose, and exceptional relationship with time.",
+            "id": "high-lama",
+            "name": "The High Lama",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "lost-horizon"
+      },
+      "recaps": {
+        "ending": "After the High Lama dies, Conway has the opportunity to remain and assume responsibility for Shangri-La's future. Mallinson, however, insists that the valley is a prison built on deception and urges Conway to escape with him and Lo-Tsen. Conway finally yields and the three leave with departing porters. The framed narrative resumes outside the valley: Rutherford has traced Conway to a mission hospital, where Conway arrived ill and disoriented after the mountain journey. A very old Chinese woman associated with the travelers died, evidence consistent with Chang's warning that Lo-Tsen's preserved youth could fail beyond Shangri-La. Conway recovered his memory and then disappeared again, apparently trying to return to the hidden valley. Rutherford follows reports and fragments of testimony but cannot establish whether Conway survived or found Shangri-La. The novel closes with his fate unresolved, while the accumulated evidence leaves the valley's existence more credible than an ordinary legend.",
+        "in_short": "During an evacuation from Baskul, British diplomat Hugh Conway and three companions discover that their aircraft has been hijacked and flown into the Tibetan mountains. After a forced landing they are escorted by Chang to Shangri-La, a remote lamasery in a fertile valley beneath a great peak. The community offers comfort, scholarship, and an atmosphere of moderation, but no easy way to leave. Conway learns from the High Lama, the centuries-old Father Perrault, that the valley slows aging and preserves human knowledge against a coming age of destruction. Conway is chosen to succeed him and feels that Shangri-La answers his weariness with the outside world. His younger colleague Mallinson rejects the story and persuades him to flee with the apparently youthful Lo-Tsen. Outside the valley she rapidly reveals her great age, and Conway eventually disappears while attempting to find Shangri-La again. Rutherford's investigation cannot prove whether he returned, leaving Conway's final destination unknown.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "During political violence at Baskul, four people are flown out in a small aircraft: British diplomat Hugh Conway, his younger colleague Mallinson, missionary Roberta Brinklow, and American traveler Henry Barnard. They expect to reach Peshawar, but Conway notices that an unfamiliar pilot is carrying them east instead. The cockpit is inaccessible, the pilot will not answer, and the aircraft continues beyond ordinary routes into increasingly remote country. Conway, already exhausted by years of diplomatic service and the strain of the evacuation, remains strikingly calm. Mallinson is angry and alarmed, while Brinklow and Barnard adapt in their different ways. With no means of taking control, the passengers can only watch as fuel, daylight, and recognizable geography disappear behind them.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The hijacked aircraft crosses the Himalayas and makes a dangerous landing on a high, desolate plateau. The pilot, Talu, is gravely injured and gives Conway only fragmentary directions before dying. The four passengers face cold, altitude, and the likelihood that no search party can locate them. A procession then appears from the mountains under the leadership of a courteous Chinese man named Chang. With little alternative, the travelers follow him through a difficult pass. Their route unexpectedly descends toward a sheltered, fertile valley dominated by the brilliant peak of Karakal. Above the cultivated land stands Shangri-La, a well-appointed lamasery whose comfort and sophistication are startling after the barren plateau. Chang welcomes them as guests but remains vague about both their arrival and their eventual departure.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The travelers settle temporarily into Shangri-La. Its library, music, food, plumbing, and collection of art suggest long contact with the wider world, though the valley itself remains almost inaccessible. Chang explains that porters make rare journeys, so departure may require patience. Mallinson grows suspicious and increasingly demands a definite plan; Conway feels an unexpected release from ordinary ambition and pressure. Brinklow imagines establishing a mission, while Barnard finds practical attractions in staying. Conway meets Lo-Tsen, a beautiful young Manchu musician whose stillness seems to embody the place. He also learns that Barnard is really Chalmers Bryant, a financier wanted in connection with failed enterprises. Shangri-La's residents receive this disclosure without outrage, reinforcing the community's preference for moderation over judgment.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Chang gradually admits that Shangri-La's residents age with extraordinary slowness and that many have lived far beyond a normal lifespan. Conway is summoned to the secluded High Lama, who says the lamasery began under a European priest, Father Perrault, centuries earlier. The valley's climate and way of life preserve health and extend life, though leaving it after long residence carries grave risk. The High Lama identifies himself as Perrault and explains Shangri-La's larger purpose: it gathers books, art, learning, and people capable of protecting civilization's achievements. He believes warfare and mass destruction will eventually overwhelm the outside world, after which the valley's preserved culture may help begin a gentler age. Conway finds the account astonishing but increasingly coherent with everything he has observed.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Conway continues private talks with the High Lama and becomes persuaded that Shangri-La's history and longevity are real. The life offered there suits his contemplative nature and his fatigue with the demands of public life. Barnard and Brinklow have found reasons of their own to remain. Mallinson alone refuses accommodation: he sees kidnapping, indefinite detention, and a collection of unsupported claims. He is also devoted to Lo-Tsen and believes she wishes to escape with him. Conway tries to convey the danger of taking a long-lived resident away from the valley, but Mallinson dismisses Chang's warnings as part of the deception. The High Lama tells Conway that their meeting was intended and that Conway has the qualities needed to guide Shangri-La. As the old man's strength fails, Conway is drawn toward accepting a future he never consciously sought.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The High Lama dies after designating Conway as the person who should carry Shangri-La's work forward. Before Conway can settle into that role, Mallinson demands that he leave with a departing group of porters and Lo-Tsen. Torn between the valley's promise and responsibility for his young colleague, Conway gives way, and the three begin the journey out. The outer narrative later finds Conway at a mission hospital far from the valley, feverish and with his memory impaired. A Chinese woman connected with the journey has died there and appeared unimaginably old, supporting the warning that Lo-Tsen's youth depended on remaining at Shangri-La. Conway eventually remembers his experience and disappears once more. Rutherford traces reports suggesting that he set out to find the hidden valley again, but no conclusive record establishes whether he reached it. Conway's final fate, and Shangri-La's precise location, remain unresolved.",
+            "through": {
+              "chapter": 11
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "lost-horizon"
+      }
+    },
     "lost-light": {
       "characters": {
         "characters": [

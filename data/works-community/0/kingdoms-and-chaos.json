@@ -1145,6 +1145,146 @@
         "work": "lady-chatterleys-lover"
       }
     },
+    "lady-susan": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A recently widowed woman of great beauty, intelligence, and social confidence. With her finances unsettled and rumors gathering around her conduct at Langford, she invites herself to stay with her brother-in-law at Churchill. Her private letters reveal a calculating observer who enjoys controlling both admirers and opponents.",
+            "id": "lady-susan-vernon",
+            "name": "Lady Susan Vernon",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Lady Susan's brother-in-law and the owner of Churchill. Kind, hospitable, and disposed to think well of his relations, he welcomes Lady Susan despite her earlier attempts to prevent his marriage.",
+            "id": "charles-vernon",
+            "name": "Charles Vernon",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A married London friend who receives Lady Susan's candid letters and helps her manage private meetings and social strategy. Their correspondence is far less guarded than Lady Susan's communications with her family.",
+            "id": "alicia-johnson",
+            "name": "Alicia Johnson",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mrs. Vernon"
+            ],
+            "description": "Charles Vernon's wife and Lady Susan's wary hostess at Churchill. She has reason to distrust her sister-in-law and reports the visit to her mother with careful attention to Lady Susan's words and behavior.",
+            "id": "catherine-vernon",
+            "name": "Catherine Vernon",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Catherine Vernon's younger brother, an intelligent and independent young man who arrives at Churchill already prejudiced against Lady Susan by reports of her conduct. He is confident that her charm will not alter his judgment.",
+            "id": "reginald-de-courcy",
+            "name": "Reginald De Courcy",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Lady Susan's sixteen-year-old daughter, shy, unhappy, and frightened of displeasing her mother. After being kept away at school, she becomes central to a dispute over the marriage Lady Susan intends for her.",
+            "id": "frederica-vernon",
+            "name": "Frederica Vernon",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wealthy but foolish young baronet whom Lady Susan considers an excellent husband for Frederica. He is confident that the match is settled and shows little understanding of Frederica's fear and refusal.",
+            "id": "sir-james-martin",
+            "name": "Sir James Martin",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A married man whose attachment to Lady Susan contributed to her abrupt departure from Langford. His wife had trusted Lady Susan as a friend, making the relationship a source of scandal as well as private danger.",
+            "id": "mr-manwaring",
+            "name": "Mr. Manwaring",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "lady-susan"
+      },
+      "recaps": {
+        "ending": "Reginald visits Lady Susan in London while she is still secretly involved with Mr. Manwaring. The arrival of Mrs. Manwaring exposes the continuing affair, and Reginald finally breaks with Lady Susan. Mr. Johnson, angered by Alicia's part in the intrigue, orders his wife to end their friendship. Lady Susan nevertheless secures a comfortable settlement by marrying Sir James Martin herself, abandoning the plan to force him on Frederica. Frederica remains with Charles and Catherine Vernon, whose household gives her the affection and stability her mother withheld. The concluding account reports that Catherine's effort to encourage an attachment between Frederica and Reginald eventually succeeds. Frederica therefore marries Reginald, while Lady Susan retains wealth and social standing with a husband much easier for her to manage. The ending distributes happiness unevenly but plainly: Frederica escapes coercion and gains a loving home, Reginald is freed from Lady Susan's influence, and Lady Susan converts the wreckage of her schemes into another advantageous marriage.",
+        "in_short": "The beautiful and manipulative widow Lady Susan Vernon arrives at her brother-in-law's home after scandal at Langford. Catherine Vernon distrusts her, but Catherine's brother Reginald is soon captivated despite his initial warnings. Lady Susan simultaneously maintains her attachment to the married Mr. Manwaring and tries to force her timid daughter Frederica to marry the wealthy, foolish Sir James Martin. Frederica appeals to Reginald, but Lady Susan persuades him to doubt the girl and nearly preserves her influence. In London, Mrs. Manwaring discovers Lady Susan's continued meetings with her husband and brings the truth into the open. Reginald ends the relationship. Lady Susan then marries Sir James herself, while Frederica stays with the Vernons and eventually marries Reginald. Lady Susan remains socially secure, but Frederica escapes her control.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Recently widowed Lady Susan Vernon announces that she will visit her brother-in-law Charles at Churchill, presenting the move as a need for family comfort. Her private account to Alicia Johnson is very different: she has left Langford after entangling herself with the married Mr. Manwaring and encouraging the attentions of another man. She expects to manage the Vernons despite having once opposed Charles's marriage. Catherine Vernon, Charles's wife, is alarmed by the proposed visit and writes to her parents about Lady Susan's reputation. Catherine's younger brother Reginald has heard the same stories and is curious to see the notorious widow, though his father advises him to keep away. Lady Susan reaches Churchill aware that she enters a suspicious household, but confident that beauty, composure, and careful manners will allow her to reshape its opinion.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At Churchill, Lady Susan behaves with such apparent gentleness that Charles dismisses much of the gossip about her. Catherine remains watchful, especially when Reginald arrives and begins spending time with their guest. Reginald initially means only to observe Lady Susan, but her conversation and carefully managed vulnerability overcome his prejudice. Lady Susan privately delights in winning over a man who had judged her in advance, while Catherine fears that her brother is becoming seriously attached. Frederica, Lady Susan's timid daughter, is meanwhile miserable at school. Lady Susan complains of the girl's resistance to a proposed match and treats her unhappiness as disobedience rather than distress. The letters expose a widening division between Lady Susan's polished conduct before the Vernons and the contemptuous, strategic account she sends Alicia.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Frederica runs away from school and is brought to Churchill. There she finds kindness from Catherine but remains frightened of her mother. Sir James Martin, the wealthy and foolish suitor Lady Susan has selected for Frederica, arrives unexpectedly and behaves as though the marriage has already been agreed. Frederica firmly dislikes him. Lady Susan sends him away without openly abandoning her plan and tries to keep Reginald from understanding the coercion. Desperate for help, Frederica secretly appeals to Reginald. He confronts Lady Susan, who presents herself as a misunderstood mother and depicts Frederica as deceitful and willful. Her performance restores much of her power over him and leaves Frederica more isolated. Catherine sees that her brother's judgment has been compromised but cannot force him to recognize the contradiction between Lady Susan's treatment of her daughter and her claimed concern for the girl's welfare.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Lady Susan continues to hold Reginald's loyalty while planning to separate Frederica from the Vernons and revive the marriage to Sir James. Catherine and her parents remain convinced that Reginald is in danger of marrying Lady Susan, but direct opposition only strengthens his defense of her. Lady Susan decides to return to London, where Alicia can assist her and where Mr. Manwaring remains within reach. Frederica is allowed to stay at Churchill for the time being, to Catherine's relief. Reginald follows Lady Susan to London, believing their attachment sincere and expecting clarity about their future. The arrangement places him close to the evidence Lady Susan has concealed: her interest in him has never displaced her continuing relationship with the married Manwaring, and her confidante's household has helped make secret meetings possible.",
+            "through": {
+              "chapter": 35
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In London, Lady Susan continues seeing Mr. Manwaring while Reginald remains devoted to her. Mrs. Manwaring arrives in distress, and the overlapping visits expose the affair that Lady Susan has denied. Reginald finally accepts the evidence and breaks with her. Alicia's husband, who has long disapproved of Lady Susan, orders Alicia to end their friendship. Lady Susan rapidly rearranges her plans: instead of forcing Frederica to marry Sir James Martin, she marries the rich and manageable baronet herself. Frederica remains at Churchill with Charles and Catherine Vernon, where she is treated with patience and affection. The concluding account states that Catherine's hopes for Frederica and Reginald are eventually fulfilled, and the two marry. Frederica gains the secure family life she lacked under her mother's control, while Lady Susan preserves comfort and position through a new marriage despite the collapse of her designs on Reginald and the exposure of her affair.",
+            "through": {
+              "chapter": 42
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "lady-susan"
+      }
+    },
     "lair-of-dreams": {
       "characters": {
         "characters": [

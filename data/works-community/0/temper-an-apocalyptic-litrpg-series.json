@@ -956,6 +956,152 @@
         "work": "the-101-dalmatians"
       }
     },
+    "the-39-steps": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A Scottish mining engineer recently returned to London after years in southern Africa. Restless in civilian life, he becomes the sole keeper of a murdered man's intelligence and must rely on fieldcraft, quick disguise, and improvised stories while pursued across Britain.",
+            "id": "richard-hannay",
+            "name": "Richard Hannay",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An American freelance agent who seeks refuge in Hannay's London flat. Nervous but well informed, he claims to have uncovered a German espionage plot involving an assassination and British defence secrets.",
+            "id": "franklin-p-scudder",
+            "name": "Franklin P. Scudder",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Greek statesman whose planned visit to London is central to Scudder's warning. Scudder believes his death would help trigger a European war.",
+            "id": "constantine-karolides",
+            "name": "Constantine Karolides",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young deliveryman whom Hannay persuades to exchange clothes with him, enabling Hannay to leave his watched apartment building in a milkman's uniform.",
+            "id": "the-milkman",
+            "name": "The Milkman",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The talkative keeper of a remote Scottish inn. His enthusiasm for books and adventure makes him receptive to Hannay's predicament, and he helps conceal his guest from pursuers.",
+            "id": "the-innkeeper",
+            "name": "The Innkeeper",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A confident young landowner and parliamentary candidate whom Hannay encounters while electioneering in Scotland. He initially treats Hannay's appearance as an interruption but listens when the fugitive explains the danger.",
+            "id": "sir-harry",
+            "name": "Sir Harry",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior public servant and Sir Harry's godfather. Hannay identifies him as a trustworthy official capable of acting on Scudder's warning.",
+            "id": "sir-walter-bullivant",
+            "name": "Sir Walter Bullivant",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A seemingly respectable antiquarian living in a secluded Scottish house. His smooth welcome cannot hide his close interest in Hannay and the information Hannay carries.",
+            "id": "the-bald-archaeologist",
+            "name": "The Bald Archaeologist",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Britain's First Sea Lord and a participant in a confidential meeting concerning national defence. His knowledge and appearance become important when the spies make their move.",
+            "id": "lord-alloa",
+            "name": "Lord Alloa",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-39-steps"
+      },
+      "recaps": {
+        "ending": "Hannay traces Scudder's phrase about thirty-nine steps to a staircase descending from a house on the Kent coast. The three apparently ordinary residents of the house are the Black Stone agents, waiting for the tide so that a yacht can carry them and the stolen defence information to Germany. Hannay is briefly uncertain because their behavior and cultivated English identities seem convincing, but a small habitual gesture reveals the leader he previously met in Scotland. With officials watching the coast and sea, Hannay confronts the group and prevents their escape; all three spies are arrested. The naval secrets are recovered before they can reach Germany. Europe nevertheless moves toward the wider conflict Scudder predicted, and Hannay receives an army commission. The book closes shortly before Britain enters the First World War, with the immediate espionage plot defeated but the international crisis no longer avoidable.",
+        "in_short": "Richard Hannay, recently returned to Britain, shelters American agent Franklin Scudder, who has uncovered a German plot to steal naval intelligence and worsen the crisis in Europe. When Scudder is murdered in Hannay's flat, Hannay becomes both the police suspect and the spies' next target. He escapes to Scotland, deciphers Scudder's notebook, crosses the countryside through disguises and improvised identities, and survives capture by the German network called the Black Stone. Reaching official Sir Walter Bullivant, Hannay gives his warning, but an enemy disguised as a senior naval officer still obtains secret plans. Hannay realizes Scudder's cryptic reference to thirty-nine steps identifies a house on the Kent coast. He finds the Black Stone's leaders there, exposes them before they can depart by yacht, and secures their arrest and the recovery of the plans. The larger European war still begins, and Hannay enters military service.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Richard Hannay has recently returned from southern Africa and finds London dull until a frightened American named Franklin Scudder asks for shelter. Scudder says he has uncovered a German conspiracy: agents intend to assassinate Greek statesman Constantine Karolides and obtain sensitive British information during the resulting crisis. He fakes his own death and hides in Hannay's flat, but Hannay later finds him murdered. Knowing the killers will search for Scudder's evidence and fearing the police will blame him, Hannay takes the dead man's coded notebook and escapes the watched building in a milkman's clothes. He boards a train for Scotland, hoping the open country will let him evade both groups while he works out what Scudder learned.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Hannay leaves the train as the police search closes around him and crosses the Scottish countryside under improvised identities. At a remote inn he wins the confidence of the literary-minded innkeeper, who hides him while aircraft and police track the area. Hannay studies Scudder's notebook and penetrates enough of its code to confirm the scale of the plot, including repeated references to a spy organization called the Black Stone. Moving on, he encounters Sir Harry, a young parliamentary candidate, and turns an election gathering to his advantage. After hearing Hannay's account, Sir Harry believes him and provides a letter of introduction to his godfather, Sir Walter Bullivant, a senior official who can carry the warning into government.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Still hunted, Hannay borrows the appearance and work of a roadman and uses his knowledge of mining and explosives to sustain the disguise. His pursuers repeatedly come close, aided by an aircraft searching the moors. Seeking refuge at an isolated house, Hannay realizes too late that its hospitable, bald owner is one of the enemy leaders. The man sees through Hannay's latest identity and imprisons him in a storeroom. Hannay finds blasting materials there and uses them to blow open an escape, surviving the explosion and slipping back into the countryside. Although injured and exhausted, he retains Scudder's notebook and the knowledge needed to warn the authorities.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Hannay evades another search by adopting the manner of a harmless angler, then reaches Sir Walter Bullivant and delivers Scudder's warning. Some parts of the conspiracy remain obscure, and the assassination abroad goes ahead, but Sir Walter recognizes that a second objective involves British naval plans. Hannay attends a confidential meeting at which senior defence figures discuss the danger. Afterward, a message reveals that Lord Alloa, the First Sea Lord who appeared to attend, never entered the building. An agent had impersonated him convincingly, listened to the secrets, and escaped. Hannay now understands that the Black Stone possesses the intelligence and must leave Britain quickly. Scudder's cryptic notes about high tide, a date, and thirty-nine steps offer the best remaining lead.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Hannay reasons that the thirty-nine steps are a physical staircase leading down to the sea and uses tide information to narrow the departure point to the Kent coast. He finds a cliffside house with the right number of steps and three cultivated English residents whose ordinary appearance makes him doubt his conclusion. Close observation finally exposes a familiar involuntary gesture, confirming that their leader is the same master of disguise Hannay met in Scotland. The residents are the Black Stone agents, and a yacht is waiting offshore to take them and the stolen naval information to Germany. Hannay confronts them while officials close the exits and patrol the water. The spies are arrested and the plans recovered. The immediate operation fails, though the European war still comes; Hannay is commissioned into the army as Britain prepares to enter it.",
+            "through": {
+              "chapter": 10
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-39-steps"
+      }
+    },
     "the-a-b-c-murders": {
       "characters": {
         "characters": [
@@ -2866,6 +3012,154 @@
           }
         ],
         "work": "the-amber-spyglass"
+      }
+    },
+    "the-amityville-horror": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A land surveyor who buys the large house at 112 Ocean Avenue and moves there with his new wife and her three children. Proud of owning the waterfront property, he is practical at first but soon becomes preoccupied with cold rooms, the fireplace, and unexplained disturbances.",
+            "id": "george-lutz",
+            "name": "George Lutz",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "George's wife and the mother of Daniel, Christopher, and Missy. She helps manage the family's move and initially tries to preserve ordinary routines as the house's oppressive atmosphere and George's changing behavior unsettle them.",
+            "id": "kathy-lutz",
+            "name": "Kathy Lutz",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Kathy's eldest child and George's stepson. He moves into the Amityville house with the rest of the family and becomes caught in the tension, strange physical events, and frequent discipline that mark their short residence.",
+            "id": "daniel-lutz",
+            "name": "Daniel Lutz",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Kathy's younger son and George's stepson. Like Daniel, he is excited by the new home before the family's days there become dominated by accidents, fear, and behavior none of them can readily explain.",
+            "id": "christopher-lutz",
+            "name": "Christopher Lutz",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Kathy's five-year-old daughter. She speaks of an unseen playmate named Jodie and describes the companion as a pig, treating the presence as friendly even when the adults find signs of it disturbing.",
+            "id": "missy-lutz",
+            "name": "Missy Lutz",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Catholic priest and friend of Kathy's family who comes to bless the new house. While alone in an upstairs room, he hears a commanding voice telling him to leave; afterward, illness and other troubles repeatedly interfere with his attempts to warn the Lutzes.",
+            "id": "father-mancuso",
+            "name": "Father Mancuso",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Lutz family's large dog. Normally energetic and protective, he reacts uneasily around the property and shares the family's exposure to the dangers and confusion associated with the house.",
+            "id": "harry",
+            "name": "Harry",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Missy's supposed invisible friend, described by her as an enormous pig with shining red eyes. The adults initially regard Jodie as a child's invention, though later sights and marks make that explanation increasingly difficult for them to maintain.",
+            "id": "jodie",
+            "name": "Jodie",
+            "reveal": {
+              "chapter": 10
+            }
+          },
+          {
+            "aliases": [
+              "Butch DeFeo"
+            ],
+            "description": "The former occupant who shot and killed his parents and four siblings in the house roughly a year before the Lutz family moved in. His crime is disclosed before the purchase and gives the property its notorious recent history.",
+            "id": "ronald-defeo-jr",
+            "name": "Ronald DeFeo Jr.",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-amityville-horror"
+      },
+      "recaps": {
+        "ending": "After twenty-eight days in the house, the disturbances culminate in a night of violent sounds, apparent movement, and terror affecting the whole family. George and Kathy gather Daniel, Christopher, Missy, and Harry and drive away, abandoning most of their possessions. They briefly return for essential belongings but do not resume living at 112 Ocean Avenue. The Lutzes relocate and say that the phenomena stop once they are away from the property. Father Mancuso remains convinced that something hostile was present, although distance relieves the attacks and illness associated with his involvement. Later investigators, including people experienced with alleged hauntings, visit the empty house and report disturbing impressions and an unsettling photograph, but their findings do not provide a settled explanation. The account closes with the family maintaining that flight was necessary and that their twenty-eight-day residence ended only when they left the house behind.",
+        "in_short": "George and Kathy Lutz buy a waterfront house in Amityville where Ronald DeFeo Jr. murdered six members of his family the previous year. They move in with Kathy's three children and soon report a growing pattern of unexplained events: a priest hears an order to leave, rooms remain unnaturally cold, flies gather in winter, foul substances appear, doors and windows move or break, and George wakes repeatedly around the hour of the killings. Five-year-old Missy talks to an unseen pig-like friend named Jodie, while George becomes increasingly angry and obsessed with keeping the fire burning. Apparent levitation, physical marks, and visions erode the family's ability to dismiss the incidents. On their twenty-eighth night, an overwhelming eruption of noises and movement drives them out. They abandon the house and most belongings, later saying the phenomena cease. Subsequent paranormal investigators report troubling experiences but no conclusive explanation.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "George and Kathy Lutz find an unusually affordable Dutch Colonial house at 112 Ocean Avenue in Amityville, Long Island. The price reflects its history: about a year earlier, Ronald DeFeo Jr. shot his parents and four siblings there. After discussing the crime, the Lutzes decide the house itself is not responsible and purchase it. They move in during December with Kathy's children Daniel, Christopher, and Missy, their dog Harry, and furniture left from the former occupants. Father Mancuso comes to bless the home. Alone in an upstairs room, he hears a forceful voice order him to leave. He departs without completing a normal conversation with the family and soon becomes seriously ill. At the house, George begins feeling an intense cold that the heating system does not resolve and spends increasing amounts of time feeding the fireplace.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The family's new routine deteriorates. George repeatedly wakes at about 3:15 in the morning, near the time associated with the DeFeo killings, and checks the boathouse or grounds. His attention narrows to the cold and the fire, and his temper toward Kathy and the children worsens. Unseasonal swarms of flies gather in an upstairs sewing room despite the winter weather. Father Mancuso tries to contact the Lutzes but suffers fever, pain, and other interruptions that keep his warning from reaching them clearly. Doors, locks, and windows fail in ways George cannot readily account for, while unexpected odors and stains add to the disorder. Missy begins talking about Jodie, an invisible companion she describes as a very large pig. Her parents initially treat the story as ordinary childhood imagination.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Events become harder to explain as maintenance problems or stress. George and Kathy discover damage to heavy doors and fixtures, and the children are blamed for incidents they deny causing. George continues waking at the same early hour and grows increasingly detached from his work and prior habits. Kathy feels unseen contact and senses presences in the rooms. Missy's conversations with Jodie persist, and descriptions of glowing red eyes acquire physical force when figures or eyes appear at windows. Father Mancuso remains reluctant to enter the house again but becomes more certain that the family faces a spiritual danger. Attempts at prayer or blessing bring agitation rather than calm. The combined loss of sleep, repeated cold, and conflict isolates the Lutzes even when friends or relatives visit.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The disturbances now threaten the family directly. George and Kathy report bodily sensations, sudden changes in appearance, and episodes suggesting that beds or people are being lifted. George sees Kathy briefly as an aged woman, while Kathy is frightened by changes in her husband's face and behavior. Marks and blackened or foul material appear in the house. George discovers a small concealed red-painted room in the basement that does not appear on the plans and that Harry reacts to with fear. Research and conversations about the property's past deepen the family's belief that the site is connected to violence beyond the DeFeo murders. They attempt to resist through prayer, but the response seems to be louder voices and greater disruption. Their remaining explanations based on coincidence, vandalism, or exhaustion no longer feel adequate to them.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On the twenty-eighth night after the move, the reported activity reaches its crisis. Violent banging, movement within the house, and apparent attacks awaken and terrify the Lutz family. George and Kathy struggle to gather Daniel, Christopher, Missy, and Harry while events around them make remaining in the rooms seem dangerous. They finally drive away, leaving furniture and most other possessions behind. Although they later retrieve essentials, they never resume living at 112 Ocean Avenue. Away from Amityville, the family reports that the disturbances stop, and Father Mancuso's condition improves when he is no longer trying to intervene directly. Paranormal investigators later enter the vacant property. They describe oppressive sensations and other anomalies, and a photograph appears to show a childlike figure, but no investigation settles what occurred. The Lutzes maintain that they fled a hostile presence after twenty-eight days and escaped only by abandoning the house.",
+            "through": {
+              "chapter": 25
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-amityville-horror"
       }
     },
     "the-art-of-racing-in-the-rain": {

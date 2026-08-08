@@ -3239,6 +3239,387 @@
         "work": "persuader"
       }
     },
+    "persuasion-jane-austen": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The overlooked middle daughter of Sir Walter Elliot, now twenty-seven. Intelligent, considerate, and capable, she has learned to put others' needs before her own. Eight years earlier, she ended an engagement to the penniless naval officer Frederick Wentworth after accepting Lady Russell's judgment that the match was imprudent; she still regrets the choice.",
+            "id": "anne-elliot",
+            "name": "Anne Elliot",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Anne's vain, status-conscious father, a baronet devoted to his appearance and ancestry. His extravagant spending forces the family to let Kellynch Hall and move to Bath, though he resists describing the move as an economy.",
+            "id": "sir-walter-elliot",
+            "name": "Sir Walter Elliot",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sir Walter's eldest daughter and the mistress of Kellynch since her mother's death. Proud and socially exacting, she resembles her father and treats Anne as insignificant.",
+            "id": "elizabeth-elliot",
+            "name": "Elizabeth Elliot",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A close friend of Anne's late mother and a trusted adviser to the Elliot family. Sensible and affectionate toward Anne, she once urged Anne to reject Wentworth because his prospects appeared too uncertain.",
+            "id": "lady-russell",
+            "name": "Lady Russell",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The widowed daughter of the Elliots' agent, Mr Shepherd. She becomes Elizabeth's attentive companion, and Anne distrusts the influence her flattering manners give her over Sir Walter and Elizabeth.",
+            "id": "mrs-clay",
+            "name": "Mrs Clay",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A successful naval officer and the husband of Sophy Croft. He agrees to rent Kellynch Hall when the Elliot family's finances oblige them to leave it. His direct, unpretentious manner contrasts with Sir Walter's concern for rank.",
+            "id": "admiral-croft",
+            "name": "Admiral Croft",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sophy Croft"
+            ],
+            "description": "Admiral Croft's capable, good-humored wife and Captain Wentworth's sister. She has accompanied her husband through much of his naval career and shares with him an easy, companionable marriage.",
+            "id": "mrs-croft",
+            "name": "Mrs Croft",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A naval captain who loved Anne eight years earlier. Then without money or connections, he was rejected after Lady Russell persuaded Anne that their engagement was unwise. He has returned from war wealthy and professionally successful, but still resentful of Anne's decision.",
+            "id": "captain-frederick-wentworth",
+            "name": "Captain Frederick Wentworth",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Anne's younger sister, married to Charles Musgrove and living at Uppercross. Often preoccupied with her health and quick to feel slighted, she depends on Anne to soothe household disputes and care for her children.",
+            "id": "mary-musgrove",
+            "name": "Mary Musgrove",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Mary's kind, sociable husband and the heir to Uppercross. He once proposed to Anne before marrying Mary and now occupies himself with family life, shooting, and local company.",
+            "id": "charles-musgrove",
+            "name": "Charles Musgrove",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Charles Musgrove's lively younger sister. Confident and warm, she enjoys Captain Wentworth's company and declares that she values decisiveness and firmness of character.",
+            "id": "louisa-musgrove",
+            "name": "Louisa Musgrove",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Louisa's sister, whose attention shifts between her cousin Charles Hayter and the newly arrived Captain Wentworth. Her uncertainty contributes to Anne's difficulty in judging Wentworth's intentions.",
+            "id": "henrietta-musgrove",
+            "name": "Henrietta Musgrove",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Wentworth's naval friend, living at Lyme with his family after being wounded in service. His open hospitality and strong friendships give Anne a view of the loyal naval circle Wentworth has formed.",
+            "id": "captain-harville",
+            "name": "Captain Harville",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A reserved young naval officer staying with the Harvilles at Lyme. He is mourning his fiancée, Captain Harville's sister, and finds consolation in poetry and music.",
+            "id": "captain-benwick",
+            "name": "Captain Benwick",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sir Walter's estranged cousin and heir, a polished widower whom Anne first notices at Lyme and meets properly in Bath. His renewed attentions please Sir Walter and Elizabeth, while his courteous interest in Anne appears increasingly personal.",
+            "id": "william-elliot",
+            "name": "William Elliot",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Anne's former school friend, now widowed, poor, and in ill health. Living modestly in Bath, she retains warmth and resilience, and Anne renews their friendship despite her family's disapproval of the connection.",
+            "id": "mrs-smith",
+            "name": "Mrs Smith",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "persuasion-jane-austen"
+      },
+      "recaps": {
+        "ending": "Mrs Smith explains that Mr Elliot once helped ruin her husband, ignored her appeals after she was widowed, and has reconciled with Sir Walter chiefly to protect his inheritance from a possible marriage to Mrs Clay. Anne rejects any thought of marrying him. When Wentworth comes to Bath, Anne's warmth toward him and her refusal of Mr Elliot gradually correct his belief that she is attached to her cousin. Overhearing Anne defend women's constancy in love, Wentworth writes that he still loves her and asks whether there is hope for him. They reconcile and renew their engagement, now with wealth, maturity, and family consent on their side. Lady Russell admits she misjudged Wentworth; the Musgroves welcome the match. Mr Elliot leaves Bath with Mrs Clay, whose eventual influence over him remains uncertain. Anne becomes the wife of the naval officer she never stopped loving, proud of his profession even as a future war remains the one cloud over their happiness.",
+        "in_short": "Eight years after Lady Russell persuaded Anne Elliot to end her engagement to the poor and unconnected Frederick Wentworth, the Elliot family's debts force them to rent Kellynch Hall to Wentworth's sister and move to Bath. Wentworth, now a wealthy captain, returns resentful and appears to court Louisa Musgrove. At Lyme, Louisa suffers a serious fall; Anne's calm response restores Wentworth's respect for her, while Louisa later falls in love with Captain Benwick. In Bath, Anne attracts her cousin William Elliot, but her widowed friend Mrs Smith exposes his selfish history and designs on the family inheritance. Wentworth arrives believing Anne may marry Mr Elliot. After he overhears Anne argue that women love longest when hope is gone, he writes that he still loves her. Anne and Wentworth reconcile and become engaged, Lady Russell accepts him, and the long-delayed marriage unites Anne with the naval life she values.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Sir Walter Elliot's vanity and spending have left the family unable to maintain Kellynch Hall. His agent and Lady Russell arrange for him and his eldest daughter Elizabeth to move to Bath, while the estate is rented to Admiral and Mrs Croft. Anne Elliot, the disregarded middle daughter, realizes that Mrs Croft is the sister of Captain Frederick Wentworth. Eight years earlier Anne and Wentworth were deeply in love, but she broke their engagement after Lady Russell judged a penniless naval officer with no connections too risky a match. Wentworth has since gained rank and fortune, while Anne has never stopped regretting the separation. The prospect of his return unsettles her, especially because he has reason to resent her.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Anne stays at Uppercross with her younger sister Mary Musgrove and Mary's sociable extended family rather than immediately joining Sir Walter and Elizabeth in Bath. Wentworth visits his sister at Kellynch and is welcomed by the Musgroves, including the lively unmarried sisters Louisa and Henrietta. His first meetings with Anne are formal and painful. He tells others that she is so changed he scarcely recognized her, while she sees that his success and confidence have only strengthened his attractions. Wentworth enjoys the younger women's admiration and speaks approvingly of firmness, a quality he believes Anne lacked when she yielded to persuasion. Anne quietly helps with Mary's children and watches the courtship around her without knowing whether Wentworth prefers Louisa or Henrietta.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Uppercross party's walks and visits keep Anne near Wentworth. Small acts reveal that, despite his coldness, he notices when she is tired or burdened. The group travels to Lyme to visit Wentworth's naval friends Captain Harville and Captain Benwick, whose loyal household impresses Anne. Benwick, grieving a lost fiancée, responds to Anne's thoughtful conversation. A stranger at Lyme also notices Anne's revived appearance. On the Cobb, Louisa insists on jumping down the steps after Wentworth warns her against it; she falls, strikes her head, and lies unconscious. While others panic, Anne directs practical help. Louisa survives but cannot be moved, so the Harvilles take her in. Wentworth, shocked by the consequences of the obstinacy he had praised, relies on Anne's judgment and begins to reconsider both Louisa and Anne.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Louisa slowly recovers at Lyme while Anne returns to Uppercross and then visits Lady Russell. Anne learns that the admiring stranger from Lyme was William Elliot, Sir Walter's estranged heir. In Bath, she joins her father and Elizabeth, who are delighted by Mr Elliot's reconciliation with the family and indifferent to Anne except when his attention makes her socially useful. Mr Elliot is polished, observant, and openly interested in Anne; Lady Russell hopes the cousins will marry. Anne values his conversation but cannot fully trust him, especially because his account of his earlier conduct seems incomplete. She also finds more genuine companionship with Admiral and Mrs Croft and prepares to renew her friendship with the impoverished Mrs Smith.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Anne visits Mrs Smith despite Sir Walter's contempt for her reduced circumstances. News arrives that Louisa, once assumed to be destined for Wentworth, is engaged to Captain Benwick; their shared convalescence and grief brought them together. Wentworth comes to Bath, now free of any supposed attachment to Louisa, but sees Mr Elliot's marked attention to Anne and assumes he has a rival. At a concert, Anne tries to show Wentworth that she wants his company, yet Mr Elliot repeatedly claims her attention and Wentworth leaves jealous and discouraged. Anne recognizes that she prefers Wentworth to every other man and suspects his feelings are not extinguished, but misunderstanding and crowded social encounters keep either from speaking plainly.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Mrs Smith reveals that Mr Elliot was once her husband's intimate friend but encouraged his extravagance, abandoned Mrs Smith after her husband's death, and withheld help with property she could not recover. He has returned to the Elliot family to prevent Sir Walter from marrying Mrs Clay and producing an heir who would displace him. Anne decisively rejects him. When the Musgroves and naval party gather in Bath, Wentworth learns that Anne is not committed to Mr Elliot. He overhears Anne and Captain Harville debate whether men or women remain constant longer after love appears hopeless. Anne speaks from her own experience, and Wentworth writes her a letter declaring that he still loves her. They meet and reconcile, acknowledging how pride, resentment, and outside persuasion prolonged their separation. Their engagement now receives general acceptance. Lady Russell admits Wentworth's worth, while Mr Elliot departs with Mrs Clay. Anne enters a loving naval marriage, with the possibility of future war the only shadow over it.",
+            "through": {
+              "chapter": 24
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "persuasion-jane-austen"
+      }
+    },
+    "persuasion-seasons-edition-summer": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The overlooked middle daughter of Sir Walter Elliot, now twenty-seven. Intelligent and considerate, she regrets having ended her engagement to Frederick Wentworth eight years earlier after accepting Lady Russell's judgment that the match was imprudent.",
+            "id": "anne-elliot",
+            "name": "Anne Elliot",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Anne's vain, status-conscious father, a baronet devoted to his appearance and ancestry. His extravagant spending forces the family to leave Kellynch Hall for Bath.",
+            "id": "sir-walter-elliot",
+            "name": "Sir Walter Elliot",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sir Walter's eldest daughter, proud of her rank and accustomed to managing his household. Like her father, she treats Anne as socially unimportant.",
+            "id": "elizabeth-elliot",
+            "name": "Elizabeth Elliot",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A trusted friend of Anne's late mother. Sensible and affectionate, she once persuaded Anne that marriage to an unknown, penniless naval officer would be dangerously imprudent.",
+            "id": "lady-russell",
+            "name": "Lady Russell",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A naval captain who loved Anne eight years earlier. Formerly without money or connections, he has returned wealthy and successful but remains resentful that Anne yielded to advice against their engagement.",
+            "id": "captain-frederick-wentworth",
+            "name": "Captain Frederick Wentworth",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Anne's younger married sister at Uppercross. Often preoccupied with her health and quick to take offense, Mary depends on Anne to care for her children and settle family tensions.",
+            "id": "mary-musgrove",
+            "name": "Mary Musgrove",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Charles Musgrove's lively younger sister. Confident and warm, she enjoys Wentworth's attention and strongly praises decisiveness and firmness of character.",
+            "id": "louisa-musgrove",
+            "name": "Louisa Musgrove",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A reserved naval officer staying with friends at Lyme. He mourns his dead fiancée and finds consolation in poetry, music, and Anne's thoughtful conversation.",
+            "id": "captain-benwick",
+            "name": "Captain Benwick",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sir Walter's estranged cousin and heir, a polished widower first noticed by Anne at Lyme and properly met in Bath. His renewed attention pleases the Elliot family and appears increasingly directed toward Anne.",
+            "id": "william-elliot",
+            "name": "William Elliot",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Anne's former school friend, now widowed, poor, and in ill health. She lives modestly in Bath but retains her warmth and resilience, and Anne renews their friendship despite her family's disapproval.",
+            "id": "mrs-smith",
+            "name": "Mrs Smith",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "persuasion-seasons-edition-summer"
+      },
+      "recaps": {
+        "ending": "Mrs Smith exposes Mr Elliot's selfish history and explains that he reconciled with Sir Walter largely to protect his inheritance from a possible marriage to Mrs Clay. Anne rejects any prospect of marrying him. Wentworth comes to Bath but mistakes Mr Elliot's attentions for evidence that Anne is committed elsewhere. After overhearing Anne defend the constancy of women's love, Wentworth writes that he still loves her. They speak openly, overcome the resentment and uncertainty that followed their broken engagement, and become engaged again. The Musgroves welcome them, and Lady Russell admits that her old judgment of Wentworth was wrong. Mr Elliot leaves Bath with Mrs Clay. Anne enters the naval community as Wentworth's wife, happy in the long-delayed match, though the possibility of renewed war remains a source of anxiety.",
+        "in_short": "Eight years after Anne Elliot was persuaded to reject the poor naval officer Frederick Wentworth, her family's debts force them to rent their estate to Wentworth's sister. Wentworth returns wealthy but resentful and appears drawn to Louisa Musgrove. When Louisa suffers a dangerous fall at Lyme, Anne's calm competence restores his respect for her; Louisa later becomes engaged to Captain Benwick. In Bath, Anne receives attention from her cousin William Elliot, but Mrs Smith reveals his mercenary motives and past selfishness. Wentworth arrives believing Anne may marry Mr Elliot. He overhears her speak about lasting love and writes that he still loves her. They reconcile, renew their engagement with family approval, and finally marry.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Sir Walter Elliot's spending has made Kellynch Hall unaffordable. He and his eldest daughter Elizabeth plan to move to Bath, while Admiral and Mrs Croft rent the estate. Anne Elliot realizes that Mrs Croft is the sister of Frederick Wentworth, the naval officer Anne loved and rejected eight years earlier. Lady Russell had convinced the young Anne that his lack of fortune and connections made their engagement unsafe. Wentworth has since returned from war rich and successful, while Anne still regrets yielding to that advice.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Anne stays at Uppercross with her demanding younger sister Mary and the Musgrove family. Wentworth visits his sister at Kellynch and becomes a favorite with the lively Louisa and Henrietta Musgrove. He treats Anne with painful formality and tells others she is greatly changed. His approval of firmness seems to condemn her earlier decision, while his attention to the Musgrove sisters makes Anne assume that he may marry one of them. Even so, small acts show that he still notices Anne's needs.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The party travels to Lyme to visit Wentworth's naval friends. Anne appreciates their warm, loyal community and talks with the grieving Captain Benwick. On the Cobb, Louisa insists on jumping down the steps after Wentworth warns her; she falls, strikes her head, and lies unconscious. Anne alone remains calm enough to direct help. Louisa survives but must stay with the Harvilles. Wentworth is horrified by the result of the stubbornness he had praised and begins to see Anne's steadiness differently.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Anne returns from Uppercross and joins Sir Walter and Elizabeth in Bath. The stranger who admired her at Lyme proves to be William Elliot, Sir Walter's estranged cousin and heir. He has reconciled with the family and pays Anne marked attention, encouraging Lady Russell to hope for their marriage. Anne enjoys his intelligence but distrusts the gaps in his account of his past. She also renews her friendship with Mrs Smith, a widowed former schoolmate whom her status-conscious family despises for being poor.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Louisa recovers and becomes engaged not to Wentworth but to Captain Benwick. Wentworth comes to Bath free of that supposed attachment and finds Mr Elliot openly attentive to Anne. He mistakes their closeness for an understanding and becomes jealous. At a concert, Anne tries to show Wentworth that she values his company, but Mr Elliot repeatedly interrupts them and Wentworth leaves discouraged. Anne knows that she still prefers Wentworth and suspects that his feelings remain, yet neither can find a private chance to correct their misunderstandings.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Mrs Smith explains that Mr Elliot encouraged her late husband's ruin, abandoned her afterward, and returned to Sir Walter chiefly to prevent a marriage to Mrs Clay that might threaten his inheritance. Anne rejects him. Wentworth learns that Anne is not promised to Mr Elliot and overhears her argue that women can remain constant in love even after hope has gone. He writes Anne a letter declaring that he still loves her. They reconcile and renew their engagement, acknowledging the pride and persuasion that kept them apart. Lady Russell accepts that she misjudged him, while Mr Elliot leaves Bath with Mrs Clay. Anne and Wentworth finally marry and join the naval world she admires.",
+            "through": {
+              "chapter": 24
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "persuasion-seasons-edition-summer"
+      }
+    },
     "peter-pan": {
       "characters": {
         "characters": [

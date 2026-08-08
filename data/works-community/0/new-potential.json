@@ -1651,6 +1651,196 @@
         "work": "north-and-south"
       }
     },
+    "northanger-abbey": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A seventeen-year-old from a large, affectionate country family. Catherine has little of the accomplishment or polish expected of a conventional heroine, but she is candid, good-natured, and eager for experience when the Allens invite her to Bath.",
+            "id": "catherine-morland",
+            "name": "Catherine Morland",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Catherine's practical and warm-hearted mother, occupied with raising ten children at the Morlands' comfortable country home. She has allowed Catherine to grow up without forcing her into the pattern of a fashionable young lady.",
+            "id": "mrs-morland",
+            "name": "Mrs Morland",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A prosperous neighbour of the Morlands who owns property near Fullerton. His household's invitation gives Catherine her first opportunity to spend a season in Bath.",
+            "id": "mr-allen",
+            "name": "Mr Allen",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Mr Allen's friendly wife and Catherine's companion in Bath. She is kindly but preoccupied with clothes, and her limited conversation and social connections leave Catherine to find much of her own amusement.",
+            "id": "mrs-allen",
+            "name": "Mrs Allen",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A witty, observant young clergyman whom Catherine meets at a Bath assembly. He treats social conventions with playful irony, talks easily with Catherine, and leaves her hoping to see him again.",
+            "id": "henry-tilney",
+            "name": "Henry Tilney",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Mrs Thorpe's eldest daughter and Catherine's enthusiastic new friend in Bath. Isabella is socially confident, affectionate in manner, and shares Catherine's excitement about Gothic novels.",
+            "id": "isabella-thorpe",
+            "name": "Isabella Thorpe",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An old school acquaintance of Mrs Allen and the widowed mother of Isabella and her siblings. She is proud of her children and delighted to renew a connection that brings the two families together in Bath.",
+            "id": "mrs-thorpe",
+            "name": "Mrs Thorpe",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Catherine's older brother, an Oxford student and a friend of John Thorpe. His arrival in Bath links Catherine's family with the Thorpes and shows his particular attachment to Isabella.",
+            "id": "james-morland",
+            "name": "James Morland",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Isabella's brother and James Morland's university friend. Loudly self-assured, he boasts about horses, carriages, drinking, and his own judgment while assuming that Catherine welcomes his attention.",
+            "id": "john-thorpe",
+            "name": "John Thorpe",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Henry Tilney's gracious younger sister. Quieter than the Thorpes and more direct in her kindness, she becomes someone Catherine sincerely wishes to know.",
+            "id": "eleanor-tilney",
+            "name": "Eleanor Tilney",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Henry and Eleanor's imposing father, a wealthy widower and the owner of Northanger Abbey. He is attentive and courteous to Catherine in Bath and takes a marked interest in her connection with his children.",
+            "id": "general-tilney",
+            "name": "General Tilney",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Captain Tilney"
+            ],
+            "description": "Henry and Eleanor's older brother, an army officer who joins the family in Bath. Polished and confident, he quickly directs his attention toward Isabella despite her announced engagement to James Morland.",
+            "id": "frederick-tilney",
+            "name": "Frederick Tilney",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "northanger-abbey"
+      },
+      "recaps": {
+        "ending": "After General Tilney expels Catherine without warning, she travels home alone and concludes that Henry must obey his father and abandon her. Henry instead follows her to Fullerton. He explains that the General had welcomed Catherine because John Thorpe had exaggerated the Allens' wealth and implied that she was their heir; after quarreling with John, the General heard an equally false account of her poverty and ordered her away. Henry rejects his father's conduct and asks Catherine to marry him. Her parents approve in principle but insist that the General must consent. The delay ends when Eleanor marries a man she has long loved, whose unexpected inheritance gives him wealth and a title. This connection, along with a more accurate understanding of the Morlands' comfortable circumstances, softens the General's opposition. Catherine and Henry marry, with their mutual attachment strengthened by the difficulties produced by vanity, presumption, and misinformation.",
+        "in_short": "Seventeen-year-old Catherine Morland visits Bath, where she befriends the theatrical Isabella Thorpe and falls for the witty clergyman Henry Tilney. Isabella becomes engaged to Catherine's brother James but abandons him in pursuit of Henry's older brother, while Isabella's boastful brother John wrongly assumes Catherine will marry him. Invited to the Tilneys' home, Northanger Abbey, Catherine lets Gothic fiction shape suspicions about the death of Henry's mother. Henry corrects her, and Catherine learns to judge ordinary selfishness more clearly. General Tilney, who welcomed her after John exaggerated her wealth, abruptly sends her home when John later disparages her prospects. Henry defies his father, follows Catherine, and proposes. The couple must wait for consent, but Eleanor Tilney's advantageous marriage and the truth about the Morlands' finances reconcile the General to the match. Catherine and Henry marry, while Isabella's schemes leave her without either James or Frederick Tilney.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Catherine Morland grows up in Fullerton as one of ten children, healthy, inexperienced, and unlike the refined heroines of the stories she enjoys. Her prosperous neighbours Mr and Mrs Allen invite her to accompany them to Bath. At her first crowded assembly Catherine has no partner and feels almost invisible, but at a later gathering she meets Henry Tilney, a young clergyman whose teasing conversation delights her. He leaves Bath before she can see him again. Mrs Allen then encounters her former school acquaintance Mrs Thorpe. Catherine is introduced to Mrs Thorpe's eldest daughter Isabella, whose warmth and fashionable confidence offer the friendship Catherine has been missing.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Catherine and Isabella quickly become inseparable, sharing walks, social plans, and an enthusiasm for sensational Gothic novels. Catherine accepts Isabella's extravagant expressions of affection at face value. Their circle expands when Catherine's brother James arrives with Isabella's brother John, his university friend. Isabella and James are plainly interested in one another. John overwhelms Catherine with boasts about his horse, carriage, and expertise, and assumes an intimacy she does not feel. Catherine remains far more interested in finding Henry Tilney. At another assembly she sees Henry and meets his reserved, gracious sister Eleanor, but John and the competing demands of the dance floor complicate Catherine's hope of spending time with the Tilneys.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "John takes Catherine driving and repeatedly interprets politeness as encouragement. Catherine's real happiness comes from dancing with Henry and beginning a friendship with Eleanor. When Catherine arranges a country walk with the Tilneys, bad weather delays it. The Thorpes and James then press her into a different outing and falsely claim that Henry and Eleanor have already broken their engagement. Catherine discovers the deception, refuses to abandon her promise, and makes an awkward but honest attempt to explain herself to the Tilneys. On the rescheduled walk to Beechen Cliff, Henry and Eleanor discuss books and family with her. Henry good-humouredly challenges Catherine's assumptions while treating novels as worthy of serious enjoyment, deepening her admiration for him and her trust in Eleanor.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Isabella announces her engagement to James Morland. Catherine welcomes the match, although Isabella is disappointed when James's expected income proves modest and the marriage must be delayed. John Thorpe departs Bath believing, without any clear encouragement, that Catherine intends to accept him. General Tilney, Henry and Eleanor's commanding father, treats Catherine with conspicuous favour after speaking with John, who has greatly exaggerated her fortune and prospects. Catherine also meets the Tilneys' older brother Frederick, an army officer. Although Isabella continues to proclaim her devotion to James, she welcomes Frederick's flirtation. Catherine is troubled by their behaviour but cannot persuade Henry that his brother is likely to offer Isabella marriage. The General invites Catherine to stay with the family at Northanger Abbey, and her pleasure at joining Henry and Eleanor is heightened by romantic ideas about living in an ancient Gothic building.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Catherine travels with the Tilneys to Northanger Abbey. Henry entertains her on the journey with an invented Gothic adventure, but once inside the abbey she begins treating ordinary objects and events as possible mysteries. A cabinet that seems to contain a manuscript yields only a household list, yet Catherine's imagination soon shifts to the late Mrs Tilney. General Tilney's controlling habits and reluctance to linger over his wife's rooms lead Catherine to wonder whether Eleanor and Henry's mother died under sinister circumstances. She secretly investigates and is discovered by Henry. Shocked by her suspicion, he explains that his mother's illness and death were witnessed and natural, however difficult his father's character may be. Catherine is ashamed. She recognizes that fiction has distorted her judgment and resolves to look for evidence of human motives in ordinary life rather than imposing melodrama upon the people around her.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Catherine recovers from her embarrassment and continues at Northanger with a more sober understanding of the Tilney family. A letter from James ends her confidence in Isabella: Isabella has encouraged Frederick Tilney, and James has broken their engagement. Henry believes Frederick never intended marriage and will soon leave Isabella. Isabella later writes to Catherine, minimizing her own conduct and asking her to persuade James to return. Catherine sees through the request and ends the friendship in her own mind. Her disappointment confirms what Northanger itself has taught her: the dangers around her are not Gothic crimes but vanity, self-deception, and disregard for other people's feelings. Henry's honesty and Eleanor's steady kindness stand in sharper contrast to the Thorpes' manipulation, while Catherine's affection for Henry becomes more grounded in knowledge of his character.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "General Tilney suddenly returns and orders Catherine to leave Northanger the next morning, alone and without a servant. Humiliated and confused, she makes the long journey home to Fullerton. Her family receives her kindly, though Catherine believes the General's hostility has ended any hope with Henry. Henry soon arrives and explains the reversal. John Thorpe had first described Catherine as a wealthy heiress, prompting the General's welcome; after John realized she did not return his interest, he portrayed her as impoverished and dependent, prompting the expulsion. Henry condemns his father's conduct and asks Catherine to marry him. The Morlands approve but require General Tilney's consent. Eleanor's marriage to the man she loves, newly enriched and titled by an inheritance, eventually helps reconcile the General to Henry's choice. Once he learns that Catherine's family is comfortably established rather than destitute, he gives way. Catherine and Henry marry, while the Thorpes' false assumptions and Isabella's pursuit of Frederick have cost them the relationships they tried to control.",
+            "through": {
+              "chapter": 31
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "northanger-abbey"
+      }
+    },
     "not-till-we-are-lost": {
       "characters": {
         "characters": [
@@ -6089,6 +6279,143 @@
           }
         ],
         "work": "onyx-storm"
+      }
+    },
+    "oranges-are-not-the-only-fruit": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A girl adopted into an intensely religious household and raised by her mother to become a missionary. Her childhood is organized around church work, Bible stories, and a firm division between the saved and everyone else. Intelligent and gifted at preaching, she accepts that world with unusual seriousness, but her growing awareness of her desire for women brings her into conflict with the congregation and with the future her mother has chosen for her.",
+            "id": "jeanette",
+            "name": "Jeanette",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Jeanette's adoptive mother, a forceful Pentecostal Christian who sees ordinary life as a contest between God and the Devil. She adopts Jeanette with the intention of raising a missionary, fills their home with prayer and church activity, and interprets nearly every setback as a spiritual test. Her love is real but inseparable from her certainty that she knows the only acceptable path for her daughter.",
+            "id": "mother",
+            "name": "Mother",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jeanette's quiet adoptive father. He works, attends church, and remains largely at the edge of a household dominated by his wife's convictions and decisions.",
+            "id": "father",
+            "name": "Father",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An elderly member of the church who becomes Jeanette's closest adult friend. Independent-minded within her faith, she gives Jeanette companionship, stories, and practical care, especially when other believers misunderstand the girl's illness. She represents a warmer and less rigid form of religious devotion than Jeanette finds at home.",
+            "id": "elsie-norris",
+            "name": "Elsie Norris",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young woman Jeanette meets while shopping and invites to church. Their friendship quickly becomes emotionally intimate, giving Jeanette her first experience of romantic love and forcing feelings she has no place for within the teachings that shaped her.",
+            "id": "melanie",
+            "name": "Melanie",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A missionary whose visits and stories helped inspire Jeanette's mother to dedicate her adopted child to evangelism. He is part of the heroic missionary tradition held up to Jeanette from childhood.",
+            "id": "pastor-spratt",
+            "name": "Pastor Spratt",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An adult woman in Jeanette's church who offers her private comfort during the crisis over Melanie. Her conduct exposes a gap between the congregation's public judgments and the more complicated desires of its members.",
+            "id": "miss-jewsbury",
+            "name": "Miss Jewsbury",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young woman who joins the church after Jeanette's relationship with Melanie has ended. Jeanette falls in love with her, renewing the conflict between her sexuality and the religious community in which she still preaches and works.",
+            "id": "katy",
+            "name": "Katy",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "oranges-are-not-the-only-fruit"
+      },
+      "recaps": {
+        "ending": "After the church discovers Jeanette's relationship with Katy, its leaders blame her authority as a woman as well as her sexuality, arguing that she has taken on a role reserved for men. This time Jeanette will not surrender her understanding of herself. She leaves both the congregation and her mother's house, supporting herself through a succession of jobs while beginning an independent life. Years later she returns home for Christmas. Her mother remains committed to evangelism and now operates a religious radio project; she has altered some details of the past without changing her basic convictions. Mother and daughter can share food, memories, and a measure of affection, but they do not resolve the beliefs that divided them. Jeanette's return is therefore not a submission to the old story. She can revisit home while retaining the self and the desires her community rejected. The book closes with connection still possible, but without pretending that family or faith has a single, compulsory form.",
+        "in_short": "Jeanette is adopted by a fervent Pentecostal mother who plans her life as a missionary. She grows up preaching, campaigning for converts, and reading experience through Bible stories, while school and illness reveal how poorly her church understands the world outside itself. Her friendship with the older Elsie Norris offers a kinder model of faith. As a teenager Jeanette falls in love with Melanie, whom she has brought into the church. Their relationship is exposed; both are subjected to public pressure, and Jeanette outwardly repents without ceasing to desire women. She resumes church work and later loves Katy, but a second discovery leads church leaders to condemn both her sexuality and her authority as a female preacher. Jeanette refuses their explanation and leaves home, taking varied jobs to support herself. When she returns years later, her mother is still evangelizing. They retain a difficult bond, but Jeanette no longer needs either family doctrine or religious certainty to deny who she is.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Jeanette's adoptive mother divides the world into the godly and their enemies. Inspired by missionary tales, she adopted Jeanette to raise her as a servant of God and organizes the household around prayer, church meetings, and campaigns against sin. Jeanette absorbs this certainty and begins preaching while still a child. When compulsory school separates her from the church-centered routine she knows, teachers and pupils do not share her assumptions; religious drawings and stories that seem natural at home create alarm in the classroom. Jeanette's mother treats this resistance as persecution rather than as evidence that other ways of living exist. The girl remains loyal, but the gap between the absolute system taught at home and the untidy world beyond it has opened.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jeanette temporarily loses her hearing, and members of the congregation mistake her silence for a state of religious absorption. Medical treatment, not prayer, restores her hearing. During the illness Elsie Norris visits and cares for her, becoming an important friend whose eccentric, generous faith differs from the harsher judgments around them. Jeanette continues to preach and assist the church as she grows older, but experience keeps complicating the simple lessons she was given. She learns that stories, including sacred ones and the fairy tales threaded through her memories, can be interpreted in more than one way. While shopping she meets Melanie, becomes fascinated by her, and brings her into the church. Their friendship soon becomes love, though Jeanette initially has no language within her religious education for seeing that love as forbidden.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jeanette and Melanie sustain a secret romantic relationship alongside their church activities. Jeanette regards the feeling as compatible with devotion, but the adults around them do not. Suspicion grows until their relationship is exposed to Jeanette's mother and the congregation. The discovery turns private affection into a public spiritual crisis. Jeanette is confronted by people whose approval has structured her entire life and is told that her love must be evidence of demonic influence. Her abilities as a preacher do not protect her; instead, the community demands that she accept its interpretation of her own experience. The conflict makes clear that belonging is conditional on denying a central part of herself.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The church subjects Jeanette and Melanie to sustained pressure to repent and separate. Exhausted and isolated, Jeanette outwardly submits, while Melanie yields to the congregation's demands and moves away from the relationship. Miss Jewsbury offers Jeanette comfort in private, and their encounter reveals that the adults enforcing public rules do not all live by a simple version of them. Jeanette returns to church work after the crisis and continues preaching, but she has not been remade in the way her mother and pastor imagine. Her faith, sexuality, and talent can no longer be contained within the single story assigned to her at adoption. The loss of Melanie and, later, Elsie leaves her with fewer sources of unconditional support inside the community.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jeanette later falls in love with Katy, a young woman who has joined the church. When this relationship is also discovered, the leadership broadens its accusation: Jeanette's independence and success as a female preacher are blamed for her refusal to conform. She will not accept that explanation a second time. Leaving the church and her mother's home, she supports herself through varied work and begins constructing an adult life beyond the community that raised her. Years later she returns home at Christmas. Her mother is still devoted to evangelism, now through a radio venture, and has revised inconvenient parts of family history without changing her beliefs. Jeanette can recognize both the damage and the attachment in their relationship. She leaves the old demand for certainty behind: home remains part of her story, but no longer controls the meaning of her faith, her love, or her identity.",
+            "through": {
+              "chapter": 8
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "oranges-are-not-the-only-fruit"
       }
     },
     "out-of-oz": {
