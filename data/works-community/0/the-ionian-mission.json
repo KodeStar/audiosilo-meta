@@ -3586,6 +3586,223 @@
         "work": "the-kill-order"
       }
     },
+    "the-killer-angels": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A civilian scout working for the Confederacy, observant and accustomed to moving through hostile territory. He brings Longstreet the urgent news that the Union army is nearer than Confederate headquarters believes.",
+            "id": "harrison",
+            "name": "Harrison",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lawrence"
+            ],
+            "description": "The scholarly colonel of the 20th Maine, formerly a professor at Bowdoin College. Thoughtful, humane, and inexperienced in large battles, he must persuade a group of angry former mutineers to serve while preparing his depleted regiment for the campaign ahead.",
+            "id": "joshua-lawrence-chamberlain",
+            "name": "Joshua Lawrence Chamberlain",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An older enlisted man in the 20th Maine and a trusted companion to Chamberlain. A former sergeant reduced to private, he combines battlefield experience, blunt humor, and strong convictions about the meaning of the Union cause.",
+            "id": "buster-kilrain",
+            "name": "Buster Kilrain",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Chamberlain's younger brother and an officer in the 20th Maine. His presence gives the colonel both a dependable subordinate and a painful reminder that every command may endanger someone he loves.",
+            "id": "tom-chamberlain",
+            "name": "Tom Chamberlain",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Union cavalry brigadier who reaches Gettysburg ahead of the main armies. Practical, sharp-eyed, and frustrated by poor coordination, he immediately recognizes the military value of the ridges south of town and resolves to delay the approaching Confederates.",
+            "id": "john-buford",
+            "name": "John Buford",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Lee's senior corps commander and a professional soldier who favors maneuver and strong defensive ground over direct assaults. He is devoted to Lee but willing to question his tactical judgment, especially when incomplete intelligence is pushing the army toward an uncertain battle.",
+            "id": "james-longstreet",
+            "name": "James Longstreet",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The commander of the Army of Northern Virginia, revered by his soldiers and conscious of the moral burden of command. He trusts the courage of his army and prefers to avoid battle before it is concentrated, but the gathering forces near Gettysburg narrow his choices.",
+            "id": "robert-e-lee",
+            "name": "Robert E. Lee",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A Confederate lieutenant general newly commanding the corps once led by Stonewall Jackson. Lee depends on him during the opening battle, though Ewell's caution and interpretation of discretionary orders make his leadership a source of concern.",
+            "id": "richard-ewell",
+            "name": "Richard Ewell",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior Union general whose infantry arrives to support Buford's cavalry. His authority and willingness to commit the army help turn Buford's delaying action into a major battle.",
+            "id": "john-reynolds",
+            "name": "John Reynolds",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A British army observer visiting the Confederates. Genial, curious, and confident in the superiority of traditional military society, he views the campaign through assumptions shaped by European armies and aristocratic culture.",
+            "id": "arthur-fremantle",
+            "name": "Arthur Fremantle",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Confederate division commander under Longstreet, respected by his troops and quick to read dangerous ground. His concern about the terrain assigned for the second day's attack puts him at odds with the pressure to advance.",
+            "id": "john-bell-hood",
+            "name": "John Bell Hood",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Chamberlain's brigade commander, a young officer with an urgent manner and a clear grasp of the crisis on the Union left. He places the 20th Maine at the extreme end of the line and makes the stakes of holding that position explicit.",
+            "id": "strong-vincent",
+            "name": "Strong Vincent",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Union engineer who discovers that Little Round Top has been left almost undefended. His alarm helps redirect troops to the height before the Confederate advance reaches it.",
+            "id": "gouverneur-warren",
+            "name": "Gouverneur Warren",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Virginia division commander whose men have so far missed the major fighting. Flamboyant and eager to prove himself, he retains an infectious confidence even as the army prepares for a difficult new attack.",
+            "id": "george-pickett",
+            "name": "George Pickett",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Confederate brigade commander in Pickett's division and an old friend of Union general Winfield Scott Hancock. Warm, reflective, and deeply attached to his men, he faces the prospect of attacking soldiers whose cause and friendships once overlapped his own.",
+            "id": "lewis-armistead",
+            "name": "Lewis Armistead",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "protagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-killer-angels"
+      },
+      "recaps": {
+        "ending": "Lee's massive assault on the center of the Union line crosses open ground under artillery and rifle fire, briefly reaches the stone wall, and collapses. Armistead is mortally wounded after leading part of the advance across the wall; Garnett is killed, and Pickett's division is shattered. Longstreet, who expected the attack to fail but carried out Lee's order, watches the survivors return and fears that he has lost both his men and Lee's confidence. Lee rides among the retreating soldiers, accepts responsibility, and prepares for a Union counterattack that never comes. On the Union side, Chamberlain and the battered 20th Maine are moved toward the center and witness the repulse. The battle ends with the Confederates withdrawing toward Virginia in heavy rain. Chamberlain reflects on the defeated enemy and on the cost of preserving the Union, while Lee's army leaves Gettysburg damaged beyond what victory in later campaigns can repair.",
+        "in_short": "As the Union and Confederate armies converge on Gettysburg, cavalry commander John Buford recognizes the value of the surrounding high ground and holds the approaches until Union infantry arrives. Robert E. Lee wins the first day's fighting but cannot drive the Federals from Cemetery Hill and the ridges south of town. James Longstreet urges Lee to maneuver onto defensive ground; Lee instead attacks the established Union line. On the second day, Colonel Joshua Lawrence Chamberlain and the 20th Maine defend the extreme Union left on Little Round Top, ending their desperate stand with a bayonet charge. The Confederate assaults gain ground but fail to break the line. Lee orders one final attack across the open center on July 3. Longstreet reluctantly sends Pickett's and supporting divisions forward. The charge is devastated, Armistead falls after crossing the stone wall, and the survivors retreat. Lee takes responsibility and leads his defeated army away, while Chamberlain contemplates the battle's human cost and the Union cause it preserved.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Confederate scout Harrison discovers that the Union army is moving close to Lee's dispersed forces in Pennsylvania and reports to James Longstreet. Because cavalry commander Jeb Stuart is absent, Lee has been operating without reliable information. Longstreet sends the warning onward while continuing to favor a strategy that would force the Union to attack a prepared Confederate position. In the Union army, Colonel Joshua Lawrence Chamberlain receives more than a hundred former mutineers with orders that permit him to shoot them if they refuse duty. He instead explains the purpose of the war as he understands it and wins most of them back to service. Near Gettysburg, cavalry general John Buford sees that the ridges south of town will dominate any battle and decides to hold off approaching Confederate infantry until Union support arrives. Longstreet learns the armies are converging there and worries that events are choosing the battlefield before Lee can concentrate his command.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Lee learns that fighting has begun near Gettysburg and moves toward the sound of the guns, uneasy because the engagement is developing without his full army or Stuart's cavalry. Buford's outnumbered troopers delay the Confederate advance from ridges west of town until infantry under John Reynolds arrives. Reynolds is killed soon after committing his troops, but the Union defense continues and reinforcements on both sides turn the encounter into a general battle. Lee sees an opportunity to crush the Union forces before all of them assemble and directs further attacks. The Confederates push hard against the positions north and west of Gettysburg, while Buford watches the ground he selected become the center of a struggle much larger than his original delaying action.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Union line west and north of Gettysburg gives way under growing Confederate pressure. Federal troops retreat through the town but rally on Cemetery Hill and along the higher ground extending south. Lee has won the field for the day, yet the Union army still holds the stronger position. His instruction that Ewell take the hill if practicable does not produce an immediate assault, allowing the defenders to reinforce. Chamberlain marches his exhausted regiment toward the battlefield, hearing fragmentary reports and trying to understand the defeat ahead. Longstreet arrives and urges Lee to move around the Union flank, place the Confederate army between its opponent and Washington, and make the Federals attack. Lee believes the enemy can be broken where it stands and decides to continue the battle. Buford, his cavalry's task completed and his judgment vindicated, leaves the immediate field as infantry commanders take over.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On July 2 the armies prepare along the ridges south of Gettysburg. British observer Arthur Fremantle treats the Confederates as a traditional martial society and expects Lee's army to prevail, while Longstreet remains troubled by the plan to assault a prepared line. Chamberlain's 20th Maine is rushed to Little Round Top, where Strong Vincent places it at the extreme left of the Union army. If the regiment is turned, the Confederate attack can move behind the entire Federal position. Chamberlain extends and bends his thin line to meet troops moving around the flank. Repeated attacks consume ammunition and men, and he understands that retreat would uncover the army. With few cartridges left, he orders a bayonet charge. The maneuver shocks the attackers, secures prisoners, and holds the hill, though Chamberlain's regiment is badly depleted and Kilrain is wounded.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Longstreet's delayed but powerful assault strikes the Union left. Hood objects to the ground assigned to him and is wounded as his division fights through broken terrain around the Round Tops and Devil's Den. Elsewhere, Confederate units penetrate parts of the Union position but cannot coordinate a decisive breakthrough. Chamberlain tends to his surviving men and learns the scale of the fighting; Kilrain's wounds and exhaustion expose the personal cost of the regiment's stand. By nightfall the Union line has bent but not broken. Lee interprets the partial gains as evidence that one more concentrated blow can succeed. Longstreet sees the defensive strength of the Federal center and continues to doubt the wisdom of attacking it, but Lee resolves to strike there on July 3 with fresh troops, including Pickett's division.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On the third day Lee commits to a massed assault against the Union center on Cemetery Ridge. Longstreet must organize the attack despite believing that no troops can cross the exposed distance and break the waiting line. Pickett is eager for his division's opportunity, while Armistead prepares with a clearer sense of the danger and thinks about his old friend Hancock, now commanding on the opposing side. Confederate artillery opens a prolonged bombardment intended to weaken the Union guns and infantry, but smoke and distance conceal how limited its effect has been. Union artillery reduces its return fire, encouraging the mistaken belief that batteries have been silenced. With the infantry formed and the bombardment ending, Longstreet gives the reluctant signal for the divisions to advance across the open fields.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Pickett's and the supporting Confederate divisions advance toward Cemetery Ridge under increasingly destructive artillery and rifle fire. Gaps open, formations contract, and officers continue toward the stone wall with the survivors. Armistead leads a group across the wall near the Union guns and is mortally wounded there; Garnett is killed, and the brief penetration cannot be sustained. The charge disintegrates, leaving Pickett's division ruined. Longstreet receives the returning men in despair, while Lee rides among them, accepts the failure as his own, and organizes a defense against a counterattack. The Union does not pursue immediately. Chamberlain and the remnants of the 20th Maine are shifted toward the center and witness the result of the assault. Lee's army withdraws toward Virginia in rain, ending the invasion. The Union has held the field, but both armies and the individuals who led them carry severe losses away from Gettysburg.",
+            "through": {
+              "chapter": 23
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-killer-angels"
+      }
+    },
     "the-killer-inside-me": {
       "characters": {
         "characters": [

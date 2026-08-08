@@ -1836,6 +1836,123 @@
         "work": "a-reaper-at-the-gates"
       }
     },
+    "a-river-runs-through-it": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The reflective narrator, looking back on his Montana youth and adult attempts to remain close to his younger brother. Raised in a minister's household where fly-fishing carries moral and artistic weight, he teaches literature and tries to help people without fully understanding them.",
+            "id": "norman-maclean",
+            "name": "Norman Maclean",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Norman's younger brother, a gifted and intensely private fly-fisherman who works for a Montana newspaper. His casting has an effortless beauty, but his drinking, gambling, and refusal to explain his troubles leave his family unsure how to reach him.",
+            "id": "paul-maclean",
+            "name": "Paul Maclean",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Reverend Maclean"
+            ],
+            "description": "Norman and Paul's father, a Scottish Presbyterian minister who teaches his sons scripture, disciplined prose, and the exacting craft of fly-fishing. Reserved but loving, he understands the river as a place where grace can be perceived even when another person remains unknowable.",
+            "id": "john-maclean",
+            "name": "John Maclean",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Norman and Paul's mother, whose practical care steadies the minister's household. She shares the family's concern for Paul and participates in its quiet rituals without claiming that affection can solve every danger.",
+            "id": "mrs-maclean",
+            "name": "Mrs. Maclean",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Norman's wife. She loves her brother Neal but knows that his drinking and unreliability make his visit difficult, and she asks Norman to involve Paul in keeping him out of trouble.",
+            "id": "jessie",
+            "name": "Jessie",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jessie's brother, visiting Montana from the West Coast. Restless, boastful, and frequently drunk, he agrees to a family fishing trip but disappears beforehand, turning Norman's effort to entertain him into a humiliating search.",
+            "id": "neal",
+            "name": "Neal",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A woman Neal meets while drinking in town. Norman and Paul know her by an unflattering local nickname; she accompanies Neal on his disappearance and is found with him after their night outdoors.",
+            "id": "old-rawhide",
+            "name": "Old Rawhide",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "a-river-runs-through-it"
+      },
+      "recaps": {
+        "ending": "After the family's final fishing trip, Paul remains in Helena and continues gambling despite Norman's offer to help. Soon afterward, Norman is told that Paul has been beaten to death and left in an alley, with injuries concentrated on the hand that made his extraordinary casts. Norman and his father cannot explain what happened or how they might have prevented it. The minister asks Norman to describe Paul's last great fish, and the memory gives them a way to speak about someone they loved but could not save. In a late sermon, the father reflects that people may require help even when they cannot be understood and may refuse what is offered. Years later Norman has outlived the rest of his immediate family. He continues to fish alone, carrying their presence in memory and finding that the river binds grief, family, and the landscape together.",
+        "in_short": "Norman Maclean recalls a Montana family shaped by Presbyterian faith and fly-fishing. His younger brother Paul becomes a superb fisherman and a talented newspaperman, but also a heavy drinker and gambler who resists his family's help. During a visit from Norman's unreliable brother-in-law Neal, Norman and Paul try to arrange a fishing outing and instead must retrieve Neal after a drunken disappearance. A later trip with their father briefly restores harmony: Paul lands a magnificent trout, and the family sees his art at its fullest. The achievement cannot protect him from his other life. Paul is soon beaten to death after remaining in Helena to gamble. Norman and his father are left with sorrow and the recognition that love does not guarantee understanding or rescue. In old age, Norman fishes alone and remembers his family through the river that once joined them.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Norman Maclean grows up in western Montana with his younger brother Paul under the instruction of their Presbyterian minister father. Scripture, careful language, and fly-fishing form the family's shared discipline. As adults, Norman becomes a teacher while Paul works at a newspaper and develops into an exceptional fisherman. Paul is also drinking and gambling heavily, and his family senses danger without knowing how to intervene. Norman's wife Jessie asks him to help entertain her visiting brother Neal, whose own drinking and evasiveness quickly cause strain. Norman hopes that taking Neal fishing with Paul can satisfy the family's expectations while giving the brothers time together.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Norman and Paul make plans to take Neal fishing, but Neal disappears into town with a woman known locally as Old Rawhide. The brothers eventually find the pair asleep outdoors, badly sunburned and in no condition for the promised outing. Their attempt to manage Neal's behavior earns little gratitude and exposes the limits of Norman's wish to help on Jessie's behalf. The episode also shows the brothers working together with an ease that does not extend to discussing Paul's own risks. Paul can handle a comic family crisis, yet he keeps his gambling debts and private fears beyond Norman's reach.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Norman, Paul, and their father later return to the river together. Paul reads the water with extraordinary skill and lands a large trout after a demanding fight, giving his father and brother a final vision of him in complete command of his art. The shared triumph cannot resolve the danger outside fishing. Paul stays in Helena to gamble and declines Norman's offer of money or help. Not long afterward he is beaten to death and left in an alley. Norman and his father cannot discover an explanation that makes the loss bearable. They return instead to the memory of Paul's great fish and to the painful idea that a person can be loved completely without being fully understood or saved. After the deaths of his parents and brother, an older Norman continues to fish alone, experiencing the river as inseparable from memory and grief.",
+            "through": {
+              "chapter": 3
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "a-river-runs-through-it"
+      }
+    },
     "a-room-with-a-view": {
       "characters": {
         "characters": [
