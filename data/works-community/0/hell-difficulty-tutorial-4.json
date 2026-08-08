@@ -1692,6 +1692,251 @@
         "work": "henrik-ibsens-the-wild-duck"
       }
     },
+    "henry-iv-pt-2": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The Earl of Northumberland, father of the fallen Hotspur and a leading nobleman of the rebellion against Henry IV. He waits anxiously for news of the battle at Shrewsbury, receiving hopeful rumors before the true result arrives.",
+            "id": "northumberland",
+            "name": "Northumberland",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A supporter of Northumberland who first brings an inaccurate report that the rebels have defeated the king. His confidence briefly raises hopes that Hotspur survived and prevailed.",
+            "id": "lord-bardolph",
+            "name": "Lord Bardolph",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A rebel messenger who reaches Northumberland with the true account of Shrewsbury: Hotspur is dead, Douglas and Worcester are defeated, and the royal forces remain strong.",
+            "id": "morton",
+            "name": "Morton",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sir John Falstaff"
+            ],
+            "description": "Prince Hal's aging, witty companion, now famous for claiming credit at Shrewsbury. Burdened by debt and illness but still irrepressibly confident, he relies on his connection to the prince while sparring with royal authority and his creditors.",
+            "id": "falstaff",
+            "name": "Falstaff",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A young servant assigned to Falstaff by Prince Hal. Small and observant, he delivers messages and becomes a ready audience for his master's jokes and complaints.",
+            "id": "falstaffs-page",
+            "name": "Falstaff's Page",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Lord Chief Justice"
+            ],
+            "description": "England's highest judge, known for having once imprisoned Prince Hal for contempt of court. He confronts Falstaff over his conduct and refuses to let proximity to the heir excuse lawlessness.",
+            "id": "chief-justice",
+            "name": "Chief Justice",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Archbishop of York"
+            ],
+            "description": "A senior churchman leading the renewed northern rebellion. He and his allies frame their cause as a response to broken promises and political disorder under Henry IV.",
+            "id": "archbishop-scroop",
+            "name": "Archbishop Scroop",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mistress Quickly"
+            ],
+            "description": "The proprietor of the Boar's Head tavern in Eastcheap. Exasperated by Falstaff's unpaid bills and unkept promises, she seeks legal help to recover what he owes while remaining emotionally attached to him.",
+            "id": "hostess-quickly",
+            "name": "Hostess Quickly",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Prince Hal",
+              "Prince of Wales"
+            ],
+            "description": "King Henry IV's eldest son and heir, recently distinguished in battle but still connected to his former tavern companions. He is conscious that public duty is separating him from the careless life Falstaff represents.",
+            "id": "prince-henry",
+            "name": "Prince Henry",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Prince Henry's companion, who joins him in disguising himself as a tavern servant to overhear Falstaff without being recognized.",
+            "id": "poins",
+            "name": "Poins",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Doll"
+            ],
+            "description": "A woman of the Eastcheap tavern circle who shares an affectionate, quarrelsome intimacy with Falstaff. Their exchanges expose a more vulnerable side of his swaggering public character.",
+            "id": "doll-tearsheet",
+            "name": "Doll Tearsheet",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Henry Bolingbroke"
+            ],
+            "description": "The weary King of England, troubled by civil rebellion, failing health, and uncertainty about the character of his heir. Sleepless and politically alert, he directs the response to enemies at home while hearing of threats abroad.",
+            "id": "king-henry-iv",
+            "name": "King Henry IV",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Justice Shallow"
+            ],
+            "description": "A Gloucestershire justice of the peace and former acquaintance of Falstaff. Proud of his youthful exploits and local importance, he helps select men for military service.",
+            "id": "robert-shallow",
+            "name": "Robert Shallow",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Justice Silence"
+            ],
+            "description": "Shallow's quieter fellow justice and kinsman in Gloucestershire. He accompanies the recruitment of soldiers and lets Shallow dominate their reminiscences.",
+            "id": "silence",
+            "name": "Silence",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Prince John of Lancaster"
+            ],
+            "description": "A younger son of Henry IV entrusted with royal command against the northern rebels. Unlike Prince Henry, he presents himself as restrained, formal, and wholly occupied with affairs of state.",
+            "id": "prince-john",
+            "name": "Prince John",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "henry-iv-pt-2"
+      },
+      "recaps": {
+        "ending": "After Henry IV dies, Prince Henry takes the throne as Henry V. He reassures his brothers and retains the Chief Justice, showing that he intends to govern through law rather than punish the judge who once disciplined him. Falstaff hears of the accession while staying with Shallow and hurries to London, confident that his old companion will now reward him. At the coronation procession, however, the new king publicly rejects Falstaff, forbids him to approach, and grants him a modest allowance conditional on reform. The Chief Justice sends Falstaff and his associates to the Fleet prison, although Prince John suggests their treatment may later be reconsidered. Hostess Quickly and Doll have also been arrested. Falstaff tries to interpret the rebuke as a temporary public performance, but his expected influence is gone. Prince John anticipates that the new reign will soon turn toward war in France, closing the domestic succession story and pointing toward Henry V's campaigns.",
+        "in_short": "After Hotspur's death, Northumberland and Archbishop Scroop continue resistance to Henry IV while the sick king worries about rebellion and Prince Hal's fitness to succeed him. Falstaff evades debts, quarrels with the Chief Justice, visits the Eastcheap tavern, and recruits men with Justice Shallow. Prince John ends the northern rising by promising to address the rebels' complaints, inducing them to disperse, and then arresting their leaders. Henry IV collapses; Hal, thinking him dead, carries away the crown, but father and son reconcile when the king revives. The king dies soon afterward, and Hal becomes Henry V, confirms the Chief Justice in office, and commits himself to lawful rule. Expecting royal favor, Falstaff rushes to the coronation, only to be publicly rejected and then sent to prison with his companions. The new reign begins with Falstaff's influence ended and a campaign in France in prospect.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Henry Bolingbroke deposed Richard II and became Henry IV, but his reign has been marked by rebellion and unease over his claim. The Percy family, once his allies, rose against him. At Shrewsbury, Prince Henry abandoned his dissolute public image long enough to fight courageously, killing the rebel Hotspur and saving his father. Falstaff, the prince's witty and dishonest tavern companion, survived the battle and claimed credit for Hotspur's death. The king remains threatened by surviving rebels, while the prince's eventual choice between royal duty and his old companions is unresolved.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rumor spreads contradictory news after Shrewsbury. Northumberland first hears that the rebels won, then learns from Morton that Hotspur is dead and the royal army victorious. Grief drives him toward renewed rebellion alongside Archbishop Scroop, Mowbray, and Hastings, though the scale of the king's forces makes their position uncertain. In London, Falstaff complains of age and illness while enjoying the fame he gained through false claims about the battle. The Chief Justice confronts him over his past robbery and present misconduct. Falstaff avoids accountability through jokes and his military commission, confident that association with Prince Henry will continue to protect him. Meanwhile, the Archbishop's party prepares to justify another armed challenge to the crown.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Hostess Quickly has Falstaff detained over his debts, but his persuasion turns the confrontation into another promise of marriage and further credit. Prince Henry, conscious that concern for his sick father sits uneasily beside tavern amusement, disguises himself with Poins and listens as Falstaff belittles him to Doll Tearsheet. When exposed, Falstaff invents an excuse and resumes their familiar banter. News of the northern rebellion interrupts the gathering: the prince must return to court, and Falstaff must join the military levy. Their separation makes clear that national duty is again displacing the Eastcheap world, even as Falstaff treats the campaign as another opportunity for profit and self-preservation.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "King Henry, unable to sleep, reflects on the burden of rule and hears that the rebels are assembling. He divides command among his sons and allies while his illness worsens. In Gloucestershire, Falstaff meets the elderly justices Shallow and Silence to choose recruits. Shallow boasts about their youthful adventures, though Falstaff privately remembers him as insignificant. The men presented for service reveal the human cost and corruption of recruitment: those with resources buy their way out, while weaker candidates are taken. Falstaff accepts payments and leads away the remaining soldiers, planning to exploit both the campaign and his acquaintance with Shallow.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Prince John and Westmoreland meet Archbishop Scroop, Mowbray, and Hastings. John receives their list of grievances and promises they will be addressed, then invites both armies to disperse before a shared drink. Once the rebel troops have gone, he arrests their leaders for treason and orders their execution, arguing that his promise concerned the grievances rather than immunity for those who raised an army. Falstaff arrives after a rebel named Colevile has surrendered to him and again claims martial importance, but John departs without rewarding him. The northern rising is extinguished through the prince's calculated agreement rather than a major battle, and Falstaff returns toward Gloucestershire seeking comfort and advantage with Shallow.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At Westminster, Henry IV receives news that the rebellion has ended, then collapses. Prince Henry finds him apparently lifeless and removes the crown, assuming that the burden has passed to him. The king wakes, sees the crown missing, and interprets the act as impatient ambition. Hal returns and explains that he believed his father dead and had addressed the crown as a dangerous inheritance. Their reconciliation allows Henry to advise his heir on rule and to acknowledge the troubled way he gained power. The king is carried to the Jerusalem Chamber, where he dies, fulfilling a prediction that he would die in Jerusalem without ever reaching the Holy Land. Prince Henry succeeds as Henry V.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The new Henry V reassures his brothers that his former wildness has ended and confirms the Chief Justice in office, praising the independence with which he enforced the law. Falstaff, dining with Shallow when news of the accession arrives, borrows more money and rushes to London expecting power and wealth through his friendship with the king. At the coronation procession he calls familiarly to Henry, but the king publicly renounces him, orders him to keep his distance, and provides an allowance only so that necessity cannot excuse renewed misconduct. The Chief Justice commits Falstaff, Shallow, and their companions to the Fleet. Hostess Quickly and Doll are also under arrest. Falstaff insists the rejection is merely for appearances, yet his access to the king has ended. Prince John predicts that the government will soon carry war into France.",
+            "through": {
+              "chapter": 19
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "henry-iv-pt-2"
+      }
+    },
     "heretics-of-dune": {
       "characters": {
         "characters": [

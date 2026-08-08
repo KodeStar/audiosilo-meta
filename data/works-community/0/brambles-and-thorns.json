@@ -4088,6 +4088,849 @@
         "work": "camille"
       }
     },
+    "candide": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A guileless young man raised in the household of a Westphalian baron. Taught that creation follows an optimally ordered plan, he initially accepts his tutor's philosophy without question. His love for Cunegonde and sudden expulsion from the castle begin a long education in the gap between optimistic theory and experience.",
+            "id": "candide",
+            "name": "Candide",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The baron's daughter and the object of Candide's affection. Curious and impulsive, she initiates a kiss after observing a private lesson between Pangloss and Paquette, causing Candide to be driven from the household.",
+            "id": "cunegonde",
+            "name": "Cunegonde",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tutor in the baron's household and teacher of a system claiming that every event serves an optimally ordered creation. He gives elaborate explanations for his certainty and provides Candide with the doctrine against which later disasters will be measured.",
+            "id": "pangloss",
+            "name": "Pangloss",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Young Baron"
+            ],
+            "description": "Cunegonde's brother and heir to the family title. As a member of the Westphalian household, he shares the rank and assumptions that make Candide's uncertain birth a barrier to marriage with Cunegonde.",
+            "id": "cunegondes-brother",
+            "name": "Cunegonde's Brother",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A chambermaid in the baron's household. Cunegonde secretly observes her with Pangloss, an encounter that indirectly prompts Cunegonde to experiment with Candide and leads to his expulsion.",
+            "id": "paquette",
+            "name": "Paquette",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "The Anabaptist"
+            ],
+            "description": "A charitable Dutch merchant who helps Candide when a preacher rejects him. He gives Candide food and work, then pays for Pangloss's treatment despite disagreeing with the tutor's view of humanity.",
+            "id": "jacques",
+            "name": "Jacques",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An experienced elderly servant who finds Candide after the Lisbon punishment and tends his injuries. She acts with practical efficiency, giving him shelter and food before leading him to an unexpected reunion.",
+            "id": "the-old-woman",
+            "name": "The Old Woman",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wealthy Jewish merchant in Lisbon who has purchased control over Cunegonde and shares access to her under an arrangement imposed by the Grand Inquisitor. He reacts violently when he finds Candide with her.",
+            "id": "don-issachar",
+            "name": "Don Issachar",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A powerful Lisbon church official who witnessed Cunegonde's situation, acquired a competing claim over her, and arranged a divided household with Don Issachar. He also presides over the religious punishment inflicted on Candide and Pangloss after the earthquake.",
+            "id": "the-grand-inquisitor",
+            "name": "The Grand Inquisitor",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The governor of Buenos Aires, ceremonious and vain, whose many names display his status. He immediately takes an interest in Cunegonde when Candide's party arrives and asks to marry her.",
+            "id": "don-fernando",
+            "name": "Don Fernando d'Ibarra y Figueroa y Mascarenes y Lampourdos y Souza",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Candide's resourceful servant, born in the region and familiar with its languages and customs. Calm where Candide is impulsive, he becomes guide, interpreter, negotiator, and practical partner during their travels in South America.",
+            "id": "cacambo",
+            "name": "Cacambo",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An impoverished scholar whom Candide chooses as a traveling companion because suffering has made him expect the worst of human conduct. His systematic pessimism provides a counterargument to Pangloss's equally systematic optimism.",
+            "id": "martin",
+            "name": "Martin",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Dutch merchant and ship captain in Surinam who agrees to transport Candide and his wealth, then exploits a dispute to sail away with much of the fortune. He represents the calculated greed Candide repeatedly encounters.",
+            "id": "vanderdendur",
+            "name": "Vanderdendur",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A young friar in Venice whom Candide and Martin meet with Paquette. Though he appears cheerful, he describes religious life as an unwanted confinement and longs to escape it.",
+            "id": "brother-giroflee",
+            "name": "Brother Giroflee",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A wealthy Venetian senator surrounded by renowned books, art, music, and gardens. He has trained himself to find faults in nearly every possession and performance, leaving Candide uncertain whether his detachment is wisdom or merely boredom.",
+            "id": "pococurante",
+            "name": "Pococurante",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A modest farmer near Constantinople who supports his household through steady shared work and avoids public affairs. His contentment offers Candide a practical alternative to the competing philosophical systems that have accompanied his travels.",
+            "id": "the-turkish-farmer",
+            "name": "The Turkish Farmer",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "candide"
+      },
+      "recaps": {
+        "ending": "Candide reaches the Ottoman lands and recovers Cunegonde and the old woman from servitude. Pangloss and Cunegonde's brother have also survived their apparent deaths and are released from a galley. Cunegonde has lost the beauty Candide remembered, but he keeps his promise to marry her, chiefly in defiance of her brother's renewed objection; the brother is sent away. The reunited group settles on a small farm. Their wealth dwindles, work is difficult, and philosophical debate does nothing to relieve boredom and conflict. Paquette and Brother Giroflee arrive after wasting the money Candide once gave them. A contented Turkish farmer explains that his household's labor protects it from poverty, vice, and weariness. Candide finally rejects Pangloss's attempt to justify the entire chain of disasters as necessary. He concludes that they should concentrate on tending their own land and doing useful shared work instead of seeking an abstract explanation for suffering. Each member takes up a productive task, and the farm becomes sustainable.",
+        "in_short": "Expelled from a Westphalian castle for loving Cunegonde, Candide travels through war, shipwreck, earthquake, religious persecution, murder, enslavement, and fraud while testing Pangloss's claim that all events fit a providentially optimal plan. He repeatedly loses and recovers Cunegonde, Pangloss, her brother, and a dwindling fortune. With the practical Cacambo he discovers wealthy, peaceful Eldorado but leaves to pursue love and status; most of its treasure is then stolen or squandered. The pessimistic Martin joins him through Europe, while encounters with people of every rank show misery surviving both wealth and philosophy. In the Ottoman Empire, Candide frees the scattered companions and marries Cunegonde after her beauty has faded. They settle on a small farm, where argument and idleness make them unhappy until a hardworking Turkish household suggests another way to live. Candide abandons the search for a theory that justifies suffering and commits the group to sustained, useful work on their own land.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Candide grows up in the castle of Baron Thunder-ten-tronckh in Westphalia, where Pangloss teaches that every event belongs to an optimally designed creation. After Cunegonde kisses Candide, the baron expels him. Recruiters force the homeless youth into the Bulgar army, where he is beaten for attempting to walk away and then witnesses the devastation of war. He escapes to Holland. A severe preacher refuses him aid, but Jacques, a charitable Anabaptist merchant, gives him work and shelter. Candide finds Pangloss reduced to illness and poverty. Pangloss reports that the baron's household was destroyed in the war and Cunegonde killed, yet still defends his optimistic system. Jacques pays for Pangloss's medical care and takes both men on a voyage to Lisbon. A storm wrecks the ship near port. Jacques drowns while trying to save another man, and Candide and Pangloss reach land just as a catastrophic earthquake destroys much of the city.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Candide has been expelled for loving Cunegonde, conscripted into a brutal war, reunited with his sick tutor Pangloss, and brought by the charitable Jacques to Lisbon, where Jacques dies in a storm and an earthquake devastates the city. Authorities answer the disaster with a public religious punishment: Pangloss is hanged and Candide flogged. An old woman nurses Candide and leads him to Cunegonde, who survived the attack on her family. Cunegonde explains that she was wounded and passed between captors before becoming subject to both the wealthy Don Issachar and the Grand Inquisitor. When the two men arrive separately, Candide kills each of them. Candide, Cunegonde, and the old woman flee with money and jewels, but a thief steals much of their reserve. At Cadiz, Candide's military experience wins him a command in an expedition sailing for South America, and the three embark in hope of escaping prosecution.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On the Atlantic crossing, the old woman recounts a life of extraordinary reversals: born a pope's daughter and raised amid luxury, she endured abduction, violence, slavery, plague, war, and mutilation before becoming a servant. Her history challenges Cunegonde and Candide to find anyone untouched by suffering. In Buenos Aires, Governor Don Fernando proposes to Cunegonde. News arrives that officers are pursuing Candide for the Lisbon killings, so the old woman advises Cunegonde to remain while Candide escapes with his new servant, Cacambo. They reach the Jesuit territory in Paraguay and discover that the commandant is Cunegonde's brother, believed dead after the Westphalian attack. The reunion ends when the young baron refuses to consider Candide worthy of marrying his sister. Enraged, Candide stabs him. Cacambo disguises Candide in the commandant's clothing and leads him away before the other Jesuits discover what happened.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Fleeing Paraguay after Candide stabs Cunegonde's brother, Candide and Cacambo are captured by the Oreillons, who intend to kill them as enemies. Cacambo explains that they have killed a Jesuit rather than served one, and the pair are released. They then reach Eldorado, an isolated country without religious persecution, poverty, courts, or greed, where gold and jewels are treated as common material. Though welcomed and offered security, Candide chooses to leave with portable wealth so he can recover Cunegonde and prove his status. Most of the treasure is lost on the difficult journey to Surinam. There Candide encounters an enslaved man whose injuries expose the human cost of European luxury. The merchant Vanderdendur cheats Candide and sails away with much of the remaining fortune. Candide sends Cacambo to find Cunegonde, then selects the impoverished scholar Martin as companion for a voyage to Europe. During the crossing, Vanderdendur's ship sinks in a battle, but almost none of Candide's stolen treasure is recovered.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Candide and Martin debate whether optimism or pessimism better explains the world as they travel toward Europe. In Paris, Candide falls ill and is exploited by doctors, social visitors, gamblers, and impostors who use forged messages from Cunegonde. They leave France, then witness the execution of a British admiral, killed as an example to others. Horrified, Candide continues to Venice, where Cacambo had promised to meet him. Cacambo does not appear. Candide finds Paquette, formerly a maid in the Westphalian castle, with the unhappy Brother Giroflee; both describe lives constrained by exploitation despite seeming cheerful. Candide gives them money, hoping wealth will improve their condition, while Martin predicts it will not. A visit to the immensely rich Senator Pococurante reveals another form of dissatisfaction: the collector dismisses his celebrated books, paintings, music, and gardens and takes pleasure in almost nothing. Candide is still without Cunegonde and increasingly unable to preserve Pangloss's confidence.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At a Venice supper Candide meets six deposed monarchs, showing that even kings cannot rely on fortune. Cacambo finally returns and reports that Cunegonde is enslaved near Constantinople. Candide and Martin travel there, and aboard a galley discover both Pangloss and Cunegonde's brother alive despite their apparent deaths. Candide buys their freedom, then frees Cunegonde and the old woman. Cunegonde has lost her former beauty, but Candide honors his promise and marries her over her brother's renewed class objection; the brother is removed from the household. The companions settle on a small farm with the remainder of Candide's fortune. Idleness, argument, and failing resources make life miserable, and Paquette and Giroflee return destitute after spending Candide's gift. A modest Turkish farmer explains that his family avoids many troubles by concentrating on productive work. Candide draws the practical conclusion that speculation will not repair their lives. The household begins farming and making useful goods, each person contributing. Pangloss still argues that every disaster was necessary to reach this outcome, but Candide closes the discussion by directing attention back to their work on the land.",
+            "through": {
+              "chapter": 30
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "candide"
+      }
+    },
+    "candide-csa-word": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A good-natured young man raised in the Baron of Thunder-ten-tronckh's household. He accepts his tutor Pangloss's optimistic philosophy and has little experience of hardship when his affection for Cunegonde gets him expelled from the castle.",
+            "id": "candide",
+            "name": "Candide",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The baron's daughter and the object of Candide's love. Curious and sheltered, she returns his affection, and their first kiss leads to his banishment from her family's home.",
+            "id": "cunegonde",
+            "name": "Cunegonde",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tutor in the baron's household and Candide's teacher. He argues that every event belongs to the best possible version of the world, a system Candide initially trusts without reservation.",
+            "id": "pangloss",
+            "name": "Pangloss",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Baron of Thunder-ten-tronckh"
+            ],
+            "description": "Cunegonde's father, a proud Westphalian nobleman whose castle is Candide's childhood home. He drives Candide away after discovering the young couple together.",
+            "id": "baron-thunder-ten-tronckh",
+            "name": "The Baron",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A maid in the baron's household whom Cunegonde observes in a private encounter with Pangloss.",
+            "id": "paquette",
+            "name": "Paquette",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "The Anabaptist"
+            ],
+            "description": "A compassionate Anabaptist merchant in Holland. After another man rejects the hungry Candide, Jacques gives him food, work, and shelter.",
+            "id": "jacques",
+            "name": "Jacques",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly servant who secretly tends Candide after the Lisbon auto-da-fe and leads him to safety. Practical, resourceful, and accustomed to suffering, she serves Cunegonde and manages the party's escape.",
+            "id": "old-woman",
+            "name": "The Old Woman",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wealthy Jewish merchant in Lisbon who has made Cunegonde dependent on him and shares access to her under an uneasy arrangement with the Grand Inquisitor.",
+            "id": "don-issachar",
+            "name": "Don Issachar",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A powerful Lisbon church official who competes with Don Issachar for control of Cunegonde and presides over the auto-da-fe at which Candide and Pangloss are punished.",
+            "id": "grand-inquisitor",
+            "name": "The Grand Inquisitor",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Candide's quick-witted servant in South America. Familiar with the region's languages and customs, he recognizes the danger in Buenos Aires and helps Candide escape.",
+            "id": "cacambo",
+            "name": "Cacambo",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Young Baron"
+            ],
+            "description": "Cunegonde's brother, believed by Candide to have died in the attack on the family castle but now a Jesuit commander in Paraguay. He is delighted to encounter someone connected to his former home.",
+            "id": "cunegondes-brother",
+            "name": "Cunegonde's Brother",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An impoverished scholar whom Candide selects in Surinam as a traveling companion. Repeated misfortune has made him a committed pessimist, providing a sustained counterargument to Pangloss.",
+            "id": "martin",
+            "name": "Martin",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wealthy Venetian senator famous for his magnificent home, art, books, and gardens. Candide expects contentment from him, but Martin suspects that privilege has only refined his dissatisfaction.",
+            "id": "pococurante",
+            "name": "Pococurante",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A modest farmer near Constantinople who supports his family through steady work and avoids public affairs. His peaceful household offers Candide a practical example of a life not governed by speculative philosophy.",
+            "id": "turkish-farmer",
+            "name": "The Turkish Farmer",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "candide-csa-word"
+      },
+      "recaps": {
+        "ending": "Candide reaches the Constantinople area, buys the freedom of Pangloss, Cunegonde's brother, and Cacambo, and finds Cunegonde and the old woman in servitude. Although Cunegonde has lost the beauty he remembered, he keeps his promise and marries her; her brother still objects on grounds of rank and is sent away. The reunited group settles on a small farm, but idleness and argument make them unhappy. Paquette and Brother Giroflee eventually join them in poverty. Pangloss continues to defend his old philosophy, Martin remains pessimistic, and neither position improves their lives. A dervish refuses their metaphysical questions, while a self-sufficient Turkish farmer explains that work protects his family from vice, boredom, and need. Candide adopts that practical lesson. Each member of the household takes up useful labor, their conditions improve, and Candide answers Pangloss's final theorizing by insisting that they must cultivate their garden.",
+        "in_short": "Candide is expelled from a sheltered Westphalian castle for loving Cunegonde and is driven through war, natural disaster, religious persecution, exploitation, and repeated separation from her. His teacher Pangloss insists that all events serve the best possible world, while the pessimist Martin later argues the reverse. Candide reunites with Cunegonde in Lisbon, kills the men controlling her, and flees to South America, where he finds her brother alive and then wounds him during a quarrel. With his resourceful servant Cacambo he discovers the peaceful, wealthy country of El Dorado, but leaves with treasure to recover Cunegonde. Most of the fortune is lost through greed and mischance. After travels through Europe and the Ottoman Empire, Candide frees his surviving companions and marries Cunegonde. Their farm initially brings no contentment. Observing a Turkish family sustained by useful work, Candide abandons the search for a complete explanation of suffering and organizes the household around shared labor: they will cultivate their garden.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Candide grows up in the Westphalian castle of Baron Thunder-ten-tronckh, where Pangloss teaches him that everything necessarily works toward the best possible outcome. Candide loves the baron's daughter Cunegonde, but her father expels him after finding them kissing. Soldiers recruit Candide into the Bulgar army and subject him to brutal discipline; he later witnesses the devastation of war and escapes to Holland. There the charitable merchant Jacques shelters him. Candide finds Pangloss sick and destitute and learns that attacking soldiers destroyed the baron's household and apparently killed Cunegonde. Jacques pays for Pangloss's treatment and takes both men toward Lisbon. A storm wrecks the ship, Jacques drowns while trying to save another man, and Candide and Pangloss reach shore just as an earthquake devastates Lisbon. Pangloss keeps defending his system despite the disasters around them.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Lisbon authorities stage an auto-da-fe in the belief that punishment will prevent further earthquakes. Pangloss is hanged and Candide is flogged. An old woman nurses Candide and takes him to Cunegonde, who survived the attack in Westphalia but has since been exploited and passed between Don Issachar and the Grand Inquisitor. When both men arrive unexpectedly, Candide kills them. Candide, Cunegonde, and the old woman flee with money and horses, but a thief strips them of most of their resources. They reach Cadiz, where Candide's military experience wins him a command in an expedition sailing for South America. The three depart for Buenos Aires, with Candide hoping distance will allow him and Cunegonde to live together safely.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "During the voyage, the old woman recounts a life marked by lost status, enslavement, violence, and repeated escape. In Buenos Aires, the governor pursues Cunegonde, while an officer arrives seeking Candide for the Lisbon killings. Candide flees with his new servant Cacambo and leaves Cunegonde and the old woman behind. They reach the Jesuit territory in Paraguay and discover that its commander is Cunegonde's brother, who survived the destruction of the castle. His welcome ends when Candide declares his intention to marry Cunegonde; enraged by the difference in rank, the young baron strikes him. Candide stabs him and, believing him dead, escapes in the commander's clothes with Cacambo.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Candide and Cacambo are captured by the Oreillons, who intend to kill them as enemies, but Cacambo persuades the community that the pair have opposed the Jesuits, and they are released. Traveling onward, they enter El Dorado, an isolated country without religious persecution, courts, poverty, or competition for gold. Candide admires it but chooses to leave because its wealth could help him recover Cunegonde and make him powerful elsewhere. He and Cacambo depart with pack animals carrying treasure, most of which is lost on the journey. In Surinam, the suffering of an enslaved worker further weakens Candide's optimism. A merchant named Vanderdendur cheats him of much of his remaining fortune. Candide sends Cacambo to retrieve Cunegonde and meet him in Venice, then chooses the deeply pessimistic scholar Martin as his companion for the voyage to Europe.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Candide and Martin debate whether human affairs are governed more by good or evil as they travel through France and England. In Paris, Candide is manipulated by social acquaintances and tricksters who exploit his illness, wealth, and longing for Cunegonde. He escapes after a false message purportedly from her leads to an attempted arrest. In England, the official execution of an admiral disgusts him, and he leaves without staying. Reaching Venice, he finds no sign of Cacambo. He meets Paquette, now surviving through sex work, and the unhappy monk Brother Giroflee; their misery persists even after Candide gives them money. A visit to the immensely wealthy Senator Pococurante reveals a man bored with every possession and cultural pleasure. These encounters leave Candide unable to find either the universal happiness promised by Pangloss or a decisive refutation of Martin's pessimism.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At a Venice supper with several deposed rulers, Candide finally finds Cacambo, now a servant. Cacambo reports that Cunegonde is near Constantinople. On the journey there, Candide discovers Pangloss and Cunegonde's brother alive and condemned to rowing in a galley, and buys their freedom. He also frees Cacambo and finds Cunegonde and the old woman laboring in servitude. Candide marries Cunegonde despite her brother's renewed objection and settles the group on a small farm. Idleness soon makes the household quarrelsome and miserable, and Paquette and Brother Giroflee arrive after losing what Candide gave them. A dervish dismisses their questions about good and evil. By contrast, a Turkish farmer explains that useful labor keeps his family from vice, boredom, and want. Candide applies that lesson: everyone develops a productive skill and the farm prospers. He no longer tries to resolve Pangloss's or Martin's theories, concluding instead that their own garden must be cultivated.",
+            "through": {
+              "chapter": 30
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "candide-csa-word"
+      }
+    },
+    "candide-gildan-media-edition": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A good-natured young man raised in the Baron of Thunder-ten-tronckh's household. He accepts his tutor Pangloss's optimistic philosophy and has little experience of hardship when his affection for Cunegonde gets him expelled from the castle.",
+            "id": "candide",
+            "name": "Candide",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The baron's daughter and the object of Candide's love. Curious and sheltered, she returns his affection, and their first kiss leads to his banishment from her family's home.",
+            "id": "cunegonde",
+            "name": "Cunegonde",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tutor in the baron's household and Candide's teacher. He argues that every event belongs to the best possible version of the world, a system Candide initially trusts without reservation.",
+            "id": "pangloss",
+            "name": "Pangloss",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Baron of Thunder-ten-tronckh"
+            ],
+            "description": "Cunegonde's father, a proud Westphalian nobleman whose castle is Candide's childhood home. He drives Candide away after discovering the young couple together.",
+            "id": "baron-thunder-ten-tronckh",
+            "name": "The Baron",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A maid in the baron's household whom Cunegonde observes in a private encounter with Pangloss.",
+            "id": "paquette",
+            "name": "Paquette",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "The Anabaptist"
+            ],
+            "description": "A compassionate Anabaptist merchant in Holland. After another man rejects the hungry Candide, Jacques gives him food, work, and shelter.",
+            "id": "jacques",
+            "name": "Jacques",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly servant who secretly tends Candide after the Lisbon auto-da-fe and leads him to safety. Practical, resourceful, and accustomed to suffering, she serves Cunegonde and manages the party's escape.",
+            "id": "old-woman",
+            "name": "The Old Woman",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wealthy Jewish merchant in Lisbon who has made Cunegonde dependent on him and shares access to her under an uneasy arrangement with the Grand Inquisitor.",
+            "id": "don-issachar",
+            "name": "Don Issachar",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A powerful Lisbon church official who competes with Don Issachar for control of Cunegonde and presides over the auto-da-fe at which Candide and Pangloss are punished.",
+            "id": "grand-inquisitor",
+            "name": "The Grand Inquisitor",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Candide's quick-witted servant in South America. Familiar with the region's languages and customs, he recognizes the danger in Buenos Aires and helps Candide escape.",
+            "id": "cacambo",
+            "name": "Cacambo",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Young Baron"
+            ],
+            "description": "Cunegonde's brother, believed by Candide to have died in the attack on the family castle but now a Jesuit commander in Paraguay. He is delighted to encounter someone connected to his former home.",
+            "id": "cunegondes-brother",
+            "name": "Cunegonde's Brother",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An impoverished scholar whom Candide selects in Surinam as a traveling companion. Repeated misfortune has made him a committed pessimist, providing a sustained counterargument to Pangloss.",
+            "id": "martin",
+            "name": "Martin",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wealthy Venetian senator famous for his magnificent home, art, books, and gardens. Candide expects contentment from him, but Martin suspects that privilege has only refined his dissatisfaction.",
+            "id": "pococurante",
+            "name": "Pococurante",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A modest farmer near Constantinople who supports his family through steady work and avoids public affairs. His peaceful household offers Candide a practical example of a life not governed by speculative philosophy.",
+            "id": "turkish-farmer",
+            "name": "The Turkish Farmer",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "candide-gildan-media-edition"
+      },
+      "recaps": {
+        "ending": "Candide reaches the Constantinople area, buys the freedom of Pangloss, Cunegonde's brother, and Cacambo, and finds Cunegonde and the old woman in servitude. Although Cunegonde has lost the beauty he remembered, he keeps his promise and marries her; her brother still objects on grounds of rank and is sent away. The reunited group settles on a small farm, but idleness and argument make them unhappy. Paquette and Brother Giroflee eventually join them in poverty. Pangloss continues to defend his old philosophy, Martin remains pessimistic, and neither position improves their lives. A dervish refuses their metaphysical questions, while a self-sufficient Turkish farmer explains that work protects his family from vice, boredom, and need. Candide adopts that practical lesson. Each member of the household takes up useful labor, their conditions improve, and Candide answers Pangloss's final theorizing by insisting that they must cultivate their garden.",
+        "in_short": "Candide is expelled from a sheltered Westphalian castle for loving Cunegonde and is driven through war, natural disaster, religious persecution, exploitation, and repeated separation from her. His teacher Pangloss insists that all events serve the best possible world, while the pessimist Martin later argues the reverse. Candide reunites with Cunegonde in Lisbon, kills the men controlling her, and flees to South America, where he finds her brother alive and then wounds him during a quarrel. With his resourceful servant Cacambo he discovers the peaceful, wealthy country of El Dorado, but leaves with treasure to recover Cunegonde. Most of the fortune is lost through greed and mischance. After travels through Europe and the Ottoman Empire, Candide frees his surviving companions and marries Cunegonde. Their farm initially brings no contentment. Observing a Turkish family sustained by useful work, Candide abandons the search for a complete explanation of suffering and organizes the household around shared labor: they will cultivate their garden.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Candide grows up in the Westphalian castle of Baron Thunder-ten-tronckh, where Pangloss teaches him that everything necessarily works toward the best possible outcome. Candide loves the baron's daughter Cunegonde, but her father expels him after finding them kissing. Soldiers recruit Candide into the Bulgar army and subject him to brutal discipline; he later witnesses the devastation of war and escapes to Holland. There the charitable merchant Jacques shelters him. Candide finds Pangloss sick and destitute and learns that attacking soldiers destroyed the baron's household and apparently killed Cunegonde. Jacques pays for Pangloss's treatment and takes both men toward Lisbon. A storm wrecks the ship, Jacques drowns while trying to save another man, and Candide and Pangloss reach shore just as an earthquake devastates Lisbon. Pangloss keeps defending his system despite the disasters around them.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Lisbon authorities stage an auto-da-fe in the belief that punishment will prevent further earthquakes. Pangloss is hanged and Candide is flogged. An old woman nurses Candide and takes him to Cunegonde, who survived the attack in Westphalia but has since been exploited and passed between Don Issachar and the Grand Inquisitor. When both men arrive unexpectedly, Candide kills them. Candide, Cunegonde, and the old woman flee with money and horses, but a thief strips them of most of their resources. They reach Cadiz, where Candide's military experience wins him a command in an expedition sailing for South America. The three depart for Buenos Aires, with Candide hoping distance will allow him and Cunegonde to live together safely.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "During the voyage, the old woman recounts a life marked by lost status, enslavement, violence, and repeated escape. In Buenos Aires, the governor pursues Cunegonde, while an officer arrives seeking Candide for the Lisbon killings. Candide flees with his new servant Cacambo and leaves Cunegonde and the old woman behind. They reach the Jesuit territory in Paraguay and discover that its commander is Cunegonde's brother, who survived the destruction of the castle. His welcome ends when Candide declares his intention to marry Cunegonde; enraged by the difference in rank, the young baron strikes him. Candide stabs him and, believing him dead, escapes in the commander's clothes with Cacambo.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Candide and Cacambo are captured by the Oreillons, who intend to kill them as enemies, but Cacambo persuades the community that the pair have opposed the Jesuits, and they are released. Traveling onward, they enter El Dorado, an isolated country without religious persecution, courts, poverty, or competition for gold. Candide admires it but chooses to leave because its wealth could help him recover Cunegonde and make him powerful elsewhere. He and Cacambo depart with pack animals carrying treasure, most of which is lost on the journey. In Surinam, the suffering of an enslaved worker further weakens Candide's optimism. A merchant named Vanderdendur cheats him of much of his remaining fortune. Candide sends Cacambo to retrieve Cunegonde and meet him in Venice, then chooses the deeply pessimistic scholar Martin as his companion for the voyage to Europe.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Candide and Martin debate whether human affairs are governed more by good or evil as they travel through France and England. In Paris, Candide is manipulated by social acquaintances and tricksters who exploit his illness, wealth, and longing for Cunegonde. He escapes after a false message purportedly from her leads to an attempted arrest. In England, the official execution of an admiral disgusts him, and he leaves without staying. Reaching Venice, he finds no sign of Cacambo. He meets Paquette, now surviving through sex work, and the unhappy monk Brother Giroflee; their misery persists even after Candide gives them money. A visit to the immensely wealthy Senator Pococurante reveals a man bored with every possession and cultural pleasure. These encounters leave Candide unable to find either the universal happiness promised by Pangloss or a decisive refutation of Martin's pessimism.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At a Venice supper with several deposed rulers, Candide finally finds Cacambo, now a servant. Cacambo reports that Cunegonde is near Constantinople. On the journey there, Candide discovers Pangloss and Cunegonde's brother alive and condemned to rowing in a galley, and buys their freedom. He also frees Cacambo and finds Cunegonde and the old woman laboring in servitude. Candide marries Cunegonde despite her brother's renewed objection and settles the group on a small farm. Idleness soon makes the household quarrelsome and miserable, and Paquette and Brother Giroflee arrive after losing what Candide gave them. A dervish dismisses their questions about good and evil. By contrast, a Turkish farmer explains that useful labor keeps his family from vice, boredom, and want. Candide applies that lesson: everyone develops a productive skill and the farm prospers. He no longer tries to resolve Pangloss's or Martin's theories, concluding instead that their own garden must be cultivated.",
+            "through": {
+              "chapter": 30
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "candide-gildan-media-edition"
+      }
+    },
+    "candide-with-ebook": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A good-natured young man raised in the Baron of Thunder-ten-tronckh's household. He accepts his tutor Pangloss's optimistic philosophy and has little experience of hardship when his affection for Cunegonde gets him expelled from the castle.",
+            "id": "candide",
+            "name": "Candide",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The baron's daughter and the object of Candide's love. Curious and sheltered, she returns his affection, and their first kiss leads to his banishment from her family's home.",
+            "id": "cunegonde",
+            "name": "Cunegonde",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tutor in the baron's household and Candide's teacher. He argues that every event belongs to the best possible version of the world, a system Candide initially trusts without reservation.",
+            "id": "pangloss",
+            "name": "Pangloss",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Baron of Thunder-ten-tronckh"
+            ],
+            "description": "Cunegonde's father, a proud Westphalian nobleman whose castle is Candide's childhood home. He drives Candide away after discovering the young couple together.",
+            "id": "baron-thunder-ten-tronckh",
+            "name": "The Baron",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A maid in the baron's household whom Cunegonde observes in a private encounter with Pangloss.",
+            "id": "paquette",
+            "name": "Paquette",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "The Anabaptist"
+            ],
+            "description": "A compassionate Anabaptist merchant in Holland. After another man rejects the hungry Candide, Jacques gives him food, work, and shelter.",
+            "id": "jacques",
+            "name": "Jacques",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly servant who secretly tends Candide after the Lisbon auto-da-fe and leads him to safety. Practical, resourceful, and accustomed to suffering, she serves Cunegonde and manages the party's escape.",
+            "id": "old-woman",
+            "name": "The Old Woman",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wealthy Jewish merchant in Lisbon who has made Cunegonde dependent on him and shares access to her under an uneasy arrangement with the Grand Inquisitor.",
+            "id": "don-issachar",
+            "name": "Don Issachar",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A powerful Lisbon church official who competes with Don Issachar for control of Cunegonde and presides over the auto-da-fe at which Candide and Pangloss are punished.",
+            "id": "grand-inquisitor",
+            "name": "The Grand Inquisitor",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Candide's quick-witted servant in South America. Familiar with the region's languages and customs, he recognizes the danger in Buenos Aires and helps Candide escape.",
+            "id": "cacambo",
+            "name": "Cacambo",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Young Baron"
+            ],
+            "description": "Cunegonde's brother, believed by Candide to have died in the attack on the family castle but now a Jesuit commander in Paraguay. He is delighted to encounter someone connected to his former home.",
+            "id": "cunegondes-brother",
+            "name": "Cunegonde's Brother",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An impoverished scholar whom Candide selects in Surinam as a traveling companion. Repeated misfortune has made him a committed pessimist, providing a sustained counterargument to Pangloss.",
+            "id": "martin",
+            "name": "Martin",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wealthy Venetian senator famous for his magnificent home, art, books, and gardens. Candide expects contentment from him, but Martin suspects that privilege has only refined his dissatisfaction.",
+            "id": "pococurante",
+            "name": "Pococurante",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A modest farmer near Constantinople who supports his family through steady work and avoids public affairs. His peaceful household offers Candide a practical example of a life not governed by speculative philosophy.",
+            "id": "turkish-farmer",
+            "name": "The Turkish Farmer",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "candide-with-ebook"
+      },
+      "recaps": {
+        "ending": "Candide reaches the Constantinople area, buys the freedom of Pangloss, Cunegonde's brother, and Cacambo, and finds Cunegonde and the old woman in servitude. Although Cunegonde has lost the beauty he remembered, he keeps his promise and marries her; her brother still objects on grounds of rank and is sent away. The reunited group settles on a small farm, but idleness and argument make them unhappy. Paquette and Brother Giroflee eventually join them in poverty. Pangloss continues to defend his old philosophy, Martin remains pessimistic, and neither position improves their lives. A dervish refuses their metaphysical questions, while a self-sufficient Turkish farmer explains that work protects his family from vice, boredom, and need. Candide adopts that practical lesson. Each member of the household takes up useful labor, their conditions improve, and Candide answers Pangloss's final theorizing by insisting that they must cultivate their garden.",
+        "in_short": "Candide is expelled from a sheltered Westphalian castle for loving Cunegonde and is driven through war, natural disaster, religious persecution, exploitation, and repeated separation from her. His teacher Pangloss insists that all events serve the best possible world, while the pessimist Martin later argues the reverse. Candide reunites with Cunegonde in Lisbon, kills the men controlling her, and flees to South America, where he finds her brother alive and then wounds him during a quarrel. With his resourceful servant Cacambo he discovers the peaceful, wealthy country of El Dorado, but leaves with treasure to recover Cunegonde. Most of the fortune is lost through greed and mischance. After travels through Europe and the Ottoman Empire, Candide frees his surviving companions and marries Cunegonde. Their farm initially brings no contentment. Observing a Turkish family sustained by useful work, Candide abandons the search for a complete explanation of suffering and organizes the household around shared labor: they will cultivate their garden.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Candide grows up in the Westphalian castle of Baron Thunder-ten-tronckh, where Pangloss teaches him that everything necessarily works toward the best possible outcome. Candide loves the baron's daughter Cunegonde, but her father expels him after finding them kissing. Soldiers recruit Candide into the Bulgar army and subject him to brutal discipline; he later witnesses the devastation of war and escapes to Holland. There the charitable merchant Jacques shelters him. Candide finds Pangloss sick and destitute and learns that attacking soldiers destroyed the baron's household and apparently killed Cunegonde. Jacques pays for Pangloss's treatment and takes both men toward Lisbon. A storm wrecks the ship, Jacques drowns while trying to save another man, and Candide and Pangloss reach shore just as an earthquake devastates Lisbon. Pangloss keeps defending his system despite the disasters around them.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Lisbon authorities stage an auto-da-fe in the belief that punishment will prevent further earthquakes. Pangloss is hanged and Candide is flogged. An old woman nurses Candide and takes him to Cunegonde, who survived the attack in Westphalia but has since been exploited and passed between Don Issachar and the Grand Inquisitor. When both men arrive unexpectedly, Candide kills them. Candide, Cunegonde, and the old woman flee with money and horses, but a thief strips them of most of their resources. They reach Cadiz, where Candide's military experience wins him a command in an expedition sailing for South America. The three depart for Buenos Aires, with Candide hoping distance will allow him and Cunegonde to live together safely.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "During the voyage, the old woman recounts a life marked by lost status, enslavement, violence, and repeated escape. In Buenos Aires, the governor pursues Cunegonde, while an officer arrives seeking Candide for the Lisbon killings. Candide flees with his new servant Cacambo and leaves Cunegonde and the old woman behind. They reach the Jesuit territory in Paraguay and discover that its commander is Cunegonde's brother, who survived the destruction of the castle. His welcome ends when Candide declares his intention to marry Cunegonde; enraged by the difference in rank, the young baron strikes him. Candide stabs him and, believing him dead, escapes in the commander's clothes with Cacambo.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Candide and Cacambo are captured by the Oreillons, who intend to kill them as enemies, but Cacambo persuades the community that the pair have opposed the Jesuits, and they are released. Traveling onward, they enter El Dorado, an isolated country without religious persecution, courts, poverty, or competition for gold. Candide admires it but chooses to leave because its wealth could help him recover Cunegonde and make him powerful elsewhere. He and Cacambo depart with pack animals carrying treasure, most of which is lost on the journey. In Surinam, the suffering of an enslaved worker further weakens Candide's optimism. A merchant named Vanderdendur cheats him of much of his remaining fortune. Candide sends Cacambo to retrieve Cunegonde and meet him in Venice, then chooses the deeply pessimistic scholar Martin as his companion for the voyage to Europe.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Candide and Martin debate whether human affairs are governed more by good or evil as they travel through France and England. In Paris, Candide is manipulated by social acquaintances and tricksters who exploit his illness, wealth, and longing for Cunegonde. He escapes after a false message purportedly from her leads to an attempted arrest. In England, the official execution of an admiral disgusts him, and he leaves without staying. Reaching Venice, he finds no sign of Cacambo. He meets Paquette, now surviving through sex work, and the unhappy monk Brother Giroflee; their misery persists even after Candide gives them money. A visit to the immensely wealthy Senator Pococurante reveals a man bored with every possession and cultural pleasure. These encounters leave Candide unable to find either the universal happiness promised by Pangloss or a decisive refutation of Martin's pessimism.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At a Venice supper with several deposed rulers, Candide finally finds Cacambo, now a servant. Cacambo reports that Cunegonde is near Constantinople. On the journey there, Candide discovers Pangloss and Cunegonde's brother alive and condemned to rowing in a galley, and buys their freedom. He also frees Cacambo and finds Cunegonde and the old woman laboring in servitude. Candide marries Cunegonde despite her brother's renewed objection and settles the group on a small farm. Idleness soon makes the household quarrelsome and miserable, and Paquette and Brother Giroflee arrive after losing what Candide gave them. A dervish dismisses their questions about good and evil. By contrast, a Turkish farmer explains that useful labor keeps his family from vice, boredom, and want. Candide applies that lesson: everyone develops a productive skill and the farm prospers. He no longer tries to resolve Pangloss's or Martin's theories, concluding instead that their own garden must be cultivated.",
+            "through": {
+              "chapter": 30
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "candide-with-ebook"
+      }
+    },
     "captain-blood": {
       "characters": {
         "characters": [

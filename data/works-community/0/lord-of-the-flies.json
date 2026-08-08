@@ -1424,6 +1424,374 @@
         "work": "lysistrata"
       }
     },
+    "macbeth-and-romeo-juliet": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A Scottish nobleman and accomplished soldier. After three witches predict that he will become king, ambition begins to outweigh his loyalty to Duncan and his caution about the consequences.",
+            "id": "macbeth",
+            "name": "Macbeth",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Macbeth's wife and closest confidante. When she learns of the witches' prediction, she urges him to seize the crown and challenges his resolve when he hesitates.",
+            "id": "lady-macbeth",
+            "name": "Lady Macbeth",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Scottish general and Macbeth's companion when the witches deliver their prophecies. They predict royal descendants for Banquo but no crown for him, leaving him wary of both the speakers and Macbeth's response.",
+            "id": "banquo",
+            "name": "Banquo",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The king of Scotland, who rewards Macbeth for courage in battle and visits his castle as an honored guest. His trust makes him vulnerable to the ambition growing within Macbeth's household.",
+            "id": "duncan",
+            "name": "Duncan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Scottish nobleman whose loyalty is to Duncan and the legitimate succession. He becomes suspicious of Macbeth and emerges as a determined opponent of the new king.",
+            "id": "macduff",
+            "name": "Macduff",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The young son of the Montague family, whose household is locked in a long feud with the Capulets. Impulsive and intensely romantic, he attends a Capulet celebration in disguise and falls in love with Juliet.",
+            "id": "romeo",
+            "name": "Romeo",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The young daughter of the Capulet family. Expected to follow her parents' marriage plans, she instead chooses Romeo, the son of the family her relatives have been taught to hate.",
+            "id": "juliet",
+            "name": "Juliet",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A priest trusted by Romeo. He agrees to marry the young couple in secret because he hopes their union may reconcile the Montagues and Capulets.",
+            "id": "friar-laurence",
+            "name": "Friar Laurence",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Juliet's longtime attendant and confidante. Affectionate and talkative, she carries messages between Juliet and Romeo and initially helps arrange their secret marriage.",
+            "id": "nurse",
+            "name": "Nurse",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Juliet's hot-tempered Capulet cousin, quick to treat any Montague presence as an insult. His readiness to fight keeps the family feud active even when others try to prevent violence.",
+            "id": "tybalt",
+            "name": "Tybalt",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "macbeth-and-romeo-juliet"
+      },
+      "recaps": {
+        "ending": "Macbeth ends after the king's violent rule drives Malcolm and Macduff to lead an army against him. Lady Macbeth dies after being overwhelmed by guilt. Macbeth trusts the witches' assurances until Birnam Wood appears to move toward his castle and Macduff reveals that he was not born in the ordinary manner. Macduff kills Macbeth, and Malcolm takes the Scottish crown. Romeo and Juliet ends when Friar Laurence's message about Juliet's feigned death fails to reach Romeo. Believing her dead, Romeo takes poison in the Capulet tomb. Juliet wakes, finds him dead, and kills herself. Their parents finally recognize the cost of the feud and agree to peace.",
+        "in_short": "In Macbeth, three witches predict that Macbeth will be king. Encouraged by Lady Macbeth, he murders Duncan, takes the crown, and orders further killings to protect it. Guilt destroys Lady Macbeth, while opposition gathers around Duncan's son Malcolm and Macduff. The witches' misleading promises give Macbeth false confidence; Macduff kills him and Malcolm becomes king. In Romeo and Juliet, children of the feuding Montague and Capulet families fall in love and marry secretly. Romeo is banished after killing Tybalt. Juliet takes a potion to avoid another marriage, but the plan is not explained to Romeo. He believes she is dead and poisons himself; she wakes and kills herself beside him. Their deaths finally reconcile the families.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "After Scotland defeats an invasion and rebellion, three witches tell Macbeth that he will become king and that Banquo's descendants will rule after him. King Duncan soon rewards Macbeth with a title named in the prophecy. Lady Macbeth persuades her husband to murder Duncan while the king is their guest, and they frame his guards. Duncan's sons flee, allowing Macbeth to take the crown. Fearing Banquo's predicted line, Macbeth has his friend killed, though Banquo's son escapes. He returns to the witches, whose warnings make him feel protected by impossible conditions. Macbeth orders the slaughter of Macduff's family, driving Macduff to join Malcolm's invasion. Lady Macbeth, tormented by guilt, dies. Malcolm's soldiers camouflage themselves with branches from Birnam Wood, fulfilling one warning. Macduff reveals that the witches' promise does not protect Macbeth from him, kills the tyrant, and enables Malcolm to become king.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Macbeth's murder of Duncan leads to a fearful reign, the destruction of Lady Macbeth, and a revolt led by Malcolm and Macduff. Macduff kills Macbeth and Malcolm restores the royal line. The collection then moves to Verona, where Romeo Montague and Juliet Capulet fall in love despite their families' feud. Friar Laurence marries them secretly. Tybalt kills Romeo's friend Mercutio, and Romeo kills Tybalt, for which he is banished. When Juliet's parents order her to marry Paris, the friar gives her a potion that will make her appear dead until Romeo can take her away. The message explaining the plan never reaches him. Romeo enters the tomb, believes Juliet dead, and takes poison. Juliet wakes and kills herself with his dagger. Faced with the deaths of their children, the Montagues and Capulets end their feud.",
+            "through": {
+              "chapter": 2
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "macbeth-and-romeo-juliet"
+      }
+    },
+    "macbeth-william-shakespeare": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Weird Sisters"
+            ],
+            "description": "Three supernatural figures who meet amid thunder and plan an encounter with Macbeth after the fighting ends. They speak in riddling contradictions and seem able to anticipate political events.",
+            "id": "three-witches",
+            "name": "Three Witches",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "King Duncan"
+            ],
+            "description": "The King of Scotland, receiving reports from a battle against rebels and a Norwegian invasion. He rewards loyalty generously and condemns the Thane of Cawdor after learning of that nobleman's treason.",
+            "id": "duncan",
+            "name": "Duncan",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Prince of Cumberland"
+            ],
+            "description": "Duncan's elder son and heir. He accompanies the king during the aftermath of the rebellion and reports the former Thane of Cawdor's composed execution.",
+            "id": "malcolm",
+            "name": "Malcolm",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Scottish nobleman who brings Duncan news of victory and of Macbeth's valor, then carries the king's grant of the Cawdor title to Macbeth.",
+            "id": "ross",
+            "name": "Ross",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Thane of Glamis"
+            ],
+            "description": "A Scottish commander celebrated for defeating rebels and foreign troops. Returning from battle with Banquo, he encounters three witches who address him by his present title, by the traitor Cawdor's title, and as a future king. Their prediction awakens an ambition that immediately troubles him.",
+            "id": "macbeth",
+            "name": "Macbeth",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A Scottish commander and Macbeth's friend, courageous in the same battle. The witches promise that he will be lesser and greater than Macbeth and the ancestor of kings, though not a king himself. He treats the prophecy more cautiously than Macbeth does.",
+            "id": "banquo",
+            "name": "Banquo",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lady Macbeth"
+            ],
+            "description": "Macbeth's wife and closest confidante. Reading his account of the prophecy, she fears that his scruples will obstruct his ambition and resolves to supply the ruthlessness she believes the opportunity requires.",
+            "id": "lady-macbeth",
+            "name": "Lady Macbeth",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Banquo's young son. Banquo summons him during a restless night at Macbeth's castle and carries a protective concern for the boy's future.",
+            "id": "fleance",
+            "name": "Fleance",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Thane of Fife"
+            ],
+            "description": "A Scottish nobleman who comes to wake Duncan after the king's night at Macbeth's castle. Direct and loyal to the crown, he discovers that something terrible has happened in the royal chamber.",
+            "id": "macduff",
+            "name": "Macduff",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Scottish nobleman present when Duncan's household is roused. He reports the violent weather of the night and helps investigate the disorder at Macbeth's castle.",
+            "id": "lennox",
+            "name": "Lennox",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Porter"
+            ],
+            "description": "The gatekeeper at Macbeth's castle. Roused by persistent knocking after a night of heavy drinking, he imagines himself admitting sinners to the gate of hell before letting Macduff and Lennox enter.",
+            "id": "porter",
+            "name": "Porter",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The queen of the witches, summoned after Macbeth has begun relying on supernatural predictions. She rebukes the three sisters for dealing with him without including her.",
+            "id": "hecate",
+            "name": "Hecate",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Lady Macduff"
+            ],
+            "description": "Macduff's wife, left at their castle with their children after he departs Scotland. Feeling abandoned and endangered, she questions whether his flight was wise or loyal to his family.",
+            "id": "lady-macduff",
+            "name": "Lady Macduff",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An experienced English commander and ally of Malcolm. He leads troops supplied by the English king in the effort to restore lawful government in Scotland.",
+            "id": "siward",
+            "name": "Siward",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Young Siward"
+            ],
+            "description": "Siward's son, joining Malcolm's army against Macbeth. His presence makes the campaign a personal test of courage as well as a political intervention.",
+            "id": "siwards-son",
+            "name": "Siward's Son",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "macbeth-william-shakespeare"
+      },
+      "recaps": {
+        "ending": "Malcolm's army advances on Dunsinane carrying branches cut from Birnam Wood, making the witches' warning appear to come true. Macbeth, already numb after hearing of Lady Macbeth's death, still trusts the prediction that anyone delivered through ordinary childbirth cannot harm him. In battle he kills young Siward, but Macduff finds him and reveals that he was delivered before natural birth. Macbeth refuses surrender and is killed. Macduff brings Macbeth's severed head to Malcolm, who is acclaimed king. Malcolm creates Scotland's first earls, calls home those who fled the tyranny, and promises to punish Macbeth's remaining agents and restore order. Lady Macbeth has died offstage, apparently by suicide, Banquo's descendants have not yet taken the throne, and Fleance's location remains unresolved. The play closes with Malcolm inviting his allies to his coronation at Scone.",
+        "in_short": "Victorious Scottish general Macbeth meets witches who predict that he will become king and that Banquo's descendants will rule after him. Spurred by Lady Macbeth, he murders King Duncan and takes the crown after Duncan's sons flee. Fearful of the prophecy, Macbeth has Banquo killed, but Fleance escapes; Banquo's ghost then disrupts a royal feast. Further apparitions make Macbeth feel invulnerable while warning him about Macduff. Macbeth orders the slaughter of Macduff's wife and children, driving Macduff to join Duncan's son Malcolm in England. Lady Macbeth breaks under guilt and dies as Malcolm's forces invade. Camouflaged with branches from Birnam Wood, the army reaches Dunsinane. Macduff, delivered before natural birth, falls outside the witches' reassuring prediction and kills Macbeth. Malcolm becomes king and begins restoring Scotland.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Scotland defeats both an internal rebellion and a Norwegian attack, largely through the courage of Macbeth and Banquo. King Duncan orders the execution of the treacherous Thane of Cawdor and gives that title to Macbeth. Before hearing of the honor, Macbeth and Banquo encounter three witches. They hail Macbeth as Thane of Glamis, Thane of Cawdor, and future king; they tell Banquo that his descendants will be kings. When Ross announces Macbeth's new title, the first part of the prediction comes true. Macbeth begins imagining the death of Duncan even as the thought horrifies him. Duncan names his son Malcolm Prince of Cumberland, formally placing him in the succession, and then announces a visit to Macbeth's castle at Inverness.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Lady Macbeth reads her husband's account of the witches and decides Duncan's visit offers the opportunity to seize the crown. She calls on Macbeth to conceal their purpose and plans to intoxicate Duncan's guards so the king can be killed and the blame placed on them. Duncan arrives trusting his hosts. Macbeth recognizes the moral, political, and practical reasons not to murder a kinsman and guest who has ruled well, and briefly decides against it. Lady Macbeth attacks his courage and lays out the plan until he agrees. They prepare to appear welcoming while intending to kill Duncan that night.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On his way to Duncan's room, Macbeth sees an imagined dagger leading him toward the murder. He kills the sleeping king but returns carrying the guards' daggers, too shaken to go back. Lady Macbeth plants the weapons and smears the sleeping men with blood. Macduff arrives in the morning and discovers Duncan's body. Macbeth kills the guards before they can be questioned, claiming rage. Duncan's sons Malcolm and Donalbain fear that the murderer may target them next and flee separately to England and Ireland. Their departure makes them look guilty. Macbeth is chosen king and goes to Scone for coronation, while Macduff pointedly goes home to Fife rather than attend. Violent weather and unnatural events accompany the transfer of power.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "As king, Macbeth remains afraid of Banquo, who knows the witches' promises and whose heirs were predicted to rule. Without involving Lady Macbeth in the details, Macbeth hires killers to attack Banquo and Fleance on their way to a royal banquet. Banquo is murdered, but Fleance escapes. At the feast Macbeth sees Banquo's ghost occupying his place and reacts publicly to an apparition no one else can see. Lady Macbeth tries to explain his behavior as an illness and ends the gathering. Macbeth recognizes that Macduff's absence signals opposition and decides to return to the witches for greater certainty. His rule is becoming increasingly isolated and violent, while Banquo's surviving son leaves the succession prophecy open.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The witches summon apparitions that tell Macbeth to beware Macduff, assure him that anyone delivered through ordinary childbirth cannot harm him, and say he will remain secure until the forest at Birnam advances upon his castle. A vision of kings descended from Banquo disturbs him, but the other messages make him feel nearly invulnerable. Learning that Macduff has fled to England, Macbeth sends murderers to Macduff's castle, where they kill Lady Macduff and her children. In England, Malcolm tests Macduff's integrity by pretending to possess vices worse than Macbeth's, then reveals his fitness to rule and reports English military support. Ross arrives with news of the slaughter. Macduff turns his grief toward vengeance, and he and Malcolm prepare to invade Scotland with Siward's forces.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Lady Macbeth sleepwalks under the observation of a doctor and attendant, compulsively reenacting attempts to clean imagined blood from her hands and exposing guilty memories. Malcolm's Scottish and English allies advance while Macbeth's nobles desert him. Near Birnam Wood, Malcolm orders each soldier to cut a branch and carry it as camouflage, causing the wood to appear to move toward Dunsinane. Macbeth learns that Lady Macbeth has died and responds with exhausted despair. He still trusts the witches' assurances, but the report of moving trees shakes that confidence. During the battle he kills Siward's son, then faces Macduff. Macduff reveals that he was delivered before natural birth and therefore does not fit Macbeth's interpretation of the prophecy. Macduff kills and beheads him. Malcolm is acclaimed king, rewards his allies as earls, recalls exiles, and invites Scotland to his coronation at Scone.",
+            "through": {
+              "chapter": 29
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "macbeth-william-shakespeare"
+      }
+    },
     "mad-ship": {
       "characters": {
         "characters": [
