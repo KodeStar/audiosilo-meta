@@ -2181,6 +2181,232 @@
         "work": "hamlet-john-marsden"
       }
     },
+    "hamlet-the-bad-quarto": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "The Ghost"
+            ],
+            "description": "An armed spirit resembling Denmark's dead king. It appears to the night watch at Elsinore without speaking, prompting Horatio to seek out Prince Hamlet in the hope that the apparition will address him.",
+            "id": "ghost-of-king-hamlet",
+            "name": "Ghost of King Hamlet",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Hamlet's trusted friend and a witness to the apparition on Elsinore's battlements. Practical and loyal, he brings news of the Ghost to Hamlet and remains the person with whom the prince can speak most openly.",
+            "id": "horatio",
+            "name": "Horatio",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An officer of the night watch at Elsinore who has repeatedly seen the dead king's likeness. He brings Horatio to the battlements and helps persuade Hamlet to attend the next watch.",
+            "id": "marcellus",
+            "name": "Marcellus",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The prince of Denmark, grieving his father's recent death and disgusted by his mother's rapid marriage to the new king. Intelligent, skeptical, and emotionally unsettled, he is prevented from returning to his studies and remains at a court he no longer trusts.",
+            "id": "hamlet",
+            "name": "Hamlet",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "The King"
+            ],
+            "description": "The new king of Denmark and brother of the late ruler. He has married the widowed queen and seeks to present the succession as settled, combining public confidence with concern about Hamlet's prolonged mourning.",
+            "id": "king-claudius",
+            "name": "King Claudius",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Gertred",
+              "The Queen"
+            ],
+            "description": "Hamlet's mother, widow of the former king and newly married to his brother. She wants Hamlet to set aside his mourning and remain at court, without understanding the full cause of his revulsion.",
+            "id": "queen-gertrude",
+            "name": "Queen Gertrude",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The king's elderly counselor and father of Leartes and Ofelia. Formal, talkative, and confident in his worldly judgment, he gives his children detailed advice and treats their private relationships as matters requiring his supervision.",
+            "id": "corambis",
+            "name": "Corambis",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Laertes"
+            ],
+            "description": "Corambis's son, preparing to return to France after the royal succession. He cares deeply for his sister Ofelia and warns her not to treat Hamlet's courtship as a promise the prince will necessarily be free to keep.",
+            "id": "leartes",
+            "name": "Leartes",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ophelia"
+            ],
+            "description": "Corambis's daughter and the young woman Hamlet has courted. She listens to her brother's warnings and her father's commands, placing family obedience above her own uncertain reading of Hamlet's intentions.",
+            "id": "ofelia",
+            "name": "Ofelia",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A servant sent by Corambis to France to inquire indirectly into Leartes's conduct. The assignment shows how the counselor prefers surveillance and inference to direct trust even within his own family.",
+            "id": "montano",
+            "name": "Montano",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Rosencrantz"
+            ],
+            "description": "A former companion of Hamlet summoned to Elsinore by the king and queen. He presents himself as a friend, but his official purpose is to discover the cause of the prince's disturbed behavior.",
+            "id": "rossencraft",
+            "name": "Rossencraft",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Guildenstern"
+            ],
+            "description": "Rossencraft's companion, likewise called to court to observe Hamlet and report what he learns. Hamlet knows both men well enough to test whether their visit is genuinely friendly.",
+            "id": "gilderstone",
+            "name": "Gilderstone",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Player King"
+            ],
+            "description": "The leading member of a visiting acting company. Hamlet welcomes the players and gives their leader material for a court performance designed to reproduce the circumstances described by the Ghost.",
+            "id": "lead-player",
+            "name": "Lead Player",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "First Clown"
+            ],
+            "description": "A cemetery worker who jokes about law, labor, and death while digging Ofelia's grave. His handling of old bones gives Hamlet an immediate confrontation with the physical end shared by courtiers, entertainers, and ordinary people.",
+            "id": "first-gravedigger",
+            "name": "First Gravedigger",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "hamlet-the-bad-quarto"
+      },
+      "recaps": {
+        "ending": "At Ofelia's funeral Hamlet reveals himself, quarrels with Leartes, and declares his love for her. The king then arranges a fencing match between them. Leartes uses a sharpened, poisoned weapon, while the king also prepares poisoned wine. During the bout Hamlet and Leartes exchange weapons and both receive mortal wounds. The queen drinks from the poisoned cup intended for Hamlet and dies. Leartes admits the plot and identifies the king as its author. Hamlet kills the king, then dies after asking Horatio to preserve the truth of what happened. Fortinbras arrives to find the Danish royal family destroyed and takes control amid the aftermath. The revenge demanded by the Ghost is completed, but it costs Hamlet, Ofelia, Leartes, the queen, and the king their lives.",
+        "in_short": "Prince Hamlet learns from his father's Ghost that Denmark's new king murdered him and married Queen Gertrude. Hamlet adopts erratic behavior while testing the revelation. Corambis attributes his condition to frustrated love for Ofelia, and the king uses Rossencraft and Gilderstone to spy on him. Hamlet stages a murder resembling the Ghost's account; the king's reaction confirms his guilt. During a confrontation with his mother, Hamlet kills the hidden Corambis. The king sends Hamlet toward England with secret orders for his death, but Hamlet escapes and returns. Ofelia loses her reason and dies, while her brother Leartes joins the king's revenge plot. In a poisoned fencing match, the queen, Leartes, Hamlet, and the king all die. Horatio survives to report the truth, and Fortinbras takes charge of Denmark.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "The night watch at Elsinore has seen an armed apparition resembling Denmark's dead king. Horatio, initially doubtful, witnesses it and agrees to tell Prince Hamlet. Inside the court, the late king's brother now rules Denmark and has married the widowed queen, Gertrude. Hamlet remains in mourning and is bitter about the rapid marriage, while the royal couple urges him to accept the new order. Leartes receives permission to return to France. Before leaving, he warns his sister Ofelia that Hamlet's courtship may be limited by royal duty; their father Corambis orders her to avoid the prince. Hamlet joins Horatio and the watch, where the Ghost finally speaks to him. It says the present king murdered it and commands Hamlet to take revenge while sparing his mother from physical harm.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Hamlet swears Horatio and Marcellus to secrecy and prepares to behave unpredictably while investigating the Ghost's accusation. Corambis sends Montano to inquire into Leartes's conduct in France. Ofelia then reports that Hamlet has approached her in a frightening, disordered manner. Corambis concludes that rejected love has driven the prince mad and takes the theory to the king. The king and queen summon Hamlet's old companions Rossencraft and Gilderstone, asking them to discover what troubles him. Hamlet quickly suspects that they were sent for. Corambis tries to demonstrate his own explanation by arranging for Ofelia to encounter Hamlet while the court observes. Hamlet's despair and hostility become public, but his private remarks show that his disturbance cannot be reduced to disappointed romance.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A company of actors arrives at Elsinore, giving Hamlet a way to test the Ghost's story without acting immediately on it. He asks for a performance that will echo the reported murder of his father and plans to watch the king's response. Hamlet also confronts Ofelia, rejecting the relationship and speaking harshly while the king and Corambis monitor him. At the court performance, the staged poisoning closely resembles the Ghost's account. The king abruptly stops the entertainment and withdraws, convincing Hamlet and Horatio that his guilt has been exposed. The king now treats Hamlet as a direct danger rather than merely a troubled dependent. Gertrude summons her son to her chamber, while Corambis plans to hide nearby and overhear their conversation.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Hamlet finds the king alone but delays killing him under circumstances that might appear spiritually favorable. In Gertrude's chamber he presses his mother to recognize the corruption of her second marriage. Hearing movement behind a hanging, Hamlet strikes through it and kills Corambis, having believed the concealed listener might be the king. The Ghost reappears to remind Hamlet of revenge and restrain his anger toward Gertrude. The killing gives the king grounds to remove him. Hamlet is sent toward England with Rossencraft and Gilderstone, who carry secret instructions intended to cause his death. At court Ofelia, broken by her father's death and Hamlet's disappearance, loses her reason. Leartes returns furious, and the king directs his desire for vengeance toward Hamlet.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Hamlet discovers the orders against him, escapes the journey to England, and arranges for the scheme to fall upon the companions carrying it. News of his survival reaches Denmark. Gertrude, now aware that the king is working against her son, informs Horatio that Hamlet is returning and places hope in his vindication. Ofelia dies after wandering in her distracted state, leaving Leartes with two deaths to avenge. The king recruits him into a concealed plan: Leartes will fence Hamlet with a sharpened blade treated with poison, and a poisoned drink will provide a second means of killing the prince. Hamlet comes back to a court preparing both Ofelia's burial and the apparently friendly sporting match.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the graveyard Hamlet reflects on mortality before discovering that the burial is Ofelia's. He and Leartes struggle at the grave, each asserting his grief, but the arranged fencing match proceeds. Leartes wounds Hamlet with the poisoned weapon; in the confusion they exchange swords, and Hamlet wounds Leartes with the same blade. Gertrude drinks the poisoned wine prepared as the king's backup plan and dies. The dying Leartes confesses the conspiracy and names the king. Hamlet kills the king, completing the revenge commanded by the Ghost, then succumbs to the poison himself. He asks Horatio to live and report the truth. Fortinbras arrives after the Danish royal house has destroyed itself and assumes authority over the kingdom, ordering honorable treatment for Hamlet amid the dead.",
+            "through": {
+              "chapter": 17
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "hamlet-the-bad-quarto"
+      }
+    },
     "hammered-kevin-hearne": {
       "characters": {
         "characters": [

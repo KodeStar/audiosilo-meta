@@ -2318,6 +2318,254 @@
         "work": "vanity-fair-amazonclassics-edition"
       }
     },
+    "vanity-fair-tantor": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Becky Sharp"
+            ],
+            "description": "An intelligent, accomplished young woman leaving Miss Pinkerton's academy with no fortune or protective family. She understands that charm, observation, and performance are her means of advancement and is determined not to remain in a dependent position.",
+            "id": "becky-sharp",
+            "name": "Rebecca Sharp",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Emmy Sedley"
+            ],
+            "description": "Becky's gentle, affectionate friend and fellow pupil at Miss Pinkerton's. The daughter of a prosperous London merchant, Amelia returns to a loving household and expects to marry George Osborne, whom she has idealized since childhood.",
+            "id": "amelia-sedley",
+            "name": "Amelia Sedley",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Barbara Pinkerton"
+            ],
+            "description": "The imposing proprietor of the academy attended by Amelia and Becky. She values social position, propriety, and wealthy pupils, and sends the two young women into the world with markedly different degrees of warmth.",
+            "id": "barbara-pinkerton",
+            "name": "Miss Pinkerton",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Jos Sedley"
+            ],
+            "description": "Amelia's vain, wealthy older brother, recently returned from service in India. Becky identifies him as a possible husband and flatters his stories, appetite, and self-importance while he vacillates between infatuation and social caution.",
+            "id": "jos-sedley",
+            "name": "Joseph Sedley",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Amelia's handsome, fashionable fiancé, the son of a wealthy merchant. He accepts Amelia's devotion as his due and is far more attentive to pleasure, appearance, and his father's expectations than to the depth of her loyalty.",
+            "id": "george-osborne",
+            "name": "George Osborne",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Dobbin"
+            ],
+            "description": "George Osborne's awkward, honest fellow officer and closest friend. He has loved Amelia quietly for years, but protects George's place in her affections and repeatedly works for her happiness without expecting recognition.",
+            "id": "william-dobbin",
+            "name": "William Dobbin",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly baronet whose crude manners contrast with his concern for rank and property. He hires Becky as governess at Queen's Crawley, where her competence and flattery quickly make her useful throughout his contentious family.",
+            "id": "sir-pitt-crawley",
+            "name": "Sir Pitt Crawley",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Captain Crawley"
+            ],
+            "description": "Sir Pitt's younger son, a cavalry officer with debts, appetites, and easy manners. He is the favorite nephew of his wealthy aunt and becomes fascinated by Becky while visiting Queen's Crawley.",
+            "id": "rawdon-crawley",
+            "name": "Rawdon Crawley",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Matilda Crawley"
+            ],
+            "description": "Sir Pitt's rich, unmarried half sister, whose fortune makes her the focus of family attention. Clever, imperious, and amused by social irreverence, she takes a liking to Becky and expects her relatives to compete for favor.",
+            "id": "matilda-crawley",
+            "name": "Miss Crawley",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The wife of Sir Pitt's elder son, Reverend Bute Crawley. Practical and combative, she manages her household and campaigns energetically to keep the wealthy Miss Crawley's inheritance away from rival branches of the family.",
+            "id": "mrs-bute-crawley",
+            "name": "Mrs. Bute Crawley",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "John Osborne"
+            ],
+            "description": "George's wealthy father, a businessman who considers family obedience and commercial standing inseparable. He approves Amelia while the Sedleys prosper but treats affection as subordinate to money, reputation, and his authority.",
+            "id": "john-osborne",
+            "name": "Mr. Osborne",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sir Pitt's kind younger wife, formerly Lady Jane Sheepshanks. She treats Rawdon and Becky with generosity and offers their household practical support without sharing the Crawley family's appetite for intrigue.",
+            "id": "lady-jane-crawley",
+            "name": "Lady Jane Crawley",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Georgy"
+            ],
+            "description": "Amelia and George Osborne's son, born after his father's death and adored by his mother. His resemblance to George deepens Amelia's attachment to the past, while his grandfather sees in him a chance to continue the Osborne name.",
+            "id": "georgy-osborne",
+            "name": "George Osborne Jr.",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The young son of Becky and Rawdon Crawley. He is largely left to servants while his parents pursue money and society, though his father shows him a tenderness absent from Rawdon's other relationships.",
+            "id": "rawdon-crawley-jr",
+            "name": "Rawdon Crawley Jr.",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful and disreputable aristocrat who presides over an exclusive social world in London. He becomes Becky's patron, using wealth and influence to advance her while making the nature and cost of that favor increasingly dangerous.",
+            "id": "lord-steyne",
+            "name": "Lord Steyne",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "vanity-fair-tantor"
+      },
+      "recaps": {
+        "ending": "Becky encounters Amelia, Jos, and Dobbin in continental Europe and attaches herself to their party despite her damaged reputation. Dobbin finally recognizes that Amelia's lifelong idealization of George leaves no room for him and prepares to depart. Becky then gives Amelia the letter George wrote proposing that Becky run away with him shortly before Waterloo. The evidence releases Amelia from her false image of George, and she admits that Dobbin has been the faithful man she truly loves. Amelia and Dobbin marry and have a daughter, though Dobbin's long idealization cools into ordinary domestic affection. Jos dies after Becky acquires control over him and insures his life; the circumstances remain suspicious, and Becky benefits while continuing a respectable-looking charitable life. Rawdon has already died abroad, and his son inherits Queen's Crawley after Sir Pitt's line fails. Amelia and Dobbin settle near their children, while Becky remains socially adaptable and morally unresolved.",
+        "in_short": "Becky Sharp, poor and ambitious, and Amelia Sedley, wealthy and trusting, leave school for sharply different careers. Becky marries Rawdon Crawley and climbs through charm, credit, and Lord Steyne's patronage; Amelia marries George Osborne after her family loses its fortune. George dies at Waterloo after attempting to elope with Becky, leaving Amelia to raise their son in poverty while the steadfast Dobbin supports her. Becky's success collapses when Rawdon discovers her privately receiving Steyne and leaves her. Years later the widowed Amelia, Dobbin, Jos Sedley, and the socially exiled Becky meet abroad. Becky shows Amelia George's compromising letter, finally breaking her worship of him, and Amelia marries Dobbin. Jos subsequently dies under suspicious circumstances after Becky gains influence over him and insures his life. Rawdon also dies abroad; his neglected son inherits the Crawley estate. Becky survives through another reinvention, while Amelia and Dobbin achieve a quieter, imperfect domestic life.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Becky Sharp and Amelia Sedley leave Miss Pinkerton's academy. Amelia is welcomed home to a comfortable London family and expects to marry George Osborne. Becky, the orphaned daughter of an artist and an opera singer, has no money and must make her own position. During a visit with the Sedleys she sets her sights on Amelia's prosperous brother Jos, flattering him and nearly securing a proposal. George's mockery and Jos's embarrassment after a drunken evening defeat the plan. Becky then travels to Queen's Crawley to work as governess for Sir Pitt Crawley's daughters. She quickly studies the household, makes herself useful to the coarse old baronet, and recognizes that wealth and inheritance govern the Crawley family's apparent affections.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At Queen's Crawley, Becky gains influence over Sir Pitt and attracts his younger son, the indebted cavalry officer Rawdon. She also wins the favor of rich Miss Crawley, whose relatives compete to inherit her fortune. When Miss Crawley becomes ill, Becky accompanies her to London as a companion, and Rawdon continues his courtship. Becky and Rawdon secretly marry, assuming his aunt's affection will overcome any objection. They miscalculate: Miss Crawley treats the marriage as betrayal and cuts Rawdon off. Sir Pitt, recently widowed, arrives to propose to Becky himself, only to learn she is already his daughter-in-law. Becky has achieved marriage into the family but lost the immediate fortune she expected it to bring.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Sedley fortune collapses, and Amelia's family loses its home and status. George Osborne obeys his wealthy father and distances himself from Amelia, though she remains devoted to him. Dobbin, who secretly loves Amelia, presses George to honor the engagement and appeals to his conscience. George defies his father at last and marries Amelia, causing Mr. Osborne to disinherit him. With Napoleon returned from Elba, George and Dobbin's regiment is sent to Belgium. Becky and Rawdon travel with the same military society, financing themselves through gambling, credit, and Becky's social skill. In Brussels, Amelia is absorbed in George, while George grows bored by her dependence and increasingly attentive to Becky.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "As the army prepares to meet Napoleon, George gives Amelia a final affectionate farewell but has also written Becky a note urging her to leave Rawdon with him. Becky keeps the note. Jos panics and tries to escape Brussels, while Becky coolly prepares to profit from the general fear. Rawdon and George go to the front. Dobbin is wounded, Rawdon survives, and George is killed at Waterloo. Amelia, pregnant and newly widowed, returns to England with her parents. She will remember George as an ideal husband, unaware of his attempted betrayal. Becky and Rawdon go on to Paris with improved social standing from the victory, even though their income remains uncertain and their debts continue to grow.",
+            "through": {
+              "chapter": 32
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Amelia gives birth to a son, Georgy, and raises him in the Sedleys' reduced household. She sacrifices nearly everything to him and to George's memory. Dobbin, posted to India, continues to support her indirectly and maintains contact with the family. Mr. Osborne refuses to reconcile with Amelia but becomes interested in his grandson. Becky and Rawdon have a son too, also named Rawdon, but Becky shows little maternal interest; the boy's father and Lady Jane provide most of his affection and care. In London, Becky sustains an elegant life without visible means, managing creditors and cultivating influential men. Lord Steyne becomes her most powerful patron and helps bring her into circles that had previously excluded her.",
+            "through": {
+              "chapter": 42
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Poverty forces Amelia into an agonizing choice: she allows Georgy to live with Mr. Osborne, who can educate and provide for him but separates the boy from her daily life. Her father dies, and Dobbin returns from India still devoted to her. Becky's ascent meanwhile reaches its dangerous peak. Rawdon is arrested for debt and sends for Becky, but she leaves him in jail even though she has money. Lady Jane secures his release. Returning home unexpectedly, Rawdon finds Becky alone with Lord Steyne and discovers cash and jewels she concealed from him. He assaults Steyne, challenges him, and leaves Becky. Through Steyne's influence Rawdon receives a colonial governorship, effectively removing him from England, and the couple's son is placed with Sir Pitt and Lady Jane. Becky loses her social position and begins wandering Europe under a cloud of scandal.",
+            "through": {
+              "chapter": 53
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Mr. Osborne dies after revising his will to provide for Amelia and Georgy, partly acknowledging the wrong done to George's widow. Amelia's circumstances improve, and Dobbin renews his patient courtship, but she remains emotionally faithful to her idealized memory of George and cannot return his love. Rawdon governs on Coventry Island and eventually dies of illness; his son remains with the Crawleys and becomes heir to Queen's Crawley after the deaths in Sir Pitt's immediate line. Becky survives in cheap continental resorts and gaming communities, moving among people who tolerate her uncertain reputation. In Germany she encounters Jos, Amelia, Georgy, and Dobbin, and begins attaching herself to their traveling party.",
+            "through": {
+              "chapter": 61
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Dobbin realizes that Amelia still values George's memory above his years of loyalty and decides to leave. Becky intervenes by giving Amelia the letter George wrote before Waterloo asking Becky to run away with him. Amelia finally understands that the husband she worshiped was willing to betray both her and Rawdon. Freed from that illusion, she calls Dobbin back and acknowledges her love. They marry and later have a daughter, though their domestic happiness is quieter and less ideal than Dobbin once imagined. Becky gains increasing control over Jos, who insures his life and then dies in suspicious circumstances; she benefits financially without being proved responsible. She later presents herself as charitable and respectable while remaining socially mobile. Young Rawdon inherits Queen's Crawley, Georgy matures under Amelia and Dobbin's care, and the surviving adults settle into imperfect outcomes rather than simple rewards or punishments.",
+            "through": {
+              "chapter": 67
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "vanity-fair-tantor"
+      }
+    },
     "vault": {
       "characters": {
         "characters": [

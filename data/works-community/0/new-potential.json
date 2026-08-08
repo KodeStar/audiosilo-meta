@@ -415,6 +415,165 @@
         "work": "new-spring"
       }
     },
+    "news-from-nowhere": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A nineteenth-century Londoner active in the socialist movement. After a dispiriting political meeting, he falls asleep at home and wakes in a transformed England whose people treat private wealth, wage labor, and centralized government as distant history. His questions provide the frame for exploring the new society.",
+            "id": "william-guest",
+            "name": "William Guest",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A friendly boatman whom Guest meets beside the Thames. He accepts Guest's confusion without suspicion, guides him through the changed London, and takes pleasure in skilled work, attractive objects, and the company of others. He belongs to the large Hammond family and becomes Guest's principal companion.",
+            "id": "dick-hammond",
+            "name": "Dick Hammond",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young woman helping at the communal guest house where Dick takes Guest for breakfast. She is direct and self-possessed, and her unforced hospitality helps Guest understand that service in this society is voluntary and sociable rather than servile.",
+            "id": "annie",
+            "name": "Annie",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Henry Johnson"
+            ],
+            "description": "An energetic worker and enthusiastic student of the violent, unequal past. His friends call him Boffin because of his antiquarian interests. He is fascinated by Guest's apparent knowledge of nineteenth-century habits without realizing that Guest comes from that age.",
+            "id": "boffin",
+            "name": "Boffin",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Old Hammond"
+            ],
+            "description": "Dick's elderly relative, a historian living in Bloomsbury. Unlike most people around him, he has studied the old commercial civilization closely. He answers Guest's questions about property, law, education, family life, and the long social conflict that produced the present commonwealth.",
+            "id": "hammond",
+            "name": "Hammond",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly craftsman who remembers the last period in which large-scale machinery shaped ordinary work. He explains how communities gradually abandoned production for profit and retained machines only where they relieved unpleasant labor without impoverishing the work itself.",
+            "id": "henry-morsom",
+            "name": "Henry Morsom",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Dick's wife and the mother of his children. Their relationship has survived a separation because the society recognizes affection rather than law or property as the basis of partnership. She joins the journey up the Thames with an easy familiarity that reassures Guest.",
+            "id": "clara",
+            "name": "Clara",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A thoughtful young woman living near Runnymede with her grandfather. Her beauty and alertness strongly affect Guest. She values useful country work yet is unusually curious about the lost civilization, sensing both its misery and the intensity produced by struggle.",
+            "id": "ellen",
+            "name": "Ellen",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ellen's elderly grandfather, a hospitable countryman whose attachment to old ideas sometimes puts him at odds with the settled happiness around him. He discusses the past with Guest and accompanies Ellen during part of the river journey.",
+            "id": "ellens-grandfather",
+            "name": "Ellen's Grandfather",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "news-from-nowhere"
+      },
+      "recaps": {
+        "ending": "At the old Guest family house near the upper Thames, William joins the communal haymaking and briefly experiences the future society as a participant rather than an observer. His growing attachment to Ellen makes him hope that he might remain. During the evening meal, however, the scene begins to recede from him. Ellen sees that he is fading but cannot prevent his departure. William wakes back in nineteenth-century Hammersmith, separated from Dick, Clara, Ellen, and the commonwealth he has visited. The return leaves open whether the journey was a dream, but it has changed the meaning of his political work. The future is not presented as a prediction guaranteed to arrive; it is a vision of the humane life that collective struggle might make possible. William is left to carry that hope among people who cannot yet see its fulfillment.",
+        "in_short": "After a discouraging socialist meeting, nineteenth-century activist William Guest sleeps and wakes in a future England without money, private property, class government, prisons, or compulsory schooling. Dick Hammond guides him through a green, lightly populated London whose inhabitants make useful things for pleasure and organize affairs by voluntary local cooperation. The historian Old Hammond explains that this society emerged only after a long and violent struggle ended commercial rule. Traveling up the Thames with Dick and Dick's wife Clara, William sees both the beauty and the tensions of the new life and meets Ellen, whose curiosity about the past draws them together. He joins the harvest near his ancestral home and longs to stay, but the future dissolves around him. William wakes in his own age, understanding the vision as encouragement to continue working toward a freer common life.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "William Guest returns from a contentious socialist meeting in nineteenth-century London frustrated by arguments over how society might be changed. He sleeps at his Hammersmith home and wakes to find the familiar neighborhood transformed. The Thames is clean, the air clear, and the city quieter and greener. A young boatman named Dick accepts him as a traveler and rows him across the river. William soon realizes that money has disappeared: when he tries to pay for a pipe, his hosts treat the coins as curious old objects. At a communal guest house he meets Annie and Boffin and sees work performed willingly and with pride. He conceals that he comes from the past, allowing Dick to assume that illness or isolation explains his ignorance, and begins asking cautious questions about this unfamiliar England.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Dick leads William through a London in which overcrowded industrial districts have given way to gardens, workshops, and handsome public spaces. Children move freely and learn through ordinary life rather than compulsory schools. Goods are made for use and beauty, not sale, while people take what they need without wages or prices. William visits shops and Trafalgar Square, observing how completely the institutions of his own age have vanished. In Bloomsbury he meets Dick's elderly relative Hammond, a historian capable of understanding the old world. Hammond confirms that there is no state in the former sense, no private ownership of productive wealth, no courts, and no organized religion enforcing conduct. He also explains that marriage is no longer a property arrangement. Dick and Clara's past separation illustrates that intimate relationships remain capable of pain even where legal coercion has ended.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "William continues questioning Hammond about the institutions that once seemed indispensable. Local assemblies handle shared matters directly, and larger decisions rise through temporary delegates rather than a permanent parliament. Education is not imposed through classrooms or examinations; children learn because useful activity, stories, nature, and skilled adults attract their interest. Political parties have disappeared along with the economic classes they represented. Hammond stresses that the commonwealth did not arise from a single reform or from benevolent rulers. The old society's widening inequality produced a prolonged struggle in which workers organized, ruling interests resisted, and periods of violence and reaction preceded the final collapse of commercial power. The peaceful present rests on generations who endured conflict that most of their descendants now know only through history.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Hammond and other residents explain that work has become attractive because people control its purpose, pace, and form. Machinery is used selectively for tasks that would otherwise be merely exhausting, while skilled handwork is valued for the pleasure of making and using beautiful things. There is no artificial demand created for profit, so far less labor is required. William hears how fashions shifted after the revolution and how communities repaired the damaged landscape and rebuilt towns on a human scale. Returning toward Hammersmith, he encounters a lively market and sees that disagreement, vanity, and even violence have not vanished; a recent killing is treated as a human tragedy requiring care and reconciliation, not as a reason to revive punishment. The society is neither mechanically perfect nor governed by saints, but its customs do not convert every conflict into economic dependence or official force.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "William accepts Dick's invitation to travel upriver for the summer haymaking. Clara joins them, and her affectionate ease with Dick shows that their earlier separation has ended without law compelling either of them. The journey moves through a restored countryside in which villages are active and the river is shared by travelers and workers. Near Runnymede they meet Ellen and her grandfather. Ellen is more interested in the past than most of her contemporaries and recognizes that William's questions carry personal knowledge rather than antiquarian curiosity. He is increasingly drawn to her intelligence and beauty. As the party continues along the Thames, William's delight in the landscape and companionship deepens, but so does his awareness that he may not truly belong to their time.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The travelers continue into the upper Thames country, passing communities whose preferences differ without threatening the broad commonwealth. They reach the district around William's old family home, now part of a landscape devoted to shared life rather than private status. William and Ellen grow close, though she senses that some barrier separates him from everyone around them. He joins the haymaking and for a short time experiences useful communal work, beauty, and fellowship as realities rather than answers to political questions. At the evening meal the world begins to withdraw from him. Ellen recognizes that he is disappearing, but William cannot hold his place in the future. He wakes again in nineteenth-century Hammersmith. Unsure whether the visit was dream or vision, he understands that its value lies in the desire it creates: the free society remains a possible destination whose arrival depends on people in his own age continuing the struggle toward it.",
+            "through": {
+              "chapter": 32
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "news-from-nowhere"
+      }
+    },
     "news-of-the-world": {
       "characters": {
         "characters": [

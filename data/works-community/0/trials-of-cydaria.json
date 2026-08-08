@@ -1115,6 +1115,222 @@
         "work": "tripwire"
       }
     },
+    "troilus-and-cressida": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A young Trojan prince and son of Priam. Although known as a warrior, he has withdrawn from battle because he is consumed by love for Cressida and depends on Pandarus to help him approach her.",
+            "id": "troilus",
+            "name": "Troilus",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A young Trojan woman whose father, Calchas, has defected to the Greeks. She discusses the passing warriors with her uncle Pandarus while guarding her feelings behind wit and skepticism.",
+            "id": "cressida",
+            "name": "Cressida",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Cressida's uncle and an eager intermediary for Troilus. Talkative, persistent, and proud of his influence, he carries messages between the young people and urges Cressida to recognize Troilus's merits.",
+            "id": "pandarus",
+            "name": "Pandarus",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The foremost warrior of Troy and an elder brother of Troilus. He regards the continued possession of Helen as morally wrong, even while family honor and military duty keep him defending the city.",
+            "id": "hector",
+            "name": "Hector",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "King of Troy and father to Hector, Paris, and Troilus. He convenes his sons and counselors to decide whether keeping Helen is worth the cost of the war.",
+            "id": "priam",
+            "name": "Priam",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A daughter of Priam whose prophecies are treated as madness. She interrupts the Trojan council with a warning that keeping Helen will bring disaster.",
+            "id": "cassandra",
+            "name": "Cassandra",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Greek commander noted for strategic intelligence and psychological insight. He argues that disorder among the Greek leaders has weakened the army and devises a plan to provoke Achilles through wounded pride.",
+            "id": "ulysses",
+            "name": "Ulysses",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The commander of the Greek forces at Troy. Frustrated by years of failure, he listens as Ulysses explains how rivalry and disregard for rank are damaging the campaign.",
+            "id": "agamemnon",
+            "name": "Agamemnon",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The greatest fighter in the Greek camp, currently refusing battle and spending his time with Patroclus. His absence has become both a military problem and a challenge to Agamemnon's authority.",
+            "id": "achilles",
+            "name": "Achilles",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful but slow-witted Greek warrior. Ulysses promotes him as the Greek champion against Hector, hoping praise of Ajax will stir the inactive Achilles to jealousy.",
+            "id": "ajax",
+            "name": "Ajax",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A bitter and irreverent commentator attached to the Greek camp. He insults commanders and heroes without restraint, exposing their pride while offering little loyalty of his own.",
+            "id": "thersites",
+            "name": "Thersites",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Greek warrior and commander who supports the plan to elevate Ajax as a way of challenging Achilles's pride.",
+            "id": "diomedes",
+            "name": "Diomedes",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Trojan commander and herald who carries Hector's challenge to the Greek camp. He moves between the opposing armies under the protections of formal diplomacy.",
+            "id": "aeneas",
+            "name": "Aeneas",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Trojan prince whose taking of Helen began the war. He lives with her in Troy and supports keeping her, treating reputation and desire as reasons to continue the conflict.",
+            "id": "paris",
+            "name": "Paris",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The wife of the Greek king Menelaus, brought to Troy by Paris and made the stated cause of the long war. In private with Paris and Pandarus, she appears playful and detached from the armies fighting over her.",
+            "id": "helen",
+            "name": "Helen",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Cressida's father, a Trojan priest who has defected to the Greek side. In return for services to the Greeks, he asks that his daughter be exchanged for a Trojan prisoner and brought to him.",
+            "id": "calchas",
+            "name": "Calchas",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "troilus-and-cressida"
+      },
+      "recaps": {
+        "ending": "During the fighting, Troilus pursues Diomedes while Hector continues seeking honorable opponents. Hector corners a richly armored Greek, kills him, and pauses to take the armor. Achilles then finds Hector isolated and has his Myrmidons surround and kill him, afterward claiming the victory and dragging Hector's body behind his horse. Troilus returns to Troy with the news and urges the Trojans to turn grief into revenge. His love for Cressida has already collapsed after he saw her yield to Diomedes, and Hector, Troy's chief defender, is dead. Pandarus closes the play sick and rejected by Troilus, addressing the audience with the bitterness of a failed intermediary. The war continues without reconciliation, leaving both the romance and the heroic ideals surrounding the conflict discredited.",
+        "in_short": "During the Trojan War, Prince Troilus loves Cressida and uses her uncle Pandarus to arrange a meeting. They pledge fidelity, but almost immediately the Greeks trade a Trojan prisoner for Cressida, whose father has defected to their camp. Troilus and Cressida are forced apart. Meanwhile, Greek commanders try to lure Achilles back into battle by praising Ajax, who fights Hector in a courteous, inconclusive duel. In the Greek camp, Cressida is isolated and courted by Diomedes. Troilus secretly watches her give Diomedes a token that Troilus had given her and concludes that she has betrayed him. Battle resumes. Hector ignores warnings and goes out to fight; after pausing over an opponent's armor, he is surrounded and killed by Achilles's Myrmidons. Troilus reports the loss to Troy and calls for vengeance. Neither the love story nor the war reaches a just resolution, and Pandarus ends abandoned and embittered.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Seven years into the siege of Troy, the Trojan prince Troilus is more absorbed by his love for Cressida than by the fighting. Her uncle Pandarus acts as his go-between, praising Troilus to Cressida as they watch Trojan warriors pass. Cressida answers with wit and caution, revealing privately that she already favors Troilus but believes restraint gives her leverage. In the Greek camp, Agamemnon and his commanders consider why Troy still stands. Ulysses blames disorder and rivalry, especially Achilles's refusal to fight. When Aeneas brings Hector's challenge to single combat, Ulysses proposes choosing Ajax rather than Achilles: if Ajax succeeds the Greeks gain honor, and either way public praise of Ajax may provoke Achilles to return.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ajax vents his temper on Thersites, the camp's relentlessly abusive critic. In Troy, Priam asks whether Helen should be returned to end the war. Hector argues that keeping another man's wife is wrong and that the cost has exceeded her value. Troilus and Paris appeal instead to honor and reputation, and Hector ultimately agrees to continue defending the decision despite his own reasoning. Cassandra's prophetic warning is ignored. The Greek leaders visit Achilles, who remains aloof, while Ajax is selected to meet Hector. The commanders deliberately flatter Ajax and slight Achilles, putting Ulysses's strategy into motion.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Pandarus finds Paris with Helen, then arranges a private meeting between Troilus and Cressida. The young people confess their love and pledge to remain faithful, with Pandarus serving as witness. In the Greek camp, Cressida's father Calchas asks Agamemnon to reward his defection by exchanging the captured Trojan Antenor for his daughter. The commanders agree. Ulysses then guides the other Greek leaders past Achilles while they ignore him, making him feel the loss of his standing. Achilles learns that Ajax will fight Hector and begins to recognize that fame depends on continued public action.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The prisoner exchange is announced in Troy only hours after Troilus and Cressida have spent the night together. They part in anguish, renew their promises, and exchange tokens. Diomedes escorts Cressida to the Greek camp while Troilus is permitted to follow part of the way. The Greek commanders greet Cressida with a series of kisses that makes her vulnerable position clear. Hector and Ajax then fight, but Hector ends the contest after recognizing their kinship, and the opponents embrace. Hector visits the Greek camp, where he speaks courteously with the commanders. He and Achilles examine and threaten one another, anticipating a later encounter even as the formal visit ends in hospitality.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Achilles is still reluctant to fight, but the armies prepare for renewed battle. Troilus enters the Greek camp with Ulysses and secretly watches Cressida meet Diomedes. Cressida resists, bargains, and calls herself divided, but she gives Diomedes the sleeve Troilus had given her and agrees to see him again. Troilus interprets what he sees as the destruction of the Cressida he loved and turns his devotion into fury against Diomedes. In Troy, Andromache and Cassandra beg Hector not to fight because of their ominous dreams and visions. Priam also urges caution. Hector briefly agrees, then reverses himself and goes out after Troilus challenges his honor. The private betrayal and the public war now move toward the same violent conclusion.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Fighting spreads across the field. Troilus pursues Diomedes with reckless anger, while Hector searches for opponents worthy of his reputation. Hector kills a warrior in splendid armor and stops to claim it. Achilles, returning to combat, finds Hector isolated and orders the Myrmidons to surround him. They kill the unprepared Hector, and Achilles has the body dragged behind his horse while the Greeks proclaim victory. Troilus survives and carries the news back to Troy, calling on the city to answer grief with revenge. He rejects Pandarus, whose efforts joined him to Cressida. Pandarus, ill and embittered, closes the play alone. Hector is dead, Cressida remains in the Greek camp, Troilus is hardened, and the war continues without a healing resolution.",
+            "through": {
+              "chapter": 24
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "troilus-and-cressida"
+      }
+    },
     "troilus-and-criseyde": {
       "characters": {
         "characters": [
