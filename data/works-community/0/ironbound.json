@@ -3800,9 +3800,18 @@
             "role": "supporting"
           },
           {
-            "description": "St John's intelligent and warm-hearted sisters, who shelter Jane at Moor House. Their shared love of study and independent conversation gives Jane the companionship of equals she has long wanted.",
-            "id": "diana-and-mary-rivers",
-            "name": "Diana and Mary Rivers",
+            "description": "The elder of the two sisters who take Jane in at Moor House. Warm, quick-minded and independent, she becomes one of Jane's closest companions and encourages her through her recovery and her work at the village school.",
+            "id": "diana-rivers",
+            "name": "Diana Rivers",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The younger sister at Moor House, gentler and quieter than Diana but equally kind to Jane. Like her sister she works as a governess and shares the modest household that shelters Jane after her flight from Thornfield.",
+            "id": "mary-rivers",
+            "name": "Mary Rivers",
             "reveal": {
               "chapter": 28
             },
