@@ -289,6 +289,245 @@
         "work": "uncapped"
       }
     },
+    "uncle-toms-cabin": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An enslaved man on Arthur Shelby's Kentucky estate, respected in the quarters for his honesty, Christian faith, and care for others. When Shelby sells him to satisfy a debt, Tom refuses an opportunity to run because he fears the remaining enslaved people would be sold instead.",
+            "id": "uncle-tom",
+            "name": "Uncle Tom",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Tom's wife and the cook in the Shelby household. Devoted to Tom and their children, she is devastated by his sale and measures the family's security against the possibility that any of them can be taken away.",
+            "id": "aunt-chloe",
+            "name": "Aunt Chloe",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An enslaved woman in the Shelby household and the mother of young Harry. Having already lost children, she overhears plans to sell Harry and decides to flee with him rather than allow another separation.",
+            "id": "eliza-harris",
+            "name": "Eliza Harris",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Eliza's husband, enslaved on a neighboring estate despite his intelligence and mechanical talent. Repeated humiliation by his owner convinces him to seek freedom and reunite with his wife and child.",
+            "id": "george-harris",
+            "name": "George Harris",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Mr. Shelby"
+            ],
+            "description": "The indebted Kentucky landowner who sells Tom and the child Harry while describing himself as humane. His reluctance does not prevent him from treating people in his household as property when his finances are threatened.",
+            "id": "arthur-shelby",
+            "name": "Arthur Shelby",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A slave trader who purchases Tom and Harry from Shelby. Coarse but businesslike, he pursues Eliza after her escape and views families chiefly in terms of sale value.",
+            "id": "haley",
+            "name": "Haley",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Mas'r George"
+            ],
+            "description": "The Shelbys' young son, fond of Tom and horrified that he is being sold. He promises to find Tom and bring him home when he is old enough.",
+            "id": "george-shelby",
+            "name": "George Shelby",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Ohio politician who has supported the Fugitive Slave Law. When Eliza and her child arrive exhausted at his home, the immediate human cost of that policy challenges the distance between his public vote and private conscience.",
+            "id": "senator-bird",
+            "name": "Senator Bird",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Eva"
+            ],
+            "description": "A young girl whom Tom meets on a Mississippi riverboat. Affectionate, spiritually serious, and unusually attentive to suffering, she persuades her father to buy Tom after he saves her from drowning.",
+            "id": "evangeline-st-clare",
+            "name": "Evangeline St. Clare",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Eva's charming, intelligent father and Tom's new owner in New Orleans. He recognizes slavery's corruption and treats the people in his household with relative kindness, yet his ease and indecision keep him from acting decisively against the institution.",
+            "id": "augustine-st-clare",
+            "name": "Augustine St. Clare",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Augustine's cousin from Vermont, who comes to New Orleans to help manage his household. Practical, strict, and opposed to slavery, she must confront the prejudice that persists beneath her principles.",
+            "id": "miss-ophelia",
+            "name": "Miss Ophelia",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Augustine's self-absorbed wife, preoccupied with her supposed illnesses and social standing. She treats enslaved servants as conveniences and has little patience for Eva's concern for them.",
+            "id": "marie-st-clare",
+            "name": "Marie St. Clare",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A mischievous enslaved child whom Augustine places in Miss Ophelia's care. Neglected and punished throughout her short life, she initially meets instruction with evasions and performance rather than trust.",
+            "id": "topsy",
+            "name": "Topsy",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A brutal Louisiana plantation owner who buys Tom at auction. He uses violence and fear to control enslaved laborers and regards Tom's religious conviction and refusal to harm others as challenges to his authority.",
+            "id": "simon-legree",
+            "name": "Simon Legree",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An enslaved woman on Legree's plantation whose intelligence and knowledge of the household give her limited power amid sustained abuse. She tends Tom after a beating and shares the history that has brought her to despair.",
+            "id": "cassy",
+            "name": "Cassy",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A frightened young woman bought by Legree at the same auction as Tom. Separated from her mother and singled out by her new owner, she comes under Cassy's protection.",
+            "id": "emmeline",
+            "name": "Emmeline",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "uncle-toms-cabin"
+      },
+      "recaps": {
+        "ending": "George Shelby reaches Legree's plantation too late to save Tom, who dies from injuries inflicted after he refuses to reveal where Cassy and Emmeline have gone. Tom forgives his killers, and his composure moves two of Legree's enslaved overseers toward repentance. George takes Tom's body away, returns to Kentucky, and frees every enslaved person on the Shelby estate, asking them to remember Tom's faith and goodness. Cassy and Emmeline escape successfully. Through a series of recognitions, Cassy learns that Eliza is the daughter taken from her years before, making Harry her grandson; another lost child, now Madame de Thoux, is also restored to the family. George Harris, Eliza, Harry, Cassy, and their relatives eventually leave for Liberia after living for a time in Canada and France. Miss Ophelia returns north with the emancipated Topsy, who grows up to work as a Christian missionary. Legree, haunted by fear and drink after Tom's death, dies without recovering his control of the plantation.",
+        "in_short": "Kentucky slaveholder Arthur Shelby sells the faithful Tom and the child Harry to settle debts. Harry's mother Eliza escapes across the Ohio and is eventually reunited with her husband George; aided by antislavery Quakers, the family reaches Canada. Tom submits to sale to protect others. In New Orleans he becomes the companion of Eva St. Clare, whose love changes those around her before her death. Eva's father plans to free Tom but dies unexpectedly, and Tom is sold to the violent planter Simon Legree. Tom supports the other enslaved workers and refuses to betray Cassy and Emmeline when they escape, so Legree has him beaten to death. Young George Shelby arrives too late, then frees the enslaved people on his family's estate in Tom's memory. Cassy discovers that Eliza is her long-lost daughter, reuniting a family slavery had scattered. George, Eliza, and their relatives ultimately settle in Liberia, while Topsy, emancipated by Miss Ophelia, becomes a missionary.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Kentucky landowner Arthur Shelby owes money to the slave trader Haley and agrees to sell two people from his estate: Tom, a trusted married man, and Harry, the young son of Eliza. Eliza overhears the bargain. Having already endured the loss of children through slavery, she takes Harry and flees before Haley can claim him. Tom is warned as well, but he will not run, believing Shelby would cover the loss by selling others. Eliza races north while Haley organizes a pursuit. At the Ohio River she finds the normal crossing blocked by broken ice. With pursuers close behind, she carries Harry from one drifting piece to another and reaches the free state of Ohio, where strangers begin helping her onward. Shelby's household discovers the escape, while Tom prepares to be separated from his wife Chloe and their children.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In Ohio, Eliza reaches the home of Senator Bird, who has voted to strengthen the law requiring the return of fugitives. Faced with an exhausted mother and child, he and his wife shelter them and move them toward safety despite the law. George Harris has separately escaped his owner in disguise and declares that he will defend his freedom. Tom, chained with other captives, is taken south by Haley. During the journey he quietly assists people around him and retains his religious confidence despite being carried farther from home. Eliza reaches a Quaker settlement, where she is reunited with George. The Quakers arrange to guide the family toward Canada even though slave catchers are following. Tom is placed aboard a Mississippi riverboat bound for the slave markets and plantations of the Deep South.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On the riverboat Tom befriends Evangeline St. Clare, a compassionate child traveling home to New Orleans. When Eva falls into the river, Tom saves her, and she persuades her father Augustine to buy him. In the St. Clare household Tom becomes Eva's trusted companion and coachman. Augustine is intelligent and critical of slavery but has allowed comfort and habit to replace action. His wife Marie is demanding and indifferent to the enslaved servants, while his northern cousin Miss Ophelia condemns the institution yet recoils from personal equality. Tom finds relative safety and affection in the household, but he remains owned and separated from Chloe. Augustine and Ophelia debate responsibility, prejudice, and whether kind treatment can make an unjust system acceptable.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Augustine places Topsy, a neglected enslaved child, in Miss Ophelia's care. Ophelia attempts to educate her through discipline but gradually recognizes that her abstract opposition to slavery has not taught her to love a Black child. Eva's health declines. Aware that she is dying, she speaks individually to the people of the household, urges them to live by Christian love, and gives them locks of her hair as remembrances. Her concern reaches Topsy in a way punishment has not. Eva dies with her father and the household around her. Her death leaves Tom grieving and makes Augustine confront the difference between his humane opinions and his continued ownership of people. He begins putting his affairs in order and promises Tom his freedom.",
+            "through": {
+              "chapter": 26
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Augustine moves toward emancipating Tom, but he is fatally wounded while intervening in a public fight and dies before completing the legal act. Marie refuses to honor his intentions. She sells the household's enslaved people, separating many families; Miss Ophelia can save only Topsy, whose ownership has been legally transferred to her. Tom and the young woman Emmeline are sent to a slave warehouse and auction. Simon Legree, a coarse Louisiana planter, buys both of them. During the trip to his remote plantation, he strips Tom of decent clothing and possessions and tries to break his attachment to faith and former ties. Tom arrives among exhausted field laborers under an openly violent regime, with no legal or personal protection remaining.",
+            "through": {
+              "chapter": 31
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Legree orders Tom to beat another enslaved woman, but Tom refuses. Legree has him savagely punished and resolves to destroy the independence represented by his conscience. Cassy, an enslaved woman who has long endured Legree's abuse, nurses Tom and tells him how slavery separated her from her children and drove her to despair. Tom urges her not to surrender her humanity to hatred. Legree directs his attention toward Emmeline, whom Cassy tries to protect. Tom continues to help the weakest field workers and withstands pressure to become an overseer at their expense. George Harris and Eliza, meanwhile, travel with their child under Quaker protection. When slave catchers attack, George defends the party; even a wounded pursuer receives care. The family crosses into Canada and legal freedom.",
+            "through": {
+              "chapter": 36
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Cassy devises an escape that exploits Legree's superstitious fear of the house. She and Emmeline appear to flee, then secretly hide in the attic while search parties range away from the plantation. Tom knows enough to expose them but refuses to tell Legree where they are. Legree orders two enslaved overseers to beat him until he yields. Tom remains silent and forgives the men attacking him; his endurance eventually moves them to remorse. After the search weakens, Cassy and Emmeline leave their hiding place and escape in disguise. Young George Shelby arrives at the plantation, having finally traced Tom and intending to buy him back. He finds Tom mortally injured. Tom is comforted that someone from home has come, but dies before George can take him back to Kentucky.",
+            "through": {
+              "chapter": 40
+            }
+          },
+          {
+            "scope": "book",
+            "text": "George Shelby confronts Legree but cannot undo Tom's murder. He brings Tom's body away and, after returning to Kentucky, emancipates every enslaved person on the Shelby estate in Tom's memory. Cassy and Emmeline make their escape permanent. On their journey Cassy meets George Harris's sister, Madame de Thoux, and a chain of family discoveries reveals that Eliza is Cassy's long-lost daughter. The scattered relatives are reunited with George, Eliza, and Harry in Canada. After time in France, George chooses to take his family to Liberia, where he hopes to contribute to an independent African society. Miss Ophelia takes the freed Topsy north; Topsy later becomes a missionary. Legree declines into terror, illness, and death after losing control of Cassy, Emmeline, and Tom. The surviving families build new lives, while Tom's death becomes the reason George Shelby ends slavery on his own land.",
+            "through": {
+              "chapter": 45
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "uncle-toms-cabin"
+      }
+    },
     "uncle-vanya": {
       "characters": {
         "characters": [

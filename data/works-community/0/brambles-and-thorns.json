@@ -942,6 +942,404 @@
         "work": "brideshead-revisited"
       }
     },
+    "bridget-jones-the-edge-of-reason": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A London television reporter beginning the book in a new relationship with Mark Darcy. She is delighted to have found love but remains vulnerable to self-doubt, imagined comparisons, and the advice of friends and self-help books.",
+            "id": "bridget-jones",
+            "name": "Bridget Jones",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A respected barrister and Bridget's boyfriend. Reserved, principled, and often occupied by demanding legal work, he cares for Bridget but does not always recognize how his silences and formal social circle feed her insecurity.",
+            "id": "mark-darcy",
+            "name": "Mark Darcy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Bridget's closest friends, whose forceful theories about relationships influence Bridget's view of Mark. Her confidence in advice is tested by her own romantic decisions.",
+            "id": "sharon",
+            "name": "Sharon",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Bridget's close friend and frequent partner in emergency discussions. Her troubled relationship and attraction to personal-development ideas make her both a source of sympathy and another participant in the group's escalating interpretations.",
+            "id": "jude",
+            "name": "Jude",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Bridget's close gay friend, involved in the same stream of calls, theories, and emotional crises as Jude and Sharon. He supports Bridget while navigating insecurities of his own.",
+            "id": "tom",
+            "name": "Tom",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A poised young woman in Mark's professional circle. Her beauty, confidence, and frequent presence near him make Bridget view her as a romantic threat.",
+            "id": "rebecca",
+            "name": "Rebecca",
+            "reveal": {
+              "chapter": 1
+            }
+          },
+          {
+            "aliases": [
+              "Mum"
+            ],
+            "description": "Bridget's mother, reunited with her husband and as determined as ever to manage her daughter's future. Her social schemes and enthusiasm for conventional milestones often increase the pressure Bridget already puts on herself.",
+            "id": "pamela-jones",
+            "name": "Pamela Jones",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Dad"
+            ],
+            "description": "Bridget's kind, long-suffering father, now trying to maintain peace after the previous year's family crisis. He remains a quiet source of affection amid Pamela's plans.",
+            "id": "colin-jones",
+            "name": "Colin Jones",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A married friend whose family life is often treated by Bridget's circle as evidence of secure adulthood. The strains beneath that appearance complicate the contrast between married and single life.",
+            "id": "magda",
+            "name": "Magda",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Bridget's sensationalist television boss. Impatient with preparation and boundaries, he pushes her toward attention-grabbing assignments and treats personal discomfort as useful material.",
+            "id": "richard-finch",
+            "name": "Richard Finch",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Bridget's charming former boss and former lover, whose dishonesty ended their affair. His reappearance in her professional life tests whether she can resist interpreting attention as proof of affection.",
+            "id": "daniel-cleaver",
+            "name": "Daniel Cleaver",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The actor Bridget is assigned to interview in Rome. Her intense enthusiasm for his performance as Mr Darcy makes professional detachment nearly impossible and turns the interview into an unusually personal exchange.",
+            "id": "colin-firth",
+            "name": "Colin Firth",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A traveler Sharon meets in Thailand. Charming and apparently spontaneous, he quickly wins her trust and attaches himself to the friends' holiday plans.",
+            "id": "jed",
+            "name": "Jed",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "bridget-jones-the-edge-of-reason"
+      },
+      "recaps": {
+        "ending": "After Bridget returns from imprisonment in Thailand, she learns that Mark worked persistently through legal and diplomatic channels to secure her release. Daniel Cleaver, despite his confident appearance, again proves unwilling to accept responsibility when she is in real danger. Bridget initially believes Mark has chosen Rebecca and interprets signs around her as evidence of an engagement. The misunderstanding collapses when Rebecca reveals that her real romantic interest is Bridget, not Mark. With the supposed rival removed and the manipulation exposed, Bridget and Mark are finally able to confront how poor communication, outside advice, and Bridget's fear of abandonment drove them apart. They reconcile with a clearer appreciation of one another. Around them, the supposedly stable relationships of friends and family reveal their own complications, weakening Bridget's belief that everyone else has mastered adulthood. She ends the book reunited with Mark and better able to value the imperfect relationship she actually has over the imagined versions promoted by social pressure and romantic fantasy.",
+        "in_short": "Bridget Jones begins the sequel happily dating Mark Darcy, but her insecurity about poised Rebecca and Mark's demanding work turns ordinary misunderstandings into a breakup. Friends, self-help rules, and Daniel Cleaver's renewed presence amplify rather than solve her doubts. While Bridget's television career produces erratic assignments, the apparently settled relationships around her also begin to crack. On holiday in Thailand with Sharon, Bridget is unknowingly used by Sharon's new companion Jed to carry drugs and is imprisoned. Mark works behind the scenes to win her release, while Daniel again fails her when genuine loyalty is required. Back in Britain, Bridget mistakenly believes Mark and Rebecca are together until Rebecca discloses that she is attracted to Bridget herself. Freed from that false triangle, Bridget and Mark acknowledge their failures of trust and communication and reunite. Bridget ends with a less idealized but more secure understanding of love and of her own life.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, Bridget Jones spent a year trying to improve herself while having an affair with her charming publishing boss, Daniel Cleaver. Daniel lied about his history with barrister Mark Darcy and was unfaithful to Bridget. She left him and moved into television news. Her mother Pamela left the family for Julio, a Portuguese presenter whose fraudulent scheme placed her in legal danger. Mark helped recover the money and bring Pamela home, revealing his integrity and Daniel's dishonesty. At Christmas, Mark told Bridget that he liked her as she was. After a brief misunderstanding caused by the critical things she had written about him in her diary, they reconciled and began a relationship.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bridget begins the year delighted to be Mark Darcy's girlfriend, but happiness quickly produces new forms of anxiety. She measures their calls, plans, and silences for evidence that he may lose interest. Rebecca, a polished woman in Mark's professional circle, appears frequently and becomes the focus of Bridget's jealousy. Mark's work and reserved habits leave gaps that Bridget fills with the interpretations supplied by Sharon, Jude, Tom, and relationship manuals. Minor disagreements grow because Bridget expects Mark to infer what she needs while he assumes she will speak directly. Her mother treats the relationship as a project heading toward marriage, adding another standard against which Bridget judges every interaction.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bridget and Mark's disagreements intensify around social events, politics, and Rebecca's apparent intimacy with him. Instead of asking Mark plainly about her fears, Bridget adopts strategies drawn from friends and self-help advice. Mark experiences the resulting tests and withdrawals as unpredictable hostility. Their affection remains real, but each discussion becomes burdened by the previous one until the relationship breaks down. Bridget tries to convert the loss into independence while privately monitoring Mark's movements. Daniel Cleaver reappears in her professional orbit, still charming and still inclined to turn serious matters into flirtation. Meanwhile the marriages that Bridget once viewed as secure begin showing their own pressures, especially for Magda, challenging the idea that partnership automatically brings emotional certainty.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Television work continues to send Bridget into situations where enthusiasm substitutes for preparation. An assignment to interview actor Colin Firth in Rome collapses into her fascination with his role as Mr Darcy, but the encounter also gives her a brief escape from obsessing over Mark. Back in London, Daniel's attention tempts Bridget to repeat familiar patterns, though she knows from experience that he is not dependable. Mark and Bridget remain separated, with Rebecca's presence encouraging Bridget to believe that she has already been replaced. Advice from friends produces competing explanations rather than clarity. Bridget's professional mistakes and romantic setbacks leave her eager for distance from London and receptive when the opportunity for a holiday abroad arises.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bridget travels to Thailand with Sharon, hoping the holiday will restore perspective. Sharon becomes involved with a traveler named Jed, whose charm and apparent spontaneity overcome the friends' caution. Their plans become entangled with his, and Bridget unwittingly carries luggage containing drugs. Thai authorities arrest her at the airport. Abruptly removed from the comic anxieties of work and dating, Bridget faces a frightening legal system, a language barrier, and the possibility of a long sentence. Jed disappears rather than helping. In prison she forms connections with other women and shares what supplies and encouragement she can, but she has little control over her case. Appeals for help reach Britain, where determining who will take effective action becomes a decisive test of the people in her life.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Mark uses his legal expertise and contacts to work for Bridget's release, despite their breakup. Daniel offers confidence but proves unreliable when the situation demands sustained responsibility. The drugs are traced to Jed's exploitation of the travelers, and Bridget is freed and allowed to return home. The experience clarifies the difference between dramatic attention and practical loyalty, though Bridget still struggles to interpret Mark's motives. Once back in Britain, she sees Mark and Rebecca together and assumes that his help was merely duty and that he intends to marry Rebecca. Friends and family add speculation, keeping Bridget inside the same pattern of inference that helped destroy the relationship in the first place.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bridget's belief that Rebecca has won Mark rests on a false premise: Rebecca discloses that her romantic interest is in Bridget, not Mark. The apparent triangle dissolves, and Bridget can finally see how jealousy, indirect tests, and outside theories distorted her view of Mark. Mark's work to free her from prison demonstrates that his care continued even while they were apart. Daniel's failure under pressure confirms that charm has not become character. Bridget and Mark confront the misunderstandings that separated them and reconcile, accepting that their relationship requires direct trust rather than mind-reading or perfection. The troubles in other couples around Bridget further weaken her old division between enviable married people and inadequate single ones. She ends reunited with Mark, more aware that adult relationships are unstable, negotiated, and valuable because of sustained choices rather than flawless appearances.",
+            "through": {
+              "chapter": 12
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "bridget-jones-the-edge-of-reason"
+      }
+    },
+    "bridget-joness-diary": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A thirty-something single woman in London who records her weight, habits, work, friendships, and romantic hopes in a year-long diary. Self-critical and prone to comic mishaps, she is also observant, resilient, and determined to build a life that is not measured solely by other people's expectations.",
+            "id": "bridget-jones",
+            "name": "Bridget Jones",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A successful barrister and the divorced son of family friends, introduced to Bridget at a New Year's gathering while wearing an unfortunate festive sweater. His reserved manner and blunt response to her mother's matchmaking make him seem proud and dismissive.",
+            "id": "mark-darcy",
+            "name": "Mark Darcy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Bridget's charming boss at a London publishing house. His teasing messages and attention encourage her long-standing attraction to him, though the imbalance between manager and employee complicates their flirtation.",
+            "id": "daniel-cleaver",
+            "name": "Daniel Cleaver",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mum"
+            ],
+            "description": "Bridget's energetic mother, who treats her daughter's single status as a problem to solve. Restless after decades of marriage, she begins pursuing independence with the same enthusiasm she applies to social plans and family matchmaking.",
+            "id": "pamela-jones",
+            "name": "Pamela Jones",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Dad"
+            ],
+            "description": "Bridget's gentle father, who is bewildered by his wife's new dissatisfaction and turns to Bridget for emotional support. His hurt exposes the cost of the Jones family's domestic upheaval.",
+            "id": "colin-jones",
+            "name": "Colin Jones",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Bridget's closest friends, a successful professional whose recurring troubles with her partner provide a parallel to Bridget's romantic uncertainty. She is a regular source of urgent phone calls, advice, and solidarity.",
+            "id": "jude",
+            "name": "Jude",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Shaz"
+            ],
+            "description": "Bridget's outspoken friend, quick to challenge selfish behavior and the pressures placed on single women. Her forceful analysis and loyalty make her an essential member of Bridget's support circle.",
+            "id": "sharon",
+            "name": "Sharon",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Bridget's close gay friend, equally ready to discuss his own romantic crises and to help interpret hers. He combines theatrical pessimism with dependable affection.",
+            "id": "tom",
+            "name": "Tom",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A family friend whose annual turkey-curry gathering brings Bridget and Mark together. She shares Pamela's enthusiasm for matchmaking and assumes familiarity with Bridget's private life.",
+            "id": "una-alconbury",
+            "name": "Una Alconbury",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A polished lawyer associated with Mark Darcy. Her confidence and compatibility with Mark intensify Bridget's immediate sense that she does not belong in his professional world.",
+            "id": "natasha",
+            "name": "Natasha",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A flamboyant Portuguese television personality who encourages Pamela's reinvention and becomes her lover. His attention and glamorous plans draw her further away from her old domestic life.",
+            "id": "julio",
+            "name": "Julio",
+            "reveal": {
+              "chapter": 4
+            }
+          },
+          {
+            "description": "A demanding television-news executive who hires Bridget after she leaves publishing. He values sensational footage and sends her into unfamiliar reporting situations with little patience for mistakes.",
+            "id": "richard-finch",
+            "name": "Richard Finch",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior figure at Bridget's publishing office whose officious manner and workplace expectations make her part of the professional environment Bridget wants to escape.",
+            "id": "perpetua",
+            "name": "Perpetua",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "bridget-joness-diary"
+      },
+      "recaps": {
+        "ending": "Bridget's mother returns after becoming entangled in Julio's fraudulent business dealings, and the family faces public embarrassment and possible criminal consequences. Mark Darcy uses his legal skill and contacts to pursue Julio, recover the missing money, and help protect Pamela. His quiet action contradicts Daniel Cleaver's earlier story that Mark was the untrustworthy man in their conflict. At Christmas, the Jones family begins to repair the damage caused by Pamela's departure, while Bridget understands more clearly which of the two men has behaved with loyalty. Mark finds Bridget as she is preparing for an evening alone and tells her that he likes her as she is. Their attempt at a romantic night is briefly interrupted when he sees the harsh entries about him in her diary and leaves; Bridget runs outside after him, only to discover that he has gone to buy her a replacement diary for a new beginning. They reconcile and finally become a couple, ending Bridget's year with a relationship founded on a clearer view of both Mark and herself.",
+        "in_short": "Bridget Jones begins the year determined to improve her body, career, habits, and romantic prospects while resisting the scrutiny directed at a single woman in her thirties. She starts an affair with her charming boss, Daniel Cleaver, who portrays reserved barrister Mark Darcy as a former friend who betrayed him. Daniel proves unreliable and is caught with another woman, prompting Bridget to leave publishing for a chaotic television-news job. At home, her mother Pamela leaves Bridget's father for Portuguese presenter Julio and becomes involved in his dubious financial venture. Bridget repeatedly encounters Mark and slowly sees his kindness beneath their awkward first impressions. When Julio's scheme collapses, Mark helps locate him and rescue Pamela from the consequences, revealing Daniel's account of their feud to be false. At Christmas Mark tells Bridget he likes her as she is. After a misunderstanding involving her diary, they reconcile and begin a relationship.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "At the start of a new year, Bridget Jones creates an extensive list of resolutions covering weight, smoking, alcohol, work, money, and relationships. At Una Alconbury's family gathering, her mother tries to match her with recently divorced barrister Mark Darcy. Their conversation is awkward, and Bridget overhears Mark criticizing her, confirming her first impression that he is aloof. At work she begins exchanging flirtatious messages with her boss, Daniel Cleaver. His attention is exciting but also destabilizing because he controls her professional life. Bridget relies on her friends Jude, Sharon, and Tom to analyze every message and setback. Meanwhile her parents' apparently settled marriage becomes uncertain when Pamela Jones announces that she feels taken for granted and wants a more independent life.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bridget and Daniel begin a sexual relationship conducted around the office and uncertain dates. Daniel tells Bridget that Mark Darcy once slept with his wife, offering an explanation for the hostility between the two men and encouraging Bridget to dismiss Mark. Bridget wants Daniel to acknowledge her openly, but his evasiveness makes her anxious. She also endures a birthday dinner at which married acquaintances treat her single life as a public problem. Pamela grows increasingly absorbed in a new career demonstrating products on television and in the attention of a Portuguese presenter named Julio. Her new confidence gives way to an affair, leaving Colin Jones shocked and dependent on Bridget for support just as Bridget is struggling to understand her own relationship.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bridget's hopes that Daniel will become a dependable boyfriend repeatedly collide with missed plans and guarded behavior. She tries to present their relationship as secure to friends and family, even while his reluctance to commit increases her doubts. The crisis arrives when she discovers another woman at his home and learns that he has concealed an existing relationship. Bridget ends the affair, devastated both by the betrayal and by her own willingness to ignore warnings. Pamela, meanwhile, leaves Colin and builds a public life around Julio, treating the separation as liberation while the rest of the family deals with the aftermath. Mark appears occasionally in Bridget's social world, but Daniel's version of their past still shapes the way she interprets him.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Determined to stop working for Daniel, Bridget resigns from publishing and is hired by television-news executive Richard Finch. Her new job throws her into live reports and location assignments for which she often feels unprepared, but changing careers also breaks Daniel's daily hold over her. Bridget's family remains divided: Colin hopes Pamela will return, while Pamela pursues Julio and increasingly ambitious plans. At a legal social event, Bridget expects to embarrass herself but receives unexpected support from Mark. His behavior does not fit Daniel's portrait of him, and Bridget begins to recognize a steady generosity beneath his reserve. Her friends continue to supply emotional first aid, though their own relationships show that marriage and partnership are not the automatic security Bridget has been taught to imagine.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bridget becomes more capable at television work despite Richard Finch's appetite for dramatic stories. Her encounters with Mark grow warmer, yet mutual awkwardness and the presence of polished women from his professional circle keep her from trusting the possibility of romance. Daniel attempts to return to her attention, but his charm no longer erases what she knows about him. Pamela's television venture with Julio develops into a financial scandal involving money taken from investors. When Julio disappears and Pamela becomes implicated, the Jones family crisis moves beyond marital embarrassment to the possibility of criminal charges. Mark quietly applies his legal knowledge and international contacts to the problem, taking action while others are still reacting.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Mark helps trace Julio, recover the missing funds, and bring Pamela home, limiting the damage from the fraud. His conduct reveals his loyalty and exposes the distortion in Daniel's story about their former friendship. Pamela and Colin begin repairing their marriage after a painful year. At Christmas Mark finds Bridget and tells her directly that he likes her as she is, not as the perfected woman described by her resolutions. They leave together, but Mark reads the earlier diary entries in which she condemned him and abruptly goes out. Bridget follows in distress, wearing impractical clothes in the winter street, and learns that he has not abandoned her: he has bought a new diary so they can begin without the old judgments. They reconcile, and Bridget ends the year with Mark, having improved her life less through numerical self-control than through clearer choices about work, family, friendship, and love.",
+            "through": {
+              "chapter": 12
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "bridget-joness-diary"
+      }
+    },
     "brief-cases": {
       "characters": {
         "characters": [
@@ -2411,6 +2809,193 @@
           }
         ],
         "work": "bud-not-buddy"
+      }
+    },
+    "burial-rites": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A servant woman held under a death sentence for her part in the killings of Natan Ketilsson and Pétur Jónsson. Removed from harsh confinement and placed with a farming family while the authorities prepare her execution, she arrives physically neglected and guarded against the judgment of strangers. The official account has already made her notorious, but her own history has not yet been heard.",
+            "id": "agnes-magnusdottir",
+            "name": "Agnes Magnúsdóttir",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Tóti"
+            ],
+            "description": "A young assistant reverend whom Agnes has requested as her spiritual adviser before her execution. Inexperienced and uncertain of what help he can offer, he chooses to listen to her rather than approach her only as a condemned criminal.",
+            "id": "thorvardur-jonsson",
+            "name": "Thorvardur Jónsson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The capable, ailing mistress of the Kornsá farm. She resents the authorities for forcing her household to shelter a convicted murderer and is initially watchful and severe with Agnes, particularly out of concern for her daughters.",
+            "id": "margret-jonsson",
+            "name": "Margrét Jónsson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Margrét's husband and the district officer at Kornsá. His public duty leaves him little power to refuse the order that Agnes be lodged on his farm, despite the disruption and fear it brings to his family.",
+            "id": "jon-jonsson",
+            "name": "Jón Jónsson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The more open-hearted of Jón and Margrét's daughters. Curious about Agnes and less committed to treating her as a monster, she is willing to see the exhausted woman behind the public story of the crime.",
+            "id": "steina-jonsson",
+            "name": "Steina Jónsson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jón and Margrét's other daughter, attentive to reputation and the danger that Agnes's presence may pose to the household. She is more reserved than Steina and wary of becoming close to their unwanted guest.",
+            "id": "lauga-jonsson",
+            "name": "Lauga Jónsson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The district commissioner responsible for carrying out the authorities' arrangements for Agnes's custody, spiritual preparation, and eventual execution. Formal and controlling, he treats the case as a matter of order and public example.",
+            "id": "bjorn-blondal",
+            "name": "Björn Blöndal",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A self-taught healer and farmer whose death at Illugastaðir lies at the center of the case against Agnes. He is already absent from the living action, known at first through official accusations, local stories, and Agnes's guarded memories.",
+            "id": "natan-ketilsson",
+            "name": "Natan Ketilsson",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sigga"
+            ],
+            "description": "A young servant at Illugastaðir who was convicted with Agnes and Fridrik after Natan and Pétur were killed. Her youth and perceived innocence cause outsiders to distinguish her sharply from Agnes before either woman's full account is understood.",
+            "id": "sigridur-gudmundsdottir",
+            "name": "Sigríður Guðmundsdóttir",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Fridrik"
+            ],
+            "description": "A young farm worker condemned for the Illugastaðir murders alongside Agnes. He is associated with Sigga and with the violence at the farm, though the early official version leaves the precise actions and motives of all three prisoners unsettled.",
+            "id": "fridrik-sigurdsson",
+            "name": "Friðrik Sigurðsson",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A visitor killed at Illugastaðir on the same night as Natan. His death forms part of the charge against Agnes, Sigga, and Fridrik, although he occupies a smaller place in the stories circulating about the case.",
+            "id": "petur-jonsson",
+            "name": "Pétur Jónsson",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "burial-rites"
+      },
+      "recaps": {
+        "ending": "Agnes's final account makes clear that the public version of a calculating conspiracy has flattened a far more tangled history. Fridrik carried out the principal attack at Illugastaðir. Natan remained alive but mortally injured, and Agnes says she ended his suffering when he appealed to her; she then helped conceal the killings by fire. Her responsibility is real, but the household and Tóti now understand the abandonment, exploitation, and desperate attachment that preceded the crime. No fuller understanding changes the sentence. When the execution order arrives, the Kornsá family prepares Agnes as one of their own rather than surrendering her as a stranger. Tóti accompanies her to the place of execution and tries to steady her terror. Agnes and Fridrik are beheaded, fulfilling the official judgment that has shadowed the novel from its opening. The authorities obtain their public punishment, while the people who listened to Agnes are left with a human life that the legal record could not contain.",
+        "in_short": "In northern Iceland in 1829, Agnes Magnúsdóttir awaits execution for her role in the murders of Natan Ketilsson and Pétur Jónsson. The authorities place her at Kornsá farm with district officer Jón Jónsson, his wife Margrét, and their daughters, and assign the young Reverend Tóti to prepare her spiritually. The family initially fears Agnes, but shared work and close quarters gradually replace the notorious public image with knowledge of a capable, wounded woman. Agnes tells Tóti how poverty, abandonment, service, and her attachment to the manipulative Natan led her to Illugastaðir. On the fatal night Fridrik attacked Natan and Pétur; Agnes says she killed the already mortally wounded Natan at his request and helped cover the crime with fire. Her account complicates but cannot overturn her conviction. The Kornsá family gives her dignity in her last days, Tóti accompanies her to the execution site, and Agnes is beheaded alongside Fridrik.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In 1829, officials in northern Iceland must house Agnes Magnúsdóttir while she waits for royal confirmation of her death sentence. She has been convicted, with the younger servant Sigga and the farm worker Fridrik, of taking part in the murders of Natan Ketilsson and Pétur Jónsson at Illugastaðir. District Commissioner Blöndal orders that Agnes be moved to Kornsá, the farm of local officer Jón Jónsson. Jón's wife, Margrét, and their daughters Lauga and Steina fear the arrival of a woman already condemned in local opinion. Agnes reaches them weak and filthy after brutal confinement, and the family reluctantly gives her a place in the communal household. She has asked for Tóti, an inexperienced assistant reverend, to serve as her spiritual adviser. Both he and the family first encounter Agnes through the official story of a murderess, while Agnes remains alert to their fear and contempt.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Agnes begins working beside Margrét and the daughters rather than remaining an idle prisoner, making herself useful through her knowledge of farm labor and household tasks. Steina shows curiosity and a degree of kindness, while Lauga remains concerned about danger and reputation. Margrét watches Agnes closely but cannot ignore either her competence or the physical damage left by her imprisonment. Tóti's first attempts to guide Agnes are awkward. She resists a ready-made lesson about repentance and instead tests whether he will hear her own account. The effort troubles him, yet he returns. Around them, neighbors repeat lurid assumptions about the Illugastaðir deaths, and Commissioner Blöndal expects the reverend to bring the condemned woman toward an acceptable confession. Agnes has begun to speak, but the gap between her remembered life and the fixed public narrative remains wide.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Daily work draws Agnes further into the life of Kornsá. Her practical knowledge becomes valuable, and Margrét's suspicion starts to coexist with reluctant respect. Tóti increasingly treats their meetings as acts of listening rather than formal correction. Agnes describes a childhood shaped by illegitimacy, poverty, unstable foster homes, and abandonment by her mother. She learned early that a servant's security depended on other people's decisions and that affection could disappear without warning. These memories do not yet explain the killings, but they challenge the idea that her character can be read from the verdict alone. Tóti also feels the strain of opposing Blöndal's rigid view of his task. The household remains conscious that Agnes is under sentence, even as her labor, conversation, and vulnerability make it harder to keep treating her as an embodiment of the crime.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Agnes's story turns toward Natan Ketilsson, a knowledgeable healer with an ambiguous reputation. She was drawn to his intelligence and the possibility that he saw her as more than a disposable servant. Their relationship offered hope of belonging but gave Natan substantial power over her. His attention was inconsistent, and his promises never supplied the security Agnes imagined. At Illugastaðir, the presence of young Sigga and the jealousies surrounding Natan sharpened Agnes's uncertainty about her place. Meanwhile at Kornsá, the family's view of Agnes continues to soften through shared hardship. Margrét recognizes both her endurance and the limits placed on women without property or family protection. Tóti is now invested in allowing Agnes to finish her history, although neither sympathy nor a more complex account offers an obvious way past the sentence awaiting her.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Agnes describes the deterioration of life at Illugastaðir. Natan manipulated the competing loyalties around him and could alternate intimacy with rejection, leaving Agnes dependent on a bond he would not clearly honor. Sigga's relationship with Fridrik and her position in Natan's household added another source of tension. The later criminal case converted these confused attachments into a simple tale of deliberate conspiracy, but Agnes's memories reveal fear, humiliation, and shifting intentions rather than a settled common plan. At Kornsá she is no longer treated merely as guarded cargo. Her bond with Margrét deepens, and even the more cautious members of the family have lived too closely beside her to accept every rumor without question. News about the sentence remains beyond their control, making the warmth Agnes has found inseparable from the knowledge that it may soon be taken away.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Agnes finally relates the fatal night at Illugastaðir. Fridrik attacked Natan and Pétur, leaving Natan terribly wounded but not immediately dead. Agnes found the man to whom she had remained painfully attached beyond saving. She says that Natan appealed to her to end his suffering and that she cut his throat; afterward, the farm was burned in an attempt to hide what had happened. Her action makes her part of the killing and concealment, but her account differs sharply from the image of a cold architect of both murders. Tóti and the Kornsá family now understand why she has struggled to force her experience into the authorities' preferred confession. The truth she can offer is morally difficult and legally powerless. The prospect of execution closes in just as Agnes has at last been allowed to become fully known to the people around her.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The final order confirms that Agnes will be executed. Understanding her history has not changed the judgment, but it changes how Kornsá sends her to it. Margrét and her family tend and dress Agnes with care, refusing the public image that once made them fear bringing her under their roof. Agnes, who has spent much of her life expecting abandonment, faces the end surrounded by people who now recognize her as part of their household. Her composure gives way to terror as the moment approaches. Tóti comes to her and accompanies her to the execution ground, offering his presence when doctrine alone is insufficient. Agnes and Fridrik are beheaded. The official process closes the case through punishment, but Agnes's narrated life leaves a record of poverty, dependence, manipulation, culpability, and mercy that cannot be reduced to the label attached to her death sentence.",
+            "through": {
+              "chapter": 13
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "burial-rites"
       }
     },
     "calamity": {
