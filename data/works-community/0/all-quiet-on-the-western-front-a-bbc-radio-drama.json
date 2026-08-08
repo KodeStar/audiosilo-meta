@@ -4332,6 +4332,127 @@
         "work": "an-enemy-of-the-people"
       }
     },
+    "an-inspector-calls-classic-radio-theatre": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A prosperous factory owner and former mayor hosting a family dinner to celebrate his daughter's engagement. Certain that business success proves sound judgment, he lectures the younger guests on self-reliance and dismisses concerns about obligations to other people.",
+            "id": "arthur-birling",
+            "name": "Arthur Birling",
+            "reveal": {
+              "chapter": 1
+            }
+          },
+          {
+            "description": "Arthur's wife, a socially confident woman who places great weight on rank and proper behavior. She regards the evening's engagement as a valuable family alliance and initially treats interruption or criticism as an affront to the household.",
+            "id": "sybil-birling",
+            "name": "Sybil Birling",
+            "reveal": {
+              "chapter": 1
+            }
+          },
+          {
+            "description": "The Birlings' daughter, celebrating her engagement to Gerald Croft. At first playful and sheltered, she is nevertheless quick to notice evasions in the adults' conversation and capable of reconsidering her conduct when its consequences are placed before her.",
+            "id": "sheila-birling",
+            "name": "Sheila Birling",
+            "reveal": {
+              "chapter": 1
+            }
+          },
+          {
+            "description": "The Birlings' adult son, restless and already drinking heavily during the engagement dinner. His unease and defensiveness suggest that he is concealing difficulties from a family that still treats him as immature.",
+            "id": "eric-birling",
+            "name": "Eric Birling",
+            "reveal": {
+              "chapter": 1
+            }
+          },
+          {
+            "description": "Sheila's fiancé and the son of a wealthier industrial family. Polished and socially assured, he is welcomed by Arthur as both a future son-in-law and a useful business connection, though Sheila questions his unexplained distance during the previous year.",
+            "id": "gerald-croft",
+            "name": "Gerald Croft",
+            "reveal": {
+              "chapter": 1
+            }
+          },
+          {
+            "description": "A grave, controlled visitor who says he is a police inspector investigating a young woman's suicide. He questions the family one person at a time, produces a photograph selectively, and refuses to let status or attempts at intimidation divert him from tracing responsibility.",
+            "id": "inspector-goole",
+            "name": "Inspector Goole",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Daisy Renton"
+            ],
+            "description": "A young working-class woman whose recent death is being investigated. The Inspector first connects her to the Birling factory, where she was a capable worker dismissed after helping to seek higher wages. After losing that job she used another name while trying to support herself.",
+            "id": "eva-smith",
+            "name": "Eva Smith",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Birlings' maid, who serves the engagement dinner and announces the Inspector's unexpected arrival. Her work in the household quietly contrasts with the family's confident discussion of class and labor.",
+            "id": "edna",
+            "name": "Edna",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "an-inspector-calls-classic-radio-theatre"
+      },
+      "recaps": {
+        "ending": "After Inspector Goole leaves, Arthur, Sybil, and Gerald concentrate on whether the investigation was genuine, while Sheila and Eric insist that the family's behavior remains shameful regardless. Gerald learns that the local police force has no inspector by that name. Telephone calls to the infirmary find no record of a recent suicide, and the older Birlings conclude that they have been deceived, perhaps by being shown different photographs and led to confuse several women. Their relief widens the moral division in the family: Sheila and Eric have accepted responsibility, but their parents are chiefly grateful that scandal may be avoided. Then the telephone rings. Arthur is told that a young woman has just died after taking disinfectant and that a police inspector is on the way to question the family. The promised real inquiry repeats the situation at the point when the unrepentant characters believe they have escaped it.",
+        "in_short": "In 1912, wealthy manufacturer Arthur Birling celebrates his daughter Sheila's engagement to Gerald Croft. Inspector Goole interrupts the dinner to investigate the suicide of Eva Smith, a working-class woman. His questioning reveals a chain of harm: Arthur dismissed Eva for seeking better pay; Sheila cost her another job in anger; Gerald made her his dependent mistress and then left her; Sybil's charity refused her aid; and Eric, who had made her pregnant, stole money in an attempt to help. The Inspector argues that people share responsibility for one another and departs. Gerald and the older Birlings discover signs that he may not have been a real policeman and that no suicide has yet reached the infirmary, but Sheila and Eric reject this as an excuse. Just as the others celebrate avoiding scandal, a telephone call reports that a young woman has died from disinfectant and that an inspector is coming to question them.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In the spring of 1912, manufacturer Arthur Birling and his wife Sybil host a dinner celebrating their daughter Sheila's engagement to Gerald Croft, whose family owns a larger rival firm. Their son Eric is also present. Arthur treats the match as both a family success and a possible business alliance, then confidently predicts peace and prosperity while urging Gerald and Eric to look after themselves rather than society. A visitor calling himself Inspector Goole interrupts the celebration. He says that a young woman has died after swallowing disinfectant and shows Arthur a photograph of Eva Smith. Arthur admits dismissing Eva from his factory after she helped lead workers asking for higher pay. The Inspector then establishes that, under the name Daisy Renton, she found work in a dress shop until Sheila angrily used her influence to have her dismissed. Sheila is appalled by her own conduct and begins to understand the Inspector's method. Gerald's reaction to the name Daisy reveals that he too knew her.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Inspector continues connecting each dinner guest to the dead woman. Gerald admits that he met Daisy Renton at a bar while she was being cornered by an older man. He installed her in a friend's empty rooms and began an affair with her, but ended it when the arrangement no longer suited him. Although she had understood that it would not last, the separation left her grieving. Sheila returns Gerald's engagement ring and tells him that any future between them must begin with honesty. The questioning then turns to Sybil Birling's charitable committee. Pregnant, destitute, and using the name Mrs Birling, Eva asked the committee for emergency assistance. Offended by the assumed name and unconvinced by her story, Sybil used her influence to refuse help and now insists that the child's father bears the entire responsibility. Her repeated demand that he be punished grows increasingly ominous as the family realizes that Eric is the absent person whose account the Inspector still needs.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Eric admits meeting Eva while drunk, forcing his way into her rooms, and later beginning an irregular relationship that left her pregnant. He stole money from Arthur's business to support her, but she refused further payments when she learned the source. Sybil's charity then denied her last appeal. The family turns on itself, yet Inspector Goole insists that each person's action formed part of the same destructive chain. Before leaving, he warns that suffering will teach the lesson of shared responsibility if people refuse to learn it voluntarily. Afterward Gerald investigates and discovers that the local police have no Inspector Goole. The infirmary reports no recent suicide, leading Arthur, Sybil, and Gerald to think the evening was an elaborate hoax that may have used separate photographs and stories. Sheila and Eric argue that this changes neither their actions nor their guilt. As the older generation celebrates the apparent escape from scandal, the telephone rings: a young woman has just died after taking disinfectant, and a police inspector is coming to question the family.",
+            "through": {
+              "chapter": 3
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "an-inspector-calls-classic-radio-theatre"
+      }
+    },
     "an-occurrence-at-owl-creek-bridge": {
       "characters": {
         "characters": [

@@ -3169,6 +3169,118 @@
         "work": "sarah-plain-and-tall"
       }
     },
+    "sarrasine": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The unnamed first-person observer at a lavish Parisian ball given by the Lanty family. Standing between the warm celebration indoors and the wintry garden outside, he becomes fascinated by a strange elderly guest and later explains the family's history to his companion.",
+            "id": "narrator",
+            "name": "The Narrator",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A fashionable young widow who attends the Lantys' ball with the narrator. Her curiosity about the family's wealth and their secretive elderly relative prompts the narrator to tell her the history of Sarrasine and La Zambinella.",
+            "id": "madame-de-rochefide",
+            "name": "Madame de Rochefide",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A gifted and passionate French sculptor who studies under Bouchardon and travels to Rome. Captivated by the opera singer La Zambinella, he mistakes an artistic ideal for a complete knowledge of another person, and his refusal to accept the truth leads to his death.",
+            "id": "ernest-jean-sarrasine",
+            "name": "Ernest-Jean Sarrasine",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An eminent sculptor who recognizes Sarrasine's talent, takes him on as a pupil, and imposes discipline on the difficult young artist. His training helps Sarrasine win recognition and travel to Italy.",
+            "id": "bouchardon",
+            "name": "Bouchardon",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Lantys' Great-Uncle"
+            ],
+            "description": "A celebrated Roman opera singer whom Sarrasine believes to be a woman and loves as the living embodiment of beauty. La Zambinella is actually a castrato, since women were barred from the Roman stage. In old age, this same person is the mysterious relative protected by the wealthy Lanty family.",
+            "id": "la-zambinella",
+            "name": "La Zambinella",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wealthy patron who protects La Zambinella. His social circle encourages Sarrasine's mistaken courtship as entertainment, but his men intervene decisively when the sculptor threatens the singer.",
+            "id": "cardinal-cicognara",
+            "name": "Cardinal Cicognara",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The beautiful daughter of the Lanty household, admired at the Parisian ball for her grace and musical talent. Her family's mysterious wealth is bound to the secret history of their elderly relative, La Zambinella.",
+            "id": "marianina-de-lanty",
+            "name": "Marianina de Lanty",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A member of the wealthy Lanty family and one of the elegant young figures at their ball. The family's intense protection of its elderly relative helps create the mystery that draws the narrator and Madame de Rochefide into the old story.",
+            "id": "filippo-de-lanty",
+            "name": "Filippo de Lanty",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "sarrasine"
+      },
+      "recaps": {
+        "ending": "Sarrasine abducts La Zambinella after learning that the singer he loves is a castrato. Feeling that both his desire and his artistic ideal have been betrayed, he threatens to kill La Zambinella, but agents of Cardinal Cicognara stab Sarrasine first. A statue Sarrasine made from the singer's image later passes through the Lanty family and indirectly influences another famous representation of ideal beauty. The narrator reveals that the uncanny old guest at the Lantys' ball is La Zambinella in extreme old age and that the family fortune derives from this relative. Madame de Rochefide reacts to the story with disgust and disillusionment, distancing herself from both love and the narrator. The frame closes with beauty, wealth, and desire all shadowed by the concealed history behind them.",
+        "in_short": "At a ball hosted by the rich and secretive Lanty family, an unnamed narrator and Madame de Rochefide notice a frail, uncanny old guest. The narrator explains the mystery through the story of Sarrasine, a talented French sculptor who went to Rome and became obsessed with the opera singer La Zambinella. Believing the singer to be a woman, he treated La Zambinella as both beloved and artistic ideal. He eventually learned that Roman restrictions kept women from the stage and that La Zambinella was a castrato. Sarrasine abducted and threatened the singer, then was killed by Cardinal Cicognara's men. The old guest at the ball is La Zambinella decades later, and the Lantys' fortune comes through this hidden family connection. The revelation repels Madame de Rochefide and ends the narrator's hope of intimacy with her.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "At the Lanty family's opulent Parisian ball, the unnamed narrator watches the contrast between the lively rooms and the frozen garden. He and Madame de Rochefide are intrigued by a very old, almost spectral guest whom the family carefully shields from attention. To explain the figure, the narrator tells of Ernest-Jean Sarrasine, a rebellious but brilliant sculptor trained by Bouchardon. In Rome, Sarrasine sees the opera singer La Zambinella and falls in love, imagining that the performer perfectly embodies feminine beauty. Members of Cardinal Cicognara's circle encourage his error, while La Zambinella gives warnings he does not understand. Sarrasine finally discovers that the singer is a castrato, women having been excluded from the Roman stage. He abducts La Zambinella and, enraged at the collapse of his romantic and artistic ideal, threatens murder. Cicognara's men kill Sarrasine. The narrator identifies the old guest as La Zambinella and explains that the Lanty fortune comes through this concealed relative. Madame de Rochefide responds with revulsion and rejects the narrator's romantic approach, leaving the revelation to darken the beauty and wealth of the ball.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "sarrasine"
+      }
+    },
     "saturday": {
       "characters": {
         "characters": [

@@ -1184,6 +1184,133 @@
         "work": "shakespeare-for-kids-hamlet"
       }
     },
+    "shamela": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A maid who presents herself to Squire Booby as a model of innocence while writing candidly to her mother about the performance. She treats displays of modesty as a strategy for obtaining marriage, status, and control of her employer's wealth.",
+            "id": "shamela-andrews",
+            "name": "Shamela Andrews",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Henrietta Maria Honora Andrews"
+            ],
+            "description": "Shamela's mother and correspondent. Far from guarding her daughter's virtue, she coaches Shamela to turn Booby's desire into the most profitable possible marriage and praises each successful deception.",
+            "id": "mrs-andrews",
+            "name": "Mrs Andrews",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Shamela's wealthy master, easily excited by the appearance of virtue and unable to distinguish staged resistance from principle. He becomes convinced that marrying Shamela will reward goodness, while she privately measures him chiefly by his fortune.",
+            "id": "squire-booby",
+            "name": "Squire Booby",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A clergyman who is Shamela's lover and ally. His convenient teaching about grace separates professed belief from moral conduct, giving Shamela a religious vocabulary with which to excuse deceit and pursue pleasure.",
+            "id": "parson-williams",
+            "name": "Parson Williams",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lucretia Jervis"
+            ],
+            "description": "A woman in Booby's household who helps manage Shamela's supposedly private encounters and understands that the maid's alarm and resistance are carefully arranged for an audience.",
+            "id": "mrs-jervis",
+            "name": "Mrs Jervis",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A clergyman who initially accepts the celebrated account of a virtuous servant and sends it to a fellow parson with admiration. The papers he receives in return force him to reconsider both the story and the moral instruction drawn from it.",
+            "id": "parson-tickletext",
+            "name": "Parson Tickletext",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Tickletext's clerical correspondent, who rejects the public version of Shamela's story. He supplies a collection of letters that he presents as evidence of calculation, hypocrisy, and clerical corruption behind the exemplary tale.",
+            "id": "parson-oliver",
+            "name": "Parson Oliver",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "shamela"
+      },
+      "recaps": {
+        "ending": "After marrying Booby, Shamela abandons the restraint that won him. She spends freely, asserts authority over the household, and continues her relationship with Parson Williams under the cover of his religious teaching. Booby eventually discovers enough of their conduct to understand that the celebrated conversion of desire into virtuous marriage was a fraud. Williams is driven out after a violent confrontation, and Shamela's claim to exemplary goodness collapses. The final correspondence returns the papers to the clergymen who framed the narrative: Oliver's evidence has replaced Tickletext's admiration with recognition that the supposed moral lesson rewarded calculation, credulity, and hypocrisy.",
+        "in_short": "Parson Tickletext praises the tale of a servant whose virtue reforms and marries her master, but Parson Oliver replies with letters that offer a different account. Shamela Andrews is not an innocent defending herself from Squire Booby. With encouragement from her mother, Mrs Andrews, and help inside the household, she performs modesty in order to raise Booby's desire and secure marriage. She is already involved with Parson Williams, whose teaching about grace allows them to separate pious language from conduct. Booby mistakes Shamela's calculated refusals for moral purity and marries her. Once established as his wife, she spends his money and resumes her intimacy with Williams. Discovery brings violence and disgrace rather than reform. The correspondence exposes the exemplary servant as a manipulator, her husband as credulous, and Williams as a clergyman who uses doctrine to protect appetite.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Parson Tickletext writes enthusiastically to Parson Oliver about a recently celebrated account of a maid whose resistance to her master supposedly demonstrates the power of virtue. Oliver answers that the printed story has mistaken artifice for innocence. He offers private correspondence as a corrective. In the first of these papers, Shamela Andrews writes to her mother not as a frightened servant but as a calculating observer of Squire Booby's attraction. Mrs Andrews responds with practical advice: her daughter must preserve the appearance of chastity long enough to convert the squire's desire into marriage. The framing exchange therefore changes the question from whether Shamela can defend herself to how successfully she can manage Booby's credulity.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Shamela reports Booby's attempts to approach her and describes how she stages alarm, fainting, and resistance so that witnesses will confirm her reputation. Mrs Jervis assists within the household, helping turn each encounter into evidence of Shamela's supposed purity. Her letters to her mother reveal that the language of distress is part of a shared plan. Booby, absorbed in the role of repentant admirer, reads every refusal as proof that Shamela deserves elevation rather than as a reason to stop pursuing her. The correspondence also introduces Parson Williams, whose importance to Shamela is very different from the spiritual guidance he appears to provide.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Parson Williams is revealed as Shamela's lover and collaborator. His sermons emphasize a version of grace that permits professed faith to stand apart from behavior, an idea Shamela adopts whenever conduct and piety conflict. Booby remains unaware of the affair. Believing that Shamela's resistance expresses unshakable principle, he moves toward marriage, exactly the outcome she and her mother have sought. Shamela continues to balance private intimacy with Williams against public demonstrations of innocence, while Mrs Andrews urges her not to surrender the advantage before legal and financial security are assured.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Booby marries Shamela and imagines that virtue has improved both of them. Once she has the position she wanted, however, Shamela no longer needs to maintain the same discipline. She treats the household and its money as her own and continues meeting Williams. The clergyman's language supplies moral cover but does not conceal the affair indefinitely. Booby discovers the deception, and the domestic comedy turns into confrontation: Williams is beaten and expelled, while Shamela's reputation as an innocent reformer can no longer survive the evidence. Oliver's collection of letters thus answers Tickletext's opening praise. The story closes not with rewarded virtue but with a wealthy man's folly, a servant's calculated social ascent, and a parson's misuse of religion exposed.",
+            "through": {
+              "chapter": 15
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "shamela"
+      }
+    },
     "shane-jack-schaefer": {
       "characters": {
         "characters": [
