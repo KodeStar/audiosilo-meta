@@ -1608,6 +1608,150 @@
         "work": "convenience-store-woman"
       }
     },
+    "conversations-with-friends": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A twenty-one-year-old Dublin student, writer, and spoken-word performer who narrates the novel. Frances presents herself as detached and observant, but closely monitors other people's judgments. She still performs with her former girlfriend Bobbi and is drawn into the marriage of Melissa and Nick after meeting them at a reading.",
+            "id": "frances",
+            "name": "Frances",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Frances's confident, outspoken best friend and former girlfriend. Bobbi performs poetry with Frances, remains emotionally central to her, and is more willing to state her political and personal judgments directly. Her charisma attracts Melissa's interest when the four first become acquainted.",
+            "id": "bobbi",
+            "name": "Bobbi",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An established writer and photographer who befriends Frances and Bobbi after seeing them perform. Melissa is socially assured, attentive, and professionally successful. She invites the younger women into the home and social life she shares with her husband, Nick.",
+            "id": "melissa",
+            "name": "Melissa",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Melissa's husband, an actor whose reserved manner initially makes Frances think he is dull and unfriendly. In private he proves gentler and more vulnerable than her first impression suggests, and a confidential exchange of messages begins between them.",
+            "id": "nick",
+            "name": "Nick",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Frances's coworker during her internship. Philip is sociable, curious about her relationships, and alert to tensions that Frances prefers to conceal. He offers a connection to ordinary workplace life outside her intense circle with Bobbi, Melissa, and Nick.",
+            "id": "philip",
+            "name": "Philip",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Frances's mother, who lives separately from Frances's alcoholic father. Practical and concerned, she helps Frances when money and health problems become harder to dismiss, even when Frances resists discussing what is wrong.",
+            "id": "frances-mother",
+            "name": "Frances's mother",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Frances's father, whose alcoholism and unreliable behavior shadow her family life. He is meant to send her regular financial support but does so inconsistently, leaving Frances to manage both practical insecurity and guarded concern for him.",
+            "id": "frances-father",
+            "name": "Frances's father",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A literary editor who takes an interest in Frances's fiction. Valerie's attention gives Frances a route toward publication and professional recognition beyond the performances she shares with Bobbi.",
+            "id": "valerie",
+            "name": "Valerie",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "conversations-with-friends"
+      },
+      "recaps": {
+        "ending": "After the secrecy around Nick and the publication of Frances's story have damaged several relationships, Frances faces the illness she had tried to minimize. She is diagnosed with endometriosis and is distressed by the possibility that it may affect her fertility. She and Bobbi gradually restore their intimacy, speak more honestly about the story and their dependence on each other, and sleep together. Frances remains wary of assigning their bond a simple label. Some time later, Nick accidentally telephones her. Their conversation becomes personal; he says that he misses her and describes the unhappiness still present in his life. Although Frances had ended their affair and knows its costs, she tells him to come and get her. The novel closes at that renewed point of contact rather than resolving whether she and Nick will resume their relationship or what it will mean for Melissa and Bobbi.",
+        "in_short": "Dublin students and former girlfriends Frances and Bobbi befriend older married couple Melissa and Nick. While Bobbi is fascinated by Melissa, Frances begins a secret affair with Nick and discovers the depression and dependence hidden beneath his quiet manner. A shared holiday intensifies both the affair and the four-way tension. Melissa eventually learns the truth, but she and Nick remain married, while Frances ends the affair under emotional pressure. Frances also publishes a story drawn closely from Bobbi, causing a rupture with the person she values most. At the same time, worsening pain and bleeding lead to a diagnosis of endometriosis. Frances and Bobbi reconcile and become physically intimate again. Later Nick calls Frances by accident; they admit they miss each other, and she asks him to come for her, leaving their renewed connection and all four relationships unresolved.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Frances and Bobbi, both twenty-one, are former girlfriends who remain best friends and perform spoken-word pieces together in Dublin. After a performance they meet Melissa, an older writer and photographer, who takes an interest in them and invites them home. There they meet her husband Nick, an actor. Bobbi and Melissa immediately command attention, while Frances initially reads Nick as passive and uninteresting. The four begin spending time together. Melissa proposes writing a profile of Frances and Bobbi, and private messages develop across the new friendships. Frances, who habitually hides strong feeling behind irony, becomes increasingly attentive to Nick and begins corresponding with him without telling Bobbi.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Frances's private contact with Nick becomes flirtatious and then physical. Their secrecy gives her a sense of control, but she is also vulnerable to small changes in his attention and reluctant to admit what she wants. Nick describes difficulties within his marriage and a period of severe depression, complicating Frances's first impression of him as merely complacent. Bobbi remains fascinated by Melissa and critical of the couple's wealth and domestic arrangements. Frances withholds the affair from her even though their friendship has usually depended on intense mutual knowledge. Frances also manages an internship, uncertain finances, and an alcoholic father whose promised support is unreliable.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Frances and Bobbi join Melissa, Nick, and friends on holiday in Croatia. Shared space makes the affair harder to compartmentalize. Frances and Nick continue sleeping together while behaving differently in front of the others, and Frances becomes jealous and uncertain about his marriage. Bobbi notices more than Frances wants her to, and tensions arise over secrecy, privilege, and Frances's tendency to retreat instead of explaining herself. Frances's attachment to Nick deepens even as she insists internally that their relationship can remain limited. Meanwhile, her bond with Bobbi continues to carry the intimacy and rivalry of their former romance.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The concealed affair can no longer remain separate from the friendships around it. Bobbi learns that Frances and Nick have been involved and is hurt by Frances's deception. Melissa also discovers the relationship and confronts it directly. Her response makes clear that Nick's dependency, depression, and past behavior are part of a marriage more complicated than the version he gave Frances. Melissa and Nick do not simply separate, and Frances is left feeling exposed and replaceable. The four-person friendship fractures. Frances and Nick end their affair, though the emotional bond does not disappear, while Frances's habit of accepting pain without asking others for care isolates her further.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Frances receives serious literary interest in a story modeled closely on Bobbi and their relationship. Publication offers the recognition Frances wants, but Bobbi experiences the story as an appropriation of private life and reacts with anger. Their conflict forces Frances to confront how she turns observation into distance and makes decisions about others without their consent. At the same time, severe abdominal pain and bleeding disrupt Frances's efforts to appear self-sufficient. She struggles to obtain clarity about her health and allows very few people to understand how frightened she is. Her estrangement from Bobbi, separation from Nick, financial strain, and physical symptoms converge.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Frances is diagnosed with endometriosis, giving a name to her pain but raising fears about fertility and a future she had not realized she valued. She and Bobbi begin repairing their relationship, discuss the injury caused by Frances's story and their enduring attachment, and sleep together. Their renewed closeness remains resistant to a simple definition. Later Nick calls Frances accidentally. Instead of ending the call, they speak with the old intimacy; he says he misses her and remains unhappy. Frances recognizes that their affair caused harm and that neither his marriage nor her other relationships have reached a tidy resolution. Even so, she tells him to come and get her. The book ends with that invitation, reopening their connection while leaving its consequences unsettled.",
+            "through": {
+              "chapter": 30
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "conversations-with-friends"
+      }
+    },
     "cosmopolis": {
       "characters": {
         "characters": [

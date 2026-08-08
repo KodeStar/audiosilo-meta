@@ -3975,6 +3975,146 @@
         ],
         "work": "april-morning"
       }
+    },
+    "apt-pupil": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A bright thirteen-year-old from a comfortable Southern California family, outwardly successful at school and skilled at presenting adults with the version of himself they expect. His private fascination with Nazi crimes leads him to identify an elderly fugitive and turn that knowledge into a means of coercion.",
+            "id": "todd-bowden",
+            "name": "Todd Bowden",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Arthur Denker"
+            ],
+            "description": "An elderly German living quietly in Santo Donato under the name Arthur Denker. Todd identifies him as Kurt Dussander, a former commandant of a Nazi extermination camp who escaped prosecution. Age and concealment have made him cautious, but he remains calculating when Todd threatens to expose him.",
+            "id": "kurt-dussander",
+            "name": "Kurt Dussander",
+            "reveal": {
+              "chapter": 1
+            }
+          },
+          {
+            "description": "Todd's father, a financially comfortable and trusting man who takes pride in his son's intelligence and school record. He accepts Todd's explanations readily and assumes that the adults around the boy are helping him maintain his promising future.",
+            "id": "richard-bowden",
+            "name": "Richard Bowden",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Todd's mother. Like her husband, she sees Todd as a well-adjusted high achiever and has little reason at first to question the reassuring accounts he gives of his time and schoolwork.",
+            "id": "monica-bowden",
+            "name": "Monica Bowden",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Rubber Ed"
+            ],
+            "description": "Todd's school guidance counselor. Informal in manner but conscientious, he notices when Todd's performance drops and insists on involving the family rather than accepting the boy's reassurances at face value.",
+            "id": "ed-french",
+            "name": "Ed French",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly Jewish survivor of the Nazi camps who shares a hospital room with Dussander. Illness and time have blurred some memories, but the presence of the man in the neighboring bed stirs recognition and recurring terror.",
+            "id": "morris-heisel",
+            "name": "Morris Heisel",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An investigator devoted to locating Nazi fugitives. He receives information that may identify the supposed Arthur Denker as a wanted camp official and begins the formal process of confirming the old man's past.",
+            "id": "isaac-weiskopf",
+            "name": "Isaac Weiskopf",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "apt-pupil"
+      },
+      "recaps": {
+        "ending": "Dussander's collapse while trying to dispose of a murdered vagrant places him in a hospital, where Morris Heisel, a camp survivor, gradually recognizes him. The report reaches Nazi hunter Isaac Weiskopf, and Dussander realizes that his assumed identity is about to fail. He kills himself with stolen medication before he can be taken into custody. Independently, Ed French checks the family story Todd and Dussander used to explain Todd's academic recovery. He discovers that the supposed grandfather was an impostor and confronts Todd. Todd murders French, takes a rifle and ammunition, and chooses a position overlooking a highway. He fires at passing motorists until police surround and kill him after several hours. The murders committed separately by Todd and Dussander, along with the body hidden at Dussander's house, leave physical evidence of the violence their association encouraged. Neither coercer nor captive exposes the other through their prepared safeguards; their own escalating acts bring about both endings.",
+        "in_short": "Thirteen-year-old Todd Bowden recognizes elderly Arthur Denker as Kurt Dussander, a fugitive Nazi camp commandant. Rather than report him, Todd demands detailed accounts of the camps. Their coercive relationship revives Dussander's cruelty and intensifies Todd's violent fantasies. When Todd's grades collapse, Dussander poses as his grandfather to deceive counselor Ed French; blackmail and forged records keep Todd's parents unaware. Both Todd and Dussander begin murdering vulnerable strangers. After Dussander suffers a heart attack during one killing, a hospitalized camp survivor recognizes him and alerts investigators. Dussander takes a fatal overdose as exposure closes in. French separately uncovers the false-grandfather scheme and confronts Todd. Todd kills him, then shoots at motorists from above a highway until police kill him. The pair's elaborate threats and concealments do not protect them: the habits of domination they cultivate eventually destroy them both.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In 1970s Southern California, thirteen-year-old Todd Bowden arrives at the home of an elderly man known as Arthur Denker and addresses him as Kurt Dussander. Todd has matched the man's face to photographs of a Nazi camp commandant who vanished after the war. He has gathered enough personal evidence to make the identification credible. Rather than report Dussander, Todd demands first-hand descriptions of the camps and threatens exposure if the old man refuses. Todd presents the demand as historical curiosity, but his questions concentrate on cruelty and control. Dussander initially denies everything, then recognizes that neither intimidation nor an appeal to decency will move the boy. Their arrangement begins as blackmail, with Todd treating the fugitive's fear as a source of private access and Dussander searching for a way to protect himself from a child who can destroy his hidden life.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Todd Bowden has identified his elderly neighbor Arthur Denker as the fugitive camp commandant Kurt Dussander. He withholds the discovery from the authorities and compels Dussander to recount atrocities in detail. Todd's demands become increasingly theatrical, including forcing the old man to wear a reproduction uniform and march. The stories disturb Todd's sleep and schoolwork but also deepen his fixation. Dussander, once terrified of exposure, begins recovering habits of calculation and authority as the past is repeatedly revived. He devises a safeguard intended to make Todd believe that evidence against the boy will surface if Dussander dies or is arrested. Todd responds with claims of his own precautions. Each therefore remains tied to the other by fear, even as each imagines gaining control. Todd continues to look like a successful, ordinary child to his trusting parents, but the secret lessons are displacing the academic discipline and social ease on which that appearance depends.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Todd's coercion of the hidden Nazi Dussander has become a long private apprenticeship in cruelty. Both suffer nightmares, and both discover that the relationship awakens impulses they cannot easily return to secrecy. Todd's grades fall sharply. Guidance counselor Ed French prepares to involve his parents, creating a threat unrelated to the pair's mutual blackmail. Dussander intervenes by posing as Todd's grandfather, adopting the name and manner of a concerned relative and collaborating in a false account of the boy's problems. Todd begins repairing his marks while his parents remain unaware of the deception. The success confirms that Dussander and Todd can function as accomplices as well as enemies. Outside school, Todd tests the power he has imagined by stalking vulnerable people, translating fantasy into deliberate violence. Dussander senses changes in the boy but is compromised by his own past and by the evidence Todd holds, leaving neither able to appeal to an ordinary authority without endangering himself.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Todd and Dussander remain bound by a secret that has altered them both. Dussander's impersonation of Todd's grandfather satisfies Ed French for the moment, and Todd restores his academic standing, preserving his parents' image of him as an exceptional son. That outward recovery conceals escalation. Todd murders people selected for their isolation and discovers that violence gives temporary release from the pressure surrounding school, family, and Dussander. Dussander likewise moves from remembered crimes to present ones, luring vulnerable men to his house. Their acts are separate rather than jointly planned, but the same relationship has licensed each to pursue domination in secret. Both continue maintaining respectable surfaces and both monitor the other for weakness. Dussander's age and physical decline make Todd think time may solve his problem, while Dussander remains alert to the possibility that the boy's instability will expose them before either safeguard can be used.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The blackmail relationship that began when Todd recognized Dussander has produced two concealed killers. Todd has recovered his grades through a false family story told to Ed French, while privately attacking strangers. Dussander also preys on vulnerable men. When one intended victim fights back, the effort brings on Dussander's heart attack. Todd is summoned and helps prevent the immediate discovery of the body at the house before medical help takes Dussander away. In the hospital, Dussander is placed beside Morris Heisel, an elderly Jewish man who survived the camps. Heisel is troubled by the face and voice of the patient calling himself Denker; memories return through dreams and fragments of recognition. Dussander senses the danger but cannot control his surroundings as he did at home. At the same time, the explanation used to protect Todd at school remains vulnerable because Ed French can compare the supposed grandfather with Todd's actual family. The two systems of concealment are beginning to fail independently.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Todd Bowden identifies Kurt Dussander, a fugitive Nazi commandant living as Arthur Denker, and blackmails him for accounts of mass murder. Their arrangement revives Dussander's predatory habits and helps turn Todd's fascination into violence. They deceive Todd's school by having Dussander pose as his grandfather, and each begins killing vulnerable strangers. Dussander suffers a heart attack during an attempted murder and enters a hospital, where camp survivor Morris Heisel recognizes him. Information reaches Nazi hunter Isaac Weiskopf, making exposure imminent. Dussander steals medication and takes a fatal overdose rather than face arrest. Ed French separately investigates the false-grandfather story and learns that Todd and the old man deceived him. When French confronts Todd, the boy kills him. Todd then takes a rifle to a position above a highway and shoots at motorists. Police surround him, and after several hours he is killed. The safeguards Todd and Dussander claimed to possess never decide their struggle; the violence each embraced breaks through the ordinary identities that had protected them.",
+            "through": {
+              "chapter": 30
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "apt-pupil"
+      }
     }
   }
 }

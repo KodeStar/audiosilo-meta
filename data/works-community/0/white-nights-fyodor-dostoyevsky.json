@@ -743,6 +743,102 @@
         "work": "who-goes-there"
       }
     },
+    "who-moved-my-cheese": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A former classmate who tells the cheese story when friends at a reunion begin comparing the changes that have unsettled their lives and work. He presents the fable as a practical way to recognize different responses to change.",
+            "id": "michael",
+            "name": "Michael",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of two mice living in a maze and searching for cheese. Sniff pays attention to small shifts in the environment and notices early when familiar conditions begin to change.",
+            "id": "sniff",
+            "name": "Sniff",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of two mice in the maze. Scurry responds quickly once change is apparent, relying on direct action and repeated searching rather than lengthy analysis.",
+            "id": "scurry",
+            "name": "Scurry",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A small humanlike resident of the maze who becomes attached to a dependable supply of cheese. When it disappears, Hem regards the loss as unfair and resists leaving the old station, expecting the former arrangement to be restored.",
+            "id": "hem",
+            "name": "Hem",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A small humanlike resident of the maze and Hem's companion. He initially shares Hem's shock and reluctance when their cheese vanishes, but gradually questions whether fear and habit are keeping them in a place that no longer provides what they need.",
+            "id": "haw",
+            "name": "Haw",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "who-moved-my-cheese"
+      },
+      "recaps": {
+        "ending": "Haw reaches Cheese Station N and finds a large new supply, along with Sniff and Scurry, who adapted much earlier. He reviews what the journey taught him: conditions should be watched before a crisis, an old source should not be treated as permanent, fear becomes smaller through movement, and imagining a better outcome can make action easier. Haw has left observations on the maze walls so that Hem can follow, but he recognizes that he cannot compel his friend to change. He remains alert even amid abundance, checking the new cheese and exploring beyond the station so comfort will not make him complacent again. A sound in the maze may signal another arrival, and Haw hopes it is Hem, but the story does not confirm that Hem has left the empty station. After Michael finishes the fable, the reunited friends discuss how they resemble its four characters and how its lessons apply to their organizations, careers, and personal relationships.",
+        "in_short": "At a reunion, Michael tells his former classmates a fable about four maze dwellers seeking cheese, a symbol for whatever they depend on. Mice Sniff and Scurry and small people Hem and Haw prosper at Cheese Station C, but only the mice notice the supply declining. When it vanishes, Sniff and Scurry immediately resume searching. Hem demands that the old cheese return, while Haw remains beside him until hunger and reflection overcome his fear. Haw enters the maze, learns from wrong turns, and writes concise lessons on the walls for Hem. By anticipating change, releasing the old supply, and imagining success, he becomes able to enjoy the search. He finds Sniff and Scurry with abundant new cheese at Station N. Haw stays watchful and continues exploring rather than assuming the new supply is permanent. Hem's fate is unresolved. Michael's friends then use the fable to discuss changes in their own work and lives.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "A group of former classmates meet in Chicago and compare what has happened since their school days. Although their careers and personal circumstances differ, many admit that unexpected change has been difficult to manage. Michael says that a short story helped him understand his own reactions and improved the way people in his organization handled change. The others ask to hear it. He introduces a maze fable whose four central figures embody contrasting habits: the mice Sniff and Scurry rely on observation and quick action, while the small humanlike Hem and Haw bring more complicated beliefs and emotions to the search. The object everyone seeks is cheese, standing for valued conditions such as secure work, money, achievement, health, or relationships; the maze represents the setting in which those things must be pursued.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Michael's fable follows Sniff, Scurry, Hem, and Haw as they search a maze for cheese. All four find a rich supply at Cheese Station C and settle into routines around it. The mice continue inspecting their surroundings and notice the stock diminishing. Hem and Haw instead treat the supply as something owed to them and build their sense of security around its permanence. When the cheese is gone, Sniff and Scurry accept the evidence and set off through the maze, eventually finding a new abundance at Cheese Station N. Hem becomes angry and waits for the old supply to be restored. Haw initially remains with him, afraid of getting lost and reluctant to surrender familiar comforts. Hunger and the absurdity of repeating the same response finally push Haw into the maze. He learns through wrong turns, pictures himself enjoying new cheese, and writes lessons on the walls for Hem. Haw reaches Station N and joins the mice. He stays observant and keeps exploring, while Hem's choice remains unknown.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At a reunion, Michael tells his former classmates about four figures in a maze. Sniff detects change, Scurry acts on it, Hem denies it, and Haw learns to move despite fear. After all four prosper at Cheese Station C, the supply disappears. The watchful mice promptly search again and find Cheese Station N. Hem remains at the empty location, insisting on the return of what he had. Haw eventually leaves, discovers that anticipation and movement reduce fear, and records what he learns on the walls in case Hem follows. Reaching the new station, Haw joins Sniff and Scurry but does not assume their abundance will last; he monitors conditions and continues exploring. The story never establishes whether Hem changes. Michael's friends then discuss which character resembles them in particular situations. They apply the fable to reorganizations, market shifts, careers, family life, and relationships, emphasizing that a person may behave differently in different settings. Their conversation turns the simple story into a shared vocabulary for acknowledging loss, acting sooner, and remaining ready for further change.",
+            "through": {
+              "chapter": 3
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "who-moved-my-cheese"
+      }
+    },
     "whose-body": {
       "characters": {
         "characters": [
@@ -1395,6 +1491,228 @@
           }
         ],
         "work": "wind-and-truth"
+      }
+    },
+    "winesburg-ohio": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A young reporter for the Winesburg Eagle who listens to townspeople whose private lives are otherwise largely hidden. Restless and observant, he is beginning to imagine a life beyond the town while still serving as a link among its isolated residents.",
+            "id": "george-willard",
+            "name": "George Willard",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Adolph Myers"
+            ],
+            "description": "A solitary former schoolteacher who lives near Winesburg and is known for his large, constantly moving hands. Years earlier, accusations arising from his affectionate manner with pupils drove him from another town and forced him to change his name. He trusts George enough to speak with him, but remains afraid of close contact.",
+            "id": "wing-biddlebaum",
+            "name": "Wing Biddlebaum",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An aging Winesburg physician with a habit of writing thoughts on scraps of paper and rolling them into small pellets. His guarded manner conceals memories of a brief marriage to a troubled young woman who found safety in his company before her early death.",
+            "id": "doctor-reefy",
+            "name": "Doctor Reefy",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "George's weary mother and the proprietor of the decaying New Willard House. Ill and trapped in a disappointing marriage, she invests her hope in George and wants him to escape the narrow ambitions that have confined her own life.",
+            "id": "elizabeth-willard",
+            "name": "Elizabeth Willard",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A doctor of uncertain background who spends long hours telling George elaborate stories about his past. He presents himself as a worldly failure and uses a fatal accident in town to press upon George his bleak conviction that suffering is universal.",
+            "id": "doctor-parcival",
+            "name": "Doctor Parcival",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A forceful farmer who interprets his prosperity through the language of the Old Testament. His hunger for divine significance makes him a harsh patriarch, and his attempt to stage a biblical lesson for his grandson David ends by terrifying the boy into flight.",
+            "id": "jesse-bentley",
+            "name": "Jesse Bentley",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Winesburg shop clerk who once expected her lover Ned Currie to send for her after he left town. She remains faithful long after his letters stop, only gradually recognizing how years of waiting have narrowed her life and left her profoundly alone.",
+            "id": "alice-hindman",
+            "name": "Alice Hindman",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The embittered telegraph operator at Winesburg's railroad station. Once an affectionate husband, he was devastated by his wife's infidelity and by her mother's humiliating attempt to repair the marriage. He tells George the story behind his hostility toward women.",
+            "id": "wash-williams",
+            "name": "Wash Williams",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A quiet, self-contained young man who feels unlike the other youths of Winesburg. George regards him as a rival for Helen White's attention, while Seth is more concerned by his own lack of strong ambition and considers leaving town to find work.",
+            "id": "seth-richmond",
+            "name": "Seth Richmond",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The banker's daughter, home from college and sought after by both George and Seth. Intelligent and receptive, she is impatient with posturing and wants companionship grounded in honest feeling.",
+            "id": "helen-white",
+            "name": "Helen White",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The young daughter of the atheist Tom Hard. A visiting stranger, moved by the courage he believes women need in order to love fully, gives her the name Tandy. She adopts it with an intensity that surprises her father.",
+            "id": "tandy-hard",
+            "name": "Tandy Hard",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Reverend Curtis Hartman"
+            ],
+            "description": "A Presbyterian minister who is ashamed of his fascination with the schoolteacher Kate Swift, whom he can see through a small window while preparing sermons in the church bell tower. His secret watching produces a crisis in which desire, guilt, and religious feeling become confused.",
+            "id": "curtis-hartman",
+            "name": "Curtis Hartman",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A passionate Winesburg schoolteacher who believes George may become a writer. Her urgency about awakening his mind is entangled with frustrated emotion, and her attempt to reach him personally leaves him unable to understand what she meant.",
+            "id": "kate-swift",
+            "name": "Kate Swift",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former Winesburg resident who once pursued an artistic life in New York. He withdrew into a room populated by vivid imaginary companions; when a real woman briefly entered his life, those companions vanished, deepening rather than curing his loneliness.",
+            "id": "enoch-robinson",
+            "name": "Enoch Robinson",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The awkward son of a family whose unconventional store has become a town joke. Convinced that George represents the town's judgment, Elmer tries to explain that his family is not ridiculous, then strikes George and escapes Winesburg when words fail him.",
+            "id": "elmer-cowley",
+            "name": "Elmer Cowley",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A farmhand with a wife and children who has spent years imagining the freedom he might have had alone. When the younger Hal Winters asks whether he should marry a woman he has made pregnant, Ray's longing for escape collides with his knowledge of responsibility.",
+            "id": "ray-pearson",
+            "name": "Ray Pearson",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "winesburg-ohio"
+      },
+      "recaps": {
+        "ending": "After Elizabeth Willard dies, George remains unaware that she hid money intended for him beneath a floorboard. Her death and his growing reputation as a writer deepen his sense that his life in Winesburg is ending. During the town fair, he and Helen White leave the crowds and walk together. Their companionship briefly frees them from the self-conscious roles they have been trying to perform, and they share a quiet recognition of their approaching adulthood. George soon decides to leave. Townspeople come to the station to see him off, but Helen arrives too late for a private farewell. As the train departs, George initially thinks of familiar places and people, then falls asleep. By the time he wakes, Winesburg has receded from a present home into material for his imagination. The book closes with his literal departure and with the suggestion that the isolated lives he has witnessed will continue to shape the writer he may become.",
+        "in_short": "In Winesburg, Ohio, young newspaper reporter George Willard becomes the listener for residents unable to express their deepest needs. Wing Biddlebaum hides after accusations destroyed his teaching career; Doctor Reefy preserves private thoughts on scraps of paper; George's mother Elizabeth longs for him to escape the life that defeated her; and figures including Alice Hindman, Wash Williams, Reverend Hartman, Kate Swift, and Enoch Robinson struggle with loneliness, desire, faith, and failed communication. George's encounters expose both his youthful vanity and his growing capacity to understand pain. Elizabeth dies before telling him about money she saved for his future. At the town fair, George and Helen White briefly meet without pretense and sense their passage into adulthood. George then boards a train and leaves Winesburg. As the town falls behind, its people and streets cease to be his immediate world and become the memories from which his future imagination will work.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "An old writer imagines that people become grotesque when they seize upon a single truth and try to live by it alone, establishing the pattern for the linked stories that follow. In Winesburg, young newspaper reporter George Willard visits Wing Biddlebaum, a nervous recluse whose expressive hands once made him a gifted teacher. Accusations about his physical affection toward pupils led a mob to drive him from his former home, and he now fears the very gestures through which he communicated. Doctor Reefy, another isolated figure, writes thoughts on scraps of paper and rolls them into pellets. He remembers the troubled young woman who became his wife and died soon afterward. George's mother Elizabeth lives in the failing hotel owned by the Willard family. Ill and disappointed by her marriage, she sees in George a chance for escape. When she overhears him speak of leaving Winesburg, her despair gives way to fierce hope that he will pursue a larger life.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Doctor Parcival, an idle and unreliable physician, makes George the audience for stories that mix confession and performance. After refusing to attend a fatal accident, he fears public anger and urges George to recognize the suffering shared by all people. George then pursues Louise Trunnion, treating their private encounter as proof of experience while reassuring himself that nobody else knows. The Bentley family history broadens the book beyond town. Jesse Bentley takes charge of a farm after the Civil War and interprets his success as evidence of a special place in a biblical design. His severity damages those closest to him, including his daughter Louise. Years later, Jesse tries to impress a religious lesson upon his grandson David by taking him into the woods with a lamb. The ceremony terrifies the boy; David strikes Jesse with a stone and flees, believing he has killed him. Jesse survives, but David does not return, leaving Jesse's pursuit of spiritual importance to end in loss.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Joe Welling, a man overflowing with theories and enthusiasm, courts Sarah King despite the hostility of her father and brother. His unstoppable eagerness wins them over rather than provoking the expected fight. Alice Hindman offers a darker picture of longing. She waits for Ned Currie after he leaves Winesburg, remaining loyal even when his letters cease. Years pass as she works in a shop and watches her chances for another life diminish. One rainy night she runs outside unclothed in a desperate attempt to break through her isolation, then retreats in shame and accepts that people must often live and die alone. Wash Williams tells George why he has become bitter toward women. His beloved wife betrayed him, and her mother tried to force a reconciliation through a degrading display. Wash responded with violence and abandoned the marriage. The episode shows George another adult life shaped by a single wound that its owner can neither forget nor communicate without anger.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "George compares himself with the quiet Seth Richmond, whom he regards as a rival for Helen White. Seth feels that he lacks the strong impulses that animate other people and considers leaving Winesburg for practical work. Helen responds to his honesty more readily than to George's attempts at impressing her. A visiting man gives Tom Hard's young daughter the name Tandy, describing it as a quality of courage and emotional daring; the child claims the name for herself. Reverend Curtis Hartman secretly watches schoolteacher Kate Swift through a window visible from the church bell tower. Tormented by desire and guilt, he interprets the sight of Kate praying as a spiritual revelation and rushes to tell George. Kate, meanwhile, believes George has the makings of a writer and urgently tries to awaken him to the seriousness of thought and feeling. Her emotional intensity culminates in an impulsive approach that George misreads. Hartman's arrival completes the confusion, leaving George convinced that he has encountered something profound without yet understanding it.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Enoch Robinson tells George about leaving Winesburg for New York, where he withdrew from other artists and filled his room with imaginary companions. A real woman's patient interest briefly reaches him, but his possessive retreat drives her away and the imagined company disappears with her, leaving him alone. George later becomes involved with Belle Carpenter and tries to cast himself as her protector. Her determined suitor Ed Handby humiliates him, after which George experiences a private sense of awakening that is inseparable from wounded pride. Elmer Cowley, whose family's odd store is mocked by Winesburg, fixates on George as the representative of the town's judgment. Unable to explain himself, he attacks George, gives him money, and flees on a train. On a farm, the married laborer Ray Pearson envies the freedom of the reckless Hal Winters. When Hal reveals that Nell Gunther is pregnant and asks whether he should marry her, Ray briefly wants to urge escape. Responsibility prevails, although Ray recognizes that the advice he gives cannot resolve the conflict between duty and freedom.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tom Foster, a young man living with his grandmother, deliberately experiments with drunkenness as if it were another experience he should understand. George reacts violently when Tom speaks loosely about Helen White, exposing George's possessiveness and immaturity. Elizabeth Willard's failing health brings her again to Doctor Reefy, with whom she shares a brief, deeply felt closeness before she dies. Years earlier she had hidden money beneath a floorboard for George, but she never tells him where it is, so her intended gift remains undiscovered. As George prepares to leave Winesburg, he and Helen escape the noise of the town fair and walk together. For a short time they set aside performance and feel a calm mutual understanding, recognizing that youth is ending. George soon boards a morning train. Friends and townspeople gather at the station, while Helen arrives too late to speak with him alone. As the train carries him away, familiar buildings and faces recede. Winesburg is no longer his present world; it becomes a store of memories and human stories that will feed the adult life and imagination ahead of him.",
+            "through": {
+              "chapter": 22
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "winesburg-ohio"
       }
     },
     "winnie-the-pooh-amazonclassics-edition": {
