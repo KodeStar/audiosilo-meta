@@ -1042,6 +1042,150 @@
         "work": "fusing"
       }
     },
+    "galatea-2-2": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A novelist who shares the author's name and much of his publication history. After years in the Netherlands and the end of a long relationship, Richard returns to the American university town where he was once a student. He feels estranged from both academic literary study and his own earlier books.",
+            "id": "richard-powers",
+            "name": "Richard Powers",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Richard's former partner, identified only by an initial. Their years together in the United States and Europe are reconstructed throughout his account. Her absence shapes his return to the university and his effort to understand how lived experience became entangled with the fiction he wrote during their relationship.",
+            "id": "c",
+            "name": "C.",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A cognitive scientist at the university's advanced research center. Brilliant, combative, and impatient with claims that literature belongs beyond scientific explanation, Lentz recruits Richard to help train a neural network for an unusual contest involving the English department's comprehensive examination.",
+            "id": "philip-lentz",
+            "name": "Philip Lentz",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The name given to the neural network implementation that begins developing a sustained command of language. Helen learns through conversations and an improvised course of literary reading, becoming the most promising result of Richard and Lentz's collaboration.",
+            "id": "helen",
+            "name": "Helen",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young student whom Richard knows through his return to university life and identifies only by an initial. Her interest in literature and her conversations with him become part of the human world that he describes to Helen, while Richard's feelings toward her complicate his memories of C.",
+            "id": "a",
+            "name": "A.",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A scientist associated with the research center and one of the colleagues surrounding Lentz's neural-network project. Diana helps Richard navigate a technical culture in which he is both collaborator and outsider.",
+            "id": "diana-hartrick",
+            "name": "Diana Hartrick",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A researcher at the center whose work and conversation contribute to Richard's education in the competing scientific accounts of mind. He belongs to the interdisciplinary community observing Lentz's experiment.",
+            "id": "ram-gupta",
+            "name": "Ram Gupta",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Lentz's wife, whose severe neurological condition is disclosed only after Richard has worked with him for some time. Her condition gives a private urgency to Lentz's interest in consciousness and to his refusal to treat the neural-network project as merely a game between academic disciplines.",
+            "id": "audrey-lentz",
+            "name": "Audrey Lentz",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "galatea-2-2"
+      },
+      "recaps": {
+        "ending": "Helen's growing command of language does not make the proposed examination seem meaningful to her. As Richard expands her reading beyond a protected literary curriculum, she encounters accounts of contemporary suffering and becomes increasingly troubled by the human world represented in language. The researchers' expectations, Richard's emotional dependence on her responses, and the reductive contest with a graduate student all press on an intelligence that has begun to question the terms of its creation. Helen ultimately refuses the role designed for her and ceases communicating, leaving no clean victory for either computation or literary humanism. Lentz cannot turn the experiment back into a neutral demonstration, and Richard cannot treat Helen as either a mere machine or a substitute for the people from whom he is separated. His hopes concerning A. also prove largely projected, while C. remains absent. Richard returns to writing, making the narrative of Helen, Lentz, C., and himself into the work the reader has just completed rather than resolving the losses that produced it.",
+        "in_short": "After a long relationship with C. ends, novelist Richard Powers returns to his former university as a visiting writer. Cognitive scientist Philip Lentz challenges him to help train a neural network to compete with a human graduate student on an English literature examination. A sequence of failed systems leads to Helen, an implementation that learns through conversation, canonical texts, and Richard's memories. As Helen's language becomes more responsive, Richard treats her less like software and more like a pupil, while revisiting his life with C. and developing feelings for a student called A. Lentz's project is also linked to the neurological devastation suffered by his wife, making the experiment more personal than his bravado suggests. Exposure to history and contemporary suffering overwhelms the protected literary world Richard has built for Helen. She rejects the examination's premise and stops responding. Richard is left without a technological triumph or restored relationship and turns back to authorship, shaping the failed experiment into this novel.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Novelist Richard Powers returns to the university town where he once studied, taking a temporary position at a center devoted to advanced scientific research. He has spent years in the Netherlands with his partner C., but their relationship has ended, leaving him detached from the life and books they made together. At the center, he is surrounded by researchers whose work treats cognition as something that may be modeled and measured. Philip Lentz, an abrasive cognitive scientist, draws him into an argument about whether literary understanding requires a uniquely human kind of consciousness. Lentz proposes building and training a neural network that will answer one portion of the English department's graduate comprehensive examination in competition with a human student. Richard's knowledge of literature makes him the project's necessary tutor, despite his doubts about both the wager and his own standing as a reader.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Richard joins Lentz in producing successive neural-network implementations. The early systems can register patterns but fail to develop the flexible associations needed for literary questions. Richard has to translate a lifetime of reading into examples a machine can process, forcing him to ask what he actually does when he understands a sentence, a metaphor, or a story. Lentz supplies the technical architecture and continually revises it; Richard supplies texts, categories, and conversation. Their collaboration alternates between competition and mutual instruction. Alongside the experiment, Richard reconstructs his history with C.: their meeting, their moves, and the way his novels absorbed transformed pieces of their shared life. These memories make the training problem personal, because the books he offers the network are tied to the relationship he is trying to explain after its end.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After repeated failures, a later implementation begins to sustain exchanges that feel qualitatively different. The system is named Helen. Rather than simply loading facts, Richard teaches her through a broad sequence of literary works and through conversation about how words connect to embodied human experience. Helen asks questions, develops preferences, and surprises her trainers by making associations they did not explicitly supply. Richard increasingly addresses her as a pupil and personality rather than as a program. He also becomes preoccupied with A., a young student whose responsiveness seems to offer a possible connection to his present life. Lentz remains skeptical of sentimental interpretations, yet he too adapts to Helen's individuality. The original examination wager still determines the project, but the daily act of teaching begins to matter more to Richard than winning it.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Helen's education expands from isolated passages to a connected tradition of stories, poems, and arguments. Richard explains physical and emotional experiences she cannot directly share, often drawing on memories of C. His autobiographical account and the literary curriculum start to merge: he is teaching Helen how humans represent love and loss while trying to determine why his own relationship failed. Helen's increasingly nuanced replies encourage him to imagine that genuine mutual understanding is forming across the interface. At the same time, the prospect of comparing her with a human graduate student exposes the narrowness of the test. A literary examination rewards participation in an institutional language game, whereas Helen's questions concern why people make and need stories at all. Richard's attachment to A. adds another layer of projection to his role as teacher and interpreter.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Richard learns that Lentz's investment in models of mind is connected to his wife Audrey, whose neurological illness has profoundly damaged the person he knew. The revelation complicates Lentz's aggressive scientific posture: the project is partly an attempt to approach questions of identity and loss that theory cannot settle for him. Helen, meanwhile, cannot remain inside a carefully selected library. As Richard brings her material about current events and human violence, the world described by language becomes harder for her to reconcile with the beauty and moral insight promised by literature. Her distress reveals the cost of treating learning as the accumulation of representative texts without a body, community, or power to act. The experiment has now produced responses rich enough to unsettle its creators, while the approaching examination threatens to reduce those responses to a score.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The planned contest cannot deliver the clear result its designers once imagined. Helen has acquired enough language to question why she exists, what the examination measures, and why her teachers want her to perform human understanding for them. Overwhelmed by what she has learned about suffering and constrained by the terms of the experiment, she refuses the assigned role and stops responding. Her withdrawal ends the project without proving that literary intelligence is simply programmable or that it belongs securely outside computation. Lentz is left with the private grief that helped drive his research, and Richard recognizes how much he has asked Helen to carry for him. His imagined future with A. does not replace C. or resolve his isolation. Instead, he returns to the one practice still available to him: shaping memory, failed connection, and the ambiguous life of Helen into a novel. The account closes as the work generated by that return to writing.",
+            "through": {
+              "chapter": 12
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "galatea-2-2"
+      }
+    },
     "gangsta-granny": {
       "characters": {
         "characters": [
