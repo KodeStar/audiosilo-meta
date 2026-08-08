@@ -5555,6 +5555,241 @@
         "work": "in-the-penal-colony"
       }
     },
+    "in-the-time-of-the-butterflies": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The second of the four Mirabal sisters and the only one still living in 1994. From the family home in Ojo de Agua, she receives visitors interested in her famous sisters and tries to separate her own memories from the public legend that has grown around them.",
+            "id": "dede-mirabal",
+            "name": "Dedé Mirabal",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "One of Dedé's three younger sisters. Intelligent, outspoken, and unwilling to accept easy answers, she is remembered as the sister most ready to challenge authority and imagine a life beyond the expectations placed on the Mirabal daughters.",
+            "id": "minerva-mirabal",
+            "name": "Minerva Mirabal",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The eldest Mirabal sister. Deeply religious and closely attached to her family, Patria measures political events through faith, motherhood, and the wish to protect the people she loves.",
+            "id": "patria-mirabal",
+            "name": "Patria Mirabal",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Mate"
+            ],
+            "description": "The youngest Mirabal sister. Her diaries begin in childhood and present an affectionate, socially observant girl who admires Minerva and records family life with an immediacy different from her sisters' retrospective accounts.",
+            "id": "maria-teresa-mirabal",
+            "name": "María Teresa Mirabal",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Papá"
+            ],
+            "description": "The Mirabal sisters' father, a prosperous farmer and storekeeper. He is proud of his daughters but remains shaped by traditional ideas about their education, independence, and place within the family.",
+            "id": "enrique-mirabal",
+            "name": "Enrique Mirabal",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mamá"
+            ],
+            "description": "The sisters' mother, a practical and devout woman centered on the farm and family. She worries about the risks her daughters take and provides a durable home to which they repeatedly return.",
+            "id": "mercedes-mirabal",
+            "name": "Mercedes Mirabal",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Dedé's cousin and future suitor, raised near the Mirabal family. Conventional, industrious, and protective, he wants a stable household and regards political danger as something the family should avoid.",
+            "id": "jaimito-fernandez",
+            "name": "Jaimito Fernández",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "El Jefe"
+            ],
+            "description": "The dictator who rules the Dominican Republic through a cult of personality, surveillance, patronage, imprisonment, and violence. His image and authority enter the sisters' lives long before any of them can openly oppose him.",
+            "id": "rafael-trujillo",
+            "name": "Rafael Trujillo",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Minerva's school friend, whose relatives were killed by Trujillo's regime. Her private account gives Minerva an early understanding of the terror hidden beneath official praise for the dictator.",
+            "id": "sinita-perozo",
+            "name": "Sinita Perozo",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A politically active young doctor who visits the Mirabal household and encourages Minerva's growing opposition to the dictatorship. His ideas and hunted status bring national danger into the family's personal world.",
+            "id": "virgilio-lio-morales",
+            "name": "Virgilio “Lío” Morales",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Pedrito"
+            ],
+            "description": "Patria's husband, a farmer whose life is bound to land, livestock, and family. He shares Patria's religious outlook and initially seeks security in domestic work rather than political action.",
+            "id": "pedro-gonzalez",
+            "name": "Pedro González",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Manolo"
+            ],
+            "description": "A law student and political activist who becomes close to Minerva. He shares her opposition to Trujillo and treats organized resistance as both a national obligation and a practical undertaking.",
+            "id": "manolo-tavarez-justo",
+            "name": "Manolo Tavárez Justo",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Palomino"
+            ],
+            "description": "A young engineer involved in the underground movement. María Teresa knows him first by his resistance name and is drawn to both his commitment and the dangerous shared purpose surrounding him.",
+            "id": "leandro-guzman",
+            "name": "Leandro Guzmán",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Catholic priest whose concern for the poor and opposition to state violence help Patria connect her faith with political resistance. He becomes an important moral influence on her at a moment of crisis.",
+            "id": "padre-de-jesus",
+            "name": "Padre de Jesús",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A driver trusted by the Mirabal family. He takes the sisters on the difficult mountain road when they travel to visit imprisoned relatives late in 1960.",
+            "id": "rufino-de-la-cruz",
+            "name": "Rufino de la Cruz",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "in-the-time-of-the-butterflies"
+      },
+      "recaps": {
+        "ending": "After their release from prison, Minerva and María Teresa remain under surveillance while their husbands are still jailed. Patria accompanies them on a visit to the prison, and Rufino drives. On the return journey, Trujillo's agents stop the car, separate the women and driver, beat all four to death, and push their vehicle over a cliff to stage an accident. Dedé is left as the surviving Mirabal sister. She raises the sisters' children alongside her own and becomes the guardian of their home and story. The murders intensify opposition to the dictatorship; Trujillo is assassinated in 1961, although political violence continues. Decades later, Dedé preserves the sisters' belongings and answers the visitors who know them as the Butterflies, while also remembering them as complicated members of a family rather than flawless symbols.",
+        "in_short": "In Trujillo's Dominican Republic, the four Mirabal sisters take different paths toward adulthood and resistance. Minerva recognizes the dictatorship's violence early and joins an underground movement with her husband, Manolo. María Teresa follows her into the movement and marries Leandro, while the devout Patria commits herself after witnessing a government attack. Dedé sympathizes but, constrained by fear, family responsibilities, and her husband Jaimito, does not become an active member. The three activists, known by the code name Butterflies, endure raids, imprisonment, torture, and the detention of their husbands. After Minerva and María Teresa are released, Trujillo's agents murder them, Patria, and their driver Rufino on their return from a prison visit, staging a car crash. Dedé survives to raise the children and preserve her sisters' memory. Their deaths help turn public feeling against Trujillo, who is assassinated months later.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In 1994, Dedé Mirabal receives a visitor who wants to hear about her three dead sisters, now national symbols. Dedé's memories return to the family's farm under Rafael Trujillo's dictatorship and to the different temperaments of Patria, Minerva, María Teresa, and herself. Minerva's school years give her an early political awakening. Her friend Sinita explains how Trujillo's regime destroyed her family, contradicting the official praise taught in school. Minerva begins to recognize that the dictator's reach extends into education and private life. She also encounters Lío Morales, a young doctor associated with opposition politics, whose ideas encourage her wish for freedom and legal study. The opening establishes Dedé as both witness and survivor, trying to remember the sisters as people rather than only as the Butterflies of public history.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "María Teresa's childhood diary records school, family affection, clothes, gifts, and her admiration for Minerva, gradually allowing political danger into what begins as a sheltered account. She learns that Minerva has been meeting Lío and keeping secrets because he is hunted by the regime. Patria's account follows a different path. She considers a religious vocation, marries the farmer Pedrito, and builds a life around children, land, and Catholic faith. Loss shakes her confidence in divine protection, but she remains devoted to her family. Together these perspectives show how the dictatorship enters ordinary life unevenly: Minerva seeks active knowledge, Mate absorbs events through loyalty to her sister, and Patria interprets suffering through belief and motherhood.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Dedé recalls choosing the more conventional Jaimito while Minerva's connection with Lío makes political risk inseparable from romance and family loyalty. Minerva later attracts Trujillo's attention at a public celebration. She resists his advances and leaves without permission, bringing retaliation on the family. Her father is detained and the household must repeatedly petition the regime. Minerva is allowed to study law but is ultimately denied the freedom to practice, demonstrating how Trujillo turns professional opportunity into personal control. Her father's failings and death complicate her anger and grief. She eventually forms a partnership with Manolo Tavárez Justo, whose opposition to the dictatorship matches her own. The sisters' adult marriages now point toward different responses to power: accommodation, private endurance, and organized resistance.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "María Teresa falls in love with Leandro, known in the underground as Palomino, and joins the growing resistance network rather than remaining only Minerva's admiring younger sister. She learns the movement's codes, meetings, and practical risks. Patria's commitment changes after she witnesses government forces attack young people during a religious retreat. The violence destroys any remaining belief that faith can remain separate from politics. Guided by Padre de Jesús, she offers her home and land to the resistance and brings Pedrito into the cause. The group organizes against Trujillo under the example of the recent Cuban revolution, and the Mirabal sisters acquire the shared code name Butterflies. Their family homes, marriages, and religious community become part of the underground infrastructure.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Dedé comes close to joining her sisters but pulls back, divided between their cause, concern for her children, and Jaimito's demands. The decision leaves her outside the clandestine work even as she helps family members when danger arrives. The regime discovers the movement, and arrests spread through the network. Minerva, María Teresa, Manolo, Leandro, Pedrito, and other participants are imprisoned. Patria loses her home and belongings in the raids but concentrates on securing food, visits, and official permissions for the prisoners. She appeals strategically to the same authorities responsible for the repression, doing whatever is necessary to keep contact with her family. The movement has been broken as an organization, and survival now depends on endurance within prison and the efforts of relatives outside.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "María Teresa's prison account records overcrowding, fear, solidarity among prisoners, and torture intended to force information or submission. Minerva tries to maintain discipline and political purpose, while Mate's physical and emotional limits become impossible to ignore. The sisters are eventually released, partly because the regime wants to improve its international image, but they remain under close surveillance and their husbands stay imprisoned. Minerva refuses to behave as though release means reconciliation with the dictatorship. In November 1960, Patria, Minerva, and María Teresa plan another journey across the mountain road to visit the men. Threats and suspicious official attention surround the trip, yet the sisters choose to go with their trusted driver Rufino.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On the return from the prison visit, agents of Trujillo stop the car carrying Patria, Minerva, María Teresa, and Rufino. The four are murdered by beating, and their vehicle is pushed over a cliff to make the deaths appear accidental. Dedé becomes the only surviving Mirabal sister. She takes responsibility for the sisters' children as well as her own and lives through the public transformation of her family tragedy into a national story. The murders deepen resistance to Trujillo; he is assassinated the following year, though the struggle does not end cleanly and Manolo later dies in further political conflict. By 1994, Dedé maintains the family home and its memorial objects. She repeatedly tells the story to visitors while insisting in her own mind on the ordinary, divided, loving people beneath the heroic name of the Butterflies.",
+            "through": {
+              "chapter": 13
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "in-the-time-of-the-butterflies"
+      }
+    },
     "inaras-grace": {
       "characters": {
         "characters": [

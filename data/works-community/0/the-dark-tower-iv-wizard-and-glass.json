@@ -797,6 +797,210 @@
         "work": "the-darkest-minds"
       }
     },
+    "the-daughter-of-time": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A Scotland Yard inspector confined to a hospital bed with a broken leg. Bored by novels and celebrated criminal cases, he turns to a historical mystery after a portrait makes him question the received account of Richard III. His professional interest in faces, testimony, motive, and the way stories harden into accepted fact guides the inquiry.",
+            "id": "alan-grant",
+            "name": "Alan Grant",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A successful actress and Grant's longtime friend. Seeing that ordinary reading cannot relieve his boredom, she brings him portraits of disputed historical figures and encourages him to investigate whichever face catches his attention.",
+            "id": "marta-hallard",
+            "name": "Marta Hallard",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The fifteenth-century English king whose portrait captures Grant's attention. Commonly remembered as a calculating usurper who murdered his young nephews, he becomes the subject of Grant's attempt to separate contemporary evidence from the version promoted after his defeat.",
+            "id": "richard-iii",
+            "name": "Richard III",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Grant's dependable colleague at Scotland Yard, who visits him in hospital and helps connect the bedridden inspector's habits of police work with an inquiry conducted through books and records.",
+            "id": "sergeant-williams",
+            "name": "Sergeant Williams",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Edward V"
+            ],
+            "description": "The elder son of Edward IV and Elizabeth Woodville. He succeeds his father as a boy but is never crowned, and he and his younger brother become known to later history as the Princes in the Tower.",
+            "id": "edward-v",
+            "name": "Edward V",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Richard of Shrewsbury",
+              "Duke of York"
+            ],
+            "description": "Edward IV's younger son and the brother of Edward V. He joins Edward in the royal apartments at the Tower of London, and the later disappearance of both boys forms the central accusation against their uncle Richard III.",
+            "id": "richard-duke-of-york",
+            "name": "Richard, Duke of York",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The widow of Edward IV and mother of the two princes. Her actions during Richard III's reign are important to Grant because they offer a way to compare what someone close to the boys did at the time with what later histories say she must have believed.",
+            "id": "elizabeth-woodville",
+            "name": "Elizabeth Woodville",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young American acquaintance of Marta's with the time and enthusiasm to search libraries and historical collections. He becomes Grant's mobile research partner, bringing primary-source findings to the hospital and sharing the excitement of testing a famous accusation as if it were an unsolved case.",
+            "id": "brent-carradine",
+            "name": "Brent Carradine",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Tudor king who defeats Richard III at Bosworth and establishes a new dynasty. Grant and Carradine examine his position, conduct, and control of the official record when considering who benefited from the princes' removal and from Richard's ruined reputation.",
+            "id": "henry-vii",
+            "name": "Henry VII",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Lancastrian churchman and political opponent of Richard III who later becomes a leading servant of Henry VII. His connection to the tradition used by Thomas More makes him important when Grant asks where the familiar story originated.",
+            "id": "john-morton",
+            "name": "John Morton",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The statesman and author whose unfinished history supplied one of the most influential accounts of Richard III. Because More was a child during Richard's reign and wrote years later from partisan testimony, Grant treats his vivid narrative as a claim requiring corroboration rather than as eyewitness evidence.",
+            "id": "thomas-more",
+            "name": "Thomas More",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The bishop whose disclosure of Edward IV's earlier marriage contract was used to argue that Edward's children by Elizabeth Woodville were illegitimate. His evidence becomes central to the disputed legal basis for Richard III's accession.",
+            "id": "robert-stillington",
+            "name": "Robert Stillington",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Sir James Tyrell"
+            ],
+            "description": "A royal servant whom a later Tudor account identifies as arranging the princes' deaths on Richard III's orders. Grant and Carradine scrutinize the alleged confession and the absence of a surviving official record for it.",
+            "id": "james-tyrell",
+            "name": "James Tyrell",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Sir Clements Markham"
+            ],
+            "description": "A historian whose earlier defense of Richard III confronts Carradine at the end of the inquiry with the deflating news that their supposedly new case has been made before, though it has scarcely altered the popular story.",
+            "id": "clements-markham",
+            "name": "Clements Markham",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-daughter-of-time"
+      },
+      "recaps": {
+        "ending": "Grant and Carradine decide that the traditional case against Richard III lacks contemporary support and that Henry VII had a stronger practical reason to ensure the princes could never challenge the Tudor settlement. Henry also controlled the later record, suppressed the act explaining Richard's title, and did not charge Richard with the boys' murder when listing alleged crimes after Bosworth. Carradine is exhilarated by what he thinks is a major original discovery and plans to write about it. He then learns that historians, notably Clements Markham, had already assembled a defense of Richard long before them. His disappointment deepens when Grant explains that public history often preserves a memorable false version even after specialists have corrected it. Grant compares this persistence to the accepted story of Tonypandy, which his own police knowledge had shown him was untrue. The investigation therefore closes without a courtroom resolution: its lasting result is a lesson about evidence, propaganda, and repetition.",
+        "in_short": "Hospitalized with a broken leg, Scotland Yard inspector Alan Grant becomes intrigued by Richard III's portrait and questions whether its face fits the familiar murderer of the Princes in the Tower. With actress Marta Hallard supplying the idea and young researcher Brent Carradine supplying documents, Grant treats the past as a cold case. They find that the standard account rests heavily on Thomas More's late, partisan narrative; contemporary conduct and records do not support the simple story. Elizabeth Woodville's dealings with Richard, the legal declaration that Edward IV's children were illegitimate, and the absence of the murders from Henry VII's charges against Richard all trouble the prosecution. Henry, by contrast, needed the princes removed if his marriage to their sister was to bolster his weak claim, and his regime controlled and suppressed key records. Grant and Carradine conclude that Richard's guilt is unproved and Henry is the more plausible beneficiary. Carradine then discovers that earlier historians had reached much the same conclusion, illustrating how a vivid political legend can outlive scholarly correction.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Scotland Yard inspector Alan Grant is immobilized in hospital with a broken leg and increasingly irritated by the books friends bring to distract him. His actress friend Marta Hallard proposes a different occupation: studying portraits of historical figures whose reputations remain disputed. Grant, who prides himself on reading character in faces, is caught by a portrait of Richard III. The man he sees does not match his expectation of the calculating monster blamed for murdering his nephews, the Princes in the Tower. Grant begins reading popular histories and historical fiction about Richard's rise after Edward IV's death, but he is dissatisfied by their assumptions, melodrama, and circular dependence on familiar accusations. He decides to approach the matter as he would an old police file, asking what evidence is contemporary, which witnesses had access to facts, and who had a motive to shape the story.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Marta introduces Grant to Brent Carradine, a young American willing to do the physical research that Grant cannot manage from bed. Together they separate the later Tudor narrative from records and conduct closer to Richard's reign. The accepted outline says that Richard took charge of Edward IV's sons, became king in place of the uncrowned Edward V, and had both boys killed in the Tower. Yet Grant finds reasons to distrust the account associated with Thomas More: More was a child at the time, wrote long afterward, and drew on a political tradition connected to Richard's enemy John Morton. The inquiry also focuses on Elizabeth Woodville. Her later willingness to let her daughters appear at Richard's court seems difficult to reconcile with certainty that he had just murdered her sons. Grant and Carradine do not yet have an alternative solution, but the prosecution they inherited no longer looks like evidence tested against behavior and dates.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Carradine's searches reveal that Richard's accession was not presented at the time merely as a seizure by force. Bishop Robert Stillington disclosed that Edward IV had previously contracted a marriage, making his later marriage to Elizabeth Woodville invalid and their children legally illegitimate. Parliament embodied that claim in an act explaining Richard's title. The finding changes the motive Grant had been taught to assume: once the princes were barred from succession, killing them would add danger without being necessary to Richard's crown. They also note the lack of a clear contemporary accusation or official response establishing that the boys were murdered during Richard's reign. Grant keeps returning to ordinary investigative standards. Reputation cannot substitute for proof, and actions by the boys' mother and by political participants must be weighed more heavily than a polished story written under the dynasty that defeated Richard.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Grant and Carradine turn their attention to Henry Tudor, who defeated Richard at Bosworth and became Henry VII. His hereditary claim was weak, and his promised marriage to Edward IV's daughter Elizabeth strengthened it only if she and her brothers were treated as legitimate. That settlement made the missing princes potential rivals whose existence threatened him. Henry ordered the act stating their illegitimacy suppressed, while his post-Bosworth list of charges against Richard did not accuse Richard of killing them. The omission is especially striking because such a charge would have been powerful if it were already known to be true. Grant also questions the much later story that James Tyrell confessed to arranging the murders for Richard: no normal trial record, public confession, or corroborating bodies survive to give the tale the weight usually assigned to it. The inquiry's center has shifted from whether Richard looked guilty to which political regime possessed motive, opportunity, and control of the record.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Grant and Carradine finish their reconstruction convinced that Richard III's traditional conviction depends on Tudor-era storytelling rather than a sound contemporary case. Richard had little need to kill nephews already declared outside the succession, while Henry VII needed both their disappearance and their sister's restored legitimacy to secure his new dynasty. Henry's government could suppress the act explaining Richard's title and shape the version inherited by later writers. The investigators therefore regard Henry as the more plausible beneficiary of the princes' deaths, while acknowledging that the centuries-old case cannot yield a demonstrable verdict. Carradine believes their argument is new and dreams of publishing it, only to discover that earlier historians such as Clements Markham had already defended Richard on similar grounds. Grant explains why the popular image survived: a dramatic falsehood can remain common knowledge even when contrary evidence is available to specialists. He compares it with the Tonypandy story, another public legend he knows from professional experience to be false. The hospital investigation ends as an inquiry not only into Richard but into how history is manufactured and remembered.",
+            "through": {
+              "chapter": 17
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-daughter-of-time"
+      }
+    },
     "the-dead-girls-dance": {
       "characters": {
         "characters": [
