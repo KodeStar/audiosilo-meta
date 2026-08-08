@@ -1091,6 +1091,129 @@
         "work": "call-me-by-your-name"
       }
     },
+    "call-of-cthulhu": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A Boston man who becomes executor of his late granduncle's papers. His attempt to organize notes about a strange sculpture leads him through separate accounts of dreams, cult activity, and a disaster at sea. He presents the assembled evidence while fearing that learning the whole pattern has placed him in danger.",
+            "id": "francis-wayland-thurston",
+            "name": "Francis Wayland Thurston",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Thurston's late granduncle, a professor emeritus of Semitic languages at Brown University. At his death he leaves a locked box containing a disturbing clay relief, scattered notes, and testimony he gathered about related events over many years.",
+            "id": "george-gammell-angell",
+            "name": "George Gammell Angell",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young sculptor from Providence who brings Professor Angell a newly made relief bearing an unknown creature and unfamiliar symbols. He says the design came from vivid dreams that began after an earthquake and were shared during a period of fever.",
+            "id": "henry-anthony-wilcox",
+            "name": "Henry Anthony Wilcox",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A New Orleans police inspector who consults archaeologists about a small green-black idol seized during a raid in the Louisiana swamps. His careful account gives Angell an earlier, independent record of the same creature and writing seen in Wilcox's sculpture.",
+            "id": "john-raymond-legrasse",
+            "name": "John Raymond Legrasse",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Princeton anthropologist who examines Legrasse's idol at an academic meeting. He recognizes it as nearly identical to an object associated with a secretive coastal cult he encountered among an Arctic people decades earlier.",
+            "id": "william-channing-webb",
+            "name": "William Channing Webb",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An elderly sailor captured in Legrasse's swamp raid. More informed than the other prisoners, he explains that the cult worships ancient beings from beyond Earth and expects their sunken high priest Cthulhu to rise when the conditions are right.",
+            "id": "castro",
+            "name": "Castro",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A vast extraterrestrial entity represented with a roughly human outline, a tentacled head, wings, and claws. Cult testimony identifies him as the sleeping high priest of older beings, confined with them in the drowned stone city of R'lyeh yet able to trouble receptive minds through dreams.",
+            "id": "cthulhu",
+            "name": "Cthulhu",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Norwegian sailor and mate of the schooner Emma. He survives a violent encounter in the South Pacific and leaves a private written account with enough detail to connect the voyage to Professor Angell's research.",
+            "id": "gustaf-johansen",
+            "name": "Gustaf Johansen",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "call-of-cthulhu"
+      },
+      "recaps": {
+        "ending": "Johansen's manuscript says that the sailors accidentally freed Cthulhu after entering the risen city of R'lyeh. Johansen and one companion escaped to the yacht Alert while the creature killed or scattered the others. Johansen drove the vessel directly into Cthulhu, whose disrupted body immediately began to reform, and only Johansen was still alive when another ship found the drifting yacht. He later died in Norway under suspicious circumstances. Thurston now sees Wilcox's dreams, Legrasse's cult, and the Alert's voyage as evidence of one hidden reality: Cthulhu and related beings exist, and their temporary emergence ended only when R'lyeh sank again. Convinced that Angell and Johansen were murdered for what they knew, Thurston expects the cult may also kill him. He leaves his account with the plea that the assembled papers remain concealed rather than draw anyone else toward the same knowledge.",
+        "in_short": "Francis Wayland Thurston inherits papers from his granduncle, Professor Angell, and investigates a clay image made by the sculptor Henry Wilcox during a wave of disturbing dreams. Angell's notes connect it to Inspector Legrasse's earlier raid on a murderous Louisiana cult whose idol depicts Cthulhu, an ancient being said to sleep in the drowned city of R'lyeh. A newspaper report leads Thurston to the account of Norwegian sailor Gustaf Johansen. Johansen's crew found R'lyeh temporarily raised above the Pacific and opened a structure that released Cthulhu. The being killed several men, but Johansen escaped by ramming it with a yacht before the city sank again. Johansen later died mysteriously. Thurston concludes that the cult and its god are real, that Angell and Johansen may have been silenced, and that his own life is now threatened by the knowledge he has assembled.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Francis Wayland Thurston inherits a locked box after the death of his granduncle, Professor George Gammell Angell. It contains notes labeled as research into a Cthulhu cult and a clay relief showing an unfamiliar symbol and a monstrous figure. The relief was made by Henry Anthony Wilcox, a young sculptor who asked Angell to identify writing he had seen in a dream. After a mild earthquake, Wilcox experienced repeated visions of enormous wet stone structures and heard sounds he rendered as names including Cthulhu and R'lyeh. During the same weeks he became feverish, then recovered and lost interest in the dreams. Angell had collected reports showing that artists and other sensitive people around the world suffered unusual dreams or agitation during that period, while most people did not. Thurston initially suspects that Wilcox learned of Angell's research and staged the episode, but conversations with the sculptor convince him that the account was sincere. He then turns to an older part of Angell's papers concerning a police inspector and a matching idol.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Angell's earlier record describes New Orleans police inspector John Raymond Legrasse presenting a strange idol to an archaeological meeting in 1908. Legrasse had seized it during a raid in the Louisiana swamps after women and children disappeared from a nearby community. Police found a violent nighttime ceremony around the idol and captured several participants. The scholars cannot identify its material, writing, or artistic tradition, but Professor William Channing Webb recalls seeing a nearly identical object linked to an isolated Arctic cult. A prisoner named Castro explains that scattered groups worship ancient beings who came to Earth before humanity. Their high priest Cthulhu lies preserved in the drowned city of R'lyeh and can reach human minds through dreams. The cult expects the city to rise when the stars are properly aligned, allowing Cthulhu's return. The close agreement between Legrasse's evidence, Webb's encounter, and Wilcox's later sculpture overturns Thurston's suspicion of a hoax. He also questions Angell's sudden death after the professor was jostled by a sailor and begins to wonder whether the cult deliberately silenced him.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Thurston finds a newspaper account of a derelict yacht recovered in the Pacific with one survivor, Norwegian sailor Gustaf Johansen, and an idol resembling Legrasse's. He travels to Australia to inspect the object, then to Norway, where Johansen's widow gives him her late husband's English manuscript. Johansen records that the schooner Emma was attacked by the armed yacht Alert after being ordered away from certain waters. The Emma's crew prevailed, took the Alert, and followed its course to a newly risen island of massive, disorienting stone structures. Opening a great portal in the city released Cthulhu. Most of the sailors were killed or vanished; Johansen and one companion reached the Alert. Johansen drove the yacht into the pursuing being, rupturing its body, but saw it begin to reform as he escaped. The city sank again, his companion died, and Johansen alone was alive when another ship found the yacht. His own later death under suspicious circumstances convinces Thurston that both he and Angell may have been murdered by the cult. Thurston finishes his record believing Cthulhu's emergence was real, fearing his knowledge has doomed him, and asking that the papers not be made public.",
+            "through": {
+              "chapter": 3
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "call-of-cthulhu"
+      }
+    },
     "camille": {
       "characters": {
         "characters": [
@@ -1440,6 +1563,114 @@
           }
         ],
         "work": "can-you-keep-a-secret-sophie-kinsella"
+      }
+    },
+    "candida": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The wife of James Morell and the quietly commanding center of his household. Warm, perceptive, and practical, she manages the domestic life that supports her husband's public success. Her return home with the young poet Marchbanks brings an unspoken tension into the family.",
+            "id": "candida-morell",
+            "name": "Candida Morell",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A popular Church of England clergyman and Christian Socialist speaker, married to Candida. Energetic, confident, and generous, he moves easily between sermons, political lectures, and charitable work. He assumes that his happy marriage and public usefulness rest on secure foundations.",
+            "id": "reverend-james-mavor-morell",
+            "name": "Reverend James Mavor Morell",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A sensitive eighteen-year-old poet from a wealthy family whom Morell once found distressed and alone. Awkward and fearful in ordinary company, he becomes intense and eloquent when speaking about Candida, whom he regards as trapped by the demands of her husband's household.",
+            "id": "eugene-marchbanks",
+            "name": "Eugene Marchbanks",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Candida's father, a blunt and prosperous businessman whose firm has been criticized for poor labor practices. He dislikes Morell's socialism and moral confidence, but hopes to restore friendly relations when contact with his son-in-law becomes useful to him.",
+            "id": "mr-burgess",
+            "name": "Mr Burgess",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Prossy"
+            ],
+            "description": "Morell's highly capable typist and secretary. Her brusque efficiency conceals a deep personal attachment to her employer, which makes her impatient with the stream of admirers who demand his time.",
+            "id": "proserpine-garnett",
+            "name": "Proserpine Garnett",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Morell's earnest young curate. He admires Morell's preaching and tries to copy his manner, while lacking his mentor's confidence and force. His straightforward observations help reveal feelings in the household that others leave unspoken.",
+            "id": "reverend-alexander-mill",
+            "name": "Reverend Alexander Mill",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "candida"
+      },
+      "recaps": {
+        "ending": "Morell and Marchbanks ask Candida to choose between them. Morell offers his strength, reputation, and ability to protect her; Marchbanks offers his need, imagination, and the life of the poet. Candida rejects the assumption that either man can dispose of her and examines what each has received from her care. She chooses the more dependent man: Morell, whose impressive public identity rests on a domestic security he scarcely recognizes. The answer restores their marriage but strips away his complacent belief that he alone is the strong partner. Marchbanks understands her decision and does not collapse under it. Instead he prepares to leave, carrying a private insight that he will not explain to the others and turning toward an independent artistic life. Candida and Morell remain together with a clearer awareness of the labor and affection on which their home depends, while Marchbanks departs changed rather than defeated.",
+        "in_short": "The confident clergyman James Morell believes his public work and marriage to Candida are equally secure. Candida returns home accompanied by Eugene Marchbanks, a frightened but visionary young poet who loves her and claims that Morell's busy household exploits her. Morell initially dismisses him, then loses his composure when Eugene directly challenges his right to Candida. Around them, Candida's businessman father Burgess seeks respectability, secretary Proserpine Garnett hides her love for Morell, and the curate Lexy Mill imitates his employer. Candida eventually makes the two rivals state what they can offer and refuses to be treated as a prize. She chooses Morell as the more vulnerable of them, explaining through her choice that his apparent strength depends on the home and confidence she creates. Marchbanks accepts the truth and leaves to pursue his own life, while the Morells remain married with their balance of dependence newly exposed.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Reverend James Morell is a successful London clergyman whose Christian Socialist sermons and lectures fill his schedule. His secretary, Proserpine Garnett, guards his time while privately loving him, and his curate Lexy Mill admires and imitates him. Candida's father, Mr Burgess, visits after a long estrangement. Morell condemns Burgess's treatment of workers, but Burgess has improved his public standing and wants a reconciliation useful to his business. Candida then returns from an outing with Eugene Marchbanks, an intensely shy young poet whom Morell previously helped. In Candida's presence Eugene feels protected and speaks with unexpected confidence. Once alone with Morell, he declares that he loves Candida and accuses the clergyman of taking for granted the work that sustains his comfortable life. Morell first treats the claim as absurd, but Eugene's conviction begins to disturb his certainty.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Morell tries to maintain his normal round of public duties, but Marchbanks continues to challenge the complacency beneath his confident manner. The poet argues that Candida deserves freedom from the household's constant claims, while Morell assumes that his strength and achievements make him the natural protector. Their confrontation grows serious enough that Morell is shaken and briefly responds with physical anger. Candida sees that something has altered between them without immediately forcing an explanation. The other members of the household provide parallel examples of concealed desire and social performance: Proserpine's attachment to Morell is increasingly evident, Burgess mixes family friendliness with self-interest, and Lexy repeats borrowed ideals without understanding the private tensions around him. As the evening approaches, Candida's apparently ordinary home has become the setting for a direct contest between Morell's established marriage and Marchbanks's imaginative claim on her.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After the others leave, Morell and Marchbanks force the conflict into the open and ask Candida to choose. She refuses the role of a possession to be awarded and makes each man explain what he brings. Morell points to his maturity, strength, and worldly success. Marchbanks offers a poet's vision and admits his need for her, but he also recognizes that she must decide for herself. Candida reviews the unnoticed care she has given her husband and household. She chooses the more vulnerable man, meaning Morell: his celebrated confidence depends upon the refuge and encouragement she supplies, whereas Marchbanks possesses an inner life capable of carrying him beyond her. Morell is relieved but humbled by this account of their marriage. Marchbanks accepts the decision and prepares to depart. He leaves with a private understanding of his own future, no longer merely the frightened dependent Morell once rescued. Candida and Morell stay together, with the hidden source of his strength now acknowledged between them.",
+            "through": {
+              "chapter": 3
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "candida"
       }
     },
     "candide": {

@@ -760,6 +760,203 @@
         "work": "the-general-of-izril"
       }
     },
+    "the-general-prologue-and-the-physicians-tale": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The observing pilgrim who joins the company at the Tabard Inn and records the travelers' appearances, occupations, habits, and social standing. He presents himself as a straightforward witness, although the portraits often leave room for readers to judge more than he explicitly says.",
+            "id": "the-narrator",
+            "name": "The Narrator",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An experienced warrior who has campaigned widely in the service of his faith. Despite his high rank and reputation, he is modest in dress and conduct and is presented as an ideal of courtesy and honor.",
+            "id": "the-knight",
+            "name": "The Knight",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Madame Eglantine"
+            ],
+            "description": "A prioress who carefully cultivates refined manners, speaks French in an English fashion, and displays conspicuous tenderness toward animals. Her polished behavior and personal ornaments complicate the religious simplicity expected of her office.",
+            "id": "the-prioress",
+            "name": "The Prioress",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A prosperous churchman who prefers hunting, fine horses, and rich clothing to the austere study and labor traditionally associated with monastic life. He openly treats old restrictions as unsuitable to his way of living.",
+            "id": "the-monk",
+            "name": "The Monk",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Hubert"
+            ],
+            "description": "A sociable friar skilled at arranging marriages, hearing profitable confessions, and building connections with wealthy townspeople. He knows taverns and innkeepers better than the poor people his office is meant to serve.",
+            "id": "the-friar",
+            "name": "The Friar",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Oxford student devoted to philosophy and books. Thin, quiet, and materially poor, he spends what money he can obtain on learning and prefers concise, morally serious speech to worldly employment.",
+            "id": "the-clerk",
+            "name": "The Clerk",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A successful cloth maker, seasoned traveler, and veteran of five marriages. Bold in dress and conversation, she is knowledgeable about both pilgrimage routes and relationships and expects to occupy a prominent place in company.",
+            "id": "the-wife-of-bath",
+            "name": "The Wife of Bath",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A poor parish priest who teaches Christian virtue by practicing it. Patient, diligent, and unwilling to abandon his parishioners for richer opportunities, he provides a contrast to the more worldly religious figures in the company.",
+            "id": "the-parson",
+            "name": "The Parson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A physically imposing miller with a red beard, great strength, and a taste for coarse stories. He plays the bagpipes and is suspected of using his thumb to improve his share when weighing customers' grain.",
+            "id": "the-miller",
+            "name": "The Miller",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A church official who travels with counterfeit relics and official documents, using fluent preaching and emotional display to obtain money. He is open about his greed even while remaining highly effective at denouncing greed in others.",
+            "id": "the-pardoner",
+            "name": "The Pardoner",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Harry Bailly"
+            ],
+            "description": "The confident proprietor of the Tabard Inn. He proposes the storytelling contest that gives the pilgrimage its structure, offering to travel with the company and act as guide, organizer, and judge.",
+            "id": "the-host",
+            "name": "The Host",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A well-fed and expensively dressed medical practitioner whose learning draws on astrology and established authorities. He understands the profitable side of his profession and is notably attached to the gold he earns.",
+            "id": "the-physician",
+            "name": "The Physician",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The young daughter of Virginius, celebrated for beauty joined to modesty and disciplined conduct. Her innocence attracts the corrupt judge Apius, placing her in danger from a man able to misuse public authority for private desire.",
+            "id": "virginia",
+            "name": "Virginia",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A respected Roman knight and Virginia's father. When a corrupt legal scheme threatens to place his daughter in Apius's power, he must respond to a judgment that ordinary appeals cannot defeat.",
+            "id": "virginius",
+            "name": "Virginius",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Roman judge who becomes consumed by desire for Virginia. Unable to win her honorably, he plans to use his courtroom and an accomplice's false claim to remove her from her father's protection.",
+            "id": "apius",
+            "name": "Apius",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Apius's accomplice in the plot against Virginia. He brings a fraudulent case alleging that she is his slave rather than Virginius's daughter, giving the judge a pretext for an arranged ruling.",
+            "id": "claudius",
+            "name": "Claudius",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-general-prologue-and-the-physicians-tale"
+      },
+      "recaps": {
+        "ending": "The Physician's tale closes after the public turns against the corrupt judgment. Apius orders Virginius's arrest for killing Virginia, but the crowd recognizes the judge's conspiracy and imprisons him. Apius kills himself in jail. Claudius is condemned to hanging, yet Virginius asks that his life be spared, so he is exiled instead; the other participants in the plot are executed. Virginia cannot be restored, and her father's desperate act remains the cost of a legal system captured by predatory authority. The Physician ends by directing the audience away from Apius's apparent prosperity and toward the destructive consequences of sin. Within the larger Canterbury frame established by the General Prologue, this is one pilgrim's contribution to the Host's storytelling contest on the road to Canterbury.",
+        "in_short": "In spring, a narrator joins a varied company of pilgrims at the Tabard Inn on the way to Canterbury. His portraits range across social ranks and professions, often contrasting public office with actual conduct. Their host, Harry Bailly, proposes a storytelling contest and accompanies them as judge. In the included Physician's Tale, the corrupt Roman judge Apius desires Virginia, the virtuous daughter of Virginius. He has Claudius falsely claim that Virginia is a stolen slave and then rules in his accomplice's favor. Seeing no lawful escape, Virginius kills his daughter rather than surrender her and brings her head to court. Apius orders his arrest, but the public revolts against the conspiracy. Apius kills himself in prison; Claudius is sentenced to death but, through Virginius's mercy, is exiled. The tale ends as a warning that abused power and unchecked desire destroy both innocent victims and those who pursue them.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "As spring begins, the narrator prepares to make a pilgrimage to the shrine of Thomas Becket at Canterbury and lodges at the Tabard Inn in Southwark. A company of roughly thirty travelers arrives, representing many ranks and occupations. The narrator describes them individually, from the honorable Knight and scholarly Clerk to prosperous tradespeople, officials, laborers, and clergy whose conduct ranges from exemplary to openly corrupt. The portraits pay close attention to clothing, speech, habits, professional ethics, and the gap between social ideals and practice. The innkeeper Harry Bailly proposes that each pilgrim tell stories during the outward and return journeys. He will accompany them, judge the tales for entertainment and moral value, and award the winner a supper paid for by the company. The pilgrims agree, draw lots, and set out under his direction.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Physician tells of Virginia, the beautiful and virtuous daughter of the Roman knight Virginius. The judge Apius desires her and recruits Claudius to bring a false legal claim asserting that Virginia is actually Claudius's escaped slave. Apius conducts a rigged hearing and orders Virginius to surrender her. Convinced that the corrupt court leaves no route of appeal, Virginius tells Virginia that death is the only way to keep her from Apius. He kills her, then carries her head before the judge. Apius tries to have Virginius arrested, but the people understand what has happened and rise against him. The judge is imprisoned and takes his own life. Claudius is sentenced to hang, though Virginius intercedes and has the punishment reduced to exile; the remaining conspirators are executed. The Physician closes with a warning about the ruin produced by sin and abused power.",
+            "through": {
+              "chapter": 2
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-general-prologue-and-the-physicians-tale"
+      }
+    },
     "the-ghost-writer": {
       "characters": {
         "characters": [
