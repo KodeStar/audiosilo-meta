@@ -1285,6 +1285,171 @@
         "work": "silence"
       }
     },
+    "silence-shusaku-endo": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A young Portuguese Jesuit priest who volunteers to enter Japan after reports that his former teacher, Ferreira, has renounced Christianity. Rodrigues is intellectually confident, conscious of his vocation, and drawn to an image of Christ as noble and beautiful. He undertakes the forbidden mission to support persecuted Japanese Christians and discover what happened to Ferreira.",
+            "id": "sebastian-rodrigues",
+            "name": "Sebastian Rodrigues",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A Portuguese Jesuit who travels with Rodrigues on the secret mission to Japan. Garrpe shares his companion's determination but is often more direct and cautious about the practical dangers awaiting them. The two priests depend on each other as the last members of their original party able to continue.",
+            "id": "francisco-garrpe",
+            "name": "Francisco Garrpe",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior Portuguese Jesuit and former teacher of Rodrigues and Garrpe. Once admired for his courage and missionary work, Ferreira is reported to have apostatized after torture in Japan. Rodrigues cannot reconcile that claim with the mentor he remembers, and proving or disproving it becomes one purpose of the mission.",
+            "id": "cristovao-ferreira",
+            "name": "Cristovão Ferreira",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A poor, disheveled Japanese exile found in Macao, where he denies being Christian but desperately wants to return home. Frightened, evasive, and burdened by shame, Kichijiro agrees to guide the priests to Japan. Rodrigues mistrusts him while also recognizing that he may be their only route into the closed country.",
+            "id": "kichijiro",
+            "name": "Kichijiro",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A leading Christian in the village of Tomogi who helps conceal and supply the newly arrived priests. Mokichi approaches Rodrigues with reverence and accepts grave personal risk to maintain contact with the mission.",
+            "id": "mokichi",
+            "name": "Mokichi",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An older Christian villager in Tomogi who shares responsibility for the hidden community. Ichizo helps organize secret worship and protects the priests despite the official system that makes whole villages answer for concealed believers.",
+            "id": "ichizo",
+            "name": "Ichizo",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Christian woman whom Rodrigues meets among the believers on the Goto Islands. Monica is the baptismal name by which he knows her. Her faith is bound to a community already accustomed to hiding, deprivation, and the constant possibility of official punishment.",
+            "id": "monica",
+            "name": "Monica",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Lord of Chikugo"
+            ],
+            "description": "The magistrate directing the campaign against Christianity in the Nagasaki region. Courteous, patient, and politically calculating, Inoue argues that the foreign religion cannot take root properly in Japan. He prefers pressure that produces public apostasy and breaks communities over creating admired martyrs.",
+            "id": "inoue",
+            "name": "Inoue",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Japanese official who translates and speaks for the authorities during Rodrigues's imprisonment. Sardonic and argumentative, he mocks the priest's assumptions about Japan and Christianity while pressing him to abandon a mission the government regards as both futile and disruptive.",
+            "id": "the-interpreter",
+            "name": "The Interpreter",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Christian prisoner whose baptismal name is Juan. He is one of the ordinary believers caught in the authorities' effort to reach the priests by making Japanese villagers bear the consequences of clerical resistance.",
+            "id": "juan",
+            "name": "Juan",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "silence-shusaku-endo"
+      },
+      "recaps": {
+        "ending": "Rodrigues is brought to Ferreira and learns that the groans he hears are not guards but Japanese Christians suspended in the pit. They have already formally apostatized; the officials will continue torturing them until Rodrigues abandons the faith publicly. Ferreira says that he too stepped on the fumie for the sake of others. Faced with suffering caused by his refusal, Rodrigues tramples the image of Christ, believing in that moment that Christ permits him to do so. The authorities register him as an apostate, give him the Japanese name Okada San'emon and a wife, and require him to help inspect imported objects for Christian content. He lives for decades under supervision and is buried according to Buddhist forms. Yet his public defeat does not settle his inward relationship with Christ. When Kichijiro later asks him to hear a confession, Rodrigues grants absolution, holding that even without the institutional priesthood this act does not sever him from the Christ whose apparent silence has troubled him throughout the mission.",
+        "in_short": "Portuguese Jesuits Rodrigues and Garrpe secretly enter seventeenth-century Japan to aid persecuted Christians and learn why their mentor Ferreira reportedly apostatized. Hidden villagers receive them with desperate devotion, but official reprisals show that the priests' presence exposes believers to torture and death. After Rodrigues and Garrpe separate, the frightened Christian Kichijiro betrays Rodrigues. Magistrate Inoue avoids making the priest a martyr and instead forces him to witness suffering inflicted on Japanese converts. Garrpe dies trying to reach condemned Christians. Ferreira, now an apostate working for the authorities, tells Rodrigues that resistance only prolongs others' agony. Hearing believers tortured in the pit, Rodrigues steps on a fumie and is registered as an apostate. He spends the rest of his life under a Japanese identity, assisting official inspections, but his private faith remains unresolved rather than simply erased.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "News reaches the Jesuits that Cristovão Ferreira, a respected missionary in Japan, has renounced Christianity after torture. His former students Sebastian Rodrigues and Francisco Garrpe refuse to believe the report and gain permission to seek him while serving Japan's hidden Christians. In Macao they find Kichijiro, a destitute Japanese exile who denies being Christian but agrees to guide them home. A third priest falls ill, leaving Rodrigues and Garrpe to make the dangerous voyage. They land secretly in a country where Christianity is prohibited and where officials use registration, informers, and collective punishment to uncover believers. Kichijiro's fear and evasiveness make him an uncertain ally from the beginning.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Hidden Christians in Tomogi shelter the priests and receive the sacraments they have lacked for years. Rodrigues is moved by their persistence but disturbed by their hunger for devotional objects and by the risks their contact creates. Officials arrive and demand hostages after signs of Christian activity are reported. Mokichi, Ichizo, and other villagers are forced to demonstrate apostasy. Kichijiro quickly complies, while Mokichi and Ichizo resist and are bound to stakes in the sea, where repeated tides slowly kill them. Mokichi continues praying until he dies. The priests can only watch from concealment, confronting for the first time the possibility that their mission is making ordinary believers suffer in their place.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rodrigues and Garrpe separate to reduce the danger to the communities hiding them. Alone, exhausted, and increasingly unsure how to interpret God's silence, Rodrigues moves among devastated settlements and encounters Kichijiro again. Kichijiro seeks forgiveness but eventually hands him over for a reward. In custody, Rodrigues expects brutal treatment and imagines his own martyrdom, but Inoue and the interpreter instead debate him, ridicule the mission, and keep him alive. The magistrate explains that Christianity is being deliberately uprooted and portrays Japan as inhospitable to the foreign faith. Rodrigues sees Japanese apostates and learns that the officials' strategy is to break the prestige of priests rather than give believers heroic deaths.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kichijiro, repeatedly fearful and repeatedly repentant, is imprisoned near Rodrigues and asks the priest to hear his confession. Rodrigues struggles to extend mercy to a man whose weakness he despises, even as Kichijiro's failures expose the pride within Rodrigues's own idea of steadfast faith. The authorities force Rodrigues to watch Japanese Christians face punishment while assuring him that he can end their suffering by apostatizing. He then sees Garrpe brought near a group of prisoners who are to be drowned. Garrpe rushes into the water in an attempt to save them and dies with them. His death leaves Rodrigues isolated and shows that personal courage does not prevent the authorities from transferring the cost of resistance to vulnerable converts.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rodrigues finally meets Ferreira, who is alive, living under a Japanese name, and working for the government against Christianity. Ferreira confirms his apostasy and argues that the religion the missionaries taught was changed by Japanese conditions into something they did not understand. Rodrigues rejects the explanation as the reasoning of a defeated man. During the night, he hears groans and first assumes a guard is snoring. Ferreira tells him the sound comes from Christians hanging upside down in a pit. They have already stepped on the fumie, but their torture continues because the officials want Rodrigues to apostatize. Ferreira says that love, not pride in heroic endurance, requires the priest to end their pain.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "With Japanese Christians suffering in the pit because he will not yield, Rodrigues is taken before a fumie bearing Christ's image. He steps on it, hearing inwardly a Christ who accepts being trampled for the sake of the suffering. The government registers him as an apostate and turns his public fall into evidence against the forbidden religion. Under the name Okada San'emon, Rodrigues receives a Japanese household and spends decades watched by the authorities, helping identify Christian material among imported goods. Official records describe a life incorporated into the system he once opposed and a Buddhist burial after his death. His inward faith remains more ambiguous: when Kichijiro later comes seeking confession yet again, Rodrigues absolves him and understands his own bond with Christ as continuing outside the public identity and clerical standing he has lost.",
+            "through": {
+              "chapter": 9
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "silence-shusaku-endo"
+      }
+    },
     "silver-shadows": {
       "characters": {
         "characters": [

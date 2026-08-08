@@ -1899,6 +1899,91 @@
         "work": "the-rosie-project"
       }
     },
+    "the-royal-game": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An unnamed passenger on a ship bound from New York to Buenos Aires. Curious about the world chess champion travelling aboard, he helps arrange the encounters through which the champion and the mysterious Dr. B. are brought together.",
+            "id": "the-narrator",
+            "name": "The narrator",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "The world champion"
+            ],
+            "description": "The reigning world chess champion, raised in poverty and discovered to possess an extraordinary narrow gift for the game. He is slow, guarded, and commercially minded away from the board, with little education or curiosity beyond chess.",
+            "id": "mirko-czentovic",
+            "name": "Mirko Czentovic",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A wealthy engineer among the ship's passengers. Intensely competitive and unable to accept an easy defeat, he pays Czentovic to play a consultation game against a group of amateurs and presses for another chance when the first game is lost.",
+            "id": "mcconnor",
+            "name": "McConnor",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A reserved Austrian passenger whose sudden advice saves the amateurs from defeat. He claims not to have touched a chessboard for many years, yet reads the position with a mastery that attracts Czentovic's attention. His skill is connected to severe isolation and persecution before his escape from Europe.",
+            "id": "dr-b",
+            "name": "Dr. B.",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The official who repeatedly questions Dr. B. after the Nazi authorities imprison him in isolation. The interrogations exploit monotony, uncertainty, and the deprivation of ordinary human contact rather than placing him in a conventional cell.",
+            "id": "the-interrogator",
+            "name": "The interrogator",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-royal-game"
+      },
+      "recaps": {
+        "ending": "Dr. B. defeats Czentovic in their first individual game, provoking the champion into requesting a rematch. Czentovic then deliberately plays at an extremely slow pace. During the second game Dr. B. begins retreating into the divided mental state created during his imprisonment, calculating imagined variations faster than the actual game can proceed and losing contact with the board before him. He announces a check that does not exist. The narrator intervenes and reminds him of his illness. Recognizing the return of his dangerous obsession, Dr. B. stops the game, apologizes, and says he will never play chess again. Czentovic is left technically victorious and remarks that his opponent had considerable ability, while Dr. B. preserves himself by walking away from the contest.",
+        "in_short": "During an Atlantic voyage, an unnamed narrator becomes interested in fellow passenger Mirko Czentovic, the aloof world chess champion. A wealthy traveller pays Czentovic to face a group of amateurs, whose second game is saved by the unexpected guidance of Dr. B. Dr. B. explains that the Nazis once held him in complete isolation while seeking financial information. He stole a collection of master chess games, memorized them, and eventually began playing invented games against himself until the mental division caused a breakdown. On the ship he accepts one test against Czentovic and wins. In a rematch, the champion's calculated slowness revives Dr. B.'s compulsive inner play. When he mistakes an imagined position for the real board, the narrator stops him. Dr. B. concedes and renounces chess permanently, choosing sanity over another victory.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "On a passenger ship travelling from New York to Buenos Aires, the narrator learns that the withdrawn world chess champion Mirko Czentovic is aboard. Czentovic's talent was discovered in youth despite his otherwise limited education, and he now treats chess as both profession and source of status. The narrator and the competitive McConnor arrange a paid game in which Czentovic easily defeats a group of passengers. During a second game, an unknown Austrian, Dr. B., intervenes with precise advice and enables the group to draw. He later explains that Nazi officials once detained him to extract information about assets he had protected for aristocratic and religious clients. Held alone in a hotel room and subjected to repeated questioning, he stole a book containing master chess games. Memorizing the games preserved his mind at first, but after exhausting them he began playing imaginary games against himself. The forced split between two competing sides developed into a dangerous obsession and a breakdown. A doctor obtained his release but warned him away from chess. Dr. B. nevertheless agrees to one game against Czentovic and wins. In the rematch, Czentovic slows the pace until Dr. B. again becomes consumed by imagined variations and confuses them with the real board. The narrator recalls him to himself; Dr. B. concedes, apologizes, and leaves, resolving never to play again.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-royal-game"
+      }
+    },
     "the-royal-ranger-a-new-beginning": {
       "characters": {
         "characters": [
@@ -5849,6 +5934,195 @@
           }
         ],
         "work": "the-secret-agent"
+      }
+    },
+    "the-secret-dreamworld-of-a-shopaholic": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Becky"
+            ],
+            "description": "A London financial journalist whose professional familiarity with savings products has not translated into control of her own spending. Becky is imaginative, sociable, and skilled at rationalizing purchases while avoiding bank statements and creditors. She wants the security and glamour that money seems to promise, but her evasions steadily make her situation worse.",
+            "id": "rebecca-bloomwood",
+            "name": "Rebecca Bloomwood",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Suze"
+            ],
+            "description": "Becky's wealthy, generous flatmate and closest friend. Suze enjoys fashion and nights out but does not share Becky's precarious finances, and she offers practical and emotional support without initially understanding the full scale of the debt.",
+            "id": "suzanne-cleath-stuart",
+            "name": "Suzanne Cleath-Stuart",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The successful founder of Brandon Communications, a public-relations firm serving major financial clients. Luke is controlled, perceptive, and far more interested in the realities of business than in the superficial language surrounding it. Becky alternately finds him infuriating and compelling.",
+            "id": "luke-brandon",
+            "name": "Luke Brandon",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The persistent bank manager responsible for Becky's overdrawn account. His increasingly urgent letters and attempts to arrange a meeting represent the financial facts she keeps trying to escape.",
+            "id": "derek-smeath",
+            "name": "Derek Smeath",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Becky's mother, who lives with her husband in the Surrey home where Becky grew up. Warm, energetic, and proud of her daughter, she assumes Becky's work makes her highly competent with money.",
+            "id": "jane-bloomwood",
+            "name": "Jane Bloomwood",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Becky's affectionate and practically minded father. He follows financial news and trusts his daughter's apparent expertise, leaving Becky uncomfortable when family friends seek her advice.",
+            "id": "graham-bloomwood",
+            "name": "Graham Bloomwood",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Bloomwoods' kind neighbours and long-standing friends. Janice looks on Becky almost as family and believes her financial journalism makes her a reliable guide to savings decisions.",
+            "id": "janice-webster",
+            "name": "Janice Webster",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Janice's husband and another close friend of Becky's parents. His family's dealings with an investment company eventually give Becky a reason to examine the industry she usually covers without much conviction.",
+            "id": "martin-webster",
+            "name": "Martin Webster",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Tarquin"
+            ],
+            "description": "Suze's extremely wealthy cousin, whom Becky meets as a possible date. Tarquin is shy, earnest, and much less polished than his fortune might suggest, making Becky's attempts to impress him particularly awkward.",
+            "id": "tarquin-cleath-stuart",
+            "name": "Tarquin Cleath-Stuart",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elegant employee of Brandon Communications. Alicia's confidence, expensive appearance, and easy familiarity with Luke make her a focus for Becky's insecurity and competitive imagination.",
+            "id": "alicia-billington",
+            "name": "Alicia Billington",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Becky's colleague at the financial magazine Successful Saving. Elly understands the routine of producing worthy articles about products neither woman finds very exciting and provides companionship in an office Becky dreams of leaving.",
+            "id": "elly-granger",
+            "name": "Elly Granger",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The editor of Successful Saving. Philip expects reliable copy on personal finance and largely accepts Becky's professional persona, despite her limited enthusiasm for the technical subjects assigned to her.",
+            "id": "philip",
+            "name": "Philip",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-secret-dreamworld-of-a-shopaholic"
+      },
+      "recaps": {
+        "ending": "Becky uses her knowledge of the Websters' losses to challenge the investment company responsible and explains the issue clearly on live television. Her unplanned appearance succeeds because she understands the human consequences better than the conventional experts do. Luke, whose firm represented the company, respects her decision to put the truth first, and their strained attraction becomes a relationship. Becky gains a new public role giving accessible financial advice. She finally meets Derek Smeath and begins dealing honestly with the debt she has spent the book hiding. Her money troubles are not magically erased, but she has stopped running from them and found work that uses her ability to communicate rather than merely repeat industry language.",
+        "in_short": "Rebecca Bloomwood writes about personal finance while secretly carrying large debts created by compulsive shopping. She ignores letters from bank manager Derek Smeath, invents excuses, and cycles through doomed plans to economize or earn more. Her flatmate Suze supports her, while Becky's parents and their friends assume she is a financial authority. When the Websters are treated unfairly by an investment company, Becky investigates and discovers that the industry story has real human stakes. Her growing attraction to public-relations executive Luke Brandon is complicated because his firm represents the company she challenges. Becky nevertheless exposes the unfairness on live television and proves unexpectedly effective at explaining finance to ordinary viewers. She and Luke come together, and she receives a new media opportunity. Most importantly, she stops evading Derek and begins facing her debts, ending the story with a career breakthrough and a more honest approach to money rather than an instant cure for her spending.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Rebecca Bloomwood works at Successful Saving, writing respectable articles about personal finance while privately living beyond her means. A shopping trip that she frames as an essential purchase reveals how quickly she can turn desire into necessity. Bills and letters from her bank manager, Derek Smeath, are hidden rather than answered. At work she performs expertise she does not feel, then returns to the flat she shares with her affluent friend Suze and tries to treat each warning as a temporary inconvenience. A visit to her parents reinforces the gap between her image and reality: they and their neighbours, Janice and Martin Webster, regard Becky as someone who understands money. She resolves to regain control, though her first plans depend more on optimism and creative accounting than on changing her habits.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Becky attempts a strict economy campaign, but the restrictions quickly become miserable and new purchases acquire supposedly exceptional justifications. A second plan to increase her income is no more stable. She continues dodging Derek's efforts to speak with her, building small lies into elaborate explanations. Through her job she meets Luke Brandon, the assured founder of a financial public-relations company. Their conversations expose both Becky's patchy technical knowledge and her instinctive ability to notice what financial language means for ordinary people. She also meets Alicia Billington, whose poise and closeness to Luke intensify Becky's self-consciousness. Becky's financial position worsens even as she imagines that the next job, saving scheme, or social connection will solve everything.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Suze encourages Becky to meet her rich cousin Tarquin. Becky tries to see him as a possible answer to her future and attempts to present herself as someone at ease with wealth, but the date exposes the difference between genuine affection and a financial fantasy. Her curiosity and embarrassment damage the encounter. At the same time, the Websters' experience with a savings company begins to trouble her. They trusted the kind of advice Becky professionally circulates, yet changes surrounding their investment leave them disadvantaged. For once a financial story concerns people she knows and loves rather than abstract rates. Her debts still shadow every part of her life, and Derek's continued pursuit makes it harder to maintain the fiction that she is merely waiting for a convenient time to respond.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Becky begins looking more seriously into the investment company's conduct toward the Websters. The more she learns, the less willing she is to accept polished corporate explanations. Luke becomes both an ally and a source of conflict: she is attracted to his intelligence and sees that he takes her more seriously than many colleagues do, but Brandon Communications has obligations to clients within the same financial world she is questioning. Becky's evasions about her personal finances reach a crisis as Derek can no longer be kept at a distance. Shame makes her withdraw from people who would help, yet her anger on the Websters' behalf gives her a purpose that her routine magazine work has never supplied.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Websters' case develops into a story Becky can explain with unusual force because she understands both the financial mechanism and the damage done to a family. She chooses to pursue it despite the professional complications for Luke. The decision brings her into television, where the prepared boundaries of a financial discussion break down and she directly challenges the company's treatment of its customers. Instead of being exposed as an impostor, Becky discovers that her gift is making intimidating subjects intelligible. Her honesty about the case contrasts sharply with the dishonesty she has used to protect herself from debt, making it increasingly clear that she must apply the same directness to her own life.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Becky's television intervention brings public attention to the Websters' treatment and establishes her as an engaging, accessible voice on money. Luke respects the courage and ability behind what she has done even though it placed business interests under pressure, and the attraction between them is finally acknowledged. A new media opportunity gives Becky work better suited to her strengths than producing detached magazine copy. She also stops fleeing from Derek Smeath and faces the state of her account, beginning a realistic conversation about repayment. The ending does not erase her debts or guarantee perfect self-control, but it marks a change from concealment to responsibility. Becky has defended her friends, found a more authentic professional identity, and begun a relationship with Luke while accepting that financial recovery requires honesty.",
+            "through": {
+              "chapter": 24
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-secret-dreamworld-of-a-shopaholic"
       }
     },
     "the-secret-garden-amazonclassics-edition": {
