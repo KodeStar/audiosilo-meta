@@ -202,6 +202,175 @@
         "work": "the-return-of-the-king"
       }
     },
+    "the-return-of-the-native": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A young woman raised on Egdon Heath by her grandfather. Restless, proud, and drawn to a more brilliant life than the heath seems to offer, she conducts a troubled romance with Damon Wildeve and uses a bonfire as a private signal to him.",
+            "id": "eustacia-vye",
+            "name": "Eustacia Vye",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Mrs Yeobright's son, long absent from Egdon while working in Paris. His expected return for Christmas excites local curiosity, and his family and neighbours speculate about the life he has led away from the heath.",
+            "id": "clym-yeobright",
+            "name": "Clym Yeobright",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Mrs Yeobright's gentle niece, brought home in distress after a legal problem prevents her marriage to Damon Wildeve. Her compromised position makes the delayed wedding an urgent concern for her family.",
+            "id": "thomasin-yeobright",
+            "name": "Thomasin Yeobright",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The keeper of the Quiet Woman inn and Thomasin's intended husband. Formerly an engineer, he is dissatisfied with his circumstances and remains emotionally entangled with Eustacia when his wedding to Thomasin fails to take place.",
+            "id": "damon-wildeve",
+            "name": "Damon Wildeve",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A travelling dealer in red dye whose trade has stained his clothes and skin. He brings Thomasin safely home after her failed wedding and quietly works to protect her interests. His unusual appearance conceals patience, resourcefulness, and close knowledge of the heath.",
+            "id": "diggory-venn",
+            "name": "Diggory Venn",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Clym's mother and Thomasin's aunt, a proud, practical widow who guards the family's respectability. She distrusts Wildeve after the failed wedding and tries to secure Thomasin's future.",
+            "id": "mrs-yeobright",
+            "name": "Mrs Yeobright",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Eustacia's grandfather, a retired naval officer who lives with her at Mistover Knap. He is accustomed to her independence but understands that life on Egdon does not satisfy her.",
+            "id": "captain-vye",
+            "name": "Captain Vye",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A local youth employed by Captain Vye and devoted to Eustacia. He tends her signal fire and assists her readily, though her attention is fixed elsewhere.",
+            "id": "charley",
+            "name": "Charley",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An elderly heath resident and former soldier whose lively stories and songs make him a prominent voice at local gatherings. He is Christian Cantle's father.",
+            "id": "grandfer-cantle",
+            "name": "Grandfer Cantle",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Grandfer Cantle's anxious, inexperienced son. Easily intimidated and conscious of his bad luck, he becomes involved in carrying money between members of the Yeobright family.",
+            "id": "christian-cantle",
+            "name": "Christian Cantle",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-return-of-the-native"
+      },
+      "recaps": {
+        "ending": "Eustacia leaves her grandfather's house on a stormy night, intending to meet Wildeve and escape Egdon. She is found in Shadwater Weir; whether her fall was deliberate is not settled. Wildeve dives in after her, and Clym also enters the water. Diggory Venn rescues Clym, but Eustacia and Wildeve die. Wildeve's unexpected inheritance passes to Thomasin and her child. Clym, burdened by the deaths of his mother and Eustacia, abandons his educational plan and becomes an itinerant preacher. Venn gives up the reddle trade and becomes a prosperous dairy farmer. Thomasin eventually accepts his renewed proposal, and they marry with Clym's approval. Their domestic happiness contrasts with Clym's solitary public vocation and closes the novel on a quieter accommodation with life on the heath.",
+        "in_short": "On Egdon Heath, Thomasin Yeobright's wedding to the unreliable Damon Wildeve fails on a technicality while Wildeve remains attached to Eustacia Vye. The return of Clym Yeobright from Paris redirects Eustacia's hopes, and they marry despite his mother's opposition. Clym intends to teach locally rather than return abroad; failing eyesight reduces him to furze cutting, deepening Eustacia's disappointment. A misunderstood money transfer and Eustacia's secret meeting with Wildeve worsen the family breach. Mrs Yeobright comes to reconcile, but Eustacia does not admit her while Clym sleeps; the older woman later dies after an adder bite. When Clym learns what occurred, Eustacia leaves him. She and Wildeve attempt to meet during a storm and drown in Shadwater Weir, while Clym survives. Years later Thomasin marries Diggory Venn, and Clym becomes a travelling preacher.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Egdon Heath is introduced as an ancient, isolated landscape whose residents gather around November bonfires. The reddleman Diggory Venn crosses it with Thomasin Yeobright in his van, bringing her back to her aunt after a defect in the marriage licence prevents her wedding to Damon Wildeve. Mrs Yeobright is angry at the humiliation and suspicious of Wildeve's commitment. Wildeve, the keeper of the Quiet Woman inn, is also answering a signal fire lit by Eustacia Vye, a proud young woman who longs to escape the heath. Eustacia and Wildeve have been lovers, and the failed wedding revives her influence over him. Venn, who once proposed to Thomasin, recognizes the triangle and begins watching events in hopes of protecting her.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Wildeve delays committing himself to Thomasin while Eustacia tests whether she still wants him. Diggory Venn tries to persuade Eustacia to release Wildeve and even offers himself as an alternative husband for Thomasin, but Eustacia refuses to be managed. News spreads that Clym Yeobright is coming home from Paris. Eustacia invests the absent man with her hopes for a sophisticated life away from Egdon. After Clym returns, she disguises herself as a mummer to enter the Yeobright house and observe him. Her interest shifts decisively toward Clym, leaving Wildeve free to marry Thomasin. The delayed marriage finally takes place, while Eustacia seeks opportunities to meet the newly returned native.",
+            "through": {
+              "chapter": 19
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Clym and Eustacia become attached, but they imagine incompatible futures. Eustacia expects that marriage to a man from Paris will carry her away from Egdon. Clym has rejected his commercial career and plans to remain on the heath, open a school, and educate local people. Mrs Yeobright opposes the match because she distrusts Eustacia and believes Clym is surrendering his prospects. Clym nevertheless proposes. Eustacia accepts while continuing to hope that he will change his plan and return to Paris. The disagreement creates a serious breach between Clym and his mother. Clym and Eustacia marry and establish a home at Alderworth, beginning their life together without Mrs Yeobright's blessing.",
+            "through": {
+              "chapter": 26
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Clym's intense study damages his eyesight, delaying his school and forcing him to take outdoor work cutting furze. He finds dignity in the labour, but Eustacia sees it as proof that marriage has trapped her more firmly on Egdon. Wildeve unexpectedly inherits a large sum, renewing the possibility of travel and sharpening her dissatisfaction. Mrs Yeobright attempts to divide a monetary gift equally between Clym and Thomasin, entrusting it to Christian Cantle. Christian gambles the money away to Wildeve, but Venn wins it back. Not knowing the intended division, Venn gives the whole amount to Thomasin. Mrs Yeobright wrongly concludes that Clym and Eustacia have kept Thomasin's share, adding financial suspicion to the estrangement.",
+            "through": {
+              "chapter": 33
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Mrs Yeobright learns the truth about the money and sets out in exhausting heat to reconcile with Clym and Eustacia. When she reaches Alderworth, Clym is asleep and Wildeve is secretly visiting Eustacia. Eustacia assumes Clym will answer the door and hesitates to reveal Wildeve's presence; no one admits Mrs Yeobright, who turns away believing herself rejected. On the return journey she collapses after an adder bite. Clym and others find her, but attempts to save her fail. Her last reported words suggest that her son cast her off. Clym is devastated and blames himself for sleeping through her visit. Eustacia conceals the full circumstances, while the guilt and mistrust surrounding the death place their marriage under severe strain.",
+            "through": {
+              "chapter": 37
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Clym eventually discovers that Eustacia was inside the house when his mother knocked and that Wildeve was with her. He confronts Eustacia, who defends her hesitation but cannot repair his trust. She leaves Alderworth and returns to Captain Vye at Mistover Knap. Trapped once more on Egdon and without money to leave independently, she turns to Wildeve. Now wealthy, he agrees to help her escape, and they arrange a signal and meeting on a stormy night. Thomasin, increasingly aware of her husband's agitation and absences, goes out after him. Clym decides to attempt reconciliation, but the storm and the characters' separate journeys converge near Shadwater Weir before he can reach Eustacia safely.",
+            "through": {
+              "chapter": 42
+            }
+          },
+          {
+            "scope": "book",
+            "text": "During the storm, Eustacia is discovered in Shadwater Weir. Wildeve enters the water after her, and Clym also dives in. Diggory Venn rescues Clym, but Eustacia and Wildeve cannot be revived. The narrative leaves uncertain whether Eustacia fell accidentally or chose death. Wildeve's inheritance goes to Thomasin and her young daughter, securing them financially. In the quieter aftermath, Venn abandons the reddle trade and becomes a successful dairy farmer. His old affection for Thomasin revives, and after some hesitation she agrees to marry him. Clym approves their union but does not rebuild a private domestic life of his own. Still marked by his mother's death and his failed marriage, he becomes a travelling preacher, drawing mixed audiences as he tries to turn his suffering and abandoned educational ambitions into service.",
+            "through": {
+              "chapter": 47
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-return-of-the-native"
+      }
+    },
     "the-return-of-the-soldier": {
       "characters": {
         "characters": [

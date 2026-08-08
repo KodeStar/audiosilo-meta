@@ -2823,6 +2823,103 @@
         "work": "the-one-and-only-shrek"
       }
     },
+    "the-open-boat": {
+      "characters": {
+        "characters": [
+          {
+            "description": "One of four survivors crowded into a small dinghy after their ship sinks. He observes the sea, the boat, and his companions closely, and much of the story follows his changing thoughts about danger, fate, and human fellowship. He takes a turn rowing despite his exhaustion.",
+            "id": "the-correspondent",
+            "name": "The Correspondent",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The injured leader of the four survivors. Although unable to row, he directs the dinghy with calm practical judgment, watches the waves, and decides when the men should attempt to reach shore.",
+            "id": "the-captain",
+            "name": "The Captain",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Oiler"
+            ],
+            "description": "The ship's oiler and the only one of the four men given a personal name. He is physically capable and shares most of the hard rowing with the correspondent as the dinghy struggles toward land.",
+            "id": "billie-the-oiler",
+            "name": "Billie",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The ship's cook, one of the four survivors in the dinghy. He helps keep the boat balanced and bails out water while the oiler and correspondent row. His hopeful guesses about the shore offer a contrast to the captain's caution.",
+            "id": "the-cook",
+            "name": "The Cook",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-open-boat"
+      },
+      "recaps": {
+        "ending": "Unable to wait safely offshore any longer, the captain orders the men to abandon the dinghy and swim when it capsizes in the surf. The cook floats with an oar, the captain holds to the overturned boat, and the correspondent struggles through the current until a man from shore pulls him from the water. Billie, the strongest swimmer and the man who has borne much of the rowing, is found dead on the beach. The other three receive care from the people who have gathered there. Their rescue is therefore inseparable from an apparently arbitrary loss: strength and effort have not determined who survives. After their ordeal, the survivors feel that the sound of the sea carries a meaning they can now understand, closing the story on their altered relation to nature rather than on any simple victory over it.",
+        "in_short": "After a shipwreck, a captain, a cook, an oiler named Billie, and a correspondent crowd into a fragile dinghy off the Florida coast. They row, bail, and steer through relentless waves, repeatedly seeing land without being able to cross the dangerous surf. Their shared labor creates a powerful bond, while the correspondent wrestles with the apparent indifference of nature to human hopes. People on shore see them but initially misunderstand their signals. At last the exhausted men abandon the swamped boat and swim for land. The captain, cook, and correspondent are rescued, but Billie is found dead. The survivors leave the sea with a new, hard-won sense of fellowship and of nature's power, unable to explain why the strongest of them was the one who did not live.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Four survivors of a wrecked ship occupy a dinghy scarcely large enough to hold them: an injured captain, a cook, an oiler named Billie, and a correspondent. The captain steers and gives directions, the cook bails, and Billie and the correspondent row. Each approaching wave threatens to swamp the small craft. They can see a lighthouse and believe they are nearing a life-saving station, but the coast remains distant and no rescue boat appears. Their immediate world narrows to the rhythm of the sea and the work required to keep the dinghy afloat.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The four men continue toward shore but cannot safely force the dinghy through the surf. They try to attract attention and debate whether the life-saving station is occupied. Their frustration grows as land seems close enough for ordinary life to continue visibly yet remains beyond their reach. The oiler and correspondent alternate at the oars, developing a quiet solidarity with the captain and cook through their shared labor. The correspondent reflects that this fellowship is one of the most meaningful experiences of his life. With no rescue arriving, the men turn back out from the breakers to endure another stretch at sea.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "During the night, the oiler and correspondent keep taking turns rowing while the others rest when they can. A shark circles close to the boat, adding another danger, but it does not attack. The correspondent's exhaustion leads him to question why a person should be brought within sight of safety only to be denied it; nature offers no answer and shows neither hostility nor mercy. At daylight the men again approach land. Figures gather on the beach and wave, but their gestures do not produce the expected rescue. The dinghy is taking on water and the four men are too worn out to remain offshore indefinitely, so the captain prepares them for a final attempt through the surf.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The captain directs the men to leave the dinghy and swim when it overturns in the breakers. The cook uses an oar for support, the captain stays near the capsized boat, and Billie strikes out strongly for shore. The correspondent is caught in a current and makes little progress until a rescuer enters the water and drags him to safety. The captain and cook also survive. On the beach, however, the men find Billie's body: the strongest rower and swimmer is the only one who has died. People on shore care for the three survivors. Their deliverance is shadowed by the unexplained loss of their companion, and the experience leaves them feeling that they can hear a new significance in the voice of the sea.",
+            "through": {
+              "chapter": 7
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-open-boat"
+      }
+    },
     "the-oresteia": {
       "characters": {
         "characters": [
@@ -3628,6 +3725,205 @@
           }
         ],
         "work": "the-outlaw-demon-wails"
+      }
+    },
+    "the-outsider-stephen-king": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A Flint City police detective known for careful, conventional work. Ralph leads the arrest of Terry Maitland after physical evidence and eyewitness accounts appear overwhelming. He also knows Terry personally as his son's former coach, making the case both professionally urgent and emotionally difficult.",
+            "id": "ralph-anderson",
+            "name": "Ralph Anderson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A respected teacher and youth baseball coach accused of the brutal murder of eleven-year-old Frank Peterson. Terry insists he was in another city when the crime occurred and reacts to his public arrest with shock rather than confession, creating a disturbing conflict between his familiar character and the evidence.",
+            "id": "terry-maitland",
+            "name": "Terry Maitland",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Terry's wife and the mother of their two daughters. Marcy stands firmly behind him after the arrest and must protect the family while their neighbors, reporters, and the justice system treat a horrifying accusation as established fact.",
+            "id": "marcy-maitland",
+            "name": "Marcy Maitland",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ralph's wife, whose clear judgment helps him separate his certainty about the forensic case from his personal knowledge of Terry. Jeannie listens closely to her husband while remaining alert to facts that do not fit his initial conclusion.",
+            "id": "jeannie-anderson",
+            "name": "Jeannie Anderson",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Flint County district attorney handling the Maitland prosecution. Samuels supports the arrest because of the quantity of witness and forensic evidence and works closely with Ralph as the case moves toward court.",
+            "id": "bill-samuels",
+            "name": "Bill Samuels",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A state investigator who works with Ralph on the physical evidence surrounding Frank Peterson's murder. Yune is methodical and open to following contradictions rather than forcing every fact into the first theory of the crime.",
+            "id": "yune-sablo",
+            "name": "Yune Sablo",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Howie"
+            ],
+            "description": "A defense attorney and longtime friend of Terry Maitland. Howie organizes Terry's legal response, secures investigators, and insists that the impossible-looking alibi be treated as evidence rather than dismissed as a trick.",
+            "id": "howard-gold",
+            "name": "Howard Gold",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A private investigator retained by Howie Gold to check the people, recordings, and travel details behind Terry's claim that he was attending a teachers' conference when the murder occurred.",
+            "id": "alec-pelley",
+            "name": "Alec Pelley",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An employee at the local strip club who briefly encountered Terry around the time of the murder. Claude's account and physical evidence connect him to the investigation even though he appears to have no reason to harm the Peterson boy.",
+            "id": "claude-bolton",
+            "name": "Claude Bolton",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Flint City detective returning from vacation as the Maitland case fractures. Jack is capable but resentful, drinks heavily, and dislikes being drawn into work that other officers have already made notorious.",
+            "id": "jack-hoskins",
+            "name": "Jack Hoskins",
+            "reveal": {
+              "chapter": 49
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A private investigator who runs Finders Keepers after the death of her mentor and friend Bill Hodges. Holly is socially anxious, exacting with facts, and experienced with events that fall outside ordinary criminal explanations. Alec brings her into the Maitland inquiry because the conflicting evidence requires an investigator without local assumptions.",
+            "id": "holly-gibney",
+            "name": "Holly Gibney",
+            "reveal": {
+              "chapter": 77
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Claude Bolton's mother, with whom he is staying in Texas. Lovie is protective of her son and familiar with local stories surrounding the abandoned cave system known as the Marysville Hole.",
+            "id": "lovie-bolton",
+            "name": "Lovie Bolton",
+            "reveal": {
+              "chapter": 125
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Claude's talkative brother, who lives near the Marysville Hole and helps the investigators understand the area's geography and history.",
+            "id": "seale-bolton",
+            "name": "Seale Bolton",
+            "reveal": {
+              "chapter": 127
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-outsider-stephen-king"
+      },
+      "recaps": {
+        "ending": "Jack Hoskins ambushes the group near the Marysville Hole, killing Howie Gold and Alec Pelley before the attack ends with Jack dead. Ralph and Holly enter the cave, where they find the being that copied Terry Maitland and is now becoming Claude Bolton. It admits feeding on murdered children and on the grief that follows while moving from one accused person's identity to another. Holly destroys it with the weighted device she once used against Brady Hartsfield. Ralph, Holly, Yune, and Claude survive, but the deaths caused by the investigation add to the creature's toll. The survivors construct a conventional account that protects Claude and prevents an unbelievable truth from becoming a public spectacle. Terry's name is formally cleared, though that cannot restore him or repair his family. Ralph accepts that the evidence supports an impossible conclusion and becomes Holly's friend. Later, a brief unsettling moment makes Holly wonder whether the creature could return, but she finds an ordinary explanation and chooses not to surrender to fear.",
+        "in_short": "Detective Ralph Anderson arrests teacher Terry Maitland for the murder of Frank Peterson because witnesses, fingerprints, and DNA place Terry at the crime. Yet video and independent witnesses prove Terry was attending a conference elsewhere. Frank's brother kills Terry outside court, and Ralph continues investigating the impossible duplication with Terry's lawyer, Howie Gold, investigators Alec Pelley and Holly Gibney, and state officer Yune Sablo. Holly finds earlier cases in which a person was framed by equally contradictory evidence, followed by suicides and family ruin. She concludes that a shape-changing predator copies people, murders children, and feeds on the grief around them. It has coerced detective Jack Hoskins and is transforming into Claude Bolton near a Texas cave. Jack ambushes the investigators, killing Howie and Alec, but Ralph and Holly reach the creature. Holly kills it with her weighted defensive tool. The survivors conceal the supernatural details, Terry is exonerated after death, and Ralph accepts both Holly's friendship and a reality wider than his former rational certainty.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, retired detective Bill Hodges investigated the Mercedes killer with Jerome Robinson and Holly Gibney. Holly's persistence and skill with patterns made her an equal partner in their later investigative agency, Finders Keepers. The three confronted Brady Hartsfield again when he developed an apparently supernatural ability to influence vulnerable people. Brady died, and Bill later died of cancer. Holly continued the agency, carrying both Bill's weighted self-defense device and the confidence she gained from their work. Her experience taught her that strong evidence can sometimes point toward explanations other investigators reject as impossible.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Eleven-year-old Frank Peterson is found murdered in Flint City. Witnesses report seeing respected teacher and baseball coach Terry Maitland with the boy, and fingerprints, DNA, and surveillance evidence appear to trace Terry's movements before and after the killing. Detective Ralph Anderson, whose own son was coached by Terry, orders a conspicuous arrest during a youth baseball game. Terry denies the crime and says he was attending a teachers' conference in another city. His wife Marcy and attorney Howie Gold begin assembling the people and records that could support that claim. Ralph remains guided by the extraordinary quantity of physical evidence, but Terry's detailed response creates the possibility that the arrest has publicly accused an innocent man. Both prosecution and defense now need to establish whether the alibi is genuine.",
+            "through": {
+              "chapter": 23
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Terry's arraignment turns violent. Ollie Peterson, the murdered boy's grieving older brother, opens fire outside the courthouse and fatally wounds Terry before being killed himself. Terry dies still insisting on his innocence. The Peterson family has already been devastated by Frank's murder, and further deaths show how the accusation continues spreading harm. With no defendant left to prosecute, Ralph could allow the case to close, but the impossible alibi and his responsibility for the public arrest will not let him stop. Howie, private investigator Alec Pelley, prosecutor Bill Samuels, and state investigator Yune Sablo continue comparing the two trails of evidence. They begin considering whether someone deliberately created not just an appearance of Terry but biological traces that should have been impossible to counterfeit.",
+            "through": {
+              "chapter": 47
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The inquiry follows a van and other evidence across state lines while a hooded figure appears near people touched by the case. Ralph's wife Jeannie encounters a threatening visitor whose features seem distorted, and witnesses describe a man who is both familiar and wrong. Detective Jack Hoskins returns from vacation and is attacked at an abandoned rural site. A painful growth appears on his neck, and an unseen presence compels him to provide food and assistance. He submits despite resentment and fear. The investigators learn that Terry had a minor encounter with strip-club employee Claude Bolton, suggesting that the chain of evidence may be moving toward a new person rather than merely framing Terry. Alec recommends bringing in Holly Gibney, an investigator accustomed to following facts beyond the limits of a conventional police theory.",
+            "through": {
+              "chapter": 76
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Holly reviews the Maitland evidence and travels to examine earlier cases with the same impossible pattern. Other people were accused of murdering children while apparently being elsewhere, and each case was followed by more deaths, suicides, and ruined families. Stories from different cultures give Holly a working name for the possible predator: el cuco, a being said to take a person's appearance and prey on children. She treats the folklore as a theory to test against physical facts rather than as proof. The repeated sequence suggests that the murderer also benefits from the grief, blame, and self-destruction spreading through each accused family. Holly prepares to bring the connections back to Ralph, Howie, Alec, Yune, and the others, knowing that the idea will be difficult for conventional investigators to accept.",
+            "through": {
+              "chapter": 99
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Holly presents the linked cases and her el cuco theory to Ralph, Howie, Alec, Yune, and the others. Most resist a supernatural explanation, but no ordinary account fits all the evidence, including material left by the false Terry that appears to be changing. Attention shifts to Claude Bolton, whom Terry encountered and who has gone to stay with family in Texas. The group concludes that the creature is gradually assuming Claude's form. Claude remains with his mother Lovie and brother Seale near the Marysville Hole, a cave complex associated with an old disaster involving children. The location offers the predator seclusion and lingering grief. Jack, controlled through the growth on his neck, gathers weapons and watches the approaches. Ralph chooses to act on the full pattern, and the investigators prepare to protect the real Claude and confront whatever manufactured the evidence.",
+            "through": {
+              "chapter": 139
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Near the Marysville Hole, Jack ambushes the approaching group with a rifle. Howie Gold and Alec Pelley are killed before Jack's attack ends and he dies, releasing the survivors from the immediate gunfire. Ralph and Holly continue into the unstable cave system and confront a figure in transition between borrowed identities, including Terry's and Claude's. The outsider confirms that it has survived by murdering children, framing copied people, and consuming the emotional devastation that follows. Holly attacks it with the weighted device she carried from her work with Bill Hodges and destroys it before the cave can become a trap. Ralph, Holly, Yune, and Claude survive. They agree on a public explanation that clears Terry and protects Claude without requiring anyone to believe the supernatural truth. Ralph, once committed only to ordinary evidence, accepts what he witnessed and forms a lasting friendship with Holly. She later confronts a small fear that the outsider survived, finds a natural cause, and moves forward.",
+            "through": {
+              "chapter": 174
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-outsider-stephen-king"
       }
     },
     "the-outsiders": {

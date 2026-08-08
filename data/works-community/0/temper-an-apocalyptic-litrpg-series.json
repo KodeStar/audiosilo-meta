@@ -1330,6 +1330,217 @@
         "work": "tess-of-the-durbervilles-adaptation"
       }
     },
+    "tess-of-the-durbervilles-amazonclassics-edition": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The eldest daughter of an impoverished rural family in Marlott. She is conscientious, reserved, and acutely sensitive to the consequences of her actions. When her father learns that the Durbeyfield name descends from the old d'Urberville family, Tess is drawn into her parents' hopes of turning that ancestry into practical help.",
+            "id": "tess-durbeyfield",
+            "name": "Tess Durbeyfield",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Sir John d'Urberville"
+            ],
+            "description": "Tess's father, a poor haggler and former farm worker in Marlott. Learning from Parson Tringham that his family descends from the ancient d'Urbervilles fills him with grand ideas, though the ancestry brings no property or dependable income. He readily adopts the mock title Sir John.",
+            "id": "john-durbeyfield",
+            "name": "John Durbeyfield",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tess's energetic and impractical mother. She seizes on the family's newly discovered ancestry and hopes that sending Tess to the wealthy Stoke-d'Urbervilles at Trantridge will produce either assistance or a prosperous match.",
+            "id": "joan-durbeyfield",
+            "name": "Joan Durbeyfield",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly clergyman and antiquarian who tells John Durbeyfield that the family name is a worn-down form of d'Urberville. His casual genealogical disclosure gives John a sense of inherited importance and sets the family's plans in motion.",
+            "id": "parson-tringham",
+            "name": "Parson Tringham",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Tess's young brother, who rides with her when she takes the family's beehives to market at night. His innocent questions about their place in the stars deepen Tess's sense that the family's welfare rests on her.",
+            "id": "abraham-durbeyfield",
+            "name": "Abraham Durbeyfield",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Alec d'Urberville"
+            ],
+            "description": "The confident young heir at the estate of the wealthy Stoke-d'Urbervilles. Although his family merely purchased the old surname, he allows Tess to approach him as a supposed poor relation. He is immediately attracted to her and arranges work for her at his mother's poultry farm.",
+            "id": "alec-stoke-durberville",
+            "name": "Alec Stoke-d'Urberville",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Alec's blind mother and the owner of the estate at Trantridge. She is chiefly interested in her poultry and accepts Tess as a worker to tend and entertain her birds, without offering the familial recognition Tess's parents imagined.",
+            "id": "mrs-stoke-durberville",
+            "name": "Mrs Stoke-d'Urberville",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The youngest son of a clergyman, encountered when he and his brothers pause at Marlott during a walking tour. Unlike his more solemn brothers, he briefly joins the village girls' dance. Tess notices him, but he leaves before dancing with her.",
+            "id": "angel-clare",
+            "name": "Angel Clare",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The genial master dairyman at Talbothays Dairy, where Tess seeks work away from Marlott. He oversees a busy household of milkers and tells stories about the cows and the people who care for them.",
+            "id": "richard-crick",
+            "name": "Richard Crick",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A strong, warm-hearted dairymaid at Talbothays and one of Tess's companions there. Like several of the women at the dairy, she is in love with Angel Clare and recognizes that his attention is directed toward Tess.",
+            "id": "marian",
+            "name": "Marian",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dark-haired dairymaid at Talbothays who becomes Tess's friend. She quietly loves Angel Clare but sees that he prefers Tess, and she treats Tess with generosity despite her disappointment.",
+            "id": "izz-huett",
+            "name": "Izz Huett",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young dairymaid at Talbothays, slight and emotionally fragile. She is another of Tess's companions who loves Angel Clare without encouragement and suffers privately as his attachment to Tess becomes clear.",
+            "id": "retty-priddle",
+            "name": "Retty Priddle",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Angel's father, an earnest and uncompromising clergyman. He has accepted that Angel will not enter the church and has set aside money for his agricultural training, but he hopes his son will marry a devout woman suited to the family's beliefs.",
+            "id": "reverend-james-clare",
+            "name": "Reverend James Clare",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A religious young woman whom Angel's parents regard as a suitable wife for him. She shares their values and is presented to Angel during his visit home, though he has already formed his own attachment elsewhere.",
+            "id": "mercy-chant",
+            "name": "Mercy Chant",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "tess-of-the-durbervilles-amazonclassics-edition"
+      },
+      "recaps": {
+        "ending": "Angel returns from Brazil ready to acknowledge that he judged Tess cruelly, but finds her living with Alec in Sandbourne after Alec has supported her displaced family. Tess tells Angel that his return is too late. She then kills Alec and escapes with Angel, and the two spend a few hidden days together in an empty house before moving on. At Stonehenge, Tess rests on an altar-like stone and accepts that the authorities will find her. She is arrested while Angel watches. Tess asks Angel to care for and marry her younger sister Liza-Lu after her death. Tess is subsequently executed at Wintoncester. Angel and Liza-Lu see the prison signal announcing that the sentence has been carried out, then leave together. Alec is dead, Tess's brief reunion with Angel has ended, and Angel is left to fulfil the responsibility she entrusted to him.",
+        "in_short": "Tess Durbeyfield, the eldest child of a poor rural family, is sent to seek help from wealthy people using the d'Urberville name after her father learns of their ancient ancestry. Alec d'Urberville pursues and sexually exploits her; she returns home, gives birth to a child who soon dies, and later begins again as a dairymaid. At Talbothays she and Angel Clare fall in love and marry, but Angel cannot forgive the past she confesses, despite admitting his own sexual lapse, and abandons her for Brazil. Poverty and responsibility for her family drive Tess into harsh farm work. Alec returns, pressures her relentlessly, and eventually supports her destitute household. When Angel comes back repentant, Tess is living with Alec. She kills Alec and flees with Angel, enjoying only a brief reunion before she is arrested at Stonehenge. Tess is executed, and Angel leaves with her younger sister Liza-Lu, whom Tess asked him to protect.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Parson Tringham tells the poor villager John Durbeyfield that his family descends from the once-powerful d'Urbervilles. John and his wife Joan treat the discovery as a possible route to prosperity. After John is unable to take beehives to market, Tess drives the cart with her brother Abraham, but falls asleep and collides with a mail coach; the family's horse Prince is killed. Feeling responsible for the loss of their livelihood, Tess agrees to approach the wealthy Stoke-d'Urbervilles at Trantridge, who have adopted the old name but are not relatives. Alec d'Urberville takes an immediate interest in her and obtains a position for her tending his blind mother's poultry. He repeatedly intrudes on Tess and presses unwanted attention on her. After a late-night outing, he takes her into the Chase and sexually exploits her in circumstances shaped by her exhaustion, isolation, and dependence on him.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tess leaves Trantridge and returns to Marlott, rejecting Alec's claim that she should rely on him. She gives birth to a boy and works in the fields while caring for him. When the baby becomes gravely ill, Tess fears he will be denied Christian burial because he has not been formally baptized. She performs a baptism herself and names him Sorrow, but he dies soon afterward. The local clergyman privately accepts the sincerity of what she did yet cannot give the child a full church burial, so Tess places him in the unconsecrated part of the churchyard and marks the grave herself. She remains in Marlott for a time under the weight of gossip and grief, then looks for a place where she can work among people who do not know her history.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tess begins work at Talbothays Dairy in the fertile Vale of the Great Dairies. The new setting restores some of her confidence. She meets Angel Clare, the clergyman's son she briefly saw at the Marlott dance, now learning practical farming because he does not share his family's religious path. Angel lives and works alongside the dairy household rather than holding himself apart. Tess becomes friends with Marian, Izz Huett, and Retty Priddle, all of whom are quietly in love with him. Angel increasingly singles Tess out, admiring her intelligence and idealizing her as a natural, unspoiled countrywoman. Tess loves him but believes her past makes a future with him impossible. Their mutual attraction becomes plain even as she tries to suppress it, while her friends recognize that Angel's preference has settled on her.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Angel visits his clerical family and rejects their hope that he might marry the devout Mercy Chant, arguing instead for a wife who understands farm life. Back at Talbothays he repeatedly proposes to Tess. She tries to refuse and says she has something serious to tell him, but eventually accepts. Before the wedding she writes a full confession of her history and pushes it under his door; the letter slips beneath a carpet, and Angel never sees it. Tess takes the silence for forgiveness until she discovers the unopened letter and destroys it, deciding to tell him directly after they marry. On their wedding night Angel first admits to a past affair. Encouraged by his confession and her immediate forgiveness, Tess tells him about Alec and the child who died. Angel reacts by insisting that the woman he married is not the woman he imagined. Although their experiences are morally comparable to Tess, he cannot accept hers, and the marriage begins in estrangement.",
+            "through": {
+              "chapter": 34
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Angel and Tess separate. He gives her money, tells her not to seek him until he sends for her, and leaves for Brazil to try farming. Tess returns briefly to her family but conceals the truth about her marriage and avoids becoming a burden on them. Her money dwindles, and she joins Marian at the bleak upland farm of Flintcomb-Ash, where exhausting winter labour and an unsympathetic employer replace the abundance of Talbothays. Izz later joins them. Tess walks to Angel's family home hoping for help but loses courage after overhearing dismissive remarks from his brothers and Mercy Chant; she turns back without speaking to Reverend Clare. On the road she encounters Alec again. He has become an itinerant preacher after hearing Reverend Clare, and he is startled by Tess's return. Her presence unsettles his new religious identity just as her absent husband leaves her without protection or support.",
+            "through": {
+              "chapter": 44
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Alec abandons preaching and renews his pursuit of Tess, blaming her for weakening his conversion. He follows her to Flintcomb-Ash, offers material help, and presses her to become his wife, while she insists that she is already married and rejects him. Tess writes desperately to Angel asking him to return, but receives no timely rescue. In Brazil, illness and hardship lead Angel to reconsider the rigid judgment with which he left her, and he begins the journey home. Tess's father dies, ending the family's insecure right to their cottage at Marlott. Joan and the children are forced out, and their planned lodging fails, leaving them camped among the ancestral d'Urberville tombs at Kingsbere. Alec uses their destitution to strengthen his pressure on Tess and promises to provide for them. Tess remains caught between loyalty to her family, Alec's persistence, and an absent husband who has not answered her appeals.",
+            "through": {
+              "chapter": 52
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Angel returns from Brazil repentant and searches for Tess. He finally finds her in a fashionable lodging house at Sandbourne, where she is living with Alec, who has supported the displaced Durbeyfield family. Tess tells Angel that his change of heart has come too late and sends him away. Overwhelmed by Alec's role in separating them and by Angel's return, she kills Alec and follows Angel. The married couple flee together and spend several hidden days in an empty country house, briefly recovering the intimacy their marriage never had. When they move on, they stop at Stonehenge. Tess lies down on one of the stones and, knowing pursuit is close, asks Angel to care for and marry her younger sister Liza-Lu after Tess is gone. Police arrest Tess there. She is later executed at Wintoncester; Angel and Liza-Lu watch for the prison signal confirming her death, then walk away together.",
+            "through": {
+              "chapter": 59
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "tess-of-the-durbervilles-amazonclassics-edition"
+      }
+    },
     "that-was-then-this-is-now": {
       "characters": {
         "characters": [
