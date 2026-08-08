@@ -3617,6 +3617,100 @@
         "work": "persepolis-rising"
       }
     },
+    "persians": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Queen Mother"
+            ],
+            "description": "The widowed queen of Persia and mother of Xerxes. While the king and his army are away in Greece, she comes before the elders at Susa troubled by a dream and an ominous encounter between birds. Her questions draw out the contrast between Persian monarchy and the independent Greek cities, and her fear gives the distant war an immediate human cost.",
+            "id": "atossa",
+            "name": "Atossa",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "The Elders"
+            ],
+            "description": "A council of elderly Persian nobles left in Susa while the younger men march with Xerxes. They begin in anxious admiration of the empire's power, question the messenger and the royal family, help call up Darius, and finally join Xerxes in mourning the disaster.",
+            "id": "chorus-of-persian-elders",
+            "name": "Chorus of Persian Elders",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A survivor who reaches Susa from Greece with the first direct account of the expedition's defeat. He reports that Xerxes is alive but that much of the Persian leadership and fleet has been destroyed, turning the court's unease into public grief.",
+            "id": "messenger",
+            "name": "Messenger",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ghost of Darius"
+            ],
+            "description": "The dead Persian king, husband of Atossa and father of Xerxes, summoned from the underworld by offerings and lamentation. He interprets Persia's defeat as the consequence of an overreaching campaign and warns that further suffering awaits the army still in Greece.",
+            "id": "darius",
+            "name": "Darius",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "King of Persia"
+            ],
+            "description": "The Persian king and son of Atossa and Darius, who has led an immense invasion of Greece. He returns to Susa alive but stripped of his army and prestige, and his exchange of grief with the elders closes the tragedy.",
+            "id": "xerxes",
+            "name": "Xerxes",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "persians"
+      },
+      "recaps": {
+        "ending": "Darius's ghost returns below after warning that the surviving Persian force will suffer another defeat at Plataea and that Persia should not again send an army into Greece. Atossa goes to fetch suitable clothing for her son. Xerxes then reaches Susa with only a remnant of his expedition, grieving for the commanders and soldiers lost in Greece. He and the chorus answer one another in a final lament over the fleet, the army, and the collapse of Persian confidence. Xerxes survives, but his attempt to extend Persian rule into Greece has ended in national bereavement and humiliation.",
+        "in_short": "At the Persian court in Susa, elderly councillors and Queen Atossa wait anxiously for news of Xerxes's enormous expedition against Greece. A messenger arrives with word that the Persian fleet has been destroyed at Salamis after being drawn into confined waters, and that much of the army and its leadership has been lost during the retreat. Atossa and the elders summon the ghost of the former king Darius. He condemns the campaign's arrogance, warns of another Persian defeat at Plataea, and urges an end to invasions of Greece. Xerxes finally returns in torn clothing with only a fraction of his forces. The play closes with the defeated king and the chorus mourning the dead and the ruin of Persian power abroad.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In Susa, a chorus of elderly Persian nobles waits for news from the immense army that King Xerxes has led into Greece. Queen Atossa, disturbed by a symbolic dream and a troubling omen, asks the elders about Athens and the people her son is fighting. A messenger arrives and reports catastrophe: Xerxes lives, but the Persian fleet has been destroyed at Salamis after the Greeks lured it into waters where its numerical advantage could not be used. Many commanders are dead, and the army's retreat has brought further losses. Atossa and the elders make offerings and summon the ghost of her late husband, Darius. He rebukes the expedition's excesses, warns that the troops left in Greece face another defeat at Plataea, and tells Persia not to invade Greece again. After the ghost departs, Xerxes returns in disgrace with a shattered remnant of his force. King and chorus end the play in a shared lament for the dead and for the expedition's collapse.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "persians"
+      }
+    },
     "personal": {
       "characters": {
         "characters": [

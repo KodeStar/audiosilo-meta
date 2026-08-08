@@ -1597,6 +1597,139 @@
         "work": "rexus-side-quest"
       }
     },
+    "rhapsody-a-dream-story": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A successful Viennese physician, husband to Albertine and father of a young daughter. After an intimate conversation exposes desires that neither spouse has acted upon, a nighttime medical call sends him into a series of encounters that test his fidelity, pride, and sense of security.",
+            "id": "fridolin",
+            "name": "Fridolin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Fridolin's wife, intelligent and candid about the inner life beneath their respectable marriage. She tells him of a powerful attraction she once felt for a stranger during a family holiday, prompting him to answer with a confession of his own.",
+            "id": "albertine",
+            "name": "Albertine",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The adult daughter of one of Fridolin's elderly patients. In the immediate aftermath of her father's death, she unexpectedly declares that she loves Fridolin despite being engaged to another man.",
+            "id": "marianne",
+            "name": "Marianne",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young sex worker who invites Fridolin to her room during his restless walk through Vienna. She responds with concern when he hesitates, and their encounter ends without sex.",
+            "id": "mizzi",
+            "name": "Mizzi",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A pianist and former medical-school acquaintance of Fridolin. He earns money playing at private gatherings while blindfolded and lets slip that he is due at another secret event that night, giving Fridolin the password and location.",
+            "id": "nachtigall",
+            "name": "Nachtigall",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The proprietor of a costume shop whom Fridolin persuades to reopen after midnight. While finding him a monk's disguise, Gibiser discovers his underage daughter with two men and reacts with anger and threats.",
+            "id": "gibiser",
+            "name": "Gibiser",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Pierrette"
+            ],
+            "description": "Gibiser's adolescent daughter, first seen in the costume shop dressed as a commedia dell'arte figure and hiding with two men. She behaves boldly toward Fridolin while her father tries to control the situation.",
+            "id": "gibisers-daughter",
+            "name": "Gibiser's daughter",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A woman at the masked gathering who urgently warns Fridolin that he has entered at great risk and must leave. When his disguise is exposed, she intervenes before the assembled guests can decide his punishment.",
+            "id": "the-masked-woman",
+            "name": "The masked woman",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "rhapsody-a-dream-story"
+      },
+      "recaps": {
+        "ending": "After viewing the body of a woman whose death may be connected to the masked gathering, Fridolin returns home without proving whether she was the stranger who intervened for him. He finds the mask from his costume lying on the pillow beside the sleeping Albertine. Its presence makes concealment impossible, and he breaks down and tells her the whole story of his night and his later investigation. By morning, the couple have reached no tidy explanation of either his adventures or her dream, but they choose honesty and a renewed awareness of one another over further secrecy. Albertine cautions against assuming that any reconciliation is guaranteed forever, while also recognizing that they have survived the immediate crisis. Their daughter wakes and the sounds of the new day enter the room, returning them to shared domestic life with their marriage altered but intact.",
+        "in_short": "After a masked ball, Viennese doctor Fridolin and his wife Albertine confess attractions to other people, unsettling their confidence in their marriage. Called to a patient's deathbed, Fridolin wanders through the city and meets a grieving daughter, a sex worker, and his old acquaintance Nachtigall, who reveals the location of a secret masked gathering. Fridolin obtains a costume and enters, but a masked woman warns him away and offers herself when he is exposed as an outsider. The next day, he tries to trace Nachtigall, the gathering, and the woman, meeting threats and evasions. Albertine's account of a cruelly erotic dream intensifies his jealousy. A newspaper report leads him to the body of a woman who may have been his rescuer, though he cannot confirm it. Returning home, he finds his borrowed mask beside Albertine and confesses everything. At dawn they accept the need for honesty and resume their life together without pretending the danger of future estrangement has vanished.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Fridolin, a Viennese doctor, and his wife Albertine return to the memory of a recent masked ball, where each flirted with strangers before rejoining the other. Their conversation turns to a holiday in Denmark the previous summer. Albertine admits that the sight of a young officer filled her with such desire that, in imagination, she was ready to abandon her family. Fridolin confesses a similarly charged encounter with a young girl on the beach. Although neither acted, the disclosures make each newly jealous of the other's private life. Their discussion is interrupted by news that one of Fridolin's elderly patients is dying. He leaves Albertine and their sleeping daughter to make the nighttime call, carrying the quarrel and his wounded pride into the city.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Fridolin arrives too late to save his patient. The dead man's daughter Marianne suddenly declares her love for him, but her fiancé arrives before Fridolin can make sense of the confession. Continuing through Vienna, Fridolin is taunted by students and follows a sex worker named Mizzi to her room, then leaves without sleeping with her. In a café he meets Nachtigall, an old medical-school acquaintance now working as a pianist. Nachtigall describes a secret gathering where he plays blindfolded and gives Fridolin its password and location. Fridolin hires a costume from Gibiser, whose adolescent daughter is discovered with two men in the shop, and travels to the gathering disguised as a monk. The masked guests quickly suspect he is an intruder. A woman repeatedly warns him to escape; when he is formally exposed and threatened, she offers herself in his place. Fridolin is removed and warned never to investigate.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Back at home, Fridolin wakes Albertine, who tells him a dream in which she embraces many men while watching Fridolin humiliated and condemned. Her laughter in the dream wounds him more deeply than her earlier confession. By daylight he attempts to retrace the night. Nachtigall has been taken away under suspicious circumstances, and the staff at his lodging can offer little help. At the costume shop, Gibiser now appears to be profiting from the same men he had threatened, sharpening Fridolin's disgust at the instability of the roles people perform. Fridolin returns to the country house but is stopped outside and receives another written warning. He also revisits Marianne and learns that the emotional opening of the previous night cannot simply be resumed. His investigation yields no secure identity for the masked woman and no way to determine what her offer on his behalf meant.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A newspaper report about a woman who died after taking poison leads Fridolin to wonder whether she was the masked stranger. At the hospital morgue he views the body, but recognition remains uncertain and he cannot prove the organizers' claim that the woman's death was unrelated to him. His efforts to turn the night into a solvable mystery have reached an impasse. When he returns home, he finds the mask from his hired costume placed on the pillow beside Albertine. The discovery breaks his resolve to keep his experiences secret, and he confesses his wandering, the gathering, his fear, and his attempts to investigate. Albertine listens and stays with him until morning. They do not establish a final boundary between event, fantasy, and dream, but decide to value their survival of the crisis and the honesty now possible between them. Their daughter wakes as day begins, and Fridolin and Albertine return to ordinary family life with their marriage intact but stripped of its former complacency.",
+            "through": {
+              "chapter": 7
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "rhapsody-a-dream-story"
+      }
+    },
     "rhythm-of-war": {
       "characters": {
         "characters": [

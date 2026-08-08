@@ -1210,6 +1210,227 @@
         "work": "night-watch"
       }
     },
+    "nights-at-the-circus": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Fevvers",
+              "the Cockney Venus"
+            ],
+            "description": "A celebrated aerialist whose large feathered wings have made her the wonder of Europe and America. She tells her story in a bold Cockney voice and presents herself as a woman who was hatched rather than born. Her public legend, physical presence, and skill at controlling an audience fascinate Walser, who hopes to find the ordinary explanation behind them.",
+            "id": "sophie-fevvers",
+            "name": "Sophie Fevvers",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An American journalist who interviews Fevvers after her London performance. Rational, widely travelled, and proud of his professional detachment, he suspects that her life story is an elaborate fraud. The interview unsettles his sense of time and certainty, and his determination to investigate her draws him out of the observer's role.",
+            "id": "jack-walser",
+            "name": "Jack Walser",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Fevvers's foster mother, dresser, business adviser, and constant companion. A politically alert former sex worker with a sharp eye for exploitation, she guards both Fevvers and the story they present to the world. She carries a clock that appears to resist ordinary time and frequently challenges Walser's assumptions.",
+            "id": "lizzie",
+            "name": "Lizzie",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The generous proprietor of the London brothel in which Fevvers is raised. She runs the house as a female community rather than a place controlled by a man, and gives the abandoned infant Sophie a protected childhood among the women who work there.",
+            "id": "ma-nelson",
+            "name": "Ma Nelson",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The proprietor of a gloomy exhibition of women presented as human curiosities. She employs Fevvers after Ma Nelson's household breaks up, placing her among performers whose bodies are sold as spectacle under restrictive and degrading conditions.",
+            "id": "madame-schreck",
+            "name": "Madame Schreck",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Christian Rosencreutz"
+            ],
+            "description": "A wealthy, secretive man who buys a private meeting with Fevvers while she works for Madame Schreck. His occult theories turn her unusual body into a symbol within a ritual he controls, placing her in immediate danger.",
+            "id": "mr-rosencreutz",
+            "name": "Mr Rosencreutz",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "the Colonel"
+            ],
+            "description": "The American showman who owns the circus touring Russia. He treats spectacle as a business and publicity as an art, relying on extravagant claims, relentless promotion, and the advice he reads in the behaviour of his pet pig.",
+            "id": "colonel-kearney",
+            "name": "Colonel Kearney",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Colonel Kearney's intelligent pet pig and trusted oracle. The Colonel interprets her movements as answers to business questions, giving her an oddly influential place in the management of the circus.",
+            "id": "sybil",
+            "name": "Sybil",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Buffo the Great"
+            ],
+            "description": "The revered leader of the circus clowns, whose comic authority rests on turning humiliation, disorder, and repeated symbolic death into performance. He instructs Walser in clowning and presides over a company whose stage identities threaten to overwhelm their private selves.",
+            "id": "buffo",
+            "name": "Buffo",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young performer trapped in a violent marriage to the circus's ape trainer. Neglected, hungry, and initially unable to imagine an independent life, she becomes the object of unexpected care after joining the Russian tour.",
+            "id": "mignon",
+            "name": "Mignon",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The circus's silent and commanding tiger trainer, an aristocratic performer whose cats respond to music and disciplined signals. She takes Mignon under her protection and develops an act that brings the younger woman's singing into partnership with the tigers.",
+            "id": "princess-of-abyssinia",
+            "name": "The Princess of Abyssinia",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The circus strongman, physically imposing but emotionally vulnerable. He becomes attached to Mignon and tries to protect her, though he cannot command her affections or understand the new bond that changes her life.",
+            "id": "samson",
+            "name": "Samson",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the Countess of P."
+            ],
+            "description": "A wealthy convicted murderer who has designed and endowed a Siberian prison for women. She believes constant observation will produce repentance, but her prisoners have formed loyalties and plans that her controlling system cannot fully perceive.",
+            "id": "countess-p",
+            "name": "Countess P.",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Siberian spiritual leader who finds the disoriented Walser after the train disaster. He accepts Walser's strange speech and behaviour as signs of unusual spiritual potential and draws him into the ritual life of his community.",
+            "id": "the-shaman",
+            "name": "The Shaman",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "nights-at-the-circus"
+      },
+      "recaps": {
+        "ending": "Fevvers and Lizzie finally reach the Shaman's settlement, where they find Walser alive but changed by amnesia and his time outside European society. Fevvers's confidence and damaged wing recover as she and Walser recognize their attachment without returning to the old arrangement of celebrity and sceptical reporter. Around them, the surviving circus company has broken into new pairings: Mignon and the Princess remain together, while the Colonel's grand enterprise no longer supplies the only possible future. Walser and Fevvers become lovers. When he asks why she claimed to be a virgin, her enormous laughter closes the novel, leaving that part of her self-created legend exposed as a joke while the truth of her wings remains unresolved. Their reunion points toward a relationship in which neither can simply reduce the other to an object of investigation or display.",
+        "in_short": "In 1899, American reporter Jack Walser interviews the famous winged aerialist Sophie Fevvers, expecting to expose a fraud. Fevvers and her foster mother Lizzie recount a life shaped by brothels, human exhibitions, danger, and performance, but the interview defeats Walser's confidence in objective fact. He follows Fevvers into Colonel Kearney's circus in Russia and becomes a clown. The tour brings together abused singer Mignon, the Princess who trains tigers, the strongman Samson, and the unstable clown Buffo. A Siberian train disaster destroys the company and separates Walser from Fevvers. Walser loses his memory and is taken in by a Shaman, while Fevvers, stripped of the certainty sustained by her fame, searches for him with Lizzie and the survivors. They reunite, become lovers, and face a future outside their earlier roles. Fevvers ends by laughing over the false claim that she was a virgin, while the novel preserves the larger ambiguity of her identity and wings.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "After a London performance on the last night of 1899, American journalist Jack Walser interviews Sophie Fevvers, the celebrated aerialist advertised as a winged woman. Fevvers, with her foster mother Lizzie beside her, says she was found as an egg and raised in Ma Nelson's brothel. As a child she posed as a small Cupid; at puberty her wings developed and she became the household's central wonder. Ma Nelson's establishment offered its workers unusual solidarity and control over their earnings, but her death ended that protected world. Walser listens for contradictions, intending to expose a hoax, yet Fevvers's forceful storytelling and the room's distorted sense of time make it difficult for him to keep the distance of a reporter.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Fevvers continues the account of her past. After Ma Nelson's house closes, poverty leads her to Madame Schreck's exhibition of women treated as curiosities. A wealthy occultist calling himself Rosencreutz purchases a private encounter and prepares to use Fevvers in a deadly ritual, but she escapes and returns to Lizzie. She later develops the aerial act that makes her internationally famous. By the end of the interview, Walser has neither proved nor disproved her story. When Fevvers accepts a lucrative engagement with Colonel Kearney's circus in Russia, Walser arranges to join the company secretly as a clown so that he can continue investigating her under the cover of reporting on the tour.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In St Petersburg, Colonel Kearney manages the circus through publicity, instinct, and the supposed advice of his pig Sybil. Walser submits to the clowns' grotesque discipline under Buffo the Great, learning that a clown's performed identity can consume the person beneath it. Fevvers remains the star attraction but is no longer the sole centre of the story. The abused singer Mignon is cast off by her husband, the ape trainer, and receives protection from the Princess of Abyssinia, whose trained tigers respond to music. The Princess recognizes Mignon's voice and begins shaping a new act around her. Samson, the strongman, also becomes devoted to Mignon, creating a tense emotional triangle as the circus prepares its Russian performances.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The circus performances expose the danger inside its spectacles. The Princess and Mignon's musical tiger act gives Mignon confidence and draws the two women closer, while Samson discovers that strength gives him no claim over her. Buffo's ceremonial clown chaos becomes real when he suffers a breakdown and attacks Walser, leaving the journalist injured. The barriers between human beings and performing animals also become unstable, and the carefully managed show can no longer contain every act of rebellion or desire. Fevvers watches Walser's transformation from composed observer into vulnerable participant and realizes that her interest in him is no longer merely amusement. The company leaves St Petersburg by train, carrying its unsettled relationships east into Siberia.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In Siberia, Countess P.'s prison uses a circular design intended to keep female prisoners under constant observation. The women have nevertheless built secret connections and coordinate an escape, hoping to join exiled men they have imagined as partners in revolution. Their actions converge with an attack on the circus train. The train is wrecked, the circus is destroyed as an organized enterprise, and its members are scattered in the snow. Walser, already shaken by his life as a clown, loses his memory. Fevvers survives with an injured wing but finds that the loss of her audience, possessions, and control over her image weakens her confidence in the identity she has created.",
+            "through": {
+              "chapter": 19
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The survivors move through Siberia in separated groups. Walser is found by a Shaman, who interprets the stranger's broken memories and fragments of language as spiritual signs. Living within the Shaman's community, Walser loses the habits of the journalist who once believed he could stand outside every story. Fevvers and Lizzie continue searching for him with members of the circus, while the old hierarchy of star, owner, and supporting acts falls away. Fevvers worries that her damaged wing and fading glamour reveal limits she had refused to acknowledge. Mignon and the Princess, by contrast, retain the partnership they formed during the tour and can imagine a life not defined by their former employers.",
+            "through": {
+              "chapter": 23
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Fevvers and Lizzie reach the Shaman's settlement and find Walser alive, though his amnesia and Siberian experiences have changed him. Their reunion allows Fevvers to recover confidence without simply restoring the public legend she maintained before the crash. The circus company no longer exists in its former form, and its survivors face futures built around the bonds they chose during the journey. Fevvers and Walser acknowledge their desire and become lovers, meeting as participants in the same uncertain story rather than as exhibited wonder and detached investigator. Walser asks about Fevvers's repeated claim that she was a virgin. Her final, expansive laughter reveals that claim as one of her inventions, but it does not settle whether her wings or the rest of her history are factual. The novel closes with her identity still exceeding the explanation Walser originally sought.",
+            "through": {
+              "chapter": 27
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "nights-at-the-circus"
+      }
+    },
     "nine-dragons": {
       "characters": {
         "characters": [
