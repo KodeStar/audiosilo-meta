@@ -2716,6 +2716,234 @@
         "work": "the-calculating-stars"
       }
     },
+    "the-canterbury-tales": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "the narrator"
+            ],
+            "description": "A pilgrim traveling from Southwark toward the shrine of Thomas Becket at Canterbury. He presents himself as an observant but unassertive member of the company and records portraits of his fellow travelers before recounting their stories and disputes.",
+            "id": "geoffrey-chaucer",
+            "name": "Geoffrey Chaucer",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "the Host"
+            ],
+            "description": "The lively proprietor of the Tabard Inn, where the pilgrims assemble. He proposes that they entertain one another with tales on the road, offers a supper as the prize, appoints himself judge, and travels with the group to keep the contest moving.",
+            "id": "harry-bailey",
+            "name": "Harry Bailey",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An experienced soldier who has campaigned widely in Christian armies. Despite his rank and record, he dresses plainly and behaves with courtesy and restraint. The other pilgrims readily accept his place at the head of the first round of storytelling.",
+            "id": "the-knight",
+            "name": "the Knight",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful, broad laborer with a red beard and an appetite for drink, rough games, and bawdy stories. He plays the bagpipes as the company leaves town and insists on speaking after the Knight, despite the Host's effort to preserve social order.",
+            "id": "the-miller",
+            "name": "the Miller",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Alisoun"
+            ],
+            "description": "A prosperous cloth maker from near Bath who has traveled on many pilgrimages and has outlived five husbands. Confident, socially commanding, and experienced in marriage, she becomes one of the company's most distinctive speakers.",
+            "id": "the-wife-of-bath",
+            "name": "the Wife of Bath",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A church official licensed to sell pardons who travels with a bag of documents and objects he presents as holy relics. He is an accomplished preacher and performer, using a smooth voice and carefully prepared displays to win an audience.",
+            "id": "the-pardoner",
+            "name": "the Pardoner",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Madame Eglantine"
+            ],
+            "description": "A nun of refined manners who calls herself Madame Eglantine. She speaks French, sings the church service, takes pains over table etiquette, and shows conspicuous tenderness toward small animals.",
+            "id": "the-prioress",
+            "name": "the Prioress",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Oxford student devoted to philosophy and books. Thin, plainly dressed, and poor, he spends what money he can obtain on learning. He speaks sparingly but with care and is presented as both eager to learn and willing to teach.",
+            "id": "the-clerk",
+            "name": "the Clerk",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A fashionably dressed trader who speaks solemnly about commerce, exchange rates, and the risks of sea travel. He projects prosperity and business competence, though the narrator does not know his name.",
+            "id": "the-merchant",
+            "name": "the Merchant",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A weary young servant who rides up to the company after his master, a Canon, abruptly leaves it. His stained clothing reflects long work around furnaces and metals. Once separated from the Canon, he begins explaining the costly deceptions practiced by false alchemists.",
+            "id": "the-canons-yeoman",
+            "name": "the Canon's Yeoman",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Theban knight and cousin of Arcite. Imprisoned by Duke Theseus in Athens, he sees Emelye walking in a garden and falls instantly in love, turning his shared captivity into a rivalry.",
+            "id": "palamon",
+            "name": "Palamon",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Palamon's cousin and fellow Theban prisoner. He also falls in love with Emelye at first sight. His friendship with Palamon gives way to a dispute over who has the stronger claim to serve and love her.",
+            "id": "arcite",
+            "name": "Arcite",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A clever Oxford student lodging in the house of an older carpenter. He studies astrology, plays music, and begins a secret affair with the carpenter's young wife, Alisoun, devising an elaborate prediction to gain time alone with her.",
+            "id": "nicholas",
+            "name": "Nicholas",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The young wife of John the carpenter. Attractive, spirited, and much younger than her husband, she responds to the lodger Nicholas's courtship and joins his plan to deceive John.",
+            "id": "alisoun-of-oxford",
+            "name": "Alisoun of Oxford",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A Christian princess from Rome whose life is repeatedly displaced by political marriages, sea voyages, and religious conflict. Her constancy and faith sustain her when she is separated from family and placed among hostile courts.",
+            "id": "custance",
+            "name": "Custance",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A poor young woman chosen as a bride by Walter, Marquis of Saluzzo. Gentle and dutiful, she accepts the sudden change in station and promises obedience to her new husband.",
+            "id": "griselda",
+            "name": "Griselda",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "protagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-canterbury-tales"
+      },
+      "recaps": {
+        "ending": "The Manciple tells how Phoebus's white crow revealed his wife's infidelity and was punished for bringing disastrous news, then advises restraint in speech. Near the end of the day's travel, the Host asks the Parson for a final entertaining fable. The Parson refuses fictional storytelling and instead delivers a long prose guide to penitence, confession, and the seven deadly sins. No winner of the Host's tale contest is declared, and the surviving text never brings the company to a narrated arrival at Becket's shrine. The work closes with Chaucer's Retraction, in which the author asks forgiveness for writings concerned with worldly vanity, specifically including the tales that tend toward sin, while affirming his devotional works. The ending therefore shifts away from the pilgrims' social comedy and unfinished contest toward moral accounting by the author himself.",
+        "in_short": "A varied company meets at the Tabard Inn before riding to Thomas Becket's shrine at Canterbury. Their Host, Harry Bailey, proposes a storytelling contest and joins them as judge. The surviving collection follows the pilgrims' tales and the quarrels, interruptions, and replies between them. Courtly romance in the Knight's tale gives way to the Miller's comic deception and the Reeve's retaliation; later tellers debate marriage, authority, greed, social rank, religion, patience, and the uses of fiction through saints' lives, beast fables, tragedies, sermons, and earthy comedy. The Wife of Bath argues from her five marriages before telling of sovereignty in marriage; the Pardoner condemns greed while admitting his own fraud; the Clerk recounts Griselda's trials; and the Nun's Priest turns a fox and rooster into a lesson about flattery. The journey and contest remain unfinished. After the Parson's penitential treatise, Chaucer ends with a Retraction asking pardon for morally suspect writings and commending his religious works.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In spring, a narrator named Chaucer joins about thirty travelers at Harry Bailey's Tabard Inn in Southwark, all bound for the shrine of Thomas Becket at Canterbury. He describes a socially mixed company that includes a seasoned Knight and his son, several religious figures, urban professionals, tradesmen, estate officers, and laborers. Among the most distinctive are the confident Wife of Bath, the scholarly Clerk, the formidable Miller, the polished Prioress, and the Pardoner with his supposed relics. Harry proposes that each pilgrim tell stories during the journey, with a supper awarded to the best teller, and the company accepts him as guide and judge. After they set out, lots give the Knight the first turn. His romance follows the imprisoned Theban cousins Palamon and Arcite, rivals for Emelye. Theseus arranges a formal tournament to decide their claims. Arcite wins but is fatally injured, and after mourning and political reconciliation, Palamon marries Emelye.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The drunken Miller insists on answering the Knight with a comic tale about John, an Oxford carpenter; Alisoun, his young wife; and Nicholas, their clever lodger. Nicholas invents a coming flood so John will sleep in a tub while Nicholas and Alisoun spend the night together. A second admirer, Absolon, is humiliated at the window; his attempt at revenge burns Nicholas, whose cry makes John cut his tub loose and crash down. The Reeve, offended by the portrait of a carpenter, retaliates with a tale in which two Cambridge students are cheated by the miller Symkyn, then confuse the beds in his house and repay the fraud with sexual and physical humiliation. The Cook begins another story but leaves it unfinished. The Man of Law next recounts the long ordeals of Custance, a Roman Christian princess sent into arranged marriages and repeatedly cast to sea through murderous plots. Her endurance, conversions, and eventual reunion with her family restore her and her son to safety.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Wife of Bath gives an extensive account of her five marriages, defending experience as a source of authority and describing her struggles for control, property, and affection. Her tale concerns a knight who must discover what women most desire; an old woman supplies the answer, sovereignty over their own lives, and he finally grants her the power to choose the form of their marriage. The Friar then attacks summoners through a story of a corrupt summoner who meets a devil and is carried to hell after taking a sincere curse literally. The Summoner responds with a satire about a greedy friar soliciting gifts from a sick man, who offers him a fart and leaves learned men to debate how it can be divided equally among the friars. The pilgrims' tales have become direct social weapons: each speaker's choice of subject answers an earlier insult, and the Host must keep personal hostility within the storytelling game.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Clerk tells of Griselda, a poor woman married by Marquis Walter and subjected to cruel tests of obedience. He pretends their children are killed and later rejects her, but ultimately reveals the children alive and restores her; the Clerk warns against treating the tale as a model for wives. The Merchant answers with January, an elderly knight who marries the young May and is deceived when she meets Damian in a pear tree, even after Pluto restores January's sight. The unfinished Squire's tale introduces a foreign knight bearing magical gifts at Cambyuskan's court, including a ring that lets Canacee understand birds. The Franklin then recounts the marriage of Dorigen and Arveragus. When Dorigen makes an impossible promise to Aurelius, a magician appears to remove the coastal rocks named in her condition. Arveragus tells her to keep her word, but Aurelius releases her after seeing their integrity, and the magician in turn forgives Aurelius's debt.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A Physician tells of Virginia, whose father kills her to prevent the corrupt judge Apius from seizing her; the fraud is exposed and the judge dies in prison. The Pardoner openly admits that he preaches against greed to obtain money, then demonstrates his craft with three rioters who seek to kill Death. They find gold, plot against one another, and all die through poison and violence. When the Pardoner tries to sell relics to the company, the Host angrily rejects him, and the Knight restores peace. The Shipman's fabliau concerns a monk who borrows a merchant's money, gives it to the merchant's wife in return for sex, and tells the husband he repaid her. The Prioress follows with a miracle story about a murdered Christian child whose song continues through divine intervention. Her tale is overtly hostile toward Jews, reflecting a prejudice embedded in its devotional plot.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Chaucer's deliberately clumsy romance of Sir Thopas is interrupted by the Host, so he substitutes the long prose Tale of Melibee, a debate about revenge and prudent counsel. The Monk begins a series of tragedies about great figures brought down by misfortune until the company stops him. The Nun's Priest restores energy with the beast fable of Chauntecleer, a proud rooster whose dream warns him of danger; a flattering fox catches him, but Chauntecleer escapes by persuading the fox to speak. After a saint's life told by the Second Nun, a Canon and his Yeoman overtake the pilgrims. The Canon flees, and the Yeoman exposes fraudulent alchemy through his own ruin and a tale of a canon deceiving a priest. The Manciple tells how a crow's truthful report leads to tragedy and advises guarded speech. The Parson refuses a fable and delivers a prose treatise on penitence and sin. The contest receives no judgment and the arrival at Canterbury is not narrated. Chaucer closes by asking forgiveness for secular works that may encourage sin and affirming his devotional writing.",
+            "through": {
+              "chapter": 26
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-canterbury-tales"
+      }
+    },
     "the-cardinal-of-the-kremlin": {
       "characters": {
         "characters": [

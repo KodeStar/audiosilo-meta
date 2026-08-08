@@ -516,6 +516,168 @@
         "work": "pandemonium"
       }
     },
+    "pans-labyrinth-the-labyrinth-of-the-faun": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A book-loving girl traveling with her pregnant mother to a military outpost in 1944 Spain. Ofelia distrusts her new stepfather and finds refuge in stories and in the ancient labyrinth near the mill, where the boundary between fairy tale and wartime reality becomes uncertain.",
+            "id": "ofelia",
+            "name": "Ofelia",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Ofelia's mother, pregnant with Captain Vidal's child and weakened by a difficult journey. Carmen hopes her new marriage will give them security after years of hardship, and she urges Ofelia to accept practical reality and show respect to Vidal.",
+            "id": "carmen",
+            "name": "Carmen",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Falangist officer commanding the mill and the campaign against republican guerrillas in the surrounding forest. Vidal is controlled, authoritarian, and obsessed with discipline, inheritance, and the son Carmen is carrying. His polished manners do little to conceal his readiness to use violence.",
+            "id": "captain-vidal",
+            "name": "Captain Vidal",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The housekeeper at Vidal's mill, outwardly efficient and obedient. Mercedes treats Ofelia with warmth and understands the dangers in the forest better than she admits to the soldiers under whose eyes she works.",
+            "id": "mercedes",
+            "name": "Mercedes",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The physician attending Carmen and the soldiers at the mill. Calm and humane, Doctor Ferreiro follows medical duty even when Vidal expects unquestioning obedience and the war makes compassion dangerous.",
+            "id": "doctor-ferreiro",
+            "name": "Doctor Ferreiro",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An ancient, unsettling being whom Ofelia meets beneath the labyrinth. Neither gentle nor easily read, the Faun tells her that the ruined place has been waiting for her and gives her a series of tasks governed by strict rules.",
+            "id": "the-faun",
+            "name": "The Faun",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Small winged beings associated with the labyrinth and the Faun. One first approaches Ofelia in another shape and guides her toward the ancient ruins, encouraging her to regard the old stories as something more than imagination.",
+            "id": "the-fairies",
+            "name": "The fairies",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Mercedes's brother and a member of the republican guerrilla band hiding in the mountains. His relationship to someone inside the mill gives the resistance a fragile link to medicine, supplies, and information about Vidal's plans.",
+            "id": "pedro",
+            "name": "Pedro",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A child-eating creature seated before an abundant feast in a silent underground chamber. Its eyes are not in its face, and the stillness of the room depends on a warning Ofelia has been explicitly ordered to obey.",
+            "id": "the-pale-man",
+            "name": "The Pale Man",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "One of Vidal's officers at the mill. Garces carries out patrols and military orders as the captain tightens control over the household and intensifies the hunt for guerrillas in the forest.",
+            "id": "garces",
+            "name": "Garcés",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "pans-labyrinth-the-labyrinth-of-the-faun"
+      },
+      "recaps": {
+        "ending": "After Carmen dies giving birth, Ofelia is left with Vidal and her infant half brother. The Faun offers her one final opportunity and tells her to bring the baby into the labyrinth. Vidal pursues them. At the center, the Faun says that opening the way requires innocent blood, but Ofelia refuses to harm her brother even at the cost of losing the kingdom she has been promised. Vidal finds her apparently alone, takes the baby, and shoots her. Outside the labyrinth, Mercedes and Pedro's guerrillas are waiting. They take the child, tell Vidal that his son will never know his name, and kill him. Ofelia's own blood opens the hidden passage: she appears in the underground realm before a royal family and learns that her refusal was the true final test. She is welcomed home as Princess Moanna while her mortal body dies in Mercedes's arms. Small signs left in the ordinary world preserve the possibility that her kingdom was real.",
+        "in_short": "In 1944, Ofelia and her pregnant mother Carmen move to a rural mill commanded by Carmen's new husband, Captain Vidal, who is hunting republican guerrillas. Ofelia discovers an ancient labyrinth and meets a Faun who claims she is the lost Princess Moanna. To prove her identity she must complete three tasks. She retrieves a key from a giant toad but later breaks a rule in the Pale Man's chamber, and the Faun rejects her. Meanwhile Mercedes and Doctor Ferreiro secretly aid the guerrillas; Vidal discovers their resistance, kills the doctor, and nearly kills Mercedes before she escapes. Carmen dies giving birth to a son. Given a final chance, Ofelia carries the baby to the labyrinth but refuses the Faun's demand for innocent blood. Vidal shoots her, then is killed by the guerrillas, who keep the child. Ofelia's sacrifice completes the true test, and as her human life ends she is welcomed into the underground kingdom as its returning princess.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In 1944, as guerrillas continue to resist Franco's forces in the Spanish countryside, Ofelia travels with her pregnant mother Carmen to an old mill. Carmen has married Captain Vidal, the officer directing the local campaign, and wants Ofelia to treat him as her father. Ofelia senses his coldness and clings to the fairy tales her mother considers childish. A strange insect follows the travelers and later leads Ofelia toward an ancient stone labyrinth near the mill. Inside the household, Vidal's concern centers on Carmen's unborn child, whom he assumes will be a son carrying his name. Mercedes, the mill's housekeeper, offers Ofelia quiet kindness, while Doctor Ferreiro monitors Carmen's fragile health. The forest around them contains both real fighters and traces of older stories that Vidal's orderly world cannot acknowledge.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ofelia meets the Faun beneath the labyrinth. He tells her that she is connected to an underground kingdom and must complete three tasks before the moon is full to prove she can return there. For the first task, she crawls beneath a dying fig tree and confronts a giant toad poisoning its roots. She tricks the creature and retrieves a key, emerging covered in mud after missing an important dinner at the mill. The tree begins to recover, strengthening her belief in the Faun's account. Outside her secret quest, Vidal demonstrates the brutality of his rule while searching the countryside for guerrillas. Mercedes secretly passes information and supplies to the resistance band that includes her brother Pedro, and Doctor Ferreiro's medical care is also shaped by loyalties Vidal must not discover.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The war at the mill and Ofelia's tests grow more dangerous. Vidal hoards food and medicine while tightening his campaign against the guerrillas; Mercedes and Doctor Ferreiro continue helping them under constant risk of exposure. For Ofelia's second task, the Faun gives her chalk, the recovered key, and strict instructions not to eat anything in the place she is entering. A drawn door opens into the chamber of the Pale Man, a motionless monster seated before a feast. Ofelia uses the key to obtain what she was sent to retrieve, but she eats grapes despite the warning. The creature wakes, places eyes into its hands, and pursues her, killing fairies as she narrowly escapes. Furious at her disobedience, the Faun refuses to give her the final task.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rejected by the Faun, Ofelia is left to face the mill's worsening reality. Carmen's pregnancy becomes life-threatening. A mandrake given to Ofelia appears to ease her mother's condition when hidden beneath the bed, but Vidal and Carmen discover it; Carmen destroys it while insisting that magic cannot help them. She soon goes into labor and dies after giving birth to a boy, leaving Ofelia isolated in Vidal's household. The resistance conflict also reaches a breaking point. Vidal captures and tortures a guerrilla, and Doctor Ferreiro ends the prisoner's suffering rather than allow further interrogation. When Vidal realizes what the doctor has done, he kills him. Mercedes's hidden support for Pedro and the other fighters becomes increasingly difficult to conceal as Vidal closes in on the people working against him.",
+            "through": {
+              "chapter": 40
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Vidal discovers Mercedes's betrayal and prepares to torture her, but she frees herself, wounds him with a knife, and escapes toward the guerrillas. Pedro's group rescues her, and the resistance moves against the mill. The Faun returns to Ofelia despite her failure in the Pale Man's chamber and offers one final chance to reach the underground kingdom. She must take her infant brother to the labyrinth. As fighting surrounds the outpost, Ofelia removes the baby from Vidal's care and runs into the ruins. Vidal follows, determined to recover the son he sees as the continuation of his own name. At the labyrinth's center, the Faun tells Ofelia that the portal requires a small amount of innocent blood and asks her to surrender the child for the ritual. Ofelia refuses to let her brother be harmed.",
+            "through": {
+              "chapter": 46
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ofelia protects her infant brother rather than obey the Faun's demand for innocent blood. Vidal reaches the center of the labyrinth, sees Ofelia speaking to someone he cannot perceive, takes the baby, and shoots her. When he emerges, Mercedes, Pedro, and the victorious guerrillas are waiting. Mercedes takes the child and tells Vidal that the boy will never be told his father's name; Pedro then kills the captain. Ofelia lies dying as her own blood falls into the labyrinth. She appears in a radiant underground court before a king and queen and learns that refusing to sacrifice an innocent was the real final test. Recognized as Princess Moanna, she is welcomed back to the kingdom she left long ago. In the mortal world Mercedes grieves over her body, while subtle traces of Ofelia's passage leave the reality of the magical realm open but affirm the meaning of her choice.",
+            "through": {
+              "chapter": 50
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "pans-labyrinth-the-labyrinth-of-the-faun"
+      }
+    },
     "paradiso": {
       "characters": {
         "characters": [

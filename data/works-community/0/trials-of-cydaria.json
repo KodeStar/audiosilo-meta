@@ -1115,6 +1115,161 @@
         "work": "tripwire"
       }
     },
+    "troilus-and-criseyde": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A young prince of Troy, son of Priam and brother of Hector. At first he mocks those enslaved by love, but the sight of Criseyde at a religious festival overturns his confidence. He hides his sudden anguish until Pandarus persuades him to name its cause.",
+            "id": "troilus",
+            "name": "Troilus",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A young Trojan widow whose father has deserted to the Greek camp. Beautiful, intelligent, and cautious of scandal, she remains in Troy under Hector's protection. She is Pandarus's niece and becomes the object of Troilus's secret love.",
+            "id": "criseyde",
+            "name": "Criseyde",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Criseyde's uncle and Troilus's friend. Sociable, inventive, and persistent, he draws the lovesick prince into confidence and undertakes to bring the pair together, treating secrecy and persuasion as practical problems he can solve.",
+            "id": "pandarus",
+            "name": "Pandarus",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Criseyde's father, a Trojan priest who has foreseen the fall of Troy and defected to the besieging Greeks. His absence leaves his daughter politically vulnerable inside the city even though she has not shared his treason.",
+            "id": "calchas",
+            "name": "Calchas",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The foremost Trojan warrior and Troilus's elder brother. He publicly guarantees Criseyde's safety despite her father's defection, separating her conduct from Calchas's betrayal and allowing her to remain in Troy.",
+            "id": "hector",
+            "name": "Hector",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "King of Troy and father of Troilus, Hector, and their royal siblings. His besieged court provides the public world in which Troilus must conceal a private love that conflicts with war and family duty.",
+            "id": "priam",
+            "name": "Priam",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Trojan prince and brother of Troilus. Pandarus uses his household and good standing to arrange a respectable gathering at which Criseyde can meet Troilus without openly compromising her reputation.",
+            "id": "deiphebus",
+            "name": "Deiphebus",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Trojan noble captured by the Greeks. The proposal to exchange him for Criseyde places the lovers' private commitment under the authority of both armies and the Trojan parliament.",
+            "id": "antenor",
+            "name": "Antenor",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Greek warrior assigned to escort Criseyde when she is exchanged for Antenor. Courteous and observant, he recognizes her isolation on entering the Greek camp and begins offering his protection and service.",
+            "id": "diomede",
+            "name": "Diomede",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Troilus's prophetic sister. When his dreams suggest that Criseyde has turned to another lover, Cassandra interprets their classical signs and identifies the threatening figure, though Troilus resists her conclusion.",
+            "id": "cassandra",
+            "name": "Cassandra",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "troilus-and-criseyde"
+      },
+      "recaps": {
+        "ending": "Criseyde does not return to Troy after the promised ten days. In the Greek camp she gradually accepts Diomede's courtship and gives him a token that Troilus recognizes as his own former gift. Troilus finally knows that she has abandoned their bond, though he directs much of his anger toward Diomede and continues to preserve his memory of her. Criseyde foresees that later generations will condemn her for inconstancy. Troilus throws himself into battle and kills many Greeks while trying unsuccessfully to reach Diomede. He is eventually slain by Achilles. His spirit rises above the world, sees the smallness of earthly ambitions, and looks back on the love that once consumed him as part of a transient life. The narrator closes by turning from pagan love toward Christian divine love, asks correction where the poem has erred, and commends the work to John Gower and Ralph Strode.",
+        "in_short": "During the siege of Troy, Prince Troilus falls in love with Criseyde, the widowed daughter of the defector Calchas. His friend Pandarus, Criseyde's uncle, becomes their go-between, using letters and engineered meetings to bring them into a secret affair. Their happiness depends on privacy and Criseyde's precarious place in Troy. When Calchas persuades the Greeks to exchange the captured Trojan Antenor for his daughter, Criseyde must leave. She promises Troilus that she will return within ten days, but in the Greek camp Diomede courts her and she eventually accepts him. Troilus waits, doubts prophetic warnings, and finally recognizes a token he had given Criseyde in Diomede's possession. He fights with new fury and is later killed by Achilles. His spirit rises beyond the world and understands the insignificance of the earthly passion that governed him. The poem ends by redirecting attention from unstable human love to divine permanence.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "During the Greek siege of Troy, Prince Troilus attends a religious festival and privately mocks the people he sees overcome by love. He then notices Criseyde and is immediately caught by the same power he ridiculed. Criseyde is a young widow whose father, the priest Calchas, has abandoned Troy after foreseeing its destruction. Hector has promised that she will not be punished for her father's choice, but her position remains exposed. Troilus hides his love and grows physically and emotionally distressed. His friend Pandarus discovers the cause and, after Troilus names Criseyde, promises to help. Because Pandarus is Criseyde's uncle and understands the city's social networks, he can approach her without immediately exposing Troilus's secret or damaging her reputation.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Pandarus visits Criseyde and praises Troilus, gradually revealing that the prince loves her. She is wary of gossip, danger, and the loss of independence, but Pandarus mixes emotional pressure with reassurances about Troilus's character. Letters begin to pass between the pair. Pandarus then uses the household of Troilus's brother Deiphebus to create a socially acceptable meeting, linking Troilus to Criseyde's need for allies at court. Troilus appears ill and receives Criseyde privately enough to plead for her mercy while Pandarus guides the exchange. Criseyde does not make an unrestricted promise, yet she allows the relationship to advance and agrees to receive Troilus's service. The two now understand that their feelings are returned, though the affair still depends on Pandarus's management and concealment.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Pandarus continues arranging the lovers' access to one another. During a storm he brings Criseyde to his house and creates reasons for her to remain overnight. He then uses a supposed report that Criseyde favors another man to intensify Troilus's distress and move her toward his room. The misunderstanding is resolved, and Troilus and Criseyde become lovers. They exchange vows of faithfulness and experience a period of private happiness while Troy's public war continues around them. Troilus gains confidence in battle and social life, while Criseyde balances love with the need to protect her name. Pandarus celebrates the success of his mediation, but his constant presence also shows how little room the pair have to sustain their relationship without manipulation and secrecy.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the Greek camp, Calchas asks that his daughter be returned to him. The Greeks propose exchanging Criseyde for Antenor, a captured Trojan, and the Trojan parliament agrees. Troilus is devastated but feels unable to oppose the decision publicly without revealing the affair. He and Criseyde consider their choices. Troilus urges escape, but Criseyde fears the practical risks and damage to both their names. Instead she promises to deceive her father and return to Troy within ten days. Their final night together is dominated by grief and repeated assurances of loyalty. Criseyde is handed over in the exchange, and the Greek warrior Diomede escorts her toward her father's camp. Reading her vulnerability, he begins to present himself as a new protector. Troilus returns to a Troy filled with places that remind him of her and begins counting the promised days.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Troilus waits beyond the tenth day, inventing explanations for Criseyde's delay and sending messages while his confidence erodes. Dreams and signs point toward Diomede; Cassandra interprets one vision as evidence that Criseyde has transferred her love, but Troilus rejects the warning. In the Greek camp, Diomede persistently courts Criseyde. She hesitates and remembers Troilus, yet eventually accepts Diomede and gives him a token that had come from Troilus. When the token is recognized, Troilus can no longer deny the betrayal. Criseyde anticipates lasting blame for her broken promise. Troilus seeks Diomede in battle and fights fiercely but does not secure the revenge he wants. Achilles eventually kills him. Troilus's spirit rises above the world and sees earthly love, fame, and conflict from a transformed perspective. The poem closes by directing readers away from unstable worldly desire toward divine love.",
+            "through": {
+              "chapter": 5
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "troilus-and-criseyde"
+      }
+    },
     "true-grit": {
       "characters": {
         "characters": [

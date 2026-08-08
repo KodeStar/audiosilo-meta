@@ -1144,6 +1144,218 @@
         "work": "mad-ship"
       }
     },
+    "madame-bovary": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A provincial doctor's son whose awkward school days open the novel. Dutiful and unimaginative, Charles completes an undistinguished medical education and becomes a country health officer. His trusting nature makes him slow to understand either his own limitations or the desires of the people closest to him.",
+            "id": "charles-bovary",
+            "name": "Charles Bovary",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Charles's controlling mother, who arranges his education, career, and first marriage. Practical, proud, and accustomed to directing her son, she is suspicious of anyone whose influence over him might rival her own.",
+            "id": "madame-bovary-senior",
+            "name": "Madame Bovary senior",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Madame Dubuc"
+            ],
+            "description": "Charles's first wife, a widow selected largely because she is believed to have money. Jealous and demanding, she closely monitors Charles and resents his visits to the Rouault farm after he treats its owner.",
+            "id": "heloise-dubuc",
+            "name": "Héloïse Dubuc",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Emma Rouault",
+              "Madame Bovary"
+            ],
+            "description": "Monsieur Rouault's educated daughter, first seen when Charles visits the family farm. Raised partly in a convent and steeped in romantic reading, Emma longs for elegance, intensity, and escape from ordinary provincial life. Charles is immediately attracted to her composed manner and refinement.",
+            "id": "emma-bovary",
+            "name": "Emma Bovary",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Emma's widowed father, a prosperous but untidy farmer whose broken leg brings Charles to Les Bertaux. He is hospitable, fond of his daughter, and receptive when the widowed Charles begins to consider marriage again.",
+            "id": "monsieur-rouault",
+            "name": "Monsieur Rouault",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An aristocratic landowner who invites Charles and Emma to a ball after Charles treats him. His household at La Vaubyessard gives Emma a dazzling glimpse of wealth and social polish far removed from her life at Tostes.",
+            "id": "marquis-dandervilliers",
+            "name": "Marquis d'Andervilliers",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The pharmacist at Yonville, expansive, opinionated, and eager to present himself as a man of science and progress. He welcomes the Bovarys noisily, dominates conversation, and quickly attaches himself to the new doctor despite practicing beyond the limits of his own profession.",
+            "id": "monsieur-homais",
+            "name": "Monsieur Homais",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young law clerk boarding at the inn in Yonville. Quiet and attentive, Leon shares Emma's enthusiasm for books, music, and distant places. Their immediate sense of mutual understanding contrasts with Charles's contentment in everyday routines.",
+            "id": "leon-dupuis",
+            "name": "Léon Dupuis",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Charles and Emma's daughter, born after their move to Yonville. She is placed with a wet nurse outside the town, reflecting the practical arrangements and social expectations surrounding the Bovary household.",
+            "id": "berthe-bovary",
+            "name": "Berthe Bovary",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A persuasive traveling merchant who begins visiting Emma with fabrics, ornaments, and household goods. Courteous and accommodating, he makes luxury seem easily available through credit and postponed payment.",
+            "id": "monsieur-lheureux",
+            "name": "Monsieur Lheureux",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Yonville's parish priest, whom Emma approaches when emotional distress makes her seek guidance. Busy with parish routines and inclined toward practical religious formulas, he has difficulty recognizing the personal crisis behind her indirect appeal.",
+            "id": "abbe-bournisien",
+            "name": "Abbé Bournisien",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wealthy landowner and practiced seducer living near Yonville. He notices Emma when he brings a servant to Charles for treatment and quickly judges her dissatisfaction with provincial married life as an opportunity he can exploit.",
+            "id": "rodolphe-boulanger",
+            "name": "Rodolphe Boulanger",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A stable worker at the inn whose clubfoot becomes the subject of a proposed operation. Trusting the town's confident claims about modern treatment, he submits to Charles's intervention in hope of being able to walk normally.",
+            "id": "hippolyte",
+            "name": "Hippolyte",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Homais's young assistant at the pharmacy. Shy and easily commanded by his employer, Justin is strongly affected by Emma and watches her with an admiration he cannot express openly.",
+            "id": "justin",
+            "name": "Justin",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "madame-bovary"
+      },
+      "recaps": {
+        "ending": "Unable to meet the debts hidden from Charles, Emma exhausts every possible source of help. Leon refuses to steal for her, the lawyer Guillaumin expects sexual compliance, and Rodolphe will not provide the money. She enters Homais's laboratory and swallows arsenic, then returns home and dies after a prolonged agony. Charles is devastated and insists on an elaborate funeral he cannot afford. Creditors strip away the household's remaining security. He eventually discovers Emma's letters from Rodolphe and Leon and understands her affairs, but continues to idealize and forgive her. After a final encounter with Rodolphe, Charles dies alone in his garden. Berthe is sent first to Charles's mother and then to a poor aunt; with no inheritance left, the child must work in a cotton mill. Homais, whose ambition and self-promotion remain untouched by the Bovarys' ruin, prospers and receives the Legion of Honour.",
+        "in_short": "Charles Bovary, a kindly but limited provincial doctor, marries Emma Rouault, whose romantic expectations make ordinary married life intolerable to her. A move to Yonville brings friendships with the pharmacist Homais and law clerk Leon, but neither motherhood nor social respectability relieves Emma's frustration. She begins an affair with the landowner Rodolphe, who abandons their plan to elope. After recovering, she reconnects with Leon and conducts a second affair during supposed piano lessons in Rouen. To sustain an imagined life of luxury and passion, Emma buys extensively on credit from Lheureux and conceals the growing debt. When legal seizure threatens the family home and both former lovers refuse to save her, she takes arsenic and dies. Charles learns of her infidelity only afterward, loses what remains of the estate, and dies still attached to her memory. Their daughter Berthe is left impoverished and sent to factory work, while the self-serving Homais flourishes.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Charles Bovary grows from an awkward schoolboy into an undistinguished country health officer, largely following plans made by his forceful mother. She arranges his marriage to Heloise Dubuc, a possessive widow believed to have an independent income. When Charles is called to treat Monsieur Rouault's broken leg at Les Bertaux, he meets Rouault's daughter Emma and begins returning to the farm more often than the injury requires. Heloise becomes jealous, but revelations about her finances bring scandal and strain to the marriage; she dies soon afterward. Charles, now free and genuinely drawn to Emma, proposes with Rouault's approval. The wedding is a large country celebration. Charles enters the marriage delighted by his new wife, while Emma expects married love to produce the intense happiness she has imagined.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Charles and Emma settle at Tostes. He is content with domestic life and his medical practice, but Emma soon finds the routines of marriage flat and confining. Her convent education and romantic reading have taught her to expect grand passion, elegance, and dramatic change, none of which Charles can provide. An invitation to the Marquis d'Andervilliers's ball at La Vaubyessard exposes her to aristocratic luxury and becomes the defining memory of this period. Back home, she broods over the distance between that polished world and her own surroundings, neglects ordinary tasks, and grows increasingly unwell and irritable. Charles does not understand the source of her unhappiness but hopes a change of place will cure it. He gives up his practice, and the couple prepares to move to Yonville. As they leave Tostes, Emma is pregnant.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Bovarys arrive in Yonville and dine at the Lion d'Or with Homais, the town's talkative pharmacist, and Leon Dupuis, a young law clerk. Emma and Leon discover shared tastes in books, music, and imagined travel, creating an intimacy based more on longing than action. Emma gives birth to a daughter, Berthe, whom she places with a wet nurse. Her friendship with Leon deepens during walks and visits, but she tries to hide her attraction beneath the appearance of exemplary conduct. Leon, uncertain of her feelings and frustrated by provincial life, eventually leaves for Paris without either of them declaring themselves. Emma's attempt to seek spiritual help from Abbe Bournisien fails because the priest does not recognize her distress. With Leon gone, she is again restless, lonely, and increasingly drawn to purchases that promise refinement. The merchant Lheureux encourages her to buy on easy credit.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rodolphe Boulanger, a wealthy landowner experienced in affairs, notices Emma when he brings a servant for medical treatment. At the agricultural show he courts her while public speeches and prizes proceed around them, adapting his language to her hunger for passion and escape. After waiting long enough to strengthen her anticipation, he returns and arranges a horseback ride on which they begin an affair. Emma initially feels that the relationship has transformed her into the romantic heroine she has always wanted to be. Secret meetings and increasingly reckless signals follow. A letter from her father briefly awakens guilt and makes her attempt renewed affection for Charles. Homais then persuades Charles to perform an innovative operation on Hippolyte's clubfoot. Charles hopes success will raise his standing, and Emma imagines she might respect him more. The operation fails disastrously, another surgeon amputates Hippolyte's leg, and Emma's contempt for her husband becomes stronger than before.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After the failed operation, Emma returns fully to Rodolphe and spends more freely on gifts and clothing supplied by Lheureux. She urges Rodolphe to flee with her and Berthe. He agrees in appearance but, unwilling to disrupt his comfortable life, sends a farewell letter concealed in a basket and leaves without her. Emma nearly throws herself from an upper window, then collapses into a long illness. Charles nurses her devotedly while the expense deepens debts he does not understand. During recovery Emma turns intensely toward religion, but the new devotion gradually fades into charitable display and familiar dissatisfaction. Charles takes her to an opera in Rouen as a restorative outing. There they encounter Leon, now more socially confident after his time in Paris. The meeting revives their former attraction, and Emma remains in Rouen after Charles returns home.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Emma and Leon begin an affair in Rouen after a prolonged carriage ride through the city. Once she returns to Yonville, she creates a weekly routine of supposed piano lessons that allows her to meet him every Thursday. Charles trusts her explanations and even gives her authority over financial matters. The lovers rent a hotel room and try to sustain a private world of romance, but secrecy, repetition, and Emma's demands gradually make the relationship resemble the ordinary life she hoped to escape. Lheureux turns her signatures and old obligations into a widening network of bills, renewals, and loans. Emma sells property without Charles's informed consent and continues spending to preserve appearances. She also grows bolder in her lies and movements. By the time the excitement with Leon starts to cool, her financial position is precarious and the merchant has the legal instruments needed to demand payment.",
+            "through": {
+              "chapter": 29
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Lheureux's claims culminate in a court order and the threatened seizure of the Bovarys' property. Emma has only days to raise a large sum without Charles learning how completely she has compromised the household. She appeals to several acquaintances. Leon will not obtain the money illegally; the lawyer Guillaumin offers help only on degrading personal terms; even Rodolphe, whom she visits in desperation, refuses her request. With every imagined rescue closed, Emma goes to Homais's pharmacy, persuades Justin to open the locked laboratory, and swallows arsenic. She dies at home after severe suffering while Charles, doctors, and clergy remain helpless. Charles arranges an expensive funeral and later discovers the letters proving her affairs with Rodolphe and Leon. Creditors consume the estate. Still unable to stop loving his image of Emma, Charles declines, meets Rodolphe once without taking revenge, and dies in the garden. Berthe is left destitute and sent to work in a cotton mill, while Homais continues his successful public career and receives official honors.",
+            "through": {
+              "chapter": 35
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "madame-bovary"
+      }
+    },
     "mage": {
       "characters": {
         "characters": [
