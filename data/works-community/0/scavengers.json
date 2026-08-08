@@ -2450,6 +2450,223 @@
         "work": "sense-and-sensibility-adaptation"
       }
     },
+    "sense-sensibility": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The eldest Dashwood daughter, nineteen years old, whose calm judgment and self-command help her family through uncertainty. Elinor feels deeply but generally considers the needs and feelings of others before revealing her own.",
+            "id": "elinor-dashwood",
+            "name": "Elinor Dashwood",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The seventeen-year-old second Dashwood daughter. Marianne is intelligent, musical, and openly emotional, valuing intense feeling and sincerity while distrusting restraint that seems cold or conventional.",
+            "id": "marianne-dashwood",
+            "name": "Marianne Dashwood",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The widowed mother of Elinor, Marianne, and Margaret. Affectionate and romantic in outlook, she resembles Marianne in her readiness to act on hope and feeling.",
+            "id": "mrs-dashwood",
+            "name": "Mrs Dashwood",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The young half-brother of the Dashwood sisters, who inherits Norland. He promises his dying father to assist his stepmother and half-sisters but is easily led by his wife and inclined to call limited generosity sufficient.",
+            "id": "john-dashwood",
+            "name": "John Dashwood",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "John Dashwood's wealthy, calculating wife and Edward Ferrars's elder sister. Fanny resents the continued presence of her husband's stepfamily at Norland and discourages him from giving them meaningful financial help.",
+            "id": "fanny-dashwood",
+            "name": "Fanny Dashwood",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Fanny Dashwood's quiet and courteous brother. Unlike his status-conscious family, Edward has modest ambitions and easy manners. His growing friendship with Elinor gives both households reason to suspect an attachment.",
+            "id": "edward-ferrars",
+            "name": "Edward Ferrars",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Mrs Dashwood's hospitable cousin and the owner of Barton Park. Sir John finds cottages for the Dashwoods on his Devonshire estate and is determined to fill their social life with dinners, visitors, and entertainments.",
+            "id": "sir-john-middleton",
+            "name": "Sir John Middleton",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sir John's mother-in-law, a cheerful widow who enjoys company, gossip, and guessing at romantic attachments. Her teasing often ignores the embarrassment of the people concerned, but her manner is generous and well-meaning.",
+            "id": "mrs-jennings",
+            "name": "Mrs Jennings",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A reserved friend of Sir John, about thirty-five years old. Colonel Brandon listens attentively to Marianne's music and appears to admire her, though she regards his age and quiet manner as incompatible with romance.",
+            "id": "colonel-brandon",
+            "name": "Colonel Brandon",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A handsome, energetic young man who carries Marianne home after she falls and injures her ankle. He shares her enthusiasm for music, poetry, and spirited conversation, quickly appearing to be the ideal companion she has imagined.",
+            "id": "john-willoughby",
+            "name": "John Willoughby",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young relation of Mrs Jennings who visits Barton with her elder sister. Lucy is socially polished, watchful, and eager to form a confidential friendship with Elinor despite their short acquaintance.",
+            "id": "lucy-steele",
+            "name": "Lucy Steele",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Nancy Steele"
+            ],
+            "description": "Lucy's talkative elder sister, a visitor at Barton Park. Anne is less discreet than Lucy and readily shares gossip and private information when given an audience.",
+            "id": "anne-steele",
+            "name": "Anne Steele",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Sir John's fashionable and sharp-tongued son-in-law. Mr Palmer responds to his wife's exuberance and the sociability around him with sarcasm and apparent indifference.",
+            "id": "thomas-palmer",
+            "name": "Mr Palmer",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Edward and Fanny's wealthy mother, whose approval controls the Ferrars family fortune. Proud and intimidating, she expects Edward to pursue a distinguished career and marry according to her ambitions.",
+            "id": "mrs-ferrars",
+            "name": "Mrs Ferrars",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Edward's younger brother, a fashionable and self-satisfied man chiefly interested in society and appearances. He has become the kind of polished public figure their mother once hoped Edward would be.",
+            "id": "robert-ferrars",
+            "name": "Robert Ferrars",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "sense-sensibility"
+      },
+      "recaps": {
+        "ending": "Edward arrives at Barton Cottage, and Elinor initially assumes he has married Lucy. He explains that Lucy has instead married his brother Robert, leaving Edward free. Edward proposes to Elinor and tells her that his attachment to Lucy began as an idle, secret engagement when he was very young; he had remained committed from honor after his feelings changed. Mrs Ferrars eventually forgives him enough to provide an income, and he takes the living at Delaford offered by Colonel Brandon. Elinor and Edward marry and settle there. Marianne, recovered from her illness and chastened by the effects of her unchecked emotion, gradually comes to value Brandon. She later marries him and grows to love him deeply. The sisters live near each other and remain closely connected. Willoughby retains his estate and sometimes regrets losing Marianne, but remains married to Sophia Grey; the two central couples achieve a balance between strong feeling, sound judgment, and dependable conduct.",
+        "in_short": "After their father dies, Elinor and Marianne Dashwood move with their mother to a modest Devonshire cottage. Elinor quietly loves Edward Ferrars, while Marianne openly falls for John Willoughby. Willoughby abruptly leaves and later rejects Marianne to marry a rich woman. Colonel Brandon reveals that Willoughby also seduced and abandoned Brandon's young ward. Elinor carries her own pain privately after Lucy Steele discloses a secret engagement to Edward. When the engagement becomes public, Edward loses his inheritance but honorably refuses to abandon Lucy; Brandon offers him a clerical living. Marianne nearly dies after grieving recklessly, and Willoughby admits that fear of poverty drove him to marry for money. Lucy then surprises everyone by marrying Edward's newly favored brother Robert. Edward is free to propose to Elinor, and they settle at Delaford. Marianne recovers, comes to appreciate Brandon's constancy, and eventually marries him.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "When Henry Dashwood dies, Norland passes to his son John, while his widow and three daughters receive only a limited inheritance. John had promised to help them, but his wife Fanny persuades him to reduce his intended generosity until he offers no substantial assistance. Mrs Dashwood and her daughters remain temporarily at Norland. Elinor, the eldest, forms a quiet attachment to Fanny's brother Edward Ferrars, whose modest character she values. Marianne, who believes genuine love should be unmistakably passionate, thinks Edward too reserved and worries that Elinor is settling for too little. Fanny makes clear that she opposes any match. Mrs Dashwood therefore accepts a relative's offer of Barton Cottage in Devonshire and moves there with Elinor, Marianne, and young Margaret. Their cousin Sir John Middleton welcomes them warmly and draws them into the company at Barton Park.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At Barton, the Dashwoods meet Sir John's teasing mother-in-law Mrs Jennings and his reserved friend Colonel Brandon, who admires Marianne. Marianne dismisses Brandon as too old and subdued for romance. After she falls on a wet hillside and injures her ankle, the handsome John Willoughby carries her home. He shares her tastes and visits constantly, and their unguarded intimacy convinces both families that an engagement is near. Willoughby even shows Marianne the neighboring estate he expects to inherit. A planned excursion is suddenly canceled when Brandon is called away by urgent private business. Soon afterward Willoughby tells the Dashwoods that his relative is sending him to London and that he may not return for a long time. He leaves without explaining his relationship with Marianne. She is devastated, while Elinor questions whether any formal engagement existed and tries to keep the family's assumptions from becoming certainty.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Marianne grieves openly after Willoughby's departure. Edward visits Barton but appears unhappy and uneasy; Elinor notices a ring containing hair and other signs that he is withholding something. The Palmers and the Steele sisters join the Middletons' circle. Lucy Steele seeks Elinor's confidence and reveals that she and Edward have been secretly engaged for four years, showing evidence of their correspondence. She explains that Edward's mother would oppose the match and says that the hair in his ring is hers. Elinor is shocked but conceals her own feelings, both from Lucy and from her family. She concludes that Edward no longer loves Lucy but remains bound by honor. Lucy continues to discuss the engagement with her, making Elinor bear private distress while Marianne still assumes her sister has little cause for sorrow.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Elinor and Marianne travel to London as Mrs Jennings's guests. Marianne repeatedly writes to Willoughby and waits for him, receiving no reply. When they meet him at a crowded party, he treats her as a distant acquaintance. His later letter denies any engagement, returns her letters, and announces that he will marry the wealthy Sophia Grey. Marianne is overwhelmed and admits to Elinor that, although they behaved as lovers, no formal promise was exchanged. Colonel Brandon then tells Elinor why he distrusts Willoughby. Years earlier Brandon loved a ward of his family whose unhappy history was tied to his own; her daughter, now his ward, was recently seduced, abandoned, and left pregnant by Willoughby. Brandon had fought a duel with him but could not repair the harm. Elinor understands that Willoughby's rejection of Marianne is part of a broader pattern of selfish conduct, though she withholds the most painful details until Marianne is stronger.",
+            "through": {
+              "chapter": 31
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In London, Elinor endures the cold civility of John and Fanny Dashwood and meets the formidable Mrs Ferrars. Anne Steele carelessly reveals Lucy's secret engagement to Fanny. The Ferrars family expels the Steele sisters and demands that Edward end the match. When he refuses to break his word, his mother disinherits him and transfers her favor and property to his younger brother Robert. Elinor is saddened but respects Edward's integrity; Marianne finally realizes how much her sister has suffered without public display. Colonel Brandon, hearing of Edward's situation, offers him the clerical living at Delaford so that he will have an income and may marry Lucy. Elinor conveys the offer to Edward. He accepts it gratefully and prepares for ordination, while Lucy interprets the improvement in his prospects as a step toward their long-delayed marriage.",
+            "through": {
+              "chapter": 40
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The sisters leave London with the Palmers and stop at their Cleveland estate. Marianne, exhausted by grief and careless of her health, becomes dangerously ill after walking in wet weather. Elinor nurses her while Colonel Brandon goes to bring Mrs Dashwood. During the crisis Willoughby arrives unexpectedly and gives Elinor his account. He admits seducing and abandoning Brandon's ward and says his relative disinherited him when he refused to marry her. Burdened by debt, he chose the wealthy Sophia Grey instead of Marianne, though he says his attachment to Marianne was genuine and that his cold rejection in London followed his fiancée's demands. Elinor pities his regret without excusing his choices. Marianne survives and begins a steady recovery. She acknowledges that her fixation on Willoughby and neglect of her health nearly destroyed her and caused suffering to everyone who cared for her.",
+            "through": {
+              "chapter": 46
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Back at Barton Cottage, Elinor tells Marianne about Willoughby's confession. Marianne accepts that even if he loved her, his conduct would have made a secure marriage impossible. Edward then arrives, and the Dashwoods mistakenly believe he has married Lucy. He reveals that Lucy has married Robert Ferrars instead. Once Robert became the favored and wealthy brother, Lucy transferred her affection and secretly married him, releasing Edward from his old promise. Edward proposes to Elinor and explains that his youthful engagement to Lucy had long outlived his love, though honor kept him from ending it. Elinor accepts. Mrs Ferrars eventually gives Edward enough support to marry, and he and Elinor settle at the Delaford living provided by Brandon. Marianne's gratitude and respect for Colonel Brandon deepen over time into love; she marries him and lives near Elinor. The sisters remain close, each having learned to unite feeling with responsible judgment.",
+            "through": {
+              "chapter": 50
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "sense-sensibility"
+      }
+    },
     "separation-a-fantasy-litrpg-adventure": {
       "characters": {
         "characters": [

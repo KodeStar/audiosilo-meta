@@ -3261,6 +3261,639 @@
         "work": "emma"
       }
     },
+    "emma-amazonclassics-edition": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A wealthy, clever young woman who manages her father's home at Hartfield and has rarely been contradicted. The marriage of her former governess, Miss Taylor, convinces Emma that she has a talent for arranging other people's happiness. Affectionate and energetic but overconfident in her judgment, she decides to find another match rather than consider marriage for herself.",
+            "id": "emma-woodhouse",
+            "name": "Emma Woodhouse",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Emma's elderly father, a gentle and devoted man whose fear of illness, rich food, travel, and almost any change shapes life at Hartfield. He regrets Miss Taylor's marriage because it alters his comfortable routine, though he bears no ill will toward her husband.",
+            "id": "henry-woodhouse",
+            "name": "Mr. Woodhouse",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A close family friend and neighbor from Donwell Abbey. Sensible, observant, and willing to challenge Emma when others indulge her, he doubts her claim that she arranged Miss Taylor's marriage and warns against treating people's lives as a game.",
+            "id": "george-knightley",
+            "name": "Mr. Knightley",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Miss Taylor"
+            ],
+            "description": "Emma's former governess and longtime companion, newly married to Mr. Weston. Warm, tactful, and accustomed to Emma's faults as well as her good qualities, she remains Emma's trusted confidante after moving from Hartfield to Randalls.",
+            "id": "anne-weston",
+            "name": "Mrs. Weston",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Mrs. Weston's cheerful new husband and the owner of Randalls. A sociable widower, he has a grown son from his first marriage who was brought up by wealthy relatives and has not yet visited his father's new home.",
+            "id": "mr-weston",
+            "name": "Mr. Weston",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A pretty, friendly boarding pupil at Mrs. Goddard's school whose parentage is unknown. Emma is attracted by Harriet's admiration and pliable nature, takes her up as a companion, and begins trying to refine both her social circle and her romantic expectations.",
+            "id": "harriet-smith",
+            "name": "Harriet Smith",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The young clergyman of Highbury, polished and attentive in company. Emma decides that he would make a better husband for Harriet than the farmer Harriet already admires, and she interprets his interest in Emma's plans as encouragement for the match.",
+            "id": "philip-elton",
+            "name": "Mr. Elton",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A good-hearted but incessantly talkative unmarried woman of limited means, living with her elderly mother. She is welcomed throughout Highbury because of her kindness and good humor, and she speaks proudly and often of her absent niece, Jane Fairfax.",
+            "id": "miss-bates",
+            "name": "Miss Bates",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A capable young tenant farmer at Abbey-Mill and a friend of Mr. Knightley. Harriet knows and admires his family, and he writes her a sincere proposal of marriage. Emma judges his social position too low for the future she imagines for Harriet.",
+            "id": "robert-martin",
+            "name": "Robert Martin",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Emma's affectionate elder sister, married to John Knightley and living in London with their children. Gentle and family-minded, she shares her father's anxious concern about health and is happiest when the Hartfield and Knightley households are together.",
+            "id": "isabella-knightley",
+            "name": "Isabella Knightley",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Mr. Knightley's younger brother and Isabella's husband. Intelligent, reserved, and strongly attached to domestic life, he visits Hartfield with his wife and children and has little patience for unnecessary social obligations.",
+            "id": "john-knightley",
+            "name": "John Knightley",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Miss Bates's orphaned niece, recently returned to Highbury after being raised and educated with the Campbell family. Beautiful, highly accomplished, and reserved, she has little money and expects eventually to support herself as a governess. Emma respects her abilities but finds intimacy with her difficult.",
+            "id": "jane-fairfax",
+            "name": "Jane Fairfax",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Mr. Weston's son from his first marriage, raised as the heir of his wealthy aunt and uncle, the Churchills. His long-promised visit to Highbury has often been delayed, but when he finally arrives he is lively, charming, and eager to please his father's friends.",
+            "id": "frank-churchill",
+            "name": "Frank Churchill",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Augusta Elton"
+            ],
+            "description": "Mr. Elton's new wife, formerly Miss Hawkins of Bath. Confident, talkative, and impressed by wealth and social consequence, she quickly speaks to Emma with unwelcome familiarity and presents herself as an important addition to Highbury society.",
+            "id": "mrs-elton",
+            "name": "Mrs. Elton",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "emma-amazonclassics-edition"
+      },
+      "recaps": {
+        "ending": "Frank Churchill's explanatory letter confirms that he and Jane Fairfax had been secretly engaged throughout his stay in Highbury. His apparent courtship of Emma helped conceal the relationship, while his aunt's opposition made secrecy seem necessary. Emma and Jane reconcile, and Jane can now marry Frank because Mrs. Churchill's death has removed the chief obstacle. Emma accepts Mr. Knightley's proposal, but concern for Mr. Woodhouse prevents her from leaving Hartfield; Knightley agrees to live there after their marriage. Harriet spends time in London, recovers from her hopes of Knightley, and renews her connection with Robert Martin. She accepts Martin's second proposal, satisfying Knightley and finally convincing Emma that the match is right. Mrs. Weston gives birth to a daughter. After a nearby poultry theft makes Mr. Woodhouse more receptive to Knightley's protection at Hartfield, he consents to the wedding. Harriet and Robert marry first, and Emma and Knightley then marry with their families and friends in agreement.",
+        "in_short": "Emma Woodhouse, a wealthy young woman certain of her insight into others, befriends Harriet Smith and discourages her from marrying the farmer Robert Martin. Emma instead imagines that Mr. Elton loves Harriet, only to discover that he wants Emma herself. After rejecting him, she turns her attention to Frank Churchill, whose flirtation distracts her from his secret engagement to Jane Fairfax. Emma repeatedly misreads Harriet's feelings as well, first believing Harriet attached to Frank and then learning that Harriet hopes to marry Mr. Knightley. This shock makes Emma recognize her own love for Knightley. Her growth is sharpened when he rebukes her for humiliating the kind but vulnerable Miss Bates at Box Hill. Frank and Jane's engagement becomes public after his controlling aunt dies. Knightley proposes to Emma and she accepts. Harriet reunites with Robert Martin and accepts his second proposal, while Knightley agrees to live at Hartfield so Emma need not abandon her anxious father. The novel closes with both couples married and Emma's confidence tempered by greater humility and self-knowledge.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Emma Woodhouse lives comfortably at Hartfield with her anxious, elderly father. Her beloved former governess, Miss Taylor, has just married the sociable widower Mr. Weston, and Emma takes credit for having encouraged the match. Mr. Knightley, a candid family friend from Donwell Abbey, doubts her supposed skill and warns her against further matchmaking. Emma soon befriends Harriet Smith, a pretty and impressionable pupil at Mrs. Goddard's school whose family background is unknown. Although Harriet admires Robert Martin, a respectable young farmer, Emma thinks he is beneath her and imagines a more elevated future for her friend. She chooses the local clergyman, Mr. Elton, as a prospective husband for Harriet and interprets his interest in Emma's portrait of Harriet as proof of affection. When Robert sends Harriet a marriage proposal, Harriet turns to Emma for advice. Emma steers her toward refusal while preserving the appearance that the decision is Harriet's own.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Emma has persuaded Harriet Smith to reject Robert Martin and tries to direct her feelings toward Mr. Elton. Mr. Knightley is angered by the refusal, arguing that Robert is intelligent, honorable, and a very good match for Harriet. Emma remains certain that Elton's attentions are meant for her friend, even when his compliments and eagerness repeatedly center on Emma herself. During the Christmas visit of Emma's sister Isabella and her husband, John Knightley, bad weather disrupts a party at Randalls. Harriet is absent because of illness, and Emma rides home alone with Elton. He proposes passionately to Emma and dismisses the idea of marrying Harriet as socially absurd. Shocked, Emma rejects him and realizes that she has mistaken his conduct from the beginning. Elton, embarrassed and resentful, leaves Highbury for Bath. Emma must now face both the injury her interference has done to Harriet's prospects and the unpleasant task of explaining that Elton never loved Harriet.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Emma explains Mr. Elton's proposal to Harriet, who is deeply hurt, and recognizes that her confident matchmaking has failed. Elton soon becomes engaged elsewhere. Meanwhile Jane Fairfax, the accomplished but poor niece of Miss Bates, returns to Highbury. Orphaned young and educated with the Campbell family, Jane expects eventually to work as a governess. Emma admires her talents but remains uneasy with her reserve and speculates, without evidence, about Jane's friendship with the newly married Mr. Dixon. Frank Churchill, Mr. Weston's son, finally makes his long-delayed visit. Raised by his wealthy and demanding Churchill relatives, Frank is handsome, lively, and immediately attentive to Emma. His willingness to travel to London merely for a haircut strikes Mr. Knightley as frivolous, but Emma enjoys his company as they visit Highbury together. With Elton absent and Frank now present, Emma's attention shifts away from her earlier mistake and toward the possibility of a new romance, while Jane's private feelings remain obscure to her.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After misleading Harriet about Mr. Elton, Emma has begun to question her judgment but continues drawing conclusions about other people's attachments. Jane Fairfax has returned to Highbury with few financial prospects, and Frank Churchill has arrived after many delays. Frank openly enjoys Emma's company, while Emma entertains suspicions about Jane and Mr. Dixon. At a dinner given by the Coles, Jane receives an expensive pianoforte from an unknown giver. Emma and Frank privately treat Mr. Dixon as the likely source, although Jane gives them no support. Frank and Emma flirt and plan for a ball at the Crown, but his aunt summons him away and the event is postponed. Emma decides that she is not truly in love with him, though she thinks his feelings for her may be stronger. Mr. Elton returns with his bride, Augusta. Mrs. Elton is wealthy, self-important, and eager to establish her social authority. She adopts a patronizing interest in Jane and treats Emma with an intimacy Emma dislikes. Mr. Knightley resists Emma's attempts to involve him in her speculations, particularly her suggestion that he might care for Jane.",
+            "through": {
+              "chapter": 33
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Emma's first plan for Harriet ended with Mr. Elton proposing to Emma instead and then marrying Augusta Hawkins. Jane Fairfax and Frank Churchill have both come to Highbury, and Emma has misread their guarded behavior while accepting Frank's apparent interest in herself. When Frank returns, the delayed ball at the Crown finally takes place. Mr. Elton pointedly refuses to dance with Harriet, humiliating her, but Mr. Knightley steps forward as her partner and earns Emma's gratitude. Soon afterward Frank helps Harriet escape a frightening encounter with a group of children on the road. Harriet then tells Emma that she has transferred her hopes from Elton to a man far above him; Emma assumes she means Frank and encourages the attachment without asking his name. Mr. Knightley, meanwhile, suspects a private understanding between Frank and Jane, but Emma dismisses the idea. At a gathering at Donwell Abbey, Jane is distressed by Mrs. Elton's efforts to arrange a governess position for her, Frank behaves restlessly, and the tensions Emma has failed to understand become increasingly visible.",
+            "through": {
+              "chapter": 42
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Emma continues to believe Harriet has fallen in love with Frank Churchill, while Mr. Knightley suspects that Frank and Jane Fairfax share a secret. During the excursion to Box Hill, Emma joins Frank's careless joking and insults Miss Bates, whose limited circumstances make the public slight especially cruel. Knightley privately rebukes Emma. Ashamed, she visits Miss Bates the next morning to make amends and begins to see how thoughtlessly she has used her social position. Frank leaves suddenly, Jane accepts a governess post, and then Mrs. Churchill dies. With his aunt's opposition removed, Frank's secret engagement to Jane is revealed. Emma is surprised but not heartbroken, because she never truly loved him. She tells Harriet the news, expecting to console her, only to learn that Harriet's admired gentleman is Mr. Knightley, not Frank. Faced with the possibility that Knightley might marry Harriet, Emma finally understands that she loves him herself. Knightley returns from London believing Emma has been wounded by Frank. Their conversation clears away that misunderstanding, and he proposes to Emma. She accepts, though concern for Harriet tempers her happiness.",
+            "through": {
+              "chapter": 49
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Emma Woodhouse's efforts to arrange Harriet Smith's future have repeatedly exposed the limits of her judgment. She first discouraged Harriet from accepting Robert Martin and wrongly imagined Mr. Elton in love with Harriet; later she mistook Frank Churchill's flirtation for possible courtship and assumed Harriet loved Frank. At Box Hill, Mr. Knightley's rebuke after Emma insults Miss Bates prompts genuine remorse. Frank's secret engagement to Jane Fairfax then becomes public, and Harriet reveals that she actually hopes to marry Knightley. The shock makes Emma recognize her own love for him. Knightley proposes, and Emma accepts. Frank's letter explains how his dependence on Mrs. Churchill led him and Jane to hide their engagement and how he used attention to Emma as cover. Emma and Jane reconcile. To avoid distressing Mr. Woodhouse, Knightley agrees that after marriage he will move into Hartfield rather than take Emma away. Harriet spends time with Isabella's family in London, reconnects with Robert, and accepts his renewed proposal. Mrs. Weston gives birth to a daughter. A nearby theft helps overcome Mr. Woodhouse's resistance to change, and he consents to Emma's wedding. Harriet and Robert marry, followed by Emma and Knightley.",
+            "through": {
+              "chapter": 55
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "emma-amazonclassics-edition"
+      }
+    },
+    "emma-classic-tales-edition": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A wealthy, clever young woman who manages her father's home at Hartfield and has rarely been contradicted. The marriage of her former governess, Miss Taylor, convinces Emma that she has a talent for arranging other people's happiness. Affectionate and energetic but overconfident in her judgment, she decides to find another match rather than consider marriage for herself.",
+            "id": "emma-woodhouse",
+            "name": "Emma Woodhouse",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Emma's elderly father, a gentle and devoted man whose fear of illness, rich food, travel, and almost any change shapes life at Hartfield. He regrets Miss Taylor's marriage because it alters his comfortable routine, though he bears no ill will toward her husband.",
+            "id": "henry-woodhouse",
+            "name": "Mr. Woodhouse",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A close family friend and neighbor from Donwell Abbey. Sensible, observant, and willing to challenge Emma when others indulge her, he doubts her claim that she arranged Miss Taylor's marriage and warns against treating people's lives as a game.",
+            "id": "george-knightley",
+            "name": "Mr. Knightley",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Miss Taylor"
+            ],
+            "description": "Emma's former governess and longtime companion, newly married to Mr. Weston. Warm, tactful, and accustomed to Emma's faults as well as her good qualities, she remains Emma's trusted confidante after moving from Hartfield to Randalls.",
+            "id": "anne-weston",
+            "name": "Mrs. Weston",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Mrs. Weston's cheerful new husband and the owner of Randalls. A sociable widower, he has a grown son from his first marriage who was brought up by wealthy relatives and has not yet visited his father's new home.",
+            "id": "mr-weston",
+            "name": "Mr. Weston",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A pretty, friendly boarding pupil at Mrs. Goddard's school whose parentage is unknown. Emma is attracted by Harriet's admiration and pliable nature, takes her up as a companion, and begins trying to refine both her social circle and her romantic expectations.",
+            "id": "harriet-smith",
+            "name": "Harriet Smith",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The young clergyman of Highbury, polished and attentive in company. Emma decides that he would make a better husband for Harriet than the farmer Harriet already admires, and she interprets his interest in Emma's plans as encouragement for the match.",
+            "id": "philip-elton",
+            "name": "Mr. Elton",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A good-hearted but incessantly talkative unmarried woman of limited means, living with her elderly mother. She is welcomed throughout Highbury because of her kindness and good humor, and she speaks proudly and often of her absent niece, Jane Fairfax.",
+            "id": "miss-bates",
+            "name": "Miss Bates",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A capable young tenant farmer at Abbey-Mill and a friend of Mr. Knightley. Harriet knows and admires his family, and he writes her a sincere proposal of marriage. Emma judges his social position too low for the future she imagines for Harriet.",
+            "id": "robert-martin",
+            "name": "Robert Martin",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Emma's affectionate elder sister, married to John Knightley and living in London with their children. Gentle and family-minded, she shares her father's anxious concern about health and is happiest when the Hartfield and Knightley households are together.",
+            "id": "isabella-knightley",
+            "name": "Isabella Knightley",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Mr. Knightley's younger brother and Isabella's husband. Intelligent, reserved, and strongly attached to domestic life, he visits Hartfield with his wife and children and has little patience for unnecessary social obligations.",
+            "id": "john-knightley",
+            "name": "John Knightley",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Miss Bates's orphaned niece, recently returned to Highbury after being raised and educated with the Campbell family. Beautiful, highly accomplished, and reserved, she has little money and expects eventually to support herself as a governess. Emma respects her abilities but finds intimacy with her difficult.",
+            "id": "jane-fairfax",
+            "name": "Jane Fairfax",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Mr. Weston's son from his first marriage, raised as the heir of his wealthy aunt and uncle, the Churchills. His long-promised visit to Highbury has often been delayed, but when he finally arrives he is lively, charming, and eager to please his father's friends.",
+            "id": "frank-churchill",
+            "name": "Frank Churchill",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Augusta Elton"
+            ],
+            "description": "Mr. Elton's new wife, formerly Miss Hawkins of Bath. Confident, talkative, and impressed by wealth and social consequence, she quickly speaks to Emma with unwelcome familiarity and presents herself as an important addition to Highbury society.",
+            "id": "mrs-elton",
+            "name": "Mrs. Elton",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "emma-classic-tales-edition"
+      },
+      "recaps": {
+        "ending": "Frank Churchill's explanatory letter confirms that he and Jane Fairfax had been secretly engaged throughout his stay in Highbury. His apparent courtship of Emma helped conceal the relationship, while his aunt's opposition made secrecy seem necessary. Emma and Jane reconcile, and Jane can now marry Frank because Mrs. Churchill's death has removed the chief obstacle. Emma accepts Mr. Knightley's proposal, but concern for Mr. Woodhouse prevents her from leaving Hartfield; Knightley agrees to live there after their marriage. Harriet spends time in London, recovers from her hopes of Knightley, and renews her connection with Robert Martin. She accepts Martin's second proposal, satisfying Knightley and finally convincing Emma that the match is right. Mrs. Weston gives birth to a daughter. After a nearby poultry theft makes Mr. Woodhouse more receptive to Knightley's protection at Hartfield, he consents to the wedding. Harriet and Robert marry first, and Emma and Knightley then marry with their families and friends in agreement.",
+        "in_short": "Emma Woodhouse, a wealthy young woman certain of her insight into others, befriends Harriet Smith and discourages her from marrying the farmer Robert Martin. Emma instead imagines that Mr. Elton loves Harriet, only to discover that he wants Emma herself. After rejecting him, she turns her attention to Frank Churchill, whose flirtation distracts her from his secret engagement to Jane Fairfax. Emma repeatedly misreads Harriet's feelings as well, first believing Harriet attached to Frank and then learning that Harriet hopes to marry Mr. Knightley. This shock makes Emma recognize her own love for Knightley. Her growth is sharpened when he rebukes her for humiliating the kind but vulnerable Miss Bates at Box Hill. Frank and Jane's engagement becomes public after his controlling aunt dies. Knightley proposes to Emma and she accepts. Harriet reunites with Robert Martin and accepts his second proposal, while Knightley agrees to live at Hartfield so Emma need not abandon her anxious father. The novel closes with both couples married and Emma's confidence tempered by greater humility and self-knowledge.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Emma Woodhouse lives comfortably at Hartfield with her anxious, elderly father. Her beloved former governess, Miss Taylor, has just married the sociable widower Mr. Weston, and Emma takes credit for having encouraged the match. Mr. Knightley, a candid family friend from Donwell Abbey, doubts her supposed skill and warns her against further matchmaking. Emma soon befriends Harriet Smith, a pretty and impressionable pupil at Mrs. Goddard's school whose family background is unknown. Although Harriet admires Robert Martin, a respectable young farmer, Emma thinks he is beneath her and imagines a more elevated future for her friend. She chooses the local clergyman, Mr. Elton, as a prospective husband for Harriet and interprets his interest in Emma's portrait of Harriet as proof of affection. When Robert sends Harriet a marriage proposal, Harriet turns to Emma for advice. Emma steers her toward refusal while preserving the appearance that the decision is Harriet's own.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Emma has persuaded Harriet Smith to reject Robert Martin and tries to direct her feelings toward Mr. Elton. Mr. Knightley is angered by the refusal, arguing that Robert is intelligent, honorable, and a very good match for Harriet. Emma remains certain that Elton's attentions are meant for her friend, even when his compliments and eagerness repeatedly center on Emma herself. During the Christmas visit of Emma's sister Isabella and her husband, John Knightley, bad weather disrupts a party at Randalls. Harriet is absent because of illness, and Emma rides home alone with Elton. He proposes passionately to Emma and dismisses the idea of marrying Harriet as socially absurd. Shocked, Emma rejects him and realizes that she has mistaken his conduct from the beginning. Elton, embarrassed and resentful, leaves Highbury for Bath. Emma must now face both the injury her interference has done to Harriet's prospects and the unpleasant task of explaining that Elton never loved Harriet.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Emma explains Mr. Elton's proposal to Harriet, who is deeply hurt, and recognizes that her confident matchmaking has failed. Elton soon becomes engaged elsewhere. Meanwhile Jane Fairfax, the accomplished but poor niece of Miss Bates, returns to Highbury. Orphaned young and educated with the Campbell family, Jane expects eventually to work as a governess. Emma admires her talents but remains uneasy with her reserve and speculates, without evidence, about Jane's friendship with the newly married Mr. Dixon. Frank Churchill, Mr. Weston's son, finally makes his long-delayed visit. Raised by his wealthy and demanding Churchill relatives, Frank is handsome, lively, and immediately attentive to Emma. His willingness to travel to London merely for a haircut strikes Mr. Knightley as frivolous, but Emma enjoys his company as they visit Highbury together. With Elton absent and Frank now present, Emma's attention shifts away from her earlier mistake and toward the possibility of a new romance, while Jane's private feelings remain obscure to her.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After misleading Harriet about Mr. Elton, Emma has begun to question her judgment but continues drawing conclusions about other people's attachments. Jane Fairfax has returned to Highbury with few financial prospects, and Frank Churchill has arrived after many delays. Frank openly enjoys Emma's company, while Emma entertains suspicions about Jane and Mr. Dixon. At a dinner given by the Coles, Jane receives an expensive pianoforte from an unknown giver. Emma and Frank privately treat Mr. Dixon as the likely source, although Jane gives them no support. Frank and Emma flirt and plan for a ball at the Crown, but his aunt summons him away and the event is postponed. Emma decides that she is not truly in love with him, though she thinks his feelings for her may be stronger. Mr. Elton returns with his bride, Augusta. Mrs. Elton is wealthy, self-important, and eager to establish her social authority. She adopts a patronizing interest in Jane and treats Emma with an intimacy Emma dislikes. Mr. Knightley resists Emma's attempts to involve him in her speculations, particularly her suggestion that he might care for Jane.",
+            "through": {
+              "chapter": 33
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Emma's first plan for Harriet ended with Mr. Elton proposing to Emma instead and then marrying Augusta Hawkins. Jane Fairfax and Frank Churchill have both come to Highbury, and Emma has misread their guarded behavior while accepting Frank's apparent interest in herself. When Frank returns, the delayed ball at the Crown finally takes place. Mr. Elton pointedly refuses to dance with Harriet, humiliating her, but Mr. Knightley steps forward as her partner and earns Emma's gratitude. Soon afterward Frank helps Harriet escape a frightening encounter with a group of children on the road. Harriet then tells Emma that she has transferred her hopes from Elton to a man far above him; Emma assumes she means Frank and encourages the attachment without asking his name. Mr. Knightley, meanwhile, suspects a private understanding between Frank and Jane, but Emma dismisses the idea. At a gathering at Donwell Abbey, Jane is distressed by Mrs. Elton's efforts to arrange a governess position for her, Frank behaves restlessly, and the tensions Emma has failed to understand become increasingly visible.",
+            "through": {
+              "chapter": 42
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Emma continues to believe Harriet has fallen in love with Frank Churchill, while Mr. Knightley suspects that Frank and Jane Fairfax share a secret. During the excursion to Box Hill, Emma joins Frank's careless joking and insults Miss Bates, whose limited circumstances make the public slight especially cruel. Knightley privately rebukes Emma. Ashamed, she visits Miss Bates the next morning to make amends and begins to see how thoughtlessly she has used her social position. Frank leaves suddenly, Jane accepts a governess post, and then Mrs. Churchill dies. With his aunt's opposition removed, Frank's secret engagement to Jane is revealed. Emma is surprised but not heartbroken, because she never truly loved him. She tells Harriet the news, expecting to console her, only to learn that Harriet's admired gentleman is Mr. Knightley, not Frank. Faced with the possibility that Knightley might marry Harriet, Emma finally understands that she loves him herself. Knightley returns from London believing Emma has been wounded by Frank. Their conversation clears away that misunderstanding, and he proposes to Emma. She accepts, though concern for Harriet tempers her happiness.",
+            "through": {
+              "chapter": 49
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Emma Woodhouse's efforts to arrange Harriet Smith's future have repeatedly exposed the limits of her judgment. She first discouraged Harriet from accepting Robert Martin and wrongly imagined Mr. Elton in love with Harriet; later she mistook Frank Churchill's flirtation for possible courtship and assumed Harriet loved Frank. At Box Hill, Mr. Knightley's rebuke after Emma insults Miss Bates prompts genuine remorse. Frank's secret engagement to Jane Fairfax then becomes public, and Harriet reveals that she actually hopes to marry Knightley. The shock makes Emma recognize her own love for him. Knightley proposes, and Emma accepts. Frank's letter explains how his dependence on Mrs. Churchill led him and Jane to hide their engagement and how he used attention to Emma as cover. Emma and Jane reconcile. To avoid distressing Mr. Woodhouse, Knightley agrees that after marriage he will move into Hartfield rather than take Emma away. Harriet spends time with Isabella's family in London, reconnects with Robert, and accepts his renewed proposal. Mrs. Weston gives birth to a daughter. A nearby theft helps overcome Mr. Woodhouse's resistance to change, and he consents to Emma's wedding. Harriet and Robert marry, followed by Emma and Knightley.",
+            "through": {
+              "chapter": 55
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "emma-classic-tales-edition"
+      }
+    },
+    "emma-naxos-edition": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A wealthy, clever young woman who manages her father's home at Hartfield and has rarely been contradicted. The marriage of her former governess, Miss Taylor, convinces Emma that she has a talent for arranging other people's happiness. Affectionate and energetic but overconfident in her judgment, she decides to find another match rather than consider marriage for herself.",
+            "id": "emma-woodhouse",
+            "name": "Emma Woodhouse",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Emma's elderly father, a gentle and devoted man whose fear of illness, rich food, travel, and almost any change shapes life at Hartfield. He regrets Miss Taylor's marriage because it alters his comfortable routine, though he bears no ill will toward her husband.",
+            "id": "henry-woodhouse",
+            "name": "Mr. Woodhouse",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A close family friend and neighbor from Donwell Abbey. Sensible, observant, and willing to challenge Emma when others indulge her, he doubts her claim that she arranged Miss Taylor's marriage and warns against treating people's lives as a game.",
+            "id": "george-knightley",
+            "name": "Mr. Knightley",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Miss Taylor"
+            ],
+            "description": "Emma's former governess and longtime companion, newly married to Mr. Weston. Warm, tactful, and accustomed to Emma's faults as well as her good qualities, she remains Emma's trusted confidante after moving from Hartfield to Randalls.",
+            "id": "anne-weston",
+            "name": "Mrs. Weston",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Mrs. Weston's cheerful new husband and the owner of Randalls. A sociable widower, he has a grown son from his first marriage who was brought up by wealthy relatives and has not yet visited his father's new home.",
+            "id": "mr-weston",
+            "name": "Mr. Weston",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A pretty, friendly boarding pupil at Mrs. Goddard's school whose parentage is unknown. Emma is attracted by Harriet's admiration and pliable nature, takes her up as a companion, and begins trying to refine both her social circle and her romantic expectations.",
+            "id": "harriet-smith",
+            "name": "Harriet Smith",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The young clergyman of Highbury, polished and attentive in company. Emma decides that he would make a better husband for Harriet than the farmer Harriet already admires, and she interprets his interest in Emma's plans as encouragement for the match.",
+            "id": "philip-elton",
+            "name": "Mr. Elton",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A good-hearted but incessantly talkative unmarried woman of limited means, living with her elderly mother. She is welcomed throughout Highbury because of her kindness and good humor, and she speaks proudly and often of her absent niece, Jane Fairfax.",
+            "id": "miss-bates",
+            "name": "Miss Bates",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A capable young tenant farmer at Abbey-Mill and a friend of Mr. Knightley. Harriet knows and admires his family, and he writes her a sincere proposal of marriage. Emma judges his social position too low for the future she imagines for Harriet.",
+            "id": "robert-martin",
+            "name": "Robert Martin",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Emma's affectionate elder sister, married to John Knightley and living in London with their children. Gentle and family-minded, she shares her father's anxious concern about health and is happiest when the Hartfield and Knightley households are together.",
+            "id": "isabella-knightley",
+            "name": "Isabella Knightley",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Mr. Knightley's younger brother and Isabella's husband. Intelligent, reserved, and strongly attached to domestic life, he visits Hartfield with his wife and children and has little patience for unnecessary social obligations.",
+            "id": "john-knightley",
+            "name": "John Knightley",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Miss Bates's orphaned niece, recently returned to Highbury after being raised and educated with the Campbell family. Beautiful, highly accomplished, and reserved, she has little money and expects eventually to support herself as a governess. Emma respects her abilities but finds intimacy with her difficult.",
+            "id": "jane-fairfax",
+            "name": "Jane Fairfax",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Mr. Weston's son from his first marriage, raised as the heir of his wealthy aunt and uncle, the Churchills. His long-promised visit to Highbury has often been delayed, but when he finally arrives he is lively, charming, and eager to please his father's friends.",
+            "id": "frank-churchill",
+            "name": "Frank Churchill",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Augusta Elton"
+            ],
+            "description": "Mr. Elton's new wife, formerly Miss Hawkins of Bath. Confident, talkative, and impressed by wealth and social consequence, she quickly speaks to Emma with unwelcome familiarity and presents herself as an important addition to Highbury society.",
+            "id": "mrs-elton",
+            "name": "Mrs. Elton",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "emma-naxos-edition"
+      },
+      "recaps": {
+        "ending": "Frank Churchill's explanatory letter confirms that he and Jane Fairfax had been secretly engaged throughout his stay in Highbury. His apparent courtship of Emma helped conceal the relationship, while his aunt's opposition made secrecy seem necessary. Emma and Jane reconcile, and Jane can now marry Frank because Mrs. Churchill's death has removed the chief obstacle. Emma accepts Mr. Knightley's proposal, but concern for Mr. Woodhouse prevents her from leaving Hartfield; Knightley agrees to live there after their marriage. Harriet spends time in London, recovers from her hopes of Knightley, and renews her connection with Robert Martin. She accepts Martin's second proposal, satisfying Knightley and finally convincing Emma that the match is right. Mrs. Weston gives birth to a daughter. After a nearby poultry theft makes Mr. Woodhouse more receptive to Knightley's protection at Hartfield, he consents to the wedding. Harriet and Robert marry first, and Emma and Knightley then marry with their families and friends in agreement.",
+        "in_short": "Emma Woodhouse, a wealthy young woman certain of her insight into others, befriends Harriet Smith and discourages her from marrying the farmer Robert Martin. Emma instead imagines that Mr. Elton loves Harriet, only to discover that he wants Emma herself. After rejecting him, she turns her attention to Frank Churchill, whose flirtation distracts her from his secret engagement to Jane Fairfax. Emma repeatedly misreads Harriet's feelings as well, first believing Harriet attached to Frank and then learning that Harriet hopes to marry Mr. Knightley. This shock makes Emma recognize her own love for Knightley. Her growth is sharpened when he rebukes her for humiliating the kind but vulnerable Miss Bates at Box Hill. Frank and Jane's engagement becomes public after his controlling aunt dies. Knightley proposes to Emma and she accepts. Harriet reunites with Robert Martin and accepts his second proposal, while Knightley agrees to live at Hartfield so Emma need not abandon her anxious father. The novel closes with both couples married and Emma's confidence tempered by greater humility and self-knowledge.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Emma Woodhouse lives comfortably at Hartfield with her anxious, elderly father. Her beloved former governess, Miss Taylor, has just married the sociable widower Mr. Weston, and Emma takes credit for having encouraged the match. Mr. Knightley, a candid family friend from Donwell Abbey, doubts her supposed skill and warns her against further matchmaking. Emma soon befriends Harriet Smith, a pretty and impressionable pupil at Mrs. Goddard's school whose family background is unknown. Although Harriet admires Robert Martin, a respectable young farmer, Emma thinks he is beneath her and imagines a more elevated future for her friend. She chooses the local clergyman, Mr. Elton, as a prospective husband for Harriet and interprets his interest in Emma's portrait of Harriet as proof of affection. When Robert sends Harriet a marriage proposal, Harriet turns to Emma for advice. Emma steers her toward refusal while preserving the appearance that the decision is Harriet's own.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Emma has persuaded Harriet Smith to reject Robert Martin and tries to direct her feelings toward Mr. Elton. Mr. Knightley is angered by the refusal, arguing that Robert is intelligent, honorable, and a very good match for Harriet. Emma remains certain that Elton's attentions are meant for her friend, even when his compliments and eagerness repeatedly center on Emma herself. During the Christmas visit of Emma's sister Isabella and her husband, John Knightley, bad weather disrupts a party at Randalls. Harriet is absent because of illness, and Emma rides home alone with Elton. He proposes passionately to Emma and dismisses the idea of marrying Harriet as socially absurd. Shocked, Emma rejects him and realizes that she has mistaken his conduct from the beginning. Elton, embarrassed and resentful, leaves Highbury for Bath. Emma must now face both the injury her interference has done to Harriet's prospects and the unpleasant task of explaining that Elton never loved Harriet.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Emma explains Mr. Elton's proposal to Harriet, who is deeply hurt, and recognizes that her confident matchmaking has failed. Elton soon becomes engaged elsewhere. Meanwhile Jane Fairfax, the accomplished but poor niece of Miss Bates, returns to Highbury. Orphaned young and educated with the Campbell family, Jane expects eventually to work as a governess. Emma admires her talents but remains uneasy with her reserve and speculates, without evidence, about Jane's friendship with the newly married Mr. Dixon. Frank Churchill, Mr. Weston's son, finally makes his long-delayed visit. Raised by his wealthy and demanding Churchill relatives, Frank is handsome, lively, and immediately attentive to Emma. His willingness to travel to London merely for a haircut strikes Mr. Knightley as frivolous, but Emma enjoys his company as they visit Highbury together. With Elton absent and Frank now present, Emma's attention shifts away from her earlier mistake and toward the possibility of a new romance, while Jane's private feelings remain obscure to her.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After misleading Harriet about Mr. Elton, Emma has begun to question her judgment but continues drawing conclusions about other people's attachments. Jane Fairfax has returned to Highbury with few financial prospects, and Frank Churchill has arrived after many delays. Frank openly enjoys Emma's company, while Emma entertains suspicions about Jane and Mr. Dixon. At a dinner given by the Coles, Jane receives an expensive pianoforte from an unknown giver. Emma and Frank privately treat Mr. Dixon as the likely source, although Jane gives them no support. Frank and Emma flirt and plan for a ball at the Crown, but his aunt summons him away and the event is postponed. Emma decides that she is not truly in love with him, though she thinks his feelings for her may be stronger. Mr. Elton returns with his bride, Augusta. Mrs. Elton is wealthy, self-important, and eager to establish her social authority. She adopts a patronizing interest in Jane and treats Emma with an intimacy Emma dislikes. Mr. Knightley resists Emma's attempts to involve him in her speculations, particularly her suggestion that he might care for Jane.",
+            "through": {
+              "chapter": 33
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Emma's first plan for Harriet ended with Mr. Elton proposing to Emma instead and then marrying Augusta Hawkins. Jane Fairfax and Frank Churchill have both come to Highbury, and Emma has misread their guarded behavior while accepting Frank's apparent interest in herself. When Frank returns, the delayed ball at the Crown finally takes place. Mr. Elton pointedly refuses to dance with Harriet, humiliating her, but Mr. Knightley steps forward as her partner and earns Emma's gratitude. Soon afterward Frank helps Harriet escape a frightening encounter with a group of children on the road. Harriet then tells Emma that she has transferred her hopes from Elton to a man far above him; Emma assumes she means Frank and encourages the attachment without asking his name. Mr. Knightley, meanwhile, suspects a private understanding between Frank and Jane, but Emma dismisses the idea. At a gathering at Donwell Abbey, Jane is distressed by Mrs. Elton's efforts to arrange a governess position for her, Frank behaves restlessly, and the tensions Emma has failed to understand become increasingly visible.",
+            "through": {
+              "chapter": 42
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Emma continues to believe Harriet has fallen in love with Frank Churchill, while Mr. Knightley suspects that Frank and Jane Fairfax share a secret. During the excursion to Box Hill, Emma joins Frank's careless joking and insults Miss Bates, whose limited circumstances make the public slight especially cruel. Knightley privately rebukes Emma. Ashamed, she visits Miss Bates the next morning to make amends and begins to see how thoughtlessly she has used her social position. Frank leaves suddenly, Jane accepts a governess post, and then Mrs. Churchill dies. With his aunt's opposition removed, Frank's secret engagement to Jane is revealed. Emma is surprised but not heartbroken, because she never truly loved him. She tells Harriet the news, expecting to console her, only to learn that Harriet's admired gentleman is Mr. Knightley, not Frank. Faced with the possibility that Knightley might marry Harriet, Emma finally understands that she loves him herself. Knightley returns from London believing Emma has been wounded by Frank. Their conversation clears away that misunderstanding, and he proposes to Emma. She accepts, though concern for Harriet tempers her happiness.",
+            "through": {
+              "chapter": 49
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Emma Woodhouse's efforts to arrange Harriet Smith's future have repeatedly exposed the limits of her judgment. She first discouraged Harriet from accepting Robert Martin and wrongly imagined Mr. Elton in love with Harriet; later she mistook Frank Churchill's flirtation for possible courtship and assumed Harriet loved Frank. At Box Hill, Mr. Knightley's rebuke after Emma insults Miss Bates prompts genuine remorse. Frank's secret engagement to Jane Fairfax then becomes public, and Harriet reveals that she actually hopes to marry Knightley. The shock makes Emma recognize her own love for him. Knightley proposes, and Emma accepts. Frank's letter explains how his dependence on Mrs. Churchill led him and Jane to hide their engagement and how he used attention to Emma as cover. Emma and Jane reconcile. To avoid distressing Mr. Woodhouse, Knightley agrees that after marriage he will move into Hartfield rather than take Emma away. Harriet spends time with Isabella's family in London, reconnects with Robert, and accepts his renewed proposal. Mrs. Weston gives birth to a daughter. A nearby theft helps overcome Mr. Woodhouse's resistance to change, and he consents to Emma's wedding. Harriet and Robert marry, followed by Emma and Knightley.",
+            "through": {
+              "chapter": 55
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "emma-naxos-edition"
+      }
+    },
     "emma-seasons-edition-spring": {
       "characters": {
         "characters": [
@@ -3463,6 +4096,217 @@
           }
         ],
         "work": "emma-seasons-edition-spring"
+      }
+    },
+    "emma-the-200th-anniversary-audio-edition": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A wealthy, clever young woman who manages her father's home at Hartfield and has rarely been contradicted. The marriage of her former governess, Miss Taylor, convinces Emma that she has a talent for arranging other people's happiness. Affectionate and energetic but overconfident in her judgment, she decides to find another match rather than consider marriage for herself.",
+            "id": "emma-woodhouse",
+            "name": "Emma Woodhouse",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Emma's elderly father, a gentle and devoted man whose fear of illness, rich food, travel, and almost any change shapes life at Hartfield. He regrets Miss Taylor's marriage because it alters his comfortable routine, though he bears no ill will toward her husband.",
+            "id": "henry-woodhouse",
+            "name": "Mr. Woodhouse",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A close family friend and neighbor from Donwell Abbey. Sensible, observant, and willing to challenge Emma when others indulge her, he doubts her claim that she arranged Miss Taylor's marriage and warns against treating people's lives as a game.",
+            "id": "george-knightley",
+            "name": "Mr. Knightley",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Miss Taylor"
+            ],
+            "description": "Emma's former governess and longtime companion, newly married to Mr. Weston. Warm, tactful, and accustomed to Emma's faults as well as her good qualities, she remains Emma's trusted confidante after moving from Hartfield to Randalls.",
+            "id": "anne-weston",
+            "name": "Mrs. Weston",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Mrs. Weston's cheerful new husband and the owner of Randalls. A sociable widower, he has a grown son from his first marriage who was brought up by wealthy relatives and has not yet visited his father's new home.",
+            "id": "mr-weston",
+            "name": "Mr. Weston",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A pretty, friendly boarding pupil at Mrs. Goddard's school whose parentage is unknown. Emma is attracted by Harriet's admiration and pliable nature, takes her up as a companion, and begins trying to refine both her social circle and her romantic expectations.",
+            "id": "harriet-smith",
+            "name": "Harriet Smith",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The young clergyman of Highbury, polished and attentive in company. Emma decides that he would make a better husband for Harriet than the farmer Harriet already admires, and she interprets his interest in Emma's plans as encouragement for the match.",
+            "id": "philip-elton",
+            "name": "Mr. Elton",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A good-hearted but incessantly talkative unmarried woman of limited means, living with her elderly mother. She is welcomed throughout Highbury because of her kindness and good humor, and she speaks proudly and often of her absent niece, Jane Fairfax.",
+            "id": "miss-bates",
+            "name": "Miss Bates",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A capable young tenant farmer at Abbey-Mill and a friend of Mr. Knightley. Harriet knows and admires his family, and he writes her a sincere proposal of marriage. Emma judges his social position too low for the future she imagines for Harriet.",
+            "id": "robert-martin",
+            "name": "Robert Martin",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Emma's affectionate elder sister, married to John Knightley and living in London with their children. Gentle and family-minded, she shares her father's anxious concern about health and is happiest when the Hartfield and Knightley households are together.",
+            "id": "isabella-knightley",
+            "name": "Isabella Knightley",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Mr. Knightley's younger brother and Isabella's husband. Intelligent, reserved, and strongly attached to domestic life, he visits Hartfield with his wife and children and has little patience for unnecessary social obligations.",
+            "id": "john-knightley",
+            "name": "John Knightley",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Miss Bates's orphaned niece, recently returned to Highbury after being raised and educated with the Campbell family. Beautiful, highly accomplished, and reserved, she has little money and expects eventually to support herself as a governess. Emma respects her abilities but finds intimacy with her difficult.",
+            "id": "jane-fairfax",
+            "name": "Jane Fairfax",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Mr. Weston's son from his first marriage, raised as the heir of his wealthy aunt and uncle, the Churchills. His long-promised visit to Highbury has often been delayed, but when he finally arrives he is lively, charming, and eager to please his father's friends.",
+            "id": "frank-churchill",
+            "name": "Frank Churchill",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Augusta Elton"
+            ],
+            "description": "Mr. Elton's new wife, formerly Miss Hawkins of Bath. Confident, talkative, and impressed by wealth and social consequence, she quickly speaks to Emma with unwelcome familiarity and presents herself as an important addition to Highbury society.",
+            "id": "mrs-elton",
+            "name": "Mrs. Elton",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "emma-the-200th-anniversary-audio-edition"
+      },
+      "recaps": {
+        "ending": "Frank Churchill's explanatory letter confirms that he and Jane Fairfax had been secretly engaged throughout his stay in Highbury. His apparent courtship of Emma helped conceal the relationship, while his aunt's opposition made secrecy seem necessary. Emma and Jane reconcile, and Jane can now marry Frank because Mrs. Churchill's death has removed the chief obstacle. Emma accepts Mr. Knightley's proposal, but concern for Mr. Woodhouse prevents her from leaving Hartfield; Knightley agrees to live there after their marriage. Harriet spends time in London, recovers from her hopes of Knightley, and renews her connection with Robert Martin. She accepts Martin's second proposal, satisfying Knightley and finally convincing Emma that the match is right. Mrs. Weston gives birth to a daughter. After a nearby poultry theft makes Mr. Woodhouse more receptive to Knightley's protection at Hartfield, he consents to the wedding. Harriet and Robert marry first, and Emma and Knightley then marry with their families and friends in agreement.",
+        "in_short": "Emma Woodhouse, a wealthy young woman certain of her insight into others, befriends Harriet Smith and discourages her from marrying the farmer Robert Martin. Emma instead imagines that Mr. Elton loves Harriet, only to discover that he wants Emma herself. After rejecting him, she turns her attention to Frank Churchill, whose flirtation distracts her from his secret engagement to Jane Fairfax. Emma repeatedly misreads Harriet's feelings as well, first believing Harriet attached to Frank and then learning that Harriet hopes to marry Mr. Knightley. This shock makes Emma recognize her own love for Knightley. Her growth is sharpened when he rebukes her for humiliating the kind but vulnerable Miss Bates at Box Hill. Frank and Jane's engagement becomes public after his controlling aunt dies. Knightley proposes to Emma and she accepts. Harriet reunites with Robert Martin and accepts his second proposal, while Knightley agrees to live at Hartfield so Emma need not abandon her anxious father. The novel closes with both couples married and Emma's confidence tempered by greater humility and self-knowledge.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Emma Woodhouse lives comfortably at Hartfield with her anxious, elderly father. Her beloved former governess, Miss Taylor, has just married the sociable widower Mr. Weston, and Emma takes credit for having encouraged the match. Mr. Knightley, a candid family friend from Donwell Abbey, doubts her supposed skill and warns her against further matchmaking. Emma soon befriends Harriet Smith, a pretty and impressionable pupil at Mrs. Goddard's school whose family background is unknown. Although Harriet admires Robert Martin, a respectable young farmer, Emma thinks he is beneath her and imagines a more elevated future for her friend. She chooses the local clergyman, Mr. Elton, as a prospective husband for Harriet and interprets his interest in Emma's portrait of Harriet as proof of affection. When Robert sends Harriet a marriage proposal, Harriet turns to Emma for advice. Emma steers her toward refusal while preserving the appearance that the decision is Harriet's own.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Emma has persuaded Harriet Smith to reject Robert Martin and tries to direct her feelings toward Mr. Elton. Mr. Knightley is angered by the refusal, arguing that Robert is intelligent, honorable, and a very good match for Harriet. Emma remains certain that Elton's attentions are meant for her friend, even when his compliments and eagerness repeatedly center on Emma herself. During the Christmas visit of Emma's sister Isabella and her husband, John Knightley, bad weather disrupts a party at Randalls. Harriet is absent because of illness, and Emma rides home alone with Elton. He proposes passionately to Emma and dismisses the idea of marrying Harriet as socially absurd. Shocked, Emma rejects him and realizes that she has mistaken his conduct from the beginning. Elton, embarrassed and resentful, leaves Highbury for Bath. Emma must now face both the injury her interference has done to Harriet's prospects and the unpleasant task of explaining that Elton never loved Harriet.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Emma explains Mr. Elton's proposal to Harriet, who is deeply hurt, and recognizes that her confident matchmaking has failed. Elton soon becomes engaged elsewhere. Meanwhile Jane Fairfax, the accomplished but poor niece of Miss Bates, returns to Highbury. Orphaned young and educated with the Campbell family, Jane expects eventually to work as a governess. Emma admires her talents but remains uneasy with her reserve and speculates, without evidence, about Jane's friendship with the newly married Mr. Dixon. Frank Churchill, Mr. Weston's son, finally makes his long-delayed visit. Raised by his wealthy and demanding Churchill relatives, Frank is handsome, lively, and immediately attentive to Emma. His willingness to travel to London merely for a haircut strikes Mr. Knightley as frivolous, but Emma enjoys his company as they visit Highbury together. With Elton absent and Frank now present, Emma's attention shifts away from her earlier mistake and toward the possibility of a new romance, while Jane's private feelings remain obscure to her.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After misleading Harriet about Mr. Elton, Emma has begun to question her judgment but continues drawing conclusions about other people's attachments. Jane Fairfax has returned to Highbury with few financial prospects, and Frank Churchill has arrived after many delays. Frank openly enjoys Emma's company, while Emma entertains suspicions about Jane and Mr. Dixon. At a dinner given by the Coles, Jane receives an expensive pianoforte from an unknown giver. Emma and Frank privately treat Mr. Dixon as the likely source, although Jane gives them no support. Frank and Emma flirt and plan for a ball at the Crown, but his aunt summons him away and the event is postponed. Emma decides that she is not truly in love with him, though she thinks his feelings for her may be stronger. Mr. Elton returns with his bride, Augusta. Mrs. Elton is wealthy, self-important, and eager to establish her social authority. She adopts a patronizing interest in Jane and treats Emma with an intimacy Emma dislikes. Mr. Knightley resists Emma's attempts to involve him in her speculations, particularly her suggestion that he might care for Jane.",
+            "through": {
+              "chapter": 33
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Emma's first plan for Harriet ended with Mr. Elton proposing to Emma instead and then marrying Augusta Hawkins. Jane Fairfax and Frank Churchill have both come to Highbury, and Emma has misread their guarded behavior while accepting Frank's apparent interest in herself. When Frank returns, the delayed ball at the Crown finally takes place. Mr. Elton pointedly refuses to dance with Harriet, humiliating her, but Mr. Knightley steps forward as her partner and earns Emma's gratitude. Soon afterward Frank helps Harriet escape a frightening encounter with a group of children on the road. Harriet then tells Emma that she has transferred her hopes from Elton to a man far above him; Emma assumes she means Frank and encourages the attachment without asking his name. Mr. Knightley, meanwhile, suspects a private understanding between Frank and Jane, but Emma dismisses the idea. At a gathering at Donwell Abbey, Jane is distressed by Mrs. Elton's efforts to arrange a governess position for her, Frank behaves restlessly, and the tensions Emma has failed to understand become increasingly visible.",
+            "through": {
+              "chapter": 42
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Emma continues to believe Harriet has fallen in love with Frank Churchill, while Mr. Knightley suspects that Frank and Jane Fairfax share a secret. During the excursion to Box Hill, Emma joins Frank's careless joking and insults Miss Bates, whose limited circumstances make the public slight especially cruel. Knightley privately rebukes Emma. Ashamed, she visits Miss Bates the next morning to make amends and begins to see how thoughtlessly she has used her social position. Frank leaves suddenly, Jane accepts a governess post, and then Mrs. Churchill dies. With his aunt's opposition removed, Frank's secret engagement to Jane is revealed. Emma is surprised but not heartbroken, because she never truly loved him. She tells Harriet the news, expecting to console her, only to learn that Harriet's admired gentleman is Mr. Knightley, not Frank. Faced with the possibility that Knightley might marry Harriet, Emma finally understands that she loves him herself. Knightley returns from London believing Emma has been wounded by Frank. Their conversation clears away that misunderstanding, and he proposes to Emma. She accepts, though concern for Harriet tempers her happiness.",
+            "through": {
+              "chapter": 49
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Emma Woodhouse's efforts to arrange Harriet Smith's future have repeatedly exposed the limits of her judgment. She first discouraged Harriet from accepting Robert Martin and wrongly imagined Mr. Elton in love with Harriet; later she mistook Frank Churchill's flirtation for possible courtship and assumed Harriet loved Frank. At Box Hill, Mr. Knightley's rebuke after Emma insults Miss Bates prompts genuine remorse. Frank's secret engagement to Jane Fairfax then becomes public, and Harriet reveals that she actually hopes to marry Knightley. The shock makes Emma recognize her own love for him. Knightley proposes, and Emma accepts. Frank's letter explains how his dependence on Mrs. Churchill led him and Jane to hide their engagement and how he used attention to Emma as cover. Emma and Jane reconcile. To avoid distressing Mr. Woodhouse, Knightley agrees that after marriage he will move into Hartfield rather than take Emma away. Harriet spends time with Isabella's family in London, reconnects with Robert, and accepts his renewed proposal. Mrs. Weston gives birth to a daughter. A nearby theft helps overcome Mr. Woodhouse's resistance to change, and he consents to Emma's wedding. Harriet and Robert marry, followed by Emma and Knightley.",
+            "through": {
+              "chapter": 55
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "emma-the-200th-anniversary-audio-edition"
       }
     },
     "empire": {
