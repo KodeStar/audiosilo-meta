@@ -4154,6 +4154,181 @@
         ],
         "work": "villette-amazonclassics-edition"
       }
+    },
+    "villette-dramatised": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A quiet Englishwoman who survives loss and isolation by observing closely and keeping firm control of what she reveals. With few connections and no secure home, she travels alone to Villette and seeks work, narrating her experience with deliberate reserve.",
+            "id": "lucy-snowe",
+            "name": "Lucy Snowe",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Mrs Bretton"
+            ],
+            "description": "Lucy's kindly godmother and the mistress of the welcoming Bretton household. She treats Lucy with affection and provides a rare model of domestic security during Lucy's youth.",
+            "id": "louisa-bretton",
+            "name": "Louisa Bretton",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A sensitive, solemn child temporarily left in Mrs Bretton's care. She devotes herself to Graham with an intensity beyond her years and is deeply affected when her father removes her from the household.",
+            "id": "paulina-mary-home",
+            "name": "Paulina Mary Home",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Dr John"
+            ],
+            "description": "Mrs Bretton's son, now a handsome and generous young doctor in Villette. Lucy knew him as Graham in childhood and later recognizes him behind the name Dr John. His warmth revives her connection to the Bretton family, though his attention is not always as perceptive as his kindness.",
+            "id": "john-graham-bretton",
+            "name": "John Graham Bretton",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A beautiful, pleasure-loving English pupil at Madame Beck's school. Frank about her vanity and careless with other people's feelings, she enjoys Dr John's admiration while pursuing the fashionable but unreliable Alfred de Hamal.",
+            "id": "ginevra-fanshawe",
+            "name": "Ginevra Fanshawe",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The cool, capable owner of the Villette school where Lucy finds employment. She runs the institution through constant supervision, concealed searches, and careful calculation, valuing Lucy's usefulness while privately monitoring her.",
+            "id": "madame-beck",
+            "name": "Madame Beck",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "M. Paul"
+            ],
+            "description": "A small, intense professor associated with Madame Beck's school. Exacting, quick-tempered, and deeply committed to learning, he challenges Lucy more directly than anyone else and alternates sharp criticism with acts of practical generosity.",
+            "id": "paul-emanuel",
+            "name": "Paul Emanuel",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young officer and admirer of Ginevra Fanshawe. Handsome and theatrical, he shares her taste for romance and display but offers little evidence of reliability.",
+            "id": "alfred-de-hamal",
+            "name": "Alfred de Hamal",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Paulina's father, now bearing the title Count de Bassompierre. Protective and affectionate, he returns Paulina to the Brettons' circle while carefully considering whether Graham is worthy of her.",
+            "id": "count-de-bassompierre",
+            "name": "Count de Bassompierre",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly relative whose past sacrifices give her a powerful claim on Paul Emanuel's loyalty. She views Lucy as unsuitable for him and joins others in directing his future away from Villette.",
+            "id": "madame-walravens",
+            "name": "Madame Walravens",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Catholic priest and Paul Emanuel's spiritual adviser. He respects Lucy's character but hopes to draw her toward his church, and he supports the family obligations that complicate her bond with Paul.",
+            "id": "pere-silas",
+            "name": "Père Silas",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A celebrated actress whose powerful stage performance impresses both Lucy and Graham. Her art gives Lucy a severe, compelling image of passion expressed openly rather than hidden behind ordinary social manners.",
+            "id": "vashti",
+            "name": "Vashti",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "villette-dramatised"
+      },
+      "recaps": {
+        "ending": "Graham and Paulina are united with her father's consent, while Ginevra elopes with Alfred de Hamal and later admits that their glamorous match brings little contentment. Paul Emanuel's relatives and Madame Beck oppose his attachment to Lucy and arrange for him to oversee an estate in Guadeloupe for three years. Before leaving, Paul gives Lucy the means to direct a small school of her own. She succeeds, expands the school, and sustains their bond through letters while waiting for his return. At the end of the three years, a destructive Atlantic storm strikes during his homeward voyage. Lucy refuses to narrate a definite death and invites a hopeful reading, but the close strongly implies that Paul's ship never reaches Villette and that he does not return to her. Lucy's professional independence survives, while the personal future she anticipated remains suspended in that loss.",
+        "in_short": "After an unsettled English youth, solitary Lucy Snowe travels to Villette and becomes a teacher at Madame Beck's school. She reconnects with her godmother Mrs Bretton and discovers that the kindly Dr John is Graham Bretton, whom she knew as a boy. Lucy quietly loves him, but Graham first pursues vain Ginevra Fanshawe and then reunites with Paulina Home, his devoted childhood companion; Graham and Paulina eventually marry. Lucy's sharper, more equal bond is with the demanding professor Paul Emanuel. Madame Beck, Père Silas, and Paul's family oppose the match and send him to manage an estate in Guadeloupe for three years, though Paul first establishes Lucy as the head of her own school. She prospers and waits for him. As his return approaches, a great storm crosses the Atlantic. The narrative declines to state his fate outright, but strongly implies that his ship is lost and that Lucy must continue the independent life he helped her build without him.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "As a girl, Lucy Snowe stays with her godmother Mrs Bretton and observes the household's two children: lively Graham Bretton and solemn Paulina Home, who adores him. Paulina is taken away by her father, and Lucy's own later family catastrophe is left largely unexplained. After caring for the elderly Miss Marchmont until her death, Lucy is again alone and without prospects. She decides to leave England, crosses to the continental city of Villette, and meets the vain schoolgirl Ginevra Fanshawe while traveling. Unable to speak French confidently and possessing little money, Lucy follows a chance direction to Madame Beck's school. Madame Beck tests her composure by putting her before a class and then employs her, giving Lucy a foothold in an unfamiliar city.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Lucy proves an effective teacher at Madame Beck's school, though she recognizes that her employer spies, searches possessions, and manages everyone through quiet surveillance. Lucy meets the irritable, learned Paul Emanuel, whose criticism repeatedly tests her self-possession. She also observes Ginevra's shallow treatment of a generous young English doctor known as Dr John while Ginevra favors the showier Alfred de Hamal. During illness and emotional strain, Lucy is helped by Dr John and awakens in a room filled with objects from her childhood. She discovers that he is Graham Bretton and is reunited with Mrs Bretton. Their renewed friendship brings warmth into Lucy's life, but Graham remains preoccupied with Ginevra, and Lucy keeps the depth of her own attachment hidden.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Paulina returns as a young woman, now the daughter of Count de Bassompierre, and she and Graham rediscover the devotion that began in childhood. Graham's interest shifts from Ginevra to Paulina, while Lucy accepts that his affectionate friendship with her is not romantic love. Ginevra continues her secret involvement with de Hamal. Lucy's encounters with the supposed ghost of a buried nun intensify the strain and concealment surrounding life at the school. At the same time, her disputes with Paul Emanuel develop into mutual understanding. His severity is joined by generosity, intellectual respect, and concern for Lucy's future. Madame Beck and Paul's Catholic connections, including Père Silas and Madame Walravens, recognize the growing bond and regard the Protestant, independent Lucy as an obstacle to their plans for him.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Graham and Paulina declare their love and gain her father's approval. Ginevra elopes with Alfred de Hamal; the romantic adventure later proves less happy than she expected. The nun that has haunted Lucy is exposed as a disguise used in connection with the lovers' secret meetings, though the episode does not erase Lucy's deeper fears. Paul Emanuel's affection for Lucy becomes unmistakable, but Madame Beck, Père Silas, and Madame Walravens arrange for him to spend three years managing an estate in Guadeloupe. Before sailing, Paul secures a house and pupils for Lucy so that she can direct her own school. She makes the venture prosper and corresponds with him throughout the separation. When the three years end, Lucy prepares for his return, but a violent Atlantic storm overtakes the homeward route. She withholds explicit confirmation, yet the ending strongly implies that Paul is lost at sea and never returns, leaving Lucy professionally independent but personally bereaved.",
+            "through": {
+              "chapter": 4
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "villette-dramatised"
+      }
     }
   }
 }

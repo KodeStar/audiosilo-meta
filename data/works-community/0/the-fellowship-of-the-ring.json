@@ -3557,6 +3557,227 @@
         "work": "the-fortune-of-war"
       }
     },
+    "the-fountainhead": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An architecture student expelled from Stanton for refusing to copy historical styles. Roark is austere, self-contained, and wholly committed to designing buildings from their purpose, materials, and sites. He neither seeks approval nor accepts compromise in the substance of his work.",
+            "id": "howard-roark",
+            "name": "Howard Roark",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Roark's classmate, graduating at the top of Stanton's architecture program as Roark is expelled. Charming, socially alert, and conventionally talented, Keating measures success through other people's admiration and is more confident in managing opinion than in his own designs.",
+            "id": "peter-keating",
+            "name": "Peter Keating",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An aging architect who once pioneered modern American design but lost most of his practice after refusing to follow popular taste. Roark seeks him out as the only employer whose work he respects. Cameron is bitter, exacting, and immediately able to recognize Roark's ability and the hardship his principles will bring him.",
+            "id": "henry-cameron",
+            "name": "Henry Cameron",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The senior partner of the prestigious firm Francon & Heyer and a celebrated public figure in architecture. He succeeds through polished manners, fashionable designs, and influential clients, leaving much of the practical design work to employees.",
+            "id": "guy-francon",
+            "name": "Guy Francon",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Peter Keating's mother, who has organized her life around her son's advancement. Affectionate but controlling, she steers him by invoking sacrifice, respectability, and what other people will think.",
+            "id": "mrs-keating",
+            "name": "Mrs. Keating",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Peter's gentle childhood sweetheart and Ellsworth Toohey's niece. She is candid, idealistic, and content with a modest future, a simplicity that attracts Peter even as it conflicts with his hunger for status.",
+            "id": "catherine-halsey",
+            "name": "Catherine Halsey",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Guy Francon's daughter, living independently and writing an architecture column for the New York Banner. Brilliant, severe, and contemptuous of conventional praise, she recognizes beauty readily but treats attachment to anything excellent as a source of danger.",
+            "id": "dominique-francon",
+            "name": "Dominique Francon",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An influential critic, lecturer, and newspaper columnist who presents himself as a champion of humanitarian causes and collective welfare. Soft-spoken and skilled at shaping reputations, he promotes compliant artists while treating independent achievement with suspicion.",
+            "id": "ellsworth-toohey",
+            "name": "Ellsworth Toohey",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A writer and public intellectual who hires Roark to design a private house after defending him from an assault. Heller values independence and becomes one of the architect's earliest clients and steady friends.",
+            "id": "austen-heller",
+            "name": "Austen Heller",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A construction electrician who recognizes Roark's competence while Roark is working on a building site. Direct and loyal, Mike becomes his friend and prefers working on projects where workmanship matters.",
+            "id": "mike-donnigan",
+            "name": "Mike Donnigan",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A businessman planning an apartment building who wants a design unlike the city's standard luxury developments. He becomes one of Roark's important early clients and refuses pressure to replace him with a fashionable architect.",
+            "id": "roger-enright",
+            "name": "Roger Enright",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A gifted young sculptor whose furious temperament and poverty have followed the critical rejection of his work. Roark seeks him out for a major commission because he sees integrity in Mallory's sculpture.",
+            "id": "steven-mallory",
+            "name": "Steven Mallory",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wealthy patron who announces a plan to build a temple dedicated to the human spirit. Guided by Toohey's recommendation, he hires Roark while presenting the commission as an unusually free opportunity.",
+            "id": "hopton-stoddard",
+            "name": "Hopton Stoddard",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The powerful owner of the New York Banner and a nationwide newspaper empire. Raised in extreme poverty, Wynand has built his influence by giving mass audiences the sensation and opinions they demand. He is feared for his ability to make or ruin public reputations.",
+            "id": "gail-wynand",
+            "name": "Gail Wynand",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The amiable managing editor of the New York Banner and Dominique's supervisor. Scarret understands the paper's appetite for scandal and popularity, and he treats Dominique's provocative writing as useful even when he cannot predict it.",
+            "id": "alvah-scarret",
+            "name": "Alvah Scarret",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-fountainhead"
+      },
+      "recaps": {
+        "ending": "At Roark's trial for destroying Cortlandt Homes, he represents himself and argues that creators must be free to control what they create. The jury acquits him. Wynand, having ordered the Banner to denounce Roark when the paper's circulation collapsed, understands that his apparent power always depended on serving the crowd. Roark refuses to resume their friendship, and Wynand closes the Banner. Keating's career and confidence are ruined; Toohey's campaign has gained influence but has not secured Roark's submission. Wynand gives Roark one final commission, the Wynand Building, intended to be the city's tallest skyscraper. In the closing scene Dominique, now Roark's wife, rides a construction elevator up the rising tower. She reaches Roark at its summit, with the completed shape of his work implied in the structure growing beneath them.",
+        "in_short": "Architect Howard Roark refuses to imitate inherited styles or surrender control of his designs, while his classmate Peter Keating advances through charm, borrowed ideas, and conformity. Critic Ellsworth Toohey works to elevate mediocrity and turn public opinion against independent creators. Dominique Francon recognizes Roark's greatness but initially tries to destroy what she loves, while newspaper magnate Gail Wynand believes power over the public can protect private excellence. Roark loses commissions, works in a quarry, survives a lawsuit over the Stoddard Temple, and slowly builds a body of uncompromised work. When alterations violate his secret design for the Cortlandt housing project, he dynamites it and stands trial. Wynand's attempt to defend him destroys the Banner's public support and exposes Wynand's dependence on the crowd. Roark wins acquittal through his defense of creative independence, marries Dominique, and receives Wynand's final commission for a great skyscraper.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Howard Roark is expelled from the Stanton Institute of Technology because his architectural designs reject historical imitation. He refuses the dean's offer to return under conditions and goes to New York to work for Henry Cameron, a once-prominent modern architect whose uncompromising career has nearly destroyed his practice. Roark's classmate Peter Keating graduates with honors and joins the fashionable firm of Francon & Heyer. Keating is adept at pleasing his superiors but repeatedly asks Roark for design help while concealing the source. As Keating rises, Cameron's health and business decline. Roark values the difficult work because Cameron designs according to a building's actual function rather than public fashion. Their choices establish opposite paths: Keating seeks prestige through approval, while Roark accepts obscurity as the cost of designing on his own terms.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After Cameron retires, Roark works briefly for other architects but is fired when he refuses to alter a modern design into a classical imitation. He opens his own office after Austen Heller commissions a house suited to a difficult cliffside site. The completed Heller house brings a few clients but also hostility. Peter Keating, meanwhile, maneuvers upward at Francon & Heyer and lets professional ambition repeatedly delay his marriage to Catherine Halsey. Dominique Francon, Guy Francon's daughter and an architecture columnist, attacks admired buildings and institutions because she distrusts a world she thinks will always degrade excellence. Roark obtains further commissions, including Roger Enright's apartment building, yet the irregular flow of work eventually forces him to close his office. Rather than redesign other architects' work, he takes a laboring job in a granite quarry owned by Guy Francon.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Dominique spends the summer at her father's estate and meets Roark working in the nearby quarry without initially knowing his name. Their attraction develops into a private, combative relationship shaped by her resistance to admitting how much she values him. A new commission allows Roark to return to architecture in New York, where Dominique discovers his identity. She publicly works against his career even while continuing to see him. Roark's completed buildings gradually attract clients who want his particular work rather than a fashionable label. He hires the neglected sculptor Steven Mallory to create a figure for a temple commissioned by Hopton Stoddard. Ellsworth Toohey, Catherine's influential uncle and a critic who praises collective values, has encouraged Stoddard to select Roark, although his interest in the project is not friendly.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Roark designs the Stoddard Temple as an affirmation of human dignity, with Mallory's statue modeled on Dominique at its center. After Stoddard returns, Toohey leads a public campaign portraying the building as offensive and persuades Stoddard to sue Roark. Dominique testifies for the plaintiff in terms that actually identify the world's hostility to Roark's achievement. Roark loses the case, and the temple is altered into a charitable institution. Toohey's reputation grows as he organizes groups of artists, writers, and professionals dependent on his approval. Dominique concludes that she can protect herself from valuing greatness only by choosing a conventional life. She offers to marry Peter Keating, who abandons Catherine and accepts. Roark does not try to stop her. Keating gains status from the marriage, but Dominique gives him social performance without the emotional dependence he expected.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Gail Wynand, owner of the sensationalist Banner, has built enormous power by shaping his newspapers to the public's lowest tastes. Peter seeks the important Stoneridge commission from him, and Dominique agrees to meet Wynand as part of Peter's effort to secure it. Wynand recognizes both her contempt for the bargain and her resemblance to himself; rather than treating the meeting as a brief exchange, he asks her to marry him. Dominique divorces Peter and becomes Wynand's wife. Wynand later hires Roark to design a secluded country house for them. Unaware at first of Roark and Dominique's history, he finds in Roark the incorruptible integrity he had abandoned in his own career, and the two men become close friends. Dominique sees that Wynand privately loves the values his newspapers publicly undermine, while Roark's practice continues to grow through clients willing to accept his terms.",
+            "through": {
+              "chapter": 39
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Years of fashionable success have left Peter unable to conceal his lack of independent design ability. He shows Roark the private paintings he once hoped to pursue, revealing the vocation he sacrificed, but he still asks for rescue on another architectural project. A developer needs an inexpensive public housing plan for Cortlandt Homes, and Roark agrees to design it secretly on one absolute condition: the completed buildings must follow his plans without alteration. Peter will receive public credit. Roark solves the project's practical and financial problems, and the proposal is accepted. Toohey, steadily extending his influence through professional organizations and the Banner, takes an interest in Cortlandt and the people controlling its construction. Wynand and Roark remain friends, while Dominique waits for the point at which the public conflict surrounding Roark will force Wynand to choose between private conviction and the newspaper power he built by serving popular opinion.",
+            "through": {
+              "chapter": 47
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Cortlandt Homes is built with substantial changes to Roark's design after Toohey helps place the project beyond Peter's control. Because their private agreement cannot be enforced publicly, Roark destroys the altered complex with explosives; Dominique assists by arranging to be nearby and is injured in the blast. Roark waits to be arrested. Peter admits the secret arrangement and gives prosecutors evidence of Roark's authorship. Toohey openly explains to Peter that his goal has been power over people through the promotion of dependence and mediocrity. Wynand orders the Banner to defend Roark, expecting his media empire to reverse public hostility. Instead readers boycott the paper and Toohey helps organize a staff strike. Circulation collapses, advertisers leave, and Wynand discovers that the authority he thought he possessed cannot withstand the audience whose preferences he always obeyed.",
+            "through": {
+              "chapter": 54
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Unable to sustain the Banner against the boycott and strike, Wynand reverses its position and publishes a condemnation of Roark. Roark refuses Wynand's attempt to preserve their friendship after this surrender. At trial, Roark represents himself. He acknowledges destroying Cortlandt and explains the history of creators whose independent work made human progress possible, arguing that no one was entitled to alter a design he supplied only on the condition that it remain intact. The jury finds him not guilty. Peter is left professionally and personally broken, while Dominique can finally stop treating destruction as the inevitable fate of excellence. She divorces Wynand and marries Roark. Wynand closes the Banner, dismissing the institution through which Toohey sought power, and commissions Roark to build the Wynand Building. The novel ends with Dominique rising to meet Roark atop the construction site of the skyscraper that will carry his design over the city.",
+            "through": {
+              "chapter": 59
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-fountainhead"
+      }
+    },
     "the-fourth-secret": {
       "characters": {
         "characters": [

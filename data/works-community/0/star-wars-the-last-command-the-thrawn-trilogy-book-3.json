@@ -2898,6 +2898,163 @@
         "work": "streams-of-silver"
       }
     },
+    "street-child": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A resourceful boy growing up in extreme poverty in Victorian London. Fiercely attached to his mother and sisters, Jim tries to keep his family together after eviction and then struggles to preserve his freedom through the workhouse, the streets, and forced labor. His experiences eventually bring the plight of homeless children to Dr Barnardo's attention.",
+            "id": "jim-jarvis",
+            "name": "Jim Jarvis",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Ma"
+            ],
+            "description": "Jim's widowed mother, exhausted and seriously ill after trying to support three children through poorly paid work. She loves Jim, Emily, and Lizzie and tries to protect them from the full terror of eviction, but poverty has left her with almost no choices.",
+            "id": "mrs-jarvis",
+            "name": "Mrs Jarvis",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jim's older sister, who has shared the family's hunger and insecurity. She helps care for the younger children while their mother is ill and faces separation from Jim when the family can no longer remain together.",
+            "id": "emily-jarvis",
+            "name": "Emily Jarvis",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jim's younger sister and the smallest of the Jarvis children. Her dependence heightens Jim's fear when the family is evicted and forced to seek shelter within institutions that divide families by age and sex.",
+            "id": "lizzie-jarvis",
+            "name": "Lizzie Jarvis",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Jarvis family's landlord, who demands rent they cannot pay and removes them from their room. To Jim he represents the hard authority of adults who treat destitution as a debt rather than an emergency.",
+            "id": "mr-spink",
+            "name": "Mr Spink",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A boy Jim meets inside the workhouse. More familiar with its punishments and routines, Tip becomes Jim's friend and helps him endure a place designed around obedience, separation, and exhausting labor.",
+            "id": "tip",
+            "name": "Tip",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A kind woman Jim encounters while trying to survive outside the workhouse. She offers food and humane attention when most adults see only a troublesome street boy, giving Jim a brief experience of safety without confinement.",
+            "id": "rosie",
+            "name": "Rosie",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A brutal man who uses homeless boys as cheap labor on his coal boat. He gives Jim shelter only to control and exploit him, enforcing obedience through fear and violence.",
+            "id": "grimmy-nick",
+            "name": "Grimy Nick",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Shrimps"
+            ],
+            "description": "A small boy already working under Grimy Nick's control when Jim reaches the coal boat. Wary but companionable, he shows Jim how exposed street children can be trapped by adults who promise work or shelter.",
+            "id": "shrimps",
+            "name": "Shrimps",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Dr Barnardo"
+            ],
+            "description": "A young teacher and reformer working with poor children in London's East End. When Jim tells him what it means to have nowhere safe to sleep, Barnardo listens and recognizes that help must be available even when existing shelters are full.",
+            "id": "thomas-barnardo",
+            "name": "Thomas Barnardo",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "street-child"
+      },
+      "recaps": {
+        "ending": "Jim escapes Grimy Nick's violent control and returns to the London streets, still without family, money, or a secure place to sleep. He reaches a school for poor children associated with Thomas Barnardo. Although the available refuge cannot simply accommodate every homeless boy, Jim's presence and his account of life outside make the human cost of that limit impossible to ignore. Barnardo listens as Jim describes eviction, the loss of his mother and sisters, the workhouse, and the exploitation he has survived. Jim is finally treated as a child in need rather than a criminal or a source of labor. The closing historical note is hopeful: Jim's story strengthens Barnardo's determination to create a home whose door will remain open to destitute children. Jim's future is not restored to what it was, but his testimony helps begin a wider effort to protect children living as he has lived.",
+        "in_short": "Jim Jarvis lives with his sick mother and two sisters in Victorian London until unpaid rent leaves them homeless. The family enters the workhouse, where they are separated, and Jim loses his mother and contact with his sisters. He befriends Tip but cannot accept the institution's hunger, labor, and punishments, so he escapes and survives on the streets. Brief kindness cannot give him lasting security, and Grimy Nick traps him into harsh work on a coal boat alongside another boy, Shrimps. Jim eventually escapes again and reaches a school serving poor children. There he meets Thomas Barnardo and explains what happens to children who have no family or bed and can still be turned away when shelters are full. Barnardo takes Jim seriously. The boy's experience helps inspire the promise that destitute children seeking refuge should not be refused for lack of money.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Jim Jarvis lives with his widowed mother and his sisters, Emily and Lizzie, in a single rented room in Victorian London. Their mother is ill and cannot earn enough to cover both food and rent. Jim searches for small ways to help, but hunger shapes every decision. Their landlord, Mr Spink, demands what the family owes and evicts them when they cannot pay. With their few possessions lost and no relative able to take them in, the Jarvises move through the city looking for shelter. Mrs Jarvis's health worsens, and the institutions available to the poor offer help only on severe terms. The family is driven toward the workhouse, knowing that entering it will mean surrendering freedom and being separated from one another.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Jarvis family enters the workhouse and is divided according to its rules. Jim cannot stay with his mother or sisters. The food is inadequate, the labor repetitive, and the discipline intended to make poverty feel punishable. Jim's mother, already gravely ill, dies, while Emily and Lizzie are sent away beyond his reach. Jim is left effectively alone. He meets Tip, another boy who understands the institution and becomes his ally, but friendship does not make the workhouse bearable. Its masters answer resistance with punishment, and Jim sees that remaining means accepting a life controlled by people indifferent to his grief. He begins to think about escape despite the danger of having no food or shelter outside.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jim gets out of the workhouse and returns to the streets. Freedom spares him the institution's rules but exposes him to cold, hunger, and adults who assume an unaccompanied child is dishonest. He searches for food and work while still hoping he may somehow find his sisters. Tip's companionship cannot provide a permanent answer, and Jim must rely on quick judgment and occasional kindness. Rosie treats him with compassion and helps him for a time, showing him that not every adult intends to punish or exploit him. Yet no informal refuge can guarantee his safety. With nowhere secure to go, Jim remains vulnerable to anyone offering work, food, or a place to sleep, even when the offer carries dangers he cannot fully assess.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Grimy Nick takes control of Jim and forces him into exhausting, dangerous labor connected with a coal boat. Jim meets Shrimps, another small boy caught in the same system, and learns how easily homeless children can disappear into work that is little different from imprisonment. Nick uses threats and violence to keep them obedient. Jim refuses to accept this as his only future and eventually escapes, returning once more to London without money or family. He reaches a school serving poor children and comes to the attention of Thomas Barnardo. Jim explains the chain of losses that brought him there and the reality of sleeping rough when no refuge has room. Barnardo listens to him as a witness rather than dismissing him as a nuisance. Jim's story helps persuade the reformer that a home for destitute children must not turn a child away simply because he cannot pay, giving Jim's ordeal a hopeful consequence beyond his own rescue.",
+            "through": {
+              "chapter": 10
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "street-child"
+      }
+    },
     "stuart-little": {
       "characters": {
         "characters": [
