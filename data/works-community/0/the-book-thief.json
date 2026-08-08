@@ -2635,6 +2635,131 @@
         "work": "the-brothers-karamazov-naxos-audiobooks-edition"
       }
     },
+    "the-buddha-in-the-attic": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "The Picture Brides"
+            ],
+            "description": "A collective of young Japanese women crossing the Pacific to marry men they know chiefly from photographs and letters. They differ in class, region, age, education, and expectation, but the narration joins their individual experiences into a shared first-person voice.",
+            "id": "the-women",
+            "name": "The Women",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Japanese immigrants already living in the United States who have arranged marriages with women from home. Many sent flattering or outdated photographs and promised easier lives than they can provide; the brides often find aging laborers instead of the prosperous men they imagined.",
+            "id": "the-husbands",
+            "name": "The Husbands",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Farm owners, householders, shopkeepers, and other white Americans for whom the women and their husbands work. Some are considerate and some exploitative, but even sympathetic employers occupy a social world from which the Japanese laborers remain largely excluded.",
+            "id": "the-white-employers",
+            "name": "The White Employers",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Nisei"
+            ],
+            "description": "The American-born sons and daughters of the immigrant women. They grow up speaking English, attending local schools, and often feeling embarrassed by their parents' accents and customs. Their lives appear more American than their mothers' lives, though prejudice continues to define how others see them.",
+            "id": "the-children",
+            "name": "The Children",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Federal and local officials who begin visiting Japanese homes after the United States enters the war. They question families, remove community leaders, impose restrictions, and ultimately administer the forced departure of people of Japanese ancestry.",
+            "id": "the-authorities",
+            "name": "The Authorities",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The white residents who remain after their Japanese neighbors are forced away. Their collective voice notices abandoned houses and businesses, repeats rumors, and gradually allows the missing families to fade from daily conversation.",
+            "id": "the-white-neighbors",
+            "name": "The White Neighbors",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-buddha-in-the-attic"
+      },
+      "recaps": {
+        "ending": "Orders remove the Japanese families from their homes and send them to undisclosed confinement sites. They sell or entrust possessions, close businesses, leave crops behind, and gather with only what they are permitted to carry. The women, their husbands, and their American-born children disappear together from towns where many had lived for decades. The final chapter transfers the collective voice to the white people left behind. At first they notice empty houses, untended gardens, lost workers, and missing classmates. They speculate about where the families went and whether the removal was justified, while opportunists occupy property or acquire belongings. With no Japanese neighbors present to contradict rumor, suspicion persists for a time. Gradually ordinary routines cover the absence. Signs vanish, new tenants arrive, and even people who once knew the families stop mentioning them. The book ends not at a camp but inside this public forgetting, making disappearance from communal memory part of the removal itself.",
+        "in_short": "A collective voice follows Japanese picture brides who sail to the United States in the early twentieth century. The men awaiting them are often older and poorer than their photographs suggested, and the women enter difficult marriages and exhausting work in fields, homes, and small businesses. They learn English unevenly, endure racism and exploitation, bear children, and watch those American-born children distance themselves from Japanese language and custom. After Japan attacks Pearl Harbor, suspicion turns against the entire community. Men are questioned or arrested, bank accounts are frozen, restrictions multiply, and families destroy objects they fear could be treated as evidence of disloyalty. Removal orders finally force them to leave homes, farms, schools, and businesses for confinement. The closing perspective belongs to the white neighbors who remain: they notice the vacancies, speculate, take over property, and then slowly cease to speak about the missing Japanese families. The community's physical disappearance becomes an act of collective forgetting.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "A ship carries a large group of young Japanese women toward the United States in the early twentieth century. They are picture brides, promised to husbands selected through photographs and correspondence. In their shared narration, they compare the images, rehearse English phrases, remember the families and villages they have left, and imagine houses, prosperity, and affectionate marriages. Their backgrounds and motives vary: some flee poverty, some seek independence, and some have been sent abroad by their families. Seasickness, fear, and private hopes accompany them across the Pacific. Though they speak as a collective, their differing memories and expectations make clear that no single future awaits them. At the journey's end, the photographs remain their principal assurance that they will recognize the men who have arranged to meet them.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On arrival, many brides discover that the photographs were old, borrowed, or deliberately misleading. Men who claimed success are laborers living in camps, crowded rooms, or makeshift rural homes. The women's first nights of marriage range from tenderness to indifference and violence. They are quickly drawn into the same punishing labor as their husbands, moving with harvests, working in fields, washing laundry, cleaning houses, and accepting wages below those paid to white workers. Some marriages develop loyalty, while others remain lonely or coercive. The women learn how visibly foreign they appear to the people around them and how little their skill or effort protects them from contempt. They adapt clothing, gestures, names, and speech where they can, yet remain separated from the security they had imagined while aboard the ship.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The women bear children under widely varying conditions, often with little medical help and almost no respite from work. Some babies survive and others do not; some women feel immediate devotion, while exhaustion and fear complicate motherhood for others. Their American-born children grow up between languages and cultures. The children attend local schools, adopt English names and habits, and frequently answer their mothers in English even when spoken to in Japanese. Many become ashamed of homemade food, accented speech, old-country manners, or parents who do manual work. The mothers hope education will give their sons and daughters opportunities denied to immigrants, but racial barriers follow the second generation as well. Family intimacy is mixed with widening distance as children learn the standards of the surrounding white society and measure their parents against them.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After the attack on Pearl Harbor, Japanese immigrants and their American-born children are treated as possible enemies. Authorities question community members and remove some men without clear explanations. Families lose access to money, obey curfews and travel limits, and worry that ordinary Japanese possessions could be called evidence of disloyalty. They burn letters, photographs, books, flags, and keepsakes, erasing parts of their own histories in the hope of appearing safe. Neighbors and employers respond with a mixture of sympathy, opportunism, suspicion, and silence. The families listen for news and try to prepare despite not knowing what will happen. Their long residence, labor, and children's citizenship offer no dependable protection as public language turns an entire population into potential traitors.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Removal notices order Japanese families to report for departure with only limited baggage. They sell possessions cheaply, entrust homes and businesses to others, abandon crops and animals, and say hurried farewells. The women, husbands, and children assemble under guard and are transported away, uncertain of their destination or how long confinement will last. Afterward, the narration shifts to the white residents left in the emptied communities. They notice closed shops, missing schoolchildren, vacant houses, and work that is no longer being done. Some express concern, while others repeat accusations or benefit from the abandoned property. As weeks and months pass, new occupants and ordinary routines obscure the evidence of Japanese lives. The absent families become a subject raised less and less often, until the silence around them completes the disappearance begun by the government orders.",
+            "through": {
+              "chapter": 8
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-buddha-in-the-attic"
+      }
+    },
     "the-burning-bridge": {
       "characters": {
         "characters": [

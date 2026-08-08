@@ -2412,6 +2412,183 @@
         "work": "the-kaiju-preservation-society"
       }
     },
+    "the-keeper-of-lost-causes": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Carl Morck"
+            ],
+            "description": "A Copenhagen homicide detective returning to work after an ambush killed one colleague and left another paralyzed. Abrasive, suspicious, and burdened by guilt, Carl is pushed out of the main squad and made the sole detective in a new cold-case unit called Department Q.",
+            "id": "carl-morck",
+            "name": "Carl Mørck",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Carl's police colleague and friend, left paralyzed by the shooting that Carl survived. Hardy remains hospitalized, and Carl's visits expose both his loyalty and his guilt over the unresolved attack.",
+            "id": "hardy-henningsen",
+            "name": "Hardy Henningsen",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The third detective caught in the attack with Carl and Hardy. Anker was killed at the scene, and the absence of an explanation for the shooting continues to trouble Carl.",
+            "id": "anker-hoyer",
+            "name": "Anker Høyer",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The head of Copenhagen's homicide division. Marcus creates Department Q partly to secure new funding and partly to move the difficult Carl away from active investigations, though he knows Carl remains a capable detective.",
+            "id": "marcus-jacobsen",
+            "name": "Marcus Jacobsen",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Assad"
+            ],
+            "description": "The Syrian-born civilian assigned to clean Department Q's basement rooms and assist Carl with routine tasks. Cheerful, persistent, and far more observant than his job title suggests, Assad quickly begins acting as an investigative partner.",
+            "id": "hafez-el-assad",
+            "name": "Hafez el-Assad",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A prominent Danish politician who vanished from a passenger ferry five years before Department Q opens her file. The original investigation concluded that she probably fell or jumped overboard, but no body was found.",
+            "id": "merete-lynggaard",
+            "name": "Merete Lynggaard",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Merete's younger brother, profoundly affected by the childhood road accident that killed their parents. She has kept his existence private while arranging his care and visiting him devotedly; he was with her on the ferry when she disappeared.",
+            "id": "uffe-lynggaard",
+            "name": "Uffe Lynggaard",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A police psychologist assigned to assess Carl after the shooting. He approaches the sessions defensively, but Mona is direct enough to challenge his evasions and becomes personally intriguing to him.",
+            "id": "mona-ibsen",
+            "name": "Mona Ibsen",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Carl's estranged wife, who remains entangled in his domestic life and finances while postponing a clean resolution of their marriage.",
+            "id": "vigga",
+            "name": "Vigga",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Vigga's teenage son, who continues living with Carl despite the separation. Their untidy household gives Carl a family responsibility he complains about but does not abandon.",
+            "id": "jesper",
+            "name": "Jesper",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The man behind Merete's long imprisonment. His connection to an old road accident gives the captivity the shape of planned revenge rather than a random abduction.",
+            "id": "lasse",
+            "name": "Lasse",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-keeper-of-lost-causes"
+      },
+      "recaps": {
+        "ending": "Carl and Assad establish that Merete did not die on the ferry. Her disappearance grew out of a much older road accident that killed her parents, disabled Uffe, and devastated another family. Lasse, a survivor from that other family, has kept Merete inside a sealed pressure chamber as an elaborate act of revenge, raising the pressure over years so that a sudden opening would kill her. With the captors preparing to finish the punishment, Department Q locates the property and reaches the chamber. The immediate threat is overcome, and Merete is brought out through a controlled decompression that gives her a chance to survive. She is reunited with Uffe and receives hospital care after five years of isolation. The rescue vindicates Carl's refusal to accept the original suicide theory and confirms Assad as an essential partner rather than a basement caretaker. Department Q, created largely as an administrative maneuver, ends its first case as a functioning investigative unit. Carl has not resolved the shooting that killed Anker and disabled Hardy, but solving Merete's disappearance begins to restore his sense of purpose.",
+        "in_short": "After a shooting kills one colleague and paralyzes another, difficult Copenhagen detective Carl Mørck is placed in charge of Department Q, a new cold-case unit housed in the basement. With civilian assistant Assad, he reopens the five-year-old disappearance of politician Merete Lynggaard, presumed lost from a ferry. Alternating scenes reveal that Merete is alive inside a sealed pressure chamber, where captors have increased the pressure year by year. Carl and Assad reconstruct her secret devotion to her disabled brother Uffe and trace the case to the childhood crash that killed their parents and another family's members. Survivor Lasse has made Merete the target of a prolonged revenge. As her intended execution approaches, the investigators locate the chamber, overcome the captors, and arrange a controlled decompression. Merete survives long enough to be hospitalized and reunited with Uffe. The rescue establishes Department Q as real police work, gives Carl renewed purpose, and confirms Assad as his investigative partner, while the earlier shooting of Carl's team remains unsolved.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Copenhagen detective Carl Mørck returns to police work carrying the consequences of a disastrous shooting. His colleague Anker was killed, Hardy was left paralyzed, and Carl survived with guilt, anger, and unanswered questions about the attack. His manner alienates the homicide squad, so chief Marcus Jacobsen assigns him to Department Q, a politically funded unit meant to review major unsolved cases. The department consists at first of Carl, basement rooms, and stacks of files. Carl recognizes that management hopes to isolate him while claiming the funding attached to the initiative. His unexpected assistant is Assad, a Syrian-born civilian hired for cleaning and practical support. Assad's curiosity and energy make it difficult for Carl to maintain the unit as a place to do nothing, and the two begin sorting cases for one worth reopening.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Carl and Assad choose the disappearance of Merete Lynggaard, a rising politician who vanished from a ferry five years earlier. Investigators assumed she had gone overboard after an argument with her disabled younger brother Uffe, but the absence of a body and weaknesses in the file trouble Carl. Merete had protected Uffe from publicity and visited him regularly at a care facility, facts that made parts of her private life invisible to colleagues. Parallel events show that Merete is alive in a reinforced chamber. Her captors speak to her from outside, control her light and supplies, and manipulate the air pressure. They tell her that her punishment will continue for years, though she initially cannot identify the grievance behind it. Department Q begins interviewing people around Merete while Assad proves adept at noticing gaps, handling witnesses, and pushing the investigation forward.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The old inquiry focused too readily on suicide and on the visible pressures of Merete's political career. Carl and Assad instead reconstruct her movements, relationships, and carefully guarded family routine. Uffe cannot provide a conventional witness statement, but his behavior suggests that the ferry journey contains more than a sibling quarrel followed by an impulsive death. In captivity Merete survives by imposing order on darkness, deprivation, and isolation. Her jailers periodically raise the chamber's pressure, making escape increasingly dangerous even if the door could be opened. They demand that she understand why she was selected, turning ignorance itself into part of the punishment. Carl balances the case with visits to Hardy, difficult sessions with psychologist Mona Ibsen, and a disordered home life. The investigation nevertheless gives him a focus he has lacked since the shooting.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Department Q tests people connected to Merete and discards apparent motives that do not explain the careful preparation behind her disappearance. The investigators return repeatedly to Uffe and to the childhood crash that killed the Lynggaard parents and left him permanently impaired. That accident involved another family whose losses did not end when the road was cleared. Records and surviving connections begin to join Merete's hidden family history to the person who could have planned her abduction. Merete, weakened after years in the chamber, understands that her captors intend a fixed endpoint rather than indefinite confinement. Because the air is now maintained at extreme pressure, simply opening the chamber would cause a fatal decompression. Carl and Assad therefore need not only to locate her but to understand the prison quickly enough to rescue her safely.",
+            "through": {
+              "chapter": 32
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Carl and Assad identify the disappearance as revenge rooted in the old collision. Lasse, linked to the family harmed in that crash, has made Merete answer personally for a catastrophe she experienced as a child. The ferry offered the opportunity to remove her while leaving behind a plausible story of suicide, and Uffe's communication difficulties kept his knowledge from being understood. At the hidden site, preparations move toward Merete's final ordeal. Her survival has depended on resistance, routine, and the hope that Uffe was not harmed, but her physical margin is narrowing. Department Q races from historical evidence to a present location, aware that the presumed-dead woman may still be alive and that an ordinary forced entry could kill her. The case that began as an unwanted basement assignment has become an immediate rescue operation.",
+            "through": {
+              "chapter": 40
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Carl and Assad reach the property where Lasse has held Merete in a pressure chamber for five years. The captors' plan links her suffering to the deaths and injuries caused by the childhood road accident, but its elaborate symmetry is ultimately an act of sustained vengeance against an imprisoned victim. The investigators overcome the immediate danger and find Merete alive. Because the chamber pressure has been raised over years, her release must be managed gradually; a sudden opening would be fatal. Emergency care begins a controlled decompression, and Merete is taken to hospital with a real chance of recovery and reunion with Uffe. The result corrects the original assumption that she chose death on the ferry. It also transforms Department Q from a bureaucratic device into a credible cold-case team. Assad has become Carl's partner in practice, and Carl regains some professional purpose, even though the ambush that killed Anker and disabled Hardy remains an open wound for future investigations.",
+            "through": {
+              "chapter": 48
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-keeper-of-lost-causes"
+      }
+    },
     "the-kids-shakespeare-collection-volume-1": {
       "characters": {
         "characters": [

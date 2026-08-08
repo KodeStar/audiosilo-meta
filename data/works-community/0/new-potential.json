@@ -2869,6 +2869,228 @@
         "work": "norwegian-wood"
       }
     },
+    "nostromo": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Nostromo",
+              "the Capataz de Cargadores"
+            ],
+            "description": "An Italian sailor named Giovanni Battista Fidanza who has become foreman of Sulaco's dockworkers. Celebrated throughout the port for courage, competence, and loyalty, he takes pride in being the indispensable man trusted with dangerous work. His public identity depends heavily on admiration and reputation.",
+            "id": "giovanni-battista-fidanza",
+            "name": "Giovanni Battista Fidanza",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An Englishman born in Costaguana who inherits the neglected San Tome silver concession. Quiet, disciplined, and convinced that material interests can impose stability on the country, he devotes himself to making the mine productive and politically secure.",
+            "id": "charles-gould",
+            "name": "Charles Gould",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mrs. Gould"
+            ],
+            "description": "Charles Gould's English wife and an influential presence in Sulaco. Perceptive, compassionate, and socially assured, she supports the mine as her husband's constructive purpose while remaining more alert than he is to the human costs of political and economic schemes.",
+            "id": "emilia-gould",
+            "name": "Emilia Gould",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A cynical English doctor long resident in Costaguana. His damaged reputation and knowledge of political cruelty make him suspicious of heroic language. He serves the Gould circle with abrasive loyalty and holds Mrs. Gould in deep, largely unspoken devotion.",
+            "id": "doctor-monygham",
+            "name": "Doctor Monygham",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A cultivated journalist and political intellectual who returns from Europe as the Monterist revolt threatens Sulaco. In love with Antonia Avellanos, he advocates separating the prosperous Occidental Province from Costaguana as a practical defense against national chaos.",
+            "id": "martin-decoud",
+            "name": "Martin Decoud",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The educated, resolute daughter of Don Jose Avellanos. She shares her father's reformist commitments, moves confidently among Sulaco's political leaders, and is loved by Decoud, whose ironic detachment she challenges.",
+            "id": "antonia-avellanos",
+            "name": "Antonia Avellanos",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly statesman and author whose suffering under an earlier dictatorship has made him a moral symbol for Costaguana's reformers. He supports President Ribiera and hopes lawful government can free the country from its recurring cycles of personal rule and civil war.",
+            "id": "don-jose-avellanos",
+            "name": "Don Jose Avellanos",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Garibaldino"
+            ],
+            "description": "An elderly Italian republican and veteran of Garibaldi who keeps an inn near Sulaco with his family. Proud of his political ideals and protective of his daughters, he regards Nostromo almost as a son.",
+            "id": "giorgio-viola",
+            "name": "Giorgio Viola",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Giorgio Viola's serious elder daughter. Devoted to Nostromo and treated as his intended bride, she shares her father's confidence in his honor and waits for him with a loyalty that he takes for granted.",
+            "id": "linda-viola",
+            "name": "Linda Viola",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Giorgio Viola's younger daughter, admired for her beauty and more openly restless than Linda. She grows up within the close circle around the harbor and the man her family calls Nostromo.",
+            "id": "giselle-viola",
+            "name": "Giselle Viola",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful regional commander whose forces are essential to Sulaco's defense. His military loyalty to the reformist cause makes Nostromo's attempt to reach and recall him central to the resistance against the Monterists.",
+            "id": "general-barrios",
+            "name": "General Barrios",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The military strongman whose rebellion against President Ribiera advances toward Sulaco. His movement promises another authoritarian regime and threatens the reformers, the port, and foreign investment in the San Tome mine.",
+            "id": "general-montero",
+            "name": "General Montero",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A brutal government commander who defects to the Monterist cause and brings armed forces into Sulaco. Greedy for the San Tome silver and suspicious of everyone around him, he uses intimidation and torture to hunt for it.",
+            "id": "colonel-sotillo",
+            "name": "Colonel Sotillo",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A bandit chief who controls the countryside but is persuaded to accept a military command for the reformist side. His irregular fighters become an important counterweight to the advancing Monterist forces.",
+            "id": "hernandez",
+            "name": "Hernandez",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "nostromo"
+      },
+      "recaps": {
+        "ending": "Years after Sulaco becomes the Occidental Republic, Nostromo has built wealth and status while secretly removing bars from the hidden silver on Great Isabel. The treasure that first seemed lost has made him furtive and resentful, binding him to the reputation he once served freely. Publicly promised to Linda Viola, he secretly loves her younger sister Giselle and meets her at night near the island lighthouse. Giorgio Viola, believing the visitor to be an unwelcome suitor, fires into the darkness and mortally wounds Nostromo. Before dying, Nostromo confesses the burden of his silver secret to Mrs. Gould, who does not expose the hoard. Decoud has long since killed himself in isolation beside it. Charles Gould is successful but consumed by the mine, and Emilia recognizes that their shared enterprise has taken her husband from her. Sulaco's independence survives, yet it rests on military force, foreign finance, and the mine's power rather than the disinterested ideals its founders proclaimed.",
+        "in_short": "In the unstable republic of Costaguana, Charles Gould develops the San Tome silver mine and hopes material prosperity will support lawful government. When General Montero's revolt threatens the port of Sulaco, journalist Martin Decoud proposes an independent western province. The trusted dock foreman Nostromo rides through enemy territory to summon loyal troops, then helps Decoud take a shipment of silver offshore. They hide it on Great Isabel after nearly colliding with a rebel vessel. Nostromo returns, Barrios defeats the Monterists, and Sulaco becomes the Occidental Republic. Isolated with the treasure, Decoud loses hope and kills himself. Nostromo secretly recovers the silver over subsequent years, but possession corrodes the honor on which his identity rested. While publicly attached to Linda Viola, he conducts a secret love affair with her sister Giselle. Their father mistakes him for another visitor and shoots him. Nostromo dies while the silver remains hidden, and the triumphant mine leaves the Gould marriage emotionally barren.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Sulaco is a wealthy but isolated port in the Occidental Province of Costaguana, a republic repeatedly shaken by dictatorships and revolutions. The harbor's best-known figure is Nostromo, the Italian foreman of the dockworkers, whose courage and reliability have earned the trust of employers, laborers, and the Viola family. The province's growing power comes from the San Tome silver mine. Charles Gould, an English Costaguanan whose father was ruined by the concession, has revived it with foreign capital and made its success the center of his life. He and his wife Emilia hope the mine's economic influence will support stable government. Around them, Doctor Monygham remains skeptical of political ideals, while old Giorgio Viola preserves the republican convictions of an earlier generation. The setting's apparent order depends on personal reputations, overseas finance, and the uncertain politics of the national capital.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "President Ribiera's reform government is threatened by the rebellion of General Montero. Don Jose Avellanos, scarred by persecution under a former dictator, supports Ribiera and represents hopes for constitutional rule; his daughter Antonia shares his commitments. Martin Decoud, a skeptical but politically astute journalist in love with Antonia, returns to Sulaco as the crisis worsens. He sees that distant national institutions cannot protect the Occidental Province and begins to argue for its separation from Costaguana. The San Tome mine has become both the reformers' financial strength and an obvious prize for their enemies. Charles Gould prepares to deny its treasure to any victorious dictator, even if that requires destroying the mine. Nostromo remains the person everyone expects to carry out whatever dangerous task the emergency demands.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Monterist advance breaks the reform government's authority and leaves Sulaco exposed. Decoud promotes an independent Occidental state that can be defended with the support of local leaders, the mine, and foreign interests. General Barrios and his loyal troops are away, so Nostromo accepts a hazardous ride across unsettled country to reach him and bring him back. In Sulaco, the Goulds, Avellanos circle, church leaders, and Doctor Monygham maneuver among frightened citizens, unreliable officials, and armed factions. Hernandez, once treated simply as a bandit, is brought into the reformist defense with his followers. As the town's control begins to shift, the mine's latest shipment of silver becomes an urgent liability: if captured, it could finance the rebellion and demonstrate that the Monterists command the province.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Nostromo completes his ride and sets in motion General Barrios's return, sustaining the reformists' chance of retaking Sulaco. Meanwhile the Monterists occupy the town and Colonel Sotillo approaches by water, eager to seize the silver. To keep the shipment from him, Nostromo and Decoud carry it out into the gulf aboard a lighter. In darkness and confusion their vessel nearly collides with Sotillo's transport and begins taking water. They bring the lighter to Great Isabel, one of the offshore islands, where they conceal the silver. Decoud remains behind with a small boat and supplies while Nostromo swims toward the mainland to report what happened. Because the lighter has vanished, both sides are left uncertain whether the treasure sank, was captured, or was hidden.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Nostromo reaches shore alive, though his disappearance had encouraged others to assume he died with the silver. In occupied Sulaco, Sotillo becomes obsessed with finding the treasure. Doctor Monygham exploits that obsession, feeding him a false account that keeps his attention away from the reformists' military preparations. The trader Hirsch, who was accidentally caught up in the nighttime collision, falls into Sotillo's hands and is tortured for information; his fate exposes the cruelty beneath the colonel's greed. Nostromo's survival and knowledge of the coast allow the separatist plan to continue. The hidden silver is now known with certainty only to Nostromo and the isolated Decoud, turning a public resource and political symbol into a private secret.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "General Barrios returns with loyal forces, defeats the Monterist position in Sulaco, and secures the province. Doctor Monygham's deception helps keep Sotillo preoccupied until the military counterattack succeeds. Decoud's separatist proposal becomes reality: the Occidental Province establishes itself as an independent republic, protected by its army and sustained by the San Tome mine and international finance. The apparent loss of the silver shipment becomes part of the recent struggle's legend, while Nostromo's survival and service further enlarge his heroic reputation. Only Nostromo knows that Decoud was left on Great Isabel with the treasure, and the public settlement of the revolution leaves the fate of both man and silver unresolved.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Years pass under the Occidental Republic. Charles Gould's mine prospers and dominates the new state, but his complete absorption in it leaves Emilia emotionally alone and aware that material success has not produced the humane order they imagined. The account of Great Isabel reveals that isolation destroyed Decoud's confidence: he weighted himself with silver bars, shot himself, and fell into the gulf, while his boat drifted away. A lighthouse is established on the island, where the Viola family lives. Nostromo finds the supposedly lost silver and begins removing it secretly, using it to build private wealth. The theft changes his relationship to his celebrated identity: public praise no longer satisfies him, yet exposure would destroy the honor on which his influence rests. He is understood to be attached to Linda Viola, who trusts him, but he secretly pursues Giselle. The concealed treasure and concealed love affair draw him repeatedly to the island at night.",
+            "through": {
+              "chapter": 27
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Nostromo visits Giselle secretly at the Great Isabel lighthouse. Giorgio Viola, believing the nighttime intruder to be a different and unwelcome suitor, shoots into the darkness and fatally wounds the man he has long trusted like a son. Before dying, Nostromo confesses the burden of the hidden silver to Mrs. Gould, the person whose moral judgment he respects; she does not expose the hoard. Linda is left to confront his betrayal, Giselle loses him, and Decoud's death beside the treasure remains unknown to the public. The mine continues to prosper under Charles Gould, even as Emilia sees that it has consumed his attention and hollowed their marriage. Sulaco's independence and outward stability endure, but the settlement is sustained by armed victory, foreign capital, and the mine's concentrated power. Nostromo's fall completes the private cost: a man defined by public honor becomes trapped by secret possession and dies because of the divided life it helped create.",
+            "through": {
+              "chapter": 29
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "nostromo"
+      }
+    },
     "not-till-we-are-lost": {
       "characters": {
         "characters": [
