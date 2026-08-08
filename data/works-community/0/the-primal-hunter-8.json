@@ -2984,6 +2984,120 @@
         "work": "the-rascor-plains"
       }
     },
+    "the-raven-the-cask-of-amontillado-the-tell-tale-heart": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A grieving student sitting alone late at night and trying to distract himself with books. His thoughts keep returning to Lenore when an unexpected visitor begins tapping at his door and window.",
+            "id": "raven-narrator",
+            "name": "The Raven Narrator",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The woman mourned by the narrator. She never appears directly, but his memory of her shapes his questions about loss, consolation, and whether they can meet again after death.",
+            "id": "lenore",
+            "name": "Lenore",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A black bird that flies into the narrator's room and perches above the door. Its solemn bearing amuses him at first, and it answers his questions with the same single word.",
+            "id": "the-raven",
+            "name": "The Raven",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A calculating man from an old family who meets Fortunato during carnival. He privately claims that Fortunato has insulted him, but hides his hostility behind concern and courtesy.",
+            "id": "montresor",
+            "name": "Montresor",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A wealthy wine enthusiast dressed in a jester's costume for carnival. Proud of his expertise and already intoxicated, he follows Montresor to judge what is said to be a rare cask of Amontillado.",
+            "id": "fortunato",
+            "name": "Fortunato",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unnamed speaker who insists that unusually sharp senses prove sanity. The speaker describes an obsessive terror of one of an old man's eyes and a carefully concealed plan formed around it.",
+            "id": "tell-tale-heart-narrator",
+            "name": "The Tell-Tale Heart Narrator",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A harmless older man who lives with the narrator and has shown no hostility. One pale, clouded eye becomes the sole object of the narrator's fixation.",
+            "id": "the-old-man",
+            "name": "The Old Man",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-raven-the-cask-of-amontillado-the-tell-tale-heart"
+      },
+      "recaps": {
+        "ending": "The final selection, “The Tell-Tale Heart,” ends after the narrator has murdered the old man, cut up the body, and hidden it beneath the floorboards. Police officers arrive because a neighbor reported a scream, but the narrator confidently invites them in and places a chair over the concealed remains. A sound perceived as a beating heart seems to grow louder while the officers continue talking without reaction. Convinced that they hear it and are mocking the attempt at concealment, the narrator breaks down and confesses, telling them to lift the boards. The collection's earlier pieces close with comparable forms of mental imprisonment: the grieving speaker of “The Raven” accepts that the bird and the sorrow attached to it will not leave, while Montresor completes the wall sealing Fortunato inside the catacombs and keeps the murder undiscovered for fifty years.",
+        "in_short": "Three familiar Poe works connect grief, revenge, and guilty obsession. In “The Raven,” a student mourning Lenore admits a raven into his room and turns its repeated answer into a confirmation of permanent loss; by the close he sees both bird and grief as inescapable. In “The Cask of Amontillado,” Montresor exploits Fortunato's pride in his knowledge of wine, leads him beneath a carnival into family catacombs, chains him in a recess, and walls him in alive. In “The Tell-Tale Heart,” a narrator murders an old man because of a fixation on his eye, dismembers the body, and hides it under the floor. The police initially suspect nothing, but an imagined heartbeat overwhelms the narrator, who confesses and reveals the hiding place.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In “The Raven,” a student sits awake on a winter night grieving Lenore. Tapping leads him first to the door and then to the window, through which a raven enters and settles above the chamber door. The bird repeatedly gives the same answer. The narrator initially treats this as an amusing trick, but begins asking increasingly painful questions about relief from memory and reunion with Lenore after death. The unchanging response drives him from curiosity into despair. He orders the raven to leave, but it remains in place. By the poem's close, he imagines its shadow lying permanently across him and understands his grief as something from which he cannot free himself.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The collection has presented a mourner who interprets a raven's repeated answer as proof that his loss will never end. In “The Cask of Amontillado,” Montresor explains that he has resolved to punish Fortunato for an insult without exposing himself to retaliation. During carnival he tells the intoxicated Fortunato that he has acquired a cask of Amontillado and needs an expert opinion. Fortunato follows him into the Montresor catacombs despite a worsening cough. At the deepest point Montresor chains him inside a narrow recess and methodically bricks up the entrance. Fortunato's disbelief turns to pleas and then silence. Montresor finishes the wall, replaces the bones that had concealed the opening, and reveals that no one has disturbed them in fifty years.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After the raven fixes one narrator in grief and Montresor conceals a calculated revenge, “The Tell-Tale Heart” follows a killer undone by the need to prove control. The narrator watches a sleeping old man night after night because of an obsession with his clouded eye. On the eighth night the old man wakes; the narrator attacks, suffocates him beneath the bed, dismembers the corpse, and hides the pieces under the floorboards. Police arrive after a neighbor reports a scream. Certain that the hiding place is perfect, the narrator welcomes them and sits directly over it. A faint beating seems to grow louder as the officers converse. Although they show no sign of hearing anything, the narrator becomes convinced that they know and are mocking the attempt at calm. Unable to endure the imagined sound, the narrator confesses and orders them to tear up the boards.",
+            "through": {
+              "chapter": 3
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-raven-the-cask-of-amontillado-the-tell-tale-heart"
+      }
+    },
     "the-reader-bernhard-schlink": {
       "characters": {
         "characters": [

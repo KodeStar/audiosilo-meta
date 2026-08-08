@@ -2163,6 +2163,93 @@
         "work": "the-machine-stops"
       }
     },
+    "the-machine-stops-classic-tales-edition": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A lecturer who lives alone in an underground room and conducts nearly all human contact through the Machine. She values secondhand ideas, scheduled conversations, and the comfort of a system that supplies every physical need, and she regards direct experience of the natural world with fear and distaste.",
+            "id": "vashti",
+            "name": "Vashti",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Vashti's son, who lives on the other side of the world and insists on speaking to her in person. Dissatisfied with life mediated entirely by the Machine, he wants to see the earth's surface and recover forms of physical courage and direct human connection that his society has abandoned.",
+            "id": "kuno",
+            "name": "Kuno",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A functionary aboard the airship that carries Vashti to visit Kuno. The attendant follows the expected routines of Machine-governed travel, where even offering direct physical help can seem intrusive or improper.",
+            "id": "the-airship-attendant",
+            "name": "The Airship Attendant",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The governing body that administers the subterranean civilization in the Machine's name. It controls access to the surface, discourages physical independence, and answers challenges to the established system with impersonal authority.",
+            "id": "the-central-committee",
+            "name": "The Central Committee",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-machine-stops-classic-tales-edition"
+      },
+      "recaps": {
+        "ending": "The Machine's failures become a total collapse. Communication, ventilation, food supply, and the systems that have kept humanity alive underground cease to function, while a population trained to depend on them can neither repair the damage nor organize an escape. Vashti finally rejects the Machine she worshipped and makes her way through the darkness and panic. She finds Kuno amid the ruins, and mother and son recover a moment of direct affection before the underground structure kills them. Kuno tells her that people living on the surface remain outside the disaster. The subterranean civilization ends, but humanity itself may survive through those who retained contact with the earth and did not surrender every capacity to the system.",
+        "in_short": "Humanity lives in isolated underground cells while an all-providing Machine supplies food, air, entertainment, travel, and electronic conversation. Vashti accepts this existence, but her son Kuno longs for direct contact and secretly reaches the earth's surface. He discovers that people still live outside before the authorities recapture him and threaten him with expulsion from the Machine's protection. Over time, society begins worshipping the system and loses the knowledge needed to maintain it. Small faults multiply, but complaints are dismissed because dependence has become absolute. When the Machine finally stops, the underground world collapses. Vashti reaches Kuno, and they reconcile just before dying together. Kuno says surface dwellers remain alive, leaving open the possibility that a less dependent humanity will continue.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In a future where people inhabit private rooms deep underground, the Machine provides all necessities and allows constant communication through screens. Vashti lectures and exchanges ideas without leaving her chair, and she is disturbed when her son Kuno asks her to visit him physically rather than speak through the system. Travel is possible but regarded as unpleasant and unnecessary. Vashti reluctantly crosses the world by airship, avoiding the exposed landscape and the discomfort of direct contact with others. Kuno tells her he no longer trusts the Machine's account of reality and wants to see the stars from the earth rather than through an apparatus. His desire for unmediated experience is incomprehensible to Vashti, whose habits and beliefs are inseparable from the system around her.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kuno explains that he rebuilt his physical strength in secret, found a ventilation route, and climbed without permission toward the surface. Outside, he experienced open air and the living earth directly. He also learned that human beings still survive there, contrary to the underground society's assumptions. The Machine eventually located him and its agents dragged him back below. The Central Committee condemns his unauthorized journey and threatens him with Homelessness, expulsion to the surface that the authorities present as certain death. Vashti rejects his warning and returns to her normal life. As years pass, reverence for the Machine becomes an organized faith. Direct observation is devalued, independent thought narrows, and the system's users become even less capable of existing without it.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Defects appear throughout the Machine, first as small declines in comfort and then as failures in essential services. The population complains through official channels but has lost both the practical knowledge and the will needed to make repairs. Authorities deny that the system can truly fail, and worship of it continues as conditions worsen. Kuno sends Vashti a final warning that the Machine is stopping. Communication, ventilation, food, and light then collapse, leaving the underground population helpless. Vashti struggles through the panic and reaches Kuno. Facing death together, they recover the direct human bond their society had displaced. Kuno tells her that people on the surface remain alive and may preserve humanity. The subterranean structure falls in on them, ending the civilization that surrendered its independence to the Machine while leaving the surface survivors beyond its ruin.",
+            "through": {
+              "chapter": 3
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-machine-stops-classic-tales-edition"
+      }
+    },
     "the-magic-faraway-tree": {
       "characters": {
         "characters": [
@@ -2825,6 +2912,201 @@
           }
         ],
         "work": "the-magus-john-fowles"
+      }
+    },
+    "the-maltese-falcon-bbc-radio-crimes": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A San Francisco private detective whose calm, watchful manner conceals how much he has noticed. After his partner is murdered while following a client's target, Spade protects his independence from both the police and the criminals pursuing a valuable object.",
+            "id": "sam-spade",
+            "name": "Sam Spade",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Miss Wonderly"
+            ],
+            "description": "A poised young woman who hires Spade and Archer under the name Miss Wonderly. She claims to be rescuing her sister from Floyd Thursby, but her nervous performance and shifting details suggest that she is concealing her real identity and purpose.",
+            "id": "brigid-oshaughnessy",
+            "name": "Brigid O'Shaughnessy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Spade's business partner, who readily volunteers to follow Floyd Thursby for their new client. His death that night makes Spade answerable to the police and gives him a professional obligation he will not ignore.",
+            "id": "miles-archer",
+            "name": "Miles Archer",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Spade's capable secretary, familiar with his habits and trusted to manage callers, messages, money, and delicate errands. Her judgment of people matters to him even when he does not explain his plans.",
+            "id": "effie-perine",
+            "name": "Effie Perine",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dangerous man whom Brigid first identifies as the threat to her supposed sister. He is being followed by Miles Archer when Archer is killed, and Thursby's own violent death soon makes the case more complicated.",
+            "id": "floyd-thursby",
+            "name": "Floyd Thursby",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A San Francisco police detective who knows Spade and takes a measured approach to questioning him about the deaths of Archer and Thursby. He is less openly hostile than his partner Dundy but does not accept Spade's evasions without scrutiny.",
+            "id": "tom-polhaus",
+            "name": "Tom Polhaus",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A police lieutenant investigating the two killings. Suspicious of Spade's affair with Archer's wife and of his refusal to disclose his client's business, Dundy treats the detective as a plausible suspect.",
+            "id": "lieutenant-dundy",
+            "name": "Lieutenant Dundy",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Miles Archer's widow, who has been having an affair with Spade. Her jealousy, grief, and fear that the police will expose the relationship add personal danger to the murder investigation.",
+            "id": "iva-archer",
+            "name": "Iva Archer",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A polished, watchful man who visits Spade carrying a pistol and offers money for the recovery of a black bird-shaped figure. His courteous manner coexists with sudden threats, and he clearly knows Brigid and the object she is hiding.",
+            "id": "joel-cairo",
+            "name": "Joel Cairo",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young gunman who shadows Spade and carries out orders for a larger man interested in the black bird. He tries to appear hardened and intimidating, but Spade recognizes both his readiness to shoot and his dependence on his employer.",
+            "id": "wilmer-cook",
+            "name": "Wilmer Cook",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "The Fat Man"
+            ],
+            "description": "An expansive, patient collector who has spent years pursuing the Maltese Falcon. He enjoys explaining his subject and presenting himself as reasonable, while employing Wilmer and using bribery, drugs, and violence when they advance his search.",
+            "id": "casper-gutman",
+            "name": "Casper Gutman",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Captain of the ship that carries the sought-after parcel to San Francisco. Mortally wounded, he reaches Spade's office with the package, providing the detective with the object everyone has been trying to obtain.",
+            "id": "captain-jacobi",
+            "name": "Captain Jacobi",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Gutman's teenage daughter, used as part of a deceptive appeal for Spade's help. Her frightened story sends him toward danger while concealing her father's movements.",
+            "id": "rhea-gutman",
+            "name": "Rhea Gutman",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-maltese-falcon-bbc-radio-crimes"
+      },
+      "recaps": {
+        "ending": "Gutman's party receives the black bird, but scraping its surface reveals ordinary material beneath the coating: this Falcon is a decoy. Gutman and Cairo decide to continue their search overseas. Before that discovery, Spade has forced the group to surrender Wilmer as the person who can be blamed for Thursby's and Captain Jacobi's deaths; Wilmer escapes, later turns on Gutman, and is taken into custody. Spade then confronts Brigid. He reconstructs how she killed Miles Archer when the attempt to frighten Thursby failed, expecting suspicion to fall on Thursby. Despite her pleas and his attraction to her, Spade gives her to the police. He explains that loyalty to his murdered partner, self-preservation, and refusal to let a client manipulate him all require the same choice. The police can now connect the deaths and the Falcon conspiracy. Effie is appalled by Brigid's guilt and by Spade's cold resolution. As the case closes, Iva Archer again waits to see him, leaving Spade with the personal consequences of the affair even after the professional mystery is solved.",
+        "in_short": "San Francisco detective Sam Spade and his partner Miles Archer are hired by a woman calling herself Miss Wonderly to follow Floyd Thursby. Archer and Thursby are both killed, leaving Spade under police suspicion. The client admits she is Brigid O'Shaughnessy but continues lying about her pursuit of a black statuette. Joel Cairo, collector Casper Gutman, and Gutman's gunman Wilmer converge on Spade, who learns that the object is believed to be a jeweled medieval tribute concealed beneath enamel. A dying ship captain delivers the bird to Spade. He bargains with Gutman's group and makes them offer Wilmer as a fall guy, but the statuette proves fake. Gutman and Cairo resume their search; Wilmer later kills Gutman. Spade then establishes that Brigid herself murdered Archer to remove Thursby and redirect suspicion. Though attracted to her, he turns her over to the police because Archer was his partner and because he will not accept being used. The Falcon remains lost, while the local murders are finally accounted for.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "A woman calling herself Miss Wonderly hires San Francisco detectives Sam Spade and Miles Archer to follow Floyd Thursby, whom she blames for endangering her sister. Archer takes the assignment and is shot dead that night. Hours later Thursby is also killed. Police detectives Tom Polhaus and Lieutenant Dundy question Spade, noting that he had a motive against his partner and is withholding the client's story. Spade also has to manage Iva Archer, Miles's widow, with whom he has been having an affair. He removes Archer's name from the office but begins investigating both deaths. His client's original account already appears false, leaving him unsure whether she is a frightened victim, an accomplice, or the person who arranged the trap.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The client admits that her name is Brigid O'Shaughnessy and that the story about her sister was invented, yet she still refuses to give Spade a complete account. Joel Cairo then visits the office and offers Spade money to recover a black bird-shaped figure. Cairo pulls a pistol and searches the room, but Spade overpowers him before allowing the negotiation to continue. Spade brings Cairo and Brigid together, confirming that they know each other and are rivals in the same search. Their accusations reveal that Thursby had been Brigid's associate and that the missing object is valuable enough to provoke violence. When the police interrupt the meeting, Spade improvises an explanation that keeps his clients from immediate arrest while increasing Dundy's suspicion that he is obstructing a murder inquiry.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Spade continues protecting information while testing Brigid's stories. A young gunman named Wilmer Cook follows and threatens him on behalf of an unknown employer. Spade humiliates Wilmer but recognizes that the boy is genuinely dangerous. The police press harder, using Spade's affair with Iva and his secrecy about Archer's assignment to suggest a motive. Spade refuses to surrender either Brigid or the larger conspiracy without learning what everyone wants. Cairo's offer, Wilmer's surveillance, and Brigid's fear all point to another figure directing the hunt. Spade arranges contact with that man while keeping the competing parties uncertain about whether he possesses the bird. His leverage depends on appearing able to sell it, hide it, or expose the people seeking it.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Spade meets Casper Gutman, the wealthy collector who employs Wilmer. Gutman explains that the Maltese Falcon began as a richly jeweled tribute sent by the Knights of Malta, then vanished into private hands after being disguised with a dark coating. He has spent years tracing it and believes Brigid and Cairo diverted it from him. Gutman offers Spade a large payment but will not immediately reveal enough to complete a bargain. During a later meeting Spade is drugged, allowing Gutman's group to search and move without interference. When he recovers, he understands that the promised transaction is backed by force and that Gutman will sacrifice any associate who becomes inconvenient. Spade nevertheless continues bargaining because the murder evidence and the Falcon are now part of the same contest.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The ship carrying the Falcon reaches San Francisco amid violence. Captain Jacobi, mortally wounded, staggers into Spade's office with a wrapped parcel and dies. The package contains the black bird. Spade hides it and retains a claim check so no visitor can simply seize it from him. Gutman's daughter Rhea gives Spade a misleading plea for help, part of an effort to control his movements while Gutman, Cairo, Wilmer, and Brigid regroup. Spade now holds the object but remains exposed on every side: the police suspect him in Archer's death, Gutman's people have killed to obtain the bird, and Brigid still will not tell him how Archer was lured to the place where he died. He prepares a final exchange in which information and a person to blame will matter as much as the statuette.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Gutman, Cairo, Wilmer, and Brigid gather with Spade for the exchange. Spade insists that Gutman's group provide a fall guy for the murders linked to the Falcon, and Gutman agrees to surrender Wilmer. Effie brings the hidden parcel, but the bird proves to be a worthless copy when its coating is scraped. Gutman and Cairo decide to continue the search overseas, while Wilmer escapes and later shoots Gutman before being captured. Alone with Brigid, Spade reconstructs Archer's murder. She shot Miles when he failed to drive Thursby away, expecting Thursby to be blamed, and then sought Spade's protection. Brigid asks him to shield her, but he turns her over to Polhaus. His attraction to her does not outweigh his obligation to his partner, the danger of becoming her accomplice, or his refusal to be manipulated. The police can close the local killings, though the genuine Falcon remains missing. Effie recoils from the truth, and Iva returns as Spade faces the aftermath.",
+            "through": {
+              "chapter": 20
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-maltese-falcon-bbc-radio-crimes"
       }
     },
     "the-man-who-laughs": {

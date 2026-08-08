@@ -171,6 +171,355 @@
         "work": "eclipse"
       }
     },
+    "edgar-allan-poe-audiobook-collection-3": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A longtime friend of Roderick Usher who answers an urgent request to visit the Usher family home. Practical and observant, he is disturbed by the house and its occupants but tries to explain what he sees rationally.",
+            "id": "usher-narrator",
+            "name": "The Usher Narrator",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A sensitive, physically frail musician and the last male member of the ancient Usher family. He summons his childhood friend because he is suffering from acute fear, nervous agitation, and painfully heightened senses.",
+            "id": "roderick-usher",
+            "name": "Roderick Usher",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Roderick's twin sister and the only other surviving member of the Usher family. She is gravely ill with a mysterious condition that leaves her weak and subject to trance-like attacks.",
+            "id": "madeline-usher",
+            "name": "Madeline Usher",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unnamed condemned man who begins with an argument about the human urge to perform a forbidden or self-destructive act simply because reason warns against it.",
+            "id": "imp-of-the-perverse-narrator",
+            "name": "The Imp of the Perverse Narrator",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A wealthy man whose death benefits the narrator. The narrator studies his habits and devises a means of killing him that will resemble an ordinary natural death.",
+            "id": "the-murder-victim",
+            "name": "The Murder Victim",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "edgar-allan-poe-audiobook-collection-3"
+      },
+      "recaps": {
+        "ending": "In the closing tale, the narrator has escaped suspicion after murdering a man with a poisoned candle and inheriting his estate. Years of security end when he idly thinks that he is safe unless he confesses. Repetition turns that thought into a compulsion to speak. He tries to distract himself and then runs through the streets, pursued by onlookers, but the pressure continues until he blurts out a complete admission before witnesses. He collapses after revealing the crime and is tried and sentenced to death. The confession embodies the destructive impulse discussed at the start of the tale: knowledge of the ruin an act will cause can itself become the motive for doing it. This follows the collection's first story, in which Madeline and Roderick Usher die together and the family mansion breaks apart and sinks, ending both the bloodline and its house.",
+        "in_short": "This two-story collection pairs physical collapse with psychological self-destruction. In “The Fall of the House of Usher,” a visitor finds Roderick Usher terrified and ill in his decaying family mansion. Roderick's twin Madeline is placed in a vault after an apparent death, but she had been buried alive. She escapes, reaches her brother, and falls upon him; both die as the visitor flees and the house splits and sinks. “The Imp of the Perverse” presents a murderer who killed a man with a poisoned candle and inherited his property without attracting suspicion. Years later, the narrator becomes obsessed with the idea that only a confession could bring exposure. That very thought creates an irresistible urge to confess publicly, leading to conviction and a death sentence.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In “The Fall of the House of Usher,” an unnamed man visits the ancestral home of his childhood friend Roderick Usher. Roderick is physically and mentally unwell, terrified of future events, and painfully sensitive to sound, light, texture, and taste. His twin sister Madeline is also dying from an unexplained illness. After her apparent death, Roderick and the narrator place her coffin in a vault beneath the house. Roderick's agitation worsens. During a storm, the narrator reads aloud to calm him, but sounds described in the book are echoed from inside the mansion. Roderick admits that Madeline was buried alive. She enters the room bloodied from forcing her way out and collapses upon him; both twins die. The narrator runs outside, where he sees the house split along an old crack and sink into the tarn.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The first tale ended with Madeline and Roderick Usher dying together and their house collapsing into the water. In “The Imp of the Perverse,” another condemned narrator argues that people sometimes commit harmful acts precisely because they know those acts are forbidden. He illustrates the idea with his own crime. Seeking an inheritance, he learned that a poisonous candle in a poorly ventilated bedroom could kill without leaving an obvious sign of murder. The plan succeeds, and he enjoys the victim's estate for years. One day the comforting thought that he is safe unless he confesses changes through repetition into an urgent fear that he will confess. He tries to suppress the words and finally runs through crowded streets, attracting pursuers. The compulsion overtakes him, and he publicly reveals enough detail to secure his conviction. He is imprisoned and awaits execution, ruined by the irrational impulse he set out to explain.",
+            "through": {
+              "chapter": 2
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "edgar-allan-poe-audiobook-collection-3"
+      }
+    },
+    "edgar-allan-poe-audiobook-collection-8-ligeia-eleonora": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A widower recalling his first wife through grief and opium-clouded memory. He reveres Ligeia's learning and force of will, while admitting that he never knew her family history and cannot remember how their acquaintance began.",
+            "id": "ligeia-narrator",
+            "name": "The Ligeia Narrator",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The narrator's first wife, remembered for extraordinary intelligence, dark beauty, and a commanding presence. Her intense study and fierce resistance to mortality dominate his memories of their marriage.",
+            "id": "ligeia",
+            "name": "Ligeia",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lady Rowena Trevanion of Tremaine"
+            ],
+            "description": "The narrator's fair-haired second wife, the daughter of an English family. She enters a loveless marriage and lives with him in an oppressively decorated chamber within a remote abbey.",
+            "id": "lady-rowena",
+            "name": "Lady Rowena",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unnamed man who looks back on a secluded youth spent in an idyllic valley with his aunt and cousin. He presents himself as prone to intense imagination but clear about the events surrounding Eleonora.",
+            "id": "eleonora-narrator",
+            "name": "The Eleonora Narrator",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The narrator's cousin and childhood companion in the secluded Valley of the Many-Colored Grass. Gentle and innocent, she shares his isolated world until their close affection develops into romantic love.",
+            "id": "eleonora",
+            "name": "Eleonora",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Eleonora's mother, who lives with Eleonora and the narrator in their remote valley. She is the only other person in the small, self-contained household of their youth.",
+            "id": "eleonoras-mother",
+            "name": "Eleonora's Mother",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A woman the narrator meets after leaving the valley for a crowded royal city. Her presence awakens a new love despite the solemn promise he once made to Eleonora.",
+            "id": "ermengarde",
+            "name": "Ermengarde",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "edgar-allan-poe-audiobook-collection-8-ligeia-eleonora"
+      },
+      "recaps": {
+        "ending": "The collection closes with the narrator of “Eleonora” leaving the valley where his cousin died and entering a royal city. There he falls in love with Ermengarde and marries her, despite the vow he made never to love or marry another woman after Eleonora. He expects the punishment he had invoked upon himself, but none comes. Instead, Eleonora's voice returns one final time and releases him from the promise, telling him that the reason for his absolution will be made known after death. The marriage remains intact and the tale ends on that assurance. This gentler release follows the disturbing close of “Ligeia,” in which Rowena's corpse repeatedly revives, rises, and assumes Ligeia's appearance, apparently fulfilling the first wife's determination to resist death while leaving the exact cause and reality of the transformation uncertain.",
+        "in_short": "Two stories examine love that appears to continue after death. In “Ligeia,” a grieving widower remarries and settles with Lady Rowena in a remote abbey. Rowena dies after a strange illness, but her body repeatedly shows signs of returning life and finally rises transformed into the dark-haired Ligeia, the narrator's brilliant first wife. His opium use and hostility toward Rowena leave the event deliberately uncertain. In “Eleonora,” a man and his cousin grow up together in an isolated, beautiful valley and become lovers. As she dies, he vows never to love or marry another and accepts a curse if he breaks the promise. Years later he leaves the valley, meets Ermengarde, and marries her. Eleonora's voice then absolves him and says that the reason will be revealed after his own death.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In “Ligeia,” an unnamed narrator recalls his first wife as a woman of immense learning, striking dark beauty, and exceptional will. She becomes ill and fights desperately against death, but dies. The grieving narrator buys a remote English abbey, fills one chamber with elaborate and unsettling decoration, and marries the fair-haired Lady Rowena in a union without affection. Rowena grows fearful of movements and sounds in the chamber, then suffers a prolonged illness. While tending her, the opium-affected narrator sees a shadow and several red drops fall into her drink. She dies and is wrapped for burial. Through the night the body repeatedly seems to revive, only to relapse into death. At last it rises and walks into the room, appearing taller than Rowena. When the burial wrappings fall away, the figure has black hair and the distinctive eyes of Ligeia, suggesting that the first wife's will has overcome death through Rowena's body.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The collection first presented Ligeia's apparent return through the body of the narrator's second wife. In “Eleonora,” another narrator remembers growing up with his cousin Eleonora and her mother in the isolated Valley of the Many-Colored Grass. He and Eleonora fall in love as the valley itself seems to become more vivid. Eleonora senses that she will die young and fears that he will leave the valley and love another woman. He vows never to marry anyone else and calls down punishment on himself if he breaks the promise. After her death, he feels her presence in the valley for a time, but the signs gradually fade and loneliness drives him to a royal city. There he meets Ermengarde, falls in love, and marries her despite his vow. No punishment follows. Eleonora's voice speaks to him once more, releases him from the promise, and says that after death he will understand why he has been absolved.",
+            "through": {
+              "chapter": 2
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "edgar-allan-poe-audiobook-collection-8-ligeia-eleonora"
+      }
+    },
+    "edgar-allan-poe-volume-1-the-pit-and-the-pendulum-the-facts-in-the-case-of-m-valdemar-and-the-cask-o": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "the prisoner"
+            ],
+            "description": "The unnamed narrator of “The Pit and the Pendulum,” condemned by the Spanish Inquisition and confined in darkness. Frightened and physically weakened, he nonetheless observes his surroundings closely and tries to reason out the changing forms of danger in his prison.",
+            "id": "the-prisoner",
+            "name": "The Prisoner",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A French general whose army enters Toledo as the Inquisition loses control. He appears at the decisive moment of the prisoner's ordeal.",
+            "id": "general-lasalle",
+            "name": "General Lasalle",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "P."
+            ],
+            "description": "The unnamed narrator of “The Facts in the Case of M. Valdemar,” an investigator of mesmerism who proposes testing whether a person can be placed in a mesmeric state at the point of death. He approaches the experiment as a matter for careful observation and recruits medical witnesses.",
+            "id": "the-mesmerist",
+            "name": "The Mesmerist",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Ernest Valdemar"
+            ],
+            "description": "A writer and compiler suffering from advanced tuberculosis. Interested in mesmerism but never previously placed fully under its influence, he agrees to the narrator's proposed experiment as his physicians expect his death within hours.",
+            "id": "m-valdemar",
+            "name": "M. Valdemar",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Valdemar's attending physicians. He helps establish the patient's grave condition and witnesses the mesmeric experiment.",
+            "id": "dr-d",
+            "name": "Dr D—",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A medical colleague called to examine Valdemar during the experiment. His observations provide an additional professional witness to the patient's extraordinary state.",
+            "id": "dr-f",
+            "name": "Dr F—",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A medical student invited to record the experiment with Valdemar. He assists the narrator and physicians as an independent observer.",
+            "id": "mr-l",
+            "name": "Mr L—l",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The narrator of “The Cask of Amontillado,” a nobleman who believes Fortunato has injured and insulted him. He conceals his desire for revenge beneath courtesy and plans to punish Fortunato without exposing himself to retaliation.",
+            "id": "montresor",
+            "name": "Montresor",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A wealthy acquaintance of Montresor who prides himself on his judgment of wine. Encountered in carnival costume after drinking heavily, he is eager to prove his expertise when Montresor claims to have acquired a rare cask of Amontillado.",
+            "id": "fortunato",
+            "name": "Fortunato",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wine connoisseur whom Montresor repeatedly names as an alternative judge of the supposed Amontillado. Fortunato's rivalry with him helps Montresor draw Fortunato onward.",
+            "id": "luchesi",
+            "name": "Luchesi",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "edgar-allan-poe-volume-1-the-pit-and-the-pendulum-the-facts-in-the-case-of-m-valdemar-and-the-cask-o"
+      },
+      "recaps": {
+        "ending": "The volume closes with “The Cask of Amontillado.” During carnival, Montresor exploits Fortunato's pride in his knowledge of wine and leads him into the family catacombs to inspect a supposed purchase of Amontillado. Deep underground, Montresor chains him inside a recess and walls up the opening. Fortunato's disbelief gives way to pleas, but Montresor finishes the masonry, replaces the bones that concealed the site, and reveals that no one has disturbed it for fifty years. This follows the rescue of the Inquisition's prisoner by General Lasalle in the first story and the second story's catastrophic end, when the mesmerist releases Valdemar after seven months of suspended death and Valdemar's body immediately collapses into decay.",
+        "in_short": "This volume collects three tales of confinement at the edge of death. In “The Pit and the Pendulum,” a prisoner of the Spanish Inquisition survives darkness, a hidden pit, a descending blade, and closing heated walls until General Lasalle rescues him as French troops enter Toledo. In “The Facts in the Case of M. Valdemar,” an experiment holds the dying Valdemar in a mesmeric suspension for seven months; when the mesmerist finally releases him, his body instantly decays. In “The Cask of Amontillado,” Montresor uses Fortunato's vanity about wine to lure him beneath a carnival into family catacombs, chains him in a recess, and seals him alive behind masonry. Montresor reports that the concealed remains have gone undisturbed for fifty years.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In “The Pit and the Pendulum,” an unnamed prisoner is sentenced by the Spanish Inquisition and awakens in a completely dark cell. Exploring by touch, he narrowly avoids falling into a deep pit at its center. He later wakes bound beneath a large bladed pendulum that descends gradually toward him. By smearing food on his restraints, he attracts rats that gnaw the bindings and free him just before the blade reaches him. His unseen captors then heat the metal walls and force them inward, driving him toward the pit. At the final instant, French troops enter Toledo; General Lasalle catches the prisoner as the Inquisition's machinery fails, saving him from the fall.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The first tale ends with the Inquisition's prisoner rescued from the closing walls and central pit by General Lasalle. In “The Facts in the Case of M. Valdemar,” a mesmerist tests whether hypnosis can delay death by placing the terminally ill M. Valdemar under influence as his physicians expect him to die. Valdemar ceases ordinary breathing and movement, yet remains responsive in a disturbing suspended condition and communicates that he is dead. The witnesses leave him in that state under supervision. Seven months later, the mesmerist and physicians attempt to awaken him. Valdemar begs either to be returned to sleep or fully awakened. As the mesmeric control is released, his body collapses almost instantly into advanced decay, ending the experiment without a recoverable living patient.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After the prisoner's rescue in the first tale and Valdemar's fatal release from suspended death in the second, “The Cask of Amontillado” follows Montresor's carefully concealed revenge. During carnival he finds Fortunato intoxicated and dressed as a jester. Knowing Fortunato's pride in his wine expertise, Montresor claims to have bought Amontillado and repeatedly offers to consult Luchesi instead. Fortunato insists on judging it and follows him into the damp Montresor catacombs. Deep inside, Montresor suddenly chains Fortunato in a narrow recess. He builds a brick wall across the opening while Fortunato moves from disbelief to desperate appeals. Montresor completes the wall, restores the bones that hid the site, and states that Fortunato's remains have been undisturbed for fifty years. His revenge succeeds without any stated discovery or punishment.",
+            "through": {
+              "chapter": 3
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "edgar-allan-poe-volume-1-the-pit-and-the-pendulum-the-facts-in-the-case-of-m-valdemar-and-the-cask-o"
+      }
+    },
     "edgedancer": {
       "characters": {
         "characters": [
