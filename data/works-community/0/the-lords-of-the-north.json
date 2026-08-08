@@ -3780,6 +3780,182 @@
         "work": "the-man-who-was-thursday-annotated"
       }
     },
+    "the-man-with-the-golden-gun": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "James Bond",
+              "007"
+            ],
+            "description": "A British Secret Service agent who returns to London after being missing and presumed dead. He has been psychologically conditioned by his captors and arrives at headquarters claiming that he must speak to M. Once the Service restores his mind, he is eager to prove that he can still work in the field.",
+            "id": "james-bond",
+            "name": "Bond",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The head of the British Secret Service and Bond's superior. He recognizes that Bond's attack is the result of enemy conditioning rather than a freely chosen betrayal, and he combines medical treatment with a demanding assignment intended to test whether Bond can return to duty.",
+            "id": "m",
+            "name": "M",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A neurologist who treats senior members of the Service. He supervises Bond's recovery from Soviet brainwashing and advises M on whether the agent is fit to resume operational work.",
+            "id": "sir-james-molony",
+            "name": "Sir James Molony",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The British Service officer responsible for the Jamaica station. By the time Bond reaches the island, Ross has disappeared while investigating Francisco Scaramanga, leaving Mary Goodnight to manage the station and giving Bond another reason to regard the gunman as an urgent threat.",
+            "id": "commander-ross",
+            "name": "Commander Ross",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Bond's former secretary, now working for the Service in Jamaica. Competent, loyal, and personally attached to Bond, she helps him establish himself on the island and worries about the extreme danger of his assignment.",
+            "id": "mary-goodnight",
+            "name": "Mary Goodnight",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Pistols Scaramanga"
+            ],
+            "description": "A celebrated assassin distinguished by his gold-plated handgun, exceptional marksmanship, and theatrical confidence. He works for criminal and political clients around the Caribbean and responds to challenges with swift violence. Bond's assignment is to find and kill him.",
+            "id": "francisco-scaramanga",
+            "name": "Francisco Scaramanga",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The practical manager of a small Jamaican establishment where Bond first crosses Scaramanga's path. Her knowledge of local people and movements helps Bond identify the gunman he has been sent to find.",
+            "id": "tiffy",
+            "name": "Tiffy",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A senior Soviet intelligence representative attending Scaramanga's conference at the unfinished Thunderbird hotel. Reserved and watchful, he is more concerned with political disruption in the Caribbean than the commercial schemes occupying the other guests.",
+            "id": "hendriks",
+            "name": "Hendriks",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An American intelligence officer and Bond's old friend, operating undercover among the staff at the Thunderbird. His unexpected presence gives Bond an ally inside Scaramanga's gathering, though both men must conceal their connection.",
+            "id": "felix-leiter",
+            "name": "Felix Leiter",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An American agent working undercover with Felix Leiter at the Thunderbird. He helps monitor the criminal conference and prepare action against the hotel and its guests while Bond remains close to Scaramanga.",
+            "id": "nicholson",
+            "name": "Nicholson",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-man-with-the-golden-gun"
+      },
+      "recaps": {
+        "ending": "On the excursion train, Bond kills Hendriks and wounds Scaramanga, while Felix Leiter's preparations help destroy the criminals' base at the Thunderbird. Scaramanga escapes into the marshes and Bond follows despite his own injuries. The assassin briefly gains an advantage by pretending to be helpless, but Bond survives a concealed poisoned shot and kills him. Bond is rescued and recovers in hospital, where Mary Goodnight remains close by. The British authorities offer him a knighthood for the operation, but he declines it because he prefers to remain the working agent James Bond rather than acquire a public title. He has completed M's test, removed a dangerous assassin, and restored his place in the Service after his brainwashing and failed attack on M.",
+        "in_short": "After disappearing on a mission, James Bond returns to London under Soviet conditioning and tries to kill M. The Service cures him, and M gives him a chance to redeem himself by hunting Francisco Scaramanga, an assassin famous for his golden gun. In Jamaica, Bond finds Scaramanga and is hired as temporary security for a conference at the unfinished Thunderbird hotel. The guests are criminals and a Soviet intelligence officer planning profitable ventures and regional sabotage. Bond discovers that his old ally Felix Leiter and another American agent are already undercover at the hotel. His cover becomes increasingly fragile, and Scaramanga eventually arranges a train outing intended to dispose of him. Bond and his allies strike first: the hotel operation is broken, Hendriks is killed, and Scaramanga is wounded. Bond pursues the assassin into the marshes and kills him after a final exchange that leaves Bond poisoned and badly hurt. He recovers, declines a knighthood, and returns to active service.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, James Bond pursued Ernst Stavro Blofeld in Japan after the murder of Bond's wife and the collapse of his personal and professional life. He infiltrated Blofeld's fortified retreat, killed him, and destroyed the site, but suffered a head injury and lost his memory. Believed dead by the British Secret Service, Bond lived for a time with Kissy Suzuki in a fishing community without understanding his former identity. A fragment of news stirred an association with Vladivostok, and he left Japan for the Soviet Union in the hope of recovering his past. Kissy, who was pregnant with his child, did not tell him before he departed. Bond's journey placed him in Soviet hands, and the Service has heard nothing reliable from him since his disappearance.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "James Bond, missing and presumed dead after an overseas operation, unexpectedly appears at Secret Service headquarters in London. He has spent months in Soviet hands and has been conditioned to regard M as an enemy. During a private interview, Bond attempts to kill his chief with a concealed weapon, but the precautions around M prevent the attack. Rather than punish an agent whose will has been manipulated, M places Bond under Sir James Molony's care. Treatment gradually breaks the conditioning and restores Bond's identity. M must then decide whether Bond can still serve. He gives him a difficult chance at rehabilitation: locate and kill Francisco Scaramanga, a professional assassin active in the Caribbean and known for carrying a golden gun. Bond accepts the assignment, aware that success may be his only route back to trusted operational status.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bond travels to Jamaica with little more than Scaramanga's description and reputation. He reconnects with Mary Goodnight, his former secretary, who now works at the local station. Following a lead to a small establishment, Bond meets Tiffy and then encounters Scaramanga himself. The gunman demonstrates his cruelty and his taste for public displays of marksmanship, confirming Bond's identification. Bond has an opportunity to attack but chooses to learn more about Scaramanga's business and associates. Presenting himself as a capable man available for work, he accepts a temporary job from his target. Scaramanga takes him to the Thunderbird, an unfinished coastal hotel where a private gathering is about to begin. Bond is now close to the man he must kill, but he is also isolated inside Scaramanga's territory and must preserve a hastily constructed cover.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At the Thunderbird, Bond acts as Scaramanga's secretary and security adviser while a group of gangsters discusses investments, gambling, narcotics, and schemes to exploit Jamaica's economy. Hendriks, a Soviet intelligence representative, has political objectives alongside the criminals' pursuit of profit. Bond secretly listens to the conference and gathers evidence, but every additional detail increases the danger if his identity is discovered. He then recognizes Felix Leiter, his old American ally, among the hotel's supposed staff. Leiter and another agent, Nicholson, are working undercover against the same gathering. Without openly acknowledging one another, the allies begin coordinating. Bond remains at Scaramanga's side, waiting for a workable moment, while the Americans prepare to cripple the criminals' base.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bond's improvised role becomes harder to sustain as Hendriks receives information that a British agent has been sent to kill Scaramanga. The description points toward Bond, and Scaramanga's suspicion sharpens even as he continues to employ him. Mary Goodnight reaches the hotel and narrowly avoids exposing the operation while trying to warn Bond. The American agents prepare explosives and other measures against the Thunderbird, but Bond cannot simply withdraw without alerting the conference. Scaramanga announces an excursion on a small railway running through the property. The outing appears recreational, yet Bond understands that his employer is arranging a controlled setting in which to expose and kill him. He boards knowing that the confrontation is close and that the hotel's destruction must be timed around the people still inside it.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The train journey becomes Scaramanga's planned execution ground. Bond is forced into the open, and gunfire replaces the last pretense that he is merely hired help. Hendriks is killed during the struggle, and Bond succeeds in seriously wounding Scaramanga. The wider operation against the Thunderbird also takes effect, wrecking the conference and the base from which its participants intended to operate. Felix Leiter, injured in the action, survives. Scaramanga escapes from the train into the surrounding marshland, while Bond, himself wounded and exhausted, follows rather than allow a renowned killer to disappear. Their contest has narrowed from an intelligence operation involving several governments and criminal groups to a pursuit between two injured gunmen.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bond tracks Scaramanga through the marshes and finds him apparently beaten. Scaramanga uses the appearance of weakness to gain time and makes a final attack with a concealed weapon whose shot poisons Bond. Bond nevertheless kills him before collapsing. Help reaches Bond in time, and he is taken to hospital, where treatment saves him and Mary Goodnight watches over his recovery. The operation has eliminated Scaramanga, disrupted the criminal conference at the Thunderbird, and proved that Bond's judgment and resolve have survived his captivity and conditioning. In recognition of the result, the authorities offer Bond a knighthood. He refuses the honor, unwilling to exchange the private identity and freedom of a field agent for a public title. Having passed the severe test M set him, Bond returns to his established place in the Service.",
+            "through": {
+              "chapter": 17
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-man-with-the-golden-gun"
+      }
+    },
     "the-man-with-the-golden-gun-with-interview": {
       "characters": {
         "characters": [

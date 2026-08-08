@@ -3207,6 +3207,211 @@
         "work": "le-morte-darthur-the-death-of-arthur"
       }
     },
+    "le-pere-goriot": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Eugène"
+            ],
+            "description": "An ambitious but inexperienced law student from an impoverished provincial noble family. Living cheaply at the Maison Vauquer, he hopes to enter fashionable Parisian society through distant family connections and must decide what compromises he will make to advance.",
+            "id": "eugene-de-rastignac",
+            "name": "Eugène de Rastignac",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Father Goriot"
+            ],
+            "description": "An elderly former vermicelli manufacturer who has fallen from the Maison Vauquer's best rooms to one of its poorest. Other boarders mock his shabby appearance and unexplained visitors, while his intense concern for his two married daughters governs his remaining life.",
+            "id": "jean-joachim-goriot",
+            "name": "Jean-Joachim Goriot",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A commanding, broad-shouldered boarder at the Maison Vauquer who presents himself as a retired tradesman. Genial, cynical, and unusually well informed about other people's secrets, he takes an interest in Rastignac and offers blunt lessons about how Parisian society rewards money and ruthlessness.",
+            "id": "vautrin",
+            "name": "Vautrin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The widow who owns and runs the shabby Paris boarding house bearing her name. She measures residents by what they pay, watches their affairs with avid curiosity, and maintains a surface of domestic respectability over an establishment shaped by scarcity and gossip.",
+            "id": "madame-vauquer",
+            "name": "Madame Vauquer",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A disinherited young woman living at the Maison Vauquer under Madame Couture's protection. Her wealthy father refuses to recognize her in favor of her brother, leaving her pious, vulnerable, and dependent while she continues to hope for paternal acceptance.",
+            "id": "victorine-taillefer",
+            "name": "Victorine Taillefer",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Victorine's older guardian and companion at the boarding house. A respectable widow and distant relation, she gives the rejected young woman maternal care and supports her efforts to reconcile with her father.",
+            "id": "madame-couture",
+            "name": "Madame Couture",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A medical student and fellow boarder who becomes Rastignac's friend. Practical, observant, and less dazzled by high society, he supplies medical judgment as the crises inside the boarding house intensify.",
+            "id": "horace-bianchon",
+            "name": "Horace Bianchon",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An older unmarried resident of the Maison Vauquer, outwardly austere and pious. She closely observes the other boarders and forms a conspicuous pair with the passive Monsieur Poiret.",
+            "id": "mademoiselle-michonneau",
+            "name": "Mademoiselle Michonneau",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A faded former government clerk living at the Maison Vauquer. Indecisive and deferential, he usually follows Mademoiselle Michonneau's lead and attracts little notice on his own.",
+            "id": "monsieur-poiret",
+            "name": "Monsieur Poiret",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Madame de Restaud"
+            ],
+            "description": "Goriot's elder daughter, married into the aristocratic de Restaud family. Beautiful and intent on maintaining her place in society, she keeps her father's visits separate from the polished household and social world in which she moves.",
+            "id": "anastasie-de-restaud",
+            "name": "Anastasie de Restaud",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Madame de Nucingen"
+            ],
+            "description": "Goriot's younger daughter, married to the wealthy banker Baron de Nucingen. Excluded from some aristocratic circles she longs to enter, she sees Rastignac's name and connections as potentially useful while he sees her as a route into Parisian society.",
+            "id": "delphine-de-nucingen",
+            "name": "Delphine de Nucingen",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Rastignac's elegant, socially powerful cousin, whose salon offers him an entrance into aristocratic Paris. She understands the cruelty beneath fashionable manners and advises him that success requires calculation as well as charm.",
+            "id": "vicomtesse-de-beauseant",
+            "name": "Vicomtesse de Beauséant",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Alsatian banker and Delphine's husband. Extremely wealthy and financially controlling, he treats marriage and property as connected instruments, leaving Delphine's apparent luxury dependent on arrangements she does not command.",
+            "id": "baron-de-nucingen",
+            "name": "Baron de Nucingen",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Anastasie's fashionable lover, a gambler and social opportunist whose debts place increasing demands on her. His hold over her contributes to the financial pressures that she passes on to Goriot.",
+            "id": "maxime-de-trailles",
+            "name": "Maxime de Trailles",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A police agent who approaches Michonneau and Poiret with information about Vautrin and a proposal for identifying him. His intervention brings the hidden world of crime and surveillance directly into the boarding house.",
+            "id": "gondureau",
+            "name": "Gondureau",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "le-pere-goriot"
+      },
+      "recaps": {
+        "ending": "Goriot suffers a final collapse after Anastasie and Delphine bring their financial and marital crises to him. Rastignac and Bianchon nurse him in the Maison Vauquer, but neither daughter comes while he remains conscious despite repeated messages. Goriot dies still making excuses for them and longing to see them. Rastignac pays what he can for the funeral. The daughters send empty carriages bearing their coats of arms, but no family member attends, and the burial is reduced to the cheapest rites. From the cemetery, Rastignac looks over Paris and consciously accepts it as an adversary he intends to master. He then goes to dine with Delphine, joining the society whose indifference he has just witnessed. Vautrin has been exposed as the escaped convict Jacques Collin and arrested, though his removal does not reform the world he diagnosed. Madame de Beauséant has withdrawn after her public abandonment, Anastasie remains trapped by debts and scandal, and Delphine by her marriage and ambition. Goriot's fortune and life have been consumed by daughters who are absent at his grave, while Rastignac converts the lesson into a more deliberate pursuit of power.",
+        "in_short": "At the shabby Maison Vauquer, law student Eugène de Rastignac meets the impoverished former merchant Goriot and the mysterious Vautrin. Rastignac learns that Goriot sacrificed his fortune to his daughters Anastasie de Restaud and Delphine de Nucingen, who now exploit his devotion while keeping him outside their fashionable lives. Seeking his own rise, Rastignac becomes Delphine's lover. Vautrin offers him another path: court the disinherited Victorine Taillefer while Vautrin arranges her brother's death, making her rich. Rastignac recoils, but the killing occurs before police expose Vautrin as the escaped convict Jacques Collin. Goriot exhausts his last resources meeting his daughters' demands and suffers a fatal collapse during their latest crises. They fail to attend him or his funeral. After burying Goriot almost alone, Rastignac looks over Paris and resolves to challenge its corrupt society on its own terms, then goes to dine with Delphine.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "The Maison Vauquer is a shabby Paris boarding house whose residents include the ambitious law student Eugène de Rastignac, the retired merchant Goriot, the imposing and secretive Vautrin, the disinherited Victorine Taillefer, and several impoverished older lodgers. Goriot once occupied expensive rooms but has descended floor by floor as his money disappeared. Rastignac begins using his distant cousin, the Vicomtesse de Beauséant, to enter aristocratic society. His visits reveal that Goriot's two daughters are Anastasie de Restaud and Delphine de Nucingen, both married into wealth. Goriot has surrendered nearly everything to establish them, yet they receive him privately and permit society to regard him as an embarrassment. Madame de Beauséant explains the merciless rules of the world Rastignac wants to enter: he will need money, a fashionable woman as sponsor or lover, and a willingness to conceal his feelings. Goriot's rejected fatherhood and Rastignac's social education become linked as the student sees how family affection is converted into status and financial advantage.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rastignac asks his mother and sisters to send money they can scarcely afford, then remakes his appearance for Parisian society. He pursues Delphine de Nucingen, who is rich in public but financially constrained by her banker husband and eager for admission to circles such as Madame de Beauséant's. Rastignac wins money for Delphine at a gambling table and becomes her companion and lover. Goriot welcomes the relationship because it gives him another route to his daughter, even using his remaining resources to prepare an apartment for the couple. Meanwhile Vautrin offers Rastignac a colder plan. Victorine Taillefer loves the student but will inherit only if her favored brother is removed. Vautrin proposes to arrange the brother's death in a duel, after which Rastignac could marry Victorine and gain her fortune. Rastignac is appalled yet tempted by the speed with which the scheme would solve his poverty. The two possible routes before him—Delphine's fashionable world and Vautrin's engineered inheritance—both expose money beneath the language of love.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A police agent tells Michonneau and Poiret that Vautrin is believed to be Jacques Collin, an escaped convict known as Trompe-la-Mort. Michonneau drugs him so officers can confirm his identity. Before the arrest, Vautrin's associate provokes Victorine's brother into a duel and kills him, making Victorine her father's likely heir despite Rastignac's refusal to embrace the plot. The police seize Vautrin after his disguise is exposed; he drops his genial mask but leaves with composure, condemning the boarders' hypocrisy. Madame Vauquer's household rapidly empties. At the same time, Goriot is consumed by his daughters' demands. Anastasie has sold family diamonds to cover Maxime de Trailles's debts and faces her husband's control, while Delphine struggles over money withheld by Nucingen. Goriot offers each daughter whatever remains to him and treats every fresh demand as proof that she still needs her father. Their competing crises push him toward physical collapse as Rastignac sees that removing a criminal has done nothing to remove the respectable world's cruelty.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Anastasie and Delphine confront Goriot with new financial emergencies and quarrel in his room. Unable to satisfy them, he suffers a severe collapse. Rastignac and the medical student Bianchon care for him at the Maison Vauquer and repeatedly summon his daughters, but social obligations, marital conflict, and self-interest keep them away while he is conscious. Goriot dies longing for them, moving between anger, excuses, and unconditional devotion. Rastignac must find money for the funeral himself. Neither daughter attends; their households send only empty heraldic carriages, and Goriot is buried with minimal ceremony. Madame de Beauséant, meanwhile, leaves Paris after giving a final ball while the man she loves marries another woman, providing Rastignac with another example of society's polished indifference. Standing above Paris after the burial, Rastignac resolves to confront and master the city. He immediately goes to dine with Delphine, choosing continued participation in the world that abandoned her father.",
+            "through": {
+              "chapter": 4
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "le-pere-goriot"
+      }
+    },
     "legacies": {
       "characters": {
         "characters": [

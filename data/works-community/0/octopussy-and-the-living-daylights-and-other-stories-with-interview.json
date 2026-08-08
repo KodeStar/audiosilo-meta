@@ -460,6 +460,204 @@
         "work": "of-mice-and-men"
       }
     },
+    "old-goriot": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A young law student from a respectable but nearly penniless provincial family. Ambitious, observant, and conscious of his good looks and noble connections, he arrives in Paris determined to improve his position. Life at the Maison Vauquer and his first glimpses of fashionable society force him to choose how much of his conscience he will trade for success.",
+            "id": "eugene-de-rastignac",
+            "name": "Eugene de Rastignac",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Father Goriot"
+            ],
+            "description": "An elderly retired maker of vermicelli who lives at the Maison Vauquer. Once prosperous, he has moved steadily into cheaper rooms and surrendered every comfort while remaining passionately devoted to his two married daughters. Other lodgers mock his decline and misunderstand the women's secret visits to him.",
+            "id": "jean-joachim-goriot",
+            "name": "Jean-Joachim Goriot",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful, genial-seeming lodger at the Maison Vauquer whose penetrating eye and cynical advice unsettle Rastignac. He understands both fashionable Paris and its criminal underside unusually well, and he treats conventional morality as a disguise for appetite and money.",
+            "id": "vautrin",
+            "name": "Vautrin",
+            "reveal": {
+              "chapter": 1
+            }
+          },
+          {
+            "description": "The widow who owns and runs the shabby Paris boarding house that bears her name. She measures her residents by what they can pay, watches their affairs closely, and combines self-pity with a practical appetite for gossip and profit.",
+            "id": "madame-vauquer",
+            "name": "Madame Vauquer",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A gentle young resident of the boarding house whose wealthy father has rejected her while favoring his son. She lives with Madame Couture and hopes in vain for recognition from her family, making her vulnerable to anyone who sees her possible inheritance before seeing her.",
+            "id": "victorine-taillefer",
+            "name": "Victorine Taillefer",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A respectable widow who acts as Victorine Taillefer's guardian and companion at the Maison Vauquer. Protective and devout, she repeatedly helps Victorine seek a reconciliation with the father who disowned her.",
+            "id": "madame-couture",
+            "name": "Madame Couture",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An aging unmarried lodger at the Maison Vauquer, sharp-featured, secretive, and alert to an opportunity for money. She forms an incongruous pair with the passive Monsieur Poiret, whose opinions generally follow her own.",
+            "id": "mademoiselle-michonneau",
+            "name": "Mademoiselle Michonneau",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A retired minor clerk and resident of the Maison Vauquer. Colorless, deferential, and easily led, he attaches himself to Mademoiselle Michonneau and follows her judgments with little sign of an independent will.",
+            "id": "monsieur-poiret",
+            "name": "Monsieur Poiret",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A medical student and friend of Rastignac who also takes meals at the Maison Vauquer. Intelligent, hardworking, and more grounded than many around him, he provides practical companionship amid the boarding house's intrigues.",
+            "id": "horace-bianchon",
+            "name": "Horace Bianchon",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Countess de Restaud"
+            ],
+            "description": "Goriot's elder daughter, now married into the aristocratic Restaud family. Beautiful and socially established, she carefully separates her fashionable life from her father's humble circumstances and is entangled with the dashing Maxime de Trailles.",
+            "id": "anastasie-de-restaud",
+            "name": "Anastasie de Restaud",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Baroness de Nucingen"
+            ],
+            "description": "Goriot's younger daughter and the wife of a wealthy banker. Excluded from the highest aristocratic circles despite her money, she longs for social acceptance and becomes the focus of Rastignac's effort to enter fashionable Paris.",
+            "id": "delphine-de-nucingen",
+            "name": "Delphine de Nucingen",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Vicomtesse de Beauseant"
+            ],
+            "description": "Rastignac's elegant and highly placed cousin, one of the leaders of aristocratic Paris. His appeal to their family connection gains him entry to her drawing room, where she explains the rivalries and cruelties governing the society he hopes to conquer.",
+            "id": "claire-de-beauseant",
+            "name": "Claire de Beauseant",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Anastasie's fashionable lover, charming in appearance and ruinously dependent on other people's money. His debts place constant pressure on her and reveal the predatory economics beneath polished society.",
+            "id": "maxime-de-trailles",
+            "name": "Maxime de Trailles",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Baron de Nucingen"
+            ],
+            "description": "Delphine's wealthy banker husband. He controls the money attached to their marriage and approaches both finance and domestic life as matters of leverage, leaving Delphine rich in appearance but constrained in practice.",
+            "id": "frederic-de-nucingen",
+            "name": "Frederic de Nucingen",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "old-goriot"
+      },
+      "recaps": {
+        "ending": "Goriot suffers a final collapse after Anastasie and Delphine quarrel before him over their money troubles. Rastignac and Bianchon nurse him in his bare room while his daughters repeatedly put their social and financial crises ahead of visiting. Goriot dies still calling for them and still excusing their neglect. Rastignac and the servant Christophe must arrange and pay for the funeral; neither daughter attends, though their empty, crested carriages follow the coffin. After watching the burial, Rastignac looks out over Paris and consciously accepts it as his adversary. He then goes to dine with Delphine, ending the novel with Goriot abandoned and Rastignac committed to the social struggle that helped destroy him.",
+        "in_short": "At the shabby Maison Vauquer, provincial law student Eugene de Rastignac meets retired merchant Goriot, who has impoverished himself to satisfy his two socially ambitious daughters, Anastasie de Restaud and Delphine de Nucingen. Rastignac uses his cousin Madame de Beauseant to enter fashionable Paris and pursues Delphine, while the enigmatic Vautrin offers him a quicker fortune through a murder that would make fellow lodger Victorine Taillefer an heiress. Rastignac resists the scheme, but Vautrin arranges it before police expose him as the fugitive Jacques Collin. Goriot spends his last resources trying to rescue his daughters from debts and unhappy marriages. Their quarrel brings on his final illness, yet neither makes him her priority as he dies. Rastignac and Bianchon care for him and bury him almost alone. From the cemetery, Rastignac turns toward Paris as an opponent he means to conquer, then goes to dine with Delphine.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "The Maison Vauquer is a decaying Paris boarding house whose residents form a compressed picture of the city. Among them are Eugene de Rastignac, a young provincial law student; Victorine Taillefer, rejected by her rich father; the forceful and mysterious Vautrin; and old Goriot, a retired pasta maker who arrived wealthy but has steadily moved to cheaper rooms. The other boarders ridicule Goriot and invent scandalous explanations for visits from two richly dressed young women. Rastignac gradually realizes that they are Goriot's married daughters, Anastasie de Restaud and Delphine de Nucingen. Goriot has given them his fortune and accepts poverty so that he can continue meeting their demands. Rastignac, meanwhile, begins to compare his family's sacrifices for his education with the wealth and influence displayed by Paris society.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rastignac's first visit to Anastasie de Restaud ends badly when he mentions Goriot and exposes the family connection she wishes to conceal. He turns to his aristocratic cousin, Madame de Beauseant, who explains that Goriot surrendered nearly everything to marry his daughters well, only to be excluded once his money and humble origin became inconvenient. She advises Rastignac that success in Paris depends on calculation and suggests that Delphine, who envies her sister's access to the aristocracy, could become his route upward. Rastignac asks his own impoverished mother and sisters for money to outfit him for society. At the boarding house, Vautrin reads his ambition accurately and proposes a darker route to wealth: court Victorine, while events are arranged so that her favored brother dies and she inherits. Rastignac is appalled, but the offer makes explicit the violence hidden beneath respectable competition.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "With new clothes and Madame de Beauseant's introduction, Rastignac enters fashionable life and becomes close to Delphine. He helps her recover money at a gaming table and learns that her banker husband controls her fortune. Goriot welcomes the relationship, imagining that Rastignac can make Delphine happy, and spends more of his dwindling resources preparing rooms where the young pair can meet. Vautrin's scheme advances despite Rastignac's refusal: Victorine's brother is mortally wounded in a duel, apparently placing her near the inheritance. Mademoiselle Michonneau, working with the police, confirms that Vautrin is really Jacques Collin, the wanted criminal known as Trompe-la-Mort. He is arrested after denouncing the boarders' hypocrisy. Rastignac is left between Goriot's selfless devotion, Vautrin's brutal honesty, and the polished selfishness of the drawing rooms. Goriot's daughters, both trapped by debts and their marriages, continue to demand that he solve crises he no longer has the means to repair.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Anastasie and Delphine confront Goriot with fresh financial disasters and turn on each other in his room. Their quarrel and his inability to rescue them bring on a collapse from which he does not recover. Rastignac and Bianchon tend him while sending repeated messages to his daughters. Both women remain absorbed by debts, husbands, lovers, and social obligations; Anastasie comes only when Goriot can no longer respond, and Delphine also fails him at the decisive time. Dying, Goriot moves between anguish at their absence and desperate excuses for them, finally calling for the daughters to whom he gave everything. Rastignac and Christophe scrape together the funeral expenses. The daughters do not accompany their father to the cemetery, though their empty carriages appear in the procession. After the burial, Rastignac surveys Paris from the heights and accepts a direct contest with the society he now understands. He goes to dine with Delphine, choosing to continue his ascent within the world that abandoned Goriot.",
+            "through": {
+              "chapter": 4
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "old-goriot"
+      }
+    },
     "old-yeller": {
       "characters": {
         "characters": [
@@ -817,6 +1015,128 @@
         "work": "oliver-twist-adaptation"
       }
     },
+    "on-chesil-beach": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A young historian from a modest rural family, newly married to Florence in 1962. He loves early rock and roll, hopes to write books, and has reached his wedding night with no sexual experience. His desire for Florence is mixed with anxiety about disappointing her and embarrassment about how little either of them can say plainly.",
+            "id": "edward-mayhew",
+            "name": "Edward Mayhew",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Florence Ponting"
+            ],
+            "description": "Edward's new wife, a gifted violinist from a prosperous Oxford family. She leads a young string quartet and imagines a serious musical career. She loves Edward but feels profound dread and revulsion at the prospect of sexual contact, feelings she has been unable to explain to him before their wedding night.",
+            "id": "florence-mayhew",
+            "name": "Florence Mayhew",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Florence's father, a successful businessman whose manufacturing company has given the Ponting family comfort and status. He is forceful and self-assured, and Edward is conscious of the social and financial difference between their families.",
+            "id": "geoffrey-ponting",
+            "name": "Geoffrey Ponting",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Florence's mother, an Oxford academic with a formidable intellectual manner. Her cool confidence and the Ponting household's culture contribute to Edward's early feeling that he is being assessed as Florence's prospective husband.",
+            "id": "violet-ponting",
+            "name": "Violet Ponting",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Edward's father, a country schoolmaster who has managed the household since his wife's disabling accident. He raises Edward and the younger twin girls with patience and limited means, giving Edward an early model of practical family loyalty.",
+            "id": "lionel-mayhew",
+            "name": "Lionel Mayhew",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Edward's mother, who suffered a brain injury in an accident when he was young. She remains physically present in family life but needs care and often behaves with childlike impulsiveness, leaving Edward and his father to assume unusual responsibilities at home.",
+            "id": "marjorie-mayhew",
+            "name": "Marjorie Mayhew",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "on-chesil-beach"
+      },
+      "recaps": {
+        "ending": "After their disastrous attempt at sex, Florence runs from the hotel and Edward follows her onto Chesil Beach. She tells him that she loves him and wants their marriage to continue, but proposes that he seek sexual fulfillment elsewhere rather than require it from her. Edward hears the offer as humiliation and rejection. Angry and ashamed, he refuses it and lets her walk away without calling her back. The marriage is annulled after remaining unconsummated. Their lives separate: Florence fulfills her promise as a violinist and builds a distinguished musical career, while Edward passes through other relationships and occupations without recovering what he had imagined with her. Decades later, he understands that her proposal was an attempt to preserve their love with the only compromise she could then imagine. He recognizes that a single generous word or pursuit along the beach might have changed both lives, and that his passive pride at twenty-three became a permanent loss.",
+        "in_short": "In 1962, newlyweds Edward Mayhew and Florence Ponting eat dinner in a hotel room overlooking Chesil Beach while both silently fear their first sexual encounter. Edward, a young historian, is eager but anxious and inexperienced. Florence, a gifted violinist, loves him yet experiences deep aversion to sex. Their courtship has crossed differences of class and family life without giving them language for this incompatibility. In bed, their tension leads to an awkward encounter in which Edward climaxes prematurely and Florence recoils. She runs onto the beach, and he follows. Florence proposes that they remain married while allowing him other partners, but Edward interprets this desperate compromise as an insult and rejects her. He does not call her back. The unconsummated marriage is annulled, and they never reconcile. Florence becomes a successful musician. Looking back decades later, Edward realizes that patience and one affectionate gesture might have saved their life together, and that his pride turned a painful moment into lasting regret.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In July 1962, Edward Mayhew and Florence Ponting begin their honeymoon at a hotel overlooking Chesil Beach. They eat a formal dinner in their room, attended by waiters whose presence increases their self-consciousness. Both are virgins, and each is silently preoccupied with what is expected after the meal. Edward desires Florence and fears that excitement and inexperience will make him fail her. Florence loves Edward but experiences intense dread at the physical details of sex. Neither has found language in which to discuss these fears. The conventions of their time encourage them to treat marriage as the point at which intimacy should become automatic, so their careful conversation circles around food, weather, and the view while each privately approaches the bedroom as a test. Their affection is real, but it rests beside expectations they have never compared.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The newlyweds remember their courtship and the differences between their backgrounds. Florence comes from a prosperous Oxford family. Her father Geoffrey is a successful manufacturer, and her mother Violet is an academic. Florence's deepest commitment outside the relationship is music: she is a gifted violinist leading a young string quartet and hopes for a professional career. Edward, from a less wealthy rural household, is drawn to history and to the energy of rock and roll. He initially feels awkward under the scrutiny of Florence's confident family, but his directness and devotion win a place among them. Florence values his warmth and the freedom she senses with him. Their growing closeness leads naturally, in the eyes of both families and of Edward, toward marriage. Yet Florence's aversion to sexual touch remains largely private, while Edward mistakes reserve for a modesty that marriage will dissolve.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Edward's memories fill in the family life that shaped his mixture of independence and need. His mother Marjorie suffered a brain injury in an accident and requires continuing care. His father Lionel, a country schoolmaster, keeps the household functioning and raises Edward and the younger twins with patience. Edward learns responsibility early but also carries anger about embarrassment, class, and the limited choices around him. Education offers a route into a larger world, and meeting Florence seems to promise emotional as well as social transformation. Their courtship contains genuine tenderness, shared curiosity, and moments in which their different tastes enlarge each other's lives. It does not, however, overcome their inability to speak about sex. Florence tries to prepare herself through a manual and determination, while Edward tries to control his impatience. On the wedding night, those private strategies leave each of them alone beside the person they most need to understand.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After dinner, Edward and Florence move toward the bed with elaborate caution. Edward attempts to be gentle but is overwhelmed by nervous desire; Florence tries to endure contact that she finds increasingly intolerable. Because neither explains what is happening internally, each misreads the other's movements. The encounter ends when Edward climaxes prematurely on Florence. Her shocked recoil and immediate flight turn his embarrassment into anger, while she experiences the moment as confirmation of the physical fear she has suppressed. Florence runs out of the hotel and along Chesil Beach. Edward remains behind briefly, humiliated and resentful, then follows her across the difficult shingle. The crisis is no longer only sexual. It has exposed how thoroughly silence, expectation, and the fear of hurting one another have prevented them from knowing the marriage each believed they had begun.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Edward finds Florence on the beach, where they finally speak more directly but do so while hurt and defensive. Florence says she loves him and wants to remain his wife, yet cannot imagine a conventional sexual life. She offers a compromise in which Edward may have other lovers while preserving their marriage. Intended as a sacrifice that might keep them together, the proposal strikes Edward as degrading. He answers with anger, and Florence walks away. He waits for her to turn or return but does not call after her. Their unconsummated marriage is later annulled. Florence goes on to achieve distinction as a violinist, while Edward's life moves through other work and relationships without restoring this lost possibility. Decades later, he recognizes that Florence's offer came from love and desperation, and that patience or a single tender gesture on the beach might have allowed them to build a different marriage. His youthful pride converted one painful night into a separation neither ever repaired.",
+            "through": {
+              "chapter": 5
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "on-chesil-beach"
+      }
+    },
     "on-her-majestys-secret-service": {
       "characters": {
         "characters": [
@@ -996,6 +1316,220 @@
           }
         ],
         "work": "on-her-majestys-secret-service"
+      }
+    },
+    "on-the-road-50th-anniversary-edition": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A young writer living with his aunt in New York after the end of his marriage. Sal narrates his travels and is drawn to people whose energy seems to promise a larger life. His friendship with Dean Moriarty becomes the force that repeatedly pulls him across the United States.",
+            "id": "sal-paradise",
+            "name": "Sal Paradise",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A young man from Denver who arrives in New York with an intense appetite for travel, conversation, music, sex, and experience. Dean has spent time in reform school and knows cars and roads intimately. Sal is captivated by his speed, curiosity, and disregard for settled plans.",
+            "id": "dean-moriarty",
+            "name": "Dean Moriarty",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Dean's young wife when he first comes east. Marylou is lively and independent-minded, and her unstable bond with Dean continues even when their marriage and other relationships pull them apart.",
+            "id": "marylou",
+            "name": "Marylou",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A poet in Sal's New York circle who quickly forms an intense intellectual friendship with Dean. Carlo and Dean talk for long stretches about art, thought, and the shape of their lives, while Sal listens with fascination.",
+            "id": "carlo-marx",
+            "name": "Carlo Marx",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Sal's Denver friends and the link through whom Sal first hears about Dean. Chad is part of the wide group Sal expects to join when he finally reaches the city on his first western trip.",
+            "id": "chad-king",
+            "name": "Chad King",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An old friend of Sal's living near San Francisco. Remi offers Sal a place to stay and finds him work as a security guard, hoping they can improve their circumstances together despite Sal's uncertain discipline.",
+            "id": "remi-boncoeur",
+            "name": "Remi Boncoeur",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young Mexican American woman Sal meets while traveling through California. Recently separated from her husband and caring for a small son, Terry forms a quick relationship with Sal and brings him into her family's life among agricultural workers.",
+            "id": "terry",
+            "name": "Terry",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young woman in Denver with whom Dean is involved while his relationship with Marylou is coming apart. Camille wants a life with Dean but must contend with his divided loyalties and constant movement.",
+            "id": "camille",
+            "name": "Camille",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A friend who crosses the country with Dean and Marylou when they arrive unexpectedly at Sal's family home. Ed follows Dean's momentum readily, even when it creates trouble in his own new marriage.",
+            "id": "ed-dunkel",
+            "name": "Ed Dunkel",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ed Dunkel's wife, left behind during the men's hurried eastward drive. More direct and skeptical than many people in Sal and Dean's circle, Galatea refuses to treat their irresponsibility as harmless adventure.",
+            "id": "galatea-dunkel",
+            "name": "Galatea Dunkel",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An older writer and friend of Sal's circle who lives with his family near New Orleans. Widely traveled, intellectually curious, and familiar with many forms of risk, Bull receives the road party during its journey west.",
+            "id": "old-bull-lee",
+            "name": "Old Bull Lee",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Old Bull Lee's wife and a friend of the travelers who gather at their home near New Orleans. Jane shares Bull's unconventional household while dealing with his habits and the disruptions brought by Dean's party.",
+            "id": "jane-lee",
+            "name": "Jane Lee",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A friend who joins Sal and Dean for their drive south from Denver toward Mexico. Stan is less experienced with Dean's extreme pace but commits himself to the trip despite difficulties before they cross the border.",
+            "id": "stan-shephard",
+            "name": "Stan Shephard",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A woman in New York with whom Dean begins another relationship after arriving from the West. Her presence gives him a new household and another set of commitments at the end of Sal and Dean's eastward trip.",
+            "id": "inez",
+            "name": "Inez",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sal's partner in New York near the close of the narrative. He believes he has found the lasting love he had been seeking and plans a move to San Francisco with her.",
+            "id": "laura",
+            "name": "Laura",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "on-the-road-50th-anniversary-edition"
+      },
+      "recaps": {
+        "ending": "Sal survives his illness in Mexico City after Dean leaves to deal with his relationships and obligations in the United States. Their friendship continues, but Sal increasingly understands the cost of Dean's inability to remain with anyone. Later, Sal meets Laura in New York and plans a more settled future with her, including a possible move to San Francisco. Hearing of the plan, Dean travels east with little money, only to arrive too early and find that he cannot make himself useful. Sal's prosperous friend Remi Boncoeur refuses to include the disheveled Dean in an evening engagement. Sal leaves in a car with Laura and Remi while Dean remains on the street, and the two friends part with sadness rather than another shared departure. That night Sal looks west and thinks of Dean, holding both the exhilaration of their journeys and the loneliness left by Dean's endless movement.",
+        "in_short": "After meeting the restless Dean Moriarty in New York, young writer Sal Paradise repeatedly crosses the United States in search of friendship, freedom, music, work, and love. His first trip takes him by hitchhiking to Denver and San Francisco, then into a brief life with Terry and her family in California's fields. Later Dean carries Sal, Marylou, and Ed Dunkel from the East through New Orleans to San Francisco, leaving damaged relationships along the way. Sal and Dean reunite for another intense journey and finally drive with Stan Shephard into Mexico, where speed, nightlife, and unfamiliar landscapes seem to offer an escape from their recurring failures. When Sal becomes seriously ill, Dean leaves him to return to his domestic obligations. In the final coda Sal has found Laura and hopes for stability. Dean makes one last trip east, but Sal cannot take him along. They part, and Sal remembers the energy and sorrow of the friend who made the road irresistible.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Following the end of his marriage, young writer Sal Paradise lives with his aunt in New York and meets Dean Moriarty, a fast-talking Westerner recently out of reform school. Dean arrives with his wife Marylou and becomes close to poet Carlo Marx. Sal is fascinated by Dean's hunger for knowledge, motion, and experience, and resolves to travel west. His first attempt begins badly when he chooses a route with little traffic and has to turn back. Starting again, he hitchhikes through the Midwest and across the plains in a series of borrowed rides, including a long open-truck journey with other travelers. He reaches Denver, where several groups of friends overlap uneasily. Dean divides his time between Marylou, Camille, Carlo, and nights of driving and conversation. Sal joins the parties and a trip into the mountains, delighted to have reached the energetic western life he had imagined, though he remains more observer than participant.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sal leaves Denver for San Francisco and stays with his old friend Remi Boncoeur. Remi finds him work as a security guard, but the arrangement collapses amid money problems and Sal's dissatisfaction. Heading south, Sal meets Terry, a young Mexican American mother separated from her husband. They become lovers and travel together through Los Angeles and into the agricultural communities where her family works. Sal tries picking cotton and briefly imagines a lasting home with Terry and her small son, but he earns too little to support them and recognizes that the season is ending. He says goodbye and resumes his journey east with almost no money. After difficult rides and lonely stretches, he returns to his aunt's home in New York. His first circuit has given him the West, work, and a temporary family, but none of them provides the permanent transformation he sought. Soon after he arrives, he learns that Dean has passed through while Sal was away.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Dean reappears during the Christmas season with Marylou and Ed Dunkel, having driven rapidly east from California and left Ed's wife Galatea behind. Sal immediately joins them. Their crowded drive carries them through New York and Washington before they continue south and west. Dean's enthusiasm animates the car, but his treatment of Marylou and his indifference to plans expose the harm beneath the excitement. Near New Orleans they stop with Old Bull Lee and Jane Lee. Bull's household offers another version of life outside conventional expectations, shaped by writing, experiments, children, and dangerous habits. Galatea catches up with Ed and condemns the men's selfishness, but the party soon moves on. Sal remains committed to reaching the West with Dean, interpreting the journey as access to an intensity that ordinary life with his aunt cannot provide.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The travelers push across Texas, the Southwest, and Denver to San Francisco. Dean's driving and appetite for diversion keep the group moving, but the relationships inside the car deteriorate. In California, Dean returns to Camille while also trying to direct what Sal and Marylou should do. He leaves them without the security they expected, and Marylou eventually separates herself from Sal. Sal wanders San Francisco ill, hungry, and disappointed while Dean's promises repeatedly give way to a new impulse or obligation. The reunion that began as another shared adventure ends with Sal recognizing how easily Dean abandons companions once they no longer fit his immediate need. Sal finally returns to New York alone. Dean remains compelling to him, but the journey has made the instability surrounding his friend impossible to ignore.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sal later returns to Denver and finds Dean living amid the consequences of his divided relationships. Their excitement at seeing each other revives the old plan of movement, and they go to San Francisco, where Dean's life with Camille is collapsing under the pressure of his absences and erratic behavior. Sal and Dean spend nights pursuing jazz, conversation, and sensation, convinced again that a decisive experience is just ahead. When Camille can no longer tolerate the disruption, the two men set out east. Dean drives a car carrying other passengers at punishing speed across the country, turning a practical delivery into another unstable expedition. By the time they reach New York, their energy has exhausted and alarmed those around them. Dean begins a relationship with Inez and acquires further domestic commitments, while Sal remains caught between admiration for his friend's intensity and growing evidence that Dean's continual departures leave other people to manage the damage.",
+            "through": {
+              "chapter": 36
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sal and Dean reunite in Denver and decide to drive into Mexico, joined by Stan Shephard. South of the border, Dean's exhilaration intensifies. The men move through towns, nightlife, heat, and unfamiliar landscapes, treating Mexico as a release from the obligations awaiting them in the United States. Their money gives them freedoms unavailable to many people they meet, a difference that Sal notices without fully resolving. They continue to Mexico City, where the journey reaches its furthest point but provides no permanent escape. Sal becomes seriously ill with dysentery and depends on others for care. Dean, pressed by relationships and unfinished business at home, leaves while Sal is still sick. Sal experiences the departure as a final proof that Dean's loyalty yields whenever a new urgency takes hold. The most ambitious of their shared journeys ends not in freedom but in illness, abandonment, and Dean's return to the same tangled commitments from which he fled.",
+            "through": {
+              "chapter": 42
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After recovering and returning to New York, Sal eventually meets Laura and believes he has found a relationship that can support a more settled future. They consider moving to San Francisco. Dean hears of the plan and makes another exhausting trip east, arriving before Sal is ready and without the means to help. The visit reveals how far the friends' paths have separated. Dean still embodies the road's restless demand, but Sal now has commitments that he will not abandon for an improvised journey. Remi Boncoeur, visiting in comfort, refuses to include the poorly dressed Dean in an evening engagement. Sal leaves with Laura and Remi while Dean remains behind on the street. There is no dramatic quarrel; the separation is painful because affection survives after their shared way of life has become untenable. Later Sal looks toward the western night and thinks of Dean, remembering both the ecstatic motion he inspired and the isolation produced by his inability to stop.",
+            "through": {
+              "chapter": 43
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "on-the-road-50th-anniversary-edition"
       }
     },
     "once-upon-a-broken-heart": {
