@@ -3839,6 +3839,141 @@
         "work": "a-journey-to-the-centre-of-the-earth"
       }
     },
+    "a-judgement-in-stone": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A solitary, emotionally guarded woman hired as housekeeper at Lowfield Hall. She has spent her life concealing that she cannot read or write, using memorized routines and avoidance to keep others from discovering it. The opening identifies both her secret and her responsibility for the Coverdale family's deaths; the story then traces how those facts become connected.",
+            "id": "eunice-parchman",
+            "name": "Eunice Parchman",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The prosperous owner of Lowfield Hall, a practical and generally considerate employer who hires Eunice to bring order to his busy household. His confidence that directness and goodwill can solve domestic problems leaves him slow to understand the depth of Eunice's fear and resentment.",
+            "id": "george-coverdale",
+            "name": "George Coverdale",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "George's second wife, energetic, sociable, and accustomed to involving herself in other people's welfare. She appreciates Eunice's efficiency but cannot resist trying to draw her into the family's life, interpreting withdrawal as a problem that tact and kindness can repair.",
+            "id": "jacqueline-coverdale",
+            "name": "Jacqueline Coverdale",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "George's university-age daughter, intellectually curious and politically outspoken. She visits Lowfield Hall from London and treats Eunice with an informality that is meant to be friendly, though her questions and assumptions make the housekeeper uncomfortable.",
+            "id": "melinda-coverdale",
+            "name": "Melinda Coverdale",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jacqueline's son and George's stepson, a young man whose visits complete the blended Coverdale household. More reserved than Melinda, he nonetheless shares the family's expectation that Eunice should participate in ordinary conversation and domestic life.",
+            "id": "giles-mont",
+            "name": "Giles Mont",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A local shop worker and fervent evangelical Christian who befriends Eunice. Joan is talkative, intrusive, and eager to interpret everyday events as signs of sin or salvation. Her companionship offers Eunice an unusual escape from isolation while also drawing her toward increasingly hostile judgments of the Coverdales.",
+            "id": "joan-smith",
+            "name": "Joan Smith",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Coverdales' former domestic help, whose knowledge of Lowfield Hall and its routines provides a contrast with Eunice's rigid privacy. She remains part of the local network through which impressions of the household and its new employee circulate.",
+            "id": "eva-baalham",
+            "name": "Eva Baalham",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "a-judgement-in-stone"
+      },
+      "recaps": {
+        "ending": "After Joan loses her position and Eunice realizes that the Coverdales are close to exposing her illiteracy, the two women turn their religious and class resentment into violence. They take the household's guns and kill George, Jacqueline, Melinda, and Giles while the family listens to an opera at Lowfield Hall. The murderers try to destroy evidence and leave the scene, but the investigation gradually breaks through their attempted concealment. A recording made in the room preserves sounds associated with the killings and helps establish what happened. Joan dies before she can be brought to trial, while Eunice is arrested. Her secret, protected through years of evasion and finally through murder, becomes public after all. The novel closes not on an unknown culprit but on the completion of the chain announced at the beginning: shame, isolation, Joan's fanaticism, and the Coverdales' well-meant interference have converged in the destruction of the household.",
+        "in_short": "Eunice Parchman becomes housekeeper to the affluent Coverdale family at Lowfield Hall while hiding that she cannot read or write. George, Jacqueline, Melinda, and Giles value her efficient work but repeatedly mistake her guardedness for a social problem they can cure. Their letters, messages, and friendly questions threaten the system of evasions by which she has protected her secret. Eunice forms her only close friendship with Joan Smith, a local religious zealot whose bitterness and appetite for condemnation reinforce Eunice's resentment. When the Coverdales come close to understanding the truth and Joan's own life collapses, the women convince themselves that the family represents a corrupt world set against them. Armed with the household's guns, they murder all four Coverdales as an opera plays. Evidence left at the scene and on a recording exposes them; Joan dies and Eunice is arrested, with the illiteracy she killed to conceal finally known.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "The narrative states at once that Eunice Parchman killed the Coverdale family because she could not read or write, then turns back to explain how the murders became possible. George Coverdale, the prosperous owner of Lowfield Hall, hires Eunice as a resident housekeeper. She appears quiet, capable, and unusually detached. In reality, she has organized her whole adult life around concealing her illiteracy. She recognizes common packaging and household objects from memory, avoids situations that require reading, and treats written messages as threats. George and his wife Jacqueline are pleased with the order she brings to the house. Their assumption that she is merely shy prevents them from seeing how much fear lies beneath her controlled behavior. The household also includes George's daughter Melinda and Jacqueline's son Giles, whose visits and ordinary social expectations add to Eunice's sense that she is being watched.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Eunice settles into Lowfield Hall and performs domestic tasks well so long as she can follow familiar routines. The Coverdales regard her privacy as eccentric rather than alarming and continue leaving notes, discussing books, and expecting her to manage written information. Each harmless request forces another evasion. Their attempts at friendliness feel to Eunice like violations, and she privately converts embarrassment into contempt for the family. The Coverdales' blended household is affectionate but imperfect: George and Jacqueline have different habits, while Melinda and Giles bring their own opinions and relationships home. These ordinary tensions are magnified through Eunice's suspicious perspective. She values the privacy of her room and her television because neither demands conversation or explanation. Meanwhile, people in the surrounding village take an interest in the new housekeeper, creating further chances that her past or her secret may be examined.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Eunice becomes acquainted with Joan Smith, a local woman whose noisy evangelical faith and taste for scandal contrast with Eunice's reserve. Joan speaks in sweeping judgments about salvation and corruption, and Eunice finds her company easier than the Coverdales' considerate curiosity. The friendship gives Eunice somewhere to go and someone who does not test her with books or letters. Joan, however, has secrets and resentments of her own. Her religious language offers both women a way to recast personal grievances as moral certainty. At Lowfield Hall, Jacqueline's efforts to include Eunice continue. What the family understands as kindness, Eunice experiences as pressure. Melinda's direct questions are especially dangerous because she is less willing than her parents to accept evasive answers. Eunice grows more defensive as the gap narrows between the competent servant she presents and the vulnerability she is determined never to admit.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Joan becomes a regular influence on Eunice, encouraging a hostile view of the Coverdales' comfort, opinions, and private lives. Their friendship is not based on tenderness so much as on shared exclusion: Joan supplies doctrine and accusation, while Eunice supplies a listener and access to a household Joan can condemn. Joan's own conduct increasingly conflicts with the righteousness she claims. The Coverdales notice the friendship and dislike its effect, but their concern again takes the form of intervention. Written communications and casual requests continue to expose cracks in Eunice's performance. She responds by destroying or hiding what she cannot manage and by withdrawing further. Members of the family begin to realize that her behavior cannot be explained simply by shyness. Eunice sees this growing suspicion not as an opportunity for help but as an approaching humiliation that may strip away the identity she has constructed.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The fragile arrangements supporting both women begin to fail. Joan faces consequences for her misconduct, and the local respectability she has tried to claim collapses. At Lowfield Hall, the Coverdales come close to naming Eunice's problem and consider ways of helping her. Because Eunice experiences discovery as degradation, even a compassionate response appears intolerable. She has already turned years of shame into anger at people who possess the education and ease she lacks. Joan reinforces that anger with apocalyptic religious certainty, presenting the household as sinful and deserving of punishment. The pair spend more time together and become increasingly detached from ordinary restraints. The Coverdales remain absorbed in family concerns and do not grasp that Eunice's coldness has become active hatred. Guns kept at the house provide the means for the grievance the women are constructing to become lethal.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Eunice and Joan reach the point at which exposure and resentment matter more to them than the Coverdales' lives. While George, Jacqueline, Melinda, and Giles are together at Lowfield Hall listening to an opera, the women arm themselves with the household's guns and shoot all four members of the family. Their violence fulfills the outcome announced in the opening, but it does not preserve Eunice's secret. They attempt to remove or damage evidence and leave behind a scene that initially requires careful reconstruction. The police investigation connects the killers to the house and uncovers traces their precautions missed. A recording made during the evening preserves crucial sounds linked to the crime. Joan dies before facing trial, but Eunice is arrested and her illiteracy becomes known publicly. The concealment that governed her life has therefore produced the very exposure she feared, at the cost of the entire Coverdale household.",
+            "through": {
+              "chapter": 25
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "a-judgement-in-stone"
+      }
+    },
     "a-legacy-of-spies": {
       "characters": {
         "characters": [
@@ -5339,6 +5474,115 @@
           }
         ],
         "work": "a-man-called-ove"
+      }
+    },
+    "a-martian-odyssey": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A member of the first human expedition to Mars and the speaker of the central account. After his small survey rocket fails far from the expedition ship, he must cross hundreds of miles of unfamiliar country on foot, relying on observation, improvised judgment, and an unexpected companion.",
+            "id": "jarvis",
+            "name": "Jarvis",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An intelligent, birdlike Martian whom Jarvis sees rescue another creature from danger. Tweel joins the stranded human's long journey. The two can establish only a small shared vocabulary, but Tweel's gestures, choices, and quick reasoning allow trust to grow across the communication barrier.",
+            "id": "tweel",
+            "name": "Tweel",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of the Ares expedition and one of the men listening after Jarvis returns. He keeps the account moving with practical questions about the route, the Martian beings, and what Jarvis has brought back.",
+            "id": "harrison",
+            "name": "Harrison",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The expedition's biologist. He listens to Jarvis's report with particular interest in the radically different forms of Martian life and tries to interpret their bodies and behavior in terrestrial scientific terms.",
+            "id": "leroy",
+            "name": "Leroy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The expedition's engineer and another member of the group hearing Jarvis's story aboard the Ares. His questions and reactions help test the traveler's explanations of what happened in the Martian desert.",
+            "id": "putz",
+            "name": "Putz",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Members of a silicon-based Martian species encountered by Jarvis and Tweel. Each creature spends its life carrying out a fixed cycle around a growing structure, producing the material that extends it before eventually becoming part of the formation.",
+            "id": "pyramid-builders",
+            "name": "The Pyramid Builders",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A predatory Martian organism hidden in the ruins of an ancient city. It draws victims close by creating convincing mental images shaped from their desires, while its real body waits behind the illusion.",
+            "id": "dream-beast",
+            "name": "The Dream-Beast",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A collective of barrel-shaped beings found moving through the ancient city. They follow a repeated procession involving small objects and a vast mechanism, and they respond as a group when Jarvis interferes.",
+            "id": "barrel-creatures",
+            "name": "The Barrel Creatures",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "a-martian-odyssey"
+      },
+      "recaps": {
+        "ending": "In the ancient city, Jarvis takes one of the unusual objects being handled by the barrel-shaped creatures, provoking a mass attack. Tweel could escape alone but returns to help him, confirming that their alliance is more than temporary convenience. The two hold off the creatures and flee together. Near the human expedition, approaching rescue separates them: Jarvis is recovered by his companions while Tweel disappears back into the Martian landscape rather than joining the humans. Jarvis completes his account aboard the Ares and produces the object he carried away, giving the expedition tangible evidence that the city's mechanisms and inhabitants warrant further study. Yet his strongest conclusion is personal rather than material. Despite radical differences in body, language, and thought, Tweel repeatedly reasoned, cooperated, risked himself for another being, and behaved as a friend. The crew can return for the scientific discovery, but Jarvis does not know whether he will ever find Tweel again.",
+        "in_short": "On the first human expedition to Mars, Jarvis crashes a survey rocket far from the ship Ares and begins a long walk back. He befriends Tweel, an intelligent birdlike Martian with whom he can share only a few words. Traveling together, they encounter forms of life that defeat familiar Earth categories: silicon creatures that build pyramids through their life cycle, a predator that traps victims with wish-shaped illusions, and barrel-like beings operating a vast mechanism in an ancient city. Tweel repeatedly recognizes danger and saves Jarvis. When Jarvis takes an object from the city's procession, the barrel creatures attack; Tweel chooses to stand with him rather than escape alone. Jarvis eventually rejoins the human crew with the object, while Tweel vanishes into the Martian distance. The sample promises an important discovery, but Jarvis regards his lost cross-species friendship as the greater find.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Aboard the first human ship on Mars, Jarvis tells Harrison, Leroy, and Putz how he survived after his survey rocket failed far from the Ares. Walking across the desert, he met Tweel, a fast-moving, birdlike Martian whose intelligence was clear even though their attempts at a shared language produced only a handful of meanings. Tweel accompanied him toward the expedition. Along the way they observed silicon-based creatures whose repetitive life cycle builds pyramid structures. They also entered the ruins of a much older city, where a hidden predator projected seductive illusions drawn from a victim's mind. Tweel recognized the trap and rescued Jarvis. Deeper in the ruins, crowds of barrel-shaped beings carried objects through a mysterious mechanical ritual. Jarvis took one of the objects for study and triggered an attack. Tweel returned to defend him when flight alone would have been easier, and the pair escaped together. As they neared the Ares, a human rescue craft approached and Tweel departed into the Martian landscape. Jarvis came back safely and retained the object from the city, offering his crewmates a concrete scientific prize from the journey. More important to him, Tweel's reasoning, loyalty, and willingness to risk himself showed that a being unlike any terrestrial animal could still be recognized as a person and a friend.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "a-martian-odyssey"
       }
     },
     "a-memory-called-empire": {
