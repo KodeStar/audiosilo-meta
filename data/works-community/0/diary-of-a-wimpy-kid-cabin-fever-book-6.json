@@ -2876,6 +2876,240 @@
         "work": "divergent"
       }
     },
+    "doctor-faustus": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A German classical scholar and schoolteacher who undertakes to write the life of his late friend Adrian Leverkühn. Humane, conservative, and uneasy with modern extremism, Zeitblom narrates from 1943 onward while Germany is collapsing in war. His loyalty gives him unusual access to Adrian's life, though his modesty and conventional outlook limit what he can fully explain about the composer's mind and art.",
+            "id": "serenus-zeitblom",
+            "name": "Serenus Zeitblom",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A brilliant German composer whose life Zeitblom records after his death. Adrian is intellectually daring, emotionally guarded, and inclined to treat warmth with irony. His search for a new musical language leads him through theology, mathematics, and philosophy as well as composition, while Zeitblom sees his personal fate as bound to the darker course of modern Germany.",
+            "id": "adrian-leverkuehn",
+            "name": "Adrian Leverkühn",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Adrian's father, a farmer at Buchel with a serious amateur interest in natural curiosities and experiments. He shows the boys patterns in crystals, plants, and physical phenomena, encouraging Adrian's early fascination with structures that seem both lawful and uncanny.",
+            "id": "jonathan-leverkuehn",
+            "name": "Jonathan Leverkühn",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Adrian's mother, a warm and capable farm woman with an untrained but beautiful singing voice. Her natural musicality contrasts with the intellectual distance through which Adrian later approaches music.",
+            "id": "elsbeth-leverkuehn",
+            "name": "Elsbeth Leverkühn",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An eccentric American-German organist and music lecturer in Kaisersaschern who becomes Adrian's teacher. His stammering public talks range across Beethoven, fugue, form, and the crisis of modern composition, giving Adrian both technical instruction and a model of music treated as an intellectual problem.",
+            "id": "wendell-kretzschmar",
+            "name": "Wendell Kretzschmar",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A theology professor at Halle whose forceful, old-fashioned Lutheran manner turns doctrine into vivid personal drama. His lectures are among the influences Adrian encounters while testing whether theology can contain his severe intellectual and spiritual interests.",
+            "id": "ehrenfried-kumpf",
+            "name": "Ehrenfried Kumpf",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A theology lecturer whose account of evil, temptation, and the demonic fascinates Adrian. Schleppfuss presents sin not as an abstract error but as an active spiritual power, anticipating ideas that will later acquire a disturbing personal form for the composer.",
+            "id": "eberhard-schleppfuss",
+            "name": "Eberhard Schleppfuss",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Esmeralda"
+            ],
+            "description": "A sex worker whom Adrian encounters after being deliberately guided to a Leipzig brothel. She warns him that she is ill. Adrian gives her the name Esmeralda after a butterfly associated in his mind with beauty, mimicry, and poison.",
+            "id": "hetara-esmeralda",
+            "name": "Hetæra Esmeralda",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A poet and translator who becomes Adrian's traveling companion and intellectual associate. Clever, cosmopolitan, and emotionally evasive, Schildknapp shares Adrian's taste for irony and accompanies him during the Italian period in which the composer works in seclusion.",
+            "id": "ruediger-schildknapp",
+            "name": "Rüdiger Schildknapp",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sammael",
+              "The Devil"
+            ],
+            "description": "A figure who appears to Adrian in an Italian room and claims to represent the demonic power already at work in his life. Changing voice and manner as the conversation proceeds, the visitor offers artistic greatness at the price of human warmth and frames Adrian's illness as a binding agreement rather than an accident.",
+            "id": "the-devil",
+            "name": "The Devil",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A skilled and charming violinist in Adrian's Munich circle. Rudi admires the composer, performs his work, and repeatedly seeks closer friendship despite Adrian's reserve. His social ease and appetite for affection make him a contrast to Adrian's deliberate isolation.",
+            "id": "rudi-schwerdtfeger",
+            "name": "Rudi Schwerdtfeger",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The generous farmer's wife at Pfeiffering, where Adrian rents rooms and composes. She gives him practical care without intruding on his privacy, and her household provides a stable rural setting for work that grows increasingly radical.",
+            "id": "else-schweigestill",
+            "name": "Else Schweigestill",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ines Rodde"
+            ],
+            "description": "A member of Adrian's Munich social circle, married to the academic Helmut Institoris. Emotionally dissatisfied and possessive of Rudi Schwerdtfeger, she maintains a troubled attachment to the violinist beneath the conventions of her household.",
+            "id": "ines-institoris",
+            "name": "Ines Institoris",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A French-Swiss woman visiting Munich whose intelligence and composure attract both Adrian and Rudi Schwerdtfeger. She becomes the center of a delicate courtship in which Adrian relies on his friend to speak for him.",
+            "id": "marie-godeau",
+            "name": "Marie Godeau",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Echo"
+            ],
+            "description": "Adrian's young nephew, the son of his sister Ursula. Beautiful, affectionate, and unusually winning, Nepomuk stays at Pfeiffering and breaks through Adrian's habitual reserve. His family nickname is Echo.",
+            "id": "nepomuk-schneidewein",
+            "name": "Nepomuk Schneidewein",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "doctor-faustus"
+      },
+      "recaps": {
+        "ending": "Adrian completes The Lamentation of Doctor Faustus, a work that turns the affirmative ending of Beethoven's Ninth Symphony toward grief and negation. He summons friends and acquaintances to Pfeiffering and, before they hear the piece, declares that his career arose from a compact with the Devil sealed through deliberate infection. Most listeners take the speech for madness and leave in distress. Adrian collapses at the piano and never recovers his independent mind. His mother takes him home and cares for him for ten years in a state of helpless mental darkness; he dies in 1940. Zeitblom writes the biography as Germany approaches military ruin in 1945. He closes by linking his friend's catastrophe with that of the nation, yet he leaves a narrow hope that the lament itself may contain an indirect possibility of grace beyond despair.",
+        "in_short": "During the Second World War, humanist scholar Serenus Zeitblom writes the life of his friend Adrian Leverkühn, a brilliant composer born in imperial Germany. After studying theology, Adrian turns to music and deliberately seeks a woman who has warned him of her syphilis, contracting the illness that shadows his career. In an ambiguous encounter he speaks with the Devil, who claims the infection seals a twenty-four-year bargain: revolutionary artistic power in exchange for love. Adrian develops a rigorously ordered new musical language and produces major works while remaining emotionally isolated. Attempts at closeness end disastrously: violinist Rudi Schwerdtfeger is murdered after acting as Adrian's romantic intermediary, and Adrian's beloved nephew Nepomuk dies of meningitis. Adrian answers with The Lamentation of Doctor Faustus. In 1930 he confesses the pact to his friends, collapses into insanity, and spends his remaining decade in his mother's care. Zeitblom completes the story as Nazi Germany falls, treating Adrian's fate as a parallel to the nation's self-destruction.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In 1943, as Germany fights a losing war, classical scholar Serenus Zeitblom begins a biography of his dead friend, the composer Adrian Leverkühn. Zeitblom writes from affection and alarm, aware that his humanist values have little place under the current regime. He recalls their childhood near the old town of Kaisersaschern. Adrian grows up on his family's Buchel farm, where his father Jonathan demonstrates strange patterns in crystals, plants, and physical experiments, while his mother Elsbeth possesses an instinctive gift for song. Adrian is brilliant, cool, and amused by phenomena that unsettle others. At school he studies alongside Zeitblom and encounters the eccentric musician Wendell Kretzschmar. Kretzschmar's lectures on Beethoven, counterpoint, and the exhaustion of inherited musical forms give Adrian a language for problems that already attract him. Though music increasingly occupies him, he resists treating it as a simple personal calling.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Adrian chooses to study theology at Halle, a decision that puzzles Zeitblom but suits his interest in severe systems of thought. Professors Ehrenfried Kumpf and Eberhard Schleppfuss present opposing but equally vivid versions of doctrine; Schleppfuss's teaching makes evil and temptation seem active forces rather than remote ideas. Adrian remains ironic and detached, testing theology without giving himself to faith. His musical study continues, and Kretzschmar ultimately helps direct him toward composition. Zeitblom follows a more conventional scholarly course and watches his friend's path with admiration mixed with fear. Adrian's intellectual life increasingly joins archaic religious concepts to the modern problem of creating art after the apparent exhaustion of traditional harmony.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Adrian moves from theology toward full-time musical study. In Leipzig, a guide plays a cruel joke by directing him to a brothel. There Adrian meets a woman who warns him away because she is infected. He gives her the private name Esmeralda, recalling a poisonous butterfly from his father's collection. Instead of avoiding her, he later searches for her and deliberately accepts the risk of infection. Signs of syphilis follow. Attempts to obtain treatment fail under strange circumstances, leaving Adrian to interpret illness as part of his artistic destiny. He studies composition under Kretzschmar, travels, and forms an ironic companionship with the poet Rüdiger Schildknapp. His early works show increasing technical command and a refusal of easy emotional expression. Zeitblom knows pieces of this history only gradually and cannot determine where medical fact ends and Adrian's mythic understanding of himself begins.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "While staying in Palestrina with Schildknapp, Adrian undergoes the central encounter of his private history. A visitor appears in his room, changes manner and identity during their conversation, and speaks as the Devil. The figure claims that Adrian's deliberate infection has already sealed a bargain: he will receive twenty-four years of extraordinary creative power, intensified by disease, but must renounce human love and warmth. The Devil interprets modern culture as spiritually exhausted and promises that barbarism, strict calculation, and inspiration can be fused in a new music. Adrian debates the terms but is told that consent is no longer the issue. Whether the scene is supernatural, feverish, or a literary record of inner conflict remains unresolved. For Adrian it becomes the governing explanation of his art and his emotional isolation.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Adrian settles into rooms on the Schweigestill farm at Pfeiffering, near Munich. The household gives him privacy and practical care while he develops a more radical compositional method. Around him gathers a varied cultural circle that includes artists, intellectuals, socialites, and the charming violinist Rudi Schwerdtfeger. Germany passes through the First World War and its unstable aftermath; Zeitblom repeatedly connects national enthusiasm, defeat, and authoritarian longing with the spiritual tendencies he sees in Adrian's career. Adrian composes works that combine archaic forms with rigorous new ordering and dissonance. His circle admires his achievement, but he remains personally remote. Rudi pushes against that reserve and earns moments of unusual favor, becoming an important performer of Adrian's music without overcoming the prohibition on affection that Adrian believes governs him.",
+            "through": {
+              "chapter": 32
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Adrian's reputation grows with increasingly ambitious works, especially the vast Apocalypsis cum Figuris. The composition uses modern musical resources, massed voices, and grotesque effects to represent revelation and catastrophe, winning both admiration and alarm. Zeitblom hears in it the same mixture of high culture and regression that is reshaping German public life. Adrian receives support from devoted performers and distant admirers, yet success does not bring ordinary intimacy. In the Munich circle, private rivalries and damaged relationships unfold around him while political discussion becomes more receptive to anti-democratic and irrational ideas. His health brings headaches and periods of withdrawal, reminders that the source of his productivity may also be destroying him. By the late 1920s the promised span of creation is nearing its end, and Adrian's remaining attachments become increasingly dangerous under the logic of the bargain he accepts.",
+            "through": {
+              "chapter": 37
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Adrian becomes interested in Marie Godeau, a poised French-Swiss visitor, but cannot approach her directly. He sends Rudi Schwerdtfeger to present his proposal. The errand turns into a romantic bond between Rudi and Marie, leaving Adrian's true intentions and Rudi's loyalty clouded. Rudi prepares for a new life, but Ines, a married woman with whom he has maintained an affair, shoots him on a tram. Adrian receives the death as another consequence of his forbidden attempt at human closeness. Soon afterward his young nephew Nepomuk, called Echo, stays at Pfeiffering. The child's warmth and beauty draw open tenderness from Adrian more completely than anyone else has done. That love immediately appears endangered by the terms Adrian believes he accepted, even as Echo fills the farm with affection and play.",
+            "through": {
+              "chapter": 42
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Echo contracts meningitis and dies in great suffering despite medical care and Adrian's desperate wish to save him. Adrian regards the child's death as the Devil's punishment for loving what he was forbidden to love. He turns grief into his final major composition, The Lamentation of Doctor Faustus, which answers a culture of triumph with sustained mourning. In 1930 he invites friends and acquaintances to Pfeiffering. Before presenting the work, he confesses that he deliberately entered a pact with the Devil and that his compositions were purchased at the cost of love and the lives of others. The gathering breaks up in confusion when Adrian collapses at the piano. His mind does not recover. Elsbeth takes her son back to the family home and cares for him through ten years of helplessness until his death in 1940. Zeitblom finishes the biography amid Germany's destruction in 1945, linking Adrian's ruin to the nation's bargain with catastrophe while finding only a fragile possibility of hope within the final lament.",
+            "through": {
+              "chapter": 47
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "doctor-faustus"
+      }
+    },
     "doctor-no": {
       "characters": {
         "characters": [

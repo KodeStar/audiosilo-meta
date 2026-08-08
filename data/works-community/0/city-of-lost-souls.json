@@ -3487,6 +3487,168 @@
         "work": "columbus-day"
       }
     },
+    "comet-in-moominland": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A young Moomin living with his family in Moominvalley. Curious, loyal, and eager for adventure, he sets out with Sniff to learn whether a strange light in the sky threatens their home.",
+            "id": "moomintroll",
+            "name": "Moomintroll",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Moomintroll's small friend and companion. He is easily frightened, strongly interested in treasure and possessions, and often complains about danger, but his curiosity keeps carrying him into the adventure.",
+            "id": "sniff",
+            "name": "Sniff",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Moomintroll's calm, practical mother, whose handbag and well-stocked household seem able to provide what the family and its guests need. She takes warnings seriously without allowing fear to displace hospitality or sensible preparation.",
+            "id": "moominmamma",
+            "name": "Moominmamma",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Moomintroll's father, proud of the round blue house he built for the family. He shares the adults' responsibility for Moominvalley while allowing Moomintroll and Sniff to undertake the journey to the observatory.",
+            "id": "moominpappa",
+            "name": "Moominpappa",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A gloomy philosopher who comes to stay at the Moominhouse after Moominpappa accidentally disturbs his former home. He believes that possessions and ordinary activity are pointless and solemnly warns that a comet may be approaching Earth.",
+            "id": "the-muskrat",
+            "name": "The Muskrat",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An independent wanderer who lives simply, plays the harmonica, and becomes a steady traveling companion to Moomintroll and Sniff. He knows the country beyond Moominvalley and faces its dangers with experience and composure.",
+            "id": "snufkin",
+            "name": "Snufkin",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A careful astronomer at the observatory in the Lonely Mountains. He studies the approaching comet with professional absorption and provides the travelers with a precise prediction of when it will reach Earth.",
+            "id": "the-professor",
+            "name": "The Professor",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Snork whom Moomintroll meets on the return journey. She has a soft fringe, wears a gold anklet, and is threatened by a poisonous bush when the travelers first find her. Moomintroll is immediately eager to impress and protect her.",
+            "id": "the-snork-maiden",
+            "name": "The Snork Maiden",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Snork Maiden's brother, whose color changes with his mood. Organized and fond of rules, plans, and meetings, he joins the group returning toward Moominvalley as the comet draws nearer.",
+            "id": "the-snork",
+            "name": "The Snork",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An enthusiastic collector encountered during the journey home. He is so absorbed in classifying specimens that the approaching catastrophe has difficulty competing for his attention.",
+            "id": "the-hemulen",
+            "name": "The Hemulen",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "comet-in-moominland"
+      },
+      "recaps": {
+        "ending": "Moomintroll and his companions reach Moominvalley shortly before the predicted collision. Moominmamma has prepared the cave that Moomintroll and Sniff discovered, and the family, their friends, and the household's essential comforts shelter inside while the valley grows hot and the comet fills the sky. The comet passes Earth without striking it. When everyone emerges, Moominvalley and the Moominhouse are still standing, and the sea, which withdrew as the comet approached, returns. The threatened end of the world becomes a shared survival rather than a final catastrophe. Snufkin, the Snork and Snork Maiden, Sniff, the Muskrat, and the Hemulen remain connected with the Moomin family after the journey. Moomintroll has returned with both new friends and a wider knowledge of the world beyond the valley, while Moominmamma's preparations preserve the safety and welcome of home.",
+        "in_short": "After Moomintroll and Sniff find a cave, the gloomy Muskrat warns that a comet may destroy the world. The two friends leave Moominvalley for the observatory in the Lonely Mountains, hoping astronomers can tell them what is coming. They meet the wanderer Snufkin and survive a dangerous route to the mountain. The astronomers confirm that the comet is heading toward Earth and give the exact time of its arrival. Racing home, the travelers rescue and befriend the Snork Maiden and her brother, encounter a Hemulen absorbed in collecting, and cross a landscape transformed by heat and the retreating sea. They reach Moominvalley just before the comet's closest approach. Moominmamma has stocked the cave, where the family and their new companions take shelter. The comet passes without hitting Earth, the valley survives, and the sea returns. The expedition ends with Moomintroll safely home and the circle around the Moomin family enlarged by the friends made on the road.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, Moomintroll and Moominmamma traveled through a flooded and dangerous world searching for the missing Moominpappa. A small creature who would become known as Sniff joined them. The family was reunited and found the tall blue Moominhouse in a peaceful valley, establishing the home in Moominvalley from which the new adventure begins.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Moomintroll and Sniff explore near the Moominhouse and discover a cave by the sea, treating it as their secret place. Strange signs begin to disturb the valley, including an unusual glow and changes in the weather. Moominpappa accidentally disrupts the home of a philosophical Muskrat, so Moominmamma invites the Muskrat to stay. He speaks gloomily about the uselessness of possessions and warns that a comet may be approaching Earth. The family decides that the observatory in the Lonely Mountains may know whether the danger is real. Moomintroll and Sniff prepare to make the journey, leaving the security of home to seek an answer from the astronomers.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Moomintroll and Sniff travel toward the Lonely Mountains by water and through increasingly unfamiliar country. They meet Snufkin, a self-sufficient wanderer whose experience and calm make him a valuable companion. He joins their expedition and tells them more about the world beyond Moominvalley. The route carries the three friends through underground passages and other hazards that make the comet feel less like an abstract prediction and more like part of a changing landscape. Sniff remains fearful and fascinated by anything valuable, while Moomintroll presses forward because the family needs a definite warning. By the time the mountains rise before them, the travelers have become a group and are committed to reaching the observatory despite the difficult ascent.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The travelers climb to the observatory, where the astronomers are absorbed in their instruments and calculations. They confirm that the fiery body is a comet heading dangerously close to Earth and provide the time of its arrival. Moomintroll, Sniff, and Snufkin immediately begin the urgent return to Moominvalley. On the way they find a Snork Maiden trapped by a poisonous bush. Moomintroll helps rescue her and is quickly captivated by her. Her brother, the Snork, joins the company as well. The outward journey's search for knowledge has become a race home, but the returning group is larger, and Moomintroll now feels responsible for new friends as well as his family.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "As the comet approaches, the sky grows redder, the heat intensifies, and familiar features of the world begin to fail. The companions continue toward Moominvalley, pausing among other inhabitants whose responses range from celebration to complete absorption in private interests. A Hemulen joins them but remains preoccupied with collecting and classification even when warned of danger. The sea withdraws, leaving its floor exposed and forcing the group to cross a strange, dry landscape where marine dangers remain. Their possessions and plans repeatedly become less important than keeping the party together. The exact deadline learned at the observatory now governs every decision, and reaching Moominmamma's promised safety before the comet arrives becomes the group's sole aim.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Moomintroll, Sniff, Snufkin, the Snork Maiden, the Snork, and the Hemulen reach Moominvalley before the predicted disaster. Moominmamma has stocked the seaside cave, allowing the family, the Muskrat, and their new friends to shelter together with food and familiar comforts. Outside, the comet dominates the sky and the valley becomes almost unbearably hot. The group waits in the cave as the appointed moment arrives. The comet passes Earth without colliding with it. When they emerge, the Moominhouse and valley have survived, and the sea returns after its long retreat. The expedition has brought Moomintroll safely back to his parents with a larger company of friends. Home endures, not as an isolated refuge, but as a place able to receive everyone gathered during the journey.",
+            "through": {
+              "chapter": 10
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "comet-in-moominland"
+      }
+    },
     "conclave-robert-harris": {
       "characters": {
         "characters": [

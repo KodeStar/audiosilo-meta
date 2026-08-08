@@ -226,6 +226,229 @@
         "work": "the-aeneid"
       }
     },
+    "the-aeneid-vergil": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A Trojan prince, son of Venus and the late Anchises, who leads survivors of Troy toward the homeland promised to their descendants in Italy. He is a tested warrior and a dutiful guardian of his people, but the divine mission placed on him repeatedly conflicts with his personal wishes. When a storm drives his fleet toward North Africa, he enters an unknown land worried for the ships and companions scattered at sea.",
+            "id": "aeneas",
+            "name": "Aeneas",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Queen of the gods and the principal divine opponent of the Trojans' voyage. She resents Troy for old grievances and fears the future power of the Roman people destined to descend from Aeneas. Unable to overturn fate, she uses storms, rival rulers, and human anger to delay its fulfillment.",
+            "id": "juno",
+            "name": "Juno",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Goddess of love, mother of Aeneas, and protector of the Trojan mission. She appeals to Jupiter when Juno's storm endangers her son, then approaches Aeneas in disguise after he reaches Africa. Her divine help is real but often indirect, leaving him to bear the human cost of the destiny she safeguards.",
+            "id": "venus",
+            "name": "Venus",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Queen and founder of Carthage, where she is directing the construction of a new city after fleeing violence in Tyre. She recognizes the Trojans as fellow exiles and receives Aeneas and his scattered companions generously. Capable, politically respected, and still marked by the loss of her husband, she offers the storm-driven travelers protection.",
+            "id": "dido",
+            "name": "Dido",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Iulus"
+            ],
+            "description": "Aeneas's young son and the continuation of his family's line. He escaped Troy with his father and shares the Trojans' wandering life. The gods treat his survival as part of the promised future in Italy, while Aeneas's care for him gives that distant destiny an immediate family meaning.",
+            "id": "ascanius",
+            "name": "Ascanius",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Aeneas's father, already dead when the Trojans reach Carthage but central to his son's memories and obligations. Aeneas carried the aged Anchises out of burning Troy, and Anchises later guided the refugees during their search for a new home. His counsel remains an important measure of Aeneas's duty.",
+            "id": "anchises",
+            "name": "Anchises",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Dido's sister and closest confidante. When Dido admits that she is drawn to Aeneas but feels bound to the memory of her dead husband, Anna encourages her to accept a new attachment and presents it as both emotionally healing and politically useful to Carthage.",
+            "id": "anna",
+            "name": "Anna",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Cumaean Sibyl",
+              "Deiphobe"
+            ],
+            "description": "The prophetic priestess of Apollo at Cumae. She warns Aeneas that reaching Italy will not end his trials and agrees to guide him into the realm of the dead, provided he completes the sacred preparations and finds the token required for entry.",
+            "id": "the-sibyl",
+            "name": "The Sibyl",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Rutulian prince, renowned warrior, and leading Italian suitor of Lavinia. Queen Amata favors his marriage to the princess, but prophecy points toward a foreign husband. When the Trojans arrive and Juno works to inflame local hostility, Turnus becomes the foremost military opponent of Aeneas's settlement.",
+            "id": "turnus",
+            "name": "Turnus",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "King of Latium and father of Lavinia. Omens and an oracle tell him that his daughter must marry a foreigner whose descendants will become powerful, so he receives the newly arrived Trojans peacefully and sees Aeneas as the intended match. His effort to follow the prophecy meets fierce resistance within his own household and kingdom.",
+            "id": "latinus",
+            "name": "Latinus",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The daughter of Latinus and Amata, whose marriage has political and prophetic importance. Although Turnus has been her prominent local suitor, signs received by her father indicate that she is meant to marry a foreign newcomer. Other people's rival claims over her help turn the Trojans' arrival into a war.",
+            "id": "lavinia",
+            "name": "Lavinia",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Queen of Latium, wife of Latinus, and mother of Lavinia. She strongly favors Turnus as her daughter's husband and rejects the proposed union with Aeneas. Juno's intervention magnifies that resistance until Amata becomes an active force behind the Italian opposition to the Trojans.",
+            "id": "amata",
+            "name": "Amata",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Arcadian king settled on the future site of Rome. Though his community is modest, he welcomes Aeneas, explains the sacred history of the place, and joins the Trojan cause against their common enemies. He entrusts Aeneas with troops led by his own young son.",
+            "id": "evander",
+            "name": "Evander",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Evander's young son, placed in Aeneas's care when the Arcadians join the war. Eager to prove himself in battle and commanding his father's contingent, he represents both the promise and the vulnerability of the new alliance.",
+            "id": "pallas",
+            "name": "Pallas",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A celebrated Volscian warrior who leads cavalry in support of Turnus. Raised for the hunt and dedicated to the goddess Diana, she is known for exceptional speed and martial skill and gives the Italian coalition one of its most formidable commanders.",
+            "id": "camilla",
+            "name": "Camilla",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An exiled Etruscan ruler allied with Turnus. His former subjects accuse him of savage abuses and have risen against him, making his presence in the Italian coalition one reason the Etruscans are willing to support Aeneas. He remains a dangerous and experienced fighter.",
+            "id": "mezentius",
+            "name": "Mezentius",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-aeneid-vergil"
+      },
+      "recaps": {
+        "ending": "After Camilla's death weakens the Italian forces, both sides attempt to settle the war through a duel between Aeneas and Turnus. Juno's agent Juturna helps break the truce, and Aeneas is wounded before returning to battle. He attacks Latinus's city, where Amata, mistakenly believing Turnus dead, takes her own life. Turnus finally meets Aeneas in single combat and is defeated. He asks to be spared and returned to his father, and Aeneas initially hesitates. Then Aeneas sees that Turnus is wearing the sword belt taken from Pallas after killing him. Recalling his duty to the dead youth and to Evander, Aeneas kills Turnus. The poem stops at that act, with the military obstacle to the Trojan settlement removed but without narrating Aeneas's marriage, the later union of the peoples, or the founding generations that prophecy has promised.",
+        "in_short": "After Troy's destruction, Aeneas leads refugees west toward an Italian homeland promised by fate. Juno drives them to Carthage, where Queen Dido shelters them and falls in love with Aeneas; when he obeys the gods and leaves, she dies by suicide. In Italy, Aeneas consults the dead and learns that his descendants will become the Roman people. King Latinus welcomes him and offers a marriage alliance with Lavinia, but Juno incites opposition led by Turnus, Lavinia's local suitor. Aeneas gains Arcadian and Etruscan allies, while the war kills young Pallas, the enemy champions Mezentius and Camilla, and many Trojans and Italians. Attempts at peace fail. Aeneas defeats Turnus in a final duel and considers mercy, but the sight of Pallas's captured belt makes him avenge the youth by killing Turnus. The poem ends there, at the violent removal of the last barrier to the Trojans' future in Italy.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Juno, hostile to Troy and fearful of its descendants, sends a storm against Aeneas's refugee fleet. The ships are scattered, but Neptune calms the sea and Aeneas reaches the coast of North Africa. Venus assures him that his missing companions are safe and directs him toward Carthage. Queen Dido, herself an exile who escaped Tyre after her husband's murder, welcomes the Trojans and asks Aeneas to explain their long journey. Aeneas begins with Troy's final night: the Greeks leave behind the wooden horse, Sinon persuades the Trojans to take it inside, and Greek soldiers emerge after dark. Aeneas fights through the doomed city, witnesses Priam's death, and is warned by Venus to save his family. He escapes carrying Anchises and leading Ascanius, but loses his wife Creusa. Her shade tells him that a new kingdom and marriage await him abroad, so he gathers the surviving Trojans to leave their ruined homeland.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Aeneas tells Dido how the refugees searched across the Mediterranean, repeatedly misreading prophecies before learning that their destination was Italy. Along the way they meet displaced Trojans, survive the Cyclopes' coast, and lose Anchises in Sicily. In Carthage, Venus and Juno both influence Dido's growing attachment to Aeneas. A storm during a hunt brings the pair together, and Dido treats their bond as a marriage, neglecting other obligations. Jupiter sends Mercury to remind Aeneas that his mission belongs to Ascanius and future generations. Aeneas prepares to depart despite Dido's pleas and anger. After the fleet sails, Dido builds a pyre from his possessions, curses Aeneas and the future relations between their peoples, and dies on his sword. Aeneas sees the flames from sea without knowing exactly what has happened.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Driven back to Sicily by bad weather, Aeneas marks the anniversary of Anchises' death with sacrifices and funeral games. Juno prompts the weary Trojan women to burn the ships, but rain saves most of the fleet. Those unwilling or unable to continue remain in a new settlement while Aeneas sails on with the rest; his helmsman Palinurus is lost before they reach Italy. At Cumae, the Sibyl leads Aeneas into the underworld. He encounters the unburied Palinurus, the silent shade of Dido, fallen Trojan warriors, and the punishments and rewards allotted to the dead. Anchises reveals souls waiting for future lives and identifies major figures who will arise from the Roman line. Aeneas returns to the living with a clearer understanding that his private losses serve a much larger historical destiny.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Trojans enter the Tiber region and recognize that they have reached the promised land. King Latinus receives them peacefully because an oracle has said Lavinia must marry a foreigner, but Juno sends the Fury Allecto to inflame Queen Amata, Turnus, and the countryside. A hunting accident involving Ascanius and a cherished stag becomes the immediate cause of war. Latinus cannot contain the anger, and Italian peoples gather behind Turnus. Aeneas follows divine guidance upriver to Evander's Arcadian settlement, on the ground where Rome will one day stand. Evander allies with him and sends Pallas and Arcadian troops under his command. The Etruscans also join Aeneas because Turnus shelters their deposed tyrant Mezentius. Venus brings Aeneas armor made by Vulcan, including a shield that depicts the distant Roman future, and Aeneas prepares to return to his threatened camp with his new allies.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "While Aeneas seeks allies, Turnus attacks the Trojan camp. The friends Nisus and Euryalus try to carry news through the enemy lines; after a successful raid they are discovered and killed, and their deaths deepen the cost of the siege. Turnus breaks into the fortifications but is eventually forced back into the river. When Aeneas returns with Arcadian and Etruscan forces, a wider battle follows. Pallas fights bravely but is killed by Turnus, who takes the young man's decorated belt. Aeneas, enraged by the loss of the youth entrusted to him, cuts through the opposition. He kills Lausus, who dies protecting his father Mezentius, then grants the young enemy respect in death. Mezentius returns to avenge his son and is also killed. The gods permit the war to continue toward its fated result, while Juno temporarily removes Turnus from danger.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Aeneas sends Pallas's body home to Evander and agrees to a pause for burial, while the Italians debate whether to continue. Turnus refuses to yield his claim. In renewed fighting, Camilla leads the Italian cavalry with great success until Arruns kills her; the Italians retreat and Turnus returns too late to prevent their defeat. A duel between Aeneas and Turnus is arranged, but Juturna, Turnus's divine sister, helps provoke a breach of the truce. Aeneas is wounded, healed, and turns his assault toward Latinus's city. Amata believes Turnus has died and takes her own life. Turnus then stops avoiding the duel. Aeneas defeats him and stands over him as Turnus asks that his body be returned to his father. Aeneas wavers, but notices the belt Turnus stripped from Pallas. Acting as Pallas's avenger, he kills Turnus. The poem ends with Turnus's death, leaving the foretold marriage and political settlement beyond the narrative.",
+            "through": {
+              "chapter": 12
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-aeneid-vergil"
+      }
+    },
     "the-affair": {
       "characters": {
         "characters": [
