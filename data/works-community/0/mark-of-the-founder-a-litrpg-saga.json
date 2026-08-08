@@ -4584,6 +4584,171 @@
         "work": "mexican-gothic"
       }
     },
+    "michael-strogoff": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A Siberian-born officer in the imperial courier corps, selected to carry a warning from Moscow to the isolated governor of Irkutsk. He travels under the name Nicolas Korpanoff and must conceal both his mission and his identity. His knowledge of the country, physical endurance, and strict sense of duty equip him for a journey through territory threatened by rebellion.",
+            "id": "michael-strogoff",
+            "name": "Michael Strogoff",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Nadia"
+            ],
+            "description": "A young woman travelling east to join her exiled father in Irkutsk. Quiet, resolute, and inexperienced in the dangers of the route, she accepts Michael's public claim that she is his sister so that they can continue the journey together more safely.",
+            "id": "nadia-fedor",
+            "name": "Nadia Fedor",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former Russian officer who has betrayed the empire and allied himself with the invading Tartars. He plans to reach Irkutsk, deceive its defenders, and settle a personal grievance against the grand duke who once punished him.",
+            "id": "ivan-ogareff",
+            "name": "Ivan Ogareff",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The Tartar emir leading the invasion across Siberia. His advancing forces cut communications with Irkutsk and provide Ivan Ogareff with the army needed for his plot against the city.",
+            "id": "feofar-khan",
+            "name": "Feofar Khan",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Michael's widowed mother, who lives at Omsk and knows him immediately despite his disguise. Her presence on his route creates a severe test of his promise to keep his identity and mission secret.",
+            "id": "marfa-strogoff",
+            "name": "Marfa Strogoff",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An English newspaper correspondent travelling toward the fighting in search of reliable reports. Reserved and professionally competitive, he repeatedly crosses paths with Michael and with his French rival, Alcide Jolivet.",
+            "id": "harry-blount",
+            "name": "Harry Blount",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A resourceful French correspondent who treats the dangerous journey as both an assignment and a contest with Harry Blount. His lively manner contrasts with the Englishman's reserve, though the two journalists often end up helping one another.",
+            "id": "alcide-jolivet",
+            "name": "Alcide Jolivet",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The czar's brother and governor of Irkutsk. Cut off from Moscow while rebellion spreads through Siberia, he is the intended recipient of Michael's warning about Ivan Ogareff.",
+            "id": "grand-duke",
+            "name": "The Grand Duke",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Nadia's father, a doctor living in exile at Irkutsk. Nadia's determination to reunite with him draws her along the same dangerous eastward road as Michael.",
+            "id": "wassili-fedor",
+            "name": "Wassili Fedor",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A friendly traveller whom Michael and Nadia encounter after escaping the Tartar camp. He helps them continue east and shares the risks of a country disrupted by invasion.",
+            "id": "nicolas-pigassof",
+            "name": "Nicolas Pigassof",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "michael-strogoff"
+      },
+      "recaps": {
+        "ending": "Michael reaches besieged Irkutsk after crossing the Angara under cover of the fires on the river. Ivan Ogareff has already entered the city in Michael's name and won the grand duke's confidence, but the real courier confronts and kills him before his plan can succeed. Michael then delivers the czar's warning and explains that he was never truly blinded: tears brought on when the heated blade approached his eyes protected his sight, and he continued the journey while letting his enemies believe their sentence had worked. The attack on Irkutsk is defeated, and the Tartar invasion collapses after Feofar Khan's retreat. Nadia is reunited with her father, while Marfa survives her captivity. Harry Blount and Alcide Jolivet complete their reports and leave Siberia. With his mission fulfilled, Michael is honored for his service and marries Nadia.",
+        "in_short": "When a Tartar invasion cuts the telegraph lines to Irkutsk, the czar sends courier Michael Strogoff across Siberia to warn the city's governor that traitor Ivan Ogareff plans to enter under a false identity. Travelling as merchant Nicolas Korpanoff, Michael joins Nadia Fedor, who hopes to reach her exiled father, and repeatedly encounters rival reporters Harry Blount and Alcide Jolivet. The invaders capture Michael after he refuses to acknowledge his mother at Omsk in order to protect his mission. Ogareff exposes him and has a heated blade passed before his eyes, apparently blinding him, then steals his letter and identity. Guided by Nadia, Michael escapes and presses on through the devastated country. He crosses the burning Angara into besieged Irkutsk, reveals that his sight survived the ordeal, kills Ogareff, and delivers the warning. Irkutsk withstands the attack; Nadia finds her father, and she and Michael marry after the invasion ends.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "A Tartar uprising led by Feofar Khan is sweeping westward across Siberia, and the telegraph connection to Irkutsk has been severed. In Moscow, the czar learns that the exiled traitor Ivan Ogareff is directing the campaign and intends to infiltrate Irkutsk, where the czar's brother commands the defense. Michael Strogoff, a courier born in Siberia and tested for unusual endurance and self-command, is ordered to carry a letter warning the grand duke. He must cross thousands of miles of increasingly hostile country without disclosing his office or purpose. Given papers in the name Nicolas Korpanoff, a merchant, Michael leaves Moscow by rail for Nizhny Novgorod. Two foreign correspondents, the Englishman Harry Blount and the Frenchman Alcide Jolivet, are also heading toward the conflict and begin a wary professional rivalry along the same route.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Michael's route east is complicated by an imperial decree preventing many Siberian travellers from leaving Nizhny Novgorod. He meets Nadia Fedor, a young woman permitted to travel because she is going to join her exiled father in Irkutsk. To protect her and make their passage easier, Michael presents her as his sister, while still keeping his true identity secret. They continue by river and road, with Blount and Jolivet never far away. The reporters compete for transport and information but face the same worsening conditions as the supposed brother and sister. Storms, unreliable vehicles, and the movement of troops make every stage harder. Michael remains focused on speed, yet his promise to help Nadia binds their journeys together as they cross the Urals and enter Siberia proper.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Beyond the Urals, Michael and Nadia pass through a region overtaken by invasion and disorder. Michael is repeatedly forced to choose restraint because a public quarrel or arrest could expose the courier's papers. At Omsk, already occupied by the Tartars, he sees his mother Marfa. She recognizes him, but he denies knowing her so that observers will not connect him to his real name. Ivan Ogareff notices the encounter and suspects the truth. Michael and Nadia escape the city and struggle onward across the flooded Baraba marshes, while the rival correspondents also try to stay ahead of the invading army. Near Kolyvan, battle closes the route. Michael makes a final effort to get through with the letter, but the travellers are swept up by the Tartar forces, placing both his secret and the warning to Irkutsk in immediate danger.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Michael, Nadia, Marfa, Blount, and Jolivet are held in Feofar Khan's camp among other captives. Ogareff uses Marfa to identify the courier, striking and threatening her until Michael can no longer remain still. By defending his mother, Michael confirms Ogareff's suspicions. Ogareff takes the imperial letter and condemns Michael under Tartar law. A heated sword blade is passed before Michael's eyes, and everyone present believes he has been blinded. Ogareff then leaves to carry the stolen message and assume the courier's identity at Irkutsk. Nadia remains with Michael, becoming his guide when they find a chance to escape. The correspondents also get free and continue their attempts to report the campaign, while Michael and Nadia turn east again despite his apparent blindness and the enemy's large lead.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Guided by Nadia, Michael continues toward Irkutsk on foot and with whatever transport the ruined country offers. They travel for a time with the helpful Nicolas Pigassof, but the invasion repeatedly separates them from companions and destroys routes they need. Michael endures his supposed blindness without abandoning the mission, while Nadia supplies the sight and practical assistance that keep them moving. They reach Lake Baikal and then the Angara, only to find the river route threatened by Tartar forces and burning fuel drifting on the water. Ahead, Irkutsk is under siege. Ogareff has arrived first, using Michael's name and the stolen letter to persuade the grand duke that he is the genuine imperial messenger. Accepted inside the defenses, he is positioned to mislead the city and open it to the attackers unless Michael and Nadia can cross the final barrier in time.",
+            "through": {
+              "chapter": 27
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Michael and Nadia cross the Angara amid fire and confusion and enter besieged Irkutsk. Ogareff, still posing as the czar's courier, has gained access to the grand duke and is preparing to betray the defense from within. Michael confronts him and reveals that the punishment in the Tartar camp did not destroy his sight: tears brought on by seeing his mother protected his eyes from the heated blade. He kills Ogareff and delivers the czar's real warning, exposing the imposture before the city can be handed over. The defenders repel the assault, and Feofar Khan's campaign collapses. Nadia is reunited with her exiled father, Wassili Fedor, and Marfa survives. Blount and Jolivet emerge from the campaign with their dispatches and a friendship tempered by shared danger. The czar honors Michael for completing the mission, and Michael and Nadia marry, joining the two lives that the journey brought together.",
+            "through": {
+              "chapter": 32
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "michael-strogoff"
+      }
+    },
     "middlemarch": {
       "characters": {
         "characters": [

@@ -3698,6 +3698,202 @@
         ],
         "work": "the-coral-island"
       }
+    },
+    "the-corrections": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The elderly father of the Lambert family, a retired railroad engineer living in St. Jude, Minnesota. Proud, austere, and emotionally remote, he has spent his life valuing discipline and self-sufficiency. His worsening physical and cognitive problems are becoming impossible for his wife to conceal, though he resists both her help and any suggestion that he is losing control.",
+            "id": "alfred-lambert",
+            "name": "Alfred Lambert",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Alfred's energetic and anxious wife, who manages their home in St. Jude and tries to manage the rest of the family from a distance. She wants her three adult children to come home together for Christmas and treats that gathering as proof that the family remains intact. Alfred's decline frightens her, but her need to preserve appearances makes it difficult for her to speak plainly about it.",
+            "id": "enid-lambert",
+            "name": "Enid Lambert",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The Lamberts' younger son, formerly a college professor and now an unsuccessful screenwriter in New York. He has lost his academic job after an affair with a student and is living beyond his means while pretending to his family that his career is sound. Clever and self-conscious, he repeatedly turns his insight into another way of avoiding responsibility.",
+            "id": "chip-lambert",
+            "name": "Chip Lambert",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A young woman who was Chip's student and later became his lover. Her confidence, wealth, and willingness to challenge him disrupted the authority he tried to maintain as her teacher. Chip's memories of their relationship show how his desire and vanity contributed to the loss of his university position.",
+            "id": "melissa-paquette",
+            "name": "Melissa Paquette",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A woman Chip is dating and whose opinion of his screenplay matters greatly to him. He treats the relationship as evidence that his life in New York is succeeding, even as his money and career run out. Julia is direct about the weaknesses in his work and becomes a measure of the gap between Chip's self-image and his actual circumstances.",
+            "id": "julia-vrais",
+            "name": "Julia Vrais",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Lithuanian politician and entrepreneur whom Chip knew in America. He recruits Chip to move to Vilnius and write English-language material for an internet venture aimed at foreign investors. Charismatic and opportunistic, he offers Chip an escape at the moment when Chip's life in New York has become untenable.",
+            "id": "gitanas-misevicius",
+            "name": "Gitanas Misevicius",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Lamberts' eldest child, a Philadelphia banker with a wife and three sons. He prides himself on being practical and financially responsible, but is preoccupied with the possibility that he is clinically depressed. His efforts to control his parents' decisions and his own household turn family disagreements into contests he feels compelled to win.",
+            "id": "gary-lambert",
+            "name": "Gary Lambert",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Gary's wife, who resents his attempts to define her choices as irrational or unhealthy. She does not want to take their family to St. Jude for Enid's Christmas gathering and is adept at securing the support of their sons. Her conflict with Gary exposes the distrust beneath their comfortable suburban life.",
+            "id": "caroline-lambert",
+            "name": "Caroline Lambert",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Gary and Caroline's middle son, observant and more sympathetic to his grandparents than his brothers are. He remains close to Alfred during a family visit and resists being drawn completely into his parents' struggle over Christmas.",
+            "id": "jonah-lambert",
+            "name": "Jonah Lambert",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A fellow passenger Enid befriends on a cruise. Sociable despite a devastating family loss, she becomes a confidante to whom Enid can disclose fears and frustrations that she minimizes around her children. Her experience gives the protected world of the cruise an undercurrent of grief and danger.",
+            "id": "sylvia-roth",
+            "name": "Sylvia Roth",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Lamberts' youngest child, a gifted chef running an ambitious Philadelphia restaurant. She is professionally decisive but guarded with her family, particularly about her intimate life. Her success has made her the sibling most able to help the others financially, while old family loyalties continue to shape her choices.",
+            "id": "denise-lambert",
+            "name": "Denise Lambert",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The wealthy owner of the Generator, the restaurant whose kitchen Denise leads. Restless, expansive, and fascinated by ambitious projects, he gives Denise the freedom and resources to establish herself at the highest level of Philadelphia dining. His marriage and his professional relationship with Denise increasingly overlap.",
+            "id": "brian-callahan",
+            "name": "Brian Callahan",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Brian Callahan's wife, a politically engaged filmmaker whose confidence and directness attract Denise. She enters Denise's life through the restaurant and the Callahans' social circle, creating a personal relationship that also threatens Denise's professional stability.",
+            "id": "robin-passafaro",
+            "name": "Robin Passafaro",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-corrections"
+      },
+      "recaps": {
+        "ending": "After the attempted family Christmas, Alfred's children accept that Enid can no longer care for him at home and place him in a nursing facility. Chip, newly steadied by the consequences of his time abroad, becomes the child most consistently present for him. Alfred's illness strips away the independence and authority around which he built his identity; during a lucid exchange, he asks Chip to help him die, but Chip cannot do so. Alfred continues to decline and eventually dies. His death releases Enid from the long work of protecting him, accommodating him, and preserving their marriage's public appearance. The children remain marked by their habits and mistakes rather than neatly repaired: Gary still seeks control, Denise has lost the secure professional and personal arrangement she built around the Generator, and Chip has at least begun to act responsibly. Enid, now able to imagine a life organized around her own wishes, faces the future with an optimism that had been unavailable while Alfred was alive.",
+        "in_short": "Enid Lambert wants her three adult children home in St. Jude for one last Christmas as her husband Alfred's neurological illness worsens. Each child is absorbed in a private crisis: Chip has lost his academic career and joins a dubious internet enterprise in Lithuania; Gary, a prosperous banker, denies his depression while fighting his wife for control of their family; and Denise, a celebrated chef, risks her job through an affair entangled with the marriage of her restaurant's owner. On a cruise, Alfred's confusion becomes public and dangerous, but Enid still tries to preserve the appearance of normality. The children eventually return as their separate lives unravel, and the holiday exposes rather than repairs the family's old injuries. Alfred is moved to a nursing home, where Chip becomes a regular companion through his final decline. After Alfred dies, no sweeping reconciliation has occurred, but Chip has grown more dependable and Enid discovers that widowhood gives her room to change her life.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In St. Jude, Minnesota, Enid and Alfred Lambert inhabit a house filled with the possessions and routines of their long marriage. Alfred, a retired railroad engineer, is losing strength and mental clarity, but his pride makes help difficult and Enid tries to disguise the seriousness of his condition. Their three grown children have established lives elsewhere and respond evasively to their mother's demands. Enid fixes on a final goal: bringing Gary, Chip, and Denise home together for Christmas. The plan allows her to imagine that the family can still be gathered and managed even as Alfred's condition and the disorder in the house suggest otherwise.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Chip Lambert is living precariously in New York after losing his university post because of an affair with his student Melissa Paquette. He has accumulated debt, borrowed repeatedly from his sister Denise, and placed his hopes in a screenplay that film producer Julia Vrais finds badly flawed. A disastrous evening involving Julia, his parents, and his attempts to sustain several lies leaves his professional and personal pretenses exposed. With few options remaining, Chip accepts an offer from Gitanas Misevicius, a Lithuanian acquaintance. He flies to Vilnius to supply polished English for an internet venture that presents a profitable, investor-friendly version of a country undergoing severe political and economic instability.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Gary Lambert appears to have achieved the conventional stability his parents valued: he is a successful banker in Philadelphia, married to Caroline, and raising three sons. At home, however, he is locked in a struggle over whether his unhappiness is depression and over who gets to define reality for the family. Enid wants Gary to force a Christmas visit, while Caroline strongly opposes going to St. Jude. Their sons become participants in the dispute, though Jonah retains sympathy for his grandparents. Gary also tries to direct his parents' finances and medical decisions, mixing real concern about Alfred with his need to prove that his judgment is superior. The conflict leaves him increasingly isolated inside the comfortable life he uses as evidence that nothing is wrong with him.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Enid and Alfred take a cruise, hoping travel will provide the pleasure and social ease missing at home. Enid befriends Sylvia Roth and, away from the children, admits more of the strain caused by Alfred's decline. She also becomes interested in a mood-altering drug circulating among passengers, treating it as a possible route to the happiness and confidence she lacks. Alfred's illness makes the ship increasingly unsafe for him. Confusion, hallucinations, and his refusal to acknowledge his limitations culminate in a fall overboard, after which he is rescued. The incident makes his vulnerability visible to strangers, yet Enid continues to move between acknowledging the crisis and hoping that the right medicine or family gathering can restore normal life.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Denise Lambert has built an exceptional career as the chef of the Generator, a fashionable Philadelphia restaurant owned by Brian Callahan. Her command of the kitchen contrasts with the uncertainty of her intimate life and with memories of the compromises that shaped Alfred's final years at the railroad. Denise becomes involved with Brian's wife, Robin Passafaro, drawing her into a secret that places desire, friendship, and employment in direct conflict. The affair cannot remain separate from the restaurant or the Callahans' marriage. As Denise's carefully controlled life destabilizes, the narrative also reveals how much the Lambert children still organize their choices around old debts, competition for parental approval, and the wish to escape the versions of themselves established in St. Jude.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The separate crises converge around Enid's promised Christmas. Chip's Lithuanian venture collapses amid political disorder, forcing him into a dangerous and humiliating journey home. Denise's affair has cost her the stable future she imagined at the Generator. Gary arrives still determined to manage both his parents and his own divided household. Alfred is now too ill for the holiday to become the restoration Enid planned: his incontinence, confusion, and physical dependence expose the reality the family has avoided. The gathering produces moments of care but no general reconciliation. Instead, the children finally confront the practical fact that Enid cannot safely look after Alfred alone, and arrangements are made to remove him from the St. Jude house and place him in institutional care.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Alfred enters a nursing facility, ending Enid's attempt to sustain their old household through willpower and appearances. Chip, changed by failure and his experiences in Lithuania, becomes a steady visitor and caregiver. During a lucid exchange Alfred asks Chip to help him end his life, but Chip cannot grant the request. Alfred's physical and mental decline continues until his death. His children are not transformed into a harmonious family: Gary remains caught in habits of control and denial, Denise must rebuild after losing the professional and romantic structure centered on the Generator, and Chip's improvement is practical rather than miraculous. The clearest change belongs to Enid. Relieved of the obligation to manage Alfred's illness and moods, she begins to see widowhood not only as loss but as an opening. At the close, she is ready to make changes for herself, leaving the family altered by Alfred's death but not neatly corrected.",
+            "through": {
+              "chapter": 7
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-corrections"
+      }
     }
   }
 }

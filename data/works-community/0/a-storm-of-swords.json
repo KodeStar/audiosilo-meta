@@ -4149,6 +4149,123 @@
         ],
         "work": "adam-bede"
       }
+    },
+    "address-unknown": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A Jewish art dealer living in San Francisco and the American half of a successful transatlantic partnership. He writes warmly to his friend and business partner Martin after Martin returns to Germany, continuing to manage their gallery and trusting their long friendship despite the political upheaval abroad.",
+            "id": "max-eisenstein",
+            "name": "Max Eisenstein",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Max's German business partner and intimate friend, newly returned from California to Munich with his family. Prosperity gives him a prominent social position, and his first letters describe both the excitement and uncertainty surrounding Germany's new political movement.",
+            "id": "martin-schulse",
+            "name": "Martin Schulse",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Martin's wife, who returns to Germany with him and their children. Max knows her as part of the family circle created by the two men's years of friendship in California.",
+            "id": "elsa-schulse",
+            "name": "Elsa Schulse",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Max's younger sister, an actress pursuing her career in Europe. She once had a love affair with Martin, and Max remains protective of her as conditions in Germany become increasingly dangerous for Jews.",
+            "id": "griselle-eisenstein",
+            "name": "Griselle Eisenstein",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A well-connected German aristocrat whose circle represents the social acceptance Martin hopes to secure after his return. Martin's concern for his standing among such people helps expose how quickly personal loyalty is yielding to political conformity.",
+            "id": "baron-von-freische",
+            "name": "Baron von Freische",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "address-unknown"
+      },
+      "recaps": {
+        "ending": "After learning that Griselle was killed when Martin refused her refuge, Max turns the correspondence itself into a weapon. He sends letters that appear to contain coded references to money, paintings, and an anti-Nazi conspiracy, despite Martin's increasingly desperate requests that he stop. Because German authorities monitor international mail, the harmless-looking messages make Martin seem like a secret agent working with a Jewish associate abroad. Martin's final pleas show that he expects arrest and punishment, but Max continues. At last one of Max's envelopes is returned from Germany stamped that the addressee is unknown. The same bureaucratic phrase that gives the novella its title confirms, without describing the event directly, that the regime has removed Martin. Max has avenged his sister by exploiting the surveillance and arbitrary terror Martin chose to support.",
+        "in_short": "In 1932, Jewish American art dealer Max Eisenstein exchanges affectionate letters with his German friend and business partner Martin Schulse, who has returned from California to Munich. As Hitler gains power, Martin embraces the new regime, adopts its antisemitism, and asks Max to stop writing to him. Max nevertheless begs Martin to protect his actress sister Griselle, Martin's former lover, while she is in Germany. Griselle flees to Martin's home, but he turns her away and later reports that Nazi troops killed her. Max then begins sending Martin conspicuously cryptic business letters designed to look like evidence of a conspiracy. Martin understands that the monitored correspondence puts him in mortal danger and begs Max to stop, but Max persists. The final letter is returned marked that Martin is no longer known at his address, implying that the Nazi system he embraced has destroyed him.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In November 1932, San Francisco art dealer Max Eisenstein writes to his friend and partner Martin Schulse, who has moved back to Germany with his wife Elsa and their children. Max misses the family's companionship and reports on the gallery they still own together. Martin replies enthusiastically from Munich: their wealth has bought an impressive home, and Germany feels alive with political change. Their correspondence is affectionate and informal, grounded in years of shared business and family life. Hitler is becoming a major force, but at first the men discuss him as an uncertain political phenomenon rather than a direct threat to their friendship.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Max asks Martin to watch over his younger sister Griselle, an actress working in Europe and Martin's former lover. Meanwhile Martin's attitude toward Hitler hardens into support. He credits the new leadership with restoring German pride and begins repeating antisemitic claims, dismissing brutality as a necessary part of national recovery. Max is shocked that an educated friend can accept collective hatred and challenges him to remember their personal bond. Martin responds that their correspondence is now dangerous to him: mail is watched, and association with a Jew could ruin his public standing and endanger his family. He asks Max to write only through the gallery and only about business.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The political break becomes personal. Max, alarmed by the danger facing Jews in Germany, appeals to the friendship Martin once claimed was beyond questions of religion. Martin refuses that appeal and presents obedience to the new Germany as a higher duty. Max then receives a hurried message from Griselle, who is in Berlin and frightened. Knowing that she may seek help from the man who once loved her, Max urgently asks Martin to shelter her or help her cross the border. His request tests whether any private loyalty remains beneath Martin's ideological declarations.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Martin reveals that Griselle came to his house while being pursued. Afraid that hiding a Jewish fugitive would expose him, he refused to let her enter. Nazi troops caught and killed her nearby. He describes his choice as protection of his household and tells Max that the matter must end. Grief changes the purpose of Max's letters. Rather than continue arguing, he begins sending messages filled with unexplained numbers, strange instructions, and references to art transactions that resemble a secret code. The wording is meaningless as business, but it is crafted for the German officials who inspect Martin's mail.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Martin recognizes Max's plan. The cryptic letters make him look like a participant in an international conspiracy, precisely the sort of accusation the Nazi authorities can act upon without proof. He begs Max to stop and explains that officials are questioning him and that his position is collapsing. Max answers with still more suspicious-looking references, using the habits and vocabulary of their art business to manufacture apparent evidence. The former intimacy of their correspondence now makes the deception more convincing: every letter suggests a hidden relationship that Martin cannot safely explain.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Martin's final message abandons political certainty and pleads for his life, but Max continues the coded correspondence in revenge for Griselle. The machinery of surveillance that Martin accepted turns against him. Eventually Max receives one of his letters back, stamped to show that its addressee is unknown at the Munich address. Martin has disappeared into the regime's system of detention and punishment. The returned envelope supplies the only confirmation Max needs: by making the authorities suspect Martin of disloyalty, he has caused the Nazi state to destroy one of its own supporters.",
+            "through": {
+              "chapter": 19
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "address-unknown"
+      }
     }
   }
 }
