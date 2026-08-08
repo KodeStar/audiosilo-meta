@@ -1349,6 +1349,355 @@
         "work": "the-help"
       }
     },
+    "the-herman-melville-collection": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "The Lawyer"
+            ],
+            "description": "The unnamed elderly Wall Street lawyer who narrates Bartleby's story. Comfortable, cautious, and proud of conducting business without drama, he employs copyists and tries to handle disruption through reason, charity, and avoidance rather than confrontation.",
+            "id": "the-lawyer",
+            "name": "The Lawyer",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An aging copyist in the lawyer's office. He works efficiently in the morning but becomes flushed, noisy, and error-prone after his midday meal, a pattern his employer tolerates.",
+            "id": "turkey",
+            "name": "Turkey",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A younger law copyist whose indigestion and ambition make him irritable in the morning, though he settles into useful work later in the day. His schedule of difficulty complements Turkey's.",
+            "id": "nippers",
+            "name": "Nippers",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The office boy, named for the small cakes he regularly brings the copyists. He runs errands and supplies a youthful observer within the lawyer's cramped workplace.",
+            "id": "ginger-nut",
+            "name": "Ginger Nut",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A quiet scrivener hired when the lawyer's workload increases. At first he copies with exceptional persistence, but his calm refusals to examine documents or perform other tasks gradually unsettle the office's routines and assumptions.",
+            "id": "bartleby",
+            "name": "Bartleby",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Baby Budd"
+            ],
+            "description": "A handsome young merchant sailor impressed into naval service. His strength, openness, and instinctive good nature win affection easily, but strong emotion can leave him unable to speak because of a stammer.",
+            "id": "billy-budd",
+            "name": "Billy Budd",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The naval lieutenant who takes Billy from the merchant ship Rights-of-Man for service aboard the Bellipotent. He treats the merchant captain's objections with amused firmness.",
+            "id": "lieutenant-ratcliffe",
+            "name": "Lieutenant Ratcliffe",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Captain of the Bellipotent, a brave, cultivated officer whose devotion to naval duty is matched by an unusually reflective temperament. His learning and reserve distinguish him from many fellow officers.",
+            "id": "captain-vere",
+            "name": "Captain Vere",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Jemmy Legs"
+            ],
+            "description": "The Bellipotent's master-at-arms, outwardly controlled and civil. His responsibility for order below decks gives weight to his observations, while Billy's innocence and popularity provoke a concealed hostility in him.",
+            "id": "john-claggart",
+            "name": "John Claggart",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An experienced old foretopman who takes a protective interest in Billy. His guarded warnings reflect a long familiarity with dangers and motives the younger sailor cannot readily imagine.",
+            "id": "the-dansker",
+            "name": "The Dansker",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The sailor who narrates Moby-Dick, introducing himself as a restless man who goes to sea whenever life ashore becomes oppressive. Educated, observant, and speculative, he joins a whaling voyage as an ordinary crew member.",
+            "id": "ishmael",
+            "name": "Ishmael",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A renowned harpooner from the fictional Pacific island of Rokovoko. His tattooed appearance and unfamiliar customs initially alarm Ishmael, but his generosity, courage, and calm self-possession quickly establish a deep friendship between them.",
+            "id": "queequeg",
+            "name": "Queequeg",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A scarred stranger who approaches Ishmael and Queequeg after they sign aboard the Pequod. His cryptic questions and warnings focus on the ship's absent captain and suggest that the voyage carries dangers beyond ordinary whaling.",
+            "id": "elijah",
+            "name": "Elijah",
+            "reveal": {
+              "chapter": 47
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A co-owner of the Pequod and former whaling captain who handles the practical work of hiring its crew. Gruff, energetic, and shrewd, he balances his partner Bildad's severity with a more worldly approach to business.",
+            "id": "captain-peleg",
+            "name": "Captain Peleg",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Quaker shipowner and former captain who co-owns the Pequod. He speaks in strict religious terms and bargains closely over the crew's shares in the voyage, combining plain dress with hard commercial judgment.",
+            "id": "captain-bildad",
+            "name": "Captain Bildad",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Pequod's first mate, a capable Nantucket whaleman with a wife and child at home. Courageous but not reckless, he regards the dangerous business as work and believes command should remain answerable to prudence and moral law.",
+            "id": "starbuck",
+            "name": "Starbuck",
+            "reveal": {
+              "chapter": 54
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Pequod's second mate, easygoing and humorous even in dangerous work. He responds to uncertainty with practical jokes and casual fatalism, commanding one of the ship's whaleboats.",
+            "id": "stubb",
+            "name": "Stubb",
+            "reveal": {
+              "chapter": 55
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Pequod's short, sturdy third mate. Energetic and combative, he treats whales as opponents to be attacked with direct force and commands the smallest of the three mate-led boats.",
+            "id": "flask",
+            "name": "Flask",
+            "reveal": {
+              "chapter": 55
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young Black cabin boy aboard the Pequod, cheerful and musically inclined. He serves the officers and contributes his tambourine to the crew's noisy life before later being drawn into the far more dangerous work of a whaleboat.",
+            "id": "pip",
+            "name": "Pip",
+            "reveal": {
+              "chapter": 55
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Captain of the Pequod, long absent below deck after sailing. When he finally appears, the loss of one leg and the long scar down his body reinforce an imposing, withdrawn presence that holds the crew's attention before he explains his purpose.",
+            "id": "captain-ahab",
+            "name": "Captain Ahab",
+            "reveal": {
+              "chapter": 56
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The enormous white sperm whale that previously destroyed Ahab's boat and took his leg. Sailors have given the animal a reputation for unusual power and aggression, while Ahab treats it as the visible agent of every force he hates.",
+            "id": "moby-dick",
+            "name": "Moby Dick",
+            "reveal": {
+              "chapter": 64
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A secretive Parsee harpooner who emerges with a hidden boat crew during the Pequod's first pursuit of whales. He is closely bound to Ahab and speaks with an authority rooted in prophecy and their shared private purpose.",
+            "id": "fedallah",
+            "name": "Fedallah",
+            "reveal": {
+              "chapter": 76
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-herman-melville-collection"
+      },
+      "recaps": {
+        "ending": "The collection closes with the destruction of the Pequod. After Ahab refuses the Rachel's plea to help search for its captain's missing son, he sights Moby Dick and pursues the whale for three days. Boats are smashed, Ahab's ivory leg is broken, Fedallah is found dead and lashed in the harpoon lines around the whale, and the crew is steadily reduced. On the final day Moby Dick rams the Pequod. Ahab makes one last cast, but the running line catches him around the neck and pulls him from the boat. The ship sinks with everyone still aboard, including Starbuck, Stubb, Flask, Pip, and the rest of the crew. Ishmael alone survives, kept afloat by the coffin Queequeg had ordered during an illness and later converted into a life buoy. The Rachel, still searching for its own missing sailors, finds and rescues him.",
+        "in_short": "This collection brings together three stories of isolation and destructive authority. In Bartleby, the Scrivener, a Wall Street lawyer hires a copyist whose calm refusals expand until he stops working and cannot be removed; Bartleby is jailed as a vagrant and dies after refusing food. In Billy Budd, Sailor, the innocent sailor Billy is falsely accused of mutiny by Claggart and kills him with one involuntary blow. Captain Vere insists on wartime law, and Billy is hanged after blessing him, while official history reverses the truth. In Moby-Dick, Ishmael joins the Pequod with his friend Queequeg. Captain Ahab turns its whaling voyage into a hunt for the white whale that took his leg. His obsession defeats Starbuck's objections and consumes ship and crew. Moby Dick sinks the Pequod and Ahab is dragged to his death by his own line. Ishmael alone survives, buoyed by Queequeg's coffin and rescued by the Rachel.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "An elderly Wall Street lawyer describes his small office and three employees: the copyists Turkey and Nippers, whose periods of irritability alternate across the day, and the office boy Ginger Nut. Increased business leads him to hire Bartleby, a quiet scrivener who initially copies documents with remarkable endurance. When asked to help compare a copy against its original, Bartleby calmly refuses. He repeats the same response to later requests without anger or explanation. The lawyer is disturbed less by open defiance than by Bartleby's passive certainty. He postpones confrontation, while the habit of refusal begins affecting the language and behavior of the whole office.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The lawyer discovers that Bartleby lives in the office and appears to have no home or social ties. Bartleby eventually stops copying altogether but still refuses to leave. Unable to remove him and unwilling to use force, the lawyer relocates his own business. The new tenants have Bartleby arrested for vagrancy and taken to the Tombs. The lawyer visits, pays a grub-man to provide food, and tries unsuccessfully to reassure him. Bartleby refuses to eat and dies curled beside a prison wall. Later the lawyer hears an uncertain report that Bartleby once worked in the Dead Letter Office, handling messages whose intended recipients could never receive them. He connects that work with the hopeless withdrawal he witnessed.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The collection's second work opens in 1797. Lieutenant Ratcliffe impresses Billy Budd from the merchant ship Rights-of-Man for service aboard the warship Bellipotent. Billy is a handsome, generous young sailor whose presence had eased conflict among his former crew. He accepts the transfer without resentment and quickly settles among the naval foretopmen. His innocence is paired with a stammer that appears under emotional pressure. The Bellipotent is commanded by Captain Vere, a brave, learned, and disciplined officer. Recent fleet mutinies have made the Royal Navy exceptionally suspicious of any sign of organized resistance.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The master-at-arms John Claggart appears courteous toward Billy but develops a concealed and irrational hatred of him. Minor disciplinary incidents confuse Billy, who cannot imagine the calculated motive behind them. The old Dansker warns that Claggart is against him, but Billy trusts outward behavior over the warning. An afterguardsman later approaches Billy at night and offers money while hinting at organized resistance. Billy drives him away but reports nothing, partly because he fears becoming an informer. Claggart and his subordinate continue to shape suspicion around him, exploiting a climate in which memories of recent mutiny make accusation especially dangerous.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Claggart accuses Billy directly to Captain Vere of encouraging mutiny. Vere summons Billy and confronts him with the charge. Shock triggers Billy's stammer; unable to answer, he strikes Claggart once and kills him. Vere recognizes that the accusation was false and the blow unplanned, yet immediately frames the crisis through wartime naval law. He convenes a drumhead court and gives evidence before it. Billy admits the blow and denies any disloyal design. The officers sympathize and hesitate, but Vere argues that private conscience cannot replace the military statute requiring death for killing a superior. The court convicts Billy and sentences him to hang at dawn.",
+            "through": {
+              "chapter": 23
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Billy receives the sentence peacefully. At the execution he blesses Captain Vere, and the assembled sailors repeat the blessing before discipline suppresses their emotion. Billy is hanged and buried at sea. Vere is later mortally wounded in battle and dies after speaking Billy's name. Public and communal memories sharply diverge: a naval newspaper portrays Claggart as a loyal officer murdered by a mutinous criminal, while sailors revere Billy's memory. A piece of the execution spar is treated like a relic, and a foretopman's ballad imagines Billy awaiting death. The official record secures naval authority by reversing the moral facts the crew witnessed.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Moby-Dick begins when Ishmael, restless and depressed on land, decides to join a whaling voyage. In New Bedford he is forced to share a bed with Queequeg, a tattooed harpooner whose unfamiliar appearance initially frightens him. Queequeg's generosity and composure overturn Ishmael's prejudice, and the two become close companions. They attend Father Mapple's sermon on Jonah, then travel together to Nantucket to find a ship. Queequeg explains that a small carved idol guides his choices, while Ishmael increasingly treats their friendship as a bond stronger than differences of religion or origin.",
+            "through": {
+              "chapter": 41
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ishmael and Queequeg sign aboard the Pequod, a heavily decorated Nantucket whaler owned by Captains Peleg and Bildad. A mysterious stranger named Elijah warns them about Captain Ahab and hints that hidden men may sail with the ship. The Pequod departs on Christmas Day. Its officers include prudent first mate Starbuck, humorous second mate Stubb, and forceful third mate Flask, each commanding a boat with a harpooner. Captain Ahab remains below for much of the early voyage. When he appears, Ishmael sees a commanding man marked by a long scar and standing on an ivory leg made from whale bone.",
+            "through": {
+              "chapter": 56
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ahab assembles the crew and reveals that the voyage has a private purpose: he intends to hunt Moby Dick, the enormous white sperm whale that destroyed his boat and took his leg. He nails a gold coin to the mast as a reward for the first sighting and draws the sailors into an oath of pursuit. Starbuck objects that revenge against an animal is irrational and commercially irresponsible, but Ahab treats the whale as the visible mask of a hostile power behind the world. The crew's excitement overwhelms the mate's resistance. Ishmael reflects on the fear and fascination associated with the whale's whiteness as ordinary whaling becomes subordinate to Ahab's obsession.",
+            "through": {
+              "chapter": 64
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Pequod meets other ships and seeks news of the white whale while Ishmael explains the practices, dangers, and classifications of whaling. During the first lowering, five men concealed aboard ship emerge as Ahab's private boat crew, led by the Parsee harpooner Fedallah. Their presence confirms Elijah's warning and shows how far Ahab planned his hunt in secret. A squall disrupts the chase, and Stubb responds to Starbuck's alarm with habitual fatalism. The ship continues into grounds where encounters with whales allow the ordinary commercial voyage and Ahab's personal pursuit to proceed together, though Ahab's purpose increasingly governs every decision.",
+            "through": {
+              "chapter": 76
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Stubb's boat kills a sperm whale, and the crew begins the exhausting work of securing and processing it. Fleece, the elderly cook, is ordered to preach to sharks tearing at the carcass, an episode that exposes the violent appetite surrounding the industry. Ishmael describes cutting in, extracting blubber, and the many uses and meanings attached to whales. Gams with passing ships supply stories that expand Moby Dick's reputation, including an account of conflict and revenge aboard the Town-Ho. Ahab listens chiefly for reports that can direct his chase, while the Pequod's crew remains occupied with the practical labor that finances it.",
+            "through": {
+              "chapter": 92
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Pequod moves through further hunts and encounters, including a meeting with the plague-struck Jeroboam. Ahab's questions about Moby Dick repeatedly displace the concerns of other captains. The ship takes both sperm and right whales, and the contrasting heads are hung on opposite sides of the vessel. Queequeg works in dangerous conditions during the cutting-in, with Ishmael tied to him by a shared line and aware that either man's safety depends on the other. Technical discussions of the whale's body, art, and natural history keep widening Ishmael's account even as the plot of Ahab's pursuit narrows toward a single animal.",
+            "through": {
+              "chapter": 105
+            }
+          },
+          {
+            "scope": "book",
+            "text": "During a chase Pip jumps from Stubb's boat in panic. After doing so again, he is left alone in the sea until the ship retrieves him, and the isolation permanently disorders his mind. Ahab responds to Pip with unexpected tenderness, recognizing a fellow outcast, and later keeps him close. The crew continues extracting oil and repairing equipment while Ahab studies charts and currents to predict Moby Dick's route. The growing precision of his search contrasts with the instability aboard ship. Pip's altered speech, Fedallah's prophetic presence, and Starbuck's deepening concern all reveal costs that Ahab refuses to place above the hunt.",
+            "through": {
+              "chapter": 123
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ahab has the blacksmith Perth forge a special harpoon for Moby Dick and tempers it in a ritual involving the harpooners. The Pequod's course increasingly follows the captain's will alone. Ahab damages navigational instruments when they appear to oppose him and replaces them through force of calculation. Starbuck repeatedly confronts the choice between obedience and preventing catastrophe but cannot bring himself to act against his captain. Queequeg falls seriously ill and orders a canoe-shaped coffin, then unexpectedly recovers after deciding he still has duties to perform. The coffin remains aboard and will later be converted into a life buoy when another is lost.",
+            "through": {
+              "chapter": 141
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Pequod meets the cheerful Bachelor, then the damaged Rachel, whose captain begs Ahab to help search for a missing whaleboat carrying his young son. Ahab refuses because the delay might cost him Moby Dick's trail. In a final quiet conversation with Starbuck, he recalls his decades at sea and briefly recognizes the human life sacrificed to his obsession, but he cannot turn back. Fedallah's prophecies seem to promise that Ahab will not die by ordinary means and that hemp will be involved. The signs offer no safety, only ambiguous conditions drawing him toward the encounter he has chosen.",
+            "through": {
+              "chapter": 160
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ahab sights Moby Dick and pursues him for three days. The whale smashes boats and scatters the crews; Ahab loses his ivory leg, and Fedallah disappears. On the second day his body is seen tangled against the whale by harpoon line, fulfilling part of his prophecy. Starbuck pleads once more for Ahab to stop, but the captain launches the final chase. Moby Dick turns on the Pequod and sinks it. Ahab makes a last cast, is caught around the neck by the running line, and is pulled from his boat. Ship, boats, and crew vanish into the vortex. Ishmael alone survives, floating on Queequeg's coffin after it rises from the wreck. The Rachel, continuing its search for the captain's lost son, finds Ishmael and rescues him.",
+            "through": {
+              "chapter": 164
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-herman-melville-collection"
+      }
+    },
     "the-hero-of-ages": {
       "characters": {
         "characters": [

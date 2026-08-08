@@ -2361,6 +2361,221 @@
         ],
         "work": "bad-luck-and-trouble"
       }
+    },
+    "bartleby-the-scrivener": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "The Lawyer"
+            ],
+            "description": "An elderly Manhattan lawyer who narrates the story. He handles financial documents from a Wall Street office and prizes safety, routine, and an easy accommodation with other people's peculiarities.",
+            "id": "the-narrator",
+            "name": "The Narrator",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A pale, quiet scrivener hired by the narrator after business increases. He first produces an extraordinary amount of accurate copying, working behind a screen near the lawyer's desk, but begins to decline requests without anger or explanation.",
+            "id": "bartleby",
+            "name": "Bartleby",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An older copyist in the lawyer's office. He works steadily in the morning but becomes flushed, noisy, and error-prone after his midday meal, a pattern his employer tolerates because the useful and difficult halves of his day are predictable.",
+            "id": "turkey",
+            "name": "Turkey",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A younger scrivener afflicted by indigestion and ambition. Restless and irritable in the morning, he repeatedly adjusts his desk and complains about ordinary copying work, then becomes calmer and more productive later in the day.",
+            "id": "nippers",
+            "name": "Nippers",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The office boy, about twelve years old, who runs errands and fetches snacks for the scriveners. His nickname comes from the small ginger cakes that form a regular part of his workday.",
+            "id": "ginger-nut",
+            "name": "Ginger Nut",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Mr. Cutlets"
+            ],
+            "description": "A prison food contractor at the Tombs who offers, for a fee, to make Bartleby's confinement more comfortable. Talkative and practical, he cannot understand the prisoner's withdrawal from food and company.",
+            "id": "the-grub-man",
+            "name": "The Grub-man",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "bartleby-the-scrivener"
+      },
+      "recaps": {
+        "ending": "After the lawyer moves his practice to escape an impossible standoff, Bartleby remains in the old building and refuses either to leave or adopt another occupation. The new occupants eventually have him arrested as a vagrant and taken to the Tombs. The lawyer visits, pays a food contractor to look after him, and tries to reassure him, but Bartleby rejects food as he rejected work and movement. On a later visit the lawyer finds him dead in the prison yard. Some time afterward, the lawyer hears an unconfirmed report that Bartleby once worked in the Dead Letter Office, handling messages that could never reach their recipients. The rumor gives him a possible image for Bartleby's desolation but no complete explanation. He closes by linking grief for this solitary man with grief for humanity more broadly.",
+        "in_short": "A cautious Wall Street lawyer hires Bartleby as a copyist. Bartleby initially works with remarkable intensity, then calmly refuses to proofread documents, perform errands, copy, or leave the office. The lawyer discovers that Bartleby lives there and alternates among pity, irritation, charity, and fear of public embarrassment. Unable to persuade or force him out, he moves his own firm, leaving Bartleby behind. The building's new occupants have the silent former scrivener arrested and sent to the Tombs. The lawyer visits and pays for better food, but Bartleby refuses to eat and dies in the prison yard. A later rumor says that he once worked with undeliverable mail in the Dead Letter Office. The narrator cannot verify that history or solve Bartleby's withdrawal, but it deepens his sense that the scrivener's fate reflects a wider human isolation.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "An elderly Wall Street lawyer introduces his staff of copyists. Turkey is steady in the morning and erratic after noon, while Nippers is irritable early and more useful later; Ginger Nut is their office boy. When business grows, the lawyer hires the pale and silent Bartleby. The newcomer copies documents with exceptional concentration from a desk behind a screen. Asked to join the routine comparison of a copy, however, Bartleby quietly refuses. He repeats the refusal on later occasions without offering an explanation, and the lawyer finds himself too surprised by Bartleby's calm manner to impose his authority.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bartleby's refusals extend from proofreading to errands and ordinary questions. The other clerks resent the disruption, but the lawyer alternates between irritation and an uneasy sympathy. Visiting the office on a Sunday, he discovers that Bartleby has been sleeping there and appears to possess no home or social life beyond the workplace. The discovery makes the lawyer pity him, yet Bartleby offers no history that would allow practical help. He soon stops copying altogether while continuing to occupy his screened corner and declining to leave.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The lawyer tries deadlines, severance money, moral appeals, and repeated commands, but Bartleby will neither resume work nor vacate the office. Concern for the scrivener competes with fear that clients and colleagues will see the situation as absurd. Unwilling to call the police or use force, the lawyer finally moves his entire practice to another building. Bartleby remains behind. The old office's new occupants complain that he lingers in the rooms and hallway, still refusing to depart or choose another place to live.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Called back by the building's distressed occupants, the lawyer offers Bartleby several kinds of work and even a temporary place in his own home. Bartleby declines every proposal. He is arrested as a vagrant and sent to the Tombs. The lawyer visits him there, pays a food contractor to provide extra meals, and tries to assure Bartleby that the prison is not meant as punishment, but Bartleby withdraws further and refuses to eat. On a later visit the lawyer finds him dead in the yard. Months afterward, he hears an uncertain report that Bartleby once worked in the Dead Letter Office, sorting messages that could never reach their intended recipients. The rumor does not solve Bartleby's mystery, but the lawyer sees in it an image of failed human connection and ends with grief for both Bartleby and humanity.",
+            "through": {
+              "chapter": 4
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "bartleby-the-scrivener"
+      }
+    },
+    "bartleby-the-scrivener-a-story-of-wall-street": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "The Lawyer"
+            ],
+            "description": "An elderly Manhattan lawyer who narrates the story. He handles financial documents from a Wall Street office and prizes safety, routine, and an easy accommodation with other people's peculiarities. His effort to understand and manage Bartleby gradually tests the limits of that comfortable outlook.",
+            "id": "the-narrator",
+            "name": "The Narrator",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A pale, quiet scrivener hired by the narrator after business increases. He first produces an extraordinary amount of accurate copying, working behind a screen near the lawyer's desk, but begins to decline requests without anger or explanation.",
+            "id": "bartleby",
+            "name": "Bartleby",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An older copyist in the lawyer's office. He works steadily in the morning but becomes flushed, noisy, and error-prone after his midday meal, a pattern his employer tolerates because the useful and difficult halves of his day are predictable.",
+            "id": "turkey",
+            "name": "Turkey",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A younger scrivener afflicted by indigestion and ambition. Restless and irritable in the morning, he repeatedly adjusts his desk and complains about ordinary copying work, then becomes calmer and more productive later in the day.",
+            "id": "nippers",
+            "name": "Nippers",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The office boy, about twelve years old, who runs errands and fetches snacks for the scriveners. His nickname comes from the small ginger cakes that form a regular part of his workday.",
+            "id": "ginger-nut",
+            "name": "Ginger Nut",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Mr. Cutlets"
+            ],
+            "description": "A prison food contractor at the Tombs who offers, for a fee, to make Bartleby's confinement more comfortable. Talkative and practical, he cannot understand the prisoner's withdrawal from food and company.",
+            "id": "the-grub-man",
+            "name": "The Grub-man",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "bartleby-the-scrivener-a-story-of-wall-street"
+      },
+      "recaps": {
+        "ending": "After the lawyer moves his practice to escape an impossible standoff, Bartleby remains in the old building and refuses either to leave or adopt another occupation. The new occupants eventually have him arrested as a vagrant and taken to the Tombs. The lawyer visits, pays a food contractor to look after him, and tries to reassure him, but Bartleby rejects food as he rejected work and movement. On a later visit the lawyer finds him dead in the prison yard. Some time afterward, the lawyer hears an unconfirmed report that Bartleby once worked in the Dead Letter Office, handling messages that could never reach their recipients. The rumor gives him a possible image for Bartleby's desolation but no complete explanation. He closes by linking grief for this solitary man with grief for humanity more broadly.",
+        "in_short": "A cautious Wall Street lawyer hires Bartleby as a copyist. Bartleby initially works with remarkable intensity, then calmly refuses to proofread documents, perform errands, copy, or leave the office. The lawyer discovers that Bartleby lives there and alternates among pity, irritation, charity, and fear of public embarrassment. Unable to persuade or force him out, he moves his own firm, leaving Bartleby behind. The building's new occupants have the silent former scrivener arrested and sent to the Tombs. The lawyer visits and pays for better food, but Bartleby refuses to eat and dies in the prison yard. A later rumor says that he once worked with undeliverable mail in the Dead Letter Office. The narrator cannot verify that history or solve Bartleby's withdrawal, but it deepens his sense that the scrivener's fate reflects a wider human isolation.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "An elderly Wall Street lawyer describes his manageable office staff: Turkey is reliable before noon and disorderly afterward, Nippers follows the opposite daily pattern, and Ginger Nut runs errands. Increased business leads him to hire Bartleby, a silent copyist who at first works with exceptional speed. Bartleby soon begins refusing requests, first declining to help compare copies and then rejecting more of the ordinary duties of the office. His calm persistence leaves the lawyer unable to command him or justify harsh treatment. The lawyer discovers that Bartleby has been living in the office and owns almost nothing. Bartleby eventually stops copying altogether but still refuses to leave. After failed payments, arguments, appeals, and offers of help, the lawyer moves his own firm rather than have Bartleby physically removed. Bartleby remains at the old building until its new occupants have him arrested as a vagrant. At the Tombs he declines food despite the lawyer's efforts and dies alone in the yard. A later rumor that he once handled undeliverable letters suggests a history of sustained contact with failed human hopes, but gives the narrator no certain explanation for his withdrawal.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "bartleby-the-scrivener-a-story-of-wall-street"
+      }
     }
   }
 }

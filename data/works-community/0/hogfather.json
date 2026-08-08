@@ -497,6 +497,239 @@
         "work": "homeland"
       }
     },
+    "homers-the-iliad-and-the-odyssey-homer": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The greatest warrior in the Greek army at Troy and the son of the sea goddess Thetis. Proud, formidable, and intensely protective of his honor, he quarrels with Agamemnon after the commander takes Briseis from him. Achilles withdraws himself and his soldiers from the fighting, even though their absence may cost the Greeks dearly.",
+            "id": "achilles",
+            "name": "Achilles",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The king of Mycenae and commander of the Greek coalition besieging Troy. When Apollo sends a plague upon the army, Agamemnon agrees to return his captive Chryseis but claims Achilles's captive Briseis in compensation. His insistence on rank and privilege drives the dispute that opens the epic.",
+            "id": "agamemnon",
+            "name": "Agamemnon",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The goddess of wisdom and warfare, and an active supporter of the Greeks. Sent by Hera when Achilles is about to attack Agamemnon, she checks his anger and urges him to answer the insult with words rather than violence.",
+            "id": "athena",
+            "name": "Athena",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "King of the gods, whose decisions govern how far the other immortals may intervene at Troy. Thetis asks him to favor the Trojans until the Greeks understand how much they need Achilles, placing him between his promise to her and Hera's loyalty to the Greek cause.",
+            "id": "zeus",
+            "name": "Zeus",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A resourceful Greek king and persuasive speaker serving in Agamemnon's army. He helps restore order when the troops rush toward their ships and is trusted with delicate missions, including returning Chryseis to her father. His judgment makes him valuable both in council and in battle.",
+            "id": "odysseus",
+            "name": "Odysseus",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Alexander"
+            ],
+            "description": "A Trojan prince whose taking of Helen from Menelaus helped cause the war. Handsome and confident at a distance, he retreats when Menelaus confronts him until Hector shames him into accepting single combat. He relies on skill with a bow rather than Hector's style of close fighting.",
+            "id": "paris",
+            "name": "Paris",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The foremost Trojan warrior, a son of King Priam and brother of Paris. He rebukes Paris for avoiding Menelaus and presses him to defend the city whose danger his choices helped create. Hector carries the burden of Troy's defense with a strong sense of duty to his family and people.",
+            "id": "hector",
+            "name": "Hector",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The wife of Menelaus, now living in Troy with Paris. From the city wall she identifies the leading Greek warriors for Priam and mourns the war fought over her. She is painfully aware of the destruction surrounding her and speaks with regret about leaving her former home.",
+            "id": "helen",
+            "name": "Helen",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The elderly king of Troy and father of Hector and Paris. He treats Helen with kindness rather than blaming her for the war and asks her to name the Greek leaders visible from the walls. Though no longer a battlefield commander, he remains the city's respected ruler.",
+            "id": "priam",
+            "name": "Priam",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Achilles's closest companion, who remains with him during his withdrawal from battle. He welcomes the Greek delegation that comes to Achilles's shelter and assists with the meal while the commanders try to persuade Achilles to return.",
+            "id": "patroclus",
+            "name": "Patroclus",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Odysseus's son, now approaching adulthood in Ithaca while his father's fate remains unknown. His home is overrun by men courting his mother and consuming the household's wealth. Encouraged by Athena, he begins to challenge them and to seek reliable news of Odysseus.",
+            "id": "telemachus",
+            "name": "Telemachus",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Odysseus's wife and the mother of Telemachus. Besieged by suitors who assume her husband will never return, she delays choosing a new husband and grieves for the absent Odysseus. Her uncertain position lies at the center of the disorder in the Ithacan household.",
+            "id": "penelope",
+            "name": "Penelope",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "God of the sea and the principal divine obstacle to Odysseus's return. Although the other gods agree that the stranded hero should be allowed home, Poseidon's continuing anger keeps the journey dangerous.",
+            "id": "poseidon",
+            "name": "Poseidon",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A divine nymph living on the remote island where Odysseus is stranded. She wants him to remain with her, while he longs for Ithaca and his family. The gods discuss compelling her to release him so that his homeward journey can resume.",
+            "id": "calypso",
+            "name": "Calypso",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The most forceful of Penelope's suitors and a leading presence among the men occupying Odysseus's house. He dismisses Telemachus's objections and blames Penelope for postponing remarriage, showing little respect for the young heir's authority.",
+            "id": "antinous",
+            "name": "Antinous",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A goddess and enchantress whom Odysseus's crew encounters on the island of Aeaea. She welcomes part of the crew into her house, drugs their food, and transforms the men into swine, making her an immediate threat to the expedition.",
+            "id": "circe",
+            "name": "Circe",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "homers-the-iliad-and-the-odyssey-homer"
+      },
+      "recaps": {
+        "ending": "After Odysseus kills the suitors, Penelope remains cautious until she tests his knowledge of their immovable marriage bed. His answer proves his identity, and husband and wife are reunited. Odysseus then visits his father, Laertes, reveals himself, and restores the old man's confidence. Meanwhile, the suitors' shades reach the underworld, and their surviving relatives gather to avenge them. Odysseus, Telemachus, Laertes, and their loyal allies meet the attack outside Laertes' farm. Laertes kills Antinous's father, but Zeus and Athena intervene before the bloodshed can continue. Athena orders both sides to stop and establishes peace in Ithaca, leaving Odysseus restored to his wife, father, son, household, and kingdom. The wider cycle therefore closes not simply with his arrival, but with his identity accepted and the threat of a continuing feud brought under divine control.",
+        "in_short": "During the Trojan War, Achilles withdraws from the Greek army after Agamemnon dishonors him. Hector leads the Trojans to the Greek ships, but Achilles lets Patroclus enter battle in his armor. Hector kills Patroclus, and the grieving Achilles returns, kills Hector, and eventually gives the body to King Priam for burial. After Troy's fall, Odysseus spends ten years trying to reach Ithaca. Poseidon obstructs him, while monsters, enchantments, and his crew's own errors leave him the sole survivor. At home, Penelope delays remarriage as suitors consume his estate, and Telemachus searches for news of his father. The Phaeacians finally carry Odysseus to Ithaca, where Athena disguises him. He reunites with Telemachus, tests servants and allies, strings his own bow, and kills the suitors. Penelope confirms him through a private test concerning their bed. After one final clash with the suitors' families, Athena imposes peace, and Odysseus is restored to his family and realm.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In the tenth year of the Greek siege of Troy, Apollo sends disease through the Greek camp after Agamemnon refuses to return Chryseis to her father. Agamemnon yields but takes Briseis from Achilles in compensation. Enraged by the insult, Achilles withdraws from battle and asks his divine mother, Thetis, to persuade Zeus to let the Trojans gain ground. The armies assemble, and a proposed duel between Menelaus and Paris briefly promises to decide the war, but Aphrodite rescues Paris and the truce collapses. Diomedes, aided by Athena, drives through the Trojan ranks and even wounds Aphrodite and Ares. Hector returns to Troy to arrange prayers and meets his wife Andromache and their young son. Although she fears he will die, he returns to battle after urging Paris to do the same. The war has now resumed in full, while Achilles and his formidable contingent remain apart from it.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Achilles remains outside the fighting after Agamemnon takes Briseis. Hector and Ajax fight an inconclusive duel, and both armies pause to recover and bury their dead. Zeus then forbids the gods to interfere and allows the Trojans to drive the Greeks back toward their ships. Alarmed by the reversal, Agamemnon offers gifts and the return of Briseis if Achilles will rejoin the army. Odysseus, Ajax, and Phoenix carry the offer to him, but Achilles refuses because his lost honor cannot be repaired by payment alone. A dangerous night raid by Odysseus and Diomedes brings the Greeks information and temporary success, yet the Trojans press harder the next day as several Greek leaders are wounded. Achilles sends Patroclus to learn what has happened, drawing his companion closer to the crisis. Hector and the Trojans finally smash through the Greek defensive wall, leaving the ships themselves exposed while the Greeks still lack their strongest warrior.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "With Achilles still refusing to fight, the battle reaches the Greek ships. Poseidon secretly strengthens the Greek defense, and Hera distracts Zeus long enough for the Greeks to rally, but Zeus awakens and restores Trojan momentum. When fire reaches a ship, Patroclus begs to wear Achilles's armor and lead the Myrmidons. Achilles agrees but warns him to save the ships and return. Patroclus drives the Trojans back and kills Zeus's son Sarpedon, then advances too far. Apollo strips away his protection; Euphorbus wounds him, and Hector delivers the killing blow and takes Achilles's armor. Greeks and Trojans struggle over the body until Menelaus and Ajax carry it away. Achilles is devastated when he learns of Patroclus's death and resolves to face Hector despite knowing that his own death will follow soon after. Thetis obtains new armor for him from Hephaestus, including a richly worked shield, preparing him to abandon his quarrel and return to battle for vengeance.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Achilles reconciles publicly with Agamemnon, receives Briseis and the promised gifts, and returns to the fighting in armor made by Hephaestus. He drives the Trojans toward their city, battles the river that is choked with the men he has killed, and terrifies nearly everyone behind Troy's walls. Hector alone waits outside. After initially fleeing, he faces Achilles and is killed. Achilles ties Hector's body behind his chariot and takes it back to the Greek camp. He then holds funeral rites and athletic games for Patroclus, but his grief remains bound to his abuse of Hector's corpse. The gods preserve the body, and Zeus directs Priam to ransom it. Guided safely into Achilles's shelter, the aged king appeals to him as one bereaved father to the son of another. Achilles's anger gives way to shared mourning. He accepts the ransom, returns Hector, and grants the Trojans time for funeral rites. The Iliad ends with Hector's body burned and buried while Troy still stands, though its defenders know the city remains doomed.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Trojan fighting ends with Achilles returning Hector's body to Priam for burial. Years later, Troy has fallen, but Odysseus has still not reached his island kingdom of Ithaca. In his absence, numerous suitors occupy his home, consume his wealth, and pressure Penelope to choose one of them as a new husband. Athena visits Telemachus in disguise and urges him to seek news of his father. He calls an assembly, challenges the suitors, and travels first to Nestor at Pylos and then to Menelaus and Helen at Sparta. Menelaus reports that Odysseus is alive but detained on Calypso's island. The suitors plan to ambush Telemachus on his return. The gods order Calypso to release Odysseus, who builds a raft, only for Poseidon to wreck it in a storm. He barely reaches the land of the Phaeacians. There the princess Nausicaa finds him exhausted and gives him clothing and directions for approaching her parents, offering the shipwrecked traveler his first real prospect of passage home.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Odysseus is welcomed by the Phaeacian royal house and, after hearing songs of Troy, reveals his identity and explains his long disappearance. After leaving Troy, his fleet suffered losses among the Cicones and narrowly escaped the Lotus-eaters. Odysseus then blinded the Cyclops Polyphemus to free his men, but his proud disclosure of his name allowed Polyphemus to call on his father Poseidon for revenge. Further disasters followed: the crew mishandled Aeolus's bag of winds, the Laestrygonians destroyed all but one ship, and Circe transformed several men before becoming their host. On her instructions Odysseus consulted the dead prophet Tiresias in the underworld. His surviving crew later passed the Sirens and lost men to Scylla, then killed the sun god's forbidden cattle. Zeus destroyed their ship, leaving Odysseus alone to reach Calypso's island. Having heard the whole account, the Phaeacians carry him asleep to Ithaca with gifts, completing the sea journey that he could not finish unaided.",
+            "through": {
+              "chapter": 36
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Odysseus reaches Ithaca after twenty years away, but Athena disguises him as an old beggar so he can assess his household safely. He finds shelter with the loyal swineherd Eumaeus. Athena also guides Telemachus home past the suitors' ambush, and father and son recognize one another at Eumaeus's farm. They plan to conceal Odysseus's identity, remove weapons from the hall, and confront the suitors with only a few trusted allies. In the palace, the disguised Odysseus endures abuse while observing who remains loyal. His aged dog Argos recognizes him and dies soon afterward. Odysseus defeats the aggressive beggar Irus but continues to hide his strength and identity. Penelope appears before the suitors, rebukes their conduct, and obtains gifts from them while still postponing any marriage. Telemachus increasingly asserts authority, but Antinous and the others remain entrenched in the house. Odysseus has therefore returned to his family in secret, yet Penelope does not know him and the planned reckoning has not begun.",
+            "through": {
+              "chapter": 42
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Still disguised, Odysseus speaks privately with Penelope, who explains that she can no longer defer the suitors indefinitely. His old nurse Eurycleia recognizes him by a scar while washing his feet, but she keeps the discovery secret. Penelope announces a contest: she will marry the man who can string Odysseus's bow and shoot through a line of axe heads. The suitors fail one after another. Odysseus strings the bow, completes the shot, and reveals himself. With Telemachus and loyal servants beside him, he kills Antinous, Eurymachus, and the other suitors, then punishes members of the household who betrayed him. Penelope cautiously tests the returned stranger by referring to moving their marriage bed; Odysseus's knowledge that the bed was built around a rooted tree proves who he is, and they reunite. He then reveals himself to his father Laertes. When the suitors' relatives attack, Laertes kills Antinous's father, but Athena intervenes under Zeus's authority and imposes peace. Odysseus ends his journey restored to his family, home, and rule.",
+            "through": {
+              "chapter": 48
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "homers-the-iliad-and-the-odyssey-homer"
+      }
+    },
     "hot-six": {
       "characters": {
         "characters": [

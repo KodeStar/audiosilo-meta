@@ -1478,6 +1478,153 @@
         "work": "the-truth"
       }
     },
+    "the-turn-of-the-screw": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The unnamed young woman whose written account forms the central story. In her first position as a governess, she accepts sole responsibility for two orphaned children at the remote country house of Bly, partly because she is impressed by their handsome uncle.",
+            "id": "the-governess",
+            "name": "The Governess",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The housekeeper at Bly, practical, affectionate toward the children, and initially reassuring to the inexperienced governess. She knows the household's recent history but is reluctant to discuss its more disturbing parts.",
+            "id": "mrs-grose",
+            "name": "Mrs Grose",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The younger of the two children at Bly, a charming and apparently innocent girl who welcomes the governess warmly. She spends much of her time with the governess and Mrs Grose while awaiting her brother's return from school.",
+            "id": "flora",
+            "name": "Flora",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Flora's older brother, a handsome and courteous boy sent home from school after being dismissed for reasons the headmaster does not explain. His gentle manners make the accusation difficult for the governess and Mrs Grose to reconcile with the child they see.",
+            "id": "miles",
+            "name": "Miles",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Master"
+            ],
+            "description": "The children's wealthy uncle and legal guardian, a bachelor living in London. He hires the governess on the condition that she manage every problem herself and never trouble him about events at Bly.",
+            "id": "the-uncle",
+            "name": "The Uncle",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A red-haired man first seen by the governess standing above Bly and staring down at her. His confident presence suggests knowledge of the house, although she knows that he is neither a servant nor a visitor expected by the household.",
+            "id": "peter-quint",
+            "name": "Peter Quint",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A dark-clad woman whom the governess sees across the lake near Flora. Her posture and mourning appearance mark her as a troubling presence, while Flora gives no open sign that she has noticed anyone.",
+            "id": "miss-jessel",
+            "name": "Miss Jessel",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A guest in the Christmas gathering that frames the tale. He possesses the governess's manuscript, says that he knew her when he was young, and reads her account aloud after arranging for it to be sent from London.",
+            "id": "douglas",
+            "name": "Douglas",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-turn-of-the-screw"
+      },
+      "recaps": {
+        "ending": "Mrs Grose takes the feverish Flora away from Bly, leaving the governess alone with Miles. The governess presses the boy about the letter he took and about his dismissal from school. Miles admits stealing the letter and says that he was expelled for saying things to boys he liked, who then repeated them to others, but the exact words are never disclosed. Peter Quint appears outside the window during the confrontation. The governess tries to keep Miles from the apparition and demands that he identify it. Miles finally cries out Quint's name, seeming either to acknowledge the ghost or to respond to the governess's pressure. The governess believes that Quint has been defeated, but Miles dies in her arms at that same moment. The account ends without an external explanation of whether supernatural forces killed him, whether the governess's intervention did, or how reliably she interpreted the events at Bly.",
+        "in_short": "An inexperienced governess takes charge of Miles and Flora at Bly under orders never to trouble their absent guardian. Miles has been expelled from school for an unexplained offense, yet both children appear exceptionally charming. The governess begins seeing Peter Quint and Miss Jessel, two dead former employees, and becomes convinced that the apparitions are seeking the children. Mrs Grose confirms that Quint and Jessel had troubling relationships within the household, but she never sees the figures herself. The governess interprets the children's secrecy and nighttime behavior as proof that they communicate with the dead. When confronted at the lake, Flora denies seeing Jessel and becomes ill; Mrs Grose takes her away. Alone with Miles, the governess forces him to discuss his expulsion while Quint appears at the window. Miles names Quint, the apparition vanishes, and Miles dies in the governess's arms. The narrative leaves the reality of the ghosts and the governess's reliability unresolved.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "At a Christmas gathering, Douglas produces a manuscript written by a governess he once knew. As a young and inexperienced woman, she was hired by a handsome London bachelor to care for his orphaned nephew and niece at Bly. He insisted that she handle all difficulties without contacting him. At the estate she is welcomed by Mrs Grose and becomes immediately fond of little Flora. A letter soon reports that Flora's brother Miles has been expelled from school without a stated reason. When Miles arrives, his beauty and courteous behavior make the charge seem unbelievable. The governess grows confident in her new life, but while walking alone she sees an unknown man standing on a tower of the house and watching her. He disappears without explanation. Later she sees the same man staring through a dining-room window, and his familiarity with Bly makes the intrusion more alarming.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The governess describes the stranger to Mrs Grose, who identifies him as Peter Quint, the dead former valet of the children's uncle. Quint had worn his employer's clothes, exercised unusual freedom at Bly, and spent a great deal of time with Miles. At the lake, the governess then sees a woman in black watching from the opposite bank. Flora appears not to react, but the governess becomes convinced that the child sees the figure and is deliberately concealing it. Mrs Grose identifies the woman from the description as Miss Jessel, the previous governess, who is also dead. She also confirms that Quint and Jessel were intimate and that their conduct caused distress in the household. The governess now believes the two apparitions have returned for Miles and Flora and casts herself as the children's protector, although Mrs Grose has witnessed neither ghost.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Weeks pass without another sighting, while the children remain engaging and the governess watches them for signs of concealed knowledge. During a night at Bly, she encounters Quint on the staircase and believes that he withdraws before her determined gaze. She later finds Flora out of bed, looking through a window. From another room the governess sees Miles standing outside on the lawn in the moonlight. She concludes that Flora deliberately distracted her so Miles could meet or signal to Quint. Miles offers a different motive: he wanted to show that he could behave badly after being treated as unfailingly good. His controlled explanation deepens rather than resolves the governess's suspicion that the children are cooperating in a secret design.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The governess and Mrs Grose continue to discuss Miles's unexplained dismissal, but neither has direct evidence of what he did. On the way to church, Miles calmly asks when he will return to school and points out that he needs the company of boys his own age. He also asks when his uncle will visit, forcing the governess to confront the promise that she would manage Bly without him. Disturbed by Miles's composure and by her own uncertainty, she considers leaving. Back at the house she sees Miss Jessel seated in the schoolroom. The figure vanishes after the governess addresses her. Instead of departing, the governess decides to remain and writes to the uncle, believing that calling him to Bly may break the children's secrecy.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Miles confronts the governess about when he will return to school and whether she has written to his uncle. Soon afterward, Flora disappears from the house. The governess and Mrs Grose find her beside the lake, where the governess again sees Miss Jessel. Flora vehemently denies that anyone is there and turns against the governess, begging Mrs Grose to take her away. Because Mrs Grose still cannot see the apparition, the scene can support either the governess's belief that Flora is defiantly concealing the ghost or the child's terror of an accusation she does not understand. Flora becomes feverish and speaks with a bitterness Mrs Grose has never heard from her. Mrs Grose agrees to take her to the uncle. She also reveals that Miles took the governess's letter before it could be sent, while the governess stays behind to face him alone.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "With Flora and Mrs Grose gone, the governess and Miles remain together at Bly. She presses him to admit taking her letter. Miles acknowledges that he stole it and then explains his expulsion only partially: he said unspecified things to selected schoolmates, and those boys repeated them to others. During this interrogation Peter Quint appears at the window. The governess positions herself between Miles and the figure and demands that the boy say whom he sees. Miles calls Quint by name and addresses him as an enemy, at last appearing to confirm the governess's central claim. She believes that her resistance has driven the apparition away. At the same instant, however, Miles collapses and dies in her arms. The manuscript closes there, leaving unresolved whether Quint was real, whether Miles was freed from him, or whether the governess's fearful pressure caused the child's death.",
+            "through": {
+              "chapter": 24
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-turn-of-the-screw"
+      }
+    },
     "the-twelfth-conclave": {
       "characters": {
         "characters": [

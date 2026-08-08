@@ -717,6 +717,396 @@
         "work": "thud"
       }
     },
+    "thunderball": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A British Secret Service officer holding the 00 designation, which authorizes him to kill in the course of duty. At the opening he is tired, smoking and drinking heavily, and unimpressed when M orders him to spend two weeks at a health clinic.",
+            "id": "james-bond",
+            "name": "James Bond",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The head of the British Secret Service and Bond's exacting superior. Concerned by the poor physical condition of his staff, he sends Bond to the Shrublands clinic despite Bond's resistance.",
+            "id": "m",
+            "name": "M",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "M's secretary and Bond's familiar colleague at headquarters. She handles his arrival for the meeting in which M announces the new health regimen.",
+            "id": "miss-moneypenny",
+            "name": "Miss Moneypenny",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A nurse at Shrublands who supervises parts of Bond's treatment. Professional but amused by him, she becomes an ally during his contentious stay at the clinic.",
+            "id": "patricia-fearing",
+            "name": "Patricia Fearing",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Count Lippe"
+            ],
+            "description": "A wealthy, physically imposing patient at Shrublands whose imperious behavior immediately irritates Bond. A distinctive criminal-society tattoo makes Bond suspicious of him, and their hostility escalates beyond an ordinary quarrel between guests.",
+            "id": "lippe",
+            "name": "Lippe",
+            "reveal": {
+              "chapter": 2
+            }
+          },
+          {
+            "description": "The calculating founder and commander of SPECTRE, an international criminal organization built from specialists with varied political and criminal backgrounds. He rules its meetings through secrecy, surveillance, and exemplary punishment while preparing an operation intended to force a vast ransom from the Western powers.",
+            "id": "ernst-stavro-blofeld",
+            "name": "Ernst Stavro Blofeld",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Emilio Largo"
+            ],
+            "description": "A wealthy Italian adventurer and SPECTRE officer selected to direct the organization's current operation. Forceful, polished, and physically powerful, he uses the yacht Disco Volante and a treasure-hunting cover story as the operation's base in the Bahamas.",
+            "id": "emilio-largo",
+            "name": "Largo",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An Italian airman serving with NATO who has been recruited into SPECTRE's plan. His access to a bomber makes him essential to the theft on which the organization is gambling.",
+            "id": "giuseppe-petacchi",
+            "name": "Giuseppe Petacchi",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Dominetta"
+            ],
+            "description": "A young Italian woman living in Nassau as Largo's companion. Independent-minded beneath the comforts he provides, she meets Bond while swimming and speaks candidly about the constrained life she leads beside a powerful older man.",
+            "id": "domino-vitali",
+            "name": "Domino Vitali",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The capable head of the Secret Service station in the Bahamas. He gives Bond local support and places Paula Caplan at his disposal during the investigation.",
+            "id": "pinder",
+            "name": "Pinder",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A local Secret Service operative who works closely with Bond in Nassau. She helps maintain his cover and gather information around Largo's circle.",
+            "id": "paula-caplan",
+            "name": "Paula Caplan",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Bond's American friend and former CIA partner, badly injured on an earlier case but still an energetic and resourceful investigator. He arrives in Nassau as the American representative and joins Bond in examining Largo, his yacht, and the surrounding waters.",
+            "id": "felix-leiter",
+            "name": "Felix Leiter",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "thunderball"
+      },
+      "recaps": {
+        "ending": "Bond, Leiter, and allied divers intercept Largo's underwater team as it moves one of the stolen bombs. A violent battle follows among the reefs. Bond fights Largo underwater and is nearly killed, but Domino, who has escaped captivity after being tortured for helping Bond, shoots Largo with a speargun. Largo dies, the nuclear weapons are secured, and the immediate threat is stopped. Bond survives his injuries and wakes in hospital, where Leiter tells him that Domino is safe nearby. Blofeld, however, was not present in Nassau and remains at large, so SPECTRE has lost its operation and field commander without losing its overall leader.",
+        "in_short": "SPECTRE, led by Ernst Stavro Blofeld, steals a NATO bomber carrying two nuclear weapons and demands a huge ransom from Britain and the United States. James Bond is sent to Nassau, where he suspects the wealthy Emilio Largo and his yacht, the Disco Volante. With CIA ally Felix Leiter, Bond finds the sunken aircraft and links Largo to the theft. Largo's companion Domino learns that the murdered pilot was her brother and agrees to help, but she is discovered and tortured. Bond and Leiter join an underwater assault as SPECTRE moves a bomb toward its target. During the battle Bond fights Largo, and Domino escapes and kills Largo with a speargun. The bombs are recovered and the plot fails, although Blofeld remains free.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "James Bond is an experienced officer of the British Secret Service and holds the number 007, marking him as one of the agents authorized to kill on duty. His previous assignments have taken him against organized criminals and hostile intelligence services in several countries. He has repeatedly worked with the American agent Felix Leiter, who survived a near-fatal mauling during one of their earlier cases and remains Bond's trusted friend. Bond serves under M, the demanding chief of the Secret Service, with Miss Moneypenny managing access to M's office.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "M is disturbed by medical reports showing that many officers are in poor condition. Bond, who has been overindulging in cigarettes, alcohol, and rich food, is ordered to spend two weeks at Shrublands, a clinic devoted to restrictive diets and unconventional treatments. There he meets the friendly nurse Patricia Fearing and clashes with a wealthy patient called Count Lippe. Bond notices that Lippe bears a tattoo associated with a criminal society and asks headquarters to investigate. Their mutual hostility becomes dangerous: Lippe interferes with a traction machine and nearly kills Bond, after which Bond retaliates by trapping him in an overheated steam cabinet. Bond leaves Shrublands healthier, while Lippe is badly burned and his hidden business remains unexplained.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In Paris, Ernst Stavro Blofeld directs SPECTRE, a secret criminal organization whose members are kept obedient by close surveillance and severe punishment. The group has prepared an operation under Emilio Largo to steal nuclear weapons and hold Western governments to ransom. Giuseppe Petacchi, an Italian airman recruited for the plan, diverts a NATO bomber carrying two bombs and lands it on the sea near the Bahamas. Largo's men take possession of the weapons and the Disco Volante becomes their mobile base. Petacchi is killed once his task is complete. Lippe's failure and exposure have also made him a liability; SPECTRE has him killed, leaving British intelligence with no chance to question him about the tattoo Bond reported.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After the bomber disappears, SPECTRE sends Britain and the United States a ransom demand backed by details that prove it possesses the nuclear weapons. The organization threatens to destroy a major city unless it is paid, and the authorities launch an urgent worldwide search. Bond reasons that the Bahamas deserves attention and is assigned to Nassau. He meets Domino Vitali while she is swimming. She is Largo's companion and is kept at a distance from his supposed treasure-hunting expedition aboard the Disco Volante. Bond also receives help from the local Secret Service station, including Pinder and Paula Caplan. Largo's wealth, guarded yacht, and evasive manner make him Bond's leading suspect, though direct proof is still lacking.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Felix Leiter arrives to represent the Americans and joins Bond's investigation. The two examine the waters around Nassau and keep the Disco Volante under observation, while Bond enters Largo's social circle through Domino. Bond makes a covert underwater inspection of the yacht and encounters violent resistance, strengthening his conviction that Largo is involved. Bond and Leiter then locate the missing bomber concealed on the seabed and find Petacchi's body inside, establishing how the weapons reached the area. The bombs themselves are no longer aboard. As Bond closes in, Largo's organization becomes more aggressive, and Paula is seized before she can be rescued.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Paula dies in captivity without revealing Bond's investigation. Bond tells Domino that Petacchi, the dead pilot, was her brother and that Largo's people killed him after using him to steal the bomber. She agrees to help avenge him and takes a radiation detector aboard the Disco Volante to confirm that nuclear material has been carried there. Largo discovers the device, realizes she has betrayed him, and tortures her for information. Meanwhile, Bond and Leiter combine the evidence from the sunken aircraft, the yacht, and SPECTRE's movements to identify the route by which Largo's divers intend to transport a bomb. A force of allied divers prepares to intercept them underwater before the weapon can be placed near its target.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bond joins the allied underwater force in an attack on Largo's men as they move one of the stolen nuclear weapons through the reefs. The battle is fought with diving knives, spearguns, and explosives, and casualties mount on both sides. Bond fights Largo at close quarters underwater but is overpowered and nearly killed. Domino has escaped confinement despite the torture inflicted on her; she intervenes and shoots Largo with a speargun, killing him and avenging her brother. The operation collapses, the immediate target is saved, and the nuclear weapons are secured. Bond survives and wakes under medical care with Leiter nearby. Domino is also safe, but Blofeld was never among the Nassau conspirators and remains free after the destruction of Largo's team.",
+            "through": {
+              "chapter": 25
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "thunderball"
+      }
+    },
+    "thunderball-a-james-bond-novel": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A British Secret Service officer holding the 00 designation, which authorizes him to kill in the course of duty. At the opening he is tired, smoking and drinking heavily, and unimpressed when M orders him to spend two weeks at a health clinic.",
+            "id": "james-bond",
+            "name": "James Bond",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The head of the British Secret Service and Bond's exacting superior. Concerned by the poor physical condition of his staff, he sends Bond to the Shrublands clinic despite Bond's resistance.",
+            "id": "m",
+            "name": "M",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "M's secretary and Bond's familiar colleague at headquarters. She handles his arrival for the meeting in which M announces the new health regimen.",
+            "id": "miss-moneypenny",
+            "name": "Miss Moneypenny",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A nurse at Shrublands who supervises parts of Bond's treatment. Professional but amused by him, she becomes an ally during his contentious stay at the clinic.",
+            "id": "patricia-fearing",
+            "name": "Patricia Fearing",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Count Lippe"
+            ],
+            "description": "A wealthy, physically imposing patient at Shrublands whose imperious behavior immediately irritates Bond. A distinctive criminal-society tattoo makes Bond suspicious of him, and their hostility escalates beyond an ordinary quarrel between guests.",
+            "id": "lippe",
+            "name": "Lippe",
+            "reveal": {
+              "chapter": 2
+            }
+          },
+          {
+            "description": "The calculating founder and commander of SPECTRE, an international criminal organization built from specialists with varied political and criminal backgrounds. He rules its meetings through secrecy, surveillance, and exemplary punishment while preparing an operation intended to force a vast ransom from the Western powers.",
+            "id": "ernst-stavro-blofeld",
+            "name": "Ernst Stavro Blofeld",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Emilio Largo"
+            ],
+            "description": "A wealthy Italian adventurer and SPECTRE officer selected to direct the organization's current operation. Forceful, polished, and physically powerful, he uses the yacht Disco Volante and a treasure-hunting cover story as the operation's base in the Bahamas.",
+            "id": "emilio-largo",
+            "name": "Largo",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An Italian airman serving with NATO who has been recruited into SPECTRE's plan. His access to a bomber makes him essential to the theft on which the organization is gambling.",
+            "id": "giuseppe-petacchi",
+            "name": "Giuseppe Petacchi",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Dominetta"
+            ],
+            "description": "A young Italian woman living in Nassau as Largo's companion. Independent-minded beneath the comforts he provides, she meets Bond while swimming and speaks candidly about the constrained life she leads beside a powerful older man.",
+            "id": "domino-vitali",
+            "name": "Domino Vitali",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The capable head of the Secret Service station in the Bahamas. He gives Bond local support and places Paula Caplan at his disposal during the investigation.",
+            "id": "pinder",
+            "name": "Pinder",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A local Secret Service operative who works closely with Bond in Nassau. She helps maintain his cover and gather information around Largo's circle.",
+            "id": "paula-caplan",
+            "name": "Paula Caplan",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Bond's American friend and former CIA partner, badly injured on an earlier case but still an energetic and resourceful investigator. He arrives in Nassau as the American representative and joins Bond in examining Largo, his yacht, and the surrounding waters.",
+            "id": "felix-leiter",
+            "name": "Felix Leiter",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "thunderball-a-james-bond-novel"
+      },
+      "recaps": {
+        "ending": "Bond, Leiter, and allied divers intercept Largo's underwater team as it moves one of the stolen bombs. A violent battle follows among the reefs. Bond fights Largo underwater and is nearly killed, but Domino, who has escaped captivity after being tortured for helping Bond, shoots Largo with a speargun. Largo dies, the nuclear weapons are secured, and the immediate threat is stopped. Bond survives his injuries and wakes in hospital, where Leiter tells him that Domino is safe nearby. Blofeld, however, was not present in Nassau and remains at large, so SPECTRE has lost its operation and field commander without losing its overall leader.",
+        "in_short": "SPECTRE, led by Ernst Stavro Blofeld, steals a NATO bomber carrying two nuclear weapons and demands a huge ransom from Britain and the United States. James Bond is sent to Nassau, where he suspects the wealthy Emilio Largo and his yacht, the Disco Volante. With CIA ally Felix Leiter, Bond finds the sunken aircraft and links Largo to the theft. Largo's companion Domino learns that the murdered pilot was her brother and agrees to help, but she is discovered and tortured. Bond and Leiter join an underwater assault as SPECTRE moves a bomb toward its target. During the battle Bond fights Largo, and Domino escapes and kills Largo with a speargun. The bombs are recovered and the plot fails, although Blofeld remains free.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "James Bond is an experienced officer of the British Secret Service and holds the number 007, marking him as one of the agents authorized to kill on duty. His previous assignments have taken him against organized criminals and hostile intelligence services in several countries. He has repeatedly worked with the American agent Felix Leiter, who survived a near-fatal mauling during one of their earlier cases and remains Bond's trusted friend. Bond serves under M, the demanding chief of the Secret Service, with Miss Moneypenny managing access to M's office.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "M is disturbed by medical reports showing that many officers are in poor condition. Bond, who has been overindulging in cigarettes, alcohol, and rich food, is ordered to spend two weeks at Shrublands, a clinic devoted to restrictive diets and unconventional treatments. There he meets the friendly nurse Patricia Fearing and clashes with a wealthy patient called Count Lippe. Bond notices that Lippe bears a tattoo associated with a criminal society and asks headquarters to investigate. Their mutual hostility becomes dangerous: Lippe interferes with a traction machine and nearly kills Bond, after which Bond retaliates by trapping him in an overheated steam cabinet. Bond leaves Shrublands healthier, while Lippe is badly burned and his hidden business remains unexplained.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In Paris, Ernst Stavro Blofeld directs SPECTRE, a secret criminal organization whose members are kept obedient by close surveillance and severe punishment. The group has prepared an operation under Emilio Largo to steal nuclear weapons and hold Western governments to ransom. Giuseppe Petacchi, an Italian airman recruited for the plan, diverts a NATO bomber carrying two bombs and lands it on the sea near the Bahamas. Largo's men take possession of the weapons and the Disco Volante becomes their mobile base. Petacchi is killed once his task is complete. Lippe's failure and exposure have also made him a liability; SPECTRE has him killed, leaving British intelligence with no chance to question him about the tattoo Bond reported.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After the bomber disappears, SPECTRE sends Britain and the United States a ransom demand backed by details that prove it possesses the nuclear weapons. The organization threatens to destroy a major city unless it is paid, and the authorities launch an urgent worldwide search. Bond reasons that the Bahamas deserves attention and is assigned to Nassau. He meets Domino Vitali while she is swimming. She is Largo's companion and is kept at a distance from his supposed treasure-hunting expedition aboard the Disco Volante. Bond also receives help from the local Secret Service station, including Pinder and Paula Caplan. Largo's wealth, guarded yacht, and evasive manner make him Bond's leading suspect, though direct proof is still lacking.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Felix Leiter arrives to represent the Americans and joins Bond's investigation. The two examine the waters around Nassau and keep the Disco Volante under observation, while Bond enters Largo's social circle through Domino. Bond makes a covert underwater inspection of the yacht and encounters violent resistance, strengthening his conviction that Largo is involved. Bond and Leiter then locate the missing bomber concealed on the seabed and find Petacchi's body inside, establishing how the weapons reached the area. The bombs themselves are no longer aboard. As Bond closes in, Largo's organization becomes more aggressive, and Paula is seized before she can be rescued.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Paula dies in captivity without revealing Bond's investigation. Bond tells Domino that Petacchi, the dead pilot, was her brother and that Largo's people killed him after using him to steal the bomber. She agrees to help avenge him and takes a radiation detector aboard the Disco Volante to confirm that nuclear material has been carried there. Largo discovers the device, realizes she has betrayed him, and tortures her for information. Meanwhile, Bond and Leiter combine the evidence from the sunken aircraft, the yacht, and SPECTRE's movements to identify the route by which Largo's divers intend to transport a bomb. A force of allied divers prepares to intercept them underwater before the weapon can be placed near its target.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bond joins the allied underwater force in an attack on Largo's men as they move one of the stolen nuclear weapons through the reefs. The battle is fought with diving knives, spearguns, and explosives, and casualties mount on both sides. Bond fights Largo at close quarters underwater but is overpowered and nearly killed. Domino has escaped confinement despite the torture inflicted on her; she intervenes and shoots Largo with a speargun, killing him and avenging her brother. The operation collapses, the immediate target is saved, and the nuclear weapons are secured. Bond survives and wakes under medical care with Leiter nearby. Domino is also safe, but Blofeld was never among the Nassau conspirators and remains free after the destruction of Largo's team.",
+            "through": {
+              "chapter": 25
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "thunderball-a-james-bond-novel"
+      }
+    },
     "thunderball-with-interview": {
       "characters": {
         "characters": [

@@ -503,6 +503,245 @@
         "work": "to-kill-a-mockingbird"
       }
     },
+    "tom-jones": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A foundling discovered in Squire Allworthy's bed and raised in his household. As he grows up, Tom is generous, warmhearted, impulsive, and repeatedly led into trouble by appetite and poor judgment.",
+            "id": "tom-jones",
+            "name": "Tom Jones",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A wealthy Somerset landowner known for benevolence and moral seriousness. He takes the abandoned infant Tom into his home and determines to provide for him despite the disapproval of others.",
+            "id": "squire-allworthy",
+            "name": "Squire Allworthy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Allworthy's unmarried sister, who lives with him when Tom is found. Reserved and conscious of propriety, she eventually marries Captain Blifil and becomes the mother of a son raised beside Tom.",
+            "id": "bridget-allworthy",
+            "name": "Bridget Allworthy",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Bridget's legitimate son and Allworthy's nephew, brought up with Tom in the same household. His serious manner, religious language, and outward obedience win the approval of the adults responsible for the boys.",
+            "id": "blifil",
+            "name": "Blifil",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The daughter and only child of Squire Western, raised on the neighboring estate. Beautiful, intelligent, and compassionate, she forms her own judgments despite her father's loud and domineering expectations.",
+            "id": "sophia-western",
+            "name": "Sophia Western",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Sophia's father, a wealthy country squire devoted to hunting, drink, and the authority he assumes over his household. He is affectionate toward Sophia but expects her marriage to follow his interests and commands.",
+            "id": "squire-western",
+            "name": "Squire Western",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the tutors hired to educate Tom and Blifil. A severe clergyman, he stresses religious discipline and tends to interpret Blifil's sober behavior more favorably than Tom's open impulsiveness.",
+            "id": "thwackum",
+            "name": "Thwackum",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A philosopher employed alongside Thwackum as tutor to Tom and Blifil. He appeals to abstract virtue and reason, frequently arguing with Thwackum while sharing his preference for the outwardly respectable Blifil.",
+            "id": "square",
+            "name": "Square",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A village schoolmaster and barber-surgeon whom Allworthy investigates after the discovery of Tom. His connection with Jenny Jones makes him vulnerable to suspicion and public disgrace.",
+            "id": "partridge",
+            "name": "Partridge",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An educated young servant accused of being the mother of the infant found in Allworthy's house. She accepts Allworthy's questioning with composure and is sent away from the parish after the scandal.",
+            "id": "jenny-jones",
+            "name": "Jenny Jones",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Squire Western's gamekeeper, a poor man with a large family. Tom is loyal to him and repeatedly helps him, even when George's conduct gives Tom's critics evidence against the young foundling.",
+            "id": "black-george-seagrim",
+            "name": "Black George Seagrim",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Black George's bold and attractive daughter. Her relationship with Tom becomes public when she is believed to be pregnant by him, creating scandal in the neighboring households.",
+            "id": "molly-seagrim",
+            "name": "Molly Seagrim",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A woman whom Tom rescues after a violent attack near Upton. Traveling under the name Mrs Waters, she responds warmly to his protection and becomes his companion at the inn.",
+            "id": "mrs-waters",
+            "name": "Mrs Waters",
+            "reveal": {
+              "chapter": 107
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sophia's cousin, an unhappy married woman fleeing her husband. Her journey intersects with Sophia's escape, and the two women travel together while their families pursue them.",
+            "id": "mrs-fitzpatrick",
+            "name": "Mrs Fitzpatrick",
+            "reveal": {
+              "chapter": 120
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A fashionable London widow with social influence and an appetite for intrigue. She becomes strongly attracted to Tom and expects discretion and compliance in return for her favor.",
+            "id": "lady-bellaston",
+            "name": "Lady Bellaston",
+            "reveal": {
+              "chapter": 146
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A sociable young gentleman whom Tom meets at Mrs Miller's London lodgings. Though his own romantic conduct is compromised, he becomes Tom's friend and is capable of loyalty when Tom needs practical help.",
+            "id": "nightingale",
+            "name": "Nightingale",
+            "reveal": {
+              "chapter": 147
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An aristocratic admirer of Sophia whose rank and fortune make him attractive to those managing her future. Accustomed to privilege, he is encouraged to believe that his desire should outweigh Sophia's refusal.",
+            "id": "lord-fellamar",
+            "name": "Lord Fellamar",
+            "reveal": {
+              "chapter": 169
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "tom-jones"
+      },
+      "recaps": {
+        "ending": "The case against Tom collapses when Fitzpatrick proves to be alive and admits that he initiated their fight. Mrs Waters is identified as Jenny Jones, but she reveals that she is not Tom's mother: Bridget Allworthy was his mother, and his father was a young man named Summer. Lawyer Dowling, Square, Mrs Miller, and Nightingale supply evidence showing how Blifil suppressed Bridget's message, distorted Tom's conduct, and worked to keep Allworthy hostile to him. Allworthy recognizes Tom as his nephew and heir, forgives him, and expels Blifil, though Tom later secures a modest allowance for his half-brother. Sophia still condemns Tom's sexual inconstancy and does not surrender immediately, but his repentance and changed circumstances finally persuade her. She and Tom marry with both fathers' approval and settle in the country, where their marriage and children provide the stable happiness that Tom's earlier impulses endangered. Squire Western remains exuberantly involved, while the friends who aided Tom are rewarded or reconciled.",
+        "in_short": "Squire Allworthy raises the foundling Tom Jones beside his legitimate nephew Blifil. Tom is generous but sexually and socially reckless; Blifil is outwardly virtuous and privately calculating. Tom and neighboring heiress Sophia Western fall in love, but her father orders her to marry Blifil. Blifil turns Allworthy against Tom, who is expelled and wanders toward London while Sophia runs away from the forced match. Their paths repeatedly cross, but Tom's affairs with Mrs Waters and Lady Bellaston deepen Sophia's distrust. In London, Blifil and his allies help place Tom in prison after a duel, and Tom briefly fears that Mrs Waters was his mother. The final disclosures reverse everything: Mrs Waters is Jenny Jones but not Tom's mother; Tom is Bridget Allworthy's son and therefore Allworthy's nephew; Fitzpatrick survived the duel; and Blifil concealed evidence and slandered Tom. Allworthy restores Tom, Sophia accepts his repentance, and they marry. Blifil is disgraced but receives a small allowance through Tom's mercy.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "The benevolent Squire Allworthy returns to his Somerset estate and finds an abandoned infant in his bed. He names the boy Tom Jones and resolves to raise him. Jenny Jones, a young servant with some education, is accused of being the mother and is sent away. Suspicion also falls on the schoolmaster Partridge, ruining his position. Allworthy's sister Bridget marries Captain Blifil and has a son, also called Blifil; after the captain's death, the two boys grow up together under the tutors Thwackum and Square. Tom develops a reputation for mischief but shows generosity, especially toward the impoverished gamekeeper Black George. Blifil behaves with greater outward discipline and reports Tom's faults to the adults. Allworthy tends to judge by moral principle, yet the contrast between Tom's visible errors and Blifil's respectable manner makes the boys' true characters difficult for him to read.",
+            "through": {
+              "chapter": 32
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tom grows close to Squire Western's daughter Sophia, whose intelligence and kindness attract him, though he has already begun an affair with Black George's daughter Molly Seagrim. Molly is believed to be pregnant by Tom, and his willingness to support her seems to prevent any honorable declaration to Sophia. He later discovers that Molly has also been involved with Square and that he is not responsible for her pregnancy. Sophia has recognized her own love for Tom, while Tom comes to understand that his attachment to her is more serious than his desire for Molly. Their feelings become increasingly apparent within the neighboring households. Tom's generosity and openness win Sophia, but his lack of restraint continues to give Blifil and the tutors grounds to present him as morally unfit.",
+            "through": {
+              "chapter": 58
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Allworthy becomes gravely ill. Tom's joy at his recovery leads to drunken celebration and a fight with Blifil and Thwackum, conduct that Blifil presents in the worst possible light. News also arrives of Bridget's death. Blifil conceals his hostility beneath concern and convinces Allworthy that Tom is ungrateful and corrupt. Allworthy banishes Tom from the estate. Tom leaves with little money, intending at first to go to sea or seek a military life. Meanwhile Squire Western discovers Sophia's love for Tom and turns against the young man. He and his sister insist that Sophia marry Blifil, a match Allworthy supports as socially suitable. Sophia refuses and escapes the house with her maid rather than submit. Western pursues her, while Tom travels without realizing how directly her flight is connected to him.",
+            "through": {
+              "chapter": 87
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On the road Tom encounters soldiers and is badly injured in a fight with the brutal ensign Northerton. He also meets Benjamin the barber, who proves to be the long-disgraced Partridge; Partridge joins him, hoping to help return him to Allworthy. During their travels Tom hears the solitary Man of the Hill's history, a warning about isolation and distrust. Near Upton, Tom rescues a woman calling herself Mrs Waters from Northerton's assault, and the two later sleep together at the inn. Sophia reaches the same inn while pursuing news of Tom and learns of his liaison. She leaves behind a muff bearing her name so that he will know how narrowly he missed her, then departs in pain and anger. Squire Western, Mr Fitzpatrick, and other pursuers converge on the inn, while Tom sets out again desperate to find Sophia and explain himself.",
+            "through": {
+              "chapter": 109
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sophia leaves Upton with her cousin Mrs Fitzpatrick, who is fleeing an oppressive marriage, and the two women eventually reach London. Squire Western and Mr Fitzpatrick pursue them for different reasons. Tom follows with Partridge, repeatedly delayed by roadside disputes, mistaken directions, and encounters with strangers whose stories broaden his view of marriage, poverty, and reputation. He remains desperate to find Sophia after learning how narrowly they missed each other at Upton and how deeply the discovery of Mrs Waters hurt her. By tracing Mrs Fitzpatrick's movements, Tom finally reaches London and begins searching among people with access to Sophia's relations. Sophia has secured protection in the capital, but that protection also places new social barriers between her and Tom. At this point he has reached the city but has not repaired the breach created by his conduct.",
+            "through": {
+              "chapter": 142
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In London Tom lodges with the generous Mrs Miller and befriends Nightingale. Sophia is staying under the protection of Lady Bellaston, who controls access to her and also begins a secret affair with Tom. Tom accepts Bellaston's favors while still professing love for Sophia, repeating the conflict between sincere attachment and sexual inconstancy. When he finally gains a meeting with Sophia, the evidence of Mrs Waters and Lady Bellaston confirms her belief that he cannot yet be trusted. Tom also learns that Nightingale has seduced Mrs Miller's daughter Nancy and plans to abandon her. He presses his friend to take responsibility and helps bring about their marriage, showing a moral clarity about another man's conduct that he has failed to apply consistently to his own. Lady Bellaston becomes increasingly determined to separate him from Sophia.",
+            "through": {
+              "chapter": 164
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tom tries to end Lady Bellaston's hold by sending her a marriage proposal, correctly expecting that she will reject a match that would expose their affair. The maneuver makes her hostile, and she promotes Lord Fellamar as a husband for Sophia. Fellamar attempts to force himself on Sophia in the belief that marriage can repair the act, but Squire Western's arrival interrupts him. Western confines Sophia again and revives the plan to marry her to Blifil. Tom's position then collapses after he encounters Mrs Fitzpatrick and fights a duel with her jealous husband. Fitzpatrick is wounded, and Tom is arrested and imprisoned under the threat of a murder charge. Blifil, now in London with Allworthy, works through others to keep the evidence damaging and to advance his own marriage. Sophia still refuses Blifil, while Nightingale and Mrs Miller remain among Tom's few active friends.",
+            "through": {
+              "chapter": 186
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Fitzpatrick survives and acknowledges that he initiated the duel, clearing Tom of the gravest charge. Mrs Waters confirms that she was once Jenny Jones but reveals that she falsely accepted blame for Tom's birth: Tom's real mother was Bridget Allworthy, and his father was a young man named Summer. Further testimony exposes Blifil's conduct. He suppressed Bridget's message about Tom's parentage, concealed Square's favorable account of Tom during Allworthy's illness, and worked with lawyer Dowling to keep Allworthy deceived. Allworthy recognizes Tom as his nephew, restores him to favor and inheritance, and sends Blifil away. Tom nevertheless asks that Blifil receive a modest allowance. Sophia does not instantly excuse Tom's repeated infidelity, but his repentance and her love finally overcome her objections. They marry and settle happily in the country, raising children and maintaining friendships with those who proved loyal, while Blifil remains excluded from the family circle.",
+            "through": {
+              "chapter": 208
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "tom-jones"
+      }
+    },
     "torith": {
       "characters": {
         "characters": [
