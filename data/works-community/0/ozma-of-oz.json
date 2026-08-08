@@ -1043,6 +1043,107 @@
         "work": "pans-labyrinth-the-labyrinth-of-the-faun"
       }
     },
+    "paradise-lost-book-ix": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The first man, living with Eve in Eden under God's single prohibition against eating from the tree of knowledge. He loves Eve, values reason and obedience, and begins this part of the poem confident that their partnership can withstand the enemy they have been warned about.",
+            "id": "adam",
+            "name": "Adam",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The first woman and Adam's companion in Eden. Intelligent, independent, and eager to prove the strength of her virtue, she proposes that the pair divide their work despite Adam's concern that the tempter will find either of them more vulnerable alone.",
+            "id": "eve",
+            "name": "Eve",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "The Tempter"
+            ],
+            "description": "The fallen archangel who led a rebellion against God and now seeks revenge by corrupting humanity. Having returned secretly to Eden after earlier reconnaissance, he searches for an animal form through which he can approach Eve without immediately revealing himself.",
+            "id": "satan",
+            "name": "Satan",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An animal of Eden whose body Satan uses to address Eve. Its apparent ability to reason and speak becomes the tempter's first false piece of evidence that eating the forbidden fruit enlarges a creature's nature rather than bringing death.",
+            "id": "the-serpent",
+            "name": "The Serpent",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The creator whose command permits Adam and Eve to enjoy Eden while forbidding the fruit of one tree. He does not appear as a speaking participant in this book, but the freedom he has granted humanity and the warning he has given them define the choice at its center.",
+            "id": "god",
+            "name": "God",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An angel who previously warned Adam about Satan's rebellion, the creation of the world, and the danger now facing the human pair. His instruction belongs to the knowledge Adam and Eve possess before the temptation begins.",
+            "id": "raphael",
+            "name": "Raphael",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "paradise-lost-book-ix"
+      },
+      "recaps": {
+        "ending": "After Eve eats the forbidden fruit, Adam understands that she has fallen but chooses to share her fate rather than remain obedient without her. He eats as well. Their first response is intoxicated desire, followed by sleep and a painful new self-consciousness. They cover their bodies with leaves, but the attempt cannot restore their former innocence. Reasoned companionship gives way to accusation: Adam blames Eve for insisting that they work apart, and Eve answers his charges. Book IX closes with the couple alienated from God and from the harmony they had shared, caught in mutual anger and shame. Divine judgment and expulsion have not yet occurred within this book, but the central human disobedience is complete. Satan's temptation has succeeded, and death has entered human history through choices made freely by both Eve and Adam.",
+        "in_short": "Satan returns to Eden and enters a sleeping serpent so that he can approach humanity in disguise. Adam and Eve debate whether to work separately; Eve argues that untested virtue is insufficient, and Adam reluctantly lets her go alone. Satan finds her and uses flattery, the serpent's apparent speech, and deceptive reasoning to claim that fruit from the forbidden tree gave him higher powers and cannot truly cause death. Eve eats, then brings the fruit to Adam. Knowing she has disobeyed, Adam chooses love and shared ruin over separation from her and eats too. The pair experience lust, sleep, shame, and awareness of nakedness. They make coverings from leaves, but their former harmony is gone. Their discussion becomes a bitter quarrel in which each blames the other. The book ends after the Fall itself, before the later judgment and expulsion from Eden.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously in Paradise Lost: Satan and other rebel angels were defeated and cast out of Heaven. Seeking revenge against God, Satan crossed Chaos and discovered the newly created world. God created Adam and Eve free and innocent in Eden, allowing them every pleasure except fruit from the tree of knowledge and warning that disobedience would bring death. Satan entered Eden and began planning to corrupt them. The angel Raphael later visited Adam, explaining the war in Heaven, the creation of the world, and the need to govern desire through reason. Adam in turn described his awakening, his union with Eve, and his deep attachment to her. By the opening of Book IX, the human pair know that an enemy seeks their ruin, but they have not sinned and remain capable of freely rejecting him.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Satan returns to Eden after circling the earth and chooses the serpent as his disguise. In the morning Adam and Eve discuss their work. Eve proposes that they separate to accomplish more; Adam warns that the tempter may attack when either is alone, but she argues that virtue must be able to withstand trial. Adam reluctantly agrees. Satan finds Eve and first wins her attention through elaborate admiration. Speaking through the serpent, he claims that eating from a certain tree raised an animal to speech and reason. At the forbidden tree he dismisses the threatened penalty, suggests that God wishes to keep knowledge from humanity, and appeals to Eve's desire for wisdom and independence. Eve eats the fruit. She then considers whether to keep her advantage from Adam, but fear of separation leads her to tell him and offer him the fruit. Adam immediately recognizes the disaster. Rather than lose Eve, he knowingly eats too. Their heightened desire soon gives way to uneasy sleep, shame, and awareness of nakedness. They cover themselves with leaves and begin arguing over responsibility. The book ends with their innocence and mutual harmony lost, though judgment and expulsion still lie ahead.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "paradise-lost-book-ix"
+      }
+    },
     "paradise-lost-paradise-regained": {
       "characters": {
         "characters": [

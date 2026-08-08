@@ -3406,6 +3406,168 @@
         "work": "the-runesmith"
       }
     },
+    "the-russia-house": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Barley"
+            ],
+            "description": "A gifted but unreliable British publisher whose small firm has long dealt with Russian writers and officials. He drinks heavily, plays jazz, dislikes institutions, and once made an impassioned speech in Moscow about trust between East and West. A package sent from the Soviet Union in his name draws him into an intelligence operation for which temperament has not prepared him.",
+            "id": "bartholomew-scott-blair",
+            "name": "Bartholomew Scott Blair",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Katya"
+            ],
+            "description": "A Soviet editor and mother who entrusts a set of secret scientific notebooks to a visiting publisher, asking that they reach Barley Blair in Britain. Composed and practical under surveillance, she acts on behalf of a man she calls Goethe and accepts serious personal risk to carry his warning westward.",
+            "id": "yekaterina-orlova",
+            "name": "Yekaterina Orlova",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Goethe"
+            ],
+            "description": "A respected Soviet physicist and Katya's friend whose private notebooks question the real strength and reliability of Soviet strategic weapons. Idealistic, intense, and physically unwell, he wants the information published in the West rather than quietly absorbed by its intelligence services.",
+            "id": "yakov-saveleyev",
+            "name": "Yakov Saveleyev",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A British intelligence officer in the section informally called the Russia House. He helps assess the notebooks and manage Barley's recruitment, observing both the operation and the competing ambitions of the British and American services with a more reflective eye than many of his colleagues.",
+            "id": "ned",
+            "name": "Ned",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The practical head of the Russia House team handling the Soviet material. He must turn a wandering civilian publisher into a controlled intermediary, preserve cooperation with the Americans, and decide how far Barley can be trusted when the operation begins to depend on personal loyalties.",
+            "id": "walter",
+            "name": "Walter",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A British lawyer attached to the intelligence establishment, dry and precise in contrast with Barley. He participates in the long debriefings and legal arrangements that surround the operation and helps expose the distance between the services' formal safeguards and the pressure placed on their recruit.",
+            "id": "palfrey",
+            "name": "Palfrey",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An American intelligence officer involved in testing the authenticity and value of Goethe's claims. He represents a service eager to convert the notebooks into hard strategic advantage and pushes for detailed answers that will prove whether the Soviet source can be believed.",
+            "id": "russell-sheriton",
+            "name": "Russell Sheriton",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A visiting publisher who receives Katya's package at a Moscow book fair because Barley is absent. His attempt to honor her instructions brings the notebooks to official attention and makes him the first person questioned in the chain leading back to Barley.",
+            "id": "niki-landau",
+            "name": "Niki Landau",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A younger member of the British team assigned to help prepare Barley for contact with Katya and Goethe. Careful and observant, he supplies the operational detail required to make the publisher's travel and questioning appear natural.",
+            "id": "wicklow",
+            "name": "Wicklow",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-russia-house"
+      },
+      "recaps": {
+        "ending": "Barley concludes that Goethe has been exposed and that Katya and her family will be punished if he completes the operation on British and American terms. He uses the intelligence services' prized questionnaire and the access entrusted to him as bargaining material with the Soviet authorities. The choice destroys the Western operation and gives away sensitive indications of what its analysts want to know, but it is meant to purchase safe passage for Katya and her children. The British debrief Barley and assess the damage, treating his conduct as betrayal even while recognizing that their pressure left him with a stark moral choice. Goethe does not emerge safely from the failed channel. Barley loses his old freedom and much of his professional life, then waits in Lisbon for the family whose safety he put before the strategic prize. The book closes without confirming that Katya will arrive, leaving the personal outcome of his bargain unresolved after the intelligence operation has definitively failed.",
+        "in_short": "Soviet editor Katya Orlova sends British publisher Barley Blair secret notebooks written by her physicist friend Goethe, who argues that the Soviet nuclear threat rests on unreliable technology and institutional deception. British intelligence intercepts the material, recruits the unconventional Barley, and—with strong American involvement—trains him to return to Moscow, verify Goethe's identity, and obtain answers to a detailed technical questionnaire. Barley meets Katya, falls in love with her, and gradually places the lives behind the source above the strategic value of the information. The operation grows increasingly compromised, and Barley realizes that Goethe has been discovered and Katya is in danger. Rather than deliver her to the consequences of Western demands, he trades the questionnaire and his cooperation to the Soviet side in an attempt to secure safe passage for Katya and her children. The services lose their source and interrogate Barley over the damage. He ends in Lisbon waiting for Katya, whose arrival remains uncertain.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "At a Moscow book fair, Soviet editor Katya Orlova gives visiting publisher Niki Landau a package of notebooks to carry to Bartholomew Scott Blair, known as Barley. Barley is not at the fair despite being expected, and the attempted delivery brings the material to British intelligence. The notebooks, written by a physicist using the name Goethe, claim that Soviet strategic weapons are far less reliable than Western governments assume. They could transform arms policy, but they could also be disinformation. The officers of the Russia House begin reconstructing the route of the package and searching for Barley, a small British publisher known for drinking, jazz, erratic business habits, and outspoken faith in ordinary Russians. Before using him, the service must determine whether Katya chose him because of a genuine prior connection and whether he can survive questioning from both his own side and Soviet security.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The British locate Barley and subject him to extensive interviews. He remembers meeting Katya and Goethe during an earlier visit, when his talk about trust and peace persuaded Goethe that he might publish the truth rather than turn it into secret leverage. Barley had not expected that confidence to produce a clandestine manuscript. Ned, Walter, Palfrey, and their colleagues assess his history and contradictions, while American analysts press for proof that Goethe is a real, well-placed scientist. The services decide to send Barley back as their intermediary. They teach him communication procedures and give him a technical list of questions designed to test Goethe's knowledge. Barley agrees in part from curiosity and in part because Katya has taken a risk in relying on him, but his handlers remain uneasy about a recruit who responds more strongly to people than to official objectives.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Barley returns to the Soviet Union under the cover of publishing business and renews contact with Katya. Surveillance and the possibility of provocation surround every meeting, so both must speak indirectly while he tries to follow his training. Katya confirms her loyalty to Goethe and explains the mixture of scientific honesty and moral urgency behind the notebooks. Barley also sees the practical vulnerability of her life as a mother responsible for her children. What began as an operation becomes personal: he is attracted to Katya and resents the way distant analysts treat her chiefly as access to a source. He nevertheless continues the assigned task, seeking a direct meeting with Goethe and carrying the Western questionnaire whose answers are supposed to establish the scale of the Soviet deception.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Barley meets Goethe and becomes convinced that the physicist is sincere. Goethe describes a weapons establishment that hides failures, inflates achievement, and allows both superpowers to organize policy around a false image of Soviet capacity. He wants public understanding and disarmament, not a private advantage for one intelligence bloc. The British and Americans, however, require increasingly exact technical confirmation before acting on his claims. Their suspicion extends to Barley, whose reports reveal his sympathy for Katya and Goethe. Barley passes questions and messages while recognizing that each additional contact increases the danger to the Soviet pair. His attachment to Katya deepens, and the operation's official definition of success begins to conflict with what he believes he owes the people who supplied the material.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Signs of surveillance and disrupted arrangements suggest that the channel is no longer secure. The Western team continues to seek the completed questionnaire because it regards Goethe's information as an exceptional strategic prize, but Barley fears that Goethe has already been identified and that Katya and her children will bear the consequences. His handlers interpret deviations as unreliability or possible manipulation; Barley sees their insistence as a willingness to spend other people's lives. He decides that obedience will not protect Katya. Using the questions and operational knowledge entrusted to him, he opens his own path to the Soviet authorities and seeks a bargain. The decision sacrifices the purpose for which Britain recruited him, but it gives him something the official plan no longer offers: a chance to secure safe passage for Katya's family.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Barley trades away the Western questionnaire and compromises the operation in an attempt to obtain safe passage for Katya and her children. The bargain deprives British and American intelligence of the proof it wanted and reveals important clues about their technical uncertainties. Goethe, already exposed, is not rescued through the arrangement. Afterward the services debrief Barley, reconstructing how their carefully managed mission was overturned by the civilian at its center. They regard the loss as grave, yet their account also shows that Barley acted from a loyalty they could neither control nor include in their calculations. Barley is left professionally and personally diminished. He goes to Lisbon and waits, trusting that the Soviet side will honor its part of the bargain and that Katya will come with her family. The anticipated intelligence triumph has definitively failed; the private rescue for which Barley sacrificed it remains unconfirmed when the book ends.",
+            "through": {
+              "chapter": 18
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-russia-house"
+      }
+    },
     "the-sand-man": {
       "characters": {
         "characters": [

@@ -2733,6 +2733,136 @@
         "work": "gemma-arterton-reads-alices-adventures-in-wonderland-famous-fiction"
       }
     },
+    "gentlemen-and-players": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An elderly classics master at St Oswald's Grammar School in Malbry, where he has taught for more than three decades. Straitley is irritable about administrative fashions and fiercely loyal to the old school, its pupils, and the Latin he teaches. His long memory for the institution makes him unusually alert to small inconsistencies when the new academic year begins to go wrong.",
+            "id": "roy-straitley",
+            "name": "Roy Straitley",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Snyde",
+              "the Black Pawn"
+            ],
+            "description": "An unnamed narrator who has entered St Oswald's staff under a concealed identity. As the child of a former school porter, the narrator grew up excluded from the privileged world inside the school gates and now describes a deliberate campaign to injure the institution from within. The plan depends on disguise, patience, and knowledge of how rumors and minor rule-breaking can damage trust.",
+            "id": "the-black-pawn",
+            "name": "The Black Pawn",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The headmaster of St Oswald's at the start of a difficult new term. Bishop must protect the school's reputation while managing worried parents, staff rivalries, new technology, and a series of incidents that initially appear unrelated.",
+            "id": "pat-bishop",
+            "name": "Pat Bishop",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A St Oswald's boy whom the young Snyde befriends years before the present-day attack on the school. Leon provides a route into the institution's private spaces and becomes central to the memories from which Snyde's grievance develops.",
+            "id": "leon-mitchell",
+            "name": "Leon Mitchell",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The school porter and parent of the child who calls themself Snyde. His job provides a home beside St Oswald's but no social place within it, leaving his child close enough to observe the school while remaining decisively outside its privileged community.",
+            "id": "john-snyde",
+            "name": "John Snyde",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A longstanding St Oswald's colleague of Straitley. Scoones belongs to the older order of the school and shares enough of its history to help define what is being lost as institutional pressures and deliberate sabotage destabilize the staff.",
+            "id": "eric-scoones",
+            "name": "Eric Scoones",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "gentlemen-and-players"
+      },
+      "recaps": {
+        "ending": "Straitley finally recognizes that the multiplying scandals share a deliberate source inside St Oswald's. The hidden narrator is exposed as Snyde, the porter's child who entered the school under a false identity; the narration has encouraged others to assume a male culprit, but Snyde is a woman. Her present campaign grows from childhood exclusion, her illicit access to the school, and the catastrophic end of her friendship with Leon. By the time Straitley closes in, she has exploited staff weaknesses, forged communications, and turned suspicion between colleagues, causing lasting damage even though the school itself survives. The confrontation breaks her control of the game and prevents the complete destruction she intended. Straitley, physically and professionally tested but still committed to St Oswald's, returns to his classroom. The school's traditions have proved neither innocent nor invulnerable, yet its survival gives Straitley the final advantage in the contest Snyde imagined as chess.",
+        "in_short": "At the start of a new term at St Oswald's Grammar School, veteran Latin master Roy Straitley resists modernization while an unnamed new staff member begins a calculated attack from within. The saboteur, calling themself Snyde or the Black Pawn, is the child of a former school porter and has carried resentment against the elite institution since secretly entering it as a child and befriending pupil Leon Mitchell. Small thefts, forged messages, planted evidence, data breaches, and rumors accumulate into disciplinary crises and public scandal. Straitley's knowledge of the school lets him see design where others see coincidence, though the attacker repeatedly redirects suspicion. He eventually uncovers the false identity and the childhood history behind the campaign. Snyde is revealed to be a woman, overturning assumptions encouraged by her account. Her attempt to destroy St Oswald's is stopped after a final contest with Straitley, but the school and its staff have been badly shaken. Straitley survives and resumes teaching, preserving the institution without pretending it is unchanged.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "St Oswald's begins another academic year under pressure to modernize. Roy Straitley, its veteran Latin master, distrusts the new computer systems, managerial language, and recently hired staff but remains devoted to the school. A second narrator, concealed among those newcomers, describes entering St Oswald's deliberately. Calling themself Snyde and treating the plan as a chess match, the infiltrator intends to destroy the institution from within. The campaign starts with acts small enough to be blamed on carelessness or ordinary misconduct. Because staff are already divided by status, age, and departmental rivalry, each incident creates more suspicion than its apparent importance warrants.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The hidden attacker gains access to private information and uses the school's dependence on reputation against it. Missing property, altered messages, and embarrassing disclosures make colleagues question one another. Straitley is drawn into the disturbances while also trying to protect his pupils and his place in a changing institution. In memories of childhood, Snyde recalls living beside St Oswald's as the porter's child, able to watch the boys' world but barred from belonging to it. A secret friendship with pupil Leon Mitchell offered temporary access and sharpened the pain of exclusion. The present sabotage is therefore both a planned institutional attack and a personal return to a place Snyde believes caused lasting injury.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Incidents spread beyond inconvenience into accusations capable of ending careers. Forged or manipulated evidence sends inquiries in the wrong direction, and the school's leaders respond to each crisis separately, which helps conceal the common design. Snyde studies colleagues for vulnerabilities and uses their habits as cover. Straitley notices that the pattern depends on an insider who understands both old routines and new systems. His suspicions remain difficult to prove, especially because his resistance to administrative change allows others to dismiss him as territorial or out of date. Meanwhile, the account of Snyde and Leon moves toward the childhood event that transformed envy and longing into revenge.",
+            "through": {
+              "chapter": 36
+            }
+          },
+          {
+            "scope": "book",
+            "text": "St Oswald's begins to fracture under public and internal pressure. Parents, governors, and staff react to scandal, while Snyde encourages the belief that several unrelated people are responsible. Straitley becomes both investigator and target. Details from the school's past allow him to test the stories surrounding the new staff, and he starts to understand that the attacker is performing an identity rather than merely hiding misconduct. The past narrative shows how Snyde's unauthorized life inside the school and bond with Leon ended in disaster, leaving St Oswald's as the object onto which grief, humiliation, and anger were fixed.",
+            "through": {
+              "chapter": 48
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Straitley connects the present attacks with the former porter's child and narrows the possible infiltrator. Snyde responds by accelerating the campaign and turning institutional procedures against the people trying to stop it. The apparent identity of the narrator remains a weapon: colleagues and readers are encouraged to make assumptions about which new teacher is speaking. With reputations already damaged, Straitley has little room for error. The conflict becomes a direct contest between Snyde's carefully prepared false history and Straitley's memory of St Oswald's people and places.",
+            "through": {
+              "chapter": 60
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Straitley exposes the infiltrator as Snyde, the former porter's child, and the narrative's central disguise becomes clear: Snyde is a woman who has relied on a false identity and on others' assumption that the vengeful voice belonged to a man. Her sabotage has included forged communications, planted evidence, manipulated data, and carefully directed suspicion, all rooted in her childhood exclusion and the loss connected with Leon Mitchell. The final confrontation prevents her from completing the destruction of St Oswald's, although the campaign leaves real damage behind. Straitley endures the physical and professional strain and returns to teaching. The school survives the scandal, giving him the decisive outcome in the chess game Snyde believed she controlled, while the exposure of its divisions prevents any simple restoration of the old order.",
+            "through": {
+              "chapter": 72
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "gentlemen-and-players"
+      }
+    },
     "georges-marvelous-medicine": {
       "characters": {
         "characters": [
