@@ -1443,6 +1443,63 @@
         "work": "daddy-long-legs"
       }
     },
+    "dagon-war-of-worlds-dramatized": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An unnamed supercargo aboard a merchant vessel who begins his account while dependent on morphine and preparing to end his life. During the First World War, a German raider captures his ship in the Pacific, but he escapes alone in a small boat and later encounters something that destroys his confidence in ordinary reality.",
+            "id": "narrator",
+            "name": "The Narrator",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Dagon"
+            ],
+            "description": "A colossal amphibious being glimpsed beside an ancient carved monolith in a newly exposed tract of the Pacific seabed. The narrator associates it with humanity's oldest traditions of sea gods, though the account does not establish its identity with certainty.",
+            "id": "sea-creature",
+            "name": "The Sea Creature",
+            "reveal": {
+              "chapter": 1
+            }
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "dagon-war-of-worlds-dramatized"
+      },
+      "recaps": {
+        "ending": "After being rescued from the Pacific, the narrator can find no public record of the upheaval that exposed the strange seabed. A scientist dismisses his questions, while his own study of the ancient god Dagon strengthens his fear that immense sea-dwelling beings survive beneath the oceans and may one day rise. Morphine no longer suppresses the memory. As he finishes his written account before an intended fatal plunge from his window, he hears a heavy sound at the door and then the movement of a large body. The final lines break off as he reacts to something at the window, leaving it uncertain whether a creature has truly found him or terror has overwhelmed him.",
+        "in_short": "During the First World War, an unnamed merchant-ship supercargo escapes a German captor in a small boat and drifts across the Pacific. He awakens after a violent disturbance to find his boat stranded on a vast, foul expanse of seabed that has abruptly risen above the water. Crossing it on foot, he reaches a chasm containing an ancient monolith carved with aquatic humanoids and encounters an immense living sea creature beside it. He flees in terror and later wakes aboard a rescuing ship. No one confirms what he saw, and neither scientific inquiry nor study of ancient sea-god traditions gives him relief. Addicted to morphine and convinced that beings from the ocean depths threaten humanity, he records the experience before planning his death. Sounds at his door and window interrupt the manuscript, suggesting either that the horror has followed him or that his fear has finally consumed him.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "An unnamed merchant-ship supercargo, writing under the effects of morphine, explains why he expects to die. During the First World War, a German raider captures his vessel in the Pacific. He escapes alone in a small boat, drifts without navigation, and wakes after an extraordinary upheaval to find the boat grounded in a huge plain of black, decaying mud where open ocean should be. After waiting for the ground to dry, he walks across it and reaches a hill overlooking a deep chasm. There he finds a monolith covered with carvings of fishlike humanoids and enormous marine animals. A gigantic amphibious creature rises from the water and clings to the stone, sending him fleeing back across the waste. His next clear memory is of a hospital after a ship rescues him. Later investigation yields no confirmation, but reading about the ancient god Dagon intensifies his belief that powerful beings live beneath the sea. Unable to escape the memory, he prepares to kill himself. His narrative ends abruptly when something seems to approach his room and appear at the window, without resolving whether the threat is physical or hallucinatory.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "dagon-war-of-worlds-dramatized"
+      }
+    },
     "daisy-jones-amp-the-six": {
       "characters": {
         "characters": [
@@ -1633,6 +1690,139 @@
           }
         ],
         "work": "daisy-jones-amp-the-six"
+      }
+    },
+    "daisy-miller": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A young American who has spent much of his life in Geneva and has absorbed the cautious social habits of European society. While visiting Vevey, he becomes fascinated by Daisy Miller but repeatedly tries to classify her conduct instead of trusting his own response to her.",
+            "id": "frederick-winterbourne",
+            "name": "Frederick Winterbourne",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Annie P. Miller"
+            ],
+            "description": "A wealthy young American traveler from Schenectady, New York. Talkative, spontaneous, and eager for company, she ignores many of the conventions by which established expatriates judge an unmarried woman, leaving Winterbourne uncertain whether she is innocent, reckless, or deliberately unconventional.",
+            "id": "daisy-miller",
+            "name": "Daisy Miller",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Daisy's outspoken nine-year-old brother. He roams freely, demands sweets, complains about Europe, and readily tells strangers about his family, making him Winterbourne's accidental introduction to Daisy.",
+            "id": "randolph-miller",
+            "name": "Randolph Miller",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Daisy and Randolph's vague, indulgent mother, whose poor health and uncertain authority do little to regulate her children's behavior. She accompanies Daisy but does not act as the vigilant chaperone expected by the expatriate circle.",
+            "id": "mrs-miller",
+            "name": "Mrs Miller",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Millers' Italian courier. He is familiar enough with the family to offer advice and disapproval, and Winterbourne notices that Daisy treats him less formally than European class conventions would prescribe.",
+            "id": "eugenio",
+            "name": "Eugenio",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Winterbourne's wealthy aunt, an established member of the American community in Europe. She refuses to meet Daisy because the Miller family's manners fall outside her standards of respectability.",
+            "id": "mrs-costello",
+            "name": "Mrs Costello",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An American hostess in Rome who initially takes an interest in Daisy. She sees herself as protecting the young woman from damaging gossip, but her concern becomes social rejection when Daisy refuses to obey her advice.",
+            "id": "mrs-walker",
+            "name": "Mrs Walker",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A handsome Italian who spends conspicuous amounts of time with Daisy in Rome. His uncertain profession and social standing make him unacceptable to the American expatriates, though Daisy openly prefers his company to their rules.",
+            "id": "mr-giovanelli",
+            "name": "Mr Giovanelli",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "daisy-miller"
+      },
+      "recaps": {
+        "ending": "Winterbourne finds Daisy and Giovanelli together at the Colosseum late at night, despite the danger of malaria. He decides that her presence there proves she is indifferent to social judgment, though he still urges her to leave immediately. Daisy soon becomes gravely ill with Roman fever. Before dying, she asks her mother to tell Winterbourne that she was never engaged to Giovanelli, showing that his opinion mattered to her. At the funeral, Giovanelli insists that Daisy was innocent and says he had no expectation of marrying her. Winterbourne later admits to Mrs Costello that he made a mistake and had lived too long away from America to understand Daisy fairly. Nevertheless, he resumes his life in Geneva, where rumor again associates him with a foreign woman. His recognition comes too late to change Daisy's fate or his own settled habits.",
+        "in_short": "At Vevey, the Europeanized American Frederick Winterbourne meets Daisy Miller, a wealthy young tourist whose openness and disregard for chaperonage intrigue him. They visit Chillon alone, a choice that makes Winterbourne's aunt refuse to meet her. Months later in Rome, Daisy spends much of her time with the Italian Giovanelli and rejects warnings from Winterbourne and Mrs Walker that public opinion is turning against her. Winterbourne cannot decide whether her conduct reflects innocence or impropriety. He finally sees Daisy with Giovanelli at the malaria-ridden Colosseum at night and judges her harshly. Daisy contracts Roman fever and dies soon afterward, leaving a message that she was never engaged to Giovanelli. Giovanelli affirms her innocence. Winterbourne realizes that his reliance on social categories kept him from understanding her, but returns to his conventional life in Geneva.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Frederick Winterbourne, an American long resident in Geneva, is visiting his aunt at Vevey when he meets nine-year-old Randolph Miller and Randolph's older sister Daisy. Daisy is a wealthy American tourist, lively and direct in a way that unsettles Winterbourne's European social assumptions. She speaks freely with him without a formal introduction and agrees to visit the nearby Château de Chillon alone with him. Their mother is indulgent and their courier Eugenio seems unable to impose the usual rules. Winterbourne's aunt, Mrs Costello, refuses to meet Daisy because she considers the family socially unacceptable. Winterbourne remains attracted to Daisy and carries out the excursion to Chillon, but soon returns to Geneva. Daisy tells him that the family will spend the winter in Rome and expects him to visit there.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Winterbourne finds the Millers in Rome and learns that Daisy's conduct is already troubling the American expatriate community. She is often seen with Mr Giovanelli, a handsome Italian of uncertain position, and she refuses to treat gossip as a reason to avoid him. At Mrs Walker's gathering, Daisy announces that she will walk publicly with Giovanelli. Mrs Walker follows in a carriage and urges her to get in, warning that the walk will damage her reputation. Daisy refuses to be controlled and continues with the two men. Winterbourne alternates between defending her as an innocent American and suspecting that she understands the implications of her choices. When Daisy later arrives at Mrs Walker's party, the hostess openly turns away from her, completing her exclusion from the respectable circle.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Daisy continues to see Giovanelli despite Winterbourne's warnings. She playfully claims to be engaged and then denies it, making it impossible for Winterbourne to fit her into a stable category. One night he visits the Colosseum and discovers Daisy and Giovanelli there together. Because the ruins are known to be dangerous after dark, their presence risks not only scandal but malaria. Winterbourne suddenly decides that Daisy must have known what people thought and ceased to care. His uncertainty seems resolved, but the judgment distances him from her just when she asks whether he believed she was engaged. He insists that she and Giovanelli leave the unhealthy place at once.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Daisy contracts Roman fever after the night at the Colosseum and becomes seriously ill. Mrs Miller tells Winterbourne that Daisy wanted him to know she had never been engaged to Giovanelli, a message that reveals his judgment mattered to her. Daisy dies and is buried in Rome. At the funeral, Giovanelli tells Winterbourne that she was the most innocent young woman he had known; he had recognized that she would never marry him, but valued her company. The following summer Winterbourne tells Mrs Costello that he wronged Daisy and had lived abroad too long to understand her. Yet this insight produces no evident change: he returns to Geneva and to the same polished, conventional social life that shaped his mistake.",
+            "through": {
+              "chapter": 4
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "daisy-miller"
       }
     },
     "daniel-deronda": {

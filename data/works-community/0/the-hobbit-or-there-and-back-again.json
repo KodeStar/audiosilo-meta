@@ -507,6 +507,188 @@
         "work": "the-hope-of-elantris"
       }
     },
+    "the-horla": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A prosperous man living alone on an estate near Rouen, recording his experiences in a diary. Sensitive to the landscape and confident in reason at first, he becomes troubled by fever, nightmares, exhaustion, and the conviction that an unseen presence enters his room at night.",
+            "id": "narrator",
+            "name": "The narrator",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The name the narrator gives to an invisible being he believes has attached itself to him. It appears to drink water and milk, influence his will, and occupy physical space despite being beyond ordinary sight; whether it is an external creature or part of his mental collapse remains unresolved.",
+            "id": "the-horla",
+            "name": "The Horla",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The narrator's cousin in Paris. During a gathering at her home, she agrees to be hypnotized and later carries out a suggestion without consciously remembering why, giving the narrator disturbing evidence that one mind can govern another.",
+            "id": "madame-sable",
+            "name": "Madame Sablé",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A physician who demonstrates hypnosis at Madame Sablé's home. His experiment shows that a person can be made to see what is absent, overlook what is present, and obey a command after waking.",
+            "id": "doctor-parent",
+            "name": "Doctor Parent",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A monk encountered during the narrator's visit to Mont-Saint-Michel. He discusses forces and beings that may exist beyond the narrow range of human senses, an idea that stays with the narrator after he returns home.",
+            "id": "the-monk",
+            "name": "The monk",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The domestic workers on the narrator's estate. Their own frightened disputes suggest that the household's disturbance may extend beyond their employer, but they remain unaware of the fatal plan he eventually directs at the house.",
+            "id": "the-servants",
+            "name": "The servants",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-horla"
+      },
+      "recaps": {
+        "ending": "Convinced that the Horla is physically present in his room, the narrator locks it inside and sets fire to his house. Only after stepping back to watch the blaze does he remember that his servants are trapped within; their cries make clear that his attempt has killed innocent people. He hopes the fire has also destroyed the invisible being, but doubt returns because a creature without a visible body may not be vulnerable to ordinary flames. He concludes that the Horla has survived and that he has no reliable way to escape its control. The diary closes with his belief that if he cannot kill the being, he must kill himself. The story does not settle whether an invading creature has driven him to this point or whether his conviction itself is the illness, but the destruction and deaths caused by his response are real within his account.",
+        "in_short": "A well-to-do man near Rouen begins a diary in good spirits, then develops sleeplessness, dread, and the sense that an invisible visitor drinks beside his bed and controls his actions. Travel briefly relieves him. A demonstration of hypnosis in Paris shows him how one mind can command another, while later experiments at home convince him that an unseen body consumes milk and water. He sees a rose apparently lifted by nothing and, during a mirror encounter, believes the entity stands between him and his reflection. A report of similar disturbances in Brazil makes him connect the presence with a ship he had welcomed from his garden. Naming the being the Horla, he comes to regard it as a new species capable of mastering humanity. He traps it in his house and burns the building, forgetting his servants inside. Unsure the Horla died, he ends by resolving that suicide is his only remaining escape.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "A prosperous man living beside the Seine near Rouen records a growing crisis in his diary. Soon after admiring a Brazilian ship passing his home, he suffers fever, nightmares, weakness, and the sensation that someone enters his room while he sleeps. Water and milk left by his bed disappear. A journey, including a visit to Mont-Saint-Michel, restores him temporarily, but the symptoms return at home. In Paris, Doctor Parent hypnotizes the narrator's cousin Madame Sablé and makes her obey a later command she cannot explain; the demonstration convinces the narrator that a will can be controlled without its knowledge. Back on his estate, deliberate tests with food and drink persuade him that an unseen being shares his rooms. He watches a rose rise as though plucked by an invisible hand and later believes the creature blocks his reflection in a mirror. A report from Brazil of an epidemic involving unseen, vampire-like presences makes him connect his visitor to the passing ship. He names it the Horla and fears it represents a new master of humanity. Attempting to destroy it, he locks it in the house and sets the building ablaze, killing the servants he forgot inside. When he doubts that fire could kill such a being, he resolves to kill himself instead. His diary leaves the Horla's objective existence uncertain while charting the narrator's complete loss of safety, judgment, and hope.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-horla"
+      }
+    },
+    "the-horla-classic-tales-edition": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A prosperous man living alone on an estate near Rouen, recording his experiences in a diary. Sensitive to the landscape and confident in reason at first, he becomes troubled by fever, nightmares, exhaustion, and the conviction that an unseen presence enters his room at night.",
+            "id": "narrator",
+            "name": "The narrator",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The name the narrator gives to an invisible being he believes has attached itself to him. It appears to drink water and milk, influence his will, and occupy physical space despite being beyond ordinary sight; whether it is an external creature or part of his mental collapse remains unresolved.",
+            "id": "the-horla",
+            "name": "The Horla",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The narrator's cousin in Paris. During a gathering at her home, she agrees to be hypnotized and later carries out a suggestion without consciously remembering why, giving the narrator disturbing evidence that one mind can govern another.",
+            "id": "madame-sable",
+            "name": "Madame Sablé",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A physician who demonstrates hypnosis at Madame Sablé's home. His experiment shows that a person can be made to see what is absent, overlook what is present, and obey a command after waking.",
+            "id": "doctor-parent",
+            "name": "Doctor Parent",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A monk encountered during the narrator's visit to Mont-Saint-Michel. He discusses forces and beings that may exist beyond the narrow range of human senses, an idea that stays with the narrator after he returns home.",
+            "id": "the-monk",
+            "name": "The monk",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The domestic workers on the narrator's estate. Their own frightened disputes suggest that the household's disturbance may extend beyond their employer, but they remain unaware of the fatal plan he eventually directs at the house.",
+            "id": "the-servants",
+            "name": "The servants",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-horla-classic-tales-edition"
+      },
+      "recaps": {
+        "ending": "Convinced that the Horla is physically present in his room, the narrator locks it inside and sets fire to his house. Only after stepping back to watch the blaze does he remember that his servants are trapped within; their cries make clear that his attempt has killed innocent people. He hopes the fire has also destroyed the invisible being, but doubt returns because a creature without a visible body may not be vulnerable to ordinary flames. He concludes that the Horla has survived and that he has no reliable way to escape its control. The diary closes with his belief that if he cannot kill the being, he must kill himself. The story does not settle whether an invading creature has driven him to this point or whether his conviction itself is the illness, but the destruction and deaths caused by his response are real within his account.",
+        "in_short": "A well-to-do man near Rouen begins a diary in good spirits, then develops sleeplessness, dread, and the sense that an invisible visitor drinks beside his bed and controls his actions. Travel briefly relieves him. A demonstration of hypnosis in Paris shows him how one mind can command another, while later experiments at home convince him that an unseen body consumes milk and water. He sees a rose apparently lifted by nothing and, during a mirror encounter, believes the entity stands between him and his reflection. A report of similar disturbances in Brazil makes him connect the presence with a ship he had welcomed from his garden. Naming the being the Horla, he comes to regard it as a new species capable of mastering humanity. He traps it in his house and burns the building, forgetting his servants inside. Unsure the Horla died, he ends by resolving that suicide is his only remaining escape.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "A prosperous man living beside the Seine near Rouen records a growing crisis in his diary. Soon after admiring a Brazilian ship passing his home, he suffers fever, nightmares, weakness, and the sensation that someone enters his room while he sleeps. Water and milk left by his bed disappear. A journey, including a visit to Mont-Saint-Michel, restores him temporarily, but the symptoms return at home. In Paris, Doctor Parent hypnotizes the narrator's cousin Madame Sablé and makes her obey a later command she cannot explain; the demonstration convinces the narrator that a will can be controlled without its knowledge. Back on his estate, deliberate tests with food and drink persuade him that an unseen being shares his rooms. He watches a rose rise as though plucked by an invisible hand and later believes the creature blocks his reflection in a mirror. A report from Brazil of an epidemic involving unseen, vampire-like presences makes him connect his visitor to the passing ship. He names it the Horla and fears it represents a new master of humanity. Attempting to destroy it, he locks it in the house and sets the building ablaze, killing the servants he forgot inside. When he doubts that fire could kill such a being, he resolves to kill himself instead. His diary leaves the Horla's objective existence uncertain while charting the narrator's complete loss of safety, judgment, and hope.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-horla-classic-tales-edition"
+      }
+    },
     "the-horse-and-his-boy": {
       "characters": {
         "characters": [

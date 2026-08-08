@@ -1480,6 +1480,134 @@
         "work": "evangeline-a-tale-of-acadie"
       }
     },
+    "evangeline-henry-wadsworth-longfellow": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The daughter of Benedict Bellefontaine, raised in the Acadian community of Grand-Pré. Kind, devout, and deeply attached to her home and neighbors, she is preparing to marry Gabriel Lajeunesse when British authorities disrupt the settlement.",
+            "id": "evangeline-bellefontaine",
+            "name": "Evangeline Bellefontaine",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The son of Basil Lajeunesse and Evangeline's betrothed. A young Acadian blacksmith, he shares her secure place in village life until the community is ordered from its land.",
+            "id": "gabriel-lajeunesse",
+            "name": "Gabriel Lajeunesse",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Evangeline's father, a prosperous farmer and respected elder of Grand-Pré. His welcoming household is the center of the celebration surrounding his daughter's betrothal to Gabriel.",
+            "id": "benedict-bellefontaine",
+            "name": "Benedict Bellefontaine",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Gabriel's father, the village blacksmith and Benedict's longtime friend. Energetic and outspoken, he is less trusting than Benedict of British intentions toward the Acadian population.",
+            "id": "basil-lajeunesse",
+            "name": "Basil Lajeunesse",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Catholic priest of Grand-Pré and a steady spiritual guide to the displaced Acadians. He counsels endurance rather than violence and later accompanies Evangeline during part of her search for Gabriel.",
+            "id": "father-felician",
+            "name": "Father Felician",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly notary of Grand-Pré, valued for his memory, formal learning, and stories. He joins the gathering for Evangeline and Gabriel and represents the settled civic life of the Acadian village.",
+            "id": "rene-leblanc",
+            "name": "René Leblanc",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The British officer who announces the crown's order confiscating the Acadians' property and deporting the population. He reads the decree to the men assembled under guard in the church.",
+            "id": "colonel-winslow",
+            "name": "Colonel Winslow",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "evangeline-henry-wadsworth-longfellow"
+      },
+      "recaps": {
+        "ending": "After years of following reports of Gabriel across North America, Evangeline abandons the hope of finding him through travel and joins the Sisters of Mercy in Philadelphia. She devotes herself to caring for the poor and sick, growing old in service while retaining her love for him. During an epidemic, she works among patients in an almshouse and recognizes an aged, dying man as Gabriel. Their long separation ends only at the edge of death. Gabriel recognizes her, attempts to speak, and dies in her arms. Evangeline accepts the reunion with grief and religious gratitude, believing that their bond has survived exile and time even though they cannot share an earthly life. They are buried together in Philadelphia. The poem closes by returning to the vanished Acadian landscape and to the story preserved among the descendants of the exiles.",
+        "in_short": "In the Acadian village of Grand-Pré, Evangeline Bellefontaine and Gabriel Lajeunesse are betrothed just before British forces confiscate the community's land and deport its people. The confusion of embarkation separates the lovers, and Evangeline's father dies as their home burns. Scattered among distant colonies, Evangeline spends years traveling with Father Felician and following reports of Gabriel. In Louisiana she finds Gabriel's father Basil, but Gabriel has just departed; later she unknowingly passes close to him and continues across forests, rivers, and prairies as each lead fails. Gabriel's restless wandering keeps him beyond reach. Eventually Evangeline becomes a Sister of Mercy in Philadelphia and serves the sick. During an epidemic she discovers Gabriel, now an old man, dying in an almshouse. He recognizes her and dies in her arms. Their shared grave becomes the earthly end of a love sustained through displacement, separation, and a lifetime of searching.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Grand-Pré is an established Acadian farming community whose French-speaking Catholic inhabitants live quietly beside the Bay of Fundy. Benedict Bellefontaine's daughter Evangeline and Basil Lajeunesse's son Gabriel are in love, and their families happily approve their betrothal. Benedict and Basil are old friends, though Basil is more suspicious of the British military presence in the region. The village gathers at Benedict's home for the marriage contract and celebration, with Father Felician and the elderly notary René Leblanc among the guests. Against this picture of communal security come rumors and signs of approaching trouble. British ships have appeared, and the men of the settlement are ordered to assemble at the church. The wedding is postponed as the villagers wait to learn what the authorities intend.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Inside the church, British soldiers hold the Acadian men while Colonel Winslow announces that their property is confiscated and that the entire population will be deported. Anger rises, but Father Felician restrains the prisoners from a hopeless violent response. Outside, the women wait without clear news until the scale of the order becomes known. Families are driven toward the shore for embarkation, their homes and fields left behind. In the disorder, people are assigned to different vessels. The village burns, and the shock and loss overwhelm the elderly Benedict, who dies with Evangeline beside him. Evangeline and Gabriel are placed on separate ships. Their marriage, home, and community are all broken apart as the transports carry the Acadians away to scattered destinations.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The deported Acadians are dispersed along the coast and through the interior, with relatives and neighbors separated by distance and uncertain information. Evangeline remains faithful to Gabriel and travels with Father Felician, searching settlements and following every report that might lead to him. Years pass as they move through a transformed landscape of rivers, forests, and new communities. Their journey eventually brings them south into Louisiana, where Acadian exiles have begun rebuilding their lives. There Evangeline finds Basil, now prosperous among the bayous. The reunion gives her the strongest news she has had: Gabriel was with his father but has recently departed, still restless under the pain of exile and separation. Evangeline resumes the pursuit rather than remain in safety.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Evangeline follows Gabriel's route through the Louisiana waterways and onward across the continent. At one point their paths nearly meet: Gabriel passes close to where she rests, but neither knows the other is near. Later reports draw her toward the Ozarks, the prairies, trading posts, and a western Catholic mission. Again she learns that Gabriel has already gone. The search stretches across seasons and years, while Gabriel's grief drives him continually onward and Evangeline's hope prevents her from settling. Father Felician's counsel helps her turn disappointment toward patience and faith, but no message produces a lasting reunion. The lovers remain separated less by a single barrier than by the vast distances and repeated dislocations created by the Acadian expulsion.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "As youth passes and the trail grows cold, Evangeline ceases wandering and enters a religious life of service in Philadelphia. As a Sister of Mercy, she cares for the poor and sick, carrying her private devotion to Gabriel into compassion for strangers. During an epidemic she moves among the patients in an almshouse and finds an old man near death. He is Gabriel. The two recognize one another after a lifetime apart; he dies in her arms before they can begin a shared life. Evangeline receives the brief reunion as both sorrow and the fulfillment of her enduring faith. She and Gabriel are buried together in Philadelphia. The poem returns in its close to the lost Acadian homeland and to the memory of the exiles, with the lovers' story surviving after the village itself has disappeared.",
+            "through": {
+              "chapter": 10
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "evangeline-henry-wadsworth-longfellow"
+      }
+    },
     "ever-after": {
       "characters": {
         "characters": [

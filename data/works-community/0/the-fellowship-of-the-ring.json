@@ -2212,6 +2212,141 @@
         "work": "the-firm"
       }
     },
+    "the-first-men-in-the-moon": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An English writer and unsuccessful businessman who retreats to Lympne to work on a play. Practical, opportunistic, and candid about his interest in profit, he becomes fascinated by the experiments of his reclusive neighbor Cavor.",
+            "id": "mr-bedford",
+            "name": "Mr. Bedford",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An eccentric physicist living near Lympne who pursues his research with little concern for money or ordinary social life. He is developing a material that can block the force of gravity, and Bedford quickly recognizes the discovery's enormous possibilities.",
+            "id": "mr-cavor",
+            "name": "Mr. Cavor",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Cavor's housekeeper, who looks after his domestic needs while he devotes himself to experiments. Her ordinary presence emphasizes how little attention Cavor gives to matters outside his work.",
+            "id": "mrs-bond",
+            "name": "Mrs. Bond",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The intelligent inhabitants encountered beneath the Moon's surface. They have compact bodies and large heads, use tools and restraints, and occupy the enormous system of tunnels and caverns below the lunar crust.",
+            "id": "the-selenites",
+            "name": "The Selenites",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Selenite who becomes Cavor's principal attendant and language pupil. Through patient exchanges with him, Cavor begins to communicate with the lunar inhabitants and learn how their society is arranged.",
+            "id": "phi-oo",
+            "name": "Phi-oo",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The immense ruler at the center of Selenite society. His greatly enlarged brain and dependent body reflect a civilization built on extreme specialization, and he questions Cavor about Earth and its people.",
+            "id": "grand-lunar",
+            "name": "The Grand Lunar",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Dutch electrician who detects faint wireless transmissions that appear to come from the Moon. He sends Bedford records of the messages, providing the first news of Cavor after the expedition.",
+            "id": "julius-wendigee",
+            "name": "Julius Wendigee",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-first-men-in-the-moon"
+      },
+      "recaps": {
+        "ending": "Bedford eventually learns Cavor's fate through fragmented wireless messages intercepted by Julius Wendigee. Remaining on the Moon, Cavor has been kept alive by the Selenites, learned to communicate with them, and studied their intensely specialized underground society. He is taken before the Grand Lunar and explains human civilization, including private property, national rivalry, and war. The ruler is appalled by humanity's violence and by the danger posed by Cavorite. Cavor begins to transmit the secret of making the substance, but the message breaks off before the crucial information arrives. No further signal is received, implying that the Selenites have stopped him and sealed away both him and the knowledge that could connect the worlds. Bedford remains on Earth with only this incomplete record; the sphere itself had already vanished after two boys entered it and accidentally launched into space.",
+        "in_short": "Mr. Bedford, a struggling businessman, befriends the scientist Cavor, who has invented Cavorite, a material that blocks gravity. They build a sphere controlled by Cavorite shutters and travel to the Moon, where daylight releases an atmosphere and produces rapid plant growth. Beneath the surface they encounter the insectlike Selenites and their immense industrial civilization. After capture and a violent escape, Bedford reaches the sphere alone and returns to Earth, while Cavor remains behind. The unattended sphere is then accidentally launched by two boys and lost. Later, wireless operator Julius Wendigee intercepts transmissions from Cavor. Cavor reports that the Selenites have spared him, taught him about their specialized society, and brought him before the Grand Lunar. His account of human warfare alarms the lunar ruler. As Cavor starts transmitting the method for making Cavorite, the signals abruptly cease, leaving him isolated on the Moon and the secret incomplete.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Mr. Bedford withdraws to rural Lympne after business failures, hoping to write a successful play. His concentration is repeatedly disturbed by his neighbor, Mr. Cavor, an eccentric scientist who takes regular walks and works in a secluded house. Bedford introduces himself and learns that Cavor is trying to create a substance opaque to gravitation. Bedford sees commercial potential where Cavor sees chiefly a scientific problem. He begins helping with the work and urges Cavor to think on a larger scale. Their experiments produce Cavorite, whose ability to screen gravity causes a violent upheaval when it is first manufactured. Convinced that the discovery can make travel beyond Earth possible, the two men construct a spherical vessel with windows and movable Cavorite shutters that can control the direction of gravitational pull.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bedford and Cavor enter the completed sphere and launch by opening selected shutters, allowing celestial gravity to draw them away from Earth. They travel in weightlessness with supplies and compressed air, then approach the Moon and make a difficult landing. At first the surface seems frozen and airless. Sunrise changes it rapidly: gases thaw into a temporary atmosphere, snow and ice melt, and strange plants grow with extraordinary speed. Wearing improvised coverings, the men leave the sphere and explore. They eat bulbous lunar plants and become disoriented and exhilarated. The landscape transforms around them as the Sun rises, making it increasingly difficult to retrace their route to the vessel.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Lost among the enormous vegetation, Bedford and Cavor hear activity below the surface and glimpse creatures tending great lunar cattle. They discover that the Moon is inhabited. After hiding and searching unsuccessfully for the sphere, they are confronted by the insectlike Selenites. Weak and confused, the explorers are captured, chained, and taken down into the Moon through tunnels and immense caverns. The descent reveals machinery, artificial lights, and a populous subterranean world rather than the dead globe they expected. When their captors try to make them proceed, Bedford responds with force. Earth's gravity has made both men far stronger than the slight lunar inhabitants, giving them a possible means of escape but worsening the danger of first contact.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bedford and Cavor attempt simple communication with their captors, but mutual fear and incomprehension persist. They are led across the Moon's vast internal spaces, where bridges and galleries overlook a complex industrial civilization. Cavor wants to observe and negotiate; Bedford distrusts the Selenites and concentrates on escape. Violence resumes, and the men use their superior Earth-born strength against lunar workers and guards. They flee through tunnels, pass areas where lunar animals are slaughtered, and eventually regain the open surface. The long lunar day is advancing, vegetation is changing, and they still must locate the sphere before darkness and cold return.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On the surface, Bedford and Cavor separate while searching for the hidden sphere. Bedford finds it, but Cavor does not return before Selenites close in. Unable to rescue his companion, Bedford launches alone. He struggles to control the vessel but eventually reaches Earth and lands in the sea near Littlestone. The sphere is brought ashore, where Bedford leaves it unattended briefly; two boys climb inside and accidentally send it back into space, so both the craft and the remaining Cavorite are lost. Bedford later profits from gold he brought from the Moon and publishes his account, believing that Cavor's fate may never be known.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bedford receives records from Julius Wendigee, an electrician who has intercepted broken wireless messages from the Moon. The transmissions show that Cavor survived. The Selenites have allowed him to study their underground world, whose citizens are physically developed and educated for narrowly assigned tasks. With the aid of the attendant Phi-oo, Cavor learns their language and is eventually presented to the Grand Lunar, the enormous central intelligence of their society. Cavor describes Earth, but his account of competing nations, property, weapons, and war horrifies the ruler. Recognizing the threat that humans and Cavorite could pose, the Selenites cut off contact. Cavor's final transmission starts to explain how Cavorite is made but ends before the essential secret is sent. No further message arrives, leaving Cavor's fate unconfirmed and preventing another journey to the Moon.",
+            "through": {
+              "chapter": 26
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-first-men-in-the-moon"
+      }
+    },
     "the-fishermen": {
       "characters": {
         "characters": [

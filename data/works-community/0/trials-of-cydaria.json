@@ -2225,6 +2225,153 @@
         "work": "turn-coat"
       }
     },
+    "turn-of-the-screw": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The young, unnamed daughter of a country clergyman whose written account forms the main narrative. Inexperienced but eager to prove herself, she accepts her first position as governess to two orphaned children at Bly under the condition that she never trouble their guardian.",
+            "id": "the-governess",
+            "name": "The governess",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A man attending the Christmas gathering in the frame story. He knew the governess when he was young, possesses her manuscript, and reads it aloud after explaining how she came to write it.",
+            "id": "douglas",
+            "name": "Douglas",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The master"
+            ],
+            "description": "The children's handsome and wealthy uncle, who lives in London and has no wish to manage their daily lives. He employs the governess on the explicit condition that she solve every problem at Bly herself and never contact him for help.",
+            "id": "the-uncle",
+            "name": "The uncle",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The housekeeper at Bly and the governess's principal adult companion. Warm, practical, and devoted to the children, she welcomes the new governess and supplies what she knows of the household's troubled recent history.",
+            "id": "mrs-grose",
+            "name": "Mrs Grose",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The younger of the two orphaned children at Bly, a beautiful and outwardly affectionate little girl. She is already at the estate when the governess arrives and quickly charms her new caretaker.",
+            "id": "flora",
+            "name": "Flora",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Flora's older brother, sent home to Bly after his school expels him without a clear explanation. His beauty, courtesy, and apparent innocence make it difficult for the governess to reconcile him with the school's decision.",
+            "id": "miles",
+            "name": "Miles",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The uncle's former valet, now dead. After the governess describes a strange man she has seen at Bly, Mrs Grose identifies the figure as Quint and explains that he exercised unusual freedom and influence in the household.",
+            "id": "peter-quint",
+            "name": "Peter Quint",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The children's former governess, who died after leaving Bly. Mrs Grose identifies her from the present governess's description of a black-clad woman seen across the lake near Flora.",
+            "id": "miss-jessel",
+            "name": "Miss Jessel",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "turn-of-the-screw"
+      },
+      "recaps": {
+        "ending": "Flora becomes feverish and violently rejects the governess after the confrontation at the lake. Mrs Grose, disturbed by the child's newly coarse language, takes her away from Bly. The governess remains alone with Miles and presses him to explain his expulsion and the disappearance of a letter she wrote to his uncle. Miles admits taking the letter and says that he was expelled for saying things to selected schoolmates, who then repeated them. During this questioning the governess again sees Peter Quint at the window. She holds Miles and challenges the apparition while trying to make the boy acknowledge it. Miles cries out Quint's name and calls him a devil; the figure vanishes. The governess believes she has freed Miles, but immediately discovers that his heart has stopped in her arms. The manuscript ends there. It does not independently establish whether the apparitions were supernatural beings corrupting the children or perceptions shaped by the governess's fear and desire to protect them.",
+        "in_short": "An inexperienced governess takes charge of the orphaned Miles and Flora at the remote estate of Bly, where their uncle has ordered her never to contact him. Miles has mysteriously been expelled from school. The governess begins seeing a strange man and a black-clad woman, whom the housekeeper Mrs Grose identifies as the dead servants Peter Quint and Miss Jessel. Convinced that the apparitions seek the children and that the children secretly welcome them, she turns their care into a campaign of rescue. Flora denies seeing Miss Jessel and is taken away ill after the governess confronts her at the lake. Left with Miles, the governess forces him to discuss his expulsion and a stolen letter while Quint appears at the window. Miles names Quint, then dies in her arms. The story preserves uncertainty about whether the ghosts are real or whether the governess's interpretation helped create the catastrophe.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "At a Christmas gathering, Douglas introduces a manuscript written by a governess he once knew. As a young clergyman's daughter seeking her first post, she was hired by a wealthy London bachelor to care for his orphaned niece and nephew at his country estate, Bly. Her employer's condition was that she handle everything herself and never appeal to him. At Bly, the housekeeper Mrs Grose welcomes her, and the little girl Flora immediately enchants her. A letter then reports that Flora's brother Miles has been expelled from school, without specifying an offense. When Miles arrives he appears equally charming and innocent. The governess settles happily into her authority, but one evening she sees an unknown man watching from a tower. Later he appears outside a window and looks into the house. No visitor or servant can account for him.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The governess describes the unknown man to Mrs Grose, who identifies him as Peter Quint, the dead former valet of the children's uncle. Quint had enjoyed more authority at Bly than his position warranted and had been closely associated with Miles. At the lake, the governess also sees a sorrowful woman in black while Flora plays nearby. She becomes convinced that Flora sees the figure but deliberately conceals it. Mrs Grose identifies this second figure as Miss Jessel, the children's previous governess, who also died after leaving Bly. The governess concludes that Quint and Miss Jessel have returned for Miles and Flora and that the children share a secret understanding with them. Mrs Grose is frightened by the history and by the governess's accurate descriptions, but cannot confirm what the children perceive.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The governess watches the children more closely, interpreting their polished sweetness as a screen for hidden communication. During a night disturbance she sees Quint on the stair and later realizes that Flora has left her bed to look from a window. Miles is outside on the lawn; he later explains that he arranged the episode to show that he could be capable of misbehavior. The governess believes the children are coordinating distractions so that each can meet an apparition unobserved. She and Mrs Grose discuss Quint's influence over Miles and Miss Jessel's relationship with him, but their knowledge remains incomplete. Instead of contacting the uncle, the governess treats his absence as a challenge to save the children through her own vigilance.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Life at Bly continues under an increasingly strained appearance of lessons, games, and good behavior. Miles asks when he will return to school and presses the governess about contacting his uncle. His questions make clear that he recognizes her uncertainty and wants a change, but he still does not explain his expulsion. On the way to church he raises the subject again. The governess nearly abandons Bly, then returns to the house and sees Miss Jessel seated in the schoolroom. She addresses the figure as an intruder, and it disappears. Taking the encounter as proof of an active threat, the governess tells Mrs Grose that she must write to the uncle despite his command. Her desire to protect the children and her need to make the hidden danger visible have become inseparable.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "While Miles holds the governess's attention by playing the piano, Flora leaves the house. The governess and Mrs Grose find her across the lake. Miss Jessel appears on the opposite bank to the governess, who openly demands that Flora acknowledge the figure. Flora insists she sees no one and reacts with fear and hostility toward the governess, begging Mrs Grose to take her away. That night Flora becomes ill and speaks with a coarseness that shocks the housekeeper. Mrs Grose agrees to remove her from Bly and to seek the uncle's help. The letter the governess had written to him has disappeared before it can be sent. The governess remains at the estate with Miles, convinced that separating the children may give her the opportunity to make him speak and to confront Quint's hold over him.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Alone with Miles, the governess questions him about the missing letter and his expulsion. He admits taking and burning her letter before it was sent. He also explains that at school he said things to boys he liked, who passed them to others, leading to his dismissal, but the exact words remain unstated. As she presses him, the governess sees Peter Quint outside the window. She holds Miles close, trying both to shield him and to force a decisive acknowledgment of the apparition. Miles cries out Quint's name and calls him a devil. The figure disappears, and the governess believes the boy is finally free of it. In the same moment, however, Miles dies in her arms. Her manuscript closes without resolving whether she defeated a supernatural presence or whether the fatal confrontation arose from her own interpretation of ambiguous events.",
+            "through": {
+              "chapter": 24
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "turn-of-the-screw"
+      }
+    },
     "twelfth-night": {
       "characters": {
         "characters": [

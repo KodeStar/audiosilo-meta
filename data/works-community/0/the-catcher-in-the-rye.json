@@ -3182,6 +3182,218 @@
         "work": "the-count-of-monte-cristo-amazonclassics-edition"
       }
     },
+    "the-country-of-the-blind": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Nunez"
+            ],
+            "description": "A sighted mountain guide who survives a fall into an isolated valley whose inhabitants have been blind for generations. Remembering a proverb about the advantage of one-eyed rule, he assumes sight will make him superior, but his hosts regard his unfamiliar claims and clumsy movement as signs of disorder.",
+            "id": "nunez",
+            "name": "Nuñez",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An elder of the valley community and the father of Medina-saroté. He gives Nuñez work and a place within his household, while accepting the community's view that the stranger's talk of sight reflects a troubled mind.",
+            "id": "yacob",
+            "name": "Yacob",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Yacob's youngest daughter, considered less attractive by her community because her features do not match its ideals. She is gentle toward Nuñez, listens to his descriptions of sight even when she cannot understand them, and returns his love.",
+            "id": "medina-sarote",
+            "name": "Medina-saroté",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the first valley men to encounter Nuñez. Guided by hearing, touch, and the ordered paths of the settlement, he helps bring the confused newcomer before the elders.",
+            "id": "pedro",
+            "name": "Pedro",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A valley resident who joins Pedro in examining the stranger who has fallen from the mountains. His calm competence in the dark exposes how poorly Nuñez understands the community he expects to dominate.",
+            "id": "correa",
+            "name": "Correa",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The valley's physician, who interprets Nuñez's eyes as abnormal organs that keep his brain in a state of agitation. He proposes removing them as a cure that would make the outsider calmer and acceptable as Medina-saroté's husband.",
+            "id": "the-doctor",
+            "name": "The doctor",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-country-of-the-blind"
+      },
+      "recaps": {
+        "ending": "To gain permission to marry Medina-saroté, Nuñez agrees that the valley doctor may remove his eyes, which the community believes are diseased growths causing his unrest. As the operation approaches, however, the visible beauty of the world becomes impossible for him to surrender. On the day before the procedure, he leaves the settlement and climbs toward the mountains, choosing sight and freedom over marriage on the valley's terms. The escape is punishing, and he does not find a clear route back to the outer world. Injured and exhausted, he lies down high above the valley as evening gives way to the stars. The original story closes with him alone but serene, no longer trying to conquer the people below and satisfied that he has escaped the life and mutilation they offered. Whether he can survive the exposed mountainside is left unresolved.",
+        "in_short": "Mountaineer Nuñez falls into a secluded Andean valley where generations of isolation and hereditary blindness have produced a community with no concept of sight. Expecting his vision to make him ruler, he finds that the inhabitants move confidently through an environment designed around their other senses and dismiss his claims as confused fantasy. His attempt to dominate them fails, and after hunger drives him back he accepts work under the elder Yacob. Nuñez falls in love with Yacob's daughter Medina-saroté, who returns his affection, but the community objects to his instability. A doctor blames Nuñez's protruding eyes and proposes removing them. He consents for Medina's sake, then recoils when he looks on the visible world before the operation. He climbs out of the valley alone, abandoning both marriage and his dream of kingship, and the story leaves him resting on the mountainside at night, free but with his survival uncertain.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "While climbing in the Andes, Nuñez falls down a snow slope into a hidden valley cut off from the outside world. Its inhabitants have been blind for many generations and have reshaped their language, routines, and settlement around hearing, touch, smell, and carefully ordered paths. Nuñez assumes that vision will let him rule them, but his hosts have no concept corresponding to sight and interpret his claims as evidence that his mind is undeveloped. Their skill in their familiar environment defeats his attempts to demonstrate superiority or use force. After fleeing and becoming hungry, he returns, submits to their rules, and works for the elder Yacob. He falls in love with Yacob's daughter Medina-saroté, whose community regards her as plain but whom Nuñez sees as beautiful. She loves him, yet the elders oppose the match because of his strange behavior. A doctor concludes that Nuñez's eyes are diseased swellings that disturb his brain and suggests removing them. Nuñez agrees so that he can marry Medina, but before the operation he looks again at the landscape and cannot accept permanent blindness. He climbs away from the valley into the mountains. Unable to find an easy passage back to the wider world, he ends the day injured and exhausted on the heights, alone and facing an uncertain future, but peaceful in his escape.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-country-of-the-blind"
+      }
+    },
+    "the-courtship-of-miles-standish": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A young Pilgrim scholar and the close friend and housemate of Miles Standish at Plymouth. Mild in manner and more comfortable with books than military affairs, he is asked by Standish to carry a marriage proposal to Priscilla Mullins, although he privately loves her himself.",
+            "id": "john-alden",
+            "name": "John Alden",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Captain Standish"
+            ],
+            "description": "The military leader of the Plymouth colony and John Alden's friend. Recently widowed, physically small, proud of his martial experience, and quick-tempered, he finds courtship harder than warfare and asks John to speak to Priscilla on his behalf.",
+            "id": "miles-standish",
+            "name": "Miles Standish",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Miles Standish's late wife, remembered tenderly by him as he considers marrying again. Her death helps explain both his loneliness and his awkward haste in seeking a new household.",
+            "id": "rose-standish",
+            "name": "Rose Standish",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young woman of Plymouth who has lost her family and lives within the small Pilgrim community. Thoughtful, direct, and perceptive, she listens to John deliver Standish's proposal but recognizes that the messenger's own feelings are the more important truth.",
+            "id": "priscilla-mullins",
+            "name": "Priscilla Mullins",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Elder Brewster"
+            ],
+            "description": "The colony's respected elder, an aging religious leader whose counsel and public duties help hold the struggling Plymouth settlement together.",
+            "id": "william-brewster",
+            "name": "William Brewster",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An Indigenous interpreter and ally of the Plymouth settlers who accompanies Standish during a dangerous expedition and later helps bring news back to the colony.",
+            "id": "hobomok",
+            "name": "Hobomok",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-courtship-of-miles-standish"
+      },
+      "recaps": {
+        "ending": "John Alden and Priscilla Mullins marry in Plymouth, and their wedding procession travels from the ceremony to their new home. Miles Standish, who had been reported dead during the colony's fighting, has returned alive. He approaches the newly married couple without resentment, acknowledges that Priscilla chose wisely, and reconciles with John. The friendship damaged by John's reluctant courtship errand is restored, while John and Priscilla begin their life together with Standish's blessing. The close turns the feared conflict among the three into a settlement founded on candor, forgiveness, and freely chosen love.",
+        "in_short": "At Plymouth colony, the widowed soldier Miles Standish wants to marry Priscilla Mullins but lacks confidence as a suitor. He asks his scholarly friend John Alden to propose for him, unaware that John also loves her. John dutifully presents Standish's case, but Priscilla sees through the arrangement and asks why John does not speak for himself. The question leaves John divided between loyalty and love. After the Mayflower sails for England, he stays in Plymouth and he and Priscilla gradually acknowledge their feelings. Standish angrily regards John's conduct as betrayal before departing on a military expedition, and a report that he has died casts a shadow over the colony. The report proves false. John and Priscilla marry, and Standish returns in time to reconcile with them, accepting their choice and renewing his friendship with John.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In the young Plymouth settlement, the military captain Miles Standish shares a home with the scholarly John Alden. Standish, lonely after the death of his wife Rose, has decided that he wants to marry Priscilla Mullins. For all his confidence as a soldier, he cannot bring himself to address her directly. He asks John, his trusted friend, to carry the proposal and praise his qualities. John is distressed because he loves Priscilla too, but his sense of loyalty keeps him from refusing. He agrees to serve as Standish's messenger even though success would end his own hopes.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "John visits Priscilla and delivers Standish's formal offer, emphasizing the captain's courage, standing, and ability to protect a household. Priscilla is unimpressed by a proposal made through another man and asks about Standish's temper and lack of tenderness. John continues defending his absent friend despite his own feelings. Priscilla recognizes the conflict and asks why John does not speak for himself. He leaves shaken, unable either to betray Standish openly or to deny what has passed between him and Priscilla. When Standish hears how the meeting ended, he interprets John's conduct as disloyal and reacts with anger, breaking the easy trust between the friends.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "As the Mayflower prepares to return to England, John considers leaving Plymouth rather than face the consequences of the failed errand. He ultimately remains with the colony. Priscilla, who had feared that he was departing, is relieved, and the affection between them becomes harder to conceal. Meanwhile Standish joins an armed expedition during a period of fear and tension. News later reaches Plymouth that he has been killed. The report seems to remove the obstacle between John and Priscilla, but it also burdens their happiness with grief and with John's unresolved sense of obligation to his friend.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "John and Priscilla prepare for marriage, and the Plymouth community gathers for their wedding. The report of Standish's death proves mistaken: he returns alive from the expedition. Instead of renewing the quarrel, he meets the couple at the close of their wedding journey and accepts that Priscilla made her own choice. Standish acknowledges John as the better match for her and offers his goodwill. John and Priscilla begin married life, and John and Standish repair the friendship that the borrowed proposal had nearly destroyed.",
+            "through": {
+              "chapter": 9
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-courtship-of-miles-standish"
+      }
+    },
     "the-crossing-cormac-mccarthy": {
       "characters": {
         "characters": [
