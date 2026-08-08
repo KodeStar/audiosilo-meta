@@ -2062,6 +2062,239 @@
         "work": "the-picture-of-dorian-gray-adaptation"
       }
     },
+    "the-pilgrims-progress-a-new-translation": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A man who learns from a book that his home, the City of Destruction, faces judgment. Carrying a burden of guilt and unable to convince his family to leave, he follows Evangelist's directions toward the Celestial City.",
+            "id": "christian",
+            "name": "Christian",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The guide who first directs Christian to the narrow gate. He reappears when Christian strays or needs preparation, explaining the danger of false counsel and the cost of remaining on the path.",
+            "id": "evangelist",
+            "name": "Evangelist",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A neighbor who initially shares Christian's excitement about the promised destination and follows him out of the city. His willingness depends on the road being immediately pleasant.",
+            "id": "pliable",
+            "name": "Pliable",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mr. Worldly Wiseman"
+            ],
+            "description": "A respectable man who offers Christian an easier, socially approved way to lose his burden. His advice directs Christian toward morality without transformation and away from Evangelist's route.",
+            "id": "worldly-wiseman",
+            "name": "Worldly Wiseman",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The keeper of the narrow gate, who draws Christian safely inside and points him toward the Interpreter. He explains that the correct road remains straight even when other paths cross it.",
+            "id": "goodwill",
+            "name": "Goodwill",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The master of a house filled with symbolic lessons. He prepares Christian for the road by showing him images of true guidance, patience, sustaining grace, courage, despair, and final accountability.",
+            "id": "the-interpreter",
+            "name": "The Interpreter",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful adversary who confronts Christian in the Valley of Humiliation. Claiming him as a former subject of the City of Destruction, he moves from accusation and persuasion to direct violence when Christian refuses to return.",
+            "id": "apollyon",
+            "name": "Apollyon",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A sincere pilgrim from Christian's former city whom Christian meets after the Valley of the Shadow of Death. Having taken a different route, he brings his own record of temptations resisted and becomes Christian's traveling companion.",
+            "id": "faithful",
+            "name": "Faithful",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A resident of Vanity who presides over the trial of Christian and Faithful. Hostile from the outset, he treats their refusal to honor the fair as an offense against the town and directs proceedings designed to condemn them.",
+            "id": "lord-hate-good",
+            "name": "Lord Hate-Good",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A resident of Vanity moved by what he witnesses there. He leaves the town to join Christian on pilgrimage, offering companionship rooted in a newly declared commitment rather than convenience.",
+            "id": "hopeful",
+            "name": "Hopeful",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A polished traveler who claims to adapt easily to whatever company and beliefs are advantageous. He wants the rewards of pilgrimage without accepting a path that brings loss, public disapproval, or hardship.",
+            "id": "by-ends",
+            "name": "By-Ends",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The proprietor of a silver mine near the road. He invites passing pilgrims to leave their route and investigate the prospect of wealth, presenting danger and greed as a sensible opportunity.",
+            "id": "demas",
+            "name": "Demas",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The owner of Doubting Castle, who discovers Christian and Hopeful trespassing on his land. He imprisons and abuses them, using hopelessness as much as physical force to persuade them that escape is impossible.",
+            "id": "giant-despair",
+            "name": "Giant Despair",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Giant Despair's wife and adviser at Doubting Castle. She proposes increasingly cruel ways to break the prisoners' resistance and supports her husband's effort to drive them toward self-destruction.",
+            "id": "diffidence",
+            "name": "Diffidence",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A young traveler from the country of Conceit who joins Christian and Hopeful near the end of their journey. He speaks confidently about reaching the Celestial City and trusts his own understanding of the requirements.",
+            "id": "ignorance",
+            "name": "Ignorance",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A deceptive guide who meets Christian and Hopeful after they fail to consult their directions. Appearing helpful and authoritative, he leads them away from the road and into a net.",
+            "id": "the-flatterer",
+            "name": "The Flatterer",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-pilgrims-progress-a-new-translation"
+      },
+      "recaps": {
+        "ending": "In the land of Beulah, Christian and Hopeful can see the Celestial City but must first cross a river with no bridge. Christian nearly gives way to fear in the deep water; Hopeful encourages him until both reach the far bank, where shining guides escort them uphill. At the gate their certificates are accepted, and they enter the city to welcome, music, and transformed life. The narrator then sees Ignorance arrive by a ferryman's easier crossing. Because he has no valid certificate, the King refuses him entry despite his confidence and orders him taken away through a door in the hillside. Christian and Hopeful therefore complete the pilgrimage together, while Ignorance's fate supplies the final warning that reaching the gate and claiming worthiness are not the same as being admitted.",
+        "in_short": "Christian leaves the City of Destruction after learning of coming judgment and follows a difficult road toward the Celestial City. He is rescued from false counsel, enters through the narrow gate, receives instruction, and loses his burden at the Cross. After shelter at the Palace Beautiful, he defeats Apollyon and crosses the Valley of the Shadow of Death. Faithful joins him but is executed at Vanity Fair; Hopeful, converted by that witness, becomes Christian's next companion. The pair resist profit-seeking travelers, escape Giant Despair's Doubting Castle, learn from shepherds, and survive deception on the last stages of the road. After passing through Beulah, Christian and Hopeful cross the final river and are admitted to the Celestial City. Ignorance reaches the gate by an easier route but lacks the required certificate and is rejected, closing the journey with a warning against confidence without inward change.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Christian becomes convinced that the City of Destruction is doomed and feels a heavy burden he cannot remove. His household refuses to believe him, so he follows Evangelist's direction toward a distant light. Obstinate turns back, while Pliable briefly joins him before abandoning the journey when both sink in the Slough of Despond. Help rescues Christian, but Worldly Wiseman diverts him toward a supposedly easier cure beneath a threatening mountain. Evangelist corrects him and sends him back to the narrow gate. Goodwill admits Christian and directs him to the Interpreter, whose house contains lessons about true ministry, patience, hidden grace, courage, despair, and judgment. Christian leaves with a clearer understanding of the road, though he still carries his burden.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Christian reaches the Cross, where his burden falls away. Shining Ones clothe him anew, assure him of forgiveness, and give him a certificate for the gate at his destination. He passes sleeping travelers and rejects the claims of Formalist and Hypocrisy, who entered by climbing the wall. On the Hill Difficulty he falls asleep and loses his certificate, then must retrace his path to recover it. He crosses safely between chained lions and is welcomed at the Palace Beautiful. Its residents question him about his journey, teach him from their records, show him the country ahead, and equip him with armor. Rested and prepared, he descends from the palace toward the next valley.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the Valley of Humiliation, Apollyon claims Christian as a runaway subject and attacks when Christian refuses to return. Christian is wounded but recovers his sword and drives the enemy away. He then passes through the Valley of the Shadow of Death, enduring darkness, traps, hostile voices, and fear before reaching daylight. He catches up with Faithful, another pilgrim from the City of Destruction, and they compare the different temptations they have survived. Talkative joins them and displays impressive religious language, but Faithful's examination reveals that his conduct does not match his speech. He withdraws angrily. Evangelist then warns Christian and Faithful that persecution awaits them in the town ahead and that one may die there.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Christian and Faithful enter Vanity Fair, a permanent market for status, pleasure, possessions, and power. Their refusal to buy its goods and their unfamiliar manner provoke abuse, imprisonment, and a public trial. Lord Hate-Good presides while hostile witnesses portray Faithful's rejection of the fair's values as a crime. Faithful is condemned and executed, but a heavenly escort carries him immediately toward the Celestial City. Christian is later released and leaves Vanity with Hopeful, a resident whose conversion has been encouraged by the pilgrims' conduct and Faithful's death. The loss of one companion thus produces another, and Christian continues the journey with Hopeful beside him.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Christian and Hopeful reject By-Ends, who changes his principles whenever advantage requires it. They also resist Demas's invitation to inspect a silver mine and are warned by the fate associated with Lot's wife. After a peaceful stretch beside the River of Life, difficult ground tempts them onto the easier By-Path Meadow. A storm prevents their return, and Giant Despair captures them for trespassing on his land. In Doubting Castle he beats and starves them while Diffidence urges him to drive them toward death. Christian finally remembers that he carries a key called Promise. It opens the prison doors and the outer gate, allowing both pilgrims to escape. They return to the true road and erect a warning against the meadow.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On the Delectable Mountains, shepherds feed Christian and Hopeful, show them instructive dangers, and give them directions for the remaining road. The pilgrims meet Ignorance, a confident young man who expects acceptance because of his own good intentions and conduct. Christian and Hopeful challenge the basis of his confidence but cannot persuade him. They later encounter a traveler who has turned back after being robbed and warned. These meetings reinforce the shepherds' lesson that proximity to the destination does not remove the danger of error. Christian and Hopeful continue with both encouragement and warnings for the final stage.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Christian and Hopeful fail to consult their directions and follow the Flatterer, who leads them into a net. A shining messenger releases and disciplines them, after which they become more cautious. They reject an atheist's claim that the Celestial City does not exist and enter the Enchanted Ground, where sleep threatens travelers. To stay awake, Hopeful tells the story of his conversion, including the effect of Faithful's witness and his struggle to abandon confidence in himself. The pilgrims again discuss Ignorance and the danger of temporary belief that fades under pressure. They pass through the last deceptive country and approach Beulah, a land of light and rest within sight of their destination.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In Beulah, Christian and Hopeful are refreshed and can see the Celestial City, but a river without a bridge lies before it. Christian struggles in deep water and fears he will be lost; Hopeful supports him until both reach the opposite bank. Shining guides escort them up the final ascent. Their certificates are presented at the gate, and they are welcomed into the city with new clothing, music, and public rejoicing. Ignorance later crosses the river by a ferryman who provides an easier passage. At the gate he has no certificate and appeals instead to his own record. The King refuses him entry, and he is bound and carried away through a door in the hillside. Christian and Hopeful complete the pilgrimage; Ignorance's rejection supplies the final warning that outward progress and self-confidence cannot replace the required inward reality.",
+            "through": {
+              "chapter": 12
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-pilgrims-progress-a-new-translation"
+      }
+    },
     "the-pillars-of-the-earth": {
       "characters": {
         "characters": [
@@ -2518,6 +2751,135 @@
           }
         ],
         "work": "the-plague-international-edition"
+      }
+    },
+    "the-plot": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Jake Bonner"
+            ],
+            "description": "A novelist whose promising debut was followed by unsuccessful books and a long creative stall. He teaches in a low-residency writing program while fearing that his career is effectively over. His encounter with a student who possesses an extraordinary story idea gives him knowledge he cannot forget.",
+            "id": "jacob-finch-bonner",
+            "name": "Jacob Finch Bonner",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An abrasive student in Jake's writing seminar who is certain that the plot of his unfinished novel will make him famous. He dismisses normal questions of craft because he believes the underlying story is so powerful that no publisher or reader could resist it.",
+            "id": "evan-parker",
+            "name": "Evan Parker",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jake's literary agent, who has remained professionally connected to him through the decline after his early success. She recognizes the commercial force of his new manuscript and guides him through the attention, sales, and scrutiny that follow.",
+            "id": "matilda-salter",
+            "name": "Matilda Salter",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The editor who acquires Jake's new novel and helps turn it into the publishing event his earlier career never produced. She is part of the expanding professional circle that depends on the book's success and assumes that Jake created it legitimately.",
+            "id": "wendy-marder",
+            "name": "Wendy Marder",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A woman Jake meets after his new novel makes him famous. She appears uninterested in literary status, and the relationship offers him a private life beyond publicity and the secret anxiety attached to his success.",
+            "id": "anna-williams",
+            "name": "Anna Williams",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The screen name used by an anonymous correspondent who tells Jake that his celebrated novel rests on a stolen story. The messages are brief but informed enough to threaten both his reputation and his peace of mind.",
+            "id": "talented-tom",
+            "name": "TalentedTom",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-plot"
+      },
+      "recaps": {
+        "ending": "Jake's search establishes that Evan did not invent the supposedly unbeatable premise from nothing: it grew out of concealed crimes in the Parker family. Jake also discovers that Anna is connected to that family and is the person behind the anonymous accusations. She killed Evan to stop him from publishing a story rooted in what she had done, then entered Jake's life after he turned Evan's idea into a bestseller. Once Jake understands her identity, Anna cannot allow him to expose her. She kills him and constructs a public explanation in which guilt over stealing Evan's plot led him to suicide. The confession she leaves behind destroys Jake's authorship while protecting the deeper family secret. Anna, now Jake's widow and literary heir, survives with control of his estate and of the story the public accepts.",
+        "in_short": "Failed novelist Jacob Finch Bonner hears a brilliant plot from arrogant student Evan Parker. Years later, after learning that Evan died without publishing it, Jake builds the idea into his own novel, Crib, which becomes a worldwide success. Fame brings Anna Williams into his life, but also an anonymous accuser who knows Jake's premise was not originally his. Afraid of exposure, Jake investigates Evan's past and discovers that the plot was rooted in hidden crimes within the Parker family. He finally realizes that Anna is connected to that history, killed Evan, and used the threats to discover how much Jake knew. Anna kills Jake once he uncovers her identity and stages his death as suicide, leaving a confession to literary theft that provides the public with a convincing motive. Jake's reputation collapses, while Anna inherits his estate and keeps the more dangerous truth hidden.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Jacob Finch Bonner once seemed likely to have a major literary career, but his debut's promise has faded through weak sales, failed follow-ups, and years without a viable new book. He now teaches at a low-residency program, privately envious of students who still believe success awaits them. Evan Parker, an arrogant seminar participant, declares that he possesses a plot certain to become a bestseller and a major film. When Jake challenges him, Evan reveals enough of the story to prove that the claim is not empty. Jake recognizes the premise as unusually powerful and returns to his own stalled life unable to forget it.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Years pass without the novel Evan predicted appearing. Jake searches for his former student and learns that Evan died before publishing the story. He convinces himself that an idea left unused should not vanish with its owner and writes a novel, Crib, around the plot he heard in the seminar. The result transforms his career: his agent Matilda Salter and editor Wendy Marder help launch the book into enormous sales, critical attention, translation deals, and a screen adaptation. Jake has achieved everything he wanted, but he knows that the success rests on a premise he did not originate, and each public question about inspiration tests the explanation he has prepared.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Crib becomes a cultural phenomenon, taking Jake through interviews, appearances, and the unfamiliar life of a famous author. He meets Anna Williams and begins a serious relationship that seems separate from the machinery of publication. Then an anonymous user calling TalentedTom contacts him with a direct accusation: Jake stole Evan Parker's plot. The sender knows enough to make dismissal impossible. Jake hides the messages from the people protecting his career and tries to determine whether they come from someone at the writing program, a publishing insider, or a person close to Evan. His fear shifts from private guilt to the practical prospect of losing his reputation, income, and new relationship.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The accusations continue, and Jake begins investigating Evan rather than waiting for the sender to expose him. He retraces his former student's education, death, and family connections, looking for anyone who might know what Evan planned to write. The inquiry shows that Evan's premise was not merely an abstract invention: it echoes a real and carefully obscured history within his family. Deaths, changed identities, and missing pieces of public record suggest that someone had a much stronger reason than literary fairness to prevent the story from being published. Jake's search becomes dangerous because learning where the plot came from also means approaching the person whose secret it contains.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jake follows the Parker family trail through records and surviving connections, gradually reconstructing the crime behind Evan's proposed novel. Evan knew a family member had built a new life on concealed violence and intended to turn that truth into fiction. His supposedly accidental early death now appears connected to the same secret. Jake also notices gaps in what Anna has told him about her own past. Details that once seemed private but harmless begin to align with the identities in his investigation, forcing him to consider that the person sharing his life may have approached him because of Crib rather than by chance.",
+            "through": {
+              "chapter": 27
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jake confirms that Anna is tied to Evan Parker's family and to the hidden crime that supplied Evan's plot. She is also TalentedTom, the anonymous accuser. Anna killed Evan before he could publish a fictional version of the family truth, then entered Jake's life after Crib made that same secret famous. Her messages were a way to pressure him and learn how much he had discovered. Once Jake confronts the full connection, Anna kills him and stages the death as suicide. She leaves a confession in which Jake admits stealing Evan's premise, giving the public a persuasive reason for his shame and death while diverting attention from her own crimes. Jake is remembered as a fraudulent author, and Anna survives as his widow and heir, in control of both his literary estate and the accepted version of events.",
+            "through": {
+              "chapter": 31
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-plot"
       }
     },
     "the-poisonwood-bible": {

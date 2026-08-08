@@ -758,6 +758,150 @@
         "work": "the-sorrows-of-young-werther"
       }
     },
+    "the-sorrows-young-werther": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A young, educated man who withdraws to the countryside and records his impressions in letters to his friend Wilhelm. He is highly sensitive to landscape, art, and emotion, impatient with social convention, and inclined to treat intense feeling as a guide to truth. His attraction to Charlotte soon becomes the central fact of his life.",
+            "id": "werther",
+            "name": "Werther",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The friend to whom most of Werther's letters are addressed. He remains away from the action but serves as Werther's trusted confidant, offering advice and receiving the increasingly troubled account of his life.",
+            "id": "wilhelm",
+            "name": "Wilhelm",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lotte"
+            ],
+            "description": "The eldest daughter of a widowed magistrate, admired for her warmth, good sense, and devoted care of her younger siblings. Werther meets her while she is preparing food for the children before a country dance. She is already promised to Albert, a fact she states from the beginning.",
+            "id": "charlotte",
+            "name": "Charlotte",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Charlotte's absent fiancé when Werther first meets her. On returning, he proves steady, courteous, and responsible. He initially treats Werther as a friend despite recognizing the younger man's attachment to Charlotte.",
+            "id": "albert",
+            "name": "Albert",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Charlotte's widowed father, a district magistrate who presides over a large household. His trust in Charlotte and affection for his children help make the family home a place where Werther feels welcomed.",
+            "id": "the-bailiff",
+            "name": "The Bailiff",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young country laborer whom Werther meets near Wahlheim. His devoted love for the widow who employs him strikes Werther as unusually pure and becomes one of several lives in which Werther sees his own emotional conflicts reflected.",
+            "id": "the-peasant-lad",
+            "name": "The Peasant Lad",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A cultivated aristocrat who receives Werther kindly during his period in diplomatic service. The count values his conversation and invites him into company, though the rigid class rules surrounding that company limit how far the friendship can protect Werther.",
+            "id": "count-c",
+            "name": "Count C.",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young noblewoman Werther admires while serving at court. Her intelligence and sympathy briefly offer him companionship in an environment he finds artificial, but she is constrained by the same social hierarchy that humiliates him.",
+            "id": "miss-von-b",
+            "name": "Miss von B.",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An official superior during Werther's diplomatic employment. Methodical and exacting, he objects to Werther's irregular habits and emotional independence, making the post an increasingly poor fit.",
+            "id": "the-ambassador",
+            "name": "The Ambassador",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The framing narrator who takes over when Werther's surviving letters no longer provide a continuous account. Presenting himself as a collector of testimony and documents, he reconstructs the final crisis with greater distance than Werther's own voice allows.",
+            "id": "the-editor",
+            "name": "The Editor",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-sorrows-young-werther"
+      },
+      "recaps": {
+        "ending": "After Charlotte asks Werther to stop visiting so often, he returns once more while Albert is absent and reads poetry with her. Their shared emotion leads him to embrace and kiss her; she pulls away and tells him he will not see her again. Werther then calmly arranges his affairs, asks Albert to lend him pistols on the pretext of a journey, and writes farewell letters. Charlotte, troubled by the request, hands the weapons to the servant herself. Werther shoots himself late at night. He remains alive for many hours but cannot be saved, and dies around midday. The account closes with his burial outside consecrated ground, attended by workmen rather than clergy; neither Charlotte nor Albert is present. His death ends the triangle without resolving the suffering it caused, leaving Charlotte overwhelmed and Albert's household permanently marked by it.",
+        "in_short": "Werther, a sensitive young man living in the country, falls in love with Charlotte, who cares for her younger siblings and is already engaged to the dependable Albert. Although Charlotte welcomes Werther as a friend, her marriage makes his hopes impossible. He tries to escape by entering diplomatic service, but class prejudice and his dislike of official life drive him away. Returning to Charlotte and Albert, he becomes increasingly isolated and interprets other unhappy lives through his own despair. Charlotte finally asks him to keep his distance. During a last visit, their emotion breaks through the limits of friendship, but she rejects any further meeting. Werther borrows Albert's pistols, writes his farewells, and shoots himself. He dies the following day and is buried without a church ceremony, leaving Charlotte and Albert to face the consequences.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Werther settles in a rural district and writes enthusiastically to Wilhelm about the landscape and the ordinary people he meets. At a country dance he is introduced to Charlotte, the eldest daughter of a widowed magistrate. Her affectionate care of her younger siblings immediately captivates him. Although he is warned that she is engaged to Albert, Werther spends increasing amounts of time at her home and convinces himself that their shared tastes and sympathy give their friendship exceptional meaning. Albert returns and behaves generously toward him. Werther respects Albert but cannot bear the certainty of Charlotte's commitment. The three maintain an uneasy friendship while Werther's letters shift from delight in the countryside to jealousy and despair. Unable to master his attachment, he finally decides that he must leave.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Werther takes a diplomatic post, hoping work and distance will restore his balance. Instead, he clashes with a pedantic superior and feels trapped by formal rank. Count C. values him, and Werther enjoys the sympathy of Miss von B., but at an aristocratic gathering other guests object to his presence because he is not noble. The resulting humiliation confirms his disgust with court society, and he resigns. After a period of travel he returns to the district where Charlotte now lives as Albert's wife. Their renewed friendship gives him temporary comfort, but proximity makes his hopeless love more consuming. He dwells on stories of rejected lovers and disturbed minds, and he becomes convinced that no ordinary change of place or occupation can free him.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "An editor reconstructs Werther's last weeks from letters and testimony. His repeated visits disturb the peace of Charlotte and Albert's home, and Charlotte, though compassionate, realizes that she cannot continue to be his sole emotional support. She asks him not to return before Christmas. He comes anyway while Albert is absent and reads melancholy poetry aloud to her. Their intense response ends with Werther embracing and kissing her; Charlotte breaks away and forbids another meeting. Werther settles his debts, sends farewell messages, and requests Albert's pistols, claiming he needs them for a journey. Charlotte uneasily gives the weapons to the servant. That night Werther shoots himself. He is found alive the next morning but dies around noon. He is buried at night outside church rites, with laborers carrying the coffin and no priest in attendance.",
+            "through": {
+              "chapter": 3
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-sorrows-young-werther"
+      }
+    },
     "the-southern-book-clubs-guide-to-slaying-vampires": {
       "characters": {
         "characters": [

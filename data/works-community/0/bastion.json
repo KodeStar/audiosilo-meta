@@ -1659,6 +1659,130 @@
         "work": "before-they-are-hanged"
       }
     },
+    "being-there": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A middle-aged man who has spent his entire life inside a wealthy Washington household, tending its walled garden and watching television. He cannot read or write and understands little beyond gardening and the patterns he has absorbed from the screen. After the owner dies, Chance is sent into the city with no money, records, or practical experience.",
+            "id": "chance",
+            "name": "Chance",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The owner of the house where Chance has always lived and worked. His death ends the sheltered routine that has defined Chance's life and leaves no official proof that Chance ever belonged in the household.",
+            "id": "old-man",
+            "name": "The Old Man",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A longtime servant in the Old Man's house who knows that Chance has never lived in the outside world. She leaves after the death and later sees how completely the public image of Chance differs from the man she remembers.",
+            "id": "louise",
+            "name": "Louise",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "EE"
+            ],
+            "description": "Benjamin Rand's elegant younger wife. Her chauffeur-driven car injures Chance soon after he is forced from the Old Man's house, and she takes him home for medical attention. Hearing his name as Chauncey Gardiner, she assumes he is a cultivated businessman fallen on difficult circumstances.",
+            "id": "elizabeth-eve-rand",
+            "name": "Elizabeth Eve Rand",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A gravely ill financier whose wealth and counsel give him access to the highest levels of American politics. He welcomes the apparently reserved Chauncey Gardiner into his home and interprets Chance's simple remarks about seasonal work in a garden as economic wisdom.",
+            "id": "benjamin-rand",
+            "name": "Benjamin Rand",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The President of the United States, who visits Benjamin Rand and asks the supposed Chauncey Gardiner for his view of the economy. Chance answers with observations about growth, decay, and the turning seasons, which the President takes as a reassuring policy metaphor.",
+            "id": "president",
+            "name": "The President",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Soviet ambassador, an experienced diplomat who meets Chance after his sudden rise to national notice. Chance's calm manner and disconnected answers persuade him that the newcomer may be communicating with unusual subtlety.",
+            "id": "vladimir-skrapinov",
+            "name": "Vladimir Skrapinov",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "being-there"
+      },
+      "recaps": {
+        "ending": "After Benjamin Rand's death, the powerful men attending his funeral discuss possible candidates for the next presidential ticket. Chauncey Gardiner, whose past cannot be found and whose public appearances have been interpreted as evidence of rare judgment, emerges as an attractive choice. None of them understands that he is Chance, an illiterate gardener with no political knowledge or documented history. Chance wanders away from the funeral gathering into the grounds. Coming to a pond, he steps onto the water and continues across it, testing the surface with his umbrella. The extraordinary closing image leaves him moving beyond the ordinary limits that everyone else assumes while the political world prepares to elevate the identity it invented for him.",
+        "in_short": "Chance, an illiterate gardener who has never left his employer's Washington home, is abruptly evicted when the owner dies. After a car belonging to Elizabeth Eve Rand strikes him, his introduction as Chance the gardener is mistaken for the name Chauncey Gardiner. Eve and her dying financier husband, Benjamin Rand, assume he is a discreet businessman. Chance's literal remarks about gardens are treated as insight into the economy by Rand, the President, television audiences, and diplomats. Each new observer supplies the intelligence and background that Chance lacks, while the absence of any record of him makes him seem important and secretive. By Rand's funeral he is being discussed as a potential vice-presidential or presidential candidate. Unaware of the political design forming around him, Chance walks away and apparently crosses the surface of a pond without sinking.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Chance has lived for as long as he can remember in the Washington home of an old, wealthy man. He tends the garden, eats meals prepared by servants, and spends most of his free time watching television. He has never gone into the city, has no education, and cannot read or write. When the Old Man dies, lawyers arrive to settle the estate. They find no employment papers or other record establishing Chance's place in the household and order him to leave. The servants disperse, and Chance puts on the dead man's well-made clothes and walks outside carrying a suitcase and a television remote. For the first time, he must move through a world he knows only as images on a screen.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Soon after leaving the house, Chance is struck and lightly injured by a chauffeured car belonging to Elizabeth Eve Rand. Eve insists on taking him to her home, where a doctor can examine him. When Chance identifies himself as Chance the gardener, his words are heard as the more distinguished name Chauncey Gardiner. His expensive borrowed clothes, quiet manner, and inability to explain his circumstances encourage Eve to imagine that he is a businessman protecting his privacy. At the Rand mansion, Chance meets Eve's husband, Benjamin, an elderly financier who is seriously ill. The two men speak about bad seasons and new growth. Chance is describing the only subject he understands, but Rand hears a thoughtful analogy about economic decline and recovery and decides that his guest possesses unusual clarity.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The President visits Benjamin Rand and asks the supposed Chauncey Gardiner what should be done about the troubled economy. Chance again talks about a garden: roots must be protected during cold weather, and growth returns with the seasons. The President accepts this as sound economic counsel and later quotes Gardiner publicly. Reporters seek out the unknown adviser, and Chance appears on television. He answers questions with more observations about gardens while remaining composed because television is the environment he understands best. Viewers and commentators interpret his simplicity as confidence and depth. Government investigators can find no history for Chauncey Gardiner, but the blank record increases suspicion that he has highly protected connections rather than exposing the mistake. Louise, who knew him as a servant, recognizes him on television, yet her knowledge has no influence on the public story.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Chance's fame continues to grow. At a diplomatic reception, the Soviet ambassador Skrapinov assumes that his odd replies contain deliberate signals, while other influential people treat his lack of a discoverable past as proof of discretion and power. Eve becomes increasingly drawn to him, but Chance responds to intimacy as if it were another scene to watch rather than an exchange he understands. Benjamin Rand dies, and the political figures gathered around his funeral begin considering Chauncey Gardiner for national office. They see a reassuring public presence, no compromising record, and the endorsement implied by Rand's friendship. Chance has done nothing to create this identity; others have built it by interpreting his literal gardening talk and passive manner according to their own needs. Leaving the gathering, he reaches a pond and walks across its surface, apparently without sinking, as plans to advance him politically take shape behind him.",
+            "through": {
+              "chapter": 7
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "being-there"
+      }
+    },
     "bel-ami": {
       "characters": {
         "characters": [
