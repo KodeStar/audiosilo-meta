@@ -850,6 +850,326 @@
         "work": "the-tragical-history-of-doctor-faustus"
       }
     },
+    "the-trial-naxos-audiobooks": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A senior bank clerk who is arrested on his thirtieth birthday without being told what offense he has committed. He is permitted to continue his ordinary life while an inaccessible court pursues the case, and he initially treats the proceeding as an absurd mistake he can master.",
+            "id": "josef-k",
+            "name": "Josef K.",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "K.'s landlady, who respects his position and attempts to explain away the disturbance caused by his arrest. Her concern for the boarding house's propriety leads to tension when she comments on another lodger.",
+            "id": "frau-grubach",
+            "name": "Frau Grubach",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young typist who lodges in the room used by the arresting officials. K. waits for her return so that he can describe and reenact the morning's intrusion, drawing her into his agitation about the case.",
+            "id": "fraulein-burstner",
+            "name": "Fräulein Bürstner",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the two warders who enter K.'s bedroom and announce his arrest. He and Willem behave more like opportunistic functionaries than conventional police, taking K.'s breakfast and inspecting his clothes.",
+            "id": "franz",
+            "name": "Franz",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A warder who helps detain K. and insists that the officials need not explain the charge. Along with Franz, he represents the low-level personnel of a system whose authority is assumed rather than clarified.",
+            "id": "willem",
+            "name": "Willem",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The official who conducts K.'s first hearing in a crowded tenement room. His uncertain authority and reliance on a notebook deepen K.'s conviction that the court is disorganized and corrupt.",
+            "id": "the-examining-magistrate",
+            "name": "The Examining Magistrate",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "K.'s excitable uncle from the country, who learns of the case and fears that it will disgrace the family. He takes K. to an advocate believed to possess useful court connections.",
+            "id": "uncle-karl",
+            "name": "Uncle Karl",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Dr. Huld"
+            ],
+            "description": "An ailing advocate who handles cases before the secretive court and claims access to its officials. K.'s uncle retains him in the hope that personal influence will succeed where ordinary legal procedure cannot.",
+            "id": "advocate-huld",
+            "name": "Advocate Huld",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Huld's nurse, who quickly takes a personal interest in K. She is familiar with accused men and with the court's influence, offering K. intimacy and an alternative channel into the advocate's world.",
+            "id": "leni",
+            "name": "Leni",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A painter who produces conventional portraits for court officials and has inherited privileged knowledge of its lower ranks. He explains the limited outcomes an accused person can pursue, none of which amounts to a definitive acquittal.",
+            "id": "titorelli",
+            "name": "Titorelli",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A merchant whose long-running court case has consumed his business, independence, and dignity. He is another client of Huld and demonstrates to K. how completely an accused person can become dependent on an advocate.",
+            "id": "rudi-block",
+            "name": "Rudi Block",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "The Prison Chaplain"
+            ],
+            "description": "A clergyman attached to the prison who summons K. inside the cathedral. He knows the status of the case and uses a parable about a man seeking access to the law to challenge K.'s understanding of the court.",
+            "id": "the-priest",
+            "name": "The Priest",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-trial-naxos-audiobooks"
+      },
+      "recaps": {
+        "ending": "On the eve of K.'s thirty-first birthday, two formally dressed men collect him from his lodgings. K. goes with them through the city to an abandoned quarry, offering little effective resistance. They position him against a stone and pass a butcher's knife between themselves, apparently expecting him to perform the final act, but he cannot. One man holds him while the other stabs him in the heart and turns the knife. K. dies thinking of the shame that will survive him. The court never states a charge, delivers a public judgment, or provides a route to genuine acquittal. His year of resistance has instead drawn him progressively into its logic, isolated him from ordinary life, and ended in an execution whose authority remains unexplained.",
+        "in_short": "Bank clerk Josef K. is arrested on his thirtieth birthday by agents of an unnamed court, although he is left free to work and is never told the charge. He confronts a chaotic first hearing, explores court offices hidden in tenements, and seeks help through relatives, an advocate, the advocate's nurse Leni, and a court painter. Each contact reveals a system sustained by personal influence, delay, and submission rather than a transparent law. K. grows distracted at work and increasingly absorbed by his defense. He dismisses the advocate after seeing another accused man reduced to dependence. In a cathedral, the prison chaplain tells him a parable about a lifelong attempt to gain entry to the law and warns that his case is going badly. Almost a year after the arrest, two men take K. to a quarry and stab him to death. He never learns the accusation or receives a meaningful verdict.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "On his thirtieth birthday, bank clerk Josef K. wakes to find two warders in his boarding house. They announce that he is under arrest but will not identify his offense or the authority behind it. An inspector questions him in another lodger's room, then permits him to go to work and continue his life. K. considers the episode either a mistake or a provocation and tries to maintain his superiority over the officials. That evening he discusses the intrusion with his landlady, Frau Grubach, and later waits for Fräulein Bürstner, whose room the officials occupied. He reenacts the arrest for her with growing intensity and abruptly kisses her before she withdraws. The case has no stated charge, but it has already entered K.'s home and unsettled his ordinary relationships.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "K. receives a summons to an initial inquiry in a working-class tenement. With no exact room given, he searches the building and arrives late at a packed attic hearing. He responds to the examining magistrate's questions with a speech attacking the arrest, the warders, and the entire organization as corrupt. The audience appears divided, but K. discovers that people he took for rival factions all wear badges associated with the court. When the magistrate warns that he is discarding the advantages an interrogation might offer, K. leaves rather than submit. His attempt to expose the proceeding as a farce has not ended it; the court accepts his defiance as another action within the case.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "K. returns to the hearing room without a new summons and finds it empty except for the court usher's wife. She describes harassment by a law student and offers to help K., but the student carries her away to the examining magistrate. The usher then guides K. into court offices spread through the building's hot, crowded attics. Accused people wait there submissively, and clerks conduct business in unhealthy rooms hidden above ordinary homes. K. becomes faint and must be led outside, where he immediately recovers. The visit shows that the court is both pervasive and shabby: its power does not depend on impressive institutions, and entering its spaces physically weakens K. even when he continues to scorn them.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Fräulein Bürstner becomes inaccessible after another lodger, Fräulein Montag, intervenes. At the bank, K. discovers the two warders being whipped in a storeroom because he complained about their conduct. He tries to bribe the whipper to stop but retreats when colleagues might notice; the next day the same scene appears unchanged. The case now intrudes into K.'s workplace and turns his protest into punishment for lower officials. Although he still denies responsibility, he is unable either to rescue the men or to separate the court from the spaces of his daily life.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Alarmed by rumors of the case, K.'s Uncle Karl takes him to the bedridden Advocate Huld, who claims court contacts and agrees to represent him. K. is soon distracted by Huld's nurse, Leni, who is drawn to accused men and becomes his lover. Dissatisfied with the advocate's vague assurances and the absence of progress, K. follows a manufacturer's suggestion and visits Titorelli, a painter connected to judges. Titorelli explains that a true acquittal is beyond anyone he knows. The practical alternatives are an apparent acquittal, always vulnerable to renewed arrest, or indefinite postponement maintained through constant effort. K. leaves with unwanted paintings and no real escape route. His search for influence has revealed only different forms of dependence on the court.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "K. decides to take control of his defense by dismissing Huld. At the advocate's house he meets the merchant Block, whose case has lasted for years and who secretly consults several lawyers. Huld demonstrates his power by making Block kneel and beg for information, reducing the merchant to complete dependence. K. rejects this model of submission and confirms that the advocate is dismissed, but he has no effective alternative. Later, while assigned to show an Italian visitor the cathedral, K. instead meets the prison chaplain. The priest says the case is going badly and tells of a man who waits all his life before a guarded entrance to the law, only to learn at death that the entrance was intended for him alone. Their discussion offers competing interpretations but no usable guidance. K. leaves still attached to a process he cannot understand.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On the evening before K.'s thirty-first birthday, two men in formal black clothes arrive at his lodgings and take him away. He accompanies them across the city to a deserted quarry. They remove some of his clothes, place his head on a stone, and pass a knife back and forth as if inviting him to kill himself. K. cannot take the weapon. One man then holds him while the other drives the knife into his heart and twists it. K. dies with a sense that the shame of the death will outlive him. No charge is disclosed, no intelligible judgment is announced, and no intervention arrives. The case ends not through a recognizable legal resolution but through K.'s execution after a year in which his efforts to resist, investigate, and obtain help only drew him deeper into the court's power.",
+            "through": {
+              "chapter": 10
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-trial-naxos-audiobooks"
+      }
+    },
+    "the-trojan-women": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The former queen of Troy, now an elderly captive after the city's fall. Her husband and many of her children are dead, and she waits with the surviving Trojan women to learn which Greek master will claim her.",
+            "id": "hecuba",
+            "name": "Hecuba",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Hecuba's daughter, a princess and prophet of Apollo. The god has given her true knowledge of the future while ensuring that others treat her warnings as madness or delusion.",
+            "id": "cassandra",
+            "name": "Cassandra",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The widow of the Trojan hero Hector and mother of his young son Astyanax. She has survived the sack of Troy only to face enslavement and separation from the remains of her family.",
+            "id": "andromache",
+            "name": "Andromache",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The young son of Hector and Andromache and the last male heir of Troy's royal house. He is a helpless captive in the hands of Greeks who fear what he might represent if allowed to grow up.",
+            "id": "astyanax",
+            "name": "Astyanax",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Spartan queen whose departure with Paris helped bring the Greek expedition against Troy. After the city's defeat, she is a captive facing the anger of her husband Menelaus and of the Trojan women who blame her for their losses.",
+            "id": "helen",
+            "name": "Helen",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The king of Sparta and Helen's husband. He comes to the ruined city intending to recover Helen and carry her back to Greece for punishment.",
+            "id": "menelaus",
+            "name": "Menelaus",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Greek herald charged with announcing the victors' decisions to the Trojan captives. He executes the army's orders while showing intermittent shame and pity for the people harmed by them.",
+            "id": "talthybius",
+            "name": "Talthybius",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The sea god who once protected Troy and now looks upon the city after its destruction. Though defeated in his support for Troy, he joins Athena in considering punishment for the Greeks' sacrilege during the sack.",
+            "id": "poseidon",
+            "name": "Poseidon",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A goddess who supported the Greeks during the war but is angered by their failure to punish violence committed in her sanctuary. She proposes that the returning fleet suffer for the victors' disrespect.",
+            "id": "athena",
+            "name": "Athena",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The captive women of Troy, waiting beside the Greek ships to be assigned as slaves. Their songs join individual losses into a collective account of a conquered city.",
+            "id": "chorus-of-trojan-women",
+            "name": "Chorus of Trojan Women",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-trojan-women"
+      },
+      "recaps": {
+        "ending": "The Greek commanders order Hector's young son Astyanax killed so that he can never grow up to restore Troy. He is thrown from the city walls, and Talthybius later brings his body to Hecuba on Hector's shield. Andromache has already been taken away to serve Neoptolemus, so Hecuba prepares the child for burial. Helen is placed in Menelaus's custody for return to Greece, despite Hecuba's warning that her beauty may again overcome his resolve to punish her. Cassandra has been assigned to Agamemnon, and Hecuba herself is to become Odysseus's slave. The Greeks set fire to the remains of Troy and summon the captives to the ships. As the city collapses, Hecuba and the Chorus mourn their dead and their lost homeland, then leave for enslavement. The victors depart under a shadow established by Athena and Poseidon: Greek sacrilege during the sack will bring suffering upon the fleet on its journey home.",
+        "in_short": "After Troy has fallen, Hecuba and the city's surviving women wait to be divided among the Greek victors. Cassandra is assigned to Agamemnon and foresees that the forced union will lead to his death and her own. Andromache is given to Neoptolemus, while Hecuba learns that her daughter Polyxena has been killed at Achilles' tomb. The Greeks then decide that Andromache's young son Astyanax must die to prevent any future restoration of Troy, and he is thrown from the walls. Menelaus confronts Helen, who shifts blame for the war onto the gods and others; Hecuba urges him not to be persuaded and he takes Helen away to face judgment in Greece. Hecuba buries Astyanax on Hector's shield. Troy is burned, and the captive women are marched to the Greek ships. Athena and Poseidon have already agreed that the Greek fleet will suffer for sacrilege committed during the sack.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Troy has been sacked, its men killed, and its surviving women gathered for distribution among the Greek commanders. Poseidon and Athena agree that the Greek fleet should suffer on its return because the victors have committed sacrilege. Hecuba, once queen, learns that she will belong to Odysseus. Her daughter Cassandra has been assigned to Agamemnon; Cassandra sees that this forced union will carry destruction into his house, though her prophecy offers no escape for her. Andromache arrives with her son Astyanax and reports that Hecuba's daughter Polyxena has been killed at Achilles' tomb. The herald Talthybius then announces that the Greeks will kill Astyanax to prevent Hector's heir from one day rebuilding Troy. The boy is taken and thrown from the walls. Menelaus confronts Helen, who argues that divine power and other people caused her departure with Paris. Hecuba rejects her defense and warns Menelaus against yielding again to Helen's beauty; he takes Helen to the ships, saying she will face punishment in Greece. Talthybius returns Astyanax's body on Hector's shield, and Hecuba performs the child's funeral rites because Andromache has already been removed. The Greeks burn what remains of Troy. Hecuba and the Chorus watch their city disappear, then obey the summons to the ships and enslavement.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-trojan-women"
+      }
+    },
     "the-trumpet-of-the-swan": {
       "characters": {
         "characters": [

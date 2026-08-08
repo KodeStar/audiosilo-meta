@@ -3108,6 +3108,146 @@
         "work": "of-mice-and-men"
       }
     },
+    "old-yeller": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A fourteen-year-old boy living with his family on the Texas frontier in the late 1860s. When his father leaves on a cattle drive, Travis is entrusted with the farm and takes the responsibility seriously. Proud of his growing competence and initially impatient with anything that creates more work, he narrates the story.",
+            "id": "travis-coates",
+            "name": "Travis Coates",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Yeller"
+            ],
+            "description": "A large, rough-coated yellow dog who arrives uninvited at the Coates farm. He is a shameless food thief and initially earns Travis's anger, but Little Arliss immediately claims him. His strength, courage, and frontier instincts soon make him valuable to the family.",
+            "id": "old-yeller",
+            "name": "Old Yeller",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Travis's five-year-old brother, an energetic child who collects small wild animals and regularly gets into danger. He adopts Old Yeller without hesitation and defends the dog against Travis's efforts to drive him away.",
+            "id": "little-arliss-coates",
+            "name": "Little Arliss Coates",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Travis and Arliss's capable mother, who manages the household while her husband is away. She expects Travis to carry an adult share of the work, treats injuries with frontier remedies, and balances practical judgment with sympathy for both boys.",
+            "id": "mama",
+            "name": "Mama",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Travis and Arliss's father, who leaves home with other settlers to sell cattle in Kansas. Before departing, he puts Travis in charge of the family's farm work and urges him to act as the man of the household.",
+            "id": "papa",
+            "name": "Papa",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young neighbor and friend of the Coates family. Thoughtful and dependable, she sometimes helps Katie with the work and pays close attention to Travis even when he is dismissive of her.",
+            "id": "lisbeth-searcy",
+            "name": "Lisbeth Searcy",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Lisbeth's talkative father and a neighbor of the Coates family. He is known for lingering over visits and news, but his concern for Katie and the boys while Jim is away is genuine.",
+            "id": "bud-searcy",
+            "name": "Bud Searcy",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A cattleman who arrives searching for a yellow dog that belongs to him. He recognizes Old Yeller and has a rightful claim to take him, forcing Travis and Arliss to face the possibility of losing the animal.",
+            "id": "burn-sanderson",
+            "name": "Burn Sanderson",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "old-yeller"
+      },
+      "recaps": {
+        "ending": "A rabid wolf attacks Mama and Lisbeth at the cabin, and Old Yeller fights it off and kills it. Travis sees that the wolf has bitten the dog. Because there is no way to prevent or cure hydrophobia, the family confines Old Yeller and watches for symptoms. When the dog becomes sick and dangerous, Travis accepts that he must protect the family and shoots him. He is devastated and cannot take comfort in knowing that the act was necessary. Lisbeth offers him one of the puppies fathered by Old Yeller, but at first he wants no replacement. Papa returns safely from the cattle drive with money and a horse for Travis. He tells his son that maturity includes learning to seek what remains good after terrible events. When the puppy steals food and shows the same bold character as Old Yeller, Travis finally begins to accept him, carrying forward his bond with the dog he lost.",
+        "in_short": "While his father is away on a cattle drive, fourteen-year-old Travis Coates is responsible for the family farm. He resents a stray yellow dog adopted by his little brother Arliss, but the animal earns his place by saving Arliss from a bear and helping with dangerous livestock. The dog's owner, Burn Sanderson, lets the family keep him and warns Travis about hydrophobia. Old Yeller is badly injured while helping Travis mark wild hogs but recovers under the family's care. A rabies outbreak then reaches the farm. After Travis kills an infected cow, a rabid wolf attacks the cabin. Old Yeller saves Mama and Lisbeth but is bitten. When he develops the disease, Travis shoots him to protect everyone. Papa returns to find Travis grieving and encourages him to keep living beyond the loss. A puppy sired by Old Yeller displays his father's lively nature, and Travis begins to welcome him.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In frontier Texas, Papa leaves on a long cattle drive to Kansas and puts his fourteen-year-old son Travis in charge of the farm. Travis takes pride in supplying meat and protecting Mama and his five-year-old brother, Little Arliss. A large yellow stray soon steals food and disrupts the household. Travis wants to drive him away, but Arliss claims the dog and names him Old Yeller. The animal's bad habits deepen Travis's dislike until Arliss approaches a bear cub and the mother bear charges. Old Yeller attacks the bear and gives Mama and Travis time to rescue the child. His courage establishes that beneath his thieving behavior he will risk himself for the family, and Travis begins to reconsider him.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Burn Sanderson arrives and identifies Old Yeller as his missing dog. Arliss is heartbroken by the prospect that Yeller will be taken away. Seeing the child's attachment and recognizing that the dog is needed on the farm, Sanderson trades away his claim and lets the Coates family keep him. Before leaving, he privately warns Travis that a dangerous outbreak of hydrophobia is spreading through the country and that strangely behaving animals must be avoided. Travis and Yeller continue working together, and the dog's skill with livestock and willingness to protect the family turn Travis's reluctant tolerance into trust. Neighbors Bud Searcy and his daughter Lisbeth also keep contact with the household while Papa remains away.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Travis sets out to mark the family's free-ranging hogs, a dangerous job that requires catching fierce animals among rocky terrain. Old Yeller holds the hogs at bay so Travis can work from the trees, but a hog reaches Travis and badly cuts his leg. Yeller intervenes and is himself ripped open. Travis cannot move him and shelters the dog in a rocky opening before crawling home for help. Mama and Lisbeth accompany the injured Travis back and devise a way to bring Yeller home without exposing themselves to the hogs. Mama treats both wounds, sewing the dog's torn flesh and tending Travis. The ordeal confirms the partnership between boy and dog: each has been injured while trying to save the other, and the household commits itself to nursing them through recovery.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Travis and Old Yeller gradually recover from the hog attack, while Lisbeth helps Mama with the farm. The threat Burn Sanderson described becomes immediate when Spot, the family's milk cow, returns behaving wildly and aggressively. Travis recognizes the symptoms of hydrophobia and understands that the animal cannot be approached or saved. He shoots Spot and, following the precautions required by the disease, helps deal with the infected carcass. The incident shows Travis that protecting the household may require him to kill an animal he knows. It also establishes that the rabies outbreak has reached the family's own land, creating a danger to every person and animal on the farm while Papa is still away.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A rabid wolf comes to the cabin and attacks Mama and Lisbeth. Old Yeller fights and kills it, saving them, but Travis discovers that the wolf bit him. The family confines Yeller to determine whether he has been infected. When the dog develops hydrophobia and becomes a threat, Travis takes responsibility and shoots him. The necessity of the act does not lessen his grief. Lisbeth brings him a puppy fathered by Yeller, but Travis initially rejects the idea that another dog can answer his loss. Papa returns safely from the cattle drive with money and a horse for Travis. He recognizes how much his son has endured and advises him not to let sorrow hide everything that is still good. When the mischievous puppy steals cornbread in a manner reminiscent of Old Yeller, Travis begins to accept the new dog and the possibility of moving forward.",
+            "through": {
+              "chapter": 16
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "old-yeller"
+      }
+    },
     "oliver-twist-adaptation": {
       "characters": {
         "characters": [
