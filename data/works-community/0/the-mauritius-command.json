@@ -3841,6 +3841,176 @@
         "work": "the-mysterious-affair-at-styles"
       }
     },
+    "the-mysterious-affair-at-styles-with-ebook": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A former Army officer recovering from wartime service, and the narrator of the case. While on leave he accepts an invitation to Styles Court, where his old acquaintance John Cavendish lives. Earnest and observant but quick to settle on a theory, he becomes Poirot's friend and informal assistant when the household is shaken by a suspicious death.",
+            "id": "arthur-hastings",
+            "name": "Arthur Hastings",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Hastings's old friend and the elder Cavendish son. He lives at Styles with his wife and remains financially dependent on his wealthy stepmother, Emily Inglethorp. His invitation brings Hastings into the household shortly before the murder.",
+            "id": "john-cavendish",
+            "name": "John Cavendish",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "John Cavendish's poised and reserved wife. She lives at Styles but seems emotionally distant from her husband, and Hastings is immediately struck by her self-command and beauty.",
+            "id": "mary-cavendish",
+            "name": "Mary Cavendish",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "John's younger brother, a quiet man who once studied medicine. He also lives at Styles and depends on his stepmother's support. His medical knowledge and guarded manner attract attention after her death.",
+            "id": "lawrence-cavendish",
+            "name": "Lawrence Cavendish",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The wealthy owner of Styles Court and stepmother of John and Lawrence. Energetic, charitable, and accustomed to directing the household, she has recently married a much younger man. Her control of the family money leaves several people around her dependent on her favor.",
+            "id": "emily-inglethorp",
+            "name": "Emily Inglethorp",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Emily's new husband, many years her junior. His heavy beard, elaborate manners, and apparent influence over his wife have made him deeply unpopular with much of the Styles household.",
+            "id": "alfred-inglethorp",
+            "name": "Alfred Inglethorp",
+            "reveal": {
+              "chapter": 1
+            }
+          },
+          {
+            "description": "Emily's blunt, capable companion and distant relation. She openly despises Alfred Inglethorp and tells Hastings that she distrusts his motives. Her fierce protectiveness of Emily culminates in a quarrel that sends her away from Styles.",
+            "id": "evelyn-howard",
+            "name": "Evelyn Howard",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young orphan taken in by Emily and treated as a member of the household. She works at a hospital dispensary during the war, giving her practical familiarity with medicines and poisons. Lively and direct, she becomes a particular friend of Hastings.",
+            "id": "cynthia-murdoch",
+            "name": "Cynthia Murdoch",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A celebrated former Belgian police detective living nearby with other refugees. Small, impeccably dressed, and methodical, he relies on close observation and the orderly use of reason. Hastings seeks his help after Emily Inglethorp's death.",
+            "id": "hercule-poirot",
+            "name": "Hercule Poirot",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A London police inspector who has worked with Poirot before. He arrives to conduct the official inquiry and respects Poirot's abilities even when their interpretations of the evidence differ.",
+            "id": "inspector-japp",
+            "name": "Inspector Japp",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A physician and toxicology specialist whom Hastings encounters near Styles. His grave manner and scientific expertise make a strong impression during the tense days around Emily Inglethorp's death.",
+            "id": "doctor-bauerstein",
+            "name": "Dr Bauerstein",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-mysterious-affair-at-styles-with-ebook"
+      },
+      "recaps": {
+        "ending": "Poirot gathers the household and explains that Alfred Inglethorp and Evelyn Howard planned Emily's murder together while publicly acting like enemies. They exploited the delayed effect of strychnine already present in Emily's medicine and arranged misleading evidence so Alfred would appear obviously guilty at first. Poirot prevented an early arrest because an acquittal would have protected Alfred from being tried again. A revealing letter and the accumulated physical clues finally establish the conspiracy, and Alfred and Evelyn are arrested. John Cavendish, previously prosecuted for the crime, is cleared. The crisis also breaks down the reserve between John and Mary, who reconcile, while Lawrence and Cynthia acknowledge their attachment. Hastings believes Poirot has restored order at Styles, though Poirot notes that human happiness, rather than detection alone, is the best result of the case.",
+        "in_short": "While staying with his friend John Cavendish at Styles Court, wounded veteran Arthur Hastings witnesses the death of John's wealthy stepmother, Emily Inglethorp, from strychnine poisoning. Suspicion first falls on her unpopular younger husband Alfred, but the evidence is strangely contradictory. Hastings calls on his Belgian friend Hercule Poirot, who studies the household's rivalries, financial dependence, medicines, wills, and carefully planted clues. John is eventually arrested and tried, but the case against him collapses. Poirot proves that Alfred and Emily's companion Evelyn Howard were secret accomplices: their conspicuous hostility helped conceal their partnership, and they manipulated Emily's medicine and the timing of the poison while trying to make Alfred look too obviously guilty to be convicted. Both conspirators are arrested, John is exonerated, and the strained Cavendish marriage begins to heal.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Army officer Arthur Hastings, home on sick leave during the First World War, meets his old friend John Cavendish and is invited to Styles Court. The estate belongs to John's wealthy stepmother, Emily Inglethorp, who supports John, his wife Mary, John's younger brother Lawrence, and the orphaned Cynthia Murdoch. Emily has recently married the much younger Alfred Inglethorp, whose manner and influence have made him unpopular. Emily's companion Evelyn Howard openly accuses Alfred of pursuing Emily's money and leaves after a bitter quarrel. On the following day Emily appears distressed after an argument whose other participant Hastings cannot identify. That night the household is awakened by her cries. Her bedroom is locked, and when the doors are forced she suffers violent convulsions and dies. The circumstances suggest poison rather than natural illness.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Hastings asks his friend Hercule Poirot, a former Belgian detective now living nearby as a refugee, to investigate Emily Inglethorp's death. Poirot examines the locked bedroom, a stain on the floor, the fireplace, a damaged dispatch case, and the remains of drinks and medicines. He questions the household about Emily's movements, a recent quarrel, and a paper she may have burned. The doctors conclude that strychnine caused her death. Alfred, already distrusted by the family, appears to have had both a financial motive and an opportunity, yet he claims to have been away from Styles and is reluctant to explain himself. Poirot insists that the timing and physical evidence must be understood before anyone is accused, and he is troubled by details that seem designed to point too directly at Emily's husband.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At the inquest, evidence about strychnine, Emily's medicine, and a purchase made in Alfred's name strengthens the appearance of murder. The household's finances and Emily's habit of revising her will supply possible motives for more than one person. Alfred produces an alibi only after pressure, frustrating those who expected his arrest. Poirot continues to reconstruct the household's movements and the handling of Emily's coffee and medicine. He also follows small discrepancies in testimony instead of treating any single clue as decisive. Hastings grows impatient with Poirot's secrecy, especially when the detective seems more interested in domestic details than in the obvious suspect, but Poirot maintains that the apparently simple case has been deliberately arranged to mislead.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Fresh discoveries shift suspicion among the residents of Styles. The police examine Cynthia's work in the dispensary and Dr Bauerstein's specialist knowledge, while private tensions involving Mary and John Cavendish emerge. Poirot distinguishes these concealed personal matters from evidence of murder, though Hastings repeatedly confuses the two. A reconstruction of the night shows that several people had reasons to move quietly through the house and that the poisoned dose cannot be explained by the most obvious account. Police attention eventually turns away from Alfred and toward John, against whom damaging material accumulates. Poirot remains dissatisfied: the evidence can support an arrest, but he believes an unseen pattern connects the missing and altered objects.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "John Cavendish is arrested and prosecuted for Emily's murder. The case against him combines financial motive, the household quarrel, incriminating objects, and the claim that he had access to the poison. Mary supports him despite the strain in their marriage. Under examination, however, the prosecution's neat account proves less secure than it first appeared, and important testimony can be interpreted in another way. John is acquitted. Poirot still refuses to name the murderer until he can supply proof rather than suspicion. He returns to the sequence involving Emily's medicine and to a final missing link among the papers and household clues, convinced that the real plan depended on manipulating both the poison's timing and the investigators' expectations.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Poirot finds the last documentary clue and assembles everyone at Styles. Alfred Inglethorp and Evelyn Howard were secretly working together; their loud public hostility was camouflage. They arranged for strychnine already associated with Emily's treatment to become lethal at a chosen time and planted a trail that would make Alfred appear the immediate culprit. Their design relied on his being arrested on an incomplete case and then acquitted, preventing a later trial for the same crime. Poirot blocked that premature arrest until the conspiracy could be proved. Alfred and Evelyn are taken into custody, while John is fully cleared. The disclosures also resolve the household's private misunderstandings: John and Mary reconcile, and Lawrence and Cynthia move toward a life together. Hastings sees the case as the beginning of Poirot's English career.",
+            "through": {
+              "chapter": 13
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-mysterious-affair-at-styles-with-ebook"
+      }
+    },
     "the-mystery-of-the-blue-train": {
       "characters": {
         "characters": [

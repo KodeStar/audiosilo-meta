@@ -2713,6 +2713,207 @@
         "work": "crocodile-tears"
       }
     },
+    "crooked-house": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A young Englishman returning from wartime diplomatic service. He met Sophia Leonides in Cairo and hopes to marry her, but she refuses to make plans while her grandfather's unexplained death hangs over the family. With help from his father, a senior police official, Charles enters the Leonides household as an informal observer and narrates the investigation.",
+            "id": "charles-hayward",
+            "name": "Charles Hayward",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Aristide Leonides's clear-sighted granddaughter and Charles Hayward's intended wife. She grew up in the crowded family home at Three Gables and believes the household cannot return to ordinary life until her grandfather's killer is identified. Her attachment to her family is tempered by a frank understanding of its rivalries and weaknesses.",
+            "id": "sophia-leonides",
+            "name": "Sophia Leonides",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The wealthy patriarch of the Leonides family, already dead when the investigation begins. Born in Greece, he built a large business empire and gathered three generations of his family into the unusual house at Three Gables. His death from poisoning exposes the dependencies and grievances that his forceful care had held together.",
+            "id": "aristide-leonides",
+            "name": "Aristide Leonides",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Scotland Yard inspector leading the official inquiry into Aristide's death. Patient and methodical, he questions the whole household while allowing Charles to observe parts of the case in the hope that family members will speak more freely to him than to the police.",
+            "id": "chief-inspector-taverner",
+            "name": "Chief Inspector Taverner",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Aristide's much younger second wife. Attractive, emotional, and isolated from most of the Leonides family, she insists that she loved her husband despite the difference in their ages. Her closeness to the children's tutor makes her an immediate object of suspicion inside and outside the house.",
+            "id": "brenda-leonides",
+            "name": "Brenda Leonides",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Aristide's unmarried sister-in-law, who has lived with the family since the death of her own sister. Practical, austere, and protective, she manages much of the household and regards Brenda with open distrust. She is accustomed to acting decisively when the younger generations cannot.",
+            "id": "edith-de-haviland",
+            "name": "Edith de Haviland",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Aristide's elder son and Sophia's father. A withdrawn scholar who writes books that attract little attention, Philip has spent much of his life in the shadow of his more outgoing younger brother. He and his family occupy one wing of Three Gables.",
+            "id": "philip-leonides",
+            "name": "Philip Leonides",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Philip's wife and the mother of Sophia, Eustace, and Josephine. An actress who treats daily life with theatrical intensity, she is absorbed in her career and eager to turn even the family's crisis into dramatic material. Her manner can obscure how carefully she watches other people.",
+            "id": "magda-leonides",
+            "name": "Magda Leonides",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Aristide's younger son, genial and openly devoted to his father. He runs the family business but lacks Aristide's judgment, and the strain surrounding the firm has left him desperate to begin a simpler life away from Three Gables.",
+            "id": "roger-leonides",
+            "name": "Roger Leonides",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Roger's wife, a scientist with a cool, unsentimental manner. She dislikes the emotional and financial entanglements of Three Gables and wants to take Roger abroad, where they can live independently of the Leonides fortune.",
+            "id": "clemency-leonides",
+            "name": "Clemency Leonides",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The private tutor of Eustace and Josephine. Quiet, nervous, and intellectually inclined, he lives within the Leonides household and shares literary interests with Brenda. His dependence on the family and his friendship with Aristide's widow draw police attention.",
+            "id": "laurence-brown",
+            "name": "Laurence Brown",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sophia's twelve-year-old sister, an observant child who treats the murder inquiry as a detective story. She listens at doors, records private judgments in a notebook, and confidently tells Charles that she notices things the adults miss. Her curiosity makes her both useful and difficult to assess.",
+            "id": "josephine-leonides",
+            "name": "Josephine Leonides",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sophia's younger brother, a teenager whose education and confidence were disrupted by childhood illness. He is sardonic about his relatives and resentful of being treated as fragile, though he shares Josephine's close view of life inside Three Gables.",
+            "id": "eustace-leonides",
+            "name": "Eustace Leonides",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Nannie"
+            ],
+            "description": "The long-serving nurse who has cared for the Leonides children across generations. Blunt, loyal, and firmly rooted in traditional ideas of discipline, she remains in the household as a familiar authority over its youngest members.",
+            "id": "nanny",
+            "name": "Nanny",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "crooked-house"
+      },
+      "recaps": {
+        "ending": "Josephine is the murderer. She poisoned Aristide after he refused one of her wishes, then treated the investigation as a game in which she could display her cleverness. She staged the attack on herself to reinforce her claim that she knew too much. Later she poisoned Nanny, who had begun to recognize how dangerous she was. Edith de Haviland finds Josephine's private account and concludes that exposure through the courts would destroy the family without providing a humane future for the child. Edith leaves a confession taking responsibility for the crimes, then drives Josephine away from Three Gables and deliberately sends the car over a quarry edge, killing them both. A separate letter tells Charles the truth and encloses Josephine's written record. Brenda and Laurence are cleared. With the murder resolved, Sophia accepts that she is not responsible for inheriting her family's capacity for violence, and she and Charles can plan a life together away from the house.",
+        "in_short": "Charles Hayward returns to England intending to marry Sophia Leonides, but her wealthy grandfather Aristide has been poisoned at the family's crowded home, Three Gables. Charles joins the inquiry and finds motives among Aristide's dependent children, his young widow Brenda, and Brenda's friend Laurence Brown. Family business failures, an unexpected inheritance for Sophia, and secret love letters deepen suspicion. Sophia's young sister Josephine claims to know the culprit, survives an apparently murderous attack, and continues spying after Brenda and Laurence are arrested. When the family nurse is poisoned, Edith de Haviland discovers the truth: Josephine killed Aristide, staged her own attack, and killed the nurse. Edith drives herself and Josephine to their deaths, leaving letters and Josephine's notebook to explain her protective murder-suicide. The innocent suspects are freed, and Charles and Sophia look beyond Three Gables toward marriage.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "After wartime service abroad, Charles Hayward returns to London and reunites with Sophia Leonides, whom he hopes to marry. Sophia tells him that her grandfather Aristide has died at Three Gables, the sprawling and oddly proportioned house where several branches of the family live. The death is being treated as murder: Aristide's regular insulin injection contained eserine from his eye medicine. His much younger wife Brenda administered the injection but denies switching the contents. Sophia will not marry Charles until the killer is identified, because she fears what the crime means about her family. Charles's father, a senior police official, arranges for him to enter the house alongside Chief Inspector Taverner and observe the household from within.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Charles meets the relatives whose lives Aristide organized and financed. Brenda is resented as an outsider and suspected of an attachment to Laurence Brown, tutor to the younger children. Edith de Haviland, sister of Aristide's first wife, distrusts Brenda and maintains a stern watch over the household. Aristide's sons present contrasting disappointments: Philip is a secluded writer who has long resented the preference shown to his brother, while the more amiable Roger has made a serious failure of the family business. Roger and his practical wife Clemency had intended to leave England and live modestly before the murder. Philip's actress wife Magda responds to the inquiry as though it were a drama, while Sophia tries to judge her relatives without sentiment. No one appears financially independent of the victim, and several family members had access to the medicines.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The inquiry expands to Philip and Magda's younger children. Eustace is bitter about the illness that interrupted his life, while twelve-year-old Josephine spies on everyone, keeps a notebook, and claims that she can solve the murder. Laurence Brown proves anxious and evasive, strengthening the household's suspicions about him and Brenda, though nervousness is not proof. Charles also learns that Aristide knew Roger's business was near collapse and had offered to rescue it, undercutting the simplest financial theory against Roger. Questions about Aristide's will add another source of tension: the expected document cannot straightforwardly account for his intentions, leaving the family uncertain about who will control the fortune. Charles grows convinced that the house's long history of dependence matters more than any single obvious clue.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Josephine repeatedly hints that she knows who killed Aristide but refuses to share her conclusion. She is then found unconscious after being struck at a place where she often concealed herself to listen to adults, and her notebook disappears. The family assumes that the murderer has tried to silence her. While Josephine recovers, the inheritance question is settled by evidence of Aristide's actual plan: he chose Sophia, rather than either of his sons, to receive controlling responsibility for his estate. The decision surprises the household but fits his confidence in her judgment. It also gives Sophia an apparent motive, which she faces directly rather than denying. Charles remains torn between his wish to protect her and the need to treat every member of the enclosed family as a possible killer.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Evidence finally appears to support the prevailing suspicion of Brenda and Laurence. Their private letters establish that they are in love and had imagined a future together, giving the police a plausible motive to pair with their access to Aristide. Both are arrested, but Charles and Sophia remain uneasy because the case does not explain every feature of the household's behavior. Josephine returns from hospital pleased by the attention surrounding her and continues to boast about her knowledge. The danger then resumes inside Three Gables: Nanny drinks poisoned cocoa and dies. Josephine says the drink had been prepared for her, encouraging the belief that the killer has made a second attempt to stop her from disclosing the truth. The new death makes the apparently solved case unstable and leaves the remaining family members frightened of one another.",
+            "through": {
+              "chapter": 23
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Edith de Haviland discovers Josephine's missing notebook and understands that the child, not Brenda or Laurence, killed Aristide. Josephine poisoned her grandfather after he denied a wish, then approached the consequences as an opportunity to imitate the detectives she admired. She arranged the blow that injured her so it would look as though an unknown murderer feared her knowledge. Nanny later became another victim when she recognized Josephine's cruelty and represented a threat to her freedom. Believing that a public prosecution would compound the harm and leave no safe future, Edith writes one confession for the authorities, takes Josephine out in a car, and deliberately drives them both over a quarry edge. Her private letter to Charles gives the real account and includes Josephine's record. Brenda and Laurence can be cleared. Sophia accepts that the crime does not determine her own character, and she and Charles are free to leave the influence of Three Gables and marry.",
+            "through": {
+              "chapter": 26
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "crooked-house"
+      }
+    },
     "crooked-kingdom": {
       "characters": {
         "characters": [

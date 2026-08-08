@@ -2382,6 +2382,233 @@
         "work": "the-accidental-tourist"
       }
     },
+    "the-adventure-of-the-beryl-coronet": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A consulting detective in London whose close attention to physical traces lets him reconsider a case that appears settled. When a distressed banker arrives at Baker Street, Holmes listens for the assumptions hidden inside his account and then examines the family home himself.",
+            "id": "sherlock-holmes",
+            "name": "Sherlock Holmes",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Holmes's friend and the narrator of the case. Watson is present when Alexander Holder seeks help and accompanies Holmes as the detective investigates the damaged coronet and the people around it.",
+            "id": "john-watson",
+            "name": "Dr. John Watson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior London banker entrusted with a priceless royal coronet as security for a large loan. Afraid to leave it at the bank, he takes it to his suburban home, where its damage and the disappearance of three beryls threaten his reputation as well as his household.",
+            "id": "alexander-holder",
+            "name": "Alexander Holder",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Alexander Holder's only son, a young man whose gambling and expensive habits have strained his father's trust. His request for more money is refused shortly before the coronet is damaged, making his conduct an immediate focus of suspicion.",
+            "id": "arthur-holder",
+            "name": "Arthur Holder",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Holder's orphaned niece, who has grown up in his home and manages the household with composure. He regards her with deep affection and has hoped she might marry Arthur, though she has declined him.",
+            "id": "mary-holder",
+            "name": "Mary Holder",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A fashionable aristocrat and companion of Arthur whose charm conceals a dangerous reputation. Holder distrusts his influence, while Mary has encountered him through the family's social circle.",
+            "id": "sir-george-burnwell",
+            "name": "Sir George Burnwell",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A recently hired maid in Holder's household. Her habit of meeting a suitor near the house at night creates one possible explanation for activity around the windows on the evening of the theft.",
+            "id": "lucy-parr",
+            "name": "Lucy Parr",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-adventure-of-the-beryl-coronet"
+      },
+      "recaps": {
+        "ending": "Holmes proves that Arthur was trying to recover the coronet rather than steal it. Arthur had seen Mary pass the treasure to Sir George Burnwell and followed Burnwell outside, where the two men struggled. The coronet broke during the fight, and Arthur returned with the portion he had recovered. He accepted arrest rather than expose Mary, whom he loved. Holmes tracks Burnwell down and compels him to surrender the three missing beryls in exchange for payment. Mary has fled with Burnwell, leaving a note behind, and Holder recognizes that his suspicion wronged his son. The gems can be restored to the coronet, but the damage to the family cannot be so neatly repaired.",
+        "in_short": "Banker Alexander Holder accepts the beryl coronet as security for a loan from an exalted client and takes it home for safekeeping. During the night he finds his indebted son Arthur holding the bent coronet, with three stones missing, and has him arrested. Holmes studies the house, the snow outside, and the strength needed to break the gold setting. He discovers that Holder's niece Mary had given the coronet to Sir George Burnwell. Arthur witnessed the exchange, fought Burnwell, and recovered part of the treasure, but kept silent to protect Mary. Holmes obtains the missing beryls from Burnwell. Mary flees with him, while Holder learns that the son he condemned was acting out of loyalty.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Alexander Holder, a prominent banker, lends a large sum to a highly placed client who leaves the beryl coronet as security. Holder fears the treasure will not be safe at his office and carries it to his home. There he tells his son Arthur, his niece Mary, and the household staff that a valuable object is in his room. Arthur, already in debt, asks his father for money and is refused. That night Holder wakes to a noise and finds Arthur gripping the coronet. Its setting is bent and three beryls are gone. Arthur will not explain himself, so Holder has him arrested and asks Holmes to recover the stones before the loss becomes a public scandal. Holmes tests Holder's account against the physical evidence. The gold cannot have been broken silently by one person indoors, and marks in the snow show that a struggle occurred outside. Holmes concludes that Mary secretly handed the coronet to Sir George Burnwell. Arthur saw them, pursued Burnwell, and recovered the larger broken section after a fight, then remained silent to shield Mary. Holmes confronts Burnwell and buys back the missing gems. Mary has already run away with Burnwell. Holder can repair the royal treasure and clear Arthur, but must face the fact that he distrusted the loyal member of his family and trusted the one who betrayed him.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-adventure-of-the-beryl-coronet"
+      }
+    },
+    "the-adventure-of-the-bruce-partington-plans": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A London consulting detective drawn into a national-security case by his elder brother. Holmes approaches the dead clerk, the missing technical papers, and the railway setting as parts of one physical problem.",
+            "id": "sherlock-holmes",
+            "name": "Sherlock Holmes",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Holmes's friend and narrator, who joins the investigation during a period of dense London fog. Watson accompanies Holmes to official interviews, the railway line, and the late-night search that uncovers the route taken by the stolen plans.",
+            "id": "john-watson",
+            "name": "Dr. John Watson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Holmes's elder brother, whose extraordinary command of government information makes him an informal center of British administration. He brings Sherlock a case whose consequences could compromise a major defense project.",
+            "id": "mycroft-holmes",
+            "name": "Mycroft Holmes",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A junior government clerk whose body is found beside an Underground railway line. Several pages from the secret Bruce-Partington submarine plans are in his possession, while the most important pages are absent, making him appear responsible for the theft.",
+            "id": "arthur-cadogan-west",
+            "name": "Arthur Cadogan West",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Cadogan West's fiancée. She tells Holmes that West was intensely conscientious about his work and had recently spoken with alarm about the inadequate safeguards around the submarine plans.",
+            "id": "violet-westbury",
+            "name": "Violet Westbury",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Scotland Yard inspector assigned to the death of Cadogan West and the theft of the plans. He shares the official evidence with Holmes and assists once the detective's reconstruction identifies a place to search.",
+            "id": "inspector-lestrade",
+            "name": "Inspector Lestrade",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The senior clerk responsible for the plans at the Woolwich office. He explains the strict rules governing access and confirms that Cadogan West possessed a key but was not authorized to remove the papers.",
+            "id": "sidney-johnson",
+            "name": "Sidney Johnson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The official chiefly responsible for protecting the submarine project. The loss of the plans and suspicion surrounding his department overwhelm him before Holmes can question him.",
+            "id": "sir-james-walter",
+            "name": "Sir James Walter",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Sir James Walter's brother, a decorated officer burdened by private financial trouble. He becomes important to Holmes's inquiry into how a foreign agent could have reached the guarded material.",
+            "id": "colonel-valentine-walter",
+            "name": "Colonel Valentine Walter",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A foreign agent known to British authorities who maintains a London house beside an exposed stretch of Underground railway. Holmes suspects that the missing plans were taken there for sale.",
+            "id": "hugo-oberstein",
+            "name": "Hugo Oberstein",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-adventure-of-the-bruce-partington-plans"
+      },
+      "recaps": {
+        "ending": "Holmes identifies Colonel Valentine Walter as the person who stole the plans to pay his debts. Cadogan West saw the theft, followed Walter to Hugo Oberstein's railway-side house, and confronted the spy. Oberstein killed West, kept the most valuable pages, and placed the body on the roof of a stopped train; it fell beside the line later in the journey. Confronted through a coded newspaper exchange, Walter confesses and agrees to help the authorities lure Oberstein back within reach of British justice. The missing papers are recovered, West's name is cleared, and the government rewards Holmes for preventing the defense secret from remaining in foreign hands.",
+        "in_short": "Mycroft asks Holmes to investigate the death of government clerk Arthur Cadogan West, whose body is found beside an Underground line with most of the stolen Bruce-Partington submarine plans in his pocket. Holmes notices that West could not have reached the place in the ordinary way and concludes that his body fell from the roof of a train. A nearby house belongs to foreign agent Hugo Oberstein. There Holmes finds evidence that West was killed after following the real thief, Colonel Valentine Walter, who had taken the plans to sell them and escape his debts. Oberstein retained the crucial pages and used the railway to dispose of West's body. Holmes exploits Oberstein's coded newspaper correspondence, obtains Walter's confession and cooperation, recovers the papers, and clears West of treason.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Mycroft Holmes brings news that Arthur Cadogan West, a young clerk at Woolwich, has been found dead beside an Underground railway. Seven sheets from the highly secret Bruce-Partington submarine plans are in his pocket, but three essential sheets are missing. The evidence suggests theft and attempted sale, yet West's fiancée describes him as loyal and deeply worried about the plans' security. Holmes also finds problems with the location of the corpse: West had no ticket, and the body shows no ordinary explanation for reaching the track. He infers that it rode on the roof of a train and fell at a curve. The route points to a house beside the line occupied by known foreign agent Hugo Oberstein. Holmes and Watson enter the empty house and find signs that a man was killed there and then passed through a window onto a stationary train. A coded newspaper correspondence leads Holmes to Colonel Valentine Walter, brother of the official responsible for the plans. Walter confesses that debt drove him to steal them for Oberstein. West saw him, followed him, and confronted the spy; Oberstein killed West, planted the less vital papers on him, and kept the crucial sheets. Walter agrees to send a message designed to draw Oberstein into a trap. The missing plans are recovered, West is cleared of betrayal, and the government recognizes Holmes's service in protecting the project.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-adventure-of-the-bruce-partington-plans"
+      }
+    },
     "the-adventure-of-the-dancing-men": {
       "characters": {
         "characters": [
@@ -2480,6 +2707,115 @@
           }
         ],
         "work": "the-adventure-of-the-dancing-men"
+      }
+    },
+    "the-adventure-of-the-devils-foot": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A consulting detective recuperating on the Cornish coast after overwork. Although meant to avoid demanding cases, Holmes is drawn to a household catastrophe whose victims appear to have been struck by overwhelming terror.",
+            "id": "sherlock-holmes",
+            "name": "Sherlock Holmes",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Holmes's friend, doctor, and narrator, who has brought him to Cornwall to recover his health. Watson helps examine both deaths and follows Holmes into a dangerous experiment intended to reproduce the mysterious symptoms.",
+            "id": "john-watson",
+            "name": "Dr. John Watson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A local man who lives separately from his sister and two brothers after a family dispute. He reports that, after spending an evening playing cards with them, he returned to find Brenda dead and the brothers out of their minds.",
+            "id": "mortimer-tregennis",
+            "name": "Mortimer Tregennis",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Mortimer's sister, found dead at the card table with an expression of extreme fear. Her death, while her brothers survive in madness, is the first part of the mystery brought to Holmes.",
+            "id": "brenda-tregennis",
+            "name": "Brenda Tregennis",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Mortimer's brothers and a victim of the strange event at the family house. He survives physically but is left insane by whatever filled the room after Mortimer departed.",
+            "id": "george-tregennis",
+            "name": "George Tregennis",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "One of Mortimer's brothers and the second survivor of the night at the family house. Like George, he is found laughing and singing without reason and cannot explain what happened.",
+            "id": "owen-tregennis",
+            "name": "Owen Tregennis",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A renowned explorer and hunter with extensive experience in Africa. He returns abruptly to Cornwall after hearing of Brenda's death and shows an urgent personal interest in Holmes's investigation.",
+            "id": "leon-sterndale",
+            "name": "Dr. Leon Sterndale",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The local vicar and Mortimer Tregennis's landlord. He accompanies Mortimer when the first deaths are reported and introduces the seemingly inexplicable case to Holmes.",
+            "id": "mr-roundhay",
+            "name": "Mr. Roundhay",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-adventure-of-the-devils-foot"
+      },
+      "recaps": {
+        "ending": "Holmes determines that burning a rare African poison called devil's-foot root produced the terror and madness in both rooms. Mortimer Tregennis had thrown the substance into the fire while visiting his siblings, killing Brenda and destroying his brothers' sanity in a dispute over family property. Leon Sterndale, who had secretly loved Brenda for years, learned the truth and forced Mortimer to experience the same death by burning the poison beneath his lamp. Sterndale admits what he did and explains that his existing marriage had prevented him from openly joining Brenda. Holmes, judging that formal proceedings would add little justice, allows him to leave. Holmes and Watson survive their own hazardous test of the poison, and the case closes without an arrest.",
+        "in_short": "While Holmes is recovering in Cornwall, Mortimer Tregennis reports that his sister Brenda died and his brothers George and Owen went insane during a night at their home. All three showed signs of overwhelming terror. Mortimer is soon found dead in a similar locked room. Holmes connects both incidents to fumes created by burning a rare African poison, a theory he and Watson nearly die testing. Explorer Leon Sterndale then confesses that he killed Mortimer in retaliation. Mortimer had poisoned his siblings during a quarrel over property, murdering Brenda, whom Sterndale loved, and leaving the brothers insane. Sterndale made Mortimer suffer the same fate. Accepting his account and motive, Holmes lets him go.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Holmes and Watson are staying on the Cornish coast so Holmes can recover from exhaustion when the vicar, Mr. Roundhay, and his lodger Mortimer Tregennis ask for help. Mortimer says he spent the previous evening playing cards with his siblings Brenda, George, and Owen. In the morning Brenda was dead and the two men had lost their sanity, all three faces marked by intense fear. The room offers no obvious means of attack. African explorer Leon Sterndale, who had been about to leave the country, returns on hearing of Brenda's death and questions Holmes closely. The case changes when Mortimer is found dead under very similar conditions, alone beside a burning lamp. Holmes collects residue from the lamp and deliberately burns a small amount in his cottage. The fumes almost kill both him and Watson, but prove that a rare African substance known as devil's-foot root caused the terror, madness, and death. Holmes confronts Sterndale, who admits killing Mortimer. Mortimer had poisoned his own siblings during a conflict over family property; Sterndale, who had long loved Brenda in secret, obtained proof and used the same poison to execute him. Sterndale's marriage had kept him and Brenda apart. Holmes accepts the confession and chooses not to turn him over to the police, leaving the retaliatory killing unpunished by law.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-adventure-of-the-devils-foot"
       }
     },
     "the-adventures-of-pinocchio": {
