@@ -5351,6 +5351,354 @@
         "work": "great-expectations-adaptation"
       }
     },
+    "greenmantle": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A South African mining engineer and experienced intelligence operative serving as an officer in the British Army during the First World War. Restless with conventional soldiering, he accepts a secret mission to discover how Germany plans to turn religious feeling in the Ottoman world into a weapon against the Allies.",
+            "id": "richard-hannay",
+            "name": "Richard Hannay",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A senior British intelligence official who recruits Hannay. Working from a few cryptic clues, he believes German agents are preparing a movement capable of igniting revolt across the Muslim world and asks Hannay to identify its source.",
+            "id": "sir-walter-bullivant",
+            "name": "Sir Walter Bullivant",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A resourceful Scottish aristocrat with deep knowledge of languages and Islamic cultures. He joins Hannay's mission but travels independently, relying on disguise, scholarship, and his ability to move convincingly through societies closed to ordinary British agents.",
+            "id": "sandy-arbuthnot",
+            "name": "Sandy Arbuthnot",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly American intelligence agent whose frail appearance conceals patience, courage, and a wide network of contacts. He enters enemy territory separately and helps connect the scattered members of the mission.",
+            "id": "john-s-blenkiron",
+            "name": "John S. Blenkiron",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Hannay's old South African friend, an expert tracker and hunter. Small, weathered, and deeply loyal, he accompanies Hannay into Germany and helps sustain their cover as anti-British Boers.",
+            "id": "peter-pienaar",
+            "name": "Peter Pienaar",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A brutal German officer who encounters Hannay under his Boer identity. Suspicious, domineering, and quick to use violence, he becomes a direct threat to Hannay's cover and pursuit of the mission.",
+            "id": "colonel-von-stumm",
+            "name": "Colonel von Stumm",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A poised and politically powerful German woman involved in the secret eastern project. Her authority, intelligence, and personal magnetism make her more formidable than the uniformed men around her, and Hannay quickly understands that she is central to the conspiracy he has been sent to uncover.",
+            "id": "hilda-von-einem",
+            "name": "Hilda von Einem",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A German engineer and former acquaintance of Hannay from Africa. Their accidental reunion places Hannay's assumed identity at risk, though Gaudian's personal standards and complicated loyalties make the encounter less straightforward than a simple exposure.",
+            "id": "herr-gaudian",
+            "name": "Herr Gaudian",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Turkish military leader whose ambitions intersect with Germany's plans for the Ottoman front. He is one of the powerful figures around whom the agents must maneuver as they try to learn how the proposed religious rising will be directed.",
+            "id": "enver-pasha",
+            "name": "Enver Pasha",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A revered, ailing religious figure whose identity is bound to the word Greenmantle. His approaching death creates the opportunity the conspirators hope to exploit by transferring popular devotion to a cause useful to the Central Powers.",
+            "id": "greenmantle",
+            "name": "Greenmantle",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "greenmantle"
+      },
+      "recaps": {
+        "ending": "Hannay, Sandy, Peter, and Blenkiron escape the conspiracy's immediate reach and make for the Russian lines while the Ottoman army prepares for battle near Erzurum. Sandy uses the authority and expectations surrounding Greenmantle to disrupt the spiritual force Hilda von Einem intended to place behind the German-Turkish campaign. Hilda follows the fugitives into the fighting and is killed as the military position collapses. The Russian assault succeeds, Erzurum falls, and the feared uprising is never launched under German control. Hannay survives the retreat and battle with his companions, their scattered routes finally converging in success. The original clues have been explained: Greenmantle was the dying holy figure at the center of the plan, while the conspirators' attempt to command his influence depended on Hilda. With that scheme broken and the eastern front shifted by the Russian victory, Hannay's mission ends and he returns to Allied service.",
+        "in_short": "During the First World War, Richard Hannay is sent to discover a German plan to provoke a vast religious uprising through the Ottoman Empire. With Sandy Arbuthnot, Peter Pienaar, and American agent John Blenkiron, he travels undercover across wartime Europe toward Constantinople, following the cryptic name Greenmantle. Posing as an anti-British Boer, Hannay survives German suspicion and the pursuit of Colonel von Stumm. In Constantinople the agents learn that the brilliant Hilda von Einem intends to harness devotion surrounding a dying holy man and direct it against the Allies. Their separate disguises and investigations converge as the action moves east toward Erzurum. Sandy turns the symbolism of Greenmantle against the plotters, while Hannay and his friends escape toward the advancing Russians. Hilda is killed amid the final battle, Erzurum falls, and the planned rising loses the leader and moment it required. The four agents survive, having prevented Germany from converting religious prophecy into a strategic weapon.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In late 1915 Richard Hannay, now an army officer, is summoned by intelligence chief Sir Walter Bullivant. Britain has learned that Germany may be preparing to exploit a powerful current of religious expectation within the Ottoman world, threatening Allied positions from North Africa to India. The evidence is fragmentary, reduced to mysterious words and names rather than a clear plan. Hannay accepts the task of tracing the scheme from Europe toward Constantinople. He recruits three men suited to unconventional work: Sandy Arbuthnot, a linguist and expert in eastern cultures; Peter Pienaar, Hannay's trusted South African scout; and John S. Blenkiron, an American agent whose poor health makes him seem harmless. They agree to travel by different routes and identities, with little certainty that any of them will reach the rendezvous.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Hannay and Peter enter Germany disguised as Boers hostile to Britain, Hannay using the name Cornelis Brand. The cover lets them present their knowledge of South Africa as evidence of sympathy with Germany, but every official encounter risks exposing them. Hannay's impatience and Peter's distinctive abilities must be hidden beneath their roles. They are drawn into the orbit of Colonel von Stumm, a violent and suspicious officer who sees the supposed Boer as potentially useful but does not trust him. Hannay gathers signs that the eastern undertaking is real and closely guarded. His path is increasingly controlled by the Germans, turning the mission from covert travel into a struggle to preserve his identity long enough to move toward the Balkans.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "An encounter with Herr Gaudian, who knew Hannay in Africa, threatens to destroy the Boer disguise. Colonel von Stumm's suspicions and violence keep Hannay under immediate danger, forcing him and Peter to escape the tightening German net. They continue southeast through winter conditions and cross toward Ottoman territory under severe physical strain. The agents remain separated, and Hannay has no proof that Sandy or Blenkiron has survived his own route. What he has learned, however, confirms that the eastern scheme is real, closely guarded, and larger than a conventional military operation. Reaching Constantinople without exposing the mission becomes his immediate goal.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Hannay reaches Constantinople, where Ottoman officials, German advisers, and secret agents make open inquiry impossible. Blenkiron reappears with information gathered under his own cover, and Sandy has penetrated the religious and political world surrounding the conspiracy far more deeply than Hannay could have done. Hilda von Einem is again at the center of events, working with leaders who hope to unite spiritual expectation with the Central Powers' campaign. The clues begin to point toward Greenmantle, not simply as a password but as the title or identity of a sacred figure. The mission shifts eastward toward the war zone, where the conspiracy's political promise and the Ottoman army's operations are about to meet.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The agents learn that Greenmantle is an ailing holy man whose death may release immense devotion among his followers. Hilda intends to capture that moment and attach it to the German-Turkish cause. Sandy's knowledge and adopted identity allow him to move within the same symbolic world, making him essential to preventing her from controlling the succession. Hannay, Peter, and Blenkiron face pursuit as they travel through eastern Anatolia toward Erzurum, where Russian forces are advancing. The contest is now both strategic and personal: if Hilda can bring the expected religious leader into the campaign, a local battle may become the beginning of a much wider revolt. The British agents must survive long enough to reach friendly forces while helping Sandy break the link between prophecy and the Central Powers.",
+            "through": {
+              "chapter": 19
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Near Erzurum, the separate strands of the mission converge amid the Russian offensive. Sandy turns the expectations associated with Greenmantle away from the use Hilda von Einem planned, depriving the conspiracy of the spiritual leader it needed. Hannay, Peter, and Blenkiron struggle through the collapsing Ottoman position toward the Russians while Hilda pursues them into the battle. She is killed during the final fighting, and with her death the organizing intelligence behind the scheme disappears. The Russians capture Erzurum, transforming the military situation before the planned rising can be launched. Hannay and his three companions survive and reunite, having followed Bullivant's fragmentary clues across Europe and prevented Germany from converting the authority of Greenmantle into a weapon against the Allies.",
+            "through": {
+              "chapter": 22
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "greenmantle"
+      }
+    },
+    "grendel": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An ancient, solitary creature who lives with his mother beneath the earth and narrates his own long war against Hrothgar's hall. He understands human speech but cannot make people understand him. Intelligent, bitter, and given to argument, he watches both animals and humans in search of some principle that could make sense of existence. At the opening he has been raiding the Danes for twelve years and has come to regard the yearly cycle of violence as both tiresome and inescapable.",
+            "id": "grendel",
+            "name": "Grendel",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Grendel's enormous, wordless mother, who shares his underground home. She communicates through touch and sound rather than language and protects him with fierce physical devotion. Her inability to answer his questions leaves him loved but intellectually alone.",
+            "id": "grendels-mother",
+            "name": "Grendel's mother",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Danish war leader whose growing power Grendel observes over many years. Hrothgar turns victory, tribute, and alliances into a kingdom, then builds a great mead hall as its center. His order depends on force, but the songs performed at his court give that order a nobler meaning.",
+            "id": "hrothgar",
+            "name": "Hrothgar",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the Shaper"
+            ],
+            "description": "A blind poet whose performances transform the Danes' memories of raids and feuds into a history of courage, ancestry, and providential order. Grendel knows that the songs alter facts, yet he is deeply moved by the coherent world they create and becomes torn between belief and disbelief.",
+            "id": "shaper",
+            "name": "The Shaper",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A vast, ancient dragon who guards a treasure hoard and can see time more broadly than ordinary creatures. He receives Grendel as an amused lecturer, arguing that lives and civilizations are temporary arrangements in an indifferent universe. His confidence offers Grendel an explanation for existence, though not a comforting one.",
+            "id": "dragon",
+            "name": "The Dragon",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Hrothgar's proud warrior, publicly celebrated for his courage and eager to live up to the heroic ideals of the hall. He challenges Grendel directly and pursues him even after the other Danes fall back, seeking a contest that will prove the meaning of his reputation.",
+            "id": "unferth",
+            "name": "Unferth",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young Helming princess who becomes Hrothgar's queen as part of a peace settlement. Her generosity and composure soften the harsh life of the hall, and the loyalty she inspires gives the Danes a living image of the ideals praised in their songs.",
+            "id": "wealtheow",
+            "name": "Wealtheow",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young rival ruler who meets Hrothgar with a disciplined army. Rather than risk a destructive battle, he offers his sister Wealtheow in marriage, using kinship and tribute to protect his people while acknowledging Hrothgar's greater power.",
+            "id": "hygmod",
+            "name": "Hygmod",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Hrothgar's adolescent nephew, brought into the royal household after his father's death. Quiet and observant, he is fascinated by the gap between the court's language of loyalty and the power struggles beneath it.",
+            "id": "hrothulf",
+            "name": "Hrothulf",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly peasant who speaks privately with Hrothulf about government and revolt. He strips politics of its ceremonial language and treats power as something protected by wealth, violence, and convenient ideas.",
+            "id": "red-horse",
+            "name": "Red Horse",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An old priest of Hrothgar's people. When Grendel pretends to be the deity the priests call the Destroyer, Ork responds with an intense account of a supreme being who gives reality to all things and understands every possibility. His vision surprises Grendel and sets him apart from his more practical colleagues.",
+            "id": "ork",
+            "name": "Ork",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Beowulf"
+            ],
+            "description": "The commanding stranger who crosses the sea with a band of Geatish warriors after hearing of Hrothgar's enemy. He has extraordinary physical presence, an unnervingly steady gaze, and a confidence unlike the theatrical bravado Grendel has learned to dismiss in other heroes.",
+            "id": "the-stranger",
+            "name": "The Stranger",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "grendel"
+      },
+      "recaps": {
+        "ending": "Grendel attacks Hrothgar's hall after the Geats arrive, expecting another familiar raid. The stranger Beowulf meets him without a weapon and seizes his arm with overwhelming strength. During their struggle, Beowulf forces Grendel to confront a vision in which violent conflict continually remakes the world, answering the monster's fixed and isolating philosophy with an equally terrifying claim of renewal. Beowulf tears Grendel's arm from its socket. Mortally wounded, Grendel escapes the hall and staggers toward the cliff above his home. The animals gather around as he loses blood. He insists that Beowulf's victory was an accident and calls on the creatures to record his account, but he then falls into the darkness. Hrothgar's people are freed from the enemy who has haunted them for twelve years, while Grendel dies still trying to impose his own explanation on the event that defeats him.",
+        "in_short": "Grendel, an intelligent monster unable to communicate with humans, recounts the twelve-year campaign he wages against the Danish king Hrothgar. As a young creature he watches Hrothgar build a kingdom through conquest, while the Shaper's songs turn that violent history into a vision of heroic order. A fatalistic dragon tells Grendel that existence has no inherent purpose and makes him impervious to human weapons. Grendel embraces the role of destroyer, tormenting the hall and mocking Unferth's heroism, yet remains drawn to Wealtheow's goodness, Ork's theology, and the meanings people create. After the Shaper dies, Geatish warriors arrive. Their leader, Beowulf, is unlike the heroes Grendel has previously humiliated. Beowulf grapples with him barehanded, tears off his arm, and confronts his closed philosophy with a vision of a world continually renewed through struggle. Grendel flees and falls to his death, calling the defeat an accident even as his long war ends.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Grendel begins in the twelfth year of his attacks on the hall of the Danish king Hrothgar. The return of spring irritates him with its mindless repetition, represented by a ram that ignores his threats. He visits Hrothgar's hall, kills men, and withdraws before dawn, treating the raid as another turn in a cycle that no longer satisfies him. He then remembers his youth in the underground home he shares with his huge, speechless mother. Exploring the world above, the young Grendel gradually recognizes himself as separate from the creatures around him. When his foot becomes trapped between two trees, a bull repeatedly charges him but cannot adjust its attack. Humans discover Grendel and, unable to understand his words, decide that he is dangerous. His mother arrives and carries him away. The encounter establishes the isolation that will shape him: he possesses language and self-awareness, but neither animals nor people can meet him in them.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Grendel watches human communities raid one another until Hrothgar proves unusually successful at turning warfare and tribute into lasting power. Roads, settlements, and a great mead hall follow his victories. Grendel sees that the kingdom rests on organized violence, but the arrival of a blind poet changes how the Danes understand that history. The Shaper sings of noble ancestry, righteous order, and a divinely formed world, converting brutal events into a shared story. Although Grendel remembers what actually occurred, the music moves him and makes him long to enter its vision. He approaches the hall in hope of contact, but his speech sounds monstrous to the frightened men and they attack him. The Shaper's account also assigns Grendel a place as an enemy descended from the first murderer. Shut out from the human order yet unable to dismiss its beauty, Grendel accepts the opposing identity their story offers and begins his sustained war on Hrothgar's people.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Seeking answers, Grendel visits an ancient dragon who can see beyond an ordinary lifetime. The dragon argues that human purposes are temporary patterns imposed on an indifferent universe; even the Shaper's beautiful order is a useful illusion. He advises Grendel to gather treasure and frighten people, and places an enchantment on him that prevents human weapons from cutting him. Grendel returns to Hrothgar's lands with new confidence, raiding the hall while treating himself as the necessary brute against which human ideals define themselves. Unferth, a warrior devoted to the heroic code, challenges him. Grendel mocks the formal language of heroism and defeats him. When Unferth later follows Grendel underground in hopes of a meaningful death, Grendel refuses to grant it. He carries the warrior safely back to the hall, ensuring that Unferth must live with humiliation and denying the Danes the heroic story they expect.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Hrothgar confronts the young ruler Hygmod, whose disciplined forces make war costly. Hygmod preserves peace by offering his sister Wealtheow as Hrothgar's queen. Her courtesy, gift-giving, and self-command bring a gentler order to the hall and move Grendel despite his determination to reject human values. He eventually invades her chamber and considers destroying the ideal she represents, but leaves without killing her. Years pass, and Hrothgar's power begins to age. His orphaned nephew Hrothulf joins the household and grows attentive to the injustice beneath royal ceremony. An old peasant called Red Horse teaches him a harsh view of politics, explaining that rulers preserve unequal systems with force and with ideas that make privilege appear legitimate. Grendel observes both court and would-be revolutionaries, finding self-interest and contradiction in every program. Yet his interest in their arguments also shows that human attempts at meaning still hold him.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "During winter observances, Grendel encounters Ork, an elderly priest, and pretends to be the Destroyer whom the Danes invoke in their theology. Instead of panicking, Ork responds with a passionate vision of a supreme being who contains all possibilities and gives reality and value to creation. Other priests arrive and treat Ork's experience with embarrassment, but Grendel is unsettled by the depth of the old man's belief. As winter continues, a stubborn goat climbs toward Grendel's mere. Grendel attacks it repeatedly, yet it continues its blind ascent, another form of persistence that his theories cannot explain away. The Shaper then dies. His passing removes the voice that had most powerfully made the human world seem meaningful, and Grendel watches the funeral rites with a sense that an era is closing. News and omens point toward change, but he clings to the dragon's fatalism and prepares to continue the role he has chosen.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A band of Geatish warriors crosses the sea and offers to rid Hrothgar's hall of its attacker. Their leader, Beowulf, disturbs Grendel: his physical power and calm attention feel substantially different from Unferth's conventional heroics. Grendel listens as the visitors are received and waits for night, then enters the hall expecting the usual slaughter. Beowulf catches his arm and will not release it. In the struggle he counters Grendel's belief in a fixed, meaningless world with a vision of reality repeatedly remade through conflict, and his grip overcomes the dragon's protection because he uses no blade. Beowulf tears Grendel's arm away. Grendel escapes, bleeding heavily, and reaches the cliff near his underground home as animals gather around him. He maintains that his defeat was only an accident and demands that the creatures preserve his version of events. He then falls into the darkness, ending the twelve-year war and leaving the human story of the hero's victory to replace his own.",
+            "through": {
+              "chapter": 12
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-08-07",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "grendel"
+      }
+    },
     "grey-e-l-james": {
       "characters": {
         "characters": [
